@@ -393,6 +393,12 @@ importers:
 
   packages/workbench:
     dependencies:
+      '@tessellate/catalog':
+        specifier: workspace:*
+        version: link:../catalog
+      '@tessellate/compatibility':
+        specifier: workspace:*
+        version: link:../compatibility
       '@tessellate/composer':
         specifier: workspace:*
         version: link:../composer

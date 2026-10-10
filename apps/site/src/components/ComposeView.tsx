@@ -520,12 +520,18 @@ export function ComposeView() {
                     Closest to inferred baseline DNA. Prioritizes maximum speed, keyboard navigation, and familiar layout hierarchy.
                   </p>
                 </div>
-                <div className="mt-6">
+                <div className="mt-6 flex flex-col gap-2">
                   <a
-                    href="/dev/dna"
+                    href="/workbench"
                     className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#2547E8] py-2 text-xs font-semibold text-white hover:bg-[#1E3CCD] dark:bg-[#6782FF] dark:text-[#0B0D10]"
                   >
-                    Open in DNA Lab <ArrowRight className="h-3.5 w-3.5" />
+                    Open in Workbench <ArrowRight className="h-3.5 w-3.5" />
+                  </a>
+                  <a
+                    href="/dev/dna"
+                    className="inline-flex w-full items-center justify-center gap-1 text-[11px] text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA]"
+                  >
+                    Inspect in DNA Lab
                   </a>
                 </div>
               </div>
@@ -546,12 +552,18 @@ export function ComposeView() {
                     Visual ambition increased. Rich serif display headers, generous whitespace, and gliding transitions while preserving all product jobs.
                   </p>
                 </div>
-                <div className="mt-6">
+                <div className="mt-6 flex flex-col gap-2">
+                  <a
+                    href="/workbench"
+                    className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-[#2547E8] bg-white py-2 text-xs font-semibold text-[#2547E8] hover:bg-[#FAF9F6] dark:border-[#6782FF] dark:bg-[#171B21] dark:text-[#6782FF]"
+                  >
+                    Open in Workbench <ArrowRight className="h-3.5 w-3.5" />
+                  </a>
                   <a
                     href="/dev/dna"
-                    className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-[#D9D6CF] bg-white py-2 text-xs font-semibold text-[#111217] hover:bg-[#FAF9F6] dark:border-[#272C34] dark:bg-[#171B21] dark:text-[#F5F7FA]"
+                    className="inline-flex w-full items-center justify-center gap-1 text-[11px] text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA]"
                   >
-                    Open in DNA Lab <ArrowRight className="h-3.5 w-3.5" />
+                    Inspect in DNA Lab
                   </a>
                 </div>
               </div>
@@ -572,12 +584,18 @@ export function ComposeView() {
                     Structural creativity meaningfully elevated. Dual-rail navigation, high density telemetry, and modal workspace canvases.
                   </p>
                 </div>
-                <div className="mt-6">
+                <div className="mt-6 flex flex-col gap-2">
                   <a
-                    href="/dev/dna"
+                    href="/workbench"
                     className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-[#D9D6CF] bg-white py-2 text-xs font-semibold text-[#111217] hover:bg-[#FAF9F6] dark:border-[#272C34] dark:bg-[#171B21] dark:text-[#F5F7FA]"
                   >
-                    Open in DNA Lab <ArrowRight className="h-3.5 w-3.5" />
+                    Open in Workbench <ArrowRight className="h-3.5 w-3.5" />
+                  </a>
+                  <a
+                    href="/dev/dna"
+                    className="inline-flex w-full items-center justify-center gap-1 text-[11px] text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA]"
+                  >
+                    Inspect in DNA Lab
                   </a>
                 </div>
               </div>

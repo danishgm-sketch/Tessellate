@@ -1,9 +1,12 @@
 import React from 'react';
 import type { NodeRendererProps } from './types.js';
 import { DEFAULT_RESOURCE_RENDERERS } from './default-registry.js';
+import { normalizeDesignTokens } from './tokens/normalizer.js';
+import { tokensToCssVariables } from './tokens/contract.js';
 
 export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactElement | null {
   const isSelected = context?.selectedNodeId === node.id;
+  const isHovered = context?.hoveredNodeId === node.id;
   const viewport = context?.viewport ?? 'desktop';
   const isReducedMotion = context?.reducedMotion ?? false;
 
@@ -27,17 +30,55 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
     }
   };
 
-  // 2. Render children recursively
+  const handleMouseEnter = (e: React.MouseEvent) => {
+    if (context?.onNodeHover) {
+      e.stopPropagation();
+      context.onNodeHover(node.id);
+    }
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent) => {
+    if (context?.onNodeHover && isHovered) {
+      e.stopPropagation();
+      context.onNodeHover(null);
+    }
+  };
+
+  // 2. Compute local DNA overrides if present
+  let localStyle: React.CSSProperties = {};
+  if (node.dnaOverrides && Object.keys(node.dnaOverrides).length > 0) {
+    const effectiveDna = {
+      ...(context?.designDNA ?? {}),
+      ...node.dnaOverrides,
+    };
+    const localTokens = normalizeDesignTokens(effectiveDna, {
+      reducedMotion: isReducedMotion,
+      tokenOverrides: node.tokenOverrides,
+    });
+    localStyle = tokensToCssVariables(localTokens) as React.CSSProperties;
+  }
+
+  // 3. Render children recursively
+  const childContext = node.dnaOverrides && Object.keys(node.dnaOverrides).length > 0
+    ? {
+        ...context,
+        designDNA: {
+          ...(context?.designDNA ?? {}),
+          ...node.dnaOverrides,
+        },
+      }
+    : context;
+
   const renderedChildren = node.children?.map((child) => (
-    <NodeRenderer key={child.id} node={child} context={context} />
+    <NodeRenderer key={child.id} node={child} context={childContext} />
   ));
 
-  // 3. Motion classes
+  // 4. Motion classes
   const motionClasses = isReducedMotion
     ? 'transition-none duration-0 animate-none'
     : 'transition-all duration-[var(--tess-duration-normal,200ms)] ease-[var(--tess-easing,ease-out)]';
 
-  // 4. Responsive layout modifiers
+  // 5. Responsive layout modifiers
   let layoutModifierClasses = '';
   if (viewport === 'mobile') {
     if (responsiveStrategy === 'stack') {
@@ -47,7 +88,14 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
     }
   }
 
-  // 5. If node references a canonical resource
+  // 6. Highlight classes for selection & hover
+  const selectionClasses = isSelected
+    ? 'ring-2 ring-[var(--tess-cobalt,#2547E8)] outline-none rounded-lg'
+    : isHovered
+    ? 'ring-1 ring-dashed ring-neutral-400 dark:ring-neutral-500 rounded-lg'
+    : '';
+
+  // 7. If node references a canonical resource
   if (node.resourceRef) {
     const slug = node.resourceRef.slug;
     const Component = registry[slug] ?? registry[node.resourceRef.id];
@@ -59,6 +107,9 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
           data-node-id={node.id}
           data-testid="missing-resource-recovery"
           onClick={handleSelect}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          style={localStyle}
           className={`rounded-lg border border-dashed border-amber-400 bg-amber-50 p-4 text-xs text-amber-900 font-mono transition-all ${
             isSelected ? 'ring-2 ring-[var(--tess-cobalt,#2547E8)]' : ''
           }`}
@@ -85,9 +136,13 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
         data-node-type={node.nodeType}
         data-semantic-role={node.semanticRole}
         onClick={handleSelect}
-        className={`relative ${motionClasses} ${layoutModifierClasses} ${
-          isSelected ? 'ring-2 ring-[var(--tess-cobalt,#2547E8)] rounded-lg' : ''
-        }`}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          ...localStyle,
+          ...(node.props?.style as React.CSSProperties ?? {}),
+        }}
+        className={`relative ${motionClasses} ${layoutModifierClasses} ${selectionClasses}`}
       >
         <Component {...mergedProps}>
           {node.props?.children as React.ReactNode ?? renderedChildren}
@@ -96,7 +151,7 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
     );
   }
 
-  // 6. Generic layout container node
+  // 8. Generic layout container node
   const content =
     renderedChildren && renderedChildren.length > 0
       ? renderedChildren
@@ -108,9 +163,13 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
       data-node-type={node.nodeType}
       data-semantic-role={node.semanticRole}
       onClick={handleSelect}
-      className={`relative ${motionClasses} ${layoutModifierClasses} ${
-        isSelected ? 'ring-2 ring-[var(--tess-cobalt,#2547E8)]' : ''
-      }`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        ...localStyle,
+        ...(node.props?.style as React.CSSProperties ?? {}),
+      }}
+      className={`relative ${motionClasses} ${layoutModifierClasses} ${selectionClasses}`}
       {...node.props}
     >
       {content}

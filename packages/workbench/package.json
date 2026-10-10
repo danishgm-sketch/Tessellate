@@ -17,6 +17,8 @@
     "react-dom": "^19.0.0"
   },
   "dependencies": {
+    "@tessellate/catalog": "workspace:*",
+    "@tessellate/compatibility": "workspace:*",
     "@tessellate/composer": "workspace:*",
     "@tessellate/dna": "workspace:*",
     "@tessellate/renderer": "workspace:*",

@@ -261,22 +261,22 @@ A page using resources from at least four source families must look visually coh
 
 Goal: edit structured projects without source-code manipulation.
 
-- [ ] Build full desktop Workbench shell.
-- [ ] Implement left Brief tab.
-- [ ] Implement Pages tree.
-- [ ] Implement Layers tree.
-- [ ] Implement Library tab.
-- [ ] Implement central canvas zoom/pan/fit.
-- [ ] Implement node hover/selection.
-- [ ] Implement right contextual inspector.
-- [ ] Implement Feel Mixer.
-- [ ] Implement Visual Ambition control.
-- [ ] Implement Structural Creativity control.
-- [ ] Implement inherited vs override indicators.
-- [ ] Implement selection breadcrumbs.
-- [ ] Implement device presets.
-- [ ] Implement Preview mode.
-- [ ] Implement mobile inspection/edit mode.
+- [x] Build full desktop Workbench shell.
+- [x] Implement left Brief tab.
+- [x] Implement Pages tree.
+- [x] Implement Layers tree.
+- [x] Implement Library tab.
+- [x] Implement central canvas zoom/pan/fit.
+- [x] Implement node hover/selection.
+- [x] Implement right contextual inspector.
+- [x] Implement Feel Mixer.
+- [x] Implement Visual Ambition control.
+- [x] Implement Structural Creativity control.
+- [x] Implement inherited vs override indicators.
+- [x] Implement selection breadcrumbs.
+- [x] Implement device presets.
+- [x] Implement Preview mode.
+- [x] Implement mobile inspection/edit mode.
 
 ### Phase 9 gate
 

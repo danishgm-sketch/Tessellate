@@ -7,7 +7,9 @@ export interface RenderContext {
   viewport?: 'desktop' | 'tablet' | 'mobile';
   reducedMotion?: boolean;
   selectedNodeId?: string;
+  hoveredNodeId?: string;
   onNodeSelect?: (nodeId: string) => void;
+  onNodeHover?: (nodeId: string | null) => void;
   customComponents?: Record<string, ComponentType<Record<string, unknown>>>;
 }
 
