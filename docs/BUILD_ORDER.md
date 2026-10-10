@@ -313,15 +313,15 @@ Automated test: lock navigation + chart, recompose dashboard, verify locked sema
 
 Goal: fully useful anonymous product.
 
-- [ ] Implement IndexedDB project storage.
-- [ ] Implement durable local checkpoints.
-- [ ] Implement recovery/migration mode.
-- [ ] Implement `.tess.json` export/import.
-- [ ] Implement source-tree generator.
-- [ ] Implement dependency collection.
-- [ ] Implement ZIP export with fflate.
-- [ ] Implement agent handoff package generation.
-- [ ] Implement pre-export validation/warnings.
+- [x] Implement IndexedDB project storage.
+- [x] Implement durable local checkpoints.
+- [x] Implement recovery/migration mode.
+- [x] Implement `.tess.json` export/import.
+- [x] Implement source-tree generator.
+- [x] Implement dependency collection.
+- [x] Implement ZIP export with fflate.
+- [x] Implement agent handoff package generation.
+- [x] Implement pre-export validation/warnings.
 
 ### Phase 11 gate
 

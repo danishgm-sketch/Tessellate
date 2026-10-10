@@ -244,6 +244,12 @@ importers:
 
   packages/exporter:
     dependencies:
+      '@tessellate/dna':
+        specifier: workspace:*
+        version: link:../dna
+      '@tessellate/renderer':
+        specifier: workspace:*
+        version: link:../renderer
       '@tessellate/schemas':
         specifier: workspace:*
         version: link:../schemas

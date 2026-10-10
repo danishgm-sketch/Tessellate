@@ -13,6 +13,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@tessellate/dna": "workspace:*",
+    "@tessellate/renderer": "workspace:*",
     "@tessellate/schemas": "workspace:*",
     "fflate": "^0.8.2"
   },

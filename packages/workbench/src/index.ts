@@ -27,6 +27,10 @@ export * from './history/checkpoints.js';
 export * from './compare/compare-engine.js';
 export * from './blend/blend-engine.js';
 
+// Phase 11: Local Persistence & Recovery
+export * from './persistence/storage.js';
+export * from './persistence/recovery.js';
+
 // Components
 export { WorkbenchShell } from './components/WorkbenchShell.js';
 export { TopToolbar } from './components/TopToolbar.js';
