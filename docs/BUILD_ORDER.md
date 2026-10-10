@@ -159,20 +159,20 @@ Goal: excellent browsing without paid search infrastructure.
 
 Goal: versioned, testable visual/personality language.
 
-- [ ] Implement canonical 0–100 Design DNA dimensions.
-- [ ] Implement project/page/section/component/element inheritance.
-- [ ] Implement override/reset logic.
-- [ ] Implement 30 Design DNA presets.
-- [ ] Implement adjective mapping dataset.
-- [ ] Implement compound descriptor rules.
-- [ ] Implement Visual Ambition five-stop mapping.
-- [ ] Implement Structural Creativity five-stop mapping.
-- [ ] Implement 20 palette presets.
-- [ ] Implement 16 typography pairings.
-- [ ] Implement 24 motion personalities.
-- [ ] Implement 6 responsive strategy presets.
-- [ ] Implement 5 accessibility strategy presets.
-- [ ] Build Design DNA Lab.
+- [x] Implement canonical 0–100 Design DNA dimensions.
+- [x] Implement project/page/section/component/element inheritance.
+- [x] Implement override/reset logic.
+- [x] Implement 30 Design DNA presets.
+- [x] Implement adjective mapping dataset.
+- [x] Implement compound descriptor rules.
+- [x] Implement Visual Ambition five-stop mapping.
+- [x] Implement Structural Creativity five-stop mapping.
+- [x] Implement 20 palette presets.
+- [x] Implement 16 typography pairings.
+- [x] Implement 24 motion personalities.
+- [x] Implement 6 responsive strategy presets.
+- [x] Implement 5 accessibility strategy presets.
+- [x] Build Design DNA Lab.
 
 ### Phase 5 gate
 

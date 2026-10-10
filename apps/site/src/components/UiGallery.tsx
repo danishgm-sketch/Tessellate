@@ -30,6 +30,20 @@ export function UiGallery() {
         <p className="mt-2 text-sm text-[#62666F] dark:text-[#A8AFBA]">
           Tessellate Design System gallery demonstrating light and dark shell tokens, primitives and focus handling.
         </p>
+        <div className="mt-3 flex gap-2">
+          <a
+            href="/dev/ui"
+            className="rounded bg-[#2547E8] px-2.5 py-1 text-xs font-semibold text-white dark:bg-[#6782FF] dark:text-[#0B0D10]"
+          >
+            UI Primitives (/dev/ui)
+          </a>
+          <a
+            href="/dev/dna"
+            className="rounded border border-[#D9D6CF] bg-white px-2.5 py-1 text-xs font-semibold text-[#111217] hover:bg-[#FAF9F6] dark:border-[#272C34] dark:bg-[#171B21] dark:text-[#F5F7FA]"
+          >
+            Design DNA Lab (/dev/dna)
+          </a>
+        </div>
       </div>
 
       {/* Mark & Branding */}
