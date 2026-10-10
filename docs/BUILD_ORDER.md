@@ -44,22 +44,22 @@ The homepage may be minimal scaffold, but all three apps and package graph compi
 
 Goal: no feature code before the product language is typed.
 
-- [ ] Implement ID/version helpers.
-- [ ] Implement `DesignDNA` schema.
-- [ ] Implement `PartialDesignDNA` schema.
-- [ ] Implement `ResourceManifest` schema.
-- [ ] Implement provenance/license/dependency/resource-file schemas.
-- [ ] Implement accessibility/performance/responsive schemas.
-- [ ] Implement `ProductModel` schema.
-- [ ] Implement `ScreenGraph` schema.
-- [ ] Implement `ProjectManifest` schema.
-- [ ] Implement project-node schema.
-- [ ] Implement lock schemas.
-- [ ] Implement discriminated mutation schemas for every operation type.
-- [ ] Implement audit-result schema.
-- [ ] Export JSON Schema where feasible for ResourceManifest and ProjectManifest.
-- [ ] Add schema fixtures for valid/invalid examples.
-- [ ] Add first migration framework and `schemaVersion` conventions.
+- [x] Implement ID/version helpers.
+- [x] Implement `DesignDNA` schema.
+- [x] Implement `PartialDesignDNA` schema.
+- [x] Implement `ResourceManifest` schema.
+- [x] Implement provenance/license/dependency/resource-file schemas.
+- [x] Implement accessibility/performance/responsive schemas.
+- [x] Implement `ProductModel` schema.
+- [x] Implement `ScreenGraph` schema.
+- [x] Implement `ProjectManifest` schema.
+- [x] Implement project-node schema.
+- [x] Implement lock schemas.
+- [x] Implement discriminated mutation schemas for every operation type.
+- [x] Implement audit-result schema.
+- [x] Export JSON Schema where feasible for ResourceManifest and ProjectManifest.
+- [x] Add schema fixtures for valid/invalid examples.
+- [x] Add first migration framework and `schemaVersion` conventions.
 
 ### Phase 1 gate
 
