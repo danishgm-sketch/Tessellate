@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip",
+  "type": "registry:ui",
+  "title": "Tooltip",
+  "description": "Micro-interaction popup providing contextual hints on hover or keyboard focus.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type TooltipVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface TooltipProps {\n  variant?: TooltipVariant;\n  content: string;\n  children: React.ReactNode;\n}\n\nexport function Tooltip({ variant = 'quiet', content, children }: TooltipProps) {\n  const [visible, setVisible] = useState(false);\n\n  let bubble = 'bg-neutral-900 text-white shadow-md';\n  if (variant === 'expressive') bubble = 'bg-[#1E232E] text-white border border-[#2547E8] shadow-lg';\n  if (variant === 'nocturne') bubble = 'bg-white text-neutral-950 font-semibold shadow-lg';\n\n  return (\n    <div\n      className=\"relative inline-flex\"\n      onMouseEnter={() => setVisible(true)}\n      onMouseLeave={() => setVisible(false)}\n      onFocus={() => setVisible(true)}\n      onBlur={() => setVisible(false)}\n    >\n      {children}\n      {visible && (\n        <div className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-30 whitespace-nowrap rounded px-2 py-1 text-[11px] pointer-events-none ${bubble}`}>\n          {content}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { Tooltip } from './index.js';\n\nexport function TooltipPreview() {\n  return (\n    <div className=\"p-8 flex justify-center bg-[#FAF9F6]\">\n      <Tooltip variant=\"expressive\" content=\"Export as React project (⌘E)\">\n        <button className=\"px-3 py-1.5 border rounded-lg text-sm bg-white shadow-xs\">Export</button>\n      </Tooltip>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "feedback"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_tooltip",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

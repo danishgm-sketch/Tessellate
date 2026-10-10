@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-input",
+  "type": "registry:ui",
+  "title": "Number Input",
+  "description": "Stepper input control with increment/decrement buttons, min/max bounds, and unit suffix.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type NumberInputVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface NumberInputProps {\n  variant?: NumberInputVariant;\n  label?: string;\n  value: number;\n  min?: number;\n  max?: number;\n  step?: number;\n  unit?: string;\n  onChange: (val: number) => void;\n}\n\nexport function NumberInput({\n  variant = 'quiet',\n  label,\n  value,\n  min = 0,\n  max = 100,\n  step = 1,\n  unit,\n  onChange,\n}: NumberInputProps) {\n  let theme = 'border-neutral-300 bg-white text-neutral-900';\n  if (variant === 'expressive') {\n    theme = 'border-[#D9D6CF] bg-white text-neutral-900 shadow-2xs';\n  } else if (variant === 'nocturne') {\n    theme = 'border-[#2E3440] bg-[#11141B] text-white';\n  }\n\n  return (\n    <div className=\"space-y-1.5\">\n      {label && <label className=\"block text-xs font-semibold text-neutral-700 dark:text-neutral-300\">{label}</label>}\n      <div className={`inline-flex items-center rounded-lg border overflow-hidden text-sm ${theme}`}>\n        <button\n          type=\"button\"\n          onClick={() => onChange(Math.max(min, value - step))}\n          disabled={value <= min}\n          className=\"px-3 py-1.5 hover:bg-neutral-100 dark:hover:bg-neutral-800 disabled:opacity-30 border-r border-inherit\"\n        >\n          −\n        </button>\n        <span className=\"px-4 py-1.5 font-mono text-center min-w-12\">\n          {value}{unit ? ` ${unit}` : ''}\n        </span>\n        <button\n          type=\"button\"\n          onClick={() => onChange(Math.min(max, value + step))}\n          disabled={value >= max}\n          className=\"px-3 py-1.5 hover:bg-neutral-100 dark:hover:bg-neutral-800 disabled:opacity-30 border-l border-inherit\"\n        >\n          +\n        </button>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { NumberInput } from './index.js';\n\nexport function NumberInputPreview() {\n  const [val, setVal] = useState(5);\n  return (\n    <div className=\"p-8 flex justify-center bg-[#FAF9F6]\">\n      <NumberInput variant=\"expressive\" label=\"Instances\" value={val} onChange={setVal} unit=\"nodes\" />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_number_input",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

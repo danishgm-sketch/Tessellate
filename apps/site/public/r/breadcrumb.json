@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb",
+  "type": "registry:ui",
+  "title": "Breadcrumb",
+  "description": "Hierarchical navigation trail path with customizable separators and accessible current page.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type BreadcrumbVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface BreadcrumbItem {\n  label: string;\n  href?: string;\n  current?: boolean;\n}\n\nexport interface BreadcrumbProps {\n  variant?: BreadcrumbVariant;\n  items: BreadcrumbItem[];\n}\n\nexport function Breadcrumb({ variant = 'quiet', items }: BreadcrumbProps) {\n  let activeColor = 'text-neutral-900 dark:text-neutral-100 font-semibold';\n  if (variant === 'expressive') activeColor = 'text-[#2547E8] font-bold';\n  if (variant === 'nocturne') activeColor = 'text-white font-semibold';\n\n  return (\n    <nav aria-label=\"Breadcrumb\">\n      <ol className=\"flex items-center gap-1.5 text-xs\">\n        {items.map((it, idx) => {\n          const isLast = idx === items.length - 1;\n          return (\n            <li key={idx} className=\"flex items-center gap-1.5\">\n              {it.href && !isLast ? (\n                <a href={it.href} className=\"text-neutral-500 hover:text-neutral-900 transition-colors\">\n                  {it.label}\n                </a>\n              ) : (\n                <span className={activeColor} aria-current={isLast ? 'page' : undefined}>\n                  {it.label}\n                </span>\n              )}\n              {!isLast && <span className=\"opacity-40 select-none\">/</span>}\n            </li>\n          );\n        })}\n      </ol>\n    </nav>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { Breadcrumb } from './index.js';\n\nexport function BreadcrumbPreview() {\n  return (\n    <div className=\"p-8 flex justify-center bg-[#FAF9F6]\">\n      <Breadcrumb\n        variant=\"expressive\"\n        items={[\n          { label: 'Workspaces', href: '#' },\n          { label: 'Telemetry Hub', href: '#' },\n          { label: 'Analytics Screen', current: true },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_breadcrumb",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

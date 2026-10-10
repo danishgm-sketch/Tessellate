@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "context-menu",
+  "type": "registry:ui",
+  "title": "Context Menu",
+  "description": "Right-click action palette anchored directly to the user pointer coordinates.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type ContextMenuVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ContextMenuProps {\n  variant?: ContextMenuVariant;\n  children: React.ReactNode;\n}\n\nexport function ContextMenu({ variant = 'quiet', children }: ContextMenuProps) {\n  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);\n\n  const handleContextMenu = (e: React.MouseEvent) => {\n    e.preventDefault();\n    setPos({ x: e.clientX, y: e.clientY });\n  };\n\n  let theme = 'bg-white border-neutral-200 text-neutral-900 shadow-xl';\n  if (variant === 'expressive') theme = 'bg-white border-[#D9D6CF] text-neutral-900 shadow-2xl';\n  if (variant === 'nocturne') theme = 'bg-[#11141B] border-[#2E3440] text-white shadow-2xl';\n\n  return (\n    <div onContextMenu={handleContextMenu} className=\"relative\">\n      {children}\n      {pos && (\n        <>\n          <div className=\"fixed inset-0 z-40\" onClick={() => setPos(null)} />\n          <div\n            style={{ top: pos.y, left: pos.x }}\n            className={`fixed z-50 min-w-44 rounded-lg border p-1 text-xs ${theme}`}\n          >\n            <button type=\"button\" onClick={() => setPos(null)} className=\"w-full text-left px-2.5 py-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800\">\n              Cut\n            </button>\n            <button type=\"button\" onClick={() => setPos(null)} className=\"w-full text-left px-2.5 py-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800\">\n              Copy\n            </button>\n            <button type=\"button\" onClick={() => setPos(null)} className=\"w-full text-left px-2.5 py-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800\">\n              Lock Layer\n            </button>\n          </div>\n        </>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { ContextMenu } from './index.js';\n\nexport function ContextMenuPreview() {\n  return (\n    <div className=\"p-8 flex justify-center bg-[#FAF9F6]\">\n      <ContextMenu variant=\"expressive\">\n        <div className=\"p-12 border-2 border-dashed border-neutral-300 rounded-xl text-center text-xs text-neutral-500\">\n          Right-click inside this zone to inspect context actions\n        </div>\n      </ContextMenu>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "overlays"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_context_menu",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

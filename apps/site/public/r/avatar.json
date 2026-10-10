@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "type": "registry:ui",
+  "title": "Avatar",
+  "description": "Circular user representation displaying profile photography with monogram initial fallback and presence dot.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type AvatarVariant = 'quiet' | 'expressive' | 'nocturne';\nexport type AvatarSize = 'sm' | 'md' | 'lg';\n\nexport interface AvatarProps {\n  variant?: AvatarVariant;\n  size?: AvatarSize;\n  src?: string;\n  alt?: string;\n  initials?: string;\n  status?: 'online' | 'offline' | 'busy';\n}\n\nexport function Avatar({\n  variant = 'quiet',\n  size = 'md',\n  src,\n  alt = 'User avatar',\n  initials = 'TL',\n  status,\n}: AvatarProps) {\n  const sizeClasses = {\n    sm: 'h-7 w-7 text-[10px]',\n    md: 'h-9 w-9 text-xs',\n    lg: 'h-12 w-12 text-sm',\n  }[size];\n\n  let theme = 'bg-neutral-200 text-neutral-800 border-neutral-300';\n  if (variant === 'expressive') theme = 'bg-[#E7EBFF] text-[#2547E8] font-bold border-[#2547E8]/20';\n  if (variant === 'nocturne') theme = 'bg-[#171A21] text-neutral-200 border-[#2E3440] font-bold';\n\n  return (\n    <div className=\"relative inline-block\">\n      <div className={`flex items-center justify-center rounded-full border overflow-hidden font-medium select-none ${sizeClasses} ${theme}`}>\n        {src ? (\n          <img src={src} alt={alt} className=\"h-full w-full object-cover\" />\n        ) : (\n          <span>{initials}</span>\n        )}\n      </div>\n      {status && (\n        <span\n          className={`absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full ring-2 ring-white dark:ring-neutral-950 ${\n            status === 'online' ? 'bg-emerald-500' : status === 'busy' ? 'bg-rose-500' : 'bg-neutral-400'\n          }`}\n        />\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { Avatar } from './index.js';\n\nexport function AvatarPreview() {\n  return (\n    <div className=\"p-8 flex gap-4 items-center justify-center bg-[#FAF9F6]\">\n      <Avatar variant=\"quiet\" initials=\"AL\" status=\"online\" size=\"sm\" />\n      <Avatar variant=\"expressive\" initials=\"TL\" status=\"online\" size=\"md\" />\n      <Avatar variant=\"nocturne\" initials=\"NC\" size=\"lg\" status=\"busy\" />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "display"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_avatar",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

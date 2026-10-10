@@ -478,7 +478,7 @@ Goal: reach launch catalogue only after tooling is stable.
 
 Produce/curate in this order:
 
-- [ ] 44 primitives & controls.
+- [x] 44 primitives & controls.
 - [ ] 36 navigation/application shells.
 - [ ] 72 marketing sections.
 - [ ] 56 application blocks.

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "split-button",
+  "type": "registry:ui",
+  "title": "Split Button",
+  "description": "Dual-action trigger combining primary immediate intent with secondary dropdown alternatives.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type SplitButtonVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SplitButtonProps {\n  variant?: SplitButtonVariant;\n  label: string;\n  onClick?: () => void;\n  onMenuClick?: () => void;\n  disabled?: boolean;\n}\n\nexport function SplitButton({\n  variant = 'quiet',\n  label,\n  onClick,\n  onMenuClick,\n  disabled = false,\n}: SplitButtonProps) {\n  let theme = 'bg-neutral-900 text-white hover:bg-neutral-800 border-neutral-900';\n  let divider = 'border-r border-neutral-700';\n  if (variant === 'expressive') {\n    theme = 'bg-[#2547E8] text-white hover:bg-[#1E3CCD] border-[#2547E8] shadow-sm';\n    divider = 'border-r border-blue-400/30';\n  } else if (variant === 'nocturne') {\n    theme = 'bg-white text-neutral-950 hover:bg-neutral-200 border-white shadow-sm';\n    divider = 'border-r border-neutral-300';\n  }\n\n  return (\n    <div className=\"inline-flex rounded-lg border overflow-hidden shadow-xs\">\n      <button\n        type=\"button\"\n        disabled={disabled}\n        onClick={onClick}\n        className={`px-3.5 py-2 text-sm font-medium transition-colors ${theme} ${divider} disabled:opacity-40`}\n      >\n        {label}\n      </button>\n      <button\n        type=\"button\"\n        disabled={disabled}\n        onClick={onMenuClick}\n        aria-label=\"More options\"\n        className={`px-2.5 py-2 text-sm font-medium transition-colors ${theme} disabled:opacity-40`}\n      >\n        <svg className=\"w-3.5 h-3.5\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\">\n          <path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth={2} d=\"M19 9l-7 7-7-7\" />\n        </svg>\n      </button>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { SplitButton } from './index.js';\n\nexport function SplitButtonPreview() {\n  return (\n    <div className=\"p-8 flex gap-4 justify-center bg-[#FAF9F6]\">\n      <SplitButton variant=\"quiet\" label=\"Publish project\" />\n      <SplitButton variant=\"expressive\" label=\"Deploy changes\" />\n      <SplitButton variant=\"nocturne\" label=\"Sync cloud\" />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs",
+    "actions"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_split_button",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

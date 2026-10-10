@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "autocomplete",
+  "type": "registry:ui",
+  "title": "Autocomplete",
+  "description": "Typeahead prediction control suggesting options inline or in a floating palette.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type AutocompleteVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AutocompleteProps {\n  variant?: AutocompleteVariant;\n  label?: string;\n  suggestions: string[];\n  value: string;\n  onChange: (val: string) => void;\n  placeholder?: string;\n}\n\nexport function Autocomplete({\n  variant = 'quiet',\n  label,\n  suggestions,\n  value,\n  onChange,\n  placeholder = 'Type something...',\n}: AutocompleteProps) {\n  const [active, setActive] = useState(false);\n  const matches = suggestions.filter((s) => s.toLowerCase().startsWith(value.toLowerCase()) && s.toLowerCase() !== value.toLowerCase());\n\n  let theme = 'border-neutral-300 bg-white text-neutral-900';\n  if (variant === 'expressive') theme = 'border-[#D9D6CF] bg-white text-neutral-900 shadow-2xs';\n  if (variant === 'nocturne') theme = 'border-[#2E3440] bg-[#11141B] text-white';\n\n  return (\n    <div className=\"relative w-full space-y-1.5\">\n      {label && <label className=\"block text-xs font-semibold text-neutral-700 dark:text-neutral-300\">{label}</label>}\n      <input\n        type=\"text\"\n        className={`w-full rounded-lg border px-3 py-2 text-sm outline-none ${theme}`}\n        value={value}\n        onChange={(e) => {\n          onChange(e.target.value);\n          setActive(true);\n        }}\n        onFocus={() => setActive(true)}\n        placeholder={placeholder}\n      />\n      {active && matches.length > 0 && (\n        <ul className=\"absolute z-20 mt-1 max-h-40 w-full overflow-auto rounded-lg border border-neutral-200 bg-white dark:bg-[#11141B] dark:border-neutral-800 p-1 shadow-md\">\n          {matches.map((item) => (\n            <li key={item}>\n              <button\n                type=\"button\"\n                className=\"w-full rounded px-2.5 py-1 text-left text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800\"\n                onClick={() => {\n                  onChange(item);\n                  setActive(false);\n                }}\n              >\n                {item}\n              </button>\n            </li>\n          ))}\n        </ul>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { Autocomplete } from './index.js';\n\nexport function AutocompletePreview() {\n  const [val, setVal] = useState('Re');\n  return (\n    <div className=\"p-8 max-w-xs mx-auto bg-[#FAF9F6]\">\n      <Autocomplete\n        variant=\"expressive\"\n        label=\"Technology\"\n        value={val}\n        onChange={setVal}\n        suggestions={['React', 'Remix', 'Redux', 'Relay', 'Rust']}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_autocomplete",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

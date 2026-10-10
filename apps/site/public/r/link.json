@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "link",
+  "type": "registry:ui",
+  "title": "Link",
+  "description": "Accessible semantic anchor navigation primitive with tactile underline animation and external indicators.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type LinkVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface LinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {\n  variant?: LinkVariant;\n  external?: boolean;\n}\n\nexport function Link({ variant = 'quiet', external = false, children, className = '', ...rest }: LinkProps) {\n  let theme = 'text-neutral-900 hover:text-neutral-600 underline underline-offset-4 decoration-neutral-300 hover:decoration-neutral-900';\n  if (variant === 'expressive') {\n    theme = 'text-[#2547E8] hover:text-[#1E3CCD] font-medium underline underline-offset-4 decoration-[#2547E8]/40 hover:decoration-[#2547E8]';\n  } else if (variant === 'nocturne') {\n    theme = 'text-white hover:text-neutral-300 underline underline-offset-4 decoration-neutral-700 hover:decoration-white';\n  }\n\n  return (\n    <a\n      className={`inline-flex items-center gap-1 transition-colors ${theme} ${className}`}\n      target={external ? '_blank' : undefined}\n      rel={external ? 'noopener noreferrer' : undefined}\n      {...rest}\n    >\n      {children}\n      {external && (\n        <svg className=\"w-3 h-3 opacity-70\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\">\n          <path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth={2} d=\"M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14\" />\n        </svg>\n      )}\n    </a>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { Link } from './index.js';\n\nexport function LinkPreview() {\n  return (\n    <div className=\"p-8 flex gap-6 justify-center bg-[#FAF9F6]\">\n      <Link variant=\"quiet\" href=\"#\">Documentation</Link>\n      <Link variant=\"expressive\" href=\"#\" external>Explore API</Link>\n      <Link variant=\"nocturne\" href=\"#\">Changelog</Link>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_link",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

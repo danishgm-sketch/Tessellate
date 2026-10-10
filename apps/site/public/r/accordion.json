@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "accordion",
+  "type": "registry:ui",
+  "title": "Accordion",
+  "description": "Collapsible vertically stacked disclosure panels with rotating chevron animations.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type AccordionVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AccordionItem {\n  id: string;\n  title: string;\n  content: React.ReactNode;\n}\n\nexport interface AccordionProps {\n  variant?: AccordionVariant;\n  items: AccordionItem[];\n  allowMultiple?: boolean;\n}\n\nexport function Accordion({ variant = 'quiet', items, allowMultiple = false }: AccordionProps) {\n  const [expanded, setExpanded] = useState<string[]>([items[0]?.id || '']);\n\n  const toggle = (id: string) => {\n    if (expanded.includes(id)) {\n      setExpanded(allowMultiple ? expanded.filter((i) => i !== id) : []);\n    } else {\n      setExpanded(allowMultiple ? [...expanded, id] : [id]);\n    }\n  };\n\n  let theme = 'border-neutral-200 divide-neutral-200';\n  if (variant === 'expressive') theme = 'border-[#D9D6CF] divide-[#D9D6CF]';\n  if (variant === 'nocturne') theme = 'border-[#2E3440] divide-[#2E3440] text-white';\n\n  return (\n    <div className={`w-full rounded-lg border divide-y overflow-hidden ${theme}`}>\n      {items.map((item) => {\n        const isOpen = expanded.includes(item.id);\n        return (\n          <div key={item.id} className=\"text-sm\">\n            <button\n              type=\"button\"\n              onClick={() => toggle(item.id)}\n              className=\"flex w-full items-center justify-between p-4 text-left font-medium hover:bg-neutral-50 dark:hover:bg-neutral-800/40\"\n            >\n              <span>{item.title}</span>\n              <span className={`transition-transform duration-200 text-xs ${isOpen ? 'rotate-180' : ''}`}>\n                ▼\n              </span>\n            </button>\n            {isOpen && <div className=\"p-4 pt-0 text-neutral-600 dark:text-neutral-300 text-xs leading-relaxed\">{item.content}</div>}\n          </div>\n        );\n      })}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { Accordion } from './index.js';\n\nexport function AccordionPreview() {\n  return (\n    <div className=\"p-8 max-w-md mx-auto bg-[#FAF9F6]\">\n      <Accordion\n        variant=\"expressive\"\n        items={[\n          { id: '1', title: 'What is Tessellate Design DNA?', content: 'A 10-dimensional mathematical vector capturing visual density, contrast, and motion.' },\n          { id: '2', title: 'Can I export clean React code?', content: 'Yes, full standalone Vite + React + Tailwind CSS code is produced without lock-in.' },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "layout"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_accordion",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

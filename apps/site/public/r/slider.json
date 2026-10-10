@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider",
+  "type": "registry:ui",
+  "title": "Slider",
+  "description": "Smooth continuous value slider with track, fill, and precision drag thumb.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type SliderVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SliderProps {\n  variant?: SliderVariant;\n  label?: string;\n  value: number;\n  min?: number;\n  max?: number;\n  step?: number;\n  onChange: (val: number) => void;\n}\n\nexport function Slider({\n  variant = 'quiet',\n  label,\n  value,\n  min = 0,\n  max = 100,\n  step = 1,\n  onChange,\n}: SliderProps) {\n  let accent = 'accent-neutral-900';\n  if (variant === 'expressive') accent = 'accent-[#2547E8]';\n  if (variant === 'nocturne') accent = 'accent-white';\n\n  return (\n    <div className=\"w-full space-y-2\">\n      <div className=\"flex justify-between items-center text-xs\">\n        {label && <span className=\"font-semibold text-neutral-700 dark:text-neutral-300\">{label}</span>}\n        <span className=\"font-mono text-neutral-500\">{value}</span>\n      </div>\n      <div className=\"relative flex items-center\">\n        <input\n          type=\"range\"\n          min={min}\n          max={max}\n          step={step}\n          value={value}\n          onChange={(e) => onChange(Number(e.target.value))}\n          className={`w-full h-1.5 bg-neutral-200 dark:bg-neutral-700 rounded-lg appearance-none cursor-pointer ${accent}`}\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { Slider } from './index.js';\n\nexport function SliderPreview() {\n  const [val, setVal] = useState(65);\n  return (\n    <div className=\"p-8 max-w-sm mx-auto bg-[#FAF9F6]\">\n      <Slider variant=\"expressive\" label=\"Visual Ambition (DNA)\" value={val} onChange={setVal} />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_slider",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

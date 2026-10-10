@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "range-slider",
+  "type": "registry:ui",
+  "title": "Range Slider",
+  "description": "Dual-thumb interval selector for bounding min/max numerical thresholds simultaneously.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type RangeSliderVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface RangeSliderProps {\n  variant?: RangeSliderVariant;\n  label?: string;\n  min?: number;\n  max?: number;\n  value: [number, number];\n  onChange: (val: [number, number]) => void;\n}\n\nexport function RangeSlider({\n  variant = 'quiet',\n  label,\n  min = 0,\n  max = 100,\n  value,\n  onChange,\n}: RangeSliderProps) {\n  const [low, high] = value;\n  let accent = 'accent-neutral-900';\n  if (variant === 'expressive') accent = 'accent-[#2547E8]';\n  if (variant === 'nocturne') accent = 'accent-white';\n\n  return (\n    <div className=\"w-full space-y-2\">\n      <div className=\"flex justify-between items-center text-xs\">\n        {label && <span className=\"font-semibold text-neutral-700 dark:text-neutral-300\">{label}</span>}\n        <span className=\"font-mono text-neutral-500\">{low} – {high}</span>\n      </div>\n      <div className=\"grid grid-cols-2 gap-4\">\n        <input\n          type=\"range\"\n          min={min}\n          max={high}\n          value={low}\n          onChange={(e) => onChange([Number(e.target.value), high])}\n          className={`w-full h-1.5 bg-neutral-200 dark:bg-neutral-700 rounded-lg appearance-none cursor-pointer ${accent}`}\n        />\n        <input\n          type=\"range\"\n          min={low}\n          max={max}\n          value={high}\n          onChange={(e) => onChange([low, Number(e.target.value)])}\n          className={`w-full h-1.5 bg-neutral-200 dark:bg-neutral-700 rounded-lg appearance-none cursor-pointer ${accent}`}\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { RangeSlider } from './index.js';\n\nexport function RangeSliderPreview() {\n  const [bounds, setBounds] = useState<[number, number]>([20, 80]);\n  return (\n    <div className=\"p-8 max-w-sm mx-auto bg-[#FAF9F6]\">\n      <RangeSlider variant=\"expressive\" label=\"Price Filter ($)\" value={bounds} onChange={setBounds} />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_range_slider",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

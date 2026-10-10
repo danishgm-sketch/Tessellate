@@ -77,14 +77,385 @@ Tools provided:
 - `get_design_dna`: Inspect Design DNA presets and vectors.
 - `list_design_directions`: Return visual reference directions (Editorial Precision, Kinetic Monolith, Atmospheric Depth).
 
-## Resources in Catalogue (1)
+## Resources in Catalogue (44)
 
+- [Accordion](https://tessellate.design/r/accordion): Collapsible vertically stacked disclosure panels with rotating chevron animations. (primitives, layout)
+- [Alert Dialog](https://tessellate.design/r/alert-dialog): Destructive confirmation modal requiring explicit acknowledgment or cancellation before proceeding. (primitives, overlays, feedback)
+- [Autocomplete](https://tessellate.design/r/autocomplete): Typeahead prediction control suggesting options inline or in a floating palette. (primitives, inputs)
+- [Avatar](https://tessellate.design/r/avatar): Circular user representation displaying profile photography with monogram initial fallback and presence dot. (primitives, display)
+- [Avatar Group](https://tessellate.design/r/avatar-group): Overlapping clustered avatars with ring separation and excess counter pill (+N). (primitives, display)
+- [Badge](https://tessellate.design/r/badge): Compact pill indicator for counts, status dots, and metadata taxonomy tags. (primitives, display)
+- [Bottom Sheet](https://tessellate.design/r/bottom-sheet): Mobile-first bottom sliding sheet with drag handle bar and responsive snap points. (primitives, overlays)
+- [Breadcrumb](https://tessellate.design/r/breadcrumb): Hierarchical navigation trail path with customizable separators and accessible current page. (primitives, navigation)
 - [Button](https://tessellate.design/r/button): Tactile, accessible multi-intent button primitive with Quiet, Expressive, and Nocturne curated configurations. (primitives, inputs, actions)
+- [Button Group](https://tessellate.design/r/button-group): Connected cluster of action buttons with cohesive outer border and seamless seams. (primitives, inputs, actions)
+- [Checkbox](https://tessellate.design/r/checkbox): Accessible boolean selection control with indeterminate state, animated checkmark, and descriptive label. (primitives, inputs)
+- [Combobox](https://tessellate.design/r/combobox): Searchable selection input combining text filtering with item picker dropdown. (primitives, inputs)
+- [Command Menu](https://tessellate.design/r/command-menu): ⌘K spotlight dialog modal with quick command search, group categories, and keyboard arrow navigation. (primitives, overlays, search)
+- [Context Menu](https://tessellate.design/r/context-menu): Right-click action palette anchored directly to the user pointer coordinates. (primitives, overlays)
+- [Dialog](https://tessellate.design/r/dialog): Accessible modal dialog window with backdrop scrim, focus trapping, and header/footer slots. (primitives, overlays)
+- [Disclosure](https://tessellate.design/r/disclosure): Single collapsible toggle container with summary header and expandable details. (primitives, layout)
+- [Drawer](https://tessellate.design/r/drawer): Slide-out side panel for contextual inspections, property editing, or complex drilldowns. (primitives, overlays, layout)
+- [Dropdown Menu](https://tessellate.design/r/dropdown-menu): Floating contextual menu with item hover states, shortcut indicators, and dividers. (primitives, overlays, navigation)
+- [Icon Button](https://tessellate.design/r/icon-button): Compact icon-only action trigger with tooltip support and accessible label semantics. (primitives, inputs, actions)
+- [Inline Alert](https://tessellate.design/r/inline-alert): In-page contextual message banner conveying informational, success, warning, or danger states. (primitives, feedback)
+- [Text Input](https://tessellate.design/r/input): Clean, accessible single-line text input with label, helper copy, and error states. (primitives, inputs)
+- [Link](https://tessellate.design/r/link): Accessible semantic anchor navigation primitive with tactile underline animation and external indicators. (primitives, navigation)
+- [Multi-select](https://tessellate.design/r/multi-select): Tag-based selection input allowing multiple choices with removable pills. (primitives, inputs)
+- [Number Input](https://tessellate.design/r/number-input): Stepper input control with increment/decrement buttons, min/max bounds, and unit suffix. (primitives, inputs)
+- [Pagination](https://tessellate.design/r/pagination): Page traversal bar with previous/next triggers, page numbering, and ellipsis jumps. (primitives, navigation)
+- [Password Input](https://tessellate.design/r/password-input): Masked credential field with toggleable eye icon and password strength meter. (primitives, inputs, auth)
+- [Popover](https://tessellate.design/r/popover): Floating rich content card anchored to a target trigger with dismissal handling. (primitives, overlays)
+- [Progress Bar](https://tessellate.design/r/progress-bar): Linear progress meter with determinate percentage progress and indeterminate pulse. (primitives, feedback)
+- [Progress Ring](https://tessellate.design/r/progress-ring): Circular radial progress meter with smooth stroke animation and central metric label. (primitives, feedback)
+- [Radio Group](https://tessellate.design/r/radio-group): Accessible single-choice selection group with circle indicators and keyboard navigation. (primitives, inputs)
+- [Range Slider](https://tessellate.design/r/range-slider): Dual-thumb interval selector for bounding min/max numerical thresholds simultaneously. (primitives, inputs)
+- [Search Input](https://tessellate.design/r/search-input): High-visibility search field with magnifying glass icon, keyboard shortcut badge (⌘K), and instant clear. (primitives, inputs, search)
+- [Segmented Control](https://tessellate.design/r/segmented-control): High-density toggle bar with active sliding pill indicator between mutual modes. (primitives, inputs)
+- [Select](https://tessellate.design/r/select): Accessible styled dropdown selector with trigger, chevron indicator, and options. (primitives, inputs)
+- [Separator](https://tessellate.design/r/separator): Clean hairline divider line supporting horizontal and vertical orientations and middle labels. (primitives, layout)
+- [Skeleton](https://tessellate.design/r/skeleton): Content placeholder animation primitive preventing layout shift during loading. (primitives, feedback)
+- [Slider](https://tessellate.design/r/slider): Smooth continuous value slider with track, fill, and precision drag thumb. (primitives, inputs)
+- [Split Button](https://tessellate.design/r/split-button): Dual-action trigger combining primary immediate intent with secondary dropdown alternatives. (primitives, inputs, actions)
+- [Switch](https://tessellate.design/r/switch): Accessible sliding toggle switch for boolean preferences and instant settings. (primitives, inputs)
+- [Tabs](https://tessellate.design/r/tabs): Accessible tabbed navigation system with active underlined or pill indicators and panels. (primitives, navigation)
+- [Tag Chip](https://tessellate.design/r/tag-chip): Clickable and removable categorical chip token for multi-criteria filters. (primitives, inputs)
+- [Textarea](https://tessellate.design/r/textarea): Multi-line text input primitive with character counter, accessible label, and auto-expand support. (primitives, inputs)
+- [Toast](https://tessellate.design/r/toast): Ephemeral floating notification banner with auto-dismiss timers and action hooks. (primitives, feedback)
+- [Tooltip](https://tessellate.design/r/tooltip): Micro-interaction popup providing contextual hints on hover or keyboard focus. (primitives, feedback)
 
 
 ---
 
 ## Complete Resource Reference
+
+### Accordion (`accordion`)
+- **Type**: primitive
+- **Categories**: primitives, layout
+- **Description**: Collapsible vertically stacked disclosure panels with rotating chevron animations.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/accordion.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Alert Dialog (`alert-dialog`)
+- **Type**: primitive
+- **Categories**: primitives, overlays, feedback
+- **Description**: Destructive confirmation modal requiring explicit acknowledgment or cancellation before proceeding.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/alert-dialog.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Autocomplete (`autocomplete`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: Typeahead prediction control suggesting options inline or in a floating palette.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/autocomplete.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Avatar (`avatar`)
+- **Type**: primitive
+- **Categories**: primitives, display
+- **Description**: Circular user representation displaying profile photography with monogram initial fallback and presence dot.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/avatar.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Avatar Group (`avatar-group`)
+- **Type**: primitive
+- **Categories**: primitives, display
+- **Description**: Overlapping clustered avatars with ring separation and excess counter pill (+N).
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/avatar-group.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Badge (`badge`)
+- **Type**: primitive
+- **Categories**: primitives, display
+- **Description**: Compact pill indicator for counts, status dots, and metadata taxonomy tags.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/badge.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Bottom Sheet (`bottom-sheet`)
+- **Type**: primitive
+- **Categories**: primitives, overlays
+- **Description**: Mobile-first bottom sliding sheet with drag handle bar and responsive snap points.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/bottom-sheet.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Breadcrumb (`breadcrumb`)
+- **Type**: primitive
+- **Categories**: primitives, navigation
+- **Description**: Hierarchical navigation trail path with customizable separators and accessible current page.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/breadcrumb.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
 
 ### Button (`button`)
 - **Type**: primitive
@@ -94,6 +465,1441 @@ Tools provided:
 - **Dependencies**: none
 - **Dev Dependencies**: none
 - **Shadcn URL**: https://tessellate.design/r/button.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Button Group (`button-group`)
+- **Type**: primitive
+- **Categories**: primitives, inputs, actions
+- **Description**: Connected cluster of action buttons with cohesive outer border and seamless seams.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/button-group.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Checkbox (`checkbox`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: Accessible boolean selection control with indeterminate state, animated checkmark, and descriptive label.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/checkbox.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Combobox (`combobox`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: Searchable selection input combining text filtering with item picker dropdown.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/combobox.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Command Menu (`command-menu`)
+- **Type**: primitive
+- **Categories**: primitives, overlays, search
+- **Description**: ⌘K spotlight dialog modal with quick command search, group categories, and keyboard arrow navigation.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/command-menu.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Context Menu (`context-menu`)
+- **Type**: primitive
+- **Categories**: primitives, overlays
+- **Description**: Right-click action palette anchored directly to the user pointer coordinates.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/context-menu.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Dialog (`dialog`)
+- **Type**: primitive
+- **Categories**: primitives, overlays
+- **Description**: Accessible modal dialog window with backdrop scrim, focus trapping, and header/footer slots.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/dialog.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Disclosure (`disclosure`)
+- **Type**: primitive
+- **Categories**: primitives, layout
+- **Description**: Single collapsible toggle container with summary header and expandable details.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/disclosure.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Drawer (`drawer`)
+- **Type**: primitive
+- **Categories**: primitives, overlays, layout
+- **Description**: Slide-out side panel for contextual inspections, property editing, or complex drilldowns.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/drawer.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Dropdown Menu (`dropdown-menu`)
+- **Type**: primitive
+- **Categories**: primitives, overlays, navigation
+- **Description**: Floating contextual menu with item hover states, shortcut indicators, and dividers.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/dropdown-menu.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Icon Button (`icon-button`)
+- **Type**: primitive
+- **Categories**: primitives, inputs, actions
+- **Description**: Compact icon-only action trigger with tooltip support and accessible label semantics.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/icon-button.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Inline Alert (`inline-alert`)
+- **Type**: primitive
+- **Categories**: primitives, feedback
+- **Description**: In-page contextual message banner conveying informational, success, warning, or danger states.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/inline-alert.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Text Input (`input`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: Clean, accessible single-line text input with label, helper copy, and error states.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/input.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Link (`link`)
+- **Type**: primitive
+- **Categories**: primitives, navigation
+- **Description**: Accessible semantic anchor navigation primitive with tactile underline animation and external indicators.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/link.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Multi-select (`multi-select`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: Tag-based selection input allowing multiple choices with removable pills.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/multi-select.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Number Input (`number-input`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: Stepper input control with increment/decrement buttons, min/max bounds, and unit suffix.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/number-input.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Pagination (`pagination`)
+- **Type**: primitive
+- **Categories**: primitives, navigation
+- **Description**: Page traversal bar with previous/next triggers, page numbering, and ellipsis jumps.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/pagination.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Password Input (`password-input`)
+- **Type**: primitive
+- **Categories**: primitives, inputs, auth
+- **Description**: Masked credential field with toggleable eye icon and password strength meter.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/password-input.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Popover (`popover`)
+- **Type**: primitive
+- **Categories**: primitives, overlays
+- **Description**: Floating rich content card anchored to a target trigger with dismissal handling.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/popover.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Progress Bar (`progress-bar`)
+- **Type**: primitive
+- **Categories**: primitives, feedback
+- **Description**: Linear progress meter with determinate percentage progress and indeterminate pulse.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/progress-bar.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Progress Ring (`progress-ring`)
+- **Type**: primitive
+- **Categories**: primitives, feedback
+- **Description**: Circular radial progress meter with smooth stroke animation and central metric label.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/progress-ring.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Radio Group (`radio-group`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: Accessible single-choice selection group with circle indicators and keyboard navigation.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/radio-group.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Range Slider (`range-slider`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: Dual-thumb interval selector for bounding min/max numerical thresholds simultaneously.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/range-slider.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Search Input (`search-input`)
+- **Type**: primitive
+- **Categories**: primitives, inputs, search
+- **Description**: High-visibility search field with magnifying glass icon, keyboard shortcut badge (⌘K), and instant clear.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/search-input.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Segmented Control (`segmented-control`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: High-density toggle bar with active sliding pill indicator between mutual modes.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/segmented-control.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Select (`select`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: Accessible styled dropdown selector with trigger, chevron indicator, and options.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/select.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Separator (`separator`)
+- **Type**: primitive
+- **Categories**: primitives, layout
+- **Description**: Clean hairline divider line supporting horizontal and vertical orientations and middle labels.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/separator.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Skeleton (`skeleton`)
+- **Type**: primitive
+- **Categories**: primitives, feedback
+- **Description**: Content placeholder animation primitive preventing layout shift during loading.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/skeleton.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Slider (`slider`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: Smooth continuous value slider with track, fill, and precision drag thumb.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/slider.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Split Button (`split-button`)
+- **Type**: primitive
+- **Categories**: primitives, inputs, actions
+- **Description**: Dual-action trigger combining primary immediate intent with secondary dropdown alternatives.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/split-button.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Switch (`switch`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: Accessible sliding toggle switch for boolean preferences and instant settings.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/switch.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Tabs (`tabs`)
+- **Type**: primitive
+- **Categories**: primitives, navigation
+- **Description**: Accessible tabbed navigation system with active underlined or pill indicators and panels.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/tabs.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Tag Chip (`tag-chip`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: Clickable and removable categorical chip token for multi-criteria filters.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/tag-chip.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Textarea (`textarea`)
+- **Type**: primitive
+- **Categories**: primitives, inputs
+- **Description**: Multi-line text input primitive with character counter, accessible label, and auto-expand support.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/textarea.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Toast (`toast`)
+- **Type**: primitive
+- **Categories**: primitives, feedback
+- **Description**: Ephemeral floating notification banner with auto-dismiss timers and action hooks.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/toast.json
+- **Design DNA**:
+  - professionalism: 80
+  - playfulness: 30
+  - luxury: 40
+  - warmth: 30
+  - technicality: 70
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 50
+  - structuralCreativity: 30
+  - density: 60
+  - whitespace: 50
+  - contrast: 70
+  - colourfulness: 40
+  - curvature: 50
+  - depth: 30
+  - motion: 40
+  - motionPlayfulness: 20
+  - typographicExpression: 40
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 60
+  - interactionDensity: 70
+  - asymmetry: 10
+  - conversionIntensity: 60
+  - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Tooltip (`tooltip`)
+- **Type**: primitive
+- **Categories**: primitives, feedback
+- **Description**: Micro-interaction popup providing contextual hints on hover or keyboard focus.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/tooltip.json
 - **Design DNA**:
   - professionalism: 80
   - playfulness: 30

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "multi-select",
+  "type": "registry:ui",
+  "title": "Multi-select",
+  "description": "Tag-based selection input allowing multiple choices with removable pills.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type MultiSelectVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface MultiSelectProps {\n  variant?: MultiSelectVariant;\n  label?: string;\n  options: string[];\n  selected: string[];\n  onChange: (selected: string[]) => void;\n}\n\nexport function MultiSelect({\n  variant = 'quiet',\n  label,\n  options,\n  selected,\n  onChange,\n}: MultiSelectProps) {\n  const [open, setOpen] = useState(false);\n\n  const toggle = (item: string) => {\n    if (selected.includes(item)) {\n      onChange(selected.filter((s) => s !== item));\n    } else {\n      onChange([...selected, item]);\n    }\n  };\n\n  let theme = 'border-neutral-300 bg-white text-neutral-900';\n  let pill = 'bg-neutral-100 text-neutral-800';\n  if (variant === 'expressive') {\n    theme = 'border-[#D9D6CF] bg-white text-neutral-900 shadow-2xs';\n    pill = 'bg-[#E7EBFF] text-[#2547E8] font-medium';\n  } else if (variant === 'nocturne') {\n    theme = 'border-[#2E3440] bg-[#11141B] text-white';\n    pill = 'bg-[#1E232E] text-neutral-200 border border-neutral-700';\n  }\n\n  return (\n    <div className=\"relative w-full space-y-1.5\">\n      {label && <label className=\"block text-xs font-semibold text-neutral-700 dark:text-neutral-300\">{label}</label>}\n      <div\n        className={`flex min-h-10 flex-wrap items-center gap-1.5 rounded-lg border p-1.5 cursor-pointer ${theme}`}\n        onClick={() => setOpen(!open)}\n      >\n        {selected.length === 0 && <span className=\"text-xs text-neutral-400 px-1\">Select items...</span>}\n        {selected.map((item) => (\n          <span key={item} className={`inline-flex items-center gap-1 rounded-md px-2 py-0.5 text-xs ${pill}`}>\n            {item}\n            <button\n              type=\"button\"\n              onClick={(e) => {\n                e.stopPropagation();\n                toggle(item);\n              }}\n              className=\"hover:opacity-75\"\n            >\n              ✕\n            </button>\n          </span>\n        ))}\n      </div>\n      {open && (\n        <div className=\"absolute z-20 mt-1 max-h-48 w-full overflow-auto rounded-lg border border-neutral-200 bg-white dark:bg-[#11141B] dark:border-neutral-800 p-1 shadow-lg\">\n          {options.map((opt) => (\n            <button\n              key={opt}\n              type=\"button\"\n              className={`w-full rounded px-2.5 py-1.5 text-left text-sm flex justify-between ${\n                selected.includes(opt) ? 'font-semibold bg-neutral-50 dark:bg-neutral-800' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800'\n              }`}\n              onClick={() => toggle(opt)}\n            >\n              <span>{opt}</span>\n              {selected.includes(opt) && <span>✓</span>}\n            </button>\n          ))}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { MultiSelect } from './index.js';\n\nexport function MultiSelectPreview() {\n  const [items, setItems] = useState(['Design', 'Frontend']);\n  return (\n    <div className=\"p-8 max-w-sm mx-auto bg-[#FAF9F6]\">\n      <MultiSelect\n        variant=\"expressive\"\n        label=\"Disciplines\"\n        options={['Design', 'Frontend', 'Backend', 'DevOps', 'QA']}\n        selected={items}\n        onChange={setItems}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_multi_select",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

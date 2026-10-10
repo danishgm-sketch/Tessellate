@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "button-group",
+  "type": "registry:ui",
+  "title": "Button Group",
+  "description": "Connected cluster of action buttons with cohesive outer border and seamless seams.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ButtonGroupVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ButtonGroupProps {\n  variant?: ButtonGroupVariant;\n  children: React.ReactNode;\n  className?: string;\n}\n\nexport function ButtonGroup({ variant = 'quiet', children, className = '' }: ButtonGroupProps) {\n  let theme = 'border border-neutral-300 divide-x divide-neutral-200 bg-white';\n  if (variant === 'expressive') {\n    theme = 'border border-[#D9D6CF] divide-x divide-[#D9D6CF] bg-white shadow-xs';\n  } else if (variant === 'nocturne') {\n    theme = 'border border-[#2E3440] divide-x divide-[#2E3440] bg-[#11141B]';\n  }\n\n  return (\n    <div className={`inline-flex rounded-lg overflow-hidden ${theme} ${className}`}>\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { ButtonGroup } from './index.js';\n\nexport function ButtonGroupPreview() {\n  return (\n    <div className=\"p-8 flex flex-col gap-4 items-center bg-[#FAF9F6]\">\n      <ButtonGroup variant=\"quiet\">\n        <button className=\"px-3 py-1.5 text-xs font-medium\">Day</button>\n        <button className=\"px-3 py-1.5 text-xs font-medium\">Week</button>\n        <button className=\"px-3 py-1.5 text-xs font-medium\">Month</button>\n      </ButtonGroup>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs",
+    "actions"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_button_group",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}
