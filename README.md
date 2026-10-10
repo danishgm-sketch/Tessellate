@@ -6,7 +6,15 @@
 
 ## Read this first — autonomous-agent entrypoint
 
-This repository is intentionally designed so that an autonomous coding agent can be given **only this repository URL** and begin work without an additional prompt.
+This repository is intentionally designed so that an autonomous coding agent can enter the repository with essentially no project briefing and execute the build from repository instructions alone.
+
+Antigravity automatically discovers the root `AGENTS.md` / `GEMINI.md` workspace rules. Current Antigravity still requires a user action to spawn an agent, so after adding this repository to an Antigravity project the minimal bootstrap instruction is simply:
+
+```text
+/goal Start
+```
+
+`GEMINI.md` defines `Start` as: execute `AGENTS.md` and `docs/BUILD_ORDER.md` autonomously from the first incomplete item until a documented stopping condition applies.
 
 If you are Antigravity, Codex, Claude Code, or another autonomous engineering agent:
 
@@ -54,6 +62,8 @@ V1 is intentionally large enough to feel like a mature ecosystem:
 - agent-readable documentation and manifests.
 - ten free client-side UI laboratories.
 - GitHub sign-in for cloud state/contribution identity.
+
+The exact launch corpus is enumerated in `docs/LAUNCH_INVENTORY.md`; agents must not invent a different set merely to reach the numerical targets.
 
 ## Core mental model
 
@@ -139,18 +149,21 @@ Primary public routes:
 ## Mandatory specification index
 
 - `AGENTS.md` — autonomous-agent operating contract.
+- `GEMINI.md` — Antigravity bootstrap rule.
 - `docs/PRODUCT_SPEC.md` — product scope and behaviour.
 - `docs/DESIGN_SYSTEM.md` — exact visual system and responsive behaviour.
 - `docs/WORKBENCH_SPEC.md` — editor/workbench interaction model.
 - `docs/COMPOSITION_ENGINE.md` — ProductModel, DesignDNA, compatibility, normalisation and mutation architecture.
 - `docs/ARCHITECTURE.md` — monorepo, applications, packages, storage and infrastructure.
 - `docs/DATA_CONTRACTS.md` — canonical data models and schema requirements.
+- `docs/LAUNCH_INVENTORY.md` — exact 324 resources and complete supporting launch corpus.
 - `docs/BUILD_ORDER.md` — exact implementation order and phase gates.
 - `docs/QUALITY_SECURITY.md` — tests, performance budgets, accessibility, preview isolation and contribution gates.
 - `docs/DEPLOYMENT_COST.md` — Cloudflare deployment and £20/month ceiling.
-- `design/REFERENCE_DIRECTIONS.md` — visual north stars and image-generation briefs.
+- `docs/DECISIONS.md` — locked decision register.
+- `design/REFERENCE_DIRECTIONS.md` — visual north stars and GPT image-generation briefs.
 - `design/reference-home.svg` — homepage composition reference.
-- `design/reference-workbench.svg` — workbench composition reference.
+- `design/reference-workbench.svg` — Workbench composition reference.
 
 ## Definition of success
 
@@ -159,7 +172,7 @@ A first-time visitor must experience this sequence:
 1. **10 seconds:** “This is a large, serious free UI library.”
 2. **30 seconds:** “It understands which interface pieces belong together.”
 3. **1 minute:** “It can design an entire application, not merely recommend components.”
-4. **3 minutes:** “I can independently control how professional, playful, cinematic, dense, minimal or radical every part becomes.”
+4. **3 minutes:** “I can independently control how professional, playful, cinematic, dense, minimal or radical every part is.”
 5. **5 minutes:** “I can restructure the product without losing sections I like.”
 6. **10 minutes:** “I can export a complete structured project and hand it directly to a coding agent.”
 
