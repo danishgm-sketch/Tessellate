@@ -4,9 +4,9 @@ This repository is self-directing.
 
 Read `AGENTS.md` first and obey it as the authoritative autonomous build contract.
 
-Then read the complete mandatory document sequence specified by `AGENTS.md`.
+Then read the complete mandatory document sequence specified by `AGENTS.md`, plus `docs/LAUNCH_INVENTORY.md` before any resource-volume, blueprint, preset, grammar, palette, typography or showcase production.
 
-After reading, immediately open `docs/BUILD_ORDER.md`, find the first unchecked task, and begin implementation. Continue through phase gates autonomously. Do not create a competing roadmap. Do not ask the owner to choose architecture, stack, design direction, data model, hosting strategy or other major decisions already defined by the repository.
+After reading, immediately open `docs/BUILD_ORDER.md`, find the first unchecked task, and begin implementation. Continue through phase gates autonomously. Do not create a competing roadmap. Do not ask the owner to choose architecture, stack, design direction, data model, hosting strategy, launch inventory or other major decisions already defined by the repository.
 
 If the user's initiating message is only `Start`, `Build`, `Go`, `Continue`, `/goal`, or equivalent, interpret it as:
 
