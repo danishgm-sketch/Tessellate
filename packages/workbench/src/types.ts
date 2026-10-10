@@ -3,7 +3,13 @@ import type {
   ProjectScreen,
   PartialDesignDNA,
   NodeLocks,
+  HistoryOperation,
+  ResourceManifest,
 } from '@tessellate/schemas';
+import type { Checkpoint, CheckpointTrigger } from './history/checkpoints.js';
+import type { RecomposeOptions } from './mutations/recomposition.js';
+import type { SurpriseMeOptions } from './mutations/surprise.js';
+import type { BlendConfig } from './blend/blend-engine.js';
 
 export type WorkbenchMode = 'compose' | 'structure' | 'style' | 'motion' | 'content' | 'audit';
 
@@ -56,11 +62,19 @@ export interface WorkbenchState {
   isMobileDrawerOpen: boolean;
   mobileTab: MobileTab;
 
-  // History Stack
+  // Advanced Flow Modals
+  compareManifest: ProjectManifest | null;
+  isCompareOpen: boolean;
+  isBlendOpen: boolean;
+  isReplaceDrawerOpen: boolean;
+
+  // History & Checkpoints
   history: ProjectManifest[];
   future: ProjectManifest[];
+  operations: HistoryOperation[];
+  checkpoints: Checkpoint[];
 
-  // Actions
+  // Basic Setters
   setManifest: (manifest: ProjectManifest) => void;
   setActiveScreen: (screenId: string) => void;
   selectNode: (nodeId: string | null) => void;
@@ -76,6 +90,25 @@ export interface WorkbenchState {
   toggleReducedMotion: () => void;
   setMobileDrawerOpen: (open: boolean) => void;
   setMobileTab: (tab: MobileTab) => void;
+
+  // Flow Modals
+  openCompare: (compareWith?: ProjectManifest) => void;
+  closeCompare: () => void;
+  openBlend: () => void;
+  closeBlend: () => void;
+  openReplaceDrawer: () => void;
+  closeReplaceDrawer: () => void;
+
+  // Checkpoints
+  createCheckpoint: (name?: string, trigger?: CheckpointTrigger, description?: string) => void;
+  restoreCheckpoint: (checkpoint: Checkpoint) => void;
+
+  // Semantic Mutation & Flow Actions
+  executeOperation: (op: HistoryOperation) => void;
+  recomposeScreenAroundLocks: (screenId: string, options?: RecomposeOptions) => void;
+  surpriseMe: (options?: SurpriseMeOptions) => void;
+  replaceNodeWithResource: (nodeId: string, resource: ResourceManifest, variant?: string) => void;
+  blendWith: (otherManifest: ProjectManifest, config: BlendConfig) => void;
 
   // DNA & Node Mutations
   updateProjectDNA: (dnaChanges: PartialDesignDNA) => void;

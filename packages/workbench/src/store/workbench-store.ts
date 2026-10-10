@@ -4,6 +4,8 @@ import type {
   ProjectScreen,
   PartialDesignDNA,
   NodeLocks,
+  HistoryOperation,
+  ResourceManifest,
 } from '@tessellate/schemas';
 import type {
   WorkbenchState,
@@ -19,8 +21,24 @@ import {
   findParentNode,
   updateNodeInTree,
 } from '../utils/tree-helpers.js';
+import { applyOperation } from '../history/history-manager.js';
+import {
+  createCheckpoint,
+  restoreCheckpoint,
+  type Checkpoint,
+  type CheckpointTrigger,
+} from '../history/checkpoints.js';
+import { recomposeScreenAroundLocks, type RecomposeOptions } from '../mutations/recomposition.js';
+import { surpriseMe, type SurpriseMeOptions } from '../mutations/surprise.js';
+import { createReplaceOperation } from '../mutations/replace.js';
+import { blendManifests, type BlendConfig } from '../blend/blend-engine.js';
 
 const initialSample = createSampleProject();
+const initialCheckpoint = createCheckpoint(initialSample, {
+  trigger: 'initial-generation',
+  name: 'Initial State',
+  description: 'Baseline generated project before modifications',
+});
 
 export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
   // Initial Project State
@@ -45,9 +63,17 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
   isMobileDrawerOpen: false,
   mobileTab: 'preview',
 
-  // History Stacks
+  // Advanced Flow Modals
+  compareManifest: null,
+  isCompareOpen: false,
+  isBlendOpen: false,
+  isReplaceDrawerOpen: false,
+
+  // History & Checkpoints
   history: [],
   future: [],
+  operations: [],
+  checkpoints: [initialCheckpoint],
 
   // Basic Setters
   setManifest: (manifest: ProjectManifest) => {
@@ -57,6 +83,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       selectedNodeId: null,
       history: [],
       future: [],
+      operations: [],
     });
   },
 
@@ -107,6 +134,101 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
   toggleReducedMotion: () => set((state) => ({ reducedMotion: !state.reducedMotion })),
   setMobileDrawerOpen: (open: boolean) => set({ isMobileDrawerOpen: open }),
   setMobileTab: (tab: MobileTab) => set({ mobileTab: tab }),
+
+  // Modal Flow Controls
+  openCompare: (compareWith?: ProjectManifest) => {
+    const fallback = get().checkpoints[0]?.manifest ?? null;
+    set({ isCompareOpen: true, compareManifest: compareWith ?? fallback });
+  },
+  closeCompare: () => set({ isCompareOpen: false, compareManifest: null }),
+  openBlend: () => set({ isBlendOpen: true }),
+  closeBlend: () => set({ isBlendOpen: false }),
+  openReplaceDrawer: () => set({ isReplaceDrawerOpen: true }),
+  closeReplaceDrawer: () => set({ isReplaceDrawerOpen: false }),
+
+  // Checkpoints
+  createCheckpoint: (name?: string, trigger: CheckpointTrigger = 'manual', description?: string) => {
+    const { manifest, checkpoints } = get();
+    const chk = createCheckpoint(manifest, { name, trigger, description });
+    set({ checkpoints: [chk, ...checkpoints] });
+  },
+
+  restoreCheckpoint: (checkpoint: Checkpoint) => {
+    const { manifest, history } = get();
+    const restored = restoreCheckpoint(checkpoint);
+    set({
+      manifest: restored,
+      history: [manifest, ...history],
+      future: [],
+      selectedNodeId: null,
+    });
+  },
+
+  // Semantic Mutation & Flow Actions
+  executeOperation: (op: HistoryOperation) => {
+    const { manifest, history, operations } = get();
+    const result = applyOperation(manifest, op);
+    set({
+      history: [manifest, ...history.slice(0, 49)],
+      future: [],
+      operations: [result.executedOperation, ...operations],
+      manifest: result.nextManifest,
+    });
+  },
+
+  recomposeScreenAroundLocks: (screenId: string, options?: RecomposeOptions) => {
+    const { manifest, checkpoints } = get();
+    // 1. Auto-checkpoint prior to structural recomposition
+    const autoChk = createCheckpoint(manifest, {
+      trigger: 'pre-recompose',
+      name: `Pre-Recompose (${manifest.screens.find((s) => s.id === screenId)?.name ?? screenId})`,
+    });
+
+    // 2. Generate recomposition operation
+    const recomposeResult = recomposeScreenAroundLocks(manifest, screenId, options);
+
+    // 3. Apply operation
+    const result = applyOperation(manifest, recomposeResult.operation);
+
+    set({
+      history: [manifest, ...get().history.slice(0, 49)],
+      future: [],
+      operations: [result.executedOperation, ...get().operations],
+      checkpoints: [autoChk, ...checkpoints],
+      manifest: result.nextManifest,
+    });
+  },
+
+  surpriseMe: (options?: SurpriseMeOptions) => {
+    const { manifest } = get();
+    const result = surpriseMe(manifest, options);
+    get().executeOperation(result.operation);
+  },
+
+  replaceNodeWithResource: (nodeId: string, resource: ResourceManifest, variant?: string) => {
+    const { manifest } = get();
+    const replaceOp = createReplaceOperation(manifest, nodeId, resource, variant);
+    get().executeOperation(replaceOp);
+    set({ isReplaceDrawerOpen: false });
+  },
+
+  blendWith: (otherManifest: ProjectManifest, config: BlendConfig) => {
+    const { manifest, checkpoints } = get();
+    const autoChk = createCheckpoint(manifest, {
+      trigger: 'pre-blend',
+      name: 'Pre-Blend Snapshot',
+    });
+
+    const blended = blendManifests(manifest, otherManifest, undefined, config);
+
+    set({
+      history: [manifest, ...get().history.slice(0, 49)],
+      future: [],
+      checkpoints: [autoChk, ...checkpoints],
+      manifest: blended,
+      isBlendOpen: false,
+    });
+  },
 
   // DNA & Mutation Actions
   updateProjectDNA: (dnaChanges: PartialDesignDNA) => {
@@ -376,6 +498,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       selectedNodeId: 'node-metric-arr',
       history: [],
       future: [],
+      operations: [],
     });
   },
 
@@ -391,7 +514,6 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       manifest: previous,
       history: restHistory,
       future: [manifest, ...future],
-      // If selectedNodeId no longer exists in target screen, reset to null
       selectedNodeId: (() => {
         const screen = previous.screens.find((s) => s.id === get().activeScreenId);
         if (!screen || !get().selectedNodeId) return null;

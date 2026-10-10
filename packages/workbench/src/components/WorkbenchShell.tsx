@@ -7,6 +7,9 @@ import { RightInspector } from './right-inspector/RightInspector.js';
 import { CommandBar } from './CommandBar.js';
 import { MobileWorkbench } from './mobile/MobileWorkbench.js';
 import { PreviewModal } from './preview/PreviewModal.js';
+import { CompareModal } from './compare/CompareModal.js';
+import { BlendModal } from './blend/BlendModal.js';
+import { ReplaceDrawer } from './replace/ReplaceDrawer.js';
 
 export function WorkbenchShell() {
   const isPreview = useWorkbenchStore((state) => state.isPreview);
@@ -17,6 +20,7 @@ export function WorkbenchShell() {
   const setZoom = useWorkbenchStore((state) => state.setZoom);
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
   const toggleNodeLock = useWorkbenchStore((state) => state.toggleNodeLock);
+  const openReplaceDrawer = useWorkbenchStore((state) => state.openReplaceDrawer);
 
   const [isMobileScreen, setIsMobileScreen] = useState(false);
 
@@ -84,11 +88,17 @@ export function WorkbenchShell() {
         e.preventDefault();
         toggleNodeLock(selectedNodeId, 'structure');
       }
+
+      // R: Replace selected node
+      if (e.key.toLowerCase() === 'r' && selectedNodeId) {
+        e.preventDefault();
+        openReplaceDrawer();
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedNodeId, selectParentNode, undo, redo, setDevicePreset, setZoom, toggleNodeLock]);
+  }, [selectedNodeId, selectParentNode, undo, redo, setDevicePreset, setZoom, toggleNodeLock, openReplaceDrawer]);
 
   // Clean full-screen preview mode
   if (isPreview) {
@@ -110,7 +120,7 @@ export function WorkbenchShell() {
       <TopToolbar />
 
       {/* Main 3-column composition canvas workspace */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex overflow-hidden relative">
         {/* Left Panel (280px) */}
         <LeftPanel />
 
@@ -119,6 +129,11 @@ export function WorkbenchShell() {
 
         {/* Right Contextual Inspector (340px) */}
         <RightInspector />
+
+        {/* Advanced Modals & Drawers */}
+        <ReplaceDrawer />
+        <CompareModal />
+        <BlendModal />
       </div>
 
       {/* 64px Command Bar */}

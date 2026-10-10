@@ -1,11 +1,31 @@
-// Workbench state, canvas and panels
+// Workbench state, canvas, history, mutations and panels
 export const WORKBENCH_VERSION = '0.1.0';
 
 export * from './types.js';
 export * from './store/workbench-store.js';
 export * from './store/sample-project.js';
-export * from './utils/tree-helpers.js';
+export {
+  findNodeById,
+  findParentNode,
+  getNodePath,
+  updateNodeInTree,
+  deleteNodeInTree,
+  addNodeToTree,
+  flattenTree,
+} from './utils/tree-helpers.js';
 export * from './utils/dna-helpers.js';
+
+// Phase 10: Locks, Mutations, History, Compare, Blend
+export * from './locks/lock-engine.js';
+export * from './mutations/executor.js';
+export * from './mutations/inverse.js';
+export * from './mutations/recomposition.js';
+export * from './mutations/surprise.js';
+export * from './mutations/replace.js';
+export * from './history/history-manager.js';
+export * from './history/checkpoints.js';
+export * from './compare/compare-engine.js';
+export * from './blend/blend-engine.js';
 
 // Components
 export { WorkbenchShell } from './components/WorkbenchShell.js';
@@ -30,3 +50,7 @@ export { ResourceTab } from './components/right-inspector/ResourceTab.js';
 export { FeelMixer } from './components/feel-mixer/FeelMixer.js';
 export { MobileWorkbench } from './components/mobile/MobileWorkbench.js';
 export { PreviewModal } from './components/preview/PreviewModal.js';
+export { CompareModal } from './components/compare/CompareModal.js';
+export { BlendModal } from './components/blend/BlendModal.js';
+export { ReplaceDrawer } from './components/replace/ReplaceDrawer.js';
+export { CheckpointsMenu } from './components/checkpoints/CheckpointsMenu.js';

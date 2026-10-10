@@ -288,20 +288,20 @@ User can open generated project, navigate pages, select semantic node and alter 
 
 Goal: safe reversible editing.
 
-- [ ] Implement mutation executor.
-- [ ] Implement precondition revision checks.
-- [ ] Implement inverse mutation generation where applicable.
-- [ ] Implement semantic operation grouping.
-- [ ] Implement undo/redo.
-- [ ] Implement node/style/content/layout/motion/media/responsive/DNA locks.
-- [ ] Implement Replace flow.
-- [ ] Implement Alternative flow.
-- [ ] Implement structural recomposition around locks.
-- [ ] Implement Surprise Me controlled divergence.
-- [ ] Implement automatic checkpoints.
-- [ ] Implement named checkpoints.
-- [ ] Implement Compare mode.
-- [ ] Implement Blend mode.
+- [x] Implement mutation executor.
+- [x] Implement precondition revision checks.
+- [x] Implement inverse mutation generation where applicable.
+- [x] Implement semantic operation grouping.
+- [x] Implement undo/redo.
+- [x] Implement node/style/content/layout/motion/media/responsive/DNA locks.
+- [x] Implement Replace flow.
+- [x] Implement Alternative flow.
+- [x] Implement structural recomposition around locks.
+- [x] Implement Surprise Me controlled divergence.
+- [x] Implement automatic checkpoints.
+- [x] Implement named checkpoints.
+- [x] Implement Compare mode.
+- [x] Implement Blend mode.
 
 ### Phase 10 gate
 

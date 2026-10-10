@@ -8,7 +8,11 @@ import {
   Download,
   Database,
   Sparkles,
+  Bookmark,
+  SplitSquareHorizontal,
+  Shuffle,
 } from 'lucide-react';
+import { CheckpointsMenu } from './checkpoints/CheckpointsMenu.js';
 
 export function TopToolbar() {
   const manifest = useWorkbenchStore((state) => state.manifest);
@@ -21,9 +25,14 @@ export function TopToolbar() {
   const future = useWorkbenchStore((state) => state.future);
   const undo = useWorkbenchStore((state) => state.undo);
   const redo = useWorkbenchStore((state) => state.redo);
+  const checkpoints = useWorkbenchStore((state) => state.checkpoints);
+  const openCompare = useWorkbenchStore((state) => state.openCompare);
+  const openBlend = useWorkbenchStore((state) => state.openBlend);
+  const surpriseMe = useWorkbenchStore((state) => state.surpriseMe);
 
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [titleValue, setTitleValue] = useState(manifest.name);
+  const [isCheckpointsOpen, setIsCheckpointsOpen] = useState(false);
 
   const modes: WorkbenchMode[] = ['structure', 'style', 'motion', 'content', 'audit'];
 
@@ -50,7 +59,7 @@ export function TopToolbar() {
   return (
     <header
       data-testid="top-toolbar"
-      className="h-14 shrink-0 px-4 border-b border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] flex items-center justify-between select-none z-30"
+      className="h-14 shrink-0 px-4 border-b border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] flex items-center justify-between select-none z-30 relative"
     >
       {/* Left Cluster: Brand, Title, Save Status */}
       <div className="flex items-center gap-3">
@@ -123,8 +132,56 @@ export function TopToolbar() {
         })}
       </div>
 
-      {/* Right Cluster: Undo/Redo, Preview, Export */}
+      {/* Right Cluster: Advanced Tools, Undo/Redo, Preview, Export */}
       <div className="flex items-center gap-2">
+        {/* Advanced Phase 10 Action Buttons */}
+        <div className="hidden lg:flex items-center gap-1">
+          <button
+            onClick={() => surpriseMe()}
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] text-xs font-medium text-[#111217] dark:text-[#F5F7FA] hover:bg-[#FAF9F6] dark:hover:bg-[#171B21] transition-colors"
+            title="Surprise Me (Controlled Divergence)"
+          >
+            <Shuffle className="h-3 w-3 text-amber-500" />
+            <span>Surprise</span>
+          </button>
+
+          <button
+            onClick={() => openBlend()}
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] text-xs font-medium text-[#111217] dark:text-[#F5F7FA] hover:bg-[#FAF9F6] dark:hover:bg-[#171B21] transition-colors"
+            title="Blend Directions"
+          >
+            <Sparkles className="h-3 w-3 text-indigo-500" />
+            <span>Blend</span>
+          </button>
+
+          <button
+            onClick={() => openCompare()}
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] text-xs font-medium text-[#111217] dark:text-[#F5F7FA] hover:bg-[#FAF9F6] dark:hover:bg-[#171B21] transition-colors"
+            title="Compare Versions"
+          >
+            <SplitSquareHorizontal className="h-3 w-3 text-blue-500" />
+            <span>Compare</span>
+          </button>
+
+          {/* Checkpoints Button */}
+          <div className="relative">
+            <button
+              onClick={() => setIsCheckpointsOpen(!isCheckpointsOpen)}
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] text-xs font-medium text-[#111217] dark:text-[#F5F7FA] hover:bg-[#FAF9F6] dark:hover:bg-[#171B21] transition-colors"
+              title="Checkpoints"
+            >
+              <Bookmark className="h-3 w-3 text-emerald-500" />
+              <span>Snapshots ({checkpoints.length})</span>
+            </button>
+            {isCheckpointsOpen && (
+              <CheckpointsMenu onClose={() => setIsCheckpointsOpen(false)} />
+            )}
+          </div>
+        </div>
+
+        <div className="h-4 w-px bg-[#D9D6CF] dark:bg-[#272C34]" />
+
+        {/* Undo / Redo */}
         <div className="flex items-center gap-1">
           <button
             onClick={undo}

@@ -293,6 +293,23 @@ export function createSampleProject(): ProjectManifest {
                     },
                   ],
                 },
+                // Chart Panel Section
+                {
+                  id: 'node-chart-overview',
+                  nodeType: 'section',
+                  semanticRole: 'data-chart',
+                  resourceRef: {
+                    id: 'res-chart-area-01',
+                    slug: 'area-chart',
+                    version: '1.0.0',
+                  },
+                  props: {
+                    title: 'Cumulative PnL Attribution vs S&P 500',
+                    timeframe: '1Y',
+                  },
+                  slots: {},
+                  children: [],
+                },
                 // Action Buttons Section
                 {
                   id: 'node-actions-section',

@@ -12,6 +12,11 @@ export function CommandBar() {
   const toggleNodeLock = useWorkbenchStore((state) => state.toggleNodeLock);
   const unlockAllNodeLocks = useWorkbenchStore((state) => state.unlockAllNodeLocks);
   const resetNodeDNA = useWorkbenchStore((state) => state.resetNodeDNA);
+  const recomposeScreenAroundLocks = useWorkbenchStore((state) => state.recomposeScreenAroundLocks);
+  const surpriseMe = useWorkbenchStore((state) => state.surpriseMe);
+  const openReplaceDrawer = useWorkbenchStore((state) => state.openReplaceDrawer);
+  const openCompare = useWorkbenchStore((state) => state.openCompare);
+  const openBlend = useWorkbenchStore((state) => state.openBlend);
 
   const [inputVal, setInputVal] = useState('');
   const [feedback, setFeedback] = useState<string | null>(null);
@@ -44,7 +49,22 @@ export function CommandBar() {
     const cmd = inputVal.toLowerCase().trim();
     if (!cmd) return;
 
-    if (cmd.includes('reduce motion') || cmd.includes('less motion')) {
+    if (cmd.includes('recompose') || cmd.includes('rethink structure') || cmd.includes('rethink')) {
+      recomposeScreenAroundLocks(activeScreenId);
+      setFeedback(`Recomposed screen around locked nodes.`);
+    } else if (cmd.includes('surprise') || cmd.includes('surprise me')) {
+      surpriseMe();
+      setFeedback(`Executed Surprise Me: controlled divergence applied.`);
+    } else if (cmd.includes('replace') && selectedNode) {
+      openReplaceDrawer();
+      setFeedback(`Opened replacement candidates drawer for ${selectedNode.semanticRole}.`);
+    } else if (cmd.includes('compare')) {
+      openCompare();
+      setFeedback(`Opened Compare mode.`);
+    } else if (cmd.includes('blend')) {
+      openBlend();
+      setFeedback(`Opened Blend mode.`);
+    } else if (cmd.includes('reduce motion') || cmd.includes('less motion')) {
       if (selectedNode) {
         updateNodeDNA(selectedNode.id, { motion: 15, motionPlayfulness: 10 });
       } else {
@@ -117,33 +137,35 @@ export function CommandBar() {
             type="text"
             placeholder={
               selectedNode
-                ? `Tell Tess what to change on ${selectedNode.semanticRole}… (e.g. reduce motion, make more professional, lock)`
-                : 'Tell Tess what to change on Project DNA… (e.g. make more playful, sharp corners)'
+                ? `Tell Tess what to change on ${selectedNode.semanticRole}… (e.g. recompose, replace, lock, reduce motion)`
+                : 'Tell Tess what to change… (e.g. recompose, surprise me, compare, blend, reduce motion)'
             }
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
-            className="w-full rounded-xl border border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#111217] px-4 py-2 text-xs placeholder:text-[#8B8F97] focus:outline-none focus:ring-1 focus:ring-[#2547E8] focus:bg-white dark:focus:bg-[#171B21]"
+            className="w-full bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] rounded-xl px-3.5 py-2 text-xs text-[#111217] dark:text-[#F5F7FA] placeholder-[#8B8F97] focus:outline-none focus:border-[#2547E8] dark:focus:border-[#6782FF] transition-colors pr-10 font-sans"
           />
           <button
             type="submit"
-            className="absolute right-2 top-2 p-1 rounded text-[#8B8F97] hover:text-[#2547E8]"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8B8F97] hover:text-[#111217] dark:hover:text-[#F5F7FA] transition-colors"
+            title="Execute command (Enter)"
           >
             <CornerDownLeft className="h-3.5 w-3.5" />
           </button>
         </div>
-
-        {feedback && (
-          <div className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 animate-fade-in shrink-0">
-            ✓ {feedback}
-          </div>
-        )}
       </form>
 
-      {/* Keyboard Shortcut Hints */}
-      <div className="hidden lg:flex items-center gap-3 text-[10px] font-mono text-[#8B8F97]">
-        <span><kbd className="bg-[#FAF9F6] dark:bg-[#171B21] px-1 py-0.5 rounded border border-[#D9D6CF] dark:border-[#272C34]">/</kbd> Command</span>
-        <span><kbd className="bg-[#FAF9F6] dark:bg-[#171B21] px-1 py-0.5 rounded border border-[#D9D6CF] dark:border-[#272C34]">Esc</kbd> Climb Selection</span>
-        <span><kbd className="bg-[#FAF9F6] dark:bg-[#171B21] px-1 py-0.5 rounded border border-[#D9D6CF] dark:border-[#272C34]">Ctrl+Z</kbd> Undo</span>
+      {/* Feedback or Keyboard Shortcuts Hint */}
+      <div className="hidden md:flex items-center gap-3 text-[11px] text-[#62666F] dark:text-[#A8AFBA] font-mono">
+        {feedback ? (
+          <span className="text-[#2547E8] dark:text-[#6782FF] font-semibold animate-fade-in">
+            {feedback}
+          </span>
+        ) : (
+          <div className="flex items-center gap-2">
+            <span>Press <kbd className="px-1.5 py-0.5 rounded bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] text-[10px]">Esc</kbd> climb parent</span>
+            <span><kbd className="px-1.5 py-0.5 rounded bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] text-[10px]">/</kbd> command</span>
+          </div>
+        )}
       </div>
     </div>
   );
