@@ -384,21 +384,21 @@ Goal: natural language without making AI foundational.
 
 Goal: world-class first impression using real product capability.
 
-- [ ] Implement header.
-- [ ] Implement hero exactly from Product/Design specs.
-- [ ] Embed real Product Composer.
-- [ ] Implement real three-direction demonstration.
-- [ ] Implement “Not a component library” section.
-- [ ] Implement catalogue mosaic using real resources.
-- [ ] Implement Essential → Experimental comparison.
-- [ ] Implement Familiar → Experimental structure comparison.
-- [ ] Implement Workbench reveal using real Workbench.
-- [ ] Implement compatibility/normalisation explanation.
-- [ ] Implement Agents section.
-- [ ] Implement free commons/creator sections.
-- [ ] Implement accessibility/performance proof.
-- [ ] Implement final composer/footer.
-- [ ] Visually compare against `design/reference-home.svg` and generated image reference if available.
+- [x] Implement header.
+- [x] Implement hero exactly from Product/Design specs.
+- [x] Embed real Product Composer.
+- [x] Implement real three-direction demonstration.
+- [x] Implement “Not a component library” section.
+- [x] Implement catalogue mosaic using real resources.
+- [x] Implement Essential → Experimental comparison.
+- [x] Implement Familiar → Experimental structure comparison.
+- [x] Implement Workbench reveal using real Workbench.
+- [x] Implement compatibility/normalisation explanation.
+- [x] Implement Agents section.
+- [x] Implement free commons/creator sections.
+- [x] Implement accessibility/performance proof.
+- [x] Implement final composer/footer.
+- [x] Visually compare against `design/reference-home.svg` and generated image reference if available.
 
 ### Phase 14 gate
 

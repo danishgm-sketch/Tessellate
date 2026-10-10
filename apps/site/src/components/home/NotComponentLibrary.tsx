@@ -1,0 +1,107 @@
+import React from 'react';
+import { Check, X } from 'lucide-react';
+
+export function NotComponentLibrary() {
+  return (
+    <section className="py-24 px-6 max-w-[1440px] mx-auto select-none border-t border-[#D9D6CF]">
+      {/* Kicker & Title */}
+      <div className="max-w-3xl mb-16 space-y-4">
+        <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#62666F]">
+          The Composition Paradigm
+        </span>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#111217] leading-[1.08]">
+          Not a component library.<br />
+          A composition system.
+        </h2>
+        <p className="text-lg text-[#62666F] font-normal leading-relaxed">
+          Traditional registries give you hundreds of disconnected buttons and tables, leaving you to manually reconcile spacing, typography, and contrast. Tessellate coordinates everything through a unified mathematical Design DNA.
+        </p>
+      </div>
+
+      {/* Comparison Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {/* Left: Traditional Component Libraries */}
+        <div className="rounded-2xl border border-[#D9D6CF] bg-[#FAF9F6] p-8 space-y-6">
+          <div className="flex items-center gap-2.5 pb-4 border-b border-[#D9D6CF]">
+            <X className="h-5 w-5 text-[#C83D48]" />
+            <h3 className="text-lg font-semibold text-[#111217]">
+              Component Library Approach
+            </h3>
+          </div>
+
+          <ul className="space-y-4 text-sm text-[#62666F]">
+            <li className="flex items-start gap-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#C83D48] mt-2 shrink-0" />
+              <span>
+                <strong>Loose Parts:</strong> Isolated primitives with no awareness of the surrounding screen or product domain.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#C83D48] mt-2 shrink-0" />
+              <span>
+                <strong>Styling Discordance:</strong> Radii clash, hover states conflict, and color chroma drifts across pages.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#C83D48] mt-2 shrink-0" />
+              <span>
+                <strong>Manual Assembly:</strong> You write boilerplate glue code to stitch components into coherent layouts.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#C83D48] mt-2 shrink-0" />
+              <span>
+                <strong>Blind AI Prompts:</strong> Code LLMs hallucinate mismatched class names and invent inconsistent CSS tokens.
+              </span>
+            </li>
+          </ul>
+
+          <div className="rounded-xl bg-white/60 border border-[#D9D6CF] p-4 font-mono text-xs text-[#8B8F97]">
+            Outcome: A fragile frankenstein interface that requires constant manual CSS refactoring.
+          </div>
+        </div>
+
+        {/* Right: Tessellate Composition Engine */}
+        <div className="rounded-2xl border border-[#2547E8]/30 bg-white p-8 space-y-6 shadow-md ring-1 ring-[#2547E8]/10">
+          <div className="flex items-center gap-2.5 pb-4 border-b border-[#D9D6CF]">
+            <Check className="h-5 w-5 text-[#2547E8]" />
+            <h3 className="text-lg font-semibold text-[#111217]">
+              Tessellate Composition Engine
+            </h3>
+          </div>
+
+          <ul className="space-y-4 text-sm text-[#111217]">
+            <li className="flex items-start gap-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#2547E8] mt-2 shrink-0" />
+              <span>
+                <strong>Deterministic ProductModel:</strong> Extracts domain archetypes, user sophistication, and core JTBD before generating screens.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#2547E8] mt-2 shrink-0" />
+              <span>
+                <strong>Unified Design DNA:</strong> All components dynamically inherit and harmonize curvature, contrast, motion, and typography.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#2547E8] mt-2 shrink-0" />
+              <span>
+                <strong>100-Point Audit Engine:</strong> Evaluates cohesion, accessibility (WCAG AA/AAA), performance, and responsive layout before export.
+              </span>
+            </li>
+            <li className="flex items-start gap-3">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#2547E8] mt-2 shrink-0" />
+              <span>
+                <strong>Validated Mutations:</strong> Humans and coding agents modify interfaces through structured, lock-respecting mutations.
+              </span>
+            </li>
+          </ul>
+
+          <div className="rounded-xl bg-[#2547E8]/5 border border-[#2547E8]/20 p-4 font-mono text-xs text-[#2547E8] font-medium">
+            Outcome: Zero-debt, fully accessible React + Tailwind 4 production codebase with complete design cohesion.
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

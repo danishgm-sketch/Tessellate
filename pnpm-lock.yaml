@@ -118,6 +118,9 @@ importers:
       '@tessellate/catalog':
         specifier: workspace:*
         version: link:../../packages/catalog
+      '@tessellate/compatibility':
+        specifier: workspace:*
+        version: link:../../packages/compatibility
       '@tessellate/composer':
         specifier: workspace:*
         version: link:../../packages/composer
