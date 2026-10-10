@@ -35,6 +35,9 @@ export * from './persistence/recovery.js';
 export * from './audit/audit-engine.js';
 export { AuditPanel } from './components/audit/AuditPanel.js';
 
+// Phase 13: AI-assisted layer
+export * from './ai/index.js';
+
 // Components
 export { WorkbenchShell } from './components/WorkbenchShell.js';
 export { TopToolbar } from './components/TopToolbar.js';

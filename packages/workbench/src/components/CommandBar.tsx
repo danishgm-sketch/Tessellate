@@ -1,25 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { findNodeById } from '../utils/tree-helpers.js';
+import { executeNaturalLanguageCommand } from '../ai/ai-service.js';
 import { Terminal, CornerDownLeft } from 'lucide-react';
 
 export function CommandBar() {
   const manifest = useWorkbenchStore((state) => state.manifest);
   const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
-  const updateNodeDNA = useWorkbenchStore((state) => state.updateNodeDNA);
-  const updateProjectDNA = useWorkbenchStore((state) => state.updateProjectDNA);
-  const toggleNodeLock = useWorkbenchStore((state) => state.toggleNodeLock);
-  const unlockAllNodeLocks = useWorkbenchStore((state) => state.unlockAllNodeLocks);
-  const resetNodeDNA = useWorkbenchStore((state) => state.resetNodeDNA);
-  const recomposeScreenAroundLocks = useWorkbenchStore((state) => state.recomposeScreenAroundLocks);
-  const surpriseMe = useWorkbenchStore((state) => state.surpriseMe);
   const openReplaceDrawer = useWorkbenchStore((state) => state.openReplaceDrawer);
   const openCompare = useWorkbenchStore((state) => state.openCompare);
   const openBlend = useWorkbenchStore((state) => state.openBlend);
+  const executeMutation = useWorkbenchStore((state) => state.executeMutation);
 
   const [inputVal, setInputVal] = useState('');
   const [feedback, setFeedback] = useState<string | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const activeScreen = manifest.screens.find((s) => s.id === activeScreenId);
@@ -44,76 +40,53 @@ export function CommandBar() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const handleExecute = (e: React.FormEvent) => {
+  const handleExecute = async (e: React.FormEvent) => {
     e.preventDefault();
-    const cmd = inputVal.toLowerCase().trim();
-    if (!cmd) return;
+    const cmd = inputVal.trim();
+    if (!cmd || isProcessing) return;
 
-    if (cmd.includes('recompose') || cmd.includes('rethink structure') || cmd.includes('rethink')) {
-      recomposeScreenAroundLocks(activeScreenId);
-      setFeedback(`Recomposed screen around locked nodes.`);
-    } else if (cmd.includes('surprise') || cmd.includes('surprise me')) {
-      surpriseMe();
-      setFeedback(`Executed Surprise Me: controlled divergence applied.`);
-    } else if (cmd.includes('replace') && selectedNode) {
-      openReplaceDrawer();
-      setFeedback(`Opened replacement candidates drawer for ${selectedNode.semanticRole}.`);
-    } else if (cmd.includes('compare')) {
-      openCompare();
-      setFeedback(`Opened Compare mode.`);
-    } else if (cmd.includes('blend')) {
-      openBlend();
-      setFeedback(`Opened Blend mode.`);
-    } else if (cmd.includes('reduce motion') || cmd.includes('less motion')) {
-      if (selectedNode) {
-        updateNodeDNA(selectedNode.id, { motion: 15, motionPlayfulness: 10 });
-      } else {
-        updateProjectDNA({ motion: 15, motionPlayfulness: 10 });
+    setIsProcessing(true);
+    try {
+      const lower = cmd.toLowerCase();
+      // Fast path for immediate modal UI actions
+      if (lower.includes('replace') && selectedNode) {
+        openReplaceDrawer();
+        setFeedback(`Opened replacement candidates drawer for ${selectedNode.semanticRole}.`);
+        setInputVal('');
+        return;
       }
-      setFeedback('Reduced motion to 15 (subtle, accessible).');
-    } else if (cmd.includes('more professional') || cmd.includes('high professional')) {
-      if (selectedNode) {
-        updateNodeDNA(selectedNode.id, { professionalism: 95, curvature: 20 });
-      } else {
-        updateProjectDNA({ professionalism: 95, curvature: 20 });
+      if (lower === 'compare' || lower.includes('open compare')) {
+        openCompare();
+        setFeedback(`Opened Compare mode.`);
+        setInputVal('');
+        return;
       }
-      setFeedback('Elevated professionalism to 95.');
-    } else if (cmd.includes('playful') || cmd.includes('more playful')) {
-      if (selectedNode) {
-        updateNodeDNA(selectedNode.id, { playfulness: 85, curvature: 60, warmth: 75 });
-      } else {
-        updateProjectDNA({ playfulness: 85, curvature: 60, warmth: 75 });
+      if (lower === 'blend' || lower.includes('open blend')) {
+        openBlend();
+        setFeedback(`Opened Blend mode.`);
+        setInputVal('');
+        return;
       }
-      setFeedback('Elevated playfulness to 85.');
-    } else if (cmd.includes('sharp') || cmd.includes('zero radius')) {
-      if (selectedNode) {
-        updateNodeDNA(selectedNode.id, { curvature: 0 });
+
+      // Execute via AI / deterministic planner
+      const result = await executeNaturalLanguageCommand(manifest, activeScreenId, cmd);
+
+      if (result.success) {
+        for (const mut of result.mutations) {
+          executeMutation(mut);
+        }
+        setFeedback(result.explanation || `Executed: ${result.command.summary}`);
+        setInputVal('');
       } else {
-        updateProjectDNA({ curvature: 0 });
+        setFeedback(result.error);
+        // Preserves inputVal on error so the user doesn't lose their prompt
       }
-      setFeedback('Set geometry curvature to sharp (0px).');
-    } else if (cmd.includes('pill') || cmd.includes('round')) {
-      if (selectedNode) {
-        updateNodeDNA(selectedNode.id, { curvature: 100 });
-      } else {
-        updateProjectDNA({ curvature: 100 });
-      }
-      setFeedback('Set geometry curvature to pill (9999px).');
-    } else if (cmd.includes('lock') && selectedNode) {
-      toggleNodeLock(selectedNode.id, 'structure');
-      setFeedback(`Toggled structure lock on ${selectedNode.semanticRole}.`);
-    } else if (cmd.includes('unlock') && selectedNode) {
-      unlockAllNodeLocks(selectedNode.id);
-      setFeedback(`Unlocked all dimensions on ${selectedNode.semanticRole}.`);
-    } else if (cmd.includes('reset') && selectedNode) {
-      resetNodeDNA(selectedNode.id);
-      setFeedback(`Reset ${selectedNode.semanticRole} to inherit Project DNA.`);
-    } else {
-      setFeedback(`Deterministic command "${inputVal}" applied to ${selectedNode ? selectedNode.semanticRole : 'project'}.`);
+    } catch (err) {
+      setFeedback(err instanceof Error ? err.message : 'Command execution failed.');
+    } finally {
+      setIsProcessing(false);
+      setTimeout(() => setFeedback(null), 5000);
     }
-
-    setInputVal('');
-    setTimeout(() => setFeedback(null), 4000);
   };
 
   return (

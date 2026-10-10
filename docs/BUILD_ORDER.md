@@ -356,20 +356,20 @@ Score totals 100-point model exactly and fixture violations produce stable actio
 
 Goal: natural language without making AI foundational.
 
-- [ ] Implement provider adapter interface.
-- [ ] Implement OpenAI adapter.
-- [ ] Implement Anthropic adapter.
-- [ ] Implement Gemini adapter.
-- [ ] Implement OpenRouter-compatible adapter.
-- [ ] Implement memory-only provider credential store.
-- [ ] Implement optional thin Worker proxy with secret redaction/no cache.
-- [ ] Implement structured ProductModel interpretation.
-- [ ] Implement arbitrary-feel mapping.
-- [ ] Implement natural-language IntentCommand schema.
-- [ ] Implement command → validated mutation planning.
-- [ ] Implement AI critique separately from deterministic audit.
-- [ ] Implement failure/no-state-change guarantees.
-- [ ] Implement one constrained repair attempt for invalid structured output.
+- [x] Implement provider adapter interface.
+- [x] Implement OpenAI adapter.
+- [x] Implement Anthropic adapter.
+- [x] Implement Gemini adapter.
+- [x] Implement OpenRouter-compatible adapter.
+- [x] Implement memory-only provider credential store.
+- [x] Implement optional thin Worker proxy with secret redaction/no cache.
+- [x] Implement structured ProductModel interpretation.
+- [x] Implement arbitrary-feel mapping.
+- [x] Implement natural-language IntentCommand schema.
+- [x] Implement command → validated mutation planning.
+- [x] Implement AI critique separately from deterministic audit.
+- [x] Implement failure/no-state-change guarantees.
+- [x] Implement one constrained repair attempt for invalid structured output.
 
 ### Phase 13 gate
 

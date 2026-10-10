@@ -15,3 +15,7 @@ export function getProjectManifestJsonSchema(): Record<string, unknown> {
     $refStrategy: 'relative',
   }) as Record<string, unknown>;
 }
+
+export function toStandardJsonSchema(schema: Parameters<typeof zodToJsonSchema>[0], name?: string): Record<string, unknown> {
+  return zodToJsonSchema(schema, name ? { name, $refStrategy: 'none' } : { $refStrategy: 'none' }) as Record<string, unknown>;
+}
