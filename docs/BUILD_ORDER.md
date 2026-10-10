@@ -188,15 +188,15 @@ Golden assertions prove:
 
 Goal: structured product understanding without AI.
 
-- [ ] Implement 18 product archetype dictionaries/rules.
-- [ ] Implement deterministic ProductModel inference.
-- [ ] Implement inferred-assumption output.
-- [ ] Implement screen-class grammar data.
-- [ ] Implement ScreenGraph planner.
-- [ ] Implement required/optional screen logic.
-- [ ] Implement 12 product blueprints.
-- [ ] Add six golden product briefs from Composition Engine spec.
-- [ ] Build `/compose` structured form without AI first.
+- [x] Implement 18 product archetype dictionaries/rules.
+- [x] Implement deterministic ProductModel inference.
+- [x] Implement inferred-assumption output.
+- [x] Implement screen-class grammar data.
+- [x] Implement ScreenGraph planner.
+- [x] Implement required/optional screen logic.
+- [x] Implement 12 product blueprints.
+- [x] Add six golden product briefs from Composition Engine spec.
+- [x] Build `/compose` structured form without AI first.
 
 ### Phase 6 gate
 
