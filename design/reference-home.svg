@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" fill="none">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="30" flood-color="#111217" flood-opacity=".10"/></filter>
+    <filter id="smallShadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#111217" flood-opacity=".08"/></filter>
+    <linearGradient id="previewA" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0C101A"/><stop offset="1" stop-color="#243B84"/></linearGradient>
+    <linearGradient id="previewB" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFF7ED"/><stop offset="1" stop-color="#F1D9C7"/></linearGradient>
+    <linearGradient id="previewC" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#121317"/><stop offset="1" stop-color="#29202F"/></linearGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#2C3138"/></pattern>
+    <style>
+      .sans{font-family:Inter,Arial,sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.ink{fill:#111217}.secondary{fill:#62666F}.hair{stroke:#D9D6CF}.tiny{font-size:12px}.label{font-size:13px;font-weight:600}.body{font-size:15px}.small{font-size:13px}.title{font-size:22px;font-weight:600;letter-spacing:-.4px}.hero{font-size:72px;font-weight:600;letter-spacing:-4px}
+    </style>
+  </defs>
+
+  <rect width="1600" height="1200" fill="#F4F2ED"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="1600" height="72" fill="#F4F2ED"/>
+  <line x1="48" y1="71.5" x2="1552" y2="71.5" stroke="#DEDAD2"/>
+  <g transform="translate(50 20)">
+    <rect x="0" y="0" width="13" height="13" rx="2" fill="#111217" transform="rotate(8 6.5 6.5)"/>
+    <rect x="15" y="1" width="13" height="13" rx="2" fill="#2547E8" transform="rotate(-8 21.5 7.5)"/>
+    <rect x="2" y="16" width="13" height="13" rx="2" fill="#2547E8" transform="rotate(-6 8.5 22.5)"/>
+    <rect x="17" y="17" width="13" height="13" rx="2" fill="#111217" transform="rotate(7 23.5 23.5)"/>
+    <text x="42" y="23" class="sans ink" font-size="17" font-weight="650">Tessellate</text>
+  </g>
+  <g class="sans secondary small" transform="translate(420 43)">
+    <text x="0">Explore</text><text x="80">Compose</text><text x="174">Workbench</text><text x="286">Tools</text><text x="348">Agents</text><text x="422">Creators</text><text x="508">Docs</text>
+  </g>
+  <g class="sans small" transform="translate(1250 18)">
+    <rect width="95" height="36" rx="8" fill="#FAF9F6" stroke="#D9D6CF"/><text x="16" y="23" fill="#62666F">⌘K Search</text>
+    <text x="116" y="23" fill="#62666F">Sign in</text>
+    <rect x="176" width="125" height="36" rx="8" fill="#111217"/><text x="195" y="23" fill="white" font-weight="600">Start building</text>
+  </g>
+
+  <!-- Hero copy -->
+  <g transform="translate(170 145)">
+    <rect x="0" y="0" width="9" height="9" rx="4.5" fill="#C9FF57"/>
+    <text x="20" y="9" class="mono secondary tiny" letter-spacing="1.4">OPEN INTERFACE INTELLIGENCE</text>
+    <text x="0" y="92" class="sans ink hero">Describe the product.</text>
+    <text x="0" y="162" class="sans ink hero">Get the interface.</text>
+    <text x="3" y="214" class="sans secondary" font-size="18">Tessellate turns product intent into cohesive interface systems using an open</text>
+    <text x="3" y="242" class="sans secondary" font-size="18">library of components, patterns, motion and design intelligence.</text>
+  </g>
+
+  <!-- Composer -->
+  <g transform="translate(170 430)" filter="url(#shadow)">
+    <rect width="920" height="210" rx="20" fill="#FFFFFF" stroke="#D9D6CF"/>
+    <text x="28" y="38" class="mono secondary tiny" letter-spacing="1.2">PRODUCT BRIEF</text>
+    <text x="28" y="82" class="sans ink" font-size="19">An AI market-intelligence platform for procurement teams.</text>
+    <text x="28" y="112" class="sans secondary" font-size="17">Serious and technical in the app, premium and cinematic on marketing pages…</text>
+    <line x1="0" y1="142" x2="920" y2="142" stroke="#E5E2DC"/>
+    <g class="sans small">
+      <text x="28" y="167" fill="#8B8F97">FEEL</text><text x="28" y="190" fill="#111217" font-weight="600">Professional + Playful</text>
+      <text x="235" y="167" fill="#8B8F97">AMBITION</text><text x="235" y="190" fill="#111217" font-weight="600">Stunning</text>
+      <text x="375" y="167" fill="#8B8F97">STRUCTURE</text><text x="375" y="190" fill="#111217" font-weight="600">Inventive</text>
+      <text x="525" y="167" fill="#8B8F97">STACK</text><text x="525" y="190" fill="#111217" font-weight="600">React + Tailwind</text>
+    </g>
+    <rect x="744" y="158" width="148" height="38" rx="8" fill="#2547E8"/>
+    <text x="776" y="183" class="sans" fill="white" font-size="14" font-weight="650">Compose</text><text x="861" y="183" class="sans" fill="white">→</text>
+  </g>
+
+  <!-- Side proof / micro-diagram -->
+  <g transform="translate(1160 435)">
+    <text x="0" y="0" class="mono secondary tiny" letter-spacing="1.2">DESIGN DNA</text>
+    <g class="sans small">
+      <text x="0" y="42" fill="#62666F">Professional</text><text x="230" y="42" fill="#111217">88</text>
+      <rect x="0" y="52" width="250" height="4" rx="2" fill="#D9D6CF"/><rect x="0" y="52" width="220" height="4" rx="2" fill="#2547E8"/>
+      <text x="0" y="90" fill="#62666F">Technical</text><text x="230" y="90" fill="#111217">82</text>
+      <rect x="0" y="100" width="250" height="4" rx="2" fill="#D9D6CF"/><rect x="0" y="100" width="205" height="4" rx="2" fill="#2547E8"/>
+      <text x="0" y="138" fill="#62666F">Visual ambition</text><text x="230" y="138" fill="#111217">76</text>
+      <rect x="0" y="148" width="250" height="4" rx="2" fill="#D9D6CF"/><rect x="0" y="148" width="190" height="4" rx="2" fill="#2547E8"/>
+      <text x="0" y="186" fill="#62666F">Structure</text><text x="230" y="186" fill="#111217">64</text>
+      <rect x="0" y="196" width="250" height="4" rx="2" fill="#D9D6CF"/><rect x="0" y="196" width="160" height="4" rx="2" fill="#111217"/>
+    </g>
+  </g>
+
+  <!-- Direction heading -->
+  <g transform="translate(70 720)">
+    <text x="0" y="0" class="mono secondary tiny" letter-spacing="1.2">THREE DIRECTIONS, ONE PRODUCT</text>
+    <text x="0" y="48" class="sans ink" font-size="34" font-weight="600" letter-spacing="-1.3">Choose a direction. Or blend them.</text>
+  </g>
+
+  <!-- Cards -->
+  <g transform="translate(70 805)" filter="url(#smallShadow)">
+    <rect width="455" height="310" rx="18" fill="#FFFFFF" stroke="#D9D6CF"/>
+    <rect x="14" y="14" width="427" height="198" rx="12" fill="url(#previewA)"/>
+    <rect x="32" y="34" width="92" height="12" rx="6" fill="#FFFFFF" opacity=".85"/>
+    <rect x="32" y="63" width="180" height="26" rx="5" fill="#FFFFFF" opacity=".96"/>
+    <rect x="32" y="104" width="240" height="8" rx="4" fill="#8EA2FF" opacity=".85"/>
+    <rect x="32" y="122" width="192" height="8" rx="4" fill="#8EA2FF" opacity=".45"/>
+    <rect x="308" y="35" width="112" height="142" rx="10" fill="#131A2B" stroke="#465DAB"/>
+    <polyline points="322,143 340,126 357,132 374,98 393,106 408,75" stroke="#C9FF57" stroke-width="3" fill="none"/>
+    <text x="22" y="245" class="mono secondary tiny">01 · INSTITUTIONAL</text>
+    <text x="22" y="278" class="sans ink title">Intelligence Terminal</text>
+    <text x="22" y="299" class="sans secondary small">Dense, authoritative, analytical.</text>
+  </g>
+
+  <g transform="translate(572 805)" filter="url(#smallShadow)">
+    <rect width="455" height="310" rx="18" fill="#FFFFFF" stroke="#C5C1B8" stroke-width="1.5"/>
+    <rect x="14" y="14" width="427" height="198" rx="12" fill="url(#previewB)"/>
+    <rect x="34" y="37" width="170" height="12" rx="6" fill="#2F261F" opacity=".75"/>
+    <rect x="34" y="69" width="282" height="34" rx="4" fill="#1B1713"/>
+    <rect x="34" y="119" width="230" height="9" rx="4" fill="#7A6456" opacity=".6"/>
+    <rect x="34" y="138" width="185" height="9" rx="4" fill="#7A6456" opacity=".4"/>
+    <circle cx="360" cy="92" r="52" fill="#D39A78" opacity=".75"/><path d="M326 102C344 67 382 70 395 97C380 113 348 122 326 102Z" fill="#FFF7ED" opacity=".85"/>
+    <text x="22" y="245" class="mono secondary tiny">02 · EDITORIAL</text>
+    <text x="22" y="278" class="sans ink title">Research Publication</text>
+    <text x="22" y="299" class="sans secondary small">Narrative, trusted, beautifully paced.</text>
+  </g>
+
+  <g transform="translate(1074 805)" filter="url(#smallShadow)">
+    <rect width="455" height="310" rx="18" fill="#FFFFFF" stroke="#D9D6CF"/>
+    <rect x="14" y="14" width="427" height="198" rx="12" fill="url(#previewC)"/>
+    <rect x="30" y="31" width="395" height="18" rx="6" fill="#201C26" stroke="#3A3045"/>
+    <rect x="30" y="63" width="105" height="125" rx="8" fill="#18161C" stroke="#37313D"/>
+    <rect x="148" y="63" width="277" height="125" rx="8" fill="#1C1920" stroke="#403648"/>
+    <circle cx="282" cy="125" r="44" fill="#6C4B7A" opacity=".45"/><circle cx="282" cy="125" r="23" fill="#C9FF57" opacity=".78"/>
+    <path d="M178 164 C218 122 247 171 282 125 S343 83 396 112" stroke="#8B68FF" stroke-width="2" fill="none"/>
+    <text x="22" y="245" class="mono secondary tiny">03 · FUTURE COMMAND</text>
+    <text x="22" y="278" class="sans ink title">Adaptive Workspace</text>
+    <text x="22" y="299" class="sans secondary small">Spatial, agent-native, controlled novelty.</text>
+  </g>
+
+  <!-- Bottom hint into dark workbench -->
+  <rect x="0" y="1160" width="1600" height="40" fill="#0B0D10"/>
+  <rect x="48" y="1160" width="1504" height="40" fill="url(#dots)" opacity=".55"/>
+  <text x="70" y="1187" class="mono" fill="#A8AFBA" font-size="11" letter-spacing="1.3">NEXT · ENTER THE WORKBENCH</text>
+</svg>
