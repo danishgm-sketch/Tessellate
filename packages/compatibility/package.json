@@ -14,7 +14,9 @@
   },
   "dependencies": {
     "@tessellate/dna": "workspace:*",
-    "@tessellate/schemas": "workspace:*"
+    "@tessellate/schemas": "workspace:*",
+    "@tessellate/composer": "workspace:*",
+    "@tessellate/catalog": "workspace:*"
   },
   "devDependencies": {
     "typescript": "^5.7.3"

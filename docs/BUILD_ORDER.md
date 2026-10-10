@@ -208,21 +208,21 @@ All golden briefs produce sensible ProductModels and ScreenGraphs with no AI con
 
 Goal: the actual moat.
 
-- [ ] Implement grammar schema/data model.
-- [ ] Implement initial 40 layout/composition grammars.
-- [ ] Implement hard-constraint filter.
-- [ ] Implement weighted compatibility score exactly from spec.
-- [ ] Implement DNA distance/relevance weights.
-- [ ] Implement resource-relationship graph.
-- [ ] Implement composition-synergy scoring.
-- [ ] Implement diversity adjustment.
-- [ ] Implement performance aggregate model.
-- [ ] Implement accessibility-floor model.
-- [ ] Implement responsive substitution.
-- [ ] Implement deterministic seeded selection.
-- [ ] Implement Direction A conservative fit.
-- [ ] Implement Direction B expressive fit.
-- [ ] Implement Direction C structural alternative.
+- [x] Implement grammar schema/data model.
+- [x] Implement initial 40 layout/composition grammars.
+- [x] Implement hard-constraint filter.
+- [x] Implement weighted compatibility score exactly from spec.
+- [x] Implement DNA distance/relevance weights.
+- [x] Implement resource-relationship graph.
+- [x] Implement composition-synergy scoring.
+- [x] Implement diversity adjustment.
+- [x] Implement performance aggregate model.
+- [x] Implement accessibility-floor model.
+- [x] Implement responsive substitution.
+- [x] Implement deterministic seeded selection.
+- [x] Implement Direction A conservative fit.
+- [x] Implement Direction B expressive fit.
+- [x] Implement Direction C structural alternative.
 
 ### Phase 7 gate
 
