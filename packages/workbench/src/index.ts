@@ -31,6 +31,10 @@ export * from './blend/blend-engine.js';
 export * from './persistence/storage.js';
 export * from './persistence/recovery.js';
 
+// Phase 12: Audit System
+export * from './audit/audit-engine.js';
+export { AuditPanel } from './components/audit/AuditPanel.js';
+
 // Components
 export { WorkbenchShell } from './components/WorkbenchShell.js';
 export { TopToolbar } from './components/TopToolbar.js';

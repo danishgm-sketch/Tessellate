@@ -12,7 +12,9 @@ import {
   FileText,
   Sliders,
   Terminal,
+  CheckCircle2,
 } from 'lucide-react';
+import { AuditPanel } from '../audit/AuditPanel.js';
 
 export function MobileWorkbench() {
   const manifest = useWorkbenchStore((state) => state.manifest);
@@ -28,6 +30,7 @@ export function MobileWorkbench() {
     { id: 'pages', label: 'Pages', icon: <FileText className="h-4 w-4" /> },
     { id: 'selection', label: 'Inspect', icon: <Sliders className="h-4 w-4" /> },
     { id: 'command', label: 'Command', icon: <Terminal className="h-4 w-4" /> },
+    { id: 'audit', label: 'Audit', icon: <CheckCircle2 className="h-4 w-4" /> },
   ];
 
   return (
@@ -132,6 +135,12 @@ export function MobileWorkbench() {
                 Sharp Edges
               </button>
             </div>
+          </div>
+        )}
+
+        {mobileTab === 'audit' && (
+          <div className="h-full">
+            <AuditPanel />
           </div>
         )}
       </div>

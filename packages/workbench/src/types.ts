@@ -5,6 +5,7 @@ import type {
   NodeLocks,
   HistoryOperation,
   ResourceManifest,
+  ProjectMutation,
 } from '@tessellate/schemas';
 import type { Checkpoint, CheckpointTrigger } from './history/checkpoints.js';
 import type { RecomposeOptions } from './mutations/recomposition.js';
@@ -105,6 +106,7 @@ export interface WorkbenchState {
 
   // Semantic Mutation & Flow Actions
   executeOperation: (op: HistoryOperation) => void;
+  executeMutation: (mutation: ProjectMutation) => void;
   recomposeScreenAroundLocks: (screenId: string, options?: RecomposeOptions) => void;
   surpriseMe: (options?: SurpriseMeOptions) => void;
   replaceNodeWithResource: (nodeId: string, resource: ResourceManifest, variant?: string) => void;

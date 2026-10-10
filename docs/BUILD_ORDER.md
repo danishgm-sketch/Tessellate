@@ -333,18 +333,18 @@ Anonymous user can create/edit/reload/export a project without any backend API.
 
 Goal: deterministic quality feedback.
 
-- [ ] Implement Cohesion score.
-- [ ] Implement Accessibility score.
-- [ ] Implement Performance score.
-- [ ] Implement Responsive score.
-- [ ] Implement Hierarchy score.
-- [ ] Implement Density Consistency score.
-- [ ] Implement Motion Consistency score.
-- [ ] Implement Design-System Compliance score.
-- [ ] Implement Interaction Consistency score.
-- [ ] Build Audit mode UI.
-- [ ] Link issues to affected nodes.
-- [ ] Add deterministic suggested fixes where safe.
+- [x] Implement Cohesion score.
+- [x] Implement Accessibility score.
+- [x] Implement Performance score.
+- [x] Implement Responsive score.
+- [x] Implement Hierarchy score.
+- [x] Implement Density Consistency score.
+- [x] Implement Motion Consistency score.
+- [x] Implement Design-System Compliance score.
+- [x] Implement Interaction Consistency score.
+- [x] Build Audit mode UI.
+- [x] Link issues to affected nodes.
+- [x] Add deterministic suggested fixes where safe.
 
 ### Phase 12 gate
 

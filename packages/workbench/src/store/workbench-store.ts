@@ -6,6 +6,7 @@ import type {
   NodeLocks,
   HistoryOperation,
   ResourceManifest,
+  ProjectMutation,
 } from '@tessellate/schemas';
 import type {
   WorkbenchState,
@@ -32,6 +33,7 @@ import { recomposeScreenAroundLocks, type RecomposeOptions } from '../mutations/
 import { surpriseMe, type SurpriseMeOptions } from '../mutations/surprise.js';
 import { createReplaceOperation } from '../mutations/replace.js';
 import { blendManifests, type BlendConfig } from '../blend/blend-engine.js';
+import { executeMutation as runMutation } from '../mutations/executor.js';
 
 const initialSample = createSampleProject();
 const initialCheckpoint = createCheckpoint(initialSample, {
@@ -172,6 +174,16 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       history: [manifest, ...history.slice(0, 49)],
       future: [],
       operations: [result.executedOperation, ...operations],
+      manifest: result.nextManifest,
+    });
+  },
+
+  executeMutation: (mutation: ProjectMutation) => {
+    const { manifest, history } = get();
+    const result = runMutation(manifest, mutation);
+    set({
+      history: [manifest, ...history.slice(0, 49)],
+      future: [],
       manifest: result.nextManifest,
     });
   },

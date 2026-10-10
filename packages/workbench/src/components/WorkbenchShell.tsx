@@ -10,8 +10,10 @@ import { PreviewModal } from './preview/PreviewModal.js';
 import { CompareModal } from './compare/CompareModal.js';
 import { BlendModal } from './blend/BlendModal.js';
 import { ReplaceDrawer } from './replace/ReplaceDrawer.js';
+import { AuditPanel } from './audit/AuditPanel.js';
 
 export function WorkbenchShell() {
+  const activeMode = useWorkbenchStore((state) => state.activeMode);
   const isPreview = useWorkbenchStore((state) => state.isPreview);
   const selectParentNode = useWorkbenchStore((state) => state.selectParentNode);
   const undo = useWorkbenchStore((state) => state.undo);
@@ -124,8 +126,8 @@ export function WorkbenchShell() {
         {/* Left Panel (280px) */}
         <LeftPanel />
 
-        {/* Central Canvas */}
-        <WorkbenchCanvas />
+        {/* Central Canvas or Audit Dashboard */}
+        {activeMode === 'audit' ? <AuditPanel /> : <WorkbenchCanvas />}
 
         {/* Right Contextual Inspector (340px) */}
         <RightInspector />
