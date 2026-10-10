@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dual-rail-nav",
+  "type": "registry:block",
+  "title": "Dual-Rail Navigation",
+  "description": "Two-tier navigation shell with primary app rail (48px) and contextual sub-navigation list (200px).",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type DualRailNavVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface DualRailNavProps {\n  variant?: DualRailNavVariant;\n}\n\nexport function DualRailNav({ variant = 'quiet' }: DualRailNavProps) {\n  let rail1 = 'bg-neutral-100 border-r border-neutral-200';\n  let rail2 = 'bg-white border-r border-neutral-200';\n  if (variant === 'nocturne') {\n    rail1 = 'bg-[#0B0D10] border-r border-[#2E3440]';\n    rail2 = 'bg-[#11141B] border-r border-[#2E3440] text-white';\n  }\n\n  return (\n    <div className=\"flex h-screen text-xs\">\n      {/* Tier 1: Organization/App Icons */}\n      <div className={`w-14 flex flex-col items-center py-4 gap-3 ${rail1}`}>\n        <div className=\"h-8 w-8 rounded-full bg-neutral-900 text-white flex items-center justify-center font-bold text-xs\">T</div>\n        <div className=\"h-8 w-8 rounded-full bg-neutral-300 dark:bg-neutral-800 flex items-center justify-center text-xs\">D</div>\n      </div>\n      {/* Tier 2: Channels/Context Views */}\n      <div className={`w-48 p-4 space-y-3 ${rail2}`}>\n        <span className=\"font-semibold text-xs block\">Engineering</span>\n        <div className=\"space-y-1 opacity-80\">\n          <p className=\"p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer font-medium\"># general</p>\n          <p className=\"p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer\"># telemetry</p>\n          <p className=\"p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 cursor-pointer\"># releases</p>\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { DualRailNav } from './index.js';\n\nexport function DualRailNavPreview() {\n  return (\n    <div className=\"h-64 flex border rounded-xl overflow-hidden bg-[#FAF9F6]\">\n      <DualRailNav variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_dual_rail_nav",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

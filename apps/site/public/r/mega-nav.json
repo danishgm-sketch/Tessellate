@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mega-nav",
+  "type": "registry:block",
+  "title": "Mega Navigation",
+  "description": "Comprehensive multi-column dropdown header exposing broad product suite categories.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type MegaNavVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface MegaNavProps {\n  variant?: MegaNavVariant;\n}\n\nexport function MegaNav({ variant = 'quiet' }: MegaNavProps) {\n  const [open, setOpen] = useState(false);\n\n  let bar = 'bg-white border-b border-neutral-200 text-neutral-900';\n  let menu = 'bg-white border-[#D9D6CF] shadow-2xl';\n  if (variant === 'nocturne') {\n    bar = 'bg-[#0B0D10] border-b border-[#2E3440] text-white';\n    menu = 'bg-[#11141B] border-[#2E3440] text-white shadow-2xl';\n  }\n\n  return (\n    <div className={`w-full relative ${bar}`}>\n      <div className=\"max-w-7xl mx-auto px-6 h-16 flex items-center justify-between\">\n        <span className=\"font-semibold text-sm\">Tessellate Suite</span>\n        <div className=\"flex items-center gap-6 text-xs\">\n          <button type=\"button\" onClick={() => setOpen(!open)} className=\"font-medium flex items-center gap-1\">\n            Products ▾\n          </button>\n          <a href=\"#\" className=\"opacity-70 hover:opacity-100\">Enterprise</a>\n          <a href=\"#\" className=\"opacity-70 hover:opacity-100\">Docs</a>\n        </div>\n        <button className=\"px-3 py-1.5 text-xs bg-neutral-900 text-white rounded-lg\">Launch</button>\n      </div>\n      {open && (\n        <div className={`absolute top-full left-0 w-full border-b p-8 z-40 ${menu}`}>\n          <div className=\"max-w-6xl mx-auto grid grid-cols-3 gap-8 text-xs\">\n            <div className=\"space-y-2\">\n              <p className=\"font-semibold uppercase tracking-wider opacity-50\">Composition Engine</p>\n              <p className=\"text-neutral-500\">Deterministic Zod layout mutation pipeline.</p>\n            </div>\n            <div className=\"space-y-2\">\n              <p className=\"font-semibold uppercase tracking-wider opacity-50\">Design DNA</p>\n              <p className=\"text-neutral-500\">10-dimensional mathematical aesthetic control.</p>\n            </div>\n            <div className=\"space-y-2\">\n              <p className=\"font-semibold uppercase tracking-wider opacity-50\">Workbench</p>\n              <p className=\"text-neutral-500\">Dual-layer visual and structural editor.</p>\n            </div>\n          </div>\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { MegaNav } from './index.js';\n\nexport function MegaNavPreview() {\n  return (\n    <div className=\"w-full\">\n      <MegaNav variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_mega_nav",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

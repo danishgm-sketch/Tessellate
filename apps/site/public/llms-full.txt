@@ -77,30 +77,56 @@ Tools provided:
 - `get_design_dna`: Inspect Design DNA presets and vectors.
 - `list_design_directions`: Return visual reference directions (Editorial Precision, Kinetic Monolith, Atmospheric Depth).
 
-## Resources in Catalogue (44)
+## Resources in Catalogue (80)
 
 - [Accordion](https://tessellate.design/r/accordion): Collapsible vertically stacked disclosure panels with rotating chevron animations. (primitives, layout)
+- [Admin Console Shell](https://tessellate.design/r/admin-console-shell): Enterprise administration layout with organization selector, user table, and security audit tab. (shells, layout)
 - [Alert Dialog](https://tessellate.design/r/alert-dialog): Destructive confirmation modal requiring explicit acknowledgment or cancellation before proceeding. (primitives, overlays, feedback)
+- [Analytics Shell](https://tessellate.design/r/analytics-shell): Metric-dense business intelligence dashboard shell with date picker bar and KPI grid. (shells, layout)
+- [App Sidebar Compact](https://tessellate.design/r/app-sidebar-compact): High-density narrow application sidebar displaying icon triggers and tooltip labels. (shells, navigation)
+- [App Sidebar Expanded](https://tessellate.design/r/app-sidebar-expanded): Full-width application sidebar with hierarchical category headers, counts, and search. (shells, navigation)
 - [Autocomplete](https://tessellate.design/r/autocomplete): Typeahead prediction control suggesting options inline or in a floating palette. (primitives, inputs)
 - [Avatar](https://tessellate.design/r/avatar): Circular user representation displaying profile photography with monogram initial fallback and presence dot. (primitives, display)
 - [Avatar Group](https://tessellate.design/r/avatar-group): Overlapping clustered avatars with ring separation and excess counter pill (+N). (primitives, display)
 - [Badge](https://tessellate.design/r/badge): Compact pill indicator for counts, status dots, and metadata taxonomy tags. (primitives, display)
 - [Bottom Sheet](https://tessellate.design/r/bottom-sheet): Mobile-first bottom sliding sheet with drag handle bar and responsive snap points. (primitives, overlays)
 - [Breadcrumb](https://tessellate.design/r/breadcrumb): Hierarchical navigation trail path with customizable separators and accessible current page. (primitives, navigation)
+- [Breadcrumb Header](https://tessellate.design/r/breadcrumb-header): Header shell combining deep hierarchical breadcrumb trail with right-aligned action buttons. (shells, navigation)
 - [Button](https://tessellate.design/r/button): Tactile, accessible multi-intent button primitive with Quiet, Expressive, and Nocturne curated configurations. (primitives, inputs, actions)
 - [Button Group](https://tessellate.design/r/button-group): Connected cluster of action buttons with cohesive outer border and seamless seams. (primitives, inputs, actions)
+- [Canvas Workspace Shell](https://tessellate.design/r/canvas-workspace-shell): Infinite-pan coordinate workspace canvas with floating tool palettes and zoom controls. (shells, layout)
+- [Centered Top Navigation](https://tessellate.design/r/centered-top-nav): Symmetrical marketing header with brand logo on left, centered links, and right-aligned CTA. (shells, navigation)
 - [Checkbox](https://tessellate.design/r/checkbox): Accessible boolean selection control with indeterminate state, animated checkmark, and descriptive label. (primitives, inputs)
+- [Collapsible Sidebar](https://tessellate.design/r/collapsible-sidebar): Flexible sidebar toggling between icon rail (48px) and expanded labels (240px) on user trigger. (shells, navigation)
 - [Combobox](https://tessellate.design/r/combobox): Searchable selection input combining text filtering with item picker dropdown. (primitives, inputs)
+- [Command Centre Shell](https://tessellate.design/r/command-centre-shell): Mission control telemetry layout with multi-panel monitoring grids and emergency alerts. (shells, layout)
+- [Command-First Navigation](https://tessellate.design/r/command-first-nav): Spotlight-oriented application header centered on a prominent interactive search input. (shells, navigation)
 - [Command Menu](https://tessellate.design/r/command-menu): ⌘K spotlight dialog modal with quick command search, group categories, and keyboard arrow navigation. (primitives, overlays, search)
+- [Commerce Management Shell](https://tessellate.design/r/commerce-management-shell): E-commerce operations shell with order fulfillment queue, inventory counts, and sales graph. (shells, layout)
 - [Context Menu](https://tessellate.design/r/context-menu): Right-click action palette anchored directly to the user pointer coordinates. (primitives, overlays)
+- [Context Rail](https://tessellate.design/r/context-rail): Secondary right-hand vertical rail displaying active object inspector or contextual metadata. (shells, layout)
+- [Data Terminal Header](https://tessellate.design/r/data-terminal-header): High-density monospace financial header with ticker feed, clock, and connection latency. (shells, navigation)
 - [Dialog](https://tessellate.design/r/dialog): Accessible modal dialog window with backdrop scrim, focus trapping, and header/footer slots. (primitives, overlays)
 - [Disclosure](https://tessellate.design/r/disclosure): Single collapsible toggle container with summary header and expandable details. (primitives, layout)
+- [Documentation Shell](https://tessellate.design/r/documentation-shell): Technical docs shell with sticky sidebar topic hierarchy, reading center, and on-page table of contents. (shells, layout)
 - [Drawer](https://tessellate.design/r/drawer): Slide-out side panel for contextual inspections, property editing, or complex drilldowns. (primitives, overlays, layout)
 - [Dropdown Menu](https://tessellate.design/r/dropdown-menu): Floating contextual menu with item hover states, shortcut indicators, and dividers. (primitives, overlays, navigation)
+- [Dual-Rail Navigation](https://tessellate.design/r/dual-rail-nav): Two-tier navigation shell with primary app rail (48px) and contextual sub-navigation list (200px). (shells, navigation)
+- [Editor Workspace Shell](https://tessellate.design/r/editor-workspace-shell): Code and structured text editing shell with gutter line numbers, status bar, and tab bar. (shells, layout)
+- [Floating Navigation](https://tessellate.design/r/floating-nav): Island-style floating navigation pill pinned to top viewport with rounded corners and glass blur. (shells, navigation)
 - [Icon Button](https://tessellate.design/r/icon-button): Compact icon-only action trigger with tooltip support and accessible label semantics. (primitives, inputs, actions)
+- [Icon Rail](https://tessellate.design/r/icon-rail): Ultra-thin vertical action rail for high-frequency tool selection in design editors. (shells, navigation)
+- [Immersive Fullscreen Shell](https://tessellate.design/r/immersive-fullscreen-shell): Distraction-free edge-to-edge presentation shell with auto-hiding chrome and focus mode. (shells, layout)
 - [Inline Alert](https://tessellate.design/r/inline-alert): In-page contextual message banner conveying informational, success, warning, or danger states. (primitives, feedback)
 - [Text Input](https://tessellate.design/r/input): Clean, accessible single-line text input with label, helper copy, and error states. (primitives, inputs)
+- [Kiosk Display Shell](https://tessellate.design/r/kiosk-display-shell): Digital signage kiosk shell with high contrast typography, touch safety, and timeout reset. (shells, layout)
 - [Link](https://tessellate.design/r/link): Accessible semantic anchor navigation primitive with tactile underline animation and external indicators. (primitives, navigation)
+- [Marketing Navigation with CTA](https://tessellate.design/r/marketing-nav-cta): High-conversion header with promotional badge, navigation links, and primary CTA trigger. (shells, navigation)
+- [Mega Navigation](https://tessellate.design/r/mega-nav): Comprehensive multi-column dropdown header exposing broad product suite categories. (shells, navigation)
+- [Messaging Shell](https://tessellate.design/r/messaging-shell): Real-time conversation shell with channel sidebar, chat stream, and message composer. (shells, layout)
+- [Minimal Top Navigation](https://tessellate.design/r/minimal-top-nav): Restrained horizontal header with brand mark, essential route links, and profile badge. (shells, navigation)
+- [Mobile Bottom Navigation](https://tessellate.design/r/mobile-bottom-nav): Fixed bottom thumb-friendly tab bar for mobile web apps with icon and label pairs. (shells, navigation, mobile)
+- [Mobile Drawer Navigation](https://tessellate.design/r/mobile-drawer-nav): Hamburger slide-out overlay drawer displaying full mobile navigation menu. (shells, navigation, mobile)
 - [Multi-select](https://tessellate.design/r/multi-select): Tag-based selection input allowing multiple choices with removable pills. (primitives, inputs)
 - [Number Input](https://tessellate.design/r/number-input): Stepper input control with increment/decrement buttons, min/max bounds, and unit suffix. (primitives, inputs)
 - [Pagination](https://tessellate.design/r/pagination): Page traversal bar with previous/next triggers, page numbering, and ellipsis jumps. (primitives, navigation)
@@ -108,21 +134,31 @@ Tools provided:
 - [Popover](https://tessellate.design/r/popover): Floating rich content card anchored to a target trigger with dismissal handling. (primitives, overlays)
 - [Progress Bar](https://tessellate.design/r/progress-bar): Linear progress meter with determinate percentage progress and indeterminate pulse. (primitives, feedback)
 - [Progress Ring](https://tessellate.design/r/progress-ring): Circular radial progress meter with smooth stroke animation and central metric label. (primitives, feedback)
+- [Project Switcher](https://tessellate.design/r/project-switcher): Header breadcrumb trigger for toggling between project repositories or composed interfaces. (shells, navigation)
 - [Radio Group](https://tessellate.design/r/radio-group): Accessible single-choice selection group with circle indicators and keyboard navigation. (primitives, inputs)
 - [Range Slider](https://tessellate.design/r/range-slider): Dual-thumb interval selector for bounding min/max numerical thresholds simultaneously. (primitives, inputs)
+- [Research Terminal Shell](https://tessellate.design/r/research-terminal-shell): Scholarly exploration workspace with paper abstract viewer, citation graph, and notes rail. (shells, layout)
+- [Responsive App Shell](https://tessellate.design/r/responsive-app-shell): Unified application shell adapting gracefully from desktop sidebar to mobile bottom bar. (shells, layout)
+- [Search-First Header](https://tessellate.design/r/search-first-header): Global top navigation centered around expansive query input, filters, and notification bell. (shells, navigation)
 - [Search Input](https://tessellate.design/r/search-input): High-visibility search field with magnifying glass icon, keyboard shortcut badge (⌘K), and instant clear. (primitives, inputs, search)
 - [Segmented Control](https://tessellate.design/r/segmented-control): High-density toggle bar with active sliding pill indicator between mutual modes. (primitives, inputs)
 - [Select](https://tessellate.design/r/select): Accessible styled dropdown selector with trigger, chevron indicator, and options. (primitives, inputs)
 - [Separator](https://tessellate.design/r/separator): Clean hairline divider line supporting horizontal and vertical orientations and middle labels. (primitives, layout)
+- [Settings Shell](https://tessellate.design/r/settings-shell): Account and workspace preference shell with category navigation tabs and form sections. (shells, layout)
 - [Skeleton](https://tessellate.design/r/skeleton): Content placeholder animation primitive preventing layout shift during loading. (primitives, feedback)
 - [Slider](https://tessellate.design/r/slider): Smooth continuous value slider with track, fill, and precision drag thumb. (primitives, inputs)
 - [Split Button](https://tessellate.design/r/split-button): Dual-action trigger combining primary immediate intent with secondary dropdown alternatives. (primitives, inputs, actions)
 - [Switch](https://tessellate.design/r/switch): Accessible sliding toggle switch for boolean preferences and instant settings. (primitives, inputs)
+- [Tab Workspace Navigation](https://tessellate.design/r/tab-workspace-nav): Browser-style multi-tab document bar with close buttons and split view triggers. (shells, navigation)
 - [Tabs](https://tessellate.design/r/tabs): Accessible tabbed navigation system with active underlined or pill indicators and panels. (primitives, navigation)
 - [Tag Chip](https://tessellate.design/r/tag-chip): Clickable and removable categorical chip token for multi-criteria filters. (primitives, inputs)
 - [Textarea](https://tessellate.design/r/textarea): Multi-line text input primitive with character counter, accessible label, and auto-expand support. (primitives, inputs)
+- [Three-Pane App Shell](https://tessellate.design/r/three-pane-app-shell): Pro desktop shell with navigation sidebar, primary workspace canvas, and right property inspector. (shells, layout)
 - [Toast](https://tessellate.design/r/toast): Ephemeral floating notification banner with auto-dismiss timers and action hooks. (primitives, feedback)
 - [Tooltip](https://tessellate.design/r/tooltip): Micro-interaction popup providing contextual hints on hover or keyboard focus. (primitives, feedback)
+- [Transparent-to-Solid Navigation](https://tessellate.design/r/transparent-solid-nav): Dynamic header starting transparent over media heroes and transitioning solid on scroll. (shells, navigation)
+- [Two-Pane Master Detail Shell](https://tessellate.design/r/two-pane-master-detail-shell): Split-view shell pairing searchable master entity list with comprehensive detail reader pane. (shells, layout)
+- [Workspace Switcher](https://tessellate.design/r/workspace-switcher): Dropdown trigger displaying current tenant organization with plan badge and fast team switching. (shells, navigation)
 
 
 ---
@@ -170,6 +206,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Admin Console Shell (`admin-console-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Enterprise administration layout with organization selector, user table, and security audit tab.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/admin-console-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Alert Dialog (`alert-dialog`)
 - **Type**: primitive
 - **Categories**: primitives, overlays, feedback
@@ -205,6 +282,129 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Analytics Shell (`analytics-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Metric-dense business intelligence dashboard shell with date picker bar and KPI grid.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/analytics-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### App Sidebar Compact (`app-sidebar-compact`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: High-density narrow application sidebar displaying icon triggers and tooltip labels.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/app-sidebar-compact.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### App Sidebar Expanded (`app-sidebar-expanded`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Full-width application sidebar with hierarchical category headers, counts, and search.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/app-sidebar-expanded.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -457,6 +657,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Breadcrumb Header (`breadcrumb-header`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Header shell combining deep hierarchical breadcrumb trail with right-aligned action buttons.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/breadcrumb-header.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Button (`button`)
 - **Type**: primitive
 - **Categories**: primitives, inputs, actions
@@ -539,6 +780,88 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Canvas Workspace Shell (`canvas-workspace-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Infinite-pan coordinate workspace canvas with floating tool palettes and zoom controls.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/canvas-workspace-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Centered Top Navigation (`centered-top-nav`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Symmetrical marketing header with brand logo on left, centered links, and right-aligned CTA.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/centered-top-nav.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Checkbox (`checkbox`)
 - **Type**: primitive
 - **Categories**: primitives, inputs
@@ -574,6 +897,47 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Collapsible Sidebar (`collapsible-sidebar`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Flexible sidebar toggling between icon rail (48px) and expanded labels (240px) on user trigger.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/collapsible-sidebar.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -621,6 +985,88 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Command Centre Shell (`command-centre-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Mission control telemetry layout with multi-panel monitoring grids and emergency alerts.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/command-centre-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Command-First Navigation (`command-first-nav`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Spotlight-oriented application header centered on a prominent interactive search input.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/command-first-nav.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Command Menu (`command-menu`)
 - **Type**: primitive
 - **Categories**: primitives, overlays, search
@@ -662,6 +1108,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Commerce Management Shell (`commerce-management-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: E-commerce operations shell with order fulfillment queue, inventory counts, and sales graph.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/commerce-management-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Context Menu (`context-menu`)
 - **Type**: primitive
 - **Categories**: primitives, overlays
@@ -697,6 +1184,88 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Context Rail (`context-rail`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Secondary right-hand vertical rail displaying active object inspector or contextual metadata.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/context-rail.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Data Terminal Header (`data-terminal-header`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: High-density monospace financial header with ticker feed, clock, and connection latency.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/data-terminal-header.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -785,6 +1354,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Documentation Shell (`documentation-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Technical docs shell with sticky sidebar topic hierarchy, reading center, and on-page table of contents.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/documentation-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Drawer (`drawer`)
 - **Type**: primitive
 - **Categories**: primitives, overlays, layout
@@ -867,6 +1477,129 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Dual-Rail Navigation (`dual-rail-nav`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Two-tier navigation shell with primary app rail (48px) and contextual sub-navigation list (200px).
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/dual-rail-nav.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Editor Workspace Shell (`editor-workspace-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Code and structured text editing shell with gutter line numbers, status bar, and tab bar.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/editor-workspace-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Floating Navigation (`floating-nav`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Island-style floating navigation pill pinned to top viewport with rounded corners and glass blur.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/floating-nav.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Icon Button (`icon-button`)
 - **Type**: primitive
 - **Categories**: primitives, inputs, actions
@@ -902,6 +1635,88 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Icon Rail (`icon-rail`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Ultra-thin vertical action rail for high-frequency tool selection in design editors.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/icon-rail.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Immersive Fullscreen Shell (`immersive-fullscreen-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Distraction-free edge-to-edge presentation shell with auto-hiding chrome and focus mode.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/immersive-fullscreen-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -990,6 +1805,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Kiosk Display Shell (`kiosk-display-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Digital signage kiosk shell with high contrast typography, touch safety, and timeout reset.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/kiosk-display-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Link (`link`)
 - **Type**: primitive
 - **Categories**: primitives, navigation
@@ -1025,6 +1881,252 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Marketing Navigation with CTA (`marketing-nav-cta`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: High-conversion header with promotional badge, navigation links, and primary CTA trigger.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/marketing-nav-cta.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Mega Navigation (`mega-nav`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Comprehensive multi-column dropdown header exposing broad product suite categories.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/mega-nav.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Messaging Shell (`messaging-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Real-time conversation shell with channel sidebar, chat stream, and message composer.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/messaging-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Minimal Top Navigation (`minimal-top-nav`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Restrained horizontal header with brand mark, essential route links, and profile badge.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/minimal-top-nav.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Mobile Bottom Navigation (`mobile-bottom-nav`)
+- **Type**: block
+- **Categories**: shells, navigation, mobile
+- **Description**: Fixed bottom thumb-friendly tab bar for mobile web apps with icon and label pairs.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/mobile-bottom-nav.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Mobile Drawer Navigation (`mobile-drawer-nav`)
+- **Type**: block
+- **Categories**: shells, navigation, mobile
+- **Description**: Hamburger slide-out overlay drawer displaying full mobile navigation menu.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/mobile-drawer-nav.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -1318,6 +2420,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Project Switcher (`project-switcher`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Header breadcrumb trigger for toggling between project repositories or composed interfaces.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/project-switcher.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Radio Group (`radio-group`)
 - **Type**: primitive
 - **Categories**: primitives, inputs
@@ -1394,6 +2537,129 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Research Terminal Shell (`research-terminal-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Scholarly exploration workspace with paper abstract viewer, citation graph, and notes rail.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/research-terminal-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Responsive App Shell (`responsive-app-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Unified application shell adapting gracefully from desktop sidebar to mobile bottom bar.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/responsive-app-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Search-First Header (`search-first-header`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Global top navigation centered around expansive query input, filters, and notification bell.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/search-first-header.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -1564,6 +2830,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Settings Shell (`settings-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Account and workspace preference shell with category navigation tabs and form sections.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/settings-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Skeleton (`skeleton`)
 - **Type**: primitive
 - **Categories**: primitives, feedback
@@ -1728,6 +3035,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Tab Workspace Navigation (`tab-workspace-nav`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Browser-style multi-tab document bar with close buttons and split view triggers.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/tab-workspace-nav.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Tabs (`tabs`)
 - **Type**: primitive
 - **Categories**: primitives, navigation
@@ -1851,6 +3199,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Three-Pane App Shell (`three-pane-app-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Pro desktop shell with navigation sidebar, primary workspace canvas, and right property inspector.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/three-pane-app-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Toast (`toast`)
 - **Type**: primitive
 - **Categories**: primitives, feedback
@@ -1927,6 +3316,129 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Transparent-to-Solid Navigation (`transparent-solid-nav`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Dynamic header starting transparent over media heroes and transitioning solid on scroll.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/transparent-solid-nav.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Two-Pane Master Detail Shell (`two-pane-master-detail-shell`)
+- **Type**: block
+- **Categories**: shells, layout
+- **Description**: Split-view shell pairing searchable master entity list with comprehensive detail reader pane.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/two-pane-master-detail-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Workspace Switcher (`workspace-switcher`)
+- **Type**: block
+- **Categories**: shells, navigation
+- **Description**: Dropdown trigger displaying current tenant organization with plan badge and fast team switching.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/workspace-switcher.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 75
+  - editorial: 65
+  - futurism: 40
+  - visualAmbition: 60
+  - structuralCreativity: 45
+  - density: 65
+  - whitespace: 50
+  - contrast: 75
+  - colourfulness: 35
+  - curvature: 40
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 45
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 70
+  - interactionDensity: 70
+  - asymmetry: 15
+  - conversionIntensity: 50
+  - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive

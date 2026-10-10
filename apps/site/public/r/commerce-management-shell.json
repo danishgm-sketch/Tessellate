@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "commerce-management-shell",
+  "type": "registry:block",
+  "title": "Commerce Management Shell",
+  "description": "E-commerce operations shell with order fulfillment queue, inventory counts, and sales graph.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type CommerceManagementShellVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CommerceManagementShellProps {\n  variant?: CommerceManagementShellVariant;\n}\n\nexport function CommerceManagementShell({ variant = 'quiet' }: CommerceManagementShellProps) {\n  let theme = 'bg-[#FAF9F6] text-neutral-900';\n  if (variant === 'nocturne') theme = 'bg-[#0B0D10] text-white';\n\n  return (\n    <div className={`min-h-screen p-8 space-y-6 ${theme}`}>\n      <header className=\"flex justify-between items-center pb-4 border-b\">\n        <div>\n          <h1 className=\"text-base font-bold\">Store Operations</h1>\n          <p className=\"text-xs opacity-60\">Pending fulfillment orders</p>\n        </div>\n      </header>\n      <div className=\"grid grid-cols-3 gap-4 text-xs\">\n        <div className=\"border p-4 rounded-xl bg-white dark:bg-neutral-900\">Open Orders: 18</div>\n        <div className=\"border p-4 rounded-xl bg-white dark:bg-neutral-900\">Low Stock: 3 items</div>\n        <div className=\"border p-4 rounded-xl bg-white dark:bg-neutral-900\">Revenue Today: $4,290</div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { CommerceManagementShell } from './index.js';\n\nexport function CommerceManagementShellPreview() {\n  return (\n    <div className=\"h-64 border rounded-xl overflow-hidden\">\n      <CommerceManagementShell variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "layout"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_commerce_management_shell",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

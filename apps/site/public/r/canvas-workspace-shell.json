@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "canvas-workspace-shell",
+  "type": "registry:block",
+  "title": "Canvas Workspace Shell",
+  "description": "Infinite-pan coordinate workspace canvas with floating tool palettes and zoom controls.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type CanvasWorkspaceShellVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CanvasWorkspaceShellProps {\n  variant?: CanvasWorkspaceShellVariant;\n  children?: React.ReactNode;\n}\n\nexport function CanvasWorkspaceShell({\n  variant = 'quiet',\n  children = <div className=\"p-12 border border-dashed rounded-xl inline-block bg-white dark:bg-neutral-900\">Composed Interface Screen</div>,\n}: CanvasWorkspaceShellProps) {\n  let gridBg = 'bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-[size:16px_16px]';\n  if (variant === 'nocturne') {\n    gridBg = 'bg-[radial-gradient(#27272a_1px,transparent_1px)] bg-[size:16px_16px] bg-[#0B0D10] text-white';\n  }\n\n  return (\n    <div className={`w-full h-screen relative overflow-hidden flex items-center justify-center ${gridBg}`}>\n      <div className=\"absolute top-4 left-4 z-10 p-2 bg-white/80 dark:bg-neutral-900/80 border rounded-lg text-xs shadow-xs\">\n        100% Zoom\n      </div>\n      <div>{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { CanvasWorkspaceShell } from './index.js';\n\nexport function CanvasWorkspaceShellPreview() {\n  return (\n    <div className=\"h-64 border rounded-xl overflow-hidden\">\n      <CanvasWorkspaceShell variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "layout"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_canvas_workspace_shell",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

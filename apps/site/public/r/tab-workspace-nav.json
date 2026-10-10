@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tab-workspace-nav",
+  "type": "registry:block",
+  "title": "Tab Workspace Navigation",
+  "description": "Browser-style multi-tab document bar with close buttons and split view triggers.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type TabWorkspaceNavVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface TabWorkspaceNavProps {\n  variant?: TabWorkspaceNavVariant;\n  activeId?: string;\n}\n\nexport function TabWorkspaceNav({ variant = 'quiet', activeId = '1' }: TabWorkspaceNavProps) {\n  let bar = 'bg-neutral-100 border-b border-neutral-200';\n  let activeTab = 'bg-white text-neutral-900 border-r border-l border-neutral-200';\n  if (variant === 'nocturne') {\n    bar = 'bg-[#0B0D10] border-b border-[#2E3440] text-white';\n    activeTab = 'bg-[#11141B] text-white border-r border-l border-[#2E3440]';\n  }\n\n  const tabs = [\n    { id: '1', name: 'Dashboard.tsx' },\n    { id: '2', name: 'tokens.css' },\n    { id: '3', name: 'schema.json' },\n  ];\n\n  return (\n    <div className={`w-full flex items-center h-10 px-2 overflow-x-auto text-xs ${bar}`}>\n      {tabs.map((t) => (\n        <div\n          key={t.id}\n          className={`h-full flex items-center gap-2 px-3 cursor-pointer ${\n            t.id === activeId ? activeTab : 'opacity-60 hover:opacity-100'\n          }`}\n        >\n          <span>{t.name}</span>\n          <button type=\"button\" className=\"opacity-40 hover:opacity-100 text-[10px]\">✕</button>\n        </div>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { TabWorkspaceNav } from './index.js';\n\nexport function TabWorkspaceNavPreview() {\n  return (\n    <div className=\"w-full\">\n      <TabWorkspaceNav variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_tab_workspace_nav",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

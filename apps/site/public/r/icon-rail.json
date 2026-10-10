@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon-rail",
+  "type": "registry:block",
+  "title": "Icon Rail",
+  "description": "Ultra-thin vertical action rail for high-frequency tool selection in design editors.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type IconRailVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface IconRailProps {\n  variant?: IconRailVariant;\n}\n\nexport function IconRail({ variant = 'quiet' }: IconRailProps) {\n  const [active, setActive] = useState('select');\n\n  let theme = 'bg-white border-r border-neutral-200 text-neutral-800';\n  let activeStyle = 'bg-neutral-900 text-white';\n  if (variant === 'expressive') {\n    theme = 'bg-white border-r border-[#D9D6CF] text-neutral-800';\n    activeStyle = 'bg-[#2547E8] text-white shadow-xs';\n  } else if (variant === 'nocturne') {\n    theme = 'bg-[#11141B] border-r border-[#2E3440] text-neutral-300';\n    activeStyle = 'bg-white text-neutral-950 font-bold';\n  }\n\n  const tools = [\n    { id: 'select', label: 'V' },\n    { id: 'frame', label: 'F' },\n    { id: 'text', label: 'T' },\n    { id: 'dna', label: 'D' },\n  ];\n\n  return (\n    <div className={`w-12 h-screen flex flex-col items-center py-4 gap-2 ${theme}`}>\n      {tools.map((t) => (\n        <button\n          key={t.id}\n          type=\"button\"\n          onClick={() => setActive(t.id)}\n          className={`h-8 w-8 rounded-lg flex items-center justify-center text-xs font-mono transition-colors ${\n            t.id === active ? activeStyle : 'hover:bg-neutral-100 dark:hover:bg-neutral-800'\n          }`}\n        >\n          {t.label}\n        </button>\n      ))}\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { IconRail } from './index.js';\n\nexport function IconRailPreview() {\n  return (\n    <div className=\"h-64 flex border rounded-xl overflow-hidden bg-[#FAF9F6]\">\n      <IconRail variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_icon_rail",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

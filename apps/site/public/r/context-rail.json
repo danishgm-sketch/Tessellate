@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "context-rail",
+  "type": "registry:block",
+  "title": "Context Rail",
+  "description": "Secondary right-hand vertical rail displaying active object inspector or contextual metadata.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ContextRailVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ContextRailProps {\n  variant?: ContextRailVariant;\n  title?: string;\n  children?: React.ReactNode;\n}\n\nexport function ContextRail({\n  variant = 'quiet',\n  title = 'Inspector',\n  children = <p className=\"opacity-60 text-xs\">Select node to inspect properties.</p>,\n}: ContextRailProps) {\n  let theme = 'bg-white border-l border-neutral-200 text-neutral-900';\n  if (variant === 'nocturne') theme = 'bg-[#11141B] border-l border-[#2E3440] text-white';\n\n  return (\n    <aside className={`w-64 h-screen p-4 flex flex-col gap-4 text-xs ${theme}`}>\n      <div className=\"flex items-center justify-between pb-2 border-b border-inherit\">\n        <span className=\"font-semibold uppercase tracking-wider text-[10px] text-neutral-400\">{title}</span>\n      </div>\n      <div className=\"flex-1\">{children}</div>\n    </aside>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { ContextRail } from './index.js';\n\nexport function ContextRailPreview() {\n  return (\n    <div className=\"h-64 flex justify-end border rounded-xl overflow-hidden bg-[#FAF9F6]\">\n      <ContextRail variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "layout"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_context_rail",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

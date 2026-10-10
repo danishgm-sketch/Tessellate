@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "messaging-shell",
+  "type": "registry:block",
+  "title": "Messaging Shell",
+  "description": "Real-time conversation shell with channel sidebar, chat stream, and message composer.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type MessagingShellVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface MessagingShellProps {\n  variant?: MessagingShellVariant;\n}\n\nexport function MessagingShell({ variant = 'quiet' }: MessagingShellProps) {\n  let theme = 'bg-white text-neutral-900';\n  if (variant === 'nocturne') theme = 'bg-[#11141B] text-white';\n\n  return (\n    <div className={`h-screen flex divide-x text-xs ${theme}`}>\n      <div className=\"w-56 p-4 space-y-2 shrink-0\">\n        <span className=\"font-semibold block mb-2\">Channels</span>\n        <p className=\"p-1.5 rounded bg-neutral-100 dark:bg-neutral-800 font-medium\"># product-engine</p>\n        <p className=\"p-1.5 rounded opacity-70\"># design-dna</p>\n      </div>\n      <div className=\"flex-1 flex flex-col justify-between p-4\">\n        <div className=\"space-y-3\">\n          <p className=\"font-semibold text-xs border-b pb-2\"># product-engine</p>\n          <div className=\"p-3 bg-neutral-50 dark:bg-neutral-900 rounded-lg\">\n            <span className=\"font-bold\">Ada:</span> Composed project passed Zod schema validation.\n          </div>\n        </div>\n        <input type=\"text\" placeholder=\"Type message...\" className=\"border p-2 rounded-lg text-xs\" />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { MessagingShell } from './index.js';\n\nexport function MessagingShellPreview() {\n  return (\n    <div className=\"h-64 border rounded-xl overflow-hidden\">\n      <MessagingShell variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "layout"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_messaging_shell",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

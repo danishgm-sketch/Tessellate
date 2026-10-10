@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "minimal-top-nav",
+  "type": "registry:block",
+  "title": "Minimal Top Navigation",
+  "description": "Restrained horizontal header with brand mark, essential route links, and profile badge.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type MinimalTopNavVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface MinimalTopNavProps {\n  variant?: MinimalTopNavVariant;\n  brand?: React.ReactNode;\n  links?: Array<{ label: string; href: string }>;\n  actions?: React.ReactNode;\n}\n\nexport function MinimalTopNav({\n  variant = 'quiet',\n  brand = 'Tessellate',\n  links = [\n    { label: 'Catalogue', href: '#' },\n    { label: 'DNA Lab', href: '#' },\n    { label: 'Docs', href: '#' },\n  ],\n  actions,\n}: MinimalTopNavProps) {\n  let header = 'bg-white/80 border-b border-neutral-200 text-neutral-900';\n  let linkStyle = 'text-neutral-600 hover:text-neutral-900';\n  if (variant === 'expressive') {\n    header = 'bg-white/90 border-b border-[#D9D6CF] text-neutral-900 shadow-2xs';\n    linkStyle = 'text-neutral-700 hover:text-[#2547E8] font-medium';\n  } else if (variant === 'nocturne') {\n    header = 'bg-[#0B0D10]/90 border-b border-[#2E3440] text-white';\n    linkStyle = 'text-neutral-400 hover:text-white';\n  }\n\n  return (\n    <header className={`w-full backdrop-blur-md sticky top-0 z-40 transition-colors ${header}`}>\n      <div className=\"max-w-7xl mx-auto px-6 h-14 flex items-center justify-between\">\n        <div className=\"flex items-center gap-8\">\n          <div className=\"font-semibold tracking-tight text-sm flex items-center gap-2\">\n            <span className=\"h-4 w-4 rounded bg-current\" />\n            <span>{brand}</span>\n          </div>\n          <nav className=\"hidden md:flex items-center gap-6 text-xs\">\n            {links.map((l) => (\n              <a key={l.label} href={l.href} className={`transition-colors ${linkStyle}`}>\n                {l.label}\n              </a>\n            ))}\n          </nav>\n        </div>\n        {actions && <div className=\"flex items-center gap-3\">{actions}</div>}\n      </div>\n    </header>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { MinimalTopNav } from './index.js';\n\nexport function MinimalTopNavPreview() {\n  return (\n    <div className=\"w-full space-y-4\">\n      <MinimalTopNav variant=\"expressive\" actions={<button className=\"px-3 py-1.5 text-xs bg-[#2547E8] text-white rounded-lg\">Sign In</button>} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_minimal_top_nav",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

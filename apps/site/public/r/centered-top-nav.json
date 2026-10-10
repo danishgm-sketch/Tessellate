@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "centered-top-nav",
+  "type": "registry:block",
+  "title": "Centered Top Navigation",
+  "description": "Symmetrical marketing header with brand logo on left, centered links, and right-aligned CTA.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type CenteredTopNavVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CenteredTopNavProps {\n  variant?: CenteredTopNavVariant;\n  brand?: React.ReactNode;\n  links?: Array<{ label: string; href: string }>;\n  cta?: React.ReactNode;\n}\n\nexport function CenteredTopNav({\n  variant = 'quiet',\n  brand = 'Tessellate',\n  links = [\n    { label: 'Features', href: '#' },\n    { label: 'Showcase', href: '#' },\n    { label: 'Pricing', href: '#' },\n    { label: 'Blog', href: '#' },\n  ],\n  cta = <button className=\"px-3 py-1.5 text-xs bg-neutral-900 text-white rounded-lg\">Get Started</button>,\n}: CenteredTopNavProps) {\n  let bar = 'bg-white border-b border-neutral-200 text-neutral-900';\n  if (variant === 'expressive') bar = 'bg-white border-b border-[#D9D6CF] text-neutral-900';\n  if (variant === 'nocturne') bar = 'bg-[#0B0D10] border-b border-[#2E3440] text-white';\n\n  return (\n    <nav className={`w-full px-6 h-16 flex items-center justify-between ${bar}`}>\n      <div className=\"font-semibold text-sm\">{brand}</div>\n      <div className=\"hidden md:flex items-center gap-6 text-xs\">\n        {links.map((l) => (\n          <a key={l.label} href={l.href} className=\"opacity-70 hover:opacity-100 transition-opacity\">\n            {l.label}\n          </a>\n        ))}\n      </div>\n      <div>{cta}</div>\n    </nav>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { CenteredTopNav } from './index.js';\n\nexport function CenteredTopNavPreview() {\n  return (\n    <div className=\"w-full\">\n      <CenteredTopNav variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_centered_top_nav",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

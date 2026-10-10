@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marketing-nav-cta",
+  "type": "registry:block",
+  "title": "Marketing Navigation with CTA",
+  "description": "High-conversion header with promotional badge, navigation links, and primary CTA trigger.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type MarketingNavCtaVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface MarketingNavCtaProps {\n  variant?: MarketingNavCtaVariant;\n}\n\nexport function MarketingNavCta({ variant = 'quiet' }: MarketingNavCtaProps) {\n  let bar = 'bg-white border-b border-neutral-200 text-neutral-900';\n  let cta = 'bg-neutral-900 text-white';\n  if (variant === 'expressive') {\n    bar = 'bg-white border-b border-[#D9D6CF] text-neutral-900';\n    cta = 'bg-[#2547E8] text-white shadow-xs';\n  } else if (variant === 'nocturne') {\n    bar = 'bg-[#0B0D10] border-b border-[#2E3440] text-white';\n    cta = 'bg-white text-neutral-950 font-semibold';\n  }\n\n  return (\n    <header className={`w-full px-6 h-16 flex items-center justify-between ${bar}`}>\n      <div className=\"flex items-center gap-3\">\n        <span className=\"font-semibold text-sm\">Tessellate</span>\n        <span className=\"text-[10px] bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 rounded px-1.5 py-0.5 font-mono\">\n          BETA\n        </span>\n      </div>\n      <div className=\"flex items-center gap-4 text-xs\">\n        <a href=\"#\" className=\"opacity-70 hover:opacity-100\">Features</a>\n        <a href=\"#\" className=\"opacity-70 hover:opacity-100\">Pricing</a>\n        <button className={`px-4 py-1.5 rounded-lg text-xs font-medium transition-all ${cta}`}>\n          Start Free\n        </button>\n      </div>\n    </header>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { MarketingNavCta } from './index.js';\n\nexport function MarketingNavCtaPreview() {\n  return (\n    <div className=\"w-full\">\n      <MarketingNavCta variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_marketing_nav_cta",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

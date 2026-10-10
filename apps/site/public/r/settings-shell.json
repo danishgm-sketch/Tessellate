@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "settings-shell",
+  "type": "registry:block",
+  "title": "Settings Shell",
+  "description": "Account and workspace preference shell with category navigation tabs and form sections.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type SettingsShellVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SettingsShellProps {\n  variant?: SettingsShellVariant;\n}\n\nexport function SettingsShell({ variant = 'quiet' }: SettingsShellProps) {\n  let theme = 'bg-[#FAF9F6] text-neutral-900';\n  if (variant === 'nocturne') theme = 'bg-[#0B0D10] text-white';\n\n  return (\n    <div className={`min-h-screen p-8 max-w-4xl mx-auto space-y-6 ${theme}`}>\n      <header className=\"pb-4 border-b\">\n        <h1 className=\"text-lg font-bold\">Workspace Settings</h1>\n        <p className=\"text-xs opacity-60\">Manage your project defaults and developer credentials.</p>\n      </header>\n      <div className=\"flex gap-8 text-xs\">\n        <aside className=\"w-48 space-y-1\">\n          <p className=\"p-2 rounded font-semibold bg-neutral-200/50 dark:bg-neutral-800\">General</p>\n          <p className=\"p-2 rounded opacity-70\">Design DNA</p>\n          <p className=\"p-2 rounded opacity-70\">Team Members</p>\n          <p className=\"p-2 rounded opacity-70\">Billing</p>\n        </aside>\n        <main className=\"flex-1 border p-6 rounded-xl bg-white dark:bg-neutral-900 space-y-4\">\n          <h2 className=\"font-semibold text-sm\">Project Profile</h2>\n          <div className=\"space-y-1\">\n            <label className=\"text-[11px] font-medium opacity-70\">Workspace Name</label>\n            <input type=\"text\" defaultValue=\"Tessellate Lab\" className=\"w-full border p-2 rounded text-xs\" />\n          </div>\n        </main>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { SettingsShell } from './index.js';\n\nexport function SettingsShellPreview() {\n  return (\n    <div className=\"h-64 border rounded-xl overflow-hidden\">\n      <SettingsShell variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "layout"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_settings_shell",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

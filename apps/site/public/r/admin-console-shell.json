@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "admin-console-shell",
+  "type": "registry:block",
+  "title": "Admin Console Shell",
+  "description": "Enterprise administration layout with organization selector, user table, and security audit tab.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type AdminConsoleShellVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AdminConsoleShellProps {\n  variant?: AdminConsoleShellVariant;\n}\n\nexport function AdminConsoleShell({ variant = 'quiet' }: AdminConsoleShellProps) {\n  let theme = 'bg-[#FAF9F6] text-neutral-900';\n  if (variant === 'nocturne') theme = 'bg-[#0B0D10] text-white';\n\n  return (\n    <div className={`min-h-screen p-8 space-y-6 ${theme}`}>\n      <div className=\"flex justify-between items-center pb-4 border-b\">\n        <div>\n          <h1 className=\"text-base font-bold\">Admin Console</h1>\n          <p className=\"text-xs opacity-60\">User permissions & security enforcement</p>\n        </div>\n        <button className=\"px-3 py-1.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 rounded-lg text-xs font-medium\">Invite User</button>\n      </div>\n      <div className=\"border rounded-xl p-4 bg-white dark:bg-neutral-900 text-xs\">\n        <p className=\"font-semibold mb-2\">Active Organization Members (14)</p>\n        <p className=\"opacity-60\">All members authenticated with GitHub OAuth.</p>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { AdminConsoleShell } from './index.js';\n\nexport function AdminConsoleShellPreview() {\n  return (\n    <div className=\"h-64 border rounded-xl overflow-hidden\">\n      <AdminConsoleShell variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "layout"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_admin_console_shell",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

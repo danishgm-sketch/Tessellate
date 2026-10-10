@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "app-sidebar-compact",
+  "type": "registry:block",
+  "title": "App Sidebar Compact",
+  "description": "High-density narrow application sidebar displaying icon triggers and tooltip labels.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type AppSidebarCompactVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AppSidebarCompactProps {\n  variant?: AppSidebarCompactVariant;\n  activeId?: string;\n}\n\nexport function AppSidebarCompact({ variant = 'quiet', activeId = 'home' }: AppSidebarCompactProps) {\n  let theme = 'bg-white border-r border-neutral-200 text-neutral-800';\n  let active = 'bg-neutral-100 text-neutral-900';\n  if (variant === 'expressive') {\n    theme = 'bg-white border-r border-[#D9D6CF] text-neutral-800';\n    active = 'bg-[#E7EBFF] text-[#2547E8] font-bold';\n  } else if (variant === 'nocturne') {\n    theme = 'bg-[#11141B] border-r border-[#2E3440] text-neutral-300';\n    active = 'bg-[#1E232E] text-white';\n  }\n\n  const items = [\n    { id: 'home', icon: '⌘' },\n    { id: 'layers', icon: '◫' },\n    { id: 'dna', icon: '🧬' },\n    { id: 'export', icon: '⇪' },\n  ];\n\n  return (\n    <aside className={`w-14 h-screen flex flex-col items-center py-4 gap-4 ${theme}`}>\n      <div className=\"h-8 w-8 rounded-lg bg-current opacity-20 flex items-center justify-center font-bold text-xs\" />\n      <div className=\"flex-1 flex flex-col gap-2 w-full px-2\">\n        {items.map((it) => (\n          <button\n            key={it.id}\n            type=\"button\"\n            className={`h-10 w-full rounded-lg flex items-center justify-center text-sm transition-colors ${\n              it.id === activeId ? active : 'hover:bg-neutral-50 dark:hover:bg-neutral-800/40'\n            }`}\n          >\n            {it.icon}\n          </button>\n        ))}\n      </div>\n    </aside>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { AppSidebarCompact } from './index.js';\n\nexport function AppSidebarCompactPreview() {\n  return (\n    <div className=\"h-64 flex border rounded-xl overflow-hidden bg-[#FAF9F6]\">\n      <AppSidebarCompact variant=\"expressive\" />\n      <div className=\"flex-1 p-6 text-xs text-neutral-500\">Workspace stage</div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_app_sidebar_compact",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

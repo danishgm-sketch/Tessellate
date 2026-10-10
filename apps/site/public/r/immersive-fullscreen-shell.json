@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "immersive-fullscreen-shell",
+  "type": "registry:block",
+  "title": "Immersive Fullscreen Shell",
+  "description": "Distraction-free edge-to-edge presentation shell with auto-hiding chrome and focus mode.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ImmersiveFullscreenShellVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ImmersiveFullscreenShellProps {\n  variant?: ImmersiveFullscreenShellVariant;\n  children?: React.ReactNode;\n}\n\nexport function ImmersiveFullscreenShell({\n  variant = 'quiet',\n  children = <div className=\"text-center space-y-2\"><h1 className=\"text-2xl font-bold\">Immersive Viewport</h1><p className=\"text-xs opacity-60\">Edge-to-edge presentation mode active.</p></div>,\n}: ImmersiveFullscreenShellProps) {\n  let theme = 'bg-neutral-900 text-white';\n  if (variant === 'nocturne') theme = 'bg-[#0B0D10] text-neutral-100';\n\n  return (\n    <div className={`w-full h-screen relative flex items-center justify-center p-8 ${theme}`}>\n      <button className=\"absolute top-4 right-4 text-xs opacity-50 hover:opacity-100 p-2 border border-white/20 rounded-lg\">\n        ✕ Exit Focus Mode\n      </button>\n      <div>{children}</div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { ImmersiveFullscreenShell } from './index.js';\n\nexport function ImmersiveFullscreenShellPreview() {\n  return (\n    <div className=\"h-64 border rounded-xl overflow-hidden\">\n      <ImmersiveFullscreenShell variant=\"nocturne\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "layout"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_immersive_fullscreen_shell",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}
