@@ -98,20 +98,20 @@ Goal: establish identity before feature volume.
 
 Goal: one validated resource can flow from source folder to public page, search index, preview and registry.
 
-- [ ] Implement resource folder discovery.
-- [ ] Implement manifest loader.
-- [ ] Implement catalogue validator.
-- [ ] Implement license allowlist validator.
-- [ ] Implement dependency/file existence validation.
-- [ ] Implement flattened catalogue artefact generation.
-- [ ] Implement resource route generation.
-- [ ] Implement resource-card component.
-- [ ] Implement resource detail layout/tabs.
-- [ ] Implement preview-app communication protocol.
-- [ ] Implement isolated iframe preview rendering.
-- [ ] Implement one canonical example resource end-to-end.
-- [ ] Implement three variants: Quiet, Expressive, Nocturne.
-- [ ] Implement registry JSON generation for the example.
+- [x] Implement resource folder discovery.
+- [x] Implement manifest loader.
+- [x] Implement catalogue validator.
+- [x] Implement license allowlist validator.
+- [x] Implement dependency/file existence validation.
+- [x] Implement flattened catalogue artefact generation.
+- [x] Implement resource route generation.
+- [x] Implement resource-card component.
+- [x] Implement resource detail layout/tabs.
+- [x] Implement preview-app communication protocol.
+- [x] Implement isolated iframe preview rendering.
+- [x] Implement one canonical example resource end-to-end.
+- [x] Implement three variants: Quiet, Expressive, Nocturne.
+- [x] Implement registry JSON generation for the example.
 
 ### Phase 3 gate
 

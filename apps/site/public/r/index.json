@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "tessellate",
+  "homepage": "https://tessellate.design",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Tactile, accessible multi-intent button primitive with Quiet, Expressive, and Nocturne curated configurations.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs",
+        "actions"
+      ]
+    }
+  ]
+}

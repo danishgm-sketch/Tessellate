@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@tessellate/catalog": "workspace:*",
     "@tessellate/dna": "workspace:*",
     "@tessellate/schemas": "workspace:*",
     "@tessellate/ui": "workspace:*",
