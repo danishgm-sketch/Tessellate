@@ -74,16 +74,16 @@ Goal: no feature code before the product language is typed.
 
 Goal: establish identity before feature volume.
 
-- [ ] Self-host Geist Sans and Geist Mono.
-- [ ] Implement light and dark Tessellate token sets exactly from `DESIGN_SYSTEM.md`.
-- [ ] Implement spacing/radius/type tokens.
-- [ ] Implement product-shell primitives: Button, IconButton, Input, Textarea, Select, Chip, Tooltip, Dialog, Sheet, Tabs, SegmentedControl, Slider, Menu, Separator, Skeleton.
-- [ ] Implement Tessellate geometric tile mark as SVG/CSS.
-- [ ] Implement public header.
-- [ ] Implement Workbench chrome primitives.
-- [ ] Implement visible focus system.
-- [ ] Implement reduced-motion CSS/system helper.
-- [ ] Create Storybook-like internal dev route only if it adds minimal dependency; otherwise create `/dev/ui` route excluded from production index.
+- [x] Self-host Geist Sans and Geist Mono.
+- [x] Implement light and dark Tessellate token sets exactly from `DESIGN_SYSTEM.md`.
+- [x] Implement spacing/radius/type tokens.
+- [x] Implement product-shell primitives: Button, IconButton, Input, Textarea, Select, Chip, Tooltip, Dialog, Sheet, Tabs, SegmentedControl, Slider, Menu, Separator, Skeleton.
+- [x] Implement Tessellate geometric tile mark as SVG/CSS.
+- [x] Implement public header.
+- [x] Implement Workbench chrome primitives.
+- [x] Implement visible focus system.
+- [x] Implement reduced-motion CSS/system helper.
+- [x] Create Storybook-like internal dev route only if it adds minimal dependency; otherwise create `/dev/ui` route excluded from production index.
 
 ### Phase 2 gate
 

@@ -1,0 +1,21 @@
+---
+import '../../styles/global.css';
+import { Header } from '@tessellate/ui';
+import { UiGallery } from '../../components/UiGallery';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tessellate UI Primitives Gallery (/dev/ui)</title>
+    <meta name="robots" content="noindex,nofollow" />
+  </head>
+  <body class="min-h-screen bg-[#F4F2ED] text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA]">
+    <Header client:load />
+
+    <main class="mx-auto max-w-[1280px] px-6 py-12">
+      <UiGallery client:load />
+    </main>
+  </body>
+</html>
