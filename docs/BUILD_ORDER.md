@@ -237,19 +237,19 @@ Goal: the actual moat.
 
 Goal: independently authored resources appear as one deliberate design system.
 
-- [ ] Implement semantic token contract.
-- [ ] Implement colour mapping.
-- [ ] Implement typography mapping.
-- [ ] Implement radius mapping.
-- [ ] Implement spacing mapping.
-- [ ] Implement surface/depth mapping.
-- [ ] Implement motion mapping.
-- [ ] Implement focus/accessibility precedence.
-- [ ] Implement `ProjectManifest` renderer.
-- [ ] Implement missing-resource recovery placeholder.
-- [ ] Implement responsive-strategy application.
-- [ ] Implement reduced-motion rendering.
-- [ ] Render first full composed page from manifest.
+- [x] Implement semantic token contract.
+- [x] Implement colour mapping.
+- [x] Implement typography mapping.
+- [x] Implement radius mapping.
+- [x] Implement spacing mapping.
+- [x] Implement surface/depth mapping.
+- [x] Implement motion mapping.
+- [x] Implement focus/accessibility precedence.
+- [x] Implement `ProjectManifest` renderer.
+- [x] Implement missing-resource recovery placeholder.
+- [x] Implement responsive-strategy application.
+- [x] Implement reduced-motion rendering.
+- [x] Render first full composed page from manifest.
 
 ### Phase 8 gate
 

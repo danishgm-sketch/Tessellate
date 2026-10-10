@@ -917,6 +917,8 @@ export function getPalette(id: string): SemanticPalette | undefined {
   return PALETTES_BY_ID.get(id);
 }
 
+export const getSemanticPalette = getPalette;
+
 /**
  * Retrieves all registered semantic palettes.
  */
