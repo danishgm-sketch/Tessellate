@@ -132,19 +132,19 @@ Do not proceed to resource volume until this vertical slice is solid.
 
 Goal: excellent browsing without paid search infrastructure.
 
-- [ ] Implement `/explore` layout with 248px desktop filter rail.
-- [ ] Implement all filter groups from Product Spec.
-- [ ] Implement Orama full-text index generation.
-- [ ] Implement browser search loading/caching.
-- [ ] Implement query + filter composition.
-- [ ] Implement global `Cmd/Ctrl+K` command/search palette.
-- [ ] Implement result groups.
-- [ ] Implement lazy preview strategy for catalogue cards.
-- [ ] Implement URL-query synchronization for shareable searches.
-- [ ] Implement saved recent searches locally.
-- [ ] Implement optional semantic-search adapter boundary.
-- [ ] Integrate Transformers.js query embedding lazily after basic search is stable.
-- [ ] Implement WebGPU → WASM → text fallback.
+- [x] Implement `/explore` layout with 248px desktop filter rail.
+- [x] Implement all filter groups from Product Spec.
+- [x] Implement Orama full-text index generation.
+- [x] Implement browser search loading/caching.
+- [x] Implement query + filter composition.
+- [x] Implement global `Cmd/Ctrl+K` command/search palette.
+- [x] Implement result groups.
+- [x] Implement lazy preview strategy for catalogue cards.
+- [x] Implement URL-query synchronization for shareable searches.
+- [x] Implement saved recent searches locally.
+- [x] Implement optional semantic-search adapter boundary.
+- [x] Integrate Transformers.js query embedding lazily after basic search is stable.
+- [x] Implement WebGPU → WASM → text fallback.
 
 ### Phase 4 gate
 

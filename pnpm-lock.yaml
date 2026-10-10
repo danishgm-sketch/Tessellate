@@ -334,6 +334,9 @@ importers:
         specifier: workspace:*
         version: link:../schemas
     devDependencies:
+      '@tessellate/catalog':
+        specifier: workspace:*
+        version: link:../catalog
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
