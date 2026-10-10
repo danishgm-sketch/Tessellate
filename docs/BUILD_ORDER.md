@@ -433,17 +433,17 @@ All ten tools are useful without login and do not require paid external service.
 
 Goal: optional account value without compromising guest-first architecture.
 
-- [ ] Integrate Better Auth.
-- [ ] GitHub OAuth only.
-- [ ] Create D1 migrations.
-- [ ] Implement profile/me endpoint.
-- [ ] Implement project cloud save/checkpoint.
-- [ ] Implement project ownership authorization.
-- [ ] Implement favourites.
-- [ ] Implement collections.
-- [ ] Implement published read-only project revisions.
-- [ ] Implement Remix.
-- [ ] Implement creator profile linkage.
+- [x] Integrate Better Auth.
+- [x] GitHub OAuth only.
+- [x] Create D1 migrations.
+- [x] Implement profile/me endpoint.
+- [x] Implement project cloud save/checkpoint.
+- [x] Implement project ownership authorization.
+- [x] Implement favourites.
+- [x] Implement collections.
+- [x] Implement published read-only project revisions.
+- [x] Implement Remix.
+- [x] Implement creator profile linkage.
 
 ### Phase 16 gate
 

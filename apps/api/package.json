@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@tessellate/schemas": "workspace:*",
+    "better-auth": "^1.7.7",
+    "drizzle-orm": "^0.45.4",
     "hono": "^4.7.1"
   },
   "devDependencies": {
