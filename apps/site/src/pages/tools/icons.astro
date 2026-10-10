@@ -1,0 +1,31 @@
+---
+import '../../styles/global.css';
+import { SiteHeader } from '../../components/home/SiteHeader';
+import { IconLab } from '../../components/tools/IconLab';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>SVG / Icon Lab — Tessellate Tools</title>
+    <meta
+      name="description"
+      content="Search, tune optical stroke geometry, recolour, and export permissively licensed icons under the ISC license."
+    />
+  </head>
+  <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white flex flex-col font-sans">
+    <SiteHeader client:load />
+
+    <main class="flex-1 max-w-[1440px] w-full mx-auto px-6 py-12">
+      <IconLab client:load />
+    </main>
+
+    <footer class="border-t border-[#D9D6CF] py-8 text-center text-xs text-[#8B8F97] font-mono">
+      Tessellate Interface Suite · Tool 10: SVG / Icon Lab
+    </footer>
+  </body>
+</html>

@@ -410,16 +410,16 @@ Homepage contains no fake product imagery where a real interactive implementatio
 
 Implement in order:
 
-- [ ] Design DNA Lab (already begun in Phase 5; finish production route).
-- [ ] Background Studio.
-- [ ] Motion Studio.
-- [ ] Palette Studio.
-- [ ] Typography Lab.
-- [ ] Layout Composer.
-- [ ] Section Planner.
-- [ ] Data Visualisation Styler.
-- [ ] Accessibility Lab.
-- [ ] SVG/Icon Lab.
+- [x] Design DNA Lab (already begun in Phase 5; finish production route).
+- [x] Background Studio.
+- [x] Motion Studio.
+- [x] Palette Studio.
+- [x] Typography Lab.
+- [x] Layout Composer.
+- [x] Section Planner.
+- [x] Data Visualisation Styler.
+- [x] Accessibility Lab.
+- [x] SVG/Icon Lab.
 
 Prefer client-side operation.
 
