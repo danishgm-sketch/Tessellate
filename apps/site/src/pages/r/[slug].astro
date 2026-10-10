@@ -65,6 +65,9 @@ const { manifest } = Astro.props;
               {manifest.name}
             </h1>
             <span class="px-2 py-0.5 rounded text-xs font-mono font-semibold bg-[var(--tess-canvas-strong,#ECE9E2)] text-[var(--tess-ink-secondary,#62666F)]">
+              @tess/{manifest.slug}
+            </span>
+            <span class="px-2 py-0.5 rounded text-xs font-mono font-semibold bg-[var(--tess-canvas-strong,#ECE9E2)] text-[var(--tess-ink-secondary,#62666F)]">
               v{manifest.version}
             </span>
             <span class="px-2 py-0.5 rounded text-xs font-mono font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
@@ -74,6 +77,15 @@ const { manifest } = Astro.props;
           <p class="text-sm md:text-base text-[var(--tess-ink-secondary,#62666F)]">
             {manifest.description}
           </p>
+          <div class="pt-2 flex flex-wrap items-center gap-2">
+            <span class="text-xs text-[var(--tess-ink-tertiary,#8C909B)] font-mono">Install:</span>
+            <code class="px-2 py-1 rounded text-xs font-mono bg-white border border-[var(--tess-hairline,#D9D6CF)] text-[var(--tess-cobalt,#2547E8)]">
+              tess add {manifest.slug}
+            </code>
+            <code class="px-2 py-1 rounded text-xs font-mono bg-white border border-[var(--tess-hairline,#D9D6CF)] text-[var(--tess-ink-secondary,#62666F)]">
+              npx shadcn@latest add https://tessellate.design/r/{manifest.slug}.json
+            </code>
+          </div>
         </div>
 
         <!-- Tags -->

@@ -192,9 +192,15 @@ importers:
       '@tessellate/composer':
         specifier: workspace:*
         version: link:../composer
+      '@tessellate/dna':
+        specifier: workspace:*
+        version: link:../dna
       '@tessellate/exporter':
         specifier: workspace:*
         version: link:../exporter
+      '@tessellate/registry':
+        specifier: workspace:*
+        version: link:../registry
       '@tessellate/schemas':
         specifier: workspace:*
         version: link:../schemas
@@ -278,12 +284,21 @@ importers:
       '@tessellate/catalog':
         specifier: workspace:*
         version: link:../catalog
+      '@tessellate/compatibility':
+        specifier: workspace:*
+        version: link:../compatibility
       '@tessellate/composer':
         specifier: workspace:*
         version: link:../composer
+      '@tessellate/dna':
+        specifier: workspace:*
+        version: link:../dna
       '@tessellate/schemas':
         specifier: workspace:*
         version: link:../schemas
+      zod:
+        specifier: ^3.24.2
+        version: 3.25.76
     devDependencies:
       '@types/node':
         specifier: ^22.13.4

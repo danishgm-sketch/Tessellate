@@ -1,0 +1,261 @@
+/**
+ * Generates the complete OpenAPI 3.1 specification for the Tessellate platform and API.
+ */
+export function generateOpenApiSpec(apiUrl = 'https://api.tessellate.design'): Record<string, unknown> {
+  return {
+    openapi: '3.1.0',
+    info: {
+      title: 'Tessellate Platform API',
+      version: '0.1.0',
+      description: 'Interface intelligence and cloud synchronization runtime for humans and agents.',
+      license: {
+        name: 'MIT',
+        url: 'https://github.com/danishgm-sketch/Tessellate/blob/main/LICENSE',
+      },
+    },
+    servers: [
+      {
+        url: apiUrl,
+        description: 'Production Cloudflare Worker Edge runtime',
+      },
+      {
+        url: 'http://localhost:8787',
+        description: 'Local development environment',
+      },
+    ],
+    paths: {
+      '/health': {
+        get: {
+          summary: 'Service health check',
+          operationId: 'getHealth',
+          responses: {
+            '200': {
+              description: 'Service status',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      status: { type: 'string', example: 'ok' },
+                      service: { type: 'string', example: 'tessellate-api' },
+                      timestamp: { type: 'string' },
+                    },
+                    required: ['status', 'service', 'timestamp'],
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+      '/api/me': {
+        get: {
+          summary: 'Get current user session and creator profile',
+          operationId: 'getCurrentUser',
+          responses: {
+            '200': {
+              description: 'User profile or unauthenticated guest status',
+              content: {
+                'application/json': {
+                  schema: {
+                    type: 'object',
+                    properties: {
+                      authenticated: { type: 'boolean' },
+                      user: { type: ['object', 'null'] },
+                      profile: { type: ['object', 'null'] },
+                    },
+                    required: ['authenticated'],
+                  },
+                },
+              },
+            },
+          },
+        },
+        put: {
+          summary: 'Update creator profile',
+          operationId: 'updateProfile',
+          security: [{ BearerAuth: [] }],
+          requestBody: {
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    bio: { type: 'string' },
+                    githubUrl: { type: 'string' },
+                    specialtyTags: { type: 'array', items: { type: 'string' } },
+                    isAvailableForWork: { type: 'boolean' },
+                  },
+                },
+              },
+            },
+          },
+          responses: {
+            '200': { description: 'Updated profile' },
+            '401': { description: 'Unauthorized' },
+          },
+        },
+      },
+      '/api/projects': {
+        get: {
+          summary: 'List user cloud projects',
+          operationId: 'listProjects',
+          security: [{ BearerAuth: [] }],
+          responses: {
+            '200': { description: 'List of projects owned by user' },
+            '401': { description: 'Unauthorized' },
+          },
+        },
+        post: {
+          summary: 'Create cloud project from ProjectManifest',
+          operationId: 'createProject',
+          security: [{ BearerAuth: [] }],
+          requestBody: {
+            required: true,
+            content: {
+              'application/json': {
+                schema: {
+                  type: 'object',
+                  properties: {
+                    name: { type: 'string' },
+                    description: { type: 'string' },
+                    manifest: { type: 'object' },
+                  },
+                  required: ['name', 'manifest'],
+                },
+              },
+            },
+          },
+          responses: {
+            '201': { description: 'Project created' },
+            '401': { description: 'Unauthorized' },
+          },
+        },
+      },
+      '/api/projects/{id}': {
+        get: {
+          summary: 'Get single project by ID',
+          operationId: 'getProject',
+          security: [{ BearerAuth: [] }],
+          parameters: [
+            { name: 'id', in: 'path', required: true, schema: { type: 'string' } },
+          ],
+          responses: {
+            '200': { description: 'Project details' },
+            '403': { description: 'Forbidden — Not owner' },
+            '404': { description: 'Not found' },
+          },
+        },
+        put: {
+          summary: 'Update project and increment revision',
+          operationId: 'updateProject',
+          security: [{ BearerAuth: [] }],
+          parameters: [
+            { name: 'id', in: 'path', required: true, schema: { type: 'string' } },
+          ],
+          responses: {
+            '200': { description: 'Project updated' },
+            '403': { description: 'Forbidden' },
+            '404': { description: 'Not found' },
+          },
+        },
+        delete: {
+          summary: 'Delete project',
+          operationId: 'deleteProject',
+          security: [{ BearerAuth: [] }],
+          parameters: [
+            { name: 'id', in: 'path', required: true, schema: { type: 'string' } },
+          ],
+          responses: {
+            '200': { description: 'Project deleted' },
+            '403': { description: 'Forbidden' },
+          },
+        },
+      },
+      '/api/projects/{id}/publish': {
+        post: {
+          summary: 'Publish project snapshot to public read-only route',
+          operationId: 'publishProject',
+          security: [{ BearerAuth: [] }],
+          parameters: [
+            { name: 'id', in: 'path', required: true, schema: { type: 'string' } },
+          ],
+          responses: {
+            '200': { description: 'Project published with slug' },
+          },
+        },
+      },
+      '/api/published/{slug}': {
+        get: {
+          summary: 'Get public read-only project snapshot',
+          operationId: 'getPublishedProject',
+          parameters: [
+            { name: 'slug', in: 'path', required: true, schema: { type: 'string' } },
+          ],
+          responses: {
+            '200': { description: 'Published project snapshot' },
+            '404': { description: 'Not found' },
+          },
+        },
+      },
+      '/api/published/{slug}/remix': {
+        post: {
+          summary: 'Remix a published project into an independent copy',
+          operationId: 'remixPublishedProject',
+          parameters: [
+            { name: 'slug', in: 'path', required: true, schema: { type: 'string' } },
+          ],
+          responses: {
+            '200': { description: 'Guest remix returned for local IndexedDB' },
+            '201': { description: 'Cloud remix created in user account' },
+          },
+        },
+      },
+      '/api/favorites': {
+        get: {
+          summary: 'List user favorite resources',
+          operationId: 'listFavorites',
+          security: [{ BearerAuth: [] }],
+          responses: { '200': { description: 'List of slugs' } },
+        },
+        post: {
+          summary: 'Add resource to favorites',
+          operationId: 'addFavorite',
+          security: [{ BearerAuth: [] }],
+          responses: { '201': { description: 'Favorite added' } },
+        },
+      },
+      '/api/collections': {
+        get: {
+          summary: 'List user collections',
+          operationId: 'listCollections',
+          security: [{ BearerAuth: [] }],
+          responses: { '200': { description: 'Collections array' } },
+        },
+        post: {
+          summary: 'Create new collection',
+          operationId: 'createCollection',
+          security: [{ BearerAuth: [] }],
+          responses: { '201': { description: 'Collection created' } },
+        },
+      },
+      '/api/reports': {
+        post: {
+          summary: 'Submit content abuse or bug report',
+          operationId: 'submitReport',
+          responses: { '201': { description: 'Report queued' } },
+        },
+      },
+    },
+    components: {
+      securitySchemes: {
+        BearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          description: 'GitHub OAuth session token',
+        },
+      },
+    },
+  };
+}

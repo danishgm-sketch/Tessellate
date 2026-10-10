@@ -455,16 +455,16 @@ Guest core remains intact. Signed-in user can safely sync/publish without cross-
 
 Goal: agent/developer distribution becomes first-class.
 
-- [ ] Finalize static shadcn-compatible registry generation.
-- [ ] Implement namespaced resource docs.
-- [ ] Implement `@tessellate/cli` commands.
-- [ ] Implement `tess create-resource` contribution wizard.
-- [ ] Implement `@tessellate/mcp` server.
-- [ ] Implement initial MCP tools from Architecture spec.
-- [ ] Generate OpenAPI where appropriate.
-- [ ] Generate `/llms.txt`.
-- [ ] Generate `/llms-full.txt`.
-- [ ] Generate public catalogue JSON/JSON Schema links.
+- [x] Finalize static shadcn-compatible registry generation.
+- [x] Implement namespaced resource docs.
+- [x] Implement `@tessellate/cli` commands.
+- [x] Implement `tess create-resource` contribution wizard.
+- [x] Implement `@tessellate/mcp` server.
+- [x] Implement initial MCP tools from Architecture spec.
+- [x] Generate OpenAPI where appropriate.
+- [x] Generate `/llms.txt`.
+- [x] Generate `/llms-full.txt`.
+- [x] Generate public catalogue JSON/JSON Schema links.
 
 ### Phase 17 gate
 

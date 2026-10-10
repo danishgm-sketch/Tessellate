@@ -18,7 +18,9 @@
   "dependencies": {
     "@tessellate/catalog": "workspace:*",
     "@tessellate/composer": "workspace:*",
+    "@tessellate/dna": "workspace:*",
     "@tessellate/exporter": "workspace:*",
+    "@tessellate/registry": "workspace:*",
     "@tessellate/schemas": "workspace:*",
     "commander": "^13.1.0"
   },

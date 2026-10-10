@@ -35,4 +35,44 @@ describe('Registry Generation', () => {
     expect(index.items[0]?.name).toBe('button');
     expect(index.items[0]?.type).toBe('registry:ui');
   });
+
+  it('generates llms.txt and llms-full.txt conforming to standard specifications', async () => {
+    const manifest = loadJsonManifest(buttonManifestPath);
+    const mockCatalog = {
+      schemaVersion: '1.0.0',
+      catalogVersion: '0.1.0',
+      generatedAt: new Date().toISOString(),
+      count: 1,
+      resources: [manifest],
+    };
+
+    const { generateLlmsTxt, generateLlmsFullTxt } = await import('../llms-generator.js');
+    const llmsTxt = generateLlmsTxt(mockCatalog);
+    const llmsFullTxt = generateLlmsFullTxt(mockCatalog);
+
+    expect(llmsTxt).toContain('# Tessellate');
+    expect(llmsTxt).toContain('10-Dimensional Design DNA');
+    expect(llmsTxt).toContain('tess add');
+    expect(llmsTxt).toContain('Button');
+
+    expect(llmsFullTxt).toContain('Semantic Token Contract');
+    expect(llmsFullTxt).toContain('--tess-canvas');
+    expect(llmsFullTxt).toContain('--tess-ink');
+    expect(llmsFullTxt).toContain(manifest.name);
+  });
+
+  it('generates complete OpenAPI 3.1 specification for Tessellate API', async () => {
+    const { generateOpenApiSpec } = await import('../openapi-generator.js');
+    const spec = generateOpenApiSpec();
+
+    expect(spec.openapi).toBe('3.1.0');
+    expect((spec.info as { title: string }).title).toBe('Tessellate Platform API');
+    expect(spec.paths).toHaveProperty('/health');
+    expect(spec.paths).toHaveProperty('/api/me');
+    expect(spec.paths).toHaveProperty('/api/projects');
+    expect(spec.paths).toHaveProperty('/api/published/{slug}');
+    expect(spec.paths).toHaveProperty('/api/favorites');
+    expect(spec.paths).toHaveProperty('/api/collections');
+    expect(spec.paths).toHaveProperty('/api/reports');
+  });
 });

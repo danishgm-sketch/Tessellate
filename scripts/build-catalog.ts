@@ -8,6 +8,9 @@ import {
 import {
   generateRegistryItem,
   generateRegistryIndex,
+  generateLlmsTxt,
+  generateLlmsFullTxt,
+  generateOpenApiSpec,
 } from '../packages/registry/src/index.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -28,7 +31,12 @@ async function main() {
   const previewCatalogPath = path.join(previewPublicDir, 'data', 'catalog.json');
   writeCatalogueArtifact(artifact, siteCatalogPath);
   writeCatalogueArtifact(artifact, previewCatalogPath);
-  console.log('[build-catalog] Wrote catalog artifact to:', siteCatalogPath);
+
+  // Write minified catalog.min.json
+  const minifiedContent = JSON.stringify(artifact);
+  fs.writeFileSync(path.join(sitePublicDir, 'data', 'catalog.min.json'), minifiedContent, 'utf-8');
+  fs.writeFileSync(path.join(previewPublicDir, 'data', 'catalog.min.json'), minifiedContent, 'utf-8');
+  console.log('[build-catalog] Wrote catalog and catalog.min.json to site & preview public dirs.');
 
   // 2. Generate registry items and index
   const registryItems = [];
@@ -44,13 +52,31 @@ async function main() {
 
     const itemPath = path.join(registryOutputDir, `${manifest.slug}.json`);
     fs.writeFileSync(itemPath, JSON.stringify(item, null, 2), 'utf-8');
-    console.log(`[build-catalog] Generated registry item: ${itemPath}`);
   }
 
   const registryIndex = generateRegistryIndex(registryItems);
   const indexPath = path.join(sitePublicDir, 'r', 'index.json');
   fs.writeFileSync(indexPath, JSON.stringify(registryIndex, null, 2), 'utf-8');
   console.log('[build-catalog] Generated registry index at:', indexPath);
+
+  // Write registry styles.json for shadcn style registries
+  const stylesIndex = [
+    { name: 'default', label: 'Default', type: 'registry:style' },
+    { name: 'new-york', label: 'New York', type: 'registry:style' },
+  ];
+  fs.writeFileSync(path.join(registryOutputDir, 'styles.json'), JSON.stringify(stylesIndex, null, 2), 'utf-8');
+
+  // 3. Generate /llms.txt and /llms-full.txt
+  const llmsTxt = generateLlmsTxt(artifact);
+  const llmsFullTxt = generateLlmsFullTxt(artifact);
+  fs.writeFileSync(path.join(sitePublicDir, 'llms.txt'), llmsTxt, 'utf-8');
+  fs.writeFileSync(path.join(sitePublicDir, 'llms-full.txt'), llmsFullTxt, 'utf-8');
+  console.log('[build-catalog] Generated /llms.txt and /llms-full.txt');
+
+  // 4. Generate /openapi.json
+  const openApiSpec = generateOpenApiSpec();
+  fs.writeFileSync(path.join(sitePublicDir, 'openapi.json'), JSON.stringify(openApiSpec, null, 2), 'utf-8');
+  console.log('[build-catalog] Generated /openapi.json');
 }
 
 main().catch((err) => {
