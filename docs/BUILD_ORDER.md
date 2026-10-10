@@ -10,19 +10,19 @@ Use `[x]` only after the acceptance criteria for that item are actually satisfie
 
 Goal: one-command local development, strict typing, stable package boundaries, passing CI skeleton.
 
-- [ ] Create `pnpm-workspace.yaml`.
-- [ ] Create root `package.json` with workspace scripts.
-- [ ] Create `tsconfig.base.json` with strict TypeScript settings.
-- [ ] Add formatter/linter configuration.
-- [ ] Add `.gitignore`, `.editorconfig`, `.env.example`.
-- [ ] Scaffold `apps/site` using Astro + React + Tailwind CSS 4.
-- [ ] Scaffold `apps/api` using Hono for Cloudflare Workers.
-- [ ] Scaffold `apps/preview` as isolated preview application.
-- [ ] Scaffold all package directories defined in `ARCHITECTURE.md`.
-- [ ] Add Vitest root configuration.
-- [ ] Add Playwright root configuration.
-- [ ] Add GitHub Actions CI for install/typecheck/lint/test/build.
-- [ ] Add local developer README section with exact commands.
+- [x] Create `pnpm-workspace.yaml`.
+- [x] Create root `package.json` with workspace scripts.
+- [x] Create `tsconfig.base.json` with strict TypeScript settings.
+- [x] Add formatter/linter configuration.
+- [x] Add `.gitignore`, `.editorconfig`, `.env.example`.
+- [x] Scaffold `apps/site` using Astro + React + Tailwind CSS 4.
+- [x] Scaffold `apps/api` using Hono for Cloudflare Workers.
+- [x] Scaffold `apps/preview` as isolated preview application.
+- [x] Scaffold all package directories defined in `ARCHITECTURE.md`.
+- [x] Add Vitest root configuration.
+- [x] Add Playwright root configuration.
+- [x] Add GitHub Actions CI for install/typecheck/lint/test/build.
+- [x] Add local developer README section with exact commands.
 
 ### Phase 0 gate
 

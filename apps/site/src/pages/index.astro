@@ -1,0 +1,56 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Tessellate — Describe the product. Get the interface.</title>
+  </head>
+  <body class="min-h-screen bg-[#F4F2ED] text-[#111217]">
+    <header class="sticky top-0 z-50 flex h-16 items-center justify-between border-b border-[#D9D6CF] px-6">
+      <div class="flex items-center gap-3">
+        <!-- Tessellate mark -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="text-[#111217]">
+          <rect x="3" y="3" width="7.5" height="7.5" rx="1.5" fill="currentColor" />
+          <rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5" fill="currentColor" />
+          <rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5" fill="currentColor" />
+          <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5" fill="#2547E8" />
+        </svg>
+        <span class="text-base font-semibold tracking-tight">Tessellate</span>
+      </div>
+      <nav class="flex items-center gap-6 text-sm text-[#62666F]">
+        <a href="/explore" class="hover:text-[#111217]">Explore</a>
+        <a href="/compose" class="hover:text-[#111217]">Compose</a>
+        <a href="/workbench" class="hover:text-[#111217]">Workbench</a>
+        <a href="/tools" class="hover:text-[#111217]">Tools</a>
+        <a href="/agents" class="hover:text-[#111217]">Agents</a>
+        <a href="/docs" class="hover:text-[#111217]">Docs</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a
+          href="/workbench"
+          class="rounded-lg bg-[#2547E8] px-4 py-2 text-sm font-medium text-white hover:bg-[#1E3CCD]"
+        >
+          Start building
+        </a>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-[1280px] px-6 py-24">
+      <div class="max-w-[900px]">
+        <h1 class="text-5xl font-semibold tracking-tight sm:text-6xl text-[#111217]">
+          Describe the product.<br />
+          Get the interface.
+        </h1>
+        <p class="mt-6 max-w-[680px] text-lg text-[#62666F]">
+          Tessellate turns product intent into cohesive interface systems using an open library of
+          components, patterns, motion and design intelligence.
+        </p>
+      </div>
+    </main>
+  </body>
+</html>

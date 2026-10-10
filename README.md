@@ -165,6 +165,38 @@ Primary public routes:
 - `design/reference-home.svg` — homepage composition reference.
 - `design/reference-workbench.svg` — Workbench composition reference.
 
+## Local development
+
+### Prerequisites
+
+- Node.js >= 22 (tested on Node v24)
+- pnpm >= 10 (tested on pnpm v11)
+
+### Commands
+
+```bash
+# Install workspace dependencies
+pnpm install
+
+# Run local development servers (site, preview, api)
+pnpm dev
+
+# Run strict TypeScript typecheck across monorepo
+pnpm typecheck
+
+# Run linter
+pnpm lint
+
+# Run unit tests
+pnpm test
+
+# Build all applications and packages
+pnpm build
+
+# Run end-to-end tests
+pnpm test:e2e
+```
+
 ## Definition of success
 
 A first-time visitor must experience this sequence:
