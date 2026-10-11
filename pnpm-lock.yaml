@@ -236,6 +236,9 @@ importers:
         specifier: workspace:*
         version: link:../schemas
     devDependencies:
+      '@tessellate/exporter':
+        specifier: workspace:*
+        version: link:../exporter
       '@tessellate/renderer':
         specifier: workspace:*
         version: link:../renderer

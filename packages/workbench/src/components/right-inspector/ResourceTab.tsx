@@ -9,6 +9,8 @@ export function ResourceTab() {
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
   const setActiveLeftTab = useWorkbenchStore((state) => state.setActiveLeftTab);
 
+  const openReplaceDrawer = useWorkbenchStore((state) => state.openReplaceDrawer);
+
   const activeScreen = manifest.screens.find((s) => s.id === activeScreenId);
   const selectedNode =
     activeScreen && selectedNodeId
@@ -80,11 +82,12 @@ export function ResourceTab() {
 
           {/* Replace Flow Action */}
           <button
-            onClick={() => setActiveLeftTab('library')}
+            data-testid="open-replace-drawer-btn"
+            onClick={() => openReplaceDrawer()}
             className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-[#2547E8] dark:bg-[#6782FF] py-2.5 text-xs font-semibold text-white dark:text-[#0B0D10] hover:opacity-90 transition-opacity"
           >
             <RefreshCw className="h-3.5 w-3.5" />
-            <span>Open Library to Replace</span>
+            <span>Open Replace Drawer</span>
           </button>
         </div>
       ) : (

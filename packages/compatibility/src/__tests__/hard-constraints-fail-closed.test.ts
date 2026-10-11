@@ -8,7 +8,7 @@ describe('Requirement 3: Hard Constraints Fail Closed', () => {
     {
       schemaVersion: '1.0.0',
       id: 'res_sample_hero',
-      slug: 'sample-hero',
+      slug: 'editorial-hero',
       name: 'Sample Heavy Hero',
       version: '1.0.0',
       status: 'verified',
@@ -82,7 +82,7 @@ describe('Requirement 3: Hard Constraints Fail Closed', () => {
     for (const screen of result.directionA.manifest.screens) {
       for (const node of screen.rootNode.children) {
         if (node.resourceRef) {
-          expect(node.resourceRef.slug).not.toBe('sample-hero');
+          expect(node.resourceRef.slug).not.toBe('editorial-hero');
           expect(node.resourceRef.id).not.toBe('res_sample_hero');
         }
       }
@@ -105,7 +105,7 @@ describe('Requirement 3: Hard Constraints Fail Closed', () => {
     for (const screen of result.directionA.manifest.screens) {
       for (const node of screen.rootNode.children) {
         if (node.resourceRef) {
-          expect(node.resourceRef.slug).not.toBe('sample-hero');
+          expect(node.resourceRef.slug).not.toBe('editorial-hero');
           expect(node.resourceRef.id).not.toBe('res_sample_hero');
         }
       }
@@ -117,7 +117,7 @@ describe('Requirement 3: Hard Constraints Fail Closed', () => {
       {
         ...onlyAaRichCatalog[0]!,
         id: 'res_sample_accessible',
-        slug: 'accessible-hero',
+        slug: 'editorial-hero',
         accessibility: {
           levelTarget: 'AAA', // Compliant!
           keyboardVerified: true,
@@ -153,6 +153,6 @@ describe('Requirement 3: Hard Constraints Fail Closed', () => {
     const allRefs = result.directionA.manifest.screens.flatMap((s) =>
       s.rootNode.children.map((c) => c.resourceRef?.slug)
     );
-    expect(allRefs).toContain('accessible-hero');
+    expect(allRefs).toContain('editorial-hero');
   });
 });

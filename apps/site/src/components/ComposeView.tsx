@@ -52,26 +52,32 @@ export function ComposeView() {
 
   // Result state
   const [hasComposed, setHasComposed] = useState<boolean>(false);
+  const [catalogStatus, setCatalogStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [catalogResources, setCatalogResources] = useState<ResourceManifest[]>([]);
 
-  useEffect(() => {
-    let isMounted = true;
+  const loadCatalog = () => {
+    setCatalogStatus('loading');
     fetch('/data/catalog.json')
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       })
       .then((data) => {
-        if (isMounted && data && Array.isArray(data.resources)) {
+        if (data && Array.isArray(data.resources) && data.resources.length > 0) {
           setCatalogResources(data.resources);
+          setCatalogStatus('ready');
+        } else {
+          throw new Error('Empty or invalid catalogue payload');
         }
       })
       .catch((err) => {
         console.error('Failed to load /data/catalog.json in ComposeView:', err);
+        setCatalogStatus('error');
       });
-    return () => {
-      isMounted = false;
-    };
+  };
+
+  useEffect(() => {
+    loadCatalog();
   }, []);
 
   const currentVisualStop = getVisualAmbitionStop(visualAmbition);
@@ -147,6 +153,9 @@ export function ComposeView() {
 
   const handleCompose = (e: React.FormEvent) => {
     e.preventDefault();
+    if (catalogStatus !== 'ready' || catalogResources.length === 0) {
+      return;
+    }
     setHasComposed(true);
   };
 
@@ -402,11 +411,40 @@ export function ComposeView() {
         </div>
 
         {/* Compose CTA */}
-        <div className="flex justify-end pt-2">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+          <div className="flex items-center gap-2 text-xs" data-testid="catalog-status">
+            {catalogStatus === 'loading' && (
+              <span className="inline-flex items-center gap-1.5 text-[#62666F] dark:text-[#A8AFBA]">
+                <Cpu className="h-3.5 w-3.5 animate-spin text-[#2547E8]" />
+                Loading interface intelligence…
+              </span>
+            )}
+            {catalogStatus === 'ready' && (
+              <span className="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
+                <span className="h-2 w-2 rounded-full bg-emerald-500" />
+                Catalogue ready
+              </span>
+            )}
+            {catalogStatus === 'error' && (
+              <span className="inline-flex items-center gap-1.5 text-rose-600 dark:text-rose-400">
+                <span className="h-2 w-2 rounded-full bg-rose-500" />
+                Catalogue unavailable —{' '}
+                <button
+                  type="button"
+                  onClick={loadCatalog}
+                  className="underline font-semibold hover:text-rose-700 ml-1 cursor-pointer"
+                >
+                  retry
+                </button>
+              </span>
+            )}
+          </div>
+
           <button
             type="submit"
             data-testid="compose-submit-btn"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#2547E8] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#1E3CCD] dark:bg-[#6782FF] dark:text-[#0B0D10] dark:hover:bg-[#879DFF]"
+            disabled={catalogStatus !== 'ready'}
+            className="inline-flex items-center gap-2 rounded-xl bg-[#2547E8] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#1E3CCD] disabled:opacity-50 disabled:cursor-not-allowed dark:bg-[#6782FF] dark:text-[#0B0D10] dark:hover:bg-[#879DFF]"
           >
             <Sparkles className="h-4 w-4" />
             Compose Interface System
@@ -414,8 +452,8 @@ export function ComposeView() {
         </div>
       </form>
 
-      {/* Output Sections (Visible after composing or pre-rendered) */}
-      {(hasComposed || description) && (
+      {/* Output Sections (Visible after composing with ready catalogue) */}
+      {hasComposed && catalogStatus === 'ready' && (
         <div className="space-y-12">
           {/* Inferred ProductModel & Assumptions */}
           <section className="space-y-6">

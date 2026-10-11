@@ -95,6 +95,30 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
     ? 'ring-1 ring-dashed ring-neutral-400 dark:ring-neutral-500 rounded-lg'
     : '';
 
+  // 6.5. Explicit diagnostic for fail-closed unresolved required role
+  if (node.props?.unresolvedRequiredRole) {
+    const diag = node.props.diagnostic as { role?: string; reason?: string } | undefined;
+    return (
+      <div
+        data-node-id={node.id}
+        data-testid="unresolved-required-role-diagnostic"
+        onClick={handleSelect}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        style={localStyle}
+        className={`rounded-xl border border-dashed border-amber-300 bg-amber-50/90 dark:border-amber-700/60 dark:bg-amber-950/20 p-4 text-xs text-amber-900 dark:text-amber-200 transition-all ${selectionClasses}`}
+      >
+        <div className="flex items-center gap-2 font-semibold">
+          <span className="text-base">⚠️</span>
+          <span>Unresolved Required Role: {diag?.role ?? node.semanticRole}</span>
+        </div>
+        <p className="mt-1 text-[11px] text-amber-800/80 dark:text-amber-300/80">
+          {diag?.reason ?? 'No candidate resource met the strict accessibility or performance hard constraints.'}
+        </p>
+      </div>
+    );
+  }
+
   // 7. If node references a canonical resource
   if (node.resourceRef) {
     const slug = node.resourceRef.slug;

@@ -12,4 +12,5 @@ export * from './responsive-substitution.js';
 export * from './prng.js';
 export * from './scoring.js';
 export * from './direction-generator.js';
+export * from './capabilities.js';
 export * from './compose-pipeline.js';

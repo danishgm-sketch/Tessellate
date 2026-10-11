@@ -373,7 +373,7 @@ export function createReplaceOperation(
   }
 
   const defaultSlots: Record<string, unknown> = {};
-  for (const slot of replacementResource.slots) {
+  for (const slot of replacementResource.slots ?? []) {
     if (slot.defaultValue !== undefined) {
       defaultSlots[slot.id] = slot.defaultValue;
     }

@@ -167,9 +167,9 @@ export function TopToolbar() {
         <div className="hidden lg:flex items-center gap-1">
           <button
             data-testid="recompose-button"
-            onClick={() => recomposeScreenAroundLocks(activeScreenId, { divergenceLevel: 70 })}
+            onClick={() => recomposeScreenAroundLocks(activeScreenId, { divergenceLevel: 95 })}
             className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] text-xs font-medium text-[#111217] dark:text-[#F5F7FA] hover:bg-[#FAF9F6] dark:hover:bg-[#171B21] transition-colors"
-            title="Recompose Screen (divergenceLevel 70)"
+            title="Recompose Screen (divergenceLevel 95)"
           >
             <RefreshCw className="h-3 w-3 text-cyan-500" />
             <span>Recompose</span>

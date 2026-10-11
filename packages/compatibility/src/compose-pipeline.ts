@@ -22,7 +22,18 @@ import {
 import { getCompositionGrammar, type CompositionGrammar } from './grammars.js';
 import { evaluateHardConstraints } from './hard-constraints.js';
 import { calculateCompatibilityScore } from './scoring.js';
-import { isGoldResource } from '@tessellate/catalog/gold';
+import {
+  isResourceComposerEligible,
+  isResourceCompositionCapable,
+} from './capabilities.js';
+export { isResourceComposerEligible, isResourceCompositionCapable };
+
+export interface RoleResolutionDiagnostic {
+  code: 'UNRESOLVED_REQUIRED_ROLE';
+  role: string;
+  reason: string;
+  rejectedCandidateReasons?: string[];
+}
 
 export interface DirectionCompositionOptions {
   productModel: ProductModel;
@@ -30,11 +41,13 @@ export interface DirectionCompositionOptions {
   direction: GeneratedDirection;
   catalogResources?: ResourceManifest[];
   seed?: string | number;
+  diagnostics?: RoleResolutionDiagnostic[];
 }
 
 export interface ComposedDirectionOutput {
   direction: GeneratedDirection;
   manifest: ProjectManifest;
+  diagnostics?: RoleResolutionDiagnostic[];
 }
 
 export interface FullCompositionResult {
@@ -49,17 +62,8 @@ export interface FullCompositionResult {
 }
 
 /**
- * Capability check: verifies that a catalogue resource is eligible for composition.
- */
-export function isResourceComposerEligible(resource: ResourceManifest): boolean {
-  if (!resource.id || !resource.slug) return false;
-  if (!resource.variants || resource.variants.length === 0) return false;
-  return true;
-}
-
-/**
  * Finds and instantiates the highest-scoring compatible resource for a required semantic role.
- * Fails hard constraints closed: if all candidates violate constraints, returns null (no violating resource selected).
+ * Fails hard constraints closed: if all candidates violate constraints, returns diagnostic (no violating resource selected).
  */
 function resolveBestResourceForRole(
   semanticRole: string,
@@ -68,11 +72,16 @@ function resolveBestResourceForRole(
   catalog: ResourceManifest[],
   productModel: ProductModel,
   surroundingResources: ResourceManifest[] = []
-): { resource: ResourceManifest | null; ref: ResourceRef | undefined } {
+): { resource: ResourceManifest | null; ref: ResourceRef | undefined; diagnostic?: RoleResolutionDiagnostic } {
   if (!catalog || catalog.length === 0) {
     return {
       resource: null,
       ref: undefined,
+      diagnostic: {
+        code: 'UNRESOLVED_REQUIRED_ROLE',
+        role: semanticRole,
+        reason: 'Catalogue is empty or unpopulated.',
+      },
     };
   }
 
@@ -94,6 +103,8 @@ function resolveBestResourceForRole(
 
   // 2. Filter by hard constraints — STRICT FAIL CLOSED
   const validCandidates: ResourceManifest[] = [];
+  const rejectedReasons: string[] = [];
+
   for (const candidate of candidates) {
     const constraintResult = evaluateHardConstraints({
       resource: candidate,
@@ -106,14 +117,23 @@ function resolveBestResourceForRole(
     });
     if (constraintResult.pass) {
       validCandidates.push(candidate);
+    } else {
+      rejectedReasons.push(`${candidate.slug}: ${constraintResult.rejectionReasons.join(', ')}`);
     }
   }
 
-  // Requirement 3: If all candidates violate hard constraints, NO violating resource may be selected.
+  // Requirement 3 & 7: If all candidates violate hard constraints, NO violating resource may be selected.
+  // Fail closed and record explicit UNRESOLVED_REQUIRED_ROLE diagnostic.
   if (validCandidates.length === 0) {
     return {
       resource: null,
       ref: undefined,
+      diagnostic: {
+        code: 'UNRESOLVED_REQUIRED_ROLE',
+        role: semanticRole,
+        reason: `No candidate resource satisfied hard constraints for role "${semanticRole}" (accessibility floor: ${productModel.constraints.accessibilityFloor}, performance ceiling: ${productModel.constraints.performanceCeiling}).`,
+        rejectedCandidateReasons: rejectedReasons.slice(0, 5),
+      },
     };
   }
 
@@ -128,10 +148,9 @@ function resolveBestResourceForRole(
       currentArchetype: productModel.productArchetypes[0]?.tag,
       accessibilityFloor: productModel.constraints.accessibilityFloor,
     });
-    const goldBonus = isGoldResource(candidate.slug) ? 20 : 0;
     return {
       candidate,
-      score: scoreResult.totalScore + goldBonus,
+      score: scoreResult.totalScore,
     };
   });
 
@@ -201,7 +220,7 @@ export function composeProjectForDirection(
 
     for (let i = 0; i < screenRoles.length; i++) {
       const role = screenRoles[i]!;
-      const { resource, ref } = resolveBestResourceForRole(
+      const { resource, ref, diagnostic } = resolveBestResourceForRole(
         role,
         direction.dna,
         grammar,
@@ -209,6 +228,10 @@ export function composeProjectForDirection(
         productModel,
         surroundingForScreen
       );
+
+      if (diagnostic && options.diagnostics) {
+        options.diagnostics.push(diagnostic);
+      }
 
       if (resource) {
         surroundingForScreen.push(resource);
@@ -221,6 +244,14 @@ export function composeProjectForDirection(
           ? 'nocturne'
           : 'quiet';
 
+      const nodeProps: Record<string, unknown> = {
+        title: `${screenNode.name} ${role}`,
+      };
+      if (diagnostic) {
+        nodeProps.unresolvedRequiredRole = true;
+        nodeProps.diagnostic = diagnostic;
+      }
+
       sectionNodes.push({
         id: `node-${screenNode.id}-${role}-${i + 1}`,
         nodeType: role === 'navigation' ? 'layout' : 'section',
@@ -229,9 +260,7 @@ export function composeProjectForDirection(
         variant,
         children: [],
         slots: {},
-        props: {
-          title: `${screenNode.name} ${role}`,
-        },
+        props: nodeProps,
       });
     }
 
@@ -366,28 +395,34 @@ export function composeProjectPipeline(
     seed,
   });
 
+  const diagA: RoleResolutionDiagnostic[] = [];
   const manifestA = composeProjectForDirection({
     productModel,
     screenGraph,
     direction: directions.directionA,
     catalogResources: options?.catalogResources,
     seed: `${seed}-dir-a`,
+    diagnostics: diagA,
   });
 
+  const diagB: RoleResolutionDiagnostic[] = [];
   const manifestB = composeProjectForDirection({
     productModel,
     screenGraph,
     direction: directions.directionB,
     catalogResources: options?.catalogResources,
     seed: `${seed}-dir-b`,
+    diagnostics: diagB,
   });
 
+  const diagC: RoleResolutionDiagnostic[] = [];
   const manifestC = composeProjectForDirection({
     productModel,
     screenGraph,
     direction: directions.directionC,
     catalogResources: options?.catalogResources,
     seed: `${seed}-dir-c`,
+    diagnostics: diagC,
   });
 
   return {
@@ -398,14 +433,17 @@ export function composeProjectPipeline(
     directionA: {
       direction: directions.directionA,
       manifest: manifestA,
+      diagnostics: diagA,
     },
     directionB: {
       direction: directions.directionB,
       manifest: manifestB,
+      diagnostics: diagB,
     },
     directionC: {
       direction: directions.directionC,
       manifest: manifestC,
+      diagnostics: diagC,
     },
     inferredAssumptions,
   };

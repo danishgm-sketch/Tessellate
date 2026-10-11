@@ -7,3 +7,4 @@ export * from './source-tree.js';
 export * from './zip.js';
 export * from './agent-handoff.js';
 export * from './validation.js';
+export * from './generated-gold-sources.js';

@@ -554,3 +554,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     });
   },
 }));
+
+if (typeof window !== 'undefined') {
+  (window as unknown as { __tessellate_workbench_store__: unknown }).__tessellate_workbench_store__ = useWorkbenchStore;
+}

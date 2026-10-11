@@ -164,6 +164,8 @@ export const ReplaceDrawer: React.FC = () => {
 
                   <button
                     type="button"
+                    data-testid="apply-replacement-btn"
+                    data-resource-slug={cand.resource.slug}
                     onClick={() => replaceNodeWithResource(selectedNodeId, cand.resource, cand.defaultVariant)}
                     className="flex w-full items-center justify-center gap-1.5 rounded-md bg-zinc-800 py-1.5 text-xs font-medium text-zinc-200 hover:bg-indigo-600 hover:text-white transition-colors"
                   >
