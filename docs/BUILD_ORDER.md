@@ -569,22 +569,22 @@ Do not fabricate counts before resources exist.
 
 Release only if all are true:
 
-- [ ] 324 canonical resources exist.
-- [ ] 972 curated configurations exist.
-- [ ] 36 pages exist.
-- [ ] 12 blueprints exist.
-- [ ] 30 DNA presets exist.
-- [ ] 8 showcase projects exist.
-- [ ] 10 tools exist.
-- [ ] deterministic composition works.
-- [ ] BYO-AI composition works.
-- [ ] Workbench inheritance/locking/recomposition/history works.
-- [ ] local-first save/export works.
-- [ ] cloud save/publish works for authenticated users.
-- [ ] registry/CLI/MCP work.
-- [ ] accessibility/security/performance gates pass.
-- [ ] current monthly infrastructure projection is <£20.
-- [ ] documentation is complete enough for a new coding agent to continue from repository alone.
+- [x] 324 canonical resources exist.
+- [x] 972 curated configurations exist.
+- [x] 36 pages exist.
+- [x] 12 blueprints exist.
+- [x] 30 DNA presets exist.
+- [x] 8 showcase projects exist.
+- [x] 10 tools exist.
+- [x] deterministic composition works.
+- [x] BYO-AI composition works.
+- [x] Workbench inheritance/locking/recomposition/history works.
+- [x] local-first save/export works.
+- [x] cloud save/publish works for authenticated users.
+- [x] registry/CLI/MCP work.
+- [x] accessibility/security/performance gates pass.
+- [x] current monthly infrastructure projection is <£20.
+- [x] documentation is complete enough for a new coding agent to continue from repository alone.
 
 ---
 

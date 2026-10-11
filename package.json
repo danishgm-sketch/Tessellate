@@ -14,7 +14,9 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "audit:release-gate": "tsx scripts/verify-release-gate.ts",
+    "audit:all": "tsx scripts/verify-release-gate.ts && tsx scripts/audit-bundle-budgets.ts && tsx scripts/audit-license-provenance.ts && tsx scripts/audit-security-secrets.ts"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

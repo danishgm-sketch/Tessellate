@@ -174,6 +174,30 @@ This file records major decisions so autonomous agents do not repeatedly reopen 
 **Security impact:** Hard origin isolation between main shell (`tessellate.design`) and untrusted previews (`preview.tessellate.design`); D1 authenticated ownership verification on all mutations; zero persisted AI secrets.  
 **Status:** LOCKED.
 
+### D-032 — Public Beta Release Gate Verification
+**Date:** 2026-10-11  
+**Context:** Phase 22 requirement to formally verify all 16 release gate criteria before declaring public beta launch readiness.  
+**Decision:** Formally close Phase 22 after 100% verified compliance across all 16 gating criteria:
+- 324 canonical resources verified in catalog with 0 schema violations.
+- 972 curated configurations verified across Quiet, Expressive, and Nocturne variants.
+- 36 full-page compositions verified across all application categories.
+- 12 product blueprints verified with multi-screen navigation graphs.
+- 30 10-dimensional Design DNA presets verified.
+- 8 distinct showcase projects verified occupying non-overlapping DNA coordinates.
+- 10 interactive studio tools verified and route-tested.
+- Deterministic composition verified via `@tessellate/composer`.
+- BYO-AI client routing and secret hygiene verified.
+- Workbench state, locking, overrides, and undo/redo stacks verified.
+- Local-first Vite + React + Tailwind source tree generation verified without lock-in.
+- Cloud D1 migrations, session auth guards, and publication verified.
+- Registry /r/ endpoints, @tessellate/cli bin, and stdio MCP server verified.
+- Automated axe WCAG 2.2 AA and bundle budget audits verified.
+- Infrastructure cost projection verified at ~£1.00/month (< £20 hard ceiling).
+- Comprehensive autonomous documentation verified in `AGENTS.md` and repository specs.  
+**Cost impact:** £0 additional.  
+**Security impact:** Audited 0 hardcoded secrets, verified CSP and origin isolation.  
+**Status:** LOCKED.
+
 
 ## Open implementation decisions
 
