@@ -1,0 +1,459 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "showcase-financial-terminal",
+  "name": "Apex Financial Intelligence Terminal",
+  "description": "Institutional trading terminal with real-time order books and risk telemetry.",
+  "createdAt": "2026-10-10T12:00:00.000Z",
+  "updatedAt": "2026-10-10T12:00:00.000Z",
+  "catalogVersion": "1.0.0",
+  "seed": "seed_showcase-financial-terminal",
+  "productModel": {
+    "schemaVersion": "1.0.0",
+    "productArchetypes": [
+      {
+        "tag": "fintech",
+        "weight": 100
+      }
+    ],
+    "primaryAudience": "Domain specialists",
+    "userSophistication": 98,
+    "primaryObjective": "Institutional trading terminal with real-time order books and risk telemetry.",
+    "secondaryObjectives": [
+      "Maximize workflow speed and cognitive clarity"
+    ],
+    "jobsToBeDone": [
+      "Analyze domain data",
+      "Execute actions",
+      "Inspect telemetry"
+    ],
+    "entities": [],
+    "workflows": [],
+    "trustRequirement": 98,
+    "informationComplexity": 98,
+    "dataDensity": 98,
+    "collaborationLevel": 50,
+    "transactionCriticality": 70,
+    "navigationComplexity": 60,
+    "mobileImportance": 50,
+    "likelyScreens": [],
+    "requiredCapabilities": [
+      "export",
+      "search",
+      "audit"
+    ],
+    "forbiddenPatterns": [],
+    "constraints": {
+      "accessibilityFloor": "AA",
+      "performanceCeiling": "rich",
+      "targetDevices": [
+        "desktop",
+        "tablet"
+      ]
+    }
+  },
+  "designDNA": {
+    "professionalism": 98,
+    "playfulness": 5,
+    "luxury": 50,
+    "warmth": 15,
+    "technicality": 98,
+    "editorial": 50,
+    "futurism": 65,
+    "visualAmbition": 50,
+    "structuralCreativity": 40,
+    "density": 95,
+    "whitespace": 20,
+    "contrast": 95,
+    "colourfulness": 25,
+    "curvature": 15,
+    "depth": 25,
+    "motion": 30,
+    "motionPlayfulness": 10,
+    "typographicExpression": 60,
+    "imageryIntensity": 35,
+    "videoIntensity": 10,
+    "threeDIntensity": 0,
+    "dataDensity": 98,
+    "interactionDensity": 90,
+    "asymmetry": 15,
+    "conversionIntensity": 25,
+    "trust": 98,
+    "accessibilityPriority": 95,
+    "performancePriority": 99,
+    "primaryArchetype": "fintech",
+    "visualMode": "dark",
+    "geometryFamily": "sharp",
+    "navigationModel": "cockpit-dense",
+    "responsivePhilosophy": "desktop-dense-mobile-focused",
+    "contentTone": "technical-authoritative",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "snappy-productive",
+    "typographyPersonality": "monospace-data",
+    "surfacePersonality": "obsidian-subtle-borders"
+  },
+  "constraints": {
+    "accessibilityFloor": "AA",
+    "performanceCeiling": "rich",
+    "targetDevices": [
+      "desktop",
+      "tablet"
+    ]
+  },
+  "screenGraph": {
+    "id": "sg_showcase-financial-terminal",
+    "groups": [
+      {
+        "id": "group_main",
+        "name": "Main Workspace",
+        "screens": [
+          {
+            "id": "node-app-overview",
+            "name": "Application Overview Dashboard",
+            "slug": "/overview",
+            "screenType": "application-overview-dashboard",
+            "purpose": "Application Overview Dashboard",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 80,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-analytics-dashboard",
+            "name": "Analytics Dashboard",
+            "slug": "/analytics",
+            "screenType": "analytics-dashboard",
+            "purpose": "Analytics Dashboard",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 75,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-watchlists",
+            "name": "Watchlists",
+            "slug": "/watchlists",
+            "screenType": "watchlists",
+            "purpose": "Watchlists",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 70,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-reports-library",
+            "name": "Reports Library",
+            "slug": "/reports",
+            "screenType": "reports-library",
+            "purpose": "Reports Library",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 65,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge_0",
+        "fromScreenId": "node-app-overview",
+        "toScreenId": "node-analytics-dashboard"
+      },
+      {
+        "id": "edge_1",
+        "fromScreenId": "node-app-overview",
+        "toScreenId": "node-watchlists"
+      },
+      {
+        "id": "edge_2",
+        "fromScreenId": "node-app-overview",
+        "toScreenId": "node-reports-library"
+      }
+    ]
+  },
+  "screens": [
+    {
+      "id": "screen-app-overview",
+      "screenNodeId": "node-app-overview",
+      "name": "Application Overview Dashboard",
+      "slug": "/overview",
+      "rootNode": {
+        "id": "root-app-overview",
+        "nodeType": "layout",
+        "semanticRole": "dashboard-canvas",
+        "children": [
+          {
+            "id": "sec-dash-metrics",
+            "nodeType": "section",
+            "semanticRole": "kpi-metrics",
+            "resourceRef": {
+              "id": "res_metrics_scorecard",
+              "slug": "metrics-scorecard",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-dash-chart",
+            "nodeType": "section",
+            "semanticRole": "trend-chart",
+            "resourceRef": {
+              "id": "res_time_series_chart",
+              "slug": "time-series-chart",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-dash-activity",
+            "nodeType": "section",
+            "semanticRole": "recent-activity",
+            "resourceRef": {
+              "id": "res_activity_timeline",
+              "slug": "activity-timeline",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-analytics-dashboard",
+      "screenNodeId": "node-analytics-dashboard",
+      "name": "Analytics Dashboard",
+      "slug": "/analytics",
+      "rootNode": {
+        "id": "root-analytics-dashboard",
+        "nodeType": "layout",
+        "semanticRole": "analytics-canvas",
+        "children": [
+          {
+            "id": "sec-an-kpis",
+            "nodeType": "section",
+            "semanticRole": "summary-kpis",
+            "resourceRef": {
+              "id": "res_metrics_scorecard",
+              "slug": "metrics-scorecard",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-an-trend",
+            "nodeType": "section",
+            "semanticRole": "trend-chart",
+            "resourceRef": {
+              "id": "res_time_series_chart",
+              "slug": "time-series-chart",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-an-bar",
+            "nodeType": "section",
+            "semanticRole": "distribution",
+            "resourceRef": {
+              "id": "res_bar_chart",
+              "slug": "bar-chart",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-an-cohort",
+            "nodeType": "section",
+            "semanticRole": "retention-cohort",
+            "resourceRef": {
+              "id": "res_cohort_matrix",
+              "slug": "cohort-matrix",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-watchlists",
+      "screenNodeId": "node-watchlists",
+      "name": "Watchlists",
+      "slug": "/watchlists",
+      "rootNode": {
+        "id": "root-watchlists",
+        "nodeType": "layout",
+        "semanticRole": "watchlist-canvas",
+        "children": [
+          {
+            "id": "sec-wl-filters",
+            "nodeType": "section",
+            "semanticRole": "filters",
+            "resourceRef": {
+              "id": "res_filter_bar",
+              "slug": "filter-bar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-wl-table",
+            "nodeType": "section",
+            "semanticRole": "table",
+            "resourceRef": {
+              "id": "res_data_table",
+              "slug": "data-table",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-reports-library",
+      "screenNodeId": "node-reports-library",
+      "name": "Reports Library",
+      "slug": "/reports",
+      "rootNode": {
+        "id": "root-reports-library",
+        "nodeType": "layout",
+        "semanticRole": "table-canvas",
+        "children": [
+          {
+            "id": "sec-rep-filters",
+            "nodeType": "section",
+            "semanticRole": "filters",
+            "resourceRef": {
+              "id": "res_filter_bar",
+              "slug": "filter-bar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-rep-table",
+            "nodeType": "section",
+            "semanticRole": "reports-table",
+            "resourceRef": {
+              "id": "res_data_table",
+              "slug": "data-table",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    }
+  ],
+  "navigation": {
+    "model": "cockpit-dense",
+    "primaryItems": [
+      {
+        "label": "Overview",
+        "targetScreenId": "node-app-overview"
+      },
+      {
+        "label": "Analytics",
+        "targetScreenId": "node-analytics-dashboard"
+      },
+      {
+        "label": "Watchlists",
+        "targetScreenId": "node-watchlists"
+      },
+      {
+        "label": "Reports",
+        "targetScreenId": "node-reports-library"
+      }
+    ]
+  },
+  "assets": [],
+  "locks": [],
+  "historyMeta": {
+    "totalOperations": 12,
+    "headRevision": 1
+  },
+  "exportSettings": {
+    "framework": "react",
+    "styling": "tailwind",
+    "includeTypes": true,
+    "target": "vite-react-tailwind"
+  }
+}

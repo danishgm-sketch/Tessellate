@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "vertical-label-system",
+  "type": "registry:component",
+  "title": "Vertical Label System",
+  "description": "Rotated 90-degree typographic rails, category anchors, and section boundary labels establishing structural coordinates.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type VerticalLabelSystemVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface VerticalLabelSystemProps {\n  railLabel?: string;\n  sectionTitle?: string;\n  sectionDescription?: string;\n  variant?: VerticalLabelSystemVariant;\n  children?: React.ReactNode;\n}\n\nexport function VerticalLabelSystem({\n  railLabel = 'SEC.08 — SPECIFICATION LAYER',\n  sectionTitle = 'Systematic Design Grammar',\n  sectionDescription = 'Tessellate does not sell a pile of components. It composes a coherent interface system from an open resource vocabulary.',\n  variant = 'quiet',\n  children,\n}: VerticalLabelSystemProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const railColor =\n    variant === 'nocturne'\n      ? 'text-cyan-400 border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'text-indigo-600 border-[#D9D6CF]'\n      : 'text-neutral-400 border-neutral-200';\n\n  return (\n    <div className={`p-8 md:p-12 rounded-xl border max-w-4xl mx-auto flex gap-8 items-start transition-colors ${containerBg}`}>\n      {/* 90-degree vertical rail label */}\n      <div\n        className={`hidden sm:block shrink-0 pr-4 border-r font-mono text-[11px] font-bold uppercase tracking-widest ${railColor}`}\n        style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}\n      >\n        {railLabel}\n      </div>\n\n      <div className=\"space-y-3\">\n        <span className=\"sm:hidden text-[10px] font-mono uppercase tracking-wider text-neutral-400 block\">\n          {railLabel}\n        </span>\n        <h3 className=\"text-2xl md:text-3xl font-extrabold tracking-tight\">\n          {sectionTitle}\n        </h3>\n        <p className=\"text-sm text-neutral-500 leading-relaxed max-w-xl\">\n          {sectionDescription}\n        </p>\n        {children}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { VerticalLabelSystem, VerticalLabelSystemVariant } from './index';\n\nexport function VerticalLabelSystemPreview() {\n  const [variant, setVariant] = useState<VerticalLabelSystemVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <VerticalLabelSystem variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "typography",
+    "display",
+    "vertical"
+  ],
+  "meta": {
+    "tessellateId": "res_typo_vertical_label_system",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

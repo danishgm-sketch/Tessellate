@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stacked-bar-chart",
+  "type": "registry:component",
+  "title": "Stacked Bar Chart",
+  "description": "Segmented vertical bar chart showing category composition with segmented color blocks and segment breakdown on hover.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type StackedBarChartVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface StackedBarChartProps {\n  variant?: StackedBarChartVariant;\n}\n\nexport function StackedBarChart({ variant = 'quiet' }: StackedBarChartProps) {\n  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const segmentColors =\n    variant === 'nocturne'\n      ? ['#06B6D4', '#6366F1', '#A855F7']\n      : variant === 'expressive'\n      ? ['#2547E8', '#10B981', '#F59E0B']\n      : ['#171717', '#737373', '#D4D4D4'];\n\n  const categories = ['Desktop', 'Mobile', 'Tablet'];\n  const months = [\n    { month: 'Jan', segments: [45, 30, 15] },\n    { month: 'Feb', segments: [50, 35, 18] },\n    { month: 'Mar', segments: [60, 40, 20] },\n    { month: 'Apr', segments: [55, 45, 22] },\n    { month: 'May', segments: [70, 50, 25] },\n  ];\n\n  const maxVal = 160;\n  const width = 600;\n  const height = 220;\n  const padding = { top: 20, right: 30, bottom: 40, left: 40 };\n  const chartW = width - padding.left - padding.right;\n  const chartH = height - padding.top - padding.bottom;\n  const barWidth = 36;\n  const step = chartW / months.length;\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>\n      <div className=\"flex flex-wrap items-center justify-between gap-4 mb-4\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Traffic by Platform</h4>\n          <p className=\"text-xs text-neutral-500\">Segmented breakdown by device type</p>\n        </div>\n        <div className=\"flex items-center gap-3\">\n          {categories.map((c, idx) => (\n            <div key={c} className=\"flex items-center gap-1.5 text-xs\">\n              <span className=\"w-2.5 h-2.5 rounded-sm\" style={{ backgroundColor: segmentColors[idx] ?? '#000' }} />\n              <span>{c}</span>\n            </div>\n          ))}\n        </div>\n      </div>\n\n      <div className=\"relative w-full overflow-hidden\">\n        <svg viewBox={`0 0 ${width} ${height}`} className=\"w-full h-auto overflow-visible select-none\">\n          {[0, 40, 80, 120, 160].map((v) => {\n            const y = padding.top + chartH * (1 - v / maxVal);\n            return (\n              <g key={v}>\n                <line x1={padding.left} y1={y} x2={width - padding.right} y2={y} stroke={variant === 'nocturne' ? '#1E232E' : '#F3F4F6'} strokeWidth=\"1\" />\n                <text x={padding.left - 8} y={y + 3} textAnchor=\"end\" className=\"text-[10px] fill-neutral-400 font-mono\">\n                  {v}\n                </text>\n              </g>\n            );\n          })}\n\n          {months.map((m, mIdx) => {\n            const x = padding.left + mIdx * step + (step - barWidth) / 2;\n            let currentY = padding.top + chartH;\n\n            return (\n              <g key={m.month} onMouseEnter={() => setHoveredIdx(mIdx)} onMouseLeave={() => setHoveredIdx(null)} className=\"cursor-pointer\">\n                {m.segments.map((val, sIdx) => {\n                  const sHeight = (val / maxVal) * chartH;\n                  currentY -= sHeight;\n                  const color = segmentColors[sIdx] ?? '#000';\n                  return (\n                    <rect\n                      key={sIdx}\n                      x={x}\n                      y={currentY}\n                      width={barWidth}\n                      height={sHeight}\n                      fill={color}\n                      className={`transition-opacity duration-150 ${\n                        hoveredIdx === null || hoveredIdx === mIdx ? 'opacity-100' : 'opacity-50'\n                      }`}\n                    />\n                  );\n                })}\n                <text\n                  x={x + barWidth / 2}\n                  y={height - 10}\n                  textAnchor=\"middle\"\n                  className={`text-[10px] font-mono transition-colors ${\n                    hoveredIdx === mIdx ? 'font-bold fill-current' : 'fill-neutral-400'\n                  }`}\n                >\n                  {m.month}\n                </text>\n              </g>\n            );\n          })}\n        </svg>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { StackedBarChart, StackedBarChartVariant } from './index';\n\nexport function StackedBarChartPreview() {\n  const [variant, setVariant] = useState<StackedBarChartVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <StackedBarChart variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "charts"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_stacked_bar_chart",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

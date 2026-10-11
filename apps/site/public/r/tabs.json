@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tabs",
+  "type": "registry:ui",
+  "title": "Tabs",
+  "description": "Accessible tabbed navigation system with active underlined or pill indicators and panels.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type TabsVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface TabItem {\n  id: string;\n  label: string;\n  content: React.ReactNode;\n}\n\nexport interface TabsProps {\n  variant?: TabsVariant;\n  tabs: TabItem[];\n  activeId: string;\n  onChange: (id: string) => void;\n}\n\nexport function Tabs({ variant = 'quiet', tabs, activeId, onChange }: TabsProps) {\n  const activeTab = tabs.find((t) => t.id === activeId) || tabs[0];\n\n  let borderBottom = 'border-b border-neutral-200';\n  let activeIndicator = 'border-neutral-900 text-neutral-900 font-semibold';\n  if (variant === 'expressive') {\n    borderBottom = 'border-b border-[#D9D6CF]';\n    activeIndicator = 'border-[#2547E8] text-[#2547E8] font-semibold';\n  } else if (variant === 'nocturne') {\n    borderBottom = 'border-b border-[#2E3440]';\n    activeIndicator = 'border-white text-white font-semibold';\n  }\n\n  return (\n    <div className=\"w-full space-y-4\">\n      <div className={`flex gap-6 ${borderBottom}`}>\n        {tabs.map((tab) => {\n          const isSelected = tab.id === activeId;\n          return (\n            <button\n              key={tab.id}\n              type=\"button\"\n              role=\"tab\"\n              aria-selected={isSelected}\n              onClick={() => onChange(tab.id)}\n              className={`pb-2.5 text-sm transition-all border-b-2 -mb-px ${\n                isSelected ? activeIndicator : 'border-transparent text-neutral-500 hover:text-neutral-800'\n              }`}\n            >\n              {tab.label}\n            </button>\n          );\n        })}\n      </div>\n      <div role=\"tabpanel\" className=\"text-sm\">\n        {activeTab?.content}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { Tabs } from './index.js';\n\nexport function TabsPreview() {\n  const [tab, setTab] = useState('overview');\n  return (\n    <div className=\"p-8 max-w-md mx-auto bg-[#FAF9F6]\">\n      <Tabs\n        variant=\"expressive\"\n        activeId={tab}\n        onChange={setTab}\n        tabs={[\n          { id: 'overview', label: 'Overview', content: <p className=\"text-neutral-600\">High-level interface telemetry metrics.</p> },\n          { id: 'analytics', label: 'Analytics', content: <p className=\"text-neutral-600\">Detailed conversion rate records.</p> },\n          { id: 'settings', label: 'Settings', content: <p className=\"text-neutral-600\">Workspace token and API keys.</p> },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_tabs",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

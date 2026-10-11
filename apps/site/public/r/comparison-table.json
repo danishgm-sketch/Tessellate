@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "comparison-table",
+  "type": "registry:block",
+  "title": "Comparison Table",
+  "description": "Matrix comparing parameters or feature sets across multiple items side by side.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ComparisonTableVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ComparisonTableProps {\n  variant?: ComparisonTableVariant;\n}\n\nexport function ComparisonTable({ variant = 'quiet' }: ComparisonTableProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  const rows = [\n    { metric: 'Gzip Size', modelA: '1.2 KB', modelB: '4.8 KB' },\n    { metric: 'Parsing Speed', modelA: '0.4 ms', modelB: '2.1 ms' },\n    { metric: 'Dependencies', modelA: '0 external', modelB: '4 libraries' },\n  ];\n\n  return (\n    <div className={`w-full rounded-xl border overflow-hidden text-xs transition-colors ${bg}`}>\n      <table className=\"w-full text-left\">\n        <thead className=\"bg-neutral-100/60 dark:bg-neutral-900/60 border-b border-neutral-200 dark:border-neutral-800 font-mono text-[11px]\">\n          <tr>\n            <th className=\"p-3\">Specification</th>\n            <th className=\"p-3\">Tessellate Pure</th>\n            <th className=\"p-3\">Generic Alternative</th>\n          </tr>\n        </thead>\n        <tbody className=\"divide-y divide-neutral-200 dark:divide-neutral-800 font-mono\">\n          {rows.map((r) => (\n            <tr key={r.metric} className=\"hover:bg-neutral-50 dark:hover:bg-neutral-900/40\">\n              <td className=\"p-3 font-semibold font-sans\">{r.metric}</td>\n              <td className=\"p-3 text-emerald-600 font-bold\">{r.modelA}</td>\n              <td className=\"p-3 opacity-60\">{r.modelB}</td>\n            </tr>\n          ))}\n        </tbody>\n      </table>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { ComparisonTable, ComparisonTableVariant } from './index.js';\n\nexport function ComparisonTablePreview() {\n  const [variant, setVariant] = useState<ComparisonTableVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Comparison Table Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as ComparisonTableVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <ComparisonTable variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "data",
+    "comparison"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_comparison_table",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

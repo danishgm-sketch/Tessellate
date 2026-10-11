@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command-first-nav",
+  "type": "registry:block",
+  "title": "Command-First Navigation",
+  "description": "Spotlight-oriented application header centered on a prominent interactive search input.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type CommandFirstNavVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CommandFirstNavProps {\n  variant?: CommandFirstNavVariant;\n}\n\nexport function CommandFirstNav({ variant = 'quiet' }: CommandFirstNavProps) {\n  let bar = 'bg-white border-b border-neutral-200 text-neutral-900';\n  let inputTheme = 'bg-neutral-100 border-neutral-200';\n  if (variant === 'nocturne') {\n    bar = 'bg-[#0B0D10] border-b border-[#2E3440] text-white';\n    inputTheme = 'bg-[#11141B] border-[#2E3440] text-white';\n  }\n\n  return (\n    <header className={`w-full px-6 h-14 flex items-center justify-between gap-4 ${bar}`}>\n      <span className=\"font-semibold text-xs shrink-0\">Terminal</span>\n      <div className={`flex-1 max-w-lg flex items-center justify-between px-3 py-1.5 rounded-lg border text-xs ${inputTheme}`}>\n        <span className=\"opacity-50\">Search actions, resources, commands...</span>\n        <kbd className=\"text-[10px] opacity-40 font-mono border rounded px-1\">⌘K</kbd>\n      </div>\n      <div className=\"flex items-center gap-3 text-xs shrink-0\">\n        <span className=\"opacity-60\">Status: OK</span>\n      </div>\n    </header>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { CommandFirstNav } from './index.js';\n\nexport function CommandFirstNavPreview() {\n  return (\n    <div className=\"w-full\">\n      <CommandFirstNav variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_command_first_nav",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

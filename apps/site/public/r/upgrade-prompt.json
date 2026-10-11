@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "upgrade-prompt",
+  "type": "registry:block",
+  "title": "Upgrade Prompt",
+  "description": "In-app upgrade callout card presenting locked feature benefits and upgrade trigger.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type UpgradePromptVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface UpgradePromptProps {\n  variant?: UpgradePromptVariant;\n}\n\nexport function UpgradePrompt({ variant = 'quiet' }: UpgradePromptProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-gradient-to-r from-blue-50/60 to-purple-50/40 text-neutral-950 border-blue-200';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#151921] text-white border-cyan-500/30';\n  }\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-colors ${bg}`}>\n      <div>\n        <div className=\"flex items-center gap-2 mb-1\">\n          <span className=\"font-bold text-sm\">Unlock Cloud Team Checkpoints</span>\n          <span className=\"text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-600 font-bold\">TEAM PRO</span>\n        </div>\n        <p className=\"text-xs opacity-75\">Sync projects across devices and collaborate with unlimited teammates.</p>\n      </div>\n      <button type=\"button\" className=\"px-4 py-2 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold whitespace-nowrap\">\n        Upgrade Now →\n      </button>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { UpgradePrompt, UpgradePromptVariant } from './index.js';\n\nexport function UpgradePromptPreview() {\n  const [variant, setVariant] = useState<UpgradePromptVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Upgrade Prompt Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as UpgradePromptVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <UpgradePrompt variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "onboarding",
+    "upgrade"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_upgrade_prompt",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

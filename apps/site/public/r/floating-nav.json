@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-nav",
+  "type": "registry:block",
+  "title": "Floating Navigation",
+  "description": "Island-style floating navigation pill pinned to top viewport with rounded corners and glass blur.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type FloatingNavVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FloatingNavProps {\n  variant?: FloatingNavVariant;\n}\n\nexport function FloatingNav({ variant = 'quiet' }: FloatingNavProps) {\n  let pill = 'bg-white/80 border-neutral-200 text-neutral-900 shadow-lg';\n  if (variant === 'expressive') pill = 'bg-white/90 border-[#D9D6CF] text-neutral-900 shadow-xl';\n  if (variant === 'nocturne') pill = 'bg-[#11141B]/90 border-[#2E3440] text-white shadow-xl';\n\n  return (\n    <div className=\"w-full pt-4 flex justify-center px-4\">\n      <div className={`inline-flex items-center gap-6 rounded-full border px-6 py-2.5 backdrop-blur-md text-xs ${pill}`}>\n        <span className=\"font-semibold\">Tessellate</span>\n        <div className=\"flex items-center gap-4\">\n          <a href=\"#\" className=\"opacity-70 hover:opacity-100\">Overview</a>\n          <a href=\"#\" className=\"opacity-70 hover:opacity-100\">Specs</a>\n          <a href=\"#\" className=\"opacity-70 hover:opacity-100\">Changelog</a>\n        </div>\n        <button className=\"px-3 py-1 bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 rounded-full font-medium\">\n          Open\n        </button>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { FloatingNav } from './index.js';\n\nexport function FloatingNavPreview() {\n  return (\n    <div className=\"w-full bg-[#FAF9F6] p-8\">\n      <FloatingNav variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_floating_nav",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

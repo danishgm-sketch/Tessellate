@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumb-header",
+  "type": "registry:block",
+  "title": "Breadcrumb Header",
+  "description": "Header shell combining deep hierarchical breadcrumb trail with right-aligned action buttons.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type BreadcrumbHeaderVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface BreadcrumbHeaderProps {\n  variant?: BreadcrumbHeaderVariant;\n}\n\nexport function BreadcrumbHeader({ variant = 'quiet' }: BreadcrumbHeaderProps) {\n  let header = 'bg-white border-b border-neutral-200 text-neutral-900';\n  if (variant === 'nocturne') header = 'bg-[#0B0D10] border-b border-[#2E3440] text-white';\n\n  return (\n    <div className={`w-full px-6 h-14 flex items-center justify-between text-xs ${header}`}>\n      <div className=\"flex items-center gap-2\">\n        <a href=\"#\" className=\"opacity-50 hover:opacity-100\">Projects</a>\n        <span className=\"opacity-30\">/</span>\n        <a href=\"#\" className=\"opacity-50 hover:opacity-100\">Telemetry</a>\n        <span className=\"opacity-30\">/</span>\n        <span className=\"font-semibold\">Analytics Node</span>\n      </div>\n      <div className=\"flex items-center gap-2\">\n        <button className=\"px-3 py-1.5 border rounded-lg\">Export</button>\n        <button className=\"px-3 py-1.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 font-medium rounded-lg\">Save</button>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { BreadcrumbHeader } from './index.js';\n\nexport function BreadcrumbHeaderPreview() {\n  return (\n    <div className=\"w-full\">\n      <BreadcrumbHeader variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_breadcrumb_header",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

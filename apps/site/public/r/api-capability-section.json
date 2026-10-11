@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "api-capability-section",
+  "type": "registry:block",
+  "title": "API Capability Section",
+  "description": "Developer section highlighting REST / GraphQL / SDK methods with endpoint pill tags.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ApiCapabilitySectionVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ApiCapabilitySectionProps {\n  variant?: ApiCapabilitySectionVariant;\n}\n\nexport function ApiCapabilitySection({ variant = 'quiet' }: ApiCapabilitySectionProps) {\n  let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';\n  let card = 'bg-white border-neutral-200 font-mono text-xs';\n\n  if (variant === 'expressive') {\n    bg = 'bg-white text-neutral-950 border-[#D9D6CF]';\n    card = 'bg-blue-50/30 border-blue-100 shadow-sm font-mono text-xs';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    card = 'bg-[#151921] border-[#2E3440] font-mono text-xs';\n  }\n\n  const endpoints = [\n    { method: 'GET', path: '/api/v1/resources/:slug', desc: 'Retrieve verified JSON manifest' },\n    { method: 'POST', path: '/api/v1/compose', desc: 'Validate and compile project tree' },\n    { method: 'GET', path: '/api/v1/dna/tokens', desc: 'Query calibrated Design DNA dimensions' },\n  ];\n\n  return (\n    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-4xl mx-auto\">\n        <h2 className=\"text-3xl font-bold tracking-tight text-center mb-12\">Programmatic API Access</h2>\n\n        <div className=\"space-y-4\">\n          {endpoints.map((ep) => (\n            <div key={ep.path} className={`p-4 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${card}`}>\n              <div className=\"flex items-center gap-3\">\n                <span className=\"px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold\">{ep.method}</span>\n                <span className=\"font-semibold\">{ep.path}</span>\n              </div>\n              <span className=\"text-xs opacity-70 font-sans\">{ep.desc}</span>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { ApiCapabilitySection, ApiCapabilitySectionVariant } from './index.js';\n\nexport function ApiCapabilitySectionPreview() {\n  const [variant, setVariant] = useState<ApiCapabilitySectionVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">API Capability Section Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as ApiCapabilitySectionVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <ApiCapabilitySection variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "integrations"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_api_capability_section",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

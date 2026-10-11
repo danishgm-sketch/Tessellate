@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "combobox",
+  "type": "registry:ui",
+  "title": "Combobox",
+  "description": "Searchable selection input combining text filtering with item picker dropdown.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type ComboboxVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ComboboxOption {\n  value: string;\n  label: string;\n}\n\nexport interface ComboboxProps {\n  variant?: ComboboxVariant;\n  label?: string;\n  options: ComboboxOption[];\n  value?: string;\n  onSelect: (val: string) => void;\n  placeholder?: string;\n}\n\nexport function Combobox({\n  variant = 'quiet',\n  label,\n  options,\n  value,\n  onSelect,\n  placeholder = 'Type to search...',\n}: ComboboxProps) {\n  const [query, setQuery] = useState('');\n  const [open, setOpen] = useState(false);\n\n  const filtered = options.filter((o) => o.label.toLowerCase().includes(query.toLowerCase()));\n  const selectedOption = options.find((o) => o.value === value);\n\n  let theme = 'border-neutral-300 bg-white text-neutral-900';\n  if (variant === 'expressive') theme = 'border-[#D9D6CF] bg-white text-neutral-900 shadow-2xs';\n  if (variant === 'nocturne') theme = 'border-[#2E3440] bg-[#11141B] text-white';\n\n  return (\n    <div className=\"relative w-full space-y-1.5\">\n      {label && <label className=\"block text-xs font-semibold text-neutral-700 dark:text-neutral-300\">{label}</label>}\n      <div className={`flex items-center rounded-lg border px-3 py-2 text-sm ${theme}`}>\n        <input\n          type=\"text\"\n          className=\"w-full bg-transparent outline-none text-sm placeholder:text-neutral-400\"\n          value={open ? query : selectedOption?.label || query}\n          onChange={(e) => {\n            setQuery(e.target.value);\n            setOpen(true);\n          }}\n          onFocus={() => setOpen(true)}\n          placeholder={placeholder}\n        />\n        <button type=\"button\" onClick={() => setOpen(!open)} className=\"text-xs opacity-50 ml-1\">\n          {open ? '▲' : '▼'}\n        </button>\n      </div>\n      {open && (\n        <div className=\"absolute z-20 mt-1 max-h-48 w-full overflow-auto rounded-lg border border-neutral-200 bg-white dark:bg-[#11141B] dark:border-neutral-800 p-1 shadow-lg\">\n          {filtered.length === 0 ? (\n            <p className=\"p-2 text-xs text-neutral-400\">No results found</p>\n          ) : (\n            filtered.map((opt) => (\n              <button\n                key={opt.value}\n                type=\"button\"\n                className=\"w-full rounded px-2.5 py-1.5 text-left text-sm hover:bg-neutral-100 dark:hover:bg-neutral-800\"\n                onClick={() => {\n                  onSelect(opt.value);\n                  setQuery(opt.label);\n                  setOpen(false);\n                }}\n              >\n                {opt.label}\n              </button>\n            ))\n          )}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { Combobox } from './index.js';\n\nexport function ComboboxPreview() {\n  const [val, setVal] = useState('us');\n  return (\n    <div className=\"p-8 max-w-xs mx-auto bg-[#FAF9F6]\">\n      <Combobox\n        variant=\"expressive\"\n        label=\"Country Region\"\n        value={val}\n        onSelect={setVal}\n        options={[\n          { value: 'us', label: 'United States' },\n          { value: 'gb', label: 'United Kingdom' },\n          { value: 'de', label: 'Germany' },\n          { value: 'jp', label: 'Japan' },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_combobox",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

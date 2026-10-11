@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kpi-delta-card",
+  "type": "registry:component",
+  "title": "KPI Delta Card",
+  "description": "Executive metric card with hero number, benchmark comparison badge, and micro trend sparkline.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type KpiDeltaCardVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface KpiDeltaCardProps {\n  variant?: KpiDeltaCardVariant;\n  title?: string;\n  value?: string;\n  delta?: string;\n  isPositive?: boolean;\n}\n\nexport function KpiDeltaCard({\n  variant = 'quiet',\n  title = 'Monthly Recurring Revenue',\n  value = '$128,450',\n  delta = '+18.4% vs last month',\n  isPositive = true,\n}: KpiDeltaCardProps) {\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const badgeBg =\n    isPositive\n      ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800'\n      : 'bg-rose-50 text-rose-700 dark:bg-rose-950/50 dark:text-rose-400 border-rose-200 dark:border-rose-800';\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col justify-between transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between mb-3\">\n        <span className=\"text-xs font-medium text-neutral-500 uppercase tracking-wider\">{title}</span>\n        <span className={`text-[11px] font-medium font-mono px-2 py-0.5 rounded-full border ${badgeBg}`}>\n          {delta}\n        </span>\n      </div>\n\n      <div className=\"flex items-baseline justify-between mt-1\">\n        <span className=\"text-3xl font-bold font-mono tracking-tight\">{value}</span>\n        <svg width=\"60\" height=\"24\" className=\"overflow-visible select-none\">\n          <polyline\n            points=\"0,20 12,16 24,18 36,10 48,14 60,4\"\n            fill=\"none\"\n            stroke={isPositive ? '#10B981' : '#F43F5E'}\n            strokeWidth=\"2\"\n            strokeLinecap=\"round\"\n          />\n        </svg>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { KpiDeltaCard, KpiDeltaCardVariant } from './index';\n\nexport function KpiDeltaCardPreview() {\n  const [variant, setVariant] = useState<KpiDeltaCardVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-2xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <KpiDeltaCard variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "kpi"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_kpi_delta_card",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

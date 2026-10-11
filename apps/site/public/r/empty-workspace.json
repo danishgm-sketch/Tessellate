@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-workspace",
+  "type": "registry:block",
+  "title": "Empty Workspace",
+  "description": "Empty state placeholder card with welcoming illustration and primary create action.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type EmptyWorkspaceVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface EmptyWorkspaceProps {\n  variant?: EmptyWorkspaceVariant;\n}\n\nexport function EmptyWorkspace({ variant = 'quiet' }: EmptyWorkspaceProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  return (\n    <div className={`w-full p-12 rounded-xl border text-center flex flex-col items-center justify-center transition-colors ${bg}`}>\n      <div className=\"w-12 h-12 rounded-full bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center text-lg mb-4 opacity-75\">\n        ✧\n      </div>\n      <h3 className=\"text-base font-bold mb-2\">No Projects Found</h3>\n      <p className=\"text-xs opacity-75 max-w-sm mb-6\">\n        Start by creating a new composition or choose from 12 pre-built blueprints.\n      </p>\n      <button type=\"button\" className=\"px-5 py-2.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold\">\n        + Create New Project\n      </button>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { EmptyWorkspace, EmptyWorkspaceVariant } from './index.js';\n\nexport function EmptyWorkspacePreview() {\n  const [variant, setVariant] = useState<EmptyWorkspaceVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Empty Workspace Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as EmptyWorkspaceVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <EmptyWorkspace variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "onboarding",
+    "empty"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_empty_workspace",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

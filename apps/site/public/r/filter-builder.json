@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "filter-builder",
+  "type": "registry:block",
+  "title": "Filter Builder",
+  "description": "Interactive compound filter constructor with field, operator, and value rows.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type FilterBuilderVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FilterBuilderProps {\n  variant?: FilterBuilderVariant;\n}\n\nexport function FilterBuilder({ variant = 'quiet' }: FilterBuilderProps) {\n  const [rules, setRules] = useState([\n    { id: 1, field: 'Quality', op: 'greater than', val: '80' },\n    { id: 2, field: 'Status', op: 'equals', val: 'verified' },\n  ]);\n\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  const addRule = () => {\n    setRules([...rules, { id: Date.now(), field: 'Category', op: 'equals', val: 'primitives' }]);\n  };\n\n  return (\n    <div className={`w-full p-6 rounded-xl border transition-colors ${bg}`}>\n      <div className=\"flex justify-between items-center mb-4\">\n        <h3 className=\"text-sm font-semibold\">Filter Rules</h3>\n        <button type=\"button\" onClick={addRule} className=\"text-xs px-2.5 py-1 rounded border\">\n          + Add Condition\n        </button>\n      </div>\n\n      <div className=\"space-y-3 font-mono text-xs\">\n        {rules.map((r) => (\n          <div key={r.id} className=\"p-3 rounded-lg border border-neutral-100 dark:border-neutral-800 flex items-center gap-3\">\n            <span className=\"font-bold\">{r.field}</span>\n            <span className=\"opacity-60\">{r.op}</span>\n            <span className=\"px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800\">{r.val}</span>\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FilterBuilder, FilterBuilderVariant } from './index.js';\n\nexport function FilterBuilderPreview() {\n  const [variant, setVariant] = useState<FilterBuilderVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Filter Builder Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as FilterBuilderVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <FilterBuilder variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "search",
+    "filters"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_filter_builder",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

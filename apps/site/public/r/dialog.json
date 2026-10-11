@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog",
+  "type": "registry:ui",
+  "title": "Dialog",
+  "description": "Accessible modal dialog window with backdrop scrim, focus trapping, and header/footer slots.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type DialogVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface DialogProps {\n  variant?: DialogVariant;\n  open: boolean;\n  onClose: () => void;\n  title: string;\n  description?: string;\n  children: React.ReactNode;\n  footer?: React.ReactNode;\n}\n\nexport function Dialog({\n  variant = 'quiet',\n  open,\n  onClose,\n  title,\n  description,\n  children,\n  footer,\n}: DialogProps) {\n  if (!open) return null;\n\n  let theme = 'bg-white border-neutral-200 text-neutral-900 shadow-2xl';\n  if (variant === 'expressive') theme = 'bg-white border-[#D9D6CF] text-neutral-900 shadow-2xl';\n  if (variant === 'nocturne') theme = 'bg-[#11141B] border-[#2E3440] text-white shadow-2xl';\n\n  return (\n    <div className=\"fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs\">\n      <div className=\"fixed inset-0\" onClick={onClose} />\n      <div className={`relative w-full max-w-md rounded-2xl border p-6 z-10 space-y-4 ${theme}`}>\n        <div className=\"space-y-1\">\n          <h2 className=\"text-base font-semibold\">{title}</h2>\n          {description && <p className=\"text-xs text-neutral-500 leading-relaxed\">{description}</p>}\n        </div>\n        <div className=\"py-2 text-sm\">{children}</div>\n        {footer && <div className=\"flex justify-end gap-2 pt-2 border-t border-inherit\">{footer}</div>}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { Dialog } from './index.js';\n\nexport function DialogPreview() {\n  const [open, setOpen] = useState(false);\n  return (\n    <div className=\"p-8 flex justify-center bg-[#FAF9F6]\">\n      <button onClick={() => setOpen(true)} className=\"px-4 py-2 border rounded-lg text-sm bg-white shadow-xs\">\n        Open Dialog\n      </button>\n      <Dialog\n        variant=\"expressive\"\n        open={open}\n        onClose={() => setOpen(false)}\n        title=\"Create Design Direction\"\n        description=\"Specify the archetype and structural parameters for generation.\"\n        footer={\n          <button onClick={() => setOpen(false)} className=\"px-3 py-1.5 bg-[#2547E8] text-white text-xs rounded-lg font-medium\">\n            Confirm\n          </button>\n        }\n      >\n        <p className=\"text-xs text-neutral-600\">Enter direction seed and constraints.</p>\n      </Dialog>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "overlays"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_dialog",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

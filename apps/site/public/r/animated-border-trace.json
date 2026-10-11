@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-border-trace",
+  "type": "registry:component",
+  "title": "Animated Border Trace",
+  "description": "Continuous or hover-activated SVG path trace racing along card perimeter hairline.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type AnimatedBorderTraceVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AnimatedBorderTraceProps {\n  variant?: AnimatedBorderTraceVariant;\n}\n\nexport function AnimatedBorderTrace({ variant = 'quiet' }: AnimatedBorderTraceProps) {\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white'\n      : variant === 'expressive'\n      ? 'bg-white text-neutral-900'\n      : 'bg-white text-neutral-900';\n\n  const strokeColor =\n    variant === 'nocturne'\n      ? '#06B6D4'\n      : variant === 'expressive'\n      ? '#2547E8'\n      : '#171717';\n\n  return (\n    <div className=\"p-8 flex items-center justify-center\">\n      <div className={`relative w-80 p-6 rounded-xl overflow-hidden ${cardBg}`}>\n        {/* SVG trace overlay */}\n        <svg className=\"absolute inset-0 w-full h-full pointer-events-none\">\n          <rect\n            x=\"1\"\n            y=\"1\"\n            width=\"calc(100% - 2px)\"\n            height=\"calc(100% - 2px)\"\n            rx=\"12\"\n            fill=\"none\"\n            stroke={strokeColor}\n            strokeWidth=\"1.5\"\n            strokeDasharray=\"80 300\"\n            className=\"animate-[spin_4s_linear_infinite]\"\n          />\n        </svg>\n\n        <div className=\"relative z-10 space-y-1.5\">\n          <span className=\"text-[10px] font-mono text-neutral-400\">Hairline Tracer</span>\n          <h4 className=\"text-sm font-semibold\">Active Perimeter Trace</h4>\n          <p className=\"text-xs text-neutral-500 leading-relaxed\">\n            Continuous stroke-dasharray orbital animation tracing rectangular perimeter coordinates.\n          </p>\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { AnimatedBorderTrace, AnimatedBorderTraceVariant } from './index';\n\nexport function AnimatedBorderTracePreview() {\n  const [variant, setVariant] = useState<AnimatedBorderTraceVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <AnimatedBorderTrace variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "borders"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_animated_border_trace",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

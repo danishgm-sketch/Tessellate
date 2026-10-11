@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast",
+  "type": "registry:ui",
+  "title": "Toast",
+  "description": "Ephemeral floating notification banner with auto-dismiss timers and action hooks.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ToastVariant = 'quiet' | 'expressive' | 'nocturne';\nexport type ToastType = 'info' | 'success' | 'warning' | 'error';\n\nexport interface ToastProps {\n  variant?: ToastVariant;\n  type?: ToastType;\n  title: string;\n  description?: string;\n  onDismiss?: () => void;\n}\n\nexport function Toast({\n  variant = 'quiet',\n  type = 'info',\n  title,\n  description,\n  onDismiss,\n}: ToastProps) {\n  let card = 'bg-white border-neutral-200 text-neutral-900 shadow-xl';\n  let dot = 'bg-neutral-900';\n  if (type === 'success') dot = 'bg-emerald-500';\n  if (type === 'error') dot = 'bg-rose-500';\n  if (type === 'warning') dot = 'bg-amber-500';\n\n  if (variant === 'expressive') {\n    card = 'bg-white border-[#D9D6CF] text-neutral-900 shadow-2xl';\n    if (type === 'info') dot = 'bg-[#2547E8]';\n  } else if (variant === 'nocturne') {\n    card = 'bg-[#11141B] border-[#2E3440] text-white shadow-2xl';\n  }\n\n  return (\n    <div className={`flex items-start gap-3 rounded-xl border p-4 max-w-sm ${card}`}>\n      <span className={`mt-1 h-2 w-2 rounded-full shrink-0 ${dot}`} />\n      <div className=\"flex-1 space-y-0.5 text-xs\">\n        <p className=\"font-semibold\">{title}</p>\n        {description && <p className=\"text-neutral-500 leading-relaxed\">{description}</p>}\n      </div>\n      {onDismiss && (\n        <button type=\"button\" onClick={onDismiss} className=\"text-xs opacity-50 hover:opacity-100\">✕</button>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { Toast } from './index.js';\n\nexport function ToastPreview() {\n  return (\n    <div className=\"p-8 flex flex-col gap-3 items-center bg-[#FAF9F6]\">\n      <Toast variant=\"expressive\" type=\"success\" title=\"Project Published\" description=\"Your workspace was successfully exported to Cloudflare Pages.\" />\n      <Toast variant=\"quiet\" type=\"info\" title=\"Checkpoint Saved\" />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "feedback"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_toast",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

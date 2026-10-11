@@ -1,0 +1,38 @@
+---
+import '../../styles/global.css';
+import { Header } from '@tessellate/ui';
+import { ComposeView } from '../../components/ComposeView';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Compose — Tessellate Interface Intelligence</title>
+    <meta
+      name="description"
+      content="Describe your product intent and let Tessellate's deterministic Product Interpreter and Screen Planner generate a full ScreenGraph and Design DNA."
+    />
+  </head>
+  <body class="bg-[#F4F2ED] text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA] antialiased min-h-screen flex flex-col font-sans">
+    <Header client:load />
+
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="mb-6 space-y-1">
+        <h1 class="text-3xl font-bold tracking-tight text-[#111217] dark:text-[#F5F7FA]">
+          Product Composer
+        </h1>
+        <p class="text-sm text-[#62666F] dark:text-[#8B8F97]">
+          Describe product intent to deterministically interpret entities, derive Design DNA, and generate a multi-screen plan.
+        </p>
+      </div>
+
+      <ComposeView client:load />
+    </main>
+
+    <footer class="mt-auto border-t border-[#D9D6CF] dark:border-[#272B33] py-8 px-4 text-center text-xs text-[#8B8F97]">
+      Tessellate Interface Intelligence Layer — Deterministic screen planning and multi-entity UI synthesis.
+    </footer>
+  </body>
+</html>

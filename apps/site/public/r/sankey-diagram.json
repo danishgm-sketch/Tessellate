@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sankey-diagram",
+  "type": "registry:component",
+  "title": "Sankey Diagram",
+  "description": "Flow distribution chart showing source-to-target stream links with curved SVG ribbon bands and node column blocks.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type SankeyDiagramVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SankeyDiagramProps {\n  variant?: SankeyDiagramVariant;\n}\n\nexport function SankeyDiagram({ variant = 'quiet' }: SankeyDiagramProps) {\n  const [hoveredLink, setHoveredLink] = useState<string | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const ribbonColor =\n    variant === 'nocturne'\n      ? 'rgba(6, 182, 212, 0.4)'\n      : variant === 'expressive'\n      ? 'rgba(37, 71, 232, 0.35)'\n      : 'rgba(23, 23, 23, 0.25)';\n\n  const activeRibbonColor =\n    variant === 'nocturne'\n      ? 'rgba(6, 182, 212, 0.8)'\n      : variant === 'expressive'\n      ? 'rgba(37, 71, 232, 0.7)'\n      : 'rgba(23, 23, 23, 0.6)';\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between mb-4\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">API Request Distribution Flow</h4>\n          <p className=\"text-xs text-neutral-500\">Edge Gateway → Ingestion Workers → Storage Backends</p>\n        </div>\n        <span className=\"text-xs font-mono font-medium text-neutral-400\">100% Routed</span>\n      </div>\n\n      <div className=\"relative w-full overflow-hidden\">\n        <svg viewBox=\"0 0 600 220\" className=\"w-full h-auto overflow-visible select-none\">\n          {/* Source node column */}\n          <rect x=\"20\" y=\"30\" width=\"16\" height=\"160\" rx=\"4\" fill={variant === 'nocturne' ? '#06B6D4' : variant === 'expressive' ? '#2547E8' : '#171717'} />\n          <text x=\"44\" y=\"115\" className=\"text-xs font-semibold fill-current\">Gateway (100k)</text>\n\n          {/* Mid node column */}\n          <rect x=\"280\" y=\"30\" width=\"16\" height=\"90\" rx=\"4\" fill={variant === 'nocturne' ? '#6366F1' : variant === 'expressive' ? '#10B981' : '#525252'} />\n          <text x=\"304\" y=\"80\" className=\"text-xs font-medium fill-current\">Worker A (60k)</text>\n\n          <rect x=\"280\" y=\"130\" width=\"16\" height=\"60\" rx=\"4\" fill={variant === 'nocturne' ? '#A855F7' : variant === 'expressive' ? '#F59E0B' : '#737373'} />\n          <text x=\"304\" y=\"165\" className=\"text-xs font-medium fill-current\">Worker B (40k)</text>\n\n          {/* Dest node column */}\n          <rect x=\"540\" y=\"40\" width=\"16\" height=\"50\" rx=\"4\" fill={variant === 'nocturne' ? '#10B981' : variant === 'expressive' ? '#3B82F6' : '#262626'} />\n          <text x=\"530\" y=\"30\" textAnchor=\"end\" className=\"text-xs font-medium fill-current\">D1 Primary</text>\n\n          <rect x=\"540\" y=\"110\" width=\"16\" height=\"70\" rx=\"4\" fill={variant === 'nocturne' ? '#F43F5E' : variant === 'expressive' ? '#EC4899' : '#404040'} />\n          <text x=\"530\" y=\"100\" textAnchor=\"end\" className=\"text-xs font-medium fill-current\">R2 Bucket</text>\n\n          {/* Flow ribbons (bezier curves) */}\n          {/* Gateway -> Worker A */}\n          <path\n            d=\"M 36 30 C 150 30, 160 30, 280 30 L 280 120 C 160 120, 150 125, 36 125 Z\"\n            fill={hoveredLink === 'l1' ? activeRibbonColor : ribbonColor}\n            onMouseEnter={() => setHoveredLink('l1')}\n            onMouseLeave={() => setHoveredLink(null)}\n            className=\"cursor-pointer transition-colors duration-150\"\n          />\n\n          {/* Gateway -> Worker B */}\n          <path\n            d=\"M 36 125 C 150 125, 160 130, 280 130 L 280 190 C 160 190, 150 190, 36 190 Z\"\n            fill={hoveredLink === 'l2' ? activeRibbonColor : ribbonColor}\n            onMouseEnter={() => setHoveredLink('l2')}\n            onMouseLeave={() => setHoveredLink(null)}\n            className=\"cursor-pointer transition-colors duration-150\"\n          />\n\n          {/* Worker A -> D1 */}\n          <path\n            d=\"M 296 30 C 410 30, 420 40, 540 40 L 540 90 C 420 90, 410 75, 296 75 Z\"\n            fill={hoveredLink === 'l3' ? activeRibbonColor : ribbonColor}\n            onMouseEnter={() => setHoveredLink('l3')}\n            onMouseLeave={() => setHoveredLink(null)}\n            className=\"cursor-pointer transition-colors duration-150\"\n          />\n        </svg>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { SankeyDiagram, SankeyDiagramVariant } from './index';\n\nexport function SankeyDiagramPreview() {\n  const [variant, setVariant] = useState<SankeyDiagramVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <SankeyDiagram variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "charts"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_sankey_diagram",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "popover",
+  "type": "registry:ui",
+  "title": "Popover",
+  "description": "Floating rich content card anchored to a target trigger with dismissal handling.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type PopoverVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface PopoverProps {\n  variant?: PopoverVariant;\n  trigger: React.ReactNode;\n  children: React.ReactNode;\n}\n\nexport function Popover({ variant = 'quiet', trigger, children }: PopoverProps) {\n  const [open, setOpen] = useState(false);\n\n  let theme = 'bg-white border-neutral-200 text-neutral-900 shadow-xl';\n  if (variant === 'expressive') theme = 'bg-white border-[#D9D6CF] text-neutral-900 shadow-2xl';\n  if (variant === 'nocturne') theme = 'bg-[#11141B] border-[#2E3440] text-white shadow-2xl';\n\n  return (\n    <div className=\"relative inline-block\">\n      <div onClick={() => setOpen(!open)}>{trigger}</div>\n      {open && (\n        <>\n          <div className=\"fixed inset-0 z-40\" onClick={() => setOpen(false)} />\n          <div className={`absolute top-full left-0 mt-2 z-50 min-w-64 rounded-xl border p-4 ${theme}`}>\n            {children}\n          </div>\n        </>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { Popover } from './index.js';\n\nexport function PopoverPreview() {\n  return (\n    <div className=\"p-8 flex justify-center bg-[#FAF9F6]\">\n      <Popover\n        variant=\"expressive\"\n        trigger={<button className=\"px-3 py-1.5 border rounded-lg text-sm bg-white shadow-xs\">Filter Settings</button>}\n      >\n        <div className=\"space-y-2 text-xs\">\n          <p className=\"font-semibold\">Display Density</p>\n          <p className=\"text-neutral-500\">Configure visual compact scaling for table rows.</p>\n        </div>\n      </Popover>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "overlays"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_popover",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

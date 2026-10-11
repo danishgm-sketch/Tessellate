@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "separator",
+  "type": "registry:ui",
+  "title": "Separator",
+  "description": "Clean hairline divider line supporting horizontal and vertical orientations and middle labels.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type SeparatorVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SeparatorProps {\n  variant?: SeparatorVariant;\n  orientation?: 'horizontal' | 'vertical';\n  label?: string;\n  className?: string;\n}\n\nexport function Separator({\n  variant = 'quiet',\n  orientation = 'horizontal',\n  label,\n  className = '',\n}: SeparatorProps) {\n  let line = 'bg-neutral-200';\n  if (variant === 'expressive') line = 'bg-[#D9D6CF]';\n  if (variant === 'nocturne') line = 'bg-[#2E3440]';\n\n  if (orientation === 'vertical') {\n    return <div className={`inline-block h-full w-px ${line} ${className}`} />;\n  }\n\n  if (label) {\n    return (\n      <div className={`flex items-center gap-3 w-full ${className}`}>\n        <div className={`h-px flex-1 ${line}`} />\n        <span className=\"text-[11px] font-medium text-neutral-400 uppercase tracking-wider\">{label}</span>\n        <div className={`h-px flex-1 ${line}`} />\n      </div>\n    );\n  }\n\n  return <div className={`h-px w-full ${line} ${className}`} />;\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { Separator } from './index.js';\n\nexport function SeparatorPreview() {\n  return (\n    <div className=\"p-8 max-w-sm mx-auto space-y-4 bg-[#FAF9F6]\">\n      <p className=\"text-xs text-neutral-600\">Upper section content</p>\n      <Separator variant=\"expressive\" label=\"OR\" />\n      <p className=\"text-xs text-neutral-600\">Lower section content</p>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "layout"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_separator",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+---
+import '../../styles/global.css';
+import { WorkbenchShell } from '@tessellate/workbench';
+---
+
+<!doctype html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Workbench — Tessellate Composition Engine</title>
+    <meta
+      name="description"
+      content="Tessellate Workbench: Structured UI composition environment driven by semantic project nodes, Design DNA, resources and validated mutations."
+    />
+  </head>
+  <body class="h-full overflow-hidden bg-[#FAF9F6] text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA] antialiased font-sans">
+    <WorkbenchShell client:only="react" />
+  </body>
+</html>

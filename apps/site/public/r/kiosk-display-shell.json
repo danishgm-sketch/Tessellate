@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kiosk-display-shell",
+  "type": "registry:block",
+  "title": "Kiosk Display Shell",
+  "description": "Digital signage kiosk shell with high contrast typography, touch safety, and timeout reset.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type KioskDisplayShellVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface KioskDisplayShellProps {\n  variant?: KioskDisplayShellVariant;\n}\n\nexport function KioskDisplayShell({ variant = 'quiet' }: KioskDisplayShellProps) {\n  let theme = 'bg-white text-neutral-900';\n  if (variant === 'nocturne') theme = 'bg-[#0B0D10] text-white';\n\n  return (\n    <div className={`w-full h-screen p-12 flex flex-col justify-between select-none ${theme}`}>\n      <header className=\"flex justify-between items-center pb-6 border-b\">\n        <span className=\"text-xl font-bold\">Tessellate Signage Hub</span>\n        <span className=\"text-sm font-mono opacity-50\">KIOSK #04</span>\n      </header>\n      <main className=\"text-center space-y-4\">\n        <h2 className=\"text-3xl font-extrabold tracking-tight\">Touch Screen to Begin</h2>\n        <p className=\"text-sm opacity-60\">Interactive self-service interface system</p>\n      </main>\n      <footer className=\"text-center text-xs opacity-40\">\n        Resets automatically after 60 seconds of inactivity\n      </footer>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { KioskDisplayShell } from './index.js';\n\nexport function KioskDisplayShellPreview() {\n  return (\n    <div className=\"h-64 border rounded-xl overflow-hidden\">\n      <KioskDisplayShell variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "layout"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_kiosk_display_shell",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

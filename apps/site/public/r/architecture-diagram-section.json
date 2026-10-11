@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "architecture-diagram-section",
+  "type": "registry:block",
+  "title": "Architecture Diagram Section",
+  "description": "Technical blueprint illustrating client-edge-database infrastructure topology.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ArchitectureDiagramSectionVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ArchitectureDiagramSectionProps {\n  variant?: ArchitectureDiagramSectionVariant;\n}\n\nexport function ArchitectureDiagramSection({ variant = 'quiet' }: ArchitectureDiagramSectionProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n  let box = 'bg-neutral-100 border-neutral-300 font-mono text-xs';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/30 text-neutral-950 border-[#D9D6CF]';\n    box = 'bg-white border-blue-200 shadow-sm font-mono text-xs';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    box = 'bg-[#151921] border-[#2E3440] font-mono text-xs';\n  }\n\n  return (\n    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-5xl mx-auto\">\n        <h2 className=\"text-3xl font-bold tracking-tight text-center mb-16\">Infrastructure Topology</h2>\n\n        <div className=\"grid grid-cols-1 md:grid-cols-3 gap-6 text-center\">\n          <div className={`p-6 rounded-2xl border ${box}`}>\n            <span className=\"text-[10px] font-bold opacity-60 uppercase mb-2 block\">Client Layer</span>\n            <div className=\"font-bold text-sm mb-1\">React + Zustand</div>\n            <p className=\"text-[11px] opacity-75\">In-memory graph & DNA mutations</p>\n          </div>\n          <div className={`p-6 rounded-2xl border ${box}`}>\n            <span className=\"text-[10px] font-bold opacity-60 uppercase mb-2 block\">Edge Layer</span>\n            <div className=\"font-bold text-sm mb-1\">Cloudflare Workers</div>\n            <p className=\"text-[11px] opacity-75\">Hono API & sub-millisecond routing</p>\n          </div>\n          <div className={`p-6 rounded-2xl border ${box}`}>\n            <span className=\"text-[10px] font-bold opacity-60 uppercase mb-2 block\">Storage Layer</span>\n            <div className=\"font-bold text-sm mb-1\">D1 + R2 Registry</div>\n            <p className=\"text-[11px] opacity-75\">Encrypted checkpoints & static bundles</p>\n          </div>\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { ArchitectureDiagramSection, ArchitectureDiagramSectionVariant } from './index.js';\n\nexport function ArchitectureDiagramSectionPreview() {\n  const [variant, setVariant] = useState<ArchitectureDiagramSectionVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Architecture Diagram Section Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as ArchitectureDiagramSectionVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <ArchitectureDiagramSection variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "technical-proof"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_architecture_diagram_section",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

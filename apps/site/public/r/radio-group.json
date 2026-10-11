@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "type": "registry:ui",
+  "title": "Radio Group",
+  "description": "Accessible single-choice selection group with circle indicators and keyboard navigation.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type RadioGroupVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface RadioOption {\n  value: string;\n  label: string;\n  description?: string;\n}\n\nexport interface RadioGroupProps {\n  variant?: RadioGroupVariant;\n  name?: string;\n  options: RadioOption[];\n  value: string;\n  onChange: (val: string) => void;\n}\n\nexport function RadioGroup({\n  variant = 'quiet',\n  options,\n  value,\n  onChange,\n}: RadioGroupProps) {\n  return (\n    <div className=\"space-y-2\">\n      {options.map((opt) => {\n        const isSelected = opt.value === value;\n        let indicator = 'border-neutral-300';\n        if (isSelected) {\n          indicator = 'border-neutral-900 bg-neutral-900';\n          if (variant === 'expressive') indicator = 'border-[#2547E8] bg-[#2547E8]';\n          if (variant === 'nocturne') indicator = 'border-white bg-white';\n        }\n\n        return (\n          <label\n            key={opt.value}\n            onClick={() => onChange(opt.value)}\n            className=\"flex items-start gap-3 p-2 rounded-lg cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-800/50 transition-colors\"\n          >\n            <div className={`mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full border ${indicator}`}>\n              {isSelected && <div className=\"h-1.5 w-1.5 rounded-full bg-white dark:bg-neutral-950\" />}\n            </div>\n            <div className=\"text-xs\">\n              <span className=\"font-medium text-neutral-900 dark:text-neutral-100\">{opt.label}</span>\n              {opt.description && <p className=\"text-neutral-500 mt-0.5\">{opt.description}</p>}\n            </div>\n          </label>\n        );\n      })}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { RadioGroup } from './index.js';\n\nexport function RadioGroupPreview() {\n  const [val, setVal] = useState('monthly');\n  return (\n    <div className=\"p-8 max-w-sm mx-auto bg-[#FAF9F6]\">\n      <RadioGroup\n        variant=\"expressive\"\n        value={val}\n        onChange={setVal}\n        options={[\n          { value: 'monthly', label: 'Monthly Billing', description: 'Billed monthly at standard rate.' },\n          { value: 'yearly', label: 'Annual Billing', description: 'Save 20% with annual upfront commitment.' },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_radio_group",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

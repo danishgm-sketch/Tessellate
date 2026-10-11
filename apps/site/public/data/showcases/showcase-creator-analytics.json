@@ -1,0 +1,387 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "showcase-creator-analytics",
+  "name": "Pulse Media Creator Studio",
+  "description": "Multi-platform creator subscriber revenue and attribution curves.",
+  "createdAt": "2026-10-10T12:00:00.000Z",
+  "updatedAt": "2026-10-10T12:00:00.000Z",
+  "catalogVersion": "1.0.0",
+  "seed": "seed_showcase-creator-analytics",
+  "productModel": {
+    "schemaVersion": "1.0.0",
+    "productArchetypes": [
+      {
+        "tag": "analytics",
+        "weight": 100
+      }
+    ],
+    "primaryAudience": "Domain specialists",
+    "userSophistication": 80,
+    "primaryObjective": "Multi-platform creator subscriber revenue and attribution curves.",
+    "secondaryObjectives": [
+      "Maximize workflow speed and cognitive clarity"
+    ],
+    "jobsToBeDone": [
+      "Analyze domain data",
+      "Execute actions",
+      "Inspect telemetry"
+    ],
+    "entities": [],
+    "workflows": [],
+    "trustRequirement": 92,
+    "informationComplexity": 85,
+    "dataDensity": 85,
+    "collaborationLevel": 50,
+    "transactionCriticality": 70,
+    "navigationComplexity": 60,
+    "mobileImportance": 50,
+    "likelyScreens": [],
+    "requiredCapabilities": [
+      "export",
+      "search",
+      "audit"
+    ],
+    "forbiddenPatterns": [],
+    "constraints": {
+      "accessibilityFloor": "AA",
+      "performanceCeiling": "rich",
+      "targetDevices": [
+        "desktop",
+        "tablet"
+      ]
+    }
+  },
+  "designDNA": {
+    "professionalism": 88,
+    "playfulness": 50,
+    "luxury": 40,
+    "warmth": 65,
+    "technicality": 80,
+    "editorial": 70,
+    "futurism": 65,
+    "visualAmbition": 75,
+    "structuralCreativity": 60,
+    "density": 75,
+    "whitespace": 50,
+    "contrast": 85,
+    "colourfulness": 75,
+    "curvature": 45,
+    "depth": 40,
+    "motion": 60,
+    "motionPlayfulness": 40,
+    "typographicExpression": 75,
+    "imageryIntensity": 35,
+    "videoIntensity": 10,
+    "threeDIntensity": 0,
+    "dataDensity": 85,
+    "interactionDensity": 80,
+    "asymmetry": 25,
+    "conversionIntensity": 60,
+    "trust": 92,
+    "accessibilityPriority": 97,
+    "performancePriority": 97,
+    "primaryArchetype": "analytics",
+    "visualMode": "adaptive",
+    "geometryFamily": "rounded",
+    "navigationModel": "sidebar-standard",
+    "responsivePhilosophy": "equal-capability-adaptive",
+    "contentTone": "insightful-empowering",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "calm-precision",
+    "typographyPersonality": "dynamic-metric",
+    "surfacePersonality": "gradient-accented-cards"
+  },
+  "constraints": {
+    "accessibilityFloor": "AA",
+    "performanceCeiling": "rich",
+    "targetDevices": [
+      "desktop",
+      "tablet"
+    ]
+  },
+  "screenGraph": {
+    "id": "sg_showcase-creator-analytics",
+    "groups": [
+      {
+        "id": "group_main",
+        "name": "Main Workspace",
+        "screens": [
+          {
+            "id": "node-app-overview",
+            "name": "Application Overview Dashboard",
+            "slug": "/overview",
+            "screenType": "application-overview-dashboard",
+            "purpose": "Application Overview Dashboard",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 80,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-analytics-dashboard",
+            "name": "Analytics Dashboard",
+            "slug": "/analytics",
+            "screenType": "analytics-dashboard",
+            "purpose": "Analytics Dashboard",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 75,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-billing",
+            "name": "Billing & Usage",
+            "slug": "/settings/billing",
+            "screenType": "billing-&-usage",
+            "purpose": "Billing & Usage",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 70,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge_0",
+        "fromScreenId": "node-app-overview",
+        "toScreenId": "node-analytics-dashboard"
+      },
+      {
+        "id": "edge_1",
+        "fromScreenId": "node-app-overview",
+        "toScreenId": "node-billing"
+      }
+    ]
+  },
+  "screens": [
+    {
+      "id": "screen-app-overview",
+      "screenNodeId": "node-app-overview",
+      "name": "Application Overview Dashboard",
+      "slug": "/overview",
+      "rootNode": {
+        "id": "root-app-overview",
+        "nodeType": "layout",
+        "semanticRole": "dashboard-canvas",
+        "children": [
+          {
+            "id": "sec-dash-metrics",
+            "nodeType": "section",
+            "semanticRole": "kpi-metrics",
+            "resourceRef": {
+              "id": "res_metrics_scorecard",
+              "slug": "metrics-scorecard",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-dash-chart",
+            "nodeType": "section",
+            "semanticRole": "trend-chart",
+            "resourceRef": {
+              "id": "res_time_series_chart",
+              "slug": "time-series-chart",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-dash-activity",
+            "nodeType": "section",
+            "semanticRole": "recent-activity",
+            "resourceRef": {
+              "id": "res_activity_timeline",
+              "slug": "activity-timeline",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-analytics-dashboard",
+      "screenNodeId": "node-analytics-dashboard",
+      "name": "Analytics Dashboard",
+      "slug": "/analytics",
+      "rootNode": {
+        "id": "root-analytics-dashboard",
+        "nodeType": "layout",
+        "semanticRole": "analytics-canvas",
+        "children": [
+          {
+            "id": "sec-an-kpis",
+            "nodeType": "section",
+            "semanticRole": "summary-kpis",
+            "resourceRef": {
+              "id": "res_metrics_scorecard",
+              "slug": "metrics-scorecard",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-an-trend",
+            "nodeType": "section",
+            "semanticRole": "trend-chart",
+            "resourceRef": {
+              "id": "res_time_series_chart",
+              "slug": "time-series-chart",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-an-bar",
+            "nodeType": "section",
+            "semanticRole": "distribution",
+            "resourceRef": {
+              "id": "res_bar_chart",
+              "slug": "bar-chart",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-an-cohort",
+            "nodeType": "section",
+            "semanticRole": "retention-cohort",
+            "resourceRef": {
+              "id": "res_cohort_matrix",
+              "slug": "cohort-matrix",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-billing",
+      "screenNodeId": "node-billing",
+      "name": "Billing & Usage",
+      "slug": "/settings/billing",
+      "rootNode": {
+        "id": "root-billing",
+        "nodeType": "layout",
+        "semanticRole": "billing-canvas",
+        "children": [
+          {
+            "id": "sec-bill-plan",
+            "nodeType": "section",
+            "semanticRole": "plan",
+            "resourceRef": {
+              "id": "res_billing_plan_card",
+              "slug": "billing-plan-card",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-bill-invoices",
+            "nodeType": "section",
+            "semanticRole": "invoices",
+            "resourceRef": {
+              "id": "res_invoices_history_table",
+              "slug": "invoices-history-table",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    }
+  ],
+  "navigation": {
+    "model": "sidebar-standard",
+    "primaryItems": [
+      {
+        "label": "Dashboard",
+        "targetScreenId": "node-app-overview"
+      },
+      {
+        "label": "Analytics",
+        "targetScreenId": "node-analytics-dashboard"
+      },
+      {
+        "label": "Billing",
+        "targetScreenId": "node-billing"
+      }
+    ]
+  },
+  "assets": [],
+  "locks": [],
+  "historyMeta": {
+    "totalOperations": 12,
+    "headRevision": 1
+  },
+  "exportSettings": {
+    "framework": "react",
+    "styling": "tailwind",
+    "includeTypes": true,
+    "target": "vite-react-tailwind"
+  }
+}

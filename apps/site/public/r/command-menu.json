@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command-menu",
+  "type": "registry:ui",
+  "title": "Command Menu",
+  "description": "⌘K spotlight dialog modal with quick command search, group categories, and keyboard arrow navigation.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type CommandMenuVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CommandItem {\n  id: string;\n  category: string;\n  label: string;\n  shortcut?: string;\n}\n\nexport interface CommandMenuProps {\n  variant?: CommandMenuVariant;\n  open: boolean;\n  onClose: () => void;\n  items: CommandItem[];\n  onSelect?: (id: string) => void;\n}\n\nexport function CommandMenu({\n  variant = 'quiet',\n  open,\n  onClose,\n  items,\n  onSelect,\n}: CommandMenuProps) {\n  const [query, setQuery] = useState('');\n  if (!open) return null;\n\n  const filtered = items.filter((i) => i.label.toLowerCase().includes(query.toLowerCase()) || i.category.toLowerCase().includes(query.toLowerCase()));\n\n  let theme = 'bg-white border-neutral-200 text-neutral-900 shadow-2xl';\n  if (variant === 'expressive') theme = 'bg-white border-[#D9D6CF] text-neutral-900 shadow-2xl';\n  if (variant === 'nocturne') theme = 'bg-[#11141B] border-[#2E3440] text-white shadow-2xl';\n\n  return (\n    <div className=\"fixed inset-0 z-50 flex items-start justify-center pt-24 bg-black/40 backdrop-blur-xs p-4\">\n      <div className=\"fixed inset-0\" onClick={onClose} />\n      <div className={`relative w-full max-w-lg rounded-xl border overflow-hidden z-10 ${theme}`}>\n        <div className=\"flex items-center px-4 py-3 border-b border-inherit\">\n          <input\n            autoFocus\n            type=\"text\"\n            className=\"w-full bg-transparent text-sm outline-none placeholder:text-neutral-400\"\n            placeholder=\"Type a command or search...\"\n            value={query}\n            onChange={(e) => setQuery(e.target.value)}\n          />\n          <kbd className=\"text-[10px] text-neutral-400 font-mono border rounded px-1\">ESC</kbd>\n        </div>\n        <div className=\"max-h-72 overflow-auto p-2 space-y-1\">\n          {filtered.map((item) => (\n            <button\n              key={item.id}\n              type=\"button\"\n              onClick={() => {\n                onSelect?.(item.id);\n                onClose();\n              }}\n              className=\"flex w-full items-center justify-between rounded px-3 py-2 text-xs text-left hover:bg-neutral-100 dark:hover:bg-neutral-800\"\n            >\n              <span>{item.label}</span>\n              <span className=\"text-[10px] opacity-40 uppercase tracking-wider font-mono\">{item.category}</span>\n            </button>\n          ))}\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { CommandMenu } from './index.js';\n\nexport function CommandMenuPreview() {\n  const [open, setOpen] = useState(false);\n  return (\n    <div className=\"p-8 flex justify-center bg-[#FAF9F6]\">\n      <button onClick={() => setOpen(true)} className=\"px-4 py-2 border rounded-lg text-sm bg-white shadow-xs\">\n        Open Command Palette (⌘K)\n      </button>\n      <CommandMenu\n        variant=\"expressive\"\n        open={open}\n        onClose={() => setOpen(false)}\n        items={[\n          { id: '1', category: 'Navigation', label: 'Go to Workbench' },\n          { id: '2', category: 'Action', label: 'Trigger Recomposition' },\n          { id: '3', category: 'Export', label: 'Download Source ZIP' },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "overlays",
+    "search"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_command_menu",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "title": "Switch",
+  "description": "Accessible sliding toggle switch for boolean preferences and instant settings.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type SwitchVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SwitchProps {\n  variant?: SwitchVariant;\n  label?: string;\n  description?: string;\n  checked: boolean;\n  onChange: (checked: boolean) => void;\n  disabled?: boolean;\n}\n\nexport function Switch({\n  variant = 'quiet',\n  label,\n  description,\n  checked,\n  onChange,\n  disabled = false,\n}: SwitchProps) {\n  let track = checked ? 'bg-neutral-900' : 'bg-neutral-200';\n  if (variant === 'expressive' && checked) track = 'bg-[#2547E8] shadow-xs';\n  if (variant === 'nocturne' && checked) track = 'bg-white';\n\n  return (\n    <label className={`inline-flex items-center justify-between gap-4 cursor-pointer select-none ${disabled ? 'opacity-40 pointer-events-none' : ''}`}>\n      {(label || description) && (\n        <div className=\"text-xs\">\n          {label && <span className=\"font-medium text-neutral-900 dark:text-neutral-100\">{label}</span>}\n          {description && <p className=\"text-neutral-500 mt-0.5\">{description}</p>}\n        </div>\n      )}\n      <button\n        type=\"button\"\n        role=\"switch\"\n        aria-checked={checked}\n        disabled={disabled}\n        onClick={() => onChange(!checked)}\n        className={`relative inline-flex h-5 w-9 shrink-0 rounded-full transition-colors duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${track}`}\n      >\n        <span\n          className={`inline-block h-4 w-4 transform rounded-full bg-white transition duration-200 ease-in-out mt-0.5 ml-0.5 shadow-xs ${\n            checked ? (variant === 'nocturne' ? 'translate-x-4 bg-neutral-950' : 'translate-x-4') : 'translate-x-0'\n          }`}\n        />\n      </button>\n    </label>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { Switch } from './index.js';\n\nexport function SwitchPreview() {\n  const [on, setOn] = useState(true);\n  return (\n    <div className=\"p-8 max-w-sm mx-auto bg-[#FAF9F6]\">\n      <Switch variant=\"expressive\" label=\"Automated Backups\" description=\"Sync checkpoints to local IndexedDB every minute.\" checked={on} onChange={setOn} />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_switch",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-progress",
+  "type": "registry:component",
+  "title": "Scroll Progress",
+  "description": "Header hairline progress track calculating document reading percentage and viewport completion.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type ScrollProgressVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ScrollProgressProps {\n  variant?: ScrollProgressVariant;\n}\n\nexport function ScrollProgress({ variant = 'quiet' }: ScrollProgressProps) {\n  const [progress, setProgress] = useState(65);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const fillBg =\n    variant === 'nocturne'\n      ? 'bg-cyan-400'\n      : variant === 'expressive'\n      ? 'bg-[#2547E8]'\n      : 'bg-neutral-900 dark:bg-white';\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>\n      <div className=\"flex justify-between items-center\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Article Reading Progress</h4>\n          <p className=\"text-xs text-neutral-500\">Fixed top hairline telemetry</p>\n        </div>\n        <span className=\"text-xs font-mono font-medium\">{progress}% Completed</span>\n      </div>\n\n      <div className=\"w-full h-1.5 rounded-full bg-neutral-100 dark:bg-neutral-800 overflow-hidden\">\n        <div\n          className={`h-full rounded-full transition-all duration-150 ${fillBg}`}\n          style={{ width: `${progress}%` }}\n        />\n      </div>\n\n      <div className=\"flex items-center gap-3 pt-2\">\n        <span className=\"text-xs text-neutral-400 font-mono\">Simulate Scroll:</span>\n        <input\n          type=\"range\"\n          min=\"0\"\n          max=\"100\"\n          value={progress}\n          onChange={(e) => setProgress(Number(e.target.value))}\n          className=\"flex-1 accent-neutral-900 dark:accent-white cursor-pointer\"\n        />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { ScrollProgress, ScrollProgressVariant } from './index';\n\nexport function ScrollProgressPreview() {\n  const [variant, setVariant] = useState<ScrollProgressVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <ScrollProgress variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "scroll"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_scroll_progress",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

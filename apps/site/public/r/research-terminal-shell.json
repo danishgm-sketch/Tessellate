@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "research-terminal-shell",
+  "type": "registry:block",
+  "title": "Research Terminal Shell",
+  "description": "Scholarly exploration workspace with paper abstract viewer, citation graph, and notes rail.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ResearchTerminalShellVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ResearchTerminalShellProps {\n  variant?: ResearchTerminalShellVariant;\n}\n\nexport function ResearchTerminalShell({ variant = 'quiet' }: ResearchTerminalShellProps) {\n  let theme = 'bg-white text-neutral-900';\n  if (variant === 'nocturne') theme = 'bg-[#0B0D10] text-white';\n\n  return (\n    <div className={`h-screen flex divide-x text-xs ${theme}`}>\n      <div className=\"w-64 p-4 space-y-3\">\n        <span className=\"font-bold\">Paper Index</span>\n        <p className=\"p-2 border rounded font-medium\">Attention Is All You Need</p>\n        <p className=\"p-2 border rounded opacity-70\">Deep Residual Learning</p>\n      </div>\n      <div className=\"flex-1 p-6 space-y-4\">\n        <h2 className=\"text-base font-semibold\">Abstract & Empirical Results</h2>\n        <p className=\"text-neutral-500 leading-relaxed\">Evaluation metrics across multimodal benchmarks.</p>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { ResearchTerminalShell } from './index.js';\n\nexport function ResearchTerminalShellPreview() {\n  return (\n    <div className=\"h-64 border rounded-xl overflow-hidden\">\n      <ResearchTerminalShell variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "layout"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_research_terminal_shell",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,241 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "res_primitive_select",
+  "slug": "select",
+  "name": "Select",
+  "version": "1.0.0",
+  "status": "verified",
+  "description": "Accessible styled dropdown selector with trigger, chevron indicator, and options.",
+  "resourceType": "primitive",
+  "categories": [
+    "primitives",
+    "inputs"
+  ],
+  "roles": [
+    "select",
+    "control"
+  ],
+  "purposes": [
+    "Category choice",
+    "Status filter",
+    "Settings option"
+  ],
+  "productArchetypes": [
+    {
+      "tag": "developer-tool",
+      "weight": 90
+    },
+    {
+      "tag": "b2b-saas",
+      "weight": 85
+    }
+  ],
+  "creator": {
+    "id": "tessellate_core",
+    "displayName": "Tessellate Core",
+    "handle": "tessellate",
+    "url": "https://tessellate.design"
+  },
+  "provenance": {
+    "origin": "tessellate",
+    "derivative": false,
+    "aiAssistance": "none"
+  },
+  "license": {
+    "spdx": "MIT",
+    "name": "MIT License",
+    "url": "https://opensource.org/licenses/MIT",
+    "redistributionVerified": true,
+    "attributionRequired": false
+  },
+  "framework": "react",
+  "language": "typescript",
+  "styling": "tailwind",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "preview.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "fixtures.ts",
+      "kind": "fixture",
+      "required": true
+    },
+    {
+      "path": "README.md",
+      "kind": "asset",
+      "required": true
+    }
+  ],
+  "registry": {
+    "name": "select",
+    "dependencies": [],
+    "devDependencies": [],
+    "registryDependencies": []
+  },
+  "preview": {
+    "component": "SelectPreview",
+    "defaultProps": {},
+    "viewport": 1440
+  },
+  "slots": [
+    {
+      "id": "children",
+      "name": "Content",
+      "type": "component",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "id": "quiet",
+      "name": "Quiet",
+      "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+      "props": {
+        "variant": "quiet"
+      }
+    },
+    {
+      "id": "expressive",
+      "name": "Expressive",
+      "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+      "props": {
+        "variant": "expressive"
+      }
+    },
+    {
+      "id": "nocturne",
+      "name": "Nocturne",
+      "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+      "props": {
+        "variant": "nocturne"
+      }
+    }
+  ],
+  "tags": [
+    "select",
+    "dropdown",
+    "picker",
+    "control"
+  ],
+  "intent": {
+    "summary": "Accessible styled dropdown selector with trigger, chevron indicator, and options.",
+    "idealFor": [
+      "Single choice from 5–15 distinct options"
+    ],
+    "avoidFor": [
+      "Binary choices (use Switch or Checkbox)"
+    ],
+    "jobs": [
+      "Choose item from curated options list",
+      "Maintain selected option state"
+    ],
+    "contentRequirements": [
+      "Accessible label and appropriate semantic tokens"
+    ],
+    "notes": [
+      "Supports keyboard navigation and reduced motion"
+    ]
+  },
+  "visualDNA": {
+    "professionalism": 80,
+    "playfulness": 30,
+    "luxury": 40,
+    "warmth": 30,
+    "technicality": 70,
+    "editorial": 60,
+    "futurism": 40,
+    "visualAmbition": 50,
+    "structuralCreativity": 30,
+    "density": 60,
+    "whitespace": 50,
+    "contrast": 70,
+    "colourfulness": 40,
+    "curvature": 50,
+    "depth": 30,
+    "motion": 40,
+    "motionPlayfulness": 20,
+    "typographicExpression": 40,
+    "imageryIntensity": 10,
+    "videoIntensity": 0,
+    "threeDIntensity": 0,
+    "dataDensity": 60,
+    "interactionDensity": 70,
+    "asymmetry": 10,
+    "conversionIntensity": 60,
+    "trust": 85,
+    "accessibilityPriority": 95,
+    "performancePriority": 95,
+    "visualMode": "adaptive",
+    "geometryFamily": "rounded",
+    "primaryStack": "react-tailwind"
+  },
+  "interactionDNA": {
+    "interactionDensity": 60,
+    "motionIntensity": 30,
+    "keyboardComplexity": "low",
+    "hoverDependency": "none",
+    "directManipulation": false
+  },
+  "layoutDNA": {
+    "density": 60,
+    "whitespace": 40,
+    "asymmetry": 10,
+    "preferredWidths": [
+      "content"
+    ],
+    "layoutFamilies": [
+      "inline",
+      "row",
+      "toolbar"
+    ]
+  },
+  "responsive": {
+    "verifiedWidths": [
+      360,
+      768,
+      1440
+    ],
+    "defaultStrategy": "compress"
+  },
+  "accessibility": {
+    "levelTarget": "AA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true
+  },
+  "performance": {
+    "jsCost": "tiny",
+    "gpuCost": "none",
+    "mediaCost": "none",
+    "runtimeComplexity": "low",
+    "lazyRecommended": false,
+    "continuousAnimation": false
+  },
+  "complexity": "low",
+  "customizability": "high",
+  "compatibility": {},
+  "relationships": [],
+  "quality": {
+    "overall": 96,
+    "accessibility": 98,
+    "responsive": 95,
+    "performance": 100,
+    "codeQuality": 96,
+    "composability": 95,
+    "visualCraft": 95,
+    "dependencyCleanliness": 100,
+    "documentation": 95
+  },
+  "createdAt": "2026-10-10T12:00:00.000Z",
+  "updatedAt": "2026-10-10T12:00:00.000Z"
+}

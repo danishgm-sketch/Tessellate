@@ -1,0 +1,31 @@
+{
+  "name": "@tessellate/mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "tessellate-mcp": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.0",
+    "@tessellate/catalog": "workspace:*",
+    "@tessellate/compatibility": "workspace:*",
+    "@tessellate/composer": "workspace:*",
+    "@tessellate/dna": "workspace:*",
+    "@tessellate/schemas": "workspace:*",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "typescript": "^5.7.3"
+  }
+}

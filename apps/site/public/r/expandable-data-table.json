@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "expandable-data-table",
+  "type": "registry:block",
+  "title": "Expandable Data Table",
+  "description": "Data grid where each row expands to reveal detailed sub-attributes or nested logs.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type ExpandableDataTableVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ExpandableDataTableProps {\n  variant?: ExpandableDataTableVariant;\n}\n\nexport function ExpandableDataTable({ variant = 'quiet' }: ExpandableDataTableProps) {\n  const [expanded, setExpanded] = useState<number | null>(null);\n\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  const rows = [\n    { id: 1, name: 'Ingestion Cluster A', region: 'us-east-1', details: '12 active replicas. Last rebalanced 4m ago.' },\n    { id: 2, name: 'Edge Gateway B', region: 'eu-west-1', details: 'Serving TLS 1.3 traffic. Zero dropped packets.' },\n  ];\n\n  return (\n    <div className={`w-full rounded-xl border overflow-hidden text-xs transition-colors ${bg}`}>\n      <table className=\"w-full text-left\">\n        <thead className=\"bg-neutral-100/60 dark:bg-neutral-900/60 border-b border-neutral-200 dark:border-neutral-800 font-mono text-[11px]\">\n          <tr>\n            <th className=\"p-3 w-8\"></th>\n            <th className=\"p-3\">Cluster Name</th>\n            <th className=\"p-3\">Region</th>\n          </tr>\n        </thead>\n        <tbody className=\"divide-y divide-neutral-200 dark:divide-neutral-800\">\n          {rows.map((r) => (\n            <React.Fragment key={r.id}>\n              <tr\n                onClick={() => setExpanded(expanded === r.id ? null : r.id)}\n                className=\"hover:bg-neutral-50 dark:hover:bg-neutral-900/40 cursor-pointer\"\n              >\n                <td className=\"p-3 text-neutral-400 font-mono\">{expanded === r.id ? '▼' : '▶'}</td>\n                <td className=\"p-3 font-semibold\">{r.name}</td>\n                <td className=\"p-3 font-mono opacity-70\">{r.region}</td>\n              </tr>\n              {expanded === r.id && (\n                <tr className=\"bg-neutral-50/50 dark:bg-neutral-900/30\">\n                  <td colSpan={3} className=\"p-4 pl-10 text-xs opacity-75 font-mono\">\n                    {r.details}\n                  </td>\n                </tr>\n              )}\n            </React.Fragment>\n          ))}\n        </tbody>\n      </table>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { ExpandableDataTable, ExpandableDataTableVariant } from './index.js';\n\nexport function ExpandableDataTablePreview() {\n  const [variant, setVariant] = useState<ExpandableDataTableVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Expandable Data Table Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as ExpandableDataTableVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <ExpandableDataTable variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "data",
+    "tables"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_expandable_data_table",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

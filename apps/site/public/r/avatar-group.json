@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-group",
+  "type": "registry:ui",
+  "title": "Avatar Group",
+  "description": "Overlapping clustered avatars with ring separation and excess counter pill (+N).",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type AvatarGroupVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AvatarGroupProps {\n  variant?: AvatarGroupVariant;\n  items: Array<{ initials: string; src?: string }>;\n  max?: number;\n}\n\nexport function AvatarGroup({ variant = 'quiet', items, max = 3 }: AvatarGroupProps) {\n  const visible = items.slice(0, max);\n  const excess = items.length - max;\n\n  let ring = 'border-white dark:border-neutral-900';\n  if (variant === 'expressive') ring = 'border-[#FAF9F6]';\n  if (variant === 'nocturne') ring = 'border-[#0B0D10]';\n\n  return (\n    <div className=\"flex items-center -space-x-2\">\n      {visible.map((it, idx) => (\n        <div\n          key={idx}\n          className={`flex h-8 w-8 items-center justify-center rounded-full border-2 bg-neutral-200 dark:bg-neutral-800 text-[11px] font-semibold text-neutral-800 dark:text-neutral-200 shadow-xs ${ring}`}\n        >\n          {it.initials}\n        </div>\n      ))}\n      {excess > 0 && (\n        <div className={`flex h-8 w-8 items-center justify-center rounded-full border-2 bg-neutral-100 dark:bg-neutral-800 text-[10px] font-semibold text-neutral-600 dark:text-neutral-300 ${ring}`}>\n          +{excess}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { AvatarGroup } from './index.js';\n\nexport function AvatarGroupPreview() {\n  return (\n    <div className=\"p-8 flex justify-center bg-[#FAF9F6]\">\n      <AvatarGroup\n        variant=\"expressive\"\n        items={[\n          { initials: 'AL' },\n          { initials: 'JD' },\n          { initials: 'MK' },\n          { initials: 'PR' },\n          { initials: 'ZW' },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "display"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_avatar_group",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

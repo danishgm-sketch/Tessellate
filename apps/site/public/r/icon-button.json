@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "icon-button",
+  "type": "registry:ui",
+  "title": "Icon Button",
+  "description": "Compact icon-only action trigger with tooltip support and accessible label semantics.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type IconButtonVariant = 'quiet' | 'expressive' | 'nocturne';\nexport type IconButtonSize = 'sm' | 'md' | 'lg';\n\nexport interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {\n  variant?: IconButtonVariant;\n  size?: IconButtonSize;\n  icon?: React.ReactNode;\n  'aria-label': string;\n}\n\nexport const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(\n  ({ variant = 'quiet', size = 'md', icon, className = '', disabled, children, ...rest }, ref) => {\n    const sizeClasses = {\n      sm: 'h-7 w-7 p-1 text-xs rounded-md',\n      md: 'h-9 w-9 p-1.5 text-sm rounded-lg',\n      lg: 'h-11 w-11 p-2 text-base rounded-xl',\n    }[size];\n\n    let colorClasses = '';\n    if (variant === 'quiet') {\n      colorClasses = 'bg-transparent text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 border border-transparent focus-visible:ring-neutral-400';\n    } else if (variant === 'expressive') {\n      colorClasses = 'bg-white text-[#2547E8] hover:bg-[#E7EBFF] border border-[#D9D6CF] shadow-xs hover:border-[#2547E8] focus-visible:ring-[#2547E8]';\n    } else {\n      colorClasses = 'bg-[#171A21] text-neutral-300 hover:bg-[#20242D] hover:text-white border border-[#2E3440] focus-visible:ring-white';\n    }\n\n    return (\n      <button\n        ref={ref}\n        type=\"button\"\n        disabled={disabled}\n        className={`inline-flex items-center justify-center transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-40 cursor-pointer active:scale-95 motion-reduce:transition-none ${sizeClasses} ${colorClasses} ${className}`}\n        {...rest}\n      >\n        {icon || children || (\n          <svg className=\"w-4 h-4\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\">\n            <path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth={2} d=\"M12 4v16m8-8H4\" />\n          </svg>\n        )}\n      </button>\n    );\n  }\n);\nIconButton.displayName = 'IconButton';\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { IconButton, type IconButtonVariant } from './index.js';\n\nexport function IconButtonPreview() {\n  const [variant, setVariant] = useState<IconButtonVariant>('expressive');\n  const isDark = variant === 'nocturne';\n\n  return (\n    <div className={`p-8 min-h-full transition-colors ${isDark ? 'bg-[#0B0D10] text-white' : 'bg-[#FAF9F6] text-neutral-900'}`}>\n      <div className=\"flex gap-4 items-center justify-center\">\n        <IconButton variant={variant} aria-label=\"Add item\" />\n        <IconButton variant={variant} size=\"lg\" aria-label=\"Add item large\" />\n      </div>\n      <div className=\"mt-6 flex justify-center gap-2\">\n        {(['quiet', 'expressive', 'nocturne'] as IconButtonVariant[]).map((v) => (\n          <button key={v} onClick={() => setVariant(v)} className=\"px-3 py-1 text-xs border rounded capitalize\">\n            {v}\n          </button>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs",
+    "actions"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_icon_button",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

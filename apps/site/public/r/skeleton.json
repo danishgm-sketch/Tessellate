@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "title": "Skeleton",
+  "description": "Content placeholder animation primitive preventing layout shift during loading.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type SkeletonVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SkeletonProps {\n  variant?: SkeletonVariant;\n  className?: string;\n}\n\nexport function Skeleton({ variant = 'quiet', className = 'h-4 w-full' }: SkeletonProps) {\n  let theme = 'bg-neutral-200';\n  if (variant === 'expressive') theme = 'bg-neutral-200/80';\n  if (variant === 'nocturne') theme = 'bg-neutral-800';\n\n  return (\n    <div className={`animate-pulse rounded-md ${theme} ${className}`} />\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { Skeleton } from './index.js';\n\nexport function SkeletonPreview() {\n  return (\n    <div className=\"p-8 max-w-sm mx-auto space-y-3 bg-[#FAF9F6]\">\n      <Skeleton className=\"h-6 w-3/4\" />\n      <Skeleton className=\"h-4 w-full\" />\n      <Skeleton className=\"h-4 w-5/6\" />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "feedback"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_skeleton",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

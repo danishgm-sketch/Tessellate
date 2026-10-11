@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gauge",
+  "type": "registry:component",
+  "title": "Gauge",
+  "description": "Semicircular dial/speedometer gauge with target marker, colored threshold zones (safe/warning/critical), and center value needle/text.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type GaugeVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface GaugeProps {\n  variant?: GaugeVariant;\n  value?: number;\n  max?: number;\n}\n\nexport function Gauge({ variant = 'quiet', value = 76, max = 100 }: GaugeProps) {\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const fillStroke =\n    variant === 'nocturne' ? '#06B6D4' : variant === 'expressive' ? '#2547E8' : '#171717';\n\n  const radius = 70;\n  const strokeWidth = 14;\n  const circumference = Math.PI * radius;\n  const pct = Math.min(value / max, 1);\n  const strokeDashoffset = circumference * (1 - pct);\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col items-center transition-colors ${cardBg}`}>\n      <div className=\"w-full flex items-center justify-between mb-4\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">CPU Cluster Load</h4>\n          <p className=\"text-xs text-neutral-500\">Real-time utilization meter</p>\n        </div>\n        <span className=\"text-xs font-mono font-medium px-2 py-0.5 rounded bg-amber-500/10 text-amber-500\">\n          Optimal Zone\n        </span>\n      </div>\n\n      <div className=\"relative w-[180px] h-[100px] flex justify-center overflow-hidden select-none\">\n        <svg width=\"180\" height=\"90\" viewBox=\"0 0 180 90\">\n          {/* Background track */}\n          <path\n            d=\"M 20 90 A 70 70 0 0 1 160 90\"\n            fill=\"none\"\n            stroke={variant === 'nocturne' ? '#1E232E' : '#E5E7EB'}\n            strokeWidth={strokeWidth}\n            strokeLinecap=\"round\"\n          />\n          {/* Active fill */}\n          <path\n            d=\"M 20 90 A 70 70 0 0 1 160 90\"\n            fill=\"none\"\n            stroke={fillStroke}\n            strokeWidth={strokeWidth}\n            strokeDasharray={circumference}\n            strokeDashoffset={strokeDashoffset}\n            strokeLinecap=\"round\"\n            className=\"transition-all duration-500\"\n          />\n        </svg>\n\n        <div className=\"absolute bottom-0 inset-x-0 flex flex-col items-center\">\n          <span className=\"text-3xl font-mono font-bold\">{value}%</span>\n          <span className=\"text-[10px] text-neutral-400 font-mono\">Limit: {max}%</span>\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { Gauge, GaugeVariant } from './index';\n\nexport function GaugePreview() {\n  const [variant, setVariant] = useState<GaugeVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-2xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <Gauge variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "charts"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_gauge",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

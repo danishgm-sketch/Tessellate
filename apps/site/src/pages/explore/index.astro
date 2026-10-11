@@ -1,0 +1,38 @@
+---
+import { Header } from '@tessellate/ui';
+import { ExploreView } from '../../components/ExploreView';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Explore — Tessellate Open Interface Library</title>
+    <meta
+      name="description"
+      content="Browse all components, patterns, layouts and motion primitives in the Tessellate open interface intelligence catalogue."
+    />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+  </head>
+  <body class="bg-[var(--tess-canvas,#F4F2ED)] text-[var(--tess-ink,#111217)] antialiased min-h-screen flex flex-col font-sans">
+    <Header client:load />
+
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="mb-6 space-y-1">
+        <h1 class="text-3xl font-bold tracking-tight text-[var(--tess-ink,#111217)]">
+          Explore Resource Library
+        </h1>
+        <p class="text-sm text-[var(--tess-ink-secondary,#62666F)]">
+          Discover vetted UI primitives, blocks, and design systems composed for modern products.
+        </p>
+      </div>
+
+      <ExploreView client:load />
+    </main>
+
+    <footer class="mt-auto border-t border-[var(--tess-hairline,#D9D6CF)] py-8 px-4 text-center text-xs text-[var(--tess-ink-muted,#8B8F97)]">
+      Tessellate Interface Intelligence Layer — Free, open resource vocabulary under permissive licenses.
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,4475 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "tessellate",
+  "homepage": "https://tessellate.design",
+  "items": [
+    {
+      "name": "accessibility-commitment-section",
+      "type": "registry:block",
+      "title": "Accessibility Commitment Section",
+      "description": "Formal WCAG 2.2 AA compliance manifesto with automated audit guarantees.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "technical-proof"
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Collapsible vertically stacked disclosure panels with rotating chevron animations.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "layout"
+      ]
+    },
+    {
+      "name": "accordion-spring",
+      "type": "registry:component",
+      "title": "Accordion Spring",
+      "description": "Spring-animated expandable panel expanding height from 0 to auto without layout jank.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "accordion"
+      ]
+    },
+    {
+      "name": "activity-feed",
+      "type": "registry:block",
+      "title": "Activity Feed",
+      "description": "Chronological timeline of system events, team actions, and commit updates.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "activity"
+      ]
+    },
+    {
+      "name": "admin-console-shell",
+      "type": "registry:block",
+      "title": "Admin Console Shell",
+      "description": "Enterprise administration layout with organization selector, user table, and security audit tab.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "advanced-data-table",
+      "type": "registry:block",
+      "title": "Advanced Data Table",
+      "description": "Feature-rich data table with column sorting, checkbox selection, pagination, and filter bar.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "tables"
+      ]
+    },
+    {
+      "name": "ai-agent-activity-feed",
+      "type": "registry:component",
+      "title": "AI Agent Activity Feed",
+      "description": "Real-time telemetry stream showing background agent thoughts, state transitions, subagent spawns, and progress percentages.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "agent"
+      ]
+    },
+    {
+      "name": "ai-approval-request",
+      "type": "registry:component",
+      "title": "AI Approval Request",
+      "description": "Human-in-the-loop intervention card requesting explicit user confirmation before executing irreversible, high-cost, or external operations.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "governance"
+      ]
+    },
+    {
+      "name": "ai-chat-panel",
+      "type": "registry:component",
+      "title": "AI Chat Panel",
+      "description": "Multi-turn conversational AI message stream with role badges, markdown body, copy action, and input composer.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "chat"
+      ]
+    },
+    {
+      "name": "ai-command-bar",
+      "type": "registry:component",
+      "title": "AI Command Bar",
+      "description": "Spotlight-style floating palette that understands natural-language system instructions and intent-matched actions.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "command"
+      ]
+    },
+    {
+      "name": "ai-copilot-sidebar",
+      "type": "registry:component",
+      "title": "AI Copilot Sidebar",
+      "description": "Collapsible contextual side pane providing real-time AI suggestions, file diffs, and inline run triggers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "sidebar"
+      ]
+    },
+    {
+      "name": "ai-empty-state",
+      "type": "registry:component",
+      "title": "AI Empty State",
+      "description": "First-run welcoming container introducing AI capabilities, sample prompts, and rapid starting templates.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "empty"
+      ]
+    },
+    {
+      "name": "ai-file-context-picker",
+      "type": "registry:component",
+      "title": "AI File Context Picker",
+      "description": "Multi-select tree picker allowing users to attach specific project files and schemas into prompt context.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "picker"
+      ]
+    },
+    {
+      "name": "ai-generation-compare",
+      "type": "registry:component",
+      "title": "AI Generation Compare",
+      "description": "Side-by-side comparative split card evaluating two candidate AI generations with score metrics and selection trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "comparison"
+      ]
+    },
+    {
+      "name": "ai-memory-context-panel",
+      "type": "registry:component",
+      "title": "AI Memory Context Panel",
+      "description": "Inspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "memory"
+      ]
+    },
+    {
+      "name": "ai-model-mode-switcher",
+      "type": "registry:component",
+      "title": "AI Model Mode Switcher",
+      "description": "Segmented switcher and credential dropdown to toggle between fast, reasoning, and local models.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "switcher"
+      ]
+    },
+    {
+      "name": "ai-multi-agent-board",
+      "type": "registry:component",
+      "title": "AI Multi-Agent Board",
+      "description": "Kanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "multi-agent"
+      ]
+    },
+    {
+      "name": "ai-plan-review",
+      "type": "registry:component",
+      "title": "AI Plan Review",
+      "description": "Multi-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "planning"
+      ]
+    },
+    {
+      "name": "ai-prompt-composer",
+      "type": "registry:component",
+      "title": "AI Prompt Composer",
+      "description": "Structured prompt input box with context variable attachment pills, system mode badges, and token counters.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "composer"
+      ]
+    },
+    {
+      "name": "ai-prompt-hero",
+      "type": "registry:block",
+      "title": "AI Prompt Hero",
+      "description": "Conversational prompt bar with preset suggestions, model picker pill, and generate CTA.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "ai-prompt-history",
+      "type": "registry:component",
+      "title": "AI Prompt History",
+      "description": "Searchable log of previous prompts with token stats, execution timestamps, and re-run buttons.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "history"
+      ]
+    },
+    {
+      "name": "ai-research-answer",
+      "type": "registry:component",
+      "title": "AI Research Answer",
+      "description": "Comprehensive synthesized research summary with executive takeaway, numbered key points, and confidence meter.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "research"
+      ]
+    },
+    {
+      "name": "ai-source-citations",
+      "type": "registry:component",
+      "title": "AI Source Citations",
+      "description": "Grounding source cards and citation tags attributing AI assertions back to documents, files, and URLs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "citations"
+      ]
+    },
+    {
+      "name": "ai-suggested-actions",
+      "type": "registry:component",
+      "title": "AI Suggested Actions",
+      "description": "Context-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "actions"
+      ]
+    },
+    {
+      "name": "ai-tool-execution-timeline",
+      "type": "registry:component",
+      "title": "AI Tool Execution Timeline",
+      "description": "Chronological timeline of agentic tool calls showing tool name, arguments, execution duration, and success status.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "tools"
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Destructive confirmation modal requiring explicit acknowledgment or cancellation before proceeding.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "overlays",
+        "feedback"
+      ]
+    },
+    {
+      "name": "analytics-shell",
+      "type": "registry:block",
+      "title": "Analytics Shell",
+      "description": "Metric-dense business intelligence dashboard shell with date picker bar and KPI grid.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "animated-border-trace",
+      "type": "registry:component",
+      "title": "Animated Border Trace",
+      "description": "Continuous or hover-activated SVG path trace racing along card perimeter hairline.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "borders"
+      ]
+    },
+    {
+      "name": "animated-gradient-line",
+      "type": "registry:component",
+      "title": "Animated Gradient Line",
+      "description": "Moving linear gradient beam sweeping across dividers, card separators, or section footers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "dividers"
+      ]
+    },
+    {
+      "name": "animated-wave-field",
+      "type": "registry:component",
+      "title": "Animated Wave Field",
+      "description": "Smooth SVG sine waves undulating horizontally with gentle frequency oscillation.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "waves"
+      ]
+    },
+    {
+      "name": "api-capability-section",
+      "type": "registry:block",
+      "title": "API Capability Section",
+      "description": "Developer section highlighting REST / GraphQL / SDK methods with endpoint pill tags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "integrations"
+      ]
+    },
+    {
+      "name": "api-key-management",
+      "type": "registry:block",
+      "title": "API Key Management",
+      "description": "Secret key manager with generate modal, masked token display, and revocation buttons.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "api"
+      ]
+    },
+    {
+      "name": "app-sidebar-compact",
+      "type": "registry:block",
+      "title": "App Sidebar Compact",
+      "description": "High-density narrow application sidebar displaying icon triggers and tooltip labels.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "app-sidebar-expanded",
+      "type": "registry:block",
+      "title": "App Sidebar Expanded",
+      "description": "Full-width application sidebar with hierarchical category headers, counts, and search.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "approval-queue",
+      "type": "registry:block",
+      "title": "Approval Queue",
+      "description": "Decision workflow queue with Approve/Reject actions and reason commentary.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "collaboration",
+        "approval"
+      ]
+    },
+    {
+      "name": "architecture-diagram-section",
+      "type": "registry:block",
+      "title": "Architecture Diagram Section",
+      "description": "Technical blueprint illustrating client-edge-database infrastructure topology.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "technical-proof"
+      ]
+    },
+    {
+      "name": "area-chart",
+      "type": "registry:component",
+      "title": "Area Chart",
+      "description": "Smooth bezier-curved single or dual area plot with subtle vertical gradient fill, baseline threshold, and interactive peek point.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "audit-log",
+      "type": "registry:block",
+      "title": "Audit Log",
+      "description": "Security and governance audit log table recording user actions, IP addresses, and hashes.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "audit"
+      ]
+    },
+    {
+      "name": "aurora-field",
+      "type": "registry:component",
+      "title": "Aurora Field",
+      "description": "Drifting organic northern-lights ribbon bands waving across deep dark backdrops.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "aurora"
+      ]
+    },
+    {
+      "name": "autocomplete",
+      "type": "registry:ui",
+      "title": "Autocomplete",
+      "description": "Typeahead prediction control suggesting options inline or in a floating palette.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Circular user representation displaying profile photography with monogram initial fallback and presence dot.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "display"
+      ]
+    },
+    {
+      "name": "avatar-group",
+      "type": "registry:ui",
+      "title": "Avatar Group",
+      "description": "Overlapping clustered avatars with ring separation and excess counter pill (+N).",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "display"
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Compact pill indicator for counts, status dots, and metadata taxonomy tags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "display"
+      ]
+    },
+    {
+      "name": "bar-chart",
+      "type": "registry:component",
+      "title": "Bar Chart",
+      "description": "Vertical categorical column chart with rounded top caps, subtle hover darkening, value labels, and horizontal gridlines.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "beam-grid",
+      "type": "registry:component",
+      "title": "Beam Grid",
+      "description": "Precision architectural coordinate grid with luminous traveling laser beams gliding along horizontal and vertical axes.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "grid"
+      ]
+    },
+    {
+      "name": "billing-overview",
+      "type": "registry:block",
+      "title": "Billing Overview",
+      "description": "Subscription status panel with card on file, next invoice date, and plan upgrade trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "billing"
+      ]
+    },
+    {
+      "name": "blur-to-sharp-reveal",
+      "type": "registry:component",
+      "title": "Blur-to-Sharp Reveal",
+      "description": "Defocus-to-crisp entrance transitioning from filter blur(8px) into razor-sharp focus.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ]
+    },
+    {
+      "name": "bottom-sheet",
+      "type": "registry:ui",
+      "title": "Bottom Sheet",
+      "description": "Mobile-first bottom sliding sheet with drag handle bar and responsive snap points.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "overlays"
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Hierarchical navigation trail path with customizable separators and accessible current page.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "navigation"
+      ]
+    },
+    {
+      "name": "breadcrumb-header",
+      "type": "registry:block",
+      "title": "Breadcrumb Header",
+      "description": "Header shell combining deep hierarchical breadcrumb trail with right-aligned action buttons.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "bubble-plot",
+      "type": "registry:component",
+      "title": "Bubble Plot",
+      "description": "3-variable scatter plot where point radius encodes the 3rd metric (e.g. volume/revenue), with semi-transparent bubble overlaps.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Tactile, accessible multi-intent button primitive with Quiet, Expressive, and Nocturne curated configurations.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs",
+        "actions"
+      ]
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "Connected cluster of action buttons with cohesive outer border and seamless seams.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs",
+        "actions"
+      ]
+    },
+    {
+      "name": "calendar-month",
+      "type": "registry:block",
+      "title": "Calendar Month",
+      "description": "Monthly 7x5 grid view with day numbers, event markers, and active date highlights.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-week",
+      "type": "registry:block",
+      "title": "Calendar Week",
+      "description": "7-column weekly schedule view displaying time slots and scheduled appointment cards.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "calendar"
+      ]
+    },
+    {
+      "name": "canvas-workspace-shell",
+      "type": "registry:block",
+      "title": "Canvas Workspace Shell",
+      "description": "Infinite-pan coordinate workspace canvas with floating tool palettes and zoom controls.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "card-grid-skeleton",
+      "type": "registry:component",
+      "title": "Card Grid Skeleton",
+      "description": "Multi-column responsive card grid loading placeholder with image aspect boxes, text lines, and action button shingles.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "skeleton"
+      ]
+    },
+    {
+      "name": "card-hover-lift",
+      "type": "registry:component",
+      "title": "Card Hover Lift",
+      "description": "Subtle vertical translate-y(-4px) lift with elevated shadow bloom on pointer hover.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "hover"
+      ]
+    },
+    {
+      "name": "card-tilt",
+      "type": "registry:component",
+      "title": "Card Tilt",
+      "description": "3D perspective tilt reacting to cursor position across card quadrants with subtle glare reflection.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "perspective"
+      ]
+    },
+    {
+      "name": "case-study-spotlight",
+      "type": "registry:block",
+      "title": "Case Study Spotlight",
+      "description": "In-depth customer story card featuring measurable impact metrics, quote, and read study link.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "centered-top-nav",
+      "type": "registry:block",
+      "title": "Centered Top Navigation",
+      "description": "Symmetrical marketing header with brand logo on left, centered links, and right-aligned CTA.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "character-stagger-reveal",
+      "type": "registry:component",
+      "title": "Character Stagger Reveal",
+      "description": "Fine-grained character-by-character kinetic reveal for brand monograms, metrics, and hero phrases.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Accessible boolean selection control with indeterminate state, animated checkmark, and descriptive label.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "cinematic-media-hero",
+      "type": "registry:block",
+      "title": "Cinematic Media Hero",
+      "description": "Full-bleed immersive atmospheric hero with dark contrast, floating badge, and headline.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "code-hero",
+      "type": "registry:block",
+      "title": "Code Hero",
+      "description": "Developer-focused hero with syntax-highlighted editor preview, copy button, and package manager tabs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "cohort-matrix",
+      "type": "registry:component",
+      "title": "Cohort Matrix",
+      "description": "Retention table displaying user cohorts over weekly/monthly periods with color-coded retention percentage cells.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "retention"
+      ]
+    },
+    {
+      "name": "collapsible-sidebar",
+      "type": "registry:block",
+      "title": "Collapsible Sidebar",
+      "description": "Flexible sidebar toggling between icon rail (48px) and expanded labels (240px) on user trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Searchable selection input combining text filtering with item picker dropdown.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "command-centre-shell",
+      "type": "registry:block",
+      "title": "Command Centre Shell",
+      "description": "Mission control telemetry layout with multi-panel monitoring grids and emergency alerts.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "command-first-nav",
+      "type": "registry:block",
+      "title": "Command-First Navigation",
+      "description": "Spotlight-oriented application header centered on a prominent interactive search input.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "command-menu",
+      "type": "registry:ui",
+      "title": "Command Menu",
+      "description": "⌘K spotlight dialog modal with quick command search, group categories, and keyboard arrow navigation.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "overlays",
+        "search"
+      ]
+    },
+    {
+      "name": "command-results",
+      "type": "registry:block",
+      "title": "Command Results",
+      "description": "Action-oriented palette result list with shortcut pills and description metadata.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "command"
+      ]
+    },
+    {
+      "name": "commerce-management-shell",
+      "type": "registry:block",
+      "title": "Commerce Management Shell",
+      "description": "E-commerce operations shell with order fulfillment queue, inventory counts, and sales graph.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "compact-data-table",
+      "type": "registry:block",
+      "title": "Compact Data Table",
+      "description": "High-density tabular list designed for tight panels and real-time feeds.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "tables"
+      ]
+    },
+    {
+      "name": "comparison-table",
+      "type": "registry:block",
+      "title": "Comparison Table",
+      "description": "Matrix comparing parameters or feature sets across multiple items side by side.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "comparison"
+      ]
+    },
+    {
+      "name": "compliance-proof",
+      "type": "registry:block",
+      "title": "Compliance Proof",
+      "description": "Regulatory compliance showcase displaying certified badges and downloadable reports.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "technical-proof"
+      ]
+    },
+    {
+      "name": "conic-light-field",
+      "type": "registry:component",
+      "title": "Conic Light Field",
+      "description": "Radial swept light gradient generating dramatic angular specular highlights and rotational depth.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "gradient"
+      ]
+    },
+    {
+      "name": "connection-lost-state",
+      "type": "registry:component",
+      "title": "Connection Lost State",
+      "description": "Active socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "network",
+        "connection"
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Right-click action palette anchored directly to the user pointer coordinates.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "overlays"
+      ]
+    },
+    {
+      "name": "context-rail",
+      "type": "registry:block",
+      "title": "Context Rail",
+      "description": "Secondary right-hand vertical rail displaying active object inspector or contextual metadata.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "conversation-list",
+      "type": "registry:block",
+      "title": "Conversation List",
+      "description": "Channel and direct message thread list with unread counters and presence badges.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "collaboration",
+        "channels"
+      ]
+    },
+    {
+      "name": "counter-typography",
+      "type": "registry:component",
+      "title": "Counter Typography",
+      "description": "Massive architectural numeric display figures paired with stacked typographic unit descriptions and statistical delta markers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "counter"
+      ]
+    },
+    {
+      "name": "cta-community",
+      "type": "registry:block",
+      "title": "CTA Community",
+      "description": "Invitation banner to Discord / GitHub discussions with member counter badge.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "cta"
+      ]
+    },
+    {
+      "name": "cta-demo-booking",
+      "type": "registry:block",
+      "title": "CTA Demo Booking",
+      "description": "Calendar booking card with time-slot picker preview and sales team call-to-action.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "cta"
+      ]
+    },
+    {
+      "name": "cta-download",
+      "type": "registry:block",
+      "title": "CTA Download",
+      "description": "Multi-platform installer button group (macOS, Windows, Linux, CLI) with version pill.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "cta"
+      ]
+    },
+    {
+      "name": "cta-minimal",
+      "type": "registry:block",
+      "title": "CTA Minimal",
+      "description": "Focused single-line headline with primary action button and supporting footnote.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "cta"
+      ]
+    },
+    {
+      "name": "cta-product-preview",
+      "type": "registry:block",
+      "title": "CTA Product Preview",
+      "description": "High-impact banner featuring a peek into the application interface with join action.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "cta"
+      ]
+    },
+    {
+      "name": "cta-split",
+      "type": "registry:block",
+      "title": "CTA Split",
+      "description": "Two-column callout with compelling copy on left and email capture form on right.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "cta"
+      ]
+    },
+    {
+      "name": "cursor-reactive-field",
+      "type": "registry:component",
+      "title": "Cursor Reactive Field",
+      "description": "Interactive mouse-tracking luminescence field that dynamically illuminates coordinate grid points and distance vectors.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "interactive"
+      ]
+    },
+    {
+      "name": "cursor-spotlight",
+      "type": "registry:component",
+      "title": "Cursor Spotlight",
+      "description": "Radial luminance spotlight tracking mouse pointer across container surface, revealing border hairline luster.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "cursor"
+      ]
+    },
+    {
+      "name": "customer-metrics-strip",
+      "type": "registry:block",
+      "title": "Customer Metrics Strip",
+      "description": "Four-column KPI impact bar highlighting uptime, volume, latency, and scale numbers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "customer-story-split",
+      "type": "registry:block",
+      "title": "Customer Story Split",
+      "description": "Side-by-side narrative with customer team photo on one side and challenge-solution story on other.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "dashboard-kpi-grid",
+      "type": "registry:block",
+      "title": "Dashboard KPI Grid",
+      "description": "Multi-column grid of key performance cards with visual trend indicators and contextual meta.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "kpi"
+      ]
+    },
+    {
+      "name": "dashboard-kpi-strip",
+      "type": "registry:block",
+      "title": "Dashboard KPI Strip",
+      "description": "Horizontal metric row featuring primary metrics, deltas, and micro sparkline indicators.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "kpi"
+      ]
+    },
+    {
+      "name": "dashboard-skeleton",
+      "type": "registry:component",
+      "title": "Dashboard Skeleton",
+      "description": "Multi-metric analytics workspace skeleton placeholder with metric card shingles, chart viewport placeholder, and data table rows.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "skeleton"
+      ]
+    },
+    {
+      "name": "data-hero",
+      "type": "registry:block",
+      "title": "Data Hero",
+      "description": "Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "data-stream-field",
+      "type": "registry:component",
+      "title": "Data Stream Field",
+      "description": "Cascading digital telemetry stream with vertical hexadecimal glyph streams and pulse wave signals.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "stream"
+      ]
+    },
+    {
+      "name": "data-terminal-header",
+      "type": "registry:block",
+      "title": "Data Terminal Header",
+      "description": "High-density monospace financial header with ticker feed, clock, and connection latency.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Accessible modal dialog window with backdrop scrim, focus trapping, and header/footer slots.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "overlays"
+      ]
+    },
+    {
+      "name": "disclosure",
+      "type": "registry:ui",
+      "title": "Disclosure",
+      "description": "Single collapsible toggle container with summary header and expandable details.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "layout"
+      ]
+    },
+    {
+      "name": "document-detail",
+      "type": "registry:block",
+      "title": "Document Detail",
+      "description": "Rich structured view of a selected document, complete with formatted text and download CTA.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "document"
+      ]
+    },
+    {
+      "name": "documentation-shell",
+      "type": "registry:block",
+      "title": "Documentation Shell",
+      "description": "Technical docs shell with sticky sidebar topic hierarchy, reading center, and on-page table of contents.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "donut-chart",
+      "type": "registry:component",
+      "title": "Donut Chart",
+      "description": "SVG circle stroke-dasharray radial breakdown with center KPI summary metric, category legend pills, and segment highlight.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "dot-matrix-field",
+      "type": "registry:component",
+      "title": "Dot Matrix Field",
+      "description": "Polka-dot matrix point grid pattern creating technical texture behind feature cards.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "dots"
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "Slide-out side panel for contextual inspections, property editing, or complex drilldowns.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "overlays",
+        "layout"
+      ]
+    },
+    {
+      "name": "drawer-spring",
+      "type": "registry:component",
+      "title": "Drawer Spring",
+      "description": "Off-canvas sliding overlay drawer with spring damping, backdrop blur, and escape key listener.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "drawer"
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Floating contextual menu with item hover states, shortcut indicators, and dividers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "overlays",
+        "navigation"
+      ]
+    },
+    {
+      "name": "dual-rail-nav",
+      "type": "registry:block",
+      "title": "Dual-Rail Navigation",
+      "description": "Two-tier navigation shell with primary app rail (48px) and contextual sub-navigation list (200px).",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "editor-workspace-shell",
+      "type": "registry:block",
+      "title": "Editor Workspace Shell",
+      "description": "Code and structured text editing shell with gutter line numbers, status bar, and tab bar.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "editorial-display-stack",
+      "type": "registry:component",
+      "title": "Editorial Display Stack",
+      "description": "Multi-tier typographic headline stack combining architectural kicker, high-impact serif headline, italic accent clause, and descriptive subdeck.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "editorial"
+      ]
+    },
+    {
+      "name": "editorial-grain",
+      "type": "registry:component",
+      "title": "Editorial Grain",
+      "description": "Film-like noise texture overlay delivering physical paper and print tactility.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "grain"
+      ]
+    },
+    {
+      "name": "editorial-hero",
+      "type": "registry:block",
+      "title": "Editorial Hero",
+      "description": "Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "empty-collection-state",
+      "type": "registry:component",
+      "title": "Empty Collection State",
+      "description": "Empty inventory or folder state prompting the user to bookmark resources or create their first item collection.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "empty",
+        "collection"
+      ]
+    },
+    {
+      "name": "empty-dashboard-state",
+      "type": "registry:component",
+      "title": "Empty Dashboard State",
+      "description": "First-time dashboard panel placeholder encouraging initial telemetry integration with quick-start steps.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "empty",
+        "dashboard"
+      ]
+    },
+    {
+      "name": "empty-search-state",
+      "type": "registry:component",
+      "title": "Empty Search State",
+      "description": "Zero query results feedback panel with search phrase echo, corrective filter suggestions, and clear action button.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "empty",
+        "search"
+      ]
+    },
+    {
+      "name": "empty-workspace",
+      "type": "registry:block",
+      "title": "Empty Workspace",
+      "description": "Empty state placeholder card with welcoming illustration and primary create action.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "onboarding",
+        "empty"
+      ]
+    },
+    {
+      "name": "entity-list",
+      "type": "registry:block",
+      "title": "Entity List",
+      "description": "Clean vertical item list with avatar/status, main description, and quick menu trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "lists"
+      ]
+    },
+    {
+      "name": "entity-overview",
+      "type": "registry:block",
+      "title": "Entity Overview",
+      "description": "Summary card with high-level description, primary KPIs, and operational tags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "overview"
+      ]
+    },
+    {
+      "name": "entity-profile-header",
+      "type": "registry:block",
+      "title": "Entity Profile Header",
+      "description": "Hero card for entity details with avatar, title, status badge, action bar, and key stats.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "header"
+      ]
+    },
+    {
+      "name": "entity-search",
+      "type": "registry:block",
+      "title": "Entity Search",
+      "description": "Specific entity-lookup block with debounce input, recent searches, and inline preview.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "entity"
+      ]
+    },
+    {
+      "name": "error-state",
+      "type": "registry:component",
+      "title": "Error State",
+      "description": "System exception and runtime fault callout with stack diagnosis summary, recovery actions, and error report trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "feedback",
+        "error"
+      ]
+    },
+    {
+      "name": "executive-summary-panel",
+      "type": "registry:block",
+      "title": "Executive Summary Panel",
+      "description": "High-level synthesis card summarizing critical alerts, key wins, and risk flags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "summary"
+      ]
+    },
+    {
+      "name": "expandable-data-table",
+      "type": "registry:block",
+      "title": "Expandable Data Table",
+      "description": "Data grid where each row expands to reveal detailed sub-attributes or nested logs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "tables"
+      ]
+    },
+    {
+      "name": "faceted-search-results",
+      "type": "registry:block",
+      "title": "Faceted Search Results",
+      "description": "Search results accompanied by facet checkboxes (type, status, tags, author).",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "facets"
+      ]
+    },
+    {
+      "name": "fade-up-reveal",
+      "type": "registry:component",
+      "title": "Fade-Up Reveal",
+      "description": "Smooth vertical translate-y and opacity entrance reveal with springy or linear settling physics.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ]
+    },
+    {
+      "name": "faq-accordion",
+      "type": "registry:block",
+      "title": "FAQ Accordion",
+      "description": "Clean expandable question list with keyboard navigation and smooth disclosure.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "faq"
+      ]
+    },
+    {
+      "name": "faq-searchable",
+      "type": "registry:block",
+      "title": "FAQ Searchable",
+      "description": "Filterable FAQ section with live search input and category filter chips.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "faq"
+      ]
+    },
+    {
+      "name": "faq-two-column",
+      "type": "registry:block",
+      "title": "FAQ Two Column",
+      "description": "Dual-column question layout for high question density without excessive vertical length.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "faq"
+      ]
+    },
+    {
+      "name": "feature-alternating-rows",
+      "type": "registry:block",
+      "title": "Feature Alternating Rows",
+      "description": "Left-right alternating feature narrative with illustrative preview frames.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-bento",
+      "type": "registry:block",
+      "title": "Feature Bento",
+      "description": "Asymmetric bento box layout combining wide hero card, tall telemetry card, and compact utility cards.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-carousel",
+      "type": "registry:block",
+      "title": "Feature Carousel",
+      "description": "Interactive swipeable feature card reel with slide indicators and category tags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-comparison",
+      "type": "registry:block",
+      "title": "Feature Comparison",
+      "description": "Side-by-side \"Before vs After\" or \"Old Way vs Modern Way\" comparative feature breakdown.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-grid-3x2",
+      "type": "registry:block",
+      "title": "Feature Grid 3x2",
+      "description": "Balanced 6-card grid with icon headers, descriptive copy, and subtle hover borders.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-matrix",
+      "type": "registry:block",
+      "title": "Feature Matrix",
+      "description": "Comprehensive feature availability grid categorized across core functional pillars.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-metrics",
+      "type": "registry:block",
+      "title": "Feature Metrics",
+      "description": "Feature section backed by empirical benchmark graphs and performance comparison stats.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-spotlight",
+      "type": "registry:block",
+      "title": "Feature Spotlight",
+      "description": "Full-width spotlight card highlighting a single flagship capability with glow accents.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-steps",
+      "type": "registry:block",
+      "title": "Feature Steps",
+      "description": "Sequential 3-step feature walkthrough emphasizing onboarding ease and operational flow.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-sticky-narrative",
+      "type": "registry:block",
+      "title": "Feature Sticky Narrative",
+      "description": "Side-by-side section with sticky headline/story progression beside scrollable detail cards.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-tabs",
+      "type": "registry:block",
+      "title": "Feature Tabs",
+      "description": "Interactive tabbed feature display switching between workflows, previews, and feature descriptions.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-timeline",
+      "type": "registry:block",
+      "title": "Feature Timeline",
+      "description": "Chronological evolution or milestone timeline with connecting guides and release tags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-with-code",
+      "type": "registry:block",
+      "title": "Feature with Code",
+      "description": "Deep-dive feature section pairing architectural narrative with typed code snippet tabs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-with-live-demo",
+      "type": "registry:block",
+      "title": "Feature with Live Demo",
+      "description": "Feature showcase paired directly with an interactive sandbox state toggle.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "file-browser",
+      "type": "registry:block",
+      "title": "File Browser",
+      "description": "Tree view file explorer with folder toggles, file extension icons, and selection states.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "files"
+      ]
+    },
+    {
+      "name": "filter-builder",
+      "type": "registry:block",
+      "title": "Filter Builder",
+      "description": "Interactive compound filter constructor with field, operator, and value rows.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "filters"
+      ]
+    },
+    {
+      "name": "financial-candlestick-chart",
+      "type": "registry:component",
+      "title": "Financial Candlestick Chart",
+      "description": "OHLC financial price chart with bullish/bearish candle bodies, high/low wicks, and volume sub-bars.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "finance"
+      ]
+    },
+    {
+      "name": "first-run-state",
+      "type": "registry:component",
+      "title": "First Run State",
+      "description": "Onboarding walkthrough card welcoming users on their initial workspace launch with architectural step guides.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "onboarding",
+        "first-run"
+      ]
+    },
+    {
+      "name": "floating-ai-assistant",
+      "type": "registry:component",
+      "title": "Floating AI Assistant",
+      "description": "Draggable or floating bottom-corner action launcher with modal conversation bubble and prompt chips.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "floating"
+      ]
+    },
+    {
+      "name": "floating-nav",
+      "type": "registry:block",
+      "title": "Floating Navigation",
+      "description": "Island-style floating navigation pill pinned to top viewport with rounded corners and glass blur.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "footer-developer",
+      "type": "registry:block",
+      "title": "Footer Developer",
+      "description": "Terminal-styled developer footer with CLI command snippet, API status, and git commit sha.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "footer"
+      ]
+    },
+    {
+      "name": "footer-minimal",
+      "type": "registry:block",
+      "title": "Footer Minimal",
+      "description": "Single-line copyright, status indicator, and legal links with minimal footprint.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "footer"
+      ]
+    },
+    {
+      "name": "footer-newsletter",
+      "type": "registry:block",
+      "title": "Footer Newsletter",
+      "description": "Focused email subscription banner with privacy assurance and social icon bar.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "footer"
+      ]
+    },
+    {
+      "name": "footer-product",
+      "type": "registry:block",
+      "title": "Footer Product",
+      "description": "Product-centric footer featuring release changelog badge, newsletter input, and nav columns.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "footer"
+      ]
+    },
+    {
+      "name": "footer-sitemap",
+      "type": "registry:block",
+      "title": "Footer Sitemap",
+      "description": "Multi-column directory footer with category link lists, logo, and language selector.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "footer"
+      ]
+    },
+    {
+      "name": "funnel-chart",
+      "type": "registry:component",
+      "title": "Funnel Chart",
+      "description": "Multi-stage conversion funnel showing drop-off percentages, stage step trapezoids/bars, and stage conversion rates.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "gauge",
+      "type": "registry:component",
+      "title": "Gauge",
+      "description": "Semicircular dial/speedometer gauge with target marker, colored threshold zones (safe/warning/critical), and center value needle/text.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "geographic-map",
+      "type": "registry:component",
+      "title": "Geographic Map",
+      "description": "Stylized SVG regional map preview with density shading, marker pins, and territory summary metrics.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "maps"
+      ]
+    },
+    {
+      "name": "glass-refraction-panel",
+      "type": "registry:component",
+      "title": "Glass Refraction Panel",
+      "description": "Optical frosted acrylic card surface featuring backdrop refraction blur, hairline specular borders, and chromatic tint.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "glass"
+      ]
+    },
+    {
+      "name": "global-search-results",
+      "type": "registry:block",
+      "title": "Global Search Results",
+      "description": "Search results panel with category groupings, score highlights, and keyboard shortcuts.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "results"
+      ]
+    },
+    {
+      "name": "gradient-accent-text",
+      "type": "registry:component",
+      "title": "Gradient Accent Text",
+      "description": "Precision CSS background-clip gradient highlights emphasizing key strategic nouns in a display headline.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "gradient"
+      ]
+    },
+    {
+      "name": "grouped-data-table",
+      "type": "registry:block",
+      "title": "Grouped Data Table",
+      "description": "Table with hierarchical category headers grouping related entity records.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "tables"
+      ]
+    },
+    {
+      "name": "heatmap",
+      "type": "registry:component",
+      "title": "Heatmap",
+      "description": "7x24 or day-by-week commit/activity grid with 5-level intensity gradient, month labels, and cell inspection tooltip.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "horizontal-bar-chart",
+      "type": "registry:component",
+      "title": "Horizontal Bar Chart",
+      "description": "Ranking/leaderboard horizontal bar chart with left labels, percentage/count right labels, and animated width bars.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "horizontal-scroll-story",
+      "type": "registry:component",
+      "title": "Horizontal Scroll Story",
+      "description": "Track-based horizontal pan card sequence with step indicators, scroll lock, and keyboard arrow navigation.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "scroll"
+      ]
+    },
+    {
+      "name": "how-it-works-interactive",
+      "type": "registry:block",
+      "title": "How It Works Interactive",
+      "description": "Interactive stepper allowing users to click through stages of the pipeline.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "explanation"
+      ]
+    },
+    {
+      "name": "how-it-works-steps",
+      "type": "registry:block",
+      "title": "How It Works Steps",
+      "description": "Numbered 3-part execution flow with step badges, titles, and illustrative diagrams.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "explanation"
+      ]
+    },
+    {
+      "name": "how-it-works-timeline",
+      "type": "registry:block",
+      "title": "How It Works Timeline",
+      "description": "Vertical progression path showing end-to-end user lifecycle from install to scale.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "explanation"
+      ]
+    },
+    {
+      "name": "icon-button",
+      "type": "registry:ui",
+      "title": "Icon Button",
+      "description": "Compact icon-only action trigger with tooltip support and accessible label semantics.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs",
+        "actions"
+      ]
+    },
+    {
+      "name": "icon-rail",
+      "type": "registry:block",
+      "title": "Icon Rail",
+      "description": "Ultra-thin vertical action rail for high-frequency tool selection in design editors.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "immersive-fullscreen-shell",
+      "type": "registry:block",
+      "title": "Immersive Fullscreen Shell",
+      "description": "Distraction-free edge-to-edge presentation shell with auto-hiding chrome and focus mode.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "import-data-flow",
+      "type": "registry:block",
+      "title": "Import Data Flow",
+      "description": "File drag-and-drop ingestion card supporting schema upload and progress indicators.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "onboarding",
+        "import"
+      ]
+    },
+    {
+      "name": "inline-ai-rewrite",
+      "type": "registry:component",
+      "title": "Inline AI Rewrite",
+      "description": "Inline text selection overlay offering tone adjustments, shortening, expansion, and diff acceptance.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "inline"
+      ]
+    },
+    {
+      "name": "inline-alert",
+      "type": "registry:ui",
+      "title": "Inline Alert",
+      "description": "In-page contextual message banner conveying informational, success, warning, or danger states.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "feedback"
+      ]
+    },
+    {
+      "name": "inline-spinner",
+      "type": "registry:component",
+      "title": "Inline Spinner",
+      "description": "Accessible micro-spinner with SVG harmonic arc rotation, configurable size, and screen-reader announcements.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "spinner"
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Text Input",
+      "description": "Clean, accessible single-line text input with label, helper copy, and error states.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "integration-directory-preview",
+      "type": "registry:block",
+      "title": "Integration Directory Preview",
+      "description": "Searchable catalog preview of ecosystem plugins with filter chips.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "integrations"
+      ]
+    },
+    {
+      "name": "integration-grid",
+      "type": "registry:block",
+      "title": "Integration Grid",
+      "description": "Icon grid displaying supported third-party tools, frameworks, and cloud services.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "integrations"
+      ]
+    },
+    {
+      "name": "integration-orbit",
+      "type": "registry:block",
+      "title": "Integration Orbit",
+      "description": "Central product node surrounded by connected ecosystem nodes with radial alignment.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "integrations"
+      ]
+    },
+    {
+      "name": "interactive-demo-hero",
+      "type": "registry:block",
+      "title": "Interactive Demo Hero",
+      "description": "Hero with inline interactive tabbed preview allowing immediate hands-on feature exploration.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "interactive-globe",
+      "type": "registry:component",
+      "title": "Interactive Globe",
+      "description": "Orthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "maps"
+      ]
+    },
+    {
+      "name": "kanban-board",
+      "type": "registry:block",
+      "title": "Kanban Board",
+      "description": "Multi-column task board with status lanes (Todo, In Progress, Done) and draggable cards.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "planning"
+      ]
+    },
+    {
+      "name": "kinetic-word-swap",
+      "type": "registry:component",
+      "title": "Kinetic Word Swap",
+      "description": "Animated cyclical headline swapping rotating active verbs or adjectives in-place with vertical slide transitions and accessible announcements.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "kinetic"
+      ]
+    },
+    {
+      "name": "kiosk-display-shell",
+      "type": "registry:block",
+      "title": "Kiosk Display Shell",
+      "description": "Digital signage kiosk shell with high contrast typography, touch safety, and timeout reset.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "kpi-delta-card",
+      "type": "registry:component",
+      "title": "KPI Delta Card",
+      "description": "Executive metric card with hero number, benchmark comparison badge, and micro trend sparkline.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "kpi"
+      ]
+    },
+    {
+      "name": "kpi-delta-motion",
+      "type": "registry:component",
+      "title": "KPI Delta Motion",
+      "description": "Ticker tape number transition flipping upward or downward when metric value updates.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "numbers"
+      ]
+    },
+    {
+      "name": "link",
+      "type": "registry:ui",
+      "title": "Link",
+      "description": "Accessible semantic anchor navigation primitive with tactile underline animation and external indicators.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "navigation"
+      ]
+    },
+    {
+      "name": "loading-orbit",
+      "type": "registry:component",
+      "title": "Loading Orbit",
+      "description": "Subtle orbital planetary ring loader indicating background task execution without visual stress.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "loading"
+      ]
+    },
+    {
+      "name": "logo-cloud-marquee",
+      "type": "registry:block",
+      "title": "Logo Cloud Marquee",
+      "description": "Smooth continuous horizontal strip of partner and customer wordmarks.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "logo-cloud-minimal",
+      "type": "registry:block",
+      "title": "Logo Cloud Minimal",
+      "description": "Subtle monochrome client logo row with muted contrast and disciplined spacing.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "magnetic-button",
+      "type": "registry:component",
+      "title": "Magnetic Button",
+      "description": "Cursor-attracted interactive button pulling towards cursor coordinates within proximity threshold with spring return.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "cursor"
+      ]
+    },
+    {
+      "name": "marketing-nav-cta",
+      "type": "registry:block",
+      "title": "Marketing Navigation with CTA",
+      "description": "High-conversion header with promotional badge, navigation links, and primary CTA trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "marquee-typography",
+      "type": "registry:component",
+      "title": "Marquee Typography",
+      "description": "Continuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "marquee"
+      ]
+    },
+    {
+      "name": "masked-headline-reveal",
+      "type": "registry:component",
+      "title": "Masked Headline Reveal",
+      "description": "Dramatic overflow-clipped typographic reveal where large display characters rise smoothly from an architectural baseline boundary.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "reveal"
+      ]
+    },
+    {
+      "name": "masked-text-reveal",
+      "type": "registry:component",
+      "title": "Masked Text Reveal",
+      "description": "Editorial overflow-hidden text mask sliding upwards from an invisible baseline boundary.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ]
+    },
+    {
+      "name": "mega-nav",
+      "type": "registry:block",
+      "title": "Mega Navigation",
+      "description": "Comprehensive multi-column dropdown header exposing broad product suite categories.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "messaging-shell",
+      "type": "registry:block",
+      "title": "Messaging Shell",
+      "description": "Real-time conversation shell with channel sidebar, chat stream, and message composer.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "messaging-thread",
+      "type": "registry:block",
+      "title": "Messaging Thread",
+      "description": "Conversation stream with speech bubbles, timestamp markers, and quick input bar.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "collaboration",
+        "messaging"
+      ]
+    },
+    {
+      "name": "metadata-panel",
+      "type": "registry:block",
+      "title": "Metadata Panel",
+      "description": "Structured key-value property inspector with copy triggers and type badges.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "metadata"
+      ]
+    },
+    {
+      "name": "metallic-sheen",
+      "type": "registry:component",
+      "title": "Metallic Sheen",
+      "description": "Anodized brushed metal finish with diagonal specular highlights and precision chamfered edge luster.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "metallic"
+      ]
+    },
+    {
+      "name": "mini-sparkline",
+      "type": "registry:component",
+      "title": "Mini Sparkline",
+      "description": "Ultra-compact inline sparkline widget with trend arrow, delta percentage badge, min/max range dots, and current value.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "minimal-statement-hero",
+      "type": "registry:block",
+      "title": "Minimal Statement Hero",
+      "description": "Ultra-bold typography-only manifesto statement hero with maximum negative space.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "minimal-top-nav",
+      "type": "registry:block",
+      "title": "Minimal Top Navigation",
+      "description": "Restrained horizontal header with brand mark, essential route links, and profile badge.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "mobile-bottom-nav",
+      "type": "registry:block",
+      "title": "Mobile Bottom Navigation",
+      "description": "Fixed bottom thumb-friendly tab bar for mobile web apps with icon and label pairs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation",
+        "mobile"
+      ]
+    },
+    {
+      "name": "mobile-drawer-nav",
+      "type": "registry:block",
+      "title": "Mobile Drawer Navigation",
+      "description": "Hamburger slide-out overlay drawer displaying full mobile navigation menu.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation",
+        "mobile"
+      ]
+    },
+    {
+      "name": "monospace-data-headline",
+      "type": "registry:component",
+      "title": "Monospace Data Headline",
+      "description": "Technical terminal display headline pairing monospace telemetry coordinates, system tags, and blinking prompt caret.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "monospace"
+      ]
+    },
+    {
+      "name": "multi-select",
+      "type": "registry:ui",
+      "title": "Multi-select",
+      "description": "Tag-based selection input allowing multiple choices with removable pills.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "multi-series-line-chart",
+      "type": "registry:component",
+      "title": "Multi-Series Line Chart",
+      "description": "Comparative line chart with multiple colored trendlines, toggleable series legends, and point markers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "network-graph",
+      "type": "registry:component",
+      "title": "Network Graph",
+      "description": "Node-link topology diagram with circular nodes, interconnecting SVG edge lines, hub highlights, and cluster grouping.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "noise-gradient",
+      "type": "registry:component",
+      "title": "Noise Gradient",
+      "description": "Grain-diffused linear gradient eliminating digital color banding across wide screens.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "noise"
+      ]
+    },
+    {
+      "name": "notification-centre",
+      "type": "registry:block",
+      "title": "Notification Centre",
+      "description": "Alert and message stream with dismiss actions, read status toggles, and filters.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "notifications"
+      ]
+    },
+    {
+      "name": "number-count-up",
+      "type": "registry:component",
+      "title": "Number Count Up",
+      "description": "Eased numeric counter animating from zero to target value on viewport entrance with monospace stability.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "numbers"
+      ]
+    },
+    {
+      "name": "number-input",
+      "type": "registry:ui",
+      "title": "Number Input",
+      "description": "Stepper input control with increment/decrement buttons, min/max bounds, and unit suffix.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "offline-state",
+      "type": "registry:component",
+      "title": "Offline State",
+      "description": "Local-first offline banner informing the user that cached manifests remain interactive while remote sync is paused.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "network",
+        "offline"
+      ]
+    },
+    {
+      "name": "onboarding-checklist",
+      "type": "registry:block",
+      "title": "Onboarding Checklist",
+      "description": "Checklist guide with completion progress bar helping new users complete first tasks.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "onboarding",
+        "checklist"
+      ]
+    },
+    {
+      "name": "onboarding-role-select",
+      "type": "registry:block",
+      "title": "Onboarding Role Select",
+      "description": "Role segmentation card picker (Engineer, Designer, Agent Architect, Founder).",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "onboarding",
+        "segmentation"
+      ]
+    },
+    {
+      "name": "onboarding-wizard",
+      "type": "registry:block",
+      "title": "Onboarding Wizard",
+      "description": "Multi-step guided setup wizard with progress bar and next/previous controls.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "onboarding",
+        "wizard"
+      ]
+    },
+    {
+      "name": "order-book-depth-chart",
+      "type": "registry:component",
+      "title": "Order Book Depth Chart",
+      "description": "Market depth cumulative bid/ask stepped area chart with green bid wall, red ask wall, and mid-market spread indicator.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "finance"
+      ]
+    },
+    {
+      "name": "organization-settings",
+      "type": "registry:block",
+      "title": "Organization Settings",
+      "description": "Tenant profile configuration covering workspace domain, branding, and billing email.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "organization"
+      ]
+    },
+    {
+      "name": "outlined-display-text",
+      "type": "registry:component",
+      "title": "Outlined Display Text",
+      "description": "Architectural hollow stroked display typography providing dramatic spatial scale with light optical density.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "outline"
+      ]
+    },
+    {
+      "name": "page-skeleton",
+      "type": "registry:component",
+      "title": "Page Skeleton",
+      "description": "Full-page progressive layout shimmer placeholder with responsive header, hero deck, and content column blocks.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "skeleton"
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Page traversal bar with previous/next triggers, page numbering, and ellipsis jumps.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "navigation"
+      ]
+    },
+    {
+      "name": "paper-texture",
+      "type": "registry:component",
+      "title": "Paper Texture",
+      "description": "Tactile editorial stationery texture with subtle cellulose fiber grain and organic tactile warmth.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "texture"
+      ]
+    },
+    {
+      "name": "parallax-media",
+      "type": "registry:component",
+      "title": "Parallax Media",
+      "description": "Subtle multi-plane parallax depth container translating background and foreground elements at differential velocities.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "parallax"
+      ]
+    },
+    {
+      "name": "particle-constellation",
+      "type": "registry:component",
+      "title": "Particle Constellation",
+      "description": "Interconnected vector node points forming dynamic geometric constellations with proximate links.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "constellation"
+      ]
+    },
+    {
+      "name": "password-input",
+      "type": "registry:ui",
+      "title": "Password Input",
+      "description": "Masked credential field with toggleable eye icon and password strength meter.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs",
+        "auth"
+      ]
+    },
+    {
+      "name": "performance-benchmark-section",
+      "type": "registry:block",
+      "title": "Performance Benchmark Section",
+      "description": "Bar chart benchmarks comparing execution latency and throughput against industry baselines.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "technical-proof"
+      ]
+    },
+    {
+      "name": "permission-denied-state",
+      "type": "registry:component",
+      "title": "Permission Denied State",
+      "description": "Access boundary lock screen detailing required RBAC roles, organization membership, and request access workflow.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "security",
+        "permission"
+      ]
+    },
+    {
+      "name": "pinned-items",
+      "type": "registry:block",
+      "title": "Pinned Items",
+      "description": "User-favorited resources and project bookmarks with quick unpin toggles.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "favorites"
+      ]
+    },
+    {
+      "name": "plan-feature-matrix",
+      "type": "registry:block",
+      "title": "Plan Feature Matrix",
+      "description": "Segmented feature comparison with expandable category groupings.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Floating rich content card anchored to a target trigger with dismissal handling.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "overlays"
+      ]
+    },
+    {
+      "name": "press-mentions-strip",
+      "type": "registry:block",
+      "title": "Press Mentions Strip",
+      "description": "Curated editorial press quote row with publication logos and external publication links.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "pricing-calculator-shell",
+      "type": "registry:block",
+      "title": "Pricing Calculator Shell",
+      "description": "Interactive slider calculator estimating monthly cost based on MAU or compute units.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "pricing-comparison-table",
+      "type": "registry:block",
+      "title": "Pricing Comparison Table",
+      "description": "Exhaustive checkmark matrix comparing feature tiers across 20+ dimensions.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "pricing-enterprise",
+      "type": "registry:block",
+      "title": "Pricing Enterprise",
+      "description": "Dedicated high-touch enterprise tier section with custom contract feature list.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "pricing-three-tier",
+      "type": "registry:block",
+      "title": "Pricing Three Tier",
+      "description": "Canonical 3-card pricing table (Free, Pro, Enterprise) with highlighted recommended tier.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "pricing-toggle",
+      "type": "registry:block",
+      "title": "Pricing Toggle",
+      "description": "Billing interval switcher (Monthly vs Annual with discount badge) above plan cards.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "pricing-two-tier",
+      "type": "registry:block",
+      "title": "Pricing Two Tier",
+      "description": "Focused 2-card comparison (Starter vs Business) for streamlined product offerings.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "pricing-usage-based",
+      "type": "registry:block",
+      "title": "Pricing Usage Based",
+      "description": "Pay-as-you-go pricing card with tier volume sliders and unit-cost breakdowns.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "process-diagram",
+      "type": "registry:block",
+      "title": "Process Diagram",
+      "description": "Visual flowchart explaining system data pipeline from ingestion to output.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "explanation"
+      ]
+    },
+    {
+      "name": "processing-queued-state",
+      "type": "registry:component",
+      "title": "Processing/Queued State",
+      "description": "Asynchronous task queue state card displaying queue position, estimated wait time, and auto-refresh telemetry.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "queue"
+      ]
+    },
+    {
+      "name": "product-screenshot-hero",
+      "type": "registry:block",
+      "title": "Product Screenshot Hero",
+      "description": "Centered headline with perspective tilted application screenshot frame and browser chrome.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "profile-settings",
+      "type": "registry:block",
+      "title": "Profile Settings",
+      "description": "User settings form with avatar uploader, display name, handle, and email inputs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "profile"
+      ]
+    },
+    {
+      "name": "progress-bar",
+      "type": "registry:ui",
+      "title": "Progress Bar",
+      "description": "Linear progress meter with determinate percentage progress and indeterminate pulse.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "feedback"
+      ]
+    },
+    {
+      "name": "progress-ring",
+      "type": "registry:ui",
+      "title": "Progress Ring",
+      "description": "Circular radial progress meter with smooth stroke animation and central metric label.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "feedback"
+      ]
+    },
+    {
+      "name": "progressive-loader",
+      "type": "registry:component",
+      "title": "Progressive Loader",
+      "description": "Multi-stage task progression bar with labeled phase checkpoints, percentage telemetry, and estimated time remaining.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "progress"
+      ]
+    },
+    {
+      "name": "project-switcher",
+      "type": "registry:block",
+      "title": "Project Switcher",
+      "description": "Header breadcrumb trigger for toggling between project repositories or composed interfaces.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "query-builder",
+      "type": "registry:block",
+      "title": "Query Builder",
+      "description": "Visual query constructor combining Boolean conditions (AND/OR) with nested groups.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "query"
+      ]
+    },
+    {
+      "name": "quick-actions-panel",
+      "type": "registry:block",
+      "title": "Quick Actions Panel",
+      "description": "Grid of immediate high-frequency operational triggers and shortcut launchers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "actions"
+      ]
+    },
+    {
+      "name": "radar-chart",
+      "type": "registry:component",
+      "title": "Radar Chart",
+      "description": "Polygonal spider/radar chart with concentric polygon web rings, 6 radial metric axes, and shaded polygon metric footprint.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "radial-spotlight",
+      "type": "registry:component",
+      "title": "Radial Spotlight",
+      "description": "Top-centered radial cone of light focusing attention downward onto hero headlines.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "spotlight"
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Accessible single-choice selection group with circle indicators and keyboard navigation.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "range-slider",
+      "type": "registry:ui",
+      "title": "Range Slider",
+      "description": "Dual-thumb interval selector for bounding min/max numerical thresholds simultaneously.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "recent-items",
+      "type": "registry:block",
+      "title": "Recent Items",
+      "description": "List of recently modified files, projects, or manifests with timestamp and author.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "navigation"
+      ]
+    },
+    {
+      "name": "relationship-panel",
+      "type": "registry:block",
+      "title": "Relationship Panel",
+      "description": "Graph-like panel listing incoming and outgoing component dependencies and links.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "graph"
+      ]
+    },
+    {
+      "name": "research-terminal-shell",
+      "type": "registry:block",
+      "title": "Research Terminal Shell",
+      "description": "Scholarly exploration workspace with paper abstract viewer, citation graph, and notes rail.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "responsive-app-shell",
+      "type": "registry:block",
+      "title": "Responsive App Shell",
+      "description": "Unified application shell adapting gracefully from desktop sidebar to mobile bottom bar.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "role-permissions",
+      "type": "registry:block",
+      "title": "Role Permissions",
+      "description": "Matrix defining role permissions (Admin, Editor, Viewer) across operations.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "permissions"
+      ]
+    },
+    {
+      "name": "sankey-diagram",
+      "type": "registry:component",
+      "title": "Sankey Diagram",
+      "description": "Flow distribution chart showing source-to-target stream links with curved SVG ribbon bands and node column blocks.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "saved-views",
+      "type": "registry:block",
+      "title": "Saved Views",
+      "description": "Saved query and filter preset tabs for quick switching between operational viewpoints.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "views"
+      ]
+    },
+    {
+      "name": "scale-reveal",
+      "type": "registry:component",
+      "title": "Scale Reveal",
+      "description": "Smooth scale-up entrance from 0.95 to 1.0 with subtle spring settling and opacity fade.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ]
+    },
+    {
+      "name": "scatter-plot",
+      "type": "registry:component",
+      "title": "Scatter Plot",
+      "description": "2D Cartesian coordinate scatter chart with SVG circular points, quadrant benchmark lines, and outlier point highlights.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "schedule-agenda",
+      "type": "registry:block",
+      "title": "Schedule Agenda",
+      "description": "Linear agenda list of upcoming events sorted by time with location tags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "calendar"
+      ]
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:component",
+      "title": "Scroll Progress",
+      "description": "Header hairline progress track calculating document reading percentage and viewport completion.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "scroll"
+      ]
+    },
+    {
+      "name": "search-first-header",
+      "type": "registry:block",
+      "title": "Search-First Header",
+      "description": "Global top navigation centered around expansive query input, filters, and notification bell.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "search-first-hero",
+      "type": "registry:block",
+      "title": "Search-First Hero",
+      "description": "Command-bar-centric hero with prominent search input, trending suggestions, and category chips.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "search-input",
+      "type": "registry:ui",
+      "title": "Search Input",
+      "description": "High-visibility search field with magnifying glass icon, keyboard shortcut badge (⌘K), and instant clear.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs",
+        "search"
+      ]
+    },
+    {
+      "name": "security-proof",
+      "type": "registry:block",
+      "title": "Security Proof",
+      "description": "Comprehensive enterprise security overview covering encryption, RBAC, and data residency.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "technical-proof"
+      ]
+    },
+    {
+      "name": "segmented-control",
+      "type": "registry:ui",
+      "title": "Segmented Control",
+      "description": "High-density toggle bar with active sliding pill indicator between mutual modes.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Accessible styled dropdown selector with trigger, chevron indicator, and options.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Clean hairline divider line supporting horizontal and vertical orientations and middle labels.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "layout"
+      ]
+    },
+    {
+      "name": "settings-navigation",
+      "type": "registry:block",
+      "title": "Settings Navigation",
+      "description": "Vertical or horizontal tabs linking administrative sections (Account, Team, Billing, API).",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "navigation"
+      ]
+    },
+    {
+      "name": "settings-shell",
+      "type": "registry:block",
+      "title": "Settings Shell",
+      "description": "Account and workspace preference shell with category navigation tabs and form sections.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "shader-liquid-field",
+      "type": "registry:component",
+      "title": "Shader Liquid Field",
+      "description": "Organic viscous liquid fluid simulation with wave ripples and chromatic caustic contours.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "liquid"
+      ]
+    },
+    {
+      "name": "shader-noise-field",
+      "type": "registry:component",
+      "title": "Shader Noise Field",
+      "description": "Procedural multi-frequency Perlin terrain noise contour field providing organic dimensional atmosphere.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "noise"
+      ]
+    },
+    {
+      "name": "shared-element-transition",
+      "type": "registry:component",
+      "title": "Shared Element Transition",
+      "description": "Smooth morphing container transitioning an element smoothly between thumbnail and expanded modal view.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "transition"
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Content placeholder animation primitive preventing layout shift during loading.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "feedback"
+      ]
+    },
+    {
+      "name": "slide-clip-reveal",
+      "type": "registry:component",
+      "title": "Slide Clip Reveal",
+      "description": "Horizontal or vertical clip-path swipe uncovering child content like a mechanical aperture.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Smooth continuous value slider with track, fill, and precision drag thumb.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "social-proof-hero",
+      "type": "registry:block",
+      "title": "Social Proof Hero",
+      "description": "Headline anchored by trust metrics, customer avatar stack, and star review rating strip.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "soft-mesh-gradient",
+      "type": "registry:component",
+      "title": "Soft Mesh Gradient",
+      "description": "Fluid multi-stop radial chromatic blend creating soft organic depth in hero sections.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "gradient"
+      ]
+    },
+    {
+      "name": "split-button",
+      "type": "registry:ui",
+      "title": "Split Button",
+      "description": "Dual-action trigger combining primary immediate intent with secondary dropdown alternatives.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs",
+        "actions"
+      ]
+    },
+    {
+      "name": "split-line-headline",
+      "type": "registry:component",
+      "title": "Split-Line Headline",
+      "description": "Staggered multi-line headline where each line occupies an intentional asymmetrical indentation margin, establishing editorial rhythm.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "editorial"
+      ]
+    },
+    {
+      "name": "split-product-hero",
+      "type": "registry:block",
+      "title": "Split Product Hero",
+      "description": "50/50 split layout with narrative copy on left and live interactive widget on right.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "stacked-area-chart",
+      "type": "registry:component",
+      "title": "Stacked Area Chart",
+      "description": "Multi-layer cumulative volume area chart with layered SVG path fills, proportional stacking, and hover slice indicator.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "stacked-bar-chart",
+      "type": "registry:component",
+      "title": "Stacked Bar Chart",
+      "description": "Segmented vertical bar chart showing category composition with segmented color blocks and segment breakdown on hover.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "status-overview",
+      "type": "registry:block",
+      "title": "Status Overview",
+      "description": "System health dashboard block tracking services, regional latency, and incident reports.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "status"
+      ]
+    },
+    {
+      "name": "sticky-scroll-story",
+      "type": "registry:component",
+      "title": "Sticky Scroll Story",
+      "description": "Sticky viewport container pairing stationary preview graphic with scrolling narrative chapters.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "scroll"
+      ]
+    },
+    {
+      "name": "subtle-grid-field",
+      "type": "registry:component",
+      "title": "Subtle Grid Field",
+      "description": "Precision architectural grid coordinate backdrop with customizable spacing, hairline dividers, and radial fade mask.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "grid"
+      ]
+    },
+    {
+      "name": "success-celebration",
+      "type": "registry:component",
+      "title": "Success Celebration",
+      "description": "Post-action success checkmark bloom with particle burst microinteraction.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "celebration"
+      ]
+    },
+    {
+      "name": "success-state",
+      "type": "registry:component",
+      "title": "Success State",
+      "description": "Completed transaction confirmation panel with verified checkmark, output artifact links, and next step suggestions.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "feedback",
+        "success"
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Accessible sliding toggle switch for boolean preferences and instant settings.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "tab-workspace-nav",
+      "type": "registry:block",
+      "title": "Tab Workspace Navigation",
+      "description": "Browser-style multi-tab document bar with close buttons and split view triggers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "table-skeleton",
+      "type": "registry:component",
+      "title": "Table Skeleton",
+      "description": "Data grid shimmer placeholder with columnar headers, alternating rows, and pagination bar placeholders.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "skeleton"
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Accessible tabbed navigation system with active underlined or pill indicators and panels.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "navigation"
+      ]
+    },
+    {
+      "name": "tag-chip",
+      "type": "registry:ui",
+      "title": "Tag Chip",
+      "description": "Clickable and removable categorical chip token for multi-criteria filters.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "task-detail",
+      "type": "registry:block",
+      "title": "Task Detail",
+      "description": "Detailed issue view with assignee dropdown, status selector, priority tag, and subtasks.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "collaboration",
+        "task"
+      ]
+    },
+    {
+      "name": "team-management",
+      "type": "registry:block",
+      "title": "Team Management",
+      "description": "Member roster with invite link modal, role assignment selects, and removal actions.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "team"
+      ]
+    },
+    {
+      "name": "testimonial-carousel",
+      "type": "registry:block",
+      "title": "Testimonial Carousel",
+      "description": "Paginated card slider with testimonial quotes, author details, and next/prev controls.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "testimonial-grid",
+      "type": "registry:block",
+      "title": "Testimonial Grid",
+      "description": "3-column card grid of customer endorsements with rating stars and company tags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "testimonial-quote",
+      "type": "registry:block",
+      "title": "Testimonial Quote",
+      "description": "Featured customer pull-quote with oversized quotation mark, portrait avatar, and bio.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "text-path-arc",
+      "type": "registry:component",
+      "title": "Text Path Arc",
+      "description": "Vector SVG curved arc typography using textPath for circular seal emblems, status stamps, and orbital ribbons.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "arc"
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multi-line text input primitive with character counter, accessible label, and auto-expand support.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "inputs"
+      ]
+    },
+    {
+      "name": "three-d-orbital-field",
+      "type": "registry:component",
+      "title": "3D Orbital Field",
+      "description": "Elliptical planetary orbits rotating in perspective with satellite node coordinates and celestial depth.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "orbital"
+      ]
+    },
+    {
+      "name": "three-pane-app-shell",
+      "type": "registry:block",
+      "title": "Three-Pane App Shell",
+      "description": "Pro desktop shell with navigation sidebar, primary workspace canvas, and right property inspector.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "time-series-chart",
+      "type": "registry:component",
+      "title": "Time Series Chart",
+      "description": "Interactive line chart with date/time x-axis, area fill gradient, hover cursor crosshair, and value tooltip.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "timeline",
+      "type": "registry:block",
+      "title": "Timeline",
+      "description": "Chronological event list with vertical connecting line and timestamp nodes.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "planning"
+      ]
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Ephemeral floating notification banner with auto-dismiss timers and action hooks.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "feedback"
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Micro-interaction popup providing contextual hints on hover or keyboard focus.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "primitives",
+        "feedback"
+      ]
+    },
+    {
+      "name": "topographic-lines",
+      "type": "registry:component",
+      "title": "Topographic Lines",
+      "description": "Cartographic vector contour isolines undulating across background like geographic elevation maps.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "topographic"
+      ]
+    },
+    {
+      "name": "transparent-solid-nav",
+      "type": "registry:block",
+      "title": "Transparent-to-Solid Navigation",
+      "description": "Dynamic header starting transparent over media heroes and transitioning solid on scroll.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    },
+    {
+      "name": "treemap",
+      "type": "registry:component",
+      "title": "Treemap",
+      "description": "Rectangular squarified hierarchical partition chart with proportional area tiles, category headers, and size/value labels.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "trust-badges-strip",
+      "type": "registry:block",
+      "title": "Trust Badges Strip",
+      "description": "Security, compliance, and SOC2 / ISO / HIPAA certification badge strip.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "two-pane-master-detail-shell",
+      "type": "registry:block",
+      "title": "Two-Pane Master Detail Shell",
+      "description": "Split-view shell pairing searchable master entity list with comprehensive detail reader pane.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "layout"
+      ]
+    },
+    {
+      "name": "upgrade-prompt",
+      "type": "registry:block",
+      "title": "Upgrade Prompt",
+      "description": "In-app upgrade callout card presenting locked feature benefits and upgrade trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "onboarding",
+        "upgrade"
+      ]
+    },
+    {
+      "name": "usage-overview",
+      "type": "registry:block",
+      "title": "Usage Overview",
+      "description": "Quota progress bars tracking API calls, active seats, and cloud storage capacity.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "usage"
+      ]
+    },
+    {
+      "name": "variable-weight-hover",
+      "type": "registry:component",
+      "title": "Variable Weight Hover",
+      "description": "Interactive typography that smoothly transitions optical font-weight and character spacing when hovered.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "interactive"
+      ]
+    },
+    {
+      "name": "version-history",
+      "type": "registry:block",
+      "title": "Version History",
+      "description": "Changelog of document revisions with restore buttons, diff flags, and author details.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "history"
+      ]
+    },
+    {
+      "name": "vertical-label-system",
+      "type": "registry:component",
+      "title": "Vertical Label System",
+      "description": "Rotated 90-degree typographic rails, category anchors, and section boundary labels establishing structural coordinates.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "vertical"
+      ]
+    },
+    {
+      "name": "video-hero",
+      "type": "registry:block",
+      "title": "Video Hero",
+      "description": "Cinematic header with ambient video background placeholder, gradient veil, and play trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "watchlist-panel",
+      "type": "registry:block",
+      "title": "Watchlist Panel",
+      "description": "Monitored entities or stocks table with streaming value fluctuations and alert bells.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "finance"
+      ]
+    },
+    {
+      "name": "webhook-management",
+      "type": "registry:block",
+      "title": "Webhook Management",
+      "description": "Endpoint destination manager with event subscription triggers and delivery logs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "webhooks"
+      ]
+    },
+    {
+      "name": "word-stagger-reveal",
+      "type": "registry:component",
+      "title": "Word Stagger Reveal",
+      "description": "Headline word sequence staggering entrance with progressive delay per token for dramatic cadence.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ]
+    },
+    {
+      "name": "workflow-builder",
+      "type": "registry:block",
+      "title": "Workflow Builder",
+      "description": "Node-based visual automation flow designer linking triggers, conditions, and actions.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "collaboration",
+        "workflow"
+      ]
+    },
+    {
+      "name": "workflow-narrative",
+      "type": "registry:block",
+      "title": "Workflow Narrative",
+      "description": "Structured editorial walk-through explaining developer ergonomics and day-to-day use.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "explanation"
+      ]
+    },
+    {
+      "name": "workspace-switcher",
+      "type": "registry:block",
+      "title": "Workspace Switcher",
+      "description": "Dropdown trigger displaying current tenant organization with plan badge and fast team switching.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "shells",
+        "navigation"
+      ]
+    }
+  ]
+}

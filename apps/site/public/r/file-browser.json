@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "file-browser",
+  "type": "registry:block",
+  "title": "File Browser",
+  "description": "Tree view file explorer with folder toggles, file extension icons, and selection states.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type FileBrowserVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FileBrowserProps {\n  variant?: FileBrowserVariant;\n}\n\nexport function FileBrowser({ variant = 'quiet' }: FileBrowserProps) {\n  const [open, setOpen] = useState(true);\n\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  return (\n    <div className={`w-full p-6 rounded-xl border font-mono text-xs transition-colors ${bg}`}>\n      <h3 className=\"text-sm font-semibold mb-4 font-sans\">Repository Files</h3>\n      <div className=\"space-y-1\">\n        <div onClick={() => setOpen(!open)} className=\"cursor-pointer font-bold flex items-center gap-1.5 py-1\">\n          <span>{open ? '▾' : '▸'}</span>\n          <span>resources/</span>\n        </div>\n        {open && (\n          <div className=\"pl-4 space-y-1 opacity-80 border-l border-neutral-200 dark:border-neutral-800 ml-2\">\n            <div className=\"py-0.5 hover:underline cursor-pointer\">primitives/ (44)</div>\n            <div className=\"py-0.5 hover:underline cursor-pointer\">shells/ (36)</div>\n            <div className=\"py-0.5 hover:underline cursor-pointer\">sections/ (72)</div>\n            <div className=\"py-0.5 hover:underline cursor-pointer\">blocks/ (56)</div>\n          </div>\n        )}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FileBrowser, FileBrowserVariant } from './index.js';\n\nexport function FileBrowserPreview() {\n  const [variant, setVariant] = useState<FileBrowserVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">File Browser Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as FileBrowserVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <FileBrowser variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "entities",
+    "files"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_file_browser",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

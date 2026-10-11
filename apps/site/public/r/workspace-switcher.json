@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "workspace-switcher",
+  "type": "registry:block",
+  "title": "Workspace Switcher",
+  "description": "Dropdown trigger displaying current tenant organization with plan badge and fast team switching.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type WorkspaceSwitcherVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface WorkspaceSwitcherProps {\n  variant?: WorkspaceSwitcherVariant;\n}\n\nexport function WorkspaceSwitcher({ variant = 'quiet' }: WorkspaceSwitcherProps) {\n  const [open, setOpen] = useState(false);\n\n  let theme = 'bg-white border border-neutral-200 text-neutral-900';\n  if (variant === 'expressive') theme = 'bg-white border border-[#D9D6CF] text-neutral-900 shadow-2xs';\n  if (variant === 'nocturne') theme = 'bg-[#11141B] border border-[#2E3440] text-white';\n\n  return (\n    <div className=\"relative w-full\">\n      <button\n        type=\"button\"\n        onClick={() => setOpen(!open)}\n        className={`w-full flex items-center justify-between p-2 rounded-lg text-xs font-medium ${theme}`}\n      >\n        <div className=\"flex items-center gap-2\">\n          <div className=\"h-5 w-5 rounded bg-[#2547E8] text-white flex items-center justify-center font-bold text-[10px]\">T</div>\n          <span>Tessellate HQ</span>\n        </div>\n        <span className=\"text-neutral-400\">▾</span>\n      </button>\n      {open && (\n        <div className=\"absolute top-full left-0 mt-1 w-full rounded-lg border border-neutral-200 bg-white dark:bg-[#11141B] dark:border-neutral-800 p-1 shadow-lg z-20 text-xs\">\n          <button className=\"w-full text-left p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 font-medium\">Tessellate HQ</button>\n          <button className=\"w-full text-left p-1.5 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800\">Acme Labs</button>\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { WorkspaceSwitcher } from './index.js';\n\nexport function WorkspaceSwitcherPreview() {\n  return (\n    <div className=\"p-8 max-w-xs mx-auto bg-[#FAF9F6]\">\n      <WorkspaceSwitcher variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_workspace_switcher",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

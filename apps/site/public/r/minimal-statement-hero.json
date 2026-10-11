@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "minimal-statement-hero",
+  "type": "registry:block",
+  "title": "Minimal Statement Hero",
+  "description": "Ultra-bold typography-only manifesto statement hero with maximum negative space.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type MinimalStatementHeroVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface MinimalStatementHeroProps {\n  variant?: MinimalStatementHeroVariant;\n  statement?: string;\n  author?: string;\n}\n\nexport function MinimalStatementHero({\n  variant = 'quiet',\n  statement = 'Software is not a collection of parts. It is a single coherent gesture.',\n  author = 'The Tessellate Principles',\n}: MinimalStatementHeroProps) {\n  let bg = 'bg-[#FAF8F5] text-neutral-950 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-white text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  return (\n    <section className={`relative w-full py-32 sm:py-48 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-4xl mx-auto\">\n        <blockquote className=\"text-3xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.08] mb-8\">\n          \"{statement}\"\n        </blockquote>\n        <cite className=\"text-sm sm:text-base font-mono not-italic opacity-60\">\n          — {author}\n        </cite>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { MinimalStatementHero, MinimalStatementHeroVariant } from './index.js';\n\nexport function MinimalStatementHeroPreview() {\n  const [variant, setVariant] = useState<MinimalStatementHeroVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Minimal Statement Hero Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as MinimalStatementHeroVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <MinimalStatementHero variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "hero"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_minimal_statement_hero",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

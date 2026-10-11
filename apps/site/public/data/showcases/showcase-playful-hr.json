@@ -1,0 +1,331 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "showcase-playful-hr",
+  "name": "Kudos Team Culture & Hiring",
+  "description": "Approachably joyful hiring pipelines and peer recognition kudos.",
+  "createdAt": "2026-10-10T12:00:00.000Z",
+  "updatedAt": "2026-10-10T12:00:00.000Z",
+  "catalogVersion": "1.0.0",
+  "seed": "seed_showcase-playful-hr",
+  "productModel": {
+    "schemaVersion": "1.0.0",
+    "productArchetypes": [
+      {
+        "tag": "hr",
+        "weight": 100
+      }
+    ],
+    "primaryAudience": "Domain specialists",
+    "userSophistication": 50,
+    "primaryObjective": "Approachably joyful hiring pipelines and peer recognition kudos.",
+    "secondaryObjectives": [
+      "Maximize workflow speed and cognitive clarity"
+    ],
+    "jobsToBeDone": [
+      "Analyze domain data",
+      "Execute actions",
+      "Inspect telemetry"
+    ],
+    "entities": [],
+    "workflows": [],
+    "trustRequirement": 90,
+    "informationComplexity": 50,
+    "dataDensity": 50,
+    "collaborationLevel": 50,
+    "transactionCriticality": 70,
+    "navigationComplexity": 60,
+    "mobileImportance": 50,
+    "likelyScreens": [],
+    "requiredCapabilities": [
+      "export",
+      "search",
+      "audit"
+    ],
+    "forbiddenPatterns": [],
+    "constraints": {
+      "accessibilityFloor": "AA",
+      "performanceCeiling": "rich",
+      "targetDevices": [
+        "desktop",
+        "tablet"
+      ]
+    }
+  },
+  "designDNA": {
+    "professionalism": 85,
+    "playfulness": 75,
+    "luxury": 30,
+    "warmth": 85,
+    "technicality": 50,
+    "editorial": 60,
+    "futurism": 40,
+    "visualAmbition": 70,
+    "structuralCreativity": 65,
+    "density": 55,
+    "whitespace": 65,
+    "contrast": 80,
+    "colourfulness": 80,
+    "curvature": 65,
+    "depth": 45,
+    "motion": 65,
+    "motionPlayfulness": 70,
+    "typographicExpression": 70,
+    "imageryIntensity": 35,
+    "videoIntensity": 10,
+    "threeDIntensity": 0,
+    "dataDensity": 50,
+    "interactionDensity": 75,
+    "asymmetry": 25,
+    "conversionIntensity": 50,
+    "trust": 90,
+    "accessibilityPriority": 98,
+    "performancePriority": 96,
+    "primaryArchetype": "hr",
+    "visualMode": "light",
+    "geometryFamily": "soft-pill",
+    "navigationModel": "pill-rail",
+    "responsivePhilosophy": "equal-capability-adaptive",
+    "contentTone": "encouraging-joyful",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "playful-spring",
+    "typographyPersonality": "friendly-sans",
+    "surfacePersonality": "pastel-cards"
+  },
+  "constraints": {
+    "accessibilityFloor": "AA",
+    "performanceCeiling": "rich",
+    "targetDevices": [
+      "desktop",
+      "tablet"
+    ]
+  },
+  "screenGraph": {
+    "id": "sg_showcase-playful-hr",
+    "groups": [
+      {
+        "id": "group_main",
+        "name": "Main Workspace",
+        "screens": [
+          {
+            "id": "node-team-directory",
+            "name": "Team Directory",
+            "slug": "/team",
+            "screenType": "team-directory",
+            "purpose": "Team Directory",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 80,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-schedule",
+            "name": "Calendar/Schedule",
+            "slug": "/schedule",
+            "screenType": "calendar/schedule",
+            "purpose": "Calendar/Schedule",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 75,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-onboarding",
+            "name": "Role-Based Onboarding",
+            "slug": "/onboarding/role",
+            "screenType": "role-based-onboarding",
+            "purpose": "Role-Based Onboarding",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 70,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge_0",
+        "fromScreenId": "node-team-directory",
+        "toScreenId": "node-schedule"
+      },
+      {
+        "id": "edge_1",
+        "fromScreenId": "node-team-directory",
+        "toScreenId": "node-onboarding"
+      }
+    ]
+  },
+  "screens": [
+    {
+      "id": "screen-team-directory",
+      "screenNodeId": "node-team-directory",
+      "name": "Team Directory",
+      "slug": "/team",
+      "rootNode": {
+        "id": "root-team-directory",
+        "nodeType": "layout",
+        "semanticRole": "team-canvas",
+        "children": [
+          {
+            "id": "sec-team-filters",
+            "nodeType": "section",
+            "semanticRole": "filters",
+            "resourceRef": {
+              "id": "res_filter_bar",
+              "slug": "filter-bar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-team-table",
+            "nodeType": "section",
+            "semanticRole": "roster-table",
+            "resourceRef": {
+              "id": "res_data_table",
+              "slug": "data-table",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-schedule",
+      "screenNodeId": "node-schedule",
+      "name": "Calendar/Schedule",
+      "slug": "/schedule",
+      "rootNode": {
+        "id": "root-schedule",
+        "nodeType": "layout",
+        "semanticRole": "calendar-canvas",
+        "children": [
+          {
+            "id": "sec-sch-picker",
+            "nodeType": "section",
+            "semanticRole": "date-picker",
+            "resourceRef": {
+              "id": "res_date_range_picker",
+              "slug": "date-range-picker",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-sch-table",
+            "nodeType": "section",
+            "semanticRole": "events-table",
+            "resourceRef": {
+              "id": "res_data_table",
+              "slug": "data-table",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-onboarding",
+      "screenNodeId": "node-onboarding",
+      "name": "Role-Based Onboarding",
+      "slug": "/onboarding/role",
+      "rootNode": {
+        "id": "root-onboarding",
+        "nodeType": "layout",
+        "semanticRole": "wizard-canvas",
+        "children": [
+          {
+            "id": "sec-onb-wizard",
+            "nodeType": "section",
+            "semanticRole": "step-wizard",
+            "resourceRef": {
+              "id": "res_onboarding_step_wizard",
+              "slug": "onboarding-step-wizard",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    }
+  ],
+  "navigation": {
+    "model": "pill-rail",
+    "primaryItems": [
+      {
+        "label": "Roster",
+        "targetScreenId": "node-team-directory"
+      },
+      {
+        "label": "Schedule",
+        "targetScreenId": "node-schedule"
+      },
+      {
+        "label": "Onboarding",
+        "targetScreenId": "node-onboarding"
+      }
+    ]
+  },
+  "assets": [],
+  "locks": [],
+  "historyMeta": {
+    "totalOperations": 12,
+    "headRevision": 1
+  },
+  "exportSettings": {
+    "framework": "react",
+    "styling": "tailwind",
+    "includeTypes": true,
+    "target": "vite-react-tailwind"
+  }
+}

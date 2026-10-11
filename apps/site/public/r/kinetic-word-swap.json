@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kinetic-word-swap",
+  "type": "registry:component",
+  "title": "Kinetic Word Swap",
+  "description": "Animated cyclical headline swapping rotating active verbs or adjectives in-place with vertical slide transitions and accessible announcements.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState, useEffect } from 'react';\n\nexport type KineticWordSwapVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface KineticWordSwapProps {\n  prefix?: string;\n  words?: string[];\n  suffix?: string;\n  intervalMs?: number;\n  variant?: KineticWordSwapVariant;\n  children?: React.ReactNode;\n}\n\nexport function KineticWordSwap({\n  prefix = 'Design systems composed for',\n  words = ['precision', 'speed', 'resilience', 'agents'],\n  suffix = 'at production scale',\n  intervalMs = 2400,\n  variant = 'quiet',\n  children,\n}: KineticWordSwapProps) {\n  const [index, setIndex] = useState(0);\n\n  useEffect(() => {\n    const timer = setInterval(() => {\n      setIndex((prev) => (prev + 1) % words.length);\n    }, intervalMs);\n    return () => clearInterval(timer);\n  }, [words.length, intervalMs]);\n\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const badgeColor =\n    variant === 'nocturne'\n      ? 'text-cyan-400 bg-cyan-950/60 border border-cyan-800'\n      : variant === 'expressive'\n      ? 'text-indigo-600 bg-indigo-50 border border-indigo-200'\n      : 'text-neutral-900 bg-neutral-100 border border-neutral-200';\n\n  return (\n    <div className={`p-8 md:p-12 rounded-xl border max-w-4xl mx-auto space-y-4 transition-colors ${containerBg}`}>\n      <h2 className=\"text-2xl md:text-4xl font-bold tracking-tight leading-normal\">\n        {prefix}{' '}\n        <span\n          key={index}\n          className={`inline-block px-3 py-1 rounded-md font-mono transition-all duration-300 animate-fadeIn ${badgeColor}`}\n          aria-live=\"polite\"\n        >\n          {words[index]}\n        </span>{' '}\n        {suffix}.\n      </h2>\n      <p className=\"text-xs text-neutral-500 font-mono\">\n        Active cycle: word {index + 1} of {words.length}\n      </p>\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { KineticWordSwap, KineticWordSwapVariant } from './index';\n\nexport function KineticWordSwapPreview() {\n  const [variant, setVariant] = useState<KineticWordSwapVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <KineticWordSwap variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "typography",
+    "display",
+    "kinetic"
+  ],
+  "meta": {
+    "tessellateId": "res_typo_kinetic_word_swap",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "floating-ai-assistant",
+  "type": "registry:component",
+  "title": "Floating AI Assistant",
+  "description": "Draggable or floating bottom-corner action launcher with modal conversation bubble and prompt chips.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type FloatingAIAssistantVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FloatingAIAssistantProps {\n  variant?: FloatingAIAssistantVariant;\n}\n\nexport function FloatingAIAssistant({ variant = 'quiet' }: FloatingAIAssistantProps) {\n  const [isOpen, setIsOpen] = useState(true);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-xl'\n      : 'bg-white border-neutral-200 text-neutral-900 shadow-lg';\n\n  const triggerBg =\n    variant === 'nocturne'\n      ? 'bg-cyan-500 text-black hover:bg-cyan-400'\n      : variant === 'expressive'\n      ? 'bg-[#2547E8] text-white hover:bg-blue-700'\n      : 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900';\n\n  return (\n    <div className=\"relative inline-flex flex-col items-end\">\n      {isOpen && (\n        <div className={`w-80 p-4 rounded-xl border mb-3 flex flex-col gap-3 transition-all ${cardBg}`}>\n          <div className=\"flex items-center justify-between pb-2 border-b border-neutral-100 dark:border-neutral-800\">\n            <span className=\"text-xs font-semibold\">Tessellate Assistant</span>\n            <button onClick={() => setIsOpen(false)} className=\"text-xs text-neutral-400 hover:text-current\">\n              ✕\n            </button>\n          </div>\n          <p className=\"text-xs text-neutral-500 leading-relaxed\">\n            Need help selecting an archetype or generating tokens? Choose a quick question below:\n          </p>\n          <div className=\"flex flex-wrap gap-1.5\">\n            {['Explain Design DNA', 'Check AA Contrast', 'Export Manifest'].map((chip) => (\n              <button\n                key={chip}\n                className=\"text-[11px] px-2.5 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors\"\n              >\n                {chip}\n              </button>\n            ))}\n          </div>\n        </div>\n      )}\n\n      <button\n        onClick={() => setIsOpen(!isOpen)}\n        className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-sm shadow-md transition-transform hover:scale-105 ${triggerBg}`}\n        aria-label=\"Toggle AI Assistant\"\n      >\n        ✦\n      </button>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FloatingAIAssistant, FloatingAIAssistantVariant } from './index';\n\nexport function FloatingAIAssistantPreview() {\n  const [variant, setVariant] = useState<FloatingAIAssistantVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <div className=\"flex justify-end\">\n        <FloatingAIAssistant variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "ai",
+    "patterns",
+    "floating"
+  ],
+  "meta": {
+    "tessellateId": "res_ai_floating_ai_assistant",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "metadata-panel",
+  "type": "registry:block",
+  "title": "Metadata Panel",
+  "description": "Structured key-value property inspector with copy triggers and type badges.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type MetadataPanelVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface MetadataPanelProps {\n  variant?: MetadataPanelVariant;\n}\n\nexport function MetadataPanel({ variant = 'quiet' }: MetadataPanelProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  const props = [\n    { k: 'Schema Version', v: '1.0.0' },\n    { k: 'Resource ID', v: 'res_blk_metadata_panel' },\n    { k: 'License SPDX', v: 'MIT' },\n    { k: 'Dependencies', v: '0 external' },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border font-mono text-xs transition-colors ${bg}`}>\n      <h3 className=\"text-sm font-semibold mb-4 font-sans\">Technical Metadata</h3>\n      <div className=\"space-y-3\">\n        {props.map((p) => (\n          <div key={p.k} className=\"flex justify-between items-center py-1 border-b border-neutral-100 dark:border-neutral-800\">\n            <span className=\"opacity-60\">{p.k}</span>\n            <span className=\"font-semibold\">{p.v}</span>\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { MetadataPanel, MetadataPanelVariant } from './index.js';\n\nexport function MetadataPanelPreview() {\n  const [variant, setVariant] = useState<MetadataPanelVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Metadata Panel Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as MetadataPanelVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <MetadataPanel variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "entities",
+    "metadata"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_metadata_panel",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

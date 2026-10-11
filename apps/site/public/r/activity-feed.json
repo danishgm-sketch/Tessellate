@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "activity-feed",
+  "type": "registry:block",
+  "title": "Activity Feed",
+  "description": "Chronological timeline of system events, team actions, and commit updates.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ActivityFeedVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ActivityFeedProps {\n  variant?: ActivityFeedVariant;\n}\n\nexport function ActivityFeed({ variant = 'quiet' }: ActivityFeedProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  const events = [\n    { user: 'Elena R.', action: 'published revision 1.0.4', time: '12m ago' },\n    { user: 'Agent Antigravity', action: 'validated 72 marketing sections', time: '44m ago' },\n    { user: 'Marcus V.', action: 'merged pull request #142', time: '2h ago' },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border transition-colors ${bg}`}>\n      <h3 className=\"text-sm font-semibold mb-4\">Workspace Activity Feed</h3>\n      <div className=\"space-y-4\">\n        {events.map((e) => (\n          <div key={e.user + e.time} className=\"flex items-center justify-between text-xs py-2 border-b border-neutral-100 dark:border-neutral-800 last:border-b-0\">\n            <div className=\"flex items-center gap-3\">\n              <span className=\"h-6 w-6 rounded-full bg-neutral-300 dark:bg-neutral-700 font-bold flex items-center justify-center text-[10px]\">\n                {e.user.charAt(0)}\n              </span>\n              <span><strong>{e.user}</strong> {e.action}</span>\n            </div>\n            <span className=\"font-mono opacity-50 text-[11px]\">{e.time}</span>\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { ActivityFeed, ActivityFeedVariant } from './index.js';\n\nexport function ActivityFeedPreview() {\n  const [variant, setVariant] = useState<ActivityFeedVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Activity Feed Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as ActivityFeedVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <ActivityFeed variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "dashboards",
+    "activity"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_activity_feed",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,387 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "showcase-scientific-research",
+  "name": "Cortex Laboratory Environment",
+  "description": "Zero-distraction genomics sequence inspection with WCAG AAA contrast.",
+  "createdAt": "2026-10-10T12:00:00.000Z",
+  "updatedAt": "2026-10-10T12:00:00.000Z",
+  "catalogVersion": "1.0.0",
+  "seed": "seed_showcase-scientific-research",
+  "productModel": {
+    "schemaVersion": "1.0.0",
+    "productArchetypes": [
+      {
+        "tag": "scientific",
+        "weight": 100
+      }
+    ],
+    "primaryAudience": "Domain specialists",
+    "userSophistication": 98,
+    "primaryObjective": "Zero-distraction genomics sequence inspection with WCAG AAA contrast.",
+    "secondaryObjectives": [
+      "Maximize workflow speed and cognitive clarity"
+    ],
+    "jobsToBeDone": [
+      "Analyze domain data",
+      "Execute actions",
+      "Inspect telemetry"
+    ],
+    "entities": [],
+    "workflows": [],
+    "trustRequirement": 99,
+    "informationComplexity": 92,
+    "dataDensity": 92,
+    "collaborationLevel": 50,
+    "transactionCriticality": 70,
+    "navigationComplexity": 60,
+    "mobileImportance": 50,
+    "likelyScreens": [],
+    "requiredCapabilities": [
+      "export",
+      "search",
+      "audit"
+    ],
+    "forbiddenPatterns": [],
+    "constraints": {
+      "accessibilityFloor": "AA",
+      "performanceCeiling": "rich",
+      "targetDevices": [
+        "desktop",
+        "tablet"
+      ]
+    }
+  },
+  "designDNA": {
+    "professionalism": 98,
+    "playfulness": 5,
+    "luxury": 25,
+    "warmth": 20,
+    "technicality": 98,
+    "editorial": 65,
+    "futurism": 50,
+    "visualAmbition": 45,
+    "structuralCreativity": 50,
+    "density": 80,
+    "whitespace": 45,
+    "contrast": 98,
+    "colourfulness": 20,
+    "curvature": 15,
+    "depth": 20,
+    "motion": 10,
+    "motionPlayfulness": 5,
+    "typographicExpression": 50,
+    "imageryIntensity": 35,
+    "videoIntensity": 10,
+    "threeDIntensity": 0,
+    "dataDensity": 92,
+    "interactionDensity": 85,
+    "asymmetry": 10,
+    "conversionIntensity": 15,
+    "trust": 99,
+    "accessibilityPriority": 100,
+    "performancePriority": 99,
+    "primaryArchetype": "scientific",
+    "visualMode": "adaptive",
+    "geometryFamily": "rigorous-orthogonal",
+    "navigationModel": "three-pane",
+    "responsivePhilosophy": "equal-capability-adaptive",
+    "contentTone": "rigorous-academic",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "instant-utility",
+    "typographyPersonality": "technical-mono-sans",
+    "surfacePersonality": "clean-high-contrast"
+  },
+  "constraints": {
+    "accessibilityFloor": "AA",
+    "performanceCeiling": "rich",
+    "targetDevices": [
+      "desktop",
+      "tablet"
+    ]
+  },
+  "screenGraph": {
+    "id": "sg_showcase-scientific-research",
+    "groups": [
+      {
+        "id": "group_main",
+        "name": "Main Workspace",
+        "screens": [
+          {
+            "id": "node-entity-index",
+            "name": "Entity Index",
+            "slug": "/entities",
+            "screenType": "entity-index",
+            "purpose": "Entity Index",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 80,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-research-workspace",
+            "name": "Research Workspace",
+            "slug": "/research",
+            "screenType": "research-workspace",
+            "purpose": "Research Workspace",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 75,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-analytics-dashboard",
+            "name": "Analytics Dashboard",
+            "slug": "/analytics",
+            "screenType": "analytics-dashboard",
+            "purpose": "Analytics Dashboard",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 70,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge_0",
+        "fromScreenId": "node-entity-index",
+        "toScreenId": "node-research-workspace"
+      },
+      {
+        "id": "edge_1",
+        "fromScreenId": "node-entity-index",
+        "toScreenId": "node-analytics-dashboard"
+      }
+    ]
+  },
+  "screens": [
+    {
+      "id": "screen-entity-index",
+      "screenNodeId": "node-entity-index",
+      "name": "Entity Index",
+      "slug": "/entities",
+      "rootNode": {
+        "id": "root-entity-index",
+        "nodeType": "layout",
+        "semanticRole": "table-canvas",
+        "children": [
+          {
+            "id": "sec-ent-filters",
+            "nodeType": "section",
+            "semanticRole": "filters",
+            "resourceRef": {
+              "id": "res_filter_bar",
+              "slug": "filter-bar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-ent-table",
+            "nodeType": "section",
+            "semanticRole": "records-table",
+            "resourceRef": {
+              "id": "res_data_table",
+              "slug": "data-table",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-ent-pag",
+            "nodeType": "section",
+            "semanticRole": "pagination",
+            "resourceRef": {
+              "id": "res_pagination",
+              "slug": "pagination",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-research-workspace",
+      "screenNodeId": "node-research-workspace",
+      "name": "Research Workspace",
+      "slug": "/research",
+      "rootNode": {
+        "id": "root-research-workspace",
+        "nodeType": "layout",
+        "semanticRole": "editor-canvas",
+        "children": [
+          {
+            "id": "sec-res-copilot",
+            "nodeType": "section",
+            "semanticRole": "copilot",
+            "resourceRef": {
+              "id": "res_ai_copilot_sidebar",
+              "slug": "ai-copilot-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-res-citations",
+            "nodeType": "section",
+            "semanticRole": "citations",
+            "resourceRef": {
+              "id": "res_ai_source_citations",
+              "slug": "ai-source-citations",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-analytics-dashboard",
+      "screenNodeId": "node-analytics-dashboard",
+      "name": "Analytics Dashboard",
+      "slug": "/analytics",
+      "rootNode": {
+        "id": "root-analytics-dashboard",
+        "nodeType": "layout",
+        "semanticRole": "analytics-canvas",
+        "children": [
+          {
+            "id": "sec-an-kpis",
+            "nodeType": "section",
+            "semanticRole": "summary-kpis",
+            "resourceRef": {
+              "id": "res_metrics_scorecard",
+              "slug": "metrics-scorecard",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-an-trend",
+            "nodeType": "section",
+            "semanticRole": "trend-chart",
+            "resourceRef": {
+              "id": "res_time_series_chart",
+              "slug": "time-series-chart",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-an-bar",
+            "nodeType": "section",
+            "semanticRole": "distribution",
+            "resourceRef": {
+              "id": "res_bar_chart",
+              "slug": "bar-chart",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-an-cohort",
+            "nodeType": "section",
+            "semanticRole": "retention-cohort",
+            "resourceRef": {
+              "id": "res_cohort_matrix",
+              "slug": "cohort-matrix",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    }
+  ],
+  "navigation": {
+    "model": "three-pane",
+    "primaryItems": [
+      {
+        "label": "Sequences",
+        "targetScreenId": "node-entity-index"
+      },
+      {
+        "label": "Workspace",
+        "targetScreenId": "node-research-workspace"
+      },
+      {
+        "label": "Telemetry",
+        "targetScreenId": "node-analytics-dashboard"
+      }
+    ]
+  },
+  "assets": [],
+  "locks": [],
+  "historyMeta": {
+    "totalOperations": 12,
+    "headRevision": 1
+  },
+  "exportSettings": {
+    "framework": "react",
+    "styling": "tailwind",
+    "includeTypes": true,
+    "target": "vite-react-tailwind"
+  }
+}

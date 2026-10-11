@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card-hover-lift",
+  "type": "registry:component",
+  "title": "Card Hover Lift",
+  "description": "Subtle vertical translate-y(-4px) lift with elevated shadow bloom on pointer hover.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type CardHoverLiftVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CardHoverLiftProps {\n  variant?: CardHoverLiftVariant;\n}\n\nexport function CardHoverLift({ variant = 'quiet' }: CardHoverLiftProps) {\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white hover:border-cyan-500/50 hover:shadow-[0_8px_30px_rgba(6,182,212,0.15)]'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 hover:border-blue-400 hover:shadow-xl'\n      : 'bg-white border-neutral-200 text-neutral-900 hover:border-neutral-300 hover:shadow-md';\n\n  return (\n    <div className=\"p-8 flex items-center justify-center\">\n      <div\n        className={`w-80 p-6 rounded-xl border transition-all duration-300 ease-out cursor-pointer hover:-translate-y-1.5 motion-reduce:transform-none ${cardBg}`}\n      >\n        <div className=\"text-[10px] font-mono text-neutral-400 mb-2\">Elevation Affordance</div>\n        <h4 className=\"text-sm font-semibold mb-1\">Hover Lift Elevation</h4>\n        <p className=\"text-xs text-neutral-500 leading-relaxed\">\n          Subtle vertical translation paired with expanded shadow bloom signals clickability.\n        </p>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { CardHoverLift, CardHoverLiftVariant } from './index';\n\nexport function CardHoverLiftPreview() {\n  const [variant, setVariant] = useState<CardHoverLiftVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <CardHoverLift variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "hover"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_card_hover_lift",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

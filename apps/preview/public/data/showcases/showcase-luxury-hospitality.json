@@ -1,0 +1,443 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "showcase-luxury-hospitality",
+  "name": "Velluto Private Estate Residences",
+  "description": "Curated 5-star private estate reservations with editorial travel essays.",
+  "createdAt": "2026-10-10T12:00:00.000Z",
+  "updatedAt": "2026-10-10T12:00:00.000Z",
+  "catalogVersion": "1.0.0",
+  "seed": "seed_showcase-luxury-hospitality",
+  "productModel": {
+    "schemaVersion": "1.0.0",
+    "productArchetypes": [
+      {
+        "tag": "hospitality",
+        "weight": 100
+      }
+    ],
+    "primaryAudience": "Domain specialists",
+    "userSophistication": 40,
+    "primaryObjective": "Curated 5-star private estate reservations with editorial travel essays.",
+    "secondaryObjectives": [
+      "Maximize workflow speed and cognitive clarity"
+    ],
+    "jobsToBeDone": [
+      "Analyze domain data",
+      "Execute actions",
+      "Inspect telemetry"
+    ],
+    "entities": [],
+    "workflows": [],
+    "trustRequirement": 98,
+    "informationComplexity": 40,
+    "dataDensity": 40,
+    "collaborationLevel": 50,
+    "transactionCriticality": 70,
+    "navigationComplexity": 60,
+    "mobileImportance": 50,
+    "likelyScreens": [],
+    "requiredCapabilities": [
+      "export",
+      "search",
+      "audit"
+    ],
+    "forbiddenPatterns": [],
+    "constraints": {
+      "accessibilityFloor": "AA",
+      "performanceCeiling": "rich",
+      "targetDevices": [
+        "desktop",
+        "tablet"
+      ]
+    }
+  },
+  "designDNA": {
+    "professionalism": 95,
+    "playfulness": 20,
+    "luxury": 98,
+    "warmth": 85,
+    "technicality": 40,
+    "editorial": 96,
+    "futurism": 25,
+    "visualAmbition": 90,
+    "structuralCreativity": 75,
+    "density": 45,
+    "whitespace": 85,
+    "contrast": 85,
+    "colourfulness": 45,
+    "curvature": 25,
+    "depth": 40,
+    "motion": 45,
+    "motionPlayfulness": 20,
+    "typographicExpression": 98,
+    "imageryIntensity": 35,
+    "videoIntensity": 10,
+    "threeDIntensity": 0,
+    "dataDensity": 40,
+    "interactionDensity": 50,
+    "asymmetry": 45,
+    "conversionIntensity": 70,
+    "trust": 98,
+    "accessibilityPriority": 96,
+    "performancePriority": 95,
+    "primaryArchetype": "hospitality",
+    "visualMode": "light",
+    "geometryFamily": "classic-editorial",
+    "navigationModel": "split-horizontal",
+    "responsivePhilosophy": "mobile-first-progressive",
+    "contentTone": "poetic-refined",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "editorial-reveal",
+    "typographyPersonality": "editorial-serif",
+    "surfacePersonality": "warm-vellum-paper"
+  },
+  "constraints": {
+    "accessibilityFloor": "AA",
+    "performanceCeiling": "rich",
+    "targetDevices": [
+      "desktop",
+      "tablet"
+    ]
+  },
+  "screenGraph": {
+    "id": "sg_showcase-luxury-hospitality",
+    "groups": [
+      {
+        "id": "group_main",
+        "name": "Main Workspace",
+        "screens": [
+          {
+            "id": "node-marketing-home",
+            "name": "Marketing Home",
+            "slug": "/",
+            "screenType": "marketing-home",
+            "purpose": "Marketing Home",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 80,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-blog",
+            "name": "Blog/Editorial Index",
+            "slug": "/blog",
+            "screenType": "blog/editorial-index",
+            "purpose": "Blog/Editorial Index",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 75,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-case-study",
+            "name": "Case Study",
+            "slug": "/customers/meridian",
+            "screenType": "case-study",
+            "purpose": "Case Study",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 70,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge_0",
+        "fromScreenId": "node-marketing-home",
+        "toScreenId": "node-blog"
+      },
+      {
+        "id": "edge_1",
+        "fromScreenId": "node-marketing-home",
+        "toScreenId": "node-case-study"
+      }
+    ]
+  },
+  "screens": [
+    {
+      "id": "screen-marketing-home",
+      "screenNodeId": "node-marketing-home",
+      "name": "Marketing Home",
+      "slug": "/",
+      "rootNode": {
+        "id": "root-marketing-home",
+        "nodeType": "layout",
+        "semanticRole": "page-canvas",
+        "children": [
+          {
+            "id": "sec-nav",
+            "nodeType": "section",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_header_minimal",
+              "slug": "header-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-hero",
+            "nodeType": "section",
+            "semanticRole": "hero",
+            "resourceRef": {
+              "id": "res_hero_minimal",
+              "slug": "hero-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-proof",
+            "nodeType": "section",
+            "semanticRole": "trust-proof",
+            "resourceRef": {
+              "id": "res_logo_cloud_clean",
+              "slug": "logo-cloud-clean",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-features",
+            "nodeType": "section",
+            "semanticRole": "feature-grid",
+            "resourceRef": {
+              "id": "res_feature_grid_cards",
+              "slug": "feature-grid-cards",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-cta",
+            "nodeType": "section",
+            "semanticRole": "conversion-cta",
+            "resourceRef": {
+              "id": "res_cta_minimal",
+              "slug": "cta-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-footer",
+            "nodeType": "section",
+            "semanticRole": "footer",
+            "resourceRef": {
+              "id": "res_footer_minimal",
+              "slug": "footer-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-blog",
+      "screenNodeId": "node-blog",
+      "name": "Blog/Editorial Index",
+      "slug": "/blog",
+      "rootNode": {
+        "id": "root-blog",
+        "nodeType": "layout",
+        "semanticRole": "page-canvas",
+        "children": [
+          {
+            "id": "sec-blog-hero",
+            "nodeType": "section",
+            "semanticRole": "featured-article",
+            "resourceRef": {
+              "id": "res_hero_split",
+              "slug": "hero-split",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-blog-grid",
+            "nodeType": "section",
+            "semanticRole": "recent-articles",
+            "resourceRef": {
+              "id": "res_feature_grid_cards",
+              "slug": "feature-grid-cards",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-blog-cta",
+            "nodeType": "section",
+            "semanticRole": "newsletter",
+            "resourceRef": {
+              "id": "res_cta_minimal",
+              "slug": "cta-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-case-study",
+      "screenNodeId": "node-case-study",
+      "name": "Case Study",
+      "slug": "/customers/meridian",
+      "rootNode": {
+        "id": "root-case-study",
+        "nodeType": "layout",
+        "semanticRole": "page-canvas",
+        "children": [
+          {
+            "id": "sec-cs-hero",
+            "nodeType": "section",
+            "semanticRole": "hero",
+            "resourceRef": {
+              "id": "res_hero_headline_only",
+              "slug": "hero-headline-only",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-cs-stats",
+            "nodeType": "section",
+            "semanticRole": "quant-metrics",
+            "resourceRef": {
+              "id": "res_stats_row_simple",
+              "slug": "stats-row-simple",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-cs-quote",
+            "nodeType": "section",
+            "semanticRole": "testimonial",
+            "resourceRef": {
+              "id": "res_testimonial_single_quote",
+              "slug": "testimonial-single-quote",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-cs-cta",
+            "nodeType": "section",
+            "semanticRole": "cta",
+            "resourceRef": {
+              "id": "res_cta_minimal",
+              "slug": "cta-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    }
+  ],
+  "navigation": {
+    "model": "split-horizontal",
+    "primaryItems": [
+      {
+        "label": "Residences",
+        "targetScreenId": "node-marketing-home"
+      },
+      {
+        "label": "Editorial",
+        "targetScreenId": "node-blog"
+      },
+      {
+        "label": "Story",
+        "targetScreenId": "node-case-study"
+      }
+    ]
+  },
+  "assets": [],
+  "locks": [],
+  "historyMeta": {
+    "totalOperations": 12,
+    "headRevision": 1
+  },
+  "exportSettings": {
+    "framework": "react",
+    "styling": "tailwind",
+    "includeTypes": true,
+    "target": "vite-react-tailwind"
+  }
+}

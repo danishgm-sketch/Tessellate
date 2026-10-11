@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta-community",
+  "type": "registry:block",
+  "title": "CTA Community",
+  "description": "Invitation banner to Discord / GitHub discussions with member counter badge.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type CtaCommunityVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CtaCommunityProps {\n  variant?: CtaCommunityVariant;\n}\n\nexport function CtaCommunity({ variant = 'quiet' }: CtaCommunityProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-blue-50/20 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  return (\n    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-4xl mx-auto text-center flex flex-col items-center\">\n        <h2 className=\"text-3xl font-bold tracking-tight mb-4\">Join 12,000+ UI Engineers</h2>\n        <p className=\"text-xs sm:text-sm opacity-75 max-w-md mb-8\">Discuss blueprints, contribute verified manifests, and shape the future of composition.</p>\n\n        <div className=\"flex gap-4\">\n          <button type=\"button\" className=\"px-6 py-2.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold\">\n            Join Discord Community\n          </button>\n          <button type=\"button\" className=\"px-6 py-2.5 rounded-lg border text-xs font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-800\">\n            Star on GitHub\n          </button>\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { CtaCommunity, CtaCommunityVariant } from './index.js';\n\nexport function CtaCommunityPreview() {\n  const [variant, setVariant] = useState<CtaCommunityVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">CTA Community Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as CtaCommunityVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <CtaCommunity variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "cta"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_cta_community",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

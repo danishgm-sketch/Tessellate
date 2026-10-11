@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "type": "registry:ui",
+  "title": "Badge",
+  "description": "Compact pill indicator for counts, status dots, and metadata taxonomy tags.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type BadgeVariant = 'quiet' | 'expressive' | 'nocturne';\nexport type BadgeIntent = 'neutral' | 'primary' | 'success' | 'warning' | 'danger';\n\nexport interface BadgeProps {\n  variant?: BadgeVariant;\n  intent?: BadgeIntent;\n  dot?: boolean;\n  children: React.ReactNode;\n  className?: string;\n}\n\nexport function Badge({\n  variant = 'quiet',\n  intent = 'neutral',\n  dot = false,\n  children,\n  className = '',\n}: BadgeProps) {\n  let theme = 'bg-neutral-100 text-neutral-800 border-neutral-200';\n  if (intent === 'primary') theme = 'bg-neutral-900 text-white border-neutral-900';\n  if (intent === 'success') theme = 'bg-emerald-50 text-emerald-700 border-emerald-200';\n  if (intent === 'danger') theme = 'bg-rose-50 text-rose-700 border-rose-200';\n\n  if (variant === 'expressive') {\n    if (intent === 'primary') theme = 'bg-[#E7EBFF] text-[#2547E8] border-[#2547E8]/30 font-semibold';\n  } else if (variant === 'nocturne') {\n    theme = 'bg-[#171A21] text-neutral-300 border-[#2E3440]';\n    if (intent === 'primary') theme = 'bg-white text-neutral-950 border-white font-semibold';\n  }\n\n  return (\n    <span className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-[11px] font-medium leading-none ${theme} ${className}`}>\n      {dot && <span className=\"h-1.5 w-1.5 rounded-full bg-current\" />}\n      {children}\n    </span>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { Badge } from './index.js';\n\nexport function BadgePreview() {\n  return (\n    <div className=\"p-8 flex flex-wrap gap-3 justify-center bg-[#FAF9F6]\">\n      <Badge variant=\"quiet\">v1.0.0</Badge>\n      <Badge variant=\"expressive\" intent=\"primary\" dot>Verified</Badge>\n      <Badge variant=\"expressive\" intent=\"success\">Active</Badge>\n      <Badge variant=\"nocturne\" intent=\"primary\">Nocturne</Badge>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "display"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_badge",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

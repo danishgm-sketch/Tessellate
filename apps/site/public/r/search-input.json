@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "search-input",
+  "type": "registry:ui",
+  "title": "Search Input",
+  "description": "High-visibility search field with magnifying glass icon, keyboard shortcut badge (⌘K), and instant clear.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type SearchInputVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SearchInputProps extends React.InputHTMLAttributes<HTMLInputElement> {\n  variant?: SearchInputVariant;\n  shortcut?: string;\n  onClear?: () => void;\n}\n\nexport function SearchInput({\n  variant = 'quiet',\n  shortcut = '⌘K',\n  onClear,\n  value,\n  className = '',\n  ...rest\n}: SearchInputProps) {\n  let theme = 'border-neutral-300 bg-white text-neutral-900 focus-within:border-neutral-900 focus-within:ring-neutral-900';\n  if (variant === 'expressive') {\n    theme = 'border-[#D9D6CF] bg-white text-neutral-900 focus-within:border-[#2547E8] focus-within:ring-[#2547E8] shadow-2xs';\n  } else if (variant === 'nocturne') {\n    theme = 'border-[#2E3440] bg-[#11141B] text-white focus-within:border-white focus-within:ring-white';\n  }\n\n  return (\n    <div className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm focus-within:ring-1 transition-all ${theme} ${className}`}>\n      <svg className=\"w-4 h-4 opacity-50 shrink-0\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\">\n        <path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth={2} d=\"M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z\" />\n      </svg>\n      <input\n        type=\"search\"\n        value={value}\n        className=\"w-full bg-transparent outline-none placeholder:text-neutral-400 text-sm\"\n        placeholder=\"Search resources...\"\n        {...rest}\n      />\n      {value && onClear ? (\n        <button type=\"button\" onClick={onClear} className=\"opacity-60 hover:opacity-100 text-xs\">✕</button>\n      ) : shortcut ? (\n        <kbd className=\"hidden sm:inline-block rounded border border-neutral-200 dark:border-neutral-700 px-1.5 py-0.5 text-[10px] font-mono text-neutral-500\">\n          {shortcut}\n        </kbd>\n      ) : null}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { SearchInput } from './index.js';\n\nexport function SearchInputPreview() {\n  const [val, setVal] = useState('');\n  return (\n    <div className=\"p-8 max-w-md mx-auto space-y-4 bg-[#FAF9F6]\">\n      <SearchInput variant=\"expressive\" value={val} onChange={(e) => setVal(e.target.value)} onClear={() => setVal('')} />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs",
+    "search"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_search_input",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

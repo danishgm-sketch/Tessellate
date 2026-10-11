@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-gradient-line",
+  "type": "registry:component",
+  "title": "Animated Gradient Line",
+  "description": "Moving linear gradient beam sweeping across dividers, card separators, or section footers.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type AnimatedGradientLineVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AnimatedGradientLineProps {\n  variant?: AnimatedGradientLineVariant;\n}\n\nexport function AnimatedGradientLine({ variant = 'quiet' }: AnimatedGradientLineProps) {\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const gradientClass =\n    variant === 'nocturne'\n      ? 'from-transparent via-cyan-400 to-transparent'\n      : variant === 'expressive'\n      ? 'from-transparent via-blue-600 to-transparent'\n      : 'from-transparent via-neutral-900 dark:via-white to-transparent';\n\n  return (\n    <div className={`w-full p-8 rounded-xl border flex flex-col gap-6 transition-colors ${cardBg}`}>\n      <div className=\"space-y-1\">\n        <h4 className=\"text-sm font-semibold tracking-tight\">Luminescent Divider Beam</h4>\n        <p className=\"text-xs text-neutral-500\">Horizontal gradient beam sweeping continuously across boundary</p>\n      </div>\n\n      <div className=\"relative w-full h-px bg-neutral-200 dark:bg-neutral-800 overflow-hidden\">\n        <div\n          className={`absolute top-0 bottom-0 w-48 bg-gradient-to-r ${gradientClass} animate-[move-horizontal_3s_ease-in-out_infinite]`}\n          style={{ animation: 'moveBeam 3s ease-in-out infinite' }}\n        />\n        <style>{`\n          @keyframes moveBeam {\n            0% { transform: translateX(-100%); }\n            100% { transform: translateX(500%); }\n          }\n        `}</style>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { AnimatedGradientLine, AnimatedGradientLineVariant } from './index';\n\nexport function AnimatedGradientLinePreview() {\n  const [variant, setVariant] = useState<AnimatedGradientLineVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <AnimatedGradientLine variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "dividers"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_animated_gradient_line",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

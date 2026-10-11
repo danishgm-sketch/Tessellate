@@ -1,0 +1,71 @@
+import React from 'react';
+
+export type ErrorStateVariant = 'quiet' | 'expressive' | 'nocturne';
+
+export interface ErrorStateProps {
+  title?: string;
+  errorMessage?: string;
+  codeSnippet?: string;
+  onRetry?: () => void;
+  variant?: ErrorStateVariant;
+  children?: React.ReactNode;
+}
+
+export function ErrorState({
+  title = 'Manifest Compilation Fault',
+  errorMessage = 'Resource dependency schema validation failed: missing required property "layoutDNA.density".',
+  codeSnippet = 'Error: [ZodError] layoutDNA: density is required',
+  onRetry,
+  variant = 'quiet',
+  children,
+}: ErrorStateProps) {
+  const containerBg =
+    variant === 'nocturne'
+      ? 'bg-[#0B0D10] text-white border-red-900/60'
+      : variant === 'expressive'
+      ? 'bg-red-50/50 text-neutral-900 border-red-200'
+      : 'bg-white text-neutral-900 border-neutral-200';
+
+  const badgeColor =
+    variant === 'nocturne'
+      ? 'text-red-400 bg-red-950/40 border-red-800'
+      : variant === 'expressive'
+      ? 'text-red-700 bg-red-100 border-red-300'
+      : 'text-red-700 bg-red-50 border-red-200';
+
+  return (
+    <div
+      role="alert"
+      className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto space-y-4 transition-colors ${containerBg}`}
+    >
+      <div className="flex items-center gap-3">
+        <span className={`w-10 h-10 rounded-xl flex items-center justify-center border font-bold text-lg ${badgeColor}`}>
+          ⚠️
+        </span>
+        <div>
+          <h3 className="text-base font-bold tracking-tight text-red-600 dark:text-red-400">
+            {title}
+          </h3>
+          <p className="text-xs text-neutral-500">{errorMessage}</p>
+        </div>
+      </div>
+
+      {codeSnippet && (
+        <pre className="p-3 rounded-lg bg-neutral-950 text-neutral-300 text-xs font-mono overflow-x-auto">
+          {codeSnippet}
+        </pre>
+      )}
+
+      <div className="pt-2 flex gap-3">
+        <button
+          onClick={onRetry}
+          className="px-4 py-2 text-xs font-semibold rounded-lg bg-red-600 text-white hover:bg-red-700"
+        >
+          Retry Operation
+        </button>
+      </div>
+
+      {children}
+    </div>
+  );
+}

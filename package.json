@@ -1,0 +1,40 @@
+{
+  "name": "tessellate-monorepo",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.20.0",
+  "scripts": {
+    "dev": "pnpm -r --parallel run dev",
+    "build:catalog": "tsx scripts/build-catalog.ts",
+    "build": "pnpm build:catalog && pnpm -r run build",
+    "typecheck": "pnpm -r --parallel run typecheck",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "audit:release-gate": "tsx scripts/verify-release-gate.ts",
+    "audit:licenses": "tsx scripts/audit-license-provenance.ts",
+    "audit:secrets": "tsx scripts/audit-security-secrets.ts",
+    "audit:budgets": "tsx scripts/audit-bundle-budgets.ts",
+    "audit:all": "tsx scripts/verify-release-gate.ts && tsx scripts/audit-bundle-budgets.ts && tsx scripts/audit-license-provenance.ts && tsx scripts/audit-security-secrets.ts"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@eslint/js": "^9.20.0",
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "eslint": "^9.20.1",
+    "prettier": "^3.5.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.24.1",
+    "vitest": "^3.0.6"
+  }
+}

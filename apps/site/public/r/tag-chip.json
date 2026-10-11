@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tag-chip",
+  "type": "registry:ui",
+  "title": "Tag Chip",
+  "description": "Clickable and removable categorical chip token for multi-criteria filters.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type TagChipVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface TagChipProps {\n  variant?: TagChipVariant;\n  label: string;\n  selected?: boolean;\n  onRemove?: () => void;\n  onClick?: () => void;\n}\n\nexport function TagChip({\n  variant = 'quiet',\n  label,\n  selected = false,\n  onRemove,\n  onClick,\n}: TagChipProps) {\n  let theme = 'bg-white border-neutral-300 text-neutral-800 hover:border-neutral-400';\n  if (selected) theme = 'bg-neutral-900 border-neutral-900 text-white';\n\n  if (variant === 'expressive' && selected) {\n    theme = 'bg-[#2547E8] border-[#2547E8] text-white shadow-xs';\n  } else if (variant === 'nocturne') {\n    theme = selected ? 'bg-white text-neutral-950 border-white' : 'bg-[#171A21] border-[#2E3440] text-neutral-300';\n  }\n\n  return (\n    <div\n      onClick={onClick}\n      className={`inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-xs cursor-pointer select-none transition-colors ${theme}`}\n    >\n      <span>{label}</span>\n      {onRemove && (\n        <button\n          type=\"button\"\n          onClick={(e) => {\n            e.stopPropagation();\n            onRemove();\n          }}\n          className=\"hover:opacity-75\"\n        >\n          ✕\n        </button>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { TagChip } from './index.js';\n\nexport function TagChipPreview() {\n  const [selected, setSelected] = useState(true);\n  return (\n    <div className=\"p-8 flex gap-3 justify-center bg-[#FAF9F6]\">\n      <TagChip variant=\"expressive\" label=\"React 19\" selected={selected} onClick={() => setSelected(!selected)} onRemove={() => {}} />\n      <TagChip variant=\"quiet\" label=\"Tailwind 4\" selected={false} />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_tag_chip",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

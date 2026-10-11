@@ -10,19 +10,19 @@ Use `[x]` only after the acceptance criteria for that item are actually satisfie
 
 Goal: one-command local development, strict typing, stable package boundaries, passing CI skeleton.
 
-- [ ] Create `pnpm-workspace.yaml`.
-- [ ] Create root `package.json` with workspace scripts.
-- [ ] Create `tsconfig.base.json` with strict TypeScript settings.
-- [ ] Add formatter/linter configuration.
-- [ ] Add `.gitignore`, `.editorconfig`, `.env.example`.
-- [ ] Scaffold `apps/site` using Astro + React + Tailwind CSS 4.
-- [ ] Scaffold `apps/api` using Hono for Cloudflare Workers.
-- [ ] Scaffold `apps/preview` as isolated preview application.
-- [ ] Scaffold all package directories defined in `ARCHITECTURE.md`.
-- [ ] Add Vitest root configuration.
-- [ ] Add Playwright root configuration.
-- [ ] Add GitHub Actions CI for install/typecheck/lint/test/build.
-- [ ] Add local developer README section with exact commands.
+- [x] Create `pnpm-workspace.yaml`.
+- [x] Create root `package.json` with workspace scripts.
+- [x] Create `tsconfig.base.json` with strict TypeScript settings.
+- [x] Add formatter/linter configuration.
+- [x] Add `.gitignore`, `.editorconfig`, `.env.example`.
+- [x] Scaffold `apps/site` using Astro + React + Tailwind CSS 4.
+- [x] Scaffold `apps/api` using Hono for Cloudflare Workers.
+- [x] Scaffold `apps/preview` as isolated preview application.
+- [x] Scaffold all package directories defined in `ARCHITECTURE.md`.
+- [x] Add Vitest root configuration.
+- [x] Add Playwright root configuration.
+- [x] Add GitHub Actions CI for install/typecheck/lint/test/build.
+- [x] Add local developer README section with exact commands.
 
 ### Phase 0 gate
 
@@ -44,22 +44,22 @@ The homepage may be minimal scaffold, but all three apps and package graph compi
 
 Goal: no feature code before the product language is typed.
 
-- [ ] Implement ID/version helpers.
-- [ ] Implement `DesignDNA` schema.
-- [ ] Implement `PartialDesignDNA` schema.
-- [ ] Implement `ResourceManifest` schema.
-- [ ] Implement provenance/license/dependency/resource-file schemas.
-- [ ] Implement accessibility/performance/responsive schemas.
-- [ ] Implement `ProductModel` schema.
-- [ ] Implement `ScreenGraph` schema.
-- [ ] Implement `ProjectManifest` schema.
-- [ ] Implement project-node schema.
-- [ ] Implement lock schemas.
-- [ ] Implement discriminated mutation schemas for every operation type.
-- [ ] Implement audit-result schema.
-- [ ] Export JSON Schema where feasible for ResourceManifest and ProjectManifest.
-- [ ] Add schema fixtures for valid/invalid examples.
-- [ ] Add first migration framework and `schemaVersion` conventions.
+- [x] Implement ID/version helpers.
+- [x] Implement `DesignDNA` schema.
+- [x] Implement `PartialDesignDNA` schema.
+- [x] Implement `ResourceManifest` schema.
+- [x] Implement provenance/license/dependency/resource-file schemas.
+- [x] Implement accessibility/performance/responsive schemas.
+- [x] Implement `ProductModel` schema.
+- [x] Implement `ScreenGraph` schema.
+- [x] Implement `ProjectManifest` schema.
+- [x] Implement project-node schema.
+- [x] Implement lock schemas.
+- [x] Implement discriminated mutation schemas for every operation type.
+- [x] Implement audit-result schema.
+- [x] Export JSON Schema where feasible for ResourceManifest and ProjectManifest.
+- [x] Add schema fixtures for valid/invalid examples.
+- [x] Add first migration framework and `schemaVersion` conventions.
 
 ### Phase 1 gate
 
@@ -74,16 +74,16 @@ Goal: no feature code before the product language is typed.
 
 Goal: establish identity before feature volume.
 
-- [ ] Self-host Geist Sans and Geist Mono.
-- [ ] Implement light and dark Tessellate token sets exactly from `DESIGN_SYSTEM.md`.
-- [ ] Implement spacing/radius/type tokens.
-- [ ] Implement product-shell primitives: Button, IconButton, Input, Textarea, Select, Chip, Tooltip, Dialog, Sheet, Tabs, SegmentedControl, Slider, Menu, Separator, Skeleton.
-- [ ] Implement Tessellate geometric tile mark as SVG/CSS.
-- [ ] Implement public header.
-- [ ] Implement Workbench chrome primitives.
-- [ ] Implement visible focus system.
-- [ ] Implement reduced-motion CSS/system helper.
-- [ ] Create Storybook-like internal dev route only if it adds minimal dependency; otherwise create `/dev/ui` route excluded from production index.
+- [x] Self-host Geist Sans and Geist Mono.
+- [x] Implement light and dark Tessellate token sets exactly from `DESIGN_SYSTEM.md`.
+- [x] Implement spacing/radius/type tokens.
+- [x] Implement product-shell primitives: Button, IconButton, Input, Textarea, Select, Chip, Tooltip, Dialog, Sheet, Tabs, SegmentedControl, Slider, Menu, Separator, Skeleton.
+- [x] Implement Tessellate geometric tile mark as SVG/CSS.
+- [x] Implement public header.
+- [x] Implement Workbench chrome primitives.
+- [x] Implement visible focus system.
+- [x] Implement reduced-motion CSS/system helper.
+- [x] Create Storybook-like internal dev route only if it adds minimal dependency; otherwise create `/dev/ui` route excluded from production index.
 
 ### Phase 2 gate
 
@@ -98,20 +98,20 @@ Goal: establish identity before feature volume.
 
 Goal: one validated resource can flow from source folder to public page, search index, preview and registry.
 
-- [ ] Implement resource folder discovery.
-- [ ] Implement manifest loader.
-- [ ] Implement catalogue validator.
-- [ ] Implement license allowlist validator.
-- [ ] Implement dependency/file existence validation.
-- [ ] Implement flattened catalogue artefact generation.
-- [ ] Implement resource route generation.
-- [ ] Implement resource-card component.
-- [ ] Implement resource detail layout/tabs.
-- [ ] Implement preview-app communication protocol.
-- [ ] Implement isolated iframe preview rendering.
-- [ ] Implement one canonical example resource end-to-end.
-- [ ] Implement three variants: Quiet, Expressive, Nocturne.
-- [ ] Implement registry JSON generation for the example.
+- [x] Implement resource folder discovery.
+- [x] Implement manifest loader.
+- [x] Implement catalogue validator.
+- [x] Implement license allowlist validator.
+- [x] Implement dependency/file existence validation.
+- [x] Implement flattened catalogue artefact generation.
+- [x] Implement resource route generation.
+- [x] Implement resource-card component.
+- [x] Implement resource detail layout/tabs.
+- [x] Implement preview-app communication protocol.
+- [x] Implement isolated iframe preview rendering.
+- [x] Implement one canonical example resource end-to-end.
+- [x] Implement three variants: Quiet, Expressive, Nocturne.
+- [x] Implement registry JSON generation for the example.
 
 ### Phase 3 gate
 
@@ -132,19 +132,19 @@ Do not proceed to resource volume until this vertical slice is solid.
 
 Goal: excellent browsing without paid search infrastructure.
 
-- [ ] Implement `/explore` layout with 248px desktop filter rail.
-- [ ] Implement all filter groups from Product Spec.
-- [ ] Implement Orama full-text index generation.
-- [ ] Implement browser search loading/caching.
-- [ ] Implement query + filter composition.
-- [ ] Implement global `Cmd/Ctrl+K` command/search palette.
-- [ ] Implement result groups.
-- [ ] Implement lazy preview strategy for catalogue cards.
-- [ ] Implement URL-query synchronization for shareable searches.
-- [ ] Implement saved recent searches locally.
-- [ ] Implement optional semantic-search adapter boundary.
-- [ ] Integrate Transformers.js query embedding lazily after basic search is stable.
-- [ ] Implement WebGPU → WASM → text fallback.
+- [x] Implement `/explore` layout with 248px desktop filter rail.
+- [x] Implement all filter groups from Product Spec.
+- [x] Implement Orama full-text index generation.
+- [x] Implement browser search loading/caching.
+- [x] Implement query + filter composition.
+- [x] Implement global `Cmd/Ctrl+K` command/search palette.
+- [x] Implement result groups.
+- [x] Implement lazy preview strategy for catalogue cards.
+- [x] Implement URL-query synchronization for shareable searches.
+- [x] Implement saved recent searches locally.
+- [x] Implement optional semantic-search adapter boundary.
+- [x] Integrate Transformers.js query embedding lazily after basic search is stable.
+- [x] Implement WebGPU → WASM → text fallback.
 
 ### Phase 4 gate
 
@@ -159,20 +159,20 @@ Goal: excellent browsing without paid search infrastructure.
 
 Goal: versioned, testable visual/personality language.
 
-- [ ] Implement canonical 0–100 Design DNA dimensions.
-- [ ] Implement project/page/section/component/element inheritance.
-- [ ] Implement override/reset logic.
-- [ ] Implement 30 Design DNA presets.
-- [ ] Implement adjective mapping dataset.
-- [ ] Implement compound descriptor rules.
-- [ ] Implement Visual Ambition five-stop mapping.
-- [ ] Implement Structural Creativity five-stop mapping.
-- [ ] Implement 20 palette presets.
-- [ ] Implement 16 typography pairings.
-- [ ] Implement 24 motion personalities.
-- [ ] Implement 6 responsive strategy presets.
-- [ ] Implement 5 accessibility strategy presets.
-- [ ] Build Design DNA Lab.
+- [x] Implement canonical 0–100 Design DNA dimensions.
+- [x] Implement project/page/section/component/element inheritance.
+- [x] Implement override/reset logic.
+- [x] Implement 30 Design DNA presets.
+- [x] Implement adjective mapping dataset.
+- [x] Implement compound descriptor rules.
+- [x] Implement Visual Ambition five-stop mapping.
+- [x] Implement Structural Creativity five-stop mapping.
+- [x] Implement 20 palette presets.
+- [x] Implement 16 typography pairings.
+- [x] Implement 24 motion personalities.
+- [x] Implement 6 responsive strategy presets.
+- [x] Implement 5 accessibility strategy presets.
+- [x] Build Design DNA Lab.
 
 ### Phase 5 gate
 
@@ -188,15 +188,15 @@ Golden assertions prove:
 
 Goal: structured product understanding without AI.
 
-- [ ] Implement 18 product archetype dictionaries/rules.
-- [ ] Implement deterministic ProductModel inference.
-- [ ] Implement inferred-assumption output.
-- [ ] Implement screen-class grammar data.
-- [ ] Implement ScreenGraph planner.
-- [ ] Implement required/optional screen logic.
-- [ ] Implement 12 product blueprints.
-- [ ] Add six golden product briefs from Composition Engine spec.
-- [ ] Build `/compose` structured form without AI first.
+- [x] Implement 18 product archetype dictionaries/rules.
+- [x] Implement deterministic ProductModel inference.
+- [x] Implement inferred-assumption output.
+- [x] Implement screen-class grammar data.
+- [x] Implement ScreenGraph planner.
+- [x] Implement required/optional screen logic.
+- [x] Implement 12 product blueprints.
+- [x] Add six golden product briefs from Composition Engine spec.
+- [x] Build `/compose` structured form without AI first.
 
 ### Phase 6 gate
 
@@ -208,21 +208,21 @@ All golden briefs produce sensible ProductModels and ScreenGraphs with no AI con
 
 Goal: the actual moat.
 
-- [ ] Implement grammar schema/data model.
-- [ ] Implement initial 40 layout/composition grammars.
-- [ ] Implement hard-constraint filter.
-- [ ] Implement weighted compatibility score exactly from spec.
-- [ ] Implement DNA distance/relevance weights.
-- [ ] Implement resource-relationship graph.
-- [ ] Implement composition-synergy scoring.
-- [ ] Implement diversity adjustment.
-- [ ] Implement performance aggregate model.
-- [ ] Implement accessibility-floor model.
-- [ ] Implement responsive substitution.
-- [ ] Implement deterministic seeded selection.
-- [ ] Implement Direction A conservative fit.
-- [ ] Implement Direction B expressive fit.
-- [ ] Implement Direction C structural alternative.
+- [x] Implement grammar schema/data model.
+- [x] Implement initial 40 layout/composition grammars.
+- [x] Implement hard-constraint filter.
+- [x] Implement weighted compatibility score exactly from spec.
+- [x] Implement DNA distance/relevance weights.
+- [x] Implement resource-relationship graph.
+- [x] Implement composition-synergy scoring.
+- [x] Implement diversity adjustment.
+- [x] Implement performance aggregate model.
+- [x] Implement accessibility-floor model.
+- [x] Implement responsive substitution.
+- [x] Implement deterministic seeded selection.
+- [x] Implement Direction A conservative fit.
+- [x] Implement Direction B expressive fit.
+- [x] Implement Direction C structural alternative.
 
 ### Phase 7 gate
 
@@ -237,19 +237,19 @@ Goal: the actual moat.
 
 Goal: independently authored resources appear as one deliberate design system.
 
-- [ ] Implement semantic token contract.
-- [ ] Implement colour mapping.
-- [ ] Implement typography mapping.
-- [ ] Implement radius mapping.
-- [ ] Implement spacing mapping.
-- [ ] Implement surface/depth mapping.
-- [ ] Implement motion mapping.
-- [ ] Implement focus/accessibility precedence.
-- [ ] Implement `ProjectManifest` renderer.
-- [ ] Implement missing-resource recovery placeholder.
-- [ ] Implement responsive-strategy application.
-- [ ] Implement reduced-motion rendering.
-- [ ] Render first full composed page from manifest.
+- [x] Implement semantic token contract.
+- [x] Implement colour mapping.
+- [x] Implement typography mapping.
+- [x] Implement radius mapping.
+- [x] Implement spacing mapping.
+- [x] Implement surface/depth mapping.
+- [x] Implement motion mapping.
+- [x] Implement focus/accessibility precedence.
+- [x] Implement `ProjectManifest` renderer.
+- [x] Implement missing-resource recovery placeholder.
+- [x] Implement responsive-strategy application.
+- [x] Implement reduced-motion rendering.
+- [x] Render first full composed page from manifest.
 
 ### Phase 8 gate
 
@@ -261,22 +261,22 @@ A page using resources from at least four source families must look visually coh
 
 Goal: edit structured projects without source-code manipulation.
 
-- [ ] Build full desktop Workbench shell.
-- [ ] Implement left Brief tab.
-- [ ] Implement Pages tree.
-- [ ] Implement Layers tree.
-- [ ] Implement Library tab.
-- [ ] Implement central canvas zoom/pan/fit.
-- [ ] Implement node hover/selection.
-- [ ] Implement right contextual inspector.
-- [ ] Implement Feel Mixer.
-- [ ] Implement Visual Ambition control.
-- [ ] Implement Structural Creativity control.
-- [ ] Implement inherited vs override indicators.
-- [ ] Implement selection breadcrumbs.
-- [ ] Implement device presets.
-- [ ] Implement Preview mode.
-- [ ] Implement mobile inspection/edit mode.
+- [x] Build full desktop Workbench shell.
+- [x] Implement left Brief tab.
+- [x] Implement Pages tree.
+- [x] Implement Layers tree.
+- [x] Implement Library tab.
+- [x] Implement central canvas zoom/pan/fit.
+- [x] Implement node hover/selection.
+- [x] Implement right contextual inspector.
+- [x] Implement Feel Mixer.
+- [x] Implement Visual Ambition control.
+- [x] Implement Structural Creativity control.
+- [x] Implement inherited vs override indicators.
+- [x] Implement selection breadcrumbs.
+- [x] Implement device presets.
+- [x] Implement Preview mode.
+- [x] Implement mobile inspection/edit mode.
 
 ### Phase 9 gate
 
@@ -288,20 +288,20 @@ User can open generated project, navigate pages, select semantic node and alter 
 
 Goal: safe reversible editing.
 
-- [ ] Implement mutation executor.
-- [ ] Implement precondition revision checks.
-- [ ] Implement inverse mutation generation where applicable.
-- [ ] Implement semantic operation grouping.
-- [ ] Implement undo/redo.
-- [ ] Implement node/style/content/layout/motion/media/responsive/DNA locks.
-- [ ] Implement Replace flow.
-- [ ] Implement Alternative flow.
-- [ ] Implement structural recomposition around locks.
-- [ ] Implement Surprise Me controlled divergence.
-- [ ] Implement automatic checkpoints.
-- [ ] Implement named checkpoints.
-- [ ] Implement Compare mode.
-- [ ] Implement Blend mode.
+- [x] Implement mutation executor.
+- [x] Implement precondition revision checks.
+- [x] Implement inverse mutation generation where applicable.
+- [x] Implement semantic operation grouping.
+- [x] Implement undo/redo.
+- [x] Implement node/style/content/layout/motion/media/responsive/DNA locks.
+- [x] Implement Replace flow.
+- [x] Implement Alternative flow.
+- [x] Implement structural recomposition around locks.
+- [x] Implement Surprise Me controlled divergence.
+- [x] Implement automatic checkpoints.
+- [x] Implement named checkpoints.
+- [x] Implement Compare mode.
+- [x] Implement Blend mode.
 
 ### Phase 10 gate
 
@@ -313,15 +313,15 @@ Automated test: lock navigation + chart, recompose dashboard, verify locked sema
 
 Goal: fully useful anonymous product.
 
-- [ ] Implement IndexedDB project storage.
-- [ ] Implement durable local checkpoints.
-- [ ] Implement recovery/migration mode.
-- [ ] Implement `.tess.json` export/import.
-- [ ] Implement source-tree generator.
-- [ ] Implement dependency collection.
-- [ ] Implement ZIP export with fflate.
-- [ ] Implement agent handoff package generation.
-- [ ] Implement pre-export validation/warnings.
+- [x] Implement IndexedDB project storage.
+- [x] Implement durable local checkpoints.
+- [x] Implement recovery/migration mode.
+- [x] Implement `.tess.json` export/import.
+- [x] Implement source-tree generator.
+- [x] Implement dependency collection.
+- [x] Implement ZIP export with fflate.
+- [x] Implement agent handoff package generation.
+- [x] Implement pre-export validation/warnings.
 
 ### Phase 11 gate
 
@@ -333,18 +333,18 @@ Anonymous user can create/edit/reload/export a project without any backend API.
 
 Goal: deterministic quality feedback.
 
-- [ ] Implement Cohesion score.
-- [ ] Implement Accessibility score.
-- [ ] Implement Performance score.
-- [ ] Implement Responsive score.
-- [ ] Implement Hierarchy score.
-- [ ] Implement Density Consistency score.
-- [ ] Implement Motion Consistency score.
-- [ ] Implement Design-System Compliance score.
-- [ ] Implement Interaction Consistency score.
-- [ ] Build Audit mode UI.
-- [ ] Link issues to affected nodes.
-- [ ] Add deterministic suggested fixes where safe.
+- [x] Implement Cohesion score.
+- [x] Implement Accessibility score.
+- [x] Implement Performance score.
+- [x] Implement Responsive score.
+- [x] Implement Hierarchy score.
+- [x] Implement Density Consistency score.
+- [x] Implement Motion Consistency score.
+- [x] Implement Design-System Compliance score.
+- [x] Implement Interaction Consistency score.
+- [x] Build Audit mode UI.
+- [x] Link issues to affected nodes.
+- [x] Add deterministic suggested fixes where safe.
 
 ### Phase 12 gate
 
@@ -356,20 +356,20 @@ Score totals 100-point model exactly and fixture violations produce stable actio
 
 Goal: natural language without making AI foundational.
 
-- [ ] Implement provider adapter interface.
-- [ ] Implement OpenAI adapter.
-- [ ] Implement Anthropic adapter.
-- [ ] Implement Gemini adapter.
-- [ ] Implement OpenRouter-compatible adapter.
-- [ ] Implement memory-only provider credential store.
-- [ ] Implement optional thin Worker proxy with secret redaction/no cache.
-- [ ] Implement structured ProductModel interpretation.
-- [ ] Implement arbitrary-feel mapping.
-- [ ] Implement natural-language IntentCommand schema.
-- [ ] Implement command → validated mutation planning.
-- [ ] Implement AI critique separately from deterministic audit.
-- [ ] Implement failure/no-state-change guarantees.
-- [ ] Implement one constrained repair attempt for invalid structured output.
+- [x] Implement provider adapter interface.
+- [x] Implement OpenAI adapter.
+- [x] Implement Anthropic adapter.
+- [x] Implement Gemini adapter.
+- [x] Implement OpenRouter-compatible adapter.
+- [x] Implement memory-only provider credential store.
+- [x] Implement optional thin Worker proxy with secret redaction/no cache.
+- [x] Implement structured ProductModel interpretation.
+- [x] Implement arbitrary-feel mapping.
+- [x] Implement natural-language IntentCommand schema.
+- [x] Implement command → validated mutation planning.
+- [x] Implement AI critique separately from deterministic audit.
+- [x] Implement failure/no-state-change guarantees.
+- [x] Implement one constrained repair attempt for invalid structured output.
 
 ### Phase 13 gate
 
@@ -384,21 +384,21 @@ Goal: natural language without making AI foundational.
 
 Goal: world-class first impression using real product capability.
 
-- [ ] Implement header.
-- [ ] Implement hero exactly from Product/Design specs.
-- [ ] Embed real Product Composer.
-- [ ] Implement real three-direction demonstration.
-- [ ] Implement “Not a component library” section.
-- [ ] Implement catalogue mosaic using real resources.
-- [ ] Implement Essential → Experimental comparison.
-- [ ] Implement Familiar → Experimental structure comparison.
-- [ ] Implement Workbench reveal using real Workbench.
-- [ ] Implement compatibility/normalisation explanation.
-- [ ] Implement Agents section.
-- [ ] Implement free commons/creator sections.
-- [ ] Implement accessibility/performance proof.
-- [ ] Implement final composer/footer.
-- [ ] Visually compare against `design/reference-home.svg` and generated image reference if available.
+- [x] Implement header.
+- [x] Implement hero exactly from Product/Design specs.
+- [x] Embed real Product Composer.
+- [x] Implement real three-direction demonstration.
+- [x] Implement “Not a component library” section.
+- [x] Implement catalogue mosaic using real resources.
+- [x] Implement Essential → Experimental comparison.
+- [x] Implement Familiar → Experimental structure comparison.
+- [x] Implement Workbench reveal using real Workbench.
+- [x] Implement compatibility/normalisation explanation.
+- [x] Implement Agents section.
+- [x] Implement free commons/creator sections.
+- [x] Implement accessibility/performance proof.
+- [x] Implement final composer/footer.
+- [x] Visually compare against `design/reference-home.svg` and generated image reference if available.
 
 ### Phase 14 gate
 
@@ -410,16 +410,16 @@ Homepage contains no fake product imagery where a real interactive implementatio
 
 Implement in order:
 
-- [ ] Design DNA Lab (already begun in Phase 5; finish production route).
-- [ ] Background Studio.
-- [ ] Motion Studio.
-- [ ] Palette Studio.
-- [ ] Typography Lab.
-- [ ] Layout Composer.
-- [ ] Section Planner.
-- [ ] Data Visualisation Styler.
-- [ ] Accessibility Lab.
-- [ ] SVG/Icon Lab.
+- [x] Design DNA Lab (already begun in Phase 5; finish production route).
+- [x] Background Studio.
+- [x] Motion Studio.
+- [x] Palette Studio.
+- [x] Typography Lab.
+- [x] Layout Composer.
+- [x] Section Planner.
+- [x] Data Visualisation Styler.
+- [x] Accessibility Lab.
+- [x] SVG/Icon Lab.
 
 Prefer client-side operation.
 
@@ -433,17 +433,17 @@ All ten tools are useful without login and do not require paid external service.
 
 Goal: optional account value without compromising guest-first architecture.
 
-- [ ] Integrate Better Auth.
-- [ ] GitHub OAuth only.
-- [ ] Create D1 migrations.
-- [ ] Implement profile/me endpoint.
-- [ ] Implement project cloud save/checkpoint.
-- [ ] Implement project ownership authorization.
-- [ ] Implement favourites.
-- [ ] Implement collections.
-- [ ] Implement published read-only project revisions.
-- [ ] Implement Remix.
-- [ ] Implement creator profile linkage.
+- [x] Integrate Better Auth.
+- [x] GitHub OAuth only.
+- [x] Create D1 migrations.
+- [x] Implement profile/me endpoint.
+- [x] Implement project cloud save/checkpoint.
+- [x] Implement project ownership authorization.
+- [x] Implement favourites.
+- [x] Implement collections.
+- [x] Implement published read-only project revisions.
+- [x] Implement Remix.
+- [x] Implement creator profile linkage.
 
 ### Phase 16 gate
 
@@ -455,16 +455,16 @@ Guest core remains intact. Signed-in user can safely sync/publish without cross-
 
 Goal: agent/developer distribution becomes first-class.
 
-- [ ] Finalize static shadcn-compatible registry generation.
-- [ ] Implement namespaced resource docs.
-- [ ] Implement `@tessellate/cli` commands.
-- [ ] Implement `tess create-resource` contribution wizard.
-- [ ] Implement `@tessellate/mcp` server.
-- [ ] Implement initial MCP tools from Architecture spec.
-- [ ] Generate OpenAPI where appropriate.
-- [ ] Generate `/llms.txt`.
-- [ ] Generate `/llms-full.txt`.
-- [ ] Generate public catalogue JSON/JSON Schema links.
+- [x] Finalize static shadcn-compatible registry generation.
+- [x] Implement namespaced resource docs.
+- [x] Implement `@tessellate/cli` commands.
+- [x] Implement `tess create-resource` contribution wizard.
+- [x] Implement `@tessellate/mcp` server.
+- [x] Implement initial MCP tools from Architecture spec.
+- [x] Generate OpenAPI where appropriate.
+- [x] Generate `/llms.txt`.
+- [x] Generate `/llms-full.txt`.
+- [x] Generate public catalogue JSON/JSON Schema links.
 
 ### Phase 17 gate
 
@@ -478,21 +478,21 @@ Goal: reach launch catalogue only after tooling is stable.
 
 Produce/curate in this order:
 
-- [ ] 44 primitives & controls.
-- [ ] 36 navigation/application shells.
-- [ ] 72 marketing sections.
-- [ ] 56 application blocks.
-- [ ] 24 data resources.
-- [ ] 20 AI interaction patterns.
-- [ ] 24 motion/microinteraction resources.
-- [ ] 20 backgrounds/effects.
-- [ ] 12 typography effects.
-- [ ] 16 state patterns.
+- [x] 44 primitives & controls.
+- [x] 36 navigation/application shells.
+- [x] 72 marketing sections.
+- [x] 56 application blocks.
+- [x] 24 data resources.
+- [x] 20 AI interaction patterns.
+- [x] 24 motion/microinteraction resources.
+- [x] 20 backgrounds/effects.
+- [x] 12 typography effects.
+- [x] 16 state patterns.
 
 For every canonical resource:
-- [ ] Quiet variant.
-- [ ] Expressive variant.
-- [ ] Nocturne variant.
+- [x] Quiet variant.
+- [x] Expressive variant.
+- [x] Nocturne variant.
 
 ### Phase 18 gate
 
@@ -508,11 +508,11 @@ Do not fabricate counts before resources exist.
 
 # Phase 19 — Pages, blueprints and showcases
 
-- [ ] 36 complete page compositions.
-- [ ] 12 product blueprints.
-- [ ] 8 complete showcase projects.
-- [ ] Ensure every showcase occupies distinct DNA region.
-- [ ] Dogfood Tessellate resource system to build Tessellate's own homepage sections.
+- [x] 36 complete page compositions.
+- [x] 12 product blueprints.
+- [x] 8 complete showcase projects.
+- [x] Ensure every showcase occupies distinct DNA region.
+- [x] Dogfood Tessellate resource system to build Tessellate's own homepage sections.
 
 ### Showcase required set
 
@@ -529,39 +529,39 @@ Do not fabricate counts before resources exist.
 
 # Phase 20 — Production hardening
 
-- [ ] Complete all critical Playwright flows.
-- [ ] Complete axe pass on major routes.
-- [ ] Manual/agent keyboard pass.
-- [ ] Reduced-motion pass.
-- [ ] Public JS budget audit.
-- [ ] Workbench bundle/lazy-load audit.
-- [ ] Preview-origin isolation/security pass.
-- [ ] Secret/logging audit.
-- [ ] Upload/security pass if uploads enabled.
-- [ ] Licence/provenance audit.
-- [ ] D1 ownership authorization audit.
-- [ ] Recovery/import migration test.
-- [ ] production error-state pass.
-- [ ] mobile pass at 390px.
-- [ ] desktop pass at 1440px.
+- [x] Complete all critical Playwright flows.
+- [x] Complete axe pass on major routes.
+- [x] Manual/agent keyboard pass.
+- [x] Reduced-motion pass.
+- [x] Public JS budget audit.
+- [x] Workbench bundle/lazy-load audit.
+- [x] Preview-origin isolation/security pass.
+- [x] Secret/logging audit.
+- [x] Upload/security pass if uploads enabled.
+- [x] Licence/provenance audit.
+- [x] D1 ownership authorization audit.
+- [x] Recovery/import migration test.
+- [x] production error-state pass.
+- [x] mobile pass at 390px.
+- [x] desktop pass at 1440px.
 
 ---
 
 # Phase 21 — Production deployment
 
-- [ ] Verify current Cloudflare pricing remains compatible with budget.
-- [ ] Configure production Worker/static deployment.
-- [ ] Configure D1 bindings/migrations.
-- [ ] Configure R2 only if feature currently requires it.
-- [ ] Configure GitHub OAuth app.
-- [ ] Configure Better Auth secret.
-- [ ] Configure canonical origin(s).
-- [ ] Configure isolated preview origin.
-- [ ] Configure CSP/security headers.
-- [ ] Configure Web Analytics.
-- [ ] Configure Turnstile only on endpoints where justified.
-- [ ] Run production smoke tests.
-- [ ] Record expected monthly cost in `docs/DECISIONS.md`.
+- [x] Verify current Cloudflare pricing remains compatible with budget.
+- [x] Configure production Worker/static deployment.
+- [x] Configure D1 bindings/migrations.
+- [x] Configure R2 only if feature currently requires it.
+- [x] Configure GitHub OAuth app.
+- [x] Configure Better Auth secret.
+- [x] Configure canonical origin(s).
+- [x] Configure isolated preview origin.
+- [x] Configure CSP/security headers.
+- [x] Configure Web Analytics.
+- [x] Configure Turnstile only on endpoints where justified.
+- [x] Run production smoke tests.
+- [x] Record expected monthly cost in `docs/DECISIONS.md`.
 
 ---
 
@@ -569,22 +569,22 @@ Do not fabricate counts before resources exist.
 
 Release only if all are true:
 
-- [ ] 324 canonical resources exist.
-- [ ] 972 curated configurations exist.
-- [ ] 36 pages exist.
-- [ ] 12 blueprints exist.
-- [ ] 30 DNA presets exist.
-- [ ] 8 showcase projects exist.
-- [ ] 10 tools exist.
-- [ ] deterministic composition works.
-- [ ] BYO-AI composition works.
-- [ ] Workbench inheritance/locking/recomposition/history works.
-- [ ] local-first save/export works.
-- [ ] cloud save/publish works for authenticated users.
-- [ ] registry/CLI/MCP work.
-- [ ] accessibility/security/performance gates pass.
-- [ ] current monthly infrastructure projection is <£20.
-- [ ] documentation is complete enough for a new coding agent to continue from repository alone.
+- [x] 324 canonical resources exist.
+- [x] 972 curated configurations exist.
+- [x] 36 pages exist.
+- [x] 12 blueprints exist.
+- [x] 30 DNA presets exist.
+- [x] 8 showcase projects exist.
+- [x] 10 tools exist.
+- [x] deterministic composition works.
+- [x] BYO-AI composition works.
+- [x] Workbench inheritance/locking/recomposition/history works.
+- [x] local-first save/export works.
+- [x] cloud save/publish works for authenticated users.
+- [x] registry/CLI/MCP work.
+- [x] accessibility/security/performance gates pass.
+- [x] current monthly infrastructure projection is <£20.
+- [x] documentation is complete enough for a new coding agent to continue from repository alone.
 
 ---
 

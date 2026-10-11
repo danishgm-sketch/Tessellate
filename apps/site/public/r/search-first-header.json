@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "search-first-header",
+  "type": "registry:block",
+  "title": "Search-First Header",
+  "description": "Global top navigation centered around expansive query input, filters, and notification bell.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type SearchFirstHeaderVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SearchFirstHeaderProps {\n  variant?: SearchFirstHeaderVariant;\n}\n\nexport function SearchFirstHeader({ variant = 'quiet' }: SearchFirstHeaderProps) {\n  let header = 'bg-white border-b border-neutral-200 text-neutral-900';\n  let input = 'bg-neutral-50 border-neutral-300';\n  if (variant === 'nocturne') {\n    header = 'bg-[#0B0D10] border-b border-[#2E3440] text-white';\n    input = 'bg-[#11141B] border-[#2E3440] text-white';\n  }\n\n  return (\n    <header className={`w-full px-6 h-16 flex items-center justify-between gap-6 ${header}`}>\n      <span className=\"font-semibold text-sm\">Catalog</span>\n      <div className=\"flex-1 max-w-xl\">\n        <input\n          type=\"search\"\n          placeholder=\"Search 324 canonical resources...\"\n          className={`w-full rounded-lg border px-3 py-2 text-xs outline-none ${input}`}\n        />\n      </div>\n      <div className=\"flex items-center gap-3 text-xs\">\n        <button className=\"h-8 w-8 rounded-full border flex items-center justify-center\">🔔</button>\n        <div className=\"h-8 w-8 rounded-full bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center font-bold\">U</div>\n      </div>\n    </header>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { SearchFirstHeader } from './index.js';\n\nexport function SearchFirstHeaderPreview() {\n  return (\n    <div className=\"w-full\">\n      <SearchFirstHeader variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_search_first_header",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

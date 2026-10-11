@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "success-celebration",
+  "type": "registry:component",
+  "title": "Success Celebration",
+  "description": "Post-action success checkmark bloom with particle burst microinteraction.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type SuccessCelebrationVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SuccessCelebrationProps {\n  variant?: SuccessCelebrationVariant;\n}\n\nexport function SuccessCelebration({ variant = 'quiet' }: SuccessCelebrationProps) {\n  const [played, setPlayed] = useState(true);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const checkColor =\n    variant === 'nocturne'\n      ? 'bg-emerald-500 text-black'\n      : variant === 'expressive'\n      ? 'bg-[#10B981] text-white shadow-lg'\n      : 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900';\n\n  return (\n    <div className={`w-full p-8 rounded-xl border flex flex-col items-center justify-center gap-4 transition-colors ${cardBg}`}>\n      <div\n        className={`w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] motion-reduce:transform-none ${checkColor} ${\n          played ? 'scale-100 opacity-100' : 'scale-50 opacity-0'\n        }`}\n      >\n        ✓\n      </div>\n\n      <div className=\"text-center space-y-1\">\n        <h4 className=\"text-sm font-bold tracking-tight\">Deployment Succeeded</h4>\n        <p className=\"text-xs text-neutral-500\">Autonomous build phase completed without errors.</p>\n      </div>\n\n      <button\n        onClick={() => {\n          setPlayed(false);\n          setTimeout(() => setPlayed(true), 50);\n        }}\n        className=\"mt-2 text-xs px-3 py-1 rounded border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-current\"\n      >\n        Replay Celebration\n      </button>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { SuccessCelebration, SuccessCelebrationVariant } from './index';\n\nexport function SuccessCelebrationPreview() {\n  const [variant, setVariant] = useState<SuccessCelebrationVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <SuccessCelebration variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "celebration"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_success_celebration",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

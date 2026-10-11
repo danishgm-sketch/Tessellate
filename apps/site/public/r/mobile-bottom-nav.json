@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mobile-bottom-nav",
+  "type": "registry:block",
+  "title": "Mobile Bottom Navigation",
+  "description": "Fixed bottom thumb-friendly tab bar for mobile web apps with icon and label pairs.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type MobileBottomNavVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface MobileBottomNavProps {\n  variant?: MobileBottomNavVariant;\n}\n\nexport function MobileBottomNav({ variant = 'quiet' }: MobileBottomNavProps) {\n  const [active, setActive] = useState('feed');\n\n  let bar = 'bg-white/90 border-t border-neutral-200 text-neutral-800 backdrop-blur-md';\n  let activeStyle = 'text-neutral-900 font-bold';\n  if (variant === 'expressive') {\n    bar = 'bg-white/95 border-t border-[#D9D6CF] text-neutral-700 backdrop-blur-md';\n    activeStyle = 'text-[#2547E8] font-bold';\n  } else if (variant === 'nocturne') {\n    bar = 'bg-[#0B0D10]/95 border-t border-[#2E3440] text-neutral-400 backdrop-blur-md';\n    activeStyle = 'text-white font-bold';\n  }\n\n  const items = [\n    { id: 'feed', label: 'Feed', icon: '◫' },\n    { id: 'search', label: 'Search', icon: '🔍' },\n    { id: 'dna', label: 'DNA', icon: '🧬' },\n    { id: 'profile', label: 'Profile', icon: '👤' },\n  ];\n\n  return (\n    <nav className={`fixed bottom-0 left-0 w-full h-16 flex items-center justify-around z-40 md:hidden ${bar}`}>\n      {items.map((it) => (\n        <button\n          key={it.id}\n          type=\"button\"\n          onClick={() => setActive(it.id)}\n          className={`flex flex-col items-center gap-1 text-[10px] transition-colors ${\n            it.id === active ? activeStyle : 'opacity-60'\n          }`}\n        >\n          <span className=\"text-sm\">{it.icon}</span>\n          <span>{it.label}</span>\n        </button>\n      ))}\n    </nav>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { MobileBottomNav } from './index.js';\n\nexport function MobileBottomNavPreview() {\n  return (\n    <div className=\"w-full max-w-sm mx-auto h-32 relative border rounded-xl overflow-hidden bg-[#FAF9F6]\">\n      <MobileBottomNav variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation",
+    "mobile"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_mobile_bottom_nav",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

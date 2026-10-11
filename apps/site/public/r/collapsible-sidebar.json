@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "collapsible-sidebar",
+  "type": "registry:block",
+  "title": "Collapsible Sidebar",
+  "description": "Flexible sidebar toggling between icon rail (48px) and expanded labels (240px) on user trigger.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type CollapsibleSidebarVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CollapsibleSidebarProps {\n  variant?: CollapsibleSidebarVariant;\n}\n\nexport function CollapsibleSidebar({ variant = 'quiet' }: CollapsibleSidebarProps) {\n  const [collapsed, setCollapsed] = useState(false);\n\n  let theme = 'bg-white border-r border-neutral-200 text-neutral-900';\n  if (variant === 'nocturne') theme = 'bg-[#11141B] border-r border-[#2E3440] text-white';\n\n  return (\n    <aside className={`h-screen transition-all duration-200 p-3 flex flex-col justify-between ${collapsed ? 'w-16' : 'w-56'} ${theme}`}>\n      <div className=\"space-y-4\">\n        <div className=\"flex items-center justify-between px-2\">\n          {!collapsed && <span className=\"font-semibold text-xs\">Workbench</span>}\n          <button type=\"button\" onClick={() => setCollapsed(!collapsed)} className=\"text-xs p-1 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800\">\n            {collapsed ? '→' : '←'}\n          </button>\n        </div>\n        <nav className=\"space-y-1 text-xs\">\n          <div className=\"flex items-center gap-2 p-2 rounded-lg bg-neutral-100 dark:bg-neutral-800\">\n            <span>◫</span>\n            {!collapsed && <span>Canvas</span>}\n          </div>\n          <div className=\"flex items-center gap-2 p-2 rounded-lg hover:bg-neutral-50 dark:hover:bg-neutral-800/40\">\n            <span>⚙</span>\n            {!collapsed && <span>Settings</span>}\n          </div>\n        </nav>\n      </div>\n    </aside>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { CollapsibleSidebar } from './index.js';\n\nexport function CollapsibleSidebarPreview() {\n  return (\n    <div className=\"h-64 flex border rounded-xl overflow-hidden bg-[#FAF9F6]\">\n      <CollapsibleSidebar variant=\"expressive\" />\n      <div className=\"flex-1 p-6 text-xs text-neutral-500\">Interactive canvas</div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_collapsible_sidebar",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

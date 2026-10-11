@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "monospace-data-headline",
+  "type": "registry:component",
+  "title": "Monospace Data Headline",
+  "description": "Technical terminal display headline pairing monospace telemetry coordinates, system tags, and blinking prompt caret.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type MonospaceDataHeadlineVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface MonospaceDataHeadlineProps {\n  systemTag?: string;\n  commandText?: string;\n  statusBadge?: string;\n  variant?: MonospaceDataHeadlineVariant;\n  children?: React.ReactNode;\n}\n\nexport function MonospaceDataHeadline({\n  systemTag = '[SYS.CORE :: 0x88F2]',\n  commandText = 'tess compose --archetype=saas --strict',\n  statusBadge = '200 OK • VERIFIED',\n  variant = 'quiet',\n  children,\n}: MonospaceDataHeadlineProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const promptSymbol =\n    variant === 'nocturne'\n      ? 'text-cyan-400'\n      : variant === 'expressive'\n      ? 'text-indigo-600'\n      : 'text-neutral-400';\n\n  const badgeClass =\n    variant === 'nocturne'\n      ? 'bg-cyan-950/60 text-cyan-400 border-cyan-800'\n      : variant === 'expressive'\n      ? 'bg-indigo-50 text-indigo-700 border-indigo-200'\n      : 'bg-neutral-100 text-neutral-700 border-neutral-200';\n\n  return (\n    <div className={`p-8 md:p-12 rounded-xl border max-w-4xl mx-auto space-y-4 font-mono transition-colors ${containerBg}`}>\n      <div className=\"flex items-center justify-between text-xs text-neutral-400\">\n        <span>{systemTag}</span>\n        <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${badgeClass}`}>\n          {statusBadge}\n        </span>\n      </div>\n\n      <div className=\"text-xl md:text-3xl font-bold tracking-tight flex items-center gap-3\">\n        <span className={promptSymbol}>$</span>\n        <span>{commandText}</span>\n        <span className={`w-2.5 h-6 animate-pulse ${variant === 'nocturne' ? 'bg-cyan-400' : 'bg-neutral-800 dark:bg-neutral-200'}`} />\n      </div>\n\n      <p className=\"text-xs text-neutral-500 font-sans leading-relaxed\">\n        Terminal-grade display typography grounded in monospaced coordinate syntax.\n      </p>\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { MonospaceDataHeadline, MonospaceDataHeadlineVariant } from './index';\n\nexport function MonospaceDataHeadlinePreview() {\n  const [variant, setVariant] = useState<MonospaceDataHeadlineVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <MonospaceDataHeadline variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "typography",
+    "display",
+    "monospace"
+  ],
+  "meta": {
+    "tessellateId": "res_typo_monospace_data_headline",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

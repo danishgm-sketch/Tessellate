@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "geographic-map",
+  "type": "registry:component",
+  "title": "Geographic Map",
+  "description": "Stylized SVG regional map preview with density shading, marker pins, and territory summary metrics.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type GeographicMapVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface GeographicMapProps {\n  variant?: GeographicMapVariant;\n}\n\nexport function GeographicMap({ variant = 'quiet' }: GeographicMapProps) {\n  const [activePin, setActivePin] = useState<string | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const pinColor =\n    variant === 'nocturne' ? '#06B6D4' : variant === 'expressive' ? '#2547E8' : '#171717';\n\n  const regions = [\n    { id: 'us-east', name: 'US East (N. Virginia)', x: 170, y: 95, pings: '8ms', active: true },\n    { id: 'us-west', name: 'US West (Oregon)', x: 120, y: 85, pings: '14ms', active: true },\n    { id: 'eu-west', name: 'EU West (London)', x: 290, y: 75, pings: '4ms', active: true },\n    { id: 'eu-central', name: 'EU Central (Frankfurt)', x: 315, y: 82, pings: '6ms', active: true },\n    { id: 'ap-east', name: 'AP East (Tokyo)', x: 470, y: 100, pings: '22ms', active: true },\n    { id: 'ap-south', name: 'AP South (Singapore)', x: 440, y: 140, pings: '18ms', active: true },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between mb-4\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Global Edge Network</h4>\n          <p className=\"text-xs text-neutral-500\">Active points of presence and edge latency</p>\n        </div>\n        <span className=\"text-xs font-mono font-medium text-emerald-500\">6 Regions Healthy</span>\n      </div>\n\n      <div className=\"relative w-full overflow-hidden\">\n        <svg viewBox=\"0 0 600 240\" className=\"w-full h-auto overflow-visible select-none\">\n          {/* Stylized continent vector outlines */}\n          <path\n            d=\"M 80 60 Q 140 40 180 80 Q 150 140 100 120 Z\"\n            fill={variant === 'nocturne' ? '#151921' : '#F3F4F6'}\n            stroke={variant === 'nocturne' ? '#2E3440' : '#E5E7EB'}\n            strokeWidth=\"1\"\n          />\n          <path\n            d=\"M 120 130 Q 160 140 140 210 Q 110 180 120 130 Z\"\n            fill={variant === 'nocturne' ? '#151921' : '#F3F4F6'}\n            stroke={variant === 'nocturne' ? '#2E3440' : '#E5E7EB'}\n            strokeWidth=\"1\"\n          />\n          <path\n            d=\"M 270 50 Q 340 40 330 110 Q 280 120 270 50 Z\"\n            fill={variant === 'nocturne' ? '#151921' : '#F3F4F6'}\n            stroke={variant === 'nocturne' ? '#2E3440' : '#E5E7EB'}\n            strokeWidth=\"1\"\n          />\n          <path\n            d=\"M 280 120 Q 330 120 320 200 Q 270 170 280 120 Z\"\n            fill={variant === 'nocturne' ? '#151921' : '#F3F4F6'}\n            stroke={variant === 'nocturne' ? '#2E3440' : '#E5E7EB'}\n            strokeWidth=\"1\"\n          />\n          <path\n            d=\"M 370 60 Q 510 50 490 140 Q 380 150 370 60 Z\"\n            fill={variant === 'nocturne' ? '#151921' : '#F3F4F6'}\n            stroke={variant === 'nocturne' ? '#2E3440' : '#E5E7EB'}\n            strokeWidth=\"1\"\n          />\n\n          {/* Region pins */}\n          {regions.map((r) => {\n            const isHovered = activePin === r.id;\n            return (\n              <g\n                key={r.id}\n                onMouseEnter={() => setActivePin(r.id)}\n                onMouseLeave={() => setActivePin(null)}\n                className=\"cursor-pointer\"\n              >\n                <circle cx={r.x} cy={r.y} r={isHovered ? 8 : 5} fill={pinColor} />\n                <circle cx={r.x} cy={r.y} r={isHovered ? 14 : 10} fill={pinColor} fillOpacity=\"0.25\" className=\"animate-pulse\" />\n                {isHovered && (\n                  <g>\n                    <rect x={r.x - 50} y={r.y - 30} width=\"100\" height=\"22\" rx=\"4\" fill=\"#000\" />\n                    <text x={r.x} y={r.y - 15} textAnchor=\"middle\" fill=\"#fff\" className=\"text-[10px] font-mono\">\n                      {r.name.split(' ')[0]}: {r.pings}\n                    </text>\n                  </g>\n                )}\n              </g>\n            );\n          })}\n        </svg>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { GeographicMap, GeographicMapVariant } from './index';\n\nexport function GeographicMapPreview() {\n  const [variant, setVariant] = useState<GeographicMapVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <GeographicMap variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "maps"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_geographic_map",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

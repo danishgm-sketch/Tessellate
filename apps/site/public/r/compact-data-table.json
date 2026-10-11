@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "compact-data-table",
+  "type": "registry:block",
+  "title": "Compact Data Table",
+  "description": "High-density tabular list designed for tight panels and real-time feeds.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type CompactDataTableVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CompactDataTableProps {\n  variant?: CompactDataTableVariant;\n}\n\nexport function CompactDataTable({ variant = 'quiet' }: CompactDataTableProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  const items = [\n    { key: 'CPU-0', load: '18%', temp: '42°C' },\n    { key: 'CPU-1', load: '24%', temp: '44°C' },\n    { key: 'CPU-2', load: '12%', temp: '40°C' },\n    { key: 'CPU-3', load: '82%', temp: '58°C' },\n  ];\n\n  return (\n    <div className={`w-full rounded-xl border overflow-hidden font-mono text-[11px] transition-colors ${bg}`}>\n      <table className=\"w-full text-left\">\n        <thead className=\"bg-neutral-100/60 dark:bg-neutral-900/60 border-b border-neutral-200 dark:border-neutral-800\">\n          <tr>\n            <th className=\"px-3 py-1.5\">Core</th>\n            <th className=\"px-3 py-1.5\">Utilization</th>\n            <th className=\"px-3 py-1.5\">Temp</th>\n          </tr>\n        </thead>\n        <tbody className=\"divide-y divide-neutral-100 dark:divide-neutral-900\">\n          {items.map((it) => (\n            <tr key={it.key} className=\"hover:bg-neutral-50 dark:hover:bg-neutral-900/40\">\n              <td className=\"px-3 py-1.5 font-bold\">{it.key}</td>\n              <td className=\"px-3 py-1.5\">{it.load}</td>\n              <td className=\"px-3 py-1.5 opacity-70\">{it.temp}</td>\n            </tr>\n          ))}\n        </tbody>\n      </table>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { CompactDataTable, CompactDataTableVariant } from './index.js';\n\nexport function CompactDataTablePreview() {\n  const [variant, setVariant] = useState<CompactDataTableVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Compact Data Table Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as CompactDataTableVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <CompactDataTable variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "data",
+    "tables"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_compact_data_table",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+import { SiteHeader } from '../components/home/SiteHeader';
+import { HeroComposer } from '../components/home/HeroComposer';
+import { ThreeDirectionsDemo } from '../components/home/ThreeDirectionsDemo';
+import { NotComponentLibrary } from '../components/home/NotComponentLibrary';
+import { CatalogueMosaic } from '../components/home/CatalogueMosaic';
+import { EssentialVsExperimental } from '../components/home/EssentialVsExperimental';
+import { StructureComparison } from '../components/home/StructureComparison';
+import { WorkbenchReveal } from '../components/home/WorkbenchReveal';
+import { CompatibilityExplanation } from '../components/home/CompatibilityExplanation';
+import { AgentsSection } from '../components/home/AgentsSection';
+import { CommonsAndCreators } from '../components/home/CommonsAndCreators';
+import { AuditPerformanceProof } from '../components/home/AuditPerformanceProof';
+import { FinalComposerFooter } from '../components/home/FinalComposerFooter';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Tessellate — Describe the product. Get the interface.</title>
+    <meta
+      name="description"
+      content="Tessellate turns product intent into cohesive interface systems using an open deterministic composition engine, design intelligence, and an open component registry."
+    />
+  </head>
+  <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white">
+    <SiteHeader client:load />
+
+    <main id="main-content" class="overflow-x-hidden">
+      <!-- 1. Hero / Real interactive Product Composer -->
+      <HeroComposer client:load />
+
+      <!-- 2. Three visual directions (Institutional, Editorial, Future Command) -->
+      <ThreeDirectionsDemo client:load />
+
+      <!-- 3. Not a component library comparative matrix -->
+      <NotComponentLibrary client:visible />
+
+      <!-- 4. Interactive Catalogue Mosaic -->
+      <CatalogueMosaic client:visible />
+
+      <!-- 5. Essential vs Refined vs Experimental ambition comparison -->
+      <EssentialVsExperimental client:visible />
+
+      <!-- 6. Familiar vs Cockpit vs Spatial structure comparison -->
+      <StructureComparison client:visible />
+
+      <!-- 7. Dark Studio Workbench Reveal -->
+      <WorkbenchReveal client:visible />
+
+      <!-- 8. Compatibility & Normalization Engine -->
+      <CompatibilityExplanation client:visible />
+
+      <!-- 9. Agent-Native Distribution Section -->
+      <AgentsSection client:visible />
+
+      <!-- 10. Open Commons & Creators -->
+      <CommonsAndCreators client:visible />
+
+      <!-- 11. Deterministic Audit & Performance Proof -->
+      <AuditPerformanceProof client:visible />
+
+      <!-- 12. Final Prompt Composer & Editorial Footer -->
+      <FinalComposerFooter client:idle />
+    </main>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "mobile-drawer-nav",
+  "type": "registry:block",
+  "title": "Mobile Drawer Navigation",
+  "description": "Hamburger slide-out overlay drawer displaying full mobile navigation menu.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type MobileDrawerNavVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface MobileDrawerNavProps {\n  variant?: MobileDrawerNavVariant;\n}\n\nexport function MobileDrawerNav({ variant = 'quiet' }: MobileDrawerNavProps) {\n  const [open, setOpen] = useState(false);\n\n  let theme = 'bg-white text-neutral-900';\n  if (variant === 'nocturne') theme = 'bg-[#11141B] text-white';\n\n  return (\n    <div className=\"w-full p-4 flex justify-between items-center border-b\">\n      <span className=\"font-semibold text-sm\">Tessellate</span>\n      <button type=\"button\" onClick={() => setOpen(true)} className=\"p-2 border rounded-lg text-xs\">\n        ☰ Menu\n      </button>\n      {open && (\n        <div className=\"fixed inset-0 z-50 flex\">\n          <div className=\"fixed inset-0 bg-black/40\" onClick={() => setOpen(false)} />\n          <div className={`relative w-3/4 max-w-xs h-full p-6 space-y-6 z-10 ${theme}`}>\n            <div className=\"flex justify-between items-center\">\n              <span className=\"font-semibold text-sm\">Navigation</span>\n              <button type=\"button\" onClick={() => setOpen(false)}>✕</button>\n            </div>\n            <nav className=\"space-y-3 text-sm\">\n              <a href=\"#\" className=\"block py-1\">Catalogue</a>\n              <a href=\"#\" className=\"block py-1\">Workbench</a>\n              <a href=\"#\" className=\"block py-1\">Design DNA</a>\n              <a href=\"#\" className=\"block py-1\">Documentation</a>\n            </nav>\n          </div>\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { MobileDrawerNav } from './index.js';\n\nexport function MobileDrawerNavPreview() {\n  return (\n    <div className=\"w-full max-w-sm mx-auto border rounded-xl overflow-hidden bg-[#FAF9F6]\">\n      <MobileDrawerNav variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation",
+    "mobile"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_mobile_drawer_nav",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

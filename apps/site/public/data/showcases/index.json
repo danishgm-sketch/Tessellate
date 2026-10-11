@@ -1,0 +1,82 @@
+[
+  {
+    "id": "showcase-financial-terminal",
+    "name": "Apex Financial Intelligence Terminal",
+    "tagline": "High-density institutional equity telemetry and risk analytics",
+    "archetypeId": "fintech",
+    "navigationModel": "cockpit-dense",
+    "dnaPresetName": "dense-terminal",
+    "colorMode": "dark",
+    "screenCount": 4
+  },
+  {
+    "id": "showcase-ai-developer-platform",
+    "name": "Synthetix AI Developer Platform",
+    "tagline": "Autonomous agent orchestration canvas and prompt compiler",
+    "archetypeId": "ai",
+    "navigationModel": "command-first",
+    "dnaPresetName": "future-command",
+    "colorMode": "adaptive",
+    "screenCount": 4
+  },
+  {
+    "id": "showcase-luxury-hospitality",
+    "name": "Velluto Private Estate Residences",
+    "tagline": "Bespoke global villa reservations and editorial destination dossiers",
+    "archetypeId": "hospitality",
+    "navigationModel": "split-horizontal",
+    "dnaPresetName": "luxury-editorial",
+    "colorMode": "light",
+    "screenCount": 3
+  },
+  {
+    "id": "showcase-playful-hr",
+    "name": "Kudos Team Culture & Hiring",
+    "tagline": "Joyful applicant pipelines, peer recognition kudos, and people operations",
+    "archetypeId": "hr",
+    "navigationModel": "pill-rail",
+    "dnaPresetName": "professional-playful",
+    "colorMode": "light",
+    "screenCount": 3
+  },
+  {
+    "id": "showcase-luxury-ecommerce",
+    "name": "Atelier Chronos Horology",
+    "tagline": "Artisanal mechanical timepieces and bespoke bespoke leatherwork catalogue",
+    "archetypeId": "ecommerce",
+    "navigationModel": "minimal-editorial",
+    "dnaPresetName": "high-end-commerce",
+    "colorMode": "light",
+    "screenCount": 3
+  },
+  {
+    "id": "showcase-scientific-research",
+    "name": "Cortex Laboratory Environment",
+    "tagline": "High-contrast genomics sequencing analysis and molecular workbench",
+    "archetypeId": "scientific",
+    "navigationModel": "three-pane",
+    "dnaPresetName": "scientific-instrument",
+    "colorMode": "adaptive",
+    "screenCount": 3
+  },
+  {
+    "id": "showcase-creator-analytics",
+    "name": "Pulse Media Creator Studio",
+    "tagline": "Multi-platform audience attribution and subscriber growth telemetry",
+    "archetypeId": "analytics",
+    "navigationModel": "sidebar-standard",
+    "dnaPresetName": "data-first-analytical",
+    "colorMode": "adaptive",
+    "screenCount": 3
+  },
+  {
+    "id": "showcase-minimal-productivity",
+    "name": "Scribe Zen Monastic Notes",
+    "tagline": "Distraction-free markdown thought buffer with zero cloud latency",
+    "archetypeId": "productivity",
+    "navigationModel": "floating-dock",
+    "dnaPresetName": "quiet-productivity",
+    "colorMode": "light",
+    "screenCount": 3
+  }
+]

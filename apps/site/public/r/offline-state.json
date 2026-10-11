@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "offline-state",
+  "type": "registry:component",
+  "title": "Offline State",
+  "description": "Local-first offline banner informing the user that cached manifests remain interactive while remote sync is paused.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type OfflineStateVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface OfflineStateProps {\n  variant?: OfflineStateVariant;\n  children?: React.ReactNode;\n}\n\nexport function OfflineState({ variant = 'quiet', children }: OfflineStateProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-amber-50/60 text-amber-950 border-amber-200'\n      : 'bg-neutral-50 text-neutral-900 border-neutral-200';\n\n  const badgeColor =\n    variant === 'nocturne'\n      ? 'text-amber-400 bg-amber-950/40 border-amber-800'\n      : variant === 'expressive'\n      ? 'text-amber-800 bg-amber-100 border-amber-300'\n      : 'text-neutral-700 bg-neutral-200 border-neutral-300';\n\n  return (\n    <div\n      role=\"alert\"\n      className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto flex items-start gap-4 transition-colors ${containerBg}`}\n    >\n      <div className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center border text-lg ${badgeColor}`}>\n        📡\n      </div>\n\n      <div className=\"space-y-1\">\n        <h4 className=\"text-base font-bold tracking-tight\">\n          Working in Local Offline Mode\n        </h4>\n        <p className=\"text-xs text-neutral-500 leading-relaxed max-w-lg\">\n          Your changes are securely saved in browser IndexedDB. Remote cloud synchronization will resume automatically once network connectivity is restored.\n        </p>\n      </div>\n\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { OfflineState, OfflineStateVariant } from './index';\n\nexport function OfflineStatePreview() {\n  const [variant, setVariant] = useState<OfflineStateVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <OfflineState variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "states",
+    "network",
+    "offline"
+  ],
+  "meta": {
+    "tessellateId": "res_state_offline_state",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

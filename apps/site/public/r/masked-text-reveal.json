@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "masked-text-reveal",
+  "type": "registry:component",
+  "title": "Masked Text Reveal",
+  "description": "Editorial overflow-hidden text mask sliding upwards from an invisible baseline boundary.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type MaskedTextRevealVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface MaskedTextRevealProps {\n  variant?: MaskedTextRevealVariant;\n  text?: string;\n}\n\nexport function MaskedTextReveal({\n  variant = 'quiet',\n  text = 'Software Composed, Not Stitched.',\n}: MaskedTextRevealProps) {\n  const [revealed, setRevealed] = useState(true);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const textColor =\n    variant === 'nocturne'\n      ? 'text-white'\n      : variant === 'expressive'\n      ? 'text-[#2547E8]'\n      : 'text-neutral-900 dark:text-white';\n\n  return (\n    <div className={`w-full p-8 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>\n      <div className=\"flex justify-between items-center pb-2 border-b border-neutral-100 dark:border-neutral-800\">\n        <span className=\"text-xs font-mono text-neutral-400\">Masked Overflow Clip</span>\n        <button\n          onClick={() => {\n            setRevealed(false);\n            setTimeout(() => setRevealed(true), 50);\n          }}\n          className=\"text-xs px-2.5 py-1 rounded border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-current\"\n        >\n          Replay\n        </button>\n      </div>\n\n      <div className=\"overflow-hidden py-1\">\n        <h2\n          className={`text-2xl sm:text-3xl font-bold tracking-tight transform transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none motion-reduce:transform-none ${textColor} ${\n            revealed ? 'translate-y-0' : 'translate-y-full'\n          }`}\n        >\n          {text}\n        </h2>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { MaskedTextReveal, MaskedTextRevealVariant } from './index';\n\nexport function MaskedTextRevealPreview() {\n  const [variant, setVariant] = useState<MaskedTextRevealVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <MaskedTextReveal variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "reveals"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_masked_text_reveal",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

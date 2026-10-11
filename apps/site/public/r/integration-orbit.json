@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "integration-orbit",
+  "type": "registry:block",
+  "title": "Integration Orbit",
+  "description": "Central product node surrounded by connected ecosystem nodes with radial alignment.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type IntegrationOrbitVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface IntegrationOrbitProps {\n  variant?: IntegrationOrbitVariant;\n}\n\nexport function IntegrationOrbit({ variant = 'quiet' }: IntegrationOrbitProps) {\n  let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';\n  let centerNode = 'bg-neutral-900 text-white';\n\n  if (variant === 'expressive') {\n    bg = 'bg-white text-neutral-950 border-[#D9D6CF]';\n    centerNode = 'bg-[#2547E8] text-white shadow-xl';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    centerNode = 'bg-cyan-500 text-black font-semibold shadow-2xl';\n  }\n\n  const nodes = ['React', 'Tailwind', 'Zod', 'Orama', 'Better Auth', 'Cloudflare'];\n\n  return (\n    <section className={`relative w-full py-24 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-4xl mx-auto text-center flex flex-col items-center\">\n        <h2 className=\"text-3xl font-bold tracking-tight mb-16\">The Orchestration Center</h2>\n\n        <div className=\"relative w-72 h-72 rounded-full border border-dashed border-neutral-300 dark:border-neutral-700 flex items-center justify-center\">\n          <div className={`w-28 h-28 rounded-full flex items-center justify-center font-bold text-xs font-mono ${centerNode}`}>\n            TESSELLATE\n          </div>\n          {nodes.map((node, i) => {\n            const angle = (i / nodes.length) * 2 * Math.PI;\n            const x = Math.round(110 * Math.cos(angle));\n            const y = Math.round(110 * Math.sin(angle));\n            return (\n              <div\n                key={node}\n                style={{ transform: `translate(${x}px, ${y}px)` }}\n                className=\"absolute px-3 py-1 rounded-full border bg-white dark:bg-[#151921] text-[10px] font-mono font-semibold shadow-xs\"\n              >\n                {node}\n              </div>\n            );\n          })}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { IntegrationOrbit, IntegrationOrbitVariant } from './index.js';\n\nexport function IntegrationOrbitPreview() {\n  const [variant, setVariant] = useState<IntegrationOrbitVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Integration Orbit Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as IntegrationOrbitVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <IntegrationOrbit variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "integrations"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_integration_orbit",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

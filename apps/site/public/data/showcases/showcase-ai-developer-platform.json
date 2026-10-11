@@ -1,0 +1,487 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "showcase-ai-developer-platform",
+  "name": "Synthetix AI Developer Platform",
+  "description": "Autonomous multi-agent orchestration canvas with live streaming telemetry.",
+  "createdAt": "2026-10-10T12:00:00.000Z",
+  "updatedAt": "2026-10-10T12:00:00.000Z",
+  "catalogVersion": "1.0.0",
+  "seed": "seed_showcase-ai-developer-platform",
+  "productModel": {
+    "schemaVersion": "1.0.0",
+    "productArchetypes": [
+      {
+        "tag": "ai",
+        "weight": 100
+      }
+    ],
+    "primaryAudience": "Domain specialists",
+    "userSophistication": 95,
+    "primaryObjective": "Autonomous multi-agent orchestration canvas with live streaming telemetry.",
+    "secondaryObjectives": [
+      "Maximize workflow speed and cognitive clarity"
+    ],
+    "jobsToBeDone": [
+      "Analyze domain data",
+      "Execute actions",
+      "Inspect telemetry"
+    ],
+    "entities": [],
+    "workflows": [],
+    "trustRequirement": 92,
+    "informationComplexity": 70,
+    "dataDensity": 70,
+    "collaborationLevel": 50,
+    "transactionCriticality": 70,
+    "navigationComplexity": 60,
+    "mobileImportance": 50,
+    "likelyScreens": [],
+    "requiredCapabilities": [
+      "export",
+      "search",
+      "audit"
+    ],
+    "forbiddenPatterns": [],
+    "constraints": {
+      "accessibilityFloor": "AA",
+      "performanceCeiling": "rich",
+      "targetDevices": [
+        "desktop",
+        "tablet"
+      ]
+    }
+  },
+  "designDNA": {
+    "professionalism": 92,
+    "playfulness": 35,
+    "luxury": 55,
+    "warmth": 30,
+    "technicality": 95,
+    "editorial": 60,
+    "futurism": 95,
+    "visualAmbition": 92,
+    "structuralCreativity": 80,
+    "density": 70,
+    "whitespace": 60,
+    "contrast": 90,
+    "colourfulness": 65,
+    "curvature": 40,
+    "depth": 60,
+    "motion": 75,
+    "motionPlayfulness": 45,
+    "typographicExpression": 85,
+    "imageryIntensity": 35,
+    "videoIntensity": 10,
+    "threeDIntensity": 0,
+    "dataDensity": 70,
+    "interactionDensity": 85,
+    "asymmetry": 35,
+    "conversionIntensity": 65,
+    "trust": 92,
+    "accessibilityPriority": 96,
+    "performancePriority": 96,
+    "primaryArchetype": "ai",
+    "visualMode": "adaptive",
+    "geometryFamily": "rounded",
+    "navigationModel": "command-first",
+    "responsivePhilosophy": "equal-capability-adaptive",
+    "contentTone": "visionary-technical",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "luxury-glide",
+    "typographyPersonality": "future-display",
+    "surfacePersonality": "luminous-glow"
+  },
+  "constraints": {
+    "accessibilityFloor": "AA",
+    "performanceCeiling": "rich",
+    "targetDevices": [
+      "desktop",
+      "tablet"
+    ]
+  },
+  "screenGraph": {
+    "id": "sg_showcase-ai-developer-platform",
+    "groups": [
+      {
+        "id": "group_main",
+        "name": "Main Workspace",
+        "screens": [
+          {
+            "id": "node-marketing-home",
+            "name": "Marketing Home",
+            "slug": "/",
+            "screenType": "marketing-home",
+            "purpose": "Marketing Home",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 80,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-research-workspace",
+            "name": "Research Workspace",
+            "slug": "/research",
+            "screenType": "research-workspace",
+            "purpose": "Research Workspace",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 75,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-developers",
+            "name": "Developer/API Landing",
+            "slug": "/developers",
+            "screenType": "developer/api-landing",
+            "purpose": "Developer/API Landing",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 70,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-integrations",
+            "name": "API & Integrations",
+            "slug": "/settings/integrations",
+            "screenType": "api-&-integrations",
+            "purpose": "API & Integrations",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 65,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge_0",
+        "fromScreenId": "node-marketing-home",
+        "toScreenId": "node-research-workspace"
+      },
+      {
+        "id": "edge_1",
+        "fromScreenId": "node-marketing-home",
+        "toScreenId": "node-developers"
+      },
+      {
+        "id": "edge_2",
+        "fromScreenId": "node-marketing-home",
+        "toScreenId": "node-integrations"
+      }
+    ]
+  },
+  "screens": [
+    {
+      "id": "screen-marketing-home",
+      "screenNodeId": "node-marketing-home",
+      "name": "Marketing Home",
+      "slug": "/",
+      "rootNode": {
+        "id": "root-marketing-home",
+        "nodeType": "layout",
+        "semanticRole": "page-canvas",
+        "children": [
+          {
+            "id": "sec-nav",
+            "nodeType": "section",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_header_minimal",
+              "slug": "header-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-hero",
+            "nodeType": "section",
+            "semanticRole": "hero",
+            "resourceRef": {
+              "id": "res_hero_minimal",
+              "slug": "hero-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-proof",
+            "nodeType": "section",
+            "semanticRole": "trust-proof",
+            "resourceRef": {
+              "id": "res_logo_cloud_clean",
+              "slug": "logo-cloud-clean",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-features",
+            "nodeType": "section",
+            "semanticRole": "feature-grid",
+            "resourceRef": {
+              "id": "res_feature_grid_cards",
+              "slug": "feature-grid-cards",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-cta",
+            "nodeType": "section",
+            "semanticRole": "conversion-cta",
+            "resourceRef": {
+              "id": "res_cta_minimal",
+              "slug": "cta-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-footer",
+            "nodeType": "section",
+            "semanticRole": "footer",
+            "resourceRef": {
+              "id": "res_footer_minimal",
+              "slug": "footer-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-research-workspace",
+      "screenNodeId": "node-research-workspace",
+      "name": "Research Workspace",
+      "slug": "/research",
+      "rootNode": {
+        "id": "root-research-workspace",
+        "nodeType": "layout",
+        "semanticRole": "editor-canvas",
+        "children": [
+          {
+            "id": "sec-res-copilot",
+            "nodeType": "section",
+            "semanticRole": "copilot",
+            "resourceRef": {
+              "id": "res_ai_copilot_sidebar",
+              "slug": "ai-copilot-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-res-citations",
+            "nodeType": "section",
+            "semanticRole": "citations",
+            "resourceRef": {
+              "id": "res_ai_source_citations",
+              "slug": "ai-source-citations",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-developers",
+      "screenNodeId": "node-developers",
+      "name": "Developer/API Landing",
+      "slug": "/developers",
+      "rootNode": {
+        "id": "root-developers",
+        "nodeType": "layout",
+        "semanticRole": "page-canvas",
+        "children": [
+          {
+            "id": "sec-dev-hero",
+            "nodeType": "section",
+            "semanticRole": "hero",
+            "resourceRef": {
+              "id": "res_hero_split",
+              "slug": "hero-split",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-dev-code",
+            "nodeType": "section",
+            "semanticRole": "code-snippet",
+            "resourceRef": {
+              "id": "res_code_block_interactive",
+              "slug": "code-block-interactive",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-dev-features",
+            "nodeType": "section",
+            "semanticRole": "sdk-features",
+            "resourceRef": {
+              "id": "res_feature_grid_cards",
+              "slug": "feature-grid-cards",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-integrations",
+      "screenNodeId": "node-integrations",
+      "name": "API & Integrations",
+      "slug": "/settings/integrations",
+      "rootNode": {
+        "id": "root-integrations",
+        "nodeType": "layout",
+        "semanticRole": "settings-canvas",
+        "children": [
+          {
+            "id": "sec-int-keys",
+            "nodeType": "section",
+            "semanticRole": "keys",
+            "resourceRef": {
+              "id": "res_api_keys_manager",
+              "slug": "api-keys-manager",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-int-apps",
+            "nodeType": "section",
+            "semanticRole": "apps",
+            "resourceRef": {
+              "id": "res_connected_accounts_list",
+              "slug": "connected-accounts-list",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    }
+  ],
+  "navigation": {
+    "model": "command-first",
+    "primaryItems": [
+      {
+        "label": "Home",
+        "targetScreenId": "node-marketing-home"
+      },
+      {
+        "label": "Workspace",
+        "targetScreenId": "node-research-workspace"
+      },
+      {
+        "label": "Developers",
+        "targetScreenId": "node-developers"
+      },
+      {
+        "label": "Integrations",
+        "targetScreenId": "node-integrations"
+      }
+    ]
+  },
+  "assets": [],
+  "locks": [],
+  "historyMeta": {
+    "totalOperations": 12,
+    "headRevision": 1
+  },
+  "exportSettings": {
+    "framework": "react",
+    "styling": "tailwind",
+    "includeTypes": true,
+    "target": "vite-react-tailwind"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-collection-state",
+  "type": "registry:component",
+  "title": "Empty Collection State",
+  "description": "Empty inventory or folder state prompting the user to bookmark resources or create their first item collection.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type EmptyCollectionStateVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface EmptyCollectionStateProps {\n  collectionName?: string;\n  onCreate?: () => void;\n  variant?: EmptyCollectionStateVariant;\n  children?: React.ReactNode;\n}\n\nexport function EmptyCollectionState({\n  collectionName = 'Favorites',\n  onCreate,\n  variant = 'quiet',\n  children,\n}: EmptyCollectionStateProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const badgeColor =\n    variant === 'nocturne'\n      ? 'text-cyan-400 bg-cyan-950/40 border-cyan-800'\n      : variant === 'expressive'\n      ? 'text-indigo-600 bg-indigo-50 border-indigo-200'\n      : 'text-neutral-700 bg-neutral-100 border-neutral-200';\n\n  return (\n    <div className={`p-8 md:p-12 rounded-xl border max-w-4xl mx-auto text-center space-y-4 transition-colors ${containerBg}`}>\n      <div className={`w-12 h-12 mx-auto rounded-xl flex items-center justify-center border text-xl ${badgeColor}`}>\n        📁\n      </div>\n\n      <div className=\"space-y-1\">\n        <h3 className=\"text-lg font-bold tracking-tight\">\n          Your &ldquo;{collectionName}&rdquo; collection is empty\n        </h3>\n        <p className=\"text-xs text-neutral-500 max-w-sm mx-auto leading-relaxed\">\n          Bookmark components, sections, or patterns from the catalog to organize them into reusable design systems.\n        </p>\n      </div>\n\n      <div className=\"pt-2\">\n        <button\n          onClick={onCreate}\n          className=\"px-4 py-2 text-xs font-semibold rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:opacity-90\"\n        >\n          Explore Catalog Resources\n        </button>\n      </div>\n\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { EmptyCollectionState, EmptyCollectionStateVariant } from './index';\n\nexport function EmptyCollectionStatePreview() {\n  const [variant, setVariant] = useState<EmptyCollectionStateVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <EmptyCollectionState variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "states",
+    "empty",
+    "collection"
+  ],
+  "meta": {
+    "tessellateId": "res_state_empty_collection_state",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "first-run-state",
+  "type": "registry:component",
+  "title": "First Run State",
+  "description": "Onboarding walkthrough card welcoming users on their initial workspace launch with architectural step guides.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type FirstRunStateVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FirstRunStateProps {\n  onGetStarted?: () => void;\n  variant?: FirstRunStateVariant;\n  children?: React.ReactNode;\n}\n\nexport function FirstRunState({ onGetStarted, variant = 'quiet', children }: FirstRunStateProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const badgeColor =\n    variant === 'nocturne'\n      ? 'text-cyan-400 bg-cyan-950/40 border-cyan-800'\n      : variant === 'expressive'\n      ? 'text-indigo-600 bg-indigo-50 border-indigo-200'\n      : 'text-neutral-700 bg-neutral-100 border-neutral-200';\n\n  return (\n    <div className={`p-8 md:p-12 rounded-xl border max-w-4xl mx-auto space-y-6 transition-colors ${containerBg}`}>\n      <div className=\"flex items-center gap-3\">\n        <span className={`w-10 h-10 rounded-xl flex items-center justify-center border font-bold text-lg ${badgeColor}`}>\n          ✨\n        </span>\n        <div>\n          <h3 className=\"text-xl font-bold tracking-tight\">Welcome to Tessellate Workbench</h3>\n          <p className=\"text-xs text-neutral-500\">Autonomous interface composition with zero vendor lock-in</p>\n        </div>\n      </div>\n\n      <div className=\"grid grid-cols-1 md:grid-cols-3 gap-4 pt-2\">\n        <div className=\"p-4 rounded-lg border border-neutral-200/20 space-y-1\">\n          <span className=\"text-[10px] font-mono text-neutral-400 font-bold\">STEP 01</span>\n          <h4 className=\"text-sm font-semibold\">Select Design DNA</h4>\n          <p className=\"text-xs text-neutral-500\">Calibrate 30 visual tokens from Quiet to Expressive and Nocturne.</p>\n        </div>\n        <div className=\"p-4 rounded-lg border border-neutral-200/20 space-y-1\">\n          <span className=\"text-[10px] font-mono text-neutral-400 font-bold\">STEP 02</span>\n          <h4 className=\"text-sm font-semibold\">Compose Manifest</h4>\n          <p className=\"text-xs text-neutral-500\">Assemble validated screens from 324 open resource components.</p>\n        </div>\n        <div className=\"p-4 rounded-lg border border-neutral-200/20 space-y-1\">\n          <span className=\"text-[10px] font-mono text-neutral-400 font-bold\">STEP 03</span>\n          <h4 className=\"text-sm font-semibold\">Export Clean Code</h4>\n          <p className=\"text-xs text-neutral-500\">Download production React + Tailwind TypeScript source code.</p>\n        </div>\n      </div>\n\n      <div className=\"pt-2\">\n        <button\n          onClick={onGetStarted}\n          className=\"px-5 py-2.5 text-xs font-semibold rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:opacity-90\"\n        >\n          Begin Composition Tour\n        </button>\n      </div>\n\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FirstRunState, FirstRunStateVariant } from './index';\n\nexport function FirstRunStatePreview() {\n  const [variant, setVariant] = useState<FirstRunStateVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <FirstRunState variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "states",
+    "onboarding",
+    "first-run"
+  ],
+  "meta": {
+    "tessellateId": "res_state_first_run_state",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

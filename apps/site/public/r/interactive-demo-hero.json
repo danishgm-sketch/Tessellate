@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "interactive-demo-hero",
+  "type": "registry:block",
+  "title": "Interactive Demo Hero",
+  "description": "Hero with inline interactive tabbed preview allowing immediate hands-on feature exploration.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type InteractiveDemoHeroVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface InteractiveDemoHeroProps {\n  variant?: InteractiveDemoHeroVariant;\n  headline?: string;\n  subheadline?: string;\n}\n\nexport function InteractiveDemoHero({\n  variant = 'quiet',\n  headline = 'Interactive composition at your fingertips.',\n  subheadline = 'Toggle tokens directly in this hero to observe real-time DOM normalisation.',\n}: InteractiveDemoHeroProps) {\n  const [scale, setScale] = useState<'compact' | 'normal' | 'relaxed'>('normal');\n  const [activeTheme, setActiveTheme] = useState<'light' | 'dark'>('light');\n\n  let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';\n  let demoCard = 'bg-white border-neutral-200 shadow-md';\n\n  if (variant === 'expressive') {\n    bg = 'bg-blue-50/30 text-neutral-950 border-[#D9D6CF]';\n    demoCard = 'bg-white border-blue-200 shadow-xl';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    demoCard = 'bg-[#151921] border-[#2E3440] shadow-2xl';\n  }\n\n  return (\n    <section className={`relative w-full py-20 sm:py-28 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-4xl mx-auto text-center mb-12\">\n        <h1 className=\"text-3xl sm:text-5xl font-bold tracking-tight mb-4\">{headline}</h1>\n        <p className=\"text-base sm:text-lg text-neutral-600 dark:text-neutral-400 max-w-xl mx-auto\">{subheadline}</p>\n      </div>\n\n      <div className={`max-w-3xl mx-auto rounded-2xl border p-6 sm:p-8 transition-all ${demoCard}`}>\n        <div className=\"flex flex-wrap items-center justify-between gap-4 border-b pb-6 mb-6\">\n          <div className=\"flex items-center gap-2 text-xs font-semibold\">\n            <span>Density:</span>\n            {(['compact', 'normal', 'relaxed'] as const).map((s) => (\n              <button\n                key={s}\n                type=\"button\"\n                onClick={() => setScale(s)}\n                className={`px-2.5 py-1 rounded capitalize transition-colors ${\n                  scale === s ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'bg-neutral-100 dark:bg-neutral-800'\n                }`}\n              >\n                {s}\n              </button>\n            ))}\n          </div>\n\n          <div className=\"flex items-center gap-2 text-xs font-semibold\">\n            <span>Mode:</span>\n            <button\n              type=\"button\"\n              onClick={() => setActiveTheme(activeTheme === 'light' ? 'dark' : 'light')}\n              className=\"px-3 py-1 rounded bg-neutral-100 dark:bg-neutral-800 capitalize\"\n            >\n              {activeTheme}\n            </button>\n          </div>\n        </div>\n\n        <div className={`rounded-xl border p-6 transition-all ${\n          activeTheme === 'dark' ? 'bg-[#0B0D10] text-white border-neutral-800' : 'bg-neutral-50 text-neutral-900 border-neutral-200'\n        } ${scale === 'compact' ? 'space-y-2' : scale === 'relaxed' ? 'space-y-6' : 'space-y-4'}`}>\n          <div className=\"flex items-center justify-between\">\n            <span className=\"font-semibold text-sm\">Preview Workspace</span>\n            <span className=\"text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-mono\">200 OK</span>\n          </div>\n          <p className=\"text-xs opacity-75\">\n            Active configuration: {scale} scale across {activeTheme} theme tokens. Zero styling leakage detected.\n          </p>\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { InteractiveDemoHero, InteractiveDemoHeroVariant } from './index.js';\n\nexport function InteractiveDemoHeroPreview() {\n  const [variant, setVariant] = useState<InteractiveDemoHeroVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Interactive Demo Hero Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as InteractiveDemoHeroVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <InteractiveDemoHero variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "hero"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_interactive_demo_hero",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

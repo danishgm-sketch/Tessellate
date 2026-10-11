@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "transparent-solid-nav",
+  "type": "registry:block",
+  "title": "Transparent-to-Solid Navigation",
+  "description": "Dynamic header starting transparent over media heroes and transitioning solid on scroll.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState, useEffect } from 'react';\n\nexport type TransparentSolidNavVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface TransparentSolidNavProps {\n  variant?: TransparentSolidNavVariant;\n}\n\nexport function TransparentSolidNav({ variant = 'quiet' }: TransparentSolidNavProps) {\n  const [scrolled, setScrolled] = useState(false);\n\n  useEffect(() => {\n    const handleScroll = () => setScrolled(window.scrollY > 20);\n    window.addEventListener('scroll', handleScroll);\n    return () => window.removeEventListener('scroll', handleScroll);\n  }, []);\n\n  const solidClass = scrolled\n    ? (variant === 'nocturne' ? 'bg-[#0B0D10] border-b border-[#2E3440] shadow-md' : 'bg-white border-b border-neutral-200 shadow-xs')\n    : 'bg-transparent border-transparent';\n\n  return (\n    <header className={`w-full fixed top-0 left-0 z-40 transition-all duration-200 px-6 h-16 flex items-center justify-between ${solidClass}`}>\n      <span className=\"font-semibold text-sm\">Tessellate</span>\n      <div className=\"flex items-center gap-6 text-xs\">\n        <a href=\"#\" className=\"opacity-80 hover:opacity-100\">Engine</a>\n        <a href=\"#\" className=\"opacity-80 hover:opacity-100\">Gallery</a>\n        <button className=\"px-3 py-1.5 border rounded-lg\">Docs</button>\n      </div>\n    </header>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { TransparentSolidNav } from './index.js';\n\nexport function TransparentSolidNavPreview() {\n  return (\n    <div className=\"w-full h-32 relative bg-neutral-900 text-white\">\n      <TransparentSolidNav variant=\"nocturne\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_transparent_solid_nav",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

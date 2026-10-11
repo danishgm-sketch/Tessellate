@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-timeline",
+  "type": "registry:block",
+  "title": "Feature Timeline",
+  "description": "Chronological evolution or milestone timeline with connecting guides and release tags.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type FeatureTimelineVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FeatureTimelineProps {\n  variant?: FeatureTimelineVariant;\n}\n\nexport function FeatureTimeline({ variant = 'quiet' }: FeatureTimelineProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  const milestones = [\n    { phase: 'Phase 01', title: 'Schemas & Contract Stabilization', desc: 'Authored canonical Zod models for DNA, Resources, and Projects.' },\n    { phase: 'Phase 02', title: 'Composition Engine & Validation', desc: 'Sub-millisecond graph solver enforcing geometric consistency.' },\n    { phase: 'Phase 03', title: '324 Canonical Launch Resources', desc: 'Complete coverage across primitives, shells, sections, and blocks.' },\n  ];\n\n  return (\n    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-4xl mx-auto\">\n        <h2 className=\"text-3xl font-bold tracking-tight text-center mb-16\">Architectural Evolution</h2>\n\n        <div className=\"space-y-10 border-l-2 border-neutral-200 dark:border-neutral-800 ml-4 sm:ml-8 pl-6 sm:pl-10\">\n          {milestones.map((m) => (\n            <div key={m.phase} className=\"relative\">\n              <span className=\"absolute -left-[31px] sm:-left-[47px] top-1 h-3.5 w-3.5 rounded-full bg-neutral-900 dark:bg-white border-2 border-white dark:border-[#0B0D10]\" />\n              <span className=\"text-xs font-mono font-bold text-neutral-500 mb-1 block uppercase\">{m.phase}</span>\n              <h3 className=\"text-lg font-bold mb-1\">{m.title}</h3>\n              <p className=\"text-xs sm:text-sm opacity-75\">{m.desc}</p>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FeatureTimeline, FeatureTimelineVariant } from './index.js';\n\nexport function FeatureTimelinePreview() {\n  const [variant, setVariant] = useState<FeatureTimelineVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Feature Timeline Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as FeatureTimelineVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <FeatureTimeline variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "features"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_feature_timeline",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

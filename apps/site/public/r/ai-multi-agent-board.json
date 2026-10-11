@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-multi-agent-board",
+  "type": "registry:component",
+  "title": "AI Multi-Agent Board",
+  "description": "Kanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type AIMultiAgentBoardVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AIMultiAgentBoardProps {\n  variant?: AIMultiAgentBoardVariant;\n}\n\nexport function AIMultiAgentBoard({ variant = 'quiet' }: AIMultiAgentBoardProps) {\n  const [activeLane] = useState('all');\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const agents = [\n    { name: 'ArchitectAgent', task: 'Design Schema 1.0.0', lane: 'Complete', status: 'done' },\n    { name: 'CatalogAgent', task: 'Validating 324 resources', lane: 'In Progress', status: 'active' },\n    { name: 'TestingAgent', task: 'Execute Playwright suite', lane: 'Queued', status: 'idle' },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Autonomous Agent Swarm</h4>\n          <p className=\"text-xs text-neutral-500\">3 subagents coordinated via Antigravity SDK</p>\n        </div>\n        <span className=\"text-xs font-mono font-medium text-emerald-500\">Active Swarm</span>\n      </div>\n\n      <div className=\"grid grid-cols-1 sm:grid-cols-3 gap-3\">\n        {['Queued', 'In Progress', 'Complete'].map((lane) => (\n          <div key={lane} className=\"flex flex-col gap-2 p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900/40 border border-neutral-200 dark:border-neutral-800\">\n            <span className=\"text-[11px] font-mono font-semibold uppercase text-neutral-400\">{lane}</span>\n            {agents\n              .filter((a) => a.lane === lane && (activeLane === 'all' || activeLane === lane))\n              .map((a) => (\n                <div key={a.name} className=\"p-2.5 rounded bg-white dark:bg-black/40 border border-neutral-200 dark:border-neutral-800 text-xs shadow-xs\">\n                  <div className=\"font-semibold text-neutral-800 dark:text-neutral-200 mb-1\">{a.name}</div>\n                  <div className=\"text-[11px] text-neutral-500\">{a.task}</div>\n                </div>\n              ))}\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { AIMultiAgentBoard, AIMultiAgentBoardVariant } from './index';\n\nexport function AIMultiAgentBoardPreview() {\n  const [variant, setVariant] = useState<AIMultiAgentBoardVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-3xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <AIMultiAgentBoard variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "ai",
+    "patterns",
+    "multi-agent"
+  ],
+  "meta": {
+    "tessellateId": "res_ai_ai_multi_agent_board",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

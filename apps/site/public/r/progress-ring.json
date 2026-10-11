@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress-ring",
+  "type": "registry:ui",
+  "title": "Progress Ring",
+  "description": "Circular radial progress meter with smooth stroke animation and central metric label.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ProgressRingVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ProgressRingProps {\n  variant?: ProgressRingVariant;\n  value: number;\n  size?: number;\n  strokeWidth?: number;\n}\n\nexport function ProgressRing({\n  variant = 'quiet',\n  value,\n  size = 64,\n  strokeWidth = 6,\n}: ProgressRingProps) {\n  const radius = (size - strokeWidth) / 2;\n  const circumference = 2 * Math.PI * radius;\n  const offset = circumference - (Math.min(100, Math.max(0, value)) / 100) * circumference;\n\n  let stroke = '#171717';\n  if (variant === 'expressive') stroke = '#2547E8';\n  if (variant === 'nocturne') stroke = '#FFFFFF';\n\n  return (\n    <div className=\"relative inline-flex items-center justify-center\" style={{ width: size, height: size }}>\n      <svg width={size} height={size} className=\"-rotate-90\">\n        <circle\n          cx={size / 2}\n          cy={size / 2}\n          r={radius}\n          stroke=\"currentColor\"\n          strokeWidth={strokeWidth}\n          className=\"text-neutral-200 dark:text-neutral-800\"\n          fill=\"none\"\n        />\n        <circle\n          cx={size / 2}\n          cy={size / 2}\n          r={radius}\n          stroke={stroke}\n          strokeWidth={strokeWidth}\n          strokeDasharray={circumference}\n          strokeDashoffset={offset}\n          strokeLinecap=\"round\"\n          fill=\"none\"\n          className=\"transition-all duration-500 ease-out\"\n        />\n      </svg>\n      <span className=\"absolute font-mono text-xs font-semibold\">{value}%</span>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { ProgressRing } from './index.js';\n\nexport function ProgressRingPreview() {\n  return (\n    <div className=\"p-8 flex gap-6 justify-center bg-[#FAF9F6]\">\n      <ProgressRing variant=\"quiet\" value={45} />\n      <ProgressRing variant=\"expressive\" value={82} />\n      <ProgressRing variant=\"nocturne\" value={98} />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "feedback"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_progress_ring",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

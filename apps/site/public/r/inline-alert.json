@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "inline-alert",
+  "type": "registry:ui",
+  "title": "Inline Alert",
+  "description": "In-page contextual message banner conveying informational, success, warning, or danger states.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type InlineAlertVariant = 'quiet' | 'expressive' | 'nocturne';\nexport type InlineAlertIntent = 'info' | 'success' | 'warning' | 'danger';\n\nexport interface InlineAlertProps {\n  variant?: InlineAlertVariant;\n  intent?: InlineAlertIntent;\n  title: string;\n  description?: string;\n  className?: string;\n}\n\nexport function InlineAlert({\n  variant = 'quiet',\n  intent = 'info',\n  title,\n  description,\n  className = '',\n}: InlineAlertProps) {\n  let theme = 'bg-neutral-50 border-neutral-200 text-neutral-800';\n  if (intent === 'success') theme = 'bg-emerald-50 border-emerald-200 text-emerald-900';\n  if (intent === 'warning') theme = 'bg-amber-50 border-amber-200 text-amber-900';\n  if (intent === 'danger') theme = 'bg-rose-50 border-rose-200 text-rose-900';\n\n  if (variant === 'nocturne') {\n    theme = 'bg-[#171A21] border-[#2E3440] text-neutral-200';\n    if (intent === 'danger') theme = 'bg-rose-950/40 border-rose-800 text-rose-200';\n  }\n\n  return (\n    <div className={`w-full rounded-lg border p-3.5 text-xs space-y-1 ${theme} ${className}`}>\n      <p className=\"font-semibold\">{title}</p>\n      {description && <p className=\"opacity-80 leading-relaxed\">{description}</p>}\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { InlineAlert } from './index.js';\n\nexport function InlineAlertPreview() {\n  return (\n    <div className=\"p-8 max-w-md mx-auto space-y-3 bg-[#FAF9F6]\">\n      <InlineAlert variant=\"expressive\" intent=\"info\" title=\"Deterministic Composition\" description=\"All layout blueprints are constructed with validated Zod contracts.\" />\n      <InlineAlert variant=\"quiet\" intent=\"warning\" title=\"Experimental Resource\" description=\"This component has not yet achieved 80 quality score floor.\" />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "feedback"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_inline_alert",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

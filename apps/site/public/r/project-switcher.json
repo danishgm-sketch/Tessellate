@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "project-switcher",
+  "type": "registry:block",
+  "title": "Project Switcher",
+  "description": "Header breadcrumb trigger for toggling between project repositories or composed interfaces.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ProjectSwitcherVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ProjectSwitcherProps {\n  variant?: ProjectSwitcherVariant;\n  currentProject?: string;\n}\n\nexport function ProjectSwitcher({\n  variant = 'quiet',\n  currentProject = 'Telemetry Hub',\n}: ProjectSwitcherProps) {\n  let theme = 'hover:bg-neutral-100 text-neutral-800';\n  if (variant === 'expressive') theme = 'hover:bg-[#E7EBFF] text-[#2547E8] font-semibold';\n  if (variant === 'nocturne') theme = 'hover:bg-neutral-800 text-white';\n\n  return (\n    <div className=\"inline-flex items-center gap-1.5 text-xs\">\n      <span className=\"opacity-50\">project /</span>\n      <button type=\"button\" className={`px-2 py-1 rounded-md transition-colors flex items-center gap-1 ${theme}`}>\n        <span>{currentProject}</span>\n        <span className=\"opacity-40 text-[10px]\">▾</span>\n      </button>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { ProjectSwitcher } from './index.js';\n\nexport function ProjectSwitcherPreview() {\n  return (\n    <div className=\"p-8 flex justify-center bg-[#FAF9F6]\">\n      <ProjectSwitcher variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_project_switcher",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

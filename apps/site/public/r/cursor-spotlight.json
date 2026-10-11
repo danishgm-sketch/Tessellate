@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor-spotlight",
+  "type": "registry:component",
+  "title": "Cursor Spotlight",
+  "description": "Radial luminance spotlight tracking mouse pointer across container surface, revealing border hairline luster.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type CursorSpotlightVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CursorSpotlightProps {\n  variant?: CursorSpotlightVariant;\n}\n\nexport function CursorSpotlight({ variant = 'quiet' }: CursorSpotlightProps) {\n  const [pos, setPos] = useState({ x: 200, y: 100 });\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const glowColor =\n    variant === 'nocturne'\n      ? 'rgba(6, 182, 212, 0.15)'\n      : variant === 'expressive'\n      ? 'rgba(37, 71, 232, 0.12)'\n      : 'rgba(0, 0, 0, 0.05)';\n\n  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {\n    const rect = e.currentTarget.getBoundingClientRect();\n    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });\n  };\n\n  return (\n    <div\n      onMouseMove={handleMouseMove}\n      className={`relative w-full p-8 rounded-xl border overflow-hidden transition-colors select-none ${cardBg}`}\n    >\n      {/* Radial spotlight overlay */}\n      <div\n        className=\"pointer-events-none absolute -inset-px transition-opacity duration-300\"\n        style={{\n          background: `radial-gradient(350px circle at ${pos.x}px ${pos.y}px, ${glowColor}, transparent 80%)`,\n        }}\n      />\n\n      <div className=\"relative z-10 space-y-2\">\n        <span className=\"text-xs font-mono text-neutral-400\">Ambient Surface Luster</span>\n        <h4 className=\"text-sm font-semibold tracking-tight\">Interactive Cursor Spotlight</h4>\n        <p className=\"text-xs text-neutral-500 leading-relaxed max-w-md\">\n          Move your pointer over this surface to reveal radial illumination gradients tracking mouse coordinates in real-time.\n        </p>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { CursorSpotlight, CursorSpotlightVariant } from './index';\n\nexport function CursorSpotlightPreview() {\n  const [variant, setVariant] = useState<CursorSpotlightVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <CursorSpotlight variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "cursor"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_cursor_spotlight",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

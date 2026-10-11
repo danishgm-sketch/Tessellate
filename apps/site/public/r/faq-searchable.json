@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-searchable",
+  "type": "registry:block",
+  "title": "FAQ Searchable",
+  "description": "Filterable FAQ section with live search input and category filter chips.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type FaqSearchableVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FaqSearchableProps {\n  variant?: FaqSearchableVariant;\n}\n\nexport function FaqSearchable({ variant = 'quiet' }: FaqSearchableProps) {\n  const [query, setQuery] = useState('');\n\n  let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';\n  let inputBorder = 'border-neutral-300';\n\n  if (variant === 'expressive') {\n    bg = 'bg-white text-neutral-950 border-[#D9D6CF]';\n    inputBorder = 'border-blue-200';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    inputBorder = 'border-[#2E3440] bg-[#151921]';\n  }\n\n  const list = [\n    { q: 'Is there a commercial license requirement?', a: 'No, all core resources are MIT licensed.' },\n    { q: 'How does MCP communication work?', a: 'Tessellate runs an MCP server exposing search, manifest inspection, and recommendation tools.' },\n    { q: 'Where are my user projects stored?', a: 'In local browser storage by default, with optional Cloudflare D1 encrypted sync.' },\n  ];\n\n  const filtered = list.filter((item) =>\n    item.q.toLowerCase().includes(query.toLowerCase()) || item.a.toLowerCase().includes(query.toLowerCase())\n  );\n\n  return (\n    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-3xl mx-auto\">\n        <h2 className=\"text-3xl font-bold tracking-tight text-center mb-8\">Search Help & FAQ</h2>\n\n        <input\n          type=\"text\"\n          value={query}\n          onChange={(e) => setQuery(e.target.value)}\n          placeholder=\"Filter questions...\"\n          className={`w-full p-3 rounded-xl border text-sm mb-8 outline-none ${inputBorder}`}\n        />\n\n        <div className=\"space-y-4\">\n          {filtered.map((item) => (\n            <div key={item.q} className=\"p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#151921]\">\n              <h3 className=\"font-semibold text-sm mb-1\">{item.q}</h3>\n              <p className=\"text-xs opacity-75\">{item.a}</p>\n            </div>\n          ))}\n          {filtered.length === 0 && (\n            <p className=\"text-center text-xs opacity-60\">No matching questions found.</p>\n          )}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FaqSearchable, FaqSearchableVariant } from './index.js';\n\nexport function FaqSearchablePreview() {\n  const [variant, setVariant] = useState<FaqSearchableVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">FAQ Searchable Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as FaqSearchableVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <FaqSearchable variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "faq"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_faq_searchable",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

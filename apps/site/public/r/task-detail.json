@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "task-detail",
+  "type": "registry:block",
+  "title": "Task Detail",
+  "description": "Detailed issue view with assignee dropdown, status selector, priority tag, and subtasks.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type TaskDetailVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface TaskDetailProps {\n  variant?: TaskDetailVariant;\n}\n\nexport function TaskDetail({ variant = 'quiet' }: TaskDetailProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  return (\n    <div className={`w-full p-6 sm:p-8 rounded-xl border transition-colors ${bg}`}>\n      <div className=\"flex items-center justify-between mb-4\">\n        <span className=\"text-[10px] font-mono opacity-60 uppercase\">TASK-1048</span>\n        <span className=\"text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold\">IN PROGRESS</span>\n      </div>\n      <h2 className=\"text-base sm:text-lg font-bold mb-3\">Scale 56 Application Blocks</h2>\n      <p className=\"text-xs opacity-75 leading-relaxed mb-6\">\n        Ensure every block implements Quiet, Expressive, and Nocturne variants with 0 external dependencies.\n      </p>\n\n      <div className=\"grid grid-cols-2 gap-4 text-xs font-mono border-t border-neutral-100 dark:border-neutral-800 pt-4\">\n        <div>\n          <span className=\"opacity-50 text-[10px] block\">Assignee</span>\n          <span className=\"font-bold\">Antigravity Agent</span>\n        </div>\n        <div>\n          <span className=\"opacity-50 text-[10px] block\">Priority</span>\n          <span className=\"font-bold text-amber-500\">P0 Urgent</span>\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { TaskDetail, TaskDetailVariant } from './index.js';\n\nexport function TaskDetailPreview() {\n  const [variant, setVariant] = useState<TaskDetailVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Task Detail Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as TaskDetailVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <TaskDetail variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "collaboration",
+    "task"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_task_detail",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

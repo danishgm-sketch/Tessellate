@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "processing-queued-state",
+  "type": "registry:component",
+  "title": "Processing/Queued State",
+  "description": "Asynchronous task queue state card displaying queue position, estimated wait time, and auto-refresh telemetry.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ProcessingQueuedStateVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ProcessingQueuedStateProps {\n  queuePosition?: number;\n  estimatedWait?: string;\n  jobId?: string;\n  variant?: ProcessingQueuedStateVariant;\n  children?: React.ReactNode;\n}\n\nexport function ProcessingQueuedState({\n  queuePosition = 2,\n  estimatedWait = '45 seconds',\n  jobId = 'job_batch_8992a',\n  variant = 'quiet',\n  children,\n}: ProcessingQueuedStateProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const badgeColor =\n    variant === 'nocturne'\n      ? 'text-cyan-400 bg-cyan-950/40 border-cyan-800'\n      : variant === 'expressive'\n      ? 'text-indigo-600 bg-indigo-50 border-indigo-200'\n      : 'text-neutral-700 bg-neutral-100 border-neutral-200';\n\n  return (\n    <div className={`p-8 md:p-12 rounded-xl border max-w-4xl mx-auto text-center space-y-4 transition-colors ${containerBg}`}>\n      <div className={`w-12 h-12 mx-auto rounded-xl flex items-center justify-center border text-xl animate-pulse ${badgeColor}`}>\n        ⏳\n      </div>\n\n      <div className=\"space-y-1\">\n        <h3 className=\"text-lg font-bold tracking-tight\">\n          Job Queued for Autonomous Processing\n        </h3>\n        <p className=\"text-xs text-neutral-500 max-w-md mx-auto leading-relaxed\">\n          Position in queue: <span className=\"font-semibold text-neutral-800 dark:text-neutral-200\">#{queuePosition}</span> • Estimated wait time: <span className=\"font-semibold text-neutral-800 dark:text-neutral-200\">{estimatedWait}</span>\n        </p>\n      </div>\n\n      <div className=\"text-[10px] font-mono text-neutral-400\">\n        Job ID: {jobId}\n      </div>\n\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { ProcessingQueuedState, ProcessingQueuedStateVariant } from './index';\n\nexport function ProcessingQueuedStatePreview() {\n  const [variant, setVariant] = useState<ProcessingQueuedStateVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <ProcessingQueuedState variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "states",
+    "loading",
+    "queue"
+  ],
+  "meta": {
+    "tessellateId": "res_state_processing_queued_state",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+---
+import '../styles/global.css';
+import { SiteHeader } from '../components/home/SiteHeader';
+import { FinalComposerFooter } from '../components/home/FinalComposerFooter';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found — Tessellate</title>
+    <meta name="description" content="The requested page or resource could not be found." />
+  </head>
+  <body class="min-h-screen flex flex-col bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white">
+    <SiteHeader client:load />
+
+    <main id="main-content" class="flex-1 flex items-center justify-center px-6 py-24">
+      <div class="max-w-md w-full text-center space-y-6">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#E8E6DF] border border-[#D9D6CF] text-2xl font-mono font-bold text-[#111217]">
+          404
+        </div>
+
+        <h1 class="text-3xl font-extrabold tracking-tight">
+          Page Not Found
+        </h1>
+
+        <p class="text-sm text-[#62666F] leading-relaxed">
+          The requested system route or composed resource does not exist in this library index. It may have been moved, renamed, or recomposed.
+        </p>
+
+        <div class="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
+          <a
+            href="/"
+            class="px-5 py-2.5 rounded-xl text-xs font-semibold bg-[#111217] text-white hover:bg-[#2547E8] transition-colors shadow-sm"
+          >
+            Return to Homepage
+          </a>
+          <a
+            href="/explore"
+            class="px-5 py-2.5 rounded-xl text-xs font-semibold bg-white border border-[#D9D6CF] text-[#111217] hover:border-[#111217] transition-colors"
+          >
+            Explore Catalogue
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <FinalComposerFooter client:visible />
+  </body>
+</html>

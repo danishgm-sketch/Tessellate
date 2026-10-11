@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-overview",
+  "type": "registry:block",
+  "title": "Status Overview",
+  "description": "System health dashboard block tracking services, regional latency, and incident reports.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type StatusOverviewVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface StatusOverviewProps {\n  variant?: StatusOverviewVariant;\n}\n\nexport function StatusOverview({ variant = 'quiet' }: StatusOverviewProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  const services = [\n    { name: 'Core Engine API', status: 'Operational', latency: '1.2ms' },\n    { name: 'Registry Edge Cache', status: 'Operational', latency: '0.4ms' },\n    { name: 'Authentication OAuth', status: 'Operational', latency: '12ms' },\n    { name: 'AST Code Generator', status: 'Operational', latency: '3.1ms' },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border transition-colors ${bg}`}>\n      <div className=\"flex items-center justify-between mb-4 pb-2 border-b border-neutral-100 dark:border-neutral-800\">\n        <h3 className=\"text-sm font-semibold\">Service Health</h3>\n        <span className=\"text-xs text-emerald-600 font-mono font-bold\">100% OPERATIONAL</span>\n      </div>\n      <div className=\"space-y-3 font-mono text-xs\">\n        {services.map((s) => (\n          <div key={s.name} className=\"flex items-center justify-between py-1\">\n            <div className=\"flex items-center gap-2\">\n              <span className=\"h-2 w-2 rounded-full bg-emerald-500\" />\n              <span>{s.name}</span>\n            </div>\n            <span className=\"opacity-60\">{s.latency}</span>\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { StatusOverview, StatusOverviewVariant } from './index.js';\n\nexport function StatusOverviewPreview() {\n  const [variant, setVariant] = useState<StatusOverviewVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Status Overview Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as StatusOverviewVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <StatusOverview variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "dashboards",
+    "status"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_status_overview",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

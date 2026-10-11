@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "connection-lost-state",
+  "type": "registry:component",
+  "title": "Connection Lost State",
+  "description": "Active socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ConnectionLostStateVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ConnectionLostStateProps {\n  countdownSec?: number;\n  onRetry?: () => void;\n  variant?: ConnectionLostStateVariant;\n  children?: React.ReactNode;\n}\n\nexport function ConnectionLostState({\n  countdownSec = 5,\n  onRetry,\n  variant = 'quiet',\n  children,\n}: ConnectionLostStateProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-red-50/50 text-red-950 border-red-200'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const badgeColor =\n    variant === 'nocturne'\n      ? 'text-red-400 bg-red-950/40 border-red-800'\n      : variant === 'expressive'\n      ? 'text-red-700 bg-red-100 border-red-300'\n      : 'text-neutral-700 bg-neutral-100 border-neutral-200';\n\n  return (\n    <div\n      role=\"alert\"\n      className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto flex items-start gap-4 transition-colors ${containerBg}`}\n    >\n      <div className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center border text-lg ${badgeColor}`}>\n        ⚡\n      </div>\n\n      <div className=\"space-y-2 grow\">\n        <h4 className=\"text-base font-bold tracking-tight\">\n          Telemetry Connection Dropped\n        </h4>\n        <p className=\"text-xs text-neutral-500 leading-relaxed max-w-md\">\n          The real-time preview socket disconnected unexpectedly. Reconnecting automatically in {countdownSec}s...\n        </p>\n\n        <div className=\"pt-1\">\n          <button\n            onClick={onRetry}\n            className=\"px-3 py-1.5 text-xs font-semibold rounded-md border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800\"\n          >\n            Reconnect Now\n          </button>\n        </div>\n      </div>\n\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { ConnectionLostState, ConnectionLostStateVariant } from './index';\n\nexport function ConnectionLostStatePreview() {\n  const [variant, setVariant] = useState<ConnectionLostStateVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <ConnectionLostState variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "states",
+    "network",
+    "connection"
+  ],
+  "meta": {
+    "tessellateId": "res_state_connection_lost_state",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

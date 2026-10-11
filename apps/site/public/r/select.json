@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select",
+  "type": "registry:ui",
+  "title": "Select",
+  "description": "Accessible styled dropdown selector with trigger, chevron indicator, and options.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type SelectVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SelectOption {\n  value: string;\n  label: string;\n}\n\nexport interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {\n  variant?: SelectVariant;\n  label?: string;\n  options: SelectOption[];\n}\n\nexport function Select({ variant = 'quiet', label, options = [], className = '', id, ...rest }: SelectProps) {\n  const selectId = id || (label ? label.toLowerCase().replace(/\\s+/g, '-') : undefined);\n\n  let theme = 'border-neutral-300 bg-white text-neutral-900 focus:border-neutral-900 focus:ring-neutral-900';\n  if (variant === 'expressive') {\n    theme = 'border-[#D9D6CF] bg-white text-neutral-900 focus:border-[#2547E8] focus:ring-[#2547E8] shadow-2xs';\n  } else if (variant === 'nocturne') {\n    theme = 'border-[#2E3440] bg-[#11141B] text-white focus:border-white focus:ring-white';\n  }\n\n  return (\n    <div className=\"w-full space-y-1.5\">\n      {label && <label htmlFor={selectId} className=\"block text-xs font-semibold text-neutral-700 dark:text-neutral-300\">{label}</label>}\n      <div className=\"relative\">\n        <select\n          id={selectId}\n          className={`w-full appearance-none rounded-lg border px-3 py-2 pr-8 text-sm outline-none transition-all focus:ring-1 ${theme} ${className}`}\n          {...rest}\n        >\n          {options.map((opt) => (\n            <option key={opt.value} value={opt.value}>\n              {opt.label}\n            </option>\n          ))}\n        </select>\n        <span className=\"pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 opacity-50\">\n          ▼\n        </span>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { Select } from './index.js';\n\nexport function SelectPreview() {\n  const [val, setVal] = useState('react');\n  return (\n    <div className=\"p-8 max-w-xs mx-auto bg-[#FAF9F6]\">\n      <Select\n        variant=\"expressive\"\n        label=\"Framework Target\"\n        value={val}\n        onChange={(e) => setVal(e.target.value)}\n        options={[\n          { value: 'react', label: 'React + TypeScript' },\n          { value: 'vue', label: 'Vue 3' },\n          { value: 'svelte', label: 'Svelte 5' },\n        ]}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "inputs"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_select",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "responsive-app-shell",
+  "type": "registry:block",
+  "title": "Responsive App Shell",
+  "description": "Unified application shell adapting gracefully from desktop sidebar to mobile bottom bar.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ResponsiveAppShellVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ResponsiveAppShellProps {\n  variant?: ResponsiveAppShellVariant;\n  children?: React.ReactNode;\n}\n\nexport function ResponsiveAppShell({\n  variant = 'quiet',\n  children = <div className=\"p-8 text-neutral-500 text-xs\">Responsive viewport content</div>,\n}: ResponsiveAppShellProps) {\n  let theme = 'bg-[#FAF9F6] text-neutral-900';\n  if (variant === 'nocturne') theme = 'bg-[#0B0D10] text-neutral-100';\n\n  return (\n    <div className={`min-h-screen flex flex-col md:flex-row ${theme}`}>\n      {/* Desktop sidebar */}\n      <aside className=\"hidden md:flex w-56 border-r border-inherit flex-col p-4 space-y-4\">\n        <span className=\"font-semibold text-sm\">Tessellate</span>\n        <nav className=\"space-y-1 text-xs\">\n          <a href=\"#\" className=\"block p-2 rounded-lg bg-neutral-200/60 dark:bg-neutral-800 font-medium\">Dashboard</a>\n          <a href=\"#\" className=\"block p-2 rounded-lg opacity-70\">Analytics</a>\n          <a href=\"#\" className=\"block p-2 rounded-lg opacity-70\">Settings</a>\n        </nav>\n      </aside>\n      {/* Main body */}\n      <main className=\"flex-1 overflow-auto\">{children}</main>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React from 'react';\nimport { ResponsiveAppShell } from './index.js';\n\nexport function ResponsiveAppShellPreview() {\n  return (\n    <div className=\"h-64 border rounded-xl overflow-hidden\">\n      <ResponsiveAppShell variant=\"expressive\" />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "shells",
+    "layout"
+  ],
+  "meta": {
+    "tessellateId": "res_shell_responsive_app_shell",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

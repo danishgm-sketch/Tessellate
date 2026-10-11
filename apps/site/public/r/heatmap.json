@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "heatmap",
+  "type": "registry:component",
+  "title": "Heatmap",
+  "description": "7x24 or day-by-week commit/activity grid with 5-level intensity gradient, month labels, and cell inspection tooltip.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type HeatmapVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface HeatmapProps {\n  variant?: HeatmapVariant;\n}\n\nexport function Heatmap({ variant = 'quiet' }: HeatmapProps) {\n  const [hoveredCell, setHoveredCell] = useState<{ day: number; week: number; val: number } | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const getCellColor = (level: number) => {\n    if (level === 0) {\n      return variant === 'nocturne' ? 'bg-[#151921]' : 'bg-neutral-100 dark:bg-neutral-800';\n    }\n    if (variant === 'nocturne') {\n      const shades = ['bg-cyan-950', 'bg-cyan-800', 'bg-cyan-600', 'bg-cyan-400'];\n      return shades[level - 1] ?? 'bg-cyan-400';\n    }\n    if (variant === 'expressive') {\n      const shades = ['bg-blue-200', 'bg-blue-400', 'bg-blue-600', 'bg-blue-800'];\n      return shades[level - 1] ?? 'bg-blue-800';\n    }\n    const shades = ['bg-neutral-300 dark:bg-neutral-700', 'bg-neutral-500', 'bg-neutral-700', 'bg-neutral-900 dark:bg-white'];\n    return shades[level - 1] ?? 'bg-neutral-900';\n  };\n\n  const days = ['Mon', 'Wed', 'Fri'];\n  const weeks = 20;\n\n  // Generate deterministic pattern\n  const grid = Array.from({ length: 7 }, (_, d) =>\n    Array.from({ length: weeks }, (_, w) => {\n      const seed = (d * 13 + w * 7) % 5;\n      return seed;\n    })\n  );\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between mb-4\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Deploy Activity Frequency</h4>\n          <p className=\"text-xs text-neutral-500\">20-week build and release cadence</p>\n        </div>\n        <div className=\"flex items-center gap-1.5 text-xs text-neutral-400\">\n          <span>Less</span>\n          {[0, 1, 2, 3, 4].map((lvl) => (\n            <span key={lvl} className={`w-2.5 h-2.5 rounded-sm ${getCellColor(lvl)}`} />\n          ))}\n          <span>More</span>\n        </div>\n      </div>\n\n      <div className=\"flex gap-2 overflow-x-auto py-2\">\n        <div className=\"flex flex-col justify-between py-1 text-[10px] text-neutral-400 font-mono\">\n          {days.map((d) => (\n            <span key={d}>{d}</span>\n          ))}\n        </div>\n\n        <div className=\"flex gap-1.5\">\n          {Array.from({ length: weeks }).map((_, wIdx) => (\n            <div key={wIdx} className=\"flex flex-col gap-1.5\">\n              {Array.from({ length: 7 }).map((_, dIdx) => {\n                const val = grid[dIdx]?.[wIdx] ?? 0;\n                return (\n                  <div\n                    key={dIdx}\n                    onMouseEnter={() => setHoveredCell({ day: dIdx, week: wIdx, val })}\n                    onMouseLeave={() => setHoveredCell(null)}\n                    className={`w-3.5 h-3.5 rounded-sm transition-transform cursor-pointer ${getCellColor(val)} hover:scale-125`}\n                  />\n                );\n              })}\n            </div>\n          ))}\n        </div>\n      </div>\n\n      {hoveredCell && (\n        <div className=\"mt-3 text-xs font-mono text-neutral-500\">\n          Week {hoveredCell.week + 1}, Day {hoveredCell.day + 1}: <span className=\"font-semibold\">{hoveredCell.val * 3} deploys</span>\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { Heatmap, HeatmapVariant } from './index';\n\nexport function HeatmapPreview() {\n  const [variant, setVariant] = useState<HeatmapVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <Heatmap variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "charts"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_heatmap",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

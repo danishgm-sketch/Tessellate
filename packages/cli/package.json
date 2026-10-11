@@ -1,0 +1,31 @@
+{
+  "name": "@tessellate/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "tess": "./src/index.ts"
+  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tessellate/catalog": "workspace:*",
+    "@tessellate/composer": "workspace:*",
+    "@tessellate/dna": "workspace:*",
+    "@tessellate/exporter": "workspace:*",
+    "@tessellate/registry": "workspace:*",
+    "@tessellate/schemas": "workspace:*",
+    "commander": "^13.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "typescript": "^5.7.3"
+  }
+}

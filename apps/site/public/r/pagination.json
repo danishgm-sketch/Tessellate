@@ -1,0 +1,38 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pagination",
+  "type": "registry:ui",
+  "title": "Pagination",
+  "description": "Page traversal bar with previous/next triggers, page numbering, and ellipsis jumps.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type PaginationVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface PaginationProps {\n  variant?: PaginationVariant;\n  currentPage: number;\n  totalPages: number;\n  onPageChange: (page: number) => void;\n}\n\nexport function Pagination({\n  variant = 'quiet',\n  currentPage,\n  totalPages,\n  onPageChange,\n}: PaginationProps) {\n  let active = 'bg-neutral-900 text-white font-semibold';\n  if (variant === 'expressive') active = 'bg-[#2547E8] text-white font-semibold shadow-xs';\n  if (variant === 'nocturne') active = 'bg-white text-neutral-950 font-semibold shadow-xs';\n\n  return (\n    <div className=\"flex items-center gap-1 text-xs\">\n      <button\n        type=\"button\"\n        disabled={currentPage <= 1}\n        onClick={() => onPageChange(currentPage - 1)}\n        className=\"rounded px-2.5 py-1.5 border border-neutral-300 dark:border-neutral-700 disabled:opacity-30 hover:bg-neutral-50 dark:hover:bg-neutral-800\"\n      >\n        Previous\n      </button>\n      {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => {\n        const isCurrent = p === currentPage;\n        return (\n          <button\n            key={p}\n            type=\"button\"\n            onClick={() => onPageChange(p)}\n            className={`h-7 w-7 rounded border transition-colors ${\n              isCurrent ? active : 'border-neutral-200 dark:border-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-800'\n            }`}\n          >\n            {p}\n          </button>\n        );\n      })}\n      <button\n        type=\"button\"\n        disabled={currentPage >= totalPages}\n        onClick={() => onPageChange(currentPage + 1)}\n        className=\"rounded px-2.5 py-1.5 border border-neutral-300 dark:border-neutral-700 disabled:opacity-30 hover:bg-neutral-50 dark:hover:bg-neutral-800\"\n      >\n        Next\n      </button>\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { Pagination } from './index.js';\n\nexport function PaginationPreview() {\n  const [p, setP] = useState(2);\n  return (\n    <div className=\"p-8 flex justify-center bg-[#FAF9F6]\">\n      <Pagination variant=\"expressive\" currentPage={p} totalPages={5} onPageChange={setP} />\n    </div>\n  );\n}\n",
+      "type": "registry:ui",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "primitives",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_primitive_pagination",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

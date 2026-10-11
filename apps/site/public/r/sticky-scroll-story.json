@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sticky-scroll-story",
+  "type": "registry:component",
+  "title": "Sticky Scroll Story",
+  "description": "Sticky viewport container pairing stationary preview graphic with scrolling narrative chapters.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type StickyScrollStoryVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface StickyScrollStoryProps {\n  variant?: StickyScrollStoryVariant;\n}\n\nexport function StickyScrollStory({ variant = 'quiet' }: StickyScrollStoryProps) {\n  const [activeChapter, setActiveChapter] = useState(0);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const chapters = [\n    { title: '01. Ingestion', text: 'Telemetry streams continuously into edge workers with sub-5ms routing.' },\n    { title: '02. Validation', text: 'Deterministic schema validation rejects malformed packets at the gateway boundary.' },\n    { title: '03. Synthesis', text: 'Composed UI manifests update in real-time with zero client bundle penalties.' },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col md:flex-row gap-6 transition-colors ${cardBg}`}>\n      <div className=\"flex-1 space-y-4\">\n        <h4 className=\"text-sm font-semibold tracking-tight\">Sticky Story Chapters</h4>\n        <div className=\"space-y-2\">\n          {chapters.map((c, idx) => (\n            <div\n              key={c.title}\n              onClick={() => setActiveChapter(idx)}\n              className={`p-3 rounded-lg border text-xs cursor-pointer transition-colors ${\n                activeChapter === idx\n                  ? 'border-neutral-900 bg-neutral-50 dark:border-white dark:bg-neutral-800 font-semibold'\n                  : 'border-neutral-200 dark:border-neutral-800 opacity-60 hover:opacity-100'\n              }`}\n            >\n              <div className=\"mb-0.5\">{c.title}</div>\n              <div className=\"text-[11px] text-neutral-500 font-normal leading-relaxed\">{c.text}</div>\n            </div>\n          ))}\n        </div>\n      </div>\n\n      <div className=\"flex-1 flex flex-col justify-center items-center p-6 rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-center\">\n        <div className=\"text-xs font-mono uppercase text-neutral-400 mb-1\">Active Visual State</div>\n        <div className=\"text-base font-bold mb-2\">{chapters[activeChapter]?.title}</div>\n        <div className=\"w-16 h-16 rounded-2xl bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center text-xl font-bold font-mono\">\n          {activeChapter + 1}\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { StickyScrollStory, StickyScrollStoryVariant } from './index';\n\nexport function StickyScrollStoryPreview() {\n  const [variant, setVariant] = useState<StickyScrollStoryVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-3xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <StickyScrollStory variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "scroll"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_sticky_scroll_story",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

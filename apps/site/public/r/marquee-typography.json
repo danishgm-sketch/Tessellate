@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee-typography",
+  "type": "registry:component",
+  "title": "Marquee Typography",
+  "description": "Continuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type MarqueeTypographyVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface MarqueeTypographyProps {\n  items?: string[];\n  speedSec?: number;\n  variant?: MarqueeTypographyVariant;\n  children?: React.ReactNode;\n}\n\nexport function MarqueeTypography({\n  items = ['ZERO LOCK-IN', 'MIT LICENSED', 'DETERMINISTIC COMPOSITION', '972 CONFIGURATIONS', 'WCAG AA VERIFIED'],\n  variant = 'quiet',\n  children,\n}: MarqueeTypographyProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const dotColor =\n    variant === 'nocturne'\n      ? 'text-cyan-400'\n      : variant === 'expressive'\n      ? 'text-indigo-600'\n      : 'text-neutral-400';\n\n  return (\n    <div className={`p-6 rounded-xl border max-w-4xl mx-auto overflow-hidden transition-colors ${containerBg}`}>\n      <div className=\"flex gap-8 whitespace-nowrap overflow-x-auto py-2 scrollbar-none font-mono text-xs md:text-sm tracking-wider font-semibold uppercase\">\n        {items.map((item, i) => (\n          <div key={i} className=\"flex items-center gap-4 shrink-0\">\n            <span>{item}</span>\n            <span className={dotColor}>✦</span>\n          </div>\n        ))}\n        {items.map((item, i) => (\n          <div key={`dup-${i}`} className=\"flex items-center gap-4 shrink-0 opacity-70\">\n            <span>{item}</span>\n            <span className={dotColor}>✦</span>\n          </div>\n        ))}\n      </div>\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { MarqueeTypography, MarqueeTypographyVariant } from './index';\n\nexport function MarqueeTypographyPreview() {\n  const [variant, setVariant] = useState<MarqueeTypographyVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <MarqueeTypography variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "typography",
+    "display",
+    "marquee"
+  ],
+  "meta": {
+    "tessellateId": "res_typo_marquee_typography",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

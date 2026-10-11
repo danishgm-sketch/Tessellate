@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shared-element-transition",
+  "type": "registry:component",
+  "title": "Shared Element Transition",
+  "description": "Smooth morphing container transitioning an element smoothly between thumbnail and expanded modal view.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type SharedElementTransitionVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SharedElementTransitionProps {\n  variant?: SharedElementTransitionVariant;\n}\n\nexport function SharedElementTransition({ variant = 'quiet' }: SharedElementTransitionProps) {\n  const [expanded, setExpanded] = useState(false);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col items-center justify-center min-h-[260px] transition-colors ${cardBg}`}>\n      <div\n        onClick={() => setExpanded(!expanded)}\n        className={`rounded-xl border border-neutral-300 dark:border-neutral-700 p-5 cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none motion-reduce:transform-none bg-neutral-50 dark:bg-neutral-900/80 ${\n          expanded ? 'w-full max-w-lg shadow-2xl' : 'w-64 shadow-md'\n        }`}\n      >\n        <div className=\"flex items-center justify-between mb-2\">\n          <span className=\"text-xs font-mono text-neutral-400\">Card Element</span>\n          <span className=\"text-xs font-mono\">{expanded ? 'Expanded' : 'Compact'}</span>\n        </div>\n        <h4 className=\"text-sm font-bold tracking-tight mb-1\">Design DNA Matrix</h4>\n        <p className=\"text-xs text-neutral-500 leading-relaxed\">\n          {expanded\n            ? 'Fully expanded view revealing all 27 mathematical design tokens, contrast ratios, and density vectors.'\n            : 'Click to morph into expanded detailed view.'}\n        </p>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { SharedElementTransition, SharedElementTransitionVariant } from './index';\n\nexport function SharedElementTransitionPreview() {\n  const [variant, setVariant] = useState<SharedElementTransitionVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <SharedElementTransition variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "transition"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_shared_element_transition",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}
