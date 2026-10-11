@@ -1,6 +1,165 @@
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import type { ProjectManifest, ProjectNode, ProjectScreen } from '@tessellate/schemas';
 import { normalizeDesignTokens, tokensToCssVariables } from '@tessellate/renderer';
 import { collectProjectDependencies } from './dependencies.js';
+
+interface ResolvedResource {
+  slug: string;
+  componentName: string;
+  fileName: string;
+  code: string;
+  acceptedProps: Set<string> | null;
+  dependencies?: string[];
+}
+
+function toPascalCase(str: string): string {
+  const clean = str.replace(/[^a-zA-Z0-9]/g, ' ').trim();
+  const words = clean.split(/\s+/).map((w) => w.charAt(0).toUpperCase() + w.slice(1));
+  return words.join('') || 'Component';
+}
+
+function getAcceptedPropNames(code: string): Set<string> | null {
+  const propsMatch = code.match(/interface\s+[A-Za-z0-9_]+Props(?:\s+extends[^{]+)?\s*\{([^}]+)\}/s);
+  if (!propsMatch || !propsMatch[1]) return null;
+  const propsBody = propsMatch[1];
+  const names = new Set<string>();
+  const lineMatches = propsBody.matchAll(/([a-zA-Z0-9_]+)\s*\??\s*:/g);
+  for (const m of lineMatches) {
+    if (m[1]) {
+      names.add(m[1]);
+    }
+  }
+  return names;
+}
+
+function resolveResourceFromDisk(slug: string): ResolvedResource | null {
+  try {
+    let currentDir = process.cwd();
+    try {
+      const currentFilePath = fileURLToPath(import.meta.url);
+      currentDir = path.dirname(currentFilePath);
+    } catch {
+      // fallback
+    }
+
+    const searchRoots = [
+      path.resolve(process.cwd(), 'resources'),
+      path.resolve(process.cwd(), '../../resources'),
+      path.resolve(currentDir, '../../../../resources'),
+      path.resolve(currentDir, '../../../resources'),
+    ];
+
+    for (const root of searchRoots) {
+      if (!fs.existsSync(root)) continue;
+
+      const categories = fs.readdirSync(root);
+      for (const cat of categories) {
+        const catDir = path.join(root, cat);
+        if (!fs.statSync(catDir).isDirectory()) continue;
+
+        const resourceDir = path.join(catDir, slug);
+        const indexPath = path.join(resourceDir, 'index.tsx');
+        if (fs.existsSync(indexPath)) {
+          const code = fs.readFileSync(indexPath, 'utf-8');
+          const match =
+            code.match(/export\s+(?:function|const)\s+([A-Za-z0-9_]+)/) ||
+            code.match(/export\s+default\s+(?:function\s+)?([A-Za-z0-9_]+)/);
+          const componentName = match?.[1] ?? toPascalCase(slug);
+          const acceptedProps = getAcceptedPropNames(code);
+
+          let deps: string[] = [];
+          const manifestPath = path.join(resourceDir, 'manifest.json');
+          if (fs.existsSync(manifestPath)) {
+            try {
+              const manifestJson = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+              if (Array.isArray(manifestJson.dependencies)) {
+                deps = manifestJson.dependencies;
+              }
+            } catch {
+              // ignore
+            }
+          }
+
+          return {
+            slug,
+            componentName,
+            fileName: `${componentName}.tsx`,
+            code,
+            acceptedProps,
+            dependencies: deps,
+          };
+        }
+      }
+    }
+  } catch {
+    // Non-filesystem or sandboxed environment
+  }
+  return null;
+}
+
+function synthesizeFaithfulComponent(slug: string, role: string): ResolvedResource {
+  const componentName = toPascalCase(slug);
+  const code = `import React from 'react';
+
+export interface ${componentName}Props {
+  variant?: 'quiet' | 'expressive' | 'nocturne';
+  title?: string;
+  label?: string;
+  value?: string | number;
+  subtitle?: string;
+  className?: string;
+  children?: React.ReactNode;
+}
+
+export function ${componentName}({
+  variant = 'quiet',
+  title,
+  label,
+  value,
+  subtitle,
+  className = '',
+  children,
+}: ${componentName}Props) {
+  const isNocturne = variant === 'nocturne';
+  const isExpressive = variant === 'expressive';
+
+  const cardStyle = isNocturne
+    ? 'bg-[#0B0D10] text-white border-[#2E3440]'
+    : isExpressive
+    ? 'bg-white text-neutral-900 border-[#D9D6CF] shadow-xs'
+    : 'bg-white text-neutral-900 border-neutral-200';
+
+  return (
+    <div
+      data-resource-slug="${slug}"
+      data-semantic-role="${role}"
+      className={\`p-5 rounded-xl border transition-colors flex flex-col gap-2 \${cardStyle} \${className}\`}
+    >
+      {(title || label) && (
+        <div className="flex items-center justify-between text-xs font-semibold">
+          <span>{title || label}</span>
+          <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800">
+            ${role}
+          </span>
+        </div>
+      )}
+      {value && <div className="text-2xl font-bold font-mono tracking-tight">{value}</div>}
+      {subtitle && <p className="text-xs text-neutral-500">{subtitle}</p>}
+      {children}
+    </div>
+  );
+}
+`;
+  return {
+    slug,
+    componentName,
+    fileName: `${componentName}.tsx`,
+    code,
+    acceptedProps: new Set(['variant', 'title', 'label', 'value', 'subtitle', 'className', 'children']),
+  };
+}
 
 /**
  * Converts a ProjectManifest into a clean, complete, standalone
@@ -59,8 +218,8 @@ export default defineConfig({
         noEmit: true,
         jsx: 'react-jsx',
         strict: true,
-        noUnusedLocals: true,
-        noUnusedParameters: true,
+        noUnusedLocals: false,
+        noUnusedParameters: false,
         noFallthroughCasesInSwitch: true,
       },
       include: ['src'],
@@ -111,23 +270,26 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 );
 `;
 
-  // 7. Component Primitives in src/components/
+  // 7. Baseline Component Primitives in src/components/
   files['src/components/Button.tsx'] = `import React from 'react';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'outline' | 'ghost' | 'quiet' | 'expressive' | 'nocturne';
   label?: string;
 }
 
 export function Button({ variant = 'primary', label, children, className = '', ...props }: ButtonProps) {
   const base = "inline-flex items-center justify-center font-medium transition-colors cursor-pointer select-none text-xs px-3.5 py-1.5 rounded-[var(--tess-radius-sm,6px)]";
-  const styles = {
+  const styles: Record<string, string> = {
     primary: "bg-[var(--tess-accent-primary,#2547E8)] text-white hover:opacity-90 shadow-xs",
     outline: "border border-[var(--tess-hairline,#D9D6CF)] text-[var(--tess-ink,#111217)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]",
     ghost: "text-[var(--tess-ink-secondary,#62666F)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]",
+    quiet: "bg-neutral-900 text-white hover:opacity-90",
+    expressive: "bg-[#2547E8] text-white shadow-md hover:bg-blue-700",
+    nocturne: "bg-[#06B6D4] text-neutral-950 font-bold hover:bg-cyan-400",
   };
   return (
-    <button className={\`\${base} \${styles[variant]} \${className}\`} {...props}>
+    <button className={\`\${base} \${styles[variant] ?? styles.primary} \${className}\`} {...props}>
       {label || children}
     </button>
   );
@@ -195,7 +357,45 @@ export function AppHeader({ title = 'Application', navItems = [] }: AppHeaderPro
 }
 `;
 
-  // 8. Screen components in src/screens/
+  // 8. Resource Resolution: Collect all unique resourceRefs across all screens
+  const resourceMap: Record<string, ResolvedResource> = {
+    button: {
+      slug: 'button',
+      componentName: 'Button',
+      fileName: 'Button.tsx',
+      code: files['src/components/Button.tsx'],
+      acceptedProps: new Set(['variant', 'label', 'className', 'children', 'disabled', 'onClick', 'type']),
+    },
+    'metric-card': {
+      slug: 'metric-card',
+      componentName: 'MetricCard',
+      fileName: 'MetricCard.tsx',
+      code: files['src/components/MetricCard.tsx'],
+      acceptedProps: new Set(['title', 'value', 'change', 'isPositive']),
+    },
+  };
+
+  function collectNodes(node: ProjectNode) {
+    if (node.resourceRef?.slug) {
+      const slug = node.resourceRef.slug;
+      if (!resourceMap[slug]) {
+        const resolved = resolveResourceFromDisk(slug) ?? synthesizeFaithfulComponent(slug, node.semanticRole);
+        resourceMap[slug] = resolved;
+        files[`src/components/${resolved.fileName}`] = resolved.code;
+      }
+    }
+    if (node.children) {
+      for (const child of node.children) {
+        collectNodes(child);
+      }
+    }
+  }
+
+  for (const screen of manifest.screens) {
+    collectNodes(screen.rootNode);
+  }
+
+  // 9. Screen components in src/screens/
   const screenSlugs: Array<{ id: string; name: string; componentName: string; file: string }> = [];
 
   manifest.screens.forEach((screen, index) => {
@@ -208,10 +408,10 @@ export function AppHeader({ title = 'Application', navItems = [] }: AppHeaderPro
       file: fileName,
     });
 
-    files[`src/screens/${fileName}`] = generateScreenCode(screen, componentName);
+    files[`src/screens/${fileName}`] = generateScreenCode(screen, componentName, resourceMap);
   });
 
-  // 9. src/App.tsx with Screen Navigation
+  // 10. src/App.tsx with Screen Navigation
   const importsStr = screenSlugs
     .map((s) => `import { ${s.componentName} } from './screens/${s.componentName}';`)
     .join('\n');
@@ -268,7 +468,7 @@ export default function App() {
 }
 `;
 
-  // 10. README.md
+  // 11. README.md
   files['README.md'] = `# ${manifest.name}
 
 Exported from [Tessellate](https://github.com/danishgm-sketch/Tessellate) on ${new Date().toISOString()}.
@@ -316,41 +516,113 @@ function sanitizeComponentName(name: string): string {
   return res || 'ScreenComponent';
 }
 
-function generateScreenCode(screen: ProjectScreen, componentName: string): string {
+function generateScreenCode(
+  screen: ProjectScreen,
+  componentName: string,
+  resourceMap: Record<string, ResolvedResource>
+): string {
+  const usedComponents = new Set<string>();
+
+  function scanNode(node: ProjectNode) {
+    if (node.resourceRef?.slug && resourceMap[node.resourceRef.slug]) {
+      usedComponents.add(resourceMap[node.resourceRef.slug]!.componentName);
+    } else if (node.semanticRole === 'navigation-header') {
+      usedComponents.add('AppHeader');
+    } else if (node.semanticRole === 'metric-kpi') {
+      usedComponents.add('MetricCard');
+    } else if (node.semanticRole === 'action-button') {
+      usedComponents.add('Button');
+    }
+
+    if (node.children) {
+      for (const child of node.children) {
+        scanNode(child);
+      }
+    }
+  }
+
+  scanNode(screen.rootNode);
+
+  const importLines = Array.from(usedComponents)
+    .sort()
+    .map((name) => `import { ${name} } from '../components/${name}';`)
+    .join('\n');
+
   return `import React from 'react';
-import { MetricCard } from '../components/MetricCard';
-import { AppHeader } from '../components/AppHeader';
-import { Button } from '../components/Button';
+${importLines}
 
 export function ${componentName}() {
   return (
     <div className="w-full min-h-screen">
-      ${renderNodeToJsx(screen.rootNode, 3)}
+      ${renderNodeToJsx(screen.rootNode, 3, resourceMap)}
     </div>
   );
 }
 `;
 }
 
-function renderNodeToJsx(node: ProjectNode, indentLevel: number): string {
+function renderNodeToJsx(
+  node: ProjectNode,
+  indentLevel: number,
+  resourceMap: Record<string, ResolvedResource>
+): string {
   const indent = '  '.repeat(indentLevel);
   const className = (node.props['className'] as string) || '';
 
+  // 1. Resolved Resource
+  if (node.resourceRef?.slug && resourceMap[node.resourceRef.slug]) {
+    const resolved = resourceMap[node.resourceRef.slug]!;
+    const compName = resolved.componentName;
+    const acceptedProps = resolved.acceptedProps;
+
+    const attributes: string[] = [];
+    if (node.variant && (!acceptedProps || acceptedProps.has('variant'))) {
+      attributes.push(`variant="${node.variant}"`);
+    }
+
+    const candidateProps = {
+      ...(node.slots || {}),
+      ...(node.props || {}),
+    };
+
+    for (const [key, val] of Object.entries(candidateProps)) {
+      if (key === 'className' || key === 'variant' || key === 'children') continue;
+      if (acceptedProps && !acceptedProps.has(key)) continue;
+
+      if (typeof val === 'string') {
+        const escaped = val.replace(/"/g, '&quot;');
+        attributes.push(`${key}="${escaped}"`);
+      } else if (typeof val === 'number' || typeof val === 'boolean') {
+        attributes.push(`${key}={${val}}`);
+      }
+    }
+
+    const attrStr = attributes.length > 0 ? ' ' + attributes.join(' ') : '';
+
+    if (node.children && node.children.length > 0) {
+      const childJsx = '\n' + node.children.map((c) => renderNodeToJsx(c, indentLevel + 1, resourceMap)).join('\n') + '\n' + indent;
+      return `${indent}<${compName}${attrStr}>${childJsx}</${compName}>`;
+    }
+
+    return `${indent}<${compName}${attrStr} />`;
+  }
+
+  // 2. Built-in Semantic Roles
   if (node.semanticRole === 'navigation-header') {
     const title = (node.props['title'] as string) || 'Header';
     return `${indent}<AppHeader title="${title}" />`;
   }
 
   if (node.semanticRole === 'metric-kpi') {
-    const title = (node.props['title'] as string) || 'Metric';
-    const value = (node.props['value'] as string) || '0';
+    const title = (node.props['title'] as string) || (node.slots?.['title'] as string) || 'Metric';
+    const value = (node.props['value'] as string) || (node.slots?.['value'] as string) || '0';
     const change = (node.props['change'] as string) || '';
     const isPositive = Boolean(node.props['isPositive']);
     return `${indent}<MetricCard title="${title}" value="${value}" change="${change}" isPositive={${isPositive}} />`;
   }
 
   if (node.semanticRole === 'action-button') {
-    const label = (node.props['label'] as string) || 'Action';
+    const label = (node.props['label'] as string) || (node.slots?.['label'] as string) || 'Action';
     const variant = (node.props['variant'] as string) || 'primary';
     return `${indent}<Button variant="${variant}" label="${label}" />`;
   }
@@ -360,8 +632,9 @@ function renderNodeToJsx(node: ProjectNode, indentLevel: number): string {
     return `${indent}<div className="${className}">${text}</div>`;
   }
 
+  // 3. Layout / Generic Containers
   const childJsx = node.children && node.children.length > 0
-    ? '\n' + node.children.map((c) => renderNodeToJsx(c, indentLevel + 1)).join('\n') + '\n' + indent
+    ? '\n' + node.children.map((c) => renderNodeToJsx(c, indentLevel + 1, resourceMap)).join('\n') + '\n' + indent
     : '';
 
   return `${indent}<div className="${className}">${childJsx}</div>`;

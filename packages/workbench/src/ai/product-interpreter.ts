@@ -62,12 +62,14 @@ export async function interpretProductWithAI(
       temperature: 0.1,
     });
 
+    const deterministic = interpretProductBrief(input);
     return {
       productModel: result.data,
       inferredAssumptions: [
         `Interpreted via AI provider "${providerConfig.id}" (${providerConfig.model || adapter.defaultModel}).`,
         `Identified ${result.data.jobsToBeDone.length} core JTBD and ${result.data.entities.length} domain entities.`,
       ],
+      initialDesignDna: deterministic.initialDesignDna,
     };
   } catch (err) {
     if (fallbackToDeterministic) {

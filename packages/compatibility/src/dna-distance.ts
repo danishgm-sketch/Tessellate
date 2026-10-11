@@ -81,11 +81,14 @@ export function calculateDnaDistance(
     const valA = targetDna[key];
     const valB = candidateDna[key];
 
-    // If neither specifies the dimension, distance is 0 for this dimension
-    if (valA === undefined && valB === undefined) continue;
+    const numA = typeof valA === 'number' ? valA : typeof valA === 'string' && !isNaN(Number(valA)) ? Number(valA) : undefined;
+    const numB = typeof valB === 'number' ? valB : typeof valB === 'string' && !isNaN(Number(valB)) ? Number(valB) : undefined;
 
-    const actualA = valA ?? 50;
-    const actualB = valB ?? 50;
+    // If neither specifies the dimension or has valid numeric value, distance is 0 for this dimension
+    if (numA === undefined && numB === undefined) continue;
+
+    const actualA = numA ?? 50;
+    const actualB = numB ?? 50;
 
     const baseWeight = 1.0;
     const roleWeight = roleWeights[key] ?? 1.0;

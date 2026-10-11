@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import {
   buildCatalogueFromDirectory,
   writeCatalogueArtifact,
+  isGoldResource,
 } from '../packages/catalog/src/index.js';
 import {
   generateRegistryItem,
@@ -25,6 +26,19 @@ async function main() {
   const { artifact } = await buildCatalogueFromDirectory(resourcesDir);
 
   console.log(`[build-catalog] Successfully validated ${artifact.count} resource(s).`);
+
+  // Tag Gold 40 resources
+  let goldCount = 0;
+  for (const manifest of artifact.resources) {
+    if (isGoldResource(manifest.slug)) {
+      manifest.status = 'verified-gold';
+      if (!manifest.tags.includes('verified-gold')) {
+        manifest.tags.push('verified-gold');
+      }
+      goldCount++;
+    }
+  }
+  console.log(`[build-catalog] Tagged ${goldCount} Gold 40 resources as 'verified-gold'.`);
 
   // 1. Write catalog.json to apps/site and apps/preview
   const siteCatalogPath = path.join(sitePublicDir, 'data', 'catalog.json');

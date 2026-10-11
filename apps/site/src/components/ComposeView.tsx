@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
-  interpretProductBrief,
-  planScreenGraph,
   getAllGoldenBriefs,
   getGoldenBrief,
   getAllProductArchetypes,
+  planScreenGraph,
   type ProductBriefInput,
 } from '@tessellate/composer';
+import {
+  composeProjectPipeline,
+  type ComposedDirectionOutput,
+} from '@tessellate/compatibility';
+import { saveLocalProject } from '@tessellate/workbench';
+import type { ProjectManifest } from '@tessellate/schemas';
 import {
   VISUAL_AMBITION_STOPS,
   STRUCTURAL_CREATIVITY_STOPS,
@@ -86,8 +91,36 @@ export function ComposeView() {
     targetDevices,
   };
 
-  const { productModel, inferredAssumptions } = interpretProductBrief(briefInput);
+  // Run deterministic composition pipeline
+  const compositionResult = useMemo(() => {
+    return composeProjectPipeline(briefInput);
+  }, [
+    description,
+    selectedArchetypeOverride,
+    feel,
+    visualAmbition,
+    structuralCreativity,
+    accessibilityFloor,
+    performanceCeiling,
+    targetDevices,
+  ]);
+
+  const { productModel, screenGraph: _screenGraph, inferredAssumptions, directionA, directionB, directionC } = compositionResult;
   const screenPlan = planScreenGraph(productModel);
+
+  const handleOpenDirection = (manifest: ProjectManifest) => {
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('tessellate_active_project', JSON.stringify(manifest));
+        localStorage.setItem(`tessellate_project_${manifest.id}`, JSON.stringify(manifest));
+      } catch (err) {
+        console.error('Failed to store manifest locally:', err);
+      }
+      saveLocalProject(manifest).finally(() => {
+        window.location.href = `/workbench?project=${encodeURIComponent(manifest.id)}`;
+      });
+    }
+  };
 
   const handleCompose = (e: React.FormEvent) => {
     e.preventDefault();
@@ -502,107 +535,165 @@ export function ComposeView() {
             </p>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-              {/* Direction A */}
-              <div className="flex flex-col justify-between rounded-2xl border-2 border-[#2547E8] bg-white p-6 shadow-sm dark:border-[#6782FF] dark:bg-[#171B21]">
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase font-mono text-[#2547E8] dark:text-[#6782FF]">
-                      Direction 01
-                    </span>
-                    <span className="rounded bg-[#E7EBFF] px-2 py-0.5 text-[10px] font-bold text-[#2547E8] dark:bg-[#1C2752] dark:text-[#6782FF]">
-                      Conservative Fit
-                    </span>
-                  </div>
-                  <h3 className="mt-2 text-lg font-bold text-[#111217] dark:text-[#F5F7FA]">
-                    Institutional Precision
-                  </h3>
-                  <p className="mt-1 text-xs text-[#62666F] dark:text-[#A8AFBA]">
-                    Closest to inferred baseline DNA. Prioritizes maximum speed, keyboard navigation, and familiar layout hierarchy.
-                  </p>
-                </div>
-                <div className="mt-6 flex flex-col gap-2">
-                  <a
-                    href="/workbench"
-                    className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-[#2547E8] py-2 text-xs font-semibold text-white hover:bg-[#1E3CCD] dark:bg-[#6782FF] dark:text-[#0B0D10]"
-                  >
-                    Open in Workbench <ArrowRight className="h-3.5 w-3.5" />
-                  </a>
-                  <a
-                    href="/dev/dna"
-                    className="inline-flex w-full items-center justify-center gap-1 text-[11px] text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA]"
-                  >
-                    Inspect in DNA Lab
-                  </a>
-                </div>
-              </div>
-
-              {/* Direction B */}
-              <div className="flex flex-col justify-between rounded-2xl border border-[#D9D6CF] bg-white p-6 shadow-sm dark:border-[#272C34] dark:bg-[#171B21]">
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase font-mono text-[#8B8F97]">Direction 02</span>
-                    <span className="rounded bg-[#FAF9F6] px-2 py-0.5 text-[10px] font-bold text-[#62666F] dark:bg-[#0B0D10] dark:text-[#A8AFBA]">
-                      Expressive Fit
-                    </span>
-                  </div>
-                  <h3 className="mt-2 text-lg font-bold text-[#111217] dark:text-[#F5F7FA]">
-                    Editorial Authority
-                  </h3>
-                  <p className="mt-1 text-xs text-[#62666F] dark:text-[#A8AFBA]">
-                    Visual ambition increased. Rich serif display headers, generous whitespace, and gliding transitions while preserving all product jobs.
-                  </p>
-                </div>
-                <div className="mt-6 flex flex-col gap-2">
-                  <a
-                    href="/workbench"
-                    className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-[#2547E8] bg-white py-2 text-xs font-semibold text-[#2547E8] hover:bg-[#FAF9F6] dark:border-[#6782FF] dark:bg-[#171B21] dark:text-[#6782FF]"
-                  >
-                    Open in Workbench <ArrowRight className="h-3.5 w-3.5" />
-                  </a>
-                  <a
-                    href="/dev/dna"
-                    className="inline-flex w-full items-center justify-center gap-1 text-[11px] text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA]"
-                  >
-                    Inspect in DNA Lab
-                  </a>
-                </div>
-              </div>
-
-              {/* Direction C */}
-              <div className="flex flex-col justify-between rounded-2xl border border-[#D9D6CF] bg-white p-6 shadow-sm dark:border-[#272C34] dark:bg-[#171B21]">
-                <div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] uppercase font-mono text-[#8B8F97]">Direction 03</span>
-                    <span className="rounded bg-[#FAF9F6] px-2 py-0.5 text-[10px] font-bold text-[#62666F] dark:bg-[#0B0D10] dark:text-[#A8AFBA]">
-                      Structural Alternative
-                    </span>
-                  </div>
-                  <h3 className="mt-2 text-lg font-bold text-[#111217] dark:text-[#F5F7FA]">
-                    Command Cockpit
-                  </h3>
-                  <p className="mt-1 text-xs text-[#62666F] dark:text-[#A8AFBA]">
-                    Structural creativity meaningfully elevated. Dual-rail navigation, high density telemetry, and modal workspace canvases.
-                  </p>
-                </div>
-                <div className="mt-6 flex flex-col gap-2">
-                  <a
-                    href="/workbench"
-                    className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-[#D9D6CF] bg-white py-2 text-xs font-semibold text-[#111217] hover:bg-[#FAF9F6] dark:border-[#272C34] dark:bg-[#171B21] dark:text-[#F5F7FA]"
-                  >
-                    Open in Workbench <ArrowRight className="h-3.5 w-3.5" />
-                  </a>
-                  <a
-                    href="/dev/dna"
-                    className="inline-flex w-full items-center justify-center gap-1 text-[11px] text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA]"
-                  >
-                    Inspect in DNA Lab
-                  </a>
-                </div>
-              </div>
+              <DirectionCard
+                number="01"
+                output={directionA}
+                isFeatured={true}
+                onOpen={handleOpenDirection}
+              />
+              <DirectionCard
+                number="02"
+                output={directionB}
+                isFeatured={false}
+                onOpen={handleOpenDirection}
+              />
+              <DirectionCard
+                number="03"
+                output={directionC}
+                isFeatured={false}
+                onOpen={handleOpenDirection}
+              />
             </div>
           </section>
         </div>
       )}
+    </div>
+  );
+}
+
+function DirectionCard({
+  output,
+  number,
+  isFeatured = false,
+  onOpen,
+}: {
+  output: ComposedDirectionOutput;
+  number: string;
+  isFeatured?: boolean;
+  onOpen: (manifest: ProjectManifest) => void;
+}) {
+  const { direction, manifest } = output;
+  const primaryScreen = manifest.screens[0];
+  const sectionSlugs =
+    primaryScreen?.rootNode.children
+      .map((c) => c.resourceRef?.slug || c.semanticRole)
+      .slice(0, 4) || [];
+
+  return (
+    <div
+      className={`flex flex-col justify-between rounded-2xl p-6 shadow-sm transition-all ${
+        isFeatured
+          ? 'border-2 border-[#2547E8] bg-white dark:border-[#6782FF] dark:bg-[#171B21]'
+          : 'border border-[#D9D6CF] bg-white dark:border-[#272C34] dark:bg-[#171B21]'
+      }`}
+    >
+      <div className="space-y-4">
+        {/* Top Badges */}
+        <div className="flex items-center justify-between">
+          <span className="font-mono text-[10px] uppercase font-bold text-[#2547E8] dark:text-[#6782FF]">
+            Direction {number}
+          </span>
+          <span
+            className={`rounded px-2 py-0.5 text-[10px] font-bold ${
+              isFeatured
+                ? 'bg-[#E7EBFF] text-[#2547E8] dark:bg-[#1C2752] dark:text-[#6782FF]'
+                : 'bg-[#FAF9F6] text-[#62666F] dark:bg-[#0B0D10] dark:text-[#A8AFBA]'
+            }`}
+          >
+            {direction.type === 'conservative'
+              ? 'Conservative Fit'
+              : direction.type === 'expressive'
+              ? 'Expressive Fit'
+              : 'Structural Alternative'}
+          </span>
+        </div>
+
+        {/* Title & Tagline */}
+        <div>
+          <h3 className="text-lg font-bold text-[#111217] dark:text-[#F5F7FA]">
+            {direction.name}
+          </h3>
+          <p className="mt-1 text-xs text-[#62666F] dark:text-[#A8AFBA]">
+            {direction.rationale}
+          </p>
+        </div>
+
+        {/* Telemetry metadata */}
+        <div className="grid grid-cols-2 gap-2 rounded-xl bg-[#FAF9F6] p-2.5 text-[11px] dark:bg-[#0B0D10]">
+          <div>
+            <span className="text-[#8B8F97]">Navigation:</span>{' '}
+            <span className="font-semibold text-[#111217] dark:text-[#F5F7FA] uppercase">
+              {direction.navigationModel}
+            </span>
+          </div>
+          <div>
+            <span className="text-[#8B8F97]">Layout:</span>{' '}
+            <span className="font-semibold text-[#111217] dark:text-[#F5F7FA]">
+              {direction.layoutFamily}
+            </span>
+          </div>
+          <div>
+            <span className="text-[#8B8F97]">Visual Ambition:</span>{' '}
+            <span className="font-semibold text-[#2547E8] dark:text-[#6782FF]">
+              {direction.dna.visualAmbition}
+            </span>
+          </div>
+          <div>
+            <span className="text-[#8B8F97]">Creativity:</span>{' '}
+            <span className="font-semibold text-[#2547E8] dark:text-[#6782FF]">
+              {direction.dna.structuralCreativity}
+            </span>
+          </div>
+        </div>
+
+        {/* Real Project Preview */}
+        <div className="rounded-xl border border-[#D9D6CF]/70 bg-[#FAF9F6] p-3 dark:border-[#272C34] dark:bg-[#0B0D10]">
+          <div className="flex items-center justify-between text-[10px] font-bold uppercase text-[#8B8F97]">
+            <span>Screen Preview: {primaryScreen?.name ?? 'Overview'}</span>
+            <span>{manifest.screens.length} Screens</span>
+          </div>
+
+          {/* Mini mock wireframe */}
+          <div className="mt-2 space-y-1.5 rounded-lg border border-dashed border-[#D9D6CF] bg-white p-2 text-[10px] dark:border-[#272C34] dark:bg-[#111419]">
+            <div className="flex items-center gap-1.5 border-b border-[#D9D6CF]/40 pb-1 text-[#8B8F97]">
+              <div className="h-2 w-2 rounded-full bg-[#2547E8]" />
+              <span className="font-mono text-[9px] truncate">{primaryScreen?.slug}</span>
+            </div>
+            <div className="space-y-1">
+              {sectionSlugs.map((slug, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-center justify-between rounded bg-[#FAF9F6] px-1.5 py-0.5 font-mono text-[9px] text-[#62666F] dark:bg-[#171B21] dark:text-[#A8AFBA]"
+                >
+                  <span className="truncate">{slug}</span>
+                  <span className="text-[8px] text-[#2547E8] dark:text-[#6782FF]">node</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="mt-6 flex flex-col gap-2">
+        <button
+          type="button"
+          onClick={() => onOpen(manifest)}
+          className={`inline-flex w-full items-center justify-center gap-1.5 rounded-lg py-2.5 text-xs font-semibold shadow-sm transition-all ${
+            isFeatured
+              ? 'bg-[#2547E8] text-white hover:bg-[#1E3CCD] dark:bg-[#6782FF] dark:text-[#0B0D10]'
+              : 'border border-[#2547E8] bg-white text-[#2547E8] hover:bg-[#FAF9F6] dark:border-[#6782FF] dark:bg-[#171B21] dark:text-[#6782FF]'
+          }`}
+        >
+          Open in Workbench <ArrowRight className="h-3.5 w-3.5" />
+        </button>
+        <a
+          href={`/dev/dna?direction=${direction.id}`}
+          className="inline-flex w-full items-center justify-center gap-1 text-[11px] text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA]"
+        >
+          Inspect in DNA Lab
+        </a>
+      </div>
     </div>
   );
 }

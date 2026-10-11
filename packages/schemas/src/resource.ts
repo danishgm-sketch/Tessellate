@@ -18,7 +18,7 @@ export const ResourceTypeSchema = z.enum([
 ]);
 export type ResourceType = z.infer<typeof ResourceTypeSchema>;
 
-export const ResourceStatusSchema = z.enum(['draft', 'experimental', 'verified', 'deprecated']);
+export const ResourceStatusSchema = z.enum(['draft', 'experimental', 'verified', 'verified-gold', 'deprecated']);
 export type ResourceStatus = z.infer<typeof ResourceStatusSchema>;
 
 export const CreatorRefSchema = z.object({

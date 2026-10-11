@@ -5,7 +5,11 @@ import type {
   HistoryOperation,
   ProjectMutation,
 } from '@tessellate/schemas';
-import { calculateCompatibilityScore } from '@tessellate/compatibility';
+import {
+  calculateCompatibilityScore,
+  evaluateHardConstraints,
+  getDefaultCatalogResources,
+} from '@tessellate/compatibility';
 import { findNodeById } from '../utils/tree-helpers.js';
 import { createHistoryOperation } from '../history/history-manager.js';
 
@@ -198,6 +202,10 @@ export const SAMPLE_RESOURCES: ResourceManifest[] = [
 ];
 
 export function getAvailableResources(): ResourceManifest[] {
+  const defaultResources = getDefaultCatalogResources();
+  if (defaultResources && defaultResources.length > 0) {
+    return defaultResources;
+  }
   return SAMPLE_RESOURCES;
 }
 
@@ -207,8 +215,9 @@ export function getAvailableResources(): ResourceManifest[] {
 export function getReplaceCandidates(
   manifest: ProjectManifest,
   nodeId: string,
-  catalog: ResourceManifest[] = SAMPLE_RESOURCES
+  catalog?: ResourceManifest[]
 ): ReplaceCandidate[] {
+  const activeCatalog = catalog && catalog.length > 0 ? catalog : getAvailableResources();
   let targetNode: ProjectNode | null = null;
   for (const screen of manifest.screens) {
     const found = findNodeById(screen.rootNode, nodeId);
@@ -220,32 +229,46 @@ export function getReplaceCandidates(
 
   if (!targetNode) return [];
 
-  const currentResource = catalog.find((r: ResourceManifest) => r.id === targetNode?.resourceRef?.id);
+  const currentResource = activeCatalog.find((r: ResourceManifest) => r.id === targetNode?.resourceRef?.id);
   const currentAmbition = currentResource?.visualDNA?.visualAmbition ?? manifest.designDNA.visualAmbition;
   const currentPerfScore = currentResource?.quality?.performance ?? 80;
 
   const candidates: ReplaceCandidate[] = [];
 
-  for (const res of catalog) {
+  for (const res of activeCatalog) {
     // Skip if it's the current exact resource
     if (res.id === targetNode.resourceRef?.id) continue;
 
-    // Check role or category match
+    // 1. Evaluate hard constraints
+    const hardCheck = evaluateHardConstraints({
+      resource: res,
+      constraints: manifest.constraints,
+      requiredAccessibilityFloor: manifest.constraints?.accessibilityFloor,
+      performanceCeiling: manifest.constraints?.performanceCeiling,
+    });
+    if (!hardCheck.pass) {
+      continue;
+    }
+
+    // 2. Check role and structural type match
+    const targetRoleLower = targetNode.semanticRole.toLowerCase();
     const roleMatch =
       res.roles.includes(targetNode.semanticRole) ||
-      res.resourceType === targetNode.nodeType ||
-      res.roles.some((r: string) => r.toLowerCase().includes(targetNode!.semanticRole.toLowerCase())) ||
-      targetNode.semanticRole.toLowerCase().includes(res.resourceType.toLowerCase());
+      res.roles.some((r: string) => r.toLowerCase() === targetRoleLower) ||
+      res.roles.some((r: string) => r.toLowerCase().includes(targetRoleLower) || targetRoleLower.includes(r.toLowerCase())) ||
+      (targetNode.nodeType === 'element' && res.resourceType === 'primitive') ||
+      (targetNode.nodeType === 'section' && res.resourceType === 'section') ||
+      (targetNode.nodeType === 'component' && (res.resourceType === 'block' || res.resourceType === 'primitive' || res.resourceType === 'ai-pattern' || res.resourceType === 'data-visualization' || res.resourceType === 'state'));
 
     if (!roleMatch) continue;
 
-    // Calculate score
+    // 3. Calculate compatibility score
     const scoreResult = calculateCompatibilityScore({
       candidate: res,
       targetDna: manifest.designDNA,
       semanticRole: targetNode.semanticRole,
       currentArchetype: manifest.productModel.productArchetypes[0]?.tag,
-      accessibilityFloor: manifest.constraints.accessibilityFloor,
+      accessibilityFloor: manifest.constraints?.accessibilityFloor,
     });
 
     const resAmbition = res.visualDNA?.visualAmbition ?? 50;
@@ -270,8 +293,9 @@ export function getReplaceCandidates(
 export function getAlternativeCandidates(
   manifest: ProjectManifest,
   nodeId: string,
-  catalog: ResourceManifest[] = SAMPLE_RESOURCES
+  catalog?: ResourceManifest[]
 ): AlternativeCandidate[] {
+  const activeCatalog = catalog && catalog.length > 0 ? catalog : getAvailableResources();
   let targetNode: ProjectNode | null = null;
   for (const screen of manifest.screens) {
     const found = findNodeById(screen.rootNode, nodeId);
@@ -283,7 +307,7 @@ export function getAlternativeCandidates(
 
   if (!targetNode) return [];
 
-  const currentResource = catalog.find((r: ResourceManifest) => r.id === targetNode?.resourceRef?.id);
+  const currentResource = activeCatalog.find((r: ResourceManifest) => r.id === targetNode?.resourceRef?.id);
   const results: AlternativeCandidate[] = [];
 
   if (currentResource) {
@@ -301,7 +325,7 @@ export function getAlternativeCandidates(
 
     // 2. Direct relationships declared in resource manifest
     for (const rel of currentResource.relationships) {
-      const related = catalog.find((r: ResourceManifest) => r.id === rel.target || r.slug === rel.target);
+      const related = activeCatalog.find((r: ResourceManifest) => r.id === rel.target || r.slug === rel.target);
       if (related) {
         results.push({
           resource: related,
@@ -315,7 +339,7 @@ export function getAlternativeCandidates(
 
   // 3. Fallback to top replace candidates if no direct relationships declared
   if (results.length === 0) {
-    const topReplacements = getReplaceCandidates(manifest, nodeId, catalog).slice(0, 3);
+    const topReplacements = getReplaceCandidates(manifest, nodeId, activeCatalog).slice(0, 3);
     for (const rep of topReplacements) {
       results.push({
         resource: rep.resource,

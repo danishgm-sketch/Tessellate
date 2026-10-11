@@ -1,10 +1,60 @@
 import React, { useState } from 'react';
-import { X, RefreshCw, Check, Sparkles, Zap } from 'lucide-react';
+import { X, RefreshCw, Check, Sparkles, Zap, Award } from 'lucide-react';
+import { isGoldResource } from '@tessellate/catalog/gold';
+import type { ResourceManifest } from '@tessellate/schemas';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import {
   getReplaceCandidates,
   getAlternativeCandidates,
 } from '../../mutations/replace.js';
+
+function ResourceVisualPreview({ resource }: { resource: ResourceManifest }) {
+  const isGold = isGoldResource(resource.slug);
+  return (
+    <div className="relative my-2 rounded-md border border-zinc-800/80 bg-zinc-900/90 p-2.5 overflow-hidden">
+      <div className="flex items-center justify-between text-[10px] text-zinc-400 mb-1.5 pb-1 border-b border-zinc-800/50">
+        <span className="font-mono text-zinc-500 truncate max-w-[150px]">{resource.slug}</span>
+        <div className="flex items-center gap-1.5">
+          {isGold && (
+            <span className="px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30 text-[9px] font-semibold flex items-center gap-0.5">
+              <Award className="h-2.5 w-2.5" /> Gold
+            </span>
+          )}
+          <span className="text-[9px] text-zinc-500 uppercase">{resource.resourceType}</span>
+        </div>
+      </div>
+
+      {resource.resourceType === 'primitive' || resource.roles.includes('action-button') ? (
+        <div className="flex items-center justify-center py-2">
+          <div className="px-3 py-1 rounded border border-zinc-700 bg-zinc-800 text-[11px] font-medium text-zinc-200 shadow-sm">
+            <span>{typeof resource.preview?.defaultProps?.label === 'string' ? resource.preview.defaultProps.label : resource.name}</span>
+          </div>
+        </div>
+      ) : resource.roles.includes('data-chart') || resource.categories.includes('charts') ? (
+        <div className="py-1">
+          <div className="h-10 w-full rounded bg-zinc-950/60 border border-zinc-800/50 p-1 flex items-end gap-1">
+            <div className="h-4 w-1/6 bg-indigo-500/40 rounded-t" />
+            <div className="h-7 w-1/6 bg-indigo-500/60 rounded-t" />
+            <div className="h-5 w-1/6 bg-indigo-500/50 rounded-t" />
+            <div className="h-8 w-1/6 bg-indigo-500/70 rounded-t" />
+            <div className="h-6 w-1/6 bg-indigo-500/55 rounded-t" />
+            <div className="h-9 w-1/6 bg-indigo-500/80 rounded-t" />
+          </div>
+        </div>
+      ) : resource.roles.includes('metric-kpi') || resource.categories.includes('cards') ? (
+        <div className="rounded bg-zinc-950/60 border border-zinc-800/50 p-2 text-left">
+          <div className="text-[10px] text-zinc-400 font-medium">Metric KPI</div>
+          <div className="text-sm font-bold font-mono text-zinc-200 mt-0.5">$124,500</div>
+        </div>
+      ) : (
+        <div className="rounded bg-zinc-950/60 border border-zinc-800/50 p-2 space-y-1">
+          <div className="h-2 w-3/4 bg-zinc-800 rounded" />
+          <div className="h-1.5 w-1/2 bg-zinc-800/60 rounded" />
+        </div>
+      )}
+    </div>
+  );
+}
 
 export const ReplaceDrawer: React.FC = () => {
   const isReplaceDrawerOpen = useWorkbenchStore((state) => state.isReplaceDrawerOpen);
@@ -98,6 +148,8 @@ export const ReplaceDrawer: React.FC = () => {
                       {cand.rationale}
                     </p>
 
+                    <ResourceVisualPreview resource={cand.resource} />
+
                     <div className="mt-2.5 flex items-center gap-3 text-[10px] text-zinc-400 font-mono">
                       <span className="flex items-center gap-1">
                         <Zap className="h-3 w-3 text-emerald-400" />
@@ -148,6 +200,7 @@ export const ReplaceDrawer: React.FC = () => {
                     <p className="text-[11px] text-zinc-400 mt-1 line-clamp-2">
                       {alt.resource.description}
                     </p>
+                    <ResourceVisualPreview resource={alt.resource} />
                   </div>
 
                   <button

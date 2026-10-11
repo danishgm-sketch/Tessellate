@@ -66,7 +66,12 @@ export function evaluateAccessibility(input: AccessibilityEvaluationInput): Acce
   }
 
   // Weight with manifest quality accessibility score
-  const blendedScore = Math.max(0, Math.min(100, Math.round(score * 0.6 + resource.quality.accessibility * 0.4)));
+  let blendedScore = Math.max(0, Math.min(100, Math.round(score * 0.6 + resource.quality.accessibility * 0.4)));
+
+  if (!meetsFloor) {
+    blendedScore = Math.min(blendedScore, 20);
+    notes.push(`Fails required accessibility floor (${requiredFloor}). Score heavily penalized.`);
+  }
 
   return {
     score: blendedScore,

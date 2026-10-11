@@ -152,6 +152,12 @@ export function evaluateHardConstraints(input: HardConstraintEvaluationInput): H
     if (mediaRank > PERFORMANCE_COST_RANK['low']!) {
       reasons.push(`Performance ceiling violation: mediaCost '${resource.performance.mediaCost}' exceeds lightweight limit.`);
     }
+
+    const heavyTags = ['webgl', '3d', 'threejs', 'physics', 'particle-system', 'particles', 'simulation'];
+    const hasHeavyTag = (resource.tags ?? []).some((t) => heavyTags.includes(t.toLowerCase()));
+    if (hasHeavyTag) {
+      reasons.push(`Performance ceiling violation: heavy graphics or simulation tags detected for lightweight target.`);
+    }
   } else if (perfCeiling === 'balanced') {
     if (resource.performance.jsCost === 'high') {
       reasons.push("Performance ceiling violation: jsCost 'high' exceeds balanced limit.");

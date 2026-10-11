@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-10-11T10:37:54.639Z",
+  "generatedAt": "2026-10-11T13:29:40.606Z",
   "count": 324,
   "resources": [
     {
@@ -1227,7 +1227,7 @@
       "slug": "advanced-data-table",
       "name": "Advanced Data Table",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Feature-rich data table with column sorting, checkbox selection, pagination, and filter bar.",
       "resourceType": "block",
       "categories": [
@@ -1350,7 +1350,8 @@
         "advanced-data-table",
         "table",
         "data-table",
-        "sorting"
+        "sorting",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Feature-rich data table with column sorting, checkbox selection, pagination, and filter bar.",
@@ -4459,7 +4460,7 @@
       "slug": "ai-prompt-composer",
       "name": "AI Prompt Composer",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Structured prompt input box with context variable attachment pills, system mode badges, and token counters.",
       "resourceType": "ai-pattern",
       "categories": [
@@ -4584,7 +4585,8 @@
         "prompt",
         "composer",
         "tokens",
-        "attachments"
+        "attachments",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Structured prompt input box with context variable attachment pills, system mode badges, and token counters.",
@@ -5203,7 +5205,7 @@
       "slug": "ai-research-answer",
       "name": "AI Research Answer",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Comprehensive synthesized research summary with executive takeaway, numbered key points, and confidence meter.",
       "resourceType": "ai-pattern",
       "categories": [
@@ -5328,7 +5330,8 @@
         "research",
         "synthesis",
         "confidence",
-        "summary"
+        "summary",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Comprehensive synthesized research summary with executive takeaway, numbered key points, and confidence meter.",
@@ -5701,7 +5704,7 @@
       "slug": "ai-suggested-actions",
       "name": "AI Suggested Actions",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Context-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.",
       "resourceType": "ai-pattern",
       "categories": [
@@ -5826,7 +5829,8 @@
         "suggestions",
         "actions",
         "chips",
-        "workflow"
+        "workflow",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Context-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.",
@@ -8882,7 +8886,7 @@
       "slug": "area-chart",
       "name": "Area Chart",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Smooth bezier-curved single or dual area plot with subtle vertical gradient fill, baseline threshold, and interactive peek point.",
       "resourceType": "data-visualization",
       "categories": [
@@ -9007,7 +9011,8 @@
         "area",
         "gradient",
         "svg",
-        "volume"
+        "volume",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Smooth bezier-curved single or dual area plot with subtle vertical gradient fill, baseline threshold, and interactive peek point.",
@@ -10344,7 +10349,7 @@
       "slug": "badge",
       "name": "Badge",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Compact pill indicator for counts, status dots, and metadata taxonomy tags.",
       "resourceType": "primitive",
       "categories": [
@@ -10463,7 +10468,8 @@
         "badge",
         "pill",
         "tag",
-        "status"
+        "status",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Compact pill indicator for counts, status dots, and metadata taxonomy tags.",
@@ -10584,7 +10590,7 @@
       "slug": "bar-chart",
       "name": "Bar Chart",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Vertical categorical column chart with rounded top caps, subtle hover darkening, value labels, and horizontal gridlines.",
       "resourceType": "data-visualization",
       "categories": [
@@ -10709,7 +10715,8 @@
         "bar",
         "columns",
         "svg",
-        "metrics"
+        "metrics",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Vertical categorical column chart with rounded top caps, subtle hover darkening, value labels, and horizontal gridlines.",
@@ -12544,7 +12551,7 @@
       "slug": "button",
       "name": "Button",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Tactile, accessible multi-intent button primitive with Quiet, Expressive, and Nocturne curated configurations.",
       "resourceType": "primitive",
       "categories": [
@@ -12676,7 +12683,8 @@
         "action",
         "trigger",
         "input",
-        "control"
+        "control",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Primary and secondary interactive action trigger for initiating operations, submitting forms, or navigating.",
@@ -16234,7 +16242,7 @@
       "slug": "collapsible-sidebar",
       "name": "Collapsible Sidebar",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Flexible sidebar toggling between icon rail (48px) and expanded labels (240px) on user trigger.",
       "resourceType": "block",
       "categories": [
@@ -16352,7 +16360,8 @@
         "collapsible-sidebar",
         "sidebar",
         "toggle",
-        "responsive"
+        "responsive",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Flexible sidebar toggling between icon rail (48px) and expanded labels (240px) on user trigger.",
@@ -20855,7 +20864,7 @@
       "slug": "cta-minimal",
       "name": "CTA Minimal",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Focused single-line headline with primary action button and supporting footnote.",
       "resourceType": "section",
       "categories": [
@@ -20978,7 +20987,8 @@
         "cta-minimal",
         "cta",
         "conversion",
-        "action"
+        "action",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Focused single-line headline with primary action button and supporting footnote.",
@@ -22572,7 +22582,7 @@
       "slug": "dashboard-kpi-grid",
       "name": "Dashboard KPI Grid",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Multi-column grid of key performance cards with visual trend indicators and contextual meta.",
       "resourceType": "block",
       "categories": [
@@ -22695,7 +22705,8 @@
         "dashboard-kpi-grid",
         "kpi",
         "grid",
-        "metrics"
+        "metrics",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Multi-column grid of key performance cards with visual trend indicators and contextual meta.",
@@ -23061,7 +23072,7 @@
       "slug": "dashboard-skeleton",
       "name": "Dashboard Skeleton",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Multi-metric analytics workspace skeleton placeholder with metric card shingles, chart viewport placeholder, and data table rows.",
       "resourceType": "state",
       "categories": [
@@ -23186,7 +23197,8 @@
         "dashboard",
         "analytics",
         "metrics",
-        "charts"
+        "charts",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Multi-metric analytics workspace skeleton placeholder with metric card shingles, chart viewport placeholder, and data table rows.",
@@ -24044,7 +24056,7 @@
       "slug": "dialog",
       "name": "Dialog",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Accessible modal dialog window with backdrop scrim, focus trapping, and header/footer slots.",
       "resourceType": "primitive",
       "categories": [
@@ -24163,7 +24175,8 @@
         "dialog",
         "modal",
         "overlay",
-        "window"
+        "window",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Accessible modal dialog window with backdrop scrim, focus trapping, and header/footer slots.",
@@ -25008,7 +25021,7 @@
       "slug": "donut-chart",
       "name": "Donut Chart",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "SVG circle stroke-dasharray radial breakdown with center KPI summary metric, category legend pills, and segment highlight.",
       "resourceType": "data-visualization",
       "categories": [
@@ -25133,7 +25146,8 @@
         "donut",
         "radial",
         "svg",
-        "proportions"
+        "proportions",
+        "verified-gold"
       ],
       "intent": {
         "summary": "SVG circle stroke-dasharray radial breakdown with center KPI summary metric, category legend pills, and segment highlight.",
@@ -27213,7 +27227,7 @@
       "slug": "editorial-hero",
       "name": "Editorial Hero",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs.",
       "resourceType": "section",
       "categories": [
@@ -27337,7 +27351,8 @@
         "editorial-hero",
         "hero",
         "typography",
-        "marketing"
+        "marketing",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs.",
@@ -28205,7 +28220,7 @@
       "slug": "empty-workspace",
       "name": "Empty Workspace",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Empty state placeholder card with welcoming illustration and primary create action.",
       "resourceType": "block",
       "categories": [
@@ -28328,7 +28343,8 @@
         "empty-workspace",
         "empty-state",
         "placeholder",
-        "first-action"
+        "first-action",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Empty state placeholder card with welcoming illustration and primary create action.",
@@ -28938,7 +28954,7 @@
       "slug": "entity-profile-header",
       "name": "Entity Profile Header",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Hero card for entity details with avatar, title, status badge, action bar, and key stats.",
       "resourceType": "block",
       "categories": [
@@ -29061,7 +29077,8 @@
         "entity-profile-header",
         "profile",
         "entity",
-        "header"
+        "header",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Hero card for entity details with avatar, title, status badge, action bar, and key stats.",
@@ -29426,7 +29443,7 @@
       "slug": "error-state",
       "name": "Error State",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "System exception and runtime fault callout with stack diagnosis summary, recovery actions, and error report trigger.",
       "resourceType": "state",
       "categories": [
@@ -29551,7 +29568,8 @@
         "exception",
         "fault",
         "recovery",
-        "alert"
+        "alert",
+        "verified-gold"
       ],
       "intent": {
         "summary": "System exception and runtime fault callout with stack diagnosis summary, recovery actions, and error report trigger.",
@@ -30407,7 +30425,7 @@
       "slug": "fade-up-reveal",
       "name": "Fade-Up Reveal",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Smooth vertical translate-y and opacity entrance reveal with springy or linear settling physics.",
       "resourceType": "motion",
       "categories": [
@@ -30532,7 +30550,8 @@
         "fade-up",
         "reveal",
         "entrance",
-        "animation"
+        "animation",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Smooth vertical translate-y and opacity entrance reveal with springy or linear settling physics.",
@@ -30656,7 +30675,7 @@
       "slug": "faq-accordion",
       "name": "FAQ Accordion",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Clean expandable question list with keyboard navigation and smooth disclosure.",
       "resourceType": "section",
       "categories": [
@@ -30779,7 +30798,8 @@
         "faq-accordion",
         "faq",
         "accordion",
-        "questions"
+        "questions",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Clean expandable question list with keyboard navigation and smooth disclosure.",
@@ -31632,7 +31652,7 @@
       "slug": "feature-bento",
       "name": "Feature Bento",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Asymmetric bento box layout combining wide hero card, tall telemetry card, and compact utility cards.",
       "resourceType": "section",
       "categories": [
@@ -31755,7 +31775,8 @@
         "feature-bento",
         "bento",
         "features",
-        "marketing"
+        "marketing",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Asymmetric bento box layout combining wide hero card, tall telemetry card, and compact utility cards.",
@@ -32608,7 +32629,7 @@
       "slug": "feature-matrix",
       "name": "Feature Matrix",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Comprehensive feature availability grid categorized across core functional pillars.",
       "resourceType": "section",
       "categories": [
@@ -32731,7 +32752,8 @@
         "feature-matrix",
         "features",
         "matrix",
-        "specifications"
+        "specifications",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Comprehensive feature availability grid categorized across core functional pillars.",
@@ -35048,7 +35070,7 @@
       "slug": "filter-builder",
       "name": "Filter Builder",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Interactive compound filter constructor with field, operator, and value rows.",
       "resourceType": "block",
       "categories": [
@@ -35171,7 +35193,8 @@
         "filter-builder",
         "filter",
         "query",
-        "rules"
+        "rules",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Interactive compound filter constructor with field, operator, and value rows.",
@@ -37011,7 +37034,7 @@
       "slug": "footer-product",
       "name": "Footer Product",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Product-centric footer featuring release changelog badge, newsletter input, and nav columns.",
       "resourceType": "section",
       "categories": [
@@ -37134,7 +37157,8 @@
         "footer-product",
         "footer",
         "changelog",
-        "product"
+        "product",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Product-centric footer featuring release changelog badge, newsletter input, and nav columns.",
@@ -42418,7 +42442,7 @@
       "slug": "input",
       "name": "Text Input",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Clean, accessible single-line text input with label, helper copy, and error states.",
       "resourceType": "primitive",
       "categories": [
@@ -42537,7 +42561,8 @@
         "input",
         "text",
         "form",
-        "control"
+        "control",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Clean, accessible single-line text input with label, helper copy, and error states.",
@@ -43885,7 +43910,7 @@
       "slug": "kanban-board",
       "name": "Kanban Board",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Multi-column task board with status lanes (Todo, In Progress, Done) and draggable cards.",
       "resourceType": "block",
       "categories": [
@@ -44008,7 +44033,8 @@
         "kanban-board",
         "kanban",
         "board",
-        "tasks"
+        "tasks",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Multi-column task board with status lanes (Todo, In Progress, Done) and draggable cards.",
@@ -45850,7 +45876,7 @@
       "slug": "logo-cloud-minimal",
       "name": "Logo Cloud Minimal",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Subtle monochrome client logo row with muted contrast and disciplined spacing.",
       "resourceType": "section",
       "categories": [
@@ -45973,7 +45999,8 @@
         "logo-cloud-minimal",
         "logos",
         "trust",
-        "marketing"
+        "marketing",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Subtle monochrome client logo row with muted contrast and disciplined spacing.",
@@ -46094,7 +46121,7 @@
       "slug": "magnetic-button",
       "name": "Magnetic Button",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Cursor-attracted interactive button pulling towards cursor coordinates within proximity threshold with spring return.",
       "resourceType": "motion",
       "categories": [
@@ -46219,7 +46246,8 @@
         "magnetic",
         "cursor",
         "spring",
-        "interactive"
+        "interactive",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Cursor-attracted interactive button pulling towards cursor coordinates within proximity threshold with spring return.",
@@ -46343,7 +46371,7 @@
       "slug": "marketing-nav-cta",
       "name": "Marketing Navigation with CTA",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "High-conversion header with promotional badge, navigation links, and primary CTA trigger.",
       "resourceType": "block",
       "categories": [
@@ -46462,7 +46490,8 @@
         "marketing-nav-cta",
         "header",
         "cta",
-        "conversion"
+        "conversion",
+        "verified-gold"
       ],
       "intent": {
         "summary": "High-conversion header with promotional badge, navigation links, and primary CTA trigger.",
@@ -49039,7 +49068,7 @@
       "slug": "minimal-top-nav",
       "name": "Minimal Top Navigation",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Restrained horizontal header with brand mark, essential route links, and profile badge.",
       "resourceType": "block",
       "categories": [
@@ -49158,7 +49187,8 @@
         "minimal-top-nav",
         "header",
         "top-nav",
-        "navigation"
+        "navigation",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Restrained horizontal header with brand mark, essential route links, and profile badge.",
@@ -50997,7 +51027,7 @@
       "slug": "notification-centre",
       "name": "Notification Centre",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Alert and message stream with dismiss actions, read status toggles, and filters.",
       "resourceType": "block",
       "categories": [
@@ -51120,7 +51150,8 @@
         "notification-centre",
         "notifications",
         "alerts",
-        "inbox"
+        "inbox",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Alert and message stream with dismiss actions, read status toggles, and filters.",
@@ -57128,7 +57159,7 @@
       "slug": "pricing-three-tier",
       "name": "Pricing Three Tier",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Canonical 3-card pricing table (Free, Pro, Enterprise) with highlighted recommended tier.",
       "resourceType": "section",
       "categories": [
@@ -57251,7 +57282,8 @@
         "pricing-three-tier",
         "pricing",
         "plans",
-        "conversion"
+        "conversion",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Canonical 3-card pricing table (Free, Pro, Enterprise) with highlighted recommended tier.",
@@ -65429,7 +65461,7 @@
       "slug": "select",
       "name": "Select",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Accessible styled dropdown selector with trigger, chevron indicator, and options.",
       "resourceType": "primitive",
       "categories": [
@@ -65548,7 +65580,8 @@
         "select",
         "dropdown",
         "picker",
-        "control"
+        "control",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Accessible styled dropdown selector with trigger, chevron indicator, and options.",
@@ -68854,7 +68887,7 @@
       "slug": "split-product-hero",
       "name": "Split Product Hero",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "50/50 split layout with narrative copy on left and live interactive widget on right.",
       "resourceType": "section",
       "categories": [
@@ -68977,7 +69010,8 @@
         "split-product-hero",
         "hero",
         "split",
-        "marketing"
+        "marketing",
+        "verified-gold"
       ],
       "intent": {
         "summary": "50/50 split layout with narrative copy on left and live interactive widget on right.",
@@ -70088,7 +70122,7 @@
       "slug": "subtle-grid-field",
       "name": "Subtle Grid Field",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Precision architectural grid coordinate backdrop with customizable spacing, hairline dividers, and radial fade mask.",
       "resourceType": "background",
       "categories": [
@@ -70213,7 +70247,8 @@
         "grid",
         "architectural",
         "svg",
-        "hairline"
+        "hairline",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Precision architectural grid coordinate backdrop with customizable spacing, hairline dividers, and radial fade mask.",
@@ -72776,7 +72811,7 @@
       "slug": "testimonial-grid",
       "name": "Testimonial Grid",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "3-column card grid of customer endorsements with rating stars and company tags.",
       "resourceType": "section",
       "categories": [
@@ -72899,7 +72934,8 @@
         "testimonial-grid",
         "testimonials",
         "grid",
-        "social-proof"
+        "social-proof",
+        "verified-gold"
       ],
       "intent": {
         "summary": "3-column card grid of customer endorsements with rating stars and company tags.",
@@ -74003,7 +74039,7 @@
       "slug": "three-pane-app-shell",
       "name": "Three-Pane App Shell",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Pro desktop shell with navigation sidebar, primary workspace canvas, and right property inspector.",
       "resourceType": "block",
       "categories": [
@@ -74122,7 +74158,8 @@
         "three-pane-app-shell",
         "three-pane",
         "workbench",
-        "layout"
+        "layout",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Pro desktop shell with navigation sidebar, primary workspace canvas, and right property inspector.",
@@ -74243,7 +74280,7 @@
       "slug": "time-series-chart",
       "name": "Time Series Chart",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Interactive line chart with date/time x-axis, area fill gradient, hover cursor crosshair, and value tooltip.",
       "resourceType": "data-visualization",
       "categories": [
@@ -74368,7 +74405,8 @@
         "time-series",
         "line",
         "svg",
-        "analytics"
+        "analytics",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Interactive line chart with date/time x-axis, area fill gradient, hover cursor crosshair, and value tooltip.",
@@ -74492,7 +74530,7 @@
       "slug": "timeline",
       "name": "Timeline",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Chronological event list with vertical connecting line and timestamp nodes.",
       "resourceType": "block",
       "categories": [
@@ -74615,7 +74653,8 @@
         "timeline",
         "chronology",
         "events",
-        "milestones"
+        "milestones",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Chronological event list with vertical connecting line and timestamp nodes.",
@@ -76197,7 +76236,7 @@
       "slug": "two-pane-master-detail-shell",
       "name": "Two-Pane Master Detail Shell",
       "version": "1.0.0",
-      "status": "verified",
+      "status": "verified-gold",
       "description": "Split-view shell pairing searchable master entity list with comprehensive detail reader pane.",
       "resourceType": "block",
       "categories": [
@@ -76316,7 +76355,8 @@
         "two-pane-master-detail-shell",
         "split-view",
         "master-detail",
-        "shell"
+        "shell",
+        "verified-gold"
       ],
       "intent": {
         "summary": "Split-view shell pairing searchable master entity list with comprehensive detail reader pane.",

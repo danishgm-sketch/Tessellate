@@ -11,6 +11,7 @@ import { CompareModal } from './compare/CompareModal.js';
 import { BlendModal } from './blend/BlendModal.js';
 import { ReplaceDrawer } from './replace/ReplaceDrawer.js';
 import { AuditPanel } from './audit/AuditPanel.js';
+import { loadLocalProject } from '../persistence/storage.js';
 
 export function WorkbenchShell() {
   const activeMode = useWorkbenchStore((state) => state.activeMode);
@@ -23,8 +24,51 @@ export function WorkbenchShell() {
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
   const toggleNodeLock = useWorkbenchStore((state) => state.toggleNodeLock);
   const openReplaceDrawer = useWorkbenchStore((state) => state.openReplaceDrawer);
+  const setManifest = useWorkbenchStore((state) => state.setManifest);
 
   const [isMobileScreen, setIsMobileScreen] = useState(false);
+
+  // Load project from URL or local persistence on mount
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get('project');
+
+    if (projectId) {
+      const stored =
+        localStorage.getItem(`tessellate_project_${projectId}`) ||
+        localStorage.getItem('tessellate_active_project');
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          if (parsed && (parsed.id === projectId || !projectId)) {
+            setManifest(parsed);
+            return;
+          }
+        } catch {
+          // Fall through to IndexedDB
+        }
+      }
+
+      loadLocalProject(projectId).then((proj) => {
+        if (proj) {
+          setManifest(proj);
+        }
+      });
+    } else {
+      const stored = localStorage.getItem('tessellate_active_project');
+      if (stored) {
+        try {
+          const parsed = JSON.parse(stored);
+          if (parsed && parsed.id) {
+            setManifest(parsed);
+          }
+        } catch {
+          // ignore corrupted local project storage
+        }
+      }
+    }
+  }, [setManifest]);
 
   // Responsive window listener
   useEffect(() => {

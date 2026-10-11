@@ -8,7 +8,8 @@
   "exports": {
     ".": "./src/index.ts",
     "./protocol": "./src/preview-protocol.ts",
-    "./licenses": "./src/licenses.ts"
+    "./licenses": "./src/licenses.ts",
+    "./gold": "./src/gold.ts"
   },
   "scripts": {
     "build": "tsc --noEmit",

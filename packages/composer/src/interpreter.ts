@@ -1,10 +1,18 @@
 import {
   type ProductModel,
   type ProjectConstraints,
+  type DesignDNA,
   ProductModelSchema,
+  DesignDNASchema,
 } from '@tessellate/schemas';
+import {
+  DEFAULT_DESIGN_DNA,
+  DNA_PRESETS,
+  applyFeelDescriptors,
+  clampScore,
+} from '@tessellate/dna';
 import { detectProductArchetypes, getProductArchetype } from './archetypes.js';
-import { findBlueprintByArchetype } from './blueprints.js';
+import { findBlueprintByArchetype, type ProductBlueprint } from './blueprints.js';
 
 export interface ProductBriefInput {
   description: string;
@@ -24,6 +32,89 @@ export interface ProductBriefInput {
 export interface InterpretedProduct {
   productModel: ProductModel;
   inferredAssumptions: string[];
+  initialDesignDna: DesignDNA;
+}
+
+export function deriveInitialDesignDNA(
+  primaryArchetype: string,
+  blueprint: ProductBlueprint,
+  input: ProductBriefInput
+): DesignDNA {
+  let base: DesignDNA = {
+    ...DEFAULT_DESIGN_DNA,
+    primaryArchetype,
+    dataDensity: blueprint.priors.dataDensity,
+    trust: blueprint.priors.trustRequirement,
+    interactionDensity: blueprint.priors.informationComplexity,
+  };
+
+  if (blueprint.applicableDnaPresets && blueprint.applicableDnaPresets.length > 0) {
+    const presetId = blueprint.applicableDnaPresets[0];
+    const foundPreset = DNA_PRESETS.find((p) => p.id === presetId);
+    if (foundPreset) {
+      base = { ...foundPreset.dna };
+    }
+  }
+
+  if (input.feel && input.feel.trim()) {
+    base = applyFeelDescriptors(base, input.feel.trim());
+  }
+
+  if (typeof input.visualAmbition === 'number') {
+    const va = clampScore(input.visualAmbition);
+    base.visualAmbition = va;
+
+    if (va <= 25) {
+      base.motion = Math.min(base.motion ?? 40, 20);
+      base.motionPlayfulness = Math.min(base.motionPlayfulness ?? 30, 10);
+      base.motionPersonality = 'calm-precision';
+      base.typographicExpression = Math.min(base.typographicExpression ?? 45, 30);
+      base.imageryIntensity = Math.min(base.imageryIntensity ?? 30, 15);
+      base.depth = Math.min(base.depth ?? 30, 15);
+    } else if (va <= 50) {
+      base.motion = clampScore((base.motion ?? 40) * 0.9);
+      base.typographicExpression = clampScore(base.typographicExpression ?? 45);
+    } else if (va <= 75) {
+      base.motion = clampScore(Math.max(base.motion ?? 40, 55));
+      base.typographicExpression = clampScore(Math.max(base.typographicExpression ?? 45, 60));
+      base.imageryIntensity = clampScore(Math.max(base.imageryIntensity ?? 30, 50));
+      base.depth = clampScore(Math.max(base.depth ?? 30, 45));
+    } else {
+      base.motion = clampScore(Math.max(base.motion ?? 40, 75));
+      base.motionPlayfulness = clampScore(Math.max(base.motionPlayfulness ?? 30, 65));
+      base.motionPersonality = 'playful-spring';
+      base.typographicExpression = clampScore(Math.max(base.typographicExpression ?? 45, 80));
+      base.imageryIntensity = clampScore(Math.max(base.imageryIntensity ?? 30, 75));
+      base.depth = clampScore(Math.max(base.depth ?? 30, 70));
+    }
+  }
+
+  if (typeof input.structuralCreativity === 'number') {
+    const sc = clampScore(input.structuralCreativity);
+    base.structuralCreativity = sc;
+    if (sc >= 70) {
+      base.asymmetry = clampScore(Math.max(base.asymmetry ?? 25, 45));
+      base.interactionDensity = clampScore(Math.max(base.interactionDensity ?? 50, 65));
+    } else if (sc <= 30) {
+      base.asymmetry = clampScore(Math.min(base.asymmetry ?? 25, 15));
+    }
+  }
+
+  if (input.accessibilityFloor === 'AAA') {
+    base.accessibilityPriority = Math.max(base.accessibilityPriority ?? 60, 95);
+    base.contrast = Math.max(base.contrast ?? 60, 85);
+  } else if (input.accessibilityFloor === 'AA') {
+    base.accessibilityPriority = Math.max(base.accessibilityPriority ?? 60, 80);
+  }
+
+  if (input.performanceCeiling === 'lightweight') {
+    base.performancePriority = Math.max(base.performancePriority ?? 60, 90);
+    base.motion = Math.min(base.motion ?? 40, 25);
+    base.videoIntensity = 0;
+    base.threeDIntensity = 0;
+  }
+
+  return DesignDNASchema.parse(base);
 }
 
 /**
@@ -32,7 +123,7 @@ export interface InterpretedProduct {
  */
 export function interpretProductBrief(input: ProductBriefInput): InterpretedProduct {
   const assumptions: string[] = [];
-  const text = input.description.trim();
+  const text = (input.description || (input as { prompt?: string }).prompt || '').trim();
 
   // 1. Detect archetypes
   const detectedArchetypes = detectProductArchetypes(text, input.archetypeOverride);
@@ -167,8 +258,21 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     constraints,
   });
 
+  if (input.feel && input.feel.trim()) {
+    assumptions.push(`Applied feel descriptors "${input.feel}" with mathematical DNA adjustments.`);
+  }
+  if (typeof input.visualAmbition === 'number') {
+    assumptions.push(`Applied Visual Ambition level ${input.visualAmbition} to motion, typography, and depth.`);
+  }
+  if (typeof input.structuralCreativity === 'number') {
+    assumptions.push(`Applied Structural Creativity level ${input.structuralCreativity} to spatial topology.`);
+  }
+
+  const initialDesignDna = deriveInitialDesignDNA(primaryTag, blueprint, input);
+
   return {
     productModel,
     inferredAssumptions: assumptions,
+    initialDesignDna,
   };
 }

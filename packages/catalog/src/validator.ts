@@ -66,7 +66,7 @@ export function validateResource(
   }
 
   // 4. Validate Quality Score Policy
-  if (manifest.status === 'verified') {
+  if (manifest.status === 'verified' || manifest.status === 'verified-gold') {
     if (manifest.quality.overall < 80) {
       errors.push(
         `Verified resource must have overall quality >= 80, but found ${manifest.quality.overall}.`
