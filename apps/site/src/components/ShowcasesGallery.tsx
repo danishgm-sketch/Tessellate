@@ -7,9 +7,9 @@ export function ShowcasesGallery() {
   const activeShowcase = SHOWCASE_PROJECTS.find((s) => s.id === activeId) ?? SHOWCASE_PROJECTS[0]!;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 max-w-full overflow-hidden">
       {/* Selector pills */}
-      <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
+      <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none max-w-full">
         {SHOWCASE_PROJECTS.map((sc) => {
           const isSelected = sc.id === activeId;
           return (
@@ -29,7 +29,7 @@ export function ShowcasesGallery() {
       </div>
 
       {/* Featured Showcase Card */}
-      <div className={`p-6 sm:p-8 md:p-12 rounded-2xl border transition-colors ${
+      <div className={`p-6 sm:p-8 md:p-12 rounded-2xl border transition-colors max-w-full overflow-hidden ${
         activeShowcase.colorMode === 'dark'
           ? 'bg-[#0B0D10] text-white border-[#2E3440]'
           : 'bg-white text-[#111217] border-[#D9D6CF]'
