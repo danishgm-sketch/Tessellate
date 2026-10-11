@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "saved-views",
+  "type": "registry:block",
+  "title": "Saved Views",
+  "description": "Saved query and filter preset tabs for quick switching between operational viewpoints.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type SavedViewsVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SavedViewsProps {\n  variant?: SavedViewsVariant;\n}\n\nexport function SavedViews({ variant = 'quiet' }: SavedViewsProps) {\n  const [active, setActive] = useState('All Resources');\n\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n  let tabActive = 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-semibold';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n    tabActive = 'bg-[#2547E8] text-white shadow-2xs font-semibold';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    tabActive = 'bg-cyan-500 text-black font-semibold';\n  }\n\n  const views = ['All Resources', 'Verified Only', 'High Quality (≥90)', 'Recently Created'];\n\n  return (\n    <div className={`w-full p-4 rounded-xl border transition-colors ${bg}`}>\n      <div className=\"flex flex-wrap items-center gap-2 text-xs\">\n        {views.map((v) => (\n          <button\n            key={v}\n            type=\"button\"\n            onClick={() => setActive(v)}\n            className={`px-3 py-1.5 rounded-lg border transition-all ${\n              active === v ? tabActive : 'border-neutral-200 dark:border-neutral-800 opacity-70 hover:opacity-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { SavedViews, SavedViewsVariant } from './index.js';\n\nexport function SavedViewsPreview() {\n  const [variant, setVariant] = useState<SavedViewsVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Saved Views Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as SavedViewsVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <SavedViews variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "search",
+    "views"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_saved_views",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

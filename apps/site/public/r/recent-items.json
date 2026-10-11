@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "recent-items",
+  "type": "registry:block",
+  "title": "Recent Items",
+  "description": "List of recently modified files, projects, or manifests with timestamp and author.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type RecentItemsVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface RecentItemsProps {\n  variant?: RecentItemsVariant;\n}\n\nexport function RecentItems({ variant = 'quiet' }: RecentItemsProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  const items = [\n    { name: 'Analytics Dashboard Blueprint', type: 'Blueprint', time: '14m ago' },\n    { name: 'Nocturne Trading Terminal', type: 'Showcase', time: '2h ago' },\n    { name: 'Pricing Three Tier Component', type: 'Section', time: '1d ago' },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border transition-colors ${bg}`}>\n      <h3 className=\"text-sm font-semibold mb-4\">Recent Documents</h3>\n      <div className=\"space-y-3\">\n        {items.map((it) => (\n          <div key={it.name} className=\"p-3 rounded-lg border border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-xs hover:bg-neutral-50 dark:hover:bg-neutral-900 cursor-pointer\">\n            <div>\n              <div className=\"font-semibold\">{it.name}</div>\n              <span className=\"text-[10px] font-mono opacity-50 uppercase\">{it.type}</span>\n            </div>\n            <span className=\"font-mono text-[11px] opacity-60\">{it.time}</span>\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { RecentItems, RecentItemsVariant } from './index.js';\n\nexport function RecentItemsPreview() {\n  const [variant, setVariant] = useState<RecentItemsVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Recent Items Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as RecentItemsVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <RecentItems variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "dashboards",
+    "navigation"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_recent_items",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

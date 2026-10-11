@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "command-results",
+  "type": "registry:block",
+  "title": "Command Results",
+  "description": "Action-oriented palette result list with shortcut pills and description metadata.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type CommandResultsVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CommandResultsProps {\n  variant?: CommandResultsVariant;\n}\n\nexport function CommandResults({ variant = 'quiet' }: CommandResultsProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  const commands = [\n    { name: 'Export Code as TSX', shortcut: '⌘E' },\n    { name: 'Mutate Design DNA Tokens', shortcut: '⌘D' },\n    { name: 'Toggle Nocturne Theme', shortcut: '⌘T' },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border transition-colors ${bg}`}>\n      <h3 className=\"text-sm font-semibold mb-4\">Command Actions</h3>\n      <div className=\"space-y-2\">\n        {commands.map((c) => (\n          <div key={c.name} className=\"p-3 rounded-lg border border-neutral-100 dark:border-neutral-800 flex items-center justify-between text-xs hover:bg-neutral-50 dark:hover:bg-neutral-900 cursor-pointer\">\n            <span className=\"font-medium\">{c.name}</span>\n            <kbd className=\"px-2 py-0.5 rounded bg-neutral-200/60 dark:bg-neutral-800 font-mono text-[10px]\">\n              {c.shortcut}\n            </kbd>\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { CommandResults, CommandResultsVariant } from './index.js';\n\nexport function CommandResultsPreview() {\n  const [variant, setVariant] = useState<CommandResultsVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Command Results Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as CommandResultsVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <CommandResults variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "search",
+    "command"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_command_results",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

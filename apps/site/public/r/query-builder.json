@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "query-builder",
+  "type": "registry:block",
+  "title": "Query Builder",
+  "description": "Visual query constructor combining Boolean conditions (AND/OR) with nested groups.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type QueryBuilderVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface QueryBuilderProps {\n  variant?: QueryBuilderVariant;\n}\n\nexport function QueryBuilder({ variant = 'quiet' }: QueryBuilderProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  return (\n    <div className={`w-full p-6 rounded-xl border transition-colors ${bg}`}>\n      <h3 className=\"text-sm font-semibold mb-4\">Visual Query Builder</h3>\n      <div className=\"p-4 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-900/40 space-y-3 font-mono text-xs\">\n        <div className=\"flex items-center gap-2\">\n          <span className=\"px-2 py-0.5 rounded bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-bold text-[10px]\">WHERE</span>\n          <span>category == 'sections'</span>\n        </div>\n        <div className=\"flex items-center gap-2 pl-6\">\n          <span className=\"px-2 py-0.5 rounded bg-blue-500/10 text-blue-600 font-bold text-[10px]\">AND</span>\n          <span>quality &gt;= 90</span>\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { QueryBuilder, QueryBuilderVariant } from './index.js';\n\nexport function QueryBuilderPreview() {\n  const [variant, setVariant] = useState<QueryBuilderVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Query Builder Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as QueryBuilderVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <QueryBuilder variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "search",
+    "query"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_query_builder",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

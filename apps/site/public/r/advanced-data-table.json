@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "advanced-data-table",
+  "type": "registry:block",
+  "title": "Advanced Data Table",
+  "description": "Feature-rich data table with column sorting, checkbox selection, pagination, and filter bar.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type AdvancedDataTableVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AdvancedDataTableProps {\n  variant?: AdvancedDataTableVariant;\n}\n\nexport function AdvancedDataTable({ variant = 'quiet' }: AdvancedDataTableProps) {\n  const [selected, setSelected] = useState<number[]>([]);\n\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  const rows = [\n    { id: 1, name: 'button', type: 'primitive', quality: 98, status: 'verified' },\n    { id: 2, name: 'editorial-hero', type: 'section', quality: 96, status: 'verified' },\n    { id: 3, name: 'admin-console-shell', type: 'block', quality: 96, status: 'verified' },\n  ];\n\n  const toggle = (id: number) => {\n    setSelected((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));\n  };\n\n  return (\n    <div className={`w-full rounded-xl border overflow-hidden transition-colors ${bg}`}>\n      <div className=\"p-4 border-b border-neutral-200 dark:border-neutral-800 flex justify-between items-center text-xs\">\n        <span className=\"font-semibold\">{selected.length} row(s) selected</span>\n        <button type=\"button\" className=\"px-3 py-1 rounded border font-mono\">Filter</button>\n      </div>\n\n      <div className=\"overflow-x-auto\">\n        <table className=\"w-full text-left text-xs font-mono\">\n          <thead className=\"bg-neutral-100/60 dark:bg-neutral-900/60 border-b border-neutral-200 dark:border-neutral-800\">\n            <tr>\n              <th className=\"p-3 w-8\">#</th>\n              <th className=\"p-3\">Resource Name</th>\n              <th className=\"p-3\">Type</th>\n              <th className=\"p-3\">Quality</th>\n              <th className=\"p-3\">Status</th>\n            </tr>\n          </thead>\n          <tbody className=\"divide-y divide-neutral-200 dark:divide-neutral-800\">\n            {rows.map((r) => (\n              <tr key={r.id} className=\"hover:bg-neutral-50 dark:hover:bg-neutral-900/40\">\n                <td className=\"p-3\">\n                  <input\n                    type=\"checkbox\"\n                    checked={selected.includes(r.id)}\n                    onChange={() => toggle(r.id)}\n                    className=\"cursor-pointer\"\n                  />\n                </td>\n                <td className=\"p-3 font-semibold font-sans\">{r.name}</td>\n                <td className=\"p-3 opacity-75\">{r.type}</td>\n                <td className=\"p-3 text-emerald-600 font-bold\">{r.quality}/100</td>\n                <td className=\"p-3 uppercase text-[10px]\">{r.status}</td>\n              </tr>\n            ))}\n          </tbody>\n        </table>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { AdvancedDataTable, AdvancedDataTableVariant } from './index.js';\n\nexport function AdvancedDataTablePreview() {\n  const [variant, setVariant] = useState<AdvancedDataTableVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Advanced Data Table Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as AdvancedDataTableVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <AdvancedDataTable variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "data",
+    "tables"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_advanced_data_table",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

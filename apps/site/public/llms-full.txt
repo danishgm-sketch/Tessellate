@@ -77,27 +77,35 @@ Tools provided:
 - `get_design_dna`: Inspect Design DNA presets and vectors.
 - `list_design_directions`: Return visual reference directions (Editorial Precision, Kinetic Monolith, Atmospheric Depth).
 
-## Resources in Catalogue (152)
+## Resources in Catalogue (208)
 
 - [Accessibility Commitment Section](https://tessellate.design/r/accessibility-commitment-section): Formal WCAG 2.2 AA compliance manifesto with automated audit guarantees. (sections, marketing, technical-proof)
 - [Accordion](https://tessellate.design/r/accordion): Collapsible vertically stacked disclosure panels with rotating chevron animations. (primitives, layout)
+- [Activity Feed](https://tessellate.design/r/activity-feed): Chronological timeline of system events, team actions, and commit updates. (blocks, dashboards, activity)
 - [Admin Console Shell](https://tessellate.design/r/admin-console-shell): Enterprise administration layout with organization selector, user table, and security audit tab. (shells, layout)
+- [Advanced Data Table](https://tessellate.design/r/advanced-data-table): Feature-rich data table with column sorting, checkbox selection, pagination, and filter bar. (blocks, data, tables)
 - [AI Prompt Hero](https://tessellate.design/r/ai-prompt-hero): Conversational prompt bar with preset suggestions, model picker pill, and generate CTA. (sections, marketing, hero)
 - [Alert Dialog](https://tessellate.design/r/alert-dialog): Destructive confirmation modal requiring explicit acknowledgment or cancellation before proceeding. (primitives, overlays, feedback)
 - [Analytics Shell](https://tessellate.design/r/analytics-shell): Metric-dense business intelligence dashboard shell with date picker bar and KPI grid. (shells, layout)
 - [API Capability Section](https://tessellate.design/r/api-capability-section): Developer section highlighting REST / GraphQL / SDK methods with endpoint pill tags. (sections, marketing, integrations)
+- [API Key Management](https://tessellate.design/r/api-key-management): Secret key manager with generate modal, masked token display, and revocation buttons. (blocks, settings, api)
 - [App Sidebar Compact](https://tessellate.design/r/app-sidebar-compact): High-density narrow application sidebar displaying icon triggers and tooltip labels. (shells, navigation)
 - [App Sidebar Expanded](https://tessellate.design/r/app-sidebar-expanded): Full-width application sidebar with hierarchical category headers, counts, and search. (shells, navigation)
+- [Approval Queue](https://tessellate.design/r/approval-queue): Decision workflow queue with Approve/Reject actions and reason commentary. (blocks, collaboration, approval)
 - [Architecture Diagram Section](https://tessellate.design/r/architecture-diagram-section): Technical blueprint illustrating client-edge-database infrastructure topology. (sections, marketing, technical-proof)
+- [Audit Log](https://tessellate.design/r/audit-log): Security and governance audit log table recording user actions, IP addresses, and hashes. (blocks, entities, audit)
 - [Autocomplete](https://tessellate.design/r/autocomplete): Typeahead prediction control suggesting options inline or in a floating palette. (primitives, inputs)
 - [Avatar](https://tessellate.design/r/avatar): Circular user representation displaying profile photography with monogram initial fallback and presence dot. (primitives, display)
 - [Avatar Group](https://tessellate.design/r/avatar-group): Overlapping clustered avatars with ring separation and excess counter pill (+N). (primitives, display)
 - [Badge](https://tessellate.design/r/badge): Compact pill indicator for counts, status dots, and metadata taxonomy tags. (primitives, display)
+- [Billing Overview](https://tessellate.design/r/billing-overview): Subscription status panel with card on file, next invoice date, and plan upgrade trigger. (blocks, settings, billing)
 - [Bottom Sheet](https://tessellate.design/r/bottom-sheet): Mobile-first bottom sliding sheet with drag handle bar and responsive snap points. (primitives, overlays)
 - [Breadcrumb](https://tessellate.design/r/breadcrumb): Hierarchical navigation trail path with customizable separators and accessible current page. (primitives, navigation)
 - [Breadcrumb Header](https://tessellate.design/r/breadcrumb-header): Header shell combining deep hierarchical breadcrumb trail with right-aligned action buttons. (shells, navigation)
 - [Button](https://tessellate.design/r/button): Tactile, accessible multi-intent button primitive with Quiet, Expressive, and Nocturne curated configurations. (primitives, inputs, actions)
 - [Button Group](https://tessellate.design/r/button-group): Connected cluster of action buttons with cohesive outer border and seamless seams. (primitives, inputs, actions)
+- [Calendar Month](https://tessellate.design/r/calendar-month): Monthly 7x5 grid view with day numbers, event markers, and active date highlights. (blocks, data, calendar)
+- [Calendar Week](https://tessellate.design/r/calendar-week): 7-column weekly schedule view displaying time slots and scheduled appointment cards. (blocks, data, calendar)
 - [Canvas Workspace Shell](https://tessellate.design/r/canvas-workspace-shell): Infinite-pan coordinate workspace canvas with floating tool palettes and zoom controls. (shells, layout)
 - [Case Study Spotlight](https://tessellate.design/r/case-study-spotlight): In-depth customer story card featuring measurable impact metrics, quote, and read study link. (sections, marketing, trust)
 - [Centered Top Navigation](https://tessellate.design/r/centered-top-nav): Symmetrical marketing header with brand logo on left, centered links, and right-aligned CTA. (shells, navigation)
@@ -109,10 +117,14 @@ Tools provided:
 - [Command Centre Shell](https://tessellate.design/r/command-centre-shell): Mission control telemetry layout with multi-panel monitoring grids and emergency alerts. (shells, layout)
 - [Command-First Navigation](https://tessellate.design/r/command-first-nav): Spotlight-oriented application header centered on a prominent interactive search input. (shells, navigation)
 - [Command Menu](https://tessellate.design/r/command-menu): ⌘K spotlight dialog modal with quick command search, group categories, and keyboard arrow navigation. (primitives, overlays, search)
+- [Command Results](https://tessellate.design/r/command-results): Action-oriented palette result list with shortcut pills and description metadata. (blocks, search, command)
 - [Commerce Management Shell](https://tessellate.design/r/commerce-management-shell): E-commerce operations shell with order fulfillment queue, inventory counts, and sales graph. (shells, layout)
+- [Compact Data Table](https://tessellate.design/r/compact-data-table): High-density tabular list designed for tight panels and real-time feeds. (blocks, data, tables)
+- [Comparison Table](https://tessellate.design/r/comparison-table): Matrix comparing parameters or feature sets across multiple items side by side. (blocks, data, comparison)
 - [Compliance Proof](https://tessellate.design/r/compliance-proof): Regulatory compliance showcase displaying certified badges and downloadable reports. (sections, marketing, technical-proof)
 - [Context Menu](https://tessellate.design/r/context-menu): Right-click action palette anchored directly to the user pointer coordinates. (primitives, overlays)
 - [Context Rail](https://tessellate.design/r/context-rail): Secondary right-hand vertical rail displaying active object inspector or contextual metadata. (shells, layout)
+- [Conversation List](https://tessellate.design/r/conversation-list): Channel and direct message thread list with unread counters and presence badges. (blocks, collaboration, channels)
 - [CTA Community](https://tessellate.design/r/cta-community): Invitation banner to Discord / GitHub discussions with member counter badge. (sections, marketing, cta)
 - [CTA Demo Booking](https://tessellate.design/r/cta-demo-booking): Calendar booking card with time-slot picker preview and sales team call-to-action. (sections, marketing, cta)
 - [CTA Download](https://tessellate.design/r/cta-download): Multi-platform installer button group (macOS, Windows, Linux, CLI) with version pill. (sections, marketing, cta)
@@ -121,16 +133,27 @@ Tools provided:
 - [CTA Split](https://tessellate.design/r/cta-split): Two-column callout with compelling copy on left and email capture form on right. (sections, marketing, cta)
 - [Customer Metrics Strip](https://tessellate.design/r/customer-metrics-strip): Four-column KPI impact bar highlighting uptime, volume, latency, and scale numbers. (sections, marketing, trust)
 - [Customer Story Split](https://tessellate.design/r/customer-story-split): Side-by-side narrative with customer team photo on one side and challenge-solution story on other. (sections, marketing, trust)
+- [Dashboard KPI Grid](https://tessellate.design/r/dashboard-kpi-grid): Multi-column grid of key performance cards with visual trend indicators and contextual meta. (blocks, dashboards, kpi)
+- [Dashboard KPI Strip](https://tessellate.design/r/dashboard-kpi-strip): Horizontal metric row featuring primary metrics, deltas, and micro sparkline indicators. (blocks, dashboards, kpi)
 - [Data Hero](https://tessellate.design/r/data-hero): Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges. (sections, marketing, hero)
 - [Data Terminal Header](https://tessellate.design/r/data-terminal-header): High-density monospace financial header with ticker feed, clock, and connection latency. (shells, navigation)
 - [Dialog](https://tessellate.design/r/dialog): Accessible modal dialog window with backdrop scrim, focus trapping, and header/footer slots. (primitives, overlays)
 - [Disclosure](https://tessellate.design/r/disclosure): Single collapsible toggle container with summary header and expandable details. (primitives, layout)
+- [Document Detail](https://tessellate.design/r/document-detail): Rich structured view of a selected document, complete with formatted text and download CTA. (blocks, entities, document)
 - [Documentation Shell](https://tessellate.design/r/documentation-shell): Technical docs shell with sticky sidebar topic hierarchy, reading center, and on-page table of contents. (shells, layout)
 - [Drawer](https://tessellate.design/r/drawer): Slide-out side panel for contextual inspections, property editing, or complex drilldowns. (primitives, overlays, layout)
 - [Dropdown Menu](https://tessellate.design/r/dropdown-menu): Floating contextual menu with item hover states, shortcut indicators, and dividers. (primitives, overlays, navigation)
 - [Dual-Rail Navigation](https://tessellate.design/r/dual-rail-nav): Two-tier navigation shell with primary app rail (48px) and contextual sub-navigation list (200px). (shells, navigation)
 - [Editor Workspace Shell](https://tessellate.design/r/editor-workspace-shell): Code and structured text editing shell with gutter line numbers, status bar, and tab bar. (shells, layout)
 - [Editorial Hero](https://tessellate.design/r/editorial-hero): Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs. (sections, marketing, hero)
+- [Empty Workspace](https://tessellate.design/r/empty-workspace): Empty state placeholder card with welcoming illustration and primary create action. (blocks, onboarding, empty)
+- [Entity List](https://tessellate.design/r/entity-list): Clean vertical item list with avatar/status, main description, and quick menu trigger. (blocks, data, lists)
+- [Entity Overview](https://tessellate.design/r/entity-overview): Summary card with high-level description, primary KPIs, and operational tags. (blocks, entities, overview)
+- [Entity Profile Header](https://tessellate.design/r/entity-profile-header): Hero card for entity details with avatar, title, status badge, action bar, and key stats. (blocks, entities, header)
+- [Entity Search](https://tessellate.design/r/entity-search): Specific entity-lookup block with debounce input, recent searches, and inline preview. (blocks, search, entity)
+- [Executive Summary Panel](https://tessellate.design/r/executive-summary-panel): High-level synthesis card summarizing critical alerts, key wins, and risk flags. (blocks, dashboards, summary)
+- [Expandable Data Table](https://tessellate.design/r/expandable-data-table): Data grid where each row expands to reveal detailed sub-attributes or nested logs. (blocks, data, tables)
+- [Faceted Search Results](https://tessellate.design/r/faceted-search-results): Search results accompanied by facet checkboxes (type, status, tags, author). (blocks, search, facets)
 - [FAQ Accordion](https://tessellate.design/r/faq-accordion): Clean expandable question list with keyboard navigation and smooth disclosure. (sections, marketing, faq)
 - [FAQ Searchable](https://tessellate.design/r/faq-searchable): Filterable FAQ section with live search input and category filter chips. (sections, marketing, faq)
 - [FAQ Two Column](https://tessellate.design/r/faq-two-column): Dual-column question layout for high question density without excessive vertical length. (sections, marketing, faq)
@@ -148,24 +171,30 @@ Tools provided:
 - [Feature Timeline](https://tessellate.design/r/feature-timeline): Chronological evolution or milestone timeline with connecting guides and release tags. (sections, marketing, features)
 - [Feature with Code](https://tessellate.design/r/feature-with-code): Deep-dive feature section pairing architectural narrative with typed code snippet tabs. (sections, marketing, features)
 - [Feature with Live Demo](https://tessellate.design/r/feature-with-live-demo): Feature showcase paired directly with an interactive sandbox state toggle. (sections, marketing, features)
+- [File Browser](https://tessellate.design/r/file-browser): Tree view file explorer with folder toggles, file extension icons, and selection states. (blocks, entities, files)
+- [Filter Builder](https://tessellate.design/r/filter-builder): Interactive compound filter constructor with field, operator, and value rows. (blocks, search, filters)
 - [Floating Navigation](https://tessellate.design/r/floating-nav): Island-style floating navigation pill pinned to top viewport with rounded corners and glass blur. (shells, navigation)
 - [Footer Developer](https://tessellate.design/r/footer-developer): Terminal-styled developer footer with CLI command snippet, API status, and git commit sha. (sections, marketing, footer)
 - [Footer Minimal](https://tessellate.design/r/footer-minimal): Single-line copyright, status indicator, and legal links with minimal footprint. (sections, marketing, footer)
 - [Footer Newsletter](https://tessellate.design/r/footer-newsletter): Focused email subscription banner with privacy assurance and social icon bar. (sections, marketing, footer)
 - [Footer Product](https://tessellate.design/r/footer-product): Product-centric footer featuring release changelog badge, newsletter input, and nav columns. (sections, marketing, footer)
 - [Footer Sitemap](https://tessellate.design/r/footer-sitemap): Multi-column directory footer with category link lists, logo, and language selector. (sections, marketing, footer)
+- [Global Search Results](https://tessellate.design/r/global-search-results): Search results panel with category groupings, score highlights, and keyboard shortcuts. (blocks, search, results)
+- [Grouped Data Table](https://tessellate.design/r/grouped-data-table): Table with hierarchical category headers grouping related entity records. (blocks, data, tables)
 - [How It Works Interactive](https://tessellate.design/r/how-it-works-interactive): Interactive stepper allowing users to click through stages of the pipeline. (sections, marketing, explanation)
 - [How It Works Steps](https://tessellate.design/r/how-it-works-steps): Numbered 3-part execution flow with step badges, titles, and illustrative diagrams. (sections, marketing, explanation)
 - [How It Works Timeline](https://tessellate.design/r/how-it-works-timeline): Vertical progression path showing end-to-end user lifecycle from install to scale. (sections, marketing, explanation)
 - [Icon Button](https://tessellate.design/r/icon-button): Compact icon-only action trigger with tooltip support and accessible label semantics. (primitives, inputs, actions)
 - [Icon Rail](https://tessellate.design/r/icon-rail): Ultra-thin vertical action rail for high-frequency tool selection in design editors. (shells, navigation)
 - [Immersive Fullscreen Shell](https://tessellate.design/r/immersive-fullscreen-shell): Distraction-free edge-to-edge presentation shell with auto-hiding chrome and focus mode. (shells, layout)
+- [Import Data Flow](https://tessellate.design/r/import-data-flow): File drag-and-drop ingestion card supporting schema upload and progress indicators. (blocks, onboarding, import)
 - [Inline Alert](https://tessellate.design/r/inline-alert): In-page contextual message banner conveying informational, success, warning, or danger states. (primitives, feedback)
 - [Text Input](https://tessellate.design/r/input): Clean, accessible single-line text input with label, helper copy, and error states. (primitives, inputs)
 - [Integration Directory Preview](https://tessellate.design/r/integration-directory-preview): Searchable catalog preview of ecosystem plugins with filter chips. (sections, marketing, integrations)
 - [Integration Grid](https://tessellate.design/r/integration-grid): Icon grid displaying supported third-party tools, frameworks, and cloud services. (sections, marketing, integrations)
 - [Integration Orbit](https://tessellate.design/r/integration-orbit): Central product node surrounded by connected ecosystem nodes with radial alignment. (sections, marketing, integrations)
 - [Interactive Demo Hero](https://tessellate.design/r/interactive-demo-hero): Hero with inline interactive tabbed preview allowing immediate hands-on feature exploration. (sections, marketing, hero)
+- [Kanban Board](https://tessellate.design/r/kanban-board): Multi-column task board with status lanes (Todo, In Progress, Done) and draggable cards. (blocks, data, planning)
 - [Kiosk Display Shell](https://tessellate.design/r/kiosk-display-shell): Digital signage kiosk shell with high contrast typography, touch safety, and timeout reset. (shells, layout)
 - [Link](https://tessellate.design/r/link): Accessible semantic anchor navigation primitive with tactile underline animation and external indicators. (primitives, navigation)
 - [Logo Cloud Marquee](https://tessellate.design/r/logo-cloud-marquee): Smooth continuous horizontal strip of partner and customer wordmarks. (sections, marketing, trust)
@@ -173,15 +202,23 @@ Tools provided:
 - [Marketing Navigation with CTA](https://tessellate.design/r/marketing-nav-cta): High-conversion header with promotional badge, navigation links, and primary CTA trigger. (shells, navigation)
 - [Mega Navigation](https://tessellate.design/r/mega-nav): Comprehensive multi-column dropdown header exposing broad product suite categories. (shells, navigation)
 - [Messaging Shell](https://tessellate.design/r/messaging-shell): Real-time conversation shell with channel sidebar, chat stream, and message composer. (shells, layout)
+- [Messaging Thread](https://tessellate.design/r/messaging-thread): Conversation stream with speech bubbles, timestamp markers, and quick input bar. (blocks, collaboration, messaging)
+- [Metadata Panel](https://tessellate.design/r/metadata-panel): Structured key-value property inspector with copy triggers and type badges. (blocks, entities, metadata)
 - [Minimal Statement Hero](https://tessellate.design/r/minimal-statement-hero): Ultra-bold typography-only manifesto statement hero with maximum negative space. (sections, marketing, hero)
 - [Minimal Top Navigation](https://tessellate.design/r/minimal-top-nav): Restrained horizontal header with brand mark, essential route links, and profile badge. (shells, navigation)
 - [Mobile Bottom Navigation](https://tessellate.design/r/mobile-bottom-nav): Fixed bottom thumb-friendly tab bar for mobile web apps with icon and label pairs. (shells, navigation, mobile)
 - [Mobile Drawer Navigation](https://tessellate.design/r/mobile-drawer-nav): Hamburger slide-out overlay drawer displaying full mobile navigation menu. (shells, navigation, mobile)
 - [Multi-select](https://tessellate.design/r/multi-select): Tag-based selection input allowing multiple choices with removable pills. (primitives, inputs)
+- [Notification Centre](https://tessellate.design/r/notification-centre): Alert and message stream with dismiss actions, read status toggles, and filters. (blocks, dashboards, notifications)
 - [Number Input](https://tessellate.design/r/number-input): Stepper input control with increment/decrement buttons, min/max bounds, and unit suffix. (primitives, inputs)
+- [Onboarding Checklist](https://tessellate.design/r/onboarding-checklist): Checklist guide with completion progress bar helping new users complete first tasks. (blocks, onboarding, checklist)
+- [Onboarding Role Select](https://tessellate.design/r/onboarding-role-select): Role segmentation card picker (Engineer, Designer, Agent Architect, Founder). (blocks, onboarding, segmentation)
+- [Onboarding Wizard](https://tessellate.design/r/onboarding-wizard): Multi-step guided setup wizard with progress bar and next/previous controls. (blocks, onboarding, wizard)
+- [Organization Settings](https://tessellate.design/r/organization-settings): Tenant profile configuration covering workspace domain, branding, and billing email. (blocks, settings, organization)
 - [Pagination](https://tessellate.design/r/pagination): Page traversal bar with previous/next triggers, page numbering, and ellipsis jumps. (primitives, navigation)
 - [Password Input](https://tessellate.design/r/password-input): Masked credential field with toggleable eye icon and password strength meter. (primitives, inputs, auth)
 - [Performance Benchmark Section](https://tessellate.design/r/performance-benchmark-section): Bar chart benchmarks comparing execution latency and throughput against industry baselines. (sections, marketing, technical-proof)
+- [Pinned Items](https://tessellate.design/r/pinned-items): User-favorited resources and project bookmarks with quick unpin toggles. (blocks, dashboards, favorites)
 - [Plan Feature Matrix](https://tessellate.design/r/plan-feature-matrix): Segmented feature comparison with expandable category groupings. (sections, marketing, pricing)
 - [Popover](https://tessellate.design/r/popover): Floating rich content card anchored to a target trigger with dismissal handling. (primitives, overlays)
 - [Press Mentions Strip](https://tessellate.design/r/press-mentions-strip): Curated editorial press quote row with publication logos and external publication links. (sections, marketing, trust)
@@ -194,13 +231,21 @@ Tools provided:
 - [Pricing Usage Based](https://tessellate.design/r/pricing-usage-based): Pay-as-you-go pricing card with tier volume sliders and unit-cost breakdowns. (sections, marketing, pricing)
 - [Process Diagram](https://tessellate.design/r/process-diagram): Visual flowchart explaining system data pipeline from ingestion to output. (sections, marketing, explanation)
 - [Product Screenshot Hero](https://tessellate.design/r/product-screenshot-hero): Centered headline with perspective tilted application screenshot frame and browser chrome. (sections, marketing, hero)
+- [Profile Settings](https://tessellate.design/r/profile-settings): User settings form with avatar uploader, display name, handle, and email inputs. (blocks, settings, profile)
 - [Progress Bar](https://tessellate.design/r/progress-bar): Linear progress meter with determinate percentage progress and indeterminate pulse. (primitives, feedback)
 - [Progress Ring](https://tessellate.design/r/progress-ring): Circular radial progress meter with smooth stroke animation and central metric label. (primitives, feedback)
 - [Project Switcher](https://tessellate.design/r/project-switcher): Header breadcrumb trigger for toggling between project repositories or composed interfaces. (shells, navigation)
+- [Query Builder](https://tessellate.design/r/query-builder): Visual query constructor combining Boolean conditions (AND/OR) with nested groups. (blocks, search, query)
+- [Quick Actions Panel](https://tessellate.design/r/quick-actions-panel): Grid of immediate high-frequency operational triggers and shortcut launchers. (blocks, dashboards, actions)
 - [Radio Group](https://tessellate.design/r/radio-group): Accessible single-choice selection group with circle indicators and keyboard navigation. (primitives, inputs)
 - [Range Slider](https://tessellate.design/r/range-slider): Dual-thumb interval selector for bounding min/max numerical thresholds simultaneously. (primitives, inputs)
+- [Recent Items](https://tessellate.design/r/recent-items): List of recently modified files, projects, or manifests with timestamp and author. (blocks, dashboards, navigation)
+- [Relationship Panel](https://tessellate.design/r/relationship-panel): Graph-like panel listing incoming and outgoing component dependencies and links. (blocks, entities, graph)
 - [Research Terminal Shell](https://tessellate.design/r/research-terminal-shell): Scholarly exploration workspace with paper abstract viewer, citation graph, and notes rail. (shells, layout)
 - [Responsive App Shell](https://tessellate.design/r/responsive-app-shell): Unified application shell adapting gracefully from desktop sidebar to mobile bottom bar. (shells, layout)
+- [Role Permissions](https://tessellate.design/r/role-permissions): Matrix defining role permissions (Admin, Editor, Viewer) across operations. (blocks, settings, permissions)
+- [Saved Views](https://tessellate.design/r/saved-views): Saved query and filter preset tabs for quick switching between operational viewpoints. (blocks, search, views)
+- [Schedule Agenda](https://tessellate.design/r/schedule-agenda): Linear agenda list of upcoming events sorted by time with location tags. (blocks, data, calendar)
 - [Search-First Header](https://tessellate.design/r/search-first-header): Global top navigation centered around expansive query input, filters, and notification bell. (shells, navigation)
 - [Search-First Hero](https://tessellate.design/r/search-first-hero): Command-bar-centric hero with prominent search input, trending suggestions, and category chips. (sections, marketing, hero)
 - [Search Input](https://tessellate.design/r/search-input): High-visibility search field with magnifying glass icon, keyboard shortcut badge (⌘K), and instant clear. (primitives, inputs, search)
@@ -208,27 +253,38 @@ Tools provided:
 - [Segmented Control](https://tessellate.design/r/segmented-control): High-density toggle bar with active sliding pill indicator between mutual modes. (primitives, inputs)
 - [Select](https://tessellate.design/r/select): Accessible styled dropdown selector with trigger, chevron indicator, and options. (primitives, inputs)
 - [Separator](https://tessellate.design/r/separator): Clean hairline divider line supporting horizontal and vertical orientations and middle labels. (primitives, layout)
+- [Settings Navigation](https://tessellate.design/r/settings-navigation): Vertical or horizontal tabs linking administrative sections (Account, Team, Billing, API). (blocks, settings, navigation)
 - [Settings Shell](https://tessellate.design/r/settings-shell): Account and workspace preference shell with category navigation tabs and form sections. (shells, layout)
 - [Skeleton](https://tessellate.design/r/skeleton): Content placeholder animation primitive preventing layout shift during loading. (primitives, feedback)
 - [Slider](https://tessellate.design/r/slider): Smooth continuous value slider with track, fill, and precision drag thumb. (primitives, inputs)
 - [Social Proof Hero](https://tessellate.design/r/social-proof-hero): Headline anchored by trust metrics, customer avatar stack, and star review rating strip. (sections, marketing, hero)
 - [Split Button](https://tessellate.design/r/split-button): Dual-action trigger combining primary immediate intent with secondary dropdown alternatives. (primitives, inputs, actions)
 - [Split Product Hero](https://tessellate.design/r/split-product-hero): 50/50 split layout with narrative copy on left and live interactive widget on right. (sections, marketing, hero)
+- [Status Overview](https://tessellate.design/r/status-overview): System health dashboard block tracking services, regional latency, and incident reports. (blocks, dashboards, status)
 - [Switch](https://tessellate.design/r/switch): Accessible sliding toggle switch for boolean preferences and instant settings. (primitives, inputs)
 - [Tab Workspace Navigation](https://tessellate.design/r/tab-workspace-nav): Browser-style multi-tab document bar with close buttons and split view triggers. (shells, navigation)
 - [Tabs](https://tessellate.design/r/tabs): Accessible tabbed navigation system with active underlined or pill indicators and panels. (primitives, navigation)
 - [Tag Chip](https://tessellate.design/r/tag-chip): Clickable and removable categorical chip token for multi-criteria filters. (primitives, inputs)
+- [Task Detail](https://tessellate.design/r/task-detail): Detailed issue view with assignee dropdown, status selector, priority tag, and subtasks. (blocks, collaboration, task)
+- [Team Management](https://tessellate.design/r/team-management): Member roster with invite link modal, role assignment selects, and removal actions. (blocks, settings, team)
 - [Testimonial Carousel](https://tessellate.design/r/testimonial-carousel): Paginated card slider with testimonial quotes, author details, and next/prev controls. (sections, marketing, trust)
 - [Testimonial Grid](https://tessellate.design/r/testimonial-grid): 3-column card grid of customer endorsements with rating stars and company tags. (sections, marketing, trust)
 - [Testimonial Quote](https://tessellate.design/r/testimonial-quote): Featured customer pull-quote with oversized quotation mark, portrait avatar, and bio. (sections, marketing, trust)
 - [Textarea](https://tessellate.design/r/textarea): Multi-line text input primitive with character counter, accessible label, and auto-expand support. (primitives, inputs)
 - [Three-Pane App Shell](https://tessellate.design/r/three-pane-app-shell): Pro desktop shell with navigation sidebar, primary workspace canvas, and right property inspector. (shells, layout)
+- [Timeline](https://tessellate.design/r/timeline): Chronological event list with vertical connecting line and timestamp nodes. (blocks, data, planning)
 - [Toast](https://tessellate.design/r/toast): Ephemeral floating notification banner with auto-dismiss timers and action hooks. (primitives, feedback)
 - [Tooltip](https://tessellate.design/r/tooltip): Micro-interaction popup providing contextual hints on hover or keyboard focus. (primitives, feedback)
 - [Transparent-to-Solid Navigation](https://tessellate.design/r/transparent-solid-nav): Dynamic header starting transparent over media heroes and transitioning solid on scroll. (shells, navigation)
 - [Trust Badges Strip](https://tessellate.design/r/trust-badges-strip): Security, compliance, and SOC2 / ISO / HIPAA certification badge strip. (sections, marketing, trust)
 - [Two-Pane Master Detail Shell](https://tessellate.design/r/two-pane-master-detail-shell): Split-view shell pairing searchable master entity list with comprehensive detail reader pane. (shells, layout)
+- [Upgrade Prompt](https://tessellate.design/r/upgrade-prompt): In-app upgrade callout card presenting locked feature benefits and upgrade trigger. (blocks, onboarding, upgrade)
+- [Usage Overview](https://tessellate.design/r/usage-overview): Quota progress bars tracking API calls, active seats, and cloud storage capacity. (blocks, settings, usage)
+- [Version History](https://tessellate.design/r/version-history): Changelog of document revisions with restore buttons, diff flags, and author details. (blocks, entities, history)
 - [Video Hero](https://tessellate.design/r/video-hero): Cinematic header with ambient video background placeholder, gradient veil, and play trigger. (sections, marketing, hero)
+- [Watchlist Panel](https://tessellate.design/r/watchlist-panel): Monitored entities or stocks table with streaming value fluctuations and alert bells. (blocks, dashboards, finance)
+- [Webhook Management](https://tessellate.design/r/webhook-management): Endpoint destination manager with event subscription triggers and delivery logs. (blocks, settings, webhooks)
+- [Workflow Builder](https://tessellate.design/r/workflow-builder): Node-based visual automation flow designer linking triggers, conditions, and actions. (blocks, collaboration, workflow)
 - [Workflow Narrative](https://tessellate.design/r/workflow-narrative): Structured editorial walk-through explaining developer ergonomics and day-to-day use. (sections, marketing, explanation)
 - [Workspace Switcher](https://tessellate.design/r/workspace-switcher): Dropdown trigger displaying current tenant organization with plan badge and fast team switching. (shells, navigation)
 
@@ -319,6 +375,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Activity Feed (`activity-feed`)
+- **Type**: block
+- **Categories**: blocks, dashboards, activity
+- **Description**: Chronological timeline of system events, team actions, and commit updates.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/activity-feed.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Admin Console Shell (`admin-console-shell`)
 - **Type**: block
 - **Categories**: shells, layout
@@ -354,6 +451,47 @@ Tools provided:
   - asymmetry: 15
   - conversionIntensity: 50
   - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Advanced Data Table (`advanced-data-table`)
+- **Type**: block
+- **Categories**: blocks, data, tables
+- **Description**: Feature-rich data table with column sorting, checkbox selection, pagination, and filter bar.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/advanced-data-table.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -524,6 +662,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### API Key Management (`api-key-management`)
+- **Type**: block
+- **Categories**: blocks, settings, api
+- **Description**: Secret key manager with generate modal, masked token display, and revocation buttons.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/api-key-management.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### App Sidebar Compact (`app-sidebar-compact`)
 - **Type**: block
 - **Categories**: shells, navigation
@@ -606,6 +785,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Approval Queue (`approval-queue`)
+- **Type**: block
+- **Categories**: blocks, collaboration, approval
+- **Description**: Decision workflow queue with Approve/Reject actions and reason commentary.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/approval-queue.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Architecture Diagram Section (`architecture-diagram-section`)
 - **Type**: section
 - **Categories**: sections, marketing, technical-proof
@@ -641,6 +861,47 @@ Tools provided:
   - asymmetry: 25
   - conversionIntensity: 75
   - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Audit Log (`audit-log`)
+- **Type**: block
+- **Categories**: blocks, entities, audit
+- **Description**: Security and governance audit log table recording user actions, IP addresses, and hashes.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/audit-log.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -805,6 +1066,47 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Billing Overview (`billing-overview`)
+- **Type**: block
+- **Categories**: blocks, settings, billing
+- **Description**: Subscription status panel with card on file, next invoice date, and plan upgrade trigger.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/billing-overview.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -1010,6 +1312,88 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Calendar Month (`calendar-month`)
+- **Type**: block
+- **Categories**: blocks, data, calendar
+- **Description**: Monthly 7x5 grid view with day numbers, event markers, and active date highlights.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/calendar-month.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Calendar Week (`calendar-week`)
+- **Type**: block
+- **Categories**: blocks, data, calendar
+- **Description**: 7-column weekly schedule view displaying time slots and scheduled appointment cards.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/calendar-week.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -1467,6 +1851,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Command Results (`command-results`)
+- **Type**: block
+- **Categories**: blocks, search, command
+- **Description**: Action-oriented palette result list with shortcut pills and description metadata.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/command-results.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Commerce Management Shell (`commerce-management-shell`)
 - **Type**: block
 - **Categories**: shells, layout
@@ -1502,6 +1927,88 @@ Tools provided:
   - asymmetry: 15
   - conversionIntensity: 50
   - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Compact Data Table (`compact-data-table`)
+- **Type**: block
+- **Categories**: blocks, data, tables
+- **Description**: High-density tabular list designed for tight panels and real-time feeds.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/compact-data-table.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Comparison Table (`comparison-table`)
+- **Type**: block
+- **Categories**: blocks, data, comparison
+- **Description**: Matrix comparing parameters or feature sets across multiple items side by side.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/comparison-table.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -1625,6 +2132,47 @@ Tools provided:
   - asymmetry: 15
   - conversionIntensity: 50
   - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Conversation List (`conversation-list`)
+- **Type**: block
+- **Categories**: blocks, collaboration, channels
+- **Description**: Channel and direct message thread list with unread counters and presence badges.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/conversation-list.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -1959,6 +2507,88 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Dashboard KPI Grid (`dashboard-kpi-grid`)
+- **Type**: block
+- **Categories**: blocks, dashboards, kpi
+- **Description**: Multi-column grid of key performance cards with visual trend indicators and contextual meta.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/dashboard-kpi-grid.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Dashboard KPI Strip (`dashboard-kpi-strip`)
+- **Type**: block
+- **Categories**: blocks, dashboards, kpi
+- **Description**: Horizontal metric row featuring primary metrics, deltas, and micro sparkline indicators.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/dashboard-kpi-strip.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Data Hero (`data-hero`)
 - **Type**: section
 - **Categories**: sections, marketing, hero
@@ -2117,6 +2747,47 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Document Detail (`document-detail`)
+- **Type**: block
+- **Categories**: blocks, entities, document
+- **Description**: Rich structured view of a selected document, complete with formatted text and download CTA.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/document-detail.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -2363,6 +3034,334 @@ Tools provided:
   - asymmetry: 25
   - conversionIntensity: 75
   - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Empty Workspace (`empty-workspace`)
+- **Type**: block
+- **Categories**: blocks, onboarding, empty
+- **Description**: Empty state placeholder card with welcoming illustration and primary create action.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/empty-workspace.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Entity List (`entity-list`)
+- **Type**: block
+- **Categories**: blocks, data, lists
+- **Description**: Clean vertical item list with avatar/status, main description, and quick menu trigger.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/entity-list.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Entity Overview (`entity-overview`)
+- **Type**: block
+- **Categories**: blocks, entities, overview
+- **Description**: Summary card with high-level description, primary KPIs, and operational tags.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/entity-overview.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Entity Profile Header (`entity-profile-header`)
+- **Type**: block
+- **Categories**: blocks, entities, header
+- **Description**: Hero card for entity details with avatar, title, status badge, action bar, and key stats.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/entity-profile-header.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Entity Search (`entity-search`)
+- **Type**: block
+- **Categories**: blocks, search, entity
+- **Description**: Specific entity-lookup block with debounce input, recent searches, and inline preview.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/entity-search.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Executive Summary Panel (`executive-summary-panel`)
+- **Type**: block
+- **Categories**: blocks, dashboards, summary
+- **Description**: High-level synthesis card summarizing critical alerts, key wins, and risk flags.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/executive-summary-panel.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Expandable Data Table (`expandable-data-table`)
+- **Type**: block
+- **Categories**: blocks, data, tables
+- **Description**: Data grid where each row expands to reveal detailed sub-attributes or nested logs.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/expandable-data-table.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Faceted Search Results (`faceted-search-results`)
+- **Type**: block
+- **Categories**: blocks, search, facets
+- **Description**: Search results accompanied by facet checkboxes (type, status, tags, author).
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/faceted-search-results.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -3066,6 +4065,88 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### File Browser (`file-browser`)
+- **Type**: block
+- **Categories**: blocks, entities, files
+- **Description**: Tree view file explorer with folder toggles, file extension icons, and selection states.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/file-browser.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Filter Builder (`filter-builder`)
+- **Type**: block
+- **Categories**: blocks, search, filters
+- **Description**: Interactive compound filter constructor with field, operator, and value rows.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/filter-builder.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Floating Navigation (`floating-nav`)
 - **Type**: block
 - **Categories**: shells, navigation
@@ -3306,6 +4387,88 @@ Tools provided:
   - asymmetry: 25
   - conversionIntensity: 75
   - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Global Search Results (`global-search-results`)
+- **Type**: block
+- **Categories**: blocks, search, results
+- **Description**: Search results panel with category groupings, score highlights, and keyboard shortcuts.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/global-search-results.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Grouped Data Table (`grouped-data-table`)
+- **Type**: block
+- **Categories**: blocks, data, tables
+- **Description**: Table with hierarchical category headers grouping related entity records.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/grouped-data-table.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -3558,6 +4721,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Import Data Flow (`import-data-flow`)
+- **Type**: block
+- **Categories**: blocks, onboarding, import
+- **Description**: File drag-and-drop ingestion card supporting schema upload and progress indicators.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/import-data-flow.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Inline Alert (`inline-alert`)
 - **Type**: primitive
 - **Categories**: primitives, feedback
@@ -3798,6 +5002,47 @@ Tools provided:
   - asymmetry: 25
   - conversionIntensity: 75
   - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Kanban Board (`kanban-board`)
+- **Type**: block
+- **Categories**: blocks, data, planning
+- **Description**: Multi-column task board with status lanes (Todo, In Progress, Done) and draggable cards.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/kanban-board.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -4091,6 +5336,88 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Messaging Thread (`messaging-thread`)
+- **Type**: block
+- **Categories**: blocks, collaboration, messaging
+- **Description**: Conversation stream with speech bubbles, timestamp markers, and quick input bar.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/messaging-thread.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Metadata Panel (`metadata-panel`)
+- **Type**: block
+- **Categories**: blocks, entities, metadata
+- **Description**: Structured key-value property inspector with copy triggers and type badges.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/metadata-panel.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Minimal Statement Hero (`minimal-statement-hero`)
 - **Type**: section
 - **Categories**: sections, marketing, hero
@@ -4296,6 +5623,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Notification Centre (`notification-centre`)
+- **Type**: block
+- **Categories**: blocks, dashboards, notifications
+- **Description**: Alert and message stream with dismiss actions, read status toggles, and filters.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/notification-centre.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Number Input (`number-input`)
 - **Type**: primitive
 - **Categories**: primitives, inputs
@@ -4331,6 +5699,170 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Onboarding Checklist (`onboarding-checklist`)
+- **Type**: block
+- **Categories**: blocks, onboarding, checklist
+- **Description**: Checklist guide with completion progress bar helping new users complete first tasks.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/onboarding-checklist.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Onboarding Role Select (`onboarding-role-select`)
+- **Type**: block
+- **Categories**: blocks, onboarding, segmentation
+- **Description**: Role segmentation card picker (Engineer, Designer, Agent Architect, Founder).
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/onboarding-role-select.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Onboarding Wizard (`onboarding-wizard`)
+- **Type**: block
+- **Categories**: blocks, onboarding, wizard
+- **Description**: Multi-step guided setup wizard with progress bar and next/previous controls.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/onboarding-wizard.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Organization Settings (`organization-settings`)
+- **Type**: block
+- **Categories**: blocks, settings, organization
+- **Description**: Tenant profile configuration covering workspace domain, branding, and billing email.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/organization-settings.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -4454,6 +5986,47 @@ Tools provided:
   - asymmetry: 25
   - conversionIntensity: 75
   - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Pinned Items (`pinned-items`)
+- **Type**: block
+- **Categories**: blocks, dashboards, favorites
+- **Description**: User-favorited resources and project bookmarks with quick unpin toggles.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/pinned-items.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -4952,6 +6525,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Profile Settings (`profile-settings`)
+- **Type**: block
+- **Categories**: blocks, settings, profile
+- **Description**: User settings form with avatar uploader, display name, handle, and email inputs.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/profile-settings.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Progress Bar (`progress-bar`)
 - **Type**: primitive
 - **Categories**: primitives, feedback
@@ -5075,6 +6689,88 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Query Builder (`query-builder`)
+- **Type**: block
+- **Categories**: blocks, search, query
+- **Description**: Visual query constructor combining Boolean conditions (AND/OR) with nested groups.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/query-builder.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Quick Actions Panel (`quick-actions-panel`)
+- **Type**: block
+- **Categories**: blocks, dashboards, actions
+- **Description**: Grid of immediate high-frequency operational triggers and shortcut launchers.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/quick-actions-panel.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Radio Group (`radio-group`)
 - **Type**: primitive
 - **Categories**: primitives, inputs
@@ -5157,6 +6853,88 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Recent Items (`recent-items`)
+- **Type**: block
+- **Categories**: blocks, dashboards, navigation
+- **Description**: List of recently modified files, projects, or manifests with timestamp and author.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/recent-items.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Relationship Panel (`relationship-panel`)
+- **Type**: block
+- **Categories**: blocks, entities, graph
+- **Description**: Graph-like panel listing incoming and outgoing component dependencies and links.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/relationship-panel.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Research Terminal Shell (`research-terminal-shell`)
 - **Type**: block
 - **Categories**: shells, layout
@@ -5233,6 +7011,129 @@ Tools provided:
   - asymmetry: 15
   - conversionIntensity: 50
   - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Role Permissions (`role-permissions`)
+- **Type**: block
+- **Categories**: blocks, settings, permissions
+- **Description**: Matrix defining role permissions (Admin, Editor, Viewer) across operations.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/role-permissions.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Saved Views (`saved-views`)
+- **Type**: block
+- **Categories**: blocks, search, views
+- **Description**: Saved query and filter preset tabs for quick switching between operational viewpoints.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/saved-views.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Schedule Agenda (`schedule-agenda`)
+- **Type**: block
+- **Categories**: blocks, data, calendar
+- **Description**: Linear agenda list of upcoming events sorted by time with location tags.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/schedule-agenda.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -5526,6 +7427,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Settings Navigation (`settings-navigation`)
+- **Type**: block
+- **Categories**: blocks, settings, navigation
+- **Description**: Vertical or horizontal tabs linking administrative sections (Account, Team, Billing, API).
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/settings-navigation.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Settings Shell (`settings-shell`)
 - **Type**: block
 - **Categories**: shells, layout
@@ -5772,6 +7714,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Status Overview (`status-overview`)
+- **Type**: block
+- **Categories**: blocks, dashboards, status
+- **Description**: System health dashboard block tracking services, regional latency, and incident reports.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/status-overview.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Switch (`switch`)
 - **Type**: primitive
 - **Categories**: primitives, inputs
@@ -5930,6 +7913,88 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Task Detail (`task-detail`)
+- **Type**: block
+- **Categories**: blocks, collaboration, task
+- **Description**: Detailed issue view with assignee dropdown, status selector, priority tag, and subtasks.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/task-detail.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Team Management (`team-management`)
+- **Type**: block
+- **Categories**: blocks, settings, team
+- **Description**: Member roster with invite link modal, role assignment selects, and removal actions.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/team-management.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -6141,6 +8206,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Timeline (`timeline`)
+- **Type**: block
+- **Categories**: blocks, data, planning
+- **Description**: Chronological event list with vertical connecting line and timestamp nodes.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/timeline.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Toast (`toast`)
 - **Type**: primitive
 - **Categories**: primitives, feedback
@@ -6346,6 +8452,129 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Upgrade Prompt (`upgrade-prompt`)
+- **Type**: block
+- **Categories**: blocks, onboarding, upgrade
+- **Description**: In-app upgrade callout card presenting locked feature benefits and upgrade trigger.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/upgrade-prompt.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Usage Overview (`usage-overview`)
+- **Type**: block
+- **Categories**: blocks, settings, usage
+- **Description**: Quota progress bars tracking API calls, active seats, and cloud storage capacity.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/usage-overview.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Version History (`version-history`)
+- **Type**: block
+- **Categories**: blocks, entities, history
+- **Description**: Changelog of document revisions with restore buttons, diff flags, and author details.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/version-history.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Video Hero (`video-hero`)
 - **Type**: section
 - **Categories**: sections, marketing, hero
@@ -6381,6 +8610,129 @@ Tools provided:
   - asymmetry: 25
   - conversionIntensity: 75
   - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Watchlist Panel (`watchlist-panel`)
+- **Type**: block
+- **Categories**: blocks, dashboards, finance
+- **Description**: Monitored entities or stocks table with streaming value fluctuations and alert bells.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/watchlist-panel.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Webhook Management (`webhook-management`)
+- **Type**: block
+- **Categories**: blocks, settings, webhooks
+- **Description**: Endpoint destination manager with event subscription triggers and delivery logs.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/webhook-management.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Workflow Builder (`workflow-builder`)
+- **Type**: block
+- **Categories**: blocks, collaboration, workflow
+- **Description**: Node-based visual automation flow designer linking triggers, conditions, and actions.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/workflow-builder.json
+- **Design DNA**:
+  - professionalism: 90
+  - playfulness: 20
+  - luxury: 45
+  - warmth: 30
+  - technicality: 80
+  - editorial: 60
+  - futurism: 40
+  - visualAmbition: 65
+  - structuralCreativity: 45
+  - density: 70
+  - whitespace: 45
+  - contrast: 80
+  - colourfulness: 30
+  - curvature: 35
+  - depth: 35
+  - motion: 25
+  - motionPlayfulness: 15
+  - typographicExpression: 50
+  - imageryIntensity: 10
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 75
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive

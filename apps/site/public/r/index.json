@@ -31,6 +31,20 @@
       ]
     },
     {
+      "name": "activity-feed",
+      "type": "registry:block",
+      "title": "Activity Feed",
+      "description": "Chronological timeline of system events, team actions, and commit updates.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "activity"
+      ]
+    },
+    {
       "name": "admin-console-shell",
       "type": "registry:block",
       "title": "Admin Console Shell",
@@ -41,6 +55,20 @@
       "categories": [
         "shells",
         "layout"
+      ]
+    },
+    {
+      "name": "advanced-data-table",
+      "type": "registry:block",
+      "title": "Advanced Data Table",
+      "description": "Feature-rich data table with column sorting, checkbox selection, pagination, and filter bar.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "tables"
       ]
     },
     {
@@ -99,6 +127,20 @@
       ]
     },
     {
+      "name": "api-key-management",
+      "type": "registry:block",
+      "title": "API Key Management",
+      "description": "Secret key manager with generate modal, masked token display, and revocation buttons.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "api"
+      ]
+    },
+    {
       "name": "app-sidebar-compact",
       "type": "registry:block",
       "title": "App Sidebar Compact",
@@ -125,6 +167,20 @@
       ]
     },
     {
+      "name": "approval-queue",
+      "type": "registry:block",
+      "title": "Approval Queue",
+      "description": "Decision workflow queue with Approve/Reject actions and reason commentary.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "collaboration",
+        "approval"
+      ]
+    },
+    {
       "name": "architecture-diagram-section",
       "type": "registry:block",
       "title": "Architecture Diagram Section",
@@ -136,6 +192,20 @@
         "sections",
         "marketing",
         "technical-proof"
+      ]
+    },
+    {
+      "name": "audit-log",
+      "type": "registry:block",
+      "title": "Audit Log",
+      "description": "Security and governance audit log table recording user actions, IP addresses, and hashes.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "audit"
       ]
     },
     {
@@ -188,6 +258,20 @@
       "categories": [
         "primitives",
         "display"
+      ]
+    },
+    {
+      "name": "billing-overview",
+      "type": "registry:block",
+      "title": "Billing Overview",
+      "description": "Subscription status panel with card on file, next invoice date, and plan upgrade trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "billing"
       ]
     },
     {
@@ -255,6 +339,34 @@
         "primitives",
         "inputs",
         "actions"
+      ]
+    },
+    {
+      "name": "calendar-month",
+      "type": "registry:block",
+      "title": "Calendar Month",
+      "description": "Monthly 7x5 grid view with day numbers, event markers, and active date highlights.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "calendar"
+      ]
+    },
+    {
+      "name": "calendar-week",
+      "type": "registry:block",
+      "title": "Calendar Week",
+      "description": "7-column weekly schedule view displaying time slots and scheduled appointment cards.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "calendar"
       ]
     },
     {
@@ -405,6 +517,20 @@
       ]
     },
     {
+      "name": "command-results",
+      "type": "registry:block",
+      "title": "Command Results",
+      "description": "Action-oriented palette result list with shortcut pills and description metadata.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "command"
+      ]
+    },
+    {
       "name": "commerce-management-shell",
       "type": "registry:block",
       "title": "Commerce Management Shell",
@@ -415,6 +541,34 @@
       "categories": [
         "shells",
         "layout"
+      ]
+    },
+    {
+      "name": "compact-data-table",
+      "type": "registry:block",
+      "title": "Compact Data Table",
+      "description": "High-density tabular list designed for tight panels and real-time feeds.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "tables"
+      ]
+    },
+    {
+      "name": "comparison-table",
+      "type": "registry:block",
+      "title": "Comparison Table",
+      "description": "Matrix comparing parameters or feature sets across multiple items side by side.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "comparison"
       ]
     },
     {
@@ -455,6 +609,20 @@
       "categories": [
         "shells",
         "layout"
+      ]
+    },
+    {
+      "name": "conversation-list",
+      "type": "registry:block",
+      "title": "Conversation List",
+      "description": "Channel and direct message thread list with unread counters and presence badges.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "collaboration",
+        "channels"
       ]
     },
     {
@@ -570,6 +738,34 @@
       ]
     },
     {
+      "name": "dashboard-kpi-grid",
+      "type": "registry:block",
+      "title": "Dashboard KPI Grid",
+      "description": "Multi-column grid of key performance cards with visual trend indicators and contextual meta.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "kpi"
+      ]
+    },
+    {
+      "name": "dashboard-kpi-strip",
+      "type": "registry:block",
+      "title": "Dashboard KPI Strip",
+      "description": "Horizontal metric row featuring primary metrics, deltas, and micro sparkline indicators.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "kpi"
+      ]
+    },
+    {
       "name": "data-hero",
       "type": "registry:block",
       "title": "Data Hero",
@@ -620,6 +816,20 @@
       "categories": [
         "primitives",
         "layout"
+      ]
+    },
+    {
+      "name": "document-detail",
+      "type": "registry:block",
+      "title": "Document Detail",
+      "description": "Rich structured view of a selected document, complete with formatted text and download CTA.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "document"
       ]
     },
     {
@@ -701,6 +911,118 @@
         "sections",
         "marketing",
         "hero"
+      ]
+    },
+    {
+      "name": "empty-workspace",
+      "type": "registry:block",
+      "title": "Empty Workspace",
+      "description": "Empty state placeholder card with welcoming illustration and primary create action.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "onboarding",
+        "empty"
+      ]
+    },
+    {
+      "name": "entity-list",
+      "type": "registry:block",
+      "title": "Entity List",
+      "description": "Clean vertical item list with avatar/status, main description, and quick menu trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "lists"
+      ]
+    },
+    {
+      "name": "entity-overview",
+      "type": "registry:block",
+      "title": "Entity Overview",
+      "description": "Summary card with high-level description, primary KPIs, and operational tags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "overview"
+      ]
+    },
+    {
+      "name": "entity-profile-header",
+      "type": "registry:block",
+      "title": "Entity Profile Header",
+      "description": "Hero card for entity details with avatar, title, status badge, action bar, and key stats.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "header"
+      ]
+    },
+    {
+      "name": "entity-search",
+      "type": "registry:block",
+      "title": "Entity Search",
+      "description": "Specific entity-lookup block with debounce input, recent searches, and inline preview.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "entity"
+      ]
+    },
+    {
+      "name": "executive-summary-panel",
+      "type": "registry:block",
+      "title": "Executive Summary Panel",
+      "description": "High-level synthesis card summarizing critical alerts, key wins, and risk flags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "summary"
+      ]
+    },
+    {
+      "name": "expandable-data-table",
+      "type": "registry:block",
+      "title": "Expandable Data Table",
+      "description": "Data grid where each row expands to reveal detailed sub-attributes or nested logs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "tables"
+      ]
+    },
+    {
+      "name": "faceted-search-results",
+      "type": "registry:block",
+      "title": "Faceted Search Results",
+      "description": "Search results accompanied by facet checkboxes (type, status, tags, author).",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "facets"
       ]
     },
     {
@@ -942,6 +1264,34 @@
       ]
     },
     {
+      "name": "file-browser",
+      "type": "registry:block",
+      "title": "File Browser",
+      "description": "Tree view file explorer with folder toggles, file extension icons, and selection states.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "files"
+      ]
+    },
+    {
+      "name": "filter-builder",
+      "type": "registry:block",
+      "title": "Filter Builder",
+      "description": "Interactive compound filter constructor with field, operator, and value rows.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "filters"
+      ]
+    },
+    {
       "name": "floating-nav",
       "type": "registry:block",
       "title": "Floating Navigation",
@@ -1022,6 +1372,34 @@
         "sections",
         "marketing",
         "footer"
+      ]
+    },
+    {
+      "name": "global-search-results",
+      "type": "registry:block",
+      "title": "Global Search Results",
+      "description": "Search results panel with category groupings, score highlights, and keyboard shortcuts.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "results"
+      ]
+    },
+    {
+      "name": "grouped-data-table",
+      "type": "registry:block",
+      "title": "Grouped Data Table",
+      "description": "Table with hierarchical category headers grouping related entity records.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "tables"
       ]
     },
     {
@@ -1107,6 +1485,20 @@
       ]
     },
     {
+      "name": "import-data-flow",
+      "type": "registry:block",
+      "title": "Import Data Flow",
+      "description": "File drag-and-drop ingestion card supporting schema upload and progress indicators.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "onboarding",
+        "import"
+      ]
+    },
+    {
       "name": "inline-alert",
       "type": "registry:ui",
       "title": "Inline Alert",
@@ -1186,6 +1578,20 @@
         "sections",
         "marketing",
         "hero"
+      ]
+    },
+    {
+      "name": "kanban-board",
+      "type": "registry:block",
+      "title": "Kanban Board",
+      "description": "Multi-column task board with status lanes (Todo, In Progress, Done) and draggable cards.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "planning"
       ]
     },
     {
@@ -1282,6 +1688,34 @@
       ]
     },
     {
+      "name": "messaging-thread",
+      "type": "registry:block",
+      "title": "Messaging Thread",
+      "description": "Conversation stream with speech bubbles, timestamp markers, and quick input bar.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "collaboration",
+        "messaging"
+      ]
+    },
+    {
+      "name": "metadata-panel",
+      "type": "registry:block",
+      "title": "Metadata Panel",
+      "description": "Structured key-value property inspector with copy triggers and type badges.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "metadata"
+      ]
+    },
+    {
       "name": "minimal-statement-hero",
       "type": "registry:block",
       "title": "Minimal Statement Hero",
@@ -1350,6 +1784,20 @@
       ]
     },
     {
+      "name": "notification-centre",
+      "type": "registry:block",
+      "title": "Notification Centre",
+      "description": "Alert and message stream with dismiss actions, read status toggles, and filters.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "notifications"
+      ]
+    },
+    {
       "name": "number-input",
       "type": "registry:ui",
       "title": "Number Input",
@@ -1360,6 +1808,62 @@
       "categories": [
         "primitives",
         "inputs"
+      ]
+    },
+    {
+      "name": "onboarding-checklist",
+      "type": "registry:block",
+      "title": "Onboarding Checklist",
+      "description": "Checklist guide with completion progress bar helping new users complete first tasks.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "onboarding",
+        "checklist"
+      ]
+    },
+    {
+      "name": "onboarding-role-select",
+      "type": "registry:block",
+      "title": "Onboarding Role Select",
+      "description": "Role segmentation card picker (Engineer, Designer, Agent Architect, Founder).",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "onboarding",
+        "segmentation"
+      ]
+    },
+    {
+      "name": "onboarding-wizard",
+      "type": "registry:block",
+      "title": "Onboarding Wizard",
+      "description": "Multi-step guided setup wizard with progress bar and next/previous controls.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "onboarding",
+        "wizard"
+      ]
+    },
+    {
+      "name": "organization-settings",
+      "type": "registry:block",
+      "title": "Organization Settings",
+      "description": "Tenant profile configuration covering workspace domain, branding, and billing email.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "organization"
       ]
     },
     {
@@ -1401,6 +1905,20 @@
         "sections",
         "marketing",
         "technical-proof"
+      ]
+    },
+    {
+      "name": "pinned-items",
+      "type": "registry:block",
+      "title": "Pinned Items",
+      "description": "User-favorited resources and project bookmarks with quick unpin toggles.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "favorites"
       ]
     },
     {
@@ -1571,6 +2089,20 @@
       ]
     },
     {
+      "name": "profile-settings",
+      "type": "registry:block",
+      "title": "Profile Settings",
+      "description": "User settings form with avatar uploader, display name, handle, and email inputs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "profile"
+      ]
+    },
+    {
       "name": "progress-bar",
       "type": "registry:ui",
       "title": "Progress Bar",
@@ -1610,6 +2142,34 @@
       ]
     },
     {
+      "name": "query-builder",
+      "type": "registry:block",
+      "title": "Query Builder",
+      "description": "Visual query constructor combining Boolean conditions (AND/OR) with nested groups.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "query"
+      ]
+    },
+    {
+      "name": "quick-actions-panel",
+      "type": "registry:block",
+      "title": "Quick Actions Panel",
+      "description": "Grid of immediate high-frequency operational triggers and shortcut launchers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "actions"
+      ]
+    },
+    {
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Radio Group",
@@ -1636,6 +2196,34 @@
       ]
     },
     {
+      "name": "recent-items",
+      "type": "registry:block",
+      "title": "Recent Items",
+      "description": "List of recently modified files, projects, or manifests with timestamp and author.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "navigation"
+      ]
+    },
+    {
+      "name": "relationship-panel",
+      "type": "registry:block",
+      "title": "Relationship Panel",
+      "description": "Graph-like panel listing incoming and outgoing component dependencies and links.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "graph"
+      ]
+    },
+    {
       "name": "research-terminal-shell",
       "type": "registry:block",
       "title": "Research Terminal Shell",
@@ -1659,6 +2247,48 @@
       "categories": [
         "shells",
         "layout"
+      ]
+    },
+    {
+      "name": "role-permissions",
+      "type": "registry:block",
+      "title": "Role Permissions",
+      "description": "Matrix defining role permissions (Admin, Editor, Viewer) across operations.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "permissions"
+      ]
+    },
+    {
+      "name": "saved-views",
+      "type": "registry:block",
+      "title": "Saved Views",
+      "description": "Saved query and filter preset tabs for quick switching between operational viewpoints.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "search",
+        "views"
+      ]
+    },
+    {
+      "name": "schedule-agenda",
+      "type": "registry:block",
+      "title": "Schedule Agenda",
+      "description": "Linear agenda list of upcoming events sorted by time with location tags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "calendar"
       ]
     },
     {
@@ -1756,6 +2386,20 @@
       ]
     },
     {
+      "name": "settings-navigation",
+      "type": "registry:block",
+      "title": "Settings Navigation",
+      "description": "Vertical or horizontal tabs linking administrative sections (Account, Team, Billing, API).",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "navigation"
+      ]
+    },
+    {
       "name": "settings-shell",
       "type": "registry:block",
       "title": "Settings Shell",
@@ -1837,6 +2481,20 @@
       ]
     },
     {
+      "name": "status-overview",
+      "type": "registry:block",
+      "title": "Status Overview",
+      "description": "System health dashboard block tracking services, regional latency, and incident reports.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "status"
+      ]
+    },
+    {
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
@@ -1886,6 +2544,34 @@
       "categories": [
         "primitives",
         "inputs"
+      ]
+    },
+    {
+      "name": "task-detail",
+      "type": "registry:block",
+      "title": "Task Detail",
+      "description": "Detailed issue view with assignee dropdown, status selector, priority tag, and subtasks.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "collaboration",
+        "task"
+      ]
+    },
+    {
+      "name": "team-management",
+      "type": "registry:block",
+      "title": "Team Management",
+      "description": "Member roster with invite link modal, role assignment selects, and removal actions.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "team"
       ]
     },
     {
@@ -1957,6 +2643,20 @@
       ]
     },
     {
+      "name": "timeline",
+      "type": "registry:block",
+      "title": "Timeline",
+      "description": "Chronological event list with vertical connecting line and timestamp nodes.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "data",
+        "planning"
+      ]
+    },
+    {
       "name": "toast",
       "type": "registry:ui",
       "title": "Toast",
@@ -2023,6 +2723,48 @@
       ]
     },
     {
+      "name": "upgrade-prompt",
+      "type": "registry:block",
+      "title": "Upgrade Prompt",
+      "description": "In-app upgrade callout card presenting locked feature benefits and upgrade trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "onboarding",
+        "upgrade"
+      ]
+    },
+    {
+      "name": "usage-overview",
+      "type": "registry:block",
+      "title": "Usage Overview",
+      "description": "Quota progress bars tracking API calls, active seats, and cloud storage capacity.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "usage"
+      ]
+    },
+    {
+      "name": "version-history",
+      "type": "registry:block",
+      "title": "Version History",
+      "description": "Changelog of document revisions with restore buttons, diff flags, and author details.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "entities",
+        "history"
+      ]
+    },
+    {
       "name": "video-hero",
       "type": "registry:block",
       "title": "Video Hero",
@@ -2034,6 +2776,48 @@
         "sections",
         "marketing",
         "hero"
+      ]
+    },
+    {
+      "name": "watchlist-panel",
+      "type": "registry:block",
+      "title": "Watchlist Panel",
+      "description": "Monitored entities or stocks table with streaming value fluctuations and alert bells.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "dashboards",
+        "finance"
+      ]
+    },
+    {
+      "name": "webhook-management",
+      "type": "registry:block",
+      "title": "Webhook Management",
+      "description": "Endpoint destination manager with event subscription triggers and delivery logs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "settings",
+        "webhooks"
+      ]
+    },
+    {
+      "name": "workflow-builder",
+      "type": "registry:block",
+      "title": "Workflow Builder",
+      "description": "Node-based visual automation flow designer linking triggers, conditions, and actions.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "blocks",
+        "collaboration",
+        "workflow"
       ]
     },
     {

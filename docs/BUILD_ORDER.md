@@ -481,7 +481,7 @@ Produce/curate in this order:
 - [x] 44 primitives & controls.
 - [x] 36 navigation/application shells.
 - [x] 72 marketing sections.
-- [ ] 56 application blocks.
+- [x] 56 application blocks.
 - [ ] 24 data resources.
 - [ ] 20 AI interaction patterns.
 - [ ] 24 motion/microinteraction resources.

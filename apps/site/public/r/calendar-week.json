@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "calendar-week",
+  "type": "registry:block",
+  "title": "Calendar Week",
+  "description": "7-column weekly schedule view displaying time slots and scheduled appointment cards.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type CalendarWeekVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CalendarWeekProps {\n  variant?: CalendarWeekVariant;\n}\n\nexport function CalendarWeek({ variant = 'quiet' }: CalendarWeekProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n  let slot = 'bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n    slot = 'bg-blue-50 text-blue-900 border border-blue-200';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    slot = 'bg-[#151921] text-cyan-300 border border-[#2E3440]';\n  }\n\n  const days = ['Mon 12', 'Tue 13', 'Wed 14', 'Thu 15', 'Fri 16'];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border overflow-x-auto transition-colors ${bg}`}>\n      <h3 className=\"text-sm font-semibold mb-4\">Weekly Schedule</h3>\n      <div className=\"grid grid-cols-5 gap-3 min-w-[500px]\">\n        {days.map((d) => (\n          <div key={d} className=\"border border-neutral-100 dark:border-neutral-800 rounded-lg p-3\">\n            <span className=\"font-mono text-[11px] font-bold block mb-3 text-neutral-500\">{d}</span>\n            <div className={`p-2 rounded text-[10px] font-semibold mb-2 ${slot}`}>\n              Design Review\n            </div>\n            <div className=\"text-[10px] opacity-40 font-mono\">No other events</div>\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { CalendarWeek, CalendarWeekVariant } from './index.js';\n\nexport function CalendarWeekPreview() {\n  const [variant, setVariant] = useState<CalendarWeekVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Calendar Week Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as CalendarWeekVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <CalendarWeek variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "data",
+    "calendar"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_calendar_week",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

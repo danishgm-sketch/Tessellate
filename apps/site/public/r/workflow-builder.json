@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "workflow-builder",
+  "type": "registry:block",
+  "title": "Workflow Builder",
+  "description": "Node-based visual automation flow designer linking triggers, conditions, and actions.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type WorkflowBuilderVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface WorkflowBuilderProps {\n  variant?: WorkflowBuilderVariant;\n}\n\nexport function WorkflowBuilder({ variant = 'quiet' }: WorkflowBuilderProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n  let node = 'border-neutral-200 bg-neutral-50/60 font-mono text-xs';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n    node = 'border-blue-200 bg-white shadow-2xs font-mono text-xs';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    node = 'border-[#2E3440] bg-[#151921] font-mono text-xs';\n  }\n\n  const nodes = [\n    { type: 'TRIGGER', title: 'On Manifest Change' },\n    { type: 'CONDITION', title: 'Quality >= 80' },\n    { type: 'ACTION', title: 'Emit Clean TSX Bundle' },\n  ];\n\n  return (\n    <div className={`w-full p-6 sm:p-8 rounded-xl border transition-colors ${bg}`}>\n      <h3 className=\"text-sm font-semibold mb-6\">Automation Pipeline</h3>\n      <div className=\"flex flex-col sm:flex-row items-center justify-between gap-3\">\n        {nodes.map((n, i) => (\n          <React.Fragment key={n.title}>\n            <div className={`p-4 rounded-xl border text-center w-full sm:w-auto ${node}`}>\n              <span className=\"text-[10px] font-bold opacity-50 block mb-1 uppercase\">{n.type}</span>\n              <span className=\"font-semibold\">{n.title}</span>\n            </div>\n            {i < nodes.length - 1 && (\n              <span className=\"text-neutral-400 font-bold rotate-90 sm:rotate-0\">→</span>\n            )}\n          </React.Fragment>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { WorkflowBuilder, WorkflowBuilderVariant } from './index.js';\n\nexport function WorkflowBuilderPreview() {\n  const [variant, setVariant] = useState<WorkflowBuilderVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Workflow Builder Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as WorkflowBuilderVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <div className=\"p-6\">\n        <WorkflowBuilder variant={variant} />\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "blocks",
+    "collaboration",
+    "workflow"
+  ],
+  "meta": {
+    "tessellateId": "res_blk_workflow_builder",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}
