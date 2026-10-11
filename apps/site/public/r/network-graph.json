@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "network-graph",
+  "type": "registry:component",
+  "title": "Network Graph",
+  "description": "Node-link topology diagram with circular nodes, interconnecting SVG edge lines, hub highlights, and cluster grouping.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type NetworkGraphVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface NetworkGraphProps {\n  variant?: NetworkGraphVariant;\n}\n\nexport function NetworkGraph({ variant = 'quiet' }: NetworkGraphProps) {\n  const [activeNode, setActiveNode] = useState<string | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const nodeFill =\n    variant === 'nocturne' ? '#06B6D4' : variant === 'expressive' ? '#2547E8' : '#171717';\n\n  const edgeStroke =\n    variant === 'nocturne' ? '#2E3440' : '#E5E7EB';\n\n  const nodes = [\n    { id: 'auth', label: 'Auth Service', x: 120, y: 70, size: 16 },\n    { id: 'api', label: 'API Gateway', x: 280, y: 110, size: 24 },\n    { id: 'db', label: 'D1 Database', x: 440, y: 70, size: 20 },\n    { id: 'cache', label: 'KV Cache', x: 280, y: 210, size: 14 },\n    { id: 'worker', label: 'Queue Worker', x: 440, y: 190, size: 18 },\n  ];\n\n  const edges = [\n    { from: 'auth', to: 'api' },\n    { from: 'api', to: 'db' },\n    { from: 'api', to: 'cache' },\n    { from: 'api', to: 'worker' },\n    { from: 'worker', to: 'db' },\n  ];\n\n  const getNode = (id: string) => nodes.find((n) => n.id === id);\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between mb-2\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Microservice Topology Graph</h4>\n          <p className=\"text-xs text-neutral-500\">Inter-service RPC communication mesh</p>\n        </div>\n        <span className=\"text-xs font-mono font-medium text-neutral-400\">5 Services | 5 Edges</span>\n      </div>\n\n      <div className=\"relative w-full overflow-hidden\">\n        <svg viewBox=\"0 0 560 260\" className=\"w-full h-auto overflow-visible select-none\">\n          {/* Edges */}\n          {edges.map((e, idx) => {\n            const n1 = getNode(e.from);\n            const n2 = getNode(e.to);\n            if (!n1 || !n2) return null;\n            const isHighlight = activeNode === e.from || activeNode === e.to;\n\n            return (\n              <line\n                key={idx}\n                x1={n1.x}\n                y1={n1.y}\n                x2={n2.x}\n                y2={n2.y}\n                stroke={isHighlight ? (variant === 'nocturne' ? '#38BDF8' : '#2547E8') : edgeStroke}\n                strokeWidth={isHighlight ? '2.5' : '1.5'}\n                className=\"transition-colors duration-200\"\n              />\n            );\n          })}\n\n          {/* Nodes */}\n          {nodes.map((n) => {\n            const isHovered = activeNode === n.id;\n            return (\n              <g\n                key={n.id}\n                onMouseEnter={() => setActiveNode(n.id)}\n                onMouseLeave={() => setActiveNode(null)}\n                className=\"cursor-pointer\"\n              >\n                <circle\n                  cx={n.x}\n                  cy={n.y}\n                  r={isHovered ? n.size + 4 : n.size}\n                  fill={nodeFill}\n                  stroke={variant === 'nocturne' ? '#000' : '#fff'}\n                  strokeWidth=\"2.5\"\n                  className=\"transition-all duration-200\"\n                />\n                <text\n                  x={n.x}\n                  y={n.y + n.size + 16}\n                  textAnchor=\"middle\"\n                  className={`text-[11px] font-mono transition-colors ${\n                    isHovered ? 'font-bold fill-current' : 'fill-neutral-500'\n                  }`}\n                >\n                  {n.label}\n                </text>\n              </g>\n            );\n          })}\n        </svg>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { NetworkGraph, NetworkGraphVariant } from './index';\n\nexport function NetworkGraphPreview() {\n  const [variant, setVariant] = useState<NetworkGraphVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <NetworkGraph variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "charts"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_network_graph",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-10-11T00:07:28.159Z",
-  "count": 208,
+  "generatedAt": "2026-10-11T00:13:33.300Z",
+  "count": 232,
   "resources": [
     {
       "schemaVersion": "1.0.0",
@@ -3401,6 +3401,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_dat_area_chart",
+      "slug": "area-chart",
+      "name": "Area Chart",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Smooth bezier-curved single or dual area plot with subtle vertical gradient fill, baseline threshold, and interactive peek point.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "volume-visualization",
+        "capacity-tracking",
+        "cumulative-growth"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "area-chart",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "AreaChartPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "area",
+        "gradient",
+        "svg",
+        "volume"
+      ],
+      "intent": {
+        "summary": "Smooth bezier-curved single or dual area plot with subtle vertical gradient fill, baseline threshold, and interactive peek point.",
+        "idealFor": [
+          "Cumulative revenue volume",
+          "Bandwidth utilization",
+          "Storage allocation curves"
+        ],
+        "avoidFor": [
+          "Discrete categorical tallies",
+          "Tree hierarchic structures"
+        ],
+        "jobs": [
+          "Show volume magnitude over time with aesthetic soft gradient depth"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_blk_audit_log",
       "slug": "audit-log",
       "name": "Audit Log",
@@ -4606,6 +4855,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_dat_bar_chart",
+      "slug": "bar-chart",
+      "name": "Bar Chart",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Vertical categorical column chart with rounded top caps, subtle hover darkening, value labels, and horizontal gridlines.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "discrete-comparison",
+        "categorical-metrics",
+        "monthly-reporting"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "bar-chart",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "BarChartPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "bar",
+        "columns",
+        "svg",
+        "metrics"
+      ],
+      "intent": {
+        "summary": "Vertical categorical column chart with rounded top caps, subtle hover darkening, value labels, and horizontal gridlines.",
+        "idealFor": [
+          "Monthly signups tally",
+          "Revenue per sales rep",
+          "Quarterly goal achievement"
+        ],
+        "avoidFor": [
+          "Continuous 24-hour high frequency telemetry",
+          "Geographical distributions"
+        ],
+        "jobs": [
+          "Compare distinct categorical values with vertical column bars and hover details"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_blk_billing_overview",
       "slug": "billing-overview",
       "name": "Billing Overview",
@@ -5565,6 +6063,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_bubble_plot",
+      "slug": "bubble-plot",
+      "name": "Bubble Plot",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "3-variable scatter plot where point radius encodes the 3rd metric (e.g. volume/revenue), with semi-transparent bubble overlaps.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "trivariate-analysis",
+        "market-positioning",
+        "risk-matrix"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "bubble-plot",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "BubblePlotPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "bubble",
+        "multivariate",
+        "svg",
+        "radius"
+      ],
+      "intent": {
+        "summary": "3-variable scatter plot where point radius encodes the 3rd metric (e.g. volume/revenue), with semi-transparent bubble overlaps.",
+        "idealFor": [
+          "Risk vs Impact vs Frequency assessment",
+          "Feature adoption vs Effort vs Value",
+          "Customer segment revenue analysis"
+        ],
+        "avoidFor": [
+          "High-precision single axis telemetry",
+          "Narrow 1D lists"
+        ],
+        "jobs": [
+          "Map 3 quantitative metrics simultaneously onto 2D position and bubble radius"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -8010,6 +8757,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_cohort_matrix",
+      "slug": "cohort-matrix",
+      "name": "Cohort Matrix",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Retention table displaying user cohorts over weekly/monthly periods with color-coded retention percentage cells.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "retention"
+      ],
+      "roles": [
+        "table",
+        "analytics"
+      ],
+      "purposes": [
+        "retention-tracking",
+        "cohort-analysis",
+        "churn-investigation"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "cohort-matrix",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "CohortMatrixPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "retention",
+        "cohort",
+        "matrix",
+        "table",
+        "analytics"
+      ],
+      "intent": {
+        "summary": "Retention table displaying user cohorts over weekly/monthly periods with color-coded retention percentage cells.",
+        "idealFor": [
+          "SaaS weekly retention matrices",
+          "E-commerce repeat purchase cohorts",
+          "User activation decay"
+        ],
+        "avoidFor": [
+          "Real-time 1-second stock tickers",
+          "Geometric geospatial maps"
+        ],
+        "jobs": [
+          "Track user engagement and retention drop-offs grouped by sign-up cohort"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -15044,6 +16040,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_donut_chart",
+      "slug": "donut-chart",
+      "name": "Donut Chart",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "SVG circle stroke-dasharray radial breakdown with center KPI summary metric, category legend pills, and segment highlight.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "proportional-breakdown",
+        "capacity-allocation",
+        "status-shares"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "donut-chart",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "DonutChartPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "donut",
+        "radial",
+        "svg",
+        "proportions"
+      ],
+      "intent": {
+        "summary": "SVG circle stroke-dasharray radial breakdown with center KPI summary metric, category legend pills, and segment highlight.",
+        "idealFor": [
+          "Storage capacity utilization",
+          "Revenue breakdown by tier",
+          "Test status passes vs fails"
+        ],
+        "avoidFor": [
+          "Complex datasets with >7 categories",
+          "Chronological line tracking"
+        ],
+        "jobs": [
+          "Display part-to-whole proportions with radial donut geometry and center summary count"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -22846,6 +24091,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_dat_financial_candlestick_chart",
+      "slug": "financial-candlestick-chart",
+      "name": "Financial Candlestick Chart",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "OHLC financial price chart with bullish/bearish candle bodies, high/low wicks, and volume sub-bars.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "finance"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "financial-analysis",
+        "candlestick-display",
+        "ohlc-monitoring"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "financial-candlestick-chart",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "FinancialCandlestickChartPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "finance",
+        "candlestick",
+        "ohlc",
+        "chart",
+        "svg"
+      ],
+      "intent": {
+        "summary": "OHLC financial price chart with bullish/bearish candle bodies, high/low wicks, and volume sub-bars.",
+        "idealFor": [
+          "Cryptocurrency and equities price terminals",
+          "Treasury bond monitoring",
+          "High-density trading views"
+        ],
+        "avoidFor": [
+          "Standard marketing funnel stages",
+          "Hierarchical folder trees"
+        ],
+        "jobs": [
+          "Display Open-High-Low-Close price action across granular intervals"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_shell_floating_nav",
       "slug": "floating-nav",
       "name": "Floating Navigation",
@@ -24306,6 +25800,753 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_dat_funnel_chart",
+      "slug": "funnel-chart",
+      "name": "Funnel Chart",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Multi-stage conversion funnel showing drop-off percentages, stage step trapezoids/bars, and stage conversion rates.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "conversion-tracking",
+        "funnel-analysis",
+        "lead-generation"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "funnel-chart",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "FunnelChartPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "funnel",
+        "conversion",
+        "stages",
+        "analytics"
+      ],
+      "intent": {
+        "summary": "Multi-stage conversion funnel showing drop-off percentages, stage step trapezoids/bars, and stage conversion rates.",
+        "idealFor": [
+          "Checkout funnel conversion",
+          "Lead-to-customer stages",
+          "Signup drop-off analysis"
+        ],
+        "avoidFor": [
+          "Oscillating time waveforms",
+          "Geographical distribution"
+        ],
+        "jobs": [
+          "Visualize step-by-step conversion throughput and stage drop-offs"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_gauge",
+      "slug": "gauge",
+      "name": "Gauge",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Semicircular dial/speedometer gauge with target marker, colored threshold zones (safe/warning/critical), and center value needle/text.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "gauge",
+        "analytics"
+      ],
+      "purposes": [
+        "capacity-monitoring",
+        "threshold-indication",
+        "health-meter"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "gauge",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "GaugePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "gauge",
+        "meter",
+        "radial",
+        "svg"
+      ],
+      "intent": {
+        "summary": "Semicircular dial/speedometer gauge with target marker, colored threshold zones (safe/warning/critical), and center value needle/text.",
+        "idealFor": [
+          "Server CPU load threshold",
+          "Disk capacity warnings",
+          "SLA uptime compliance dial"
+        ],
+        "avoidFor": [
+          "Multivariate categorical distributions",
+          "Temporal time series histories"
+        ],
+        "jobs": [
+          "Show current value against defined capacity threshold zones on a semicircular meter"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_geographic_map",
+      "slug": "geographic-map",
+      "name": "Geographic Map",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Stylized SVG regional map preview with density shading, marker pins, and territory summary metrics.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "maps"
+      ],
+      "roles": [
+        "map",
+        "analytics"
+      ],
+      "purposes": [
+        "regional-distribution",
+        "datacenter-locations",
+        "latency-by-region"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "geographic-map",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "GeographicMapPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "map",
+        "geographic",
+        "regional",
+        "svg",
+        "locations"
+      ],
+      "intent": {
+        "summary": "Stylized SVG regional map preview with density shading, marker pins, and territory summary metrics.",
+        "idealFor": [
+          "Global edge node distribution",
+          "Customer revenue by region",
+          "Delivery zone heatmaps"
+        ],
+        "avoidFor": [
+          "Micro second time delta series",
+          "Hierarchical tree menus"
+        ],
+        "jobs": [
+          "Display geographic dispersion of traffic and data center clusters"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_blk_global_search_results",
       "slug": "global-search-results",
       "name": "Global Search Results",
@@ -24788,6 +27029,504 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_heatmap",
+      "slug": "heatmap",
+      "name": "Heatmap",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "7x24 or day-by-week commit/activity grid with 5-level intensity gradient, month labels, and cell inspection tooltip.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "activity-tracking",
+        "density-matrix",
+        "temporal-heat"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "heatmap",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "HeatmapPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "heatmap",
+        "matrix",
+        "commits",
+        "activity"
+      ],
+      "intent": {
+        "summary": "7x24 or day-by-week commit/activity grid with 5-level intensity gradient, month labels, and cell inspection tooltip.",
+        "idealFor": [
+          "GitHub-style annual commit calendars",
+          "Hourly API error distributions",
+          "Weekly user engagement density"
+        ],
+        "avoidFor": [
+          "Small 2-variable point scatterings",
+          "Continuous audio waveform plots"
+        ],
+        "jobs": [
+          "Map high-frequency event density into discrete intensity matrix cells"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_horizontal_bar_chart",
+      "slug": "horizontal-bar-chart",
+      "name": "Horizontal Bar Chart",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Ranking/leaderboard horizontal bar chart with left labels, percentage/count right labels, and animated width bars.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "ranking-display",
+        "leaderboard-comparison",
+        "endpoint-latency"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "horizontal-bar-chart",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "HorizontalBarChartPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "horizontal-bar",
+        "ranking",
+        "leaderboard",
+        "metrics"
+      ],
+      "intent": {
+        "summary": "Ranking/leaderboard horizontal bar chart with left labels, percentage/count right labels, and animated width bars.",
+        "idealFor": [
+          "Top API endpoints by latency",
+          "Regional customer distributions",
+          "Feature adoption rankings"
+        ],
+        "avoidFor": [
+          "Continuous time series tracking",
+          "Cyclical schedule planning"
+        ],
+        "jobs": [
+          "Rank categorical entities by value with horizontal proportional bars"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -27954,6 +30693,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_dat_interactive_globe",
+      "slug": "interactive-globe",
+      "name": "Interactive Globe",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Orthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "maps"
+      ],
+      "roles": [
+        "globe",
+        "analytics"
+      ],
+      "purposes": [
+        "global-presence",
+        "worldwide-telemetry",
+        "orbital-visualization"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "interactive-globe",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "InteractiveGlobePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "globe",
+        "wireframe",
+        "orthographic",
+        "svg",
+        "orbital"
+      ],
+      "intent": {
+        "summary": "Orthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse.",
+        "idealFor": [
+          "Global cybersecurity telemetry",
+          "International traffic landing pages",
+          "Real-time threat monitoring"
+        ],
+        "avoidFor": [
+          "Standard 2D tabular accounting",
+          "Single variable KPIs"
+        ],
+        "jobs": [
+          "Provide high-ambition vector globe presence for worldwide telemetry data"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_blk_kanban_board",
       "slug": "kanban-board",
       "name": "Kanban Board",
@@ -28432,6 +31420,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_kpi_delta_card",
+      "slug": "kpi-delta-card",
+      "name": "KPI Delta Card",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Executive metric card with hero number, benchmark comparison badge, and micro trend sparkline.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "kpi"
+      ],
+      "roles": [
+        "kpi",
+        "card"
+      ],
+      "purposes": [
+        "metric-highlight",
+        "delta-tracking",
+        "executive-summary"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "kpi-delta-card",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "KpiDeltaCardPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "kpi",
+        "card",
+        "delta",
+        "metric",
+        "sparkline"
+      ],
+      "intent": {
+        "summary": "Executive metric card with hero number, benchmark comparison badge, and micro trend sparkline.",
+        "idealFor": [
+          "Executive dashboard header counters",
+          "Monthly revenue summary",
+          "Active churn rates"
+        ],
+        "avoidFor": [
+          "Complex multi-dimensional scatterings",
+          "Raw log event stream"
+        ],
+        "jobs": [
+          "Deliver immediate high-impact metric awareness with trend context"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -30374,6 +33611,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_dat_mini_sparkline",
+      "slug": "mini-sparkline",
+      "name": "Mini Sparkline",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Ultra-compact inline sparkline widget with trend arrow, delta percentage badge, min/max range dots, and current value.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "inline-trend",
+        "micro-visualization",
+        "delta-tracking"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "mini-sparkline",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "MiniSparklinePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "sparkline",
+        "inline",
+        "micro",
+        "svg"
+      ],
+      "intent": {
+        "summary": "Ultra-compact inline sparkline widget with trend arrow, delta percentage badge, min/max range dots, and current value.",
+        "idealFor": [
+          "Table cell mini trends",
+          "Inline metric rows",
+          "Header navigation KPI status"
+        ],
+        "avoidFor": [
+          "Detailed multi-dimensional exploration",
+          "Full screen analytics dashboards"
+        ],
+        "jobs": [
+          "Show rapid visual trend direction in compact table and list contexts"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_sec_minimal_statement_hero",
       "slug": "minimal-statement-hero",
       "name": "Minimal Statement Hero",
@@ -31576,6 +35062,504 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_multi_series_line_chart",
+      "slug": "multi-series-line-chart",
+      "name": "Multi-Series Line Chart",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Comparative line chart with multiple colored trendlines, toggleable series legends, and point markers.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "metric-comparison",
+        "benchmark-tracking",
+        "multi-series-analysis"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "multi-series-line-chart",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "MultiSeriesLineChartPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "multi-series",
+        "line",
+        "svg",
+        "comparison"
+      ],
+      "intent": {
+        "summary": "Comparative line chart with multiple colored trendlines, toggleable series legends, and point markers.",
+        "idealFor": [
+          "Comparing region latency",
+          "Environment traffic (prod vs staging)",
+          "Multi-tenant metric overlays"
+        ],
+        "avoidFor": [
+          "Single value meters",
+          "Binary state transitions"
+        ],
+        "jobs": [
+          "Compare 2 or 3 metrics across the same temporal axis with toggleable series"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_network_graph",
+      "slug": "network-graph",
+      "name": "Network Graph",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Node-link topology diagram with circular nodes, interconnecting SVG edge lines, hub highlights, and cluster grouping.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "topology-visualization",
+        "dependency-graph",
+        "service-mesh"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "network-graph",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "NetworkGraphPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "network",
+        "graph",
+        "nodes",
+        "topology"
+      ],
+      "intent": {
+        "summary": "Node-link topology diagram with circular nodes, interconnecting SVG edge lines, hub highlights, and cluster grouping.",
+        "idealFor": [
+          "Microservice dependencies",
+          "Entity relationship meshes",
+          "Social/account network connections"
+        ],
+        "avoidFor": [
+          "Tabular ordered spreadsheets",
+          "1D timeline chronological feeds"
+        ],
+        "jobs": [
+          "Map node-to-node relational connections in a 2D network mesh topology"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -32793,6 +36777,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_order_book_depth_chart",
+      "slug": "order-book-depth-chart",
+      "name": "Order Book Depth Chart",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Market depth cumulative bid/ask stepped area chart with green bid wall, red ask wall, and mid-market spread indicator.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "finance"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "order-book-depth",
+        "market-liquidity",
+        "spread-analysis"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "order-book-depth-chart",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "OrderBookDepthChartPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "finance",
+        "order-book",
+        "depth",
+        "liquidity",
+        "svg"
+      ],
+      "intent": {
+        "summary": "Market depth cumulative bid/ask stepped area chart with green bid wall, red ask wall, and mid-market spread indicator.",
+        "idealFor": [
+          "Exchange liquidity depth visualizations",
+          "Trading desks and matching engines",
+          "Slippage simulation"
+        ],
+        "avoidFor": [
+          "Single user onboarding checklists",
+          "Blog editorial sidebars"
+        ],
+        "jobs": [
+          "Map cumulative buy and sell volume against price to visualize liquidity walls"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -38391,6 +42624,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_dat_radar_chart",
+      "slug": "radar-chart",
+      "name": "Radar Chart",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Polygonal spider/radar chart with concentric polygon web rings, 6 radial metric axes, and shaded polygon metric footprint.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "multivariate-profile",
+        "capability-assessment",
+        "security-posture"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "radar-chart",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "RadarChartPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "radar",
+        "spider",
+        "polygon",
+        "multivariate"
+      ],
+      "intent": {
+        "summary": "Polygonal spider/radar chart with concentric polygon web rings, 6 radial metric axes, and shaded polygon metric footprint.",
+        "idealFor": [
+          "Security posture scoring across dimensions",
+          "Product maturity assessment",
+          "Skill and competency profiles"
+        ],
+        "avoidFor": [
+          "Sequential time-series progressions",
+          "High volume raw data records"
+        ],
+        "jobs": [
+          "Evaluate multidimensional profile scores on concentric radial axes"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_radio_group",
       "slug": "radio-group",
       "name": "Radio Group",
@@ -40083,6 +44565,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_dat_sankey_diagram",
+      "slug": "sankey-diagram",
+      "name": "Sankey Diagram",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Flow distribution chart showing source-to-target stream links with curved SVG ribbon bands and node column blocks.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "flow-distribution",
+        "resource-routing",
+        "traffic-redirection"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "sankey-diagram",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "SankeyDiagramPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "sankey",
+        "flow",
+        "ribbons",
+        "svg"
+      ],
+      "intent": {
+        "summary": "Flow distribution chart showing source-to-target stream links with curved SVG ribbon bands and node column blocks.",
+        "idealFor": [
+          "Energy/resource flow distribution",
+          "User navigation paths between pages",
+          "Budget revenue allocation"
+        ],
+        "avoidFor": [
+          "Simple 2-value toggles",
+          "Narrow single-number KPI cards"
+        ],
+        "jobs": [
+          "Map flows between multiple source and target nodes with curved vector ribbons"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_blk_saved_views",
       "slug": "saved-views",
       "name": "Saved Views",
@@ -40321,6 +45052,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_scatter_plot",
+      "slug": "scatter-plot",
+      "name": "Scatter Plot",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "2D Cartesian coordinate scatter chart with SVG circular points, quadrant benchmark lines, and outlier point highlights.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "correlation-analysis",
+        "outlier-detection",
+        "cluster-discovery"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "scatter-plot",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ScatterPlotPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "scatter",
+        "coordinates",
+        "svg",
+        "clusters"
+      ],
+      "intent": {
+        "summary": "2D Cartesian coordinate scatter chart with SVG circular points, quadrant benchmark lines, and outlier point highlights.",
+        "idealFor": [
+          "Latency vs Payload size correlation",
+          "Customer NPS vs Lifetime Value",
+          "Engine temperature vs RPM"
+        ],
+        "avoidFor": [
+          "Strict ordered 1D timelines",
+          "Parts-of-a-whole distributions"
+        ],
+        "jobs": [
+          "Plot bivariate point distributions to identify correlations and cluster boundaries"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -43962,6 +48942,503 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_dat_stacked_area_chart",
+      "slug": "stacked-area-chart",
+      "name": "Stacked Area Chart",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Multi-layer cumulative volume area chart with layered SVG path fills, proportional stacking, and hover slice indicator.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "cumulative-breakdown",
+        "capacity-composition",
+        "resource-sharing"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "stacked-area-chart",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "StackedAreaChartPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "stacked-area",
+        "svg",
+        "breakdown"
+      ],
+      "intent": {
+        "summary": "Multi-layer cumulative volume area chart with layered SVG path fills, proportional stacking, and hover slice indicator.",
+        "idealFor": [
+          "Cloud spend breakdown by service",
+          "Traffic split by channel",
+          "Storage tiers breakdown"
+        ],
+        "avoidFor": [
+          "Negative-value delta balances",
+          "Unrelated discrete categories"
+        ],
+        "jobs": [
+          "Show proportional composition and cumulative total over time simultaneously"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_stacked_bar_chart",
+      "slug": "stacked-bar-chart",
+      "name": "Stacked Bar Chart",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Segmented vertical bar chart showing category composition with segmented color blocks and segment breakdown on hover.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "composition-tracking",
+        "category-breakdown",
+        "segmented-comparison"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "stacked-bar-chart",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "StackedBarChartPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "stacked-bar",
+        "composition",
+        "svg",
+        "breakdown"
+      ],
+      "intent": {
+        "summary": "Segmented vertical bar chart showing category composition with segmented color blocks and segment breakdown on hover.",
+        "idealFor": [
+          "Device breakdown by month",
+          "Severity count per release",
+          "Support ticket channels"
+        ],
+        "avoidFor": [
+          "Continuous streaming sensor curves",
+          "Geospatial plotting"
+        ],
+        "jobs": [
+          "Show multi-category proportions inside vertical grouped column containers"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_blk_status_overview",
       "slug": "status-overview",
       "name": "Status Overview",
@@ -46868,6 +52345,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_dat_time_series_chart",
+      "slug": "time-series-chart",
+      "name": "Time Series Chart",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Interactive line chart with date/time x-axis, area fill gradient, hover cursor crosshair, and value tooltip.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "telemetry-tracking",
+        "time-series-analysis",
+        "performance-monitoring"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "time-series-chart",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "TimeSeriesChartPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "time-series",
+        "line",
+        "svg",
+        "analytics"
+      ],
+      "intent": {
+        "summary": "Interactive line chart with date/time x-axis, area fill gradient, hover cursor crosshair, and value tooltip.",
+        "idealFor": [
+          "Server CPU/memory telemetry",
+          "Daily active users timeline",
+          "Stock price monitoring"
+        ],
+        "avoidFor": [
+          "Categorical non-temporal rankings",
+          "Hierarchical part-to-whole distributions"
+        ],
+        "jobs": [
+          "Track metric progression over date intervals with micro tooltips"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_blk_timeline",
       "slug": "timeline",
       "name": "Timeline",
@@ -47826,6 +53552,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_dat_treemap",
+      "slug": "treemap",
+      "name": "Treemap",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Rectangular squarified hierarchical partition chart with proportional area tiles, category headers, and size/value labels.",
+      "resourceType": "data-visualization",
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ],
+      "roles": [
+        "chart",
+        "analytics"
+      ],
+      "purposes": [
+        "hierarchical-partitioning",
+        "disk-allocation",
+        "portfolio-breakdown"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "data-product",
+          "weight": 95
+        },
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "treemap",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "TreemapPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "tooltip",
+          "name": "Tooltip Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Monochrome slate lines, restrained fills, high data-ink ratio for dense analytical dashboards.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt, emerald, and amber chromatic accents with smooth gradients and tactile hover states.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian dark backdrop with cyan luminescence, hairline gridlines, and high contrast glow.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "chart",
+        "treemap",
+        "hierarchical",
+        "partitions",
+        "storage"
+      ],
+      "intent": {
+        "summary": "Rectangular squarified hierarchical partition chart with proportional area tiles, category headers, and size/value labels.",
+        "idealFor": [
+          "Disk space consumption by directory",
+          "Financial portfolio allocations",
+          "Component bundle size breakdown"
+        ],
+        "avoidFor": [
+          "Sequential time trends",
+          "High-speed streaming ticks"
+        ],
+        "jobs": [
+          "Display nested hierarchical proportions via 2D tiled rectangular areas"
+        ],
+        "contentRequirements": [
+          "Structured numerical data points, semantic color tokens, SVG vector rendering"
+        ],
+        "notes": [
+          "Responsive vector scaling, zero client dependencies, accessible ARIA figures"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 15,
+        "luxury": 40,
+        "warmth": 25,
+        "technicality": 90,
+        "editorial": 55,
+        "futurism": 45,
+        "visualAmbition": 70,
+        "structuralCreativity": 50,
+        "density": 75,
+        "whitespace": 40,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 30,
+        "motion": 20,
+        "motionPlayfulness": 10,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 90,
+        "interactionDensity": 70,
+        "asymmetry": 10,
+        "conversionIntensity": 30,
+        "trust": 95,
+        "accessibilityPriority": 95,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 75,
+        "motionIntensity": 20,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 75,
+        "whitespace": 35,
+        "asymmetry": 10,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "chart",
+          "panel",
+          "surface"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 98,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"

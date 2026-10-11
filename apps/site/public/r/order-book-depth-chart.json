@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "order-book-depth-chart",
+  "type": "registry:component",
+  "title": "Order Book Depth Chart",
+  "description": "Market depth cumulative bid/ask stepped area chart with green bid wall, red ask wall, and mid-market spread indicator.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type OrderBookDepthChartVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface OrderBookDepthChartProps {\n  variant?: OrderBookDepthChartVariant;\n}\n\nexport function OrderBookDepthChart({ variant = 'quiet' }: OrderBookDepthChartProps) {\n  const [hoveredSide, setHoveredSide] = useState<'bids' | 'asks' | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const bidColor = '#10B981';\n  const askColor = '#EF4444';\n\n  const width = 600;\n  const height = 220;\n  const padding = { top: 20, right: 30, bottom: 40, left: 40 };\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between mb-4\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Order Book Market Depth</h4>\n          <p className=\"text-xs text-neutral-500\">Cumulative Liquidity: Bids vs Asks</p>\n        </div>\n        <div className=\"flex items-center gap-4 text-xs font-mono\">\n          <span className=\"text-emerald-500\">Bids: $4.2M</span>\n          <span className=\"text-neutral-400\">|</span>\n          <span className=\"text-rose-500\">Asks: $3.8M</span>\n        </div>\n      </div>\n\n      <div className=\"relative w-full overflow-hidden\">\n        <svg viewBox={`0 0 ${width} ${height}`} className=\"w-full h-auto overflow-visible select-none\">\n          {/* Mid price spread line */}\n          <line\n            x1={width / 2}\n            y1={padding.top}\n            x2={width / 2}\n            y2={height - padding.bottom}\n            stroke={variant === 'nocturne' ? '#2E3440' : '#E5E7EB'}\n            strokeDasharray=\"4 4\"\n            strokeWidth=\"1.5\"\n          />\n\n          {/* Bid stepped area (left side) */}\n          <path\n            d=\"M 40 180 L 100 180 L 100 140 L 180 140 L 180 100 L 250 100 L 250 50 L 300 50 L 300 180 Z\"\n            fill={bidColor}\n            fillOpacity={hoveredSide === 'bids' ? 0.4 : 0.25}\n            stroke={bidColor}\n            strokeWidth=\"2\"\n            onMouseEnter={() => setHoveredSide('bids')}\n            onMouseLeave={() => setHoveredSide(null)}\n            className=\"cursor-pointer transition-all duration-200\"\n          />\n\n          {/* Ask stepped area (right side) */}\n          <path\n            d=\"M 300 50 L 350 50 L 350 90 L 420 90 L 420 130 L 500 130 L 500 180 L 560 180 L 300 180 Z\"\n            fill={askColor}\n            fillOpacity={hoveredSide === 'asks' ? 0.4 : 0.25}\n            stroke={askColor}\n            strokeWidth=\"2\"\n            onMouseEnter={() => setHoveredSide('asks')}\n            onMouseLeave={() => setHoveredSide(null)}\n            className=\"cursor-pointer transition-all duration-200\"\n          />\n\n          {/* X axis labels */}\n          <text x=\"170\" y={height - 10} textAnchor=\"middle\" className=\"text-[10px] fill-emerald-500 font-mono font-semibold\">\n            ← Bids (Buy Orders)\n          </text>\n          <text x={width / 2} y={height - 10} textAnchor=\"middle\" className=\"text-[10px] fill-neutral-400 font-mono\">\n            $150.00 Mid\n          </text>\n          <text x=\"430\" y={height - 10} textAnchor=\"middle\" className=\"text-[10px] fill-rose-500 font-mono font-semibold\">\n            Asks (Sell Orders) →\n          </text>\n        </svg>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { OrderBookDepthChart, OrderBookDepthChartVariant } from './index';\n\nexport function OrderBookDepthChartPreview() {\n  const [variant, setVariant] = useState<OrderBookDepthChartVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <OrderBookDepthChart variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "finance"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_order_book_depth_chart",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

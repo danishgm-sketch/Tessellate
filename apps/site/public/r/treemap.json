@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "treemap",
+  "type": "registry:component",
+  "title": "Treemap",
+  "description": "Rectangular squarified hierarchical partition chart with proportional area tiles, category headers, and size/value labels.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type TreemapVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface TreemapProps {\n  variant?: TreemapVariant;\n}\n\nexport function Treemap({ variant = 'quiet' }: TreemapProps) {\n  const [activeTile, setActiveTile] = useState<string | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const tiles = [\n    { id: '1', name: 'Database Cluster', size: '1.2 TB', span: 'col-span-8 row-span-4', bg: variant === 'nocturne' ? 'bg-cyan-950/80 border-cyan-800' : variant === 'expressive' ? 'bg-blue-600 text-white' : 'bg-neutral-900 text-white' },\n    { id: '2', name: 'Log Archives', size: '640 GB', span: 'col-span-4 row-span-4', bg: variant === 'nocturne' ? 'bg-indigo-950/80 border-indigo-800' : variant === 'expressive' ? 'bg-emerald-600 text-white' : 'bg-neutral-700 text-white' },\n    { id: '3', name: 'Media Assets', size: '420 GB', span: 'col-span-5 row-span-3', bg: variant === 'nocturne' ? 'bg-purple-950/80 border-purple-800' : variant === 'expressive' ? 'bg-amber-600 text-white' : 'bg-neutral-500 text-white' },\n    { id: '4', name: 'Search Indexes', size: '280 GB', span: 'col-span-4 row-span-3', bg: variant === 'nocturne' ? 'bg-rose-950/80 border-rose-800' : variant === 'expressive' ? 'bg-purple-600 text-white' : 'bg-neutral-400 text-neutral-900' },\n    { id: '5', name: 'Snapshots', size: '150 GB', span: 'col-span-3 row-span-3', bg: variant === 'nocturne' ? 'bg-zinc-800 border-zinc-700' : variant === 'expressive' ? 'bg-indigo-600 text-white' : 'bg-neutral-300 text-neutral-900' },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between mb-4\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Storage Utilization Treemap</h4>\n          <p className=\"text-xs text-neutral-500\">Proportional partition by storage volume</p>\n        </div>\n        <span className=\"text-xs font-mono font-medium text-neutral-400\">Total: 2.69 TB</span>\n      </div>\n\n      <div className=\"grid grid-cols-12 grid-rows-7 gap-2 h-72 w-full\">\n        {tiles.map((t) => {\n          const isHovered = activeTile === t.id;\n          return (\n            <div\n              key={t.id}\n              onMouseEnter={() => setActiveTile(t.id)}\n              onMouseLeave={() => setActiveTile(null)}\n              className={`${t.span} ${t.bg} p-3 rounded-lg flex flex-col justify-between border cursor-pointer transition-all duration-200 ${\n                isHovered ? 'scale-[1.01] shadow-lg ring-2 ring-white/50' : 'opacity-90'\n              }`}\n            >\n              <div className=\"text-xs font-semibold tracking-tight truncate\">{t.name}</div>\n              <div className=\"text-sm font-mono font-bold mt-1\">{t.size}</div>\n            </div>\n          );\n        })}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { Treemap, TreemapVariant } from './index';\n\nexport function TreemapPreview() {\n  const [variant, setVariant] = useState<TreemapVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <Treemap variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "charts"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_treemap",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

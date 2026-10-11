@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radar-chart",
+  "type": "registry:component",
+  "title": "Radar Chart",
+  "description": "Polygonal spider/radar chart with concentric polygon web rings, 6 radial metric axes, and shaded polygon metric footprint.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type RadarChartVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface RadarChartProps {\n  variant?: RadarChartVariant;\n}\n\nexport function RadarChart({ variant = 'quiet' }: RadarChartProps) {\n  const [activeAxis, setActiveAxis] = useState<number | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const strokeColor =\n    variant === 'nocturne' ? '#06B6D4' : variant === 'expressive' ? '#2547E8' : '#171717';\n\n  const gridColor =\n    variant === 'nocturne' ? '#1E232E' : '#E5E7EB';\n\n  const metrics = [\n    { label: 'Security', val: 92 },\n    { label: 'Speed', val: 85 },\n    { label: 'Reliability', val: 98 },\n    { label: 'Usability', val: 78 },\n    { label: 'Scalability', val: 90 },\n    { label: 'Compliance', val: 88 },\n  ];\n\n  const size = 260;\n  const center = size / 2;\n  const radius = 95;\n  const numAxes = metrics.length;\n\n  const getCoordinates = (axisIndex: number, valuePct: number) => {\n    const angle = (Math.PI * 2 / numAxes) * axisIndex - Math.PI / 2;\n    const r = radius * valuePct;\n    return {\n      x: center + r * Math.cos(angle),\n      y: center + r * Math.sin(angle),\n    };\n  };\n\n  const polyPoints = metrics.map((m, i) => {\n    const coords = getCoordinates(i, m.val / 100);\n    return `${coords.x},${coords.y}`;\n  }).join(' ');\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col items-center transition-colors ${cardBg}`}>\n      <div className=\"w-full flex items-center justify-between mb-2\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">System Maturity Profile</h4>\n          <p className=\"text-xs text-neutral-500\">6-axis architectural readiness</p>\n        </div>\n        <span className=\"text-xs font-mono font-medium text-neutral-400\">Score: 88.5/100</span>\n      </div>\n\n      <div className=\"relative w-[280px] h-[280px] flex items-center justify-center select-none\">\n        <svg width={size} height={size} className=\"overflow-visible\">\n          {/* Concentric polygon rings */}\n          {[0.25, 0.5, 0.75, 1.0].map((ring) => {\n            const ringPts = Array.from({ length: numAxes })\n              .map((_, i) => {\n                const c = getCoordinates(i, ring);\n                return `${c.x},${c.y}`;\n              })\n              .join(' ');\n            return (\n              <polygon\n                key={ring}\n                points={ringPts}\n                fill=\"none\"\n                stroke={gridColor}\n                strokeWidth=\"1\"\n              />\n            );\n          })}\n\n          {/* Radial axis lines and labels */}\n          {metrics.map((m, i) => {\n            const endCoords = getCoordinates(i, 1.0);\n            const labelCoords = getCoordinates(i, 1.25);\n            const isHovered = activeAxis === i;\n\n            return (\n              <g key={m.label} onMouseEnter={() => setActiveAxis(i)} onMouseLeave={() => setActiveAxis(null)} className=\"cursor-pointer\">\n                <line x1={center} y1={center} x2={endCoords.x} y2={endCoords.y} stroke={gridColor} strokeWidth=\"1\" />\n                <text\n                  x={labelCoords.x}\n                  y={labelCoords.y + 4}\n                  textAnchor=\"middle\"\n                  className={`text-[10px] font-mono transition-colors ${isHovered ? 'font-bold fill-current' : 'fill-neutral-400'}`}\n                >\n                  {m.label}\n                </text>\n              </g>\n            );\n          })}\n\n          {/* Value polygon */}\n          <polygon\n            points={polyPoints}\n            fill={strokeColor}\n            fillOpacity={variant === 'nocturne' ? 0.35 : 0.2}\n            stroke={strokeColor}\n            strokeWidth=\"2.5\"\n          />\n\n          {/* Point dots */}\n          {metrics.map((m, i) => {\n            const c = getCoordinates(i, m.val / 100);\n            return (\n              <circle\n                key={m.label}\n                cx={c.x}\n                cy={c.y}\n                r=\"4\"\n                fill={strokeColor}\n                stroke={variant === 'nocturne' ? '#000' : '#fff'}\n                strokeWidth=\"1.5\"\n              />\n            );\n          })}\n        </svg>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { RadarChart, RadarChartVariant } from './index';\n\nexport function RadarChartPreview() {\n  const [variant, setVariant] = useState<RadarChartVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <RadarChart variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "charts"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_radar_chart",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

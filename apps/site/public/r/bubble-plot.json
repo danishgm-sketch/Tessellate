@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bubble-plot",
+  "type": "registry:component",
+  "title": "Bubble Plot",
+  "description": "3-variable scatter plot where point radius encodes the 3rd metric (e.g. volume/revenue), with semi-transparent bubble overlaps.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type BubblePlotVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface BubblePlotProps {\n  variant?: BubblePlotVariant;\n}\n\nexport function BubblePlot({ variant = 'quiet' }: BubblePlotProps) {\n  const [activeIdx, setActiveIdx] = useState<number | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const bubbleColor =\n    variant === 'nocturne' ? '#06B6D4' : variant === 'expressive' ? '#2547E8' : '#171717';\n\n  const bubbles = [\n    { name: 'Core Engine', x: 25, y: 70, r: 18, val: '$120K' },\n    { name: 'Auth Gateway', x: 45, y: 40, r: 12, val: '$65K' },\n    { name: 'Search Service', x: 65, y: 85, r: 24, val: '$240K' },\n    { name: 'Export Worker', x: 80, y: 30, r: 14, val: '$80K' },\n    { name: 'Notification Hub', x: 85, y: 60, r: 10, val: '$45K' },\n  ];\n\n  const width = 600;\n  const height = 240;\n  const padding = { top: 20, right: 30, bottom: 40, left: 40 };\n  const chartW = width - padding.left - padding.right;\n  const chartH = height - padding.top - padding.bottom;\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between mb-4\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Service Value Matrix</h4>\n          <p className=\"text-xs text-neutral-500\">X: Complexity | Y: Impact | Radius: Cost</p>\n        </div>\n        {activeIdx !== null && (\n          <span className=\"text-xs font-mono font-medium bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded\">\n            {bubbles[activeIdx]?.name}: {bubbles[activeIdx]?.val}\n          </span>\n        )}\n      </div>\n\n      <div className=\"relative w-full overflow-hidden\">\n        <svg viewBox={`0 0 ${width} ${height}`} className=\"w-full h-auto overflow-visible select-none\">\n          <line\n            x1={padding.left}\n            y1={padding.top + chartH}\n            x2={width - padding.right}\n            y2={padding.top + chartH}\n            stroke={variant === 'nocturne' ? '#2E3440' : '#E5E7EB'}\n            strokeWidth=\"1\"\n          />\n          <line\n            x1={padding.left}\n            y1={padding.top}\n            x2={padding.left}\n            y2={padding.top + chartH}\n            stroke={variant === 'nocturne' ? '#2E3440' : '#E5E7EB'}\n            strokeWidth=\"1\"\n          />\n\n          {bubbles.map((b, idx) => {\n            const cx = padding.left + (b.x / 100) * chartW;\n            const cy = padding.top + chartH - (b.y / 100) * chartH;\n            const isHovered = activeIdx === idx;\n\n            return (\n              <g key={b.name} onMouseEnter={() => setActiveIdx(idx)} onMouseLeave={() => setActiveIdx(null)} className=\"cursor-pointer\">\n                <circle\n                  cx={cx}\n                  cy={cy}\n                  r={isHovered ? b.r * 1.2 : b.r}\n                  fill={bubbleColor}\n                  fillOpacity={isHovered ? 0.75 : 0.4}\n                  stroke={bubbleColor}\n                  strokeWidth=\"2\"\n                  className=\"transition-all duration-200\"\n                />\n                <text x={cx} y={cy + 3} textAnchor=\"middle\" className=\"text-[9px] font-mono font-semibold fill-current select-none pointer-events-none\">\n                  {b.name.split(' ')[0]}\n                </text>\n              </g>\n            );\n          })}\n        </svg>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { BubblePlot, BubblePlotVariant } from './index';\n\nexport function BubblePlotPreview() {\n  const [variant, setVariant] = useState<BubblePlotVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <BubblePlot variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "charts"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_bubble_plot",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

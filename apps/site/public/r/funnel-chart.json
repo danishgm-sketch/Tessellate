@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "funnel-chart",
+  "type": "registry:component",
+  "title": "Funnel Chart",
+  "description": "Multi-stage conversion funnel showing drop-off percentages, stage step trapezoids/bars, and stage conversion rates.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type FunnelChartVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FunnelChartProps {\n  variant?: FunnelChartVariant;\n}\n\nexport function FunnelChart({ variant = 'quiet' }: FunnelChartProps) {\n  const [activeStep, setActiveStep] = useState<number | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const stepFill =\n    variant === 'nocturne'\n      ? 'bg-cyan-500/80 border-cyan-400'\n      : variant === 'expressive'\n      ? 'bg-[#2547E8] border-blue-400'\n      : 'bg-neutral-800 border-neutral-700';\n\n  const stages = [\n    { name: 'Visitors', count: 12500, pct: 100 },\n    { name: 'Product Views', count: 6800, pct: 54 },\n    { name: 'Signups', count: 2400, pct: 19 },\n    { name: 'Workspace Created', count: 1850, pct: 15 },\n    { name: 'Upgraded to Paid', count: 520, pct: 4.2 },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between mb-5\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Onboarding Conversion Funnel</h4>\n          <p className=\"text-xs text-neutral-500\">Visitor-to-paid lifecycle conversion</p>\n        </div>\n        <span className=\"text-xs font-mono font-medium text-emerald-500\">Overall: 4.2%</span>\n      </div>\n\n      <div className=\"space-y-3\">\n        {stages.map((stage, idx) => {\n          const isHovered = activeStep === idx;\n          return (\n            <div\n              key={stage.name}\n              onMouseEnter={() => setActiveStep(idx)}\n              onMouseLeave={() => setActiveStep(null)}\n              className=\"flex items-center gap-4 cursor-pointer group\"\n            >\n              <div className=\"w-36 text-xs font-medium truncate text-neutral-600 dark:text-neutral-400 group-hover:text-current\">\n                {stage.name}\n              </div>\n              <div className=\"flex-1 bg-neutral-100 dark:bg-neutral-800 h-8 rounded-lg overflow-hidden flex items-center p-1\">\n                <div\n                  className={`h-full rounded transition-all duration-300 flex items-center px-3 text-white text-xs font-mono font-semibold ${stepFill} ${\n                    isHovered ? 'opacity-100' : 'opacity-85'\n                  }`}\n                  style={{ width: `${Math.max(stage.pct, 8)}%` }}\n                >\n                  {stage.count.toLocaleString()}\n                </div>\n              </div>\n              <div className=\"w-16 text-right text-xs font-mono font-medium text-neutral-400\">\n                {stage.pct}%\n              </div>\n            </div>\n          );\n        })}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FunnelChart, FunnelChartVariant } from './index';\n\nexport function FunnelChartPreview() {\n  const [variant, setVariant] = useState<FunnelChartVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <FunnelChart variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "charts"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_funnel_chart",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "financial-candlestick-chart",
+  "type": "registry:component",
+  "title": "Financial Candlestick Chart",
+  "description": "OHLC financial price chart with bullish/bearish candle bodies, high/low wicks, and volume sub-bars.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type FinancialCandlestickChartVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FinancialCandlestickChartProps {\n  variant?: FinancialCandlestickChartVariant;\n}\n\nexport function FinancialCandlestickChart({ variant = 'quiet' }: FinancialCandlestickChartProps) {\n  const [activeCandle, setActiveCandle] = useState<number | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const candles = [\n    { t: '10:00', o: 142, h: 148, l: 140, c: 146 },\n    { t: '10:15', o: 146, h: 151, l: 144, c: 149 },\n    { t: '10:30', o: 149, h: 152, l: 143, c: 144 },\n    { t: '10:45', o: 144, h: 147, l: 139, c: 141 },\n    { t: '11:00', o: 141, h: 150, l: 140, c: 148 },\n    { t: '11:15', o: 148, h: 155, l: 147, c: 154 },\n    { t: '11:30', o: 154, h: 156, l: 150, c: 151 },\n  ];\n\n  const minP = 135;\n  const maxP = 160;\n  const range = maxP - minP;\n\n  const width = 600;\n  const height = 220;\n  const padding = { top: 20, right: 30, bottom: 40, left: 40 };\n  const chartW = width - padding.left - padding.right;\n  const chartH = height - padding.top - padding.bottom;\n  const candleW = 24;\n  const step = chartW / candles.length;\n\n  const getY = (val: number) => padding.top + chartH - ((val - minP) / range) * chartH;\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between mb-4\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">BTC/USD Price Action</h4>\n          <p className=\"text-xs text-neutral-500\">15-minute candlestick interval</p>\n        </div>\n        <div className=\"text-right\">\n          <span className=\"text-base font-bold font-mono text-emerald-500\">$151.20</span>\n          <span className=\"text-xs text-neutral-400 ml-1\">+6.3%</span>\n        </div>\n      </div>\n\n      <div className=\"relative w-full overflow-hidden\">\n        <svg viewBox={`0 0 ${width} ${height}`} className=\"w-full h-auto overflow-visible select-none\">\n          {/* Horizontal grid */}\n          {[140, 145, 150, 155].map((p) => {\n            const y = getY(p);\n            return (\n              <g key={p}>\n                <line x1={padding.left} y1={y} x2={width - padding.right} y2={y} stroke={variant === 'nocturne' ? '#1E232E' : '#F3F4F6'} strokeWidth=\"1\" />\n                <text x={padding.left - 8} y={y + 3} textAnchor=\"end\" className=\"text-[10px] fill-neutral-400 font-mono\">\n                  {p}\n                </text>\n              </g>\n            );\n          })}\n\n          {/* Candlesticks */}\n          {candles.map((c, idx) => {\n            const x = padding.left + idx * step + (step - candleW) / 2;\n            const isBullish = c.c >= c.o;\n            const topY = getY(Math.max(c.o, c.c));\n            const botY = getY(Math.min(c.o, c.c));\n            const bodyH = Math.max(botY - topY, 2);\n            const highY = getY(c.h);\n            const lowY = getY(c.l);\n            const color = isBullish ? '#10B981' : '#EF4444';\n\n            return (\n              <g key={c.t} onMouseEnter={() => setActiveCandle(idx)} onMouseLeave={() => setActiveCandle(null)} className=\"cursor-pointer\">\n                {/* Wick */}\n                <line x1={x + candleW / 2} y1={highY} x2={x + candleW / 2} y2={lowY} stroke={color} strokeWidth=\"1.5\" />\n                {/* Body */}\n                <rect x={x} y={topY} width={candleW} height={bodyH} rx=\"2\" fill={color} />\n                <text x={x + candleW / 2} y={height - 10} textAnchor=\"middle\" className=\"text-[10px] fill-neutral-400 font-mono\">\n                  {c.t}\n                </text>\n              </g>\n            );\n          })}\n        </svg>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FinancialCandlestickChart, FinancialCandlestickChartVariant } from './index';\n\nexport function FinancialCandlestickChartPreview() {\n  const [variant, setVariant] = useState<FinancialCandlestickChartVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <FinancialCandlestickChart variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "finance"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_financial_candlestick_chart",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

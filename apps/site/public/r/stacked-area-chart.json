@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stacked-area-chart",
+  "type": "registry:component",
+  "title": "Stacked Area Chart",
+  "description": "Multi-layer cumulative volume area chart with layered SVG path fills, proportional stacking, and hover slice indicator.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type StackedAreaChartVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface StackedAreaChartProps {\n  variant?: StackedAreaChartVariant;\n}\n\nexport function StackedAreaChart({ variant = 'quiet' }: StackedAreaChartProps) {\n  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const layerColors =\n    variant === 'nocturne'\n      ? ['#06B6D4', '#6366F1', '#A855F7']\n      : variant === 'expressive'\n      ? ['#2547E8', '#10B981', '#F59E0B']\n      : ['#171717', '#737373', '#D4D4D4'];\n\n  const labels = ['Q1', 'Q2', 'Q3', 'Q4'];\n  const series = [\n    { name: 'Compute', data: [40, 55, 70, 90] },\n    { name: 'Storage', data: [30, 45, 50, 65] },\n    { name: 'Bandwidth', data: [20, 25, 35, 45] },\n  ];\n\n  const width = 600;\n  const height = 240;\n  const padding = { top: 20, right: 30, bottom: 40, left: 40 };\n  const chartW = width - padding.left - padding.right;\n  const chartH = height - padding.top - padding.bottom;\n  const maxVal = 220;\n\n  // Compute stacked cumulative points\n  const stackedTotals = labels.map((_, i) => {\n    let sum = 0;\n    return series.map((s) => {\n      sum += s.data[i] ?? 0;\n      return sum;\n    });\n  });\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>\n      <div className=\"flex flex-wrap items-center justify-between gap-4 mb-4\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Cumulative Resource Allocation</h4>\n          <p className=\"text-xs text-neutral-500\">Tier volume stacked by quarter</p>\n        </div>\n        <div className=\"flex items-center gap-3\">\n          {series.map((s, idx) => (\n            <div key={s.name} className=\"flex items-center gap-1.5 text-xs\">\n              <span className=\"w-2.5 h-2.5 rounded-sm\" style={{ backgroundColor: layerColors[idx] ?? '#000' }} />\n              <span>{s.name}</span>\n            </div>\n          ))}\n        </div>\n      </div>\n\n      <div className=\"relative w-full overflow-hidden\">\n        <svg viewBox={`0 0 ${width} ${height}`} className=\"w-full h-auto overflow-visible select-none\">\n          {/* Horizontal gridlines */}\n          {[0, 50, 100, 150, 200].map((v) => {\n            const y = padding.top + chartH * (1 - v / maxVal);\n            return (\n              <g key={v}>\n                <line x1={padding.left} y1={y} x2={width - padding.right} y2={y} stroke={variant === 'nocturne' ? '#1E232E' : '#F3F4F6'} strokeWidth=\"1\" />\n                <text x={padding.left - 8} y={y + 3} textAnchor=\"end\" className=\"text-[10px] fill-neutral-400 font-mono\">\n                  {v}\n                </text>\n              </g>\n            );\n          })}\n\n          {/* Draw stacked areas from top to bottom */}\n          {[2, 1, 0].map((layerIdx) => {\n            const color = layerColors[layerIdx] ?? '#000';\n            const pts = labels.map((_, i) => {\n              const x = padding.left + (i / (labels.length - 1)) * chartW;\n              const stackVal = stackedTotals[i]?.[layerIdx] ?? 0;\n              const y = padding.top + chartH - (stackVal / maxVal) * chartH;\n              return { x, y };\n            });\n\n            const topPath = pts.reduce((acc, p, i) => (i === 0 ? `M ${p.x} ${p.y}` : `${acc} L ${p.x} ${p.y}`), '');\n            const areaD = pts.length > 0 ? `${topPath} L ${pts[pts.length - 1]?.x ?? 0} ${padding.top + chartH} L ${pts[0]?.x ?? 0} ${padding.top + chartH} Z` : '';\n\n            return <path key={layerIdx} d={areaD} fill={color} fillOpacity={variant === 'nocturne' ? 0.75 : 0.65} />;\n          })}\n\n          {/* X axis labels and hover interactions */}\n          {labels.map((lbl, idx) => {\n            const x = padding.left + (idx / (labels.length - 1)) * chartW;\n            return (\n              <g key={lbl} onMouseEnter={() => setHoveredIdx(idx)} onMouseLeave={() => setHoveredIdx(null)} className=\"cursor-pointer\">\n                <rect x={x - 20} y={padding.top} width=\"40\" height={chartH} fill=\"transparent\" />\n                {hoveredIdx === idx && (\n                  <line x1={x} y1={padding.top} x2={x} y2={padding.top + chartH} stroke=\"#fff\" strokeDasharray=\"3 3\" strokeWidth=\"1\" />\n                )}\n                <text x={x} y={height - 10} textAnchor=\"middle\" className=\"text-[10px] fill-neutral-400 font-mono\">\n                  {lbl}\n                </text>\n              </g>\n            );\n          })}\n        </svg>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { StackedAreaChart, StackedAreaChartVariant } from './index';\n\nexport function StackedAreaChartPreview() {\n  const [variant, setVariant] = useState<StackedAreaChartVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <StackedAreaChart variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "charts"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_stacked_area_chart",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

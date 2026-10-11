@@ -482,7 +482,7 @@ Produce/curate in this order:
 - [x] 36 navigation/application shells.
 - [x] 72 marketing sections.
 - [x] 56 application blocks.
-- [ ] 24 data resources.
+- [x] 24 data resources.
 - [ ] 20 AI interaction patterns.
 - [ ] 24 motion/microinteraction resources.
 - [ ] 20 backgrounds/effects.

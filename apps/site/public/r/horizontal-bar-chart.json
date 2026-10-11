@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "horizontal-bar-chart",
+  "type": "registry:component",
+  "title": "Horizontal Bar Chart",
+  "description": "Ranking/leaderboard horizontal bar chart with left labels, percentage/count right labels, and animated width bars.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type HorizontalBarChartVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface HorizontalBarChartProps {\n  variant?: HorizontalBarChartVariant;\n}\n\nexport function HorizontalBarChart({ variant = 'quiet' }: HorizontalBarChartProps) {\n  const [activeItem, setActiveItem] = useState<string | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const barBg =\n    variant === 'nocturne' ? 'bg-[#1E232E]' : 'bg-neutral-100 dark:bg-neutral-800';\n\n  const barFill =\n    variant === 'nocturne'\n      ? 'bg-cyan-500'\n      : variant === 'expressive'\n      ? 'bg-[#2547E8]'\n      : 'bg-neutral-900 dark:bg-white';\n\n  const items = [\n    { label: '/api/v1/projects', value: 840, pct: 95 },\n    { label: '/api/v1/auth/session', value: 620, pct: 70 },\n    { label: '/api/v1/search', value: 510, pct: 58 },\n    { label: '/api/v1/catalog/items', value: 390, pct: 44 },\n    { label: '/api/v1/webhooks', value: 180, pct: 20 },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between mb-5\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Top Requested Endpoints</h4>\n          <p className=\"text-xs text-neutral-500\">Request volume over past 24 hours</p>\n        </div>\n        <span className=\"text-xs font-mono font-medium text-neutral-400\">Total: 2,540 req</span>\n      </div>\n\n      <div className=\"space-y-4\">\n        {items.map((item) => (\n          <div\n            key={item.label}\n            onMouseEnter={() => setActiveItem(item.label)}\n            onMouseLeave={() => setActiveItem(null)}\n            className=\"group cursor-pointer\"\n          >\n            <div className=\"flex items-center justify-between text-xs mb-1.5\">\n              <span className=\"font-mono font-medium text-neutral-700 dark:text-neutral-300 group-hover:text-current\">\n                {item.label}\n              </span>\n              <span className=\"font-mono text-neutral-500\">{item.value} req</span>\n            </div>\n            <div className={`w-full h-3 rounded-full overflow-hidden ${barBg}`}>\n              <div\n                className={`h-full rounded-full transition-all duration-300 ${barFill} ${\n                  activeItem === item.label ? 'opacity-100' : 'opacity-85'\n                }`}\n                style={{ width: `${item.pct}%` }}\n              />\n            </div>\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { HorizontalBarChart, HorizontalBarChartVariant } from './index';\n\nexport function HorizontalBarChartPreview() {\n  const [variant, setVariant] = useState<HorizontalBarChartVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <HorizontalBarChart variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "charts"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_horizontal_bar_chart",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

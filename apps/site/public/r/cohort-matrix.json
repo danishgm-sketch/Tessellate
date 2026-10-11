@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cohort-matrix",
+  "type": "registry:component",
+  "title": "Cohort Matrix",
+  "description": "Retention table displaying user cohorts over weekly/monthly periods with color-coded retention percentage cells.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type CohortMatrixVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CohortMatrixProps {\n  variant?: CohortMatrixVariant;\n}\n\nexport function CohortMatrix({ variant = 'quiet' }: CohortMatrixProps) {\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const getCellBg = (pct: number) => {\n    if (variant === 'nocturne') {\n      if (pct >= 80) return 'bg-cyan-500 text-black font-semibold';\n      if (pct >= 50) return 'bg-cyan-700/80 text-white';\n      if (pct >= 30) return 'bg-cyan-900/60 text-cyan-200';\n      return 'bg-[#151921] text-neutral-400';\n    }\n    if (variant === 'expressive') {\n      if (pct >= 80) return 'bg-[#2547E8] text-white font-semibold';\n      if (pct >= 50) return 'bg-blue-600/80 text-white';\n      if (pct >= 30) return 'bg-blue-200 text-blue-900';\n      return 'bg-neutral-100 text-neutral-500';\n    }\n    if (pct >= 80) return 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-semibold';\n    if (pct >= 50) return 'bg-neutral-700 text-white dark:bg-neutral-300 dark:text-neutral-900';\n    if (pct >= 30) return 'bg-neutral-300 text-neutral-800 dark:bg-neutral-700 dark:text-neutral-200';\n    return 'bg-neutral-100 text-neutral-500 dark:bg-neutral-800 dark:text-neutral-400';\n  };\n\n  const cohorts = [\n    { cohort: 'Jan 2026', size: '1,240', ret: [100, 78, 64, 52, 45, 41] },\n    { cohort: 'Feb 2026', size: '1,480', ret: [100, 81, 68, 59, 49] },\n    { cohort: 'Mar 2026', size: '1,620', ret: [100, 84, 72, 63] },\n    { cohort: 'Apr 2026', size: '1,890', ret: [100, 86, 75] },\n    { cohort: 'May 2026', size: '2,100', ret: [100, 88] },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between mb-4\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">User Retention Cohort Matrix</h4>\n          <p className=\"text-xs text-neutral-500\">Monthly active user persistence</p>\n        </div>\n      </div>\n\n      <div className=\"overflow-x-auto\">\n        <table className=\"w-full text-xs font-mono\">\n          <thead>\n            <tr className=\"border-b border-neutral-200 dark:border-neutral-800 text-neutral-400 text-left\">\n              <th className=\"py-2 pr-4 font-normal\">Cohort</th>\n              <th className=\"py-2 pr-4 font-normal\">Size</th>\n              {['M0', 'M1', 'M2', 'M3', 'M4', 'M5'].map((m) => (\n                <th key={m} className=\"py-2 px-2 text-center font-normal\">{m}</th>\n              ))}\n            </tr>\n          </thead>\n          <tbody>\n            {cohorts.map((c) => (\n              <tr key={c.cohort} className=\"border-b border-neutral-100 dark:border-neutral-800/50\">\n                <td className=\"py-2.5 pr-4 font-medium text-neutral-700 dark:text-neutral-300\">{c.cohort}</td>\n                <td className=\"py-2.5 pr-4 text-neutral-500\">{c.size}</td>\n                {[0, 1, 2, 3, 4, 5].map((idx) => {\n                  const val = c.ret[idx];\n                  if (val === undefined) {\n                    return <td key={idx} className=\"py-2.5 px-2 text-center text-neutral-300 dark:text-neutral-700\">-</td>;\n                  }\n                  return (\n                    <td key={idx} className=\"py-1 px-1\">\n                      <div className={`w-10 h-7 rounded flex items-center justify-center mx-auto text-[11px] ${getCellBg(val)}`}>\n                        {val}%\n                      </div>\n                    </td>\n                  );\n                })}\n              </tr>\n            ))}\n          </tbody>\n        </table>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { CohortMatrix, CohortMatrixVariant } from './index';\n\nexport function CohortMatrixPreview() {\n  const [variant, setVariant] = useState<CohortMatrixVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <CohortMatrix variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "data",
+    "visualization",
+    "retention"
+  ],
+  "meta": {
+    "tessellateId": "res_dat_cohort_matrix",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

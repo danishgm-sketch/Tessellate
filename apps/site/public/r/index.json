@@ -195,6 +195,20 @@
       ]
     },
     {
+      "name": "area-chart",
+      "type": "registry:component",
+      "title": "Area Chart",
+      "description": "Smooth bezier-curved single or dual area plot with subtle vertical gradient fill, baseline threshold, and interactive peek point.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
       "name": "audit-log",
       "type": "registry:block",
       "title": "Audit Log",
@@ -261,6 +275,20 @@
       ]
     },
     {
+      "name": "bar-chart",
+      "type": "registry:component",
+      "title": "Bar Chart",
+      "description": "Vertical categorical column chart with rounded top caps, subtle hover darkening, value labels, and horizontal gridlines.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
       "name": "billing-overview",
       "type": "registry:block",
       "title": "Billing Overview",
@@ -311,6 +339,20 @@
       "categories": [
         "shells",
         "navigation"
+      ]
+    },
+    {
+      "name": "bubble-plot",
+      "type": "registry:component",
+      "title": "Bubble Plot",
+      "description": "3-variable scatter plot where point radius encodes the 3rd metric (e.g. volume/revenue), with semi-transparent bubble overlaps.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
       ]
     },
     {
@@ -448,6 +490,20 @@
         "sections",
         "marketing",
         "hero"
+      ]
+    },
+    {
+      "name": "cohort-matrix",
+      "type": "registry:component",
+      "title": "Cohort Matrix",
+      "description": "Retention table displaying user cohorts over weekly/monthly periods with color-coded retention percentage cells.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "retention"
       ]
     },
     {
@@ -843,6 +899,20 @@
       "categories": [
         "shells",
         "layout"
+      ]
+    },
+    {
+      "name": "donut-chart",
+      "type": "registry:component",
+      "title": "Donut Chart",
+      "description": "SVG circle stroke-dasharray radial breakdown with center KPI summary metric, category legend pills, and segment highlight.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
       ]
     },
     {
@@ -1292,6 +1362,20 @@
       ]
     },
     {
+      "name": "financial-candlestick-chart",
+      "type": "registry:component",
+      "title": "Financial Candlestick Chart",
+      "description": "OHLC financial price chart with bullish/bearish candle bodies, high/low wicks, and volume sub-bars.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "finance"
+      ]
+    },
+    {
       "name": "floating-nav",
       "type": "registry:block",
       "title": "Floating Navigation",
@@ -1375,6 +1459,48 @@
       ]
     },
     {
+      "name": "funnel-chart",
+      "type": "registry:component",
+      "title": "Funnel Chart",
+      "description": "Multi-stage conversion funnel showing drop-off percentages, stage step trapezoids/bars, and stage conversion rates.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "gauge",
+      "type": "registry:component",
+      "title": "Gauge",
+      "description": "Semicircular dial/speedometer gauge with target marker, colored threshold zones (safe/warning/critical), and center value needle/text.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "geographic-map",
+      "type": "registry:component",
+      "title": "Geographic Map",
+      "description": "Stylized SVG regional map preview with density shading, marker pins, and territory summary metrics.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "maps"
+      ]
+    },
+    {
       "name": "global-search-results",
       "type": "registry:block",
       "title": "Global Search Results",
@@ -1400,6 +1526,34 @@
         "blocks",
         "data",
         "tables"
+      ]
+    },
+    {
+      "name": "heatmap",
+      "type": "registry:component",
+      "title": "Heatmap",
+      "description": "7x24 or day-by-week commit/activity grid with 5-level intensity gradient, month labels, and cell inspection tooltip.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "horizontal-bar-chart",
+      "type": "registry:component",
+      "title": "Horizontal Bar Chart",
+      "description": "Ranking/leaderboard horizontal bar chart with left labels, percentage/count right labels, and animated width bars.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
       ]
     },
     {
@@ -1581,6 +1735,20 @@
       ]
     },
     {
+      "name": "interactive-globe",
+      "type": "registry:component",
+      "title": "Interactive Globe",
+      "description": "Orthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "maps"
+      ]
+    },
+    {
       "name": "kanban-board",
       "type": "registry:block",
       "title": "Kanban Board",
@@ -1605,6 +1773,20 @@
       "categories": [
         "shells",
         "layout"
+      ]
+    },
+    {
+      "name": "kpi-delta-card",
+      "type": "registry:component",
+      "title": "KPI Delta Card",
+      "description": "Executive metric card with hero number, benchmark comparison badge, and micro trend sparkline.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "kpi"
       ]
     },
     {
@@ -1716,6 +1898,20 @@
       ]
     },
     {
+      "name": "mini-sparkline",
+      "type": "registry:component",
+      "title": "Mini Sparkline",
+      "description": "Ultra-compact inline sparkline widget with trend arrow, delta percentage badge, min/max range dots, and current value.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
       "name": "minimal-statement-hero",
       "type": "registry:block",
       "title": "Minimal Statement Hero",
@@ -1781,6 +1977,34 @@
       "categories": [
         "primitives",
         "inputs"
+      ]
+    },
+    {
+      "name": "multi-series-line-chart",
+      "type": "registry:component",
+      "title": "Multi-Series Line Chart",
+      "description": "Comparative line chart with multiple colored trendlines, toggleable series legends, and point markers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "network-graph",
+      "type": "registry:component",
+      "title": "Network Graph",
+      "description": "Node-link topology diagram with circular nodes, interconnecting SVG edge lines, hub highlights, and cluster grouping.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
       ]
     },
     {
@@ -1850,6 +2074,20 @@
         "blocks",
         "onboarding",
         "wizard"
+      ]
+    },
+    {
+      "name": "order-book-depth-chart",
+      "type": "registry:component",
+      "title": "Order Book Depth Chart",
+      "description": "Market depth cumulative bid/ask stepped area chart with green bid wall, red ask wall, and mid-market spread indicator.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "finance"
       ]
     },
     {
@@ -2170,6 +2408,20 @@
       ]
     },
     {
+      "name": "radar-chart",
+      "type": "registry:component",
+      "title": "Radar Chart",
+      "description": "Polygonal spider/radar chart with concentric polygon web rings, 6 radial metric axes, and shaded polygon metric footprint.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Radio Group",
@@ -2264,6 +2516,20 @@
       ]
     },
     {
+      "name": "sankey-diagram",
+      "type": "registry:component",
+      "title": "Sankey Diagram",
+      "description": "Flow distribution chart showing source-to-target stream links with curved SVG ribbon bands and node column blocks.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
       "name": "saved-views",
       "type": "registry:block",
       "title": "Saved Views",
@@ -2275,6 +2541,20 @@
         "blocks",
         "search",
         "views"
+      ]
+    },
+    {
+      "name": "scatter-plot",
+      "type": "registry:component",
+      "title": "Scatter Plot",
+      "description": "2D Cartesian coordinate scatter chart with SVG circular points, quadrant benchmark lines, and outlier point highlights.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
       ]
     },
     {
@@ -2481,6 +2761,34 @@
       ]
     },
     {
+      "name": "stacked-area-chart",
+      "type": "registry:component",
+      "title": "Stacked Area Chart",
+      "description": "Multi-layer cumulative volume area chart with layered SVG path fills, proportional stacking, and hover slice indicator.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
+      "name": "stacked-bar-chart",
+      "type": "registry:component",
+      "title": "Stacked Bar Chart",
+      "description": "Segmented vertical bar chart showing category composition with segmented color blocks and segment breakdown on hover.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
       "name": "status-overview",
       "type": "registry:block",
       "title": "Status Overview",
@@ -2643,6 +2951,20 @@
       ]
     },
     {
+      "name": "time-series-chart",
+      "type": "registry:component",
+      "title": "Time Series Chart",
+      "description": "Interactive line chart with date/time x-axis, area fill gradient, hover cursor crosshair, and value tooltip.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
+      ]
+    },
+    {
       "name": "timeline",
       "type": "registry:block",
       "title": "Timeline",
@@ -2693,6 +3015,20 @@
       "categories": [
         "shells",
         "navigation"
+      ]
+    },
+    {
+      "name": "treemap",
+      "type": "registry:component",
+      "title": "Treemap",
+      "description": "Rectangular squarified hierarchical partition chart with proportional area tiles, category headers, and size/value labels.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "data",
+        "visualization",
+        "charts"
       ]
     },
     {
