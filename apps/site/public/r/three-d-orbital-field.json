@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "three-d-orbital-field",
+  "type": "registry:component",
+  "title": "3D Orbital Field",
+  "description": "Elliptical planetary orbits rotating in perspective with satellite node coordinates and celestial depth.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ThreeDOrbitalFieldVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ThreeDOrbitalFieldProps {\n  variant?: ThreeDOrbitalFieldVariant;\n  children?: React.ReactNode;\n}\n\nexport function ThreeDOrbitalField({ variant = 'quiet', children }: ThreeDOrbitalFieldProps) {\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const ringColor =\n    variant === 'nocturne'\n      ? 'rgba(6, 182, 212, 0.2)'\n      : variant === 'expressive'\n      ? 'rgba(99, 102, 241, 0.2)'\n      : 'rgba(0, 0, 0, 0.08)';\n\n  return (\n    <div className={`relative w-full p-8 rounded-xl border overflow-hidden min-h-[260px] flex flex-col justify-center transition-colors ${cardBg}`}>\n      {/* 3D tilted orbital rings */}\n      <svg className=\"absolute inset-0 w-full h-full pointer-events-none\" viewBox=\"0 0 600 300\">\n        <ellipse cx=\"300\" cy=\"150\" rx=\"240\" ry=\"80\" fill=\"none\" stroke={ringColor} strokeWidth=\"1\" strokeDasharray=\"3 3\" transform=\"rotate(-15 300 150)\" />\n        <ellipse cx=\"300\" cy=\"150\" rx=\"160\" ry=\"50\" fill=\"none\" stroke={ringColor} strokeWidth=\"1.5\" transform=\"rotate(25 300 150)\" />\n        <circle cx=\"430\" cy=\"115\" r=\"3.5\" fill=\"currentColor\" opacity=\"0.6\" />\n        <circle cx=\"210\" cy=\"180\" r=\"2.5\" fill=\"currentColor\" opacity=\"0.5\" />\n      </svg>\n\n      <div className=\"relative z-10 max-w-md space-y-1\">\n        <span className=\"text-[10px] font-mono uppercase tracking-wider text-neutral-400\">Celestial Geometry</span>\n        <h4 className=\"text-base font-bold tracking-tight\">3D Orbital Field</h4>\n        <p className=\"text-xs text-neutral-500 leading-relaxed\">\n          Elliptical perspective rings and satellite telemetry nodes simulating global orbital trajectories.\n        </p>\n        {children}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { ThreeDOrbitalField, ThreeDOrbitalFieldVariant } from './index';\n\nexport function ThreeDOrbitalFieldPreview() {\n  const [variant, setVariant] = useState<ThreeDOrbitalFieldVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-2xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <ThreeDOrbitalField variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "backgrounds",
+    "effects",
+    "orbital"
+  ],
+  "meta": {
+    "tessellateId": "res_bg_three_d_orbital_field",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

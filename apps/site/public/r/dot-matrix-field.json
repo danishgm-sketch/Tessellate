@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dot-matrix-field",
+  "type": "registry:component",
+  "title": "Dot Matrix Field",
+  "description": "Polka-dot matrix point grid pattern creating technical texture behind feature cards.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type DotMatrixFieldVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface DotMatrixFieldProps {\n  variant?: DotMatrixFieldVariant;\n  children?: React.ReactNode;\n}\n\nexport function DotMatrixField({ variant = 'quiet', children }: DotMatrixFieldProps) {\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const dotFill =\n    variant === 'nocturne'\n      ? 'rgba(6, 182, 212, 0.25)'\n      : variant === 'expressive'\n      ? 'rgba(37, 71, 232, 0.18)'\n      : 'rgba(0, 0, 0, 0.12)';\n\n  return (\n    <div className={`relative w-full p-8 rounded-xl border overflow-hidden min-h-[260px] flex flex-col justify-center transition-colors ${cardBg}`}>\n      <svg className=\"absolute inset-0 w-full h-full pointer-events-none\">\n        <defs>\n          <pattern id={`dots-${variant}`} width=\"24\" height=\"24\" patternUnits=\"userSpaceOnUse\">\n            <circle cx=\"2\" cy=\"2\" r=\"1.5\" fill={dotFill} />\n          </pattern>\n        </defs>\n        <rect width=\"100%\" height=\"100%\" fill={`url(#dots-${variant})`} />\n      </svg>\n\n      <div className=\"relative z-10 max-w-md space-y-1\">\n        <span className=\"text-[10px] font-mono uppercase tracking-wider text-neutral-400\">Technical Pattern</span>\n        <h4 className=\"text-base font-bold tracking-tight\">Dot Matrix Field</h4>\n        <p className=\"text-xs text-neutral-500 leading-relaxed\">\n          Geometric 24px-spaced point matrix lending tactile engineering presence to interface surfaces.\n        </p>\n        {children}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { DotMatrixField, DotMatrixFieldVariant } from './index';\n\nexport function DotMatrixFieldPreview() {\n  const [variant, setVariant] = useState<DotMatrixFieldVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-2xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <DotMatrixField variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "backgrounds",
+    "effects",
+    "dots"
+  ],
+  "meta": {
+    "tessellateId": "res_bg_dot_matrix_field",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

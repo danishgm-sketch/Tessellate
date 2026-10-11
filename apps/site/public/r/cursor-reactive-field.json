@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cursor-reactive-field",
+  "type": "registry:component",
+  "title": "Cursor Reactive Field",
+  "description": "Interactive mouse-tracking luminescence field that dynamically illuminates coordinate grid points and distance vectors.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type CursorReactiveFieldVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CursorReactiveFieldProps {\n  variant?: CursorReactiveFieldVariant;\n  children?: React.ReactNode;\n}\n\nexport function CursorReactiveField({ variant = 'quiet', children }: CursorReactiveFieldProps) {\n  const [pos, setPos] = useState<{ x: number; y: number } | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const glowColor =\n    variant === 'nocturne'\n      ? 'rgba(6, 182, 212, 0.18)'\n      : variant === 'expressive'\n      ? 'rgba(79, 70, 229, 0.14)'\n      : 'rgba(0, 0, 0, 0.08)';\n\n  const gridColor =\n    variant === 'nocturne'\n      ? 'rgba(255, 255, 255, 0.04)'\n      : variant === 'expressive'\n      ? 'rgba(37, 71, 232, 0.06)'\n      : 'rgba(0, 0, 0, 0.04)';\n\n  return (\n    <div\n      onMouseMove={(e) => {\n        const rect = e.currentTarget.getBoundingClientRect();\n        setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });\n      }}\n      onMouseLeave={() => setPos(null)}\n      className={`relative w-full p-8 rounded-xl border overflow-hidden min-h-[260px] flex flex-col justify-center transition-colors ${cardBg}`}\n    >\n      {/* Background grid */}\n      <svg className=\"absolute inset-0 w-full h-full pointer-events-none\">\n        <defs>\n          <pattern id={`cr-grid-${variant}`} width=\"36\" height=\"36\" patternUnits=\"userSpaceOnUse\">\n            <path d=\"M 36 0 L 0 0 0 36\" fill=\"none\" stroke={gridColor} strokeWidth=\"1\" />\n          </pattern>\n        </defs>\n        <rect width=\"100%\" height=\"100%\" fill={`url(#cr-grid-${variant})`} />\n      </svg>\n\n      {/* Reactive cursor spotlight */}\n      {pos && (\n        <div\n          className=\"absolute pointer-events-none rounded-full blur-2xl transition-opacity duration-300\"\n          style={{\n            left: pos.x - 120,\n            top: pos.y - 120,\n            width: 240,\n            height: 240,\n            background: glowColor,\n          }}\n        />\n      )}\n\n      <div className=\"relative z-10 max-w-md space-y-1\">\n        <span className=\"text-[10px] font-mono uppercase tracking-wider text-neutral-400\">Reactive Atmosphere</span>\n        <h4 className=\"text-base font-bold tracking-tight\">Cursor Reactive Field</h4>\n        <p className=\"text-xs text-neutral-500 leading-relaxed\">\n          Hover cursor across the container to illuminate localized coordinate vectors with zero performance penalty.\n        </p>\n        {children}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { CursorReactiveField, CursorReactiveFieldVariant } from './index';\n\nexport function CursorReactiveFieldPreview() {\n  const [variant, setVariant] = useState<CursorReactiveFieldVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-2xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <CursorReactiveField variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "backgrounds",
+    "effects",
+    "interactive"
+  ],
+  "meta": {
+    "tessellateId": "res_bg_cursor_reactive_field",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

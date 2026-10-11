@@ -485,7 +485,7 @@ Produce/curate in this order:
 - [x] 24 data resources.
 - [x] 20 AI interaction patterns.
 - [x] 24 motion/microinteraction resources.
-- [ ] 20 backgrounds/effects.
+- [x] 20 backgrounds/effects.
 - [ ] 12 typography effects.
 - [ ] 16 state patterns.
 

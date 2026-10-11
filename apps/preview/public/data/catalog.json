@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-10-11T00:22:46.688Z",
-  "count": 276,
+  "generatedAt": "2026-10-11T00:27:23.152Z",
+  "count": 296,
   "resources": [
     {
       "schemaVersion": "1.0.0",
@@ -7174,6 +7174,254 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_bg_animated_wave_field",
+      "slug": "animated-wave-field",
+      "name": "Animated Wave Field",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Smooth SVG sine waves undulating horizontally with gentle frequency oscillation.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "waves"
+      ],
+      "roles": [
+        "background",
+        "waves"
+      ],
+      "purposes": [
+        "fluid-motion",
+        "sine-wave-ambient",
+        "calm-animation"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "animated-wave-field",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "AnimatedWaveFieldPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "background",
+        "waves",
+        "sine",
+        "svg",
+        "ambient"
+      ],
+      "intent": {
+        "summary": "Smooth SVG sine waves undulating horizontally with gentle frequency oscillation.",
+        "idealFor": [
+          "Audio streaming interfaces",
+          "Oceanic and fluid branding",
+          "Hero section bottom dividers"
+        ],
+        "avoidFor": [
+          "Dense financial order books",
+          "High-density spreadsheet tables"
+        ],
+        "jobs": [
+          "Produce gentle harmonic sine wave oscillation across section baselines"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_sec_api_capability_section",
       "slug": "api-capability-section",
       "name": "API Capability Section",
@@ -9123,6 +9371,254 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_bg_aurora_field",
+      "slug": "aurora-field",
+      "name": "Aurora Field",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Drifting organic northern-lights ribbon bands waving across deep dark backdrops.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "aurora"
+      ],
+      "roles": [
+        "background",
+        "aurora"
+      ],
+      "purposes": [
+        "ambient-waves",
+        "aurora-borealis",
+        "cinematic-dark-mode"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "aurora-field",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "AuroraFieldPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "background",
+        "aurora",
+        "ribbons",
+        "dark-mode",
+        "waves"
+      ],
+      "intent": {
+        "summary": "Drifting organic northern-lights ribbon bands waving across deep dark backdrops.",
+        "idealFor": [
+          "Nocturne dark mode landing pages",
+          "Web3 / AI futuristic hero banners",
+          "Cinematic product intros"
+        ],
+        "avoidFor": [
+          "Standard high-contrast data tables",
+          "Text-heavy documentation"
+        ],
+        "jobs": [
+          "Produce ethereal aurora luminescence waves across dark canvas backgrounds"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_autocomplete",
       "slug": "autocomplete",
       "name": "Autocomplete",
@@ -10325,6 +10821,254 @@
         "codeQuality": 98,
         "composability": 96,
         "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_bg_beam_grid",
+      "slug": "beam-grid",
+      "name": "Beam Grid",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Precision architectural coordinate grid with luminous traveling laser beams gliding along horizontal and vertical axes.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "grid"
+      ],
+      "roles": [
+        "background",
+        "beam"
+      ],
+      "purposes": [
+        "telemetry-grid",
+        "hero-backdrop",
+        "visual-depth"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "beam-grid",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "BeamGridPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "grid",
+        "beam",
+        "laser",
+        "traveling",
+        "circuit"
+      ],
+      "intent": {
+        "summary": "Precision architectural coordinate grid with luminous traveling laser beams gliding along horizontal and vertical axes.",
+        "idealFor": [
+          "Infrastructure monitoring tools",
+          "Cloud platform dashboards",
+          "Cybersecurity portals"
+        ],
+        "avoidFor": [
+          "Standard blog articles",
+          "Print view stylesheets"
+        ],
+        "jobs": [
+          "Convey continuous, reliable background computational activity through linear traveling light rays"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
         "dependencyCleanliness": 100,
         "documentation": 96
       },
@@ -17656,6 +18400,254 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_bg_conic_light_field",
+      "slug": "conic-light-field",
+      "name": "Conic Light Field",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Radial swept light gradient generating dramatic angular specular highlights and rotational depth.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "gradient"
+      ],
+      "roles": [
+        "background",
+        "conic"
+      ],
+      "purposes": [
+        "specular-highlight",
+        "luxury-glow",
+        "hero-backdrop"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "conic-light-field",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ConicLightFieldPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "conic",
+        "gradient",
+        "specular",
+        "luxury",
+        "radial"
+      ],
+      "intent": {
+        "summary": "Radial swept light gradient generating dramatic angular specular highlights and rotational depth.",
+        "idealFor": [
+          "Premium subscription banners",
+          "Product reveal hero backdrops",
+          "High-end branding sections"
+        ],
+        "avoidFor": [
+          "Dense tabular data views",
+          "E-commerce product thumbnail grids"
+        ],
+        "jobs": [
+          "Add rotational cinematic luminance and specular polish to top-of-funnel conversion surfaces"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_context_menu",
       "slug": "context-menu",
       "name": "Context Menu",
@@ -19844,6 +20836,254 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_bg_cursor_reactive_field",
+      "slug": "cursor-reactive-field",
+      "name": "Cursor Reactive Field",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Interactive mouse-tracking luminescence field that dynamically illuminates coordinate grid points and distance vectors.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "interactive"
+      ],
+      "roles": [
+        "background",
+        "interactive-field"
+      ],
+      "purposes": [
+        "interactive-backdrop",
+        "hero-engagement",
+        "canvas-texture"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "cursor-reactive-field",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "CursorReactiveFieldPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "cursor",
+        "reactive",
+        "glow",
+        "tracking",
+        "svg"
+      ],
+      "intent": {
+        "summary": "Interactive mouse-tracking luminescence field that dynamically illuminates coordinate grid points and distance vectors.",
+        "idealFor": [
+          "Interactive landing hero sections",
+          "Developer sandbox headers",
+          "Creative agency showcases"
+        ],
+        "avoidFor": [
+          "Low-power embedded displays",
+          "Print view stylesheets"
+        ],
+        "jobs": [
+          "Delight desktop visitors with smooth, hardware-accelerated cursor lighting that does not drop frames"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_mot_cursor_spotlight",
       "slug": "cursor-spotlight",
       "name": "Cursor Spotlight",
@@ -21316,6 +22556,254 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_bg_data_stream_field",
+      "slug": "data-stream-field",
+      "name": "Data Stream Field",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Cascading digital telemetry stream with vertical hexadecimal glyph streams and pulse wave signals.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "stream"
+      ],
+      "roles": [
+        "background",
+        "data-stream"
+      ],
+      "purposes": [
+        "telemetry-stream",
+        "matrix-code",
+        "hero-backdrop"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "data-stream-field",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "DataStreamFieldPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "data",
+        "stream",
+        "matrix",
+        "hexadecimal",
+        "telemetry"
+      ],
+      "intent": {
+        "summary": "Cascading digital telemetry stream with vertical hexadecimal glyph streams and pulse wave signals.",
+        "idealFor": [
+          "High-throughput message brokers",
+          "Security audit consoles",
+          "Real-time financial tickers"
+        ],
+        "avoidFor": [
+          "Calm lifestyle magazines",
+          "Children educational games"
+        ],
+        "jobs": [
+          "Visually symbolize high-frequency real-time event streaming and low-latency packet throughput"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_shell_data_terminal_header",
       "slug": "data-terminal-header",
       "name": "Data Terminal Header",
@@ -22769,6 +24257,254 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_bg_dot_matrix_field",
+      "slug": "dot-matrix-field",
+      "name": "Dot Matrix Field",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Polka-dot matrix point grid pattern creating technical texture behind feature cards.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "dots"
+      ],
+      "roles": [
+        "background",
+        "matrix"
+      ],
+      "purposes": [
+        "dot-matrix-texture",
+        "technical-depth",
+        "card-backdrop"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "dot-matrix-field",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "DotMatrixFieldPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "background",
+        "dots",
+        "matrix",
+        "texture",
+        "svg"
+      ],
+      "intent": {
+        "summary": "Polka-dot matrix point grid pattern creating technical texture behind feature cards.",
+        "idealFor": [
+          "Technical spec sheets",
+          "Feature cards",
+          "Developer dashboard panels"
+        ],
+        "avoidFor": [
+          "Small 16px badge icons",
+          "Continuous reading ebooks"
+        ],
+        "jobs": [
+          "Add subtle geometric dot texture across wide background surfaces"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_drawer",
       "slug": "drawer",
       "name": "Drawer",
@@ -23974,6 +25710,254 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_bg_editorial_grain",
+      "slug": "editorial-grain",
+      "name": "Editorial Grain",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Film-like noise texture overlay delivering physical paper and print tactility.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "grain"
+      ],
+      "roles": [
+        "background",
+        "grain"
+      ],
+      "purposes": [
+        "tactile-texture",
+        "editorial-feel",
+        "analog-warmth"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "editorial-grain",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "EditorialGrainPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "background",
+        "grain",
+        "noise",
+        "editorial",
+        "texture"
+      ],
+      "intent": {
+        "summary": "Film-like noise texture overlay delivering physical paper and print tactility.",
+        "idealFor": [
+          "Editorial essay backgrounds",
+          "Luxury brand landing pages",
+          "Typography showcases"
+        ],
+        "avoidFor": [
+          "Pure flat data dashboards",
+          "Code terminals"
+        ],
+        "jobs": [
+          "Impart organic analog paper and film grain to digital surfaces"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -33768,6 +35752,254 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_bg_glass_refraction_panel",
+      "slug": "glass-refraction-panel",
+      "name": "Glass Refraction Panel",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Optical frosted acrylic card surface featuring backdrop refraction blur, hairline specular borders, and chromatic tint.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "glass"
+      ],
+      "roles": [
+        "background",
+        "glass"
+      ],
+      "purposes": [
+        "frosted-overlay",
+        "spatial-depth",
+        "card-elevation"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "glass-refraction-panel",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "GlassRefractionPanelPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "glass",
+        "frosted",
+        "refraction",
+        "blur",
+        "acrylic"
+      ],
+      "intent": {
+        "summary": "Optical frosted acrylic card surface featuring backdrop refraction blur, hairline specular borders, and chromatic tint.",
+        "idealFor": [
+          "Floating HUD widgets",
+          "Modal overlays",
+          "Navigation chrome backdrops"
+        ],
+        "avoidFor": [
+          "Old browsers lacking backdrop-filter",
+          "High-speed scrolling lists"
+        ],
+        "jobs": [
+          "Elevate foreground elements above complex backgrounds with crisp optical frosted glass aesthetics"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_blk_global_search_results",
       "slug": "global-search-results",
       "name": "Global Search Results",
@@ -42326,6 +44558,254 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_bg_metallic_sheen",
+      "slug": "metallic-sheen",
+      "name": "Metallic Sheen",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Anodized brushed metal finish with diagonal specular highlights and precision chamfered edge luster.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "metallic"
+      ],
+      "roles": [
+        "background",
+        "metallic"
+      ],
+      "purposes": [
+        "fintech-card",
+        "hardware-luxury",
+        "specular-panel"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "metallic-sheen",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "MetallicSheenPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "metal",
+        "sheen",
+        "aluminum",
+        "luster",
+        "hardware"
+      ],
+      "intent": {
+        "summary": "Anodized brushed metal finish with diagonal specular highlights and precision chamfered edge luster.",
+        "idealFor": [
+          "Fintech payment cards",
+          "Hardware device telemetry",
+          "Luxury tier status emblems"
+        ],
+        "avoidFor": [
+          "Playful educational games",
+          "Organic sustainability blogs"
+        ],
+        "jobs": [
+          "Impart the weight, precision, and tactile authority of machined aerospace-grade aluminum"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_dat_mini_sparkline",
       "slug": "mini-sparkline",
       "name": "Mini Sparkline",
@@ -44273,6 +46753,254 @@
         "codeQuality": 98,
         "composability": 96,
         "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_bg_noise_gradient",
+      "slug": "noise-gradient",
+      "name": "Noise Gradient",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Grain-diffused linear gradient eliminating digital color banding across wide screens.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "noise"
+      ],
+      "roles": [
+        "background",
+        "gradient"
+      ],
+      "purposes": [
+        "dithered-gradient",
+        "banding-elimination",
+        "smooth-transition"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "noise-gradient",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "NoiseGradientPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "background",
+        "gradient",
+        "noise",
+        "dither",
+        "texture"
+      ],
+      "intent": {
+        "summary": "Grain-diffused linear gradient eliminating digital color banding across wide screens.",
+        "idealFor": [
+          "Large wide-aspect landing sections",
+          "OLED dark surfaces",
+          "Full page gradients"
+        ],
+        "avoidFor": [
+          "Small 32px icon containers",
+          "Text input fields"
+        ],
+        "jobs": [
+          "Eliminate harsh 8-bit color banding steps with micro-dithered grain dispersion"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
         "dependencyCleanliness": 100,
         "documentation": 96
       },
@@ -46480,6 +49208,254 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_bg_paper_texture",
+      "slug": "paper-texture",
+      "name": "Paper Texture",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Tactile editorial stationery texture with subtle cellulose fiber grain and organic tactile warmth.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "texture"
+      ],
+      "roles": [
+        "background",
+        "paper"
+      ],
+      "purposes": [
+        "editorial-craft",
+        "tactile-surface",
+        "warm-canvas"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "paper-texture",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "PaperTexturePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "paper",
+        "stationery",
+        "tactile",
+        "editorial",
+        "grain"
+      ],
+      "intent": {
+        "summary": "Tactile editorial stationery texture with subtle cellulose fiber grain and organic tactile warmth.",
+        "idealFor": [
+          "Editorial essay layouts",
+          "Typography showcases",
+          "Publishing and notebook applications"
+        ],
+        "avoidFor": [
+          "Neon cybernetic dashboards",
+          "High-speed arcade interfaces"
+        ],
+        "jobs": [
+          "Give digital documents the physical warmth and high-craft tactile presence of artisanal paper"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_mot_parallax_media",
       "slug": "parallax-media",
       "name": "Parallax Media",
@@ -46683,6 +49659,254 @@
           "panel",
           "surface",
           "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_bg_particle_constellation",
+      "slug": "particle-constellation",
+      "name": "Particle Constellation",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Interconnected vector node points forming dynamic geometric constellations with proximate links.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "constellation"
+      ],
+      "roles": [
+        "background",
+        "constellation"
+      ],
+      "purposes": [
+        "network-constellation",
+        "interconnected-nodes",
+        "cosmic-ambience"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "particle-constellation",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ParticleConstellationPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "background",
+        "particles",
+        "constellation",
+        "network",
+        "svg"
+      ],
+      "intent": {
+        "summary": "Interconnected vector node points forming dynamic geometric constellations with proximate links.",
+        "idealFor": [
+          "AI network landing pages",
+          "Web3 / cryptographic protocols",
+          "Space / scientific portals"
+        ],
+        "avoidFor": [
+          "Heavy form entry screens",
+          "Compact mobile drawer sheets"
+        ],
+        "jobs": [
+          "Map proximate interconnected particle constellations across wide dark hero backdrops"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
         ]
       },
       "responsive": {
@@ -52086,6 +55310,254 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_bg_radial_spotlight",
+      "slug": "radial-spotlight",
+      "name": "Radial Spotlight",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Top-centered radial cone of light focusing attention downward onto hero headlines.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "spotlight"
+      ],
+      "roles": [
+        "background",
+        "spotlight"
+      ],
+      "purposes": [
+        "headline-focus",
+        "radial-cone",
+        "hero-illumination"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "radial-spotlight",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "RadialSpotlightPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "background",
+        "spotlight",
+        "radial",
+        "illumination",
+        "hero"
+      ],
+      "intent": {
+        "summary": "Top-centered radial cone of light focusing attention downward onto hero headlines.",
+        "idealFor": [
+          "Hero section headlines",
+          "Product announcement showcases",
+          "Centered statement headers"
+        ],
+        "avoidFor": [
+          "Footer links",
+          "Side navigation bars"
+        ],
+        "jobs": [
+          "Focus perceptual hierarchy towards central headlines via radial illumination cones"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_radio_group",
       "slug": "radio-group",
       "name": "Radio Group",
@@ -57440,6 +60912,502 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_bg_shader_liquid_field",
+      "slug": "shader-liquid-field",
+      "name": "Shader Liquid Field",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Organic viscous liquid fluid simulation with wave ripples and chromatic caustic contours.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "liquid"
+      ],
+      "roles": [
+        "background",
+        "liquid"
+      ],
+      "purposes": [
+        "fluid-flow",
+        "dynamic-organic",
+        "hero-backdrop"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "shader-liquid-field",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ShaderLiquidFieldPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "liquid",
+        "shader",
+        "fluid",
+        "viscous",
+        "organic"
+      ],
+      "intent": {
+        "summary": "Organic viscous liquid fluid simulation with wave ripples and chromatic caustic contours.",
+        "idealFor": [
+          "Creative design tools",
+          "Music and audio streaming platforms",
+          "Immersive hero banners"
+        ],
+        "avoidFor": [
+          "Mission-critical medical records",
+          "Financial accounting sheets"
+        ],
+        "jobs": [
+          "Evoke smooth, living organic motion through undulating fluid contour waves"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_bg_shader_noise_field",
+      "slug": "shader-noise-field",
+      "name": "Shader Noise Field",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Procedural multi-frequency Perlin terrain noise contour field providing organic dimensional atmosphere.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "noise"
+      ],
+      "roles": [
+        "background",
+        "noise-terrain"
+      ],
+      "purposes": [
+        "topographic-depth",
+        "organic-texture",
+        "hero-backdrop"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "shader-noise-field",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ShaderNoiseFieldPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "noise",
+        "perlin",
+        "terrain",
+        "procedural",
+        "contour"
+      ],
+      "intent": {
+        "summary": "Procedural multi-frequency Perlin terrain noise contour field providing organic dimensional atmosphere.",
+        "idealFor": [
+          "Science and research platforms",
+          "Generative art tools",
+          "Editorial landing pages"
+        ],
+        "avoidFor": [
+          "Dense spreadsheet tables",
+          "Low-contrast mobile text"
+        ],
+        "jobs": [
+          "Generate endless organic terrain contours with procedural noise filters"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_mot_shared_element_transition",
       "slug": "shared-element-transition",
       "name": "Shared Element Transition",
@@ -58658,6 +62626,254 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_bg_soft_mesh_gradient",
+      "slug": "soft-mesh-gradient",
+      "name": "Soft Mesh Gradient",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Fluid multi-stop radial chromatic blend creating soft organic depth in hero sections.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "gradient"
+      ],
+      "roles": [
+        "background",
+        "mesh"
+      ],
+      "purposes": [
+        "chromatic-depth",
+        "hero-ambience",
+        "soft-mesh"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "soft-mesh-gradient",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "SoftMeshGradientPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "background",
+        "mesh",
+        "gradient",
+        "blur",
+        "chromatic"
+      ],
+      "intent": {
+        "summary": "Fluid multi-stop radial chromatic blend creating soft organic depth in hero sections.",
+        "idealFor": [
+          "SaaS marketing hero banners",
+          "Feature highlight backdrops",
+          "App onboarding headers"
+        ],
+        "avoidFor": [
+          "Dense tabular accounting sheets",
+          "Code review diffs"
+        ],
+        "jobs": [
+          "Generate soft chromatic color fields with multi-stop radial blurs"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -60095,6 +64311,254 @@
           "panel",
           "surface",
           "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_bg_subtle_grid_field",
+      "slug": "subtle-grid-field",
+      "name": "Subtle Grid Field",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Precision architectural grid coordinate backdrop with customizable spacing, hairline dividers, and radial fade mask.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "grid"
+      ],
+      "roles": [
+        "background",
+        "grid"
+      ],
+      "purposes": [
+        "canvas-structure",
+        "architectural-grid",
+        "hero-backdrop"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "subtle-grid-field",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "SubtleGridFieldPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "background",
+        "grid",
+        "architectural",
+        "svg",
+        "hairline"
+      ],
+      "intent": {
+        "summary": "Precision architectural grid coordinate backdrop with customizable spacing, hairline dividers, and radial fade mask.",
+        "idealFor": [
+          "Developer tool landing heroes",
+          "Technical dashboard workspaces",
+          "Canvas composition backdrops"
+        ],
+        "avoidFor": [
+          "Dense text documentation body",
+          "High-contrast mobile lists"
+        ],
+        "jobs": [
+          "Provide quiet architectural coordinate grounding behind foreground cards and content"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
         ]
       },
       "responsive": {
@@ -62812,6 +67276,254 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_bg_three_d_orbital_field",
+      "slug": "three-d-orbital-field",
+      "name": "3D Orbital Field",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Elliptical planetary orbits rotating in perspective with satellite node coordinates and celestial depth.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "orbital"
+      ],
+      "roles": [
+        "background",
+        "orbital"
+      ],
+      "purposes": [
+        "celestial-depth",
+        "satellite-network",
+        "hero-backdrop"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "three-d-orbital-field",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ThreeDOrbitalFieldPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "orbital",
+        "celestial",
+        "planetary",
+        "satellite",
+        "perspective"
+      ],
+      "intent": {
+        "summary": "Elliptical planetary orbits rotating in perspective with satellite node coordinates and celestial depth.",
+        "idealFor": [
+          "Space exploration apps",
+          "Global CDN networks",
+          "AI planetary intelligence systems"
+        ],
+        "avoidFor": [
+          "Standard admin forms",
+          "Flat documentation views"
+        ],
+        "jobs": [
+          "Establish a sense of planetary scale, cosmic orbit, and global network coverage"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_shell_three_pane_app_shell",
       "slug": "three-pane-app-shell",
       "name": "Three-Pane App Shell",
@@ -64020,6 +68732,254 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_bg_topographic_lines",
+      "slug": "topographic-lines",
+      "name": "Topographic Lines",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Cartographic vector contour isolines undulating across background like geographic elevation maps.",
+      "resourceType": "background",
+      "categories": [
+        "backgrounds",
+        "effects",
+        "topographic"
+      ],
+      "roles": [
+        "background",
+        "contours"
+      ],
+      "purposes": [
+        "cartographic-contours",
+        "topographic-texture",
+        "geographic-feel"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "topographic-lines",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "TopographicLinesPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Foreground Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle opacity, neutral slate grid/grain texture, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Cobalt and violet atmospheric chromatic washes, dynamic depth.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with hairline cyan luminescence and high-contrast matrix points.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "background",
+        "topographic",
+        "contours",
+        "cartography",
+        "svg"
+      ],
+      "intent": {
+        "summary": "Cartographic vector contour isolines undulating across background like geographic elevation maps.",
+        "idealFor": [
+          "Geospatial / GIS apps",
+          "Outdoor / exploration brands",
+          "Technical architecture banners"
+        ],
+        "avoidFor": [
+          "Standard form fields",
+          "Dense spreadsheet layouts"
+        ],
+        "jobs": [
+          "Render elegant vector elevation contour lines across background canvas surfaces"
+        ],
+        "contentRequirements": [
+          "CSS patterns, SVG coordinate fields, zero GPU runaway memory leaks"
+        ],
+        "notes": [
+          "Supports reduced motion, graceful degradation, lightweight DOM structure"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 55,
+        "density": 65,
+        "whitespace": 50,
+        "contrast": 80,
+        "colourfulness": 30,
+        "curvature": 30,
+        "depth": 45,
+        "motion": 30,
+        "motionPlayfulness": 20,
+        "typographicExpression": 45,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 60,
+        "interactionDensity": 65,
+        "asymmetry": 15,
+        "conversionIntensity": 35,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 60,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 65,
+        "whitespace": 45,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "canvas"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"

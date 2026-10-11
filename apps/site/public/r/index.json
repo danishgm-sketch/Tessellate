@@ -407,6 +407,20 @@
       ]
     },
     {
+      "name": "animated-wave-field",
+      "type": "registry:component",
+      "title": "Animated Wave Field",
+      "description": "Smooth SVG sine waves undulating horizontally with gentle frequency oscillation.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "waves"
+      ]
+    },
+    {
       "name": "api-capability-section",
       "type": "registry:block",
       "title": "API Capability Section",
@@ -517,6 +531,20 @@
       ]
     },
     {
+      "name": "aurora-field",
+      "type": "registry:component",
+      "title": "Aurora Field",
+      "description": "Drifting organic northern-lights ribbon bands waving across deep dark backdrops.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "aurora"
+      ]
+    },
+    {
       "name": "autocomplete",
       "type": "registry:ui",
       "title": "Autocomplete",
@@ -580,6 +608,20 @@
         "data",
         "visualization",
         "charts"
+      ]
+    },
+    {
+      "name": "beam-grid",
+      "type": "registry:component",
+      "title": "Beam Grid",
+      "description": "Precision architectural coordinate grid with luminous traveling laser beams gliding along horizontal and vertical axes.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "grid"
       ]
     },
     {
@@ -992,6 +1034,20 @@
       ]
     },
     {
+      "name": "conic-light-field",
+      "type": "registry:component",
+      "title": "Conic Light Field",
+      "description": "Radial swept light gradient generating dramatic angular specular highlights and rotational depth.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "gradient"
+      ]
+    },
+    {
       "name": "context-menu",
       "type": "registry:ui",
       "title": "Context Menu",
@@ -1116,6 +1172,20 @@
       ]
     },
     {
+      "name": "cursor-reactive-field",
+      "type": "registry:component",
+      "title": "Cursor Reactive Field",
+      "description": "Interactive mouse-tracking luminescence field that dynamically illuminates coordinate grid points and distance vectors.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "interactive"
+      ]
+    },
+    {
       "name": "cursor-spotlight",
       "type": "registry:component",
       "title": "Cursor Spotlight",
@@ -1200,6 +1270,20 @@
       ]
     },
     {
+      "name": "data-stream-field",
+      "type": "registry:component",
+      "title": "Data Stream Field",
+      "description": "Cascading digital telemetry stream with vertical hexadecimal glyph streams and pulse wave signals.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "stream"
+      ]
+    },
+    {
       "name": "data-terminal-header",
       "type": "registry:block",
       "title": "Data Terminal Header",
@@ -1280,6 +1364,20 @@
       ]
     },
     {
+      "name": "dot-matrix-field",
+      "type": "registry:component",
+      "title": "Dot Matrix Field",
+      "description": "Polka-dot matrix point grid pattern creating technical texture behind feature cards.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "dots"
+      ]
+    },
+    {
       "name": "drawer",
       "type": "registry:ui",
       "title": "Drawer",
@@ -1345,6 +1443,20 @@
       "categories": [
         "shells",
         "layout"
+      ]
+    },
+    {
+      "name": "editorial-grain",
+      "type": "registry:component",
+      "title": "Editorial Grain",
+      "description": "Film-like noise texture overlay delivering physical paper and print tactility.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "grain"
       ]
     },
     {
@@ -1907,6 +2019,20 @@
       ]
     },
     {
+      "name": "glass-refraction-panel",
+      "type": "registry:component",
+      "title": "Glass Refraction Panel",
+      "description": "Optical frosted acrylic card surface featuring backdrop refraction blur, hairline specular borders, and chromatic tint.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "glass"
+      ]
+    },
+    {
       "name": "global-search-results",
       "type": "registry:block",
       "title": "Global Search Results",
@@ -2388,6 +2514,20 @@
       ]
     },
     {
+      "name": "metallic-sheen",
+      "type": "registry:component",
+      "title": "Metallic Sheen",
+      "description": "Anodized brushed metal finish with diagonal specular highlights and precision chamfered edge luster.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "metallic"
+      ]
+    },
+    {
       "name": "mini-sparkline",
       "type": "registry:component",
       "title": "Mini Sparkline",
@@ -2495,6 +2635,20 @@
         "data",
         "visualization",
         "charts"
+      ]
+    },
+    {
+      "name": "noise-gradient",
+      "type": "registry:component",
+      "title": "Noise Gradient",
+      "description": "Grain-diffused linear gradient eliminating digital color banding across wide screens.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "noise"
       ]
     },
     {
@@ -2622,6 +2776,20 @@
       ]
     },
     {
+      "name": "paper-texture",
+      "type": "registry:component",
+      "title": "Paper Texture",
+      "description": "Tactile editorial stationery texture with subtle cellulose fiber grain and organic tactile warmth.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "texture"
+      ]
+    },
+    {
       "name": "parallax-media",
       "type": "registry:component",
       "title": "Parallax Media",
@@ -2633,6 +2801,20 @@
         "motion",
         "microinteractions",
         "parallax"
+      ]
+    },
+    {
+      "name": "particle-constellation",
+      "type": "registry:component",
+      "title": "Particle Constellation",
+      "description": "Interconnected vector node points forming dynamic geometric constellations with proximate links.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "constellation"
       ]
     },
     {
@@ -2940,6 +3122,20 @@
       ]
     },
     {
+      "name": "radial-spotlight",
+      "type": "registry:component",
+      "title": "Radial Spotlight",
+      "description": "Top-centered radial cone of light focusing attention downward onto hero headlines.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "spotlight"
+      ]
+    },
+    {
       "name": "radio-group",
       "type": "registry:ui",
       "title": "Radio Group",
@@ -3239,6 +3435,34 @@
       ]
     },
     {
+      "name": "shader-liquid-field",
+      "type": "registry:component",
+      "title": "Shader Liquid Field",
+      "description": "Organic viscous liquid fluid simulation with wave ripples and chromatic caustic contours.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "liquid"
+      ]
+    },
+    {
+      "name": "shader-noise-field",
+      "type": "registry:component",
+      "title": "Shader Noise Field",
+      "description": "Procedural multi-frequency Perlin terrain noise contour field providing organic dimensional atmosphere.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "noise"
+      ]
+    },
+    {
       "name": "shared-element-transition",
       "type": "registry:component",
       "title": "Shared Element Transition",
@@ -3304,6 +3528,20 @@
         "sections",
         "marketing",
         "hero"
+      ]
+    },
+    {
+      "name": "soft-mesh-gradient",
+      "type": "registry:component",
+      "title": "Soft Mesh Gradient",
+      "description": "Fluid multi-stop radial chromatic blend creating soft organic depth in hero sections.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "gradient"
       ]
     },
     {
@@ -3388,6 +3626,20 @@
         "motion",
         "microinteractions",
         "scroll"
+      ]
+    },
+    {
+      "name": "subtle-grid-field",
+      "type": "registry:component",
+      "title": "Subtle Grid Field",
+      "description": "Precision architectural grid coordinate backdrop with customizable spacing, hairline dividers, and radial fade mask.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "grid"
       ]
     },
     {
@@ -3540,6 +3792,20 @@
       ]
     },
     {
+      "name": "three-d-orbital-field",
+      "type": "registry:component",
+      "title": "3D Orbital Field",
+      "description": "Elliptical planetary orbits rotating in perspective with satellite node coordinates and celestial depth.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "orbital"
+      ]
+    },
+    {
       "name": "three-pane-app-shell",
       "type": "registry:block",
       "title": "Three-Pane App Shell",
@@ -3604,6 +3870,20 @@
       "categories": [
         "primitives",
         "feedback"
+      ]
+    },
+    {
+      "name": "topographic-lines",
+      "type": "registry:component",
+      "title": "Topographic Lines",
+      "description": "Cartographic vector contour isolines undulating across background like geographic elevation maps.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "backgrounds",
+        "effects",
+        "topographic"
       ]
     },
     {
