@@ -1,0 +1,429 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "showcase-luxury-ecommerce",
+  "name": "Atelier Chronos Horology",
+  "description": "Bespoke mechanical timepiece catalog and artisanal craftsmanship storytelling.",
+  "createdAt": "2026-10-10T12:00:00.000Z",
+  "updatedAt": "2026-10-10T12:00:00.000Z",
+  "catalogVersion": "1.0.0",
+  "seed": "seed_showcase-luxury-ecommerce",
+  "productModel": {
+    "schemaVersion": "1.0.0",
+    "productArchetypes": [
+      {
+        "tag": "ecommerce",
+        "weight": 100
+      }
+    ],
+    "primaryAudience": "Domain specialists",
+    "userSophistication": 35,
+    "primaryObjective": "Bespoke mechanical timepiece catalog and artisanal craftsmanship storytelling.",
+    "secondaryObjectives": [
+      "Maximize workflow speed and cognitive clarity"
+    ],
+    "jobsToBeDone": [
+      "Analyze domain data",
+      "Execute actions",
+      "Inspect telemetry"
+    ],
+    "entities": [],
+    "workflows": [],
+    "trustRequirement": 95,
+    "informationComplexity": 45,
+    "dataDensity": 45,
+    "collaborationLevel": 50,
+    "transactionCriticality": 70,
+    "navigationComplexity": 60,
+    "mobileImportance": 50,
+    "likelyScreens": [],
+    "requiredCapabilities": [
+      "export",
+      "search",
+      "audit"
+    ],
+    "forbiddenPatterns": [],
+    "constraints": {
+      "accessibilityFloor": "AA",
+      "performanceCeiling": "rich",
+      "targetDevices": [
+        "desktop",
+        "tablet"
+      ]
+    }
+  },
+  "designDNA": {
+    "professionalism": 92,
+    "playfulness": 25,
+    "luxury": 92,
+    "warmth": 60,
+    "technicality": 35,
+    "editorial": 90,
+    "futurism": 50,
+    "visualAmbition": 92,
+    "structuralCreativity": 75,
+    "density": 45,
+    "whitespace": 80,
+    "contrast": 90,
+    "colourfulness": 55,
+    "curvature": 20,
+    "depth": 35,
+    "motion": 55,
+    "motionPlayfulness": 25,
+    "typographicExpression": 92,
+    "imageryIntensity": 35,
+    "videoIntensity": 10,
+    "threeDIntensity": 0,
+    "dataDensity": 45,
+    "interactionDensity": 60,
+    "asymmetry": 40,
+    "conversionIntensity": 85,
+    "trust": 95,
+    "accessibilityPriority": 97,
+    "performancePriority": 98,
+    "primaryArchetype": "ecommerce",
+    "visualMode": "light",
+    "geometryFamily": "sharp-minimal",
+    "navigationModel": "minimal-editorial",
+    "responsivePhilosophy": "mobile-first-progressive",
+    "contentTone": "chic-aspirational",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "luxury-glide",
+    "typographyPersonality": "monumental-display",
+    "surfacePersonality": "monochrome-specular"
+  },
+  "constraints": {
+    "accessibilityFloor": "AA",
+    "performanceCeiling": "rich",
+    "targetDevices": [
+      "desktop",
+      "tablet"
+    ]
+  },
+  "screenGraph": {
+    "id": "sg_showcase-luxury-ecommerce",
+    "groups": [
+      {
+        "id": "group_main",
+        "name": "Main Workspace",
+        "screens": [
+          {
+            "id": "node-marketing-home",
+            "name": "Marketing Home",
+            "slug": "/",
+            "screenType": "marketing-home",
+            "purpose": "Marketing Home",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 80,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-entity-detail",
+            "name": "Entity Detail",
+            "slug": "/entities/:id",
+            "screenType": "entity-detail",
+            "purpose": "Entity Detail",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 75,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-pricing",
+            "name": "Pricing",
+            "slug": "/pricing",
+            "screenType": "pricing",
+            "purpose": "Pricing",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 70,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge_0",
+        "fromScreenId": "node-marketing-home",
+        "toScreenId": "node-entity-detail"
+      },
+      {
+        "id": "edge_1",
+        "fromScreenId": "node-marketing-home",
+        "toScreenId": "node-pricing"
+      }
+    ]
+  },
+  "screens": [
+    {
+      "id": "screen-marketing-home",
+      "screenNodeId": "node-marketing-home",
+      "name": "Marketing Home",
+      "slug": "/",
+      "rootNode": {
+        "id": "root-marketing-home",
+        "nodeType": "layout",
+        "semanticRole": "page-canvas",
+        "children": [
+          {
+            "id": "sec-nav",
+            "nodeType": "section",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_header_minimal",
+              "slug": "header-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-hero",
+            "nodeType": "section",
+            "semanticRole": "hero",
+            "resourceRef": {
+              "id": "res_hero_minimal",
+              "slug": "hero-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-proof",
+            "nodeType": "section",
+            "semanticRole": "trust-proof",
+            "resourceRef": {
+              "id": "res_logo_cloud_clean",
+              "slug": "logo-cloud-clean",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-features",
+            "nodeType": "section",
+            "semanticRole": "feature-grid",
+            "resourceRef": {
+              "id": "res_feature_grid_cards",
+              "slug": "feature-grid-cards",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-cta",
+            "nodeType": "section",
+            "semanticRole": "conversion-cta",
+            "resourceRef": {
+              "id": "res_cta_minimal",
+              "slug": "cta-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-footer",
+            "nodeType": "section",
+            "semanticRole": "footer",
+            "resourceRef": {
+              "id": "res_footer_minimal",
+              "slug": "footer-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-entity-detail",
+      "screenNodeId": "node-entity-detail",
+      "name": "Entity Detail",
+      "slug": "/entities/:id",
+      "rootNode": {
+        "id": "root-entity-detail",
+        "nodeType": "layout",
+        "semanticRole": "detail-canvas",
+        "children": [
+          {
+            "id": "sec-det-kpis",
+            "nodeType": "section",
+            "semanticRole": "header-kpis",
+            "resourceRef": {
+              "id": "res_metrics_scorecard",
+              "slug": "metrics-scorecard",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-det-timeline",
+            "nodeType": "section",
+            "semanticRole": "timeline",
+            "resourceRef": {
+              "id": "res_activity_timeline",
+              "slug": "activity-timeline",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-det-history",
+            "nodeType": "section",
+            "semanticRole": "audit-history",
+            "resourceRef": {
+              "id": "res_version_history",
+              "slug": "version-history",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-pricing",
+      "screenNodeId": "node-pricing",
+      "name": "Pricing",
+      "slug": "/pricing",
+      "rootNode": {
+        "id": "root-pricing",
+        "nodeType": "layout",
+        "semanticRole": "page-canvas",
+        "children": [
+          {
+            "id": "sec-price-cards",
+            "nodeType": "section",
+            "semanticRole": "pricing-cards",
+            "resourceRef": {
+              "id": "res_pricing_cards_three_tier",
+              "slug": "pricing-cards-three-tier",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-price-matrix",
+            "nodeType": "section",
+            "semanticRole": "feature-matrix",
+            "resourceRef": {
+              "id": "res_pricing_comparison_table",
+              "slug": "pricing-comparison-table",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-price-faq",
+            "nodeType": "section",
+            "semanticRole": "faq",
+            "resourceRef": {
+              "id": "res_faq_accordion_simple",
+              "slug": "faq-accordion-simple",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    }
+  ],
+  "navigation": {
+    "model": "minimal-editorial",
+    "primaryItems": [
+      {
+        "label": "Catalogue",
+        "targetScreenId": "node-marketing-home"
+      },
+      {
+        "label": "Specimen",
+        "targetScreenId": "node-entity-detail"
+      },
+      {
+        "label": "Pricing",
+        "targetScreenId": "node-pricing"
+      }
+    ]
+  },
+  "assets": [],
+  "locks": [],
+  "historyMeta": {
+    "totalOperations": 12,
+    "headRevision": 1
+  },
+  "exportSettings": {
+    "framework": "react",
+    "styling": "tailwind",
+    "includeTypes": true,
+    "target": "vite-react-tailwind"
+  }
+}

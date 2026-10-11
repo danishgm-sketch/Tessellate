@@ -26,6 +26,7 @@ export function SiteHeader() {
 
             <nav className="hidden lg:flex items-center gap-6 text-[14px] font-medium text-[#62666F]">
               <a href="/explore" className="hover:text-[#111217] transition-colors">Explore</a>
+              <a href="/showcases" className="hover:text-[#111217] transition-colors">Showcases</a>
               <a href="/compose" className="hover:text-[#111217] transition-colors">Compose</a>
               <a href="/workbench" className="hover:text-[#111217] transition-colors">Workbench</a>
               <a href="/tools" className="hover:text-[#111217] transition-colors">Tools</a>
@@ -92,6 +93,7 @@ export function SiteHeader() {
         <div className="fixed inset-0 top-16 z-40 bg-[#F4F2ED] p-6 lg:hidden flex flex-col justify-between overflow-y-auto animate-fade-in">
           <nav className="flex flex-col gap-4 text-lg font-semibold text-[#111217]">
             <a href="/explore" onClick={() => setIsMenuOpen(false)} className="py-2 border-b border-[#D9D6CF]">Explore Catalogue</a>
+            <a href="/showcases" onClick={() => setIsMenuOpen(false)} className="py-2 border-b border-[#D9D6CF]">Showcases</a>
             <a href="/compose" onClick={() => setIsMenuOpen(false)} className="py-2 border-b border-[#D9D6CF]">Product Composer</a>
             <a href="/workbench" onClick={() => setIsMenuOpen(false)} className="py-2 border-b border-[#D9D6CF]">Workbench Studio</a>
             <a href="/tools" onClick={() => setIsMenuOpen(false)} className="py-2 border-b border-[#D9D6CF]">Ten Tools</a>

@@ -508,11 +508,11 @@ Do not fabricate counts before resources exist.
 
 # Phase 19 — Pages, blueprints and showcases
 
-- [ ] 36 complete page compositions.
-- [ ] 12 product blueprints.
-- [ ] 8 complete showcase projects.
-- [ ] Ensure every showcase occupies distinct DNA region.
-- [ ] Dogfood Tessellate resource system to build Tessellate's own homepage sections.
+- [x] 36 complete page compositions.
+- [x] 12 product blueprints.
+- [x] 8 complete showcase projects.
+- [x] Ensure every showcase occupies distinct DNA region.
+- [x] Dogfood Tessellate resource system to build Tessellate's own homepage sections.
 
 ### Showcase required set
 

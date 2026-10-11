@@ -1,0 +1,331 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "showcase-minimal-productivity",
+  "name": "Scribe Zen Monastic Notes",
+  "description": "Monastic distraction-free thought buffer with instant local persistence.",
+  "createdAt": "2026-10-10T12:00:00.000Z",
+  "updatedAt": "2026-10-10T12:00:00.000Z",
+  "catalogVersion": "1.0.0",
+  "seed": "seed_showcase-minimal-productivity",
+  "productModel": {
+    "schemaVersion": "1.0.0",
+    "productArchetypes": [
+      {
+        "tag": "productivity",
+        "weight": 100
+      }
+    ],
+    "primaryAudience": "Domain specialists",
+    "userSophistication": 60,
+    "primaryObjective": "Monastic distraction-free thought buffer with instant local persistence.",
+    "secondaryObjectives": [
+      "Maximize workflow speed and cognitive clarity"
+    ],
+    "jobsToBeDone": [
+      "Analyze domain data",
+      "Execute actions",
+      "Inspect telemetry"
+    ],
+    "entities": [],
+    "workflows": [],
+    "trustRequirement": 96,
+    "informationComplexity": 35,
+    "dataDensity": 35,
+    "collaborationLevel": 50,
+    "transactionCriticality": 70,
+    "navigationComplexity": 60,
+    "mobileImportance": 50,
+    "likelyScreens": [],
+    "requiredCapabilities": [
+      "export",
+      "search",
+      "audit"
+    ],
+    "forbiddenPatterns": [],
+    "constraints": {
+      "accessibilityFloor": "AA",
+      "performanceCeiling": "rich",
+      "targetDevices": [
+        "desktop",
+        "tablet"
+      ]
+    }
+  },
+  "designDNA": {
+    "professionalism": 92,
+    "playfulness": 15,
+    "luxury": 45,
+    "warmth": 40,
+    "technicality": 60,
+    "editorial": 80,
+    "futurism": 40,
+    "visualAmbition": 45,
+    "structuralCreativity": 45,
+    "density": 35,
+    "whitespace": 92,
+    "contrast": 85,
+    "colourfulness": 15,
+    "curvature": 30,
+    "depth": 25,
+    "motion": 20,
+    "motionPlayfulness": 15,
+    "typographicExpression": 75,
+    "imageryIntensity": 35,
+    "videoIntensity": 10,
+    "threeDIntensity": 0,
+    "dataDensity": 35,
+    "interactionDensity": 50,
+    "asymmetry": 20,
+    "conversionIntensity": 25,
+    "trust": 96,
+    "accessibilityPriority": 98,
+    "performancePriority": 99,
+    "primaryArchetype": "productivity",
+    "visualMode": "light",
+    "geometryFamily": "subtle-radius",
+    "navigationModel": "floating-dock",
+    "responsivePhilosophy": "mobile-first-progressive",
+    "contentTone": "quiet-zen",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "soft-ease",
+    "typographyPersonality": "understated-sans",
+    "surfacePersonality": "monastic-white-canvas"
+  },
+  "constraints": {
+    "accessibilityFloor": "AA",
+    "performanceCeiling": "rich",
+    "targetDevices": [
+      "desktop",
+      "tablet"
+    ]
+  },
+  "screenGraph": {
+    "id": "sg_showcase-minimal-productivity",
+    "groups": [
+      {
+        "id": "group_main",
+        "name": "Main Workspace",
+        "screens": [
+          {
+            "id": "node-tasks-approvals",
+            "name": "Tasks & Approvals",
+            "slug": "/tasks",
+            "screenType": "tasks-&-approvals",
+            "purpose": "Tasks & Approvals",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 80,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-global-search",
+            "name": "Global Search",
+            "slug": "/search",
+            "screenType": "global-search",
+            "purpose": "Global Search",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 75,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          },
+          {
+            "id": "node-profile",
+            "name": "Profile",
+            "slug": "/profile",
+            "screenType": "profile",
+            "purpose": "Profile",
+            "jobs": [
+              "inspect-view"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 70,
+            "expectedData": [
+              "records"
+            ],
+            "requiredRoles": [
+              "content"
+            ],
+            "optionalRoles": []
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge_0",
+        "fromScreenId": "node-tasks-approvals",
+        "toScreenId": "node-global-search"
+      },
+      {
+        "id": "edge_1",
+        "fromScreenId": "node-tasks-approvals",
+        "toScreenId": "node-profile"
+      }
+    ]
+  },
+  "screens": [
+    {
+      "id": "screen-tasks-approvals",
+      "screenNodeId": "node-tasks-approvals",
+      "name": "Tasks & Approvals",
+      "slug": "/tasks",
+      "rootNode": {
+        "id": "root-tasks-approvals",
+        "nodeType": "layout",
+        "semanticRole": "tasks-canvas",
+        "children": [
+          {
+            "id": "sec-tsk-appr",
+            "nodeType": "section",
+            "semanticRole": "approval-request",
+            "resourceRef": {
+              "id": "res_ai_approval_request",
+              "slug": "ai-approval-request",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-tsk-table",
+            "nodeType": "section",
+            "semanticRole": "queue-table",
+            "resourceRef": {
+              "id": "res_data_table",
+              "slug": "data-table",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-global-search",
+      "screenNodeId": "node-global-search",
+      "name": "Global Search",
+      "slug": "/search",
+      "rootNode": {
+        "id": "root-global-search",
+        "nodeType": "layout",
+        "semanticRole": "search-canvas",
+        "children": [
+          {
+            "id": "sec-srch-filters",
+            "nodeType": "section",
+            "semanticRole": "filters",
+            "resourceRef": {
+              "id": "res_filter_bar",
+              "slug": "filter-bar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          },
+          {
+            "id": "sec-srch-results",
+            "nodeType": "section",
+            "semanticRole": "results",
+            "resourceRef": {
+              "id": "res_data_table",
+              "slug": "data-table",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    },
+    {
+      "id": "screen-profile",
+      "screenNodeId": "node-profile",
+      "name": "Profile",
+      "slug": "/profile",
+      "rootNode": {
+        "id": "root-profile",
+        "nodeType": "layout",
+        "semanticRole": "profile-canvas",
+        "children": [
+          {
+            "id": "sec-prof-form",
+            "nodeType": "section",
+            "semanticRole": "form",
+            "resourceRef": {
+              "id": "res_profile_settings_form",
+              "slug": "profile-settings-form",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {}
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    }
+  ],
+  "navigation": {
+    "model": "floating-dock",
+    "primaryItems": [
+      {
+        "label": "Today",
+        "targetScreenId": "node-tasks-approvals"
+      },
+      {
+        "label": "Search",
+        "targetScreenId": "node-global-search"
+      },
+      {
+        "label": "Profile",
+        "targetScreenId": "node-profile"
+      }
+    ]
+  },
+  "assets": [],
+  "locks": [],
+  "historyMeta": {
+    "totalOperations": 12,
+    "headRevision": 1
+  },
+  "exportSettings": {
+    "framework": "react",
+    "styling": "tailwind",
+    "includeTypes": true,
+    "target": "vite-react-tailwind"
+  }
+}
