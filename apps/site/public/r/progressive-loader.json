@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progressive-loader",
+  "type": "registry:component",
+  "title": "Progressive Loader",
+  "description": "Multi-stage task progression bar with labeled phase checkpoints, percentage telemetry, and estimated time remaining.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ProgressiveLoaderVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ProgressiveLoaderProps {\n  progress?: number;\n  currentStep?: string;\n  totalSteps?: number;\n  stepNumber?: number;\n  variant?: ProgressiveLoaderVariant;\n  children?: React.ReactNode;\n}\n\nexport function ProgressiveLoader({\n  progress = 68,\n  currentStep = 'Synthesizing React component tree and semantic tokens...',\n  totalSteps = 4,\n  stepNumber = 3,\n  variant = 'quiet',\n  children,\n}: ProgressiveLoaderProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const barColor =\n    variant === 'nocturne'\n      ? 'bg-cyan-400'\n      : variant === 'expressive'\n      ? 'bg-gradient-to-r from-indigo-600 to-purple-600'\n      : 'bg-neutral-900 dark:bg-white';\n\n  return (\n    <div className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto space-y-4 transition-colors ${containerBg}`}>\n      <div className=\"flex justify-between items-center text-xs\">\n        <span className=\"font-mono text-neutral-400 uppercase tracking-wider\">\n          Stage {stepNumber} of {totalSteps}\n        </span>\n        <span className=\"font-mono font-bold text-neutral-700 dark:text-neutral-200\">\n          {progress}%\n        </span>\n      </div>\n\n      {/* Progress track */}\n      <div className=\"w-full bg-neutral-200 dark:bg-neutral-800 h-2 rounded-full overflow-hidden\">\n        <div\n          className={`h-full transition-all duration-300 rounded-full ${barColor}`}\n          style={{ width: `${progress}%` }}\n        />\n      </div>\n\n      <p className=\"text-xs text-neutral-500 font-mono flex items-center gap-2\">\n        <span className=\"w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse\" />\n        {currentStep}\n      </p>\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { ProgressiveLoader, ProgressiveLoaderVariant } from './index';\n\nexport function ProgressiveLoaderPreview() {\n  const [variant, setVariant] = useState<ProgressiveLoaderVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <ProgressiveLoader variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "states",
+    "loading",
+    "progress"
+  ],
+  "meta": {
+    "tessellateId": "res_state_progressive_loader",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "inline-spinner",
+  "type": "registry:component",
+  "title": "Inline Spinner",
+  "description": "Accessible micro-spinner with SVG harmonic arc rotation, configurable size, and screen-reader announcements.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type InlineSpinnerVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface InlineSpinnerProps {\n  label?: string;\n  size?: 'sm' | 'md' | 'lg';\n  variant?: InlineSpinnerVariant;\n  children?: React.ReactNode;\n}\n\nexport function InlineSpinner({\n  label = 'Processing request...',\n  size = 'md',\n  variant = 'quiet',\n  children,\n}: InlineSpinnerProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const spinnerColor =\n    variant === 'nocturne'\n      ? 'text-cyan-400'\n      : variant === 'expressive'\n      ? 'text-indigo-600'\n      : 'text-neutral-800 dark:text-neutral-200';\n\n  const sizeClasses =\n    size === 'sm' ? 'w-4 h-4' : size === 'lg' ? 'w-8 h-8' : 'w-5 h-5';\n\n  return (\n    <div className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto flex items-center gap-3 transition-colors ${containerBg}`}>\n      <svg\n        className={`animate-spin shrink-0 ${sizeClasses} ${spinnerColor}`}\n        xmlns=\"http://www.w3.org/2000/svg\"\n        fill=\"none\"\n        viewBox=\"0 0 24 24\"\n        role=\"status\"\n        aria-label={label}\n      >\n        <circle className=\"opacity-25\" cx=\"12\" cy=\"12\" r=\"10\" stroke=\"currentColor\" strokeWidth=\"3\" />\n        <path\n          className=\"opacity-75\"\n          fill=\"currentColor\"\n          d=\"M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z\"\n        />\n      </svg>\n      <span className=\"text-sm font-medium text-neutral-600 dark:text-neutral-300\">\n        {label}\n      </span>\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { InlineSpinner, InlineSpinnerVariant } from './index';\n\nexport function InlineSpinnerPreview() {\n  const [variant, setVariant] = useState<InlineSpinnerVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <InlineSpinner variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "states",
+    "loading",
+    "spinner"
+  ],
+  "meta": {
+    "tessellateId": "res_state_inline_spinner",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -487,12 +487,12 @@ Produce/curate in this order:
 - [x] 24 motion/microinteraction resources.
 - [x] 20 backgrounds/effects.
 - [x] 12 typography effects.
-- [ ] 16 state patterns.
+- [x] 16 state patterns.
 
 For every canonical resource:
-- [ ] Quiet variant.
-- [ ] Expressive variant.
-- [ ] Nocturne variant.
+- [x] Quiet variant.
+- [x] Expressive variant.
+- [x] Nocturne variant.
 
 ### Phase 18 gate
 

@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-10-11T00:30:40.987Z",
-  "count": 308,
+  "generatedAt": "2026-10-11T00:33:54.539Z",
+  "count": 324,
   "resources": [
     {
       "schemaVersion": "1.0.0",
@@ -13771,6 +13771,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_state_card_grid_skeleton",
+      "slug": "card-grid-skeleton",
+      "name": "Card Grid Skeleton",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Multi-column responsive card grid loading placeholder with image aspect boxes, text lines, and action button shingles.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "loading",
+        "skeleton"
+      ],
+      "roles": [
+        "state",
+        "card-grid-skeleton"
+      ],
+      "purposes": [
+        "card-loading",
+        "catalog-placeholder",
+        "perceived-performance"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "card-grid-skeleton",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "CardGridSkeletonPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "skeleton",
+        "cards",
+        "grid",
+        "catalog",
+        "placeholder"
+      ],
+      "intent": {
+        "summary": "Multi-column responsive card grid loading placeholder with image aspect boxes, text lines, and action button shingles.",
+        "idealFor": [
+          "Resource marketplace directories",
+          "E-commerce product grids",
+          "Blog article feeds"
+        ],
+        "avoidFor": [
+          "Monolithic single-item views",
+          "Command palettes"
+        ],
+        "jobs": [
+          "Stabilize responsive card grid layouts while catalog items or thumbnails load"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_mot_card_hover_lift",
       "slug": "card-hover-lift",
       "name": "Card Hover Lift",
@@ -18648,6 +18897,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_state_connection_lost_state",
+      "slug": "connection-lost-state",
+      "name": "Connection Lost State",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Active socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "network",
+        "connection"
+      ],
+      "roles": [
+        "state",
+        "connection-lost"
+      ],
+      "purposes": [
+        "socket-disconnect",
+        "telemetry-reconnect",
+        "network-recovery"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "connection-lost-state",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ConnectionLostStatePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "connection",
+        "lost",
+        "reconnect",
+        "socket",
+        "retry"
+      ],
+      "intent": {
+        "summary": "Active socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.",
+        "idealFor": [
+          "Live collaborative editing sessions",
+          "Real-time telemetry streams",
+          "Remote preview bridges"
+        ],
+        "avoidFor": [
+          "Standard 404 page routes",
+          "Planned maintenance modals"
+        ],
+        "jobs": [
+          "Inform users of active websocket connection dropouts and provide automatic reconnect attempts"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_context_menu",
       "slug": "context-menu",
       "name": "Context Menu",
@@ -22553,6 +23051,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_state_dashboard_skeleton",
+      "slug": "dashboard-skeleton",
+      "name": "Dashboard Skeleton",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Multi-metric analytics workspace skeleton placeholder with metric card shingles, chart viewport placeholder, and data table rows.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "loading",
+        "skeleton"
+      ],
+      "roles": [
+        "state",
+        "dashboard-skeleton"
+      ],
+      "purposes": [
+        "analytics-loading",
+        "perceived-performance",
+        "dashboard-placeholder"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "dashboard-skeleton",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "DashboardSkeletonPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "skeleton",
+        "dashboard",
+        "analytics",
+        "metrics",
+        "charts"
+      ],
+      "intent": {
+        "summary": "Multi-metric analytics workspace skeleton placeholder with metric card shingles, chart viewport placeholder, and data table rows.",
+        "idealFor": [
+          "Business intelligence dashboards",
+          "Cloud telemetry overviews",
+          "Trading portal loaders"
+        ],
+        "avoidFor": [
+          "Text article views",
+          "Compact modal dialogs"
+        ],
+        "jobs": [
+          "Retain dashboard metric card rhythm and chart geometry while telemetry streams connect"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -26707,6 +27454,753 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_state_empty_collection_state",
+      "slug": "empty-collection-state",
+      "name": "Empty Collection State",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Empty inventory or folder state prompting the user to bookmark resources or create their first item collection.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "empty",
+        "collection"
+      ],
+      "roles": [
+        "state",
+        "empty-collection"
+      ],
+      "purposes": [
+        "empty-library",
+        "collection-creation",
+        "onboarding"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "empty-collection-state",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "EmptyCollectionStatePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "empty",
+        "collection",
+        "library",
+        "favorites",
+        "bookmarks"
+      ],
+      "intent": {
+        "summary": "Empty inventory or folder state prompting the user to bookmark resources or create their first item collection.",
+        "idealFor": [
+          "Saved components lists",
+          "Custom project themes",
+          "Personal resource collections"
+        ],
+        "avoidFor": [
+          "Search failures",
+          "Permission errors"
+        ],
+        "jobs": [
+          "Inspire users to build collections by browsing the catalog or saving active components"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_state_empty_dashboard_state",
+      "slug": "empty-dashboard-state",
+      "name": "Empty Dashboard State",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "First-time dashboard panel placeholder encouraging initial telemetry integration with quick-start steps.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "empty",
+        "dashboard"
+      ],
+      "roles": [
+        "state",
+        "empty-dashboard"
+      ],
+      "purposes": [
+        "onboarding-welcome",
+        "empty-workspace",
+        "initial-setup"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "empty-dashboard-state",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "EmptyDashboardStatePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "empty",
+        "dashboard",
+        "onboarding",
+        "workspace",
+        "setup"
+      ],
+      "intent": {
+        "summary": "First-time dashboard panel placeholder encouraging initial telemetry integration with quick-start steps.",
+        "idealFor": [
+          "Fresh project workspaces",
+          "New organization accounts",
+          "Unconnected telemetry screens"
+        ],
+        "avoidFor": [
+          "Network outages",
+          "Active high-density analytics"
+        ],
+        "jobs": [
+          "Guide first-time users towards their primary high-value configuration action without feeling barren"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_state_empty_search_state",
+      "slug": "empty-search-state",
+      "name": "Empty Search State",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Zero query results feedback panel with search phrase echo, corrective filter suggestions, and clear action button.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "empty",
+        "search"
+      ],
+      "roles": [
+        "state",
+        "empty-search"
+      ],
+      "purposes": [
+        "search-feedback",
+        "query-fallback",
+        "empty-results"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "empty-search-state",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "EmptySearchStatePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "empty",
+        "search",
+        "results",
+        "filters",
+        "feedback"
+      ],
+      "intent": {
+        "summary": "Zero query results feedback panel with search phrase echo, corrective filter suggestions, and clear action button.",
+        "idealFor": [
+          "Catalog resource searches",
+          "Documentation search modals",
+          "Command palette lookups"
+        ],
+        "avoidFor": [
+          "Network connection dropouts",
+          "Initial unqueried views"
+        ],
+        "jobs": [
+          "Help users recover gracefully when exact search terms yield no immediate matches"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_blk_empty_workspace",
       "slug": "empty-workspace",
       "name": "Empty Workspace",
@@ -27922,6 +29416,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_state_error_state",
+      "slug": "error-state",
+      "name": "Error State",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "System exception and runtime fault callout with stack diagnosis summary, recovery actions, and error report trigger.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "feedback",
+        "error"
+      ],
+      "roles": [
+        "state",
+        "error-state"
+      ],
+      "purposes": [
+        "runtime-exception",
+        "diagnostic-feedback",
+        "error-recovery"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "error-state",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ErrorStatePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "error",
+        "exception",
+        "fault",
+        "recovery",
+        "alert"
+      ],
+      "intent": {
+        "summary": "System exception and runtime fault callout with stack diagnosis summary, recovery actions, and error report trigger.",
+        "idealFor": [
+          "React Error Boundaries",
+          "API 500 error views",
+          "Manifest compilation errors"
+        ],
+        "avoidFor": [
+          "Standard validation field warnings",
+          "Informational empty states"
+        ],
+        "jobs": [
+          "Explain failures with clarity without panicking users, offering direct recovery paths"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -33786,6 +35529,255 @@
         "codeQuality": 98,
         "composability": 96,
         "visualCraft": 96,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_state_first_run_state",
+      "slug": "first-run-state",
+      "name": "First Run State",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Onboarding walkthrough card welcoming users on their initial workspace launch with architectural step guides.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "onboarding",
+        "first-run"
+      ],
+      "roles": [
+        "state",
+        "first-run"
+      ],
+      "purposes": [
+        "onboarding-welcome",
+        "feature-primer",
+        "new-user-guide"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "first-run-state",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "FirstRunStatePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "onboarding",
+        "first-run",
+        "welcome",
+        "guide",
+        "steps"
+      ],
+      "intent": {
+        "summary": "Onboarding walkthrough card welcoming users on their initial workspace launch with architectural step guides.",
+        "idealFor": [
+          "New user signups",
+          "Fresh CLI project installations",
+          "Initial workspace boots"
+        ],
+        "avoidFor": [
+          "Returning power users",
+          "Transient errors"
+        ],
+        "jobs": [
+          "Orient newcomers to the core philosophy and initial actions of the Tessellate workbench"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
         "dependencyCleanliness": 100,
         "documentation": 96
       },
@@ -40167,6 +42159,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_state_inline_spinner",
+      "slug": "inline-spinner",
+      "name": "Inline Spinner",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Accessible micro-spinner with SVG harmonic arc rotation, configurable size, and screen-reader announcements.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "loading",
+        "spinner"
+      ],
+      "roles": [
+        "state",
+        "spinner"
+      ],
+      "purposes": [
+        "micro-loading",
+        "button-progress",
+        "inline-status"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "inline-spinner",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "InlineSpinnerPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "spinner",
+        "loading",
+        "micro",
+        "inline",
+        "svg"
+      ],
+      "intent": {
+        "summary": "Accessible micro-spinner with SVG harmonic arc rotation, configurable size, and screen-reader announcements.",
+        "idealFor": [
+          "Button loading state",
+          "Form submission feedback",
+          "Inline search debounce indicators"
+        ],
+        "avoidFor": [
+          "Entire screen blocking overlays",
+          "Completed success toasts"
+        ],
+        "jobs": [
+          "Provide immediate kinetic assurance that an asynchronous operation is in flight"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -49486,6 +51727,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_state_offline_state",
+      "slug": "offline-state",
+      "name": "Offline State",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Local-first offline banner informing the user that cached manifests remain interactive while remote sync is paused.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "network",
+        "offline"
+      ],
+      "roles": [
+        "state",
+        "offline-state"
+      ],
+      "purposes": [
+        "network-status",
+        "local-first",
+        "offline-alert"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "offline-state",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "OfflineStatePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "offline",
+        "network",
+        "cached",
+        "local-first",
+        "status"
+      ],
+      "intent": {
+        "summary": "Local-first offline banner informing the user that cached manifests remain interactive while remote sync is paused.",
+        "idealFor": [
+          "PWA offline modes",
+          "Airplane travel composing",
+          "Flaky network alerts"
+        ],
+        "avoidFor": [
+          "Permanent server 500 errors",
+          "Authentication failures"
+        ],
+        "jobs": [
+          "Reassure users that local guest composition continues uninterrupted without network connection"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_blk_onboarding_checklist",
       "slug": "onboarding-checklist",
       "name": "Onboarding Checklist",
@@ -50914,6 +53404,255 @@
         "layoutFamilies": [
           "editorial",
           "headline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_state_page_skeleton",
+      "slug": "page-skeleton",
+      "name": "Page Skeleton",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Full-page progressive layout shimmer placeholder with responsive header, hero deck, and content column blocks.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "loading",
+        "skeleton"
+      ],
+      "roles": [
+        "state",
+        "page-skeleton"
+      ],
+      "purposes": [
+        "page-loading",
+        "perceived-performance",
+        "layout-stability"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "page-skeleton",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "PageSkeletonPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "skeleton",
+        "loading",
+        "placeholder",
+        "shimmer",
+        "layout"
+      ],
+      "intent": {
+        "summary": "Full-page progressive layout shimmer placeholder with responsive header, hero deck, and content column blocks.",
+        "idealFor": [
+          "Initial route transitions",
+          "SSR page hydration",
+          "Heavy data fetching page loads"
+        ],
+        "avoidFor": [
+          "Micro inline actions",
+          "Completed interactive views"
+        ],
+        "jobs": [
+          "Prevent Cumulative Layout Shift (CLS) and maintain visual layout rhythm while remote page data loads"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
         ]
       },
       "responsive": {
@@ -52426,6 +55165,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_state_permission_denied_state",
+      "slug": "permission-denied-state",
+      "name": "Permission Denied State",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Access boundary lock screen detailing required RBAC roles, organization membership, and request access workflow.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "security",
+        "permission"
+      ],
+      "roles": [
+        "state",
+        "permission-denied"
+      ],
+      "purposes": [
+        "rbac-boundary",
+        "access-denied",
+        "security-lock"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "permission-denied-state",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "PermissionDeniedStatePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "permission",
+        "denied",
+        "rbac",
+        "security",
+        "lock"
+      ],
+      "intent": {
+        "summary": "Access boundary lock screen detailing required RBAC roles, organization membership, and request access workflow.",
+        "idealFor": [
+          "Protected team admin settings",
+          "Private project repositories",
+          "Restricted billing consoles"
+        ],
+        "avoidFor": [
+          "Standard login authentication errors",
+          "Public resources"
+        ],
+        "jobs": [
+          "Explain why an operation was blocked by access policies and direct users to request access"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -55356,6 +58344,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_state_processing_queued_state",
+      "slug": "processing-queued-state",
+      "name": "Processing/Queued State",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Asynchronous task queue state card displaying queue position, estimated wait time, and auto-refresh telemetry.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "loading",
+        "queue"
+      ],
+      "roles": [
+        "state",
+        "processing-queued"
+      ],
+      "purposes": [
+        "async-queue",
+        "job-status",
+        "processing-notice"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "processing-queued-state",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ProcessingQueuedStatePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "processing",
+        "queued",
+        "async",
+        "waiting",
+        "job"
+      ],
+      "intent": {
+        "summary": "Asynchronous task queue state card displaying queue position, estimated wait time, and auto-refresh telemetry.",
+        "idealFor": [
+          "Large bundle builds",
+          "AI fine-tuning jobs",
+          "Bulk asset optimization runs"
+        ],
+        "avoidFor": [
+          "Synchronous fast API responses",
+          "Failed jobs"
+        ],
+        "jobs": [
+          "Keep users informed when heavy batch processing has been accepted into an asynchronous worker queue"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_sec_product_screenshot_hero",
       "slug": "product-screenshot-hero",
       "name": "Product Screenshot Hero",
@@ -56320,6 +59557,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_state_progressive_loader",
+      "slug": "progressive-loader",
+      "name": "Progressive Loader",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Multi-stage task progression bar with labeled phase checkpoints, percentage telemetry, and estimated time remaining.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "loading",
+        "progress"
+      ],
+      "roles": [
+        "state",
+        "progressive-loader"
+      ],
+      "purposes": [
+        "multi-stage-task",
+        "export-progress",
+        "upload-progress"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "progressive-loader",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ProgressiveLoaderPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "progress",
+        "loader",
+        "stages",
+        "percentage",
+        "telemetry"
+      ],
+      "intent": {
+        "summary": "Multi-stage task progression bar with labeled phase checkpoints, percentage telemetry, and estimated time remaining.",
+        "idealFor": [
+          "Code export generation",
+          "System compilation pipelines",
+          "Large asset imports"
+        ],
+        "avoidFor": [
+          "Instant local toggles",
+          "Static help documentation"
+        ],
+        "jobs": [
+          "Reassure users during prolonged multi-step jobs with clear milestones and deterministic progress"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -67095,6 +70581,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_state_success_state",
+      "slug": "success-state",
+      "name": "Success State",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Completed transaction confirmation panel with verified checkmark, output artifact links, and next step suggestions.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "feedback",
+        "success"
+      ],
+      "roles": [
+        "state",
+        "success-state"
+      ],
+      "purposes": [
+        "task-completed",
+        "export-success",
+        "confirmation"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "success-state",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "SuccessStatePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "success",
+        "completed",
+        "confirmation",
+        "checkmark",
+        "done"
+      ],
+      "intent": {
+        "summary": "Completed transaction confirmation panel with verified checkmark, output artifact links, and next step suggestions.",
+        "idealFor": [
+          "Project export completion",
+          "Cloud checkpoint saves",
+          "Publishing workflows"
+        ],
+        "avoidFor": [
+          "Pending background queues",
+          "Incomplete validation forms"
+        ],
+        "jobs": [
+          "Celebrate task completion and deliver immediate access to finished artifacts"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_switch",
       "slug": "switch",
       "name": "Switch",
@@ -67569,6 +71304,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_state_table_skeleton",
+      "slug": "table-skeleton",
+      "name": "Table Skeleton",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Data grid shimmer placeholder with columnar headers, alternating rows, and pagination bar placeholders.",
+      "resourceType": "state",
+      "categories": [
+        "states",
+        "loading",
+        "skeleton"
+      ],
+      "roles": [
+        "state",
+        "table-skeleton"
+      ],
+      "purposes": [
+        "table-loading",
+        "tabular-placeholder",
+        "perceived-performance"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "table-skeleton",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "TableSkeletonPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom State Content or Action Callouts",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained neutral shimmer, editorial calm.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant indigo accents, friendly explanatory messaging, dynamic state badges.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian #0B0D10 canvas with crisp cyan telemetry accents and high-contrast indicators.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "skeleton",
+        "table",
+        "grid",
+        "rows",
+        "tabular"
+      ],
+      "intent": {
+        "summary": "Data grid shimmer placeholder with columnar headers, alternating rows, and pagination bar placeholders.",
+        "idealFor": [
+          "Paginated database browsers",
+          "User management lists",
+          "Audit logs"
+        ],
+        "avoidFor": [
+          "Minimalist mobile cards",
+          "Hero landing sections"
+        ],
+        "jobs": [
+          "Maintain strict tabular alignment and column boundaries while row data queries execute"
+        ],
+        "contentRequirements": [
+          "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting reduced motion with graceful static placeholders"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 30,
+        "luxury": 45,
+        "warmth": 40,
+        "technicality": 85,
+        "editorial": 65,
+        "futurism": 55,
+        "visualAmbition": 70,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 30,
+        "depth": 35,
+        "motion": 35,
+        "motionPlayfulness": 20,
+        "typographicExpression": 60,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 50,
+        "interactionDensity": 60,
+        "asymmetry": 15,
+        "conversionIntensity": 45,
+        "trust": 96,
+        "accessibilityPriority": 99,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 50,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "surface",
+          "feedback"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"

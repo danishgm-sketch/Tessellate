@@ -775,6 +775,20 @@
       ]
     },
     {
+      "name": "card-grid-skeleton",
+      "type": "registry:component",
+      "title": "Card Grid Skeleton",
+      "description": "Multi-column responsive card grid loading placeholder with image aspect boxes, text lines, and action button shingles.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "skeleton"
+      ]
+    },
+    {
       "name": "card-hover-lift",
       "type": "registry:component",
       "title": "Card Hover Lift",
@@ -1048,6 +1062,20 @@
       ]
     },
     {
+      "name": "connection-lost-state",
+      "type": "registry:component",
+      "title": "Connection Lost State",
+      "description": "Active socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "network",
+        "connection"
+      ]
+    },
+    {
       "name": "context-menu",
       "type": "registry:ui",
       "title": "Context Menu",
@@ -1267,6 +1295,20 @@
         "blocks",
         "dashboards",
         "kpi"
+      ]
+    },
+    {
+      "name": "dashboard-skeleton",
+      "type": "registry:component",
+      "title": "Dashboard Skeleton",
+      "description": "Multi-metric analytics workspace skeleton placeholder with metric card shingles, chart viewport placeholder, and data table rows.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "skeleton"
       ]
     },
     {
@@ -1502,6 +1544,48 @@
       ]
     },
     {
+      "name": "empty-collection-state",
+      "type": "registry:component",
+      "title": "Empty Collection State",
+      "description": "Empty inventory or folder state prompting the user to bookmark resources or create their first item collection.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "empty",
+        "collection"
+      ]
+    },
+    {
+      "name": "empty-dashboard-state",
+      "type": "registry:component",
+      "title": "Empty Dashboard State",
+      "description": "First-time dashboard panel placeholder encouraging initial telemetry integration with quick-start steps.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "empty",
+        "dashboard"
+      ]
+    },
+    {
+      "name": "empty-search-state",
+      "type": "registry:component",
+      "title": "Empty Search State",
+      "description": "Zero query results feedback panel with search phrase echo, corrective filter suggestions, and clear action button.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "empty",
+        "search"
+      ]
+    },
+    {
       "name": "empty-workspace",
       "type": "registry:block",
       "title": "Empty Workspace",
@@ -1569,6 +1653,20 @@
         "blocks",
         "search",
         "entity"
+      ]
+    },
+    {
+      "name": "error-state",
+      "type": "registry:component",
+      "title": "Error State",
+      "description": "System exception and runtime fault callout with stack diagnosis summary, recovery actions, and error report trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "feedback",
+        "error"
       ]
     },
     {
@@ -1905,6 +2003,20 @@
         "data",
         "visualization",
         "finance"
+      ]
+    },
+    {
+      "name": "first-run-state",
+      "type": "registry:component",
+      "title": "First Run State",
+      "description": "Onboarding walkthrough card welcoming users on their initial workspace launch with architectural step guides.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "onboarding",
+        "first-run"
       ]
     },
     {
@@ -2265,6 +2377,20 @@
       "categories": [
         "primitives",
         "feedback"
+      ]
+    },
+    {
+      "name": "inline-spinner",
+      "type": "registry:component",
+      "title": "Inline Spinner",
+      "description": "Accessible micro-spinner with SVG harmonic arc rotation, configurable size, and screen-reader announcements.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "spinner"
       ]
     },
     {
@@ -2791,6 +2917,20 @@
       ]
     },
     {
+      "name": "offline-state",
+      "type": "registry:component",
+      "title": "Offline State",
+      "description": "Local-first offline banner informing the user that cached manifests remain interactive while remote sync is paused.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "network",
+        "offline"
+      ]
+    },
+    {
       "name": "onboarding-checklist",
       "type": "registry:block",
       "title": "Onboarding Checklist",
@@ -2875,6 +3015,20 @@
       ]
     },
     {
+      "name": "page-skeleton",
+      "type": "registry:component",
+      "title": "Page Skeleton",
+      "description": "Full-page progressive layout shimmer placeholder with responsive header, hero deck, and content column blocks.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "skeleton"
+      ]
+    },
+    {
       "name": "pagination",
       "type": "registry:ui",
       "title": "Pagination",
@@ -2955,6 +3109,20 @@
         "sections",
         "marketing",
         "technical-proof"
+      ]
+    },
+    {
+      "name": "permission-denied-state",
+      "type": "registry:component",
+      "title": "Permission Denied State",
+      "description": "Access boundary lock screen detailing required RBAC roles, organization membership, and request access workflow.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "security",
+        "permission"
       ]
     },
     {
@@ -3125,6 +3293,20 @@
       ]
     },
     {
+      "name": "processing-queued-state",
+      "type": "registry:component",
+      "title": "Processing/Queued State",
+      "description": "Asynchronous task queue state card displaying queue position, estimated wait time, and auto-refresh telemetry.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "queue"
+      ]
+    },
+    {
       "name": "product-screenshot-hero",
       "type": "registry:block",
       "title": "Product Screenshot Hero",
@@ -3176,6 +3358,20 @@
       "categories": [
         "primitives",
         "feedback"
+      ]
+    },
+    {
+      "name": "progressive-loader",
+      "type": "registry:component",
+      "title": "Progressive Loader",
+      "description": "Multi-stage task progression bar with labeled phase checkpoints, percentage telemetry, and estimated time remaining.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "progress"
       ]
     },
     {
@@ -3783,6 +3979,20 @@
       ]
     },
     {
+      "name": "success-state",
+      "type": "registry:component",
+      "title": "Success State",
+      "description": "Completed transaction confirmation panel with verified checkmark, output artifact links, and next step suggestions.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "feedback",
+        "success"
+      ]
+    },
+    {
       "name": "switch",
       "type": "registry:ui",
       "title": "Switch",
@@ -3806,6 +4016,20 @@
       "categories": [
         "shells",
         "navigation"
+      ]
+    },
+    {
+      "name": "table-skeleton",
+      "type": "registry:component",
+      "title": "Table Skeleton",
+      "description": "Data grid shimmer placeholder with columnar headers, alternating rows, and pagination bar placeholders.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "states",
+        "loading",
+        "skeleton"
       ]
     },
     {

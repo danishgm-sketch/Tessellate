@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "error-state",
+  "type": "registry:component",
+  "title": "Error State",
+  "description": "System exception and runtime fault callout with stack diagnosis summary, recovery actions, and error report trigger.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type ErrorStateVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface ErrorStateProps {\n  title?: string;\n  errorMessage?: string;\n  codeSnippet?: string;\n  onRetry?: () => void;\n  variant?: ErrorStateVariant;\n  children?: React.ReactNode;\n}\n\nexport function ErrorState({\n  title = 'Manifest Compilation Fault',\n  errorMessage = 'Resource dependency schema validation failed: missing required property \"layoutDNA.density\".',\n  codeSnippet = 'Error: [ZodError] layoutDNA: density is required',\n  onRetry,\n  variant = 'quiet',\n  children,\n}: ErrorStateProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-red-900/60'\n      : variant === 'expressive'\n      ? 'bg-red-50/50 text-neutral-900 border-red-200'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const badgeColor =\n    variant === 'nocturne'\n      ? 'text-red-400 bg-red-950/40 border-red-800'\n      : variant === 'expressive'\n      ? 'text-red-700 bg-red-100 border-red-300'\n      : 'text-red-700 bg-red-50 border-red-200';\n\n  return (\n    <div\n      role=\"alert\"\n      className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto space-y-4 transition-colors ${containerBg}`}\n    >\n      <div className=\"flex items-center gap-3\">\n        <span className={`w-10 h-10 rounded-xl flex items-center justify-center border font-bold text-lg ${badgeColor}`}>\n          ⚠️\n        </span>\n        <div>\n          <h3 className=\"text-base font-bold tracking-tight text-red-600 dark:text-red-400\">\n            {title}\n          </h3>\n          <p className=\"text-xs text-neutral-500\">{errorMessage}</p>\n        </div>\n      </div>\n\n      {codeSnippet && (\n        <pre className=\"p-3 rounded-lg bg-neutral-950 text-neutral-300 text-xs font-mono overflow-x-auto\">\n          {codeSnippet}\n        </pre>\n      )}\n\n      <div className=\"pt-2 flex gap-3\">\n        <button\n          onClick={onRetry}\n          className=\"px-4 py-2 text-xs font-semibold rounded-lg bg-red-600 text-white hover:bg-red-700\"\n        >\n          Retry Operation\n        </button>\n      </div>\n\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { ErrorState, ErrorStateVariant } from './index';\n\nexport function ErrorStatePreview() {\n  const [variant, setVariant] = useState<ErrorStateVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <ErrorState variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "states",
+    "feedback",
+    "error"
+  ],
+  "meta": {
+    "tessellateId": "res_state_error_state",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

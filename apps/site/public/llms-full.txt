@@ -77,7 +77,7 @@ Tools provided:
 - `get_design_dna`: Inspect Design DNA presets and vectors.
 - `list_design_directions`: Return visual reference directions (Editorial Precision, Kinetic Monolith, Atmospheric Depth).
 
-## Resources in Catalogue (308)
+## Resources in Catalogue (324)
 
 - [Accessibility Commitment Section](https://tessellate.design/r/accessibility-commitment-section): Formal WCAG 2.2 AA compliance manifesto with automated audit guarantees. (sections, marketing, technical-proof)
 - [Accordion](https://tessellate.design/r/accordion): Collapsible vertically stacked disclosure panels with rotating chevron animations. (primitives, layout)
@@ -135,6 +135,7 @@ Tools provided:
 - [Calendar Month](https://tessellate.design/r/calendar-month): Monthly 7x5 grid view with day numbers, event markers, and active date highlights. (blocks, data, calendar)
 - [Calendar Week](https://tessellate.design/r/calendar-week): 7-column weekly schedule view displaying time slots and scheduled appointment cards. (blocks, data, calendar)
 - [Canvas Workspace Shell](https://tessellate.design/r/canvas-workspace-shell): Infinite-pan coordinate workspace canvas with floating tool palettes and zoom controls. (shells, layout)
+- [Card Grid Skeleton](https://tessellate.design/r/card-grid-skeleton): Multi-column responsive card grid loading placeholder with image aspect boxes, text lines, and action button shingles. (states, loading, skeleton)
 - [Card Hover Lift](https://tessellate.design/r/card-hover-lift): Subtle vertical translate-y(-4px) lift with elevated shadow bloom on pointer hover. (motion, microinteractions, hover)
 - [Card Tilt](https://tessellate.design/r/card-tilt): 3D perspective tilt reacting to cursor position across card quadrants with subtle glare reflection. (motion, microinteractions, perspective)
 - [Case Study Spotlight](https://tessellate.design/r/case-study-spotlight): In-depth customer story card featuring measurable impact metrics, quote, and read study link. (sections, marketing, trust)
@@ -155,6 +156,7 @@ Tools provided:
 - [Comparison Table](https://tessellate.design/r/comparison-table): Matrix comparing parameters or feature sets across multiple items side by side. (blocks, data, comparison)
 - [Compliance Proof](https://tessellate.design/r/compliance-proof): Regulatory compliance showcase displaying certified badges and downloadable reports. (sections, marketing, technical-proof)
 - [Conic Light Field](https://tessellate.design/r/conic-light-field): Radial swept light gradient generating dramatic angular specular highlights and rotational depth. (backgrounds, effects, gradient)
+- [Connection Lost State](https://tessellate.design/r/connection-lost-state): Active socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button. (states, network, connection)
 - [Context Menu](https://tessellate.design/r/context-menu): Right-click action palette anchored directly to the user pointer coordinates. (primitives, overlays)
 - [Context Rail](https://tessellate.design/r/context-rail): Secondary right-hand vertical rail displaying active object inspector or contextual metadata. (shells, layout)
 - [Conversation List](https://tessellate.design/r/conversation-list): Channel and direct message thread list with unread counters and presence badges. (blocks, collaboration, channels)
@@ -171,6 +173,7 @@ Tools provided:
 - [Customer Story Split](https://tessellate.design/r/customer-story-split): Side-by-side narrative with customer team photo on one side and challenge-solution story on other. (sections, marketing, trust)
 - [Dashboard KPI Grid](https://tessellate.design/r/dashboard-kpi-grid): Multi-column grid of key performance cards with visual trend indicators and contextual meta. (blocks, dashboards, kpi)
 - [Dashboard KPI Strip](https://tessellate.design/r/dashboard-kpi-strip): Horizontal metric row featuring primary metrics, deltas, and micro sparkline indicators. (blocks, dashboards, kpi)
+- [Dashboard Skeleton](https://tessellate.design/r/dashboard-skeleton): Multi-metric analytics workspace skeleton placeholder with metric card shingles, chart viewport placeholder, and data table rows. (states, loading, skeleton)
 - [Data Hero](https://tessellate.design/r/data-hero): Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges. (sections, marketing, hero)
 - [Data Stream Field](https://tessellate.design/r/data-stream-field): Cascading digital telemetry stream with vertical hexadecimal glyph streams and pulse wave signals. (backgrounds, effects, stream)
 - [Data Terminal Header](https://tessellate.design/r/data-terminal-header): High-density monospace financial header with ticker feed, clock, and connection latency. (shells, navigation)
@@ -188,11 +191,15 @@ Tools provided:
 - [Editorial Display Stack](https://tessellate.design/r/editorial-display-stack): Multi-tier typographic headline stack combining architectural kicker, high-impact serif headline, italic accent clause, and descriptive subdeck. (typography, display, editorial)
 - [Editorial Grain](https://tessellate.design/r/editorial-grain): Film-like noise texture overlay delivering physical paper and print tactility. (backgrounds, effects, grain)
 - [Editorial Hero](https://tessellate.design/r/editorial-hero): Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs. (sections, marketing, hero)
+- [Empty Collection State](https://tessellate.design/r/empty-collection-state): Empty inventory or folder state prompting the user to bookmark resources or create their first item collection. (states, empty, collection)
+- [Empty Dashboard State](https://tessellate.design/r/empty-dashboard-state): First-time dashboard panel placeholder encouraging initial telemetry integration with quick-start steps. (states, empty, dashboard)
+- [Empty Search State](https://tessellate.design/r/empty-search-state): Zero query results feedback panel with search phrase echo, corrective filter suggestions, and clear action button. (states, empty, search)
 - [Empty Workspace](https://tessellate.design/r/empty-workspace): Empty state placeholder card with welcoming illustration and primary create action. (blocks, onboarding, empty)
 - [Entity List](https://tessellate.design/r/entity-list): Clean vertical item list with avatar/status, main description, and quick menu trigger. (blocks, data, lists)
 - [Entity Overview](https://tessellate.design/r/entity-overview): Summary card with high-level description, primary KPIs, and operational tags. (blocks, entities, overview)
 - [Entity Profile Header](https://tessellate.design/r/entity-profile-header): Hero card for entity details with avatar, title, status badge, action bar, and key stats. (blocks, entities, header)
 - [Entity Search](https://tessellate.design/r/entity-search): Specific entity-lookup block with debounce input, recent searches, and inline preview. (blocks, search, entity)
+- [Error State](https://tessellate.design/r/error-state): System exception and runtime fault callout with stack diagnosis summary, recovery actions, and error report trigger. (states, feedback, error)
 - [Executive Summary Panel](https://tessellate.design/r/executive-summary-panel): High-level synthesis card summarizing critical alerts, key wins, and risk flags. (blocks, dashboards, summary)
 - [Expandable Data Table](https://tessellate.design/r/expandable-data-table): Data grid where each row expands to reveal detailed sub-attributes or nested logs. (blocks, data, tables)
 - [Faceted Search Results](https://tessellate.design/r/faceted-search-results): Search results accompanied by facet checkboxes (type, status, tags, author). (blocks, search, facets)
@@ -217,6 +224,7 @@ Tools provided:
 - [File Browser](https://tessellate.design/r/file-browser): Tree view file explorer with folder toggles, file extension icons, and selection states. (blocks, entities, files)
 - [Filter Builder](https://tessellate.design/r/filter-builder): Interactive compound filter constructor with field, operator, and value rows. (blocks, search, filters)
 - [Financial Candlestick Chart](https://tessellate.design/r/financial-candlestick-chart): OHLC financial price chart with bullish/bearish candle bodies, high/low wicks, and volume sub-bars. (data, visualization, finance)
+- [First Run State](https://tessellate.design/r/first-run-state): Onboarding walkthrough card welcoming users on their initial workspace launch with architectural step guides. (states, onboarding, first-run)
 - [Floating AI Assistant](https://tessellate.design/r/floating-ai-assistant): Draggable or floating bottom-corner action launcher with modal conversation bubble and prompt chips. (ai, patterns, floating)
 - [Floating Navigation](https://tessellate.design/r/floating-nav): Island-style floating navigation pill pinned to top viewport with rounded corners and glass blur. (shells, navigation)
 - [Footer Developer](https://tessellate.design/r/footer-developer): Terminal-styled developer footer with CLI command snippet, API status, and git commit sha. (sections, marketing, footer)
@@ -243,6 +251,7 @@ Tools provided:
 - [Import Data Flow](https://tessellate.design/r/import-data-flow): File drag-and-drop ingestion card supporting schema upload and progress indicators. (blocks, onboarding, import)
 - [Inline AI Rewrite](https://tessellate.design/r/inline-ai-rewrite): Inline text selection overlay offering tone adjustments, shortening, expansion, and diff acceptance. (ai, patterns, inline)
 - [Inline Alert](https://tessellate.design/r/inline-alert): In-page contextual message banner conveying informational, success, warning, or danger states. (primitives, feedback)
+- [Inline Spinner](https://tessellate.design/r/inline-spinner): Accessible micro-spinner with SVG harmonic arc rotation, configurable size, and screen-reader announcements. (states, loading, spinner)
 - [Text Input](https://tessellate.design/r/input): Clean, accessible single-line text input with label, helper copy, and error states. (primitives, inputs)
 - [Integration Directory Preview](https://tessellate.design/r/integration-directory-preview): Searchable catalog preview of ecosystem plugins with filter chips. (sections, marketing, integrations)
 - [Integration Grid](https://tessellate.design/r/integration-grid): Icon grid displaying supported third-party tools, frameworks, and cloud services. (sections, marketing, integrations)
@@ -281,18 +290,21 @@ Tools provided:
 - [Notification Centre](https://tessellate.design/r/notification-centre): Alert and message stream with dismiss actions, read status toggles, and filters. (blocks, dashboards, notifications)
 - [Number Count Up](https://tessellate.design/r/number-count-up): Eased numeric counter animating from zero to target value on viewport entrance with monospace stability. (motion, microinteractions, numbers)
 - [Number Input](https://tessellate.design/r/number-input): Stepper input control with increment/decrement buttons, min/max bounds, and unit suffix. (primitives, inputs)
+- [Offline State](https://tessellate.design/r/offline-state): Local-first offline banner informing the user that cached manifests remain interactive while remote sync is paused. (states, network, offline)
 - [Onboarding Checklist](https://tessellate.design/r/onboarding-checklist): Checklist guide with completion progress bar helping new users complete first tasks. (blocks, onboarding, checklist)
 - [Onboarding Role Select](https://tessellate.design/r/onboarding-role-select): Role segmentation card picker (Engineer, Designer, Agent Architect, Founder). (blocks, onboarding, segmentation)
 - [Onboarding Wizard](https://tessellate.design/r/onboarding-wizard): Multi-step guided setup wizard with progress bar and next/previous controls. (blocks, onboarding, wizard)
 - [Order Book Depth Chart](https://tessellate.design/r/order-book-depth-chart): Market depth cumulative bid/ask stepped area chart with green bid wall, red ask wall, and mid-market spread indicator. (data, visualization, finance)
 - [Organization Settings](https://tessellate.design/r/organization-settings): Tenant profile configuration covering workspace domain, branding, and billing email. (blocks, settings, organization)
 - [Outlined Display Text](https://tessellate.design/r/outlined-display-text): Architectural hollow stroked display typography providing dramatic spatial scale with light optical density. (typography, display, outline)
+- [Page Skeleton](https://tessellate.design/r/page-skeleton): Full-page progressive layout shimmer placeholder with responsive header, hero deck, and content column blocks. (states, loading, skeleton)
 - [Pagination](https://tessellate.design/r/pagination): Page traversal bar with previous/next triggers, page numbering, and ellipsis jumps. (primitives, navigation)
 - [Paper Texture](https://tessellate.design/r/paper-texture): Tactile editorial stationery texture with subtle cellulose fiber grain and organic tactile warmth. (backgrounds, effects, texture)
 - [Parallax Media](https://tessellate.design/r/parallax-media): Subtle multi-plane parallax depth container translating background and foreground elements at differential velocities. (motion, microinteractions, parallax)
 - [Particle Constellation](https://tessellate.design/r/particle-constellation): Interconnected vector node points forming dynamic geometric constellations with proximate links. (backgrounds, effects, constellation)
 - [Password Input](https://tessellate.design/r/password-input): Masked credential field with toggleable eye icon and password strength meter. (primitives, inputs, auth)
 - [Performance Benchmark Section](https://tessellate.design/r/performance-benchmark-section): Bar chart benchmarks comparing execution latency and throughput against industry baselines. (sections, marketing, technical-proof)
+- [Permission Denied State](https://tessellate.design/r/permission-denied-state): Access boundary lock screen detailing required RBAC roles, organization membership, and request access workflow. (states, security, permission)
 - [Pinned Items](https://tessellate.design/r/pinned-items): User-favorited resources and project bookmarks with quick unpin toggles. (blocks, dashboards, favorites)
 - [Plan Feature Matrix](https://tessellate.design/r/plan-feature-matrix): Segmented feature comparison with expandable category groupings. (sections, marketing, pricing)
 - [Popover](https://tessellate.design/r/popover): Floating rich content card anchored to a target trigger with dismissal handling. (primitives, overlays)
@@ -305,10 +317,12 @@ Tools provided:
 - [Pricing Two Tier](https://tessellate.design/r/pricing-two-tier): Focused 2-card comparison (Starter vs Business) for streamlined product offerings. (sections, marketing, pricing)
 - [Pricing Usage Based](https://tessellate.design/r/pricing-usage-based): Pay-as-you-go pricing card with tier volume sliders and unit-cost breakdowns. (sections, marketing, pricing)
 - [Process Diagram](https://tessellate.design/r/process-diagram): Visual flowchart explaining system data pipeline from ingestion to output. (sections, marketing, explanation)
+- [Processing/Queued State](https://tessellate.design/r/processing-queued-state): Asynchronous task queue state card displaying queue position, estimated wait time, and auto-refresh telemetry. (states, loading, queue)
 - [Product Screenshot Hero](https://tessellate.design/r/product-screenshot-hero): Centered headline with perspective tilted application screenshot frame and browser chrome. (sections, marketing, hero)
 - [Profile Settings](https://tessellate.design/r/profile-settings): User settings form with avatar uploader, display name, handle, and email inputs. (blocks, settings, profile)
 - [Progress Bar](https://tessellate.design/r/progress-bar): Linear progress meter with determinate percentage progress and indeterminate pulse. (primitives, feedback)
 - [Progress Ring](https://tessellate.design/r/progress-ring): Circular radial progress meter with smooth stroke animation and central metric label. (primitives, feedback)
+- [Progressive Loader](https://tessellate.design/r/progressive-loader): Multi-stage task progression bar with labeled phase checkpoints, percentage telemetry, and estimated time remaining. (states, loading, progress)
 - [Project Switcher](https://tessellate.design/r/project-switcher): Header breadcrumb trigger for toggling between project repositories or composed interfaces. (shells, navigation)
 - [Query Builder](https://tessellate.design/r/query-builder): Visual query constructor combining Boolean conditions (AND/OR) with nested groups. (blocks, search, query)
 - [Quick Actions Panel](https://tessellate.design/r/quick-actions-panel): Grid of immediate high-frequency operational triggers and shortcut launchers. (blocks, dashboards, actions)
@@ -353,8 +367,10 @@ Tools provided:
 - [Sticky Scroll Story](https://tessellate.design/r/sticky-scroll-story): Sticky viewport container pairing stationary preview graphic with scrolling narrative chapters. (motion, microinteractions, scroll)
 - [Subtle Grid Field](https://tessellate.design/r/subtle-grid-field): Precision architectural grid coordinate backdrop with customizable spacing, hairline dividers, and radial fade mask. (backgrounds, effects, grid)
 - [Success Celebration](https://tessellate.design/r/success-celebration): Post-action success checkmark bloom with particle burst microinteraction. (motion, microinteractions, celebration)
+- [Success State](https://tessellate.design/r/success-state): Completed transaction confirmation panel with verified checkmark, output artifact links, and next step suggestions. (states, feedback, success)
 - [Switch](https://tessellate.design/r/switch): Accessible sliding toggle switch for boolean preferences and instant settings. (primitives, inputs)
 - [Tab Workspace Navigation](https://tessellate.design/r/tab-workspace-nav): Browser-style multi-tab document bar with close buttons and split view triggers. (shells, navigation)
+- [Table Skeleton](https://tessellate.design/r/table-skeleton): Data grid shimmer placeholder with columnar headers, alternating rows, and pagination bar placeholders. (states, loading, skeleton)
 - [Tabs](https://tessellate.design/r/tabs): Accessible tabbed navigation system with active underlined or pill indicators and panels. (primitives, navigation)
 - [Tag Chip](https://tessellate.design/r/tag-chip): Clickable and removable categorical chip token for multi-criteria filters. (primitives, inputs)
 - [Task Detail](https://tessellate.design/r/task-detail): Detailed issue view with assignee dropdown, status selector, priority tag, and subtasks. (blocks, collaboration, task)
@@ -2689,6 +2705,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Card Grid Skeleton (`card-grid-skeleton`)
+- **Type**: state
+- **Categories**: states, loading, skeleton
+- **Description**: Multi-column responsive card grid loading placeholder with image aspect boxes, text lines, and action button shingles.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/card-grid-skeleton.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Card Hover Lift (`card-hover-lift`)
 - **Type**: motion
 - **Categories**: motion, microinteractions, hover
@@ -3509,6 +3566,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Connection Lost State (`connection-lost-state`)
+- **Type**: state
+- **Categories**: states, network, connection
+- **Description**: Active socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/connection-lost-state.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Context Menu (`context-menu`)
 - **Type**: primitive
 - **Categories**: primitives, overlays
@@ -4161,6 +4259,47 @@ Tools provided:
   - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Dashboard Skeleton (`dashboard-skeleton`)
+- **Type**: state
+- **Categories**: states, loading, skeleton
+- **Description**: Multi-metric analytics workspace skeleton placeholder with metric card shingles, chart viewport placeholder, and data table rows.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/dashboard-skeleton.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind
@@ -4862,6 +5001,129 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Empty Collection State (`empty-collection-state`)
+- **Type**: state
+- **Categories**: states, empty, collection
+- **Description**: Empty inventory or folder state prompting the user to bookmark resources or create their first item collection.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/empty-collection-state.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Empty Dashboard State (`empty-dashboard-state`)
+- **Type**: state
+- **Categories**: states, empty, dashboard
+- **Description**: First-time dashboard panel placeholder encouraging initial telemetry integration with quick-start steps.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/empty-dashboard-state.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Empty Search State (`empty-search-state`)
+- **Type**: state
+- **Categories**: states, empty, search
+- **Description**: Zero query results feedback panel with search phrase echo, corrective filter suggestions, and clear action button.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/empty-search-state.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Empty Workspace (`empty-workspace`)
 - **Type**: block
 - **Categories**: blocks, onboarding, empty
@@ -5063,6 +5325,47 @@ Tools provided:
   - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Error State (`error-state`)
+- **Type**: state
+- **Categories**: states, feedback, error
+- **Description**: System exception and runtime fault callout with stack diagnosis summary, recovery actions, and error report trigger.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/error-state.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind
@@ -6046,6 +6349,47 @@ Tools provided:
   - conversionIntensity: 30
   - trust: 95
   - accessibilityPriority: 95
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### First Run State (`first-run-state`)
+- **Type**: state
+- **Categories**: states, onboarding, first-run
+- **Description**: Onboarding walkthrough card welcoming users on their initial workspace launch with architectural step guides.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/first-run-state.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
   - performancePriority: 98
   - visualMode: adaptive
   - geometryFamily: rounded
@@ -7113,6 +7457,47 @@ Tools provided:
   - trust: 85
   - accessibilityPriority: 95
   - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Inline Spinner (`inline-spinner`)
+- **Type**: state
+- **Categories**: states, loading, spinner
+- **Description**: Accessible micro-spinner with SVG harmonic arc rotation, configurable size, and screen-reader announcements.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/inline-spinner.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind
@@ -8675,6 +9060,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Offline State (`offline-state`)
+- **Type**: state
+- **Categories**: states, network, offline
+- **Description**: Local-first offline banner informing the user that cached manifests remain interactive while remote sync is paused.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/offline-state.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Onboarding Checklist (`onboarding-checklist`)
 - **Type**: block
 - **Categories**: blocks, onboarding, checklist
@@ -8916,6 +9342,47 @@ Tools provided:
   - conversionIntensity: 55
   - trust: 95
   - accessibilityPriority: 98
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Page Skeleton (`page-skeleton`)
+- **Type**: state
+- **Categories**: states, loading, skeleton
+- **Description**: Full-page progressive layout shimmer placeholder with responsive header, hero deck, and content column blocks.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/page-skeleton.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
   - performancePriority: 98
   - visualMode: adaptive
   - geometryFamily: rounded
@@ -9163,6 +9630,47 @@ Tools provided:
   - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Permission Denied State (`permission-denied-state`)
+- **Type**: state
+- **Categories**: states, security, permission
+- **Description**: Access boundary lock screen detailing required RBAC roles, organization membership, and request access workflow.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/permission-denied-state.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind
@@ -9659,6 +10167,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Processing/Queued State (`processing-queued-state`)
+- **Type**: state
+- **Categories**: states, loading, queue
+- **Description**: Asynchronous task queue state card displaying queue position, estimated wait time, and auto-refresh telemetry.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/processing-queued-state.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Product Screenshot Hero (`product-screenshot-hero`)
 - **Type**: section
 - **Categories**: sections, marketing, hero
@@ -9819,6 +10368,47 @@ Tools provided:
   - trust: 85
   - accessibilityPriority: 95
   - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Progressive Loader (`progressive-loader`)
+- **Type**: state
+- **Categories**: states, loading, progress
+- **Description**: Multi-stage task progression bar with labeled phase checkpoints, percentage telemetry, and estimated time remaining.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/progressive-loader.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind
@@ -11627,6 +12217,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Success State (`success-state`)
+- **Type**: state
+- **Categories**: states, feedback, success
+- **Description**: Completed transaction confirmation panel with verified checkmark, output artifact links, and next step suggestions.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/success-state.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Switch (`switch`)
 - **Type**: primitive
 - **Categories**: primitives, inputs
@@ -11705,6 +12336,47 @@ Tools provided:
   - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Table Skeleton (`table-skeleton`)
+- **Type**: state
+- **Categories**: states, loading, skeleton
+- **Description**: Data grid shimmer placeholder with columnar headers, alternating rows, and pagination bar placeholders.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/table-skeleton.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 30
+  - luxury: 45
+  - warmth: 40
+  - technicality: 85
+  - editorial: 65
+  - futurism: 55
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 30
+  - depth: 35
+  - motion: 35
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 60
+  - asymmetry: 15
+  - conversionIntensity: 45
+  - trust: 96
+  - accessibilityPriority: 99
+  - performancePriority: 98
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind

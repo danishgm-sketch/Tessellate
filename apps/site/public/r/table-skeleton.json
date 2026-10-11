@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "table-skeleton",
+  "type": "registry:component",
+  "title": "Table Skeleton",
+  "description": "Data grid shimmer placeholder with columnar headers, alternating rows, and pagination bar placeholders.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type TableSkeletonVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface TableSkeletonProps {\n  rows?: number;\n  variant?: TableSkeletonVariant;\n  children?: React.ReactNode;\n}\n\nexport function TableSkeleton({ rows = 5, variant = 'quiet', children }: TableSkeletonProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const blockBg =\n    variant === 'nocturne'\n      ? 'bg-neutral-800/60'\n      : variant === 'expressive'\n      ? 'bg-indigo-100/60'\n      : 'bg-neutral-200/80';\n\n  return (\n    <div\n      role=\"status\"\n      aria-label=\"Loading table rows\"\n      className={`p-6 rounded-xl border max-w-4xl mx-auto space-y-4 animate-pulse transition-colors ${containerBg}`}\n    >\n      {/* Table Header */}\n      <div className=\"grid grid-cols-4 gap-4 pb-3 border-b border-neutral-200/20\">\n        <div className={`h-4 w-24 rounded ${blockBg}`} />\n        <div className={`h-4 w-20 rounded ${blockBg}`} />\n        <div className={`h-4 w-16 rounded ${blockBg}`} />\n        <div className={`h-4 w-12 rounded justify-self-end ${blockBg}`} />\n      </div>\n\n      {/* Rows */}\n      {Array.from({ length: rows }).map((_, idx) => (\n        <div key={idx} className=\"grid grid-cols-4 gap-4 py-2 border-b border-neutral-200/10 items-center\">\n          <div className=\"flex items-center gap-2\">\n            <div className={`h-6 w-6 rounded-full ${blockBg}`} />\n            <div className={`h-4 w-28 rounded ${blockBg}`} />\n          </div>\n          <div className={`h-4 w-20 rounded ${blockBg}`} />\n          <div className={`h-4 w-16 rounded ${blockBg}`} />\n          <div className={`h-6 w-14 rounded justify-self-end ${blockBg}`} />\n        </div>\n      ))}\n\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { TableSkeleton, TableSkeletonVariant } from './index';\n\nexport function TableSkeletonPreview() {\n  const [variant, setVariant] = useState<TableSkeletonVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <TableSkeleton variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "states",
+    "loading",
+    "skeleton"
+  ],
+  "meta": {
+    "tessellateId": "res_state_table_skeleton",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "success-state",
+  "type": "registry:component",
+  "title": "Success State",
+  "description": "Completed transaction confirmation panel with verified checkmark, output artifact links, and next step suggestions.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type SuccessStateVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SuccessStateProps {\n  title?: string;\n  message?: string;\n  onViewArtifact?: () => void;\n  variant?: SuccessStateVariant;\n  children?: React.ReactNode;\n}\n\nexport function SuccessState({\n  title = 'System Export Completed Successfully',\n  message = '11 production-ready Vite + React TypeScript files generated with zero external lock-in.',\n  onViewArtifact,\n  variant = 'quiet',\n  children,\n}: SuccessStateProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-emerald-900/50'\n      : variant === 'expressive'\n      ? 'bg-emerald-50/50 text-neutral-900 border-emerald-200'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const badgeColor =\n    variant === 'nocturne'\n      ? 'text-emerald-400 bg-emerald-950/40 border-emerald-800'\n      : variant === 'expressive'\n      ? 'text-emerald-700 bg-emerald-100 border-emerald-300'\n      : 'text-emerald-700 bg-emerald-50 border-emerald-200';\n\n  return (\n    <div className={`p-8 md:p-12 rounded-xl border max-w-4xl mx-auto text-center space-y-4 transition-colors ${containerBg}`}>\n      <div className={`w-12 h-12 mx-auto rounded-xl flex items-center justify-center border text-xl ${badgeColor}`}>\n        ✓\n      </div>\n\n      <div className=\"space-y-1\">\n        <h3 className=\"text-lg font-bold tracking-tight text-emerald-600 dark:text-emerald-400\">\n          {title}\n        </h3>\n        <p className=\"text-xs text-neutral-500 max-w-md mx-auto leading-relaxed\">\n          {message}\n        </p>\n      </div>\n\n      <div className=\"pt-2 flex justify-center gap-3\">\n        <button\n          onClick={onViewArtifact}\n          className=\"px-4 py-2 text-xs font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700\"\n        >\n          View Exported Files\n        </button>\n      </div>\n\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { SuccessState, SuccessStateVariant } from './index';\n\nexport function SuccessStatePreview() {\n  const [variant, setVariant] = useState<SuccessStateVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <SuccessState variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "states",
+    "feedback",
+    "success"
+  ],
+  "meta": {
+    "tessellateId": "res_state_success_state",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}
