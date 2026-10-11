@@ -16,6 +16,9 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "audit:release-gate": "tsx scripts/verify-release-gate.ts",
+    "audit:licenses": "tsx scripts/audit-license-provenance.ts",
+    "audit:secrets": "tsx scripts/audit-security-secrets.ts",
+    "audit:budgets": "tsx scripts/audit-bundle-budgets.ts",
     "audit:all": "tsx scripts/verify-release-gate.ts && tsx scripts/audit-bundle-budgets.ts && tsx scripts/audit-license-provenance.ts && tsx scripts/audit-security-secrets.ts"
   },
   "devDependencies": {

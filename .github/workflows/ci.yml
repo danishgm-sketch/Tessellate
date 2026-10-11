@@ -37,10 +37,10 @@ jobs:
         run: pnpm lint
 
       - name: Licence & provenance audit
-        run: tsx scripts/audit-license-provenance.ts
+        run: pnpm audit:licenses
 
       - name: Secret & security audit
-        run: tsx scripts/audit-security-secrets.ts
+        run: pnpm audit:secrets
 
       - name: Vitest (unit & integration)
         run: pnpm test
@@ -52,7 +52,7 @@ jobs:
         run: pnpm build
 
       - name: Bundle budget audit
-        run: tsx scripts/audit-bundle-budgets.ts
+        run: pnpm audit:budgets
 
       - name: Playwright E2E & Axe accessibility tests
         run: pnpm test:e2e
