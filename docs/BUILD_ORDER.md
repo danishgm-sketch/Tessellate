@@ -484,7 +484,7 @@ Produce/curate in this order:
 - [x] 56 application blocks.
 - [x] 24 data resources.
 - [x] 20 AI interaction patterns.
-- [ ] 24 motion/microinteraction resources.
+- [x] 24 motion/microinteraction resources.
 - [ ] 20 backgrounds/effects.
 - [ ] 12 typography effects.
 - [ ] 16 state patterns.

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kpi-delta-motion",
+  "type": "registry:component",
+  "title": "KPI Delta Motion",
+  "description": "Ticker tape number transition flipping upward or downward when metric value updates.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type KpiDeltaMotionVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface KpiDeltaMotionProps {\n  variant?: KpiDeltaMotionVariant;\n}\n\nexport function KpiDeltaMotion({ variant = 'quiet' }: KpiDeltaMotionProps) {\n  const [val, setVal] = useState(4250);\n  const [delta, setDelta] = useState<'+' | '-'>('+');\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const bump = (direction: '+' | '-') => {\n    setDelta(direction);\n    setVal((prev) => (direction === '+' ? prev + 125 : prev - 125));\n  };\n\n  return (\n    <div className={`w-full p-8 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>\n      <div className=\"flex justify-between items-center pb-2 border-b border-neutral-100 dark:border-neutral-800\">\n        <span className=\"text-xs font-mono text-neutral-400\">Directional Metric Ticker</span>\n        <div className=\"flex gap-1.5\">\n          <button\n            onClick={() => bump('+')}\n            className=\"text-xs px-2 py-0.5 rounded border border-neutral-200 dark:border-neutral-800 hover:text-emerald-500\"\n          >\n            + Tick\n          </button>\n          <button\n            onClick={() => bump('-')}\n            className=\"text-xs px-2 py-0.5 rounded border border-neutral-200 dark:border-neutral-800 hover:text-rose-500\"\n          >\n            - Tick\n          </button>\n        </div>\n      </div>\n\n      <div className=\"flex items-center gap-4 py-2\">\n        <span className=\"text-4xl font-mono font-bold tracking-tight\">$${val.toLocaleString()}</span>\n        <span\n          className={`text-xs font-mono font-semibold px-2 py-0.5 rounded transition-transform duration-200 ${\n            delta === '+' ? 'text-emerald-500 bg-emerald-500/10' : 'text-rose-500 bg-rose-500/10'\n          }`}\n        >\n          {delta === '+' ? '▲ +2.9%' : '▼ -2.9%'}\n        </span>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { KpiDeltaMotion, KpiDeltaMotionVariant } from './index';\n\nexport function KpiDeltaMotionPreview() {\n  const [variant, setVariant] = useState<KpiDeltaMotionVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <KpiDeltaMotion variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "numbers"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_kpi_delta_motion",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

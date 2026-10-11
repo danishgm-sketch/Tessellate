@@ -31,6 +31,20 @@
       ]
     },
     {
+      "name": "accordion-spring",
+      "type": "registry:component",
+      "title": "Accordion Spring",
+      "description": "Spring-animated expandable panel expanding height from 0 to auto without layout jank.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "accordion"
+      ]
+    },
+    {
       "name": "activity-feed",
       "type": "registry:block",
       "title": "Activity Feed",
@@ -365,6 +379,34 @@
       ]
     },
     {
+      "name": "animated-border-trace",
+      "type": "registry:component",
+      "title": "Animated Border Trace",
+      "description": "Continuous or hover-activated SVG path trace racing along card perimeter hairline.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "borders"
+      ]
+    },
+    {
+      "name": "animated-gradient-line",
+      "type": "registry:component",
+      "title": "Animated Gradient Line",
+      "description": "Moving linear gradient beam sweeping across dividers, card separators, or section footers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "dividers"
+      ]
+    },
+    {
       "name": "api-capability-section",
       "type": "registry:block",
       "title": "API Capability Section",
@@ -555,6 +597,20 @@
       ]
     },
     {
+      "name": "blur-to-sharp-reveal",
+      "type": "registry:component",
+      "title": "Blur-to-Sharp Reveal",
+      "description": "Defocus-to-crisp entrance transitioning from filter blur(8px) into razor-sharp focus.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ]
+    },
+    {
       "name": "bottom-sheet",
       "type": "registry:ui",
       "title": "Bottom Sheet",
@@ -677,6 +733,34 @@
       ]
     },
     {
+      "name": "card-hover-lift",
+      "type": "registry:component",
+      "title": "Card Hover Lift",
+      "description": "Subtle vertical translate-y(-4px) lift with elevated shadow bloom on pointer hover.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "hover"
+      ]
+    },
+    {
+      "name": "card-tilt",
+      "type": "registry:component",
+      "title": "Card Tilt",
+      "description": "3D perspective tilt reacting to cursor position across card quadrants with subtle glare reflection.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "perspective"
+      ]
+    },
+    {
       "name": "case-study-spotlight",
       "type": "registry:block",
       "title": "Case Study Spotlight",
@@ -701,6 +785,20 @@
       "categories": [
         "shells",
         "navigation"
+      ]
+    },
+    {
+      "name": "character-stagger-reveal",
+      "type": "registry:component",
+      "title": "Character Stagger Reveal",
+      "description": "Fine-grained character-by-character kinetic reveal for brand monograms, metrics, and hero phrases.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
       ]
     },
     {
@@ -1018,6 +1116,20 @@
       ]
     },
     {
+      "name": "cursor-spotlight",
+      "type": "registry:component",
+      "title": "Cursor Spotlight",
+      "description": "Radial luminance spotlight tracking mouse pointer across container surface, revealing border hairline luster.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "cursor"
+      ]
+    },
+    {
       "name": "customer-metrics-strip",
       "type": "registry:block",
       "title": "Customer Metrics Strip",
@@ -1179,6 +1291,20 @@
         "primitives",
         "overlays",
         "layout"
+      ]
+    },
+    {
+      "name": "drawer-spring",
+      "type": "registry:component",
+      "title": "Drawer Spring",
+      "description": "Off-canvas sliding overlay drawer with spring damping, backdrop blur, and escape key listener.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "drawer"
       ]
     },
     {
@@ -1345,6 +1471,20 @@
         "blocks",
         "search",
         "facets"
+      ]
+    },
+    {
+      "name": "fade-up-reveal",
+      "type": "registry:component",
+      "title": "Fade-Up Reveal",
+      "description": "Smooth vertical translate-y and opacity entrance reveal with springy or linear settling physics.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
       ]
     },
     {
@@ -1823,6 +1963,20 @@
       ]
     },
     {
+      "name": "horizontal-scroll-story",
+      "type": "registry:component",
+      "title": "Horizontal Scroll Story",
+      "description": "Track-based horizontal pan card sequence with step indicators, scroll lock, and keyboard arrow navigation.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "scroll"
+      ]
+    },
+    {
       "name": "how-it-works-interactive",
       "type": "registry:block",
       "title": "How It Works Interactive",
@@ -2070,6 +2224,20 @@
       ]
     },
     {
+      "name": "kpi-delta-motion",
+      "type": "registry:component",
+      "title": "KPI Delta Motion",
+      "description": "Ticker tape number transition flipping upward or downward when metric value updates.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "numbers"
+      ]
+    },
+    {
       "name": "link",
       "type": "registry:ui",
       "title": "Link",
@@ -2080,6 +2248,20 @@
       "categories": [
         "primitives",
         "navigation"
+      ]
+    },
+    {
+      "name": "loading-orbit",
+      "type": "registry:component",
+      "title": "Loading Orbit",
+      "description": "Subtle orbital planetary ring loader indicating background task execution without visual stress.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "loading"
       ]
     },
     {
@@ -2111,6 +2293,20 @@
       ]
     },
     {
+      "name": "magnetic-button",
+      "type": "registry:component",
+      "title": "Magnetic Button",
+      "description": "Cursor-attracted interactive button pulling towards cursor coordinates within proximity threshold with spring return.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "cursor"
+      ]
+    },
+    {
       "name": "marketing-nav-cta",
       "type": "registry:block",
       "title": "Marketing Navigation with CTA",
@@ -2121,6 +2317,20 @@
       "categories": [
         "shells",
         "navigation"
+      ]
+    },
+    {
+      "name": "masked-text-reveal",
+      "type": "registry:component",
+      "title": "Masked Text Reveal",
+      "description": "Editorial overflow-hidden text mask sliding upwards from an invisible baseline boundary.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
       ]
     },
     {
@@ -2302,6 +2512,20 @@
       ]
     },
     {
+      "name": "number-count-up",
+      "type": "registry:component",
+      "title": "Number Count Up",
+      "description": "Eased numeric counter animating from zero to target value on viewport entrance with monospace stability.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "numbers"
+      ]
+    },
+    {
       "name": "number-input",
       "type": "registry:ui",
       "title": "Number Input",
@@ -2395,6 +2619,20 @@
       "categories": [
         "primitives",
         "navigation"
+      ]
+    },
+    {
+      "name": "parallax-media",
+      "type": "registry:component",
+      "title": "Parallax Media",
+      "description": "Subtle multi-plane parallax depth container translating background and foreground elements at differential velocities.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "parallax"
       ]
     },
     {
@@ -2824,6 +3062,20 @@
       ]
     },
     {
+      "name": "scale-reveal",
+      "type": "registry:component",
+      "title": "Scale Reveal",
+      "description": "Smooth scale-up entrance from 0.95 to 1.0 with subtle spring settling and opacity fade.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ]
+    },
+    {
       "name": "scatter-plot",
       "type": "registry:component",
       "title": "Scatter Plot",
@@ -2849,6 +3101,20 @@
         "blocks",
         "data",
         "calendar"
+      ]
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:component",
+      "title": "Scroll Progress",
+      "description": "Header hairline progress track calculating document reading percentage and viewport completion.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "scroll"
       ]
     },
     {
@@ -2973,6 +3239,20 @@
       ]
     },
     {
+      "name": "shared-element-transition",
+      "type": "registry:component",
+      "title": "Shared Element Transition",
+      "description": "Smooth morphing container transitioning an element smoothly between thumbnail and expanded modal view.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "transition"
+      ]
+    },
+    {
       "name": "skeleton",
       "type": "registry:ui",
       "title": "Skeleton",
@@ -2983,6 +3263,20 @@
       "categories": [
         "primitives",
         "feedback"
+      ]
+    },
+    {
+      "name": "slide-clip-reveal",
+      "type": "registry:component",
+      "title": "Slide Clip Reveal",
+      "description": "Horizontal or vertical clip-path swipe uncovering child content like a mechanical aperture.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
       ]
     },
     {
@@ -3080,6 +3374,34 @@
         "blocks",
         "dashboards",
         "status"
+      ]
+    },
+    {
+      "name": "sticky-scroll-story",
+      "type": "registry:component",
+      "title": "Sticky Scroll Story",
+      "description": "Sticky viewport container pairing stationary preview graphic with scrolling narrative chapters.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "scroll"
+      ]
+    },
+    {
+      "name": "success-celebration",
+      "type": "registry:component",
+      "title": "Success Celebration",
+      "description": "Post-action success checkmark bloom with particle burst microinteraction.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "celebration"
       ]
     },
     {
@@ -3420,6 +3742,20 @@
         "blocks",
         "settings",
         "webhooks"
+      ]
+    },
+    {
+      "name": "word-stagger-reveal",
+      "type": "registry:component",
+      "title": "Word Stagger Reveal",
+      "description": "Headline word sequence staggering entrance with progressive delay per token for dramatic cadence.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
       ]
     },
     {

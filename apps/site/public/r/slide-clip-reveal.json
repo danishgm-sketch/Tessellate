@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slide-clip-reveal",
+  "type": "registry:component",
+  "title": "Slide Clip Reveal",
+  "description": "Horizontal or vertical clip-path swipe uncovering child content like a mechanical aperture.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type SlideClipRevealVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface SlideClipRevealProps {\n  variant?: SlideClipRevealVariant;\n}\n\nexport function SlideClipReveal({ variant = 'quiet' }: SlideClipRevealProps) {\n  const [sliderPos, setSliderPos] = useState(50);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>\n      <div className=\"flex justify-between items-center pb-2 border-b border-neutral-100 dark:border-neutral-800\">\n        <span className=\"text-xs font-mono text-neutral-400\">Clip-Path Wipe Comparison</span>\n        <span className=\"text-xs font-mono font-medium\">{sliderPos}%</span>\n      </div>\n\n      <div className=\"relative w-full h-44 rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 select-none\">\n        {/* Under layer (Quiet) */}\n        <div className=\"absolute inset-0 bg-neutral-100 dark:bg-neutral-900 flex items-center justify-center p-6 text-center\">\n          <div>\n            <div className=\"text-xs font-mono font-bold uppercase text-neutral-500 mb-1\">Quiet Mode</div>\n            <div className=\"text-sm font-semibold\">Calm Slate Minimalist Baseline</div>\n          </div>\n        </div>\n\n        {/* Over layer (Nocturne / Expressive clipped) */}\n        <div\n          className=\"absolute inset-0 bg-neutral-950 text-white flex items-center justify-center p-6 text-center transition-all duration-75\"\n          style={{ clipPath: `polygon(0 0, ${sliderPos}% 0, ${sliderPos}% 100%, 0 100%)` }}\n        >\n          <div>\n            <div className=\"text-xs font-mono font-bold uppercase text-cyan-400 mb-1\">Nocturne Mode</div>\n            <div className=\"text-sm font-semibold text-cyan-50\">Obsidian Razor-Sharp Luminescence</div>\n          </div>\n        </div>\n\n        {/* Divider bar */}\n        <div\n          className=\"absolute top-0 bottom-0 w-0.5 bg-white shadow-lg pointer-events-none\"\n          style={{ left: `${sliderPos}%` }}\n        />\n      </div>\n\n      <input\n        type=\"range\"\n        min=\"0\"\n        max=\"100\"\n        value={sliderPos}\n        onChange={(e) => setSliderPos(Number(e.target.value))}\n        className=\"w-full accent-neutral-900 dark:accent-white cursor-pointer\"\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { SlideClipReveal, SlideClipRevealVariant } from './index';\n\nexport function SlideClipRevealPreview() {\n  const [variant, setVariant] = useState<SlideClipRevealVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <SlideClipReveal variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "reveals"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_slide_clip_reveal",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

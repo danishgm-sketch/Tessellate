@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "horizontal-scroll-story",
+  "type": "registry:component",
+  "title": "Horizontal Scroll Story",
+  "description": "Track-based horizontal pan card sequence with step indicators, scroll lock, and keyboard arrow navigation.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type HorizontalScrollStoryVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface HorizontalScrollStoryProps {\n  variant?: HorizontalScrollStoryVariant;\n}\n\nexport function HorizontalScrollStory({ variant = 'quiet' }: HorizontalScrollStoryProps) {\n  const [activeStep, setActiveStep] = useState(0);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const cards = [\n    { step: 'Phase 01', title: 'Catalog Discovery', desc: 'Auto-scan verified components in repository.' },\n    { step: 'Phase 02', title: 'Constraint Solving', desc: 'Deterministic compatibility checks for tokens.' },\n    { step: 'Phase 03', title: 'Standalone Export', desc: 'Pure React output with 0 runtime lock-in.' },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>\n      <div className=\"flex justify-between items-center pb-2 border-b border-neutral-100 dark:border-neutral-800\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Horizontal Build Order</h4>\n          <p className=\"text-xs text-neutral-500\">Step {activeStep + 1} of {cards.length}</p>\n        </div>\n        <div className=\"flex gap-2\">\n          <button\n            onClick={() => setActiveStep(Math.max(0, activeStep - 1))}\n            disabled={activeStep === 0}\n            className=\"p-1.5 rounded border border-neutral-200 dark:border-neutral-800 disabled:opacity-40\"\n          >\n            ←\n          </button>\n          <button\n            onClick={() => setActiveStep(Math.min(cards.length - 1, activeStep + 1))}\n            disabled={activeStep === cards.length - 1}\n            className=\"p-1.5 rounded border border-neutral-200 dark:border-neutral-800 disabled:opacity-40\"\n          >\n            →\n          </button>\n        </div>\n      </div>\n\n      <div className=\"flex gap-4 overflow-hidden py-2\">\n        {cards.map((c, idx) => {\n          const isSelected = activeStep === idx;\n          return (\n            <div\n              key={c.step}\n              onClick={() => setActiveStep(idx)}\n              className={`flex-shrink-0 w-64 p-4 rounded-xl border text-xs cursor-pointer transition-all duration-300 ${\n                isSelected\n                  ? 'border-neutral-900 bg-neutral-50 dark:border-white dark:bg-neutral-800 ring-1 ring-current scale-100'\n                  : 'border-neutral-200 dark:border-neutral-800 opacity-60 scale-95'\n              }`}\n            >\n              <span className=\"text-[10px] font-mono font-bold text-neutral-400 block mb-1\">{c.step}</span>\n              <div className=\"font-semibold text-sm mb-1\">{c.title}</div>\n              <p className=\"text-neutral-500 leading-relaxed text-[11px]\">{c.desc}</p>\n            </div>\n          );\n        })}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { HorizontalScrollStory, HorizontalScrollStoryVariant } from './index';\n\nexport function HorizontalScrollStoryPreview() {\n  const [variant, setVariant] = useState<HorizontalScrollStoryVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-2xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <HorizontalScrollStory variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "scroll"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_horizontal_scroll_story",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

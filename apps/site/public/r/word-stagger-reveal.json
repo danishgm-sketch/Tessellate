@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "word-stagger-reveal",
+  "type": "registry:component",
+  "title": "Word Stagger Reveal",
+  "description": "Headline word sequence staggering entrance with progressive delay per token for dramatic cadence.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type WordStaggerRevealVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface WordStaggerRevealProps {\n  variant?: WordStaggerRevealVariant;\n}\n\nexport function WordStaggerReveal({ variant = 'quiet' }: WordStaggerRevealProps) {\n  const [revealed, setRevealed] = useState(true);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const words = ['Precision', 'design', 'systems', 'engineered', 'for', 'autonomous', 'agents.'];\n\n  return (\n    <div className={`w-full p-8 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>\n      <div className=\"flex justify-between items-center pb-2 border-b border-neutral-100 dark:border-neutral-800\">\n        <span className=\"text-xs font-mono text-neutral-400\">Word Stagger Sequence</span>\n        <button\n          onClick={() => {\n            setRevealed(false);\n            setTimeout(() => setRevealed(true), 50);\n          }}\n          className=\"text-xs px-2.5 py-1 rounded border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-current\"\n        >\n          Replay\n        </button>\n      </div>\n\n      <div className=\"flex flex-wrap gap-x-2 gap-y-1\">\n        {words.map((w, idx) => (\n          <span\n            key={idx}\n            style={{ transitionDelay: `${idx * 60}ms` }}\n            className={`text-xl sm:text-2xl font-bold tracking-tight inline-block transition-all duration-500 motion-reduce:transition-none motion-reduce:transform-none ${\n              revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'\n            }`}\n          >\n            {w}\n          </span>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { WordStaggerReveal, WordStaggerRevealVariant } from './index';\n\nexport function WordStaggerRevealPreview() {\n  const [variant, setVariant] = useState<WordStaggerRevealVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <WordStaggerReveal variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "reveals"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_word_stagger_reveal",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

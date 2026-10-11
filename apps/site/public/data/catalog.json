@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-10-11T00:18:23.280Z",
-  "count": 252,
+  "generatedAt": "2026-10-11T00:22:46.688Z",
+  "count": 276,
   "resources": [
     {
       "schemaVersion": "1.0.0",
@@ -484,6 +484,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_accordion_spring",
+      "slug": "accordion-spring",
+      "name": "Accordion Spring",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Spring-animated expandable panel expanding height from 0 to auto without layout jank.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "accordion"
+      ],
+      "roles": [
+        "accordion",
+        "spring"
+      ],
+      "purposes": [
+        "smooth-expansion",
+        "height-spring",
+        "faq-disclosure"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "accordion-spring",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "AccordionSpringPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "accordion",
+        "spring",
+        "height",
+        "expansion"
+      ],
+      "intent": {
+        "summary": "Spring-animated expandable panel expanding height from 0 to auto without layout jank.",
+        "idealFor": [
+          "FAQ questions",
+          "Collapsible settings groups",
+          "Deep configuration sections"
+        ],
+        "avoidFor": [
+          "Standard persistent visible sidebars",
+          "Plain button clicks"
+        ],
+        "jobs": [
+          "Expand and collapse child content with smooth springy height interpolation"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -6427,6 +6676,504 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_mot_animated_border_trace",
+      "slug": "animated-border-trace",
+      "name": "Animated Border Trace",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Continuous or hover-activated SVG path trace racing along card perimeter hairline.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "borders"
+      ],
+      "roles": [
+        "border",
+        "trace"
+      ],
+      "purposes": [
+        "border-animation",
+        "highlight-perimeter",
+        "cyber-hairline"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "animated-border-trace",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "AnimatedBorderTracePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "border",
+        "trace",
+        "svg",
+        "perimeter"
+      ],
+      "intent": {
+        "summary": "Continuous or hover-activated SVG path trace racing along card perimeter hairline.",
+        "idealFor": [
+          "Highlighted plan tier in pricing",
+          "Active selected canvas block",
+          "System alert perimeter"
+        ],
+        "avoidFor": [
+          "Standard form inputs",
+          "Plain navigation menus"
+        ],
+        "jobs": [
+          "Trace a luminous line along container perimeter borders"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_animated_gradient_line",
+      "slug": "animated-gradient-line",
+      "name": "Animated Gradient Line",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Moving linear gradient beam sweeping across dividers, card separators, or section footers.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "dividers"
+      ],
+      "roles": [
+        "divider",
+        "gradient"
+      ],
+      "purposes": [
+        "divider-animation",
+        "beam-sweep",
+        "section-boundary"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "animated-gradient-line",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "AnimatedGradientLinePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "gradient",
+        "divider",
+        "beam",
+        "sweep"
+      ],
+      "intent": {
+        "summary": "Moving linear gradient beam sweeping across dividers, card separators, or section footers.",
+        "idealFor": [
+          "Section dividers in dark mode",
+          "Loading separator bars",
+          "Footer boundary transitions"
+        ],
+        "avoidFor": [
+          "Text paragraph underlines",
+          "Standard table cell borders"
+        ],
+        "jobs": [
+          "Sweep continuous gradient luminescence horizontally across divider lines"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_sec_api_capability_section",
       "slug": "api-capability-section",
       "name": "API Capability Section",
@@ -9830,6 +10577,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_mot_blur_to_sharp_reveal",
+      "slug": "blur-to-sharp-reveal",
+      "name": "Blur-to-Sharp Reveal",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Defocus-to-crisp entrance transitioning from filter blur(8px) into razor-sharp focus.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ],
+      "roles": [
+        "reveal",
+        "filter"
+      ],
+      "purposes": [
+        "optical-focus",
+        "cinematic-reveal",
+        "depth-transition"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "blur-to-sharp-reveal",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "BlurToSharpRevealPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "blur",
+        "focus",
+        "optical",
+        "reveal"
+      ],
+      "intent": {
+        "summary": "Defocus-to-crisp entrance transitioning from filter blur(8px) into razor-sharp focus.",
+        "idealFor": [
+          "Cinematic hero cards",
+          "Art direction showcases",
+          "Product screenshot reveals"
+        ],
+        "avoidFor": [
+          "Low-end mobile devices under GPU constraints",
+          "Text input cursors"
+        ],
+        "jobs": [
+          "Transition visual assets from blurred defocus into crisp optical sharpness"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_bottom_sheet",
       "slug": "bottom-sheet",
       "name": "Bottom Sheet",
@@ -12031,6 +13027,504 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_mot_card_hover_lift",
+      "slug": "card-hover-lift",
+      "name": "Card Hover Lift",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Subtle vertical translate-y(-4px) lift with elevated shadow bloom on pointer hover.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "hover"
+      ],
+      "roles": [
+        "card",
+        "lift"
+      ],
+      "purposes": [
+        "hover-elevation",
+        "card-affordance",
+        "tactile-response"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "card-hover-lift",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "CardHoverLiftPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "hover",
+        "lift",
+        "elevation",
+        "shadow"
+      ],
+      "intent": {
+        "summary": "Subtle vertical translate-y(-4px) lift with elevated shadow bloom on pointer hover.",
+        "idealFor": [
+          "Resource catalogue cards",
+          "Blog post grid items",
+          "Feature list rows"
+        ],
+        "avoidFor": [
+          "Inline text links",
+          "Fixed screen headers"
+        ],
+        "jobs": [
+          "Provide instant interactive elevation affordance on pointer hover"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_card_tilt",
+      "slug": "card-tilt",
+      "name": "Card Tilt",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "3D perspective tilt reacting to cursor position across card quadrants with subtle glare reflection.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "perspective"
+      ],
+      "roles": [
+        "tilt",
+        "perspective"
+      ],
+      "purposes": [
+        "3d-perspective-tilt",
+        "tactile-card",
+        "interactive-depth"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "card-tilt",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "CardTiltPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "tilt",
+        "3d",
+        "perspective",
+        "card"
+      ],
+      "intent": {
+        "summary": "3D perspective tilt reacting to cursor position across card quadrants with subtle glare reflection.",
+        "idealFor": [
+          "Featured portfolio showcases",
+          "Pro subscription cards",
+          "Collector badges"
+        ],
+        "avoidFor": [
+          "Dense 50-card grids causing motion fatigue",
+          "Modal alert titles"
+        ],
+        "jobs": [
+          "Tilt card smoothly in 3D perspective space according to cursor position"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_sec_case_study_spotlight",
       "slug": "case-study-spotlight",
       "name": "Case Study Spotlight",
@@ -12508,6 +14002,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_character_stagger_reveal",
+      "slug": "character-stagger-reveal",
+      "name": "Character Stagger Reveal",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Fine-grained character-by-character kinetic reveal for brand monograms, metrics, and hero phrases.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ],
+      "roles": [
+        "reveal",
+        "characters"
+      ],
+      "purposes": [
+        "kinetic-typography",
+        "brand-intro",
+        "fine-grained-animation"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "character-stagger-reveal",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "CharacterStaggerRevealPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "characters",
+        "kinetic",
+        "letters",
+        "reveal"
+      ],
+      "intent": {
+        "summary": "Fine-grained character-by-character kinetic reveal for brand monograms, metrics, and hero phrases.",
+        "idealFor": [
+          "Brand wordmarks",
+          "Hero metric numerals",
+          "Impact statements"
+        ],
+        "avoidFor": [
+          "Standard paragraphs",
+          "Form helper descriptions"
+        ],
+        "jobs": [
+          "Animate letters sequentially into place with hairline typographic precision"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -18101,6 +19844,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_mot_cursor_spotlight",
+      "slug": "cursor-spotlight",
+      "name": "Cursor Spotlight",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Radial luminance spotlight tracking mouse pointer across container surface, revealing border hairline luster.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "cursor"
+      ],
+      "roles": [
+        "spotlight",
+        "luster"
+      ],
+      "purposes": [
+        "surface-illumination",
+        "cursor-tracking",
+        "ambient-depth"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "cursor-spotlight",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "CursorSpotlightPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "spotlight",
+        "cursor",
+        "radial",
+        "illumination"
+      ],
+      "intent": {
+        "summary": "Radial luminance spotlight tracking mouse pointer across container surface, revealing border hairline luster.",
+        "idealFor": [
+          "Feature bento cards",
+          "Pricing plan cards",
+          "Hero banner surfaces"
+        ],
+        "avoidFor": [
+          "Mobile touchscreen-only layouts without pointer support",
+          "Raw text logs"
+        ],
+        "jobs": [
+          "Follow cursor coordinates with radial gradient glow highlighting card boundaries"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_sec_customer_metrics_strip",
       "slug": "customer-metrics-strip",
       "name": "Customer Metrics Strip",
@@ -21012,6 +23004,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_drawer_spring",
+      "slug": "drawer-spring",
+      "name": "Drawer Spring",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Off-canvas sliding overlay drawer with spring damping, backdrop blur, and escape key listener.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "drawer"
+      ],
+      "roles": [
+        "drawer",
+        "overlay"
+      ],
+      "purposes": [
+        "off-canvas-drawer",
+        "inspector-slideout",
+        "mobile-navigation"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "drawer-spring",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "DrawerSpringPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "drawer",
+        "spring",
+        "overlay",
+        "off-canvas"
+      ],
+      "intent": {
+        "summary": "Off-canvas sliding overlay drawer with spring damping, backdrop blur, and escape key listener.",
+        "idealFor": [
+          "Right-hand inspector sidebars",
+          "Mobile off-canvas navigation menus",
+          "Shopping cart slideouts"
+        ],
+        "avoidFor": [
+          "Standard persistent static sidebars",
+          "Inline search bars"
+        ],
+        "jobs": [
+          "Slide off-canvas drawer panels onto screen with spring damping physics"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -23931,6 +26172,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_fade_up_reveal",
+      "slug": "fade-up-reveal",
+      "name": "Fade-Up Reveal",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Smooth vertical translate-y and opacity entrance reveal with springy or linear settling physics.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ],
+      "roles": [
+        "reveal",
+        "entrance"
+      ],
+      "purposes": [
+        "page-load-entrance",
+        "card-reveal",
+        "scroll-triggered-entrance"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "fade-up-reveal",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "FadeUpRevealPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "fade-up",
+        "reveal",
+        "entrance",
+        "animation"
+      ],
+      "intent": {
+        "summary": "Smooth vertical translate-y and opacity entrance reveal with springy or linear settling physics.",
+        "idealFor": [
+          "Card grid stagger reveals",
+          "Hero section headline entry",
+          "Modal dialog entrance"
+        ],
+        "avoidFor": [
+          "Continuous spinning loops",
+          "Static data tables with no entry"
+        ],
+        "jobs": [
+          "Reveal content gracefully with vertical translation and opacity blend"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -32264,6 +34754,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_mot_horizontal_scroll_story",
+      "slug": "horizontal-scroll-story",
+      "name": "Horizontal Scroll Story",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Track-based horizontal pan card sequence with step indicators, scroll lock, and keyboard arrow navigation.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "scroll"
+      ],
+      "roles": [
+        "horizontal",
+        "story"
+      ],
+      "purposes": [
+        "card-carousel",
+        "timeline-panning",
+        "step-walkthrough"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "horizontal-scroll-story",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "HorizontalScrollStoryPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "horizontal",
+        "pan",
+        "carousel",
+        "scroll"
+      ],
+      "intent": {
+        "summary": "Track-based horizontal pan card sequence with step indicators, scroll lock, and keyboard arrow navigation.",
+        "idealFor": [
+          "Product milestone roadmaps",
+          "Feature carousel cards",
+          "Case study horizontal timelines"
+        ],
+        "avoidFor": [
+          "Standard vertical blog reading",
+          "Dense setting menus"
+        ],
+        "jobs": [
+          "Pan sequentially through horizontal milestone cards with snap points and arrows"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_sec_how_it_works_interactive",
       "slug": "how-it-works-interactive",
       "name": "How It Works Interactive",
@@ -36655,6 +39394,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_mot_kpi_delta_motion",
+      "slug": "kpi-delta-motion",
+      "name": "KPI Delta Motion",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Ticker tape number transition flipping upward or downward when metric value updates.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "numbers"
+      ],
+      "roles": [
+        "kpi",
+        "ticker"
+      ],
+      "purposes": [
+        "delta-transition",
+        "ticker-animation",
+        "real-time-flip"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "kpi-delta-motion",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "KpiDeltaMotionPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "kpi",
+        "ticker",
+        "delta",
+        "flip"
+      ],
+      "intent": {
+        "summary": "Ticker tape number transition flipping upward or downward when metric value updates.",
+        "idealFor": [
+          "Real-time stock price ticks",
+          "Throughput rate transitions",
+          "Active user updates"
+        ],
+        "avoidFor": [
+          "Static phone numbers",
+          "Year publication dates"
+        ],
+        "jobs": [
+          "Transition numerical values with directional upward or downward rolling ticker motion"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_link",
       "slug": "link",
       "name": "Link",
@@ -36890,6 +39878,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_loading_orbit",
+      "slug": "loading-orbit",
+      "name": "Loading Orbit",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Subtle orbital planetary ring loader indicating background task execution without visual stress.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "loading"
+      ],
+      "roles": [
+        "loading",
+        "spinner"
+      ],
+      "purposes": [
+        "background-processing",
+        "orbital-spinner",
+        "calm-loading"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "loading-orbit",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "LoadingOrbitPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "loading",
+        "orbit",
+        "spinner",
+        "planetary"
+      ],
+      "intent": {
+        "summary": "Subtle orbital planetary ring loader indicating background task execution without visual stress.",
+        "idealFor": [
+          "Background indexing operations",
+          "Async synthesis waiting",
+          "Calm loading spinners"
+        ],
+        "avoidFor": [
+          "Instantaneous UI clicks",
+          "Static progress bars"
+        ],
+        "jobs": [
+          "Indicate asynchronous background work via calm orbital rotation"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -37384,6 +40621,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_mot_magnetic_button",
+      "slug": "magnetic-button",
+      "name": "Magnetic Button",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Cursor-attracted interactive button pulling towards cursor coordinates within proximity threshold with spring return.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "cursor"
+      ],
+      "roles": [
+        "button",
+        "magnetic"
+      ],
+      "purposes": [
+        "tactile-cursor-pull",
+        "premium-interaction",
+        "hero-callout"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "magnetic-button",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "MagneticButtonPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "magnetic",
+        "cursor",
+        "spring",
+        "interactive"
+      ],
+      "intent": {
+        "summary": "Cursor-attracted interactive button pulling towards cursor coordinates within proximity threshold with spring return.",
+        "idealFor": [
+          "Primary hero CTA triggers",
+          "Play / Pause demo buttons",
+          "Featured download buttons"
+        ],
+        "avoidFor": [
+          "Standard repetitive table action rows",
+          "Form submit buttons inside tight fieldsets"
+        ],
+        "jobs": [
+          "Pull action button dynamically towards cursor proximity for delightful tactile magnetic feedback"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_shell_marketing_nav_cta",
       "slug": "marketing-nav-cta",
       "name": "Marketing Navigation with CTA",
@@ -37618,6 +41104,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_masked_text_reveal",
+      "slug": "masked-text-reveal",
+      "name": "Masked Text Reveal",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Editorial overflow-hidden text mask sliding upwards from an invisible baseline boundary.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ],
+      "roles": [
+        "reveal",
+        "editorial"
+      ],
+      "purposes": [
+        "headline-reveal",
+        "editorial-typography",
+        "premium-hero-transition"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "masked-text-reveal",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "MaskedTextRevealPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "masked-text",
+        "editorial",
+        "reveal",
+        "overflow"
+      ],
+      "intent": {
+        "summary": "Editorial overflow-hidden text mask sliding upwards from an invisible baseline boundary.",
+        "idealFor": [
+          "Editorial hero headlines",
+          "Launch announcement titles",
+          "Brand statement intros"
+        ],
+        "avoidFor": [
+          "Dense 100-row tabular data",
+          "Code editor body"
+        ],
+        "jobs": [
+          "Slide large typographic headlines out of an overflow clipping boundary"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -40790,6 +44525,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_mot_number_count_up",
+      "slug": "number-count-up",
+      "name": "Number Count Up",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Eased numeric counter animating from zero to target value on viewport entrance with monospace stability.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "numbers"
+      ],
+      "roles": [
+        "counter",
+        "numbers"
+      ],
+      "purposes": [
+        "numeric-count-up",
+        "metric-celebration",
+        "telemetry-load"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "number-count-up",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "NumberCountUpPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "count-up",
+        "numbers",
+        "metric",
+        "counter"
+      ],
+      "intent": {
+        "summary": "Eased numeric counter animating from zero to target value on viewport entrance with monospace stability.",
+        "idealFor": [
+          "Social proof metric counters",
+          "Customer tally stats",
+          "Benchmark speed metrics"
+        ],
+        "avoidFor": [
+          "Real-time clock seconds",
+          "Pagination page numbers"
+        ],
+        "jobs": [
+          "Animate integers from 0 to destination with smooth logarithmic easing"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_number_input",
       "slug": "number-input",
       "name": "Number Input",
@@ -42490,6 +46474,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_parallax_media",
+      "slug": "parallax-media",
+      "name": "Parallax Media",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Subtle multi-plane parallax depth container translating background and foreground elements at differential velocities.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "parallax"
+      ],
+      "roles": [
+        "parallax",
+        "media"
+      ],
+      "purposes": [
+        "depth-illusion",
+        "layered-media",
+        "hero-engagement"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "parallax-media",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ParallaxMediaPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "parallax",
+        "depth",
+        "planes",
+        "media"
+      ],
+      "intent": {
+        "summary": "Subtle multi-plane parallax depth container translating background and foreground elements at differential velocities.",
+        "idealFor": [
+          "Hero product preview shots",
+          "Hardware device mockups",
+          "Artful editorial cover photos"
+        ],
+        "avoidFor": [
+          "Functional spreadsheet tables",
+          "High-density terminal consoles"
+        ],
+        "jobs": [
+          "Produce subtle differential optical depth across layered background and foreground elements"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -50038,6 +54271,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_mot_scale_reveal",
+      "slug": "scale-reveal",
+      "name": "Scale Reveal",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Smooth scale-up entrance from 0.95 to 1.0 with subtle spring settling and opacity fade.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ],
+      "roles": [
+        "reveal",
+        "scale"
+      ],
+      "purposes": [
+        "dialog-entrance",
+        "card-settling",
+        "tactile-pop"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "scale-reveal",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ScaleRevealPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "scale",
+        "spring",
+        "reveal",
+        "pop"
+      ],
+      "intent": {
+        "summary": "Smooth scale-up entrance from 0.95 to 1.0 with subtle spring settling and opacity fade.",
+        "idealFor": [
+          "Modal dialogs",
+          "Tooltip popovers",
+          "Floating command palettes"
+        ],
+        "avoidFor": [
+          "Full document scroll pages",
+          "Horizontal carousels"
+        ],
+        "jobs": [
+          "Pop interactive surfaces into view with proportional scale settling"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_dat_scatter_plot",
       "slug": "scatter-plot",
       "name": "Scatter Plot",
@@ -50525,6 +55007,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_scroll_progress",
+      "slug": "scroll-progress",
+      "name": "Scroll Progress",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Header hairline progress track calculating document reading percentage and viewport completion.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "scroll"
+      ],
+      "roles": [
+        "progress",
+        "scroll"
+      ],
+      "purposes": [
+        "reading-progress",
+        "scroll-completion",
+        "viewport-tracking"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "scroll-progress",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ScrollProgressPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "scroll",
+        "progress",
+        "hairline",
+        "indicator"
+      ],
+      "intent": {
+        "summary": "Header hairline progress track calculating document reading percentage and viewport completion.",
+        "idealFor": [
+          "Long documentation pages",
+          "Editorial essays and case studies",
+          "Multi-step guided articles"
+        ],
+        "avoidFor": [
+          "Short modal dialogs",
+          "Fixed non-scrolling dashboards"
+        ],
+        "jobs": [
+          "Provide real-time visual progress indicator of reading and scroll completion"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -52709,6 +57440,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_mot_shared_element_transition",
+      "slug": "shared-element-transition",
+      "name": "Shared Element Transition",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Smooth morphing container transitioning an element smoothly between thumbnail and expanded modal view.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "transition"
+      ],
+      "roles": [
+        "transition",
+        "morph"
+      ],
+      "purposes": [
+        "seamless-expansion",
+        "thumbnail-to-detail",
+        "fluid-morph"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "shared-element-transition",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "SharedElementTransitionPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "shared-element",
+        "morph",
+        "transition",
+        "fluid"
+      ],
+      "intent": {
+        "summary": "Smooth morphing container transitioning an element smoothly between thumbnail and expanded modal view.",
+        "idealFor": [
+          "Gallery item expansion",
+          "Catalog card zoom-to-detail",
+          "Document inspector peek"
+        ],
+        "avoidFor": [
+          "Standard pagination tables",
+          "Plain hyperlinked anchors"
+        ],
+        "jobs": [
+          "Morph an item smoothly between inline thumbnail bounds and full dialog modal bounds"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_skeleton",
       "slug": "skeleton",
       "name": "Skeleton",
@@ -52943,6 +57923,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_slide_clip_reveal",
+      "slug": "slide-clip-reveal",
+      "name": "Slide Clip Reveal",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Horizontal or vertical clip-path swipe uncovering child content like a mechanical aperture.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ],
+      "roles": [
+        "reveal",
+        "clip"
+      ],
+      "purposes": [
+        "clip-path-wipe",
+        "before-after-reveal",
+        "aperture-entrance"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "slide-clip-reveal",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "SlideClipRevealPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "clip-path",
+        "wipe",
+        "reveal",
+        "aperture"
+      ],
+      "intent": {
+        "summary": "Horizontal or vertical clip-path swipe uncovering child content like a mechanical aperture.",
+        "idealFor": [
+          "Before-and-after image wipes",
+          "Brand unveilings",
+          "Feature comparison sliders"
+        ],
+        "avoidFor": [
+          "Standard form inputs",
+          "Small icon badges"
+        ],
+        "jobs": [
+          "Uncover surfaces smoothly with polygon clip-path geometry"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -54657,6 +59886,504 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_sticky_scroll_story",
+      "slug": "sticky-scroll-story",
+      "name": "Sticky Scroll Story",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Sticky viewport container pairing stationary preview graphic with scrolling narrative chapters.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "scroll"
+      ],
+      "roles": [
+        "story",
+        "scroll"
+      ],
+      "purposes": [
+        "product-walkthrough",
+        "narrative-demo",
+        "feature-storytelling"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "sticky-scroll-story",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "StickyScrollStoryPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "sticky",
+        "scroll",
+        "story",
+        "chapters"
+      ],
+      "intent": {
+        "summary": "Sticky viewport container pairing stationary preview graphic with scrolling narrative chapters.",
+        "idealFor": [
+          "Product capability stories",
+          "Onboarding walkthroughs",
+          "Interactive architecture tours"
+        ],
+        "avoidFor": [
+          "Dense spreadsheet editing",
+          "Command palettes"
+        ],
+        "jobs": [
+          "Pair scrolling narrative chapter copy with a pinned, reactive visual display"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_success_celebration",
+      "slug": "success-celebration",
+      "name": "Success Celebration",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Post-action success checkmark bloom with particle burst microinteraction.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "celebration"
+      ],
+      "roles": [
+        "celebration",
+        "success"
+      ],
+      "purposes": [
+        "task-completion",
+        "positive-feedback",
+        "celebration-bloom"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "success-celebration",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "SuccessCelebrationPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "success",
+        "celebration",
+        "checkmark",
+        "bloom"
+      ],
+      "intent": {
+        "summary": "Post-action success checkmark bloom with particle burst microinteraction.",
+        "idealFor": [
+          "Form submission confirmations",
+          "Deployment completed milestones",
+          "Payment success receipts"
+        ],
+        "avoidFor": [
+          "Standard informational badges",
+          "Warning toasts"
+        ],
+        "jobs": [
+          "Celebrate milestone completion with checkmark scaling bloom and particle bursts"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -60731,6 +66458,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_mot_word_stagger_reveal",
+      "slug": "word-stagger-reveal",
+      "name": "Word Stagger Reveal",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Headline word sequence staggering entrance with progressive delay per token for dramatic cadence.",
+      "resourceType": "motion",
+      "categories": [
+        "motion",
+        "microinteractions",
+        "reveals"
+      ],
+      "roles": [
+        "reveal",
+        "words"
+      ],
+      "purposes": [
+        "progressive-text-reveal",
+        "narrative-pacing",
+        "hero-presentation"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 90
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "word-stagger-reveal",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "WordStaggerRevealPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Animated Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Micro-subtle, linear easing, near-instant settling times for high-speed productivity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Springy overshoot physics, tactile scale lifts, dynamic bezier curves.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Razor-sharp hairline glow sweeps, crisp luminescence, cyber-luminescent particle trails.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "motion",
+        "stagger",
+        "words",
+        "typography",
+        "reveal"
+      ],
+      "intent": {
+        "summary": "Headline word sequence staggering entrance with progressive delay per token for dramatic cadence.",
+        "idealFor": [
+          "Product landing taglines",
+          "Mission statements",
+          "Presentation slide titles"
+        ],
+        "avoidFor": [
+          "Fast tabular logs",
+          "Paragraph legal text"
+        ],
+        "jobs": [
+          "Stagger sequential words into view with controlled perceptual cadence"
+        ],
+        "contentRequirements": [
+          "CSS transition and animation transforms, reduced-motion fallbacks"
+        ],
+        "notes": [
+          "Strictly zero heavy external physics engines, pure CSS/Web Animations API"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 90,
+        "playfulness": 35,
+        "luxury": 50,
+        "warmth": 30,
+        "technicality": 85,
+        "editorial": 60,
+        "futurism": 60,
+        "visualAmbition": 80,
+        "structuralCreativity": 55,
+        "density": 70,
+        "whitespace": 45,
+        "contrast": 85,
+        "colourfulness": 35,
+        "curvature": 35,
+        "depth": 40,
+        "motion": 50,
+        "motionPlayfulness": 30,
+        "typographicExpression": 50,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 85,
+        "asymmetry": 15,
+        "conversionIntensity": 40,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 85,
+        "motionIntensity": 45,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": true
+      },
+      "layoutDNA": {
+        "density": 70,
+        "whitespace": 40,
+        "asymmetry": 15,
+        "preferredWidths": [
+          "full"
+        ],
+        "layoutFamilies": [
+          "panel",
+          "surface",
+          "inline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 97,
+        "accessibility": 99,
+        "responsive": 96,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 96,
+        "visualCraft": 97,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"

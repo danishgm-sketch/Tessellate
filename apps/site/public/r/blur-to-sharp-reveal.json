@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blur-to-sharp-reveal",
+  "type": "registry:component",
+  "title": "Blur-to-Sharp Reveal",
+  "description": "Defocus-to-crisp entrance transitioning from filter blur(8px) into razor-sharp focus.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type BlurToSharpRevealVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface BlurToSharpRevealProps {\n  variant?: BlurToSharpRevealVariant;\n}\n\nexport function BlurToSharpReveal({ variant = 'quiet' }: BlurToSharpRevealProps) {\n  const [revealed, setRevealed] = useState(true);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  return (\n    <div className={`w-full p-8 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>\n      <div className=\"flex justify-between items-center pb-2 border-b border-neutral-100 dark:border-neutral-800\">\n        <span className=\"text-xs font-mono text-neutral-400\">Optical Blur-to-Sharp Focus</span>\n        <button\n          onClick={() => {\n            setRevealed(false);\n            setTimeout(() => setRevealed(true), 50);\n          }}\n          className=\"text-xs px-2.5 py-1 rounded border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-current\"\n        >\n          Replay\n        </button>\n      </div>\n\n      <div\n        className={`p-6 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 transition-all duration-700 motion-reduce:transition-none motion-reduce:filter-none ${\n          revealed ? 'opacity-100 filter-none' : 'opacity-0 blur-md'\n        }`}\n      >\n        <div className=\"text-sm font-semibold mb-1\">Razor-Sharp Artifact Output</div>\n        <p className=\"text-xs text-neutral-500 leading-relaxed\">\n          The blur-to-sharp transition provides a cinematic optical settling effect while gracefully degrading under reduced motion preferences.\n        </p>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { BlurToSharpReveal, BlurToSharpRevealVariant } from './index';\n\nexport function BlurToSharpRevealPreview() {\n  const [variant, setVariant] = useState<BlurToSharpRevealVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <BlurToSharpReveal variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "motion",
+    "microinteractions",
+    "reveals"
+  ],
+  "meta": {
+    "tessellateId": "res_mot_blur_to_sharp_reveal",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}
