@@ -1,0 +1,249 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "res_typo_masked_headline_reveal",
+  "slug": "masked-headline-reveal",
+  "name": "Masked Headline Reveal",
+  "version": "1.0.0",
+  "status": "verified",
+  "description": "Dramatic overflow-clipped typographic reveal where large display characters rise smoothly from an architectural baseline boundary.",
+  "resourceType": "typography",
+  "categories": [
+    "typography",
+    "display",
+    "reveal"
+  ],
+  "roles": [
+    "typography",
+    "masked-reveal"
+  ],
+  "purposes": [
+    "page-entry",
+    "dramatic-reveal",
+    "hero-headline"
+  ],
+  "productArchetypes": [
+    {
+      "tag": "b2b-saas",
+      "weight": 95
+    },
+    {
+      "tag": "developer-tool",
+      "weight": 90
+    },
+    {
+      "tag": "consumer-subscription",
+      "weight": 85
+    }
+  ],
+  "creator": {
+    "id": "tessellate_core",
+    "displayName": "Tessellate Core",
+    "handle": "tessellate",
+    "url": "https://tessellate.design"
+  },
+  "provenance": {
+    "origin": "tessellate",
+    "derivative": false,
+    "aiAssistance": "none"
+  },
+  "license": {
+    "spdx": "MIT",
+    "name": "MIT License",
+    "url": "https://opensource.org/licenses/MIT",
+    "redistributionVerified": true,
+    "attributionRequired": false
+  },
+  "framework": "react",
+  "language": "typescript",
+  "styling": "tailwind",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "preview.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "fixtures.ts",
+      "kind": "fixture",
+      "required": true
+    },
+    {
+      "path": "README.md",
+      "kind": "asset",
+      "required": true
+    }
+  ],
+  "registry": {
+    "name": "masked-headline-reveal",
+    "dependencies": [],
+    "devDependencies": [],
+    "registryDependencies": []
+  },
+  "preview": {
+    "component": "MaskedHeadlineRevealPreview",
+    "defaultProps": {},
+    "viewport": 1440
+  },
+  "slots": [
+    {
+      "id": "children",
+      "name": "Custom Text Content",
+      "type": "component",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "id": "quiet",
+      "name": "Quiet",
+      "description": "Muted architectural tone, restrained serif/sans balance, editorial serenity.",
+      "props": {
+        "variant": "quiet"
+      }
+    },
+    {
+      "id": "expressive",
+      "name": "Expressive",
+      "description": "Vibrant chromatic gradients, dynamic optical weight, energetic headline presence.",
+      "props": {
+        "variant": "expressive"
+      }
+    },
+    {
+      "id": "nocturne",
+      "name": "Nocturne",
+      "description": "Obsidian backdrop, crisp chalk-white display text, and high-contrast luminescence.",
+      "props": {
+        "variant": "nocturne"
+      }
+    }
+  ],
+  "tags": [
+    "typography",
+    "masked",
+    "reveal",
+    "clip-path",
+    "motion"
+  ],
+  "intent": {
+    "summary": "Dramatic overflow-clipped typographic reveal where large display characters rise smoothly from an architectural baseline boundary.",
+    "idealFor": [
+      "Flagship portfolio openers",
+      "Keynote headline introductions",
+      "Luxury architectural landing pages"
+    ],
+    "avoidFor": [
+      "Real-time streaming feeds",
+      "Compact dashboard tables"
+    ],
+    "jobs": [
+      "Produce a tactile, cinematic sense of discovery as section headlines glide into view"
+    ],
+    "contentRequirements": [
+      "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
+    ],
+    "notes": [
+      "Accessible for screen readers, respecting user font preferences and reduced motion"
+    ]
+  },
+  "visualDNA": {
+    "professionalism": 92,
+    "playfulness": 35,
+    "luxury": 60,
+    "warmth": 40,
+    "technicality": 80,
+    "editorial": 85,
+    "futurism": 60,
+    "visualAmbition": 75,
+    "structuralCreativity": 65,
+    "density": 60,
+    "whitespace": 65,
+    "contrast": 85,
+    "colourfulness": 40,
+    "curvature": 25,
+    "depth": 30,
+    "motion": 30,
+    "motionPlayfulness": 25,
+    "typographicExpression": 95,
+    "imageryIntensity": 0,
+    "videoIntensity": 0,
+    "threeDIntensity": 0,
+    "dataDensity": 40,
+    "interactionDensity": 50,
+    "asymmetry": 30,
+    "conversionIntensity": 55,
+    "trust": 95,
+    "accessibilityPriority": 98,
+    "performancePriority": 98,
+    "visualMode": "adaptive",
+    "geometryFamily": "rounded",
+    "primaryStack": "react-tailwind"
+  },
+  "interactionDNA": {
+    "interactionDensity": 45,
+    "motionIntensity": 25,
+    "keyboardComplexity": "low",
+    "hoverDependency": "none",
+    "directManipulation": false
+  },
+  "layoutDNA": {
+    "density": 60,
+    "whitespace": 60,
+    "asymmetry": 25,
+    "preferredWidths": [
+      "content",
+      "wide"
+    ],
+    "layoutFamilies": [
+      "editorial",
+      "headline"
+    ]
+  },
+  "responsive": {
+    "verifiedWidths": [
+      360,
+      768,
+      1440
+    ],
+    "defaultStrategy": "compress"
+  },
+  "accessibility": {
+    "levelTarget": "AA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true
+  },
+  "performance": {
+    "jsCost": "tiny",
+    "gpuCost": "low",
+    "mediaCost": "none",
+    "runtimeComplexity": "low",
+    "lazyRecommended": false,
+    "continuousAnimation": false
+  },
+  "complexity": "medium",
+  "customizability": "high",
+  "compatibility": {},
+  "relationships": [],
+  "quality": {
+    "overall": 98,
+    "accessibility": 99,
+    "responsive": 98,
+    "performance": 100,
+    "codeQuality": 98,
+    "composability": 97,
+    "visualCraft": 98,
+    "dependencyCleanliness": 100,
+    "documentation": 96
+  },
+  "createdAt": "2026-10-10T12:00:00.000Z",
+  "updatedAt": "2026-10-10T12:00:00.000Z"
+}

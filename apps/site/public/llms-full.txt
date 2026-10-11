@@ -77,7 +77,7 @@ Tools provided:
 - `get_design_dna`: Inspect Design DNA presets and vectors.
 - `list_design_directions`: Return visual reference directions (Editorial Precision, Kinetic Monolith, Atmospheric Depth).
 
-## Resources in Catalogue (296)
+## Resources in Catalogue (308)
 
 - [Accessibility Commitment Section](https://tessellate.design/r/accessibility-commitment-section): Formal WCAG 2.2 AA compliance manifesto with automated audit guarantees. (sections, marketing, technical-proof)
 - [Accordion](https://tessellate.design/r/accordion): Collapsible vertically stacked disclosure panels with rotating chevron animations. (primitives, layout)
@@ -158,6 +158,7 @@ Tools provided:
 - [Context Menu](https://tessellate.design/r/context-menu): Right-click action palette anchored directly to the user pointer coordinates. (primitives, overlays)
 - [Context Rail](https://tessellate.design/r/context-rail): Secondary right-hand vertical rail displaying active object inspector or contextual metadata. (shells, layout)
 - [Conversation List](https://tessellate.design/r/conversation-list): Channel and direct message thread list with unread counters and presence badges. (blocks, collaboration, channels)
+- [Counter Typography](https://tessellate.design/r/counter-typography): Massive architectural numeric display figures paired with stacked typographic unit descriptions and statistical delta markers. (typography, display, counter)
 - [CTA Community](https://tessellate.design/r/cta-community): Invitation banner to Discord / GitHub discussions with member counter badge. (sections, marketing, cta)
 - [CTA Demo Booking](https://tessellate.design/r/cta-demo-booking): Calendar booking card with time-slot picker preview and sales team call-to-action. (sections, marketing, cta)
 - [CTA Download](https://tessellate.design/r/cta-download): Multi-platform installer button group (macOS, Windows, Linux, CLI) with version pill. (sections, marketing, cta)
@@ -184,6 +185,7 @@ Tools provided:
 - [Dropdown Menu](https://tessellate.design/r/dropdown-menu): Floating contextual menu with item hover states, shortcut indicators, and dividers. (primitives, overlays, navigation)
 - [Dual-Rail Navigation](https://tessellate.design/r/dual-rail-nav): Two-tier navigation shell with primary app rail (48px) and contextual sub-navigation list (200px). (shells, navigation)
 - [Editor Workspace Shell](https://tessellate.design/r/editor-workspace-shell): Code and structured text editing shell with gutter line numbers, status bar, and tab bar. (shells, layout)
+- [Editorial Display Stack](https://tessellate.design/r/editorial-display-stack): Multi-tier typographic headline stack combining architectural kicker, high-impact serif headline, italic accent clause, and descriptive subdeck. (typography, display, editorial)
 - [Editorial Grain](https://tessellate.design/r/editorial-grain): Film-like noise texture overlay delivering physical paper and print tactility. (backgrounds, effects, grain)
 - [Editorial Hero](https://tessellate.design/r/editorial-hero): Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs. (sections, marketing, hero)
 - [Empty Workspace](https://tessellate.design/r/empty-workspace): Empty state placeholder card with welcoming illustration and primary create action. (blocks, onboarding, empty)
@@ -227,6 +229,7 @@ Tools provided:
 - [Geographic Map](https://tessellate.design/r/geographic-map): Stylized SVG regional map preview with density shading, marker pins, and territory summary metrics. (data, visualization, maps)
 - [Glass Refraction Panel](https://tessellate.design/r/glass-refraction-panel): Optical frosted acrylic card surface featuring backdrop refraction blur, hairline specular borders, and chromatic tint. (backgrounds, effects, glass)
 - [Global Search Results](https://tessellate.design/r/global-search-results): Search results panel with category groupings, score highlights, and keyboard shortcuts. (blocks, search, results)
+- [Gradient Accent Text](https://tessellate.design/r/gradient-accent-text): Precision CSS background-clip gradient highlights emphasizing key strategic nouns in a display headline. (typography, display, gradient)
 - [Grouped Data Table](https://tessellate.design/r/grouped-data-table): Table with hierarchical category headers grouping related entity records. (blocks, data, tables)
 - [Heatmap](https://tessellate.design/r/heatmap): 7x24 or day-by-week commit/activity grid with 5-level intensity gradient, month labels, and cell inspection tooltip. (data, visualization, charts)
 - [Horizontal Bar Chart](https://tessellate.design/r/horizontal-bar-chart): Ranking/leaderboard horizontal bar chart with left labels, percentage/count right labels, and animated width bars. (data, visualization, charts)
@@ -247,6 +250,7 @@ Tools provided:
 - [Interactive Demo Hero](https://tessellate.design/r/interactive-demo-hero): Hero with inline interactive tabbed preview allowing immediate hands-on feature exploration. (sections, marketing, hero)
 - [Interactive Globe](https://tessellate.design/r/interactive-globe): Orthographic projection vector wireframe globe with latitude/longitude meridians, active data nodes, and orbit pulse. (data, visualization, maps)
 - [Kanban Board](https://tessellate.design/r/kanban-board): Multi-column task board with status lanes (Todo, In Progress, Done) and draggable cards. (blocks, data, planning)
+- [Kinetic Word Swap](https://tessellate.design/r/kinetic-word-swap): Animated cyclical headline swapping rotating active verbs or adjectives in-place with vertical slide transitions and accessible announcements. (typography, display, kinetic)
 - [Kiosk Display Shell](https://tessellate.design/r/kiosk-display-shell): Digital signage kiosk shell with high contrast typography, touch safety, and timeout reset. (shells, layout)
 - [KPI Delta Card](https://tessellate.design/r/kpi-delta-card): Executive metric card with hero number, benchmark comparison badge, and micro trend sparkline. (data, visualization, kpi)
 - [KPI Delta Motion](https://tessellate.design/r/kpi-delta-motion): Ticker tape number transition flipping upward or downward when metric value updates. (motion, microinteractions, numbers)
@@ -256,6 +260,8 @@ Tools provided:
 - [Logo Cloud Minimal](https://tessellate.design/r/logo-cloud-minimal): Subtle monochrome client logo row with muted contrast and disciplined spacing. (sections, marketing, trust)
 - [Magnetic Button](https://tessellate.design/r/magnetic-button): Cursor-attracted interactive button pulling towards cursor coordinates within proximity threshold with spring return. (motion, microinteractions, cursor)
 - [Marketing Navigation with CTA](https://tessellate.design/r/marketing-nav-cta): High-conversion header with promotional badge, navigation links, and primary CTA trigger. (shells, navigation)
+- [Marquee Typography](https://tessellate.design/r/marquee-typography): Continuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion. (typography, display, marquee)
+- [Masked Headline Reveal](https://tessellate.design/r/masked-headline-reveal): Dramatic overflow-clipped typographic reveal where large display characters rise smoothly from an architectural baseline boundary. (typography, display, reveal)
 - [Masked Text Reveal](https://tessellate.design/r/masked-text-reveal): Editorial overflow-hidden text mask sliding upwards from an invisible baseline boundary. (motion, microinteractions, reveals)
 - [Mega Navigation](https://tessellate.design/r/mega-nav): Comprehensive multi-column dropdown header exposing broad product suite categories. (shells, navigation)
 - [Messaging Shell](https://tessellate.design/r/messaging-shell): Real-time conversation shell with channel sidebar, chat stream, and message composer. (shells, layout)
@@ -267,6 +273,7 @@ Tools provided:
 - [Minimal Top Navigation](https://tessellate.design/r/minimal-top-nav): Restrained horizontal header with brand mark, essential route links, and profile badge. (shells, navigation)
 - [Mobile Bottom Navigation](https://tessellate.design/r/mobile-bottom-nav): Fixed bottom thumb-friendly tab bar for mobile web apps with icon and label pairs. (shells, navigation, mobile)
 - [Mobile Drawer Navigation](https://tessellate.design/r/mobile-drawer-nav): Hamburger slide-out overlay drawer displaying full mobile navigation menu. (shells, navigation, mobile)
+- [Monospace Data Headline](https://tessellate.design/r/monospace-data-headline): Technical terminal display headline pairing monospace telemetry coordinates, system tags, and blinking prompt caret. (typography, display, monospace)
 - [Multi-select](https://tessellate.design/r/multi-select): Tag-based selection input allowing multiple choices with removable pills. (primitives, inputs)
 - [Multi-Series Line Chart](https://tessellate.design/r/multi-series-line-chart): Comparative line chart with multiple colored trendlines, toggleable series legends, and point markers. (data, visualization, charts)
 - [Network Graph](https://tessellate.design/r/network-graph): Node-link topology diagram with circular nodes, interconnecting SVG edge lines, hub highlights, and cluster grouping. (data, visualization, charts)
@@ -279,6 +286,7 @@ Tools provided:
 - [Onboarding Wizard](https://tessellate.design/r/onboarding-wizard): Multi-step guided setup wizard with progress bar and next/previous controls. (blocks, onboarding, wizard)
 - [Order Book Depth Chart](https://tessellate.design/r/order-book-depth-chart): Market depth cumulative bid/ask stepped area chart with green bid wall, red ask wall, and mid-market spread indicator. (data, visualization, finance)
 - [Organization Settings](https://tessellate.design/r/organization-settings): Tenant profile configuration covering workspace domain, branding, and billing email. (blocks, settings, organization)
+- [Outlined Display Text](https://tessellate.design/r/outlined-display-text): Architectural hollow stroked display typography providing dramatic spatial scale with light optical density. (typography, display, outline)
 - [Pagination](https://tessellate.design/r/pagination): Page traversal bar with previous/next triggers, page numbering, and ellipsis jumps. (primitives, navigation)
 - [Paper Texture](https://tessellate.design/r/paper-texture): Tactile editorial stationery texture with subtle cellulose fiber grain and organic tactile warmth. (backgrounds, effects, texture)
 - [Parallax Media](https://tessellate.design/r/parallax-media): Subtle multi-plane parallax depth container translating background and foreground elements at differential velocities. (motion, microinteractions, parallax)
@@ -337,6 +345,7 @@ Tools provided:
 - [Social Proof Hero](https://tessellate.design/r/social-proof-hero): Headline anchored by trust metrics, customer avatar stack, and star review rating strip. (sections, marketing, hero)
 - [Soft Mesh Gradient](https://tessellate.design/r/soft-mesh-gradient): Fluid multi-stop radial chromatic blend creating soft organic depth in hero sections. (backgrounds, effects, gradient)
 - [Split Button](https://tessellate.design/r/split-button): Dual-action trigger combining primary immediate intent with secondary dropdown alternatives. (primitives, inputs, actions)
+- [Split-Line Headline](https://tessellate.design/r/split-line-headline): Staggered multi-line headline where each line occupies an intentional asymmetrical indentation margin, establishing editorial rhythm. (typography, display, editorial)
 - [Split Product Hero](https://tessellate.design/r/split-product-hero): 50/50 split layout with narrative copy on left and live interactive widget on right. (sections, marketing, hero)
 - [Stacked Area Chart](https://tessellate.design/r/stacked-area-chart): Multi-layer cumulative volume area chart with layered SVG path fills, proportional stacking, and hover slice indicator. (data, visualization, charts)
 - [Stacked Bar Chart](https://tessellate.design/r/stacked-bar-chart): Segmented vertical bar chart showing category composition with segmented color blocks and segment breakdown on hover. (data, visualization, charts)
@@ -353,6 +362,7 @@ Tools provided:
 - [Testimonial Carousel](https://tessellate.design/r/testimonial-carousel): Paginated card slider with testimonial quotes, author details, and next/prev controls. (sections, marketing, trust)
 - [Testimonial Grid](https://tessellate.design/r/testimonial-grid): 3-column card grid of customer endorsements with rating stars and company tags. (sections, marketing, trust)
 - [Testimonial Quote](https://tessellate.design/r/testimonial-quote): Featured customer pull-quote with oversized quotation mark, portrait avatar, and bio. (sections, marketing, trust)
+- [Text Path Arc](https://tessellate.design/r/text-path-arc): Vector SVG curved arc typography using textPath for circular seal emblems, status stamps, and orbital ribbons. (typography, display, arc)
 - [Textarea](https://tessellate.design/r/textarea): Multi-line text input primitive with character counter, accessible label, and auto-expand support. (primitives, inputs)
 - [3D Orbital Field](https://tessellate.design/r/three-d-orbital-field): Elliptical planetary orbits rotating in perspective with satellite node coordinates and celestial depth. (backgrounds, effects, orbital)
 - [Three-Pane App Shell](https://tessellate.design/r/three-pane-app-shell): Pro desktop shell with navigation sidebar, primary workspace canvas, and right property inspector. (shells, layout)
@@ -367,7 +377,9 @@ Tools provided:
 - [Two-Pane Master Detail Shell](https://tessellate.design/r/two-pane-master-detail-shell): Split-view shell pairing searchable master entity list with comprehensive detail reader pane. (shells, layout)
 - [Upgrade Prompt](https://tessellate.design/r/upgrade-prompt): In-app upgrade callout card presenting locked feature benefits and upgrade trigger. (blocks, onboarding, upgrade)
 - [Usage Overview](https://tessellate.design/r/usage-overview): Quota progress bars tracking API calls, active seats, and cloud storage capacity. (blocks, settings, usage)
+- [Variable Weight Hover](https://tessellate.design/r/variable-weight-hover): Interactive typography that smoothly transitions optical font-weight and character spacing when hovered. (typography, display, interactive)
 - [Version History](https://tessellate.design/r/version-history): Changelog of document revisions with restore buttons, diff flags, and author details. (blocks, entities, history)
+- [Vertical Label System](https://tessellate.design/r/vertical-label-system): Rotated 90-degree typographic rails, category anchors, and section boundary labels establishing structural coordinates. (typography, display, vertical)
 - [Video Hero](https://tessellate.design/r/video-hero): Cinematic header with ambient video background placeholder, gradient veil, and play trigger. (sections, marketing, hero)
 - [Watchlist Panel](https://tessellate.design/r/watchlist-panel): Monitored entities or stocks table with streaming value fluctuations and alert bells. (blocks, dashboards, finance)
 - [Webhook Management](https://tessellate.design/r/webhook-management): Endpoint destination manager with event subscription triggers and delivery logs. (blocks, settings, webhooks)
@@ -3620,6 +3632,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Counter Typography (`counter-typography`)
+- **Type**: typography
+- **Categories**: typography, display, counter
+- **Description**: Massive architectural numeric display figures paired with stacked typographic unit descriptions and statistical delta markers.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/counter-typography.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 35
+  - luxury: 60
+  - warmth: 40
+  - technicality: 80
+  - editorial: 85
+  - futurism: 60
+  - visualAmbition: 75
+  - structuralCreativity: 65
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 40
+  - curvature: 25
+  - depth: 30
+  - motion: 30
+  - motionPlayfulness: 25
+  - typographicExpression: 95
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 40
+  - interactionDensity: 50
+  - asymmetry: 30
+  - conversionIntensity: 55
+  - trust: 95
+  - accessibilityPriority: 98
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### CTA Community (`cta-community`)
 - **Type**: section
 - **Categories**: sections, marketing, cta
@@ -4682,6 +4735,47 @@ Tools provided:
   - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Editorial Display Stack (`editorial-display-stack`)
+- **Type**: typography
+- **Categories**: typography, display, editorial
+- **Description**: Multi-tier typographic headline stack combining architectural kicker, high-impact serif headline, italic accent clause, and descriptive subdeck.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/editorial-display-stack.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 35
+  - luxury: 60
+  - warmth: 40
+  - technicality: 80
+  - editorial: 85
+  - futurism: 60
+  - visualAmbition: 75
+  - structuralCreativity: 65
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 40
+  - curvature: 25
+  - depth: 30
+  - motion: 30
+  - motionPlayfulness: 25
+  - typographicExpression: 95
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 40
+  - interactionDensity: 50
+  - asymmetry: 30
+  - conversionIntensity: 55
+  - trust: 95
+  - accessibilityPriority: 98
+  - performancePriority: 98
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind
@@ -6449,6 +6543,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Gradient Accent Text (`gradient-accent-text`)
+- **Type**: typography
+- **Categories**: typography, display, gradient
+- **Description**: Precision CSS background-clip gradient highlights emphasizing key strategic nouns in a display headline.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/gradient-accent-text.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 35
+  - luxury: 60
+  - warmth: 40
+  - technicality: 80
+  - editorial: 85
+  - futurism: 60
+  - visualAmbition: 75
+  - structuralCreativity: 65
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 40
+  - curvature: 25
+  - depth: 30
+  - motion: 30
+  - motionPlayfulness: 25
+  - typographicExpression: 95
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 40
+  - interactionDensity: 50
+  - asymmetry: 30
+  - conversionIntensity: 55
+  - trust: 95
+  - accessibilityPriority: 98
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Grouped Data Table (`grouped-data-table`)
 - **Type**: block
 - **Categories**: blocks, data, tables
@@ -7269,6 +7404,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Kinetic Word Swap (`kinetic-word-swap`)
+- **Type**: typography
+- **Categories**: typography, display, kinetic
+- **Description**: Animated cyclical headline swapping rotating active verbs or adjectives in-place with vertical slide transitions and accessible announcements.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/kinetic-word-swap.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 35
+  - luxury: 60
+  - warmth: 40
+  - technicality: 80
+  - editorial: 85
+  - futurism: 60
+  - visualAmbition: 75
+  - structuralCreativity: 65
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 40
+  - curvature: 25
+  - depth: 30
+  - motion: 30
+  - motionPlayfulness: 25
+  - typographicExpression: 95
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 40
+  - interactionDensity: 50
+  - asymmetry: 30
+  - conversionIntensity: 55
+  - trust: 95
+  - accessibilityPriority: 98
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Kiosk Display Shell (`kiosk-display-shell`)
 - **Type**: block
 - **Categories**: shells, layout
@@ -7634,6 +7810,88 @@ Tools provided:
   - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Marquee Typography (`marquee-typography`)
+- **Type**: typography
+- **Categories**: typography, display, marquee
+- **Description**: Continuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/marquee-typography.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 35
+  - luxury: 60
+  - warmth: 40
+  - technicality: 80
+  - editorial: 85
+  - futurism: 60
+  - visualAmbition: 75
+  - structuralCreativity: 65
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 40
+  - curvature: 25
+  - depth: 30
+  - motion: 30
+  - motionPlayfulness: 25
+  - typographicExpression: 95
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 40
+  - interactionDensity: 50
+  - asymmetry: 30
+  - conversionIntensity: 55
+  - trust: 95
+  - accessibilityPriority: 98
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Masked Headline Reveal (`masked-headline-reveal`)
+- **Type**: typography
+- **Categories**: typography, display, reveal
+- **Description**: Dramatic overflow-clipped typographic reveal where large display characters rise smoothly from an architectural baseline boundary.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/masked-headline-reveal.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 35
+  - luxury: 60
+  - warmth: 40
+  - technicality: 80
+  - editorial: 85
+  - futurism: 60
+  - visualAmbition: 75
+  - structuralCreativity: 65
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 40
+  - curvature: 25
+  - depth: 30
+  - motion: 30
+  - motionPlayfulness: 25
+  - typographicExpression: 95
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 40
+  - interactionDensity: 50
+  - asymmetry: 30
+  - conversionIntensity: 55
+  - trust: 95
+  - accessibilityPriority: 98
+  - performancePriority: 98
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind
@@ -8085,6 +8343,47 @@ Tools provided:
   - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Monospace Data Headline (`monospace-data-headline`)
+- **Type**: typography
+- **Categories**: typography, display, monospace
+- **Description**: Technical terminal display headline pairing monospace telemetry coordinates, system tags, and blinking prompt caret.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/monospace-data-headline.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 35
+  - luxury: 60
+  - warmth: 40
+  - technicality: 80
+  - editorial: 85
+  - futurism: 60
+  - visualAmbition: 75
+  - structuralCreativity: 65
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 40
+  - curvature: 25
+  - depth: 30
+  - motion: 30
+  - motionPlayfulness: 25
+  - typographicExpression: 95
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 40
+  - interactionDensity: 50
+  - asymmetry: 30
+  - conversionIntensity: 55
+  - trust: 95
+  - accessibilityPriority: 98
+  - performancePriority: 98
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind
@@ -8577,6 +8876,47 @@ Tools provided:
   - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Outlined Display Text (`outlined-display-text`)
+- **Type**: typography
+- **Categories**: typography, display, outline
+- **Description**: Architectural hollow stroked display typography providing dramatic spatial scale with light optical density.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/outlined-display-text.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 35
+  - luxury: 60
+  - warmth: 40
+  - technicality: 80
+  - editorial: 85
+  - futurism: 60
+  - visualAmbition: 75
+  - structuralCreativity: 65
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 40
+  - curvature: 25
+  - depth: 30
+  - motion: 30
+  - motionPlayfulness: 25
+  - typographicExpression: 95
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 40
+  - interactionDensity: 50
+  - asymmetry: 30
+  - conversionIntensity: 55
+  - trust: 95
+  - accessibilityPriority: 98
+  - performancePriority: 98
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind
@@ -10959,6 +11299,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Split-Line Headline (`split-line-headline`)
+- **Type**: typography
+- **Categories**: typography, display, editorial
+- **Description**: Staggered multi-line headline where each line occupies an intentional asymmetrical indentation margin, establishing editorial rhythm.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/split-line-headline.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 35
+  - luxury: 60
+  - warmth: 40
+  - technicality: 80
+  - editorial: 85
+  - futurism: 60
+  - visualAmbition: 75
+  - structuralCreativity: 65
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 40
+  - curvature: 25
+  - depth: 30
+  - motion: 30
+  - motionPlayfulness: 25
+  - typographicExpression: 95
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 40
+  - interactionDensity: 50
+  - asymmetry: 30
+  - conversionIntensity: 55
+  - trust: 95
+  - accessibilityPriority: 98
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Split Product Hero (`split-product-hero`)
 - **Type**: section
 - **Categories**: sections, marketing, hero
@@ -11615,6 +11996,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Text Path Arc (`text-path-arc`)
+- **Type**: typography
+- **Categories**: typography, display, arc
+- **Description**: Vector SVG curved arc typography using textPath for circular seal emblems, status stamps, and orbital ribbons.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/text-path-arc.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 35
+  - luxury: 60
+  - warmth: 40
+  - technicality: 80
+  - editorial: 85
+  - futurism: 60
+  - visualAmbition: 75
+  - structuralCreativity: 65
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 40
+  - curvature: 25
+  - depth: 30
+  - motion: 30
+  - motionPlayfulness: 25
+  - typographicExpression: 95
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 40
+  - interactionDensity: 50
+  - asymmetry: 30
+  - conversionIntensity: 55
+  - trust: 95
+  - accessibilityPriority: 98
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Textarea (`textarea`)
 - **Type**: primitive
 - **Categories**: primitives, inputs
@@ -12189,6 +12611,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Variable Weight Hover (`variable-weight-hover`)
+- **Type**: typography
+- **Categories**: typography, display, interactive
+- **Description**: Interactive typography that smoothly transitions optical font-weight and character spacing when hovered.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/variable-weight-hover.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 35
+  - luxury: 60
+  - warmth: 40
+  - technicality: 80
+  - editorial: 85
+  - futurism: 60
+  - visualAmbition: 75
+  - structuralCreativity: 65
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 40
+  - curvature: 25
+  - depth: 30
+  - motion: 30
+  - motionPlayfulness: 25
+  - typographicExpression: 95
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 40
+  - interactionDensity: 50
+  - asymmetry: 30
+  - conversionIntensity: 55
+  - trust: 95
+  - accessibilityPriority: 98
+  - performancePriority: 98
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Version History (`version-history`)
 - **Type**: block
 - **Categories**: blocks, entities, history
@@ -12226,6 +12689,47 @@ Tools provided:
   - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Vertical Label System (`vertical-label-system`)
+- **Type**: typography
+- **Categories**: typography, display, vertical
+- **Description**: Rotated 90-degree typographic rails, category anchors, and section boundary labels establishing structural coordinates.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/vertical-label-system.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 35
+  - luxury: 60
+  - warmth: 40
+  - technicality: 80
+  - editorial: 85
+  - futurism: 60
+  - visualAmbition: 75
+  - structuralCreativity: 65
+  - density: 60
+  - whitespace: 65
+  - contrast: 85
+  - colourfulness: 40
+  - curvature: 25
+  - depth: 30
+  - motion: 30
+  - motionPlayfulness: 25
+  - typographicExpression: 95
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 40
+  - interactionDensity: 50
+  - asymmetry: 30
+  - conversionIntensity: 55
+  - trust: 95
+  - accessibilityPriority: 98
+  - performancePriority: 98
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind

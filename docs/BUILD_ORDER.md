@@ -486,7 +486,7 @@ Produce/curate in this order:
 - [x] 20 AI interaction patterns.
 - [x] 24 motion/microinteraction resources.
 - [x] 20 backgrounds/effects.
-- [ ] 12 typography effects.
+- [x] 12 typography effects.
 - [ ] 16 state patterns.
 
 For every canonical resource:

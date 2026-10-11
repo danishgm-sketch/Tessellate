@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-10-11T00:27:23.152Z",
-  "count": 296,
+  "generatedAt": "2026-10-11T00:30:40.987Z",
+  "count": 308,
   "resources": [
     {
       "schemaVersion": "1.0.0",
@@ -19372,6 +19372,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_typo_counter_typography",
+      "slug": "counter-typography",
+      "name": "Counter Typography",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Massive architectural numeric display figures paired with stacked typographic unit descriptions and statistical delta markers.",
+      "resourceType": "typography",
+      "categories": [
+        "typography",
+        "display",
+        "counter"
+      ],
+      "roles": [
+        "typography",
+        "counter-display"
+      ],
+      "purposes": [
+        "numeric-hero",
+        "metric-headline",
+        "social-proof"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "counter-typography",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "CounterTypographyPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom Text Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained serif/sans balance, editorial serenity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant chromatic gradients, dynamic optical weight, energetic headline presence.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian backdrop, crisp chalk-white display text, and high-contrast luminescence.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "typography",
+        "counter",
+        "numbers",
+        "metrics",
+        "stats"
+      ],
+      "intent": {
+        "summary": "Massive architectural numeric display figures paired with stacked typographic unit descriptions and statistical delta markers.",
+        "idealFor": [
+          "Product milestone sections",
+          "Annual revenue report highlights",
+          "Infrastructure throughput metrics"
+        ],
+        "avoidFor": [
+          "Prose article intros",
+          "Compact mobile menu headers"
+        ],
+        "jobs": [
+          "Turn numerical evidence into monumental architectural typographic statements"
+        ],
+        "contentRequirements": [
+          "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting user font preferences and reduced motion"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 35,
+        "luxury": 60,
+        "warmth": 40,
+        "technicality": 80,
+        "editorial": 85,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 65,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 40,
+        "curvature": 25,
+        "depth": 30,
+        "motion": 30,
+        "motionPlayfulness": 25,
+        "typographicExpression": 95,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 40,
+        "interactionDensity": 50,
+        "asymmetry": 30,
+        "conversionIntensity": 55,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 45,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 25,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "editorial",
+          "headline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_sec_cta_community",
       "slug": "cta-community",
       "name": "CTA Community",
@@ -25710,6 +25959,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_typo_editorial_display_stack",
+      "slug": "editorial-display-stack",
+      "name": "Editorial Display Stack",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Multi-tier typographic headline stack combining architectural kicker, high-impact serif headline, italic accent clause, and descriptive subdeck.",
+      "resourceType": "typography",
+      "categories": [
+        "typography",
+        "display",
+        "editorial"
+      ],
+      "roles": [
+        "typography",
+        "headline-stack"
+      ],
+      "purposes": [
+        "hero-headline",
+        "editorial-hierarchy",
+        "landing-lead"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "editorial-display-stack",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "EditorialDisplayStackPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom Text Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained serif/sans balance, editorial serenity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant chromatic gradients, dynamic optical weight, energetic headline presence.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian backdrop, crisp chalk-white display text, and high-contrast luminescence.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "typography",
+        "editorial",
+        "headline",
+        "serif",
+        "kicker"
+      ],
+      "intent": {
+        "summary": "Multi-tier typographic headline stack combining architectural kicker, high-impact serif headline, italic accent clause, and descriptive subdeck.",
+        "idealFor": [
+          "Publishing longforms",
+          "High-craft product launches",
+          "Thought leadership manifestos"
+        ],
+        "avoidFor": [
+          "Dense tabular settings",
+          "Compact mobile tooltips"
+        ],
+        "jobs": [
+          "Establish immediate intellectual authority and typographic craft at the top of an article or product page"
+        ],
+        "contentRequirements": [
+          "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting user font preferences and reduced motion"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 35,
+        "luxury": 60,
+        "warmth": 40,
+        "technicality": 80,
+        "editorial": 85,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 65,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 40,
+        "curvature": 25,
+        "depth": 30,
+        "motion": 30,
+        "motionPlayfulness": 25,
+        "typographicExpression": 95,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 40,
+        "interactionDensity": 50,
+        "asymmetry": 30,
+        "conversionIntensity": 55,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 45,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 25,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "editorial",
+          "headline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -36244,6 +36742,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_typo_gradient_accent_text",
+      "slug": "gradient-accent-text",
+      "name": "Gradient Accent Text",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Precision CSS background-clip gradient highlights emphasizing key strategic nouns in a display headline.",
+      "resourceType": "typography",
+      "categories": [
+        "typography",
+        "display",
+        "gradient"
+      ],
+      "roles": [
+        "typography",
+        "gradient-text"
+      ],
+      "purposes": [
+        "visual-punch",
+        "strategic-emphasis",
+        "hero-headline"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "gradient-accent-text",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "GradientAccentTextPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom Text Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained serif/sans balance, editorial serenity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant chromatic gradients, dynamic optical weight, energetic headline presence.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian backdrop, crisp chalk-white display text, and high-contrast luminescence.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "typography",
+        "gradient",
+        "accent",
+        "background-clip",
+        "emphasis"
+      ],
+      "intent": {
+        "summary": "Precision CSS background-clip gradient highlights emphasizing key strategic nouns in a display headline.",
+        "idealFor": [
+          "Consumer tech landing pages",
+          "SaaS product benefit headlines",
+          "Feature announcement cards"
+        ],
+        "avoidFor": [
+          "Standard unformatted blog body text",
+          "Dense financial disclaimers"
+        ],
+        "jobs": [
+          "Draw the reader eye immediately to the high-value commercial keyword in a sentence"
+        ],
+        "contentRequirements": [
+          "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting user font preferences and reduced motion"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 35,
+        "luxury": 60,
+        "warmth": 40,
+        "technicality": 80,
+        "editorial": 85,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 65,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 40,
+        "curvature": 25,
+        "depth": 30,
+        "motion": 30,
+        "motionPlayfulness": 25,
+        "typographicExpression": 95,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 40,
+        "interactionDensity": 50,
+        "asymmetry": 30,
+        "conversionIntensity": 55,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 45,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 25,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "editorial",
+          "headline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_blk_grouped_data_table",
       "slug": "grouped-data-table",
       "name": "Grouped Data Table",
@@ -41137,6 +41884,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_typo_kinetic_word_swap",
+      "slug": "kinetic-word-swap",
+      "name": "Kinetic Word Swap",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Animated cyclical headline swapping rotating active verbs or adjectives in-place with vertical slide transitions and accessible announcements.",
+      "resourceType": "typography",
+      "categories": [
+        "typography",
+        "display",
+        "kinetic"
+      ],
+      "roles": [
+        "typography",
+        "rotating-headline"
+      ],
+      "purposes": [
+        "feature-rotation",
+        "dynamic-pitch",
+        "hero-headline"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "kinetic-word-swap",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "KineticWordSwapPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom Text Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained serif/sans balance, editorial serenity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant chromatic gradients, dynamic optical weight, energetic headline presence.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian backdrop, crisp chalk-white display text, and high-contrast luminescence.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "typography",
+        "kinetic",
+        "word-swap",
+        "rotating",
+        "animation"
+      ],
+      "intent": {
+        "summary": "Animated cyclical headline swapping rotating active verbs or adjectives in-place with vertical slide transitions and accessible announcements.",
+        "idealFor": [
+          "Multifaceted product value propositions",
+          "Developer tools with multiple integrations",
+          "Homepage hero headers"
+        ],
+        "avoidFor": [
+          "Static PDF export formats",
+          "Dense documentation bodies"
+        ],
+        "jobs": [
+          "Communicate multiple value propositions in a single hero sentence without increasing layout footprint"
+        ],
+        "contentRequirements": [
+          "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting user font preferences and reduced motion"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 35,
+        "luxury": 60,
+        "warmth": 40,
+        "technicality": 80,
+        "editorial": 85,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 65,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 40,
+        "curvature": 25,
+        "depth": 30,
+        "motion": 30,
+        "motionPlayfulness": 25,
+        "typographicExpression": 95,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 40,
+        "interactionDensity": 50,
+        "asymmetry": 30,
+        "conversionIntensity": 55,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 45,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 25,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "editorial",
+          "headline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_shell_kiosk_display_shell",
       "slug": "kiosk-display-shell",
       "name": "Kiosk Display Shell",
@@ -43336,6 +44332,504 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_typo_marquee_typography",
+      "slug": "marquee-typography",
+      "name": "Marquee Typography",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Continuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.",
+      "resourceType": "typography",
+      "categories": [
+        "typography",
+        "display",
+        "marquee"
+      ],
+      "roles": [
+        "typography",
+        "marquee"
+      ],
+      "purposes": [
+        "brand-slogan",
+        "social-proof-ticker",
+        "event-banner"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "marquee-typography",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "MarqueeTypographyPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom Text Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained serif/sans balance, editorial serenity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant chromatic gradients, dynamic optical weight, energetic headline presence.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian backdrop, crisp chalk-white display text, and high-contrast luminescence.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "typography",
+        "marquee",
+        "ticker",
+        "continuous",
+        "scroll"
+      ],
+      "intent": {
+        "summary": "Continuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.",
+        "idealFor": [
+          "Partner logo and quote banners",
+          "Product feature ticker bars",
+          "Conference site headers"
+        ],
+        "avoidFor": [
+          "Critical safety warnings",
+          "Lengthy legal disclosures"
+        ],
+        "jobs": [
+          "Generate continuous kinetic forward momentum across wide viewport sections"
+        ],
+        "contentRequirements": [
+          "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting user font preferences and reduced motion"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 35,
+        "luxury": 60,
+        "warmth": 40,
+        "technicality": 80,
+        "editorial": 85,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 65,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 40,
+        "curvature": 25,
+        "depth": 30,
+        "motion": 30,
+        "motionPlayfulness": 25,
+        "typographicExpression": 95,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 40,
+        "interactionDensity": 50,
+        "asymmetry": 30,
+        "conversionIntensity": 55,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 45,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 25,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "editorial",
+          "headline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_typo_masked_headline_reveal",
+      "slug": "masked-headline-reveal",
+      "name": "Masked Headline Reveal",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Dramatic overflow-clipped typographic reveal where large display characters rise smoothly from an architectural baseline boundary.",
+      "resourceType": "typography",
+      "categories": [
+        "typography",
+        "display",
+        "reveal"
+      ],
+      "roles": [
+        "typography",
+        "masked-reveal"
+      ],
+      "purposes": [
+        "page-entry",
+        "dramatic-reveal",
+        "hero-headline"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "masked-headline-reveal",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "MaskedHeadlineRevealPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom Text Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained serif/sans balance, editorial serenity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant chromatic gradients, dynamic optical weight, energetic headline presence.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian backdrop, crisp chalk-white display text, and high-contrast luminescence.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "typography",
+        "masked",
+        "reveal",
+        "clip-path",
+        "motion"
+      ],
+      "intent": {
+        "summary": "Dramatic overflow-clipped typographic reveal where large display characters rise smoothly from an architectural baseline boundary.",
+        "idealFor": [
+          "Flagship portfolio openers",
+          "Keynote headline introductions",
+          "Luxury architectural landing pages"
+        ],
+        "avoidFor": [
+          "Real-time streaming feeds",
+          "Compact dashboard tables"
+        ],
+        "jobs": [
+          "Produce a tactile, cinematic sense of discovery as section headlines glide into view"
+        ],
+        "contentRequirements": [
+          "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting user font preferences and reduced motion"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 35,
+        "luxury": 60,
+        "warmth": 40,
+        "technicality": 80,
+        "editorial": 85,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 65,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 40,
+        "curvature": 25,
+        "depth": 30,
+        "motion": 30,
+        "motionPlayfulness": 25,
+        "typographicExpression": 95,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 40,
+        "interactionDensity": 50,
+        "asymmetry": 30,
+        "conversionIntensity": 55,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 45,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 25,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "editorial",
+          "headline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -46015,6 +47509,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_typo_monospace_data_headline",
+      "slug": "monospace-data-headline",
+      "name": "Monospace Data Headline",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Technical terminal display headline pairing monospace telemetry coordinates, system tags, and blinking prompt caret.",
+      "resourceType": "typography",
+      "categories": [
+        "typography",
+        "display",
+        "monospace"
+      ],
+      "roles": [
+        "typography",
+        "monospace-headline"
+      ],
+      "purposes": [
+        "telemetry-header",
+        "developer-hero",
+        "terminal-prompt"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "monospace-data-headline",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "MonospaceDataHeadlinePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom Text Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained serif/sans balance, editorial serenity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant chromatic gradients, dynamic optical weight, energetic headline presence.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian backdrop, crisp chalk-white display text, and high-contrast luminescence.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "typography",
+        "monospace",
+        "terminal",
+        "developer",
+        "telemetry"
+      ],
+      "intent": {
+        "summary": "Technical terminal display headline pairing monospace telemetry coordinates, system tags, and blinking prompt caret.",
+        "idealFor": [
+          "Developer tool homepages",
+          "CLI documentation hero sections",
+          "Cybersecurity dashboards"
+        ],
+        "avoidFor": [
+          "Floral wedding stationery",
+          "Casual lifestyle blogs"
+        ],
+        "jobs": [
+          "Communicate engineering rigor and machine-level precision in primary headings"
+        ],
+        "contentRequirements": [
+          "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting user font preferences and reduced motion"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 35,
+        "luxury": 60,
+        "warmth": 40,
+        "technicality": 80,
+        "editorial": 85,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 65,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 40,
+        "curvature": 25,
+        "depth": 30,
+        "motion": 30,
+        "motionPlayfulness": 25,
+        "typographicExpression": 95,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 40,
+        "interactionDensity": 50,
+        "asymmetry": 30,
+        "conversionIntensity": 55,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 45,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 25,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "editorial",
+          "headline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -48962,6 +50705,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_typo_outlined_display_text",
+      "slug": "outlined-display-text",
+      "name": "Outlined Display Text",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Architectural hollow stroked display typography providing dramatic spatial scale with light optical density.",
+      "resourceType": "typography",
+      "categories": [
+        "typography",
+        "display",
+        "outline"
+      ],
+      "roles": [
+        "typography",
+        "outline-display"
+      ],
+      "purposes": [
+        "spatial-scale",
+        "monumental-headline",
+        "editorial-watermark"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "outlined-display-text",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "OutlinedDisplayTextPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom Text Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained serif/sans balance, editorial serenity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant chromatic gradients, dynamic optical weight, energetic headline presence.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian backdrop, crisp chalk-white display text, and high-contrast luminescence.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "typography",
+        "outline",
+        "stroke",
+        "architectural",
+        "display"
+      ],
+      "intent": {
+        "summary": "Architectural hollow stroked display typography providing dramatic spatial scale with light optical density.",
+        "idealFor": [
+          "Agency hero backdrops",
+          "Number watermarks in feature grids",
+          "High-fashion editorial headings"
+        ],
+        "avoidFor": [
+          "Small paragraph text",
+          "Dense data tables"
+        ],
+        "jobs": [
+          "Provide massive monumental typographic scale without occluding underlying background graphics"
+        ],
+        "contentRequirements": [
+          "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting user font preferences and reduced motion"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 35,
+        "luxury": 60,
+        "warmth": 40,
+        "technicality": 80,
+        "editorial": 85,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 65,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 40,
+        "curvature": 25,
+        "depth": 30,
+        "motion": 30,
+        "motionPlayfulness": 25,
+        "typographicExpression": 95,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 40,
+        "interactionDensity": 50,
+        "asymmetry": 30,
+        "conversionIntensity": 55,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 45,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 25,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "editorial",
+          "headline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
@@ -63123,6 +65115,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_typo_split_line_headline",
+      "slug": "split-line-headline",
+      "name": "Split-Line Headline",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Staggered multi-line headline where each line occupies an intentional asymmetrical indentation margin, establishing editorial rhythm.",
+      "resourceType": "typography",
+      "categories": [
+        "typography",
+        "display",
+        "editorial"
+      ],
+      "roles": [
+        "typography",
+        "split-headline"
+      ],
+      "purposes": [
+        "editorial-rhythm",
+        "asymmetrical-layout",
+        "hero-headline"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "split-line-headline",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "SplitLineHeadlinePreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom Text Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained serif/sans balance, editorial serenity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant chromatic gradients, dynamic optical weight, energetic headline presence.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian backdrop, crisp chalk-white display text, and high-contrast luminescence.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "typography",
+        "split-line",
+        "asymmetrical",
+        "editorial",
+        "rhythm"
+      ],
+      "intent": {
+        "summary": "Staggered multi-line headline where each line occupies an intentional asymmetrical indentation margin, establishing editorial rhythm.",
+        "idealFor": [
+          "Magazine feature openers",
+          "Creative studio homepages",
+          "Architectural firm case studies"
+        ],
+        "avoidFor": [
+          "Centered compact alert modals",
+          "Mobile forms"
+        ],
+        "jobs": [
+          "Break visual monotony with editorial pacing and architectural margin alignment"
+        ],
+        "contentRequirements": [
+          "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting user font preferences and reduced motion"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 35,
+        "luxury": 60,
+        "warmth": 40,
+        "technicality": 80,
+        "editorial": 85,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 65,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 40,
+        "curvature": 25,
+        "depth": 30,
+        "motion": 30,
+        "motionPlayfulness": 25,
+        "typographicExpression": 95,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 40,
+        "interactionDensity": 50,
+        "asymmetry": 30,
+        "conversionIntensity": 55,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 45,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 25,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "editorial",
+          "headline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_sec_split_product_hero",
       "slug": "split-product-hero",
       "name": "Split Product Hero",
@@ -67035,6 +69276,256 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_typo_text_path_arc",
+      "slug": "text-path-arc",
+      "name": "Text Path Arc",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Vector SVG curved arc typography using textPath for circular seal emblems, status stamps, and orbital ribbons.",
+      "resourceType": "typography",
+      "categories": [
+        "typography",
+        "display",
+        "arc"
+      ],
+      "roles": [
+        "typography",
+        "curved-text"
+      ],
+      "purposes": [
+        "circular-badge",
+        "seal-emblem",
+        "hero-stamp"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "text-path-arc",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "TextPathArcPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom Text Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained serif/sans balance, editorial serenity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant chromatic gradients, dynamic optical weight, energetic headline presence.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian backdrop, crisp chalk-white display text, and high-contrast luminescence.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "typography",
+        "arc",
+        "svg",
+        "textpath",
+        "circle",
+        "badge"
+      ],
+      "intent": {
+        "summary": "Vector SVG curved arc typography using textPath for circular seal emblems, status stamps, and orbital ribbons.",
+        "idealFor": [
+          "Certified quality seals",
+          "Founding year commemorative stamps",
+          "Rotating interactive badges"
+        ],
+        "avoidFor": [
+          "Standard paragraphs",
+          "Search result items"
+        ],
+        "jobs": [
+          "Add artisanal authenticity and circular dimensional presence to quality emblems"
+        ],
+        "contentRequirements": [
+          "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting user font preferences and reduced motion"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 35,
+        "luxury": 60,
+        "warmth": 40,
+        "technicality": 80,
+        "editorial": 85,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 65,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 40,
+        "curvature": 25,
+        "depth": 30,
+        "motion": 30,
+        "motionPlayfulness": 25,
+        "typographicExpression": 95,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 40,
+        "interactionDensity": 50,
+        "asymmetry": 30,
+        "conversionIntensity": 55,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 45,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 25,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "editorial",
+          "headline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_textarea",
       "slug": "textarea",
       "name": "Textarea",
@@ -70446,6 +72937,255 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_typo_variable_weight_hover",
+      "slug": "variable-weight-hover",
+      "name": "Variable Weight Hover",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Interactive typography that smoothly transitions optical font-weight and character spacing when hovered.",
+      "resourceType": "typography",
+      "categories": [
+        "typography",
+        "display",
+        "interactive"
+      ],
+      "roles": [
+        "typography",
+        "variable-weight"
+      ],
+      "purposes": [
+        "interactive-text",
+        "tactile-feedback",
+        "hero-headline"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "variable-weight-hover",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "VariableWeightHoverPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom Text Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained serif/sans balance, editorial serenity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant chromatic gradients, dynamic optical weight, energetic headline presence.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian backdrop, crisp chalk-white display text, and high-contrast luminescence.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "typography",
+        "variable-font",
+        "hover",
+        "interactive",
+        "weight"
+      ],
+      "intent": {
+        "summary": "Interactive typography that smoothly transitions optical font-weight and character spacing when hovered.",
+        "idealFor": [
+          "Interactive studio portfolios",
+          "Creative agency headlines",
+          "Type foundry specimen displays"
+        ],
+        "avoidFor": [
+          "Standard longform prose",
+          "E-reader exports"
+        ],
+        "jobs": [
+          "Provide tactile, physical feedback in display type without shifting surrounding layout flow"
+        ],
+        "contentRequirements": [
+          "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting user font preferences and reduced motion"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 35,
+        "luxury": 60,
+        "warmth": 40,
+        "technicality": 80,
+        "editorial": 85,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 65,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 40,
+        "curvature": 25,
+        "depth": 30,
+        "motion": 30,
+        "motionPlayfulness": 25,
+        "typographicExpression": 95,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 40,
+        "interactionDensity": 50,
+        "asymmetry": 30,
+        "conversionIntensity": 55,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 45,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 25,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "editorial",
+          "headline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_blk_version_history",
       "slug": "version-history",
       "name": "Version History",
@@ -70684,6 +73424,255 @@
         "visualCraft": 95,
         "dependencyCleanliness": 100,
         "documentation": 95
+      },
+      "createdAt": "2026-10-10T12:00:00.000Z",
+      "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_typo_vertical_label_system",
+      "slug": "vertical-label-system",
+      "name": "Vertical Label System",
+      "version": "1.0.0",
+      "status": "verified",
+      "description": "Rotated 90-degree typographic rails, category anchors, and section boundary labels establishing structural coordinates.",
+      "resourceType": "typography",
+      "categories": [
+        "typography",
+        "display",
+        "vertical"
+      ],
+      "roles": [
+        "typography",
+        "vertical-label"
+      ],
+      "purposes": [
+        "margin-anchor",
+        "section-boundary",
+        "architectural-rail"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "b2b-saas",
+          "weight": 95
+        },
+        {
+          "tag": "developer-tool",
+          "weight": 90
+        },
+        {
+          "tag": "consumer-subscription",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "none"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "vertical-label-system",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "VerticalLabelSystemPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [
+        {
+          "id": "children",
+          "name": "Custom Text Content",
+          "type": "component",
+          "required": false
+        }
+      ],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Muted architectural tone, restrained serif/sans balance, editorial serenity.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Vibrant chromatic gradients, dynamic optical weight, energetic headline presence.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Obsidian backdrop, crisp chalk-white display text, and high-contrast luminescence.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "typography",
+        "vertical",
+        "rail",
+        "margin",
+        "coordinates"
+      ],
+      "intent": {
+        "summary": "Rotated 90-degree typographic rails, category anchors, and section boundary labels establishing structural coordinates.",
+        "idealFor": [
+          "Multi-section longform layouts",
+          "Technical catalog boundary rails",
+          "Editorial magazine spreads"
+        ],
+        "avoidFor": [
+          "Narrow horizontal banners",
+          "Mobile bottom navigation"
+        ],
+        "jobs": [
+          "Ground layout regions with spatial vertical boundary markings in peripheral whitespace"
+        ],
+        "contentRequirements": [
+          "High-contrast typographic hierarchy, fluid font sizing, accessible DOM semantics"
+        ],
+        "notes": [
+          "Accessible for screen readers, respecting user font preferences and reduced motion"
+        ]
+      },
+      "visualDNA": {
+        "professionalism": 92,
+        "playfulness": 35,
+        "luxury": 60,
+        "warmth": 40,
+        "technicality": 80,
+        "editorial": 85,
+        "futurism": 60,
+        "visualAmbition": 75,
+        "structuralCreativity": 65,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 85,
+        "colourfulness": 40,
+        "curvature": 25,
+        "depth": 30,
+        "motion": 30,
+        "motionPlayfulness": 25,
+        "typographicExpression": 95,
+        "imageryIntensity": 0,
+        "videoIntensity": 0,
+        "threeDIntensity": 0,
+        "dataDensity": 40,
+        "interactionDensity": 50,
+        "asymmetry": 30,
+        "conversionIntensity": 55,
+        "trust": 95,
+        "accessibilityPriority": 98,
+        "performancePriority": 98,
+        "visualMode": "adaptive",
+        "geometryFamily": "rounded",
+        "primaryStack": "react-tailwind"
+      },
+      "interactionDNA": {
+        "interactionDensity": 45,
+        "motionIntensity": 25,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 60,
+        "whitespace": 60,
+        "asymmetry": 25,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "editorial",
+          "headline"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "compress"
+      },
+      "accessibility": {
+        "levelTarget": "AA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "low",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 98,
+        "accessibility": 99,
+        "responsive": 98,
+        "performance": 100,
+        "codeQuality": 98,
+        "composability": 97,
+        "visualCraft": 98,
+        "dependencyCleanliness": 100,
+        "documentation": 96
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "outlined-display-text",
+  "type": "registry:component",
+  "title": "Outlined Display Text",
+  "description": "Architectural hollow stroked display typography providing dramatic spatial scale with light optical density.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type OutlinedDisplayTextVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface OutlinedDisplayTextProps {\n  watermarkText?: string;\n  foregroundText?: string;\n  variant?: OutlinedDisplayTextVariant;\n  children?: React.ReactNode;\n}\n\nexport function OutlinedDisplayText({\n  watermarkText = 'SYSTEMS',\n  foregroundText = 'Engineered for Open Composition',\n  variant = 'quiet',\n  children,\n}: OutlinedDisplayTextProps) {\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const strokeColor =\n    variant === 'nocturne'\n      ? 'rgba(6, 182, 212, 0.3)'\n      : variant === 'expressive'\n      ? 'rgba(79, 70, 229, 0.25)'\n      : 'rgba(0, 0, 0, 0.15)';\n\n  return (\n    <div className={`relative p-8 md:p-14 rounded-xl border max-w-4xl mx-auto overflow-hidden transition-colors ${containerBg}`}>\n      {/* Huge outlined watermark */}\n      <div\n        className=\"absolute inset-0 flex items-center justify-center select-none pointer-events-none text-7xl md:text-9xl font-black uppercase tracking-widest\"\n        style={{\n          WebkitTextStroke: `1.5px ${strokeColor}`,\n          color: 'transparent',\n        }}\n      >\n        {watermarkText}\n      </div>\n\n      <div className=\"relative z-10 max-w-lg space-y-2\">\n        <span className=\"text-[10px] font-mono uppercase tracking-wider text-neutral-400\">Typographic Monument</span>\n        <h3 className=\"text-2xl md:text-4xl font-extrabold tracking-tight\">\n          {foregroundText}\n        </h3>\n        <p className=\"text-xs text-neutral-500 leading-relaxed\">\n          Transparent stroke typography creates deep spatial layering without heavy ink coverage.\n        </p>\n        {children}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { OutlinedDisplayText, OutlinedDisplayTextVariant } from './index';\n\nexport function OutlinedDisplayTextPreview() {\n  const [variant, setVariant] = useState<OutlinedDisplayTextVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <OutlinedDisplayText variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "typography",
+    "display",
+    "outline"
+  ],
+  "meta": {
+    "tessellateId": "res_typo_outlined_display_text",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "masked-headline-reveal",
+  "type": "registry:component",
+  "title": "Masked Headline Reveal",
+  "description": "Dramatic overflow-clipped typographic reveal where large display characters rise smoothly from an architectural baseline boundary.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type MaskedHeadlineRevealVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface MaskedHeadlineRevealProps {\n  line1?: string;\n  line2?: string;\n  variant?: MaskedHeadlineRevealVariant;\n  children?: React.ReactNode;\n}\n\nexport function MaskedHeadlineReveal({\n  line1 = 'Architectural Coherence.',\n  line2 = 'Deterministic Execution.',\n  variant = 'quiet',\n  children,\n}: MaskedHeadlineRevealProps) {\n  const [revealed, setRevealed] = useState(true);\n\n  const containerBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] text-white border-[#2E3440]'\n      : variant === 'expressive'\n      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'\n      : 'bg-white text-neutral-900 border-neutral-200';\n\n  const accentClass =\n    variant === 'nocturne'\n      ? 'text-cyan-400'\n      : variant === 'expressive'\n      ? 'text-indigo-600'\n      : 'text-neutral-400';\n\n  return (\n    <div className={`p-8 md:p-12 rounded-xl border max-w-4xl mx-auto space-y-6 transition-colors ${containerBg}`}>\n      <div className=\"space-y-2\">\n        <div className=\"overflow-hidden\">\n          <div\n            className={`text-3xl md:text-5xl font-black tracking-tight transform transition-transform duration-700 ease-out ${\n              revealed ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'\n            }`}\n          >\n            {line1}\n          </div>\n        </div>\n        <div className=\"overflow-hidden\">\n          <div\n            className={`text-3xl md:text-5xl font-black tracking-tight ${accentClass} transform transition-transform duration-700 delay-150 ease-out ${\n              revealed ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'\n            }`}\n          >\n            {line2}\n          </div>\n        </div>\n      </div>\n\n      <div className=\"pt-2\">\n        <button\n          onClick={() => {\n            setRevealed(false);\n            setTimeout(() => setRevealed(true), 200);\n          }}\n          className=\"text-xs font-mono uppercase tracking-wider text-neutral-400 hover:text-neutral-700 underline\"\n        >\n          Re-trigger Reveal\n        </button>\n      </div>\n\n      {children}\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { MaskedHeadlineReveal, MaskedHeadlineRevealVariant } from './index';\n\nexport function MaskedHeadlineRevealPreview() {\n  const [variant, setVariant] = useState<MaskedHeadlineRevealVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-4xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <MaskedHeadlineReveal variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "typography",
+    "display",
+    "reveal"
+  ],
+  "meta": {
+    "tessellateId": "res_typo_masked_headline_reveal",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

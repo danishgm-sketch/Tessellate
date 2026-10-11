@@ -1088,6 +1088,20 @@
       ]
     },
     {
+      "name": "counter-typography",
+      "type": "registry:component",
+      "title": "Counter Typography",
+      "description": "Massive architectural numeric display figures paired with stacked typographic unit descriptions and statistical delta markers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "counter"
+      ]
+    },
+    {
       "name": "cta-community",
       "type": "registry:block",
       "title": "CTA Community",
@@ -1443,6 +1457,20 @@
       "categories": [
         "shells",
         "layout"
+      ]
+    },
+    {
+      "name": "editorial-display-stack",
+      "type": "registry:component",
+      "title": "Editorial Display Stack",
+      "description": "Multi-tier typographic headline stack combining architectural kicker, high-impact serif headline, italic accent clause, and descriptive subdeck.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "editorial"
       ]
     },
     {
@@ -2047,6 +2075,20 @@
       ]
     },
     {
+      "name": "gradient-accent-text",
+      "type": "registry:component",
+      "title": "Gradient Accent Text",
+      "description": "Precision CSS background-clip gradient highlights emphasizing key strategic nouns in a display headline.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "gradient"
+      ]
+    },
+    {
       "name": "grouped-data-table",
       "type": "registry:block",
       "title": "Grouped Data Table",
@@ -2323,6 +2365,20 @@
       ]
     },
     {
+      "name": "kinetic-word-swap",
+      "type": "registry:component",
+      "title": "Kinetic Word Swap",
+      "description": "Animated cyclical headline swapping rotating active verbs or adjectives in-place with vertical slide transitions and accessible announcements.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "kinetic"
+      ]
+    },
+    {
       "name": "kiosk-display-shell",
       "type": "registry:block",
       "title": "Kiosk Display Shell",
@@ -2443,6 +2499,34 @@
       "categories": [
         "shells",
         "navigation"
+      ]
+    },
+    {
+      "name": "marquee-typography",
+      "type": "registry:component",
+      "title": "Marquee Typography",
+      "description": "Continuous horizontal scrolling typographic ticker tape with pause-on-hover and accessible static fallback for reduced-motion.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "marquee"
+      ]
+    },
+    {
+      "name": "masked-headline-reveal",
+      "type": "registry:component",
+      "title": "Masked Headline Reveal",
+      "description": "Dramatic overflow-clipped typographic reveal where large display characters rise smoothly from an architectural baseline boundary.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "reveal"
       ]
     },
     {
@@ -2594,6 +2678,20 @@
         "shells",
         "navigation",
         "mobile"
+      ]
+    },
+    {
+      "name": "monospace-data-headline",
+      "type": "registry:component",
+      "title": "Monospace Data Headline",
+      "description": "Technical terminal display headline pairing monospace telemetry coordinates, system tags, and blinking prompt caret.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "monospace"
       ]
     },
     {
@@ -2760,6 +2858,20 @@
         "blocks",
         "settings",
         "organization"
+      ]
+    },
+    {
+      "name": "outlined-display-text",
+      "type": "registry:component",
+      "title": "Outlined Display Text",
+      "description": "Architectural hollow stroked display typography providing dramatic spatial scale with light optical density.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "outline"
       ]
     },
     {
@@ -3559,6 +3671,20 @@
       ]
     },
     {
+      "name": "split-line-headline",
+      "type": "registry:component",
+      "title": "Split-Line Headline",
+      "description": "Staggered multi-line headline where each line occupies an intentional asymmetrical indentation margin, establishing editorial rhythm.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "editorial"
+      ]
+    },
+    {
       "name": "split-product-hero",
       "type": "registry:block",
       "title": "Split Product Hero",
@@ -3779,6 +3905,20 @@
       ]
     },
     {
+      "name": "text-path-arc",
+      "type": "registry:component",
+      "title": "Text Path Arc",
+      "description": "Vector SVG curved arc typography using textPath for circular seal emblems, status stamps, and orbital ribbons.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "arc"
+      ]
+    },
+    {
       "name": "textarea",
       "type": "registry:ui",
       "title": "Textarea",
@@ -3969,6 +4109,20 @@
       ]
     },
     {
+      "name": "variable-weight-hover",
+      "type": "registry:component",
+      "title": "Variable Weight Hover",
+      "description": "Interactive typography that smoothly transitions optical font-weight and character spacing when hovered.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "interactive"
+      ]
+    },
+    {
       "name": "version-history",
       "type": "registry:block",
       "title": "Version History",
@@ -3980,6 +4134,20 @@
         "blocks",
         "entities",
         "history"
+      ]
+    },
+    {
+      "name": "vertical-label-system",
+      "type": "registry:component",
+      "title": "Vertical Label System",
+      "description": "Rotated 90-degree typographic rails, category anchors, and section boundary labels establishing structural coordinates.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "typography",
+        "display",
+        "vertical"
       ]
     },
     {
