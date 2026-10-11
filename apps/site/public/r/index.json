@@ -4,6 +4,20 @@
   "homepage": "https://tessellate.design",
   "items": [
     {
+      "name": "accessibility-commitment-section",
+      "type": "registry:block",
+      "title": "Accessibility Commitment Section",
+      "description": "Formal WCAG 2.2 AA compliance manifesto with automated audit guarantees.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "technical-proof"
+      ]
+    },
+    {
       "name": "accordion",
       "type": "registry:ui",
       "title": "Accordion",
@@ -27,6 +41,20 @@
       "categories": [
         "shells",
         "layout"
+      ]
+    },
+    {
+      "name": "ai-prompt-hero",
+      "type": "registry:block",
+      "title": "AI Prompt Hero",
+      "description": "Conversational prompt bar with preset suggestions, model picker pill, and generate CTA.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
       ]
     },
     {
@@ -57,6 +85,20 @@
       ]
     },
     {
+      "name": "api-capability-section",
+      "type": "registry:block",
+      "title": "API Capability Section",
+      "description": "Developer section highlighting REST / GraphQL / SDK methods with endpoint pill tags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "integrations"
+      ]
+    },
+    {
       "name": "app-sidebar-compact",
       "type": "registry:block",
       "title": "App Sidebar Compact",
@@ -80,6 +122,20 @@
       "categories": [
         "shells",
         "navigation"
+      ]
+    },
+    {
+      "name": "architecture-diagram-section",
+      "type": "registry:block",
+      "title": "Architecture Diagram Section",
+      "description": "Technical blueprint illustrating client-edge-database infrastructure topology.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "technical-proof"
       ]
     },
     {
@@ -215,6 +271,20 @@
       ]
     },
     {
+      "name": "case-study-spotlight",
+      "type": "registry:block",
+      "title": "Case Study Spotlight",
+      "description": "In-depth customer story card featuring measurable impact metrics, quote, and read study link.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
       "name": "centered-top-nav",
       "type": "registry:block",
       "title": "Centered Top Navigation",
@@ -238,6 +308,34 @@
       "categories": [
         "primitives",
         "inputs"
+      ]
+    },
+    {
+      "name": "cinematic-media-hero",
+      "type": "registry:block",
+      "title": "Cinematic Media Hero",
+      "description": "Full-bleed immersive atmospheric hero with dark contrast, floating badge, and headline.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "code-hero",
+      "type": "registry:block",
+      "title": "Code Hero",
+      "description": "Developer-focused hero with syntax-highlighted editor preview, copy button, and package manager tabs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
       ]
     },
     {
@@ -320,6 +418,20 @@
       ]
     },
     {
+      "name": "compliance-proof",
+      "type": "registry:block",
+      "title": "Compliance Proof",
+      "description": "Regulatory compliance showcase displaying certified badges and downloadable reports.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "technical-proof"
+      ]
+    },
+    {
       "name": "context-menu",
       "type": "registry:ui",
       "title": "Context Menu",
@@ -343,6 +455,132 @@
       "categories": [
         "shells",
         "layout"
+      ]
+    },
+    {
+      "name": "cta-community",
+      "type": "registry:block",
+      "title": "CTA Community",
+      "description": "Invitation banner to Discord / GitHub discussions with member counter badge.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "cta"
+      ]
+    },
+    {
+      "name": "cta-demo-booking",
+      "type": "registry:block",
+      "title": "CTA Demo Booking",
+      "description": "Calendar booking card with time-slot picker preview and sales team call-to-action.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "cta"
+      ]
+    },
+    {
+      "name": "cta-download",
+      "type": "registry:block",
+      "title": "CTA Download",
+      "description": "Multi-platform installer button group (macOS, Windows, Linux, CLI) with version pill.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "cta"
+      ]
+    },
+    {
+      "name": "cta-minimal",
+      "type": "registry:block",
+      "title": "CTA Minimal",
+      "description": "Focused single-line headline with primary action button and supporting footnote.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "cta"
+      ]
+    },
+    {
+      "name": "cta-product-preview",
+      "type": "registry:block",
+      "title": "CTA Product Preview",
+      "description": "High-impact banner featuring a peek into the application interface with join action.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "cta"
+      ]
+    },
+    {
+      "name": "cta-split",
+      "type": "registry:block",
+      "title": "CTA Split",
+      "description": "Two-column callout with compelling copy on left and email capture form on right.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "cta"
+      ]
+    },
+    {
+      "name": "customer-metrics-strip",
+      "type": "registry:block",
+      "title": "Customer Metrics Strip",
+      "description": "Four-column KPI impact bar highlighting uptime, volume, latency, and scale numbers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "customer-story-split",
+      "type": "registry:block",
+      "title": "Customer Story Split",
+      "description": "Side-by-side narrative with customer team photo on one side and challenge-solution story on other.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "data-hero",
+      "type": "registry:block",
+      "title": "Data Hero",
+      "description": "Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
       ]
     },
     {
@@ -452,6 +690,258 @@
       ]
     },
     {
+      "name": "editorial-hero",
+      "type": "registry:block",
+      "title": "Editorial Hero",
+      "description": "Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "faq-accordion",
+      "type": "registry:block",
+      "title": "FAQ Accordion",
+      "description": "Clean expandable question list with keyboard navigation and smooth disclosure.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "faq"
+      ]
+    },
+    {
+      "name": "faq-searchable",
+      "type": "registry:block",
+      "title": "FAQ Searchable",
+      "description": "Filterable FAQ section with live search input and category filter chips.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "faq"
+      ]
+    },
+    {
+      "name": "faq-two-column",
+      "type": "registry:block",
+      "title": "FAQ Two Column",
+      "description": "Dual-column question layout for high question density without excessive vertical length.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "faq"
+      ]
+    },
+    {
+      "name": "feature-alternating-rows",
+      "type": "registry:block",
+      "title": "Feature Alternating Rows",
+      "description": "Left-right alternating feature narrative with illustrative preview frames.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-bento",
+      "type": "registry:block",
+      "title": "Feature Bento",
+      "description": "Asymmetric bento box layout combining wide hero card, tall telemetry card, and compact utility cards.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-carousel",
+      "type": "registry:block",
+      "title": "Feature Carousel",
+      "description": "Interactive swipeable feature card reel with slide indicators and category tags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-comparison",
+      "type": "registry:block",
+      "title": "Feature Comparison",
+      "description": "Side-by-side \"Before vs After\" or \"Old Way vs Modern Way\" comparative feature breakdown.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-grid-3x2",
+      "type": "registry:block",
+      "title": "Feature Grid 3x2",
+      "description": "Balanced 6-card grid with icon headers, descriptive copy, and subtle hover borders.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-matrix",
+      "type": "registry:block",
+      "title": "Feature Matrix",
+      "description": "Comprehensive feature availability grid categorized across core functional pillars.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-metrics",
+      "type": "registry:block",
+      "title": "Feature Metrics",
+      "description": "Feature section backed by empirical benchmark graphs and performance comparison stats.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-spotlight",
+      "type": "registry:block",
+      "title": "Feature Spotlight",
+      "description": "Full-width spotlight card highlighting a single flagship capability with glow accents.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-steps",
+      "type": "registry:block",
+      "title": "Feature Steps",
+      "description": "Sequential 3-step feature walkthrough emphasizing onboarding ease and operational flow.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-sticky-narrative",
+      "type": "registry:block",
+      "title": "Feature Sticky Narrative",
+      "description": "Side-by-side section with sticky headline/story progression beside scrollable detail cards.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-tabs",
+      "type": "registry:block",
+      "title": "Feature Tabs",
+      "description": "Interactive tabbed feature display switching between workflows, previews, and feature descriptions.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-timeline",
+      "type": "registry:block",
+      "title": "Feature Timeline",
+      "description": "Chronological evolution or milestone timeline with connecting guides and release tags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-with-code",
+      "type": "registry:block",
+      "title": "Feature with Code",
+      "description": "Deep-dive feature section pairing architectural narrative with typed code snippet tabs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
+      "name": "feature-with-live-demo",
+      "type": "registry:block",
+      "title": "Feature with Live Demo",
+      "description": "Feature showcase paired directly with an interactive sandbox state toggle.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "features"
+      ]
+    },
+    {
       "name": "floating-nav",
       "type": "registry:block",
       "title": "Floating Navigation",
@@ -462,6 +952,118 @@
       "categories": [
         "shells",
         "navigation"
+      ]
+    },
+    {
+      "name": "footer-developer",
+      "type": "registry:block",
+      "title": "Footer Developer",
+      "description": "Terminal-styled developer footer with CLI command snippet, API status, and git commit sha.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "footer"
+      ]
+    },
+    {
+      "name": "footer-minimal",
+      "type": "registry:block",
+      "title": "Footer Minimal",
+      "description": "Single-line copyright, status indicator, and legal links with minimal footprint.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "footer"
+      ]
+    },
+    {
+      "name": "footer-newsletter",
+      "type": "registry:block",
+      "title": "Footer Newsletter",
+      "description": "Focused email subscription banner with privacy assurance and social icon bar.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "footer"
+      ]
+    },
+    {
+      "name": "footer-product",
+      "type": "registry:block",
+      "title": "Footer Product",
+      "description": "Product-centric footer featuring release changelog badge, newsletter input, and nav columns.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "footer"
+      ]
+    },
+    {
+      "name": "footer-sitemap",
+      "type": "registry:block",
+      "title": "Footer Sitemap",
+      "description": "Multi-column directory footer with category link lists, logo, and language selector.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "footer"
+      ]
+    },
+    {
+      "name": "how-it-works-interactive",
+      "type": "registry:block",
+      "title": "How It Works Interactive",
+      "description": "Interactive stepper allowing users to click through stages of the pipeline.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "explanation"
+      ]
+    },
+    {
+      "name": "how-it-works-steps",
+      "type": "registry:block",
+      "title": "How It Works Steps",
+      "description": "Numbered 3-part execution flow with step badges, titles, and illustrative diagrams.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "explanation"
+      ]
+    },
+    {
+      "name": "how-it-works-timeline",
+      "type": "registry:block",
+      "title": "How It Works Timeline",
+      "description": "Vertical progression path showing end-to-end user lifecycle from install to scale.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "explanation"
       ]
     },
     {
@@ -531,6 +1133,62 @@
       ]
     },
     {
+      "name": "integration-directory-preview",
+      "type": "registry:block",
+      "title": "Integration Directory Preview",
+      "description": "Searchable catalog preview of ecosystem plugins with filter chips.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "integrations"
+      ]
+    },
+    {
+      "name": "integration-grid",
+      "type": "registry:block",
+      "title": "Integration Grid",
+      "description": "Icon grid displaying supported third-party tools, frameworks, and cloud services.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "integrations"
+      ]
+    },
+    {
+      "name": "integration-orbit",
+      "type": "registry:block",
+      "title": "Integration Orbit",
+      "description": "Central product node surrounded by connected ecosystem nodes with radial alignment.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "integrations"
+      ]
+    },
+    {
+      "name": "interactive-demo-hero",
+      "type": "registry:block",
+      "title": "Interactive Demo Hero",
+      "description": "Hero with inline interactive tabbed preview allowing immediate hands-on feature exploration.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
       "name": "kiosk-display-shell",
       "type": "registry:block",
       "title": "Kiosk Display Shell",
@@ -554,6 +1212,34 @@
       "categories": [
         "primitives",
         "navigation"
+      ]
+    },
+    {
+      "name": "logo-cloud-marquee",
+      "type": "registry:block",
+      "title": "Logo Cloud Marquee",
+      "description": "Smooth continuous horizontal strip of partner and customer wordmarks.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "logo-cloud-minimal",
+      "type": "registry:block",
+      "title": "Logo Cloud Minimal",
+      "description": "Subtle monochrome client logo row with muted contrast and disciplined spacing.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
       ]
     },
     {
@@ -593,6 +1279,20 @@
       "categories": [
         "shells",
         "layout"
+      ]
+    },
+    {
+      "name": "minimal-statement-hero",
+      "type": "registry:block",
+      "title": "Minimal Statement Hero",
+      "description": "Ultra-bold typography-only manifesto statement hero with maximum negative space.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
       ]
     },
     {
@@ -690,6 +1390,34 @@
       ]
     },
     {
+      "name": "performance-benchmark-section",
+      "type": "registry:block",
+      "title": "Performance Benchmark Section",
+      "description": "Bar chart benchmarks comparing execution latency and throughput against industry baselines.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "technical-proof"
+      ]
+    },
+    {
+      "name": "plan-feature-matrix",
+      "type": "registry:block",
+      "title": "Plan Feature Matrix",
+      "description": "Segmented feature comparison with expandable category groupings.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
       "name": "popover",
       "type": "registry:ui",
       "title": "Popover",
@@ -700,6 +1428,146 @@
       "categories": [
         "primitives",
         "overlays"
+      ]
+    },
+    {
+      "name": "press-mentions-strip",
+      "type": "registry:block",
+      "title": "Press Mentions Strip",
+      "description": "Curated editorial press quote row with publication logos and external publication links.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "pricing-calculator-shell",
+      "type": "registry:block",
+      "title": "Pricing Calculator Shell",
+      "description": "Interactive slider calculator estimating monthly cost based on MAU or compute units.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "pricing-comparison-table",
+      "type": "registry:block",
+      "title": "Pricing Comparison Table",
+      "description": "Exhaustive checkmark matrix comparing feature tiers across 20+ dimensions.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "pricing-enterprise",
+      "type": "registry:block",
+      "title": "Pricing Enterprise",
+      "description": "Dedicated high-touch enterprise tier section with custom contract feature list.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "pricing-three-tier",
+      "type": "registry:block",
+      "title": "Pricing Three Tier",
+      "description": "Canonical 3-card pricing table (Free, Pro, Enterprise) with highlighted recommended tier.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "pricing-toggle",
+      "type": "registry:block",
+      "title": "Pricing Toggle",
+      "description": "Billing interval switcher (Monthly vs Annual with discount badge) above plan cards.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "pricing-two-tier",
+      "type": "registry:block",
+      "title": "Pricing Two Tier",
+      "description": "Focused 2-card comparison (Starter vs Business) for streamlined product offerings.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "pricing-usage-based",
+      "type": "registry:block",
+      "title": "Pricing Usage Based",
+      "description": "Pay-as-you-go pricing card with tier volume sliders and unit-cost breakdowns.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "pricing"
+      ]
+    },
+    {
+      "name": "process-diagram",
+      "type": "registry:block",
+      "title": "Process Diagram",
+      "description": "Visual flowchart explaining system data pipeline from ingestion to output.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "explanation"
+      ]
+    },
+    {
+      "name": "product-screenshot-hero",
+      "type": "registry:block",
+      "title": "Product Screenshot Hero",
+      "description": "Centered headline with perspective tilted application screenshot frame and browser chrome.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
       ]
     },
     {
@@ -807,6 +1675,20 @@
       ]
     },
     {
+      "name": "search-first-hero",
+      "type": "registry:block",
+      "title": "Search-First Hero",
+      "description": "Command-bar-centric hero with prominent search input, trending suggestions, and category chips.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
       "name": "search-input",
       "type": "registry:ui",
       "title": "Search Input",
@@ -818,6 +1700,20 @@
         "primitives",
         "inputs",
         "search"
+      ]
+    },
+    {
+      "name": "security-proof",
+      "type": "registry:block",
+      "title": "Security Proof",
+      "description": "Comprehensive enterprise security overview covering encryption, RBAC, and data residency.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "technical-proof"
       ]
     },
     {
@@ -899,6 +1795,20 @@
       ]
     },
     {
+      "name": "social-proof-hero",
+      "type": "registry:block",
+      "title": "Social Proof Hero",
+      "description": "Headline anchored by trust metrics, customer avatar stack, and star review rating strip.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
       "name": "split-button",
       "type": "registry:ui",
       "title": "Split Button",
@@ -910,6 +1820,20 @@
         "primitives",
         "inputs",
         "actions"
+      ]
+    },
+    {
+      "name": "split-product-hero",
+      "type": "registry:block",
+      "title": "Split Product Hero",
+      "description": "50/50 split layout with narrative copy on left and live interactive widget on right.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
       ]
     },
     {
@@ -962,6 +1886,48 @@
       "categories": [
         "primitives",
         "inputs"
+      ]
+    },
+    {
+      "name": "testimonial-carousel",
+      "type": "registry:block",
+      "title": "Testimonial Carousel",
+      "description": "Paginated card slider with testimonial quotes, author details, and next/prev controls.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "testimonial-grid",
+      "type": "registry:block",
+      "title": "Testimonial Grid",
+      "description": "3-column card grid of customer endorsements with rating stars and company tags.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
+      "name": "testimonial-quote",
+      "type": "registry:block",
+      "title": "Testimonial Quote",
+      "description": "Featured customer pull-quote with oversized quotation mark, portrait avatar, and bio.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
       ]
     },
     {
@@ -1030,6 +1996,20 @@
       ]
     },
     {
+      "name": "trust-badges-strip",
+      "type": "registry:block",
+      "title": "Trust Badges Strip",
+      "description": "Security, compliance, and SOC2 / ISO / HIPAA certification badge strip.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "trust"
+      ]
+    },
+    {
       "name": "two-pane-master-detail-shell",
       "type": "registry:block",
       "title": "Two-Pane Master Detail Shell",
@@ -1040,6 +2020,34 @@
       "categories": [
         "shells",
         "layout"
+      ]
+    },
+    {
+      "name": "video-hero",
+      "type": "registry:block",
+      "title": "Video Hero",
+      "description": "Cinematic header with ambient video background placeholder, gradient veil, and play trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "hero"
+      ]
+    },
+    {
+      "name": "workflow-narrative",
+      "type": "registry:block",
+      "title": "Workflow Narrative",
+      "description": "Structured editorial walk-through explaining developer ergonomics and day-to-day use.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "sections",
+        "marketing",
+        "explanation"
       ]
     },
     {

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-two-column",
+  "type": "registry:block",
+  "title": "FAQ Two Column",
+  "description": "Dual-column question layout for high question density without excessive vertical length.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type FaqTwoColumnVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FaqTwoColumnProps {\n  variant?: FaqTwoColumnVariant;\n}\n\nexport function FaqTwoColumn({ variant = 'quiet' }: FaqTwoColumnProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/30 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  const items = [\n    { q: 'How does Design DNA maintain visual coherence?', a: 'Design DNA treats curvature, contrast, and whitespace as numeric dimensions mapped to project tokens.' },\n    { q: 'Can I export to other frameworks like Vue or Svelte?', a: 'V1 is canonically targeted to React + TypeScript + Tailwind 4. Additional AST emitters can be added cleanly.' },\n    { q: 'What happens if my network goes offline?', a: 'Tessellate operates guest-first in memory with local IndexedDB persistence, running fully offline.' },\n    { q: 'How do you prevent breaking updates?', a: 'Every resource is immutable by schema version. Upgrades use verified migration scripts.' },\n  ];\n\n  return (\n    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-5xl mx-auto\">\n        <h2 className=\"text-3xl font-bold tracking-tight text-center mb-16\">Questions & Answers</h2>\n        <div className=\"grid grid-cols-1 md:grid-cols-2 gap-10\">\n          {items.map((it) => (\n            <div key={it.q} className=\"space-y-2\">\n              <h3 className=\"font-semibold text-sm sm:text-base\">{it.q}</h3>\n              <p className=\"text-xs sm:text-sm opacity-75 leading-relaxed\">{it.a}</p>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FaqTwoColumn, FaqTwoColumnVariant } from './index.js';\n\nexport function FaqTwoColumnPreview() {\n  const [variant, setVariant] = useState<FaqTwoColumnVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">FAQ Two Column Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as FaqTwoColumnVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <FaqTwoColumn variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "faq"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_faq_two_column",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

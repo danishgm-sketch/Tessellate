@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo-cloud-marquee",
+  "type": "registry:block",
+  "title": "Logo Cloud Marquee",
+  "description": "Smooth continuous horizontal strip of partner and customer wordmarks.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type LogoCloudMarqueeVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface LogoCloudMarqueeProps {\n  variant?: LogoCloudMarqueeVariant;\n  logos?: string[];\n}\n\nexport function LogoCloudMarquee({\n  variant = 'quiet',\n  logos = ['Vercel', 'Stripe', 'Linear', 'Raycast', 'OpenAI', 'Anthropic', 'Supabase', 'Cloudflare'],\n}: LogoCloudMarqueeProps) {\n  let bg = 'bg-white text-neutral-800 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-blue-50/20 text-neutral-900 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  return (\n    <section className={`relative w-full py-10 px-6 overflow-hidden border-b transition-colors ${bg}`}>\n      <div className=\"flex items-center gap-12 sm:gap-20 overflow-x-auto no-scrollbar justify-center\">\n        {logos.map((logo, idx) => (\n          <span key={`${logo}-${idx}`} className=\"font-mono text-sm sm:text-base font-bold tracking-tight opacity-70 shrink-0\">\n            {logo}\n          </span>\n        ))}\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { LogoCloudMarquee, LogoCloudMarqueeVariant } from './index.js';\n\nexport function LogoCloudMarqueePreview() {\n  const [variant, setVariant] = useState<LogoCloudMarqueeVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Logo Cloud Marquee Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as LogoCloudMarqueeVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <LogoCloudMarquee variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "trust"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_logo_cloud_marquee",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

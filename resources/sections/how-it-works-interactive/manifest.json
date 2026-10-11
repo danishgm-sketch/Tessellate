@@ -1,0 +1,244 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "res_sec_how_it_works_interactive",
+  "slug": "how-it-works-interactive",
+  "name": "How It Works Interactive",
+  "version": "1.0.0",
+  "status": "verified",
+  "description": "Interactive stepper allowing users to click through stages of the pipeline.",
+  "resourceType": "section",
+  "categories": [
+    "sections",
+    "marketing",
+    "explanation"
+  ],
+  "roles": [
+    "explanation",
+    "interactive"
+  ],
+  "purposes": [
+    "Hands-on exploration",
+    "Interactive walkthrough"
+  ],
+  "productArchetypes": [
+    {
+      "tag": "marketing-site",
+      "weight": 95
+    },
+    {
+      "tag": "b2b-saas",
+      "weight": 90
+    },
+    {
+      "tag": "developer-tool",
+      "weight": 85
+    }
+  ],
+  "creator": {
+    "id": "tessellate_core",
+    "displayName": "Tessellate Core",
+    "handle": "tessellate",
+    "url": "https://tessellate.design"
+  },
+  "provenance": {
+    "origin": "tessellate",
+    "derivative": false,
+    "aiAssistance": "none"
+  },
+  "license": {
+    "spdx": "MIT",
+    "name": "MIT License",
+    "url": "https://opensource.org/licenses/MIT",
+    "redistributionVerified": true,
+    "attributionRequired": false
+  },
+  "framework": "react",
+  "language": "typescript",
+  "styling": "tailwind",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "preview.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "fixtures.ts",
+      "kind": "fixture",
+      "required": true
+    },
+    {
+      "path": "README.md",
+      "kind": "asset",
+      "required": true
+    }
+  ],
+  "registry": {
+    "name": "how-it-works-interactive",
+    "dependencies": [],
+    "devDependencies": [],
+    "registryDependencies": []
+  },
+  "preview": {
+    "component": "HowItWorksInteractivePreview",
+    "defaultProps": {},
+    "viewport": 1440
+  },
+  "slots": [
+    {
+      "id": "children",
+      "name": "Section Content",
+      "type": "component",
+      "required": false
+    }
+  ],
+  "variants": [
+    {
+      "id": "quiet",
+      "name": "Quiet",
+      "description": "Monochrome, restrained, minimal contrast for understated editorial presence.",
+      "props": {
+        "variant": "quiet"
+      }
+    },
+    {
+      "id": "expressive",
+      "name": "Expressive",
+      "description": "Vibrant cobalt accents, elevated cards, and tactile hover states.",
+      "props": {
+        "variant": "expressive"
+      }
+    },
+    {
+      "id": "nocturne",
+      "name": "Nocturne",
+      "description": "Obsidian dark canvas with crisp hairline borders and radiant illumination.",
+      "props": {
+        "variant": "nocturne"
+      }
+    }
+  ],
+  "tags": [
+    "how-it-works-interactive",
+    "interactive",
+    "stepper",
+    "explanation"
+  ],
+  "intent": {
+    "summary": "Interactive stepper allowing users to click through stages of the pipeline.",
+    "idealFor": [
+      "Step-by-step interactive product demos"
+    ],
+    "avoidFor": [
+      "Printed documentation"
+    ],
+    "jobs": [
+      "Let visitors actively step through system pipeline stages"
+    ],
+    "contentRequirements": [
+      "Clear hierarchy, responsive layout, accessible typography"
+    ],
+    "notes": [
+      "Responsive stacking down to 360px with reduced-motion support"
+    ]
+  },
+  "visualDNA": {
+    "professionalism": 85,
+    "playfulness": 30,
+    "luxury": 50,
+    "warmth": 40,
+    "technicality": 70,
+    "editorial": 75,
+    "futurism": 45,
+    "visualAmbition": 70,
+    "structuralCreativity": 55,
+    "density": 50,
+    "whitespace": 65,
+    "contrast": 80,
+    "colourfulness": 40,
+    "curvature": 35,
+    "depth": 40,
+    "motion": 30,
+    "motionPlayfulness": 20,
+    "typographicExpression": 60,
+    "imageryIntensity": 25,
+    "videoIntensity": 0,
+    "threeDIntensity": 0,
+    "dataDensity": 50,
+    "interactionDensity": 50,
+    "asymmetry": 25,
+    "conversionIntensity": 75,
+    "trust": 90,
+    "accessibilityPriority": 95,
+    "performancePriority": 95,
+    "visualMode": "adaptive",
+    "geometryFamily": "rounded",
+    "primaryStack": "react-tailwind"
+  },
+  "interactionDNA": {
+    "interactionDensity": 45,
+    "motionIntensity": 25,
+    "keyboardComplexity": "low",
+    "hoverDependency": "none",
+    "directManipulation": false
+  },
+  "layoutDNA": {
+    "density": 50,
+    "whitespace": 65,
+    "asymmetry": 25,
+    "preferredWidths": [
+      "full"
+    ],
+    "layoutFamilies": [
+      "marketing",
+      "landing",
+      "section"
+    ]
+  },
+  "responsive": {
+    "verifiedWidths": [
+      360,
+      768,
+      1440
+    ],
+    "defaultStrategy": "stack"
+  },
+  "accessibility": {
+    "levelTarget": "AA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true
+  },
+  "performance": {
+    "jsCost": "tiny",
+    "gpuCost": "none",
+    "mediaCost": "none",
+    "runtimeComplexity": "low",
+    "lazyRecommended": false,
+    "continuousAnimation": false
+  },
+  "complexity": "medium",
+  "customizability": "high",
+  "compatibility": {},
+  "relationships": [],
+  "quality": {
+    "overall": 96,
+    "accessibility": 98,
+    "responsive": 95,
+    "performance": 100,
+    "codeQuality": 96,
+    "composability": 96,
+    "visualCraft": 95,
+    "dependencyCleanliness": 100,
+    "documentation": 95
+  },
+  "createdAt": "2026-10-10T12:00:00.000Z",
+  "updatedAt": "2026-10-10T12:00:00.000Z"
+}

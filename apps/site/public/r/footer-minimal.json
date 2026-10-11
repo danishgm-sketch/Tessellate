@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-minimal",
+  "type": "registry:block",
+  "title": "Footer Minimal",
+  "description": "Single-line copyright, status indicator, and legal links with minimal footprint.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type FooterMinimalVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FooterMinimalProps {\n  variant?: FooterMinimalVariant;\n}\n\nexport function FooterMinimal({ variant = 'quiet' }: FooterMinimalProps) {\n  let bg = 'bg-[#FAF8F5] text-neutral-600 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-white text-neutral-700 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-neutral-400 border-[#2E3440]';\n  }\n\n  return (\n    <footer className={`w-full py-8 px-6 sm:px-12 border-t text-xs transition-colors ${bg}`}>\n      <div className=\"max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4\">\n        <div className=\"flex items-center gap-2\">\n          <span className=\"font-semibold tracking-tight text-neutral-900 dark:text-white\">Tessellate</span>\n          <span>© {new Date().getFullYear()} Tessellate Core. MIT License.</span>\n        </div>\n        <div className=\"flex items-center gap-6\">\n          <a href=\"#\" className=\"hover:underline\">Privacy</a>\n          <a href=\"#\" className=\"hover:underline\">Terms</a>\n          <a href=\"#\" className=\"hover:underline\">Status: Operational</a>\n        </div>\n      </div>\n    </footer>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FooterMinimal, FooterMinimalVariant } from './index.js';\n\nexport function FooterMinimalPreview() {\n  const [variant, setVariant] = useState<FooterMinimalVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Footer Minimal Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as FooterMinimalVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <FooterMinimal variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "footer"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_footer_minimal",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

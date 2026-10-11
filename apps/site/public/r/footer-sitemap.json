@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-sitemap",
+  "type": "registry:block",
+  "title": "Footer Sitemap",
+  "description": "Multi-column directory footer with category link lists, logo, and language selector.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type FooterSitemapVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FooterSitemapProps {\n  variant?: FooterSitemapVariant;\n}\n\nexport function FooterSitemap({ variant = 'quiet' }: FooterSitemapProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/50 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  const cols = [\n    { title: 'Resources', links: ['Primitives', 'Shells', 'Sections', 'Blocks', 'Data Vis'] },\n    { title: 'Platform', links: ['Workbench', 'Design DNA Lab', 'MCP Server', 'CLI Tools'] },\n    { title: 'Community', links: ['GitHub', 'Discord', 'Docs', 'Contributing'] },\n    { title: 'Legal', links: ['Privacy Policy', 'Terms of Service', 'Security', 'License'] },\n  ];\n\n  return (\n    <footer className={`w-full py-16 px-6 sm:px-12 border-t transition-colors ${bg}`}>\n      <div className=\"max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10\">\n        {cols.map((col) => (\n          <div key={col.title}>\n            <div className=\"font-bold text-xs uppercase tracking-wider mb-4 font-mono opacity-80\">{col.title}</div>\n            <ul className=\"space-y-2 text-xs opacity-70\">\n              {col.links.map((link) => (\n                <li key={link}>\n                  <a href=\"#\" className=\"hover:underline\">{link}</a>\n                </li>\n              ))}\n            </ul>\n          </div>\n        ))}\n      </div>\n    </footer>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FooterSitemap, FooterSitemapVariant } from './index.js';\n\nexport function FooterSitemapPreview() {\n  const [variant, setVariant] = useState<FooterSitemapVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Footer Sitemap Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as FooterSitemapVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <FooterSitemap variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "footer"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_footer_sitemap",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

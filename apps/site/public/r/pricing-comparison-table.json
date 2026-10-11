@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "pricing-comparison-table",
+  "type": "registry:block",
+  "title": "Pricing Comparison Table",
+  "description": "Exhaustive checkmark matrix comparing feature tiers across 20+ dimensions.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type PricingComparisonTableVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface PricingComparisonTableProps {\n  variant?: PricingComparisonTableVariant;\n}\n\nexport function PricingComparisonTable({ variant = 'quiet' }: PricingComparisonTableProps) {\n  let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';\n  let tableBorder = 'border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-white text-neutral-950 border-[#D9D6CF]';\n    tableBorder = 'border-blue-100';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    tableBorder = 'border-[#2E3440]';\n  }\n\n  const rows = [\n    { feature: 'All 324 Launch Resources', free: '✓', team: '✓', enterprise: '✓' },\n    { feature: 'TypeScript Source Code Export', free: '✓', team: '✓', enterprise: '✓' },\n    { feature: 'Cloud Checkpoints & Sync', free: '—', team: '✓', enterprise: '✓' },\n    { feature: 'Custom DNA Token Storage', free: '—', team: '—', enterprise: '✓' },\n  ];\n\n  return (\n    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-5xl mx-auto\">\n        <h2 className=\"text-3xl font-bold tracking-tight text-center mb-12\">Detailed Feature Matrix</h2>\n\n        <div className={`overflow-x-auto rounded-xl border ${tableBorder}`}>\n          <table className=\"w-full text-left text-xs sm:text-sm\">\n            <thead className=\"border-b bg-neutral-100/60 dark:bg-neutral-900/60 font-mono text-xs uppercase\">\n              <tr>\n                <th className=\"p-4\">Feature</th>\n                <th className=\"p-4\">Free Core</th>\n                <th className=\"p-4\">Team</th>\n                <th className=\"p-4\">Enterprise</th>\n              </tr>\n            </thead>\n            <tbody className=\"divide-y divide-neutral-200 dark:divide-neutral-800\">\n              {rows.map((r) => (\n                <tr key={r.feature} className=\"hover:bg-neutral-50 dark:hover:bg-neutral-900/40\">\n                  <td className=\"p-4 font-semibold\">{r.feature}</td>\n                  <td className=\"p-4 font-mono text-emerald-600 dark:text-emerald-400\">{r.free}</td>\n                  <td className=\"p-4 font-mono text-emerald-600 dark:text-emerald-400\">{r.team}</td>\n                  <td className=\"p-4 font-mono text-emerald-600 dark:text-emerald-400\">{r.enterprise}</td>\n                </tr>\n              ))}\n            </tbody>\n          </table>\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { PricingComparisonTable, PricingComparisonTableVariant } from './index.js';\n\nexport function PricingComparisonTablePreview() {\n  const [variant, setVariant] = useState<PricingComparisonTableVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Pricing Comparison Table Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as PricingComparisonTableVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <PricingComparisonTable variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "pricing"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_pricing_comparison_table",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

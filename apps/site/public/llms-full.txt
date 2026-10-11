@@ -77,14 +77,18 @@ Tools provided:
 - `get_design_dna`: Inspect Design DNA presets and vectors.
 - `list_design_directions`: Return visual reference directions (Editorial Precision, Kinetic Monolith, Atmospheric Depth).
 
-## Resources in Catalogue (80)
+## Resources in Catalogue (152)
 
+- [Accessibility Commitment Section](https://tessellate.design/r/accessibility-commitment-section): Formal WCAG 2.2 AA compliance manifesto with automated audit guarantees. (sections, marketing, technical-proof)
 - [Accordion](https://tessellate.design/r/accordion): Collapsible vertically stacked disclosure panels with rotating chevron animations. (primitives, layout)
 - [Admin Console Shell](https://tessellate.design/r/admin-console-shell): Enterprise administration layout with organization selector, user table, and security audit tab. (shells, layout)
+- [AI Prompt Hero](https://tessellate.design/r/ai-prompt-hero): Conversational prompt bar with preset suggestions, model picker pill, and generate CTA. (sections, marketing, hero)
 - [Alert Dialog](https://tessellate.design/r/alert-dialog): Destructive confirmation modal requiring explicit acknowledgment or cancellation before proceeding. (primitives, overlays, feedback)
 - [Analytics Shell](https://tessellate.design/r/analytics-shell): Metric-dense business intelligence dashboard shell with date picker bar and KPI grid. (shells, layout)
+- [API Capability Section](https://tessellate.design/r/api-capability-section): Developer section highlighting REST / GraphQL / SDK methods with endpoint pill tags. (sections, marketing, integrations)
 - [App Sidebar Compact](https://tessellate.design/r/app-sidebar-compact): High-density narrow application sidebar displaying icon triggers and tooltip labels. (shells, navigation)
 - [App Sidebar Expanded](https://tessellate.design/r/app-sidebar-expanded): Full-width application sidebar with hierarchical category headers, counts, and search. (shells, navigation)
+- [Architecture Diagram Section](https://tessellate.design/r/architecture-diagram-section): Technical blueprint illustrating client-edge-database infrastructure topology. (sections, marketing, technical-proof)
 - [Autocomplete](https://tessellate.design/r/autocomplete): Typeahead prediction control suggesting options inline or in a floating palette. (primitives, inputs)
 - [Avatar](https://tessellate.design/r/avatar): Circular user representation displaying profile photography with monogram initial fallback and presence dot. (primitives, display)
 - [Avatar Group](https://tessellate.design/r/avatar-group): Overlapping clustered avatars with ring separation and excess counter pill (+N). (primitives, display)
@@ -95,16 +99,29 @@ Tools provided:
 - [Button](https://tessellate.design/r/button): Tactile, accessible multi-intent button primitive with Quiet, Expressive, and Nocturne curated configurations. (primitives, inputs, actions)
 - [Button Group](https://tessellate.design/r/button-group): Connected cluster of action buttons with cohesive outer border and seamless seams. (primitives, inputs, actions)
 - [Canvas Workspace Shell](https://tessellate.design/r/canvas-workspace-shell): Infinite-pan coordinate workspace canvas with floating tool palettes and zoom controls. (shells, layout)
+- [Case Study Spotlight](https://tessellate.design/r/case-study-spotlight): In-depth customer story card featuring measurable impact metrics, quote, and read study link. (sections, marketing, trust)
 - [Centered Top Navigation](https://tessellate.design/r/centered-top-nav): Symmetrical marketing header with brand logo on left, centered links, and right-aligned CTA. (shells, navigation)
 - [Checkbox](https://tessellate.design/r/checkbox): Accessible boolean selection control with indeterminate state, animated checkmark, and descriptive label. (primitives, inputs)
+- [Cinematic Media Hero](https://tessellate.design/r/cinematic-media-hero): Full-bleed immersive atmospheric hero with dark contrast, floating badge, and headline. (sections, marketing, hero)
+- [Code Hero](https://tessellate.design/r/code-hero): Developer-focused hero with syntax-highlighted editor preview, copy button, and package manager tabs. (sections, marketing, hero)
 - [Collapsible Sidebar](https://tessellate.design/r/collapsible-sidebar): Flexible sidebar toggling between icon rail (48px) and expanded labels (240px) on user trigger. (shells, navigation)
 - [Combobox](https://tessellate.design/r/combobox): Searchable selection input combining text filtering with item picker dropdown. (primitives, inputs)
 - [Command Centre Shell](https://tessellate.design/r/command-centre-shell): Mission control telemetry layout with multi-panel monitoring grids and emergency alerts. (shells, layout)
 - [Command-First Navigation](https://tessellate.design/r/command-first-nav): Spotlight-oriented application header centered on a prominent interactive search input. (shells, navigation)
 - [Command Menu](https://tessellate.design/r/command-menu): ⌘K spotlight dialog modal with quick command search, group categories, and keyboard arrow navigation. (primitives, overlays, search)
 - [Commerce Management Shell](https://tessellate.design/r/commerce-management-shell): E-commerce operations shell with order fulfillment queue, inventory counts, and sales graph. (shells, layout)
+- [Compliance Proof](https://tessellate.design/r/compliance-proof): Regulatory compliance showcase displaying certified badges and downloadable reports. (sections, marketing, technical-proof)
 - [Context Menu](https://tessellate.design/r/context-menu): Right-click action palette anchored directly to the user pointer coordinates. (primitives, overlays)
 - [Context Rail](https://tessellate.design/r/context-rail): Secondary right-hand vertical rail displaying active object inspector or contextual metadata. (shells, layout)
+- [CTA Community](https://tessellate.design/r/cta-community): Invitation banner to Discord / GitHub discussions with member counter badge. (sections, marketing, cta)
+- [CTA Demo Booking](https://tessellate.design/r/cta-demo-booking): Calendar booking card with time-slot picker preview and sales team call-to-action. (sections, marketing, cta)
+- [CTA Download](https://tessellate.design/r/cta-download): Multi-platform installer button group (macOS, Windows, Linux, CLI) with version pill. (sections, marketing, cta)
+- [CTA Minimal](https://tessellate.design/r/cta-minimal): Focused single-line headline with primary action button and supporting footnote. (sections, marketing, cta)
+- [CTA Product Preview](https://tessellate.design/r/cta-product-preview): High-impact banner featuring a peek into the application interface with join action. (sections, marketing, cta)
+- [CTA Split](https://tessellate.design/r/cta-split): Two-column callout with compelling copy on left and email capture form on right. (sections, marketing, cta)
+- [Customer Metrics Strip](https://tessellate.design/r/customer-metrics-strip): Four-column KPI impact bar highlighting uptime, volume, latency, and scale numbers. (sections, marketing, trust)
+- [Customer Story Split](https://tessellate.design/r/customer-story-split): Side-by-side narrative with customer team photo on one side and challenge-solution story on other. (sections, marketing, trust)
+- [Data Hero](https://tessellate.design/r/data-hero): Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges. (sections, marketing, hero)
 - [Data Terminal Header](https://tessellate.design/r/data-terminal-header): High-density monospace financial header with ticker feed, clock, and connection latency. (shells, navigation)
 - [Dialog](https://tessellate.design/r/dialog): Accessible modal dialog window with backdrop scrim, focus trapping, and header/footer slots. (primitives, overlays)
 - [Disclosure](https://tessellate.design/r/disclosure): Single collapsible toggle container with summary header and expandable details. (primitives, layout)
@@ -113,17 +130,50 @@ Tools provided:
 - [Dropdown Menu](https://tessellate.design/r/dropdown-menu): Floating contextual menu with item hover states, shortcut indicators, and dividers. (primitives, overlays, navigation)
 - [Dual-Rail Navigation](https://tessellate.design/r/dual-rail-nav): Two-tier navigation shell with primary app rail (48px) and contextual sub-navigation list (200px). (shells, navigation)
 - [Editor Workspace Shell](https://tessellate.design/r/editor-workspace-shell): Code and structured text editing shell with gutter line numbers, status bar, and tab bar. (shells, layout)
+- [Editorial Hero](https://tessellate.design/r/editorial-hero): Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs. (sections, marketing, hero)
+- [FAQ Accordion](https://tessellate.design/r/faq-accordion): Clean expandable question list with keyboard navigation and smooth disclosure. (sections, marketing, faq)
+- [FAQ Searchable](https://tessellate.design/r/faq-searchable): Filterable FAQ section with live search input and category filter chips. (sections, marketing, faq)
+- [FAQ Two Column](https://tessellate.design/r/faq-two-column): Dual-column question layout for high question density without excessive vertical length. (sections, marketing, faq)
+- [Feature Alternating Rows](https://tessellate.design/r/feature-alternating-rows): Left-right alternating feature narrative with illustrative preview frames. (sections, marketing, features)
+- [Feature Bento](https://tessellate.design/r/feature-bento): Asymmetric bento box layout combining wide hero card, tall telemetry card, and compact utility cards. (sections, marketing, features)
+- [Feature Carousel](https://tessellate.design/r/feature-carousel): Interactive swipeable feature card reel with slide indicators and category tags. (sections, marketing, features)
+- [Feature Comparison](https://tessellate.design/r/feature-comparison): Side-by-side "Before vs After" or "Old Way vs Modern Way" comparative feature breakdown. (sections, marketing, features)
+- [Feature Grid 3x2](https://tessellate.design/r/feature-grid-3x2): Balanced 6-card grid with icon headers, descriptive copy, and subtle hover borders. (sections, marketing, features)
+- [Feature Matrix](https://tessellate.design/r/feature-matrix): Comprehensive feature availability grid categorized across core functional pillars. (sections, marketing, features)
+- [Feature Metrics](https://tessellate.design/r/feature-metrics): Feature section backed by empirical benchmark graphs and performance comparison stats. (sections, marketing, features)
+- [Feature Spotlight](https://tessellate.design/r/feature-spotlight): Full-width spotlight card highlighting a single flagship capability with glow accents. (sections, marketing, features)
+- [Feature Steps](https://tessellate.design/r/feature-steps): Sequential 3-step feature walkthrough emphasizing onboarding ease and operational flow. (sections, marketing, features)
+- [Feature Sticky Narrative](https://tessellate.design/r/feature-sticky-narrative): Side-by-side section with sticky headline/story progression beside scrollable detail cards. (sections, marketing, features)
+- [Feature Tabs](https://tessellate.design/r/feature-tabs): Interactive tabbed feature display switching between workflows, previews, and feature descriptions. (sections, marketing, features)
+- [Feature Timeline](https://tessellate.design/r/feature-timeline): Chronological evolution or milestone timeline with connecting guides and release tags. (sections, marketing, features)
+- [Feature with Code](https://tessellate.design/r/feature-with-code): Deep-dive feature section pairing architectural narrative with typed code snippet tabs. (sections, marketing, features)
+- [Feature with Live Demo](https://tessellate.design/r/feature-with-live-demo): Feature showcase paired directly with an interactive sandbox state toggle. (sections, marketing, features)
 - [Floating Navigation](https://tessellate.design/r/floating-nav): Island-style floating navigation pill pinned to top viewport with rounded corners and glass blur. (shells, navigation)
+- [Footer Developer](https://tessellate.design/r/footer-developer): Terminal-styled developer footer with CLI command snippet, API status, and git commit sha. (sections, marketing, footer)
+- [Footer Minimal](https://tessellate.design/r/footer-minimal): Single-line copyright, status indicator, and legal links with minimal footprint. (sections, marketing, footer)
+- [Footer Newsletter](https://tessellate.design/r/footer-newsletter): Focused email subscription banner with privacy assurance and social icon bar. (sections, marketing, footer)
+- [Footer Product](https://tessellate.design/r/footer-product): Product-centric footer featuring release changelog badge, newsletter input, and nav columns. (sections, marketing, footer)
+- [Footer Sitemap](https://tessellate.design/r/footer-sitemap): Multi-column directory footer with category link lists, logo, and language selector. (sections, marketing, footer)
+- [How It Works Interactive](https://tessellate.design/r/how-it-works-interactive): Interactive stepper allowing users to click through stages of the pipeline. (sections, marketing, explanation)
+- [How It Works Steps](https://tessellate.design/r/how-it-works-steps): Numbered 3-part execution flow with step badges, titles, and illustrative diagrams. (sections, marketing, explanation)
+- [How It Works Timeline](https://tessellate.design/r/how-it-works-timeline): Vertical progression path showing end-to-end user lifecycle from install to scale. (sections, marketing, explanation)
 - [Icon Button](https://tessellate.design/r/icon-button): Compact icon-only action trigger with tooltip support and accessible label semantics. (primitives, inputs, actions)
 - [Icon Rail](https://tessellate.design/r/icon-rail): Ultra-thin vertical action rail for high-frequency tool selection in design editors. (shells, navigation)
 - [Immersive Fullscreen Shell](https://tessellate.design/r/immersive-fullscreen-shell): Distraction-free edge-to-edge presentation shell with auto-hiding chrome and focus mode. (shells, layout)
 - [Inline Alert](https://tessellate.design/r/inline-alert): In-page contextual message banner conveying informational, success, warning, or danger states. (primitives, feedback)
 - [Text Input](https://tessellate.design/r/input): Clean, accessible single-line text input with label, helper copy, and error states. (primitives, inputs)
+- [Integration Directory Preview](https://tessellate.design/r/integration-directory-preview): Searchable catalog preview of ecosystem plugins with filter chips. (sections, marketing, integrations)
+- [Integration Grid](https://tessellate.design/r/integration-grid): Icon grid displaying supported third-party tools, frameworks, and cloud services. (sections, marketing, integrations)
+- [Integration Orbit](https://tessellate.design/r/integration-orbit): Central product node surrounded by connected ecosystem nodes with radial alignment. (sections, marketing, integrations)
+- [Interactive Demo Hero](https://tessellate.design/r/interactive-demo-hero): Hero with inline interactive tabbed preview allowing immediate hands-on feature exploration. (sections, marketing, hero)
 - [Kiosk Display Shell](https://tessellate.design/r/kiosk-display-shell): Digital signage kiosk shell with high contrast typography, touch safety, and timeout reset. (shells, layout)
 - [Link](https://tessellate.design/r/link): Accessible semantic anchor navigation primitive with tactile underline animation and external indicators. (primitives, navigation)
+- [Logo Cloud Marquee](https://tessellate.design/r/logo-cloud-marquee): Smooth continuous horizontal strip of partner and customer wordmarks. (sections, marketing, trust)
+- [Logo Cloud Minimal](https://tessellate.design/r/logo-cloud-minimal): Subtle monochrome client logo row with muted contrast and disciplined spacing. (sections, marketing, trust)
 - [Marketing Navigation with CTA](https://tessellate.design/r/marketing-nav-cta): High-conversion header with promotional badge, navigation links, and primary CTA trigger. (shells, navigation)
 - [Mega Navigation](https://tessellate.design/r/mega-nav): Comprehensive multi-column dropdown header exposing broad product suite categories. (shells, navigation)
 - [Messaging Shell](https://tessellate.design/r/messaging-shell): Real-time conversation shell with channel sidebar, chat stream, and message composer. (shells, layout)
+- [Minimal Statement Hero](https://tessellate.design/r/minimal-statement-hero): Ultra-bold typography-only manifesto statement hero with maximum negative space. (sections, marketing, hero)
 - [Minimal Top Navigation](https://tessellate.design/r/minimal-top-nav): Restrained horizontal header with brand mark, essential route links, and profile badge. (shells, navigation)
 - [Mobile Bottom Navigation](https://tessellate.design/r/mobile-bottom-nav): Fixed bottom thumb-friendly tab bar for mobile web apps with icon and label pairs. (shells, navigation, mobile)
 - [Mobile Drawer Navigation](https://tessellate.design/r/mobile-drawer-nav): Hamburger slide-out overlay drawer displaying full mobile navigation menu. (shells, navigation, mobile)
@@ -131,7 +181,19 @@ Tools provided:
 - [Number Input](https://tessellate.design/r/number-input): Stepper input control with increment/decrement buttons, min/max bounds, and unit suffix. (primitives, inputs)
 - [Pagination](https://tessellate.design/r/pagination): Page traversal bar with previous/next triggers, page numbering, and ellipsis jumps. (primitives, navigation)
 - [Password Input](https://tessellate.design/r/password-input): Masked credential field with toggleable eye icon and password strength meter. (primitives, inputs, auth)
+- [Performance Benchmark Section](https://tessellate.design/r/performance-benchmark-section): Bar chart benchmarks comparing execution latency and throughput against industry baselines. (sections, marketing, technical-proof)
+- [Plan Feature Matrix](https://tessellate.design/r/plan-feature-matrix): Segmented feature comparison with expandable category groupings. (sections, marketing, pricing)
 - [Popover](https://tessellate.design/r/popover): Floating rich content card anchored to a target trigger with dismissal handling. (primitives, overlays)
+- [Press Mentions Strip](https://tessellate.design/r/press-mentions-strip): Curated editorial press quote row with publication logos and external publication links. (sections, marketing, trust)
+- [Pricing Calculator Shell](https://tessellate.design/r/pricing-calculator-shell): Interactive slider calculator estimating monthly cost based on MAU or compute units. (sections, marketing, pricing)
+- [Pricing Comparison Table](https://tessellate.design/r/pricing-comparison-table): Exhaustive checkmark matrix comparing feature tiers across 20+ dimensions. (sections, marketing, pricing)
+- [Pricing Enterprise](https://tessellate.design/r/pricing-enterprise): Dedicated high-touch enterprise tier section with custom contract feature list. (sections, marketing, pricing)
+- [Pricing Three Tier](https://tessellate.design/r/pricing-three-tier): Canonical 3-card pricing table (Free, Pro, Enterprise) with highlighted recommended tier. (sections, marketing, pricing)
+- [Pricing Toggle](https://tessellate.design/r/pricing-toggle): Billing interval switcher (Monthly vs Annual with discount badge) above plan cards. (sections, marketing, pricing)
+- [Pricing Two Tier](https://tessellate.design/r/pricing-two-tier): Focused 2-card comparison (Starter vs Business) for streamlined product offerings. (sections, marketing, pricing)
+- [Pricing Usage Based](https://tessellate.design/r/pricing-usage-based): Pay-as-you-go pricing card with tier volume sliders and unit-cost breakdowns. (sections, marketing, pricing)
+- [Process Diagram](https://tessellate.design/r/process-diagram): Visual flowchart explaining system data pipeline from ingestion to output. (sections, marketing, explanation)
+- [Product Screenshot Hero](https://tessellate.design/r/product-screenshot-hero): Centered headline with perspective tilted application screenshot frame and browser chrome. (sections, marketing, hero)
 - [Progress Bar](https://tessellate.design/r/progress-bar): Linear progress meter with determinate percentage progress and indeterminate pulse. (primitives, feedback)
 - [Progress Ring](https://tessellate.design/r/progress-ring): Circular radial progress meter with smooth stroke animation and central metric label. (primitives, feedback)
 - [Project Switcher](https://tessellate.design/r/project-switcher): Header breadcrumb trigger for toggling between project repositories or composed interfaces. (shells, navigation)
@@ -140,30 +202,81 @@ Tools provided:
 - [Research Terminal Shell](https://tessellate.design/r/research-terminal-shell): Scholarly exploration workspace with paper abstract viewer, citation graph, and notes rail. (shells, layout)
 - [Responsive App Shell](https://tessellate.design/r/responsive-app-shell): Unified application shell adapting gracefully from desktop sidebar to mobile bottom bar. (shells, layout)
 - [Search-First Header](https://tessellate.design/r/search-first-header): Global top navigation centered around expansive query input, filters, and notification bell. (shells, navigation)
+- [Search-First Hero](https://tessellate.design/r/search-first-hero): Command-bar-centric hero with prominent search input, trending suggestions, and category chips. (sections, marketing, hero)
 - [Search Input](https://tessellate.design/r/search-input): High-visibility search field with magnifying glass icon, keyboard shortcut badge (⌘K), and instant clear. (primitives, inputs, search)
+- [Security Proof](https://tessellate.design/r/security-proof): Comprehensive enterprise security overview covering encryption, RBAC, and data residency. (sections, marketing, technical-proof)
 - [Segmented Control](https://tessellate.design/r/segmented-control): High-density toggle bar with active sliding pill indicator between mutual modes. (primitives, inputs)
 - [Select](https://tessellate.design/r/select): Accessible styled dropdown selector with trigger, chevron indicator, and options. (primitives, inputs)
 - [Separator](https://tessellate.design/r/separator): Clean hairline divider line supporting horizontal and vertical orientations and middle labels. (primitives, layout)
 - [Settings Shell](https://tessellate.design/r/settings-shell): Account and workspace preference shell with category navigation tabs and form sections. (shells, layout)
 - [Skeleton](https://tessellate.design/r/skeleton): Content placeholder animation primitive preventing layout shift during loading. (primitives, feedback)
 - [Slider](https://tessellate.design/r/slider): Smooth continuous value slider with track, fill, and precision drag thumb. (primitives, inputs)
+- [Social Proof Hero](https://tessellate.design/r/social-proof-hero): Headline anchored by trust metrics, customer avatar stack, and star review rating strip. (sections, marketing, hero)
 - [Split Button](https://tessellate.design/r/split-button): Dual-action trigger combining primary immediate intent with secondary dropdown alternatives. (primitives, inputs, actions)
+- [Split Product Hero](https://tessellate.design/r/split-product-hero): 50/50 split layout with narrative copy on left and live interactive widget on right. (sections, marketing, hero)
 - [Switch](https://tessellate.design/r/switch): Accessible sliding toggle switch for boolean preferences and instant settings. (primitives, inputs)
 - [Tab Workspace Navigation](https://tessellate.design/r/tab-workspace-nav): Browser-style multi-tab document bar with close buttons and split view triggers. (shells, navigation)
 - [Tabs](https://tessellate.design/r/tabs): Accessible tabbed navigation system with active underlined or pill indicators and panels. (primitives, navigation)
 - [Tag Chip](https://tessellate.design/r/tag-chip): Clickable and removable categorical chip token for multi-criteria filters. (primitives, inputs)
+- [Testimonial Carousel](https://tessellate.design/r/testimonial-carousel): Paginated card slider with testimonial quotes, author details, and next/prev controls. (sections, marketing, trust)
+- [Testimonial Grid](https://tessellate.design/r/testimonial-grid): 3-column card grid of customer endorsements with rating stars and company tags. (sections, marketing, trust)
+- [Testimonial Quote](https://tessellate.design/r/testimonial-quote): Featured customer pull-quote with oversized quotation mark, portrait avatar, and bio. (sections, marketing, trust)
 - [Textarea](https://tessellate.design/r/textarea): Multi-line text input primitive with character counter, accessible label, and auto-expand support. (primitives, inputs)
 - [Three-Pane App Shell](https://tessellate.design/r/three-pane-app-shell): Pro desktop shell with navigation sidebar, primary workspace canvas, and right property inspector. (shells, layout)
 - [Toast](https://tessellate.design/r/toast): Ephemeral floating notification banner with auto-dismiss timers and action hooks. (primitives, feedback)
 - [Tooltip](https://tessellate.design/r/tooltip): Micro-interaction popup providing contextual hints on hover or keyboard focus. (primitives, feedback)
 - [Transparent-to-Solid Navigation](https://tessellate.design/r/transparent-solid-nav): Dynamic header starting transparent over media heroes and transitioning solid on scroll. (shells, navigation)
+- [Trust Badges Strip](https://tessellate.design/r/trust-badges-strip): Security, compliance, and SOC2 / ISO / HIPAA certification badge strip. (sections, marketing, trust)
 - [Two-Pane Master Detail Shell](https://tessellate.design/r/two-pane-master-detail-shell): Split-view shell pairing searchable master entity list with comprehensive detail reader pane. (shells, layout)
+- [Video Hero](https://tessellate.design/r/video-hero): Cinematic header with ambient video background placeholder, gradient veil, and play trigger. (sections, marketing, hero)
+- [Workflow Narrative](https://tessellate.design/r/workflow-narrative): Structured editorial walk-through explaining developer ergonomics and day-to-day use. (sections, marketing, explanation)
 - [Workspace Switcher](https://tessellate.design/r/workspace-switcher): Dropdown trigger displaying current tenant organization with plan badge and fast team switching. (shells, navigation)
 
 
 ---
 
 ## Complete Resource Reference
+
+### Accessibility Commitment Section (`accessibility-commitment-section`)
+- **Type**: section
+- **Categories**: sections, marketing, technical-proof
+- **Description**: Formal WCAG 2.2 AA compliance manifesto with automated audit guarantees.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/accessibility-commitment-section.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
 
 ### Accordion (`accordion`)
 - **Type**: primitive
@@ -240,6 +353,47 @@ Tools provided:
   - interactionDensity: 70
   - asymmetry: 15
   - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Prompt Hero (`ai-prompt-hero`)
+- **Type**: section
+- **Categories**: sections, marketing, hero
+- **Description**: Conversational prompt bar with preset suggestions, model picker pill, and generate CTA.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-prompt-hero.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
   - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
@@ -329,6 +483,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### API Capability Section (`api-capability-section`)
+- **Type**: section
+- **Categories**: sections, marketing, integrations
+- **Description**: Developer section highlighting REST / GraphQL / SDK methods with endpoint pill tags.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/api-capability-section.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### App Sidebar Compact (`app-sidebar-compact`)
 - **Type**: block
 - **Categories**: shells, navigation
@@ -404,6 +599,47 @@ Tools provided:
   - interactionDensity: 70
   - asymmetry: 15
   - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Architecture Diagram Section (`architecture-diagram-section`)
+- **Type**: section
+- **Categories**: sections, marketing, technical-proof
+- **Description**: Technical blueprint illustrating client-edge-database infrastructure topology.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/architecture-diagram-section.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
   - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
@@ -821,6 +1057,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Case Study Spotlight (`case-study-spotlight`)
+- **Type**: section
+- **Categories**: sections, marketing, trust
+- **Description**: In-depth customer story card featuring measurable impact metrics, quote, and read study link.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/case-study-spotlight.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Centered Top Navigation (`centered-top-nav`)
 - **Type**: block
 - **Categories**: shells, navigation
@@ -897,6 +1174,88 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Cinematic Media Hero (`cinematic-media-hero`)
+- **Type**: section
+- **Categories**: sections, marketing, hero
+- **Description**: Full-bleed immersive atmospheric hero with dark contrast, floating badge, and headline.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/cinematic-media-hero.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Code Hero (`code-hero`)
+- **Type**: section
+- **Categories**: sections, marketing, hero
+- **Description**: Developer-focused hero with syntax-highlighted editor preview, copy button, and package manager tabs.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/code-hero.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -1149,6 +1508,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Compliance Proof (`compliance-proof`)
+- **Type**: section
+- **Categories**: sections, marketing, technical-proof
+- **Description**: Regulatory compliance showcase displaying certified badges and downloadable reports.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/compliance-proof.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Context Menu (`context-menu`)
 - **Type**: primitive
 - **Categories**: primitives, overlays
@@ -1224,6 +1624,375 @@ Tools provided:
   - interactionDensity: 70
   - asymmetry: 15
   - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### CTA Community (`cta-community`)
+- **Type**: section
+- **Categories**: sections, marketing, cta
+- **Description**: Invitation banner to Discord / GitHub discussions with member counter badge.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/cta-community.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### CTA Demo Booking (`cta-demo-booking`)
+- **Type**: section
+- **Categories**: sections, marketing, cta
+- **Description**: Calendar booking card with time-slot picker preview and sales team call-to-action.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/cta-demo-booking.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### CTA Download (`cta-download`)
+- **Type**: section
+- **Categories**: sections, marketing, cta
+- **Description**: Multi-platform installer button group (macOS, Windows, Linux, CLI) with version pill.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/cta-download.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### CTA Minimal (`cta-minimal`)
+- **Type**: section
+- **Categories**: sections, marketing, cta
+- **Description**: Focused single-line headline with primary action button and supporting footnote.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/cta-minimal.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### CTA Product Preview (`cta-product-preview`)
+- **Type**: section
+- **Categories**: sections, marketing, cta
+- **Description**: High-impact banner featuring a peek into the application interface with join action.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/cta-product-preview.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### CTA Split (`cta-split`)
+- **Type**: section
+- **Categories**: sections, marketing, cta
+- **Description**: Two-column callout with compelling copy on left and email capture form on right.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/cta-split.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Customer Metrics Strip (`customer-metrics-strip`)
+- **Type**: section
+- **Categories**: sections, marketing, trust
+- **Description**: Four-column KPI impact bar highlighting uptime, volume, latency, and scale numbers.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/customer-metrics-strip.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Customer Story Split (`customer-story-split`)
+- **Type**: section
+- **Categories**: sections, marketing, trust
+- **Description**: Side-by-side narrative with customer team photo on one side and challenge-solution story on other.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/customer-story-split.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Data Hero (`data-hero`)
+- **Type**: section
+- **Categories**: sections, marketing, hero
+- **Description**: Financial/analytical hero featuring live sparklines, streaming metric tickers, and status badges.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/data-hero.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
   - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
@@ -1559,6 +2328,744 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Editorial Hero (`editorial-hero`)
+- **Type**: section
+- **Categories**: sections, marketing, hero
+- **Description**: Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/editorial-hero.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### FAQ Accordion (`faq-accordion`)
+- **Type**: section
+- **Categories**: sections, marketing, faq
+- **Description**: Clean expandable question list with keyboard navigation and smooth disclosure.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/faq-accordion.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### FAQ Searchable (`faq-searchable`)
+- **Type**: section
+- **Categories**: sections, marketing, faq
+- **Description**: Filterable FAQ section with live search input and category filter chips.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/faq-searchable.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### FAQ Two Column (`faq-two-column`)
+- **Type**: section
+- **Categories**: sections, marketing, faq
+- **Description**: Dual-column question layout for high question density without excessive vertical length.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/faq-two-column.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature Alternating Rows (`feature-alternating-rows`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Left-right alternating feature narrative with illustrative preview frames.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-alternating-rows.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature Bento (`feature-bento`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Asymmetric bento box layout combining wide hero card, tall telemetry card, and compact utility cards.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-bento.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature Carousel (`feature-carousel`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Interactive swipeable feature card reel with slide indicators and category tags.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-carousel.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature Comparison (`feature-comparison`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Side-by-side "Before vs After" or "Old Way vs Modern Way" comparative feature breakdown.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-comparison.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature Grid 3x2 (`feature-grid-3x2`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Balanced 6-card grid with icon headers, descriptive copy, and subtle hover borders.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-grid-3x2.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature Matrix (`feature-matrix`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Comprehensive feature availability grid categorized across core functional pillars.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-matrix.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature Metrics (`feature-metrics`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Feature section backed by empirical benchmark graphs and performance comparison stats.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-metrics.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature Spotlight (`feature-spotlight`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Full-width spotlight card highlighting a single flagship capability with glow accents.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-spotlight.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature Steps (`feature-steps`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Sequential 3-step feature walkthrough emphasizing onboarding ease and operational flow.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-steps.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature Sticky Narrative (`feature-sticky-narrative`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Side-by-side section with sticky headline/story progression beside scrollable detail cards.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-sticky-narrative.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature Tabs (`feature-tabs`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Interactive tabbed feature display switching between workflows, previews, and feature descriptions.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-tabs.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature Timeline (`feature-timeline`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Chronological evolution or milestone timeline with connecting guides and release tags.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-timeline.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature with Code (`feature-with-code`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Deep-dive feature section pairing architectural narrative with typed code snippet tabs.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-with-code.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Feature with Live Demo (`feature-with-live-demo`)
+- **Type**: section
+- **Categories**: sections, marketing, features
+- **Description**: Feature showcase paired directly with an interactive sandbox state toggle.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/feature-with-live-demo.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Floating Navigation (`floating-nav`)
 - **Type**: block
 - **Categories**: shells, navigation
@@ -1593,6 +3100,334 @@ Tools provided:
   - interactionDensity: 70
   - asymmetry: 15
   - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Footer Developer (`footer-developer`)
+- **Type**: section
+- **Categories**: sections, marketing, footer
+- **Description**: Terminal-styled developer footer with CLI command snippet, API status, and git commit sha.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/footer-developer.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Footer Minimal (`footer-minimal`)
+- **Type**: section
+- **Categories**: sections, marketing, footer
+- **Description**: Single-line copyright, status indicator, and legal links with minimal footprint.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/footer-minimal.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Footer Newsletter (`footer-newsletter`)
+- **Type**: section
+- **Categories**: sections, marketing, footer
+- **Description**: Focused email subscription banner with privacy assurance and social icon bar.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/footer-newsletter.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Footer Product (`footer-product`)
+- **Type**: section
+- **Categories**: sections, marketing, footer
+- **Description**: Product-centric footer featuring release changelog badge, newsletter input, and nav columns.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/footer-product.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Footer Sitemap (`footer-sitemap`)
+- **Type**: section
+- **Categories**: sections, marketing, footer
+- **Description**: Multi-column directory footer with category link lists, logo, and language selector.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/footer-sitemap.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### How It Works Interactive (`how-it-works-interactive`)
+- **Type**: section
+- **Categories**: sections, marketing, explanation
+- **Description**: Interactive stepper allowing users to click through stages of the pipeline.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/how-it-works-interactive.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### How It Works Steps (`how-it-works-steps`)
+- **Type**: section
+- **Categories**: sections, marketing, explanation
+- **Description**: Numbered 3-part execution flow with step badges, titles, and illustrative diagrams.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/how-it-works-steps.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### How It Works Timeline (`how-it-works-timeline`)
+- **Type**: section
+- **Categories**: sections, marketing, explanation
+- **Description**: Vertical progression path showing end-to-end user lifecycle from install to scale.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/how-it-works-timeline.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
   - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
@@ -1805,6 +3640,170 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Integration Directory Preview (`integration-directory-preview`)
+- **Type**: section
+- **Categories**: sections, marketing, integrations
+- **Description**: Searchable catalog preview of ecosystem plugins with filter chips.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/integration-directory-preview.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Integration Grid (`integration-grid`)
+- **Type**: section
+- **Categories**: sections, marketing, integrations
+- **Description**: Icon grid displaying supported third-party tools, frameworks, and cloud services.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/integration-grid.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Integration Orbit (`integration-orbit`)
+- **Type**: section
+- **Categories**: sections, marketing, integrations
+- **Description**: Central product node surrounded by connected ecosystem nodes with radial alignment.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/integration-orbit.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Interactive Demo Hero (`interactive-demo-hero`)
+- **Type**: section
+- **Categories**: sections, marketing, hero
+- **Description**: Hero with inline interactive tabbed preview allowing immediate hands-on feature exploration.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/interactive-demo-hero.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Kiosk Display Shell (`kiosk-display-shell`)
 - **Type**: block
 - **Categories**: shells, layout
@@ -1881,6 +3880,88 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Logo Cloud Marquee (`logo-cloud-marquee`)
+- **Type**: section
+- **Categories**: sections, marketing, trust
+- **Description**: Smooth continuous horizontal strip of partner and customer wordmarks.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/logo-cloud-marquee.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Logo Cloud Minimal (`logo-cloud-minimal`)
+- **Type**: section
+- **Categories**: sections, marketing, trust
+- **Description**: Subtle monochrome client logo row with muted contrast and disciplined spacing.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/logo-cloud-minimal.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -2003,6 +4084,47 @@ Tools provided:
   - interactionDensity: 70
   - asymmetry: 15
   - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Minimal Statement Hero (`minimal-statement-hero`)
+- **Type**: section
+- **Categories**: sections, marketing, hero
+- **Description**: Ultra-bold typography-only manifesto statement hero with maximum negative space.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/minimal-statement-hero.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
   - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
@@ -2297,6 +4419,88 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Performance Benchmark Section (`performance-benchmark-section`)
+- **Type**: section
+- **Categories**: sections, marketing, technical-proof
+- **Description**: Bar chart benchmarks comparing execution latency and throughput against industry baselines.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/performance-benchmark-section.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Plan Feature Matrix (`plan-feature-matrix`)
+- **Type**: section
+- **Categories**: sections, marketing, pricing
+- **Description**: Segmented feature comparison with expandable category groupings.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/plan-feature-matrix.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Popover (`popover`)
 - **Type**: primitive
 - **Categories**: primitives, overlays
@@ -2332,6 +4536,416 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Press Mentions Strip (`press-mentions-strip`)
+- **Type**: section
+- **Categories**: sections, marketing, trust
+- **Description**: Curated editorial press quote row with publication logos and external publication links.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/press-mentions-strip.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Pricing Calculator Shell (`pricing-calculator-shell`)
+- **Type**: section
+- **Categories**: sections, marketing, pricing
+- **Description**: Interactive slider calculator estimating monthly cost based on MAU or compute units.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/pricing-calculator-shell.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Pricing Comparison Table (`pricing-comparison-table`)
+- **Type**: section
+- **Categories**: sections, marketing, pricing
+- **Description**: Exhaustive checkmark matrix comparing feature tiers across 20+ dimensions.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/pricing-comparison-table.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Pricing Enterprise (`pricing-enterprise`)
+- **Type**: section
+- **Categories**: sections, marketing, pricing
+- **Description**: Dedicated high-touch enterprise tier section with custom contract feature list.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/pricing-enterprise.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Pricing Three Tier (`pricing-three-tier`)
+- **Type**: section
+- **Categories**: sections, marketing, pricing
+- **Description**: Canonical 3-card pricing table (Free, Pro, Enterprise) with highlighted recommended tier.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/pricing-three-tier.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Pricing Toggle (`pricing-toggle`)
+- **Type**: section
+- **Categories**: sections, marketing, pricing
+- **Description**: Billing interval switcher (Monthly vs Annual with discount badge) above plan cards.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/pricing-toggle.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Pricing Two Tier (`pricing-two-tier`)
+- **Type**: section
+- **Categories**: sections, marketing, pricing
+- **Description**: Focused 2-card comparison (Starter vs Business) for streamlined product offerings.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/pricing-two-tier.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Pricing Usage Based (`pricing-usage-based`)
+- **Type**: section
+- **Categories**: sections, marketing, pricing
+- **Description**: Pay-as-you-go pricing card with tier volume sliders and unit-cost breakdowns.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/pricing-usage-based.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Process Diagram (`process-diagram`)
+- **Type**: section
+- **Categories**: sections, marketing, explanation
+- **Description**: Visual flowchart explaining system data pipeline from ingestion to output.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/process-diagram.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Product Screenshot Hero (`product-screenshot-hero`)
+- **Type**: section
+- **Categories**: sections, marketing, hero
+- **Description**: Centered headline with perspective tilted application screenshot frame and browser chrome.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/product-screenshot-hero.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -2666,6 +5280,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Search-First Hero (`search-first-hero`)
+- **Type**: section
+- **Categories**: sections, marketing, hero
+- **Description**: Command-bar-centric hero with prominent search input, trending suggestions, and category chips.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/search-first-hero.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Search Input (`search-input`)
 - **Type**: primitive
 - **Categories**: primitives, inputs, search
@@ -2701,6 +5356,47 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Security Proof (`security-proof`)
+- **Type**: section
+- **Categories**: sections, marketing, technical-proof
+- **Description**: Comprehensive enterprise security overview covering encryption, RBAC, and data residency.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/security-proof.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -2953,6 +5649,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Social Proof Hero (`social-proof-hero`)
+- **Type**: section
+- **Categories**: sections, marketing, hero
+- **Description**: Headline anchored by trust metrics, customer avatar stack, and star review rating strip.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/social-proof-hero.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Split Button (`split-button`)
 - **Type**: primitive
 - **Categories**: primitives, inputs, actions
@@ -2988,6 +5725,47 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Split Product Hero (`split-product-hero`)
+- **Type**: section
+- **Categories**: sections, marketing, hero
+- **Description**: 50/50 split layout with narrative copy on left and live interactive widget on right.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/split-product-hero.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -3152,6 +5930,129 @@ Tools provided:
   - asymmetry: 10
   - conversionIntensity: 60
   - trust: 85
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Testimonial Carousel (`testimonial-carousel`)
+- **Type**: section
+- **Categories**: sections, marketing, trust
+- **Description**: Paginated card slider with testimonial quotes, author details, and next/prev controls.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/testimonial-carousel.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Testimonial Grid (`testimonial-grid`)
+- **Type**: section
+- **Categories**: sections, marketing, trust
+- **Description**: 3-column card grid of customer endorsements with rating stars and company tags.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/testimonial-grid.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Testimonial Quote (`testimonial-quote`)
+- **Type**: section
+- **Categories**: sections, marketing, trust
+- **Description**: Featured customer pull-quote with oversized quotation mark, portrait avatar, and bio.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/testimonial-quote.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -3363,6 +6264,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Trust Badges Strip (`trust-badges-strip`)
+- **Type**: section
+- **Categories**: sections, marketing, trust
+- **Description**: Security, compliance, and SOC2 / ISO / HIPAA certification badge strip.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/trust-badges-strip.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Two-Pane Master Detail Shell (`two-pane-master-detail-shell`)
 - **Type**: block
 - **Categories**: shells, layout
@@ -3397,6 +6339,88 @@ Tools provided:
   - interactionDensity: 70
   - asymmetry: 15
   - conversionIntensity: 50
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Video Hero (`video-hero`)
+- **Type**: section
+- **Categories**: sections, marketing, hero
+- **Description**: Cinematic header with ambient video background placeholder, gradient veil, and play trigger.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/video-hero.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
+  - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Workflow Narrative (`workflow-narrative`)
+- **Type**: section
+- **Categories**: sections, marketing, explanation
+- **Description**: Structured editorial walk-through explaining developer ergonomics and day-to-day use.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/workflow-narrative.json
+- **Design DNA**:
+  - professionalism: 85
+  - playfulness: 30
+  - luxury: 50
+  - warmth: 40
+  - technicality: 70
+  - editorial: 75
+  - futurism: 45
+  - visualAmbition: 70
+  - structuralCreativity: 55
+  - density: 50
+  - whitespace: 65
+  - contrast: 80
+  - colourfulness: 40
+  - curvature: 35
+  - depth: 40
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 60
+  - imageryIntensity: 25
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 50
+  - interactionDensity: 50
+  - asymmetry: 25
+  - conversionIntensity: 75
   - trust: 90
   - accessibilityPriority: 95
   - performancePriority: 95

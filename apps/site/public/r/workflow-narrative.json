@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "workflow-narrative",
+  "type": "registry:block",
+  "title": "Workflow Narrative",
+  "description": "Structured editorial walk-through explaining developer ergonomics and day-to-day use.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type WorkflowNarrativeVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface WorkflowNarrativeProps {\n  variant?: WorkflowNarrativeVariant;\n}\n\nexport function WorkflowNarrative({ variant = 'quiet' }: WorkflowNarrativeProps) {\n  let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-white text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  return (\n    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-3xl mx-auto\">\n        <span className=\"text-xs font-mono font-bold uppercase text-neutral-500 mb-3 block\">Developer Ergonomics</span>\n        <h2 className=\"text-3xl font-bold tracking-tight mb-6\">Built for engineers who care about source code ownership.</h2>\n        <div className=\"space-y-4 text-sm opacity-80 leading-relaxed\">\n          <p>\n            When autonomous coding agents write code, they often produce fragmented CSS and arbitrary dependencies. Tessellate grounds agents in a verified resource vocabulary.\n          </p>\n          <p>\n            The resulting code contains zero proprietary imports. It reads like the cleanest code written by your senior staff front-end architect.\n          </p>\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { WorkflowNarrative, WorkflowNarrativeVariant } from './index.js';\n\nexport function WorkflowNarrativePreview() {\n  const [variant, setVariant] = useState<WorkflowNarrativeVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Workflow Narrative Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as WorkflowNarrativeVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <WorkflowNarrative variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "explanation"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_workflow_narrative",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

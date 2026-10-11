@@ -480,7 +480,7 @@ Produce/curate in this order:
 
 - [x] 44 primitives & controls.
 - [x] 36 navigation/application shells.
-- [ ] 72 marketing sections.
+- [x] 72 marketing sections.
 - [ ] 56 application blocks.
 - [ ] 24 data resources.
 - [ ] 20 AI interaction patterns.

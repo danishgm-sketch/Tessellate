@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo-cloud-minimal",
+  "type": "registry:block",
+  "title": "Logo Cloud Minimal",
+  "description": "Subtle monochrome client logo row with muted contrast and disciplined spacing.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type LogoCloudMinimalVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface LogoCloudMinimalProps {\n  variant?: LogoCloudMinimalVariant;\n  title?: string;\n  logos?: string[];\n}\n\nexport function LogoCloudMinimal({\n  variant = 'quiet',\n  title = 'POWERING DESIGN SYSTEMS AT MODERN TECHNOLOGY ORGANISATIONS',\n  logos = ['Acme Corp', 'Starlight Data', 'Hyperion', 'Vertex Labs', 'Nexus AI'],\n}: LogoCloudMinimalProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n  let titleColor = 'text-neutral-500';\n  let logoColor = 'text-neutral-600 hover:text-neutral-900';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50 text-neutral-950 border-[#D9D6CF]';\n    titleColor = 'text-neutral-600 font-semibold';\n    logoColor = 'text-neutral-700 hover:text-[#2547E8]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    titleColor = 'text-neutral-400 font-mono';\n    logoColor = 'text-neutral-400 hover:text-white';\n  }\n\n  return (\n    <section className={`relative w-full py-16 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-5xl mx-auto text-center\">\n        <p className={`text-xs uppercase tracking-widest mb-10 ${titleColor}`}>{title}</p>\n        <div className=\"flex flex-wrap items-center justify-center gap-10 sm:gap-16\">\n          {logos.map((logo) => (\n            <span key={logo} className={`font-mono text-sm sm:text-base font-semibold tracking-wider transition-colors ${logoColor}`}>\n              {logo}\n            </span>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { LogoCloudMinimal, LogoCloudMinimalVariant } from './index.js';\n\nexport function LogoCloudMinimalPreview() {\n  const [variant, setVariant] = useState<LogoCloudMinimalVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Logo Cloud Minimal Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as LogoCloudMinimalVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <LogoCloudMinimal variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "trust"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_logo_cloud_minimal",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

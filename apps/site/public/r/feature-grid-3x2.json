@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "feature-grid-3x2",
+  "type": "registry:block",
+  "title": "Feature Grid 3x2",
+  "description": "Balanced 6-card grid with icon headers, descriptive copy, and subtle hover borders.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type FeatureGrid3x2Variant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FeatureGrid3x2Props {\n  variant?: FeatureGrid3x2Variant;\n  headline?: string;\n  subheadline?: string;\n  features?: Array<{ title: string; desc: string }>;\n}\n\nexport function FeatureGrid3x2({\n  variant = 'quiet',\n  headline = 'Engineered for durability across every layer of the interface.',\n  subheadline = 'Six architectural pillars powering the Tessellate composition runtime.',\n  features = [\n    { title: 'Zero Runtime Lock-In', desc: 'Exports directly to clean React and Tailwind CSS without hidden proprietary libraries.' },\n    { title: 'Deterministic DNA', desc: 'Enforces mathematical harmony across spacing, curvature, typography, and contrast.' },\n    { title: 'Sub-Millisecond Parsing', desc: 'Validates entire component trees in microseconds using local Zod schemas.' },\n    { title: 'Accessible by Default', desc: 'Meets WCAG 2.2 AA standards with full keyboard traversal and contrast tokens.' },\n    { title: 'Agent-Ready Registry', desc: 'Equipped with OpenAPI, llms.txt, and MCP servers for autonomous coding tools.' },\n    { title: 'Guest-First Storage', desc: 'Operates completely client-side with optional GitHub OAuth for cloud sync.' },\n  ],\n}: FeatureGrid3x2Props) {\n  let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';\n  let card = 'bg-white border-neutral-200 shadow-2xs hover:border-neutral-400';\n\n  if (variant === 'expressive') {\n    bg = 'bg-white text-neutral-950 border-[#D9D6CF]';\n    card = 'bg-blue-50/30 border-blue-100 shadow-sm hover:border-[#2547E8] hover:shadow-md';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    card = 'bg-[#151921] border-[#2E3440] hover:border-cyan-400';\n  }\n\n  return (\n    <section className={`relative w-full py-20 sm:py-28 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-6xl mx-auto\">\n        <div className=\"text-center max-w-3xl mx-auto mb-16\">\n          <h2 className=\"text-3xl sm:text-5xl font-bold tracking-tight mb-4\">{headline}</h2>\n          <p className=\"text-base sm:text-lg opacity-75\">{subheadline}</p>\n        </div>\n\n        <div className=\"grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8\">\n          {features.map((f, i) => (\n            <div key={f.title} className={`p-6 rounded-xl border transition-all ${card}`}>\n              <div className=\"w-8 h-8 rounded-lg bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center font-mono text-xs font-bold mb-4\">\n                0{i + 1}\n              </div>\n              <h3 className=\"font-semibold text-base mb-2\">{f.title}</h3>\n              <p className=\"text-xs sm:text-sm opacity-75 leading-relaxed\">{f.desc}</p>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FeatureGrid3x2, FeatureGrid3x2Variant } from './index.js';\n\nexport function FeatureGrid3x2Preview() {\n  const [variant, setVariant] = useState<FeatureGrid3x2Variant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Feature Grid 3x2 Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as FeatureGrid3x2Variant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <FeatureGrid3x2 variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "features"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_feature_grid_3x2",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

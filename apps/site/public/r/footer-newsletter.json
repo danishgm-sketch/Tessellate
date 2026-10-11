@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "footer-newsletter",
+  "type": "registry:block",
+  "title": "Footer Newsletter",
+  "description": "Focused email subscription banner with privacy assurance and social icon bar.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type FooterNewsletterVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FooterNewsletterProps {\n  variant?: FooterNewsletterVariant;\n}\n\nexport function FooterNewsletter({ variant = 'quiet' }: FooterNewsletterProps) {\n  const [email, setEmail] = useState('');\n\n  let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';\n  let inputBorder = 'border-neutral-300';\n  let btn = 'bg-neutral-900 text-white hover:bg-neutral-800';\n\n  if (variant === 'expressive') {\n    bg = 'bg-white text-neutral-950 border-[#D9D6CF]';\n    inputBorder = 'border-blue-200';\n    btn = 'bg-[#2547E8] text-white hover:bg-[#1B35B4] shadow-md';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    inputBorder = 'border-[#2E3440] bg-[#151921]';\n    btn = 'bg-cyan-500 text-black hover:bg-cyan-400 font-medium';\n  }\n\n  return (\n    <footer className={`w-full py-20 px-6 sm:px-12 border-t transition-colors ${bg}`}>\n      <div className=\"max-w-4xl mx-auto flex flex-col items-center text-center\">\n        <h2 className=\"text-2xl sm:text-3xl font-bold tracking-tight mb-3\">Tessellate Dispatch</h2>\n        <p className=\"text-xs sm:text-sm opacity-75 max-w-md mb-8\">\n          Weekly dispatches on computational aesthetics, autonomous composition, and Design DNA.\n        </p>\n\n        <form onSubmit={(e) => { e.preventDefault(); setEmail(''); }} className=\"w-full max-w-md flex gap-2 mb-4\">\n          <input\n            type=\"email\"\n            value={email}\n            onChange={(e) => setEmail(e.target.value)}\n            placeholder=\"colleague@domain.com\"\n            required\n            className={`w-full p-2.5 rounded-lg border text-xs sm:text-sm outline-none ${inputBorder}`}\n          />\n          <button type=\"submit\" className={`px-5 py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all ${btn}`}>\n            Join\n          </button>\n        </form>\n\n        <p className=\"text-[11px] opacity-60\">Zero spam. Pure front-end engineering signal. Unsubscribe at any time.</p>\n      </div>\n    </footer>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FooterNewsletter, FooterNewsletterVariant } from './index.js';\n\nexport function FooterNewsletterPreview() {\n  const [variant, setVariant] = useState<FooterNewsletterVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Footer Newsletter Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as FooterNewsletterVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <FooterNewsletter variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "footer"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_footer_newsletter",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

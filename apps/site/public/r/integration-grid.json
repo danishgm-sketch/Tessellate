@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "integration-grid",
+  "type": "registry:block",
+  "title": "Integration Grid",
+  "description": "Icon grid displaying supported third-party tools, frameworks, and cloud services.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type IntegrationGridVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface IntegrationGridProps {\n  variant?: IntegrationGridVariant;\n}\n\nexport function IntegrationGrid({ variant = 'quiet' }: IntegrationGridProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n  let card = 'bg-neutral-50 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/30 text-neutral-950 border-[#D9D6CF]';\n    card = 'bg-white border-blue-100 shadow-sm';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    card = 'bg-[#151921] border-[#2E3440]';\n  }\n\n  const tools = ['Next.js', 'Vite', 'Astro', 'Remix', 'Tailwind 4', 'TypeScript', 'Cursor', 'Claude Code', 'Antigravity'];\n\n  return (\n    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-5xl mx-auto\">\n        <h2 className=\"text-3xl font-bold tracking-tight text-center mb-16\">Universal Ecosystem Compatibility</h2>\n        <div className=\"grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-6\">\n          {tools.map((t) => (\n            <div key={t} className={`p-6 rounded-xl border text-center font-mono text-xs font-bold ${card}`}>\n              {t}\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { IntegrationGrid, IntegrationGridVariant } from './index.js';\n\nexport function IntegrationGridPreview() {\n  const [variant, setVariant] = useState<IntegrationGridVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Integration Grid Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as IntegrationGridVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <IntegrationGrid variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "integrations"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_integration_grid",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

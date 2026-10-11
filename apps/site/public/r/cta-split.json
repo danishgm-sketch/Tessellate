@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta-split",
+  "type": "registry:block",
+  "title": "CTA Split",
+  "description": "Two-column callout with compelling copy on left and email capture form on right.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type CtaSplitVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface CtaSplitProps {\n  variant?: CtaSplitVariant;\n}\n\nexport function CtaSplit({ variant = 'quiet' }: CtaSplitProps) {\n  const [email, setEmail] = useState('');\n\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n  let inputBorder = 'border-neutral-300';\n  let btn = 'bg-neutral-900 text-white hover:bg-neutral-800';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/50 text-neutral-950 border-[#D9D6CF]';\n    inputBorder = 'border-blue-200';\n    btn = 'bg-[#2547E8] text-white hover:bg-[#1B35B4] shadow-md';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    inputBorder = 'border-[#2E3440] bg-[#151921]';\n    btn = 'bg-cyan-500 text-black hover:bg-cyan-400 font-medium';\n  }\n\n  return (\n    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center\">\n        <div>\n          <h2 className=\"text-3xl font-bold tracking-tight mb-4\">Stay ahead of the interface revolution.</h2>\n          <p className=\"text-xs sm:text-sm opacity-80 leading-relaxed\">\n            Get weekly updates on newly verified blueprints, Design DNA algorithms, and autonomous agent patterns.\n          </p>\n        </div>\n\n        <form onSubmit={(e) => { e.preventDefault(); setEmail(''); }} className=\"flex gap-3\">\n          <input\n            type=\"email\"\n            value={email}\n            onChange={(e) => setEmail(e.target.value)}\n            placeholder=\"colleague@domain.com\"\n            required\n            className={`w-full p-3 rounded-lg border text-xs sm:text-sm outline-none ${inputBorder}`}\n          />\n          <button type=\"submit\" className={`px-6 py-3 rounded-lg text-xs font-semibold whitespace-nowrap uppercase tracking-wider transition-all ${btn}`}>\n            Subscribe\n          </button>\n        </form>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { CtaSplit, CtaSplitVariant } from './index.js';\n\nexport function CtaSplitPreview() {\n  const [variant, setVariant] = useState<CtaSplitVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">CTA Split Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as CtaSplitVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <CtaSplit variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "cta"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_cta_split",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

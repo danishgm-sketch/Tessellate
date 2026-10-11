@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "plan-feature-matrix",
+  "type": "registry:block",
+  "title": "Plan Feature Matrix",
+  "description": "Segmented feature comparison with expandable category groupings.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type PlanFeatureMatrixVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface PlanFeatureMatrixProps {\n  variant?: PlanFeatureMatrixVariant;\n}\n\nexport function PlanFeatureMatrix({ variant = 'quiet' }: PlanFeatureMatrixProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n  let tableBorder = 'border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/30 text-neutral-950 border-[#D9D6CF]';\n    tableBorder = 'border-blue-100';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    tableBorder = 'border-[#2E3440]';\n  }\n\n  const items = [\n    { group: 'Core Composition', feature: 'Full Resource Manifests', free: 'Yes', pro: 'Yes' },\n    { group: 'Core Composition', feature: 'React + Tailwind AST Output', free: 'Yes', pro: 'Yes' },\n    { group: 'Team Collaboration', feature: 'Real-time Project Checkpoints', free: 'No', pro: 'Yes' },\n    { group: 'Team Collaboration', feature: 'Role-Based Access Control', free: 'No', pro: 'Yes' },\n  ];\n\n  return (\n    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-5xl mx-auto\">\n        <h2 className=\"text-3xl font-bold tracking-tight text-center mb-12\">Categorized Feature Matrix</h2>\n\n        <div className={`overflow-x-auto rounded-xl border ${tableBorder}`}>\n          <table className=\"w-full text-left text-xs sm:text-sm\">\n            <thead className=\"border-b bg-neutral-100/60 dark:bg-neutral-900/60 font-mono text-xs uppercase\">\n              <tr>\n                <th className=\"p-4\">Group</th>\n                <th className=\"p-4\">Feature</th>\n                <th className=\"p-4\">Free</th>\n                <th className=\"p-4\">Pro</th>\n              </tr>\n            </thead>\n            <tbody className=\"divide-y divide-neutral-200 dark:divide-neutral-800\">\n              {items.map((it) => (\n                <tr key={it.feature} className=\"hover:bg-neutral-50 dark:hover:bg-neutral-900/40\">\n                  <td className=\"p-4 font-mono text-[11px] opacity-60 uppercase\">{it.group}</td>\n                  <td className=\"p-4 font-semibold\">{it.feature}</td>\n                  <td className=\"p-4 font-mono\">{it.free}</td>\n                  <td className=\"p-4 font-mono text-emerald-600 dark:text-emerald-400\">{it.pro}</td>\n                </tr>\n              ))}\n            </tbody>\n          </table>\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { PlanFeatureMatrix, PlanFeatureMatrixVariant } from './index.js';\n\nexport function PlanFeatureMatrixPreview() {\n  const [variant, setVariant] = useState<PlanFeatureMatrixVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">Plan Feature Matrix Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as PlanFeatureMatrixVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <PlanFeatureMatrix variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "pricing"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_plan_feature_matrix",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

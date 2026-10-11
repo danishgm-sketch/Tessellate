@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "faq-accordion",
+  "type": "registry:block",
+  "title": "FAQ Accordion",
+  "description": "Clean expandable question list with keyboard navigation and smooth disclosure.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type FaqAccordionVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FaqAccordionProps {\n  variant?: FaqAccordionVariant;\n}\n\nexport function FaqAccordion({ variant = 'quiet' }: FaqAccordionProps) {\n  const [openIdx, setOpenIdx] = useState<number | null>(0);\n\n  let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';\n  let itemBorder = 'border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-white text-neutral-950 border-[#D9D6CF]';\n    itemBorder = 'border-blue-100';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n    itemBorder = 'border-[#2E3440]';\n  }\n\n  const faqs = [\n    { q: 'Is Tessellate really 100% free and open core?', a: 'Yes. All 324 canonical launch resources, Design DNA tools, and export CLI commands are free under MIT.' },\n    { q: 'Can autonomous coding agents use this directly?', a: 'Yes. Tessellate provides OpenAPI schemas, llms.txt, and official MCP server bindings for Cursor, Claude Code, and Antigravity.' },\n    { q: 'Do I need to install any proprietary runtime package?', a: 'No. Tessellate exports pure React and Tailwind CSS source code directly into your repository.' },\n  ];\n\n  return (\n    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>\n      <div className=\"max-w-3xl mx-auto\">\n        <h2 className=\"text-3xl font-bold tracking-tight text-center mb-12\">Frequently Asked Questions</h2>\n\n        <div className=\"space-y-4\">\n          {faqs.map((f, i) => (\n            <div key={f.q} className={`border rounded-xl p-5 transition-all ${itemBorder}`}>\n              <button\n                type=\"button\"\n                onClick={() => setOpenIdx(openIdx === i ? null : i)}\n                className=\"w-full text-left font-semibold text-sm sm:text-base flex justify-between items-center\"\n              >\n                <span>{f.q}</span>\n                <span className=\"font-mono text-xs opacity-60\">{openIdx === i ? '−' : '+'}</span>\n              </button>\n              {openIdx === i && (\n                <p className=\"text-xs sm:text-sm opacity-80 mt-3 pt-3 border-t border-neutral-100 dark:border-neutral-800 leading-relaxed\">\n                  {f.a}\n                </p>\n              )}\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { FaqAccordion, FaqAccordionVariant } from './index.js';\n\nexport function FaqAccordionPreview() {\n  const [variant, setVariant] = useState<FaqAccordionVariant>('quiet');\n\n  return (\n    <div className=\"w-full flex flex-col\">\n      <div className=\"p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs\">\n        <span className=\"font-semibold text-neutral-600\">FAQ Accordion Preview</span>\n        <div className=\"flex items-center gap-1.5\">\n          {(['quiet', 'expressive', 'nocturne'] as FaqAccordionVariant[]).map((v) => (\n            <button\n              key={v}\n              type=\"button\"\n              onClick={() => setVariant(v)}\n              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${\n                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'\n              }`}\n            >\n              {v}\n            </button>\n          ))}\n        </div>\n      </div>\n      <FaqAccordion variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "sections",
+    "marketing",
+    "faq"
+  ],
+  "meta": {
+    "tessellateId": "res_sec_faq_accordion",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}
