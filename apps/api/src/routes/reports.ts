@@ -2,6 +2,7 @@ import { Hono } from 'hono';
 import { drizzle } from 'drizzle-orm/d1';
 import * as schema from '../db/schema.js';
 import { optionalAuth } from '../auth.js';
+import { verifyTurnstileToken } from '../turnstile.js';
 import type { Env, AuthenticatedContext } from '../types.js';
 
 export const reportsRoute = new Hono<{ Bindings: Env; Variables: { auth?: AuthenticatedContext } }>();
@@ -26,6 +27,16 @@ reportsRoute.post('/', optionalAuth, async (c) => {
 
   if (!body || !body.targetType || !body.targetId || !body.reason) {
     return c.json({ error: 'Validation Error', message: 'targetType, targetId, and reason are required' }, 400);
+  }
+
+  // Turnstile verification if configured in environment
+  const turnstileCheck = await verifyTurnstileToken(
+    c.env?.TURNSTILE_SECRET_KEY,
+    body.turnstileToken || c.req.header('cf-turnstile-response'),
+    c.req.header('cf-connecting-ip')
+  );
+  if (!turnstileCheck.success) {
+    return c.json({ error: 'Abuse Check Failed', message: turnstileCheck.error ?? 'Turnstile verification failed' }, 403);
   }
 
   const validTargetTypes = ['project', 'resource', 'user', 'collection'];

@@ -154,6 +154,27 @@ This file records major decisions so autonomous agents do not repeatedly reopen 
 
 **Status:** LOCKED.
 
+### D-031 — Production Deployment Architecture & Monthly Cost Projection
+**Date:** 2026-10-11  
+**Context:** Phase 21 requirement to record production deployment architecture, security isolation, and expected monthly infrastructure costs.  
+**Decision:** Deploy Tessellate using Cloudflare serverless edge architecture:
+- Static public site (`apps/site`) and untrusted preview frame (`apps/preview`) deployed via Cloudflare Pages with separate subdomains and origin isolation.
+- API runtime (`apps/api`) deployed as Hono Cloudflare Worker backed by Cloudflare D1 for authenticated user project revisions.
+- Zero paid runtime dependencies (no paid hosted search, no paid auth, no paid vector DB).
+- BYO provider credentials for AI assistance; guest-first browser composition.
+- Expected monthly expenditure:
+  - Cloudflare Pages (Site + Previews): £0.00
+  - Cloudflare Worker (API): £0.00
+  - Cloudflare D1 (Database): £0.00
+  - Cloudflare Web Analytics & Turnstile: £0.00
+  - Domain amortized: ~£1.00/month
+  - **Total Projected Monthly Infrastructure Cost:** ~£1.00/month (well below £0–£8 normal target and strict £20 pre-commercial ceiling).  
+**Alternatives rejected:** Hosted Supabase/Firebase, dedicated VPS fleet, Algolia, Clerk.  
+**Cost impact:** ~£1.00/month.  
+**Security impact:** Hard origin isolation between main shell (`tessellate.design`) and untrusted previews (`preview.tessellate.design`); D1 authenticated ownership verification on all mutations; zero persisted AI secrets.  
+**Status:** LOCKED.
+
+
 ## Open implementation decisions
 
 Agents may decide these locally if consistent with contracts and cost/security rules:

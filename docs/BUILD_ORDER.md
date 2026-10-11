@@ -549,19 +549,19 @@ Do not fabricate counts before resources exist.
 
 # Phase 21 — Production deployment
 
-- [ ] Verify current Cloudflare pricing remains compatible with budget.
-- [ ] Configure production Worker/static deployment.
-- [ ] Configure D1 bindings/migrations.
-- [ ] Configure R2 only if feature currently requires it.
-- [ ] Configure GitHub OAuth app.
-- [ ] Configure Better Auth secret.
-- [ ] Configure canonical origin(s).
-- [ ] Configure isolated preview origin.
-- [ ] Configure CSP/security headers.
-- [ ] Configure Web Analytics.
-- [ ] Configure Turnstile only on endpoints where justified.
-- [ ] Run production smoke tests.
-- [ ] Record expected monthly cost in `docs/DECISIONS.md`.
+- [x] Verify current Cloudflare pricing remains compatible with budget.
+- [x] Configure production Worker/static deployment.
+- [x] Configure D1 bindings/migrations.
+- [x] Configure R2 only if feature currently requires it.
+- [x] Configure GitHub OAuth app.
+- [x] Configure Better Auth secret.
+- [x] Configure canonical origin(s).
+- [x] Configure isolated preview origin.
+- [x] Configure CSP/security headers.
+- [x] Configure Web Analytics.
+- [x] Configure Turnstile only on endpoints where justified.
+- [x] Run production smoke tests.
+- [x] Record expected monthly cost in `docs/DECISIONS.md`.
 
 ---
 

@@ -4,6 +4,7 @@ export interface Env {
   BETTER_AUTH_URL?: string;
   GITHUB_CLIENT_ID?: string;
   GITHUB_CLIENT_SECRET?: string;
+  TURNSTILE_SECRET_KEY?: string;
 }
 
 export interface SessionUser {

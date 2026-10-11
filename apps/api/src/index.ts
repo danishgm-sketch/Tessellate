@@ -13,7 +13,35 @@ import type { Env } from './types.js';
 
 const app = new Hono<{ Bindings: Env }>();
 
-app.use('*', cors());
+const ALLOWED_ORIGINS = [
+  'https://tessellate.design',
+  'https://www.tessellate.design',
+  'https://preview.tessellate.design',
+  'http://localhost:4321',
+  'http://localhost:5173',
+  'http://localhost:3000',
+];
+
+app.use(
+  '*',
+  cors({
+    origin: (origin) => {
+      if (!origin) return '*';
+      return ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0]!;
+    },
+    allowHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'cf-turnstile-response'],
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true,
+  })
+);
+
+app.use('*', async (c, next) => {
+  await next();
+  c.header('X-Content-Type-Options', 'nosniff');
+  c.header('X-Frame-Options', 'DENY');
+  c.header('Referrer-Policy', 'strict-origin-when-cross-origin');
+  c.header('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+});
 
 app.route('/api/ai', aiProxyRoute);
 app.route('/api/auth', authRoute);
