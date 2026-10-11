@@ -130,6 +130,9 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
       ...(node.variant ? { variant: node.variant } : {}),
     };
 
+    const hasChildren = Boolean(node.props?.children) || Boolean(renderedChildren && renderedChildren.length > 0);
+    const childrenToPass = (node.props?.children as React.ReactNode) ?? (renderedChildren && renderedChildren.length > 0 ? renderedChildren : undefined);
+
     return (
       <div
         data-node-id={node.id}
@@ -144,14 +147,17 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
         }}
         className={`relative ${motionClasses} ${layoutModifierClasses} ${selectionClasses}`}
       >
-        <Component {...mergedProps}>
-          {node.props?.children as React.ReactNode ?? renderedChildren}
-        </Component>
+        {hasChildren ? (
+          <Component {...mergedProps}>{childrenToPass}</Component>
+        ) : (
+          <Component {...mergedProps} />
+        )}
       </div>
     );
   }
 
   // 8. Generic layout container node
+  const { layoutVariant: _lv, layoutFamily: _lf, children: _c, style: _s, ...domProps } = (node.props ?? {}) as Record<string, unknown>;
   const content =
     renderedChildren && renderedChildren.length > 0
       ? renderedChildren
@@ -170,7 +176,7 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
         ...(node.props?.style as React.CSSProperties ?? {}),
       }}
       className={`relative ${motionClasses} ${layoutModifierClasses} ${selectionClasses}`}
-      {...node.props}
+      {...domProps}
     >
       {content}
     </div>

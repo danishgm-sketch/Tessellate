@@ -183,12 +183,12 @@ export function evaluateHardConstraints(input: HardConstraintEvaluationInput): H
   // 9. Archetype Avoidance
   if (input.currentArchetype) {
     const currentArch = input.currentArchetype.toLowerCase();
-    const isAvoided = resource.intent.avoidFor.some((a) => a.toLowerCase() === currentArch);
+    const isAvoided = resource.intent?.avoidFor?.some((a) => a.toLowerCase() === currentArch);
     if (isAvoided) {
       reasons.push(`Explicitly prohibited for archetype: '${input.currentArchetype}'.`);
     }
 
-    const relAvoided = resource.relationships.some(
+    const relAvoided = resource.relationships?.some(
       (r) => r.type === 'AVOID_FOR' && r.target.toLowerCase() === currentArch
     );
     if (relAvoided) {
@@ -200,7 +200,7 @@ export function evaluateHardConstraints(input: HardConstraintEvaluationInput): H
   if (input.lockedSurroundingResources && input.lockedSurroundingResources.length > 0) {
     for (const surrounding of input.lockedSurroundingResources) {
       // Check if this resource avoids the surrounding resource
-      const thisAvoids = resource.relationships.some(
+      const thisAvoids = resource.relationships?.some(
         (r) => r.type === 'AVOID_FOR' && (r.target === surrounding.id || r.target === surrounding.slug)
       );
       if (thisAvoids) {
@@ -208,7 +208,7 @@ export function evaluateHardConstraints(input: HardConstraintEvaluationInput): H
       }
 
       // Check if surrounding resource avoids this resource
-      const surroundingAvoids = surrounding.relationships.some(
+      const surroundingAvoids = surrounding.relationships?.some(
         (r) => r.type === 'AVOID_FOR' && (r.target === resource.id || r.target === resource.slug)
       );
       if (surroundingAvoids) {

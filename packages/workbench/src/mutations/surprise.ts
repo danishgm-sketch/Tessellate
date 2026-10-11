@@ -10,6 +10,8 @@ import { recomposeScreenAroundLocks } from './recomposition.js';
 
 export interface SurpriseMeOptions {
   divergenceLevel?: number; // 0 - 100, default 40
+  /** @deprecated Do not use `divergence`. Use `divergenceLevel`. */
+  divergence?: never;
   seed?: string;
 }
 

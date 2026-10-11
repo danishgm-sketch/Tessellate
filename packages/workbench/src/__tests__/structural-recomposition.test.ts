@@ -7,8 +7,17 @@ import { executeMutation } from '../mutations/executor.js';
 import { HistoryManager } from '../history/history-manager.js';
 import { findNodeById, flattenTree } from '../utils/tree-helpers.js';
 
-function computeNodeHash(node: ProjectNode): string {
-  return crypto.createHash('sha256').update(JSON.stringify(node)).digest('hex');
+function computeCanonicalSubtreeHash(node: ProjectNode): string {
+  function canonicalize(val: unknown): unknown {
+    if (val === null || typeof val !== 'object') return val;
+    if (Array.isArray(val)) return val.map(canonicalize);
+    const sortedObj: Record<string, unknown> = {};
+    for (const key of Object.keys(val as Record<string, unknown>).sort()) {
+      sortedObj[key] = canonicalize((val as Record<string, unknown>)[key]);
+    }
+    return sortedObj;
+  }
+  return crypto.createHash('sha256').update(JSON.stringify(canonicalize(node))).digest('hex');
 }
 
 describe('Genuine Structural Recomposition & Hash Verification (Req 5)', () => {
@@ -31,7 +40,7 @@ describe('Genuine Structural Recomposition & Hash Verification (Req 5)', () => {
     };
     const lockedManifest = executeMutation(manifest, lockMutation).nextManifest;
     const lockedNavNode = findNodeById(lockedManifest.screens[0]!.rootNode, 'node-header')!;
-    const originalHash = computeNodeHash(lockedNavNode);
+    const originalHash = computeCanonicalSubtreeHash(lockedNavNode);
 
     // Run recomposition at divergence 20
     const result = recomposeScreenAroundLocks(lockedManifest, 'screen-overview', {
@@ -44,7 +53,7 @@ describe('Genuine Structural Recomposition & Hash Verification (Req 5)', () => {
     // Verify locked node is byte-for-byte identical (SHA-256 hash match)
     const survivingNavNode = findNodeById(recomposed.screens[0]!.rootNode, 'node-header')!;
     expect(survivingNavNode).toBeDefined();
-    expect(computeNodeHash(survivingNavNode)).toBe(originalHash);
+    expect(computeCanonicalSubtreeHash(survivingNavNode)).toBe(originalHash);
 
     // Verify modest changes occurred on unlocked nodes
     const rootNode = recomposed.screens[0]!.rootNode;
@@ -71,7 +80,7 @@ describe('Genuine Structural Recomposition & Hash Verification (Req 5)', () => {
     };
     const lockedManifest = executeMutation(manifest, lockMutation).nextManifest;
     const lockedChart = findNodeById(lockedManifest.screens[0]!.rootNode, 'node-chart-overview')!;
-    const originalHash = computeNodeHash(lockedChart);
+    const originalHash = computeCanonicalSubtreeHash(lockedChart);
 
     // Run recomposition at divergence 70
     const result = recomposeScreenAroundLocks(lockedManifest, 'screen-overview', {
@@ -85,7 +94,7 @@ describe('Genuine Structural Recomposition & Hash Verification (Req 5)', () => {
     // Verify locked node hash survived byte-equivalent
     const survivingChart = findNodeById(recomposed.screens[0]!.rootNode, 'node-chart-overview')!;
     expect(survivingChart).toBeDefined();
-    expect(computeNodeHash(survivingChart)).toBe(originalHash);
+    expect(computeCanonicalSubtreeHash(survivingChart)).toBe(originalHash);
 
     // Verify hierarchy changed: a new layout container was instantiated
     const allRecomposedNodes = flattenTree(recomposed.screens[0]!.rootNode);
@@ -122,8 +131,8 @@ describe('Genuine Structural Recomposition & Hash Verification (Req 5)', () => {
       preconditionRevision: currentManifest.historyMeta.headRevision,
     }).nextManifest;
 
-    const navHash = computeNodeHash(findNodeById(currentManifest.screens[0]!.rootNode, 'node-header')!);
-    const chartHash = computeNodeHash(findNodeById(currentManifest.screens[0]!.rootNode, 'node-chart-overview')!);
+    const navHash = computeCanonicalSubtreeHash(findNodeById(currentManifest.screens[0]!.rootNode, 'node-header')!);
+    const chartHash = computeCanonicalSubtreeHash(findNodeById(currentManifest.screens[0]!.rootNode, 'node-chart-overview')!);
 
     // Run recomposition at divergence 95
     const result = recomposeScreenAroundLocks(currentManifest, 'screen-overview', {
@@ -137,8 +146,8 @@ describe('Genuine Structural Recomposition & Hash Verification (Req 5)', () => {
     // Both locked nodes survived byte-equivalent
     const survivingNav = findNodeById(recomposed.screens[0]!.rootNode, 'node-header')!;
     const survivingChart = findNodeById(recomposed.screens[0]!.rootNode, 'node-chart-overview')!;
-    expect(computeNodeHash(survivingNav)).toBe(navHash);
-    expect(computeNodeHash(survivingChart)).toBe(chartHash);
+    expect(computeCanonicalSubtreeHash(survivingNav)).toBe(navHash);
+    expect(computeCanonicalSubtreeHash(survivingChart)).toBe(chartHash);
 
     // Root shell transformed to workspace dock
     const rootNode = recomposed.screens[0]!.rootNode;

@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { composeProjectPipeline } from '../index.js';
 import { interpretProductBrief } from '@tessellate/composer';
+import { loadTestCatalog } from './test-catalog-loader.js';
 
 describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
   it('makes "feel" a real input: "professional but playful" measurably elevates both dimensions', () => {
@@ -62,7 +63,10 @@ describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
       structuralCreativity: 60,
     };
 
-    const result = composeProjectPipeline(brief, { seed: 'dev-api-test' });
+    const result = composeProjectPipeline(brief, {
+      catalogResources: loadTestCatalog(),
+      seed: 'dev-api-test',
+    });
 
     expect(result.directionA.manifest).toBeDefined();
     expect(result.directionB.manifest).toBeDefined();
@@ -102,7 +106,10 @@ describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
       structuralCreativity: 65,
     };
 
-    const pipelineResult = composeProjectPipeline(hrBrief, { seed: 'hr-acceptance' });
+    const pipelineResult = composeProjectPipeline(hrBrief, {
+      catalogResources: loadTestCatalog(),
+      seed: 'hr-acceptance',
+    });
 
     // 2. Select Direction C
     const directionCOutput = pipelineResult.directionC;

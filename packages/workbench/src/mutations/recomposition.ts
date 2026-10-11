@@ -9,6 +9,8 @@ import { createHistoryOperation } from '../history/history-manager.js';
 
 export interface RecomposeOptions {
   divergenceLevel?: number; // 0 - 100
+  /** @deprecated Do not use `divergence`. Use `divergenceLevel`. */
+  divergence?: never;
   alternativeGrammar?: string;
   seed?: string;
 }

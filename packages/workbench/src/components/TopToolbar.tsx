@@ -11,11 +11,15 @@ import {
   Bookmark,
   SplitSquareHorizontal,
   Shuffle,
+  RefreshCw,
+  ChevronDown,
 } from 'lucide-react';
+import { generateSourceTree, createZipArchive } from '@tessellate/exporter';
 import { CheckpointsMenu } from './checkpoints/CheckpointsMenu.js';
 
 export function TopToolbar() {
   const manifest = useWorkbenchStore((state) => state.manifest);
+  const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
   const updateProjectName = useWorkbenchStore((state) => state.updateProjectName);
   const activeMode = useWorkbenchStore((state) => state.activeMode);
   const setActiveMode = useWorkbenchStore((state) => state.setActiveMode);
@@ -29,10 +33,13 @@ export function TopToolbar() {
   const openCompare = useWorkbenchStore((state) => state.openCompare);
   const openBlend = useWorkbenchStore((state) => state.openBlend);
   const surpriseMe = useWorkbenchStore((state) => state.surpriseMe);
+  const recomposeScreenAroundLocks = useWorkbenchStore((state) => state.recomposeScreenAroundLocks);
+
 
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [titleValue, setTitleValue] = useState(manifest.name);
   const [isCheckpointsOpen, setIsCheckpointsOpen] = useState(false);
+  const [isExportOpen, setIsExportOpen] = useState(false);
 
   const modes: WorkbenchMode[] = ['structure', 'style', 'motion', 'content', 'audit'];
 
@@ -52,8 +59,30 @@ export function TopToolbar() {
     const a = document.createElement('a');
     a.href = url;
     a.download = `${manifest.name.toLowerCase().replace(/\s+/g, '-')}.tess.json`;
+    document.body.appendChild(a);
     a.click();
+    document.body.removeChild(a);
     URL.revokeObjectURL(url);
+  };
+
+  const handleDownloadZip = () => {
+    try {
+      const sourceTree = generateSourceTree(manifest);
+      const zipBytes = createZipArchive(sourceTree);
+      const blob = new Blob([zipBytes as unknown as BlobPart], { type: 'application/zip' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      const fileSlug = manifest.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'tessellate-project';
+      a.download = `${fileSlug}.zip`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Failed to generate standalone ZIP project:', err);
+      alert(`Export failed: ${(err as Error).message}`);
+    }
   };
 
   return (
@@ -137,7 +166,18 @@ export function TopToolbar() {
         {/* Advanced Phase 10 Action Buttons */}
         <div className="hidden lg:flex items-center gap-1">
           <button
-            onClick={() => surpriseMe()}
+            data-testid="recompose-button"
+            onClick={() => recomposeScreenAroundLocks(activeScreenId, { divergenceLevel: 70 })}
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] text-xs font-medium text-[#111217] dark:text-[#F5F7FA] hover:bg-[#FAF9F6] dark:hover:bg-[#171B21] transition-colors"
+            title="Recompose Screen (divergenceLevel 70)"
+          >
+            <RefreshCw className="h-3 w-3 text-cyan-500" />
+            <span>Recompose</span>
+          </button>
+
+          <button
+            data-testid="surprise-me-button"
+            onClick={() => surpriseMe({ divergenceLevel: 60 })}
             className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] text-xs font-medium text-[#111217] dark:text-[#F5F7FA] hover:bg-[#FAF9F6] dark:hover:bg-[#171B21] transition-colors"
             title="Surprise Me (Controlled Divergence)"
           >
@@ -223,14 +263,49 @@ export function TopToolbar() {
           <span className="hidden sm:inline">{isPreview ? 'Exit Preview' : 'Preview'}</span>
         </button>
 
-        <button
-          onClick={handleDownloadManifest}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2547E8] dark:bg-[#6782FF] text-white dark:text-[#0B0D10] text-xs font-semibold hover:opacity-90 shadow-xs transition-opacity"
-          title="Export .tess.json manifest"
-        >
-          <Download className="h-3.5 w-3.5" />
-          <span>Export</span>
-        </button>
+        {/* Export Dropdown */}
+        <div className="relative">
+          <button
+            data-testid="export-button"
+            onClick={() => setIsExportOpen(!isExportOpen)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2547E8] dark:bg-[#6782FF] text-white dark:text-[#0B0D10] text-xs font-semibold hover:opacity-90 shadow-xs transition-opacity"
+            title="Export project"
+          >
+            <Download className="h-3.5 w-3.5" />
+            <span>Export</span>
+            <ChevronDown className="h-3 w-3" />
+          </button>
+
+          {isExportOpen && (
+            <div
+              data-testid="export-menu"
+              className="absolute right-0 mt-2 w-64 rounded-xl border border-[#D9D6CF] bg-white p-1.5 shadow-lg dark:border-[#272C34] dark:bg-[#171B21] z-50 text-xs"
+            >
+              <button
+                data-testid="export-manifest-btn"
+                onClick={() => {
+                  handleDownloadManifest();
+                  setIsExportOpen(false);
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#FAF9F6] dark:hover:bg-[#20252D] text-[#111217] dark:text-[#F5F7FA] font-medium transition-colors flex flex-col gap-0.5"
+              >
+                <span className="font-semibold">Download Tessellate Manifest</span>
+                <span className="text-[10px] text-[#8B8F97] font-mono">.tess.json</span>
+              </button>
+              <button
+                data-testid="export-zip-btn"
+                onClick={() => {
+                  handleDownloadZip();
+                  setIsExportOpen(false);
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#FAF9F6] dark:hover:bg-[#20252D] text-[#111217] dark:text-[#F5F7FA] font-medium transition-colors flex flex-col gap-0.5"
+              >
+                <span className="font-semibold">Download Standalone React Project</span>
+                <span className="text-[10px] text-[#2547E8] dark:text-[#6782FF] font-mono">Vite + React + Tailwind 4 (.zip)</span>
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );

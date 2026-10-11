@@ -2,11 +2,14 @@ import { describe, it, expect } from 'vitest';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as os from 'node:os';
-import { execSync } from 'node:child_process';
+import { execSync, spawn } from 'node:child_process';
 import { chromium } from '@playwright/test';
 import type { ProjectManifest } from '@tessellate/schemas';
 import { validProjectFixture } from '@tessellate/schemas';
 import { generateSourceTree } from '../source-tree.js';
+import '../node-disk-resolver.js';
+
+
 
 describe('Requirement 8: Standalone Export Fidelity', () => {
   const testProject: ProjectManifest = {
@@ -183,11 +186,46 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     }
   });
 
-  it('compiles standalone project with TypeScript and verifies DOM in Playwright', async () => {
+  it('fails with a descriptive error when a referenced resource is genuinely unresolved', () => {
+    const invalidProject: ProjectManifest = {
+      ...testProject,
+      screens: [
+        {
+          ...testProject.screens[0]!,
+          rootNode: {
+            ...testProject.screens[0]!.rootNode,
+            children: [
+              {
+                id: 'node-bogus',
+                nodeType: 'component',
+                semanticRole: 'unknown',
+                resourceRef: {
+                  id: 'res-bogus',
+                  slug: 'bogus-nonexistent-resource',
+                  version: '1.0.0',
+                },
+                props: {},
+                slots: {},
+                children: [],
+              },
+            ],
+          },
+        },
+      ],
+    };
+
+    expect(() => generateSourceTree(invalidProject)).toThrowError(
+      /Unresolved resource in export: "bogus-nonexistent-resource"/
+    );
+  });
+
+  it('builds standalone project with real pnpm install and verifies interactive execution in Playwright via vite preview', async () => {
     const sourceTree = generateSourceTree(testProject);
 
     // Create a temporary export directory
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'tess-export-fidelity-'));
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'tess-export-live-'));
+    let previewProcess: ReturnType<typeof spawn> | null = null;
+
     try {
       for (const [filePath, content] of Object.entries(sourceTree)) {
         const fullPath = path.join(tempDir, filePath);
@@ -195,66 +233,94 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         fs.writeFileSync(fullPath, content, 'utf-8');
       }
 
-      // Link node_modules so TypeScript can resolve react and types
-      const rootNodeModules = path.resolve(process.cwd(), 'node_modules');
-      const targetNodeModules = path.join(tempDir, 'node_modules');
-      if (fs.existsSync(rootNodeModules) && !fs.existsSync(targetNodeModules)) {
-        try {
-          fs.symlinkSync(rootNodeModules, targetNodeModules, 'junction');
-        } catch {
-          // If symlink fails, continue
-        }
-      }
+      // 1. Execute real package manager install
+      execSync('pnpm install --prefer-offline --ignore-scripts', {
+        cwd: tempDir,
+        stdio: 'pipe',
+      });
 
-      // Run tsc --noEmit in the exported directory
-      if (fs.existsSync(targetNodeModules)) {
-        const tscBin = path.join(rootNodeModules, 'typescript', 'bin', 'tsc');
-        if (fs.existsSync(tscBin)) {
-          execSync(`node "${tscBin}" --noEmit --project "${path.join(tempDir, 'tsconfig.json')}"`, {
-            cwd: tempDir,
-            stdio: 'pipe',
-          });
-        }
-      }
+      // 2. Execute pnpm build
+      execSync('pnpm build', {
+        cwd: tempDir,
+        stdio: 'pipe',
+      });
 
-      // Verify DOM rendering via Playwright:
-      // Construct a self-contained HTML page representing the exported screen structure
+      // 3. Launch resulting preview server using vite preview
+      const port = 4192;
+      previewProcess = spawn('pnpm', ['exec', 'vite', 'preview', '--port', String(port), '--strictPort'], {
+        cwd: tempDir,
+        shell: true,
+        stdio: ['ignore', 'pipe', 'pipe'],
+      });
+
+      const proc = previewProcess;
+      await new Promise<void>((resolve, reject) => {
+        const timeout = setTimeout(() => {
+          reject(new Error('Timeout waiting for vite preview server to start on port ' + port));
+        }, 15000);
+
+        proc.stdout?.on('data', (data: Buffer) => {
+          const str = data.toString();
+          if (str.includes(String(port)) || str.includes('Local:')) {
+            clearTimeout(timeout);
+            resolve();
+          }
+        });
+
+        proc.stderr?.on('data', (data: Buffer) => {
+          const str = data.toString();
+          if (str.includes(String(port)) || str.includes('Local:')) {
+            clearTimeout(timeout);
+            resolve();
+          }
+        });
+
+        proc.on('error', (err: Error) => {
+          clearTimeout(timeout);
+          reject(err);
+        });
+      });
+
+      // 4. Open with Playwright
       const browser = await chromium.launch({ headless: true });
       try {
         const page = await browser.newPage();
-        const html = `<!DOCTYPE html>
-<html>
-<head><title>Omni Telemetry Suite</title></head>
-<body>
-  <div id="root">
-    <header data-testid="nav">Omni Telemetry</header>
-    <section data-testid="hero">
-      <span>TELEMETRY CLUSTER // 01</span>
-      <h1>Real-Time Planetary Infrastructure</h1>
-    </section>
-    <div data-testid="chart">Active Ingestion Volume</div>
-    <div data-testid="table">Core Utilization Temp</div>
-    <div data-testid="state">No telemetry events recorded yet</div>
-    <div data-testid="globe">Worldwide Telemetry Mesh</div>
-    <div data-testid="particle"><canvas width="600" height="260"></canvas></div>
-  </div>
-</body>
-</html>`;
-        await page.setContent(html);
+        const consoleErrors: string[] = [];
+        page.on('console', (msg) => {
+          if (msg.type() === 'error') {
+            consoleErrors.push(msg.text());
+          }
+        });
 
-        expect(await page.locator('[data-testid="nav"]').isVisible()).toBe(true);
-        expect(await page.locator('[data-testid="hero"]').isVisible()).toBe(true);
-        expect(await page.locator('[data-testid="chart"]').isVisible()).toBe(true);
-        expect(await page.locator('[data-testid="table"]').isVisible()).toBe(true);
-        expect(await page.locator('[data-testid="state"]').isVisible()).toBe(true);
-        expect(await page.locator('[data-testid="globe"]').isVisible()).toBe(true);
-        expect(await page.locator('[data-testid="particle"]').isVisible()).toBe(true);
+        await page.goto(`http://localhost:${port}`);
+        await page.waitForSelector('#root', { timeout: 10000 });
+
+        // 5. Assert the application renders interactively
+        const headline = page.locator('text=Real-Time Planetary Infrastructure').first();
+        expect(await headline.isVisible()).toBe(true);
+
+        const navBrand = page.locator('text=Omni Telemetry').first();
+        expect(await navBrand.isVisible()).toBe(true);
+
+        // 6. Assert no console errors
+        expect(consoleErrors).toEqual([]);
       } finally {
         await browser.close();
       }
     } finally {
-      // Clean up temp directory
+      // 7. Shut down cleanly
+      if (previewProcess) {
+        try {
+          if (process.platform === 'win32' && previewProcess.pid) {
+            execSync(`taskkill /pid ${previewProcess.pid} /T /F`, { stdio: 'ignore' });
+          } else {
+            previewProcess.kill('SIGTERM');
+          }
+        } catch {
+          // ignore
+        }
+      }
       fs.rmSync(tempDir, { recursive: true, force: true });
     }
-  });
+  }, 60000);
 });

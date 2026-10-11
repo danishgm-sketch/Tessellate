@@ -141,7 +141,12 @@ export function HeroBanner({
   );
 }
 
+import { GENERATED_GOLD_RENDERERS } from './generated-gold-registry.js';
+
 export const DEFAULT_RESOURCE_RENDERERS: ResourceRendererMap = {
+  // Generated Gold 40 resource components
+  ...GENERATED_GOLD_RENDERERS,
+
   // Primitives family
   button: Button as unknown as React.ComponentType<Record<string, unknown>>,
   'res_primitive_button_01': Button as unknown as React.ComponentType<Record<string, unknown>>,

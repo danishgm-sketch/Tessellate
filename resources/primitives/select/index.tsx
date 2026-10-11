@@ -13,7 +13,7 @@ export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElemen
   options: SelectOption[];
 }
 
-export function Select({ variant = 'quiet', label, options, className = '', id, ...rest }: SelectProps) {
+export function Select({ variant = 'quiet', label, options = [], className = '', id, ...rest }: SelectProps) {
   const selectId = id || (label ? label.toLowerCase().replace(/\s+/g, '-') : undefined);
 
   let theme = 'border-neutral-300 bg-white text-neutral-900 focus:border-neutral-900 focus:ring-neutral-900';

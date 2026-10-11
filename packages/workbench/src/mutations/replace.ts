@@ -8,7 +8,6 @@ import type {
 import {
   calculateCompatibilityScore,
   evaluateHardConstraints,
-  getDefaultCatalogResources,
 } from '@tessellate/compatibility';
 import { findNodeById } from '../utils/tree-helpers.js';
 import { createHistoryOperation } from '../history/history-manager.js';
@@ -201,12 +200,14 @@ export const SAMPLE_RESOURCES: ResourceManifest[] = [
   },
 ];
 
+let _activeCatalog: ResourceManifest[] = SAMPLE_RESOURCES;
+
+export function setActiveCatalog(catalog: ResourceManifest[]): void {
+  _activeCatalog = catalog;
+}
+
 export function getAvailableResources(): ResourceManifest[] {
-  const defaultResources = getDefaultCatalogResources();
-  if (defaultResources && defaultResources.length > 0) {
-    return defaultResources;
-  }
-  return SAMPLE_RESOURCES;
+  return _activeCatalog;
 }
 
 /**

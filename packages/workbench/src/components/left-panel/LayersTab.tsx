@@ -121,6 +121,7 @@ function LayerNodeItem({ node, depth }: LayerNodeItemProps) {
         {/* Lock Toggle Action */}
         <div className="flex items-center gap-1">
           <button
+            data-testid={`toggle-lock-${node.id}`}
             onClick={(e) => {
               e.stopPropagation();
               toggleNodeLock(node.id, 'structure');
@@ -129,7 +130,7 @@ function LayerNodeItem({ node, depth }: LayerNodeItemProps) {
             className={`p-1 rounded transition-opacity ${
               isLocked
                 ? 'opacity-100 text-amber-500'
-                : 'opacity-0 group-hover:opacity-60 hover:opacity-100 text-[#8B8F97]'
+                : 'opacity-40 hover:opacity-100 text-[#8B8F97]'
             }`}
           >
             {isLocked ? <Lock className="h-3 w-3" /> : <Unlock className="h-3 w-3" />}

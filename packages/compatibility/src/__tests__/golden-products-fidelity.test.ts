@@ -3,6 +3,8 @@ import { ProjectManifestSchema } from '@tessellate/schemas';
 import { composeProjectPipeline } from '../compose-pipeline.js';
 import { isGoldResource } from '@tessellate/catalog/gold';
 
+import { loadTestCatalog } from './test-catalog-loader.js';
+
 describe('Requirement 12: Golden Product Fidelity Tests', () => {
   const goldenBriefs = [
     {
@@ -58,13 +60,17 @@ describe('Requirement 12: Golden Product Fidelity Tests', () => {
   ];
 
   it('composes valid, distinct ProjectManifests for all 5 golden briefs', () => {
+    const testCatalog = loadTestCatalog();
     const results = goldenBriefs.map((brief) => {
-      const result = composeProjectPipeline({
-        description: brief.description,
-        feel: brief.feel,
-        visualAmbition: brief.visualAmbition,
-        structuralCreativity: brief.structuralCreativity,
-      });
+      const result = composeProjectPipeline(
+        {
+          description: brief.description,
+          feel: brief.feel,
+          visualAmbition: brief.visualAmbition,
+          structuralCreativity: brief.structuralCreativity,
+        },
+        { catalogResources: testCatalog }
+      );
       return { brief, result };
     });
 

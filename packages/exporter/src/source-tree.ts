@@ -1,11 +1,9 @@
-import * as fs from 'node:fs';
-import * as path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import type { ProjectManifest, ProjectNode, ProjectScreen } from '@tessellate/schemas';
 import { normalizeDesignTokens, tokensToCssVariables } from '@tessellate/renderer';
 import { collectProjectDependencies } from './dependencies.js';
+import { getGoldResourceSource } from './generated-gold-sources.js';
 
-interface ResolvedResource {
+export interface ResolvedResource {
   slug: string;
   componentName: string;
   fileName: string;
@@ -14,10 +12,10 @@ interface ResolvedResource {
   dependencies?: string[];
 }
 
-function toPascalCase(str: string): string {
-  const clean = str.replace(/[^a-zA-Z0-9]/g, ' ').trim();
-  const words = clean.split(/\s+/).map((w) => w.charAt(0).toUpperCase() + w.slice(1));
-  return words.join('') || 'Component';
+export type ResourceResolver = (slug: string) => ResolvedResource | null;
+let customDiskResolver: ResourceResolver | null = null;
+export function setDiskResourceResolver(resolver: ResourceResolver | null) {
+  customDiskResolver = resolver;
 }
 
 function getAcceptedPropNames(code: string): Set<string> | null {
@@ -34,131 +32,30 @@ function getAcceptedPropNames(code: string): Set<string> | null {
   return names;
 }
 
-function resolveResourceFromDisk(slug: string): ResolvedResource | null {
-  try {
-    let currentDir = process.cwd();
-    try {
-      const currentFilePath = fileURLToPath(import.meta.url);
-      currentDir = path.dirname(currentFilePath);
-    } catch {
-      // fallback
-    }
-
-    const searchRoots = [
-      path.resolve(process.cwd(), 'resources'),
-      path.resolve(process.cwd(), '../../resources'),
-      path.resolve(currentDir, '../../../../resources'),
-      path.resolve(currentDir, '../../../resources'),
-    ];
-
-    for (const root of searchRoots) {
-      if (!fs.existsSync(root)) continue;
-
-      const categories = fs.readdirSync(root);
-      for (const cat of categories) {
-        const catDir = path.join(root, cat);
-        if (!fs.statSync(catDir).isDirectory()) continue;
-
-        const resourceDir = path.join(catDir, slug);
-        const indexPath = path.join(resourceDir, 'index.tsx');
-        if (fs.existsSync(indexPath)) {
-          const code = fs.readFileSync(indexPath, 'utf-8');
-          const match =
-            code.match(/export\s+(?:function|const)\s+([A-Za-z0-9_]+)/) ||
-            code.match(/export\s+default\s+(?:function\s+)?([A-Za-z0-9_]+)/);
-          const componentName = match?.[1] ?? toPascalCase(slug);
-          const acceptedProps = getAcceptedPropNames(code);
-
-          let deps: string[] = [];
-          const manifestPath = path.join(resourceDir, 'manifest.json');
-          if (fs.existsSync(manifestPath)) {
-            try {
-              const manifestJson = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
-              if (Array.isArray(manifestJson.dependencies)) {
-                deps = manifestJson.dependencies;
-              }
-            } catch {
-              // ignore
-            }
-          }
-
-          return {
-            slug,
-            componentName,
-            fileName: `${componentName}.tsx`,
-            code,
-            acceptedProps,
-            dependencies: deps,
-          };
-        }
-      }
-    }
-  } catch {
-    // Non-filesystem or sandboxed environment
+function resolveResource(slug: string, semanticRole: string, nodeId: string): ResolvedResource {
+  const goldSource = getGoldResourceSource(slug);
+  if (goldSource) {
+    const acceptedProps = getAcceptedPropNames(goldSource.code);
+    return {
+      slug,
+      componentName: goldSource.componentName,
+      fileName: `${goldSource.componentName}.tsx`,
+      code: goldSource.code,
+      acceptedProps,
+      dependencies: Object.keys(goldSource.dependencies),
+    };
   }
-  return null;
-}
 
-function synthesizeFaithfulComponent(slug: string, role: string): ResolvedResource {
-  const componentName = toPascalCase(slug);
-  const code = `import React from 'react';
+  if (customDiskResolver) {
+    const diskResolved = customDiskResolver(slug);
+    if (diskResolved) {
+      return diskResolved;
+    }
+  }
 
-export interface ${componentName}Props {
-  variant?: 'quiet' | 'expressive' | 'nocturne';
-  title?: string;
-  label?: string;
-  value?: string | number;
-  subtitle?: string;
-  className?: string;
-  children?: React.ReactNode;
-}
-
-export function ${componentName}({
-  variant = 'quiet',
-  title,
-  label,
-  value,
-  subtitle,
-  className = '',
-  children,
-}: ${componentName}Props) {
-  const isNocturne = variant === 'nocturne';
-  const isExpressive = variant === 'expressive';
-
-  const cardStyle = isNocturne
-    ? 'bg-[#0B0D10] text-white border-[#2E3440]'
-    : isExpressive
-    ? 'bg-white text-neutral-900 border-[#D9D6CF] shadow-xs'
-    : 'bg-white text-neutral-900 border-neutral-200';
-
-  return (
-    <div
-      data-resource-slug="${slug}"
-      data-semantic-role="${role}"
-      className={\`p-5 rounded-xl border transition-colors flex flex-col gap-2 \${cardStyle} \${className}\`}
-    >
-      {(title || label) && (
-        <div className="flex items-center justify-between text-xs font-semibold">
-          <span>{title || label}</span>
-          <span className="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800">
-            ${role}
-          </span>
-        </div>
-      )}
-      {value && <div className="text-2xl font-bold font-mono tracking-tight">{value}</div>}
-      {subtitle && <p className="text-xs text-neutral-500">{subtitle}</p>}
-      {children}
-    </div>
+  throw new Error(
+    `Unresolved resource in export: "${slug}" (referenced by node "${nodeId}", role "${semanticRole}"). In production exports, all resources must resolve to their actual implementations rather than synthetic fallbacks.`
   );
-}
-`;
-  return {
-    slug,
-    componentName,
-    fileName: `${componentName}.tsx`,
-    code,
-    acceptedProps: new Set(['variant', 'title', 'label', 'value', 'subtitle', 'className', 'children']),
-  };
 }
 
 /**
@@ -189,6 +86,9 @@ export function generateSourceTree(manifest: ProjectManifest): Record<string, st
     null,
     2
   );
+
+  files['.npmrc'] = `only-built-dependencies=esbuild
+`;
 
   // 2. vite.config.ts
   files['vite.config.ts'] = `import { defineConfig } from 'vite';
@@ -379,7 +279,7 @@ export function AppHeader({ title = 'Application', navItems = [] }: AppHeaderPro
     if (node.resourceRef?.slug) {
       const slug = node.resourceRef.slug;
       if (!resourceMap[slug]) {
-        const resolved = resolveResourceFromDisk(slug) ?? synthesizeFaithfulComponent(slug, node.semanticRole);
+        const resolved = resolveResource(slug, node.semanticRole, node.id);
         resourceMap[slug] = resolved;
         files[`src/components/${resolved.fileName}`] = resolved.code;
       }

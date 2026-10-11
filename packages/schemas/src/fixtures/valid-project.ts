@@ -139,8 +139,8 @@ export const validProjectFixture: ProjectManifest = {
         nodeType: 'layout',
         semanticRole: 'app-shell',
         resourceRef: {
-          id: 'res_shell_dual_rail_01',
-          slug: 'dual-rail-shell',
+          id: 'res_shell_three_pane_01',
+          slug: 'three-pane-app-shell',
           version: '1.0.0',
         },
         slots: { title: 'Meridian Terminal' },

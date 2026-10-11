@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   getAllGoldenBriefs,
   getGoldenBrief,
@@ -11,7 +11,8 @@ import {
   type ComposedDirectionOutput,
 } from '@tessellate/compatibility';
 import { saveLocalProject } from '@tessellate/workbench';
-import type { ProjectManifest } from '@tessellate/schemas';
+import { ManifestRenderer } from '@tessellate/renderer';
+import type { ProjectManifest, ResourceManifest } from '@tessellate/schemas';
 import {
   VISUAL_AMBITION_STOPS,
   STRUCTURAL_CREATIVITY_STOPS,
@@ -51,6 +52,27 @@ export function ComposeView() {
 
   // Result state
   const [hasComposed, setHasComposed] = useState<boolean>(false);
+  const [catalogResources, setCatalogResources] = useState<ResourceManifest[]>([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    fetch('/data/catalog.json')
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        if (isMounted && data && Array.isArray(data.resources)) {
+          setCatalogResources(data.resources);
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to load /data/catalog.json in ComposeView:', err);
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const currentVisualStop = getVisualAmbitionStop(visualAmbition);
   const currentStructuralStop = getStructuralCreativityStop(structuralCreativity);
@@ -93,7 +115,7 @@ export function ComposeView() {
 
   // Run deterministic composition pipeline
   const compositionResult = useMemo(() => {
-    return composeProjectPipeline(briefInput);
+    return composeProjectPipeline(briefInput, { catalogResources });
   }, [
     description,
     selectedArchetypeOverride,
@@ -103,6 +125,7 @@ export function ComposeView() {
     accessibilityFloor,
     performanceCeiling,
     targetDevices,
+    catalogResources,
   ]);
 
   const { productModel, screenGraph: _screenGraph, inferredAssumptions, directionA, directionB, directionC } = compositionResult;
@@ -382,6 +405,7 @@ export function ComposeView() {
         <div className="flex justify-end pt-2">
           <button
             type="submit"
+            data-testid="compose-submit-btn"
             className="inline-flex items-center gap-2 rounded-xl bg-[#2547E8] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#1E3CCD] dark:bg-[#6782FF] dark:text-[#0B0D10] dark:hover:bg-[#879DFF]"
           >
             <Sparkles className="h-4 w-4" />
@@ -574,13 +598,10 @@ function DirectionCard({
 }) {
   const { direction, manifest } = output;
   const primaryScreen = manifest.screens[0];
-  const sectionSlugs =
-    primaryScreen?.rootNode.children
-      .map((c) => c.resourceRef?.slug || c.semanticRole)
-      .slice(0, 4) || [];
 
   return (
     <div
+      data-testid={`direction-card-${number}`}
       className={`flex flex-col justify-between rounded-2xl p-6 shadow-sm transition-all ${
         isFeatured
           ? 'border-2 border-[#2547E8] bg-white dark:border-[#6782FF] dark:bg-[#171B21]'
@@ -646,29 +667,30 @@ function DirectionCard({
           </div>
         </div>
 
-        {/* Real Project Preview */}
+        {/* Real Scaled Project Preview */}
         <div className="rounded-xl border border-[#D9D6CF]/70 bg-[#FAF9F6] p-3 dark:border-[#272C34] dark:bg-[#0B0D10]">
           <div className="flex items-center justify-between text-[10px] font-bold uppercase text-[#8B8F97]">
             <span>Screen Preview: {primaryScreen?.name ?? 'Overview'}</span>
             <span>{manifest.screens.length} Screens</span>
           </div>
 
-          {/* Mini mock wireframe */}
-          <div className="mt-2 space-y-1.5 rounded-lg border border-dashed border-[#D9D6CF] bg-white p-2 text-[10px] dark:border-[#272C34] dark:bg-[#111419]">
-            <div className="flex items-center gap-1.5 border-b border-[#D9D6CF]/40 pb-1 text-[#8B8F97]">
-              <div className="h-2 w-2 rounded-full bg-[#2547E8]" />
-              <span className="font-mono text-[9px] truncate">{primaryScreen?.slug}</span>
-            </div>
-            <div className="space-y-1">
-              {sectionSlugs.map((slug, idx) => (
-                <div
-                  key={idx}
-                  className="flex items-center justify-between rounded bg-[#FAF9F6] px-1.5 py-0.5 font-mono text-[9px] text-[#62666F] dark:bg-[#171B21] dark:text-[#A8AFBA]"
-                >
-                  <span className="truncate">{slug}</span>
-                  <span className="text-[8px] text-[#2547E8] dark:text-[#6782FF]">node</span>
-                </div>
-              ))}
+          <div
+            data-testid={`direction-preview-${number}`}
+            className="mt-2 relative h-48 w-full overflow-hidden rounded-lg border border-[#D9D6CF] bg-white shadow-inner dark:border-[#272C34] dark:bg-[#0B0D10]"
+          >
+            <div
+              className="origin-top-left pointer-events-none select-none"
+              style={{
+                width: '1000px',
+                minHeight: '700px',
+                transform: 'scale(0.28)',
+                transformOrigin: '0 0',
+              }}
+            >
+              <ManifestRenderer
+                manifest={manifest}
+                activeScreenId={primaryScreen?.id}
+              />
             </div>
           </div>
         </div>
@@ -678,6 +700,7 @@ function DirectionCard({
       <div className="mt-6 flex flex-col gap-2">
         <button
           type="button"
+          data-testid={`open-workbench-dir-${number}`}
           onClick={() => onOpen(manifest)}
           className={`inline-flex w-full items-center justify-center gap-1.5 rounded-lg py-2.5 text-xs font-semibold shadow-sm transition-all ${
             isFeatured

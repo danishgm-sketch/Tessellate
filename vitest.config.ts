@@ -9,6 +9,9 @@ export default defineConfig({
     alias: {
       '@tessellate/schemas': path.resolve(__dirname, 'packages/schemas/src/index.ts'),
       '@tessellate/ui': path.resolve(__dirname, 'packages/ui/src/index.ts'),
+      '@tessellate/catalog/gold': path.resolve(__dirname, 'packages/catalog/src/gold.ts'),
+      '@tessellate/catalog/protocol': path.resolve(__dirname, 'packages/catalog/src/preview-protocol.ts'),
+      '@tessellate/catalog/licenses': path.resolve(__dirname, 'packages/catalog/src/licenses.ts'),
       '@tessellate/catalog': path.resolve(__dirname, 'packages/catalog/src/index.ts'),
       '@tessellate/search': path.resolve(__dirname, 'packages/search/src/index.ts'),
       '@tessellate/dna': path.resolve(__dirname, 'packages/dna/src/index.ts'),

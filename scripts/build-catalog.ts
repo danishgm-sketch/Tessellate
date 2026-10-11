@@ -13,6 +13,7 @@ import {
   generateLlmsFullTxt,
   generateOpenApiSpec,
 } from '../packages/registry/src/index.js';
+import { runGenerate as generateGoldArtifacts } from './generate-gold-artifacts.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -91,6 +92,9 @@ async function main() {
   const openApiSpec = generateOpenApiSpec();
   fs.writeFileSync(path.join(sitePublicDir, 'openapi.json'), JSON.stringify(openApiSpec, null, 2), 'utf-8');
   console.log('[build-catalog] Generated /openapi.json');
+
+  // 5. Generate Gold 40 runtime registry & exporter sources
+  await generateGoldArtifacts();
 }
 
 main().catch((err) => {

@@ -136,6 +136,9 @@ importers:
       '@tessellate/dna':
         specifier: workspace:*
         version: link:../../packages/dna
+      '@tessellate/renderer':
+        specifier: workspace:*
+        version: link:../../packages/renderer
       '@tessellate/schemas':
         specifier: workspace:*
         version: link:../../packages/schemas
@@ -233,6 +236,15 @@ importers:
         specifier: workspace:*
         version: link:../schemas
     devDependencies:
+      '@tessellate/renderer':
+        specifier: workspace:*
+        version: link:../renderer
+      '@types/react':
+        specifier: ^19.0.8
+        version: 19.3.0
+      react:
+        specifier: ^19.0.0
+        version: 19.3.0
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
@@ -335,6 +347,9 @@ importers:
         specifier: workspace:*
         version: link:../ui
     devDependencies:
+      '@tessellate/catalog':
+        specifier: workspace:*
+        version: link:../catalog
       '@types/react':
         specifier: ^19.0.8
         version: 19.3.0
@@ -438,6 +453,9 @@ importers:
       '@tessellate/dna':
         specifier: workspace:*
         version: link:../dna
+      '@tessellate/exporter':
+        specifier: workspace:*
+        version: link:../exporter
       '@tessellate/renderer':
         specifier: workspace:*
         version: link:../renderer

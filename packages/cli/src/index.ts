@@ -102,9 +102,16 @@ program
     await runCreateResource(opts);
   });
 
+import { pathToFileURL } from 'node:url';
+
 // Execute when run as CLI
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (
+  process.argv[1] &&
+  (pathToFileURL(process.argv[1]).href.toLowerCase() === import.meta.url.toLowerCase() ||
+    import.meta.url.toLowerCase().endsWith(process.argv[1].replace(/\\/g, '/').toLowerCase()))
+) {
   program.parse();
 }
 
 export default program;
+

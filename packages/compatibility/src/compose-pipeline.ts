@@ -1,5 +1,3 @@
-import * as fs from 'node:fs';
-import * as path from 'node:path';
 import {
   type ProductModel,
   type ScreenGraph,
@@ -50,41 +48,18 @@ export interface FullCompositionResult {
   inferredAssumptions: string[];
 }
 
-// In-memory cache of loaded catalog resources
-let cachedCatalog: ResourceManifest[] | null = null;
-
-export function getDefaultCatalogResources(): ResourceManifest[] {
-  if (cachedCatalog && cachedCatalog.length > 0) {
-    return cachedCatalog;
-  }
-
-  // Attempt to load from disk in Node / test environment
-  try {
-    const candidates = [
-      path.resolve(process.cwd(), 'apps/site/public/data/catalog.json'),
-      path.resolve(process.cwd(), 'public/data/catalog.json'),
-      path.resolve(__dirname, '../../../../apps/site/public/data/catalog.json'),
-    ];
-
-    for (const p of candidates) {
-      if (fs.existsSync(p)) {
-        const raw = fs.readFileSync(p, 'utf-8');
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed.resources)) {
-          cachedCatalog = parsed.resources;
-          return cachedCatalog!;
-        }
-      }
-    }
-  } catch {
-    // Non-filesystem or browser environment
-  }
-
-  return [];
+/**
+ * Capability check: verifies that a catalogue resource is eligible for composition.
+ */
+export function isResourceComposerEligible(resource: ResourceManifest): boolean {
+  if (!resource.id || !resource.slug) return false;
+  if (!resource.variants || resource.variants.length === 0) return false;
+  return true;
 }
 
 /**
  * Finds and instantiates the highest-scoring compatible resource for a required semantic role.
+ * Fails hard constraints closed: if all candidates violate constraints, returns null (no violating resource selected).
  */
 function resolveBestResourceForRole(
   semanticRole: string,
@@ -94,14 +69,10 @@ function resolveBestResourceForRole(
   productModel: ProductModel,
   surroundingResources: ResourceManifest[] = []
 ): { resource: ResourceManifest | null; ref: ResourceRef | undefined } {
-  if (catalog.length === 0) {
+  if (!catalog || catalog.length === 0) {
     return {
       resource: null,
-      ref: {
-        id: `res_synth_${semanticRole.replace(/[^a-z0-9]/gi, '_')}`,
-        slug: semanticRole,
-        version: '1.0.0',
-      },
+      ref: undefined,
     };
   }
 
@@ -109,6 +80,7 @@ function resolveBestResourceForRole(
 
   // 1. Role / category filtering
   let candidates = catalog.filter((res) => {
+    if (!isResourceComposerEligible(res)) return false;
     const hasRole = (res.roles ?? []).some((r) => r.toLowerCase().includes(roleNorm) || roleNorm.includes(r.toLowerCase()));
     const hasCategory = grammar?.candidateCategories.some((c) => (res.categories ?? []).includes(c));
     const hasTag = (res.tags ?? []).some((t) => t.toLowerCase() === roleNorm);
@@ -116,10 +88,11 @@ function resolveBestResourceForRole(
   });
 
   if (candidates.length === 0) {
-    candidates = catalog;
+    // If no role-specific candidates match, consider general eligible catalog resources
+    candidates = catalog.filter(isResourceComposerEligible);
   }
 
-  // 2. Filter by hard constraints
+  // 2. Filter by hard constraints — STRICT FAIL CLOSED
   const validCandidates: ResourceManifest[] = [];
   for (const candidate of candidates) {
     const constraintResult = evaluateHardConstraints({
@@ -136,10 +109,16 @@ function resolveBestResourceForRole(
     }
   }
 
-  const evaluationPool = validCandidates.length > 0 ? validCandidates : candidates;
+  // Requirement 3: If all candidates violate hard constraints, NO violating resource may be selected.
+  if (validCandidates.length === 0) {
+    return {
+      resource: null,
+      ref: undefined,
+    };
+  }
 
-  // 3. Score candidates with compatibility algorithm
-  const scored = evaluationPool.map((candidate) => {
+  // 3. Score valid candidates with compatibility algorithm
+  const scored = validCandidates.map((candidate) => {
     const scoreResult = calculateCompatibilityScore({
       candidate,
       targetDna,
@@ -149,7 +128,7 @@ function resolveBestResourceForRole(
       currentArchetype: productModel.productArchetypes[0]?.tag,
       accessibilityFloor: productModel.constraints.accessibilityFloor,
     });
-    const goldBonus = isGoldResource(candidate.slug) ? 15 : 0;
+    const goldBonus = isGoldResource(candidate.slug) ? 20 : 0;
     return {
       candidate,
       score: scoreResult.totalScore + goldBonus,
@@ -172,11 +151,7 @@ function resolveBestResourceForRole(
 
   return {
     resource: null,
-    ref: {
-      id: `res_${semanticRole.replace(/[^a-z0-9]/gi, '_')}`,
-      slug: semanticRole,
-      version: '1.0.0',
-    },
+    ref: undefined,
   };
 }
 
@@ -187,9 +162,7 @@ export function composeProjectForDirection(
   options: DirectionCompositionOptions
 ): ProjectManifest {
   const { productModel, screenGraph, direction, seed = '1' } = options;
-  const catalog = (options.catalogResources && options.catalogResources.length > 0)
-    ? options.catalogResources
-    : getDefaultCatalogResources();
+  const catalog = options.catalogResources ?? [];
 
   const grammar = getCompositionGrammar(direction.primaryGrammarId);
   const screens: ProjectScreen[] = [];

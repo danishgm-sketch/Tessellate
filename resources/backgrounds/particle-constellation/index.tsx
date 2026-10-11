@@ -46,11 +46,15 @@ export function ParticleConstellation({ variant = 'quiet' }: ParticleConstellati
       radius: Math.random() * 1.5 + 1.5,
     }));
 
+    const prefersReducedMotion =
+      typeof window !== 'undefined' &&
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Connect to mouse if within radius
-      if (mousePos) {
+      // Connect to mouse if within radius (only if not reduced motion)
+      if (mousePos && !prefersReducedMotion) {
         for (const p of particles) {
           const dx = p.x - mousePos.x;
           const dy = p.y - mousePos.y;
@@ -95,20 +99,26 @@ export function ParticleConstellation({ variant = 'quiet' }: ParticleConstellati
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
 
-        p.x += p.vx;
-        p.y += p.vy;
+        if (!prefersReducedMotion) {
+          p.x += p.vx;
+          p.y += p.vy;
 
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+        }
       }
 
-      animationFrameId = requestAnimationFrame(render);
+      if (!prefersReducedMotion) {
+        animationFrameId = requestAnimationFrame(render);
+      }
     };
 
     render();
 
     return () => {
-      cancelAnimationFrame(animationFrameId);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
   }, [dotFill]);
 

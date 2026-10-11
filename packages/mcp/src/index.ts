@@ -33,13 +33,20 @@ export async function runMcpServer(cwd = process.cwd()) {
   await server.connect(transport);
 }
 
+import { pathToFileURL } from 'node:url';
+
 // Run as standalone MCP server process if invoked directly
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (
+  process.argv[1] &&
+  (pathToFileURL(process.argv[1]).href.toLowerCase() === import.meta.url.toLowerCase() ||
+    import.meta.url.toLowerCase().endsWith(process.argv[1].replace(/\\/g, '/').toLowerCase()))
+) {
   runMcpServer().catch((err) => {
     console.error('[tessellate-mcp] Fatal error:', err);
     process.exit(1);
   });
 }
+
 
 export * from './tools.js';
 export * from './catalog-provider.js';

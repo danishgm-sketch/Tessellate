@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, 'antigravity/*']
   pull_request:
     branches: [main]
 
@@ -23,8 +23,14 @@ jobs:
           node-version: 22
           cache: 'pnpm'
 
-      - name: Install dependencies
+      - name: Install dependencies (frozen)
         run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Validate catalogue & schemas
+        run: pnpm build:catalog
 
       - name: Typecheck
         run: pnpm typecheck
@@ -32,8 +38,23 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      - name: Run tests
+      - name: Licence & provenance audit
+        run: tsx scripts/audit-license-provenance.ts
+
+      - name: Secret & security audit
+        run: tsx scripts/audit-security-secrets.ts
+
+      - name: Vitest (unit & integration)
         run: pnpm test
 
-      - name: Build
+      - name: Behavioural release gate
+        run: pnpm audit:release-gate
+
+      - name: Production build
         run: pnpm build
+
+      - name: Bundle budget audit
+        run: tsx scripts/audit-bundle-budgets.ts
+
+      - name: Playwright E2E & Axe accessibility tests
+        run: pnpm test:e2e
