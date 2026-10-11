@@ -185,6 +185,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             rows={3}
+            aria-label="Product description and requirements"
             placeholder="Describe what this product does, its users, complexity, and visual atmosphere…"
             className="w-full text-base sm:text-lg text-[#111217] placeholder-[#8B8F97] bg-transparent resize-none border-none focus:outline-none focus:ring-0 leading-relaxed font-sans"
           />
@@ -203,6 +204,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
                 <input
                   type="text"
                   value={feel}
+                  aria-label="Interface feel"
                   onChange={(e) => setFeel(e.target.value)}
                   className="font-semibold text-[#111217] bg-transparent border-none p-0 focus:outline-none text-xs w-36 hover:underline cursor-pointer"
                   title="Click to edit feel prompt"
@@ -220,6 +222,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
                     min="10"
                     max="95"
                     value={visualAmbition}
+                    aria-label="Visual ambition level"
                     onChange={(e) => setVisualAmbition(Number(e.target.value))}
                     className="w-20 accent-[#2547E8] cursor-pointer"
                   />
@@ -240,6 +243,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
                     min="10"
                     max="90"
                     value={structuralCreativity}
+                    aria-label="Structural creativity level"
                     onChange={(e) => setStructuralCreativity(Number(e.target.value))}
                     className="w-20 accent-[#111217] cursor-pointer"
                   />
@@ -256,6 +260,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
                 </span>
                 <select
                   value={stack}
+                  aria-label="Target technical stack"
                   onChange={(e) => setStack(e.target.value)}
                   className="font-semibold text-[#111217] bg-transparent border-none p-0 focus:outline-none text-xs cursor-pointer"
                 >

@@ -41,6 +41,7 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => setIsSearchOpen(true)}
+              aria-label="Search resources (Press Command-K)"
               className="flex items-center gap-2 rounded-lg border border-[#D9D6CF] bg-[#FAF9F6] px-3 py-1.5 text-xs text-[#62666F] hover:border-[#111217] hover:text-[#111217] transition-colors"
             >
               <Search className="h-3.5 w-3.5 text-[#8B8F97]" />
@@ -56,6 +57,7 @@ export function SiteHeader() {
               rel="noopener noreferrer"
               className="hidden sm:flex h-9 w-9 items-center justify-center rounded-lg border border-[#D9D6CF] bg-[#FAF9F6] text-[#62666F] hover:text-[#111217] hover:border-[#111217] transition-colors"
               title="GitHub Repository"
+              aria-label="GitHub Repository"
             >
               <Github className="h-4 w-4" />
             </a>

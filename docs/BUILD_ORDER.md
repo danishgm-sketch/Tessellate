@@ -529,21 +529,21 @@ Do not fabricate counts before resources exist.
 
 # Phase 20 — Production hardening
 
-- [ ] Complete all critical Playwright flows.
-- [ ] Complete axe pass on major routes.
-- [ ] Manual/agent keyboard pass.
-- [ ] Reduced-motion pass.
-- [ ] Public JS budget audit.
-- [ ] Workbench bundle/lazy-load audit.
-- [ ] Preview-origin isolation/security pass.
-- [ ] Secret/logging audit.
-- [ ] Upload/security pass if uploads enabled.
-- [ ] Licence/provenance audit.
-- [ ] D1 ownership authorization audit.
-- [ ] Recovery/import migration test.
-- [ ] production error-state pass.
-- [ ] mobile pass at 390px.
-- [ ] desktop pass at 1440px.
+- [x] Complete all critical Playwright flows.
+- [x] Complete axe pass on major routes.
+- [x] Manual/agent keyboard pass.
+- [x] Reduced-motion pass.
+- [x] Public JS budget audit.
+- [x] Workbench bundle/lazy-load audit.
+- [x] Preview-origin isolation/security pass.
+- [x] Secret/logging audit.
+- [x] Upload/security pass if uploads enabled.
+- [x] Licence/provenance audit.
+- [x] D1 ownership authorization audit.
+- [x] Recovery/import migration test.
+- [x] production error-state pass.
+- [x] mobile pass at 390px.
+- [x] desktop pass at 1440px.
 
 ---
 

@@ -52,7 +52,7 @@ export function AgentsSection() {
             <span className="text-[10px] text-[#C9FF57]">VALIDATED SCHEMA</span>
           </div>
 
-          <pre className="text-white/90 overflow-x-auto leading-relaxed text-[11px]">
+          <pre className="text-white/90 overflow-x-auto leading-relaxed text-[11px]" tabIndex={0} aria-label="AGENT_HANDOFF JSON specification">
 {`{
   "$schema": "https://tessellate.dev/schemas/v1/project.json",
   "name": "Market Intelligence Terminal",

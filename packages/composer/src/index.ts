@@ -8,3 +8,4 @@ export * from './planner.js';
 export * from './golden-briefs.js';
 export * from './page-compositions.js';
 export * from './showcases.js';
+export * from './recovery.js';

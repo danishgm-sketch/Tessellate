@@ -32,14 +32,14 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
             <span className="text-base font-semibold tracking-tight">Tessellate</span>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-6 text-sm">
+          <nav className="hidden lg:flex items-center gap-4 text-sm">
             {navLinks.map((link) => {
               const isActive = currentPath === link.href || currentPath.startsWith(link.href + '/');
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`transition-colors ${
+                  className={`inline-flex items-center min-h-[32px] px-2.5 py-1 rounded-md transition-colors ${
                     isActive
                       ? 'font-semibold text-[#111217] dark:text-[#F5F7FA]'
                       : 'text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA]'
@@ -59,7 +59,7 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
             type="button"
             onClick={onSearchClick}
             aria-label="Search resources (Press Command-K)"
-            className="flex items-center gap-2 rounded-lg border border-[#D9D6CF] bg-[#FFFFFF] px-3 py-1.5 text-xs text-[#62666F] hover:border-[#C7C3BA] hover:text-[#111217] dark:border-[#272C34] dark:bg-[#111419] dark:text-[#A8AFBA] dark:hover:border-[#353C46] cursor-pointer"
+            className="flex items-center gap-2 min-h-[32px] rounded-lg border border-[#D9D6CF] bg-[#FFFFFF] px-3 py-1.5 text-xs text-[#62666F] hover:border-[#C7C3BA] hover:text-[#111217] dark:border-[#272C34] dark:bg-[#111419] dark:text-[#A8AFBA] dark:hover:border-[#353C46] cursor-pointer"
           >
             <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="11" cy="11" r="8" />
@@ -77,7 +77,7 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Repository"
-            className="rounded-lg p-2 text-[#62666F] hover:bg-black/5 hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:bg-white/5 dark:hover:text-[#F5F7FA]"
+            className="inline-flex items-center justify-center min-h-[32px] min-w-[32px] rounded-lg p-1.5 text-[#62666F] hover:bg-black/5 hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:bg-white/5 dark:hover:text-[#F5F7FA]"
           >
             <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
               <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
@@ -88,13 +88,13 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
           <button
             type="button"
             onClick={onSignInClick}
-            className="hidden sm:inline-flex text-xs font-medium text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA] px-2 py-1.5 cursor-pointer"
+            className="hidden sm:inline-flex items-center min-h-[32px] text-xs font-medium text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA] px-2.5 py-1 rounded-lg cursor-pointer"
           >
             Sign in
           </button>
 
           {/* Primary CTA */}
-          <a href="/workbench">
+          <a href="/workbench" className="inline-flex items-center min-h-[32px]">
             <Button size="sm" variant="primary">
               Start building
             </Button>
@@ -105,7 +105,7 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
             type="button"
             onClick={() => setMobileMenuOpen(true)}
             aria-label="Open mobile navigation"
-            className="lg:hidden rounded-lg p-2 text-[#62666F] hover:bg-black/5 dark:text-[#A8AFBA]"
+            className="lg:hidden inline-flex items-center justify-center min-h-[36px] min-w-[36px] rounded-lg p-2 text-[#62666F] hover:bg-black/5 dark:text-[#A8AFBA]"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
