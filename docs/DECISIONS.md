@@ -201,6 +201,29 @@ This file records major decisions so autonomous agents do not repeatedly reopen 
 
 ## Open implementation decisions
 
+### D-033 — Sites save-only review of the canonical static application
+**Date:** 2026-10-11  
+**Context:** Owner requested a Sites staging port of `50a2c7f`, preserving architecture,
+with a saved version and explicit approval before any publication. This request
+overrides autonomous continuation through unrelated build-order feature work.  
+**Decision:** Keep Astro and every shared runtime package. Package its static export
+through `apps/sites/prepare-static.mjs` into root `dist`; provide the already compiled
+CSS at the existing detail-page stylesheet URL. Save an archive-backed Sites version
+without deploying. Do not add databases, OAuth credentials, API mocks or paid services.
+Record missing `/docs` and `/blueprints` web routes and Button-only detail preview
+coverage as base-commit acceptance gaps, even though the existing merge gate passes.
+Use `/showcases`, the actual existing route. See `apps/sites/README.md` and validation
+results for exact supported scope and post-approval runtime checks.  
+**Alternatives rejected:** Wholesale rewrite, Vinext substitution, copied composition
+logic, fabricated routes/previews, publishing before approval.  
+**Cost impact:** No added paid dependency, inference, D1/R2, or always-on runtime;
+Sites billing must be confirmed separately because tools expose no tariff.  
+**Security impact:** Existing CSP/header artifact preserved. Existing same-origin
+preview sandbox and missing sender-origin checks are disclosed; this review must
+not be extended to authenticated/untrusted previews without proper origin isolation.
+Actual hosted header enforcement remains unverified until approved publication.  
+**Status:** PROVISIONAL review deployment only; canonical architecture unchanged.
+
 Agents may decide these locally if consistent with contracts and cost/security rules:
 
 - exact internal helper/function names;
