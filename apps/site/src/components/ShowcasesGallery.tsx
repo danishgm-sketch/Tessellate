@@ -29,7 +29,7 @@ export function ShowcasesGallery() {
       </div>
 
       {/* Featured Showcase Card */}
-      <div className={`p-8 md:p-12 rounded-2xl border transition-colors ${
+      <div className={`p-6 sm:p-8 md:p-12 rounded-2xl border transition-colors ${
         activeShowcase.colorMode === 'dark'
           ? 'bg-[#0B0D10] text-white border-[#2E3440]'
           : 'bg-white text-[#111217] border-[#D9D6CF]'
@@ -71,7 +71,7 @@ export function ShowcasesGallery() {
               </div>
             </div>
 
-            <div className="pt-4 flex gap-4 items-center">
+            <div className="pt-4 flex flex-wrap gap-3 items-center">
               <a
                 href={`/workbench?showcase=${activeShowcase.id}`}
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold bg-[#2547E8] text-white hover:bg-[#1E3AB8] transition-colors shadow-sm"
