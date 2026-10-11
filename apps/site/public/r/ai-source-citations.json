@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-source-citations",
+  "type": "registry:component",
+  "title": "AI Source Citations",
+  "description": "Grounding source cards and citation tags attributing AI assertions back to documents, files, and URLs.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type AISourceCitationsVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AISourceCitationsProps {\n  variant?: AISourceCitationsVariant;\n}\n\nexport function AISourceCitations({ variant = 'quiet' }: AISourceCitationsProps) {\n  const [activeCite, setActiveCite] = useState<number | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const sources = [\n    { id: 1, title: 'DESIGN_SYSTEM.md', path: 'docs/DESIGN_SYSTEM.md#L45', quote: 'Nocturne palette mandates #0B0D10 canvas and minimum 4.5:1 text contrast.' },\n    { id: 2, title: 'WORKBENCH_SPEC.md', path: 'docs/WORKBENCH_SPEC.md#L112', quote: 'Workbench state persists strictly in IndexedDB with zero cloud syncing required.' },\n    { id: 3, title: 'DATA_CONTRACTS.md', path: 'docs/DATA_CONTRACTS.md#L88', quote: 'ResourceManifest schema enforces strict provenance, licensing, and 0 undeclared deps.' },\n  ];\n\n  return (\n    <div className={`w-full p-5 rounded-xl border flex flex-col gap-3 transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between pb-2 border-b border-neutral-100 dark:border-neutral-800\">\n        <span className=\"text-xs font-semibold\">Grounded Sources & Citations (3)</span>\n        <span className=\"text-[10px] font-mono text-emerald-500\">✓ 100% Verified</span>\n      </div>\n\n      <div className=\"space-y-2\">\n        {sources.map((src) => {\n          const isSelected = activeCite === src.id;\n          return (\n            <div\n              key={src.id}\n              onClick={() => setActiveCite(isSelected ? null : src.id)}\n              className={`p-3 rounded-lg border text-xs cursor-pointer transition-colors ${\n                isSelected\n                  ? 'border-neutral-900 bg-neutral-50 dark:border-white dark:bg-neutral-800'\n                  : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300'\n              }`}\n            >\n              <div className=\"flex items-center justify-between mb-1\">\n                <span className=\"font-medium font-mono\">[{src.id}] {src.title}</span>\n                <span className=\"text-[10px] text-neutral-400 font-mono\">{src.path}</span>\n              </div>\n              <p className=\"text-[11px] text-neutral-500 italic leading-relaxed\">\n                \"{src.quote}\"\n              </p>\n            </div>\n          );\n        })}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { AISourceCitations, AISourceCitationsVariant } from './index';\n\nexport function AISourceCitationsPreview() {\n  const [variant, setVariant] = useState<AISourceCitationsVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-2xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <AISourceCitations variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "ai",
+    "patterns",
+    "citations"
+  ],
+  "meta": {
+    "tessellateId": "res_ai_ai_source_citations",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

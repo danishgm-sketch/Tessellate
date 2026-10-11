@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-tool-execution-timeline",
+  "type": "registry:component",
+  "title": "AI Tool Execution Timeline",
+  "description": "Chronological timeline of agentic tool calls showing tool name, arguments, execution duration, and success status.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type AIToolExecutionTimelineVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AIToolExecutionTimelineProps {\n  variant?: AIToolExecutionTimelineVariant;\n}\n\nexport function AIToolExecutionTimeline({ variant = 'quiet' }: AIToolExecutionTimelineProps) {\n  const [expandedId, setExpandedId] = useState<string | null>('t2');\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const toolCalls = [\n    { id: 't1', tool: 'search_catalog', args: 'query: \"candlestick\", category: \"data\"', duration: '32ms', status: 'done', output: 'Found 1 verified resource: financial-candlestick-chart' },\n    { id: 't2', tool: 'validate_manifest', args: 'target: \"resources/data/financial-candlestick-chart\"', duration: '18ms', status: 'done', output: 'Schema 1.0.0 valid. 0 undeclared dependencies.' },\n    { id: 't3', tool: 'export_vite_project', args: 'outputDir: \"exported-app\"', duration: '140ms', status: 'done', output: 'Successfully exported 11 files with zero errors.' },\n  ];\n\n  return (\n    <div className={`w-full p-5 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between pb-2 border-b border-neutral-100 dark:border-neutral-800\">\n        <span className=\"text-xs font-semibold\">Agent Tool Call Execution Trace</span>\n        <span className=\"text-[10px] font-mono text-neutral-400\">Total runtime: 190ms</span>\n      </div>\n\n      <div className=\"space-y-3\">\n        {toolCalls.map((tc) => {\n          const isExpanded = expandedId === tc.id;\n          return (\n            <div key={tc.id} className=\"border border-neutral-200 dark:border-neutral-800 rounded-lg overflow-hidden text-xs\">\n              <div\n                onClick={() => setExpandedId(isExpanded ? null : tc.id)}\n                className=\"flex items-center justify-between p-3 bg-neutral-50 dark:bg-neutral-900/60 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors\"\n              >\n                <div className=\"flex items-center gap-2\">\n                  <span className=\"w-2 h-2 rounded-full bg-emerald-500\" />\n                  <span className=\"font-mono font-semibold\">{tc.tool}()</span>\n                </div>\n                <div className=\"flex items-center gap-3 font-mono text-[11px] text-neutral-400\">\n                  <span>{tc.duration}</span>\n                  <span>{isExpanded ? '▲' : '▼'}</span>\n                </div>\n              </div>\n\n              {isExpanded && (\n                <div className=\"p-3 bg-white dark:bg-black/30 border-t border-neutral-200 dark:border-neutral-800 space-y-2 font-mono text-[11px]\">\n                  <div>\n                    <span className=\"text-neutral-400 block mb-0.5\">Arguments:</span>\n                    <span className=\"text-neutral-800 dark:text-neutral-200\">{tc.args}</span>\n                  </div>\n                  <div>\n                    <span className=\"text-neutral-400 block mb-0.5\">Result:</span>\n                    <span className=\"text-emerald-600 dark:text-emerald-400\">{tc.output}</span>\n                  </div>\n                </div>\n              )}\n            </div>\n          );\n        })}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { AIToolExecutionTimeline, AIToolExecutionTimelineVariant } from './index';\n\nexport function AIToolExecutionTimelinePreview() {\n  const [variant, setVariant] = useState<AIToolExecutionTimelineVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-2xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <AIToolExecutionTimeline variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "ai",
+    "patterns",
+    "tools"
+  ],
+  "meta": {
+    "tessellateId": "res_ai_ai_tool_execution_timeline",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

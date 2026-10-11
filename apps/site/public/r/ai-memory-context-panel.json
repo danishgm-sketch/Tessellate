@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-memory-context-panel",
+  "type": "registry:component",
+  "title": "AI Memory Context Panel",
+  "description": "Inspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type AIMemoryContextPanelVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AIMemoryContextPanelProps {\n  variant?: AIMemoryContextPanelVariant;\n}\n\nexport function AIMemoryContextPanel({ variant = 'quiet' }: AIMemoryContextPanelProps) {\n  const [memories, setMemories] = useState([\n    { key: 'preferred_mode', val: 'Nocturne (dark obsidian canvas)' },\n    { key: 'stack_target', val: 'React 19 + Tailwind CSS 4' },\n    { key: 'dependency_rule', val: '0 undeclared dependencies allowed' },\n  ]);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const removeMem = (k: string) => {\n    setMemories(memories.filter((m) => m.key !== k));\n  };\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Active Assistant Memory</h4>\n          <p className=\"text-xs text-neutral-500\">Short & long-term conversational recall</p>\n        </div>\n        <button\n          onClick={() => setMemories([])}\n          className=\"text-xs text-rose-500 hover:underline font-mono\"\n        >\n          Purge All\n        </button>\n      </div>\n\n      <div className=\"space-y-2\">\n        {memories.map((m) => (\n          <div\n            key={m.key}\n            className=\"flex items-center justify-between p-3 rounded-lg border border-neutral-200 dark:border-neutral-800 text-xs font-mono\"\n          >\n            <div>\n              <span className=\"text-neutral-400 mr-2\">{m.key}:</span>\n              <span className=\"font-semibold\">{m.val}</span>\n            </div>\n            <button onClick={() => removeMem(m.key)} className=\"text-neutral-400 hover:text-rose-500 px-1\">\n              ✕\n            </button>\n          </div>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { AIMemoryContextPanel, AIMemoryContextPanelVariant } from './index';\n\nexport function AIMemoryContextPanelPreview() {\n  const [variant, setVariant] = useState<AIMemoryContextPanelVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-2xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <AIMemoryContextPanel variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "ai",
+    "patterns",
+    "memory"
+  ],
+  "meta": {
+    "tessellateId": "res_ai_ai_memory_context_panel",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

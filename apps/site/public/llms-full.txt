@@ -77,14 +77,32 @@ Tools provided:
 - `get_design_dna`: Inspect Design DNA presets and vectors.
 - `list_design_directions`: Return visual reference directions (Editorial Precision, Kinetic Monolith, Atmospheric Depth).
 
-## Resources in Catalogue (232)
+## Resources in Catalogue (252)
 
 - [Accessibility Commitment Section](https://tessellate.design/r/accessibility-commitment-section): Formal WCAG 2.2 AA compliance manifesto with automated audit guarantees. (sections, marketing, technical-proof)
 - [Accordion](https://tessellate.design/r/accordion): Collapsible vertically stacked disclosure panels with rotating chevron animations. (primitives, layout)
 - [Activity Feed](https://tessellate.design/r/activity-feed): Chronological timeline of system events, team actions, and commit updates. (blocks, dashboards, activity)
 - [Admin Console Shell](https://tessellate.design/r/admin-console-shell): Enterprise administration layout with organization selector, user table, and security audit tab. (shells, layout)
 - [Advanced Data Table](https://tessellate.design/r/advanced-data-table): Feature-rich data table with column sorting, checkbox selection, pagination, and filter bar. (blocks, data, tables)
+- [AI Agent Activity Feed](https://tessellate.design/r/ai-agent-activity-feed): Real-time telemetry stream showing background agent thoughts, state transitions, subagent spawns, and progress percentages. (ai, patterns, agent)
+- [AI Approval Request](https://tessellate.design/r/ai-approval-request): Human-in-the-loop intervention card requesting explicit user confirmation before executing irreversible, high-cost, or external operations. (ai, patterns, governance)
+- [AI Chat Panel](https://tessellate.design/r/ai-chat-panel): Multi-turn conversational AI message stream with role badges, markdown body, copy action, and input composer. (ai, patterns, chat)
+- [AI Command Bar](https://tessellate.design/r/ai-command-bar): Spotlight-style floating palette that understands natural-language system instructions and intent-matched actions. (ai, patterns, command)
+- [AI Copilot Sidebar](https://tessellate.design/r/ai-copilot-sidebar): Collapsible contextual side pane providing real-time AI suggestions, file diffs, and inline run triggers. (ai, patterns, sidebar)
+- [AI Empty State](https://tessellate.design/r/ai-empty-state): First-run welcoming container introducing AI capabilities, sample prompts, and rapid starting templates. (ai, patterns, empty)
+- [AI File Context Picker](https://tessellate.design/r/ai-file-context-picker): Multi-select tree picker allowing users to attach specific project files and schemas into prompt context. (ai, patterns, picker)
+- [AI Generation Compare](https://tessellate.design/r/ai-generation-compare): Side-by-side comparative split card evaluating two candidate AI generations with score metrics and selection trigger. (ai, patterns, comparison)
+- [AI Memory Context Panel](https://tessellate.design/r/ai-memory-context-panel): Inspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls. (ai, patterns, memory)
+- [AI Model Mode Switcher](https://tessellate.design/r/ai-model-mode-switcher): Segmented switcher and credential dropdown to toggle between fast, reasoning, and local models. (ai, patterns, switcher)
+- [AI Multi-Agent Board](https://tessellate.design/r/ai-multi-agent-board): Kanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states. (ai, patterns, multi-agent)
+- [AI Plan Review](https://tessellate.design/r/ai-plan-review): Multi-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers. (ai, patterns, planning)
+- [AI Prompt Composer](https://tessellate.design/r/ai-prompt-composer): Structured prompt input box with context variable attachment pills, system mode badges, and token counters. (ai, patterns, composer)
 - [AI Prompt Hero](https://tessellate.design/r/ai-prompt-hero): Conversational prompt bar with preset suggestions, model picker pill, and generate CTA. (sections, marketing, hero)
+- [AI Prompt History](https://tessellate.design/r/ai-prompt-history): Searchable log of previous prompts with token stats, execution timestamps, and re-run buttons. (ai, patterns, history)
+- [AI Research Answer](https://tessellate.design/r/ai-research-answer): Comprehensive synthesized research summary with executive takeaway, numbered key points, and confidence meter. (ai, patterns, research)
+- [AI Source Citations](https://tessellate.design/r/ai-source-citations): Grounding source cards and citation tags attributing AI assertions back to documents, files, and URLs. (ai, patterns, citations)
+- [AI Suggested Actions](https://tessellate.design/r/ai-suggested-actions): Context-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts. (ai, patterns, actions)
+- [AI Tool Execution Timeline](https://tessellate.design/r/ai-tool-execution-timeline): Chronological timeline of agentic tool calls showing tool name, arguments, execution duration, and success status. (ai, patterns, tools)
 - [Alert Dialog](https://tessellate.design/r/alert-dialog): Destructive confirmation modal requiring explicit acknowledgment or cancellation before proceeding. (primitives, overlays, feedback)
 - [Analytics Shell](https://tessellate.design/r/analytics-shell): Metric-dense business intelligence dashboard shell with date picker bar and KPI grid. (shells, layout)
 - [API Capability Section](https://tessellate.design/r/api-capability-section): Developer section highlighting REST / GraphQL / SDK methods with endpoint pill tags. (sections, marketing, integrations)
@@ -179,6 +197,7 @@ Tools provided:
 - [File Browser](https://tessellate.design/r/file-browser): Tree view file explorer with folder toggles, file extension icons, and selection states. (blocks, entities, files)
 - [Filter Builder](https://tessellate.design/r/filter-builder): Interactive compound filter constructor with field, operator, and value rows. (blocks, search, filters)
 - [Financial Candlestick Chart](https://tessellate.design/r/financial-candlestick-chart): OHLC financial price chart with bullish/bearish candle bodies, high/low wicks, and volume sub-bars. (data, visualization, finance)
+- [Floating AI Assistant](https://tessellate.design/r/floating-ai-assistant): Draggable or floating bottom-corner action launcher with modal conversation bubble and prompt chips. (ai, patterns, floating)
 - [Floating Navigation](https://tessellate.design/r/floating-nav): Island-style floating navigation pill pinned to top viewport with rounded corners and glass blur. (shells, navigation)
 - [Footer Developer](https://tessellate.design/r/footer-developer): Terminal-styled developer footer with CLI command snippet, API status, and git commit sha. (sections, marketing, footer)
 - [Footer Minimal](https://tessellate.design/r/footer-minimal): Single-line copyright, status indicator, and legal links with minimal footprint. (sections, marketing, footer)
@@ -199,6 +218,7 @@ Tools provided:
 - [Icon Rail](https://tessellate.design/r/icon-rail): Ultra-thin vertical action rail for high-frequency tool selection in design editors. (shells, navigation)
 - [Immersive Fullscreen Shell](https://tessellate.design/r/immersive-fullscreen-shell): Distraction-free edge-to-edge presentation shell with auto-hiding chrome and focus mode. (shells, layout)
 - [Import Data Flow](https://tessellate.design/r/import-data-flow): File drag-and-drop ingestion card supporting schema upload and progress indicators. (blocks, onboarding, import)
+- [Inline AI Rewrite](https://tessellate.design/r/inline-ai-rewrite): Inline text selection overlay offering tone adjustments, shortening, expansion, and diff acceptance. (ai, patterns, inline)
 - [Inline Alert](https://tessellate.design/r/inline-alert): In-page contextual message banner conveying informational, success, warning, or danger states. (primitives, feedback)
 - [Text Input](https://tessellate.design/r/input): Clean, accessible single-line text input with label, helper copy, and error states. (primitives, inputs)
 - [Integration Directory Preview](https://tessellate.design/r/integration-directory-preview): Searchable catalog preview of ecosystem plugins with filter chips. (sections, marketing, integrations)
@@ -522,6 +542,539 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### AI Agent Activity Feed (`ai-agent-activity-feed`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, agent
+- **Description**: Real-time telemetry stream showing background agent thoughts, state transitions, subagent spawns, and progress percentages.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-agent-activity-feed.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Approval Request (`ai-approval-request`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, governance
+- **Description**: Human-in-the-loop intervention card requesting explicit user confirmation before executing irreversible, high-cost, or external operations.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-approval-request.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Chat Panel (`ai-chat-panel`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, chat
+- **Description**: Multi-turn conversational AI message stream with role badges, markdown body, copy action, and input composer.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-chat-panel.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Command Bar (`ai-command-bar`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, command
+- **Description**: Spotlight-style floating palette that understands natural-language system instructions and intent-matched actions.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-command-bar.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Copilot Sidebar (`ai-copilot-sidebar`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, sidebar
+- **Description**: Collapsible contextual side pane providing real-time AI suggestions, file diffs, and inline run triggers.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-copilot-sidebar.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Empty State (`ai-empty-state`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, empty
+- **Description**: First-run welcoming container introducing AI capabilities, sample prompts, and rapid starting templates.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-empty-state.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI File Context Picker (`ai-file-context-picker`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, picker
+- **Description**: Multi-select tree picker allowing users to attach specific project files and schemas into prompt context.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-file-context-picker.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Generation Compare (`ai-generation-compare`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, comparison
+- **Description**: Side-by-side comparative split card evaluating two candidate AI generations with score metrics and selection trigger.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-generation-compare.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Memory Context Panel (`ai-memory-context-panel`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, memory
+- **Description**: Inspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-memory-context-panel.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Model Mode Switcher (`ai-model-mode-switcher`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, switcher
+- **Description**: Segmented switcher and credential dropdown to toggle between fast, reasoning, and local models.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-model-mode-switcher.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Multi-Agent Board (`ai-multi-agent-board`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, multi-agent
+- **Description**: Kanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-multi-agent-board.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Plan Review (`ai-plan-review`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, planning
+- **Description**: Multi-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-plan-review.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Prompt Composer (`ai-prompt-composer`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, composer
+- **Description**: Structured prompt input box with context variable attachment pills, system mode badges, and token counters.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-prompt-composer.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### AI Prompt Hero (`ai-prompt-hero`)
 - **Type**: section
 - **Categories**: sections, marketing, hero
@@ -557,6 +1110,211 @@ Tools provided:
   - asymmetry: 25
   - conversionIntensity: 75
   - trust: 90
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Prompt History (`ai-prompt-history`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, history
+- **Description**: Searchable log of previous prompts with token stats, execution timestamps, and re-run buttons.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-prompt-history.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Research Answer (`ai-research-answer`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, research
+- **Description**: Comprehensive synthesized research summary with executive takeaway, numbered key points, and confidence meter.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-research-answer.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Source Citations (`ai-source-citations`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, citations
+- **Description**: Grounding source cards and citation tags attributing AI assertions back to documents, files, and URLs.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-source-citations.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Suggested Actions (`ai-suggested-actions`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, actions
+- **Description**: Context-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-suggested-actions.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### AI Tool Execution Timeline (`ai-tool-execution-timeline`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, tools
+- **Description**: Chronological timeline of agentic tool calls showing tool name, arguments, execution duration, and success status.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/ai-tool-execution-timeline.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95
   - visualMode: adaptive
@@ -4417,6 +5175,47 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Floating AI Assistant (`floating-ai-assistant`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, floating
+- **Description**: Draggable or floating bottom-corner action launcher with modal conversation bubble and prompt chips.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/floating-ai-assistant.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
 ### Floating Navigation (`floating-nav`)
 - **Type**: block
 - **Categories**: shells, navigation
@@ -5230,6 +6029,47 @@ Tools provided:
   - interactionDensity: 75
   - asymmetry: 15
   - conversionIntensity: 45
+  - trust: 95
+  - accessibilityPriority: 95
+  - performancePriority: 95
+  - visualMode: adaptive
+  - geometryFamily: rounded
+  - primaryStack: react-tailwind
+
+### Inline AI Rewrite (`inline-ai-rewrite`)
+- **Type**: ai-pattern
+- **Categories**: ai, patterns, inline
+- **Description**: Inline text selection overlay offering tone adjustments, shortening, expansion, and diff acceptance.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/inline-ai-rewrite.json
+- **Design DNA**:
+  - professionalism: 92
+  - playfulness: 25
+  - luxury: 45
+  - warmth: 30
+  - technicality: 88
+  - editorial: 60
+  - futurism: 55
+  - visualAmbition: 75
+  - structuralCreativity: 55
+  - density: 70
+  - whitespace: 45
+  - contrast: 85
+  - colourfulness: 35
+  - curvature: 35
+  - depth: 35
+  - motion: 30
+  - motionPlayfulness: 20
+  - typographicExpression: 50
+  - imageryIntensity: 0
+  - videoIntensity: 0
+  - threeDIntensity: 0
+  - dataDensity: 75
+  - interactionDensity: 85
+  - asymmetry: 15
+  - conversionIntensity: 35
   - trust: 95
   - accessibilityPriority: 95
   - performancePriority: 95

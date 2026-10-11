@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-research-answer",
+  "type": "registry:component",
+  "title": "AI Research Answer",
+  "description": "Comprehensive synthesized research summary with executive takeaway, numbered key points, and confidence meter.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React from 'react';\n\nexport type AIResearchAnswerVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AIResearchAnswerProps {\n  variant?: AIResearchAnswerVariant;\n}\n\nexport function AIResearchAnswer({ variant = 'quiet' }: AIResearchAnswerProps) {\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const calloutBg =\n    variant === 'nocturne'\n      ? 'bg-cyan-950/40 border-cyan-800 text-cyan-200'\n      : variant === 'expressive'\n      ? 'bg-blue-50 border-blue-200 text-blue-900'\n      : 'bg-neutral-50 border-neutral-200 text-neutral-900';\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Synthesis: Micro-frontend vs Monolith Export</h4>\n          <p className=\"text-xs text-neutral-500\">Synthesized from 12 architectural repository documents</p>\n        </div>\n        <span className=\"text-xs font-mono font-medium text-emerald-500 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800\">\n          Confidence: 98%\n        </span>\n      </div>\n\n      <div className={`p-4 rounded-lg border text-xs leading-relaxed ${calloutBg}`}>\n        <span className=\"font-bold uppercase tracking-wider block mb-1 text-[10px]\">Executive Summary</span>\n        Tessellate adopts a zero-runtime standalone export model. Standalone projects compile cleanly to Vite + React without any Tessellate runtime SDK lock-in or micro-frontend container overhead.\n      </div>\n\n      <div className=\"space-y-2 text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed\">\n        <div className=\"flex items-start gap-2\">\n          <span className=\"font-mono text-neutral-400 font-bold\">1.</span>\n          <span>Zero Lock-in: Component code exports as self-contained TypeScript and Tailwind files with no proprietary wrapper tags.</span>\n        </div>\n        <div className=\"flex items-start gap-2\">\n          <span className=\"font-mono text-neutral-400 font-bold\">2.</span>\n          <span>Bundle Performance: Exported apps load in under 150ms with zero remote asset fetching.</span>\n        </div>\n        <div className=\"flex items-start gap-2\">\n          <span className=\"font-mono text-neutral-400 font-bold\">3.</span>\n          <span>Guest Independence: Full export and preview lifecycle works offline in IndexedDB.</span>\n        </div>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { AIResearchAnswer, AIResearchAnswerVariant } from './index';\n\nexport function AIResearchAnswerPreview() {\n  const [variant, setVariant] = useState<AIResearchAnswerVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-2xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <AIResearchAnswer variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "ai",
+    "patterns",
+    "research"
+  ],
+  "meta": {
+    "tessellateId": "res_ai_ai_research_answer",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

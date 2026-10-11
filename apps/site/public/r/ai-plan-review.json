@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-plan-review",
+  "type": "registry:component",
+  "title": "AI Plan Review",
+  "description": "Multi-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type AIPlanReviewVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AIPlanReviewProps {\n  variant?: AIPlanReviewVariant;\n}\n\nexport function AIPlanReview({ variant = 'quiet' }: AIPlanReviewProps) {\n  const [accepted, setAccepted] = useState(false);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const steps = [\n    { num: '01', title: 'Generate Manifest Contracts', desc: 'Create 20 validated ResourceManifest JSON schemas with 0 dependencies.' },\n    { num: '02', title: 'Synthesize React Components', desc: 'Author clean, accessible pure SVG + Tailwind components for all 3 variants.' },\n    { num: '03', title: 'Monorepo Typecheck & Lint Gate', desc: 'Run pnpm typecheck and pnpm lint to verify 0 errors and 0 warnings.' },\n    { num: '04', title: 'Test Suite & Phase Gate Commit', desc: 'Execute 253 tests across packages and commit with conventional commit message.' },\n  ];\n\n  return (\n    <div className={`w-full p-6 rounded-xl border flex flex-col gap-5 transition-colors ${cardBg}`}>\n      <div className=\"flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800\">\n        <div>\n          <h4 className=\"text-sm font-semibold tracking-tight\">Proposed Implementation Plan</h4>\n          <p className=\"text-xs text-neutral-500\">Autonomous execution strategy for Phase 18</p>\n        </div>\n        <span className=\"text-xs font-mono font-medium px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500\">\n          4 Steps | ~2m runtime\n        </span>\n      </div>\n\n      <div className=\"space-y-3\">\n        {steps.map((s) => (\n          <div key={s.num} className=\"flex items-start gap-4 p-3 rounded-lg border border-neutral-200 dark:border-neutral-800\">\n            <span className=\"text-xs font-mono font-bold text-neutral-400 mt-0.5\">{s.num}</span>\n            <div className=\"flex-1\">\n              <h5 className=\"text-xs font-semibold mb-0.5\">{s.title}</h5>\n              <p className=\"text-xs text-neutral-500 leading-relaxed\">{s.desc}</p>\n            </div>\n          </div>\n        ))}\n      </div>\n\n      <div className=\"flex justify-end pt-2\">\n        <button\n          onClick={() => setAccepted(!accepted)}\n          className=\"px-5 py-2 text-xs font-medium rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:opacity-90 transition-opacity\"\n        >\n          {accepted ? '✓ Plan Accepted & Running' : 'Accept Plan & Proceed'}\n        </button>\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { AIPlanReview, AIPlanReviewVariant } from './index';\n\nexport function AIPlanReviewPreview() {\n  const [variant, setVariant] = useState<AIPlanReviewVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-2xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <AIPlanReview variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "ai",
+    "patterns",
+    "planning"
+  ],
+  "meta": {
+    "tessellateId": "res_ai_ai_plan_review",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

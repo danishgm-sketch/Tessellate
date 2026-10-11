@@ -1,0 +1,39 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ai-suggested-actions",
+  "type": "registry:component",
+  "title": "AI Suggested Actions",
+  "description": "Context-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useState } from 'react';\n\nexport type AISuggestedActionsVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface AISuggestedActionsProps {\n  variant?: AISuggestedActionsVariant;\n}\n\nexport function AISuggestedActions({ variant = 'quiet' }: AISuggestedActionsProps) {\n  const [selected, setSelected] = useState<string | null>(null);\n\n  const cardBg =\n    variant === 'nocturne'\n      ? 'bg-[#0B0D10] border-[#2E3440] text-white'\n      : variant === 'expressive'\n      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'\n      : 'bg-white border-neutral-200 text-neutral-900';\n\n  const actionPill =\n    variant === 'nocturne'\n      ? 'bg-[#151921] hover:bg-[#1E232E] border-[#2E3440] text-cyan-400'\n      : variant === 'expressive'\n      ? 'bg-blue-50/70 hover:bg-blue-100/70 border-blue-200 text-blue-900'\n      : 'bg-neutral-50 hover:bg-neutral-100 border-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-200';\n\n  const actions = [\n    { id: '1', title: 'Export as Vite App', desc: 'Bundle React + Tailwind 4 source tree' },\n    { id: '2', title: 'Run Contrast Audit', desc: 'Validate WCAG 2.2 AA against 3 presets' },\n    { id: '3', title: 'Generate Shadcn Manifest', desc: 'Create registry schema item file' },\n  ];\n\n  return (\n    <div className={`w-full p-5 rounded-xl border flex flex-col gap-3 transition-colors ${cardBg}`}>\n      <div className=\"flex items-center gap-2 text-xs font-semibold\">\n        <span className=\"text-amber-500\">✦</span>\n        <span>Suggested Next Steps</span>\n      </div>\n\n      <div className=\"grid grid-cols-1 sm:grid-cols-3 gap-2.5\">\n        {actions.map((act) => (\n          <button\n            key={act.id}\n            onClick={() => setSelected(act.id)}\n            className={`p-3 rounded-lg border text-left transition-all ${actionPill} ${\n              selected === act.id ? 'ring-2 ring-current' : ''\n            }`}\n          >\n            <div className=\"text-xs font-semibold mb-1\">{act.title}</div>\n            <div className=\"text-[11px] text-neutral-500 leading-snug\">{act.desc}</div>\n          </button>\n        ))}\n      </div>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/index.tsx"
+    },
+    {
+      "path": "preview.tsx",
+      "content": "import React, { useState } from 'react';\nimport { AISuggestedActions, AISuggestedActionsVariant } from './index';\n\nexport function AISuggestedActionsPreview() {\n  const [variant, setVariant] = useState<AISuggestedActionsVariant>('quiet');\n\n  return (\n    <div className=\"p-8 max-w-2xl mx-auto space-y-6\">\n      <div className=\"flex gap-2 border-b pb-4\">\n        {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (\n          <button\n            key={v}\n            onClick={() => setVariant(v)}\n            className={`px-3 py-1.5 text-xs font-medium rounded-md capitalize ${\n              variant === v ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'text-neutral-500 hover:bg-neutral-100'\n            }`}\n          >\n            {v}\n          </button>\n        ))}\n      </div>\n      <AISuggestedActions variant={variant} />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "components/ui/preview.tsx"
+    }
+  ],
+  "categories": [
+    "ai",
+    "patterns",
+    "actions"
+  ],
+  "meta": {
+    "tessellateId": "res_ai_ai_suggested_actions",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

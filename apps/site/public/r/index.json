@@ -72,6 +72,188 @@
       ]
     },
     {
+      "name": "ai-agent-activity-feed",
+      "type": "registry:component",
+      "title": "AI Agent Activity Feed",
+      "description": "Real-time telemetry stream showing background agent thoughts, state transitions, subagent spawns, and progress percentages.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "agent"
+      ]
+    },
+    {
+      "name": "ai-approval-request",
+      "type": "registry:component",
+      "title": "AI Approval Request",
+      "description": "Human-in-the-loop intervention card requesting explicit user confirmation before executing irreversible, high-cost, or external operations.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "governance"
+      ]
+    },
+    {
+      "name": "ai-chat-panel",
+      "type": "registry:component",
+      "title": "AI Chat Panel",
+      "description": "Multi-turn conversational AI message stream with role badges, markdown body, copy action, and input composer.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "chat"
+      ]
+    },
+    {
+      "name": "ai-command-bar",
+      "type": "registry:component",
+      "title": "AI Command Bar",
+      "description": "Spotlight-style floating palette that understands natural-language system instructions and intent-matched actions.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "command"
+      ]
+    },
+    {
+      "name": "ai-copilot-sidebar",
+      "type": "registry:component",
+      "title": "AI Copilot Sidebar",
+      "description": "Collapsible contextual side pane providing real-time AI suggestions, file diffs, and inline run triggers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "sidebar"
+      ]
+    },
+    {
+      "name": "ai-empty-state",
+      "type": "registry:component",
+      "title": "AI Empty State",
+      "description": "First-run welcoming container introducing AI capabilities, sample prompts, and rapid starting templates.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "empty"
+      ]
+    },
+    {
+      "name": "ai-file-context-picker",
+      "type": "registry:component",
+      "title": "AI File Context Picker",
+      "description": "Multi-select tree picker allowing users to attach specific project files and schemas into prompt context.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "picker"
+      ]
+    },
+    {
+      "name": "ai-generation-compare",
+      "type": "registry:component",
+      "title": "AI Generation Compare",
+      "description": "Side-by-side comparative split card evaluating two candidate AI generations with score metrics and selection trigger.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "comparison"
+      ]
+    },
+    {
+      "name": "ai-memory-context-panel",
+      "type": "registry:component",
+      "title": "AI Memory Context Panel",
+      "description": "Inspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "memory"
+      ]
+    },
+    {
+      "name": "ai-model-mode-switcher",
+      "type": "registry:component",
+      "title": "AI Model Mode Switcher",
+      "description": "Segmented switcher and credential dropdown to toggle between fast, reasoning, and local models.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "switcher"
+      ]
+    },
+    {
+      "name": "ai-multi-agent-board",
+      "type": "registry:component",
+      "title": "AI Multi-Agent Board",
+      "description": "Kanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "multi-agent"
+      ]
+    },
+    {
+      "name": "ai-plan-review",
+      "type": "registry:component",
+      "title": "AI Plan Review",
+      "description": "Multi-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "planning"
+      ]
+    },
+    {
+      "name": "ai-prompt-composer",
+      "type": "registry:component",
+      "title": "AI Prompt Composer",
+      "description": "Structured prompt input box with context variable attachment pills, system mode badges, and token counters.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "composer"
+      ]
+    },
+    {
       "name": "ai-prompt-hero",
       "type": "registry:block",
       "title": "AI Prompt Hero",
@@ -83,6 +265,76 @@
         "sections",
         "marketing",
         "hero"
+      ]
+    },
+    {
+      "name": "ai-prompt-history",
+      "type": "registry:component",
+      "title": "AI Prompt History",
+      "description": "Searchable log of previous prompts with token stats, execution timestamps, and re-run buttons.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "history"
+      ]
+    },
+    {
+      "name": "ai-research-answer",
+      "type": "registry:component",
+      "title": "AI Research Answer",
+      "description": "Comprehensive synthesized research summary with executive takeaway, numbered key points, and confidence meter.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "research"
+      ]
+    },
+    {
+      "name": "ai-source-citations",
+      "type": "registry:component",
+      "title": "AI Source Citations",
+      "description": "Grounding source cards and citation tags attributing AI assertions back to documents, files, and URLs.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "citations"
+      ]
+    },
+    {
+      "name": "ai-suggested-actions",
+      "type": "registry:component",
+      "title": "AI Suggested Actions",
+      "description": "Context-sensitive action strip offering next logical steps, workflow continuations, and automated shortcuts.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "actions"
+      ]
+    },
+    {
+      "name": "ai-tool-execution-timeline",
+      "type": "registry:component",
+      "title": "AI Tool Execution Timeline",
+      "description": "Chronological timeline of agentic tool calls showing tool name, arguments, execution duration, and success status.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "tools"
       ]
     },
     {
@@ -1376,6 +1628,20 @@
       ]
     },
     {
+      "name": "floating-ai-assistant",
+      "type": "registry:component",
+      "title": "Floating AI Assistant",
+      "description": "Draggable or floating bottom-corner action launcher with modal conversation bubble and prompt chips.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "floating"
+      ]
+    },
+    {
       "name": "floating-nav",
       "type": "registry:block",
       "title": "Floating Navigation",
@@ -1650,6 +1916,20 @@
         "blocks",
         "onboarding",
         "import"
+      ]
+    },
+    {
+      "name": "inline-ai-rewrite",
+      "type": "registry:component",
+      "title": "Inline AI Rewrite",
+      "description": "Inline text selection overlay offering tone adjustments, shortening, expansion, and diff acceptance.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "ai",
+        "patterns",
+        "inline"
       ]
     },
     {
