@@ -189,14 +189,14 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
                 Copy
               </button>
             </div>
-            <pre className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
+            <pre tabIndex={0} className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
               <code>{install}</code>
             </pre>
 
             <span className="text-[var(--tess-ink-secondary,#62666F)] block pt-2">
               Actual published source (React + Tailwind):
             </span>
-            <pre className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
+            <pre tabIndex={0} className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
               <code>{sourceCode}</code>
             </pre>
           </div>

@@ -752,7 +752,7 @@ function DirectionCard({
         <Dialog open={previewOpen} onClose={closePreview} title={`Direction ${number}: ${direction.name}`} className="max-w-[1400px] max-h-[92vh] overflow-auto">
           <label className="block mb-4">Screen <select aria-label="Direction preview screen" className="border p-2" value={previewScreen} onChange={event=>setPreviewScreen(event.target.value)}>{manifest.screens.map(screen=><option key={screen.id} value={screen.id}>{screen.name}</option>)}</select></label>
           <div onClickCapture={event=>{const anchor=(event.target as HTMLElement).closest('a[href^="#"]');const id=anchor?.getAttribute('href')?.slice(1);if(id && manifest.screens.some(screen=>screen.id===id)){event.preventDefault();setPreviewScreen(id);}}}><ManifestRenderer manifest={manifest} activeScreenId={previewScreen}/></div>
-          <details className="mt-4"><summary>Design DNA and resource references</summary><pre className="text-xs overflow-auto">{JSON.stringify({id:manifest.id,dna:manifest.designDNA,navigation:manifest.navigation,grammar:direction.primaryGrammarId,screens:manifest.screens,diagnostics:output.diagnostics},null,2)}</pre></details>
+          <details className="mt-4"><summary>Design DNA and resource references</summary><pre tabIndex={0} className="text-xs overflow-auto">{JSON.stringify({id:manifest.id,dna:manifest.designDNA,navigation:manifest.navigation,grammar:direction.primaryGrammarId,screens:manifest.screens,diagnostics:output.diagnostics},null,2)}</pre></details>
         </Dialog>
       </div>
     </div>

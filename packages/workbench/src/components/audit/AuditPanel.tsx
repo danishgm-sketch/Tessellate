@@ -186,7 +186,7 @@ export function AuditPanel({ manifest: propManifest }: { manifest?: ProjectManif
       </div>
 
       {/* Issues List */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-3">
+      <div tabIndex={0} role="region" aria-label="Project audit results" className="flex-1 overflow-y-auto p-6 space-y-3">
         <div className="flex items-center justify-between mb-2">
           <div className="text-xs font-bold uppercase tracking-wider text-[#62666F] dark:text-[#A8AFBA]">
             {filteredIssues.length} Actionable Findings
