@@ -19,11 +19,13 @@ it('standalone employee product preserves nested records and CTA content in a re
   const server=spawn(process.execPath,[path.join(directory,'node_modules/vite/bin/vite.js'),'preview','--host','127.0.0.1','--port',String(port),'--strictPort'],{cwd:directory,stdio:'pipe'});
   let previewOutput='';
   const ready=new Promise<void>((resolve,reject)=>{
-    const timer=setTimeout(()=>reject(new Error(`Export preview did not become ready: ${previewOutput}`)),20000);
-    server.stdout.on('data',data=>{previewOutput+=String(data);if(previewOutput.includes('Local:')){clearTimeout(timer);resolve();}});
+    const finish=(error?:Error)=>{clearTimeout(timer);clearInterval(probe);if(error)reject(error);else resolve();};
+    const timer=setTimeout(()=>finish(new Error(`Export preview did not become ready: ${previewOutput}`)),20000);
+    const probe=setInterval(()=>{void fetch(`http://127.0.0.1:${port}`,{signal:AbortSignal.timeout(1000)}).then(response=>{if(response.ok)finish();}).catch(()=>{});},200);
+    server.stdout.on('data',data=>{previewOutput+=String(data);});
     server.stderr.on('data',data=>{previewOutput+=String(data);});
-    server.on('error',error=>{clearTimeout(timer);reject(error);});
-    server.on('exit',code=>{clearTimeout(timer);reject(new Error(`Export preview exited ${code}: ${previewOutput}`));});
+    server.on('error',error=>finish(error));
+    server.on('exit',code=>finish(new Error(`Export preview exited ${code}: ${previewOutput}`)));
   });
   const browser=await chromium.launch();
   try {

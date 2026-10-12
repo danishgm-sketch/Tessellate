@@ -13,6 +13,8 @@ export default tseslint.config(
       '**/.astro/**',
       '**/node_modules/**',
       '**/coverage/**',
+      '**/test-results/**',
+      '**/playwright-report/**',
       'audit/evidence/**/standalone/**',
     ],
   },
