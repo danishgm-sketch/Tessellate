@@ -1485,6 +1485,54 @@
       "remediation": "Pending root-cause remediation and deployed verification.",
       "fixCommit": null,
       "status": "open"
+    },
+    {
+      "id": "AUD-050",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Library Apply does not replace a resource",
+      "expected": "The operation changes the actual validated project without fabricated refs or identity collisions.",
+      "actual": "Apply KPI Metric Card changes the selected layout title to Active Metric but keeps its original resource/subtree.",
+      "reproduction": [
+        "Select a node",
+        "Open Library",
+        "Apply KPI Metric Card",
+        "Export the manifest"
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/before/library-apply-before.jpg",
+      "rootCause": "Hardcoded legacy library fabricates four entries; Apply calls updateNodeProps rather than a resource mutation.",
+      "affectedCode": "packages/workbench/src/components/left-panel",
+      "remediation": "Canonical resource replacement, unique subtree IDs and shared state checks. Local implementation is awaiting deployed re-audit.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-051",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Duplicating a screen duplicates every node identity",
+      "expected": "The operation changes the actual validated project without fabricated refs or identity collisions.",
+      "actual": "Export contains 77 nodes but only 67 unique node IDs after duplicating Marketing Home.",
+      "reproduction": [
+        "Open Pages",
+        "Duplicate Marketing Home",
+        "Export the manifest",
+        "Compare node IDs across screens"
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/before/pages-duplicate-before.jpg",
+      "rootCause": "PagesTab deep-clones the tree without allocating node IDs.",
+      "affectedCode": "packages/workbench/src/components/left-panel",
+      "remediation": "Canonical resource replacement, unique subtree IDs and shared state checks. Local implementation is awaiting deployed re-audit.",
+      "fixCommit": null,
+      "status": "open"
     }
   ],
   "routes": [

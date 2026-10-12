@@ -644,3 +644,13 @@ Evidence uses actual UI, downloaded manifests and clean ZIP installation/build. 
 Catalogue readiness, three direction generation, choosing C, root/section selection, node-local settings override, locking, radical recomposition, replacement, Surprise, six history actions and both downloads were exercised through UI. History appeared to restore the resource across undo/redo; exact downloaded manifests remain available for comparison. Onboarding could not be exercised because inference omitted it. Replacement introduced unrelated ingestion content. Reload lost all edits. A clean independent ZIP installation succeeded (85 packages), but TypeScript build failed on the invalid `gradient-fill` variant. No successful exported-runtime test is claimed.
 
 The passive browser run recorded zero genuine uncaught exceptions and zero requestfailed events on the flagship run, but explicit404 destinations, missing security headers and critical accessibility failures remain blockers.
+
+## Additional deployed findings (HIGH)
+
+### AUD-050 — Library Apply does not replace a resource
+
+Evidence: `evidence/before/library-apply-before.jpg` and `library-apply-no-resource.tess.json`. Select a node, open Library, Apply KPI Metric Card, export. Its title changes to Active Metric while its resource and subtree remain unchanged. The root cause is a fabricated legacy catalogue and a props-only callback in LibraryTab. Remediation uses the loaded Gold catalogue, compatible role/constraint candidates, and actual REPLACE_NODE operations. OPEN pending deployed verification.
+
+### AUD-051 — Duplicate screen creates node identity collisions
+
+Evidence: `evidence/before/pages-duplicate-before.jpg` and `pages-duplicate-before.tess.json`. Open Pages, duplicate Marketing Home, export. The downloaded project has 77 nodes but only 67 unique IDs. PagesTab deep-clones IDs unchanged, which makes selection and mutations ambiguous across screens. Remediation assigns new IDs recursively, resets copied locks, and verifies identity uniqueness. OPEN pending deployed verification.
