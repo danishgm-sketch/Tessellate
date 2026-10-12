@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Search, Github, Menu, X, ArrowRight } from 'lucide-react';
+import { useDialogFocus } from '@tessellate/ui';
 import { CommandPalette } from '../CommandPalette.js';
 
 export function SiteHeader() {
   const [interactive,setInteractive]=useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const closeMenu=useCallback(()=>setIsMenuOpen(false),[]);
+  const navigationRef=useDialogFocus<HTMLDivElement>(isMenuOpen,closeMenu);
   useEffect(() => {
     setInteractive(true);
     const openSearch = (event: KeyboardEvent) => {
@@ -93,7 +96,7 @@ export function SiteHeader() {
               type="button"
               disabled={!interactive} aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden p-1.5 text-[#62666F] hover:text-[#111217] transition-colors"
-              aria-label="Toggle menu"
+              aria-label="Toggle menu" aria-controls="mobile-navigation"
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -103,7 +106,8 @@ export function SiteHeader() {
 
       {/* Mobile Drawer Sheet */}
       {isMenuOpen && (
-        <div className="fixed inset-0 top-16 z-40 bg-[#F4F2ED] p-6 lg:hidden flex flex-col justify-between overflow-y-auto animate-fade-in">
+        <div id="mobile-navigation" ref={navigationRef} role="dialog" aria-modal="true" aria-label="Main navigation" tabIndex={-1} className="fixed inset-0 top-16 z-40 bg-[#F4F2ED] p-6 lg:hidden flex flex-col justify-between overflow-y-auto animate-fade-in">
+          <button type="button" onClick={closeMenu} aria-label="Close navigation" className="self-end min-h-10 min-w-10 p-2"><X className="h-5 w-5" /></button>
           <nav className="flex flex-col gap-4 text-lg font-semibold text-[#111217]">
             <a href="/explore" onClick={() => setIsMenuOpen(false)} className="py-2 border-b border-[#D9D6CF]">Explore Catalogue</a>
             <a href="/showcases" onClick={() => setIsMenuOpen(false)} className="py-2 border-b border-[#D9D6CF]">Showcases</a>
