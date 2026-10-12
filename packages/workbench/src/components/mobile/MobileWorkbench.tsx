@@ -43,7 +43,7 @@ export function MobileWorkbench() {
     >
       <TopToolbar />
       {/* Main Content Area */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="relative z-0 flex-1 overflow-y-auto">
         {mobileTab === 'preview' && (
           <div className="p-4">
             <div className="rounded-2xl border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#111217] overflow-hidden shadow-sm">

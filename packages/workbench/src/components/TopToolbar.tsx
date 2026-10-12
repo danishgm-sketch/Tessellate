@@ -284,7 +284,7 @@ export function TopToolbar() {
           {isExportOpen && (
             <div
               data-testid="export-menu"
-              className="absolute right-0 mt-2 w-64 rounded-xl border border-[#D9D6CF] bg-white p-1.5 shadow-lg dark:border-[#272C34] dark:bg-[#171B21] z-50 text-xs"
+              className="fixed left-3 right-3 mt-2 w-auto sm:absolute sm:left-auto sm:right-0 sm:w-64 rounded-xl border border-[#D9D6CF] bg-white p-1.5 shadow-lg dark:border-[#272C34] dark:bg-[#171B21] z-50 text-xs"
             >
               <button
                 data-testid="export-manifest-btn"
