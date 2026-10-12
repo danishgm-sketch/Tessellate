@@ -1,3 +1,4 @@
+/* global URL, console */
 import { readFile, readdir, writeFile } from 'node:fs/promises';
 const base = 'https://tessellate-v1-review.ismayildanish-gm.chatgpt.site';
 const directory = 'audit/evidence/before/instrumented';

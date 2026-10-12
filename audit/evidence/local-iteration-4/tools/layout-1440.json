@@ -1,0 +1,99 @@
+{
+  "url": "http://127.0.0.1:4323/tools/layout/",
+  "viewport": "1440x900",
+  "status": 200,
+  "screenshot": "layout-1440.png",
+  "controls": {
+    "text": "TOOL 06 · STRUCTURAL GRAMMAR\nClient-Side · Zero Login\nLayout Composer\n\nDesign and stress-test responsive layout structures, container bounds, and responsive grid reflow.\n\nCopy Layout Snippet\nARCHITECTURAL GRAMMARS\nStandard Application Sidebar\nThree-Pane Modular Cockpit\nAsymmetric Bento Grid\nAsymmetric Editorial Split\nSpatial Infinite Canvas\nContainer & Grid Settings\nReset\nMax Container Bounds\n1024px\n1280px\n1440px\n100%\nGrid Columns (Desktop)\n12 cols\nGutter Pitch (Gap)\n24px\nPORT SIMULATION\nStandard Application Sidebar\n375px\n768px\n1440px\nTop Bar Navigation",
+    "buttons": [
+      {
+        "label": "Copy Layout Snippet",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Standard Application Sidebar",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Three-Pane Modular Cockpit",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Asymmetric Bento Grid",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Asymmetric Editorial Split",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Spatial Infinite Canvas",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Reset",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "1024px",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "1280px",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "1440px",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "100%",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "375px",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "768px",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "1440px",
+        "aria": null,
+        "disabled": false
+      }
+    ],
+    "fields": [
+      {
+        "tag": "INPUT",
+        "type": "range",
+        "aria": "Grid columns",
+        "value": "12"
+      },
+      {
+        "tag": "INPUT",
+        "type": "range",
+        "aria": "Grid gap",
+        "value": "24"
+      }
+    ]
+  },
+  "axe": [],
+  "console": [],
+  "exceptions": [],
+  "network": []
+}

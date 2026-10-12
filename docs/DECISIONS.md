@@ -224,6 +224,29 @@ not be extended to authenticated/untrusted previews without proper origin isolat
 Actual hosted header enforcement remains unverified until approved publication.  
 **Status:** PROVISIONAL review deployment only; canonical architecture unchanged.
 
+### D-034 — Runtime audit fixes use canonical data and resource contracts
+**Date:** 2026-10-12  
+**Context:** The deployed employee journey inferred analytics, selected unrelated
+shells for content roles, lost edits on reload and exported an invalid variant.
+An independent installed export also discarded nested content props. The existing
+technical gate did not establish runtime acceptance.  
+**Decision:** Keep Astro, React, the existing 18 archetypes and Gold 40 registry.
+Specialise the people-operations archetype for employee briefs; match whole words
+and domain phrases. Preserve domain screen intents and provide labelled example
+content through the existing resource APIs. Match semantic roles explicitly,
+fail closed and use canonical variant IDs. Generate export prop metadata with the
+TypeScript compiler at build time and serialise structured props into standalone
+source. Journal edits in the existing browser stores, await IndexedDB transaction
+completion and retain invalid records in recoverable read-only mode. Compare uses
+the opened project's checkpoint. All issues remain open until deployed re-audit.  
+**Alternatives rejected:** LLM dependency, synthetic catalogue fallbacks, suppressing
+export errors, retaining demo finance content, rewriting the application.  
+**Cost impact:** None; no paid service, D1, R2 or provider inference added.  
+**Security impact:** No credentials added or persisted. Export metadata generation
+uses the compiler only at build time; no dynamic source evaluation in product runtime.
+Existing runtime header enforcement remains an open deployment finding.  
+**Status:** Runtime remediation in progress; deployment acceptance pending.
+
 Agents may decide these locally if consistent with contracts and cost/security rules:
 
 - exact internal helper/function names;
@@ -250,3 +273,65 @@ Record a new decision below when one materially affects architecture/product beh
 **Cost impact:** None / expected amount.  
 **Security impact:** None / describe.  
 **Status:** LOCKED / PROVISIONAL.
+
+
+### D-035 — Enforce Sites security with an isolated Astro asset Worker
+**Date:** 2026-10-12  
+**Context:** The original public Sites deployment ignored `_headers`. Real previews
+also used a same-origin sandbox and concealed unresolved slugs with Button.  
+**Decision:** Preserve the Astro output and add only an isolated `apps/sites`
+asset Worker using the supported Cloudflare Vite build. It streams the canonical
+ASSETS response with enforced security headers. No API or storage architecture
+moves into the adapter. Vetted catalogue code imports into opaque script-only
+preview frames. Wildcard CORS applies only to public compiled assets. Preview CSP
+keeps `connect-src 'none'`; disabling CSS splitting removes fetch-based stylesheet
+preloading. Dynamic module imports select compiled resource implementations, never
+raw source evaluation. Validate preview messages against the parent window, its
+referrer origin and the canonical protocol. The pinned official starter runtime
+uses compatibility date 2026-05-15; a newer date exceeds its local emulation range.  
+**References:** https://developers.cloudflare.com/workers/vite-plugin/reference/static-assets/
+and https://developers.cloudflare.com/workers/best-practices/workers-best-practices/  
+**Alternatives rejected:** Framework rewrite, silently missing CSP, allowing
+same-origin preview access, expanding preview network permissions, provisioning
+D1/R2 for static hosting.  
+**Cost impact:** No paid service, new database, inference or always-on server.
+Sites tariff remains unavailable from connector metadata.  
+**Security impact:** Response policy enforced and preview isolation strengthened;
+no provider secret is persisted. Native deployed enforcement is still pending.  
+**Status:** PROVISIONAL until fixed deployed smoke and re-audit complete.
+
+### D-036 — Public pages expose canonical data and truthful guest capability boundaries
+**Date:** 2026-10-12  
+**Context:** The runtime audit found missing public routes, fake library controls,
+ignored resource/showcase handoffs, fabricated references and empty preview props.  
+**Decision:** Public category routes use the real catalogue and search. Blueprint
+and page recipe routes expose existing contracts and open Compose with a real
+starting brief. Documentation renders repository Markdown. Creator counts reflect
+actual files, not invented usage. Collections store actual bookmark slugs locally.
+Showcase briefs use the same canonical resolver and publish inspectable manifests;
+Workbench loads a validated independent local copy of the requested example or
+Gold resource. Static preview fixtures declare the required input props and their
+local demonstration handlers; they do not imply a connected backend. Guest review
+pages disclose server capabilities that need the canonical Hono deployment.
+Metadata scores and WCAG targets are labelled as such, not certification.  
+**Alternatives rejected:** Dummy 200 pages, Button fallback, synthetic catalogue
+refs, fake customer numbers, paid infrastructure and broad stack changes.  
+**Cost impact:** No new paid infrastructure or database.  
+**Security impact:** Browser data only, sandboxed previews and static provenance
+preserved. Editing still uses validated manifest mutations.  
+**Status:** Runtime remediation; deployed verification pending.
+
+### D-037 — Project playfulness into resource geometry without changing platform tokens
+**Date:** 2026-10-12  
+**Context:** A real onboarding edit changed the stored playfulness value but no
+rendered resource token. The existing normalizer ignored that dimension.  
+**Decision:** At playfulness 50, preserve canonical curvature tier radii exactly.
+Reserved/playful extremes apply a bounded 0.75–1.25 modifier to resource radii,
+rounded to half pixels. Sharp zero-radius geometry remains sharp. Platform chrome
+uses its existing design tokens. Both runtime rendering and standalone export
+use this normalizer. Full DNA/token snapshots on locked nodes preserve appearance.  
+**Alternatives rejected:** Fake state-only controls, a replacement design system,
+arbitrary screen-specific CSS and silently switching visual mode or palette.  
+**Cost impact:** None.  
+**Security impact:** None.  
+**Status:** Local regression passes; deployed appearance verification pending.

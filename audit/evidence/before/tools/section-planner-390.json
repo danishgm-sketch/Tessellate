@@ -1,0 +1,842 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/section-planner/",
+  "viewport": "390x844",
+  "status": 200,
+  "screenshot": "section-planner-390.png",
+  "controls": {
+    "text": "TOOL 07 · NARRATIVE ORCHESTRATION\nClient-Side · Zero Login\nSection Planner\n\nGenerate and balance structured section grammars optimized for conversion, technical documentation, or editorial storytelling.\n\nExport Section Graph JSON\nPAGE OBJECTIVE ARCHETYPES\nB2B SaaS Conversion Landing\nDeveloper Documentation Hub\nFintech Analytics Cockpit\nLuxury Editorial Sanctuary\nOperational Triage & Admin Tool\nOrdered Section Grammar (8 Active)\nReset Order\n01\nHero Value Proposition & Composer\nHERO\nImmediate punchy headline with interactive product simulation.\nActive\n02\nInstitutional Trust & Compliance Badges\nPROOF\nSOC2, ISO27001, and enterprise customer logos.\nActive\n03\nInteractive Feature Playground\nINTERACTIVE\nZero-friction live browser sandbox demonstrating core capability.\nActive\n04\nArchitectural Difference Matrix\nFEATURE\nSide-by-side comparison with legacy alternatives.\nActive\n05\nQuantified Performance Proof\nPROOF\nVerified audit benchmarks, latency metrics, and throughput.\nActive\n06\nTransparent Pricing Tiers\nPRICING\nFree tier, Pro workspace, and Enterprise custom tiers.\nActive\n07\nTechnical Evaluation FAQ\nFAQ\nAnswers to security, self-hosting, and export questions.\nActive\n08\nFinal Action Call & Terminal Run\nCTA\nSingle-command CLI launch and web app entry.\nActive\nAdd\nGrammar Balance Telemetry\nBALANCED FLOW\nAttention (Hero & Visual)\n1 sections\n(target 1-2)\nProof & Trust (Audit / Metrics)\n2 sections\n(target 1-3)\nInteraction (Playground / Sandbox)\n1 sections\n(target 1-2)\nInformation (Features / FAQ)\n2 sections\n(target 2-4)\nAction & Conversion (Pricing / CTA)\n2 sections\n(target 1-2)\n\nA balanced section grammar establishes immediate clarity, backs claims with proof, offers zero-friction interaction, and guides users to decisive conversion.\n\nGRAMMAR MANIFEST\nCopy\n{\n  \"pageObjective\": \"saas-conversion\",\n  \"totalSections\": 8,\n  \"grammar\": [\n    {\n      \"order\": 1,\n      \"id\": \"sec-1\",\n      \"name\": \"Hero Value Proposition & Composer\",\n      \"semanticRole\": \"hero\",\n      \"description\": \"Immediate punchy headline with interactive product simulation.\"\n    },\n    {\n      \"order\": 2,\n      \"id\": \"sec-2\",\n      \"name\": \"Institutional Trust & Compliance Badges\",\n      \"semanticRole\": \"proof\",\n      \"description\": \"SOC2, ISO27001, and enterprise customer logos.\"\n    },\n    {\n      \"order\": 3,\n      \"id\": \"sec-3\",\n      \"name\": \"Interactive Feature Playground\",\n      \"semanticRole\": \"interactive\",\n      \"description\": \"Zero-friction live browser sandbox demonstrating core capability.\"\n    },\n    {\n      \"order\": 4,\n      \"id\": \"sec-4\",\n      \"name\": \"Architectural Difference Matrix\",\n      \"semanticRole\": \"feature\",\n      \"description\": \"Side-by-side comparison with legacy alternatives.\"\n    },\n    {\n      \"order\": 5,\n      \"id\": \"sec-5\",\n      \"name\": \"Quantified Performance Proof\",\n      \"semanticRole\": \"proof\",\n      \"description\": \"Verified audit benchmarks, latency metrics, and throughput.\"\n    },\n    {\n      \"order\": 6,\n      \"id\": \"sec-6\",\n      \"name\": \"Transparent Pricing Tiers\",\n      \"semanticRole\": \"pricing\",\n      \"description\": \"Free tier, Pro workspace, and Enterprise custom tiers.\"\n    },\n    {\n      \"order\": 7,\n      \"id\": \"sec-7\",\n      \"name\": \"Technical Evaluation FAQ\",\n      \"semanticRole\": \"faq\",\n      \"description\": \"Answers to security, self-hosting, and export questions.\"\n    },\n    {\n      \"order\": 8,\n      \"id\": \"sec-8\",\n      \"name\": \"Final Action Call & Terminal Run\",\n      \"semanticRole\": \"cta\",\n      \"description\": \"Single-command CLI launch and web app entry.\"\n    }\n  ]\n}",
+    "buttons": [
+      {
+        "label": "Export Section Graph JSON",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "B2B SaaS Conversion Landing",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Developer Documentation Hub",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Fintech Analytics Cockpit",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Luxury Editorial Sanctuary",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Operational Triage & Admin Tool",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Reset Order",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": true
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Active",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Active",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Active",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Active",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Active",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Active",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Active",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": true
+      },
+      {
+        "label": "Active",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Add",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Copy",
+        "aria": null,
+        "disabled": false
+      }
+    ],
+    "fields": [
+      {
+        "tag": "INPUT",
+        "type": "text",
+        "aria": null,
+        "value": ""
+      }
+    ]
+  },
+  "axe": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ],
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#f4f2ed",
+                "contrastRatio": 2.89,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body class=\"min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white flex flex-col font-sans\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.89 (foreground color: #8b8f97, background color: #f4f2ed, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"block font-mono text-xs font-semibold uppercase text-[#8B8F97]\">Page Objective Archetypes</span>",
+          "target": [
+            ".block"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.89 (foreground color: #8b8f97, background color: #f4f2ed, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#ffffff",
+                "contrastRatio": 3.24,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"lg:col-span-7 space-y-4 rounded-2xl border border-[#D9D6CF] bg-white p-6 shadow-sm\">",
+                  "target": [
+                    ".lg\\:col-span-7"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span>Reset Order</span>",
+          "target": [
+            ".gap-1.font-mono.hover\\:text-\\[\\#111217\\] > span"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"flex items-center justify-between p-3 rounded-xl border transition-all border-[#D9D6CF] bg-[#FAF9F6] shadow-sm\">",
+                  "target": [
+                    ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(1)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"font-mono text-xs font-bold text-[#8B8F97] w-5\">01</span>",
+          "target": [
+            ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(1) > .gap-3.items-center.flex > .w-5.font-bold.font-mono"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"flex items-center justify-between p-3 rounded-xl border transition-all border-[#D9D6CF] bg-[#FAF9F6] shadow-sm\">",
+                  "target": [
+                    ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(2)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"font-mono text-xs font-bold text-[#8B8F97] w-5\">02</span>",
+          "target": [
+            ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(2) > .gap-3.items-center.flex > .w-5.font-bold.font-mono"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"flex items-center justify-between p-3 rounded-xl border transition-all border-[#D9D6CF] bg-[#FAF9F6] shadow-sm\">",
+                  "target": [
+                    ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(3)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"font-mono text-xs font-bold text-[#8B8F97] w-5\">03</span>",
+          "target": [
+            ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(3) > .gap-3.items-center.flex > .w-5.font-bold.font-mono"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"flex items-center justify-between p-3 rounded-xl border transition-all border-[#D9D6CF] bg-[#FAF9F6] shadow-sm\">",
+                  "target": [
+                    ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(4)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"font-mono text-xs font-bold text-[#8B8F97] w-5\">04</span>",
+          "target": [
+            ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(4) > .gap-3.items-center.flex > .w-5.font-bold.font-mono"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"flex items-center justify-between p-3 rounded-xl border transition-all border-[#D9D6CF] bg-[#FAF9F6] shadow-sm\">",
+                  "target": [
+                    ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(5)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"font-mono text-xs font-bold text-[#8B8F97] w-5\">05</span>",
+          "target": [
+            ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(5) > .gap-3.items-center.flex > .w-5.font-bold.font-mono"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"flex items-center justify-between p-3 rounded-xl border transition-all border-[#D9D6CF] bg-[#FAF9F6] shadow-sm\">",
+                  "target": [
+                    ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(6)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"font-mono text-xs font-bold text-[#8B8F97] w-5\">06</span>",
+          "target": [
+            ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(6) > .gap-3.items-center.flex > .w-5.font-bold.font-mono"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"flex items-center justify-between p-3 rounded-xl border transition-all border-[#D9D6CF] bg-[#FAF9F6] shadow-sm\">",
+                  "target": [
+                    ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(7)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"font-mono text-xs font-bold text-[#8B8F97] w-5\">07</span>",
+          "target": [
+            ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(7) > .gap-3.items-center.flex > .w-5.font-bold.font-mono"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "bold",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"flex items-center justify-between p-3 rounded-xl border transition-all border-[#D9D6CF] bg-[#FAF9F6] shadow-sm\">",
+                  "target": [
+                    ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(8)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"font-mono text-xs font-bold text-[#8B8F97] w-5\">08</span>",
+          "target": [
+            ".p-3.bg-\\[\\#FAF9F6\\].shadow-sm:nth-child(8) > .gap-3.items-center.flex > .w-5.font-bold.font-mono"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: bold). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#ffffff",
+                "contrastRatio": 3.24,
+                "fontSize": "7.5pt (10px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"rounded-2xl border border-[#D9D6CF] bg-white p-6 shadow-sm space-y-5\">",
+                  "target": [
+                    ".space-y-5"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"font-mono text-[10px] text-[#8B8F97]\">(target <!-- -->1-2<!-- -->)</span>",
+          "target": [
+            ".justify-between.text-xs.items-center:nth-child(1) > .gap-2.items-center.flex > .text-\\[10px\\].font-mono.text-\\[\\#8B8F97\\]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#ffffff",
+                "contrastRatio": 3.24,
+                "fontSize": "7.5pt (10px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"rounded-2xl border border-[#D9D6CF] bg-white p-6 shadow-sm space-y-5\">",
+                  "target": [
+                    ".space-y-5"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"font-mono text-[10px] text-[#8B8F97]\">(target <!-- -->1-3<!-- -->)</span>",
+          "target": [
+            ".justify-between.text-xs.items-center:nth-child(2) > .gap-2.items-center.flex > .text-\\[10px\\].font-mono.text-\\[\\#8B8F97\\]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#ffffff",
+                "contrastRatio": 3.24,
+                "fontSize": "7.5pt (10px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"rounded-2xl border border-[#D9D6CF] bg-white p-6 shadow-sm space-y-5\">",
+                  "target": [
+                    ".space-y-5"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"font-mono text-[10px] text-[#8B8F97]\">(target <!-- -->1-2<!-- -->)</span>",
+          "target": [
+            ".justify-between.text-xs.items-center:nth-child(3) > .gap-2.items-center.flex > .text-\\[10px\\].font-mono.text-\\[\\#8B8F97\\]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#ffffff",
+                "contrastRatio": 3.24,
+                "fontSize": "7.5pt (10px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"rounded-2xl border border-[#D9D6CF] bg-white p-6 shadow-sm space-y-5\">",
+                  "target": [
+                    ".space-y-5"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"font-mono text-[10px] text-[#8B8F97]\">(target <!-- -->2-4<!-- -->)</span>",
+          "target": [
+            ".justify-between.text-xs.items-center:nth-child(4) > .gap-2.items-center.flex > .text-\\[10px\\].font-mono.text-\\[\\#8B8F97\\]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#ffffff",
+                "contrastRatio": 3.24,
+                "fontSize": "7.5pt (10px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"rounded-2xl border border-[#D9D6CF] bg-white p-6 shadow-sm space-y-5\">",
+                  "target": [
+                    ".space-y-5"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"font-mono text-[10px] text-[#8B8F97]\">(target <!-- -->1-2<!-- -->)</span>",
+          "target": [
+            ".justify-between.text-xs.items-center:nth-child(5) > .gap-2.items-center.flex > .text-\\[10px\\].font-mono.text-\\[\\#8B8F97\\]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#f4f2ed",
+                "contrastRatio": 2.89,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body class=\"min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white flex flex-col font-sans\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.89 (foreground color: #8b8f97, background color: #f4f2ed, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<footer class=\"border-t border-[#D9D6CF] py-8 text-center text-xs text-[#8B8F97] font-mono\">\nTessellate Interface Suite · Tool 07: Section Planner\n</footer>",
+          "target": [
+            "footer"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.89 (foreground color: #8b8f97, background color: #f4f2ed, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    },
+    {
+      "id": "scrollable-region-focusable",
+      "impact": "serious",
+      "tags": [
+        "cat.keyboard",
+        "wcag2a",
+        "wcag211",
+        "wcag213",
+        "TTv5",
+        "TT4.a",
+        "EN-301-549",
+        "EN-9.2.1.1",
+        "EN-9.2.1.3",
+        "RGAAv4",
+        "RGAA-7.3.2"
+      ],
+      "description": "Ensure elements that have scrollable content are accessible by keyboard in Safari",
+      "help": "Scrollable region must have keyboard access",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/scrollable-region-focusable?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "focusable-content",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element should have focusable content"
+            },
+            {
+              "id": "focusable-element",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "serious",
+              "message": "Element should be focusable"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<pre class=\"overflow-x-auto text-[10px] text-[#D9D6CF] leading-relaxed max-h-56\">",
+          "target": [
+            "pre"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+        }
+      ]
+    }
+  ],
+  "console": [],
+  "exceptions": [],
+  "network": []
+}

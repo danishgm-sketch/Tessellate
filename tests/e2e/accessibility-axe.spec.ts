@@ -20,8 +20,7 @@ test.describe('Accessibility & WCAG 2.2 AA Audits', () => {
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
-      .disableRules(['color-contrast', 'target-size'])
-      .analyze();
+            .analyze();
 
     expect(accessibilityScanResults.violations).toEqual([]);
   });
@@ -32,8 +31,7 @@ test.describe('Accessibility & WCAG 2.2 AA Audits', () => {
 
     const accessibilityScanResults = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
-      .disableRules(['color-contrast', 'target-size'])
-      .analyze();
+            .analyze();
 
     expect(accessibilityScanResults.violations).toEqual([]);
   });
@@ -43,7 +41,7 @@ test.describe('Accessibility & WCAG 2.2 AA Audits', () => {
     await page.goto('/');
 
     // Page must load stably without script crashes under reduced motion
-    const header = page.locator('header');
+    const header = page.locator('header').first();
     await expect(header).toBeVisible();
 
     await page.goto('/showcases');

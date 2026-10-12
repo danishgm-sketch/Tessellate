@@ -1,0 +1,724 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/motion/",
+  "viewport": "1440x900",
+  "status": 200,
+  "screenshot": "motion-1440.png",
+  "controls": {
+    "text": "TOOL 03 · KINETIC PHYSICS\nClient-Side · Zero Login\nMotion Studio\n\nAuthor and inspect easing curves, spring dynamics, stagger pacing, and WCAG reduced motion floors.\n\nPlay Animation\nCopy CSS\nPERSONALITY PRESETS\nCalm Precision\nEditorial Glide\nEnergetic Tactile\nDeliberate Command\nReduced Motion Safe\nKinetic Physics Model\nReduced Motion\nCubic-Bezier\nSpring Physics\nPacing Duration\n220ms\nStagger Delay (per item)\n40ms\nBezier Curve Coordinates\n[0.16, 1, 0.3, 1]\nX1 / Y1 (In)\nX2 / Y2 (Out)\nKINETIC SIMULATION BENCH\n220ms · CUBIC-BEZIER\nStaggered Component Sequence\n01 · System Architecture Audit\n20/20 PASS\n02 · Cryptographic Token Verification\nVALIDATED\n03 · Latency SLA Telemetry Sync\n38ms OPTIMAL\nInteractive Tactile Press Target\nPress Me for Spring Response\nClick to test physical depression & rebound feedback.\nCSS TRANSITION\nCopy\n/* Tessellate Motion Preset: calm-precision */\ntransition-property: transform, opacity, box-shadow;\ntransition-duration: 220ms;\ntransition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);\nMOTION PROPS\nCopy\n{\n  duration: 0.22,\n  ease: [0.16, 1, 0.3, 1]\n}",
+    "buttons": [
+      {
+        "label": "Play Animation",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Copy CSS",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Calm Precision",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Editorial Glide",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Energetic Tactile",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Deliberate Command",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Reduced Motion Safe",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Cubic-Bezier",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Spring Physics",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Press Me for Spring Response",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Copy",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Copy",
+        "aria": null,
+        "disabled": false
+      }
+    ],
+    "fields": [
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "aria": null,
+        "value": "on"
+      },
+      {
+        "tag": "INPUT",
+        "type": "range",
+        "aria": null,
+        "value": "220"
+      },
+      {
+        "tag": "INPUT",
+        "type": "range",
+        "aria": null,
+        "value": "40"
+      },
+      {
+        "tag": "INPUT",
+        "type": "number",
+        "aria": null,
+        "value": "0.16"
+      },
+      {
+        "tag": "INPUT",
+        "type": "number",
+        "aria": null,
+        "value": "1"
+      },
+      {
+        "tag": "INPUT",
+        "type": "number",
+        "aria": null,
+        "value": "0.3"
+      },
+      {
+        "tag": "INPUT",
+        "type": "number",
+        "aria": null,
+        "value": "1"
+      }
+    ]
+  },
+  "axe": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ],
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#f4f2ed",
+                "contrastRatio": 2.89,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body class=\"min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white flex flex-col font-sans\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.89 (foreground color: #8b8f97, background color: #f4f2ed, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"block font-mono text-xs font-semibold uppercase text-[#8B8F97]\">Personality Presets</span>",
+          "target": [
+            ".uppercase.block.text-\\[\\#8B8F97\\]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.89 (foreground color: #8b8f97, background color: #f4f2ed, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#ffffff",
+                "contrastRatio": 3.24,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"lg:col-span-5 space-y-6 rounded-2xl border border-[#D9D6CF] bg-white p-6 shadow-sm\">",
+                  "target": [
+                    ".lg\\:col-span-5"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"text-[#8B8F97]\">X1 / Y1 (In)</span>",
+          "target": [
+            ".grid-cols-2 > div:nth-child(1) > .text-\\[\\#8B8F97\\]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#ffffff",
+                "contrastRatio": 3.24,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"lg:col-span-5 space-y-6 rounded-2xl border border-[#D9D6CF] bg-white p-6 shadow-sm\">",
+                  "target": [
+                    ".lg\\:col-span-5"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"text-[#8B8F97]\">X2 / Y2 (Out)</span>",
+          "target": [
+            ".grid-cols-2 > div:nth-child(2) > .text-\\[\\#8B8F97\\]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"rounded-2xl border border-[#D9D6CF] bg-[#FAF9F6] p-6 shadow-sm space-y-6\">",
+                  "target": [
+                    ".lg\\:col-span-7 > .rounded-2xl.p-6.space-y-6"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span>KINETIC SIMULATION BENCH</span>",
+          "target": [
+            ".pb-3.border-b.text-\\[\\#8B8F97\\] > span:nth-child(1)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#f4f2ed",
+                "contrastRatio": 2.89,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body class=\"min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white flex flex-col font-sans\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.89 (foreground color: #8b8f97, background color: #f4f2ed, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<footer class=\"border-t border-[#D9D6CF] py-8 text-center text-xs text-[#8B8F97] font-mono\">\nTessellate Interface Suite · Tool 03: Motion Studio\n</footer>",
+          "target": [
+            "footer"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.89 (foreground color: #8b8f97, background color: #f4f2ed, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    },
+    {
+      "id": "label",
+      "impact": "critical",
+      "tags": [
+        "cat.forms",
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.n",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.1.1"
+      ],
+      "description": "Ensure every form element has a label",
+      "help": "Form elements must have labels",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/label?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "implicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an implicit (wrapped) <label>"
+            },
+            {
+              "id": "explicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an explicit <label>"
+            },
+            {
+              "id": "aria-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-label attribute does not exist or is empty"
+            },
+            {
+              "id": "aria-labelledby",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+            },
+            {
+              "id": "non-empty-title",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no title attribute"
+            },
+            {
+              "id": "non-empty-placeholder",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no placeholder attribute"
+            },
+            {
+              "id": "presentational-role",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "critical",
+          "html": "<input type=\"range\" min=\"0\" max=\"800\" step=\"20\" class=\"w-full accent-[#2547E8] cursor-pointer\" value=\"220\">",
+          "target": [
+            "input[max=\"800\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "any": [
+            {
+              "id": "implicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an implicit (wrapped) <label>"
+            },
+            {
+              "id": "explicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an explicit <label>"
+            },
+            {
+              "id": "aria-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-label attribute does not exist or is empty"
+            },
+            {
+              "id": "aria-labelledby",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+            },
+            {
+              "id": "non-empty-title",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no title attribute"
+            },
+            {
+              "id": "non-empty-placeholder",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no placeholder attribute"
+            },
+            {
+              "id": "presentational-role",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "critical",
+          "html": "<input type=\"range\" min=\"0\" max=\"150\" step=\"5\" class=\"w-full accent-[#2547E8] cursor-pointer\" value=\"40\">",
+          "target": [
+            "input[max=\"150\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "any": [
+            {
+              "id": "implicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an implicit (wrapped) <label>"
+            },
+            {
+              "id": "explicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an explicit <label>"
+            },
+            {
+              "id": "aria-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-label attribute does not exist or is empty"
+            },
+            {
+              "id": "aria-labelledby",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+            },
+            {
+              "id": "non-empty-title",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no title attribute"
+            },
+            {
+              "id": "non-empty-placeholder",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no placeholder attribute"
+            },
+            {
+              "id": "presentational-role",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "critical",
+          "html": "<input type=\"number\" step=\"0.05\" class=\"w-full p-1.5 rounded border border-[#D9D6CF] bg-[#FAF9F6]\" value=\"0.16\">",
+          "target": [
+            "input[value=\"0.16\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "any": [
+            {
+              "id": "implicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an implicit (wrapped) <label>"
+            },
+            {
+              "id": "explicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an explicit <label>"
+            },
+            {
+              "id": "aria-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-label attribute does not exist or is empty"
+            },
+            {
+              "id": "aria-labelledby",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+            },
+            {
+              "id": "non-empty-title",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no title attribute"
+            },
+            {
+              "id": "non-empty-placeholder",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no placeholder attribute"
+            },
+            {
+              "id": "presentational-role",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "critical",
+          "html": "<input type=\"number\" step=\"0.05\" class=\"w-full p-1.5 rounded border border-[#D9D6CF] bg-[#FAF9F6]\" value=\"1\">",
+          "target": [
+            "div:nth-child(1) > .gap-1.mt-1.flex > input[value=\"1\"][type=\"number\"][step=\"0.05\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "any": [
+            {
+              "id": "implicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an implicit (wrapped) <label>"
+            },
+            {
+              "id": "explicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an explicit <label>"
+            },
+            {
+              "id": "aria-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-label attribute does not exist or is empty"
+            },
+            {
+              "id": "aria-labelledby",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+            },
+            {
+              "id": "non-empty-title",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no title attribute"
+            },
+            {
+              "id": "non-empty-placeholder",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no placeholder attribute"
+            },
+            {
+              "id": "presentational-role",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "critical",
+          "html": "<input type=\"number\" step=\"0.05\" class=\"w-full p-1.5 rounded border border-[#D9D6CF] bg-[#FAF9F6]\" value=\"0.3\">",
+          "target": [
+            "input[value=\"0.3\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        },
+        {
+          "any": [
+            {
+              "id": "implicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an implicit (wrapped) <label>"
+            },
+            {
+              "id": "explicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an explicit <label>"
+            },
+            {
+              "id": "aria-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-label attribute does not exist or is empty"
+            },
+            {
+              "id": "aria-labelledby",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+            },
+            {
+              "id": "non-empty-title",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no title attribute"
+            },
+            {
+              "id": "non-empty-placeholder",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no placeholder attribute"
+            },
+            {
+              "id": "presentational-role",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "critical",
+          "html": "<input type=\"number\" step=\"0.05\" class=\"w-full p-1.5 rounded border border-[#D9D6CF] bg-[#FAF9F6]\" value=\"1\">",
+          "target": [
+            "div:nth-child(2) > .gap-1.mt-1.flex > input[value=\"1\"][type=\"number\"][step=\"0.05\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        }
+      ]
+    }
+  ],
+  "console": [],
+  "exceptions": [],
+  "network": []
+}

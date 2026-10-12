@@ -1,0 +1,77 @@
+{
+  "projectId": "proj-direction-c-9381b232fc084568b9384d720bc570fbdirc",
+  "replacedSlug": "timeline",
+  "lockedNodeId": "node-screen-overview-metric-cards-3",
+  "errors": [],
+  "network": [],
+  "observations": [
+    {
+      "viewport": "1440x900",
+      "url": "http://127.0.0.1:18372/#screen-overview",
+      "screenshot": "audit/evidence/local-iteration-4b/flagship/standalone-1440.png",
+      "axe": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "tags": [
+            "cat.color",
+            "wcag2aa",
+            "wcag143",
+            "TTv5",
+            "TT13.c",
+            "EN-301-549",
+            "EN-9.1.4.3",
+            "ACT",
+            "RGAAv4",
+            "RGAA-3.2.1"
+          ],
+          "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+          "nodes": [
+            {
+              "any": [
+                {
+                  "id": "color-contrast",
+                  "data": {
+                    "fgColor": "#ffffff",
+                    "bgColor": "#6782ff",
+                    "contrastRatio": 3.37,
+                    "fontSize": "9.0pt (12px)",
+                    "fontWeight": "normal",
+                    "messageKey": null,
+                    "expectedContrastRatio": "4.5:1"
+                  },
+                  "relatedNodes": [
+                    {
+                      "html": "<button class=\"px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors bg-[var(--tess-accent-primary,#2547E8)] text-white shadow-xs\">Team Overview</button>",
+                      "target": [
+                        ".bg-\\[var\\(--tess-accent-primary\\,\\#2547E8\\)\\]"
+                      ]
+                    }
+                  ],
+                  "impact": "serious",
+                  "message": "Element has insufficient color contrast of 3.37 (foreground color: #ffffff, background color: #6782ff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+                }
+              ],
+              "all": [],
+              "none": [],
+              "impact": "serious",
+              "html": "<button class=\"px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors bg-[var(--tess-accent-primary,#2547E8)] text-white shadow-xs\">Team Overview</button>",
+              "target": [
+                ".bg-\\[var\\(--tess-accent-primary\\,\\#2547E8\\)\\]"
+              ],
+              "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.37 (foreground color: #ffffff, background color: #6782ff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "viewport": "390x844",
+      "url": "http://127.0.0.1:18372/#screen-overview",
+      "screenshot": "audit/evidence/local-iteration-4b/flagship/standalone-390.png",
+      "axe": []
+    }
+  ]
+}

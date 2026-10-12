@@ -654,3 +654,123 @@ Evidence: `evidence/before/library-apply-before.jpg` and `library-apply-no-resou
 ### AUD-051 — Duplicate screen creates node identity collisions
 
 Evidence: `evidence/before/pages-duplicate-before.jpg` and `pages-duplicate-before.tess.json`. Open Pages, duplicate Marketing Home, export. The downloaded project has 77 nodes but only 67 unique IDs. PagesTab deep-clones IDs unchanged, which makes selection and mutations ambiguous across screens. Remediation assigns new IDs recursively, resets copied locks, and verifies identity uniqueness. OPEN pending deployed verification.
+
+### AUD-052 — Every palette button applies the same unrelated mutation (HIGH)
+
+Evidence: `evidence/before/palette-control-before.jpg`, `palette-coral-no-change-before.jpg`, and `palette-coral-no-selection-before.tess.json`. Open Style at project scope, select Coral Human and export: there is no palette selection and no visible colour change. StyleTab sets colourfulness to 50 for every button and the token normalizer ignores token overrides. The new regression first failed with cobalt `#2547E8` instead of coral `#E7583D`. The implementation uses the existing node tokenOverrides field and carries the chosen palette through ancestor inheritance and independent export. OPEN until deployed re-audit.
+
+## HIGH — AUD-053: Showcase handoff opens an unrelated saved project
+
+Production evidence: `evidence/before/showcase-kudos-before.jpg` and `evidence/before/showcase-handoff-wrong-project-before.jpg`. Select Kudos in `/showcases`, click Inspect in Workbench: the query requests `showcase-playful-hr`, while the previous analytics project appears. Workbench boot ignores the showcase query. Remediation loads the validated published showcase manifest, gives the editable local copy its own identity and updates the URL to that identity. The showcase fixture also goes through canonical resource resolution. Open until deployed verification.
+
+## HIGH — AUD-054: Required preview props are absent from resource fixtures
+
+Discovered in local iteration 2 while replacing the deployed preview fallback. Evidence: `evidence/local-iteration-2/instrumented/explore-1440.json` and screenshot. Four loaded catalogue resource previews throw undefined array errors; other required-input primitives are affected. Root cause: Resource manifest preview defaults are empty despite required TypeScript properties. The former Button fallback hid the broken contracts. Affected: `resources/primitives/*/manifest.json`. Open until fixed deployed verification.
+
+## HIGH — AUD-055: Dynamic resource CSS preload is blocked by the sandbox CSP
+
+Discovered in local iteration 2 while replacing the deployed preview fallback. Evidence: `evidence/local-iteration-2/instrumented/r-button-1440.json` and screenshot. Astro/Vite requests shared CSS through the dynamic-import preloader, but connect-src none blocks the request repeatedly. Root cause: CSS chunk splitting introduces a fetch-based preload. A single canonical stylesheet avoids the fetch without expanding the preview network policy. Affected: `apps/site/astro.config.mjs`. Open until fixed deployed verification.
+
+## HIGH — AUD-056: accessibility: color-contrast blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/accessibility-1440.json` and `audit/evidence/before/tools/accessibility-1440.png`. 5 offending elements, Axe impact serious. Root cause: Tool styles fail contrast or keyboard reachability in the rendered surface. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-057: accessibility: label blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/accessibility-1440.json` and `audit/evidence/before/tools/accessibility-1440.png`. 4 offending elements, Axe impact critical. Root cause: Rendered tool fields use adjacent visual captions without programmatic association. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-058: backgrounds: color-contrast blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/backgrounds-1440.json` and `audit/evidence/before/tools/backgrounds-1440.png`. 7 offending elements, Axe impact serious. Root cause: Tool styles fail contrast or keyboard reachability in the rendered surface. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-059: backgrounds: label blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/backgrounds-1440.json` and `audit/evidence/before/tools/backgrounds-1440.png`. 9 offending elements, Axe impact critical. Root cause: Rendered tool fields use adjacent visual captions without programmatic association. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-060: dataviz: color-contrast blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/dataviz-1440.json` and `audit/evidence/before/tools/dataviz-1440.png`. 5 offending elements, Axe impact serious. Root cause: Tool styles fail contrast or keyboard reachability in the rendered surface. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-061: dataviz: label blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/dataviz-1440.json` and `audit/evidence/before/tools/dataviz-1440.png`. 3 offending elements, Axe impact critical. Root cause: Rendered tool fields use adjacent visual captions without programmatic association. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-062: dna: color-contrast blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/dna-1440.json` and `audit/evidence/before/tools/dna-1440.png`. 37 offending elements, Axe impact serious. Root cause: Tool styles fail contrast or keyboard reachability in the rendered surface. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-063: icons: color-contrast blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/icons-1440.json` and `audit/evidence/before/tools/icons-1440.png`. 2 offending elements, Axe impact serious. Root cause: Tool styles fail contrast or keyboard reachability in the rendered surface. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-064: icons: label blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/icons-1440.json` and `audit/evidence/before/tools/icons-1440.png`. 5 offending elements, Axe impact critical. Root cause: Rendered tool fields use adjacent visual captions without programmatic association. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-065: layout: color-contrast blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/layout-1440.json` and `audit/evidence/before/tools/layout-1440.png`. 5 offending elements, Axe impact serious. Root cause: Tool styles fail contrast or keyboard reachability in the rendered surface. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-066: layout: label blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/layout-1440.json` and `audit/evidence/before/tools/layout-1440.png`. 2 offending elements, Axe impact critical. Root cause: Rendered tool fields use adjacent visual captions without programmatic association. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-067: motion: color-contrast blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/motion-1440.json` and `audit/evidence/before/tools/motion-1440.png`. 5 offending elements, Axe impact serious. Root cause: Tool styles fail contrast or keyboard reachability in the rendered surface. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-068: motion: label blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/motion-1440.json` and `audit/evidence/before/tools/motion-1440.png`. 6 offending elements, Axe impact critical. Root cause: Rendered tool fields use adjacent visual captions without programmatic association. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-069: palette: color-contrast blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/palette-1440.json` and `audit/evidence/before/tools/palette-1440.png`. 11 offending elements, Axe impact serious. Root cause: Tool styles fail contrast or keyboard reachability in the rendered surface. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-070: palette: label blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/palette-1440.json` and `audit/evidence/before/tools/palette-1440.png`. 18 offending elements, Axe impact critical. Root cause: Rendered tool fields use adjacent visual captions without programmatic association. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-071: section-planner: color-contrast blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/section-planner-1440.json` and `audit/evidence/before/tools/section-planner-1440.png`. 16 offending elements, Axe impact serious. Root cause: Tool styles fail contrast or keyboard reachability in the rendered surface. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-072: section-planner: scrollable-region-focusable blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/section-planner-1440.json` and `audit/evidence/before/tools/section-planner-1440.png`. 1 offending elements, Axe impact serious. Root cause: Tool styles fail contrast or keyboard reachability in the rendered surface. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-073: typography: color-contrast blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/typography-1440.json` and `audit/evidence/before/tools/typography-1440.png`. 12 offending elements, Axe impact serious. Root cause: Tool styles fail contrast or keyboard reachability in the rendered surface. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-074: typography: label blocks accessibility acceptance
+
+Production browser evidence: `audit/evidence/before/tools/typography-1440.json` and `audit/evidence/before/tools/typography-1440.png`. 1 offending elements, Axe impact critical. Root cause: Rendered tool fields use adjacent visual captions without programmatic association. Remediation is in progress; open until deployed verification.
+
+## HIGH — AUD-075: Repeated employee dashboard section titles
+
+Local iteration 4b screenshot `evidence/local-iteration-4b/flagship/07-radical-recomposition.png` shows four Team Overview headings. New content binding reused screen.name for every semantic role. Remediation assigns role-specific employee headings. Open until fixed deployed verification.
+
+## HIGH — AUD-076: Organisation size is replaced by a literal 500
+
+Real browser reproduction in `evidence/local-iteration-4b/count/wrong-employee-count.json` and PNG: a 1200-person brief still renders 500 people. The binding used a literal size. Remediation derives the stated count from the brief and uses an honest unconnected state when none is stated. Open until deployed verification.
+
+## HIGH — AUD-077: Playfulness is metadata-only in the renderer
+
+Real browser evidence: `evidence/local-iteration-4b/feel/playfulness-no-rendered-change.json` plus before/after canvas PNGs. Local onboarding changes from 0 to 100 while the actual resource radius remains 28px and accent remains unchanged. The token normalizer ignores this dimension. A failing regression now covers visible geometry projection. Remediation preserves canonical curvature tiers at playfulness 50 and applies a bounded resource-radius modifier to reserved/playful extremes, shared with standalone export. Open until deployed verification.
+
+## HIGH — AUD-078: Standalone screen navigation has insufficient accent contrast
+
+Evidence: `audit/evidence/local-iteration-4b/flagship/standalone-1440.png`. Desktop standalone Axe reports a serious contrast failure: white text on #6782FF is 3.37:1. Root cause: Generated App navigation hardcodes white instead of the semantic accent foreground. Remediation changes the generated export, without altering the selected project. Open until deployed export re-verification.
+
+## LOW — AUD-079: Standalone npm install emits an unsupported project configuration warning
+
+Evidence: `audit/evidence/local-iteration-4b/flagship/npm-install.log`. npm warns that only-built-dependencies is an unknown project configuration. Root cause: Exporter writes a pnpm-specific setting into .npmrc, which npm does not support. Remediation changes the generated export, without altering the selected project. Open until deployed export re-verification.
+
+## AUD-080 — HIGH — Forwarded React exports rejected
+
+Evidence: `audit/evidence/local-iteration-5/resources/button-1440.png`. Open `/preview/?resource=button`; the actual component cannot load. Root cause: `apps/site/src/components/PreviewHost.tsx` tests only function exports. Remediation recognises React forwardRef and memo exports. Regression test checks actual visible Button and Input. OPEN until deployed verification.
+
+## AUD-081 — MEDIUM — Messaging shell mobile overflow
+
+Evidence: `audit/evidence/local-iteration-5/resources/messaging-shell-390.png`. At 390px the document measures 419px. Root cause: fixed sidebar and implicit input width in `resources/shells/messaging-shell/index.tsx`. Remediation uses container breakpoints, a stacked channel pane and minimum width resets. OPEN until deployed verification.

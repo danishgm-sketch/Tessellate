@@ -1,3 +1,4 @@
+/* global process, console, document, innerWidth, innerHeight, structuredClone */
 import { chromium } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -22,7 +23,7 @@ const save = async () => writeFile(path.join(directory, `observations-${Date.now
 async function capture(label, scan = false) {
   const dom = await page.evaluate(() => ({ title: document.title, text: document.body.innerText, width: innerWidth, height: innerHeight, scrollWidth: document.documentElement.scrollWidth, unhydrated: document.querySelectorAll('astro-island[ssr]').length, headings: Array.from(document.querySelectorAll('h1,h2,h3')).map(e => e.textContent), emptyButtons: Array.from(document.querySelectorAll('button')).filter(e => !e.textContent?.trim() && !e.getAttribute('aria-label') && !e.getAttribute('title')).length }));
   const screenshot = path.join(directory, `${label}.png`);
-  await page.screenshot({ path: screenshot, fullPage: true });
+  await page.screenshot({ path: screenshot, fullPage: false });
   let accessibility;
   if (scan) {
     try { accessibility = (await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).analyze()).violations; }
