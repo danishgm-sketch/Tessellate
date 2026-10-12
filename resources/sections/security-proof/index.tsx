@@ -19,7 +19,7 @@ export function SecurityProof({ variant = 'quiet' }: SecurityProofProps) {
   }
 
   const items = [
-    { title: 'End-to-End Encryption', desc: 'Encrypted at rest using AES-256 and in transit via TLS 1.3.' },
+    { title: 'Transport and Storage Review', desc: 'Verify deployment transport and storage policies. Browser-local projects are not encrypted by this component.' },
     { title: 'No Arbitrary Eval Runtime', desc: 'Zero runtime eval or dynamic arbitrary script injection.' },
     { title: 'Isolated Sandboxes', desc: 'Untrusted previews run in sandboxed cross-origin iframes.' },
   ];
@@ -27,11 +27,11 @@ export function SecurityProof({ variant = 'quiet' }: SecurityProofProps) {
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-16">Enterprise Security Architecture</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-16">Security Review Template</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {items.map((it) => (
             <div key={it.title} className={`p-6 rounded-2xl border ${card}`}>
-              <span className="text-emerald-500 font-mono text-sm block mb-3">✓ SECURE</span>
+              <span className="text-emerald-700 dark:text-emerald-300 font-mono text-sm block mb-3">✓ REVIEW</span>
               <h3 className="font-bold text-base mb-2">{it.title}</h3>
               <p className="text-xs sm:text-sm opacity-75 leading-relaxed">{it.desc}</p>
             </div>

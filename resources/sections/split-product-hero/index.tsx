@@ -16,8 +16,8 @@ export interface SplitProductHeroProps {
 export function SplitProductHero({
   variant = 'quiet',
   badge = 'Validated Composability',
-  headline = 'Mutate layout architecture with zero bundle penalty.',
-  description = 'Every component conforms to deterministic DNA schemas, guaranteeing visual harmony without manual CSS overrides.',
+  headline = 'Compose layouts through validated manifests.',
+  description = 'Shared Design DNA tokens guide colour, typography, spacing and motion. Review each generated screen before export.',
   primaryCta={label:'Open Compose',href:'/compose'},
   secondaryCta={label:'Documentation',href:'/docs'},
   panelTitle='Example interface system',
