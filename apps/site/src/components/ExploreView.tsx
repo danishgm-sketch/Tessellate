@@ -22,6 +22,11 @@ const SUGGESTED_QUERIES = [
   'mobile onboarding no illustrations',
 ];
 
+function rankedResources(resources:ResourceManifest[],hits:Array<{id:string}>):ResourceManifest[]{
+ const byId=new Map(resources.map(resource=>[resource.id,resource]));
+ return hits.flatMap(hit=>{const resource=byId.get(hit.id);return resource?[resource]:[];});
+}
+
 const LOCAL_STORAGE_RECENT_KEY = 'tessellate_recent_searches_v1';
 
 export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
@@ -70,8 +75,7 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
 
           // Initial search execution
           const searchRes = await executeSearch(db, q, urlFilters);
-          const matchedIds = new Set(searchRes.items.map((i) => i.id));
-          const matched = items.filter((m) => matchedIds.has(m.id));
+          const matched = rankedResources(items,searchRes.items);
           setSearchResults(matched);
         }
       } catch (err) {
@@ -100,8 +104,7 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
       if (!oramaDbRef.current || manifests.length === 0) return;
 
       const searchRes = await executeSearch(oramaDbRef.current, query, filters);
-      const matchedIds = new Set(searchRes.items.map((i) => i.id));
-      const matched = manifests.filter((m) => matchedIds.has(m.id));
+      const matched = rankedResources(manifests,searchRes.items);
       setSearchResults(matched);
 
       // Synchronize URL query params
