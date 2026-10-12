@@ -1,10 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, Github, Menu, X, ArrowRight } from 'lucide-react';
 import { CommandPalette } from '../CommandPalette.js';
 
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  useEffect(() => {
+    const openSearch = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase()==='k') {
+        event.preventDefault(); setIsSearchOpen(open=>!open);
+      }
+    };
+    window.addEventListener('keydown',openSearch);
+    return ()=>window.removeEventListener('keydown',openSearch);
+  },[]);
 
   return (
     <>
@@ -66,7 +75,7 @@ export function SiteHeader() {
               href="/workbench"
               className="hidden md:inline text-xs font-semibold text-[#62666F] hover:text-[#111217] transition-colors px-2"
             >
-              Sign in
+              Local projects
             </a>
 
             <a
@@ -124,7 +133,7 @@ export function SiteHeader() {
       )}
 
       {/* Search Palette Modal */}
-      {isSearchOpen && <CommandPalette onClose={() => setIsSearchOpen(false)} />}
+      {isSearchOpen && <CommandPalette isOpen={true} onClose={() => setIsSearchOpen(false)} />}
     </>
   );
 }

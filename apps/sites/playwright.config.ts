@@ -3,7 +3,7 @@ import { defineConfig } from '@playwright/test';
 const deployedURL = process.env.SITES_SMOKE_URL;
 export default defineConfig({
   testDir: '.',
-  testMatch: 'sites-smoke.spec.ts',
+  testMatch: '*.spec.ts',
   timeout: 60000,
   workers: 1,
   reporter: 'list',

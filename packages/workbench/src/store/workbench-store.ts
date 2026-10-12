@@ -86,6 +86,9 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       history: [],
       future: [],
       operations: [],
+      checkpoints: [createCheckpoint(manifest, {trigger:'initial-generation', name:'Opened project', description:'Baseline of this project when opened'})],
+      compareManifest: null,
+      isCompareOpen: false,
     });
   },
 
@@ -128,7 +131,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
 
   setActiveLeftTab: (tab: LeftTab) => set({ activeLeftTab: tab }),
   setActiveRightTab: (tab: RightTab) => set({ activeRightTab: tab }),
-  setActiveMode: (mode: WorkbenchMode) => set({ activeMode: mode }),
+  setActiveMode: (mode: WorkbenchMode) => set({ activeMode: mode, activeRightTab: mode === 'style' || mode === 'motion' || mode === 'content' ? mode : 'intent' }),
   setDevicePreset: (preset: DevicePreset) => set({ devicePreset: preset }),
   setZoom: (zoom: number) => set({ zoom: Math.min(2.0, Math.max(0.25, zoom)) }),
   setPan: (pan: { x: number; y: number }) => set({ pan }),

@@ -11,7 +11,9 @@ import { CompareModal } from './compare/CompareModal.js';
 import { BlendModal } from './blend/BlendModal.js';
 import { ReplaceDrawer } from './replace/ReplaceDrawer.js';
 import { AuditPanel } from './audit/AuditPanel.js';
-import { loadLocalProject } from '../persistence/storage.js';
+import { loadBrowserProject, createProjectSaver } from '../persistence/browser-session.js';
+import { setActiveCatalog } from '../mutations/replace.js';
+import { ResourceManifestSchema } from '@tessellate/schemas';
 
 export function WorkbenchShell() {
   const activeMode = useWorkbenchStore((state) => state.activeMode);
@@ -27,50 +29,41 @@ export function WorkbenchShell() {
   const setManifest = useWorkbenchStore((state) => state.setManifest);
 
   const [isMobileScreen, setIsMobileScreen] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [storageError, setStorageError] = useState<string | null>(null);
+  const [damagedRecords, setDamagedRecords] = useState<Array<{raw:string; reason:string}>>([]);
 
   // Load project from URL or local persistence on mount
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    (window as any).__tessellate_workbench_store__ = useWorkbenchStore;
-    const urlParams = new URLSearchParams(window.location.search);
-    const projectId = urlParams.get('project');
-
-    if (projectId) {
-      const stored =
-        localStorage.getItem(`tessellate_project_${projectId}`) ||
-        localStorage.getItem('tessellate_active_project');
-      if (stored) {
-        try {
-          const parsed = JSON.parse(stored);
-          if (parsed && (parsed.id === projectId || !projectId)) {
-            setManifest(parsed);
-            return;
-          }
-        } catch {
-          // Fall through to IndexedDB
-        }
+    let disposed = false;
+    let unsubscribe: (()=>void) | undefined;
+    const projectId = new URLSearchParams(window.location.search).get('project') ?? undefined;
+    const saver = createProjectSaver(error => { if (!disposed) setStorageError(`Local save failed: ${String(error)}. Export your manifest before leaving.`); });
+    Promise.all([
+      loadBrowserProject(projectId),
+      fetch('/data/catalog.json').then(async response => {
+        if (!response.ok) throw new Error(`Catalogue HTTP ${response.status}`);
+        const payload = await response.json();
+        return ResourceManifestSchema.array().parse(payload.resources);
+      }),
+    ]).then(([loaded, catalog]) => {
+      if (disposed) return;
+      setDamagedRecords(loaded.damagedRecords);
+      setActiveCatalog(catalog);
+      if (loaded.manifest) setManifest(loaded.manifest);
+      else if (projectId) throw new Error(`Project ${projectId} was not found in this browser.`);
+      // Never overwrite corrupt records with a sample. Recovery remains read-only.
+      if (loaded.damagedRecords.length === 0) {
+        unsubscribe = useWorkbenchStore.subscribe((state, previous) => {
+          if (state.manifest !== previous.manifest) void saver(state.manifest);
+        });
       }
-
-      loadLocalProject(projectId).then((proj) => {
-        if (proj) {
-          setManifest(proj);
-        }
-      });
-    } else {
-      const stored = localStorage.getItem('tessellate_active_project');
-      if (stored) {
-        try {
-          const parsed = JSON.parse(stored);
-          if (parsed && parsed.id) {
-            setManifest(parsed);
-          }
-        } catch {
-          // ignore corrupted local project storage
-        }
-      }
-    }
-
-    (window as any).__tessellate_workbench_store__ = useWorkbenchStore;
+      setLoading(false);
+    }).catch(error => {
+      if (!disposed) { setStorageError(String(error)); setLoading(false); }
+    });
+    return () => { disposed = true; unsubscribe?.(); };
   }, [setManifest]);
 
   // Responsive window listener
@@ -148,6 +141,10 @@ export function WorkbenchShell() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedNodeId, selectParentNode, undo, redo, setDevicePreset, setZoom, toggleNodeLock, openReplaceDrawer]);
+
+  if (loading) return <div role="status" className="p-8">Loading local project and verified catalogue…</div>;
+  if (damagedRecords.length) return <main className="p-8 space-y-4"><h1>Recover your local project</h1><p role="alert">A stored record could not be validated. Its original data has been preserved. Editing is paused to protect your work.</p>{damagedRecords.map((record,index)=><div key={index}><p>{record.reason}</p><a download={`recovered-record-${index}.json`} href={`data:application/json;charset=utf-8,${encodeURIComponent(record.raw)}`}>Export raw record {index+1}</a></div>)}<a href="/compose">Create a separate project</a></main>;
+  if (storageError) return <main className="p-8 space-y-4"><h1>Local project needs attention</h1><p role="alert">{storageError}</p><a download="unsaved-project.tess.json" href={`data:application/json;charset=utf-8,${encodeURIComponent(JSON.stringify(useWorkbenchStore.getState().manifest,null,2))}`}>Export the current manifest</a><p><a href="/compose">Open Compose</a></p></main>;
 
   // Clean full-screen preview mode
   if (isPreview) {
