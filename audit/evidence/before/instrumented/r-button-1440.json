@@ -1,0 +1,537 @@
+{
+  "label": "r-button-1440",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/button/",
+  "screenshot": "audit/evidence/before/instrumented/r-button-1440.png",
+  "viewport": "1440x900",
+  "dom": {
+    "title": "Button — Tessellate Resource",
+    "text": "Tessellate\nExplore\nCompose\nWorkbench\nTools\nAgents\nCreators\nDocs\nSearch...\nStart building\nHome\n/\nExplore\n/\nPrimitives\n/\nButton\nButton\n@tess/button\nv1.0.0\nVerified\n\nTactile, accessible multi-intent button primitive with Quiet, Expressive, and Nocturne curated configurations.\n\nInstall:\ntess add button\nnpx shadcn@latest add https://tessellate.design/r/button.json\n#button\n#action\n#trigger\n#input\n#control\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCore\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nPrimary and secondary interactive action trigger for initiating operations, submitting forms, or navigating.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nPrimary forms\n•\nDialog actions\n•\nToolbar triggers\n•\nCard actions\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nIn-line body copy links\n•\nDense table cell status indicators\nJOBS TO BE DONE\nSubmit user intent\nTrigger modal dialog\nConfirm dangerous operation\nCancel ongoing action\nEXPECTED CONTENT REQUIREMENTS\nBrief imperative verb phrase\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (90%)\nb2b-saas (85%)\nUse in Workbench\nCopy import\nnpx install\nQuality Score\n96 / 100\nCategory\nPrimitives\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n60%\nVisual Ambition\n50%\nContrast\n70%\nCurvature\n50%\nMotion\n40%\nTessellate Interface Intelligence Layer — Open resource library under MIT License.",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1440,
+    "unhydrated": 0,
+    "headings": [
+      " Button "
+    ],
+    "emptyButtons": 0
+  },
+  "console": [
+    {
+      "level": "warning",
+      "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+    }
+  ],
+  "exceptions": [],
+  "network": [],
+  "responses": [
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/button",
+      "status": 307,
+      "type": "document"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/button/",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/src/styles/global.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js",
+      "status": 304,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ResourcePreviewFrame.Cb3mtgHt.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ResourceTabs.77QkNPmt.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ui.B6vsQKkv.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview?resource=button&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+      "status": 307,
+      "type": "document"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ResourceInspector.BPpYkotV.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.CHQCpkZ9.js",
+      "status": 304,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/jsx-runtime.D_zvdyIk.js",
+      "status": 304,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/rotate-ccw.D-Y_cDF8.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=button&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/createLucideIcon.CKwyFV_x.js",
+      "status": 304,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sparkles.gqHQXRUX.js",
+      "status": 304,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/terminal.DG76yBHX.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/zap.Ck5VwWQj.js",
+      "status": 304,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/smartphone.HluLiZ4e.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/check.et-gPL4s.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/src/styles/global.css",
+      "status": 304,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/activity.Cjwo7AZH.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sun.BT7R6oZM.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/code.DwAY4t9Q.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/tablet.CzmrdqL-.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/arrow-up-right.DzOCU-Zb.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/copy.CcAvPczU.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/circle-check.eyCXpGNI.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/palette.v5jXLh93.js",
+      "status": 304,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/shield-check.B2KdkvO8.js",
+      "status": 304,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/layers.iL2kwx7I.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/select.CwtN_24Q.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.Bhxg4aus.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js",
+      "status": 304,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.cLy2U3yd.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.CHQCpkZ9.js",
+      "status": 304,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/jsx-runtime.D_zvdyIk.js",
+      "status": 304,
+      "type": "script"
+    }
+  ],
+  "accessibility": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ],
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8c909b",
+                "bgColor": "#f4f2ed",
+                "contrastRatio": 2.85,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body class=\"bg-[var(--tess-canvas,#F4F2ED)] text-[var(--tess-ink,#111217)] antialiased min-h-screen flex flex-col font-sans\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.85 (foreground color: #8c909b, background color: #f4f2ed, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"text-xs text-[var(--tess-ink-tertiary,#8C909B)] font-mono\">Install:</span>",
+          "target": [
+            ".text-\\[var\\(--tess-ink-tertiary\\,\\#8C909B\\)\\]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.85 (foreground color: #8c909b, background color: #f4f2ed, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#f4f2ed",
+                "contrastRatio": 2.89,
+                "fontSize": "8.3pt (11px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"h-12 px-4 border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] flex items-center justify-between gap-4\">",
+                  "target": [
+                    ".h-12"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.89 (foreground color: #8b8f97, background color: #f4f2ed, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span class=\"text-[11px] font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)] mr-1\">Variant:</span>",
+          "target": [
+            ".mr-1"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.89 (foreground color: #8b8f97, background color: #f4f2ed, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#ffffff",
+                "contrastRatio": 3.24,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<button type=\"button\" title=\"Reduced Motion: OFF\" class=\"h-7 px-2 rounded-lg border text-xs font-mono flex items-center gap-1 transition-colors shadow-2xs border-[var(--tess-hairline,#D9D6CF)] bg-white text-[var(--tess-ink-muted,#8B8F97)] hover:text-[var(--tess-ink,#111217)]\">",
+                  "target": [
+                    "button[title=\"Reduced Motion: OFF\"]"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span>Motion</span>",
+          "target": [
+            "button[title=\"Reduced Motion: OFF\"] > span"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.24 (foreground color: #8b8f97, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] overflow-hidden shadow-xs\">",
+                  "target": [
+                    "astro-island[uid=\"ZExICp\"] > .bg-\\[var\\(--tess-surface\\,\\#FAF9F6\\)\\].shadow-xs.rounded-xl"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<h4 class=\"text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)] mb-1\">Summary &amp; Purpose</h4>",
+          "target": [
+            ".mb-1"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] overflow-hidden shadow-xs\">",
+                  "target": [
+                    "astro-island[uid=\"ZExICp\"] > .bg-\\[var\\(--tess-surface\\,\\#FAF9F6\\)\\].shadow-xs.rounded-xl"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<h4 class=\"text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)]\">Jobs To Be Done</h4>",
+          "target": [
+            ".space-y-2:nth-child(3) > h4"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] overflow-hidden shadow-xs\">",
+                  "target": [
+                    "astro-island[uid=\"ZExICp\"] > .bg-\\[var\\(--tess-surface\\,\\#FAF9F6\\)\\].shadow-xs.rounded-xl"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<h4 class=\"text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)]\">Expected Content Requirements</h4>",
+          "target": [
+            ".space-y-2:nth-child(4) > h4"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] overflow-hidden shadow-xs\">",
+                  "target": [
+                    "astro-island[uid=\"ZExICp\"] > .bg-\\[var\\(--tess-surface\\,\\#FAF9F6\\)\\].shadow-xs.rounded-xl"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<h4 class=\"text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)]\">Target Product Archetypes</h4>",
+          "target": [
+            ".space-y-2:nth-child(5) > h4"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.08,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<div class=\"sticky top-20 flex flex-col gap-5 rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] p-5 shadow-xs\">",
+                  "target": [
+                    ".top-20"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<span>Design DNA Profile</span>",
+          "target": [
+            ".uppercase.tracking-wider.text-\\[var\\(--tess-ink-muted\\,\\#8B8F97\\)\\] > span"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.08 (foreground color: #8b8f97, background color: #faf9f6, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#8b8f97",
+                "bgColor": "#f4f2ed",
+                "contrastRatio": 2.89,
+                "fontSize": "9.0pt (12px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<body class=\"bg-[var(--tess-canvas,#F4F2ED)] text-[var(--tess-ink,#111217)] antialiased min-h-screen flex flex-col font-sans\">",
+                  "target": [
+                    "body"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 2.89 (foreground color: #8b8f97, background color: #f4f2ed, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<footer class=\"mt-auto border-t border-[var(--tess-hairline,#D9D6CF)] py-8 px-4 text-center text-xs text-[var(--tess-ink-muted,#8B8F97)]\">\nTessellate Interface Intelligence Layer — Open resource library under MIT License.\n</footer>",
+          "target": [
+            "footer"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.89 (foreground color: #8b8f97, background color: #f4f2ed, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    }
+  ]
+}

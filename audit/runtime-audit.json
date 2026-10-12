@@ -1,0 +1,1764 @@
+{
+  "deployment": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "sourceCommit": "7bbc8f7",
+  "phase": "initial deployed audit",
+  "issues": [
+    {
+      "id": "AUD-001",
+      "severity": "high",
+      "route": "/components",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /components is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /components at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/components-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-002",
+      "severity": "high",
+      "route": "/sections",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /sections is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /sections at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/sections-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-003",
+      "severity": "high",
+      "route": "/blocks",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /blocks is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /blocks at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/blocks-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-004",
+      "severity": "high",
+      "route": "/pages",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /pages is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /pages at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/pages-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-005",
+      "severity": "high",
+      "route": "/effects",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /effects is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /effects at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/effects-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-006",
+      "severity": "high",
+      "route": "/motion",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /motion is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /motion at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/motion-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-007",
+      "severity": "high",
+      "route": "/backgrounds",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /backgrounds is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /backgrounds at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/backgrounds-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-008",
+      "severity": "high",
+      "route": "/ai",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /ai is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /ai at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/ai-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-009",
+      "severity": "high",
+      "route": "/data",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /data is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /data at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/data-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-010",
+      "severity": "high",
+      "route": "/blueprints",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /blueprints is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /blueprints at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/blueprints-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-011",
+      "severity": "high",
+      "route": "/collections",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /collections is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /collections at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/collections-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-012",
+      "severity": "high",
+      "route": "/about",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /about is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /about at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/about-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-013",
+      "severity": "high",
+      "route": "/agents",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /agents is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /agents at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/agents-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-014",
+      "severity": "high",
+      "route": "/creators",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /creators is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /creators at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/creators-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-015",
+      "severity": "high",
+      "route": "/docs",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /docs is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /docs at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/docs-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-016",
+      "severity": "high",
+      "route": "/docs/registry",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /docs/registry is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /docs/registry at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/docs-registry-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-017",
+      "severity": "high",
+      "route": "/license",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /license is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /license at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/license-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-018",
+      "severity": "high",
+      "route": "/privacy",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /privacy is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /privacy at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/privacy-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-019",
+      "severity": "high",
+      "route": "/showcase",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /showcase is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /showcase at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/showcase-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-020",
+      "severity": "high",
+      "route": "/sponsor",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /sponsor is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /sponsor at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/sponsor-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-021",
+      "severity": "high",
+      "route": "/terms",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /terms is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /terms at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/terms-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-022",
+      "severity": "high",
+      "route": "/trends",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Public route /trends is missing",
+      "expected": "A useful, truthful page with working navigation.",
+      "actual": "HTTP 404 and generic not-found page.",
+      "reproduction": [
+        "Open /trends at desktop and mobile widths."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to load resource: the server responded with a status of 404 ()"
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        404
+      ],
+      "screenshot": "audit/evidence/before/instrumented/trends-1440.png",
+      "rootCause": "No Astro page or route alias implements this public destination.",
+      "affectedCode": [
+        "apps/site/src/pages"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-023",
+      "severity": "critical",
+      "route": "/compose",
+      "viewport": "1440x900; 390x844",
+      "category": "data",
+      "title": "Employee brief inferred as analytics",
+      "expected": "Employee experience architecture with people, teams, onboarding, engagement and policies.",
+      "actual": "ANALYTICS model targets analysts and quantitative metrics; no onboarding screen, no people or teams.",
+      "reproduction": [
+        "Wait for catalogue ready.",
+        "Submit the exact employee brief, professional but playful, Refined and Inventive."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-directions.png",
+      "rootCause": "Substring archetype detection rewards incidental dashboard/technical words; planner substitutes fixed telemetry screens and ignores recommended domain screens.",
+      "affectedCode": [
+        "packages/composer/src/archetypes.ts",
+        "packages/composer/src/interpreter.ts",
+        "packages/composer/src/planner.ts"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-024",
+      "severity": "critical",
+      "route": "/compose",
+      "viewport": "1440x900; 390x844",
+      "category": "data",
+      "title": "Semantically unrelated Gold resources fill required roles",
+      "expected": "Each role resolves to a compatible working resource.",
+      "actual": "Marketing value proposition and CTA become three-pane shells; dashboard metrics become Nav Tree / Visual Canvas / Inspector; grammar panes duplicate across all screen types.",
+      "reproduction": [
+        "Compose the employee brief.",
+        "Inspect each direction and Workbench screens."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-directions.png",
+      "rootCause": "Role matching accepts grammar categories and falls back to every Gold resource; screen roles union application grammar roles irrespective of screen class.",
+      "affectedCode": [
+        "packages/compatibility/src/compose-pipeline.ts"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-025",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Generated product inherits resource demo content",
+      "expected": "Brand, copy and sample records match the submitted objective, with sample data identified.",
+      "actual": "Tessellate marketing text, fake testimonials and ingestion/incidents/CPU/token data appear in employee product.",
+      "reproduction": [
+        "Inspect all three direction previews.",
+        "Open settings and dashboard in Workbench."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-directions.png",
+      "rootCause": "Composition creates only a title prop, leaving domain-specific resource defaults intact.",
+      "affectedCode": [
+        "packages/compatibility/src/compose-pipeline.ts",
+        "resources"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-026",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Repeated composition overwrites project identity",
+      "expected": "Separate briefs create separate persisted projects while explicit seeds remain deterministic.",
+      "actual": "Every Direction C uses proj-direction-c-tessellateseedv1dirc.",
+      "reproduction": [
+        "Compose two different briefs.",
+        "Compare project URLs."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-directions.png",
+      "rootCause": "UI reuses fixed default seed as persisted project identity.",
+      "affectedCode": [
+        "apps/site/src/components/ComposeView.tsx",
+        "packages/compatibility/src/compose-pipeline.ts"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-027",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900; 390x844",
+      "category": "visual",
+      "title": "Direction previews are too small to inspect",
+      "expected": "Readable previews with screen navigation and distinct structural direction.",
+      "actual": "Three tiny clipped/scaled marketing heroes conceal the rest of the product; all use same hero content.",
+      "reproduction": [
+        "Inspect all three previews at desktop and mobile."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-directions.png",
+      "rootCause": "Fixed miniature frame without accessible full direction preview or screen selector.",
+      "affectedCode": [
+        "apps/site/src/components/ComposeView.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-028",
+      "severity": "critical",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Reload silently discards project edits",
+      "expected": "Edits, locks and local overrides survive reload.",
+      "actual": "After recompose, replacement and Surprise, reload returns the initial manifest with no locks or edits.",
+      "reproduction": [
+        "Open Direction C.",
+        "Lock a section, Recompose, Replace, Surprise.",
+        "Export manifest.",
+        "Reload and export again."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "Shell loads initial localStorage snapshot; mutations are not persisted.",
+      "affectedCode": [
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "packages/workbench/src/persistence/storage.ts"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-029",
+      "severity": "critical",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "export",
+      "title": "Standalone export fails a clean build",
+      "expected": "ZIP installs, builds and runs without repository packages.",
+      "actual": "npm install succeeds, npm run build fails: gradient-fill is not assignable to AreaChartVariant.",
+      "reproduction": [
+        "Replace overview header with offered area-chart.",
+        "Export ZIP.",
+        "Extract into a clean directory.",
+        "npm install --no-audit --no-fund; npm run build."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "Replacement uses a fabricated sample catalogue with variants that do not exist in canonical resource source.",
+      "affectedCode": [
+        "packages/workbench/src/mutations/replace.ts",
+        "packages/exporter/src"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-030",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "data",
+      "title": "Replacement offers incompatible resource",
+      "expected": "Candidates satisfy the semantic role and hard constraints using the actual Gold catalogue.",
+      "actual": "Only area-chart is offered for entity-profile-header; no meaningful candidate preview.",
+      "reproduction": [
+        "Select overview-header.",
+        "Open Replace."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "Hardcoded four-resource catalogue and permissive same-section-type match override semantics.",
+      "affectedCode": [
+        "packages/workbench/src/mutations/replace.ts",
+        "packages/workbench/src/components/replace/ReplaceDrawer.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-031",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "visual",
+      "title": "Replacement previews are synthetic drawings",
+      "expected": "Candidate displays its actual renderer and content.",
+      "actual": "Generic chart bars, grey rectangles or fake dollar metric replace actual candidate components.",
+      "reproduction": [
+        "Open Replace and inspect its candidates."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "ResourceVisualPreview draws mock graphics instead of canonical renderer.",
+      "affectedCode": [
+        "packages/workbench/src/components/replace/ReplaceDrawer.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-032",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Compare uses unrelated financial project",
+      "expected": "Compare targets the initial checkpoint of this exact project.",
+      "actual": "Apex Financial Intelligence is comparison baseline for employee brief.",
+      "reproduction": [
+        "Open Direction C.",
+        "Click Compare."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "setManifest resets history but retains sample-project checkpoint.",
+      "affectedCode": [
+        "packages/workbench/src/store/workbench-store.ts"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-033",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "data",
+      "title": "Blend invents a financial source direction",
+      "expected": "Blend uses an actual saved direction of the current brief or truthfully requires one.",
+      "actual": "Source B is a renamed sample fintech manifest with fabricated DNA.",
+      "reproduction": [
+        "Open Direction C.",
+        "Click Blend."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "BlendModal constructs createSampleProject rather than loading composition siblings.",
+      "affectedCode": [
+        "packages/workbench/src/components/blend/BlendModal.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-034",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Toolbar modes do not open corresponding inspector",
+      "expected": "Style, Motion and Content display the appropriate controls.",
+      "actual": "Top mode changes but right inspector remains Intent.",
+      "reproduction": [
+        "Click each top mode after opening Workbench."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "setActiveMode only sets activeMode, not activeRightTab.",
+      "affectedCode": [
+        "packages/workbench/src/store/workbench-store.ts"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-035",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "accessibility",
+      "title": "Unnamed Workbench and direction controls",
+      "expected": "Every interactive control has an accessible name.",
+      "actual": "Axe critical button-name and label failures (7 Workbench ranges, 3 direction ranges).",
+      "reproduction": [
+        "Run unsuppressed Axe on Compose directions and Workbench.",
+        "Navigate controls by keyboard."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "Range controls lack linked labels; layer expanders and default sample buttons lack names.",
+      "affectedCode": [
+        "packages/workbench/src/components/right-inspector",
+        "packages/workbench/src/components/left-panel",
+        "apps/site/src/components/ComposeView.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-036",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "accessibility",
+      "title": "Selection and lock tiles are not keyboard controls",
+      "expected": "Keyboard users can select page/layer and toggle locks.",
+      "actual": "Clickable div rows and lock tiles are omitted from tab order.",
+      "reproduction": [
+        "Tab through Layers and Locks inspector."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "Click handlers use generic divs without keyboard semantics.",
+      "affectedCode": [
+        "packages/workbench/src/components/left-panel",
+        "packages/workbench/src/components/right-inspector/ConstraintsTab.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-037",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "visual",
+      "title": "Workbench mixes unreadable dark and light chrome",
+      "expected": "Calm coherent shell with readable project title and inspector.",
+      "actual": "Near-white title on light toolbar and mixed dark/light areas; mobile canvas begins with huge empty shell panes.",
+      "reproduction": [
+        "Open Workbench at 1440, 1024 and 390."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "Dark variants apply via preference without coherent explicit theme tokens; resource shell fallback compounds unusable canvas.",
+      "affectedCode": [
+        "apps/site/src/styles/global.css",
+        "packages/workbench/src/components"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-038",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Mobile omits primary editing controls",
+      "expected": "Primary modes, replacement, export and viewport operations remain usable.",
+      "actual": "Mobile Inspect includes only Intent, Style and Locks; Resource, Content, Motion and Export missing.",
+      "reproduction": [
+        "Open Workbench at 390x844.",
+        "Use all bottom tabs."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "Separate MobileWorkbench duplicates a restricted subset of desktop controls.",
+      "affectedCode": [
+        "packages/workbench/src/components/mobile/MobileWorkbench.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-039",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Audit score implies unverified accessibility",
+      "expected": "Audit distinguishes manifest heuristics from measured runtime compliance.",
+      "actual": "Accessibility 20/20 and responsive 15/15 despite critical and serious Axe failures.",
+      "reproduction": [
+        "Open Audit.",
+        "Compare with captured Axe evidence."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "Audit labels heuristic checks as compliance and does not explain measurement limits.",
+      "affectedCode": [
+        "packages/workbench/src/components/audit/AuditPanel.tsx",
+        "packages/workbench/src/audit"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-040",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Surprise provides no change explanation",
+      "expected": "Visible explanation accurately reports mutations and preserved locks.",
+      "actual": "Change occurs but user sees no explanation.",
+      "reproduction": [
+        "Click Surprise and inspect feedback."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "Returned operation rationale is not surfaced in shell.",
+      "affectedCode": [
+        "packages/workbench/src/components/TopToolbar.tsx",
+        "packages/workbench/src/store/workbench-store.ts"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-041",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "visual",
+      "title": "430px canvas preset missing",
+      "expected": "All requested device widths can be selected.",
+      "actual": "Toolbar offers 1440,1024,768,390 only.",
+      "reproduction": [
+        "Inspect canvas viewport controls."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/flagship-workbench.png",
+      "rootCause": "DevicePreset omits 430 and toolbar repeats restricted list.",
+      "affectedCode": [
+        "packages/workbench/src/types.ts",
+        "packages/workbench/src/components/canvas/CanvasToolbar.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-042",
+      "severity": "high",
+      "route": "/r/area-chart",
+      "viewport": "1440x900; 390x844",
+      "category": "runtime",
+      "title": "Resource preview silently renders Button",
+      "expected": "Area chart detail displays its actual chart.",
+      "actual": "iframe shows button despite chart title and source.",
+      "reproduction": [
+        "Open /r/area-chart and inspect preview."
+      ],
+      "console": [
+        {
+          "level": "warning",
+          "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/r-area-chart-1440.png",
+      "rootCause": "PreviewHost selects fallback component instead of full canonical registry.",
+      "affectedCode": [
+        "apps/site/src/components/PreviewHost.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-043",
+      "severity": "high",
+      "route": "/r/button",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Use in Workbench ignores selected resource",
+      "expected": "Chosen resource opens in a real new or current project with that resource.",
+      "actual": "?resource=button loads the previous project unchanged.",
+      "reproduction": [
+        "Open /r/button.",
+        "Click Use in Workbench."
+      ],
+      "console": [
+        {
+          "level": "warning",
+          "text": "An iframe which has both allow-scripts and allow-same-origin for its sandbox attribute can escape its sandboxing."
+        }
+      ],
+      "network": [],
+      "httpStatus": [
+        307,
+        200,
+        307,
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/r-button-1440.png",
+      "rootCause": "Workbench bootstrap ignores resource URL parameter.",
+      "affectedCode": [
+        "packages/workbench/src/components/WorkbenchShell.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-044",
+      "severity": "high",
+      "route": "/",
+      "viewport": "1440x900; 390x844",
+      "category": "runtime",
+      "title": "Header Search click opens nothing",
+      "expected": "Click opens a usable search palette, Escape closes and restores focus.",
+      "actual": "No modal or search input appears.",
+      "reproduction": [
+        "Click header Search."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/home-1440.png",
+      "rootCause": "SiteHeader mounts CommandPalette without isOpen; palette internal state starts closed.",
+      "affectedCode": [
+        "apps/site/src/components/home/SiteHeader.tsx",
+        "apps/site/src/components/CommandPalette.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-045",
+      "severity": "medium",
+      "route": "/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Sign in link mislabels local Workbench",
+      "expected": "Navigation reflects actual unauthenticated staging behavior.",
+      "actual": "Sign in opens local Workbench without sign-in.",
+      "reproduction": [
+        "Click Sign in."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/home-1440.png",
+      "rootCause": "Static header label implies unavailable authentication flow.",
+      "affectedCode": [
+        "apps/site/src/components/home/SiteHeader.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-046",
+      "severity": "high",
+      "route": "/",
+      "viewport": "1440x900; 390x844",
+      "category": "network",
+      "title": "Homepage mosaic links refer to nonexistent resources",
+      "expected": "Every resource link resolves to its actual catalogue record.",
+      "actual": "telemetry-chart and metric-card routes return404.",
+      "reproduction": [
+        "Click corresponding mosaic resources."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/home-1440.png",
+      "rootCause": "Static slug strings refer to legacy sample resources absent from324 catalogue.",
+      "affectedCode": [
+        "apps/site/src/components/home/CatalogueMosaic.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-047",
+      "severity": "high",
+      "route": "/",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Homepage claims measured perfect accessibility",
+      "expected": "Public claims are supported and clearly distinguish illustration.",
+      "actual": "Audit100/100 AACompliant and zero-debt accessibility appear despite captured serious failures.",
+      "reproduction": [
+        "Inspect homepage Workbench reveal."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/home-1440.png",
+      "rootCause": "Hardcoded demonstration score presented without qualification.",
+      "affectedCode": [
+        "apps/site/src/components/home/WorkbenchReveal.tsx"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-048",
+      "severity": "high",
+      "route": "/",
+      "viewport": "1440x900; 390x844",
+      "category": "accessibility",
+      "title": "Shared muted text fails contrast",
+      "expected": "Normal text meets WCAG AA in each theme.",
+      "actual": "Serious Axe color-contrast failures: homepage36, Explore52, Compose56, Workbench19 nodes.",
+      "reproduction": [
+        "Run Axe without disabling contrast on all major routes."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/home-1440.png",
+      "rootCause": "Muted#8B8F97 and opacity reductions are too light on paper; dark/light hardcoded combinations fail.",
+      "affectedCode": [
+        "apps/site/src/styles/global.css",
+        "packages/ui",
+        "apps/site/src/components"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-049",
+      "severity": "high",
+      "route": "/",
+      "viewport": "1440x900; 390x844",
+      "category": "network",
+      "title": "Sites static runtime drops security headers",
+      "expected": "Deployment preserves declared CSP, nosniff, referrer and frame policies.",
+      "actual": "Live responses contain none of the headers specified in _headers.",
+      "reproduction": [
+        "Inspect live HTTP response headers for document and catalogue."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        200
+      ],
+      "screenshot": "audit/evidence/before/instrumented/home-1440.png",
+      "rootCause": "Sites native static hosting does not interpret Cloudflare Pages _headers.",
+      "affectedCode": [
+        "apps/sites/prepare-static.mjs",
+        ".openai/hosting.json",
+        "apps/site/public/_headers"
+      ],
+      "remediation": "Pending root-cause remediation and deployed verification.",
+      "fixCommit": null,
+      "status": "open"
+    }
+  ],
+  "routes": [
+    {
+      "route": "/",
+      "status": "DEGRADED",
+      "evidence": "audit/evidence/before/instrumented/home-1440.png",
+      "http": [
+        200
+      ]
+    },
+    {
+      "route": "/explore/",
+      "status": "DEGRADED",
+      "evidence": "audit/evidence/before/instrumented/explore-1440.png",
+      "http": [
+        307,
+        200
+      ]
+    },
+    {
+      "route": "/components",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/components-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/sections",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/sections-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/blocks",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/blocks-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/pages",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/pages-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/effects",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/effects-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/motion",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/motion-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/backgrounds",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/backgrounds-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/ai",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/ai-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/data",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/data-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/compose/",
+      "status": "DEGRADED",
+      "evidence": "audit/evidence/before/instrumented/compose-1440.png",
+      "http": [
+        307,
+        200
+      ]
+    },
+    {
+      "route": "/workbench/",
+      "status": "DEGRADED",
+      "evidence": "audit/evidence/before/instrumented/workbench-1440.png",
+      "http": [
+        307,
+        200
+      ]
+    },
+    {
+      "route": "/blueprints",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/blueprints-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/collections",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/collections-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/about",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/about-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/agents",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/agents-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/creators",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/creators-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/docs",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/docs-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/docs/registry",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/docs-registry-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/workbench/",
+      "status": "DEGRADED",
+      "evidence": "audit/evidence/before/instrumented/flagship-shell-1440.png",
+      "http": [
+        307,
+        200,
+        307,
+        200
+      ]
+    },
+    {
+      "route": "/license",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/license-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/privacy",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/privacy-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/r/area-chart/",
+      "status": "DEGRADED",
+      "evidence": "audit/evidence/before/instrumented/r-area-chart-1440.png",
+      "http": [
+        307,
+        200,
+        307,
+        200
+      ]
+    },
+    {
+      "route": "/r/button/",
+      "status": "DEGRADED",
+      "evidence": "audit/evidence/before/instrumented/r-button-1440.png",
+      "http": [
+        307,
+        200,
+        307,
+        200
+      ]
+    },
+    {
+      "route": "/showcase",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/showcase-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/showcases/",
+      "status": "MISLEADING",
+      "evidence": "audit/evidence/before/instrumented/showcases-1440.png",
+      "http": [
+        307,
+        200
+      ]
+    },
+    {
+      "route": "/sponsor",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/sponsor-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/terms",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/terms-1440.png",
+      "http": [
+        404
+      ]
+    },
+    {
+      "route": "/tools/",
+      "status": "DEGRADED",
+      "evidence": "audit/evidence/before/instrumented/tools-1440.png",
+      "http": [
+        307,
+        200
+      ]
+    },
+    {
+      "route": "/tools/dna/",
+      "status": "DEGRADED",
+      "evidence": "audit/evidence/before/instrumented/tools-dna-1440.png",
+      "http": [
+        307,
+        200
+      ]
+    },
+    {
+      "route": "/trends",
+      "status": "BROKEN",
+      "evidence": "audit/evidence/before/instrumented/trends-1440.png",
+      "http": [
+        404
+      ]
+    }
+  ],
+  "acceptance": "NOT ACCEPTED: remediation and deployed re-audit pending"
+}
