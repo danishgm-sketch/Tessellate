@@ -61,7 +61,7 @@ export function AuditPanel({ manifest: propManifest }: { manifest?: ProjectManif
 
   const getScoreColor = (val: number, max: number) => {
     const ratio = val / max;
-    if (ratio >= 0.9) return 'text-emerald-600 dark:text-emerald-400';
+    if (ratio >= 0.9) return 'text-emerald-700 dark:text-emerald-400';
     if (ratio >= 0.7) return 'text-amber-600 dark:text-amber-400';
     return 'text-rose-600 dark:text-rose-400';
   };
@@ -81,7 +81,7 @@ export function AuditPanel({ manifest: propManifest }: { manifest?: ProjectManif
   return (
     <div
       data-testid="audit-panel"
-      className="flex-1 flex flex-col h-full bg-[#FAF9F6] dark:bg-[#0B0D10] text-[#111217] dark:text-[#F5F7FA] overflow-hidden select-none"
+      className="dark flex-1 min-w-0 flex flex-col h-full bg-[#FAF9F6] dark:bg-[#0B0D10] text-[#111217] dark:text-[#F5F7FA] overflow-hidden select-none"
     >
       {/* Top Banner: Overall Score & Metrics */}
       <div className="p-6 border-b border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#111217] flex flex-wrap items-center justify-between gap-6 shrink-0">
@@ -98,7 +98,7 @@ export function AuditPanel({ manifest: propManifest }: { manifest?: ProjectManif
               }`}
             >
               <span className="text-2xl font-black tracking-tight">{total}</span>
-              <span className="text-[10px] font-mono uppercase text-[#8B8F97]">/ 100</span>
+              <span className="text-[10px] font-mono uppercase text-[var(--text-muted)]">/ 100</span>
             </div>
           </div>
 
@@ -110,7 +110,7 @@ export function AuditPanel({ manifest: propManifest }: { manifest?: ProjectManif
               </span>
             </div>
             <p className="text-xs text-[#62666F] dark:text-[#A8AFBA] mt-1 max-w-md">
-              Objective, verifiable quality assessment. Evaluates WCAG accessibility floors, performance ceilings, responsive grammar, and Design DNA consistency.
+              Manifest checks for declared accessibility, performance and Design DNA consistency. This score does not measure live browser contrast, keyboard access or responsiveness; verify the rendered project.
             </p>
           </div>
         </div>
@@ -171,14 +171,14 @@ export function AuditPanel({ manifest: propManifest }: { manifest?: ProjectManif
                   : 'border-[#D9D6CF]/70 dark:border-[#272C34]/70 hover:border-[#D9D6CF] dark:hover:border-[#272C34]'
               }`}
             >
-              <div className="text-[10px] uppercase font-mono tracking-wider text-[#8B8F97] truncate">
+              <div className="text-[10px] uppercase font-mono tracking-wider text-[var(--text-muted)] truncate">
                 {info.label}
               </div>
               <div className="flex items-baseline gap-1 mt-1">
                 <span className={`text-base font-bold ${getScoreColor(val, info.max)}`}>
                   {val}
                 </span>
-                <span className="text-[10px] font-mono text-[#8B8F97]">/{info.max}</span>
+                <span className="text-[10px] font-mono text-[var(--text-muted)]">/{info.max}</span>
               </div>
             </button>
           );
@@ -197,7 +197,7 @@ export function AuditPanel({ manifest: propManifest }: { manifest?: ProjectManif
                 setFilterSeverity('all');
                 setFilterCategory('all');
               }}
-              className="text-xs text-[#2547E8] dark:text-[#6782FF] hover:underline"
+              className="text-xs text-[#2547E8] dark:text-[#879DFF] hover:underline"
             >
               Clear filters
             </button>
@@ -244,13 +244,13 @@ export function AuditPanel({ manifest: propManifest }: { manifest?: ProjectManif
                         <span className="text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
                           {issue.message}
                         </span>
-                        <span className="text-[10px] font-mono uppercase px-1.5 py-0.2 rounded bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] text-[#8B8F97]">
+                        <span className="text-[10px] font-mono uppercase px-1.5 py-0.2 rounded bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] text-[var(--text-muted)]">
                           {issue.category}
                         </span>
                       </div>
 
                       {issue.nodeIds.length > 0 && (
-                        <div className="flex items-center gap-1.5 mt-2 text-[11px] font-mono text-[#8B8F97]">
+                        <div className="flex items-center gap-1.5 mt-2 text-[11px] font-mono text-[var(--text-muted)]">
                           <span>Affected nodes:</span>
                           {issue.nodeIds.map((nid) => (
                             <span
@@ -284,10 +284,10 @@ export function AuditPanel({ manifest: propManifest }: { manifest?: ProjectManif
         {/* AI Critique Disclaimers */}
         <div className="mt-8 p-4 rounded-xl border border-dashed border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#111217] flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs text-[#62666F] dark:text-[#A8AFBA]">
-            <Sparkles className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#6782FF]" />
+            <Sparkles className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#879DFF]" />
             <span>AI critique, when configured, appears separately under AI Review and cannot overwrite deterministic audit findings.</span>
           </div>
-          <span className="text-[10px] font-mono uppercase text-[#8B8F97]">BYO Provider</span>
+          <span className="text-[10px] font-mono uppercase text-[var(--text-muted)]">BYO Provider</span>
         </div>
       </div>
     </div>

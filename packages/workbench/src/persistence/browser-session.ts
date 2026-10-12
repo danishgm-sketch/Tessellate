@@ -7,10 +7,12 @@ export interface BrowserProjectLoad {
   damagedRecords: Array<{ raw: string; reason: string }>;
 }
 
-/** Validate both stores and choose the newest valid revision; retain damaged records. */
+/** Validate both stores; the synchronous journal records the latest user intent,
+ * including Undo to an older timestamp. Legacy stores use timestamp comparison. */
 export async function loadBrowserProject(projectId?: string): Promise<BrowserProjectLoad> {
   const result: BrowserProjectLoad = {manifest:null, damagedRecords:[]};
   const candidates: ProjectManifest[] = [];
+  let journal:ProjectManifest | null=null;
   const keys = projectId ? [`tessellate_project_${projectId}`, 'tessellate_active_project'] : ['tessellate_active_project'];
   for (const key of keys) {
     const raw = localStorage.getItem(key);
@@ -18,7 +20,10 @@ export async function loadBrowserProject(projectId?: string): Promise<BrowserPro
     try {
       const record = safelyLoadProjectRecord(JSON.parse(raw));
       if (record.status === 'corrupted') result.damagedRecords.push({raw, reason: record.validationIssues.join('; ')});
-      else if (!projectId || record.manifest.id === projectId) candidates.push(record.manifest);
+      else if (!projectId || record.manifest.id === projectId) {
+        candidates.push(record.manifest);
+        if(localStorage.getItem(`tessellate_journal_version_${record.manifest.id}`)==='1') journal ??=record.manifest;
+      }
     } catch (error) {
       result.damagedRecords.push({raw, reason:String(error)});
     }
@@ -33,7 +38,7 @@ export async function loadBrowserProject(projectId?: string): Promise<BrowserPro
     }
   }
   candidates.sort((a,b) => Date.parse(b.updatedAt)-Date.parse(a.updatedAt) || b.historyMeta.headRevision-a.historyMeta.headRevision);
-  result.manifest = candidates[0] ?? null;
+  result.manifest = journal ?? candidates[0] ?? null;
   return result;
 }
 
@@ -42,6 +47,7 @@ export function journalBrowserProject(manifest: ProjectManifest): void {
   const json = JSON.stringify(manifest);
   localStorage.setItem(`tessellate_project_${manifest.id}`, json);
   localStorage.setItem('tessellate_active_project', json);
+  localStorage.setItem(`tessellate_journal_version_${manifest.id}`,'1');
 }
 
 export function createProjectSaver(onError: (error: unknown) => void) {

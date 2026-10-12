@@ -1,3 +1,5 @@
+import {loadCheckpointJournal,saveCheckpointJournal} from '../persistence/checkpoint-journal.js';
+import { composeProjectPipeline } from '@tessellate/compatibility';
 import React, { useEffect, useState } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { TopToolbar } from './TopToolbar.js';
@@ -13,7 +15,7 @@ import { ReplaceDrawer } from './replace/ReplaceDrawer.js';
 import { AuditPanel } from './audit/AuditPanel.js';
 import { loadBrowserProject, createProjectSaver } from '../persistence/browser-session.js';
 import { setActiveCatalog } from '../mutations/replace.js';
-import { ResourceManifestSchema } from '@tessellate/schemas';
+import { ResourceManifestSchema, ProjectManifestSchema } from '@tessellate/schemas';
 
 export function WorkbenchShell() {
   const activeMode = useWorkbenchStore((state) => state.activeMode);
@@ -38,7 +40,10 @@ export function WorkbenchShell() {
     if (typeof window === 'undefined') return;
     let disposed = false;
     let unsubscribe: (()=>void) | undefined;
-    const projectId = new URLSearchParams(window.location.search).get('project') ?? undefined;
+    const params=new URLSearchParams(window.location.search);
+    const projectId=params.get('project') ?? undefined;
+    const showcaseId=params.get('showcase');
+    const resourceSlug=params.get('resource');
     const saver = createProjectSaver(error => { if (!disposed) setStorageError(`Local save failed: ${String(error)}. Export your manifest before leaving.`); });
     Promise.all([
       loadBrowserProject(projectId),
@@ -47,24 +52,57 @@ export function WorkbenchShell() {
         const payload = await response.json();
         return ResourceManifestSchema.array().parse(payload.resources);
       }),
-    ]).then(([loaded, catalog]) => {
+    ]).then(async ([loaded, catalog]) => {
       if (disposed) return;
       setDamagedRecords(loaded.damagedRecords);
       setActiveCatalog(catalog);
-      if (loaded.manifest) setManifest(loaded.manifest);
+      if(showcaseId || resourceSlug){
+        void (async()=>{
+          let imported;
+          if(showcaseId){const response=await fetch(`/data/showcases/${encodeURIComponent(showcaseId)}.json`);if(!response.ok)throw new Error(`Showcase HTTP ${response.status}`);imported=ProjectManifestSchema.parse(await response.json());}
+          else {const resource=catalog.find(item=>item.slug===resourceSlug);if(!resource || resource.status!=='verified-gold')throw new Error('This resource is outside the Gold composition runtime. Its source remains available on the resource page.');imported=composeProjectPipeline({description:'A local resource exploration project',visualAmbition:40,structuralCreativity:40},{catalogResources:catalog,seed:crypto.randomUUID()}).directionA.manifest;const screen=imported.screens[0]!;screen.name=resource.name;screen.rootNode={id:`resource-root-${crypto.randomUUID()}`,nodeType:'layout',semanticRole:'marketing-page',children:[{id:`resource-${crypto.randomUUID()}`,nodeType:'section',semanticRole:resource.roles[0]??'component',resourceRef:{id:resource.id,slug:resource.slug,version:resource.version},variant:resource.variants[0]?.id,children:[],slots:{},props:resource.preview.defaultProps??{}}],slots:{},props:{}};imported.screens=[screen];imported.navigation.primaryItems=[];imported.screenGraph.groups=imported.screenGraph.groups.map(group=>({...group,screens:group.screens.filter(node=>node.id===screen.id)}));imported.screenGraph.edges=[];imported.name=`Resource study — ${resource.name}`;}
+          if(disposed)return;
+          imported.id=`local-${crypto.randomUUID()}`;
+          setManifest(ProjectManifestSchema.parse(imported));await saver(imported);
+          const url=new URL(window.location.href);url.search='';url.searchParams.set('project',imported.id);window.history.replaceState(null,'',url);
+          setLoading(false);
+        })().catch(error=>{if(!disposed){setStorageError(String(error));setLoading(false);}});
+      }
+      else if (loaded.manifest) setManifest(loaded.manifest);
       else if (projectId) throw new Error(`Project ${projectId} was not found in this browser.`);
+      else if (loaded.damagedRecords.length===0) {
+        const starter=composeProjectPipeline({description:'An employee experience platform with people, teams, onboarding and policies. This is a sample local project.',feel:'professional but playful',visualAmbition:40,structuralCreativity:55,targetDevices:['desktop','tablet','mobile']},{catalogResources:catalog,seed:crypto.randomUUID()}).directionA.manifest;
+        starter.name='Example employee workspace';
+        setManifest(starter);
+        void saver(starter);
+      }
+      if(loaded.manifest && !showcaseId && !resourceSlug){
+        const checkpoints=await loadCheckpointJournal(loaded.manifest.id);
+        if(disposed)return;
+        if(checkpoints.length)useWorkbenchStore.setState({checkpoints});
+      }
       // Never overwrite corrupt records with a sample. Recovery remains read-only.
       if (loaded.damagedRecords.length === 0) {
         unsubscribe = useWorkbenchStore.subscribe((state, previous) => {
           if (state.manifest !== previous.manifest) void saver(state.manifest);
+          if(state.checkpoints!==previous.checkpoints)void saveCheckpointJournal(state.manifest.id,state.checkpoints).catch(error=>{if(!disposed)setStorageError(`Checkpoint save failed: ${String(error)}. Export your current project.`);});
         });
       }
-      setLoading(false);
+      if(!showcaseId && !resourceSlug){setLoading(false);if(params.get('open')==='blend')useWorkbenchStore.getState().openBlend();}
     }).catch(error => {
       if (!disposed) { setStorageError(String(error)); setLoading(false); }
     });
     return () => { disposed = true; unsubscribe?.(); };
   }, [setManifest]);
+
+  useEffect(()=>{
+    const navigate = ()=>{
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      if(useWorkbenchStore.getState().manifest.screens.some(screen=>screen.id===id)) useWorkbenchStore.getState().setActiveScreen(id);
+    };
+    window.addEventListener('hashchange',navigate);
+    return ()=>window.removeEventListener('hashchange',navigate);
+  },[]);
 
   // Responsive window listener
   useEffect(() => {
@@ -86,13 +124,13 @@ export function WorkbenchShell() {
       }
 
       // Escape to climb selection
-      if (e.key === 'Escape') {
+      if (e.key === 'Escape' && !document.querySelector('[role=dialog]')) {
         e.preventDefault();
         selectParentNode();
       }
 
       // Undo / Redo
-      if ((e.metaKey || e.ctrlKey) && e.key === 'z') {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'z') {
         e.preventDefault();
         if (e.shiftKey) {
           redo();
@@ -128,7 +166,8 @@ export function WorkbenchShell() {
       // L: Lock selected node
       if (e.key.toLowerCase() === 'l' && selectedNodeId) {
         e.preventDefault();
-        toggleNodeLock(selectedNodeId, 'structure');
+        if (e.shiftKey) useWorkbenchStore.getState().unlockAllNodeLocks(selectedNodeId);
+        else toggleNodeLock(selectedNodeId, 'node');
       }
 
       // R: Replace selected node
@@ -160,7 +199,7 @@ export function WorkbenchShell() {
   return (
     <div
       data-testid="workbench-shell"
-      className="h-screen w-screen overflow-hidden flex flex-col bg-[#FAF9F6] dark:bg-[#0B0D10] text-[#111217] dark:text-[#F5F7FA]"
+      className="h-screen w-screen overflow-hidden flex flex-col bg-[#0B0D10] text-[#F5F7FA]"
     >
       {/* 56px Top Toolbar */}
       <TopToolbar />
