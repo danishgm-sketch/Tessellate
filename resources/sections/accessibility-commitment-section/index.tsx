@@ -27,11 +27,11 @@ export function AccessibilityCommitmentSection({ variant = 'quiet' }: Accessibil
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-16">Accessibility commitments — WCAG 2.2 AA target</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-16">Accessibility commitments â€” WCAG 2.2 AA target</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {pillars.map((p) => (
             <div key={p.title} className={`p-6 rounded-2xl border ${card}`}>
-              <span className="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400 mb-2 block">DESIGN TARGET</span>
+              <span className="font-mono text-xs font-bold text-emerald-700 dark:text-emerald-300 mb-2 block">DESIGN TARGET</span>
               <h3 className="font-bold text-base mb-2">{p.title}</h3>
               <p className="text-xs sm:text-sm opacity-75 leading-relaxed">{p.desc}</p>
             </div>
