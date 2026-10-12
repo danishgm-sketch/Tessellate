@@ -10,7 +10,7 @@ export interface TextPathArcProps {
 }
 
 export function TextPathArc({
-  text = 'OPEN RESOURCE VOCABULARY â€¢ ZERO RUNTIME LOCK-IN â€¢ ',
+  text = 'OPEN RESOURCE VOCABULARY • ZERO RUNTIME LOCK-IN • ',
   centerText = 'MIT',
   variant = 'quiet',
   children,
