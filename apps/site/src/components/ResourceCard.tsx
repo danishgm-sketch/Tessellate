@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {isGoldResource} from '@tessellate/catalog/gold';
 import type { ResourceManifest } from '@tessellate/schemas';
 import { Eye, Bookmark, ArrowUpRight, Copy, Check } from 'lucide-react';
@@ -21,6 +21,16 @@ export function ResourceCard({
   useEffect(()=>{const read=()=>{try {const stored:unknown=JSON.parse(localStorage.getItem('tessellate_saved_resources') ?? '[]');if(Array.isArray(stored))setSaved(stored.includes(manifest.slug));}catch{setActionError('Saved collection could not be read. Its data has been preserved.');}};read();window.addEventListener('tessellate-saved-resources-changed',read);return ()=>window.removeEventListener('tessellate-saved-resources-changed',read);},[manifest.slug]);
   const [copied, setCopied] = useState(false);
   const [saved, setSaved] = useState(false);
+  const previewRef=useRef<HTMLDivElement>(null);
+  const [previewVisible,setPreviewVisible]=useState(false);
+  useEffect(()=>{
+    if(typeof IntersectionObserver==='undefined'){setPreviewVisible(true);return undefined;}
+    const observer=new IntersectionObserver(entries=>{
+      if(entries.some(entry=>entry.isIntersecting)){setPreviewVisible(true);observer.disconnect();}
+    },{rootMargin:'160px'});
+    if(previewRef.current)observer.observe(previewRef.current);
+    return ()=>observer.disconnect();
+  },[]);
 
   const handleCopy = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -42,8 +52,8 @@ export function ResourceCard({
   return (
     <div className="group relative flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] transition-all duration-200 hover:border-[var(--tess-hairline-strong,#C7C3BA)] hover:shadow-md overflow-hidden">
       {/* 16:10 Preview Frame */}
-      <div className="relative aspect-[16/10] w-full bg-[var(--tess-canvas,#F4F2ED)] border-b border-[var(--tess-hairline,#D9D6CF)] flex items-center justify-center p-6 overflow-hidden">
-        <iframe src={`/preview/?resource=${manifest.slug}`} title={`${manifest.name} actual preview`} sandbox="allow-scripts" loading="lazy" className="w-full h-full border-0 bg-white" />
+      <div ref={previewRef} className="relative aspect-[16/10] w-full bg-[var(--tess-canvas,#F4F2ED)] border-b border-[var(--tess-hairline,#D9D6CF)] flex items-center justify-center p-6 overflow-hidden">
+        {previewVisible ? <iframe src={`/preview/?resource=${manifest.slug}`} title={`${manifest.name} actual preview`} sandbox="allow-scripts" loading="lazy" className="w-full h-full border-0 bg-white" /> : <span className="text-xs text-[var(--tess-ink-muted)]">Preview loads when visible</span>}
         {/* Hover Actions Overlay (Max 4 actions: Preview, Save, Use, Copy) */}
         <div className="absolute inset-0 bg-[var(--tess-ink,#111217)]/10 backdrop-blur-[2px] opacity-100 sm:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-150 flex items-center justify-center gap-2 p-4">
           <a
