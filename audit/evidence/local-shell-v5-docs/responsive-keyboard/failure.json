@@ -1,0 +1,194 @@
+{
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=accessibility-commitment-section'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=accordion'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=accordion-spring'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-prompt-hero'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=alert-dialog'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=analytics-shell'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=animated-border-trace'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=animated-gradient-line'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=animated-wave-field'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=api-capability-section'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=app-sidebar-compact'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=app-sidebar-expanded'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=approval-queue'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=architecture-diagram-section'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=area-chart'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=aurora-field'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=autocomplete'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=avatar'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=avatar-group'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=badge'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=bar-chart'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=beam-grid'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=billing-overview'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=blur-to-sharp-reveal'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=bottom-sheet'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=admin-console-shell'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=activity-feed'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-agent-activity-feed'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-approval-request'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-chat-panel'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-command-bar'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-copilot-sidebar'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-empty-state'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-file-context-picker'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-generation-compare'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-memory-context-panel'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-model-mode-switcher'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-multi-agent-board'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-plan-review'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-prompt-composer'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-prompt-history'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-research-answer'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-source-citations'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-suggested-actions'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-tool-execution-timeline'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=api-key-management'\n+   }\n+ ]\n- []\n",
+  "stack": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n\n+ [\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=accessibility-commitment-section'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=accordion'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=accordion-spring'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-prompt-hero'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=alert-dialog'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=analytics-shell'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=animated-border-trace'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=animated-gradient-line'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=animated-wave-field'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=api-capability-section'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=app-sidebar-compact'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=app-sidebar-expanded'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=approval-queue'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=architecture-diagram-section'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=area-chart'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=aurora-field'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=autocomplete'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=avatar'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=avatar-group'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=badge'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=bar-chart'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=beam-grid'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=billing-overview'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=blur-to-sharp-reveal'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=bottom-sheet'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=admin-console-shell'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=activity-feed'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-agent-activity-feed'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-approval-request'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-chat-panel'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-command-bar'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-copilot-sidebar'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-empty-state'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-file-context-picker'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-generation-compare'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-memory-context-panel'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-model-mode-switcher'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-multi-agent-board'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-plan-review'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-prompt-composer'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-prompt-history'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-research-answer'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-source-citations'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-suggested-actions'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=ai-tool-execution-timeline'\n+   },\n+   {\n+     failure: 'net::ERR_ABORTED',\n+     url: 'http://127.0.0.1:4323/preview/?resource=api-key-management'\n+   }\n+ ]\n- []\n\n    at file:///C:/Users/ismay/.codex/worktrees/tessellate-sites-staging/Tessellate/audit/responsive-keyboard-audit.mjs:23:48",
+  "events": {
+    "exceptions": [],
+    "console": [],
+    "network": [
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=accessibility-commitment-section",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=accordion",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=accordion-spring",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-prompt-hero",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=alert-dialog",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=analytics-shell",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=animated-border-trace",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=animated-gradient-line",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=animated-wave-field",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=api-capability-section",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=app-sidebar-compact",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=app-sidebar-expanded",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=approval-queue",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=architecture-diagram-section",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=area-chart",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=aurora-field",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=autocomplete",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=avatar",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=avatar-group",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=badge",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=bar-chart",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=beam-grid",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=billing-overview",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=blur-to-sharp-reveal",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=bottom-sheet",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=admin-console-shell",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=activity-feed",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-agent-activity-feed",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-approval-request",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-chat-panel",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-command-bar",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-copilot-sidebar",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-empty-state",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-file-context-picker",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-generation-compare",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-memory-context-panel",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-model-mode-switcher",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-multi-agent-board",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-plan-review",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-prompt-composer",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-prompt-history",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-research-answer",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-source-citations",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-suggested-actions",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=ai-tool-execution-timeline",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "url": "http://127.0.0.1:4323/preview/?resource=api-key-management",
+        "failure": "net::ERR_ABORTED"
+      }
+    ]
+  }
+}
