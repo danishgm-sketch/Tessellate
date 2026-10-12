@@ -1,9 +1,19 @@
 /** Sites-specific response adapter. Assets are the canonical Astro production build. */
 export default {
  async fetch(request:Request,env:Env):Promise<Response> {
-  const response=await env.ASSETS.fetch(request);
   const url=new URL(request.url);
+  const prefix='/__tessellate_asset_payloads';
+  const html=!/\.[a-z\d]+$/i.test(url.pathname) || url.pathname.endsWith('.html');
+  const assetUrl=new URL(url);
+  assetUrl.pathname=prefix+(html ? (url.pathname.endsWith('.html') ? url.pathname : url.pathname.replace(/\/?$/,'/')+'index.html')+'.bin' : url.pathname);
+  let response=await env.ASSETS.fetch(new Request(assetUrl,request));
+  if(response.status===404 && html){
+   assetUrl.pathname=prefix+'/404.html.bin';
+   const fallback=await env.ASSETS.fetch(new Request(assetUrl,request));
+   if(fallback.ok)response=new Response(fallback.body,{status:404,headers:fallback.headers});
+  }
   const headers=new Headers(response.headers);
+  if(html)headers.set('Content-Type','text/html; charset=utf-8');
   headers.set('X-Content-Type-Options','nosniff');
   headers.set('X-Frame-Options','SAMEORIGIN');
   headers.set('Referrer-Policy','strict-origin-when-cross-origin');

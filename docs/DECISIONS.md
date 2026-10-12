@@ -335,3 +335,8 @@ arbitrary screen-specific CSS and silently switching visual mode or palette.
 **Cost impact:** None.  
 **Security impact:** None.  
 **Status:** Local regression passes; deployed appearance verification pending.
+
+
+## D038 — Sites asset routing compatibility correction
+
+Deployed version 2 demonstrated that Sites serves matching assets before the Worker despite `run_worker_first`. This removed security headers from real page responses. The isolated adapter now stores canonical assets under an internal payload prefix, with HTML payloads using binary file extensions. Public URL requests miss the native asset route and pass through the Worker, which maps them to payloads and attaches the existing CSP/security headers. Binary direct payload responses cannot be executed as HTML. Astro, source packages, composition and public URLs remain canonical. D1/R2 stay unused and no paid infrastructure is introduced. Native deployment verification is mandatory; local header tests alone did not prove the original routing assumption.

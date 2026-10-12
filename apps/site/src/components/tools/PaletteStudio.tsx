@@ -170,6 +170,7 @@ function getContrastRatio(hex1: string, hex2: string): number {
 }
 
 export function PaletteStudio() {
+  const [actionPreviewed,setActionPreviewed]=useState(false);
   const [selectedPresetId, setSelectedPresetId] = useState<string>('zinc-editorial');
   const [tokens, setTokens] = useState<SemanticPaletteTokens>({ ...THEME_PRESETS[0]!.tokens });
   const [copiedFormat, setCopiedFormat] = useState<'css' | 'tailwind' | 'json' | null>(null);
@@ -450,7 +451,7 @@ export function PaletteStudio() {
           >
             <div className="flex items-center justify-between pb-3 border-b" style={{ borderColor: tokens.hairline }}>
               <div className="flex items-center gap-2">
-                <div className="h-3 w-3 rounded-full" style={{ backgroundColor: tokens.accent }} />
+                <div className="h-3 w-3 rounded-full" onClick={()=>setActionPreviewed(true)} style={{ backgroundColor: tokens.accent, color:getContrastRatio('#FFFFFF',tokens.accent)>=4.5?'#FFFFFF':'#111217' }} />
                 <span className="text-xs font-bold tracking-tight">Active Surface Preview</span>
               </div>
               <span className="text-[10px] font-mono" style={{ color: tokens.inkMuted }}>
@@ -475,7 +476,7 @@ export function PaletteStudio() {
                     color: tokens.accent,
                   }}
                 >
-                  VERIFIED
+                  EXAMPLE
                 </span>
               </div>
 
@@ -488,11 +489,12 @@ export function PaletteStudio() {
                 <button
                   type="button"
                   className="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-white shadow-sm transition-all"
-                  style={{ backgroundColor: tokens.accent }}
+                  onClick={()=>setActionPreviewed(true)} style={{ backgroundColor: tokens.accent, color:getContrastRatio('#FFFFFF',tokens.accent)>=4.5?'#FFFFFF':'#111217' }}
                 >
-                  Execute Action
+                  Preview action
                 </button>
               </div>
+              {actionPreviewed && <p role="status" className="text-xs">Example interaction — current tokens applied. No transaction was submitted.</p>}
             </div>
           </div>
         </div>

@@ -54,3 +54,8 @@ the repository's £20 maximum principle.
 The runtime audit is authoritative. See `audit/RUNTIME_AUDIT.md` and the machine
 records for before evidence and verification status. Local passing results do
 not close a finding; fixed deployed behavior must be rechecked.
+
+
+### Native asset routing difference
+
+The live Sites runtime bypassed the Worker for matching static assets even when `run_worker_first` was configured. The adapter therefore packages assets under `__tessellate_asset_payloads` and renames HTML payloads to binary extensions. Public requests are translated by the Worker, which sets the original content type and security headers. No application source or public route is rewritten. This difference was discovered during the deployed audit, not inferred from localhost.
