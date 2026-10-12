@@ -19,19 +19,19 @@ export function AccessibilityCommitmentSection({ variant = 'quiet' }: Accessibil
   }
 
   const pillars = [
-    { title: 'Keyboard First', desc: '100% of interactive controls support standard Tab, Enter, Space, and Escape navigation.' },
-    { title: 'Contrast Guardrails', desc: 'Every color token is algorithmically verified to pass 4.5:1 AA ratios against its background.' },
-    { title: 'Reduced Motion', desc: 'Interfaces respect prefers-reduced-motion automatically, replacing springs with clean crossfades.' },
+    { title: 'Keyboard First', desc: 'Design goal: support Tab, Enter, Space and Escape for every core control; verify keyboard behavior in your integration.' },
+    { title: 'Contrast Guardrails', desc: 'Design goal: maintain WCAG AA contrast; test your final foreground and background combinations.' },
+    { title: 'Reduced Motion', desc: 'Design goal: honor prefers-reduced-motion and verify that essential interactions work without animation.' },
   ];
 
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-16">Universal Accessibility (WCAG 2.2 AA)</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-16">Accessibility commitments — WCAG 2.2 AA target</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {pillars.map((p) => (
             <div key={p.title} className={`p-6 rounded-2xl border ${card}`}>
-              <span className="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400 mb-2 block">AA CERTIFIED</span>
+              <span className="font-mono text-xs font-bold text-emerald-600 dark:text-emerald-400 mb-2 block">DESIGN TARGET</span>
               <h3 className="font-bold text-base mb-2">{p.title}</h3>
               <p className="text-xs sm:text-sm opacity-75 leading-relaxed">{p.desc}</p>
             </div>
