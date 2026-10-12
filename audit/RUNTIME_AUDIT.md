@@ -782,3 +782,27 @@ Evidence: `audit/evidence/local-iteration-6/resources/two-pane-master-detail-she
 ### Instrumentation network distinction
 
 The first route re-scan captured CSS XHR blocked by the strict opaque-preview CSP during Axe analysis. The exact warning originates in axe-core 4.13.0 `preloaderQueue` (verified in the installed source), not the application. Direct browser loading of all 324 previews recorded zero failed requests. Subsequent Axe scans disable its optional asset preloader while retaining accessibility rules. CSP remains unchanged; original diagnostics are retained as evidence.
+
+## AUD-083 — CRITICAL — Hosted asset bypass removes CSP
+
+Evidence: deployed version 2 actual HTTP header comparison in `audit/evidence/deployed-version-2/security-headers-before.json`. Matching `/preview/?resource=button` returns no CSP, nosniff or referrer header; `/__tessellate_missing_probe` invokes the Worker and returns them. Affected code: isolated Sites adapter and asset packaging. Root cause: native asset routing bypasses Worker despite `run_worker_first`. Two failing proxy tests reproduce the resulting missing protected page path. Remediation places payloads behind an internal prefix and binary HTML filenames; the Worker maps the public routes, restores HTML content type and security headers without changing the canonical Astro build. No CSP relaxation is accepted. OPEN pending deployment of this compatibility correction.
+
+## AUD-084 — HIGH — Palette sample dead action
+
+Evidence: `audit/evidence/deployed-version-2/tool-interactions/palette.png` and failing actual-browser palette action test. Click Execute Action; no status or state changes. Affected code: `apps/site/src/components/tools/PaletteStudio.tsx`. Remediation labels this an example, adds local preview interaction feedback, removes implied real transaction execution and selects readable text on the current accent. OPEN until deployed verification.
+
+## AUD-085 — HIGH — Blend reload restores the wrong identity
+
+Evidence: deployed supplemental blended manifest, screenshot and failure.json. Reproduction: apply Blend, export its manifest, reload. The URL retains Direction C while the new manifest ID is blended. Root cause and affected code: `WorkbenchShell.tsx` subscription saves new identities without updating URL. Remediation synchronises the public project URL and validated direction metadata when identity changes. Failing real UI regression captured. OPEN until deployed verification.
+
+## AUD-086 — HIGH — Nested Pages controls
+
+Evidence: deployed supplemental Axe results (nine serious nested-interactive failures). Open Pages; row selection role contains Duplicate/Delete buttons. Affected code: `PagesTab.tsx`. Remediation makes selection a real button beside action buttons. Failing Pages Axe test captured. OPEN until deployed verification.
+
+## AUD-087 — HIGH — Undersized Pages action targets
+
+Evidence: deployed supplemental Axe results (18 serious target-size failures) and Pages screenshots. Affected code: `PagesTab.tsx` action buttons. Remediation gives each action a minimum 24px target and adequate padding. Failing Pages Axe test captured. OPEN until deployed verification.
+
+## AUD-088 — HIGH — Search relevance order discarded
+
+Evidence: deployed `search-ranking-before.png/json` and failing actual browser exact-name search test. Searching advanced data table shows Activity Feed first. Affected code: `ExploreView.tsx`, both initial and interactive search resolution. Root cause: ranked hits are converted to an ID set and then catalogue ordering replaces relevance. Remediation maps each ranked hit to its canonical resource while retaining order. OPEN until deployed verification.

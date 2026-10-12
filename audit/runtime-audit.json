@@ -10025,6 +10025,129 @@
       "rootCause": "Fixed horizontal layout lacks container breakpoint; queue selection has no semantic button.",
       "fixCommit": null,
       "status": "open"
+    },
+    {
+      "id": "AUD-083",
+      "severity": "critical",
+      "route": "/preview/?resource=button",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Sites asset bypass removes security response headers",
+      "expected": "All page responses, particularly preview HTML, retain CSP and security headers.",
+      "actual": "Version 2 matching asset responses contain no CSP, nosniff or Referrer-Policy; an unmatched route returns the Worker security headers.",
+      "reproduction": [
+        "GET /preview/?resource=button and inspect response headers",
+        "GET /__tessellate_missing_probe and compare headers"
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/deployed-version-2/instrumented/home-1440.png",
+      "rootCause": "The Sites host serves matching assets before the Worker even with run_worker_first configured.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-084",
+      "severity": "high",
+      "route": "/tools/palette",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Palette sample Execute Action control does nothing and implies a real transaction",
+      "expected": "The sample control gives truthful interaction feedback or is explicitly disabled.",
+      "actual": "Clicking Execute Action has no handler, status or effect; the sample badge also says VERIFIED without explaining what is verified.",
+      "reproduction": [
+        "Open Palette Studio",
+        "Click Execute Action"
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/deployed-version-2/tool-interactions/palette.png",
+      "rootCause": "The palette demonstration uses a presentation-only button without interaction state and misleading sample labels.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-085",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Blend changes project identity without updating URL and reload restores previous project",
+      "expected": "The new blended project opens and reloads under its own identity.",
+      "actual": "Downloaded Blend manifest has a new ID, but URL retains original Direction C; reload opens old Direction C.",
+      "reproduction": [
+        "Compose employee directions",
+        "Apply a real Blend",
+        "Export manifest and reload"
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/deployed-version-2/supplemental/blended-project.png",
+      "rootCause": "Workbench autosave journals new manifest IDs but does not update project URL.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-086",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Pages screen selection nests action buttons inside a button role",
+      "expected": "Selection, Duplicate and Delete are independent keyboard controls.",
+      "actual": "Axe reports nine serious nested-interactive violations in employee Pages.",
+      "reproduction": [
+        "Open employee Workbench",
+        "Open Pages",
+        "Run Axe"
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/deployed-version-2/supplemental/compare-actual-employee.png",
+      "rootCause": "Screen row has role=button while containing duplicate/delete buttons.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-087",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Pages duplicate and delete controls fail touch target requirements",
+      "expected": "Page actions have adequate pointer target sizes.",
+      "actual": "Axe reports 18 serious target-size failures; controls are only 20px.",
+      "reproduction": [
+        "Open Pages in employee Workbench",
+        "Inspect Duplicate/Delete target sizes"
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/deployed-version-2/supplemental/duplicate-screen.png",
+      "rootCause": "Page action buttons use 12px icons and only 4px padding.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-088",
+      "severity": "high",
+      "route": "/explore/?q=advanced+data+table",
+      "viewport": "1440x900",
+      "category": "data",
+      "title": "Explore discards search relevance order and puts unrelated cards before an exact resource match",
+      "expected": "The exact Advanced Data Table resource ranks before unrelated Activity Feed cards.",
+      "actual": "The visible first preview is Activity Feed after searching advanced data table.",
+      "reproduction": [
+        "Open Explore",
+        "Search advanced data table",
+        "Inspect first result"
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/deployed-version-2/search-ranking-before.png",
+      "rootCause": "Explore converts ranked Orama hits to an ID set and filters the original catalogue order, destroying relevance ordering.",
+      "fixCommit": null,
+      "status": "open"
     }
   ],
   "routes": [
