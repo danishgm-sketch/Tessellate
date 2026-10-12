@@ -1,0 +1,4 @@
+---
+import PublicLayout from '../../layouts/PublicLayout.astro';
+---
+<PublicLayout title="Registry installation" description="Install portable resource source from the URL of the deployment you are inspecting."><section class="max-w-3xl space-y-5"><p>Open a resource, copy its install command, and run it in a React + TypeScript + Tailwind CSS 4 project. The command uses this site's origin and the exact resource slug.</p><pre class="overflow-auto border p-4"><code>npx shadcn@latest add https://YOUR-SITE/r/button.json</code></pre><p>Registry files include dependencies, source and licence metadata. Replace YOUR-SITE with this deployment's host, or use the resource page's Copy install control. No hosted authentication is required for public source.</p><p><a href="/r/button" class="underline">Inspect Button</a> · <a href="/r/index.json" class="underline">Read the registry index</a></p></section></PublicLayout>

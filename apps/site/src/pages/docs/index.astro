@@ -1,0 +1,5 @@
+---
+import PublicLayout from '../../layouts/PublicLayout.astro';
+import {documentation} from '../../lib/documentation';
+---
+<PublicLayout title="Documentation" description="The current product contracts, architecture and operating guides, rendered from repository documentation."><nav aria-label="Documentation"><ul class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">{documentation.map(document=><li class="border border-[var(--tess-hairline)] p-5"><a class="underline font-mono" href={`/docs/${document.slug}/`}>{document.title}</a></li>)}<li class="border border-[var(--tess-hairline)] p-5"><a class="underline" href="/docs/registry">Registry installation guide</a></li></ul></nav></PublicLayout>

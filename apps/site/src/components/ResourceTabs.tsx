@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import type { ResourceManifest } from '@tessellate/schemas';
 import {
   Code,
@@ -15,6 +15,7 @@ import {
 
 export interface ResourceTabsProps {
   manifest: ResourceManifest;
+  sourceCode: string;
 }
 
 export type TabId =
@@ -27,7 +28,12 @@ export type TabId =
   | 'dependencies'
   | 'versions';
 
-export function ResourceTabs({ manifest }: ResourceTabsProps) {
+export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
+  const [origin,setOrigin]=useState('');
+  const [copyStatus,setCopyStatus]=useState('');
+  useEffect(()=>setOrigin(window.location.origin),[]);
+  const install=`npx shadcn@latest add ${origin}/r/${manifest.slug}.json`;
+  const copy=()=>{void navigator.clipboard.writeText(install).then(()=>setCopyStatus('Install command copied.')).catch(cause=>setCopyStatus(`Copy failed: ${String(cause)}`));};
   const [activeTab, setActiveTab] = useState<TabId>('intent');
 
   const tabs: Array<{ id: TabId; label: string; icon: React.ReactNode }> = [
@@ -88,13 +94,13 @@ export function ResourceTabs({ manifest }: ResourceTabsProps) {
               {/* Ideal For */}
               <div className="rounded-xl border border-emerald-200 bg-emerald-50/50 p-4 space-y-2">
                 <div className="flex items-center gap-2 text-emerald-800 font-semibold text-xs uppercase tracking-wider">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-700" />
                   <span>When It Works (Ideal For)</span>
                 </div>
                 <ul className="space-y-1 text-xs text-emerald-950">
                   {manifest.intent.idealFor.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-1.5">
-                      <span className="font-bold text-emerald-600">•</span>
+                      <span className="font-bold text-emerald-700">•</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -177,38 +183,31 @@ export function ResourceTabs({ manifest }: ResourceTabsProps) {
               </span>
               <button
                 type="button"
-                onClick={() => navigator.clipboard.writeText(`npx shadcn add @tessellate/${manifest.slug}`)}
+                onClick={copy}
                 className="px-2 py-1 rounded bg-[var(--tess-canvas,#F4F2ED)] border border-[var(--tess-hairline,#D9D6CF)] text-[11px] hover:bg-white"
               >
                 Copy
               </button>
             </div>
             <pre className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
-              <code>{`npx shadcn add @tessellate/${manifest.slug}`}</code>
+              <code>{install}</code>
             </pre>
 
             <span className="text-[var(--tess-ink-secondary,#62666F)] block pt-2">
-              Usage Example (React + Tailwind):
+              Actual published source (React + Tailwind):
             </span>
             <pre className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
-              <code>{`import { ${manifest.name} } from "@/components/ui/${manifest.slug}";
-
-export default function Example() {
-  return (
-    <${manifest.name} variant="expressive" intent="primary" size="md">
-      Confirm Action
-    </${manifest.name}>
-  );
-}`}</code>
+              <code>{sourceCode}</code>
             </pre>
           </div>
         )}
 
+        <p role="status">{copyStatus}</p>
         {/* VARIANTS TAB */}
         {activeTab === 'variants' && (
           <div className="space-y-4">
             <p className="text-xs text-[var(--tess-ink-secondary,#62666F)]">
-              Every canonical Tessellate resource receives three curated configurations designed to suit different software archetypes.
+              The configurations declared by this resource are listed below. Inspect them in the live preview.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {manifest.variants.map((v) => (
@@ -290,7 +289,7 @@ export default function Example() {
                 >
                   <span>{item.label}</span>
                   {item.verified ? (
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
                   ) : (
                     <XCircle className="w-4 h-4 text-rose-500 shrink-0" />
                   )}

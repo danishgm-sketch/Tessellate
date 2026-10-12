@@ -44,7 +44,7 @@ export function AgentsSection() {
 
         {/* Right Column Code / Terminal Mock */}
         <div className="lg:col-span-6 rounded-2xl border border-[#D9D6CF] bg-[#111217] p-6 text-white font-mono text-xs shadow-xl space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[#8B8F97]">
+          <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[var(--text-muted)]">
             <div className="flex items-center gap-2">
               <Terminal className="h-4 w-4 text-[#C9FF57]" />
               <span>AGENT_HANDOFF.json</span>
@@ -74,7 +74,7 @@ export function AgentsSection() {
 }`}
           </pre>
 
-          <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-[#8B8F97]">
+          <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-[var(--text-muted)]">
             <span>Deterministic Mutation Planner Ready</span>
             <span className="text-white">v0.1.0</span>
           </div>

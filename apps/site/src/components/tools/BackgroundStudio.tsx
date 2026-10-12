@@ -277,7 +277,7 @@ export function BackgroundStudio() {
             onClick={() => copyToClipboard(generatedCss, 'css')}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#D9D6CF] bg-white text-xs font-semibold text-[#111217] hover:border-[#111217] transition-all"
           >
-            {copiedFormat === 'css' ? <Check className="h-3.5 w-3.5 text-[#177B55]" /> : <Copy className="h-3.5 w-3.5" />}
+            {copiedFormat === 'css' ? <Check className="h-3.5 w-3.5 text-[#12603F]" /> : <Copy className="h-3.5 w-3.5" />}
             <span>Copy CSS</span>
           </button>
           <button
@@ -293,7 +293,7 @@ export function BackgroundStudio() {
 
       {/* Preset Pills */}
       <div className="space-y-2">
-        <span className="block font-mono text-xs font-semibold uppercase text-[#8B8F97]">
+        <span className="block font-mono text-xs font-semibold uppercase text-[var(--text-muted)]">
           Curated Studio Presets
         </span>
         <div className="flex flex-wrap gap-2">
@@ -326,7 +326,7 @@ export function BackgroundStudio() {
             <button
               type="button"
               onClick={() => applyPreset(PRESETS[0]!)}
-              className="text-xs font-mono text-[#8B8F97] hover:text-[#111217] flex items-center gap-1"
+              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
             >
               <RotateCcw className="h-3 w-3" />
               <span>Reset</span>
@@ -363,15 +363,15 @@ export function BackgroundStudio() {
             </label>
             <div className="grid grid-cols-3 gap-3">
               <div className="space-y-1">
-                <span className="block font-mono text-[10px] text-[#8B8F97]">Primary</span>
+                <span className="block font-mono text-[10px] text-[var(--text-muted)]">Primary</span>
                 <div className="flex items-center gap-2">
-                  <input
+                  <input aria-label="Primary color"
                     type="color"
                     value={primaryColor}
                     onChange={(e) => setPrimaryColor(e.target.value)}
                     className="h-7 w-7 rounded cursor-pointer border border-[#D9D6CF]"
                   />
-                  <input
+                  <input aria-label="Primary color"
                     type="text"
                     value={primaryColor}
                     onChange={(e) => setPrimaryColor(e.target.value)}
@@ -380,15 +380,15 @@ export function BackgroundStudio() {
                 </div>
               </div>
               <div className="space-y-1">
-                <span className="block font-mono text-[10px] text-[#8B8F97]">Secondary</span>
+                <span className="block font-mono text-[10px] text-[var(--text-muted)]">Secondary</span>
                 <div className="flex items-center gap-2">
-                  <input
+                  <input aria-label="Secondary color"
                     type="color"
                     value={secondaryColor}
                     onChange={(e) => setSecondaryColor(e.target.value)}
                     className="h-7 w-7 rounded cursor-pointer border border-[#D9D6CF]"
                   />
-                  <input
+                  <input aria-label="Secondary color"
                     type="text"
                     value={secondaryColor}
                     onChange={(e) => setSecondaryColor(e.target.value)}
@@ -397,15 +397,15 @@ export function BackgroundStudio() {
                 </div>
               </div>
               <div className="space-y-1">
-                <span className="block font-mono text-[10px] text-[#8B8F97]">Base Canvas</span>
+                <span className="block font-mono text-[10px] text-[var(--text-muted)]">Base Canvas</span>
                 <div className="flex items-center gap-2">
-                  <input
+                  <input aria-label="Accent color"
                     type="color"
                     value={accentColor}
                     onChange={(e) => setAccentColor(e.target.value)}
                     className="h-7 w-7 rounded cursor-pointer border border-[#D9D6CF]"
                   />
-                  <input
+                  <input aria-label="Accent color"
                     type="text"
                     value={accentColor}
                     onChange={(e) => setAccentColor(e.target.value)}
@@ -423,7 +423,7 @@ export function BackgroundStudio() {
                 <span className="text-[#111217]">Grid / Cell Pitch</span>
                 <span className="font-mono text-[#62666F]">{size}px</span>
               </div>
-              <input
+              <input aria-label="Icon size"
                 type="range"
                 min="4"
                 max="100"
@@ -438,7 +438,7 @@ export function BackgroundStudio() {
                 <span className="text-[#111217]">Field Opacity</span>
                 <span className="font-mono text-[#62666F]">{opacity}%</span>
               </div>
-              <input
+              <input aria-label="Opacity"
                 type="range"
                 min="5"
                 max="100"
@@ -453,7 +453,7 @@ export function BackgroundStudio() {
                 <span className="text-[#111217]">Diffusion Blur</span>
                 <span className="font-mono text-[#62666F]">{blur}px</span>
               </div>
-              <input
+              <input aria-label="Background blur"
                 type="range"
                 min="0"
                 max="80"
@@ -469,7 +469,7 @@ export function BackgroundStudio() {
         <div className="lg:col-span-7 space-y-6">
           {/* Visual Stage Container */}
           <div className="rounded-2xl border border-[#D9D6CF] bg-[#FAF9F6] p-4 shadow-sm">
-            <div className="flex items-center justify-between pb-3 text-xs font-mono text-[#8B8F97] border-b border-[#D9D6CF] mb-4">
+            <div className="flex items-center justify-between pb-3 text-xs font-mono text-[var(--text-muted)] border-b border-[#D9D6CF] mb-4">
               <span>LIVE COMPOSITION STAGE</span>
               <span className="text-[#111217] font-semibold">{patternType.toUpperCase()} FIELD</span>
             </div>
@@ -491,7 +491,7 @@ export function BackgroundStudio() {
                       Telemetry Node
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FAF9F6] border border-[#D9D6CF] text-[#177B55] font-semibold">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FAF9F6] border border-[#D9D6CF] text-[#12603F] font-semibold">
                     HEALTH 99.8%
                   </span>
                 </div>
@@ -518,18 +518,18 @@ export function BackgroundStudio() {
 
           {/* Code Inspection Block */}
           <div className="rounded-2xl border border-[#D9D6CF] bg-[#0B0D10] text-[#F5F7FA] p-5 space-y-3 font-mono text-xs">
-            <div className="flex items-center justify-between border-b border-[#272B33] pb-2 text-[#8B8F97]">
+            <div className="flex items-center justify-between border-b border-[#272B33] pb-2 text-[#A8AFBA]">
               <span>GENERATED STYLESHEET</span>
               <button
                 type="button"
                 onClick={() => copyToClipboard(generatedCss, 'css')}
                 className="text-[#6782FF] hover:text-white flex items-center gap-1"
               >
-                {copiedFormat === 'css' ? <Check className="h-3 w-3 text-[#177B55]" /> : <Copy className="h-3 w-3" />}
+                {copiedFormat === 'css' ? <Check className="h-3 w-3 text-[#12603F]" /> : <Copy className="h-3 w-3" />}
                 <span>{copiedFormat === 'css' ? 'Copied!' : 'Copy'}</span>
               </button>
             </div>
-            <pre className="overflow-x-auto text-[11px] leading-relaxed text-[#D9D6CF]">
+            <pre tabIndex={0} className="overflow-x-auto text-[11px] leading-relaxed text-[#D9D6CF]">
               {generatedCss}
             </pre>
           </div>

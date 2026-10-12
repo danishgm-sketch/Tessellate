@@ -47,7 +47,7 @@ const DEFAULT_ITEMS: PaletteItem[] = [
     subtitle: 'Tactile, accessible multi-intent button primitive',
     category: 'Resources',
     url: '/r/button',
-    icon: <Code2 className="w-4 h-4 text-emerald-600" />,
+    icon: <Code2 className="w-4 h-4 text-emerald-700" />,
   },
   {
     id: 'dev-ui',
@@ -98,6 +98,7 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
       inputRef.current?.focus();
       return () => previous?.focus();
     }
+    return undefined;
   }, [isModalOpen]);
 
   const handleClose = () => {

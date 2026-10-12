@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import type { ResourceManifest } from '@tessellate/schemas';
+import { isPreviewToParentMessage } from '@tessellate/catalog/protocol';
 import type { PreviewDevice, PreviewTheme, PreviewUpdateMessage } from '@tessellate/catalog/protocol';
 import { Monitor, Tablet, Smartphone, Sun, Moon, RotateCcw, Activity } from 'lucide-react';
 
@@ -26,12 +27,22 @@ export function ResourcePreviewFrame({
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
+  useEffect(()=>{
+    const receive=(event:MessageEvent)=>{
+      if(event.source!==iframeRef.current?.contentWindow || !isPreviewToParentMessage(event.data) || event.data.type!=='TESSELLATE_PREVIEW_READY') return;
+      iframeRef.current?.contentWindow?.postMessage({type:'TESSELLATE_PREVIEW_INIT',resourceId:manifest.slug,props:manifest.preview.defaultProps,variant,theme,device,reducedMotion},'*');
+    };
+    window.addEventListener('message',receive);
+    return ()=>window.removeEventListener('message',receive);
+  },[manifest,variant,theme,device,reducedMotion]);
+
   // Send updates to iframe whenever controls change
   useEffect(() => {
     if (!iframeRef.current?.contentWindow) return;
 
     const updateMsg: PreviewUpdateMessage = {
       type: 'TESSELLATE_PREVIEW_UPDATE',
+      props: manifest.preview.defaultProps,
       variant,
       theme,
       device,
@@ -66,7 +77,7 @@ export function ResourcePreviewFrame({
   return (
     <div className="flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] overflow-hidden shadow-xs">
       {/* Top Toolbar */}
-      <div className="h-12 px-4 border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] flex items-center justify-between gap-4">
+      <div className="min-h-12 py-2 flex-wrap px-3 border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] flex items-center justify-between gap-4">
         {/* Variant selector */}
         <div className="flex items-center gap-1.5 overflow-x-auto">
           <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)] mr-1">
@@ -176,7 +187,7 @@ export function ResourcePreviewFrame({
             ref={iframeRef}
             src={constructedSrc}
             title={`${manifest.name} live preview`}
-            sandbox="allow-scripts allow-same-origin"
+            sandbox="allow-scripts"
             onLoad={() => setIframeLoaded(true)}
             className="w-full min-h-[500px] border-0 bg-transparent block"
           />

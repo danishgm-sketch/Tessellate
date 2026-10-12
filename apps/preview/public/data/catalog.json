@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-10-11T16:49:57.753Z",
+  "generatedAt": "2026-10-12T20:03:44.713Z",
   "count": 324,
   "resources": [
     {
@@ -332,7 +332,20 @@
       },
       "preview": {
         "component": "AccordionPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "items": [
+            {
+              "id": "first",
+              "title": "What is this example?",
+              "content": "A real interactive accordion. Open and close each item."
+            },
+            {
+              "id": "second",
+              "title": "Portable source",
+              "content": "Install the published source in your own application."
+            }
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -6282,7 +6295,11 @@
       },
       "preview": {
         "component": "AlertDialogPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "open": true,
+          "title": "Confirm example action",
+          "description": "This demonstration changes local preview state only."
+        },
         "viewport": 1440
       },
       "slots": [
@@ -9706,7 +9723,15 @@
       },
       "preview": {
         "component": "AutocompletePreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Find a team",
+          "suggestions": [
+            "Engineering",
+            "People",
+            "Product"
+          ],
+          "value": ""
+        },
         "viewport": 1440
       },
       "slots": [
@@ -10187,7 +10212,19 @@
       },
       "preview": {
         "component": "AvatarGroupPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "items": [
+            {
+              "initials": "AB"
+            },
+            {
+              "initials": "CD"
+            },
+            {
+              "initials": "EF"
+            }
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -10427,7 +10464,9 @@
       },
       "preview": {
         "component": "BadgePreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "children": "Example status"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -11660,7 +11699,10 @@
       },
       "preview": {
         "component": "BottomSheetPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "open": true,
+          "children": "An example sheet with local controls."
+        },
         "viewport": 1440
       },
       "slots": [
@@ -11900,7 +11942,18 @@
       },
       "preview": {
         "component": "BreadcrumbPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "items": [
+            {
+              "label": "Library",
+              "href": "/explore"
+            },
+            {
+              "label": "Example",
+              "current": true
+            }
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -12891,7 +12944,9 @@
       },
       "preview": {
         "component": "ButtonGroupPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "children": "Example grouped content"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -15340,7 +15395,10 @@
       },
       "preview": {
         "component": "CheckboxPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Receive updates",
+          "checked": false
+        },
         "viewport": 1440
       },
       "slots": [
@@ -16561,7 +16619,20 @@
       },
       "preview": {
         "component": "ComboboxPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Select a team",
+          "options": [
+            {
+              "value": "first",
+              "label": "First option"
+            },
+            {
+              "value": "second",
+              "label": "Second option"
+            }
+          ],
+          "value": "first"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -17284,7 +17355,21 @@
       },
       "preview": {
         "component": "CommandMenuPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "open": true,
+          "items": [
+            {
+              "id": "first",
+              "category": "Example commands",
+              "label": "Open example"
+            },
+            {
+              "id": "second",
+              "category": "Example commands",
+              "label": "Inspect selection"
+            }
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -19237,7 +19322,9 @@
       },
       "preview": {
         "component": "ContextMenuPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "children": "Right-click this example surface"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -24134,7 +24221,11 @@
       },
       "preview": {
         "component": "DialogPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "open": true,
+          "title": "Example dialog",
+          "children": "Inspect and close this actual dialog."
+        },
         "viewport": 1440
       },
       "slots": [
@@ -24375,7 +24466,10 @@
       },
       "preview": {
         "component": "DisclosurePreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "title": "Details",
+          "children": "This content is revealed by the disclosure."
+        },
         "viewport": 1440
       },
       "slots": [
@@ -25598,7 +25692,11 @@
       },
       "preview": {
         "component": "DrawerPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "open": true,
+          "title": "Example drawer",
+          "children": "Example details and controls."
+        },
         "viewport": 1440
       },
       "slots": [
@@ -26088,7 +26186,19 @@
       },
       "preview": {
         "component": "DropdownMenuPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "trigger": "Example actions",
+          "items": [
+            {
+              "id": "first",
+              "label": "First action"
+            },
+            {
+              "id": "second",
+              "label": "Second action"
+            }
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -40813,7 +40923,9 @@
       },
       "preview": {
         "component": "IconButtonPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "aria-label": "Example icon action"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -42031,7 +42143,9 @@
       },
       "preview": {
         "component": "InlineAlertPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "title": "Example notice"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -50118,7 +50232,17 @@
       },
       "preview": {
         "component": "MultiSelectPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Choose teams",
+          "options": [
+            "Engineering",
+            "People",
+            "Product"
+          ],
+          "selected": [
+            "People"
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -51599,7 +51723,10 @@
       },
       "preview": {
         "component": "NumberInputPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Example quantity",
+          "value": 3
+        },
         "viewport": 1440
       },
       "slots": [
@@ -53812,7 +53939,10 @@
       },
       "preview": {
         "component": "PaginationPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "currentPage": 1,
+          "totalPages": 5
+        },
         "viewport": 1440
       },
       "slots": [
@@ -56021,7 +56151,10 @@
       },
       "preview": {
         "component": "PopoverPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "trigger": "Open example popover",
+          "children": "An actual interactive popover."
+        },
         "viewport": 1440
       },
       "slots": [
@@ -59196,7 +59329,10 @@
       },
       "preview": {
         "component": "ProgressBarPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Example progress",
+          "value": 65
+        },
         "viewport": 1440
       },
       "slots": [
@@ -59437,7 +59573,9 @@
       },
       "preview": {
         "component": "ProgressRingPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "value": 65
+        },
         "viewport": 1440
       },
       "slots": [
@@ -61150,7 +61288,20 @@
       },
       "preview": {
         "component": "RadioGroupPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "name": "Example choice",
+          "options": [
+            {
+              "value": "first",
+              "label": "First option"
+            },
+            {
+              "value": "second",
+              "label": "Second option"
+            }
+          ],
+          "value": "first"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -61391,7 +61542,13 @@
       },
       "preview": {
         "component": "RangeSliderPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Example range",
+          "value": [
+            25,
+            75
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -65299,7 +65456,19 @@
       },
       "preview": {
         "component": "SegmentedControlPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "options": [
+            {
+              "value": "first",
+              "label": "First option"
+            },
+            {
+              "value": "second",
+              "label": "Second option"
+            }
+          ],
+          "value": "first"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -65539,7 +65708,19 @@
       },
       "preview": {
         "component": "SelectPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Select an option",
+          "options": [
+            {
+              "value": "first",
+              "label": "First option"
+            },
+            {
+              "value": "second",
+              "label": "Second option"
+            }
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -67739,7 +67920,10 @@
       },
       "preview": {
         "component": "SliderPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Example intensity",
+          "value": 40
+        },
         "viewport": 1440
       },
       "slots": [
@@ -68474,7 +68658,9 @@
       },
       "preview": {
         "component": "SplitButtonPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Example action"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -70947,7 +71133,10 @@
       },
       "preview": {
         "component": "SwitchPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Enable example setting",
+          "checked": false
+        },
         "viewport": 1440
       },
       "slots": [
@@ -71676,7 +71865,21 @@
       },
       "preview": {
         "component": "TabsPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "tabs": [
+            {
+              "id": "first",
+              "label": "Overview",
+              "content": "Example overview content."
+            },
+            {
+              "id": "second",
+              "label": "Details",
+              "content": "Example detail content."
+            }
+          ],
+          "activeId": "first"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -71917,7 +72120,9 @@
       },
       "preview": {
         "component": "TagChipPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Example tag"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -74854,7 +75059,9 @@
       },
       "preview": {
         "component": "ToastPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "title": "Example notification"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -75094,7 +75301,10 @@
       },
       "preview": {
         "component": "TooltipPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "content": "Actual tooltip content",
+          "children": "Hover or focus this example"
+        },
         "viewport": 1440
       },
       "slots": [

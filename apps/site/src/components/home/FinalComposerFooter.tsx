@@ -6,8 +6,8 @@ export function FinalComposerFooter() {
 
   const handleLaunch = (e: React.FormEvent) => {
     e.preventDefault();
-    const query = encodeURIComponent(quickPrompt.trim() || 'AI market intelligence platform');
-    window.location.href = `/workbench?brief=${query}`;
+    const query = encodeURIComponent(quickPrompt.trim() || 'Employee experience platform');
+    window.location.href = `/compose?brief=${query}`;
   };
 
   return (
@@ -25,11 +25,11 @@ export function FinalComposerFooter() {
 
         <form onSubmit={handleLaunch} className="max-w-2xl mx-auto flex items-center gap-2 bg-white border border-[#D9D6CF] rounded-2xl p-2 shadow-sm focus-within:border-[#111217] transition-all">
           <input
-            type="text"
+            type="text" aria-label="Product brief"
             value={quickPrompt}
             onChange={(e) => setQuickPrompt(e.target.value)}
             placeholder="Type your product concept (e.g. Developer security terminal)…"
-            className="flex-1 px-4 py-2 text-sm text-[#111217] placeholder-[#8B8F97] bg-transparent border-none focus:outline-none"
+            className="min-w-0 flex-1 px-4 py-2 text-sm text-[#111217] placeholder-[#8B8F97] bg-transparent border-none focus:outline-none"
           />
           <button
             type="submit"
@@ -58,7 +58,7 @@ export function FinalComposerFooter() {
             <p className="text-xs text-[#62666F] max-w-sm leading-relaxed">
               Open interface intelligence and deterministic UI composition platform for humans and autonomous coding agents.
             </p>
-            <div className="pt-2 text-[11px] font-mono text-[#8B8F97]">
+            <div className="pt-2 text-[11px] font-mono text-[var(--text-muted)]">
               <span>MIT / Apache 2.0 Open Source</span>
             </div>
           </div>
@@ -104,7 +104,7 @@ export function FinalComposerFooter() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-[#D9D6CF] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[#8B8F97] font-mono">
+        <div className="mt-12 pt-6 border-t border-[#D9D6CF] flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-[var(--text-muted)] font-mono">
           <div>
             © 2026 Tessellate. Free open interface commons.
           </div>

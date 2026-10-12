@@ -46,7 +46,7 @@ const THEME_PRESETS: PaletteThemePreset[] = [
       hairlineStrong: '#C7C3BA',
       ink: '#111217',
       inkSecondary: '#62666F',
-      inkMuted: '#8B8F97',
+      inkMuted: '#62666F',
       accent: '#2547E8',
       accentHover: '#1E3CCD',
       accentSoft: '#E7EBFF',
@@ -233,7 +233,7 @@ export function PaletteStudio() {
             onClick={() => copyToClipboard(generatedCss, 'css')}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#D9D6CF] bg-white text-xs font-semibold text-[#111217] hover:border-[#111217] transition-all"
           >
-            {copiedFormat === 'css' ? <Check className="h-3.5 w-3.5 text-[#177B55]" /> : <Copy className="h-3.5 w-3.5" />}
+            {copiedFormat === 'css' ? <Check className="h-3.5 w-3.5 text-[#12603F]" /> : <Copy className="h-3.5 w-3.5" />}
             <span>Copy CSS Variables</span>
           </button>
           <button
@@ -249,7 +249,7 @@ export function PaletteStudio() {
 
       {/* Theme Presets */}
       <div className="space-y-2">
-        <span className="block font-mono text-xs font-semibold uppercase text-[#8B8F97]">
+        <span className="block font-mono text-xs font-semibold uppercase text-[var(--text-muted)]">
           Calibrated Theme Archetypes
         </span>
         <div className="flex flex-wrap gap-2">
@@ -282,7 +282,7 @@ export function PaletteStudio() {
             <button
               type="button"
               onClick={() => applyPreset(THEME_PRESETS[0]!)}
-              className="text-xs font-mono text-[#8B8F97] hover:text-[#111217] flex items-center gap-1"
+              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
             >
               <RotateCcw className="h-3 w-3" />
               <span>Reset</span>
@@ -291,7 +291,7 @@ export function PaletteStudio() {
 
           {/* Group 1: Surfaces & Canvases */}
           <div className="space-y-2">
-            <span className="block font-mono text-[11px] font-semibold uppercase text-[#8B8F97]">
+            <span className="block font-mono text-[11px] font-semibold uppercase text-[var(--text-muted)]">
               Surfaces & Canvases
             </span>
             <div className="space-y-2">
@@ -301,13 +301,13 @@ export function PaletteStudio() {
                     {key.replace(/([A-Z])/g, ' $1')}
                   </span>
                   <div className="flex items-center gap-2">
-                    <input
+                    <input aria-label={`${key} colour picker`}
                       type="color"
                       value={tokens[key]}
                       onChange={(e) => updateToken(key, e.target.value)}
                       className="h-6 w-6 rounded cursor-pointer border border-[#D9D6CF]"
                     />
-                    <input
+                    <input aria-label={`${key} hex value`}
                       type="text"
                       value={tokens[key]}
                       onChange={(e) => updateToken(key, e.target.value)}
@@ -321,7 +321,7 @@ export function PaletteStudio() {
 
           {/* Group 2: Typography & Inks */}
           <div className="space-y-2 pt-2 border-t border-[#D9D6CF]">
-            <span className="block font-mono text-[11px] font-semibold uppercase text-[#8B8F97]">
+            <span className="block font-mono text-[11px] font-semibold uppercase text-[var(--text-muted)]">
               Typography & Inks
             </span>
             <div className="space-y-2">
@@ -331,13 +331,13 @@ export function PaletteStudio() {
                     {key.replace(/([A-Z])/g, ' $1')}
                   </span>
                   <div className="flex items-center gap-2">
-                    <input
+                    <input aria-label={`${key} colour picker`}
                       type="color"
                       value={tokens[key]}
                       onChange={(e) => updateToken(key, e.target.value)}
                       className="h-6 w-6 rounded cursor-pointer border border-[#D9D6CF]"
                     />
-                    <input
+                    <input aria-label={`${key} hex value`}
                       type="text"
                       value={tokens[key]}
                       onChange={(e) => updateToken(key, e.target.value)}
@@ -351,7 +351,7 @@ export function PaletteStudio() {
 
           {/* Group 3: Accents & Borders */}
           <div className="space-y-2 pt-2 border-t border-[#D9D6CF]">
-            <span className="block font-mono text-[11px] font-semibold uppercase text-[#8B8F97]">
+            <span className="block font-mono text-[11px] font-semibold uppercase text-[var(--text-muted)]">
               Accents & Structural Borders
             </span>
             <div className="space-y-2">
@@ -361,13 +361,13 @@ export function PaletteStudio() {
                     {key.replace(/([A-Z])/g, ' $1')}
                   </span>
                   <div className="flex items-center gap-2">
-                    <input
+                    <input aria-label={`${key} colour picker`}
                       type="color"
                       value={tokens[key]}
                       onChange={(e) => updateToken(key, e.target.value)}
                       className="h-6 w-6 rounded cursor-pointer border border-[#D9D6CF]"
                     />
-                    <input
+                    <input aria-label={`${key} hex value`}
                       type="text"
                       value={tokens[key]}
                       onChange={(e) => updateToken(key, e.target.value)}
@@ -386,7 +386,7 @@ export function PaletteStudio() {
           <div className="rounded-2xl border border-[#D9D6CF] bg-white p-5 shadow-sm space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF]">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-[#177B55]" />
+                <ShieldCheck className="h-4 w-4 text-[#12603F]" />
                 <h3 className="text-sm font-semibold text-[#111217]">
                   WCAG 2.2 Contrast Floor Audit
                 </h3>
@@ -398,41 +398,41 @@ export function PaletteStudio() {
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               <div className="p-3 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] space-y-1">
-                <span className="block text-[10px] font-mono text-[#8B8F97]">Ink / Canvas</span>
+                <span className="block text-[10px] font-mono text-[var(--text-muted)]">Ink / Canvas</span>
                 <span className="text-base font-bold text-[#111217]">
                   {contrastInkOnCanvas.toFixed(1)}:1
                 </span>
-                <span className={`block text-[10px] font-mono font-semibold ${contrastInkOnCanvas >= 4.5 ? 'text-[#177B55]' : 'text-[#C83D48]'}`}>
+                <span className={`block text-[10px] font-mono font-semibold ${contrastInkOnCanvas >= 4.5 ? 'text-[#12603F]' : 'text-[#C83D48]'}`}>
                   {contrastInkOnCanvas >= 7 ? 'AAA PASS' : contrastInkOnCanvas >= 4.5 ? 'AA PASS' : 'FAIL'}
                 </span>
               </div>
 
               <div className="p-3 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] space-y-1">
-                <span className="block text-[10px] font-mono text-[#8B8F97]">Ink-Sec / Surface</span>
+                <span className="block text-[10px] font-mono text-[var(--text-muted)]">Ink-Sec / Surface</span>
                 <span className="text-base font-bold text-[#111217]">
                   {contrastSecondaryOnSurface.toFixed(1)}:1
                 </span>
-                <span className={`block text-[10px] font-mono font-semibold ${contrastSecondaryOnSurface >= 4.5 ? 'text-[#177B55]' : 'text-[#C83D48]'}`}>
+                <span className={`block text-[10px] font-mono font-semibold ${contrastSecondaryOnSurface >= 4.5 ? 'text-[#12603F]' : 'text-[#C83D48]'}`}>
                   {contrastSecondaryOnSurface >= 7 ? 'AAA PASS' : contrastSecondaryOnSurface >= 4.5 ? 'AA PASS' : 'FAIL'}
                 </span>
               </div>
 
               <div className="p-3 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] space-y-1">
-                <span className="block text-[10px] font-mono text-[#8B8F97]">Accent / Canvas</span>
+                <span className="block text-[10px] font-mono text-[var(--text-muted)]">Accent / Canvas</span>
                 <span className="text-base font-bold text-[#111217]">
                   {contrastAccentOnCanvas.toFixed(1)}:1
                 </span>
-                <span className={`block text-[10px] font-mono font-semibold ${contrastAccentOnCanvas >= 3.0 ? 'text-[#177B55]' : 'text-[#C83D48]'}`}>
+                <span className={`block text-[10px] font-mono font-semibold ${contrastAccentOnCanvas >= 3.0 ? 'text-[#12603F]' : 'text-[#C83D48]'}`}>
                   {contrastAccentOnCanvas >= 3.0 ? 'AA (UI) PASS' : 'LOW CONTRAST'}
                 </span>
               </div>
 
               <div className="p-3 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] space-y-1">
-                <span className="block text-[10px] font-mono text-[#8B8F97]">White on Accent</span>
+                <span className="block text-[10px] font-mono text-[var(--text-muted)]">White on Accent</span>
                 <span className="text-base font-bold text-[#111217]">
                   {contrastWhiteOnAccent.toFixed(1)}:1
                 </span>
-                <span className={`block text-[10px] font-mono font-semibold ${contrastWhiteOnAccent >= 4.5 ? 'text-[#177B55]' : 'text-[#A66A15]'}`}>
+                <span className={`block text-[10px] font-mono font-semibold ${contrastWhiteOnAccent >= 4.5 ? 'text-[#12603F]' : 'text-[#A66A15]'}`}>
                   {contrastWhiteOnAccent >= 4.5 ? 'AA PASS' : 'USE DARK INK'}
                 </span>
               </div>

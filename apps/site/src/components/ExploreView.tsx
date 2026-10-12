@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import type { ResourceManifest } from '@tessellate/schemas';
+import {ResourceManifestSchema, type ResourceManifest } from '@tessellate/schemas';
 import {
   createResourceSearchDb,
   indexResources,
@@ -24,7 +24,10 @@ const SUGGESTED_QUERIES = [
 
 const LOCAL_STORAGE_RECENT_KEY = 'tessellate_recent_searches_v1';
 
-export function ExploreView() {
+export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
+  const [loadAttempt,setLoadAttempt]=useState(0);
+  const [catalogError,setCatalogError]=useState('');
+  const queryRef=useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState('');
   const [filters, setFilters] = useState<SearchFilters>({});
   const [manifests, setManifests] = useState<ResourceManifest[]>([]);
@@ -40,11 +43,13 @@ export function ExploreView() {
   // 1. Load catalog & initialize Orama search DB
   useEffect(() => {
     async function initCatalog() {
+      setIsLoading(true);setCatalogError('');
       try {
         const res = await fetch('/data/catalog.json');
+        if (!res.ok) throw new Error(`Catalogue HTTP ${res.status}`);
         if (res.ok) {
           const data = await res.json();
-          const items: ResourceManifest[] = data.resources ?? [];
+          const items=ResourceManifestSchema.array().parse(data.resources).filter(resource=>!catalogCategory || (catalogCategory==='effects' ? resource.categories.some(category=>['backgrounds','motion','typography'].includes(category)) : resource.categories.includes(catalogCategory)));
           setManifests(items);
 
           // Initialize client-side Orama index
@@ -55,16 +60,22 @@ export function ExploreView() {
           // Check initial URL parameters
           const params = new URLSearchParams(window.location.search);
           const q = params.get('q') ?? '';
-          if (q) setQuery(q);
+          setQuery(q);
+          const urlFilters:SearchFilters={};
+          if(params.get('type'))urlFilters.resourceTypes=params.get('type')!.split(',');
+          if(params.get('purpose'))urlFilters.purposes=params.get('purpose')!.split(',');
+          if(params.get('feel'))urlFilters.feel=params.get('feel')!.split(',');
+          setFilters(urlFilters);
+          if(params.get('focus')==='search')queryRef.current?.focus();
 
           // Initial search execution
-          const searchRes = await executeSearch(db, q, filters);
+          const searchRes = await executeSearch(db, q, urlFilters);
           const matchedIds = new Set(searchRes.items.map((i) => i.id));
           const matched = items.filter((m) => matchedIds.has(m.id));
-          setSearchResults(matched.length > 0 ? matched : items);
+          setSearchResults(matched);
         }
       } catch (err) {
-        console.error('Failed to load catalogue JSON:', err);
+        setCatalogError(`Could not load the catalogue: ${String(err)}`);
       } finally {
         setIsLoading(false);
       }
@@ -81,7 +92,7 @@ export function ExploreView() {
     }
 
     initCatalog();
-  }, []);
+  }, [catalogCategory,loadAttempt]);
 
   // 2. Perform search whenever query or filters change
   useEffect(() => {
@@ -138,12 +149,13 @@ export function ExploreView() {
 
   return (
     <div className="w-full flex flex-col gap-6">
+      {catalogError && <div role="alert" className="border border-[#C83D48] p-4"><p>{catalogError}</p><button className="underline p-2" onClick={()=>setLoadAttempt(attempt=>attempt+1)}>Retry catalogue</button></div>}
       {/* 56px Top Search & Filter Bar */}
       <div className="relative z-20 flex items-center gap-3 h-14 px-4 rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] shadow-xs">
         <Search className="w-4 h-4 text-[var(--tess-ink-muted,#8B8F97)] shrink-0" />
 
         <input
-          type="text"
+          ref={queryRef} aria-label="Search catalogue" type="text"
           value={query}
           onFocus={() => setIsInputFocused(true)}
           onBlur={() => setTimeout(() => setIsInputFocused(false), 200)}
@@ -154,13 +166,13 @@ export function ExploreView() {
             }
           }}
           placeholder="Search by component, outcome, style or vibe…"
-          className="flex-1 bg-transparent text-sm text-[var(--tess-ink,#111217)] placeholder-[var(--tess-ink-muted,#8B8F97)] focus:outline-none"
+          className="flex-1 min-w-0 bg-transparent text-sm text-[var(--tess-ink,#111217)] placeholder-[var(--tess-ink-muted,#8B8F97)] focus:outline-none"
         />
 
         {query && (
           <button
             type="button"
-            onClick={handleClearQuery}
+            aria-label="Clear search" onClick={handleClearQuery}
             className="p-1 rounded text-[var(--tess-ink-muted,#8B8F97)] hover:text-[var(--tess-ink,#111217)]"
           >
             <X className="w-3.5 h-3.5" />
@@ -308,7 +320,7 @@ export function ExploreView() {
               <span className="font-semibold text-sm">Filters</span>
               <button
                 type="button"
-                onClick={() => setMobileRailOpen(false)}
+                aria-label="Close filters" onClick={() => setMobileRailOpen(false)}
                 className="p-1 rounded text-[var(--tess-ink-muted,#8B8F97)]"
               >
                 <X className="w-5 h-5" />

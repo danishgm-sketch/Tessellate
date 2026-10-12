@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   integrations: [react()],
   vite: {
+    build: {cssCodeSplit:false},
     plugins: [tailwindcss()],
   },
 });
