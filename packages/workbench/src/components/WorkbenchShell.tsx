@@ -84,7 +84,16 @@ export function WorkbenchShell() {
       // Never overwrite corrupt records with a sample. Recovery remains read-only.
       if (loaded.damagedRecords.length === 0) {
         unsubscribe = useWorkbenchStore.subscribe((state, previous) => {
-          if (state.manifest !== previous.manifest) void saver(state.manifest);
+          if (state.manifest !== previous.manifest) {
+            void saver(state.manifest);
+            if(state.manifest.id!==previous.manifest.id){
+              const url=new URL(window.location.href);url.search='';url.searchParams.set('project',state.manifest.id);window.history.replaceState(null,'',url);
+              try {
+                const raw=localStorage.getItem(`tessellate_directions_${previous.manifest.id}`);
+                if(raw && !localStorage.getItem(`tessellate_directions_${state.manifest.id}`))localStorage.setItem(`tessellate_directions_${state.manifest.id}`,JSON.stringify(ProjectManifestSchema.array().parse(JSON.parse(raw))));
+              }catch(error){if(!disposed)setStorageError(`Direction metadata could not be carried forward: ${String(error)}. Your current project is preserved.`);}
+            }
+          }
           if(state.checkpoints!==previous.checkpoints)void saveCheckpointJournal(state.manifest.id,state.checkpoints).catch(error=>{if(!disposed)setStorageError(`Checkpoint save failed: ${String(error)}. Export your current project.`);});
         });
       }

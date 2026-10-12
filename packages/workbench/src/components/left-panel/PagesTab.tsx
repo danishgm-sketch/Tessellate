@@ -145,16 +145,13 @@ export function PagesTab() {
           return (
             <div
               key={screen.id}
-              role="button" tabIndex={0} aria-label={`Select screen ${screen.name}`} aria-pressed={isActive}
-              onKeyDown={event=>{if(event.target===event.currentTarget && (event.key==='Enter' || event.key===' ')){event.preventDefault();setActiveScreen(screen.id);}}}
-              onClick={() => setActiveScreen(screen.id)}
               className={`group flex items-center justify-between rounded-xl border p-2.5 cursor-pointer transition-all ${
                 isActive
                   ? 'border-[#2547E8] bg-white dark:border-[#6782FF] dark:bg-[#171B21] shadow-xs'
                   : 'border-[#D9D6CF] bg-[#FAF9F6] hover:bg-white dark:border-[#272C34] dark:bg-[#0B0D10] dark:hover:bg-[#171B21]'
               }`}
             >
-              <div className="flex items-center gap-2.5 overflow-hidden">
+              <button type="button" aria-label={`Select screen ${screen.name}`} aria-pressed={isActive} onClick={()=>setActiveScreen(screen.id)} className="min-w-0 flex-1 flex items-center gap-2.5 overflow-hidden text-left rounded focus-visible:outline-2 focus-visible:outline-[#879DFF]">
                 <FileText
                   className={`h-4 w-4 shrink-0 ${
                     isActive ? 'text-[#2547E8] dark:text-[#879DFF]' : 'text-[var(--text-muted)]'
@@ -175,7 +172,7 @@ export function PagesTab() {
                     {screen.slug}
                   </div>
                 </div>
-              </div>
+              </button>
 
               {/* Action Buttons */}
               <div className="flex items-center gap-1 opacity-100 transition-opacity">
@@ -185,7 +182,7 @@ export function PagesTab() {
                     handleDuplicate(screen);
                   }}
                   aria-label={`Duplicate ${screen.name}`} title="Duplicate screen"
-                  className="p-1 text-[var(--text-muted)] hover:text-[#111217] dark:hover:text-[#F5F7FA]"
+                  className="min-h-6 min-w-6 p-1.5 text-[var(--text-muted)] hover:text-[#111217] dark:hover:text-[#F5F7FA]"
                 >
                   <Copy className="h-3 w-3" />
                 </button>
@@ -196,7 +193,7 @@ export function PagesTab() {
                       deleteScreen(screen.id);
                     }}
                     aria-label={`Delete ${screen.name}`} title="Delete screen"
-                    className="p-1 text-[var(--text-muted)] hover:text-rose-500"
+                    className="min-h-6 min-w-6 p-1.5 text-[var(--text-muted)] hover:text-rose-500"
                   >
                     <Trash2 className="h-3 w-3" />
                   </button>
