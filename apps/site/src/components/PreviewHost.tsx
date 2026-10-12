@@ -11,7 +11,7 @@ import { NodeRenderer } from '@tessellate/renderer';
 
 const resourceManifests=import.meta.glob<{default:{preview:{defaultProps?:Record<string,unknown>}}}>('../../../../resources/**/manifest.json');
 const resourceModules=import.meta.glob<Record<string,unknown>>('../../../../resources/**/index.tsx');
-function isResourceComponent(value:unknown):value is React.ComponentType<Record<string,unknown>> {return typeof value==='function';}
+function isResourceComponent(value:unknown):value is React.ComponentType<Record<string,unknown>> {return typeof value==='function' || (typeof value==='object' && value!==null && '$$typeof' in value && (value.$$typeof===Symbol.for('react.forward_ref') || value.$$typeof===Symbol.for('react.memo')));}
 
 export default function PreviewHost() {
   const [resourceId, setResourceId] = useState<string>(()=>typeof window!=='undefined' ? new URLSearchParams(window.location.search).get('resource') ?? 'button' : 'button');
