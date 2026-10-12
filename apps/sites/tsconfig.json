@@ -1,5 +1,22 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": { "noEmit": true },
-  "include": ["*.ts"]
+  "compilerOptions": {
+    "lib": [
+      "ES2022"
+    ],
+    "types": [
+      "node",
+      "@cloudflare/workers-types"
+    ],
+    "noEmit": true
+  },
+  "include": [
+    "worker.ts",
+    "worker-env.d.ts",
+    "vite.config.ts",
+    "build/*.ts"
+  ],
+  "exclude": [
+    "*.spec.ts"
+  ]
 }

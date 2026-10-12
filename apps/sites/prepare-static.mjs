@@ -6,12 +6,12 @@ import process from 'node:process';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const source = path.join(root, 'apps/site/dist');
-const destination = path.join(root, 'dist');
+const destination = path.join(root, process.argv.includes('--worker-assets') ? 'apps/sites/.static' : 'dist');
 if (!existsSync(path.join(source, 'index.html'))) {
   throw new Error('Run pnpm build before preparing the Sites artifact.');
 }
 // The fixed output path is inside this checkout, never an externally supplied path.
-if (path.dirname(destination) !== root) throw new Error('Invalid artifact destination.');
+if (![path.join(root,'dist'),path.join(root,'apps/sites/.static')].includes(destination)) throw new Error('Invalid artifact destination.');
 rmSync(destination, { recursive: true, force: true });
 cpSync(source, destination, { recursive: true });
 
@@ -31,4 +31,4 @@ const required = ['index.html', 'explore/index.html', 'compose/index.html', 'wor
 for (const file of required) {
   if (!statSync(path.join(destination, file), { throwIfNoEntry: false })?.isFile()) throw new Error(`Missing artifact: ${file}`);
 }
-process.stdout.write('Sites artifact prepared: canonical Astro output, 324 resources, unchanged security headers.\n');
+process.stdout.write('Sites artifact prepared: canonical Astro output, 324 resources, preserved header declarations (enforcement requires the Worker adapter).\n');
