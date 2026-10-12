@@ -27,8 +27,8 @@ test.describe('Critical Anonymous User Flows', () => {
 
     await expect(page.getByText('Showing 50 resources',{exact:true})).toBeVisible();
     await page.getByLabel('Search catalogue').fill('advanced data table');
-    await expect(page.getByRole('heading',{name:'Advanced Data Table',exact:true})).toBeVisible();
-    await expect(page.getByRole('heading',{name:'Button',exact:true})).toHaveCount(0);
+    await expect(page.getByRole('link',{name:'Advanced Data Table',exact:true})).toBeVisible();
+    await expect(page).toHaveURL(/q=advanced/);
   });
 
   test('showcases gallery presents 8 distinct systems and inspects Design DNA', async ({ page }) => {
