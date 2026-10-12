@@ -31,7 +31,7 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
             <span className="text-base font-semibold tracking-tight">Tessellate</span>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-4 text-sm">
+          <nav className="hidden xl:flex items-center gap-4 text-sm">
             {navLinks.map((link) => {
               const isActive = currentPath === link.href || currentPath.startsWith(link.href + '/');
               return (
@@ -100,7 +100,7 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
             type="button"
             onClick={() => setMobileMenuOpen(true)}
             aria-label="Open mobile navigation"
-            className="lg:hidden inline-flex items-center justify-center min-h-[36px] min-w-[36px] rounded-lg p-2 text-[#62666F] hover:bg-black/5 dark:text-[#A8AFBA]"
+            className="xl:hidden inline-flex items-center justify-center min-h-[36px] min-w-[36px] rounded-lg p-2 text-[#62666F] hover:bg-black/5 dark:text-[#A8AFBA]"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />

@@ -38,7 +38,7 @@ export function SiteHeader() {
               </span>
             </a>
 
-            <nav className="hidden lg:flex items-center gap-6 text-[14px] font-medium text-[#62666F]">
+            <nav className="hidden xl:flex items-center gap-6 text-[14px] font-medium text-[#62666F]">
               <a href="/explore" className="hover:text-[#111217] transition-colors">Explore</a>
               <a href="/showcases" className="hover:text-[#111217] transition-colors">Showcases</a>
               <a href="/compose" className="hover:text-[#111217] transition-colors">Compose</a>
@@ -95,7 +95,7 @@ export function SiteHeader() {
             <button
               type="button"
               disabled={!interactive} aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-1.5 text-[#62666F] hover:text-[#111217] transition-colors"
+              className="xl:hidden p-1.5 text-[#62666F] hover:text-[#111217] transition-colors"
               aria-label="Toggle menu" aria-controls="mobile-navigation"
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -106,7 +106,7 @@ export function SiteHeader() {
 
       {/* Mobile Drawer Sheet */}
       {isMenuOpen && (
-        <div id="mobile-navigation" ref={navigationRef} role="dialog" aria-modal="true" aria-label="Main navigation" tabIndex={-1} className="fixed inset-0 top-16 z-40 bg-[#F4F2ED] p-6 lg:hidden flex flex-col justify-between overflow-y-auto animate-fade-in">
+        <div id="mobile-navigation" ref={navigationRef} role="dialog" aria-modal="true" aria-label="Main navigation" tabIndex={-1} className="fixed inset-0 top-16 z-40 bg-[#F4F2ED] p-6 xl:hidden flex flex-col justify-between overflow-y-auto animate-fade-in">
           <button type="button" onClick={closeMenu} aria-label="Close navigation" className="self-end min-h-10 min-w-10 p-2"><X className="h-5 w-5" /></button>
           <nav className="flex flex-col gap-4 text-lg font-semibold text-[#111217]">
             <a href="/explore" onClick={() => setIsMenuOpen(false)} className="py-2 border-b border-[#D9D6CF]">Explore Catalogue</a>
