@@ -1,0 +1,103 @@
+{
+  "label": "docs-registry-390",
+  "url": "http://127.0.0.1:4323/docs/registry/",
+  "screenshot": "audit/evidence/local-iteration-6/instrumented/docs-registry-390.png",
+  "viewport": "390x844",
+  "dom": {
+    "title": "Registry installation — Tessellate",
+    "text": "Skip to content\nTessellate\nStart building\n\nOPEN INTERFACE COMMONS\n\nRegistry installation\n\nInstall portable resource source from the URL of the deployment you are inspecting.\n\nOpen a resource, copy its install command, and run it in a React + TypeScript + Tailwind CSS 4 project. The command uses this site's origin and the exact resource slug.\n\nnpx shadcn@latest add https://YOUR-SITE/r/button.json\n\nRegistry files include dependencies, source and licence metadata. Replace YOUR-SITE with this deployment's host, or use the resource page's Copy install control. No hosted authentication is required for public source.\n\nInspect Button · Read the registry index\n\nAbout\nDocs\nLicences\nPrivacy\nTerms\nSupport the commons\nSource on GitHub",
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 390,
+    "unhydrated": 0,
+    "headings": [
+      "Registry installation"
+    ],
+    "emptyButtons": 0
+  },
+  "console": [],
+  "exceptions": [],
+  "network": [],
+  "responses": [
+    {
+      "url": "http://127.0.0.1:4323/docs/registry",
+      "status": 307,
+      "type": "document"
+    },
+    {
+      "url": "http://127.0.0.1:4323/docs/registry/",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/style.B_QGgLOb.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/SiteHeader.DrvuRs_k.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/client.OPlYM6bF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/jsx-runtime.D_zvdyIk.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/index.CHQCpkZ9.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/CommandPalette.BkZH_9pm.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/search.C9HoDFjH.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/github.BEKZXaMq.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/arrow-right.DCnLzGjB.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/x.CdPDMMs3.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/createLucideIcon.CKwyFV_x.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/sparkles.gqHQXRUX.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/compass.B6j8ZAtH.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "http://127.0.0.1:4323/_astro/sliders-vertical.pWv7lYEM.js",
+      "status": 200,
+      "type": "script"
+    }
+  ]
+}

@@ -10005,6 +10005,26 @@
       "rootCause": "The shell has no container breakpoint or minimum-width reset.",
       "fixCommit": null,
       "status": "open"
+    },
+    {
+      "id": "AUD-082",
+      "severity": "medium",
+      "route": "/r/two-pane-master-detail-shell",
+      "viewport": "390x844",
+      "category": "visual",
+      "title": "Master detail resource overflows mobile and uses pointer-only selection",
+      "expected": "The queue stacks above details at narrow widths and selection supports keyboard.",
+      "actual": "Fixed 320px queue and detail padding produce a 459px document; queue items are clickable divs.",
+      "reproduction": [
+        "Open the actual master-detail preview at 390px",
+        "Try selecting another incident with Tab and Enter"
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/local-iteration-6/resources/two-pane-master-detail-shell-390.png",
+      "rootCause": "Fixed horizontal layout lacks container breakpoint; queue selection has no semantic button.",
+      "fixCommit": null,
+      "status": "open"
     }
   ],
   "routes": [

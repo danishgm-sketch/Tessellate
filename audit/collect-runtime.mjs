@@ -26,7 +26,7 @@ async function capture(label, scan = false) {
   await page.screenshot({ path: screenshot, fullPage: false });
   let accessibility;
   if (scan) {
-    try { accessibility = (await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).analyze()).violations; }
+    try { accessibility = (await new AxeBuilder({ page }).options({preload:false}).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa']).analyze()).violations; }
     catch (error) { accessibility = { failed: String(error) }; }
   }
   const observation = { label, url: page.url(), screenshot: path.relative(process.cwd(), screenshot).replaceAll('\\', '/'), viewport: `${dom.width}x${dom.height}`, dom, ...structuredClone(events), accessibility };

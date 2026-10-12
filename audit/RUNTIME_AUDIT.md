@@ -774,3 +774,11 @@ Evidence: `audit/evidence/local-iteration-5/resources/button-1440.png`. Open `/p
 ## AUD-081 — MEDIUM — Messaging shell mobile overflow
 
 Evidence: `audit/evidence/local-iteration-5/resources/messaging-shell-390.png`. At 390px the document measures 419px. Root cause: fixed sidebar and implicit input width in `resources/shells/messaging-shell/index.tsx`. Remediation uses container breakpoints, a stacked channel pane and minimum width resets. OPEN until deployed verification.
+
+## AUD-082 — MEDIUM — Master detail mobile and keyboard failure
+
+Evidence: `audit/evidence/local-iteration-6/resources/two-pane-master-detail-shell-390.png`. Fixed horizontal columns produce 459px at 390px and incident rows are pointer-only divs. Affected code: `resources/shells/two-pane-master-detail-shell/index.tsx`. Remediation uses container breakpoints, minimum width resets and actual buttons. OPEN until deployed verification.
+
+### Instrumentation network distinction
+
+The first route re-scan captured CSS XHR blocked by the strict opaque-preview CSP during Axe analysis. The exact warning originates in axe-core 4.13.0 `preloaderQueue` (verified in the installed source), not the application. Direct browser loading of all 324 previews recorded zero failed requests. Subsequent Axe scans disable its optional asset preloader while retaining accessibility rules. CSP remains unchanged; original diagnostics are retained as evidence.
