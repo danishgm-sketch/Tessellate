@@ -16,15 +16,15 @@ export function PerformanceBenchmarkSection({ variant = 'quiet' }: PerformanceBe
   }
 
   const benchmarks = [
-    { name: 'Tessellate Manifest Parse', val: '0.4 ms', width: '12%', color: 'bg-emerald-500' },
-    { name: 'Industry Benchmark A', val: '4.8 ms', width: '60%', color: 'bg-neutral-400' },
-    { name: 'Legacy Bundler Framework', val: '12.4 ms', width: '95%', color: 'bg-neutral-400' },
+    { name: 'Example measurement A', val: '0.4 ms', width: '12%', color: 'bg-emerald-500' },
+    { name: 'Example measurement B', val: '4.8 ms', width: '60%', color: 'bg-neutral-400' },
+    { name: 'Example measurement C', val: '12.4 ms', width: '95%', color: 'bg-neutral-400' },
   ];
 
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-16">Audited Latency Benchmarks</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-16">Illustrative Benchmark Layout</h2>
 
         <div className="space-y-6">
           {benchmarks.map((b) => (
