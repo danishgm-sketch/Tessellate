@@ -806,3 +806,30 @@ Evidence: deployed supplemental Axe results (18 serious target-size failures) an
 ## AUD-088 — HIGH — Search relevance order discarded
 
 Evidence: deployed `search-ranking-before.png/json` and failing actual browser exact-name search test. Searching advanced data table shows Activity Feed first. Affected code: `ExploreView.tsx`, both initial and interactive search resolution. Root cause: ranked hits are converted to an ID set and then catalogue ordering replaces relevance. Remediation maps each ranked hit to its canonical resource while retaining order. OPEN until deployed verification.
+
+### AUD-089: Hosting edge injects bot detection that violates isolated preview CSP
+
+- Severity: HIGH
+- Evidence: [/preview/?resource=accessibility-commitment-section](../audit/evidence/deployed-version-3/resources/accessibility-commitment-section-1440.png)
+- Reproduction: Open an isolated preview on deployed version 3 → Inspect console and failed requests
+- Root cause: Hosting edge transforms HTML unless the origin declares Cache-Control no-transform.
+- Remediation: Declare no-transform for HTML, preserving strict CSP without allowing challenge network requests.
+- Status: OPEN pending native version 4.
+
+### AUD-090: Accessibility resource invents certification and universal compliance
+
+- Severity: HIGH
+- Evidence: [/preview/?resource=accessibility-commitment-section](../audit/evidence/deployed-version-3/resources/accessibility-commitment-section-1440.png)
+- Reproduction: Open accessibility commitment preview → Read badges and pillars
+- Root cause: Hardcoded resource copy presents design targets as measured certification.
+- Remediation: Replace certification and universal claims with explicit design targets and integration verification guidance.
+- Status: OPEN pending native version 4.
+
+### AUD-091: Mobile navigation overlay cannot close with Escape or contain keyboard focus
+
+- Severity: HIGH
+- Evidence: [/](../audit/evidence/deployed-version-3/mobile-menu-escape-before.png)
+- Reproduction: Focus mobile menu toggle → Press Enter → Press Escape
+- Root cause: Mobile drawer is a conditional div without the existing shared dialog focus hook.
+- Remediation: Reuse shared focus containment and restoration hook, add dialog semantics and a truthful Close control.
+- Status: OPEN pending native version 4.
