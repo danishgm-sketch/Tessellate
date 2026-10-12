@@ -47,7 +47,7 @@ export function normalizeDesignTokens(
   const isHighA11y = (dna.accessibilityPriority ?? 80) >= 80;
 
   // 1. Color Mapping
-  const paletteId = options?.paletteId ?? 'paper-cobalt';
+  const paletteId = options?.paletteId ?? (typeof options?.tokenOverrides?.paletteId==='string' ? options.tokenOverrides.paletteId : 'paper-cobalt');
   const palette = getSemanticPalette(paletteId) ?? getSemanticPalette('paper-cobalt')!;
   const mode =
     options?.activeMode ??
@@ -63,7 +63,7 @@ export function normalizeDesignTokens(
     borderStrong: paletteTokens.borderStrong,
     textPrimary: isHighA11y && mode === 'light' ? '#0A0A0C' : paletteTokens.textPrimary,
     textSecondary: paletteTokens.textSecondary,
-    textMuted: paletteTokens.textMuted,
+    textMuted: mode==='dark' ? '#A8AFBA' : '#62666F',
     accent: paletteTokens.accent,
     accentHover: paletteTokens.accentHover,
     accentSoft: paletteTokens.accentSoft,
@@ -143,6 +143,11 @@ export function normalizeDesignTokens(
     };
   }
 
+  // Feel is a rendering input, not a metadata-only label. At 50, preserve the
+  // canonical curvature tier; reserved/playful endpoints vary its radii by 25%.
+  const feelRadiusScale=0.75+(partialDna?.playfulness ?? 50)/200;
+  for(const key of ['xs','sm','md','lg','xl'] as const)radius[key]=`${Math.round(parseFloat(radius[key])*feelRadiusScale*2)/2}px`;
+
   // 4. Spacing Mapping (Density & Whitespace)
   const density = dna.density ?? 50;
   const whitespace = dna.whitespace ?? 50;
@@ -194,9 +199,9 @@ export function normalizeDesignTokens(
   const motionConfig = getMotionPersonality(motionId) ?? getMotionPersonality('snappy-productive')!;
 
   const motion: SemanticMotionTokens = {
-    durationFast: isReducedMotion ? '0ms' : `${motionConfig.durationFast}ms`,
-    durationNormal: isReducedMotion ? '0ms' : `${motionConfig.durationNormal}ms`,
-    durationSlow: isReducedMotion ? '0ms' : `${motionConfig.durationSlow}ms`,
+    durationFast: isReducedMotion || dna.motion===0 ? '0ms' : `${Math.round(motionConfig.durationFast*(0.5+dna.motion/100))}ms`,
+    durationNormal: isReducedMotion || dna.motion===0 ? '0ms' : `${Math.round(motionConfig.durationNormal*(0.5+dna.motion/100))}ms`,
+    durationSlow: isReducedMotion || dna.motion===0 ? '0ms' : `${Math.round(motionConfig.durationSlow*(0.5+dna.motion/100))}ms`,
     easing: isReducedMotion ? 'linear' : motionConfig.easing,
     reducedMotion: isReducedMotion,
   };

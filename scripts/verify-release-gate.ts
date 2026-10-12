@@ -389,7 +389,7 @@ export async function runReleaseGate(): Promise<{ passed: boolean; results: Gate
       targetNode = screen.rootNode.children?.[0] || screen.rootNode;
     }
 
-    const candidates = getReplaceCandidates(composedManifest, targetNode.id);
+    const candidates = getReplaceCandidates(composedManifest, targetNode.id,allCatalogResources);
     if (candidates.length === 0) {
       throw new Error(`No replacement candidates found for node ${targetNode.id}`);
     }

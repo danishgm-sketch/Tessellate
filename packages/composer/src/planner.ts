@@ -249,6 +249,25 @@ export function planScreenGraph(productModel: ProductModel): ScreenPlanResult {
     });
   }
 
+  // Domain-specific screen intents must survive generic planning. A dashboard
+  // keyword does not turn an employee platform into an analytics product.
+  if (productModel.entities.some(entity=>entity.name==='Employee')) {
+    const overview = appNodes.find(screen=>screen.id==='screen-overview');
+    if (overview) { overview.name='Team Overview'; overview.purpose='Employee summary, onboarding progress and team pulse'; overview.expectedData=['employeeSummary','onboardingProgress','teamPulse']; }
+    const directory = appNodes.find(screen=>screen.id==='screen-collection-index');
+    if (directory) {directory.name='People Directory'; directory.slug='/people';}
+    const detail = appNodes.find(screen=>screen.id==='screen-entity-detail');
+    if (detail) {detail.name='Employee Profile'; detail.slug='/people/:id';}
+    const settings = settingsNodes.find(screen=>screen.id==='screen-settings');
+    if (settings) {settings.name='Settings & Policies'; settings.purpose='Organisational policies, notifications and account preferences';}
+    for (const intended of productModel.likelyScreens.filter(screen=>['Teams','Onboarding','Engagement'].includes(screen.name))) {
+      const slug = `/${intended.name.toLowerCase()}`;
+      if (forbiddenScreens.has(intended.name.toLowerCase()) || forbiddenScreens.has(intended.screenType)) continue;
+      const grammar = getScreenClassGrammar(intended.screenType);
+      appNodes.push({id:`screen-${intended.name.toLowerCase()}`,name:intended.name,slug,screenType:intended.screenType,purpose:intended.purpose,jobs:intended.jobs ?? [],required:true,navigationVisibility:'primary',importance:85,expectedData:[],requiredRoles:grammar.requiredRoles,optionalRoles:grammar.optionalRoles});
+    }
+  }
+
   // Enforce explicit required screens
   for (const exp of explicitRequiredScreens) {
     const allNodes = [...marketingNodes, ...appNodes, ...settingsNodes, ...authNodes];

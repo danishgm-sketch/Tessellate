@@ -82,7 +82,19 @@
   },
   "preview": {
     "component": "AvatarGroupPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "items": [
+        {
+          "initials": "AB"
+        },
+        {
+          "initials": "CD"
+        },
+        {
+          "initials": "EF"
+        }
+      ]
+    },
     "viewport": 1440
   },
   "slots": [

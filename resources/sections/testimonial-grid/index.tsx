@@ -29,12 +29,12 @@ export function TestimonialGrid({
   }
 
   return (
-    <section className={`relative w-full py-20 sm:py-28 px-6 sm:px-12 border-b transition-colors ${bg}`}>
+    <section className={`relative w-full py-20 @sm:py-28 px-6 @sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-center mb-16">{title}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <h2 className="text-2xl @sm:text-4xl font-bold tracking-tight text-center mb-16">{title}</h2>
+        <div className="grid grid-cols-1 @md:grid-cols-3 gap-8">
           {testimonials.map((t) => (
-            <div key={t.author} className={`p-6 rounded-xl border flex flex-col justify-between ${card}`}>
+            <div key={t.author} className={`p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col justify-between ${card}`}>
               <div className="mb-6">
                 <div className="text-amber-500 text-xs mb-3">★★★★★</div>
                 <p className="text-sm opacity-90 leading-relaxed">"{t.quote}"</p>

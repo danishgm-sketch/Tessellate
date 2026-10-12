@@ -82,7 +82,19 @@
   },
   "preview": {
     "component": "SelectPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "label": "Select an option",
+      "options": [
+        {
+          "value": "first",
+          "label": "First option"
+        },
+        {
+          "value": "second",
+          "label": "Second option"
+        }
+      ]
+    },
     "viewport": 1440
   },
   "slots": [

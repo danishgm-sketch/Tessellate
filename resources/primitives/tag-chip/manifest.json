@@ -83,7 +83,9 @@
   },
   "preview": {
     "component": "TagChipPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "label": "Example tag"
+    },
     "viewport": 1440
   },
   "slots": [

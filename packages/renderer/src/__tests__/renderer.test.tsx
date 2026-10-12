@@ -97,7 +97,7 @@ describe('NodeRenderer & Responsive Strategy', () => {
 
     expect(html).toContain('Deploy Interface');
     expect(html).toContain('data-node-id="node_btn_1"');
-    expect(html).toContain('bg-[#2547E8]');
+    expect(html).toContain('data-resource-variant="expressive"');
   });
 
   it('renders a recoverable fallback placeholder when resource is unresolved', () => {

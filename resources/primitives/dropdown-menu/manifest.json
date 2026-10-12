@@ -83,7 +83,19 @@
   },
   "preview": {
     "component": "DropdownMenuPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "trigger": "Example actions",
+      "items": [
+        {
+          "id": "first",
+          "label": "First action"
+        },
+        {
+          "id": "second",
+          "label": "Second action"
+        }
+      ]
+    },
     "viewport": 1440
   },
   "slots": [

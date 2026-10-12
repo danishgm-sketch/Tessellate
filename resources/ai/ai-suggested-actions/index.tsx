@@ -30,23 +30,23 @@ export function AISuggestedActions({ variant = 'quiet' }: AISuggestedActionsProp
   ];
 
   return (
-    <div className={`w-full p-5 rounded-xl border flex flex-col gap-3 transition-colors ${cardBg}`}>
+    <div className={`w-full p-5 rounded-[var(--tess-radius-xl,8px)] border flex flex-col gap-3 transition-colors ${cardBg}`}>
       <div className="flex items-center gap-2 text-xs font-semibold">
         <span className="text-amber-500">✦</span>
         <span>Suggested Next Steps</span>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+      <div className="grid grid-cols-1 @sm:grid-cols-3 gap-2.5">
         {actions.map((act) => (
           <button
             key={act.id}
             onClick={() => setSelected(act.id)}
-            className={`p-3 rounded-lg border text-left transition-all ${actionPill} ${
+            className={`p-3 rounded-[var(--tess-radius-lg,8px)] border text-left transition-all ${actionPill} ${
               selected === act.id ? 'ring-2 ring-current' : ''
             }`}
           >
             <div className="text-xs font-semibold mb-1">{act.title}</div>
-            <div className="text-[11px] text-neutral-500 leading-snug">{act.desc}</div>
+            <div className="text-[11px] text-[var(--tess-ink-muted,#62666F)] leading-snug">{act.desc}</div>
           </button>
         ))}
       </div>

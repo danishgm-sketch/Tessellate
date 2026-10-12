@@ -82,7 +82,10 @@
   },
   "preview": {
     "component": "PaginationPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "currentPage": 1,
+      "totalPages": 5
+    },
     "viewport": 1440
   },
   "slots": [

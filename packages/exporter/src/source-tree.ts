@@ -1,5 +1,5 @@
-import type { ProjectManifest, ProjectNode, ProjectScreen } from '@tessellate/schemas';
-import { normalizeDesignTokens, tokensToCssVariables } from '@tessellate/renderer';
+import type { ProjectManifest, ProjectNode, ProjectScreen, PartialDesignDNA } from '@tessellate/schemas';
+import { normalizeDesignTokens, tokensToCssVariables, MANIFEST_LAYOUT_CSS, nodeLayoutClass, nodeRuntimeVariant } from '@tessellate/renderer';
 import { collectProjectDependencies } from './dependencies.js';
 import { getGoldResourceSource } from './generated-gold-sources.js';
 
@@ -18,24 +18,10 @@ export function setDiskResourceResolver(resolver: ResourceResolver | null) {
   customDiskResolver = resolver;
 }
 
-function getAcceptedPropNames(code: string): Set<string> | null {
-  const propsMatch = code.match(/interface\s+[A-Za-z0-9_]+Props(?:\s+extends[^{]+)?\s*\{([^}]+)\}/s);
-  if (!propsMatch || !propsMatch[1]) return null;
-  const propsBody = propsMatch[1];
-  const names = new Set<string>();
-  const lineMatches = propsBody.matchAll(/([a-zA-Z0-9_]+)\s*\??\s*:/g);
-  for (const m of lineMatches) {
-    if (m[1]) {
-      names.add(m[1]);
-    }
-  }
-  return names;
-}
-
 function resolveResource(slug: string, semanticRole: string, nodeId: string): ResolvedResource {
   const goldSource = getGoldResourceSource(slug);
   if (goldSource) {
-    const acceptedProps = getAcceptedPropNames(goldSource.code);
+    const acceptedProps = new Set(goldSource.acceptedProps);
     return {
       slug,
       componentName: goldSource.componentName,
@@ -87,9 +73,6 @@ export function generateSourceTree(manifest: ProjectManifest): Record<string, st
     2
   );
 
-  files['.npmrc'] = `only-built-dependencies=esbuild
-`;
-
   // 2. vite.config.ts
   files['vite.config.ts'] = `import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
@@ -134,7 +117,7 @@ export default defineConfig({
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${manifest.name}</title>
+    <title>${manifest.name.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</title>
   </head>
   <body class="bg-[#FAF9F6] text-[#111217] antialiased">
     <div id="root"></div>
@@ -155,6 +138,9 @@ export default defineConfig({
 :root {
 ${cssVarDeclarations}
 }
+@custom-variant dark (&:where(.dark,.dark *):not(.tess-screen *), &:where([data-resource-variant="nocturne"], [data-resource-variant="nocturne"] *));
+${MANIFEST_LAYOUT_CSS}
+${manifest.designDNA.visualMode==='adaptive'?`@media(prefers-color-scheme:dark){:root{${Object.entries(tokensToCssVariables(normalizeDesignTokens(manifest.designDNA,{activeMode:'dark'}))).map(([key,value])=>`${key}:${value};`).join('')}}}`:''}
 `;
 
   // 6. src/main.tsx
@@ -299,7 +285,9 @@ export function AppHeader({ title = 'Application', navItems = [] }: AppHeaderPro
   const screenSlugs: Array<{ id: string; name: string; componentName: string; file: string }> = [];
 
   manifest.screens.forEach((screen, index) => {
-    const componentName = sanitizeComponentName(screen.name || `Screen${index + 1}`);
+    const baseName=sanitizeComponentName(screen.name || `Screen${index + 1}`);
+    const duplicateName=manifest.screens.slice(0,index).some(previous=>sanitizeComponentName(previous.name)===baseName);
+    const componentName=duplicateName?`${baseName}${index+1}`:baseName;
     const fileName = `${componentName}.tsx`;
     screenSlugs.push({
       id: screen.id,
@@ -308,7 +296,7 @@ export function AppHeader({ title = 'Application', navItems = [] }: AppHeaderPro
       file: fileName,
     });
 
-    files[`src/screens/${fileName}`] = generateScreenCode(screen, componentName, resourceMap);
+    files[`src/screens/${fileName}`] = generateScreenCode(screen, componentName, resourceMap, manifest.designDNA);
   });
 
   // 10. src/App.tsx with Screen Navigation
@@ -319,27 +307,32 @@ export function AppHeader({ title = 'Application', navItems = [] }: AppHeaderPro
   const navButtonsStr = screenSlugs
     .map(
       (s) => `<button
-            onClick={() => setActiveScreenId('${s.id}')}
+            aria-pressed={activeScreenId===${JSON.stringify(s.id)}} onClick={() => navigate(${JSON.stringify(s.id)})}
             className={\`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors \${
-              activeScreenId === '${s.id}'
-                ? 'bg-[var(--tess-accent-primary,#2547E8)] text-white shadow-xs'
+              activeScreenId === ${JSON.stringify(s.id)}
+                ? 'bg-[var(--tess-accent-primary,#2547E8)] text-[var(--tess-accent-ink,#FFFFFF)] shadow-xs'
                 : 'text-[var(--tess-ink-secondary,#62666F)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]'
             }\`}
           >
-            ${s.name}
+            {${JSON.stringify(s.name)}}
           </button>`
     )
     .join('\n          ');
 
   const screenSwitchStr = screenSlugs
-    .map((s) => `case '${s.id}': return <${s.componentName} />;`)
+    .map((s) => `case ${JSON.stringify(s.id)}: return <${s.componentName} />;`)
     .join('\n      ');
 
-  files['src/App.tsx'] = `import React, { useState } from 'react';
+  files['src/App.tsx'] = `import React, { useState, useEffect } from 'react';
 ${importsStr}
 
 export default function App() {
-  const [activeScreenId, setActiveScreenId] = useState('${screenSlugs[0]?.id || ''}');
+  const screens = ${JSON.stringify(screenSlugs.map(item=>item.id))};
+  const readScreen=()=>screens.includes(location.hash.slice(1)) ? location.hash.slice(1) : screens[0];
+  const [activeScreenId,setActiveScreenId]=useState(readScreen);
+  const navigate=(id:string)=>{location.hash=id;setActiveScreenId(id);};
+  useEffect(()=>{const handle=()=>setActiveScreenId(readScreen());window.addEventListener('hashchange',handle);return ()=>window.removeEventListener('hashchange',handle);},[]);
+
 
   const renderActiveScreen = () => {
     switch (activeScreenId) {
@@ -352,9 +345,9 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-[var(--tess-canvas,#FAF9F6)] text-[var(--tess-ink,#111217)] font-sans">
       {/* Top Navigation */}
-      <div className="border-b border-[var(--tess-hairline,#D9D6CF)] bg-white px-6 py-3 flex items-center justify-between">
-        <div className="font-bold text-sm tracking-tight">${manifest.name}</div>
-        <div className="flex items-center gap-2">
+      <div className="border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface)] px-4 py-3 flex flex-wrap gap-3 items-center justify-between">
+        <div className="font-bold text-sm tracking-tight">{${JSON.stringify(manifest.name)}}</div>
+        <div aria-label="Project screens" className="flex flex-wrap items-center gap-2">
           ${navButtonsStr}
         </div>
       </div>
@@ -406,6 +399,7 @@ pnpm build
 - **Surface:** ${manifest.designDNA.surfacePersonality}
 `;
 
+  files['project.tess.json'] = JSON.stringify(manifest,null,2);
   return files;
 }
 
@@ -419,11 +413,14 @@ function sanitizeComponentName(name: string): string {
 function generateScreenCode(
   screen: ProjectScreen,
   componentName: string,
-  resourceMap: Record<string, ResolvedResource>
+  resourceMap: Record<string, ResolvedResource>,
+  dna: PartialDesignDNA
 ): string {
   const usedComponents = new Set<string>();
+  let adaptive=dna.visualMode==='adaptive';
 
   function scanNode(node: ProjectNode) {
+    if(node.dnaOverrides?.visualMode==='adaptive')adaptive=true;
     if (node.resourceRef?.slug && resourceMap[node.resourceRef.slug]) {
       usedComponents.add(resourceMap[node.resourceRef.slug]!.componentName);
     } else if (node.semanticRole === 'navigation-header') {
@@ -448,13 +445,15 @@ function generateScreenCode(
     .map((name) => `import { ${name} } from '../components/${name}';`)
     .join('\n');
 
-  return `import React from 'react';
+  return `import React${adaptive?', {useEffect,useState}':''} from 'react';
 ${importLines}
 
 export function ${componentName}() {
+  ${adaptive?`const [systemDark,setSystemDark]=useState(()=>window.matchMedia('(prefers-color-scheme: dark)').matches);
+  useEffect(()=>{const media=window.matchMedia('(prefers-color-scheme: dark)');const update=()=>setSystemDark(media.matches);media.addEventListener('change',update);return ()=>media.removeEventListener('change',update);},[]);`:''}
   return (
-    <div className="w-full min-h-screen">
-      ${renderNodeToJsx(screen.rootNode, 3, resourceMap)}
+    <div className="tess-screen w-full min-h-screen" data-screen-id={${JSON.stringify(screen.id)}}>
+      ${renderNodeToJsx(screen.rootNode, 3, resourceMap, dna)}
     </div>
   );
 }
@@ -464,8 +463,18 @@ export function ${componentName}() {
 function renderNodeToJsx(
   node: ProjectNode,
   indentLevel: number,
-  resourceMap: Record<string, ResolvedResource>
+  resourceMap: Record<string, ResolvedResource>,
+  inheritedDNA: PartialDesignDNA = {},
+  inheritedTokens:Record<string,string|number> = {}
 ): string {
+  const dna = {...inheritedDNA,...node.dnaOverrides};
+  const tokens={...inheritedTokens,...node.tokenOverrides};
+  const localStyle = node.dnaOverrides || node.tokenOverrides ? tokensToCssVariables(normalizeDesignTokens(dna,{tokenOverrides:tokens})) : {};
+  const staticVariant=nodeRuntimeVariant(node,dna);
+  const variantExpression=dna.visualMode==='adaptive'?`systemDark ? 'nocturne' : ${JSON.stringify(staticVariant ?? null)}`:JSON.stringify(staticVariant ?? null);
+  const darkStyle=tokensToCssVariables(normalizeDesignTokens(dna,{tokenOverrides:tokens,activeMode:'dark'}));
+  const styleExpression=dna.visualMode==='adaptive' && (node.dnaOverrides || node.tokenOverrides)?`systemDark ? ${JSON.stringify(darkStyle)} : ${JSON.stringify(localStyle)}`:JSON.stringify(localStyle);
+  const wrapperAttributes = `data-resource-variant={${variantExpression}} data-node-id={${JSON.stringify(node.id)}} data-semantic-role={${JSON.stringify(node.semanticRole)}} style={(${styleExpression}) as React.CSSProperties}`;
   const indent = '  '.repeat(indentLevel);
   const className = (node.props['className'] as string) || '';
 
@@ -476,8 +485,9 @@ function renderNodeToJsx(
     const acceptedProps = resolved.acceptedProps;
 
     const attributes: string[] = [];
-    if (node.variant && (!acceptedProps || acceptedProps.has('variant'))) {
-      attributes.push(`variant="${node.variant}"`);
+    const runtimeVariant = nodeRuntimeVariant(node,dna);
+    if (runtimeVariant && (!acceptedProps || acceptedProps.has('variant'))) {
+      attributes.push(`variant={${variantExpression}}`);
     }
 
     const candidateProps = {
@@ -489,22 +499,20 @@ function renderNodeToJsx(
       if (key === 'className' || key === 'variant' || key === 'children') continue;
       if (acceptedProps && !acceptedProps.has(key)) continue;
 
-      if (typeof val === 'string') {
-        const escaped = val.replace(/"/g, '&quot;');
-        attributes.push(`${key}="${escaped}"`);
-      } else if (typeof val === 'number' || typeof val === 'boolean') {
-        attributes.push(`${key}={${val}}`);
-      }
+      if (val !== undefined && typeof val !== 'function') attributes.push(`${key}={${JSON.stringify(val)}}`);
     }
 
     const attrStr = attributes.length > 0 ? ' ' + attributes.join(' ') : '';
 
     if (node.children && node.children.length > 0) {
-      const childJsx = '\n' + node.children.map((c) => renderNodeToJsx(c, indentLevel + 1, resourceMap)).join('\n') + '\n' + indent;
-      return `${indent}<${compName}${attrStr}>${childJsx}</${compName}>`;
+      const childJsx = '\n' + node.children.map((c) => renderNodeToJsx(c, indentLevel + 1, resourceMap, dna, tokens)).join('\n') + '\n' + indent;
+      return `${indent}<div className={${JSON.stringify("@container "+nodeLayoutClass(node))}} ${wrapperAttributes}><${compName}${attrStr}>${childJsx}</${compName}></div>`;
+    }
+    if (candidateProps.children !== undefined && (!acceptedProps || acceptedProps.has('children'))) {
+      return `${indent}<div className={${JSON.stringify("@container "+nodeLayoutClass(node))}} ${wrapperAttributes}><${compName}${attrStr}>{${JSON.stringify(candidateProps.children)}}</${compName}></div>`;
     }
 
-    return `${indent}<${compName}${attrStr} />`;
+    return `${indent}<div className={${JSON.stringify("@container "+nodeLayoutClass(node))}} ${wrapperAttributes}><${compName}${attrStr} /></div>`;
   }
 
   // 2. Built-in Semantic Roles
@@ -534,8 +542,8 @@ function renderNodeToJsx(
 
   // 3. Layout / Generic Containers
   const childJsx = node.children && node.children.length > 0
-    ? '\n' + node.children.map((c) => renderNodeToJsx(c, indentLevel + 1, resourceMap)).join('\n') + '\n' + indent
+    ? '\n' + node.children.map((c) => renderNodeToJsx(c, indentLevel + 1, resourceMap, dna, tokens)).join('\n') + '\n' + indent
     : '';
 
-  return `${indent}<div className="${className}">${childJsx}</div>`;
+  return `${indent}<div className={${JSON.stringify(nodeLayoutClass(node)+" "+className)}} ${wrapperAttributes}>${childJsx || `{${JSON.stringify(node.props.children ?? null)}}`}</div>`;
 }

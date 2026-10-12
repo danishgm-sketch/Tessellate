@@ -27,23 +27,23 @@ export function FaqAccordion({ variant = 'quiet' }: FaqAccordionProps) {
   ];
 
   return (
-    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
+    <section className={`relative w-full py-20 px-6 @sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-3xl mx-auto">
         <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Frequently Asked Questions</h2>
 
         <div className="space-y-4">
           {faqs.map((f, i) => (
-            <div key={f.q} className={`border rounded-xl p-5 transition-all ${itemBorder}`}>
+            <div key={f.q} className={`border rounded-[var(--tess-radius-xl,8px)] p-5 transition-all ${itemBorder}`}>
               <button
                 type="button"
                 onClick={() => setOpenIdx(openIdx === i ? null : i)}
-                className="w-full text-left font-semibold text-sm sm:text-base flex justify-between items-center"
+                className="w-full text-left font-semibold text-sm @sm:text-base flex justify-between items-center"
               >
                 <span>{f.q}</span>
                 <span className="font-mono text-xs opacity-60">{openIdx === i ? '−' : '+'}</span>
               </button>
               {openIdx === i && (
-                <p className="text-xs sm:text-sm opacity-80 mt-3 pt-3 border-t border-neutral-100 dark:border-neutral-800 leading-relaxed">
+                <p className="text-xs @sm:text-sm opacity-80 mt-3 pt-3 border-t border-neutral-100 dark:border-neutral-800 leading-relaxed">
                   {f.a}
                 </p>
               )}
