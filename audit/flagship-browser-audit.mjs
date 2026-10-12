@@ -38,7 +38,7 @@ try{
  await page.getByTestId('top-toolbar').getByRole('button',{name:'Preview',exact:true}).click();await expect(page.getByTestId('preview-modal')).toBeVisible();await capture('11-actual-project-preview',true);await page.getByRole('button',{name:'Exit Preview',exact:true}).click();
  const final=await downloadManifest('12-final-manifest');assert.deepEqual(final,surprised);await page.getByTestId('export-button').click();const pending=page.waitForEvent('download');await page.getByTestId('export-zip-btn').click();const zip=await pending;await zip.saveAs(path.join(directory,'final-react-project.zip'));await capture('13-standalone-zip-downloaded');
  for(const width of [360,390,430,768,1024,1280,1440]){await page.setViewportSize({width,height:width<768?844:900});await capture(`shell-${width}`,width===390);}
- await context.storageState({path:path.join(directory,'browser-session.json')});
+ const browserState=await context.storageState(); browserState.cookies=[]; await writeFile(path.join(directory,'browser-session.json'),JSON.stringify(browserState,null,2));
  await writeFile(path.join(directory,'result.json'),JSON.stringify({status:'local-workflow-complete',directionC,replacedSlug,locked,finalProjectId:final.id,events,steps:steps.map(step=>step.name)},null,2));
  assert.equal(events.exceptions.length,0,'No uncaught exceptions');assert.equal(events.network.length,0,'No failed requests');assert.equal(events.responses.length,0,'No HTTP errors');
 }catch(error){await capture('FAILED-current-state');await writeFile(path.join(directory,'failure.json'),JSON.stringify({error:String(error),stack:error.stack,steps:steps.map(step=>step.name),events},null,2));throw error;}finally{await browser.close();}

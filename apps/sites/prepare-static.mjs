@@ -13,6 +13,11 @@ if (!existsSync(path.join(source, 'index.html'))) {
 // The fixed output path is inside this checkout, never an externally supplied path.
 if (![path.join(root,'dist'),path.join(root,'apps/sites/.static')].includes(destination)) throw new Error('Invalid artifact destination.');
 rmSync(destination, { recursive: true, force: true });
+if(process.argv.includes('--worker-assets')){
+ const rootOutput=path.join(root,'dist');
+ if(path.dirname(rootOutput)!==root)throw new Error('Invalid Worker output directory.');
+ rmSync(rootOutput,{recursive:true,force:true});
+}
 const assetsDestination=process.argv.includes('--worker-assets') ? path.join(destination,'__tessellate_asset_payloads') : destination;
 cpSync(source, assetsDestination, { recursive: true });
 

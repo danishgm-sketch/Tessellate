@@ -43,7 +43,7 @@ try {
     await page.waitForFunction(() => !document.querySelector('astro-island[ssr][client="load"]'), undefined, { timeout: 15000 });
     if (route === '/workbench') await page.getByTestId('top-toolbar').waitFor({ timeout: 15000 }).catch(error => events.exceptions.push(String(error)));
     await capture((route === '/' ? 'home' : route.slice(1).replaceAll('/', '-')) + '-1440', ['/', '/explore', '/compose', '/workbench', '/r/button'].includes(route));
-    const headers = response?.headers();
+    const headers = Object.fromEntries(Object.entries(response?.headers() ?? {}).filter(([key])=>!['set-cookie','authorization','proxy-authorization'].includes(key.toLowerCase())));
     observations.at(-1).headers = headers;
     await page.setViewportSize({ width: 390, height: 844 });
     await capture((route === '/' ? 'home' : route.slice(1).replaceAll('/', '-')) + '-390', ['/', '/explore', '/compose', '/workbench', '/r/button'].includes(route));
