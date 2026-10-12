@@ -1,17 +1,9 @@
-# Runtime remediation progress
+# Audit progress
 
-Acceptance remains pending until native version 5 and its freshly exported standalone project are re-audited.
+111 findings: five critical, 98 high, seven medium and one low. Repairs cover 110 findings. One medium compact preview-card limitation remains documented; the complete Direction A preview works at readable size.
 
-Branch: codex/e2e-production-audit. Draft PR: https://github.com/danishgm-sketch/Tessellate/pull/3.
+Version 5 real deployed acceptance passed the flagship, 648 resource renders, 31 routes, ten tools, seven responsive widths, keyboard checks and independent export. Four additional unverified content claims were found by inspecting all rendered resource copy and repaired with failing-before/passing-after tests.
 
-106 findings: 5 critical, 94 high, 6 medium, 1 low. Repairs are recorded individually in runtime-audit.json; deployed verification is pending.
+Current local validation passes 391 tests, strict typecheck, zero lint errors (34 existing warnings), frozen installation, production build, catalogue/provenance/security, 16 behavioural gates and bundle budgets. Final acceptance awaits version 6 deployed re-audit and fresh independent ZIP.
 
-387 unit/integration tests pass. The final local browser suite passes 61 tests, with five intentional viewport-specific skips. Final typecheck, ESLint (zero errors, 34 existing warnings), catalogue, licence/provenance, security, behavioural gate, bundle budgets and production build pass.
-
-Final browser evidence uses the Worker on port 4323 in this checkout. Port 4321 belongs to the owner's original checkout and was not used for final validation.
-
-The exact employee workflow, full Direction C handoff, lock preservation at radical recomposition, actual replacement, Surprise Me, three undo/redo restorations, all Workbench modes, checkpoint persistence and all three directions across nine screens pass locally. Mobile editing and Export are usable. Nine shell routes pass seven widths; keyboard dialogs, blueprint composition, bookmarks, homepage direction generation and reduced-motion checks pass with zero errors, failed requests or Axe violations.
-
-Fabricated default metrics, certifications, customer adoption, testimonials and enterprise offers were replaced with explicit illustrative examples. Unconfigured consultation is disabled with an explanation; callers can enable it with an actual integration callback. Catalogue previews mount near the viewport and load when scrolled into view.
-
-Astro produces the full static application. The isolated Sites Worker adapter preserves strict headers and opaque preview isolation. No authentication requirement, D1, R2, paid service or secret persistence was introduced.
+The original owner checkout remains untouched. Branch codex/e2e-production-audit has draft PR https://github.com/danishgm-sketch/Tessellate/pull/3; no merge is authorized. No D1/R2 or paid infrastructure was added. Canonical application packages and architecture are preserved.

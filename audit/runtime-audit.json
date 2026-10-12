@@ -1,7 +1,7 @@
 {
   "deployment": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
   "sourceCommit": "7bbc8f7",
-  "phase": "remediation implemented; deployed version 5 re-audit pending",
+  "phase": "version 6 content remediation implemented; deployed re-audit pending",
   "issues": [
     {
       "id": "AUD-001",
@@ -13226,6 +13226,132 @@
         "resources/sections/accessibility-commitment-section/index.tsx"
       ],
       "remediation": "fix(a11y): restore contrast in loaded catalogue previews"
+    },
+    {
+      "id": "AUD-107",
+      "severity": "high",
+      "route": "/preview/?resource=press-mentions-strip",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Fabricated press quotations",
+      "expected": "Resource defaults describe capabilities truthfully and require evidence for claims.",
+      "actual": "Invented Tessellate endorsements attributed to TechCrunch, Wired and The Verge.",
+      "reproduction": [
+        "Open the deployed resource preview.",
+        "Read the default claim."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/deployed-version-5/resources/press-mentions-strip-1440.png",
+      "rootCause": "Invented proof copy in resource source and fixtures.",
+      "affectedCode": [
+        "resources/sections/press-mentions-strip/index.tsx",
+        "resources/sections/press-mentions-strip/fixtures.ts"
+      ],
+      "remediation": "Replace assertions with illustrative copy or explicit measurement and verification requirements.",
+      "fixCommit": "7785a42ea78ddd2acecec7053029587e66ac5cd9",
+      "status": "open"
+    },
+    {
+      "id": "AUD-108",
+      "severity": "high",
+      "route": "/preview/?resource=feature-metrics",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Unmeasured perfect Lighthouse score",
+      "expected": "Resource defaults describe capabilities truthfully and require evidence for claims.",
+      "actual": "Claims audited 100/100 desktop and mobile performance without a report.",
+      "reproduction": [
+        "Open the deployed resource preview.",
+        "Read the default claim."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/deployed-version-5/resources/feature-metrics-1440.png",
+      "rootCause": "Invented proof copy in resource source and fixtures.",
+      "affectedCode": [
+        "resources/sections/feature-metrics/index.tsx",
+        "resources/sections/feature-metrics/fixtures.ts"
+      ],
+      "remediation": "Replace assertions with illustrative copy or explicit measurement and verification requirements.",
+      "fixCommit": "7785a42ea78ddd2acecec7053029587e66ac5cd9",
+      "status": "open"
+    },
+    {
+      "id": "AUD-109",
+      "severity": "high",
+      "route": "/preview/?resource=security-proof",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Unsupported encryption guarantee",
+      "expected": "Resource defaults describe capabilities truthfully and require evidence for claims.",
+      "actual": "Claims AES-256 end-to-end encryption, although local browser projects are not encrypted by the component.",
+      "reproduction": [
+        "Open the deployed resource preview.",
+        "Read the default claim."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/deployed-version-5/resources/security-proof-1440.png",
+      "rootCause": "Invented proof copy in resource source and fixtures.",
+      "affectedCode": [
+        "resources/sections/security-proof/index.tsx",
+        "resources/sections/security-proof/fixtures.ts"
+      ],
+      "remediation": "Replace assertions with illustrative copy or explicit measurement and verification requirements.",
+      "fixCommit": "7785a42ea78ddd2acecec7053029587e66ac5cd9",
+      "status": "open"
+    },
+    {
+      "id": "AUD-110",
+      "severity": "high",
+      "route": "/preview/?resource=split-product-hero",
+      "viewport": "1440x900; 390x844",
+      "category": "content",
+      "title": "Unsupported composition performance and quality guarantees",
+      "expected": "Resource defaults describe capabilities truthfully and require evidence for claims.",
+      "actual": "Claims zero bundle penalty and guaranteed visual harmony without evidence.",
+      "reproduction": [
+        "Open the deployed resource preview.",
+        "Read the default claim."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/deployed-version-5/resources/split-product-hero-1440.png",
+      "rootCause": "Invented proof copy in resource source and fixtures.",
+      "affectedCode": [
+        "resources/sections/split-product-hero/index.tsx",
+        "resources/sections/split-product-hero/fixtures.ts"
+      ],
+      "remediation": "Replace assertions with illustrative copy or explicit measurement and verification requirements.",
+      "fixCommit": "7785a42ea78ddd2acecec7053029587e66ac5cd9",
+      "status": "open"
+    },
+    {
+      "id": "AUD-111",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900",
+      "category": "visual",
+      "title": "Direction A compact card provides limited screen content",
+      "expected": "Compact direction card communicates both navigation and screen content.",
+      "actual": "Unscaled navigation occupies most of the compact card crop; the full preview renders the complete screen.",
+      "reproduction": [
+        "Compose the exact employee brief.",
+        "Inspect Direction A compact card.",
+        "Open Inspect full preview and DNA to view the actual complete screen."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/deployed-version-5/flagship/direction-01.png",
+      "rootCause": "Unscaled complete project is cropped into a small direction-card viewport.",
+      "affectedCode": [
+        "apps/site/src/components/ComposeView.tsx"
+      ],
+      "remediation": "Retain the readable full interactive preview; consider a dedicated compact overview in a later visual refinement.",
+      "fixCommit": null,
+      "status": "open",
+      "remainingRationale": "Non-blocking compact-card limitation. The clearly labelled full-preview control displays every screen at readable size and is exercised in acceptance. A dedicated summary rendering would alter preview presentation beyond the repaired workflow."
     }
   ],
   "routes": [
@@ -13501,5 +13627,5 @@
       ]
     }
   ],
-  "acceptance": "NOT ACCEPTED: findings stay open until the fixed deployed version and independent exported runtime pass."
+  "acceptance": "NOT ACCEPTED: version 6 deployed verification pending; one medium compact-preview limitation documented."
 }
