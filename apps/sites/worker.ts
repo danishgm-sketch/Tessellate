@@ -13,7 +13,11 @@ export default {
    if(fallback.ok)response=new Response(fallback.body,{status:404,headers:fallback.headers});
   }
   const headers=new Headers(response.headers);
-  if(html)headers.set('Content-Type','text/html; charset=utf-8');
+  if(html){
+   headers.set('Content-Type','text/html; charset=utf-8');
+   // Preserve the exact vetted HTML and opaque preview CSP at the hosting edge.
+   headers.set('Cache-Control', 'no-transform');
+  }
   headers.set('X-Content-Type-Options','nosniff');
   headers.set('X-Frame-Options','SAMEORIGIN');
   headers.set('Referrer-Policy','strict-origin-when-cross-origin');
