@@ -15,6 +15,7 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { AuditPanel } from '../audit/AuditPanel.js';
+import { CommandBar } from '../CommandBar.js';
 
 export function MobileWorkbench() {
   const manifest = useWorkbenchStore((state) => state.manifest);
@@ -98,6 +99,7 @@ export function MobileWorkbench() {
         {mobileTab === 'command' && (
           <div className="p-6 space-y-4 text-xs">
             <div className="font-bold text-sm">Mobile Quick Commands</div>
+            <CommandBar />
             <p className="text-[#62666F] dark:text-[#A8AFBA]">
               Tap a quick operation to alter project intent deterministically:
             </p>

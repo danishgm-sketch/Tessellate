@@ -59,14 +59,13 @@ registry and multi-target exporter. Earlier audit application changes have not
 been overlaid on that newer source. Only this hosting adapter and the single
 stylesheet build option are retained.
 
-The Python/PyTorch Tree-GNN daemon cannot execute inside a Cloudflare Worker.
-This Site has no connected host daemon or queue transport. Its inference health
-endpoint reports that actual offline capability; the existing queue client then
-uses the canonical deterministic fallback. Queue submissions and host control
-routes return an explicit unavailable response. The development-only host secret
-and volatile API queue are not exposed by this Site. Enabling remote host
-inference requires a separately secured, persistent API deployment and host
-connection; no such infrastructure or D1/R2 binding is provisioned here.
+The CPU Tree-GNN daemon cannot execute inside a Cloudflare Worker. The
+owner-operated Docker backend is documented in `../laptop-backend/README.md`.
+The Site adapter now supports a server-only authenticated HTTPS backend proxy,
+with an explicit offline response until its permanent connection is configured.
+Host control endpoints are never forwarded. Recognized deterministic commands
+remain local when offline; unsupported prompts are unavailable without changing
+the project. No hosted D1/R2 binding is provisioned by this extension.
 
 This publication updates the latest project for review. The prior V7 audit does
 not certify the newer main implementation; deployment smoke results are recorded

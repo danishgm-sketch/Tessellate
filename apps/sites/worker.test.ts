@@ -14,8 +14,8 @@ describe('Sites host capability', () => {
   it('does not accept tasks or expose development host endpoints', async () => {
     for (const pathname of ['queue', 'heartbeat', 'poll', 'complete', 'status/test']) {
       const response = await worker.fetch(new Request(`https://example.test/api/inference/${pathname}`, { method: 'POST' }), env);
-      expect(response.status).toBe(503);
-      expect(await response.json()).toMatchObject({ error: 'HostUnavailable' });
+      expect(response.status).toBe(pathname === 'queue' ? 503 : 404);
+      expect(await response.json()).toMatchObject({ error: pathname === 'queue' ? 'BackendUnavailable' : 'NotFound' });
     }
   });
 });
