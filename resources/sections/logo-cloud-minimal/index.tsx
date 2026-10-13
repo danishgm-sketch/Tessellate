@@ -10,8 +10,8 @@ export interface LogoCloudMinimalProps {
 
 export function LogoCloudMinimal({
   variant = 'quiet',
-  title = 'POWERING DESIGN SYSTEMS AT MODERN TECHNOLOGY ORGANISATIONS',
-  logos = ['Acme Corp', 'Starlight Data', 'Hyperion', 'Vertex Labs', 'Nexus AI'],
+  title = 'Illustrative logos · replace with approved marks before publishing',
+  logos = ['Example customer', 'Example partner', 'Example team'],
 }: LogoCloudMinimalProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';
   let titleColor = 'text-[var(--tess-ink-muted,#62666F)]';

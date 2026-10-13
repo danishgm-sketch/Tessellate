@@ -14,9 +14,9 @@ export interface EditorialHeroProps {
 
 export function EditorialHero({
   variant = 'quiet',
-  eyebrow = 'Announcing Version 2.0',
+  eyebrow = 'Open interface resources',
   headline = 'Engineered for deliberate craft and structural speed.',
-  subheadline = 'Compose resilient interfaces from a unified design vocabulary. Uncompromising typography, zero lock-in, and sub-millisecond execution.',
+  subheadline = 'Compose resilient interfaces from a unified design vocabulary, then continue in your own React and Tailwind codebase.',
   primaryCta = { label: 'Explore Catalogue' },
   secondaryCta = { label: 'Read Architecture' },
   note = 'Free & open core • No credit card required',

@@ -5,7 +5,7 @@
   "name": "Comparison Table",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Matrix comparing parameters or feature sets across multiple items side by side.",
+  "description": "Comparison matrix template with explicit example values.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -130,7 +130,7 @@
     "benchmark"
   ],
   "intent": {
-    "summary": "Matrix comparing parameters or feature sets across multiple items side by side.",
+    "summary": "Example comparison; replace sample values with measurements and methodology.",
     "idealFor": [
       "Comparing two or three alternative models or configurations"
     ],
@@ -138,7 +138,7 @@
       "Single item detail views"
     ],
     "jobs": [
-      "Side-by-side comparative inspection of entity specs"
+      "Compare measured specifications across multiple items"
     ],
     "contentRequirements": [
       "High data density, keyboard accessibility, semantic tokens"

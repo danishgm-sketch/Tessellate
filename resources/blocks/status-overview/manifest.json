@@ -5,7 +5,7 @@
   "name": "Status Overview",
   "version": "1.0.0",
   "status": "verified",
-  "description": "System health dashboard block tracking services, regional latency, and incident reports.",
+  "description": "Service status snapshot template with illustrative values.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -130,7 +130,7 @@
     "uptime"
   ],
   "intent": {
-    "summary": "System health dashboard block tracking services, regional latency, and incident reports.",
+    "summary": "Illustrative service status; provide monitored data before presenting it as live.",
     "idealFor": [
       "Internal operations dashboards and public status pages"
     ],
@@ -138,7 +138,7 @@
       "Casual marketing features"
     ],
     "jobs": [
-      "Report status across distributed cloud services"
+      "Summarize a configured service status feed"
     ],
     "contentRequirements": [
       "High data density, keyboard accessibility, semantic tokens"
