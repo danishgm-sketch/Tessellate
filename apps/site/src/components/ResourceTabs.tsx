@@ -82,7 +82,7 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
         {activeTab === 'intent' && (
           <div className="space-y-6">
             <div>
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)] mb-1">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)] mb-1">
                 Summary & Purpose
               </h4>
               <p className="text-base text-[var(--tess-ink,#111217)] font-medium">
@@ -126,7 +126,7 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
 
             {/* Jobs to be done */}
             <div className="space-y-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)]">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
                 Jobs To Be Done
               </h4>
               <div className="flex flex-wrap gap-2">
@@ -143,7 +143,7 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
 
             {/* Content Requirements */}
             <div className="space-y-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)]">
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
                 Expected Content Requirements
               </h4>
               <ul className="list-disc list-inside text-xs space-y-1 text-[var(--tess-ink-secondary,#62666F)]">
@@ -156,7 +156,7 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
             {/* Product Archetypes */}
             {manifest.productArchetypes.length > 0 && (
               <div className="space-y-2">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)]">
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
                   Target Product Archetypes
                 </h4>
                 <div className="flex flex-wrap gap-2">
@@ -233,7 +233,7 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
         {/* ANATOMY TAB */}
         {activeTab === 'anatomy' && (
           <div className="space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)]">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
               Configurable Slots & Props
             </h4>
             <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white overflow-hidden">
@@ -252,7 +252,7 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
                       <td className="p-3 font-mono font-medium">{slot.name} ({slot.id})</td>
                       <td className="p-3 font-mono text-[var(--tess-cobalt,#2547E8)]">{slot.type}</td>
                       <td className="p-3">{slot.required ? 'Yes' : 'No'}</td>
-                      <td className="p-3 font-mono text-[var(--tess-ink-muted,#8B8F97)]">
+                      <td className="p-3 font-mono text-[var(--tess-ink-muted,#62666F)]">
                         {String(slot.defaultValue ?? '—')}
                       </td>
                     </tr>
@@ -304,25 +304,25 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
           <div className="space-y-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3">
-                <span className="text-[11px] text-[var(--tess-ink-muted,#8B8F97)] block">JS Payload</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">JS Payload</span>
                 <span className="text-sm font-semibold uppercase font-mono text-[var(--tess-cobalt,#2547E8)]">
                   {manifest.performance.jsCost}
                 </span>
               </div>
               <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3">
-                <span className="text-[11px] text-[var(--tess-ink-muted,#8B8F97)] block">GPU Overhead</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">GPU Overhead</span>
                 <span className="text-sm font-semibold uppercase font-mono">
                   {manifest.performance.gpuCost}
                 </span>
               </div>
               <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3">
-                <span className="text-[11px] text-[var(--tess-ink-muted,#8B8F97)] block">Runtime Complexity</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">Runtime Complexity</span>
                 <span className="text-sm font-semibold uppercase font-mono">
                   {manifest.performance.runtimeComplexity}
                 </span>
               </div>
               <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3">
-                <span className="text-[11px] text-[var(--tess-ink-muted,#8B8F97)] block">Lazy Load Recommended</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">Lazy Load Recommended</span>
                 <span className="text-sm font-semibold font-mono">
                   {manifest.performance.lazyRecommended ? 'Yes' : 'No'}
                 </span>
@@ -349,7 +349,7 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
                     className="p-3 rounded-lg border border-[var(--tess-hairline,#D9D6CF)] bg-white flex items-center justify-between text-xs"
                   >
                     <span className="font-mono font-semibold">{dep.package}</span>
-                    <span className="font-mono text-[var(--tess-ink-muted,#8B8F97)]">{dep.range}</span>
+                    <span className="font-mono text-[var(--tess-ink-muted,#62666F)]">{dep.range}</span>
                   </li>
                 ))}
               </ul>
@@ -363,7 +363,7 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
             <div className="p-4 rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white space-y-1">
               <div className="flex items-center justify-between">
                 <span className="font-mono font-bold text-sm">v{manifest.version}</span>
-                <span className="text-[11px] text-[var(--tess-ink-muted,#8B8F97)]">Initial Release</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)]">Initial Release</span>
               </div>
               <p className="text-xs text-[var(--tess-ink-secondary,#62666F)]">
                 Launch release with verified Quiet, Expressive, and Nocturne variants.

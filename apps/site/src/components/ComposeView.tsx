@@ -445,7 +445,7 @@ export function ComposeView() {
             type="submit"
             data-testid="compose-submit-btn"
             disabled={catalogStatus !== 'ready'}
-            className="inline-flex items-center gap-2 rounded-xl bg-[#2547E8] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#1E3CCD] disabled:opacity-50 disabled:cursor-not-allowed dark:bg-[#6782FF] dark:text-[#0B0D10] dark:hover:bg-[#879DFF]"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#2547E8] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#1E3CCD] disabled:bg-[#62666F] disabled:text-white disabled:cursor-not-allowed dark:disabled:bg-[#A8AFBA] dark:disabled:text-[#0B0D10] dark:bg-[#6782FF] dark:text-[#0B0D10] dark:hover:bg-[#879DFF]"
           >
             <Sparkles className="h-4 w-4" />
             Compose Interface System

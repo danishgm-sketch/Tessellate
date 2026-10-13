@@ -29,7 +29,7 @@ export function FinalComposerFooter() {
             value={quickPrompt}
             onChange={(e) => setQuickPrompt(e.target.value)}
             placeholder="Type your product concept (e.g. Developer security terminal)…"
-            className="min-w-0 flex-1 px-4 py-2 text-sm text-[#111217] placeholder-[#8B8F97] bg-transparent border-none focus:outline-none"
+            className="min-w-0 flex-1 px-4 py-2 text-sm text-[#111217] placeholder-[#62666F] bg-transparent border-none focus:outline-none"
           />
           <button
             type="submit"

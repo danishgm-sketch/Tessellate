@@ -161,7 +161,7 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
       }} className="relative w-full max-w-xl rounded-xl border border-[var(--tess-hairline-strong,#C7C3BA)] bg-white shadow-xl overflow-hidden flex flex-col z-10 animate-in fade-in-0 zoom-in-95 duration-100">
         {/* Search Input Bar */}
         <div className="flex items-center gap-3 px-4 border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)]">
-          <Search className="w-4 h-4 text-[var(--tess-ink-muted,#8B8F97)] shrink-0" />
+          <Search className="w-4 h-4 text-[var(--tess-ink-muted,#62666F)] shrink-0" />
           <input
             ref={inputRef}
             type="text"
@@ -173,13 +173,13 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
             }}
             onKeyDown={handleKeyDownInInput}
             placeholder="Search commands, components, pages..."
-            className="h-12 w-full bg-transparent text-sm text-[var(--tess-ink,#111217)] placeholder-[var(--tess-ink-muted,#8B8F97)] focus:outline-none"
+            className="h-12 w-full bg-transparent text-sm text-[var(--tess-ink,#111217)] placeholder-[var(--tess-ink-muted,#62666F)] focus:outline-none"
           />
           <button
             type="button"
             aria-label="Close search"
             onClick={handleClose}
-            className="p-1 rounded-md text-[var(--tess-ink-muted,#8B8F97)] hover:text-[var(--tess-ink,#111217)] transition-colors"
+            className="p-1 rounded-md text-[var(--tess-ink-muted,#62666F)] hover:text-[var(--tess-ink,#111217)] transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -188,7 +188,7 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
         {/* Results List */}
         <div className="max-h-80 overflow-y-auto p-2 divide-y divide-[var(--tess-hairline,#D9D6CF)]/40">
           {filteredItems.length === 0 ? (
-            <div className="py-8 text-center text-xs text-[var(--tess-ink-muted,#8B8F97)]">
+            <div className="py-8 text-center text-xs text-[var(--tess-ink-muted,#62666F)]">
               No matching commands or resources found for &quot;{query}&quot;.
             </div>
           ) : (
@@ -218,12 +218,12 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
                     <div className="flex flex-col">
                       <span className="font-semibold text-[var(--tess-ink,#111217)]">{item.title}</span>
                       {item.subtitle && (
-                        <span className="text-[11px] text-[var(--tess-ink-muted,#8B8F97)]">{item.subtitle}</span>
+                        <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)]">{item.subtitle}</span>
                       )}
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 text-[10px] text-[var(--tess-ink-muted,#8B8F97)]">
+                  <div className="flex items-center gap-2 text-[10px] text-[var(--tess-ink-muted,#62666F)]">
                     <span className="px-1.5 py-0.5 rounded bg-[var(--tess-canvas-strong,#ECE9E2)] font-mono">
                       {item.category}
                     </span>
@@ -236,7 +236,7 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
         </div>
 
         {/* Palette Footer */}
-        <div className="h-9 px-4 border-t border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] flex items-center justify-between text-[11px] text-[var(--tess-ink-muted,#8B8F97)]">
+        <div className="h-9 px-4 border-t border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] flex items-center justify-between text-[11px] text-[var(--tess-ink-muted,#62666F)]">
           <div className="flex items-center gap-3">
             <span>↑↓ Navigate</span>
             <span>↵ Select</span>

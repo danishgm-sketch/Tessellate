@@ -187,7 +187,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
             rows={3}
             aria-label="Product description and requirements"
             placeholder="Describe what this product does, its users, complexity, and visual atmosphere…"
-            className="w-full text-base sm:text-lg text-[#111217] placeholder-[#8B8F97] bg-transparent resize-none border-none focus:outline-none focus:ring-0 leading-relaxed font-sans"
+            className="w-full text-base sm:text-lg text-[#111217] placeholder-[#62666F] bg-transparent resize-none border-none focus:outline-none focus:ring-0 leading-relaxed font-sans"
           />
 
           {/* Separator */}

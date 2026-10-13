@@ -201,7 +201,7 @@ export function MotionStudio() {
               className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                 selectedPresetId === p.id
                   ? 'border-[#111217] bg-[#111217] text-white shadow-sm'
-                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#8B8F97]'
+                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#62666F]'
               }`}
             >
               {p.name}

@@ -102,7 +102,7 @@ export function ResourceInspector({ manifest,componentName }: ResourceInspectorP
 
       {/* Design DNA Signature */}
       <div className="space-y-3">
-        <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)]">
+        <div className="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
           <Dna className="w-3.5 h-3.5 text-[var(--tess-cobalt,#2547E8)]" />
           <span>Design DNA Profile</span>
         </div>

@@ -121,7 +121,7 @@ export function ResourceCard({
           </span>
         </div>
 
-        <div className="flex items-center justify-between text-xs text-[var(--tess-ink-muted,#8B8F97)]">
+        <div className="flex items-center justify-between text-xs text-[var(--tess-ink-muted,#62666F)]">
           <span className="line-clamp-1">{manifest.creator.displayName}</span>
           <div className="flex items-center gap-1.5 shrink-0">
             {isVerified && (
