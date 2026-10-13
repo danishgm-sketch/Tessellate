@@ -5,6 +5,8 @@ export interface Env {
   GITHUB_CLIENT_ID?: string;
   GITHUB_CLIENT_SECRET?: string;
   TURNSTILE_SECRET_KEY?: string;
+  TESSELLATE_HOST_SECRET?: string;
+  TESSELLATE_GATEWAY_SECRET?: string;
 }
 
 export interface SessionUser {
