@@ -14,5 +14,6 @@ export function composeShowcase(id:string,catalogue:ResourceManifest[]):ProjectM
  const manifest=composeProjectForDirection({productModel:composed.productModel,screenGraph:composed.screenGraph,direction:{...base.direction,dna,navigationModel},catalogResources:catalogue,seed:id,briefDescription:description,diagnostics});
  if(diagnostics.length)throw new Error(`${id}: ${JSON.stringify(diagnostics)}`);
  manifest.id=id;manifest.name=showcase.name;manifest.description=`Example project. ${description}`;
+ manifest.createdAt=showcase.manifest.createdAt;manifest.updatedAt=showcase.manifest.updatedAt;
  return ProjectManifestSchema.parse(manifest);
 }

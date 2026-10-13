@@ -22,6 +22,9 @@ const result = () => composeProjectPipeline(brief, {catalogResources: resources,
 const walk = (node: ProjectNode): ProjectNode[] => [node, ...node.children.flatMap(walk)];
 
 describe('Deployed employee journey regressions', () => {
+  it('keeps a seed and brief tied to the same screen-graph identity', () => {
+    expect(result().screenGraph.id).toBe(result().screenGraph.id);
+  });
   it('applies a persisted semantic palette rather than changing an unrelated DNA number',()=>{
     const manifest=result().directionA.manifest;
     const palette=getSemanticPalette('coral-human')!;

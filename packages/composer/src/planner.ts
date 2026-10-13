@@ -16,6 +16,21 @@ export interface ScreenPlanResult {
   inferredAssumptions: string[];
 }
 
+function canonicalize(value: unknown): string {
+  if (value === null || typeof value !== 'object') return JSON.stringify(value) ?? 'null';
+  if (Array.isArray(value)) return `[${value.map(canonicalize).join(',')}]`;
+  const record = value as Record<string, unknown>;
+  return `{${Object.keys(record).sort().map((key) => `${JSON.stringify(key)}:${canonicalize(record[key])}`).join(',')}}`;
+}
+
+function stableScreenGraphId(productModel: ProductModel, archetype: string): string {
+  let hash = 0x811c9dc5;
+  for (const character of canonicalize(productModel)) {
+    hash = Math.imul(hash ^ character.charCodeAt(0), 0x01000193);
+  }
+  return `graph-${archetype}-${(hash >>> 0).toString(36)}`;
+}
+
 /**
  * Deterministically constructs a validated ScreenGraph from a ProductModel.
  * Follows required/optional screen rules, groups screens logically, and connects navigation edges.
@@ -311,7 +326,7 @@ export function planScreenGraph(productModel: ProductModel): ScreenPlanResult {
   }
 
   const screenGraph = ScreenGraphSchema.parse({
-    id: `graph-${primaryArchetypeTag}-${Date.now().toString(36)}`,
+    id: stableScreenGraphId(productModel, primaryArchetypeTag),
     groups,
     edges,
   });
