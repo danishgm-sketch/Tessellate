@@ -1,0 +1,67 @@
+---
+import '../../styles/global.css';
+import { SiteHeader } from '../../components/home/SiteHeader';
+import { FinalComposerFooter } from '../../components/home/FinalComposerFooter';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design DNA & Manifests — Tessellate Documentation</title>
+    <meta name="description" content="Schema contracts, Design DNA token dimensions, and AST specifications." />
+  </head>
+  <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white">
+    <SiteHeader client:load />
+
+    <main id="main-content" class="max-w-[960px] mx-auto px-4 sm:px-6 py-12 space-y-8">
+      <div class="space-y-2">
+        <a href="/docs" class="text-xs font-mono text-[#2547E8] hover:underline">← Back to Documentation</a>
+        <h1 class="text-3xl font-bold tracking-tight text-[#111217]">Design DNA & Manifest Contracts</h1>
+        <p class="text-sm text-[#62666F]">
+          Tessellate rejects arbitrary visual hallucination. Every screen is an Abstract Syntax Tree (AST) governed by canonical schemas.
+        </p>
+      </div>
+
+      <div class="space-y-6 text-sm leading-relaxed text-[#31353E]">
+        <section class="space-y-3 p-6 rounded-2xl bg-white border border-[#D9D6CF]">
+          <h2 class="text-base font-bold text-[#111217]">The 12 Dimensions of Design DNA</h2>
+          <p class="text-xs text-[#62666F]">
+            Every interface system in Tessellate is defined along 12 continuous normalized axes (0–100):
+          </p>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3 font-mono text-xs pt-2">
+            <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200">dataDensity (0–100)</div>
+            <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200">trust (0–100)</div>
+            <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200">interactionDensity (0–100)</div>
+            <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200">visualAmbition (0–100)</div>
+            <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200">motion (0–100)</div>
+            <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200">typographicExpression (0–100)</div>
+            <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200">imageryIntensity (0–100)</div>
+            <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200">depth (0–100)</div>
+            <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200">colorSaturation (0–100)</div>
+            <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200">radiusScale (0–100)</div>
+            <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200">borderWeight (0–100)</div>
+            <div class="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200">contrastFloor (0–100)</div>
+          </div>
+        </section>
+
+        <section class="space-y-3 p-6 rounded-2xl bg-white border border-[#D9D6CF]">
+          <h2 class="text-base font-bold text-[#111217]">Canonical Package Schemas</h2>
+          <p class="text-xs text-[#62666F]">
+            Import Zod contracts directly into your TypeScript projects:
+          </p>
+          <pre class="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 font-mono text-xs overflow-x-auto"><code>{`import {
+  ResourceManifestSchema,
+  ProjectManifestSchema,
+  DesignDNASchema,
+  ScreenNodeSchema
+} from '@tessellate/schemas';`}</code></pre>
+        </section>
+      </div>
+    </main>
+
+    <FinalComposerFooter client:idle />
+  </body>
+</html>

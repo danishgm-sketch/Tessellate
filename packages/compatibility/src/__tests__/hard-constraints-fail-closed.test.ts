@@ -1,9 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import type { ResourceManifest, ProjectNode } from '@tessellate/schemas';
+import type { ResourceManifest } from '@tessellate/schemas';
 import { composeProjectPipeline } from '../compose-pipeline.js';
 
 describe('Requirement 3: Hard Constraints Fail Closed', () => {
-  const descendants = (node:ProjectNode):ProjectNode[] => [node,...node.children.flatMap(descendants)];
   // A test catalog containing ONLY AA resources with rich performance
   const onlyAaRichCatalog: ResourceManifest[] = [
     {
@@ -81,7 +80,7 @@ describe('Requirement 3: Hard Constraints Fail Closed', () => {
 
     // Assert that NO screen node selected the violating AA resource
     for (const screen of result.directionA.manifest.screens) {
-      for (const node of descendants(screen.rootNode)) {
+      for (const node of screen.rootNode.children) {
         if (node.resourceRef) {
           expect(node.resourceRef.slug).not.toBe('editorial-hero');
           expect(node.resourceRef.id).not.toBe('res_sample_hero');
@@ -104,7 +103,7 @@ describe('Requirement 3: Hard Constraints Fail Closed', () => {
 
     // Assert that NO screen node selected the heavy violating resource
     for (const screen of result.directionA.manifest.screens) {
-      for (const node of descendants(screen.rootNode)) {
+      for (const node of screen.rootNode.children) {
         if (node.resourceRef) {
           expect(node.resourceRef.slug).not.toBe('editorial-hero');
           expect(node.resourceRef.id).not.toBe('res_sample_hero');
@@ -152,7 +151,7 @@ describe('Requirement 3: Hard Constraints Fail Closed', () => {
 
     // Assert the compliant resource WAS selected
     const allRefs = result.directionA.manifest.screens.flatMap((s) =>
-      descendants(s.rootNode).map((c) => c.resourceRef?.slug)
+      s.rootNode.children.map((c) => c.resourceRef?.slug)
     );
     expect(allRefs).toContain('editorial-hero');
   });

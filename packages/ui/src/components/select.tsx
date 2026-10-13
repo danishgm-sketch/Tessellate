@@ -40,7 +40,7 @@ export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
               ))
             : children}
         </select>
-        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-[var(--text-muted)] dark:text-[var(--text-muted)]">
+        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-[#8B8F97] dark:text-[#707986]">
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
           </svg>

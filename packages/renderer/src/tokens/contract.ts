@@ -80,13 +80,6 @@ export interface SemanticTokenContract {
  * Converts a SemanticTokenContract into standard CSS variable record
  * compatible with Tailwind CSS and CSS inline custom properties.
  */
-function accentInk(accent:string):string {
- const channels=accent.replace('#','').match(/.{2}/g)?.map(value=>parseInt(value,16)/255) ?? [0,0,0];
- const linear=channels.map(value=>value<=0.04045?value/12.92:Math.pow((value+0.055)/1.055,2.4));
- const luminance=(linear[0]??0)*0.2126+(linear[1]??0)*0.7152+(linear[2]??0)*0.0722;
- return 1.05/(luminance+0.05)>=4.5?'#FFFFFF':'#111217';
-}
-
 export function tokensToCssVariables(tokens: SemanticTokenContract): Record<string, string> {
   return {
     '--tess-canvas': tokens.colors.canvas,
@@ -99,8 +92,6 @@ export function tokensToCssVariables(tokens: SemanticTokenContract): Record<stri
     '--tess-ink-secondary': tokens.colors.textSecondary,
     '--tess-ink-muted': tokens.colors.textMuted,
     '--tess-accent': tokens.colors.accent,
-    '--tess-accent-primary': tokens.colors.accent,
-    '--tess-accent-ink': accentInk(tokens.colors.accent),
     '--tess-accent-hover': tokens.colors.accentHover,
     '--tess-accent-soft': tokens.colors.accentSoft,
     '--tess-signal-lime': tokens.colors.signalLime,
@@ -115,8 +106,6 @@ export function tokensToCssVariables(tokens: SemanticTokenContract): Record<stri
     '--tess-heading-letter-spacing': tokens.typography.headingLetterSpacing,
     '--tess-body-line-height': String(tokens.typography.bodyLineHeight),
 
-    '--tess-space-md': `${Math.round(tokens.spacing.baseUnit*4*tokens.spacing.multiplier)}px`,
-    '--tess-space-lg': `${Math.round(tokens.spacing.baseUnit*6*tokens.spacing.multiplier)}px`,
     '--tess-radius-xs': tokens.radius.xs,
     '--tess-radius-sm': tokens.radius.sm,
     '--tess-radius-md': tokens.radius.md,

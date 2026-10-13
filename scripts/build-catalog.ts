@@ -1,5 +1,3 @@
-import {composeShowcase} from '../packages/compatibility/src/showcase-composition.js';
-import {SHOWCASE_PROJECTS} from '../packages/composer/src/showcases.js';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -95,9 +93,6 @@ async function main() {
   fs.writeFileSync(path.join(sitePublicDir, 'openapi.json'), JSON.stringify(openApiSpec, null, 2), 'utf-8');
   console.log('[build-catalog] Generated /openapi.json');
 
-  const showcasesDir=path.join(sitePublicDir,'data','showcases');
-  fs.mkdirSync(showcasesDir,{recursive:true});
-  for(const showcase of SHOWCASE_PROJECTS)fs.writeFileSync(path.join(showcasesDir,`${showcase.id}.json`),JSON.stringify(composeShowcase(showcase.id,artifact.resources),null,2),'utf8');
   // 5. Generate Gold 40 runtime registry & exporter sources
   await generateGoldArtifacts();
 }

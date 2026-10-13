@@ -43,7 +43,6 @@ export interface FeelTrait {
 export interface WorkbenchState {
   // Project State
   manifest: ProjectManifest;
-  lastActionMessage:string;
   activeScreenId: string;
   selectedNodeId: string | null;
   hoveredNodeId: string | null;
@@ -111,10 +110,9 @@ export interface WorkbenchState {
   recomposeScreenAroundLocks: (screenId: string, options?: RecomposeOptions) => void;
   surpriseMe: (options?: SurpriseMeOptions) => void;
   replaceNodeWithResource: (nodeId: string, resource: ResourceManifest, variant?: string) => void;
-  blendWith: (otherManifest: ProjectManifest, config: BlendConfig, thirdManifest?:ProjectManifest) => void;
+  blendWith: (otherManifest: ProjectManifest, config: BlendConfig) => void;
 
   // DNA & Node Mutations
-  setPalette: (paletteId:string) => void;
   updateProjectDNA: (dnaChanges: PartialDesignDNA) => void;
   updateNodeDNA: (nodeId: string, dnaOverrides: PartialDesignDNA) => void;
   resetNodeDNA: (nodeId: string) => void;

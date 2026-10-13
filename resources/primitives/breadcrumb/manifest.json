@@ -82,18 +82,7 @@
   },
   "preview": {
     "component": "BreadcrumbPreview",
-    "defaultProps": {
-      "items": [
-        {
-          "label": "Library",
-          "href": "/explore"
-        },
-        {
-          "label": "Example",
-          "current": true
-        }
-      ]
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

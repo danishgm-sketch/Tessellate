@@ -636,7 +636,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
     id: 'recruitment',
     name: 'Recruitment & People Operations',
     description: 'Applicant tracking (ATS), candidate pipelines, interview scorecards, and onboarding.',
-    keywords: ['employee experience','employee','human resources','people operations','recruitment', 'hr', 'hiring', 'ats', 'candidates', 'jobs', 'interviews', 'onboarding', 'employees', 'people'],
+    keywords: ['recruitment', 'hr', 'hiring', 'ats', 'candidates', 'jobs', 'interviews', 'onboarding', 'employees', 'people'],
     primaryAudience: 'Recruiters, hiring managers, candidates, and HR directors',
     userSophistication: 60,
     trustRequirement: 88,
@@ -721,10 +721,9 @@ export function detectProductArchetypes(
     let score = 0;
 
     for (const kw of arch.keywords) {
-      const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      if (new RegExp(`\\b${escaped}\\b`, 'i').test(normalized)) {
+      if (normalized.includes(kw)) {
         // Boost longer keyword matches
-        score += ['employee experience','human resources','people operations'].includes(kw) ? 100 : kw.includes(' ') ? 35 : 20;
+        score += kw.includes(' ') ? 35 : 20;
       }
     }
 

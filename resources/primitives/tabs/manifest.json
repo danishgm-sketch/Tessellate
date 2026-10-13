@@ -82,21 +82,7 @@
   },
   "preview": {
     "component": "TabsPreview",
-    "defaultProps": {
-      "tabs": [
-        {
-          "id": "first",
-          "label": "Overview",
-          "content": "Example overview content."
-        },
-        {
-          "id": "second",
-          "label": "Details",
-          "content": "Example detail content."
-        }
-      ],
-      "activeId": "first"
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

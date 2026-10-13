@@ -17,7 +17,7 @@ const MOSAIC_RESOURCES: MosaicItem[] = [
     type: 'component',
     description: 'WebGL-accelerated time series chart with real-time streaming intervals and tooltip telemetry.',
     tags: ['Data Density 85', 'WebGL/Canvas', 'Micro-interactions'],
-    slug: 'area-chart',
+    slug: 'telemetry-chart',
   },
   {
     id: 'res-2',
@@ -25,7 +25,7 @@ const MOSAIC_RESOURCES: MosaicItem[] = [
     type: 'section',
     description: 'Virtualised tabular records display with inline sorting, filter chips, and column pin support.',
     tags: ['Virtual Scroll', 'High Density', 'Accessibility AA'],
-    slug: 'advanced-data-table',
+    slug: 'data-table',
   },
   {
     id: 'res-3',
@@ -41,7 +41,7 @@ const MOSAIC_RESOURCES: MosaicItem[] = [
     type: 'component',
     description: 'Executive overview metric card with delta indicator, sparkline trend, and status dot.',
     tags: ['Layout Modular', 'Dynamic Chroma', 'Contrast 95'],
-    slug: 'dashboard-kpi-grid',
+    slug: 'metric-card',
   },
   {
     id: 'res-5',
@@ -49,7 +49,7 @@ const MOSAIC_RESOURCES: MosaicItem[] = [
     type: 'pattern',
     description: 'Global ⌘K fuzzy action launcher with keyboard navigation, section groupings, and recent history.',
     tags: ['Keyboard First', 'Portal Modal', 'Fast Fuzzy Match'],
-    slug: 'ai-prompt-composer',
+    slug: 'command-palette',
   },
   {
     id: 'res-6',
@@ -57,7 +57,7 @@ const MOSAIC_RESOURCES: MosaicItem[] = [
     type: 'section',
     description: 'Multi-level responsive app shell navigation with collapsed rail and breadcrumb hierarchy.',
     tags: ['Landmark Navigation', 'ARIA Compliant', 'Mobile Sheet'],
-    slug: 'minimal-top-nav',
+    slug: 'navigation-bar',
   },
 ];
 
@@ -119,7 +119,7 @@ export function CatalogueMosaic() {
                         <Activity className="h-3.5 w-3.5 text-[#2547E8]" />
                         <span>TPS Telemetry</span>
                       </span>
-                      <span className="text-[#12603F] font-semibold">+14.2%</span>
+                      <span className="text-[#177B55] font-semibold">+14.2%</span>
                     </div>
                     <svg className="w-full h-20" viewBox="0 0 200 60" fill="none">
                       <path
@@ -147,10 +147,10 @@ export function CatalogueMosaic() {
                     <div className="space-y-1.5 py-1">
                       <div className="flex justify-between">
                         <span>#0x882A</span>
-                        <span className="text-[#12603F]">CONFIRMED</span>
+                        <span className="text-[#177B55]">CONFIRMED</span>
                         <span>£14,250.00</span>
                       </div>
-                      <div className="flex justify-between text-[#62666F]">
+                      <div className="flex justify-between text-black/40">
                         <span>#0x7B91</span>
                         <span>PENDING</span>
                         <span>£3,890.50</span>
@@ -187,7 +187,7 @@ export function CatalogueMosaic() {
                     </div>
                     <div className="my-auto">
                       <span className="text-3xl font-semibold tracking-tight text-[#111217]">1,492</span>
-                      <span className="text-xs text-[#12603F] ml-2 font-mono">▲ 99.98%</span>
+                      <span className="text-xs text-[#177B55] ml-2 font-mono">▲ 99.98%</span>
                     </div>
                     <div className="flex gap-1">
                       {[40, 65, 80, 55, 90, 75, 95].map((h, i) => (
@@ -203,7 +203,7 @@ export function CatalogueMosaic() {
 
                 {idx === 4 && (
                   <div className="h-full flex flex-col justify-between">
-                    <div className="flex items-center gap-2 p-2 rounded-lg bg-white border border-[#D9D6CF] text-xs text-[var(--text-muted)]">
+                    <div className="flex items-center gap-2 p-2 rounded-lg bg-white border border-[#D9D6CF] text-xs text-[#8B8F97]">
                       <Terminal className="h-3.5 w-3.5 text-[#2547E8]" />
                       <span>Search commands, workflows…</span>
                     </div>
@@ -211,7 +211,7 @@ export function CatalogueMosaic() {
                       <div className="px-2 py-1 rounded bg-[#E7EBFF] text-[#2547E8] font-semibold">
                         → Recompose screen around locks
                       </div>
-                      <div className="px-2 py-1 text-[#62666F]">
+                      <div className="px-2 py-1 text-black/50">
                         → Toggle WCAG AAA contrast floor
                       </div>
                     </div>
@@ -233,7 +233,7 @@ export function CatalogueMosaic() {
                   </div>
                 )}
 
-                <div className="absolute top-3 right-3 text-[10px] font-mono uppercase font-semibold text-[var(--text-muted)] bg-white/90 border border-[#D9D6CF] px-2 py-0.5 rounded-full">
+                <div className="absolute top-3 right-3 text-[10px] font-mono uppercase font-semibold text-[#8B8F97] bg-white/90 border border-[#D9D6CF] px-2 py-0.5 rounded-full">
                   {item.type}
                 </div>
               </div>

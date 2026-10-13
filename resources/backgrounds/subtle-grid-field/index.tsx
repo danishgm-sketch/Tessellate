@@ -23,7 +23,7 @@ export function SubtleGridField({ variant = 'quiet', children }: SubtleGridField
       : 'rgba(0, 0, 0, 0.05)';
 
   return (
-    <div className={`relative w-full p-8 rounded-[var(--tess-radius-xl,8px)] border overflow-hidden min-h-[260px] flex flex-col justify-center transition-colors ${cardBg}`}>
+    <div className={`relative w-full p-8 rounded-xl border overflow-hidden min-h-[260px] flex flex-col justify-center transition-colors ${cardBg}`}>
       {/* Grid pattern SVG */}
       <svg className="absolute inset-0 w-full h-full pointer-events-none">
         <defs>
@@ -37,7 +37,7 @@ export function SubtleGridField({ variant = 'quiet', children }: SubtleGridField
       <div className="relative z-10 max-w-md space-y-1">
         <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-400">Architectural Surface</span>
         <h4 className="text-base font-bold tracking-tight">Subtle Grid Field</h4>
-        <p className="text-xs text-[var(--tess-ink-muted,#62666F)] leading-relaxed">
+        <p className="text-xs text-neutral-500 leading-relaxed">
           Vector coordinate grid providing structural rhythm with zero client bundle overhead.
         </p>
         {children}

@@ -84,21 +84,7 @@
   },
   "preview": {
     "component": "CommandMenuPreview",
-    "defaultProps": {
-      "open": true,
-      "items": [
-        {
-          "id": "first",
-          "category": "Example commands",
-          "label": "Open example"
-        },
-        {
-          "id": "second",
-          "category": "Example commands",
-          "label": "Inspect selection"
-        }
-      ]
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

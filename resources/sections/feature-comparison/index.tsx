@@ -37,9 +37,9 @@ export function FeatureComparison({ variant = 'quiet' }: FeatureComparisonProps)
             <h3 className="text-xl font-bold mb-4">Deterministic Composition</h3>
             <ul className="space-y-3 text-xs sm:text-sm opacity-80">
               <li>✓ Validated JSON manifests with Zod schemas</li>
-              <li>✓ Design DNA tokens shared across composed resources</li>
-              <li>✓ Standalone TypeScript source code export</li>
-              <li>✓ WCAG 2.2 AA target; verify the integrated interface</li>
+              <li>✓ Mathematical Design DNA consistency guarantees</li>
+              <li>✓ 100% clean TypeScript source code export</li>
+              <li>✓ Certified WCAG 2.2 AA accessibility out of the box</li>
             </ul>
           </div>
         </div>

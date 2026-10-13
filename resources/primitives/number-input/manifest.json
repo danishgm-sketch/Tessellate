@@ -82,10 +82,7 @@
   },
   "preview": {
     "component": "NumberInputPreview",
-    "defaultProps": {
-      "label": "Example quantity",
-      "value": 3
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

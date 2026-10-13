@@ -82,10 +82,7 @@
   },
   "preview": {
     "component": "TooltipPreview",
-    "defaultProps": {
-      "content": "Actual tooltip content",
-      "children": "Hover or focus this example"
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

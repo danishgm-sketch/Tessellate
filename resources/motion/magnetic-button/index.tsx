@@ -12,9 +12,9 @@ export function MagneticButton({ variant = 'quiet', children = 'Explore Interfac
 
   const btnClass =
     variant === 'nocturne'
-      ? 'bg-[var(--tess-accent-primary,#06B6D4)] text-[var(--tess-accent-ink,#111217)] font-semibold hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]'
+      ? 'bg-cyan-500 text-black font-semibold hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]'
       : variant === 'expressive'
-      ? 'bg-[var(--tess-accent-primary,#2547E8)] text-[var(--tess-accent-ink,#FFFFFF)] font-medium hover:bg-blue-700 shadow-md'
+      ? 'bg-[#2547E8] text-white font-medium hover:bg-blue-700 shadow-md'
       : 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900';
 
   const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -36,7 +36,7 @@ export function MagneticButton({ variant = 'quiet', children = 'Explore Interfac
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ transform: `translate3d(${offset.x}px, ${offset.y}px, 0)` }}
-        className={`px-6 py-3 rounded-[var(--tess-radius-xl,8px)] text-xs transition-transform duration-150 ease-out select-none motion-reduce:transform-none ${btnClass}`}
+        className={`px-6 py-3 rounded-xl text-xs transition-transform duration-150 ease-out select-none motion-reduce:transform-none ${btnClass}`}
       >
         {children}
       </button>

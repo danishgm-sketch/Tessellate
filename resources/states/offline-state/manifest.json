@@ -5,7 +5,7 @@
   "name": "Offline State",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Offline status banner that leaves persistence and sync behavior to the host application.",
+  "description": "Local-first offline banner informing the user that cached manifests remain interactive while remote sync is paused.",
   "resourceType": "state",
   "categories": [
     "states",
@@ -132,7 +132,7 @@
     "status"
   ],
   "intent": {
-    "summary": "Offline state template; local saving and remote sync depend on the host app.",
+    "summary": "Local-first offline banner informing the user that cached manifests remain interactive while remote sync is paused.",
     "idealFor": [
       "PWA offline modes",
       "Airplane travel composing",
@@ -143,7 +143,7 @@
       "Authentication failures"
     ],
     "jobs": [
-      "Tell users how the host app behaves offline"
+      "Reassure users that local guest composition continues uninterrupted without network connection"
     ],
     "contentRequirements": [
       "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"

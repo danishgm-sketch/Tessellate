@@ -10,10 +10,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ density = 'standard', className, type = 'text', ...props }, ref) => {
     const baseStyles =
       'w-full rounded-lg border border-[#D9D6CF] bg-[#FFFFFF] text-[#111217] transition-colors ' +
-      'placeholder:text-[var(--text-muted)] ' +
+      'placeholder:text-[#8B8F97] ' +
       'focus:border-[#2547E8] focus:outline-none focus:ring-2 focus:ring-[#2547E8]/20 ' +
       'disabled:cursor-not-allowed disabled:bg-[#ECE9E2] disabled:opacity-60 ' +
-      'dark:border-[#272C34] dark:bg-[#111419] dark:text-[#F5F7FA] dark:placeholder:text-[var(--text-muted)] ' +
+      'dark:border-[#272C34] dark:bg-[#111419] dark:text-[#F5F7FA] dark:placeholder:text-[#707986] ' +
       'dark:focus:border-[#6782FF] dark:focus:ring-[#6782FF]/20';
 
     const densityStyles = {

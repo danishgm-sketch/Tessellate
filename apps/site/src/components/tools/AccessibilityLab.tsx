@@ -84,7 +84,7 @@ export function AccessibilityLab() {
 
         {/* Global Badge */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#D9D6CF] bg-white text-xs font-semibold text-[#12603F]">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#D9D6CF] bg-white text-xs font-semibold text-[#177B55]">
             <ShieldCheck className="h-4 w-4" />
             <span>WCAG 2.2 AA Baseline Guaranteed</span>
           </div>
@@ -146,13 +146,13 @@ export function AccessibilityLab() {
                   Foreground (Text / Icon)
                 </label>
                 <div className="flex items-center gap-2">
-                  <input aria-label="Foreground colour"
+                  <input
                     type="color"
                     value={fgColor}
                     onChange={(e) => setFgColor(e.target.value)}
                     className="h-8 w-8 rounded cursor-pointer border border-[#D9D6CF]"
                   />
-                  <input aria-label="Foreground colour"
+                  <input
                     type="text"
                     value={fgColor}
                     onChange={(e) => setFgColor(e.target.value)}
@@ -167,13 +167,13 @@ export function AccessibilityLab() {
                   Background (Surface / Canvas)
                 </label>
                 <div className="flex items-center gap-2">
-                  <input aria-label="Background colour"
+                  <input
                     type="color"
                     value={bgColor}
                     onChange={(e) => setBgColor(e.target.value)}
                     className="h-8 w-8 rounded cursor-pointer border border-[#D9D6CF]"
                   />
-                  <input aria-label="Background colour"
+                  <input
                     type="text"
                     value={bgColor}
                     onChange={(e) => setBgColor(e.target.value)}
@@ -194,13 +194,13 @@ export function AccessibilityLab() {
               <div className="space-y-1">
                 <label className="block text-xs font-semibold text-[#111217]">Outline Chroma</label>
                 <div className="flex items-center gap-2">
-                  <input aria-label="Focus outline colour"
+                  <input
                     type="color"
                     value={ringColor}
                     onChange={(e) => setRingColor(e.target.value)}
                     className="h-8 w-8 rounded cursor-pointer border border-[#D9D6CF]"
                   />
-                  <input aria-label="Focus outline colour"
+                  <input
                     type="text"
                     value={ringColor}
                     onChange={(e) => setRingColor(e.target.value)}
@@ -215,7 +215,7 @@ export function AccessibilityLab() {
                   <span className="text-[#111217]">Outline Width</span>
                   <span className="font-mono text-[#62666F]">{ringWidth}px</span>
                 </div>
-                <input aria-label="Focus outline width"
+                <input
                   type="range"
                   min="1"
                   max="4"
@@ -232,7 +232,7 @@ export function AccessibilityLab() {
                   <span className="text-[#111217]">Outline Offset</span>
                   <span className="font-mono text-[#62666F]">{ringOffset}px</span>
                 </div>
-                <input aria-label="Focus outline offset"
+                <input
                   type="range"
                   min="0"
                   max="6"
@@ -256,7 +256,7 @@ export function AccessibilityLab() {
                   <span className="text-[#111217]">Physical Dimension (Width × Height)</span>
                   <span className="font-mono text-[#62666F]">{targetSize}px</span>
                 </div>
-                <input aria-label="Touch target size"
+                <input
                   type="range"
                   min="20"
                   max="64"
@@ -288,27 +288,27 @@ export function AccessibilityLab() {
               {/* Scorecard Matrix */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <div className="rounded-xl border border-[#D9D6CF] bg-white p-3 space-y-1">
-                  <span className="text-[10px] font-mono text-[var(--text-muted)] block">CONTRAST RATIO</span>
+                  <span className="text-[10px] font-mono text-[#8B8F97] block">CONTRAST RATIO</span>
                   <span className="text-2xl font-bold text-[#111217]">{ratio.toFixed(2)}:1</span>
-                  <span className={`text-[10px] font-mono font-bold block ${normalTextPass ? 'text-[#12603F]' : 'text-[#C83D48]'}`}>
+                  <span className={`text-[10px] font-mono font-bold block ${normalTextPass ? 'text-[#177B55]' : 'text-[#C83D48]'}`}>
                     {normalTextAaa ? 'AAA HIGHEST' : normalTextPass ? 'AA PASS' : 'FAIL'}
                   </span>
                 </div>
 
                 <div className="rounded-xl border border-[#D9D6CF] bg-white p-3 space-y-1">
-                  <span className="text-[10px] font-mono text-[var(--text-muted)] block">NORMAL TEXT (16px)</span>
+                  <span className="text-[10px] font-mono text-[#8B8F97] block">NORMAL TEXT (16px)</span>
                   <span className="text-base font-bold text-[#111217]">{normalTextPass ? 'PASS' : 'FAIL'}</span>
                   <span className="text-[10px] font-mono text-[#62666F] block">Req: 4.5:1</span>
                 </div>
 
                 <div className="rounded-xl border border-[#D9D6CF] bg-white p-3 space-y-1">
-                  <span className="text-[10px] font-mono text-[var(--text-muted)] block">LARGE TEXT (18pt+)</span>
+                  <span className="text-[10px] font-mono text-[#8B8F97] block">LARGE TEXT (18pt+)</span>
                   <span className="text-base font-bold text-[#111217]">{largeTextPass ? 'PASS' : 'FAIL'}</span>
                   <span className="text-[10px] font-mono text-[#62666F] block">Req: 3.0:1</span>
                 </div>
 
                 <div className="rounded-xl border border-[#D9D6CF] bg-white p-3 space-y-1">
-                  <span className="text-[10px] font-mono text-[var(--text-muted)] block">UI COMPONENTS</span>
+                  <span className="text-[10px] font-mono text-[#8B8F97] block">UI COMPONENTS</span>
                   <span className="text-base font-bold text-[#111217]">{uiComponentPass ? 'PASS' : 'FAIL'}</span>
                   <span className="text-[10px] font-mono text-[#62666F] block">Req: 3.0:1</span>
                 </div>
@@ -338,7 +338,7 @@ export function AccessibilityLab() {
 
           {activeTab === 'focus' && (
             <div className="rounded-2xl border border-[#D9D6CF] bg-[#FAF9F6] p-6 shadow-sm space-y-6">
-              <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[var(--text-muted)]">
+              <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[#8B8F97]">
                 <span>KEYBOARD FOCUS VISIBILITY STAGE</span>
                 <span>TAB TO FOCUS</span>
               </div>
@@ -360,7 +360,7 @@ export function AccessibilityLab() {
                   <span className="text-xs font-semibold text-[#111217] block">
                     Form Input Field Indicator
                   </span>
-                  <input aria-label="Example input field"
+                  <input
                     type="text"
                     defaultValue="Tab-accessible user input field"
                     className="w-full text-xs px-3 py-2 rounded-lg border border-[#D9D6CF] bg-[#FAF9F6]"
@@ -376,9 +376,9 @@ export function AccessibilityLab() {
 
           {activeTab === 'target' && (
             <div className="rounded-2xl border border-[#D9D6CF] bg-[#FAF9F6] p-6 shadow-sm space-y-6">
-              <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[var(--text-muted)]">
+              <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[#8B8F97]">
                 <span>PHYSICAL TARGET COMPARISON</span>
-                <span className={targetSize >= 44 ? 'text-[#12603F] font-bold' : 'text-[#A66A15]'}>
+                <span className={targetSize >= 44 ? 'text-[#177B55] font-bold' : 'text-[#A66A15]'}>
                   {targetSize >= 44 ? 'OPTIMAL (44px+)' : targetSize >= 24 ? 'COMPLIANT (24px+)' : 'FAIL'}
                 </span>
               </div>

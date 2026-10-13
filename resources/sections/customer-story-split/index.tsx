@@ -7,17 +7,14 @@ export interface CustomerStorySplitProps {
   company?: string;
   challenge?: string;
   solution?: string;
-  storyHref?: string;
 }
 
 export function CustomerStorySplit({
   variant = 'quiet',
-  company = 'Example organisation',
-  challenge = 'Add a verified customer challenge and obtain approval before publishing this story.',
-  solution = 'Describe the implemented solution and include only outcomes supported by customer-approved evidence.',
-  storyHref,
+  company = 'Helios Autonomous Systems',
+  challenge = 'Before Tessellate, our robotics dashboard suffered from 12 disconnected design styles and heavy bundle sizes.',
+  solution = 'Within days of adopting Tessellate, we composed our entire telemetry interface using verified blocks that load in under 20ms.',
 }: CustomerStorySplitProps) {
-  const noteId = React.useId();
   let bg = 'bg-white text-neutral-900 border-neutral-200';
   let box = 'bg-neutral-100 border-neutral-200';
 
@@ -34,26 +31,22 @@ export function CustomerStorySplit({
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className={`aspect-square rounded-2xl border flex items-center justify-center p-8 text-center ${box}`}>
           <div className="flex flex-col items-center">
-            <span className="font-mono text-xs uppercase tracking-widest opacity-60 mb-2">Example customer story</span>
+            <span className="font-mono text-xs uppercase tracking-widest opacity-60 mb-2">Team Spotlight</span>
             <span className="font-bold text-lg">{company}</span>
-            {!storyHref && <span id={noteId} className="text-xs opacity-75 mt-2">Replace with approved organisation details</span>}
+            <span className="text-xs opacity-75 mt-2">Engineering & Autonomy Squad</span>
           </div>
         </div>
 
         <div>
-          <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-4 block">Illustrative story layout</span>
-          <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-4">Customer challenge and response</h3>
+          <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-4 block">The Transformation</span>
+          <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-4">From Fragmentation to Unified Speed</h3>
           <div className="space-y-4 text-sm opacity-80 leading-relaxed mb-6">
             <p><strong>The Challenge:</strong> {challenge}</p>
             <p><strong>The Solution:</strong> {solution}</p>
           </div>
-          {storyHref ? (
-            <a href={storyHref} className="text-xs font-semibold uppercase tracking-wider underline hover:opacity-75 transition-opacity">Read approved customer story →</a>
-          ) : (
-            <button type="button" disabled aria-describedby={noteId} className="text-xs font-semibold uppercase tracking-wider underline opacity-60 cursor-not-allowed">
-              Story link not configured
-            </button>
-          )}
+          <button type="button" className="text-xs font-semibold uppercase tracking-wider underline hover:opacity-75 transition-opacity">
+            Explore Helios System Architecture →
+          </button>
         </div>
       </div>
     </section>

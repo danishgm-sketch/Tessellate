@@ -82,10 +82,7 @@
   },
   "preview": {
     "component": "SliderPreview",
-    "defaultProps": {
-      "label": "Example intensity",
-      "value": 40
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

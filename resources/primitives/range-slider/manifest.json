@@ -83,13 +83,7 @@
   },
   "preview": {
     "component": "RangeSliderPreview",
-    "defaultProps": {
-      "label": "Example range",
-      "value": [
-        25,
-        75
-      ]
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

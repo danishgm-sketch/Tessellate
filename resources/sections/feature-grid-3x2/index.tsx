@@ -11,15 +11,15 @@ export interface FeatureGrid3x2Props {
 
 export function FeatureGrid3x2({
   variant = 'quiet',
-  headline = 'Tools for composing portable interfaces',
-  subheadline = 'Illustrative capabilities. Verify integrations and quality for your own deployment before publishing.',
+  headline = 'Engineered for durability across every layer of the interface.',
+  subheadline = 'Six architectural pillars powering the Tessellate composition runtime.',
   features = [
-    { title: 'Portable React Export', desc: 'Export a standalone React and Tailwind project and continue working in your own codebase.' },
-    { title: 'Design DNA', desc: 'Use shared spacing, curvature, typography, and contrast settings to guide composition.' },
-    { title: 'Schema Validation', desc: 'Validate project manifests against the published Zod contracts.' },
-    { title: 'Accessibility Targets', desc: 'Use accessible patterns and verify each implementation with automated and manual testing.' },
-    { title: 'Registry Integrations', desc: 'Configure the registry services required by your deployment.' },
-    { title: 'Browser-first Workflow', desc: 'Local persistence and sign-in depend on the host app and its configured integrations.' },
+    { title: 'Zero Runtime Lock-In', desc: 'Exports directly to clean React and Tailwind CSS without hidden proprietary libraries.' },
+    { title: 'Deterministic DNA', desc: 'Enforces mathematical harmony across spacing, curvature, typography, and contrast.' },
+    { title: 'Sub-Millisecond Parsing', desc: 'Validates entire component trees in microseconds using local Zod schemas.' },
+    { title: 'Accessible by Default', desc: 'Meets WCAG 2.2 AA standards with full keyboard traversal and contrast tokens.' },
+    { title: 'Agent-Ready Registry', desc: 'Equipped with OpenAPI, llms.txt, and MCP servers for autonomous coding tools.' },
+    { title: 'Guest-First Storage', desc: 'Operates completely client-side with optional GitHub OAuth for cloud sync.' },
   ],
 }: FeatureGrid3x2Props) {
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';

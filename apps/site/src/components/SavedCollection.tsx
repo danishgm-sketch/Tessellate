@@ -1,8 +1,0 @@
-import React,{useEffect,useState} from 'react';
-import {ResourceManifestSchema,type ResourceManifest} from '@tessellate/schemas';
-import {ResourceCard} from './ResourceCard';
-export function SavedCollection(){
- const [resources,setResources]=useState<ResourceManifest[]>([]),[loading,setLoading]=useState(true),[error,setError]=useState('');
- useEffect(()=>{let disposed=false;const load=async()=>{try {const response=await fetch('/data/catalog.json');if(!response.ok)throw new Error(`Catalogue HTTP ${response.status}`);const catalogue=ResourceManifestSchema.array().parse((await response.json()).resources);const saved:unknown=JSON.parse(localStorage.getItem('tessellate_saved_resources')??'[]');if(!Array.isArray(saved)||saved.some(slug=>typeof slug!=='string'))throw new Error('Stored collection is invalid and has been preserved.');if(!disposed)setResources(catalogue.filter(resource=>saved.includes(resource.slug)));}catch(cause){if(!disposed)setError(String(cause));}finally{if(!disposed)setLoading(false);}};void load();window.addEventListener('tessellate-saved-resources-changed',load);return ()=>{disposed=true;window.removeEventListener('tessellate-saved-resources-changed',load);};},[]);
- return loading?<p role="status">Loading your saved resources…</p>:error?<p role="alert">{error}</p>:resources.length?<div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">{resources.map(resource=><ResourceCard key={resource.id} manifest={resource}/>)}</div>:<p>No resources saved in this browser yet. Use the bookmark control in <a href="/explore" className="underline">Explore</a> to start your collection.</p>;
-}

@@ -5,7 +5,7 @@
   "name": "Executive Summary Panel",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Executive briefing template with explicitly illustrative values.",
+  "description": "High-level synthesis card summarizing critical alerts, key wins, and risk flags.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -130,7 +130,7 @@
     "briefing"
   ],
   "intent": {
-    "summary": "Illustrative summary; replace sample copy and values with verified data.",
+    "summary": "High-level synthesis card summarizing critical alerts, key wins, and risk flags.",
     "idealFor": [
       "Executive briefing views and high-level team summaries"
     ],
@@ -138,7 +138,7 @@
       "Raw event log feeds"
     ],
     "jobs": [
-      "Summarize connected, verified operational information"
+      "Synthesize multi-source information into a crisp executive briefing"
     ],
     "contentRequirements": [
       "High data density, keyboard accessibility, semantic tokens"

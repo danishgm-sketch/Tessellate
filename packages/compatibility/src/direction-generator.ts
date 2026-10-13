@@ -111,7 +111,7 @@ export function generateDirections(input: DirectionGenerationInput): DirectionGe
     tagline: namePack.conservative.tagline,
     rationale:
       'Closest to inferred product priors with standard sidebar navigation, reinforced accessibility floors, and rock-solid predictable ergonomics.',
-    dna: {...dnaA,navigationModel:navModelA},
+    dna: dnaA,
     navigationModel: navModelA,
     primaryGrammarId: grammarA.id,
     layoutFamily: grammarA.layoutFamily,
@@ -152,7 +152,7 @@ export function generateDirections(input: DirectionGenerationInput): DirectionGe
     tagline: namePack.expressive.tagline,
     rationale:
       'Elevated aesthetic expression, richer motion personalities, and bolder typographic presence while maintaining identical functional workflow jobs.',
-    dna: {...dnaB,navigationModel:navModelB},
+    dna: dnaB,
     navigationModel: navModelB,
     primaryGrammarId: grammarB.id,
     layoutFamily: grammarB.layoutFamily,
@@ -170,7 +170,6 @@ export function generateDirections(input: DirectionGenerationInput): DirectionGe
   // 3. DIRECTION C: Structural Alternative
   const dnaC: DesignDNA = {
     ...baseDna,
-    visualMode: 'dark',
     structuralCreativity: Math.min(95, (baseDna.structuralCreativity ?? 35) + 30),
     visualAmbition: Math.min(85, (baseDna.visualAmbition ?? 40) + 10),
     interactionDensity: Math.min(90, (baseDna.interactionDensity ?? 50) + 20),
@@ -178,7 +177,7 @@ export function generateDirections(input: DirectionGenerationInput): DirectionGe
   };
 
   // Pick alternative navigation model and grammar
-  const candidateNavs: NavigationStyle[] = ['rail'];
+  const candidateNavs: NavigationStyle[] = ['command-palette', 'rail', 'header-minimal'];
   const navModelC = rng.pick(candidateNavs) ?? 'rail';
 
   let grammarC = COMPOSITION_GRAMMARS['three-pane-intelligence-workspace'];
@@ -198,7 +197,7 @@ export function generateDirections(input: DirectionGenerationInput): DirectionGe
     tagline: namePack.structural.tagline,
     rationale:
       'Explores an inventive structural topology (three-pane workspace or docked terminal) with higher interaction density and alternative spatial navigation.',
-    dna: {...dnaC,navigationModel:navModelC},
+    dna: dnaC,
     navigationModel: navModelC,
     primaryGrammarId: grammarC.id,
     layoutFamily: grammarC.layoutFamily,

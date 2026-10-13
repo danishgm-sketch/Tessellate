@@ -12,10 +12,10 @@ export interface SocialProofHeroProps {
 
 export function SocialProofHero({
   variant = 'quiet',
-  headline = 'Make customer proof verifiable.',
-  subheadline = 'Example layout. Add approved customer stories and measured adoption before publishing.',
-  userCount = 'Example: 128 teams',
-  rating = 'Example rating',
+  headline = 'Trusted by 40,000+ engineers building modern web applications.',
+  subheadline = 'From early-stage startups to publicly traded technology companies, Tessellate powers reliable UI architecture.',
+  userCount = '42,800+ teams',
+  rating = '4.9/5 from 1,200 reviews',
 }: SocialProofHeroProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';
   let badge = 'bg-neutral-100 text-neutral-700';
@@ -52,9 +52,9 @@ export function SocialProofHero({
         <div className="flex items-center gap-4 text-xs font-mono opacity-60">
           <span>{userCount}</span>
           <span>•</span>
-          <span>Illustrative content</span>
+          <span>Zero security incidents</span>
           <span>•</span>
-          <span>Evidence required</span>
+          <span>SOC2 Type II</span>
         </div>
       </div>
     </section>

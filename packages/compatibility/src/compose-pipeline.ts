@@ -22,8 +22,6 @@ import {
 import { getCompositionGrammar, type CompositionGrammar } from './grammars.js';
 import { evaluateHardConstraints } from './hard-constraints.js';
 import { calculateCompatibilityScore } from './scoring.js';
-import { resourceMatchesRole } from './semantic-roles.js';
-import { bindResourceContent } from './content-bindings.js';
 import {
   isResourceComposerEligible,
   isResourceCompositionCapable,
@@ -44,7 +42,6 @@ export interface DirectionCompositionOptions {
   catalogResources?: ResourceManifest[];
   seed?: string | number;
   diagnostics?: RoleResolutionDiagnostic[];
-  briefDescription?: string;
 }
 
 export interface ComposedDirectionOutput {
@@ -88,8 +85,21 @@ function resolveBestResourceForRole(
     };
   }
 
+  const roleNorm = semanticRole.toLowerCase();
+
   // 1. Role / category filtering
-  const candidates = catalog.filter(res => isResourceComposerEligible(res) && resourceMatchesRole(res,semanticRole));
+  let candidates = catalog.filter((res) => {
+    if (!isResourceComposerEligible(res)) return false;
+    const hasRole = (res.roles ?? []).some((r) => r.toLowerCase().includes(roleNorm) || roleNorm.includes(r.toLowerCase()));
+    const hasCategory = grammar?.candidateCategories.some((c) => (res.categories ?? []).includes(c));
+    const hasTag = (res.tags ?? []).some((t) => t.toLowerCase() === roleNorm);
+    return hasRole || hasCategory || hasTag;
+  });
+
+  if (candidates.length === 0) {
+    // If no role-specific candidates match, consider general eligible catalog resources
+    candidates = catalog.filter(isResourceComposerEligible);
+  }
 
   // 2. Filter by hard constraints — STRICT FAIL CLOSED
   const validCandidates: ResourceManifest[] = [];
@@ -199,11 +209,8 @@ export function composeProjectForDirection(
       ];
 
   for (const screenNode of screensToInstantiate) {
-    // A page keeps its semantic jobs. Direction grammar changes hierarchy, not
-    // the identity of required content (a marketing CTA cannot become an IDE pane).
-    const screenRoles = [...new Set(screenNode.requiredRoles ?? [])];
-    if (productModel.entities.some(entity=>entity.name==='Employee') && screenNode.screenType==='dashboard' && !screenRoles.includes('data-table')) screenRoles.push('data-table');
-    if (!screenRoles.includes('navigation') && screenNode.screenType!=='authentication') screenRoles.unshift('navigation');
+    // Role requirements: combine screen required roles with grammar role ordering
+    const screenRoles = [...new Set([...(screenNode.requiredRoles ?? []), ...(grammar?.requiredRoles ?? [])])];
     if (screenRoles.length === 0) {
       screenRoles.push('navigation', 'header', 'content-grid', 'footer');
     }
@@ -217,7 +224,7 @@ export function composeProjectForDirection(
         role,
         direction.dna,
         grammar,
-        role==='navigation' ? catalog.filter(resource=>resource.slug === (screenNode.screenType!=='marketing' && direction.navigationModel==='sidebar' ? 'collapsible-sidebar' : 'minimal-top-nav')) : catalog,
+        catalog,
         productModel,
         surroundingForScreen
       );
@@ -230,18 +237,16 @@ export function composeProjectForDirection(
         surroundingForScreen.push(resource);
       }
 
-      const variant = screenNode.screenType==='marketing' && productModel.entities.some(entity=>entity.name==='Employee') ? (direction.type==='conservative'?'quiet':'expressive') :
+      const variant =
         direction.type === 'expressive'
           ? 'expressive'
           : direction.type === 'structural-alternative'
           ? 'nocturne'
           : 'quiet';
 
-      const content = bindResourceContent(productModel,screenNode,role,allScreenNodes,resource?.slug ?? '',options.briefDescription);
-      if (role==='navigation') content.orientation = screenNode.screenType!=='marketing' && direction.type==='structural-alternative' ? 'vertical' : 'horizontal';
-      // Only persist props declared by the selected resource, plus semantic title.
-      // Resource props are consumed by both runtime and standalone source.
-      const nodeProps: Record<string, unknown> = content;
+      const nodeProps: Record<string, unknown> = {
+        title: `${screenNode.name} ${role}`,
+      };
       if (diagnostic) {
         nodeProps.unresolvedRequiredRole = true;
         nodeProps.diagnostic = diagnostic;
@@ -261,9 +266,7 @@ export function composeProjectForDirection(
 
     // Assemble root layout according to direction navigation topology
     let rootNode: ProjectNode;
-    if (screenNode.screenType==='marketing') {
-      rootNode = {id:`root-${screenNode.id}`,nodeType:'layout',semanticRole:'marketing-page',children:sectionNodes,slots:{},props:{layoutFamily:direction.layoutFamily}};
-    } else if (direction.navigationModel === 'sidebar') {
+    if (direction.navigationModel === 'sidebar') {
       const navNode = sectionNodes.find((n) => n.semanticRole === 'navigation') ?? sectionNodes[0]!;
       const contentNodes = sectionNodes.filter((n) => n.id !== navNode.id);
       rootNode = {
@@ -316,13 +319,10 @@ export function composeProjectForDirection(
         props: { layoutVariant: 'vertical-flow' },
       };
     }
-    if (screenNode.screenType==='marketing' && productModel.entities.some(entity=>entity.name==='Employee'))rootNode.dnaOverrides={visualMode:'light',warmth:82,playfulness:65};
-    if (screenNode.screenType==='onboarding') rootNode.dnaOverrides={playfulness:75,warmth:78,curvature:65,motionPlayfulness:55};
-    if (screenNode.screenType==='settings') rootNode.dnaOverrides={playfulness:8,professionalism:96,curvature:12,motion:10};
 
     screens.push({
       id: screenNode.id,
-      screenNodeId: screenNode.id,
+      screenNodeId: `node-${screenNode.id}`,
       name: screenNode.name,
       slug: screenNode.slug,
       rootNode,
@@ -334,8 +334,8 @@ export function composeProjectForDirection(
   const manifest: ProjectManifest = {
     schemaVersion: '1.0.0',
     id: manifestId,
-    name: `${direction.name} — ${productModel.entities.some(entity=>entity.name==='Employee') ? 'Employee experience' : primaryArchetype.toUpperCase()}`,
-    description: options.briefDescription ?? direction.rationale,
+    name: `${direction.name} — ${primaryArchetype.toUpperCase()}`,
+    description: direction.rationale,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     catalogVersion: '0.1.0',
@@ -343,7 +343,7 @@ export function composeProjectForDirection(
     productModel,
     designDNA: direction.dna,
     brand: {
-      name: productModel.entities.some(entity=>entity.name==='Employee')?'People & Co':`${primaryArchetype.toUpperCase()} System`,
+      name: `${primaryArchetype.toUpperCase()} System`,
     },
     constraints: productModel.constraints,
     screenGraph,
@@ -403,7 +403,6 @@ export function composeProjectPipeline(
     catalogResources: options?.catalogResources,
     seed: `${seed}-dir-a`,
     diagnostics: diagA,
-    briefDescription: brief.description,
   });
 
   const diagB: RoleResolutionDiagnostic[] = [];
@@ -414,7 +413,6 @@ export function composeProjectPipeline(
     catalogResources: options?.catalogResources,
     seed: `${seed}-dir-b`,
     diagnostics: diagB,
-    briefDescription: brief.description,
   });
 
   const diagC: RoleResolutionDiagnostic[] = [];
@@ -425,7 +423,6 @@ export function composeProjectPipeline(
     catalogResources: options?.catalogResources,
     seed: `${seed}-dir-c`,
     diagnostics: diagC,
-    briefDescription: brief.description,
   });
 
   return {

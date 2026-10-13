@@ -201,51 +201,21 @@ This file records major decisions so autonomous agents do not repeatedly reopen 
 
 ## Open implementation decisions
 
-### D-033 — Sites save-only review of the canonical static application
-**Date:** 2026-10-11  
-**Context:** Owner requested a Sites staging port of `50a2c7f`, preserving architecture,
-with a saved version and explicit approval before any publication. This request
-overrides autonomous continuation through unrelated build-order feature work.  
-**Decision:** Keep Astro and every shared runtime package. Package its static export
-through `apps/sites/prepare-static.mjs` into root `dist`; provide the already compiled
-CSS at the existing detail-page stylesheet URL. Save an archive-backed Sites version
-without deploying. Do not add databases, OAuth credentials, API mocks or paid services.
-Record missing `/docs` and `/blueprints` web routes and Button-only detail preview
-coverage as base-commit acceptance gaps, even though the existing merge gate passes.
-Use `/showcases`, the actual existing route. See `apps/sites/README.md` and validation
-results for exact supported scope and post-approval runtime checks.  
-**Alternatives rejected:** Wholesale rewrite, Vinext substitution, copied composition
-logic, fabricated routes/previews, publishing before approval.  
-**Cost impact:** No added paid dependency, inference, D1/R2, or always-on runtime;
-Sites billing must be confirmed separately because tools expose no tariff.  
-**Security impact:** Existing CSP/header artifact preserved. Existing same-origin
-preview sandbox and missing sender-origin checks are disclosed; this review must
-not be extended to authenticated/untrusted previews without proper origin isolation.
-Actual hosted header enforcement remains unverified until approved publication.  
-**Status:** PROVISIONAL review deployment only; canonical architecture unchanged.
-
-### D-034 — Runtime audit fixes use canonical data and resource contracts
-**Date:** 2026-10-12  
-**Context:** The deployed employee journey inferred analytics, selected unrelated
-shells for content roles, lost edits on reload and exported an invalid variant.
-An independent installed export also discarded nested content props. The existing
-technical gate did not establish runtime acceptance.  
-**Decision:** Keep Astro, React, the existing 18 archetypes and Gold 40 registry.
-Specialise the people-operations archetype for employee briefs; match whole words
-and domain phrases. Preserve domain screen intents and provide labelled example
-content through the existing resource APIs. Match semantic roles explicitly,
-fail closed and use canonical variant IDs. Generate export prop metadata with the
-TypeScript compiler at build time and serialise structured props into standalone
-source. Journal edits in the existing browser stores, await IndexedDB transaction
-completion and retain invalid records in recoverable read-only mode. Compare uses
-the opened project's checkpoint. All issues remain open until deployed re-audit.  
-**Alternatives rejected:** LLM dependency, synthetic catalogue fallbacks, suppressing
-export errors, retaining demo finance content, rewriting the application.  
-**Cost impact:** None; no paid service, D1, R2 or provider inference added.  
-**Security impact:** No credentials added or persisted. Export metadata generation
-uses the compiler only at build time; no dynamic source evaluation in product runtime.
-Existing runtime header enforcement remains an open deployment finding.  
-**Status:** Runtime remediation in progress; deployment acceptance pending.
+### D-033 — Latest main on the existing ChatGPT Sites review host
+**Date:** 2026-10-13
+**Context:** Owner requested publication of current main revision `22f2961` on
+the already-public Tessellate ChatGPT Site.
+**Decision:** Keep Astro and all application packages. Retain the isolated Sites
+asset Worker to enforce security headers, a single compiled stylesheet, and
+opaque preview iframe/message isolation. The Python Tree-GNN daemon cannot run
+in the Worker runtime; no host transport is configured. Report its actual offline
+state via inference health so the existing client uses deterministic fallback.
+Do not expose development host-control endpoints or volatile queue state.
+**Cost impact:** No D1/R2, paid SaaS, or additional hosted service. Existing
+infrastructure cost principle is preserved; no Sites tariff is asserted.
+**Security impact:** No new secrets, auth bindings, or community-code privileges;
+preview sandbox and CSP remain enforced.
+**Status:** Review deployment compatibility decision.
 
 Agents may decide these locally if consistent with contracts and cost/security rules:
 
@@ -273,74 +243,3 @@ Record a new decision below when one materially affects architecture/product beh
 **Cost impact:** None / expected amount.  
 **Security impact:** None / describe.  
 **Status:** LOCKED / PROVISIONAL.
-
-
-### D-035 — Enforce Sites security with an isolated Astro asset Worker
-**Date:** 2026-10-12  
-**Context:** The original public Sites deployment ignored `_headers`. Real previews
-also used a same-origin sandbox and concealed unresolved slugs with Button.  
-**Decision:** Preserve the Astro output and add only an isolated `apps/sites`
-asset Worker using the supported Cloudflare Vite build. It streams the canonical
-ASSETS response with enforced security headers. No API or storage architecture
-moves into the adapter. Vetted catalogue code imports into opaque script-only
-preview frames. Wildcard CORS applies only to public compiled assets. Preview CSP
-keeps `connect-src 'none'`; disabling CSS splitting removes fetch-based stylesheet
-preloading. Dynamic module imports select compiled resource implementations, never
-raw source evaluation. Validate preview messages against the parent window, its
-referrer origin and the canonical protocol. The pinned official starter runtime
-uses compatibility date 2026-05-15; a newer date exceeds its local emulation range.  
-**References:** https://developers.cloudflare.com/workers/vite-plugin/reference/static-assets/
-and https://developers.cloudflare.com/workers/best-practices/workers-best-practices/  
-**Alternatives rejected:** Framework rewrite, silently missing CSP, allowing
-same-origin preview access, expanding preview network permissions, provisioning
-D1/R2 for static hosting.  
-**Cost impact:** No paid service, new database, inference or always-on server.
-Sites tariff remains unavailable from connector metadata.  
-**Security impact:** Response policy enforced and preview isolation strengthened;
-no provider secret is persisted. Native deployed enforcement is still pending.  
-**Status:** PROVISIONAL until fixed deployed smoke and re-audit complete.
-
-### D-036 — Public pages expose canonical data and truthful guest capability boundaries
-**Date:** 2026-10-12  
-**Context:** The runtime audit found missing public routes, fake library controls,
-ignored resource/showcase handoffs, fabricated references and empty preview props.  
-**Decision:** Public category routes use the real catalogue and search. Blueprint
-and page recipe routes expose existing contracts and open Compose with a real
-starting brief. Documentation renders repository Markdown. Creator counts reflect
-actual files, not invented usage. Collections store actual bookmark slugs locally.
-Showcase briefs use the same canonical resolver and publish inspectable manifests;
-Workbench loads a validated independent local copy of the requested example or
-Gold resource. Static preview fixtures declare the required input props and their
-local demonstration handlers; they do not imply a connected backend. Guest review
-pages disclose server capabilities that need the canonical Hono deployment.
-Metadata scores and WCAG targets are labelled as such, not certification.  
-**Alternatives rejected:** Dummy 200 pages, Button fallback, synthetic catalogue
-refs, fake customer numbers, paid infrastructure and broad stack changes.  
-**Cost impact:** No new paid infrastructure or database.  
-**Security impact:** Browser data only, sandboxed previews and static provenance
-preserved. Editing still uses validated manifest mutations.  
-**Status:** Runtime remediation; deployed verification pending.
-
-### D-037 — Project playfulness into resource geometry without changing platform tokens
-**Date:** 2026-10-12  
-**Context:** A real onboarding edit changed the stored playfulness value but no
-rendered resource token. The existing normalizer ignored that dimension.  
-**Decision:** At playfulness 50, preserve canonical curvature tier radii exactly.
-Reserved/playful extremes apply a bounded 0.75–1.25 modifier to resource radii,
-rounded to half pixels. Sharp zero-radius geometry remains sharp. Platform chrome
-uses its existing design tokens. Both runtime rendering and standalone export
-use this normalizer. Full DNA/token snapshots on locked nodes preserve appearance.  
-**Alternatives rejected:** Fake state-only controls, a replacement design system,
-arbitrary screen-specific CSS and silently switching visual mode or palette.  
-**Cost impact:** None.  
-**Security impact:** None.  
-**Status:** Local regression passes; deployed appearance verification pending.
-
-
-## D038 — Sites asset routing compatibility correction
-
-Deployed version 2 demonstrated that Sites serves matching assets before the Worker despite `run_worker_first`. This removed security headers from real page responses. The isolated adapter now stores canonical assets under an internal payload prefix, with HTML payloads using binary file extensions. Public URL requests miss the native asset route and pass through the Worker, which maps them to payloads and attaches the existing CSP/security headers. Binary direct payload responses cannot be executed as HTML. Astro, source packages, composition and public URLs remain canonical. D1/R2 stay unused and no paid infrastructure is introduced. Native deployment verification is mandatory; local header tests alone did not prove the original routing assumption.
-
-
-### D039 — Preserve canonical HTML against hosting edge injection
-Deployed version 3 retained CSP correctly but Cloudflare injected JavaScript Detections into HTML. Its connection violated the opaque preview connect-src none policy and added an unrelated iframe. HTML responses now declare Cache-Control no-transform, as documented at https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/#if-your-origin-sends-a-no-transform-header. No CSP permission is expanded and no platform bot setting is changed. Native re-audit must verify that the origin directive is honored.

@@ -34,7 +34,7 @@ export function Slider({
       {label && (
         <div className="flex items-center justify-between text-xs">
           <span className="font-medium text-[#111217] dark:text-[#F5F7FA]">{label}</span>
-          <span className="text-[var(--text-muted)] dark:text-[var(--text-muted)] font-mono">{value}</span>
+          <span className="text-[#8B8F97] dark:text-[#707986] font-mono">{value}</span>
         </div>
       )}
       <div className="relative flex items-center h-4 w-full">

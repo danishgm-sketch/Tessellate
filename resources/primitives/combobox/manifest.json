@@ -83,20 +83,7 @@
   },
   "preview": {
     "component": "ComboboxPreview",
-    "defaultProps": {
-      "label": "Select a team",
-      "options": [
-        {
-          "value": "first",
-          "label": "First option"
-        },
-        {
-          "value": "second",
-          "label": "Second option"
-        }
-      ],
-      "value": "first"
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

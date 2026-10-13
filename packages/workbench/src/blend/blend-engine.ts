@@ -1,5 +1,4 @@
-import {applyNavigationLayout} from '../utils/navigation-layout.js';
-import type { ProjectManifest, DesignDNA, ProjectNode } from '@tessellate/schemas';
+import type { ProjectManifest, DesignDNA } from '@tessellate/schemas';
 
 export type BlendSourceKey = 'A' | 'B' | 'C';
 
@@ -42,7 +41,6 @@ export function blendManifests(
   config: BlendConfig
 ): ProjectManifest {
   const getSource = (key: BlendSourceKey): ProjectManifest => {
-    if(key==='C' && !sourceC) throw new Error('Source C is unavailable. Select an existing source.');
     if (key === 'C' && sourceC) return sourceC;
     if (key === 'B') return sourceB;
     return sourceA;
@@ -61,7 +59,6 @@ export function blendManifests(
   const blendedDNA: DesignDNA = {
     ...structSource.designDNA,
 
-    navigationModel:navSource.designDNA.navigationModel,
     // Typography
     typographicExpression: typoSource.designDNA.typographicExpression,
     typographyPersonality: typoSource.designDNA.typographyPersonality,
@@ -97,19 +94,6 @@ export function blendManifests(
   // Clone screens from structural source
   const screens = JSON.parse(JSON.stringify(structSource.screens)) as typeof structSource.screens;
 
-  const walk=(node:ProjectNode):ProjectNode[]=>[node,...node.children.flatMap(walk)];
-  const components=getSource(config.selections.components);
-  const componentNodes=components.screens.flatMap(screen=>walk(screen.rootNode));
-  const locked=sourceA.screens.flatMap(screen=>walk(screen.rootNode)).filter(node=>Object.values(node.locks ?? {}).some(Boolean));
-  const applyComponents=(node:ProjectNode):ProjectNode=>{
-   const original=locked.find(item=>item.id===node.id);if(original)return structuredClone(original);
-   const source=componentNodes.find(item=>item.id===node.id && item.semanticRole===node.semanticRole);
-   return {...node,...(source?.resourceRef ? {resourceRef:source.resourceRef,variant:source.variant,props:source.props,slots:source.slots} : {}),children:node.children.map(applyComponents)};
-  };
-  screens.forEach(screen=>{screen.rootNode=applyNavigationLayout(applyComponents(screen.rootNode),navSource.navigation.model);});
-  const resultingIds=new Set(screens.flatMap(screen=>walk(screen.rootNode)).map(node=>node.id));
-  if(locked.some(node=>!resultingIds.has(node.id)))throw new Error('This structure cannot preserve every locked subtree. Unlock those nodes or choose the current structure.');
-
   const now = new Date().toISOString();
 
   return {
@@ -129,7 +113,7 @@ export function blendManifests(
     screens,
     navigation: JSON.parse(JSON.stringify(navSource.navigation)),
     assets: JSON.parse(JSON.stringify(structSource.assets)),
-    locks: structuredClone(sourceA.locks),
+    locks: JSON.parse(JSON.stringify(structSource.locks)),
     historyMeta: {
       headRevision: 0,
       totalOperations: 0,

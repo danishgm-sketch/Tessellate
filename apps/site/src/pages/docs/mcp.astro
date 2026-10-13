@@ -1,0 +1,67 @@
+---
+import '../../styles/global.css';
+import { SiteHeader } from '../../components/home/SiteHeader';
+import { FinalComposerFooter } from '../../components/home/FinalComposerFooter';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model Context Protocol (MCP) — Tessellate Documentation</title>
+    <meta name="description" content="Guide for connecting AI agents to Tessellate using the Model Context Protocol." />
+  </head>
+  <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white">
+    <SiteHeader client:load />
+
+    <main id="main-content" class="max-w-[960px] mx-auto px-4 sm:px-6 py-12 space-y-8">
+      <div class="space-y-2">
+        <a href="/docs" class="text-xs font-mono text-[#2547E8] hover:underline">← Back to Documentation</a>
+        <h1 class="text-3xl font-bold tracking-tight text-[#111217]">Model Context Protocol (MCP)</h1>
+        <p class="text-sm text-[#62666F]">
+          Enable AI coding agents (Claude Desktop, Cursor, Antigravity) to query and integrate Tessellate components autonomously.
+        </p>
+      </div>
+
+      <div class="space-y-6 text-sm leading-relaxed text-[#31353E]">
+        <section class="space-y-3 p-6 rounded-2xl bg-white border border-[#D9D6CF]">
+          <h2 class="text-base font-bold text-[#111217]">Configuration</h2>
+          <p class="text-xs text-[#62666F]">Add the Tessellate MCP server to your AI agent configuration:</p>
+          <pre class="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 font-mono text-xs overflow-x-auto"><code>{`{
+  "mcpServers": {
+    "tessellate": {
+      "command": "npx",
+      "args": ["-y", "@tessellate/mcp"]
+    }
+  }
+}`}</code></pre>
+        </section>
+
+        <section class="space-y-4 p-6 rounded-2xl bg-white border border-[#D9D6CF]">
+          <h2 class="text-base font-bold text-[#111217]">Available MCP Tools</h2>
+          <ul class="space-y-3 text-xs">
+            <li>
+              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">search_resources</code>: Searches the 324-resource catalogue by keyword, category, or role.
+            </li>
+            <li>
+              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">get_resource</code>: Retrieves the complete validated ResourceManifest for a given component slug.
+            </li>
+            <li>
+              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">get_resource_code</code>: Fetches the raw TypeScript React source code for immediate insertion.
+            </li>
+            <li>
+              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">recommend_resources</code>: Scores and recommends the highest-compatibility components for a page goal.
+            </li>
+            <li>
+              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">find_alternatives</code>: Suggests drop-in replacements for components based on accessibility or performance.
+            </li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <FinalComposerFooter client:idle />
+  </body>
+</html>

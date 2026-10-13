@@ -10,9 +10,9 @@ export interface PressMentionsStripProps {
 export function PressMentionsStrip({
   variant = 'quiet',
   quotes = [
-    { outlet: 'Example Publication A', quote: 'Illustrative quotation: add an attributed, approved press excerpt.' },
-    { outlet: 'Example Publication B', quote: 'Illustrative quotation: link to the original coverage and publication date.' },
-    { outlet: 'Example Publication C', quote: 'Illustrative quotation: verify permissions before publishing.' },
+    { outlet: 'TechCrunch', quote: 'Tessellate redefines how software teams approach UI coherence.' },
+    { outlet: 'Wired', quote: 'A monumental step forward for autonomous coding agents and human designers.' },
+    { outlet: 'The Verge', quote: 'Finally, an open-source interface architecture with taste.' },
   ],
 }: PressMentionsStripProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';

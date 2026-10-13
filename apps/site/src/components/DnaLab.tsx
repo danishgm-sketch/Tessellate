@@ -129,7 +129,7 @@ export function DnaLab() {
       {/* Top Header */}
       <div className="flex flex-col gap-4 border-b border-[#D9D6CF] pb-6 dark:border-[#272C34] md:flex-row md:items-center md:justify-between">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full bg-[#E7EBFF] px-2.5 py-0.5 text-[11px] font-semibold text-[#2547E8] dark:bg-[#1C2752] dark:text-[#879DFF]">
+          <div className="inline-flex items-center gap-2 rounded-full bg-[#E7EBFF] px-2.5 py-0.5 text-[11px] font-semibold text-[#2547E8] dark:bg-[#1C2752] dark:text-[#6782FF]">
             <Sparkles className="h-3 w-3" /> Phase 5 Client Instrument
           </div>
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-[#111217] dark:text-[#F5F7FA]">
@@ -189,8 +189,8 @@ export function DnaLab() {
           {/* Preset Selector Rail */}
           <div className="lg:col-span-4 space-y-4">
             <div className="relative">
-              <Search className="absolute left-3 top-2.5 h-4 w-4 text-[var(--text-muted)]" />
-              <input aria-label="Filter presets"
+              <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#8B8F97]" />
+              <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -217,7 +217,7 @@ export function DnaLab() {
                       <span className="font-semibold text-[#111217] dark:text-[#F5F7FA]">
                         {preset.name}
                       </span>
-                      <span className="rounded bg-black/5 px-1.5 py-0.5 text-[10px] uppercase font-mono text-[#454951] dark:bg-white/10 dark:text-[#A8AFBA]">
+                      <span className="rounded bg-black/5 px-1.5 py-0.5 text-[10px] uppercase font-mono text-[#62666F] dark:bg-white/10 dark:text-[#A8AFBA]">
                         {preset.category}
                       </span>
                     </div>
@@ -257,7 +257,7 @@ export function DnaLab() {
 
               {/* 28 Dimensions Breakdown */}
               <div className="mt-8">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] dark:text-[var(--text-muted)]">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-[#8B8F97] dark:text-[#707986]">
                   28 Canonical Dimensions
                 </h3>
 
@@ -274,7 +274,7 @@ export function DnaLab() {
                           <span className="font-medium text-[#111217] dark:text-[#F5F7FA]">
                             {meta.label}
                           </span>
-                          <span className="font-mono font-semibold text-[#2547E8] dark:text-[#879DFF]">
+                          <span className="font-mono font-semibold text-[#2547E8] dark:text-[#6782FF]">
                             {val}
                           </span>
                         </div>
@@ -284,7 +284,7 @@ export function DnaLab() {
                             style={{ width: `${val}%` }}
                           />
                         </div>
-                        <p className="mt-1.5 text-[10px] text-[var(--text-muted)] dark:text-[var(--text-muted)] line-clamp-1">
+                        <p className="mt-1.5 text-[10px] text-[#8B8F97] dark:text-[#707986] line-clamp-1">
                           {meta.description}
                         </p>
                       </div>
@@ -295,28 +295,28 @@ export function DnaLab() {
 
               {/* Categorical Dimensions */}
               <div className="mt-8 border-t border-[#D9D6CF] pt-6 dark:border-[#272C34]">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] dark:text-[var(--text-muted)]">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-[#8B8F97] dark:text-[#707986]">
                   Categorical Configurations
                 </h3>
                 <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 text-xs">
                   <div className="rounded p-2 bg-[#FAF9F6] dark:bg-[#0B0D10]">
-                    <div className="text-[10px] text-[var(--text-muted)]">Archetype</div>
+                    <div className="text-[10px] text-[#8B8F97]">Archetype</div>
                     <div className="font-semibold">{activeDna.primaryArchetype}</div>
                   </div>
                   <div className="rounded p-2 bg-[#FAF9F6] dark:bg-[#0B0D10]">
-                    <div className="text-[10px] text-[var(--text-muted)]">Visual Mode</div>
+                    <div className="text-[10px] text-[#8B8F97]">Visual Mode</div>
                     <div className="font-semibold">{activeDna.visualMode}</div>
                   </div>
                   <div className="rounded p-2 bg-[#FAF9F6] dark:bg-[#0B0D10]">
-                    <div className="text-[10px] text-[var(--text-muted)]">Geometry</div>
+                    <div className="text-[10px] text-[#8B8F97]">Geometry</div>
                     <div className="font-semibold">{activeDna.geometryFamily}</div>
                   </div>
                   <div className="rounded p-2 bg-[#FAF9F6] dark:bg-[#0B0D10]">
-                    <div className="text-[10px] text-[var(--text-muted)]">Navigation</div>
+                    <div className="text-[10px] text-[#8B8F97]">Navigation</div>
                     <div className="font-semibold">{activeDna.navigationModel}</div>
                   </div>
                   <div className="rounded p-2 bg-[#FAF9F6] dark:bg-[#0B0D10]">
-                    <div className="text-[10px] text-[var(--text-muted)]">Content Tone</div>
+                    <div className="text-[10px] text-[#8B8F97]">Content Tone</div>
                     <div className="font-semibold">{activeDna.contentTone}</div>
                   </div>
                 </div>
@@ -338,7 +338,7 @@ export function DnaLab() {
             </p>
 
             <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-              <input aria-label="Describe the desired feel"
+              <input
                 type="text"
                 value={feelQuery}
                 onChange={(e) => setFeelQuery(e.target.value)}
@@ -356,7 +356,7 @@ export function DnaLab() {
 
             {/* Quick Suggestions */}
             <div className="mt-3 flex flex-wrap items-center gap-1.5">
-              <span className="text-[11px] text-[var(--text-muted)]">Try:</span>
+              <span className="text-[11px] text-[#8B8F97]">Try:</span>
               {[
                 'professional but playful',
                 'luxury without being flashy',
@@ -378,14 +378,14 @@ export function DnaLab() {
 
             {/* Parsing Details */}
             <div className="mt-6 rounded-lg border border-[#D9D6CF]/80 bg-[#FAF9F6] p-4 dark:border-[#272C34] dark:bg-[#0B0D10]">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-[#8B8F97]">
                 Parser Telemetry
               </h3>
               <div className="mt-2 flex flex-wrap gap-2">
                 {parsedFeel.recognizedAdjectives.map((adj, idx) => (
                   <span
                     key={idx}
-                    className="inline-flex items-center gap-1 rounded bg-[#E7EBFF] px-2 py-0.5 text-xs font-semibold text-[#2547E8] dark:bg-[#1C2752] dark:text-[#879DFF]"
+                    className="inline-flex items-center gap-1 rounded bg-[#E7EBFF] px-2 py-0.5 text-xs font-semibold text-[#2547E8] dark:bg-[#1C2752] dark:text-[#6782FF]"
                   >
                     <Check className="h-3 w-3" /> {adj}
                   </span>
@@ -396,7 +396,7 @@ export function DnaLab() {
                 {Object.entries(parsedFeel.accumulatedDeltas).map(([k, delta]) => (
                   <div key={k} className="flex items-center justify-between border-b border-[#D9D6CF]/40 py-1 dark:border-[#272C34]">
                     <span className="text-[#62666F] dark:text-[#A8AFBA]">{k}</span>
-                    <span className={typeof delta === 'number' && delta > 0 ? 'text-[#12603F]' : 'text-[#C83D48]'}>
+                    <span className={typeof delta === 'number' && delta > 0 ? 'text-[#177B55]' : 'text-[#C83D48]'}>
                       {typeof delta === 'number' && delta > 0 ? `+${delta}` : delta}
                     </span>
                   </div>
@@ -416,7 +416,7 @@ export function DnaLab() {
               <h3 className="text-base font-bold text-[#111217] dark:text-[#F5F7FA]">
                 Visual Ambition (5 Stops)
               </h3>
-              <span className="rounded bg-[#E7EBFF] px-2 py-0.5 text-xs font-semibold text-[#2547E8] uppercase dark:bg-[#1C2752] dark:text-[#879DFF]">
+              <span className="rounded bg-[#E7EBFF] px-2 py-0.5 text-xs font-semibold text-[#2547E8] uppercase dark:bg-[#1C2752] dark:text-[#6782FF]">
                 {getVisualAmbitionStop(activeDna.visualAmbition)} ({activeDna.visualAmbition})
               </span>
             </div>
@@ -437,7 +437,7 @@ export function DnaLab() {
                       onClick={() => setActiveDna(applyVisualAmbition(activeDna, stop))}
                       className={`rounded-lg p-2 text-center text-xs transition-all ${
                         isCurrent
-                          ? 'border-2 border-[#2547E8] bg-[#E7EBFF] font-bold text-[#2547E8] dark:border-[#6782FF] dark:bg-[#1C2752] dark:text-[#879DFF]'
+                          ? 'border-2 border-[#2547E8] bg-[#E7EBFF] font-bold text-[#2547E8] dark:border-[#6782FF] dark:bg-[#1C2752] dark:text-[#6782FF]'
                           : 'border border-[#D9D6CF] bg-[#FAF9F6] text-[#62666F] hover:bg-white dark:border-[#272C34] dark:bg-[#0B0D10] dark:text-[#A8AFBA]'
                       }`}
                     >
@@ -449,7 +449,7 @@ export function DnaLab() {
               )}
             </div>
 
-            <p className="text-xs italic text-[var(--text-muted)] dark:text-[var(--text-muted)]">
+            <p className="text-xs italic text-[#8B8F97] dark:text-[#707986]">
               {VISUAL_AMBITION_STOPS[getVisualAmbitionStop(activeDna.visualAmbition)].description}
             </p>
           </div>
@@ -460,7 +460,7 @@ export function DnaLab() {
               <h3 className="text-base font-bold text-[#111217] dark:text-[#F5F7FA]">
                 Structural Creativity (5 Stops)
               </h3>
-              <span className="rounded bg-[#E7EBFF] px-2 py-0.5 text-xs font-semibold text-[#2547E8] uppercase dark:bg-[#1C2752] dark:text-[#879DFF]">
+              <span className="rounded bg-[#E7EBFF] px-2 py-0.5 text-xs font-semibold text-[#2547E8] uppercase dark:bg-[#1C2752] dark:text-[#6782FF]">
                 {getStructuralCreativityStop(activeDna.structuralCreativity)} ({activeDna.structuralCreativity})
               </span>
             </div>
@@ -481,7 +481,7 @@ export function DnaLab() {
                       onClick={() => setActiveDna(applyStructuralCreativity(activeDna, stop))}
                       className={`rounded-lg p-2 text-center text-xs transition-all ${
                         isCurrent
-                          ? 'border-2 border-[#2547E8] bg-[#E7EBFF] font-bold text-[#2547E8] dark:border-[#6782FF] dark:bg-[#1C2752] dark:text-[#879DFF]'
+                          ? 'border-2 border-[#2547E8] bg-[#E7EBFF] font-bold text-[#2547E8] dark:border-[#6782FF] dark:bg-[#1C2752] dark:text-[#6782FF]'
                           : 'border border-[#D9D6CF] bg-[#FAF9F6] text-[#62666F] hover:bg-white dark:border-[#272C34] dark:bg-[#0B0D10] dark:text-[#A8AFBA]'
                       }`}
                     >
@@ -493,7 +493,7 @@ export function DnaLab() {
               )}
             </div>
 
-            <p className="text-xs italic text-[var(--text-muted)] dark:text-[var(--text-muted)]">
+            <p className="text-xs italic text-[#8B8F97] dark:text-[#707986]">
               {STRUCTURAL_CREATIVITY_STOPS[getStructuralCreativityStop(activeDna.structuralCreativity)].description}
             </p>
           </div>
@@ -617,14 +617,14 @@ export function DnaLab() {
                       {pairing.description}
                     </p>
                   </div>
-                  <span className="rounded bg-[#FAF9F6] px-2 py-1 text-xs font-mono text-[#2547E8] dark:bg-[#0B0D10] dark:text-[#879DFF]">
+                  <span className="rounded bg-[#FAF9F6] px-2 py-1 text-xs font-mono text-[#2547E8] dark:bg-[#0B0D10] dark:text-[#6782FF]">
                     Ratio: {pairing.scaleRatio}
                   </span>
                 </div>
 
                 <div className="mt-4 space-y-3">
                   <div>
-                    <span className="text-[10px] uppercase font-mono text-[var(--text-muted)]">Display</span>
+                    <span className="text-[10px] uppercase font-mono text-[#8B8F97]">Display</span>
                     <div
                       className="text-2xl font-bold tracking-tight text-[#111217] dark:text-[#F5F7FA]"
                       style={{ fontFamily: pairing.displayFont }}
@@ -634,7 +634,7 @@ export function DnaLab() {
                   </div>
 
                   <div>
-                    <span className="text-[10px] uppercase font-mono text-[var(--text-muted)]">Body</span>
+                    <span className="text-[10px] uppercase font-mono text-[#8B8F97]">Body</span>
                     <div
                       className="text-sm text-[#62666F] dark:text-[#A8AFBA]"
                       style={{ fontFamily: pairing.bodyFont, lineHeight: pairing.bodyLineHeight }}
@@ -644,9 +644,9 @@ export function DnaLab() {
                   </div>
 
                   <div>
-                    <span className="text-[10px] uppercase font-mono text-[var(--text-muted)]">Monospace</span>
+                    <span className="text-[10px] uppercase font-mono text-[#8B8F97]">Monospace</span>
                     <div
-                      className="text-xs font-mono text-[#2547E8] dark:text-[#879DFF]"
+                      className="text-xs font-mono text-[#2547E8] dark:text-[#6782FF]"
                       style={{ fontFamily: pairing.monoFont }}
                     >
                       const dnaScore = 92.4; // latency 4.2ms
@@ -679,7 +679,7 @@ export function DnaLab() {
                       <span className="font-bold text-xs text-[#111217] dark:text-[#F5F7FA]">
                         {motion.name}
                       </span>
-                      <span className="text-[10px] font-mono text-[var(--text-muted)]">
+                      <span className="text-[10px] font-mono text-[#8B8F97]">
                         {motion.durationNormal}ms
                       </span>
                     </div>
@@ -695,7 +695,7 @@ export function DnaLab() {
                         setMotionActiveKey(motion.id);
                         setTimeout(() => setMotionActiveKey(null), motion.durationSlow + 200);
                       }}
-                      className="w-full rounded bg-[#E7EBFF] py-1.5 text-xs font-semibold text-[#2547E8] hover:bg-[#2547E8] hover:text-white transition-colors dark:bg-[#1C2752] dark:text-[#879DFF] dark:hover:bg-[#6782FF] dark:hover:text-[#0B0D10]"
+                      className="w-full rounded bg-[#E7EBFF] py-1.5 text-xs font-semibold text-[#2547E8] hover:bg-[#2547E8] hover:text-white transition-colors dark:bg-[#1C2752] dark:text-[#6782FF] dark:hover:bg-[#6782FF] dark:hover:text-[#0B0D10]"
                       style={{
                         transform: isAnimating ? `scale(${motion.hoverScale})` : 'scale(1)',
                         transition: `transform ${motion.durationNormal}ms ${motion.easing}`,
@@ -724,7 +724,7 @@ export function DnaLab() {
 
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-5 text-xs">
               <div className="rounded-lg border border-[#D9D6CF] bg-[#FAF9F6] p-3 dark:border-[#272C34] dark:bg-[#0B0D10]">
-                <div className="font-bold text-[#2547E8] dark:text-[#879DFF]">1. Project</div>
+                <div className="font-bold text-[#2547E8] dark:text-[#6782FF]">1. Project</div>
                 <div className="mt-1 text-[11px] text-[#62666F]">Base defaults</div>
                 <div className="mt-2 font-mono text-[10px]">Prof: {activeDna.professionalism}</div>
               </div>
@@ -792,7 +792,7 @@ export function DnaLab() {
                     <button
                       type="button"
                       onClick={() => setElementOverrides({ professionalism: 98 })}
-                      className="text-[10px] text-[#2547E8] dark:text-[#879DFF]"
+                      className="text-[10px] text-[#2547E8] dark:text-[#6782FF]"
                     >
                       Override
                     </button>
@@ -805,10 +805,10 @@ export function DnaLab() {
             {/* Effective Values Table */}
             <div className="mt-6">
               <div className="flex items-center justify-between">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-[#8B8F97]">
                   Effective Resolved Values & Provenance
                 </h3>
-                <span className="text-[11px] font-mono text-[var(--text-muted)]">
+                <span className="text-[11px] font-mono text-[#8B8F97]">
                   Archetype: {effectiveHierarchyDna.primaryArchetype} | Mode: {effectiveHierarchyDna.visualMode}
                 </span>
               </div>
@@ -821,7 +821,7 @@ export function DnaLab() {
                       key={key}
                       className="rounded border border-[#D9D6CF]/80 bg-[#FAF9F6] p-2.5 dark:border-[#272C34] dark:bg-[#0B0D10]"
                     >
-                      <div className="text-[10px] text-[var(--text-muted)]">{key}</div>
+                      <div className="text-[10px] text-[#8B8F97]">{key}</div>
                       <div className="text-sm font-bold text-[#111217] dark:text-[#F5F7FA]">
                         {inspected?.effectiveValue as number}
                       </div>
@@ -831,7 +831,7 @@ export function DnaLab() {
                             Overridden ({inspected.sourceLevel})
                           </span>
                         ) : (
-                          <span className="text-[#12603F] dark:text-[#34D399]">
+                          <span className="text-[#177B55] dark:text-[#34D399]">
                             Inherited ({inspected.sourceLevel})
                           </span>
                         )}

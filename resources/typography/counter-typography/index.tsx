@@ -12,10 +12,10 @@ export interface CounterTypographyProps {
 }
 
 export function CounterTypography({
-  value = '128',
-  unit = 'items',
-  label = 'Illustrative weekly activity; replace with measured project data',
-  deltaText = '+12 example',
+  value = '99.98',
+  unit = '%',
+  label = 'Deterministic system compliance across 972 canonical launch configurations',
+  deltaText = '+14.2% YoY',
   variant = 'quiet',
   children,
 }: CounterTypographyProps) {

@@ -58,7 +58,7 @@ export function StructureComparison() {
       <div className="rounded-3xl border border-[#D9D6CF] bg-[#FAF9F6] p-6 sm:p-10">
         <div className="aspect-[21/9] min-h-[300px] w-full rounded-2xl bg-white border border-[#D9D6CF] p-4 shadow-sm flex flex-col justify-between">
           {/* Top chrome bar */}
-          <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[var(--text-muted)]">
+          <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[#8B8F97]">
             <div className="flex items-center gap-2">
               <span className="h-2.5 w-2.5 rounded-full bg-[#C83D48]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#A66A15]" />
@@ -146,7 +146,7 @@ export function StructureComparison() {
               {layoutMode === 'cockpit' && 'Best for: Financial Terminals, Developer APMs, Observability'}
               {layoutMode === 'spatial' && 'Best for: AI Canvas Exploration, Prompt Graph Engineering'}
             </span>
-            <span className="text-[#12603F] font-semibold">100% Keyboard Navigable</span>
+            <span className="text-[#177B55] font-semibold">100% Keyboard Navigable</span>
           </div>
         </div>
       </div>

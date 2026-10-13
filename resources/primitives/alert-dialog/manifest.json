@@ -83,11 +83,7 @@
   },
   "preview": {
     "component": "AlertDialogPreview",
-    "defaultProps": {
-      "open": true,
-      "title": "Confirm example action",
-      "description": "This demonstration changes local preview state only."
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

@@ -1,0 +1,6 @@
+# Tessellate Host-Run Inference Daemon Dependencies
+# Minimal, zero-LLM dependencies for host hardware execution
+requests>=2.31.0
+pydantic>=2.0.0
+# Optional: PyTorch for GPU acceleration / training
+# torch>=2.2.0

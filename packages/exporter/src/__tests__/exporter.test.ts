@@ -143,4 +143,37 @@ describe('Phase 11: Exporter Package', () => {
     expect(emptyCheck.canExport).toBe(false);
     expect(emptyCheck.errors.some((e) => e.includes('at least one screen'))).toBe(true);
   });
+
+  it('generates a complete standalone Next.js 15 App Router source tree when target is nextjs', () => {
+    const manifest = createTestManifest();
+    const tree = generateSourceTree(manifest, { target: 'nextjs' });
+
+    expect(tree['package.json']).toBeDefined();
+    expect(tree['next.config.mjs']).toBeDefined();
+    expect(tree['postcss.config.mjs']).toBeDefined();
+    expect(tree['tsconfig.json']).toBeDefined();
+    expect(tree['app/globals.css']).toBeDefined();
+    expect(tree['app/layout.tsx']).toBeDefined();
+    expect(tree['app/page.tsx']).toBeDefined();
+    expect(tree['screens/Overview.tsx']).toBeDefined();
+    expect(tree['components/Button.tsx']).toBeDefined();
+    expect(tree['components/MetricCard.tsx']).toBeDefined();
+    expect(tree['components/AppHeader.tsx']).toBeDefined();
+    expect(tree['README.md']).toBeDefined();
+
+    // Verify package.json contains Next.js 15 configuration
+    const pkg = JSON.parse(tree['package.json']!);
+    expect(pkg.name).toBe('exporter-test-app');
+    expect(pkg.dependencies.next).toBe('^15.0.0');
+    expect(pkg.scripts.dev).toBe('next dev');
+    expect(pkg.scripts.build).toBe('next build');
+
+    // Verify app/layout.tsx contains metadata and globals.css
+    expect(tree['app/layout.tsx']).toContain('RootLayout');
+    expect(tree['app/layout.tsx']).toContain("import './globals.css';");
+
+    // Verify app/page.tsx is a client component with screen switching
+    expect(tree['app/page.tsx']).toContain("'use client';");
+    expect(tree['app/page.tsx']).toContain('Overview');
+  });
 });

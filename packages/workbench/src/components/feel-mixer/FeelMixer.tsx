@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { findNodeById } from '../../utils/tree-helpers.js';
 import {
-  getScopedDNA, isScopeLocked,
+  getEffectiveNodeDNA,
   extractFeelTraits,
   mapFeelPhraseToDna,
   CANONICAL_FEEL_TRAITS,
@@ -34,8 +34,7 @@ export function FeelMixer() {
       : null;
 
   const nodeOverrides = selectedNode?.dnaOverrides;
-  const locked = isScopeLocked(manifest,activeScreenId,selectedNodeId);
-  const effectiveDNA = getScopedDNA(manifest, activeScreenId, selectedNodeId);
+  const effectiveDNA = getEffectiveNodeDNA(manifest.designDNA, nodeOverrides);
   const traits = extractFeelTraits(effectiveDNA, nodeOverrides, pinnedTraits);
 
   const handleTraitChange = (id: string, value: number) => {
@@ -73,18 +72,16 @@ export function FeelMixer() {
 
   return (
     <div data-testid="feel-mixer" className="space-y-4">
-      {locked && <p role="status">This node inherits an active lock. Unlock it in Locks to edit.</p>}
-      <fieldset disabled={locked} className="space-y-4 border-0 p-0 m-0 min-w-0">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-1.5 text-[11px] font-bold text-[#111217] dark:text-[#F5F7FA]">
-          <Sliders className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#879DFF]" />
+          <Sliders className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#6782FF]" />
           <span>Feel Mixer (5 Pinned Traits)</span>
         </div>
         {selectedNode && nodeOverrides && Object.keys(nodeOverrides).length > 0 && (
           <button
             onClick={handleResetNode}
-            className="flex items-center gap-1 text-[10px] text-[#2547E8] dark:text-[#879DFF] hover:underline"
+            className="flex items-center gap-1 text-[10px] text-[#2547E8] dark:text-[#6782FF] hover:underline"
             title="Reset node overrides to inherit from project"
           >
             <RotateCcw className="h-2.5 w-2.5" />
@@ -106,7 +103,7 @@ export function FeelMixer() {
                   className={`rounded px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider ${
                     trait.status === 'overridden'
                       ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300'
-                      : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[var(--text-muted)]'
+                      : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[#8B8F97]'
                   }`}
                 >
                   {trait.status}
@@ -119,7 +116,6 @@ export function FeelMixer() {
 
             <input
               type="range"
-              aria-label={trait.name}
               min={0}
               max={100}
               value={trait.value}
@@ -132,17 +128,16 @@ export function FeelMixer() {
 
       {/* Natural Language Feel Mapper */}
       <form onSubmit={handleApplyPhrase} className="pt-2 border-t border-[#D9D6CF] dark:border-[#272C34] space-y-1.5">
-        <label className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block">
+        <label className="text-[10px] font-semibold text-[#8B8F97] uppercase tracking-wider block">
           Add Trait or Feel Phrase
         </label>
         <div className="flex items-center gap-1.5">
           <input
             type="text"
-            aria-label="Feel phrase"
             placeholder="e.g. professional but playful, dense and technical"
             value={phraseInput}
             onChange={(e) => setPhraseInput(e.target.value)}
-            className="flex-1 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#171B21] px-2.5 py-1.5 text-xs placeholder:text-[var(--text-muted)] focus:outline-none focus:ring-1 focus:ring-[#2547E8]"
+            className="flex-1 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#171B21] px-2.5 py-1.5 text-xs placeholder:text-[#8B8F97] focus:outline-none focus:ring-1 focus:ring-[#2547E8]"
           />
           <button
             type="submit"
@@ -152,7 +147,6 @@ export function FeelMixer() {
           </button>
         </div>
       </form>
-    </fieldset>
     </div>
   );
 }

@@ -82,10 +82,7 @@
   },
   "preview": {
     "component": "DisclosurePreview",
-    "defaultProps": {
-      "title": "Details",
-      "children": "This content is revealed by the disclosure."
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

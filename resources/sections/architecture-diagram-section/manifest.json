@@ -5,7 +5,7 @@
   "name": "Architecture Diagram Section",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Reference topology diagram for client, edge, and optional storage services.",
+  "description": "Technical blueprint illustrating client-edge-database infrastructure topology.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,7 +130,7 @@
     "infrastructure"
   ],
   "intent": {
-    "summary": "Illustrative architecture; optional storage may not be provisioned in the deployment.",
+    "summary": "Technical blueprint illustrating client-edge-database infrastructure topology.",
     "idealFor": [
       "Engineering decision-makers evaluating platform architecture"
     ],
@@ -138,7 +138,7 @@
       "Casual marketing landing pages"
     ],
     "jobs": [
-      "Explain deployment boundaries and optional services"
+      "Map out client, worker, and database boundaries clearly"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"

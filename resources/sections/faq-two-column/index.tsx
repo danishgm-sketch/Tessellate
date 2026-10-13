@@ -18,8 +18,8 @@ export function FaqTwoColumn({ variant = 'quiet' }: FaqTwoColumnProps) {
   const items = [
     { q: 'How does Design DNA maintain visual coherence?', a: 'Design DNA treats curvature, contrast, and whitespace as numeric dimensions mapped to project tokens.' },
     { q: 'Can I export to other frameworks like Vue or Svelte?', a: 'V1 is canonically targeted to React + TypeScript + Tailwind 4. Additional AST emitters can be added cleanly.' },
-    { q: 'What happens if my network goes offline?', a: "Offline behavior depends on the host application's cache and persistence configuration." },
-    { q: 'How are schema updates handled?', a: "Check the host application's documented migration path and verify compatibility before updating." },
+    { q: 'What happens if my network goes offline?', a: 'Tessellate operates guest-first in memory with local IndexedDB persistence, running fully offline.' },
+    { q: 'How do you prevent breaking updates?', a: 'Every resource is immutable by schema version. Upgrades use verified migration scripts.' },
   ];
 
   return (

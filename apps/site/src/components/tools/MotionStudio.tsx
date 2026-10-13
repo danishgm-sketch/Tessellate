@@ -181,7 +181,7 @@ export function MotionStudio() {
             onClick={() => copyToClipboard(generatedCss, 'css')}
             className="flex items-center gap-1.5 px-3 py-2 rounded-xl border border-[#D9D6CF] bg-white text-xs font-semibold text-[#111217] hover:border-[#111217] transition-all"
           >
-            {copiedFormat === 'css' ? <Check className="h-3.5 w-3.5 text-[#12603F]" /> : <Copy className="h-3.5 w-3.5" />}
+            {copiedFormat === 'css' ? <Check className="h-3.5 w-3.5 text-[#177B55]" /> : <Copy className="h-3.5 w-3.5" />}
             <span>Copy CSS</span>
           </button>
         </div>
@@ -189,7 +189,7 @@ export function MotionStudio() {
 
       {/* Preset Selector Chips */}
       <div className="space-y-2">
-        <span className="block font-mono text-xs font-semibold uppercase text-[var(--text-muted)]">
+        <span className="block font-mono text-xs font-semibold uppercase text-[#8B8F97]">
           Personality Presets
         </span>
         <div className="flex flex-wrap gap-2">
@@ -201,7 +201,7 @@ export function MotionStudio() {
               className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                 selectedPresetId === p.id
                   ? 'border-[#111217] bg-[#111217] text-white shadow-sm'
-                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#62666F]'
+                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#8B8F97]'
               }`}
             >
               {p.name}
@@ -221,7 +221,7 @@ export function MotionStudio() {
             </div>
             {/* Reduced motion toggle */}
             <label className="flex items-center gap-1.5 cursor-pointer text-xs font-medium text-[#62666F]">
-              <input aria-label="Is reduced motion"
+              <input
                 type="checkbox"
                 checked={isReducedMotion}
                 onChange={(e) => setIsReducedMotion(e.target.checked)}
@@ -260,7 +260,7 @@ export function MotionStudio() {
                 <span className="text-[#111217]">Pacing Duration</span>
                 <span className="font-mono text-[#62666F]">{durationMs}ms</span>
               </div>
-              <input aria-label="Duration ms"
+              <input
                 type="range"
                 min="0"
                 max="800"
@@ -276,7 +276,7 @@ export function MotionStudio() {
                 <span className="text-[#111217]">Stagger Delay (per item)</span>
                 <span className="font-mono text-[#62666F]">{staggerMs}ms</span>
               </div>
-              <input aria-label="Stagger ms"
+              <input
                 type="range"
                 min="0"
                 max="150"
@@ -328,16 +328,16 @@ export function MotionStudio() {
               {/* Bezier Individual Inputs */}
               <div className="grid grid-cols-2 gap-3 font-mono text-xs">
                 <div>
-                  <span className="text-[var(--text-muted)]">X1 / Y1 (In)</span>
+                  <span className="text-[#8B8F97]">X1 / Y1 (In)</span>
                   <div className="flex gap-1 mt-1">
-                    <input aria-label="Bezier[0]"
+                    <input
                       type="number"
                       step="0.05"
                       value={bezier[0]}
                       onChange={(e) => setBezier([Number(e.target.value), bezier[1], bezier[2], bezier[3]])}
                       className="w-full p-1.5 rounded border border-[#D9D6CF] bg-[#FAF9F6]"
                     />
-                    <input aria-label="Bezier[1]"
+                    <input
                       type="number"
                       step="0.05"
                       value={bezier[1]}
@@ -347,16 +347,16 @@ export function MotionStudio() {
                   </div>
                 </div>
                 <div>
-                  <span className="text-[var(--text-muted)]">X2 / Y2 (Out)</span>
+                  <span className="text-[#8B8F97]">X2 / Y2 (Out)</span>
                   <div className="flex gap-1 mt-1">
-                    <input aria-label="Bezier[2]"
+                    <input
                       type="number"
                       step="0.05"
                       value={bezier[2]}
                       onChange={(e) => setBezier([bezier[0], bezier[1], Number(e.target.value), bezier[3]])}
                       className="w-full p-1.5 rounded border border-[#D9D6CF] bg-[#FAF9F6]"
                     />
-                    <input aria-label="Bezier[3]"
+                    <input
                       type="number"
                       step="0.05"
                       value={bezier[3]}
@@ -378,7 +378,7 @@ export function MotionStudio() {
                     <span className="text-[#111217]">Stiffness (k)</span>
                     <span className="font-mono text-[#62666F]">{stiffness}</span>
                   </div>
-                  <input aria-label="Spring stiffness"
+                  <input
                     type="range"
                     min="100"
                     max="800"
@@ -393,7 +393,7 @@ export function MotionStudio() {
                     <span className="text-[#111217]">Damping (c)</span>
                     <span className="font-mono text-[#62666F]">{damping}</span>
                   </div>
-                  <input aria-label="Spring damping"
+                  <input
                     type="range"
                     min="10"
                     max="60"
@@ -408,7 +408,7 @@ export function MotionStudio() {
                     <span className="text-[#111217]">Mass (m)</span>
                     <span className="font-mono text-[#62666F]">{mass}</span>
                   </div>
-                  <input aria-label="Spring mass"
+                  <input
                     type="range"
                     min="0.5"
                     max="3"
@@ -426,7 +426,7 @@ export function MotionStudio() {
         {/* Live Simulation Stage Column */}
         <div className="lg:col-span-7 space-y-6">
           <div className="rounded-2xl border border-[#D9D6CF] bg-[#FAF9F6] p-6 shadow-sm space-y-6">
-            <div className="flex items-center justify-between pb-3 text-xs font-mono text-[var(--text-muted)] border-b border-[#D9D6CF]">
+            <div className="flex items-center justify-between pb-3 text-xs font-mono text-[#8B8F97] border-b border-[#D9D6CF]">
               <span>KINETIC SIMULATION BENCH</span>
               <span className="text-[#111217] font-semibold">
                 {isReducedMotion ? 'REDUCED MOTION' : `${activeDurationMs}ms · ${mode.toUpperCase()}`}
@@ -458,7 +458,7 @@ export function MotionStudio() {
                     }}
                   >
                     <span className="text-xs font-semibold text-[#111217]">{item.label}</span>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FAF9F6] border border-[#D9D6CF] text-[#12603F] font-semibold">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#FAF9F6] border border-[#D9D6CF] text-[#177B55] font-semibold">
                       {item.tag}
                     </span>
                   </div>
@@ -491,7 +491,7 @@ export function MotionStudio() {
           {/* Generated Code Blocks */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="rounded-xl border border-[#D9D6CF] bg-[#0B0D10] text-[#F5F7FA] p-4 space-y-2 font-mono text-xs">
-              <div className="flex items-center justify-between border-b border-[#272B33] pb-1.5 text-[#A8AFBA]">
+              <div className="flex items-center justify-between border-b border-[#272B33] pb-1.5 text-[#8B8F97]">
                 <span>CSS TRANSITION</span>
                 <button
                   type="button"
@@ -501,13 +501,13 @@ export function MotionStudio() {
                   {copiedFormat === 'css' ? 'Copied!' : 'Copy'}
                 </button>
               </div>
-              <pre tabIndex={0} className="overflow-x-auto text-[10px] text-[#D9D6CF] leading-relaxed">
+              <pre className="overflow-x-auto text-[10px] text-[#D9D6CF] leading-relaxed">
                 {generatedCss}
               </pre>
             </div>
 
             <div className="rounded-xl border border-[#D9D6CF] bg-[#0B0D10] text-[#F5F7FA] p-4 space-y-2 font-mono text-xs">
-              <div className="flex items-center justify-between border-b border-[#272B33] pb-1.5 text-[#A8AFBA]">
+              <div className="flex items-center justify-between border-b border-[#272B33] pb-1.5 text-[#8B8F97]">
                 <span>MOTION PROPS</span>
                 <button
                   type="button"
@@ -517,7 +517,7 @@ export function MotionStudio() {
                   {copiedFormat === 'framer' ? 'Copied!' : 'Copy'}
                 </button>
               </div>
-              <pre tabIndex={0} className="overflow-x-auto text-[10px] text-[#D9D6CF] leading-relaxed">
+              <pre className="overflow-x-auto text-[10px] text-[#D9D6CF] leading-relaxed">
                 {generatedFramer}
               </pre>
             </div>

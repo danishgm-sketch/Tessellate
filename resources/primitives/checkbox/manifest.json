@@ -82,10 +82,7 @@
   },
   "preview": {
     "component": "CheckboxPreview",
-    "defaultProps": {
-      "label": "Receive updates",
-      "checked": false
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

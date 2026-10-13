@@ -9,7 +9,7 @@ export interface TrustBadgesStripProps {
 
 export function TrustBadgesStrip({
   variant = 'quiet',
-  badges = ['SOC 2: EVIDENCE REQUIRED', 'ISO 27001: VERIFY SCOPE', 'PRIVACY: REVIEW POLICY', 'WCAG 2.2 AA: TARGET'],
+  badges = ['SOC2 TYPE II CERTIFIED', 'ISO 27001 COMPLIANT', 'HIPAA READY', 'GDPR ENFORCED', 'WCAG 2.2 AA VERIFIED'],
 }: TrustBadgesStripProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-800 border-neutral-200';
   let badgeStyle = 'bg-white text-neutral-700 border-neutral-300';

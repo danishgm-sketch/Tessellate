@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { findNodeById } from '../utils/tree-helpers.js';
-import { executeNaturalLanguageCommand } from '../ai/ai-service.js';
-import { Terminal, CornerDownLeft } from 'lucide-react';
+import { executeQueuedCommand } from '../ai/queue-client.js';
+import { Terminal, CornerDownLeft, Cpu } from 'lucide-react';
 
 export function CommandBar() {
-  const lastActionMessage=useWorkbenchStore(state=>state.lastActionMessage);
   const manifest = useWorkbenchStore((state) => state.manifest);
   const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
@@ -17,6 +16,12 @@ export function CommandBar() {
   const [inputVal, setInputVal] = useState('');
   const [feedback, setFeedback] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [queueStatus, setQueueStatus] = useState<{
+    status: string;
+    tokenNumber?: number;
+    position?: number;
+    message?: string;
+  } | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const activeScreen = manifest.screens.find((s) => s.id === activeScreenId);
@@ -69,45 +74,65 @@ export function CommandBar() {
         return;
       }
 
-      // Execute via AI / deterministic planner
-      const result = await executeNaturalLanguageCommand(manifest, activeScreenId, cmd);
+      // Execute via Bespoke Host Queue or Deterministic Fallback
+      const result = await executeQueuedCommand(
+        manifest,
+        activeScreenId,
+        cmd,
+        (progress) => {
+          setQueueStatus(progress);
+        }
+      );
 
       if (result.success) {
         for (const mut of result.mutations) {
           executeMutation(mut);
         }
-        setFeedback(result.explanation || `Executed: ${result.command.summary}`);
+        setFeedback(result.explanation);
         setInputVal('');
       } else {
-        setFeedback(result.error);
-        // Preserves inputVal on error so the user doesn't lose their prompt
+        setFeedback(result.error || 'Command execution failed.');
       }
     } catch (err) {
       setFeedback(err instanceof Error ? err.message : 'Command execution failed.');
     } finally {
       setIsProcessing(false);
-      setTimeout(() => setFeedback(null), 5000);
+      setTimeout(() => {
+        setFeedback(null);
+        setQueueStatus(null);
+      }, 5000);
     }
   };
 
   return (
     <div
       data-testid="command-bar"
-      className="dark min-h-16 py-2 gap-2 flex-wrap shrink-0 border-t border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] px-4 flex items-center justify-between select-none z-20"
+      className="h-16 shrink-0 border-t border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] px-4 flex items-center justify-between select-none z-20"
     >
       <form onSubmit={handleExecute} className="flex-1 max-w-4xl flex items-center gap-3">
         {/* Target Context Pill */}
         <div className="hidden sm:flex items-center gap-1.5 rounded-lg bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] px-2.5 py-1 text-xs font-mono text-[#62666F] dark:text-[#A8AFBA] shrink-0">
-          <Terminal className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#879DFF]" />
+          <Terminal className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#6782FF]" />
           <span>
             {selectedNode ? selectedNode.semanticRole : 'Project Scope'}
           </span>
         </div>
 
+        {/* Live Queue Token Badge */}
+        {queueStatus?.tokenNumber && (
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-mono shrink-0 animate-pulse">
+            <Cpu className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
+            <span className="font-semibold">Token #{queueStatus.tokenNumber}</span>
+            {typeof queueStatus.position === 'number' && queueStatus.position > 0 && (
+              <span className="text-[10px] text-indigo-500">(Pos: {queueStatus.position})</span>
+            )}
+          </div>
+        )}
+
         {/* Command Input Field */}
         <div className="relative flex-1">
           <input
-            aria-label="Project command" ref={inputRef}
+            ref={inputRef}
             type="text"
             placeholder={
               selectedNode
@@ -119,8 +144,8 @@ export function CommandBar() {
             className="w-full bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] rounded-xl px-3.5 py-2 text-xs text-[#111217] dark:text-[#F5F7FA] placeholder-[#8B8F97] focus:outline-none focus:border-[#2547E8] dark:focus:border-[#6782FF] transition-colors pr-10 font-sans"
           />
           <button
-            aria-label="Run command" type="submit"
-            className="min-h-6 min-w-6 flex items-center justify-center absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[#111217] dark:hover:text-[#F5F7FA] transition-colors"
+            type="submit"
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8B8F97] hover:text-[#111217] dark:hover:text-[#F5F7FA] transition-colors"
             title="Execute command (Enter)"
           >
             <CornerDownLeft className="h-3.5 w-3.5" />
@@ -129,10 +154,14 @@ export function CommandBar() {
       </form>
 
       {/* Feedback or Keyboard Shortcuts Hint */}
-      <div className="flex flex-wrap items-center gap-3 max-w-full text-[11px] text-[#62666F] dark:text-[#A8AFBA] font-mono">
-        {feedback || lastActionMessage ? (
-          <span role="status" className="text-[#2547E8] dark:text-[#879DFF] font-semibold animate-fade-in">
-            {feedback ?? lastActionMessage}
+      <div className="hidden md:flex items-center gap-3 text-[11px] text-[#62666F] dark:text-[#A8AFBA] font-mono">
+        {queueStatus?.message && !feedback ? (
+          <span className="text-indigo-600 dark:text-indigo-400 font-medium">
+            {queueStatus.message}
+          </span>
+        ) : feedback ? (
+          <span className="text-[#2547E8] dark:text-[#6782FF] font-semibold animate-fade-in">
+            {feedback}
           </span>
         ) : (
           <div className="flex items-center gap-2">

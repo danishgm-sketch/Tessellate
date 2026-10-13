@@ -1,5 +1,0 @@
----
-import PublicLayout from '../../layouts/PublicLayout.astro';
-import {PAGE_COMPOSITIONS} from '@tessellate/composer';
----
-<PublicLayout title="Page architectures" description="Thirty-six page recipes describe real interface jobs. Each recipe shows its required roles and starts a brief in Compose, where the validated Gold registry supplies runtime resources."><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">{PAGE_COMPOSITIONS.map(page=><article class="border border-[var(--tess-hairline)] p-6"><p class="font-mono text-xs mb-3">{page.category} · {page.screenType}</p><h2 class="text-xl font-semibold mb-3">{page.title}</h2><p class="text-sm leading-relaxed mb-4">{page.description}</p><h3 class="font-semibold text-sm mb-2">Required roles</h3><ul class="list-disc pl-5 text-sm mb-5">{page.requiredRoles.map(role=><li>{role}</li>)}</ul><a class="text-[var(--tess-cobalt)] underline" href={`/compose?brief=${encodeURIComponent(`Build a ${page.title}. ${page.description}`)}`}>Compose this architecture →</a></article>)}</div></PublicLayout>

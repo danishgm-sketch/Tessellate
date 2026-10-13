@@ -5,7 +5,7 @@
   "name": "CTA Download",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Installation call-to-action template with a configurable handler and disabled, explained default.",
+  "description": "Multi-platform installer button group (macOS, Windows, Linux, CLI) with version pill.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -17,8 +17,8 @@
     "download"
   ],
   "purposes": [
-    "Product installation",
-    "Configured package or download destinations"
+    "Desktop app download",
+    "CLI install options"
   ],
   "productArchetypes": [
     {
@@ -130,7 +130,7 @@
     "installer"
   ],
   "intent": {
-    "summary": "Installation template; enable it only after a supported destination is configured.",
+    "summary": "Multi-platform installer button group (macOS, Windows, Linux, CLI) with version pill.",
     "idealFor": [
       "Desktop software and CLI tool distribution"
     ],
@@ -138,7 +138,7 @@
       "Pure SaaS web apps with no download binary"
     ],
     "jobs": [
-      "Direct users to a supported package or download target"
+      "Provide multi-OS binary download links with version badges"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"

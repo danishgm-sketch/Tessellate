@@ -1,14 +1,12 @@
-import React, {useId} from 'react';
+import React from 'react';
 
 export type PricingEnterpriseVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface PricingEnterpriseProps {
   variant?: PricingEnterpriseVariant;
-  onConsultation?: () => void;
 }
 
-export function PricingEnterprise({ variant = 'quiet', onConsultation }: PricingEnterpriseProps) {
-  const bookingId = useId();
+export function PricingEnterprise({ variant = 'quiet' }: PricingEnterpriseProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';
   let card = 'bg-neutral-50 border-neutral-200';
 
@@ -24,15 +22,14 @@ export function PricingEnterprise({ variant = 'quiet', onConsultation }: Pricing
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-4xl mx-auto">
         <div className={`p-8 sm:p-12 rounded-3xl border text-center flex flex-col items-center ${card}`}>
-          <span className="text-xs font-mono font-bold uppercase text-neutral-500 mb-3 block">Example Enterprise Plan</span>
-          <h2 className="text-3xl font-bold tracking-tight mb-4">Enterprise Plan Template</h2>
+          <span className="text-xs font-mono font-bold uppercase text-neutral-500 mb-3 block">High-Touch Security</span>
+          <h2 className="text-3xl font-bold tracking-tight mb-4">Enterprise Custom Contracts</h2>
           <p className="text-xs sm:text-sm opacity-80 max-w-lg mb-8 leading-relaxed">
-            Illustrative plan layout. Describe only services your organisation actually offers and configure booking before publishing.
+            Includes custom VPC deployment, isolated R2 registries, custom SOC2 attestations, and 24/7 dedicated engineering support.
           </p>
-          <button type="button" onClick={onConsultation} disabled={!onConsultation} aria-describedby={bookingId} className="px-6 py-3 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-semibold text-xs tracking-wider uppercase">
-            {onConsultation ? 'Request consultation' : 'Booking not configured'}
+          <button type="button" className="px-6 py-3 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-semibold text-xs tracking-wider uppercase">
+            Schedule Enterprise Consultation
           </button>
-          <p id={bookingId} className="text-xs mt-3 opacity-80">{onConsultation ? 'Contact the plan provider for supported services.' : 'This example has no booking integration.'}</p>
         </div>
       </div>
     </section>

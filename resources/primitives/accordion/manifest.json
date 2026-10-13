@@ -82,20 +82,7 @@
   },
   "preview": {
     "component": "AccordionPreview",
-    "defaultProps": {
-      "items": [
-        {
-          "id": "first",
-          "title": "What is this example?",
-          "content": "A real interactive accordion. Open and close each item."
-        },
-        {
-          "id": "second",
-          "title": "Portable source",
-          "content": "Install the published source in your own application."
-        }
-      ]
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

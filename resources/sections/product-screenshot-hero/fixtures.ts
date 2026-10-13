@@ -1,4 +1,4 @@
 export const productScreenshotHeroFixtures = {
-  headline: 'The interface workbench for product teams.',
-  subheadline: 'Inspect Design DNA and export a standalone React and Tailwind project.',
+  headline: 'The definitive interface workbench for engineers.',
+  subheadline: 'Construct complete UI architectures with audited performance.',
 };

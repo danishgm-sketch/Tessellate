@@ -67,11 +67,11 @@ export function TimeSeriesChart({
   const activePoint = hoveredIdx !== null && hoveredIdx >= 0 && hoveredIdx < points.length ? points[hoveredIdx] : null;
 
   return (
-    <div className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col transition-colors ${cardBg}`}>
+    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>
       <div className="flex items-center justify-between mb-4">
         <div>
           <h4 className="text-sm font-semibold tracking-tight">{title}</h4>
-          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Real-time sampling window</p>
+          <p className="text-xs text-neutral-500">Real-time sampling window</p>
         </div>
         <div className="text-right">
           <span className="text-lg font-mono font-semibold">

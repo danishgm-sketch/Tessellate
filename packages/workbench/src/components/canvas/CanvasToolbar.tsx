@@ -25,21 +25,18 @@ export function CanvasToolbar() {
   const presets: Array<{ id: DevicePreset; label: string; icon: React.ReactNode }> = [
     { id: 'responsive', label: 'Fluid', icon: <Maximize2 className="h-3 w-3" /> },
     { id: '1440', label: '1440', icon: <Monitor className="h-3 w-3" /> },
-    { id: '1280', label: '1280', icon: <Monitor className="h-3 w-3" /> },
     { id: '1024', label: '1024', icon: <Monitor className="h-3 w-3" /> },
     { id: '768', label: '768', icon: <Tablet className="h-3 w-3" /> },
-    { id: '430', label: '430', icon: <Smartphone className="h-3 w-3" /> },
-    { id: '360', label: '360', icon: <Smartphone className="h-3 w-3" /> },
     { id: '390', label: '390', icon: <Smartphone className="h-3 w-3" /> },
   ];
 
   return (
     <div
       data-testid="canvas-toolbar"
-      className="dark flex flex-wrap items-center justify-center gap-2 p-1.5 bg-white/90 dark:bg-[#111217]/90 backdrop-blur-md rounded-xl border border-[#D9D6CF] dark:border-[#272C34] shadow-md text-xs font-mono select-none"
+      className="flex items-center gap-2 p-1.5 bg-white/90 dark:bg-[#111217]/90 backdrop-blur-md rounded-xl border border-[#D9D6CF] dark:border-[#272C34] shadow-md text-xs font-mono select-none"
     >
       {/* Device Preset Switcher */}
-      <div className="flex flex-wrap items-center bg-[#FAF9F6] dark:bg-[#171B21] rounded-lg p-0.5 border border-[#D9D6CF]/50 dark:border-[#272C34]/50">
+      <div className="flex items-center bg-[#FAF9F6] dark:bg-[#171B21] rounded-lg p-0.5 border border-[#D9D6CF]/50 dark:border-[#272C34]/50">
         {presets.map((p) => (
           <button
             key={p.id}
@@ -47,7 +44,7 @@ export function CanvasToolbar() {
             title={p.label}
             className={`flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium transition-all ${
               devicePreset === p.id
-                ? 'bg-white dark:bg-[#272C34] text-[#2547E8] dark:text-[#879DFF] shadow-xs'
+                ? 'bg-white dark:bg-[#272C34] text-[#2547E8] dark:text-[#6782FF] shadow-xs'
                 : 'text-[#62666F] dark:text-[#A8AFBA] hover:text-[#111217] dark:hover:text-[#F5F7FA]'
             }`}
           >
@@ -64,7 +61,7 @@ export function CanvasToolbar() {
         <button
           onClick={() => setZoom(zoom - 0.1)}
           className="p-1 rounded hover:bg-[#FAF9F6] dark:hover:bg-[#171B21] text-[#62666F] dark:text-[#A8AFBA]"
-          aria-label="Zoom Out" title="Zoom Out"
+          title="Zoom Out"
         >
           <ZoomOut className="h-3.5 w-3.5" />
         </button>
@@ -74,7 +71,7 @@ export function CanvasToolbar() {
         <button
           onClick={() => setZoom(zoom + 0.1)}
           className="p-1 rounded hover:bg-[#FAF9F6] dark:hover:bg-[#171B21] text-[#62666F] dark:text-[#A8AFBA]"
-          aria-label="Zoom In" title="Zoom In"
+          title="Zoom In"
         >
           <ZoomIn className="h-3.5 w-3.5" />
         </button>

@@ -5,7 +5,7 @@
   "name": "Upgrade Prompt",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Upgrade prompt template with a configurable destination.",
+  "description": "In-app upgrade callout card presenting locked feature benefits and upgrade trigger.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -130,7 +130,7 @@
     "cta"
   ],
   "intent": {
-    "summary": "Example upgrade prompt; provide accurate plan details and a destination.",
+    "summary": "In-app upgrade callout card presenting locked feature benefits and upgrade trigger.",
     "idealFor": [
       "Gracefully prompting users when they encounter enterprise features"
     ],
@@ -138,7 +138,7 @@
       "Aggressive blocking modal spam"
     ],
     "jobs": [
-      "Describe available product plans and direct users to a configured destination"
+      "Explain benefits of cloud team synchronization without hard barriers"
     ],
     "contentRequirements": [
       "High data density, keyboard accessibility, semantic tokens"

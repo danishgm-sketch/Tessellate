@@ -82,10 +82,7 @@
   },
   "preview": {
     "component": "SwitchPreview",
-    "defaultProps": {
-      "label": "Enable example setting",
-      "checked": false
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

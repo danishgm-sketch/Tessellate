@@ -82,10 +82,7 @@
   },
   "preview": {
     "component": "ProgressBarPreview",
-    "defaultProps": {
-      "label": "Example progress",
-      "value": 65
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

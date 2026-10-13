@@ -146,7 +146,7 @@ export function LayoutComposer() {
 
       {/* Grammar Presets */}
       <div className="space-y-2">
-        <span className="block font-mono text-xs font-semibold uppercase text-[var(--text-muted)]">
+        <span className="block font-mono text-xs font-semibold uppercase text-[#8B8F97]">
           Architectural Grammars
         </span>
         <div className="flex flex-wrap gap-2">
@@ -158,7 +158,7 @@ export function LayoutComposer() {
               className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                 grammarId === p.id
                   ? 'border-[#111217] bg-[#111217] text-white shadow-sm'
-                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#62666F]'
+                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#8B8F97]'
               }`}
             >
               {p.name}
@@ -179,7 +179,7 @@ export function LayoutComposer() {
             <button
               type="button"
               onClick={() => selectGrammar(LAYOUT_PRESETS[0]!)}
-              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
+              className="text-xs font-mono text-[#8B8F97] hover:text-[#111217] flex items-center gap-1"
             >
               <RotateCcw className="h-3 w-3" />
               <span>Reset</span>
@@ -215,7 +215,7 @@ export function LayoutComposer() {
               <span className="text-[#111217]">Grid Columns (Desktop)</span>
               <span className="font-mono text-[#62666F]">{cols} cols</span>
             </div>
-            <input aria-label="Grid columns"
+            <input
               type="range"
               min="2"
               max="16"
@@ -232,7 +232,7 @@ export function LayoutComposer() {
               <span className="text-[#111217]">Gutter Pitch (Gap)</span>
               <span className="font-mono text-[#62666F]">{gapPx}px</span>
             </div>
-            <input aria-label="Grid gap"
+            <input
               type="range"
               min="8"
               max="48"
@@ -249,7 +249,7 @@ export function LayoutComposer() {
           {/* Viewport Width Simulator Switcher */}
           <div className="flex items-center justify-between pb-2 border-b border-[#D9D6CF]">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-[var(--text-muted)]">PORT SIMULATION</span>
+              <span className="text-xs font-mono text-[#8B8F97]">PORT SIMULATION</span>
               <span className="text-xs font-bold text-[#111217]">{activePreset.name}</span>
             </div>
 
@@ -306,7 +306,7 @@ export function LayoutComposer() {
               {grammarId === 'standard-sidebar' && (
                 <div className="flex gap-3 h-64">
                   {viewport !== 'mobile' && (
-                    <div className="w-36 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-2 space-y-2 text-[10px] font-mono text-[var(--text-muted)]">
+                    <div className="w-36 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-2 space-y-2 text-[10px] font-mono text-[#8B8F97]">
                       <div className="h-4 w-16 bg-[#2547E8] rounded" />
                       <div className="h-2 w-20 bg-[#D9D6CF] rounded" />
                       <div className="h-2 w-24 bg-[#D9D6CF] rounded" />
@@ -314,7 +314,7 @@ export function LayoutComposer() {
                     </div>
                   )}
                   <div className="flex-1 flex flex-col gap-3">
-                    <div className="h-8 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] px-3 flex items-center justify-between text-[10px] font-mono text-[var(--text-muted)]">
+                    <div className="h-8 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] px-3 flex items-center justify-between text-[10px] font-mono text-[#8B8F97]">
                       <span>Top Bar Navigation</span>
                       <div className="h-4 w-12 bg-[#2547E8] rounded" />
                     </div>
@@ -333,7 +333,7 @@ export function LayoutComposer() {
               )}
 
               {grammarId === 'three-pane-cockpit' && (
-                <div className="flex gap-3 h-64 text-[10px] font-mono text-[var(--text-muted)]">
+                <div className="flex gap-3 h-64 text-[10px] font-mono text-[#8B8F97]">
                   {viewport === 'desktop' && (
                     <div className="w-28 rounded-lg bg-[#0E1015] border border-[#272B33] p-2 space-y-1.5 text-white">
                       <span>TREE</span>
@@ -370,7 +370,7 @@ export function LayoutComposer() {
                   <div className="col-span-1 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] p-2 flex items-center justify-center font-bold text-[#2547E8]">
                     1x1
                   </div>
-                  <div className="col-span-1 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] p-2 flex items-center justify-center font-bold text-[#12603F]">
+                  <div className="col-span-1 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] p-2 flex items-center justify-center font-bold text-[#177B55]">
                     1x1
                   </div>
                 </div>
@@ -379,13 +379,13 @@ export function LayoutComposer() {
               {grammarId === 'editorial-split' && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 h-64 text-[10px]">
                   <div className="rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] p-4 space-y-2">
-                    <span className="font-mono text-[var(--text-muted)]">STICKY THESIS</span>
+                    <span className="font-mono text-[#8B8F97]">STICKY THESIS</span>
                     <div className="h-5 w-3/4 rounded bg-[#111217]" />
                     <div className="h-2 w-full rounded bg-[#D9D6CF]" />
                     <div className="h-2 w-4/5 rounded bg-[#D9D6CF]" />
                   </div>
                   <div className="rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] p-4 space-y-3 overflow-y-auto">
-                    <span className="font-mono text-[var(--text-muted)]">SCROLLING ARTIFACTS</span>
+                    <span className="font-mono text-[#8B8F97]">SCROLLING ARTIFACTS</span>
                     <div className="h-16 rounded bg-white border border-[#D9D6CF]" />
                     <div className="h-16 rounded bg-white border border-[#D9D6CF]" />
                   </div>

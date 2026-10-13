@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import type { ResourceManifest } from '@tessellate/schemas';
-import { isPreviewToParentMessage } from '@tessellate/catalog/protocol';
 import type { PreviewDevice, PreviewTheme, PreviewUpdateMessage } from '@tessellate/catalog/protocol';
 import { Monitor, Tablet, Smartphone, Sun, Moon, RotateCcw, Activity } from 'lucide-react';
 
@@ -27,22 +26,12 @@ export function ResourcePreviewFrame({
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  useEffect(()=>{
-    const receive=(event:MessageEvent)=>{
-      if(event.source!==iframeRef.current?.contentWindow || !isPreviewToParentMessage(event.data) || event.data.type!=='TESSELLATE_PREVIEW_READY') return;
-      iframeRef.current?.contentWindow?.postMessage({type:'TESSELLATE_PREVIEW_INIT',resourceId:manifest.slug,props:manifest.preview.defaultProps,variant,theme,device,reducedMotion},'*');
-    };
-    window.addEventListener('message',receive);
-    return ()=>window.removeEventListener('message',receive);
-  },[manifest,variant,theme,device,reducedMotion]);
-
   // Send updates to iframe whenever controls change
   useEffect(() => {
     if (!iframeRef.current?.contentWindow) return;
 
     const updateMsg: PreviewUpdateMessage = {
       type: 'TESSELLATE_PREVIEW_UPDATE',
-      props: manifest.preview.defaultProps,
       variant,
       theme,
       device,
@@ -77,10 +66,10 @@ export function ResourcePreviewFrame({
   return (
     <div className="flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] overflow-hidden shadow-xs">
       {/* Top Toolbar */}
-      <div className="min-h-12 py-2 flex-wrap px-3 border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] flex items-center justify-between gap-4">
+      <div className="h-12 px-4 border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] flex items-center justify-between gap-4">
         {/* Variant selector */}
         <div className="flex items-center gap-1.5 overflow-x-auto">
-          <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)] mr-1">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#8B8F97)] mr-1">
             Variant:
           </span>
           {manifest.variants.map((v) => (
@@ -110,7 +99,7 @@ export function ResourcePreviewFrame({
               className={`h-6 w-6 rounded flex items-center justify-center transition-colors ${
                 device === 'desktop'
                   ? 'bg-[var(--tess-canvas-strong,#ECE9E2)] text-[var(--tess-cobalt,#2547E8)]'
-                  : 'text-[var(--tess-ink-muted,#62666F)] hover:text-[var(--tess-ink,#111217)]'
+                  : 'text-[var(--tess-ink-muted,#8B8F97)] hover:text-[var(--tess-ink,#111217)]'
               }`}
             >
               <Monitor className="w-3.5 h-3.5" />
@@ -122,7 +111,7 @@ export function ResourcePreviewFrame({
               className={`h-6 w-6 rounded flex items-center justify-center transition-colors ${
                 device === 'tablet'
                   ? 'bg-[var(--tess-canvas-strong,#ECE9E2)] text-[var(--tess-cobalt,#2547E8)]'
-                  : 'text-[var(--tess-ink-muted,#62666F)] hover:text-[var(--tess-ink,#111217)]'
+                  : 'text-[var(--tess-ink-muted,#8B8F97)] hover:text-[var(--tess-ink,#111217)]'
               }`}
             >
               <Tablet className="w-3.5 h-3.5" />
@@ -134,7 +123,7 @@ export function ResourcePreviewFrame({
               className={`h-6 w-6 rounded flex items-center justify-center transition-colors ${
                 device === 'mobile'
                   ? 'bg-[var(--tess-canvas-strong,#ECE9E2)] text-[var(--tess-cobalt,#2547E8)]'
-                  : 'text-[var(--tess-ink-muted,#62666F)] hover:text-[var(--tess-ink,#111217)]'
+                  : 'text-[var(--tess-ink-muted,#8B8F97)] hover:text-[var(--tess-ink,#111217)]'
               }`}
             >
               <Smartphone className="w-3.5 h-3.5" />
@@ -159,7 +148,7 @@ export function ResourcePreviewFrame({
             className={`h-7 px-2 rounded-lg border text-xs font-mono flex items-center gap-1 transition-colors shadow-2xs ${
               reducedMotion
                 ? 'border-[var(--tess-cobalt,#2547E8)] bg-[#E7EBFF] text-[var(--tess-cobalt,#2547E8)] font-semibold'
-                : 'border-[var(--tess-hairline,#D9D6CF)] bg-white text-[var(--tess-ink-muted,#62666F)] hover:text-[var(--tess-ink,#111217)]'
+                : 'border-[var(--tess-hairline,#D9D6CF)] bg-white text-[var(--tess-ink-muted,#8B8F97)] hover:text-[var(--tess-ink,#111217)]'
             }`}
           >
             <Activity className="w-3 h-3" />
@@ -171,7 +160,7 @@ export function ResourcePreviewFrame({
             type="button"
             title="Reset preview state"
             onClick={handleReset}
-            className="h-7 w-7 rounded-lg border border-[var(--tess-hairline,#D9D6CF)] bg-white flex items-center justify-center text-[var(--tess-ink-muted,#62666F)] hover:text-[var(--tess-ink,#111217)] transition-colors shadow-2xs"
+            className="h-7 w-7 rounded-lg border border-[var(--tess-hairline,#D9D6CF)] bg-white flex items-center justify-center text-[var(--tess-ink-muted,#8B8F97)] hover:text-[var(--tess-ink,#111217)] transition-colors shadow-2xs"
           >
             <RotateCcw className="w-3 h-3" />
           </button>

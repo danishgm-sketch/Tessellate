@@ -1,0 +1,72 @@
+---
+import '../../styles/global.css';
+import { SiteHeader } from '../../components/home/SiteHeader';
+import { FinalComposerFooter } from '../../components/home/FinalComposerFooter';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CLI Reference — Tessellate Documentation</title>
+    <meta name="description" content="Reference guide for the Tessellate CLI tool (tess)." />
+  </head>
+  <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white">
+    <SiteHeader client:load />
+
+    <main id="main-content" class="max-w-[960px] mx-auto px-4 sm:px-6 py-12 space-y-8">
+      <div class="space-y-2">
+        <a href="/docs" class="text-xs font-mono text-[#2547E8] hover:underline">← Back to Documentation</a>
+        <h1 class="text-3xl font-bold tracking-tight text-[#111217]">Tessellate CLI (`tess`)</h1>
+        <p class="text-sm text-[#62666F]">
+          The official command-line interface for installing, validating, and exporting Tessellate components.
+        </p>
+      </div>
+
+      <div class="space-y-6 text-sm leading-relaxed text-[#31353E]">
+        <section class="space-y-3 p-6 rounded-2xl bg-white border border-[#D9D6CF]">
+          <h2 class="text-base font-bold text-[#111217]">Installation</h2>
+          <pre class="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 font-mono text-xs overflow-x-auto"><code>pnpm add -g @tessellate/cli
+# Or run with npx:
+npx @tessellate/cli --help</code></pre>
+        </section>
+
+        <section class="space-y-3 p-6 rounded-2xl bg-white border border-[#D9D6CF]">
+          <h2 class="text-base font-bold text-[#111217]">Commands</h2>
+
+          <div class="space-y-4">
+            <div>
+              <h3 class="font-mono font-semibold text-xs text-[#2547E8]">tess add &lt;slug&gt;</h3>
+              <p class="text-xs text-[#62666F] mt-1">Resolves and writes component source code into your project directory.</p>
+              <pre class="p-2.5 rounded-lg bg-neutral-100 text-neutral-800 font-mono text-xs mt-1.5"><code>tess add metric-card
+tess add ai-chat-panel --overwrite</code></pre>
+            </div>
+
+            <div>
+              <h3 class="font-mono font-semibold text-xs text-[#2547E8]">tess search [query]</h3>
+              <p class="text-xs text-[#62666F] mt-1">Search the 324-resource open catalogue directly from your terminal.</p>
+              <pre class="p-2.5 rounded-lg bg-neutral-100 text-neutral-800 font-mono text-xs mt-1.5"><code>tess search "fintech"
+tess search --category "data"</code></pre>
+            </div>
+
+            <div>
+              <h3 class="font-mono font-semibold text-xs text-[#2547E8]">tess validate [path]</h3>
+              <p class="text-xs text-[#62666F] mt-1">Validates a local ResourceManifest or ProjectManifest against canonical Zod schemas.</p>
+              <pre class="p-2.5 rounded-lg bg-neutral-100 text-neutral-800 font-mono text-xs mt-1.5"><code>tess validate ./resources/my-card/manifest.json</code></pre>
+            </div>
+
+            <div>
+              <h3 class="font-mono font-semibold text-xs text-[#2547E8]">tess export [project-file]</h3>
+              <p class="text-xs text-[#62666F] mt-1">Generates a standalone, runnable Vite or Next.js repository from a `.tess.json` manifest.</p>
+              <pre class="p-2.5 rounded-lg bg-neutral-100 text-neutral-800 font-mono text-xs mt-1.5"><code>tess export project.tess.json --out ./my-app</code></pre>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <FinalComposerFooter client:idle />
+  </body>
+</html>

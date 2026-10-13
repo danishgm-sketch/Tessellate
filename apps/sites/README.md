@@ -17,7 +17,7 @@ The workspace build orders `@tessellate/sites` after `@tessellate/site`, copies 
 Astro output into an ignored adapter asset directory and emits `dist/server` plus
 `dist/client` using the Cloudflare Vite plugin. The small Worker streams `ASSETS`
 responses and enforces CSP, nosniff, framing, referrer and permissions headers.
-Worker code does not implement or simulate the canonical API. The Sites Vite
+Worker code does not host the canonical account or inference queue API. The Sites Vite
 hosting plugin is vendored from the official starter with its MIT licence.
 
 Preview with `pnpm --filter @tessellate/sites preview` (port 4323). On Windows,
@@ -51,9 +51,26 @@ introduced. Sites billing is not exposed by the connector; no exact Sites tariff
 is asserted. This adapter adds no paid infrastructure outside Sites and preserves
 the repository's £20 maximum principle.
 
-The runtime audit is authoritative. See `audit/RUNTIME_AUDIT.md` and the machine
-records for before evidence and verification status. Local passing results do
-not close a finding; fixed deployed behavior must be rechecked.
+## Latest main publication (2026-10-13)
+
+The application source is taken from main commit
+`22f2961d10c76e9f4ff263965c9bd894f8ea3a9c`, including the expanded resource
+registry and multi-target exporter. Earlier audit application changes have not
+been overlaid on that newer source. Only this hosting adapter and the single
+stylesheet build option are retained.
+
+The Python/PyTorch Tree-GNN daemon cannot execute inside a Cloudflare Worker.
+This Site has no connected host daemon or queue transport. Its inference health
+endpoint reports that actual offline capability; the existing queue client then
+uses the canonical deterministic fallback. Queue submissions and host control
+routes return an explicit unavailable response. The development-only host secret
+and volatile API queue are not exposed by this Site. Enabling remote host
+inference requires a separately secured, persistent API deployment and host
+connection; no such infrastructure or D1/R2 binding is provisioned here.
+
+This publication updates the latest project for review. The prior V7 audit does
+not certify the newer main implementation; deployment smoke results are recorded
+in `LATEST_DEPLOYMENT.md`.
 
 
 ### Native asset routing difference

@@ -1,15 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 export type KanbanBoardVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface KanbanBoardProps {
   variant?: KanbanBoardVariant;
-  title?: string;
-  columns?: Array<{title:string;tasks:string[]}>;
 }
 
-export function KanbanBoard({ variant = 'quiet', title='Sample task board', columns: suppliedColumns }: KanbanBoardProps) {
-  const [completed,setCompleted] = useState<string[]>([]);
+export function KanbanBoard({ variant = 'quiet' }: KanbanBoardProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';
   let lane = 'bg-neutral-50/60 border-neutral-200';
   let card = 'bg-white border-neutral-200 shadow-2xs';
@@ -24,26 +21,26 @@ export function KanbanBoard({ variant = 'quiet', title='Sample task board', colu
     card = 'bg-[#0E1217] border-[#2E3440]';
   }
 
-  const columns = suppliedColumns ?? [
+  const columns = [
     { title: 'Backlog', tasks: ['Audit contrast on Nocturne tokens', 'Generate OpenAPI spec'] },
     { title: 'In Progress', tasks: ['Scale 56 application blocks'] },
     { title: 'Complete', tasks: ['72 Marketing sections verified', '44 Primitives complete'] },
   ];
 
   return (
-    <div className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border overflow-x-auto transition-colors ${bg}`}>
-      <h3 className="text-sm font-semibold mb-6">{title}</h3>
-      <div className="grid grid-cols-1 @md:grid-cols-3 gap-4">
+    <div className={`w-full p-6 rounded-xl border overflow-x-auto transition-colors ${bg}`}>
+      <h3 className="text-sm font-semibold mb-6">Task Board</h3>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 min-w-[600px]">
         {columns.map((col) => (
-          <div key={col.title} className={`p-4 rounded-[var(--tess-radius-xl,8px)] border flex flex-col gap-3 ${lane}`}>
+          <div key={col.title} className={`p-4 rounded-xl border flex flex-col gap-3 ${lane}`}>
             <div className="flex items-center justify-between text-xs font-semibold mb-1">
               <span>{col.title}</span>
               <span className="font-mono text-[10px] opacity-60">({col.tasks.length})</span>
             </div>
             {col.tasks.map((task) => (
-              <button type="button" key={task} aria-pressed={completed.includes(task)} onClick={()=>setCompleted(previous=>previous.includes(task)?previous.filter(value=>value!==task):[...previous,task])} className={`p-3 text-left rounded-[var(--tess-radius-lg,8px)] border text-xs ${card}`}>
-                <span className="font-medium">{completed.includes(task)?'✓ ':''}{task}</span>
-              </button>
+              <div key={task} className={`p-3 rounded-lg border text-xs ${card}`}>
+                <span className="font-medium">{task}</span>
+              </div>
             ))}
           </div>
         ))}

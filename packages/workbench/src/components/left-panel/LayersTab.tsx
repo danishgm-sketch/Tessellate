@@ -63,8 +63,6 @@ function LayerNodeItem({ node, depth }: LayerNodeItemProps) {
     <div className="select-none">
       <div
         data-testid={`layer-node-${node.id}`}
-        role="treeitem" tabIndex={0} aria-selected={isSelected}
-        onKeyDown={event=>{if(event.key==='Enter' || event.key===' '){event.preventDefault();event.stopPropagation();selectNode(node.id);}}}
         onClick={(e) => {
           e.stopPropagation();
           selectNode(node.id);
@@ -74,7 +72,7 @@ function LayerNodeItem({ node, depth }: LayerNodeItemProps) {
         style={{ paddingLeft: `${depth * 12 + 6}px` }}
         className={`group flex items-center justify-between py-1.5 pr-2 rounded-lg cursor-pointer transition-all ${
           isSelected
-            ? 'bg-[#E7EBFF] dark:bg-[#1C2752] text-[#2547E8] dark:text-[#879DFF] font-semibold'
+            ? 'bg-[#E7EBFF] dark:bg-[#1C2752] text-[#2547E8] dark:text-[#6782FF] font-semibold'
             : isHovered
             ? 'bg-[#FAF9F6] dark:bg-[#171B21] text-[#111217] dark:text-[#F5F7FA]'
             : 'text-[#62666F] dark:text-[#A8AFBA] hover:bg-[#FAF9F6] dark:hover:bg-[#171B21]'
@@ -83,12 +81,11 @@ function LayerNodeItem({ node, depth }: LayerNodeItemProps) {
         <div className="flex items-center gap-1.5 overflow-hidden">
           {hasChildren ? (
             <button
-              aria-label={`${isExpanded ? "Collapse" : "Expand"} ${displayName}`} aria-expanded={isExpanded}
               onClick={(e) => {
                 e.stopPropagation();
                 setIsExpanded(!isExpanded);
               }}
-              className="min-h-6 min-w-6 p-1 hover:text-[#111217] dark:hover:text-[#F5F7FA]"
+              className="p-0.5 hover:text-[#111217] dark:hover:text-[#F5F7FA]"
             >
               {isExpanded ? (
                 <ChevronDown className="h-3 w-3" />
@@ -115,7 +112,7 @@ function LayerNodeItem({ node, depth }: LayerNodeItemProps) {
           )}
 
           {node.resourceRef && (
-            <span className="text-[10px] text-[var(--text-muted)] font-mono truncate">
+            <span className="text-[10px] text-[#8B8F97] font-mono opacity-60 truncate">
               {node.resourceRef.slug}
             </span>
           )}
@@ -127,13 +124,13 @@ function LayerNodeItem({ node, depth }: LayerNodeItemProps) {
             data-testid={`toggle-lock-${node.id}`}
             onClick={(e) => {
               e.stopPropagation();
-              toggleNodeLock(node.id, 'node');
+              toggleNodeLock(node.id, 'structure');
             }}
-            aria-label={`${isLocked ? 'Unlock' : 'Lock'} ${displayName}`} aria-pressed={isLocked} title={isLocked ? 'Node Locked' : 'Lock Node'}
-            className={`min-h-6 min-w-6 p-1 rounded transition-opacity ${
+            title={isLocked ? 'Node Locked' : 'Lock Node'}
+            className={`p-1 rounded transition-opacity ${
               isLocked
                 ? 'opacity-100 text-amber-500'
-                : 'opacity-40 hover:opacity-100 text-[var(--text-muted)]'
+                : 'opacity-40 hover:opacity-100 text-[#8B8F97]'
             }`}
           >
             {isLocked ? <Lock className="h-3 w-3" /> : <Unlock className="h-3 w-3" />}
@@ -159,7 +156,7 @@ export function LayersTab() {
   const activeScreen = manifest.screens.find((s) => s.id === activeScreenId);
   if (!activeScreen) {
     return (
-      <div className="p-4 text-xs text-[var(--text-muted)]">
+      <div className="p-4 text-xs text-[#8B8F97]">
         No active screen selected.
       </div>
     );
@@ -168,12 +165,12 @@ export function LayersTab() {
   return (
     <div data-testid="layers-tab" className="p-3 space-y-2">
       <div className="flex items-center justify-between px-2 pb-1 border-b border-[#D9D6CF] dark:border-[#272C34]">
-        <span className="text-[10px] uppercase font-mono tracking-wider text-[var(--text-muted)]">
+        <span className="text-[10px] uppercase font-mono tracking-wider text-[#8B8F97]">
           Semantic Tree ({activeScreen.name})
         </span>
       </div>
 
-      <div role="tree" aria-label="Semantic layers" className="space-y-0.5 overflow-y-auto max-h-[calc(100vh-200px)]">
+      <div className="space-y-0.5 overflow-y-auto max-h-[calc(100vh-200px)]">
         <LayerNodeItem node={activeScreen.rootNode} depth={0} />
       </div>
     </div>

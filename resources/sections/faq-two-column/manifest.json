@@ -5,7 +5,7 @@
   "name": "FAQ Two Column",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Two-column layout for questions and answers.",
+  "description": "Dual-column question layout for high question density without excessive vertical length.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,7 +130,7 @@
     "answers"
   ],
   "intent": {
-    "summary": "Question layout; keep answers specific to the host app supported behavior.",
+    "summary": "Dual-column question layout for high question density without excessive vertical length.",
     "idealFor": [
       "Presenting 6+ questions compactly without requiring clicks to expand"
     ],
@@ -138,7 +138,7 @@
       "Narrow single-column mobile-only pages"
     ],
     "jobs": [
-      "Display concise, verified answers to product questions"
+      "Display questions in side-by-side balanced columns"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"

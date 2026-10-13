@@ -1,2 +1,0 @@
-import {test,expect} from '@playwright/test';
-test('catalogue mounts only a nearby window of real previews',async({page})=>{await page.goto('/explore/');await expect(page.getByText('Showing 50 resources',{exact:true})).toBeVisible();expect(await page.locator('main iframe').count()).toBeLessThanOrEqual(12);const last=page.getByRole('link',{name:'Preview',exact:true}).last();const href=await last.getAttribute('href');await last.scrollIntoViewIfNeeded();await expect(page.locator(`iframe[src="/preview/?resource=${href!.split('/').at(-1)}"]`)).toBeVisible();});

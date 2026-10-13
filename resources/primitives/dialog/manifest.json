@@ -82,11 +82,7 @@
   },
   "preview": {
     "component": "DialogPreview",
-    "defaultProps": {
-      "open": true,
-      "title": "Example dialog",
-      "children": "Inspect and close this actual dialog."
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

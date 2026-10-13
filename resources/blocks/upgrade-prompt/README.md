@@ -1,3 +1,3 @@
 # Upgrade Prompt
 
-Upgrade prompt template. Add accurate plan details and provide an `onUpgrade` handler before enabling its action.
+In-app upgrade banner explaining benefits of team cloud sync.

@@ -30,10 +30,10 @@ export function Dialog({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs">
       <div className="fixed inset-0" onClick={onClose} />
-      <div className={`relative w-full max-w-md rounded-[var(--tess-radius-xl,8px)] border p-6 z-10 space-y-4 ${theme}`}>
+      <div className={`relative w-full max-w-md rounded-2xl border p-6 z-10 space-y-4 ${theme}`}>
         <div className="space-y-1">
           <h2 className="text-base font-semibold">{title}</h2>
-          {description && <p className="text-xs text-[var(--tess-ink-muted,#62666F)] leading-relaxed">{description}</p>}
+          {description && <p className="text-xs text-neutral-500 leading-relaxed">{description}</p>}
         </div>
         <div className="py-2 text-sm">{children}</div>
         {footer && <div className="flex justify-end gap-2 pt-2 border-t border-inherit">{footer}</div>}

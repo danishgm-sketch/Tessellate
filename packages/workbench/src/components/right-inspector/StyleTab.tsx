@@ -1,7 +1,7 @@
 import React from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { findNodeById } from '../../utils/tree-helpers.js';
-import { getScopedDNA, getScopedTokens, isScopeLocked } from '../../utils/dna-helpers.js';
+import { getEffectiveNodeDNA } from '../../utils/dna-helpers.js';
 import {
   SEMANTIC_PALETTES,
   TYPOGRAPHY_PAIRINGS,
@@ -13,8 +13,6 @@ export function StyleTab() {
   const manifest = useWorkbenchStore((state) => state.manifest);
   const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
-  const setPalette=useWorkbenchStore(state=>state.setPalette);
-  const currentPalette=getScopedTokens(manifest,activeScreenId,selectedNodeId).paletteId ?? 'paper-cobalt';
   const updateNodeDNA = useWorkbenchStore((state) => state.updateNodeDNA);
   const updateProjectDNA = useWorkbenchStore((state) => state.updateProjectDNA);
 
@@ -25,8 +23,7 @@ export function StyleTab() {
       : null;
 
   const nodeOverrides = selectedNode?.dnaOverrides;
-  const locked = isScopeLocked(manifest,activeScreenId,selectedNodeId);
-  const effectiveDNA = getScopedDNA(manifest, activeScreenId, selectedNodeId);
+  const effectiveDNA = getEffectiveNodeDNA(manifest.designDNA, nodeOverrides);
 
   const handleUpdate = (partial: PartialDesignDNA) => {
     if (selectedNode) {
@@ -46,8 +43,6 @@ export function StyleTab() {
 
   return (
     <div data-testid="style-tab" className="p-4 space-y-6 text-xs overflow-y-auto">
-      {locked && <p role="status">This node inherits an active lock. Unlock it in Locks to edit.</p>}
-      <fieldset disabled={locked} className="space-y-4 border-0 p-0 m-0 min-w-0">
       {/* Visual Mode */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
@@ -56,7 +51,7 @@ export function StyleTab() {
             className={`rounded px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider ${
               isModeOverridden
                 ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300'
-                : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[var(--text-muted)]'
+                : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[#8B8F97]'
             }`}
           >
             {isModeOverridden ? 'Overridden' : 'Inherited'}
@@ -69,7 +64,7 @@ export function StyleTab() {
               onClick={() => handleUpdate({ visualMode: mode })}
               className={`flex items-center justify-center gap-1.5 py-2 rounded-xl border text-xs font-semibold capitalize transition-all ${
                 visualModeVal === mode
-                  ? 'border-[#2547E8] bg-white dark:border-[#6782FF] dark:bg-[#171B21] text-[#2547E8] dark:text-[#879DFF] shadow-xs'
+                  ? 'border-[#2547E8] bg-white dark:border-[#6782FF] dark:bg-[#171B21] text-[#2547E8] dark:text-[#6782FF] shadow-xs'
                   : 'border-[#D9D6CF] bg-[#FAF9F6] dark:border-[#272C34] dark:bg-[#0B0D10] text-[#62666F] dark:text-[#A8AFBA]'
               }`}
             >
@@ -86,7 +81,7 @@ export function StyleTab() {
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5 font-bold text-[#111217] dark:text-[#F5F7FA]">
-            <Box className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#879DFF]" />
+            <Box className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#6782FF]" />
             <span>Corner Curvature</span>
           </div>
           <div className="flex items-center gap-1.5">
@@ -94,7 +89,7 @@ export function StyleTab() {
               className={`rounded px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider ${
                 isCurvatureOverridden
                   ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300'
-                  : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[var(--text-muted)]'
+                  : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[#8B8F97]'
               }`}
             >
               {isCurvatureOverridden ? 'Overridden' : 'Inherited'}
@@ -109,12 +104,12 @@ export function StyleTab() {
           type="range"
           min={0}
           max={100}
-          aria-label="Corner Curvature" value={curvatureVal}
+          value={curvatureVal}
           onChange={(e) => handleUpdate({ curvature: Number(e.target.value) })}
           className="w-full h-1.5 bg-[#D9D6CF] dark:bg-[#272C34] rounded-lg appearance-none cursor-pointer accent-[#2547E8] dark:accent-[#6782FF]"
         />
 
-        <div className="flex justify-between text-[10px] text-[var(--text-muted)] font-mono">
+        <div className="flex justify-between text-[10px] text-[#8B8F97] font-mono">
           <span>0 (Sharp / 0px)</span>
           <span>45 (Smooth / 14px)</span>
           <span>100 (Pill / 9999px)</span>
@@ -132,7 +127,7 @@ export function StyleTab() {
               className={`rounded px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider ${
                 isDepthOverridden
                   ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300'
-                  : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[var(--text-muted)]'
+                  : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[#8B8F97]'
               }`}
             >
               {isDepthOverridden ? 'Overridden' : 'Inherited'}
@@ -147,11 +142,11 @@ export function StyleTab() {
           type="range"
           min={0}
           max={100}
-          aria-label="Surface Depth" value={depthVal}
+          value={depthVal}
           onChange={(e) => handleUpdate({ depth: Number(e.target.value) })}
           className="w-full h-1.5 bg-[#D9D6CF] dark:bg-[#272C34] rounded-lg appearance-none cursor-pointer accent-[#2547E8] dark:accent-[#6782FF]"
         />
-        <div className="flex justify-between text-[10px] text-[var(--text-muted)] font-mono">
+        <div className="flex justify-between text-[10px] text-[#8B8F97] font-mono">
           <span>0 (Flat Bordered)</span>
           <span>50 (Elevated)</span>
           <span>100 (Deep Shadow)</span>
@@ -163,14 +158,18 @@ export function StyleTab() {
       {/* Palette Presets */}
       <div className="space-y-2">
         <div className="flex items-center gap-1.5 font-bold text-[#111217] dark:text-[#F5F7FA]">
-          <Palette className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#879DFF]" />
+          <Palette className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#6782FF]" />
           <span>Semantic Palettes ({SEMANTIC_PALETTES.length})</span>
         </div>
         <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto pr-1">
           {SEMANTIC_PALETTES.map((palette) => (
             <button
               key={palette.id}
-              aria-pressed={currentPalette===palette.id} onClick={()=>setPalette(palette.id)}
+              onClick={() =>
+                handleUpdate({
+                  colourfulness: 50,
+                })
+              }
               className="flex items-center gap-2 p-2 rounded-xl border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#171B21] hover:border-[#2547E8] text-left transition-all"
             >
               <div
@@ -181,7 +180,7 @@ export function StyleTab() {
                 <div className="font-semibold text-[11px] text-[#111217] dark:text-[#F5F7FA] truncate">
                   {palette.name}
                 </div>
-                <div className="text-[9px] text-[var(--text-muted)] truncate">{palette.mood}</div>
+                <div className="text-[9px] text-[#8B8F97] truncate">{palette.mood}</div>
               </div>
             </button>
           ))}
@@ -193,12 +192,11 @@ export function StyleTab() {
       {/* Typography Pairings */}
       <div className="space-y-2">
         <div className="flex items-center gap-1.5 font-bold text-[#111217] dark:text-[#F5F7FA]">
-          <Type className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#879DFF]" />
+          <Type className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#6782FF]" />
           <span>Typography Pairings ({TYPOGRAPHY_PAIRINGS.length})</span>
         </div>
-        <p className="text-[var(--text-muted)] text-[11px]">Uses each font stack’s available fallback. Install the named, licensed fonts in your exported application for exact typefaces.</p>
         <div className="space-y-1.5 max-h-40 overflow-y-auto pr-1">
-          {TYPOGRAPHY_PAIRINGS.map((tp) => {
+          {TYPOGRAPHY_PAIRINGS.slice(0, 8).map((tp) => {
             const headingClean = (tp.headingFont.split(',')[0] ?? 'Sans').replace(/"/g, '');
             const bodyClean = (tp.bodyFont.split(',')[0] ?? 'Sans').replace(/"/g, '');
             return (
@@ -216,11 +214,11 @@ export function StyleTab() {
                   <div className="font-semibold text-[11px] text-[#111217] dark:text-[#F5F7FA]">
                     {tp.name}
                   </div>
-                  <div className="text-[10px] text-[var(--text-muted)] truncate max-w-[200px]">
+                  <div className="text-[10px] text-[#8B8F97] truncate max-w-[200px]">
                     {headingClean} + {bodyClean}
                   </div>
                 </div>
-                <span className="text-[9px] uppercase font-mono text-[var(--text-muted)]">
+                <span className="text-[9px] uppercase font-mono text-[#8B8F97]">
                   {tp.scaleRatio}x
                 </span>
               </button>
@@ -228,7 +226,6 @@ export function StyleTab() {
           })}
         </div>
       </div>
-    </fieldset>
     </div>
   );
 }

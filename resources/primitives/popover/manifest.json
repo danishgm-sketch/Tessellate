@@ -82,10 +82,7 @@
   },
   "preview": {
     "component": "PopoverPreview",
-    "defaultProps": {
-      "trigger": "Open example popover",
-      "children": "An actual interactive popover."
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

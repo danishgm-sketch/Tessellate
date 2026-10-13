@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-import {isGoldResource} from '@tessellate/catalog/gold';
+import React, { useState } from 'react';
 import type { ResourceManifest } from '@tessellate/schemas';
 import { Eye, Bookmark, ArrowUpRight, Copy, Check } from 'lucide-react';
 
@@ -16,33 +15,21 @@ export function ResourceCard({
   onUse,
   onSave,
 }: ResourceCardProps) {
-  const [actionError,setActionError]=useState('');
-  const gold=isGoldResource(manifest.slug);
-  useEffect(()=>{const read=()=>{try {const stored:unknown=JSON.parse(localStorage.getItem('tessellate_saved_resources') ?? '[]');if(Array.isArray(stored))setSaved(stored.includes(manifest.slug));}catch{setActionError('Saved collection could not be read. Its data has been preserved.');}};read();window.addEventListener('tessellate-saved-resources-changed',read);return ()=>window.removeEventListener('tessellate-saved-resources-changed',read);},[manifest.slug]);
   const [copied, setCopied] = useState(false);
   const [saved, setSaved] = useState(false);
-  const previewRef=useRef<HTMLDivElement>(null);
-  const [previewVisible,setPreviewVisible]=useState(false);
-  useEffect(()=>{
-    if(typeof IntersectionObserver==='undefined'){setPreviewVisible(true);return undefined;}
-    const observer=new IntersectionObserver(entries=>{
-      if(entries.some(entry=>entry.isIntersecting)){setPreviewVisible(true);observer.disconnect();}
-    },{rootMargin:'160px'});
-    if(previewRef.current)observer.observe(previewRef.current);
-    return ()=>observer.disconnect();
-  },[]);
 
   const handleCopy = (e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
-    void navigator.clipboard.writeText(`npx shadcn@latest add ${window.location.origin}/r/${manifest.slug}.json`).then(()=>{setCopied(true);setActionError('');}).catch(cause=>setActionError(`Copy failed: ${String(cause)}`));
+    navigator.clipboard.writeText(`npx shadcn add @tessellate/${manifest.slug}`);
+    setCopied(true);
     setTimeout(() => setCopied(false), 1800);
   };
 
   const handleSave = (e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
-    try {const stored:unknown=JSON.parse(localStorage.getItem('tessellate_saved_resources') ?? '[]');if(!Array.isArray(stored) || stored.some(value=>typeof value!=='string'))throw new Error('Stored collection is invalid; preserving it.');const slugs=new Set<string>(stored);if(saved)slugs.delete(manifest.slug);else slugs.add(manifest.slug);localStorage.setItem('tessellate_saved_resources',JSON.stringify([...slugs]));setSaved(!saved);setActionError('');window.dispatchEvent(new Event('tessellate-saved-resources-changed'));}catch(cause){setActionError(String(cause));}
+    setSaved(!saved);
     onSave?.(manifest);
   };
 
@@ -52,10 +39,19 @@ export function ResourceCard({
   return (
     <div className="group relative flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] transition-all duration-200 hover:border-[var(--tess-hairline-strong,#C7C3BA)] hover:shadow-md overflow-hidden">
       {/* 16:10 Preview Frame */}
-      <div ref={previewRef} className="relative aspect-[16/10] w-full bg-[var(--tess-canvas,#F4F2ED)] border-b border-[var(--tess-hairline,#D9D6CF)] flex items-center justify-center p-6 overflow-hidden">
-        {previewVisible ? <iframe src={`/preview/?resource=${manifest.slug}`} title={`${manifest.name} actual preview`} sandbox="allow-scripts" loading="lazy" className="w-full h-full border-0 bg-white" /> : <span className="text-xs text-[var(--tess-ink-muted)]">Preview loads when visible</span>}
+      <div className="relative aspect-[16/10] w-full bg-[var(--tess-canvas,#F4F2ED)] border-b border-[var(--tess-hairline,#D9D6CF)] flex items-center justify-center p-6 overflow-hidden">
+        {/* Placeholder or mini representation */}
+        <div className="flex flex-col items-center justify-center gap-2 text-center pointer-events-none select-none">
+          <div className="h-9 px-4 rounded-lg bg-[var(--tess-cobalt,#2547E8)] text-white text-sm font-medium flex items-center justify-center shadow-xs">
+            {manifest.name}
+          </div>
+          <span className="text-[11px] font-mono text-[var(--tess-ink-secondary,#62666F)]">
+            {manifest.variants.length} curated variants
+          </span>
+        </div>
+
         {/* Hover Actions Overlay (Max 4 actions: Preview, Save, Use, Copy) */}
-        <div className="absolute inset-0 bg-[var(--tess-ink,#111217)]/10 backdrop-blur-[2px] opacity-100 sm:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-150 flex items-center justify-center gap-2 p-4">
+        <div className="absolute inset-0 bg-[var(--tess-ink,#111217)]/10 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-150 flex items-center justify-center gap-2 p-4">
           <a
             href={`/r/${manifest.slug}`}
             onClick={(e) => {
@@ -80,7 +76,7 @@ export function ResourceCard({
             <Bookmark className={`w-3.5 h-3.5 ${saved ? 'fill-[var(--tess-cobalt,#2547E8)] text-[var(--tess-cobalt,#2547E8)]' : ''}`} />
           </button>
 
-          {gold && <a
+          <a
             href={`/workbench?resource=${manifest.slug}`}
             onClick={(e) => {
               if (onUse) {
@@ -93,7 +89,7 @@ export function ResourceCard({
           >
             <span>Use</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>}
+          </a>
 
           <button
             type="button"
@@ -101,12 +97,11 @@ export function ResourceCard({
             title="Copy registry install command"
             className="h-8 w-8 rounded-lg bg-white text-[var(--tess-ink,#111217)] flex items-center justify-center shadow-sm hover:bg-neutral-100 transition-colors"
           >
-            {copied ? <Check className="w-3.5 h-3.5 text-emerald-700" /> : <Copy className="w-3.5 h-3.5" />}
+            {copied ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
           </button>
         </div>
       </div>
 
-      {actionError && <p role="alert" className="p-3 text-xs">{actionError}</p>}
       {/* Footer Info */}
       <div className="p-3.5 flex flex-col gap-1.5">
         <div className="flex items-center justify-between gap-2">
@@ -121,7 +116,7 @@ export function ResourceCard({
           </span>
         </div>
 
-        <div className="flex items-center justify-between text-xs text-[var(--tess-ink-muted,#62666F)]">
+        <div className="flex items-center justify-between text-xs text-[var(--tess-ink-muted,#8B8F97)]">
           <span className="line-clamp-1">{manifest.creator.displayName}</span>
           <div className="flex items-center gap-1.5 shrink-0">
             {isVerified && (
@@ -134,7 +129,6 @@ export function ResourceCard({
             </span>
           </div>
         </div>
-        <p className="text-[11px] text-[var(--tess-ink-secondary)]">{gold ? 'Gold runtime · composition and browser export' : 'Live sandbox preview · source download'}</p>
       </div>
     </div>
   );

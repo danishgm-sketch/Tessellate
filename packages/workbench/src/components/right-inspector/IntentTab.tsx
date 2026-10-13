@@ -1,7 +1,7 @@
 import React from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { findNodeById } from '../../utils/tree-helpers.js';
-import { getScopedDNA, isScopeLocked } from '../../utils/dna-helpers.js';
+import { getEffectiveNodeDNA } from '../../utils/dna-helpers.js';
 import { FeelMixer } from '../feel-mixer/FeelMixer.js';
 import {
   getVisualAmbitionStop,
@@ -26,8 +26,7 @@ export function IntentTab() {
       : null;
 
   const nodeOverrides = selectedNode?.dnaOverrides;
-  const locked = isScopeLocked(manifest,activeScreenId,selectedNodeId);
-  const effectiveDNA = getScopedDNA(manifest, activeScreenId, selectedNodeId);
+  const effectiveDNA = getEffectiveNodeDNA(manifest.designDNA, nodeOverrides);
 
   const handleUpdate = (partial: PartialDesignDNA) => {
     if (selectedNode) {
@@ -51,8 +50,6 @@ export function IntentTab() {
 
   return (
     <div data-testid="intent-tab" className="p-4 space-y-6 text-xs overflow-y-auto">
-      {locked && <p role="status">This node inherits an active lock. Unlock it in Locks to edit.</p>}
-      <fieldset disabled={locked} className="space-y-4 border-0 p-0 m-0 min-w-0">
       {/* Feel Mixer */}
       <FeelMixer />
 
@@ -62,7 +59,7 @@ export function IntentTab() {
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5 font-bold text-[#111217] dark:text-[#F5F7FA]">
-            <Eye className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#879DFF]" />
+            <Eye className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#6782FF]" />
             <span>Visual Ambition</span>
           </div>
           <div className="flex items-center gap-1.5">
@@ -70,7 +67,7 @@ export function IntentTab() {
               className={`rounded px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider ${
                 isVisualOverridden
                   ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300'
-                  : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[var(--text-muted)]'
+                  : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[#8B8F97]'
               }`}
             >
               {isVisualOverridden ? 'Overridden' : 'Inherited'}
@@ -85,7 +82,7 @@ export function IntentTab() {
           type="range"
           min={0}
           max={100}
-          aria-label="Visual Ambition" value={visualAmbitionVal}
+          value={visualAmbitionVal}
           onChange={(e) => handleUpdate({ visualAmbition: Number(e.target.value) })}
           className="w-full h-1.5 bg-[#D9D6CF] dark:bg-[#272C34] rounded-lg appearance-none cursor-pointer accent-[#2547E8] dark:accent-[#6782FF]"
         />
@@ -106,7 +103,7 @@ export function IntentTab() {
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5 font-bold text-[#111217] dark:text-[#F5F7FA]">
-            <Compass className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#879DFF]" />
+            <Compass className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#6782FF]" />
             <span>Structural Creativity</span>
           </div>
           <div className="flex items-center gap-1.5">
@@ -114,7 +111,7 @@ export function IntentTab() {
               className={`rounded px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider ${
                 isStructuralOverridden
                   ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300'
-                  : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[var(--text-muted)]'
+                  : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[#8B8F97]'
               }`}
             >
               {isStructuralOverridden ? 'Overridden' : 'Inherited'}
@@ -129,7 +126,7 @@ export function IntentTab() {
           type="range"
           min={0}
           max={100}
-          aria-label="Structural Creativity" value={structuralCreativityVal}
+          value={structuralCreativityVal}
           onChange={(e) => handleUpdate({ structuralCreativity: Number(e.target.value) })}
           className="w-full h-1.5 bg-[#D9D6CF] dark:bg-[#272C34] rounded-lg appearance-none cursor-pointer accent-[#2547E8] dark:accent-[#6782FF]"
         />
@@ -143,7 +140,6 @@ export function IntentTab() {
           </p>
         </div>
       </div>
-    </fieldset>
     </div>
   );
 }

@@ -30,7 +30,7 @@ export function CompatibilityExplanation() {
         </div>
 
         <div className="rounded-2xl border border-[#D9D6CF] bg-[#FAF9F6] p-7 space-y-4">
-          <div className="h-10 w-10 rounded-xl bg-white border border-[#D9D6CF] flex items-center justify-center text-[#12603F] shadow-sm">
+          <div className="h-10 w-10 rounded-xl bg-white border border-[#D9D6CF] flex items-center justify-center text-[#177B55] shadow-sm">
             <ShieldCheck className="h-5 w-5" />
           </div>
           <h3 className="text-lg font-semibold text-[#111217]">

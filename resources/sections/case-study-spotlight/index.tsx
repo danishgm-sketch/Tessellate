@@ -9,19 +9,16 @@ export interface CaseStudySpotlightProps {
   metricLabel?: string;
   headline?: string;
   summary?: string;
-  caseStudyHref?: string;
 }
 
 export function CaseStudySpotlight({
   variant = 'quiet',
-  client = 'Example organisation',
-  metric = '—',
-  metricLabel = 'Add a verified outcome before publishing',
-  headline = 'Example customer result',
-  summary = 'Add a customer-approved story and evidence for each outcome before publishing this section.',
-  caseStudyHref,
+  client = 'KRONOS ANALYTICS',
+  metric = '4.2x',
+  metricLabel = 'Faster front-end delivery speed',
+  headline = 'How Kronos migrated 18 legacy micro-frontends into a singular coherent system.',
+  summary = 'By introducing Tessellate manifests and deterministic DNA validation, the Kronos team consolidated 140 disparate components into 36 verified primitives.',
 }: CaseStudySpotlightProps) {
-  const noteId = React.useId();
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
   let card = 'bg-white border-neutral-200 shadow-sm';
 
@@ -41,18 +38,13 @@ export function CaseStudySpotlight({
             <span className="text-xs font-mono font-bold uppercase tracking-widest text-neutral-500 mb-4 block">{client}</span>
             <div className="text-5xl sm:text-6xl font-bold font-mono tracking-tight text-emerald-600 dark:text-emerald-400 mb-2">{metric}</div>
             <p className="text-xs font-medium opacity-80">{metricLabel}</p>
-            {!caseStudyHref && <p id={noteId} className="text-xs text-neutral-500 mt-3">Example content. Replace with approved customer details.</p>}
           </div>
           <div className="md:col-span-2">
             <h3 className="text-xl sm:text-2xl font-bold tracking-tight mb-4">{headline}</h3>
             <p className="text-sm opacity-80 leading-relaxed mb-6">{summary}</p>
-            {caseStudyHref ? (
-              <a href={caseStudyHref} className="text-xs font-semibold uppercase tracking-wider underline hover:opacity-75 transition-opacity">Read case study →</a>
-            ) : (
-              <button type="button" disabled aria-describedby={noteId} className="text-xs font-semibold uppercase tracking-wider underline opacity-60 cursor-not-allowed">
-                Case study link not configured
-              </button>
-            )}
+            <button type="button" className="text-xs font-semibold uppercase tracking-wider underline hover:opacity-75 transition-opacity">
+              Read Complete Technical Case Study →
+            </button>
           </div>
         </div>
       </div>

@@ -84,7 +84,7 @@ export function Menu({ trigger, items, align = 'right', className }: MenuProps) 
                 item.disabled && 'opacity-50 pointer-events-none'
               )}
             >
-              {item.icon && <span className="text-[var(--text-muted)]">{item.icon}</span>}
+              {item.icon && <span className="text-[#8B8F97]">{item.icon}</span>}
               <span>{item.label}</span>
             </button>
           ))}

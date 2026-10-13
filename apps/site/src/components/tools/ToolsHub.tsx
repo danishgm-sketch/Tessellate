@@ -152,13 +152,13 @@ export function ToolsHub() {
                   <div className="flex items-center justify-center h-10 w-10 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] group-hover:bg-[#111217] group-hover:text-white transition-colors text-[#2547E8]">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <span className="font-mono text-xs font-bold text-[var(--text-muted)]">
+                  <span className="font-mono text-xs font-bold text-[#8B8F97]">
                     {tool.num}
                   </span>
                 </div>
 
                 <div className="space-y-1.5">
-                  <span className="font-mono text-[10px] uppercase font-semibold text-[var(--text-muted)]">
+                  <span className="font-mono text-[10px] uppercase font-semibold text-[#8B8F97]">
                     {tool.category}
                   </span>
                   <h3 className="text-lg font-semibold text-[#111217] group-hover:text-[#2547E8] transition-colors">

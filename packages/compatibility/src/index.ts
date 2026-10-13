@@ -13,8 +13,4 @@ export * from './prng.js';
 export * from './scoring.js';
 export * from './direction-generator.js';
 export * from './capabilities.js';
-export * from './semantic-roles.js';
 export * from './compose-pipeline.js';
-
-export * from './content-bindings.js';
-export * from './showcase-composition.js';

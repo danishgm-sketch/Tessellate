@@ -56,7 +56,7 @@ export function NotComponentLibrary() {
             </li>
           </ul>
 
-          <div className="rounded-xl bg-white/60 border border-[#D9D6CF] p-4 font-mono text-xs text-[var(--text-muted)]">
+          <div className="rounded-xl bg-white/60 border border-[#D9D6CF] p-4 font-mono text-xs text-[#8B8F97]">
             Outcome: A fragile frankenstein interface that requires constant manual CSS refactoring.
           </div>
         </div>

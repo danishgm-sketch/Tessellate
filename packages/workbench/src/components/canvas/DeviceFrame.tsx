@@ -63,7 +63,7 @@ export function DeviceFrame({ preset, children }: DeviceFrameProps) {
       className="mx-auto flex flex-col shrink-0 rounded-2xl border-2 border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#111217] shadow-xl overflow-hidden transition-all duration-300"
     >
       {/* Device Chrome Header */}
-      <div className="dark flex items-center justify-between px-4 py-2 border-b border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#171B21] text-xs font-mono text-[#62666F] dark:text-[#A8AFBA] select-none">
+      <div className="flex items-center justify-between px-4 py-2 border-b border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#171B21] text-xs font-mono text-[#62666F] dark:text-[#A8AFBA] select-none">
         <div className="flex items-center gap-2">
           {getDeviceIcon()}
           <span>{getDeviceLabel()}</span>

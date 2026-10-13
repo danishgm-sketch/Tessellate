@@ -82,9 +82,7 @@
   },
   "preview": {
     "component": "InlineAlertPreview",
-    "defaultProps": {
-      "title": "Example notice"
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

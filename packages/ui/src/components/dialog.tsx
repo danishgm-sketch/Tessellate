@@ -1,5 +1,4 @@
-import { useDialogFocus } from '../use-dialog-focus.js';
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -20,7 +19,7 @@ export function Dialog({
   children,
   className,
 }: DialogProps) {
-  const dialogRef = useDialogFocus<HTMLDivElement>(open,onClose);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
@@ -53,7 +52,7 @@ export function Dialog({
       role="presentation"
     >
       <div
-        ref={dialogRef} tabIndex={-1}
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="dialog-title"
@@ -80,7 +79,7 @@ export function Dialog({
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-1 text-[var(--text-muted)] hover:text-[#111217] dark:hover:text-[#F5F7FA] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2547E8]"
+            className="rounded-lg p-1 text-[#8B8F97] hover:text-[#111217] dark:hover:text-[#F5F7FA] cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#2547E8]"
             aria-label="Close dialog"
           >
             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

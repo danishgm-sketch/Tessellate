@@ -1,6 +1,4 @@
 import React from 'react';
-import {GOLD_RESOURCE_PROPS} from './generated-gold-props.js';
-import { nodeLayoutClass, nodeRuntimeVariant } from './layout-contract.js';
 import type { NodeRendererProps } from './types.js';
 import { DEFAULT_RESOURCE_RENDERERS } from './default-registry.js';
 import { normalizeDesignTokens } from './tokens/normalizer.js';
@@ -28,7 +26,6 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
   const handleSelect = (e: React.MouseEvent) => {
     if (context?.onNodeSelect) {
       e.stopPropagation();
-      e.preventDefault();
       context.onNodeSelect(node.id);
     }
   };
@@ -49,21 +46,28 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
 
   // 2. Compute local DNA overrides if present
   let localStyle: React.CSSProperties = {};
-  if (node.dnaOverrides || node.tokenOverrides) {
+  if (node.dnaOverrides && Object.keys(node.dnaOverrides).length > 0) {
     const effectiveDna = {
       ...(context?.designDNA ?? {}),
       ...node.dnaOverrides,
     };
     const localTokens = normalizeDesignTokens(effectiveDna, {
       reducedMotion: isReducedMotion,
-      activeMode:effectiveDna.visualMode==='adaptive'?context?.systemMode:undefined,
-      tokenOverrides: {...context?.tokenOverrides,...node.tokenOverrides},
+      tokenOverrides: node.tokenOverrides,
     });
     localStyle = tokensToCssVariables(localTokens) as React.CSSProperties;
   }
 
   // 3. Render children recursively
-  const childContext = {...context,designDNA:{...context?.designDNA,...node.dnaOverrides},tokenOverrides:{...context?.tokenOverrides,...node.tokenOverrides}};
+  const childContext = node.dnaOverrides && Object.keys(node.dnaOverrides).length > 0
+    ? {
+        ...context,
+        designDNA: {
+          ...(context?.designDNA ?? {}),
+          ...node.dnaOverrides,
+        },
+      }
+    : context;
 
   const renderedChildren = node.children?.map((child) => (
     <NodeRenderer key={child.id} node={child} context={childContext} />
@@ -145,10 +149,9 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
       );
     }
 
-    const variant = nodeRuntimeVariant(node,childContext?.designDNA ?? {},context?.systemMode);
     const mergedProps = {
-      ...Object.fromEntries(Object.entries({...node.slots,...node.props}).filter(([key])=>!GOLD_RESOURCE_PROPS[slug] || GOLD_RESOURCE_PROPS[slug]?.includes(key) || key.startsWith('aria-') || key.startsWith('data-'))),
-      ...(variant ? { variant } : {}),
+      ...(node.props ?? {}),
+      ...(node.variant ? { variant: node.variant } : {}),
     };
 
     const hasChildren = Boolean(node.props?.children) || Boolean(renderedChildren && renderedChildren.length > 0);
@@ -157,7 +160,6 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
     return (
       <div
         data-node-id={node.id}
-        data-resource-variant={variant}
         data-node-type={node.nodeType}
         data-semantic-role={node.semanticRole}
         onClick={handleSelect}
@@ -167,7 +169,7 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
           ...localStyle,
           ...(node.props?.style as React.CSSProperties ?? {}),
         }}
-        className={`@container ${nodeLayoutClass(node)} relative ${motionClasses} ${layoutModifierClasses} ${selectionClasses}`}
+        className={`relative ${motionClasses} ${layoutModifierClasses} ${selectionClasses}`}
       >
         {hasChildren ? (
           <Component {...mergedProps}>{childrenToPass}</Component>
@@ -179,7 +181,7 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
   }
 
   // 8. Generic layout container node
-  const domProps = Object.fromEntries(Object.entries(node.props ?? {}).filter(([key])=>key==='id' || key==='title' || key.startsWith('aria-')));
+  const { layoutVariant: _lv, layoutFamily: _lf, children: _c, style: _s, ...domProps } = (node.props ?? {}) as Record<string, unknown>;
   const content =
     renderedChildren && renderedChildren.length > 0
       ? renderedChildren
@@ -197,7 +199,7 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
         ...localStyle,
         ...(node.props?.style as React.CSSProperties ?? {}),
       }}
-      className={`${nodeLayoutClass(node)} relative ${motionClasses} ${layoutModifierClasses} ${selectionClasses} ${typeof node.props.className==='string' ? node.props.className : ''}`}
+      className={`relative ${motionClasses} ${layoutModifierClasses} ${selectionClasses}`}
       {...domProps}
     >
       {content}

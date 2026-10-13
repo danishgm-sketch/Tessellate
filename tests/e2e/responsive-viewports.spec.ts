@@ -12,7 +12,7 @@ test.describe('Responsive Viewport Audits (390px & 1440px)', () => {
     expect(hasHorizontalOverflow).toBe(false);
 
     // Verify main header and mobile nav toggle
-    const header = page.locator('header').first();
+    const header = page.locator('header');
     await expect(header).toBeVisible();
 
     const mobileMenuButton = page.locator('button[aria-label*="menu" i], button[aria-label*="navigation" i]').first();
@@ -52,7 +52,7 @@ test.describe('Responsive Viewport Audits (390px & 1440px)', () => {
     await page.goto('/showcases');
     await page.waitForLoadState('domcontentloaded');
 
-    const header = page.locator('header').first();
+    const header = page.locator('header');
     await expect(header).toBeVisible();
 
     // Verify desktop navigation links are visible directly

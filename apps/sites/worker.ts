@@ -2,6 +2,17 @@
 export default {
  async fetch(request:Request,env:Env):Promise<Response> {
   const url=new URL(request.url);
+  // This Site has no Python host transport. Report that capability truthfully so
+  // the canonical queue client uses its existing deterministic fallback.
+  if (url.pathname === '/api/inference/health' && request.method === 'GET') {
+   return Response.json({hostOnline:false, activeWorkers:0, workerDevice:null,
+    pendingTasks:0, engine:'deterministic', reason:'Python host daemon is not connected to this Sites deployment'},
+    {headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
+  }
+  if (url.pathname.startsWith('/api/inference/')) {
+   return Response.json({error:'HostUnavailable', message:'Host inference is not configured for this Site. Use the deterministic engine.'},
+    {status:503, headers:{'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'}});
+  }
   const prefix='/__tessellate_asset_payloads';
   const html=!/\.[a-z\d]+$/i.test(url.pathname) || url.pathname.endsWith('.html');
   const assetUrl=new URL(url);

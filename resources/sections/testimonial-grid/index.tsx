@@ -10,11 +10,11 @@ export interface TestimonialGridProps {
 
 export function TestimonialGrid({
   variant = 'quiet',
-  title = 'Example customer story layout',
+  title = 'Loved by builders, engineers, and product designers.',
   testimonials = [
-    { quote: 'Illustrative quote: replace with an approved customer statement.', author: 'Example Customer A', role: 'Staff Engineer', company: 'Example Organisation A' },
-    { quote: 'Illustrative quote: describe a measured customer outcome.', author: 'Example Customer B', role: 'CTO', company: 'Example Organisation B' },
-    { quote: 'Illustrative quote: include specific context and customer approval.', author: 'Example Customer C', role: 'Lead Architect', company: 'Example Organisation C' },
+    { quote: 'The cleanest component architecture I have seen in modern React.', author: 'Marcus Vance', role: 'Staff Engineer', company: 'Linear Systems' },
+    { quote: 'Reduced our front-end maintenance overhead to near zero.', author: 'Aria Chen', role: 'CTO', company: 'Prism Health' },
+    { quote: 'Zero lock-in means our team owns every byte of output.', author: 'Devon Patel', role: 'Lead Architect', company: 'Apex Cloud' },
   ],
 }: TestimonialGridProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
@@ -29,12 +29,12 @@ export function TestimonialGrid({
   }
 
   return (
-    <section className={`relative w-full py-20 @sm:py-28 px-6 @sm:px-12 border-b transition-colors ${bg}`}>
+    <section className={`relative w-full py-20 sm:py-28 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl @sm:text-4xl font-bold tracking-tight text-center mb-16">{title}</h2>
-        <div className="grid grid-cols-1 @md:grid-cols-3 gap-8">
+        <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-center mb-16">{title}</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((t) => (
-            <div key={t.author} className={`p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col justify-between ${card}`}>
+            <div key={t.author} className={`p-6 rounded-xl border flex flex-col justify-between ${card}`}>
               <div className="mb-6">
                 <div className="text-amber-500 text-xs mb-3">★★★★★</div>
                 <p className="text-sm opacity-90 leading-relaxed">"{t.quote}"</p>

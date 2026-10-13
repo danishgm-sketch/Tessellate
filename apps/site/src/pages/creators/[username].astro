@@ -1,0 +1,54 @@
+---
+import '../../styles/global.css';
+import { SiteHeader } from '../../components/home/SiteHeader';
+import { FinalComposerFooter } from '../../components/home/FinalComposerFooter';
+
+export function getStaticPaths() {
+  return [
+    { params: { username: 'tessellate' } },
+    { params: { username: 'core' } },
+    { params: { username: 'community' } },
+  ];
+}
+
+const { username } = Astro.params;
+const formattedName = username ? username.charAt(0).toUpperCase() + username.slice(1) : 'Creator';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{formattedName} — Tessellate Creator Profile</title>
+    <meta name="description" content={`Verified component creator profile for ${formattedName} on Tessellate.`} />
+  </head>
+  <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white">
+    <SiteHeader client:load />
+
+    <main id="main-content" class="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 space-y-8">
+      <div class="flex items-center gap-4 p-6 rounded-2xl bg-white border border-[#D9D6CF]">
+        <div class="h-16 w-16 rounded-2xl bg-[#2547E8] text-white flex items-center justify-center font-bold text-2xl font-mono">
+          {formattedName.charAt(0)}
+        </div>
+        <div>
+          <h1 class="text-2xl font-bold text-[#111217]">{formattedName}</h1>
+          <p class="text-xs text-[#62666F] font-mono">@{username} • Core System Contributor</p>
+          <p class="text-xs text-[#62666F] mt-1">
+            Author of verified canonical primitives and design systems in the Tessellate registry.
+          </p>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <h2 class="text-lg font-bold text-[#111217]">Authored Resources</h2>
+        <div class="p-6 rounded-2xl bg-white border border-[#D9D6CF] text-xs text-[#62666F]">
+          Showing canonical components contributed by @{username}. Browse the full catalog at <a href="/explore" class="text-[#2547E8] hover:underline font-semibold">Explore Catalogue</a>.
+        </div>
+      </div>
+    </main>
+
+    <FinalComposerFooter client:idle />
+  </body>
+</html>

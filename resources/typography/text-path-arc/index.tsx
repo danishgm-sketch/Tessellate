@@ -51,7 +51,7 @@ export function TextPathArc({
 
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
           <span className="text-xl font-black font-mono tracking-tight">{centerText}</span>
-          <span className="text-[8px] font-mono uppercase text-neutral-400">License</span>
+          <span className="text-[8px] font-mono uppercase text-neutral-400">Certified</span>
         </div>
       </div>
 
@@ -59,7 +59,7 @@ export function TextPathArc({
         <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-400">Vector Curvature</span>
         <h4 className="text-xl font-bold tracking-tight">Curved Text Path Arc</h4>
         <p className="text-xs text-neutral-500 leading-relaxed">
-          Circular vector textPath generating continuous orbital badges and licence labels with zero image assets.
+          Circular vector textPath generating continuous orbital badges and certification stamps with zero image assets.
         </p>
         {children}
       </div>

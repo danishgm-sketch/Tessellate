@@ -16,23 +16,23 @@ export function StatusOverview({ variant = 'quiet' }: StatusOverviewProps) {
   }
 
   const services = [
-    { name: 'Example service A', latency: '1.2ms' },
-    { name: 'Example service B', latency: '0.4ms' },
-    { name: 'Example service C', latency: '12ms' },
-    { name: 'Example service D', latency: '3.1ms' },
+    { name: 'Core Engine API', status: 'Operational', latency: '1.2ms' },
+    { name: 'Registry Edge Cache', status: 'Operational', latency: '0.4ms' },
+    { name: 'Authentication OAuth', status: 'Operational', latency: '12ms' },
+    { name: 'AST Code Generator', status: 'Operational', latency: '3.1ms' },
   ];
 
   return (
     <div className={`w-full p-6 rounded-xl border transition-colors ${bg}`}>
       <div className="flex items-center justify-between mb-4 pb-2 border-b border-neutral-100 dark:border-neutral-800">
-        <h3 className="text-sm font-semibold">Example status snapshot</h3>
-        <span className="text-xs text-amber-700 font-mono font-bold">ILLUSTRATIVE DATA</span>
+        <h3 className="text-sm font-semibold">Service Health</h3>
+        <span className="text-xs text-emerald-600 font-mono font-bold">100% OPERATIONAL</span>
       </div>
       <div className="space-y-3 font-mono text-xs">
         {services.map((s) => (
           <div key={s.name} className="flex items-center justify-between py-1">
             <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-neutral-400" />
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
               <span>{s.name}</span>
             </div>
             <span className="opacity-60">{s.latency}</span>

@@ -3,14 +3,12 @@ import type {
   ProjectMutation,
   HistoryOperation,
 } from '@tessellate/schemas';
-import {applyNavigationLayout} from '../utils/navigation-layout.js';
 import { flattenTree } from '../utils/tree-helpers.js';
 import { isNodeLocked } from '../locks/lock-engine.js';
 import { createHistoryOperation } from '../history/history-manager.js';
 import { recomposeScreenAroundLocks } from './recomposition.js';
 
 export interface SurpriseMeOptions {
-  screenId?:string;
   divergenceLevel?: number; // 0 - 100, default 40
   /** @deprecated Do not use `divergence`. Use `divergenceLevel`. */
   divergence?: never;
@@ -185,14 +183,11 @@ export function surpriseMe(
     preconditionRevision: manifest.historyMeta.headRevision,
   });
 
-  let nextNavigation:string|undefined;
   // 3. Navigation Model Modification (if divergence >= 60)
   if (divergence >= 60) {
     const navCandidates = ['sidebar', 'top-nav', 'command-palette', 'rail'] as const;
     const availableNavs = navCandidates.filter((n) => n !== manifest.navigation.model);
     const nextNav = rng.pick(availableNavs);
-    nextNavigation=nextNav;
-    mutations.push({id:`mut-surprise-dna-nav-${Date.now()}`,type:'SET_DESIGN_TOKEN',targetId:'project',payload:{key:'navigationModel',value:nextNav},actor:'deterministic-engine',timestamp:new Date().toISOString(),preconditionRevision:manifest.historyMeta.headRevision});
 
     mutations.push({
       id: `mut-surprise-nav-${Date.now()}`,
@@ -214,7 +209,7 @@ export function surpriseMe(
 
   // 4. Hierarchy and Layout Transformation
   if (manifest.screens.length > 0) {
-    const targetScreen=manifest.screens.find(screen=>screen.id===options?.screenId) ?? manifest.screens[0]!;
+    const targetScreen = manifest.screens[0]!;
     const recomposeResult = recomposeScreenAroundLocks(manifest, targetScreen.id, {
       divergenceLevel: divergence,
       seed: `${seed}-screen-recompose`,
@@ -222,7 +217,7 @@ export function surpriseMe(
 
     // Append the recomposition mutation
     for (const mut of recomposeResult.operation.mutations) {
-      if(!isNodeLocked(targetScreen.rootNode))mutations.push(mut);
+      mutations.push(mut);
     }
 
     appliedExplanations.push(
@@ -230,20 +225,12 @@ export function surpriseMe(
     );
   }
 
-  if(nextNavigation)for(const screen of manifest.screens){
-    if(isNodeLocked(screen.rootNode))continue;
-    const existing=mutations.find((mutation):mutation is Extract<ProjectMutation,{type:'REPLACE_NODE'}>=>mutation.type==='REPLACE_NODE' && mutation.targetId===screen.rootNode.id);
-    const root=existing?.payload.replacementNode as typeof screen.rootNode | undefined;
-    const replacement=applyNavigationLayout(root ?? screen.rootNode,nextNavigation);
-    if(existing)existing.payload.replacementNode=replacement;
-    else if(replacement!==screen.rootNode)mutations.push({id:`mut-surprise-layout-${screen.id}`,type:'REPLACE_NODE',targetId:screen.rootNode.id,payload:{targetNodeId:screen.rootNode.id,replacementNode:replacement},actor:'deterministic-engine',timestamp:new Date().toISOString(),preconditionRevision:manifest.historyMeta.headRevision});
-  }
   const explanation = `Surprise Me (divergence: ${divergence}%): ${appliedExplanations.join(
     '; '
   )}. Preserved ${totalLockedNodes} locked node(s).`;
 
   const operation = createHistoryOperation(
-    explanation,
+    `Surprise Me: Diverged by ${divergence}%`,
     mutations,
     'deterministic-engine'
   );

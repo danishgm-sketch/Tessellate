@@ -60,7 +60,7 @@ export function EssentialVsExperimental() {
                   <h4 className={`font-semibold text-sm ${level === 'experimental' ? 'font-serif text-base' : ''}`}>
                     Vault Analytics Dashboard
                   </h4>
-                  <span className="text-[11px] font-mono text-[var(--text-muted)]">REVISION · 2026.04</span>
+                  <span className="text-[11px] font-mono text-[#8B8F97]">REVISION · 2026.04</span>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -99,14 +99,14 @@ export function EssentialVsExperimental() {
                       : 'bg-gradient-to-br from-white to-[#FAF9F6] border border-[#2547E8]/20 rounded-2xl shadow-md'
                   }`}
                 >
-                  <span className="block text-[11px] font-mono text-[var(--text-muted)] uppercase mb-1">
+                  <span className="block text-[11px] font-mono text-[#8B8F97] uppercase mb-1">
                     {m.title}
                   </span>
                   <div className="flex items-baseline justify-between">
                     <span className={`text-xl font-bold tracking-tight text-[#111217] ${level === 'experimental' ? 'text-2xl text-[#2547E8]' : ''}`}>
                       {m.val}
                     </span>
-                    <span className="text-[10px] font-mono text-[#12603F] font-semibold">
+                    <span className="text-[10px] font-mono text-[#177B55] font-semibold">
                       {m.delta}
                     </span>
                   </div>
@@ -128,7 +128,7 @@ export function EssentialVsExperimental() {
                 <span className="text-xs font-semibold text-[#111217]">
                   Telemetry Stream (24-Hour Settlement)
                 </span>
-                <span className="text-[11px] font-mono text-[var(--text-muted)]">
+                <span className="text-[11px] font-mono text-[#8B8F97]">
                   {level === 'essential' && 'Standard Grid'}
                   {level === 'elevated' && 'Smoothed Cadence'}
                   {level === 'experimental' && 'Kinetic Spring Wave'}

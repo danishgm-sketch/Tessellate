@@ -7,37 +7,23 @@ import {
   type PreviewResizeMessage,
   type PreviewErrorMessage,
 } from '@tessellate/catalog/protocol';
-import { NodeRenderer } from '@tessellate/renderer';
+import { ButtonPreview } from '../../../../resources/primitives/button/preview.js';
+import { GENERATED_PREVIEW_COMPONENTS } from './generated-previews.js';
 
-const resourceManifests=import.meta.glob<{default:{preview:{defaultProps?:Record<string,unknown>}}}>('../../../../resources/**/manifest.json');
-const resourceModules=import.meta.glob<Record<string,unknown>>('../../../../resources/**/index.tsx');
-function isResourceComponent(value:unknown):value is React.ComponentType<Record<string,unknown>> {return typeof value==='function' || (typeof value==='object' && value!==null && '$$typeof' in value && (value.$$typeof===Symbol.for('react.forward_ref') || value.$$typeof===Symbol.for('react.memo')));}
+const PREVIEW_COMPONENTS: Record<string, React.ComponentType<Record<string, unknown>>> = {
+  ...GENERATED_PREVIEW_COMPONENTS,
+  button: ButtonPreview as unknown as React.ComponentType<Record<string, unknown>>,
+  ButtonPreview: ButtonPreview as unknown as React.ComponentType<Record<string, unknown>>,
+};
 
 export default function PreviewHost() {
-  const [resourceId, setResourceId] = useState<string>(()=>typeof window!=='undefined' ? new URLSearchParams(window.location.search).get('resource') ?? 'button' : 'button');
-  const [component,setComponent]=useState<React.ComponentType<Record<string,unknown>>|null>(null);
-  const [loadError,setLoadError]=useState('');
+  const [resourceId, setResourceId] = useState<string>('button');
   const [variant, setVariant] = useState<string>('expressive');
   const [theme, setTheme] = useState<PreviewTheme>('light');
   const [device, setDevice] = useState<PreviewDevice>('desktop');
-  const [actionStatus,setActionStatus]=useState('');
   const [props, setProps] = useState<Record<string, unknown>>({});
   const [reducedMotion, setReducedMotion] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(()=>{
-    let disposed=false;setComponent(null);setLoadError('');
-    const loader=Object.entries(resourceModules).find(([path])=>path.endsWith(`/${resourceId}/index.tsx`))?.[1];
-    if(!loader){setLoadError(`Unknown resource: ${resourceId}`);return undefined;}
-    const metadataLoader=Object.entries(resourceManifests).find(([path])=>path.endsWith(`/${resourceId}/manifest.json`))?.[1];
-    Promise.all([loader(),metadataLoader?.()]).then(([module,metadata])=>{
-      if(!disposed)setProps(metadata?.default.preview.defaultProps??{});
-      const exported=Object.entries(module).find(([name,value])=>/^[A-Z]/.test(name) && isResourceComponent(value))?.[1];
-      if(!isResourceComponent(exported))throw new Error('Resource has no valid React component export.');
-      if(!disposed)setComponent(()=>exported);
-    }).catch(cause=>{if(!disposed)setLoadError(String(cause));});
-    return ()=>{disposed=true;};
-  },[resourceId]);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -65,7 +51,8 @@ export default function PreviewHost() {
 
   useEffect(() => {
     function handleMessage(event: MessageEvent) {
-      if (event.source!==window.parent || !document.referrer || event.origin!==new URL(document.referrer).origin || !isParentToPreviewMessage(event.data)) {
+      if (event.source !== window.parent || !document.referrer ||
+          event.origin !== new URL(document.referrer).origin || !isParentToPreviewMessage(event.data)) {
         return;
       }
 
@@ -124,17 +111,15 @@ export default function PreviewHost() {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [resourceId, variant, theme, component]);
+  }, [resourceId, variant, theme]);
 
-  const onChange=(value:unknown)=>setProps(previous=>({...previous,...(resourceId==='checkbox'||resourceId==='switch'?{checked:value}:resourceId==='multi-select'?{selected:value}:resourceId==='tabs'?{activeId:value}:{value})}));
-  const interactiveProps={...props,onChange,onSelect:(value:unknown)=>{setProps(previous=>({...previous,value}));setActionStatus(`Selected ${String(value)}`);},onClose:()=>setProps(previous=>({...previous,open:false})),onConfirm:()=>{setProps(previous=>({...previous,open:false}));setActionStatus('Example action confirmed.');},onPageChange:(currentPage:number)=>setProps(previous=>({...previous,currentPage})),onClick:()=>setActionStatus('Example action activated.')};
-  const available = Boolean(component);
+  const Component = PREVIEW_COMPONENTS[resourceId] ?? PREVIEW_COMPONENTS.button;
 
-  if (loadError) {
+  if (!Component) {
     const errorMsg: PreviewErrorMessage = {
       type: 'TESSELLATE_PREVIEW_ERROR',
       resourceId,
-      error: loadError,
+      error: `Resource preview not found for '${resourceId}'`,
     };
     try {
       window.parent.postMessage(errorMsg, '*');
@@ -144,12 +129,10 @@ export default function PreviewHost() {
 
     return (
       <div className="flex min-h-screen items-center justify-center p-6 text-sm text-neutral-500">
-        Preview failed: {loadError}. The original source remains available; no substitute component is rendered.
+        Preview component for &quot;{resourceId}&quot; is not available.
       </div>
     );
   }
-
-  if(!available || !component) return <div role="status" className="p-6">Loading the actual resource…</div>;
 
   const deviceStyles: Record<PreviewDevice, string> = {
     desktop: 'w-full',
@@ -165,9 +148,7 @@ export default function PreviewHost() {
       }`}
     >
       <div className={deviceStyles[device]}>
-        {props.open===false && <button onClick={()=>setProps(previous=>({...previous,open:true}))}>Reopen example</button>}
-        {actionStatus && <p role="status" className="text-sm p-2">{actionStatus}</p>}
-        <div className="tess-screen @container"><NodeRenderer node={{id:`preview-${resourceId}`,nodeType:'component',semanticRole:'resource-preview',resourceRef:{id:resourceId,slug:resourceId,version:'1.0.0'},variant,props:interactiveProps,slots:{},children:[]}} context={{viewport:device,reducedMotion,designDNA:{visualMode:theme},customComponents:{[resourceId]:component}}}/></div>
+        <Component initialVariant={variant} {...props} />
       </div>
     </div>
   );

@@ -169,14 +169,14 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     expect(screenCode).toContain("import { ParticleConstellation } from '../components/ParticleConstellation';");
 
     // 3. Verify screen renders each component preserving variants and slots
-    expect(screenCode).toContain('<MinimalTopNav variant={"nocturne"} brand={"Omni Telemetry"} />');
-    expect(screenCode).toContain('<CinematicMediaHero variant={"nocturne"}');
-    expect(screenCode).toContain('title={"Real-Time Planetary Infrastructure"}');
-    expect(screenCode).toContain('<AreaChart variant={"nocturne"} />');
-    expect(screenCode).toContain('<CompactDataTable variant={"nocturne"} />');
-    expect(screenCode).toContain('<EmptyDashboardState variant={"nocturne"} />');
-    expect(screenCode).toContain('<InteractiveGlobe variant={"nocturne"} />');
-    expect(screenCode).toContain('<ParticleConstellation variant={"nocturne"} />');
+    expect(screenCode).toContain('<MinimalTopNav variant="nocturne" brand="Omni Telemetry" />');
+    expect(screenCode).toContain('<CinematicMediaHero variant="nocturne"');
+    expect(screenCode).toContain('title="Real-Time Planetary Infrastructure"');
+    expect(screenCode).toContain('<AreaChart variant="nocturne" />');
+    expect(screenCode).toContain('<CompactDataTable variant="nocturne" />');
+    expect(screenCode).toContain('<EmptyDashboardState variant="nocturne" />');
+    expect(screenCode).toContain('<InteractiveGlobe variant="nocturne" />');
+    expect(screenCode).toContain('<ParticleConstellation variant="nocturne" />');
 
     // 4. Verify no runtime dependency on @tessellate packages
     const pkg = JSON.parse(sourceTree['package.json']!);

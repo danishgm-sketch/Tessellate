@@ -10,7 +10,7 @@ export const colors = {
     surfaceRaised: '#FFFFFF',
     ink: '#111217',
     inkSecondary: '#62666F',
-    inkMuted: '#62666F',
+    inkMuted: '#8B8F97',
     hairline: '#D9D6CF',
     hairlineStrong: '#C7C3BA',
     cobalt: '#2547E8',

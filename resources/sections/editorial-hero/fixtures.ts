@@ -1,17 +1,17 @@
 export const editorialHeroFixtures = {
   quiet: {
-    eyebrow: 'Interface composition',
+    eyebrow: 'System Blueprint 01',
     headline: 'High-density computational tooling for modern software teams.',
-    subheadline: 'React primitives composed from a shared design vocabulary.',
+    subheadline: 'Pure React primitives tuned for verifiable performance and tactile clarity.',
   },
   expressive: {
     eyebrow: 'Dynamic Engine',
     headline: 'Unmatched typographic expression with instant reactive responsiveness.',
-    subheadline: 'Create expressive user journeys with structured interface composition.',
+    subheadline: 'Craft cinematic user journeys that bridge human intent and agentic generation.',
   },
   nocturne: {
     eyebrow: 'Terminal Precision',
     headline: 'Obsidian dark themes tailored for mission-critical operations.',
-    subheadline: 'High-contrast dark themes for focused product workflows.',
+    subheadline: 'Razor-sharp contrast ratios and zero-latency hardware acceleration.',
   },
 };

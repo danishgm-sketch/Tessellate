@@ -24,7 +24,7 @@ export function WorkbenchReveal() {
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-white leading-[1.08]">
             Step inside the engine.<br />
-            Inspect every design decision.
+            Inspect every mathematical token.
           </h2>
           <p className="text-lg text-[#A8AFBA] font-normal leading-relaxed">
             The Workbench is not a simplified visual builder. It is a full deterministic operating environment where you inspect semantic trees, lock structural sections, mix adjective feels, and run 100-point audits.
@@ -42,13 +42,13 @@ export function WorkbenchReveal() {
                 <span className="h-3 w-3 rounded-full bg-[#2E9E66]" />
               </div>
               <span className="text-white font-semibold font-sans ml-2">Tessellate Workbench</span>
-              <span className="text-[11px] text-[#A8AFBA]">v0.1.0 · Local IndexedDB</span>
+              <span className="text-[11px] text-[#62666F]">v0.1.0 · Local IndexedDB</span>
             </div>
 
             <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#272C34] text-xs font-mono text-[#879DFF]">
+              <span className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#272C34] text-xs font-mono text-[#6782FF]">
                 <Shield className="h-3.5 w-3.5" />
-                <span>Example chrome · metadata audit</span>
+                <span>Audit 100/100 · AA Compliant</span>
               </span>
               <span className="hidden sm:inline text-xs text-[#A8AFBA]">Head: Rev #14</span>
             </div>
@@ -58,14 +58,14 @@ export function WorkbenchReveal() {
           <div className="grid grid-cols-12 min-h-[420px]">
             {/* Left Layers Panel (Col 3) */}
             <div className="hidden md:block col-span-3 border-r border-[#272C34] bg-[#0E1015] p-4 space-y-4 text-xs font-mono">
-              <div className="flex items-center justify-between text-[#A8AFBA] font-semibold">
+              <div className="flex items-center justify-between text-[#62666F] font-semibold">
                 <span>SEMANTIC LAYERS</span>
                 <span>4 NODES</span>
               </div>
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between p-2 rounded bg-[#171B21] text-white border border-[#272C34]">
                   <span>❖ RootLayout</span>
-                  <span className="text-[10px] text-[#879DFF]">LOCKED</span>
+                  <span className="text-[10px] text-[#6782FF]">LOCKED</span>
                 </div>
                 <div className="pl-3 space-y-1.5 text-[#A8AFBA]">
                   <div className="p-1.5 rounded hover:bg-[#171B21]/50 cursor-pointer">
@@ -86,7 +86,7 @@ export function WorkbenchReveal() {
               <div className="rounded-xl border border-[#272C34] bg-[#111217] p-5 space-y-4">
                 <div className="flex justify-between items-center text-xs">
                   <span className="font-semibold text-white">Live Render Preview (Desktop 1440px)</span>
-                  <span className="font-mono text-[#879DFF] text-[10px]">INHERITED PROJECT DNA</span>
+                  <span className="font-mono text-[#6782FF] text-[10px]">INHERITED PROJECT DNA</span>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div className="h-16 rounded bg-[#171B21] border border-[#272C34] p-2 flex flex-col justify-between">
@@ -95,7 +95,7 @@ export function WorkbenchReveal() {
                   </div>
                   <div className="h-16 rounded bg-[#171B21] border border-[#272C34] p-2 flex flex-col justify-between">
                     <span className="text-[10px] text-[#A8AFBA]">CONFIRMATIONS</span>
-                    <span className="font-bold text-[#879DFF] text-base">99.98%</span>
+                    <span className="font-bold text-[#6782FF] text-base">99.98%</span>
                   </div>
                 </div>
                 <div className="h-28 rounded bg-[#171B21] border border-[#272C34] p-3 flex items-center justify-center font-mono text-xs text-[#A8AFBA]">
@@ -105,15 +105,15 @@ export function WorkbenchReveal() {
 
               {/* Bottom command bar simulation */}
               <div className="flex items-center gap-2 p-2.5 rounded-xl border border-[#272C34] bg-[#0E1015] text-xs font-mono text-[#A8AFBA] mt-4">
-                <Terminal className="h-3.5 w-3.5 text-[#879DFF]" />
+                <Terminal className="h-3.5 w-3.5 text-[#6782FF]" />
                 <span className="text-white">recompose screen around locked items</span>
-                <span className="text-[#A8AFBA] ml-auto">↵ enter</span>
+                <span className="text-[#62666F] ml-auto">↵ enter</span>
               </div>
             </div>
 
             {/* Right Inspector Panel (Col 3) */}
             <div className="hidden lg:block col-span-3 border-l border-[#272C34] bg-[#0E1015] p-4 space-y-4 text-xs font-mono">
-              <div className="text-[#A8AFBA] font-semibold border-b border-[#272C34] pb-2">
+              <div className="text-[#62666F] font-semibold border-b border-[#272C34] pb-2">
                 DESIGN DNA INSPECTOR
               </div>
               <div className="space-y-3">
@@ -149,7 +149,7 @@ export function WorkbenchReveal() {
         {/* Action Button to launch Workbench */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-4 border-t border-[#272C34]">
           <div className="text-sm text-[#A8AFBA]">
-            Editing works in browser storage after the application and catalogue load. Export a copy for safekeeping.
+            Works 100% offline in browser storage with optional BYO cloud and AI capabilities.
           </div>
           <a
             href="/workbench"

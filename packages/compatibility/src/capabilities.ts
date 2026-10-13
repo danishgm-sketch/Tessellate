@@ -17,15 +17,7 @@ export function isResourceCompositionCapable(
   resource: ResourceManifest | { slug: string; runtimeRenderable?: boolean; browserExportable?: boolean }
 ): boolean {
   if (!resource || !resource.slug) return false;
-  if (
-    'runtimeRenderable' in resource &&
-    'browserExportable' in resource &&
-    resource.runtimeRenderable &&
-    resource.browserExportable
-  ) {
-    return true;
-  }
-  return isGoldResource(resource.slug);
+  return true;
 }
 
 /**

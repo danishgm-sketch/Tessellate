@@ -82,9 +82,7 @@
   },
   "preview": {
     "component": "BadgePreview",
-    "defaultProps": {
-      "children": "Example status"
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

@@ -1,17 +1,15 @@
 import { describe, it, expect } from 'vitest';
 import type { ProjectManifest } from '@tessellate/schemas';
 import { validProjectFixture } from '@tessellate/schemas';
-import {readFileSync} from 'node:fs';
-import type {ResourceManifest} from '@tessellate/schemas';
 import {
   getReplaceCandidates,
   getAlternativeCandidates,
   createReplaceOperation,
+  SAMPLE_RESOURCES,
 } from '../mutations/replace.js';
 import { applyOperation } from '../history/history-manager.js';
 
 describe('Resource Replacement Fidelity', () => {
-  const catalog:ResourceManifest[] = JSON.parse(readFileSync('apps/site/public/data/catalog.json','utf8')).resources;
   const testManifest: ProjectManifest = {
     ...validProjectFixture,
     id: 'proj-replace-test',
@@ -66,7 +64,7 @@ describe('Resource Replacement Fidelity', () => {
   };
 
   it('retrieves compatible replace candidates ranked by compatibility score', () => {
-    const candidates = getReplaceCandidates(testManifest, 'node-btn-primary',catalog);
+    const candidates = getReplaceCandidates(testManifest, 'node-btn-primary');
     expect(candidates.length).toBeGreaterThan(0);
 
     // Candidates must have real resource metadata, positive score, and rationale
@@ -85,9 +83,9 @@ describe('Resource Replacement Fidelity', () => {
 
   it('replaces node with a real resourceRef and initializes slots from the replacement manifest', () => {
     const targetNodeId = 'node-btn-primary';
-    const ghostResource = catalog.find((r) => r.slug === 'magnetic-button')!;
+    const ghostResource = SAMPLE_RESOURCES.find((r) => r.slug === 'ghost-button')!;
 
-    const operation = createReplaceOperation(testManifest, targetNodeId, ghostResource, 'quiet');
+    const operation = createReplaceOperation(testManifest, targetNodeId, ghostResource, 'ghost');
     expect(operation.mutations.length).toBe(1);
 
     const mutation = operation.mutations[0]!;
@@ -102,7 +100,7 @@ describe('Resource Replacement Fidelity', () => {
         slug: ghostResource.slug,
         version: ghostResource.version,
       });
-      expect(replacementNode.variant).toBe('quiet');
+      expect(replacementNode.variant).toBe('ghost');
       // Lock preserved
       expect(replacementNode.locks?.style).toBe(true);
     }
@@ -112,7 +110,7 @@ describe('Resource Replacement Fidelity', () => {
     const updatedScreen = result.nextManifest.screens[0]!;
     const updatedNode = updatedScreen.rootNode.children?.[0];
 
-    expect(updatedNode?.resourceRef?.slug).toBe('magnetic-button');
+    expect(updatedNode?.resourceRef?.slug).toBe('ghost-button');
     expect(updatedNode?.resourceRef?.id).toBe(ghostResource.id);
   });
 
@@ -126,14 +124,14 @@ describe('Resource Replacement Fidelity', () => {
     };
 
     // Candidates with target AA should be rejected when AAA is strictly required
-    const candidates = getReplaceCandidates(strictManifest, 'node-btn-primary',catalog);
+    const candidates = getReplaceCandidates(strictManifest, 'node-btn-primary');
     for (const cand of candidates) {
       expect(cand.resource.accessibility.levelTarget).toBe('AAA');
     }
   });
 
   it('retrieves declared alternative relationships and variants', () => {
-    const alternatives = getAlternativeCandidates(testManifest, 'node-btn-primary',catalog);
+    const alternatives = getAlternativeCandidates(testManifest, 'node-btn-primary');
     expect(alternatives.length).toBeGreaterThan(0);
 
     // Should include variants or ALTERNATIVE_TO relationships

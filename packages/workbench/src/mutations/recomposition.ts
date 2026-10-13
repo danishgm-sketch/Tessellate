@@ -48,7 +48,7 @@ export function recomposeScreenAroundLocks(
 
   // 2. Perform graph transformation based on divergence level
   const divergence = options?.divergenceLevel ?? 50;
-  const newRootNode = transformScreenGraph(screen.rootNode, lockedNodeMap, divergence, `${options?.seed ?? manifest.seed}-revision-${manifest.historyMeta.headRevision}`);
+  const newRootNode = transformScreenGraph(screen.rootNode, lockedNodeMap, divergence, options?.seed);
 
   // 3. Verify all locked nodes survived intact
   const newAllNodes = flattenTree(newRootNode);
@@ -139,9 +139,7 @@ function transformNodeTree(
     return lockedNodeMap.get(node.id)!;
   }
 
-  const isRootOrShell=node.nodeType==='layout' && (node.semanticRole.includes('shell') || node.id.includes('shell') || node.id.includes('root'));
-  const shellNavigation=isRootOrShell ? node.children.filter(child=>child.semanticRole==='navigation') : [];
-  const children=(node.children || []).filter(child=>!shellNavigation.includes(child));
+  const children = node.children || [];
   if (children.length === 0) {
     return {
       ...node,
@@ -255,15 +253,55 @@ function transformNodeTree(
       ];
     } else if (unlockedChildren.length === 1) {
       const target = unlockedChildren[0]!;
-      // A single real resource cannot be split into two empty synthetic blocks.
-      // Keep its identity, props and implementation in a new semantic container.
-      const containerNode:ProjectNode={id:`split-${(seed ?? '95').replace(/[^a-z0-9]/gi,'')}-${target.id}`,nodeType:'layout',semanticRole:'split-workspace-columns',variant:node.variant,children:[target],slots:{},props:{recomposed:true,layoutVariant:'radical-alternative'}};
-      transformedChildren=[...lockedChildren,containerNode];
+      const splitLeft: ProjectNode = {
+        id: `${target.id}-split-primary`,
+        nodeType: 'block',
+        semanticRole: `${target.semanticRole}-primary`,
+        variant: 'nocturne',
+        children: [],
+        slots: {},
+        props: {
+          recomposed: true,
+          splitRole: 'primary',
+        },
+      };
+      const splitRight: ProjectNode = {
+        id: `${target.id}-split-secondary`,
+        nodeType: 'block',
+        semanticRole: `${target.semanticRole}-secondary`,
+        variant: 'nocturne',
+        children: [],
+        slots: {},
+        props: {
+          recomposed: true,
+          splitRole: 'secondary',
+        },
+      };
+
+      const containerNode: ProjectNode = {
+        id: `${target.id}-split-container`,
+        nodeType: 'layout',
+        semanticRole: 'split-workspace-columns',
+        variant: 'nocturne',
+        children: [splitLeft, splitRight],
+        slots: {},
+        props: {
+          recomposed: true,
+          layoutVariant: 'radical-alternative',
+        },
+      };
+
+      transformedChildren = [...lockedChildren, containerNode];
     } else {
       transformedChildren = lockedChildren;
     }
   }
 
+  const isRootOrShell =
+    node.nodeType === 'layout' &&
+    (node.semanticRole.includes('shell') ||
+      node.id.includes('shell') ||
+      node.id.includes('root'));
 
   return {
     ...node,
@@ -279,6 +317,6 @@ function transformNodeTree(
           ? 'split-focus'
           : 'modular-grid',
     },
-    children: [...shellNavigation,...transformedChildren],
+    children: transformedChildren,
   };
 }

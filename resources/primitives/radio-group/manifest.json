@@ -82,20 +82,7 @@
   },
   "preview": {
     "component": "RadioGroupPreview",
-    "defaultProps": {
-      "name": "Example choice",
-      "options": [
-        {
-          "value": "first",
-          "label": "First option"
-        },
-        {
-          "value": "second",
-          "label": "Second option"
-        }
-      ],
-      "value": "first"
-    },
+    "defaultProps": {},
     "viewport": 1440
   },
   "slots": [

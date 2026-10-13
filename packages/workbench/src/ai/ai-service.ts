@@ -144,7 +144,7 @@ export async function executeNaturalLanguageCommand(
 /**
  * Deterministic command parser for zero-AI environments.
  */
-function tryDeterministicCommandMatch(
+export function tryDeterministicCommandMatch(
   _manifest: ProjectManifest,
   activeScreenId: string,
   prompt: string

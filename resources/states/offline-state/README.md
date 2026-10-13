@@ -1,3 +1,3 @@
 # Offline State
 
-Offline status banner. Local persistence and remote sync depend on the host application's configuration.
+Local-first banner verifying cached operation while remote sync is paused.

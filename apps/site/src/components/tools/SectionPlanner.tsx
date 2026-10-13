@@ -219,7 +219,7 @@ export function SectionPlanner() {
 
       {/* Objective Blueprint Selector */}
       <div className="space-y-2">
-        <span className="block font-mono text-xs font-semibold uppercase text-[var(--text-muted)]">
+        <span className="block font-mono text-xs font-semibold uppercase text-[#8B8F97]">
           Page Objective Archetypes
         </span>
         <div className="flex flex-wrap gap-2">
@@ -231,7 +231,7 @@ export function SectionPlanner() {
               className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                 objectiveId === b.id
                   ? 'border-[#111217] bg-[#111217] text-white shadow-sm'
-                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#62666F]'
+                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#8B8F97]'
               }`}
             >
               {b.name}
@@ -254,7 +254,7 @@ export function SectionPlanner() {
             <button
               type="button"
               onClick={() => selectObjective(objectiveId)}
-              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
+              className="text-xs font-mono text-[#8B8F97] hover:text-[#111217] flex items-center gap-1"
             >
               <RotateCcw className="h-3 w-3" />
               <span>Reset Order</span>
@@ -273,7 +273,7 @@ export function SectionPlanner() {
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs font-bold text-[var(--text-muted)] w-5">
+                  <span className="font-mono text-xs font-bold text-[#8B8F97] w-5">
                     {String(idx + 1).padStart(2, '0')}
                   </span>
                   <div>
@@ -295,7 +295,7 @@ export function SectionPlanner() {
                     type="button"
                     onClick={() => moveSection(idx, 'up')}
                     disabled={idx === 0}
-                    className="p-1 rounded text-[var(--text-muted)] hover:text-[#111217] disabled:opacity-30"
+                    className="p-1 rounded text-[#8B8F97] hover:text-[#111217] disabled:opacity-30"
                     title="Move section up"
                   >
                     <ArrowUp className="h-3.5 w-3.5" />
@@ -304,7 +304,7 @@ export function SectionPlanner() {
                     type="button"
                     onClick={() => moveSection(idx, 'down')}
                     disabled={idx === sections.length - 1}
-                    className="p-1 rounded text-[var(--text-muted)] hover:text-[#111217] disabled:opacity-30"
+                    className="p-1 rounded text-[#8B8F97] hover:text-[#111217] disabled:opacity-30"
                     title="Move section down"
                   >
                     <ArrowDown className="h-3.5 w-3.5" />
@@ -321,7 +321,7 @@ export function SectionPlanner() {
                   <button
                     type="button"
                     onClick={() => removeSection(s.id)}
-                    className="p-1 rounded text-[var(--text-muted)] hover:text-[#C83D48]"
+                    className="p-1 rounded text-[#8B8F97] hover:text-[#C83D48]"
                     title="Delete section"
                   >
                     <Trash2 className="h-3.5 w-3.5" />
@@ -333,7 +333,7 @@ export function SectionPlanner() {
 
           {/* Add Section Input */}
           <div className="flex gap-2 pt-2 border-t border-[#D9D6CF]">
-            <input aria-label="Custom section title"
+            <input
               type="text"
               placeholder="Add custom section title (e.g. Migration Guide)..."
               value={newSectionName}
@@ -357,12 +357,12 @@ export function SectionPlanner() {
           <div className="rounded-2xl border border-[#D9D6CF] bg-white p-6 shadow-sm space-y-5">
             <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF]">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-[#12603F]" />
+                <ShieldCheck className="h-4 w-4 text-[#177B55]" />
                 <h3 className="text-sm font-semibold text-[#111217]">
                   Grammar Balance Telemetry
                 </h3>
               </div>
-              <span className="font-mono text-[11px] text-[#12603F] font-semibold">
+              <span className="font-mono text-[11px] text-[#177B55] font-semibold">
                 BALANCED FLOW
               </span>
             </div>
@@ -379,7 +379,7 @@ export function SectionPlanner() {
                   <span className="text-[#62666F]">{m.label}</span>
                   <div className="flex items-center gap-2">
                     <span className="font-bold text-[#111217]">{m.count} sections</span>
-                    <span className="font-mono text-[10px] text-[var(--text-muted)]">
+                    <span className="font-mono text-[10px] text-[#8B8F97]">
                       (target {m.target})
                     </span>
                   </div>
@@ -394,7 +394,7 @@ export function SectionPlanner() {
 
           {/* Export JSON Block */}
           <div className="rounded-xl border border-[#D9D6CF] bg-[#0B0D10] text-[#F5F7FA] p-4 space-y-2 font-mono text-xs">
-            <div className="flex items-center justify-between border-b border-[#272B33] pb-1.5 text-[#A8AFBA]">
+            <div className="flex items-center justify-between border-b border-[#272B33] pb-1.5 text-[#8B8F97]">
               <span>GRAMMAR MANIFEST</span>
               <button
                 type="button"
@@ -404,7 +404,7 @@ export function SectionPlanner() {
                 {copied ? 'Copied!' : 'Copy'}
               </button>
             </div>
-            <pre tabIndex={0} className="overflow-x-auto text-[10px] text-[#D9D6CF] leading-relaxed max-h-56">
+            <pre className="overflow-x-auto text-[10px] text-[#D9D6CF] leading-relaxed max-h-56">
               {exportedJson}
             </pre>
           </div>
