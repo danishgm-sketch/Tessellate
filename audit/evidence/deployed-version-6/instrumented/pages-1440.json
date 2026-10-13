@@ -1,0 +1,495 @@
+{
+  "label": "pages-1440",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/pages",
+  "screenshot": "audit/evidence/deployed-version-6/instrumented/pages-1440.png",
+  "viewport": "1440x900",
+  "dom": {
+    "title": "Page architectures — Tessellate",
+    "text": "Skip to content\nTessellate\nExplore\nShowcases\nCompose\nWorkbench\nTools\nAgents\nCreators\nDocs\nSearch\n⌘K\nLocal projects\nStart building\n\nOPEN INTERFACE COMMONS\n\nPage architectures\n\nThirty-six page recipes describe real interface jobs. Each recipe shows its required roles and starts a brief in Compose, where the validated Gold registry supplies runtime resources.\n\nmarketing · marketing\n\nMarketing Home\n\nFlagship product landing page with value proposition hero, social proof, interactive proof demo, and conversion CTA.\n\nRequired roles\nnavigation\nhero\nvalue-proposition\nconversion-cta\nfooter\nCompose this architecture →\n\nmarketing · marketing\n\nProduct Overview\n\nDetailed platform capability overview showcasing architecture, technical workflows, and engine internals.\n\nRequired roles\nhero\nfeature-grid\ntechnical-specs\nfooter\nCompose this architecture →\n\nmarketing · marketing\n\nUse Case Landing\n\nTargeted persona solution page articulating problem-solution dynamics, architecture blueprints, and ROI proof.\n\nRequired roles\nhero\nproblem-solution\nworkflow-steps\nconversion-cta\nCompose this architecture →\n\nmarketing · marketing\n\nIndustry Landing\n\nVertical sector landing highlighting regulatory compliance, security audits, and enterprise customer testimonials.\n\nRequired roles\nhero\ncompliance-badges\ncase-studies\nconversion-cta\nCompose this architecture →\n\nmarketing · marketing\n\nPricing\n\nTransparent tier comparison with monthly/annual billing toggle, feature matrix, and enterprise contact card.\n\nRequired roles\nhero\npricing-matrix\nfaq-accordion\nguarantee-callout\nCompose this architecture →\n\nmarketing · marketing\n\nSecurity & Trust\n\nEnterprise assurance dossier outlining SOC2 compliance, data encryption boundaries, and incident response SLAs.\n\nRequired roles\nhero\nsecurity-certifications\ncompliance-matrix\nsla-guarantee\nCompose this architecture →\n\nmarketing · documentation\n\nDeveloper/API Landing\n\nSDK quickstart guide with multi-language code snippets, interactive curl playground, and CLI installation instructions.\n\nRequired roles\nhero\nquickstart-code\nsdk-matrix\napi-status\nCompose this architecture →\n\nmarketing · documentation\n\nDocumentation Home\n\nKnowledge base index with categorized guide cards, API reference links, and instant fuzzy search.\n\nRequired roles\nsearch-hero\ncategory-grid\npopular-articles\nfeedback-footer\nCompose this architecture →\n\nmarketing · marketing\n\nBlog/Editorial Index\n\nCurated editorial archive with featured article hero, category filter tabs, and responsive article cards.\n\nRequired roles\nfeatured-hero\narticle-grid\nnewsletter-cta\nCompose this architecture →\n\nmarketing · marketing\n\nCase Study\n\nCustomer success narrative highlighting operational challenges, architectural solution, and quantified metrics.\n\nRequired roles\nhero\nmetrics-callout\nprose-narrative\nquote-pullout\nCompose this architecture →\n\nauth · authentication\n\nSign In\n\nClean authentication screen supporting passwordless email magic link, OAuth provider buttons, and passkeys.\n\nRequired roles\nbrand-header\nauth-card\nauth-footer\nCompose this architecture →\n\nauth · authentication\n\nAccount Recovery\n\nSecure account password reset and backup recovery key verification flow.\n\nRequired roles\nrecovery-form\nstatus-feedback\nCompose this architecture →\n\nauth · onboarding\n\nRole-Based Onboarding\n\nPersonalized onboarding questionnaire tailoring interface telemetry to developer, designer, or executive persona.\n\nRequired roles\nstepper\npersona-selector\naction-controls\nCompose this architecture →\n\nauth · onboarding\n\nWorkspace Creation\n\nOrganization tenant setup with slug validator, regional data residency selector, and invite teammates input.\n\nRequired roles\nwizard-content\naction-controls\nCompose this architecture →\n\nauth · onboarding\n\nImport Data\n\nData ingestion wizard supporting CSV drag-and-drop, SQL connection string test, and field schema mapper.\n\nRequired roles\nupload-dropzone\nschema-mapping\nprogress-tracker\nCompose this architecture →\n\napp · dashboard\n\nApplication Overview Dashboard\n\nPrimary operational hub featuring real-time health scorecard, telemetry metric charts, and live event feed.\n\nRequired roles\ndashboard-header\nmetric-scorecards\ntrend-chart\nactivity-feed\nCompose this architecture →\n\napp · search-explore\n\nGlobal Search\n\nFaceted omni-search interface with instant client filtering, semantic highlights, and recent query history.\n\nRequired roles\nsearch-input\nfacet-rail\nresults-stream\nCompose this architecture →\n\napp · index-list\n\nEntity Index\n\nComprehensive tabular collection browser with multi-field sorting, batch selection, and CSV export trigger.\n\nRequired roles\nindex-header\nfilter-bar\ndata-table\npagination\nCompose this architecture →\n\napp · detail-entity\n\nEntity Detail\n\nSingle record deep inspector with tabbed revisions, metadata sidebar, and lifecycle state transitions.\n\nRequired roles\nentity-header\ndetail-tabs\nmain-pane\nmetadata-sidebar\nCompose this architecture →\n\napp · analytics-reporting\n\nAnalytics Dashboard\n\nInteractive telemetry intelligence console featuring multi-series timecharts, cohort matrix, and funnel graphs.\n\nRequired roles\ndate-picker\nkpi-summary\nchart-canvas\ncohort-matrix\nCompose this architecture →\n\napp · workspace-editor\n\nResearch Workspace\n\nDeep investigative research canvas with multi-source citation sidebar, hypothesis notebook, and AI rewrite tool.\n\nRequired roles\nworkspace-toolbar\ncanvas-pane\nai-copilot-rail\nCompose this architecture →\n\napp · index-list\n\nReports Library\n\nCatalog of generated executive briefing reports, scheduled PDF deliveries, and export archives.\n\nRequired roles\nfilter-bar\ndata-table\npagination\nCompose this architecture →\n\napp · detail-entity\n\nReport Detail\n\nExecutive document layout pairing analytical charts with narrative synthesis and export trigger.\n\nRequired roles\nreport-header\nkpi-summary\nchart-canvas\nfooter-signoff\nCompose this architecture →\n\napp · index-list\n\nWatchlists\n\nReal-time telemetry monitoring watchlist with anomaly detection pings and fast entity toggles.\n\nRequired roles\nwatchlist-header\nfilter-bar\ndata-table\nCompose this architecture →\n\napp · index-list\n\nNotifications\n\nSystem event triage center with priority filters, mark-as-read batch action, and direct deep-links.\n\nRequired roles\nfilter-bar\nactivity-feed\nCompose this architecture →\n\napp · messages-collaboration\n\nMessages\n\nReal-time conversational workspace with channel list, threaded discussion pane, and context file attachments.\n\nRequired roles\nchannel-rail\nmessage-thread\ncomposer\nCompose this architecture →\n\napp · index-list\n\nTasks & Approvals\n\nMulti-party governance queue displaying pending approval requests, diff comparisons, and signoff actions.\n\nRequired roles\napproval-queue\ndiff-viewer\naction-controls\nCompose this architecture →\n\napp · workspace-editor\n\nCalendar/Schedule\n\nResource allocation schedule with timeline gantt, shift bookings, and availability slot pickers.\n\nRequired roles\ndate-picker\ncalendar-grid\nsidebar-details\nCompose this architecture →\n\napp · index-list\n\nTeam Directory\n\nOrganization personnel directory with department filters, reporting hierarchy, and member cards.\n\nRequired roles\nfilter-bar\nmember-grid\nCompose this architecture →\n\nsettings · settings\n\nProfile\n\nPersonal user identity page with avatar uploader, biographical info, public handles, and recent achievements.\n\nRequired roles\nuser-header\nprofile-form\nsave-button\nCompose this architecture →\n\nsettings · settings\n\nOrganization Settings\n\nTenant organization console with company branding, domain verification, and SSO SAML config.\n\nRequired roles\nsettings-nav\nsettings-form\nsave-footer\nCompose this architecture →\n\nsettings · settings\n\nTeam & Permissions\n\nRole-based access control matrix with member invitation drawer, custom role builder, and permission switches.\n\nRequired roles\ninvite-drawer\nmembers-table\nrole-matrix\nCompose this architecture →\n\nsettings · billing-account\n\nBilling & Usage\n\nSubscription entitlement management with live compute usage meters, payment card editor, and invoice downloads.\n\nRequired roles\nplan-card\nusage-meter\ninvoices-table\nCompose this architecture →\n\nsettings · settings\n\nAPI & Integrations\n\nThird-party webhook endpoints, OAuth connection tokens, and secret API key creation controls.\n\nRequired roles\nkeys-table\nwebhooks-list\nconnected-apps-grid\nCompose this architecture →\n\nsettings · admin\n\nAdmin Console\n\nSuperuser management panel with tenant switcher, live audit trail log stream, and feature flag toggles.\n\nRequired roles\ntenant-switcher\naudit-stream\nfeature-flags\nCompose this architecture →\n\nutility · support\n\nHelp & Support\n\nCustomer assistance portal with service health indicator, searchable FAQ accordions, and support ticket form.\n\nRequired roles\nservice-status\nfaq-accordion\nticket-form\nCompose this architecture →\nAbout\nDocs\nLicences\nPrivacy\nTerms\nSupport the commons\nSource on GitHub",
+    "width": 1440,
+    "height": 900,
+    "scrollWidth": 1440,
+    "unhydrated": 0,
+    "headings": [
+      "Page architectures",
+      "Marketing Home",
+      "Required roles",
+      "Product Overview",
+      "Required roles",
+      "Use Case Landing",
+      "Required roles",
+      "Industry Landing",
+      "Required roles",
+      "Pricing",
+      "Required roles",
+      "Security & Trust",
+      "Required roles",
+      "Developer/API Landing",
+      "Required roles",
+      "Documentation Home",
+      "Required roles",
+      "Blog/Editorial Index",
+      "Required roles",
+      "Case Study",
+      "Required roles",
+      "Sign In",
+      "Required roles",
+      "Account Recovery",
+      "Required roles",
+      "Role-Based Onboarding",
+      "Required roles",
+      "Workspace Creation",
+      "Required roles",
+      "Import Data",
+      "Required roles",
+      "Application Overview Dashboard",
+      "Required roles",
+      "Global Search",
+      "Required roles",
+      "Entity Index",
+      "Required roles",
+      "Entity Detail",
+      "Required roles",
+      "Analytics Dashboard",
+      "Required roles",
+      "Research Workspace",
+      "Required roles",
+      "Reports Library",
+      "Required roles",
+      "Report Detail",
+      "Required roles",
+      "Watchlists",
+      "Required roles",
+      "Notifications",
+      "Required roles",
+      "Messages",
+      "Required roles",
+      "Tasks & Approvals",
+      "Required roles",
+      "Calendar/Schedule",
+      "Required roles",
+      "Team Directory",
+      "Required roles",
+      "Profile",
+      "Required roles",
+      "Organization Settings",
+      "Required roles",
+      "Team & Permissions",
+      "Required roles",
+      "Billing & Usage",
+      "Required roles",
+      "API & Integrations",
+      "Required roles",
+      "Admin Console",
+      "Required roles",
+      "Help & Support",
+      "Required roles"
+    ],
+    "emptyButtons": 0
+  },
+  "console": [],
+  "exceptions": [],
+  "network": [],
+  "responses": [
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/jsx-runtime.D_zvdyIk.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.BlTxHScW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preview-protocol.DmFxvjlo.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.CHQCpkZ9.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.Cg19XFWg.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/strategies.BKOHko5F.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/node-renderer.C9ELJR9s.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/string.BxCyB-NZ.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.BlTxHScW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/jsx-runtime.D_zvdyIk.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preview-protocol.DmFxvjlo.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.CHQCpkZ9.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/strategies.BKOHko5F.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/node-renderer.C9ELJR9s.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/string.BxCyB-NZ.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.C_lOOnBJ.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.I1Gh9_iQ.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.Dfrp4bwX.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=billing-overview",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=audit-log",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=approval-queue",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/style.DEEd16Lo.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=api-key-management",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/style.DEEd16Lo.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/style.DEEd16Lo.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/style.DEEd16Lo.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.Cg19XFWg.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.Cg19XFWg.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.Cg19XFWg.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.Cg19XFWg.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.BlTxHScW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/jsx-runtime.D_zvdyIk.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.CHQCpkZ9.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preview-protocol.DmFxvjlo.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.BlTxHScW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/jsx-runtime.D_zvdyIk.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preview-protocol.DmFxvjlo.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.CHQCpkZ9.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/strategies.BKOHko5F.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/node-renderer.C9ELJR9s.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/strategies.BKOHko5F.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/node-renderer.C9ELJR9s.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/string.BxCyB-NZ.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/string.BxCyB-NZ.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.BlTxHScW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/jsx-runtime.D_zvdyIk.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preview-protocol.DmFxvjlo.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.CHQCpkZ9.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preview-protocol.DmFxvjlo.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/jsx-runtime.D_zvdyIk.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.CHQCpkZ9.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.BlTxHScW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/strategies.BKOHko5F.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/strategies.BKOHko5F.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/node-renderer.C9ELJR9s.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/node-renderer.C9ELJR9s.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/string.BxCyB-NZ.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/string.BxCyB-NZ.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/pages",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/style.DEEd16Lo.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/SiteHeader.eSGnvT6k.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/select.BIqT08Pb.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/use-dialog-focus.Dx4AAyKA.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/CommandPalette.BkZH_9pm.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/search.C9HoDFjH.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/github.BEKZXaMq.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/arrow-right.DCnLzGjB.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/x.CdPDMMs3.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/createLucideIcon.CKwyFV_x.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sparkles.gqHQXRUX.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/compass.B6j8ZAtH.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sliders-vertical.pWv7lYEM.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/jsx-runtime.D_zvdyIk.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.CHQCpkZ9.js",
+      "status": 200,
+      "type": "script"
+    }
+  ]
+}

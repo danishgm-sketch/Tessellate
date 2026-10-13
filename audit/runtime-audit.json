@@ -1,7 +1,7 @@
 {
   "deployment": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
-  "sourceCommit": "7bbc8f7",
-  "phase": "version 6 content remediation implemented; deployed re-audit pending",
+  "sourceCommit": "a34e0581e3d10df47e6b0205cfa08f32f794db64",
+  "phase": "version 6 deployed audit; Compose contrast remediation pending",
   "issues": [
     {
       "id": "AUD-001",
@@ -13886,6 +13886,35 @@
       "remediation": "Derive graph IDs from a canonical ProductModel value and give generated example showcases their fixture timestamps. Keep current timestamps for newly composed user projects.",
       "fixCommit": null,
       "status": "open"
+    },
+    {
+      "id": "AUD-130",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "The disabled Compose action becomes hard to read while catalogue intelligence loads",
+      "expected": "The primary Compose action remains legible while disabled, with at least 4.5:1 text contrast in light and dark presentation modes.",
+      "actual": "On deployed version 6 the disabled button renders white text over a 50%-opacity cobalt fill. The user-visible contrast calculation is 2.4:1; the instrumented route scan also reported a serious color-contrast violation at 2.39:1.",
+      "reproduction": [
+        "Open /compose at 1440x900 and let the catalogue remain in its initial loading state, or block /data/catalog.json and wait for Catalogue unavailable.",
+        "Scroll the disabled Compose Interface System button into view.",
+        "Measure the composed foreground/background contrast or run the Compose contrast regression test; version 6 reports 2.4:1 and fails the 4.5:1 threshold."
+      ],
+      "console": [],
+      "network": [],
+      "httpStatus": [
+        200
+      ],
+      "screenshot": "audit/evidence/deployed-version-6/compose-contrast/disabled-submit-1440.png",
+      "evidence": "audit/evidence/deployed-version-6/compose-contrast/result.json",
+      "rootCause": "ComposeView uses disabled:opacity-50 on a cobalt background while retaining white button text, reducing the visible fill contrast during catalogue loading and error states.",
+      "affectedCode": [
+        "apps/site/src/components/ComposeView.tsx"
+      ],
+      "remediation": "Keep the native catalogue-ready disabled gate and use an opaque neutral disabled fill with a readable foreground in both themes.",
+      "fixCommit": null,
+      "status": "open"
     }
   ],
   "routes": [
@@ -14161,5 +14190,6 @@
       ]
     }
   ],
-  "acceptance": "NOT ACCEPTED: version 6 deployed verification pending; one medium compact-preview limitation documented."
+  "acceptance": "NOT ACCEPTED: version 6 deployed verification pending; one medium compact-preview limitation documented.",
+  "deployedVersion": 6
 }
