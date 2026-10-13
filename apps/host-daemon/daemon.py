@@ -12,6 +12,7 @@ import sys
 import time
 import urllib.request
 import urllib.error
+from pathlib import Path
 from typing import Dict, Any
 
 # Ensure model directory is on import path
@@ -19,9 +20,10 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "model"))
 from inference import BespokeInferenceEngine
 
 DEFAULT_API_URL = os.environ.get("TESSELLATE_API_URL", "http://localhost:8787")
-HOST_SECRET = os.environ.get("TESSELLATE_HOST_SECRET", "tessellate_owner_secret_dev")
+secret_file = os.environ.get("TESSELLATE_HOST_SECRET_FILE")
+HOST_SECRET = Path(secret_file).read_text().strip() if secret_file else os.environ.get("TESSELLATE_HOST_SECRET", "")
 POLL_INTERVAL_SEC = 1.0
-HEARTBEAT_INTERVAL_SEC = 15.0
+HEARTBEAT_INTERVAL_SEC = 5.0
 
 
 def make_request(url: str, method: str = "GET", data: Dict[str, Any] = None) -> Dict[str, Any]:
@@ -35,7 +37,7 @@ def make_request(url: str, method: str = "GET", data: Dict[str, Any] = None) -> 
     req = urllib.request.Request(url, data=payload, headers=headers, method=method)
 
     try:
-        with urllib.request.urlopen(req, timeout=10) as resp:
+        with urllib.request.urlopen(req, timeout=4) as resp:
             raw = resp.read().decode("utf-8")
             return json.loads(raw) if raw else {}
     except urllib.error.HTTPError as e:
@@ -49,6 +51,8 @@ def make_request(url: str, method: str = "GET", data: Dict[str, Any] = None) -> 
 
 
 def main():
+    if len(HOST_SECRET) < 32:
+        raise RuntimeError("Configure a generated host authentication secret before starting the daemon")
     print("=" * 65)
     print("       TESSELLATE BESPOKE ML HOST INFERENCE DAEMON       ")
     print("   Zero-LLM Architecture · Tree-GNN + Bi-GRU Neural Model ")
@@ -67,11 +71,12 @@ def main():
         # 1. Send heartbeat if due
         if now - last_heartbeat >= HEARTBEAT_INTERVAL_SEC:
             hb_resp = make_request(f"{DEFAULT_API_URL}/api/inference/heartbeat", method="POST", data={
-                "deviceName": "Host-Hardware-Worker-01",
+                "deviceName": os.environ.get("TESSELLATE_DEVICE_NAME", "Tessellate laptop CPU"),
                 "status": "idle",
             })
             if "error" not in hb_resp:
                 last_heartbeat = now
+                Path('/tmp/host-heartbeat').write_text(str(now))
                 # print(f"[Host Daemon] Heartbeat registered at {time.strftime('%H:%M:%S')}")
 
         # 2. Poll for queued task
@@ -86,10 +91,12 @@ def main():
                 screen_ast = task.get("screenAst", {})
 
                 print(f"[Host Daemon] ⚡ Task Received! Token #{token_num} (ID: {ticket_id})")
-                print(f"              Prompt: \"{prompt}\"")
 
                 start_t = time.perf_counter()
-                result_command = engine.infer(prompt, screen_ast)
+                result_command = engine.infer(prompt, screen_ast, task.get("designDna", {}))
+                result_command["preserveLockedNodes"] = True
+                if "feel" in result_command:
+                    result_command["feelDescriptors"] = result_command.pop("feel")
                 duration_ms = round((time.perf_counter() - start_t) * 1000, 2)
 
                 print(f"[Host Daemon] Inferred action: \"{result_command.get('action')}\" ({duration_ms}ms)")
@@ -97,6 +104,7 @@ def main():
                 # 3. Post completion back
                 complete_resp = make_request(f"{DEFAULT_API_URL}/api/inference/complete", method="POST", data={
                     "ticketId": ticket_id,
+                    "leaseId": task.get("leaseId"),
                     "resultCommand": result_command,
                 })
 
@@ -106,8 +114,7 @@ def main():
                     print(f"[Host Daemon] ⚠️ Failed to commit ticket #{token_num}: {complete_resp}\n")
 
         except Exception as e:
-            # print(f"[Host Daemon] Poll loop error: {e}")
-            pass
+            print(f"[Host Daemon] Task execution failed: {type(e).__name__}; lease will expire for retry.")
 
         time.sleep(POLL_INTERVAL_SEC)
 

@@ -1,0 +1,40 @@
+{
+  "recordedAt": "2026-10-13T20:48:11.033Z",
+  "base": "http://127.0.0.1:4323",
+  "checks": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "check": "visible-command-completes-via-laptop",
+      "result": "PASS"
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "check": "visible-offline-state-and-error",
+      "result": "PASS",
+      "uncaughtErrors": []
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "check": "visible-command-completes-via-laptop",
+      "result": "PASS"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "check": "visible-offline-state-and-error",
+      "result": "PASS",
+      "uncaughtErrors": []
+    }
+  ]
+}
