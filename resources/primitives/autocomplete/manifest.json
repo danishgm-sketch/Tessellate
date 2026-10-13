@@ -82,7 +82,15 @@
   },
   "preview": {
     "component": "AutocompletePreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "label": "Find a team",
+      "suggestions": [
+        "Engineering",
+        "People",
+        "Product"
+      ],
+      "value": ""
+    },
     "viewport": 1440
   },
   "slots": [

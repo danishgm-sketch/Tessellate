@@ -18,3 +18,5 @@ export * from './components/separator.js';
 export * from './components/skeleton.js';
 export * from './components/header.js';
 export * from './components/workbench-chrome.js';
+
+export * from './use-dialog-focus.js';

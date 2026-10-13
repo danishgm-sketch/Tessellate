@@ -1,0 +1,9 @@
+{
+  "error": "AssertionError [ERR_ASSERTION]: compose-1024 overflows",
+  "stack": "AssertionError [ERR_ASSERTION]: compose-1024 overflows\n    at capture (file:///C:/Users/ismay/.codex/worktrees/tessellate-sites-staging/Tessellate/audit/responsive-keyboard-audit.mjs:10:662)\n    at async file:///C:/Users/ismay/.codex/worktrees/tessellate-sites-staging/Tessellate/audit/responsive-keyboard-audit.mjs:14:117",
+  "events": {
+    "exceptions": [],
+    "console": [],
+    "network": []
+  }
+}

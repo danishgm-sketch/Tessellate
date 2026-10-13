@@ -1,0 +1,342 @@
+Browser tab: 2, Title: "Tessellate — Describe the product. Get the interface.", URL: "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/".
+1 AXWebArea Tessellate — Describe the product. Get the interface., URL: tessellate-v1-review.ismayildanish-gm.chatgpt.site/
+	2 container
+		3 link Description: Tessellate, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/
+		4 link Description: Explore, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore
+		5 link Description: Showcases, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/showcases
+		6 link Description: Compose, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose
+		7 link Description: Workbench, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench
+		8 link Description: Tools, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools
+		9 link Description: Agents, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/agents
+		10 link Description: Creators, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/creators
+		11 link Description: Docs, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/docs
+		12 button Search resources (Press Command-K)
+			13 image
+			14 text Search
+			15 text ⌘K
+		16 link Description: GitHub Repository, Value: github.com/danishgm-sketch/Tessellate
+		17 link Description: Sign in, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench
+		18 link Description: Start building, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench
+	19 container main-content
+		20 container
+			21 text OPEN INTERFACE INTELLIGENCE
+			22 heading Describe the product. Get the interface., Value: 1
+				23 text Describe the product.
+				24 text Get the interface.
+			25 text Tessellate turns product intent into cohesive interface systems using an open library of components, patterns, motion and design intelligence. PRESET EXEMPLARS:
+			26 button AI research terminal
+			27 button luxury travel marketplace
+			28 button playful HR platform
+			29 button developer observability tool
+			30 button minimalist finance app
+			31 text PRODUCT BRIEF
+			32 image
+			33 text Deterministic Core Active
+			34 text entry area (settable) Description: Product description and requirements, Value: An AI market-intelligence platform for procurement teams. Serious and technical in the app, premium and cinematic on marketing pages…
+			35 text FEEL
+			36 text field (settable) Description: Interface feel, Help: Click to edit feel prompt, Value: Professional + Playful
+			37 text AMBITION ( 76 )
+			38 slider (settable, integer) Description: Visual ambition level, Value: 76
+			39 text Stunning STRUCTURE ( 64 )
+			40 slider (settable, integer) Description: Structural creativity level, Value: 64
+			41 text Inventive STACK
+			42 pop up button (collapsed, settable) Description: Target technical stack, Value: React + Tailwind 4, Secondary Actions: Expand
+				43 menu
+					44 (selected) React + Tailwind 4
+					45 Vite + React 19
+			46 button Compose
+				47 text Compose
+				48 image
+			49 text DESIGN DNA PRIORS
+			50 image
+			51 text Professional 80 Technical 70 Visual ambition 76 Structure creativity 64 Calibrated deterministically from input semantics without requiring external cloud inference.
+		52 container three-directions-demo
+			53 text THREE DIRECTIONS, ONE PRODUCT
+			54 heading Choose a direction. Or blend them., Value: 2
+				55 text Choose a direction. Or blend them.
+			56 text Tessellate never traps you into a single monolithic style. Every brief generates three distinct architectural interpretations with full compatibility.
+			57 text 01  ·  INSTITUTIONAL
+			58 heading Intelligence Terminal, Value: 3
+				59 text Intelligence Terminal
+			60 text Dense, authoritative, analytical.
+			61 text Contrast 92 Sharp 0px Calm Motion High Density
+			62 link Description: Choose, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?direction=institutional
+			63 button Blend, Help: Blend this style with another direction
+				64 image
+				65 text Blend
+			66 text 02  ·  EDITORIAL
+			67 heading Research Publication, Value: 3
+				68 text Research Publication
+			69 text Narrative, trusted, beautifully paced.
+			70 text Serif Pacing Generous Space Soft Ease Balanced
+			71 link Description: Choose, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?direction=editorial
+			72 button Blend, Help: Blend this style with another direction
+				73 image
+				74 text Blend
+			75 container
+				76 text FLOW 03 AGENT · ADAPTIVE
+			77 text 03  ·  FUTURE COMMAND
+			78 heading Adaptive Workspace, Value: 3
+				79 text Adaptive Workspace
+			80 text Spatial, agent-native, controlled novelty.
+			81 text Spatial Canvas Kinetic Pulse Pill Radius High Ambition
+			82 link Description: Choose, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?direction=future
+			83 button Blend, Help: Blend this style with another direction
+				84 image
+				85 text Blend
+		86 container
+			87 text THE COMPOSITION PARADIGM
+			88 heading Not a component library. A composition system., Value: 2
+				89 text Not a component library.
+				90 text A composition system.
+			91 text Traditional registries give you hundreds of disconnected buttons and tables, leaving you to manually reconcile spacing, typography, and contrast. Tessellate coordinates everything through a unified mathematical Design DNA.
+			92 image
+			93 heading Component Library Approach, Value: 3
+				94 text Component Library Approach
+			95 content list
+				96 container
+					97 text Loose Parts:  Isolated primitives with no awareness of the surrounding screen or product domain.
+				98 container
+					99 text Styling Discordance:  Radii clash, hover states conflict, and color chroma drifts across pages.
+				100 container
+					101 text Manual Assembly:  You write boilerplate glue code to stitch components into coherent layouts.
+				102 container
+					103 text Blind AI Prompts:  Code LLMs hallucinate mismatched class names and invent inconsistent CSS tokens.
+			104 text Outcome: A fragile frankenstein interface that requires constant manual CSS refactoring.
+			105 image
+			106 heading Tessellate Composition Engine, Value: 3
+				107 text Tessellate Composition Engine
+			108 content list
+				109 container
+					110 text Deterministic ProductModel:  Extracts domain archetypes, user sophistication, and core JTBD before generating screens.
+				111 container
+					112 text Unified Design DNA:  All components dynamically inherit and harmonize curvature, contrast, motion, and typography.
+				113 container
+					114 text 100-Point Audit Engine:  Evaluates cohesion, accessibility (WCAG AA/AAA), performance, and responsive layout before export.
+				115 container
+					116 text Validated Mutations:  Humans and coding agents modify interfaces through structured, lock-respecting mutations.
+			117 text Outcome: Zero-debt, fully accessible React + Tailwind 4 production codebase with complete design cohesion.
+		118 container
+			119 text THE RESOURCE VOCABULARY
+			120 heading Real resources. Zero synthetic filler., Value: 2
+				121 text Real resources. Zero synthetic filler.
+			122 text Every component in Tessellate is production-grade React + Tailwind 4, verified against accessibility baselines and exportable without proprietary runtimes.
+			123 button All
+			124 button Primitive
+			125 button Component
+			126 button Section
+			127 button Pattern
+			128 image
+			129 text TPS Telemetry +14.2%
+			130 image
+			131 text COMPONENT
+			132 heading High-Throughput Telemetry Chart, Value: 3
+				133 text High-Throughput Telemetry Chart
+			134 text WebGL-accelerated time series chart with real-time streaming intervals and tooltip telemetry. Data Density 85 WebGL/Canvas Micro-interactions
+			135 link Description: Inspect Manifest & Source, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/telemetry-chart
+			136 text TX ID STATUS AMOUNT #0x882A CONFIRMED £14,250.00 #0x7B91 PENDING £3,890.50
+			137 text SECTION
+			138 heading Audited Financial Ledger Table, Value: 3
+				139 text Audited Financial Ledger Table
+			140 text Virtualised tabular records display with inline sorting, filter chips, and column pin support. Virtual Scroll High Density Accessibility AA
+			141 link Description: Inspect Manifest & Source, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/data-table
+			142 button Primary Action
+			143 button Secondary
+			144 text PRIMITIVE
+			145 heading Tactile Kinetic Button, Value: 3
+				146 text Tactile Kinetic Button
+			147 text Canonical button primitive supporting 4 variant elevations, press physics, and loading state. CSS Spring Reduced Motion Safe Zero Runtime
+			148 link Description: Inspect Manifest & Source, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/button
+			149 text Active Pipeline Runs
+			150 container
+				151 text 1,492 ▲ 99.98%
+			152 text COMPONENT
+			153 heading Focal Metric Card Pulse, Value: 3
+				154 text Focal Metric Card Pulse
+			155 text Executive overview metric card with delta indicator, sparkline trend, and status dot. Layout Modular Dynamic Chroma Contrast 95
+			156 link Description: Inspect Manifest & Source, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/metric-card
+			157 image
+			158 text Search commands, workflows…
+			159 text → Recompose screen around locks
+			160 text → Toggle WCAG AAA contrast floor
+			161 text PATTERN
+			162 heading Command Palette Overlay, Value: 3
+				163 text Command Palette Overlay
+			164 text Global ⌘K fuzzy action launcher with keyboard navigation, section groupings, and recent history. Keyboard First Portal Modal Fast Fuzzy Match
+			165 link Description: Inspect Manifest & Source, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/command-palette
+			166 text SECTION
+			167 heading Semantic Cockpit Navigation, Value: 3
+				168 text Semantic Cockpit Navigation
+			169 text Multi-level responsive app shell navigation with collapsed rail and breadcrumb hierarchy. Landmark Navigation ARIA Compliant Mobile Sheet
+			170 link Description: Inspect Manifest & Source, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/navigation-bar
+			171 link Description: Explore All Resources in Catalogue, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore
+		172 container
+			173 text VISUAL SPECTRUM CONTROL
+			174 heading Essential → Experimental., Value: 2
+				175 text Essential → Experimental.
+			176 text One continuous mathematical spectrum. From a zero-distraction utilitarian compliance tool to a high-ambition expressive product hero, without changing the underlying component vocabulary.
+			177 button 01 · Essential
+			178 button 02 · Elevated (Default)
+			179 button 03 · Experimental
+			180 text T
+			181 heading Vault Analytics Dashboard, Value: 4
+				182 text Vault Analytics Dashboard
+			183 text REVISION · 2026.04 AA WCAG
+			184 button Export Data
+			185 text GROSS VOLUME £4.28M +12% ACTIVE ACCOUNTS 18,400 +8% LATENCY BUDGET 42ms OPTIMAL Telemetry Stream (24-Hour Settlement) Smoothed Cadence LEVEL 02 · AMBITION 45–65
+			186 heading Balanced Editorial Elegance, Value: 3
+				187 text Balanced Editorial Elegance
+			188 text The standard default for SaaS and enterprise products. Subtle surface elevations, disciplined 8px radii, and calm typography rhythm. Visual Ambition: 55 Geometry Curvature: 8px (Disciplined) Motion Personality: soft-ease
+		189 container
+			190 text SCREEN ARCHITECTURE GRAMMAR
+			191 heading Familiar → Experimental structure., Value: 2
+				192 text Familiar → Experimental structure.
+			193 text Tessellate breaks free from the ubiquitous left-sidebar-and-table monoculture when your user workflows demand deeper structural density.
+			194 button Familiar (Standard Sidebar)
+			195 button Modular Cockpit (Three-Pane)
+			196 button Spatial Canvas (Infinite Node)
+			197 text LAYOUT GRAMMAR: STANDARD_SIDEBAR PORT: 1440 × 900 Best for: Executive Dashboards, Settings, Documentation 100% Keyboard Navigable
+		198 container
+			199 text COMMAND STUDIO
+			200 heading Step inside the engine. Inspect every mathematical token., Value: 2
+				201 text Step inside the engine.
+				202 text Inspect every mathematical token.
+			203 text The Workbench is not a simplified visual builder. It is a full deterministic operating environment where you inspect semantic trees, lock structural sections, mix adjective feels, and run 100-point audits.
+			204 text Tessellate Workbench v0.1.0 · Local IndexedDB
+			205 image
+			206 text Audit 100/100 · AA Compliant Head: Rev #14 SEMANTIC LAYERS 4 NODES ❖ RootLayout LOCKED
+			207 text ├─ NavigationBar
+			208 text ├─ TelemetryMetricGrid
+			209 text └─ AuditedDataTable
+			210 text Live Render Preview (Desktop 1440px) INHERITED PROJECT DNA SETTLEMENT £142,500 CONFIRMATIONS 99.98% Interactive Recomposition Canvas
+			211 image
+			212 text recompose screen around locked items ↵ enter
+			213 text DESIGN DNA INSPECTOR
+			214 text Contrast Floor 92 Curvature 0px (Sharp) Motion Easing calm-precision
+			215 text Works 100% offline in browser storage with optional BYO cloud and AI capabilities.
+			216 link Description: Launch Workbench Studio, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench
+		217 container
+			218 text INTERFACE MATHEMATICS
+			219 heading Compatibility scoring & normalisation., Value: 2
+				220 text Compatibility scoring & normalisation.
+			221 text How does Tessellate prevent components from clashing? Every combination is scored along multi-dimensional Design DNA vectors before rendering.
+			222 image
+			223 heading DNA Distance Vector, Value: 3
+				224 text DNA Distance Vector
+			225 text Measures Euclidean distance between a component’s inherent aesthetic priors and your project’s target DNA. Discrepancies are flagged or automatically resolved.
+			226 image
+			227 heading Hard Constraint Gates, Value: 3
+				228 text Hard Constraint Gates
+			229 text Non-negotiable rules: WCAG contrast floors cannot drop below AA (or AAA when requested), bundle budgets must stay under performance caps, and prohibited dependencies are rejected.
+			230 image
+			231 heading Responsive Substitution, Value: 3
+				232 text Responsive Substitution
+			233 text When a wide desktop data table is viewed on mobile, the engine automatically substitutes a touch-friendly stacked record card without breaking your screen schema.
+		234 container
+			235 image
+			236 text AGENT-NATIVE ARCHITECTURE
+			237 heading Built for autonomous agents and humans alike., Value: 2
+				238 text Built for autonomous agents and humans alike.
+			239 text Coding agents like Claude Code, Gemini CLI, Cursor, and Copilot struggle when asked to edit arbitrary CSS and complex component hierarchies from scratch. Tessellate gives them a deterministic, schema-validated operating contract.
+			240 content list
+				241 container
+					242 image
+					243 text Machine-Readable Manifests:  Everything compiles to validated  .tess.json  files.
+				244 container
+					245 image
+					246 text Structured Mutations:  Agents modify layouts via typed operations with inverse rollbacks.
+				247 container
+					248 image
+					249 text Zero Hallucinations:  Components use registered semantic slots rather than loose arbitrary HTML.
+				250 container
+					251 image
+					252 text Complete Handoff Package:  Generates  AGENT_HANDOFF.md  with setup instructions and schema tokens.
+			253 image
+			254 text AGENT_HANDOFF.json VALIDATED SCHEMA
+			255 container AGENT_HANDOFF JSON specification
+				256 text {
+  "$schema": "https://tessellate.dev/schemas/v1/project.json",
+  "name": "Market Intelligence Terminal",
+  "productModel": {
+    "archetype": "fintech-telemetry",
+    "userSophistication": 88,
+    "accessibilityFloor": "AA"
+  },
+  "designDNA": {
+    "contrast": 92,
+    "curvature": 0,
+    "motion": 15,
+    "geometryFamily": "sharp"
+  },
+  "mutations": [
+    { "type": "LOCK_NODE", "targetId": "navigation" },
+    { "type": "RECOMPOSE_SCREEN", "screenId": "dashboard" }
+  ]
+}
+			257 text Deterministic Mutation Planner Ready v0.1.0
+		258 container
+			259 image
+			260 text PUBLIC COMMONS
+			261 heading 100% Free. No Pro component gates. No download caps., Value: 3
+				262 text 100% Free. No Pro component gates. No download caps.
+			263 text Interface building blocks belong in the public commons. Tessellate will never lock high-value tables or charts behind a paywalled subscription. The entire component and pattern vocabulary is freely accessible to developers and autonomous agents forever. MIT / Apache 2.0 Zero Telemetry Tracking Copy & Paste or Download ZIP
+			264 image
+			265 text CREATOR ECOSYSTEM
+			266 heading Publish once. Compatible with every system., Value: 3
+				267 text Publish once. Compatible with every system.
+			268 text Authors and designers publish resources using shadcn-compatible schema manifests. Because every resource declares its Design DNA priors and slots, other developers can instantly integrate and re-theme your components without CSS conflicts.
+			269 link Description: Learn how to author & submit a manifest, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/creators
+		270 container
+			271 text QUALITY & SECURITY INVARIANTS
+			272 heading Mathematically audited. Accessible by default., Value: 2
+				273 text Mathematically audited.
+				274 text Accessible by default.
+			275 text Tessellate doesn’t leave quality to guesswork. The 100-point deterministic audit engine runs continuously on every mutation before export.
+			276 image
+			277 heading 100-Point Audit Engine Breakdown, Value: 3
+				278 text 100-Point Audit Engine Breakdown
+			279 text Target: 100 / 100 Cohesion 20  pts Palette, curvature, and typography alignment Accessibility 20  pts WCAG 2.2 AA contrast floors & ARIA landmarks Performance 15  pts Zero runtime overhead & tree-shaken bundles Responsive Layout 15  pts Ergonomic scaling across mobile, tablet & desktop Visual Hierarchy 10  pts Clear focal headers & structural navigation Density Consistency 5  pts Controlled spacing variance between cards Motion Consistency 5  pts Cadence alignment & reduced-motion safety Design Compliance 5  pts Strict prohibition of anti-patterns & chaos Interaction Harmony 5  pts Clear single primary button actions per panel
+			280 image
+			281 heading Performance Ceiling, Value: 4
+				282 text Performance Ceiling
+			283 content list
+				284 container
+					285 image
+					286 text Zero Runtime Lock-In:  Exported code is vanilla React 19 + Tailwind CSS 4. No Tessellate SDK required in production.
+				287 container
+					288 image
+					289 text Reduced-Motion First Class:  Smooth degradation to static fades when the user prefers reduced motion.
+				290 container
+					291 image
+					292 text Tree-Shaken Bundles:  Public site scripts stay under 150 KB gzip, keeping initial paint instantaneous.
+			293 text Validated against WCAG 2.2 AA and Playwright automated accessibility suites.
+		294 container
+			295 heading Start composing in seconds., Value: 2
+				296 text Start composing in seconds.
+			297 text No credit card. No account required. Runs locally in your browser.
+			298 text field (settable)
+			299 button Launch Engine
+				300 text Launch Engine
+				301 image
+			302 image
+			303 text Tessellate Open interface intelligence and deterministic UI composition platform for humans and autonomous coding agents. MIT / Apache 2.0 Open Source PRODUCT
+			304 content list
+				305 link Description: Explore Catalogue, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore
+				306 link Description: Product Composer, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose
+				307 link Description: Workbench Studio, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench
+				308 link Description: Ten Launch Tools, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools
+			309 text ARCHITECTURE
+			310 content list
+				311 link Description: Agent Integration, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/agents
+				312 link Description: Design DNA Contract, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/docs
+				313 link Description: 100-Point Audit Engine, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/docs
+				314 link Description: Structured Mutations, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/docs
+			315 text ECOSYSTEM
+			316 content list
+				317 link Description: Creator Commons, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/creators
+				318 link Description: GitHub, Value: github.com/danishgm-sketch/Tessellate
+				319 link Description: Documentation, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/docs
+				320 link Description: Local Offline Mode, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench
+			321 text © 2026 Tessellate. Free open interface commons. Deterministic engine v0.1.0 active
+
+The focused UI element is 1 AXWebArea Tessellate — Describe the product. Get the interface., URL: tessellate-v1-review.ismayildanish-gm.chatgpt.site/

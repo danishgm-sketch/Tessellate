@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import type { ResourceManifest } from '@tessellate/schemas';
+import {ResourceManifestSchema, type ResourceManifest } from '@tessellate/schemas';
 import {
   createResourceSearchDb,
   indexResources,
@@ -22,9 +22,17 @@ const SUGGESTED_QUERIES = [
   'mobile onboarding no illustrations',
 ];
 
+function rankedResources(resources:ResourceManifest[],hits:Array<{id:string}>):ResourceManifest[]{
+ const byId=new Map(resources.map(resource=>[resource.id,resource]));
+ return hits.flatMap(hit=>{const resource=byId.get(hit.id);return resource?[resource]:[];});
+}
+
 const LOCAL_STORAGE_RECENT_KEY = 'tessellate_recent_searches_v1';
 
-export function ExploreView() {
+export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
+  const [loadAttempt,setLoadAttempt]=useState(0);
+  const [catalogError,setCatalogError]=useState('');
+  const queryRef=useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState('');
   const [filters, setFilters] = useState<SearchFilters>({});
   const [manifests, setManifests] = useState<ResourceManifest[]>([]);
@@ -40,11 +48,13 @@ export function ExploreView() {
   // 1. Load catalog & initialize Orama search DB
   useEffect(() => {
     async function initCatalog() {
+      setIsLoading(true);setCatalogError('');
       try {
         const res = await fetch('/data/catalog.json');
+        if (!res.ok) throw new Error(`Catalogue HTTP ${res.status}`);
         if (res.ok) {
           const data = await res.json();
-          const items: ResourceManifest[] = data.resources ?? [];
+          const items=ResourceManifestSchema.array().parse(data.resources).filter(resource=>!catalogCategory || (catalogCategory==='effects' ? resource.categories.some(category=>['backgrounds','motion','typography'].includes(category)) : resource.categories.includes(catalogCategory)));
           setManifests(items);
 
           // Initialize client-side Orama index
@@ -55,16 +65,21 @@ export function ExploreView() {
           // Check initial URL parameters
           const params = new URLSearchParams(window.location.search);
           const q = params.get('q') ?? '';
-          if (q) setQuery(q);
+          setQuery(q);
+          const urlFilters:SearchFilters={};
+          if(params.get('type'))urlFilters.resourceTypes=params.get('type')!.split(',');
+          if(params.get('purpose'))urlFilters.purposes=params.get('purpose')!.split(',');
+          if(params.get('feel'))urlFilters.feel=params.get('feel')!.split(',');
+          setFilters(urlFilters);
+          if(params.get('focus')==='search')queryRef.current?.focus();
 
           // Initial search execution
-          const searchRes = await executeSearch(db, q, filters);
-          const matchedIds = new Set(searchRes.items.map((i) => i.id));
-          const matched = items.filter((m) => matchedIds.has(m.id));
-          setSearchResults(matched.length > 0 ? matched : items);
+          const searchRes = await executeSearch(db, q, urlFilters);
+          const matched = rankedResources(items,searchRes.items);
+          setSearchResults(matched);
         }
       } catch (err) {
-        console.error('Failed to load catalogue JSON:', err);
+        setCatalogError(`Could not load the catalogue: ${String(err)}`);
       } finally {
         setIsLoading(false);
       }
@@ -81,7 +96,7 @@ export function ExploreView() {
     }
 
     initCatalog();
-  }, []);
+  }, [catalogCategory,loadAttempt]);
 
   // 2. Perform search whenever query or filters change
   useEffect(() => {
@@ -89,8 +104,7 @@ export function ExploreView() {
       if (!oramaDbRef.current || manifests.length === 0) return;
 
       const searchRes = await executeSearch(oramaDbRef.current, query, filters);
-      const matchedIds = new Set(searchRes.items.map((i) => i.id));
-      const matched = manifests.filter((m) => matchedIds.has(m.id));
+      const matched = rankedResources(manifests,searchRes.items);
       setSearchResults(matched);
 
       // Synchronize URL query params
@@ -138,12 +152,13 @@ export function ExploreView() {
 
   return (
     <div className="w-full flex flex-col gap-6">
+      {catalogError && <div role="alert" className="border border-[#C83D48] p-4"><p>{catalogError}</p><button className="underline p-2" onClick={()=>setLoadAttempt(attempt=>attempt+1)}>Retry catalogue</button></div>}
       {/* 56px Top Search & Filter Bar */}
       <div className="relative z-20 flex items-center gap-3 h-14 px-4 rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] shadow-xs">
-        <Search className="w-4 h-4 text-[var(--tess-ink-muted,#8B8F97)] shrink-0" />
+        <Search className="w-4 h-4 text-[var(--tess-ink-muted,#62666F)] shrink-0" />
 
         <input
-          type="text"
+          ref={queryRef} aria-label="Search catalogue" type="text"
           value={query}
           onFocus={() => setIsInputFocused(true)}
           onBlur={() => setTimeout(() => setIsInputFocused(false), 200)}
@@ -154,14 +169,14 @@ export function ExploreView() {
             }
           }}
           placeholder="Search by component, outcome, style or vibe…"
-          className="flex-1 bg-transparent text-sm text-[var(--tess-ink,#111217)] placeholder-[var(--tess-ink-muted,#8B8F97)] focus:outline-none"
+          className="flex-1 min-w-0 bg-transparent text-sm text-[var(--tess-ink,#111217)] placeholder-[var(--tess-ink-muted,#62666F)] focus:outline-none"
         />
 
         {query && (
           <button
             type="button"
-            onClick={handleClearQuery}
-            className="p-1 rounded text-[var(--tess-ink-muted,#8B8F97)] hover:text-[var(--tess-ink,#111217)]"
+            aria-label="Clear search" onClick={handleClearQuery}
+            className="p-1 rounded text-[var(--tess-ink-muted,#62666F)] hover:text-[var(--tess-ink,#111217)]"
           >
             <X className="w-3.5 h-3.5" />
           </button>
@@ -189,7 +204,7 @@ export function ExploreView() {
         {/* Recent Searches Dropdown */}
         {isInputFocused && recentSearches.length > 0 && !query && (
           <div className="absolute top-16 left-0 right-0 rounded-xl border border-[var(--tess-hairline-strong,#C7C3BA)] bg-white p-3 shadow-lg flex flex-col gap-1 z-30">
-            <div className="flex items-center justify-between pb-1 text-[11px] font-semibold text-[var(--tess-ink-muted,#8B8F97)]">
+            <div className="flex items-center justify-between pb-1 text-[11px] font-semibold text-[var(--tess-ink-muted,#62666F)]">
               <span>Recent Searches</span>
               <button
                 type="button"
@@ -206,7 +221,7 @@ export function ExploreView() {
                 onMouseDown={() => handleSearchSubmit(term)}
                 className="flex items-center gap-2 p-1.5 rounded-md hover:bg-[var(--tess-canvas,#F4F2ED)] text-left text-xs text-[var(--tess-ink,#111217)]"
               >
-                <Clock className="w-3.5 h-3.5 text-[var(--tess-ink-muted,#8B8F97)]" />
+                <Clock className="w-3.5 h-3.5 text-[var(--tess-ink-muted,#62666F)]" />
                 <span>{term}</span>
               </button>
             ))}
@@ -216,7 +231,7 @@ export function ExploreView() {
 
       {/* Suggested Natural Query Chips */}
       <div className="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
-        <span className="flex items-center gap-1 text-[11px] font-semibold text-[var(--tess-ink-muted,#8B8F97)] shrink-0">
+        <span className="flex items-center gap-1 text-[11px] font-semibold text-[var(--tess-ink-muted,#62666F)] shrink-0">
           <Sparkles className="w-3 h-3 text-[var(--tess-cobalt,#2547E8)]" />
           <span>Try:</span>
         </span>
@@ -272,7 +287,7 @@ export function ExploreView() {
               <h3 className="text-base font-semibold text-[var(--tess-ink,#111217)]">
                 No matching resources found
               </h3>
-              <p className="text-xs text-[var(--tess-ink-muted,#8B8F97)] max-w-sm mx-auto">
+              <p className="text-xs text-[var(--tess-ink-muted,#62666F)] max-w-sm mx-auto">
                 Try loosening your filters or searching for broader terms like &quot;button&quot;, &quot;input&quot;, or &quot;action&quot;.
               </p>
               <button
@@ -308,8 +323,8 @@ export function ExploreView() {
               <span className="font-semibold text-sm">Filters</span>
               <button
                 type="button"
-                onClick={() => setMobileRailOpen(false)}
-                className="p-1 rounded text-[var(--tess-ink-muted,#8B8F97)]"
+                aria-label="Close filters" onClick={() => setMobileRailOpen(false)}
+                className="p-1 rounded text-[var(--tess-ink-muted,#62666F)]"
               >
                 <X className="w-5 h-5" />
               </button>

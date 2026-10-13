@@ -1,0 +1,6 @@
+<div className="grid grid-cols-1 md:grid-cols-4 gap-5 max-w-[1440px] mx-auto p-6">
+  <div className="col-span-1 md:col-span-2 row-span-2 rounded-2xl bg-white p-6">Hero Feature (2x2)</div>
+  <div className="col-span-1 md:col-span-2 rounded-2xl bg-white p-6">Metric Telemetry (2x1)</div>
+  <div className="col-span-1 rounded-2xl bg-white p-6">Status 01 (1x1)</div>
+  <div className="col-span-1 rounded-2xl bg-white p-6">Status 02 (1x1)</div>
+</div>

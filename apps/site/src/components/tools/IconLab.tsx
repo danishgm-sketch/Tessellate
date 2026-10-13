@@ -165,7 +165,7 @@ export function IconLab() {
                 setColorHex('#2547E8');
                 setHasBadge(false);
               }}
-              className="text-xs font-mono text-[#8B8F97] hover:text-[#111217] flex items-center gap-1"
+              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
             >
               <RotateCcw className="h-3 w-3" />
               <span>Reset</span>
@@ -178,7 +178,7 @@ export function IconLab() {
               <span className="text-[#111217]">Optical Box Size</span>
               <span className="font-mono text-[#62666F]">{iconSize}px</span>
             </div>
-            <input
+            <input aria-label="Icon size"
               type="range"
               min="16"
               max="64"
@@ -195,7 +195,7 @@ export function IconLab() {
               <span className="text-[#111217]">Stroke Weight</span>
               <span className="font-mono text-[#62666F]">{strokeWidth}px</span>
             </div>
-            <input
+            <input aria-label="Chart stroke width"
               type="range"
               min="1"
               max="3.5"
@@ -212,13 +212,13 @@ export function IconLab() {
               Icon Chroma
             </label>
             <div className="flex items-center gap-2">
-              <input
+              <input aria-label="Color hex"
                 type="color"
                 value={colorHex}
                 onChange={(e) => setColorHex(e.target.value)}
                 className="h-8 w-8 rounded cursor-pointer border border-[#D9D6CF]"
               />
-              <input
+              <input aria-label="Color hex"
                 type="text"
                 value={colorHex}
                 onChange={(e) => setColorHex(e.target.value)}
@@ -230,7 +230,7 @@ export function IconLab() {
           {/* Badge Frame Toggle */}
           <div className="pt-2 border-t border-[#D9D6CF] flex items-center justify-between">
             <span className="text-xs font-medium text-[#111217]">Background Tile Badge</span>
-            <input
+            <input aria-label="Has badge"
               type="checkbox"
               checked={hasBadge}
               onChange={(e) => setHasBadge(e.target.checked)}
@@ -244,8 +244,8 @@ export function IconLab() {
           {/* Search Bar + Categories */}
           <div className="flex flex-col sm:flex-row gap-3 items-center justify-between">
             <div className="relative w-full sm:w-64">
-              <Search className="h-3.5 w-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[#8B8F97]" />
-              <input
+              <Search className="h-3.5 w-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]" />
+              <input aria-label="Filter presets"
                 type="text"
                 placeholder="Search icons (e.g. arrow, lock)..."
                 value={searchQuery}

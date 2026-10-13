@@ -194,9 +194,9 @@ export function ExploreRail({
                   )}
                 </div>
                 {isExpanded ? (
-                  <ChevronDown className="w-3.5 h-3.5 text-[var(--tess-ink-muted,#8B8F97)]" />
+                  <ChevronDown className="w-3.5 h-3.5 text-[var(--tess-ink-muted,#62666F)]" />
                 ) : (
-                  <ChevronRight className="w-3.5 h-3.5 text-[var(--tess-ink-muted,#8B8F97)]" />
+                  <ChevronRight className="w-3.5 h-3.5 text-[var(--tess-ink-muted,#62666F)]" />
                 )}
               </button>
 

@@ -1,0 +1,239 @@
+{
+  "label": "r-button-390",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/button",
+  "screenshot": "audit/evidence/deployed-version-5/instrumented/r-button-390.png",
+  "viewport": "390x844",
+  "dom": {
+    "title": "Button — Tessellate Resource",
+    "text": "Tessellate\nStart building\nHome\n/\nExplore\n/\nPrimitives\n/\nButton\nButton\n@tess/button\nv1.0.0\nverified\n\nTactile, accessible multi-intent button primitive with Quiet, Expressive, and Nocturne curated configurations.\n\nInstall:\ntess add button\nRegistry source: /r/button.json\n#button\n#action\n#trigger\n#input\n#control\nVARIANT:\nQuiet\nExpressive\nNocturne\nMotion\nIntent\nCore\nCode\nVariants\nAnatomy\nAccessibility\nPerformance\nDependencies\nVersions\nSUMMARY & PURPOSE\n\nPrimary and secondary interactive action trigger for initiating operations, submitting forms, or navigating.\n\nWHEN IT WORKS (IDEAL FOR)\n•\nPrimary forms\n•\nDialog actions\n•\nToolbar triggers\n•\nCard actions\nWHEN IT IS INAPPROPRIATE (AVOID FOR)\n•\nIn-line body copy links\n•\nDense table cell status indicators\nJOBS TO BE DONE\nSubmit user intent\nTrigger modal dialog\nConfirm dangerous operation\nCancel ongoing action\nEXPECTED CONTENT REQUIREMENTS\nBrief imperative verb phrase\nTARGET PRODUCT ARCHETYPES\ndeveloper-tool (90%)\nb2b-saas (85%)\n\nUse in Workbench\nCopy import\nnpx install\nDeclared quality\n96 / 100\nCategory\nPrimitives\nSPDX License\nMIT\nCreator\nTessellate Core\nFramework & Styling\nreact + tailwind\nDESIGN DNA PROFILE\nDensity\n60%\nVisual Ambition\n50%\nContrast\n70%\nCurvature\n50%\nMotion\n40%\nTessellate Interface Intelligence Layer — Open resource library under MIT License.",
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 390,
+    "unhydrated": 0,
+    "headings": [
+      " Button "
+    ],
+    "emptyButtons": 0
+  },
+  "console": [],
+  "exceptions": [],
+  "network": [],
+  "responses": [
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/button",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/style.DFzzC6xi.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ui.lISYkyLi.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/jsx-runtime.D_zvdyIk.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/select.BIqT08Pb.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.CHQCpkZ9.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/mark.D3kO5Jny.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/use-dialog-focus.Dx4AAyKA.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview?resource=button&variant=quiet&theme=light&device=desktop&reducedMotion=false",
+      "status": 200,
+      "type": "document"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/style.DFzzC6xi.css",
+      "status": 200,
+      "type": "stylesheet"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ResourcePreviewFrame.DHjqoZUf.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ResourceTabs.Dc78g1TF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/smartphone.HluLiZ4e.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/tablet.CzmrdqL-.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sun.BT7R6oZM.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/activity.Cjwo7AZH.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/rotate-ccw.D-Y_cDF8.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/createLucideIcon.CKwyFV_x.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/circle-check.eyCXpGNI.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/sparkles.gqHQXRUX.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/palette.v5jXLh93.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/layers.iL2kwx7I.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/shield-check.B2KdkvO8.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/zap.Ck5VwWQj.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ResourceInspector.DcCwZgml.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/PreviewHost.BWX-kNM4.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preview-protocol.DmFxvjlo.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/gold.DGqaD5Gc.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/arrow-up-right.DzOCU-Zb.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/check.et-gPL4s.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/copy.CcAvPczU.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/terminal.DG76yBHX.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preload-helper.BlTxHScW.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/jsx-runtime.D_zvdyIk.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/preview-protocol.DmFxvjlo.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/index.CHQCpkZ9.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/strategies.BKOHko5F.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/node-renderer.fyXcWuJQ.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/string.BxCyB-NZ.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/code.DwAY4t9Q.js",
+      "status": 200,
+      "type": "script"
+    },
+    {
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/manifest.DsYQL88N.js",
+      "status": 200,
+      "type": "script"
+    }
+  ],
+  "accessibility": []
+}

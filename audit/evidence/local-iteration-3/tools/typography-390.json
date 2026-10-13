@@ -1,0 +1,273 @@
+{
+  "url": "http://127.0.0.1:4323/tools/typography/",
+  "viewport": "390x844",
+  "status": 200,
+  "screenshot": "typography-390.png",
+  "controls": {
+    "text": "TOOL 05 · TYPOGRAPHIC HIERARCHY\nClient-Side · Zero Login\nTypography Lab\n\nExplore harmonic typographic scales, typeface pairing, tabular figures, and dense telemetry typesetting.\n\nCopy Scale CSS\nScale & Pairing Controls\nReset\nMusical Scale Ratio\nMajor Second\n1.125\nMinor Third\n1.2\nMajor Third\n1.25\nPerfect Fourth\n1.333\nGolden Ratio\n1.618\nBase Body Size\n16px\nTypeface Pairing Archetype\nGeist & System Mono\nPrecision engineering grotesque with geometric optical balance.\nNewsreader Editorial & Inter\nBespoke authorial voice with warm literary serif display titles.\nJetBrains Mono & Sans\nTerminal-first technical platform typography for CLI & developer tools.\nOpenType Numerical Features\nTabular Figures (Mono-width align)\nSlashed Zero (0 vs O distinction)\nHierarchical Scale Ladder\nNumerical Telemetry Specimen\nSCALE STEP\nMEASURED METRIC\nDisplay Hero Level (H1)\n33px\nSection Primary Title (H2)\n28px\nCard Subheading & Grouping (H3)\n23px\n\nBody paragraph reading standard. Engineered for calm contrast, optimal line length, and zero cognitive strain during long analytical sessions.\n\n16px\nMICRO METADATA · STATUS INDICATOR AA\n13px",
+    "buttons": [
+      {
+        "label": "Copy Scale CSS",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Reset",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Major Second\n1.125",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Minor Third\n1.2",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Major Third\n1.25",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Perfect Fourth\n1.333",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Golden Ratio\n1.618",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Geist & System Mono\nPrecision engineering grotesque with geometric optical balance.",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Newsreader Editorial & Inter\nBespoke authorial voice with warm literary serif display titles.",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "JetBrains Mono & Sans\nTerminal-first technical platform typography for CLI & developer tools.",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Hierarchical Scale Ladder",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Numerical Telemetry Specimen",
+        "aria": null,
+        "disabled": false
+      }
+    ],
+    "fields": [
+      {
+        "tag": "INPUT",
+        "type": "range",
+        "aria": null,
+        "value": "16"
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "aria": null,
+        "value": "on"
+      },
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "aria": null,
+        "value": "on"
+      }
+    ]
+  },
+  "axe": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "tags": [
+        "cat.color",
+        "wcag2aa",
+        "wcag143",
+        "TTv5",
+        "TT13.c",
+        "EN-301-549",
+        "EN-9.1.4.3",
+        "ACT",
+        "RGAAv4",
+        "RGAA-3.2.1"
+      ],
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/color-contrast?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#80838a",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.6,
+                "fontSize": "7.5pt (10px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<button type=\"button\" class=\"w-full text-left p-2.5 rounded-xl border text-xs transition-all border-[#D9D6CF] text-[#62666F] hover:text-[#111217] bg-[#FAF9F6]\">",
+                  "target": [
+                    ".text-left.p-2\\.5.rounded-xl:nth-child(2)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.6 (foreground color: #80838a, background color: #faf9f6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<div class=\"text-[10px] opacity-80 mt-0.5 line-clamp-1\">Bespoke authorial voice with warm literary serif display titles.</div>",
+          "target": [
+            ".text-left.p-2\\.5.rounded-xl:nth-child(2) > .opacity-80.mt-0\\.5.line-clamp-1"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.6 (foreground color: #80838a, background color: #faf9f6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "any": [
+            {
+              "id": "color-contrast",
+              "data": {
+                "fgColor": "#80838a",
+                "bgColor": "#faf9f6",
+                "contrastRatio": 3.6,
+                "fontSize": "7.5pt (10px)",
+                "fontWeight": "normal",
+                "messageKey": null,
+                "expectedContrastRatio": "4.5:1"
+              },
+              "relatedNodes": [
+                {
+                  "html": "<button type=\"button\" class=\"w-full text-left p-2.5 rounded-xl border text-xs transition-all border-[#D9D6CF] text-[#62666F] hover:text-[#111217] bg-[#FAF9F6]\">",
+                  "target": [
+                    ".text-left.p-2\\.5.rounded-xl:nth-child(3)"
+                  ]
+                }
+              ],
+              "impact": "serious",
+              "message": "Element has insufficient color contrast of 3.6 (foreground color: #80838a, background color: #faf9f6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "serious",
+          "html": "<div class=\"text-[10px] opacity-80 mt-0.5 line-clamp-1\">Terminal-first technical platform typography for CLI &amp; developer tools.</div>",
+          "target": [
+            ".text-left.p-2\\.5.rounded-xl:nth-child(3) > .opacity-80.mt-0\\.5.line-clamp-1"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 3.6 (foreground color: #80838a, background color: #faf9f6, font size: 7.5pt (10px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    },
+    {
+      "id": "label",
+      "impact": "critical",
+      "tags": [
+        "cat.forms",
+        "wcag2a",
+        "wcag412",
+        "section508",
+        "section508.22.n",
+        "TTv5",
+        "TT5.c",
+        "EN-301-549",
+        "EN-9.4.1.2",
+        "ACT",
+        "RGAAv4",
+        "RGAA-11.1.1"
+      ],
+      "description": "Ensure every form element has a label",
+      "help": "Form elements must have labels",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.13/label?application=playwright",
+      "nodes": [
+        {
+          "any": [
+            {
+              "id": "implicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an implicit (wrapped) <label>"
+            },
+            {
+              "id": "explicit-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element does not have an explicit <label>"
+            },
+            {
+              "id": "aria-label",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-label attribute does not exist or is empty"
+            },
+            {
+              "id": "aria-labelledby",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty"
+            },
+            {
+              "id": "non-empty-title",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no title attribute"
+            },
+            {
+              "id": "non-empty-placeholder",
+              "data": {
+                "messageKey": "noAttr"
+              },
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element has no placeholder attribute"
+            },
+            {
+              "id": "presentational-role",
+              "data": null,
+              "relatedNodes": [],
+              "impact": "critical",
+              "message": "Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+            }
+          ],
+          "all": [],
+          "none": [],
+          "impact": "critical",
+          "html": "<input type=\"range\" min=\"14\" max=\"20\" step=\"1\" class=\"w-full accent-[#2547E8] cursor-pointer\" value=\"16\">",
+          "target": [
+            "input[type=\"range\"]"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+        }
+      ]
+    }
+  ],
+  "console": [],
+  "exceptions": [],
+  "network": []
+}

@@ -1,0 +1,127 @@
+{
+  "status": "local-workflow-complete",
+  "directionC": "proj-direction-c-a408490cbddf45f9a26ff14808118cdfdirc",
+  "replacedSlug": "timeline",
+  "locked": {
+    "id": "node-screen-overview-metric-cards-3",
+    "nodeType": "section",
+    "semanticRole": "metric-cards",
+    "resourceRef": {
+      "id": "res_blk_dashboard_kpi_grid",
+      "slug": "dashboard-kpi-grid",
+      "version": "1.0.0"
+    },
+    "variant": "nocturne",
+    "children": [],
+    "slots": {},
+    "props": {
+      "title": "Your organisation at a glance",
+      "cards": [
+        {
+          "label": "People",
+          "val": "500",
+          "status": "From your brief · example"
+        },
+        {
+          "label": "Onboarding",
+          "val": "12",
+          "status": "Sample journeys"
+        },
+        {
+          "label": "Team pulse",
+          "val": "Positive",
+          "status": "Illustrative feedback"
+        }
+      ]
+    },
+    "dnaOverrides": {
+      "professionalism": 100,
+      "playfulness": 53,
+      "luxury": 40,
+      "warmth": 45,
+      "technicality": 65,
+      "editorial": 35,
+      "futurism": 35,
+      "visualAmbition": 40,
+      "structuralCreativity": 85,
+      "density": 60,
+      "whitespace": 65,
+      "contrast": 75,
+      "colourfulness": 54,
+      "curvature": 63,
+      "depth": 35,
+      "motion": 41,
+      "motionPlayfulness": 45,
+      "typographicExpression": 45,
+      "imageryIntensity": 35,
+      "videoIntensity": 15,
+      "threeDIntensity": 5,
+      "dataDensity": 65,
+      "interactionDensity": 80,
+      "asymmetry": 25,
+      "conversionIntensity": 55,
+      "trust": 100,
+      "accessibilityPriority": 85,
+      "performancePriority": 82,
+      "primaryArchetype": "recruitment",
+      "visualMode": "dark",
+      "geometryFamily": "pill",
+      "navigationModel": "rail",
+      "responsivePhilosophy": "desktop-dense-mobile-focused",
+      "contentTone": "calm",
+      "primaryStack": "react-tailwind",
+      "motionPersonality": "playful-spring",
+      "typographyPersonality": "geist-system",
+      "surfacePersonality": "subtle-contrast"
+    },
+    "tokenOverrides": {},
+    "locks": {
+      "node": true
+    }
+  },
+  "finalProjectId": "proj-direction-c-a408490cbddf45f9a26ff14808118cdfdirc",
+  "events": {
+    "console": [],
+    "exceptions": [],
+    "network": [],
+    "responses": []
+  },
+  "steps": [
+    "01-exact-brief",
+    "02-three-directions",
+    "03-direction-c-handoff",
+    "mode-structure",
+    "mode-style",
+    "mode-motion",
+    "mode-content",
+    "mode-audit",
+    "04-onboarding-playful",
+    "05-settings-conservative",
+    "06-locked-summary",
+    "07-radical-recomposition",
+    "08-actual-replacement-candidates",
+    "09-real-replacement",
+    "10-surprise-me",
+    "undo-surprise",
+    "undo-replacement",
+    "undo-recomposition",
+    "redo-recomposition",
+    "redo-replacement",
+    "redo-surprise",
+    "canvas-1440",
+    "canvas-1024",
+    "canvas-768",
+    "canvas-430",
+    "canvas-390",
+    "11-actual-project-preview",
+    "12-final-manifest",
+    "13-standalone-zip-downloaded",
+    "shell-360",
+    "shell-390",
+    "shell-430",
+    "shell-768",
+    "shell-1024",
+    "shell-1280",
+    "shell-1440"
+  ]
+}

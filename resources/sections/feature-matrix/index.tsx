@@ -4,9 +4,11 @@ export type FeatureMatrixVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface FeatureMatrixProps {
   variant?: FeatureMatrixVariant;
+  title?: string;
+  items?: Array<{title:string;description:string;detail:string}>;
 }
 
-export function FeatureMatrix({ variant = 'quiet' }: FeatureMatrixProps) {
+export function FeatureMatrix({ variant = 'quiet', title='Example capability matrix',items }: FeatureMatrixProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';
   let tableBorder = 'border-neutral-200';
 
@@ -18,27 +20,27 @@ export function FeatureMatrix({ variant = 'quiet' }: FeatureMatrixProps) {
     tableBorder = 'border-[#2E3440]';
   }
 
-  const rows = [
+  const rows = items?.map(item=>({capability:item.title,primitives:item.description,shells:item.detail,sections:'Example',blocks:'Review'})) ?? [
     { capability: 'Verified Zod Schemas', primitives: 'Yes', shells: 'Yes', sections: 'Yes', blocks: 'Yes' },
-    { capability: 'WCAG 2.2 AA Contrast', primitives: 'Yes', shells: 'Yes', sections: 'Yes', blocks: 'Yes' },
+    { capability: 'Accessibility review', primitives: 'Required', shells: 'Required', sections: 'Required', blocks: 'Required' },
     { capability: 'Zero External CSS Dependencies', primitives: 'Yes', shells: 'Yes', sections: 'Yes', blocks: 'Yes' },
     { capability: 'Curated Nocturne Theme', primitives: 'Yes', shells: 'Yes', sections: 'Yes', blocks: 'Yes' },
   ];
 
   return (
-    <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
+    <section className={`relative w-full py-20 px-6 @sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">Capability Matrix</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-12">{title}</h2>
 
-        <div className={`overflow-x-auto rounded-xl border ${tableBorder}`}>
-          <table className="w-full text-left text-xs sm:text-sm">
+        <div className={`overflow-x-auto rounded-[var(--tess-radius-xl,8px)] border ${tableBorder}`}>
+          <table className="w-full text-left text-xs @sm:text-sm">
             <thead className="border-b bg-neutral-100/60 dark:bg-neutral-900/60 text-xs uppercase tracking-wider font-mono">
               <tr>
                 <th className="p-4">Capability</th>
-                <th className="p-4">Primitives</th>
-                <th className="p-4">Shells</th>
-                <th className="p-4">Sections</th>
-                <th className="p-4">Blocks</th>
+                <th className="p-4">{items?'Purpose':'Primitives'}</th>
+                <th className="p-4">{items?'Journey':'Shells'}</th>
+                <th className="p-4">{items?'Content':'Sections'}</th>
+                <th className="p-4">{items?'Next step':'Blocks'}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-neutral-200 dark:divide-neutral-800">

@@ -1,0 +1,401 @@
+Browser tab: 1, Title: "Compose — Tessellate Interface Intelligence", URL: "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/".
+1 AXWebArea Compose — Tessellate Interface Intelligence, URL: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/
+	2 container
+		3 link Description: Tessellate Mark Tessellate, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/
+		4 link Description: Explore, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore
+		5 link Description: Compose, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose
+		6 link Description: Workbench, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench
+		7 link Description: Tools, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools
+		8 link Description: Agents, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/agents
+		9 link Description: Creators, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/creators
+		10 link Description: Docs, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/docs
+		11 button Search resources (Press Command-K)
+			12 image
+			13 text Search...
+		14 link Description: GitHub Repository, Value: github.com/danishgm-sketch/Tessellate
+		15 link Description: Start building, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench
+	16 container
+		17 heading Product Composer, Value: 1
+			18 text Product Composer
+		19 text Describe product intent to deterministically interpret entities, derive Design DNA, and generate a multi-screen plan.
+		82 container
+			83 image
+			84 text Deterministic Product Composer (Phase 6)
+		22 heading Describe the product. Get the interface., Value: 1
+			23 text Describe the product. Get the interface.
+		24 text Tessellate understands product architecture without requiring an LLM. Enter your product brief below to generate a validated ProductModel, ScreenGraph, and three design directions.
+		85 text Load Golden Specification Briefs:
+		25 button Financial Intelligence Terminal
+		26 button Playful HR Platform
+		27 button Luxury Travel Marketplace
+		28 button Developer Observability Platform
+		29 button Minimalist Personal Finance Tool
+		30 button Scientific Research Environment
+		86 container
+			87 text Product Description & Objectives
+			88 text entry area (settable) Product Description & Objectives, ID: description, Value: Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.
+			89 text Archetype Priority (Optional Override)
+			90 pop up button (collapsed, settable) Archetype Priority (Optional Override), Value: Auto-Detect from Brief, ID: archetype, Secondary Actions: Expand
+				91 menu
+					92 (selected) Auto-Detect from Brief
+					93 B2B SaaS
+					94 AI Product
+					95 Developer Tools
+					96 Fintech
+					97 Ecommerce
+					98 Marketplace
+					99 Analytics Platform
+					100 Research & Intelligence Platform
+					101 CRM & Pipeline
+					102 ERP & Operations
+					103 Consumer Productivity
+					104 Education Product
+					105 Creator Platform
+					106 Media & Publishing
+					107 Travel & Hospitality
+					108 Real Estate
+					109 Recruitment & People Operations
+					110 Consumer Applications
+			111 text Desired Feel / Adjectives
+			112 text field (settable) Desired Feel / Adjectives, Value: professional but playful, ID: feel
+			113 text Primary Front-End Stack React 19 + Tailwind CSS 4 (V1 Standard) Visual Ambition REFINED  ( 30 )
+			114 button Essential
+			115 button Refined
+			116 button Striking
+			117 button Stunning
+			118 button Experimental
+			119 text Structural Creativity INVENTIVE  ( 55 )
+			120 button Familiar
+			121 button Modern
+			122 button Inventive
+			123 button Radical
+			124 button Experimental
+			125 button Advanced Constraints & Devices
+				126 image
+				127 text Advanced Constraints & Devices
+			128 text Catalogue ready
+			129 button Compose Interface System
+				130 image
+				131 text Compose Interface System
+		132 container
+			133 heading Inferred Product Architecture, Value: 2
+				134 text Inferred Product Architecture
+			135 text Deterministic inferences derived from brief vocabulary and archetype priors. Schema Valid (ProductModel 1.0.0)
+			136 image
+			137 text DETERMINISTIC ASSUMPTIONS
+			138 content list
+				139 container
+					140 AXListMarker • 
+					141 text Identified primary archetype as "Analytics Platform" based on domain vocabulary.
+				142 container
+					143 AXListMarker • 
+					144 text Inferred target audience as "Data analysts, executives, and growth product managers".
+				145 container
+					146 AXListMarker • 
+					147 text Inferred primary objective: "Transform raw event data into actionable quantitative intelligence and reports".
+				148 container
+					149 AXListMarker • 
+					150 text Applied feel descriptors "professional but playful" with mathematical DNA adjustments.
+				151 container
+					152 AXListMarker • 
+					153 text Applied Visual Ambition level 30 to motion, typography, and depth.
+				154 container
+					155 AXListMarker • 
+					156 text Applied Structural Creativity level 55 to spatial topology.
+			157 text Primary Archetype ANALYTICS User Sophistication 80 /100 Trust Requirement 90 /100 Data Density 95 /100 Information Complexity 85 /100 Mobile Priority 45 /100
+		158 container
+			159 heading Planned ScreenGraph (8 Screens), Value: 2
+				160 text Planned ScreenGraph ( 8  Screens)
+			161 text Structured screen classes, route slugs, required section roles, and navigation hierarchy. 5  Required 3  Optional
+			162 heading MARKETING GROUP, Value: 3
+				163 text MARKETING  GROUP
+			164 text Marketing Home / Required Product value proposition, interactive preview, and conversion funnel. Required Roles: navigation, hero, value-proposition ... Documentation & API /docs Optional Technical integration guides, API endpoints, and SDK references. Required Roles: docs-sidebar, prose-article, on-this-page-toc ...
+			165 heading APPLICATION GROUP, Value: 3
+				166 text APPLICATION  GROUP
+			167 text Overview Dashboard /overview Required Central operational telemetry, KPI scorecard, and high-priority action queue. Required Roles: overview-header, metric-cards, activity-feed ... Metric Directory /metrics Required Searchable, filterable catalog of all metric records. Required Roles: index-header, filter-bar, data-table ... Metric Detail /metrics/:id Optional Deep inspection, metadata attributes, timeline, and actions for a single metric. Required Roles: entity-header, detail-tabs, main-content-pane ... Analytics & Insights /analytics Optional Deep time-series breakdown, cohort retention, and reporting exports. Required Roles: date-range-picker, chart-canvas, summary-kpis ...
+			168 heading SETTINGS & ADMINISTRATION GROUP, Value: 3
+				169 text SETTINGS & ADMINISTRATION  GROUP
+			170 text Settings & Preferences /settings Required User profile, notification triggers, security keys, and display theme. Required Roles: settings-nav, settings-form, save-footer ...
+			171 heading AUTHENTICATION GROUP, Value: 3
+				172 text AUTHENTICATION  GROUP
+			173 text Sign In /sign-in Required User authentication with GitHub OAuth and session tokens. Required Roles: auth-card, auth-footer ...
+		174 container
+			175 heading Three Generated Directions, Value: 2
+				176 text Three Generated Directions
+			177 text Deterministic directions generated from intent: conservative fit, expressive fit, and structural alternative. DIRECTION  01 Conservative Fit
+			178 heading Calm Foundation, Value: 3
+				179 text Calm Foundation
+			180 text Closest to inferred product priors with standard sidebar navigation, reinforced accessibility floors, and rock-solid predictable ergonomics. Navigation: SIDEBAR Layout: sidebar-card-grid Visual Ambition: 20 Creativity: 40 SCREEN PREVIEW:  MARKETING HOME 8  SCREENS
+			181 container
+				182 container
+					183 text Tessellate
+					184 link Description: Catalogue, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					185 link Description: DNA Lab, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					186 link Description: Docs, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+				187 container
+					188 text Announcing Version 2.0
+					189 heading Engineered for deliberate craft and structural speed., Value: 1
+						190 text Engineered for deliberate craft and structural speed.
+					191 text Compose resilient interfaces from a unified design vocabulary. Uncompromising typography, zero lock-in, and sub-millisecond execution.
+					192 button Explore Catalogue
+					193 button Read Architecture
+					194 text Free & open core • No credit card required
+				195 container
+					196 text Nav Tree Visual Canvas Inspector
+				197 container
+					198 text Nav Tree Visual Canvas Inspector
+				199 container
+					200 text Tessellate Engine Autonomous composition and Design DNA runtime. Latest: v1.0.0 Stable Workbench
+					201 content list
+						202 link Description: DNA Lab, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						203 link Description: Catalog, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						204 link Description: Inspector, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					205 text Developers
+					206 content list
+						207 link Description: CLI, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						208 link Description: MCP Server, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						209 link Description: Schemas, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+				210 container
+					211 text Workbench
+					212 button ←
+					213 text ◫ Canvas ⚙ Settings
+				214 container
+					215 text T
+					216 heading Tessellate Core, Value: 2
+						217 text Tessellate Core
+					218 text VERIFIED CREATOR @tessellate • Open Core System
+					219 button Share
+					220 button Edit Profile
+				221 container
+					222 text Nav Tree Visual Canvas Inspector
+				223 container
+					224 heading Marketing Home primary-chart, Value: 4
+						225 text Marketing Home primary-chart
+					226 text Real-time sampling window 81 req/s
+					227 image
+						228 text 0
+						229 text 25
+						230 text 50
+						231 text 75
+						232 text 100
+						233 text 00:00
+						234 text 04:00
+						235 text 08:00
+						236 text 12:00
+						237 text 16:00
+						238 text 20:00
+						239 text 24:00
+				240 container
+					241 text 0  row(s) selected
+					242 button Filter
+					243 table
+						244 row
+							245 cell
+								246 text #
+							247 cell
+								248 text Resource Name
+							249 cell
+								250 text Type
+							251 cell
+								252 text Quality
+							253 cell
+								254 text Status
+						255 row
+							256 cell
+								257 checkbox (settable, integer) 0
+							258 cell
+								259 text button
+							260 cell
+								261 text primitive
+							262 cell
+								263 text 98 /100
+							264 cell
+								265 text VERIFIED
+						266 row
+							267 cell
+								268 checkbox (settable, integer) 0
+							269 cell
+								270 text editorial-hero
+							271 cell
+								272 text section
+							273 cell
+								274 text 96 /100
+							275 cell
+								276 text VERIFIED
+						277 row
+							278 cell
+								279 checkbox (settable, integer) 0
+							280 cell
+								281 text admin-console-shell
+							282 cell
+								283 text block
+							284 cell
+								285 text 96 /100
+							286 cell
+								287 text VERIFIED
+			288 button Open in Workbench
+				289 text Open in Workbench
+				290 image
+			291 link Description: Inspect in DNA Lab, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/dev/dna?direction=direction-a
+			292 text DIRECTION  02 Expressive Fit
+			293 heading Expressive Horizon, Value: 3
+				294 text Expressive Horizon
+			295 text Elevated aesthetic expression, richer motion personalities, and bolder typographic presence while maintaining identical functional workflow jobs. Navigation: TOP-NAV Layout: feature-grid Visual Ambition: 55 Creativity: 55 SCREEN PREVIEW:  MARKETING HOME 8  SCREENS
+			296 container
+				297 container
+					298 text Tessellate
+					299 link Description: Catalogue, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					300 link Description: DNA Lab, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					301 link Description: Docs, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+				302 container
+					303 text Announcing Version 2.0
+					304 heading Engineered for deliberate craft and structural speed., Value: 1
+						305 text Engineered for deliberate craft and structural speed.
+					306 text Compose resilient interfaces from a unified design vocabulary. Uncompromising typography, zero lock-in, and sub-millisecond execution.
+					307 button Explore Catalogue
+					308 button Read Architecture
+					309 text Free & open core • No credit card required
+				310 heading Daily User Conversions, Value: 4
+					311 text Daily User Conversions
+				312 text Signups completed over the past week
+				313 container
+					314 text Total:  430
+				315 image
+					316 text 0
+					317 text 25
+					318 text 50
+					319 text 75
+					320 text 100
+					321 text Mon
+					322 text Tue
+					323 text Wed
+					324 text Thu
+					325 text Fri
+					326 text Sat
+					327 text Sun
+				328 container
+					329 heading Start composing with Tessellate today., Value: 2
+						330 text Start composing with Tessellate today.
+					331 text No accounts, no credit cards, zero proprietary dependencies.
+					332 button OPEN FREE WORKBENCH →
+				333 container
+					334 text Tessellate Engine Autonomous composition and Design DNA runtime. Latest: v1.0.0 Stable Workbench
+					335 content list
+						336 link Description: DNA Lab, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						337 link Description: Catalog, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						338 link Description: Inspector, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					339 text Developers
+					340 content list
+						341 link Description: CLI, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						342 link Description: MCP Server, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						343 link Description: Schemas, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+				344 container
+					345 text Tessellate Engine Autonomous composition and Design DNA runtime. Latest: v1.0.0 Stable Workbench
+					346 content list
+						347 link Description: DNA Lab, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						348 link Description: Catalog, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						349 link Description: Inspector, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					350 text Developers
+					351 content list
+						352 link Description: CLI, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						353 link Description: MCP Server, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						354 link Description: Schemas, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+				355 container
+					356 heading The Bento System, Value: 2
+						357 text The Bento System
+					358 text FLAGSHIP FEATURE
+					359 heading Live Token Synchronization, Value: 3
+						360 text Live Token Synchronization
+					361 text When you tweak curvature or contrast in Design DNA, all 324 components update in real time with zero layout thrashing. --tess-density: 85; --tess-radius: 6px; PERFORMANCE
+					362 heading 0.4ms Latency, Value: 3
+						363 text 0.4ms Latency
+					364 text Sub-millisecond verification pipeline powered by local in-memory indices. 100/100
+					365 heading MCP Agent Ready, Value: 3
+						366 text MCP Agent Ready
+					367 text Connect Cursor, Claude Code, or Antigravity directly to local tooling. stdio / sse
+					368 heading Verified Ecosystem Integrity, Value: 3
+						369 text Verified Ecosystem Integrity
+					370 text 972 curated combinations across Quiet, Expressive, and Nocturne with 0 lint warnings.
+				371 container
+					372 heading Marketing Home social-proof, Value: 2
+						373 text Marketing Home social-proof
+					374 text ★★★★★ " The cleanest component architecture I have seen in modern React. " Marcus Vance Staff Engineer ,  Linear Systems ★★★★★ " Reduced our front-end maintenance overhead to near zero. " Aria Chen CTO ,  Prism Health ★★★★★ " Zero lock-in means our team owns every byte of output. " Devon Patel Lead Architect ,  Apex Cloud
+				375 container
+					376 text Tessellate BETA
+					377 link Description: Features, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					378 link Description: Pricing, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					379 button Start Free
+			380 button Open in Workbench
+				381 text Open in Workbench
+				382 image
+			383 link Description: Inspect in DNA Lab, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/dev/dna?direction=direction-b
+			384 text DIRECTION  03 Structural Alternative
+			385 heading Adaptive Architecture, Value: 3
+				386 text Adaptive Architecture
+			387 text Explores an inventive structural topology (three-pane workspace or docked terminal) with higher interaction density and alternative spatial navigation. Navigation: HEADER-MINIMAL Layout: tri-column-intelligence Visual Ambition: 40 Creativity: 85 SCREEN PREVIEW:  MARKETING HOME 8  SCREENS
+			388 container
+				389 container
+					390 text Tessellate
+					391 link Description: Catalogue, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					392 link Description: DNA Lab, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					393 link Description: Docs, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+				394 container
+					395 text Announcing Version 2.0
+					396 heading Engineered for deliberate craft and structural speed., Value: 1
+						397 text Engineered for deliberate craft and structural speed.
+					398 text Compose resilient interfaces from a unified design vocabulary. Uncompromising typography, zero lock-in, and sub-millisecond execution.
+					399 button Explore Catalogue
+					400 button Read Architecture
+					401 text Free & open core • No credit card required
+				402 text Nav Tree
+				403 text Visual Canvas
+				404 text Inspector
+				405 text Nav Tree
+				406 text Visual Canvas
+				407 text Inspector
+				408 container
+					409 text Tessellate Engine Autonomous composition and Design DNA runtime. Latest: v1.0.0 Stable Workbench
+					410 content list
+						411 link Description: DNA Lab, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						412 link Description: Catalog, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						413 link Description: Inspector, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					414 text Developers
+					415 content list
+						416 link Description: CLI, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						417 link Description: MCP Server, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+						418 link Description: Schemas, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+				419 text Nav Tree
+				420 text Visual Canvas
+				421 text Inspector
+				422 container
+					423 text Tessellate
+					424 link Description: Catalogue, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					425 link Description: DNA Lab, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+					426 link Description: Docs, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/#
+				427 text Incidents Queue
+				428 container
+					429 text Alert: High CPU Usage 10m ago
+				430 container
+					431 text Deploy: Version 0.1.0 Successful 1h ago
+				432 container
+					433 text Security: Token Refresh 3h ago
+				434 heading Incident Details (ID: 1), Value: 2
+					435 text Incident Details (ID:  1 )
+				436 text Telemetry metrics indicate node threshold normalization.
+				437 text Incidents Queue
+				438 container
+					439 text Alert: High CPU Usage 10m ago
+				440 container
+					441 text Deploy: Version 0.1.0 Successful 1h ago
+				442 container
+					443 text Security: Token Refresh 3h ago
+				444 heading Incident Details (ID: 1), Value: 2
+					445 text Incident Details (ID:  1 )
+				446 text Telemetry metrics indicate node threshold normalization.
+			447 button Open in Workbench
+				448 text Open in Workbench
+				449 image
+			450 link Description: Inspect in DNA Lab, Value: tessellate-v1-review.ismayildanish-gm.chatgpt.site/dev/dna?direction=direction-c
+	81 text Tessellate Interface Intelligence Layer — Deterministic screen planning and multi-entity UI synthesis.
+
+The focused UI element is 129 button Compose Interface System

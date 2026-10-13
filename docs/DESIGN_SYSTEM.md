@@ -67,7 +67,7 @@ Until a final vector is approved, use a simple geometric CSS/SVG mark built from
 --tess-surface-raised: #FFFFFF;
 --tess-ink: #111217;
 --tess-ink-secondary: #62666F;
---tess-ink-muted: #8B8F97;
+--tess-ink-muted: #62666F;
 --tess-hairline: #D9D6CF;
 --tess-hairline-strong: #C7C3BA;
 --tess-cobalt: #2547E8;

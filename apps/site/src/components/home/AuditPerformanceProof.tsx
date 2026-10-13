@@ -21,11 +21,11 @@ export function AuditPerformanceProof() {
           Quality & Security Invariants
         </span>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#111217]">
-          Mathematically audited.<br />
-          Accessible by default.
+          Inspectable quality.<br />
+          Verify in the browser.
         </h2>
         <p className="text-lg text-[#62666F] font-normal leading-relaxed">
-          Tessellate doesn’t leave quality to guesswork. The 100-point deterministic audit engine runs continuously on every mutation before export.
+          The deterministic audit inspects manifest and declared resource metadata. Browser accessibility, visual behaviour and export builds require runtime verification.
         </p>
       </div>
 
@@ -65,7 +65,7 @@ export function AuditPerformanceProof() {
         {/* Right Column: Performance Guarantees */}
         <div className="lg:col-span-4 rounded-2xl border border-[#D9D6CF] bg-[#FAF9F6] p-6 sm:p-8 space-y-5">
           <div className="flex items-center gap-2 pb-3 border-b border-[#D9D6CF]">
-            <Zap className="h-4 w-4 text-[#177B55]" />
+            <Zap className="h-4 w-4 text-[#12603F]" />
             <h4 className="text-base font-semibold text-[#111217]">
               Performance Ceiling
             </h4>
@@ -73,21 +73,21 @@ export function AuditPerformanceProof() {
 
           <ul className="space-y-3 text-xs text-[#62666F]">
             <li className="flex items-start gap-2.5">
-              <Check className="h-4 w-4 text-[#177B55] shrink-0 mt-0.5" />
+              <Check className="h-4 w-4 text-[#12603F] shrink-0 mt-0.5" />
               <span><strong>Zero Runtime Lock-In:</strong> Exported code is vanilla React 19 + Tailwind CSS 4. No Tessellate SDK required in production.</span>
             </li>
             <li className="flex items-start gap-2.5">
-              <Check className="h-4 w-4 text-[#177B55] shrink-0 mt-0.5" />
+              <Check className="h-4 w-4 text-[#12603F] shrink-0 mt-0.5" />
               <span><strong>Reduced-Motion First Class:</strong> Smooth degradation to static fades when the user prefers reduced motion.</span>
             </li>
             <li className="flex items-start gap-2.5">
-              <Check className="h-4 w-4 text-[#177B55] shrink-0 mt-0.5" />
+              <Check className="h-4 w-4 text-[#12603F] shrink-0 mt-0.5" />
               <span><strong>Tree-Shaken Bundles:</strong> Public site scripts stay under 150 KB gzip, keeping initial paint instantaneous.</span>
             </li>
           </ul>
 
-          <div className="pt-3 border-t border-[#D9D6CF] font-mono text-[11px] text-[#8B8F97]">
-            Validated against WCAG 2.2 AA and Playwright automated accessibility suites.
+          <div className="pt-3 border-t border-[#D9D6CF] font-mono text-[11px] text-[var(--text-muted)]">
+            WCAG 2.2 AA is a target. A metadata score does not certify accessibility; test the rendered project.
           </div>
         </div>
       </div>

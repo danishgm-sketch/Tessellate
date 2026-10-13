@@ -1,0 +1,119 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/motion/",
+  "viewport": "1440x900",
+  "status": 200,
+  "screenshot": "motion-1440.png",
+  "controls": {
+    "text": "TOOL 03 · KINETIC PHYSICS\nClient-Side · Zero Login\nMotion Studio\n\nAuthor and inspect easing curves, spring dynamics, stagger pacing, and WCAG reduced motion floors.\n\nPlay Animation\nCopy CSS\nPERSONALITY PRESETS\nCalm Precision\nEditorial Glide\nEnergetic Tactile\nDeliberate Command\nReduced Motion Safe\nKinetic Physics Model\nReduced Motion\nCubic-Bezier\nSpring Physics\nPacing Duration\n220ms\nStagger Delay (per item)\n40ms\nBezier Curve Coordinates\n[0.16, 1, 0.3, 1]\nX1 / Y1 (In)\nX2 / Y2 (Out)\nKINETIC SIMULATION BENCH\n220ms · CUBIC-BEZIER\nStaggered Component Sequence\n01 · System Architecture Audit\n20/20 PASS\n02 · Cryptographic Token Verification\nVALIDATED\n03 · Latency SLA Telemetry Sync\n38ms OPTIMAL\nInteractive Tactile Press Target\nPress Me for Spring Response\nClick to test physical depression & rebound feedback.\nCSS TRANSITION\nCopy\n/* Tessellate Motion Preset: calm-precision */\ntransition-property: transform, opacity, box-shadow;\ntransition-duration: 220ms;\ntransition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);\nMOTION PROPS\nCopy\n{\n  duration: 0.22,\n  ease: [0.16, 1, 0.3, 1]\n}",
+    "buttons": [
+      {
+        "label": "Play Animation",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Copy CSS",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Calm Precision",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Editorial Glide",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Energetic Tactile",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Deliberate Command",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Reduced Motion Safe",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Cubic-Bezier",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Spring Physics",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Press Me for Spring Response",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Copy",
+        "aria": null,
+        "disabled": false
+      },
+      {
+        "label": "Copy",
+        "aria": null,
+        "disabled": false
+      }
+    ],
+    "fields": [
+      {
+        "tag": "INPUT",
+        "type": "checkbox",
+        "aria": "Is reduced motion",
+        "value": "on"
+      },
+      {
+        "tag": "INPUT",
+        "type": "range",
+        "aria": "Duration ms",
+        "value": "220"
+      },
+      {
+        "tag": "INPUT",
+        "type": "range",
+        "aria": "Stagger ms",
+        "value": "40"
+      },
+      {
+        "tag": "INPUT",
+        "type": "number",
+        "aria": "Bezier[0]",
+        "value": "0.16"
+      },
+      {
+        "tag": "INPUT",
+        "type": "number",
+        "aria": "Bezier[1]",
+        "value": "1"
+      },
+      {
+        "tag": "INPUT",
+        "type": "number",
+        "aria": "Bezier[2]",
+        "value": "0.3"
+      },
+      {
+        "tag": "INPUT",
+        "type": "number",
+        "aria": "Bezier[3]",
+        "value": "1"
+      }
+    ]
+  },
+  "axe": [],
+  "console": [],
+  "exceptions": [],
+  "network": []
+}

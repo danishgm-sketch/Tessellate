@@ -39,11 +39,11 @@ export function BarChart({ variant = 'quiet' }: BarChartProps) {
   const step = chartW / data.length;
 
   return (
-    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>
+    <div className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col transition-colors ${cardBg}`}>
       <div className="flex items-center justify-between mb-4">
         <div>
           <h4 className="text-sm font-semibold tracking-tight">Daily User Conversions</h4>
-          <p className="text-xs text-neutral-500">Signups completed over the past week</p>
+          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Signups completed over the past week</p>
         </div>
         <div className="text-xs font-mono font-medium">
           Total: <span className="text-base font-semibold">{data.reduce((a, b) => a + b.value, 0)}</span>

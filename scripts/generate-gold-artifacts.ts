@@ -2,6 +2,7 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { GOLD_40_SLUGS } from '../packages/catalog/src/gold.js';
+import ts from 'typescript';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -45,7 +46,7 @@ export function discoverGoldComponents(): DiscoveredGoldComponent[] {
       manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
     }
 
-    const code = fs.readFileSync(foundPath, 'utf-8');
+    const code = fs.readFileSync(foundPath, 'utf-8').replace(/\r\n/g,'\n');
 
     // Find component export name
     // Matches export function Foo or export const Foo
@@ -91,10 +92,25 @@ ${mappings.join('\n')}
 `;
 }
 
+function extractAcceptedProps(code:string,slug:string):string[] {
+  const source = ts.createSourceFile(`${slug}.tsx`,code,ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+  const acceptedProps:string[]=[];
+  for (const statement of source.statements) {
+    if (ts.isInterfaceDeclaration(statement) && statement.name.text.endsWith('Props')) {
+    for (const member of statement.members) {
+      if (ts.isPropertySignature(member) && member.name && (ts.isIdentifier(member.name) || ts.isStringLiteral(member.name))) acceptedProps.push(member.name.text);
+    }
+    if (statement.heritageClauses?.length) acceptedProps.push('id','title','disabled','type','defaultValue','value','placeholder','name','aria-label','aria-describedby','aria-labelledby','checked','required','readOnly','onClick','onChange','onKeyDown','onFocus','onBlur');
+    }
+  }
+  return [...new Set(acceptedProps)];
+}
+
 export function generateGoldSources(components: DiscoveredGoldComponent[]): string {
   const records = components.map((c) => {
     const deps = (c.manifest.dependencies as Array<{ name: string; version: string }>) || [];
     const depsObj: Record<string, string> = {};
+    const acceptedProps=extractAcceptedProps(c.sourceCode,c.slug);
     for (const d of deps) {
       depsObj[d.name] = d.version || 'latest';
     }
@@ -105,6 +121,7 @@ export function generateGoldSources(components: DiscoveredGoldComponent[]): stri
     name: ${JSON.stringify(c.manifest.name || c.slug)},
     componentName: ${JSON.stringify(c.componentName)},
     dependencies: ${JSON.stringify(depsObj)},
+    acceptedProps: ${JSON.stringify([...new Set(acceptedProps)])},
     code: ${JSON.stringify(c.sourceCode)},
   },`;
   });
@@ -116,6 +133,7 @@ export interface GoldResourceSource {
   name: string;
   componentName: string;
   dependencies: Record<string, string>;
+  acceptedProps: string[];
   code: string;
 }
 
@@ -145,6 +163,11 @@ export async function runGenerate() {
   const rendererFile = path.join(rootDir, 'packages', 'renderer', 'src', 'generated-gold-registry.tsx');
   fs.writeFileSync(rendererFile, generateGoldRendererRegistry(components), 'utf-8');
   console.log(`[generate-gold-artifacts] Wrote ${rendererFile}`);
+
+  const propsFile=path.join(rootDir,'packages/renderer/src/generated-gold-props.ts');
+  fs.writeFileSync(propsFile,`// Generated at build time from TypeScript interfaces.
+export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = ${JSON.stringify(Object.fromEntries(components.map(component=>[component.slug,extractAcceptedProps(component.sourceCode,component.slug)])),null,2)};
+`,'utf-8');
 
   // 2. Write exporter sources
   const exporterFile = path.join(rootDir, 'packages', 'exporter', 'src', 'generated-gold-sources.ts');

@@ -82,7 +82,9 @@
   },
   "preview": {
     "component": "ContextMenuPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "children": "Right-click this example surface"
+    },
     "viewport": 1440
   },
   "slots": [

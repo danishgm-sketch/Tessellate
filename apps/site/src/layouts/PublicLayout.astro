@@ -1,0 +1,9 @@
+---
+import '../styles/global.css';
+import {SiteHeader} from '../components/home/SiteHeader';
+interface Props {title:string;description:string;}
+const {title,description}=Astro.props;
+---
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="description" content={description}/><link rel="icon" href="/favicon.svg"/><title>{title} — Tessellate</title></head>
+<body class="min-h-screen flex flex-col"><a href="#main" class="sr-only focus:not-sr-only focus:p-3">Skip to content</a><SiteHeader client:load/><main id="main" class="flex-1 mx-auto max-w-[1440px] w-full px-4 sm:px-6 py-10"><header class="max-w-3xl mb-9"><p class="font-mono text-xs uppercase tracking-widest text-[var(--tess-ink-secondary)] mb-3">Open interface commons</p><h1 class="text-3xl sm:text-5xl font-semibold tracking-tight mb-4">{title}</h1><p class="text-[var(--tess-ink-secondary)] leading-relaxed">{description}</p></header><slot/></main>
+<footer class="border-t border-[var(--tess-hairline)] px-6 py-8"><nav aria-label="Footer" class="mx-auto max-w-[1440px] flex flex-wrap gap-x-6 gap-y-3 text-sm"><a href="/about">About</a><a href="/docs">Docs</a><a href="/license">Licences</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/sponsor">Support the commons</a><a href="https://github.com/danishgm-sketch/Tessellate">Source on GitHub</a></nav></footer></body></html>

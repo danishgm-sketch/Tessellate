@@ -1,0 +1,44 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose/",
+  "viewport": "1440x900",
+  "exceptions": [],
+  "console": [
+    {
+      "level": "error",
+      "text": "Failed to load resource: net::ERR_FAILED"
+    },
+    {
+      "level": "error",
+      "text": "Failed to load /data/catalog.json in ComposeView: TypeError: Failed to fetch\n    at L (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ComposeView.Bt_S5_Gm.js:11:692)\n    at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ComposeView.Bt_S5_Gm.js:11:1289\n    at Ce (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js:32:95816)\n    at zm (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js:32:119147)\n    at ft (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js:32:118920)\n    at zm (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js:32:119193)\n    at qi (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js:32:133773)\n    at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js:32:130732\n    at MessagePort.bt (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/client.OPlYM6bF.js:9:1664)"
+    }
+  ],
+  "network": [],
+  "intentionalCatalogueAbort": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/data/catalog.json",
+    "reason": "net::ERR_FAILED"
+  },
+  "scans": [
+    {
+      "name": "disabled-submit",
+      "screenshot": "audit/evidence/deployed-version-7/compose-contrast/disabled-submit-1440.png",
+      "axe": []
+    },
+    {
+      "name": "muted-ink-footer",
+      "screenshot": "audit/evidence/deployed-version-7/compose-contrast/muted-ink-footer-1440.png",
+      "axe": []
+    }
+  ],
+  "httpStatus": 200,
+  "submitDisabled": true,
+  "submitStyle": {
+    "color": "rgb(255, 255, 255)",
+    "background": "rgb(98, 102, 111)",
+    "opacity": "1"
+  },
+  "submitContrastRatio": 5.75,
+  "footerStyle": {
+    "color": "rgb(98, 102, 111)",
+    "background": "rgba(0, 0, 0, 0)"
+  }
+}

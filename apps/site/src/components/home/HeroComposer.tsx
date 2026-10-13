@@ -144,7 +144,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
 
         {/* Preset Quick Chips */}
         <div className="lg:col-span-4 flex flex-col gap-2">
-          <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[#8B8F97]">
+          <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[var(--text-muted)]">
             Preset Exemplars:
           </span>
           <div className="flex flex-wrap gap-1.5">
@@ -171,7 +171,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
         >
           {/* Header row */}
           <div className="flex items-center justify-between pb-3">
-            <span className="font-mono text-[11px] font-semibold tracking-wider text-[#8B8F97] uppercase">
+            <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--text-muted)] uppercase">
               Product Brief
             </span>
             <div className="flex items-center gap-1.5 text-xs text-[#62666F]">
@@ -187,7 +187,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
             rows={3}
             aria-label="Product description and requirements"
             placeholder="Describe what this product does, its users, complexity, and visual atmosphere…"
-            className="w-full text-base sm:text-lg text-[#111217] placeholder-[#8B8F97] bg-transparent resize-none border-none focus:outline-none focus:ring-0 leading-relaxed font-sans"
+            className="w-full text-base sm:text-lg text-[#111217] placeholder-[#62666F] bg-transparent resize-none border-none focus:outline-none focus:ring-0 leading-relaxed font-sans"
           />
 
           {/* Separator */}
@@ -198,7 +198,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
             <div className="flex flex-wrap items-center gap-6 text-xs">
               {/* Feel Parameter */}
               <div className="space-y-1">
-                <span className="block font-mono text-[10px] uppercase font-semibold text-[#8B8F97]">
+                <span className="block font-mono text-[10px] uppercase font-semibold text-[var(--text-muted)]">
                   Feel
                 </span>
                 <input
@@ -213,7 +213,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
 
               {/* Ambition Parameter */}
               <div className="space-y-1">
-                <span className="block font-mono text-[10px] uppercase font-semibold text-[#8B8F97]">
+                <span className="block font-mono text-[10px] uppercase font-semibold text-[var(--text-muted)]">
                   Ambition ({visualAmbition})
                 </span>
                 <div className="flex items-center gap-2">
@@ -234,7 +234,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
 
               {/* Structure Parameter */}
               <div className="space-y-1">
-                <span className="block font-mono text-[10px] uppercase font-semibold text-[#8B8F97]">
+                <span className="block font-mono text-[10px] uppercase font-semibold text-[var(--text-muted)]">
                   Structure ({structuralCreativity})
                 </span>
                 <div className="flex items-center gap-2">
@@ -255,7 +255,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
 
               {/* Stack Parameter */}
               <div className="hidden md:block space-y-1">
-                <span className="block font-mono text-[10px] uppercase font-semibold text-[#8B8F97]">
+                <span className="block font-mono text-[10px] uppercase font-semibold text-[var(--text-muted)]">
                   Stack
                 </span>
                 <select
@@ -285,7 +285,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
         {/* Side Design DNA Telemetry Widget */}
         <div className="xl:col-span-3 bg-[#FAF9F6] border border-[#D9D6CF] rounded-[20px] p-6 space-y-5">
           <div className="flex items-center justify-between border-b border-[#D9D6CF] pb-3">
-            <span className="font-mono text-[11px] font-semibold tracking-wider text-[#8B8F97] uppercase">
+            <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--text-muted)] uppercase">
               Design DNA Priors
             </span>
             <SlidersHorizontal className="h-3.5 w-3.5 text-[#62666F]" />
@@ -349,7 +349,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
             </div>
           </div>
 
-          <p className="text-[11px] text-[#8B8F97] pt-2 border-t border-[#D9D6CF] font-sans">
+          <p className="text-[11px] text-[var(--text-muted)] pt-2 border-t border-[#D9D6CF] font-sans">
             Calibrated deterministically from input semantics without requiring external cloud inference.
           </p>
         </div>

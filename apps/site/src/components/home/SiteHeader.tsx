@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Search, Github, Menu, X, ArrowRight } from 'lucide-react';
+import { useDialogFocus } from '@tessellate/ui';
 import { CommandPalette } from '../CommandPalette.js';
 
 export function SiteHeader() {
+  const [interactive,setInteractive]=useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const closeMenu=useCallback(()=>setIsMenuOpen(false),[]);
+  const navigationRef=useDialogFocus<HTMLDivElement>(isMenuOpen,closeMenu);
+  useEffect(() => {
+    setInteractive(true);
+    const openSearch = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase()==='k') {
+        event.preventDefault(); setIsSearchOpen(open=>!open);
+      }
+    };
+    window.addEventListener('keydown',openSearch);
+    return ()=>window.removeEventListener('keydown',openSearch);
+  },[]);
 
   return (
     <>
@@ -24,7 +38,7 @@ export function SiteHeader() {
               </span>
             </a>
 
-            <nav className="hidden lg:flex items-center gap-6 text-[14px] font-medium text-[#62666F]">
+            <nav className="hidden xl:flex items-center gap-6 text-[14px] font-medium text-[#62666F]">
               <a href="/explore" className="hover:text-[#111217] transition-colors">Explore</a>
               <a href="/showcases" className="hover:text-[#111217] transition-colors">Showcases</a>
               <a href="/compose" className="hover:text-[#111217] transition-colors">Compose</a>
@@ -40,11 +54,11 @@ export function SiteHeader() {
           <div className="flex items-center gap-3">
             <button
               type="button"
-              onClick={() => setIsSearchOpen(true)}
+              disabled={!interactive} onClick={() => setIsSearchOpen(true)}
               aria-label="Search resources (Press Command-K)"
               className="flex items-center gap-2 rounded-lg border border-[#D9D6CF] bg-[#FAF9F6] px-3 py-1.5 text-xs text-[#62666F] hover:border-[#111217] hover:text-[#111217] transition-colors"
             >
-              <Search className="h-3.5 w-3.5 text-[#8B8F97]" />
+              <Search className="h-3.5 w-3.5 text-[var(--text-muted)]" />
               <span className="hidden sm:inline">Search</span>
               <kbd className="hidden sm:inline rounded bg-[#ECE9E2] px-1 py-0.5 text-[10px] font-mono text-[#62666F]">
                 ⌘K
@@ -66,7 +80,7 @@ export function SiteHeader() {
               href="/workbench"
               className="hidden md:inline text-xs font-semibold text-[#62666F] hover:text-[#111217] transition-colors px-2"
             >
-              Sign in
+              Local projects
             </a>
 
             <a
@@ -80,9 +94,9 @@ export function SiteHeader() {
             {/* Mobile Menu Toggle */}
             <button
               type="button"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-1.5 text-[#62666F] hover:text-[#111217] transition-colors"
-              aria-label="Toggle menu"
+              disabled={!interactive} aria-expanded={isMenuOpen} onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="xl:hidden p-1.5 text-[#62666F] hover:text-[#111217] transition-colors"
+              aria-label="Toggle menu" aria-controls="mobile-navigation"
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -92,7 +106,8 @@ export function SiteHeader() {
 
       {/* Mobile Drawer Sheet */}
       {isMenuOpen && (
-        <div className="fixed inset-0 top-16 z-40 bg-[#F4F2ED] p-6 lg:hidden flex flex-col justify-between overflow-y-auto animate-fade-in">
+        <div id="mobile-navigation" ref={navigationRef} role="dialog" aria-modal="true" aria-label="Main navigation" tabIndex={-1} className="fixed inset-0 top-16 z-40 bg-[#F4F2ED] p-6 xl:hidden flex flex-col justify-between overflow-y-auto animate-fade-in">
+          <button type="button" onClick={closeMenu} aria-label="Close navigation" className="self-end min-h-10 min-w-10 p-2"><X className="h-5 w-5" /></button>
           <nav className="flex flex-col gap-4 text-lg font-semibold text-[#111217]">
             <a href="/explore" onClick={() => setIsMenuOpen(false)} className="py-2 border-b border-[#D9D6CF]">Explore Catalogue</a>
             <a href="/showcases" onClick={() => setIsMenuOpen(false)} className="py-2 border-b border-[#D9D6CF]">Showcases</a>
@@ -124,7 +139,7 @@ export function SiteHeader() {
       )}
 
       {/* Search Palette Modal */}
-      {isSearchOpen && <CommandPalette onClose={() => setIsSearchOpen(false)} />}
+      {isSearchOpen && <CommandPalette isOpen={true} onClose={() => setIsSearchOpen(false)} />}
     </>
   );
 }

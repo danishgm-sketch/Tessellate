@@ -1,0 +1,216 @@
+{
+  "number": "01",
+  "projectId": "proj-direction-a-e8b7f34cee4b433ab68e4a960f18ce26dira",
+  "dna": {
+    "professionalism": 100,
+    "playfulness": 53,
+    "luxury": 40,
+    "warmth": 45,
+    "technicality": 65,
+    "editorial": 35,
+    "futurism": 35,
+    "visualAmbition": 20,
+    "structuralCreativity": 40,
+    "density": 60,
+    "whitespace": 65,
+    "contrast": 75,
+    "colourfulness": 54,
+    "curvature": 53,
+    "depth": 35,
+    "motion": 41,
+    "motionPlayfulness": 25,
+    "typographicExpression": 45,
+    "imageryIntensity": 35,
+    "videoIntensity": 15,
+    "threeDIntensity": 5,
+    "dataDensity": 65,
+    "interactionDensity": 60,
+    "asymmetry": 0,
+    "conversionIntensity": 55,
+    "trust": 100,
+    "accessibilityPriority": 100,
+    "performancePriority": 97,
+    "primaryArchetype": "recruitment",
+    "visualMode": "light",
+    "geometryFamily": "pill",
+    "navigationModel": "sidebar",
+    "responsivePhilosophy": "desktop-dense-mobile-focused",
+    "contentTone": "calm",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "playful-spring",
+    "typographyPersonality": "geist-system",
+    "surfacePersonality": "subtle-contrast"
+  },
+  "navigation": {
+    "model": "sidebar",
+    "primaryItems": [
+      {
+        "label": "Marketing Home",
+        "targetScreenId": "screen-marketing-home"
+      },
+      {
+        "label": "Team Overview",
+        "targetScreenId": "screen-overview"
+      },
+      {
+        "label": "People Directory",
+        "targetScreenId": "screen-collection-index"
+      },
+      {
+        "label": "Employee Profile",
+        "targetScreenId": "screen-entity-detail"
+      },
+      {
+        "label": "Teams",
+        "targetScreenId": "screen-teams"
+      },
+      {
+        "label": "Onboarding",
+        "targetScreenId": "screen-onboarding"
+      },
+      {
+        "label": "Engagement",
+        "targetScreenId": "screen-engagement"
+      },
+      {
+        "label": "Settings & Policies",
+        "targetScreenId": "screen-settings"
+      },
+      {
+        "label": "Sign In",
+        "targetScreenId": "screen-sign-in"
+      }
+    ]
+  },
+  "grammar": "classic-sidebar-dashboard",
+  "selectedScreen": "screen-overview",
+  "screenCount": 9,
+  "screens": [
+    {
+      "id": "screen-marketing-home",
+      "slug": "/",
+      "name": "Marketing Home",
+      "resourceSlugs": [
+        "minimal-top-nav",
+        "editorial-hero",
+        "feature-bento",
+        "cta-minimal",
+        "footer-product"
+      ]
+    },
+    {
+      "id": "screen-overview",
+      "slug": "/overview",
+      "name": "Team Overview",
+      "resourceSlugs": [
+        "collapsible-sidebar",
+        "entity-profile-header",
+        "dashboard-kpi-grid",
+        "notification-centre",
+        "advanced-data-table"
+      ]
+    },
+    {
+      "id": "screen-collection-index",
+      "slug": "/people",
+      "name": "People Directory",
+      "resourceSlugs": [
+        "collapsible-sidebar",
+        "entity-profile-header",
+        "filter-builder",
+        "advanced-data-table",
+        "button"
+      ]
+    },
+    {
+      "id": "screen-entity-detail",
+      "slug": "/people/:id",
+      "name": "Employee Profile",
+      "resourceSlugs": [
+        "collapsible-sidebar",
+        "entity-profile-header",
+        "minimal-top-nav",
+        "advanced-data-table",
+        "entity-profile-header"
+      ]
+    },
+    {
+      "id": "screen-teams",
+      "slug": "/teams",
+      "name": "Teams",
+      "resourceSlugs": [
+        "collapsible-sidebar",
+        "entity-profile-header",
+        "filter-builder",
+        "advanced-data-table",
+        "button"
+      ]
+    },
+    {
+      "id": "screen-onboarding",
+      "slug": "/onboarding",
+      "name": "Onboarding",
+      "resourceSlugs": [
+        "collapsible-sidebar",
+        "timeline",
+        "kanban-board",
+        "button"
+      ]
+    },
+    {
+      "id": "screen-engagement",
+      "slug": "/engagement",
+      "name": "Engagement",
+      "resourceSlugs": [
+        "collapsible-sidebar",
+        "entity-profile-header",
+        "dashboard-kpi-grid",
+        "notification-centre",
+        "advanced-data-table"
+      ]
+    },
+    {
+      "id": "screen-settings",
+      "slug": "/settings",
+      "name": "Settings & Policies",
+      "resourceSlugs": [
+        "collapsible-sidebar",
+        "minimal-top-nav",
+        "input",
+        "button"
+      ]
+    },
+    {
+      "id": "screen-sign-in",
+      "slug": "/sign-in",
+      "name": "Sign In",
+      "resourceSlugs": [
+        "input",
+        "button"
+      ]
+    }
+  ],
+  "resourceSlugs": [
+    "minimal-top-nav",
+    "editorial-hero",
+    "feature-bento",
+    "cta-minimal",
+    "footer-product",
+    "collapsible-sidebar",
+    "entity-profile-header",
+    "dashboard-kpi-grid",
+    "notification-centre",
+    "advanced-data-table",
+    "filter-builder",
+    "button",
+    "timeline",
+    "kanban-board",
+    "input"
+  ],
+  "missing": [],
+  "synthetic": [],
+  "goldRefCount": 40,
+  "unresolvedRequiredRoles": [],
+  "diagnostics": [],
+  "renderedNodes": 7
+}

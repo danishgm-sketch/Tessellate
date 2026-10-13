@@ -11,6 +11,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
   children?: React.ReactNode;
+  label?: string;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -22,6 +23,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       icon,
       iconPosition = 'left',
       children,
+      label,
       className = '',
       disabled,
       type = 'button',
@@ -35,9 +37,9 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
     // Size mappings
     const sizeClasses = {
-      sm: 'h-8 px-3 text-xs gap-1.5 rounded-md',
-      md: 'h-9 px-4 text-sm gap-2 rounded-lg',
-      lg: 'h-11 px-5 text-base gap-2.5 rounded-xl',
+      sm: 'h-8 px-3 text-xs gap-1.5 rounded-[var(--tess-radius-md,8px)]',
+      md: 'h-9 px-4 text-sm gap-2 rounded-[var(--tess-radius-lg,8px)]',
+      lg: 'h-11 px-5 text-base gap-2.5 rounded-[var(--tess-radius-xl,8px)]',
     }[size];
 
     // Variant & Intent styling matrix
@@ -56,7 +58,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           break;
         case 'ghost':
           colorClasses =
-            'bg-transparent text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 border border-transparent focus-visible:ring-neutral-400';
+            'bg-transparent text-[var(--tess-ink-secondary,#62666F)] hover:bg-neutral-100 hover:text-neutral-900 border border-transparent focus-visible:ring-neutral-400';
           break;
         case 'danger':
           colorClasses =
@@ -68,7 +70,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       switch (intent) {
         case 'primary':
           colorClasses =
-            'bg-[#2547E8] text-white hover:bg-[#1E3CCD] border border-[#2547E8] shadow-sm hover:shadow-md focus-visible:ring-[#2547E8] focus-visible:ring-offset-white';
+            'bg-[var(--tess-accent-primary,#2547E8)] text-[var(--tess-accent-ink,#FFFFFF)] hover:bg-[#1E3CCD] border border-[#2547E8] shadow-sm hover:shadow-md focus-visible:ring-[#2547E8] focus-visible:ring-offset-white';
           break;
         case 'secondary':
           colorClasses =
@@ -114,7 +116,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...rest}
       >
         {icon && iconPosition === 'left' && <span className="inline-flex shrink-0">{icon}</span>}
-        {children}
+        {children ?? label ?? 'Example action'}
         {icon && iconPosition === 'right' && <span className="inline-flex shrink-0">{icon}</span>}
       </button>
     );

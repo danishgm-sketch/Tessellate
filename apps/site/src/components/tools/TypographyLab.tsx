@@ -156,7 +156,7 @@ export function TypographyLab() {
                 setBaseSizePx(16);
                 setUseTabularNums(true);
               }}
-              className="text-xs font-mono text-[#8B8F97] hover:text-[#111217] flex items-center gap-1"
+              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
             >
               <RotateCcw className="h-3 w-3" />
               <span>Reset</span>
@@ -193,7 +193,7 @@ export function TypographyLab() {
               <span className="text-[#111217]">Base Body Size</span>
               <span className="font-mono text-[#62666F]">{baseSizePx}px</span>
             </div>
-            <input
+            <input aria-label="Base body size"
               type="range"
               min="14"
               max="20"
@@ -222,7 +222,7 @@ export function TypographyLab() {
                   }`}
                 >
                   <div className="font-semibold">{p.name}</div>
-                  <div className="text-[10px] opacity-80 mt-0.5 line-clamp-1">{p.description}</div>
+                  <div className="text-[10px] mt-0.5 line-clamp-1">{p.description}</div>
                 </button>
               ))}
             </div>
@@ -235,7 +235,7 @@ export function TypographyLab() {
             </label>
             <div className="space-y-2 text-xs">
               <label className="flex items-center gap-2 cursor-pointer text-[#111217]">
-                <input
+                <input aria-label="Use tabular nums"
                   type="checkbox"
                   checked={useTabularNums}
                   onChange={(e) => setUseTabularNums(e.target.checked)}
@@ -244,7 +244,7 @@ export function TypographyLab() {
                 <span>Tabular Figures (Mono-width align)</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer text-[#111217]">
-                <input
+                <input aria-label="Use slashed zero"
                   type="checkbox"
                   checked={useSlashedZero}
                   onChange={(e) => setUseSlashedZero(e.target.checked)}
@@ -287,7 +287,7 @@ export function TypographyLab() {
           >
             {activeTab === 'hierarchy' ? (
               <div className="space-y-6">
-                <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[#8B8F97]">
+                <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[var(--text-muted)]">
                   <span>SCALE STEP</span>
                   <span>MEASURED METRIC</span>
                 </div>
@@ -303,7 +303,7 @@ export function TypographyLab() {
                     >
                       Display Hero Level (H1)
                     </h1>
-                    <span className="font-mono text-xs text-[#8B8F97] shrink-0">{steps.h1}px</span>
+                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">{steps.h1}px</span>
                   </div>
 
                   <div className="flex items-baseline justify-between gap-4">
@@ -316,7 +316,7 @@ export function TypographyLab() {
                     >
                       Section Primary Title (H2)
                     </h2>
-                    <span className="font-mono text-xs text-[#8B8F97] shrink-0">{steps.h2}px</span>
+                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">{steps.h2}px</span>
                   </div>
 
                   <div className="flex items-baseline justify-between gap-4">
@@ -329,7 +329,7 @@ export function TypographyLab() {
                     >
                       Card Subheading & Grouping (H3)
                     </h3>
-                    <span className="font-mono text-xs text-[#8B8F97] shrink-0">{steps.h3}px</span>
+                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">{steps.h3}px</span>
                   </div>
 
                   <div className="flex items-baseline justify-between gap-4">
@@ -342,23 +342,23 @@ export function TypographyLab() {
                     >
                       Body paragraph reading standard. Engineered for calm contrast, optimal line length, and zero cognitive strain during long analytical sessions.
                     </p>
-                    <span className="font-mono text-xs text-[#8B8F97] shrink-0">{steps.body}px</span>
+                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">{steps.body}px</span>
                   </div>
 
                   <div className="flex items-baseline justify-between gap-4">
                     <span
-                      className="font-mono uppercase text-[#8B8F97] font-semibold"
+                      className="font-mono uppercase text-[var(--text-muted)] font-semibold"
                       style={{ fontSize: `${steps.small}px` }}
                     >
                       Micro Metadata · Status Indicator AA
                     </span>
-                    <span className="font-mono text-xs text-[#8B8F97] shrink-0">{steps.small}px</span>
+                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">{steps.small}px</span>
                   </div>
                 </div>
               </div>
             ) : (
               <div className="space-y-5">
-                <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[#8B8F97]">
+                <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[var(--text-muted)]">
                   <span>TABULAR LEDGER TEST BENCH</span>
                   <span>{fontVariantNumeric.toUpperCase()}</span>
                 </div>
@@ -381,9 +381,9 @@ export function TypographyLab() {
                         { id: '0x3301', val: '£905.10', delta: '+0.0%', latency: '00:00:00.45' },
                       ].map((row) => (
                         <tr key={row.id} className="hover:bg-[#FAF9F6]">
-                          <td className="py-2.5 px-4 font-mono text-[#8B8F97]">{row.id}</td>
+                          <td className="py-2.5 px-4 font-mono text-[var(--text-muted)]">{row.id}</td>
                           <td className="py-2.5 px-4 text-right font-bold">{row.val}</td>
-                          <td className="py-2.5 px-4 text-right text-[#177B55]">{row.delta}</td>
+                          <td className="py-2.5 px-4 text-right text-[#12603F]">{row.delta}</td>
                           <td className="py-2.5 px-4 text-right font-mono text-[#62666F]">{row.latency}</td>
                         </tr>
                       ))}

@@ -5,6 +5,7 @@ import { executeNaturalLanguageCommand } from '../ai/ai-service.js';
 import { Terminal, CornerDownLeft } from 'lucide-react';
 
 export function CommandBar() {
+  const lastActionMessage=useWorkbenchStore(state=>state.lastActionMessage);
   const manifest = useWorkbenchStore((state) => state.manifest);
   const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
@@ -92,12 +93,12 @@ export function CommandBar() {
   return (
     <div
       data-testid="command-bar"
-      className="h-16 shrink-0 border-t border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] px-4 flex items-center justify-between select-none z-20"
+      className="dark min-h-16 py-2 gap-2 flex-wrap shrink-0 border-t border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] px-4 flex items-center justify-between select-none z-20"
     >
       <form onSubmit={handleExecute} className="flex-1 max-w-4xl flex items-center gap-3">
         {/* Target Context Pill */}
         <div className="hidden sm:flex items-center gap-1.5 rounded-lg bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] px-2.5 py-1 text-xs font-mono text-[#62666F] dark:text-[#A8AFBA] shrink-0">
-          <Terminal className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#6782FF]" />
+          <Terminal className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#879DFF]" />
           <span>
             {selectedNode ? selectedNode.semanticRole : 'Project Scope'}
           </span>
@@ -106,7 +107,7 @@ export function CommandBar() {
         {/* Command Input Field */}
         <div className="relative flex-1">
           <input
-            ref={inputRef}
+            aria-label="Project command" ref={inputRef}
             type="text"
             placeholder={
               selectedNode
@@ -118,8 +119,8 @@ export function CommandBar() {
             className="w-full bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] rounded-xl px-3.5 py-2 text-xs text-[#111217] dark:text-[#F5F7FA] placeholder-[#8B8F97] focus:outline-none focus:border-[#2547E8] dark:focus:border-[#6782FF] transition-colors pr-10 font-sans"
           />
           <button
-            type="submit"
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8B8F97] hover:text-[#111217] dark:hover:text-[#F5F7FA] transition-colors"
+            aria-label="Run command" type="submit"
+            className="min-h-6 min-w-6 flex items-center justify-center absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--text-muted)] hover:text-[#111217] dark:hover:text-[#F5F7FA] transition-colors"
             title="Execute command (Enter)"
           >
             <CornerDownLeft className="h-3.5 w-3.5" />
@@ -128,10 +129,10 @@ export function CommandBar() {
       </form>
 
       {/* Feedback or Keyboard Shortcuts Hint */}
-      <div className="hidden md:flex items-center gap-3 text-[11px] text-[#62666F] dark:text-[#A8AFBA] font-mono">
-        {feedback ? (
-          <span className="text-[#2547E8] dark:text-[#6782FF] font-semibold animate-fade-in">
-            {feedback}
+      <div className="flex flex-wrap items-center gap-3 max-w-full text-[11px] text-[#62666F] dark:text-[#A8AFBA] font-mono">
+        {feedback || lastActionMessage ? (
+          <span role="status" className="text-[#2547E8] dark:text-[#879DFF] font-semibold animate-fade-in">
+            {feedback ?? lastActionMessage}
           </span>
         ) : (
           <div className="flex items-center gap-2">

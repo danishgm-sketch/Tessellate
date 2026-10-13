@@ -54,7 +54,9 @@ export async function saveLocalProject(manifest: ProjectManifest): Promise<void>
     const store = tx.objectStore(STORE_PROJECTS);
     const req = store.put(JSON.parse(JSON.stringify(manifest)));
 
-    req.onsuccess = () => resolve();
+    tx.oncomplete = () => { db.close(); resolve(); };
+    tx.onabort = () => { db.close(); reject(tx.error ?? new Error('Local project transaction aborted.')); };
+    tx.onerror = () => { db.close(); reject(tx.error); };
     req.onerror = () => reject(req.error);
   });
 }
@@ -76,6 +78,7 @@ export async function loadLocalProject(id: string): Promise<ProjectManifest | nu
 
     req.onsuccess = () => resolve(req.result ? (req.result as ProjectManifest) : null);
     req.onerror = () => reject(req.error);
+    tx.oncomplete = () => db.close();
   });
 }
 
@@ -152,7 +155,9 @@ export async function saveLocalCheckpoint(
     const store = tx.objectStore(STORE_CHECKPOINTS);
     const req = store.put(item);
 
-    req.onsuccess = () => resolve();
+    tx.oncomplete = () => { db.close(); resolve(); };
+    tx.onabort = () => { db.close(); reject(tx.error ?? new Error('Local checkpoint transaction aborted.')); };
+    tx.onerror = () => { db.close(); reject(tx.error); };
     req.onerror = () => reject(req.error);
   });
 }

@@ -47,7 +47,7 @@ const DEFAULT_ITEMS: PaletteItem[] = [
     subtitle: 'Tactile, accessible multi-intent button primitive',
     category: 'Resources',
     url: '/r/button',
-    icon: <Code2 className="w-4 h-4 text-emerald-600" />,
+    icon: <Code2 className="w-4 h-4 text-emerald-700" />,
   },
   {
     id: 'dev-ui',
@@ -64,6 +64,7 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const isModalOpen = controlledIsOpen !== undefined ? controlledIsOpen : internalIsOpen;
 
@@ -74,8 +75,6 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
         e.preventDefault();
         if (controlledIsOpen === undefined) {
           setInternalIsOpen((open) => !open);
-        } else {
-          onClose?.();
         }
       } else if (e.key === 'Escape' && isModalOpen) {
         if (controlledIsOpen === undefined) {
@@ -95,8 +94,11 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
     if (isModalOpen) {
       setQuery('');
       setSelectedIndex(0);
-      setTimeout(() => inputRef.current?.focus(), 50);
+      const previous = document.activeElement as HTMLElement | null;
+      inputRef.current?.focus();
+      return () => previous?.focus();
     }
+    return undefined;
   }, [isModalOpen]);
 
   const handleClose = () => {
@@ -149,13 +151,21 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
       />
 
       {/* Palette Modal */}
-      <div className="relative w-full max-w-xl rounded-xl border border-[var(--tess-hairline-strong,#C7C3BA)] bg-white shadow-xl overflow-hidden flex flex-col z-10 animate-in fade-in-0 zoom-in-95 duration-100">
+      <div ref={dialogRef} role="dialog" aria-modal="true" aria-label="Search Tessellate" onKeyDown={event=>{
+        if(event.key==='Tab') {
+          const controls = dialogRef.current?.querySelectorAll<HTMLElement>('input,button,a[href]');
+          const first=controls?.[0], last=controls?.[controls.length-1];
+          if(event.shiftKey && document.activeElement===first) {event.preventDefault();last?.focus();}
+          else if(!event.shiftKey && document.activeElement===last) {event.preventDefault();first?.focus();}
+        }
+      }} className="relative w-full max-w-xl rounded-xl border border-[var(--tess-hairline-strong,#C7C3BA)] bg-white shadow-xl overflow-hidden flex flex-col z-10 animate-in fade-in-0 zoom-in-95 duration-100">
         {/* Search Input Bar */}
         <div className="flex items-center gap-3 px-4 border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)]">
-          <Search className="w-4 h-4 text-[var(--tess-ink-muted,#8B8F97)] shrink-0" />
+          <Search className="w-4 h-4 text-[var(--tess-ink-muted,#62666F)] shrink-0" />
           <input
             ref={inputRef}
             type="text"
+            aria-label="Search commands and resources"
             value={query}
             onChange={(e) => {
               setQuery(e.target.value);
@@ -163,12 +173,13 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
             }}
             onKeyDown={handleKeyDownInInput}
             placeholder="Search commands, components, pages..."
-            className="h-12 w-full bg-transparent text-sm text-[var(--tess-ink,#111217)] placeholder-[var(--tess-ink-muted,#8B8F97)] focus:outline-none"
+            className="h-12 w-full bg-transparent text-sm text-[var(--tess-ink,#111217)] placeholder-[var(--tess-ink-muted,#62666F)] focus:outline-none"
           />
           <button
             type="button"
+            aria-label="Close search"
             onClick={handleClose}
-            className="p-1 rounded-md text-[var(--tess-ink-muted,#8B8F97)] hover:text-[var(--tess-ink,#111217)] transition-colors"
+            className="p-1 rounded-md text-[var(--tess-ink-muted,#62666F)] hover:text-[var(--tess-ink,#111217)] transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -177,7 +188,7 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
         {/* Results List */}
         <div className="max-h-80 overflow-y-auto p-2 divide-y divide-[var(--tess-hairline,#D9D6CF)]/40">
           {filteredItems.length === 0 ? (
-            <div className="py-8 text-center text-xs text-[var(--tess-ink-muted,#8B8F97)]">
+            <div className="py-8 text-center text-xs text-[var(--tess-ink-muted,#62666F)]">
               No matching commands or resources found for &quot;{query}&quot;.
             </div>
           ) : (
@@ -185,7 +196,8 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
               const isSelected = selectedIndex === idx;
 
               return (
-                <div
+                <button
+                  type="button"
                   key={item.id}
                   onClick={() => {
                     if (item.url) window.location.href = item.url;
@@ -193,7 +205,7 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
                     handleClose();
                   }}
                   onMouseEnter={() => setSelectedIndex(idx)}
-                  className={`flex items-center justify-between p-2.5 rounded-lg cursor-pointer text-xs transition-colors ${
+                  className={`w-full text-left flex items-center justify-between p-2.5 rounded-lg cursor-pointer text-xs transition-colors ${
                     isSelected
                       ? 'bg-[var(--tess-canvas,#F4F2ED)] text-[var(--tess-ink,#111217)]'
                       : 'hover:bg-neutral-50 text-[var(--tess-ink-secondary,#62666F)]'
@@ -206,25 +218,25 @@ export function CommandPalette({ isOpen: controlledIsOpen, onClose }: CommandPal
                     <div className="flex flex-col">
                       <span className="font-semibold text-[var(--tess-ink,#111217)]">{item.title}</span>
                       {item.subtitle && (
-                        <span className="text-[11px] text-[var(--tess-ink-muted,#8B8F97)]">{item.subtitle}</span>
+                        <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)]">{item.subtitle}</span>
                       )}
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 text-[10px] text-[var(--tess-ink-muted,#8B8F97)]">
+                  <div className="flex items-center gap-2 text-[10px] text-[var(--tess-ink-muted,#62666F)]">
                     <span className="px-1.5 py-0.5 rounded bg-[var(--tess-canvas-strong,#ECE9E2)] font-mono">
                       {item.category}
                     </span>
                     <ExternalLink className="w-3 h-3" />
                   </div>
-                </div>
+                </button>
               );
             })
           )}
         </div>
 
         {/* Palette Footer */}
-        <div className="h-9 px-4 border-t border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] flex items-center justify-between text-[11px] text-[var(--tess-ink-muted,#8B8F97)]">
+        <div className="h-9 px-4 border-t border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] flex items-center justify-between text-[11px] text-[var(--tess-ink-muted,#62666F)]">
           <div className="flex items-center gap-3">
             <span>↑↓ Navigate</span>
             <span>↵ Select</span>

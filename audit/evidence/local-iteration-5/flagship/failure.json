@@ -1,0 +1,18 @@
+{
+  "error": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4323/compose/\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:4323/compose/\", waiting until \"load\"\u001b[22m\n",
+  "stack": "page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:4323/compose/\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:4323/compose/\", waiting until \"load\"\u001b[22m\n\n    at C:\\Users\\ismay\\.codex\\worktrees\\tessellate-sites-staging\\Tessellate\\audit\\flagship-browser-audit.mjs:18:13",
+  "steps": [
+    "FAILED-current-state"
+  ],
+  "events": {
+    "console": [],
+    "exceptions": [],
+    "network": [
+      {
+        "url": "http://127.0.0.1:4323/compose/",
+        "failure": "net::ERR_CONNECTION_REFUSED"
+      }
+    ],
+    "responses": []
+  }
+}

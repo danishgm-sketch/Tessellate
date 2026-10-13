@@ -1,0 +1,1678 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "proj-direction-c-tessellateseedv1dirc",
+  "name": "Adaptive Architecture — ANALYTICS",
+  "description": "Explores an inventive structural topology (three-pane workspace or docked terminal) with higher interaction density and alternative spatial navigation.",
+  "createdAt": "2026-10-11T22:18:57.633Z",
+  "updatedAt": "2026-10-11T22:20:36.641Z",
+  "catalogVersion": "0.1.0",
+  "seed": "tessellate-seed-v1-dir-c",
+  "productModel": {
+    "schemaVersion": "1.0.0",
+    "productArchetypes": [
+      {
+        "tag": "analytics",
+        "weight": 100
+      },
+      {
+        "tag": "recruitment",
+        "weight": 100
+      }
+    ],
+    "primaryAudience": "Data analysts, executives, and growth product managers",
+    "userSophistication": 80,
+    "primaryObjective": "Transform raw event data into actionable quantitative intelligence and reports",
+    "secondaryObjectives": [
+      "Ensure high accessibility standards",
+      "Maintain responsive layout across devices"
+    ],
+    "jobsToBeDone": [
+      "Authenticate and access Analytics Platform",
+      "Inspect primary overview telemetry and health metrics",
+      "Create, update, and manage records",
+      "Construct custom chart visualization with filters",
+      "Inspect unexpected metric dip and isolate segment"
+    ],
+    "entities": [
+      {
+        "name": "Metric",
+        "description": "Time-series quantitative indicator",
+        "fields": [
+          "id",
+          "name",
+          "value",
+          "change",
+          "period"
+        ]
+      },
+      {
+        "name": "Report",
+        "description": "Collection of charts, pivots, and explanatory notes",
+        "fields": [
+          "id",
+          "title",
+          "author",
+          "updatedAt"
+        ]
+      },
+      {
+        "name": "Cohort",
+        "description": "Segment of entities sharing common behavior",
+        "fields": [
+          "id",
+          "criteria",
+          "size",
+          "retentionRate"
+        ]
+      }
+    ],
+    "workflows": [
+      {
+        "id": "build-report",
+        "name": "Construct custom chart visualization with filters",
+        "steps": [
+          "select-dataset",
+          "choose-aggregation",
+          "apply-date-range",
+          "save-to-dashboard"
+        ]
+      },
+      {
+        "id": "drilldown-anomaly",
+        "name": "Inspect unexpected metric dip and isolate segment",
+        "steps": [
+          "click-datapoint",
+          "segment-by-dimension",
+          "export-findings"
+        ]
+      }
+    ],
+    "trustRequirement": 90,
+    "informationComplexity": 85,
+    "dataDensity": 95,
+    "collaborationLevel": 55,
+    "transactionCriticality": 40,
+    "navigationComplexity": 70,
+    "mobileImportance": 45,
+    "likelyScreens": [
+      {
+        "name": "Executive Overview",
+        "screenType": "dashboard",
+        "purpose": "High-level KPI scorecard and top drivers",
+        "jobs": [
+          "scan-kpis",
+          "view-growth-rates"
+        ]
+      },
+      {
+        "name": "Metric Explorer",
+        "screenType": "analytics-reporting",
+        "purpose": "Interactive time-series canvas with drilldowns",
+        "jobs": [
+          "slice-by-dimension",
+          "compare-cohorts"
+        ]
+      },
+      {
+        "name": "Reports Library",
+        "screenType": "index-list",
+        "purpose": "Scheduled and saved analyst dashboards",
+        "jobs": [
+          "browse-reports",
+          "schedule-email"
+        ]
+      }
+    ],
+    "requiredCapabilities": [
+      "time-series-brushing",
+      "csv-export",
+      "density-toggle"
+    ],
+    "forbiddenPatterns": [
+      "Truncating chart axes without clear labels or zero references",
+      "Freezing the browser UI during large dataset rendering",
+      "Inability to export raw tabular CSV records"
+    ],
+    "constraints": {
+      "accessibilityFloor": "AA",
+      "performanceCeiling": "rich",
+      "targetDevices": [
+        "desktop"
+      ],
+      "allowedDependencies": [
+        "react",
+        "tailwindcss",
+        "lucide-react"
+      ],
+      "prohibitedDependencies": [
+        "jquery",
+        "bootstrap"
+      ],
+      "requiredScreens": [],
+      "forbiddenScreens": [],
+      "requiredPatterns": [],
+      "forbiddenPatterns": [
+        "Truncating chart axes without clear labels or zero references",
+        "Freezing the browser UI during large dataset rendering",
+        "Inability to export raw tabular CSV records"
+      ]
+    }
+  },
+  "designDNA": {
+    "professionalism": 100,
+    "playfulness": 43,
+    "luxury": 35,
+    "warmth": 30,
+    "technicality": 92,
+    "editorial": 35,
+    "futurism": 45,
+    "visualAmbition": 40,
+    "structuralCreativity": 85,
+    "density": 88,
+    "whitespace": 40,
+    "contrast": 85,
+    "colourfulness": 59,
+    "curvature": 43,
+    "depth": 20,
+    "motion": 32,
+    "motionPlayfulness": 40,
+    "typographicExpression": 45,
+    "imageryIntensity": 15,
+    "videoIntensity": 0,
+    "threeDIntensity": 0,
+    "dataDensity": 96,
+    "interactionDensity": 90,
+    "asymmetry": 25,
+    "conversionIntensity": 30,
+    "trust": 100,
+    "accessibilityPriority": 88,
+    "performancePriority": 92,
+    "primaryArchetype": "analytics-platform",
+    "visualMode": "light",
+    "geometryFamily": "pill",
+    "navigationModel": "classic-app-sidebar",
+    "responsivePhilosophy": "desktop-dense-mobile-focused",
+    "contentTone": "calm",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "playful-spring",
+    "typographyPersonality": "scientific-sans-mono",
+    "surfacePersonality": "subtle-contrast"
+  },
+  "brand": {
+    "name": "ANALYTICS System"
+  },
+  "constraints": {
+    "accessibilityFloor": "AA",
+    "performanceCeiling": "rich",
+    "targetDevices": [
+      "desktop"
+    ],
+    "allowedDependencies": [
+      "react",
+      "tailwindcss",
+      "lucide-react"
+    ],
+    "prohibitedDependencies": [
+      "jquery",
+      "bootstrap"
+    ],
+    "requiredScreens": [],
+    "forbiddenScreens": [],
+    "requiredPatterns": [],
+    "forbiddenPatterns": [
+      "Truncating chart axes without clear labels or zero references",
+      "Freezing the browser UI during large dataset rendering",
+      "Inability to export raw tabular CSV records"
+    ]
+  },
+  "screenGraph": {
+    "id": "graph-analytics-mv4dxrjz",
+    "groups": [
+      {
+        "id": "group-marketing",
+        "name": "Marketing",
+        "screens": [
+          {
+            "id": "screen-marketing-home",
+            "name": "Marketing Home",
+            "slug": "/",
+            "screenType": "marketing",
+            "purpose": "Product value proposition, interactive preview, and conversion funnel.",
+            "jobs": [
+              "explain-product-value",
+              "initiate-signup"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 90,
+            "expectedData": [
+              "headline",
+              "socialProof",
+              "pricingSummary"
+            ],
+            "requiredRoles": [
+              "navigation",
+              "hero",
+              "value-proposition",
+              "conversion-cta",
+              "footer"
+            ],
+            "optionalRoles": [
+              "trust-proof",
+              "product-demo",
+              "feature-grid",
+              "pricing-table",
+              "faq-accordion"
+            ]
+          },
+          {
+            "id": "screen-documentation",
+            "name": "Documentation & API",
+            "slug": "/docs",
+            "screenType": "documentation",
+            "purpose": "Technical integration guides, API endpoints, and SDK references.",
+            "jobs": [
+              "read-api-docs",
+              "inspect-code-samples"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 70,
+            "expectedData": [
+              "codeSnippets",
+              "apiSchema",
+              "endpoints"
+            ],
+            "requiredRoles": [
+              "docs-sidebar",
+              "prose-article",
+              "on-this-page-toc"
+            ],
+            "optionalRoles": [
+              "code-playground",
+              "feedback-widget",
+              "version-dropdown"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "group-app",
+        "name": "Application",
+        "screens": [
+          {
+            "id": "screen-overview",
+            "name": "Overview Dashboard",
+            "slug": "/overview",
+            "screenType": "dashboard",
+            "purpose": "Central operational telemetry, KPI scorecard, and high-priority action queue.",
+            "jobs": [
+              "Authenticate and access Analytics Platform",
+              "Inspect primary overview telemetry and health metrics"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 95,
+            "expectedData": [
+              "kpiMetrics",
+              "recentActivity",
+              "alerts"
+            ],
+            "requiredRoles": [
+              "overview-header",
+              "metric-cards",
+              "activity-feed"
+            ],
+            "optionalRoles": [
+              "quick-action-bar",
+              "data-table",
+              "alert-banner",
+              "insight-rail"
+            ]
+          },
+          {
+            "id": "screen-collection-index",
+            "name": "Metric Directory",
+            "slug": "/metrics",
+            "screenType": "index-list",
+            "purpose": "Searchable, filterable catalog of all metric records.",
+            "jobs": [
+              "search-and-filter-records",
+              "bulk-actions"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 85,
+            "expectedData": [
+              "recordRows",
+              "filterFacets",
+              "paginationState"
+            ],
+            "requiredRoles": [
+              "index-header",
+              "filter-bar",
+              "data-table",
+              "pagination"
+            ],
+            "optionalRoles": [
+              "bulk-action-bar",
+              "view-mode-toggle",
+              "stats-summary"
+            ]
+          },
+          {
+            "id": "screen-entity-detail",
+            "name": "Metric Detail",
+            "slug": "/metrics/:id",
+            "screenType": "detail-entity",
+            "purpose": "Deep inspection, metadata attributes, timeline, and actions for a single metric.",
+            "jobs": [
+              "inspect-attributes",
+              "edit-record-state"
+            ],
+            "required": false,
+            "navigationVisibility": "secondary",
+            "importance": 75,
+            "expectedData": [
+              "recordDetails",
+              "activityHistory",
+              "linkedRelations"
+            ],
+            "requiredRoles": [
+              "entity-header",
+              "detail-tabs",
+              "main-content-pane",
+              "metadata-sidebar"
+            ],
+            "optionalRoles": [
+              "activity-timeline",
+              "related-items-carousel",
+              "danger-zone"
+            ]
+          },
+          {
+            "id": "screen-analytics",
+            "name": "Analytics & Insights",
+            "slug": "/analytics",
+            "screenType": "analytics-reporting",
+            "purpose": "Deep time-series breakdown, cohort retention, and reporting exports.",
+            "jobs": [
+              "analyze-trends",
+              "export-csv"
+            ],
+            "required": false,
+            "navigationVisibility": "primary",
+            "importance": 75,
+            "expectedData": [
+              "timeSeriesPoints",
+              "cohortCurves"
+            ],
+            "requiredRoles": [
+              "date-range-picker",
+              "chart-canvas",
+              "summary-kpis"
+            ],
+            "optionalRoles": [
+              "dimension-slicer",
+              "cohort-table",
+              "export-drawer"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "group-settings",
+        "name": "Settings & Administration",
+        "screens": [
+          {
+            "id": "screen-settings",
+            "name": "Settings & Preferences",
+            "slug": "/settings",
+            "screenType": "settings",
+            "purpose": "User profile, notification triggers, security keys, and display theme.",
+            "jobs": [
+              "update-profile",
+              "configure-notifications"
+            ],
+            "required": true,
+            "navigationVisibility": "secondary",
+            "importance": 60,
+            "expectedData": [
+              "userProfile",
+              "notificationPreferences"
+            ],
+            "requiredRoles": [
+              "settings-nav",
+              "settings-form",
+              "save-footer"
+            ],
+            "optionalRoles": [
+              "avatar-uploader",
+              "2fa-toggle",
+              "danger-zone"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "group-auth",
+        "name": "Authentication",
+        "screens": [
+          {
+            "id": "screen-sign-in",
+            "name": "Sign In",
+            "slug": "/sign-in",
+            "screenType": "authentication",
+            "purpose": "User authentication with GitHub OAuth and session tokens.",
+            "jobs": [
+              "authenticate-user"
+            ],
+            "required": true,
+            "navigationVisibility": "hidden",
+            "importance": 80,
+            "expectedData": [
+              "authCredentials"
+            ],
+            "requiredRoles": [
+              "auth-card",
+              "auth-footer"
+            ],
+            "optionalRoles": [
+              "social-oauth-buttons",
+              "passkey-option",
+              "terms-disclaimer",
+              "brand-panel"
+            ]
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "edge-marketing-to-signin",
+        "fromScreenId": "screen-marketing-home",
+        "toScreenId": "screen-sign-in",
+        "label": "Start building / Sign in"
+      },
+      {
+        "id": "edge-signin-to-overview",
+        "fromScreenId": "screen-sign-in",
+        "toScreenId": "screen-overview",
+        "label": "Successful authentication"
+      },
+      {
+        "id": "edge-overview-to-collection",
+        "fromScreenId": "screen-overview",
+        "toScreenId": "screen-collection-index",
+        "label": "View all items"
+      },
+      {
+        "id": "edge-collection-to-detail",
+        "fromScreenId": "screen-collection-index",
+        "toScreenId": "screen-entity-detail",
+        "label": "Select item row"
+      }
+    ]
+  },
+  "screens": [
+    {
+      "id": "screen-marketing-home",
+      "screenNodeId": "node-screen-marketing-home",
+      "name": "Marketing Home",
+      "slug": "/",
+      "rootNode": {
+        "id": "root-screen-marketing-home",
+        "nodeType": "layout",
+        "semanticRole": "top-nav-page-canvas",
+        "children": [
+          {
+            "id": "node-screen-marketing-home-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Marketing Home navigation"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-hero-2",
+            "nodeType": "section",
+            "semanticRole": "hero",
+            "resourceRef": {
+              "id": "res_sec_editorial_hero",
+              "slug": "editorial-hero",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Marketing Home hero"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-value-proposition-3",
+            "nodeType": "section",
+            "semanticRole": "value-proposition",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Marketing Home value-proposition"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-conversion-cta-4",
+            "nodeType": "section",
+            "semanticRole": "conversion-cta",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Marketing Home conversion-cta"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-footer-5",
+            "nodeType": "section",
+            "semanticRole": "footer",
+            "resourceRef": {
+              "id": "res_sec_footer_product",
+              "slug": "footer-product",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Marketing Home footer"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-nav-rail-6",
+            "nodeType": "section",
+            "semanticRole": "nav-rail",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Marketing Home nav-rail"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-navigation-tree-pane-7",
+            "nodeType": "section",
+            "semanticRole": "navigation-tree-pane",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Marketing Home navigation-tree-pane"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-primary-canvas-pane-8",
+            "nodeType": "section",
+            "semanticRole": "primary-canvas-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Marketing Home primary-canvas-pane"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-intelligence-copilot-pane-9",
+            "nodeType": "section",
+            "semanticRole": "intelligence-copilot-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Marketing Home intelligence-copilot-pane"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "vertical-flow"
+        }
+      }
+    },
+    {
+      "id": "screen-documentation",
+      "screenNodeId": "node-screen-documentation",
+      "name": "Documentation & API",
+      "slug": "/docs",
+      "rootNode": {
+        "id": "root-screen-documentation",
+        "nodeType": "layout",
+        "semanticRole": "top-nav-page-canvas",
+        "children": [
+          {
+            "id": "node-screen-documentation-docs-sidebar-1",
+            "nodeType": "section",
+            "semanticRole": "docs-sidebar",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Documentation & API docs-sidebar"
+            }
+          },
+          {
+            "id": "node-screen-documentation-prose-article-2",
+            "nodeType": "section",
+            "semanticRole": "prose-article",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Documentation & API prose-article"
+            }
+          },
+          {
+            "id": "node-screen-documentation-on-this-page-toc-3",
+            "nodeType": "section",
+            "semanticRole": "on-this-page-toc",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Documentation & API on-this-page-toc"
+            }
+          },
+          {
+            "id": "node-screen-documentation-nav-rail-4",
+            "nodeType": "section",
+            "semanticRole": "nav-rail",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Documentation & API nav-rail"
+            }
+          },
+          {
+            "id": "node-screen-documentation-navigation-tree-pane-5",
+            "nodeType": "section",
+            "semanticRole": "navigation-tree-pane",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Documentation & API navigation-tree-pane"
+            }
+          },
+          {
+            "id": "node-screen-documentation-primary-canvas-pane-6",
+            "nodeType": "section",
+            "semanticRole": "primary-canvas-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Documentation & API primary-canvas-pane"
+            }
+          },
+          {
+            "id": "node-screen-documentation-intelligence-copilot-pane-7",
+            "nodeType": "section",
+            "semanticRole": "intelligence-copilot-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Documentation & API intelligence-copilot-pane"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "vertical-flow"
+        }
+      }
+    },
+    {
+      "id": "screen-overview",
+      "screenNodeId": "node-screen-overview",
+      "name": "Overview Dashboard",
+      "slug": "/overview",
+      "rootNode": {
+        "id": "root-screen-overview",
+        "nodeType": "layout",
+        "semanticRole": "workspace-dock-shell",
+        "children": [
+          {
+            "id": "node-screen-overview-metric-cards-2",
+            "nodeType": "section",
+            "semanticRole": "metric-cards",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Overview Dashboard metric-cards"
+            },
+            "locks": {
+              "node": true
+            }
+          },
+          {
+            "id": "compound-block-95-root-screen-overview",
+            "nodeType": "section",
+            "semanticRole": "compound-workspace-pane",
+            "variant": "nocturne",
+            "children": [
+              {
+                "id": "node-screen-overview-overview-header-1",
+                "nodeType": "section",
+                "semanticRole": "overview-header",
+                "resourceRef": {
+                  "id": "res-chart-area-01",
+                  "slug": "area-chart",
+                  "version": "1.0.0"
+                },
+                "variant": "gradient-fill",
+                "slots": {},
+                "props": {
+                  "title": "Overview Dashboard overview-header",
+                  "recomposed": true,
+                  "layoutVariant": "dock-pane"
+                },
+                "children": []
+              },
+              {
+                "id": "node-screen-overview-activity-feed-3",
+                "nodeType": "section",
+                "semanticRole": "activity-feed",
+                "resourceRef": {
+                  "id": "res_shell_three_pane_app_shell",
+                  "slug": "three-pane-app-shell",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Overview Dashboard activity-feed",
+                  "recomposed": true,
+                  "layoutVariant": "dock-pane"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "recomposed": true,
+              "compound": true,
+              "layoutVariant": "radical-alternative"
+            }
+          },
+          {
+            "id": "node-screen-overview-nav-rail-4",
+            "nodeType": "section",
+            "semanticRole": "nav-rail",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Overview Dashboard nav-rail",
+              "recomposed": true,
+              "layoutVariant": "dock-pane"
+            }
+          },
+          {
+            "id": "node-screen-overview-navigation-tree-pane-5",
+            "nodeType": "section",
+            "semanticRole": "navigation-tree-pane",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Overview Dashboard navigation-tree-pane",
+              "recomposed": true,
+              "layoutVariant": "dock-pane"
+            }
+          },
+          {
+            "id": "node-screen-overview-primary-canvas-pane-6",
+            "nodeType": "section",
+            "semanticRole": "primary-canvas-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Overview Dashboard primary-canvas-pane",
+              "recomposed": true,
+              "layoutVariant": "dock-pane"
+            }
+          },
+          {
+            "id": "node-screen-overview-intelligence-copilot-pane-7",
+            "nodeType": "section",
+            "semanticRole": "intelligence-copilot-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Overview Dashboard intelligence-copilot-pane",
+              "recomposed": true,
+              "layoutVariant": "dock-pane"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "radical-dock-workspace",
+          "recomposed": true
+        }
+      }
+    },
+    {
+      "id": "screen-collection-index",
+      "screenNodeId": "node-screen-collection-index",
+      "name": "Metric Directory",
+      "slug": "/metrics",
+      "rootNode": {
+        "id": "root-screen-collection-index",
+        "nodeType": "layout",
+        "semanticRole": "top-nav-page-canvas",
+        "children": [
+          {
+            "id": "node-screen-collection-index-index-header-1",
+            "nodeType": "section",
+            "semanticRole": "index-header",
+            "resourceRef": {
+              "id": "res_blk_entity_profile_header",
+              "slug": "entity-profile-header",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Directory index-header"
+            }
+          },
+          {
+            "id": "node-screen-collection-index-filter-bar-2",
+            "nodeType": "section",
+            "semanticRole": "filter-bar",
+            "resourceRef": {
+              "id": "res_blk_filter_builder",
+              "slug": "filter-builder",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Directory filter-bar"
+            }
+          },
+          {
+            "id": "node-screen-collection-index-data-table-3",
+            "nodeType": "section",
+            "semanticRole": "data-table",
+            "resourceRef": {
+              "id": "res_blk_advanced_data_table",
+              "slug": "advanced-data-table",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Directory data-table"
+            }
+          },
+          {
+            "id": "node-screen-collection-index-pagination-4",
+            "nodeType": "section",
+            "semanticRole": "pagination",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Directory pagination"
+            }
+          },
+          {
+            "id": "node-screen-collection-index-nav-rail-5",
+            "nodeType": "section",
+            "semanticRole": "nav-rail",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Directory nav-rail"
+            }
+          },
+          {
+            "id": "node-screen-collection-index-navigation-tree-pane-6",
+            "nodeType": "section",
+            "semanticRole": "navigation-tree-pane",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Directory navigation-tree-pane"
+            }
+          },
+          {
+            "id": "node-screen-collection-index-primary-canvas-pane-7",
+            "nodeType": "section",
+            "semanticRole": "primary-canvas-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Directory primary-canvas-pane"
+            }
+          },
+          {
+            "id": "node-screen-collection-index-intelligence-copilot-pane-8",
+            "nodeType": "section",
+            "semanticRole": "intelligence-copilot-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Directory intelligence-copilot-pane"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "vertical-flow"
+        }
+      }
+    },
+    {
+      "id": "screen-entity-detail",
+      "screenNodeId": "node-screen-entity-detail",
+      "name": "Metric Detail",
+      "slug": "/metrics/:id",
+      "rootNode": {
+        "id": "root-screen-entity-detail",
+        "nodeType": "layout",
+        "semanticRole": "top-nav-page-canvas",
+        "children": [
+          {
+            "id": "node-screen-entity-detail-entity-header-1",
+            "nodeType": "section",
+            "semanticRole": "entity-header",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Detail entity-header"
+            }
+          },
+          {
+            "id": "node-screen-entity-detail-detail-tabs-2",
+            "nodeType": "section",
+            "semanticRole": "detail-tabs",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Detail detail-tabs"
+            }
+          },
+          {
+            "id": "node-screen-entity-detail-main-content-pane-3",
+            "nodeType": "section",
+            "semanticRole": "main-content-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Detail main-content-pane"
+            }
+          },
+          {
+            "id": "node-screen-entity-detail-metadata-sidebar-4",
+            "nodeType": "section",
+            "semanticRole": "metadata-sidebar",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Detail metadata-sidebar"
+            }
+          },
+          {
+            "id": "node-screen-entity-detail-nav-rail-5",
+            "nodeType": "section",
+            "semanticRole": "nav-rail",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Detail nav-rail"
+            }
+          },
+          {
+            "id": "node-screen-entity-detail-navigation-tree-pane-6",
+            "nodeType": "section",
+            "semanticRole": "navigation-tree-pane",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Detail navigation-tree-pane"
+            }
+          },
+          {
+            "id": "node-screen-entity-detail-primary-canvas-pane-7",
+            "nodeType": "section",
+            "semanticRole": "primary-canvas-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Detail primary-canvas-pane"
+            }
+          },
+          {
+            "id": "node-screen-entity-detail-intelligence-copilot-pane-8",
+            "nodeType": "section",
+            "semanticRole": "intelligence-copilot-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Metric Detail intelligence-copilot-pane"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "vertical-flow"
+        }
+      }
+    },
+    {
+      "id": "screen-analytics",
+      "screenNodeId": "node-screen-analytics",
+      "name": "Analytics & Insights",
+      "slug": "/analytics",
+      "rootNode": {
+        "id": "root-screen-analytics",
+        "nodeType": "layout",
+        "semanticRole": "top-nav-page-canvas",
+        "children": [
+          {
+            "id": "node-screen-analytics-date-range-picker-1",
+            "nodeType": "section",
+            "semanticRole": "date-range-picker",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Analytics & Insights date-range-picker"
+            }
+          },
+          {
+            "id": "node-screen-analytics-chart-canvas-2",
+            "nodeType": "section",
+            "semanticRole": "chart-canvas",
+            "resourceRef": {
+              "id": "res_dat_time_series_chart",
+              "slug": "time-series-chart",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Analytics & Insights chart-canvas"
+            }
+          },
+          {
+            "id": "node-screen-analytics-summary-kpis-3",
+            "nodeType": "section",
+            "semanticRole": "summary-kpis",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Analytics & Insights summary-kpis"
+            }
+          },
+          {
+            "id": "node-screen-analytics-nav-rail-4",
+            "nodeType": "section",
+            "semanticRole": "nav-rail",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Analytics & Insights nav-rail"
+            }
+          },
+          {
+            "id": "node-screen-analytics-navigation-tree-pane-5",
+            "nodeType": "section",
+            "semanticRole": "navigation-tree-pane",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Analytics & Insights navigation-tree-pane"
+            }
+          },
+          {
+            "id": "node-screen-analytics-primary-canvas-pane-6",
+            "nodeType": "section",
+            "semanticRole": "primary-canvas-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Analytics & Insights primary-canvas-pane"
+            }
+          },
+          {
+            "id": "node-screen-analytics-intelligence-copilot-pane-7",
+            "nodeType": "section",
+            "semanticRole": "intelligence-copilot-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Analytics & Insights intelligence-copilot-pane"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "vertical-flow"
+        }
+      }
+    },
+    {
+      "id": "screen-settings",
+      "screenNodeId": "node-screen-settings",
+      "name": "Settings & Preferences",
+      "slug": "/settings",
+      "rootNode": {
+        "id": "root-screen-settings",
+        "nodeType": "layout",
+        "semanticRole": "top-nav-page-canvas",
+        "children": [
+          {
+            "id": "node-screen-settings-settings-nav-1",
+            "nodeType": "section",
+            "semanticRole": "settings-nav",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Settings & Preferences settings-nav"
+            }
+          },
+          {
+            "id": "node-screen-settings-settings-form-2",
+            "nodeType": "section",
+            "semanticRole": "settings-form",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Settings & Preferences settings-form"
+            }
+          },
+          {
+            "id": "node-screen-settings-save-footer-3",
+            "nodeType": "section",
+            "semanticRole": "save-footer",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Settings & Preferences save-footer"
+            }
+          },
+          {
+            "id": "node-screen-settings-nav-rail-4",
+            "nodeType": "section",
+            "semanticRole": "nav-rail",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Settings & Preferences nav-rail"
+            }
+          },
+          {
+            "id": "node-screen-settings-navigation-tree-pane-5",
+            "nodeType": "section",
+            "semanticRole": "navigation-tree-pane",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Settings & Preferences navigation-tree-pane"
+            }
+          },
+          {
+            "id": "node-screen-settings-primary-canvas-pane-6",
+            "nodeType": "section",
+            "semanticRole": "primary-canvas-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Settings & Preferences primary-canvas-pane"
+            }
+          },
+          {
+            "id": "node-screen-settings-intelligence-copilot-pane-7",
+            "nodeType": "section",
+            "semanticRole": "intelligence-copilot-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Settings & Preferences intelligence-copilot-pane"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "vertical-flow"
+        }
+      }
+    },
+    {
+      "id": "screen-sign-in",
+      "screenNodeId": "node-screen-sign-in",
+      "name": "Sign In",
+      "slug": "/sign-in",
+      "rootNode": {
+        "id": "root-screen-sign-in",
+        "nodeType": "layout",
+        "semanticRole": "top-nav-page-canvas",
+        "children": [
+          {
+            "id": "node-screen-sign-in-auth-card-1",
+            "nodeType": "section",
+            "semanticRole": "auth-card",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Sign In auth-card"
+            }
+          },
+          {
+            "id": "node-screen-sign-in-auth-footer-2",
+            "nodeType": "section",
+            "semanticRole": "auth-footer",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Sign In auth-footer"
+            }
+          },
+          {
+            "id": "node-screen-sign-in-nav-rail-3",
+            "nodeType": "section",
+            "semanticRole": "nav-rail",
+            "resourceRef": {
+              "id": "res_shell_three_pane_app_shell",
+              "slug": "three-pane-app-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Sign In nav-rail"
+            }
+          },
+          {
+            "id": "node-screen-sign-in-navigation-tree-pane-4",
+            "nodeType": "section",
+            "semanticRole": "navigation-tree-pane",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Sign In navigation-tree-pane"
+            }
+          },
+          {
+            "id": "node-screen-sign-in-primary-canvas-pane-5",
+            "nodeType": "section",
+            "semanticRole": "primary-canvas-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Sign In primary-canvas-pane"
+            }
+          },
+          {
+            "id": "node-screen-sign-in-intelligence-copilot-pane-6",
+            "nodeType": "section",
+            "semanticRole": "intelligence-copilot-pane",
+            "resourceRef": {
+              "id": "res_shell_two_pane_master_detail_shell",
+              "slug": "two-pane-master-detail-shell",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Sign In intelligence-copilot-pane"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "vertical-flow"
+        }
+      }
+    }
+  ],
+  "navigation": {
+    "model": "header-minimal",
+    "primaryItems": [
+      {
+        "label": "Marketing Home",
+        "targetScreenId": "screen-marketing-home"
+      },
+      {
+        "label": "Documentation & API",
+        "targetScreenId": "screen-documentation"
+      },
+      {
+        "label": "Overview Dashboard",
+        "targetScreenId": "screen-overview"
+      },
+      {
+        "label": "Metric Directory",
+        "targetScreenId": "screen-collection-index"
+      },
+      {
+        "label": "Metric Detail",
+        "targetScreenId": "screen-entity-detail"
+      },
+      {
+        "label": "Analytics & Insights",
+        "targetScreenId": "screen-analytics"
+      },
+      {
+        "label": "Settings & Preferences",
+        "targetScreenId": "screen-settings"
+      },
+      {
+        "label": "Sign In",
+        "targetScreenId": "screen-sign-in"
+      }
+    ]
+  },
+  "assets": [],
+  "locks": [],
+  "historyMeta": {
+    "headRevision": 2,
+    "totalOperations": 2
+  },
+  "exportSettings": {
+    "framework": "react",
+    "styling": "tailwind",
+    "includeTypes": true,
+    "target": "vite-react-tailwind"
+  }
+}

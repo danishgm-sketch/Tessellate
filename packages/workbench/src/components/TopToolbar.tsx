@@ -36,6 +36,10 @@ export function TopToolbar() {
   const recomposeScreenAroundLocks = useWorkbenchStore((state) => state.recomposeScreenAroundLocks);
 
 
+  const [actionError,setActionError]=useState('');
+  const runAction=(action:()=>void)=>{try{action();setActionError('');}catch(cause){setActionError(cause instanceof Error?cause.message:String(cause));}};
+  const activeRoot=manifest.screens.find(screen=>screen.id===activeScreenId)?.rootNode;
+  const recomposeLocked=Boolean(activeRoot?.locks?.node||activeRoot?.locks?.structure);
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [titleValue, setTitleValue] = useState(manifest.name);
   const [isCheckpointsOpen, setIsCheckpointsOpen] = useState(false);
@@ -88,8 +92,9 @@ export function TopToolbar() {
   return (
     <header
       data-testid="top-toolbar"
-      className="h-14 shrink-0 px-4 border-b border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] flex items-center justify-between select-none z-30 relative"
+      className="dark min-h-14 shrink-0 px-3 py-2 gap-2 flex-wrap border-b border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] flex items-center justify-between select-none z-30 relative"
     >
+      {actionError && <p role="alert" className="w-full text-sm">{actionError}</p>}
       {/* Left Cluster: Brand, Title, Save Status */}
       <div className="flex items-center gap-3">
         <a
@@ -108,11 +113,11 @@ export function TopToolbar() {
         {isEditingTitle ? (
           <input
             type="text"
-            value={titleValue}
+            aria-label="Project name" value={titleValue}
             onChange={(e) => setTitleValue(e.target.value)}
             onBlur={handleTitleBlur}
             onKeyDown={(e) => e.key === 'Enter' && handleTitleBlur()}
-            className="text-sm font-bold text-[#111217] dark:text-[#F5F7FA] border border-[#2547E8] rounded px-1.5 py-0.5 bg-white dark:bg-[#171B21] focus:outline-none"
+            className="text-sm max-w-[220px] truncate font-bold text-[#111217] dark:text-[#F5F7FA] border border-[#2547E8] rounded px-1.5 py-0.5 bg-white dark:bg-[#171B21] focus:outline-none"
             autoFocus
           />
         ) : (
@@ -121,7 +126,7 @@ export function TopToolbar() {
               setTitleValue(manifest.name);
               setIsEditingTitle(true);
             }}
-            className="text-sm font-bold text-[#111217] dark:text-[#F5F7FA] hover:text-[#2547E8] transition-colors"
+            className="text-sm max-w-[220px] truncate font-bold text-[#111217] dark:text-[#F5F7FA] hover:text-[#2547E8] transition-colors"
             title="Click to rename project"
           >
             {manifest.name}
@@ -129,13 +134,13 @@ export function TopToolbar() {
         )}
 
         <div className="flex items-center gap-1 rounded-full bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] px-2 py-0.5 text-[10px] font-mono text-[#62666F] dark:text-[#A8AFBA]">
-          <Database className="h-2.5 w-2.5 text-emerald-600" />
+          <Database className="h-2.5 w-2.5 text-emerald-700" />
           <span>Local</span>
         </div>
       </div>
 
       {/* Center Modes Switcher */}
-      <div className="hidden md:flex items-center bg-[#FAF9F6] dark:bg-[#171B21] rounded-xl p-1 border border-[#D9D6CF]/70 dark:border-[#272C34]/70">
+      <div className="flex flex-wrap items-center bg-[#FAF9F6] dark:bg-[#171B21] rounded-xl p-1 border border-[#D9D6CF]/70 dark:border-[#272C34]/70">
         <a
           href="/compose"
           className="px-3 py-1 rounded-lg text-xs font-medium text-[#62666F] dark:text-[#A8AFBA] hover:text-[#111217] dark:hover:text-[#F5F7FA] transition-colors flex items-center gap-1"
@@ -148,10 +153,10 @@ export function TopToolbar() {
           return (
             <button
               key={mode}
-              onClick={() => setActiveMode(mode)}
+              aria-pressed={isActive} onClick={() => {setActiveMode(mode);if(window.innerWidth<1024)useWorkbenchStore.getState().setMobileTab(mode==='audit'?'audit':mode==='structure'?'pages':'selection');}}
               className={`px-3 py-1 rounded-lg text-xs font-semibold capitalize transition-all ${
                 isActive
-                  ? 'bg-white dark:bg-[#272C34] text-[#2547E8] dark:text-[#6782FF] shadow-xs'
+                  ? 'bg-white dark:bg-[#272C34] text-[#2547E8] dark:text-[#879DFF] shadow-xs'
                   : 'text-[#62666F] dark:text-[#A8AFBA] hover:text-[#111217] dark:hover:text-[#F5F7FA]'
               }`}
             >
@@ -162,14 +167,14 @@ export function TopToolbar() {
       </div>
 
       {/* Right Cluster: Advanced Tools, Undo/Redo, Preview, Export */}
-      <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center gap-2">
         {/* Advanced Phase 10 Action Buttons */}
-        <div className="hidden lg:flex items-center gap-1">
+        <div className="flex flex-wrap items-center gap-1">
           <button
-            data-testid="recompose-button"
-            onClick={() => recomposeScreenAroundLocks(activeScreenId, { divergenceLevel: 95 })}
+            data-testid="recompose-button" disabled={recomposeLocked}
+            onClick={() => runAction(()=>recomposeScreenAroundLocks(activeScreenId, { divergenceLevel: 95 }))}
             className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] text-xs font-medium text-[#111217] dark:text-[#F5F7FA] hover:bg-[#FAF9F6] dark:hover:bg-[#171B21] transition-colors"
-            title="Recompose Screen (divergenceLevel 95)"
+            title={recomposeLocked?'Unlock the root screen to recompose its structure.':'Recompose Screen (divergenceLevel 95)'}
           >
             <RefreshCw className="h-3 w-3 text-cyan-500" />
             <span>Recompose</span>
@@ -177,7 +182,7 @@ export function TopToolbar() {
 
           <button
             data-testid="surprise-me-button"
-            onClick={() => surpriseMe({ divergenceLevel: 60 })}
+            onClick={() => runAction(()=>surpriseMe({ divergenceLevel: 60 }))}
             className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] text-xs font-medium text-[#111217] dark:text-[#F5F7FA] hover:bg-[#FAF9F6] dark:hover:bg-[#171B21] transition-colors"
             title="Surprise Me (Controlled Divergence)"
           >
@@ -229,9 +234,9 @@ export function TopToolbar() {
             className={`p-1.5 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] transition-all ${
               history.length > 0
                 ? 'hover:bg-[#FAF9F6] dark:hover:bg-[#171B21] text-[#111217] dark:text-[#F5F7FA]'
-                : 'opacity-30 cursor-not-allowed text-[#8B8F97]'
+                : 'opacity-30 cursor-not-allowed text-[var(--text-muted)]'
             }`}
-            title="Undo (Ctrl+Z)"
+            aria-label="Undo" title="Undo (Ctrl+Z)"
           >
             <Undo2 className="h-3.5 w-3.5" />
           </button>
@@ -241,9 +246,9 @@ export function TopToolbar() {
             className={`p-1.5 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] transition-all ${
               future.length > 0
                 ? 'hover:bg-[#FAF9F6] dark:hover:bg-[#171B21] text-[#111217] dark:text-[#F5F7FA]'
-                : 'opacity-30 cursor-not-allowed text-[#8B8F97]'
+                : 'opacity-30 cursor-not-allowed text-[var(--text-muted)]'
             }`}
-            title="Redo (Ctrl+Shift+Z)"
+            aria-label="Redo" title="Redo (Ctrl+Shift+Z)"
           >
             <Redo2 className="h-3.5 w-3.5" />
           </button>
@@ -252,7 +257,7 @@ export function TopToolbar() {
         <div className="h-4 w-px bg-[#D9D6CF] dark:bg-[#272C34]" />
 
         <button
-          onClick={togglePreview}
+          aria-label={isPreview ? "Exit Preview" : "Preview"} onClick={togglePreview}
           className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
             isPreview
               ? 'bg-[#2547E8] text-white shadow-xs'
@@ -266,7 +271,7 @@ export function TopToolbar() {
         {/* Export Dropdown */}
         <div className="relative">
           <button
-            data-testid="export-button"
+            aria-expanded={isExportOpen} data-testid="export-button"
             onClick={() => setIsExportOpen(!isExportOpen)}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2547E8] dark:bg-[#6782FF] text-white dark:text-[#0B0D10] text-xs font-semibold hover:opacity-90 shadow-xs transition-opacity"
             title="Export project"
@@ -279,7 +284,7 @@ export function TopToolbar() {
           {isExportOpen && (
             <div
               data-testid="export-menu"
-              className="absolute right-0 mt-2 w-64 rounded-xl border border-[#D9D6CF] bg-white p-1.5 shadow-lg dark:border-[#272C34] dark:bg-[#171B21] z-50 text-xs"
+              className="fixed left-3 right-3 mt-2 w-auto sm:absolute sm:left-auto sm:right-0 sm:w-64 rounded-xl border border-[#D9D6CF] bg-white p-1.5 shadow-lg dark:border-[#272C34] dark:bg-[#171B21] z-50 text-xs"
             >
               <button
                 data-testid="export-manifest-btn"
@@ -290,7 +295,7 @@ export function TopToolbar() {
                 className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#FAF9F6] dark:hover:bg-[#20252D] text-[#111217] dark:text-[#F5F7FA] font-medium transition-colors flex flex-col gap-0.5"
               >
                 <span className="font-semibold">Download Tessellate Manifest</span>
-                <span className="text-[10px] text-[#8B8F97] font-mono">.tess.json</span>
+                <span className="text-[10px] text-[var(--text-muted)] font-mono">.tess.json</span>
               </button>
               <button
                 data-testid="export-zip-btn"
@@ -301,7 +306,7 @@ export function TopToolbar() {
                 className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#FAF9F6] dark:hover:bg-[#20252D] text-[#111217] dark:text-[#F5F7FA] font-medium transition-colors flex flex-col gap-0.5"
               >
                 <span className="font-semibold">Download Standalone React Project</span>
-                <span className="text-[10px] text-[#2547E8] dark:text-[#6782FF] font-mono">Vite + React + Tailwind 4 (.zip)</span>
+                <span className="text-[10px] text-[#2547E8] dark:text-[#879DFF] font-mono">Vite + React + Tailwind 4 (.zip)</span>
               </button>
             </div>
           )}

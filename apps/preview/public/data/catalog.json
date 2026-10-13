@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-10-11T16:49:57.753Z",
+  "generatedAt": "2026-10-13T05:10:43.786Z",
   "count": 324,
   "resources": [
     {
@@ -332,7 +332,20 @@
       },
       "preview": {
         "component": "AccordionPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "items": [
+            {
+              "id": "first",
+              "title": "What is this example?",
+              "content": "A real interactive accordion. Open and close each item."
+            },
+            {
+              "id": "second",
+              "title": "Portable source",
+              "content": "Install the published source in your own application."
+            }
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -3216,7 +3229,7 @@
       "name": "AI Generation Compare",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Side-by-side comparative split card evaluating two candidate AI generations with score metrics and selection trigger.",
+      "description": "Interactive comparison of two illustrative interface candidates.",
       "resourceType": "ai-pattern",
       "categories": [
         "ai",
@@ -3343,7 +3356,7 @@
         "candidates"
       ],
       "intent": {
-        "summary": "Side-by-side comparative split card evaluating two candidate AI generations with score metrics and selection trigger.",
+        "summary": "Example candidate comparison; timings and scores are not measured.",
         "idealFor": [
           "Comparing 2 design variations",
           "Prompt output benchmarking",
@@ -3354,7 +3367,7 @@
           "Simple checkbox settings"
         ],
         "jobs": [
-          "Present dual candidate AI responses side-by-side for human judgment and picking"
+          "Allow a person to compare and select candidate interfaces"
         ],
         "contentRequirements": [
           "Model state reflection, streaming message blocks, citation cards, human-in-the-loop approvals"
@@ -6282,7 +6295,11 @@
       },
       "preview": {
         "component": "AlertDialogPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "open": true,
+          "title": "Confirm example action",
+          "description": "This demonstration changes local preview state only."
+        },
         "viewport": 1440
       },
       "slots": [
@@ -8643,7 +8660,7 @@
       "name": "Architecture Diagram Section",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Technical blueprint illustrating client-edge-database infrastructure topology.",
+      "description": "Reference topology diagram for client, edge, and optional storage services.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -8768,7 +8785,7 @@
         "infrastructure"
       ],
       "intent": {
-        "summary": "Technical blueprint illustrating client-edge-database infrastructure topology.",
+        "summary": "Illustrative architecture; optional storage may not be provisioned in the deployment.",
         "idealFor": [
           "Engineering decision-makers evaluating platform architecture"
         ],
@@ -8776,7 +8793,7 @@
           "Casual marketing landing pages"
         ],
         "jobs": [
-          "Map out client, worker, and database boundaries clearly"
+          "Explain deployment boundaries and optional services"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -9706,7 +9723,15 @@
       },
       "preview": {
         "component": "AutocompletePreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Find a team",
+          "suggestions": [
+            "Engineering",
+            "People",
+            "Product"
+          ],
+          "value": ""
+        },
         "viewport": 1440
       },
       "slots": [
@@ -10187,7 +10212,19 @@
       },
       "preview": {
         "component": "AvatarGroupPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "items": [
+            {
+              "initials": "AB"
+            },
+            {
+              "initials": "CD"
+            },
+            {
+              "initials": "EF"
+            }
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -10427,7 +10464,9 @@
       },
       "preview": {
         "component": "BadgePreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "children": "Example status"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -11660,7 +11699,10 @@
       },
       "preview": {
         "component": "BottomSheetPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "open": true,
+          "children": "An example sheet with local controls."
+        },
         "viewport": 1440
       },
       "slots": [
@@ -11900,7 +11942,18 @@
       },
       "preview": {
         "component": "BreadcrumbPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "items": [
+            {
+              "label": "Library",
+              "href": "/explore"
+            },
+            {
+              "label": "Example",
+              "current": true
+            }
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -12891,7 +12944,9 @@
       },
       "preview": {
         "component": "ButtonGroupPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "children": "Example grouped content"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -14531,7 +14586,7 @@
       "name": "Case Study Spotlight",
       "version": "1.0.0",
       "status": "verified",
-      "description": "In-depth customer story card featuring measurable impact metrics, quote, and read study link.",
+      "description": "Customer case study card template with slots for customer-approved, evidence-backed outcomes.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -14656,7 +14711,7 @@
         "trust"
       ],
       "intent": {
-        "summary": "In-depth customer story card featuring measurable impact metrics, quote, and read study link.",
+        "summary": "Case study card template; publish only approved customer evidence.",
         "idealFor": [
           "Deep-dive enterprise case study features"
         ],
@@ -14664,7 +14719,7 @@
           "Casual generic landing pages"
         ],
         "jobs": [
-          "Prove ROI through concrete numbers and customer narrative"
+          "Present verified outcomes with a customer-approved narrative"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -15340,7 +15395,10 @@
       },
       "preview": {
         "component": "CheckboxPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Receive updates",
+          "checked": false
+        },
         "viewport": 1440
       },
       "slots": [
@@ -16561,7 +16619,20 @@
       },
       "preview": {
         "component": "ComboboxPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Select a team",
+          "options": [
+            {
+              "value": "first",
+              "label": "First option"
+            },
+            {
+              "value": "second",
+              "label": "Second option"
+            }
+          ],
+          "value": "first"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -17284,7 +17355,21 @@
       },
       "preview": {
         "component": "CommandMenuPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "open": true,
+          "items": [
+            {
+              "id": "first",
+              "category": "Example commands",
+              "label": "Open example"
+            },
+            {
+              "id": "second",
+              "category": "Example commands",
+              "label": "Inspect selection"
+            }
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -18175,7 +18260,7 @@
       "name": "Comparison Table",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Matrix comparing parameters or feature sets across multiple items side by side.",
+      "description": "Comparison matrix template with explicit example values.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -18300,7 +18385,7 @@
         "benchmark"
       ],
       "intent": {
-        "summary": "Matrix comparing parameters or feature sets across multiple items side by side.",
+        "summary": "Example comparison; replace sample values with measurements and methodology.",
         "idealFor": [
           "Comparing two or three alternative models or configurations"
         ],
@@ -18308,7 +18393,7 @@
           "Single item detail views"
         ],
         "jobs": [
-          "Side-by-side comparative inspection of entity specs"
+          "Compare measured specifications across multiple items"
         ],
         "contentRequirements": [
           "High data density, keyboard accessibility, semantic tokens"
@@ -19237,7 +19322,9 @@
       },
       "preview": {
         "component": "ContextMenuPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "children": "Right-click this example surface"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -20377,7 +20464,7 @@
       "name": "CTA Demo Booking",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Calendar booking card with time-slot picker preview and sales team call-to-action.",
+      "description": "Appointment selector with sample times and an optional calendar callback.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -20502,7 +20589,7 @@
         "sales"
       ],
       "intent": {
-        "summary": "Calendar booking card with time-slot picker preview and sales team call-to-action.",
+        "summary": "Example scheduling control; times are not live until a calendar is connected.",
         "idealFor": [
           "High ACV enterprise SaaS scheduling"
         ],
@@ -20510,7 +20597,7 @@
           "Self-serve open source tools"
         ],
         "jobs": [
-          "Schedule an architectural consultation with technical sales"
+          "Select an appointment time and submit it to a connected calendar"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -20621,7 +20708,7 @@
       "name": "CTA Download",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Multi-platform installer button group (macOS, Windows, Linux, CLI) with version pill.",
+      "description": "Installation call-to-action template with a configurable handler and disabled, explained default.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -20633,8 +20720,8 @@
         "download"
       ],
       "purposes": [
-        "Desktop app download",
-        "CLI install options"
+        "Product installation",
+        "Configured package or download destinations"
       ],
       "productArchetypes": [
         {
@@ -20746,7 +20833,7 @@
         "installer"
       ],
       "intent": {
-        "summary": "Multi-platform installer button group (macOS, Windows, Linux, CLI) with version pill.",
+        "summary": "Installation template; enable it only after a supported destination is configured.",
         "idealFor": [
           "Desktop software and CLI tool distribution"
         ],
@@ -20754,7 +20841,7 @@
           "Pure SaaS web apps with no download binary"
         ],
         "jobs": [
-          "Provide multi-OS binary download links with version badges"
+          "Direct users to a supported package or download target"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -22339,7 +22426,7 @@
       "name": "Customer Story Split",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Side-by-side narrative with customer team photo on one side and challenge-solution story on other.",
+      "description": "Two-column customer story template with illustrative content and an optional story link.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -22464,7 +22551,7 @@
         "trust"
       ],
       "intent": {
-        "summary": "Side-by-side narrative with customer team photo on one side and challenge-solution story on other.",
+        "summary": "Customer story template for approved challenge and solution copy.",
         "idealFor": [
           "Stories where customer culture and craft resonate with prospective buyers"
         ],
@@ -22472,7 +22559,7 @@
           "Short teaser banners"
         ],
         "jobs": [
-          "Explain the problem before Tessellate and the outcome after"
+          "Explain a customer-approved problem and documented response"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -24134,7 +24221,11 @@
       },
       "preview": {
         "component": "DialogPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "open": true,
+          "title": "Example dialog",
+          "children": "Inspect and close this actual dialog."
+        },
         "viewport": 1440
       },
       "slots": [
@@ -24375,7 +24466,10 @@
       },
       "preview": {
         "component": "DisclosurePreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "title": "Details",
+          "children": "This content is revealed by the disclosure."
+        },
         "viewport": 1440
       },
       "slots": [
@@ -25598,7 +25692,11 @@
       },
       "preview": {
         "component": "DrawerPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "open": true,
+          "title": "Example drawer",
+          "children": "Example details and controls."
+        },
         "viewport": 1440
       },
       "slots": [
@@ -26088,7 +26186,19 @@
       },
       "preview": {
         "component": "DropdownMenuPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "trigger": "Example actions",
+          "items": [
+            {
+              "id": "first",
+              "label": "First action"
+            },
+            {
+              "id": "second",
+              "label": "Second action"
+            }
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -27228,7 +27338,7 @@
       "name": "Editorial Hero",
       "version": "1.0.0",
       "status": "verified-gold",
-      "description": "Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs.",
+      "description": "Editorial product hero with primary and secondary calls to action.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -27355,7 +27465,7 @@
         "verified-gold"
       ],
       "intent": {
-        "summary": "Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs.",
+        "summary": "Editorial product hero with truthful release and performance copy.",
         "idealFor": [
           "High-craft developer and design products with strong editorial voice"
         ],
@@ -27363,7 +27473,7 @@
           "Complex multi-form lead capture screens"
         ],
         "jobs": [
-          "Deliver commanding brand proposition and invite immediate action"
+          "Present the product and direct users to relevant pages"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -29694,7 +29804,7 @@
       "name": "Executive Summary Panel",
       "version": "1.0.0",
       "status": "verified",
-      "description": "High-level synthesis card summarizing critical alerts, key wins, and risk flags.",
+      "description": "Executive briefing template with explicitly illustrative values.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -29819,7 +29929,7 @@
         "briefing"
       ],
       "intent": {
-        "summary": "High-level synthesis card summarizing critical alerts, key wins, and risk flags.",
+        "summary": "Illustrative summary; replace sample copy and values with verified data.",
         "idealFor": [
           "Executive briefing views and high-level team summaries"
         ],
@@ -29827,7 +29937,7 @@
           "Raw event log feeds"
         ],
         "jobs": [
-          "Synthesize multi-source information into a crisp executive briefing"
+          "Summarize connected, verified operational information"
         ],
         "contentRequirements": [
           "High data density, keyboard accessibility, semantic tokens"
@@ -31165,7 +31275,7 @@
       "name": "FAQ Two Column",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Dual-column question layout for high question density without excessive vertical length.",
+      "description": "Two-column layout for questions and answers.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -31290,7 +31400,7 @@
         "answers"
       ],
       "intent": {
-        "summary": "Dual-column question layout for high question density without excessive vertical length.",
+        "summary": "Question layout; keep answers specific to the host app supported behavior.",
         "idealFor": [
           "Presenting 6+ questions compactly without requiring clicks to expand"
         ],
@@ -31298,7 +31408,7 @@
           "Narrow single-column mobile-only pages"
         ],
         "jobs": [
-          "Display questions in side-by-side balanced columns"
+          "Display concise, verified answers to product questions"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -32386,7 +32496,7 @@
       "name": "Feature Grid 3x2",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Balanced 6-card grid with icon headers, descriptive copy, and subtle hover borders.",
+      "description": "Balanced feature grid with capability claims supplied for the deployed product.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -32511,7 +32621,7 @@
         "capabilities"
       ],
       "intent": {
-        "summary": "Balanced 6-card grid with icon headers, descriptive copy, and subtle hover borders.",
+        "summary": "Feature grid; verify each claim and distinguish tested results from targets.",
         "idealFor": [
           "Presenting the 6 fundamental pillars of a platform"
         ],
@@ -32519,7 +32629,7 @@
           "Single focused metric callouts"
         ],
         "jobs": [
-          "Explain comprehensive breadth of features with clean symmetry"
+          "Explain capabilities available in the current deployment"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -36303,7 +36413,7 @@
       "name": "Footer Developer",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Terminal-styled developer footer with CLI command snippet, API status, and git commit sha.",
+      "description": "Developer footer template with space for verified runtime metadata.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -36428,7 +36538,7 @@
         "developer"
       ],
       "intent": {
-        "summary": "Terminal-styled developer footer with CLI command snippet, API status, and git commit sha.",
+        "summary": "Example footer; supply actual build and runtime details before publishing.",
         "idealFor": [
           "Technical tools, CLI homepages, and developer ecosystems"
         ],
@@ -36436,7 +36546,7 @@
           "Consumer lifestyle products"
         ],
         "jobs": [
-          "Provide terminal-styled developer footer with CLI snippets and git sha"
+          "Expose current build metadata supplied by the host application"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -40813,7 +40923,9 @@
       },
       "preview": {
         "component": "IconButtonPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "aria-label": "Example icon action"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -42031,7 +42143,9 @@
       },
       "preview": {
         "component": "InlineAlertPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "title": "Example notice"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -45877,7 +45991,7 @@
       "name": "Logo Cloud Minimal",
       "version": "1.0.0",
       "status": "verified-gold",
-      "description": "Subtle monochrome client logo row with muted contrast and disciplined spacing.",
+      "description": "Restrained logo strip template with visible example placeholders.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -46003,7 +46117,7 @@
         "verified-gold"
       ],
       "intent": {
-        "summary": "Subtle monochrome client logo row with muted contrast and disciplined spacing.",
+        "summary": "Example logo strip; replace placeholders with approved marks.",
         "idealFor": [
           "Understated credibility sections below heroes"
         ],
@@ -46011,7 +46125,7 @@
           "Small non-commercial personal blogs"
         ],
         "jobs": [
-          "Establish immediate enterprise legitimacy through client wordmarks"
+          "Display customer or partner marks with permission"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -50118,7 +50232,17 @@
       },
       "preview": {
         "component": "MultiSelectPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Choose teams",
+          "options": [
+            "Engineering",
+            "People",
+            "Product"
+          ],
+          "selected": [
+            "People"
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -51599,7 +51723,10 @@
       },
       "preview": {
         "component": "NumberInputPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Example quantity",
+          "value": 3
+        },
         "viewport": 1440
       },
       "slots": [
@@ -51763,7 +51890,7 @@
       "name": "Offline State",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Local-first offline banner informing the user that cached manifests remain interactive while remote sync is paused.",
+      "description": "Offline status banner that leaves persistence and sync behavior to the host application.",
       "resourceType": "state",
       "categories": [
         "states",
@@ -51890,7 +52017,7 @@
         "status"
       ],
       "intent": {
-        "summary": "Local-first offline banner informing the user that cached manifests remain interactive while remote sync is paused.",
+        "summary": "Offline state template; local saving and remote sync depend on the host app.",
         "idealFor": [
           "PWA offline modes",
           "Airplane travel composing",
@@ -51901,7 +52028,7 @@
           "Authentication failures"
         ],
         "jobs": [
-          "Reassure users that local guest composition continues uninterrupted without network connection"
+          "Tell users how the host app behaves offline"
         ],
         "contentRequirements": [
           "High-contrast state feedback, ARIA live region semantics, clear recovery action trigger"
@@ -53812,7 +53939,10 @@
       },
       "preview": {
         "component": "PaginationPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "currentPage": 1,
+          "totalPages": 5
+        },
         "viewport": 1440
       },
       "slots": [
@@ -56021,7 +56151,10 @@
       },
       "preview": {
         "component": "PopoverPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "trigger": "Open example popover",
+          "children": "An actual interactive popover."
+        },
         "viewport": 1440
       },
       "slots": [
@@ -58630,7 +58763,7 @@
       "name": "Product Screenshot Hero",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Centered headline with perspective tilted application screenshot frame and browser chrome.",
+      "description": "Product hero with an illustrative interface preview and optional CTA destination.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -58756,7 +58889,7 @@
         "marketing"
       ],
       "intent": {
-        "summary": "Centered headline with perspective tilted application screenshot frame and browser chrome.",
+        "summary": "Preview template; replace the sample content and set a real action URL.",
         "idealFor": [
           "Software products demonstrating a rich UI or desktop application"
         ],
@@ -58764,7 +58897,7 @@
           "Content-first editorial magazines"
         ],
         "jobs": [
-          "Preview product interface instantly while communicating core value proposition"
+          "Show an accurate product preview and direct users to a configured destination"
         ],
         "contentRequirements": [
           "Clear hierarchy, responsive layout, accessible typography"
@@ -59196,7 +59329,10 @@
       },
       "preview": {
         "component": "ProgressBarPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Example progress",
+          "value": 65
+        },
         "viewport": 1440
       },
       "slots": [
@@ -59437,7 +59573,9 @@
       },
       "preview": {
         "component": "ProgressRingPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "value": 65
+        },
         "viewport": 1440
       },
       "slots": [
@@ -61150,7 +61288,20 @@
       },
       "preview": {
         "component": "RadioGroupPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "name": "Example choice",
+          "options": [
+            {
+              "value": "first",
+              "label": "First option"
+            },
+            {
+              "value": "second",
+              "label": "Second option"
+            }
+          ],
+          "value": "first"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -61391,7 +61542,13 @@
       },
       "preview": {
         "component": "RangeSliderPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Example range",
+          "value": [
+            25,
+            75
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -65299,7 +65456,19 @@
       },
       "preview": {
         "component": "SegmentedControlPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "options": [
+            {
+              "value": "first",
+              "label": "First option"
+            },
+            {
+              "value": "second",
+              "label": "Second option"
+            }
+          ],
+          "value": "first"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -65539,7 +65708,19 @@
       },
       "preview": {
         "component": "SelectPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Select an option",
+          "options": [
+            {
+              "value": "first",
+              "label": "First option"
+            },
+            {
+              "value": "second",
+              "label": "Second option"
+            }
+          ]
+        },
         "viewport": 1440
       },
       "slots": [
@@ -67739,7 +67920,10 @@
       },
       "preview": {
         "component": "SliderPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Example intensity",
+          "value": 40
+        },
         "viewport": 1440
       },
       "slots": [
@@ -68474,7 +68658,9 @@
       },
       "preview": {
         "component": "SplitButtonPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Example action"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -69630,7 +69816,7 @@
       "name": "Status Overview",
       "version": "1.0.0",
       "status": "verified",
-      "description": "System health dashboard block tracking services, regional latency, and incident reports.",
+      "description": "Service status snapshot template with illustrative values.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -69755,7 +69941,7 @@
         "uptime"
       ],
       "intent": {
-        "summary": "System health dashboard block tracking services, regional latency, and incident reports.",
+        "summary": "Illustrative service status; provide monitored data before presenting it as live.",
         "idealFor": [
           "Internal operations dashboards and public status pages"
         ],
@@ -69763,7 +69949,7 @@
           "Casual marketing features"
         ],
         "jobs": [
-          "Report status across distributed cloud services"
+          "Summarize a configured service status feed"
         ],
         "contentRequirements": [
           "High data density, keyboard accessibility, semantic tokens"
@@ -70947,7 +71133,10 @@
       },
       "preview": {
         "component": "SwitchPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Enable example setting",
+          "checked": false
+        },
         "viewport": 1440
       },
       "slots": [
@@ -71676,7 +71865,21 @@
       },
       "preview": {
         "component": "TabsPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "tabs": [
+            {
+              "id": "first",
+              "label": "Overview",
+              "content": "Example overview content."
+            },
+            {
+              "id": "second",
+              "label": "Details",
+              "content": "Example detail content."
+            }
+          ],
+          "activeId": "first"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -71917,7 +72120,9 @@
       },
       "preview": {
         "component": "TagChipPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Example tag"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -74854,7 +75059,9 @@
       },
       "preview": {
         "component": "ToastPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "title": "Example notification"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -75094,7 +75301,10 @@
       },
       "preview": {
         "component": "TooltipPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "content": "Actual tooltip content",
+          "children": "Hover or focus this example"
+        },
         "viewport": 1440
       },
       "slots": [
@@ -76478,7 +76688,7 @@
       "name": "Upgrade Prompt",
       "version": "1.0.0",
       "status": "verified",
-      "description": "In-app upgrade callout card presenting locked feature benefits and upgrade trigger.",
+      "description": "Upgrade prompt template with a configurable destination.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -76603,7 +76813,7 @@
         "cta"
       ],
       "intent": {
-        "summary": "In-app upgrade callout card presenting locked feature benefits and upgrade trigger.",
+        "summary": "Example upgrade prompt; provide accurate plan details and a destination.",
         "idealFor": [
           "Gracefully prompting users when they encounter enterprise features"
         ],
@@ -76611,7 +76821,7 @@
           "Aggressive blocking modal spam"
         ],
         "jobs": [
-          "Explain benefits of cloud team synchronization without hard barriers"
+          "Describe available product plans and direct users to a configured destination"
         ],
         "contentRequirements": [
           "High data density, keyboard accessibility, semantic tokens"

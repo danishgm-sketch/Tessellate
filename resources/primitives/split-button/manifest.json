@@ -83,7 +83,9 @@
   },
   "preview": {
     "component": "SplitButtonPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "label": "Example action"
+    },
     "viewport": 1440
   },
   "slots": [
