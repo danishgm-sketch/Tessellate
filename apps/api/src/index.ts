@@ -11,8 +11,22 @@ import { creatorLinksRoute } from './routes/creator-links.js';
 import { reportsRoute } from './routes/reports.js';
 import { inferenceRoute } from './routes/inference.js';
 import type { Env } from './types.js';
+import { verifySecret } from './secrets.js';
 
 const app = new Hono<{ Bindings: Env }>();
+
+app.use('/api/*', async (c, next) => {
+  const hostControl = /^\/api\/inference\/(heartbeat|poll|complete)$/.test(c.req.path);
+  if (!hostControl && c.env?.TESSELLATE_GATEWAY_SECRET &&
+      !await verifySecret(c.req.header('X-Tessellate-Gateway'), c.env.TESSELLATE_GATEWAY_SECRET)) {
+    return c.json({ error: 'Unauthorized' }, 401);
+  }
+  if (c.req.path.startsWith('/api/auth/') && c.env?.TESSELLATE_GATEWAY_SECRET &&
+      (!c.env.GITHUB_CLIENT_ID || !c.env.GITHUB_CLIENT_SECRET || !c.env.BETTER_AUTH_SECRET)) {
+    return c.json({ error: 'AuthenticationUnavailable', message: 'GitHub sign-in has not been configured for this laptop backend' }, 503);
+  }
+  return next();
+});
 
 const ALLOWED_ORIGINS = [
   'https://tessellate.design',
