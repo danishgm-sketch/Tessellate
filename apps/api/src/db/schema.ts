@@ -168,3 +168,27 @@ export const reports = sqliteTable('reports', {
   status: text('status').notNull().default('pending'),
   createdAt: text('createdAt').notNull(),
 });
+
+// 14. Inference Tickets (Host Queue & Token System)
+export const inferenceTickets = sqliteTable('inference_tickets', {
+  id: text('id').primaryKey(),
+  tokenNumber: integer('tokenNumber').notNull(),
+  prompt: text('prompt').notNull(),
+  screenAst: text('screenAst').notNull(),
+  designDna: text('designDna'),
+  status: text('status').notNull().default('queued'),
+  resultCommand: text('resultCommand'),
+  errorMessage: text('errorMessage'),
+  createdAt: text('createdAt').notNull(),
+  startedAt: text('startedAt'),
+  completedAt: text('completedAt'),
+});
+
+// 15. Host Worker Liveness
+export const hostWorkers = sqliteTable('host_workers', {
+  id: text('id').primaryKey(),
+  deviceName: text('deviceName'),
+  lastHeartbeat: integer('lastHeartbeat').notNull(),
+  status: text('status').notNull().default('idle'),
+});
+

@@ -10,12 +10,17 @@ export interface TabItem {
 
 export interface TabsProps {
   variant?: TabsVariant;
-  tabs: TabItem[];
-  activeId: string;
-  onChange: (id: string) => void;
+  tabs?: TabItem[];
+  activeId?: string;
+  onChange?: (id: string) => void;
 }
 
-export function Tabs({ variant = 'quiet', tabs, activeId, onChange }: TabsProps) {
+const defaultTabs: TabItem[] = [
+  { id: 'tab1', label: 'Overview', content: 'Overview content' },
+  { id: 'tab2', label: 'Details', content: 'Details content' },
+];
+
+export function Tabs({ variant = 'quiet', tabs = defaultTabs, activeId = 'tab1', onChange }: TabsProps) {
   const activeTab = tabs.find((t) => t.id === activeId) || tabs[0];
 
   let borderBottom = 'border-b border-neutral-200';
@@ -39,7 +44,7 @@ export function Tabs({ variant = 'quiet', tabs, activeId, onChange }: TabsProps)
               type="button"
               role="tab"
               aria-selected={isSelected}
-              onClick={() => onChange(tab.id)}
+              onClick={() => onChange?.(tab.id)}
               className={`pb-2.5 text-sm transition-all border-b-2 -mb-px ${
                 isSelected ? activeIndicator : 'border-transparent text-neutral-500 hover:text-neutral-800'
               }`}

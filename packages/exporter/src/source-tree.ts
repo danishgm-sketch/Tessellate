@@ -58,11 +58,112 @@ function resolveResource(slug: string, semanticRole: string, nodeId: string): Re
   );
 }
 
+export interface ExportOptions {
+  target?: 'vite' | 'nextjs';
+}
+
+export const BASE_BUTTON_CODE = `import React from 'react';
+
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'primary' | 'outline' | 'ghost' | 'quiet' | 'expressive' | 'nocturne';
+  label?: string;
+}
+
+export function Button({ variant = 'primary', label, children, className = '', ...props }: ButtonProps) {
+  const base = "inline-flex items-center justify-center font-medium transition-colors cursor-pointer select-none text-xs px-3.5 py-1.5 rounded-[var(--tess-radius-sm,6px)]";
+  const styles: Record<string, string> = {
+    primary: "bg-[var(--tess-accent-primary,#2547E8)] text-white hover:opacity-90 shadow-xs",
+    outline: "border border-[var(--tess-hairline,#D9D6CF)] text-[var(--tess-ink,#111217)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]",
+    ghost: "text-[var(--tess-ink-secondary,#62666F)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]",
+    quiet: "bg-neutral-900 text-white hover:opacity-90",
+    expressive: "bg-[#2547E8] text-white shadow-md hover:bg-blue-700",
+    nocturne: "bg-[#06B6D4] text-neutral-950 font-bold hover:bg-cyan-400",
+  };
+  return (
+    <button className={\`\${base} \${styles[variant] ?? styles.primary} \${className}\`} {...props}>
+      {label || children}
+    </button>
+  );
+}
+`;
+
+export const BASE_METRIC_CARD_CODE = `import React from 'react';
+
+export interface MetricCardProps {
+  title?: string;
+  value?: string | number;
+  change?: string;
+  isPositive?: boolean;
+}
+
+export function MetricCard({ title, value, change, isPositive }: MetricCardProps) {
+  return (
+    <div className="p-5 rounded-[var(--tess-radius-md,12px)] bg-white dark:bg-[#171B21] border border-[var(--tess-hairline,#D9D6CF)] shadow-xs flex flex-col gap-2">
+      <div className="flex items-center justify-between text-xs text-[var(--tess-ink-secondary,#62666F)] font-medium">
+        <span>{title}</span>
+        {change && (
+          <span className={\`px-1.5 py-0.5 rounded text-[11px] font-semibold \${
+            isPositive ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'
+          }\`}>
+            {change}
+          </span>
+        )}
+      </div>
+      <div className="text-2xl font-bold tracking-tight text-[var(--tess-ink,#111217)]">
+        {value}
+      </div>
+    </div>
+  );
+}
+`;
+
+export const BASE_APP_HEADER_CODE = `import React from 'react';
+
+export interface AppHeaderProps {
+  title?: string;
+  navItems?: Array<{ label: string; href?: string; active?: boolean }>;
+}
+
+export function AppHeader({ title = 'Application', navItems = [] }: AppHeaderProps) {
+  return (
+    <header className="h-16 px-6 border-b border-[var(--tess-hairline,#D9D6CF)] bg-white dark:bg-[#171B21] flex items-center justify-between">
+      <div className="text-sm font-bold tracking-tight text-[var(--tess-ink,#111217)]">
+        {title}
+      </div>
+      {navItems.length > 0 && (
+        <nav className="flex items-center gap-4 text-xs font-medium">
+          {navItems.map((item, i) => (
+            <a
+              key={i}
+              href={item.href || '#'}
+              className={\`transition-colors \${item.active ? 'text-[var(--tess-accent-primary,#2547E8)] font-semibold' : 'text-[var(--tess-ink-secondary,#62666F)] hover:text-[var(--tess-ink,#111217)]'}\`}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      )}
+    </header>
+  );
+}
+`;
+
 /**
  * Converts a ProjectManifest into a clean, complete, standalone
- * Vite + React + TypeScript + Tailwind CSS 4 project source tree.
+ * Vite or Next.js 15 project source tree.
  */
-export function generateSourceTree(manifest: ProjectManifest): Record<string, string> {
+export function generateSourceTree(
+  manifest: ProjectManifest,
+  options: ExportOptions = {}
+): Record<string, string> {
+  const target = options.target || 'vite';
+  if (target === 'nextjs') {
+    return generateNextJsSourceTree(manifest);
+  }
+  return generateViteSourceTree(manifest);
+}
+
+export function generateViteSourceTree(manifest: ProjectManifest): Record<string, string> {
   const files: Record<string, string> = {};
   const slugName = manifest.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'tessellate-app';
 
@@ -171,91 +272,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 `;
 
   // 7. Baseline Component Primitives in src/components/
-  files['src/components/Button.tsx'] = `import React from 'react';
-
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'outline' | 'ghost' | 'quiet' | 'expressive' | 'nocturne';
-  label?: string;
-}
-
-export function Button({ variant = 'primary', label, children, className = '', ...props }: ButtonProps) {
-  const base = "inline-flex items-center justify-center font-medium transition-colors cursor-pointer select-none text-xs px-3.5 py-1.5 rounded-[var(--tess-radius-sm,6px)]";
-  const styles: Record<string, string> = {
-    primary: "bg-[var(--tess-accent-primary,#2547E8)] text-white hover:opacity-90 shadow-xs",
-    outline: "border border-[var(--tess-hairline,#D9D6CF)] text-[var(--tess-ink,#111217)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]",
-    ghost: "text-[var(--tess-ink-secondary,#62666F)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]",
-    quiet: "bg-neutral-900 text-white hover:opacity-90",
-    expressive: "bg-[#2547E8] text-white shadow-md hover:bg-blue-700",
-    nocturne: "bg-[#06B6D4] text-neutral-950 font-bold hover:bg-cyan-400",
-  };
-  return (
-    <button className={\`\${base} \${styles[variant] ?? styles.primary} \${className}\`} {...props}>
-      {label || children}
-    </button>
-  );
-}
-`;
-
-  files['src/components/MetricCard.tsx'] = `import React from 'react';
-
-export interface MetricCardProps {
-  title?: string;
-  value?: string | number;
-  change?: string;
-  isPositive?: boolean;
-}
-
-export function MetricCard({ title, value, change, isPositive }: MetricCardProps) {
-  return (
-    <div className="p-5 rounded-[var(--tess-radius-md,12px)] bg-white dark:bg-[#171B21] border border-[var(--tess-hairline,#D9D6CF)] shadow-xs flex flex-col gap-2">
-      <div className="flex items-center justify-between text-xs text-[var(--tess-ink-secondary,#62666F)] font-medium">
-        <span>{title}</span>
-        {change && (
-          <span className={\`px-1.5 py-0.5 rounded text-[11px] font-semibold \${
-            isPositive ? 'bg-emerald-50 text-emerald-700' : 'bg-rose-50 text-rose-700'
-          }\`}>
-            {change}
-          </span>
-        )}
-      </div>
-      <div className="text-2xl font-bold tracking-tight text-[var(--tess-ink,#111217)]">
-        {value}
-      </div>
-    </div>
-  );
-}
-`;
-
-  files['src/components/AppHeader.tsx'] = `import React from 'react';
-
-export interface AppHeaderProps {
-  title?: string;
-  navItems?: Array<{ label: string; href?: string; active?: boolean }>;
-}
-
-export function AppHeader({ title = 'Application', navItems = [] }: AppHeaderProps) {
-  return (
-    <header className="h-16 px-6 border-b border-[var(--tess-hairline,#D9D6CF)] bg-white dark:bg-[#171B21] flex items-center justify-between">
-      <div className="text-sm font-bold tracking-tight text-[var(--tess-ink,#111217)]">
-        {title}
-      </div>
-      {navItems.length > 0 && (
-        <nav className="flex items-center gap-4 text-xs font-medium">
-          {navItems.map((item, i) => (
-            <a
-              key={i}
-              href={item.href || '#'}
-              className={\`transition-colors \${item.active ? 'text-[var(--tess-accent-primary,#2547E8)] font-semibold' : 'text-[var(--tess-ink-secondary,#62666F)] hover:text-[var(--tess-ink,#111217)]'}\`}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-      )}
-    </header>
-  );
-}
-`;
+  files['src/components/Button.tsx'] = BASE_BUTTON_CODE;
+  files['src/components/MetricCard.tsx'] = BASE_METRIC_CARD_CODE;
+  files['src/components/AppHeader.tsx'] = BASE_APP_HEADER_CODE;
 
   // 8. Resource Resolution: Collect all unique resourceRefs across all screens
   const resourceMap: Record<string, ResolvedResource> = {
@@ -396,6 +415,293 @@ pnpm dev
 Build for production:
 \`\`\`bash
 pnpm build
+\`\`\`
+
+## Design DNA
+- **Archetype:** ${manifest.designDNA.primaryArchetype}
+- **Visual Mode:** ${manifest.designDNA.visualMode}
+- **Geometry:** ${manifest.designDNA.geometryFamily}
+- **Visual Ambition:** ${manifest.designDNA.visualAmbition}/100
+- **Surface:** ${manifest.designDNA.surfacePersonality}
+`;
+
+  return files;
+}
+
+export function generateNextJsSourceTree(manifest: ProjectManifest): Record<string, string> {
+  const files: Record<string, string> = {};
+  const slugName = manifest.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'tessellate-app';
+
+  const { dependencies, devDependencies } = collectProjectDependencies(manifest);
+
+  // 1. package.json for Next.js 15
+  files['package.json'] = JSON.stringify(
+    {
+      name: slugName,
+      private: true,
+      version: '0.1.0',
+      type: 'module',
+      scripts: {
+        dev: 'next dev',
+        build: 'next build',
+        start: 'next start',
+      },
+      dependencies: {
+        ...dependencies,
+        next: '^15.0.0',
+      },
+      devDependencies: {
+        ...devDependencies,
+        '@tailwindcss/postcss': '^4.0.0',
+        postcss: '^8.4.0',
+      },
+    },
+    null,
+    2
+  );
+
+  files['.npmrc'] = `only-built-dependencies=esbuild\n`;
+
+  // 2. next.config.mjs
+  files['next.config.mjs'] = `/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+};
+
+export default nextConfig;
+`;
+
+  // 3. postcss.config.mjs
+  files['postcss.config.mjs'] = `export default {
+  plugins: {
+    '@tailwindcss/postcss': {},
+  },
+};
+`;
+
+  // 4. tsconfig.json
+  files['tsconfig.json'] = JSON.stringify(
+    {
+      compilerOptions: {
+        target: 'ES2022',
+        lib: ['dom', 'dom.iterable', 'esnext'],
+        allowJs: true,
+        skipLibCheck: true,
+        strict: true,
+        noEmit: true,
+        esModuleInterop: true,
+        module: 'esnext',
+        moduleResolution: 'bundler',
+        resolveJsonModule: true,
+        isolatedModules: true,
+        jsx: 'preserve',
+        incremental: true,
+        plugins: [{ name: 'next' }],
+        paths: {
+          '@/*': ['./*'],
+        },
+      },
+      include: ['next-env.d.ts', '**/*.ts', '**/*.tsx', '.next/types/**/*.ts'],
+      exclude: ['node_modules'],
+    },
+    null,
+    2
+  );
+
+  // 5. app/globals.css
+  const tokens = normalizeDesignTokens(manifest.designDNA);
+  const cssVars = tokensToCssVariables(tokens);
+  const cssVarDeclarations = Object.entries(cssVars)
+    .map(([k, v]) => `  ${k}: ${v};`)
+    .join('\n');
+
+  files['app/globals.css'] = `@import "tailwindcss";
+
+:root {
+${cssVarDeclarations}
+}
+`;
+
+  // 6. app/layout.tsx
+  files['app/layout.tsx'] = `import type { Metadata } from 'next';
+import './globals.css';
+
+export const metadata: Metadata = {
+  title: '${manifest.name}',
+  description: 'Generated with Tessellate',
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className="bg-[#FAF9F6] text-[#111217] antialiased">{children}</body>
+    </html>
+  );
+}
+`;
+
+  // 7. Baseline Components in components/
+  files['components/Button.tsx'] = BASE_BUTTON_CODE;
+  files['components/MetricCard.tsx'] = BASE_METRIC_CARD_CODE;
+  files['components/AppHeader.tsx'] = BASE_APP_HEADER_CODE;
+
+  // 8. Resource Resolution
+  const resourceMap: Record<string, ResolvedResource> = {
+    button: {
+      slug: 'button',
+      componentName: 'Button',
+      fileName: 'Button.tsx',
+      code: files['components/Button.tsx'],
+      acceptedProps: new Set(['variant', 'label', 'className', 'children', 'disabled', 'onClick', 'type']),
+    },
+    'metric-card': {
+      slug: 'metric-card',
+      componentName: 'MetricCard',
+      fileName: 'MetricCard.tsx',
+      code: files['components/MetricCard.tsx'],
+      acceptedProps: new Set(['title', 'value', 'change', 'isPositive']),
+    },
+  };
+
+  function collectNodes(node: ProjectNode) {
+    if (node.resourceRef?.slug) {
+      const slug = node.resourceRef.slug;
+      if (!resourceMap[slug]) {
+        const resolved = resolveResource(slug, node.semanticRole, node.id);
+        resourceMap[slug] = resolved;
+        files[`components/${resolved.fileName}`] = resolved.code;
+      }
+    }
+    if (node.children) {
+      for (const child of node.children) {
+        collectNodes(child);
+      }
+    }
+  }
+
+  for (const screen of manifest.screens) {
+    collectNodes(screen.rootNode);
+  }
+
+  // 9. Screen components in screens/
+  const screenSlugs: Array<{ id: string; name: string; componentName: string; file: string }> = [];
+
+  manifest.screens.forEach((screen, index) => {
+    const componentName = sanitizeComponentName(screen.name || `Screen${index + 1}`);
+    const fileName = `${componentName}.tsx`;
+    screenSlugs.push({
+      id: screen.id,
+      name: screen.name,
+      componentName,
+      file: fileName,
+    });
+
+    files[`screens/${fileName}`] = generateScreenCode(screen, componentName, resourceMap);
+  });
+
+  // 10. app/page.tsx with Screen Navigation
+  const importsStr = screenSlugs
+    .map((s) => `import { ${s.componentName} } from '../screens/${s.componentName}';`)
+    .join('\n');
+
+  const navButtonsStr = screenSlugs
+    .map(
+      (s) => `<button
+            onClick={() => setActiveScreenId('${s.id}')}
+            className={\`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors \${
+              activeScreenId === '${s.id}'
+                ? 'bg-[var(--tess-accent-primary,#2547E8)] text-white shadow-xs'
+                : 'text-[var(--tess-ink-secondary,#62666F)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]'
+            }\`}
+          >
+            ${s.name}
+          </button>`
+    )
+    .join('\n          ');
+
+  const screenBranches = screenSlugs
+    .map(
+      (s) => `if (activeScreenId === '${s.id}') {
+      return <${s.componentName} />;
+    }`
+    )
+    .join('\n    ');
+
+  files['app/page.tsx'] = `'use client';
+
+import React, { useState } from 'react';
+${importsStr}
+
+export default function Page() {
+  const [activeScreenId, setActiveScreenId] = useState('${screenSlugs[0]?.id || ''}');
+
+  const renderActiveScreen = () => {
+    ${screenBranches}
+    return <${screenSlugs[0]?.componentName || 'div'} />;
+  };
+
+  return (
+    <div className="min-h-screen flex flex-col bg-[#FAF9F6] text-[#111217]">
+      {/* Top Application Bar */}
+      <header className="h-14 px-6 border-b border-[var(--tess-hairline,#D9D6CF)] bg-white dark:bg-[#171B21] flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <span className="font-bold text-sm tracking-tight text-[var(--tess-ink,#111217)]">
+            ${manifest.name}
+          </span>
+          <span className="text-[11px] px-2 py-0.5 rounded-full bg-[var(--tess-surface-secondary,#F2EFE9)] text-[var(--tess-ink-muted,#8B8F97)] font-mono">
+            Next.js 15
+          </span>
+        </div>
+        <nav className="flex items-center gap-1.5">
+          ${navButtonsStr}
+        </nav>
+      </header>
+
+      {/* Screen Container */}
+      <main className="flex-1">
+        {renderActiveScreen()}
+      </main>
+    </div>
+  );
+}
+`;
+
+  // 11. README.md
+  files['README.md'] = `# ${manifest.name}
+
+Exported from [Tessellate](https://github.com/danishgm-sketch/Tessellate) on ${new Date().toISOString()}.
+
+${manifest.description || 'Interface composition system generated from Product Intent and Design DNA.'}
+
+## Tech Stack
+- **Framework:** Next.js 15 (App Router) + React 19 + TypeScript
+- **Styling:** Tailwind CSS 4
+
+## Getting Started
+
+Install dependencies:
+\`\`\`bash
+pnpm install
+# or: npm install / yarn install
+\`\`\`
+
+Run the development server:
+\`\`\`bash
+pnpm dev
+\`\`\`
+
+Build for production:
+\`\`\`bash
+pnpm build
+\`\`\`
+
+Start production server:
+\`\`\`bash
+pnpm start
 \`\`\`
 
 ## Design DNA

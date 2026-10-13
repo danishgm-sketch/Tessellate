@@ -10,10 +10,16 @@ export interface BreadcrumbItem {
 
 export interface BreadcrumbProps {
   variant?: BreadcrumbVariant;
-  items: BreadcrumbItem[];
+  items?: BreadcrumbItem[];
 }
 
-export function Breadcrumb({ variant = 'quiet', items }: BreadcrumbProps) {
+export const defaultBreadcrumbItems: BreadcrumbItem[] = [
+  { label: 'Home', href: '/' },
+  { label: 'Components', href: '/components' },
+  { label: 'Breadcrumb', current: true },
+];
+
+export function Breadcrumb({ variant = 'quiet', items = defaultBreadcrumbItems }: BreadcrumbProps) {
   let activeColor = 'text-neutral-900 dark:text-neutral-100 font-semibold';
   if (variant === 'expressive') activeColor = 'text-[#2547E8] font-bold';
   if (variant === 'nocturne') activeColor = 'text-white font-semibold';

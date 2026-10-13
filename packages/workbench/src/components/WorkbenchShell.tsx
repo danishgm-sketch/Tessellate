@@ -34,7 +34,21 @@ export function WorkbenchShell() {
     (window as any).__tessellate_workbench_store__ = useWorkbenchStore;
     const urlParams = new URLSearchParams(window.location.search);
     const projectId = urlParams.get('project');
+    const showcaseId = urlParams.get('showcase');
+    const _resourceSlug = urlParams.get('resource');
 
+    // 1. Handle ?showcase= parameter
+    if (showcaseId) {
+      import('@tessellate/composer').then(({ SHOWCASE_PROJECTS }) => {
+        const found = SHOWCASE_PROJECTS.find((s) => s.id === showcaseId);
+        if (found) {
+          setManifest(found.manifest);
+        }
+      });
+      return;
+    }
+
+    // 2. Handle ?project= parameter
     if (projectId) {
       const stored =
         localStorage.getItem(`tessellate_project_${projectId}`) ||

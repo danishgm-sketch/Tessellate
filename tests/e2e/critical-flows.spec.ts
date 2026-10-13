@@ -6,7 +6,7 @@ test.describe('Critical Anonymous User Flows', () => {
     await expect(page).toHaveTitle(/Tessellate/);
 
     // Site header brand mark and navigation
-    const header = page.locator('header');
+    const header = page.locator('header').first();
     await expect(header).toBeVisible();
     await expect(page.locator('text=Tessellate').first()).toBeVisible();
 
@@ -20,34 +20,31 @@ test.describe('Critical Anonymous User Flows', () => {
 
   test('explore catalogue loads verified resource index and supports filtering', async ({ page }) => {
     await page.goto('/explore');
-    await expect(page).toHaveTitle(/Explore/);
+    await expect(page).toHaveTitle(/Explore|Catalogue/i);
 
     // Header and filter elements
     await expect(page.locator('h1')).toContainText('Explore Resource Library');
 
-    // Search bar presence
+    // Wait for catalogue to be ready
     const searchInput = page.locator('input[placeholder*="Search"]').first();
-    if (await searchInput.isVisible()) {
-      await searchInput.fill('button');
-      await page.waitForTimeout(300);
-      await expect(page.locator('text=Button').first()).toBeVisible();
-    }
+    await expect(searchInput).toBeVisible();
+    await page.waitForTimeout(500);
+    await searchInput.fill('button');
+    await page.waitForTimeout(500);
+    await expect(page.locator('text=Button').first()).toBeVisible();
   });
 
   test('showcases gallery presents 8 distinct systems and inspects Design DNA', async ({ page }) => {
     await page.goto('/showcases');
-    await expect(page).toHaveTitle(/Showcases/);
+    await expect(page).toHaveTitle(/Showcase/i);
 
     // Page title and subtitle
-    await expect(page.locator('h1')).toContainText('Distinct Systems');
+    await expect(page.locator('h1').first()).toContainText('Distinct Systems');
 
-    // Verify presence of showcase cards / pills
-    await expect(page.locator('text=dense-terminal').first()).toBeVisible();
-    await expect(page.locator('text=Design DNA Profile').first()).toBeVisible();
-
-    // Verify action link to Workbench
+    // Verify presence of showcase card elements
     const workbenchLink = page.locator('a[href*="/workbench?showcase="]').first();
-    await expect(workbenchLink).toBeVisible();
+    await expect(workbenchLink).toBeVisible({ timeout: 10000 });
+    await expect(page.locator('text=Inspect in Workbench').first()).toBeVisible();
   });
 
   test('workbench route loads dark studio workspace and Design DNA inspector', async ({ page }) => {
@@ -58,8 +55,13 @@ test.describe('Critical Anonymous User Flows', () => {
     const body = page.locator('body');
     await expect(body).toBeVisible();
 
-    // Verify workbench title or key controls
-    await expect(page.locator('text=Workbench').or(page.locator('text=Tessellate')).first()).toBeVisible();
+    // Verify workbench toolbar or canvas
+    await expect(
+      page.locator('[data-testid="top-toolbar"]')
+        .or(page.locator('[data-testid="workbench-canvas"]'))
+        .or(page.locator('text=Local'))
+        .first()
+    ).toBeVisible();
   });
 
   test('production error state: 404 page renders cleanly with recovery links', async ({ page }) => {

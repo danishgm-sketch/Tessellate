@@ -169,40 +169,45 @@ export function ResourceTabs({ manifest }: ResourceTabsProps) {
         )}
 
         {/* CODE TAB */}
-        {activeTab === 'code' && (
-          <div className="space-y-4 font-mono text-xs">
-            <div className="flex items-center justify-between">
-              <span className="text-[var(--tess-ink-secondary,#62666F)]">
-                Install component via CLI:
-              </span>
-              <button
-                type="button"
-                onClick={() => navigator.clipboard.writeText(`npx shadcn add @tessellate/${manifest.slug}`)}
-                className="px-2 py-1 rounded bg-[var(--tess-canvas,#F4F2ED)] border border-[var(--tess-hairline,#D9D6CF)] text-[11px] hover:bg-white"
-              >
-                Copy
-              </button>
-            </div>
-            <pre className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
-              <code>{`npx shadcn add @tessellate/${manifest.slug}`}</code>
-            </pre>
+        {activeTab === 'code' && (() => {
+          const safeComp = manifest.name.replace(/[^a-zA-Z0-9]/g, '') || 'Component';
+          const installCmd = `npx shadcn@latest add https://tessellate.design/r/${manifest.slug}.json`;
 
-            <span className="text-[var(--tess-ink-secondary,#62666F)] block pt-2">
-              Usage Example (React + Tailwind):
-            </span>
-            <pre className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
-              <code>{`import { ${manifest.name} } from "@/components/ui/${manifest.slug}";
+          return (
+            <div className="space-y-4 font-mono text-xs">
+              <div className="flex items-center justify-between">
+                <span className="text-[var(--tess-ink-secondary,#62666F)]">
+                  Install component via CLI:
+                </span>
+                <button
+                  type="button"
+                  onClick={() => navigator.clipboard.writeText(installCmd)}
+                  className="px-2 py-1 rounded bg-[var(--tess-canvas,#F4F2ED)] border border-[var(--tess-hairline,#D9D6CF)] text-[11px] hover:bg-white"
+                >
+                  Copy
+                </button>
+              </div>
+              <pre className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
+                <code>{installCmd}</code>
+              </pre>
+
+              <span className="text-[var(--tess-ink-secondary,#62666F)] block pt-2">
+                Usage Example (React + Tailwind):
+              </span>
+              <pre className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
+                <code>{`import { ${safeComp} } from "@/components/ui/${manifest.slug}";
 
 export default function Example() {
   return (
-    <${manifest.name} variant="expressive" intent="primary" size="md">
-      Confirm Action
-    </${manifest.name}>
+    <${safeComp} variant="expressive">
+      Content
+    </${safeComp}>
   );
 }`}</code>
-            </pre>
-          </div>
-        )}
+              </pre>
+            </div>
+          );
+        })()}
 
         {/* VARIANTS TAB */}
         {activeTab === 'variants' && (

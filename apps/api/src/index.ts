@@ -9,6 +9,7 @@ import { favoritesRoute } from './routes/favorites.js';
 import { collectionsRoute } from './routes/collections.js';
 import { creatorLinksRoute } from './routes/creator-links.js';
 import { reportsRoute } from './routes/reports.js';
+import { inferenceRoute } from './routes/inference.js';
 import type { Env } from './types.js';
 
 const app = new Hono<{ Bindings: Env }>();
@@ -52,6 +53,7 @@ app.route('/api/favorites', favoritesRoute);
 app.route('/api/collections', collectionsRoute);
 app.route('/api/creator-links', creatorLinksRoute);
 app.route('/api/reports', reportsRoute);
+app.route('/api/inference', inferenceRoute);
 
 app.get('/health', (c) => {
   return c.json({ status: 'ok', service: 'tessellate-api', timestamp: new Date().toISOString() });

@@ -43,11 +43,11 @@ test.describe('Accessibility & WCAG 2.2 AA Audits', () => {
     await page.goto('/');
 
     // Page must load stably without script crashes under reduced motion
-    const header = page.locator('header');
+    const header = page.locator('header').first();
     await expect(header).toBeVisible();
 
     await page.goto('/showcases');
-    const showcaseHeading = page.locator('h1');
+    const showcaseHeading = page.locator('h1').first();
     await expect(showcaseHeading).toBeVisible();
   });
 

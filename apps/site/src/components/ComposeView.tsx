@@ -3,6 +3,7 @@ import {
   getAllGoldenBriefs,
   getGoldenBrief,
   getAllProductArchetypes,
+  findBlueprintByArchetype,
   planScreenGraph,
   type ProductBriefInput,
 } from '@tessellate/composer';
@@ -49,6 +50,21 @@ export function ComposeView() {
   const [performanceCeiling, setPerformanceCeiling] = useState<'lightweight' | 'balanced' | 'rich'>('rich');
   const [targetDevices, setTargetDevices] = useState<Array<'desktop' | 'tablet' | 'mobile'>>(['desktop']);
   const [showAdvanced, setShowAdvanced] = useState<boolean>(false);
+
+  // Prefill from ?blueprint= URL parameter
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const blueprintParam = params.get('blueprint');
+    if (blueprintParam) {
+      const bp = findBlueprintByArchetype(blueprintParam);
+      if (bp) {
+        setDescription(`A specialized ${bp.name.toLowerCase()} platform: ${bp.description}`);
+        setSelectedArchetypeOverride(bp.archetypeId);
+        setFeel(bp.defaultObjective || 'professional and fast');
+      }
+    }
+  }, []);
 
   // Result state
   const [hasComposed, setHasComposed] = useState<boolean>(false);

@@ -1,7 +1,6 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { GOLD_40_SLUGS } from '../packages/catalog/src/gold.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,58 +13,75 @@ export interface DiscoveredGoldComponent {
   category: string;
   componentName: string;
   importPath: string;
+  previewName?: string;
+  previewImportPathPreviewApp?: string;
+  previewImportPathSite?: string;
   sourceCode: string;
   manifest: Record<string, unknown>;
 }
 
-export function discoverGoldComponents(): DiscoveredGoldComponent[] {
+export function discoverAllComponents(): DiscoveredGoldComponent[] {
   const categories = fs.readdirSync(resourcesDir);
   const discovered: DiscoveredGoldComponent[] = [];
 
-  for (const slug of GOLD_40_SLUGS) {
-    let foundCat = '';
-    let foundPath = '';
+  for (const cat of categories) {
+    const catDir = path.join(resourcesDir, cat);
+    if (!fs.statSync(catDir).isDirectory()) continue;
 
-    for (const cat of categories) {
-      const candidate = path.join(resourcesDir, cat, slug, 'index.tsx');
-      if (fs.existsSync(candidate)) {
-        foundCat = cat;
-        foundPath = candidate;
-        break;
+    const slugs = fs.readdirSync(catDir);
+    for (const slug of slugs) {
+      const compPath = path.join(catDir, slug, 'index.tsx');
+      if (!fs.existsSync(compPath)) continue;
+
+      const manifestPath = path.join(catDir, slug, 'manifest.json');
+      let manifest: Record<string, unknown> = {};
+      if (fs.existsSync(manifestPath)) {
+        try {
+          manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
+        } catch {
+          // Ignore parse errors for manifest
+        }
       }
+
+      const code = fs.readFileSync(compPath, 'utf-8');
+      const match = code.match(/export\s+(?:function|const|class)\s+([A-Z][A-Za-z0-9_]*)/);
+      if (!match || !match[1]) continue;
+
+      const componentName = match[1];
+
+      // Check preview file
+      const previewPath = path.join(catDir, slug, 'preview.tsx');
+      let previewName: string | undefined;
+      let previewImportPathPreviewApp: string | undefined;
+      let previewImportPathSite: string | undefined;
+
+      if (fs.existsSync(previewPath)) {
+        const previewCode = fs.readFileSync(previewPath, 'utf-8');
+        const pMatch = previewCode.match(/export\s+(?:function|const|class)\s+([A-Z][A-Za-z0-9_]*)/);
+        if (pMatch && pMatch[1]) {
+          previewName = pMatch[1];
+          previewImportPathPreviewApp = `../../../resources/${cat}/${slug}/preview.js`;
+          previewImportPathSite = `../../../../resources/${cat}/${slug}/preview.js`;
+        }
+      }
+
+      discovered.push({
+        slug,
+        id: (manifest.id as string) || undefined,
+        category: cat,
+        componentName,
+        importPath: `../../../resources/${cat}/${slug}/index.js`,
+        previewName,
+        previewImportPathPreviewApp,
+        previewImportPathSite,
+        sourceCode: code,
+        manifest,
+      });
     }
-
-    if (!foundPath) {
-      throw new Error(`Failed to find component for Gold slug: ${slug}`);
-    }
-
-    const manifestPath = path.join(resourcesDir, foundCat, slug, 'manifest.json');
-    let manifest: Record<string, unknown> = {};
-    if (fs.existsSync(manifestPath)) {
-      manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
-    }
-
-    const code = fs.readFileSync(foundPath, 'utf-8');
-
-    // Find component export name
-    // Matches export function Foo or export const Foo
-    const match = code.match(/export\s+(?:function|const|class)\s+([A-Za-z0-9_]+)/);
-    if (!match || !match[1]) {
-      throw new Error(`Failed to find component export in ${foundPath}`);
-    }
-
-    const componentName = match[1];
-    discovered.push({
-      slug,
-      id: (manifest.id as string) || undefined,
-      category: foundCat,
-      componentName,
-      importPath: `../../../resources/${foundCat}/${slug}/index.js`,
-      sourceCode: code,
-      manifest,
-    });
   }
 
+  // Sort deterministically by slug
+  discovered.sort((a, b) => a.slug.localeCompare(b.slug));
   return discovered;
 }
 
@@ -137,25 +153,61 @@ export function getGoldResourceSource(slugOrId: string): GoldResourceSource | un
 `;
 }
 
+export function generatePreviewsRegistry(components: DiscoveredGoldComponent[], target: 'preview-app' | 'site'): string {
+  const imports: string[] = ["import React from 'react';"];
+  const mappings: string[] = [];
+
+  components.forEach((c, idx) => {
+    if (!c.previewName) return;
+    const importPath = target === 'preview-app' ? c.previewImportPathPreviewApp : c.previewImportPathSite;
+    if (!importPath) return;
+
+    const importAlias = `Preview_${idx}_${c.previewName}`;
+    imports.push(`import { ${c.previewName} as ${importAlias} } from '${importPath}';`);
+    mappings.push(`  '${c.slug}': ${importAlias} as unknown as React.ComponentType<Record<string, unknown>>,`);
+    if (c.id) {
+      mappings.push(`  '${c.id}': ${importAlias} as unknown as React.ComponentType<Record<string, unknown>>,`);
+    }
+  });
+
+  return `// THIS FILE IS AUTO-GENERATED BY scripts/generate-gold-artifacts.ts - DO NOT EDIT MANUALLY
+${imports.join('\n')}
+
+export const GENERATED_PREVIEW_COMPONENTS: Record<string, React.ComponentType<Record<string, unknown>>> = {
+${mappings.join('\n')}
+};
+`;
+}
+
 export async function runGenerate() {
-  const components = discoverGoldComponents();
-  console.log(`[generate-gold-artifacts] Discovered ${components.length} Gold 40 components.`);
+  const components = discoverAllComponents();
+  console.log(`[generate-artifacts] Discovered ${components.length} components across all categories.`);
 
   // 1. Write renderer registry
   const rendererFile = path.join(rootDir, 'packages', 'renderer', 'src', 'generated-gold-registry.tsx');
   fs.writeFileSync(rendererFile, generateGoldRendererRegistry(components), 'utf-8');
-  console.log(`[generate-gold-artifacts] Wrote ${rendererFile}`);
+  console.log(`[generate-artifacts] Wrote ${rendererFile}`);
 
   // 2. Write exporter sources
   const exporterFile = path.join(rootDir, 'packages', 'exporter', 'src', 'generated-gold-sources.ts');
   fs.writeFileSync(exporterFile, generateGoldSources(components), 'utf-8');
-  console.log(`[generate-gold-artifacts] Wrote ${exporterFile}`);
+  console.log(`[generate-artifacts] Wrote ${exporterFile}`);
+
+  // 3. Write Preview App previews registry
+  const previewAppFile = path.join(rootDir, 'apps', 'preview', 'src', 'generated-previews.ts');
+  fs.writeFileSync(previewAppFile, generatePreviewsRegistry(components, 'preview-app'), 'utf-8');
+  console.log(`[generate-artifacts] Wrote ${previewAppFile}`);
+
+  // 4. Write Site previews registry
+  const sitePreviewFile = path.join(rootDir, 'apps', 'site', 'src', 'components', 'generated-previews.ts');
+  fs.writeFileSync(sitePreviewFile, generatePreviewsRegistry(components, 'site'), 'utf-8');
+  console.log(`[generate-artifacts] Wrote ${sitePreviewFile}`);
 }
 
 // Execute if run directly
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   runGenerate().catch((err) => {
-    console.error('[generate-gold-artifacts] Error:', err);
+    console.error('[generate-artifacts] Error:', err);
     process.exit(1);
   });
 }

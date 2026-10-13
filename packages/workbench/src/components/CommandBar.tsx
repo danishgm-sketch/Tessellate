@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { findNodeById } from '../utils/tree-helpers.js';
-import { executeNaturalLanguageCommand } from '../ai/ai-service.js';
-import { Terminal, CornerDownLeft } from 'lucide-react';
+import { executeQueuedCommand } from '../ai/queue-client.js';
+import { Terminal, CornerDownLeft, Cpu } from 'lucide-react';
 
 export function CommandBar() {
   const manifest = useWorkbenchStore((state) => state.manifest);
@@ -16,6 +16,12 @@ export function CommandBar() {
   const [inputVal, setInputVal] = useState('');
   const [feedback, setFeedback] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [queueStatus, setQueueStatus] = useState<{
+    status: string;
+    tokenNumber?: number;
+    position?: number;
+    message?: string;
+  } | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const activeScreen = manifest.screens.find((s) => s.id === activeScreenId);
@@ -68,24 +74,33 @@ export function CommandBar() {
         return;
       }
 
-      // Execute via AI / deterministic planner
-      const result = await executeNaturalLanguageCommand(manifest, activeScreenId, cmd);
+      // Execute via Bespoke Host Queue or Deterministic Fallback
+      const result = await executeQueuedCommand(
+        manifest,
+        activeScreenId,
+        cmd,
+        (progress) => {
+          setQueueStatus(progress);
+        }
+      );
 
       if (result.success) {
         for (const mut of result.mutations) {
           executeMutation(mut);
         }
-        setFeedback(result.explanation || `Executed: ${result.command.summary}`);
+        setFeedback(result.explanation);
         setInputVal('');
       } else {
-        setFeedback(result.error);
-        // Preserves inputVal on error so the user doesn't lose their prompt
+        setFeedback(result.error || 'Command execution failed.');
       }
     } catch (err) {
       setFeedback(err instanceof Error ? err.message : 'Command execution failed.');
     } finally {
       setIsProcessing(false);
-      setTimeout(() => setFeedback(null), 5000);
+      setTimeout(() => {
+        setFeedback(null);
+        setQueueStatus(null);
+      }, 5000);
     }
   };
 
@@ -102,6 +117,17 @@ export function CommandBar() {
             {selectedNode ? selectedNode.semanticRole : 'Project Scope'}
           </span>
         </div>
+
+        {/* Live Queue Token Badge */}
+        {queueStatus?.tokenNumber && (
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-mono shrink-0 animate-pulse">
+            <Cpu className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
+            <span className="font-semibold">Token #{queueStatus.tokenNumber}</span>
+            {typeof queueStatus.position === 'number' && queueStatus.position > 0 && (
+              <span className="text-[10px] text-indigo-500">(Pos: {queueStatus.position})</span>
+            )}
+          </div>
+        )}
 
         {/* Command Input Field */}
         <div className="relative flex-1">
@@ -129,7 +155,11 @@ export function CommandBar() {
 
       {/* Feedback or Keyboard Shortcuts Hint */}
       <div className="hidden md:flex items-center gap-3 text-[11px] text-[#62666F] dark:text-[#A8AFBA] font-mono">
-        {feedback ? (
+        {queueStatus?.message && !feedback ? (
+          <span className="text-indigo-600 dark:text-indigo-400 font-medium">
+            {queueStatus.message}
+          </span>
+        ) : feedback ? (
           <span className="text-[#2547E8] dark:text-[#6782FF] font-semibold animate-fade-in">
             {feedback}
           </span>

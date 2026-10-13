@@ -8,8 +8,10 @@ import {
   type PreviewErrorMessage,
 } from '@tessellate/catalog/protocol';
 import { ButtonPreview } from '../../../../resources/primitives/button/preview.js';
+import { GENERATED_PREVIEW_COMPONENTS } from './generated-previews.js';
 
 const PREVIEW_COMPONENTS: Record<string, React.ComponentType<Record<string, unknown>>> = {
+  ...GENERATED_PREVIEW_COMPONENTS,
   button: ButtonPreview as unknown as React.ComponentType<Record<string, unknown>>,
   ButtonPreview: ButtonPreview as unknown as React.ComponentType<Record<string, unknown>>,
 };

@@ -1,0 +1,77 @@
+---
+import '../../styles/global.css';
+import { SiteHeader } from '../../components/home/SiteHeader';
+import { FinalComposerFooter } from '../../components/home/FinalComposerFooter';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documentation — Tessellate Interface System</title>
+    <meta name="description" content="Technical documentation for Tessellate CLI, Model Context Protocol, and Design DNA manifests." />
+  </head>
+  <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white">
+    <SiteHeader client:load />
+
+    <main id="main-content" class="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 space-y-10">
+      <div class="space-y-3 max-w-2xl">
+        <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#62666F]">
+          Documentation & Protocols
+        </span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#111217]">
+          Tessellate Developer Documentation
+        </h1>
+        <p class="text-sm md:text-base text-[#62666F] leading-relaxed">
+          Everything you need to integrate, compose, and extend Tessellate interfaces using the open CLI, Model Context Protocol server, and schema manifests.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <a href="/docs/cli" class="p-6 rounded-2xl border border-[#D9D6CF] bg-white hover:border-[#2547E8] transition-all space-y-3 group shadow-xs">
+          <div class="h-9 w-9 rounded-xl bg-blue-50 text-[#2547E8] flex items-center justify-center font-mono font-bold text-sm">
+            CLI
+          </div>
+          <h2 class="text-lg font-bold group-hover:text-[#2547E8] transition-colors">Tessellate CLI (`tess`)</h2>
+          <p class="text-xs text-[#62666F] leading-relaxed">
+            Install components directly into your codebase, validate local manifests, and execute deterministic compositions from the terminal.
+          </p>
+        </a>
+
+        <a href="/docs/mcp" class="p-6 rounded-2xl border border-[#D9D6CF] bg-white hover:border-[#2547E8] transition-all space-y-3 group shadow-xs">
+          <div class="h-9 w-9 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-mono font-bold text-sm">
+            MCP
+          </div>
+          <h2 class="text-lg font-bold group-hover:text-purple-600 transition-colors">Model Context Protocol</h2>
+          <p class="text-xs text-[#62666F] leading-relaxed">
+            Equip autonomous coding agents (Claude, Cursor, Antigravity) with verified tools to search the catalog, retrieve source code, and recommend components.
+          </p>
+        </a>
+
+        <a href="/docs/manifest" class="p-6 rounded-2xl border border-[#D9D6CF] bg-white hover:border-[#2547E8] transition-all space-y-3 group shadow-xs">
+          <div class="h-9 w-9 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-mono font-bold text-sm">
+            AST
+          </div>
+          <h2 class="text-lg font-bold group-hover:text-emerald-600 transition-colors">Design DNA & Manifest Schemas</h2>
+          <p class="text-xs text-[#62666F] leading-relaxed">
+            The mathematical contract behind Tessellate: ResourceManifest, ProjectManifest, and 12-dimensional Design DNA specifications.
+          </p>
+        </a>
+
+        <a href="/docs/contributing" class="p-6 rounded-2xl border border-[#D9D6CF] bg-white hover:border-[#2547E8] transition-all space-y-3 group shadow-xs">
+          <div class="h-9 w-9 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-mono font-bold text-sm">
+            GIT
+          </div>
+          <h2 class="text-lg font-bold group-hover:text-amber-600 transition-colors">Authoring & Contributing</h2>
+          <p class="text-xs text-[#62666F] leading-relaxed">
+            How to author new components, declare semantic slots, pass WCAG AA accessibility audits, and submit to the open registry.
+          </p>
+        </a>
+      </div>
+    </main>
+
+    <FinalComposerFooter client:idle />
+  </body>
+</html>
