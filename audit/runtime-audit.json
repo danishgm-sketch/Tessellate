@@ -1,7 +1,7 @@
 {
   "deployment": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
-  "sourceCommit": "a34e0581e3d10df47e6b0205cfa08f32f794db64",
-  "phase": "version 6 deployed audit; Compose contrast remediation pending",
+  "sourceCommit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+  "phase": "version 7 deployed re-audit complete",
   "issues": [
     {
       "id": "AUD-001",
@@ -30,9 +30,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/components-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/components-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-002",
@@ -61,9 +73,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/sections-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/sections-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-003",
@@ -92,9 +116,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/blocks-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/blocks-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-004",
@@ -123,9 +159,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/pages-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/pages-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-005",
@@ -154,9 +202,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/effects-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/effects-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-006",
@@ -185,9 +245,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/motion-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/motion-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-007",
@@ -216,9 +288,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/backgrounds-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/backgrounds-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-008",
@@ -247,9 +331,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/ai-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/ai-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-009",
@@ -278,9 +374,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/data-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/data-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-010",
@@ -309,9 +417,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/blueprints-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/blueprints-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-011",
@@ -340,9 +460,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/collections-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/collections-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-012",
@@ -371,9 +503,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/about-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/about-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-013",
@@ -402,9 +546,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/agents-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/agents-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-014",
@@ -433,9 +589,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/creators-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/creators-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-015",
@@ -464,9 +632,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/docs-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/docs-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-016",
@@ -495,9 +675,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/docs-registry-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/docs-registry-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-017",
@@ -526,9 +718,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/license-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/license-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-018",
@@ -557,9 +761,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/privacy-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/privacy-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-019",
@@ -588,9 +804,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/showcase-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/showcase-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-020",
@@ -619,9 +847,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/sponsor-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/sponsor-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-021",
@@ -650,9 +890,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/terms-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/terms-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-022",
@@ -681,9 +933,21 @@
       "affectedCode": [
         "apps/site/src/pages"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/trends-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/trends-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-023",
@@ -711,9 +975,23 @@
         "packages/composer/src/interpreter.ts",
         "packages/composer/src/planner.ts"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit d506d40dafa41227f6313d691f6ce68b5a4601ae and verified against Site version 7.",
       "fixCommit": "d506d40dafa41227f6313d691f6ce68b5a4601ae",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/compose-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/compose-390.png",
+          "audit/evidence/deployed-version-7/directions/results.json",
+          "audit/evidence/deployed-version-7/flagship/02-three-directions.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-024",
@@ -739,9 +1017,23 @@
       "affectedCode": [
         "packages/compatibility/src/compose-pipeline.ts"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit d506d40dafa41227f6313d691f6ce68b5a4601ae and verified against Site version 7.",
       "fixCommit": "d506d40dafa41227f6313d691f6ce68b5a4601ae",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/compose-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/compose-390.png",
+          "audit/evidence/deployed-version-7/directions/results.json",
+          "audit/evidence/deployed-version-7/flagship/02-three-directions.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-025",
@@ -768,9 +1060,23 @@
         "packages/compatibility/src/compose-pipeline.ts",
         "resources"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit d506d40dafa41227f6313d691f6ce68b5a4601ae and verified against Site version 7.",
       "fixCommit": "d506d40dafa41227f6313d691f6ce68b5a4601ae",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/compose-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/compose-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/02-three-directions.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-026",
@@ -797,9 +1103,23 @@
         "apps/site/src/components/ComposeView.tsx",
         "packages/compatibility/src/compose-pipeline.ts"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/compose-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/compose-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/02-three-directions.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-027",
@@ -824,9 +1144,23 @@
       "affectedCode": [
         "apps/site/src/components/ComposeView.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/compose-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/compose-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/02-three-directions.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-028",
@@ -857,9 +1191,24 @@
         "packages/workbench/src/components/WorkbenchShell.tsx",
         "packages/workbench/src/persistence/storage.ts"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/supplemental/checkpoint-persists.png",
+          "audit/evidence/deployed-version-7/flagship/05-settings-conservative.tess.json",
+          "audit/evidence/deployed-version-7/flagship/06-locked-summary.tess.json"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-029",
@@ -890,9 +1239,23 @@
         "packages/workbench/src/mutations/replace.ts",
         "packages/exporter/src"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit d506d40dafa41227f6313d691f6ce68b5a4601ae and verified against Site version 7.",
       "fixCommit": "d506d40dafa41227f6313d691f6ce68b5a4601ae",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/standalone-build.json",
+          "audit/evidence/deployed-version-7/flagship/standalone-runtime.json"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-030",
@@ -921,9 +1284,23 @@
         "packages/workbench/src/mutations/replace.ts",
         "packages/workbench/src/components/replace/ReplaceDrawer.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-031",
@@ -950,9 +1327,23 @@
       "affectedCode": [
         "packages/workbench/src/components/replace/ReplaceDrawer.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-032",
@@ -980,9 +1371,23 @@
       "affectedCode": [
         "packages/workbench/src/store/workbench-store.ts"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-033",
@@ -1010,9 +1415,23 @@
       "affectedCode": [
         "packages/workbench/src/components/blend/BlendModal.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-034",
@@ -1039,9 +1458,23 @@
       "affectedCode": [
         "packages/workbench/src/store/workbench-store.ts"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-035",
@@ -1071,9 +1504,23 @@
         "packages/workbench/src/components/left-panel",
         "apps/site/src/components/ComposeView.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-036",
@@ -1101,9 +1548,23 @@
         "packages/workbench/src/components/left-panel",
         "packages/workbench/src/components/right-inspector/ConstraintsTab.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-037",
@@ -1131,9 +1592,23 @@
         "apps/site/src/styles/global.css",
         "packages/workbench/src/components"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-038",
@@ -1161,9 +1636,23 @@
       "affectedCode": [
         "packages/workbench/src/components/mobile/MobileWorkbench.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-039",
@@ -1192,9 +1681,23 @@
         "packages/workbench/src/components/audit/AuditPanel.tsx",
         "packages/workbench/src/audit"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-040",
@@ -1222,9 +1725,23 @@
         "packages/workbench/src/components/TopToolbar.tsx",
         "packages/workbench/src/store/workbench-store.ts"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-041",
@@ -1252,9 +1769,23 @@
         "packages/workbench/src/types.ts",
         "packages/workbench/src/components/canvas/CanvasToolbar.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-042",
@@ -1286,9 +1817,21 @@
       "affectedCode": [
         "apps/site/src/components/PreviewHost.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/r-area-chart-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/r-area-chart-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-043",
@@ -1321,9 +1864,21 @@
       "affectedCode": [
         "packages/workbench/src/components/WorkbenchShell.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 9ba4517421a716ff4f8cc6ceea304d9fa19914da and verified against Site version 7.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/r-button-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/r-button-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-044",
@@ -1348,9 +1903,21 @@
         "apps/site/src/components/home/SiteHeader.tsx",
         "apps/site/src/components/CommandPalette.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/home-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/home-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-045",
@@ -1374,9 +1941,21 @@
       "affectedCode": [
         "apps/site/src/components/home/SiteHeader.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/home-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/home-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-046",
@@ -1400,9 +1979,21 @@
       "affectedCode": [
         "apps/site/src/components/home/CatalogueMosaic.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/home-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/home-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-047",
@@ -1426,9 +2017,21 @@
       "affectedCode": [
         "apps/site/src/components/home/WorkbenchReveal.tsx"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/home-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/home-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-048",
@@ -1454,9 +2057,21 @@
         "packages/ui",
         "apps/site/src/components"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 08c06b875e7b2c11c95593279ba4e418332099ed and verified against Site version 7.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/home-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/home-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-049",
@@ -1482,9 +2097,21 @@
         ".openai/hosting.json",
         "apps/site/public/_headers"
       ],
-      "remediation": "Pending root-cause remediation and deployed verification.",
+      "remediation": "Implemented in commit 8dda28d7f9d4b33aa2c735486e70bc91ad0f5c1a and verified against Site version 7.",
       "fixCommit": "8dda28d7f9d4b33aa2c735486e70bc91ad0f5c1a",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/home-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/home-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-050",
@@ -1508,7 +2135,21 @@
       "affectedCode": "packages/workbench/src/components/left-panel",
       "remediation": "Canonical resource replacement, unique subtree IDs and shared state checks. Local implementation is awaiting deployed re-audit.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-051",
@@ -1532,7 +2173,21 @@
       "affectedCode": "packages/workbench/src/components/left-panel",
       "remediation": "Canonical resource replacement, unique subtree IDs and shared state checks. Local implementation is awaiting deployed re-audit.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-052",
@@ -1556,7 +2211,21 @@
       "affectedCode": "packages/workbench/src/components/right-inspector/StyleTab.tsx; packages/renderer/src/tokens/normalizer.ts",
       "remediation": "Persist paletteId in the existing node tokenOverrides contract and resolve it throughout runtime and standalone export. Regression initially failed cobalt versus coral.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-053",
@@ -1578,12 +2247,24 @@
       "screenshot": "audit/evidence/before/showcase-handoff-wrong-project-before.jpg",
       "rootCause": "Workbench boot reads only project query and ignores showcase query, then restores the previous local project.",
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "packages/workbench/src/components/WorkbenchShell.tsx",
         "apps/site/src/components/ShowcasesGallery.tsx"
       ],
-      "remediation": "fix(workbench): preserve truthful editing navigation and history"
+      "remediation": "fix(workbench): preserve truthful editing navigation and history",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/showcases-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/showcases-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-054",
@@ -2259,9 +2940,21 @@
         "resources/primitives/*/manifest.json"
       ],
       "fixCommit": "9ba4517421a716ff4f8cc6ceea304d9fa19914da",
-      "status": "open",
+      "status": "closed",
       "discoveryPhase": "local-remediation",
-      "remediation": "fix(workbench): preserve truthful editing navigation and history"
+      "remediation": "fix(workbench): preserve truthful editing navigation and history",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/explore-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/explore-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-055",
@@ -2300,9 +2993,21 @@
         "apps/site/astro.config.mjs"
       ],
       "fixCommit": "8dda28d7f9d4b33aa2c735486e70bc91ad0f5c1a",
-      "status": "open",
+      "status": "closed",
       "discoveryPhase": "local-remediation",
-      "remediation": "fix(sites): enforce isolated preview security with static asset worker"
+      "remediation": "fix(sites): enforce isolated preview security with static asset worker",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/button-1440.png",
+          "audit/evidence/deployed-version-7/resources/button-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-056",
@@ -2322,7 +3027,7 @@
       "screenshot": "audit/evidence/before/tools/accessibility-1440.png",
       "rootCause": "Tool styles fail contrast or keyboard reachability in the rendered surface.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "color-contrast",
         "impact": "serious",
@@ -2642,7 +3347,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/accessibility.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-057",
@@ -2662,7 +3378,7 @@
       "screenshot": "audit/evidence/before/tools/accessibility-1440.png",
       "rootCause": "Rendered tool fields use adjacent visual captions without programmatic association.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "label",
         "impact": "critical",
@@ -3074,7 +3790,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/accessibility.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-058",
@@ -3094,7 +3821,7 @@
       "screenshot": "audit/evidence/before/tools/backgrounds-1440.png",
       "rootCause": "Tool styles fail contrast or keyboard reachability in the rendered surface.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "color-contrast",
         "impact": "serious",
@@ -3482,7 +4209,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/backgrounds.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-059",
@@ -3502,7 +4240,7 @@
       "screenshot": "audit/evidence/before/tools/backgrounds-1440.png",
       "rootCause": "Rendered tool fields use adjacent visual captions without programmatic association.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "label",
         "impact": "critical",
@@ -4239,7 +4977,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/backgrounds.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-060",
@@ -4259,7 +5008,7 @@
       "screenshot": "audit/evidence/before/tools/dataviz-1440.png",
       "rootCause": "Tool styles fail contrast or keyboard reachability in the rendered surface.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "color-contrast",
         "impact": "serious",
@@ -4579,7 +5328,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/dataviz.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-061",
@@ -4599,7 +5359,7 @@
       "screenshot": "audit/evidence/before/tools/dataviz-1440.png",
       "rootCause": "Rendered tool fields use adjacent visual captions without programmatic association.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "label",
         "impact": "critical",
@@ -4946,7 +5706,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/dataviz.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-062",
@@ -4966,7 +5737,7 @@
       "screenshot": "audit/evidence/before/tools/dna-1440.png",
       "rootCause": "Tool styles fail contrast or keyboard reachability in the rendered surface.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "color-contrast",
         "impact": "serious",
@@ -6380,7 +7151,19 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/tools-dna-1440.png",
+          "audit/evidence/deployed-version-7/tool-interactions/dna.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-063",
@@ -6400,7 +7183,7 @@
       "screenshot": "audit/evidence/before/tools/icons-1440.png",
       "rootCause": "Tool styles fail contrast or keyboard reachability in the rendered surface.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "color-contrast",
         "impact": "serious",
@@ -6618,7 +7401,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/icons.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-064",
@@ -6638,7 +7432,7 @@
       "screenshot": "audit/evidence/before/tools/icons-1440.png",
       "rootCause": "Rendered tool fields use adjacent visual captions without programmatic association.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "label",
         "impact": "critical",
@@ -7115,7 +7909,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/icons.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-065",
@@ -7135,7 +7940,7 @@
       "screenshot": "audit/evidence/before/tools/layout-1440.png",
       "rootCause": "Tool styles fail contrast or keyboard reachability in the rendered surface.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "color-contrast",
         "impact": "serious",
@@ -7455,7 +8260,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/layout.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-066",
@@ -7475,7 +8291,7 @@
       "screenshot": "audit/evidence/before/tools/layout-1440.png",
       "rootCause": "Rendered tool fields use adjacent visual captions without programmatic association.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "label",
         "impact": "critical",
@@ -7757,7 +8573,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/layout.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-067",
@@ -7777,7 +8604,7 @@
       "screenshot": "audit/evidence/before/tools/motion-1440.png",
       "rootCause": "Tool styles fail contrast or keyboard reachability in the rendered surface.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "color-contrast",
         "impact": "serious",
@@ -8097,7 +8924,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/motion.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-068",
@@ -8117,7 +8955,7 @@
       "screenshot": "audit/evidence/before/tools/motion-1440.png",
       "rootCause": "Rendered tool fields use adjacent visual captions without programmatic association.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "label",
         "impact": "critical",
@@ -8659,7 +9497,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/motion.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-069",
@@ -8679,7 +9528,7 @@
       "screenshot": "audit/evidence/before/tools/palette-1440.png",
       "rootCause": "Tool styles fail contrast or keyboard reachability in the rendered surface.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "color-contrast",
         "impact": "serious",
@@ -9203,7 +10052,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/palette.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-070",
@@ -9223,7 +10083,7 @@
       "screenshot": "audit/evidence/before/tools/palette-1440.png",
       "rootCause": "Rendered tool fields use adjacent visual captions without programmatic association.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "label",
         "impact": "critical",
@@ -10545,7 +11405,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/palette.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-071",
@@ -10565,7 +11436,7 @@
       "screenshot": "audit/evidence/before/tools/section-planner-1440.png",
       "rootCause": "Tool styles fail contrast or keyboard reachability in the rendered surface.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "color-contrast",
         "impact": "serious",
@@ -11259,7 +12130,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/section-planner.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-072",
@@ -11279,7 +12161,7 @@
       "screenshot": "audit/evidence/before/tools/section-planner-1440.png",
       "rootCause": "Tool styles fail contrast or keyboard reachability in the rendered surface.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "scrollable-region-focusable",
         "impact": "serious",
@@ -11456,7 +12338,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/section-planner.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-073",
@@ -11476,7 +12369,7 @@
       "screenshot": "audit/evidence/before/tools/typography-1440.png",
       "rootCause": "Tool styles fail contrast or keyboard reachability in the rendered surface.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "color-contrast",
         "impact": "serious",
@@ -12034,7 +12927,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/typography.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-074",
@@ -12054,7 +12958,7 @@
       "screenshot": "audit/evidence/before/tools/typography-1440.png",
       "rootCause": "Rendered tool fields use adjacent visual captions without programmatic association.",
       "fixCommit": "08c06b875e7b2c11c95593279ba4e418332099ed",
-      "status": "open",
+      "status": "closed",
       "axe": {
         "id": "label",
         "impact": "critical",
@@ -12271,7 +13175,18 @@
         "apps/site/src/pages/trends/index.astro",
         "apps/site/src/styles/global.css"
       ],
-      "remediation": "fix(site): restore real public routes previews and accessible tools"
+      "remediation": "fix(site): restore real public routes previews and accessible tools",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/typography.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-075",
@@ -12295,9 +13210,23 @@
         "packages/compatibility/src/content-bindings.ts"
       ],
       "fixCommit": "d506d40dafa41227f6313d691f6ce68b5a4601ae",
-      "status": "open",
+      "status": "closed",
       "discoveryPhase": "local-remediation",
-      "remediation": "fix(composition): render coherent domain resources and portable exports"
+      "remediation": "fix(composition): render coherent domain resources and portable exports",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-076",
@@ -12321,9 +13250,23 @@
         "packages/compatibility/src/content-bindings.ts"
       ],
       "fixCommit": "d506d40dafa41227f6313d691f6ce68b5a4601ae",
-      "status": "open",
+      "status": "closed",
       "discoveryPhase": "local-remediation",
-      "remediation": "fix(composition): render coherent domain resources and portable exports"
+      "remediation": "fix(composition): render coherent domain resources and portable exports",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/compose-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/compose-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/02-three-directions.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-077",
@@ -12348,10 +13291,24 @@
         "packages/renderer/src/tokens/normalizer.ts"
       ],
       "fixCommit": "d506d40dafa41227f6313d691f6ce68b5a4601ae",
-      "status": "open",
+      "status": "closed",
       "evidence": "audit/evidence/local-iteration-4b/feel/playfulness-no-rendered-change.json",
       "discoveryPhase": "local-remediation",
-      "remediation": "fix(composition): render coherent domain resources and portable exports"
+      "remediation": "fix(composition): render coherent domain resources and portable exports",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-078",
@@ -12376,9 +13333,21 @@
         "packages/exporter/src/source-tree.ts"
       ],
       "fixCommit": "d506d40dafa41227f6313d691f6ce68b5a4601ae",
-      "status": "open",
+      "status": "closed",
       "discoveryPhase": "local-remediation",
-      "remediation": "fix(composition): render coherent domain resources and portable exports"
+      "remediation": "fix(composition): render coherent domain resources and portable exports",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/flagship/standalone-runtime.json",
+          "audit/evidence/deployed-version-7/flagship/standalone-1440.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-079",
@@ -12403,9 +13372,20 @@
         "packages/exporter/src/source-tree.ts"
       ],
       "fixCommit": "76e106e506cb0afd12a43d1f2f2f2095459dd174",
-      "status": "open",
+      "status": "closed",
       "discoveryPhase": "local-remediation",
-      "remediation": "test(export): verify preview readiness through real HTTP response"
+      "remediation": "test(export): verify preview readiness through real HTTP response",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/flagship/standalone-build.json"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-080",
@@ -12425,7 +13405,7 @@
       "screenshot": "audit/evidence/local-iteration-5/resources/button-1440.png",
       "rootCause": "PreviewHost treats only JavaScript functions as React components, excluding forwardRef and memo exports.",
       "fixCommit": "b30caf328b68b087f5052ad1f586a354a97cde5b",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "apps/preview/public/data/catalog.json",
         "apps/preview/public/data/catalog.min.json",
@@ -12442,7 +13422,19 @@
         "apps/site/src/components/PreviewHost.tsx",
         "resources/shells/messaging-shell/index.tsx"
       ],
-      "remediation": "fix(previews): support forwarded components and mobile messaging layout"
+      "remediation": "fix(previews): support forwarded components and mobile messaging layout",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/button-1440.png",
+          "audit/evidence/deployed-version-7/resources/button-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-081",
@@ -12461,7 +13453,7 @@
       "screenshot": "audit/evidence/local-iteration-5/resources/messaging-shell-390.png",
       "rootCause": "The shell has no container breakpoint or minimum-width reset.",
       "fixCommit": "b30caf328b68b087f5052ad1f586a354a97cde5b",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "apps/preview/public/data/catalog.json",
         "apps/preview/public/data/catalog.min.json",
@@ -12478,7 +13470,19 @@
         "apps/site/src/components/PreviewHost.tsx",
         "resources/shells/messaging-shell/index.tsx"
       ],
-      "remediation": "fix(previews): support forwarded components and mobile messaging layout"
+      "remediation": "fix(previews): support forwarded components and mobile messaging layout",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/messaging-shell-1440.png",
+          "audit/evidence/deployed-version-7/resources/messaging-shell-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-082",
@@ -12498,7 +13502,7 @@
       "screenshot": "audit/evidence/local-iteration-6/resources/two-pane-master-detail-shell-390.png",
       "rootCause": "Fixed horizontal layout lacks container breakpoint; queue selection has no semantic button.",
       "fixCommit": "27c59b2e7471c0bee4860999c6ae3029e0ac07d3",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "apps/preview/public/data/catalog.json",
         "apps/preview/public/data/catalog.min.json",
@@ -12517,7 +13521,19 @@
         "packages/exporter/src/generated-gold-sources.ts",
         "resources/shells/two-pane-master-detail-shell/index.tsx"
       ],
-      "remediation": "fix(resources): make master detail responsive and keyboard selectable"
+      "remediation": "fix(resources): make master detail responsive and keyboard selectable",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/two-pane-master-detail-shell-1440.png",
+          "audit/evidence/deployed-version-7/resources/two-pane-master-detail-shell-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-083",
@@ -12537,7 +13553,7 @@
       "screenshot": "audit/evidence/deployed-version-2/instrumented/home-1440.png",
       "rootCause": "The Sites host serves matching assets before the Worker even with run_worker_first configured.",
       "fixCommit": "6ba48a9a31c6f69c46cd0e8170e437fbc870b24e",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "apps/site/src/components/tools/PaletteStudio.tsx",
         "apps/sites/README.md",
@@ -12545,7 +13561,20 @@
         "apps/sites/worker.ts",
         "docs/DECISIONS.md"
       ],
-      "remediation": "fix(sites): route protected HTML through security worker on native host"
+      "remediation": "fix(sites): route protected HTML through security worker on native host",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/button-1440.png",
+          "audit/evidence/deployed-version-7/resources/button-390.png",
+          "audit/evidence/deployed-version-7/security-headers.json"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-084",
@@ -12565,7 +13594,7 @@
       "screenshot": "audit/evidence/deployed-version-2/tool-interactions/palette.png",
       "rootCause": "The palette demonstration uses a presentation-only button without interaction state and misleading sample labels.",
       "fixCommit": "6ba48a9a31c6f69c46cd0e8170e437fbc870b24e",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "apps/site/src/components/tools/PaletteStudio.tsx",
         "apps/sites/README.md",
@@ -12573,7 +13602,18 @@
         "apps/sites/worker.ts",
         "docs/DECISIONS.md"
       ],
-      "remediation": "fix(sites): route protected HTML through security worker on native host"
+      "remediation": "fix(sites): route protected HTML through security worker on native host",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/tool-interactions/palette.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-085",
@@ -12594,12 +13634,26 @@
       "screenshot": "audit/evidence/deployed-version-2/supplemental/blended-project.png",
       "rootCause": "Workbench autosave journals new manifest IDs but does not update project URL.",
       "fixCommit": "23c42bfcdf3a09ba09dcf2605a7a5b0ca33021f2",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "packages/workbench/src/components/WorkbenchShell.tsx",
         "packages/workbench/src/components/left-panel/PagesTab.tsx"
       ],
-      "remediation": "fix(workbench): retain blended identity and accessible page actions"
+      "remediation": "fix(workbench): retain blended identity and accessible page actions",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-086",
@@ -12620,12 +13674,26 @@
       "screenshot": "audit/evidence/deployed-version-2/supplemental/compare-actual-employee.png",
       "rootCause": "Screen row has role=button while containing duplicate/delete buttons.",
       "fixCommit": "23c42bfcdf3a09ba09dcf2605a7a5b0ca33021f2",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "packages/workbench/src/components/WorkbenchShell.tsx",
         "packages/workbench/src/components/left-panel/PagesTab.tsx"
       ],
-      "remediation": "fix(workbench): retain blended identity and accessible page actions"
+      "remediation": "fix(workbench): retain blended identity and accessible page actions",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-087",
@@ -12645,12 +13713,26 @@
       "screenshot": "audit/evidence/deployed-version-2/supplemental/duplicate-screen.png",
       "rootCause": "Page action buttons use 12px icons and only 4px padding.",
       "fixCommit": "23c42bfcdf3a09ba09dcf2605a7a5b0ca33021f2",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "packages/workbench/src/components/WorkbenchShell.tsx",
         "packages/workbench/src/components/left-panel/PagesTab.tsx"
       ],
-      "remediation": "fix(workbench): retain blended identity and accessible page actions"
+      "remediation": "fix(workbench): retain blended identity and accessible page actions",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-088",
@@ -12671,11 +13753,23 @@
       "screenshot": "audit/evidence/deployed-version-2/search-ranking-before.png",
       "rootCause": "Explore converts ranked Orama hits to an ID set and filters the original catalogue order, destroying relevance ordering.",
       "fixCommit": "af2a3e70435605e06d7190eafbf347d401df2789",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "apps/site/src/components/ExploreView.tsx"
       ],
-      "remediation": "fix(search): retain canonical resource relevance ordering"
+      "remediation": "fix(search): retain canonical resource relevance ordering",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/explore-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/explore-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-089",
@@ -12704,7 +13798,19 @@
       ],
       "remediation": "Declare no-transform for HTML, preserving strict CSP without allowing challenge network requests.",
       "fixCommit": "c95b43527eacf4bedc32c45b31eddec6a8314b80",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/accessibility-commitment-section-1440.png",
+          "audit/evidence/deployed-version-7/resources/accessibility-commitment-section-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-090",
@@ -12728,7 +13834,19 @@
       ],
       "remediation": "Replace certification and universal claims with explicit design targets and integration verification guidance.",
       "fixCommit": "c844313604c45cfbbea0db4d15a741fcafbfc4d0",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/accessibility-commitment-section-1440.png",
+          "audit/evidence/deployed-version-7/resources/accessibility-commitment-section-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-091",
@@ -12753,7 +13871,19 @@
       ],
       "remediation": "Reuse shared focus containment and restoration hook, add dialog semantics and a truthful Close control.",
       "fixCommit": "6599d03435a58351d92216beaf9986d44680a02a",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/home-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/home-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-092",
@@ -12778,7 +13908,19 @@
       ],
       "remediation": "Apply shared dark semantic token scope, preserving global light shell tokens.",
       "fixCommit": "1a00169483d8b7ad72b1bf762547abbd0b5df94c",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/home-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/home-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-093",
@@ -12803,7 +13945,19 @@
       ],
       "remediation": "Use canonical employee manifest fields and explicitly label the incomplete example ILLUSTRATIVE EXCERPT.",
       "fixCommit": "1a00169483d8b7ad72b1bf762547abbd0b5df94c",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/home-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/home-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-094",
@@ -12827,7 +13981,19 @@
       ],
       "remediation": "Activate full navigation at 1280px and retain the working navigation drawer below that width.",
       "fixCommit": "a81ef51bcb98e6e42d862b84dbc2153c75bc8ce3",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/home-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/home-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-095",
@@ -12852,7 +14018,21 @@
       ],
       "remediation": "Create a local mobile canvas stacking context and constrain the small-screen export popup to viewport gutters.",
       "fixCommit": "f1898713cf8ddf930f6d8770b1426fc5e2d285fc",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-096",
@@ -12876,7 +14056,21 @@
       ],
       "remediation": "Use the intentional navigation sheet below 1280px, matching the corrected homepage header.",
       "fixCommit": "a81ef51bcb98e6e42d862b84dbc2153c75bc8ce3",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/compose-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/compose-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/02-three-directions.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-097",
@@ -12900,7 +14094,21 @@
       ],
       "remediation": "Name the results region and make it focusable without altering audit content or disabling accessibility rules.",
       "fixCommit": "d840283be402234f08a51cdc88ba720de86459b4",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/workbench-390.png",
+          "audit/evidence/deployed-version-7/flagship/result.json",
+          "audit/evidence/deployed-version-7/flagship/03-direction-c-handoff.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-098",
@@ -12928,7 +14136,19 @@
       ],
       "remediation": "Make authored code blocks focusable and add a build-time Markdown transform for pre/table keyboard access.",
       "fixCommit": "d840283be402234f08a51cdc88ba720de86459b4",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/docs-registry-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/docs-registry-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-099",
@@ -12953,7 +14173,19 @@
       ],
       "remediation": "Use IntersectionObserver to mount real previews within 160px of the viewport, retaining a browser-capability fallback.",
       "fixCommit": "ab6e2cb6e13b0cda59a6255920608968b971b5ff",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/explore-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/explore-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-100",
@@ -12973,7 +14205,7 @@
       "screenshot": "audit/evidence/deployed-version-4/resources/customer-metrics-strip-1440.png",
       "rootCause": "Unqualified fabricated defaults in reusable resource source and fixtures.",
       "fixCommit": "5c79c062529840b4b5ce2a15145f18c9a12529cc",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "resources/sections/compliance-proof/index.tsx",
         "resources/sections/customer-metrics-strip/fixtures.ts",
@@ -12994,7 +14226,19 @@
         "resources/typography/counter-typography/index.tsx",
         "resources/typography/text-path-arc/index.tsx"
       ],
-      "remediation": "fix(resources): replace fabricated product claims with explicit examples"
+      "remediation": "fix(resources): replace fabricated product claims with explicit examples",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/customer-metrics-strip-1440.png",
+          "audit/evidence/deployed-version-7/resources/customer-metrics-strip-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-101",
@@ -13014,7 +14258,7 @@
       "screenshot": "audit/evidence/deployed-version-4/resources/compliance-proof-1440.png",
       "rootCause": "Unqualified fabricated defaults in reusable resource source and fixtures.",
       "fixCommit": "5c79c062529840b4b5ce2a15145f18c9a12529cc",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "resources/sections/compliance-proof/index.tsx",
         "resources/sections/customer-metrics-strip/fixtures.ts",
@@ -13035,7 +14279,19 @@
         "resources/typography/counter-typography/index.tsx",
         "resources/typography/text-path-arc/index.tsx"
       ],
-      "remediation": "fix(resources): replace fabricated product claims with explicit examples"
+      "remediation": "fix(resources): replace fabricated product claims with explicit examples",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/compliance-proof-1440.png",
+          "audit/evidence/deployed-version-7/resources/compliance-proof-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-102",
@@ -13055,7 +14311,7 @@
       "screenshot": "audit/evidence/deployed-version-4/resources/social-proof-hero-1440.png",
       "rootCause": "Unqualified fabricated defaults in reusable resource source and fixtures.",
       "fixCommit": "5c79c062529840b4b5ce2a15145f18c9a12529cc",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "resources/sections/compliance-proof/index.tsx",
         "resources/sections/customer-metrics-strip/fixtures.ts",
@@ -13076,7 +14332,19 @@
         "resources/typography/counter-typography/index.tsx",
         "resources/typography/text-path-arc/index.tsx"
       ],
-      "remediation": "fix(resources): replace fabricated product claims with explicit examples"
+      "remediation": "fix(resources): replace fabricated product claims with explicit examples",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/social-proof-hero-1440.png",
+          "audit/evidence/deployed-version-7/resources/social-proof-hero-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-103",
@@ -13096,7 +14364,7 @@
       "screenshot": "audit/evidence/deployed-version-4/resources/testimonial-quote-1440.png",
       "rootCause": "Unqualified fabricated defaults in reusable resource source and fixtures.",
       "fixCommit": "5c79c062529840b4b5ce2a15145f18c9a12529cc",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "resources/sections/compliance-proof/index.tsx",
         "resources/sections/customer-metrics-strip/fixtures.ts",
@@ -13117,7 +14385,19 @@
         "resources/typography/counter-typography/index.tsx",
         "resources/typography/text-path-arc/index.tsx"
       ],
-      "remediation": "fix(resources): replace fabricated product claims with explicit examples"
+      "remediation": "fix(resources): replace fabricated product claims with explicit examples",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/testimonial-quote-1440.png",
+          "audit/evidence/deployed-version-7/resources/testimonial-quote-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-104",
@@ -13137,7 +14417,7 @@
       "screenshot": "audit/evidence/deployed-version-4/resources/pricing-enterprise-1440.png",
       "rootCause": "Unqualified fabricated defaults in reusable resource source and fixtures.",
       "fixCommit": "5c79c062529840b4b5ce2a15145f18c9a12529cc",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "resources/sections/compliance-proof/index.tsx",
         "resources/sections/customer-metrics-strip/fixtures.ts",
@@ -13158,7 +14438,19 @@
         "resources/typography/counter-typography/index.tsx",
         "resources/typography/text-path-arc/index.tsx"
       ],
-      "remediation": "fix(resources): replace fabricated product claims with explicit examples"
+      "remediation": "fix(resources): replace fabricated product claims with explicit examples",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/pricing-enterprise-1440.png",
+          "audit/evidence/deployed-version-7/resources/pricing-enterprise-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-105",
@@ -13178,7 +14470,7 @@
       "screenshot": "audit/evidence/deployed-version-4/resources/pricing-enterprise-1440.png",
       "rootCause": "Unqualified fabricated defaults in reusable resource source and fixtures.",
       "fixCommit": "5c79c062529840b4b5ce2a15145f18c9a12529cc",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "resources/sections/compliance-proof/index.tsx",
         "resources/sections/customer-metrics-strip/fixtures.ts",
@@ -13199,7 +14491,19 @@
         "resources/typography/counter-typography/index.tsx",
         "resources/typography/text-path-arc/index.tsx"
       ],
-      "remediation": "fix(resources): replace fabricated product claims with explicit examples"
+      "remediation": "fix(resources): replace fabricated product claims with explicit examples",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/pricing-enterprise-1440.png",
+          "audit/evidence/deployed-version-7/resources/pricing-enterprise-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-106",
@@ -13220,12 +14524,24 @@
       "screenshot": "audit/evidence/local-v5-acceptance/responsive-keyboard/explore-1440.png",
       "rootCause": "Decorative amber and emerald shade 600 used for small text and white button labels.",
       "fixCommit": "1d5cc6ea426f5484f589287de7aa98c80dee4525",
-      "status": "open",
+      "status": "closed",
       "affectedCode": [
         "resources/ai/ai-approval-request/index.tsx",
         "resources/sections/accessibility-commitment-section/index.tsx"
       ],
-      "remediation": "fix(a11y): restore contrast in loaded catalogue previews"
+      "remediation": "fix(a11y): restore contrast in loaded catalogue previews",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/explore-1440.png",
+          "audit/evidence/deployed-version-7/preview-accessibility/results.json"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-107",
@@ -13250,7 +14566,19 @@
       ],
       "remediation": "Replace assertions with illustrative copy or explicit measurement and verification requirements.",
       "fixCommit": "7785a42ea78ddd2acecec7053029587e66ac5cd9",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/press-mentions-strip-1440.png",
+          "audit/evidence/deployed-version-7/resources/press-mentions-strip-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-108",
@@ -13275,7 +14603,19 @@
       ],
       "remediation": "Replace assertions with illustrative copy or explicit measurement and verification requirements.",
       "fixCommit": "7785a42ea78ddd2acecec7053029587e66ac5cd9",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/feature-metrics-1440.png",
+          "audit/evidence/deployed-version-7/resources/feature-metrics-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-109",
@@ -13300,7 +14640,19 @@
       ],
       "remediation": "Replace assertions with illustrative copy or explicit measurement and verification requirements.",
       "fixCommit": "7785a42ea78ddd2acecec7053029587e66ac5cd9",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/security-proof-1440.png",
+          "audit/evidence/deployed-version-7/resources/security-proof-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-110",
@@ -13325,7 +14677,19 @@
       ],
       "remediation": "Replace assertions with illustrative copy or explicit measurement and verification requirements.",
       "fixCommit": "7785a42ea78ddd2acecec7053029587e66ac5cd9",
-      "status": "open"
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/split-product-hero-1440.png",
+          "audit/evidence/deployed-version-7/resources/split-product-hero-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-111",
@@ -13350,8 +14714,21 @@
       ],
       "remediation": "Retain the readable full interactive preview; consider a dedicated compact overview in a later visual refinement.",
       "fixCommit": null,
-      "status": "open",
-      "remainingRationale": "Non-blocking compact-card limitation. The clearly labelled full-preview control displays every screen at readable size and is exercised in acceptance. A dedicated summary rendering would alter preview presentation beyond the repaired workflow."
+      "status": "accepted",
+      "remainingRationale": "Non-blocking compact-card limitation. The clearly labelled full-preview control displays every screen at readable size and is exercised in acceptance. A dedicated summary rendering would alter preview presentation beyond the repaired workflow.",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "accepted-nonblocking",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/compose-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/compose-390.png",
+          "audit/evidence/deployed-version-7/directions/direction-01-full-preview.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "Compact card content remains cropped, while the labelled full preview renders every screen at readable size; retained as the sole documented Medium limitation."
+      }
     },
     {
       "id": "AUD-112",
@@ -13380,8 +14757,23 @@
         "resources/sections/case-study-spotlight/fixtures.ts"
       ],
       "remediation": "Replace with explicit example copy, remove unsupported outcomes, and disable the case-study link until a destination is configured.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/case-study-spotlight-1440.png",
+          "audit/evidence/deployed-version-7/resources/case-study-spotlight-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/case-study-spotlight-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/case-study-spotlight-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-113",
@@ -13410,8 +14802,23 @@
         "resources/sections/customer-story-split/fixtures.ts"
       ],
       "remediation": "Use clearly labelled example copy and require a configured story destination.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/customer-story-split-1440.png",
+          "audit/evidence/deployed-version-7/resources/customer-story-split-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/customer-story-split-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/customer-story-split-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-114",
@@ -13440,8 +14847,23 @@
         "resources/sections/logo-cloud-minimal/fixtures.ts"
       ],
       "remediation": "Replace names with visible example placeholders and mark the heading as illustrative.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/logo-cloud-minimal-1440.png",
+          "audit/evidence/deployed-version-7/resources/logo-cloud-minimal-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/logo-cloud-minimal-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/logo-cloud-minimal-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-115",
@@ -13469,8 +14891,23 @@
         "resources/blocks/executive-summary-panel/index.tsx"
       ],
       "remediation": "Label the briefing and values as illustrative and say the panel is not connected to telemetry.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/executive-summary-panel-1440.png",
+          "audit/evidence/deployed-version-7/resources/executive-summary-panel-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/executive-summary-panel-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/executive-summary-panel-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-116",
@@ -13498,8 +14935,23 @@
         "resources/blocks/status-overview/index.tsx"
       ],
       "remediation": "Use an example snapshot label and remove claims of live operational status.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/status-overview-1440.png",
+          "audit/evidence/deployed-version-7/resources/status-overview-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/status-overview-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/status-overview-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-117",
@@ -13527,8 +14979,23 @@
         "resources/sections/cta-demo-booking/index.tsx"
       ],
       "remediation": "Label sample availability, implement selection, and disable confirmation until a caller supplies a booking handler.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/cta-demo-booking-1440.png",
+          "audit/evidence/deployed-version-7/resources/cta-demo-booking-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/cta-demo-booking-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/cta-demo-booking-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-118",
@@ -13556,8 +15023,23 @@
         "resources/blocks/upgrade-prompt/index.tsx"
       ],
       "remediation": "Present a plan template, remove Tessellate subscription claims, and require an upgrade callback.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/upgrade-prompt-1440.png",
+          "audit/evidence/deployed-version-7/resources/upgrade-prompt-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/upgrade-prompt-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/upgrade-prompt-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-119",
@@ -13586,8 +15068,23 @@
         "resources/states/offline-state/README.md"
       ],
       "remediation": "State that offline persistence depends on the host app and no remote synchronization is configured by this example.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/offline-state-1440.png",
+          "audit/evidence/deployed-version-7/resources/offline-state-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/offline-state-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/offline-state-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-120",
@@ -13615,8 +15112,23 @@
         "resources/sections/architecture-diagram-section/index.tsx"
       ],
       "remediation": "Label it optional reference architecture, disclose unprovisioned bindings, and remove security/performance assertions.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/architecture-diagram-section-1440.png",
+          "audit/evidence/deployed-version-7/resources/architecture-diagram-section-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/architecture-diagram-section-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/architecture-diagram-section-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-121",
@@ -13645,8 +15157,23 @@
         "resources/sections/footer-developer/README.md"
       ],
       "remediation": "Replace pseudo telemetry with an explicit example label and request runtime-supplied values for live display.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/footer-developer-1440.png",
+          "audit/evidence/deployed-version-7/resources/footer-developer-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/footer-developer-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/footer-developer-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-122",
@@ -13676,8 +15203,23 @@
         "resources/sections/cta-download/README.md"
       ],
       "remediation": "Remove unverified version/channel claims and provide a disabled, explained default until an install integration is supplied.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/cta-download-1440.png",
+          "audit/evidence/deployed-version-7/resources/cta-download-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/cta-download-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/cta-download-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-123",
@@ -13707,8 +15249,23 @@
         "resources/sections/product-screenshot-hero/README.md"
       ],
       "remediation": "Mark the frame as an example, remove dynamic claims, and require an explicit CTA URL.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/product-screenshot-hero-1440.png",
+          "audit/evidence/deployed-version-7/resources/product-screenshot-hero-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/product-screenshot-hero-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/product-screenshot-hero-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-124",
@@ -13737,8 +15294,23 @@
         "resources/blocks/comparison-table/README.md"
       ],
       "remediation": "Rename sample columns and label the values as illustrative until measured data and methodology are provided.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/comparison-table-1440.png",
+          "audit/evidence/deployed-version-7/resources/comparison-table-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/comparison-table-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/comparison-table-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-125",
@@ -13766,8 +15338,23 @@
         "resources/sections/faq-two-column/index.tsx"
       ],
       "remediation": "Describe offline behavior as host-app dependent and keep migration claims limited to implemented, tested schema paths.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/faq-two-column-1440.png",
+          "audit/evidence/deployed-version-7/resources/faq-two-column-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/faq-two-column-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/faq-two-column-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-126",
@@ -13795,8 +15382,23 @@
         "resources/sections/feature-grid-3x2/index.tsx"
       ],
       "remediation": "Qualify targets, require implementation-specific accessibility verification, and identify sync as a separately configured capability.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/feature-grid-3x2-1440.png",
+          "audit/evidence/deployed-version-7/resources/feature-grid-3x2-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/feature-grid-3x2-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/feature-grid-3x2-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-127",
@@ -13824,8 +15426,23 @@
         "resources/ai/ai-generation-compare/index.tsx"
       ],
       "remediation": "Mark all values as illustrative and avoid presenting static scores as generated output.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/ai-generation-compare-1440.png",
+          "audit/evidence/deployed-version-7/resources/ai-generation-compare-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/ai-generation-compare-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/ai-generation-compare-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-128",
@@ -13853,8 +15470,23 @@
         "resources/sections/editorial-hero/index.tsx"
       ],
       "remediation": "Remove the false version announcement and phrase performance as a measured target rather than a guarantee.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "eb491b6d3ed9afcf368424090cff2a76cce33de3",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/resources/editorial-hero-1440.png",
+          "audit/evidence/deployed-version-7/resources/editorial-hero-390.png",
+          "audit/evidence/deployed-version-7/demo-content/after-results.json",
+          "audit/evidence/deployed-version-7/demo-content/editorial-hero-1440.png",
+          "audit/evidence/deployed-version-7/demo-content/editorial-hero-390.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-129",
@@ -13884,8 +15516,22 @@
         "scripts/build-catalog.ts"
       ],
       "remediation": "Derive graph IDs from a canonical ProductModel value and give generated example showcases their fixture timestamps. Keep current timestamps for newly composed user projects.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "53bf7453e1acc0f25c50fbfe055dcb36f140ec23",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/showcase-stability/showcase-playful-hr-1440.png",
+          "audit/evidence/deployed-version-7/showcase-stability/showcase-playful-hr-390.png",
+          "audit/evidence/deployed-version-7/showcase-stability/result.json",
+          "audit/evidence/deployed-version-7/showcase-stability/workbench-handoff.tess.json"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     },
     {
       "id": "AUD-130",
@@ -13913,283 +15559,563 @@
         "apps/site/src/components/ComposeView.tsx"
       ],
       "remediation": "Keep the native catalogue-ready disabled gate and use an opaque neutral disabled fill with a readable foreground in both themes.",
-      "fixCommit": null,
-      "status": "open"
+      "fixCommit": "d301f9c0af6bafa04f554b86120cce7b16612f24",
+      "status": "closed",
+      "deployedVerification": {
+        "version": 7,
+        "commit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+        "result": "verified-fixed",
+        "evidence": [
+          "audit/evidence/deployed-version-7/instrumented/compose-1440.png",
+          "audit/evidence/deployed-version-7/instrumented/compose-390.png",
+          "audit/evidence/deployed-version-7/compose-contrast/result.json",
+          "audit/evidence/deployed-version-7/compose-contrast/disabled-submit-1440.png"
+        ],
+        "browserErrors": 0,
+        "failedEssentialRequests": 0,
+        "note": "After-repair route and relevant interaction passed the deployed version 7 browser audit."
+      }
     }
   ],
   "routes": [
     {
       "route": "/",
-      "status": "DEGRADED",
-      "evidence": "audit/evidence/before/instrumented/home-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
         200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/home-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/home-390.png"
       ]
     },
     {
-      "route": "/explore/",
-      "status": "DEGRADED",
-      "evidence": "audit/evidence/before/instrumented/explore-1440.png",
+      "route": "/explore",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        307,
         200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/explore-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/explore-390.png"
       ]
     },
     {
       "route": "/components",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/components-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/components-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/components-390.png"
       ]
     },
     {
       "route": "/sections",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/sections-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/sections-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/sections-390.png"
       ]
     },
     {
       "route": "/blocks",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/blocks-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/blocks-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/blocks-390.png"
       ]
     },
     {
       "route": "/pages",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/pages-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/pages-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/pages-390.png"
       ]
     },
     {
       "route": "/effects",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/effects-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/effects-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/effects-390.png"
       ]
     },
     {
       "route": "/motion",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/motion-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/motion-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/motion-390.png"
       ]
     },
     {
       "route": "/backgrounds",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/backgrounds-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/backgrounds-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/backgrounds-390.png"
       ]
     },
     {
       "route": "/ai",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/ai-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/ai-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/ai-390.png"
       ]
     },
     {
       "route": "/data",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/data-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/data-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/data-390.png"
       ]
     },
     {
-      "route": "/compose/",
-      "status": "DEGRADED",
-      "evidence": "audit/evidence/before/instrumented/compose-1440.png",
+      "route": "/compose",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        307,
         200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/compose-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/compose-390.png"
       ]
     },
     {
-      "route": "/workbench/",
-      "status": "DEGRADED",
-      "evidence": "audit/evidence/before/instrumented/workbench-1440.png",
+      "route": "/workbench",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        307,
         200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/workbench-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/workbench-390.png"
       ]
     },
     {
       "route": "/blueprints",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/blueprints-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/blueprints-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/blueprints-390.png"
       ]
     },
     {
       "route": "/collections",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/collections-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
-      ]
-    },
-    {
-      "route": "/about",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/about-1440.png",
-      "http": [
-        404
-      ]
-    },
-    {
-      "route": "/agents",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/agents-1440.png",
-      "http": [
-        404
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/collections-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/collections-390.png"
       ]
     },
     {
       "route": "/creators",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/creators-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
-      ]
-    },
-    {
-      "route": "/docs",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/docs-1440.png",
-      "http": [
-        404
-      ]
-    },
-    {
-      "route": "/docs/registry",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/docs-registry-1440.png",
-      "http": [
-        404
-      ]
-    },
-    {
-      "route": "/workbench/",
-      "status": "DEGRADED",
-      "evidence": "audit/evidence/before/instrumented/flagship-shell-1440.png",
-      "http": [
-        307,
-        200,
-        307,
         200
-      ]
-    },
-    {
-      "route": "/license",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/license-1440.png",
-      "http": [
-        404
-      ]
-    },
-    {
-      "route": "/privacy",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/privacy-1440.png",
-      "http": [
-        404
-      ]
-    },
-    {
-      "route": "/r/area-chart/",
-      "status": "DEGRADED",
-      "evidence": "audit/evidence/before/instrumented/r-area-chart-1440.png",
-      "http": [
-        307,
-        200,
-        307,
-        200
-      ]
-    },
-    {
-      "route": "/r/button/",
-      "status": "DEGRADED",
-      "evidence": "audit/evidence/before/instrumented/r-button-1440.png",
-      "http": [
-        307,
-        200,
-        307,
-        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/creators-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/creators-390.png"
       ]
     },
     {
       "route": "/showcase",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/showcase-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
-      ]
-    },
-    {
-      "route": "/showcases/",
-      "status": "MISLEADING",
-      "evidence": "audit/evidence/before/instrumented/showcases-1440.png",
-      "http": [
-        307,
         200
-      ]
-    },
-    {
-      "route": "/sponsor",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/sponsor-1440.png",
-      "http": [
-        404
-      ]
-    },
-    {
-      "route": "/terms",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/terms-1440.png",
-      "http": [
-        404
-      ]
-    },
-    {
-      "route": "/tools/",
-      "status": "DEGRADED",
-      "evidence": "audit/evidence/before/instrumented/tools-1440.png",
-      "http": [
-        307,
-        200
-      ]
-    },
-    {
-      "route": "/tools/dna/",
-      "status": "DEGRADED",
-      "evidence": "audit/evidence/before/instrumented/tools-dna-1440.png",
-      "http": [
-        307,
-        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/showcase-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/showcase-390.png"
       ]
     },
     {
       "route": "/trends",
-      "status": "BROKEN",
-      "evidence": "audit/evidence/before/instrumented/trends-1440.png",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
       "http": [
-        404
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/trends-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/trends-390.png"
+      ]
+    },
+    {
+      "route": "/tools",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/tools-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/tools-390.png"
+      ]
+    },
+    {
+      "route": "/agents",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/agents-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/agents-390.png"
+      ]
+    },
+    {
+      "route": "/docs",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/docs-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/docs-390.png"
+      ]
+    },
+    {
+      "route": "/sponsor",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/sponsor-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/sponsor-390.png"
+      ]
+    },
+    {
+      "route": "/about",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/about-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/about-390.png"
+      ]
+    },
+    {
+      "route": "/license",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/license-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/license-390.png"
+      ]
+    },
+    {
+      "route": "/privacy",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/privacy-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/privacy-390.png"
+      ]
+    },
+    {
+      "route": "/terms",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/terms-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/terms-390.png"
+      ]
+    },
+    {
+      "route": "/r/button",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/r-button-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/r-button-390.png"
+      ]
+    },
+    {
+      "route": "/r/area-chart",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/r-area-chart-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/r-area-chart-390.png"
+      ]
+    },
+    {
+      "route": "/preview/?resource=button",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/resources/button-1440.png",
+        "audit/evidence/deployed-version-7/resources/button-390.png"
+      ]
+    },
+    {
+      "route": "/blueprints/b2b-saas",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/responsive-keyboard/blueprints-b2b-saas-1440.png",
+        "audit/evidence/deployed-version-7/responsive-keyboard/blueprints-b2b-saas-390.png"
+      ]
+    },
+    {
+      "route": "/showcase/showcase-playful-hr/",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/showcase-stability/showcase-playful-hr-1440.png",
+        "audit/evidence/deployed-version-7/showcase-stability/showcase-playful-hr-390.png"
+      ]
+    },
+    {
+      "route": "/tools/dna",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/tools-dna-1440.png",
+        "audit/evidence/deployed-version-7/tool-interactions/dna.png"
+      ]
+    },
+    {
+      "route": "/docs/registry",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/docs-registry-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/docs-registry-390.png"
+      ]
+    },
+    {
+      "route": "/showcases",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/instrumented/showcases-1440.png",
+        "audit/evidence/deployed-version-7/instrumented/showcases-390.png"
+      ]
+    },
+    {
+      "route": "/data/catalog.json",
+      "status": "PASS",
+      "viewport": [
+        "1440x900",
+        "390x844"
+      ],
+      "http": [
+        200
+      ],
+      "evidence": [
+        "audit/evidence/deployed-version-7/catalog-load.json"
       ]
     }
   ],
-  "acceptance": "NOT ACCEPTED: version 6 deployed verification pending; one medium compact-preview limitation documented.",
-  "deployedVersion": 6
+  "acceptance": "ACCEPTED on deployed version 7: all Critical and High findings closed, no open issues, no uncaught browser errors, unresolved resources, synthetic refs, or failed essential requests. One Medium compact Direction A card limitation is accepted and documented; its full interactive preview is readable.",
+  "deployedVersion": 7,
+  "deployedCodeCommit": "16fc7cc67b4cd4c6a746f545bd3751709e7e5990",
+  "summary": {
+    "total": 130,
+    "bySeverity": {
+      "critical": 5,
+      "high": 112,
+      "medium": 12,
+      "low": 1
+    },
+    "closed": 129,
+    "accepted": 1,
+    "open": 0
+  }
 }

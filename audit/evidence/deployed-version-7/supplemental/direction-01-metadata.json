@@ -1,0 +1,1640 @@
+{
+  "id": "proj-direction-a-612977633067438fa8e2b6742e4eff7bdira",
+  "dna": {
+    "professionalism": 100,
+    "playfulness": 53,
+    "luxury": 40,
+    "warmth": 45,
+    "technicality": 65,
+    "editorial": 35,
+    "futurism": 35,
+    "visualAmbition": 20,
+    "structuralCreativity": 40,
+    "density": 60,
+    "whitespace": 65,
+    "contrast": 75,
+    "colourfulness": 54,
+    "curvature": 53,
+    "depth": 35,
+    "motion": 41,
+    "motionPlayfulness": 25,
+    "typographicExpression": 45,
+    "imageryIntensity": 35,
+    "videoIntensity": 15,
+    "threeDIntensity": 5,
+    "dataDensity": 65,
+    "interactionDensity": 60,
+    "asymmetry": 0,
+    "conversionIntensity": 55,
+    "trust": 100,
+    "accessibilityPriority": 100,
+    "performancePriority": 97,
+    "primaryArchetype": "recruitment",
+    "visualMode": "light",
+    "geometryFamily": "pill",
+    "navigationModel": "sidebar",
+    "responsivePhilosophy": "desktop-dense-mobile-focused",
+    "contentTone": "calm",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "playful-spring",
+    "typographyPersonality": "geist-system",
+    "surfacePersonality": "subtle-contrast"
+  },
+  "navigation": {
+    "model": "sidebar",
+    "primaryItems": [
+      {
+        "label": "Marketing Home",
+        "targetScreenId": "screen-marketing-home"
+      },
+      {
+        "label": "Team Overview",
+        "targetScreenId": "screen-overview"
+      },
+      {
+        "label": "People Directory",
+        "targetScreenId": "screen-collection-index"
+      },
+      {
+        "label": "Employee Profile",
+        "targetScreenId": "screen-entity-detail"
+      },
+      {
+        "label": "Teams",
+        "targetScreenId": "screen-teams"
+      },
+      {
+        "label": "Onboarding",
+        "targetScreenId": "screen-onboarding"
+      },
+      {
+        "label": "Engagement",
+        "targetScreenId": "screen-engagement"
+      },
+      {
+        "label": "Settings & Policies",
+        "targetScreenId": "screen-settings"
+      },
+      {
+        "label": "Sign In",
+        "targetScreenId": "screen-sign-in"
+      }
+    ]
+  },
+  "grammar": "classic-sidebar-dashboard",
+  "screens": [
+    {
+      "id": "screen-marketing-home",
+      "screenNodeId": "screen-marketing-home",
+      "name": "Marketing Home",
+      "slug": "/",
+      "rootNode": {
+        "id": "root-screen-marketing-home",
+        "nodeType": "layout",
+        "semanticRole": "marketing-page",
+        "children": [
+          {
+            "id": "node-screen-marketing-home-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "People & Co",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Team Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "People Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Teams",
+                  "href": "#screen-teams"
+                },
+                {
+                  "label": "Onboarding",
+                  "href": "#screen-onboarding"
+                },
+                {
+                  "label": "Engagement",
+                  "href": "#screen-engagement"
+                },
+                {
+                  "label": "Settings & Policies",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-hero-2",
+            "nodeType": "section",
+            "semanticRole": "hero",
+            "resourceRef": {
+              "id": "res_sec_editorial_hero",
+              "slug": "editorial-hero",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "eyebrow": "Example organisation · sample content",
+              "headline": "A better workday starts with people.",
+              "subheadline": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+              "primaryCta": {
+                "label": "Meet your team",
+                "href": "#screen-overview"
+              },
+              "secondaryCta": {
+                "label": "Explore onboarding",
+                "href": "#screen-onboarding"
+              },
+              "note": "Example interface · replace sample data with your organisation"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-value-proposition-3",
+            "nodeType": "section",
+            "semanticRole": "value-proposition",
+            "resourceRef": {
+              "id": "res_sec_feature_bento",
+              "slug": "feature-bento",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Made for everyday employee experiences",
+              "items": [
+                {
+                  "title": "A warm welcome",
+                  "description": "Meet your buddy, discover your team and complete onboarding at your own pace.",
+                  "detail": "Onboarding"
+                },
+                {
+                  "title": "People, connected",
+                  "description": "Find colleagues and understand the teams around you.",
+                  "detail": "People directory"
+                },
+                {
+                  "title": "A voice for everyone",
+                  "description": "Make space for feedback, recognition and conversations.",
+                  "detail": "Engagement"
+                },
+                {
+                  "title": "Clarity you can trust",
+                  "description": "Keep organisational policies and account preferences easy to find.",
+                  "detail": "Settings & policies"
+                }
+              ]
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-conversion-cta-4",
+            "nodeType": "section",
+            "semanticRole": "conversion-cta",
+            "resourceRef": {
+              "id": "res_sec_cta_minimal",
+              "slug": "cta-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "headline": "A better workday starts with people.",
+              "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+              "label": "Continue onboarding",
+              "href": "#screen-onboarding"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-footer-5",
+            "nodeType": "section",
+            "semanticRole": "footer",
+            "resourceRef": {
+              "id": "res_sec_footer_product",
+              "slug": "footer-product",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "People & Co",
+              "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Team Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "People Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Teams",
+                  "href": "#screen-teams"
+                },
+                {
+                  "label": "Onboarding",
+                  "href": "#screen-onboarding"
+                },
+                {
+                  "label": "Engagement",
+                  "href": "#screen-engagement"
+                },
+                {
+                  "label": "Settings & Policies",
+                  "href": "#screen-settings"
+                }
+              ]
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutFamily": "sidebar-card-grid"
+        },
+        "dnaOverrides": {
+          "playfulness": 65,
+          "warmth": 82,
+          "visualMode": "light"
+        }
+      }
+    },
+    {
+      "id": "screen-overview",
+      "screenNodeId": "screen-overview",
+      "name": "Team Overview",
+      "slug": "/overview",
+      "rootNode": {
+        "id": "root-screen-overview",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-overview-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "People & Co",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Team Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "People Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Teams",
+                  "href": "#screen-teams"
+                },
+                {
+                  "label": "Onboarding",
+                  "href": "#screen-onboarding"
+                },
+                {
+                  "label": "Engagement",
+                  "href": "#screen-engagement"
+                },
+                {
+                  "label": "Settings & Policies",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-overview-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-overview-overview-header-2",
+                "nodeType": "section",
+                "semanticRole": "overview-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Team Overview",
+                  "subtitle": "Employee summary, onboarding progress and team pulse",
+                  "badge": "EXAMPLE",
+                  "initials": "PC"
+                }
+              },
+              {
+                "id": "node-screen-overview-metric-cards-3",
+                "nodeType": "section",
+                "semanticRole": "metric-cards",
+                "resourceRef": {
+                  "id": "res_blk_dashboard_kpi_grid",
+                  "slug": "dashboard-kpi-grid",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Your organisation at a glance",
+                  "cards": [
+                    {
+                      "label": "People",
+                      "val": "500",
+                      "status": "From your brief · example"
+                    },
+                    {
+                      "label": "Onboarding",
+                      "val": "12",
+                      "status": "Sample journeys"
+                    },
+                    {
+                      "label": "Team pulse",
+                      "val": "Positive",
+                      "status": "Illustrative feedback"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-overview-activity-feed-4",
+                "nodeType": "section",
+                "semanticRole": "activity-feed",
+                "resourceRef": {
+                  "id": "res_blk_notification_centre",
+                  "slug": "notification-centre",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "People updates",
+                  "events": [
+                    {
+                      "time": "Today",
+                      "title": "Welcome to the team",
+                      "desc": "Meet your onboarding buddy and introduce yourself to colleagues."
+                    },
+                    {
+                      "time": "This week",
+                      "title": "Team check-in",
+                      "desc": "Share how your first week is going and ask for support."
+                    },
+                    {
+                      "time": "Next milestone",
+                      "title": "Policies and preferences",
+                      "desc": "Review organisational guidance and choose your notification preferences."
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-overview-data-table-5",
+                "nodeType": "section",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "People and teams",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example colleague A",
+                      "type": "Product team",
+                      "quality": 80,
+                      "status": "Onboarding"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example colleague B",
+                      "type": "Engineering team",
+                      "quality": 100,
+                      "status": "Settled in"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example colleague C",
+                      "type": "People team",
+                      "quality": 40,
+                      "status": "Welcome week"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Colleague",
+                    "type": "Team",
+                    "quality": "Progress",
+                    "status": "Status"
+                  }
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    },
+    {
+      "id": "screen-collection-index",
+      "screenNodeId": "screen-collection-index",
+      "name": "People Directory",
+      "slug": "/people",
+      "rootNode": {
+        "id": "root-screen-collection-index",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-collection-index-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "People & Co",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Team Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "People Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Teams",
+                  "href": "#screen-teams"
+                },
+                {
+                  "label": "Onboarding",
+                  "href": "#screen-onboarding"
+                },
+                {
+                  "label": "Engagement",
+                  "href": "#screen-engagement"
+                },
+                {
+                  "label": "Settings & Policies",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-collection-index-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-collection-index-index-header-2",
+                "nodeType": "section",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "People Directory",
+                  "subtitle": "Searchable, filterable catalog of all employee records.",
+                  "badge": "EXAMPLE",
+                  "initials": "PC"
+                }
+              },
+              {
+                "id": "node-screen-collection-index-filter-bar-3",
+                "nodeType": "section",
+                "semanticRole": "filter-bar",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-collection-index-data-table-4",
+                "nodeType": "section",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "People and teams",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example colleague A",
+                      "type": "Product team",
+                      "quality": 80,
+                      "status": "Onboarding"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example colleague B",
+                      "type": "Engineering team",
+                      "quality": 100,
+                      "status": "Settled in"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example colleague C",
+                      "type": "People team",
+                      "quality": 40,
+                      "status": "Welcome week"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Colleague",
+                    "type": "Team",
+                    "quality": "Progress",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-collection-index-pagination-5",
+                "nodeType": "section",
+                "semanticRole": "pagination",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Continue",
+                  "disabled": false,
+                  "title": "People Directory"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    },
+    {
+      "id": "screen-entity-detail",
+      "screenNodeId": "screen-entity-detail",
+      "name": "Employee Profile",
+      "slug": "/people/:id",
+      "rootNode": {
+        "id": "root-screen-entity-detail",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-entity-detail-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "People & Co",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Team Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "People Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Teams",
+                  "href": "#screen-teams"
+                },
+                {
+                  "label": "Onboarding",
+                  "href": "#screen-onboarding"
+                },
+                {
+                  "label": "Engagement",
+                  "href": "#screen-engagement"
+                },
+                {
+                  "label": "Settings & Policies",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-entity-detail-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-entity-detail-entity-header-2",
+                "nodeType": "section",
+                "semanticRole": "entity-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Employee Profile",
+                  "subtitle": "Deep inspection, metadata attributes, timeline, and actions for a single employee.",
+                  "badge": "EXAMPLE",
+                  "initials": "PC"
+                }
+              },
+              {
+                "id": "node-screen-entity-detail-detail-tabs-3",
+                "nodeType": "section",
+                "semanticRole": "detail-tabs",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "People & Co",
+                  "links": [
+                    {
+                      "label": "Marketing Home",
+                      "href": "#screen-marketing-home"
+                    },
+                    {
+                      "label": "Team Overview",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "People Directory",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Teams",
+                      "href": "#screen-teams"
+                    },
+                    {
+                      "label": "Onboarding",
+                      "href": "#screen-onboarding"
+                    },
+                    {
+                      "label": "Engagement",
+                      "href": "#screen-engagement"
+                    },
+                    {
+                      "label": "Settings & Policies",
+                      "href": "#screen-settings"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-entity-detail-main-content-pane-4",
+                "nodeType": "section",
+                "semanticRole": "main-content-pane",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Employee Profile",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example colleague A",
+                      "type": "Product team",
+                      "quality": 80,
+                      "status": "Onboarding"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example colleague B",
+                      "type": "Engineering team",
+                      "quality": 100,
+                      "status": "Settled in"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example colleague C",
+                      "type": "People team",
+                      "quality": 40,
+                      "status": "Welcome week"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Colleague",
+                    "type": "Team",
+                    "quality": "Progress",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-entity-detail-metadata-sidebar-5",
+                "nodeType": "section",
+                "semanticRole": "metadata-sidebar",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Employee Profile",
+                  "subtitle": "Deep inspection, metadata attributes, timeline, and actions for a single employee.",
+                  "badge": "EXAMPLE",
+                  "initials": "PC"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    },
+    {
+      "id": "screen-teams",
+      "screenNodeId": "screen-teams",
+      "name": "Teams",
+      "slug": "/teams",
+      "rootNode": {
+        "id": "root-screen-teams",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-teams-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "People & Co",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Team Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "People Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Teams",
+                  "href": "#screen-teams"
+                },
+                {
+                  "label": "Onboarding",
+                  "href": "#screen-onboarding"
+                },
+                {
+                  "label": "Engagement",
+                  "href": "#screen-engagement"
+                },
+                {
+                  "label": "Settings & Policies",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-teams-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-teams-index-header-2",
+                "nodeType": "section",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Teams",
+                  "subtitle": "Explore team membership and shared priorities",
+                  "badge": "EXAMPLE",
+                  "initials": "PC"
+                }
+              },
+              {
+                "id": "node-screen-teams-filter-bar-3",
+                "nodeType": "section",
+                "semanticRole": "filter-bar",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-teams-data-table-4",
+                "nodeType": "section",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Team directory",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example colleague A",
+                      "type": "Product team",
+                      "quality": 80,
+                      "status": "Onboarding"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example colleague B",
+                      "type": "Engineering team",
+                      "quality": 100,
+                      "status": "Settled in"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example colleague C",
+                      "type": "People team",
+                      "quality": 40,
+                      "status": "Welcome week"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Colleague",
+                    "type": "Team",
+                    "quality": "Progress",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-teams-pagination-5",
+                "nodeType": "section",
+                "semanticRole": "pagination",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Continue",
+                  "disabled": false,
+                  "title": "Teams"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    },
+    {
+      "id": "screen-onboarding",
+      "screenNodeId": "screen-onboarding",
+      "name": "Onboarding",
+      "slug": "/onboarding",
+      "rootNode": {
+        "id": "root-screen-onboarding",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-onboarding-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "People & Co",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Team Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "People Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Teams",
+                  "href": "#screen-teams"
+                },
+                {
+                  "label": "Onboarding",
+                  "href": "#screen-onboarding"
+                },
+                {
+                  "label": "Engagement",
+                  "href": "#screen-engagement"
+                },
+                {
+                  "label": "Settings & Policies",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-onboarding-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-onboarding-progress-stepper-2",
+                "nodeType": "section",
+                "semanticRole": "progress-stepper",
+                "resourceRef": {
+                  "id": "res_blk_timeline",
+                  "slug": "timeline",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Welcome milestones",
+                  "events": [
+                    {
+                      "time": "Today",
+                      "title": "Welcome to the team",
+                      "desc": "Meet your onboarding buddy and introduce yourself to colleagues."
+                    },
+                    {
+                      "time": "This week",
+                      "title": "Team check-in",
+                      "desc": "Share how your first week is going and ask for support."
+                    },
+                    {
+                      "time": "Next milestone",
+                      "title": "Policies and preferences",
+                      "desc": "Review organisational guidance and choose your notification preferences."
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-onboarding-wizard-content-3",
+                "nodeType": "section",
+                "semanticRole": "wizard-content",
+                "resourceRef": {
+                  "id": "res_blk_kanban_board",
+                  "slug": "kanban-board",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Your onboarding journey",
+                  "columns": [
+                    {
+                      "title": "Discover",
+                      "tasks": [
+                        "Meet your buddy",
+                        "Find your team"
+                      ]
+                    },
+                    {
+                      "title": "Connect",
+                      "tasks": [
+                        "Introduce yourself",
+                        "Join a team check-in"
+                      ]
+                    },
+                    {
+                      "title": "Feel at home",
+                      "tasks": [
+                        "Read organisational policies",
+                        "Share your first-week feedback"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-onboarding-action-controls-4",
+                "nodeType": "section",
+                "semanticRole": "action-controls",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Continue",
+                  "disabled": true,
+                  "title": "Connect the exported application to your backend to enable this action."
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        },
+        "dnaOverrides": {
+          "playfulness": 75,
+          "warmth": 78,
+          "curvature": 65,
+          "motionPlayfulness": 55
+        }
+      }
+    },
+    {
+      "id": "screen-engagement",
+      "screenNodeId": "screen-engagement",
+      "name": "Engagement",
+      "slug": "/engagement",
+      "rootNode": {
+        "id": "root-screen-engagement",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-engagement-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "People & Co",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Team Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "People Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Teams",
+                  "href": "#screen-teams"
+                },
+                {
+                  "label": "Onboarding",
+                  "href": "#screen-onboarding"
+                },
+                {
+                  "label": "Engagement",
+                  "href": "#screen-engagement"
+                },
+                {
+                  "label": "Settings & Policies",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-engagement-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-engagement-overview-header-2",
+                "nodeType": "section",
+                "semanticRole": "overview-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Engagement",
+                  "subtitle": "Review employee feedback and recognition",
+                  "badge": "EXAMPLE",
+                  "initials": "PC"
+                }
+              },
+              {
+                "id": "node-screen-engagement-metric-cards-3",
+                "nodeType": "section",
+                "semanticRole": "metric-cards",
+                "resourceRef": {
+                  "id": "res_blk_dashboard_kpi_grid",
+                  "slug": "dashboard-kpi-grid",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Your organisation at a glance",
+                  "cards": [
+                    {
+                      "label": "People",
+                      "val": "500",
+                      "status": "From your brief · example"
+                    },
+                    {
+                      "label": "Onboarding",
+                      "val": "12",
+                      "status": "Sample journeys"
+                    },
+                    {
+                      "label": "Team pulse",
+                      "val": "Positive",
+                      "status": "Illustrative feedback"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-engagement-activity-feed-4",
+                "nodeType": "section",
+                "semanticRole": "activity-feed",
+                "resourceRef": {
+                  "id": "res_blk_notification_centre",
+                  "slug": "notification-centre",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "People updates",
+                  "events": [
+                    {
+                      "time": "Today",
+                      "title": "Welcome to the team",
+                      "desc": "Meet your onboarding buddy and introduce yourself to colleagues."
+                    },
+                    {
+                      "time": "This week",
+                      "title": "Team check-in",
+                      "desc": "Share how your first week is going and ask for support."
+                    },
+                    {
+                      "time": "Next milestone",
+                      "title": "Policies and preferences",
+                      "desc": "Review organisational guidance and choose your notification preferences."
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-engagement-data-table-5",
+                "nodeType": "section",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "People and teams",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example colleague A",
+                      "type": "Product team",
+                      "quality": 80,
+                      "status": "Onboarding"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example colleague B",
+                      "type": "Engineering team",
+                      "quality": 100,
+                      "status": "Settled in"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example colleague C",
+                      "type": "People team",
+                      "quality": 40,
+                      "status": "Welcome week"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Colleague",
+                    "type": "Team",
+                    "quality": "Progress",
+                    "status": "Status"
+                  }
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    },
+    {
+      "id": "screen-settings",
+      "screenNodeId": "screen-settings",
+      "name": "Settings & Policies",
+      "slug": "/settings",
+      "rootNode": {
+        "id": "root-screen-settings",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-settings-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "People & Co",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Team Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "People Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Teams",
+                  "href": "#screen-teams"
+                },
+                {
+                  "label": "Onboarding",
+                  "href": "#screen-onboarding"
+                },
+                {
+                  "label": "Engagement",
+                  "href": "#screen-engagement"
+                },
+                {
+                  "label": "Settings & Policies",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-settings-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-settings-settings-nav-2",
+                "nodeType": "section",
+                "semanticRole": "settings-nav",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "People & Co",
+                  "links": [
+                    {
+                      "label": "Marketing Home",
+                      "href": "#screen-marketing-home"
+                    },
+                    {
+                      "label": "Team Overview",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "People Directory",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Teams",
+                      "href": "#screen-teams"
+                    },
+                    {
+                      "label": "Onboarding",
+                      "href": "#screen-onboarding"
+                    },
+                    {
+                      "label": "Engagement",
+                      "href": "#screen-engagement"
+                    },
+                    {
+                      "label": "Settings & Policies",
+                      "href": "#screen-settings"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-settings-settings-form-3",
+                "nodeType": "section",
+                "semanticRole": "settings-form",
+                "resourceRef": {
+                  "id": "res_primitive_input",
+                  "slug": "input",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Notification preferences",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
+                }
+              },
+              {
+                "id": "node-screen-settings-save-footer-4",
+                "nodeType": "section",
+                "semanticRole": "save-footer",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Save preferences",
+                  "disabled": true,
+                  "title": "Connect the exported application to your backend to enable this action."
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        },
+        "dnaOverrides": {
+          "professionalism": 96,
+          "playfulness": 8,
+          "curvature": 12,
+          "motion": 10
+        }
+      }
+    },
+    {
+      "id": "screen-sign-in",
+      "screenNodeId": "screen-sign-in",
+      "name": "Sign In",
+      "slug": "/sign-in",
+      "rootNode": {
+        "id": "root-screen-sign-in",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-sign-in-auth-card-1",
+            "nodeType": "section",
+            "semanticRole": "auth-card",
+            "resourceRef": {
+              "id": "res_primitive_input",
+              "slug": "input",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "label": "Work email",
+              "helperText": "Example field. Connect persistence and your backend in the exported application."
+            }
+          },
+          {
+            "id": "container-screen-sign-in-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-sign-in-auth-footer-2",
+                "nodeType": "section",
+                "semanticRole": "auth-footer",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Authentication backend required",
+                  "disabled": true,
+                  "title": "Connect the exported application to your backend to enable this action."
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    }
+  ],
+  "diagnostics": []
+}

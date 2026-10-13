@@ -1,9 +1,9 @@
 # Audit progress
 
-111 findings: five critical, 98 high, seven medium and one low. Repairs cover 110 findings. One medium compact preview-card limitation remains documented; the complete Direction A preview works at readable size.
+The version 7 deployed audit is complete. The product passed all 35 classified routes, the flagship employee-experience journey, 648 desktop/mobile resource preview checks, all ten tools, responsive and keyboard audits, showcase stability, resource/content truth checks, live security-header verification, and the independent standalone ZIP install/build/preview.
 
-Version 5 real deployed acceptance passed the flagship, 648 resource renders, 31 routes, ten tools, seven responsive widths, keyboard checks and independent export. Four additional unverified content claims were found by inspecting all rendered resource copy and repaired with failing-before/passing-after tests.
+The audit contains 130 findings: five Critical, 112 High, 12 Medium, and one Low. All Critical and High findings are closed. 129 findings are closed overall; one Medium compact Direction A card limitation is accepted because the labelled full preview renders all screens at readable size. There are no open findings.
 
-Current local validation passes 391 tests, strict typecheck, zero lint errors (34 existing warnings), frozen installation, production build, catalogue/provenance/security, 16 behavioural gates and bundle budgets. Final acceptance awaits version 6 deployed re-audit and fresh independent ZIP.
+Validation passed: frozen install, 411 tests, typecheck, lint with zero errors, 16 behavioral release gates, bundle budgets, provenance/licence and security audits, and the 710-page production build. The deployed Compose disabled action now measures 5.75:1, the audited Axe runs report zero violations, and the final exported React project builds and runs independently.
 
-The original owner checkout remains untouched. Branch codex/e2e-production-audit has draft PR https://github.com/danishgm-sketch/Tessellate/pull/3; no merge is authorized. No D1/R2 or paid infrastructure was added. Canonical application packages and architecture are preserved.
+The deployed Site is public at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ as version 7, built from `16fc7cc67b4cd4c6a746f545bd3751709e7e5990`. Branch `codex/e2e-production-audit` has draft PR https://github.com/danishgm-sketch/Tessellate/pull/3; it has not been merged. No D1/R2 or paid infrastructure was added. The canonical application architecture remains intact.

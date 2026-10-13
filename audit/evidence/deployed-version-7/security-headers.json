@@ -1,0 +1,42 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "version": 7,
+  "observations": [
+    {
+      "route": "/",
+      "status": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.tessellate.design http://localhost:8787 https://api.github.com; frame-src 'self' https://preview.tessellate.design http://localhost:4321 http://localhost:5173; object-src 'none'; base-uri 'self'; frame-ancestors 'self';",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-frame-options": "SAMEORIGIN",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "content-type": "text/html; charset=utf-8"
+      }
+    },
+    {
+      "route": "/preview/?resource=button",
+      "status": 200,
+      "headers": {
+        "content-security-policy": "default-src 'none'; script-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site 'unsafe-inline'; style-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site 'unsafe-inline'; img-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; font-src https://tessellate-v1-review.ismayildanish-gm.chatgpt.site data:; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'self'; frame-ancestors 'self';",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-frame-options": "SAMEORIGIN",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "content-type": "text/html; charset=utf-8"
+      }
+    },
+    {
+      "route": "/r/button/",
+      "status": 200,
+      "headers": {
+        "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.tessellate.design http://localhost:8787 https://api.github.com; frame-src 'self' https://preview.tessellate.design http://localhost:4321 http://localhost:5173; object-src 'none'; base-uri 'self'; frame-ancestors 'self';",
+        "x-content-type-options": "nosniff",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "x-frame-options": "SAMEORIGIN",
+        "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=()",
+        "content-type": "text/html; charset=utf-8"
+      }
+    }
+  ]
+}
