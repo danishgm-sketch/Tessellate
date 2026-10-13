@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { findNodeById } from '../utils/tree-helpers.js';
-import { executeQueuedCommand } from '../ai/queue-client.js';
+import { executeQueuedCommand, checkHostHealth, type HostHealth } from '../ai/queue-client.js';
 import { Terminal, CornerDownLeft, Cpu } from 'lucide-react';
 
 export function CommandBar() {
@@ -17,6 +17,7 @@ export function CommandBar() {
   const [inputVal, setInputVal] = useState('');
   const [feedback, setFeedback] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [hostHealth, setHostHealth] = useState<HostHealth | null>(null);
   const [queueStatus, setQueueStatus] = useState<{
     status: string;
     tokenNumber?: number;
@@ -24,6 +25,14 @@ export function CommandBar() {
     message?: string;
   } | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    let stopped = false;
+    const update = async () => { const health = await checkHostHealth(); if (!stopped) setHostHealth(health); };
+    void update();
+    const timer = setInterval(() => { void update(); }, 10000);
+    return () => { stopped = true; clearInterval(timer); };
+  }, []);
 
   const activeScreen = manifest.screens.find((s) => s.id === activeScreenId);
   const selectedNode =
@@ -108,9 +117,9 @@ export function CommandBar() {
   return (
     <div
       data-testid="command-bar"
-      className="h-16 shrink-0 border-t border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] px-4 flex items-center justify-between select-none z-20"
+      className="min-h-16 py-2 shrink-0 border-t border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] px-4 flex flex-wrap items-center justify-between gap-y-2 select-none z-20"
     >
-      <form onSubmit={handleExecute} className="flex-1 max-w-4xl flex items-center gap-3">
+      <form onSubmit={handleExecute} className="flex-1 min-w-0 max-w-4xl flex items-center gap-3">
         {/* Target Context Pill */}
         <div className="hidden sm:flex items-center gap-1.5 rounded-lg bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] px-2.5 py-1 text-xs font-mono text-[#62666F] dark:text-[#A8AFBA] shrink-0">
           <Terminal className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#6782FF]" />
@@ -121,7 +130,7 @@ export function CommandBar() {
 
         {/* Live Queue Token Badge */}
         {queueStatus?.tokenNumber && (
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-mono shrink-0 animate-pulse">
+          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-mono shrink-0 animate-pulse">
             <Cpu className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
             <span className="font-semibold">Token #{queueStatus.tokenNumber}</span>
             {typeof queueStatus.position === 'number' && queueStatus.position > 0 && (
@@ -131,10 +140,11 @@ export function CommandBar() {
         )}
 
         {/* Command Input Field */}
-        <div className="relative flex-1">
+        <div className="relative flex-1 min-w-0">
           <input
             ref={inputRef}
             type="text"
+            aria-label="Tessellate command"
             placeholder={
               selectedNode
                 ? `Tell Tess what to change on ${selectedNode.semanticRole}… (e.g. recompose, replace, lock, reduce motion)`
@@ -146,6 +156,8 @@ export function CommandBar() {
           />
           <button
             type="submit"
+            aria-label="Execute command"
+            disabled={isProcessing}
             className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8B8F97] hover:text-[#111217] dark:hover:text-[#F5F7FA] transition-colors"
             title="Execute command (Enter)"
           >
@@ -154,8 +166,11 @@ export function CommandBar() {
         </div>
       </form>
 
+      <span data-testid="laptop-host-status" role="status" className="text-[10px] ml-2 shrink-0 text-[#62666F] dark:text-[#A8AFBA]" title="Host features require this laptop and Docker. Local deterministic controls remain available.">
+        {hostHealth === null ? 'Checking host…' : !hostHealth.apiOnline ? 'Backend offline' : hostHealth.hostOnline ? 'Host online' : 'Host offline'}
+      </span>
       {/* Feedback or Keyboard Shortcuts Hint */}
-      <div className="hidden md:flex items-center gap-3 text-[11px] text-[#62666F] dark:text-[#A8AFBA] font-mono">
+      <div role="status" className={`${feedback || queueStatus?.message ? 'flex basis-full' : 'hidden md:flex'} items-center gap-3 text-[11px] text-[#62666F] dark:text-[#A8AFBA] font-mono`}>
         {queueStatus?.message && !feedback ? (
           <span className="text-indigo-600 dark:text-indigo-400 font-medium">
             {queueStatus.message}

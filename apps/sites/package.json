@@ -1,0 +1,19 @@
+{
+  "name": "@tessellate/sites",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node prepare-static.mjs --worker-assets && vite build --config vite.config.ts",
+    "typecheck": "tsc --noEmit",
+    "preview": "wrangler dev --config ../../dist/server/wrangler.json --local --ip 127.0.0.1 --port 4323 --inspector-port 0"
+  },
+  "devDependencies": {
+    "@tessellate/site": "workspace:*",
+    "@cloudflare/vite-plugin": "1.37.1",
+    "@cloudflare/workers-types": "5.20261012.1",
+    "vite": "8.0.13",
+    "wrangler": "4.92.0",
+    "typescript": "^5.7.3",
+    "@types/node": "^22.13.4"
+  }
+}
