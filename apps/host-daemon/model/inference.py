@@ -28,7 +28,7 @@ class BespokeInferenceEngine:
                 self.model.load_weights(data)
                 print(f"[Tessellate DL] Loaded trained weights ({data.get('architecture', 'TreeGNN')})")
         else:
-            print("[Tessellate DL] Warning: weights.json not found, using initialized weights.")
+            raise FileNotFoundError("Trained weights are required before advertising host availability")
 
     @classmethod
     def get_instance(cls):

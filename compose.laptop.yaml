@@ -1,0 +1,89 @@
+name: tessellate-laptop
+services:
+  api:
+    build:
+      context: .
+      dockerfile: apps/laptop-backend/Dockerfile
+    restart: unless-stopped
+    init: true
+    ports: ["127.0.0.1:8788:8787"]
+    volumes: ["laptop-data:/data"]
+    secrets:
+      - source: api-env
+        target: /app/apps/laptop-backend/.dev.vars
+    read_only: true
+    tmpfs:
+      - /tmp:uid=1000,gid=1000,mode=1777
+      - /app/apps/laptop-backend/.wrangler:uid=1000,gid=1000
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 1g
+    cpus: 2
+    pids_limit: 256
+    healthcheck:
+      test: [CMD, node, -e, "fetch('http://127.0.0.1:8787/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+      start_period: 40s
+    logging:
+      driver: local
+      options: {max-size: 10m, max-file: "3"}
+  host:
+    build:
+      context: .
+      dockerfile: apps/host-daemon/Dockerfile
+    restart: unless-stopped
+    init: true
+    depends_on:
+      api: {condition: service_healthy}
+    environment:
+      TESSELLATE_API_URL: http://api:8787
+      TESSELLATE_HOST_SECRET_FILE: /run/secrets/host-secret
+      TESSELLATE_DEVICE_NAME: Tessellate laptop CPU
+    secrets: [host-secret]
+    read_only: true
+    tmpfs: ["/tmp:uid=10001,gid=10001,mode=1777"]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 512m
+    cpus: 2
+    pids_limit: 64
+    healthcheck:
+      test: [CMD, python, -c, "import time,pathlib; p=pathlib.Path('/tmp/host-heartbeat'); assert p.exists() and time.time()-float(p.read_text())<20"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    logging:
+      driver: local
+      options: {max-size: 10m, max-file: "3"}
+  tunnel:
+    image: cloudflare/cloudflared:2026.8.2
+    profiles: [tunnel]
+    restart: unless-stopped
+    command: [tunnel, --no-autoupdate, --config, /etc/cloudflared/config.yml, run]
+    depends_on:
+      api: {condition: service_healthy}
+    secrets:
+      - source: tunnel-config
+        target: /etc/cloudflared/config.yml
+      - source: tunnel-credentials
+        target: /run/secrets/tunnel.json
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 256m
+    cpus: 1
+    logging:
+      driver: local
+      options: {max-size: 10m, max-file: "3"}
+volumes:
+  laptop-data:
+secrets:
+  api-env:
+    file: ${TESSELLATE_SECRETS_DIR:?Run Start-LaptopBackend.ps1}/api.dev.vars
+  host-secret:
+    file: ${TESSELLATE_SECRETS_DIR:?Run Start-LaptopBackend.ps1}/host-secret
+  tunnel-config:
+    file: ${TESSELLATE_SECRETS_DIR:?Run Start-LaptopBackend.ps1}/tunnel-config.yml
+  tunnel-credentials:
+    file: ${TESSELLATE_SECRETS_DIR:?Run Start-LaptopBackend.ps1}/tunnel.json

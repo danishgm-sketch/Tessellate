@@ -201,6 +201,25 @@ This file records major decisions so autonomous agents do not repeatedly reopen 
 
 ## Open implementation decisions
 
+### D-034 — Owner-operated laptop backend
+**Date:** 2026-10-13
+**Context:** Owner explicitly requested backend and host requirements run on this
+laptop in Docker and become unavailable when the laptop or Docker stops.
+**Decision:** Preserve Hono, canonical schemas and the CPU inference daemon. Run
+the API in local workerd with persistent local D1/SQLite and a separate inference
+container. Keep the public Astro/React Site hosted by Sites. Connect through a
+dedicated authenticated HTTPS tunnel; permanent hostname configuration is pending.
+Persist leased inference jobs in SQLite instead of volatile process memory.
+Report backend/host health explicitly and reject unsupported offline commands
+without a silent project mutation. Existing browser-local features stay available.
+**Cost impact:** No paid SaaS, hosted database, R2 or inference provider added.
+Laptop electricity and existing internet connectivity are owner resources.
+**Security impact:** Random service credentials mounted outside Git/images; no
+development shared secret, provider credential persistence or public host-control
+routes. Same-origin proxy, bounded requests, lease validation and ticket access
+tokens protect transport. Existing preview isolation and CSP remain enforced.
+**Status:** Owner-authorized architecture extension; live transport pending hostname.
+
 ### D-033 — Latest main on the existing ChatGPT Sites review host
 **Date:** 2026-10-13
 **Context:** Owner requested publication of current main revision `22f2961` on
