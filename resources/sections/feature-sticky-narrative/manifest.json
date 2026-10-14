@@ -4,7 +4,7 @@
   "slug": "feature-sticky-narrative",
   "name": "Feature Sticky Narrative",
   "version": "1.0.0",
-  "status": "verified",
+  "status": "experimental",
   "description": "Side-by-side section with sticky headline/story progression beside scrollable detail cards.",
   "resourceType": "section",
   "categories": [
@@ -43,7 +43,7 @@
   "provenance": {
     "origin": "tessellate",
     "derivative": false,
-    "aiAssistance": "none"
+    "aiAssistance": "substantial"
   },
   "license": {
     "spdx": "MIT",
@@ -210,11 +210,11 @@
   },
   "accessibility": {
     "levelTarget": "AA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",

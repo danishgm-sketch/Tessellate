@@ -4,7 +4,7 @@
   "slug": "bar-chart",
   "name": "Bar Chart",
   "version": "1.0.0",
-  "status": "verified",
+  "status": "experimental",
   "description": "Vertical categorical column chart with rounded top caps, subtle hover darkening, value labels, and horizontal gridlines.",
   "resourceType": "data-visualization",
   "categories": [
@@ -44,7 +44,7 @@
   "provenance": {
     "origin": "tessellate",
     "derivative": false,
-    "aiAssistance": "none"
+    "aiAssistance": "substantial"
   },
   "license": {
     "spdx": "MIT",
@@ -215,11 +215,11 @@
   },
   "accessibility": {
     "levelTarget": "AA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",

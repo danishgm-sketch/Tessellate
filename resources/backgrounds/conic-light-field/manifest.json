@@ -4,7 +4,7 @@
   "slug": "conic-light-field",
   "name": "Conic Light Field",
   "version": "1.0.0",
-  "status": "verified",
+  "status": "experimental",
   "description": "Radial swept light gradient generating dramatic angular specular highlights and rotational depth.",
   "resourceType": "background",
   "categories": [
@@ -44,7 +44,7 @@
   "provenance": {
     "origin": "tessellate",
     "derivative": false,
-    "aiAssistance": "none"
+    "aiAssistance": "substantial"
   },
   "license": {
     "spdx": "MIT",
@@ -214,11 +214,11 @@
   },
   "accessibility": {
     "levelTarget": "AA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",

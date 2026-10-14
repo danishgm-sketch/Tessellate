@@ -4,7 +4,7 @@
   "slug": "ai-command-bar",
   "name": "AI Command Bar",
   "version": "1.0.0",
-  "status": "verified",
+  "status": "experimental",
   "description": "Spotlight-style floating palette that understands natural-language system instructions and intent-matched actions.",
   "resourceType": "ai-pattern",
   "categories": [
@@ -44,7 +44,7 @@
   "provenance": {
     "origin": "tessellate",
     "derivative": false,
-    "aiAssistance": "none"
+    "aiAssistance": "substantial"
   },
   "license": {
     "spdx": "MIT",
@@ -215,11 +215,11 @@
   },
   "accessibility": {
     "levelTarget": "AA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",

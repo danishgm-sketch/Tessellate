@@ -4,7 +4,7 @@
   "slug": "scatter-plot",
   "name": "Scatter Plot",
   "version": "1.0.0",
-  "status": "verified",
+  "status": "experimental",
   "description": "2D Cartesian coordinate scatter chart with SVG circular points, quadrant benchmark lines, and outlier point highlights.",
   "resourceType": "data-visualization",
   "categories": [
@@ -44,7 +44,7 @@
   "provenance": {
     "origin": "tessellate",
     "derivative": false,
-    "aiAssistance": "none"
+    "aiAssistance": "substantial"
   },
   "license": {
     "spdx": "MIT",
@@ -215,11 +215,11 @@
   },
   "accessibility": {
     "levelTarget": "AA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",

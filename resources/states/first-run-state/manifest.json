@@ -4,7 +4,7 @@
   "slug": "first-run-state",
   "name": "First Run State",
   "version": "1.0.0",
-  "status": "verified",
+  "status": "experimental",
   "description": "Onboarding walkthrough card welcoming users on their initial workspace launch with architectural step guides.",
   "resourceType": "state",
   "categories": [
@@ -44,7 +44,7 @@
   "provenance": {
     "origin": "tessellate",
     "derivative": false,
-    "aiAssistance": "none"
+    "aiAssistance": "substantial"
   },
   "license": {
     "spdx": "MIT",
@@ -215,11 +215,11 @@
   },
   "accessibility": {
     "levelTarget": "AA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",

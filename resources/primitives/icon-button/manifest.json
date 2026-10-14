@@ -4,7 +4,7 @@
   "slug": "icon-button",
   "name": "Icon Button",
   "version": "1.0.0",
-  "status": "verified",
+  "status": "experimental",
   "description": "Compact icon-only action trigger with tooltip support and accessible label semantics.",
   "resourceType": "primitive",
   "categories": [
@@ -40,7 +40,7 @@
   "provenance": {
     "origin": "tessellate",
     "derivative": false,
-    "aiAssistance": "none"
+    "aiAssistance": "substantial"
   },
   "license": {
     "spdx": "MIT",
@@ -212,11 +212,11 @@
   },
   "accessibility": {
     "levelTarget": "AA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",

@@ -32,7 +32,7 @@ export function writeAIResource(def: AIDef, repoRoot: string) {
     slug: def.slug,
     name: def.name,
     version: '1.0.0',
-    status: 'verified',
+    status: 'experimental', // D-040: status is earned through review, never stamped by a generator
     description: def.description,
     resourceType: 'ai-pattern',
     categories: def.categories,
@@ -52,7 +52,7 @@ export function writeAIResource(def: AIDef, repoRoot: string) {
     provenance: {
       origin: 'tessellate',
       derivative: false,
-      aiAssistance: 'none',
+      aiAssistance: 'substantial', // D-040: these resources were machine-generated
     },
     license: {
       spdx: 'MIT',
@@ -172,11 +172,11 @@ export function writeAIResource(def: AIDef, repoRoot: string) {
     },
     accessibility: {
       levelTarget: 'AA',
-      keyboardVerified: true,
-      screenReaderSemantics: true,
-      reducedMotionVerified: true,
-      contrastTokenCompatible: true,
-      focusVisible: true,
+      keyboardVerified: false,
+      screenReaderSemantics: false,
+      reducedMotionVerified: false,
+      contrastTokenCompatible: false,
+      focusVisible: false,
     },
     performance: {
       jsCost: 'tiny',

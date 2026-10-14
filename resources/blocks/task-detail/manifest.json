@@ -4,7 +4,7 @@
   "slug": "task-detail",
   "name": "Task Detail",
   "version": "1.0.0",
-  "status": "verified",
+  "status": "experimental",
   "description": "Detailed issue view with assignee dropdown, status selector, priority tag, and subtasks.",
   "resourceType": "block",
   "categories": [
@@ -43,7 +43,7 @@
   "provenance": {
     "origin": "tessellate",
     "derivative": false,
-    "aiAssistance": "none"
+    "aiAssistance": "substantial"
   },
   "license": {
     "spdx": "MIT",
@@ -210,11 +210,11 @@
   },
   "accessibility": {
     "levelTarget": "AA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",

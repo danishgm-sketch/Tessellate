@@ -4,7 +4,7 @@
   "slug": "text-path-arc",
   "name": "Text Path Arc",
   "version": "1.0.0",
-  "status": "verified",
+  "status": "experimental",
   "description": "Vector SVG curved arc typography using textPath for circular seal emblems, status stamps, and orbital ribbons.",
   "resourceType": "typography",
   "categories": [
@@ -44,7 +44,7 @@
   "provenance": {
     "origin": "tessellate",
     "derivative": false,
-    "aiAssistance": "none"
+    "aiAssistance": "substantial"
   },
   "license": {
     "spdx": "MIT",
@@ -216,11 +216,11 @@
   },
   "accessibility": {
     "levelTarget": "AA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",

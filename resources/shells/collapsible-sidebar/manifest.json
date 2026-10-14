@@ -4,7 +4,7 @@
   "slug": "collapsible-sidebar",
   "name": "Collapsible Sidebar",
   "version": "1.0.0",
-  "status": "verified",
+  "status": "experimental",
   "description": "Flexible sidebar toggling between icon rail (48px) and expanded labels (240px) on user trigger.",
   "resourceType": "block",
   "categories": [
@@ -38,7 +38,7 @@
   "provenance": {
     "origin": "tessellate",
     "derivative": false,
-    "aiAssistance": "none"
+    "aiAssistance": "substantial"
   },
   "license": {
     "spdx": "MIT",
@@ -205,11 +205,11 @@
   },
   "accessibility": {
     "levelTarget": "AA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",

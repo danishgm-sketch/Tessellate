@@ -28,18 +28,10 @@ async function main() {
 
   console.log(`[build-catalog] Successfully validated ${artifact.count} resource(s).`);
 
-  // Tag Gold 40 resources
-  let goldCount = 0;
-  for (const manifest of artifact.resources) {
-    if (isGoldResource(manifest.slug)) {
-      manifest.status = 'verified-gold';
-      if (!manifest.tags.includes('verified-gold')) {
-        manifest.tags.push('verified-gold');
-      }
-      goldCount++;
-    }
-  }
-  console.log(`[build-catalog] Tagged ${goldCount} Gold 40 resources as 'verified-gold'.`);
+  // D-040: the build never promotes resource status. Status is earned through review and
+  // recorded in each manifest; the Gold list only sets migration priority.
+  const goldCount = artifact.resources.filter((m) => isGoldResource(m.slug)).length;
+  console.log(`[build-catalog] ${goldCount} resources are on the Gold migration-priority list.`);
 
   // 1. Write catalog.json to apps/site and apps/preview
   const siteCatalogPath = path.join(sitePublicDir, 'data', 'catalog.json');

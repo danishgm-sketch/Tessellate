@@ -4,7 +4,7 @@
   "slug": "usage-overview",
   "name": "Usage Overview",
   "version": "1.0.0",
-  "status": "verified",
+  "status": "experimental",
   "description": "Quota progress bars tracking API calls, active seats, and cloud storage capacity.",
   "resourceType": "block",
   "categories": [
@@ -43,7 +43,7 @@
   "provenance": {
     "origin": "tessellate",
     "derivative": false,
-    "aiAssistance": "none"
+    "aiAssistance": "substantial"
   },
   "license": {
     "spdx": "MIT",
@@ -210,11 +210,11 @@
   },
   "accessibility": {
     "levelTarget": "AA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",

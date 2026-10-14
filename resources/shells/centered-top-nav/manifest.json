@@ -4,7 +4,7 @@
   "slug": "centered-top-nav",
   "name": "Centered Top Navigation",
   "version": "1.0.0",
-  "status": "verified",
+  "status": "experimental",
   "description": "Symmetrical marketing header with brand logo on left, centered links, and right-aligned CTA.",
   "resourceType": "block",
   "categories": [
@@ -38,7 +38,7 @@
   "provenance": {
     "origin": "tessellate",
     "derivative": false,
-    "aiAssistance": "none"
+    "aiAssistance": "substantial"
   },
   "license": {
     "spdx": "MIT",
@@ -205,11 +205,11 @@
   },
   "accessibility": {
     "levelTarget": "AA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",

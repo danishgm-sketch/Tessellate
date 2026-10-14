@@ -282,9 +282,39 @@ describe('Performance and Accessibility Models', () => {
   });
 
   it('evaluates accessibility compliance', () => {
-    const a11y = evaluateAccessibility({ resource, requiredFloor: 'AA' });
+    const verified: ResourceManifest = {
+      ...resource,
+      accessibility: {
+        ...resource.accessibility,
+        keyboardVerified: true,
+        screenReaderSemantics: true,
+        reducedMotionVerified: true,
+        contrastTokenCompatible: true,
+        focusVisible: true,
+      },
+    };
+    const a11y = evaluateAccessibility({ resource: verified, requiredFloor: 'AA' });
     expect(a11y.meetsFloor).toBe(true);
     expect(a11y.score).toBeGreaterThan(75);
+  });
+
+  it('scores resources without verified accessibility evidence lower (D-040)', () => {
+    const unverified: ResourceManifest = {
+      ...resource,
+      accessibility: {
+        ...resource.accessibility,
+        keyboardVerified: false,
+        screenReaderSemantics: false,
+        reducedMotionVerified: false,
+        contrastTokenCompatible: false,
+        focusVisible: false,
+      },
+    };
+    const verifiedScore = evaluateAccessibility({
+      resource: { ...unverified, accessibility: { ...unverified.accessibility, keyboardVerified: true, focusVisible: true } },
+      requiredFloor: 'AA',
+    }).score;
+    expect(evaluateAccessibility({ resource: unverified, requiredFloor: 'AA' }).score).toBeLessThan(verifiedScore);
   });
 });
 

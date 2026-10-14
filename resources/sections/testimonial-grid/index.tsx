@@ -12,9 +12,9 @@ export function TestimonialGrid({
   variant = 'quiet',
   title = 'Loved by builders, engineers, and product designers.',
   testimonials = [
-    { quote: 'The cleanest component architecture I have seen in modern React.', author: 'Marcus Vance', role: 'Staff Engineer', company: 'Linear Systems' },
-    { quote: 'Reduced our front-end maintenance overhead to near zero.', author: 'Aria Chen', role: 'CTO', company: 'Prism Health' },
-    { quote: 'Zero lock-in means our team owns every byte of output.', author: 'Devon Patel', role: 'Lead Architect', company: 'Apex Cloud' },
+    { quote: 'Replace with a real customer quote.', author: 'Customer name', role: 'Role', company: 'Company' },
+    { quote: 'Replace with a real customer quote.', author: 'Customer name', role: 'Role', company: 'Company' },
+    { quote: 'Replace with a real customer quote.', author: 'Customer name', role: 'Role', company: 'Company' },
   ],
 }: TestimonialGridProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
