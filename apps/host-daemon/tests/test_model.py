@@ -82,7 +82,32 @@ class TestBespokeModel(unittest.TestCase):
         with self.assertRaises(NotUnderstood):
             engine.infer_intent("   ", {})
         with self.assertRaises(NotUnderstood):
-            engine.interpret_brief("A booking platform for clinics", {})
+            engine.interpret_brief("clinic app", {})
+
+    def test_physio_brief_meets_phase_28_acceptance(self):
+        engine = BespokeInferenceEngine.get_instance()
+        out = engine.interpret_brief(
+            "A booking platform for independent physiotherapy clinics. Patients book appointments and pay deposits; "
+            "clinicians manage calendars, treatment notes and invoices. Calm, trustworthy, accessible for older users.",
+            {},
+        )
+        self.assertEqual(out["kind"], "interpretation")
+        self.assertIn(out["productModel"]["productArchetypes"][0]["tag"], {"healthcare-clinic", "booking-scheduling"})
+        mentioned = {n for n, c in out["confidence"]["entities"].items() if c > 0.45}
+        self.assertTrue({"Patient", "Appointment", "Clinician", "Invoice", "Deposit"} <= mentioned, mentioned)
+        screen_types = {s["screenType"] for g in out["screenGraph"]["groups"] for s in g["screens"]}
+        self.assertIn("booking-flow", screen_types)
+        self.assertEqual(out["productModel"]["constraints"]["accessibilityFloor"], "AAA")
+        self.assertTrue(out["modelVersion"])
+
+    def test_promoted_model_card_reports_fresh_holdout_honestly(self):
+        sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+        from tessellate_model.runtime import model_card
+
+        card = model_card()
+        self.assertEqual(card["gate"], "pass")
+        self.assertIn("freshHoldoutMetrics", card)
+        self.assertIn("knownLimitations", card)
 
 
 if __name__ == "__main__":

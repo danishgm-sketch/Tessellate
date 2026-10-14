@@ -92,8 +92,26 @@ class BespokeInferenceEngine:
         return command
 
     def interpret_brief(self, brief: str, context: Dict[str, Any]) -> Dict[str, Any]:
-        """Brief → ProductModel. Implemented by the Phase 28 model (span tagger + ontology)."""
-        raise NotUnderstood("Brief interpretation is not available on this host yet.")
+        """Brief → ProductModel + ScreenGraph + review data, using the promoted v2 brief model (Phase 28)."""
+        text = (brief or "").strip()
+        if len(text) < 12:
+            raise NotUnderstood("Describe the product in a sentence or two so Tessellate can plan it.")
+        try:
+            from tessellate_model.runtime import load_interpreter, model_card
+        except ImportError as e:  # pragma: no cover - packaging error
+            raise NotUnderstood(f"The brief model is not installed on this host ({e}).") from None
+        try:
+            interpreter = load_interpreter()
+            card = model_card()
+        except FileNotFoundError:
+            raise NotUnderstood("No promoted brief model is installed on this host. Run the training job first.") from None
+        result = interpreter.interpret(text)
+        result["modelVersion"] = card.get("version")
+        if result["confidence"]["overall"] < 0.35:
+            raise NotUnderstood(
+                "Tessellate could not confidently understand this brief. Add who uses the product and what they do in it."
+            )
+        return result
 
 
 def _summary(action: str, prompt: str) -> str:

@@ -1,6 +1,6 @@
 import { Hono, type Context } from 'hono';
 import { z } from 'zod';
-import { IntentCommandSchema } from '@tessellate/schemas';
+import { BriefInterpretationSchema, IntentCommandSchema } from '@tessellate/schemas';
 import type { AuthenticatedContext, Env } from '../types.js';
 import { getSessionFromRequest } from '../auth.js';
 import { verifyTurnstileToken, TURNSTILE_HEADER } from '../turnstile.js';
@@ -279,9 +279,12 @@ export async function completeTicket(env: Env | undefined, deviceId: string, tic
       await store.fail(ticketId, deviceId, 'Daemon returned an invalid IntentCommand.');
       return { status: 422, body: { error: 'Validation Error', message: intent.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('; ') } };
     }
-  } else if (typeof result !== 'object' || result === null) {
-    await store.fail(ticketId, deviceId, 'Daemon returned a non-object interpretation.');
-    return { status: 422, body: { error: 'Validation Error', message: 'interpret-brief results must be JSON objects.' } };
+  } else {
+    const interpretation = BriefInterpretationSchema.safeParse(result);
+    if (!interpretation.success) {
+      await store.fail(ticketId, deviceId, 'Daemon returned an invalid interpretation.');
+      return { status: 422, body: { error: 'Validation Error', message: interpretation.error.issues.slice(0, 5).map((i) => i.path.join('.') + ': ' + i.message).join('; ') } };
+    }
   }
 
   const ok = await store.complete(ticketId, deviceId, JSON.stringify(result));

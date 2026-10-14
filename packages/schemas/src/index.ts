@@ -10,4 +10,6 @@ export * from './migrations/index.js';
 export * from './json-schema.js';
 export * from './fixtures/valid-project.js';
 export * from './fixtures/valid-resource.js';
+export * from './fixtures/physio-interpretation.js';
 export * from './intent.js';
+export * from './interpretation.js';

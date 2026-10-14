@@ -82,6 +82,8 @@ export const ScreenNodeSchema = z.object({
   expectedData: z.array(z.string()).default([]),
   requiredRoles: z.array(z.string()).default([]),
   optionalRoles: z.array(z.string()).default([]),
+  /** Entity this screen exists for (e.g. "Appointment"), so editing the entity list can update screens. */
+  entity: z.string().optional(),
 });
 export type ScreenNode = z.infer<typeof ScreenNodeSchema>;
 
