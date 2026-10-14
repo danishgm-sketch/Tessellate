@@ -40,6 +40,12 @@ export interface FeelTrait {
   isCustom?: boolean;
 }
 
+export interface SaveState {
+  status: 'idle' | 'pending' | 'saving' | 'saved' | 'error';
+  lastSavedAt?: string;
+  error?: string;
+}
+
 export interface WorkbenchState {
   // Project State
   manifest: ProjectManifest;
@@ -75,8 +81,15 @@ export interface WorkbenchState {
   operations: HistoryOperation[];
   checkpoints: Checkpoint[];
 
+  // Local persistence (autosave to IndexedDB). Disabled for the built-in sample until it is saved as a project.
+  persistenceEnabled: boolean;
+  saveState: SaveState;
+
   // Basic Setters
   setManifest: (manifest: ProjectManifest) => void;
+  /** Opens a stored project with its own checkpoint history and enables autosave. */
+  openProject: (manifest: ProjectManifest, checkpoints?: Checkpoint[]) => void;
+  setSaveState: (saveState: SaveState) => void;
   setActiveScreen: (screenId: string) => void;
   selectNode: (nodeId: string | null) => void;
   setHoveredNode: (nodeId: string | null) => void;

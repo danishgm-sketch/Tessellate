@@ -1,5 +1,9 @@
 @import "tailwindcss";
-@source "../../../packages";
+/* Dark styles apply only inside .dark (the Workbench is always dark, D-020; the public shell is light). */
+@custom-variant dark (&:where(.dark, .dark *));
+/* Paths are relative to this file (apps/site/src/styles); the monorepo packages live four levels up. */
+@source "../../../../packages";
+@source "../../../../resources";
 
 :root {
   --tess-canvas: #F4F2ED;
@@ -18,6 +22,19 @@
   --tess-danger: #C83D48;
   --tess-success: #177B55;
   --tess-warning: #A66A15;
+
+  /* Dark Workbench shell (DESIGN_SYSTEM.md §3.2) */
+  --tess-dark-canvas: #0B0D10;
+  --tess-dark-panel: #111419;
+  --tess-dark-raised: #171B21;
+  --tess-dark-hover: #1C2128;
+  --tess-dark-border: #272C34;
+  --tess-dark-border-strong: #353C46;
+  --tess-dark-text: #F5F7FA;
+  --tess-dark-text-secondary: #A8AFBA;
+  --tess-dark-text-muted: #707986;
+  --tess-dark-accent: #6782FF;
+  --tess-dark-accent-soft: #1C2752;
 }
 
 body {

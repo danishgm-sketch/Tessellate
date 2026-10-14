@@ -76,6 +76,8 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
   future: [],
   operations: [],
   checkpoints: [initialCheckpoint],
+  persistenceEnabled: false,
+  saveState: { status: 'idle' },
 
   // Basic Setters
   setManifest: (manifest: ProjectManifest) => {
@@ -88,6 +90,26 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       operations: [],
     });
   },
+
+  openProject: (manifest: ProjectManifest, checkpoints?: Checkpoint[]) => {
+    set({
+      manifest,
+      activeScreenId: manifest.screens[0]?.id ?? '',
+      selectedNodeId: null,
+      hoveredNodeId: null,
+      history: [],
+      future: [],
+      operations: [],
+      checkpoints:
+        checkpoints && checkpoints.length > 0
+          ? checkpoints
+          : [createCheckpoint(manifest, { name: 'Opened', trigger: 'initial-generation', description: 'State when this project was opened' })],
+      persistenceEnabled: true,
+      saveState: { status: 'saved' },
+    });
+  },
+
+  setSaveState: (saveState) => set({ saveState }),
 
   setActiveScreen: (screenId: string) => {
     set({

@@ -43,7 +43,7 @@ export function createCheckpoint(
       : `Auto: ${options.trigger.replace(/-/g, ' ')}`);
 
   return {
-    id: `chk-${Date.now()}-${checkpointCounter++}`,
+    id: `chk-${Date.now()}-${checkpointCounter++}-${Math.random().toString(36).slice(2, 8)}`,
     name: defaultName,
     timestamp,
     type,

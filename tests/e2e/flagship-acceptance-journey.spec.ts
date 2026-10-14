@@ -676,11 +676,24 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
 
     await assertZeroUnresolvedResources(page);
 
-    const activeProjectRaw = await page.evaluate(() =>
-      localStorage.getItem('tessellate_active_project')
+    // The opened direction is a saved project (IndexedDB), addressed by a unique id in the URL.
+    const projectId = new URL(page.url()).searchParams.get('project');
+    expect(projectId).toMatch(/^proj-/);
+    const storedManifest = await page.evaluate(
+      (id) =>
+        new Promise<string | null>((resolve, reject) => {
+          const req = indexedDB.open('tessellate-local-db', 2);
+          req.onsuccess = () => {
+            const get = req.result.transaction('projects', 'readonly').objectStore('projects').get(id!);
+            get.onsuccess = () => resolve(get.result ? JSON.stringify(get.result) : null);
+            get.onerror = () => reject(get.error);
+          };
+          req.onerror = () => reject(req.error);
+        }),
+      projectId,
     );
-    expect(activeProjectRaw).not.toBeNull();
-    expect(activeProjectRaw).not.toContain('res_synth_');
+    expect(storedManifest).not.toBeNull();
+    expect(storedManifest).not.toContain('res_synth_');
 
     expect(consoleErrors).toEqual([]);
   });

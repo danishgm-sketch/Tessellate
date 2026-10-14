@@ -628,11 +628,11 @@ API security tests (unauthorised daemon, oversized payload, foreign origin, rate
 
 # Phase 25 — Data safety and project management
 
-- [ ] Unique project IDs per compose; no constant seeds or timestamps in IDs.
-- [ ] Projects dashboard: list, search, open, rename, duplicate, delete with undo, import/export, client folders; `/workbench/[project]`.
-- [ ] Rename and checkpoints persist; the UI reads the real stores.
+- [x] Unique project IDs per compose; no constant seeds or timestamps in IDs.
+- [x] Projects dashboard: list, search, open, rename, duplicate, delete with undo, import/export, client folders; `/workbench/[project]`.
+- [x] Rename and checkpoints persist; the UI reads the real stores.
 
-### Phase 25 gate
+### Phase 25 gate (passed 2026-10-14: tests/e2e/projects-persistence.spec.ts, autosave and pipeline identity tests)
 E2E: three composes + reload → three distinct projects; rename and checkpoints survive a reload.
 
 # Phase 26 — Accounts, auth and admin

@@ -11,7 +11,19 @@ import { CompareModal } from './compare/CompareModal.js';
 import { BlendModal } from './blend/BlendModal.js';
 import { ReplaceDrawer } from './replace/ReplaceDrawer.js';
 import { AuditPanel } from './audit/AuditPanel.js';
-import { loadLocalProject } from '../persistence/storage.js';
+import { listLocalCheckpoints, loadLocalProject, newProjectId, saveLocalProject } from '../persistence/storage.js';
+import { safelyLoadProjectRecord, type CorruptedProjectRecovery } from '../persistence/recovery.js';
+import { startProjectAutosave } from '../persistence/autosave.js';
+import { ProjectsDashboard } from './projects/ProjectsDashboard.js';
+import { ProjectNotFound, ProjectRecovery } from './projects/ProjectRecovery.js';
+
+type ShellView =
+  | { kind: 'loading' }
+  | { kind: 'dashboard' }
+  | { kind: 'editor' }
+  | { kind: 'not-found'; projectId: string }
+  | { kind: 'corrupted'; projectId: string; recovery: CorruptedProjectRecovery }
+  | { kind: 'error'; message: string };
 
 export function WorkbenchShell() {
   const activeMode = useWorkbenchStore((state) => state.activeMode);
@@ -24,68 +36,70 @@ export function WorkbenchShell() {
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
   const toggleNodeLock = useWorkbenchStore((state) => state.toggleNodeLock);
   const openReplaceDrawer = useWorkbenchStore((state) => state.openReplaceDrawer);
-  const setManifest = useWorkbenchStore((state) => state.setManifest);
 
   const [isMobileScreen, setIsMobileScreen] = useState(false);
 
-  // Load project from URL or local persistence on mount
+  const openProject = useWorkbenchStore((state) => state.openProject);
+  const [view, setView] = useState<ShellView>({ kind: 'loading' });
+
+  // Route: /workbench → projects dashboard; ?project=<id> or /workbench/<id> → editor;
+  // ?showcase=<id> → a saved copy of the showcase (so edits persist and never touch the original).
   useEffect(() => {
     if (typeof window === 'undefined') return;
     window.__tessellate_workbench_store__ = useWorkbenchStore;
+    let cancelled = false;
     const urlParams = new URLSearchParams(window.location.search);
-    const projectId = urlParams.get('project');
+    const pathId = /^\/workbench\/([^/?#]+)/.exec(window.location.pathname)?.[1];
+    const projectId = urlParams.get('project') ?? (pathId ? decodeURIComponent(pathId) : null);
     const showcaseId = urlParams.get('showcase');
-    const _resourceSlug = urlParams.get('resource');
 
-    // 1. Handle ?showcase= parameter
-    if (showcaseId) {
-      import('@tessellate/composer').then(({ SHOWCASE_PROJECTS }) => {
+    const load = async () => {
+      if (showcaseId) {
+        const { SHOWCASE_PROJECTS } = await import('@tessellate/composer');
         const found = SHOWCASE_PROJECTS.find((s) => s.id === showcaseId);
-        if (found) {
-          setManifest(found.manifest);
+        if (!found) return setView({ kind: 'not-found', projectId: showcaseId });
+        const now = new Date().toISOString();
+        const copy = { ...found.manifest, id: newProjectId(), createdAt: now, updatedAt: now };
+        await saveLocalProject(copy);
+        window.history.replaceState(null, '', `/workbench?project=${encodeURIComponent(copy.id)}`);
+        if (!cancelled) {
+          openProject(copy);
+          setView({ kind: 'editor' });
         }
-      });
-      return;
-    }
-
-    // 2. Handle ?project= parameter
-    if (projectId) {
-      const stored =
-        localStorage.getItem(`tessellate_project_${projectId}`) ||
-        localStorage.getItem('tessellate_active_project');
-      if (stored) {
-        try {
-          const parsed = JSON.parse(stored);
-          if (parsed && (parsed.id === projectId || !projectId)) {
-            setManifest(parsed);
-            return;
-          }
-        } catch {
-          // Fall through to IndexedDB
-        }
+        return;
       }
 
-      loadLocalProject(projectId).then((proj) => {
-        if (proj) {
-          setManifest(proj);
-        }
-      });
-    } else {
-      const stored = localStorage.getItem('tessellate_active_project');
-      if (stored) {
-        try {
-          const parsed = JSON.parse(stored);
-          if (parsed && parsed.id) {
-            setManifest(parsed);
-          }
-        } catch {
-          // ignore corrupted local project storage
-        }
-      }
-    }
+      if (!projectId) return setView({ kind: 'dashboard' });
 
-    window.__tessellate_workbench_store__ = useWorkbenchStore;
-  }, [setManifest]);
+      const raw = await loadLocalProject(projectId);
+      if (cancelled) return;
+      if (!raw) return setView({ kind: 'not-found', projectId });
+
+      const result = safelyLoadProjectRecord(raw);
+      if (result.status === 'corrupted') return setView({ kind: 'corrupted', projectId, recovery: result });
+
+      const checkpoints = await listLocalCheckpoints(projectId);
+      if (cancelled) return;
+      openProject({ ...result.manifest, id: projectId }, checkpoints);
+      setView({ kind: 'editor' });
+    };
+
+    load().catch((err: unknown) => {
+      if (!cancelled) setView({ kind: 'error', message: err instanceof Error ? err.message : String(err) });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [openProject]);
+
+  // Local-first autosave while a stored project is open.
+  useEffect(() => {
+    if (view.kind !== 'editor') return;
+    const stop = startProjectAutosave(useWorkbenchStore);
+    return () => {
+      void stop();
+    };
+  }, [view.kind]);
 
   // Responsive window listener
   useEffect(() => {
@@ -162,6 +176,24 @@ export function WorkbenchShell() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedNodeId, selectParentNode, undo, redo, setDevicePreset, setZoom, toggleNodeLock, openReplaceDrawer]);
+
+  if (view.kind === 'loading') {
+    return (
+      <div className="grid min-h-screen place-items-center bg-[var(--tess-dark-canvas,#0B0D10)] text-sm text-[var(--tess-dark-text-secondary,#A8AFBA)]" role="status">
+        Opening…
+      </div>
+    );
+  }
+  if (view.kind === 'dashboard') return <ProjectsDashboard />;
+  if (view.kind === 'not-found') return <ProjectNotFound projectId={view.projectId} />;
+  if (view.kind === 'corrupted') return <ProjectRecovery projectId={view.projectId} recovery={view.recovery} />;
+  if (view.kind === 'error') {
+    return (
+      <div role="alert" className="grid min-h-screen place-items-center bg-[var(--tess-dark-canvas,#0B0D10)] px-4 text-center text-sm text-[#FF8A93]">
+        Could not open the project: {view.message}
+      </div>
+    );
+  }
 
   // Clean full-screen preview mode
   if (isPreview) {

@@ -47,21 +47,19 @@ test.describe('Critical Anonymous User Flows', () => {
     await expect(page.locator('text=Inspect in Workbench').first()).toBeVisible();
   });
 
-  test('workbench route loads dark studio workspace and Design DNA inspector', async ({ page }) => {
+  test('workbench route opens the projects dashboard, and the sample opens as a saved project', async ({ page, isMobile }) => {
     await page.goto('/workbench');
-    await page.waitForLoadState('domcontentloaded');
+    await expect(page.getByTestId('projects-dashboard')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'No projects yet' })).toBeVisible();
 
-    // Studio canvas or loading shell
-    const body = page.locator('body');
-    await expect(body).toBeVisible();
-
-    // Verify workbench toolbar or canvas
-    await expect(
-      page.locator('[data-testid="top-toolbar"]')
-        .or(page.locator('[data-testid="workbench-canvas"]'))
-        .or(page.locator('text=Local'))
-        .first()
-    ).toBeVisible();
+    await page.getByRole('button', { name: 'Open the sample project' }).click();
+    await page.waitForURL(/\/workbench\?project=proj-/);
+    if (isMobile) {
+      await expect(page.locator('[data-testid="mobile-workbench"]')).toBeVisible();
+    } else {
+      await expect(page.locator('[data-testid="top-toolbar"]')).toBeVisible();
+      await expect(page.getByTestId('save-indicator')).toContainText('Saved locally');
+    }
   });
 
   test('production error state: 404 page renders cleanly with recovery links', async ({ page }) => {

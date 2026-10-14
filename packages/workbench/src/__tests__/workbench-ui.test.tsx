@@ -21,7 +21,9 @@ describe('Workbench UI Components', () => {
   it('renders TopToolbar with project title and mode switches', () => {
     const html = renderToString(<TopToolbar />);
     expect(html).toContain('Apex Financial Intelligence');
-    expect(html).toContain('Local');
+    // The unsaved built-in sample must say so honestly instead of claiming to be saved.
+    expect(html).toContain('Not saved');
+    expect(html).toContain('All projects');
     expect(html).toContain('structure');
     expect(html).toContain('style');
     expect(html).toContain('Preview');

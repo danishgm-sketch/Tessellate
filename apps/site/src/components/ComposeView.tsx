@@ -11,7 +11,7 @@ import {
   composeProjectPipeline,
   type ComposedDirectionOutput,
 } from '@tessellate/compatibility';
-import { saveLocalProject } from '@tessellate/workbench';
+import { newProjectId, saveLocalProject } from '@tessellate/workbench';
 import { ManifestRenderer } from '@tessellate/renderer';
 import type { ProjectManifest, ResourceManifest } from '@tessellate/schemas';
 import {
@@ -153,17 +153,23 @@ export function ComposeView() {
   const { productModel, screenGraph: _screenGraph, inferredAssumptions, directionA, directionB, directionC } = compositionResult;
   const screenPlan = planScreenGraph(productModel);
 
-  const handleOpenDirection = (manifest: ProjectManifest) => {
-    if (typeof window !== 'undefined') {
-      try {
-        localStorage.setItem('tessellate_active_project', JSON.stringify(manifest));
-        localStorage.setItem(`tessellate_project_${manifest.id}`, JSON.stringify(manifest));
-      } catch (err) {
-        console.error('Failed to store manifest locally:', err);
-      }
-      saveLocalProject(manifest).finally(() => {
-        window.location.href = `/workbench?project=${encodeURIComponent(manifest.id)}`;
-      });
+  const [openError, setOpenError] = useState<string | null>(null);
+
+  const handleOpenDirection = async (manifest: ProjectManifest) => {
+    if (typeof window === 'undefined') return;
+    // Every opened direction becomes a NEW project with its own id, so composing again can never
+    // overwrite an existing (possibly edited) project.
+    const now = new Date().toISOString();
+    const project: ProjectManifest = { ...manifest, id: newProjectId(), createdAt: now, updatedAt: now };
+    try {
+      await saveLocalProject(project);
+      window.location.href = `/workbench?project=${encodeURIComponent(project.id)}`;
+    } catch (err) {
+      setOpenError(
+        err instanceof Error
+          ? `Could not save the project in this browser: ${err.message}`
+          : 'Could not save the project in this browser.',
+      );
     }
   };
 
@@ -632,6 +638,11 @@ export function ComposeView() {
                 onOpen={handleOpenDirection}
               />
             </div>
+            {openError && (
+              <p role="alert" className="rounded-lg border border-[#C83D48] bg-[#FCEDEE] px-4 py-3 text-sm text-[#8A1F29]">
+                {openError}
+              </p>
+            )}
           </section>
         </div>
       )}

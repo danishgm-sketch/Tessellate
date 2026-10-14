@@ -8,6 +8,16 @@ import {
 } from '@tessellate/schemas';
 import { getScreenClassGrammar } from './screen-grammar.js';
 
+/** FNV-1a 32-bit hash, base36. */
+function stableHash(text: string): string {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < text.length; i++) {
+    h ^= text.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0).toString(36);
+}
+
 export interface ScreenPlanResult {
   screenGraph: ScreenGraph;
   totalScreens: number;
@@ -292,7 +302,8 @@ export function planScreenGraph(productModel: ProductModel): ScreenPlanResult {
   }
 
   const screenGraph = ScreenGraphSchema.parse({
-    id: `graph-${primaryArchetypeTag}-${Date.now().toString(36)}`,
+    // Content-derived id: identical inputs give identical graphs (no wall-clock nondeterminism).
+    id: `graph-${primaryArchetypeTag}-${stableHash(JSON.stringify({ groups, edges }))}`,
     groups,
     edges,
   });

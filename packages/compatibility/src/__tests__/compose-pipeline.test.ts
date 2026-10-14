@@ -128,3 +128,37 @@ describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
     }
   });
 });
+
+describe('Project identity (Phase 25 data safety)', () => {
+  const catalog = loadTestCatalog();
+
+  it('gives different briefs different project ids (the audit saw a second compose overwrite the first)', () => {
+    const physio = composeProjectPipeline({ description: 'A booking platform for independent physiotherapy clinics.' }, { catalogResources: catalog });
+    const travel = composeProjectPipeline({ description: 'A luxury travel marketplace for boutique hotels.' }, { catalogResources: catalog });
+    const ids = new Set([
+      physio.directionA.manifest.id,
+      physio.directionB.manifest.id,
+      physio.directionC.manifest.id,
+      travel.directionA.manifest.id,
+      travel.directionB.manifest.id,
+      travel.directionC.manifest.id,
+    ]);
+    expect(ids.size).toBe(6);
+  });
+
+  it('uses the caller-supplied id base so re-composing the same brief creates a new project', () => {
+    const brief = { description: 'A booking platform for independent physiotherapy clinics.' };
+    const first = composeProjectPipeline(brief, { catalogResources: catalog, projectIdBase: 'proj-first' });
+    const second = composeProjectPipeline(brief, { catalogResources: catalog, projectIdBase: 'proj-second' });
+    expect(first.directionA.manifest.id).toBe('proj-first-direction-a');
+    expect(second.directionA.manifest.id).toBe('proj-second-direction-a');
+  });
+
+  it('stays deterministic for identical inputs without an id base', () => {
+    const brief = { description: 'An analytics dashboard for retail stores.' };
+    const a = composeProjectPipeline(brief, { catalogResources: catalog, seed: 's1' });
+    const b = composeProjectPipeline(brief, { catalogResources: catalog, seed: 's1' });
+    expect(a.directionB.manifest.id).toBe(b.directionB.manifest.id);
+    expect(a.screenGraph.id).toBe(b.screenGraph.id);
+  });
+});

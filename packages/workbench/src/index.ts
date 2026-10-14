@@ -29,6 +29,7 @@ export * from './blend/blend-engine.js';
 
 // Phase 11: Local Persistence & Recovery
 export * from './persistence/storage.js';
+export * from './persistence/autosave.js';
 export * from './persistence/recovery.js';
 
 // Phase 12: Audit System

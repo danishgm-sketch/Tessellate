@@ -20,6 +20,7 @@ import {
   type DirectionGenerationResult,
 } from './direction-generator.js';
 import { getCompositionGrammar, type CompositionGrammar } from './grammars.js';
+import { SeededRandom } from './prng.js';
 import { evaluateHardConstraints } from './hard-constraints.js';
 import { calculateCompatibilityScore } from './scoring.js';
 import {
@@ -42,6 +43,8 @@ export interface DirectionCompositionOptions {
   catalogResources?: ResourceManifest[];
   seed?: string | number;
   diagnostics?: RoleResolutionDiagnostic[];
+  /** Project id for the composed manifest. Callers creating user projects must pass a unique id. */
+  projectId?: string;
 }
 
 export interface ComposedDirectionOutput {
@@ -329,7 +332,10 @@ export function composeProjectForDirection(
     });
   }
 
-  const manifestId = `proj-${direction.id}-${String(seed).replace(/[^a-z0-9]/gi, '')}`;
+  // Deterministic fallback for tests/tooling; user-facing callers pass a unique projectId (Phase 25).
+  const manifestId =
+    options.projectId ??
+    `proj-${direction.id}-${SeededRandom.hashString(`${seed}|${JSON.stringify(productModel)}`).toString(36)}`;
 
   const manifest: ProjectManifest = {
     schemaVersion: '1.0.0',
@@ -382,9 +388,17 @@ export function composeProjectPipeline(
   options?: {
     catalogResources?: ResourceManifest[];
     seed?: string | number;
+    /**
+     * Base for the three direction project ids (suffixed -a/-b/-c). Pass a fresh unique value for
+     * every user compose so a new composition can never overwrite an existing project. When omitted,
+     * ids are derived from the brief and seed, so different briefs never collide.
+     */
+    projectIdBase?: string;
   }
 ): FullCompositionResult {
   const seed = options?.seed ?? 'tessellate-seed-v1';
+  const idBase =
+    options?.projectIdBase ?? `proj-${SeededRandom.hashString(`${seed}|${JSON.stringify(brief)}`).toString(36)}`;
   const { productModel, inferredAssumptions, initialDesignDna } = interpretProductBrief(brief);
   const { screenGraph } = planScreenGraph(productModel);
 
@@ -403,6 +417,7 @@ export function composeProjectPipeline(
     catalogResources: options?.catalogResources,
     seed: `${seed}-dir-a`,
     diagnostics: diagA,
+    projectId: `${idBase}-${directions.directionA.id}`,
   });
 
   const diagB: RoleResolutionDiagnostic[] = [];
@@ -413,6 +428,7 @@ export function composeProjectPipeline(
     catalogResources: options?.catalogResources,
     seed: `${seed}-dir-b`,
     diagnostics: diagB,
+    projectId: `${idBase}-${directions.directionB.id}`,
   });
 
   const diagC: RoleResolutionDiagnostic[] = [];
@@ -423,6 +439,7 @@ export function composeProjectPipeline(
     catalogResources: options?.catalogResources,
     seed: `${seed}-dir-c`,
     diagnostics: diagC,
+    projectId: `${idBase}-${directions.directionC.id}`,
   });
 
   return {

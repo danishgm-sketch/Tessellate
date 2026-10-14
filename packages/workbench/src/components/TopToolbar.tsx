@@ -19,6 +19,8 @@ import { CheckpointsMenu } from './checkpoints/CheckpointsMenu.js';
 
 export function TopToolbar() {
   const manifest = useWorkbenchStore((state) => state.manifest);
+  const saveState = useWorkbenchStore((state) => state.saveState);
+  const persistenceEnabled = useWorkbenchStore((state) => state.persistenceEnabled);
   const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
   const updateProjectName = useWorkbenchStore((state) => state.updateProjectName);
   const activeMode = useWorkbenchStore((state) => state.activeMode);
@@ -111,7 +113,11 @@ export function TopToolbar() {
             value={titleValue}
             onChange={(e) => setTitleValue(e.target.value)}
             onBlur={handleTitleBlur}
-            onKeyDown={(e) => e.key === 'Enter' && handleTitleBlur()}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') handleTitleBlur();
+              if (e.key === 'Escape') setIsEditingTitle(false);
+            }}
+            aria-label="Project name"
             className="text-sm font-bold text-[#111217] dark:text-[#F5F7FA] border border-[#2547E8] rounded px-1.5 py-0.5 bg-white dark:bg-[#171B21] focus:outline-none"
             autoFocus
           />
@@ -128,9 +134,34 @@ export function TopToolbar() {
           </button>
         )}
 
-        <div className="flex items-center gap-1 rounded-full bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] px-2 py-0.5 text-[10px] font-mono text-[#62666F] dark:text-[#A8AFBA]">
-          <Database className="h-2.5 w-2.5 text-emerald-600" />
-          <span>Local</span>
+        <a
+          href="/workbench"
+          className="text-xs font-medium text-[#62666F] dark:text-[#A8AFBA] hover:text-[#111217] dark:hover:text-[#F5F7FA]"
+        >
+          All projects
+        </a>
+
+        <div
+          data-testid="save-indicator"
+          role="status"
+          aria-live="polite"
+          title={saveState.status === 'error' ? saveState.error : 'Saved in this browser'}
+          className={`flex items-center gap-1 rounded-full border px-2 py-0.5 text-[10px] font-mono ${
+            saveState.status === 'error'
+              ? 'border-[#7A2A31] text-[#FF8A93]'
+              : 'bg-[#FAF9F6] dark:bg-[#171B21] border-[#D9D6CF] dark:border-[#272C34] text-[#62666F] dark:text-[#A8AFBA]'
+          }`}
+        >
+          <Database className="h-2.5 w-2.5 text-emerald-600" aria-hidden />
+          <span>
+            {!persistenceEnabled
+              ? 'Not saved'
+              : saveState.status === 'pending' || saveState.status === 'saving'
+                ? 'Saving…'
+                : saveState.status === 'error'
+                  ? 'Save failed'
+                  : 'Saved locally'}
+          </span>
         </div>
       </div>
 
