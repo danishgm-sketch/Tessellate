@@ -21,7 +21,7 @@ export function AuditPerformanceProof() {
           Quality & Security Invariants
         </span>
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#111217]">
-          Mathematically audited.<br />
+          Audited on every change.<br />
           Accessible by default.
         </h2>
         <p className="text-lg text-[#62666F] font-normal leading-relaxed">
@@ -40,7 +40,7 @@ export function AuditPerformanceProof() {
               </h3>
             </div>
             <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded bg-[#E7EBFF] text-[#2547E8]">
-              Target: 100 / 100
+              Scored out of 100
             </span>
           </div>
 

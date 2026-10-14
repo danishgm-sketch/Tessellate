@@ -98,7 +98,7 @@ export function NotComponentLibrary() {
           </ul>
 
           <div className="rounded-xl bg-[#2547E8]/5 border border-[#2547E8]/20 p-4 font-mono text-xs text-[#2547E8] font-medium">
-            Outcome: Zero-debt, fully accessible React + Tailwind 4 production codebase with complete design cohesion.
+            Outcome: one coherent codebase, with every accessibility and quality finding reported before export.
           </div>
         </div>
       </div>

@@ -48,7 +48,7 @@ export function WorkbenchReveal() {
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#272C34] text-xs font-mono text-[#6782FF]">
                 <Shield className="h-3.5 w-3.5" />
-                <span>Audit 100/100 · AA Compliant</span>
+                <span>Audit score shown live</span>
               </span>
               <span className="hidden sm:inline text-xs text-[#A8AFBA]">Head: Rev #14</span>
             </div>

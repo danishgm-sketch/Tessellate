@@ -33,7 +33,7 @@ export function AgentsSection() {
             </li>
             <li className="flex items-center gap-3">
               <CheckCircle2 className="h-4 w-4 text-[#2547E8] shrink-0" />
-              <span><strong>Zero Hallucinations:</strong> Components use registered semantic slots rather than loose arbitrary HTML.</span>
+              <span><strong>Schema-checked edits:</strong> Agents change projects through typed mutations that are validated before they apply.</span>
             </li>
             <li className="flex items-center gap-3">
               <CheckCircle2 className="h-4 w-4 text-[#2547E8] shrink-0" />
@@ -54,7 +54,7 @@ export function AgentsSection() {
 
           <pre className="text-white/90 overflow-x-auto leading-relaxed text-[11px]" tabIndex={0} aria-label="AGENT_HANDOFF JSON specification">
 {`{
-  "$schema": "https://tessellate.dev/schemas/v1/project.json",
+  "$schema": "https://tessellate.design/schemas/v1/project.json",
   "name": "Market Intelligence Terminal",
   "productModel": {
     "archetype": "fintech-telemetry",

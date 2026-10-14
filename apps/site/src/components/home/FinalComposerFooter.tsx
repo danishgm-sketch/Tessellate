@@ -59,7 +59,7 @@ export function FinalComposerFooter() {
               Open interface intelligence and deterministic UI composition platform for humans and autonomous coding agents.
             </p>
             <div className="pt-2 text-[11px] font-mono text-[#8B8F97]">
-              <span>MIT / Apache 2.0 Open Source</span>
+              <span>MIT licensed open source</span>
             </div>
           </div>
 

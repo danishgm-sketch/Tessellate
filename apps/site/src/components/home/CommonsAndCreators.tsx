@@ -24,10 +24,10 @@ export function CommonsAndCreators() {
 
           <div className="flex flex-wrap gap-2 pt-2">
             <span className="text-xs font-mono px-3 py-1.5 rounded-lg bg-white border border-[#D9D6CF] text-[#111217]">
-              MIT / Apache 2.0
+              MIT licensed
             </span>
             <span className="text-xs font-mono px-3 py-1.5 rounded-lg bg-white border border-[#D9D6CF] text-[#111217]">
-              Zero Telemetry Tracking
+              No tracking scripts
             </span>
             <span className="text-xs font-mono px-3 py-1.5 rounded-lg bg-white border border-[#D9D6CF] text-[#111217]">
               Copy & Paste or Download ZIP

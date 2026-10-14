@@ -1,11 +1,16 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page, type Locator } from '@playwright/test';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import * as os from 'node:os';
 import * as crypto from 'node:crypto';
 import { execSync, spawn } from 'node:child_process';
 import { generateSourceTree } from '../../packages/exporter/src/source-tree.js';
-import type { ProjectManifest, ProjectNode } from '@tessellate/schemas';
+import type { ProjectManifest, ProjectNode, ResourceManifest } from '@tessellate/schemas';
+import type { useWorkbenchStore } from '../../packages/workbench/src/store/workbench-store.js';
+
+/** Type-only aliases: erased at runtime, so they are safe inside page.evaluate callbacks. */
+type StoreWindow = Window & { __tessellate_workbench_store__?: typeof useWorkbenchStore };
+type Screen = ProjectManifest['screens'][number];
 
 function _computeCanonicalSubtreeHash(node: ProjectNode): string {
   function canonicalize(val: unknown): unknown {
@@ -20,7 +25,7 @@ function _computeCanonicalSubtreeHash(node: ProjectNode): string {
   return crypto.createHash('sha256').update(JSON.stringify(canonicalize(node))).digest('hex');
 }
 
-async function assertZeroUnresolvedResources(page: any, containerLocator?: any) {
+async function assertZeroUnresolvedResources(page: Page, containerLocator?: Locator) {
   const scope = containerLocator || page;
   await expect(scope.locator('[data-testid="missing-resource-recovery"]')).toHaveCount(0);
   await expect(scope.locator('[data-testid="unresolved-required-role-diagnostic"]')).toHaveCount(0);
@@ -130,20 +135,20 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
     await assertZeroUnresolvedResources(page);
 
     // Wait for Workbench store to be mounted on window
-    await page.waitForFunction(() => Boolean((window as any).__tessellate_workbench_store__), {
+    await page.waitForFunction(() => Boolean((window as StoreWindow).__tessellate_workbench_store__!), {
       timeout: 15000,
     });
 
     // Step 16: Configure DNA Overrides: Onboarding playful, Settings conservative
     await page.evaluate(() => {
-      const store = (window as any).__tessellate_workbench_store__;
+      const store = (window as StoreWindow).__tessellate_workbench_store__!;
       if (!store) throw new Error('Workbench store missing on window');
       const manifest = store.getState().manifest;
 
       // Onboarding override
       const onboardingScreen =
         manifest.screens.find(
-          (s: any) =>
+          (s: Screen) =>
             s.name.toLowerCase().includes('onboard') ||
             s.slug.toLowerCase().includes('onboard')
         ) || manifest.screens[1] || manifest.screens[0];
@@ -158,7 +163,7 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
       // Settings override
       const settingsScreen =
         manifest.screens.find(
-          (s: any) =>
+          (s: Screen) =>
             s.name.toLowerCase().includes('setting') ||
             s.slug.toLowerCase().includes('setting')
         ) || manifest.screens[manifest.screens.length - 1];
@@ -173,12 +178,12 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
 
     // Step 17: Lock KPI section and record canonical SHA-256 hash
     const { kpiNodeId, initialHash } = await page.evaluate(() => {
-      const store = (window as any).__tessellate_workbench_store__;
+      const store = (window as StoreWindow).__tessellate_workbench_store__!;
       const manifest = store.getState().manifest;
-      const screen = manifest.screens[0];
-      let found: any = null;
+      const screen = manifest.screens[0]!;
+      let found: ProjectNode | null = null;
 
-      function search(node: any) {
+      function search(node: ProjectNode) {
         if (found) return;
         if (
           node.semanticRole?.includes('metric') ||
@@ -199,13 +204,14 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
       }
 
       if (!found) throw new Error('No candidate node found to lock');
-      store.getState().toggleNodeLock(found.id, 'node');
+      const lockTarget: ProjectNode = found;
+      store.getState().toggleNodeLock(lockTarget.id, 'node');
 
       const updatedManifest = store.getState().manifest;
-      let lockedNodeAfter: any = null;
-      function findAfter(n: any) {
+      let lockedNodeAfter: ProjectNode | null = null;
+      function findAfter(n: ProjectNode) {
         if (lockedNodeAfter) return;
-        if (n.id === found.id) {
+        if (n.id === lockTarget.id) {
           lockedNodeAfter = n;
           return;
         }
@@ -213,14 +219,14 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
           for (const c of n.children) findAfter(c);
         }
       }
-      findAfter(updatedManifest.screens[0].rootNode);
+      findAfter(updatedManifest.screens[0]!.rootNode);
 
-      function canonicalize(val: any): any {
+      function canonicalize(val: unknown): unknown {
         if (val === null || typeof val !== 'object') return val;
         if (Array.isArray(val)) return val.map(canonicalize);
-        const sortedObj: Record<string, any> = {};
+        const sortedObj: Record<string, unknown> = {};
         for (const k of Object.keys(val).sort()) {
-          sortedObj[k] = canonicalize(val[k]);
+          sortedObj[k] = canonicalize((val as Record<string, unknown>)[k]);
         }
         return sortedObj;
       }
@@ -241,11 +247,11 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
     await page.waitForTimeout(1000);
 
     const postRecomposeSha = await page.evaluate((targetId) => {
-      const store = (window as any).__tessellate_workbench_store__;
+      const store = (window as StoreWindow).__tessellate_workbench_store__!;
       const manifest = store.getState().manifest;
-      const screen = manifest.screens[0];
-      let found: any = null;
-      function search(node: any) {
+      const screen = manifest.screens[0]!;
+      let found: ProjectNode | null = null;
+      function search(node: ProjectNode) {
         if (found) return;
         if (node.id === targetId) {
           found = node;
@@ -258,12 +264,12 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
       search(screen.rootNode);
       if (!found) throw new Error(`Locked node ${targetId} lost after recomposition!`);
 
-      function canonicalize(val: any): any {
+      function canonicalize(val: unknown): unknown {
         if (val === null || typeof val !== 'object') return val;
         if (Array.isArray(val)) return val.map(canonicalize);
-        const sortedObj: Record<string, any> = {};
+        const sortedObj: Record<string, unknown> = {};
         for (const k of Object.keys(val).sort()) {
-          sortedObj[k] = canonicalize(val[k]);
+          sortedObj[k] = canonicalize((val as Record<string, unknown>)[k]);
         }
         return sortedObj;
       }
@@ -278,12 +284,12 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
 
     // Step 19: Replace a non-locked node with Gold resource (area-chart / bar-chart)
     const replacedSlug = await page.evaluate((lockedId) => {
-      const store = (window as any).__tessellate_workbench_store__;
+      const store = (window as StoreWindow).__tessellate_workbench_store__!;
       const manifest = store.getState().manifest;
-      const screen = manifest.screens[0];
-      let candidate: any = null;
+      const screen = manifest.screens[0]!;
+      let candidate: ProjectNode | null = null;
 
-      function search(node: any) {
+      function search(node: ProjectNode) {
         if (candidate) return;
         if (node.id !== lockedId && node.resourceRef && node.nodeType !== 'layout') {
           candidate = node;
@@ -295,7 +301,7 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
       }
       search(screen.rootNode);
       if (!candidate && screen.rootNode.children) {
-        candidate = screen.rootNode.children.find((c: any) => c.id !== lockedId);
+        candidate = screen.rootNode.children.find((c: ProjectNode) => c.id !== lockedId) ?? null;
       }
 
       if (!candidate) throw new Error('No candidate node found to replace');
@@ -341,7 +347,7 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
           quality: { overall: 95 },
           createdAt: '2026-10-10T00:00:00Z',
           updatedAt: '2026-10-10T00:00:00Z',
-        } as any,
+        } as unknown as ResourceManifest,
         'quiet'
       );
       return targetSlug;
@@ -360,11 +366,11 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
     await page.waitForTimeout(1000);
 
     const postSurpriseSha = await page.evaluate((targetId) => {
-      const store = (window as any).__tessellate_workbench_store__;
+      const store = (window as StoreWindow).__tessellate_workbench_store__!;
       const manifest = store.getState().manifest;
-      const screen = manifest.screens[0];
-      let found: any = null;
-      function search(node: any) {
+      const screen = manifest.screens[0]!;
+      let found: ProjectNode | null = null;
+      function search(node: ProjectNode) {
         if (found) return;
         if (node.id === targetId) {
           found = node;
@@ -377,12 +383,12 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
       search(screen.rootNode);
       if (!found) throw new Error(`Locked node ${targetId} lost after Surprise Me!`);
 
-      function canonicalize(val: any): any {
+      function canonicalize(val: unknown): unknown {
         if (val === null || typeof val !== 'object') return val;
         if (Array.isArray(val)) return val.map(canonicalize);
-        const sortedObj: Record<string, any> = {};
+        const sortedObj: Record<string, unknown> = {};
         for (const k of Object.keys(val).sort()) {
-          sortedObj[k] = canonicalize(val[k]);
+          sortedObj[k] = canonicalize((val as Record<string, unknown>)[k]);
         }
         return sortedObj;
       }
@@ -397,7 +403,7 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
 
     // Step 21: Real End-to-End Standalone Build Execution
     const finalManifest: ProjectManifest = await page.evaluate(() => {
-      return (window as any).__tessellate_workbench_store__.getState().manifest;
+      return (window as StoreWindow).__tessellate_workbench_store__!.getState().manifest;
     });
 
     expect(finalManifest).toBeDefined();

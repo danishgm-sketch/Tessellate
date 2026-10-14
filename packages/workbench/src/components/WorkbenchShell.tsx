@@ -31,7 +31,7 @@ export function WorkbenchShell() {
   // Load project from URL or local persistence on mount
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    (window as any).__tessellate_workbench_store__ = useWorkbenchStore;
+    window.__tessellate_workbench_store__ = useWorkbenchStore;
     const urlParams = new URLSearchParams(window.location.search);
     const projectId = urlParams.get('project');
     const showcaseId = urlParams.get('showcase');
@@ -84,7 +84,7 @@ export function WorkbenchShell() {
       }
     }
 
-    (window as any).__tessellate_workbench_store__ = useWorkbenchStore;
+    window.__tessellate_workbench_store__ = useWorkbenchStore;
   }, [setManifest]);
 
   // Responsive window listener

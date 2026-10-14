@@ -15,15 +15,15 @@ const MOSAIC_RESOURCES: MosaicItem[] = [
     id: 'res-1',
     title: 'High-Throughput Telemetry Chart',
     type: 'component',
-    description: 'WebGL-accelerated time series chart with real-time streaming intervals and tooltip telemetry.',
-    tags: ['Data Density 85', 'WebGL/Canvas', 'Micro-interactions'],
+    description: 'Time-series chart with streaming updates and tooltips.',
+    tags: ['Data Density 85', 'Canvas', 'Micro-interactions'],
     slug: 'telemetry-chart',
   },
   {
     id: 'res-2',
     title: 'Audited Financial Ledger Table',
     type: 'section',
-    description: 'Virtualised tabular records display with inline sorting, filter chips, and column pin support.',
+    description: 'Tabular records with inline sorting and filter chips.',
     tags: ['Virtual Scroll', 'High Density', 'Accessibility AA'],
     slug: 'data-table',
   },
@@ -76,10 +76,10 @@ export function CatalogueMosaic() {
             The Resource Vocabulary
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-[#111217]">
-            Real resources. Zero synthetic filler.
+            An open, growing resource library.
           </h2>
           <p className="text-base sm:text-lg text-[#62666F] max-w-xl font-normal">
-            Every component in Tessellate is production-grade React + Tailwind 4, verified against accessibility baselines and exportable without proprietary runtimes.
+            Every resource is open source, carries an honest review status, and exports without a proprietary runtime.
           </p>
         </div>
 

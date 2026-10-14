@@ -558,3 +558,10 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
 if (typeof window !== 'undefined') {
   (window as unknown as { __tessellate_workbench_store__: unknown }).__tessellate_workbench_store__ = useWorkbenchStore;
 }
+
+declare global {
+  interface Window {
+    /** Test/automation handle to the Workbench store; set when the Workbench shell mounts. */
+    __tessellate_workbench_store__?: typeof useWorkbenchStore;
+  }
+}
