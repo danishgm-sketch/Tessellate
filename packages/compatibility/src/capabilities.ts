@@ -10,24 +10,25 @@ export interface ResourceCapability {
 }
 
 /**
- * Checks whether a resource possesses complete runtime rendering and browser export capabilities.
- * For V1, the Gold 40 resources represent the guaranteed-safe, fully verified composition universe.
+ * Checks that a resource can actually be composed: it ships component source the exporter can copy, it is
+ * not deprecated, and (when the caller knows the runtime registry) the renderer can mount it.
  */
 export function isResourceCompositionCapable(
-  resource: ResourceManifest | { slug: string; runtimeRenderable?: boolean; browserExportable?: boolean }
+  resource: Pick<ResourceManifest, 'slug'> & Partial<Pick<ResourceManifest, 'files' | 'status'>>,
+  isRenderable?: (slug: string) => boolean
 ): boolean {
   if (!resource || !resource.slug) return false;
-  return true;
+  if (resource.status === 'deprecated') return false;
+  const hasComponentSource = (resource.files ?? []).some((f) => f.kind === 'component' && /^index\.(t|j)sx?$/.test(f.path));
+  if (!hasComponentSource) return false;
+  return isRenderable ? isRenderable(resource.slug) : true;
 }
 
-/**
- * Enforces the runtime/export capability invariant for V1 deterministic composition.
- * Rejects any candidate that does not have verified runtime rendering and browser-exportable source.
- */
-export function isResourceComposerEligible(resource: ResourceManifest): boolean {
+/** A resource the composer may place: capable, with at least one declared variant. */
+export function isResourceComposerEligible(resource: ResourceManifest, isRenderable?: (slug: string) => boolean): boolean {
   if (!resource.id || !resource.slug) return false;
   if (!resource.variants || resource.variants.length === 0) return false;
-  return isResourceCompositionCapable(resource);
+  return isResourceCompositionCapable(resource, isRenderable);
 }
 
 /**

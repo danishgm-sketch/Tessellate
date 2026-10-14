@@ -90,10 +90,13 @@ describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
     expect(mB.screens.length).toBeGreaterThan(0);
     expect(mC.screens.length).toBeGreaterThan(0);
 
+    // Every section is either a real resource or an explicit gap (Phase 29: never silent filler).
     for (const screen of mA.screens) {
       expect(screen.rootNode.children.length).toBeGreaterThan(0);
-      const childWithRef = screen.rootNode.children.find((c) => c.resourceRef || c.children.some((sub) => sub.resourceRef));
-      expect(childWithRef).toBeDefined();
+      const sections = screen.rootNode.children.flatMap((c) => (c.children.length > 0 ? [c, ...c.children] : [c]));
+      for (const node of sections.filter((n) => n.nodeType === 'section')) {
+        expect(Boolean(node.resourceRef) || node.props?.unresolvedRequiredRole === true).toBe(true);
+      }
     }
   });
 

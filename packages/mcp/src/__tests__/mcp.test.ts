@@ -77,7 +77,8 @@ describe('Phase 17 — @tessellate/mcp Server & Tools Test Suite', () => {
     const res = await getTool(server, 'compose_product').handler({ interpretation: physioInterpretationFixture, name: 'Physio' });
     const parsed = JSON.parse(res.content[0]!.text) as { manifest: unknown; alternatives: string[] };
     const manifest = ProjectManifestSchema.parse(parsed.manifest);
-    expect(manifest.name).toBe('Physio');
+    expect(manifest.name).toMatch(/^Physio — /);
+    expect(manifest.brand?.name).toBe('Physio');
     expect(manifest.screens.length).toBeGreaterThan(3);
     expect(parsed.alternatives).toHaveLength(3);
 

@@ -97,23 +97,23 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
 
   // 6.5. Explicit diagnostic for fail-closed unresolved required role
   if (node.props?.unresolvedRequiredRole) {
-    const diag = node.props.diagnostic as { role?: string; reason?: string } | undefined;
+    const diag = node.props.diagnostic as { role?: string; label?: string; reason?: string } | undefined;
     return (
       <div
         data-node-id={node.id}
         data-testid="unresolved-required-role-diagnostic"
+        data-gap-role={diag?.role ?? node.semanticRole}
+        role="note"
+        aria-label={`Gap: ${diag?.label ?? diag?.role ?? node.semanticRole}`}
         onClick={handleSelect}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         style={localStyle}
-        className={`rounded-xl border border-dashed border-amber-300 bg-amber-50/90 dark:border-amber-700/60 dark:bg-amber-950/20 p-4 text-xs text-amber-900 dark:text-amber-200 transition-all ${selectionClasses}`}
+        className={`rounded-xl border border-dashed border-amber-400 bg-amber-50 dark:border-amber-600/70 dark:bg-amber-950/30 p-4 text-sm text-amber-950 dark:text-amber-100 transition-all ${selectionClasses}`}
       >
-        <div className="flex items-center gap-2 font-semibold">
-          <span className="text-base">⚠️</span>
-          <span>Unresolved Required Role: {diag?.role ?? node.semanticRole}</span>
-        </div>
-        <p className="mt-1 text-[11px] text-amber-800/80 dark:text-amber-300/80">
-          {diag?.reason ?? 'No candidate resource met the strict accessibility or performance hard constraints.'}
+        <p className="font-semibold">Gap: {diag?.label ?? diag?.role ?? node.semanticRole}</p>
+        <p className="mt-1 text-xs text-amber-900 dark:text-amber-200">
+          {diag?.reason ?? 'No resource in the library fills this section yet.'}
         </p>
       </div>
     );

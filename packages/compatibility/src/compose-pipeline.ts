@@ -7,6 +7,7 @@ import {
   type ProjectNode,
   type ResourceManifest,
   type ResourceRef,
+  type ScreenNode,
   ProjectManifestSchema,
   ProductModelSchema,
   ScreenGraphSchema,
@@ -15,8 +16,12 @@ import {
   interpretProductBrief,
   planScreenGraph,
   designDnaForProductModel,
+  resourceFulfilsRole,
+  roleLabel,
+  SCREEN_CLASS_GRAMMARS,
   type ProductBriefInput,
 } from '@tessellate/composer';
+import { buildContentProps } from './content.js';
 import {
   generateDirections,
   type GeneratedDirection,
@@ -35,6 +40,9 @@ export { isResourceComposerEligible, isResourceCompositionCapable };
 export interface RoleResolutionDiagnostic {
   code: 'UNRESOLVED_REQUIRED_ROLE';
   role: string;
+  /** Plain-language role name for gap cards. */
+  label?: string;
+  screenId?: string;
   reason: string;
   rejectedCandidateReasons?: string[];
 }
@@ -48,6 +56,10 @@ export interface DirectionCompositionOptions {
   diagnostics?: RoleResolutionDiagnostic[];
   /** Project id for the composed manifest. Callers creating user projects must pass a unique id. */
   projectId?: string;
+  /** The client's product name; used for the brand, navigation and copy. Never Tessellate's name. */
+  productName?: string;
+  /** Runtime capability check: only resources the renderer can mount are placed (when provided). */
+  isRenderable?: (slug: string) => boolean;
 }
 
 export interface ComposedDirectionOutput {
@@ -67,9 +79,17 @@ export interface FullCompositionResult {
   inferredAssumptions: string[];
 }
 
+/** Optional sections each direction adds when the catalogue can fill them (directions differ in richness). */
+const OPTIONAL_SECTIONS_BY_DIRECTION: Record<GeneratedDirection['type'], number> = {
+  conservative: 0,
+  'structural-alternative': 1,
+  expressive: 2,
+};
+
 /**
- * Finds and instantiates the highest-scoring compatible resource for a required semantic role.
- * Fails hard constraints closed: if all candidates violate constraints, returns diagnostic (no violating resource selected).
+ * Picks the best resource for one canonical role (Phase 29). Only resources the role taxonomy lists as
+ * fulfilling the role are considered — no category bypass, no whole-catalogue fallback — and resources
+ * already used on the same screen are excluded. Returns a diagnostic when nothing qualifies.
  */
 function resolveBestResourceForRole(
   semanticRole: string,
@@ -77,40 +97,34 @@ function resolveBestResourceForRole(
   grammar: CompositionGrammar | undefined,
   catalog: ResourceManifest[],
   productModel: ProductModel,
-  surroundingResources: ResourceManifest[] = []
+  surroundingResources: ResourceManifest[] = [],
+  isRenderable?: (slug: string) => boolean
 ): { resource: ResourceManifest | null; ref: ResourceRef | undefined; diagnostic?: RoleResolutionDiagnostic } {
-  if (!catalog || catalog.length === 0) {
+  const label = roleLabel(semanticRole);
+  const usedOnScreen = new Set(surroundingResources.map((r) => r.slug));
+  const candidates = catalog.filter(
+    (res) =>
+      resourceFulfilsRole(semanticRole, res) &&
+      !usedOnScreen.has(res.slug) &&
+      isResourceComposerEligible(res) &&
+      (!isRenderable || isRenderable(res.slug))
+  );
+
+  if (candidates.length === 0) {
     return {
       resource: null,
       ref: undefined,
       diagnostic: {
         code: 'UNRESOLVED_REQUIRED_ROLE',
         role: semanticRole,
-        reason: 'Catalogue is empty or unpopulated.',
+        label,
+        reason: `The library has no resource for "${label}" yet. Pick or add one in the Workbench.`,
       },
     };
   }
 
-  const roleNorm = semanticRole.toLowerCase();
-
-  // 1. Role / category filtering
-  let candidates = catalog.filter((res) => {
-    if (!isResourceComposerEligible(res)) return false;
-    const hasRole = (res.roles ?? []).some((r) => r.toLowerCase().includes(roleNorm) || roleNorm.includes(r.toLowerCase()));
-    const hasCategory = grammar?.candidateCategories.some((c) => (res.categories ?? []).includes(c));
-    const hasTag = (res.tags ?? []).some((t) => t.toLowerCase() === roleNorm);
-    return hasRole || hasCategory || hasTag;
-  });
-
-  if (candidates.length === 0) {
-    // If no role-specific candidates match, consider general eligible catalog resources
-    candidates = catalog.filter(isResourceComposerEligible);
-  }
-
-  // 2. Filter by hard constraints — STRICT FAIL CLOSED
   const validCandidates: ResourceManifest[] = [];
   const rejectedReasons: string[] = [];
-
   for (const candidate of candidates) {
     const constraintResult = evaluateHardConstraints({
       resource: candidate,
@@ -121,15 +135,11 @@ function resolveBestResourceForRole(
       targetDevices: productModel.constraints.targetDevices,
       currentArchetype: productModel.productArchetypes[0]?.tag,
     });
-    if (constraintResult.pass) {
-      validCandidates.push(candidate);
-    } else {
-      rejectedReasons.push(`${candidate.slug}: ${constraintResult.rejectionReasons.join(', ')}`);
-    }
+    if (constraintResult.pass) validCandidates.push(candidate);
+    else rejectedReasons.push(`${candidate.slug}: ${constraintResult.rejectionReasons.join(', ')}`);
   }
 
-  // Requirement 3 & 7: If all candidates violate hard constraints, NO violating resource may be selected.
-  // Fail closed and record explicit UNRESOLVED_REQUIRED_ROLE diagnostic.
+  // Fail closed: never select a resource that violates a hard constraint.
   if (validCandidates.length === 0) {
     return {
       resource: null,
@@ -137,185 +147,136 @@ function resolveBestResourceForRole(
       diagnostic: {
         code: 'UNRESOLVED_REQUIRED_ROLE',
         role: semanticRole,
-        reason: `No candidate resource satisfied hard constraints for role "${semanticRole}" (accessibility floor: ${productModel.constraints.accessibilityFloor}, performance ceiling: ${productModel.constraints.performanceCeiling}).`,
+        label,
+        reason: `${candidates.length} library resource${candidates.length === 1 ? '' : 's'} can be "${label}", but none ${candidates.length === 1 ? 'meets' : 'meet'} this product's ${describeConstraints(productModel)}. Lower the requirement in Review, or pick a resource in the Workbench.`,
         rejectedCandidateReasons: rejectedReasons.slice(0, 5),
       },
     };
   }
 
-  // 3. Score valid candidates with compatibility algorithm
-  const scored = validCandidates.map((candidate) => {
-    const scoreResult = calculateCompatibilityScore({
+  const scored = validCandidates
+    .map((candidate) => ({
       candidate,
-      targetDna,
-      semanticRole,
-      grammar,
-      surroundingResources,
-      currentArchetype: productModel.productArchetypes[0]?.tag,
-      accessibilityFloor: productModel.constraints.accessibilityFloor,
-    });
-    return {
-      candidate,
-      score: scoreResult.totalScore,
-    };
-  });
+      score: calculateCompatibilityScore({
+        candidate,
+        targetDna,
+        semanticRole,
+        grammar,
+        surroundingResources,
+        currentArchetype: productModel.productArchetypes[0]?.tag,
+        accessibilityFloor: productModel.constraints.accessibilityFloor,
+      }).totalScore,
+    }))
+    // Stable tie-break on slug so composition is reproducible.
+    .sort((x, y) => y.score - x.score || x.candidate.slug.localeCompare(y.candidate.slug));
+  const best = scored[0]!.candidate;
+  return { resource: best, ref: { id: best.id, slug: best.slug, version: best.version } };
+}
 
-  scored.sort((a, b) => b.score - a.score);
-  const best = scored[0]?.candidate;
+function describeConstraints(productModel: ProductModel): string {
+  const { accessibilityFloor, performanceCeiling } = productModel.constraints;
+  return performanceCeiling ? `WCAG ${accessibilityFloor} and ${performanceCeiling} performance limits` : `WCAG ${accessibilityFloor} requirement`;
+}
 
-  if (best) {
-    return {
-      resource: best,
-      ref: {
-        id: best.id,
-        slug: best.slug,
-        version: best.version,
-      },
-    };
-  }
+/** Section roles for one screen: its own screen-class grammar plus the navigation its group needs. */
+export function rolesForScreen(screenNode: ScreenNode, optionalCount: number): { required: string[]; optional: string[] } {
+  const grammar = SCREEN_CLASS_GRAMMARS[screenNode.screenType];
+  const group = grammar?.defaultGroup ?? 'app';
+  const shell = group === 'app' || group === 'settings' ? ['app-navigation'] : group === 'utility' ? ['navigation'] : [];
+  const required = [...new Set([...shell, ...(grammar?.requiredRoles ?? ['page-header']), ...(screenNode.requiredRoles ?? [])])];
+  const optional = [...(grammar?.optionalRoles ?? []), ...(screenNode.optionalRoles ?? [])]
+    .filter((r) => !required.includes(r))
+    .slice(0, optionalCount);
+  return { required, optional };
+}
 
-  return {
-    resource: null,
-    ref: undefined,
-  };
+function isAppScreen(screenNode: ScreenNode): boolean {
+  const group = SCREEN_CLASS_GRAMMARS[screenNode.screenType]?.defaultGroup ?? 'app';
+  return group === 'app' || group === 'settings';
 }
 
 /**
  * Instantiates a complete ProjectManifest for an individual generated direction.
  */
-export function composeProjectForDirection(
-  options: DirectionCompositionOptions
-): ProjectManifest {
+export function composeProjectForDirection(options: DirectionCompositionOptions): ProjectManifest {
   const { productModel, screenGraph, direction, seed = '1' } = options;
   const catalog = options.catalogResources ?? [];
+  const productName = options.productName?.trim() || 'Your product';
 
-  const grammar = getCompositionGrammar(direction.primaryGrammarId);
+  const directionGrammar = getCompositionGrammar(direction.primaryGrammarId);
   const screens: ProjectScreen[] = [];
-  const primaryArchetype = productModel.productArchetypes[0]?.tag ?? 'saas';
-
-  // Instantiate each screen defined in the ScreenGraph
   const allScreenNodes = screenGraph.groups.flatMap((g) => g.screens);
-  const screensToInstantiate = allScreenNodes.length > 0
-    ? allScreenNodes
-    : [
-        {
-          id: 'screen-overview',
-          name: 'Overview Dashboard',
-          slug: '/overview',
-          screenType: 'dashboard',
-          purpose: 'Operational overview and metrics',
-          required: true,
-          jobs: ['Monitor telemetry', 'Triage alerts'],
-          importance: 90,
-          navigationVisibility: 'primary' as const,
-          expectedData: [],
-          requiredRoles: ['navigation', 'hero', 'overview-header', 'data-table'],
-          optionalRoles: ['activity-feed'],
-        },
-      ];
+  const navItems = allScreenNodes
+    .filter((s) => s.navigationVisibility === 'primary')
+    .map((s) => ({ label: s.name, href: s.slug }));
+  const variant = direction.type === 'expressive' ? 'expressive' : direction.type === 'structural-alternative' ? 'nocturne' : 'quiet';
 
-  for (const screenNode of screensToInstantiate) {
-    // Role requirements: combine screen required roles with grammar role ordering
-    const screenRoles = [...new Set([...(screenNode.requiredRoles ?? []), ...(grammar?.requiredRoles ?? [])])];
-    if (screenRoles.length === 0) {
-      screenRoles.push('navigation', 'header', 'content-grid', 'footer');
-    }
-
+  for (const screenNode of allScreenNodes) {
+    // The direction's grammar shapes application screens only; marketing, auth and public journeys keep
+    // their own screen-class grammar (Phase 29).
+    const grammar = isAppScreen(screenNode) ? directionGrammar : undefined;
+    const { required, optional } = rolesForScreen(screenNode, OPTIONAL_SECTIONS_BY_DIRECTION[direction.type]);
     const surroundingForScreen: ResourceManifest[] = [];
     const sectionNodes: ProjectNode[] = [];
+    const contentContext = { productName, productModel, screen: screenNode, navItems };
 
-    for (let i = 0; i < screenRoles.length; i++) {
-      const role = screenRoles[i]!;
+    const place = (role: string, isRequired: boolean) => {
       const { resource, ref, diagnostic } = resolveBestResourceForRole(
         role,
         direction.dna,
         grammar,
         catalog,
         productModel,
-        surroundingForScreen
+        surroundingForScreen,
+        options.isRenderable
       );
+      if (!resource && !isRequired) return; // optional sections are only added when the library can fill them
+      if (resource) surroundingForScreen.push(resource);
+      if (diagnostic && options.diagnostics) options.diagnostics.push({ ...diagnostic, screenId: screenNode.id });
 
-      if (diagnostic && options.diagnostics) {
-        options.diagnostics.push(diagnostic);
-      }
-
-      if (resource) {
-        surroundingForScreen.push(resource);
-      }
-
-      const variant =
-        direction.type === 'expressive'
-          ? 'expressive'
-          : direction.type === 'structural-alternative'
-          ? 'nocturne'
-          : 'quiet';
-
-      const nodeProps: Record<string, unknown> = {
-        title: `${screenNode.name} ${role}`,
-      };
+      const props: Record<string, unknown> = buildContentProps(role, contentContext);
       if (diagnostic) {
-        nodeProps.unresolvedRequiredRole = true;
-        nodeProps.diagnostic = diagnostic;
+        props.unresolvedRequiredRole = true;
+        props.diagnostic = { ...diagnostic, screenId: screenNode.id };
       }
-
       sectionNodes.push({
-        id: `node-${screenNode.id}-${role}-${i + 1}`,
-        nodeType: role === 'navigation' ? 'layout' : 'section',
+        id: `node-${screenNode.id}-${role}`,
+        nodeType: role === 'navigation' || role === 'app-navigation' ? 'layout' : 'section',
         semanticRole: role,
         resourceRef: ref,
-        variant,
+        variant: resource ? variant : undefined,
         children: [],
         slots: {},
-        props: nodeProps,
+        props,
       });
-    }
+    };
+    for (const role of required) place(role, true);
+    for (const role of optional) place(role, false);
 
-    // Assemble root layout according to direction navigation topology
+    const navNode = sectionNodes.find((n) => n.semanticRole === 'app-navigation');
     let rootNode: ProjectNode;
-    if (direction.navigationModel === 'sidebar') {
-      const navNode = sectionNodes.find((n) => n.semanticRole === 'navigation') ?? sectionNodes[0]!;
-      const contentNodes = sectionNodes.filter((n) => n.id !== navNode.id);
+    if (navNode) {
+      const contentNodes = sectionNodes.filter((n) => n !== navNode);
+      const dock = direction.navigationModel === 'command-palette' || direction.navigationModel === 'rail';
       rootNode = {
         id: `root-${screenNode.id}`,
         nodeType: 'layout',
-        semanticRole: 'sidebar-shell',
+        semanticRole: dock ? 'workspace-dock-shell' : 'sidebar-shell',
         children: [
           navNode,
           {
             id: `container-${screenNode.id}-main`,
             nodeType: 'layout',
-            semanticRole: 'main-content-scroll',
+            semanticRole: dock ? 'workspace-multi-pane' : 'main-content-scroll',
             children: contentNodes,
             slots: {},
             props: { layoutFamily: grammar?.layoutFamily ?? 'standard-sidebar' },
           },
         ],
         slots: {},
-        props: { layoutVariant: 'sidebar' },
-      };
-    } else if (direction.navigationModel === 'command-palette' || direction.navigationModel === 'rail') {
-      const navNode = sectionNodes.find((n) => n.semanticRole === 'navigation') ?? sectionNodes[0]!;
-      const contentNodes = sectionNodes.filter((n) => n.id !== navNode.id);
-      rootNode = {
-        id: `root-${screenNode.id}`,
-        nodeType: 'layout',
-        semanticRole: 'workspace-dock-shell',
-        children: [
-          navNode,
-          {
-            id: `container-${screenNode.id}-canvas`,
-            nodeType: 'layout',
-            semanticRole: 'workspace-multi-pane',
-            children: contentNodes,
-            slots: {},
-            props: { layoutFamily: grammar?.layoutFamily ?? 'three-pane' },
-          },
-        ],
-        slots: {},
-        props: { layoutVariant: 'split-dock' },
+        props: { layoutVariant: dock ? 'split-dock' : 'sidebar' },
       };
     } else {
-      // Top nav or standard stacked
       rootNode = {
         id: `root-${screenNode.id}`,
         nodeType: 'layout',
@@ -339,43 +300,33 @@ export function composeProjectForDirection(
   const manifestId =
     options.projectId ??
     `proj-${direction.id}-${SeededRandom.hashString(`${seed}|${JSON.stringify(productModel)}`).toString(36)}`;
+  const now = new Date().toISOString();
 
   const manifest: ProjectManifest = {
     schemaVersion: '1.0.0',
     id: manifestId,
-    name: `${direction.name} — ${primaryArchetype.toUpperCase()}`,
+    name: `${productName} — ${direction.name}`,
     description: direction.rationale,
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
+    createdAt: now,
+    updatedAt: now,
     catalogVersion: '0.1.0',
     seed: String(seed),
     productModel,
     designDNA: direction.dna,
-    brand: {
-      name: `${primaryArchetype.toUpperCase()} System`,
-    },
+    brand: { name: productName },
     constraints: productModel.constraints,
     screenGraph,
     screens,
     navigation: {
       model: direction.navigationModel,
-      primaryItems: screens.map((s) => ({
-        label: s.name,
-        targetScreenId: s.id,
-      })),
+      primaryItems: allScreenNodes
+        .filter((s) => s.navigationVisibility === 'primary')
+        .map((s) => ({ label: s.name, targetScreenId: s.id })),
     },
     assets: [],
     locks: [],
-    historyMeta: {
-      totalOperations: 0,
-      headRevision: 0,
-    },
-    exportSettings: {
-      framework: 'react',
-      styling: 'tailwind',
-      includeTypes: true,
-      target: 'vite-react-tailwind',
-    },
+    historyMeta: { totalOperations: 0, headRevision: 0 },
+    exportSettings: { framework: 'react', styling: 'tailwind', includeTypes: true, target: 'vite-react-tailwind' },
   };
 
   return ProjectManifestSchema.parse(manifest);
@@ -388,16 +339,12 @@ export function composeProjectForDirection(
  */
 export function composeProjectPipeline(
   brief: ProductBriefInput,
-  options?: {
-    catalogResources?: ResourceManifest[];
-    seed?: string | number;
-    /**
-     * Base for the three direction project ids (suffixed -a/-b/-c). Pass a fresh unique value for
-     * every user compose so a new composition can never overwrite an existing project. When omitted,
-     * ids are derived from the brief and seed, so different briefs never collide.
-     */
-    projectIdBase?: string;
-  }
+  /**
+   * `projectIdBase`: base for the three direction project ids. Pass a fresh unique value for every user
+   * compose so a new composition can never overwrite an existing project. When omitted, ids are derived
+   * from the brief and seed, so different briefs never collide.
+   */
+  options?: CompositionOptions
 ): FullCompositionResult {
   const seed = options?.seed ?? 'tessellate-seed-v1';
   const idBase =
@@ -411,6 +358,8 @@ export interface CompositionOptions {
   catalogResources?: ResourceManifest[];
   seed?: string | number;
   projectIdBase?: string;
+  productName?: string;
+  isRenderable?: (slug: string) => boolean;
 }
 
 /**
@@ -439,6 +388,8 @@ export function composeDirections(
     screenGraph,
     direction: directions.directionA,
     catalogResources: options?.catalogResources,
+    productName: options?.productName,
+    isRenderable: options?.isRenderable,
     seed: `${seed}-dir-a`,
     diagnostics: diagA,
     projectId: `${idBase}-${directions.directionA.id}`,
@@ -450,6 +401,8 @@ export function composeDirections(
     screenGraph,
     direction: directions.directionB,
     catalogResources: options?.catalogResources,
+    productName: options?.productName,
+    isRenderable: options?.isRenderable,
     seed: `${seed}-dir-b`,
     diagnostics: diagB,
     projectId: `${idBase}-${directions.directionB.id}`,
@@ -461,6 +414,8 @@ export function composeDirections(
     screenGraph,
     direction: directions.directionC,
     catalogResources: options?.catalogResources,
+    productName: options?.productName,
+    isRenderable: options?.isRenderable,
     seed: `${seed}-dir-c`,
     diagnostics: diagC,
     projectId: `${idBase}-${directions.directionC.id}`,

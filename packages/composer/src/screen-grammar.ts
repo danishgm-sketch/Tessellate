@@ -21,18 +21,7 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultVisibility: 'primary',
     requiredRoles: ['navigation', 'hero', 'value-proposition', 'conversion-cta', 'footer'],
     optionalRoles: ['trust-proof', 'product-demo', 'feature-grid', 'pricing-table', 'faq-accordion'],
-    roleOrdering: [
-      'navigation',
-      'hero',
-      'trust-proof',
-      'value-proposition',
-      'product-demo',
-      'feature-grid',
-      'pricing-table',
-      'conversion-cta',
-      'faq-accordion',
-      'footer',
-    ],
+    roleOrdering: ['navigation', 'hero', 'value-proposition', 'conversion-cta', 'footer', 'trust-proof', 'product-demo', 'feature-grid', 'pricing-table', 'faq-accordion'],
   },
 
   // 2. Authentication
@@ -43,9 +32,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'auth',
     defaultSlug: '/sign-in',
     defaultVisibility: 'hidden',
-    requiredRoles: ['auth-card', 'auth-footer'],
-    optionalRoles: ['social-oauth-buttons', 'passkey-option', 'terms-disclaimer', 'brand-panel'],
-    roleOrdering: ['brand-panel', 'auth-card', 'social-oauth-buttons', 'terms-disclaimer', 'auth-footer'],
+    requiredRoles: ['auth-card'],
+    optionalRoles: ['brand-panel'],
+    roleOrdering: ['auth-card', 'brand-panel'],
   },
 
   // 3. Onboarding
@@ -56,9 +45,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'auth',
     defaultSlug: '/onboarding',
     defaultVisibility: 'hidden',
-    requiredRoles: ['progress-stepper', 'wizard-content', 'action-controls'],
-    optionalRoles: ['workspace-picker', 'team-invite-slot', 'sample-data-toggle'],
-    roleOrdering: ['progress-stepper', 'wizard-content', 'workspace-picker', 'action-controls'],
+    requiredRoles: ['wizard-content'],
+    optionalRoles: [],
+    roleOrdering: ['wizard-content'],
   },
 
   // 4. Dashboard
@@ -69,9 +58,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'app',
     defaultSlug: '/overview',
     defaultVisibility: 'primary',
-    requiredRoles: ['overview-header', 'metric-cards', 'activity-feed'],
-    optionalRoles: ['quick-action-bar', 'data-table', 'alert-banner', 'insight-rail'],
-    roleOrdering: ['alert-banner', 'overview-header', 'quick-action-bar', 'metric-cards', 'data-table', 'activity-feed', 'insight-rail'],
+    requiredRoles: ['page-header', 'metric-cards', 'activity-feed'],
+    optionalRoles: ['quick-action-bar', 'data-table'],
+    roleOrdering: ['page-header', 'metric-cards', 'activity-feed', 'quick-action-bar', 'data-table'],
   },
 
   // 5. Index / List
@@ -82,9 +71,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'app',
     defaultSlug: '/items',
     defaultVisibility: 'primary',
-    requiredRoles: ['index-header', 'filter-bar', 'data-table', 'pagination'],
-    optionalRoles: ['bulk-action-bar', 'view-mode-toggle', 'stats-summary'],
-    roleOrdering: ['index-header', 'stats-summary', 'filter-bar', 'bulk-action-bar', 'data-table', 'pagination'],
+    requiredRoles: ['page-header', 'filter-bar', 'data-table'],
+    optionalRoles: ['empty-state'],
+    roleOrdering: ['page-header', 'filter-bar', 'data-table', 'empty-state'],
   },
 
   // 6. Detail / Entity
@@ -95,9 +84,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'app',
     defaultSlug: '/items/:id',
     defaultVisibility: 'secondary',
-    requiredRoles: ['entity-header', 'detail-tabs', 'main-content-pane', 'metadata-sidebar'],
-    optionalRoles: ['activity-timeline', 'related-items-carousel', 'danger-zone'],
-    roleOrdering: ['entity-header', 'detail-tabs', 'main-content-pane', 'metadata-sidebar', 'activity-timeline', 'danger-zone'],
+    requiredRoles: ['entity-header', 'main-content-pane'],
+    optionalRoles: ['metadata-sidebar', 'activity-timeline', 'detail-tabs'],
+    roleOrdering: ['entity-header', 'main-content-pane', 'metadata-sidebar', 'activity-timeline', 'detail-tabs'],
   },
 
   // 7. Search / Explore
@@ -108,9 +97,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'app',
     defaultSlug: '/explore',
     defaultVisibility: 'primary',
-    requiredRoles: ['search-header', 'facet-rail', 'results-grid'],
-    optionalRoles: ['recent-searches', 'active-filter-chips', 'empty-state'],
-    roleOrdering: ['search-header', 'recent-searches', 'active-filter-chips', 'facet-rail', 'results-grid'],
+    requiredRoles: ['search-header', 'results-grid'],
+    optionalRoles: ['empty-state'],
+    roleOrdering: ['search-header', 'results-grid', 'empty-state'],
   },
 
   // 8. Workspace / Editor
@@ -121,9 +110,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'app',
     defaultSlug: '/editor',
     defaultVisibility: 'primary',
-    requiredRoles: ['editor-toolbar', 'canvas-viewport', 'inspector-panel'],
-    optionalRoles: ['layers-tree', 'version-history', 'status-bar'],
-    roleOrdering: ['editor-toolbar', 'layers-tree', 'canvas-viewport', 'inspector-panel', 'status-bar'],
+    requiredRoles: ['page-header', 'editor-surface'],
+    optionalRoles: ['inspector-panel', 'version-history'],
+    roleOrdering: ['page-header', 'editor-surface', 'inspector-panel', 'version-history'],
   },
 
   // 9. Analytics / Reporting
@@ -134,9 +123,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'app',
     defaultSlug: '/analytics',
     defaultVisibility: 'primary',
-    requiredRoles: ['date-range-picker', 'chart-canvas', 'summary-kpis'],
-    optionalRoles: ['dimension-slicer', 'cohort-table', 'export-drawer'],
-    roleOrdering: ['date-range-picker', 'summary-kpis', 'chart-canvas', 'dimension-slicer', 'cohort-table'],
+    requiredRoles: ['page-header', 'summary-kpis', 'chart-canvas'],
+    optionalRoles: ['cohort-table'],
+    roleOrdering: ['page-header', 'summary-kpis', 'chart-canvas', 'cohort-table'],
   },
 
   // 10. Messages / Collaboration
@@ -147,9 +136,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'app',
     defaultSlug: '/messages',
     defaultVisibility: 'secondary',
-    requiredRoles: ['channels-rail', 'message-thread', 'message-composer'],
-    optionalRoles: ['thread-details', 'file-attachment-shelf', 'presence-avatars'],
-    roleOrdering: ['channels-rail', 'message-thread', 'message-composer', 'thread-details'],
+    requiredRoles: ['channels-rail', 'message-thread'],
+    optionalRoles: [],
+    roleOrdering: ['channels-rail', 'message-thread'],
   },
 
   // 11. Settings
@@ -160,9 +149,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'settings',
     defaultSlug: '/settings',
     defaultVisibility: 'secondary',
-    requiredRoles: ['settings-nav', 'settings-form', 'save-footer'],
-    optionalRoles: ['avatar-uploader', '2fa-toggle', 'danger-zone'],
-    roleOrdering: ['settings-nav', 'settings-form', 'save-footer', 'danger-zone'],
+    requiredRoles: ['settings-nav', 'settings-form'],
+    optionalRoles: ['team-settings'],
+    roleOrdering: ['settings-nav', 'settings-form', 'team-settings'],
   },
 
   // 12. Billing & Account
@@ -173,9 +162,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'settings',
     defaultSlug: '/billing',
     defaultVisibility: 'secondary',
-    requiredRoles: ['current-plan-card', 'usage-meter', 'invoices-table'],
-    optionalRoles: ['payment-method-card', 'seat-manager', 'tax-id-form'],
-    roleOrdering: ['current-plan-card', 'usage-meter', 'payment-method-card', 'invoices-table'],
+    requiredRoles: ['current-plan-card', 'usage-meter'],
+    optionalRoles: ['invoices-table'],
+    roleOrdering: ['current-plan-card', 'usage-meter', 'invoices-table'],
   },
 
   // 13. Checkout / Transaction
@@ -186,9 +175,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'utility',
     defaultSlug: '/checkout',
     defaultVisibility: 'hidden',
-    requiredRoles: ['order-summary', 'payment-fields', 'submit-button'],
-    optionalRoles: ['coupon-input', 'shipping-selector', 'security-trust-badges'],
-    roleOrdering: ['order-summary', 'shipping-selector', 'payment-fields', 'coupon-input', 'submit-button'],
+    requiredRoles: ['order-summary', 'payment-form'],
+    optionalRoles: ['security-trust-badges'],
+    roleOrdering: ['order-summary', 'payment-form', 'security-trust-badges'],
   },
 
   // 14. Admin
@@ -199,9 +188,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'settings',
     defaultSlug: '/admin',
     defaultVisibility: 'hidden',
-    requiredRoles: ['tenant-switcher', 'audit-log-stream', 'feature-flags-table'],
-    optionalRoles: ['impersonation-bar', 'system-health-telemetry'],
-    roleOrdering: ['tenant-switcher', 'system-health-telemetry', 'feature-flags-table', 'audit-log-stream'],
+    requiredRoles: ['audit-log-stream', 'admin-table'],
+    optionalRoles: ['tenant-switcher'],
+    roleOrdering: ['audit-log-stream', 'admin-table', 'tenant-switcher'],
   },
 
   // 15. Documentation
@@ -212,9 +201,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'marketing',
     defaultSlug: '/docs',
     defaultVisibility: 'primary',
-    requiredRoles: ['docs-sidebar', 'prose-article', 'on-this-page-toc'],
-    optionalRoles: ['code-playground', 'feedback-widget', 'version-dropdown'],
-    roleOrdering: ['docs-sidebar', 'prose-article', 'on-this-page-toc', 'code-playground'],
+    requiredRoles: ['docs-sidebar', 'prose-article'],
+    optionalRoles: [],
+    roleOrdering: ['docs-sidebar', 'prose-article'],
   },
 
   // 16. Support
@@ -225,9 +214,65 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'utility',
     defaultSlug: '/support',
     defaultVisibility: 'secondary',
-    requiredRoles: ['faq-accordion', 'contact-form', 'system-status-indicator'],
-    optionalRoles: ['chat-bot-island', 'popular-articles-list'],
-    roleOrdering: ['system-status-indicator', 'faq-accordion', 'popular-articles-list', 'contact-form'],
+    requiredRoles: ['faq-accordion', 'contact-form'],
+    optionalRoles: ['system-status-indicator'],
+    roleOrdering: ['faq-accordion', 'contact-form', 'system-status-indicator'],
+  },
+  // Phase 29: screen types planned by the brief model (D-034a).
+  'calendar-schedule': {
+    id: 'calendar-schedule',
+    name: 'Calendar / Schedule',
+    description: 'Day, week and month views of scheduled items.',
+    defaultGroup: 'app',
+    defaultSlug: '/calendar',
+    defaultVisibility: 'primary',
+    requiredRoles: ['page-header', 'calendar-view'],
+    optionalRoles: ['upcoming-list'],
+    roleOrdering: ['page-header', 'calendar-view', 'upcoming-list'],
+  },
+  'booking-flow': {
+    id: 'booking-flow',
+    name: 'Booking Flow',
+    description: 'Choose a time, give details and confirm a booking.',
+    defaultGroup: 'utility',
+    defaultSlug: '/book',
+    defaultVisibility: 'primary',
+    requiredRoles: ['booking-slot-picker', 'booking-details-form'],
+    optionalRoles: ['confirmation-state'],
+    roleOrdering: ['booking-slot-picker', 'booking-details-form', 'confirmation-state'],
+  },
+  'board-kanban': {
+    id: 'board-kanban',
+    name: 'Board',
+    description: 'Move records through stages.',
+    defaultGroup: 'app',
+    defaultSlug: '/board',
+    defaultVisibility: 'primary',
+    requiredRoles: ['page-header', 'board-view'],
+    optionalRoles: ['filter-bar'],
+    roleOrdering: ['page-header', 'filter-bar', 'board-view'],
+  },
+  'map-explore': {
+    id: 'map-explore',
+    name: 'Map',
+    description: 'Find records by location.',
+    defaultGroup: 'app',
+    defaultSlug: '/map',
+    defaultVisibility: 'primary',
+    requiredRoles: ['map-view'],
+    optionalRoles: ['results-list'],
+    roleOrdering: ['map-view', 'results-list'],
+  },
+  'form-flow': {
+    id: 'form-flow',
+    name: 'Form',
+    description: 'Create or submit a record with validated fields.',
+    defaultGroup: 'app',
+    defaultSlug: '/new',
+    defaultVisibility: 'secondary',
+    requiredRoles: ['entity-form'],
+    optionalRoles: [],
+    roleOrdering: ['entity-form'],
   },
 };
 
@@ -239,7 +284,7 @@ export function getScreenClassGrammar(screenType: string): ScreenClassGrammar {
 }
 
 /**
- * Retrieves all 16 screen class grammars.
+ * Retrieves every screen class grammar.
  */
 export function getAllScreenClassGrammars(): Record<string, ScreenClassGrammar> {
   return SCREEN_CLASS_GRAMMARS;

@@ -131,7 +131,8 @@ describe('Phase 17 — @tessellate/cli Test Suite', () => {
       cwd: repoRoot,
     });
 
-    expect(manifest.name).toBe('Physio Booking');
+    expect(manifest.name).toMatch(/^Physio Booking — /);
+    expect(manifest.brand?.name).toBe('Physio Booking');
     expect(manifest.productModel.productArchetypes[0]?.tag).toBe('healthcare-clinic');
     expect(manifest.screens.length).toBeGreaterThan(3);
     expect(fs.existsSync(outPath)).toBe(true);

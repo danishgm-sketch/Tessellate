@@ -96,11 +96,13 @@ export async function runCompose(promptText: string | undefined, options: Compos
   const composition = composeFromInterpretation(interpretation, {
     catalogResources: catalogue.resources,
     projectIdBase: `proj_${randomUUID()}`,
+    productName: options.name,
   });
+  const gaps = { a: composition.directionA, b: composition.directionB, c: composition.directionC }[options.direction ?? 'a'].diagnostics ?? [];
+  if (gaps.length) console.log(`  • ${gaps.length} section(s) have no library resource yet (gaps): ${[...new Set(gaps.map((g) => g.label ?? g.role))].join(', ')}`);
   const pick = { a: composition.directionA, b: composition.directionB, c: composition.directionC }[options.direction ?? 'a'];
   const manifest = ProjectManifestSchema.parse({
     ...pick.manifest,
-    name: options.name || pick.manifest.name,
     description: promptText ?? pick.manifest.description,
   });
   console.log(`[tess] Composed "${manifest.name}" (${pick.direction.name}) with ${manifest.screens.length} screens.`);

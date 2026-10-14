@@ -7,6 +7,7 @@ import {
   PRODUCT_BLUEPRINTS,
   getAllProductBlueprints,
   SCREEN_CLASS_GRAMMARS,
+  CANONICAL_ROLES,
   getAllScreenClassGrammars,
   interpretProductBrief,
   planScreenGraph,
@@ -59,17 +60,17 @@ describe('Product Blueprints (12 Blueprints)', () => {
   });
 });
 
-describe('Screen Class Grammars (16 Classes)', () => {
-  it('defines all 16 screen class grammars', () => {
+describe('Screen Class Grammars', () => {
+  it('defines all 21 screen class grammars', () => {
     const grammars = getAllScreenClassGrammars();
-    expect(Object.keys(grammars).length).toBe(16);
-    expect(Object.keys(SCREEN_CLASS_GRAMMARS).length).toBe(16);
+    expect(Object.keys(grammars).length).toBe(21);
+    expect(Object.keys(SCREEN_CLASS_GRAMMARS).length).toBe(21);
 
     for (const [key, grammar] of Object.entries(grammars)) {
       expect(grammar.id).toBe(key);
       expect(grammar.requiredRoles.length).toBeGreaterThan(0);
-      expect(grammar.optionalRoles.length).toBeGreaterThan(0);
-      expect(grammar.roleOrdering.length).toBeGreaterThan(0);
+      for (const role of grammar.requiredRoles) expect(grammar.roleOrdering).toContain(role);
+      for (const role of [...grammar.requiredRoles, ...grammar.optionalRoles]) expect(CANONICAL_ROLES[role], role).toBeDefined();
     }
   });
 });

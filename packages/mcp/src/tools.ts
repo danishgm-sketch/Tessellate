@@ -294,7 +294,7 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd(), queue: 
     {
       interpretation: z.record(z.unknown()).describe('A BriefInterpretation object returned by interpret_brief, after review'),
       direction: z.enum(['a', 'b', 'c']).optional().describe('a conservative (default), b expressive, c structural alternative'),
-      name: z.string().optional().describe('Project name'),
+      name: z.string().optional().describe('Product name used in navigation, headings and exported code'),
     },
     async ({ interpretation, direction = 'a', name }) => {
       const parsed = BriefInterpretationSchema.safeParse(interpretation);
@@ -312,9 +312,10 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd(), queue: 
       const composition = composeFromInterpretation(parsed.data, {
         catalogResources: catalogue.resources,
         projectIdBase: `proj_${randomUUID()}`,
+        productName: name,
       });
       const pick = { a: composition.directionA, b: composition.directionB, c: composition.directionC }[direction];
-      const manifest = ProjectManifestSchema.parse({ ...pick.manifest, name: name ?? pick.manifest.name });
+      const manifest = ProjectManifestSchema.parse(pick.manifest);
       return {
         content: [
           {
@@ -323,6 +324,7 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd(), queue: 
               {
                 direction: { type: pick.direction.type, name: pick.direction.name, rationale: pick.direction.rationale },
                 alternatives: [composition.directionA, composition.directionB, composition.directionC].map((d) => d.direction.name),
+                gaps: (pick.diagnostics ?? []).map((g) => ({ screenId: g.screenId, role: g.role, label: g.label, reason: g.reason })),
                 manifest,
               },
               null,
