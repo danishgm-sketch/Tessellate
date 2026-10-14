@@ -27,3 +27,10 @@ def model_card(weights_dir: Optional[str] = None) -> dict:
     d = weights_dir or current_weights_dir()
     with open(os.path.join(d, "model_card.json"), encoding="utf-8") as f:
         return json.load(f)
+
+
+@lru_cache(maxsize=2)
+def load_intent(weights_dir: Optional[str] = None) -> AveragedPerceptron:
+    """Workbench command model (Phase 29)."""
+    d = weights_dir or current_weights_dir()
+    return AveragedPerceptron.load(os.path.join(d, "intent.json"))

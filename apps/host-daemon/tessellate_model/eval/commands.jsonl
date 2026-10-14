@@ -1,0 +1,50 @@
+{"command": "tone down the animation a little", "action": "adjust-dna", "dna": {"motion": -1}}
+{"command": "I'd like this to look a lot more spacious", "action": "adjust-dna", "dna": {"whitespace": 1}}
+{"command": "crank up the contrast", "action": "adjust-dna", "dna": {"contrast": 1}}
+{"command": "this feels too busy, make it calmer", "action": "adjust-dna", "dna": {"motion": -1}}
+{"command": "make the corners rounder", "action": "adjust-dna", "dna": {"curvature": 1}}
+{"command": "sharper edges please", "action": "adjust-dna", "dna": {"curvature": -1}}
+{"command": "pack more data onto the dashboard, denser", "action": "adjust-dna", "dna": {"density": 1}}
+{"command": "less playful, it's for a bank", "action": "adjust-dna", "dna": {"playfulness": -1}}
+{"command": "could the colours be more vibrant", "action": "adjust-dna", "dna": {"colourfulness": 1}}
+{"command": "a touch warmer", "action": "adjust-dna", "dna": {"warmth": 1}}
+{"command": "make it way bolder", "action": "adjust-dna", "dna": {"visualAmbition": 1}}
+{"command": "reduce the motion", "action": "adjust-dna", "dna": {"motion": -1}}
+{"command": "more professional overall", "action": "adjust-dna", "dna": {"professionalism": 1}}
+{"command": "make it feel like a luxury hotel brand", "action": "apply-feel", "dna": {}}
+{"command": "apply the calm precision feel", "action": "apply-feel", "dna": {}}
+{"command": "give the whole thing an editorial magazine look", "action": "apply-feel", "dna": {}}
+{"command": "restyle with a nocturne aesthetic", "action": "apply-feel", "dna": {}}
+{"command": "change the vibe to warm and friendly", "action": "apply-feel", "dna": {}}
+{"command": "lock the navigation so it stays put", "action": "lock-nodes", "dna": {}}
+{"command": "keep this exactly as it is", "action": "lock-nodes", "dna": {}}
+{"command": "freeze the hero", "action": "lock-nodes", "dna": {}}
+{"command": "don't let anything change the footer", "action": "lock-nodes", "dna": {}}
+{"command": "lock the table", "action": "lock-nodes", "dna": {}}
+{"command": "unlock the hero section", "action": "unlock-nodes", "dna": {}}
+{"command": "you can edit the navigation again", "action": "unlock-nodes", "dna": {}}
+{"command": "unfreeze everything", "action": "unlock-nodes", "dna": {}}
+{"command": "take the lock off this", "action": "unlock-nodes", "dna": {}}
+{"command": "swap this chart for another one", "action": "replace-component", "dna": {}}
+{"command": "I don't like this table, show me other options", "action": "replace-component", "dna": {}}
+{"command": "use a different hero", "action": "replace-component", "dna": {}}
+{"command": "replace the footer", "action": "replace-component", "dna": {}}
+{"command": "try a different component here", "action": "replace-component", "dna": {}}
+{"command": "recompose the dashboard keeping the locked bits", "action": "recompose-screen", "dna": {}}
+{"command": "reorganise this page", "action": "recompose-screen", "dna": {}}
+{"command": "rearrange the layout of this screen", "action": "recompose-screen", "dna": {}}
+{"command": "redo this screen's layout", "action": "recompose-screen", "dna": {}}
+{"command": "throw it all out and rethink the structure", "action": "rethink-screen", "dna": {}}
+{"command": "reimagine the page completely", "action": "rethink-screen", "dna": {}}
+{"command": "give me a radically different structure", "action": "rethink-screen", "dna": {}}
+{"command": "surprise me!", "action": "surprise-me", "dna": {}}
+{"command": "show me something I wouldn't expect", "action": "surprise-me", "dna": {}}
+{"command": "explore a variation", "action": "surprise-me", "dna": {}}
+{"command": "inspire me with an alternative", "action": "surprise-me", "dna": {}}
+{"command": "what's the weather in London", "action": "out-of-scope", "dna": {}}
+{"command": "please email this to my client", "action": "out-of-scope", "dna": {}}
+{"command": "who made Tessellate", "action": "out-of-scope", "dna": {}}
+{"command": "good morning", "action": "out-of-scope", "dna": {}}
+{"command": "convert this to a PDF invoice", "action": "out-of-scope", "dna": {}}
+{"command": "qwerty uiop", "action": "out-of-scope", "dna": {}}
+{"command": "how many users signed up today", "action": "out-of-scope", "dna": {}}

@@ -371,4 +371,5 @@ CONSTRAINT_LEXICON = {
 FEEL_WORDS = ["calm", "trustworthy", "playful", "premium", "luxury", "luxurious", "professional", "technical", "minimal",
               "minimalist", "bold", "friendly", "warm", "clinical", "serious", "cinematic", "editorial", "elegant", "modern",
               "clean", "fun", "vibrant", "quiet", "soft", "reassuring", "dense", "sleek", "approachable", "corporate",
-              "energetic", "sophisticated", "understated", "expressive", "dark", "light", "bright", "accessible", "simple"]
+              "energetic", "sophisticated", "understated", "expressive", "dark", "light", "bright", "accessible", "simple",
+              "fast", "conservative", "refined", "polished", "snappy", "responsive", "intuitive", "beautiful"]

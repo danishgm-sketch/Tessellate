@@ -1,6 +1,6 @@
 # Tessellate host daemon
 
-Runs Tessellate’s bespoke model (Tree-GNN + Bi-GRU, no LLM — D-034) on the owner’s machine and serves the
+Runs Tessellate’s bespoke models (structured perceptrons over a domain ontology, no LLM — D-034/D-034a/D-034b) on the owner’s machine and serves the
 public intelligence queue (D-033/D-035). It only makes **outbound** connections, so it needs no open ports
 or public IP.
 
@@ -27,6 +27,17 @@ or public IP.
   automatically (up to 3 attempts) — no ticket is lost.
 - Low-confidence predictions are reported as “not understood” instead of guessed (D-034).
 - Prompts are never logged. The API purges prompt text 24 hours after completion.
+
+## Models and training
+
+Versioned weights live in `tessellate_model/weights/<version>/`, and `weights/CURRENT` names the version in use. Each version has a `model_card.json` with its measured accuracy:
+
+| Model | Train and evaluate | Gate |
+|---|---|---|
+| Brief model | `python -m tessellate_model.train --version vX.Y.Z [--promote]` | archetype ≥ 0.85, entity F1 ≥ 0.80, screen recall ≥ 0.85 |
+| Command model | `python -m tessellate_model.intent_train --version vX.Y.Z [--promote]` | action ≥ 0.90, out-of-scope rejection ≥ 0.80, DNA direction ≥ 0.85 |
+
+`--promote` refuses to switch `CURRENT` if the gate fails. `eval/holdout2.jsonl` and `eval/commands.jsonl` were written after tuning stopped: report them, never tune against them. Run the unit tests with `python -m unittest discover -s tests`.
 
 ## Exit codes
 

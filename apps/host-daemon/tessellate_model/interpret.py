@@ -63,7 +63,16 @@ GROUP_FOR_TYPE = {
 
 # Words that name a screen or the product itself rather than a record the product manages.
 _INTERFACE_WORDS = {"calendar", "diary", "dashboard", "app", "application", "platform", "portal", "website", "site", "page",
-                    "screen", "view", "tool", "system", "interface", "inbox", "feed", "homepage"}
+                    "screen", "view", "tool", "system", "interface", "inbox", "feed", "homepage", "setting", "settings",
+                    "onboarding", "marketing"}
+
+
+def _feel_lemmas() -> set:
+    from .ontology_source import FEEL_WORDS
+    return {lemma(w) for w in FEEL_WORDS}
+
+
+_FEEL_LEMMAS = _feel_lemmas()
 
 
 def _plural(word: str) -> str:
@@ -191,8 +200,8 @@ class BriefInterpreter:
                     key, name, fields, patterns, desc = eid, ent.name, list(ent.fields), list(ent.patterns), ent.description
                 else:
                     head = lemma(phrase[-1])
-                    if head in _INTERFACE_WORDS:
-                        continue  # "calendars", "dashboard", "portal" describe screens, not records
+                    if head in _INTERFACE_WORDS or any(lemma(w) in _FEEL_LEMMAS for w in phrase):
+                        continue  # screens ("dashboard") and qualities ("fast", "settings conservative") are not records
                     name = _title(" ".join([w.lower() for w in phrase[:-1]] + [head]))
                     key, fields, patterns = _slug(name), ["name", "status", "created", "notes"], ["collection", "detail"]
                     desc = f"A {name.lower()} in this product."

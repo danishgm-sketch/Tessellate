@@ -82,7 +82,7 @@ def process(engine: BespokeInferenceEngine, task: Dict[str, Any]) -> Dict[str, A
     context = task.get("context") or {}
     try:
         if kind == "intent-command":
-            result = engine.infer_intent(task.get("prompt", ""), context.get("screenAst") or {})
+            result = engine.infer_intent(task.get("prompt", ""), context.get("screenAst") or {}, context.get("selectedNodeId"))
         elif kind == "interpret-brief":
             result = engine.interpret_brief(task.get("prompt", ""), context)
         else:

@@ -1,7 +1,7 @@
 """
 Trains the brief model and writes versioned weights + a model card (D-034).
 
-    python -m tessellate_model.train --version v2.0.0 [--examples 8000] [--promote]
+    python -m tessellate_model.train --version vX.Y.Z [--examples 8000] [--promote]
 
 Runs entirely on the owner's machine with the standard library. The held-out evaluation set is never
 used for training; its metrics are recorded in the model card and `--promote` refuses to make a model

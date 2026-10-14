@@ -27,7 +27,7 @@ export async function executeQueuedCommand(
   activeScreenId: string,
   userPrompt: string,
   onProgress?: QueueProgressCallback,
-  options: QueueClientOptions = {},
+  options: QueueClientOptions & { selectedNodeId?: string | null } = {},
 ): Promise<QueueExecutionResult> {
   const prompt = userPrompt.trim();
   if (!prompt) {
@@ -42,7 +42,7 @@ export async function executeQueuedCommand(
     ticket = await submitTicket(
       'intent-command',
       prompt,
-      { screenAst: activeScreen?.rootNode ?? {}, designDna: manifest.designDNA ?? {}, activeScreenId },
+      { screenAst: activeScreen?.rootNode ?? {}, designDna: manifest.designDNA ?? {}, activeScreenId, selectedNodeId: options.selectedNodeId ?? null },
       options,
     );
   } catch (err) {

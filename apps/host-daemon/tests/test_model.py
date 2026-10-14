@@ -7,75 +7,64 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "model"))
-from dataset import tokenize, flatten_ast, ACTIONS
-from intent_network import BespokeIntentNetwork
-from inference import BespokeInferenceEngine, NotUnderstood
+from inference import BespokeInferenceEngine, NotUnderstood  # noqa: E402
+
+SCREEN = {
+    "id": "root", "semanticRole": "sidebar-shell", "nodeType": "layout",
+    "children": [
+        {"id": "node-nav", "semanticRole": "app-navigation", "nodeType": "layout", "children": []},
+        {"id": "node-header", "semanticRole": "page-header", "nodeType": "section", "children": []},
+        {"id": "node-table", "semanticRole": "data-table", "nodeType": "section", "children": [], "locks": ["structure"]},
+    ],
+}
+ALLOWED = {
+    "action", "summary", "targetScreenId", "targetNodeIds", "preserveLockedNodes", "feelDescriptors",
+    "dnaDeltas", "categoricalDna", "lockDimensions", "replacementResourceSlug", "explanation",
+}
 
 
 class TestBespokeModel(unittest.TestCase):
-    def test_tokenize(self):
-        tokens = tokenize("recompose screen with calm precision")
-        self.assertEqual(len(tokens), 24)
-        self.assertGreater(tokens[1], 0)
-
-    def test_flatten_ast(self):
-        ast = {
-            "id": "root",
-            "semanticRole": "layout",
-            "children": [
-                {"id": "c1", "semanticRole": "hero", "locked": True},
-                {"id": "c2", "semanticRole": "metric", "locked": False},
-            ],
-        }
-        feats, edges, ids = flatten_ast(ast)
-        self.assertEqual(len(feats), 16)
-        self.assertIn("root", ids)
-        self.assertIn("c1", ids)
-        self.assertIn("c2", ids)
-        self.assertGreater(len(edges), 0)
-
-    def test_forward_pass(self):
-        model = BespokeIntentNetwork(seed=123)
-        ast = {"id": "screen", "semanticRole": "layout"}
-        res = model.forward("surprise me with rich visual ambition", ast)
-        self.assertIn(res["action"], ACTIONS)
-        self.assertGreaterEqual(res["divergenceLevel"], 0)
-        self.assertLessEqual(res["divergenceLevel"], 100)
-
-    def test_low_confidence_is_reported_not_guessed(self):
+    def test_unrelated_or_gibberish_requests_are_refused_not_guessed(self):
         engine = BespokeInferenceEngine.get_instance()
-        original = engine.model.forward
-        engine.model.forward = lambda prompt, ast: {"action": "adjust-dna", "confidence": 0.2, "targetNodeIds": [], "dnaDeltas": {}}
-        try:
+        for prompt in ("what is the weather in paris", "asdf qwer zxcv"):
             with self.assertRaises(NotUnderstood):
-                engine.infer_intent("add an appointment booking calendar", {"id": "root"})
-        finally:
-            engine.model.forward = original
+                engine.infer_intent(prompt, SCREEN)
 
-    def test_confident_prediction_becomes_canonical_intent_command(self):
-        engine = BespokeInferenceEngine.get_instance()
-        original = engine.model.forward
-        engine.model.forward = lambda prompt, ast: {
-            "action": "lock-nodes",
-            "confidence": 0.93,
-            "targetNodeIds": ["node-nav"],
-            "dnaDeltas": {},
-            "divergenceLevel": 40,
-        }
-        try:
-            cmd = engine.infer_intent("lock the navigation bar", {"id": "root"})
-        finally:
-            engine.model.forward = original
+    def test_lock_the_named_section_becomes_a_canonical_command(self):
+        cmd = BespokeInferenceEngine.get_instance().infer_intent("lock the table", SCREEN)
         self.assertEqual(cmd["action"], "lock-nodes")
-        self.assertEqual(cmd["targetNodeIds"], ["node-nav"])
-        self.assertTrue(cmd["summary"])
-        self.assertTrue(cmd["preserveLockedNodes"])
-        # Only canonical IntentCommand keys (packages/schemas/src/intent.ts) may be emitted.
-        allowed = {
-            "action", "summary", "targetScreenId", "targetNodeIds", "preserveLockedNodes", "feelDescriptors",
-            "dnaDeltas", "categoricalDna", "lockDimensions", "replacementResourceSlug", "explanation",
-        }
-        self.assertTrue(set(cmd).issubset(allowed), set(cmd) - allowed)
+        self.assertEqual(cmd["targetNodeIds"], ["node-table"])
+        self.assertTrue(set(cmd).issubset(ALLOWED), set(cmd) - ALLOWED)
+
+    def test_this_refers_to_the_selected_section(self):
+        cmd = BespokeInferenceEngine.get_instance().infer_intent("lock this", SCREEN, "node-header")
+        self.assertEqual(cmd["targetNodeIds"], ["node-header"])
+
+    def test_lock_without_a_target_asks_for_one(self):
+        with self.assertRaises(NotUnderstood):
+            BespokeInferenceEngine.get_instance().infer_intent("lock this", SCREEN, None)
+
+    def test_dna_direction_and_intensity(self):
+        engine = BespokeInferenceEngine.get_instance()
+        calmer = engine.infer_intent("make it calmer", SCREEN)
+        self.assertEqual(calmer["action"], "adjust-dna")
+        self.assertLess(calmer["dnaDeltas"]["motion"], 0)
+        much = engine.infer_intent("make it much denser", SCREEN)["dnaDeltas"]["density"]
+        slight = engine.infer_intent("make it slightly denser", SCREEN)["dnaDeltas"]["density"]
+        self.assertGreater(much, slight)
+        self.assertGreater(slight, 0)
+
+    def test_feel_and_surprise(self):
+        engine = BespokeInferenceEngine.get_instance()
+        feel = engine.infer_intent("apply the calm precision feel", SCREEN)
+        self.assertEqual(feel["action"], "apply-feel")
+        self.assertEqual(feel["feelDescriptors"], "calm precision")
+        self.assertEqual(engine.infer_intent("surprise me", SCREEN)["action"], "surprise-me")
+
+    def test_unlock_everything_targets_locked_sections(self):
+        cmd = BespokeInferenceEngine.get_instance().infer_intent("unlock everything", SCREEN)
+        self.assertEqual(cmd["action"], "unlock-nodes")
+        self.assertEqual(cmd["targetNodeIds"], ["node-table"])
 
     def test_empty_prompt_and_brief_interpretation_are_explicit_refusals(self):
         engine = BespokeInferenceEngine.get_instance()
@@ -106,6 +95,7 @@ class TestBespokeModel(unittest.TestCase):
 
         card = model_card()
         self.assertEqual(card["gate"], "pass")
+        self.assertEqual(card["intent"]["gate"], "pass")
         self.assertIn("freshHoldoutMetrics", card)
         self.assertIn("knownLimitations", card)
 
