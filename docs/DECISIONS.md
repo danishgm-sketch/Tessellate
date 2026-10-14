@@ -198,6 +198,117 @@ This file records major decisions so autonomous agents do not repeatedly reopen 
 **Security impact:** Audited 0 hardcoded secrets, verified CSP and origin isolation.  
 **Status:** LOCKED.
 
+### D-032a — Retraction of D-031/D-032 verification claims
+**Date:** 2026-10-14  
+**Context:** A read-only customer audit (2026-10-14) found that the Phase 21/22 claims recorded in D-031 and D-032 were not true: there is no production deployment (`tessellate.design` does not resolve, `database_id` is a placeholder, smoke tests are in-process), preview origin isolation is not implemented, there is no licence file, and the release gate mostly counted artefacts rather than verifying outcomes.  
+**Decision:** D-031 and D-032 are retracted as statements of fact. Their cost model stays a target. Phases 23–36 in `docs/BUILD_ORDER.md` are the active backlog, and every phase gate must pass in CI as an outcome check.  
+**Status:** LOCKED.
+
+### D-033 — Host daemon is the only intelligence engine
+**Date:** 2026-10-14  
+**Context:** The owner chose platform-provided intelligence served from an owner-run host daemon (`apps/host-daemon`) through a public ticket queue, instead of BYO provider keys.  
+**Decision:**
+- The host daemon is the only engine for brief interpretation (brief → ProductModel, ScreenGraph and content plan) and natural-language commands (→ IntentCommand).
+- The BYO-key path is removed: provider adapters, the memory credential store, `/api/ai/*` proxy and the AI product interpreter.
+- The deterministic keyword interpreter and deterministic command matcher are removed as user-facing fallbacks.
+- The mechanical TypeScript engines remain and are not considered intelligence: compatibility scoring, normalisation, mutation executor, renderer and exporter.
+- When the daemon is offline, compose and natural-language editing show an honest "unavailable / queued with ETA" state. Browsing, manual editing and export keep working.
+
+**Supersedes:** D-003 (core intelligence without AI) and D-004 (BYO credentials) for interpretation and commands.  
+**Accepted risks:**
+- No offline intelligence.
+- MCP/CLI compose depend on the daemon.
+- A single host machine is a single point of failure.
+- Client briefs are processed on the owner's machine; this must be disclosed in the Privacy Policy, with a retention limit.
+
+**Cost impact:** none beyond D-035.  
+**Security impact:** Daemon authentication uses per-device tokens stored hashed in D1. Enqueue requires a session or Turnstile. Payloads are schema-validated and size-limited, with rate limits.  
+**Status:** LOCKED.
+
+### D-034 — Bespoke model only (no LLM)
+**Date:** 2026-10-14  
+**Decision:**
+- The daemon uses the bespoke Tree-GNN/Bi-GRU model family only. No large language model is used.
+- Brief understanding is extended with:
+  - a domain ontology;
+  - a span tagger for entities, actors, actions, constraints and feel;
+  - a multi-label archetype classifier;
+  - a held-out evaluation set with accuracy thresholds.
+- A mandatory "Review inferred product" step lets users correct inferences before composing.
+
+**Status:** LOCKED.
+
+### D-035 — Capacity and queue infrastructure
+**Date:** 2026-10-14  
+**Decision:**
+- A single owner machine serves the queue.
+- The queue is a Cloudflare Durable Object with WebSocket hibernation: the daemon connects outbound and clients receive pushed status. It provides a fair per-user round-robin, priority for signed-in users, global and per-user caps, and ETAs.
+- The protocol is multi-worker-ready.
+- Requires Cloudflare Workers Paid (≈£4/month), because 1-second polling alone would exceed the free 100k requests/day.
+
+**Supersedes:** D-022 only insofar as the owner's own machine runs continuously; no paid server is added.  
+**Cost impact:** ≈£5/month total (Workers Paid plus domain). Usage alarms are set below the £20 ceiling.  
+**Status:** LOCKED.
+
+### D-036 — Licence
+**Date:** 2026-10-14  
+**Decision:** MIT everywhere: repository, platform and resources. A root `LICENSE` is required. Marketing copy must say "MIT".  
+**Status:** LOCKED.
+
+### D-037 — Accounts and administration
+**Date:** 2026-10-14  
+**Decision:**
+- Accounts use Better Auth email + password, with:
+  - email verification;
+  - password reset;
+  - session management;
+  - account data export and deletion;
+  - an admin role and admin console covering users, bans, queue, daemon devices, reports and an audit log;
+  - Turnstile and rate limits on authentication forms.
+- Email is sent through Cloudflare Email Service.
+- GitHub OAuth is optional and may return later.
+
+**Supersedes:** D-013.  
+**Status:** LOCKED.
+
+### D-038 — Export targets
+**Date:** 2026-10-14  
+**Decision:**
+- Exports target as many frameworks as possible:
+  - React (Vite, Next.js App Router);
+  - Vue 3 (Vite, Nuxt);
+  - Svelte/SvelteKit;
+  - Angular;
+  - Solid;
+  - Qwik;
+  - static HTML + Web Components;
+  - React Native (Expo + NativeWind).
+- Flutter, SwiftUI and Jetpack Compose come later, generated from a screen-level IR and labelled beta.
+
+**Supersedes:** D-005 (V1 React-only).  
+**Status:** LOCKED.
+
+### D-039 — Framework-neutral resource authoring
+**Date:** 2026-10-14  
+**Decision:**
+- Resources are authored as framework-neutral Mitosis components (`component.lite.tsx`, Builder.io Mitosis, MIT, build-time only) and compiled per target.
+- Complex resources may carry per-target overrides.
+- Styling uses semantic token utilities only.
+
+**Status:** LOCKED.
+
+### D-040 — Truthful metadata and outcome-based gates
+**Date:** 2026-10-14  
+**Decision:**
+- Resource `status` is earned, not stamped:
+  - `verified` requires all automated resource checks plus a named human reviewer;
+  - build scripts must never promote status;
+  - provenance must disclose AI generation (`aiAssistance`).
+- Marketing numbers come from the live catalogue.
+- Release gates verify outcomes (golden briefs, exported builds, fresh-directory installs, link crawl, contrast), not counts.
+
+**Status:** LOCKED.
+
 
 ## Open implementation decisions
 

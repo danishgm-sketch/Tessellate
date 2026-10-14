@@ -30,10 +30,11 @@ If you are Antigravity, Codex, Claude Code, or another autonomous engineering ag
 ## Non-negotiable constraints
 
 - **Target hosting/maintenance cost:** normally £0–£8/month; **hard ceiling £20/month** before deliberate commercial scaling.
-- **Launch deployment:** Cloudflare static/edge-first architecture. No always-on paid server required.
-- **AI cost:** no platform-funded unlimited inference. Core product must work deterministically without LLM calls. AI features use user-supplied provider credentials where necessary.
-- **Public resource code:** free. No Pro component paywall, daily download cap or source-code subscription.
-- **Primary V1 stack:** React + TypeScript + Tailwind CSS 4 resources; Astro public shell; React workbench; Hono/Workers API; D1 for small account state; R2 for optional large user assets.
+- **Launch deployment:** Cloudflare static/edge-first architecture plus a Durable Object queue on Workers Paid (≈£4/month, D-035). No paid always-on server.
+- **Intelligence (D-033/D-034):** brief interpretation and natural-language commands are served only by the owner-run host daemon (bespoke Tree-GNN/Bi-GRU model, no LLM) through a fair public queue. Browsing, manual editing, audit and export work without it.
+- **Public resource code:** free under MIT (`LICENSE`). No Pro component paywall, daily download cap or source-code subscription.
+- **Stack:** framework-neutral Mitosis resources with Tailwind CSS 4 tokens, compiled to React, Vue, Svelte, Angular, Solid, Qwik, Web Components and React Native; Astro public shell; React Workbench; Hono/Workers API; D1 for account state; R2 for optional large assets.
+- **Accounts (D-037):** email + password with verification, reset and an admin console. The core experience is guest-first.
 - **Resource catalogue source of truth:** Git repository, not a runtime database.
 - **Project editing model:** structured manifests and validated mutations, not arbitrary AI-written source-code mutation.
 - **Accessibility:** platform UI targets WCAG 2.2 AA.

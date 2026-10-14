@@ -4,6 +4,8 @@ This is the authoritative autonomous implementation sequence. Start at the first
 
 Use `[x]` only after the acceptance criteria for that item are actually satisfied.
 
+> **2026-10-14 notice (D-032a):** a customer audit found that many Phase 0–22 ticks were not true outcomes. Treat Phases 23–36 (at the end of this file) as the active backlog. They re-verify and repair the earlier claims under the owner decisions D-033 to D-040.
+
 ---
 
 # Phase 0 — Repository foundation
@@ -593,3 +595,152 @@ Release only if all are true:
 After completing a phase gate, immediately continue to the next unchecked phase unless a stopping condition in `AGENTS.md` applies.
 
 Do not wait for the owner to say “continue”.
+
+---
+
+# Gap-Closure Programme (active backlog, D-032a … D-040)
+
+Every gate is an outcome check that must pass in CI. Owner-only actions are marked **[owner]**.
+
+# Phase 23 — Truth reset and repo hygiene
+
+- [ ] Record D-032a…D-040; update AGENTS.md, README.md and this file.
+- [ ] Add MIT `LICENSE`; homepage licence copy says MIT.
+- [ ] `.gitattributes` (LF) and line-ending normalisation in all generators.
+- [ ] Honest resource metadata: no build-time status promotion; `aiAssistance` discloses generation; unreviewed resources are `experimental`.
+- [ ] Remove unsupported marketing claims and fabricated testimonials; one canonical domain.
+- [ ] Zero lint warnings; wrangler v4.
+
+### Phase 23 gate
+`pnpm build` leaves `git status` clean; no `verified` resource without a reviewer; lint has 0 warnings.
+
+# Phase 24 — Security
+
+- [ ] Inference queue: no secret literals; hashed per-device daemon tokens; authenticated or Turnstile-gated enqueue; Zod validation and size limits; rate limits.
+- [ ] Remove the BYO AI path (adapters, credential store, `/api/ai` proxy, AI interpreter).
+- [ ] Strict CORS allow-list.
+- [ ] Preview isolation on a separate origin with `sandbox="allow-scripts"` only and origin-checked messaging; previews removed from the site bundle.
+- [ ] Typed API error mapping (no bare 500s).
+- [ ] `/dev/*` excluded from production; `security.txt`.
+
+### Phase 24 gate
+API security tests (unauthorised daemon, oversized payload, foreign origin, rate limit) pass, and an e2e test proves a preview frame cannot access its parent.
+
+# Phase 25 — Data safety and project management
+
+- [ ] Unique project IDs per compose; no constant seeds or timestamps in IDs.
+- [ ] Projects dashboard: list, search, open, rename, duplicate, delete with undo, import/export, client folders; `/workbench/[project]`.
+- [ ] Rename and checkpoints persist; the UI reads the real stores.
+
+### Phase 25 gate
+E2E: three composes + reload → three distinct projects; rename and checkpoints survive a reload.
+
+# Phase 26 — Accounts, auth and admin
+
+- [ ] Email + password, verification, reset, sessions, account export and delete.
+- [ ] Admin console: users, bans, queue, daemon devices, reports, audit log.
+- [ ] Email delivery; Turnstile and rate limits on authentication.
+- [ ] D1 migrations, including `inference_tickets`, with a migrate-from-empty test.
+
+### Phase 26 gate
+E2E: sign-up → verify → sign-in → reset → delete; ban enforcement; cross-account access returns 403.
+
+# Phase 27 — Daemon and queue
+
+- [ ] Durable Object fair queue with WebSocket hibernation, caps, ETA and retention purge.
+- [ ] Daemon on an outbound WebSocket with token auth, reconnect, drain and service packaging.
+- [ ] A single queue client for the composer, Workbench, CLI and MCP; honest offline/ETA UX.
+- [ ] `/status` page.
+
+### Phase 27 gate
+200-ticket fairness test; daemon restart loses no tickets; offline UX e2e.
+
+# Phase 28 — Bespoke model v2
+
+- [ ] Domain ontology (archetypes, entities, screen patterns, workflows, lexicons).
+- [ ] Span tagger and multi-label archetype classifier; schema-validated outputs.
+- [ ] Synthetic and curated corpora; held-out evaluation set; versioned weights. **[owner]** final training run.
+- [ ] Mandatory "Review inferred product" step; remove hardcoded composer defaults.
+- [ ] Remove the keyword interpreter from user paths.
+
+### Phase 28 gate
+Archetype top-1 ≥ 85%, entity span F1 ≥ 0.80, required-screen recall ≥ 0.85; the physiotherapy brief yields Patient, Appointment, Clinician, Invoice and Deposit plus a booking flow.
+
+# Phase 29 — Composition correctness
+
+- [ ] Role-scoped candidate selection; no category bypass or whole-catalogue fallback; explicit gap cards.
+- [ ] Per-screen-class grammars; no duplicate resource within a screen.
+- [ ] Real capability checks.
+- [ ] Content and brand injection into node props and slots; no Tessellate copy in client output.
+- [ ] Real homepage demo; honest NL commands with diff preview.
+
+### Phase 29 gate
+Six golden briefs: every required role resolved or shown as a gap; auth screens contain a form; zero "Tessellate" strings in exports.
+
+# Phase 30 — Resource library rebuild
+
+- [ ] Resource contract v2: props schema, states, token-only styling, reduced motion, reviewer.
+- [ ] One token vocabulary across the renderer, UI and exporter.
+- [ ] New categories: auth, forms, commerce, scheduling, data tables, notifications, settings.
+- [ ] Migrate the gold resources first; demote resources that cannot meet the contract.
+- [ ] Automated per-resource checks.
+
+### Phase 30 gate
+Every `verified` resource passes all checks and has a reviewer.
+
+# Phase 31 — Multi-framework authoring and export
+
+- [ ] Mitosis compiler package and per-target overrides.
+- [ ] Export targets: Vite React, Next.js, Vue, Nuxt, SvelteKit, Angular, SolidStart, Qwik City, HTML/Web Components, Expo.
+- [ ] Each export has routing, data layer, forms, i18n, fonts, tokens, CI and axe tests, plus the handoff package.
+- [ ] Design-token exports.
+- [ ] 31b: Flutter, SwiftUI and Jetpack Compose (beta) from screen IR.
+
+### Phase 31 gate
+A CI matrix exports the physiotherapy project per target, and install, build, test and axe pass.
+
+# Phase 32 — Distribution
+
+- [ ] Registry targets namespaced per slug; previews excluded; per-framework registries.
+- [ ] CLI built and published; `--registry`, `--framework`, `--dry-run`; honest errors. **[owner]** npm scope.
+- [ ] MCP published, config-driven, fails loudly; mutation, export and ticket tools.
+
+### Phase 32 gate
+From a clean directory against production: 10 resources installed with no collisions, the project builds, and the MCP flow works.
+
+# Phase 33 — Site completeness and accessibility
+
+- [ ] Shared layout; correct Tailwind sources; no dev-only stylesheet links.
+- [ ] Every linked or documented route exists, including legal pages and `/status`.
+- [ ] Working command palette, live CTAs, better search ranking.
+- [ ] Contrast, labels, plain language, Workbench theme, no clipping.
+- [ ] Homepage under 150 KB gzipped JS.
+
+### Phase 33 gate
+Link crawl returns 0 non-200; axe and contrast pass in light and dark; measured budgets pass.
+
+# Phase 34 — Deployment and operations
+
+- [ ] Staging/production deploy workflow (Pages, Worker, DO, D1). **[owner]** domain and API token.
+- [ ] Monitoring, error reporting, usage alarms, D1 backups.
+- [ ] Network smoke tests replace the in-process ones.
+
+### Phase 34 gate
+The outsider journey passes on staging, then the release is promoted to production.
+
+# Phase 35 — Outcome-based quality gates
+
+- [ ] Rewrite the release gate around outcomes; budget script fails on unmatched patterns.
+- [ ] E2E style assertions and visual regression tests; Playwright builds before preview.
+- [ ] Claims linter.
+
+### Phase 35 gate
+CI is red if any outcome regresses.
+
+# Phase 36 — Legal, compliance and launch
+
+- [ ] Terms, Privacy (daemon processing disclosure), cookies, DPA template, licence and attribution, accessibility statement, vulnerability policy.
+- [ ] Launch checklist and documentation per target.
+
+### Phase 36 gate
+A full customer re-audit on production finds zero open S0/S1 items.

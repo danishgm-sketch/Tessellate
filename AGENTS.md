@@ -51,16 +51,18 @@ Document any conflict and resolution in `docs/DECISIONS.md`.
 Never violate these without owner intervention:
 
 ### Cost
+- Expected spend under D-035: ≈£5/month (Workers Paid plus domain).
 - Normal infrastructure goal: £0–£8/month.
 - Absolute pre-commercial hard ceiling: £20/month.
 - Do not add a paid SaaS dependency merely for convenience.
 - Do not add a hosted search service, hosted queue, hosted vector database, hosted image transformation service or always-on application server unless the repository specification is intentionally revised.
 
-### AI
-- Core browsing, composition, editing, audit and export must work without an LLM.
-- Platform must not absorb unlimited inference costs.
-- Natural-language AI features use BYO provider credentials or a user-configured compatible endpoint.
-- Provider secrets are never persisted in D1/R2 in V1.
+### AI (revised by D-033/D-034/D-035)
+- Brief interpretation and natural-language commands are served only by the owner-run host daemon (`apps/host-daemon`) through the queue. There is no BYO-key path and no deterministic intelligence fallback.
+- The daemon uses the bespoke Tree-GNN/Bi-GRU model family only. No LLM.
+- Browsing, manual Workbench editing, audit and export must keep working when the daemon is offline. Intelligence features must show an honest unavailable/queued state, never fake output.
+- Inference cost is bounded by the queue (fair scheduling, caps, rate limits). It runs on owner hardware and never on paid inference APIs.
+- Daemon credentials are per-device tokens stored hashed. No secret literals in the repository.
 
 ### Product
 - Public component/pattern source is free.
@@ -110,13 +112,18 @@ Never violate these without owner intervention:
 - D1.
 - R2.
 
-### Authentication
-- Better Auth.
-- GitHub OAuth only in V1.
+### Authentication (revised by D-037)
+- Better Auth with email + password, email verification, password reset and the admin plugin.
+- Cloudflare Email Service for transactional email.
+- GitHub OAuth is optional.
 
-### Resource ecosystem
-- React + TypeScript + Tailwind CSS 4 is the canonical V1 resource target.
-- shadcn-compatible registry conventions.
+### Intelligence host (D-033)
+- Python host daemon (`apps/host-daemon`), connecting outbound to a Cloudflare Durable Object queue.
+
+### Resource ecosystem (revised by D-038/D-039)
+- Resources are authored framework-neutrally with Mitosis (`component.lite.tsx`) and Tailwind CSS 4 semantic token utilities.
+- Compile targets: React, Vue, Svelte, Angular, Solid, Qwik, Web Components and React Native.
+- shadcn-compatible registry conventions, with per-framework registries.
 
 ### Testing
 - Vitest.
