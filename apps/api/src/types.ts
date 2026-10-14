@@ -21,6 +21,26 @@ export interface Env {
   EXTRA_ALLOWED_ORIGINS?: string;
   RATE_LIMIT_ENQUEUE?: RateLimitBinding;
   RATE_LIMIT_AUTH?: RateLimitBinding;
+  /** Cloudflare Email Service binding (wrangler `send_email`). */
+  EMAIL?: SendEmailBinding;
+  /** Sender address on the onboarded domain, e.g. no-reply@tessellate.design. */
+  EMAIL_FROM?: string;
+  /** Public site origin used in links inside emails, e.g. https://tessellate.design. */
+  PUBLIC_SITE_URL?: string;
+  /** Comma-separated emails that are granted the admin role when they verify. */
+  ADMIN_EMAILS?: string;
+}
+
+/** Cloudflare Email Service Workers binding (https://developers.cloudflare.com/email-service/). */
+export interface SendEmailBinding {
+  send(message: {
+    to: string | string[];
+    from: { email: string; name?: string };
+    subject: string;
+    text?: string;
+    html?: string;
+    replyTo?: string;
+  }): Promise<unknown>;
 }
 
 export interface SessionUser {

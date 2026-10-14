@@ -4,24 +4,62 @@
   "main": "src/index.ts",
   "compatibility_date": "2025-02-14",
   "compatibility_flags": ["nodejs_compat"],
-  // Fail-closed default. Local development overrides this via .dev.vars (see .dev.vars.example).
-  "vars": {
-    "ENVIRONMENT": "production"
-  },
+  "observability": { "enabled": true },
+
+  // ---- Local development (`wrangler dev`) -------------------------------------------------------
+  // Fail-closed default; local development overrides ENVIRONMENT via .dev.vars (see .dev.vars.example).
+  // No send_email binding locally: account email is captured in the dev outbox (GET /api/dev/outbox).
+  "vars": { "ENVIRONMENT": "production" },
   "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "tessellate-db",
-      // Replaced with the real D1 database id during Phase 34 deployment (owner action).
-      "database_id": "tessellate-db-local",
-      "migrations_dir": "migrations"
-    }
+    { "binding": "DB", "database_name": "tessellate-db", "database_id": "tessellate-db-local", "migrations_dir": "migrations" }
   ],
   "ratelimits": [
     { "name": "RATE_LIMIT_ENQUEUE", "namespace_id": "1001", "simple": { "limit": 10, "period": 60 } },
     { "name": "RATE_LIMIT_AUTH", "namespace_id": "1002", "simple": { "limit": 20, "period": 60 } }
   ],
-  "observability": {
-    "enabled": true
+
+  "env": {
+    // ---- Staging (`wrangler deploy --env staging`) ----------------------------------------------
+    "staging": {
+      "name": "tessellate-api-staging",
+      "vars": {
+        "ENVIRONMENT": "staging",
+        "BETTER_AUTH_URL": "https://staging.tessellate.design",
+        "PUBLIC_SITE_URL": "https://staging.tessellate.design",
+        "EMAIL_FROM": "no-reply@tessellate.design",
+        "EXTRA_ALLOWED_ORIGINS": "https://staging.tessellate.design,https://staging-preview.tessellate.design"
+      },
+      "d1_databases": [
+        // OWNER: replace with the id printed by `wrangler d1 create tessellate-db-staging`.
+        { "binding": "DB", "database_name": "tessellate-db-staging", "database_id": "REPLACE_WITH_STAGING_D1_ID", "migrations_dir": "migrations" }
+      ],
+      "ratelimits": [
+        { "name": "RATE_LIMIT_ENQUEUE", "namespace_id": "2001", "simple": { "limit": 10, "period": 60 } },
+        { "name": "RATE_LIMIT_AUTH", "namespace_id": "2002", "simple": { "limit": 20, "period": 60 } }
+      ],
+      "send_email": [{ "name": "EMAIL" }]
+    },
+
+    // ---- Production (`wrangler deploy --env production`) ----------------------------------------
+    "production": {
+      "name": "tessellate-api",
+      // The API is served same-origin under the site so session cookies are first-party.
+      "routes": [{ "pattern": "tessellate.design/api/*", "zone_name": "tessellate.design" }],
+      "vars": {
+        "ENVIRONMENT": "production",
+        "BETTER_AUTH_URL": "https://tessellate.design",
+        "PUBLIC_SITE_URL": "https://tessellate.design",
+        "EMAIL_FROM": "no-reply@tessellate.design"
+      },
+      "d1_databases": [
+        // OWNER: replace with the id printed by `wrangler d1 create tessellate-db`.
+        { "binding": "DB", "database_name": "tessellate-db", "database_id": "REPLACE_WITH_PRODUCTION_D1_ID", "migrations_dir": "migrations" }
+      ],
+      "ratelimits": [
+        { "name": "RATE_LIMIT_ENQUEUE", "namespace_id": "3001", "simple": { "limit": 10, "period": 60 } },
+        { "name": "RATE_LIMIT_AUTH", "namespace_id": "3002", "simple": { "limit": 20, "period": 60 } }
+      ],
+      "send_email": [{ "name": "EMAIL" }]
+    }
   }
 }

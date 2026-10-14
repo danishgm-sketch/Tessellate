@@ -63,14 +63,14 @@ export function SiteHeader() {
             </a>
 
             <a
-              href="/workbench"
+              href="/sign-in"
               className="hidden md:inline text-xs font-semibold text-[#62666F] hover:text-[#111217] transition-colors px-2"
             >
               Sign in
             </a>
 
             <a
-              href="/workbench"
+              href="/compose"
               className="flex items-center gap-1.5 rounded-lg bg-[#111217] px-4 py-2 text-xs font-semibold text-white hover:bg-[#2547E8] transition-colors shadow-sm"
             >
               <span>Start building</span>

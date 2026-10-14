@@ -637,12 +637,12 @@ E2E: three composes + reload → three distinct projects; rename and checkpoints
 
 # Phase 26 — Accounts, auth and admin
 
-- [ ] Email + password, verification, reset, sessions, account export and delete.
-- [ ] Admin console: users, bans, queue, daemon devices, reports, audit log.
-- [ ] Email delivery; Turnstile and rate limits on authentication.
-- [ ] D1 migrations, including `inference_tickets`, with a migrate-from-empty test.
+- [x] Email + password, verification, reset, sessions, account export and delete.
+- [x] Admin console: users, bans, queue, daemon devices, reports, audit log.
+- [x] Email delivery; Turnstile and rate limits on authentication.
+- [x] D1 migrations, including `inference_tickets`, with a migrate-from-empty test.
 
-### Phase 26 gate
+### Phase 26 gate (passed 2026-10-14: tests/e2e/accounts.spec.ts against local D1, apps/api accounts/migrations tests; owner must onboard the email domain and set Turnstile keys before launch)
 E2E: sign-up → verify → sign-in → reset → delete; ban enforcement; cross-account access returns 403.
 
 # Phase 27 — Daemon and queue

@@ -85,16 +85,16 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
           </a>
 
           {/* Sign In */}
-          <button
-            type="button"
+          <a
+            href="/sign-in"
             onClick={onSignInClick}
-            className="hidden sm:inline-flex items-center min-h-[32px] text-xs font-medium text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA] px-2.5 py-1 rounded-lg cursor-pointer"
+            className="hidden sm:inline-flex items-center min-h-[32px] text-xs font-medium text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA] px-2.5 py-1 rounded-lg"
           >
             Sign in
-          </button>
+          </a>
 
           {/* Primary CTA */}
-          <a href="/workbench" className="inline-flex items-center min-h-[32px]">
+          <a href="/compose" className="inline-flex items-center min-h-[32px]">
             <Button size="sm" variant="primary">
               Start building
             </Button>

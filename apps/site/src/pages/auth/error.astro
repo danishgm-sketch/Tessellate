@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Sign-in problem" width="narrow" noindex>
+  <h1 class="text-2xl font-bold tracking-tight">That link did not work</h1>
+  <p class="mt-3 text-sm text-[#62666F]">
+    The link may have expired or already been used. Request a fresh one and try again.
+  </p>
+  <ul class="mt-6 space-y-2 text-sm">
+    <li><a href="/sign-in" class="font-medium text-[#2547E8] hover:underline">Sign in</a> (you can resend the confirmation email from there)</li>
+    <li><a href="/forgot-password" class="font-medium text-[#2547E8] hover:underline">Reset your password</a></li>
+  </ul>
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SignUpForm } from '../components/auth/AuthForms';
+---
+
+<BaseLayout title="Create an account" description="Create a free Tessellate account to sync projects across devices." width="narrow" noindex>
+  <h1 class="text-2xl font-bold tracking-tight">Create your account</h1>
+  <p class="mt-2 mb-6 text-sm text-[#62666F]">
+    An account is optional. Everything works in your browser without one; an account lets you sync and publish projects.
+  </p>
+  <SignUpForm client:only="react" />
+  <p class="mt-6 text-sm text-[#62666F]">Already have an account? <a href="/sign-in" class="font-medium text-[#2547E8] hover:underline">Sign in</a></p>
+</BaseLayout>

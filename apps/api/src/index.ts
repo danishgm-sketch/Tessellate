@@ -10,32 +10,13 @@ import { collectionsRoute } from './routes/collections.js';
 import { creatorLinksRoute } from './routes/creator-links.js';
 import { reportsRoute } from './routes/reports.js';
 import { inferenceRoute } from './routes/inference.js';
+import { adminRoute } from './routes/admin.js';
+import { readDevOutbox } from './email.js';
 import { ConfigurationError, isNonProduction } from './security.js';
+import { allowedOrigins } from './origins.js';
 import type { Env } from './types.js';
 
 const app = new Hono<{ Bindings: Env }>();
-
-export const PRODUCTION_ORIGINS = [
-  'https://tessellate.design',
-  'https://www.tessellate.design',
-  'https://preview.tessellate.design',
-];
-
-const DEVELOPMENT_ORIGINS = [
-  'http://localhost:4321',
-  'http://127.0.0.1:4321',
-  'http://localhost:5173',
-  'http://127.0.0.1:5173',
-];
-
-/** Allowed browser origins: production hosts, configured extras, and localhost only outside production. */
-export function allowedOrigins(env?: Env): string[] {
-  const extra = (env?.EXTRA_ALLOWED_ORIGINS ?? '')
-    .split(',')
-    .map((o) => o.trim())
-    .filter(Boolean);
-  return [...PRODUCTION_ORIGINS, ...extra, ...(isNonProduction(env) ? DEVELOPMENT_ORIGINS : [])];
-}
 
 app.use('*', async (c, next) => {
   const origins = allowedOrigins(c.env);
@@ -66,6 +47,13 @@ app.route('/api/collections', collectionsRoute);
 app.route('/api/creator-links', creatorLinksRoute);
 app.route('/api/reports', reportsRoute);
 app.route('/api/inference', inferenceRoute);
+app.route('/api/admin', adminRoute);
+
+// Development/test only: captured transactional email (verification, reset). 404 in production.
+app.get('/api/dev/outbox', (c) => {
+  if (!isNonProduction(c.env)) return c.json({ error: 'Not Found' }, 404);
+  return c.json({ emails: readDevOutbox() });
+});
 
 app.get('/health', (c) => {
   return c.json({ status: 'ok', service: 'tessellate-api', timestamp: new Date().toISOString() });
@@ -87,6 +75,7 @@ app.get('/', (c) => {
       '/api/creator-links/*',
       '/api/reports/*',
       '/api/inference/*',
+      '/api/admin/*',
     ],
   });
 });
@@ -94,6 +83,11 @@ app.get('/', (c) => {
 app.notFound((c) => c.json({ error: 'Not Found', message: `No route for ${c.req.method} ${new URL(c.req.url).pathname}.` }, 404));
 
 app.onError((err, c) => {
+  // Better Auth APIError (e.g. from admin plugin calls made inside our routes)
+  const status = (err as { statusCode?: number; status?: unknown }).statusCode;
+  if (typeof status === 'number' && status >= 400 && status < 500) {
+    return c.json({ error: err.message || 'Request Error' }, status as 400);
+  }
   if (err instanceof HTTPException) {
     return c.json({ error: err.message || 'Request Error' }, err.status);
   }

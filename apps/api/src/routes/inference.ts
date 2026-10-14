@@ -56,7 +56,7 @@ export function resetInferenceStateForTests(): void {
   avgProcessingMs = 5_000;
 }
 
-function getStore(env?: Env): TicketStore {
+export function getStore(env?: Env): TicketStore {
   if (env?.DB) return new D1TicketStore(env.DB);
   if (!isNonProduction(env)) throw new ConfigurationError('D1 database binding (DB) is required for the inference queue.');
   memoryStore ??= new MemoryTicketStore();

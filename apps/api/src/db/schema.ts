@@ -9,6 +9,11 @@ export const user = sqliteTable('user', {
   image: text('image'),
   createdAt: integer('createdAt', { mode: 'timestamp' }).notNull(),
   updatedAt: integer('updatedAt', { mode: 'timestamp' }).notNull(),
+  // Better Auth admin plugin (D-037)
+  role: text('role').default('user'),
+  banned: integer('banned', { mode: 'boolean' }).default(false),
+  banReason: text('banReason'),
+  banExpires: integer('banExpires', { mode: 'timestamp' }),
 });
 
 // 2. Better Auth: session
@@ -20,12 +25,13 @@ export const session = sqliteTable('session', {
   updatedAt: integer('updatedAt', { mode: 'timestamp' }).notNull(),
   ipAddress: text('ipAddress'),
   userAgent: text('userAgent'),
+  impersonatedBy: text('impersonatedBy'),
   userId: text('userId')
     .notNull()
     .references(() => user.id, { onDelete: 'cascade' }),
 });
 
-// 3. Better Auth: account (GitHub OAuth only in V1)
+// 3. Better Auth: account (email/password credentials; optional OAuth providers)
 export const account = sqliteTable('account', {
   id: text('id').primaryKey(),
   accountId: text('accountId').notNull(),
@@ -197,3 +203,14 @@ export const daemonDevices = sqliteTable('daemon_devices', {
   revokedAt: text('revokedAt'),
 });
 
+
+// 16. Admin audit log (D-037): every privileged action is recorded.
+export const adminAuditLog = sqliteTable('admin_audit_log', {
+  id: text('id').primaryKey(),
+  actorUserId: text('actorUserId').notNull(),
+  action: text('action').notNull(),
+  targetType: text('targetType').notNull(),
+  targetId: text('targetId'),
+  detail: text('detail'),
+  createdAt: text('createdAt').notNull(),
+});

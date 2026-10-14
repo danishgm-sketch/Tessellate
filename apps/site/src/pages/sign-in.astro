@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SignInForm } from '../components/auth/AuthForms';
+---
+
+<BaseLayout title="Sign in" description="Sign in to your Tessellate account." width="narrow" noindex>
+  <h1 class="text-2xl font-bold tracking-tight">Sign in</h1>
+  <p class="mt-2 mb-6 text-sm text-[#62666F]">Welcome back.</p>
+  <SignInForm client:only="react" />
+  <p class="mt-6 text-sm text-[#62666F]">New to Tessellate? <a href="/sign-up" class="font-medium text-[#2547E8] hover:underline">Create an account</a></p>
+</BaseLayout>

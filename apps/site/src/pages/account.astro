@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { AccountView } from '../components/auth/AccountView';
+---
+
+<BaseLayout title="Your account" width="default" noindex>
+  <h1 class="mb-6 text-2xl font-bold tracking-tight">Your account</h1>
+  <AccountView client:only="react" />
+</BaseLayout>

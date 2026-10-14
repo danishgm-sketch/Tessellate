@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { drizzle } from 'drizzle-orm/d1';
 import { eq } from 'drizzle-orm';
+import { z } from 'zod';
 import * as schema from '../db/schema.js';
 import { requireAuth, optionalAuth } from '../auth.js';
 import type { Env, AuthenticatedContext } from '../types.js';
@@ -60,10 +61,24 @@ meRoute.get('/', optionalAuth, async (c) => {
   });
 });
 
+const ProfileUpdateSchema = z
+  .object({
+    username: z.string().trim().min(2).max(40).regex(/^[a-z0-9_.-]+$/i, 'letters, digits, . _ - only').optional(),
+    bio: z.string().max(500).nullable().optional(),
+    avatarUrl: z.string().url().max(500).refine((u) => u.startsWith('https://'), 'must be an https URL').nullable().optional(),
+    specialtyTags: z.array(z.string().trim().min(1).max(40)).max(12).optional(),
+    githubHandle: z.string().trim().max(39).regex(/^[a-z0-9-]*$/i).nullable().optional(),
+    isAvailableForWork: z.boolean().optional(),
+  });
+
 // PUT /api/me — Updates profile metadata for authenticated user
 meRoute.put('/', requireAuth, async (c) => {
   const auth = c.get('auth') as AuthenticatedContext;
-  const body = await c.req.json().catch(() => ({}));
+  const parsed = ProfileUpdateSchema.safeParse(await c.req.json().catch(() => undefined));
+  if (!parsed.success) {
+    return c.json({ error: 'Validation Error', message: parsed.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('; ') }, 400);
+  }
+  const body = parsed.data;
 
   const now = new Date().toISOString();
   const updatedProfile = {
@@ -107,4 +122,25 @@ meRoute.put('/', requireAuth, async (c) => {
     success: true,
     profile: updatedProfile,
   });
+});
+
+// GET /api/me/export — GDPR data export: everything Tessellate stores in the cloud for this account.
+meRoute.get('/export', requireAuth, async (c) => {
+  const auth = c.get('auth') as AuthenticatedContext;
+  const exportedAt = new Date().toISOString();
+  if (!c.env?.DB) {
+    return c.json({ exportedAt, user: auth.user, profile: memoryProfiles.get(auth.user.id) ?? null, projects: [], favorites: [], collections: [], published: [], reports: [] });
+  }
+  const db = drizzle(c.env.DB, { schema });
+  const uid = auth.user.id;
+  const [profile, projects, favorites, collections, published, reports] = await Promise.all([
+    db.select().from(schema.profiles).where(eq(schema.profiles.userId, uid)).get(),
+    db.select().from(schema.projects).where(eq(schema.projects.userId, uid)).all(),
+    db.select().from(schema.favorites).where(eq(schema.favorites.userId, uid)).all(),
+    db.select().from(schema.collections).where(eq(schema.collections.userId, uid)).all(),
+    db.select().from(schema.publishedProjects).where(eq(schema.publishedProjects.userId, uid)).all(),
+    db.select().from(schema.reports).where(eq(schema.reports.reporterUserId, uid)).all(),
+  ]);
+  c.header('Content-Disposition', `attachment; filename="tessellate-account-export-${exportedAt.slice(0, 10)}.json"`);
+  return c.json({ exportedAt, user: auth.user, profile: profile ?? null, projects, favorites, collections, published, reports });
 });

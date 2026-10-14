@@ -7,7 +7,7 @@ import type { Env, AuthenticatedContext } from '../types.js';
 
 export const reportsRoute = new Hono<{ Bindings: Env; Variables: { auth?: AuthenticatedContext } }>();
 
-interface InMemReport {
+export interface InMemReport {
   id: string;
   reporterUserId: string | null;
   targetType: string;
@@ -18,7 +18,7 @@ interface InMemReport {
   createdAt: string;
 }
 
-const memoryReports: InMemReport[] = [];
+export const memoryReports: InMemReport[] = [];
 
 // POST /api/reports — submit a content or abuse report
 reportsRoute.post('/', optionalAuth, async (c) => {

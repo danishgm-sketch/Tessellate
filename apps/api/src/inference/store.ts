@@ -49,11 +49,34 @@ export interface TicketStore {
   findDeviceByTokenHash(tokenHash: string): Promise<DaemonDevice | undefined>;
   touchDevice(id: string, at: string): Promise<void>;
   lastDeviceSeenAt(): Promise<string | undefined>;
+  createDevice(device: DaemonDevice): Promise<void>;
+  listDevices(): Promise<DaemonDevice[]>;
+  revokeDevice(id: string, at: string): Promise<boolean>;
+  listRecent(limit: number): Promise<Ticket[]>;
 }
 
 const ACTIVE: TicketStatus[] = ['queued', 'processing'];
 
 export class MemoryTicketStore implements TicketStore {
+  async createDevice(device: DaemonDevice) {
+    this.devices.set(device.id, { ...device });
+  }
+
+  async listDevices() {
+    return [...this.devices.values()].filter((d) => d.tokenHash !== '').map((d) => ({ ...d }));
+  }
+
+  async revokeDevice(id: string, at: string) {
+    const d = this.devices.get(id);
+    if (!d || d.revokedAt) return false;
+    d.revokedAt = at;
+    return true;
+  }
+
+  async listRecent(limit: number) {
+    return [...this.tickets.values()].sort((a, b) => b.tokenNumber - a.tokenNumber).slice(0, limit).map((t) => ({ ...t }));
+  }
+
   private readonly tickets = new Map<string, Ticket>();
   private readonly devices = new Map<string, DaemonDevice>();
   private nextToken = 1;
@@ -181,6 +204,30 @@ export class D1TicketStore implements TicketStore {
 
   constructor(d1: D1Database) {
     this.db = drizzle(d1, { schema });
+  }
+
+  async createDevice(device: DaemonDevice) {
+    await this.db.insert(schema.daemonDevices).values({ id: device.id, name: device.name, tokenHash: device.tokenHash, createdAt: device.createdAt });
+  }
+
+  async listDevices() {
+    const rows = await this.db.select().from(schema.daemonDevices).orderBy(sql`${schema.daemonDevices.createdAt} DESC`).all();
+    return rows.map((r) => ({ id: r.id, name: r.name, tokenHash: r.tokenHash, createdAt: r.createdAt, lastSeenAt: r.lastSeenAt ?? undefined, revokedAt: r.revokedAt ?? undefined }));
+  }
+
+  async revokeDevice(id: string, at: string) {
+    const row = await this.db
+      .update(schema.daemonDevices)
+      .set({ revokedAt: at })
+      .where(and(eq(schema.daemonDevices.id, id), sql`${schema.daemonDevices.revokedAt} IS NULL`))
+      .returning({ id: schema.daemonDevices.id })
+      .get();
+    return Boolean(row);
+  }
+
+  async listRecent(limit: number) {
+    const rows = await this.db.select().from(schema.inferenceTickets).orderBy(sql`${schema.inferenceTickets.tokenNumber} DESC`).limit(limit).all();
+    return rows.map(rowToTicket);
   }
 
   async insert(ticket: Omit<Ticket, 'tokenNumber'>): Promise<Ticket> {
