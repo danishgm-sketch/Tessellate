@@ -12,7 +12,7 @@ import {
   clampScore,
 } from '@tessellate/dna';
 import { detectProductArchetypes, getProductArchetype } from './archetypes.js';
-import { findBlueprintByArchetype, type ProductBlueprint } from './blueprints.js';
+import { PRODUCT_BLUEPRINTS, findBlueprintByArchetype, type ProductBlueprint } from './blueprints.js';
 
 export interface ProductBriefInput {
   description: string;
@@ -115,6 +115,36 @@ export function deriveInitialDesignDNA(
   }
 
   return DesignDNASchema.parse(base);
+}
+
+/**
+ * Design DNA for a ProductModel produced by the host daemon (D-033). Uses the archetype's blueprint when one
+ * exists; otherwise builds the base from the model's own priors instead of silently falling back to B2B SaaS.
+ */
+export function designDnaForProductModel(
+  productModel: ProductModel,
+  input: Omit<ProductBriefInput, 'description'>
+): DesignDNA {
+  const primary = productModel.productArchetypes[0]?.tag ?? 'saas';
+  const match = PRODUCT_BLUEPRINTS.find((b) => b.archetypeId === primary);
+  const blueprint: ProductBlueprint = match ?? {
+    ...PRODUCT_BLUEPRINTS[1]!,
+    id: `derived-${primary}`,
+    archetypeId: primary,
+    priors: {
+      userSophistication: productModel.userSophistication,
+      trustRequirement: productModel.trustRequirement,
+      informationComplexity: productModel.informationComplexity,
+      dataDensity: productModel.dataDensity,
+      collaborationLevel: productModel.collaborationLevel,
+      transactionCriticality: productModel.transactionCriticality,
+      navigationComplexity: productModel.navigationComplexity,
+      mobileImportance: productModel.mobileImportance,
+    },
+    // No preset: the DNA comes from this product's priors and feel, not another archetype's look.
+    applicableDnaPresets: [] as unknown as ProductBlueprint['applicableDnaPresets'],
+  };
+  return deriveInitialDesignDNA(primary, blueprint, { ...input, description: '' });
 }
 
 /**

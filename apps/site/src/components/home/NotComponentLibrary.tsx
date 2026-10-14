@@ -74,7 +74,7 @@ export function NotComponentLibrary() {
             <li className="flex items-start gap-3">
               <span className="h-1.5 w-1.5 rounded-full bg-[#2547E8] mt-2 shrink-0" />
               <span>
-                <strong>Deterministic ProductModel:</strong> Extracts domain archetypes, user sophistication, and core JTBD before generating screens.
+                <strong>Reviewed ProductModel:</strong> Tessellate's own model proposes the product type, entities and screens; you confirm or correct them before anything is composed.
               </span>
             </li>
             <li className="flex items-start gap-3">

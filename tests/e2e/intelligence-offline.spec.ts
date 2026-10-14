@@ -41,6 +41,23 @@ test.describe('Intelligence host offline', () => {
     expect(after).toBe(before);
   });
 
+  test('composing a brief is never faked when the host is offline', async ({ page }) => {
+    test.setTimeout(90000);
+    await page.goto('/compose');
+    const submit = page.getByRole('button', { name: /Understand my product/ });
+    await expect(async () => {
+      await page.getByLabel('What are you building?').fill('A booking platform for physiotherapy clinics with patient deposits.');
+      await expect(submit).toBeEnabled({ timeout: 1000 });
+    }).toPass({ timeout: 15000 });
+    await submit.click();
+    await expect(page.getByTestId('compose-progress')).toContainText(/offline/i, { timeout: 15000 });
+    // After the short offline wait the user gets an explanation and can retry; no review or directions appear.
+    await expect(page.getByRole('status')).toContainText(/offline|not reachable|cancel|try again/i, { timeout: 45000 });
+    await expect(page.getByTestId('review-step')).toHaveCount(0);
+    await expect(page.getByTestId('direction-card-01')).toHaveCount(0);
+    await expect(page.getByLabel('What are you building?')).toHaveValue(/physiotherapy/);
+  });
+
   test('the status page reports the host as unavailable while everything else works', async ({ page }) => {
     await page.goto('/status');
     await expect(page.getByRole('heading', { name: 'System status' })).toBeVisible();

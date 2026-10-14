@@ -198,6 +198,9 @@ importers:
       '@tessellate/catalog':
         specifier: workspace:*
         version: link:../catalog
+      '@tessellate/compatibility':
+        specifier: workspace:*
+        version: link:../compatibility
       '@tessellate/composer':
         specifier: workspace:*
         version: link:../composer
@@ -207,6 +210,9 @@ importers:
       '@tessellate/exporter':
         specifier: workspace:*
         version: link:../exporter
+      '@tessellate/intelligence':
+        specifier: workspace:*
+        version: link:../intelligence
       '@tessellate/registry':
         specifier: workspace:*
         version: link:../registry
@@ -297,6 +303,16 @@ importers:
         specifier: ^5.7.3
         version: 5.9.3
 
+  packages/intelligence:
+    dependencies:
+      '@tessellate/schemas':
+        specifier: workspace:*
+        version: link:../schemas
+    devDependencies:
+      typescript:
+        specifier: ^5.7.3
+        version: 5.9.3
+
   packages/mcp:
     dependencies:
       '@modelcontextprotocol/sdk':
@@ -314,6 +330,9 @@ importers:
       '@tessellate/dna':
         specifier: workspace:*
         version: link:../dna
+      '@tessellate/intelligence':
+        specifier: workspace:*
+        version: link:../intelligence
       '@tessellate/schemas':
         specifier: workspace:*
         version: link:../schemas
@@ -462,6 +481,9 @@ importers:
       '@tessellate/exporter':
         specifier: workspace:*
         version: link:../exporter
+      '@tessellate/intelligence':
+        specifier: workspace:*
+        version: link:../intelligence
       '@tessellate/renderer':
         specifier: workspace:*
         version: link:../renderer

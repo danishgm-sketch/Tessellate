@@ -56,7 +56,7 @@ export function FinalComposerFooter() {
               <span className="text-base font-bold text-[#111217] tracking-tight">Tessellate</span>
             </div>
             <p className="text-xs text-[#62666F] max-w-sm leading-relaxed">
-              Open interface intelligence and deterministic UI composition platform for humans and autonomous coding agents.
+              Open interface intelligence and UI composition platform for humans and autonomous coding agents.
             </p>
             <div className="pt-2 text-[11px] font-mono text-[#8B8F97]">
               <span>MIT licensed open source</span>
@@ -108,10 +108,9 @@ export function FinalComposerFooter() {
           <div>
             © 2026 Tessellate. Free open interface commons.
           </div>
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#177B55]" />
-            <span className="text-[#111217]">Deterministic engine v0.1.0 active</span>
-          </div>
+          <a href="/status" className="text-[#111217] underline-offset-2 hover:underline">
+            System status
+          </a>
         </div>
       </div>
     </footer>

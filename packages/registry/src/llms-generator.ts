@@ -10,7 +10,7 @@ export function generateLlmsTxt(catalog: CatalogueArtifact, siteUrl = 'https://t
 
   return `# Tessellate
 
-> Deterministic UI composition engine and interface intelligence platform. Composes coherent web interfaces from an open, validated resource vocabulary using 10-dimensional Design DNA vectors.
+> Interface composition engine and intelligence platform. Composes coherent web interfaces from an open, validated resource vocabulary using 10-dimensional Design DNA vectors.
 
 Tessellate does not sell a pile of disconnected components. It understands product topology, matches components using semantic layout grammars, normalises disparate source files into a unified token system, and allows humans and agents to export production-ready React + Tailwind CSS code without framework lock-in.
 
@@ -61,6 +61,10 @@ tess search "hero bold"
 # Add resource to local project
 tess add button-primary
 
+# Interpret a brief, review/edit interpretation.json, then compose
+tess interpret "A booking platform for physiotherapy clinics..."
+tess compose --from interpretation.json --output project.json
+
 # Validate manifest
 tess validate project.json
 
@@ -81,7 +85,8 @@ Tools provided:
 - \`get_resource_metadata\`: Retrieve slots, dependencies, and WCAG accessibility ratings.
 - \`find_alternatives\`: Discover structurally compatible substitutes.
 - \`recommend_resources\`: Proactively recommend resources based on page intent.
-- \`compose_screen\`: Deterministically generate a \`ProjectManifest\` from grammar and intent.
+- \`interpret_brief\`: Ask the Tessellate intelligence service what a product needs (review the result with the user).
+- \`compose_product\`: Compose three directions from a reviewed interpretation and return a \`ProjectManifest\`.
 - \`validate_project\`: Validate a \`ProjectManifest\` against canonical schemas.
 - \`audit_project\`: Audit contrast, motion, performance, and token coherence.
 - \`get_design_dna\`: Inspect Design DNA presets and vectors.

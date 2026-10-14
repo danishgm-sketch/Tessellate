@@ -3,7 +3,7 @@ import { Command } from 'commander';
 import { runInit } from './commands/init.js';
 import { runSearch, runView } from './commands/search.js';
 import { runAdd } from './commands/add.js';
-import { runCompose } from './commands/compose.js';
+import { runCompose, runInterpret } from './commands/compose.js';
 import { runExport } from './commands/export.js';
 import { runValidate, runDoctor } from './commands/validate.js';
 import { runCreateResource } from './commands/create-resource.js';
@@ -61,13 +61,34 @@ program
   });
 
 program
-  .command('compose <prompt>')
-  .description('Deterministically compose an interface from a product brief')
-  .option('-n, --name <name>', 'Project name', 'Composed Interface')
-  .option('-a, --archetype <archetype>', 'Override product archetype (saas, ecommerce, portfolio, etc.)')
-  .option('-o, --output <path>', 'Save ProjectManifest to file')
-  .action(async (prompt, opts) => {
-    await runCompose(prompt, opts);
+  .command('interpret <brief>')
+  .description('Ask the Tessellate intelligence service what your product needs (for review before composing)')
+  .option('-o, --output <path>', 'Save the interpretation JSON for review', 'interpretation.json')
+  .option('--api <url>', 'Tessellate API URL (default https://tessellate.design or TESSELLATE_API_URL)')
+  .action(async (brief, opts) => {
+    try {
+      await runInterpret(brief, opts);
+    } catch (err) {
+      console.error(`[tess] ${(err as Error).message}`);
+      process.exitCode = 1;
+    }
+  });
+
+program
+  .command('compose [brief]')
+  .description('Compose a project from a brief, or from a reviewed interpretation with --from')
+  .option('-n, --name <name>', 'Project name')
+  .option('-f, --from <path>', 'Reviewed interpretation JSON from `tess interpret` (no network needed)')
+  .option('-d, --direction <a|b|c>', 'Direction to keep: a conservative, b expressive, c structural', 'a')
+  .option('-o, --output <path>', 'Save ProjectManifest to file', 'project.json')
+  .option('--api <url>', 'Tessellate API URL (default https://tessellate.design or TESSELLATE_API_URL)')
+  .action(async (brief, opts) => {
+    try {
+      await runCompose(brief, opts);
+    } catch (err) {
+      console.error(`[tess] ${(err as Error).message}`);
+      process.exitCode = 1;
+    }
   });
 
 program

@@ -1,4 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
+import { composeBrief } from './support/compose';
 
 /**
  * Phase 25 gate: composing several briefs creates distinct projects (the audit saw a second compose
@@ -13,10 +14,7 @@ const BRIEFS = [
 ];
 
 async function composeAndOpen(page: Page, brief: string): Promise<string> {
-  await page.goto('/compose');
-  const textarea = page.getByPlaceholder(/Describe what your product does/i);
-  await textarea.fill(brief);
-  await page.getByRole('button', { name: /Compose Interface System/i }).click();
+  await composeBrief(page, brief);
   await page.getByRole('button', { name: /Open in Workbench/i }).first().click();
   await page.waitForURL(/\/workbench\?project=/);
   await expect(page.getByTestId('save-indicator')).toContainText(/Saved locally/, { timeout: 15000 });

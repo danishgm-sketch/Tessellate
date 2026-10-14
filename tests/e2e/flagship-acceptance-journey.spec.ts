@@ -1,3 +1,4 @@
+import { composeBrief } from './support/compose';
 import { test, expect, type Page, type Locator } from '@playwright/test';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
@@ -54,41 +55,13 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
       }
     });
 
-    // Step 1: Open /compose
-    await page.goto('/compose');
-    await page.waitForLoadState('domcontentloaded');
-
-    // Step 2: Assert editorial shell and composer title
-    await expect(page.getByRole('heading', { name: 'Describe the product. Get the interface.' })).toBeVisible();
-
-    // Step 3: Wait for catalogue ready state
-    const catalogStatus = page.locator('[data-testid="catalog-status"]');
-    await expect(catalogStatus).toContainText('Catalogue ready', { timeout: 15000 });
-
-    // Step 4: Fill in the exact required acceptance brief
+    // Steps 1–8: brief → host daemon interpretation → review → compose
     const exactBrief =
       'Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.';
-    const descriptionArea = page.locator('textarea#description');
-    await descriptionArea.fill(exactBrief);
-
-    // Step 5: Fill in feel
-    const feelInput = page.locator('input#feel');
-    await feelInput.fill('professional but playful');
-
-    // Step 6: Select Refined visual ambition if available
-    const refinedBtn = page.locator('button:has-text("Refined")').first();
-    if (await refinedBtn.isVisible()) {
-      await refinedBtn.click();
-    }
-
-    // Step 7: Submit composition
-    const composeBtn = page.locator('[data-testid="compose-submit-btn"]');
-    await expect(composeBtn).toBeEnabled();
-    await composeBtn.click();
-
-    // Step 8: Assert Inferred Product Architecture appears
-    await expect(page.locator('text=Inferred Product Architecture').first()).toBeVisible({
-      timeout: 15000,
+    await composeBrief(page, exactBrief, async (p) => {
+      await expect(p.getByLabel('Product type')).toBeVisible();
+      await expect(p.getByTestId('review-entity').first()).toBeVisible();
+      await p.getByLabel('Look and feel').fill('professional but playful');
     });
 
     // Step 9: Assert exactly 3 generated direction cards appear
@@ -527,34 +500,10 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
       }
     });
 
-    // Step 1: Open /compose
-    await page.goto('/compose');
-    await page.waitForLoadState('domcontentloaded');
-
-    await expect(page.getByRole('heading', { name: 'Describe the product. Get the interface.' })).toBeVisible();
-
-    const catalogStatus = page.locator('[data-testid="catalog-status"]');
-    await expect(catalogStatus).toContainText('Catalogue ready', { timeout: 15000 });
-
-    const promptText =
-      'A high-density financial intelligence trading terminal with real-time portfolio risk feeds, interactive depth charts, and automated order execution for institutional desks';
-    const descriptionArea = page.locator('textarea#description');
-    await descriptionArea.fill(promptText);
-
-    const feelInput = page.locator('input#feel');
-    await feelInput.fill('professional but playful');
-
-    const strikingBtn = page.locator('button:has-text("Striking")').first();
-    if (await strikingBtn.isVisible()) {
-      await strikingBtn.click();
-    }
-
-    const composeBtn = page.locator('[data-testid="compose-submit-btn"]');
-    await composeBtn.click();
-
-    await expect(page.locator('text=Inferred Product Architecture').first()).toBeVisible({
-      timeout: 15000,
-    });
+    await composeBrief(
+      page,
+      'A high-density financial intelligence trading terminal with real-time portfolio risk feeds, interactive depth charts, and automated order execution for institutional desks',
+    );
 
     const dirCard1 = page.locator('[data-testid="direction-card-01"]');
     const dirCard2 = page.locator('[data-testid="direction-card-02"]');
@@ -651,18 +600,7 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
       }
     });
 
-    await page.goto('/compose');
-    await page.waitForLoadState('domcontentloaded');
-    await expect(page.getByRole('heading', { name: 'Describe the product. Get the interface.' })).toBeVisible();
-
-    const catalogStatus = page.locator('[data-testid="catalog-status"]');
-    await expect(catalogStatus).toContainText('Catalogue ready', { timeout: 15000 });
-
-    const descriptionArea = page.locator('textarea#description');
-    await descriptionArea.fill('Mobile financial intelligence portfolio overview');
-
-    const composeBtn = page.locator('[data-testid="compose-submit-btn"]');
-    await composeBtn.click();
+    await composeBrief(page, 'A portfolio tracker where investors see holdings, prices and transaction history on their phone.');
 
     const dirCard1 = page.locator('[data-testid="direction-card-01"]');
     await expect(dirCard1).toBeVisible({ timeout: 10000 });

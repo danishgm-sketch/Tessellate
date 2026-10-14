@@ -1,11 +1,20 @@
 import { z } from 'zod';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { ProjectManifestSchema } from '@tessellate/schemas';
+import { randomUUID } from 'node:crypto';
+import { BriefInterpretationSchema, ProjectManifestSchema } from '@tessellate/schemas';
+import { composeFromInterpretation } from '@tessellate/compatibility';
+import { requestInterpretation, type QueueClientOptions } from '@tessellate/intelligence';
 import { DEFAULT_DESIGN_DNA, DNA_PRESETS } from '@tessellate/dna';
-import { interpretProductBrief, planScreenGraph } from '@tessellate/composer';
 import { loadMcpCatalogue, findResourceBySlug, getResourceComponentCode } from './catalog-provider.js';
 
-export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
+/** API used for brief interpretation (D-033). Override with TESSELLATE_API_URL. */
+export const DEFAULT_API_URL = 'https://tessellate.design';
+
+export function registerMcpTools(server: McpServer, cwd = process.cwd(), queue: QueueClientOptions = {}) {
+  const intelligence: QueueClientOptions = {
+    apiBase: (process.env.TESSELLATE_API_URL ?? DEFAULT_API_URL).replace(/\/$/, ''),
+    ...queue,
+  };
   // 1. search_resources
   server.tool(
     'search_resources',
@@ -262,95 +271,59 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
     }
   );
 
-  // 7. compose_screen
+  // 7. interpret_brief — served only by the Tessellate intelligence service (D-033); no offline guess.
   server.tool(
-    'compose_screen',
-    'Deterministically generate a complete ProjectManifest from a natural language requirement or brief.',
+    'interpret_brief',
+    'Ask the Tessellate intelligence service what a product needs: product type, entities, screens and assumptions. Show the result to the user for review before composing. Fails with a reason when the service is unavailable.',
     {
-      prompt: z.string().describe('Product brief or screen requirement'),
-      name: z.string().optional().describe('Project name'),
-      archetype: z.string().optional().describe('Archetype override (e.g. saas, ecommerce, docs)'),
+      brief: z.string().min(12).max(4000).describe('Product brief: who uses it and what they do in it'),
     },
-    async ({ prompt, name = 'Composed Screen', archetype }) => {
-      const { productModel } = interpretProductBrief({
-        description: prompt,
-        archetypeOverride: archetype,
-      });
-
-      const screenPlan = planScreenGraph(productModel);
-      const now = new Date().toISOString();
-
-      const manifest = {
-        schemaVersion: '1.0.0',
-        id: `proj_${Date.now()}`,
-        name,
-        description: prompt,
-        createdAt: now,
-        updatedAt: now,
-        catalogVersion: '1.0.0',
-        seed: `tess-seed-${Date.now()}`,
-        productModel,
-        designDNA: DEFAULT_DESIGN_DNA,
-        constraints: productModel.constraints,
-        screenGraph: screenPlan.screenGraph,
-        screens: [],
-        navigation: {
-          model: 'sidebar-fixed',
-          primaryItems: [],
-        },
-        assets: [],
-        locks: [],
-        historyMeta: {
-          totalOperations: 0,
-          headRevision: 1,
-        },
-        exportSettings: {
-          framework: 'react',
-          styling: 'tailwind',
-          includeTypes: true,
-          target: 'vite-react-tailwind',
-        },
-      };
-
-      return {
-        content: [
-          {
-            type: 'text',
-            text: JSON.stringify(manifest, null, 2),
-          },
-        ],
-      };
+    async ({ brief }) => {
+      const result = await requestInterpretation(brief, undefined, intelligence);
+      if (!result.success || !result.interpretation) {
+        return { isError: true, content: [{ type: 'text', text: result.error ?? 'Tessellate could not interpret this brief.' }] };
+      }
+      return { content: [{ type: 'text', text: JSON.stringify(result.interpretation, null, 2) }] };
     }
   );
 
   // 8. compose_product
   server.tool(
     'compose_product',
-    'Interpret product brief into a validated ProductModel and screen hierarchy without generating code.',
+    'Compose three directions for a product from a reviewed interpretation (from interpret_brief, optionally edited) and return the chosen ProjectManifest.',
     {
-      description: z.string().describe('Product description'),
-      archetype: z.string().optional().describe('Optional archetype override'),
+      interpretation: z.record(z.unknown()).describe('A BriefInterpretation object returned by interpret_brief, after review'),
+      direction: z.enum(['a', 'b', 'c']).optional().describe('a conservative (default), b expressive, c structural alternative'),
+      name: z.string().optional().describe('Project name'),
     },
-    async ({ description, archetype }) => {
-      const interpreted = interpretProductBrief({
-        description,
-        archetypeOverride: archetype,
+    async ({ interpretation, direction = 'a', name }) => {
+      const parsed = BriefInterpretationSchema.safeParse(interpretation);
+      if (!parsed.success) {
+        const issue = parsed.error.issues[0];
+        return {
+          isError: true,
+          content: [{ type: 'text', text: `Invalid interpretation: ${issue?.path.join('.') || '(root)'} ${issue?.message ?? ''}`.trim() }],
+        };
+      }
+      const catalogue = await loadMcpCatalogue(cwd);
+      if (catalogue.resources.length === 0) {
+        return { isError: true, content: [{ type: 'text', text: 'The resource catalogue could not be loaded, so nothing can be composed.' }] };
+      }
+      const composition = composeFromInterpretation(parsed.data, {
+        catalogResources: catalogue.resources,
+        projectIdBase: `proj_${randomUUID()}`,
       });
-      const plan = planScreenGraph(interpreted.productModel);
-
+      const pick = { a: composition.directionA, b: composition.directionB, c: composition.directionC }[direction];
+      const manifest = ProjectManifestSchema.parse({ ...pick.manifest, name: name ?? pick.manifest.name });
       return {
         content: [
           {
             type: 'text',
             text: JSON.stringify(
               {
-                productModel: interpreted.productModel,
-                assumptions: interpreted.inferredAssumptions,
-                screenPlan: {
-                  totalScreens: plan.totalScreens,
-                  requiredScreensCount: plan.requiredScreensCount,
-                  screenGraph: plan.screenGraph,
-                },
+                direction: { type: pick.direction.type, name: pick.direction.name, rationale: pick.direction.rationale },
+                alternatives: [composition.directionA, composition.directionB, composition.directionC].map((d) => d.direction.name),
+                manifest,
               },
               null,
               2

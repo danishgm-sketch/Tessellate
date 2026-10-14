@@ -10,10 +10,20 @@ import {
   runValidate,
   runDoctor,
   runCompose,
+  runInterpret,
   runExport,
   runCreateResource,
   loadConfig,
 } from '../index.js';
+import { physioInterpretationFixture } from '@tessellate/schemas';
+
+const repoRoot = path.resolve(__dirname, '../../../..');
+
+function writeInterpretation(dir: string): string {
+  const file = path.join(dir, 'interpretation.json');
+  fs.writeFileSync(file, JSON.stringify(physioInterpretationFixture));
+  return file;
+}
 
 describe('Phase 17 — @tessellate/cli Test Suite', () => {
   let tempDir: string;
@@ -112,29 +122,45 @@ describe('Phase 17 — @tessellate/cli Test Suite', () => {
     expect(typeof diagnostic.hasConfig).toBe('boolean');
   });
 
-  it('tess compose: deterministically composes ProjectManifest from brief', async () => {
+  it('tess compose --from: composes a reviewed interpretation into a validated ProjectManifest', async () => {
     const outPath = path.join(tempDir, 'composed-project.json');
-    const manifest = await runCompose('Enterprise SaaS analytics dashboard with telemetry metrics', {
-      name: 'Telemetry Hub',
-      archetype: 'saas',
+    const manifest = await runCompose(undefined, {
+      name: 'Physio Booking',
+      from: writeInterpretation(tempDir),
       output: outPath,
-      cwd: tempDir,
+      cwd: repoRoot,
     });
 
-    expect(manifest.name).toBe('Telemetry Hub');
-    expect(manifest.productModel).toBeDefined();
-    expect(manifest.screenGraph).toBeDefined();
+    expect(manifest.name).toBe('Physio Booking');
+    expect(manifest.productModel.productArchetypes[0]?.tag).toBe('healthcare-clinic');
+    expect(manifest.screens.length).toBeGreaterThan(3);
     expect(fs.existsSync(outPath)).toBe(true);
+  });
+
+  it('tess compose --from: rejects an invalid interpretation file with its path', async () => {
+    const bad = path.join(tempDir, 'bad.json');
+    fs.writeFileSync(bad, JSON.stringify({ kind: 'interpretation' }));
+    await expect(runCompose(undefined, { from: bad, cwd: repoRoot })).rejects.toThrow(/not a valid interpretation/);
+  });
+
+  it('tess interpret: fails loudly when the intelligence service is unreachable (no fallback)', async () => {
+    const offline = (() => Promise.reject(new TypeError('fetch failed'))) as unknown as typeof fetch;
+    await expect(runInterpret('A booking platform for physiotherapy clinics', { api: 'http://127.0.0.1:9', queue: { fetchImpl: offline } })).rejects.toThrow(
+      /could not reach/,
+    );
+    await expect(runCompose('A booking platform for physiotherapy clinics', { api: 'http://127.0.0.1:9', queue: { fetchImpl: offline }, cwd: repoRoot })).rejects.toThrow(
+      /could not reach/,
+    );
   });
 
   it('tess export: generates complete Vite + React + Tailwind source code tree', async () => {
     // 1. Compose project
     const manifestPath = path.join(tempDir, 'project.json');
-    await runCompose('Minimal documentation portal', {
-      name: 'Docs Portal',
-      archetype: 'docs',
+    await runCompose(undefined, {
+      name: 'Physio Booking',
+      from: writeInterpretation(tempDir),
       output: manifestPath,
-      cwd: tempDir,
+      cwd: repoRoot,
     });
 
     // 2. Export project

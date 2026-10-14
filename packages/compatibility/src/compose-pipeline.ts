@@ -8,10 +8,13 @@ import {
   type ResourceManifest,
   type ResourceRef,
   ProjectManifestSchema,
+  ProductModelSchema,
+  ScreenGraphSchema,
 } from '@tessellate/schemas';
 import {
   interpretProductBrief,
   planScreenGraph,
+  designDnaForProductModel,
   type ProductBriefInput,
 } from '@tessellate/composer';
 import {
@@ -401,6 +404,27 @@ export function composeProjectPipeline(
     options?.projectIdBase ?? `proj-${SeededRandom.hashString(`${seed}|${JSON.stringify(brief)}`).toString(36)}`;
   const { productModel, inferredAssumptions, initialDesignDna } = interpretProductBrief(brief);
   const { screenGraph } = planScreenGraph(productModel);
+  return composeDirections({ productModel, screenGraph, initialDesignDna, inferredAssumptions }, { ...options, seed, projectIdBase: idBase });
+}
+
+export interface CompositionOptions {
+  catalogResources?: ResourceManifest[];
+  seed?: string | number;
+  projectIdBase?: string;
+}
+
+/**
+ * Mechanical composition (not intelligence, D-033): given an interpreted product, generate the three
+ * directions and compose a manifest for each.
+ */
+export function composeDirections(
+  input: { productModel: ProductModel; screenGraph: ScreenGraph; initialDesignDna: DesignDNA; inferredAssumptions: string[] },
+  options?: CompositionOptions
+): FullCompositionResult {
+  const { productModel, screenGraph, initialDesignDna, inferredAssumptions } = input;
+  const seed = options?.seed ?? 'tessellate-seed-v1';
+  const idBase =
+    options?.projectIdBase ?? `proj-${SeededRandom.hashString(`${seed}|${JSON.stringify(productModel)}`).toString(36)}`;
 
   const directions = generateDirections({
     productModel,
@@ -464,4 +488,35 @@ export function composeProjectPipeline(
     },
     inferredAssumptions,
   };
+}
+
+/** Interpretation produced by the host daemon (D-033) after the user has reviewed it. */
+export interface ReviewedInterpretation {
+  productModel: ProductModel;
+  screenGraph: ScreenGraph;
+  feel?: string;
+  assumptions?: string[];
+}
+
+/**
+ * Composes three directions from a daemon interpretation. Design DNA is derived mechanically from the
+ * ProductModel priors, the feel and the creativity controls.
+ */
+export function composeFromInterpretation(
+  interpretation: ReviewedInterpretation,
+  options?: CompositionOptions & { visualAmbition?: number; structuralCreativity?: number; feel?: string }
+): FullCompositionResult {
+  const productModel = ProductModelSchema.parse(interpretation.productModel);
+  const screenGraph = ScreenGraphSchema.parse(interpretation.screenGraph);
+  const initialDesignDna = designDnaForProductModel(productModel, {
+    feel: options?.feel ?? interpretation.feel,
+    visualAmbition: options?.visualAmbition,
+    structuralCreativity: options?.structuralCreativity,
+    accessibilityFloor: productModel.constraints.accessibilityFloor,
+    performanceCeiling: productModel.constraints.performanceCeiling,
+  });
+  return composeDirections(
+    { productModel, screenGraph, initialDesignDna, inferredAssumptions: interpretation.assumptions ?? [] },
+    options
+  );
 }

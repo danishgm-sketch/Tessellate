@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@tessellate/schemas': path.resolve(__dirname, 'packages/schemas/src/index.ts'),
+      '@tessellate/intelligence': path.resolve(__dirname, 'packages/intelligence/src/index.ts'),
       '@tessellate/ui': path.resolve(__dirname, 'packages/ui/src/index.ts'),
       '@tessellate/catalog/gold': path.resolve(__dirname, 'packages/catalog/src/gold.ts'),
       '@tessellate/catalog/protocol': path.resolve(__dirname, 'packages/catalog/src/preview-protocol.ts'),

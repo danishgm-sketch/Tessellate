@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import type { QueueClientOptions } from '@tessellate/intelligence';
 import { registerMcpTools } from './tools.js';
 
 export const MCP_VERSION = '0.1.0';
@@ -9,6 +10,8 @@ export interface CreateMcpServerOptions {
   name?: string;
   version?: string;
   cwd?: string;
+  /** Intelligence queue client options (API base, test fetch). Defaults to TESSELLATE_API_URL or production. */
+  intelligence?: QueueClientOptions;
 }
 
 /**
@@ -20,7 +23,7 @@ export function createMcpServer(options: CreateMcpServerOptions = {}): McpServer
     version: options.version || MCP_VERSION,
   });
 
-  registerMcpTools(server, options.cwd || process.cwd());
+  registerMcpTools(server, options.cwd || process.cwd(), options.intelligence);
   return server;
 }
 

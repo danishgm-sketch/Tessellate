@@ -238,6 +238,32 @@ This file records major decisions so autonomous agents do not repeatedly reopen 
 
 **Status:** LOCKED.
 
+### D-034a — Brief model v2 architecture and measured accuracy (Phase 28)
+
+**Status:** Accepted, with an open accuracy gap.
+
+**Architecture.** Pure Python standard library, so it runs on the owner's machine with no GPU:
+- A BIO structured-perceptron span tagger with Viterbi decoding, for ENTITY, ACTOR, ACTION, CONSTRAINT and FEEL.
+- An averaged-perceptron archetype classifier. Features are lemmas, the opening phrase, ontology keywords and grounded entities, with a calibrated softmax.
+- Ontology grounding that turns spans into a `ProductModel` and a `ScreenGraph` with entity-scoped screens.
+
+Everything is trained on ontology-driven synthetic briefs and versioned under `tessellate_model/weights/<version>/` with a model card. `train.py --promote` refuses to promote a model that fails the gate.
+
+This is a feature-based structured model in the Tree-GNN family's spirit (D-034): no LLM and no pretrained transformer weights. The intent model for Workbench commands is unchanged.
+
+**Measured accuracy (v2.0.0):**
+
+| Set | Archetype top-1 | Entity F1 | Screen recall |
+|---|---|---|---|
+| Development (99 briefs; used while tuning, so optimistic) | 0.879 | 0.818 | 0.917 |
+| Fresh holdout (40 briefs; written after tuning stopped, never tuned against) | 0.925 | **0.584** | 0.890 |
+
+**Consequence.** Entity extraction does not generalise well to unseen phrasing. It misses synonyms and nouns that are outside the ontology. The Phase 28 gate is therefore recorded as partially met. The mandatory Review step lets the user remove, add and rename entities and screens, and its "suggested" marking shows what the brief did not say.
+
+**Next.** Grow the ontology towards about 500 entity types and add synonym coverage. Then write a third fresh holdout before claiming the gate. `holdout2.jsonl` must not be used for tuning.
+
+**Shared client.** The queue protocol now lives in `packages/intelligence`, the single intelligence client used by the site, Workbench, CLI and MCP. Workbench re-exports it.
+
 ### D-035 — Capacity and queue infrastructure
 **Date:** 2026-10-14  
 **Decision:**

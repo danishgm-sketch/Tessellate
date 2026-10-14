@@ -1,79 +1,112 @@
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import type { ProjectManifest } from '@tessellate/schemas';
-import { ProjectManifestSchema } from '@tessellate/schemas';
-import { DEFAULT_DESIGN_DNA } from '@tessellate/dna';
-import { interpretProductBrief, planScreenGraph } from '@tessellate/composer';
+import { randomUUID } from 'node:crypto';
+import { BriefInterpretationSchema, ProjectManifestSchema, SUGGESTED_ENTITY_CONFIDENCE, type BriefInterpretation, type ProjectManifest } from '@tessellate/schemas';
+import { composeFromInterpretation } from '@tessellate/compatibility';
+import { requestInterpretation, type QueueClientOptions } from '@tessellate/intelligence';
+import { getCatalogue } from './search.js';
 
-export interface ComposeOptions {
-  name?: string;
-  archetype?: string;
+/** API used for brief interpretation (D-033). Override with --api or TESSELLATE_API_URL. */
+export const DEFAULT_API_URL = 'https://tessellate.design';
+
+export interface InterpretOptions {
   output?: string;
   cwd?: string;
+  api?: string;
+  /** Test seam: replaces the network client. */
+  queue?: QueueClientOptions;
 }
 
-export async function runCompose(promptText: string, options: ComposeOptions = {}): Promise<ProjectManifest> {
-  const name = options.name || 'Composed Interface';
-  console.log(`[tess] Composing interface system for: "${promptText}"...`);
+export interface ComposeOptions extends InterpretOptions {
+  name?: string;
+  /** Path to a reviewed interpretation JSON (from `tess interpret`); skips the intelligence service. */
+  from?: string;
+  /** Which of the three directions to write: a (conservative), b (expressive) or c (structural). */
+  direction?: 'a' | 'b' | 'c';
+}
 
-  // 1. Interpret product brief deterministically
-  const { productModel } = interpretProductBrief({
-    description: promptText,
-    archetypeOverride: options.archetype,
-  });
+function apiBase(options: InterpretOptions): string {
+  return (options.api ?? process.env.TESSELLATE_API_URL ?? DEFAULT_API_URL).replace(/\/$/, '');
+}
 
-  // 2. Plan screen graph
-  const screenPlan = planScreenGraph(productModel);
+function writeJson(file: string, cwd: string | undefined, value: unknown): string {
+  const outPath = path.resolve(cwd || process.cwd(), file);
+  fs.mkdirSync(path.dirname(outPath), { recursive: true });
+  fs.writeFileSync(outPath, JSON.stringify(value, null, 2) + '\n', 'utf-8');
+  return outPath;
+}
 
-  console.log(`  • Detected Archetype: ${productModel.productArchetypes[0]?.tag ?? 'saas'}`);
-  console.log(`  • Planned Screens:    ${screenPlan.totalScreens}`);
+function describe(interp: BriefInterpretation): void {
+  const pm = interp.productModel;
+  console.log(`  • Product type: ${pm.productArchetypes[0]?.tag ?? 'unknown'} (confidence ${interp.confidence.archetype.toFixed(2)})`);
+  const entities = Object.entries(interp.confidence.entities);
+  const mentioned = entities.filter(([, c]) => c > SUGGESTED_ENTITY_CONFIDENCE).map(([n]) => n);
+  const suggested = entities.filter(([, c]) => c <= SUGGESTED_ENTITY_CONFIDENCE).map(([n]) => n);
+  console.log(`  • Entities from your brief: ${mentioned.join(', ') || 'none'}`);
+  if (suggested.length) console.log(`  • Suggested (not in your brief): ${suggested.join(', ')}`);
+  const screens = interp.screenGraph.groups.reduce((n, g) => n + g.screens.length, 0);
+  console.log(`  • Planned screens: ${screens}`);
+  for (const a of interp.assumptions) console.log(`  • Assumed: ${a}`);
+}
 
-  // 3. Assemble validated ProjectManifest
-  const now = new Date().toISOString();
-  const manifest: ProjectManifest = {
-    schemaVersion: '1.0.0',
-    id: `proj_${Date.now()}`,
-    name,
-    description: promptText,
-    createdAt: now,
-    updatedAt: now,
-    catalogVersion: '1.0.0',
-    seed: `tess-seed-${Date.now()}`,
-    productModel,
-    designDNA: DEFAULT_DESIGN_DNA,
-    constraints: productModel.constraints,
-    screenGraph: screenPlan.screenGraph,
-    screens: [],
-    navigation: {
-      model: 'sidebar-fixed',
-      primaryItems: [],
+/**
+ * Sends a brief to the Tessellate intelligence service and returns the interpretation for review.
+ * There is no offline fallback (D-033): if the service is unavailable this fails with the reason.
+ */
+export async function runInterpret(promptText: string, options: InterpretOptions = {}): Promise<BriefInterpretation> {
+  console.log(`[tess] Interpreting brief…`);
+  const result = await requestInterpretation(
+    promptText,
+    (p) => {
+      if (p.status === 'queued' || p.status === 'offline') console.log(`  … ${p.message}`);
     },
-    assets: [],
-    locks: [],
-    historyMeta: {
-      totalOperations: 0,
-      headRevision: 1,
-    },
-    exportSettings: {
-      framework: 'react',
-      styling: 'tailwind',
-      includeTypes: true,
-      target: 'vite-react-tailwind',
-    },
-  };
-
-  // Validate output against ProjectManifestSchema
-  const validated = ProjectManifestSchema.parse(manifest);
-
+    { apiBase: apiBase(options), ...options.queue },
+  );
+  if (!result.success || !result.interpretation) {
+    throw new Error(result.error ?? 'Tessellate could not interpret this brief.');
+  }
+  describe(result.interpretation);
   if (options.output) {
-    const outPath = path.resolve(options.cwd || process.cwd(), options.output);
-    const dir = path.dirname(outPath);
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
+    const out = writeJson(options.output, options.cwd, result.interpretation);
+    console.log(`[tess] Interpretation saved to ${out}. Review and edit it, then run: tess compose --from ${options.output}`);
+  }
+  return result.interpretation;
+}
+
+/** Composes a project from a brief (via the intelligence service) or from a reviewed interpretation file. */
+export async function runCompose(promptText: string | undefined, options: ComposeOptions = {}): Promise<ProjectManifest> {
+  let interpretation: BriefInterpretation;
+  if (options.from) {
+    const file = path.resolve(options.cwd || process.cwd(), options.from);
+    const parsed = BriefInterpretationSchema.safeParse(JSON.parse(fs.readFileSync(file, 'utf-8')));
+    if (!parsed.success) {
+      const issue = parsed.error.issues[0];
+      throw new Error(`${options.from} is not a valid interpretation: ${issue?.path.join('.') || '(root)'} ${issue?.message ?? ''}`.trim());
     }
-    fs.writeFileSync(outPath, JSON.stringify(validated, null, 2), 'utf-8');
-    console.log(`[tess] Saved composed ProjectManifest to: ${outPath}`);
+    interpretation = parsed.data;
+  } else {
+    if (!promptText) throw new Error('Give a product brief, or --from <interpretation.json>.');
+    interpretation = await runInterpret(promptText, { ...options, output: undefined });
   }
 
-  return validated;
+  const catalogue = await getCatalogue(options.cwd);
+  if (catalogue.resources.length === 0) {
+    throw new Error('The resource catalogue could not be loaded, so nothing can be composed. Check your connection or registry setting.');
+  }
+  const composition = composeFromInterpretation(interpretation, {
+    catalogResources: catalogue.resources,
+    projectIdBase: `proj_${randomUUID()}`,
+  });
+  const pick = { a: composition.directionA, b: composition.directionB, c: composition.directionC }[options.direction ?? 'a'];
+  const manifest = ProjectManifestSchema.parse({
+    ...pick.manifest,
+    name: options.name || pick.manifest.name,
+    description: promptText ?? pick.manifest.description,
+  });
+  console.log(`[tess] Composed "${manifest.name}" (${pick.direction.name}) with ${manifest.screens.length} screens.`);
+
+  if (options.output) {
+    console.log(`[tess] Saved ProjectManifest to ${writeJson(options.output, options.cwd, manifest)}`);
+  }
+  return manifest;
 }

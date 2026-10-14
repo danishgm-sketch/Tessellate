@@ -19,7 +19,7 @@ describe('Phase 17 — @tessellate/mcp Server & Tools Test Suite', () => {
     expect(tools).toHaveProperty('get_resource_metadata');
     expect(tools).toHaveProperty('find_alternatives');
     expect(tools).toHaveProperty('recommend_resources');
-    expect(tools).toHaveProperty('compose_screen');
+    expect(tools).toHaveProperty('interpret_brief');
     expect(tools).toHaveProperty('compose_product');
     expect(tools).toHaveProperty('validate_project');
     expect(tools).toHaveProperty('audit_project');
@@ -70,24 +70,30 @@ describe('Phase 17 — @tessellate/mcp Server & Tools Test Suite', () => {
     expect(res.content[0]?.text).toBeDefined();
   });
 
-  it('executes tool: compose_screen and compose_product', async () => {
+  it('executes tool: compose_product composes a reviewed interpretation into a valid manifest', async () => {
     const server = createMcpServer({ cwd: repoRoot });
+    const { physioInterpretationFixture, ProjectManifestSchema } = await import('@tessellate/schemas');
 
-    const screenRes = await getTool(server, 'compose_screen').handler({
-      prompt: 'Minimal developer documentation site with search and sidebar navigation',
-      name: 'Developer Docs',
-    });
-    const parsedScreen = JSON.parse(screenRes.content[0]!.text) as { name: string; schemaVersion: string; productModel: unknown };
-    expect(parsedScreen.name).toBe('Developer Docs');
-    expect(parsedScreen.schemaVersion).toBe('1.0.0');
-    expect(parsedScreen.productModel).toBeDefined();
+    const res = await getTool(server, 'compose_product').handler({ interpretation: physioInterpretationFixture, name: 'Physio' });
+    const parsed = JSON.parse(res.content[0]!.text) as { manifest: unknown; alternatives: string[] };
+    const manifest = ProjectManifestSchema.parse(parsed.manifest);
+    expect(manifest.name).toBe('Physio');
+    expect(manifest.screens.length).toBeGreaterThan(3);
+    expect(parsed.alternatives).toHaveLength(3);
 
-    const productRes = await getTool(server, 'compose_product').handler({
-      description: 'AI customer support ticketing dashboard',
-    });
-    const parsedProduct = JSON.parse(productRes.content[0]!.text) as { productModel: unknown; screenPlan: { totalScreens: number } };
-    expect(parsedProduct.productModel).toBeDefined();
-    expect(parsedProduct.screenPlan.totalScreens).toBeGreaterThan(0);
+    const bad = (await getTool(server, 'compose_product').handler({ interpretation: { kind: 'nope' } })) as { isError?: boolean };
+    expect(bad.isError).toBe(true);
+  });
+
+  it('executes tool: interpret_brief reports an error when the intelligence service is offline (no fallback)', async () => {
+    const offline = (() => Promise.reject(new TypeError('fetch failed'))) as unknown as typeof fetch;
+    const server = createMcpServer({ cwd: repoRoot, intelligence: { apiBase: 'http://127.0.0.1:9', fetchImpl: offline } });
+    const res = (await getTool(server, 'interpret_brief').handler({ brief: 'A booking platform for physiotherapy clinics' })) as {
+      isError?: boolean;
+      content: Array<{ text: string }>;
+    };
+    expect(res.isError).toBe(true);
+    expect(res.content[0]!.text).toMatch(/could not reach/);
   });
 
   it('executes tool: validate_project and audit_project', async () => {

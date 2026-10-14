@@ -657,14 +657,16 @@ E2E: sign-up → verify → sign-in → reset → delete; ban enforcement; cross
 
 # Phase 28 — Bespoke model v2
 
-- [ ] Domain ontology (archetypes, entities, screen patterns, workflows, lexicons).
-- [ ] Span tagger and multi-label archetype classifier; schema-validated outputs.
-- [ ] Synthetic and curated corpora; held-out evaluation set; versioned weights. **[owner]** final training run.
-- [ ] Mandatory "Review inferred product" step; remove hardcoded composer defaults.
-- [ ] Remove the keyword interpreter from user paths.
+- [x] Domain ontology (archetypes, entities, screen patterns, workflows, lexicons). *63 archetypes, 207 entity types (`apps/host-daemon/tessellate_model/ontology_source.py`); the plan's ~500 entity types is not yet reached.*
+- [x] Span tagger and multi-label archetype classifier; schema-validated outputs. *BIO structured-perceptron tagger + averaged-perceptron classifier (D-034a); results validated with `BriefInterpretationSchema` at the API.*
+- [ ] Synthetic and curated corpora; held-out evaluation set; versioned weights. **[owner]** final training run. *Synthetic generator, 99-brief development set, 40-brief fresh holdout and versioned weights `v2.0.0` exist. Left open: see the gate note.*
+- [x] Mandatory "Review inferred product" step; remove hardcoded composer defaults.
+- [x] Remove the keyword interpreter from user paths. *Site (`/compose`, homepage), CLI (`tess interpret` / `tess compose --from`) and MCP (`interpret_brief`, `compose_product`) all go through the queue; `interpretProductBrief` remains only in internal tests and the release-gate script.*
 
 ### Phase 28 gate
 Archetype top-1 ≥ 85%, entity span F1 ≥ 0.80, required-screen recall ≥ 0.85; the physiotherapy brief yields Patient, Appointment, Clinician, Invoice and Deposit plus a booking flow.
+
+**Status (2026-10-14): partially met.** On the development set (`eval/briefs.jsonl`, used while tuning) v2.0.0 scores archetype 0.879, entity F1 0.818, screen recall 0.917. On the fresh holdout written after tuning stopped (`eval/holdout2.jsonl`) it scores archetype **0.925**, screen recall **0.890**, entity F1 **0.584 (fails)**. The physiotherapy acceptance brief passes in unit and e2e tests (`compose-review.spec.ts`). Mitigation in place: every interpretation goes through the editable Review step. Closing this needs a larger ontology and corpus, then a new fresh holdout (see D-034a).
 
 # Phase 29 — Composition correctness
 
