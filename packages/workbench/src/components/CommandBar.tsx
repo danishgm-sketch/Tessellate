@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { findNodeById } from '../utils/tree-helpers.js';
-import { executeQueuedCommand } from '../ai/queue-client.js';
+import { executeQueuedCommand, type QueueProgress } from '../ai/queue-client.js';
 import { Terminal, CornerDownLeft, Cpu } from 'lucide-react';
 
 export function CommandBar() {
@@ -14,14 +14,9 @@ export function CommandBar() {
   const executeMutation = useWorkbenchStore((state) => state.executeMutation);
 
   const [inputVal, setInputVal] = useState('');
-  const [feedback, setFeedback] = useState<string | null>(null);
+  const [feedback, setFeedback] = useState<{ tone: 'success' | 'error'; text: string } | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [queueStatus, setQueueStatus] = useState<{
-    status: string;
-    tokenNumber?: number;
-    position?: number;
-    message?: string;
-  } | null>(null);
+  const [queueStatus, setQueueStatus] = useState<QueueProgress | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const activeScreen = manifest.screens.find((s) => s.id === activeScreenId);
@@ -52,55 +47,46 @@ export function CommandBar() {
     if (!cmd || isProcessing) return;
 
     setIsProcessing(true);
+    setFeedback(null);
     try {
       const lower = cmd.toLowerCase();
-      // Fast path for immediate modal UI actions
-      if (lower.includes('replace') && selectedNode) {
+      // Exact UI commands open panels directly; everything else goes to the host daemon (D-033).
+      if (lower === 'replace' && selectedNode) {
         openReplaceDrawer();
-        setFeedback(`Opened replacement candidates drawer for ${selectedNode.semanticRole}.`);
+        setFeedback({ tone: 'success', text: `Opened replacement candidates for ${selectedNode.semanticRole}.` });
         setInputVal('');
         return;
       }
-      if (lower === 'compare' || lower.includes('open compare')) {
+      if (lower === 'compare') {
         openCompare();
-        setFeedback(`Opened Compare mode.`);
+        setFeedback({ tone: 'success', text: 'Opened Compare mode.' });
         setInputVal('');
         return;
       }
-      if (lower === 'blend' || lower.includes('open blend')) {
+      if (lower === 'blend') {
         openBlend();
-        setFeedback(`Opened Blend mode.`);
+        setFeedback({ tone: 'success', text: 'Opened Blend mode.' });
         setInputVal('');
         return;
       }
 
-      // Execute via Bespoke Host Queue or Deterministic Fallback
-      const result = await executeQueuedCommand(
-        manifest,
-        activeScreenId,
-        cmd,
-        (progress) => {
-          setQueueStatus(progress);
-        }
-      );
+      const result = await executeQueuedCommand(manifest, activeScreenId, cmd, setQueueStatus);
 
       if (result.success) {
         for (const mut of result.mutations) {
           executeMutation(mut);
         }
-        setFeedback(result.explanation);
+        setFeedback({ tone: 'success', text: result.explanation });
         setInputVal('');
       } else {
-        setFeedback(result.error || 'Command execution failed.');
+        // Keep the prompt so the user can rephrase; nothing was applied.
+        setFeedback({ tone: 'error', text: result.error || 'The command could not be completed. Nothing was changed.' });
       }
     } catch (err) {
-      setFeedback(err instanceof Error ? err.message : 'Command execution failed.');
+      setFeedback({ tone: 'error', text: err instanceof Error ? err.message : 'The command could not be completed.' });
     } finally {
       setIsProcessing(false);
-      setTimeout(() => {
-        setFeedback(null);
-        setQueueStatus(null);
-      }, 5000);
+      setQueueStatus(null);
     }
   };
 
@@ -136,8 +122,8 @@ export function CommandBar() {
             type="text"
             placeholder={
               selectedNode
-                ? `Tell Tess what to change on ${selectedNode.semanticRole}… (e.g. recompose, replace, lock, reduce motion)`
-                : 'Tell Tess what to change… (e.g. recompose, surprise me, compare, blend, reduce motion)'
+                ? `Tell Tessellate what to change on ${selectedNode.semanticRole}… (e.g. lock this, make it calmer, replace)`
+                : 'Tell Tessellate what to change… (e.g. make it calmer, surprise me, compare, blend)'
             }
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
@@ -153,19 +139,28 @@ export function CommandBar() {
         </div>
       </form>
 
-      {/* Feedback or Keyboard Shortcuts Hint */}
-      <div className="hidden md:flex items-center gap-3 text-[11px] text-[#62666F] dark:text-[#A8AFBA] font-mono">
-        {queueStatus?.message && !feedback ? (
-          <span className="text-indigo-600 dark:text-indigo-400 font-medium">
+      {/* Status / feedback: visible at every width and announced to assistive technology */}
+      <div
+        data-testid="command-feedback"
+        role="status"
+        aria-live="polite"
+        className="flex items-center gap-3 text-[11px] text-[#62666F] dark:text-[#A8AFBA] max-w-[45%] ml-3"
+      >
+        {queueStatus ? (
+          <span className={queueStatus.status === 'offline' ? 'text-[#A66A15] font-medium' : 'text-[#2547E8] dark:text-[#6782FF] font-medium'}>
             {queueStatus.message}
+            {queueStatus.estimatedWaitSeconds ? ` · about ${queueStatus.estimatedWaitSeconds}s` : ''}
           </span>
         ) : feedback ? (
-          <span className="text-[#2547E8] dark:text-[#6782FF] font-semibold animate-fade-in">
-            {feedback}
+          <span
+            data-tone={feedback.tone}
+            className={feedback.tone === 'error' ? 'text-[#C83D48] dark:text-[#FF8A93] font-semibold' : 'text-[#177B55] dark:text-[#5BD6A4] font-semibold'}
+          >
+            {feedback.text}
           </span>
         ) : (
-          <div className="flex items-center gap-2">
-            <span>Press <kbd className="px-1.5 py-0.5 rounded bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] text-[10px]">Esc</kbd> climb parent</span>
+          <div className="hidden md:flex items-center gap-2 font-mono">
+            <span>Press <kbd className="px-1.5 py-0.5 rounded bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] text-[10px]">Esc</kbd> to select the parent</span>
             <span><kbd className="px-1.5 py-0.5 rounded bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] text-[10px]">/</kbd> command</span>
           </div>
         )}

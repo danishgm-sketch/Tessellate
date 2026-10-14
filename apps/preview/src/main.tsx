@@ -19,6 +19,35 @@ const PREVIEW_COMPONENTS: Record<string, React.ComponentType<Record<string, unkn
   ButtonPreview: ButtonPreview as unknown as React.ComponentType<Record<string, unknown>>,
 };
 
+/** Origins allowed to embed and control this preview app (D-023). */
+const ALLOWED_PARENT_ORIGINS = new Set(
+  [
+    'https://tessellate.design',
+    'https://www.tessellate.design',
+    ...String(import.meta.env.VITE_ALLOWED_PARENT_ORIGINS ?? '')
+      .split(',')
+      .map((o: string) => o.trim())
+      .filter(Boolean),
+    ...(import.meta.env.DEV ? ['http://localhost:4321', 'http://127.0.0.1:4321'] : []),
+  ],
+);
+
+/** The embedding page's origin, derived from the referrer and only if it is an allowed parent. */
+function resolveParentOrigin(): string | null {
+  try {
+    const origin = document.referrer ? new URL(document.referrer).origin : null;
+    return origin && ALLOWED_PARENT_ORIGINS.has(origin) ? origin : null;
+  } catch {
+    return null;
+  }
+}
+
+function postToParent(message: unknown) {
+  const origin = resolveParentOrigin();
+  if (!origin || window.parent === window) return;
+  window.parent.postMessage(message, origin);
+}
+
 export function PreviewApp() {
   const [resourceId, setResourceId] = useState<string>('button');
   const [variant, setVariant] = useState<string>('expressive');
@@ -57,7 +86,7 @@ export function PreviewApp() {
   // Handle postMessage protocol from parent shell
   useEffect(() => {
     function handleMessage(event: MessageEvent) {
-      if (!isParentToPreviewMessage(event.data)) {
+      if (event.source !== window.parent || !ALLOWED_PARENT_ORIGINS.has(event.origin) || !isParentToPreviewMessage(event.data)) {
         return;
       }
 
@@ -93,11 +122,7 @@ export function PreviewApp() {
       width: el.scrollWidth,
       height: el.scrollHeight,
     };
-    try {
-      window.parent.postMessage(readyMsg, '*');
-    } catch {
-      // Ignored if not in iframe
-    }
+    postToParent(readyMsg);
 
     const observer = new ResizeObserver((entries) => {
       for (const entry of entries) {
@@ -107,11 +132,7 @@ export function PreviewApp() {
           width: Math.round(entry.contentRect.width),
           height: Math.round(entry.contentRect.height),
         };
-        try {
-          window.parent.postMessage(resizeMsg, '*');
-        } catch {
-          // Ignored
-        }
+        postToParent(resizeMsg);
       }
     });
 
@@ -128,11 +149,7 @@ export function PreviewApp() {
       resourceId,
       error: `Resource preview not found for '${resourceId}'`,
     };
-    try {
-      window.parent.postMessage(errorMsg, '*');
-    } catch {
-      // Ignored
-    }
+    postToParent(errorMsg);
 
     return (
       <div className="flex min-h-screen items-center justify-center p-6 text-sm text-neutral-500">

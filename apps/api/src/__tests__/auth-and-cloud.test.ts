@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import app from '../index.js';
+import { request } from './helpers.js';
 
 describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
   const userA = 'test-user-alice';
@@ -9,7 +9,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
 
   describe('/api/me (Auth & Profiles)', () => {
     it('returns unauthenticated state for anonymous visitor', async () => {
-      const res = await app.request('/api/me');
+      const res = await request('/api/me');
       expect(res.status).toBe(200);
       const json = await res.json() as { authenticated: boolean; user: null; profile: null };
       expect(json.authenticated).toBe(false);
@@ -18,7 +18,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
     });
 
     it('returns user and initial profile for authenticated user', async () => {
-      const res = await app.request('/api/me', {
+      const res = await request('/api/me', {
         headers: { Authorization: tokenA },
       });
       expect(res.status).toBe(200);
@@ -40,7 +40,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
         isAvailableForWork: true,
       };
 
-      const res = await app.request('/api/me', {
+      const res = await request('/api/me', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
     let publishedSlug: string;
 
     it('rejects unauthorized project creation with 401 Unauthorized', async () => {
-      const res = await app.request('/api/projects', {
+      const res = await request('/api/projects', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: 'Sneaky Project' }),
@@ -90,7 +90,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
         nodes: [],
       };
 
-      const res = await app.request('/api/projects', {
+      const res = await request('/api/projects', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
     });
 
     it('allows owner Alice to retrieve her project', async () => {
-      const res = await app.request(`/api/projects/${createdProjectId}`, {
+      const res = await request(`/api/projects/${createdProjectId}`, {
         headers: { Authorization: tokenA },
       });
       expect(res.status).toBe(200);
@@ -121,7 +121,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
     });
 
     it('SECURITY ENFORCEMENT: prevents Bob from reading Alice’s project (403 Forbidden)', async () => {
-      const res = await app.request(`/api/projects/${createdProjectId}`, {
+      const res = await request(`/api/projects/${createdProjectId}`, {
         headers: { Authorization: tokenB },
       });
       expect(res.status).toBe(403);
@@ -130,7 +130,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
     });
 
     it('SECURITY ENFORCEMENT: prevents Bob from modifying Alice’s project (403 Forbidden)', async () => {
-      const res = await app.request(`/api/projects/${createdProjectId}`, {
+      const res = await request(`/api/projects/${createdProjectId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
     });
 
     it('allows owner Alice to update project and records revision increment', async () => {
-      const res = await app.request(`/api/projects/${createdProjectId}`, {
+      const res = await request(`/api/projects/${createdProjectId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -162,7 +162,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
     });
 
     it('allows owner Alice to create a named checkpoint revision', async () => {
-      const res = await app.request(`/api/projects/${createdProjectId}/revisions`, {
+      const res = await request(`/api/projects/${createdProjectId}/revisions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -180,7 +180,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
     });
 
     it('allows owner Alice to list all project revisions', async () => {
-      const res = await app.request(`/api/projects/${createdProjectId}/revisions`, {
+      const res = await request(`/api/projects/${createdProjectId}/revisions`, {
         headers: { Authorization: tokenA },
       });
       expect(res.status).toBe(200);
@@ -189,7 +189,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
     });
 
     it('publishes project and generates a public URL slug', async () => {
-      const res = await app.request(`/api/projects/${createdProjectId}/publish`, {
+      const res = await request(`/api/projects/${createdProjectId}/publish`, {
         method: 'POST',
         headers: { Authorization: tokenA },
       });
@@ -204,7 +204,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
 
     describe('/api/published (Public Views & Remix Workflow)', () => {
       it('allows anonymous public viewing of published project', async () => {
-        const res = await app.request(`/api/published/${publishedSlug}`);
+        const res = await request(`/api/published/${publishedSlug}`);
         expect(res.status).toBe(200);
         const json = await res.json() as { project: { slug: string; name: string } };
         expect(json.project.slug).toBe(publishedSlug);
@@ -212,7 +212,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
       });
 
       it('remixes published project for guest (anonymous) user returning manifest', async () => {
-        const res = await app.request(`/api/published/${publishedSlug}/remix`, {
+        const res = await request(`/api/published/${publishedSlug}/remix`, {
           method: 'POST',
         });
 
@@ -224,7 +224,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
       });
 
       it('remixes published project for authenticated user Bob into cloud project', async () => {
-        const res = await app.request(`/api/published/${publishedSlug}/remix`, {
+        const res = await request(`/api/published/${publishedSlug}/remix`, {
           method: 'POST',
           headers: { Authorization: tokenB },
         });
@@ -241,13 +241,13 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
   describe('/api/favorites', () => {
     it('manages favorite resources for authenticated user', async () => {
       // 1. Initially empty
-      const initial = await app.request('/api/favorites', {
+      const initial = await request('/api/favorites', {
         headers: { Authorization: tokenA },
       });
       expect(initial.status).toBe(200);
 
       // 2. Add favorite
-      const addRes = await app.request('/api/favorites', {
+      const addRes = await request('/api/favorites', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -258,7 +258,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
       expect(addRes.status).toBe(201);
 
       // 3. Verify in list
-      const listRes = await app.request('/api/favorites', {
+      const listRes = await request('/api/favorites', {
         headers: { Authorization: tokenA },
       });
       expect(listRes.status).toBe(200);
@@ -266,14 +266,14 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
       expect(listJson.favorites).toContain('button-primary');
 
       // 4. Remove favorite
-      const delRes = await app.request('/api/favorites/button-primary', {
+      const delRes = await request('/api/favorites/button-primary', {
         method: 'DELETE',
         headers: { Authorization: tokenA },
       });
       expect(delRes.status).toBe(200);
 
       // 5. Verify removed
-      const finalRes = await app.request('/api/favorites', {
+      const finalRes = await request('/api/favorites', {
         headers: { Authorization: tokenA },
       });
       const finalJson = await finalRes.json() as { favorites: string[] };
@@ -286,7 +286,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
 
     it('creates, populates, and manages a user collection', async () => {
       // 1. Create collection
-      const createRes = await app.request('/api/collections', {
+      const createRes = await request('/api/collections', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -304,7 +304,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
       collectionId = createJson.collection.id;
 
       // 2. Add item to collection
-      const addItemRes = await app.request(`/api/collections/${collectionId}/items`, {
+      const addItemRes = await request(`/api/collections/${collectionId}/items`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -315,20 +315,20 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
       expect(addItemRes.status).toBe(200);
 
       // 3. Fetch collection with items
-      const getRes = await app.request(`/api/collections/${collectionId}`);
+      const getRes = await request(`/api/collections/${collectionId}`);
       expect(getRes.status).toBe(200);
       const getJson = await getRes.json() as { collection: { items: string[] } };
       expect(getJson.collection.items).toContain('hero-editorial-bold');
 
       // 4. Remove item from collection
-      const remItemRes = await app.request(`/api/collections/${collectionId}/items/hero-editorial-bold`, {
+      const remItemRes = await request(`/api/collections/${collectionId}/items/hero-editorial-bold`, {
         method: 'DELETE',
         headers: { Authorization: tokenA },
       });
       expect(remItemRes.status).toBe(200);
 
       // 5. Delete collection
-      const delRes = await app.request(`/api/collections/${collectionId}`, {
+      const delRes = await request(`/api/collections/${collectionId}`, {
         method: 'DELETE',
         headers: { Authorization: tokenA },
       });
@@ -341,7 +341,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
 
     it('adds, lists, and removes external links for a creator', async () => {
       // 1. Add link
-      const addRes = await app.request('/api/creator-links', {
+      const addRes = await request('/api/creator-links', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -358,13 +358,13 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
       linkId = addJson.link.id;
 
       // 2. Publicly read creator links
-      const listRes = await app.request(`/api/creator-links/${userA}`);
+      const listRes = await request(`/api/creator-links/${userA}`);
       expect(listRes.status).toBe(200);
       const listJson = await listRes.json() as { links: Array<{ id: string; title: string }> };
       expect(listJson.links.some((l) => l.id === linkId)).toBe(true);
 
       // 3. Delete link
-      const delRes = await app.request(`/api/creator-links/${linkId}`, {
+      const delRes = await request(`/api/creator-links/${linkId}`, {
         method: 'DELETE',
         headers: { Authorization: tokenA },
       });
@@ -374,7 +374,7 @@ describe('Apps/API: Phase 16 Auth and Cloud State Management', () => {
 
   describe('/api/reports', () => {
     it('submits a content report successfully', async () => {
-      const res = await app.request('/api/reports', {
+      const res = await request('/api/reports', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

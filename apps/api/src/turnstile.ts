@@ -1,15 +1,25 @@
+import type { Env } from './types.js';
+import { isNonProduction } from './security.js';
+
+/** Request header carrying the Turnstile widget token. */
+export const TURNSTILE_HEADER = 'cf-turnstile-response';
+
 /**
- * Turnstile verification helper for sensitive Cloudflare endpoints.
- * Only enforced when TURNSTILE_SECRET_KEY binding is configured in production.
+ * Verifies a Cloudflare Turnstile token.
+ *
+ * Fails closed: in production a missing TURNSTILE_SECRET_KEY rejects the request instead of
+ * silently skipping verification. Only explicit development/test environments may bypass it.
  */
 export async function verifyTurnstileToken(
-  secretKey?: string,
-  token?: string,
-  remoteIp?: string
+  env: Env | undefined,
+  token?: string | null,
+  remoteIp?: string,
 ): Promise<{ success: boolean; error?: string }> {
-  // If not configured, bypass cleanly (e.g. in test or local dev environments)
+  const secretKey = env?.TURNSTILE_SECRET_KEY;
   if (!secretKey) {
-    return { success: true };
+    return isNonProduction(env)
+      ? { success: true }
+      : { success: false, error: 'Bot protection is not configured on this deployment.' };
   }
 
   if (!token) {

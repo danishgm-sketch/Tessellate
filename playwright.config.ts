@@ -7,12 +7,21 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   workers: 1,
   reporter: 'list',
-  webServer: {
-    command: 'pnpm --filter @tessellate/site preview --port 4321',
-    url: 'http://localhost:4321',
-    reuseExistingServer: true,
-    timeout: 30000,
-  },
+  webServer: [
+    {
+      command: 'pnpm --filter @tessellate/site preview --port 4321',
+      url: 'http://localhost:4321',
+      reuseExistingServer: true,
+      timeout: 30000,
+    },
+    {
+      // Isolated preview origin (D-023): resource previews never run on the site origin.
+      command: 'pnpm --filter @tessellate/preview preview --port 5173 --strictPort',
+      url: 'http://localhost:5173',
+      reuseExistingServer: true,
+      timeout: 30000,
+    },
+  ],
   use: {
     baseURL: 'http://localhost:4321',
     trace: 'on-first-retry',

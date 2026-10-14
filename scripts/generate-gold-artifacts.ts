@@ -203,10 +203,8 @@ export async function runGenerate() {
   fs.writeFileSync(previewAppFile, generatePreviewsRegistry(components, 'preview-app'), 'utf-8');
   console.log(`[generate-artifacts] Wrote ${previewAppFile}`);
 
-  // 4. Write Site previews registry
-  const sitePreviewFile = path.join(rootDir, 'apps', 'site', 'src', 'components', 'generated-previews.ts');
-  fs.writeFileSync(sitePreviewFile, generatePreviewsRegistry(components, 'site'), 'utf-8');
-  console.log(`[generate-artifacts] Wrote ${sitePreviewFile}`);
+  // Resource previews are rendered only by the isolated preview app (D-023); the main site
+  // never bundles resource preview code.
 }
 
 // Execute if run directly

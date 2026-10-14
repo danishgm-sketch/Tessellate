@@ -31,7 +31,7 @@ reportsRoute.post('/', optionalAuth, async (c) => {
 
   // Turnstile verification if configured in environment
   const turnstileCheck = await verifyTurnstileToken(
-    c.env?.TURNSTILE_SECRET_KEY,
+    c.env,
     body.turnstileToken || c.req.header('cf-turnstile-response'),
     c.req.header('cf-connecting-ip')
   );

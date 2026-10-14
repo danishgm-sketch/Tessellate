@@ -8,7 +8,6 @@ import {
   Info,
   CheckCircle2,
   Wand2,
-  Sparkles,
 } from 'lucide-react';
 
 export function AuditPanel({ manifest: propManifest }: { manifest?: ProjectManifest } = {}) {
@@ -281,14 +280,6 @@ export function AuditPanel({ manifest: propManifest }: { manifest?: ProjectManif
           })
         )}
 
-        {/* AI Critique Disclaimers */}
-        <div className="mt-8 p-4 rounded-xl border border-dashed border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#111217] flex items-center justify-between">
-          <div className="flex items-center gap-2 text-xs text-[#62666F] dark:text-[#A8AFBA]">
-            <Sparkles className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#6782FF]" />
-            <span>AI critique, when configured, appears separately under AI Review and cannot overwrite deterministic audit findings.</span>
-          </div>
-          <span className="text-[10px] font-mono uppercase text-[#8B8F97]">BYO Provider</span>
-        </div>
       </div>
     </div>
   );

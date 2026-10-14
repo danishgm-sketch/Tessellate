@@ -3,6 +3,19 @@ import type { ResourceManifest } from '@tessellate/schemas';
 import type { PreviewDevice, PreviewTheme, PreviewUpdateMessage } from '@tessellate/catalog/protocol';
 import { Monitor, Tablet, Smartphone, Sun, Moon, RotateCcw, Activity } from 'lucide-react';
 
+/**
+ * Origin that serves resource previews. Previews run on a separate origin inside a sandbox without
+ * allow-same-origin (D-023), so resource code can never read this site's cookies, storage or DOM.
+ */
+export function resolvePreviewUrl(): string {
+  const configured = import.meta.env.PUBLIC_PREVIEW_URL;
+  if (configured) return configured.replace(/\/$/, '');
+  if (typeof window !== 'undefined' && ['localhost', '127.0.0.1'].includes(window.location.hostname)) {
+    return 'http://localhost:5173';
+  }
+  return 'https://preview.tessellate.design';
+}
+
 export interface ResourcePreviewFrameProps {
   manifest: ResourceManifest;
   initialVariant?: string;
@@ -16,8 +29,13 @@ export function ResourcePreviewFrame({
   initialVariant,
   initialDevice = 'desktop',
   initialTheme = 'light',
-  previewUrl = '/preview',
+  previewUrl: previewUrlProp,
 }: ResourcePreviewFrameProps) {
+  // Resolved in the browser: the static build cannot know whether it is served locally or in production.
+  const [previewUrl, setPreviewUrl] = useState<string | null>(previewUrlProp ?? null);
+  useEffect(() => {
+    if (!previewUrlProp) setPreviewUrl(resolvePreviewUrl());
+  }, [previewUrlProp]);
   const defaultVariant = initialVariant ?? manifest.variants[0]?.id ?? 'expressive';
   const [variant, setVariant] = useState<string>(defaultVariant);
   const [device, setDevice] = useState<PreviewDevice>(initialDevice);
@@ -39,6 +57,7 @@ export function ResourcePreviewFrame({
     };
 
     try {
+      // The sandboxed frame has an opaque origin, so '*' is the only valid target; the message carries no secrets.
       iframeRef.current.contentWindow.postMessage(updateMsg, '*');
     } catch {
       // Ignore
@@ -50,7 +69,7 @@ export function ResourcePreviewFrame({
     setDevice('desktop');
     setTheme('light');
     setReducedMotion(false);
-    if (iframeRef.current) {
+    if (iframeRef.current && previewUrl) {
       iframeRef.current.src = `${previewUrl}?resource=${manifest.slug}&variant=${defaultVariant}&theme=light&device=desktop`;
     }
   };
@@ -172,14 +191,19 @@ export function ResourcePreviewFrame({
         <div
           className={`transition-all duration-300 rounded-lg overflow-hidden border border-[var(--tess-hairline,#D9D6CF)] shadow-sm bg-white dark:bg-[#0B0D10] ${deviceWidthClass}`}
         >
+          {previewUrl ? (
           <iframe
             ref={iframeRef}
             src={constructedSrc}
             title={`${manifest.name} live preview`}
-            sandbox="allow-scripts allow-same-origin"
+            sandbox="allow-scripts"
+            referrerPolicy="origin"
             onLoad={() => setIframeLoaded(true)}
             className="w-full min-h-[500px] border-0 bg-transparent block"
           />
+          ) : (
+            <div className="w-full min-h-[500px] animate-pulse bg-[var(--tess-canvas,#F4F2ED)]" aria-label="Loading preview" />
+          )}
         </div>
       </div>
     </div>

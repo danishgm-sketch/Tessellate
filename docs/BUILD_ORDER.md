@@ -604,26 +604,26 @@ Every gate is an outcome check that must pass in CI. Owner-only actions are mark
 
 # Phase 23 — Truth reset and repo hygiene
 
-- [ ] Record D-032a…D-040; update AGENTS.md, README.md and this file.
-- [ ] Add MIT `LICENSE`; homepage licence copy says MIT.
-- [ ] `.gitattributes` (LF) and line-ending normalisation in all generators.
-- [ ] Honest resource metadata: no build-time status promotion; `aiAssistance` discloses generation; unreviewed resources are `experimental`.
-- [ ] Remove unsupported marketing claims and fabricated testimonials; one canonical domain.
-- [ ] Zero lint warnings; wrangler v4.
+- [x] Record D-032a…D-040; update AGENTS.md, README.md and this file.
+- [x] Add MIT `LICENSE`; homepage licence copy says MIT.
+- [x] `.gitattributes` (LF) and line-ending normalisation in all generators.
+- [x] Honest resource metadata: no build-time status promotion; `aiAssistance` discloses generation; unreviewed resources are `experimental`.
+- [x] Remove unsupported marketing claims and fabricated testimonials; one canonical domain.
+- [x] Zero lint warnings; wrangler v4.
 
-### Phase 23 gate
+### Phase 23 gate (passed 2026-10-14)
 `pnpm build` leaves `git status` clean; no `verified` resource without a reviewer; lint has 0 warnings.
 
 # Phase 24 — Security
 
-- [ ] Inference queue: no secret literals; hashed per-device daemon tokens; authenticated or Turnstile-gated enqueue; Zod validation and size limits; rate limits.
-- [ ] Remove the BYO AI path (adapters, credential store, `/api/ai` proxy, AI interpreter).
-- [ ] Strict CORS allow-list.
-- [ ] Preview isolation on a separate origin with `sandbox="allow-scripts"` only and origin-checked messaging; previews removed from the site bundle.
-- [ ] Typed API error mapping (no bare 500s).
-- [ ] `/dev/*` excluded from production; `security.txt`.
+- [x] Inference queue: no secret literals; hashed per-device daemon tokens; authenticated or Turnstile-gated enqueue; Zod validation and size limits; rate limits.
+- [x] Remove the BYO AI path (adapters, credential store, `/api/ai` proxy, AI interpreter).
+- [x] Strict CORS allow-list.
+- [x] Preview isolation on a separate origin with `sandbox="allow-scripts"` only and origin-checked messaging; previews removed from the site bundle.
+- [x] Typed API error mapping (no bare 500s).
+- [x] `/dev/*` excluded from production; `security.txt`.
 
-### Phase 24 gate
+### Phase 24 gate (passed 2026-10-14: api-security, inference-queue and preview-isolation suites)
 API security tests (unauthorised daemon, oversized payload, foreign origin, rate limit) pass, and an e2e test proves a preview frame cannot access its parent.
 
 # Phase 25 — Data safety and project management

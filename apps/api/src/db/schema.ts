@@ -169,26 +169,31 @@ export const reports = sqliteTable('reports', {
   createdAt: text('createdAt').notNull(),
 });
 
-// 14. Inference Tickets (Host Queue & Token System)
+// 14. Inference Tickets (host daemon queue, D-033/D-035)
 export const inferenceTickets = sqliteTable('inference_tickets', {
   id: text('id').primaryKey(),
+  kind: text('kind').notNull(),
+  ownerKey: text('ownerKey').notNull(),
+  ticketTokenHash: text('ticketTokenHash').notNull(),
   tokenNumber: integer('tokenNumber').notNull(),
   prompt: text('prompt').notNull(),
-  screenAst: text('screenAst').notNull(),
-  designDna: text('designDna'),
+  payload: text('payload').notNull(),
   status: text('status').notNull().default('queued'),
-  resultCommand: text('resultCommand'),
+  result: text('result'),
   errorMessage: text('errorMessage'),
+  deviceId: text('deviceId'),
   createdAt: text('createdAt').notNull(),
   startedAt: text('startedAt'),
   completedAt: text('completedAt'),
 });
 
-// 15. Host Worker Liveness
-export const hostWorkers = sqliteTable('host_workers', {
+// 15. Daemon devices (per-device bearer tokens, stored as SHA-256 hashes)
+export const daemonDevices = sqliteTable('daemon_devices', {
   id: text('id').primaryKey(),
-  deviceName: text('deviceName'),
-  lastHeartbeat: integer('lastHeartbeat').notNull(),
-  status: text('status').notNull().default('idle'),
+  name: text('name').notNull(),
+  tokenHash: text('tokenHash').notNull().unique(),
+  createdAt: text('createdAt').notNull(),
+  lastSeenAt: text('lastSeenAt'),
+  revokedAt: text('revokedAt'),
 });
 

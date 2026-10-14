@@ -1,120 +1,132 @@
 """
-Tessellate Owner Host Daemon
-Long-polling worker that runs locally on the owner/host machine.
-Pulls tasks from Cloudflare API queue, executes bespoke Tree-GNN ML inference,
-and posts completed IntentCommand results back.
-Requires zero open ports, no public IP, works behind any firewall/router.
+Tessellate host daemon (D-033).
+
+Runs on the owner's machine, claims tickets from the Tessellate inference queue, runs the
+bespoke Tree-GNN/Bi-GRU model and posts back schema-shaped results. It only makes outbound
+HTTPS requests, so it needs no open ports or public IP.
+
+Configuration (environment variables):
+  TESSELLATE_API_URL       Queue API base URL (default http://localhost:8787 for development)
+  TESSELLATE_DAEMON_TOKEN  Per-device token issued with `pnpm --filter @tessellate/api daemon:token`
+                           (required; there is no built-in default secret)
+
+Privacy: prompts and project context are never written to logs; only ticket ids, kinds,
+timings and outcomes are logged.
 """
 
 import json
 import os
 import sys
 import time
-import urllib.request
 import urllib.error
-from typing import Dict, Any
+import urllib.request
+from typing import Any, Dict, Optional
 
-# Ensure model directory is on import path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "model"))
-from inference import BespokeInferenceEngine
+from inference import BespokeInferenceEngine, NotUnderstood  # noqa: E402
 
-DEFAULT_API_URL = os.environ.get("TESSELLATE_API_URL", "http://localhost:8787")
-HOST_SECRET = os.environ.get("TESSELLATE_HOST_SECRET", "tessellate_owner_secret_dev")
+API_URL = os.environ.get("TESSELLATE_API_URL", "http://localhost:8787").rstrip("/")
+DAEMON_TOKEN = os.environ.get("TESSELLATE_DAEMON_TOKEN", "")
 POLL_INTERVAL_SEC = 1.0
+IDLE_BACKOFF_MAX_SEC = 5.0
 HEARTBEAT_INTERVAL_SEC = 15.0
+USER_AGENT = "Tessellate-Host-Daemon/2.0"
 
 
-def make_request(url: str, method: str = "GET", data: Dict[str, Any] = None) -> Dict[str, Any]:
-    """Helper to perform JSON HTTP requests with the host secret header."""
+class ApiError(Exception):
+    def __init__(self, status: int, body: Dict[str, Any]):
+        super().__init__(f"HTTP {status}: {body.get('message') or body.get('error')}")
+        self.status = status
+        self.body = body
+
+
+def request(path: str, method: str = "GET", data: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
     headers = {
+        "Authorization": f"Bearer {DAEMON_TOKEN}",
         "Content-Type": "application/json",
-        "X-Host-Secret": HOST_SECRET,
-        "User-Agent": "Tessellate-Host-Daemon/1.0",
+        "User-Agent": USER_AGENT,
     }
     payload = json.dumps(data).encode("utf-8") if data is not None else None
-    req = urllib.request.Request(url, data=payload, headers=headers, method=method)
-
+    req = urllib.request.Request(f"{API_URL}{path}", data=payload, headers=headers, method=method)
     try:
-        with urllib.request.urlopen(req, timeout=10) as resp:
+        with urllib.request.urlopen(req, timeout=15) as resp:
             raw = resp.read().decode("utf-8")
             return json.loads(raw) if raw else {}
     except urllib.error.HTTPError as e:
-        raw_err = e.read().decode("utf-8")
+        raw = e.read().decode("utf-8")
         try:
-            return json.loads(raw_err)
-        except Exception:
-            return {"error": f"HTTP {e.code}: {e.reason}"}
-    except Exception as e:
-        return {"error": str(e)}
+            body = json.loads(raw)
+        except ValueError:
+            body = {"error": raw[:200]}
+        raise ApiError(e.code, body) from None
 
 
-def main():
-    print("=" * 65)
-    print("       TESSELLATE BESPOKE ML HOST INFERENCE DAEMON       ")
-    print("   Zero-LLM Architecture · Tree-GNN + Bi-GRU Neural Model ")
-    print("=" * 65)
-    print(f"[Host Daemon] Target Cloud API: {DEFAULT_API_URL}")
-    print(f"[Host Daemon] Initializing bespoke inference engine...")
+def process(engine: BespokeInferenceEngine, task: Dict[str, Any]) -> Dict[str, Any]:
+    """Returns the /complete payload for a claimed task: either a result or an honest error."""
+    kind = task.get("kind", "intent-command")
+    context = task.get("context") or {}
+    try:
+        if kind == "intent-command":
+            result = engine.infer_intent(task.get("prompt", ""), context.get("screenAst") or {})
+        elif kind == "interpret-brief":
+            result = engine.interpret_brief(task.get("prompt", ""), context)
+        else:
+            return {"ticketId": task["id"], "error": f"Unsupported task kind: {kind}"}
+    except NotUnderstood as e:
+        return {"ticketId": task["id"], "error": str(e)}
+    return {"ticketId": task["id"], "result": result}
 
+
+def main() -> int:
+    # Windows consoles default to cp1252; never let a log line crash the daemon.
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(errors="replace")
+    if not DAEMON_TOKEN:
+        print("[daemon] TESSELLATE_DAEMON_TOKEN is not set. Issue one with:")
+        print("         pnpm --filter @tessellate/api daemon:token <device-name> [--remote]")
+        return 2
+
+    print(f"[daemon] Tessellate host daemon - API {API_URL}")
     engine = BespokeInferenceEngine.get_instance()
     last_heartbeat = 0.0
-
-    print("[Host Daemon] Online and polling queue for tasks. Press Ctrl+C to exit.\n")
+    idle_sleep = POLL_INTERVAL_SEC
 
     while True:
-        now = time.time()
-
-        # 1. Send heartbeat if due
-        if now - last_heartbeat >= HEARTBEAT_INTERVAL_SEC:
-            hb_resp = make_request(f"{DEFAULT_API_URL}/api/inference/heartbeat", method="POST", data={
-                "deviceName": "Host-Hardware-Worker-01",
-                "status": "idle",
-            })
-            if "error" not in hb_resp:
-                last_heartbeat = now
-                # print(f"[Host Daemon] Heartbeat registered at {time.strftime('%H:%M:%S')}")
-
-        # 2. Poll for queued task
         try:
-            poll_resp = make_request(f"{DEFAULT_API_URL}/api/inference/poll", method="GET")
+            if time.time() - last_heartbeat >= HEARTBEAT_INTERVAL_SEC:
+                request("/api/inference/heartbeat", "POST", {})
+                last_heartbeat = time.time()
 
-            if poll_resp and poll_resp.get("task"):
-                task = poll_resp["task"]
-                ticket_id = task.get("id")
-                token_num = task.get("tokenNumber")
-                prompt = task.get("prompt", "")
-                screen_ast = task.get("screenAst", {})
+            task = request("/api/inference/poll").get("task")
+            if not task:
+                time.sleep(idle_sleep)
+                idle_sleep = min(idle_sleep * 1.5, IDLE_BACKOFF_MAX_SEC)
+                continue
 
-                print(f"[Host Daemon] ⚡ Task Received! Token #{token_num} (ID: {ticket_id})")
-                print(f"              Prompt: \"{prompt}\"")
-
-                start_t = time.perf_counter()
-                result_command = engine.infer(prompt, screen_ast)
-                duration_ms = round((time.perf_counter() - start_t) * 1000, 2)
-
-                print(f"[Host Daemon] Inferred action: \"{result_command.get('action')}\" ({duration_ms}ms)")
-
-                # 3. Post completion back
-                complete_resp = make_request(f"{DEFAULT_API_URL}/api/inference/complete", method="POST", data={
-                    "ticketId": ticket_id,
-                    "resultCommand": result_command,
-                })
-
-                if complete_resp.get("success"):
-                    print(f"[Host Daemon] ✅ Ticket #{token_num} successfully completed and committed.\n")
-                else:
-                    print(f"[Host Daemon] ⚠️ Failed to commit ticket #{token_num}: {complete_resp}\n")
-
-        except Exception as e:
-            # print(f"[Host Daemon] Poll loop error: {e}")
-            pass
-
-        time.sleep(POLL_INTERVAL_SEC)
+            idle_sleep = POLL_INTERVAL_SEC
+            started = time.perf_counter()
+            payload = process(engine, task)
+            elapsed_ms = round((time.perf_counter() - started) * 1000, 1)
+            try:
+                request("/api/inference/complete", "POST", payload)
+                outcome = "error" if "error" in payload else "ok"
+            except ApiError as e:
+                outcome = f"rejected ({e.status})"
+            print(f"[daemon] ticket #{task.get('tokenNumber')} {task.get('kind')} -> {outcome} in {elapsed_ms} ms")
+        except ApiError as e:
+            if e.status == 401:
+                print("[daemon] The API rejected this device token (revoked or wrong environment). Stopping.")
+                return 3
+            print(f"[daemon] API error: {e}; retrying")
+            time.sleep(IDLE_BACKOFF_MAX_SEC)
+        except (urllib.error.URLError, TimeoutError, ConnectionError) as e:
+            print(f"[daemon] API unreachable ({e}); retrying")
+            time.sleep(IDLE_BACKOFF_MAX_SEC)
 
 
 if __name__ == "__main__":
     try:
-        main()
+        sys.exit(main())
     except KeyboardInterrupt:
-        print("\n[Host Daemon] Gracefully shutting down.")
+        print("\n[daemon] Stopped.")
         sys.exit(0)

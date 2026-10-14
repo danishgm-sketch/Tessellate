@@ -1,0 +1,33 @@
+---
+// Internal developer galleries. They exist only in `astro dev`; production builds emit no /dev pages.
+import '../../styles/global.css';
+import { Header } from '@tessellate/ui';
+import { UiGallery } from '../../components/UiGallery';
+import { DnaLab } from '../../components/DnaLab';
+
+export function getStaticPaths() {
+  if (!import.meta.env.DEV) return [];
+  return [
+    { params: { page: 'ui' }, props: { title: 'UI Primitives Gallery' } },
+    { params: { page: 'dna' }, props: { title: 'Design DNA Lab (internal)' } },
+  ];
+}
+
+const { page } = Astro.params;
+const { title } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} — Tessellate (dev)</title>
+    <meta name="robots" content="noindex,nofollow" />
+  </head>
+  <body class="min-h-screen bg-[#F4F2ED] text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA]">
+    <Header client:load />
+    <main class="mx-auto max-w-[1280px] px-6 py-12">
+      {page === 'ui' ? <UiGallery client:load /> : <DnaLab client:load />}
+    </main>
+  </body>
+</html>

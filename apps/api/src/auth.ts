@@ -4,15 +4,29 @@ import { drizzle } from 'drizzle-orm/d1';
 import * as schema from './db/schema.js';
 import type { Env, AuthenticatedContext } from './types.js';
 import type { Context, Next } from 'hono';
+import { ConfigurationError, isNonProduction, isTestEnvironment } from './security.js';
+
+/** Development-only signing secret. Never used when ENVIRONMENT is production (or unset). */
+const DEV_ONLY_AUTH_SECRET = 'tessellate-local-development-secret-not-for-production'; // audit-allow-secret: dev/test only, gated by isNonProduction()
+
+function resolveAuthSecret(env?: Env): string {
+  if (env?.BETTER_AUTH_SECRET) return env.BETTER_AUTH_SECRET;
+  if (isNonProduction(env)) return DEV_ONLY_AUTH_SECRET;
+  throw new ConfigurationError('BETTER_AUTH_SECRET is not configured.');
+}
+
+function githubProvider(env?: Env) {
+  if (!env?.GITHUB_CLIENT_ID || !env?.GITHUB_CLIENT_SECRET) return {};
+  return { github: { clientId: env.GITHUB_CLIENT_ID, clientSecret: env.GITHUB_CLIENT_SECRET } };
+}
 
 /**
- * Creates a Better Auth instance configured for Cloudflare D1 and GitHub OAuth only.
+ * Creates a Better Auth instance for Cloudflare D1.
  */
 export function createAuth(env?: Env) {
-  const secret = env?.BETTER_AUTH_SECRET || 'tessellate-dev-secret-key-min-32-chars-long';
+  const secret = resolveAuthSecret(env);
   const baseURL = env?.BETTER_AUTH_URL || 'http://localhost:8787';
 
-  // If D1 database binding is available, use Drizzle D1 adapter
   if (env?.DB) {
     const db = drizzle(env.DB, { schema });
     return betterAuth({
@@ -22,25 +36,19 @@ export function createAuth(env?: Env) {
         provider: 'sqlite',
         schema,
       }),
-      socialProviders: {
-        github: {
-          clientId: env.GITHUB_CLIENT_ID || 'dummy-github-client-id',
-          clientSecret: env.GITHUB_CLIENT_SECRET || 'dummy-github-client-secret',
-        },
-      },
+      socialProviders: githubProvider(env),
     });
   }
 
-  // Fallback for tests or local dev without active D1 binding
+  if (!isNonProduction(env)) {
+    throw new ConfigurationError('D1 database binding (DB) is not configured.');
+  }
+
+  // Local development/tests without a D1 binding.
   return betterAuth({
     secret,
     baseURL,
-    socialProviders: {
-      github: {
-        clientId: env?.GITHUB_CLIENT_ID || 'dummy-github-client-id',
-        clientSecret: env?.GITHUB_CLIENT_SECRET || 'dummy-github-client-secret',
-      },
-    },
+    socialProviders: githubProvider(env),
   });
 }
 
@@ -51,9 +59,9 @@ export async function getSessionFromRequest(
   req: Request,
   env?: Env
 ): Promise<AuthenticatedContext | null> {
-  // Support Bearer test token or header mock for deterministic test suites
+  // Deterministic test sessions are honoured ONLY when ENVIRONMENT is explicitly 'test'.
   const authHeader = req.headers.get('Authorization');
-  if (authHeader?.startsWith('Bearer test-user-')) {
+  if (isTestEnvironment(env) && authHeader?.startsWith('Bearer test-user-')) {
     const userId = authHeader.replace('Bearer ', '');
     return {
       user: {
@@ -61,6 +69,7 @@ export async function getSessionFromRequest(
         name: 'Test Evaluator',
         email: `${userId}@tessellate.test`,
         image: null,
+        role: userId.includes('admin') ? 'admin' : 'user',
       },
       session: {
         id: `sess-${userId}`,
@@ -79,12 +88,14 @@ export async function getSessionFromRequest(
     if (!sessionRes || !sessionRes.user) {
       return null;
     }
+    const user = sessionRes.user as typeof sessionRes.user & { role?: string | null };
     return {
       user: {
-        id: sessionRes.user.id,
-        name: sessionRes.user.name,
-        email: sessionRes.user.email,
-        image: sessionRes.user.image,
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        image: user.image,
+        role: user.role ?? 'user',
       },
       session: {
         id: sessionRes.session.id,

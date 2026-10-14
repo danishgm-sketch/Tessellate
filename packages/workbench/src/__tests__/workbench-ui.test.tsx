@@ -91,8 +91,9 @@ describe('Workbench UI Components', () => {
     useWorkbenchStore.getState().selectNode('node-metric-arr');
     const html = renderToString(<CommandBar />);
     expect(html).toContain('metric-kpi');
-    expect(html).toContain('Tell Tess what to change');
+    expect(html).toContain('Tell Tessellate what to change');
     expect(html).toContain('Esc');
+    expect(html).toContain('aria-live="polite"');
   });
 
   it('renders PreviewModal clean full screen preview', () => {

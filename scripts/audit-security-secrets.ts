@@ -15,6 +15,10 @@ function auditSecurityAndSecrets() {
     /-----BEGIN RSA PRIVATE KEY-----/,
   ];
 
+  // Hardcoded secret-like assignments (e.g. the former DEV_HOST_SECRET = '...'). A line may opt out only
+  // with an explicit `audit-allow-secret` justification comment (dev-only values gated by environment).
+  const assignmentPattern = /\b[A-Z0-9_]*(SECRET|TOKEN|PASSWORD|API_KEY|PRIVATE_KEY)[A-Z0-9_]*\s*[:=]\s*['"][^'"\s]{8,}['"]/;
+
   const sourceDirs = ['apps', 'packages', 'resources'];
   function scanDir(dir: string) {
     if (!fs.existsSync(dir)) return;
@@ -22,10 +26,10 @@ function auditSecurityAndSecrets() {
     for (const entry of entries) {
       const fullPath = path.join(dir, entry.name);
       if (entry.isDirectory()) {
-        if (entry.name !== 'node_modules' && entry.name !== 'dist' && entry.name !== '.astro') {
+        if (!['node_modules', 'dist', '.astro', '.wrangler', '__pycache__'].includes(entry.name)) {
           scanDir(fullPath);
         }
-      } else if (entry.isFile() && /\.(ts|tsx|js|mjs|astro|json|sql|env)$/.test(entry.name)) {
+      } else if (entry.isFile() && /\.(ts|tsx|js|mjs|astro|json|sql|env|py)$/.test(entry.name)) {
         if (entry.name.endsWith('.lock') || entry.name === 'catalog.json' || entry.name === 'catalog.min.json') {
           continue;
         }
@@ -35,6 +39,15 @@ function auditSecurityAndSecrets() {
             console.error(`[SECRET VIOLATION] Potential hardcoded secret in ${fullPath}`);
             violations++;
           }
+        }
+
+        if (!fullPath.includes('__tests__') && !fullPath.includes(path.join('host-daemon', 'tests'))) {
+          content.split('\n').forEach((line, i) => {
+            if (assignmentPattern.test(line) && !line.includes('audit-allow-secret')) {
+              console.error(`[SECRET VIOLATION] Hardcoded secret-like assignment in ${fullPath}:${i + 1}`);
+              violations++;
+            }
+          });
         }
 
         // Check for runtime eval in client/runtime code
@@ -71,6 +84,19 @@ function auditSecurityAndSecrets() {
   const previewFramePath = path.resolve('apps/site/src/components/ResourcePreviewFrame.tsx');
   if (fs.existsSync(previewFramePath)) {
     const previewFrameContent = fs.readFileSync(previewFramePath, 'utf-8');
+    const sandboxAttr = /sandbox="([^"]*)"/.exec(previewFrameContent)?.[1] ?? '';
+    if (sandboxAttr.includes('allow-scripts') && sandboxAttr.includes('allow-same-origin')) {
+      console.error('[ISOLATION VIOLATION] allow-scripts + allow-same-origin cancels the iframe sandbox (D-023).');
+      violations++;
+    }
+    if (/previewUrl\s*=\s*'\//.test(previewFrameContent)) {
+      console.error('[ISOLATION VIOLATION] Previews must load from the separate preview origin, not a same-origin path.');
+      violations++;
+    }
+    if (fs.existsSync(path.resolve('apps/site/src/components/generated-previews.ts'))) {
+      console.error('[ISOLATION VIOLATION] The main site must not bundle resource preview code.');
+      violations++;
+    }
     if (!previewFrameContent.includes('iframe') || !previewFrameContent.includes('sandbox')) {
       console.error(`[ISOLATION VIOLATION] ResourcePreviewFrame.tsx must render previews within a sandboxed iframe!`);
       violations++;

@@ -1,34 +1,51 @@
 """
-Tessellate Bespoke ML Engine - Inference Runtime
-Loads trained Tree-GNN + Bi-GRU weights and executes sub-millisecond forward inference.
-Zero external LLM / transformer weights.
+Tessellate bespoke model runtime (D-033/D-034).
+
+Loads the Tree-GNN + Bi-GRU weights and turns predictions into canonical IntentCommand JSON
+(the schema lives in packages/schemas/src/intent.ts and is re-validated by the API).
+No external LLM or transformer weights are used.
+
+Honesty rule: when the model is not confident, the daemon reports "not understood" instead of
+guessing. A wrong edit applied silently is worse than an explicit refusal.
 """
 
 import json
 import os
-from typing import Dict, Any
+from typing import Any, Dict, Optional
 
 try:
     from .intent_network import BespokeIntentNetwork
 except ImportError:
     from intent_network import BespokeIntentNetwork
 
+# Minimum softmax confidence for an intent to be acted on. Calibrated against the held-out
+# evaluation set in Phase 28; until then it is deliberately strict.
+MIN_INTENT_CONFIDENCE = 0.6
+
+FEEL_PHRASES = ["calm precision", "modern editorial", "high density", "playful", "fintech", "nocturne"]
+
+
+class NotUnderstood(Exception):
+    """Raised when the model cannot confidently interpret a request."""
+
 
 class BespokeInferenceEngine:
     _instance = None
 
-    def __init__(self, weights_path: str = None):
+    def __init__(self, weights_path: Optional[str] = None):
         if weights_path is None:
             weights_path = os.path.join(os.path.dirname(__file__), "weights.json")
 
         self.model = BespokeIntentNetwork(seed=42)
+        self.weights_loaded = False
         if os.path.exists(weights_path):
             with open(weights_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 self.model.load_weights(data)
-                print(f"[Tessellate DL] Loaded trained weights ({data.get('architecture', 'TreeGNN')})")
+                self.weights_loaded = True
+                print(f"[model] Loaded weights ({data.get('architecture', 'TreeGNN')})")
         else:
-            print("[Tessellate DL] Warning: weights.json not found, using initialized weights.")
+            print("[model] Warning: weights.json not found; every request will be reported as not understood.")
 
     @classmethod
     def get_instance(cls):
@@ -36,39 +53,58 @@ class BespokeInferenceEngine:
             cls._instance = cls()
         return cls._instance
 
-    def infer(self, prompt: str, screen_ast: Dict[str, Any], design_dna: Dict[str, Any] = None) -> Dict[str, Any]:
-        """Runs forward inference and formats the output into strict IntentCommand JSON."""
-        clean_prompt = prompt.strip()
-        if not clean_prompt:
-            return {
-                "action": "recompose-screen",
-                "summary": "Default recomposition applied.",
-                "confidence": 0.5,
-                "divergenceLevel": 50,
-            }
+    def infer(self, prompt: str, screen_ast: Dict[str, Any], design_dna: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        """Raw model prediction (kept for training/evaluation tooling)."""
+        return self.model.forward(prompt.strip(), screen_ast or {})
 
-        pred = self.model.forward(clean_prompt, screen_ast or {})
+    def infer_intent(self, prompt: str, screen_ast: Dict[str, Any]) -> Dict[str, Any]:
+        """Returns a canonical IntentCommand, or raises NotUnderstood."""
+        clean = prompt.strip()
+        if not clean:
+            raise NotUnderstood("The request was empty.")
+        if not self.weights_loaded:
+            raise NotUnderstood("The intent model is not loaded on this host.")
 
-        # Context-aware adjustments based on keywords
-        lower = clean_prompt.lower()
-        if "lock" in lower and "unlock" not in lower:
-            pred["action"] = "lock-nodes"
-        elif "unlock" in lower:
-            pred["action"] = "unlock-nodes"
-        elif "surprise" in lower:
-            pred["action"] = "surprise-me"
-            pred["divergenceLevel"] = max(pred.get("divergenceLevel", 60), 65)
-        elif "rethink" in lower:
-            pred["action"] = "rethink-screen"
-            pred["divergenceLevel"] = max(pred.get("divergenceLevel", 75), 80)
-        elif "recompose" in lower:
-            pred["action"] = "recompose-screen"
+        pred = self.model.forward(clean, screen_ast or {})
+        confidence = float(pred.get("confidence", 0.0))
+        if confidence < MIN_INTENT_CONFIDENCE:
+            raise NotUnderstood(
+                f"Tessellate could not confidently interpret this request (confidence {confidence:.2f}). "
+                "Try rephrasing, or make the change directly in the Workbench."
+            )
 
-        # Apply feel descriptor if present in prompt
-        feel_descriptors = ["calm precision", "modern editorial", "high density", "playful", "fintech", "nocturne"]
-        for fd in feel_descriptors:
-            if fd in lower:
-                pred["feel"] = fd
-                break
+        action = pred["action"]
+        command: Dict[str, Any] = {
+            "action": action,
+            "summary": _summary(action, clean),
+            "preserveLockedNodes": True,
+            "explanation": f"Bespoke model prediction (confidence {confidence:.2f}).",
+        }
+        targets = [t for t in pred.get("targetNodeIds") or [] if isinstance(t, str)]
+        if targets and action in ("lock-nodes", "unlock-nodes", "replace-component"):
+            command["targetNodeIds"] = targets
+        deltas = pred.get("dnaDeltas") or {}
+        if deltas and action == "adjust-dna":
+            command["dnaDeltas"] = {k: int(v) for k, v in deltas.items()}
+        if action == "apply-feel":
+            lower = clean.lower()
+            command["feelDescriptors"] = next((fd for fd in FEEL_PHRASES if fd in lower), clean)
+        return command
 
-        return pred
+    def interpret_brief(self, brief: str, context: Dict[str, Any]) -> Dict[str, Any]:
+        """Brief → ProductModel. Implemented by the Phase 28 model (span tagger + ontology)."""
+        raise NotUnderstood("Brief interpretation is not available on this host yet.")
+
+
+def _summary(action: str, prompt: str) -> str:
+    labels = {
+        "recompose-screen": "Recompose the screen",
+        "rethink-screen": "Rethink the screen structure",
+        "adjust-dna": "Adjust Design DNA",
+        "apply-feel": "Apply a feel",
+        "lock-nodes": "Lock the selected sections",
+        "unlock-nodes": "Unlock the selected sections",
+        "replace-component": "Replace a component",
+        "surprise-me": "Explore a controlled variation",
+    }
+    return f"{labels.get(action, action)} (from: \"{prompt[:80]}\")"

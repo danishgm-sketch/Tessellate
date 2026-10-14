@@ -1,0 +1,8 @@
+# Copy to apps/api/.dev.vars for `wrangler dev`. Never commit .dev.vars.
+ENVIRONMENT=development
+BETTER_AUTH_SECRET=replace-with-a-long-random-string
+BETTER_AUTH_URL=http://localhost:8787
+# Local-only daemon token; production daemons use per-device tokens issued with
+# `pnpm --filter @tessellate/api daemon:token <device-name>`.
+DAEMON_DEV_TOKEN=replace-with-a-long-random-string
+# TURNSTILE_SECRET_KEY=
