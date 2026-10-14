@@ -1,6 +1,5 @@
-# Tessellate Host-Run Inference Daemon Dependencies
-# Minimal, zero-LLM dependencies for host hardware execution
-requests>=2.31.0
-pydantic>=2.0.0
-# Optional: PyTorch for GPU acceleration / training
+# Tessellate host daemon dependencies (D-033/D-034): standard library + bespoke model, no LLM.
+# Realtime transport to the queue hub (optional; the daemon falls back to HTTP polling without it).
+websockets>=13.0
+# Optional: PyTorch for GPU-accelerated training (inference runs on the standard library).
 # torch>=2.2.0

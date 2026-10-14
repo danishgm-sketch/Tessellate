@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { StatusView } from '../components/StatusView';
+---
+
+<BaseLayout title="Status" description="Live status of Tessellate services and the intelligence host.">
+  <h1 class="text-2xl font-bold tracking-tight">System status</h1>
+  <p class="mt-2 mb-6 text-sm text-[#62666F]">
+    Tessellate’s model runs on a single dedicated host (D-035). When it is offline, composition and natural-language
+    edits are unavailable; everything else keeps working.
+  </p>
+  <StatusView client:only="react" />
+</BaseLayout>

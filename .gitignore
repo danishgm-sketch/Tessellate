@@ -54,3 +54,6 @@ __pycache__/
 .venv/
 venv/
 
+
+# Host daemon local config (contains a device token)
+apps/host-daemon/daemon.env

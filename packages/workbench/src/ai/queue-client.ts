@@ -28,6 +28,8 @@ export interface QueueClientOptions {
   turnstileToken?: string;
   /** Maximum time to wait for a result before cancelling the ticket. */
   timeoutMs?: number;
+  /** Shorter wait used when the host is offline at submission time (default 20 s). */
+  offlineTimeoutMs?: number;
   pollIntervalMs?: number;
   signal?: AbortSignal;
   fetchImpl?: typeof fetch;
@@ -192,7 +194,8 @@ export async function waitForTicket(
   } catch {
     // best effort
   }
-  const error = 'Tessellate’s intelligence host did not respond in time, so the request was cancelled. Nothing was changed.';
+  const error =
+    'Tessellate’s intelligence host is offline or busy, so the request was cancelled. Nothing was changed. Check the status page, or edit directly in the Workbench.';
   onProgress?.({ status: 'failed', tokenNumber: ticket.tokenNumber, message: error });
   return { status: 'failed', error, ticketId: ticket.ticketId };
 }
@@ -242,7 +245,12 @@ export async function executeQueuedCommand(
       : 'The intelligence host is offline. Your request is waiting in the queue.',
   });
 
-  const outcome = await waitForTicket(ticket, onProgress, options);
+  // When the host is offline, do not keep the user waiting for a full minute: wait briefly in case it
+  // reconnects, then cancel and say so plainly.
+  const waitOptions = ticket.hostOnline
+    ? options
+    : { ...options, timeoutMs: Math.min(options.timeoutMs ?? 60_000, options.offlineTimeoutMs ?? 20_000) };
+  const outcome = await waitForTicket(ticket, onProgress, waitOptions);
   if (outcome.status === 'failed') {
     return { success: false, mutations: [], explanation: '', error: outcome.error, tokenNumber: ticket.tokenNumber };
   }

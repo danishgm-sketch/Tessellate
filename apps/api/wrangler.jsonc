@@ -1,10 +1,15 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "tessellate-api",
-  "main": "src/index.ts",
+  "main": "src/worker.ts",
   "compatibility_date": "2025-02-14",
   "compatibility_flags": ["nodejs_compat"],
   "observability": { "enabled": true },
+  // Realtime daemon dispatch hub (D-035); SQLite-backed Durable Object class.
+  "durable_objects": { "bindings": [{ "name": "QUEUE_HUB", "class_name": "QueueHub" }] },
+  "migrations": [{ "tag": "v1-queue-hub", "new_sqlite_classes": ["QueueHub"] }],
+  // Lease recovery + 24h prompt retention purge.
+  "triggers": { "crons": ["*/5 * * * *"] },
 
   // ---- Local development (`wrangler dev`) -------------------------------------------------------
   // Fail-closed default; local development overrides ENVIRONMENT via .dev.vars (see .dev.vars.example).
@@ -37,7 +42,9 @@
         { "name": "RATE_LIMIT_ENQUEUE", "namespace_id": "2001", "simple": { "limit": 10, "period": 60 } },
         { "name": "RATE_LIMIT_AUTH", "namespace_id": "2002", "simple": { "limit": 20, "period": 60 } }
       ],
-      "send_email": [{ "name": "EMAIL" }]
+      "send_email": [{ "name": "EMAIL" }],
+      "durable_objects": { "bindings": [{ "name": "QUEUE_HUB", "class_name": "QueueHub" }] },
+      "triggers": { "crons": ["*/5 * * * *"] }
     },
 
     // ---- Production (`wrangler deploy --env production`) ----------------------------------------
@@ -59,7 +66,9 @@
         { "name": "RATE_LIMIT_ENQUEUE", "namespace_id": "3001", "simple": { "limit": 10, "period": 60 } },
         { "name": "RATE_LIMIT_AUTH", "namespace_id": "3002", "simple": { "limit": 20, "period": 60 } }
       ],
-      "send_email": [{ "name": "EMAIL" }]
+      "send_email": [{ "name": "EMAIL" }],
+      "durable_objects": { "bindings": [{ "name": "QUEUE_HUB", "class_name": "QueueHub" }] },
+      "triggers": { "crons": ["*/5 * * * *"] }
     }
   }
 }

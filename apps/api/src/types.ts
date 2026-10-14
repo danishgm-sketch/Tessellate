@@ -29,6 +29,14 @@ export interface Env {
   PUBLIC_SITE_URL?: string;
   /** Comma-separated emails that are granted the admin role when they verify. */
   ADMIN_EMAILS?: string;
+  /** Realtime dispatch hub for host daemons (Durable Object, D-035). */
+  QUEUE_HUB?: QueueHubNamespace;
+}
+
+/** Minimal typed view of the QueueHub Durable Object namespace (RPC methods used by the Worker). */
+export interface QueueHubNamespace {
+  idFromName(name: string): unknown;
+  get(id: unknown): { fetch(request: Request): Promise<Response>; announceWork(): Promise<number>; connectedDevices(): Promise<number> };
 }
 
 /** Cloudflare Email Service Workers binding (https://developers.cloudflare.com/email-service/). */

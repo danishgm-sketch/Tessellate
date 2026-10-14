@@ -1,0 +1,26 @@
+# systemd unit for the Tessellate host daemon (Linux).
+#   sudo cp tessellate-daemon.service /etc/systemd/system/
+#   sudo systemctl daemon-reload && sudo systemctl enable --now tessellate-daemon
+#   journalctl -u tessellate-daemon -f
+[Unit]
+Description=Tessellate host daemon (bespoke model inference)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=tessellate
+WorkingDirectory=/opt/tessellate/apps/host-daemon
+EnvironmentFile=/opt/tessellate/apps/host-daemon/daemon.env
+ExecStart=/usr/bin/python3 -u daemon.py
+Restart=always
+RestartSec=5
+# Exit code 3 means the token was revoked: do not restart-loop against a rejected token.
+RestartPreventExitStatus=2 3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/opt/tessellate
+
+[Install]
+WantedBy=multi-user.target

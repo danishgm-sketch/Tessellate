@@ -188,6 +188,8 @@ export const inferenceTickets = sqliteTable('inference_tickets', {
   result: text('result'),
   errorMessage: text('errorMessage'),
   deviceId: text('deviceId'),
+  attempts: integer('attempts').notNull().default(0),
+  leaseExpiresAt: text('leaseExpiresAt'),
   createdAt: text('createdAt').notNull(),
   startedAt: text('startedAt'),
   completedAt: text('completedAt'),

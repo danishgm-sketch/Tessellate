@@ -250,6 +250,17 @@ This file records major decisions so autonomous agents do not repeatedly reopen 
 **Cost impact:** ≈£5/month total (Workers Paid plus domain). Usage alarms are set below the £20 ceiling.  
 **Status:** LOCKED.
 
+### D-035a — Queue transport details (implementation, Phase 27)
+**Date:** 2026-10-14  
+**Decision:**
+- Daemons connect to a `QueueHub` Durable Object over a hibernating WebSocket. Idle connections are free; new tickets wake waiting daemons immediately. HTTP polling with idle back-off remains as a fallback transport.
+- Clients poll their ticket's status about once a second while waiting (bounded by a 60-second timeout, or 20 seconds when the host is offline). They do not hold a pushed WebSocket. This is simpler, works through any proxy, and costs little at expected volume.
+- Tickets live in D1. Claims are fair (owner round-robin, with guests guaranteed one slot in every three claims) and leased for 90 seconds. Expired leases are re-queued up to three attempts, then failed with an explicit message.
+- A cron runs every five minutes to recover leases and to purge prompt text 24 hours after completion.
+
+**Cost impact:** within D-035 (Workers Paid).  
+**Status:** LOCKED.
+
 ### D-036 — Licence
 **Date:** 2026-10-14  
 **Decision:** MIT everywhere: repository, platform and resources. A root `LICENSE` is required. Marketing copy must say "MIT".  

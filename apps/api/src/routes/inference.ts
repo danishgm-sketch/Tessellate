@@ -13,7 +13,7 @@ import {
   sha256Hex,
   timingSafeEqual,
 } from '../security.js';
-import { D1TicketStore, MemoryTicketStore, type Ticket, type TicketStore } from '../inference/store.js';
+import { D1TicketStore, MemoryTicketStore, claimNextFairly, type Ticket, type TicketStore } from '../inference/store.js';
 
 /** Queue limits (D-035). */
 export const QUEUE_LIMITS = {
@@ -44,6 +44,7 @@ const CompleteSchema = z
   .refine((v) => v.result !== undefined || v.error !== undefined, 'result or error is required');
 
 const DEV_DEVICE_ID = 'dev-device';
+let devDeviceRegistered = false;
 
 let memoryStore: MemoryTicketStore | undefined;
 const enqueueLimiter = new RateLimiter(QUEUE_LIMITS.enqueuePerMinute, 60_000);
@@ -52,6 +53,7 @@ let avgProcessingMs = 5_000;
 /** Test helper: resets in-memory queue state. Has no effect on D1-backed deployments. */
 export function resetInferenceStateForTests(): void {
   memoryStore = undefined;
+  devDeviceRegistered = false;
   enqueueLimiter.reset();
   avgProcessingMs = 5_000;
 }
@@ -75,6 +77,16 @@ async function resolveDevice(c: InferenceContext, store: TicketStore): Promise<s
   if (!token) return null;
 
   if (isNonProduction(c.env) && c.env?.DAEMON_DEV_TOKEN && timingSafeEqual(token, c.env.DAEMON_DEV_TOKEN)) {
+    // Register the development device once so liveness is tracked like a real device.
+    if (!devDeviceRegistered) {
+      const existing = (await store.listDevices()).some((d) => d.id === DEV_DEVICE_ID);
+      if (!existing) {
+        await store
+          .createDevice({ id: DEV_DEVICE_ID, name: 'Development daemon', tokenHash: `dev-only:${await sha256Hex(token)}`, createdAt: new Date().toISOString() })
+          .catch(() => undefined);
+      }
+      devDeviceRegistered = true;
+    }
     return DEV_DEVICE_ID;
   }
   const device = await store.findDeviceByTokenHash(await sha256Hex(token));
@@ -103,6 +115,18 @@ function parseResult(raw?: string): unknown {
 }
 
 export const inferenceRoute = new Hono<{ Bindings: Env }>();
+
+/** Wakes daemons waiting on the realtime hub (no-op when the hub binding is absent, e.g. tests). */
+function announceWork(c: InferenceContext) {
+  const hub = c.env?.QUEUE_HUB;
+  if (!hub) return;
+  const work = hub.get(hub.idFromName('global')).announceWork().catch(() => 0);
+  try {
+    c.executionCtx.waitUntil(work);
+  } catch {
+    void work;
+  }
+}
 
 // 1. POST /queue — submit a brief or command. Signed-in users, or guests that pass Turnstile.
 inferenceRoute.post('/queue', async (c) => {
@@ -152,6 +176,7 @@ inferenceRoute.post('/queue', async (c) => {
     createdAt: new Date().toISOString(),
   });
   const position = await store.positionOf(ticket);
+  announceWork(c);
 
   return c.json(
     {
@@ -212,7 +237,7 @@ inferenceRoute.get('/poll', async (c) => {
   await store.touchDevice(deviceId, now.toISOString());
   await store.purgeFinishedBefore(new Date(now.getTime() - QUEUE_LIMITS.retentionMs).toISOString());
 
-  const ticket = await store.claimNext(deviceId);
+  const ticket = await claimNextFairly(store, deviceId, now);
   if (!ticket) return c.json({ task: null });
 
   return c.json({
@@ -226,7 +251,50 @@ inferenceRoute.get('/poll', async (c) => {
   });
 });
 
-// 5. POST /complete — daemon submits a validated result or an error.
+/** Outcome of recording a daemon result (shared by the HTTP and WebSocket transports). */
+export interface CompletionOutcome {
+  status: 200 | 404 | 409 | 413 | 422;
+  body: Record<string, unknown>;
+}
+
+/** Validates a daemon result against the canonical schemas and records it (or the daemon's error). */
+export async function completeTicket(env: Env | undefined, deviceId: string, ticketId: string, result: unknown, error?: string): Promise<CompletionOutcome> {
+  const store = getStore(env);
+  const ticket = await store.get(ticketId);
+  if (!ticket) return { status: 404, body: { error: 'Not Found', message: 'Ticket not found.' } };
+
+  if (error !== undefined) {
+    const ok = await store.fail(ticketId, deviceId, error.slice(0, 2000));
+    return ok
+      ? { status: 200, body: { success: true, ticketId, status: 'failed' } }
+      : { status: 409, body: { error: 'Conflict', message: 'Ticket is not assigned to this device.' } };
+  }
+
+  if (byteLength(result) > QUEUE_LIMITS.maxResultBytes) {
+    return { status: 413, body: { error: 'Payload Too Large', message: `result exceeds ${QUEUE_LIMITS.maxResultBytes} bytes.` } };
+  }
+  if (ticket.kind === 'intent-command') {
+    const intent = IntentCommandSchema.safeParse(result);
+    if (!intent.success) {
+      await store.fail(ticketId, deviceId, 'Daemon returned an invalid IntentCommand.');
+      return { status: 422, body: { error: 'Validation Error', message: intent.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('; ') } };
+    }
+  } else if (typeof result !== 'object' || result === null) {
+    await store.fail(ticketId, deviceId, 'Daemon returned a non-object interpretation.');
+    return { status: 422, body: { error: 'Validation Error', message: 'interpret-brief results must be JSON objects.' } };
+  }
+
+  const ok = await store.complete(ticketId, deviceId, JSON.stringify(result));
+  if (!ok) return { status: 409, body: { error: 'Conflict', message: 'Ticket is not assigned to this device.' } };
+
+  if (ticket.startedAt) {
+    const elapsed = Date.now() - Date.parse(ticket.startedAt);
+    if (Number.isFinite(elapsed) && elapsed >= 0) avgProcessingMs = Math.round(avgProcessingMs * 0.8 + elapsed * 0.2);
+  }
+  return { status: 200, body: { success: true, ticketId, status: 'completed' } };
+}
+
+// 5. POST /complete — daemon submits a validated result or an error (HTTP fallback transport).
 inferenceRoute.post('/complete', async (c) => {
   const store = getStore(c.env);
   const deviceId = await resolveDevice(c, store);
@@ -236,37 +304,21 @@ inferenceRoute.post('/complete', async (c) => {
   if (!parsed.success) {
     return c.json({ error: 'Validation Error', message: parsed.error.issues.map((i) => i.message).join('; ') }, 400);
   }
-  const { ticketId, result, error } = parsed.data;
-  const ticket = await store.get(ticketId);
-  if (!ticket) return c.json({ error: 'Not Found', message: 'Ticket not found.' }, 404);
+  const outcome = await completeTicket(c.env, deviceId, parsed.data.ticketId, parsed.data.result, parsed.data.error);
+  return c.json(outcome.body, outcome.status);
+});
 
-  if (error !== undefined) {
-    const ok = await store.fail(ticketId, deviceId, error);
-    return ok ? c.json({ success: true, ticketId, status: 'failed' }) : c.json({ error: 'Conflict', message: 'Ticket is not assigned to this device.' }, 409);
-  }
-
-  if (byteLength(result) > QUEUE_LIMITS.maxResultBytes) {
-    return c.json({ error: 'Payload Too Large', message: `result exceeds ${QUEUE_LIMITS.maxResultBytes} bytes.` }, 413);
-  }
-  if (ticket.kind === 'intent-command') {
-    const intent = IntentCommandSchema.safeParse(result);
-    if (!intent.success) {
-      await store.fail(ticketId, deviceId, 'Daemon returned an invalid IntentCommand.');
-      return c.json({ error: 'Validation Error', message: intent.error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join('; ') }, 422);
-    }
-  } else if (typeof result !== 'object' || result === null) {
-    await store.fail(ticketId, deviceId, 'Daemon returned a non-object interpretation.');
-    return c.json({ error: 'Validation Error', message: 'interpret-brief results must be JSON objects.' }, 422);
-  }
-
-  const ok = await store.complete(ticketId, deviceId, JSON.stringify(result));
-  if (!ok) return c.json({ error: 'Conflict', message: 'Ticket is not assigned to this device.' }, 409);
-
-  if (ticket.startedAt) {
-    const elapsed = Date.now() - Date.parse(ticket.startedAt);
-    if (Number.isFinite(elapsed) && elapsed >= 0) avgProcessingMs = Math.round(avgProcessingMs * 0.8 + elapsed * 0.2);
-  }
-  return c.json({ success: true, ticketId, status: 'completed' });
+// 5b. GET /daemon/connect — daemon WebSocket (preferred transport, D-035), served by the QueueHub Durable Object.
+inferenceRoute.get('/daemon/connect', async (c) => {
+  const store = getStore(c.env);
+  const deviceId = await resolveDevice(c, store);
+  if (!deviceId) return c.json({ error: 'Unauthorized', message: 'Invalid daemon token.' }, 401);
+  if (c.req.header('Upgrade') !== 'websocket') return c.json({ error: 'Upgrade Required', message: 'Connect with a WebSocket.' }, 426);
+  const hub = c.env?.QUEUE_HUB;
+  if (!hub) return c.json({ error: 'Not Available', message: 'Realtime dispatch is not configured; use HTTP polling.' }, 503);
+  const forwarded = new Request(c.req.raw);
+  forwarded.headers.set('X-Tessellate-Device', deviceId);
+  return hub.get(hub.idFromName('global')).fetch(forwarded);
 });
 
 // 6. POST /heartbeat — daemon liveness.
@@ -283,9 +335,13 @@ inferenceRoute.post('/heartbeat', async (c) => {
 inferenceRoute.get('/health', async (c) => {
   const store = getStore(c.env);
   const pending = await store.countActive();
+  const latency = await store.latencyStats(100);
+  c.header('Cache-Control', 'no-store');
   return c.json({
     hostOnline: await hostOnline(store),
     pendingTasks: pending,
     estimatedWaitSeconds: Math.ceil((pending * avgProcessingMs) / 1000),
+    latency,
+    checkedAt: new Date().toISOString(),
   });
 });

@@ -647,12 +647,12 @@ E2E: sign-up → verify → sign-in → reset → delete; ban enforcement; cross
 
 # Phase 27 — Daemon and queue
 
-- [ ] Durable Object fair queue with WebSocket hibernation, caps, ETA and retention purge.
-- [ ] Daemon on an outbound WebSocket with token auth, reconnect, drain and service packaging.
-- [ ] A single queue client for the composer, Workbench, CLI and MCP; honest offline/ETA UX.
-- [ ] `/status` page.
+- [x] Durable Object fair queue with WebSocket hibernation, caps, ETA and retention purge.
+- [x] Daemon on an outbound WebSocket with token auth, reconnect, drain and service packaging.
+- [x] A single queue client for the composer, Workbench, CLI and MCP; honest offline/ETA UX.
+- [x] `/status` page.
 
-### Phase 27 gate
+### Phase 27 gate (passed 2026-10-14: fair-queue + queue-recovery tests on memory and real D1 SQL incl. 200 tickets, live WebSocket dispatch via wrangler dev (612 ms wake-up), tests/e2e/intelligence-offline.spec.ts)
 200-ticket fairness test; daemon restart loses no tickets; offline UX e2e.
 
 # Phase 28 — Bespoke model v2
