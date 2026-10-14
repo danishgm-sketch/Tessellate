@@ -17,16 +17,25 @@ export interface CatalogueArtifact {
 }
 
 /**
+ * Reproducible build timestamp: honours SOURCE_DATE_EPOCH (reproducible-builds.org),
+ * otherwise falls back to a fixed epoch so repeated builds never churn committed artefacts.
+ */
+export function resolveBuildTimestamp(): string {
+  const epoch = Number(process.env.SOURCE_DATE_EPOCH);
+  return new Date(Number.isFinite(epoch) && epoch > 0 ? epoch * 1000 : 0).toISOString();
+}
+
+/**
  * Builds a deterministic flattened catalogue artifact from validated manifests.
  */
-export function buildCatalogueArtifact(manifests: ResourceManifest[]): CatalogueArtifact {
+export function buildCatalogueArtifact(manifests: ResourceManifest[], generatedAt = resolveBuildTimestamp()): CatalogueArtifact {
   // Sort deterministically by slug
   const sorted = [...manifests].sort((a, b) => a.slug.localeCompare(b.slug));
 
   return {
     schemaVersion: CATALOG_SCHEMA_VERSION,
     catalogVersion: CATALOG_BUILD_VERSION,
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     count: sorted.length,
     resources: sorted,
   };

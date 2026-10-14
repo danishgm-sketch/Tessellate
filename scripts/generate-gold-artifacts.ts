@@ -7,6 +7,11 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const resourcesDir = path.join(rootDir, 'resources');
 
+/** Reads source with LF line endings so generated artefacts are identical on every OS. */
+function readLf(filePath: string): string {
+  return fs.readFileSync(filePath, 'utf-8').replace(/\r\n/g, '\n');
+}
+
 export interface DiscoveredGoldComponent {
   slug: string;
   id?: string;
@@ -43,7 +48,7 @@ export function discoverAllComponents(): DiscoveredGoldComponent[] {
         }
       }
 
-      const code = fs.readFileSync(compPath, 'utf-8');
+      const code = readLf(compPath);
       const match = code.match(/export\s+(?:function|const|class)\s+([A-Z][A-Za-z0-9_]*)/);
       if (!match || !match[1]) continue;
 
@@ -56,7 +61,7 @@ export function discoverAllComponents(): DiscoveredGoldComponent[] {
       let previewImportPathSite: string | undefined;
 
       if (fs.existsSync(previewPath)) {
-        const previewCode = fs.readFileSync(previewPath, 'utf-8');
+        const previewCode = readLf(previewPath);
         const pMatch = previewCode.match(/export\s+(?:function|const|class)\s+([A-Z][A-Za-z0-9_]*)/);
         if (pMatch && pMatch[1]) {
           previewName = pMatch[1];
