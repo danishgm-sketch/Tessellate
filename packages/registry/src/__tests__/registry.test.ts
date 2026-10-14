@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest';
+import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { loadJsonManifest } from '@tessellate/catalog';
 import { generateRegistryItem, generateRegistryIndex } from '../index.js';
@@ -21,7 +22,30 @@ describe('Registry Generation', () => {
     const indexFile = item.files.find((f) => f.path === 'index.tsx');
     expect(indexFile).toBeDefined();
     expect(indexFile?.content).toContain('export const Button');
-    expect(indexFile?.target).toBe('components/ui/index.tsx');
+    expect(indexFile?.target).toBe('components/tessellate/button/index.tsx');
+    expect(indexFile?.content).not.toContain('\r\n');
+    // Preview/demo files are never installed into consumer projects.
+    expect(item.files.some((f) => f.path.endsWith('preview.tsx'))).toBe(false);
+  });
+
+  it('never produces colliding install targets across the whole catalogue', () => {
+    const targets = new Map<string, string>();
+    for (const category of fs.readdirSync(rootResourcesDir)) {
+      const categoryDir = path.join(rootResourcesDir, category);
+      if (!fs.statSync(categoryDir).isDirectory()) continue;
+      for (const slug of fs.readdirSync(categoryDir)) {
+        const dir = path.join(categoryDir, slug);
+        const manifestPath = path.join(dir, 'manifest.json');
+        if (!fs.existsSync(manifestPath)) continue;
+        const item = generateRegistryItem(loadJsonManifest(manifestPath), dir);
+        for (const file of item.files) {
+          const owner = targets.get(file.target ?? '');
+          expect(owner, `${file.target} claimed by ${owner} and ${slug}`).toBeUndefined();
+          targets.set(file.target ?? '', slug);
+        }
+      }
+    }
+    expect(targets.size).toBeGreaterThan(0);
   });
 
   it('generates a registry index containing all items', () => {

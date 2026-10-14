@@ -71,7 +71,24 @@ describe('Phase 17 — @tessellate/cli Test Suite', () => {
 
     expect(result.success).toBe(true);
     expect(result.item?.name).toBe('button');
-    expect(fs.existsSync(path.join(tempDir, 'components/ui/index.tsx'))).toBe(true);
+    expect(fs.existsSync(path.join(tempDir, 'components/ui/button/index.tsx'))).toBe(true);
+
+    // 3. A second resource installs alongside the first instead of overwriting it.
+    const second = await runAdd('badge', { cwd: tempDir, registryDir });
+    expect(second.success).toBe(true);
+    expect(fs.existsSync(path.join(tempDir, 'components/ui/badge/index.tsx'))).toBe(true);
+    expect(fs.readFileSync(path.join(tempDir, 'components/ui/button/index.tsx'), 'utf-8')).toContain('Button');
+
+    // 4. Re-adding without --overwrite is reported as a failure and writes nothing.
+    const again = await runAdd('button', { cwd: tempDir, registryDir });
+    expect(again.success).toBe(false);
+    expect(again.error).toBe('File conflict');
+  });
+
+  it('tess add: distinguishes an unreachable registry from a missing resource', async () => {
+    const result = await runAdd('button', { cwd: tempDir, registry: 'http://127.0.0.1:9/r' });
+    expect(result.success).toBe(false);
+    expect(result.error).toBe('Registry unreachable');
   });
 
   it('tess validate: validates ResourceManifest and catches invalid JSON', async () => {

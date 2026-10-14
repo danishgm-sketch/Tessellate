@@ -53,8 +53,11 @@ program
   .command('add <slug>')
   .description('Download and install a resource from the Tessellate registry')
   .option('-o, --overwrite', 'Overwrite existing files', false)
+  .option('-r, --registry <url>', 'Registry base URL (overrides tessellate.json)')
+  .option('--dry-run', 'Show what would be installed without writing files', false)
   .action(async (slug, opts) => {
-    await runAdd(slug, opts);
+    const result = await runAdd(slug, opts);
+    if (!result.success) process.exitCode = 1;
   });
 
 program

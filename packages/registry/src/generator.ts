@@ -7,6 +7,23 @@ export const SHADCN_REGISTRY_ITEM_SCHEMA = 'https://ui.shadcn.com/schema/registr
 export const SHADCN_REGISTRY_INDEX_SCHEMA = 'https://ui.shadcn.com/schema/registry.json';
 
 /**
+ * Install path for a resource file inside a consumer project. Every resource gets its own
+ * namespaced folder so installing several resources can never overwrite one another.
+ */
+export function registryTarget(slug: string, filePath: string): string {
+  return `components/tessellate/${slug}/${filePath.replace(/\\/g, '/')}`;
+}
+
+function isPreviewFile(filePath: string): boolean {
+  return /(^|\/)preview\.[jt]sx?$/.test(filePath.replace(/\\/g, '/'));
+}
+
+/** Reads a text file with LF line endings so artefacts are identical on every OS. */
+function readNormalized(fullPath: string): string {
+  return fs.readFileSync(fullPath, 'utf-8').replace(/\r\n/g, '\n');
+}
+
+/**
  * Maps a Tessellate resourceType to shadcn registry item type.
  */
 export function mapResourceTypeToRegistryType(
@@ -37,16 +54,17 @@ export function generateRegistryItem(
   const files: RegistryFile[] = [];
 
   for (const fileSpec of manifest.files) {
-    // Only package component and utility files into the registry distribution
+    // Only package component and utility files into the registry distribution.
+    // Preview/demo files are catalogue-only and never installed into user projects.
     if (fileSpec.kind === 'component' || fileSpec.kind === 'utility' || fileSpec.kind === 'style') {
+      if (isPreviewFile(fileSpec.path)) continue;
       const fullPath = path.join(resourceDir, fileSpec.path);
       if (fs.existsSync(fullPath)) {
-        const content = fs.readFileSync(fullPath, 'utf-8');
         files.push({
           path: fileSpec.path,
-          content,
+          content: readNormalized(fullPath),
           type: regType,
-          target: `components/ui/${path.basename(fileSpec.path)}`,
+          target: registryTarget(manifest.slug, fileSpec.path),
         });
       }
     }
@@ -58,9 +76,9 @@ export function generateRegistryItem(
     if (fs.existsSync(indexPath)) {
       files.push({
         path: 'index.tsx',
-        content: fs.readFileSync(indexPath, 'utf-8'),
+        content: readNormalized(indexPath),
         type: regType,
-        target: `components/ui/${manifest.slug}.tsx`,
+        target: registryTarget(manifest.slug, 'index.tsx'),
       });
     }
   }
