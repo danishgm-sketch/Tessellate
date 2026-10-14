@@ -120,7 +120,9 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
   },
 
   selectNode: (nodeId: string | null) => {
-    set({ selectedNodeId: nodeId });
+    // Selecting a gap opens the Resource tab, where it can be filled.
+    const node = nodeId ? get().manifest.screens.map((s) => findNodeById(s.rootNode, nodeId)).find(Boolean) : null;
+    set(node?.props?.unresolvedRequiredRole ? { selectedNodeId: nodeId, activeRightTab: 'resource' } : { selectedNodeId: nodeId });
   },
 
   setHoveredNode: (nodeId: string | null) => {

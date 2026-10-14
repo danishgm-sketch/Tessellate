@@ -26,11 +26,16 @@ function _computeCanonicalSubtreeHash(node: ProjectNode): string {
   return crypto.createHash('sha256').update(JSON.stringify(canonicalize(node))).digest('hex');
 }
 
+/**
+ * No broken resources (missing components). Sections the library cannot fill yet are allowed, but only as
+ * explicit, labelled gap cards (Phase 29) — never as silent filler or a raw error.
+ */
 async function assertZeroUnresolvedResources(page: Page, containerLocator?: Locator) {
   const scope = containerLocator || page;
   await expect(scope.locator('[data-testid="missing-resource-recovery"]')).toHaveCount(0);
-  await expect(scope.locator('[data-testid="unresolved-required-role-diagnostic"]')).toHaveCount(0);
   await expect(scope.locator('text=Unresolved resource:')).toHaveCount(0);
+  const gaps = scope.locator('[data-testid="unresolved-required-role-diagnostic"]');
+  for (let i = 0; i < (await gaps.count()); i++) await expect(gaps.nth(i)).toHaveAttribute('aria-label', /^Gap: /);
 }
 
 test.describe('Flagship Acceptance & Merge Gate Verification', () => {

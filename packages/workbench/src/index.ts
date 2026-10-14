@@ -4,6 +4,7 @@ export const WORKBENCH_VERSION = '0.1.0';
 export * from './types.js';
 export * from './store/workbench-store.js';
 export * from './store/sample-project.js';
+export * from './store/library-store.js';
 export {
   findNodeById,
   findParentNode,

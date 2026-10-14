@@ -60,7 +60,14 @@ export function ThreeDirectionsDemo() {
           Choose a direction. Or blend them.
         </h2>
         <p className="text-base sm:text-lg text-[#62666F] max-w-2xl font-normal">
-          Tessellate never traps you into a single monolithic style. Every brief generates three distinct architectural interpretations with full compatibility.
+          Every brief is composed three ways: a conservative fit, an expressive fit and a structural alternative.
+        </p>
+        <p className="text-sm text-[#62666F]">
+          <span className="font-semibold text-[#111217]">Illustrative example</span> of three directions for a research product.{' '}
+          <a href="/compose" className="font-semibold text-[#2547E8] underline-offset-2 hover:underline">
+            Compose your own product
+          </a>{' '}
+          to see real ones.
         </p>
       </div>
 

@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { getAllGoldenBriefs } from '@tessellate/composer';
 import { composeFromInterpretation, type ComposedDirectionOutput, type FullCompositionResult } from '@tessellate/compatibility';
 import { newProjectId, requestInterpretation, saveLocalProject, type QueueProgress } from '@tessellate/workbench';
-import { ManifestRenderer } from '@tessellate/renderer';
+import { DEFAULT_RESOURCE_RENDERERS, ManifestRenderer } from '@tessellate/renderer';
 import {
   SUGGESTED_ENTITY_CONFIDENCE,
   type BriefInterpretation,
@@ -93,6 +93,7 @@ export function ComposeView() {
   const [interpretation, setInterpretation] = useState<BriefInterpretation | null>(null);
 
   // Review edits
+  const [productName, setProductName] = useState('');
   const [archetype, setArchetype] = useState('');
   const [audience, setAudience] = useState('');
   const [feel, setFeel] = useState('');
@@ -151,7 +152,15 @@ export function ComposeView() {
     if (!reviewed || !catalog) return;
     try {
       setComposition(
-        composeFromInterpretation(reviewed, { catalogResources: catalog, projectIdBase: newProjectId(), feel, visualAmbition, structuralCreativity }),
+        composeFromInterpretation(reviewed, {
+          catalogResources: catalog,
+          projectIdBase: newProjectId(),
+          productName,
+          isRenderable: (slug) => slug in DEFAULT_RESOURCE_RENDERERS,
+          feel,
+          visualAmbition,
+          structuralCreativity,
+        }),
       );
       setStage('directions');
     } catch (err) {
@@ -248,6 +257,12 @@ export function ComposeView() {
               Check this before composing. Items marked <span className="font-medium text-[#A66A15]">suggested</span> were not in your
               brief; remove anything that does not belong. {interpretation.modelVersion ? `Model ${interpretation.modelVersion}.` : ''}
             </p>
+          </div>
+
+          <div className="space-y-1.5">
+            <label htmlFor="rv-name" className="block text-sm font-semibold">Product name</label>
+            <input id="rv-name" value={productName} onChange={(e) => setProductName(e.target.value)} placeholder="e.g. Northside Physio" maxLength={80} className={`${fieldClass} max-w-md`} />
+            <p className="text-xs text-[#62666F]">Used in navigation, headings and the exported code. You can change it later.</p>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -451,6 +466,7 @@ function DirectionCard({
   onOpen: (manifest: ProjectManifest) => void;
 }) {
   const { direction, manifest } = output;
+  const gaps = output.diagnostics?.length ?? 0;
   const primaryScreen = manifest.screens[0];
   const kind = direction.type === 'conservative' ? 'Conservative fit' : direction.type === 'expressive' ? 'Expressive fit' : 'Structural alternative';
 
@@ -467,11 +483,18 @@ function DirectionCard({
         <div>
           <h3 className="text-lg font-bold">{direction.name}</h3>
           <p className="mt-1 text-xs text-[#62666F]">{direction.rationale}</p>
+          {gaps > 0 && (
+            <p data-testid={`direction-gaps-${number}`} className="mt-2 text-xs text-[#8A5A10]">
+              {gaps} section{gaps === 1 ? '' : 's'} have no library resource yet and are marked as gaps to fill in the Workbench.
+            </p>
+          )}
         </div>
         <div className="rounded-xl border border-[#ECE9E2] bg-[#FAF9F6] p-3">
           <div className="flex items-center justify-between text-[10px] font-bold uppercase text-[#62666F]">
             <span>Preview: {primaryScreen?.name ?? 'Overview'}</span>
-            <span>{manifest.screens.length} screens</span>
+            <span>
+              {manifest.screens.length} screens{gaps > 0 ? ` · ${gaps} gap${gaps === 1 ? '' : 's'}` : ''}
+            </span>
           </div>
           <div data-testid={`direction-preview-${number}`} className="relative mt-2 h-48 w-full overflow-hidden rounded-lg border border-[#D9D6CF] bg-white shadow-inner" aria-hidden>
             <div className="pointer-events-none select-none" style={{ width: '1000px', minHeight: '700px', transform: 'scale(0.28)', transformOrigin: '0 0' }}>

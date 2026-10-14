@@ -10,6 +10,7 @@ import { PreviewModal } from './preview/PreviewModal.js';
 import { CompareModal } from './compare/CompareModal.js';
 import { BlendModal } from './blend/BlendModal.js';
 import { ReplaceDrawer } from './replace/ReplaceDrawer.js';
+import { useLibraryStore } from '../store/library-store.js';
 import { AuditPanel } from './audit/AuditPanel.js';
 import { listLocalCheckpoints, loadLocalProject, newProjectId, saveLocalProject } from '../persistence/storage.js';
 import { safelyLoadProjectRecord, type CorruptedProjectRecovery } from '../persistence/recovery.js';
@@ -44,6 +45,11 @@ export function WorkbenchShell() {
 
   // Route: /workbench → projects dashboard; ?project=<id> or /workbench/<id> → editor;
   // ?showcase=<id> → a saved copy of the showcase (so edits persist and never touch the original).
+  const loadLibrary = useLibraryStore((state) => state.load);
+  useEffect(() => {
+    void loadLibrary();
+  }, [loadLibrary]);
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
     window.__tessellate_workbench_store__ = useWorkbenchStore;

@@ -670,14 +670,24 @@ Archetype top-1 ≥ 85%, entity span F1 ≥ 0.80, required-screen recall ≥ 0.8
 
 # Phase 29 — Composition correctness
 
-- [ ] Role-scoped candidate selection; no category bypass or whole-catalogue fallback; explicit gap cards.
-- [ ] Per-screen-class grammars; no duplicate resource within a screen.
-- [ ] Real capability checks.
-- [ ] Content and brand injection into node props and slots; no Tessellate copy in client output.
-- [ ] Real homepage demo; honest NL commands with diff preview.
+- [x] Role-scoped candidate selection; no category bypass or whole-catalogue fallback; explicit gap cards. *Canonical role taxonomy (`packages/composer/src/role-taxonomy.ts`); unfilled roles become labelled gap cards that the Workbench can fill against the real catalogue.*
+- [x] Per-screen-class grammars; no duplicate resource within a screen. *21 screen-class grammars (5 new for the brief model's screen types); the direction grammar applies to app screens only.*
+- [x] Real capability checks. *Component source present, not deprecated, and renderable by the runtime registry.*
+- [ ] Content and brand injection into node props and slots; no Tessellate copy in client output. *Composer side done: product name, navigation, headings and entity sample rows go into node props, and the manifest brand is the client's. Open: the exporter only emits `variant`, and resources hard-code their own copy (some say "Tessellate"). This needs the Phase 30 props contract.*
+- [x] Real homepage demo; honest NL commands with diff preview. *The homepage demo is labelled as an illustrative example and links to /compose. The command model is rebuilt (D-034b) with an out-of-scope class, and every command is previewed with Apply/Discard. The add/move/remove-section intents are deferred to the next command-model version.*
 
 ### Phase 29 gate
 Six golden briefs: every required role resolved or shown as a gap; auth screens contain a form; zero "Tessellate" strings in exports.
+
+**Status (2026-10-15): partially met.**
+- **Met** (`composition-correctness.test.ts`, `compose-review.spec.ts`, `workbench-commands.spec.ts`, flagship e2e with standalone builds):
+  - Every placed resource genuinely fulfils its role, or the section is an explicit gap.
+  - No resource repeats within a screen.
+  - The manifest carries no Tessellate name.
+  - Exports build.
+- **Not met:**
+  - The auth screen shows a "Sign-in form" gap, because the library has no sign-in form yet (Phase 30).
+  - Exported components still contain resource-authored "Tessellate" copy (Phase 30 props contract).
 
 # Phase 30 — Resource library rebuild
 

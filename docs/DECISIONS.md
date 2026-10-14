@@ -240,6 +240,8 @@ This file records major decisions so autonomous agents do not repeatedly reopen 
 
 ### D-034a — Brief model v2 architecture and measured accuracy (Phase 28)
 
+*(Weights now ship as `v2.1.0`, which contains the unchanged v2.0.0 brief model plus the D-034b command model.)*
+
 **Status:** Accepted, with an open accuracy gap.
 
 **Architecture.** Pure Python standard library, so it runs on the owner's machine with no GPU:
@@ -263,6 +265,31 @@ This is a feature-based structured model in the Tree-GNN family's spirit (D-034)
 **Next.** Grow the ontology towards about 500 entity types and add synonym coverage. Then write a third fresh holdout before claiming the gate. `holdout2.jsonl` must not be used for tuning.
 
 **Shared client.** The queue protocol now lives in `packages/intelligence`, the single intelligence client used by the site, Workbench, CLI and MCP. Workbench re-exports it.
+
+### D-034b — Workbench command model rebuilt; composition is role-exact and fail-closed (Phase 29)
+
+**Status:** Accepted.
+
+**Command model.** The previous Tree-GNN intent network returned about 0.20 confidence for every input, including "lock this" and "surprise me". So every command was refused, and the Workbench's natural-language editing never worked. It has been replaced, in weights `v2.1.0`:
+- An averaged-perceptron action classifier trained on synthetic paraphrases. It has an explicit out-of-scope class and a calibrated confidence floor of 0.6.
+- A Design DNA direction lexicon with intensity modifiers and negation.
+- Target resolution from the selected section or from role words.
+
+On a hand-written held-out set of 50 commands (`eval/commands.jsonl`, never tuned against) it scores:
+
+| Metric | Score |
+|---|---|
+| Action accuracy | 0.907 |
+| Out-of-scope rejection | 0.857 |
+| DNA direction accuracy | 1.0 |
+
+Every command is previewed in plain language and applies only on "Apply". New structural intents (add, move or remove section) are deferred to the next command-model version.
+
+**Composition.**
+- Roles resolve only through the canonical role taxonomy.
+- Hard constraints stay fail-closed. In practice, a product whose reviewed accessibility floor is AAA gets gap cards for most sections today: every library resource declares only AA, and none has a verified accessibility audit.
+- Gap cards say how many resources were held back and why, and point to the Review step or the Constraints tab.
+- This is deliberate (D-040). Raising resources to verified AAA is Phase 30 work, not a reason to relax the constraint.
 
 ### D-035 — Capacity and queue infrastructure
 **Date:** 2026-10-14  

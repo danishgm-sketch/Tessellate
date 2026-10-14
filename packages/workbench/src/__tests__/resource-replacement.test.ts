@@ -5,9 +5,12 @@ import {
   getReplaceCandidates,
   getAlternativeCandidates,
   createReplaceOperation,
-  SAMPLE_RESOURCES,
 } from '../mutations/replace.js';
 import { applyOperation } from '../history/history-manager.js';
+import { SAMPLE_RESOURCES } from './fixtures/sample-resources.js';
+import { setActiveCatalog } from '../mutations/replace.js';
+
+setActiveCatalog(SAMPLE_RESOURCES);
 
 describe('Resource Replacement Fidelity', () => {
   const testManifest: ProjectManifest = {

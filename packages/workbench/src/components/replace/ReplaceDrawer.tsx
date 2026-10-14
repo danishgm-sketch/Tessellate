@@ -3,10 +3,14 @@ import { X, RefreshCw, Check, Sparkles, Zap, Award } from 'lucide-react';
 import { isGoldResource } from '@tessellate/catalog/gold';
 import type { ResourceManifest } from '@tessellate/schemas';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
+import { roleLabel } from '@tessellate/composer';
 import {
   getReplaceCandidates,
   getAlternativeCandidates,
+  countRoleMatchesBelowConstraints,
 } from '../../mutations/replace.js';
+import { useLibraryStore } from '../../store/library-store.js';
+import { findNodeById } from '../../utils/tree-helpers.js';
 
 function ResourceVisualPreview({ resource }: { resource: ResourceManifest }) {
   const isGold = isGoldResource(resource.slug);
@@ -64,24 +68,30 @@ export const ReplaceDrawer: React.FC = () => {
   const replaceNodeWithResource = useWorkbenchStore((state) => state.replaceNodeWithResource);
 
   const [activeTab, setActiveTab] = useState<'compatible' | 'alternatives'>('compatible');
+  const libraryStatus = useLibraryStore((state) => state.status);
+  const libraryError = useLibraryStore((state) => state.error);
 
   if (!isReplaceDrawerOpen || !selectedNodeId) return null;
 
-  const replaceCandidates = getReplaceCandidates(manifest, selectedNodeId);
-  const alternativeCandidates = getAlternativeCandidates(manifest, selectedNodeId);
+  const replaceCandidates = libraryStatus === 'ready' ? getReplaceCandidates(manifest, selectedNodeId) : [];
+  const alternativeCandidates = libraryStatus === 'ready' ? getAlternativeCandidates(manifest, selectedNodeId) : [];
+  const heldBack = libraryStatus === 'ready' ? countRoleMatchesBelowConstraints(manifest, selectedNodeId) : 0;
+  const node = manifest.screens.map((s) => findNodeById(s.rootNode, selectedNodeId)).find(Boolean);
+  const isGap = Boolean(node?.props?.unresolvedRequiredRole);
+  const title = isGap && node ? `Fill gap: ${roleLabel(node.semanticRole)}` : 'Replace Resource';
 
   return (
     <aside
       role="dialog"
       aria-modal="true"
-      aria-label="Replace Resource"
+      aria-label={title}
       className="fixed inset-y-0 right-0 z-50 w-96 border-l border-zinc-800 bg-zinc-900 shadow-2xl flex flex-col text-zinc-100"
     >
       {/* Header */}
       <header className="flex h-14 items-center justify-between border-b border-zinc-800 px-5 bg-zinc-900/90">
         <div className="flex items-center gap-2">
           <RefreshCw className="h-4 w-4 text-indigo-400" />
-          <h2 className="text-sm font-semibold">Replace Resource</h2>
+          <h2 className="text-sm font-semibold">{title}</h2>
         </div>
         <button
           onClick={closeReplaceDrawer}
@@ -122,9 +132,19 @@ export const ReplaceDrawer: React.FC = () => {
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {activeTab === 'compatible' && (
           <>
-            {replaceCandidates.length === 0 ? (
-              <div className="p-8 text-center text-xs text-zinc-500">
-                No compatible candidate resources found matching the current semantic role and constraints.
+            {libraryStatus === 'loading' || libraryStatus === 'idle' ? (
+              <div role="status" className="p-8 text-center text-xs text-zinc-400">Loading the resource library…</div>
+            ) : libraryStatus === 'error' ? (
+              <div role="alert" className="p-8 text-center text-xs text-red-300">{libraryError}</div>
+            ) : replaceCandidates.length === 0 ? (
+              <div data-testid="replace-empty" className="p-8 text-center text-xs text-zinc-400">
+                No library resource fits this section within the project's constraints.
+                {heldBack > 0 && (
+                  <span className="mt-2 block text-amber-300">
+                    {heldBack} resource{heldBack === 1 ? '' : 's'} would fit but {heldBack === 1 ? 'does' : 'do'} not meet the project's
+                    accessibility or performance requirements. Change them in the Constraints tab to use {heldBack === 1 ? 'it' : 'them'}.
+                  </span>
+                )}
               </div>
             ) : (
               replaceCandidates.map((cand) => (
@@ -170,7 +190,7 @@ export const ReplaceDrawer: React.FC = () => {
                     className="flex w-full items-center justify-center gap-1.5 rounded-md bg-zinc-800 py-1.5 text-xs font-medium text-zinc-200 hover:bg-indigo-600 hover:text-white transition-colors"
                   >
                     <Check className="h-3.5 w-3.5" />
-                    Apply Replacement
+                    {isGap ? 'Use this resource' : 'Apply Replacement'}
                   </button>
                 </div>
               ))

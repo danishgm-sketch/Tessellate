@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { findNodeById } from '../utils/tree-helpers.js';
 import { executeQueuedCommand, type QueueProgress } from '../ai/queue-client.js';
+import { describeMutation } from '../ai/describe-mutation.js';
+import type { ProjectMutation } from '@tessellate/schemas';
 import { Terminal, CornerDownLeft, Cpu } from 'lucide-react';
 
 export function CommandBar() {
@@ -17,6 +19,7 @@ export function CommandBar() {
   const [feedback, setFeedback] = useState<{ tone: 'success' | 'error'; text: string } | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [queueStatus, setQueueStatus] = useState<QueueProgress | null>(null);
+  const [pending, setPending] = useState<{ mutations: ProjectMutation[]; explanation: string } | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const activeScreen = manifest.screens.find((s) => s.id === activeScreenId);
@@ -70,14 +73,13 @@ export function CommandBar() {
         return;
       }
 
-      const result = await executeQueuedCommand(manifest, activeScreenId, cmd, setQueueStatus);
+      const result = await executeQueuedCommand(manifest, activeScreenId, cmd, setQueueStatus, { selectedNodeId });
 
-      if (result.success) {
-        for (const mut of result.mutations) {
-          executeMutation(mut);
-        }
-        setFeedback({ tone: 'success', text: result.explanation });
-        setInputVal('');
+      if (result.success && result.mutations.length > 0) {
+        // Nothing is applied until the user has seen the planned changes (Phase 29).
+        setPending({ mutations: result.mutations, explanation: result.explanation });
+      } else if (result.success) {
+        setFeedback({ tone: 'error', text: 'Tessellate understood the request but it would not change anything. Nothing was changed.' });
       } else {
         // Keep the prompt so the user can rephrase; nothing was applied.
         setFeedback({ tone: 'error', text: result.error || 'The command could not be completed. Nothing was changed.' });
@@ -90,7 +92,42 @@ export function CommandBar() {
     }
   };
 
+  const applyPending = () => {
+    if (!pending) return;
+    for (const mut of pending.mutations) executeMutation(mut);
+    setFeedback({ tone: 'success', text: `Applied: ${pending.explanation}` });
+    setPending(null);
+    setInputVal('');
+  };
+  const discardPending = () => {
+    setPending(null);
+    setFeedback({ tone: 'success', text: 'Discarded. Nothing was changed.' });
+  };
+
   return (
+    <>
+    {pending && (
+      <section
+        data-testid="command-preview"
+        aria-label="Planned changes"
+        className="shrink-0 border-t border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#171B21] px-4 py-3 text-xs text-[#111217] dark:text-[#F5F7FA]"
+      >
+        <p className="font-semibold">Review before applying: {pending.explanation}</p>
+        <ul className="mt-1.5 list-disc space-y-0.5 pl-5 text-[#4A4E57] dark:text-[#C9CED6]">
+          {pending.mutations.map((m, i) => (
+            <li key={m.id ?? i}>{describeMutation(m, manifest)}</li>
+          ))}
+        </ul>
+        <div className="mt-2 flex gap-2">
+          <button type="button" data-testid="command-apply" onClick={applyPending} className="rounded-lg bg-[#2547E8] px-3 py-1.5 font-semibold text-white hover:bg-[#1E3CCD] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2547E8]">
+            Apply {pending.mutations.length} change{pending.mutations.length === 1 ? '' : 's'}
+          </button>
+          <button type="button" data-testid="command-discard" onClick={discardPending} className="rounded-lg border border-[#C7C3BA] bg-white px-3 py-1.5 font-medium text-[#111217] hover:bg-[#ECE9E2] dark:border-[#3A3F48] dark:bg-[#0B0D10] dark:text-[#F5F7FA]">
+            Discard
+          </button>
+        </div>
+      </section>
+    )}
     <div
       data-testid="command-bar"
       className="h-16 shrink-0 border-t border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] px-4 flex items-center justify-between select-none z-20"
@@ -166,5 +203,6 @@ export function CommandBar() {
         )}
       </div>
     </div>
+    </>
   );
 }
