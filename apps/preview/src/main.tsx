@@ -10,6 +10,8 @@ import {
 } from '@tessellate/catalog/protocol';
 import { ButtonPreview } from '../../../resources/primitives/button/preview.js';
 import { GENERATED_PREVIEW_COMPONENTS } from './generated-previews.js';
+import { normalizeDesignTokens } from '../../../packages/renderer/src/tokens/normalizer.js';
+import { tokensToCssVariables } from '../../../packages/renderer/src/tokens/contract.js';
 import './style.css';
 
 // Universal preview component registry across all 324 catalog resources
@@ -55,6 +57,7 @@ export function PreviewApp() {
   const [device, setDevice] = useState<PreviewDevice>('desktop');
   const [props, setProps] = useState<Record<string, unknown>>({});
   const [reducedMotion, setReducedMotion] = useState<boolean>(false);
+  const [floor, setFloor] = useState<'A' | 'AA' | 'AAA'>('AA');
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Initialize from URL search parameters if provided
@@ -70,6 +73,8 @@ export function PreviewApp() {
     if (dev === 'desktop' || dev === 'tablet' || dev === 'mobile') setDevice(dev);
     const rm = params.get('reducedMotion');
     if (rm === 'true') setReducedMotion(true);
+    const fl = params.get('floor');
+    if (fl === 'A' || fl === 'AA' || fl === 'AAA') setFloor(fl);
   }, []);
 
   // Update theme class on root element
@@ -165,10 +170,16 @@ export function PreviewApp() {
     mobile: 'max-w-[360px] mx-auto shadow-md border-x border-neutral-200 dark:border-neutral-800',
   };
 
+  // Design tokens for the chosen theme, so token-only (contract v2) resources render light and dark (Phase 30).
+  const tokenStyle = tokensToCssVariables(
+    normalizeDesignTokens(undefined, { activeMode: theme === 'dark' ? 'dark' : 'light', accessibilityFloor: floor, reducedMotion }),
+  ) as React.CSSProperties;
+
   return (
     <div
       ref={containerRef}
-      className={`min-h-screen w-full transition-colors ${
+      style={tokenStyle}
+      className={`min-h-screen w-full bg-canvas text-ink transition-colors ${
         reducedMotion ? 'motion-reduce:transition-none' : ''
       }`}
     >

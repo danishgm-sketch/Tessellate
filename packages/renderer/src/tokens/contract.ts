@@ -1,3 +1,5 @@
+import { readableOn } from './resource-theme.js';
+
 export interface SemanticColorTokens {
   canvas: string;
   canvasStrong: string;
@@ -94,6 +96,7 @@ export function tokensToCssVariables(tokens: SemanticTokenContract): Record<stri
     '--tess-accent': tokens.colors.accent,
     '--tess-accent-hover': tokens.colors.accentHover,
     '--tess-accent-soft': tokens.colors.accentSoft,
+    '--tess-on-accent': readableOn(tokens.colors.accent),
     '--tess-signal-lime': tokens.colors.signalLime,
     '--tess-signal-danger': tokens.colors.signalDanger,
     '--tess-signal-success': tokens.colors.signalSuccess,

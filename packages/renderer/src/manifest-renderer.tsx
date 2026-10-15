@@ -29,6 +29,7 @@ export function ManifestRenderer({
   const normalizedTokens = normalizeDesignTokens(effectiveDna, {
     reducedMotion: context?.reducedMotion,
     tokenOverrides: context?.tokenOverrides,
+    accessibilityFloor: manifest.constraints?.accessibilityFloor,
   });
 
   const cssVariables = tokensToCssVariables(normalizedTokens) as React.CSSProperties;

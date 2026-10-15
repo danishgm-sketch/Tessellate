@@ -4,6 +4,8 @@
 /* Paths are relative to this file (apps/site/src/styles); the monorepo packages live four levels up. */
 @source "../../../../packages";
 @source "../../../../resources";
+/* Semantic resource utilities (bg-surface, text-ink, rounded-ui-md …), Phase 30. */
+@import "../../../../packages/renderer/src/tokens/resource-theme.css";
 
 :root {
   --tess-canvas: #F4F2ED;

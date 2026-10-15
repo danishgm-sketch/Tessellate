@@ -1,6 +1,7 @@
 export * from './types.js';
 export * from './tokens/contract.js';
 export * from './tokens/normalizer.js';
+export * from './tokens/resource-theme.js';
 export * from './default-registry.js';
 export * from './generated-gold-registry.js';
 export * from './node-renderer.js';

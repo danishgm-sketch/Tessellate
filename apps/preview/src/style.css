@@ -1,2 +1,6 @@
 @import "tailwindcss";
+/* Tailwind only scans this app by default; resource previews live in the monorepo resources folder. */
+@source "../../../resources";
+@source "../../../packages/ui/src";
+@import "../../../packages/renderer/src/tokens/resource-theme.css";
 @import "@tessellate/ui/tokens.css";

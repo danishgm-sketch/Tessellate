@@ -23,6 +23,8 @@ export interface NormalizerOptions {
   reducedMotion?: boolean;
   activeMode?: 'light' | 'dark';
   tokenOverrides?: Record<string, string | number>;
+  /** Project accessibility floor: text, accent and signal colours are adjusted to 4.5:1 (AA) or 7:1 (AAA). */
+  accessibilityFloor?: 'A' | 'AA' | 'AAA';
 }
 
 /**
@@ -72,6 +74,13 @@ export function normalizeDesignTokens(
     signalSuccess: paletteTokens.signalSuccess,
     signalWarning: paletteTokens.signalWarning,
   };
+
+  // 1b. Contrast floor (Phase 30): every text-bearing colour must stay readable on both surfaces.
+  const minRatio = options?.accessibilityFloor === 'AAA' ? 7 : 4.5;
+  for (const key of ['textPrimary', 'textSecondary', 'accent', 'signalDanger', 'signalSuccess', 'signalWarning'] as const) {
+    colors[key] = ensureContrast(colors[key], [colors.surface, colors.surfaceRaised, colors.canvas], minRatio, mode);
+  }
+  colors.accentHover = ensureContrast(colors.accentHover, [colors.surface, colors.surfaceRaised], minRatio, mode);
 
   // 2. Typography Mapping
   const typographyId = options?.typographyId ?? dna.typographyPersonality ?? 'geist-system';
@@ -217,4 +226,35 @@ export function normalizeDesignTokens(
     motion,
     focus,
   };
+}
+
+function luminance(hex: string): number | null {
+  const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
+  if (!m) return null;
+  const n = parseInt(m[1]!, 16);
+  const ch = (c: number) => {
+    const v = c / 255;
+    return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * ch((n >> 16) & 255) + 0.7152 * ch((n >> 8) & 255) + 0.0722 * ch(n & 255);
+}
+
+function contrast(a: number, b: number): number {
+  return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+}
+
+/** Darkens (light mode) or lightens (dark mode) a colour until it reaches the ratio against every background. */
+export function ensureContrast(fg: string, backgrounds: string[], ratio: number, mode: 'light' | 'dark'): string {
+  const bgLums = backgrounds.map(luminance).filter((l): l is number => l !== null);
+  if (luminance(fg) === null || bgLums.length === 0) return fg;
+  const m = /^#?([0-9a-f]{6})$/i.exec(fg.trim())!;
+  let [r, g, b] = [0, 8, 16].map((sh) => (parseInt(m[1]!, 16) >> (16 - sh)) & 255) as [number, number, number];
+  const target = mode === 'dark' ? 255 : 0;
+  for (let step = 0; step < 40; step++) {
+    const hex = `#${[r, g, b].map((c) => Math.round(c).toString(16).padStart(2, '0')).join('').toUpperCase()}`;
+    const lum = luminance(hex)!;
+    if (bgLums.every((bg) => contrast(lum, bg) >= ratio)) return step === 0 ? fg : hex;
+    [r, g, b] = [r, g, b].map((c) => c + (target - c) * 0.08) as [number, number, number];
+  }
+  return mode === 'dark' ? '#FFFFFF' : '#000000';
 }
