@@ -171,7 +171,7 @@ export function writeAIResource(def: AIDef, repoRoot: string) {
       defaultStrategy: 'compress',
     },
     accessibility: {
-      levelTarget: 'AA',
+      levelTarget: 'AAA',
       keyboardVerified: true,
       screenReaderSemantics: true,
       reducedMotionVerified: true,

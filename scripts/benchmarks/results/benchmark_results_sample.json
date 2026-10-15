@@ -1,0 +1,1702 @@
+[
+  {
+    "scenarioId": "client-scen-0001",
+    "index": 1,
+    "domain": "Fintech & Quantitative Trading",
+    "title": "Aethelgard Quant Systems — High-frequency algorithmic equity execut",
+    "passed": true,
+    "score": 100,
+    "durationMs": 154,
+    "detectedArchetype": "fintech",
+    "screenCount": 9,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 154ms)"
+  },
+  {
+    "scenarioId": "client-scen-0002",
+    "index": 2,
+    "domain": "Healthcare & Clinical Operations",
+    "title": "Aegis Health Systems — Hospital intensive care unit bed telemet",
+    "passed": true,
+    "score": 100,
+    "durationMs": 111,
+    "detectedArchetype": "crm",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 111ms)"
+  },
+  {
+    "scenarioId": "client-scen-0003",
+    "index": 3,
+    "domain": "Developer Tooling & Cloud Infrastructure",
+    "title": "Vortex Mesh Systems — Distributed microservice service mesh ob",
+    "passed": true,
+    "score": 100,
+    "durationMs": 94,
+    "detectedArchetype": "analytics",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 94ms)"
+  },
+  {
+    "scenarioId": "client-scen-0004",
+    "index": 4,
+    "domain": "AI/ML Operations & Generative Workspaces",
+    "title": "CognitiveForge Studio — Prompt engineering workspace with automa",
+    "passed": true,
+    "score": 100,
+    "durationMs": 90,
+    "detectedArchetype": "ai",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 90ms)"
+  },
+  {
+    "scenarioId": "client-scen-0005",
+    "index": 5,
+    "domain": "Biotech & Computational Life Sciences",
+    "title": "HelixCraft Genomics — CRISPR Cas9 off-target endonuclease clea",
+    "passed": true,
+    "score": 100,
+    "durationMs": 91,
+    "detectedArchetype": "analytics",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 91ms)"
+  },
+  {
+    "scenarioId": "client-scen-0006",
+    "index": 6,
+    "domain": "Cybersecurity & SOC Operations",
+    "title": "SentinelGrid Threat Intel — Automated Security Operations Center inc",
+    "passed": true,
+    "score": 100,
+    "durationMs": 118,
+    "detectedArchetype": "developer-tools",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 118ms)"
+  },
+  {
+    "scenarioId": "client-scen-0007",
+    "index": 7,
+    "domain": "E-Commerce & Omnichannel Retail",
+    "title": "Aura Luxury Horology — Authenticated luxury timepiece marketpla",
+    "passed": true,
+    "score": 100,
+    "durationMs": 85,
+    "detectedArchetype": "ecommerce",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 85ms)"
+  },
+  {
+    "scenarioId": "client-scen-0008",
+    "index": 8,
+    "domain": "Two-Sided Marketplaces & Freelance Exchanges",
+    "title": "MedLocum Surgeon Network — Credentialed specialist surgical locum p",
+    "passed": true,
+    "score": 100,
+    "durationMs": 76,
+    "detectedArchetype": "saas",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 76ms)"
+  },
+  {
+    "scenarioId": "client-scen-0009",
+    "index": 9,
+    "domain": "GovTech, Civic & Municipal Services",
+    "title": "CivicFlow Municipal Permits — Urban zoning building permits, structura",
+    "passed": true,
+    "score": 100,
+    "durationMs": 77,
+    "detectedArchetype": "erp-operations",
+    "screenCount": 6,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 77ms)"
+  },
+  {
+    "scenarioId": "client-scen-0010",
+    "index": 10,
+    "domain": "Logistics, Freight & Supply Chain",
+    "title": "TransOcean Cold Chain — Pharmaceutical temperature-controlled sh",
+    "passed": true,
+    "score": 100,
+    "durationMs": 86,
+    "detectedArchetype": "erp-operations",
+    "screenCount": 6,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 86ms)"
+  },
+  {
+    "scenarioId": "client-scen-0011",
+    "index": 11,
+    "domain": "Aerospace & Mission Control",
+    "title": "OrbitalTelemetry Systems — LEO satellite constellation orbit teleme",
+    "passed": true,
+    "score": 100,
+    "durationMs": 116,
+    "detectedArchetype": "developer-tools",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 116ms)"
+  },
+  {
+    "scenarioId": "client-scen-0012",
+    "index": 12,
+    "domain": "CleanTech, Energy Grid & Battery Storage",
+    "title": "GridVolt Battery Storage — Grid-scale lithium iron phosphate batter",
+    "passed": true,
+    "score": 100,
+    "durationMs": 78,
+    "detectedArchetype": "erp-operations",
+    "screenCount": 6,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 78ms)"
+  },
+  {
+    "scenarioId": "client-scen-0013",
+    "index": 13,
+    "domain": "EduTech & Adaptive Courseware",
+    "title": "Synapse Adaptive Academy — Personalized STEM mastery learning with ",
+    "passed": true,
+    "score": 100,
+    "durationMs": 71,
+    "detectedArchetype": "education",
+    "screenCount": 6,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 71ms)"
+  },
+  {
+    "scenarioId": "client-scen-0014",
+    "index": 14,
+    "domain": "Real Estate & PropTech Portfolio Intelligence",
+    "title": "Centrum Commercial Asset Management — High-rise office building tenant occupan",
+    "passed": true,
+    "score": 100,
+    "durationMs": 87,
+    "detectedArchetype": "analytics",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 87ms)"
+  },
+  {
+    "scenarioId": "client-scen-0015",
+    "index": 15,
+    "domain": "LegalTech & Contract Intelligence",
+    "title": "JurisAI Redline Workspace — Multi-party M&A agreement redline compar",
+    "passed": true,
+    "score": 100,
+    "durationMs": 94,
+    "detectedArchetype": "intelligence-research",
+    "screenCount": 9,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 94ms)"
+  },
+  {
+    "scenarioId": "client-scen-0016",
+    "index": 16,
+    "domain": "Media, Audio & Streaming Production",
+    "title": "Waveform Cloud Studio — Browser-based multi-track DAW audio edit",
+    "passed": true,
+    "score": 100,
+    "durationMs": 74,
+    "detectedArchetype": "creator",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 74ms)"
+  },
+  {
+    "scenarioId": "client-scen-0017",
+    "index": 17,
+    "domain": "Gaming, Esports & Competitive Communities",
+    "title": "NexusArena Pro Circuit — Competitive esports tournament brackets,",
+    "passed": true,
+    "score": 100,
+    "durationMs": 60,
+    "detectedArchetype": "media",
+    "screenCount": 6,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 60ms)"
+  },
+  {
+    "scenarioId": "client-scen-0018",
+    "index": 18,
+    "domain": "IoT, Smart Cities & Robotics",
+    "title": "RoboFleet Warehouse Core — Autonomous mobile robot fleet path plann",
+    "passed": true,
+    "score": 100,
+    "durationMs": 73,
+    "detectedArchetype": "saas",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 73ms)"
+  },
+  {
+    "scenarioId": "client-scen-0019",
+    "index": 19,
+    "domain": "HR, People Ops & Global Payroll",
+    "title": "EquiPay Global Remote — Cross-border multi-currency contractor p",
+    "passed": true,
+    "score": 100,
+    "durationMs": 74,
+    "detectedArchetype": "saas",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 74ms)"
+  },
+  {
+    "scenarioId": "client-scen-0020",
+    "index": 20,
+    "domain": "Construction & Civil Infrastructure",
+    "title": "StructureBIM Civil Works — 3D IFC Building Information Modeling vie",
+    "passed": true,
+    "score": 100,
+    "durationMs": 74,
+    "detectedArchetype": "saas",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 74ms)"
+  },
+  {
+    "scenarioId": "client-scen-0021",
+    "index": 21,
+    "domain": "Automotive Telematics & EV Fleet",
+    "title": "VoltHaul EV Fleet Dispatch — Commercial electric semi-truck battery s",
+    "passed": true,
+    "score": 100,
+    "durationMs": 77,
+    "detectedArchetype": "erp-operations",
+    "screenCount": 6,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 77ms)"
+  },
+  {
+    "scenarioId": "client-scen-0022",
+    "index": 22,
+    "domain": "Creative Studios, Typography & Asset Warehousing",
+    "title": "GlyphSmith Foundry Workspace — OpenType variable font glyph bezier curv",
+    "passed": true,
+    "score": 100,
+    "durationMs": 75,
+    "detectedArchetype": "creator",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 75ms)"
+  },
+  {
+    "scenarioId": "client-scen-0023",
+    "index": 23,
+    "domain": "Web3, Protocol Governance & Treasuries",
+    "title": "AethelDAO Treasury Council — Decentralized autonomous organization mu",
+    "passed": true,
+    "score": 100,
+    "durationMs": 74,
+    "detectedArchetype": "productivity",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 74ms)"
+  },
+  {
+    "scenarioId": "client-scen-0024",
+    "index": 24,
+    "domain": "Non-Profit & Humanitarian Aid Delivery",
+    "title": "Aegis Relief Cargo Logistics — Conflict zone humanitarian refugee camp ",
+    "passed": true,
+    "score": 100,
+    "durationMs": 76,
+    "detectedArchetype": "erp-operations",
+    "screenCount": 6,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 76ms)"
+  },
+  {
+    "scenarioId": "client-scen-0025",
+    "index": 25,
+    "domain": "Hospitality & Luxury Travel Concierge",
+    "title": "Aura Private Jet Charter — On-demand private aviation empty-leg rou",
+    "passed": true,
+    "score": 100,
+    "durationMs": 72,
+    "detectedArchetype": "travel",
+    "screenCount": 6,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 72ms)"
+  },
+  {
+    "scenarioId": "client-scen-0026",
+    "index": 26,
+    "domain": "Pharmaceuticals & Clinical Trials",
+    "title": "BioPharm Phase III Trial Network — Double-blind multi-center clinical drug ",
+    "passed": true,
+    "score": 100,
+    "durationMs": 94,
+    "detectedArchetype": "saas",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 94ms)"
+  },
+  {
+    "scenarioId": "client-scen-0027",
+    "index": 27,
+    "domain": "Telecommunications & Optical Networks",
+    "title": "AethelFiber Submarine Cables — Transoceanic optical submarine cable opt",
+    "passed": true,
+    "score": 100,
+    "durationMs": 103,
+    "detectedArchetype": "saas",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 103ms)"
+  },
+  {
+    "scenarioId": "client-scen-0028",
+    "index": 28,
+    "domain": "Industrial Automation & Robotics",
+    "title": "CyberFab Semiconductor Foundry — Extreme ultraviolet lithography wafer tr",
+    "passed": true,
+    "score": 100,
+    "durationMs": 82,
+    "detectedArchetype": "erp-operations",
+    "screenCount": 6,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 82ms)"
+  },
+  {
+    "scenarioId": "client-scen-0029",
+    "index": 29,
+    "domain": "Agriculture & Precision Farming",
+    "title": "TerraCrop Autonomous Fleet — Autonomous electric combine harvester RT",
+    "passed": true,
+    "score": 100,
+    "durationMs": 102,
+    "detectedArchetype": "saas",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 102ms)"
+  },
+  {
+    "scenarioId": "client-scen-0030",
+    "index": 30,
+    "domain": "Insurance & Actuarial Risk Intelligence",
+    "title": "AegisRe Catastrophe Retrocession — Atlantic hurricane storm surge hydrodyna",
+    "passed": true,
+    "score": 100,
+    "durationMs": 77,
+    "detectedArchetype": "saas",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 77ms)"
+  },
+  {
+    "scenarioId": "client-scen-0031",
+    "index": 31,
+    "domain": "Consumer Productivity & Knowledge Graph",
+    "title": "Chronos Bidirectional Synapse — Graph-based personal thought notebook, b",
+    "passed": true,
+    "score": 100,
+    "durationMs": 88,
+    "detectedArchetype": "productivity",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 88ms)"
+  },
+  {
+    "scenarioId": "client-scen-0032",
+    "index": 32,
+    "domain": "Public Health & Epidemiological Surveillance",
+    "title": "PathoScan Wastewater Genomics — Municipal wastewater pathogen genomic se",
+    "passed": true,
+    "score": 100,
+    "durationMs": 156,
+    "detectedArchetype": "intelligence-research",
+    "screenCount": 9,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 156ms)"
+  },
+  {
+    "scenarioId": "client-scen-0033",
+    "index": 33,
+    "domain": "Fintech & Quantitative Trading",
+    "title": "Apex Sovereign Capital — Multi-asset macro portfolio risk telemet",
+    "passed": true,
+    "score": 100,
+    "durationMs": 109,
+    "detectedArchetype": "fintech",
+    "screenCount": 9,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 109ms)"
+  },
+  {
+    "scenarioId": "client-scen-0034",
+    "index": 34,
+    "domain": "Healthcare & Clinical Operations",
+    "title": "OncoPath Oncology Network — Multi-disciplinary tumor board clinical ",
+    "passed": true,
+    "score": 100,
+    "durationMs": 87,
+    "detectedArchetype": "crm",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 87ms)"
+  },
+  {
+    "scenarioId": "client-scen-0035",
+    "index": 35,
+    "domain": "Developer Tooling & Cloud Infrastructure",
+    "title": "Hyperplane CI/CD — Serverless ephemeral build container pip",
+    "passed": true,
+    "score": 100,
+    "durationMs": 84,
+    "detectedArchetype": "analytics",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 84ms)"
+  },
+  {
+    "scenarioId": "client-scen-0036",
+    "index": 36,
+    "domain": "AI/ML Operations & Generative Workspaces",
+    "title": "TensorStream MLOps — GPU cluster training telemetry, gradient",
+    "passed": true,
+    "score": 100,
+    "durationMs": 98,
+    "detectedArchetype": "ai",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 98ms)"
+  },
+  {
+    "scenarioId": "client-scen-0037",
+    "index": 37,
+    "domain": "Biotech & Computational Life Sciences",
+    "title": "ProteoDynamics Lab — Macro-molecular docking simulations and ",
+    "passed": true,
+    "score": 100,
+    "durationMs": 114,
+    "detectedArchetype": "analytics",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 114ms)"
+  },
+  {
+    "scenarioId": "client-scen-0038",
+    "index": 38,
+    "domain": "Cybersecurity & SOC Operations",
+    "title": "ZeroShield Identity Perimeter — Privileged access management and continu",
+    "passed": true,
+    "score": 100,
+    "durationMs": 91,
+    "detectedArchetype": "developer-tools",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 91ms)"
+  },
+  {
+    "scenarioId": "client-scen-0039",
+    "index": 39,
+    "domain": "E-Commerce & Omnichannel Retail",
+    "title": "ArtisanRoast Direct — Subscription specialty coffee club with ",
+    "passed": true,
+    "score": 100,
+    "durationMs": 62,
+    "detectedArchetype": "ecommerce",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 62ms)"
+  },
+  {
+    "scenarioId": "client-scen-0040",
+    "index": 40,
+    "domain": "Two-Sided Marketplaces & Freelance Exchanges",
+    "title": "CineGear Professional Rental — Insured cinema camera, anamorphic lens, ",
+    "passed": true,
+    "score": 100,
+    "durationMs": 67,
+    "detectedArchetype": "saas",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 67ms)"
+  },
+  {
+    "scenarioId": "client-scen-0041",
+    "index": 41,
+    "domain": "GovTech, Civic & Municipal Services",
+    "title": "MetroTransit Dispatch Core — City electric bus and light rail route d",
+    "passed": true,
+    "score": 100,
+    "durationMs": 70,
+    "detectedArchetype": "erp-operations",
+    "screenCount": 6,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 70ms)"
+  },
+  {
+    "scenarioId": "client-scen-0042",
+    "index": 42,
+    "domain": "Logistics, Freight & Supply Chain",
+    "title": "FreightMatrix Intermodal Hub — Rail-to-truck container transfer dispatc",
+    "passed": true,
+    "score": 100,
+    "durationMs": 87,
+    "detectedArchetype": "erp-operations",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 87ms)"
+  },
+  {
+    "scenarioId": "client-scen-0043",
+    "index": 43,
+    "domain": "Aerospace & Mission Control",
+    "title": "AeroDynamics Flight Test Bed — Supersonic prototype wind tunnel telemet",
+    "passed": true,
+    "score": 100,
+    "durationMs": 87,
+    "detectedArchetype": "developer-tools",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 87ms)"
+  },
+  {
+    "scenarioId": "client-scen-0044",
+    "index": 44,
+    "domain": "CleanTech, Energy Grid & Battery Storage",
+    "title": "Boreas Offshore Wind Farm — Deep-water floating wind turbine pitch c",
+    "passed": true,
+    "score": 100,
+    "durationMs": 63,
+    "detectedArchetype": "erp-operations",
+    "screenCount": 6,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 63ms)"
+  },
+  {
+    "scenarioId": "client-scen-0045",
+    "index": 45,
+    "domain": "EduTech & Adaptive Courseware",
+    "title": "Codex University Proctored Testing — Secure browser sandboxing, automated pro",
+    "passed": true,
+    "score": 100,
+    "durationMs": 57,
+    "detectedArchetype": "education",
+    "screenCount": 6,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 57ms)"
+  },
+  {
+    "scenarioId": "client-scen-0046",
+    "index": 46,
+    "domain": "Real Estate & PropTech Portfolio Intelligence",
+    "title": "Terran Land Acquisition GIS — Satellite parcel boundary overlays, muni",
+    "passed": true,
+    "score": 100,
+    "durationMs": 124,
+    "detectedArchetype": "analytics",
+    "screenCount": 8,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 8,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 124ms)"
+  },
+  {
+    "scenarioId": "client-scen-0047",
+    "index": 47,
+    "domain": "LegalTech & Contract Intelligence",
+    "title": "LexIntel Intellectual Property — Global patent portfolio claims mapping, ",
+    "passed": true,
+    "score": 100,
+    "durationMs": 140,
+    "detectedArchetype": "intelligence-research",
+    "screenCount": 9,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 9,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 140ms)"
+  },
+  {
+    "scenarioId": "client-scen-0048",
+    "index": 48,
+    "domain": "Media, Audio & Streaming Production",
+    "title": "StreamGrid Live Broadcast Matrix — Multi-camera cloud video switcher, graph",
+    "passed": true,
+    "score": 100,
+    "durationMs": 116,
+    "detectedArchetype": "creator",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 116ms)"
+  },
+  {
+    "scenarioId": "client-scen-0049",
+    "index": 49,
+    "domain": "Gaming, Esports & Competitive Communities",
+    "title": "Vanguard Anti-Cheat Watchdog — Memory injection heuristic analysis, har",
+    "passed": true,
+    "score": 100,
+    "durationMs": 96,
+    "detectedArchetype": "media",
+    "screenCount": 6,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 6,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 96ms)"
+  },
+  {
+    "scenarioId": "client-scen-0050",
+    "index": 50,
+    "domain": "IoT, Smart Cities & Robotics",
+    "title": "UrbanAqua Smart Water Grid — Municipal water distribution acoustic le",
+    "passed": true,
+    "score": 100,
+    "durationMs": 98,
+    "detectedArchetype": "saas",
+    "screenCount": 7,
+    "unresolvedRolesCount": 0,
+    "unresolvedRoles": [],
+    "schemaErrors": [],
+    "exportErrors": [],
+    "dnaViolations": [],
+    "directionResults": {
+      "directionA": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionB": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      },
+      "directionC": {
+        "valid": true,
+        "screenCount": 7,
+        "diagnosticsCount": 0
+      }
+    },
+    "details": "100% benchmark compliance (100/100 pts in 98ms)"
+  }
+]

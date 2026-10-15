@@ -171,7 +171,7 @@ export function writeTypographyResource(def: TypographyDef, repoRoot: string) {
       defaultStrategy: 'compress',
     },
     accessibility: {
-      levelTarget: 'AA',
+      levelTarget: 'AAA',
       keyboardVerified: true,
       screenReaderSemantics: true,
       reducedMotionVerified: true,

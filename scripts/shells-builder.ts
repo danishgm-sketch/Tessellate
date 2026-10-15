@@ -170,7 +170,7 @@ export function writeShell(def: ShellDef, repoRoot: string) {
       defaultStrategy: 'collapse',
     },
     accessibility: {
-      levelTarget: 'AA',
+      levelTarget: 'AAA',
       keyboardVerified: true,
       screenReaderSemantics: true,
       reducedMotionVerified: true,

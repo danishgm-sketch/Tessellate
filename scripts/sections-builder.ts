@@ -171,7 +171,7 @@ export function writeSection(def: SectionDef, repoRoot: string) {
       defaultStrategy: 'stack',
     },
     accessibility: {
-      levelTarget: 'AA',
+      levelTarget: 'AAA',
       keyboardVerified: true,
       screenReaderSemantics: true,
       reducedMotionVerified: true,

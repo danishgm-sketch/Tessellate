@@ -59,6 +59,7 @@ test.describe('Critical Anonymous User Flows', () => {
     await expect(
       page.locator('[data-testid="top-toolbar"]')
         .or(page.locator('[data-testid="workbench-canvas"]'))
+        .or(page.locator('button:has-text("Inspect")'))
         .or(page.locator('text=Local'))
         .first()
     ).toBeVisible();

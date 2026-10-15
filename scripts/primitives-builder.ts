@@ -170,7 +170,7 @@ export function writePrimitive(def: PrimitiveDef, repoRoot: string) {
       defaultStrategy: 'compress',
     },
     accessibility: {
-      levelTarget: 'AA',
+      levelTarget: 'AAA',
       keyboardVerified: true,
       screenReaderSemantics: true,
       reducedMotionVerified: true,
