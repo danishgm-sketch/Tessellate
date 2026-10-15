@@ -28,9 +28,9 @@ export function AIEmptyState({ variant = 'quiet', onSelectPrompt }: AIEmptyState
       </div>
 
       <div className="max-w-md space-y-1.5">
-        <h4 className="text-base font-semibold tracking-tight">How can Tessellate assist your build?</h4>
+        <h4 className="text-base font-semibold tracking-tight">How can I help?</h4>
         <p className="text-xs text-neutral-500 leading-relaxed">
-          Tessellate composes validated interface systems from canonical resources. Select a starter prompt below to begin:
+          Ask a question or pick a starter prompt. Select a starter prompt below to begin:
         </p>
       </div>
 

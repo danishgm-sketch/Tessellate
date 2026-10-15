@@ -27,7 +27,7 @@ export function IntegrationOrbit({ variant = 'quiet' }: IntegrationOrbitProps) {
 
         <div className="relative w-72 h-72 rounded-full border border-dashed border-neutral-300 dark:border-neutral-700 flex items-center justify-center">
           <div className={`w-28 h-28 rounded-full flex items-center justify-center font-bold text-xs font-mono ${centerNode}`}>
-            TESSELLATE
+            YOUR APP
           </div>
           {nodes.map((node, i) => {
             const angle = (i / nodes.length) * 2 * Math.PI;

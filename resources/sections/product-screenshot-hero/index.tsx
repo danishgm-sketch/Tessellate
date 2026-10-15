@@ -57,7 +57,7 @@ export function ProductScreenshotHero({
               <span className="h-2.5 w-2.5 rounded-full bg-amber-400" />
               <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
             </div>
-            <span className="font-mono text-[11px] opacity-80">https://workbench.tessellate.design</span>
+            <span className="font-mono text-[11px] opacity-80">https://app.example.com</span>
             <div className="w-10" />
           </div>
           <div className="p-8 sm:p-12 min-h-[320px] flex flex-col justify-center items-center gap-4 text-center">

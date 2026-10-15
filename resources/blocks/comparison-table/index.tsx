@@ -27,7 +27,7 @@ export function ComparisonTable({ variant = 'quiet' }: ComparisonTableProps) {
         <thead className="bg-neutral-100/60 dark:bg-neutral-900/60 border-b border-neutral-200 dark:border-neutral-800 font-mono text-[11px]">
           <tr>
             <th className="p-3">Specification</th>
-            <th className="p-3">Tessellate Pure</th>
+            <th className="p-3">Our plan</th>
             <th className="p-3">Generic Alternative</th>
           </tr>
         </thead>

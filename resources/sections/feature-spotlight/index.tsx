@@ -27,7 +27,7 @@ export function FeatureSpotlight({ variant = 'quiet' }: FeatureSpotlightProps) {
             Autonomous Graph Solvers for Coherent Front-Ends
           </h2>
           <p className="text-sm sm:text-base opacity-80 max-w-xl leading-relaxed mb-8">
-            Unlike static template libraries, Tessellate understands mathematical compatibility between navigation, content blocks, and typography.
+            Everything works together out of the box, so you spend less time on setup and more on what matters.
           </p>
           <button type="button" className="px-6 py-3 rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 font-semibold text-xs uppercase tracking-wider hover:opacity-90">
             Read Graph Architecture Paper

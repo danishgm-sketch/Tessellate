@@ -25,7 +25,7 @@ export function OnboardingRoleSelect({ variant = 'quiet' }: OnboardingRoleSelect
 
   return (
     <div className={`w-full p-6 sm:p-8 rounded-xl border text-center transition-colors ${bg}`}>
-      <h3 className="text-base font-bold mb-2">How will you use Tessellate?</h3>
+      <h3 className="text-base font-bold mb-2">How will you use this?</h3>
       <p className="text-xs opacity-75 mb-6">Select your primary role to configure default tools.</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">

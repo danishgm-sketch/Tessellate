@@ -3,10 +3,11 @@ import React from 'react';
 export type FooterMinimalVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface FooterMinimalProps {
+  brand?: string;
   variant?: FooterMinimalVariant;
 }
 
-export function FooterMinimal({ variant = 'quiet' }: FooterMinimalProps) {
+export function FooterMinimal({ variant = 'quiet', brand = 'Your product' }: FooterMinimalProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-600 border-neutral-200';
 
   if (variant === 'expressive') {
@@ -19,8 +20,8 @@ export function FooterMinimal({ variant = 'quiet' }: FooterMinimalProps) {
     <footer className={`w-full py-8 px-6 sm:px-12 border-t text-xs transition-colors ${bg}`}>
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <span className="font-semibold tracking-tight text-neutral-900 dark:text-white">Tessellate</span>
-          <span>© {new Date().getFullYear()} Tessellate Core. MIT License.</span>
+          <span className="font-semibold tracking-tight text-neutral-900 dark:text-white">{brand}</span>
+          <span>© {new Date().getFullYear()} {brand}</span>
         </div>
         <div className="flex items-center gap-6">
           <a href="#" className="hover:underline">Privacy</a>

@@ -1,5 +1,5 @@
 import type { ProjectManifest, ProjectNode, ProjectScreen } from '@tessellate/schemas';
-import { normalizeDesignTokens, tokensToCssVariables } from '@tessellate/renderer';
+import { normalizeDesignTokens, tokensToCssVariables, RESOURCE_THEME_CSS } from '@tessellate/renderer';
 import { collectProjectDependencies } from './dependencies.js';
 import { getGoldResourceSource } from './generated-gold-sources.js';
 
@@ -72,9 +72,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 export function Button({ variant = 'primary', label, children, className = '', ...props }: ButtonProps) {
   const base = "inline-flex items-center justify-center font-medium transition-colors cursor-pointer select-none text-xs px-3.5 py-1.5 rounded-[var(--tess-radius-sm,6px)]";
   const styles: Record<string, string> = {
-    primary: "bg-[var(--tess-accent-primary,#2547E8)] text-white hover:opacity-90 shadow-xs",
-    outline: "border border-[var(--tess-hairline,#D9D6CF)] text-[var(--tess-ink,#111217)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]",
-    ghost: "text-[var(--tess-ink-secondary,#62666F)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]",
+    primary: "bg-[var(--tess-accent,#2547E8)] text-white hover:opacity-90 shadow-xs",
+    outline: "border border-[var(--tess-hairline,#D9D6CF)] text-[var(--tess-ink,#111217)] hover:bg-[var(--tess-surface,#FAF9F6)]",
+    ghost: "text-[var(--tess-ink-secondary,#62666F)] hover:bg-[var(--tess-surface,#FAF9F6)]",
     quiet: "bg-neutral-900 text-white hover:opacity-90",
     expressive: "bg-[#2547E8] text-white shadow-md hover:bg-blue-700",
     nocturne: "bg-[#06B6D4] text-neutral-950 font-bold hover:bg-cyan-400",
@@ -136,7 +136,7 @@ export function AppHeader({ title = 'Application', navItems = [] }: AppHeaderPro
             <a
               key={i}
               href={item.href || '#'}
-              className={\`transition-colors \${item.active ? 'text-[var(--tess-accent-primary,#2547E8)] font-semibold' : 'text-[var(--tess-ink-secondary,#62666F)] hover:text-[var(--tess-ink,#111217)]'}\`}
+              className={\`transition-colors \${item.active ? 'text-[var(--tess-accent,#2547E8)] font-semibold' : 'text-[var(--tess-ink-secondary,#62666F)] hover:text-[var(--tess-ink,#111217)]'}\`}
             >
               {item.label}
             </a>
@@ -245,7 +245,7 @@ export default defineConfig({
 `;
 
   // 5. src/index.css (Tailwind 4 + Normalized CSS variables)
-  const tokens = normalizeDesignTokens(manifest.designDNA);
+  const tokens = normalizeDesignTokens(manifest.designDNA, { accessibilityFloor: manifest.constraints?.accessibilityFloor });
   const cssVars = tokensToCssVariables(tokens);
   const cssVarDeclarations = Object.entries(cssVars)
     .map(([k, v]) => `  ${k}: ${v};`)
@@ -253,6 +253,7 @@ export default defineConfig({
 
   files['src/index.css'] = `@import "tailwindcss";
 
+${RESOURCE_THEME_CSS}
 :root {
 ${cssVarDeclarations}
 }
@@ -317,8 +318,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   // 9. Screen components in src/screens/
   const screenSlugs: Array<{ id: string; name: string; componentName: string; file: string }> = [];
 
+  const takenNames = new Set([...Object.values(resourceMap).map((r) => r.componentName), 'App', 'Button', 'MetricCard', 'AppHeader']);
   manifest.screens.forEach((screen, index) => {
-    const componentName = sanitizeComponentName(screen.name || `Screen${index + 1}`);
+    const componentName = uniqueScreenName(sanitizeComponentName(screen.name || `Screen${index + 1}`), takenNames);
     const fileName = `${componentName}.tsx`;
     screenSlugs.push({
       id: screen.id,
@@ -341,8 +343,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             onClick={() => setActiveScreenId('${s.id}')}
             className={\`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors \${
               activeScreenId === '${s.id}'
-                ? 'bg-[var(--tess-accent-primary,#2547E8)] text-white shadow-xs'
-                : 'text-[var(--tess-ink-secondary,#62666F)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]'
+                ? 'bg-[var(--tess-accent,#2547E8)] text-white shadow-xs'
+                : 'text-[var(--tess-ink-secondary,#62666F)] hover:bg-[var(--tess-surface,#FAF9F6)]'
             }\`}
           >
             ${s.name}
@@ -390,7 +392,7 @@ export default function App() {
   // 11. README.md
   files['README.md'] = `# ${manifest.name}
 
-Exported from [Tessellate](https://github.com/danishgm-sketch/Tessellate) on ${new Date().toISOString()}.
+Generated on ${new Date().toISOString()}. Third-party component licences are listed in THIRD_PARTY_NOTICES.md.
 
 ${manifest.description || 'Interface composition system generated from Product Intent and Design DNA.'}
 
@@ -424,6 +426,8 @@ pnpm build
 - **Visual Ambition:** ${manifest.designDNA.visualAmbition}/100
 - **Surface:** ${manifest.designDNA.surfacePersonality}
 `;
+
+  files['THIRD_PARTY_NOTICES.md'] = thirdPartyNotices();
 
   return files;
 }
@@ -509,7 +513,7 @@ export default nextConfig;
   );
 
   // 5. app/globals.css
-  const tokens = normalizeDesignTokens(manifest.designDNA);
+  const tokens = normalizeDesignTokens(manifest.designDNA, { accessibilityFloor: manifest.constraints?.accessibilityFloor });
   const cssVars = tokensToCssVariables(tokens);
   const cssVarDeclarations = Object.entries(cssVars)
     .map(([k, v]) => `  ${k}: ${v};`)
@@ -517,6 +521,7 @@ export default nextConfig;
 
   files['app/globals.css'] = `@import "tailwindcss";
 
+${RESOURCE_THEME_CSS}
 :root {
 ${cssVarDeclarations}
 }
@@ -590,8 +595,9 @@ export default function RootLayout({
   // 9. Screen components in screens/
   const screenSlugs: Array<{ id: string; name: string; componentName: string; file: string }> = [];
 
+  const takenNames = new Set([...Object.values(resourceMap).map((r) => r.componentName), 'App', 'Button', 'MetricCard', 'AppHeader']);
   manifest.screens.forEach((screen, index) => {
-    const componentName = sanitizeComponentName(screen.name || `Screen${index + 1}`);
+    const componentName = uniqueScreenName(sanitizeComponentName(screen.name || `Screen${index + 1}`), takenNames);
     const fileName = `${componentName}.tsx`;
     screenSlugs.push({
       id: screen.id,
@@ -614,8 +620,8 @@ export default function RootLayout({
             onClick={() => setActiveScreenId('${s.id}')}
             className={\`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors \${
               activeScreenId === '${s.id}'
-                ? 'bg-[var(--tess-accent-primary,#2547E8)] text-white shadow-xs'
-                : 'text-[var(--tess-ink-secondary,#62666F)] hover:bg-[var(--tess-surface-secondary,#F2EFE9)]'
+                ? 'bg-[var(--tess-accent,#2547E8)] text-white shadow-xs'
+                : 'text-[var(--tess-ink-secondary,#62666F)] hover:bg-[var(--tess-surface,#FAF9F6)]'
             }\`}
           >
             ${s.name}
@@ -652,7 +658,7 @@ export default function Page() {
           <span className="font-bold text-sm tracking-tight text-[var(--tess-ink,#111217)]">
             ${manifest.name}
           </span>
-          <span className="text-[11px] px-2 py-0.5 rounded-full bg-[var(--tess-surface-secondary,#F2EFE9)] text-[var(--tess-ink-muted,#8B8F97)] font-mono">
+          <span className="text-[11px] px-2 py-0.5 rounded-full bg-[var(--tess-surface,#FAF9F6)] text-[var(--tess-ink-muted,#8B8F97)] font-mono">
             Next.js 15
           </span>
         </div>
@@ -673,7 +679,7 @@ export default function Page() {
   // 11. README.md
   files['README.md'] = `# ${manifest.name}
 
-Exported from [Tessellate](https://github.com/danishgm-sketch/Tessellate) on ${new Date().toISOString()}.
+Generated on ${new Date().toISOString()}. Third-party component licences are listed in THIRD_PARTY_NOTICES.md.
 
 ${manifest.description || 'Interface composition system generated from Product Intent and Design DNA.'}
 
@@ -712,7 +718,35 @@ pnpm start
 - **Surface:** ${manifest.designDNA.surfacePersonality}
 `;
 
+  files['THIRD_PARTY_NOTICES.md'] = thirdPartyNotices();
+
   return files;
+}
+
+function isPlainData(value: unknown): boolean {
+  if (value === null || ['string', 'number', 'boolean'].includes(typeof value)) return true;
+  if (Array.isArray(value)) return value.every(isPlainData);
+  if (typeof value === 'object') return Object.values(value as Record<string, unknown>).every(isPlainData);
+  return false;
+}
+
+/** MIT requires the copyright and permission notice to travel with copies of the components. */
+function thirdPartyNotices(): string {
+  return `# Third-party notices
+
+Components in this project are derived from the Tessellate open resource library.
+
+${RESOURCE_LIBRARY_LICENSE}`;
+}
+
+const RESOURCE_LIBRARY_LICENSE = 'MIT License\n\nCopyright (c) 2026 Tessellate contributors\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the "Software"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n';
+
+/** Screen components must not clash with resource components or with each other (e.g. a "Document editor" screen). */
+function uniqueScreenName(base: string, taken: Set<string>): string {
+  let name = taken.has(base) ? `${base}Screen` : base;
+  for (let i = 2; taken.has(name); i++) name = `${base}Screen${i}`;
+  taken.add(name);
+  return name;
 }
 
 function sanitizeComponentName(name: string): string {
@@ -796,10 +830,13 @@ function renderNodeToJsx(
       if (acceptedProps && !acceptedProps.has(key)) continue;
 
       if (typeof val === 'string') {
-        const escaped = val.replace(/"/g, '&quot;');
-        attributes.push(`${key}="${escaped}"`);
+        // Plain attribute when safe; otherwise a JS string literal in braces, which is safe for any characters.
+        attributes.push(/^[^"{}<>&\\]*$/.test(val) ? `${key}="${val}"` : `${key}={${JSON.stringify(val)}}`);
       } else if (typeof val === 'number' || typeof val === 'boolean') {
         attributes.push(`${key}={${val}}`);
+      } else if (val !== null && typeof val === 'object' && isPlainData(val)) {
+        // Content (items, rows, columns, metrics …) from composition, as a JSON literal.
+        attributes.push(`${key}={${JSON.stringify(val)}}`);
       }
     }
 
@@ -811,6 +848,14 @@ function renderNodeToJsx(
     }
 
     return `${indent}<${compName}${attrStr} />`;
+  }
+
+  // 1b. A section the library could not fill yet: keep it visible and labelled in the client's code.
+  if (node.props?.unresolvedRequiredRole) {
+    const diag = node.props.diagnostic as { label?: string; role?: string } | undefined;
+    const label = String(diag?.label ?? diag?.role ?? node.semanticRole).replace(/[{}<>]/g, '');
+    return `${indent}{/* Gap: no resource chosen for "${label}" yet. Replace this placeholder with your component. */}
+${indent}<section data-gap=${JSON.stringify(node.semanticRole)} aria-label=${JSON.stringify(`${label} (to do)`)} className="rounded-ui-md border border-dashed border-hairline-strong p-6 text-sm text-ink-secondary">${label} — to do</section>`;
   }
 
   // 2. Built-in Semantic Roles

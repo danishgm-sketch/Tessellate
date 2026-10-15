@@ -23,7 +23,7 @@ export function ComplianceProof({ variant = 'quiet' }: ComplianceProofProps) {
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold tracking-tight mb-8">Audited Regulatory Compliance</h2>
         <p className="text-xs sm:text-sm opacity-80 max-w-xl mx-auto mb-12">
-          Independent third-party audits verify that Tessellate satisfies rigorous global data protection standards.
+          Independent third-party audits verify that we satisfy rigorous global data protection standards.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">

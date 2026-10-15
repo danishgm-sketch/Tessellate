@@ -35,7 +35,7 @@ export function AIResearchAnswer({ variant = 'quiet' }: AIResearchAnswerProps) {
 
       <div className={`p-4 rounded-lg border text-xs leading-relaxed ${calloutBg}`}>
         <span className="font-bold uppercase tracking-wider block mb-1 text-[10px]">Executive Summary</span>
-        Tessellate adopts a zero-runtime standalone export model. Standalone projects compile cleanly to Vite + React without any Tessellate runtime SDK lock-in or micro-frontend container overhead.
+        Sample answer text. Standalone projects compile cleanly to Vite + React without extra runtime dependencies.
       </div>
 
       <div className="space-y-2 text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">

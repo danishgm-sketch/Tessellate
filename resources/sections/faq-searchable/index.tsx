@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 export type FaqSearchableVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface FaqSearchableProps {
+  /** Questions and answers to show. */
+  items?: Array<{ q: string; a: string }>;
   variant?: FaqSearchableVariant;
 }
 
-export function FaqSearchable({ variant = 'quiet' }: FaqSearchableProps) {
+export function FaqSearchable({ variant = 'quiet', items }: FaqSearchableProps) {
   const [query, setQuery] = useState('');
 
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
@@ -20,10 +22,11 @@ export function FaqSearchable({ variant = 'quiet' }: FaqSearchableProps) {
     inputBorder = 'border-[#2E3440] bg-[#151921]';
   }
 
-  const list = [
-    { q: 'Is there a commercial license requirement?', a: 'No, all core resources are MIT licensed.' },
-    { q: 'How does MCP communication work?', a: 'Tessellate runs an MCP server exposing search, manifest inspection, and recommendation tools.' },
-    { q: 'Where are my user projects stored?', a: 'In local browser storage by default, with optional Cloudflare D1 encrypted sync.' },
+  const list = items ?? [
+    { q: 'How do I get started?', a: 'Create an account, then follow the short setup steps. Most people are up and running in a few minutes.' },
+    { q: 'Can I change or cancel later?', a: 'Yes. You can change your plan or cancel at any time from your account settings.' },
+    { q: 'How is my data protected?', a: 'Your data is encrypted in transit and at rest, and only you and the people you invite can see it.' },
+    { q: 'How do I get help?', a: 'Contact our support team from the Help page and we will reply by email.' },
   ];
 
   const filtered = list.filter((item) =>

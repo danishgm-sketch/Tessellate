@@ -10,7 +10,7 @@ export interface PressMentionsStripProps {
 export function PressMentionsStrip({
   variant = 'quiet',
   quotes = [
-    { outlet: 'TechCrunch', quote: 'Tessellate redefines how software teams approach UI coherence.' },
+    { outlet: 'TechCrunch', quote: 'Sample press quote: replace with real coverage.' },
     { outlet: 'Wired', quote: 'A monumental step forward for autonomous coding agents and human designers.' },
     { outlet: 'The Verge', quote: 'Finally, an open-source interface architecture with taste.' },
   ],

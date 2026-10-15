@@ -27,7 +27,7 @@ export function HowItWorksSteps({ variant = 'quiet' }: HowItWorksStepsProps) {
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-16">How Tessellate Works</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-16">How it works</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {steps.map((s) => (
             <div key={s.step} className={`p-6 rounded-2xl border ${card}`}>

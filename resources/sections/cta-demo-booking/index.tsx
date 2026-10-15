@@ -22,7 +22,7 @@ export function CtaDemoBooking({ variant = 'quiet' }: CtaDemoBookingProps) {
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
         <h2 className="text-3xl font-bold tracking-tight mb-4">Book an Architecture Consultation</h2>
-        <p className="text-xs sm:text-sm opacity-75 max-w-md mb-8">Speak with our core team about integrating Tessellate into your enterprise monorepo.</p>
+        <p className="text-xs sm:text-sm opacity-75 max-w-md mb-8">Talk to our team about how this fits the way you work.</p>
 
         <div className={`p-6 rounded-2xl border w-full max-w-sm ${card}`}>
           <div className="text-xs font-semibold mb-4 text-left">Available Times (Tomorrow):</div>

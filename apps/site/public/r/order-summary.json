@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "order-summary",
+  "type": "registry:block",
+  "title": "Order Summary",
+  "description": "Line items, discount, delivery, tax and totals in minor units, formatted for any currency and locale.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useId } from 'react';\n\nexport type OrderSummaryVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface OrderLine {\n  name: string;\n  quantity?: number;\n  /** Unit price in minor units (pence/cents) to avoid rounding errors. */\n  unitAmount: number;\n  description?: string;\n}\n\nexport interface OrderSummaryProps {\n  heading?: string;\n  lines?: OrderLine[];\n  /** ISO 4217 code, e.g. \"GBP\". */\n  currency?: string;\n  /** Discount in minor units. */\n  discountAmount?: number;\n  discountLabel?: string;\n  /** Tax in minor units; omit when prices include tax. */\n  taxAmount?: number;\n  taxLabel?: string;\n  shippingAmount?: number;\n  /** Amount due now, when only a deposit is taken (minor units). */\n  dueNowAmount?: number;\n  loading?: boolean;\n  locale?: string;\n  variant?: OrderSummaryVariant;\n}\n\nconst SAMPLE_LINES: OrderLine[] = [\n  { name: 'Initial assessment (45 min)', unitAmount: 6500 },\n  { name: 'Follow-up session', quantity: 2, unitAmount: 4500 },\n];\n\n/** Line items, adjustments and totals, formatted for the given currency and locale. */\nexport function OrderSummary({\n  heading = 'Order summary',\n  lines,\n  currency = 'GBP',\n  discountAmount = 0,\n  discountLabel = 'Discount',\n  taxAmount,\n  taxLabel = 'VAT',\n  shippingAmount,\n  dueNowAmount,\n  loading = false,\n  locale = 'en-GB',\n  variant = 'quiet',\n}: OrderSummaryProps) {\n  const id = useId();\n  const items = lines ?? SAMPLE_LINES;\n  const fmt = (minor: number) => new Intl.NumberFormat(locale, { style: 'currency', currency }).format(minor / 100);\n  const subtotal = items.reduce((sum, l) => sum + l.unitAmount * (l.quantity ?? 1), 0);\n  const total = subtotal - discountAmount + (taxAmount ?? 0) + (shippingAmount ?? 0);\n  const shell = variant === 'expressive' ? 'shadow-ui-2 border border-hairline' : variant === 'nocturne' ? 'border-2 border-hairline-strong' : 'border border-hairline';\n  const row = 'flex justify-between gap-4 py-1.5 text-sm';\n\n  return (\n    <section className={`w-full max-w-md rounded-ui-lg bg-surface-raised p-6 font-body text-ink ${shell}`} aria-labelledby={`${id}-heading`} aria-busy={loading}>\n      <h2 id={`${id}-heading`} className=\"font-heading text-lg font-semibold\">\n        {heading}\n      </h2>\n      {!lines && <p className=\"mt-1 text-xs text-ink-secondary\">Example items.</p>}\n      {loading ? (\n        <p role=\"status\" className=\"mt-4 text-sm text-ink-secondary\">\n          Updating totals…\n        </p>\n      ) : items.length === 0 ? (\n        <p className=\"mt-4 text-sm text-ink-secondary\">Your basket is empty.</p>\n      ) : (\n        <>\n          <ul className=\"mt-4 divide-y divide-hairline\">\n            {items.map((l, i) => (\n              <li key={`${l.name}-${i}`} className=\"flex justify-between gap-4 py-3\">\n                <div>\n                  <p className=\"text-sm font-medium text-ink\">\n                    {l.name}\n                    {(l.quantity ?? 1) > 1 && <span className=\"text-ink-secondary\"> × {l.quantity}</span>}\n                  </p>\n                  {l.description && <p className=\"text-xs text-ink-secondary\">{l.description}</p>}\n                </div>\n                <p className=\"text-sm font-medium tabular-nums text-ink\">{fmt(l.unitAmount * (l.quantity ?? 1))}</p>\n              </li>\n            ))}\n          </ul>\n          <dl className=\"mt-3 border-t border-hairline pt-3\">\n            <div className={row}>\n              <dt className=\"text-ink-secondary\">Subtotal</dt>\n              <dd className=\"tabular-nums\">{fmt(subtotal)}</dd>\n            </div>\n            {discountAmount > 0 && (\n              <div className={row}>\n                <dt className=\"text-ink-secondary\">{discountLabel}</dt>\n                <dd className=\"tabular-nums text-success\">−{fmt(discountAmount)}</dd>\n              </div>\n            )}\n            {shippingAmount !== undefined && (\n              <div className={row}>\n                <dt className=\"text-ink-secondary\">Delivery</dt>\n                <dd className=\"tabular-nums\">{shippingAmount === 0 ? 'Free' : fmt(shippingAmount)}</dd>\n              </div>\n            )}\n            {taxAmount !== undefined && (\n              <div className={row}>\n                <dt className=\"text-ink-secondary\">{taxLabel}</dt>\n                <dd className=\"tabular-nums\">{fmt(taxAmount)}</dd>\n              </div>\n            )}\n            <div className=\"flex justify-between gap-4 border-t border-hairline pt-3 text-base font-semibold\">\n              <dt>Total</dt>\n              <dd className=\"tabular-nums\">{fmt(total)}</dd>\n            </div>\n            {dueNowAmount !== undefined && (\n              <div className=\"mt-2 flex justify-between gap-4 rounded-ui-sm bg-accent-soft px-3 py-2 text-sm font-semibold text-ink\">\n                <dt>Due now</dt>\n                <dd className=\"tabular-nums\">{fmt(dueNowAmount)}</dd>\n              </div>\n            )}\n          </dl>\n        </>\n      )}\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/tessellate/order-summary/index.tsx"
+    }
+  ],
+  "categories": [
+    "commerce",
+    "checkout"
+  ],
+  "meta": {
+    "tessellateId": "res_v2_order_summary",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

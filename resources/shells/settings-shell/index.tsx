@@ -27,7 +27,7 @@ export function SettingsShell({ variant = 'quiet' }: SettingsShellProps) {
           <h2 className="font-semibold text-sm">Project Profile</h2>
           <div className="space-y-1">
             <label className="text-[11px] font-medium opacity-70">Workspace Name</label>
-            <input type="text" defaultValue="Tessellate Lab" className="w-full border p-2 rounded text-xs" />
+            <input type="text" defaultValue="My workspace" className="w-full border p-2 rounded text-xs" />
           </div>
         </main>
       </div>

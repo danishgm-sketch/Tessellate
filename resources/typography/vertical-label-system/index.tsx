@@ -13,7 +13,7 @@ export interface VerticalLabelSystemProps {
 export function VerticalLabelSystem({
   railLabel = 'SEC.08 — SPECIFICATION LAYER',
   sectionTitle = 'Systematic Design Grammar',
-  sectionDescription = 'Tessellate does not sell a pile of components. It composes a coherent interface system from an open resource vocabulary.',
+  sectionDescription = 'A short description of this section. Replace with your own copy.',
   variant = 'quiet',
   children,
 }: VerticalLabelSystemProps) {

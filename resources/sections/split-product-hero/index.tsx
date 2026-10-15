@@ -50,7 +50,7 @@ export function SplitProductHero({
 
         <div className={`p-6 rounded-2xl border transition-all ${card}`}>
           <div className="flex items-center justify-between border-b pb-4 mb-6 text-xs">
-            <span className="font-mono font-semibold">Tessellate Engine</span>
+            <span className="font-mono font-semibold">{badge}</span>
             <div className="flex gap-1.5">
               {(['tokens', 'manifest', 'output'] as const).map((tab) => (
                 <button

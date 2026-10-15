@@ -12,7 +12,7 @@ export interface FeatureGrid3x2Props {
 export function FeatureGrid3x2({
   variant = 'quiet',
   headline = 'Engineered for durability across every layer of the interface.',
-  subheadline = 'Six architectural pillars powering the Tessellate composition runtime.',
+  subheadline = 'Everything you need, in one place.',
   features = [
     { title: 'Zero Runtime Lock-In', desc: 'Exports directly to clean React and Tailwind CSS without hidden proprietary libraries.' },
     { title: 'Deterministic DNA', desc: 'Enforces mathematical harmony across spacing, curvature, typography, and contrast.' },

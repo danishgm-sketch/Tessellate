@@ -13,7 +13,7 @@ export function KioskDisplayShell({ variant = 'quiet' }: KioskDisplayShellProps)
   return (
     <div className={`w-full h-screen p-12 flex flex-col justify-between select-none ${theme}`}>
       <header className="flex justify-between items-center pb-6 border-b">
-        <span className="text-xl font-bold">Tessellate Signage Hub</span>
+        <span className="text-xl font-bold">Information display</span>
         <span className="text-sm font-mono opacity-50">KIOSK #04</span>
       </header>
       <main className="text-center space-y-4">

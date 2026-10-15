@@ -3,10 +3,11 @@ import React from 'react';
 export type MarketingNavCtaVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface MarketingNavCtaProps {
+  brand?: string;
   variant?: MarketingNavCtaVariant;
 }
 
-export function MarketingNavCta({ variant = 'quiet' }: MarketingNavCtaProps) {
+export function MarketingNavCta({ variant = 'quiet', brand = 'Your product' }: MarketingNavCtaProps) {
   let bar = 'bg-white border-b border-neutral-200 text-neutral-900';
   let cta = 'bg-neutral-900 text-white';
   if (variant === 'expressive') {
@@ -20,7 +21,7 @@ export function MarketingNavCta({ variant = 'quiet' }: MarketingNavCtaProps) {
   return (
     <header className={`w-full px-6 h-16 flex items-center justify-between ${bar}`}>
       <div className="flex items-center gap-3">
-        <span className="font-semibold text-sm">Tessellate</span>
+        <span className="font-semibold text-sm">{brand}</span>
         <span className="text-[10px] bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 rounded px-1.5 py-0.5 font-mono">
           BETA
         </span>

@@ -12,8 +12,8 @@ export interface CustomerStorySplitProps {
 export function CustomerStorySplit({
   variant = 'quiet',
   company = 'Helios Autonomous Systems',
-  challenge = 'Before Tessellate, our robotics dashboard suffered from 12 disconnected design styles and heavy bundle sizes.',
-  solution = 'Within days of adopting Tessellate, we composed our entire telemetry interface using verified blocks that load in under 20ms.',
+  challenge = 'Sample story: describe the problem your customer had before using your product.',
+  solution = 'Sample story: describe what changed for them afterwards, ideally with a measured result.',
 }: CustomerStorySplitProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';
   let box = 'bg-neutral-100 border-neutral-200';

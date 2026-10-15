@@ -16,7 +16,7 @@ export function CharacterStaggerReveal({ variant = 'quiet' }: CharacterStaggerRe
       ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'
       : 'bg-white border-neutral-200 text-neutral-900';
 
-  const chars = 'TESSELLATE'.split('');
+  const chars = 'HEADLINE'.split('');
 
   return (
     <div className={`w-full p-8 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>

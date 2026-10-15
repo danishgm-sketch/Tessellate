@@ -18,7 +18,7 @@ export function ResponsiveAppShell({
     <div className={`min-h-screen flex flex-col md:flex-row ${theme}`}>
       {/* Desktop sidebar */}
       <aside className="hidden md:flex w-56 border-r border-inherit flex-col p-4 space-y-4">
-        <span className="font-semibold text-sm">Tessellate</span>
+        <span className="font-semibold text-sm">Your product</span>
         <nav className="space-y-1 text-xs">
           <a href="#" className="block p-2 rounded-lg bg-neutral-200/60 dark:bg-neutral-800 font-medium">Dashboard</a>
           <a href="#" className="block p-2 rounded-lg opacity-70">Analytics</a>

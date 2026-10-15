@@ -21,9 +21,9 @@ export function InlineAIRewrite({ variant = 'quiet' }: InlineAIRewriteProps) {
 
   const originalText = 'We have built a platform that enables teams to construct web applications quickly.';
   const rewrittenTexts = {
-    concise: 'Tessellate accelerates interface construction through validated semantic resources.',
-    professional: 'Tessellate equips engineering organizations with a deterministic system for composing high-fidelity software.',
-    energetic: 'Ship stunning, production-ready interfaces instantly with Tessellate’s open resource vocabulary!',
+    concise: 'Our team helps you get more done with less effort.',
+    professional: 'Our platform gives organisations a reliable way to manage their work with confidence and clarity.',
+    energetic: 'Get going in minutes and see results the same day!',
   };
 
   return (

@@ -17,11 +17,11 @@ export function DocumentDetail({ variant = 'quiet' }: DocumentDetailProps) {
 
   return (
     <div className={`w-full p-6 sm:p-8 rounded-xl border transition-colors ${bg}`}>
-      <span className="text-[10px] font-mono font-bold text-neutral-500 uppercase mb-2 block">Architecture Spec</span>
-      <h2 className="text-xl font-bold mb-4">Deterministic Composition Invariants</h2>
+      <span className="text-[10px] font-mono font-bold text-neutral-500 uppercase mb-2 block">Document</span>
+      <h2 className="text-xl font-bold mb-4">Document title</h2>
       <div className="space-y-3 text-xs sm:text-sm opacity-80 leading-relaxed mb-6">
         <p>
-          All Tessellate interfaces compose through validated manifests rather than arbitrary runtime code mutations. This guarantees full exportability to any modern React environment.
+          Sample document text. Replace with the record's content.
         </p>
       </div>
       <button type="button" className="px-4 py-2 rounded-lg border text-xs font-semibold">

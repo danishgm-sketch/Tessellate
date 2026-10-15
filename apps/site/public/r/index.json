@@ -653,6 +653,32 @@
       ]
     },
     {
+      "name": "booking-details-form",
+      "type": "registry:block",
+      "title": "Booking Details Form",
+      "description": "Contact details, notes and consent for a booking, a deposit summary and a confirmation state.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "forms",
+        "scheduling"
+      ]
+    },
+    {
+      "name": "booking-slot-picker",
+      "type": "registry:block",
+      "title": "Booking Slot Picker",
+      "description": "Day tabs and a grid of available times; arrow keys move between days and exactly one slot can be chosen.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "forms",
+        "scheduling"
+      ]
+    },
+    {
       "name": "bottom-sheet",
       "type": "registry:ui",
       "title": "Bottom Sheet",
@@ -1076,6 +1102,19 @@
       ]
     },
     {
+      "name": "contact-form",
+      "type": "registry:block",
+      "title": "Contact Form",
+      "description": "Contact or support request with topic choice, validation and a sent confirmation.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "forms",
+        "support"
+      ]
+    },
+    {
       "name": "context-menu",
       "type": "registry:ui",
       "title": "Context Menu",
@@ -1393,6 +1432,19 @@
       ]
     },
     {
+      "name": "document-editor",
+      "type": "registry:block",
+      "title": "Document Editor",
+      "description": "Markdown editor for notes and documents with a formatting toolbar, keyboard shortcuts, word count and save state.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "forms",
+        "editor"
+      ]
+    },
+    {
       "name": "documentation-shell",
       "type": "registry:block",
       "title": "Documentation Shell",
@@ -1597,6 +1649,19 @@
         "blocks",
         "onboarding",
         "empty"
+      ]
+    },
+    {
+      "name": "entity-form",
+      "type": "registry:block",
+      "title": "Record Form",
+      "description": "Create or edit a record from its fields, with input types inferred from field names and required-field validation.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "forms",
+        "data"
       ]
     },
     {
@@ -2987,6 +3052,19 @@
       ]
     },
     {
+      "name": "order-summary",
+      "type": "registry:block",
+      "title": "Order Summary",
+      "description": "Line items, discount, delivery, tax and totals in minor units, formatted for any currency and locale.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "commerce",
+        "checkout"
+      ]
+    },
+    {
       "name": "organization-settings",
       "type": "registry:block",
       "title": "Organization Settings",
@@ -3095,6 +3173,32 @@
         "primitives",
         "inputs",
         "auth"
+      ]
+    },
+    {
+      "name": "password-reset-form",
+      "type": "registry:block",
+      "title": "Password Reset Form",
+      "description": "Request a password reset link with an account-neutral confirmation that never reveals whether an email is registered.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "auth",
+        "forms"
+      ]
+    },
+    {
+      "name": "payment-form",
+      "type": "registry:block",
+      "title": "Payment Form",
+      "description": "Checkout payment layout with billing name and postcode and a slot for your provider's secure card fields; it never handles card numbers itself.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "commerce",
+        "checkout"
       ]
     },
     {
@@ -3782,6 +3886,32 @@
         "motion",
         "microinteractions",
         "transition"
+      ]
+    },
+    {
+      "name": "sign-in-form",
+      "type": "registry:block",
+      "title": "Sign-in Form",
+      "description": "Email and password sign-in with inline validation, accessible errors, a loading state and links to reset and sign-up.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "auth",
+        "forms"
+      ]
+    },
+    {
+      "name": "sign-up-form",
+      "type": "registry:block",
+      "title": "Sign-up Form",
+      "description": "Account creation with name, email, password length guidance and terms consent.",
+      "dependencies": [],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "categories": [
+        "auth",
+        "forms"
       ]
     },
     {

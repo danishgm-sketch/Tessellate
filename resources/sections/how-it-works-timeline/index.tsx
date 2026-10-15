@@ -16,8 +16,8 @@ export function HowItWorksTimeline({ variant = 'quiet' }: HowItWorksTimelineProp
   }
 
   const milestones = [
-    { title: 'Project Initialization', desc: 'Run npx @tessellate/cli init in any React + Tailwind codebase.' },
-    { title: 'Semantic Normalisation', desc: 'Tessellate maps existing tokens to Design DNA dimensions.' },
+    { title: 'Project Initialization', desc: 'Create your account and connect your existing tools in a few minutes.' },
+    { title: 'Semantic Normalisation', desc: 'We bring your existing data across automatically.' },
     { title: 'Verified Expansion', desc: 'Pull verified blocks and sections as your product scales.' },
   ];
 

@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 export type FaqAccordionVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface FaqAccordionProps {
+  /** Questions and answers to show. */
+  items?: Array<{ q: string; a: string }>;
   variant?: FaqAccordionVariant;
 }
 
-export function FaqAccordion({ variant = 'quiet' }: FaqAccordionProps) {
+export function FaqAccordion({ variant = 'quiet', items }: FaqAccordionProps) {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
@@ -20,10 +22,11 @@ export function FaqAccordion({ variant = 'quiet' }: FaqAccordionProps) {
     itemBorder = 'border-[#2E3440]';
   }
 
-  const faqs = [
-    { q: 'Is Tessellate really 100% free and open core?', a: 'Yes. All 324 canonical launch resources, Design DNA tools, and export CLI commands are free under MIT.' },
-    { q: 'Can autonomous coding agents use this directly?', a: 'Yes. Tessellate provides OpenAPI schemas, llms.txt, and official MCP server bindings for Cursor, Claude Code, and Antigravity.' },
-    { q: 'Do I need to install any proprietary runtime package?', a: 'No. Tessellate exports pure React and Tailwind CSS source code directly into your repository.' },
+  const faqs = items ?? [
+    { q: 'How do I get started?', a: 'Create an account, then follow the short setup steps. Most people are up and running in a few minutes.' },
+    { q: 'Can I change or cancel later?', a: 'Yes. You can change your plan or cancel at any time from your account settings.' },
+    { q: 'How is my data protected?', a: 'Your data is encrypted in transit and at rest, and only you and the people you invite can see it.' },
+    { q: 'How do I get help?', a: 'Contact our support team from the Help page and we will reply by email.' },
   ];
 
   return (

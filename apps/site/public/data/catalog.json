@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
   "generatedAt": "1970-01-01T00:00:00.000Z",
-  "count": 324,
+  "count": 334,
   "resources": [
     {
       "schemaVersion": "1.0.0",
@@ -11570,6 +11570,586 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_v2_booking_details_form",
+      "slug": "booking-details-form",
+      "name": "Booking Details Form",
+      "version": "1.0.0",
+      "status": "experimental",
+      "description": "Contact details, notes and consent for a booking, a deposit summary and a confirmation state.",
+      "resourceType": "block",
+      "categories": [
+        "forms",
+        "scheduling"
+      ],
+      "roles": [
+        "booking",
+        "form",
+        "checkout"
+      ],
+      "purposes": [
+        "Confirm a booking"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "booking-scheduling",
+          "weight": 95
+        },
+        {
+          "tag": "healthcare-clinic",
+          "weight": 90
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "substantial"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "booking-details-form",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "BookingDetailsFormPreview",
+        "defaultProps": {
+          "entity": "Appointment",
+          "selectedSlotLabel": "Tuesday 13 January at 09:45",
+          "depositLabel": "£20.00"
+        },
+        "viewport": 1440
+      },
+      "slots": [],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Flat surface with a hairline border.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Raised surface with a soft shadow.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Strong outline for high-contrast layouts.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "booking",
+        "checkout",
+        "details"
+      ],
+      "intent": {
+        "summary": "Contact details, notes and consent for a booking, a deposit summary and a confirmation state.",
+        "idealFor": [
+          "The second step of a booking flow"
+        ],
+        "avoidFor": [
+          "Account sign-up"
+        ],
+        "jobs": [
+          "Collect booking details and confirm"
+        ],
+        "contentRequirements": []
+      },
+      "visualDNA": {
+        "visualAmbition": 30,
+        "density": 45,
+        "curvature": 40
+      },
+      "interactionDNA": {
+        "interactionDensity": 55,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 45,
+        "whitespace": 55,
+        "asymmetry": 0,
+        "preferredWidths": [
+          "content"
+        ],
+        "layoutFamilies": [
+          "standard"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "stack"
+      },
+      "accessibility": {
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
+        "dependencyCleanliness": 100,
+        "documentation": 80
+      },
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Heading."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Line under the heading."
+        },
+        {
+          "name": "entity",
+          "type": "string",
+          "required": false,
+          "description": "What is booked.",
+          "content": "entity"
+        },
+        {
+          "name": "selectedSlotLabel",
+          "type": "string",
+          "required": false,
+          "description": "Chosen slot, e.g. \"Tuesday 13 January at 09:45\"."
+        },
+        {
+          "name": "depositLabel",
+          "type": "string",
+          "required": false,
+          "description": "Deposit due now, e.g. \"£20.00\"."
+        },
+        {
+          "name": "onSubmit",
+          "type": "callback",
+          "required": false,
+          "description": "Receives { name, email, phone, notes, consent }."
+        },
+        {
+          "name": "onBack",
+          "type": "callback",
+          "required": false,
+          "description": "Shows a Back button when provided."
+        },
+        {
+          "name": "errorMessage",
+          "type": "string",
+          "required": false,
+          "description": "Error from your service, announced in an alert region when booking fails."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Shows the busy state and disables submission."
+        },
+        {
+          "name": "confirmed",
+          "type": "boolean",
+          "required": false,
+          "description": "Shows the confirmation state."
+        },
+        {
+          "name": "privacyHref",
+          "type": "string",
+          "required": false,
+          "description": "Privacy policy link."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": false,
+        "error": true
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_v2_booking_slot_picker",
+      "slug": "booking-slot-picker",
+      "name": "Booking Slot Picker",
+      "version": "1.0.0",
+      "status": "experimental",
+      "description": "Day tabs and a grid of available times; arrow keys move between days and exactly one slot can be chosen.",
+      "resourceType": "block",
+      "categories": [
+        "forms",
+        "scheduling"
+      ],
+      "roles": [
+        "booking",
+        "calendar",
+        "picker"
+      ],
+      "purposes": [
+        "Appointment booking",
+        "Class and table reservations"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "booking-scheduling",
+          "weight": 95
+        },
+        {
+          "tag": "healthcare-clinic",
+          "weight": 90
+        },
+        {
+          "tag": "beauty-salon",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "substantial"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "booking-slot-picker",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "BookingSlotPickerPreview",
+        "defaultProps": {
+          "entity": "Appointment",
+          "durationMinutes": 45
+        },
+        "viewport": 1440
+      },
+      "slots": [],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Flat surface with a hairline border.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Raised surface with a soft shadow.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Strong outline for high-contrast layouts.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "booking",
+        "appointments",
+        "availability",
+        "time-slot"
+      ],
+      "intent": {
+        "summary": "Day tabs and a grid of available times; arrow keys move between days and exactly one slot can be chosen.",
+        "idealFor": [
+          "Self-service booking"
+        ],
+        "avoidFor": [
+          "Multi-day stays (use a date range picker)"
+        ],
+        "jobs": [
+          "Choose a time to book"
+        ],
+        "contentRequirements": []
+      },
+      "visualDNA": {
+        "visualAmbition": 30,
+        "density": 55,
+        "curvature": 40
+      },
+      "interactionDNA": {
+        "interactionDensity": 55,
+        "motionIntensity": 5,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 55,
+        "whitespace": 45,
+        "asymmetry": 0,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "standard"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "stack"
+      },
+      "accessibility": {
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
+        "dependencyCleanliness": 100,
+        "documentation": 80
+      },
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Heading (defaults to \"Choose a time for your <entity>\")."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Line under the heading."
+        },
+        {
+          "name": "entity",
+          "type": "string",
+          "required": false,
+          "description": "What is booked, e.g. \"Appointment\".",
+          "content": "entity"
+        },
+        {
+          "name": "days",
+          "type": "object[]",
+          "required": false,
+          "description": "Availability: [{ date: \"2026-01-12\", slots: [\"09:00\", …] }]. Omit to show labelled example availability."
+        },
+        {
+          "name": "durationMinutes",
+          "type": "number",
+          "required": false,
+          "description": "Slot length shown to the user."
+        },
+        {
+          "name": "onSelect",
+          "type": "callback",
+          "required": false,
+          "description": "Receives { date, time } when a slot is chosen."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Shows \"Loading availability…\"."
+        },
+        {
+          "name": "errorMessage",
+          "type": "string",
+          "required": false,
+          "description": "Error announced in an alert region."
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "required": false,
+          "description": "Locale for day names, e.g. \"en-GB\"."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": true,
+        "error": true
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_bottom_sheet",
       "slug": "bottom-sheet",
       "name": "Bottom Sheet",
@@ -19146,6 +19726,275 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_v2_contact_form",
+      "slug": "contact-form",
+      "name": "Contact Form",
+      "version": "1.0.0",
+      "status": "experimental",
+      "description": "Contact or support request with topic choice, validation and a sent confirmation.",
+      "resourceType": "block",
+      "categories": [
+        "forms",
+        "support"
+      ],
+      "roles": [
+        "form",
+        "contact",
+        "support"
+      ],
+      "purposes": [
+        "Support requests",
+        "Enquiries"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "local-business",
+          "weight": 90
+        },
+        {
+          "tag": "professional-services",
+          "weight": 85
+        },
+        {
+          "tag": "helpdesk-support",
+          "weight": 80
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "substantial"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "contact-form",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "ContactFormPreview",
+        "defaultProps": {},
+        "viewport": 1440
+      },
+      "slots": [],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Flat surface with a hairline border.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Raised surface with a soft shadow.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Strong outline for high-contrast layouts.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "contact",
+        "support",
+        "enquiry"
+      ],
+      "intent": {
+        "summary": "Contact or support request with topic choice, validation and a sent confirmation.",
+        "idealFor": [
+          "Contact and support pages"
+        ],
+        "avoidFor": [
+          "Live chat"
+        ],
+        "jobs": [
+          "Send a message to the business"
+        ],
+        "contentRequirements": []
+      },
+      "visualDNA": {
+        "visualAmbition": 30,
+        "density": 45,
+        "curvature": 40
+      },
+      "interactionDNA": {
+        "interactionDensity": 55,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 45,
+        "whitespace": 55,
+        "asymmetry": 0,
+        "preferredWidths": [
+          "content"
+        ],
+        "layoutFamilies": [
+          "standard"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "stack"
+      },
+      "accessibility": {
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
+        "dependencyCleanliness": 100,
+        "documentation": 80
+      },
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Heading."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Line under the heading."
+        },
+        {
+          "name": "topics",
+          "type": "string[]",
+          "required": false,
+          "description": "Topics to choose from."
+        },
+        {
+          "name": "onSubmit",
+          "type": "callback",
+          "required": false,
+          "description": "Receives { name, email, topic, message }."
+        },
+        {
+          "name": "errorMessage",
+          "type": "string",
+          "required": false,
+          "description": "Error from your service, announced in an alert region when sending fails."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Shows the busy state and disables submission."
+        },
+        {
+          "name": "responseTime",
+          "type": "string",
+          "required": false,
+          "description": "Expected reply time shown after sending."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": false,
+        "error": true
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_primitive_context_menu",
       "slug": "context-menu",
       "name": "Context Menu",
@@ -24764,6 +25613,298 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_v2_document_editor",
+      "slug": "document-editor",
+      "name": "Document Editor",
+      "version": "1.0.0",
+      "status": "experimental",
+      "description": "Markdown editor for notes and documents with a formatting toolbar, keyboard shortcuts, word count and save state.",
+      "resourceType": "block",
+      "categories": [
+        "forms",
+        "editor"
+      ],
+      "roles": [
+        "editor",
+        "document",
+        "notes"
+      ],
+      "purposes": [
+        "Clinical or case notes",
+        "Documents"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "healthcare-clinic",
+          "weight": 85
+        },
+        {
+          "tag": "productivity",
+          "weight": 85
+        },
+        {
+          "tag": "professional-services",
+          "weight": 80
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "substantial"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "document-editor",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "DocumentEditorPreview",
+        "defaultProps": {
+          "entity": "Treatment note",
+          "value": "## Session summary\n\n- Range of motion improved\n- Continue home exercises"
+        },
+        "viewport": 1440
+      },
+      "slots": [],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Flat surface with a hairline border.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Raised surface with a soft shadow.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Strong outline for high-contrast layouts.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "editor",
+        "markdown",
+        "notes"
+      ],
+      "intent": {
+        "summary": "Markdown editor for notes and documents with a formatting toolbar, keyboard shortcuts, word count and save state.",
+        "idealFor": [
+          "Notes attached to a record"
+        ],
+        "avoidFor": [
+          "Collaborative real-time editing"
+        ],
+        "jobs": [
+          "Write and save a note"
+        ],
+        "contentRequirements": []
+      },
+      "visualDNA": {
+        "visualAmbition": 30,
+        "density": 50,
+        "curvature": 40
+      },
+      "interactionDNA": {
+        "interactionDensity": 55,
+        "motionIntensity": 5,
+        "keyboardComplexity": "medium",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 50,
+        "whitespace": 50,
+        "asymmetry": 0,
+        "preferredWidths": [
+          "content",
+          "wide"
+        ],
+        "layoutFamilies": [
+          "standard"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "stack"
+      },
+      "accessibility": {
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
+        "dependencyCleanliness": 100,
+        "documentation": 80
+      },
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Heading (defaults to the entity name)."
+        },
+        {
+          "name": "entity",
+          "type": "string",
+          "required": false,
+          "description": "What is being written, e.g. \"Treatment note\".",
+          "content": "entity"
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "description": "Initial Markdown."
+        },
+        {
+          "name": "onChange",
+          "type": "callback",
+          "required": false,
+          "description": "Receives the Markdown on every edit."
+        },
+        {
+          "name": "onSave",
+          "type": "callback",
+          "required": false,
+          "description": "Shows a Save button and handles Ctrl+S."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "description": "Placeholder text."
+        },
+        {
+          "name": "savedLabel",
+          "type": "string",
+          "required": false,
+          "description": "Last-saved message."
+        },
+        {
+          "name": "errorMessage",
+          "type": "string",
+          "required": false,
+          "description": "Error from your service, announced in an alert region when saving fails."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Shows the busy state and disables submission."
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "description": "Read-only mode."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": true,
+        "error": true
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_shell_documentation_shell",
       "slug": "documentation-shell",
       "name": "Documentation Shell",
@@ -28442,6 +29583,300 @@
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_v2_entity_form",
+      "slug": "entity-form",
+      "name": "Record Form",
+      "version": "1.0.0",
+      "status": "experimental",
+      "description": "Create or edit a record from its fields, with input types inferred from field names and required-field validation.",
+      "resourceType": "block",
+      "categories": [
+        "forms",
+        "data"
+      ],
+      "roles": [
+        "form",
+        "entity",
+        "create"
+      ],
+      "purposes": [
+        "Create records",
+        "Edit records"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "internal-tools",
+          "weight": 90
+        },
+        {
+          "tag": "crm",
+          "weight": 85
+        },
+        {
+          "tag": "saas",
+          "weight": 80
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "substantial"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "entity-form",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "EntityFormPreview",
+        "defaultProps": {
+          "entity": "Appointment",
+          "fields": [
+            "date and time",
+            "service",
+            "with",
+            "status",
+            "notes"
+          ]
+        },
+        "viewport": 1440
+      },
+      "slots": [],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Flat surface with a hairline border.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Raised surface with a soft shadow.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Strong outline for high-contrast layouts.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "form",
+        "crud",
+        "record"
+      ],
+      "intent": {
+        "summary": "Create or edit a record from its fields, with input types inferred from field names and required-field validation.",
+        "idealFor": [
+          "Back-office data entry"
+        ],
+        "avoidFor": [
+          "Multi-step wizards"
+        ],
+        "jobs": [
+          "Create or update a record"
+        ],
+        "contentRequirements": []
+      },
+      "visualDNA": {
+        "visualAmbition": 30,
+        "density": 55,
+        "curvature": 40
+      },
+      "interactionDNA": {
+        "interactionDensity": 55,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 55,
+        "whitespace": 45,
+        "asymmetry": 0,
+        "preferredWidths": [
+          "content"
+        ],
+        "layoutFamilies": [
+          "standard"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "stack"
+      },
+      "accessibility": {
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
+        "dependencyCleanliness": 100,
+        "documentation": 80
+      },
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Form heading (defaults to \"New <entity>\").",
+          "content": "heading"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Line under the heading.",
+          "content": "description"
+        },
+        {
+          "name": "entity",
+          "type": "string",
+          "required": false,
+          "description": "Record type, e.g. \"Appointment\".",
+          "content": "entity"
+        },
+        {
+          "name": "fields",
+          "type": "object[]",
+          "required": false,
+          "description": "Field names or { name, label, type, required, options, hint } specs.",
+          "content": "fields"
+        },
+        {
+          "name": "onSubmit",
+          "type": "callback",
+          "required": false,
+          "description": "Receives the values keyed by field name."
+        },
+        {
+          "name": "onCancel",
+          "type": "callback",
+          "required": false,
+          "description": "Shows a Cancel button when provided."
+        },
+        {
+          "name": "submitLabel",
+          "type": "string",
+          "required": false,
+          "description": "Button label."
+        },
+        {
+          "name": "errorMessage",
+          "type": "string",
+          "required": false,
+          "description": "Error from your service, announced in an alert region when saving fails."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Shows the busy state and disables submission."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": false,
+        "error": true
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -52957,6 +54392,297 @@
     },
     {
       "schemaVersion": "1.0.0",
+      "id": "res_v2_order_summary",
+      "slug": "order-summary",
+      "name": "Order Summary",
+      "version": "1.0.0",
+      "status": "experimental",
+      "description": "Line items, discount, delivery, tax and totals in minor units, formatted for any currency and locale.",
+      "resourceType": "block",
+      "categories": [
+        "commerce",
+        "checkout"
+      ],
+      "roles": [
+        "commerce",
+        "checkout",
+        "summary"
+      ],
+      "purposes": [
+        "Checkout",
+        "Basket"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "ecommerce",
+          "weight": 95
+        },
+        {
+          "tag": "booking-scheduling",
+          "weight": 80
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "substantial"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "order-summary",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "OrderSummaryPreview",
+        "defaultProps": {
+          "dueNowAmount": 2000
+        },
+        "viewport": 1440
+      },
+      "slots": [],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Flat surface with a hairline border.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Raised surface with a soft shadow.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Strong outline for high-contrast layouts.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "checkout",
+        "cart",
+        "totals"
+      ],
+      "intent": {
+        "summary": "Line items, discount, delivery, tax and totals in minor units, formatted for any currency and locale.",
+        "idealFor": [
+          "Checkout sidebars"
+        ],
+        "avoidFor": [
+          "Invoices (use a table)"
+        ],
+        "jobs": [
+          "Show what the customer is paying for"
+        ],
+        "contentRequirements": []
+      },
+      "visualDNA": {
+        "visualAmbition": 30,
+        "density": 50,
+        "curvature": 40
+      },
+      "interactionDNA": {
+        "interactionDensity": 15,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 50,
+        "whitespace": 50,
+        "asymmetry": 0,
+        "preferredWidths": [
+          "narrow"
+        ],
+        "layoutFamilies": [
+          "standard"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "stack"
+      },
+      "accessibility": {
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
+        "dependencyCleanliness": 100,
+        "documentation": 80
+      },
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Heading."
+        },
+        {
+          "name": "lines",
+          "type": "object[]",
+          "required": false,
+          "description": "Items: [{ name, quantity, unitAmount (minor units), description }]. Omit to show labelled example items."
+        },
+        {
+          "name": "currency",
+          "type": "string",
+          "required": false,
+          "description": "ISO 4217 code, e.g. \"GBP\"."
+        },
+        {
+          "name": "discountAmount",
+          "type": "number",
+          "required": false,
+          "description": "Discount in minor units."
+        },
+        {
+          "name": "discountLabel",
+          "type": "string",
+          "required": false,
+          "description": "Discount label."
+        },
+        {
+          "name": "taxAmount",
+          "type": "number",
+          "required": false,
+          "description": "Tax in minor units."
+        },
+        {
+          "name": "taxLabel",
+          "type": "string",
+          "required": false,
+          "description": "Tax label, e.g. \"VAT\"."
+        },
+        {
+          "name": "shippingAmount",
+          "type": "number",
+          "required": false,
+          "description": "Delivery in minor units (0 shows \"Free\")."
+        },
+        {
+          "name": "dueNowAmount",
+          "type": "number",
+          "required": false,
+          "description": "Deposit due now in minor units."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Shows \"Updating totals…\"."
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "required": false,
+          "description": "Locale for number formatting."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": true,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
       "id": "res_blk_organization_settings",
       "slug": "organization-settings",
       "name": "Organization Settings",
@@ -54924,6 +56650,536 @@
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_v2_password_reset_form",
+      "slug": "password-reset-form",
+      "name": "Password Reset Form",
+      "version": "1.0.0",
+      "status": "experimental",
+      "description": "Request a password reset link with an account-neutral confirmation that never reveals whether an email is registered.",
+      "resourceType": "block",
+      "categories": [
+        "auth",
+        "forms"
+      ],
+      "roles": [
+        "auth",
+        "password-reset",
+        "form"
+      ],
+      "purposes": [
+        "Account recovery"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "saas",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "substantial"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "password-reset-form",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "PasswordResetFormPreview",
+        "defaultProps": {
+          "productName": "Northside Physio"
+        },
+        "viewport": 1440
+      },
+      "slots": [],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Flat surface with a hairline border.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Raised surface with a soft shadow.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Strong outline for high-contrast layouts.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "auth",
+        "forgot-password",
+        "reset"
+      ],
+      "intent": {
+        "summary": "Request a password reset link with an account-neutral confirmation that never reveals whether an email is registered.",
+        "idealFor": [
+          "Email and password accounts"
+        ],
+        "avoidFor": [
+          "SSO-only products"
+        ],
+        "jobs": [
+          "Recover access to an account"
+        ],
+        "contentRequirements": []
+      },
+      "visualDNA": {
+        "visualAmbition": 30,
+        "density": 35,
+        "curvature": 40
+      },
+      "interactionDNA": {
+        "interactionDensity": 55,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 35,
+        "whitespace": 65,
+        "asymmetry": 0,
+        "preferredWidths": [
+          "narrow"
+        ],
+        "layoutFamilies": [
+          "standard"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "stack"
+      },
+      "accessibility": {
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
+        "dependencyCleanliness": 100,
+        "documentation": 80
+      },
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "productName",
+          "type": "string",
+          "required": false,
+          "description": "Product name shown above the form.",
+          "content": "productName"
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Form heading."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Explanation under the heading."
+        },
+        {
+          "name": "onSubmit",
+          "type": "callback",
+          "required": false,
+          "description": "Receives the email address and sends the reset email."
+        },
+        {
+          "name": "errorMessage",
+          "type": "string",
+          "required": false,
+          "description": "Error from your service, announced in an alert region when the request fails."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Shows the busy state and disables submission."
+        },
+        {
+          "name": "signInHref",
+          "type": "string",
+          "required": false,
+          "description": "Link back to sign-in."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": false,
+        "error": true
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_v2_payment_form",
+      "slug": "payment-form",
+      "name": "Payment Form",
+      "version": "1.0.0",
+      "status": "experimental",
+      "description": "Checkout payment layout with billing name and postcode and a slot for your provider's secure card fields; it never handles card numbers itself.",
+      "resourceType": "block",
+      "categories": [
+        "commerce",
+        "checkout"
+      ],
+      "roles": [
+        "commerce",
+        "checkout",
+        "payment"
+      ],
+      "purposes": [
+        "Take a payment",
+        "Deposits"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "ecommerce",
+          "weight": 95
+        },
+        {
+          "tag": "booking-scheduling",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "substantial"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "payment-form",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "PaymentFormPreview",
+        "defaultProps": {
+          "amountLabel": "£20.00"
+        },
+        "viewport": 1440
+      },
+      "slots": [],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Flat surface with a hairline border.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Raised surface with a soft shadow.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Strong outline for high-contrast layouts.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "payment",
+        "checkout",
+        "card"
+      ],
+      "intent": {
+        "summary": "Checkout payment layout with billing name and postcode and a slot for your provider's secure card fields; it never handles card numbers itself.",
+        "idealFor": [
+          "Stripe Elements or similar hosted fields"
+        ],
+        "avoidFor": [
+          "Storing card data"
+        ],
+        "jobs": [
+          "Collect payment securely"
+        ],
+        "contentRequirements": []
+      },
+      "visualDNA": {
+        "visualAmbition": 30,
+        "density": 45,
+        "curvature": 40
+      },
+      "interactionDNA": {
+        "interactionDensity": 55,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 45,
+        "whitespace": 55,
+        "asymmetry": 0,
+        "preferredWidths": [
+          "narrow"
+        ],
+        "layoutFamilies": [
+          "standard"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "stack"
+      },
+      "accessibility": {
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
+        "dependencyCleanliness": 100,
+        "documentation": 80
+      },
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Heading."
+        },
+        {
+          "name": "amountLabel",
+          "type": "string",
+          "required": false,
+          "description": "Formatted amount on the pay button."
+        },
+        {
+          "name": "cardFields",
+          "type": "node",
+          "required": false,
+          "description": "Your payment provider's secure card fields."
+        },
+        {
+          "name": "onPay",
+          "type": "callback",
+          "required": false,
+          "description": "Receives { name, postcode } when the form is valid."
+        },
+        {
+          "name": "errorMessage",
+          "type": "string",
+          "required": false,
+          "description": "Error from your service, announced in an alert region when payment fails."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Shows the busy state and disables submission."
+        },
+        {
+          "name": "securityNote",
+          "type": "string",
+          "required": false,
+          "description": "Line under the button."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": false,
+        "error": true
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -67132,6 +69388,584 @@
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
       "updatedAt": "2026-10-10T12:00:00.000Z"
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_v2_sign_in_form",
+      "slug": "sign-in-form",
+      "name": "Sign-in Form",
+      "version": "1.0.0",
+      "status": "experimental",
+      "description": "Email and password sign-in with inline validation, accessible errors, a loading state and links to reset and sign-up.",
+      "resourceType": "block",
+      "categories": [
+        "auth",
+        "forms"
+      ],
+      "roles": [
+        "auth",
+        "sign-in",
+        "form"
+      ],
+      "purposes": [
+        "Account sign-in",
+        "Client portals"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "saas",
+          "weight": 90
+        },
+        {
+          "tag": "healthcare-clinic",
+          "weight": 85
+        },
+        {
+          "tag": "booking-scheduling",
+          "weight": 85
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "substantial"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "sign-in-form",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "SignInFormPreview",
+        "defaultProps": {
+          "productName": "Northside Physio",
+          "description": "Welcome back. Sign in to manage your appointments."
+        },
+        "viewport": 1440
+      },
+      "slots": [],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Flat surface with a hairline border.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Raised surface with a soft shadow.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Strong outline for high-contrast layouts.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "auth",
+        "login",
+        "sign-in",
+        "password"
+      ],
+      "intent": {
+        "summary": "Email and password sign-in with inline validation, accessible errors, a loading state and links to reset and sign-up.",
+        "idealFor": [
+          "Any product with accounts"
+        ],
+        "avoidFor": [
+          "Passwordless-only products"
+        ],
+        "jobs": [
+          "Sign a returning user in"
+        ],
+        "contentRequirements": []
+      },
+      "visualDNA": {
+        "visualAmbition": 30,
+        "density": 40,
+        "curvature": 40
+      },
+      "interactionDNA": {
+        "interactionDensity": 55,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 40,
+        "whitespace": 60,
+        "asymmetry": 0,
+        "preferredWidths": [
+          "narrow"
+        ],
+        "layoutFamilies": [
+          "standard"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "stack"
+      },
+      "accessibility": {
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
+        "dependencyCleanliness": 100,
+        "documentation": 80
+      },
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "productName",
+          "type": "string",
+          "required": false,
+          "description": "Product name shown above the form.",
+          "content": "productName"
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Form heading."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Short line under the heading."
+        },
+        {
+          "name": "onSubmit",
+          "type": "callback",
+          "required": false,
+          "description": "Receives { email, password, remember }; return a promise to show the loading state."
+        },
+        {
+          "name": "errorMessage",
+          "type": "string",
+          "required": false,
+          "description": "Error from your service, announced in an alert region when sign-in fails."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Shows the busy state and disables submission."
+        },
+        {
+          "name": "forgotPasswordHref",
+          "type": "string",
+          "required": false,
+          "description": "Link to the password reset page."
+        },
+        {
+          "name": "signUpHref",
+          "type": "string",
+          "required": false,
+          "description": "Link to account creation."
+        },
+        {
+          "name": "submitLabel",
+          "type": "string",
+          "required": false,
+          "description": "Button label."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": false,
+        "error": true
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "res_v2_sign_up_form",
+      "slug": "sign-up-form",
+      "name": "Sign-up Form",
+      "version": "1.0.0",
+      "status": "experimental",
+      "description": "Account creation with name, email, password length guidance and terms consent.",
+      "resourceType": "block",
+      "categories": [
+        "auth",
+        "forms"
+      ],
+      "roles": [
+        "auth",
+        "sign-up",
+        "form"
+      ],
+      "purposes": [
+        "Account creation",
+        "Onboarding entry"
+      ],
+      "productArchetypes": [
+        {
+          "tag": "saas",
+          "weight": 90
+        },
+        {
+          "tag": "marketplace",
+          "weight": 80
+        }
+      ],
+      "creator": {
+        "id": "tessellate_core",
+        "displayName": "Tessellate Core",
+        "handle": "tessellate",
+        "url": "https://tessellate.design"
+      },
+      "provenance": {
+        "origin": "tessellate",
+        "derivative": false,
+        "aiAssistance": "substantial"
+      },
+      "license": {
+        "spdx": "MIT",
+        "name": "MIT License",
+        "url": "https://opensource.org/licenses/MIT",
+        "redistributionVerified": true,
+        "attributionRequired": false
+      },
+      "framework": "react",
+      "language": "typescript",
+      "styling": "tailwind",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "index.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "preview.tsx",
+          "kind": "component",
+          "required": true
+        },
+        {
+          "path": "fixtures.ts",
+          "kind": "fixture",
+          "required": true
+        },
+        {
+          "path": "README.md",
+          "kind": "asset",
+          "required": true
+        }
+      ],
+      "registry": {
+        "name": "sign-up-form",
+        "dependencies": [],
+        "devDependencies": [],
+        "registryDependencies": []
+      },
+      "preview": {
+        "component": "SignUpFormPreview",
+        "defaultProps": {
+          "productName": "Northside Physio"
+        },
+        "viewport": 1440
+      },
+      "slots": [],
+      "variants": [
+        {
+          "id": "quiet",
+          "name": "Quiet",
+          "description": "Flat surface with a hairline border.",
+          "props": {
+            "variant": "quiet"
+          }
+        },
+        {
+          "id": "expressive",
+          "name": "Expressive",
+          "description": "Raised surface with a soft shadow.",
+          "props": {
+            "variant": "expressive"
+          }
+        },
+        {
+          "id": "nocturne",
+          "name": "Nocturne",
+          "description": "Strong outline for high-contrast layouts.",
+          "props": {
+            "variant": "nocturne"
+          }
+        }
+      ],
+      "tags": [
+        "auth",
+        "register",
+        "sign-up"
+      ],
+      "intent": {
+        "summary": "Account creation with name, email, password length guidance and terms consent.",
+        "idealFor": [
+          "Self-serve sign-up"
+        ],
+        "avoidFor": [
+          "Invite-only products"
+        ],
+        "jobs": [
+          "Create a new account"
+        ],
+        "contentRequirements": []
+      },
+      "visualDNA": {
+        "visualAmbition": 30,
+        "density": 40,
+        "curvature": 40
+      },
+      "interactionDNA": {
+        "interactionDensity": 55,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
+        "hoverDependency": "none",
+        "directManipulation": false
+      },
+      "layoutDNA": {
+        "density": 40,
+        "whitespace": 60,
+        "asymmetry": 0,
+        "preferredWidths": [
+          "narrow"
+        ],
+        "layoutFamilies": [
+          "standard"
+        ]
+      },
+      "responsive": {
+        "verifiedWidths": [
+          360,
+          768,
+          1440
+        ],
+        "defaultStrategy": "stack"
+      },
+      "accessibility": {
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
+      },
+      "performance": {
+        "jsCost": "tiny",
+        "gpuCost": "none",
+        "mediaCost": "none",
+        "runtimeComplexity": "low",
+        "lazyRecommended": false,
+        "continuousAnimation": false
+      },
+      "complexity": "medium",
+      "customizability": "high",
+      "compatibility": {},
+      "relationships": [],
+      "quality": {
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
+        "dependencyCleanliness": 100,
+        "documentation": 80
+      },
+      "createdAt": "2026-10-15T00:00:00.000Z",
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "productName",
+          "type": "string",
+          "required": false,
+          "description": "Product name shown above the form.",
+          "content": "productName"
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Form heading."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Short line under the heading."
+        },
+        {
+          "name": "onSubmit",
+          "type": "callback",
+          "required": false,
+          "description": "Receives { name, email, password, acceptTerms }."
+        },
+        {
+          "name": "errorMessage",
+          "type": "string",
+          "required": false,
+          "description": "Error from your service, announced in an alert region when sign-up fails."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Shows the busy state and disables submission."
+        },
+        {
+          "name": "minPasswordLength",
+          "type": "number",
+          "required": false,
+          "description": "Minimum password length checked in the form (enforce on the server too)."
+        },
+        {
+          "name": "termsHref",
+          "type": "string",
+          "required": false,
+          "description": "Terms page link."
+        },
+        {
+          "name": "privacyHref",
+          "type": "string",
+          "required": false,
+          "description": "Privacy policy link."
+        },
+        {
+          "name": "signInHref",
+          "type": "string",
+          "required": false,
+          "description": "Sign-in page link."
+        },
+        {
+          "name": "submitLabel",
+          "type": "string",
+          "required": false,
+          "description": "Button label."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": false,
+        "error": true
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",

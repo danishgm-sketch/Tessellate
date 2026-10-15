@@ -27,7 +27,7 @@ export function OnboardingChecklist({ variant = 'quiet' }: OnboardingChecklistPr
 
   return (
     <div className={`w-full p-6 sm:p-8 rounded-xl border transition-colors ${bg}`}>
-      <h3 className="text-base font-bold mb-2">Getting Started with Tessellate</h3>
+      <h3 className="text-base font-bold mb-2">Getting started</h3>
       <p className="text-xs opacity-75 mb-6">Complete these quick steps to master the composition engine.</p>
       <div className="space-y-3">
         {tasks.map((t) => (

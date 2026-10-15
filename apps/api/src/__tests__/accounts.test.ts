@@ -56,7 +56,8 @@ async function signUpAndVerify(email: string, password = 'correct horse battery 
   return b;
 }
 
-describe('Accounts: email + password (D-037)', () => {
+// Password hashing is deliberately slow; give these flows room on a busy CI machine.
+describe('Accounts: email + password (D-037)', { timeout: 20000 }, () => {
   beforeEach(() => {
     resetAuthStateForTests();
     resetInferenceStateForTests();

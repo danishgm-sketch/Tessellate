@@ -14,7 +14,7 @@ export function MobileDrawerNav({ variant = 'quiet' }: MobileDrawerNavProps) {
 
   return (
     <div className="w-full p-4 flex justify-between items-center border-b">
-      <span className="font-semibold text-sm">Tessellate</span>
+      <span className="font-semibold text-sm">Your product</span>
       <button type="button" onClick={() => setOpen(true)} className="p-2 border rounded-lg text-xs">
         ☰ Menu
       </button>

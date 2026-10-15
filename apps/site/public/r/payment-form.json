@@ -1,0 +1,32 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "payment-form",
+  "type": "registry:block",
+  "title": "Payment Form",
+  "description": "Checkout payment layout with billing name and postcode and a slot for your provider's secure card fields; it never handles card numbers itself.",
+  "dependencies": [],
+  "devDependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "content": "import React, { useId, useState } from 'react';\n\nexport type PaymentFormVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface PaymentFormProps {\n  heading?: string;\n  /** Formatted amount on the pay button, e.g. \"£20.00\". */\n  amountLabel?: string;\n  /**\n   * Your payment provider's hosted card fields (Stripe Elements, Adyen, …) go here. Card numbers must never\n   * touch your own servers; this component only lays out the surrounding form.\n   */\n  cardFields?: React.ReactNode;\n  /** Called when the provider's fields are ready to confirm the payment. */\n  onPay?: (billing: { name: string; postcode: string }) => void | Promise<void>;\n  errorMessage?: string;\n  loading?: boolean;\n  /** Line under the button, e.g. \"Payments are processed securely by Stripe.\" */\n  securityNote?: string;\n  variant?: PaymentFormVariant;\n}\n\nconst control =\n  'w-full rounded-ui-sm border border-hairline-strong bg-surface-raised px-3 py-2.5 text-base text-ink ' +\n  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus aria-[invalid=true]:border-danger';\n\n/**\n * Checkout payment layout: billing name and postcode, a slot for the payment provider's secure card fields,\n * and the pay action. It deliberately has no card-number inputs of its own.\n */\nexport function PaymentForm({\n  heading = 'Payment',\n  amountLabel,\n  cardFields,\n  onPay,\n  errorMessage,\n  loading = false,\n  securityNote = \"Card details are entered in your payment provider's secure fields and never stored by this site.\",\n  variant = 'quiet',\n}: PaymentFormProps) {\n  const id = useId();\n  const [name, setName] = useState('');\n  const [postcode, setPostcode] = useState('');\n  const [touched, setTouched] = useState(false);\n  const [busy, setBusy] = useState(false);\n  const nameInvalid = touched && !name.trim();\n  const postcodeInvalid = touched && !postcode.trim();\n  const isLoading = loading || busy;\n  const shell = variant === 'expressive' ? 'shadow-ui-2 border border-hairline' : variant === 'nocturne' ? 'border-2 border-hairline-strong' : 'border border-hairline';\n\n  const submit = async (e: React.FormEvent) => {\n    e.preventDefault();\n    setTouched(true);\n    if (!name.trim() || !postcode.trim() || !onPay) return;\n    setBusy(true);\n    try {\n      await onPay({ name, postcode });\n    } finally {\n      setBusy(false);\n    }\n  };\n\n  return (\n    <section className={`w-full max-w-md rounded-ui-lg bg-surface-raised p-6 font-body text-ink ${shell}`} aria-labelledby={`${id}-heading`}>\n      <h2 id={`${id}-heading`} className=\"font-heading text-lg font-semibold\">\n        {heading}\n      </h2>\n      <div role=\"alert\" className=\"mt-3 empty:hidden\">\n        {errorMessage && <p className=\"rounded-ui-sm border border-danger bg-surface px-3 py-2 text-sm text-danger\">{errorMessage}</p>}\n      </div>\n      <form className=\"mt-4 space-y-4\" noValidate onSubmit={submit} aria-busy={isLoading}>\n        <div className=\"space-y-1.5\">\n          <label htmlFor={`${id}-name`} className=\"block text-sm font-medium text-ink\">Name on card</label>\n          <input id={`${id}-name`} autoComplete=\"cc-name\" value={name} onChange={(e) => setName(e.target.value)} aria-invalid={nameInvalid} aria-describedby={nameInvalid ? `${id}-name-error` : undefined} className={control} />\n          {nameInvalid && <p id={`${id}-name-error`} className=\"text-sm text-danger\">Enter the name on the card.</p>}\n        </div>\n        <fieldset className=\"space-y-1.5\">\n          <legend className=\"text-sm font-medium text-ink\">Card</legend>\n          {cardFields ?? (\n            <div className=\"rounded-ui-sm border border-dashed border-hairline-strong bg-surface px-3 py-4 text-sm text-ink-secondary\">\n              Connect your payment provider: pass its secure card fields as <code className=\"font-mono\">cardFields</code>.\n            </div>\n          )}\n        </fieldset>\n        <div className=\"space-y-1.5\">\n          <label htmlFor={`${id}-postcode`} className=\"block text-sm font-medium text-ink\">Billing postcode</label>\n          <input id={`${id}-postcode`} autoComplete=\"postal-code\" value={postcode} onChange={(e) => setPostcode(e.target.value)} aria-invalid={postcodeInvalid} aria-describedby={postcodeInvalid ? `${id}-postcode-error` : undefined} className={`${control} max-w-[12rem]`} />\n          {postcodeInvalid && <p id={`${id}-postcode-error`} className=\"text-sm text-danger\">Enter your billing postcode.</p>}\n        </div>\n        <button\n          type=\"submit\"\n          disabled={isLoading}\n          className=\"w-full rounded-ui-sm bg-accent px-4 py-3 text-base font-semibold text-on-accent transition-colors duration-150 ease-ui hover:bg-accent-hover disabled:opacity-70 motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus\"\n        >\n          {isLoading ? 'Processing…' : amountLabel ? `Pay ${amountLabel}` : 'Pay now'}\n        </button>\n        <p className=\"text-xs text-ink-secondary\">{securityNote}</p>\n      </form>\n    </section>\n  );\n}\n",
+      "type": "registry:block",
+      "target": "components/tessellate/payment-form/index.tsx"
+    }
+  ],
+  "categories": [
+    "commerce",
+    "checkout"
+  ],
+  "meta": {
+    "tessellateId": "res_v2_payment_form",
+    "version": "1.0.0",
+    "license": "MIT",
+    "variants": [
+      "Quiet",
+      "Expressive",
+      "Nocturne"
+    ]
+  }
+}

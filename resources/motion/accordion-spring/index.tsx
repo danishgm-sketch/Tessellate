@@ -17,7 +17,7 @@ export function AccordionSpring({ variant = 'quiet' }: AccordionSpringProps) {
       : 'bg-white border-neutral-200 text-neutral-900';
 
   const items = [
-    { title: 'How does Tessellate preserve 0 paid dependencies?', content: 'All catalog resources use standard React, Tailwind CSS 4, and inline SVG primitives without proprietary external dependencies.' },
+    { title: 'How does this work?', content: 'All catalog resources use standard React, Tailwind CSS 4, and inline SVG primitives without proprietary external dependencies.' },
     { title: 'Are tokens compatible with WCAG 2.2 AA?', content: 'Yes, all presets enforce mathematically verified contrast ratios across buttons, badges, and body copy.' },
   ];
 

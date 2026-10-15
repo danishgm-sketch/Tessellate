@@ -9,7 +9,7 @@ export interface DocumentationShellProps {
 
 export function DocumentationShell({
   variant = 'quiet',
-  children = <div className="space-y-4"><h1 className="text-xl font-bold">Getting Started</h1><p className="text-neutral-600 leading-relaxed">Tessellate composes deterministic React interfaces from validated open resource manifests.</p></div>,
+  children = <div className="space-y-4"><h1 className="text-xl font-bold">Getting Started</h1><p className="text-neutral-600 leading-relaxed">Sample text: replace with your own content.</p></div>,
 }: DocumentationShellProps) {
   let theme = 'bg-white text-neutral-900';
   if (variant === 'nocturne') theme = 'bg-[#0B0D10] text-neutral-100';

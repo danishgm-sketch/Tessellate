@@ -30,7 +30,7 @@ export function FirstRunState({ onGetStarted, variant = 'quiet', children }: Fir
           ✨
         </span>
         <div>
-          <h3 className="text-xl font-bold tracking-tight">Welcome to Tessellate Workbench</h3>
+          <h3 className="text-xl font-bold tracking-tight">Welcome</h3>
           <p className="text-xs text-neutral-500">Autonomous interface composition with zero vendor lock-in</p>
         </div>
       </div>

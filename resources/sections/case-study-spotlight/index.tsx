@@ -17,7 +17,7 @@ export function CaseStudySpotlight({
   metric = '4.2x',
   metricLabel = 'Faster front-end delivery speed',
   headline = 'How Kronos migrated 18 legacy micro-frontends into a singular coherent system.',
-  summary = 'By introducing Tessellate manifests and deterministic DNA validation, the Kronos team consolidated 140 disparate components into 36 verified primitives.',
+  summary = 'Sample case study: replace with a real customer result, such as how a team cut admin time after switching.',
 }: CaseStudySpotlightProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
   let card = 'bg-white border-neutral-200 shadow-sm';

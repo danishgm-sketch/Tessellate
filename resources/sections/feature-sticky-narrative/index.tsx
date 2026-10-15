@@ -25,7 +25,7 @@ export function FeatureStickyNarrative({ variant = 'quiet' }: FeatureStickyNarra
           <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-3 block">Architecture</span>
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight mb-6">Designed for longevity and auditability.</h2>
           <p className="text-sm opacity-80 leading-relaxed">
-            Every layer of Tessellate is structured so you retain 100% control over output artifacts without proprietary cloud dependencies.
+            Every part is designed so you stay in control of your data and your workflow.
           </p>
         </div>
 

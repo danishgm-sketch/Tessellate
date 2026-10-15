@@ -34,7 +34,7 @@ export function ProfileSettings({ variant = 'quiet' }: ProfileSettingsProps) {
           <label className="font-semibold block mb-1">Email Address</label>
           <input
             type="email"
-            defaultValue="alex@tessellate.design"
+            defaultValue="alex@example.com"
             className={`w-full p-2.5 rounded-lg border outline-none ${inputBorder}`}
           />
         </div>

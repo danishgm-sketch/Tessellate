@@ -24,12 +24,12 @@ export function EntityProfileHeader({ variant = 'quiet' }: EntityProfileHeaderPr
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="text-lg font-bold">Tessellate Core</h2>
+              <h2 className="text-lg font-bold">Record name</h2>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold">
                 VERIFIED CREATOR
               </span>
             </div>
-            <p className="text-xs opacity-60 font-mono">@tessellate • Open Core System</p>
+            <p className="text-xs opacity-60 font-mono">Sample subtitle</p>
           </div>
         </div>
 

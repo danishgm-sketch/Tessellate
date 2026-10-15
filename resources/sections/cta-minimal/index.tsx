@@ -21,7 +21,7 @@ export function CtaMinimal({ variant = 'quiet' }: CtaMinimalProps) {
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Start composing with Tessellate today.</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">Get started today.</h2>
         <p className="text-xs sm:text-sm opacity-75 mb-8">No accounts, no credit cards, zero proprietary dependencies.</p>
         <button type="button" className={`px-6 py-3 rounded-lg text-xs font-semibold uppercase tracking-wider transition-all ${btn}`}>
           Open Free Workbench →

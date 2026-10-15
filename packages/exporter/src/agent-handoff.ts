@@ -14,7 +14,7 @@ export function generateAgentHandoffPackage(manifest: ProjectManifest): AgentHan
   const files: Record<string, string> = {};
 
   // 1. PROJECT_DNA.json
-  const tokens = normalizeDesignTokens(manifest.designDNA);
+  const tokens = normalizeDesignTokens(manifest.designDNA, { accessibilityFloor: manifest.constraints?.accessibilityFloor });
   const cssVars = tokensToCssVariables(tokens);
   files['PROJECT_DNA.json'] = JSON.stringify(
     {
@@ -87,7 +87,7 @@ All user interface code must resolve styling through the semantic CSS variables 
 ${screensSection}
 
 ## 5. Working Guidelines for the Agent
-1. Do not introduce arbitrary inline hex colors; use \`var(--tess-accent-primary)\`, \`var(--tess-canvas)\`, \`var(--tess-ink)\`, etc.
+1. Do not introduce hex colours or palette classes; style with the semantic utilities in the stylesheet (\`bg-surface\`, \`text-ink\`, \`border-hairline\`, \`bg-accent text-on-accent\`, \`rounded-ui-md\`), which read the \`--tess-*\` design tokens.
 2. Maintain keyboard focus and ARIA landmarks.
 3. Preserve the exact semantic IDs of existing nodes.
 `;

@@ -32,7 +32,7 @@ export function FeatureWithCode({ variant = 'quiet' }: FeatureWithCodeProps) {
         <div className={`p-6 rounded-2xl border font-mono text-xs overflow-x-auto shadow-md ${term}`}>
           <div className="text-neutral-500 pb-2 mb-2 border-b border-white/10 text-[11px]">composition.ts</div>
           <pre className="text-emerald-400">
-            {`import { composeProject } from '@tessellate/engine';
+            {`import { composeProject } from './api';
 
 const project = composeProject({
   theme: 'nocturne',

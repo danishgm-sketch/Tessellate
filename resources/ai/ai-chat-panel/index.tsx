@@ -57,7 +57,7 @@ export function AIChatPanel({ variant = 'quiet' }: AIChatPanelProps) {
       <div className="flex items-center justify-between pb-4 border-b border-neutral-100 dark:border-neutral-800">
         <div className="flex items-center gap-2.5">
           <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-          <h4 className="text-sm font-semibold tracking-tight">Tessellate Assistant</h4>
+          <h4 className="text-sm font-semibold tracking-tight">Assistant</h4>
           <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-500">
             Claude 3.7 Sonnet
           </span>

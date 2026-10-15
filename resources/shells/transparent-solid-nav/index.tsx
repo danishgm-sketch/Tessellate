@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 export type TransparentSolidNavVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface TransparentSolidNavProps {
+  brand?: string;
   variant?: TransparentSolidNavVariant;
 }
 
-export function TransparentSolidNav({ variant = 'quiet' }: TransparentSolidNavProps) {
+export function TransparentSolidNav({ variant = 'quiet', brand = 'Your product' }: TransparentSolidNavProps) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export function TransparentSolidNav({ variant = 'quiet' }: TransparentSolidNavPr
 
   return (
     <header className={`w-full fixed top-0 left-0 z-40 transition-all duration-200 px-6 h-16 flex items-center justify-between ${solidClass}`}>
-      <span className="font-semibold text-sm">Tessellate</span>
+      <span className="font-semibold text-sm">{brand}</span>
       <div className="flex items-center gap-6 text-xs">
         <a href="#" className="opacity-80 hover:opacity-100">Engine</a>
         <a href="#" className="opacity-80 hover:opacity-100">Gallery</a>

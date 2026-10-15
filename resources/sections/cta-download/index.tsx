@@ -19,18 +19,18 @@ export function CtaDownload({ variant = 'quiet' }: CtaDownloadProps) {
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
         <span className="text-xs font-mono px-3 py-1 rounded-full border bg-neutral-200/60 dark:bg-neutral-800 mb-6">v1.0.0 RELEASE READY</span>
-        <h2 className="text-3xl font-bold tracking-tight mb-4">Install the Tessellate Engine</h2>
+        <h2 className="text-3xl font-bold tracking-tight mb-4">Download the app</h2>
         <p className="text-xs sm:text-sm opacity-75 max-w-md mb-8">Available as a global CLI or local development dependency.</p>
 
         <div className="flex flex-wrap justify-center gap-3">
           <button type="button" className="px-5 py-2.5 rounded-lg bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold">
-            npm install @tessellate/cli
+            npm install your-package
           </button>
           <button type="button" className="px-5 py-2.5 rounded-lg border text-xs font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-800">
-            pnpm add @tessellate/cli
+            pnpm add your-package
           </button>
           <button type="button" className="px-5 py-2.5 rounded-lg border text-xs font-semibold hover:bg-neutral-100 dark:hover:bg-neutral-800">
-            brew install tessellate
+            brew install your-package
           </button>
         </div>
       </div>

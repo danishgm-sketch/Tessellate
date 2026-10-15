@@ -16,7 +16,7 @@ export function PerformanceBenchmarkSection({ variant = 'quiet' }: PerformanceBe
   }
 
   const benchmarks = [
-    { name: 'Tessellate Manifest Parse', val: '0.4 ms', width: '12%', color: 'bg-emerald-500' },
+    { name: 'Page load', val: '0.4 ms', width: '12%', color: 'bg-emerald-500' },
     { name: 'Industry Benchmark A', val: '4.8 ms', width: '60%', color: 'bg-neutral-400' },
     { name: 'Legacy Bundler Framework', val: '12.4 ms', width: '95%', color: 'bg-neutral-400' },
   ];

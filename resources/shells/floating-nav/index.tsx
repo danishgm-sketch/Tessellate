@@ -3,10 +3,11 @@ import React from 'react';
 export type FloatingNavVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface FloatingNavProps {
+  brand?: string;
   variant?: FloatingNavVariant;
 }
 
-export function FloatingNav({ variant = 'quiet' }: FloatingNavProps) {
+export function FloatingNav({ variant = 'quiet', brand = 'Your product' }: FloatingNavProps) {
   let pill = 'bg-white/80 border-neutral-200 text-neutral-900 shadow-lg';
   if (variant === 'expressive') pill = 'bg-white/90 border-[#D9D6CF] text-neutral-900 shadow-xl';
   if (variant === 'nocturne') pill = 'bg-[#11141B]/90 border-[#2E3440] text-white shadow-xl';
@@ -14,7 +15,7 @@ export function FloatingNav({ variant = 'quiet' }: FloatingNavProps) {
   return (
     <div className="w-full pt-4 flex justify-center px-4">
       <div className={`inline-flex items-center gap-6 rounded-full border px-6 py-2.5 backdrop-blur-md text-xs ${pill}`}>
-        <span className="font-semibold">Tessellate</span>
+        <span className="font-semibold">{brand}</span>
         <div className="flex items-center gap-4">
           <a href="#" className="opacity-70 hover:opacity-100">Overview</a>
           <a href="#" className="opacity-70 hover:opacity-100">Specs</a>

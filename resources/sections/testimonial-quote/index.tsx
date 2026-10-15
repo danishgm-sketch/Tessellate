@@ -12,10 +12,10 @@ export interface TestimonialQuoteProps {
 
 export function TestimonialQuote({
   variant = 'quiet',
-  quote = 'Tessellate allowed our engineering team to ship a world-class application in two weeks without hiring a dedicated design agency. The architectural coherence is unmatched.',
-  authorName = 'Elena Rostova',
-  authorRole = 'Head of Product Engineering',
-  company = 'Synthetix Cloud',
+  quote = 'Sample testimonial: replace with a real quote from a customer, with their permission.',
+  authorName = 'Customer name',
+  authorRole = 'Role',
+  company = 'Company',
 }: TestimonialQuoteProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';
   let accent = 'text-neutral-400';

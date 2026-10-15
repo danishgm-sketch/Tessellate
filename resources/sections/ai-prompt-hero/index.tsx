@@ -11,7 +11,7 @@ export interface AiPromptHeroProps {
 export function AiPromptHero({
   variant = 'quiet',
   headline = 'Describe your product. Generate the entire interface system.',
-  subheadline = 'Tessellate pairs natural language intent with deterministic layout grammars and accessible schemas.',
+  subheadline = 'Describe what you need in plain language and get a clear, accessible answer in seconds.',
 }: AiPromptHeroProps) {
   const [prompt, setPrompt] = useState('');
   const presets = [

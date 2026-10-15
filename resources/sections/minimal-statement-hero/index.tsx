@@ -11,7 +11,7 @@ export interface MinimalStatementHeroProps {
 export function MinimalStatementHero({
   variant = 'quiet',
   statement = 'Software is not a collection of parts. It is a single coherent gesture.',
-  author = 'The Tessellate Principles',
+  author = '',
 }: MinimalStatementHeroProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-950 border-neutral-200';
 

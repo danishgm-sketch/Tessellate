@@ -13,7 +13,7 @@ export interface SocialProofHeroProps {
 export function SocialProofHero({
   variant = 'quiet',
   headline = 'Trusted by 40,000+ engineers building modern web applications.',
-  subheadline = 'From early-stage startups to publicly traded technology companies, Tessellate powers reliable UI architecture.',
+  subheadline = 'Sample social proof: replace with real customer numbers you can stand behind.',
   userCount = '42,800+ teams',
   rating = '4.9/5 from 1,200 reviews',
 }: SocialProofHeroProps) {

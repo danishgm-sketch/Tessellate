@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 export type FooterNewsletterVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface FooterNewsletterProps {
+  brand?: string;
   variant?: FooterNewsletterVariant;
 }
 
-export function FooterNewsletter({ variant = 'quiet' }: FooterNewsletterProps) {
+export function FooterNewsletter({ variant = 'quiet', brand = 'Your product' }: FooterNewsletterProps) {
   const [email, setEmail] = useState('');
 
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
@@ -26,7 +27,7 @@ export function FooterNewsletter({ variant = 'quiet' }: FooterNewsletterProps) {
   return (
     <footer className={`w-full py-20 px-6 sm:px-12 border-t transition-colors ${bg}`}>
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">Tessellate Dispatch</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mb-3">{brand} updates</h2>
         <p className="text-xs sm:text-sm opacity-75 max-w-md mb-8">
           Weekly dispatches on computational aesthetics, autonomous composition, and Design DNA.
         </p>

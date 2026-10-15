@@ -82,7 +82,7 @@ Tools provided:
 - `get_design_dna`: Inspect Design DNA presets and vectors.
 - `list_design_directions`: Return visual reference directions (Editorial Precision, Kinetic Monolith, Atmospheric Depth).
 
-## Resources in Catalogue (324)
+## Resources in Catalogue (334)
 
 - [Accessibility Commitment Section](https://tessellate.design/r/accessibility-commitment-section): Formal WCAG 2.2 AA compliance manifesto with automated audit guarantees. (sections, marketing, technical-proof)
 - [Accordion](https://tessellate.design/r/accordion): Collapsible vertically stacked disclosure panels with rotating chevron animations. (primitives, layout)
@@ -131,6 +131,8 @@ Tools provided:
 - [Beam Grid](https://tessellate.design/r/beam-grid): Precision architectural coordinate grid with luminous traveling laser beams gliding along horizontal and vertical axes. (backgrounds, effects, grid)
 - [Billing Overview](https://tessellate.design/r/billing-overview): Subscription status panel with card on file, next invoice date, and plan upgrade trigger. (blocks, settings, billing)
 - [Blur-to-Sharp Reveal](https://tessellate.design/r/blur-to-sharp-reveal): Defocus-to-crisp entrance transitioning from filter blur(8px) into razor-sharp focus. (motion, microinteractions, reveals)
+- [Booking Details Form](https://tessellate.design/r/booking-details-form): Contact details, notes and consent for a booking, a deposit summary and a confirmation state. (forms, scheduling)
+- [Booking Slot Picker](https://tessellate.design/r/booking-slot-picker): Day tabs and a grid of available times; arrow keys move between days and exactly one slot can be chosen. (forms, scheduling)
 - [Bottom Sheet](https://tessellate.design/r/bottom-sheet): Mobile-first bottom sliding sheet with drag handle bar and responsive snap points. (primitives, overlays)
 - [Breadcrumb](https://tessellate.design/r/breadcrumb): Hierarchical navigation trail path with customizable separators and accessible current page. (primitives, navigation)
 - [Breadcrumb Header](https://tessellate.design/r/breadcrumb-header): Header shell combining deep hierarchical breadcrumb trail with right-aligned action buttons. (shells, navigation)
@@ -162,6 +164,7 @@ Tools provided:
 - [Compliance Proof](https://tessellate.design/r/compliance-proof): Regulatory compliance showcase displaying certified badges and downloadable reports. (sections, marketing, technical-proof)
 - [Conic Light Field](https://tessellate.design/r/conic-light-field): Radial swept light gradient generating dramatic angular specular highlights and rotational depth. (backgrounds, effects, gradient)
 - [Connection Lost State](https://tessellate.design/r/connection-lost-state): Active socket or telemetry disconnect alert with automatic reconnect countdown and manual retry button. (states, network, connection)
+- [Contact Form](https://tessellate.design/r/contact-form): Contact or support request with topic choice, validation and a sent confirmation. (forms, support)
 - [Context Menu](https://tessellate.design/r/context-menu): Right-click action palette anchored directly to the user pointer coordinates. (primitives, overlays)
 - [Context Rail](https://tessellate.design/r/context-rail): Secondary right-hand vertical rail displaying active object inspector or contextual metadata. (shells, layout)
 - [Conversation List](https://tessellate.design/r/conversation-list): Channel and direct message thread list with unread counters and presence badges. (blocks, collaboration, channels)
@@ -185,6 +188,7 @@ Tools provided:
 - [Dialog](https://tessellate.design/r/dialog): Accessible modal dialog window with backdrop scrim, focus trapping, and header/footer slots. (primitives, overlays)
 - [Disclosure](https://tessellate.design/r/disclosure): Single collapsible toggle container with summary header and expandable details. (primitives, layout)
 - [Document Detail](https://tessellate.design/r/document-detail): Rich structured view of a selected document, complete with formatted text and download CTA. (blocks, entities, document)
+- [Document Editor](https://tessellate.design/r/document-editor): Markdown editor for notes and documents with a formatting toolbar, keyboard shortcuts, word count and save state. (forms, editor)
 - [Documentation Shell](https://tessellate.design/r/documentation-shell): Technical docs shell with sticky sidebar topic hierarchy, reading center, and on-page table of contents. (shells, layout)
 - [Donut Chart](https://tessellate.design/r/donut-chart): SVG circle stroke-dasharray radial breakdown with center KPI summary metric, category legend pills, and segment highlight. (data, visualization, charts)
 - [Dot Matrix Field](https://tessellate.design/r/dot-matrix-field): Polka-dot matrix point grid pattern creating technical texture behind feature cards. (backgrounds, effects, dots)
@@ -200,6 +204,7 @@ Tools provided:
 - [Empty Dashboard State](https://tessellate.design/r/empty-dashboard-state): First-time dashboard panel placeholder encouraging initial telemetry integration with quick-start steps. (states, empty, dashboard)
 - [Empty Search State](https://tessellate.design/r/empty-search-state): Zero query results feedback panel with search phrase echo, corrective filter suggestions, and clear action button. (states, empty, search)
 - [Empty Workspace](https://tessellate.design/r/empty-workspace): Empty state placeholder card with welcoming illustration and primary create action. (blocks, onboarding, empty)
+- [Record Form](https://tessellate.design/r/entity-form): Create or edit a record from its fields, with input types inferred from field names and required-field validation. (forms, data)
 - [Entity List](https://tessellate.design/r/entity-list): Clean vertical item list with avatar/status, main description, and quick menu trigger. (blocks, data, lists)
 - [Entity Overview](https://tessellate.design/r/entity-overview): Summary card with high-level description, primary KPIs, and operational tags. (blocks, entities, overview)
 - [Entity Profile Header](https://tessellate.design/r/entity-profile-header): Hero card for entity details with avatar, title, status badge, action bar, and key stats. (blocks, entities, header)
@@ -300,6 +305,7 @@ Tools provided:
 - [Onboarding Role Select](https://tessellate.design/r/onboarding-role-select): Role segmentation card picker (Engineer, Designer, Agent Architect, Founder). (blocks, onboarding, segmentation)
 - [Onboarding Wizard](https://tessellate.design/r/onboarding-wizard): Multi-step guided setup wizard with progress bar and next/previous controls. (blocks, onboarding, wizard)
 - [Order Book Depth Chart](https://tessellate.design/r/order-book-depth-chart): Market depth cumulative bid/ask stepped area chart with green bid wall, red ask wall, and mid-market spread indicator. (data, visualization, finance)
+- [Order Summary](https://tessellate.design/r/order-summary): Line items, discount, delivery, tax and totals in minor units, formatted for any currency and locale. (commerce, checkout)
 - [Organization Settings](https://tessellate.design/r/organization-settings): Tenant profile configuration covering workspace domain, branding, and billing email. (blocks, settings, organization)
 - [Outlined Display Text](https://tessellate.design/r/outlined-display-text): Architectural hollow stroked display typography providing dramatic spatial scale with light optical density. (typography, display, outline)
 - [Page Skeleton](https://tessellate.design/r/page-skeleton): Full-page progressive layout shimmer placeholder with responsive header, hero deck, and content column blocks. (states, loading, skeleton)
@@ -308,6 +314,8 @@ Tools provided:
 - [Parallax Media](https://tessellate.design/r/parallax-media): Subtle multi-plane parallax depth container translating background and foreground elements at differential velocities. (motion, microinteractions, parallax)
 - [Particle Constellation](https://tessellate.design/r/particle-constellation): Interconnected vector node points forming dynamic geometric constellations with proximate links. (backgrounds, effects, constellation)
 - [Password Input](https://tessellate.design/r/password-input): Masked credential field with toggleable eye icon and password strength meter. (primitives, inputs, auth)
+- [Password Reset Form](https://tessellate.design/r/password-reset-form): Request a password reset link with an account-neutral confirmation that never reveals whether an email is registered. (auth, forms)
+- [Payment Form](https://tessellate.design/r/payment-form): Checkout payment layout with billing name and postcode and a slot for your provider's secure card fields; it never handles card numbers itself. (commerce, checkout)
 - [Performance Benchmark Section](https://tessellate.design/r/performance-benchmark-section): Bar chart benchmarks comparing execution latency and throughput against industry baselines. (sections, marketing, technical-proof)
 - [Permission Denied State](https://tessellate.design/r/permission-denied-state): Access boundary lock screen detailing required RBAC roles, organization membership, and request access workflow. (states, security, permission)
 - [Pinned Items](https://tessellate.design/r/pinned-items): User-favorited resources and project bookmarks with quick unpin toggles. (blocks, dashboards, favorites)
@@ -358,6 +366,8 @@ Tools provided:
 - [Shader Liquid Field](https://tessellate.design/r/shader-liquid-field): Organic viscous liquid fluid simulation with wave ripples and chromatic caustic contours. (backgrounds, effects, liquid)
 - [Shader Noise Field](https://tessellate.design/r/shader-noise-field): Procedural multi-frequency Perlin terrain noise contour field providing organic dimensional atmosphere. (backgrounds, effects, noise)
 - [Shared Element Transition](https://tessellate.design/r/shared-element-transition): Smooth morphing container transitioning an element smoothly between thumbnail and expanded modal view. (motion, microinteractions, transition)
+- [Sign-in Form](https://tessellate.design/r/sign-in-form): Email and password sign-in with inline validation, accessible errors, a loading state and links to reset and sign-up. (auth, forms)
+- [Sign-up Form](https://tessellate.design/r/sign-up-form): Account creation with name, email, password length guidance and terms consent. (auth, forms)
 - [Skeleton](https://tessellate.design/r/skeleton): Content placeholder animation primitive preventing layout shift during loading. (primitives, feedback)
 - [Slide Clip Reveal](https://tessellate.design/r/slide-clip-reveal): Horizontal or vertical clip-path swipe uncovering child content like a mechanical aperture. (motion, microinteractions, reveals)
 - [Slider](https://tessellate.design/r/slider): Smooth continuous value slider with track, fill, and precision drag thumb. (primitives, inputs)
@@ -2341,6 +2351,32 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Booking Details Form (`booking-details-form`)
+- **Type**: block
+- **Categories**: forms, scheduling
+- **Description**: Contact details, notes and consent for a booking, a deposit summary and a confirmation state.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/booking-details-form.json
+- **Design DNA**:
+  - visualAmbition: 30
+  - density: 45
+  - curvature: 40
+
+### Booking Slot Picker (`booking-slot-picker`)
+- **Type**: block
+- **Categories**: forms, scheduling
+- **Description**: Day tabs and a grid of available times; arrow keys move between days and exactly one slot can be chosen.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/booking-slot-picker.json
+- **Design DNA**:
+  - visualAmbition: 30
+  - density: 55
+  - curvature: 40
+
 ### Bottom Sheet (`bottom-sheet`)
 - **Type**: primitive
 - **Categories**: primitives, overlays
@@ -3612,6 +3648,19 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Contact Form (`contact-form`)
+- **Type**: block
+- **Categories**: forms, support
+- **Description**: Contact or support request with topic choice, validation and a sent confirmation.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/contact-form.json
+- **Design DNA**:
+  - visualAmbition: 30
+  - density: 45
+  - curvature: 40
+
 ### Context Menu (`context-menu`)
 - **Type**: primitive
 - **Categories**: primitives, overlays
@@ -4555,6 +4604,19 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Document Editor (`document-editor`)
+- **Type**: block
+- **Categories**: forms, editor
+- **Description**: Markdown editor for notes and documents with a formatting toolbar, keyboard shortcuts, word count and save state.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/document-editor.json
+- **Design DNA**:
+  - visualAmbition: 30
+  - density: 50
+  - curvature: 40
+
 ### Documentation Shell (`documentation-shell`)
 - **Type**: block
 - **Categories**: shells, layout
@@ -5169,6 +5231,19 @@ Tools provided:
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind
+
+### Record Form (`entity-form`)
+- **Type**: block
+- **Categories**: forms, data
+- **Description**: Create or edit a record from its fields, with input types inferred from field names and required-field validation.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/entity-form.json
+- **Design DNA**:
+  - visualAmbition: 30
+  - density: 55
+  - curvature: 40
 
 ### Entity List (`entity-list`)
 - **Type**: block
@@ -9270,6 +9345,19 @@ Tools provided:
   - geometryFamily: rounded
   - primaryStack: react-tailwind
 
+### Order Summary (`order-summary`)
+- **Type**: block
+- **Categories**: commerce, checkout
+- **Description**: Line items, discount, delivery, tax and totals in minor units, formatted for any currency and locale.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/order-summary.json
+- **Design DNA**:
+  - visualAmbition: 30
+  - density: 50
+  - curvature: 40
+
 ### Organization Settings (`organization-settings`)
 - **Type**: block
 - **Categories**: blocks, settings, organization
@@ -9597,6 +9685,32 @@ Tools provided:
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind
+
+### Password Reset Form (`password-reset-form`)
+- **Type**: block
+- **Categories**: auth, forms
+- **Description**: Request a password reset link with an account-neutral confirmation that never reveals whether an email is registered.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/password-reset-form.json
+- **Design DNA**:
+  - visualAmbition: 30
+  - density: 35
+  - curvature: 40
+
+### Payment Form (`payment-form`)
+- **Type**: block
+- **Categories**: commerce, checkout
+- **Description**: Checkout payment layout with billing name and postcode and a slot for your provider's secure card fields; it never handles card numbers itself.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/payment-form.json
+- **Design DNA**:
+  - visualAmbition: 30
+  - density: 45
+  - curvature: 40
 
 ### Performance Benchmark Section (`performance-benchmark-section`)
 - **Type**: section
@@ -11647,6 +11761,32 @@ Tools provided:
   - visualMode: adaptive
   - geometryFamily: rounded
   - primaryStack: react-tailwind
+
+### Sign-in Form (`sign-in-form`)
+- **Type**: block
+- **Categories**: auth, forms
+- **Description**: Email and password sign-in with inline validation, accessible errors, a loading state and links to reset and sign-up.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/sign-in-form.json
+- **Design DNA**:
+  - visualAmbition: 30
+  - density: 40
+  - curvature: 40
+
+### Sign-up Form (`sign-up-form`)
+- **Type**: block
+- **Categories**: auth, forms
+- **Description**: Account creation with name, email, password length guidance and terms consent.
+- **License**: MIT
+- **Dependencies**: none
+- **Dev Dependencies**: none
+- **Shadcn URL**: https://tessellate.design/r/sign-up-form.json
+- **Design DNA**:
+  - visualAmbition: 30
+  - density: 40
+  - curvature: 40
 
 ### Skeleton (`skeleton`)
 - **Type**: primitive

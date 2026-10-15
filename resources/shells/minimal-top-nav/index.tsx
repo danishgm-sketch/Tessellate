@@ -11,7 +11,7 @@ export interface MinimalTopNavProps {
 
 export function MinimalTopNav({
   variant = 'quiet',
-  brand = 'Tessellate',
+  brand = 'Your product',
   links = [
     { label: 'Catalogue', href: '#' },
     { label: 'DNA Lab', href: '#' },

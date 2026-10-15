@@ -33,7 +33,7 @@ export function FeatureComparison({ variant = 'quiet' }: FeatureComparisonProps)
           </div>
 
           <div className="p-8 rounded-2xl border border-emerald-200/60 dark:border-emerald-900/40 bg-emerald-50/20 dark:bg-emerald-950/10">
-            <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 mb-2 block uppercase">The Tessellate Way</span>
+            <span className="text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400 mb-2 block uppercase">With us</span>
             <h3 className="text-xl font-bold mb-4">Deterministic Composition</h3>
             <ul className="space-y-3 text-xs sm:text-sm opacity-80">
               <li>✓ Validated JSON manifests with Zod schemas</li>

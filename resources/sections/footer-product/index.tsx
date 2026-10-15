@@ -3,10 +3,11 @@ import React from 'react';
 export type FooterProductVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface FooterProductProps {
+  brand?: string;
   variant?: FooterProductVariant;
 }
 
-export function FooterProduct({ variant = 'quiet' }: FooterProductProps) {
+export function FooterProduct({ variant = 'quiet', brand = 'Your product' }: FooterProductProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
 
   if (variant === 'expressive') {
@@ -19,7 +20,7 @@ export function FooterProduct({ variant = 'quiet' }: FooterProductProps) {
     <footer className={`w-full py-16 px-6 sm:px-12 border-t transition-colors ${bg}`}>
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
         <div className="max-w-sm">
-          <div className="font-bold text-sm tracking-tight mb-2">Tessellate Engine</div>
+          <div className="font-bold text-sm tracking-tight mb-2">{brand}</div>
           <p className="text-xs opacity-75 mb-4">Autonomous composition and Design DNA runtime.</p>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-[11px] font-mono">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />

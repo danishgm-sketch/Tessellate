@@ -10,7 +10,7 @@ export interface TestimonialCarouselProps {
 export function TestimonialCarousel({
   variant = 'quiet',
   items = [
-    { quote: 'We rebuilt our entire data suite using Tessellate in under three weeks.', author: 'Samantha Reed', company: 'Nova Logic' },
+    { quote: 'Sample testimonial: replace with a real customer quote.', author: 'Samantha Reed', company: 'Nova Logic' },
     { quote: 'The Design DNA system eliminated endless meetings about spacing and colors.', author: 'Liam Gallagher', company: 'Aether OS' },
     { quote: 'Our lighthouse scores went from 68 to 100 on desktop and mobile.', author: 'Kenji Sato', company: 'HyperScale' },
   ],

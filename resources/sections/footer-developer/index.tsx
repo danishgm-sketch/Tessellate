@@ -20,7 +20,7 @@ export function FooterDeveloper({ variant = 'quiet' }: FooterDeveloperProps) {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-3">
           <span className="text-emerald-400">$</span>
-          <span>npx @tessellate/cli --version</span>
+          <span>npx your-package --version</span>
           <span className="opacity-50">// 1.0.0</span>
         </div>
         <div className="flex items-center gap-6 text-[11px] opacity-70">

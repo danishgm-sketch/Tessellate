@@ -11,7 +11,7 @@ export interface CodeHeroProps {
 export function CodeHero({
   variant = 'quiet',
   headline = 'Install cleanly. Zero lock-in. Full TypeScript source.',
-  installCommand = 'npx @tessellate/cli add editorial-hero',
+  installCommand = 'npm install your-package',
 }: CodeHeroProps) {
   const [copied, setCopied] = useState(false);
 

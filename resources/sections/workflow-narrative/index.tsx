@@ -22,8 +22,7 @@ export function WorkflowNarrative({ variant = 'quiet' }: WorkflowNarrativeProps)
         <h2 className="text-3xl font-bold tracking-tight mb-6">Built for engineers who care about source code ownership.</h2>
         <div className="space-y-4 text-sm opacity-80 leading-relaxed">
           <p>
-            When autonomous coding agents write code, they often produce fragmented CSS and arbitrary dependencies. Tessellate grounds agents in a verified resource vocabulary.
-          </p>
+            Sample text: replace with your own content.</p>
           <p>
             The resulting code contains zero proprietary imports. It reads like the cleanest code written by your senior staff front-end architect.
           </p>

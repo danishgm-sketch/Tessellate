@@ -16,7 +16,7 @@ export function WebhookManagement({ variant = 'quiet' }: WebhookManagementProps)
   }
 
   const hooks = [
-    { url: 'https://api.acme.corp/webhooks/tessellate', status: '200 OK', events: 'project.updated' },
+    { url: 'https://api.example.com/webhooks/events', status: '200 OK', events: 'project.updated' },
   ];
 
   return (

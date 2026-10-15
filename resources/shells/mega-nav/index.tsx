@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 export type MegaNavVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface MegaNavProps {
+  brand?: string;
   variant?: MegaNavVariant;
 }
 
-export function MegaNav({ variant = 'quiet' }: MegaNavProps) {
+export function MegaNav({ variant = 'quiet', brand = 'Your product' }: MegaNavProps) {
   const [open, setOpen] = useState(false);
 
   let bar = 'bg-white border-b border-neutral-200 text-neutral-900';
@@ -19,7 +20,7 @@ export function MegaNav({ variant = 'quiet' }: MegaNavProps) {
   return (
     <div className={`w-full relative ${bar}`}>
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <span className="font-semibold text-sm">Tessellate Suite</span>
+        <span className="font-semibold text-sm">{brand}</span>
         <div className="flex items-center gap-6 text-xs">
           <button type="button" onClick={() => setOpen(!open)} className="font-medium flex items-center gap-1">
             Products ▾

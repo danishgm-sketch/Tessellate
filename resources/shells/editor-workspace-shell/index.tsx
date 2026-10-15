@@ -22,7 +22,7 @@ export function EditorWorkspaceShell({ variant = 'quiet' }: EditorWorkspaceShell
         </div>
         <div className="flex-1">
           <p className="text-blue-500">export function App() &#123;</p>
-          <p className="pl-4">return &lt;Tessellate /&gt;;</p>
+          <p className="pl-4">return &lt;App /&gt;;</p>
           <p className="text-blue-500">&#125;</p>
         </div>
       </div>

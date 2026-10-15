@@ -11,7 +11,7 @@ export interface CenteredTopNavProps {
 
 export function CenteredTopNav({
   variant = 'quiet',
-  brand = 'Tessellate',
+  brand = 'Your product',
   links = [
     { label: 'Features', href: '#' },
     { label: 'Showcase', href: '#' },
