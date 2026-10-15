@@ -260,6 +260,47 @@ export const ResourceRefSchema = z.object({
 });
 export type ResourceRef = z.infer<typeof ResourceRefSchema>;
 
+/**
+ * Resource contract v2 (Phase 30). A v2 resource renders the client's content from typed props, styles
+ * itself only with semantic token utilities, declares its loading/empty/error states, and is only
+ * "verified" once a named human has reviewed it after the automated checks pass (D-040).
+ */
+export const PropTypeSchema = z.enum(['string', 'number', 'boolean', 'enum', 'string[]', 'object', 'object[]', 'callback', 'node']);
+export type PropType = z.infer<typeof PropTypeSchema>;
+
+export const PropSpecSchema = z.object({
+  name: z.string().regex(/^[a-z][A-Za-z0-9]*$/, 'prop names are camelCase'),
+  type: PropTypeSchema,
+  required: z.boolean().default(false),
+  description: z.string().min(1),
+  enumValues: z.array(z.string()).optional(),
+  /** Composition content key this prop receives (heading, description, items, rows, columns, brand …). */
+  content: z.string().optional(),
+});
+export type PropSpec = z.infer<typeof PropSpecSchema>;
+
+export const ResourceStatesSchema = z.object({
+  loading: z.boolean(),
+  empty: z.boolean(),
+  error: z.boolean(),
+});
+export type ResourceStates = z.infer<typeof ResourceStatesSchema>;
+
+export const StylingContractSchema = z.object({
+  /** True when the component uses only semantic token utilities (checked by audit:resource-tokens). */
+  tokenOnly: z.boolean(),
+  /** Animated resources must honour prefers-reduced-motion. */
+  reducedMotion: z.enum(['not-animated', 'respected']),
+});
+export type StylingContract = z.infer<typeof StylingContractSchema>;
+
+export const ResourceReviewSchema = z.object({
+  reviewer: z.string().min(1),
+  reviewedAt: z.string().datetime(),
+  notes: z.string().optional(),
+});
+export type ResourceReview = z.infer<typeof ResourceReviewSchema>;
+
 export const ResourceManifestSchema = z.object({
   schemaVersion: z.string().min(1),
   id: z.string().min(1),
@@ -301,6 +342,24 @@ export const ResourceManifestSchema = z.object({
   quality: QualitySpecSchema,
   createdAt: z.string().datetime(),
   updatedAt: z.string().datetime(),
+  /** 2 for resources that meet contract v2 (props, states, token-only styling). */
+  contractVersion: z.union([z.literal(1), z.literal(2)]).optional(),
+  props: z.array(PropSpecSchema).optional(),
+  states: ResourceStatesSchema.optional(),
+  stylingContract: StylingContractSchema.optional(),
+  review: ResourceReviewSchema.optional(),
+}).superRefine((m, ctx) => {
+  if ((m.status === 'verified' || m.status === 'verified-gold') && !m.review) {
+    ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['review'], message: 'a verified resource needs a named human reviewer (D-040)' });
+  }
+  if (m.contractVersion === 2) {
+    for (const key of ['props', 'states', 'stylingContract'] as const) {
+      if (!m[key]) ctx.addIssue({ code: z.ZodIssueCode.custom, path: [key], message: `contract v2 resources must declare ${key}` });
+    }
+    if (m.stylingContract && !m.stylingContract.tokenOnly) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['stylingContract', 'tokenOnly'], message: 'contract v2 resources must be token-only' });
+    }
+  }
 });
 
 export type ResourceManifest = z.infer<typeof ResourceManifestSchema>;

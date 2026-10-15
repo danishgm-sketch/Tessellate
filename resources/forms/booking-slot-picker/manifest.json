@@ -1,0 +1,287 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "res_v2_booking_slot_picker",
+  "slug": "booking-slot-picker",
+  "name": "Booking Slot Picker",
+  "version": "1.0.0",
+  "status": "experimental",
+  "description": "Day tabs and a grid of available times; arrow keys move between days and exactly one slot can be chosen.",
+  "resourceType": "block",
+  "categories": [
+    "forms",
+    "scheduling"
+  ],
+  "roles": [
+    "booking",
+    "calendar",
+    "picker"
+  ],
+  "purposes": [
+    "Appointment booking",
+    "Class and table reservations"
+  ],
+  "productArchetypes": [
+    {
+      "tag": "booking-scheduling",
+      "weight": 95
+    },
+    {
+      "tag": "healthcare-clinic",
+      "weight": 90
+    },
+    {
+      "tag": "beauty-salon",
+      "weight": 85
+    }
+  ],
+  "creator": {
+    "id": "tessellate_core",
+    "displayName": "Tessellate Core",
+    "handle": "tessellate",
+    "url": "https://tessellate.design"
+  },
+  "provenance": {
+    "origin": "tessellate",
+    "derivative": false,
+    "aiAssistance": "substantial"
+  },
+  "license": {
+    "spdx": "MIT",
+    "name": "MIT License",
+    "url": "https://opensource.org/licenses/MIT",
+    "redistributionVerified": true,
+    "attributionRequired": false
+  },
+  "framework": "react",
+  "language": "typescript",
+  "styling": "tailwind",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "preview.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "fixtures.ts",
+      "kind": "fixture",
+      "required": true
+    },
+    {
+      "path": "README.md",
+      "kind": "asset",
+      "required": true
+    }
+  ],
+  "registry": {
+    "name": "booking-slot-picker",
+    "dependencies": [],
+    "devDependencies": [],
+    "registryDependencies": []
+  },
+  "preview": {
+    "component": "BookingSlotPickerPreview",
+    "defaultProps": {
+      "entity": "Appointment",
+      "durationMinutes": 45
+    },
+    "viewport": 1440
+  },
+  "slots": [],
+  "variants": [
+    {
+      "id": "quiet",
+      "name": "Quiet",
+      "description": "Flat surface with a hairline border.",
+      "props": {
+        "variant": "quiet"
+      }
+    },
+    {
+      "id": "expressive",
+      "name": "Expressive",
+      "description": "Raised surface with a soft shadow.",
+      "props": {
+        "variant": "expressive"
+      }
+    },
+    {
+      "id": "nocturne",
+      "name": "Nocturne",
+      "description": "Strong outline for high-contrast layouts.",
+      "props": {
+        "variant": "nocturne"
+      }
+    }
+  ],
+  "tags": [
+    "booking",
+    "appointments",
+    "availability",
+    "time-slot"
+  ],
+  "intent": {
+    "summary": "Day tabs and a grid of available times; arrow keys move between days and exactly one slot can be chosen.",
+    "idealFor": [
+      "Self-service booking"
+    ],
+    "avoidFor": [
+      "Multi-day stays (use a date range picker)"
+    ],
+    "jobs": [
+      "Choose a time to book"
+    ],
+    "contentRequirements": []
+  },
+  "visualDNA": {
+    "visualAmbition": 30,
+    "density": 55,
+    "curvature": 40
+  },
+  "interactionDNA": {
+    "interactionDensity": 55,
+    "motionIntensity": 5,
+    "keyboardComplexity": "medium",
+    "hoverDependency": "none",
+    "directManipulation": false
+  },
+  "layoutDNA": {
+    "density": 55,
+    "whitespace": 45,
+    "asymmetry": 0,
+    "preferredWidths": [
+      "content",
+      "wide"
+    ],
+    "layoutFamilies": [
+      "standard"
+    ]
+  },
+  "responsive": {
+    "verifiedWidths": [
+      360,
+      768,
+      1440
+    ],
+    "defaultStrategy": "stack"
+  },
+  "accessibility": {
+    "levelTarget": "AAA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true,
+    "knownLimitations": [
+      "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+    ]
+  },
+  "performance": {
+    "jsCost": "tiny",
+    "gpuCost": "none",
+    "mediaCost": "none",
+    "runtimeComplexity": "low",
+    "lazyRecommended": false,
+    "continuousAnimation": false
+  },
+  "complexity": "medium",
+  "customizability": "high",
+  "compatibility": {},
+  "relationships": [],
+  "quality": {
+    "overall": 80,
+    "accessibility": 85,
+    "responsive": 85,
+    "performance": 90,
+    "codeQuality": 85,
+    "composability": 85,
+    "visualCraft": 75,
+    "dependencyCleanliness": 100,
+    "documentation": 80
+  },
+  "createdAt": "2026-10-15T00:00:00.000Z",
+  "updatedAt": "2026-10-15T00:00:00.000Z",
+  "contractVersion": 2,
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "description": "Heading (defaults to \"Choose a time for your <entity>\")."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Line under the heading."
+    },
+    {
+      "name": "entity",
+      "type": "string",
+      "required": false,
+      "description": "What is booked, e.g. \"Appointment\".",
+      "content": "entity"
+    },
+    {
+      "name": "days",
+      "type": "object[]",
+      "required": false,
+      "description": "Availability: [{ date: \"2026-01-12\", slots: [\"09:00\", …] }]. Omit to show labelled example availability."
+    },
+    {
+      "name": "durationMinutes",
+      "type": "number",
+      "required": false,
+      "description": "Slot length shown to the user."
+    },
+    {
+      "name": "onSelect",
+      "type": "callback",
+      "required": false,
+      "description": "Receives { date, time } when a slot is chosen."
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false,
+      "description": "Shows \"Loading availability…\"."
+    },
+    {
+      "name": "errorMessage",
+      "type": "string",
+      "required": false,
+      "description": "Error announced in an alert region."
+    },
+    {
+      "name": "locale",
+      "type": "string",
+      "required": false,
+      "description": "Locale for day names, e.g. \"en-GB\"."
+    },
+    {
+      "name": "variant",
+      "type": "enum",
+      "required": false,
+      "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+      "enumValues": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ]
+    }
+  ],
+  "states": {
+    "loading": true,
+    "empty": true,
+    "error": true
+  },
+  "stylingContract": {
+    "tokenOnly": true,
+    "reducedMotion": "respected"
+  }
+}

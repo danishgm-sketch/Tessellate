@@ -1,0 +1,291 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "res_v2_order_summary",
+  "slug": "order-summary",
+  "name": "Order Summary",
+  "version": "1.0.0",
+  "status": "experimental",
+  "description": "Line items, discount, delivery, tax and totals in minor units, formatted for any currency and locale.",
+  "resourceType": "block",
+  "categories": [
+    "commerce",
+    "checkout"
+  ],
+  "roles": [
+    "commerce",
+    "checkout",
+    "summary"
+  ],
+  "purposes": [
+    "Checkout",
+    "Basket"
+  ],
+  "productArchetypes": [
+    {
+      "tag": "ecommerce",
+      "weight": 95
+    },
+    {
+      "tag": "booking-scheduling",
+      "weight": 80
+    }
+  ],
+  "creator": {
+    "id": "tessellate_core",
+    "displayName": "Tessellate Core",
+    "handle": "tessellate",
+    "url": "https://tessellate.design"
+  },
+  "provenance": {
+    "origin": "tessellate",
+    "derivative": false,
+    "aiAssistance": "substantial"
+  },
+  "license": {
+    "spdx": "MIT",
+    "name": "MIT License",
+    "url": "https://opensource.org/licenses/MIT",
+    "redistributionVerified": true,
+    "attributionRequired": false
+  },
+  "framework": "react",
+  "language": "typescript",
+  "styling": "tailwind",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "preview.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "fixtures.ts",
+      "kind": "fixture",
+      "required": true
+    },
+    {
+      "path": "README.md",
+      "kind": "asset",
+      "required": true
+    }
+  ],
+  "registry": {
+    "name": "order-summary",
+    "dependencies": [],
+    "devDependencies": [],
+    "registryDependencies": []
+  },
+  "preview": {
+    "component": "OrderSummaryPreview",
+    "defaultProps": {
+      "dueNowAmount": 2000
+    },
+    "viewport": 1440
+  },
+  "slots": [],
+  "variants": [
+    {
+      "id": "quiet",
+      "name": "Quiet",
+      "description": "Flat surface with a hairline border.",
+      "props": {
+        "variant": "quiet"
+      }
+    },
+    {
+      "id": "expressive",
+      "name": "Expressive",
+      "description": "Raised surface with a soft shadow.",
+      "props": {
+        "variant": "expressive"
+      }
+    },
+    {
+      "id": "nocturne",
+      "name": "Nocturne",
+      "description": "Strong outline for high-contrast layouts.",
+      "props": {
+        "variant": "nocturne"
+      }
+    }
+  ],
+  "tags": [
+    "checkout",
+    "cart",
+    "totals"
+  ],
+  "intent": {
+    "summary": "Line items, discount, delivery, tax and totals in minor units, formatted for any currency and locale.",
+    "idealFor": [
+      "Checkout sidebars"
+    ],
+    "avoidFor": [
+      "Invoices (use a table)"
+    ],
+    "jobs": [
+      "Show what the customer is paying for"
+    ],
+    "contentRequirements": []
+  },
+  "visualDNA": {
+    "visualAmbition": 30,
+    "density": 50,
+    "curvature": 40
+  },
+  "interactionDNA": {
+    "interactionDensity": 15,
+    "motionIntensity": 5,
+    "keyboardComplexity": "low",
+    "hoverDependency": "none",
+    "directManipulation": false
+  },
+  "layoutDNA": {
+    "density": 50,
+    "whitespace": 50,
+    "asymmetry": 0,
+    "preferredWidths": [
+      "narrow"
+    ],
+    "layoutFamilies": [
+      "standard"
+    ]
+  },
+  "responsive": {
+    "verifiedWidths": [
+      360,
+      768,
+      1440
+    ],
+    "defaultStrategy": "stack"
+  },
+  "accessibility": {
+    "levelTarget": "AAA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true,
+    "knownLimitations": [
+      "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+    ]
+  },
+  "performance": {
+    "jsCost": "tiny",
+    "gpuCost": "none",
+    "mediaCost": "none",
+    "runtimeComplexity": "low",
+    "lazyRecommended": false,
+    "continuousAnimation": false
+  },
+  "complexity": "medium",
+  "customizability": "high",
+  "compatibility": {},
+  "relationships": [],
+  "quality": {
+    "overall": 80,
+    "accessibility": 85,
+    "responsive": 85,
+    "performance": 90,
+    "codeQuality": 85,
+    "composability": 85,
+    "visualCraft": 75,
+    "dependencyCleanliness": 100,
+    "documentation": 80
+  },
+  "createdAt": "2026-10-15T00:00:00.000Z",
+  "updatedAt": "2026-10-15T00:00:00.000Z",
+  "contractVersion": 2,
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "description": "Heading."
+    },
+    {
+      "name": "lines",
+      "type": "object[]",
+      "required": false,
+      "description": "Items: [{ name, quantity, unitAmount (minor units), description }]. Omit to show labelled example items."
+    },
+    {
+      "name": "currency",
+      "type": "string",
+      "required": false,
+      "description": "ISO 4217 code, e.g. \"GBP\"."
+    },
+    {
+      "name": "discountAmount",
+      "type": "number",
+      "required": false,
+      "description": "Discount in minor units."
+    },
+    {
+      "name": "discountLabel",
+      "type": "string",
+      "required": false,
+      "description": "Discount label."
+    },
+    {
+      "name": "taxAmount",
+      "type": "number",
+      "required": false,
+      "description": "Tax in minor units."
+    },
+    {
+      "name": "taxLabel",
+      "type": "string",
+      "required": false,
+      "description": "Tax label, e.g. \"VAT\"."
+    },
+    {
+      "name": "shippingAmount",
+      "type": "number",
+      "required": false,
+      "description": "Delivery in minor units (0 shows \"Free\")."
+    },
+    {
+      "name": "dueNowAmount",
+      "type": "number",
+      "required": false,
+      "description": "Deposit due now in minor units."
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false,
+      "description": "Shows \"Updating totals…\"."
+    },
+    {
+      "name": "locale",
+      "type": "string",
+      "required": false,
+      "description": "Locale for number formatting."
+    },
+    {
+      "name": "variant",
+      "type": "enum",
+      "required": false,
+      "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+      "enumValues": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ]
+    }
+  ],
+  "states": {
+    "loading": true,
+    "empty": true,
+    "error": false
+  },
+  "stylingContract": {
+    "tokenOnly": true,
+    "reducedMotion": "respected"
+  }
+}

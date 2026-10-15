@@ -98,6 +98,18 @@ export function buildContentProps(role: string, ctx: ContentContext): Record<str
       const fields = entity?.fields ?? ['name', 'status', 'created'];
       return { ...base, entity: entity?.name, fields, record: sampleRecords(fields, 1)[0], sampleData: true };
     }
+    case 'auth-card':
+      return { productName, description: `Sign in to ${productName}.` };
+    case 'entity-form':
+      return { entity: entity?.name, fields: entity?.fields ?? ['name', 'status', 'notes'], description: screen.purpose };
+    case 'booking-slot-picker':
+    case 'booking-details-form':
+    case 'editor-surface':
+      return { entity: entity?.name ?? productModel.entities[0]?.name };
+    case 'order-summary':
+    case 'payment-form':
+    case 'contact-form':
+      return {};
     default:
       return entity ? { ...base, entity: entity.name } : base;
   }

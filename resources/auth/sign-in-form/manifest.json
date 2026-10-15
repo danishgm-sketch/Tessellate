@@ -1,0 +1,286 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "res_v2_sign_in_form",
+  "slug": "sign-in-form",
+  "name": "Sign-in Form",
+  "version": "1.0.0",
+  "status": "experimental",
+  "description": "Email and password sign-in with inline validation, accessible errors, a loading state and links to reset and sign-up.",
+  "resourceType": "block",
+  "categories": [
+    "auth",
+    "forms"
+  ],
+  "roles": [
+    "auth",
+    "sign-in",
+    "form"
+  ],
+  "purposes": [
+    "Account sign-in",
+    "Client portals"
+  ],
+  "productArchetypes": [
+    {
+      "tag": "saas",
+      "weight": 90
+    },
+    {
+      "tag": "healthcare-clinic",
+      "weight": 85
+    },
+    {
+      "tag": "booking-scheduling",
+      "weight": 85
+    }
+  ],
+  "creator": {
+    "id": "tessellate_core",
+    "displayName": "Tessellate Core",
+    "handle": "tessellate",
+    "url": "https://tessellate.design"
+  },
+  "provenance": {
+    "origin": "tessellate",
+    "derivative": false,
+    "aiAssistance": "substantial"
+  },
+  "license": {
+    "spdx": "MIT",
+    "name": "MIT License",
+    "url": "https://opensource.org/licenses/MIT",
+    "redistributionVerified": true,
+    "attributionRequired": false
+  },
+  "framework": "react",
+  "language": "typescript",
+  "styling": "tailwind",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "preview.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "fixtures.ts",
+      "kind": "fixture",
+      "required": true
+    },
+    {
+      "path": "README.md",
+      "kind": "asset",
+      "required": true
+    }
+  ],
+  "registry": {
+    "name": "sign-in-form",
+    "dependencies": [],
+    "devDependencies": [],
+    "registryDependencies": []
+  },
+  "preview": {
+    "component": "SignInFormPreview",
+    "defaultProps": {
+      "productName": "Northside Physio",
+      "description": "Welcome back. Sign in to manage your appointments."
+    },
+    "viewport": 1440
+  },
+  "slots": [],
+  "variants": [
+    {
+      "id": "quiet",
+      "name": "Quiet",
+      "description": "Flat surface with a hairline border.",
+      "props": {
+        "variant": "quiet"
+      }
+    },
+    {
+      "id": "expressive",
+      "name": "Expressive",
+      "description": "Raised surface with a soft shadow.",
+      "props": {
+        "variant": "expressive"
+      }
+    },
+    {
+      "id": "nocturne",
+      "name": "Nocturne",
+      "description": "Strong outline for high-contrast layouts.",
+      "props": {
+        "variant": "nocturne"
+      }
+    }
+  ],
+  "tags": [
+    "auth",
+    "login",
+    "sign-in",
+    "password"
+  ],
+  "intent": {
+    "summary": "Email and password sign-in with inline validation, accessible errors, a loading state and links to reset and sign-up.",
+    "idealFor": [
+      "Any product with accounts"
+    ],
+    "avoidFor": [
+      "Passwordless-only products"
+    ],
+    "jobs": [
+      "Sign a returning user in"
+    ],
+    "contentRequirements": []
+  },
+  "visualDNA": {
+    "visualAmbition": 30,
+    "density": 40,
+    "curvature": 40
+  },
+  "interactionDNA": {
+    "interactionDensity": 55,
+    "motionIntensity": 5,
+    "keyboardComplexity": "low",
+    "hoverDependency": "none",
+    "directManipulation": false
+  },
+  "layoutDNA": {
+    "density": 40,
+    "whitespace": 60,
+    "asymmetry": 0,
+    "preferredWidths": [
+      "narrow"
+    ],
+    "layoutFamilies": [
+      "standard"
+    ]
+  },
+  "responsive": {
+    "verifiedWidths": [
+      360,
+      768,
+      1440
+    ],
+    "defaultStrategy": "stack"
+  },
+  "accessibility": {
+    "levelTarget": "AAA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true,
+    "knownLimitations": [
+      "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+    ]
+  },
+  "performance": {
+    "jsCost": "tiny",
+    "gpuCost": "none",
+    "mediaCost": "none",
+    "runtimeComplexity": "low",
+    "lazyRecommended": false,
+    "continuousAnimation": false
+  },
+  "complexity": "medium",
+  "customizability": "high",
+  "compatibility": {},
+  "relationships": [],
+  "quality": {
+    "overall": 80,
+    "accessibility": 85,
+    "responsive": 85,
+    "performance": 90,
+    "codeQuality": 85,
+    "composability": 85,
+    "visualCraft": 75,
+    "dependencyCleanliness": 100,
+    "documentation": 80
+  },
+  "createdAt": "2026-10-15T00:00:00.000Z",
+  "updatedAt": "2026-10-15T00:00:00.000Z",
+  "contractVersion": 2,
+  "props": [
+    {
+      "name": "productName",
+      "type": "string",
+      "required": false,
+      "description": "Product name shown above the form.",
+      "content": "productName"
+    },
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "description": "Form heading."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Short line under the heading."
+    },
+    {
+      "name": "onSubmit",
+      "type": "callback",
+      "required": false,
+      "description": "Receives { email, password, remember }; return a promise to show the loading state."
+    },
+    {
+      "name": "errorMessage",
+      "type": "string",
+      "required": false,
+      "description": "Error from your service, announced in an alert region when sign-in fails."
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false,
+      "description": "Shows the busy state and disables submission."
+    },
+    {
+      "name": "forgotPasswordHref",
+      "type": "string",
+      "required": false,
+      "description": "Link to the password reset page."
+    },
+    {
+      "name": "signUpHref",
+      "type": "string",
+      "required": false,
+      "description": "Link to account creation."
+    },
+    {
+      "name": "submitLabel",
+      "type": "string",
+      "required": false,
+      "description": "Button label."
+    },
+    {
+      "name": "variant",
+      "type": "enum",
+      "required": false,
+      "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+      "enumValues": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ]
+    }
+  ],
+  "states": {
+    "loading": true,
+    "empty": false,
+    "error": true
+  },
+  "stylingContract": {
+    "tokenOnly": true,
+    "reducedMotion": "respected"
+  }
+}

@@ -76,6 +76,7 @@ describe('Catalogue Foundation & Validator', () => {
     const modified = {
       ...manifest,
       status: 'verified' as const,
+      review: { reviewer: 'Test Reviewer', reviewedAt: '2026-01-15T00:00:00Z' },
       quality: {
         ...manifest.quality,
         overall: 75,

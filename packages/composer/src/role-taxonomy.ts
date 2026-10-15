@@ -41,7 +41,7 @@ export const CANONICAL_ROLES: Record<string, CanonicalRole> = {
   'faq-accordion': { label: 'FAQ', resourceRoles: ['faq'] },
 
   // Authentication and onboarding
-  'auth-card': { label: 'Sign-in form' },
+  'auth-card': { label: 'Sign-in form', slugs: ['sign-in-form', 'sign-up-form'] },
   'brand-panel': { label: 'Brand panel', slugs: ['editorial-display-stack', 'soft-mesh-gradient'] },
   'wizard-content': { label: 'Onboarding steps', slugs: ['onboarding-wizard', 'onboarding-checklist', 'onboarding-role-select'] },
 
@@ -61,7 +61,7 @@ export const CANONICAL_ROLES: Record<string, CanonicalRole> = {
   'activity-timeline': { label: 'History', slugs: ['timeline', 'version-history', 'audit-log'] },
   'search-header': { label: 'Search', slugs: ['entity-search', 'search-first-header'] },
   'results-grid': { label: 'Search results', slugs: ['faceted-search-results', 'global-search-results'] },
-  'editor-surface': { label: 'Editor' },
+  'editor-surface': { label: 'Editor', slugs: ['document-editor'] },
   'inspector-panel': { label: 'Inspector', slugs: ['metadata-panel', 'context-rail'] },
   'version-history': { label: 'Version history', slugs: ['version-history'] },
   'summary-kpis': { label: 'Summary numbers', slugs: METRICS },
@@ -71,13 +71,13 @@ export const CANONICAL_ROLES: Record<string, CanonicalRole> = {
   'message-thread': { label: 'Message thread', slugs: ['messaging-thread'] },
   'calendar-view': { label: 'Calendar', slugs: ['calendar-week', 'calendar-month', 'schedule-agenda'] },
   'upcoming-list': { label: 'Upcoming', slugs: ['schedule-agenda', 'entity-list'] },
-  'booking-slot-picker': { label: 'Time-slot picker' },
-  'booking-details-form': { label: 'Booking details form' },
+  'booking-slot-picker': { label: 'Time-slot picker', slugs: ['booking-slot-picker'] },
+  'booking-details-form': { label: 'Booking details form', slugs: ['booking-details-form'] },
   'confirmation-state': { label: 'Confirmation', slugs: ['success-state'] },
   'board-view': { label: 'Board', slugs: ['kanban-board'] },
   'map-view': { label: 'Map', slugs: ['geographic-map'] },
   'results-list': { label: 'Results list', slugs: ['entity-list', 'compact-data-table'] },
-  'entity-form': { label: 'Record form' },
+  'entity-form': { label: 'Record form', slugs: ['entity-form'] },
 
   // Settings, billing and admin
   'settings-nav': { label: 'Settings navigation', slugs: ['settings-navigation'] },
@@ -86,8 +86,8 @@ export const CANONICAL_ROLES: Record<string, CanonicalRole> = {
   'current-plan-card': { label: 'Current plan', slugs: ['billing-overview'] },
   'usage-meter': { label: 'Usage', slugs: ['usage-overview'] },
   'invoices-table': { label: 'Invoices', slugs: TABLES },
-  'order-summary': { label: 'Order summary' },
-  'payment-form': { label: 'Payment form' },
+  'order-summary': { label: 'Order summary', slugs: ['order-summary'] },
+  'payment-form': { label: 'Payment form', slugs: ['payment-form'] },
   'security-trust-badges': { label: 'Trust badges', slugs: ['trust-badges-strip'] },
   'tenant-switcher': { label: 'Workspace switcher', slugs: ['workspace-switcher', 'project-switcher'] },
   'audit-log-stream': { label: 'Audit log', slugs: ['audit-log'] },
@@ -96,7 +96,7 @@ export const CANONICAL_ROLES: Record<string, CanonicalRole> = {
   // Documentation and support
   'docs-sidebar': { label: 'Docs navigation' },
   'prose-article': { label: 'Article' },
-  'contact-form': { label: 'Contact form' },
+  'contact-form': { label: 'Contact form', slugs: ['contact-form'] },
   'system-status-indicator': { label: 'System status', slugs: ['status-overview'] },
 };
 

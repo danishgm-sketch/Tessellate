@@ -1,0 +1,267 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "res_v2_payment_form",
+  "slug": "payment-form",
+  "name": "Payment Form",
+  "version": "1.0.0",
+  "status": "experimental",
+  "description": "Checkout payment layout with billing name and postcode and a slot for your provider's secure card fields; it never handles card numbers itself.",
+  "resourceType": "block",
+  "categories": [
+    "commerce",
+    "checkout"
+  ],
+  "roles": [
+    "commerce",
+    "checkout",
+    "payment"
+  ],
+  "purposes": [
+    "Take a payment",
+    "Deposits"
+  ],
+  "productArchetypes": [
+    {
+      "tag": "ecommerce",
+      "weight": 95
+    },
+    {
+      "tag": "booking-scheduling",
+      "weight": 85
+    }
+  ],
+  "creator": {
+    "id": "tessellate_core",
+    "displayName": "Tessellate Core",
+    "handle": "tessellate",
+    "url": "https://tessellate.design"
+  },
+  "provenance": {
+    "origin": "tessellate",
+    "derivative": false,
+    "aiAssistance": "substantial"
+  },
+  "license": {
+    "spdx": "MIT",
+    "name": "MIT License",
+    "url": "https://opensource.org/licenses/MIT",
+    "redistributionVerified": true,
+    "attributionRequired": false
+  },
+  "framework": "react",
+  "language": "typescript",
+  "styling": "tailwind",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "preview.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "fixtures.ts",
+      "kind": "fixture",
+      "required": true
+    },
+    {
+      "path": "README.md",
+      "kind": "asset",
+      "required": true
+    }
+  ],
+  "registry": {
+    "name": "payment-form",
+    "dependencies": [],
+    "devDependencies": [],
+    "registryDependencies": []
+  },
+  "preview": {
+    "component": "PaymentFormPreview",
+    "defaultProps": {
+      "amountLabel": "£20.00"
+    },
+    "viewport": 1440
+  },
+  "slots": [],
+  "variants": [
+    {
+      "id": "quiet",
+      "name": "Quiet",
+      "description": "Flat surface with a hairline border.",
+      "props": {
+        "variant": "quiet"
+      }
+    },
+    {
+      "id": "expressive",
+      "name": "Expressive",
+      "description": "Raised surface with a soft shadow.",
+      "props": {
+        "variant": "expressive"
+      }
+    },
+    {
+      "id": "nocturne",
+      "name": "Nocturne",
+      "description": "Strong outline for high-contrast layouts.",
+      "props": {
+        "variant": "nocturne"
+      }
+    }
+  ],
+  "tags": [
+    "payment",
+    "checkout",
+    "card"
+  ],
+  "intent": {
+    "summary": "Checkout payment layout with billing name and postcode and a slot for your provider's secure card fields; it never handles card numbers itself.",
+    "idealFor": [
+      "Stripe Elements or similar hosted fields"
+    ],
+    "avoidFor": [
+      "Storing card data"
+    ],
+    "jobs": [
+      "Collect payment securely"
+    ],
+    "contentRequirements": []
+  },
+  "visualDNA": {
+    "visualAmbition": 30,
+    "density": 45,
+    "curvature": 40
+  },
+  "interactionDNA": {
+    "interactionDensity": 55,
+    "motionIntensity": 5,
+    "keyboardComplexity": "low",
+    "hoverDependency": "none",
+    "directManipulation": false
+  },
+  "layoutDNA": {
+    "density": 45,
+    "whitespace": 55,
+    "asymmetry": 0,
+    "preferredWidths": [
+      "narrow"
+    ],
+    "layoutFamilies": [
+      "standard"
+    ]
+  },
+  "responsive": {
+    "verifiedWidths": [
+      360,
+      768,
+      1440
+    ],
+    "defaultStrategy": "stack"
+  },
+  "accessibility": {
+    "levelTarget": "AAA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true,
+    "knownLimitations": [
+      "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+    ]
+  },
+  "performance": {
+    "jsCost": "tiny",
+    "gpuCost": "none",
+    "mediaCost": "none",
+    "runtimeComplexity": "low",
+    "lazyRecommended": false,
+    "continuousAnimation": false
+  },
+  "complexity": "medium",
+  "customizability": "high",
+  "compatibility": {},
+  "relationships": [],
+  "quality": {
+    "overall": 80,
+    "accessibility": 85,
+    "responsive": 85,
+    "performance": 90,
+    "codeQuality": 85,
+    "composability": 85,
+    "visualCraft": 75,
+    "dependencyCleanliness": 100,
+    "documentation": 80
+  },
+  "createdAt": "2026-10-15T00:00:00.000Z",
+  "updatedAt": "2026-10-15T00:00:00.000Z",
+  "contractVersion": 2,
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "description": "Heading."
+    },
+    {
+      "name": "amountLabel",
+      "type": "string",
+      "required": false,
+      "description": "Formatted amount on the pay button."
+    },
+    {
+      "name": "cardFields",
+      "type": "node",
+      "required": false,
+      "description": "Your payment provider's secure card fields."
+    },
+    {
+      "name": "onPay",
+      "type": "callback",
+      "required": false,
+      "description": "Receives { name, postcode } when the form is valid."
+    },
+    {
+      "name": "errorMessage",
+      "type": "string",
+      "required": false,
+      "description": "Error from your service, announced in an alert region when payment fails."
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false,
+      "description": "Shows the busy state and disables submission."
+    },
+    {
+      "name": "securityNote",
+      "type": "string",
+      "required": false,
+      "description": "Line under the button."
+    },
+    {
+      "name": "variant",
+      "type": "enum",
+      "required": false,
+      "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+      "enumValues": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ]
+    }
+  ],
+  "states": {
+    "loading": true,
+    "empty": false,
+    "error": true
+  },
+  "stylingContract": {
+    "tokenOnly": true,
+    "reducedMotion": "respected"
+  }
+}

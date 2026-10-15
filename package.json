@@ -5,7 +5,8 @@
   "packageManager": "pnpm@11.20.0",
   "scripts": {
     "dev": "pnpm -r --parallel run dev",
-    "build:catalog": "tsx scripts/build-catalog.ts",
+    "build:catalog": "tsx scripts/write-resource-theme.ts && tsx scripts/build-catalog.ts",
+    "resources:v2": "tsx scripts/resources-v2.ts",
     "build": "pnpm build:catalog && pnpm -r run build",
     "typecheck": "pnpm -r --parallel run typecheck",
     "lint": "eslint .",

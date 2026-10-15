@@ -1,0 +1,263 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "res_v2_password_reset_form",
+  "slug": "password-reset-form",
+  "name": "Password Reset Form",
+  "version": "1.0.0",
+  "status": "experimental",
+  "description": "Request a password reset link with an account-neutral confirmation that never reveals whether an email is registered.",
+  "resourceType": "block",
+  "categories": [
+    "auth",
+    "forms"
+  ],
+  "roles": [
+    "auth",
+    "password-reset",
+    "form"
+  ],
+  "purposes": [
+    "Account recovery"
+  ],
+  "productArchetypes": [
+    {
+      "tag": "saas",
+      "weight": 85
+    }
+  ],
+  "creator": {
+    "id": "tessellate_core",
+    "displayName": "Tessellate Core",
+    "handle": "tessellate",
+    "url": "https://tessellate.design"
+  },
+  "provenance": {
+    "origin": "tessellate",
+    "derivative": false,
+    "aiAssistance": "substantial"
+  },
+  "license": {
+    "spdx": "MIT",
+    "name": "MIT License",
+    "url": "https://opensource.org/licenses/MIT",
+    "redistributionVerified": true,
+    "attributionRequired": false
+  },
+  "framework": "react",
+  "language": "typescript",
+  "styling": "tailwind",
+  "dependencies": [],
+  "files": [
+    {
+      "path": "index.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "preview.tsx",
+      "kind": "component",
+      "required": true
+    },
+    {
+      "path": "fixtures.ts",
+      "kind": "fixture",
+      "required": true
+    },
+    {
+      "path": "README.md",
+      "kind": "asset",
+      "required": true
+    }
+  ],
+  "registry": {
+    "name": "password-reset-form",
+    "dependencies": [],
+    "devDependencies": [],
+    "registryDependencies": []
+  },
+  "preview": {
+    "component": "PasswordResetFormPreview",
+    "defaultProps": {
+      "productName": "Northside Physio"
+    },
+    "viewport": 1440
+  },
+  "slots": [],
+  "variants": [
+    {
+      "id": "quiet",
+      "name": "Quiet",
+      "description": "Flat surface with a hairline border.",
+      "props": {
+        "variant": "quiet"
+      }
+    },
+    {
+      "id": "expressive",
+      "name": "Expressive",
+      "description": "Raised surface with a soft shadow.",
+      "props": {
+        "variant": "expressive"
+      }
+    },
+    {
+      "id": "nocturne",
+      "name": "Nocturne",
+      "description": "Strong outline for high-contrast layouts.",
+      "props": {
+        "variant": "nocturne"
+      }
+    }
+  ],
+  "tags": [
+    "auth",
+    "forgot-password",
+    "reset"
+  ],
+  "intent": {
+    "summary": "Request a password reset link with an account-neutral confirmation that never reveals whether an email is registered.",
+    "idealFor": [
+      "Email and password accounts"
+    ],
+    "avoidFor": [
+      "SSO-only products"
+    ],
+    "jobs": [
+      "Recover access to an account"
+    ],
+    "contentRequirements": []
+  },
+  "visualDNA": {
+    "visualAmbition": 30,
+    "density": 35,
+    "curvature": 40
+  },
+  "interactionDNA": {
+    "interactionDensity": 55,
+    "motionIntensity": 5,
+    "keyboardComplexity": "low",
+    "hoverDependency": "none",
+    "directManipulation": false
+  },
+  "layoutDNA": {
+    "density": 35,
+    "whitespace": 65,
+    "asymmetry": 0,
+    "preferredWidths": [
+      "narrow"
+    ],
+    "layoutFamilies": [
+      "standard"
+    ]
+  },
+  "responsive": {
+    "verifiedWidths": [
+      360,
+      768,
+      1440
+    ],
+    "defaultStrategy": "stack"
+  },
+  "accessibility": {
+    "levelTarget": "AAA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true,
+    "knownLimitations": [
+      "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+    ]
+  },
+  "performance": {
+    "jsCost": "tiny",
+    "gpuCost": "none",
+    "mediaCost": "none",
+    "runtimeComplexity": "low",
+    "lazyRecommended": false,
+    "continuousAnimation": false
+  },
+  "complexity": "medium",
+  "customizability": "high",
+  "compatibility": {},
+  "relationships": [],
+  "quality": {
+    "overall": 80,
+    "accessibility": 85,
+    "responsive": 85,
+    "performance": 90,
+    "codeQuality": 85,
+    "composability": 85,
+    "visualCraft": 75,
+    "dependencyCleanliness": 100,
+    "documentation": 80
+  },
+  "createdAt": "2026-10-15T00:00:00.000Z",
+  "updatedAt": "2026-10-15T00:00:00.000Z",
+  "contractVersion": 2,
+  "props": [
+    {
+      "name": "productName",
+      "type": "string",
+      "required": false,
+      "description": "Product name shown above the form.",
+      "content": "productName"
+    },
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "description": "Form heading."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Explanation under the heading."
+    },
+    {
+      "name": "onSubmit",
+      "type": "callback",
+      "required": false,
+      "description": "Receives the email address and sends the reset email."
+    },
+    {
+      "name": "errorMessage",
+      "type": "string",
+      "required": false,
+      "description": "Error from your service, announced in an alert region when the request fails."
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false,
+      "description": "Shows the busy state and disables submission."
+    },
+    {
+      "name": "signInHref",
+      "type": "string",
+      "required": false,
+      "description": "Link back to sign-in."
+    },
+    {
+      "name": "variant",
+      "type": "enum",
+      "required": false,
+      "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+      "enumValues": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ]
+    }
+  ],
+  "states": {
+    "loading": true,
+    "empty": false,
+    "error": true
+  },
+  "stylingContract": {
+    "tokenOnly": true,
+    "reducedMotion": "respected"
+  }
+}
