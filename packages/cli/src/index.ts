@@ -7,6 +7,9 @@ import { runCompose } from './commands/compose.js';
 import { runExport } from './commands/export.js';
 import { runValidate, runDoctor } from './commands/validate.js';
 import { runCreateResource } from './commands/create-resource.js';
+import { runLint } from './commands/lint.js';
+import { runIngest } from './commands/ingest.js';
+import { runGate } from './commands/gate.js';
 
 export * from './config.js';
 export * from './commands/init.js';
@@ -16,6 +19,9 @@ export * from './commands/compose.js';
 export * from './commands/export.js';
 export * from './commands/validate.js';
 export * from './commands/create-resource.js';
+export * from './commands/lint.js';
+export * from './commands/ingest.js';
+export * from './commands/gate.js';
 
 const program = new Command();
 
@@ -81,6 +87,33 @@ program
   .action(async (file) => {
     await runValidate(file);
   });
+
+program
+  .command('lint [path]')
+  .description('Lint UI components and pages against Design DNA and accessibility standards')
+  .option('--fix', 'Automatically fix hardcoded colors and off-grid spacing')
+  .option('-f, --format <format>', 'Output format: pretty, json, sarif', 'pretty')
+  .action(async (targetPath = '.', opts) => {
+    await runLint(targetPath, opts);
+  });
+
+program
+  .command('ingest [dir]')
+  .description('Ingest an existing React/Tailwind codebase into a canonical Tessellate ProjectManifest AST')
+  .option('-o, --output <path>', 'Destination output path for project manifest')
+  .option('-n, --name <name>', 'Project name')
+  .action(async (dir = '.', opts) => {
+    await runIngest(dir, opts);
+  });
+
+program
+  .command('gate [dir]')
+  .description('Audit a component directory against the 16-point Quality & Security Gate')
+  .option('-f, --format <format>', 'Output format: pretty, json, markdown', 'pretty')
+  .action(async (dir = '.', opts) => {
+    await runGate(dir, opts);
+  });
+
 
 program
   .command('doctor')

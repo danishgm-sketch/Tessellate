@@ -8,3 +8,9 @@ export * from './zip.js';
 export * from './agent-handoff.js';
 export * from './validation.js';
 export * from './generated-gold-sources.js';
+export * from './node-disk-resolver.js';
+export * from './targets/w3c-tokens.js';
+export * from './targets/expo-native.js';
+export * from './targets/swiftui.js';
+
+

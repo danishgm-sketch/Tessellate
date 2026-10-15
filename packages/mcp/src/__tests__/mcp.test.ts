@@ -25,6 +25,9 @@ describe('Phase 17 — @tessellate/mcp Server & Tools Test Suite', () => {
     expect(tools).toHaveProperty('audit_project');
     expect(tools).toHaveProperty('get_design_dna');
     expect(tools).toHaveProperty('list_design_directions');
+    expect(tools).toHaveProperty('export_project_code');
+    expect(tools).toHaveProperty('audit_project_accessibility');
+    expect(tools).toHaveProperty('mutate_screen_ast');
   });
 
   it('catalog provider loads resources correctly', async () => {
@@ -77,10 +80,17 @@ describe('Phase 17 — @tessellate/mcp Server & Tools Test Suite', () => {
       prompt: 'Minimal developer documentation site with search and sidebar navigation',
       name: 'Developer Docs',
     });
-    const parsedScreen = JSON.parse(screenRes.content[0]!.text) as { name: string; schemaVersion: string; productModel: unknown };
+    const parsedScreen = JSON.parse(screenRes.content[0]!.text) as {
+      name: string;
+      schemaVersion: string;
+      productModel: unknown;
+      screens: Array<{ id: string; rootNode: unknown }>;
+    };
     expect(parsedScreen.name).toBe('Developer Docs');
     expect(parsedScreen.schemaVersion).toBe('1.0.0');
     expect(parsedScreen.productModel).toBeDefined();
+    expect(parsedScreen.screens.length).toBeGreaterThan(0);
+    expect(parsedScreen.screens[0]?.rootNode).toBeDefined();
 
     const productRes = await getTool(server, 'compose_product').handler({
       description: 'AI customer support ticketing dashboard',
@@ -101,6 +111,49 @@ describe('Phase 17 — @tessellate/mcp Server & Tools Test Suite', () => {
     const auditRes = await getTool(server, 'audit_project').handler({ manifest: validProjectFixture });
     const parsedAudit = JSON.parse(auditRes.content[0]!.text) as { passed: boolean };
     expect(parsedAudit.passed).toBe(true);
+  });
+
+  it('executes tool: export_project_code, audit_project_accessibility, and mutate_screen_ast', async () => {
+    const server = createMcpServer({ cwd: repoRoot });
+    const { validProjectFixture } = await import('@tessellate/schemas');
+
+    // 1. Export code
+    const exportRes = await getTool(server, 'export_project_code').handler({
+      manifest: validProjectFixture,
+      target: 'vite',
+    });
+    const parsedExport = JSON.parse(exportRes.content[0]!.text) as {
+      target: string;
+      fileCount: number;
+      files: Record<string, string>;
+    };
+    expect(parsedExport.target).toBe('vite');
+    expect(parsedExport.fileCount).toBeGreaterThan(0);
+    expect(parsedExport.files).toHaveProperty('package.json');
+
+    // 2. Audit accessibility
+    const a11yRes = await getTool(server, 'audit_project_accessibility').handler({
+      manifest: validProjectFixture,
+    });
+    const parsedA11y = JSON.parse(a11yRes.content[0]!.text) as {
+      summary: string;
+      levelAchieved: string;
+    };
+    expect(parsedA11y.summary).toBeDefined();
+    expect(['AAA', 'AA']).toContain(parsedA11y.levelAchieved);
+
+    // 3. Mutate AST (lock node)
+    const mutateRes = await getTool(server, 'mutate_screen_ast').handler({
+      manifest: validProjectFixture,
+      action: 'lock_node',
+      nodeId: 'node-header-1',
+    });
+    const parsedMutate = JSON.parse(mutateRes.content[0]!.text) as {
+      success: boolean;
+      manifest: { locks: Array<{ targetNodeId: string }> };
+    };
+    expect(parsedMutate.success).toBe(true);
+    expect(parsedMutate.manifest.locks.some((l) => l.targetNodeId === 'node-header-1')).toBe(true);
   });
 
   it('executes tool: get_design_dna and list_design_directions', async () => {

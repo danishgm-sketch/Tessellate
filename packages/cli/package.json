@@ -20,9 +20,13 @@
     "@tessellate/composer": "workspace:*",
     "@tessellate/dna": "workspace:*",
     "@tessellate/exporter": "workspace:*",
+    "@tessellate/ingest": "workspace:*",
+    "@tessellate/linter": "workspace:*",
     "@tessellate/registry": "workspace:*",
+    "@tessellate/registry-gate": "workspace:*",
     "@tessellate/schemas": "workspace:*",
-    "commander": "^13.1.0"
+    "commander": "^13.1.0",
+    "glob": "^11.0.1"
   },
   "devDependencies": {
     "@types/node": "^22.13.4",

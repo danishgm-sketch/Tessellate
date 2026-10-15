@@ -58,8 +58,12 @@ function resolveResource(slug: string, semanticRole: string, nodeId: string): Re
   );
 }
 
+import { generateW3cTokensTree } from './targets/w3c-tokens.js';
+import { generateExpoNativeSourceTree } from './targets/expo-native.js';
+import { generateSwiftUiSourceTree } from './targets/swiftui.js';
+
 export interface ExportOptions {
-  target?: 'vite' | 'nextjs';
+  target?: 'vite' | 'nextjs' | 'expo' | 'swiftui' | 'tokens';
 }
 
 export const BASE_BUTTON_CODE = `import React from 'react';
@@ -159,6 +163,15 @@ export function generateSourceTree(
   const target = options.target || 'vite';
   if (target === 'nextjs') {
     return generateNextJsSourceTree(manifest);
+  }
+  if (target === 'expo') {
+    return generateExpoNativeSourceTree(manifest);
+  }
+  if (target === 'swiftui') {
+    return generateSwiftUiSourceTree(manifest);
+  }
+  if (target === 'tokens') {
+    return generateW3cTokensTree(manifest);
   }
   return generateViteSourceTree(manifest);
 }

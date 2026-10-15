@@ -50,3 +50,5 @@ if (
 
 export * from './tools.js';
 export * from './catalog-provider.js';
+export * from './server-sse.js';
+

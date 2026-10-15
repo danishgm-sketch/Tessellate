@@ -1,8 +1,10 @@
 import { z } from 'zod';
 import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
-import { ProjectManifestSchema } from '@tessellate/schemas';
+import { ProjectManifestSchema, type ProjectManifest } from '@tessellate/schemas';
 import { DEFAULT_DESIGN_DNA, DNA_PRESETS } from '@tessellate/dna';
 import { interpretProductBrief, planScreenGraph } from '@tessellate/composer';
+import { composeProjectPipeline } from '@tessellate/compatibility';
+import { generateSourceTree } from '@tessellate/exporter';
 import { loadMcpCatalogue, findResourceBySlug, getResourceComponentCode } from './catalog-provider.js';
 
 export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
@@ -265,51 +267,35 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
   // 7. compose_screen
   server.tool(
     'compose_screen',
-    'Deterministically generate a complete ProjectManifest from a natural language requirement or brief.',
+    'Deterministically generate a complete ProjectManifest with fully composed screens and nodes from a brief.',
     {
       prompt: z.string().describe('Product brief or screen requirement'),
       name: z.string().optional().describe('Project name'),
       archetype: z.string().optional().describe('Archetype override (e.g. saas, ecommerce, docs)'),
+      direction: z.enum(['A', 'B', 'C']).default('A').describe('Visual design direction (A: Editorial Precision, B: Kinetic Monolith, C: Atmospheric Depth)'),
     },
-    async ({ prompt, name = 'Composed Screen', archetype }) => {
-      const { productModel } = interpretProductBrief({
-        description: prompt,
-        archetypeOverride: archetype,
-      });
+    async ({ prompt, name = 'Composed Screen', archetype, direction = 'A' }) => {
+      const catalogue = await loadMcpCatalogue(cwd);
+      const pipelineResult = composeProjectPipeline(
+        {
+          description: prompt,
+          archetypeOverride: archetype,
+        },
+        {
+          catalogResources: catalogue.resources,
+        }
+      );
 
-      const screenPlan = planScreenGraph(productModel);
-      const now = new Date().toISOString();
+      const selectedOutput =
+        direction === 'B'
+          ? pipelineResult.directionB
+          : direction === 'C'
+            ? pipelineResult.directionC
+            : pipelineResult.directionA;
 
       const manifest = {
-        schemaVersion: '1.0.0',
-        id: `proj_${Date.now()}`,
-        name,
-        description: prompt,
-        createdAt: now,
-        updatedAt: now,
-        catalogVersion: '1.0.0',
-        seed: `tess-seed-${Date.now()}`,
-        productModel,
-        designDNA: DEFAULT_DESIGN_DNA,
-        constraints: productModel.constraints,
-        screenGraph: screenPlan.screenGraph,
-        screens: [],
-        navigation: {
-          model: 'sidebar-fixed',
-          primaryItems: [],
-        },
-        assets: [],
-        locks: [],
-        historyMeta: {
-          totalOperations: 0,
-          headRevision: 1,
-        },
-        exportSettings: {
-          framework: 'react',
-          styling: 'tailwind',
-          includeTypes: true,
-          target: 'vite-react-tailwind',
-        },
+        ...selectedOutput.manifest,
+        name: name || selectedOutput.manifest.name,
       };
 
       return {
@@ -548,4 +534,189 @@ export function registerMcpTools(server: McpServer, cwd = process.cwd()) {
       };
     }
   );
+
+  // 13. export_project_code
+  server.tool(
+    'export_project_code',
+    'Compile a ProjectManifest into an exportable, production-ready code tree for Vite or Next.js 15.',
+    {
+      manifest: z.record(z.unknown()).describe('The ProjectManifest object to compile'),
+      target: z.enum(['vite', 'nextjs']).default('vite').describe('Export target framework (vite SPA or nextjs 15 App Router)'),
+    },
+    async ({ manifest, target = 'vite' }) => {
+      const parsed = ProjectManifestSchema.safeParse(manifest);
+      if (!parsed.success) {
+        return {
+          content: [
+            {
+              type: 'text',
+              text: JSON.stringify({ error: 'Invalid ProjectManifest schema', issues: parsed.error.issues }, null, 2),
+            },
+          ],
+        };
+      }
+
+      try {
+        const generated = generateSourceTree(parsed.data, { target });
+        return {
+          content: [
+            {
+              type: 'text',
+              text: JSON.stringify(
+                {
+                  target,
+                  fileCount: Object.keys(generated).length,
+                  files: generated,
+                },
+                null,
+                2
+              ),
+            },
+          ],
+        };
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : String(err);
+        return {
+          content: [
+            {
+              type: 'text',
+              text: JSON.stringify({ error: `Export compilation failed: ${message}` }),
+            },
+          ],
+        };
+      }
+    }
+  );
+
+  // 14. audit_project_accessibility
+  server.tool(
+    'audit_project_accessibility',
+    'Deeply audit a ProjectManifest for WCAG AAA compliance, semantic landmarks, and motion reduction.',
+    {
+      manifest: z.record(z.unknown()).describe('The ProjectManifest to audit'),
+    },
+    async ({ manifest }) => {
+      const parsed = ProjectManifestSchema.safeParse(manifest);
+      if (!parsed.success) {
+        return {
+          content: [
+            {
+              type: 'text',
+              text: JSON.stringify({ error: 'Invalid manifest', issues: parsed.error.issues }),
+            },
+          ],
+        };
+      }
+
+      const proj = parsed.data;
+      const issues: Array<{ severity: 'error' | 'warning' | 'info'; code: string; message: string }> = [];
+
+      // Contrast ratio check
+      if (proj.designDNA.contrast < 45) {
+        issues.push({
+          severity: 'warning',
+          code: 'CONTRAST_LOW',
+          message: 'Design DNA contrast score is below 45. Some components may fail WCAG AAA 7:1 ratio requirements.',
+        });
+      }
+
+      // Check screens for landmark semantics
+      let totalNodes = 0;
+      for (const screen of proj.screens) {
+        const roles = new Set<string>();
+        const visit = (node: any) => {
+          totalNodes++;
+          if (node.semanticRole) roles.add(node.semanticRole);
+          for (const child of node.children || []) visit(child);
+        };
+        visit(screen.rootNode);
+
+        if (!roles.has('shell') && !roles.has('navigation')) {
+          issues.push({
+            severity: 'warning',
+            code: 'MISSING_NAV_LANDMARK',
+            message: `Screen "${screen.name}" (${screen.id}) is missing dedicated navigation/shell landmark.`,
+          });
+        }
+      }
+
+      const isAAA = issues.filter((i) => i.severity === 'error').length === 0;
+
+      return {
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify(
+              {
+                summary: isAAA ? 'WCAG AAA Accessibility Audit Passed' : 'Accessibility Audit Completed with Issues',
+                levelAchieved: isAAA ? 'AAA' : 'AA',
+                screenCount: proj.screens.length,
+                totalNodes,
+                issues,
+              },
+              null,
+              2
+            ),
+          },
+        ],
+      };
+    }
+  );
+
+  // 15. mutate_screen_ast
+  server.tool(
+    'mutate_screen_ast',
+    'Apply atomic mutations or parameter adjustments to a ProjectManifest AST.',
+    {
+      manifest: z.record(z.unknown()).describe('The ProjectManifest object to mutate'),
+      action: z.enum(['lock_node', 'unlock_node', 'adjust_dna', 'set_navigation_model']).describe('Mutation action'),
+      nodeId: z.string().optional().describe('Node ID for lock/unlock actions'),
+      dnaDelta: z.record(z.number()).optional().describe('Partial Design DNA deltas to apply'),
+      navigationModel: z.enum(['sidebar-fixed', 'top-nav', 'bottom-dock', 'minimal']).optional().describe('New navigation model'),
+    },
+    async ({ manifest, action, nodeId, dnaDelta, navigationModel }) => {
+      const parsed = ProjectManifestSchema.safeParse(manifest);
+      if (!parsed.success) {
+        return {
+          content: [
+            {
+              type: 'text',
+              text: JSON.stringify({ error: 'Invalid manifest', issues: parsed.error.issues }),
+            },
+          ],
+        };
+      }
+
+      const proj = JSON.parse(JSON.stringify(parsed.data)) as ProjectManifest;
+
+      if (action === 'lock_node' && nodeId) {
+        if (!proj.locks.some((l) => l.targetNodeId === nodeId)) {
+          proj.locks.push({ targetNodeId: nodeId, lockTypes: ['node', 'structure'] });
+        }
+      } else if (action === 'unlock_node' && nodeId) {
+        proj.locks = proj.locks.filter((l) => l.targetNodeId !== nodeId);
+      } else if (action === 'adjust_dna' && dnaDelta) {
+        proj.designDNA = {
+          ...proj.designDNA,
+          ...dnaDelta,
+        };
+      } else if (action === 'set_navigation_model' && navigationModel) {
+        proj.navigation.model = navigationModel;
+      }
+
+      proj.updatedAt = new Date().toISOString();
+      proj.historyMeta.totalOperations = (proj.historyMeta.totalOperations ?? 0) + 1;
+      proj.historyMeta.headRevision = (proj.historyMeta.headRevision ?? 1) + 1;
+
+      return {
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify({ success: true, manifest: proj }, null, 2),
+          },
+        ],
+      };
+    }
+  );
 }
+

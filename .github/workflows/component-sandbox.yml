@@ -1,0 +1,59 @@
+name: Component Quality Gate Sandbox
+
+on:
+  pull_request:
+    paths:
+      - 'resources/**'
+      - 'packages/registry-gate/**'
+  push:
+    branches: [main]
+    paths:
+      - 'resources/**'
+
+jobs:
+  quality-gate:
+    name: 16-Point Component Quality & Security Sandbox Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm --filter @tessellate/schemas build && pnpm --filter @tessellate/registry-gate typecheck
+
+      - name: Audit Modified Resources via Registry Gate
+        run: |
+          echo "Scanning changed resources..."
+          # If on PR, check modified resource directories
+          CHANGED_DIRS=$(git diff --name-only origin/main...HEAD | grep '^resources/' | cut -d/ -f1-3 | sort -u || true)
+          if [ -z "$CHANGED_DIRS" ]; then
+            echo "No changed resource directories detected in diff. Auditing reference button primitive..."
+            CHANGED_DIRS="resources/primitives/button"
+          fi
+
+          FAILED=0
+          for dir in $CHANGED_DIRS; do
+            if [ -d "$dir" ] && [ -f "$dir/manifest.json" -o -f "$dir/resource.json" ]; then
+              echo "Auditing $dir..."
+              pnpm --filter @tessellate/cli exec tsx src/index.ts gate "$dir" || FAILED=1
+            fi
+          done
+
+          if [ "$FAILED" -ne 0 ]; then
+            echo "❌ Component Quality Gate audit failed. Fix issues before merging."
+            exit 1
+          fi
+          echo "✅ All audited components approved for registry."

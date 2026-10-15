@@ -12,6 +12,9 @@ import {
   runCompose,
   runExport,
   runCreateResource,
+  runLint,
+  runIngest,
+  runGate,
   loadConfig,
 } from '../index.js';
 
@@ -155,4 +158,60 @@ describe('Phase 17 — @tessellate/cli Test Suite', () => {
     expect(valResult.valid).toBe(true);
     expect(valResult.type).toBe('resource');
   });
+
+  it('tess lint: audits source files and outputs report', async () => {
+    const testFile = path.join(tempDir, 'TestComp.tsx');
+    fs.writeFileSync(
+      testFile,
+      'export function TestComp() { return <div className="bg-[#123456] p-[17px]">Hello</div>; }',
+      'utf-8'
+    );
+
+    const report = await runLint(testFile, { fix: true });
+    expect(report.issues.length).toBeGreaterThan(0);
+    expect(report.issues.some((i) => i.ruleId === 'no-hardcoded-colors')).toBe(true);
+
+    const fixed = fs.readFileSync(testFile, 'utf-8');
+    expect(fixed).toContain('var(--tess-surface-secondary');
+  });
+
+  it('tess ingest: converts source files into ProjectManifest AST', async () => {
+    const srcDir = path.join(tempDir, 'src');
+    fs.mkdirSync(srcDir, { recursive: true });
+    fs.writeFileSync(
+      path.join(srcDir, 'Dashboard.tsx'),
+      `export function Dashboard() {
+        return (
+          <main className="bg-slate-900 rounded-2xl p-6">
+            <h1>Analytics Portal</h1>
+          </main>
+        );
+      }`,
+      'utf-8'
+    );
+
+    const outJson = path.join(tempDir, 'tessellate.project.json');
+    const result = await runIngest(srcDir, {
+      output: outJson,
+      name: 'Imported App',
+    });
+
+    expect(result.sourceFileCount).toBe(1);
+    expect(result.screens.length).toBe(1);
+    expect(fs.existsSync(outJson)).toBe(true);
+    expect(result.projectManifest.name).toBe('Imported App');
+    expect(result.inferredDna.detectedPalette).toBe('slate');
+  });
+
+  it('tess gate: audits resource directory against Quality & Security Gate', async () => {
+    const repoRoot = path.resolve(__dirname, '../../../..');
+    const buttonDir = path.join(repoRoot, 'resources/primitives/button');
+
+    const report = await runGate(buttonDir);
+    expect(report.resourceSlug).toBe('button');
+    expect(report.overallStatus).toBe('approved');
+    expect(report.checks.length).toBe(8);
+    expect(report.totalScore).toBeGreaterThanOrEqual(90);
+  });
 });
+

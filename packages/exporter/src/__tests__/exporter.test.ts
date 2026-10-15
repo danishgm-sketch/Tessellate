@@ -176,4 +176,55 @@ describe('Phase 11: Exporter Package', () => {
     expect(tree['app/page.tsx']).toContain("'use client';");
     expect(tree['app/page.tsx']).toContain('Overview');
   });
+
+  it('generates a complete Expo / React Native mobile project tree', () => {
+    const manifest = createTestManifest();
+    const tree = generateSourceTree(manifest, { target: 'expo' });
+
+    expect(tree['package.json']).toBeDefined();
+    expect(tree['app.json']).toBeDefined();
+    expect(tree['babel.config.js']).toBeDefined();
+    expect(tree['metro.config.js']).toBeDefined();
+    expect(tree['tailwind.config.js']).toBeDefined();
+    expect(tree['global.css']).toBeDefined();
+    expect(tree['app/_layout.tsx']).toBeDefined();
+    expect(tree['app/index.tsx']).toBeDefined();
+    expect(tree['components/ui/Button.tsx']).toBeDefined();
+    expect(tree['components/ui/MetricCard.tsx']).toBeDefined();
+    expect(tree['README.md']).toContain('Expo');
+
+    const pkg = JSON.parse(tree['package.json']!);
+    expect(pkg.dependencies.expo).toBeDefined();
+    expect(pkg.dependencies['react-native']).toBeDefined();
+    expect(pkg.dependencies.nativewind).toBeDefined();
+  });
+
+  it('generates a complete native SwiftUI project tree', () => {
+    const manifest = createTestManifest();
+    const tree = generateSourceTree(manifest, { target: 'swiftui' });
+
+    expect(tree['Package.swift']).toBeDefined();
+    expect(tree['Sources/DesignTokens.swift']).toBeDefined();
+    expect(tree['Sources/Components/TessButton.swift']).toBeDefined();
+    expect(tree['Sources/Components/TessMetricCard.swift']).toBeDefined();
+    expect(tree['Sources/ContentView.swift']).toBeDefined();
+    expect(tree['README.md']).toContain('SwiftUI');
+
+    expect(tree['Sources/DesignTokens.swift']).toContain('TessellateTheme');
+    expect(tree['Sources/ContentView.swift']).toContain('TabView');
+  });
+
+  it('generates W3C Design Tokens format (tokens.json)', () => {
+    const manifest = createTestManifest();
+    const tree = generateSourceTree(manifest, { target: 'tokens' });
+
+    expect(tree['tokens.json']).toBeDefined();
+    expect(tree['README.md']).toContain('W3C Design Tokens');
+
+    const tokens = JSON.parse(tree['tokens.json']!);
+    expect(tokens.color).toBeDefined();
+    expect(tokens.color.accent.primary.$type).toBe('color');
+    expect(tokens.dimension.radius.md.$type).toBe('dimension');
+  });
 });
+
