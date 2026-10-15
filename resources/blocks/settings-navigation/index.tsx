@@ -1,43 +1,59 @@
-import React, { useState } from 'react';
+import React, { useId } from 'react';
 
 export type SettingsNavigationVariant = 'quiet' | 'expressive' | 'nocturne';
 
+export interface SettingsSection {
+  label: string;
+  href: string;
+  description?: string;
+}
+
 export interface SettingsNavigationProps {
+  heading?: string;
+  items?: SettingsSection[];
+  /** Current section, marked with aria-current. Defaults to the first. */
+  activeHref?: string;
   variant?: SettingsNavigationVariant;
 }
 
-export function SettingsNavigation({ variant = 'quiet' }: SettingsNavigationProps) {
-  const [active, setActive] = useState('Profile');
+const DEFAULT_SECTIONS: SettingsSection[] = [
+  { label: 'Profile', href: '#profile', description: 'Name, email and photo' },
+  { label: 'Notifications', href: '#notifications', description: 'Email and text reminders' },
+  { label: 'Security', href: '#security', description: 'Password and sign-in' },
+  { label: 'Billing', href: '#billing', description: 'Plan and invoices' },
+];
 
-  let bg = 'bg-white text-neutral-900 border-neutral-200';
-  let activeTab = 'bg-neutral-100 font-semibold';
-
-  if (variant === 'expressive') {
-    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';
-    activeTab = 'bg-blue-50 text-[#2547E8] font-semibold border-l-2 border-[#2547E8]';
-  } else if (variant === 'nocturne') {
-    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';
-    activeTab = 'bg-[#151921] text-cyan-400 font-semibold border-l-2 border-cyan-400';
-  }
-
-  const sections = ['Profile', 'Organization', 'Team', 'API Keys', 'Billing', 'Audit Log'];
+/** Settings section navigation: a vertical list from md, a scrollable row on small screens. */
+export function SettingsNavigation({ heading = 'Settings', items, activeHref, variant = 'quiet' }: SettingsNavigationProps) {
+  const id = useId();
+  const sections = items && items.length > 0 ? items : DEFAULT_SECTIONS;
+  const current = activeHref ?? sections[0]?.href;
+  const shell = variant === 'expressive' ? 'bg-surface-raised shadow-ui-1 border border-hairline' : variant === 'nocturne' ? 'bg-surface border-2 border-hairline-strong' : 'bg-surface-raised border border-hairline';
 
   return (
-    <div className={`w-full p-4 rounded-xl border transition-colors ${bg}`}>
-      <div className="space-y-1 text-xs">
-        {sections.map((s) => (
-          <button
-            key={s}
-            type="button"
-            onClick={() => setActive(s)}
-            className={`w-full text-left px-3 py-2 rounded-lg transition-colors ${
-              active === s ? activeTab : 'opacity-70 hover:opacity-100 hover:bg-neutral-50 dark:hover:bg-neutral-900'
-            }`}
-          >
-            {s}
-          </button>
-        ))}
-      </div>
-    </div>
+    <nav aria-labelledby={`${id}-heading`} className={`w-full rounded-ui-lg p-3 font-body text-ink md:w-64 ${shell}`}>
+      <h2 id={`${id}-heading`} className="px-2 pb-2 font-heading text-base font-semibold">
+        {heading}
+      </h2>
+      <ul className="flex gap-1 overflow-x-auto md:flex-col md:overflow-visible">
+        {sections.map((s) => {
+          const active = s.href === current;
+          return (
+            <li key={s.href} className="shrink-0">
+              <a
+                href={s.href}
+                aria-current={active ? 'page' : undefined}
+                className={`block rounded-ui-sm px-3 py-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus ${
+                  active ? 'bg-accent-soft text-ink' : 'text-ink-secondary hover:bg-surface hover:text-ink'
+                }`}
+              >
+                <span className="block text-sm font-semibold">{s.label}</span>
+                {s.description && <span className={`hidden text-xs md:block ${active ? 'text-ink' : 'text-ink-secondary'}`}>{s.description}</span>}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
   );
 }

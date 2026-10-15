@@ -13,6 +13,8 @@ import * as path from 'node:path';
 import { ResourceManifestSchema, type PropSpec, type ResourceManifest } from '../packages/schemas/src/index.js';
 
 interface V2Spec {
+  /** Upgrade an existing v1 resource in place: keep its id, roles, categories, tags and relationships. */
+  migrate?: boolean;
   dir: string;
   slug: string;
   name: string;
@@ -284,6 +286,8 @@ const SPECS: V2Spec[] = [
   },
 ];
 
+SPECS.push(...MIGRATIONS());
+
 const root = path.resolve('resources');
 const now = '2026-10-15T00:00:00.000Z';
 
@@ -291,20 +295,22 @@ for (const spec of SPECS) {
   const dir = path.join(root, spec.dir, spec.slug);
   if (!fs.existsSync(path.join(dir, 'index.tsx'))) throw new Error(`${spec.slug}: write index.tsx first`);
   const existing = fs.existsSync(path.join(dir, 'manifest.json')) ? JSON.parse(fs.readFileSync(path.join(dir, 'manifest.json'), 'utf8')) : null;
+  const keep = spec.migrate && existing ? existing : null;
   const manifest: ResourceManifest = ResourceManifestSchema.parse({
+    ...(keep ?? {}),
     schemaVersion: '1.0.0',
     contractVersion: 2,
-    id: `res_v2_${spec.slug.replace(/-/g, '_')}`,
+    id: keep?.id ?? `res_v2_${spec.slug.replace(/-/g, '_')}`,
     slug: spec.slug,
     name: spec.name,
-    version: '1.0.0',
+    version: keep ? '1.1.0' : '1.0.0',
     status: 'experimental',
     description: spec.description,
     resourceType: spec.resourceType,
-    categories: spec.categories,
-    roles: spec.roles,
-    purposes: spec.purposes,
-    productArchetypes: spec.archetypes.map(([tag, weight]) => ({ tag, weight })),
+    categories: keep?.categories ?? spec.categories,
+    roles: keep?.roles ?? spec.roles,
+    purposes: keep?.purposes ?? spec.purposes,
+    productArchetypes: keep?.productArchetypes ?? spec.archetypes.map(([tag, weight]) => ({ tag, weight })),
     creator: { id: 'tessellate_core', displayName: 'Tessellate Core', handle: 'tessellate', url: 'https://tessellate.design' },
     provenance: { origin: 'tessellate', derivative: false, aiAssistance: 'substantial' },
     license: { spdx: 'MIT', name: 'MIT License', url: 'https://opensource.org/licenses/MIT', redistributionVerified: true, attributionRequired: false },
@@ -327,7 +333,7 @@ for (const spec of SPECS) {
       description: v === 'quiet' ? 'Flat surface with a hairline border.' : v === 'expressive' ? 'Raised surface with a soft shadow.' : 'Strong outline for high-contrast layouts.',
       props: { variant: v },
     })),
-    tags: spec.tags,
+    tags: keep?.tags ?? spec.tags,
     intent: { summary: spec.description, idealFor: spec.idealFor, avoidFor: spec.avoidFor, jobs: spec.jobs, contentRequirements: [] },
     visualDNA: { visualAmbition: 30, curvature: 40, density: spec.density },
     interactionDNA: spec.interaction,
@@ -346,7 +352,7 @@ for (const spec of SPECS) {
     complexity: 'medium',
     customizability: 'high',
     compatibility: {},
-    relationships: [],
+    relationships: keep?.relationships ?? [],
     quality: { overall: 80, accessibility: 85, responsive: 85, performance: 90, codeQuality: 85, composability: 85, visualCraft: 75, dependencyCleanliness: 100, documentation: 80 },
     createdAt: existing?.createdAt ?? now,
     updatedAt: now,
@@ -434,4 +440,142 @@ Labelled controls, errors linked with \`aria-describedby\` and announced in aler
 `,
   );
   console.log(`[resources:v2] ${spec.dir}/${spec.slug}`);
+}
+
+
+/** v1 resources upgraded to contract v2 in place (Phase 30): the sections every composed app screen uses. */
+function MIGRATIONS(): V2Spec[] {
+  const display: ResourceManifest['interactionDNA'] = { interactionDensity: 25, motionIntensity: 5, keyboardComplexity: 'low', hoverDependency: 'none', directManipulation: false };
+  const common = { migrate: true, purposes: [], archetypes: [] as Array<[string, number]>, idealFor: [], avoidFor: [], jobs: [], tags: [], categories: [], roles: [] };
+  const text = (name: string, d: string, c?: string) => p(name, 'string', d, c ? { content: c } : {});
+  return [
+    {
+      ...common, dir: 'shells', slug: 'app-sidebar-expanded', name: 'App Sidebar', component: 'AppSidebarExpanded', resourceType: 'block',
+      description: "Application navigation: a vertical sidebar from the md breakpoint and a scrollable bar on small screens, with the client's brand and aria-current on the active page.",
+      props: [text('brand', 'Product name shown at the top.', 'brand'), p('items', 'object[]', 'Links: [{ label, href }].', { content: 'items' }), p('activeHref', 'string', 'Current page; defaults to the first item.'), p('userLabel', 'string', 'Signed-in user text.'), variantProp],
+      states: { loading: false, empty: false, error: false },
+      sample: { brand: 'Northside Physio', items: [{ label: 'Overview', href: '/overview' }, { label: 'Appointments', href: '/appointments' }, { label: 'Patients', href: '/patients' }, { label: 'Invoices', href: '/invoices' }] },
+      interaction: display, density: 50, widths: ['narrow'],
+    },
+    {
+      ...common, dir: 'shells', slug: 'breadcrumb-header', name: 'Page Header', component: 'BreadcrumbHeader', resourceType: 'block',
+      description: 'Page header with breadcrumb trail, title, description and an optional primary action.',
+      props: [text('heading', 'Page title.', 'heading'), text('description', 'What the page is for.', 'description'), p('breadcrumbs', 'object[]', 'Trail: [{ label, href }].'), p('actionLabel', 'string', 'Primary action label.'), p('actionHref', 'string', 'Primary action link.'), p('onAction', 'callback', 'Primary action handler.'), variantProp],
+      states: { loading: false, empty: false, error: false },
+      sample: { heading: 'Appointments', description: 'Browse, search and filter appointments.', breadcrumbs: [{ label: 'Clinic', href: '/' }, { label: 'Appointments' }], actionLabel: 'New appointment' },
+      interaction: display, density: 50, widths: ['full'],
+    },
+    {
+      ...common, dir: 'blocks', slug: 'advanced-data-table', name: 'Records Table', component: 'AdvancedDataTable', resourceType: 'block',
+      description: 'Records table with search, sortable columns (aria-sort), pagination and loading, empty and error states.',
+      props: [text('heading', 'Table heading.', 'heading'), text('description', 'Line under the heading.', 'description'), text('entity', 'Record type.', 'entity'), p('columns', 'string[]', 'Column keys in order.', { content: 'columns' }), p('rows', 'object[]', 'Rows keyed by column.', { content: 'rows' }), p('sampleData', 'boolean', 'Marks rows as sample data.', { content: 'sampleData' }), p('pageSize', 'number', 'Rows per page.'), p('loading', 'boolean', 'Loading state.'), p('errorMessage', 'string', 'Error announced in an alert region.'), p('emptyMessage', 'string', 'Shown when there are no rows.'), p('onRowClick', 'callback', 'Receives the clicked row.'), variantProp],
+      states: { loading: true, empty: true, error: true },
+      sample: { entity: 'Appointment', columns: ['patient', 'date and time', 'service', 'status'], rows: [{ patient: 'Amira Khan', 'date and time': '2026-01-12 09:00', service: 'Assessment', status: 'Scheduled' }, { patient: 'Ben Carter', 'date and time': '2026-01-13 10:30', service: 'Follow-up', status: 'Completed' }], sampleData: true },
+      interaction: { ...display, interactionDensity: 60, keyboardComplexity: 'medium' }, density: 70, widths: ['wide', 'full'],
+    },
+    {
+      ...common, dir: 'blocks', slug: 'entity-list', name: 'Record List', component: 'EntityList', resourceType: 'block',
+      description: 'Compact list of records with title, subtitle and status; good for side panels and small screens.',
+      props: [text('heading', 'List heading.', 'heading'), text('description', 'Line under the heading.', 'description'), text('entity', 'Record type.', 'entity'), p('columns', 'string[]', 'Title, subtitle and status fields.', { content: 'columns' }), p('rows', 'object[]', 'Records.', { content: 'rows' }), p('sampleData', 'boolean', 'Marks rows as sample.', { content: 'sampleData' }), p('hrefFor', 'callback', 'Builds a link for each record.'), p('loading', 'boolean', 'Loading state.'), p('emptyMessage', 'string', 'Shown when there are no records.'), variantProp],
+      states: { loading: true, empty: true, error: false },
+      sample: { entity: 'Patient', columns: ['name', 'last visit', 'status'], rows: [{ name: 'Amira Khan', 'last visit': '12 Jan', status: 'Active' }, { name: 'Ben Carter', 'last visit': '9 Jan', status: 'Discharged' }], sampleData: true },
+      interaction: display, density: 60, widths: ['narrow', 'content'],
+    },
+    {
+      ...common, dir: 'blocks', slug: 'dashboard-kpi-grid', name: 'Key Numbers', component: 'DashboardKpiGrid', resourceType: 'block',
+      description: 'Key numbers in a responsive grid, each with an optional change indicator and sample marker.',
+      props: [text('heading', 'Heading.', 'heading'), text('description', 'Line under the heading.', 'description'), p('metrics', 'object[]', 'Metrics: [{ label, value, change, positive, sample }].', { content: 'metrics' }), p('loading', 'boolean', 'Loading state.'), variantProp],
+      states: { loading: true, empty: false, error: false },
+      sample: { metrics: [{ label: 'Appointments this week', value: 86, change: '+9%', positive: true, sample: true }, { label: 'New patients', value: 14, sample: true }] },
+      interaction: display, density: 60, widths: ['wide', 'full'],
+    },
+    {
+      ...common, dir: 'blocks', slug: 'activity-feed', name: 'Activity Feed', component: 'ActivityFeed', resourceType: 'block',
+      description: 'Recent activity as an ordered list of who did what and when.',
+      props: [text('heading', 'Heading.'), text('description', 'Line under the heading.', 'description'), p('items', 'object[]', 'Items: [{ actor, action, target, time }].'), p('loading', 'boolean', 'Loading state.'), p('emptyMessage', 'string', 'Shown when there is no activity.'), p('locale', 'string', 'Locale for times.'), variantProp],
+      states: { loading: true, empty: true, error: false },
+      sample: {},
+      interaction: display, density: 55, widths: ['content'],
+    },
+    {
+      ...common, dir: 'blocks', slug: 'calendar-week', name: 'Week Calendar', component: 'CalendarWeek', resourceType: 'block',
+      description: 'Five-day week view built from events or from record rows: day columns on wide screens, an agenda list on small ones.',
+      props: [text('heading', 'Heading.', 'heading'), text('description', 'Line under the heading.', 'description'), text('entity', 'What is scheduled.', 'entity'), p('events', 'object[]', 'Events: [{ title, start, detail }].'), p('columns', 'string[]', 'Record fields (a date-like field becomes the time).', { content: 'columns' }), p('rows', 'object[]', 'Records to place on the calendar.', { content: 'rows' }), p('sampleData', 'boolean', 'Marks the schedule as sample.', { content: 'sampleData' }), p('weekStart', 'string', 'First day (ISO date).'), p('locale', 'string', 'Locale for day names.'), p('loading', 'boolean', 'Loading state.'), variantProp],
+      states: { loading: true, empty: true, error: false },
+      sample: {},
+      interaction: display, density: 55, widths: ['wide', 'full'],
+    },
+    {
+      ...common, dir: 'blocks', slug: 'entity-profile-header', name: 'Record Header', component: 'EntityProfileHeader', resourceType: 'block',
+      description: 'Header for a single record: initials avatar, title, status, key facts and a primary action.',
+      props: [text('heading', 'Record title (defaults to the first field).'), text('description', 'Line under the title.'), text('entity', 'Record type.', 'entity'), p('fields', 'string[]', 'Fields in display order.', { content: 'fields' }), p('record', 'object', 'The record.', { content: 'record' }), p('sampleData', 'boolean', 'Marks the record as sample.', { content: 'sampleData' }), p('actionLabel', 'string', 'Primary action label.'), p('onAction', 'callback', 'Primary action handler.'), variantProp],
+      states: { loading: false, empty: false, error: false },
+      sample: { entity: 'Patient', fields: ['name', 'status', 'date of birth', 'clinician'], record: { name: 'Amira Khan', status: 'Active', 'date of birth': '1958-04-02', clinician: 'Dr Osei' }, sampleData: true, actionLabel: 'Book appointment' },
+      interaction: display, density: 50, widths: ['full'],
+    },
+    {
+      ...common, dir: 'shells', slug: 'minimal-top-nav', name: 'Site Header', component: 'MinimalTopNav', resourceType: 'block',
+      description: 'Site header with brand, links and a call to action; collapses into a disclosure menu on small screens.',
+      props: [text('brand', 'Product name.', 'brand'), text('brandHref', 'Brand link.'), p('items', 'object[]', 'Links: [{ label, href }].', { content: 'items' }), text('actionLabel', 'Call to action label.'), text('actionHref', 'Call to action link.'), variantProp],
+      states: { loading: false, empty: false, error: false },
+      sample: { brand: 'Northside Physio', items: [{ label: 'Treatments', href: '#treatments' }, { label: 'Prices', href: '#prices' }, { label: 'Contact', href: '#contact' }], actionLabel: 'Book now' },
+      interaction: display, density: 45, widths: ['full'],
+    },
+    {
+      ...common, dir: 'sections', slug: 'editorial-hero', name: 'Editorial Hero', component: 'EditorialHero', resourceType: 'section',
+      description: 'Text-led hero with a strong heading, supporting line and up to two actions.',
+      props: [text('eyebrow', 'Line above the heading, e.g. the product name.', 'eyebrow'), text('heading', 'Main heading.', 'heading'), text('description', 'Supporting line.', 'description'), text('primaryActionLabel', 'Primary button.', 'primaryActionLabel'), text('primaryActionHref', 'Primary link.'), text('secondaryActionLabel', 'Secondary button.', 'secondaryActionLabel'), text('secondaryActionHref', 'Secondary link.'), text('note', 'Reassurance under the buttons.'), variantProp],
+      states: { loading: false, empty: false, error: false },
+      sample: { eyebrow: 'Northside Physio', heading: 'Book care easily, recover with confidence.', description: 'Book appointments, pay deposits and see your treatment plan, all in one place.', primaryActionLabel: 'Book an appointment', secondaryActionLabel: 'Our treatments' },
+      interaction: display, density: 30, widths: ['full'],
+    },
+    {
+      ...common, dir: 'sections', slug: 'feature-grid-3x2', name: 'Feature Grid', component: 'FeatureGrid3x2', resourceType: 'section',
+      description: 'Feature or benefit grid: one column on phones, two on tablets, three on desktop.',
+      props: [text('heading', 'Section heading.', 'heading'), text('description', 'Line under the heading.', 'description'), p('items', 'object[]', 'Features: [{ title, description }], up to six.', { content: 'items' }), variantProp],
+      states: { loading: false, empty: false, error: false },
+      sample: {},
+      interaction: display, density: 40, widths: ['full'],
+    },
+    {
+      ...common, dir: 'sections', slug: 'cta-minimal', name: 'Call to Action', component: 'CtaMinimal', resourceType: 'section',
+      description: 'Closing call to action: one heading, one line and up to two buttons.',
+      props: [text('heading', 'Heading.', 'heading'), text('description', 'Supporting line.'), text('primaryActionLabel', 'Primary button.', 'primaryActionLabel'), text('primaryActionHref', 'Primary link.'), text('secondaryActionLabel', 'Secondary button.'), text('secondaryActionHref', 'Secondary link.'), variantProp],
+      states: { loading: false, empty: false, error: false },
+      sample: { heading: 'Ready to book your first session?', primaryActionLabel: 'Book now' },
+      interaction: display, density: 30, widths: ['full'],
+    },
+    {
+      ...common, dir: 'sections', slug: 'footer-minimal', name: 'Footer', component: 'FooterMinimal', resourceType: 'section',
+      description: 'Compact footer with brand, links, legal links and copyright.',
+      props: [text('brand', 'Product name.', 'brand'), p('items', 'object[]', 'Links: [{ label, href }].', { content: 'items' }), text('copyright', 'Copyright line.', 'copyright'), p('legalItems', 'object[]', 'Legal links.'), variantProp],
+      states: { loading: false, empty: false, error: false },
+      sample: { brand: 'Northside Physio', items: [{ label: 'Treatments', href: '#' }, { label: 'Book', href: '#' }] },
+      interaction: display, density: 40, widths: ['full'],
+    },
+    {
+      ...common, dir: 'blocks', slug: 'entity-overview', name: 'Record Details', component: 'EntityOverview', resourceType: 'block',
+      description: "All details of one record as a labelled description list; long text fields span the full width.",
+      props: [text('heading', 'Section heading.'), text('entity', 'Record type.', 'entity'), p('fields', 'string[]', 'Fields in display order.', { content: 'fields' }), p('record', 'object', 'The record.', { content: 'record' }), p('sampleData', 'boolean', 'Marks the record as sample.', { content: 'sampleData' }), p('loading', 'boolean', 'Loading state.'), variantProp],
+      states: { loading: true, empty: false, error: false },
+      sample: { entity: 'Appointment', fields: ['date and time', 'service', 'with', 'status', 'notes'], record: { 'date and time': '2026-01-13 09:45', service: 'Follow-up', with: 'Dr Osei', status: 'Scheduled', notes: 'Bring exercise diary.' }, sampleData: true },
+      interaction: display, density: 50, widths: ['content', 'wide'],
+    },
+    {
+      ...common, dir: 'blocks', slug: 'settings-navigation', name: 'Settings Navigation', component: 'SettingsNavigation', resourceType: 'block',
+      description: 'Settings section navigation: a vertical list from the md breakpoint, a scrollable row on small screens.',
+      props: [text('heading', 'Heading.'), p('items', 'object[]', 'Sections: [{ label, href, description }].'), text('activeHref', 'Current section.'), variantProp],
+      states: { loading: false, empty: false, error: false },
+      sample: {},
+      interaction: display, density: 45, widths: ['narrow'],
+    },
+    {
+      ...common, dir: 'blocks', slug: 'profile-settings', name: 'Profile Settings', component: 'ProfileSettings', resourceType: 'block',
+      description: 'Profile and reminder preferences with validation, loading and a saved confirmation.',
+      props: [text('heading', 'Heading.'), text('description', 'Line under the heading.'), p('initialValues', 'object', 'Current values: { name, email, phone, emailReminders, textReminders }.'), p('onSave', 'callback', 'Receives the values.'), text('errorMessage', 'Error announced in an alert region.'), p('loading', 'boolean', 'Loading state.'), variantProp],
+      states: { loading: true, empty: false, error: true },
+      sample: { initialValues: { name: 'Amira Khan', email: 'amira@example.com' } },
+      interaction: { ...display, interactionDensity: 55 }, density: 45, widths: ['content'],
+    },
+  ];
 }

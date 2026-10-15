@@ -3,76 +3,58 @@ import React from 'react';
 export type EditorialHeroVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface EditorialHeroProps {
-  variant?: EditorialHeroVariant;
+  /** Small line above the heading, e.g. the product name or a short announcement. */
   eyebrow?: string;
-  headline?: string;
-  subheadline?: string;
-  primaryCta?: { label: string; href?: string; onClick?: () => void };
-  secondaryCta?: { label: string; href?: string; onClick?: () => void };
+  heading?: string;
+  description?: string;
+  primaryActionLabel?: string;
+  primaryActionHref?: string;
+  secondaryActionLabel?: string;
+  secondaryActionHref?: string;
+  /** Reassurance under the buttons, e.g. "No card needed". */
   note?: string;
+  variant?: EditorialHeroVariant;
 }
 
+/** Text-led hero with a strong heading, supporting line and up to two actions. */
 export function EditorialHero({
+  eyebrow,
+  heading = 'Say what your product does in one clear sentence.',
+  description = 'Add a short line about who it is for and the main benefit. Replace this sample text with your own.',
+  primaryActionLabel = 'Get started',
+  primaryActionHref = '#',
+  secondaryActionLabel,
+  secondaryActionHref = '#',
+  note,
   variant = 'quiet',
-  eyebrow = 'Announcing Version 2.0',
-  headline = 'Engineered for deliberate craft and structural speed.',
-  subheadline = 'Compose resilient interfaces from a unified design vocabulary. Uncompromising typography, zero lock-in, and sub-millisecond execution.',
-  primaryCta = { label: 'Explore Catalogue' },
-  secondaryCta = { label: 'Read Architecture' },
-  note = 'Free & open core • No credit card required',
 }: EditorialHeroProps) {
-  let container = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
-  let eyebrowStyle = 'text-neutral-600 bg-neutral-200/60 border-neutral-300';
-  let primaryBtn = 'bg-neutral-900 text-white hover:bg-neutral-800 focus-visible:ring-neutral-900';
-  let secondaryBtn = 'bg-white text-neutral-800 border-neutral-300 hover:bg-neutral-50';
-  let noteColor = 'text-neutral-500';
-
-  if (variant === 'expressive') {
-    container = 'bg-gradient-to-b from-blue-50/40 via-white to-amber-50/20 text-neutral-950 border-[#D9D6CF]';
-    eyebrowStyle = 'text-[#2547E8] bg-blue-100/70 border-blue-200 font-semibold';
-    primaryBtn = 'bg-[#2547E8] text-white hover:bg-[#1B35B4] shadow-md hover:shadow-lg focus-visible:ring-[#2547E8]';
-    secondaryBtn = 'bg-white text-neutral-900 border-neutral-300 hover:border-neutral-400';
-    noteColor = 'text-neutral-600';
-  } else if (variant === 'nocturne') {
-    container = 'bg-[#0B0D10] text-white border-[#2E3440]';
-    eyebrowStyle = 'text-cyan-400 bg-cyan-950/40 border-cyan-800/60';
-    primaryBtn = 'bg-cyan-500 text-black hover:bg-cyan-400 font-medium focus-visible:ring-cyan-400';
-    secondaryBtn = 'bg-[#151921] text-neutral-200 border-[#2E3440] hover:bg-[#1C222E]';
-    noteColor = 'text-neutral-400';
-  }
+  const shell = variant === 'expressive' ? 'bg-accent-soft' : variant === 'nocturne' ? 'bg-surface border-y-2 border-hairline-strong' : 'bg-canvas';
 
   return (
-    <section className={`relative w-full py-24 sm:py-32 px-6 sm:px-12 border-b transition-colors ${container}`}>
-      <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-        {eyebrow && (
-          <span className={`inline-flex items-center gap-2 px-3 py-1 text-xs tracking-wide rounded-full border mb-8 transition-colors ${eyebrowStyle}`}>
-            <span className="h-1.5 w-1.5 rounded-full bg-current" />
-            {eyebrow}
-          </span>
-        )}
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.08] max-w-3xl mb-8">
-          {headline}
-        </h1>
-        <p className="text-lg sm:text-xl text-balance max-w-2xl mb-10 leading-relaxed opacity-85">
-          {subheadline}
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
-          <button
-            type="button"
-            onClick={primaryCta.onClick}
-            className={`px-6 py-3 rounded-lg text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${primaryBtn}`}
-          >
-            {primaryCta.label}
-          </button>
-          <button
-            type="button"
-            onClick={secondaryCta.onClick}
-            className={`px-6 py-3 rounded-lg text-sm font-medium border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ${secondaryBtn}`}
-          >
-            {secondaryCta.label}
-          </button>
+    <section className={`w-full px-4 py-16 font-body text-ink sm:px-6 sm:py-24 ${shell}`}>
+      <div className="mx-auto max-w-3xl">
+        {eyebrow && <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-accent">{eyebrow}</p>}
+        <h1 className="font-display text-4xl font-semibold leading-tight sm:text-5xl">{heading}</h1>
+        {description && <p className="mt-4 max-w-2xl text-lg leading-relaxed text-ink-secondary">{description}</p>}
+        <div className="mt-8 flex flex-wrap gap-3">
+          {primaryActionLabel && (
+            <a
+              href={primaryActionHref}
+              className="inline-flex items-center rounded-ui-sm bg-accent px-5 py-3 text-base font-semibold text-on-accent transition-colors duration-150 ease-ui hover:bg-accent-hover motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+            >
+              {primaryActionLabel}
+            </a>
+          )}
+          {secondaryActionLabel && (
+            <a
+              href={secondaryActionHref}
+              className="inline-flex items-center rounded-ui-sm border border-hairline-strong bg-surface-raised px-5 py-3 text-base font-semibold text-ink hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+            >
+              {secondaryActionLabel}
+            </a>
+          )}
         </div>
-        {note && <p className={`text-xs ${noteColor}`}>{note}</p>}
+        {note && <p className="mt-4 text-sm text-ink-secondary">{note}</p>}
       </div>
     </section>
   );

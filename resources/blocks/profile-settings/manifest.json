@@ -3,9 +3,9 @@
   "id": "res_blk_profile_settings",
   "slug": "profile-settings",
   "name": "Profile Settings",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "status": "experimental",
-  "description": "User settings form with avatar uploader, display name, handle, and email inputs.",
+  "description": "Profile and reminder preferences with validation, loading and a saved confirmation.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -86,22 +86,20 @@
   },
   "preview": {
     "component": "ProfileSettingsPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "initialValues": {
+        "name": "Amira Khan",
+        "email": "amira@example.com"
+      }
+    },
     "viewport": 1440
   },
-  "slots": [
-    {
-      "id": "children",
-      "name": "Block Body",
-      "type": "component",
-      "required": false
-    }
-  ],
+  "slots": [],
   "variants": [
     {
       "id": "quiet",
       "name": "Quiet",
-      "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+      "description": "Flat surface with a hairline border.",
       "props": {
         "variant": "quiet"
       }
@@ -109,7 +107,7 @@
     {
       "id": "expressive",
       "name": "Expressive",
-      "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+      "description": "Raised surface with a soft shadow.",
       "props": {
         "variant": "expressive"
       }
@@ -117,7 +115,7 @@
     {
       "id": "nocturne",
       "name": "Nocturne",
-      "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+      "description": "Strong outline for high-contrast layouts.",
       "props": {
         "variant": "nocturne"
       }
@@ -130,74 +128,33 @@
     "settings"
   ],
   "intent": {
-    "summary": "User settings form with avatar uploader, display name, handle, and email inputs.",
-    "idealFor": [
-      "User account management screens"
-    ],
-    "avoidFor": [
-      "Read-only dashboard statistics"
-    ],
-    "jobs": [
-      "Allow user to update display name, email, and handle"
-    ],
-    "contentRequirements": [
-      "High data density, keyboard accessibility, semantic tokens"
-    ],
-    "notes": [
-      "Responsive compression down to 360px with reduced-motion support"
-    ]
+    "summary": "Profile and reminder preferences with validation, loading and a saved confirmation.",
+    "idealFor": [],
+    "avoidFor": [],
+    "jobs": [],
+    "contentRequirements": []
   },
   "visualDNA": {
-    "professionalism": 90,
-    "playfulness": 20,
-    "luxury": 45,
-    "warmth": 30,
-    "technicality": 80,
-    "editorial": 60,
-    "futurism": 40,
-    "visualAmbition": 65,
-    "structuralCreativity": 45,
-    "density": 70,
-    "whitespace": 45,
-    "contrast": 80,
-    "colourfulness": 30,
-    "curvature": 35,
-    "depth": 35,
-    "motion": 25,
-    "motionPlayfulness": 15,
-    "typographicExpression": 50,
-    "imageryIntensity": 10,
-    "videoIntensity": 0,
-    "threeDIntensity": 0,
-    "dataDensity": 75,
-    "interactionDensity": 75,
-    "asymmetry": 15,
-    "conversionIntensity": 45,
-    "trust": 95,
-    "accessibilityPriority": 95,
-    "performancePriority": 95,
-    "visualMode": "adaptive",
-    "geometryFamily": "rounded",
-    "primaryStack": "react-tailwind"
+    "visualAmbition": 30,
+    "density": 45,
+    "curvature": 40
   },
   "interactionDNA": {
-    "interactionDensity": 70,
-    "motionIntensity": 20,
-    "keyboardComplexity": "medium",
+    "interactionDensity": 55,
+    "motionIntensity": 5,
+    "keyboardComplexity": "low",
     "hoverDependency": "none",
     "directManipulation": false
   },
   "layoutDNA": {
-    "density": 70,
-    "whitespace": 40,
-    "asymmetry": 15,
+    "density": 45,
+    "whitespace": 55,
+    "asymmetry": 0,
     "preferredWidths": [
-      "full"
+      "content"
     ],
     "layoutFamilies": [
-      "block",
-      "panel",
-      "surface"
+      "standard"
     ]
   },
   "responsive": {
@@ -206,15 +163,18 @@
       768,
       1440
     ],
-    "defaultStrategy": "compress"
+    "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AA",
-    "keyboardVerified": false,
-    "screenReaderSemantics": false,
-    "reducedMotionVerified": false,
-    "contrastTokenCompatible": false,
-    "focusVisible": false
+    "levelTarget": "AAA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true,
+    "knownLimitations": [
+      "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+    ]
   },
   "performance": {
     "jsCost": "tiny",
@@ -229,16 +189,75 @@
   "compatibility": {},
   "relationships": [],
   "quality": {
-    "overall": 96,
-    "accessibility": 98,
-    "responsive": 95,
-    "performance": 100,
-    "codeQuality": 96,
-    "composability": 96,
-    "visualCraft": 95,
+    "overall": 80,
+    "accessibility": 85,
+    "responsive": 85,
+    "performance": 90,
+    "codeQuality": 85,
+    "composability": 85,
+    "visualCraft": 75,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 80
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
-  "updatedAt": "2026-10-10T12:00:00.000Z"
+  "updatedAt": "2026-10-15T00:00:00.000Z",
+  "contractVersion": 2,
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "description": "Heading."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Line under the heading."
+    },
+    {
+      "name": "initialValues",
+      "type": "object",
+      "required": false,
+      "description": "Current values: { name, email, phone, emailReminders, textReminders }."
+    },
+    {
+      "name": "onSave",
+      "type": "callback",
+      "required": false,
+      "description": "Receives the values."
+    },
+    {
+      "name": "errorMessage",
+      "type": "string",
+      "required": false,
+      "description": "Error announced in an alert region."
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false,
+      "description": "Loading state."
+    },
+    {
+      "name": "variant",
+      "type": "enum",
+      "required": false,
+      "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+      "enumValues": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ]
+    }
+  ],
+  "states": {
+    "loading": true,
+    "empty": false,
+    "error": true
+  },
+  "stylingContract": {
+    "tokenOnly": true,
+    "reducedMotion": "respected"
+  }
 }

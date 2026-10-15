@@ -742,9 +742,9 @@
       "id": "res_blk_activity_feed",
       "slug": "activity-feed",
       "name": "Activity Feed",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Chronological timeline of system events, team actions, and commit updates.",
+      "description": "Recent activity as an ordered list of who did what and when.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -828,19 +828,12 @@
         "defaultProps": {},
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Block Body",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -848,7 +841,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -856,7 +849,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -869,74 +862,33 @@
         "audit"
       ],
       "intent": {
-        "summary": "Chronological timeline of system events, team actions, and commit updates.",
-        "idealFor": [
-          "Observing continuous team and agent activity in a workspace"
-        ],
-        "avoidFor": [
-          "Complex multi-tier dashboards without recent events"
-        ],
-        "jobs": [
-          "Display streaming chronological events with user avatars and timestamps"
-        ],
-        "contentRequirements": [
-          "High data density, keyboard accessibility, semantic tokens"
-        ],
-        "notes": [
-          "Responsive compression down to 360px with reduced-motion support"
-        ]
+        "summary": "Recent activity as an ordered list of who did what and when.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 90,
-        "playfulness": 20,
-        "luxury": 45,
-        "warmth": 30,
-        "technicality": 80,
-        "editorial": 60,
-        "futurism": 40,
-        "visualAmbition": 65,
-        "structuralCreativity": 45,
-        "density": 70,
-        "whitespace": 45,
-        "contrast": 80,
-        "colourfulness": 30,
-        "curvature": 35,
-        "depth": 35,
-        "motion": 25,
-        "motionPlayfulness": 15,
-        "typographicExpression": 50,
-        "imageryIntensity": 10,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 75,
-        "interactionDensity": 75,
-        "asymmetry": 15,
-        "conversionIntensity": 45,
-        "trust": 95,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 55,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 70,
-        "motionIntensity": 20,
-        "keyboardComplexity": "medium",
+        "interactionDensity": 25,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 70,
-        "whitespace": 40,
-        "asymmetry": 15,
+        "density": 55,
+        "whitespace": 45,
+        "asymmetry": 0,
         "preferredWidths": [
-          "full"
+          "content"
         ],
         "layoutFamilies": [
-          "block",
-          "panel",
-          "surface"
+          "standard"
         ]
       },
       "responsive": {
@@ -945,15 +897,18 @@
           768,
           1440
         ],
-        "defaultStrategy": "compress"
+        "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -968,18 +923,78 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Heading."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Line under the heading.",
+          "content": "description"
+        },
+        {
+          "name": "items",
+          "type": "object[]",
+          "required": false,
+          "description": "Items: [{ actor, action, target, time }]."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Loading state."
+        },
+        {
+          "name": "emptyMessage",
+          "type": "string",
+          "required": false,
+          "description": "Shown when there is no activity."
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "required": false,
+          "description": "Locale for times."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": true,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -1225,10 +1240,10 @@
       "schemaVersion": "1.0.0",
       "id": "res_blk_advanced_data_table",
       "slug": "advanced-data-table",
-      "name": "Advanced Data Table",
-      "version": "1.0.0",
+      "name": "Records Table",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Feature-rich data table with column sorting, checkbox selection, pagination, and filter bar.",
+      "description": "Records table with search, sortable columns (aria-sort), pagination and loading, empty and error states.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -1309,22 +1324,38 @@
       },
       "preview": {
         "component": "AdvancedDataTablePreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "entity": "Appointment",
+          "columns": [
+            "patient",
+            "date and time",
+            "service",
+            "status"
+          ],
+          "rows": [
+            {
+              "patient": "Amira Khan",
+              "date and time": "2026-01-12 09:00",
+              "service": "Assessment",
+              "status": "Scheduled"
+            },
+            {
+              "patient": "Ben Carter",
+              "date and time": "2026-01-13 10:30",
+              "service": "Follow-up",
+              "status": "Completed"
+            }
+          ],
+          "sampleData": true
+        },
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Block Body",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -1332,7 +1363,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -1340,7 +1371,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -1353,74 +1384,34 @@
         "sorting"
       ],
       "intent": {
-        "summary": "Feature-rich data table with column sorting, checkbox selection, pagination, and filter bar.",
-        "idealFor": [
-          "Data-heavy administrative workspaces"
-        ],
-        "avoidFor": [
-          "Mobile-only vertical cards"
-        ],
-        "jobs": [
-          "Support column sorting, multi-row selection, and structured records"
-        ],
-        "contentRequirements": [
-          "High data density, keyboard accessibility, semantic tokens"
-        ],
-        "notes": [
-          "Responsive compression down to 360px with reduced-motion support"
-        ]
+        "summary": "Records table with search, sortable columns (aria-sort), pagination and loading, empty and error states.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 90,
-        "playfulness": 20,
-        "luxury": 45,
-        "warmth": 30,
-        "technicality": 80,
-        "editorial": 60,
-        "futurism": 40,
-        "visualAmbition": 65,
-        "structuralCreativity": 45,
+        "visualAmbition": 30,
         "density": 70,
-        "whitespace": 45,
-        "contrast": 80,
-        "colourfulness": 30,
-        "curvature": 35,
-        "depth": 35,
-        "motion": 25,
-        "motionPlayfulness": 15,
-        "typographicExpression": 50,
-        "imageryIntensity": 10,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 75,
-        "interactionDensity": 75,
-        "asymmetry": 15,
-        "conversionIntensity": 45,
-        "trust": 95,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 70,
-        "motionIntensity": 20,
+        "interactionDensity": 60,
+        "motionIntensity": 5,
         "keyboardComplexity": "medium",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
         "density": 70,
-        "whitespace": 40,
-        "asymmetry": 15,
+        "whitespace": 30,
+        "asymmetry": 0,
         "preferredWidths": [
+          "wide",
           "full"
         ],
         "layoutFamilies": [
-          "block",
-          "panel",
-          "surface"
+          "standard"
         ]
       },
       "responsive": {
@@ -1429,15 +1420,18 @@
           768,
           1440
         ],
-        "defaultStrategy": "compress"
+        "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -1452,18 +1446,113 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Table heading.",
+          "content": "heading"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Line under the heading.",
+          "content": "description"
+        },
+        {
+          "name": "entity",
+          "type": "string",
+          "required": false,
+          "description": "Record type.",
+          "content": "entity"
+        },
+        {
+          "name": "columns",
+          "type": "string[]",
+          "required": false,
+          "description": "Column keys in order.",
+          "content": "columns"
+        },
+        {
+          "name": "rows",
+          "type": "object[]",
+          "required": false,
+          "description": "Rows keyed by column.",
+          "content": "rows"
+        },
+        {
+          "name": "sampleData",
+          "type": "boolean",
+          "required": false,
+          "description": "Marks rows as sample data.",
+          "content": "sampleData"
+        },
+        {
+          "name": "pageSize",
+          "type": "number",
+          "required": false,
+          "description": "Rows per page."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Loading state."
+        },
+        {
+          "name": "errorMessage",
+          "type": "string",
+          "required": false,
+          "description": "Error announced in an alert region."
+        },
+        {
+          "name": "emptyMessage",
+          "type": "string",
+          "required": false,
+          "description": "Shown when there are no rows."
+        },
+        {
+          "name": "onRowClick",
+          "type": "callback",
+          "required": false,
+          "description": "Receives the clicked row."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": true,
+        "error": true
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -8152,10 +8241,10 @@
       "schemaVersion": "1.0.0",
       "id": "res_shell_app_sidebar_expanded",
       "slug": "app-sidebar-expanded",
-      "name": "App Sidebar Expanded",
-      "version": "1.0.0",
+      "name": "App Sidebar",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Full-width application sidebar with hierarchical category headers, counts, and search.",
+      "description": "Application navigation: a vertical sidebar from the md breakpoint and a scrollable bar on small screens, with the client's brand and aria-current on the active page.",
       "resourceType": "block",
       "categories": [
         "shells",
@@ -8232,22 +8321,35 @@
       },
       "preview": {
         "component": "AppSidebarExpandedPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "brand": "Northside Physio",
+          "items": [
+            {
+              "label": "Overview",
+              "href": "/overview"
+            },
+            {
+              "label": "Appointments",
+              "href": "/appointments"
+            },
+            {
+              "label": "Patients",
+              "href": "/patients"
+            },
+            {
+              "label": "Invoices",
+              "href": "/invoices"
+            }
+          ]
+        },
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Workspace Viewport",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -8255,7 +8357,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -8263,7 +8365,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -8276,74 +8378,33 @@
         "tree"
       ],
       "intent": {
-        "summary": "Full-width application sidebar with hierarchical category headers, counts, and search.",
-        "idealFor": [
-          "Deep administrative interfaces with named menu categories"
-        ],
-        "avoidFor": [
-          "Small screen tablet/mobile displays"
-        ],
-        "jobs": [
-          "Display full list of application modules and sub-pages"
-        ],
-        "contentRequirements": [
-          "Accessible navigation semantics and responsive containment"
-        ],
-        "notes": [
-          "Supports responsive collapsing and reduced motion"
-        ]
+        "summary": "Application navigation: a vertical sidebar from the md breakpoint and a scrollable bar on small screens, with the client's brand and aria-current on the active page.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 85,
-        "playfulness": 25,
-        "luxury": 45,
-        "warmth": 30,
-        "technicality": 75,
-        "editorial": 65,
-        "futurism": 40,
-        "visualAmbition": 60,
-        "structuralCreativity": 45,
-        "density": 65,
-        "whitespace": 50,
-        "contrast": 75,
-        "colourfulness": 35,
-        "curvature": 40,
-        "depth": 35,
-        "motion": 35,
-        "motionPlayfulness": 20,
-        "typographicExpression": 45,
-        "imageryIntensity": 10,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 70,
-        "interactionDensity": 70,
-        "asymmetry": 15,
-        "conversionIntensity": 50,
-        "trust": 90,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 50,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 65,
-        "motionIntensity": 25,
-        "keyboardComplexity": "medium",
+        "interactionDensity": 25,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 65,
-        "whitespace": 45,
-        "asymmetry": 15,
+        "density": 50,
+        "whitespace": 50,
+        "asymmetry": 0,
         "preferredWidths": [
-          "full"
+          "narrow"
         ],
         "layoutFamilies": [
-          "shell",
-          "sidebar",
-          "header"
+          "standard"
         ]
       },
       "responsive": {
@@ -8352,15 +8413,18 @@
           768,
           1440
         ],
-        "defaultStrategy": "collapse"
+        "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -8375,18 +8439,67 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "brand",
+          "type": "string",
+          "required": false,
+          "description": "Product name shown at the top.",
+          "content": "brand"
+        },
+        {
+          "name": "items",
+          "type": "object[]",
+          "required": false,
+          "description": "Links: [{ label, href }].",
+          "content": "items"
+        },
+        {
+          "name": "activeHref",
+          "type": "string",
+          "required": false,
+          "description": "Current page; defaults to the first item."
+        },
+        {
+          "name": "userLabel",
+          "type": "string",
+          "required": false,
+          "description": "Signed-in user text."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": false,
+        "empty": false,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -12633,10 +12746,10 @@
       "schemaVersion": "1.0.0",
       "id": "res_shell_breadcrumb_header",
       "slug": "breadcrumb-header",
-      "name": "Breadcrumb Header",
-      "version": "1.0.0",
+      "name": "Page Header",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Header shell combining deep hierarchical breadcrumb trail with right-aligned action buttons.",
+      "description": "Page header with breadcrumb trail, title, description and an optional primary action.",
       "resourceType": "block",
       "categories": [
         "shells",
@@ -12713,22 +12826,28 @@
       },
       "preview": {
         "component": "BreadcrumbHeaderPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "heading": "Appointments",
+          "description": "Browse, search and filter appointments.",
+          "breadcrumbs": [
+            {
+              "label": "Clinic",
+              "href": "/"
+            },
+            {
+              "label": "Appointments"
+            }
+          ],
+          "actionLabel": "New appointment"
+        },
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Workspace Viewport",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -12736,7 +12855,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -12744,7 +12863,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -12757,74 +12876,33 @@
         "actions"
       ],
       "intent": {
-        "summary": "Header shell combining deep hierarchical breadcrumb trail with right-aligned action buttons.",
-        "idealFor": [
-          "Context-rich entity screens requiring upward navigation"
-        ],
-        "avoidFor": [
-          "Root homepages"
-        ],
-        "jobs": [
-          "Anchor page identity within overall folder or project hierarchy"
-        ],
-        "contentRequirements": [
-          "Accessible navigation semantics and responsive containment"
-        ],
-        "notes": [
-          "Supports responsive collapsing and reduced motion"
-        ]
+        "summary": "Page header with breadcrumb trail, title, description and an optional primary action.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 85,
-        "playfulness": 25,
-        "luxury": 45,
-        "warmth": 30,
-        "technicality": 75,
-        "editorial": 65,
-        "futurism": 40,
-        "visualAmbition": 60,
-        "structuralCreativity": 45,
-        "density": 65,
-        "whitespace": 50,
-        "contrast": 75,
-        "colourfulness": 35,
-        "curvature": 40,
-        "depth": 35,
-        "motion": 35,
-        "motionPlayfulness": 20,
-        "typographicExpression": 45,
-        "imageryIntensity": 10,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 70,
-        "interactionDensity": 70,
-        "asymmetry": 15,
-        "conversionIntensity": 50,
-        "trust": 90,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 50,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 65,
-        "motionIntensity": 25,
-        "keyboardComplexity": "medium",
+        "interactionDensity": 25,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 65,
-        "whitespace": 45,
-        "asymmetry": 15,
+        "density": 50,
+        "whitespace": 50,
+        "asymmetry": 0,
         "preferredWidths": [
           "full"
         ],
         "layoutFamilies": [
-          "shell",
-          "sidebar",
-          "header"
+          "standard"
         ]
       },
       "responsive": {
@@ -12833,15 +12911,18 @@
           768,
           1440
         ],
-        "defaultStrategy": "collapse"
+        "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -12856,18 +12937,79 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Page title.",
+          "content": "heading"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "What the page is for.",
+          "content": "description"
+        },
+        {
+          "name": "breadcrumbs",
+          "type": "object[]",
+          "required": false,
+          "description": "Trail: [{ label, href }]."
+        },
+        {
+          "name": "actionLabel",
+          "type": "string",
+          "required": false,
+          "description": "Primary action label."
+        },
+        {
+          "name": "actionHref",
+          "type": "string",
+          "required": false,
+          "description": "Primary action link."
+        },
+        {
+          "name": "onAction",
+          "type": "callback",
+          "required": false,
+          "description": "Primary action handler."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": false,
+        "empty": false,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -13869,10 +14011,10 @@
       "schemaVersion": "1.0.0",
       "id": "res_blk_calendar_week",
       "slug": "calendar-week",
-      "name": "Calendar Week",
-      "version": "1.0.0",
+      "name": "Week Calendar",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "7-column weekly schedule view displaying time slots and scheduled appointment cards.",
+      "description": "Five-day week view built from events or from record rows: day columns on wide screens, an agenda list on small ones.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -13956,19 +14098,12 @@
         "defaultProps": {},
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Block Body",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -13976,7 +14111,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -13984,7 +14119,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -13997,74 +14132,34 @@
         "schedule"
       ],
       "intent": {
-        "summary": "7-column weekly schedule view displaying time slots and scheduled appointment cards.",
-        "idealFor": [
-          "Detailed week-at-a-glance scheduling views"
-        ],
-        "avoidFor": [
-          "Multi-year roadmaps"
-        ],
-        "jobs": [
-          "Display weekly schedule columns with scheduled slots"
-        ],
-        "contentRequirements": [
-          "High data density, keyboard accessibility, semantic tokens"
-        ],
-        "notes": [
-          "Responsive compression down to 360px with reduced-motion support"
-        ]
+        "summary": "Five-day week view built from events or from record rows: day columns on wide screens, an agenda list on small ones.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 90,
-        "playfulness": 20,
-        "luxury": 45,
-        "warmth": 30,
-        "technicality": 80,
-        "editorial": 60,
-        "futurism": 40,
-        "visualAmbition": 65,
-        "structuralCreativity": 45,
-        "density": 70,
-        "whitespace": 45,
-        "contrast": 80,
-        "colourfulness": 30,
-        "curvature": 35,
-        "depth": 35,
-        "motion": 25,
-        "motionPlayfulness": 15,
-        "typographicExpression": 50,
-        "imageryIntensity": 10,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 75,
-        "interactionDensity": 75,
-        "asymmetry": 15,
-        "conversionIntensity": 45,
-        "trust": 95,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 55,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 70,
-        "motionIntensity": 20,
-        "keyboardComplexity": "medium",
+        "interactionDensity": 25,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 70,
-        "whitespace": 40,
-        "asymmetry": 15,
+        "density": 55,
+        "whitespace": 45,
+        "asymmetry": 0,
         "preferredWidths": [
+          "wide",
           "full"
         ],
         "layoutFamilies": [
-          "block",
-          "panel",
-          "surface"
+          "standard"
         ]
       },
       "responsive": {
@@ -14073,15 +14168,18 @@
           768,
           1440
         ],
-        "defaultStrategy": "compress"
+        "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -14096,18 +14194,107 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Heading.",
+          "content": "heading"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Line under the heading.",
+          "content": "description"
+        },
+        {
+          "name": "entity",
+          "type": "string",
+          "required": false,
+          "description": "What is scheduled.",
+          "content": "entity"
+        },
+        {
+          "name": "events",
+          "type": "object[]",
+          "required": false,
+          "description": "Events: [{ title, start, detail }]."
+        },
+        {
+          "name": "columns",
+          "type": "string[]",
+          "required": false,
+          "description": "Record fields (a date-like field becomes the time).",
+          "content": "columns"
+        },
+        {
+          "name": "rows",
+          "type": "object[]",
+          "required": false,
+          "description": "Records to place on the calendar.",
+          "content": "rows"
+        },
+        {
+          "name": "sampleData",
+          "type": "boolean",
+          "required": false,
+          "description": "Marks the schedule as sample.",
+          "content": "sampleData"
+        },
+        {
+          "name": "weekStart",
+          "type": "string",
+          "required": false,
+          "description": "First day (ISO date)."
+        },
+        {
+          "name": "locale",
+          "type": "string",
+          "required": false,
+          "description": "Locale for day names."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Loading state."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": true,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -21702,10 +21889,10 @@
       "schemaVersion": "1.0.0",
       "id": "res_sec_cta_minimal",
       "slug": "cta-minimal",
-      "name": "CTA Minimal",
-      "version": "1.0.0",
+      "name": "Call to Action",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Focused single-line headline with primary action button and supporting footnote.",
+      "description": "Closing call to action: one heading, one line and up to two buttons.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -21786,22 +21973,18 @@
       },
       "preview": {
         "component": "CtaMinimalPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "heading": "Ready to book your first session?",
+          "primaryActionLabel": "Book now"
+        },
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Section Content",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for understated editorial presence.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -21809,7 +21992,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Vibrant cobalt accents, elevated cards, and tactile hover states.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -21817,7 +22000,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with crisp hairline borders and radiant illumination.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -21830,74 +22013,33 @@
         "action"
       ],
       "intent": {
-        "summary": "Focused single-line headline with primary action button and supporting footnote.",
-        "idealFor": [
-          "Restrained bottom-of-page sign-off"
-        ],
-        "avoidFor": [
-          "Complex multi-tier sign-up forms"
-        ],
-        "jobs": [
-          "Prompt user to take next step with clean simplicity"
-        ],
-        "contentRequirements": [
-          "Clear hierarchy, responsive layout, accessible typography"
-        ],
-        "notes": [
-          "Responsive stacking down to 360px with reduced-motion support"
-        ]
+        "summary": "Closing call to action: one heading, one line and up to two buttons.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 85,
-        "playfulness": 30,
-        "luxury": 50,
-        "warmth": 40,
-        "technicality": 70,
-        "editorial": 75,
-        "futurism": 45,
-        "visualAmbition": 70,
-        "structuralCreativity": 55,
-        "density": 50,
-        "whitespace": 65,
-        "contrast": 80,
-        "colourfulness": 40,
-        "curvature": 35,
-        "depth": 40,
-        "motion": 30,
-        "motionPlayfulness": 20,
-        "typographicExpression": 60,
-        "imageryIntensity": 25,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 50,
-        "interactionDensity": 50,
-        "asymmetry": 25,
-        "conversionIntensity": 75,
-        "trust": 90,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 30,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 45,
-        "motionIntensity": 25,
+        "interactionDensity": 25,
+        "motionIntensity": 5,
         "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 50,
-        "whitespace": 65,
-        "asymmetry": 25,
+        "density": 30,
+        "whitespace": 70,
+        "asymmetry": 0,
         "preferredWidths": [
           "full"
         ],
         "layoutFamilies": [
-          "marketing",
-          "landing",
-          "section"
+          "standard"
         ]
       },
       "responsive": {
@@ -21909,12 +22051,15 @@
         "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -21929,18 +22074,79 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Heading.",
+          "content": "heading"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Supporting line."
+        },
+        {
+          "name": "primaryActionLabel",
+          "type": "string",
+          "required": false,
+          "description": "Primary button.",
+          "content": "primaryActionLabel"
+        },
+        {
+          "name": "primaryActionHref",
+          "type": "string",
+          "required": false,
+          "description": "Primary link."
+        },
+        {
+          "name": "secondaryActionLabel",
+          "type": "string",
+          "required": false,
+          "description": "Secondary button."
+        },
+        {
+          "name": "secondaryActionHref",
+          "type": "string",
+          "required": false,
+          "description": "Secondary link."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": false,
+        "empty": false,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -23419,10 +23625,10 @@
       "schemaVersion": "1.0.0",
       "id": "res_blk_dashboard_kpi_grid",
       "slug": "dashboard-kpi-grid",
-      "name": "Dashboard KPI Grid",
-      "version": "1.0.0",
+      "name": "Key Numbers",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Multi-column grid of key performance cards with visual trend indicators and contextual meta.",
+      "description": "Key numbers in a responsive grid, each with an optional change indicator and sample marker.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -23503,22 +23709,30 @@
       },
       "preview": {
         "component": "DashboardKpiGridPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "metrics": [
+            {
+              "label": "Appointments this week",
+              "value": 86,
+              "change": "+9%",
+              "positive": true,
+              "sample": true
+            },
+            {
+              "label": "New patients",
+              "value": 14,
+              "sample": true
+            }
+          ]
+        },
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Block Body",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -23526,7 +23740,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -23534,7 +23748,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -23547,74 +23761,34 @@
         "metrics"
       ],
       "intent": {
-        "summary": "Multi-column grid of key performance cards with visual trend indicators and contextual meta.",
-        "idealFor": [
-          "Dashboards requiring 6+ core operational metrics"
-        ],
-        "avoidFor": [
-          "Minimal single-metric headers"
-        ],
-        "jobs": [
-          "Organize dense metric arrays with consistent visual weight"
-        ],
-        "contentRequirements": [
-          "High data density, keyboard accessibility, semantic tokens"
-        ],
-        "notes": [
-          "Responsive compression down to 360px with reduced-motion support"
-        ]
+        "summary": "Key numbers in a responsive grid, each with an optional change indicator and sample marker.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 90,
-        "playfulness": 20,
-        "luxury": 45,
-        "warmth": 30,
-        "technicality": 80,
-        "editorial": 60,
-        "futurism": 40,
-        "visualAmbition": 65,
-        "structuralCreativity": 45,
-        "density": 70,
-        "whitespace": 45,
-        "contrast": 80,
-        "colourfulness": 30,
-        "curvature": 35,
-        "depth": 35,
-        "motion": 25,
-        "motionPlayfulness": 15,
-        "typographicExpression": 50,
-        "imageryIntensity": 10,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 75,
-        "interactionDensity": 75,
-        "asymmetry": 15,
-        "conversionIntensity": 45,
-        "trust": 95,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 60,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 70,
-        "motionIntensity": 20,
-        "keyboardComplexity": "medium",
+        "interactionDensity": 25,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 70,
+        "density": 60,
         "whitespace": 40,
-        "asymmetry": 15,
+        "asymmetry": 0,
         "preferredWidths": [
+          "wide",
           "full"
         ],
         "layoutFamilies": [
-          "block",
-          "panel",
-          "surface"
+          "standard"
         ]
       },
       "responsive": {
@@ -23623,15 +23797,18 @@
           768,
           1440
         ],
-        "defaultStrategy": "compress"
+        "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -23646,18 +23823,68 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Heading.",
+          "content": "heading"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Line under the heading.",
+          "content": "description"
+        },
+        {
+          "name": "metrics",
+          "type": "object[]",
+          "required": false,
+          "description": "Metrics: [{ label, value, change, positive, sample }].",
+          "content": "metrics"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Loading state."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": false,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -28353,9 +28580,9 @@
       "id": "res_sec_editorial_hero",
       "slug": "editorial-hero",
       "name": "Editorial Hero",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs.",
+      "description": "Text-led hero with a strong heading, supporting line and up to two actions.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -28437,22 +28664,21 @@
       },
       "preview": {
         "component": "EditorialHeroPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "eyebrow": "Northside Physio",
+          "heading": "Book care easily, recover with confidence.",
+          "description": "Book appointments, pay deposits and see your treatment plan, all in one place.",
+          "primaryActionLabel": "Book an appointment",
+          "secondaryActionLabel": "Our treatments"
+        },
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Section Content",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for understated editorial presence.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -28460,7 +28686,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Vibrant cobalt accents, elevated cards, and tactile hover states.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -28468,7 +28694,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with crisp hairline borders and radiant illumination.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -28481,74 +28707,33 @@
         "marketing"
       ],
       "intent": {
-        "summary": "Restrained asymmetric typographic hero with oversized headline, deck text, and dual CTAs.",
-        "idealFor": [
-          "High-craft developer and design products with strong editorial voice"
-        ],
-        "avoidFor": [
-          "Complex multi-form lead capture screens"
-        ],
-        "jobs": [
-          "Deliver commanding brand proposition and invite immediate action"
-        ],
-        "contentRequirements": [
-          "Clear hierarchy, responsive layout, accessible typography"
-        ],
-        "notes": [
-          "Responsive stacking down to 360px with reduced-motion support"
-        ]
+        "summary": "Text-led hero with a strong heading, supporting line and up to two actions.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 85,
-        "playfulness": 30,
-        "luxury": 50,
-        "warmth": 40,
-        "technicality": 70,
-        "editorial": 75,
-        "futurism": 45,
-        "visualAmbition": 70,
-        "structuralCreativity": 55,
-        "density": 50,
-        "whitespace": 65,
-        "contrast": 80,
-        "colourfulness": 40,
-        "curvature": 35,
-        "depth": 40,
-        "motion": 30,
-        "motionPlayfulness": 20,
-        "typographicExpression": 60,
-        "imageryIntensity": 25,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 50,
-        "interactionDensity": 50,
-        "asymmetry": 25,
-        "conversionIntensity": 75,
-        "trust": 90,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 30,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 45,
-        "motionIntensity": 25,
+        "interactionDensity": 25,
+        "motionIntensity": 5,
         "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 50,
-        "whitespace": 65,
-        "asymmetry": 25,
+        "density": 30,
+        "whitespace": 70,
+        "asymmetry": 0,
         "preferredWidths": [
           "full"
         ],
         "layoutFamilies": [
-          "marketing",
-          "landing",
-          "section"
+          "standard"
         ]
       },
       "responsive": {
@@ -28560,12 +28745,15 @@
         "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -28580,18 +28768,94 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "eyebrow",
+          "type": "string",
+          "required": false,
+          "description": "Line above the heading, e.g. the product name.",
+          "content": "eyebrow"
+        },
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Main heading.",
+          "content": "heading"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Supporting line.",
+          "content": "description"
+        },
+        {
+          "name": "primaryActionLabel",
+          "type": "string",
+          "required": false,
+          "description": "Primary button.",
+          "content": "primaryActionLabel"
+        },
+        {
+          "name": "primaryActionHref",
+          "type": "string",
+          "required": false,
+          "description": "Primary link."
+        },
+        {
+          "name": "secondaryActionLabel",
+          "type": "string",
+          "required": false,
+          "description": "Secondary button.",
+          "content": "secondaryActionLabel"
+        },
+        {
+          "name": "secondaryActionHref",
+          "type": "string",
+          "required": false,
+          "description": "Secondary link."
+        },
+        {
+          "name": "note",
+          "type": "string",
+          "required": false,
+          "description": "Reassurance under the buttons."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": false,
+        "empty": false,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -29882,10 +30146,10 @@
       "schemaVersion": "1.0.0",
       "id": "res_blk_entity_list",
       "slug": "entity-list",
-      "name": "Entity List",
-      "version": "1.0.0",
+      "name": "Record List",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Clean vertical item list with avatar/status, main description, and quick menu trigger.",
+      "description": "Compact list of records with title, subtitle and status; good for side panels and small screens.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -29967,22 +30231,35 @@
       },
       "preview": {
         "component": "EntityListPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "entity": "Patient",
+          "columns": [
+            "name",
+            "last visit",
+            "status"
+          ],
+          "rows": [
+            {
+              "name": "Amira Khan",
+              "last visit": "12 Jan",
+              "status": "Active"
+            },
+            {
+              "name": "Ben Carter",
+              "last visit": "9 Jan",
+              "status": "Discharged"
+            }
+          ],
+          "sampleData": true
+        },
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Block Body",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -29990,7 +30267,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -29998,7 +30275,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -30011,74 +30288,34 @@
         "directory"
       ],
       "intent": {
-        "summary": "Clean vertical item list with avatar/status, main description, and quick menu trigger.",
-        "idealFor": [
-          "Displaying user or team listings cleanly"
-        ],
-        "avoidFor": [
-          "Complex relational databases requiring 10 columns"
-        ],
-        "jobs": [
-          "Render vertical entity cards with avatar, title, and action menu"
-        ],
-        "contentRequirements": [
-          "High data density, keyboard accessibility, semantic tokens"
-        ],
-        "notes": [
-          "Responsive compression down to 360px with reduced-motion support"
-        ]
+        "summary": "Compact list of records with title, subtitle and status; good for side panels and small screens.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 90,
-        "playfulness": 20,
-        "luxury": 45,
-        "warmth": 30,
-        "technicality": 80,
-        "editorial": 60,
-        "futurism": 40,
-        "visualAmbition": 65,
-        "structuralCreativity": 45,
-        "density": 70,
-        "whitespace": 45,
-        "contrast": 80,
-        "colourfulness": 30,
-        "curvature": 35,
-        "depth": 35,
-        "motion": 25,
-        "motionPlayfulness": 15,
-        "typographicExpression": 50,
-        "imageryIntensity": 10,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 75,
-        "interactionDensity": 75,
-        "asymmetry": 15,
-        "conversionIntensity": 45,
-        "trust": 95,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 60,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 70,
-        "motionIntensity": 20,
-        "keyboardComplexity": "medium",
+        "interactionDensity": 25,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 70,
+        "density": 60,
         "whitespace": 40,
-        "asymmetry": 15,
+        "asymmetry": 0,
         "preferredWidths": [
-          "full"
+          "narrow",
+          "content"
         ],
         "layoutFamilies": [
-          "block",
-          "panel",
-          "surface"
+          "standard"
         ]
       },
       "responsive": {
@@ -30087,15 +30324,18 @@
           768,
           1440
         ],
-        "defaultStrategy": "compress"
+        "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -30110,27 +30350,110 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "List heading.",
+          "content": "heading"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Line under the heading.",
+          "content": "description"
+        },
+        {
+          "name": "entity",
+          "type": "string",
+          "required": false,
+          "description": "Record type.",
+          "content": "entity"
+        },
+        {
+          "name": "columns",
+          "type": "string[]",
+          "required": false,
+          "description": "Title, subtitle and status fields.",
+          "content": "columns"
+        },
+        {
+          "name": "rows",
+          "type": "object[]",
+          "required": false,
+          "description": "Records.",
+          "content": "rows"
+        },
+        {
+          "name": "sampleData",
+          "type": "boolean",
+          "required": false,
+          "description": "Marks rows as sample.",
+          "content": "sampleData"
+        },
+        {
+          "name": "hrefFor",
+          "type": "callback",
+          "required": false,
+          "description": "Builds a link for each record."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Loading state."
+        },
+        {
+          "name": "emptyMessage",
+          "type": "string",
+          "required": false,
+          "description": "Shown when there are no records."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": true,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
       "id": "res_blk_entity_overview",
       "slug": "entity-overview",
-      "name": "Entity Overview",
-      "version": "1.0.0",
+      "name": "Record Details",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Summary card with high-level description, primary KPIs, and operational tags.",
+      "description": "All details of one record as a labelled description list; long text fields span the full width.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -30211,22 +30534,32 @@
       },
       "preview": {
         "component": "EntityOverviewPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "entity": "Appointment",
+          "fields": [
+            "date and time",
+            "service",
+            "with",
+            "status",
+            "notes"
+          ],
+          "record": {
+            "date and time": "2026-01-13 09:45",
+            "service": "Follow-up",
+            "with": "Dr Osei",
+            "status": "Scheduled",
+            "notes": "Bring exercise diary."
+          },
+          "sampleData": true
+        },
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Block Body",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -30234,7 +30567,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -30242,7 +30575,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -30255,74 +30588,34 @@
         "details"
       ],
       "intent": {
-        "summary": "Summary card with high-level description, primary KPIs, and operational tags.",
-        "idealFor": [
-          "Detailed entity inspector panes and summary sidebars"
-        ],
-        "avoidFor": [
-          "Small avatars without context"
-        ],
-        "jobs": [
-          "Provide thorough descriptive summary and attributes of selected entity"
-        ],
-        "contentRequirements": [
-          "High data density, keyboard accessibility, semantic tokens"
-        ],
-        "notes": [
-          "Responsive compression down to 360px with reduced-motion support"
-        ]
+        "summary": "All details of one record as a labelled description list; long text fields span the full width.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 90,
-        "playfulness": 20,
-        "luxury": 45,
-        "warmth": 30,
-        "technicality": 80,
-        "editorial": 60,
-        "futurism": 40,
-        "visualAmbition": 65,
-        "structuralCreativity": 45,
-        "density": 70,
-        "whitespace": 45,
-        "contrast": 80,
-        "colourfulness": 30,
-        "curvature": 35,
-        "depth": 35,
-        "motion": 25,
-        "motionPlayfulness": 15,
-        "typographicExpression": 50,
-        "imageryIntensity": 10,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 75,
-        "interactionDensity": 75,
-        "asymmetry": 15,
-        "conversionIntensity": 45,
-        "trust": 95,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 50,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 70,
-        "motionIntensity": 20,
-        "keyboardComplexity": "medium",
+        "interactionDensity": 25,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 70,
-        "whitespace": 40,
-        "asymmetry": 15,
+        "density": 50,
+        "whitespace": 50,
+        "asymmetry": 0,
         "preferredWidths": [
-          "full"
+          "content",
+          "wide"
         ],
         "layoutFamilies": [
-          "block",
-          "panel",
-          "surface"
+          "standard"
         ]
       },
       "responsive": {
@@ -30331,15 +30624,18 @@
           768,
           1440
         ],
-        "defaultStrategy": "compress"
+        "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -30354,27 +30650,90 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Section heading."
+        },
+        {
+          "name": "entity",
+          "type": "string",
+          "required": false,
+          "description": "Record type.",
+          "content": "entity"
+        },
+        {
+          "name": "fields",
+          "type": "string[]",
+          "required": false,
+          "description": "Fields in display order.",
+          "content": "fields"
+        },
+        {
+          "name": "record",
+          "type": "object",
+          "required": false,
+          "description": "The record.",
+          "content": "record"
+        },
+        {
+          "name": "sampleData",
+          "type": "boolean",
+          "required": false,
+          "description": "Marks the record as sample.",
+          "content": "sampleData"
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Loading state."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": false,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
       "id": "res_blk_entity_profile_header",
       "slug": "entity-profile-header",
-      "name": "Entity Profile Header",
-      "version": "1.0.0",
+      "name": "Record Header",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Hero card for entity details with avatar, title, status badge, action bar, and key stats.",
+      "description": "Header for a single record: initials avatar, title, status, key facts and a primary action.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -30455,22 +30814,31 @@
       },
       "preview": {
         "component": "EntityProfileHeaderPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "entity": "Patient",
+          "fields": [
+            "name",
+            "status",
+            "date of birth",
+            "clinician"
+          ],
+          "record": {
+            "name": "Amira Khan",
+            "status": "Active",
+            "date of birth": "1958-04-02",
+            "clinician": "Dr Osei"
+          },
+          "sampleData": true,
+          "actionLabel": "Book appointment"
+        },
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Block Body",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -30478,7 +30846,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -30486,7 +30854,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -30499,74 +30867,33 @@
         "header"
       ],
       "intent": {
-        "summary": "Hero card for entity details with avatar, title, status badge, action bar, and key stats.",
-        "idealFor": [
-          "Master detail entity pages and user profile dashboards"
-        ],
-        "avoidFor": [
-          "Small sidebar widgets"
-        ],
-        "jobs": [
-          "Anchor detail screens with avatar, name, and primary actions"
-        ],
-        "contentRequirements": [
-          "High data density, keyboard accessibility, semantic tokens"
-        ],
-        "notes": [
-          "Responsive compression down to 360px with reduced-motion support"
-        ]
+        "summary": "Header for a single record: initials avatar, title, status, key facts and a primary action.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 90,
-        "playfulness": 20,
-        "luxury": 45,
-        "warmth": 30,
-        "technicality": 80,
-        "editorial": 60,
-        "futurism": 40,
-        "visualAmbition": 65,
-        "structuralCreativity": 45,
-        "density": 70,
-        "whitespace": 45,
-        "contrast": 80,
-        "colourfulness": 30,
-        "curvature": 35,
-        "depth": 35,
-        "motion": 25,
-        "motionPlayfulness": 15,
-        "typographicExpression": 50,
-        "imageryIntensity": 10,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 75,
-        "interactionDensity": 75,
-        "asymmetry": 15,
-        "conversionIntensity": 45,
-        "trust": 95,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 50,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 70,
-        "motionIntensity": 20,
-        "keyboardComplexity": "medium",
+        "interactionDensity": 25,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 70,
-        "whitespace": 40,
-        "asymmetry": 15,
+        "density": 50,
+        "whitespace": 50,
+        "asymmetry": 0,
         "preferredWidths": [
           "full"
         ],
         "layoutFamilies": [
-          "block",
-          "panel",
-          "surface"
+          "standard"
         ]
       },
       "responsive": {
@@ -30575,15 +30902,18 @@
           768,
           1440
         ],
-        "defaultStrategy": "compress"
+        "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -30598,18 +30928,93 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Record title (defaults to the first field)."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Line under the title."
+        },
+        {
+          "name": "entity",
+          "type": "string",
+          "required": false,
+          "description": "Record type.",
+          "content": "entity"
+        },
+        {
+          "name": "fields",
+          "type": "string[]",
+          "required": false,
+          "description": "Fields in display order.",
+          "content": "fields"
+        },
+        {
+          "name": "record",
+          "type": "object",
+          "required": false,
+          "description": "The record.",
+          "content": "record"
+        },
+        {
+          "name": "sampleData",
+          "type": "boolean",
+          "required": false,
+          "description": "Marks the record as sample.",
+          "content": "sampleData"
+        },
+        {
+          "name": "actionLabel",
+          "type": "string",
+          "required": false,
+          "description": "Primary action label."
+        },
+        {
+          "name": "onAction",
+          "type": "callback",
+          "required": false,
+          "description": "Primary action handler."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": false,
+        "empty": false,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -33797,10 +34202,10 @@
       "schemaVersion": "1.0.0",
       "id": "res_sec_feature_grid_3x2",
       "slug": "feature-grid-3x2",
-      "name": "Feature Grid 3x2",
-      "version": "1.0.0",
+      "name": "Feature Grid",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Balanced 6-card grid with icon headers, descriptive copy, and subtle hover borders.",
+      "description": "Feature or benefit grid: one column on phones, two on tablets, three on desktop.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -33884,19 +34289,12 @@
         "defaultProps": {},
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Section Content",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for understated editorial presence.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -33904,7 +34302,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Vibrant cobalt accents, elevated cards, and tactile hover states.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -33912,7 +34310,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with crisp hairline borders and radiant illumination.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -33925,74 +34323,33 @@
         "capabilities"
       ],
       "intent": {
-        "summary": "Balanced 6-card grid with icon headers, descriptive copy, and subtle hover borders.",
-        "idealFor": [
-          "Presenting the 6 fundamental pillars of a platform"
-        ],
-        "avoidFor": [
-          "Single focused metric callouts"
-        ],
-        "jobs": [
-          "Explain comprehensive breadth of features with clean symmetry"
-        ],
-        "contentRequirements": [
-          "Clear hierarchy, responsive layout, accessible typography"
-        ],
-        "notes": [
-          "Responsive stacking down to 360px with reduced-motion support"
-        ]
+        "summary": "Feature or benefit grid: one column on phones, two on tablets, three on desktop.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 85,
-        "playfulness": 30,
-        "luxury": 50,
-        "warmth": 40,
-        "technicality": 70,
-        "editorial": 75,
-        "futurism": 45,
-        "visualAmbition": 70,
-        "structuralCreativity": 55,
-        "density": 50,
-        "whitespace": 65,
-        "contrast": 80,
-        "colourfulness": 40,
-        "curvature": 35,
-        "depth": 40,
-        "motion": 30,
-        "motionPlayfulness": 20,
-        "typographicExpression": 60,
-        "imageryIntensity": 25,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 50,
-        "interactionDensity": 50,
-        "asymmetry": 25,
-        "conversionIntensity": 75,
-        "trust": 90,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 40,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 45,
-        "motionIntensity": 25,
+        "interactionDensity": 25,
+        "motionIntensity": 5,
         "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 50,
-        "whitespace": 65,
-        "asymmetry": 25,
+        "density": 40,
+        "whitespace": 60,
+        "asymmetry": 0,
         "preferredWidths": [
           "full"
         ],
         "layoutFamilies": [
-          "marketing",
-          "landing",
-          "section"
+          "standard"
         ]
       },
       "responsive": {
@@ -34004,12 +34361,15 @@
         "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -34024,18 +34384,62 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Section heading.",
+          "content": "heading"
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Line under the heading.",
+          "content": "description"
+        },
+        {
+          "name": "items",
+          "type": "object[]",
+          "required": false,
+          "description": "Features: [{ title, description }], up to six.",
+          "content": "items"
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": false,
+        "empty": false,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -37956,10 +38360,10 @@
       "schemaVersion": "1.0.0",
       "id": "res_sec_footer_minimal",
       "slug": "footer-minimal",
-      "name": "Footer Minimal",
-      "version": "1.0.0",
+      "name": "Footer",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Single-line copyright, status indicator, and legal links with minimal footprint.",
+      "description": "Compact footer with brand, links, legal links and copyright.",
       "resourceType": "section",
       "categories": [
         "sections",
@@ -38040,22 +38444,27 @@
       },
       "preview": {
         "component": "FooterMinimalPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "brand": "Northside Physio",
+          "items": [
+            {
+              "label": "Treatments",
+              "href": "#"
+            },
+            {
+              "label": "Book",
+              "href": "#"
+            }
+          ]
+        },
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Section Content",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for understated editorial presence.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -38063,7 +38472,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Vibrant cobalt accents, elevated cards, and tactile hover states.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -38071,7 +38480,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with crisp hairline borders and radiant illumination.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -38084,74 +38493,33 @@
         "minimal"
       ],
       "intent": {
-        "summary": "Single-line copyright, status indicator, and legal links with minimal footprint.",
-        "idealFor": [
-          "Focused tools and single-page apps"
-        ],
-        "avoidFor": [
-          "Massive sitemap directories"
-        ],
-        "jobs": [
-          "Provide subtle copyright and operational status indicator"
-        ],
-        "contentRequirements": [
-          "Clear hierarchy, responsive layout, accessible typography"
-        ],
-        "notes": [
-          "Responsive stacking down to 360px with reduced-motion support"
-        ]
+        "summary": "Compact footer with brand, links, legal links and copyright.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 85,
-        "playfulness": 30,
-        "luxury": 50,
-        "warmth": 40,
-        "technicality": 70,
-        "editorial": 75,
-        "futurism": 45,
-        "visualAmbition": 70,
-        "structuralCreativity": 55,
-        "density": 50,
-        "whitespace": 65,
-        "contrast": 80,
-        "colourfulness": 40,
-        "curvature": 35,
-        "depth": 40,
-        "motion": 30,
-        "motionPlayfulness": 20,
-        "typographicExpression": 60,
-        "imageryIntensity": 25,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 50,
-        "interactionDensity": 50,
-        "asymmetry": 25,
-        "conversionIntensity": 75,
-        "trust": 90,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 40,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 45,
-        "motionIntensity": 25,
+        "interactionDensity": 25,
+        "motionIntensity": 5,
         "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 50,
-        "whitespace": 65,
-        "asymmetry": 25,
+        "density": 40,
+        "whitespace": 60,
+        "asymmetry": 0,
         "preferredWidths": [
           "full"
         ],
         "layoutFamilies": [
-          "marketing",
-          "landing",
-          "section"
+          "standard"
         ]
       },
       "responsive": {
@@ -38163,12 +38531,15 @@
         "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -38183,18 +38554,68 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "brand",
+          "type": "string",
+          "required": false,
+          "description": "Product name.",
+          "content": "brand"
+        },
+        {
+          "name": "items",
+          "type": "object[]",
+          "required": false,
+          "description": "Links: [{ label, href }].",
+          "content": "items"
+        },
+        {
+          "name": "copyright",
+          "type": "string",
+          "required": false,
+          "description": "Copyright line.",
+          "content": "copyright"
+        },
+        {
+          "name": "legalItems",
+          "type": "object[]",
+          "required": false,
+          "description": "Legal links."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": false,
+        "empty": false,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -50472,10 +50893,10 @@
       "schemaVersion": "1.0.0",
       "id": "res_shell_minimal_top_nav",
       "slug": "minimal-top-nav",
-      "name": "Minimal Top Navigation",
-      "version": "1.0.0",
+      "name": "Site Header",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Restrained horizontal header with brand mark, essential route links, and profile badge.",
+      "description": "Site header with brand, links and a call to action; collapses into a disclosure menu on small screens.",
       "resourceType": "block",
       "categories": [
         "shells",
@@ -50552,22 +50973,32 @@
       },
       "preview": {
         "component": "MinimalTopNavPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "brand": "Northside Physio",
+          "items": [
+            {
+              "label": "Treatments",
+              "href": "#treatments"
+            },
+            {
+              "label": "Prices",
+              "href": "#prices"
+            },
+            {
+              "label": "Contact",
+              "href": "#contact"
+            }
+          ],
+          "actionLabel": "Book now"
+        },
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Workspace Viewport",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -50575,7 +51006,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -50583,7 +51014,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -50596,74 +51027,33 @@
         "navigation"
       ],
       "intent": {
-        "summary": "Restrained horizontal header with brand mark, essential route links, and profile badge.",
-        "idealFor": [
-          "Developer portals and focused content sites"
-        ],
-        "avoidFor": [
-          "Complex multi-tenant workspace hubs"
-        ],
-        "jobs": [
-          "Provide top-level site identity and navigation links"
-        ],
-        "contentRequirements": [
-          "Accessible navigation semantics and responsive containment"
-        ],
-        "notes": [
-          "Supports responsive collapsing and reduced motion"
-        ]
+        "summary": "Site header with brand, links and a call to action; collapses into a disclosure menu on small screens.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 85,
-        "playfulness": 25,
-        "luxury": 45,
-        "warmth": 30,
-        "technicality": 75,
-        "editorial": 65,
-        "futurism": 40,
-        "visualAmbition": 60,
-        "structuralCreativity": 45,
-        "density": 65,
-        "whitespace": 50,
-        "contrast": 75,
-        "colourfulness": 35,
-        "curvature": 40,
-        "depth": 35,
-        "motion": 35,
-        "motionPlayfulness": 20,
-        "typographicExpression": 45,
-        "imageryIntensity": 10,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 70,
-        "interactionDensity": 70,
-        "asymmetry": 15,
-        "conversionIntensity": 50,
-        "trust": 90,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 45,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 65,
-        "motionIntensity": 25,
-        "keyboardComplexity": "medium",
+        "interactionDensity": 25,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 65,
-        "whitespace": 45,
-        "asymmetry": 15,
+        "density": 45,
+        "whitespace": 55,
+        "asymmetry": 0,
         "preferredWidths": [
           "full"
         ],
         "layoutFamilies": [
-          "shell",
-          "sidebar",
-          "header"
+          "standard"
         ]
       },
       "responsive": {
@@ -50672,15 +51062,18 @@
           768,
           1440
         ],
-        "defaultStrategy": "collapse"
+        "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -50695,18 +51088,73 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "brand",
+          "type": "string",
+          "required": false,
+          "description": "Product name.",
+          "content": "brand"
+        },
+        {
+          "name": "brandHref",
+          "type": "string",
+          "required": false,
+          "description": "Brand link."
+        },
+        {
+          "name": "items",
+          "type": "object[]",
+          "required": false,
+          "description": "Links: [{ label, href }].",
+          "content": "items"
+        },
+        {
+          "name": "actionLabel",
+          "type": "string",
+          "required": false,
+          "description": "Call to action label."
+        },
+        {
+          "name": "actionHref",
+          "type": "string",
+          "required": false,
+          "description": "Call to action link."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": false,
+        "empty": false,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -61097,9 +61545,9 @@
       "id": "res_blk_profile_settings",
       "slug": "profile-settings",
       "name": "Profile Settings",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "User settings form with avatar uploader, display name, handle, and email inputs.",
+      "description": "Profile and reminder preferences with validation, loading and a saved confirmation.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -61180,22 +61628,20 @@
       },
       "preview": {
         "component": "ProfileSettingsPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "initialValues": {
+            "name": "Amira Khan",
+            "email": "amira@example.com"
+          }
+        },
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Block Body",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -61203,7 +61649,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -61211,7 +61657,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -61224,74 +61670,33 @@
         "settings"
       ],
       "intent": {
-        "summary": "User settings form with avatar uploader, display name, handle, and email inputs.",
-        "idealFor": [
-          "User account management screens"
-        ],
-        "avoidFor": [
-          "Read-only dashboard statistics"
-        ],
-        "jobs": [
-          "Allow user to update display name, email, and handle"
-        ],
-        "contentRequirements": [
-          "High data density, keyboard accessibility, semantic tokens"
-        ],
-        "notes": [
-          "Responsive compression down to 360px with reduced-motion support"
-        ]
+        "summary": "Profile and reminder preferences with validation, loading and a saved confirmation.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 90,
-        "playfulness": 20,
-        "luxury": 45,
-        "warmth": 30,
-        "technicality": 80,
-        "editorial": 60,
-        "futurism": 40,
-        "visualAmbition": 65,
-        "structuralCreativity": 45,
-        "density": 70,
-        "whitespace": 45,
-        "contrast": 80,
-        "colourfulness": 30,
-        "curvature": 35,
-        "depth": 35,
-        "motion": 25,
-        "motionPlayfulness": 15,
-        "typographicExpression": 50,
-        "imageryIntensity": 10,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 75,
-        "interactionDensity": 75,
-        "asymmetry": 15,
-        "conversionIntensity": 45,
-        "trust": 95,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 45,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 70,
-        "motionIntensity": 20,
-        "keyboardComplexity": "medium",
+        "interactionDensity": 55,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 70,
-        "whitespace": 40,
-        "asymmetry": 15,
+        "density": 45,
+        "whitespace": 55,
+        "asymmetry": 0,
         "preferredWidths": [
-          "full"
+          "content"
         ],
         "layoutFamilies": [
-          "block",
-          "panel",
-          "surface"
+          "standard"
         ]
       },
       "responsive": {
@@ -61300,15 +61705,18 @@
           768,
           1440
         ],
-        "defaultStrategy": "compress"
+        "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -61323,18 +61731,77 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Heading."
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": "Line under the heading."
+        },
+        {
+          "name": "initialValues",
+          "type": "object",
+          "required": false,
+          "description": "Current values: { name, email, phone, emailReminders, textReminders }."
+        },
+        {
+          "name": "onSave",
+          "type": "callback",
+          "required": false,
+          "description": "Receives the values."
+        },
+        {
+          "name": "errorMessage",
+          "type": "string",
+          "required": false,
+          "description": "Error announced in an alert region."
+        },
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "description": "Loading state."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": true,
+        "empty": false,
+        "error": true
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",
@@ -68165,9 +68632,9 @@
       "id": "res_blk_settings_navigation",
       "slug": "settings-navigation",
       "name": "Settings Navigation",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "status": "experimental",
-      "description": "Vertical or horizontal tabs linking administrative sections (Account, Team, Billing, API).",
+      "description": "Settings section navigation: a vertical list from the md breakpoint, a scrollable row on small screens.",
       "resourceType": "block",
       "categories": [
         "blocks",
@@ -68251,19 +68718,12 @@
         "defaultProps": {},
         "viewport": 1440
       },
-      "slots": [
-        {
-          "id": "children",
-          "name": "Block Body",
-          "type": "component",
-          "required": false
-        }
-      ],
+      "slots": [],
       "variants": [
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+          "description": "Flat surface with a hairline border.",
           "props": {
             "variant": "quiet"
           }
@@ -68271,7 +68731,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+          "description": "Raised surface with a soft shadow.",
           "props": {
             "variant": "expressive"
           }
@@ -68279,7 +68739,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+          "description": "Strong outline for high-contrast layouts.",
           "props": {
             "variant": "nocturne"
           }
@@ -68292,74 +68752,33 @@
         "admin"
       ],
       "intent": {
-        "summary": "Vertical or horizontal tabs linking administrative sections (Account, Team, Billing, API).",
-        "idealFor": [
-          "Settings portals and preferences dashboards"
-        ],
-        "avoidFor": [
-          "Content reading screens"
-        ],
-        "jobs": [
-          "Provide clean tabbed switching across administrative settings panes"
-        ],
-        "contentRequirements": [
-          "High data density, keyboard accessibility, semantic tokens"
-        ],
-        "notes": [
-          "Responsive compression down to 360px with reduced-motion support"
-        ]
+        "summary": "Settings section navigation: a vertical list from the md breakpoint, a scrollable row on small screens.",
+        "idealFor": [],
+        "avoidFor": [],
+        "jobs": [],
+        "contentRequirements": []
       },
       "visualDNA": {
-        "professionalism": 90,
-        "playfulness": 20,
-        "luxury": 45,
-        "warmth": 30,
-        "technicality": 80,
-        "editorial": 60,
-        "futurism": 40,
-        "visualAmbition": 65,
-        "structuralCreativity": 45,
-        "density": 70,
-        "whitespace": 45,
-        "contrast": 80,
-        "colourfulness": 30,
-        "curvature": 35,
-        "depth": 35,
-        "motion": 25,
-        "motionPlayfulness": 15,
-        "typographicExpression": 50,
-        "imageryIntensity": 10,
-        "videoIntensity": 0,
-        "threeDIntensity": 0,
-        "dataDensity": 75,
-        "interactionDensity": 75,
-        "asymmetry": 15,
-        "conversionIntensity": 45,
-        "trust": 95,
-        "accessibilityPriority": 95,
-        "performancePriority": 95,
-        "visualMode": "adaptive",
-        "geometryFamily": "rounded",
-        "primaryStack": "react-tailwind"
+        "visualAmbition": 30,
+        "density": 45,
+        "curvature": 40
       },
       "interactionDNA": {
-        "interactionDensity": 70,
-        "motionIntensity": 20,
-        "keyboardComplexity": "medium",
+        "interactionDensity": 25,
+        "motionIntensity": 5,
+        "keyboardComplexity": "low",
         "hoverDependency": "none",
         "directManipulation": false
       },
       "layoutDNA": {
-        "density": 70,
-        "whitespace": 40,
-        "asymmetry": 15,
+        "density": 45,
+        "whitespace": 55,
+        "asymmetry": 0,
         "preferredWidths": [
-          "full"
+          "narrow"
         ],
         "layoutFamilies": [
-          "block",
-          "panel",
-          "surface"
+          "standard"
         ]
       },
       "responsive": {
@@ -68368,15 +68787,18 @@
           768,
           1440
         ],
-        "defaultStrategy": "compress"
+        "defaultStrategy": "stack"
       },
       "accessibility": {
-        "levelTarget": "AA",
-        "keyboardVerified": false,
-        "screenReaderSemantics": false,
-        "reducedMotionVerified": false,
-        "contrastTokenCompatible": false,
-        "focusVisible": false
+        "levelTarget": "AAA",
+        "keyboardVerified": true,
+        "screenReaderSemantics": true,
+        "reducedMotionVerified": true,
+        "contrastTokenCompatible": true,
+        "focusVisible": true,
+        "knownLimitations": [
+          "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+        ]
       },
       "performance": {
         "jsCost": "tiny",
@@ -68391,18 +68813,59 @@
       "compatibility": {},
       "relationships": [],
       "quality": {
-        "overall": 96,
-        "accessibility": 98,
-        "responsive": 95,
-        "performance": 100,
-        "codeQuality": 96,
-        "composability": 96,
-        "visualCraft": 95,
+        "overall": 80,
+        "accessibility": 85,
+        "responsive": 85,
+        "performance": 90,
+        "codeQuality": 85,
+        "composability": 85,
+        "visualCraft": 75,
         "dependencyCleanliness": 100,
-        "documentation": 95
+        "documentation": 80
       },
       "createdAt": "2026-10-10T12:00:00.000Z",
-      "updatedAt": "2026-10-10T12:00:00.000Z"
+      "updatedAt": "2026-10-15T00:00:00.000Z",
+      "contractVersion": 2,
+      "props": [
+        {
+          "name": "heading",
+          "type": "string",
+          "required": false,
+          "description": "Heading."
+        },
+        {
+          "name": "items",
+          "type": "object[]",
+          "required": false,
+          "description": "Sections: [{ label, href, description }]."
+        },
+        {
+          "name": "activeHref",
+          "type": "string",
+          "required": false,
+          "description": "Current section."
+        },
+        {
+          "name": "variant",
+          "type": "enum",
+          "required": false,
+          "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+          "enumValues": [
+            "quiet",
+            "expressive",
+            "nocturne"
+          ]
+        }
+      ],
+      "states": {
+        "loading": false,
+        "empty": false,
+        "error": false
+      },
+      "stylingContract": {
+        "tokenOnly": true,
+        "reducedMotion": "respected"
+      }
     },
     {
       "schemaVersion": "1.0.0",

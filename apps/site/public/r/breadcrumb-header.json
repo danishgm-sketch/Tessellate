@@ -2,15 +2,15 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "breadcrumb-header",
   "type": "registry:block",
-  "title": "Breadcrumb Header",
-  "description": "Header shell combining deep hierarchical breadcrumb trail with right-aligned action buttons.",
+  "title": "Page Header",
+  "description": "Page header with breadcrumb trail, title, description and an optional primary action.",
   "dependencies": [],
   "devDependencies": [],
   "registryDependencies": [],
   "files": [
     {
       "path": "index.tsx",
-      "content": "import React from 'react';\n\nexport type BreadcrumbHeaderVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface BreadcrumbHeaderProps {\n  variant?: BreadcrumbHeaderVariant;\n}\n\nexport function BreadcrumbHeader({ variant = 'quiet' }: BreadcrumbHeaderProps) {\n  let header = 'bg-white border-b border-neutral-200 text-neutral-900';\n  if (variant === 'nocturne') header = 'bg-[#0B0D10] border-b border-[#2E3440] text-white';\n\n  return (\n    <div className={`w-full px-6 h-14 flex items-center justify-between text-xs ${header}`}>\n      <div className=\"flex items-center gap-2\">\n        <a href=\"#\" className=\"opacity-50 hover:opacity-100\">Projects</a>\n        <span className=\"opacity-30\">/</span>\n        <a href=\"#\" className=\"opacity-50 hover:opacity-100\">Telemetry</a>\n        <span className=\"opacity-30\">/</span>\n        <span className=\"font-semibold\">Analytics Node</span>\n      </div>\n      <div className=\"flex items-center gap-2\">\n        <button className=\"px-3 py-1.5 border rounded-lg\">Export</button>\n        <button className=\"px-3 py-1.5 bg-neutral-900 dark:bg-white text-white dark:text-neutral-950 font-medium rounded-lg\">Save</button>\n      </div>\n    </div>\n  );\n}\n",
+      "content": "import React from 'react';\n\nexport type BreadcrumbHeaderVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface BreadcrumbItem {\n  label: string;\n  href?: string;\n}\n\nexport interface BreadcrumbHeaderProps {\n  /** Page title. */\n  heading?: string;\n  /** One line explaining what the page is for. */\n  description?: string;\n  /** Trail above the title; the last item is the current page. */\n  breadcrumbs?: BreadcrumbItem[];\n  /** Label of the primary page action, e.g. \"New appointment\". */\n  actionLabel?: string;\n  actionHref?: string;\n  onAction?: () => void;\n  variant?: BreadcrumbHeaderVariant;\n}\n\n/** Page header with breadcrumb trail, title, description and an optional primary action. */\nexport function BreadcrumbHeader({\n  heading = 'Page title',\n  description,\n  breadcrumbs,\n  actionLabel,\n  actionHref,\n  onAction,\n  variant = 'quiet',\n}: BreadcrumbHeaderProps) {\n  const shell = variant === 'expressive' ? 'bg-surface-raised shadow-ui-1' : variant === 'nocturne' ? 'bg-surface border-b-2 border-hairline-strong' : 'bg-transparent';\n  const actionClass =\n    'inline-flex items-center rounded-ui-sm bg-accent px-4 py-2 text-sm font-semibold text-on-accent transition-colors duration-150 ease-ui hover:bg-accent-hover motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus';\n\n  return (\n    <header className={`flex w-full flex-wrap items-end justify-between gap-4 border-b border-hairline px-4 py-5 font-body text-ink sm:px-6 ${shell}`}>\n      <div className=\"min-w-0\">\n        {breadcrumbs && breadcrumbs.length > 0 && (\n          <nav aria-label=\"Breadcrumb\" className=\"mb-1\">\n            <ol className=\"flex flex-wrap items-center gap-1 text-sm text-ink-secondary\">\n              {breadcrumbs.map((b, i) => {\n                const last = i === breadcrumbs.length - 1;\n                return (\n                  <li key={`${b.label}-${i}`} className=\"flex items-center gap-1\">\n                    {b.href && !last ? (\n                      <a href={b.href} className=\"underline-offset-2 hover:text-ink hover:underline focus-visible:outline-2 focus-visible:outline-focus\">\n                        {b.label}\n                      </a>\n                    ) : (\n                      <span aria-current={last ? 'page' : undefined}>{b.label}</span>\n                    )}\n                    {!last && <span aria-hidden=\"true\">/</span>}\n                  </li>\n                );\n              })}\n            </ol>\n          </nav>\n        )}\n        <h1 className=\"truncate font-heading text-2xl font-semibold\">{heading}</h1>\n        {description && <p className=\"mt-1 max-w-2xl text-sm text-ink-secondary\">{description}</p>}\n      </div>\n      {actionLabel &&\n        (actionHref ? (\n          <a href={actionHref} className={actionClass}>\n            {actionLabel}\n          </a>\n        ) : (\n          <button type=\"button\" onClick={onAction} className={actionClass}>\n            {actionLabel}\n          </button>\n        ))}\n    </header>\n  );\n}\n",
       "type": "registry:block",
       "target": "components/tessellate/breadcrumb-header/index.tsx"
     }
@@ -21,7 +21,7 @@
   ],
   "meta": {
     "tessellateId": "res_shell_breadcrumb_header",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "license": "MIT",
     "variants": [
       "Quiet",

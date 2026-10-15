@@ -1,30 +1,40 @@
 import React, { useState } from 'react';
-import { CalendarWeek, CalendarWeekVariant } from './index.js';
+import { CalendarWeek, type CalendarWeekVariant } from './index.js';
+import { calendarWeekFixtures } from './fixtures.js';
+
+type PreviewState = 'ready' | 'loading' | 'error';
 
 export function CalendarWeekPreview() {
   const [variant, setVariant] = useState<CalendarWeekVariant>('quiet');
-
+  const [state, setState] = useState<PreviewState>('ready');
+  const chip = (active: boolean) =>
+    `rounded-ui-sm px-2.5 py-1 text-xs font-medium focus-visible:outline-2 focus-visible:outline-focus ${active ? 'bg-ink text-canvas' : 'bg-surface-raised text-ink border border-hairline'}`;
   return (
-    <div className="w-full flex flex-col">
-      <div className="p-3 bg-neutral-100 border-b border-neutral-200 flex items-center justify-between text-xs">
-        <span className="font-semibold text-neutral-600">Calendar Week Preview</span>
-        <div className="flex items-center gap-1.5">
-          {(['quiet', 'expressive', 'nocturne'] as CalendarWeekVariant[]).map((v) => (
-            <button
-              key={v}
-              type="button"
-              onClick={() => setVariant(v)}
-              className={`px-2.5 py-1 rounded capitalize font-medium transition-colors ${
-                variant === v ? 'bg-neutral-900 text-white' : 'bg-white text-neutral-700 hover:bg-neutral-200'
-              }`}
-            >
+    <div className="flex w-full flex-col bg-canvas">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-hairline bg-surface px-3 py-2 text-xs">
+        <span className="font-semibold text-ink">Week Calendar</span>
+        <div className="flex flex-wrap gap-1" role="group" aria-label="Variant">
+          {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (
+            <button key={v} type="button" aria-pressed={variant === v} onClick={() => setVariant(v)} className={chip(variant === v)}>
               {v}
             </button>
           ))}
         </div>
+        <div className="flex flex-wrap gap-1" role="group" aria-label="State">
+          {([['ready', 'Ready'], ['loading', 'Loading']] as Array<[PreviewState, string]>).map(([s, label]) => (
+            <button key={s} type="button" aria-pressed={state === s} onClick={() => setState(s)} className={chip(state === s)}>
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
-      <div className="p-6">
-        <CalendarWeek variant={variant} />
+      <div className="p-4 sm:p-8">
+        <CalendarWeek
+          {...calendarWeekFixtures}
+          variant={variant}
+          loading={state === 'loading'}
+          
+        />
       </div>
     </div>
   );

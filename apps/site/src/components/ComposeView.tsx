@@ -485,7 +485,7 @@ function DirectionCard({
           <p className="mt-1 text-xs text-[#62666F]">{direction.rationale}</p>
           {gaps > 0 && (
             <p data-testid={`direction-gaps-${number}`} className="mt-2 text-xs text-[#8A5A10]">
-              {gaps} section{gaps === 1 ? '' : 's'} have no library resource yet and are marked as gaps to fill in the Workbench.
+              {gaps} section{gaps === 1 ? ' needs' : 's need'} a resource and {gaps === 1 ? 'is' : 'are'} marked as {gaps === 1 ? 'a gap' : 'gaps'} to fill in the Workbench.
             </p>
           )}
         </div>

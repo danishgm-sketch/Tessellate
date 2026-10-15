@@ -71,8 +71,9 @@ export const SCREEN_CLASS_GRAMMARS: Record<string, ScreenClassGrammar> = {
     defaultGroup: 'app',
     defaultSlug: '/items',
     defaultVisibility: 'primary',
-    requiredRoles: ['page-header', 'filter-bar', 'data-table'],
-    optionalRoles: ['empty-state'],
+    // The records table has search built in, so a separate filter bar is optional (Phase 30).
+    requiredRoles: ['page-header', 'data-table'],
+    optionalRoles: ['filter-bar', 'empty-state'],
     roleOrdering: ['page-header', 'filter-bar', 'data-table', 'empty-state'],
   },
 

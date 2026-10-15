@@ -1,46 +1,69 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 export type DashboardKpiGridVariant = 'quiet' | 'expressive' | 'nocturne';
 
+export interface KpiMetric {
+  label: string;
+  value: string | number;
+  /** Change since the last period, e.g. "+12%" or "-3". */
+  change?: string;
+  /** Whether the change is good news (colours the change). */
+  positive?: boolean;
+  /** Marks the value as sample data. */
+  sample?: boolean;
+}
+
 export interface DashboardKpiGridProps {
+  heading?: string;
+  description?: string;
+  metrics?: KpiMetric[];
+  loading?: boolean;
   variant?: DashboardKpiGridVariant;
 }
 
-export function DashboardKpiGrid({ variant = 'quiet' }: DashboardKpiGridProps) {
-  let bg = 'bg-white text-neutral-900 border-neutral-200';
-  let card = 'border-neutral-200 bg-neutral-50/50';
+const SAMPLE: KpiMetric[] = [
+  { label: 'Bookings this week', value: 128, change: '+12%', positive: true, sample: true },
+  { label: 'New clients', value: 24, change: '+3', positive: true, sample: true },
+  { label: 'No-shows', value: 4, change: '-2', positive: true, sample: true },
+  { label: 'Revenue', value: '£6,420', change: '+8%', positive: true, sample: true },
+];
 
-  if (variant === 'expressive') {
-    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';
-    card = 'border-blue-100 bg-white shadow-xs';
-  } else if (variant === 'nocturne') {
-    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';
-    card = 'border-[#2E3440] bg-[#151921]';
-  }
-
-  const cards = [
-    { label: 'Active Clusters', val: '48', status: 'Healthy' },
-    { label: 'Sync Latency', val: '12ms', status: 'Optimal' },
-    { label: 'Replica Count', val: '144', status: 'Balanced' },
-    { label: 'Memory Util', val: '42.1%', status: 'Nominal' },
-    { label: 'CPU Load', val: '28.4%', status: 'Nominal' },
-    { label: 'Storage Free', val: '8.4 TB', status: '82% free' },
-  ];
+/** Key numbers in a responsive grid (1, 2 or 4 columns), each with an optional change indicator. */
+export function DashboardKpiGrid({ heading, description, metrics, loading = false, variant = 'quiet' }: DashboardKpiGridProps) {
+  const id = useId();
+  const items = metrics && metrics.length > 0 ? metrics : SAMPLE;
+  const card = variant === 'expressive' ? 'bg-surface-raised shadow-ui-2 border border-hairline' : variant === 'nocturne' ? 'bg-surface border-2 border-hairline-strong' : 'bg-surface-raised border border-hairline';
 
   return (
-    <div className={`w-full p-6 rounded-xl border transition-colors ${bg}`}>
-      <h3 className="text-sm font-semibold mb-4">Cluster Operational Health</h3>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-        {cards.map((c) => (
-          <div key={c.label} className={`p-4 rounded-lg border ${card}`}>
-            <span className="text-[11px] font-mono uppercase text-neutral-500 mb-1 block">{c.label}</span>
-            <div className="text-2xl font-bold font-mono tracking-tight mb-2">{c.val}</div>
-            <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-bold">
-              {c.status}
-            </span>
+    <section className="w-full font-body text-ink" aria-labelledby={heading ? `${id}-heading` : undefined} aria-label={heading ? undefined : 'Key numbers'} aria-busy={loading}>
+      {heading && (
+        <h2 id={`${id}-heading`} className="mb-1 font-heading text-lg font-semibold">
+          {heading}
+        </h2>
+      )}
+      {description && <p className="mb-3 text-sm text-ink-secondary">{description}</p>}
+      <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        {items.map((m) => (
+          <div key={m.label} className={`rounded-ui-md p-4 ${card}`}>
+            <dt className="text-sm text-ink-secondary">{m.label}</dt>
+            <dd className="mt-1 flex items-baseline gap-2">
+              <span className="font-heading text-2xl font-semibold tabular-nums">{loading ? '—' : m.value}</span>
+              {!loading && m.change && (
+                <span className={`text-sm font-medium ${m.positive === false ? 'text-danger' : 'text-success'}`}>
+                  <span className="sr-only">Change: </span>
+                  {m.change}
+                </span>
+              )}
+            </dd>
+            {m.sample && <dd className="mt-1 text-xs text-ink-secondary">Sample</dd>}
           </div>
         ))}
-      </div>
-    </div>
+      </dl>
+      {loading && (
+        <p role="status" className="sr-only">
+          Loading numbers…
+        </p>
+      )}
+    </section>
   );
 }

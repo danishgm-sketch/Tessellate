@@ -1,10 +1,41 @@
-import React from 'react';
-import { BreadcrumbHeader } from './index.js';
+import React, { useState } from 'react';
+import { BreadcrumbHeader, type BreadcrumbHeaderVariant } from './index.js';
+import { breadcrumbHeaderFixtures } from './fixtures.js';
+
+type PreviewState = 'ready' | 'loading' | 'error';
 
 export function BreadcrumbHeaderPreview() {
+  const [variant, setVariant] = useState<BreadcrumbHeaderVariant>('quiet');
+  const [state, setState] = useState<PreviewState>('ready');
+  const chip = (active: boolean) =>
+    `rounded-ui-sm px-2.5 py-1 text-xs font-medium focus-visible:outline-2 focus-visible:outline-focus ${active ? 'bg-ink text-canvas' : 'bg-surface-raised text-ink border border-hairline'}`;
   return (
-    <div className="w-full">
-      <BreadcrumbHeader variant="expressive" />
+    <div className="flex w-full flex-col bg-canvas">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-hairline bg-surface px-3 py-2 text-xs">
+        <span className="font-semibold text-ink">Page Header</span>
+        <div className="flex flex-wrap gap-1" role="group" aria-label="Variant">
+          {(['quiet', 'expressive', 'nocturne'] as const).map((v) => (
+            <button key={v} type="button" aria-pressed={variant === v} onClick={() => setVariant(v)} className={chip(variant === v)}>
+              {v}
+            </button>
+          ))}
+        </div>
+        <div className="flex flex-wrap gap-1" role="group" aria-label="State">
+          {([['ready', 'Ready']] as Array<[PreviewState, string]>).map(([s, label]) => (
+            <button key={s} type="button" aria-pressed={state === s} onClick={() => setState(s)} className={chip(state === s)}>
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="p-4 sm:p-8">
+        <BreadcrumbHeader
+          {...breadcrumbHeaderFixtures}
+          variant={variant}
+          
+          
+        />
+      </div>
     </div>
   );
 }

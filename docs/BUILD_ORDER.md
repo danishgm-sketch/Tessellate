@@ -686,19 +686,25 @@ Six golden briefs: every required role resolved or shown as a gap; auth screens 
   - The manifest carries no Tessellate name.
   - Exports build.
 - **Not met:**
-  - The auth screen shows a "Sign-in form" gap, because the library has no sign-in form yet (Phase 30).
-  - Exported components still contain resource-authored "Tessellate" copy (Phase 30 props contract).
+  - ~~The auth screen shows a "Sign-in form" gap~~: closed in Phase 30 (sign-in form).
+  - ~~Exported components contain "Tessellate" copy~~: closed in Phase 30 (`client-output.test.ts`).
 
 # Phase 30 — Resource library rebuild
 
-- [ ] Resource contract v2: props schema, states, token-only styling, reduced motion, reviewer.
-- [ ] One token vocabulary across the renderer, UI and exporter.
-- [ ] New categories: auth, forms, commerce, scheduling, data tables, notifications, settings.
-- [ ] Migrate the gold resources first; demote resources that cannot meet the contract.
-- [ ] Automated per-resource checks.
+- [x] Resource contract v2: props schema, states, token-only styling, reduced motion, reviewer. *`contractVersion: 2` plus `props`, `states`, `stylingContract` and `review`; "verified" requires a named human reviewer.*
+- [x] One token vocabulary across the renderer, UI and exporter. *`RESOURCE_THEME_CSS` maps Tailwind 4 utilities to `--tess-*` tokens. The normaliser enforces 4.5:1 or 7:1 contrast, and the exporter uses the same names.*
+- [ ] New categories: auth, forms, commerce, scheduling, data tables, notifications, settings. *Done: auth (3), forms and scheduling (5), commerce (2), records table, settings (2). Not yet: notifications/toasts, date-range picker, file upload, maps v2.*
+- [ ] Migrate the gold resources first; demote resources that cannot meet the contract. *26 of 334 resources are contract v2, covering every role an app, marketing, auth, booking, checkout and settings screen needs. The other 308 remain v1 (hex-styled, experimental). All 334 are free of Tessellate copy.*
+- [x] Automated per-resource checks. *Unit checks: token-only lint, props/interface parity, props-driven rendering, states. E2E checks: axe including AAA contrast, light and dark, 360/768/1440, overflow and keyboard focus. All 26 pass.*
 
 ### Phase 30 gate
 Every `verified` resource passes all checks and has a reviewer.
+
+**Status (2026-10-15): checks met; human review pending.**
+- No resource is `verified`. The owner's review is required before any can be.
+- The 26 contract-v2 resources pass every automated check.
+- With them, the physiotherapy brief at WCAG AAA composes with zero gaps in all three directions and exports a standalone build containing no Tessellate copy.
+- Fix along the way: the isolated preview app never scanned `resources/`, so every preview on the preview origin had been rendering almost unstyled.
 
 # Phase 31 — Multi-framework authoring and export
 

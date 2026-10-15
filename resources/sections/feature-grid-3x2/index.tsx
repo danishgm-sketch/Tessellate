@@ -1,57 +1,47 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 export type FeatureGrid3x2Variant = 'quiet' | 'expressive' | 'nocturne';
 
-export interface FeatureGrid3x2Props {
-  variant?: FeatureGrid3x2Variant;
-  headline?: string;
-  subheadline?: string;
-  features?: Array<{ title: string; desc: string }>;
+export interface FeatureItem {
+  title: string;
+  description: string;
 }
 
-export function FeatureGrid3x2({
-  variant = 'quiet',
-  headline = 'Engineered for durability across every layer of the interface.',
-  subheadline = 'Everything you need, in one place.',
-  features = [
-    { title: 'Zero Runtime Lock-In', desc: 'Exports directly to clean React and Tailwind CSS without hidden proprietary libraries.' },
-    { title: 'Deterministic DNA', desc: 'Enforces mathematical harmony across spacing, curvature, typography, and contrast.' },
-    { title: 'Sub-Millisecond Parsing', desc: 'Validates entire component trees in microseconds using local Zod schemas.' },
-    { title: 'Accessible by Default', desc: 'Meets WCAG 2.2 AA standards with full keyboard traversal and contrast tokens.' },
-    { title: 'Agent-Ready Registry', desc: 'Equipped with OpenAPI, llms.txt, and MCP servers for autonomous coding tools.' },
-    { title: 'Guest-First Storage', desc: 'Operates completely client-side with optional GitHub OAuth for cloud sync.' },
-  ],
-}: FeatureGrid3x2Props) {
-  let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
-  let card = 'bg-white border-neutral-200 shadow-2xs hover:border-neutral-400';
+export interface FeatureGrid3x2Props {
+  heading?: string;
+  description?: string;
+  /** Up to six features; extra items are ignored. */
+  items?: FeatureItem[];
+  variant?: FeatureGrid3x2Variant;
+}
 
-  if (variant === 'expressive') {
-    bg = 'bg-white text-neutral-950 border-[#D9D6CF]';
-    card = 'bg-blue-50/30 border-blue-100 shadow-sm hover:border-[#2547E8] hover:shadow-md';
-  } else if (variant === 'nocturne') {
-    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';
-    card = 'bg-[#151921] border-[#2E3440] hover:border-cyan-400';
-  }
+const SAMPLE: FeatureItem[] = [
+  { title: 'Book in seconds', description: 'Sample feature: replace with a real benefit for your customers.' },
+  { title: 'Reminders that work', description: 'Sample feature: replace with a real benefit for your customers.' },
+  { title: 'Everything in one place', description: 'Sample feature: replace with a real benefit for your customers.' },
+];
+
+/** Feature or benefit grid: one column on phones, two on tablets, three on desktop. */
+export function FeatureGrid3x2({ heading = 'Why people choose us', description, items, variant = 'quiet' }: FeatureGrid3x2Props) {
+  const id = useId();
+  const features = (items && items.length > 0 ? items : SAMPLE).slice(0, 6);
+  const card = variant === 'expressive' ? 'bg-surface-raised shadow-ui-2 border border-hairline' : variant === 'nocturne' ? 'bg-surface border-2 border-hairline-strong' : 'bg-surface-raised border border-hairline';
 
   return (
-    <section className={`relative w-full py-20 sm:py-28 px-6 sm:px-12 border-b transition-colors ${bg}`}>
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl sm:text-5xl font-bold tracking-tight mb-4">{headline}</h2>
-          <p className="text-base sm:text-lg opacity-75">{subheadline}</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((f, i) => (
-            <div key={f.title} className={`p-6 rounded-xl border transition-all ${card}`}>
-              <div className="w-8 h-8 rounded-lg bg-neutral-200 dark:bg-neutral-800 flex items-center justify-center font-mono text-xs font-bold mb-4">
-                0{i + 1}
-              </div>
-              <h3 className="font-semibold text-base mb-2">{f.title}</h3>
-              <p className="text-xs sm:text-sm opacity-75 leading-relaxed">{f.desc}</p>
-            </div>
+    <section className="w-full bg-canvas px-4 py-16 font-body text-ink sm:px-6" aria-labelledby={`${id}-heading`}>
+      <div className="mx-auto max-w-6xl">
+        <h2 id={`${id}-heading`} className="max-w-2xl font-heading text-3xl font-semibold">
+          {heading}
+        </h2>
+        {description && <p className="mt-3 max-w-2xl text-lg text-ink-secondary">{description}</p>}
+        <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {features.map((f) => (
+            <li key={f.title} className={`rounded-ui-md p-5 ${card}`}>
+              <h3 className="font-heading text-lg font-semibold">{f.title}</h3>
+              <p className="mt-2 text-base leading-relaxed text-ink-secondary">{f.description}</p>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

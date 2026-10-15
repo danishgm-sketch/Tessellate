@@ -1,52 +1,73 @@
-import React from 'react';
+import React, { useId, useState } from 'react';
 
 export type MinimalTopNavVariant = 'quiet' | 'expressive' | 'nocturne';
 
-export interface MinimalTopNavProps {
-  variant?: MinimalTopNavVariant;
-  brand?: React.ReactNode;
-  links?: Array<{ label: string; href: string }>;
-  actions?: React.ReactNode;
+export interface TopNavLink {
+  label: string;
+  href: string;
 }
 
-export function MinimalTopNav({
-  variant = 'quiet',
-  brand = 'Your product',
-  links = [
-    { label: 'Catalogue', href: '#' },
-    { label: 'DNA Lab', href: '#' },
-    { label: 'Docs', href: '#' },
-  ],
-  actions,
-}: MinimalTopNavProps) {
-  let header = 'bg-white/80 border-b border-neutral-200 text-neutral-900';
-  let linkStyle = 'text-neutral-600 hover:text-neutral-900';
-  if (variant === 'expressive') {
-    header = 'bg-white/90 border-b border-[#D9D6CF] text-neutral-900 shadow-2xs';
-    linkStyle = 'text-neutral-700 hover:text-[#2547E8] font-medium';
-  } else if (variant === 'nocturne') {
-    header = 'bg-[#0B0D10]/90 border-b border-[#2E3440] text-white';
-    linkStyle = 'text-neutral-400 hover:text-white';
-  }
+export interface MinimalTopNavProps {
+  /** Product name or logo text. */
+  brand?: string;
+  brandHref?: string;
+  /** Primary links. */
+  items?: TopNavLink[];
+  /** Call to action on the right, e.g. "Book now". */
+  actionLabel?: string;
+  actionHref?: string;
+  variant?: MinimalTopNavVariant;
+}
+
+const SAMPLE: TopNavLink[] = [
+  { label: 'Services', href: '#services' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'Contact', href: '#contact' },
+];
+
+/** Site header with brand, links and a call to action; collapses to a disclosure menu on small screens. */
+export function MinimalTopNav({ brand = 'Your product', brandHref = '/', items, actionLabel = 'Get started', actionHref = '#', variant = 'quiet' }: MinimalTopNavProps) {
+  const id = useId();
+  const [open, setOpen] = useState(false);
+  const links = items && items.length > 0 ? items.slice(0, 6) : SAMPLE;
+  const shell = variant === 'expressive' ? 'bg-surface-raised shadow-ui-1' : variant === 'nocturne' ? 'bg-surface border-b-2 border-hairline-strong' : 'bg-surface';
+  const linkClass = 'rounded-ui-sm px-3 py-2 text-sm font-medium text-ink-secondary hover:bg-surface-raised hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus';
 
   return (
-    <header className={`w-full backdrop-blur-md sticky top-0 z-40 transition-colors ${header}`}>
-      <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
-        <div className="flex items-center gap-8">
-          <div className="font-semibold tracking-tight text-sm flex items-center gap-2">
-            <span className="h-4 w-4 rounded bg-current" />
-            <span>{brand}</span>
-          </div>
-          <nav className="hidden md:flex items-center gap-6 text-xs">
+    <header className={`w-full border-b border-hairline font-body text-ink ${shell}`}>
+      <nav aria-label="Main" className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-3 sm:px-6">
+        <a href={brandHref} className="rounded-ui-sm font-heading text-lg font-semibold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus">
+          {brand}
+        </a>
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={`${id}-menu`}
+          onClick={() => setOpen((o) => !o)}
+          className="rounded-ui-sm border border-hairline-strong px-3 py-2 text-sm font-medium text-ink md:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus"
+        >
+          Menu
+        </button>
+        <div id={`${id}-menu`} className={`${open ? 'flex' : 'hidden'} w-full flex-col gap-1 pb-2 md:flex md:w-auto md:flex-row md:items-center md:pb-0`}>
+          <ul className="flex flex-col gap-1 md:flex-row">
             {links.map((l) => (
-              <a key={l.label} href={l.href} className={`transition-colors ${linkStyle}`}>
-                {l.label}
-              </a>
+              <li key={`${l.href}-${l.label}`}>
+                <a href={l.href} className={`block ${linkClass}`}>
+                  {l.label}
+                </a>
+              </li>
             ))}
-          </nav>
+          </ul>
+          {actionLabel && (
+            <a
+              href={actionHref}
+              className="mt-1 inline-flex justify-center rounded-ui-sm bg-accent px-4 py-2 text-sm font-semibold text-on-accent hover:bg-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus md:ml-2 md:mt-0"
+            >
+              {actionLabel}
+            </a>
+          )}
         </div>
-        {actions && <div className="flex items-center gap-3">{actions}</div>}
-      </div>
+      </nav>
     </header>
   );
 }

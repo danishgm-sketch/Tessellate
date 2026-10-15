@@ -2,15 +2,15 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "entity-overview",
   "type": "registry:block",
-  "title": "Entity Overview",
-  "description": "Summary card with high-level description, primary KPIs, and operational tags.",
+  "title": "Record Details",
+  "description": "All details of one record as a labelled description list; long text fields span the full width.",
   "dependencies": [],
   "devDependencies": [],
   "registryDependencies": [],
   "files": [
     {
       "path": "index.tsx",
-      "content": "import React from 'react';\n\nexport type EntityOverviewVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface EntityOverviewProps {\n  variant?: EntityOverviewVariant;\n}\n\nexport function EntityOverview({ variant = 'quiet' }: EntityOverviewProps) {\n  let bg = 'bg-white text-neutral-900 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-white border-[#2E3440]';\n  }\n\n  return (\n    <div className={`w-full p-6 rounded-xl border transition-colors ${bg}`}>\n      <h3 className=\"text-sm font-semibold mb-2\">Resource Overview</h3>\n      <p className=\"text-xs opacity-75 leading-relaxed mb-4\">\n        A canonical component validated against Zod schema version 1.0.0. Features complete accessibility verification and zero external CSS imports.\n      </p>\n      <div className=\"flex flex-wrap gap-2 text-[11px] font-mono\">\n        <span className=\"px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800\">Framework: React 19</span>\n        <span className=\"px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800\">Styling: Tailwind 4</span>\n        <span className=\"px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800\">Quality: 98/100</span>\n      </div>\n    </div>\n  );\n}\n",
+      "content": "import React, { useId } from 'react';\n\nexport type EntityOverviewVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface EntityOverviewProps {\n  heading?: string;\n  entity?: string;\n  /** Fields in display order. Defaults to the record's keys. */\n  fields?: string[];\n  record?: Record<string, string | number | boolean | null>;\n  sampleData?: boolean;\n  loading?: boolean;\n  variant?: EntityOverviewVariant;\n}\n\nconst SAMPLE: Record<string, string | number | boolean | null> = {\n  name: 'Amira Khan',\n  status: 'Active',\n  created: '2026-01-12',\n  notes: 'Sample record: replace with real data.',\n};\n\n/** All details of one record as a labelled description list; long text fields span the full width. */\nexport function EntityOverview({ heading = 'Details', entity = 'record', fields, record, sampleData, loading = false, variant = 'quiet' }: EntityOverviewProps) {\n  const id = useId();\n  const data = record ?? SAMPLE;\n  const keys = fields && fields.length > 0 ? fields : Object.keys(data);\n  const shell = variant === 'expressive' ? 'bg-surface-raised shadow-ui-2 border border-hairline' : variant === 'nocturne' ? 'bg-surface border-2 border-hairline-strong' : 'bg-surface-raised border border-hairline';\n  const isLong = (k: string) => /(note|description|summary|reason|address|message)/i.test(k) || String(data[k] ?? '').length > 60;\n\n  return (\n    <section className={`w-full rounded-ui-lg p-4 font-body text-ink sm:p-5 ${shell}`} aria-labelledby={`${id}-heading`} aria-busy={loading}>\n      <h2 id={`${id}-heading`} className=\"font-heading text-lg font-semibold\">\n        {heading}\n      </h2>\n      <p className=\"mt-0.5 text-sm text-ink-secondary\">\n        {entity.charAt(0).toUpperCase() + entity.slice(1)}\n        {(sampleData ?? !record) ? ' · sample data' : ''}\n      </p>\n      {loading ? (\n        <p role=\"status\" className=\"mt-4 text-sm text-ink-secondary\">\n          Loading details…\n        </p>\n      ) : (\n        <dl className=\"mt-4 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2\">\n          {keys.map((k) => (\n            <div key={k} className={isLong(k) ? 'sm:col-span-2' : ''}>\n              <dt className=\"text-sm text-ink-secondary\">{k.charAt(0).toUpperCase() + k.slice(1)}</dt>\n              <dd className=\"mt-0.5 whitespace-pre-line text-base text-ink\">{data[k] == null || data[k] === '' ? '—' : String(data[k])}</dd>\n            </div>\n          ))}\n        </dl>\n      )}\n    </section>\n  );\n}\n",
       "type": "registry:block",
       "target": "components/tessellate/entity-overview/index.tsx"
     }
@@ -22,7 +22,7 @@
   ],
   "meta": {
     "tessellateId": "res_blk_entity_overview",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "license": "MIT",
     "variants": [
       "Quiet",

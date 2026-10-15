@@ -2,10 +2,10 @@
   "schemaVersion": "1.0.0",
   "id": "res_blk_entity_profile_header",
   "slug": "entity-profile-header",
-  "name": "Entity Profile Header",
-  "version": "1.0.0",
+  "name": "Record Header",
+  "version": "1.1.0",
   "status": "experimental",
-  "description": "Hero card for entity details with avatar, title, status badge, action bar, and key stats.",
+  "description": "Header for a single record: initials avatar, title, status, key facts and a primary action.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -86,22 +86,31 @@
   },
   "preview": {
     "component": "EntityProfileHeaderPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "entity": "Patient",
+      "fields": [
+        "name",
+        "status",
+        "date of birth",
+        "clinician"
+      ],
+      "record": {
+        "name": "Amira Khan",
+        "status": "Active",
+        "date of birth": "1958-04-02",
+        "clinician": "Dr Osei"
+      },
+      "sampleData": true,
+      "actionLabel": "Book appointment"
+    },
     "viewport": 1440
   },
-  "slots": [
-    {
-      "id": "children",
-      "name": "Block Body",
-      "type": "component",
-      "required": false
-    }
-  ],
+  "slots": [],
   "variants": [
     {
       "id": "quiet",
       "name": "Quiet",
-      "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+      "description": "Flat surface with a hairline border.",
       "props": {
         "variant": "quiet"
       }
@@ -109,7 +118,7 @@
     {
       "id": "expressive",
       "name": "Expressive",
-      "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+      "description": "Raised surface with a soft shadow.",
       "props": {
         "variant": "expressive"
       }
@@ -117,7 +126,7 @@
     {
       "id": "nocturne",
       "name": "Nocturne",
-      "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+      "description": "Strong outline for high-contrast layouts.",
       "props": {
         "variant": "nocturne"
       }
@@ -130,74 +139,33 @@
     "header"
   ],
   "intent": {
-    "summary": "Hero card for entity details with avatar, title, status badge, action bar, and key stats.",
-    "idealFor": [
-      "Master detail entity pages and user profile dashboards"
-    ],
-    "avoidFor": [
-      "Small sidebar widgets"
-    ],
-    "jobs": [
-      "Anchor detail screens with avatar, name, and primary actions"
-    ],
-    "contentRequirements": [
-      "High data density, keyboard accessibility, semantic tokens"
-    ],
-    "notes": [
-      "Responsive compression down to 360px with reduced-motion support"
-    ]
+    "summary": "Header for a single record: initials avatar, title, status, key facts and a primary action.",
+    "idealFor": [],
+    "avoidFor": [],
+    "jobs": [],
+    "contentRequirements": []
   },
   "visualDNA": {
-    "professionalism": 90,
-    "playfulness": 20,
-    "luxury": 45,
-    "warmth": 30,
-    "technicality": 80,
-    "editorial": 60,
-    "futurism": 40,
-    "visualAmbition": 65,
-    "structuralCreativity": 45,
-    "density": 70,
-    "whitespace": 45,
-    "contrast": 80,
-    "colourfulness": 30,
-    "curvature": 35,
-    "depth": 35,
-    "motion": 25,
-    "motionPlayfulness": 15,
-    "typographicExpression": 50,
-    "imageryIntensity": 10,
-    "videoIntensity": 0,
-    "threeDIntensity": 0,
-    "dataDensity": 75,
-    "interactionDensity": 75,
-    "asymmetry": 15,
-    "conversionIntensity": 45,
-    "trust": 95,
-    "accessibilityPriority": 95,
-    "performancePriority": 95,
-    "visualMode": "adaptive",
-    "geometryFamily": "rounded",
-    "primaryStack": "react-tailwind"
+    "visualAmbition": 30,
+    "density": 50,
+    "curvature": 40
   },
   "interactionDNA": {
-    "interactionDensity": 70,
-    "motionIntensity": 20,
-    "keyboardComplexity": "medium",
+    "interactionDensity": 25,
+    "motionIntensity": 5,
+    "keyboardComplexity": "low",
     "hoverDependency": "none",
     "directManipulation": false
   },
   "layoutDNA": {
-    "density": 70,
-    "whitespace": 40,
-    "asymmetry": 15,
+    "density": 50,
+    "whitespace": 50,
+    "asymmetry": 0,
     "preferredWidths": [
       "full"
     ],
     "layoutFamilies": [
-      "block",
-      "panel",
-      "surface"
+      "standard"
     ]
   },
   "responsive": {
@@ -206,15 +174,18 @@
       768,
       1440
     ],
-    "defaultStrategy": "compress"
+    "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AA",
-    "keyboardVerified": false,
-    "screenReaderSemantics": false,
-    "reducedMotionVerified": false,
-    "contrastTokenCompatible": false,
-    "focusVisible": false
+    "levelTarget": "AAA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true,
+    "knownLimitations": [
+      "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+    ]
   },
   "performance": {
     "jsCost": "tiny",
@@ -229,16 +200,91 @@
   "compatibility": {},
   "relationships": [],
   "quality": {
-    "overall": 96,
-    "accessibility": 98,
-    "responsive": 95,
-    "performance": 100,
-    "codeQuality": 96,
-    "composability": 96,
-    "visualCraft": 95,
+    "overall": 80,
+    "accessibility": 85,
+    "responsive": 85,
+    "performance": 90,
+    "codeQuality": 85,
+    "composability": 85,
+    "visualCraft": 75,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 80
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
-  "updatedAt": "2026-10-10T12:00:00.000Z"
+  "updatedAt": "2026-10-15T00:00:00.000Z",
+  "contractVersion": 2,
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "description": "Record title (defaults to the first field)."
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Line under the title."
+    },
+    {
+      "name": "entity",
+      "type": "string",
+      "required": false,
+      "description": "Record type.",
+      "content": "entity"
+    },
+    {
+      "name": "fields",
+      "type": "string[]",
+      "required": false,
+      "description": "Fields in display order.",
+      "content": "fields"
+    },
+    {
+      "name": "record",
+      "type": "object",
+      "required": false,
+      "description": "The record.",
+      "content": "record"
+    },
+    {
+      "name": "sampleData",
+      "type": "boolean",
+      "required": false,
+      "description": "Marks the record as sample.",
+      "content": "sampleData"
+    },
+    {
+      "name": "actionLabel",
+      "type": "string",
+      "required": false,
+      "description": "Primary action label."
+    },
+    {
+      "name": "onAction",
+      "type": "callback",
+      "required": false,
+      "description": "Primary action handler."
+    },
+    {
+      "name": "variant",
+      "type": "enum",
+      "required": false,
+      "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+      "enumValues": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ]
+    }
+  ],
+  "states": {
+    "loading": false,
+    "empty": false,
+    "error": false
+  },
+  "stylingContract": {
+    "tokenOnly": true,
+    "reducedMotion": "respected"
+  }
 }

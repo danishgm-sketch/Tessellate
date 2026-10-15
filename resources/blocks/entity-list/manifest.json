@@ -2,10 +2,10 @@
   "schemaVersion": "1.0.0",
   "id": "res_blk_entity_list",
   "slug": "entity-list",
-  "name": "Entity List",
-  "version": "1.0.0",
+  "name": "Record List",
+  "version": "1.1.0",
   "status": "experimental",
-  "description": "Clean vertical item list with avatar/status, main description, and quick menu trigger.",
+  "description": "Compact list of records with title, subtitle and status; good for side panels and small screens.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -87,22 +87,35 @@
   },
   "preview": {
     "component": "EntityListPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "entity": "Patient",
+      "columns": [
+        "name",
+        "last visit",
+        "status"
+      ],
+      "rows": [
+        {
+          "name": "Amira Khan",
+          "last visit": "12 Jan",
+          "status": "Active"
+        },
+        {
+          "name": "Ben Carter",
+          "last visit": "9 Jan",
+          "status": "Discharged"
+        }
+      ],
+      "sampleData": true
+    },
     "viewport": 1440
   },
-  "slots": [
-    {
-      "id": "children",
-      "name": "Block Body",
-      "type": "component",
-      "required": false
-    }
-  ],
+  "slots": [],
   "variants": [
     {
       "id": "quiet",
       "name": "Quiet",
-      "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+      "description": "Flat surface with a hairline border.",
       "props": {
         "variant": "quiet"
       }
@@ -110,7 +123,7 @@
     {
       "id": "expressive",
       "name": "Expressive",
-      "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+      "description": "Raised surface with a soft shadow.",
       "props": {
         "variant": "expressive"
       }
@@ -118,7 +131,7 @@
     {
       "id": "nocturne",
       "name": "Nocturne",
-      "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+      "description": "Strong outline for high-contrast layouts.",
       "props": {
         "variant": "nocturne"
       }
@@ -131,74 +144,34 @@
     "directory"
   ],
   "intent": {
-    "summary": "Clean vertical item list with avatar/status, main description, and quick menu trigger.",
-    "idealFor": [
-      "Displaying user or team listings cleanly"
-    ],
-    "avoidFor": [
-      "Complex relational databases requiring 10 columns"
-    ],
-    "jobs": [
-      "Render vertical entity cards with avatar, title, and action menu"
-    ],
-    "contentRequirements": [
-      "High data density, keyboard accessibility, semantic tokens"
-    ],
-    "notes": [
-      "Responsive compression down to 360px with reduced-motion support"
-    ]
+    "summary": "Compact list of records with title, subtitle and status; good for side panels and small screens.",
+    "idealFor": [],
+    "avoidFor": [],
+    "jobs": [],
+    "contentRequirements": []
   },
   "visualDNA": {
-    "professionalism": 90,
-    "playfulness": 20,
-    "luxury": 45,
-    "warmth": 30,
-    "technicality": 80,
-    "editorial": 60,
-    "futurism": 40,
-    "visualAmbition": 65,
-    "structuralCreativity": 45,
-    "density": 70,
-    "whitespace": 45,
-    "contrast": 80,
-    "colourfulness": 30,
-    "curvature": 35,
-    "depth": 35,
-    "motion": 25,
-    "motionPlayfulness": 15,
-    "typographicExpression": 50,
-    "imageryIntensity": 10,
-    "videoIntensity": 0,
-    "threeDIntensity": 0,
-    "dataDensity": 75,
-    "interactionDensity": 75,
-    "asymmetry": 15,
-    "conversionIntensity": 45,
-    "trust": 95,
-    "accessibilityPriority": 95,
-    "performancePriority": 95,
-    "visualMode": "adaptive",
-    "geometryFamily": "rounded",
-    "primaryStack": "react-tailwind"
+    "visualAmbition": 30,
+    "density": 60,
+    "curvature": 40
   },
   "interactionDNA": {
-    "interactionDensity": 70,
-    "motionIntensity": 20,
-    "keyboardComplexity": "medium",
+    "interactionDensity": 25,
+    "motionIntensity": 5,
+    "keyboardComplexity": "low",
     "hoverDependency": "none",
     "directManipulation": false
   },
   "layoutDNA": {
-    "density": 70,
+    "density": 60,
     "whitespace": 40,
-    "asymmetry": 15,
+    "asymmetry": 0,
     "preferredWidths": [
-      "full"
+      "narrow",
+      "content"
     ],
     "layoutFamilies": [
-      "block",
-      "panel",
-      "surface"
+      "standard"
     ]
   },
   "responsive": {
@@ -207,15 +180,18 @@
       768,
       1440
     ],
-    "defaultStrategy": "compress"
+    "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AA",
-    "keyboardVerified": false,
-    "screenReaderSemantics": false,
-    "reducedMotionVerified": false,
-    "contrastTokenCompatible": false,
-    "focusVisible": false
+    "levelTarget": "AAA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true,
+    "knownLimitations": [
+      "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+    ]
   },
   "performance": {
     "jsCost": "tiny",
@@ -230,16 +206,99 @@
   "compatibility": {},
   "relationships": [],
   "quality": {
-    "overall": 96,
-    "accessibility": 98,
-    "responsive": 95,
-    "performance": 100,
-    "codeQuality": 96,
-    "composability": 96,
-    "visualCraft": 95,
+    "overall": 80,
+    "accessibility": 85,
+    "responsive": 85,
+    "performance": 90,
+    "codeQuality": 85,
+    "composability": 85,
+    "visualCraft": 75,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 80
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
-  "updatedAt": "2026-10-10T12:00:00.000Z"
+  "updatedAt": "2026-10-15T00:00:00.000Z",
+  "contractVersion": 2,
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "description": "List heading.",
+      "content": "heading"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Line under the heading.",
+      "content": "description"
+    },
+    {
+      "name": "entity",
+      "type": "string",
+      "required": false,
+      "description": "Record type.",
+      "content": "entity"
+    },
+    {
+      "name": "columns",
+      "type": "string[]",
+      "required": false,
+      "description": "Title, subtitle and status fields.",
+      "content": "columns"
+    },
+    {
+      "name": "rows",
+      "type": "object[]",
+      "required": false,
+      "description": "Records.",
+      "content": "rows"
+    },
+    {
+      "name": "sampleData",
+      "type": "boolean",
+      "required": false,
+      "description": "Marks rows as sample.",
+      "content": "sampleData"
+    },
+    {
+      "name": "hrefFor",
+      "type": "callback",
+      "required": false,
+      "description": "Builds a link for each record."
+    },
+    {
+      "name": "loading",
+      "type": "boolean",
+      "required": false,
+      "description": "Loading state."
+    },
+    {
+      "name": "emptyMessage",
+      "type": "string",
+      "required": false,
+      "description": "Shown when there are no records."
+    },
+    {
+      "name": "variant",
+      "type": "enum",
+      "required": false,
+      "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+      "enumValues": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ]
+    }
+  ],
+  "states": {
+    "loading": true,
+    "empty": true,
+    "error": false
+  },
+  "stylingContract": {
+    "tokenOnly": true,
+    "reducedMotion": "respected"
+  }
 }

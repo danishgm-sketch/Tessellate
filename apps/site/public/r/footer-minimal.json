@@ -2,15 +2,15 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "footer-minimal",
   "type": "registry:block",
-  "title": "Footer Minimal",
-  "description": "Single-line copyright, status indicator, and legal links with minimal footprint.",
+  "title": "Footer",
+  "description": "Compact footer with brand, links, legal links and copyright.",
   "dependencies": [],
   "devDependencies": [],
   "registryDependencies": [],
   "files": [
     {
       "path": "index.tsx",
-      "content": "import React from 'react';\n\nexport type FooterMinimalVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FooterMinimalProps {\n  brand?: string;\n  variant?: FooterMinimalVariant;\n}\n\nexport function FooterMinimal({ variant = 'quiet', brand = 'Your product' }: FooterMinimalProps) {\n  let bg = 'bg-[#FAF8F5] text-neutral-600 border-neutral-200';\n\n  if (variant === 'expressive') {\n    bg = 'bg-white text-neutral-700 border-[#D9D6CF]';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-neutral-400 border-[#2E3440]';\n  }\n\n  return (\n    <footer className={`w-full py-8 px-6 sm:px-12 border-t text-xs transition-colors ${bg}`}>\n      <div className=\"max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4\">\n        <div className=\"flex items-center gap-2\">\n          <span className=\"font-semibold tracking-tight text-neutral-900 dark:text-white\">{brand}</span>\n          <span>© {new Date().getFullYear()} {brand}</span>\n        </div>\n        <div className=\"flex items-center gap-6\">\n          <a href=\"#\" className=\"hover:underline\">Privacy</a>\n          <a href=\"#\" className=\"hover:underline\">Terms</a>\n          <a href=\"#\" className=\"hover:underline\">Status: Operational</a>\n        </div>\n      </div>\n    </footer>\n  );\n}\n",
+      "content": "import React from 'react';\n\nexport type FooterMinimalVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FooterLink {\n  label: string;\n  href: string;\n}\n\nexport interface FooterMinimalProps {\n  brand?: string;\n  items?: FooterLink[];\n  /** Copyright line; defaults to \"© <year> <brand>\". */\n  copyright?: string;\n  /** Legal links such as Privacy and Terms. */\n  legalItems?: FooterLink[];\n  variant?: FooterMinimalVariant;\n}\n\n/** Compact footer: brand, links, legal links and copyright. */\nexport function FooterMinimal({\n  brand = 'Your product',\n  items = [],\n  copyright,\n  legalItems = [\n    { label: 'Privacy', href: '/privacy' },\n    { label: 'Terms', href: '/terms' },\n  ],\n  variant = 'quiet',\n}: FooterMinimalProps) {\n  const shell = variant === 'expressive' ? 'bg-surface-raised' : variant === 'nocturne' ? 'bg-surface border-t-2 border-hairline-strong' : 'bg-surface';\n  const link = 'rounded-ui-xs text-sm text-ink-secondary underline-offset-2 hover:text-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus';\n\n  return (\n    <footer className={`w-full border-t border-hairline px-4 py-8 font-body text-ink sm:px-6 ${shell}`}>\n      <div className=\"mx-auto flex max-w-6xl flex-col gap-6 md:flex-row md:items-start md:justify-between\">\n        <p className=\"font-heading text-base font-semibold\">{brand}</p>\n        {items.length > 0 && (\n          <nav aria-label=\"Footer\">\n            <ul className=\"flex flex-wrap gap-x-5 gap-y-2\">\n              {items.slice(0, 8).map((l) => (\n                <li key={`${l.href}-${l.label}`}>\n                  <a href={l.href} className={link}>\n                    {l.label}\n                  </a>\n                </li>\n              ))}\n            </ul>\n          </nav>\n        )}\n      </div>\n      <div className=\"mx-auto mt-6 flex max-w-6xl flex-wrap items-center justify-between gap-3 border-t border-hairline pt-4 text-sm text-ink-secondary\">\n        <p>{copyright ?? `© ${new Date().getFullYear()} ${brand}`}</p>\n        <ul className=\"flex gap-4\">\n          {legalItems.map((l) => (\n            <li key={l.href}>\n              <a href={l.href} className={link}>\n                {l.label}\n              </a>\n            </li>\n          ))}\n        </ul>\n      </div>\n    </footer>\n  );\n}\n",
       "type": "registry:block",
       "target": "components/tessellate/footer-minimal/index.tsx"
     }
@@ -22,7 +22,7 @@
   ],
   "meta": {
     "tessellateId": "res_sec_footer_minimal",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "license": "MIT",
     "variants": [
       "Quiet",

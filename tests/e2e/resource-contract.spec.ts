@@ -31,7 +31,7 @@ test.describe('Resource contract v2 — accessibility and responsiveness', () =>
         for (const width of [360, 768, 1440]) {
           await page.setViewportSize({ width, height: 900 });
           await page.goto(`${PREVIEW}/?resource=${slug}&floor=AAA&theme=${theme}`);
-          await expect(page.locator('#root section, #root form').first()).toBeVisible({ timeout: 15000 });
+          await expect(page.locator('#root .p-4 > *').first()).toBeVisible({ timeout: 15000 });
 
           const results = await new AxeBuilder({ page })
             .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'wcag2aaa'])
@@ -47,7 +47,7 @@ test.describe('Resource contract v2 — accessibility and responsiveness', () =>
       // Keyboard: the first focusable control inside the resource gets a visible focus indicator.
       await page.setViewportSize({ width: 1440, height: 900 });
       await page.goto(`${PREVIEW}/?resource=${slug}&floor=AAA`);
-      await expect(page.locator('#root .p-4 section').first()).toBeVisible({ timeout: 15000 });
+      await expect(page.locator('#root .p-4 > *').first()).toBeVisible({ timeout: 15000 });
       const focusable = page.locator('#root .p-4 :is(a[href], button, input, select, textarea, [tabindex="0"])');
       if ((await focusable.count()) === 0) return; // display-only resource (e.g. order summary)
       const first = focusable.first();

@@ -109,10 +109,10 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         style={localStyle}
-        className={`rounded-xl border border-dashed border-amber-400 bg-amber-50 dark:border-amber-600/70 dark:bg-amber-950/30 p-4 text-sm text-amber-950 dark:text-amber-100 transition-all ${selectionClasses}`}
+        className={`rounded-ui-md border-2 border-dashed border-warning bg-surface p-4 text-sm text-ink transition-all ${selectionClasses}`}
       >
-        <p className="font-semibold">Gap: {diag?.label ?? diag?.role ?? node.semanticRole}</p>
-        <p className="mt-1 text-xs text-amber-900 dark:text-amber-200">
+        <p className="font-semibold text-warning">Gap: {diag?.label ?? diag?.role ?? node.semanticRole}</p>
+        <p className="mt-1 text-xs text-ink-secondary">
           {diag?.reason ?? 'No resource in the library fills this section yet.'}
         </p>
       </div>

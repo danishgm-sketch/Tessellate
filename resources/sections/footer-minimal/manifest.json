@@ -2,10 +2,10 @@
   "schemaVersion": "1.0.0",
   "id": "res_sec_footer_minimal",
   "slug": "footer-minimal",
-  "name": "Footer Minimal",
-  "version": "1.0.0",
+  "name": "Footer",
+  "version": "1.1.0",
   "status": "experimental",
-  "description": "Single-line copyright, status indicator, and legal links with minimal footprint.",
+  "description": "Compact footer with brand, links, legal links and copyright.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -86,22 +86,27 @@
   },
   "preview": {
     "component": "FooterMinimalPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "brand": "Northside Physio",
+      "items": [
+        {
+          "label": "Treatments",
+          "href": "#"
+        },
+        {
+          "label": "Book",
+          "href": "#"
+        }
+      ]
+    },
     "viewport": 1440
   },
-  "slots": [
-    {
-      "id": "children",
-      "name": "Section Content",
-      "type": "component",
-      "required": false
-    }
-  ],
+  "slots": [],
   "variants": [
     {
       "id": "quiet",
       "name": "Quiet",
-      "description": "Monochrome, restrained, minimal contrast for understated editorial presence.",
+      "description": "Flat surface with a hairline border.",
       "props": {
         "variant": "quiet"
       }
@@ -109,7 +114,7 @@
     {
       "id": "expressive",
       "name": "Expressive",
-      "description": "Vibrant cobalt accents, elevated cards, and tactile hover states.",
+      "description": "Raised surface with a soft shadow.",
       "props": {
         "variant": "expressive"
       }
@@ -117,7 +122,7 @@
     {
       "id": "nocturne",
       "name": "Nocturne",
-      "description": "Obsidian dark canvas with crisp hairline borders and radiant illumination.",
+      "description": "Strong outline for high-contrast layouts.",
       "props": {
         "variant": "nocturne"
       }
@@ -130,74 +135,33 @@
     "minimal"
   ],
   "intent": {
-    "summary": "Single-line copyright, status indicator, and legal links with minimal footprint.",
-    "idealFor": [
-      "Focused tools and single-page apps"
-    ],
-    "avoidFor": [
-      "Massive sitemap directories"
-    ],
-    "jobs": [
-      "Provide subtle copyright and operational status indicator"
-    ],
-    "contentRequirements": [
-      "Clear hierarchy, responsive layout, accessible typography"
-    ],
-    "notes": [
-      "Responsive stacking down to 360px with reduced-motion support"
-    ]
+    "summary": "Compact footer with brand, links, legal links and copyright.",
+    "idealFor": [],
+    "avoidFor": [],
+    "jobs": [],
+    "contentRequirements": []
   },
   "visualDNA": {
-    "professionalism": 85,
-    "playfulness": 30,
-    "luxury": 50,
-    "warmth": 40,
-    "technicality": 70,
-    "editorial": 75,
-    "futurism": 45,
-    "visualAmbition": 70,
-    "structuralCreativity": 55,
-    "density": 50,
-    "whitespace": 65,
-    "contrast": 80,
-    "colourfulness": 40,
-    "curvature": 35,
-    "depth": 40,
-    "motion": 30,
-    "motionPlayfulness": 20,
-    "typographicExpression": 60,
-    "imageryIntensity": 25,
-    "videoIntensity": 0,
-    "threeDIntensity": 0,
-    "dataDensity": 50,
-    "interactionDensity": 50,
-    "asymmetry": 25,
-    "conversionIntensity": 75,
-    "trust": 90,
-    "accessibilityPriority": 95,
-    "performancePriority": 95,
-    "visualMode": "adaptive",
-    "geometryFamily": "rounded",
-    "primaryStack": "react-tailwind"
+    "visualAmbition": 30,
+    "density": 40,
+    "curvature": 40
   },
   "interactionDNA": {
-    "interactionDensity": 45,
-    "motionIntensity": 25,
+    "interactionDensity": 25,
+    "motionIntensity": 5,
     "keyboardComplexity": "low",
     "hoverDependency": "none",
     "directManipulation": false
   },
   "layoutDNA": {
-    "density": 50,
-    "whitespace": 65,
-    "asymmetry": 25,
+    "density": 40,
+    "whitespace": 60,
+    "asymmetry": 0,
     "preferredWidths": [
       "full"
     ],
     "layoutFamilies": [
-      "marketing",
-      "landing",
-      "section"
+      "standard"
     ]
   },
   "responsive": {
@@ -209,12 +173,15 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AA",
-    "keyboardVerified": false,
-    "screenReaderSemantics": false,
-    "reducedMotionVerified": false,
-    "contrastTokenCompatible": false,
-    "focusVisible": false
+    "levelTarget": "AAA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true,
+    "knownLimitations": [
+      "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+    ]
   },
   "performance": {
     "jsCost": "tiny",
@@ -229,16 +196,66 @@
   "compatibility": {},
   "relationships": [],
   "quality": {
-    "overall": 96,
-    "accessibility": 98,
-    "responsive": 95,
-    "performance": 100,
-    "codeQuality": 96,
-    "composability": 96,
-    "visualCraft": 95,
+    "overall": 80,
+    "accessibility": 85,
+    "responsive": 85,
+    "performance": 90,
+    "codeQuality": 85,
+    "composability": 85,
+    "visualCraft": 75,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 80
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
-  "updatedAt": "2026-10-10T12:00:00.000Z"
+  "updatedAt": "2026-10-15T00:00:00.000Z",
+  "contractVersion": 2,
+  "props": [
+    {
+      "name": "brand",
+      "type": "string",
+      "required": false,
+      "description": "Product name.",
+      "content": "brand"
+    },
+    {
+      "name": "items",
+      "type": "object[]",
+      "required": false,
+      "description": "Links: [{ label, href }].",
+      "content": "items"
+    },
+    {
+      "name": "copyright",
+      "type": "string",
+      "required": false,
+      "description": "Copyright line.",
+      "content": "copyright"
+    },
+    {
+      "name": "legalItems",
+      "type": "object[]",
+      "required": false,
+      "description": "Legal links."
+    },
+    {
+      "name": "variant",
+      "type": "enum",
+      "required": false,
+      "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+      "enumValues": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ]
+    }
+  ],
+  "states": {
+    "loading": false,
+    "empty": false,
+    "error": false
+  },
+  "stylingContract": {
+    "tokenOnly": true,
+    "reducedMotion": "respected"
+  }
 }

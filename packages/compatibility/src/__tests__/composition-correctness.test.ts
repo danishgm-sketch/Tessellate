@@ -108,8 +108,13 @@ describe('Phase 29 — composition correctness', () => {
     const aaOnly = (slug: string) => bySlug.get(slug)?.accessibility.levelTarget !== 'AAA';
     const placed = r.directionA.manifest.screens.flatMap((s) => sections(s.rootNode)).flatMap((n) => (n.resourceRef ? [n.resourceRef.slug] : []));
     expect(placed.filter(aaOnly)).toEqual([]);
-    const tableGap = r.directionA.diagnostics?.find((d) => d.role === 'data-table');
-    expect(tableGap?.reason).toMatch(/WCAG AAA requirement.*Lower the requirement in Review/);
+    // With only AA-level resources available, the AAA requirement leaves an explicit, actionable gap.
+    const aaOnlyCatalog = catalog.filter((res) => res.accessibility.levelTarget !== 'AAA');
+    const limited = composeFromInterpretation(physioInterpretationFixture, { catalogResources: aaOnlyCatalog, projectIdBase: 'p' });
+    const constraintGap = limited.directionA.diagnostics?.find((d) => /WCAG AAA/.test(d.reason));
+    expect(constraintGap?.reason).toMatch(/WCAG AAA requirement.*Lower the requirement in Review/);
+    // Contract-v2 resources verified for AAA do fill their roles in an AAA project.
+    expect(placed).toContain('advanced-data-table');
   });
 
   it('directions differ: expressive adds optional sections the conservative direction leaves out', () => {

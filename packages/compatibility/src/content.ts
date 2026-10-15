@@ -54,23 +54,30 @@ export function buildContentProps(role: string, ctx: ContentContext): Record<str
   switch (role) {
     case 'navigation':
     case 'app-navigation':
-    case 'settings-nav':
       return { brand: productName, productName, items: navItems };
+    case 'settings-nav':
+      return {}; // settings sections are not the app's screens; the resource's defaults apply
     case 'footer':
       return { brand: productName, productName, items: navItems, copyright: `© ${new Date().getUTCFullYear()} ${productName}` };
-    case 'hero':
+    case 'hero': {
+      const jobs = productModel.jobsToBeDone.slice(0, 3).map((j) => j.charAt(0).toLowerCase() + j.slice(1));
       return {
         productName,
-        heading: productName,
-        description: productModel.primaryObjective || `${productName} for ${audience}.`,
+        eyebrow: productName,
+        heading: productModel.primaryObjective || `${productName} for ${audience}.`,
+        description: jobs.length ? `${titleCase(jobs.join(', ').replace(/, ([^,]*)$/, ' and $1'))}, all in one place.` : `${productName} for ${audience}.`,
         primaryActionLabel: 'Get started',
         secondaryActionLabel: 'Learn more',
       };
+    }
     case 'value-proposition':
     case 'feature-grid':
       return {
         heading: `Why ${productName}`,
-        items: productModel.entities.slice(0, 6).map((e) => ({ title: titleCase(e.name), description: e.description })),
+        items: productModel.jobsToBeDone.slice(0, 6).map((job) => ({
+          title: titleCase(job),
+          description: `Sample text: explain how ${productName} helps with this.`,
+        })),
       };
     case 'conversion-cta':
       return { heading: `Get started with ${productName}`, primaryActionLabel: 'Get started' };
@@ -95,8 +102,9 @@ export function buildContentProps(role: string, ctx: ContentContext): Record<str
     case 'entity-header':
     case 'main-content-pane':
     case 'metadata-sidebar': {
+      // The record's own title comes from its first field, not from the screen name.
       const fields = entity?.fields ?? ['name', 'status', 'created'];
-      return { ...base, entity: entity?.name, fields, record: sampleRecords(fields, 1)[0], sampleData: true };
+      return { entity: entity?.name, fields, record: sampleRecords(fields, 1)[0], sampleData: true };
     }
     case 'auth-card':
       return { productName, description: `Sign in to ${productName}.` };

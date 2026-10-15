@@ -2,10 +2,10 @@
   "schemaVersion": "1.0.0",
   "id": "res_sec_cta_minimal",
   "slug": "cta-minimal",
-  "name": "CTA Minimal",
-  "version": "1.0.0",
+  "name": "Call to Action",
+  "version": "1.1.0",
   "status": "experimental",
-  "description": "Focused single-line headline with primary action button and supporting footnote.",
+  "description": "Closing call to action: one heading, one line and up to two buttons.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -86,22 +86,18 @@
   },
   "preview": {
     "component": "CtaMinimalPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "heading": "Ready to book your first session?",
+      "primaryActionLabel": "Book now"
+    },
     "viewport": 1440
   },
-  "slots": [
-    {
-      "id": "children",
-      "name": "Section Content",
-      "type": "component",
-      "required": false
-    }
-  ],
+  "slots": [],
   "variants": [
     {
       "id": "quiet",
       "name": "Quiet",
-      "description": "Monochrome, restrained, minimal contrast for understated editorial presence.",
+      "description": "Flat surface with a hairline border.",
       "props": {
         "variant": "quiet"
       }
@@ -109,7 +105,7 @@
     {
       "id": "expressive",
       "name": "Expressive",
-      "description": "Vibrant cobalt accents, elevated cards, and tactile hover states.",
+      "description": "Raised surface with a soft shadow.",
       "props": {
         "variant": "expressive"
       }
@@ -117,7 +113,7 @@
     {
       "id": "nocturne",
       "name": "Nocturne",
-      "description": "Obsidian dark canvas with crisp hairline borders and radiant illumination.",
+      "description": "Strong outline for high-contrast layouts.",
       "props": {
         "variant": "nocturne"
       }
@@ -130,74 +126,33 @@
     "action"
   ],
   "intent": {
-    "summary": "Focused single-line headline with primary action button and supporting footnote.",
-    "idealFor": [
-      "Restrained bottom-of-page sign-off"
-    ],
-    "avoidFor": [
-      "Complex multi-tier sign-up forms"
-    ],
-    "jobs": [
-      "Prompt user to take next step with clean simplicity"
-    ],
-    "contentRequirements": [
-      "Clear hierarchy, responsive layout, accessible typography"
-    ],
-    "notes": [
-      "Responsive stacking down to 360px with reduced-motion support"
-    ]
+    "summary": "Closing call to action: one heading, one line and up to two buttons.",
+    "idealFor": [],
+    "avoidFor": [],
+    "jobs": [],
+    "contentRequirements": []
   },
   "visualDNA": {
-    "professionalism": 85,
-    "playfulness": 30,
-    "luxury": 50,
-    "warmth": 40,
-    "technicality": 70,
-    "editorial": 75,
-    "futurism": 45,
-    "visualAmbition": 70,
-    "structuralCreativity": 55,
-    "density": 50,
-    "whitespace": 65,
-    "contrast": 80,
-    "colourfulness": 40,
-    "curvature": 35,
-    "depth": 40,
-    "motion": 30,
-    "motionPlayfulness": 20,
-    "typographicExpression": 60,
-    "imageryIntensity": 25,
-    "videoIntensity": 0,
-    "threeDIntensity": 0,
-    "dataDensity": 50,
-    "interactionDensity": 50,
-    "asymmetry": 25,
-    "conversionIntensity": 75,
-    "trust": 90,
-    "accessibilityPriority": 95,
-    "performancePriority": 95,
-    "visualMode": "adaptive",
-    "geometryFamily": "rounded",
-    "primaryStack": "react-tailwind"
+    "visualAmbition": 30,
+    "density": 30,
+    "curvature": 40
   },
   "interactionDNA": {
-    "interactionDensity": 45,
-    "motionIntensity": 25,
+    "interactionDensity": 25,
+    "motionIntensity": 5,
     "keyboardComplexity": "low",
     "hoverDependency": "none",
     "directManipulation": false
   },
   "layoutDNA": {
-    "density": 50,
-    "whitespace": 65,
-    "asymmetry": 25,
+    "density": 30,
+    "whitespace": 70,
+    "asymmetry": 0,
     "preferredWidths": [
       "full"
     ],
     "layoutFamilies": [
-      "marketing",
-      "landing",
-      "section"
+      "standard"
     ]
   },
   "responsive": {
@@ -209,12 +164,15 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AA",
-    "keyboardVerified": false,
-    "screenReaderSemantics": false,
-    "reducedMotionVerified": false,
-    "contrastTokenCompatible": false,
-    "focusVisible": false
+    "levelTarget": "AAA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true,
+    "knownLimitations": [
+      "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+    ]
   },
   "performance": {
     "jsCost": "tiny",
@@ -229,16 +187,77 @@
   "compatibility": {},
   "relationships": [],
   "quality": {
-    "overall": 96,
-    "accessibility": 98,
-    "responsive": 95,
-    "performance": 100,
-    "codeQuality": 96,
-    "composability": 96,
-    "visualCraft": 95,
+    "overall": 80,
+    "accessibility": 85,
+    "responsive": 85,
+    "performance": 90,
+    "codeQuality": 85,
+    "composability": 85,
+    "visualCraft": 75,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 80
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
-  "updatedAt": "2026-10-10T12:00:00.000Z"
+  "updatedAt": "2026-10-15T00:00:00.000Z",
+  "contractVersion": 2,
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "description": "Heading.",
+      "content": "heading"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "Supporting line."
+    },
+    {
+      "name": "primaryActionLabel",
+      "type": "string",
+      "required": false,
+      "description": "Primary button.",
+      "content": "primaryActionLabel"
+    },
+    {
+      "name": "primaryActionHref",
+      "type": "string",
+      "required": false,
+      "description": "Primary link."
+    },
+    {
+      "name": "secondaryActionLabel",
+      "type": "string",
+      "required": false,
+      "description": "Secondary button."
+    },
+    {
+      "name": "secondaryActionHref",
+      "type": "string",
+      "required": false,
+      "description": "Secondary link."
+    },
+    {
+      "name": "variant",
+      "type": "enum",
+      "required": false,
+      "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+      "enumValues": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ]
+    }
+  ],
+  "states": {
+    "loading": false,
+    "empty": false,
+    "error": false
+  },
+  "stylingContract": {
+    "tokenOnly": true,
+    "reducedMotion": "respected"
+  }
 }

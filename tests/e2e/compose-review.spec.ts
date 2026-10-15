@@ -46,7 +46,7 @@ test.describe('Compose: review inferred product', () => {
     expect(model.screens.join(' ')).not.toMatch(/Invoice/);
   });
 
-  test('an AAA product shows honest gaps and the Workbench explains why they have no candidates', async ({ page }) => {
+  test('an AAA product composes from AAA-checked resources with the client name throughout', async ({ page }) => {
     test.setTimeout(90000);
     await composeBrief(
       page,
@@ -56,24 +56,11 @@ test.describe('Compose: review inferred product', () => {
         await p.getByLabel('Product name').fill('Northside Physio');
       },
     );
-    await expect(page.getByTestId('direction-gaps-01')).toContainText(/gap/);
+    await expect(page.getByTestId('direction-gaps-01')).toHaveCount(0);
     await page.getByTestId('open-workbench-dir-01').click();
     await page.waitForURL(/\/workbench\?project=/);
     await expect(page.getByTitle('Click to rename project')).toContainText('Northside Physio');
-
-    const brand = await page.evaluate(() => {
-      const store = (window as Window & { __tessellate_workbench_store__?: { getState: () => { manifest: { brand?: { name?: string } } } } }).__tessellate_workbench_store__!;
-      return store.getState().manifest.brand?.name;
-    });
-    expect(brand).toBe('Northside Physio');
-
-    const gap = page.locator('[data-testid="unresolved-required-role-diagnostic"]').first();
-    await expect(gap).toBeVisible({ timeout: 15000 });
-    await gap.click();
-    await page.getByTestId('fill-gap-btn').click();
-    const drawer = page.getByRole('dialog', { name: /^Fill gap:/ });
-    await expect(drawer).toBeVisible();
-    await expect(drawer.getByTestId('replace-empty')).toContainText(/would fit but .* not meet the project's\s+accessibility/);
+    await expect(page.locator('[data-testid="unresolved-required-role-diagnostic"]')).toHaveCount(0);
+    await expect(page.getByRole('heading', { name: 'Book care easily and run the clinic smoothly' })).toBeVisible({ timeout: 15000 });
   });
 });
-

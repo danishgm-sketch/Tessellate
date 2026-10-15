@@ -2,10 +2,10 @@
   "schemaVersion": "1.0.0",
   "id": "res_shell_breadcrumb_header",
   "slug": "breadcrumb-header",
-  "name": "Breadcrumb Header",
-  "version": "1.0.0",
+  "name": "Page Header",
+  "version": "1.1.0",
   "status": "experimental",
-  "description": "Header shell combining deep hierarchical breadcrumb trail with right-aligned action buttons.",
+  "description": "Page header with breadcrumb trail, title, description and an optional primary action.",
   "resourceType": "block",
   "categories": [
     "shells",
@@ -82,22 +82,28 @@
   },
   "preview": {
     "component": "BreadcrumbHeaderPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "heading": "Appointments",
+      "description": "Browse, search and filter appointments.",
+      "breadcrumbs": [
+        {
+          "label": "Clinic",
+          "href": "/"
+        },
+        {
+          "label": "Appointments"
+        }
+      ],
+      "actionLabel": "New appointment"
+    },
     "viewport": 1440
   },
-  "slots": [
-    {
-      "id": "children",
-      "name": "Workspace Viewport",
-      "type": "component",
-      "required": false
-    }
-  ],
+  "slots": [],
   "variants": [
     {
       "id": "quiet",
       "name": "Quiet",
-      "description": "Monochrome, restrained, minimal contrast for high data density shells.",
+      "description": "Flat surface with a hairline border.",
       "props": {
         "variant": "quiet"
       }
@@ -105,7 +111,7 @@
     {
       "id": "expressive",
       "name": "Expressive",
-      "description": "Cobalt primary, tactile elevation and hover lift, spring-like feel.",
+      "description": "Raised surface with a soft shadow.",
       "props": {
         "variant": "expressive"
       }
@@ -113,7 +119,7 @@
     {
       "id": "nocturne",
       "name": "Nocturne",
-      "description": "Obsidian dark canvas with razor-sharp hairline borders and crisp luminescence.",
+      "description": "Strong outline for high-contrast layouts.",
       "props": {
         "variant": "nocturne"
       }
@@ -126,74 +132,33 @@
     "actions"
   ],
   "intent": {
-    "summary": "Header shell combining deep hierarchical breadcrumb trail with right-aligned action buttons.",
-    "idealFor": [
-      "Context-rich entity screens requiring upward navigation"
-    ],
-    "avoidFor": [
-      "Root homepages"
-    ],
-    "jobs": [
-      "Anchor page identity within overall folder or project hierarchy"
-    ],
-    "contentRequirements": [
-      "Accessible navigation semantics and responsive containment"
-    ],
-    "notes": [
-      "Supports responsive collapsing and reduced motion"
-    ]
+    "summary": "Page header with breadcrumb trail, title, description and an optional primary action.",
+    "idealFor": [],
+    "avoidFor": [],
+    "jobs": [],
+    "contentRequirements": []
   },
   "visualDNA": {
-    "professionalism": 85,
-    "playfulness": 25,
-    "luxury": 45,
-    "warmth": 30,
-    "technicality": 75,
-    "editorial": 65,
-    "futurism": 40,
-    "visualAmbition": 60,
-    "structuralCreativity": 45,
-    "density": 65,
-    "whitespace": 50,
-    "contrast": 75,
-    "colourfulness": 35,
-    "curvature": 40,
-    "depth": 35,
-    "motion": 35,
-    "motionPlayfulness": 20,
-    "typographicExpression": 45,
-    "imageryIntensity": 10,
-    "videoIntensity": 0,
-    "threeDIntensity": 0,
-    "dataDensity": 70,
-    "interactionDensity": 70,
-    "asymmetry": 15,
-    "conversionIntensity": 50,
-    "trust": 90,
-    "accessibilityPriority": 95,
-    "performancePriority": 95,
-    "visualMode": "adaptive",
-    "geometryFamily": "rounded",
-    "primaryStack": "react-tailwind"
+    "visualAmbition": 30,
+    "density": 50,
+    "curvature": 40
   },
   "interactionDNA": {
-    "interactionDensity": 65,
-    "motionIntensity": 25,
-    "keyboardComplexity": "medium",
+    "interactionDensity": 25,
+    "motionIntensity": 5,
+    "keyboardComplexity": "low",
     "hoverDependency": "none",
     "directManipulation": false
   },
   "layoutDNA": {
-    "density": 65,
-    "whitespace": 45,
-    "asymmetry": 15,
+    "density": 50,
+    "whitespace": 50,
+    "asymmetry": 0,
     "preferredWidths": [
       "full"
     ],
     "layoutFamilies": [
-      "shell",
-      "sidebar",
-      "header"
+      "standard"
     ]
   },
   "responsive": {
@@ -202,15 +167,18 @@
       768,
       1440
     ],
-    "defaultStrategy": "collapse"
+    "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AA",
-    "keyboardVerified": false,
-    "screenReaderSemantics": false,
-    "reducedMotionVerified": false,
-    "contrastTokenCompatible": false,
-    "focusVisible": false
+    "levelTarget": "AAA",
+    "keyboardVerified": true,
+    "screenReaderSemantics": true,
+    "reducedMotionVerified": true,
+    "contrastTokenCompatible": true,
+    "focusVisible": true,
+    "knownLimitations": [
+      "Automated checks only (axe incl. AAA contrast, keyboard, 360/768/1440); awaiting human review."
+    ]
   },
   "performance": {
     "jsCost": "tiny",
@@ -225,16 +193,77 @@
   "compatibility": {},
   "relationships": [],
   "quality": {
-    "overall": 96,
-    "accessibility": 98,
-    "responsive": 95,
-    "performance": 100,
-    "codeQuality": 96,
-    "composability": 96,
-    "visualCraft": 95,
+    "overall": 80,
+    "accessibility": 85,
+    "responsive": 85,
+    "performance": 90,
+    "codeQuality": 85,
+    "composability": 85,
+    "visualCraft": 75,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 80
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
-  "updatedAt": "2026-10-10T12:00:00.000Z"
+  "updatedAt": "2026-10-15T00:00:00.000Z",
+  "contractVersion": 2,
+  "props": [
+    {
+      "name": "heading",
+      "type": "string",
+      "required": false,
+      "description": "Page title.",
+      "content": "heading"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "required": false,
+      "description": "What the page is for.",
+      "content": "description"
+    },
+    {
+      "name": "breadcrumbs",
+      "type": "object[]",
+      "required": false,
+      "description": "Trail: [{ label, href }]."
+    },
+    {
+      "name": "actionLabel",
+      "type": "string",
+      "required": false,
+      "description": "Primary action label."
+    },
+    {
+      "name": "actionHref",
+      "type": "string",
+      "required": false,
+      "description": "Primary action link."
+    },
+    {
+      "name": "onAction",
+      "type": "callback",
+      "required": false,
+      "description": "Primary action handler."
+    },
+    {
+      "name": "variant",
+      "type": "enum",
+      "required": false,
+      "description": "Emphasis: quiet, expressive (elevated) or nocturne (strong outline). Colours come from tokens.",
+      "enumValues": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ]
+    }
+  ],
+  "states": {
+    "loading": false,
+    "empty": false,
+    "error": false
+  },
+  "stylingContract": {
+    "tokenOnly": true,
+    "reducedMotion": "respected"
+  }
 }

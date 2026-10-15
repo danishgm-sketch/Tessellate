@@ -1,39 +1,69 @@
-import React from 'react';
+import React, { useId } from 'react';
 
 export type AppSidebarExpandedVariant = 'quiet' | 'expressive' | 'nocturne';
 
+export interface AppSidebarNavItem {
+  label: string;
+  href: string;
+}
+
 export interface AppSidebarExpandedProps {
+  /** Product name shown at the top of the navigation. */
   brand?: string;
+  /** Navigation links, usually one per primary screen. */
+  items?: AppSidebarNavItem[];
+  /** The current page, marked with aria-current. Defaults to the first item. */
+  activeHref?: string;
+  /** Text for the signed-in user area, e.g. their name. */
+  userLabel?: string;
   variant?: AppSidebarExpandedVariant;
 }
 
-export function AppSidebarExpanded({ variant = 'quiet', brand = 'Your product' }: AppSidebarExpandedProps) {
-  let theme = 'bg-white border-r border-neutral-200 text-neutral-900';
-  let active = 'bg-neutral-100 font-semibold';
-  if (variant === 'expressive') {
-    theme = 'bg-white border-r border-[#D9D6CF] text-neutral-900';
-    active = 'bg-[#E7EBFF] text-[#2547E8] font-semibold';
-  } else if (variant === 'nocturne') {
-    theme = 'bg-[#11141B] border-r border-[#2E3440] text-white';
-    active = 'bg-[#1E232E] text-white font-semibold';
-  }
+const SAMPLE_ITEMS: AppSidebarNavItem[] = [
+  { label: 'Overview', href: '/overview' },
+  { label: 'Records', href: '/records' },
+  { label: 'Reports', href: '/reports' },
+  { label: 'Settings', href: '/settings' },
+];
+
+/**
+ * Application navigation: a vertical sidebar from the md breakpoint, and a horizontally scrollable bar on
+ * small screens so content keeps the full width.
+ */
+export function AppSidebarExpanded({ brand = 'Your product', items, activeHref, userLabel, variant = 'quiet' }: AppSidebarExpandedProps) {
+  const id = useId();
+  const links = items && items.length > 0 ? items : SAMPLE_ITEMS;
+  const current = activeHref ?? links[0]?.href;
+  const shell =
+    variant === 'expressive' ? 'bg-surface-raised shadow-ui-1' : variant === 'nocturne' ? 'bg-surface border-hairline-strong' : 'bg-surface';
 
   return (
-    <aside className={`w-60 h-screen flex flex-col p-4 gap-6 text-xs ${theme}`}>
-      <div className="font-semibold text-sm px-2">{brand}</div>
-      <div className="space-y-4 flex-1">
-        <div className="space-y-1">
-          <p className="px-2 text-[10px] uppercase font-bold text-neutral-400">Workspace</p>
-          <a href="#" className={`block px-2.5 py-1.5 rounded-lg ${active}`}>Dashboard</a>
-          <a href="#" className="block px-2.5 py-1.5 rounded-lg opacity-70 hover:opacity-100">Telemetry</a>
-          <a href="#" className="block px-2.5 py-1.5 rounded-lg opacity-70 hover:opacity-100">Composition Engine</a>
-        </div>
-        <div className="space-y-1">
-          <p className="px-2 text-[10px] uppercase font-bold text-neutral-400">Settings</p>
-          <a href="#" className="block px-2.5 py-1.5 rounded-lg opacity-70 hover:opacity-100">Design DNA</a>
-          <a href="#" className="block px-2.5 py-1.5 rounded-lg opacity-70 hover:opacity-100">API Tokens</a>
-        </div>
-      </div>
-    </aside>
+    <nav
+      aria-labelledby={`${id}-brand`}
+      className={`flex w-full shrink-0 flex-row items-center gap-3 border-b border-hairline px-3 py-2 font-body text-ink md:min-h-full md:w-60 md:flex-col md:items-stretch md:gap-1 md:border-b-0 md:border-r md:px-3 md:py-4 ${shell}`}
+    >
+      <span id={`${id}-brand`} className="shrink-0 truncate px-2 font-heading text-sm font-semibold md:mb-4 md:text-base">
+        {brand}
+      </span>
+      <ul className="flex min-w-0 flex-1 flex-row gap-1 overflow-x-auto md:flex-col md:overflow-visible">
+        {links.map((item) => {
+          const active = item.href === current;
+          return (
+            <li key={`${item.href}-${item.label}`} className="shrink-0">
+              <a
+                href={item.href}
+                aria-current={active ? 'page' : undefined}
+                className={`block whitespace-nowrap rounded-ui-sm px-3 py-2 text-sm transition-colors duration-150 ease-ui motion-reduce:transition-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus ${
+                  active ? 'bg-accent-soft font-semibold text-ink' : 'text-ink-secondary hover:bg-surface-raised hover:text-ink'
+                }`}
+              >
+                {item.label}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      {userLabel && <p className="hidden truncate border-t border-hairline px-2 pt-3 text-sm text-ink-secondary md:mt-auto md:block">{userLabel}</p>}
+    </nav>
   );
 }
