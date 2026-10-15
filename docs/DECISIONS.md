@@ -217,13 +217,17 @@ Record a new decision below when one materially affects architecture/product beh
 
 ---
 
-## Decision template
-
-### D-XXX — Title
-**Date:** YYYY-MM-DD  
-**Context:** Why a decision was needed.  
-**Decision:** What is being done.  
-**Alternatives rejected:** Concise list.  
-**Cost impact:** None / expected amount.  
-**Security impact:** None / describe.  
-**Status:** LOCKED / PROVISIONAL.
+### D-032 — Universal Interface OS & Host-Hardware Bespoke DL Engine
+**Date:** 2026-10-15  
+**Context:** Transforming Tessellate from a web composition engine into an industry-standard universal interface operating system serving autonomous agent swarms, mobile and design-token ecosystems, enterprise CI/CD linting, and community registries without cloud LLM inference fees.  
+**Decision:** Implement 6 specialized architecture pillars:
+1. `@tessellate/mcp`: Headless interface engine for AI agent swarms over stdio and SSE transport.
+2. `@tessellate/exporter`: Universal multi-platform exporter generating Expo React Native, Swift 6 SwiftUI, and W3C Design Tokens Studio artifacts.
+3. `@tessellate/linter`: Design DNA linter with automated AST fixes and SARIF output for GitHub Code Scanning.
+4. `@tessellate/ingest`: Bidirectional AST ingestion mapping React/Tailwind codebases into canonical ProjectManifests while preserving developer state and business logic via targeted unified diffs.
+5. `apps/host-daemon`: Bespoke Tree-GNN + Bi-GRU DL model running strictly on owner hardware with an asynchronous token queue number system (`/api/inference/queue`), live Workbench status badges, and fail-closed deterministic fallback.
+6. `@tessellate/registry-gate`: 16-point automated sandbox gate and GitHub Actions PR audit workflow for decentralized community contributions.  
+**Alternatives rejected:** Hosted cloud vector databases, paid third-party AI APIs (OpenAI/Anthropic/Gemini) required from end users, dynamic source code eval in product runtime.  
+**Cost impact:** £0/month incremental cost (runs on owner/host hardware + Cloudflare Workers free tier).  
+**Security impact:** Hard origin isolation enforced; community submissions validated in sandboxed runner; zero credentials or secret tokens persisted.  
+**Status:** LOCKED.
