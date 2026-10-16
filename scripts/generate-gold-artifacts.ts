@@ -160,7 +160,7 @@ export function getGoldResourceSource(slugOrId: string): GoldResourceSource | un
 
 export async function runGenerate() {
   const components = discoverAllComponents();
-  console.log(`[generate-gold-artifacts] Discovered ${components.length} Gold 40 components.`);
+  console.log(`[generate-gold-artifacts] Discovered ${components.length} runtime resources; Gold eligibility is tracked separately.`);
 
   // 1. Write renderer registry
   const rendererFile = path.join(rootDir, 'packages', 'renderer', 'src', 'generated-gold-registry.tsx');

@@ -2,10 +2,12 @@ import {it,expect} from 'vitest';
 import {readFileSync,mkdtempSync,mkdirSync,writeFileSync} from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
-import {execSync,spawn} from 'node:child_process';
+import {exec,spawn} from 'node:child_process';
+import {promisify} from 'node:util';
 import {chromium} from '@playwright/test';
 import {composeProjectPipeline} from '../packages/compatibility/src/compose-pipeline.js';
 import {generateSourceTree} from '../packages/exporter/src/source-tree.js';
+const run = promisify(exec);
 
 it('standalone employee product preserves nested records and CTA content in a real independent runtime',async()=>{
   const resources=JSON.parse(readFileSync('apps/site/public/data/catalog.json','utf8')).resources;
@@ -13,8 +15,8 @@ it('standalone employee product preserves nested records and CTA content in a re
   const files=generateSourceTree(manifest);
   const directory=mkdtempSync(path.join(os.tmpdir(),'tessellate-employee-export-'));
   for(const [name,content] of Object.entries(files)){const filename=path.join(directory,name);mkdirSync(path.dirname(filename),{recursive:true});writeFileSync(filename,content);}
-  execSync('npm install --no-audit --no-fund',{cwd:directory,stdio:'pipe',timeout:90000});
-  execSync('npm run build',{cwd:directory,stdio:'pipe',timeout:90000});
+  await run('npm install --no-audit --no-fund',{cwd:directory,timeout:90000});
+  await run('npm run build',{cwd:directory,timeout:90000});
   const port=18367;
   const server=spawn(process.execPath,[path.join(directory,'node_modules/vite/bin/vite.js'),'preview','--host','127.0.0.1','--port',String(port),'--strictPort'],{cwd:directory,stdio:'pipe'});
   let previewOutput='';

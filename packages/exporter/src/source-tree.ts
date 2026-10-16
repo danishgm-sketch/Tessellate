@@ -833,7 +833,7 @@ export default function RootLayout({
       file: fileName,
     });
 
-    files[`screens/${fileName}`] = generateScreenCode(screen, componentName, resourceMap);
+    files[`screens/${fileName}`] = generateScreenCode(screen, componentName, resourceMap, manifest.designDNA);
   });
 
   // 10. app/page.tsx with Screen Navigation

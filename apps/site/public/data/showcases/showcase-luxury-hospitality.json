@@ -2,52 +2,159 @@
   "schemaVersion": "1.0.0",
   "id": "showcase-luxury-hospitality",
   "name": "Velluto Private Estate Residences",
-  "description": "Curated 5-star private estate reservations with editorial travel essays.",
+  "description": "Example project. Curated 5-star private estate reservations with editorial travel essays.",
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z",
-  "catalogVersion": "1.0.0",
-  "seed": "seed_showcase-luxury-hospitality",
+  "catalogVersion": "0.1.0",
+  "seed": "showcase-luxury-hospitality",
   "productModel": {
     "schemaVersion": "1.0.0",
     "productArchetypes": [
       {
-        "tag": "hospitality",
+        "tag": "media",
+        "weight": 100
+      },
+      {
+        "tag": "travel",
         "weight": 100
       }
     ],
-    "primaryAudience": "Domain specialists",
-    "userSophistication": 40,
-    "primaryObjective": "Curated 5-star private estate reservations with editorial travel essays.",
+    "primaryAudience": "Readers, viewers, editors, and digital journalists",
+    "userSophistication": 50,
+    "primaryObjective": "Deliver breaking journalism, compelling editorial reads, and immersive streaming",
     "secondaryObjectives": [
-      "Maximize workflow speed and cognitive clarity"
+      "Ensure high accessibility standards",
+      "Maintain responsive layout across devices"
     ],
     "jobsToBeDone": [
-      "Analyze domain data",
-      "Execute actions",
-      "Inspect telemetry"
+      "Authenticate and access Media & Publishing",
+      "Review the overview and priority actions",
+      "Create, update, and manage records",
+      "Browse headline feed, open article, and adjust typography",
+      "Editor adjusts top headline placement and Breaking ticker"
     ],
-    "entities": [],
-    "workflows": [],
-    "trustRequirement": 98,
-    "informationComplexity": 40,
-    "dataDensity": 40,
-    "collaborationLevel": 50,
-    "transactionCriticality": 70,
+    "entities": [
+      {
+        "name": "Article",
+        "description": "Published story with byline, hero media, and body",
+        "fields": [
+          "id",
+          "headline",
+          "author",
+          "section",
+          "publishedAt"
+        ]
+      },
+      {
+        "name": "Section",
+        "description": "Category vertical (e.g. Technology, Opinion)",
+        "fields": [
+          "id",
+          "name",
+          "slug",
+          "editor"
+        ]
+      },
+      {
+        "name": "Edition",
+        "description": "Curated daily or weekly bundle",
+        "fields": [
+          "id",
+          "date",
+          "featuredArticles"
+        ]
+      }
+    ],
+    "workflows": [
+      {
+        "id": "read-article",
+        "name": "Browse headline feed, open article, and adjust typography",
+        "steps": [
+          "scan-feed",
+          "open-story",
+          "save-bookmark"
+        ]
+      },
+      {
+        "id": "curate-frontpage",
+        "name": "Editor adjusts top headline placement and Breaking ticker",
+        "steps": [
+          "drag-stories",
+          "set-breaking-flag",
+          "publish-edition"
+        ]
+      }
+    ],
+    "trustRequirement": 85,
+    "informationComplexity": 65,
+    "dataDensity": 60,
+    "collaborationLevel": 75,
+    "transactionCriticality": 40,
     "navigationComplexity": 60,
     "mobileImportance": 50,
-    "likelyScreens": [],
-    "requiredCapabilities": [
-      "export",
-      "search",
-      "audit"
+    "likelyScreens": [
+      {
+        "name": "Front Page Feed",
+        "screenType": "marketing",
+        "purpose": "Grid of hero top stories and section rivers",
+        "jobs": [
+          "scan-breaking-news",
+          "choose-article"
+        ]
+      },
+      {
+        "name": "Article Reader",
+        "screenType": "detail-entity",
+        "purpose": "High-readability serif column with photo galleries and pullquotes",
+        "jobs": [
+          "read-story",
+          "share"
+        ]
+      },
+      {
+        "name": "Section Explorer",
+        "screenType": "index-list",
+        "purpose": "Archive by topic and author bylines",
+        "jobs": [
+          "filter-by-topic",
+          "search-archives"
+        ]
+      }
     ],
-    "forbiddenPatterns": [],
+    "requiredCapabilities": [
+      "fast-lcp-typography",
+      "reading-progress-indicator",
+      "paywall-metering"
+    ],
+    "forbiddenPatterns": [
+      "Forcing users through multi-step onboarding before seeing any dashboard value",
+      "Unconfirmed deletion of shared team workspaces",
+      "Non-accessible interactive table cells"
+    ],
     "constraints": {
       "accessibilityFloor": "AA",
-      "performanceCeiling": "rich",
+      "performanceCeiling": "balanced",
       "targetDevices": [
         "desktop",
-        "tablet"
+        "tablet",
+        "mobile"
+      ],
+      "allowedDependencies": [
+        "react",
+        "tailwindcss",
+        "lucide-react"
+      ],
+      "prohibitedDependencies": [
+        "jquery",
+        "bootstrap"
+      ],
+      "requiredScreens": [],
+      "forbiddenScreens": [],
+      "requiredPatterns": [],
+      "forbiddenPatterns": [
+        "Forcing users through multi-step onboarding before seeing any dashboard value",
+        "Unconfirmed deletion of shared team workspaces",
+        "Non-accessible interactive table cells"
       ]
     }
   },
@@ -83,7 +190,7 @@
     "primaryArchetype": "hospitality",
     "visualMode": "light",
     "geometryFamily": "classic-editorial",
-    "navigationModel": "split-horizontal",
+    "navigationModel": "rail",
     "responsivePhilosophy": "mobile-first-progressive",
     "contentTone": "poetic-refined",
     "primaryStack": "react-tailwind",
@@ -91,348 +198,1152 @@
     "typographyPersonality": "editorial-serif",
     "surfacePersonality": "warm-vellum-paper"
   },
+  "brand": {
+    "name": "MEDIA System"
+  },
   "constraints": {
     "accessibilityFloor": "AA",
-    "performanceCeiling": "rich",
+    "performanceCeiling": "balanced",
     "targetDevices": [
       "desktop",
-      "tablet"
+      "tablet",
+      "mobile"
+    ],
+    "allowedDependencies": [
+      "react",
+      "tailwindcss",
+      "lucide-react"
+    ],
+    "prohibitedDependencies": [
+      "jquery",
+      "bootstrap"
+    ],
+    "requiredScreens": [],
+    "forbiddenScreens": [],
+    "requiredPatterns": [],
+    "forbiddenPatterns": [
+      "Forcing users through multi-step onboarding before seeing any dashboard value",
+      "Unconfirmed deletion of shared team workspaces",
+      "Non-accessible interactive table cells"
     ]
   },
   "screenGraph": {
-    "id": "sg_showcase-luxury-hospitality",
+    "id": "graph-media-15rj69b",
     "groups": [
       {
-        "id": "group_main",
-        "name": "Main Workspace",
+        "id": "group-marketing",
+        "name": "Marketing",
         "screens": [
           {
-            "id": "node-marketing-home",
+            "id": "screen-marketing-home",
             "name": "Marketing Home",
             "slug": "/",
-            "screenType": "marketing-home",
-            "purpose": "Marketing Home",
+            "screenType": "marketing",
+            "purpose": "Product value proposition, interactive preview, and conversion funnel.",
             "jobs": [
-              "inspect-view"
+              "explain-product-value",
+              "initiate-signup"
             ],
             "required": true,
             "navigationVisibility": "primary",
-            "importance": 80,
+            "importance": 90,
             "expectedData": [
-              "records"
+              "headline",
+              "socialProof",
+              "pricingSummary"
             ],
             "requiredRoles": [
-              "content"
+              "navigation",
+              "hero",
+              "value-proposition",
+              "conversion-cta",
+              "footer"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "trust-proof",
+              "product-demo",
+              "feature-grid",
+              "pricing-table",
+              "faq-accordion"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "group-app",
+        "name": "Application",
+        "screens": [
+          {
+            "id": "screen-overview",
+            "name": "Overview Dashboard",
+            "slug": "/overview",
+            "screenType": "dashboard",
+            "purpose": "Central operational telemetry, KPI scorecard, and high-priority action queue.",
+            "jobs": [
+              "Authenticate and access Media & Publishing",
+              "Review the overview and priority actions"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 95,
+            "expectedData": [
+              "kpiMetrics",
+              "recentActivity",
+              "alerts"
+            ],
+            "requiredRoles": [
+              "overview-header",
+              "metric-cards",
+              "activity-feed"
+            ],
+            "optionalRoles": [
+              "quick-action-bar",
+              "data-table",
+              "alert-banner",
+              "insight-rail"
+            ]
           },
           {
-            "id": "node-blog",
-            "name": "Blog/Editorial Index",
-            "slug": "/blog",
-            "screenType": "blog/editorial-index",
-            "purpose": "Blog/Editorial Index",
+            "id": "screen-collection-index",
+            "name": "Article Directory",
+            "slug": "/articles",
+            "screenType": "index-list",
+            "purpose": "Searchable, filterable catalog of all article records.",
             "jobs": [
-              "inspect-view"
+              "search-and-filter-records",
+              "bulk-actions"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 85,
+            "expectedData": [
+              "recordRows",
+              "filterFacets",
+              "paginationState"
+            ],
+            "requiredRoles": [
+              "index-header",
+              "filter-bar",
+              "data-table",
+              "pagination"
+            ],
+            "optionalRoles": [
+              "bulk-action-bar",
+              "view-mode-toggle",
+              "stats-summary"
+            ]
+          },
+          {
+            "id": "screen-entity-detail",
+            "name": "Article Detail",
+            "slug": "/articles/:id",
+            "screenType": "detail-entity",
+            "purpose": "Deep inspection, metadata attributes, timeline, and actions for a single article.",
+            "jobs": [
+              "inspect-attributes",
+              "edit-record-state"
             ],
             "required": false,
-            "navigationVisibility": "primary",
+            "navigationVisibility": "secondary",
             "importance": 75,
             "expectedData": [
-              "records"
+              "recordDetails",
+              "activityHistory",
+              "linkedRelations"
             ],
             "requiredRoles": [
-              "content"
+              "entity-header",
+              "detail-tabs",
+              "main-content-pane",
+              "metadata-sidebar"
             ],
-            "optionalRoles": []
-          },
+            "optionalRoles": [
+              "activity-timeline",
+              "related-items-carousel",
+              "danger-zone"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "group-settings",
+        "name": "Settings & Administration",
+        "screens": [
           {
-            "id": "node-case-study",
-            "name": "Case Study",
-            "slug": "/customers/meridian",
-            "screenType": "case-study",
-            "purpose": "Case Study",
+            "id": "screen-settings",
+            "name": "Settings & Preferences",
+            "slug": "/settings",
+            "screenType": "settings",
+            "purpose": "User profile, notification triggers, security keys, and display theme.",
             "jobs": [
-              "inspect-view"
+              "update-profile",
+              "configure-notifications"
             ],
-            "required": false,
-            "navigationVisibility": "primary",
-            "importance": 70,
+            "required": true,
+            "navigationVisibility": "secondary",
+            "importance": 60,
             "expectedData": [
-              "records"
+              "userProfile",
+              "notificationPreferences"
             ],
             "requiredRoles": [
-              "content"
+              "settings-nav",
+              "settings-form",
+              "save-footer"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "avatar-uploader",
+              "2fa-toggle",
+              "danger-zone"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "group-auth",
+        "name": "Authentication",
+        "screens": [
+          {
+            "id": "screen-sign-in",
+            "name": "Sign In",
+            "slug": "/sign-in",
+            "screenType": "authentication",
+            "purpose": "User authentication with GitHub OAuth and session tokens.",
+            "jobs": [
+              "authenticate-user"
+            ],
+            "required": true,
+            "navigationVisibility": "hidden",
+            "importance": 80,
+            "expectedData": [
+              "authCredentials"
+            ],
+            "requiredRoles": [
+              "auth-card",
+              "auth-footer"
+            ],
+            "optionalRoles": [
+              "social-oauth-buttons",
+              "passkey-option",
+              "terms-disclaimer",
+              "brand-panel"
+            ]
           }
         ]
       }
     ],
     "edges": [
       {
-        "id": "edge_0",
-        "fromScreenId": "node-marketing-home",
-        "toScreenId": "node-blog"
+        "id": "edge-marketing-to-signin",
+        "fromScreenId": "screen-marketing-home",
+        "toScreenId": "screen-sign-in",
+        "label": "Start building / Sign in"
       },
       {
-        "id": "edge_1",
-        "fromScreenId": "node-marketing-home",
-        "toScreenId": "node-case-study"
+        "id": "edge-signin-to-overview",
+        "fromScreenId": "screen-sign-in",
+        "toScreenId": "screen-overview",
+        "label": "Successful authentication"
+      },
+      {
+        "id": "edge-overview-to-collection",
+        "fromScreenId": "screen-overview",
+        "toScreenId": "screen-collection-index",
+        "label": "View all items"
+      },
+      {
+        "id": "edge-collection-to-detail",
+        "fromScreenId": "screen-collection-index",
+        "toScreenId": "screen-entity-detail",
+        "label": "Select item row"
       }
     ]
   },
   "screens": [
     {
       "id": "screen-marketing-home",
-      "screenNodeId": "node-marketing-home",
+      "screenNodeId": "screen-marketing-home",
       "name": "Marketing Home",
       "slug": "/",
       "rootNode": {
-        "id": "root-marketing-home",
+        "id": "root-screen-marketing-home",
         "nodeType": "layout",
-        "semanticRole": "page-canvas",
+        "semanticRole": "marketing-page",
         "children": [
           {
-            "id": "sec-nav",
-            "nodeType": "section",
+            "id": "node-screen-marketing-home-navigation-1",
+            "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_header_minimal",
-              "slug": "header-minimal",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Article Workspace",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Article Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "horizontal"
+            }
           },
           {
-            "id": "sec-hero",
+            "id": "node-screen-marketing-home-hero-2",
             "nodeType": "section",
             "semanticRole": "hero",
             "resourceRef": {
-              "id": "res_hero_minimal",
-              "slug": "hero-minimal",
+              "id": "res_sec_editorial_hero",
+              "slug": "editorial-hero",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "eyebrow": "Example organisation · sample content",
+              "headline": "Deliver breaking journalism, compelling editorial reads, and immersive streaming",
+              "subheadline": "A workspace for readers, viewers, editors, and digital journalists. Deliver breaking journalism, compelling editorial reads, and immersive streaming.",
+              "primaryCta": {
+                "label": "Open workspace",
+                "href": "#screen-overview"
+              },
+              "secondaryCta": {
+                "label": "Browse records",
+                "href": "#screen-collection-index"
+              },
+              "note": "Example interface · replace sample data with your organisation"
+            }
           },
           {
-            "id": "sec-proof",
+            "id": "node-screen-marketing-home-value-proposition-3",
             "nodeType": "section",
-            "semanticRole": "trust-proof",
+            "semanticRole": "value-proposition",
             "resourceRef": {
-              "id": "res_logo_cloud_clean",
-              "slug": "logo-cloud-clean",
+              "id": "res_sec_feature_bento",
+              "slug": "feature-bento",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "title": "Marketing Home",
+              "items": [
+                {
+                  "title": "Article",
+                  "description": "Published story with byline, hero media, and body",
+                  "detail": "Example content"
+                },
+                {
+                  "title": "Section",
+                  "description": "Category vertical (e.g. Technology, Opinion)",
+                  "detail": "Example content"
+                },
+                {
+                  "title": "Edition",
+                  "description": "Curated daily or weekly bundle",
+                  "detail": "Example content"
+                }
+              ]
+            }
           },
           {
-            "id": "sec-features",
-            "nodeType": "section",
-            "semanticRole": "feature-grid",
-            "resourceRef": {
-              "id": "res_feature_grid_cards",
-              "slug": "feature-grid-cards",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-cta",
+            "id": "node-screen-marketing-home-conversion-cta-4",
             "nodeType": "section",
             "semanticRole": "conversion-cta",
             "resourceRef": {
-              "id": "res_cta_minimal",
+              "id": "res_sec_cta_minimal",
               "slug": "cta-minimal",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "headline": "Deliver breaking journalism, compelling editorial reads, and immersive streaming",
+              "description": "A workspace for readers, viewers, editors, and digital journalists. Deliver breaking journalism, compelling editorial reads, and immersive streaming.",
+              "label": "Continue onboarding",
+              "href": "#screen-overview"
+            }
           },
           {
-            "id": "sec-footer",
+            "id": "node-screen-marketing-home-footer-5",
             "nodeType": "section",
             "semanticRole": "footer",
             "resourceRef": {
-              "id": "res_footer_minimal",
-              "slug": "footer-minimal",
+              "id": "res_sec_footer_product",
+              "slug": "footer-product",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Article Workspace",
+              "description": "A workspace for readers, viewers, editors, and digital journalists. Deliver breaking journalism, compelling editorial reads, and immersive streaming.",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Article Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                }
+              ]
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutFamily": "tri-column-intelligence"
+        }
       }
     },
     {
-      "id": "screen-blog",
-      "screenNodeId": "node-blog",
-      "name": "Blog/Editorial Index",
-      "slug": "/blog",
+      "id": "screen-overview",
+      "screenNodeId": "screen-overview",
+      "name": "Overview Dashboard",
+      "slug": "/overview",
       "rootNode": {
-        "id": "root-blog",
+        "id": "root-screen-overview",
         "nodeType": "layout",
-        "semanticRole": "page-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-blog-hero",
-            "nodeType": "section",
-            "semanticRole": "featured-article",
+            "id": "node-screen-overview-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_hero_split",
-              "slug": "hero-split",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Article Workspace",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Article Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-blog-grid",
-            "nodeType": "section",
-            "semanticRole": "recent-articles",
-            "resourceRef": {
-              "id": "res_feature_grid_cards",
-              "slug": "feature-grid-cards",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-overview-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-overview-overview-header-2",
+                "nodeType": "section",
+                "semanticRole": "overview-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Overview Dashboard",
+                  "subtitle": "Central operational telemetry, KPI scorecard, and high-priority action queue.",
+                  "badge": "EXAMPLE",
+                  "initials": "WS"
+                }
+              },
+              {
+                "id": "node-screen-overview-metric-cards-3",
+                "nodeType": "section",
+                "semanticRole": "metric-cards",
+                "resourceRef": {
+                  "id": "res_blk_dashboard_kpi_grid",
+                  "slug": "dashboard-kpi-grid",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Overview Dashboard",
+                  "cards": [
+                    {
+                      "label": "Article",
+                      "val": "—",
+                      "status": "Connect your data"
+                    },
+                    {
+                      "label": "Section",
+                      "val": "—",
+                      "status": "Connect your data"
+                    },
+                    {
+                      "label": "Edition",
+                      "val": "—",
+                      "status": "Connect your data"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-overview-activity-feed-4",
+                "nodeType": "section",
+                "semanticRole": "activity-feed",
+                "resourceRef": {
+                  "id": "res_blk_notification_centre",
+                  "slug": "notification-centre",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Overview Dashboard",
+                  "events": [
+                    {
+                      "time": "Step 1",
+                      "title": "Browse headline feed, open article, and adjust typography",
+                      "desc": "scan-feed → open-story → save-bookmark"
+                    },
+                    {
+                      "time": "Step 2",
+                      "title": "Editor adjusts top headline placement and Breaking ticker",
+                      "desc": "drag-stories → set-breaking-flag → publish-edition"
+                    }
+                  ]
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-blog-cta",
-            "nodeType": "section",
-            "semanticRole": "newsletter",
-            "resourceRef": {
-              "id": "res_cta_minimal",
-              "slug": "cta-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-case-study",
-      "screenNodeId": "node-case-study",
-      "name": "Case Study",
-      "slug": "/customers/meridian",
+      "id": "screen-collection-index",
+      "screenNodeId": "screen-collection-index",
+      "name": "Article Directory",
+      "slug": "/articles",
       "rootNode": {
-        "id": "root-case-study",
+        "id": "root-screen-collection-index",
         "nodeType": "layout",
-        "semanticRole": "page-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-cs-hero",
-            "nodeType": "section",
-            "semanticRole": "hero",
+            "id": "node-screen-collection-index-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_hero_headline_only",
-              "slug": "hero-headline-only",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Article Workspace",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Article Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-cs-stats",
-            "nodeType": "section",
-            "semanticRole": "quant-metrics",
-            "resourceRef": {
-              "id": "res_stats_row_simple",
-              "slug": "stats-row-simple",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-collection-index-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-collection-index-index-header-2",
+                "nodeType": "section",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Article Directory",
+                  "subtitle": "Searchable, filterable catalog of all article records.",
+                  "badge": "EXAMPLE",
+                  "initials": "WS"
+                }
+              },
+              {
+                "id": "node-screen-collection-index-filter-bar-3",
+                "nodeType": "section",
+                "semanticRole": "filter-bar",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-collection-index-data-table-4",
+                "nodeType": "section",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Article Directory",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Article",
+                      "type": "Published story with byline, hero media, and body",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Section",
+                      "type": "Category vertical (e.g. Technology, Opinion)",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Edition",
+                      "type": "Curated daily or weekly bundle",
+                      "quality": 0,
+                      "status": "Sample"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Progress",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-collection-index-pagination-5",
+                "nodeType": "section",
+                "semanticRole": "pagination",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Continue",
+                  "disabled": false,
+                  "title": "Article Directory"
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-cs-quote",
-            "nodeType": "section",
-            "semanticRole": "testimonial",
-            "resourceRef": {
-              "id": "res_testimonial_single_quote",
-              "slug": "testimonial-single-quote",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-cs-cta",
-            "nodeType": "section",
-            "semanticRole": "cta",
-            "resourceRef": {
-              "id": "res_cta_minimal",
-              "slug": "cta-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
+      }
+    },
+    {
+      "id": "screen-entity-detail",
+      "screenNodeId": "screen-entity-detail",
+      "name": "Article Detail",
+      "slug": "/articles/:id",
+      "rootNode": {
+        "id": "root-screen-entity-detail",
+        "nodeType": "layout",
+        "semanticRole": "workspace-dock-shell",
+        "children": [
+          {
+            "id": "node-screen-entity-detail-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Article Workspace",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Article Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "vertical"
+            }
+          },
+          {
+            "id": "container-screen-entity-detail-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-entity-detail-entity-header-2",
+                "nodeType": "section",
+                "semanticRole": "entity-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Article Detail",
+                  "subtitle": "Deep inspection, metadata attributes, timeline, and actions for a single article.",
+                  "badge": "EXAMPLE",
+                  "initials": "WS"
+                }
+              },
+              {
+                "id": "node-screen-entity-detail-detail-tabs-3",
+                "nodeType": "section",
+                "semanticRole": "detail-tabs",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Article Workspace",
+                  "links": [
+                    {
+                      "label": "Marketing Home",
+                      "href": "#screen-marketing-home"
+                    },
+                    {
+                      "label": "Overview Dashboard",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Article Directory",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Settings & Preferences",
+                      "href": "#screen-settings"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-entity-detail-main-content-pane-4",
+                "nodeType": "section",
+                "semanticRole": "main-content-pane",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Article Detail",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Article",
+                      "type": "Published story with byline, hero media, and body",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Section",
+                      "type": "Category vertical (e.g. Technology, Opinion)",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Edition",
+                      "type": "Curated daily or weekly bundle",
+                      "quality": 0,
+                      "status": "Sample"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Progress",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-entity-detail-metadata-sidebar-5",
+                "nodeType": "section",
+                "semanticRole": "metadata-sidebar",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Article Detail",
+                  "subtitle": "Deep inspection, metadata attributes, timeline, and actions for a single article.",
+                  "badge": "EXAMPLE",
+                  "initials": "WS"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "split-dock"
+        }
+      }
+    },
+    {
+      "id": "screen-settings",
+      "screenNodeId": "screen-settings",
+      "name": "Settings & Preferences",
+      "slug": "/settings",
+      "rootNode": {
+        "id": "root-screen-settings",
+        "nodeType": "layout",
+        "semanticRole": "workspace-dock-shell",
+        "children": [
+          {
+            "id": "node-screen-settings-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Article Workspace",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Article Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                }
+              ],
+              "orientation": "vertical"
+            }
+          },
+          {
+            "id": "container-screen-settings-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-settings-settings-nav-2",
+                "nodeType": "section",
+                "semanticRole": "settings-nav",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Article Workspace",
+                  "links": [
+                    {
+                      "label": "Marketing Home",
+                      "href": "#screen-marketing-home"
+                    },
+                    {
+                      "label": "Overview Dashboard",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Article Directory",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Settings & Preferences",
+                      "href": "#screen-settings"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-settings-settings-form-3",
+                "nodeType": "section",
+                "semanticRole": "settings-form",
+                "resourceRef": {
+                  "id": "res_primitive_input",
+                  "slug": "input",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Notification preferences",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
+                }
+              },
+              {
+                "id": "node-screen-settings-save-footer-4",
+                "nodeType": "section",
+                "semanticRole": "save-footer",
+                "resourceRef": {
+                  "id": "res_mot_magnetic_button",
+                  "slug": "magnetic-button",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Save preferences",
+                  "disabled": true,
+                  "title": "Connect the exported application to your backend to enable this action."
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "split-dock"
+        },
+        "dnaOverrides": {
+          "professionalism": 96,
+          "playfulness": 8,
+          "curvature": 12,
+          "motion": 10
+        }
+      }
+    },
+    {
+      "id": "screen-sign-in",
+      "screenNodeId": "screen-sign-in",
+      "name": "Sign In",
+      "slug": "/sign-in",
+      "rootNode": {
+        "id": "root-screen-sign-in",
+        "nodeType": "layout",
+        "semanticRole": "workspace-dock-shell",
+        "children": [
+          {
+            "id": "node-screen-sign-in-auth-card-1",
+            "nodeType": "section",
+            "semanticRole": "auth-card",
+            "resourceRef": {
+              "id": "res_primitive_input",
+              "slug": "input",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "label": "Work email",
+              "helperText": "Example field. Connect persistence and your backend in the exported application."
+            }
+          },
+          {
+            "id": "container-screen-sign-in-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-sign-in-auth-footer-2",
+                "nodeType": "section",
+                "semanticRole": "auth-footer",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Authentication backend required",
+                  "disabled": true,
+                  "title": "Connect the exported application to your backend to enable this action."
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     }
   ],
   "navigation": {
-    "model": "split-horizontal",
+    "model": "rail",
     "primaryItems": [
       {
-        "label": "Residences",
-        "targetScreenId": "node-marketing-home"
+        "label": "Marketing Home",
+        "targetScreenId": "screen-marketing-home"
       },
       {
-        "label": "Editorial",
-        "targetScreenId": "node-blog"
+        "label": "Overview Dashboard",
+        "targetScreenId": "screen-overview"
       },
       {
-        "label": "Story",
-        "targetScreenId": "node-case-study"
+        "label": "Article Directory",
+        "targetScreenId": "screen-collection-index"
+      },
+      {
+        "label": "Article Detail",
+        "targetScreenId": "screen-entity-detail"
+      },
+      {
+        "label": "Settings & Preferences",
+        "targetScreenId": "screen-settings"
+      },
+      {
+        "label": "Sign In",
+        "targetScreenId": "screen-sign-in"
       }
     ]
   },
   "assets": [],
   "locks": [],
   "historyMeta": {
-    "totalOperations": 12,
-    "headRevision": 1
+    "totalOperations": 0,
+    "headRevision": 0
   },
   "exportSettings": {
     "framework": "react",

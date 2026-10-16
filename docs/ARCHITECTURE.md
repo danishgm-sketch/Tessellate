@@ -1,5 +1,8 @@
 # Tessellate Architecture
 
+> Current operating state (2026-10-16): D-041 retains the owner-authorized optional laptop Docker API/local D1/CPU host; D-042 freezes expansion. Static Astro/browser-local Core remains independent. Existing Sites packaging is an isolated hosting adapter, not a new app stack. Cloud D1/R2, GitHub OAuth and a permanent laptop tunnel are configuration-dependent, not proven live by these historical launch plans. All deployment/pricing assertions below are architectural targets until verified.
+
+
 ## 1. Architecture objective
 
 Tessellate must deliver a large, sophisticated product while remaining inexpensive to operate. The architecture therefore maximises:

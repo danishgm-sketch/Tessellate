@@ -1,5 +1,8 @@
 # Tessellate Deployment and Cost Architecture
 
+> Current operating state (2026-10-16): D-041 retains the owner-authorized optional laptop Docker API/local D1/CPU host; D-042 freezes expansion. Static Astro/browser-local Core remains independent. Existing Sites packaging is an isolated hosting adapter, not a new app stack. Cloud D1/R2, GitHub OAuth and a permanent laptop tunnel are configuration-dependent, not proven live by these historical launch plans. All deployment/pricing assertions below are architectural targets until verified.
+
+
 ## 1. Hard requirement
 
 Before deliberate commercial scaling, recurring platform infrastructure must remain below **£20/month**, with a normal early-stage target of **£0–£8/month**.

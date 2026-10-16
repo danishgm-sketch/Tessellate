@@ -7,8 +7,8 @@
     "dev": "pnpm -r --parallel run dev",
     "build:catalog": "tsx scripts/build-catalog.ts",
     "build": "pnpm build:catalog && pnpm -r run build",
-    "typecheck": "pnpm -r --parallel run typecheck",
-    "lint": "eslint .",
+    "typecheck": "pnpm -r --workspace-concurrency=4 run typecheck",
+    "lint": "eslint . --max-warnings=51",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -19,7 +19,7 @@
     "audit:licenses": "tsx scripts/audit-license-provenance.ts",
     "audit:secrets": "tsx scripts/audit-security-secrets.ts",
     "audit:budgets": "tsx scripts/audit-bundle-budgets.ts",
-    "audit:all": "tsx scripts/verify-release-gate.ts && tsx scripts/audit-bundle-budgets.ts && tsx scripts/audit-license-provenance.ts && tsx scripts/audit-security-secrets.ts"
+    "audit:all": "pnpm audit:release-gate && pnpm build && pnpm audit:budgets && pnpm audit:licenses && pnpm audit:secrets"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
