@@ -39,6 +39,12 @@ the gateway key in a PUBLIC variable or client bundle. The proxy excludes host
 control routes, rejects cross-origin mutations, restricts forwarded cookies,
 and times out unreachable connections after three seconds.
 
+The ordinary Astro static preview has no server-side gateway, so laptop
+inference is shown as unavailable there and does not probe a local port. Use the
+Sites runtime with its server-side backend settings to exercise Docker-backed
+inference. The catalogue, composition, browser-local editing, deterministic
+commands and exports continue to work in the Astro preview.
+
 Host heartbeat expires after 15 seconds. Host-dependent commands reject offline
 requests without mutating the project. Existing recognized deterministic commands
 and browser-local editing remain available. Unsupported prompts never silently

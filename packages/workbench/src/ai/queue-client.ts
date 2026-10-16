@@ -10,18 +10,27 @@ export interface QueueExecutionResult {
   tokenNumber?: number; usedFallback: boolean; error?: string;
 }
 export interface HostHealth { apiOnline: boolean; hostOnline: boolean; pendingTasks: number }
-const API_BASE = typeof window !== 'undefined' && window.location.hostname === 'localhost' ? 'http://localhost:8787' : '';
+const OFFLINE_HEALTH: HostHealth = { apiOnline: false, hostOnline: false, pendingTasks: 0 };
+function getApiBase(): string | null {
+  if (typeof window === 'undefined' || !['localhost', '127.0.0.1'].includes(window.location.hostname)) return '';
+  if (window.location.port === '4323') return ''; // Local Sites Worker owns the server-side proxy.
+  return null;
+}
 const unavailable = (message: string): QueueExecutionResult => ({ success: false, mutations: [], explanation: message, usedFallback: false, error: message });
 
 export async function checkHostHealth(): Promise<HostHealth> {
+  const apiBase = getApiBase();
+  // The static Astro preview has no server-side API proxy. Avoid probing a
+  // laptop service the user has not explicitly enabled for local development.
+  if (apiBase === null) return OFFLINE_HEALTH;
   try {
-    const response = await fetch(`${API_BASE}/api/inference/health`, { signal: AbortSignal.timeout(4000), cache: 'no-store' });
+    const response = await fetch(`${apiBase}/api/inference/health`, { signal: AbortSignal.timeout(4000), cache: 'no-store' });
     if (response.ok) {
       const data = await response.json() as Partial<HostHealth>;
       return { apiOnline: data.apiOnline === true, hostOnline: data.hostOnline === true, pendingTasks: typeof data.pendingTasks === 'number' ? data.pendingTasks : 0 };
     }
   } catch { /* A sleeping laptop or stopped Docker is an explicit offline state. */ }
-  return { apiOnline: false, hostOnline: false, pendingTasks: 0 };
+  return OFFLINE_HEALTH;
 }
 
 export async function executeQueuedCommand(manifest: ProjectManifest, activeScreenId: string, userPrompt: string, onProgress?: QueueProgressCallback): Promise<QueueExecutionResult> {
@@ -29,21 +38,25 @@ export async function executeQueuedCommand(manifest: ProjectManifest, activeScre
   if (!prompt) return unavailable('Prompt cannot be empty.');
   const screen = manifest.screens.find(item => item.id === activeScreenId);
   if (!screen) return unavailable('Select a screen before issuing a command.');
-  onProgress?.({ status: 'checking', message: 'Checking laptop availability…' });
-  const health = await checkHostHealth();
   const local = tryDeterministicCommandMatch(manifest, activeScreenId, prompt);
   if (local) {
       const plan = planMutationsFromIntent(manifest, activeScreenId, local);
       onProgress?.({ status: 'fallback', message: 'Local deterministic command' });
       return { success: true, command: local, mutations: plan.mutations, explanation: `[Deterministic Engine] ${plan.explanation}`, usedFallback: true };
   }
+  onProgress?.({ status: 'checking', message: 'Checking laptop availability…' });
+  const health = await checkHostHealth();
   if (!health.hostOnline) {
-    const message = 'Laptop inference is unavailable. Start Docker and the Tessellate host containers, or use the local inspector and deterministic commands.';
+    const message = getApiBase() === null
+      ? 'Laptop inference is not connected to this local Astro preview. Use the configured Sites runtime; local inspection and deterministic commands remain available.'
+      : 'Laptop inference is unavailable. The Site backend and this laptop’s Docker host must be running; local inspection and deterministic commands remain available.';
     onProgress?.({ status: 'unavailable', message });
     return unavailable(message);
   }
   try {
-    const submitted = await fetch(`${API_BASE}/api/inference/queue`, {
+    const apiBase = getApiBase();
+    if (apiBase === null) return unavailable('Laptop inference is not configured for this local preview. Use the Sites runtime or explicitly enable the local development backend.');
+    const submitted = await fetch(`${apiBase}/api/inference/queue`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ prompt, screenAst: screen.rootNode, designDna: manifest.designDNA }),
       signal: AbortSignal.timeout(5000),
@@ -55,7 +68,7 @@ export async function executeQueuedCommand(manifest: ProjectManifest, activeScre
     const started = Date.now();
     while (Date.now() - started < 45000) {
       await new Promise(resolve => setTimeout(resolve, 750));
-      const status = await fetch(`${API_BASE}/api/inference/status/${encodeURIComponent(ticket.ticketId)}`, { headers: { Authorization: `Bearer ${ticket.accessToken}` }, signal: AbortSignal.timeout(5000), cache: 'no-store' });
+      const status = await fetch(`${apiBase}/api/inference/status/${encodeURIComponent(ticket.ticketId)}`, { headers: { Authorization: `Bearer ${ticket.accessToken}` }, signal: AbortSignal.timeout(5000), cache: 'no-store' });
       if (!status.ok) throw new Error('Laptop connection was lost. Your project has not been changed; the request may be retried when the host is available.');
       const data = await status.json() as { status: string; resultCommand?: unknown; errorMessage?: string; position?: number };
       if (data.status === 'failed') throw new Error(data.errorMessage ?? 'Laptop inference failed. Your project has not been changed.');

@@ -152,18 +152,18 @@ export function CommandBar() {
             }
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
-            className="w-full bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] rounded-xl px-3.5 py-2 text-xs text-[#111217] dark:text-[#F5F7FA] placeholder-[#8B8F97] focus:outline-none focus:border-[#2547E8] dark:focus:border-[#6782FF] transition-colors pr-10 font-sans"
+            className="w-full bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] rounded-xl px-3.5 py-2 text-xs text-[#111217] dark:text-[#F5F7FA] placeholder-[#8B8F97] focus:outline-none focus:border-[#2547E8] dark:focus:border-[#6782FF] transition-colors font-sans"
           />
-          <button
-            type="submit"
-            aria-label="Execute command"
-            disabled={isProcessing}
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8B8F97] hover:text-[#111217] dark:hover:text-[#F5F7FA] transition-colors"
-            title="Execute command (Enter)"
-          >
-            <CornerDownLeft className="h-3.5 w-3.5" />
-          </button>
         </div>
+        <button
+          type="submit"
+          aria-label="Execute command"
+          disabled={isProcessing}
+          className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#D9D6CF] dark:border-[#272C34] text-[#62666F] hover:text-[#111217] dark:hover:text-[#F5F7FA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#2547E8] transition-colors disabled:cursor-not-allowed"
+          title="Execute command (Enter)"
+        >
+          <CornerDownLeft className="h-3.5 w-3.5" />
+        </button>
       </form>
 
       <span data-testid="laptop-host-status" role="status" className="text-[10px] ml-2 shrink-0 text-[#62666F] dark:text-[#A8AFBA]" title="Host features require this laptop and Docker. Local deterministic controls remain available.">
