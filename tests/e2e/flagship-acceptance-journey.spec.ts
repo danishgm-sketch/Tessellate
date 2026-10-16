@@ -374,9 +374,9 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
       });
 
       // Launch standalone vite preview server
-      previewProcess = spawn('pnpm', ['exec', 'vite', 'preview', '--port', String(previewPort), '--strictPort'], {
+      const viteCli = path.join(tempDir, 'node_modules', 'vite', 'bin', 'vite.js');
+      previewProcess = spawn(process.execPath, [viteCli, 'preview', '--port', String(previewPort), '--strictPort'], {
         cwd: tempDir,
-        shell: true,
         stdio: ['ignore', 'pipe', 'pipe'],
       });
 
