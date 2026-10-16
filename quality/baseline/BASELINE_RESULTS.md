@@ -53,12 +53,12 @@ At the tested source SHA, GitHub CI passed for push and pull-request events:
 - [Pull-request validation run 38915962926](https://github.com/danishgm-sketch/Tessellate/actions/runs/38915962926)
 - [Pull-request component security sandbox run 38915962822](https://github.com/danishgm-sketch/Tessellate/actions/runs/38915962822)
 
-The three GitHub Actions pins were then updated to Node 24-native major
-releases to remove the runner's Node 20 forced-runtime deprecation warning.
-The fresh-checkout command evidence above is for the unchanged application
-source at `a889396`; final CI on the action-update commit is required before
-the baseline programme step is closed. Its run URL and final SHA will be added
-after that CI result is green.
+The three GitHub Actions pins were updated to Node 24-native major releases.
+CI run `38918627430` passed on `c43b6e3` with those actions. GitHub then
+announced that `ubuntu-latest` will move to Ubuntu 26 on 2026-10-19, so the
+workflow is being pinned to `ubuntu-24.04`; the baseline remains open until CI
+passes on that runner-pinned commit. The fresh-checkout command evidence above
+is for the unchanged application source at `a889396`.
 
 ## Remaining accepted warnings
 
@@ -73,8 +73,9 @@ after that CI result is green.
   runner variables. This comes from the test process environment, not browser
   console output or the application.
 - GitHub's old action pins emitted a forced Node 24 warning and setup-tool
-  dependency deprecations. The action pins are updated; verify their result in
-  final CI before closing step 02.
+  dependency deprecations. The action pins are updated and their CI run passed.
+  The announced runner-image migration is handled by the pending
+  `ubuntu-24.04` pin and will be reverified before closing step 02.
 
 This baseline is a repository gate only. It does not certify the deployed Site,
 semantic composition quality, every route, or every Workbench operation.
