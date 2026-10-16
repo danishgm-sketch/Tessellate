@@ -32,9 +32,10 @@ corresponding source fixes have passing regression evidence:
 | BASE-007 | Executed Axe/browser checks pass, including Workbench and command accessibility regressions.                        | Fixed |
 | BASE-008 | Both export-browser suites pass without `DEP0190`; the independent install/build/runtime assertions remain enabled. | Fixed |
 
-The updated Node 24-native GitHub Action pins are a separate CI maintenance
-change. The baseline programme checkboxes remain open until CI passes on that
-workflow-update SHA.
+The Node 24-native GitHub Action pins and Ubuntu 24.04 runner passed on
+`628c05d`; both required PR validation and the component security workflow are
+green. These baseline defects are closed. Deployed product and feature-quality
+defects remain open for their ordered programme gates.
 
 Transient evidence: one external npm registry ECONNRESET interrupted the first
 standalone install; no assertion was skipped. Subsequent independent installation

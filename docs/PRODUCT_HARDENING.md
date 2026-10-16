@@ -14,9 +14,9 @@ Legacy branches are evidence/reference, never parallel sources of product truth.
 
 Do not advance a checkbox merely because code exists. Record evidence and defects.
 
-- [ ] 01 Canonicalise repository — reconcile source branches, ADRs, README, PR policy.
-- [ ] 02 Establish green baseline — all commands below, fresh checkout, green CI.
-- [ ] 03 Inventory every existing feature in `CURRENT_PRODUCT_INVENTORY.md`.
+- [x] 01 Canonicalise repository — reconcile source branches, ADRs, README, PR policy.
+- [x] 02 Establish green baseline — all commands below, fresh checkout, green CI.
+- [x] 03 Inventory every existing feature in `CURRENT_PRODUCT_INVENTORY.md`.
 - [ ] 04 Classify Core / Beta / Lab, with visible labels and safe isolation.
 - [ ] 05 Freeze and test contracts/schemas, versions, migrations and round trips.
 - [ ] 06 Certify all 324 resources; Gold requires browser evidence, not metadata.

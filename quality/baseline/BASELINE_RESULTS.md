@@ -52,13 +52,15 @@ At the tested source SHA, GitHub CI passed for push and pull-request events:
 - [Push validation run 38915954400](https://github.com/danishgm-sketch/Tessellate/actions/runs/38915954400)
 - [Pull-request validation run 38915962926](https://github.com/danishgm-sketch/Tessellate/actions/runs/38915962926)
 - [Pull-request component security sandbox run 38915962822](https://github.com/danishgm-sketch/Tessellate/actions/runs/38915962822)
+- [Final push validation run 38919580487](https://github.com/danishgm-sketch/Tessellate/actions/runs/38919580487)
+- [Final pull-request validation run 38919590335](https://github.com/danishgm-sketch/Tessellate/actions/runs/38919590335)
+- [Final component security sandbox run 38919590153](https://github.com/danishgm-sketch/Tessellate/actions/runs/38919590153)
 
-The three GitHub Actions pins were updated to Node 24-native major releases.
-CI run `38918627430` passed on `c43b6e3` with those actions. GitHub then
-announced that `ubuntu-latest` will move to Ubuntu 26 on 2026-10-19, so the
-workflow is being pinned to `ubuntu-24.04`; the baseline remains open until CI
-passes on that runner-pinned commit. The fresh-checkout command evidence above
-is for the unchanged application source at `a889396`.
+The three GitHub Actions pins were updated to Node 24-native major releases,
+and the runner is pinned to `ubuntu-24.04`. Full CI passed on the resulting
+current SHA `628c05dc379f3ded3db7e832dbc367a19ef77520`, with both push and
+required PR checks green. The fresh-checkout command evidence above is for the
+unchanged application source at `a889396`.
 
 ## Remaining accepted warnings
 
@@ -72,10 +74,10 @@ is for the unchanged application source at `a889396`.
 - Local Playwright output reports conflicting `NO_COLOR` and `FORCE_COLOR`
   runner variables. This comes from the test process environment, not browser
   console output or the application.
-- GitHub's old action pins emitted a forced Node 24 warning and setup-tool
-  dependency deprecations. The action pins are updated and their CI run passed.
-  The announced runner-image migration is handled by the pending
-  `ubuntu-24.04` pin and will be reverified before closing step 02.
+- The GitHub runner starts with a pnpm v10 `PNPM_HOME` layout. pnpm/action-setup
+  refreshed the shims for v11 and installation plus all workflow stages passed.
+  This is accepted as a runner bootstrap notice; migrate the runner's PNPM_HOME
+  if the hosted image stops providing the compatibility refresh.
 
-This baseline is a repository gate only. It does not certify the deployed Site,
-semantic composition quality, every route, or every Workbench operation.
+Steps 01 and 02 are complete. This result does not certify deployed behavior or
+close any later feature-quality gate.
