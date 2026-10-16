@@ -247,9 +247,9 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
 
       // 3. Launch resulting preview server using vite preview
       const port = 4192;
-      previewProcess = spawn('pnpm', ['exec', 'vite', 'preview', '--port', String(port), '--strictPort'], {
+      const viteCli = path.join(tempDir, 'node_modules', 'vite', 'bin', 'vite.js');
+      previewProcess = spawn(process.execPath, [viteCli, 'preview', '--port', String(port), '--strictPort'], {
         cwd: tempDir,
-        shell: true,
         stdio: ['ignore', 'pipe', 'pipe'],
       });
 
