@@ -1,0 +1,7 @@
+---
+import PublicLayout from '../../layouts/PublicLayout.astro';
+import {readCatalogue} from '../../lib/catalogue';
+const catalogue=readCatalogue();
+const categories=[...new Set(catalogue.flatMap(resource=>resource.categories))];
+---
+<PublicLayout title="Catalogue signals" description="An inspectable snapshot of this resource vocabulary. Counts and DNA distributions come directly from catalogue metadata. This review does not collect popularity or usage analytics."><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">{categories.map(category=>{const resources=catalogue.filter(resource=>resource.categories.includes(category));return <article class="border border-[var(--tess-hairline)] p-6"><h2 class="capitalize text-xl font-semibold mb-3">{category}</h2><p class="font-mono text-3xl mb-3">{resources.length}</p><p class="text-sm mb-3">resources · average declared visual ambition {Math.round(resources.reduce((sum,resource)=>sum+(resource.visualDNA.visualAmbition??50),0)/resources.length)}</p><a href={`/explore?q=${encodeURIComponent(category)}`} class="underline">Inspect resources</a></article>;})}</div></PublicLayout>

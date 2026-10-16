@@ -135,7 +135,7 @@ export function DatavizStyler() {
 
       {/* Recipe Presets */}
       <div className="space-y-2">
-        <span className="block font-mono text-xs font-semibold uppercase text-[#8B8F97]">
+        <span className="block font-mono text-xs font-semibold uppercase text-[var(--text-muted)]">
           Chart Recipes
         </span>
         <div className="flex flex-wrap gap-2">
@@ -147,7 +147,7 @@ export function DatavizStyler() {
               className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                 recipe === p.id
                   ? 'border-[#111217] bg-[#111217] text-white shadow-sm'
-                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#8B8F97]'
+                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#62666F]'
               }`}
             >
               {p.name}
@@ -173,7 +173,7 @@ export function DatavizStyler() {
                 setShowGrid(true);
                 setCurveType('smooth');
               }}
-              className="text-xs font-mono text-[#8B8F97] hover:text-[#111217] flex items-center gap-1"
+              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
             >
               <RotateCcw className="h-3 w-3" />
               <span>Reset</span>
@@ -209,7 +209,7 @@ export function DatavizStyler() {
               <span className="text-[#111217]">Data Density Bias</span>
               <span className="font-mono text-[#62666F]">{densityScore}/100</span>
             </div>
-            <input
+            <input aria-label="Data density"
               type="range"
               min="20"
               max="95"
@@ -226,7 +226,7 @@ export function DatavizStyler() {
               <span className="text-[#111217]">Telemetry Stroke Width</span>
               <span className="font-mono text-[#62666F]">{strokeWidth}px</span>
             </div>
-            <input
+            <input aria-label="Chart stroke width"
               type="range"
               min="1"
               max="5"
@@ -240,7 +240,7 @@ export function DatavizStyler() {
           {/* Grid lines toggle */}
           <div className="pt-2 border-t border-[#D9D6CF] flex items-center justify-between">
             <span className="text-xs font-medium text-[#111217]">Cartesian Hairline Grid</span>
-            <input
+            <input aria-label="Show grid"
               type="checkbox"
               checked={showGrid}
               onChange={(e) => setShowGrid(e.target.checked)}
@@ -256,7 +256,7 @@ export function DatavizStyler() {
                 type="button"
                 onClick={() => setThemeMode('light')}
                 className={`px-2 py-1 text-xs rounded font-medium ${
-                  themeMode === 'light' ? 'bg-white shadow text-[#111217]' : 'text-[#8B8F97]'
+                  themeMode === 'light' ? 'bg-white shadow text-[#111217]' : 'text-[var(--text-muted)]'
                 }`}
               >
                 Light
@@ -265,7 +265,7 @@ export function DatavizStyler() {
                 type="button"
                 onClick={() => setThemeMode('dark')}
                 className={`px-2 py-1 text-xs rounded font-medium ${
-                  themeMode === 'dark' ? 'bg-[#0B0D10] shadow text-white' : 'text-[#8B8F97]'
+                  themeMode === 'dark' ? 'bg-[#0B0D10] shadow text-white' : 'text-[var(--text-muted)]'
                 }`}
               >
                 Dark
@@ -285,7 +285,7 @@ export function DatavizStyler() {
           >
             <div
               className={`flex items-center justify-between pb-3 text-xs font-mono border-b mb-4 ${
-                themeMode === 'dark' ? 'border-[#272B33] text-[#8B8F97]' : 'border-[#D9D6CF] text-[#8B8F97]'
+                themeMode === 'dark' ? 'border-[#272B33] text-[var(--text-muted)]' : 'border-[#D9D6CF] text-[var(--text-muted)]'
               }`}
             >
               <span>SVG VECTOR RENDER ENGINE</span>

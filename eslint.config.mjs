@@ -7,11 +7,15 @@ export default tseslint.config(
   {
     ignores: [
       '**/dist/**',
+      '**/.static/**',
+      '**/.wrangler/**',
       '**/build/**',
       '**/.astro/**',
-      '**/.wrangler/**',
       '**/node_modules/**',
       '**/coverage/**',
+      '**/test-results/**',
+      '**/playwright-report/**',
+      'audit/evidence/**/standalone/**',
     ],
   },
   {

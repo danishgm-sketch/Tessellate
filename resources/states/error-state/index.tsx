@@ -36,22 +36,22 @@ export function ErrorState({
   return (
     <div
       role="alert"
-      className={`p-6 md:p-8 rounded-xl border max-w-4xl mx-auto space-y-4 transition-colors ${containerBg}`}
+      className={`p-6 @md:p-8 rounded-[var(--tess-radius-xl,8px)] border max-w-4xl mx-auto space-y-4 transition-colors ${containerBg}`}
     >
       <div className="flex items-center gap-3">
-        <span className={`w-10 h-10 rounded-xl flex items-center justify-center border font-bold text-lg ${badgeColor}`}>
+        <span className={`w-10 h-10 rounded-[var(--tess-radius-xl,8px)] flex items-center justify-center border font-bold text-lg ${badgeColor}`}>
           ⚠️
         </span>
         <div>
           <h3 className="text-base font-bold tracking-tight text-red-600 dark:text-red-400">
             {title}
           </h3>
-          <p className="text-xs text-neutral-500">{errorMessage}</p>
+          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">{errorMessage}</p>
         </div>
       </div>
 
       {codeSnippet && (
-        <pre className="p-3 rounded-lg bg-neutral-950 text-neutral-300 text-xs font-mono overflow-x-auto">
+        <pre className="p-3 rounded-[var(--tess-radius-lg,8px)] bg-neutral-950 text-neutral-300 text-xs font-mono overflow-x-auto">
           {codeSnippet}
         </pre>
       )}
@@ -59,7 +59,7 @@ export function ErrorState({
       <div className="pt-2 flex gap-3">
         <button
           onClick={onRetry}
-          className="px-4 py-2 text-xs font-semibold rounded-lg bg-red-600 text-white hover:bg-red-700"
+          className="px-4 py-2 text-xs font-semibold rounded-[var(--tess-radius-lg,8px)] bg-red-600 text-white hover:bg-red-700"
         >
           Retry Operation
         </button>

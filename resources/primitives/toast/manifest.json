@@ -83,7 +83,9 @@
   },
   "preview": {
     "component": "ToastPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "title": "Example notification"
+    },
     "viewport": 1440
   },
   "slots": [

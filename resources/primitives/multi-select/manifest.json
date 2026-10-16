@@ -83,7 +83,17 @@
   },
   "preview": {
     "component": "MultiSelectPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "label": "Choose teams",
+      "options": [
+        "Engineering",
+        "People",
+        "Product"
+      ],
+      "selected": [
+        "People"
+      ]
+    },
     "viewport": 1440
   },
   "slots": [

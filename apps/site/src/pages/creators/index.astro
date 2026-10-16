@@ -1,0 +1,7 @@
+---
+import PublicLayout from '../../layouts/PublicLayout.astro';
+import {readCatalogue} from '../../lib/catalogue';
+const catalogue=readCatalogue();
+const creators=[...new Map(catalogue.map(resource=>[resource.creator.id,resource.creator])).values()];
+---
+<PublicLayout title="Resource creators" description="Attribution from the canonical catalogue. Resource counts represent published files in this version; no usage or popularity counts are inferred."><div class="grid sm:grid-cols-2 gap-6">{creators.map(creator=><article class="border border-[var(--tess-hairline)] p-6"><h2 class="text-xl font-semibold mb-2">{creator.displayName}</h2><p class="text-sm mb-4">{catalogue.filter(resource=>resource.creator.id===creator.id).length} published resources</p><ul class="grid sm:grid-cols-2 gap-2 text-sm">{catalogue.filter(resource=>resource.creator.id===creator.id).map(resource=><li><a class="underline" href={`/r/${resource.slug}`}>{resource.name}</a></li>)}</ul></article>)}</div></PublicLayout>

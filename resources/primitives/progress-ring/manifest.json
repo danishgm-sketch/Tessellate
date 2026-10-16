@@ -83,7 +83,9 @@
   },
   "preview": {
     "component": "ProgressRingPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "value": 65
+    },
     "viewport": 1440
   },
   "slots": [

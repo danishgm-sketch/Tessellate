@@ -39,15 +39,15 @@ export function DonutChart({ variant = 'quiet' }: DonutChartProps) {
   let currentOffset = 0;
 
   return (
-    <div className={`w-full p-6 rounded-xl border flex flex-col transition-colors ${cardBg}`}>
+    <div className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col transition-colors ${cardBg}`}>
       <div className="flex items-center justify-between mb-4">
         <div>
           <h4 className="text-sm font-semibold tracking-tight">Subscription Shares</h4>
-          <p className="text-xs text-neutral-500">Tier revenue contribution</p>
+          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Tier revenue contribution</p>
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-8 py-4">
+      <div className="flex flex-col @sm:flex-row items-center justify-center gap-8 py-4">
         <div className="relative w-[180px] h-[180px] flex items-center justify-center select-none">
           <svg width={size} height={size} className="transform -rotate-90">
             {segments.map((seg, idx) => {

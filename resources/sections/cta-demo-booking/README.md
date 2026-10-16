@@ -1,3 +1,3 @@
 # CTA Demo Booking
 
-Interactive calendar slot picker for scheduling enterprise consultations.
+Example appointment selector. Times are illustrative; provide an `onBook` calendar integration before accepting bookings.

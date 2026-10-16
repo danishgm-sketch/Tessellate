@@ -20,31 +20,24 @@ test.describe('Critical Anonymous User Flows', () => {
 
   test('explore catalogue loads verified resource index and supports filtering', async ({ page }) => {
     await page.goto('/explore');
-    await expect(page).toHaveTitle(/Explore|Catalogue/i);
+    await expect(page).toHaveTitle(/Explore/);
 
     // Header and filter elements
     await expect(page.locator('h1')).toContainText('Explore Resource Library');
 
-    // Wait for catalogue to be ready
-    const searchInput = page.locator('input[placeholder*="Search"]').first();
-    await expect(searchInput).toBeVisible();
-    await page.waitForTimeout(500);
-    await searchInput.fill('button');
-    await page.waitForTimeout(500);
-    await expect(page.locator('text=Button').first()).toBeVisible();
+    await expect(page.getByText('Showing 50 resources',{exact:true})).toBeVisible();
+    await page.getByLabel('Search catalogue').fill('advanced data table');
+    await expect(page.getByRole('link',{name:'Advanced Data Table',exact:true})).toBeVisible();
+    await expect(page).toHaveURL(/q=advanced/);
   });
 
   test('showcases gallery presents 8 distinct systems and inspects Design DNA', async ({ page }) => {
     await page.goto('/showcases');
-    await expect(page).toHaveTitle(/Showcase/i);
-
-    // Page title and subtitle
-    await expect(page.locator('h1').first()).toContainText('Distinct Systems');
-
-    // Verify presence of showcase card elements
-    const workbenchLink = page.locator('a[href*="/workbench?showcase="]').first();
-    await expect(workbenchLink).toBeVisible({ timeout: 10000 });
-    await expect(page.locator('text=Inspect in Workbench').first()).toBeVisible();
+    await expect(page).toHaveTitle(/Showcase projects/);
+    await expect(page.locator('main article')).toHaveCount(8);
+    await page.getByRole('link',{name:'Explore example →'}).first().click();
+    await expect(page.locator('a[href*="workbench?showcase="]')).toBeVisible();
+    await expect(page.locator('[data-screen-id]').first()).toBeVisible();
   });
 
   test('workbench route loads dark studio workspace and Design DNA inspector', async ({ page }) => {
@@ -55,14 +48,9 @@ test.describe('Critical Anonymous User Flows', () => {
     const body = page.locator('body');
     await expect(body).toBeVisible();
 
-    // Verify workbench toolbar or canvas
-    await expect(
-      page.locator('[data-testid="top-toolbar"]')
-        .or(page.locator('[data-testid="workbench-canvas"]'))
-        .or(page.locator('button:has-text("Inspect")'))
-        .or(page.locator('text=Local'))
-        .first()
-    ).toBeVisible();
+    // Verify workbench title or key controls
+    await expect(page.getByTestId('top-toolbar')).toBeVisible();
+    await expect(page.locator('[data-screen-id]').first()).toBeVisible();
   });
 
   test('production error state: 404 page renders cleanly with recovery links', async ({ page }) => {

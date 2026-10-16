@@ -1,0 +1,2 @@
+import {test,expect} from '@playwright/test';import AxeBuilder from '@axe-core/playwright';
+test('registry command is keyboard scrollable on mobile',async({page})=>{await page.setViewportSize({width:390,height:844});await page.goto('/docs/registry/');const axe=await new AxeBuilder({page}).options({preload:false}).include('main').withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze();expect(axe.violations).toEqual([]);await page.locator('pre').focus();await expect(page.locator('pre')).toBeFocused();});

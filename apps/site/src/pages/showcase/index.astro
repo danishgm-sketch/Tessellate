@@ -1,0 +1,5 @@
+---
+import PublicLayout from '../../layouts/PublicLayout.astro';
+import {SHOWCASE_PROJECTS} from '@tessellate/composer';
+---
+<PublicLayout title="Showcase projects" description="Eight example products composed from validated open resources. Each has an interactive preview, inspectable manifest and a local Workbench handoff. Sample data is demonstration content."><div class="grid sm:grid-cols-2 gap-6">{SHOWCASE_PROJECTS.map(showcase=><article class="border border-[var(--tess-hairline)] p-6"><p class="font-mono text-xs mb-3">{showcase.dnaPresetName}</p><h2 class="text-2xl font-semibold mb-3"><a href={`/showcase/${showcase.id}/`} class="hover:underline">{showcase.name}</a></h2><p class="text-sm mb-6">{showcase.tagline}</p><a class="underline" href={`/showcase/${showcase.id}/`}>Explore example →</a></article>)}</div></PublicLayout>

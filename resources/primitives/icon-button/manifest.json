@@ -83,7 +83,9 @@
   },
   "preview": {
     "component": "IconButtonPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "aria-label": "Example icon action"
+    },
     "viewport": 1440
   },
   "slots": [

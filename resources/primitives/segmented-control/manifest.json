@@ -82,7 +82,19 @@
   },
   "preview": {
     "component": "SegmentedControlPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "options": [
+        {
+          "value": "first",
+          "label": "First option"
+        },
+        {
+          "value": "second",
+          "label": "Second option"
+        }
+      ],
+      "value": "first"
+    },
     "viewport": 1440
   },
   "slots": [

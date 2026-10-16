@@ -52,7 +52,6 @@ export function AIFileContextPicker({ variant = 'quiet' }: AIFileContextPickerPr
           return (
             <div
               key={f.path}
-              onClick={() => toggle(f.path)}
               className={`flex items-center justify-between p-3 rounded-lg border text-xs cursor-pointer transition-colors ${
                 isChecked
                   ? 'border-neutral-900 bg-neutral-50 dark:border-white dark:bg-neutral-800'
@@ -60,7 +59,7 @@ export function AIFileContextPicker({ variant = 'quiet' }: AIFileContextPickerPr
               }`}
             >
               <div className="flex items-center gap-2.5">
-                <input type="checkbox" checked={isChecked} readOnly className="rounded" />
+                <input aria-label={`Select ${f.path}`} type="checkbox" checked={isChecked} onChange={()=>toggle(f.path)} className="rounded" />
                 <span className="font-mono">{f.path}</span>
               </div>
               <div className="flex items-center gap-3 text-neutral-400 font-mono text-[11px]">

@@ -19,25 +19,25 @@ export function TwoPaneMasterDetailShell({ variant = 'quiet' }: TwoPaneMasterDet
   ];
 
   return (
-    <div className={`h-screen flex divide-x text-xs ${theme}`}>
-      <div className="w-80 p-4 space-y-2 shrink-0">
+    <div className={`min-h-screen @container flex flex-col @lg:flex-row divide-y @lg:divide-y-0 @lg:divide-x text-xs ${theme}`}>
+      <div className="w-full @lg:w-80 p-4 space-y-2 shrink-0">
         <span className="font-semibold block mb-2">Incidents Queue</span>
         {items.map((it) => (
-          <div
+          <button type="button" aria-pressed={it.id===selected}
             key={it.id}
             onClick={() => setSelected(it.id)}
-            className={`p-3 rounded-lg border cursor-pointer transition-colors ${
+            className={`w-full text-left p-3 rounded-[var(--tess-radius-lg,8px)] border cursor-pointer transition-colors ${
               it.id === selected ? 'border-neutral-900 dark:border-white bg-neutral-50 dark:bg-neutral-800' : 'border-transparent hover:bg-neutral-50'
             }`}
           >
             <p className="font-medium">{it.title}</p>
             <p className="text-[10px] opacity-50 mt-1">{it.time}</p>
-          </div>
+          </button>
         ))}
       </div>
-      <div className="flex-1 p-8 space-y-4">
+      <div className="min-w-0 flex-1 p-4 @lg:p-8 space-y-4">
         <h2 className="text-base font-semibold">Incident Details (ID: {selected})</h2>
-        <p className="text-neutral-500 leading-relaxed">Telemetry metrics indicate node threshold normalization.</p>
+        <p className="text-[var(--tess-ink-muted,#62666F)] leading-relaxed">Telemetry metrics indicate node threshold normalization.</p>
       </div>
     </div>
   );

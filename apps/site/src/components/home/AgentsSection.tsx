@@ -43,39 +43,38 @@ export function AgentsSection() {
         </div>
 
         {/* Right Column Code / Terminal Mock */}
-        <div className="lg:col-span-6 rounded-2xl border border-[#D9D6CF] bg-[#111217] p-6 text-white font-mono text-xs shadow-xl space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[#8B8F97]">
+        <div className="dark lg:col-span-6 rounded-2xl border border-[#D9D6CF] bg-[#111217] p-6 text-white font-mono text-xs shadow-xl space-y-4">
+          <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[var(--text-muted)]">
             <div className="flex items-center gap-2">
               <Terminal className="h-4 w-4 text-[#C9FF57]" />
-              <span>AGENT_HANDOFF.json</span>
+              <span>ProjectManifest excerpt</span>
             </div>
-            <span className="text-[10px] text-[#C9FF57]">VALIDATED SCHEMA</span>
+            <span className="text-[10px] text-[#C9FF57]">ILLUSTRATIVE EXCERPT</span>
           </div>
 
           <pre className="text-white/90 overflow-x-auto leading-relaxed text-[11px]" tabIndex={0} aria-label="AGENT_HANDOFF JSON specification">
 {`{
-  "$schema": "https://tessellate.dev/schemas/v1/project.json",
-  "name": "Market Intelligence Terminal",
+  "schemaVersion": "1.0.0",
+  "name": "Employee experience",
   "productModel": {
-    "archetype": "fintech-telemetry",
-    "userSophistication": 88,
-    "accessibilityFloor": "AA"
+    "productArchetypes": [
+      { "tag": "recruitment", "weight": 100 }
+    ]
   },
   "designDNA": {
-    "contrast": 92,
-    "curvature": 0,
-    "motion": 15,
-    "geometryFamily": "sharp"
+    "professionalism": 80,
+    "playfulness": 55,
+    "visualAmbition": 40,
+    "structuralCreativity": 85
   },
-  "mutations": [
-    { "type": "LOCK_NODE", "targetId": "navigation" },
-    { "type": "RECOMPOSE_SCREEN", "screenId": "dashboard" }
+  "screens": [
+    { "name": "Team Overview", "slug": "/overview" }
   ]
-}`}
+}}`}
           </pre>
 
-          <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-[#8B8F97]">
-            <span>Deterministic Mutation Planner Ready</span>
+          <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[11px] text-[var(--text-muted)]">
+            <span>Example fields · complete contracts in Docs</span>
             <span className="text-white">v0.1.0</span>
           </div>
         </div>

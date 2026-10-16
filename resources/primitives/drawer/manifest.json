@@ -83,7 +83,11 @@
   },
   "preview": {
     "component": "DrawerPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "open": true,
+      "title": "Example drawer",
+      "children": "Example details and controls."
+    },
     "viewport": 1440
   },
   "slots": [

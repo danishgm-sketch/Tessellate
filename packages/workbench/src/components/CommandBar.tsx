@@ -5,6 +5,7 @@ import { executeQueuedCommand } from '../ai/queue-client.js';
 import { Terminal, CornerDownLeft, Cpu } from 'lucide-react';
 
 export function CommandBar() {
+  const lastActionMessage = useWorkbenchStore((state) => state.lastActionMessage);
   const manifest = useWorkbenchStore((state) => state.manifest);
   const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
@@ -159,9 +160,9 @@ export function CommandBar() {
           <span className="text-indigo-600 dark:text-indigo-400 font-medium">
             {queueStatus.message}
           </span>
-        ) : feedback ? (
+        ) : feedback || lastActionMessage ? (
           <span className="text-[#2547E8] dark:text-[#6782FF] font-semibold animate-fade-in">
-            {feedback}
+            {feedback ?? lastActionMessage}
           </span>
         ) : (
           <div className="flex items-center gap-2">

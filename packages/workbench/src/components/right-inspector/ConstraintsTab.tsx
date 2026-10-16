@@ -37,7 +37,7 @@ export function ConstraintsTab() {
             </span>
             <button
               onClick={() => unlockAllNodeLocks(selectedNode.id)}
-              className="text-[10px] text-[#2547E8] dark:text-[#6782FF] hover:underline"
+              className="text-[10px] text-[#2547E8] dark:text-[#879DFF] hover:underline"
             >
               Unlock All
             </button>
@@ -47,10 +47,10 @@ export function ConstraintsTab() {
             {lockTypes.map(({ key, label, desc }) => {
               const isLocked = Boolean(selectedNode.locks?.[key]);
               return (
-                <div
+                <button type="button" aria-pressed={isLocked} aria-label={label}
                   key={key}
                   onClick={() => toggleNodeLock(selectedNode.id, key)}
-                  className={`flex items-start justify-between p-2.5 rounded-xl border cursor-pointer transition-all ${
+                  className={`w-full text-left flex items-start justify-between p-2.5 rounded-xl border cursor-pointer transition-all ${
                     isLocked
                       ? 'border-amber-400 bg-amber-50 dark:border-amber-700/60 dark:bg-amber-950/30'
                       : 'border-[#D9D6CF] bg-white dark:border-[#272C34] dark:bg-[#171B21] hover:border-neutral-400'
@@ -61,7 +61,7 @@ export function ConstraintsTab() {
                       {isLocked ? (
                         <Lock className="h-3 w-3 text-amber-600 dark:text-amber-400" />
                       ) : (
-                        <Unlock className="h-3 w-3 text-[#8B8F97]" />
+                        <Unlock className="h-3 w-3 text-[var(--text-muted)]" />
                       )}
                       <span>{label}</span>
                     </div>
@@ -71,18 +71,18 @@ export function ConstraintsTab() {
                     className={`rounded px-1.5 py-0.5 text-[9px] font-bold ${
                       isLocked
                         ? 'bg-amber-200 text-amber-900 dark:bg-amber-900 dark:text-amber-200'
-                        : 'bg-[#FAF9F6] text-[#8B8F97] dark:bg-[#0B0D10]'
+                        : 'bg-[#FAF9F6] text-[var(--text-muted)] dark:bg-[#0B0D10]'
                     }`}
                   >
                     {isLocked ? 'LOCKED' : 'FREE'}
                   </span>
-                </div>
+                </button>
               );
             })}
           </div>
         </div>
       ) : (
-        <div className="p-4 rounded-xl border border-dashed border-[#D9D6CF] dark:border-[#272C34] text-center text-[#8B8F97]">
+        <div className="p-4 rounded-xl border border-dashed border-[#D9D6CF] dark:border-[#272C34] text-center text-[var(--text-muted)]">
           Select a node to inspect and toggle local locks.
         </div>
       )}
@@ -97,13 +97,13 @@ export function ConstraintsTab() {
         <div className="space-y-2">
           <div className="flex items-center justify-between rounded-xl border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#171B21] p-2.5">
             <span className="text-[#62666F] dark:text-[#A8AFBA]">Accessibility Floor</span>
-            <span className="font-bold font-mono text-[#2547E8] dark:text-[#6782FF]">
+            <span className="font-bold font-mono text-[#2547E8] dark:text-[#879DFF]">
               WCAG {manifest.constraints.accessibilityFloor}
             </span>
           </div>
           <div className="flex items-center justify-between rounded-xl border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#171B21] p-2.5">
             <span className="text-[#62666F] dark:text-[#A8AFBA]">Performance Ceiling</span>
-            <span className="font-bold font-mono text-emerald-600 dark:text-emerald-400 capitalize">
+            <span className="font-bold font-mono text-emerald-700 dark:text-emerald-400 capitalize">
               {manifest.constraints.performanceCeiling}
             </span>
           </div>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Mark } from './mark.js';
 import { Sheet } from './sheet.js';
-import { Button } from './button.js';
 
 export interface HeaderProps {
   onSearchClick?: () => void;
@@ -24,7 +23,7 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[#D9D6CF] bg-[#F4F2ED]/90 backdrop-blur-md transition-colors dark:border-[#272C34] dark:bg-[#0B0D10]/90">
-      <div className="mx-auto flex h-16 max-w-[1480px] items-center justify-between px-6">
+      <div className="mx-auto flex h-16 max-w-[1480px] items-center justify-between px-3 sm:px-6">
         {/* Left: Mark + Brand + Desktop Nav */}
         <div className="flex items-center gap-8">
           <a href="/" className="flex items-center gap-2.5 text-[#111217] dark:text-[#F5F7FA]">
@@ -32,7 +31,7 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
             <span className="text-base font-semibold tracking-tight">Tessellate</span>
           </a>
 
-          <nav className="hidden lg:flex items-center gap-4 text-sm">
+          <nav className="hidden xl:flex items-center gap-4 text-sm">
             {navLinks.map((link) => {
               const isActive = currentPath === link.href || currentPath.startsWith(link.href + '/');
               return (
@@ -53,11 +52,11 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
         </div>
 
         {/* Right: Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           {/* Search Trigger */}
           <button
             type="button"
-            onClick={onSearchClick}
+            onClick={()=>onSearchClick ? onSearchClick() : window.location.assign('/explore?focus=search')}
             aria-label="Search resources (Press Command-K)"
             className="flex items-center gap-2 min-h-[32px] rounded-lg border border-[#D9D6CF] bg-[#FFFFFF] px-3 py-1.5 text-xs text-[#62666F] hover:border-[#C7C3BA] hover:text-[#111217] dark:border-[#272C34] dark:bg-[#111419] dark:text-[#A8AFBA] dark:hover:border-[#353C46] cursor-pointer"
           >
@@ -87,25 +86,21 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
           {/* Sign In */}
           <button
             type="button"
-            onClick={onSignInClick}
+            onClick={()=>onSignInClick ? onSignInClick() : window.location.assign('/workbench')}
             className="hidden sm:inline-flex items-center min-h-[32px] text-xs font-medium text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA] px-2.5 py-1 rounded-lg cursor-pointer"
           >
-            Sign in
+            {onSignInClick ? 'Sign in' : 'Local projects'}
           </button>
 
           {/* Primary CTA */}
-          <a href="/workbench" className="inline-flex items-center min-h-[32px]">
-            <Button size="sm" variant="primary">
-              Start building
-            </Button>
-          </a>
+          <a href="/compose" className="inline-flex items-center min-h-[32px] bg-[#2547E8] text-white rounded px-3 py-2 text-xs">Start building</a>
 
           {/* Mobile Menu Hamburger */}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
             aria-label="Open mobile navigation"
-            className="lg:hidden inline-flex items-center justify-center min-h-[36px] min-w-[36px] rounded-lg p-2 text-[#62666F] hover:bg-black/5 dark:text-[#A8AFBA]"
+            className="xl:hidden inline-flex items-center justify-center min-h-[36px] min-w-[36px] rounded-lg p-2 text-[#62666F] hover:bg-black/5 dark:text-[#A8AFBA]"
           >
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -128,11 +123,7 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
             </a>
           ))}
           <div className="mt-4 pt-4 border-t border-[#D9D6CF] dark:border-[#272C34] flex flex-col gap-3">
-            <a href="/workbench" className="w-full">
-              <Button size="md" variant="primary" className="w-full">
-                Start building
-              </Button>
-            </a>
+            <a href="/compose" className="w-full rounded bg-[#2547E8] text-white px-4 py-3 text-center">Start building</a>
           </div>
         </nav>
       </Sheet>
