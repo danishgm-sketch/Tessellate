@@ -28,12 +28,17 @@ export type TabId =
   | 'dependencies'
   | 'versions';
 
-export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
-  const [origin,setOrigin]=useState('');
-  const [copyStatus,setCopyStatus]=useState('');
-  useEffect(()=>setOrigin(window.location.origin),[]);
-  const install=`npx shadcn@latest add ${origin}/r/${manifest.slug}.json`;
-  const copy=()=>{void navigator.clipboard.writeText(install).then(()=>setCopyStatus('Install command copied.')).catch(cause=>setCopyStatus(`Copy failed: ${String(cause)}`));};
+export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
+  const [origin, setOrigin] = useState('');
+  const [copyStatus, setCopyStatus] = useState('');
+  useEffect(() => setOrigin(window.location.origin), []);
+  const install = `npx shadcn@latest add ${origin}/r/${manifest.slug}.json`;
+  const copy = () => {
+    void navigator.clipboard
+      .writeText(install)
+      .then(() => setCopyStatus('Install command copied.'))
+      .catch((cause) => setCopyStatus(`Copy failed: ${String(cause)}`));
+  };
   const [activeTab, setActiveTab] = useState<TabId>('intent');
 
   const tabs: Array<{ id: TabId; label: string; icon: React.ReactNode }> = [
@@ -66,11 +71,6 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
             >
               {tab.icon}
               <span>{tab.label}</span>
-              {tab.id === 'intent' && (
-                <span className="ml-1 text-[9px] font-mono px-1 py-0.2 rounded bg-amber-100 text-amber-800 font-bold">
-                  Core
-                </span>
-              )}
             </button>
           );
         })}
@@ -189,14 +189,20 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
                 Copy
               </button>
             </div>
-            <pre tabIndex={0} className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
+            <pre
+              tabIndex={0}
+              className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]"
+            >
               <code>{install}</code>
             </pre>
 
             <span className="text-[var(--tess-ink-secondary,#62666F)] block pt-2">
               Actual published source (React + Tailwind):
             </span>
-            <pre tabIndex={0} className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]">
+            <pre
+              tabIndex={0}
+              className="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 overflow-x-auto text-[11px]"
+            >
               <code>{sourceCode}</code>
             </pre>
           </div>
@@ -207,7 +213,8 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
         {activeTab === 'variants' && (
           <div className="space-y-4">
             <p className="text-xs text-[var(--tess-ink-secondary,#62666F)]">
-              The configurations declared by this resource are listed below. Inspect them in the live preview.
+              The configurations declared by this resource are listed below. Inspect them in the
+              live preview.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {manifest.variants.map((v) => (
@@ -249,8 +256,12 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
                 <tbody className="divide-y divide-[var(--tess-hairline,#D9D6CF)]">
                   {manifest.slots.map((slot) => (
                     <tr key={slot.id} className="hover:bg-neutral-50/50">
-                      <td className="p-3 font-mono font-medium">{slot.name} ({slot.id})</td>
-                      <td className="p-3 font-mono text-[var(--tess-cobalt,#2547E8)]">{slot.type}</td>
+                      <td className="p-3 font-mono font-medium">
+                        {slot.name} ({slot.id})
+                      </td>
+                      <td className="p-3 font-mono text-[var(--tess-cobalt,#2547E8)]">
+                        {slot.type}
+                      </td>
                       <td className="p-3">{slot.required ? 'Yes' : 'No'}</td>
                       <td className="p-3 font-mono text-[var(--tess-ink-muted,#62666F)]">
                         {String(slot.defaultValue ?? '—')}
@@ -278,9 +289,18 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {[
                 { label: 'Keyboard Navigation', verified: manifest.accessibility.keyboardVerified },
-                { label: 'Screen Reader Semantics', verified: manifest.accessibility.screenReaderSemantics },
-                { label: 'Reduced Motion Verified', verified: manifest.accessibility.reducedMotionVerified },
-                { label: 'Contrast Compatible', verified: manifest.accessibility.contrastTokenCompatible },
+                {
+                  label: 'Screen Reader Semantics',
+                  verified: manifest.accessibility.screenReaderSemantics,
+                },
+                {
+                  label: 'Reduced Motion Verified',
+                  verified: manifest.accessibility.reducedMotionVerified,
+                },
+                {
+                  label: 'Contrast Compatible',
+                  verified: manifest.accessibility.contrastTokenCompatible,
+                },
                 { label: 'Visible Focus State', verified: manifest.accessibility.focusVisible },
               ].map((item, idx) => (
                 <div
@@ -304,25 +324,33 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
           <div className="space-y-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3">
-                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">JS Payload</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">
+                  JS Payload
+                </span>
                 <span className="text-sm font-semibold uppercase font-mono text-[var(--tess-cobalt,#2547E8)]">
                   {manifest.performance.jsCost}
                 </span>
               </div>
               <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3">
-                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">GPU Overhead</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">
+                  GPU Overhead
+                </span>
                 <span className="text-sm font-semibold uppercase font-mono">
                   {manifest.performance.gpuCost}
                 </span>
               </div>
               <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3">
-                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">Runtime Complexity</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">
+                  Runtime Complexity
+                </span>
                 <span className="text-sm font-semibold uppercase font-mono">
                   {manifest.performance.runtimeComplexity}
                 </span>
               </div>
               <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3">
-                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">Lazy Load Recommended</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)] block">
+                  Lazy Load Recommended
+                </span>
                 <span className="text-sm font-semibold font-mono">
                   {manifest.performance.lazyRecommended ? 'Yes' : 'No'}
                 </span>
@@ -349,7 +377,9 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
                     className="p-3 rounded-lg border border-[var(--tess-hairline,#D9D6CF)] bg-white flex items-center justify-between text-xs"
                   >
                     <span className="font-mono font-semibold">{dep.package}</span>
-                    <span className="font-mono text-[var(--tess-ink-muted,#62666F)]">{dep.range}</span>
+                    <span className="font-mono text-[var(--tess-ink-muted,#62666F)]">
+                      {dep.range}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -363,7 +393,9 @@ export function ResourceTabs({ manifest,sourceCode }: ResourceTabsProps) {
             <div className="p-4 rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white space-y-1">
               <div className="flex items-center justify-between">
                 <span className="font-mono font-bold text-sm">v{manifest.version}</span>
-                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)]">Initial Release</span>
+                <span className="text-[11px] text-[var(--tess-ink-muted,#62666F)]">
+                  Initial Release
+                </span>
               </div>
               <p className="text-xs text-[var(--tess-ink-secondary,#62666F)]">
                 Launch release with verified Quiet, Expressive, and Nocturne variants.

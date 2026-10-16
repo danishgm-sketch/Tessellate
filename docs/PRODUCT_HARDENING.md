@@ -17,7 +17,7 @@ Do not advance a checkbox merely because code exists. Record evidence and defect
 - [x] 01 Canonicalise repository — reconcile source branches, ADRs, README, PR policy.
 - [x] 02 Establish green baseline — all commands below, fresh checkout, green CI.
 - [x] 03 Inventory every existing feature in `CURRENT_PRODUCT_INVENTORY.md`.
-- [ ] 04 Classify Core / Beta / Lab, with visible labels and safe isolation.
+- [x] 04 Classify Core / Beta / Lab, with visible labels and safe isolation. See `quality/STEP_04_EVIDENCE.md`; the reviewed DNA mutation defect is locally fixed and remains open for deployed verification at the public-RC gate.
 - [ ] 05 Freeze and test contracts/schemas, versions, migrations and round trips.
 - [ ] 06 Certify all 324 resources; Gold requires browser evidence, not metadata.
 - [ ] 07 Certify renderer and Workbench/preview/export semantic parity.

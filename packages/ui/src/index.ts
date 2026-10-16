@@ -7,6 +7,7 @@ export * from './components/input.js';
 export * from './components/textarea.js';
 export * from './components/select.js';
 export * from './components/chip.js';
+export * from './components/capability-badge.js';
 export * from './components/tooltip.js';
 export * from './components/dialog.js';
 export * from './components/sheet.js';

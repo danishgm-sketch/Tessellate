@@ -255,15 +255,12 @@ Orama index built from:
 Ship compressed browser index.
 
 ### Semantic
-Precompute resource embeddings at build time.
-
-Browser query embedding:
-- use Transformers.js;
-- prefer WebGPU when supported;
-- fall back to WASM;
-- do not load embedding model until semantic search is requested/beneficial.
-
-If semantic is unavailable, full-text and metadata filters remain fully functional.
+Semantic embedding is an experimental Lab and is not connected to Explore or
+Compose. The current adapter reports unavailable until a real embedding model
+and semantic-quality evaluation are supplied. Orama full-text search and
+metadata filters are the only active search path. D-043 records this as a
+deliberate capability boundary; the Transformers.js design in D-012 remains a
+future option, not a current implementation claim.
 
 ## 10. AI provider architecture
 

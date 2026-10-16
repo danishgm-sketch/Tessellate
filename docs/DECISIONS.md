@@ -385,3 +385,17 @@ Deployed version 3 retained CSP correctly but Cloudflare injected JavaScript Det
 **Decision:** consolidation/product-hardening is the sole integration candidate, starting from aaef85c and intentionally reconciling source fixes. No major features, new export targets, models, labs, catalogue categories or hosting architectures. Baseline must be green before inventory or further hardening. Subsequent capability certification follows docs/PRODUCT_HARDENING.md. Historical Phase 20–22 checkmarks and D-032 release claims are not current evidence. D-040 records already-existing expansion, not permission for more. External human testing cannot be claimed from automation. Main requires PRs and passing validate CI, including administrators.
 **Cost/security:** Existing £20 ceiling, secret policy and preview isolation remain mandatory. No new paid service.
 **Status:** OWNER DIRECTED; active until the final release gate passes.
+
+### D-043 — Local semantic search is not currently available
+**Date:** 2026-10-16
+**Context:** The inventory found that `LocalSemanticAdapter` reported ready from
+browser capability checks while returning a zero vector, and no product route
+used it. This could imply semantic ranking without performing semantic search.
+**Decision:** Keep semantic search isolated as Lab and return an explicit
+unavailable result until an actual local embedding model, relevance evaluation,
+and route integration pass their ordered hardening gates. Full-text search and
+metadata filters remain the active Core search behavior. D-012 describes the
+approved possible implementation, not a shipped capability.
+**Cost/security:** No model download, external inference, credential or new
+service is introduced. Core discovery remains available without semantic search.
+**Status:** Applied in adapter; catalogue/search audit remains pending at step 08.

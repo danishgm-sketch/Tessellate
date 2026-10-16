@@ -1,6 +1,7 @@
 ---
 import '../../styles/global.css';
 import { SiteHeader } from '../../components/home/SiteHeader';
+import CapabilityNotice from '../../components/CapabilityNotice.astro';
 import { DatavizStyler } from '../../components/tools/DatavizStyler';
 ---
 
@@ -21,6 +22,7 @@ import { DatavizStyler } from '../../components/tools/DatavizStyler';
     <SiteHeader client:load />
 
     <main class="flex-1 max-w-[1440px] w-full mx-auto px-6 py-12">
+      <CapabilityNotice tier="Beta" note="Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project." />
       <DatavizStyler client:load />
     </main>
 
