@@ -310,20 +310,25 @@ export function planScreenGraph(productModel: ProductModel): ScreenPlanResult {
   }
 
   // Construct navigation edges
-  const edges: ScreenEdge[] = [
+  const candidateEdges: ScreenEdge[] = [
     { id: 'edge-marketing-to-signin', fromScreenId: 'screen-marketing-home', toScreenId: 'screen-sign-in', label: 'Start building / Sign in' },
     { id: 'edge-signin-to-overview', fromScreenId: 'screen-sign-in', toScreenId: 'screen-overview', label: 'Successful authentication' },
     { id: 'edge-overview-to-collection', fromScreenId: 'screen-overview', toScreenId: 'screen-collection-index', label: 'View all items' },
   ];
 
   if (appNodes.some((n) => n.id === 'screen-entity-detail')) {
-    edges.push({
+    candidateEdges.push({
       id: 'edge-collection-to-detail',
       fromScreenId: 'screen-collection-index',
       toScreenId: 'screen-entity-detail',
       label: 'Select item row',
     });
   }
+
+  const plannedScreenIds = new Set(groups.flatMap((group) => group.screens.map((screen) => screen.id)));
+  const edges = candidateEdges.filter(
+    (edge) => plannedScreenIds.has(edge.fromScreenId) && plannedScreenIds.has(edge.toScreenId)
+  );
 
   const screenGraph = ScreenGraphSchema.parse({
     id: stableScreenGraphId(productModel, primaryArchetypeTag),

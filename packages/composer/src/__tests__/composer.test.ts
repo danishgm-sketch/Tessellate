@@ -154,5 +154,9 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
     const screenIds = plan.screenGraph.groups.flatMap((g) => g.screens.map((s) => s.id));
     expect(screenIds).not.toContain('screen-settings');
     expect(screenIds).not.toContain('screen-sign-in');
+    for (const edge of plan.screenGraph.edges) {
+      expect(screenIds).toContain(edge.fromScreenId);
+      expect(screenIds).toContain(edge.toScreenId);
+    }
   });
 });

@@ -15,6 +15,14 @@ export type IntentAction = z.infer<typeof IntentActionSchema>;
 export const NodeLockDimensionSchema = z.enum(['structure', 'content', 'style', 'motion']);
 export type NodeLockDimension = z.infer<typeof NodeLockDimensionSchema>;
 
+export const CategoricalIntentDNASchema = z.object({
+  geometryFamily: z.enum(['sharp', 'curved', 'pill', 'minimal']).optional(),
+  motionPersonality: z.string().optional(),
+  typographyPersonality: z.string().optional(),
+  surfacePersonality: z.string().optional(),
+  contentTone: z.string().optional(),
+}).strict();
+
 export const IntentCommandSchema = z.object({
   action: IntentActionSchema,
   summary: z.string().min(1).describe('Concise description of the user intention'),
@@ -22,18 +30,13 @@ export const IntentCommandSchema = z.object({
   targetNodeIds: z.array(z.string()).optional().describe('Node IDs affected by this action'),
   preserveLockedNodes: z.boolean().default(true).describe('Whether locked nodes must be preserved strictly'),
   feelDescriptors: z.string().optional().describe('Feel descriptor text (e.g. "luxury without being flashy", "playful")'),
-  dnaDeltas: z.record(z.string(), z.number()).optional().describe('Direct numeric DNA dimension delta modifications (-100 to 100)'),
-  categoricalDna: z
-    .object({
-      geometryFamily: z.enum(['sharp', 'curved', 'pill', 'minimal']).optional(),
-      motionPersonality: z.string().optional(),
-      typographyPersonality: z.string().optional(),
-      surfacePersonality: z.string().optional(),
-      contentTone: z.string().optional(),
-    })
-    .optional(),
+  dnaDeltas: z
+    .record(z.string(), z.number().min(-100).max(100))
+    .optional()
+    .describe('Direct numeric DNA dimension delta modifications (-100 to 100)'),
+  categoricalDna: CategoricalIntentDNASchema.optional(),
   lockDimensions: z.array(NodeLockDimensionSchema).optional().describe('Dimensions to lock/unlock'),
   replacementResourceSlug: z.string().optional().describe('Catalog slug of replacement component if action is replace-component'),
   explanation: z.string().optional().describe('Design rationale behind the proposed action'),
-});
+}).strict();
 export type IntentCommand = z.infer<typeof IntentCommandSchema>;

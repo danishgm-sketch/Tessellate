@@ -7,6 +7,7 @@ import {
   ResourceManifestSchema,
   type ProjectManifest,
   type ProjectNode,
+  validProjectFixture,
 } from '../packages/schemas/src/index.js';
 import { isGoldResource } from '../packages/catalog/src/gold.js';
 import {
@@ -52,6 +53,36 @@ function computeCanonicalSubtreeHash(node: ProjectNode): string {
   return crypto.createHash('sha256').update(JSON.stringify(canonicalize(node))).digest('hex');
 }
 
+
+function createExportGateProject(): ProjectManifest {
+  const project = structuredClone(validProjectFixture);
+  project.id = 'proj-gate-export';
+  project.name = 'Omni Telemetry Suite';
+  project.description = 'Export gate fixture with seven real runtime resources.';
+
+  const exportResources = [
+    'minimal-top-nav',
+    'cinematic-media-hero',
+    'area-chart',
+    'compact-data-table',
+    'empty-dashboard-state',
+    'interactive-globe',
+    'particle-constellation',
+  ];
+  const screen = project.screens[0];
+  if (!screen) throw new Error('Export gate fixture is missing its canonical screen.');
+  screen.rootNode.children = exportResources.map((slug, index) => ({
+    id: 'node-export-' + (index + 1),
+    nodeType: slug.endsWith('hero') ? 'section' : 'component',
+    semanticRole: slug,
+    resourceRef: { id: 'resource-export-' + (index + 1), slug, version: '1.0.0' },
+    props: {},
+    slots: {},
+    children: [],
+  }));
+
+  return project;
+}
 
 export async function runReleaseGate(): Promise<{ passed: boolean; results: GateResult[] }> {
   console.log('========================================================');
@@ -426,133 +457,9 @@ export async function runReleaseGate(): Promise<{ passed: boolean; results: Gate
   let g12Passed = false;
   let g12Details = '';
   try {
-    const exportProject: ProjectManifest = {
-      schemaVersion: '0.1.0',
-      id: 'proj-gate-export',
-      name: 'Omni Telemetry Suite',
-      version: '1.0.0',
-      description: 'Export gate test project with 7 distinct components',
-      status: 'draft',
-      productModel: {
-        domain: 'developer-tools',
-        primaryJobs: ['monitor infrastructure'],
-        targetUsers: ['systems engineers'],
-        complexity: 'medium',
-        confidence: 95,
-        productArchetypes: [{ tag: 'developer-tool', weight: 95 }],
-      },
-      designDNA: {
-        mode: 'dark',
-        density: 75,
-        radius: 12,
-        depth: 40,
-        motionPersonality: 'expressive',
-        motion: 50,
-        visualAmbition: 75,
-        typographicExpression: 60,
-        colorFamily: 'cyan',
-        palette: {
-          primary: '#06b6d4',
-          secondary: '#64748b',
-          accent: '#3b82f6',
-          background: '#0B0D10',
-          surface: '#151921',
-          text: '#f8fafc',
-          muted: '#94a3b8',
-          border: '#2E3440',
-        },
-      },
-      screens: [
-        {
-          id: 'screen-dash',
-          name: 'Dashboard',
-          slug: 'dashboard',
-          screenType: 'dashboard',
-          path: '/dashboard',
-          roles: ['primary-view'],
-          layoutVariant: 'standard',
-          rootNode: {
-            id: 'root-layout',
-            nodeType: 'layout',
-            semanticRole: 'application-shell',
-            props: {},
-            slots: {},
-            children: [
-              {
-                id: 'n-nav',
-                nodeType: 'component',
-                semanticRole: 'navigation-header',
-                resourceRef: { id: 'r-nav', slug: 'minimal-top-nav', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: { brand: 'Gate Telemetry' },
-              },
-              {
-                id: 'n-hero',
-                nodeType: 'section',
-                semanticRole: 'editorial-hero',
-                resourceRef: { id: 'r-hero', slug: 'cinematic-media-hero', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: { title: 'Infrastructure Telemetry' },
-              },
-              {
-                id: 'n-chart',
-                nodeType: 'section',
-                semanticRole: 'data-chart',
-                resourceRef: { id: 'r-chart', slug: 'area-chart', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: {},
-              },
-              {
-                id: 'n-table',
-                nodeType: 'component',
-                semanticRole: 'data-table',
-                resourceRef: { id: 'r-table', slug: 'compact-data-table', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: {},
-              },
-              {
-                id: 'n-state',
-                nodeType: 'component',
-                semanticRole: 'empty-state',
-                resourceRef: { id: 'r-state', slug: 'empty-dashboard-state', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: {},
-              },
-              {
-                id: 'n-globe',
-                nodeType: 'component',
-                semanticRole: 'interactive-globe',
-                resourceRef: { id: 'r-globe', slug: 'interactive-globe', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: {},
-              },
-              {
-                id: 'n-particle',
-                nodeType: 'component',
-                semanticRole: 'particle-background',
-                resourceRef: { id: 'r-particle', slug: 'particle-constellation', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: {},
-              },
-            ],
-          },
-        },
-      ],
-      routes: [{ screenId: 'screen-dash', path: '/dashboard', label: 'Dashboard' }],
-      constraints: { supportedDevices: ['desktop'] },
-      historyMeta: { headRevision: 1, operations: [] },
-      createdAt: '2026-03-01T00:00:00Z',
-      updatedAt: '2026-03-01T00:00:00Z',
-    };
-
-    const tree = generateSourceTree(exportProject);
+    const exportProject = createExportGateProject();
+    const validatedExportProject = ProjectManifestSchema.parse(exportProject);
+    const tree = generateSourceTree(validatedExportProject);
     const hasAllComponents =
       Boolean(tree['src/components/MinimalTopNav.tsx']) &&
       Boolean(tree['src/components/CinematicMediaHero.tsx']) &&

@@ -18,7 +18,7 @@ Do not advance a checkbox merely because code exists. Record evidence and defect
 - [x] 02 Establish green baseline — all commands below, fresh checkout, green CI.
 - [x] 03 Inventory every existing feature in `CURRENT_PRODUCT_INVENTORY.md`.
 - [x] 04 Classify Core / Beta / Lab, with visible labels and safe isolation. See `quality/STEP_04_EVIDENCE.md`; the reviewed DNA mutation defect is locally fixed and remains open for deployed verification at the public-RC gate.
-- [ ] 05 Freeze and test contracts/schemas, versions, migrations and round trips.
+- [x] 05 Freeze and test contracts/schemas, versions, migrations and round trips. Evidence: `quality/SCHEMA_CONTRACT_MATRIX.md` and `quality/STEP_05_EVIDENCE.md`; all 87 leaf-contract cases and repository tests pass.
 - [ ] 06 Certify all 324 resources; Gold requires browser evidence, not metadata.
 - [ ] 07 Certify renderer and Workbench/preview/export semantic parity.
 - [ ] 08 Catalogue/search, including manually adjudicated real queries.
@@ -92,6 +92,11 @@ Create `quality/FEATURE_MATRIX.md` after the baseline, covering every feature an
 all owner-specified input/state/persistence/browser/accessibility/network/security
 dimensions. Allowed results: PASS, FAIL, DEGRADED, NOT APPLICABLE, LAB ONLY.
 Unexecuted applicable checks are FAIL (missing evidence), never presumed PASS.
+
+Step 05 is complete locally: the nested leaf-schema and all mutation-payload
+cases are exercised, and the repository test suite passes. Step 06 is the next
+permitted phase; its resource certification must add real browser evidence and
+must not infer Gold status from metadata alone.
 
 For P0/P1 keep issue, reproduction, screenshot/log, root cause, failing regression,
 fix, passing regression, deployment verification and regression protection.

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import type { ProjectManifest } from '@tessellate/schemas';
-import { validProjectFixture } from '@tessellate/schemas';
+import { ProjectManifestSchema, validProjectFixture } from '@tessellate/schemas';
 import {readFileSync} from 'node:fs';
 import type {ResourceManifest} from '@tessellate/schemas';
 import {
@@ -20,7 +20,7 @@ describe('Resource Replacement Fidelity', () => {
     screens: [
       {
         id: 'screen-dashboard',
-        screenNodeId: 'root-layout',
+        screenNodeId: 'screen-dashboard',
         name: 'Dashboard',
         slug: 'dashboard',
         rootNode: {
@@ -63,7 +63,27 @@ describe('Resource Replacement Fidelity', () => {
         },
       },
     ],
+    screenGraph: {
+      ...validProjectFixture.screenGraph,
+      groups: [{
+        ...validProjectFixture.screenGraph.groups[0]!,
+        screens: [{
+          ...validProjectFixture.screenGraph.groups[0]!.screens[0]!,
+          id: 'screen-dashboard',
+          name: 'Dashboard',
+          slug: 'dashboard',
+        }],
+      }],
+      edges: [],
+    },
+    navigation: {
+      model: 'sidebar-fixed',
+      primaryItems: [{ label: 'Dashboard', targetScreenId: 'screen-dashboard' }],
+    },
+    locks: [{ targetNodeId: 'node-btn-primary', lockTypes: ['style'] }],
   };
+
+  ProjectManifestSchema.parse(testManifest);
 
   it('retrieves compatible replace candidates ranked by compatibility score', () => {
     const candidates = getReplaceCandidates(testManifest, 'node-btn-primary',catalog);
