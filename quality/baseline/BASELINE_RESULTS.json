@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "sourceSha": "a889396f27976872aa629e1dbc4500857a5e655e",
+  "branch": "consolidation/product-hardening",
+  "environment": {
+    "checkout": "fresh clean detached checkout without node_modules",
+    "shell": "Windows PowerShell",
+    "node": "v24.20.0",
+    "pnpm": "11.20.0"
+  },
+  "commands": [
+    {
+      "command": "pnpm install --frozen-lockfile",
+      "started": "2026-10-16T15:29:54+01:00",
+      "finished": "2026-10-16T15:30:55+01:00",
+      "exitCode": 0
+    },
+    {
+      "command": "pnpm build:catalog",
+      "started": "2026-10-16T15:30:55+01:00",
+      "finished": "2026-10-16T15:31:05+01:00",
+      "exitCode": 0
+    },
+    {
+      "command": "pnpm typecheck",
+      "started": "2026-10-16T15:31:05+01:00",
+      "finished": "2026-10-16T15:32:48+01:00",
+      "exitCode": 0
+    },
+    {
+      "command": "pnpm lint",
+      "started": "2026-10-16T15:32:48+01:00",
+      "finished": "2026-10-16T15:33:35+01:00",
+      "exitCode": 0,
+      "warnings": 51
+    },
+    {
+      "command": "pnpm test",
+      "started": "2026-10-16T15:33:35+01:00",
+      "finished": "2026-10-16T15:35:19+01:00",
+      "exitCode": 0,
+      "testFilesPassed": 51,
+      "testsPassed": 452
+    },
+    {
+      "command": "pnpm audit:all",
+      "started": "2026-10-16T15:35:19+01:00",
+      "finished": "2026-10-16T15:39:29+01:00",
+      "exitCode": 0
+    },
+    {
+      "command": "pnpm build",
+      "started": "2026-10-16T15:39:29+01:00",
+      "finished": "2026-10-16T15:42:23+01:00",
+      "exitCode": 0,
+      "staticPages": 717
+    },
+    {
+      "command": "pnpm test:e2e",
+      "started": "2026-10-16T15:42:23+01:00",
+      "finished": "2026-10-16T15:44:16+01:00",
+      "exitCode": 0,
+      "testsPassed": 65,
+      "testsSkipped": 5,
+      "viewports": ["1440x900", "390x844"]
+    }
+  ],
+  "audits": {
+    "catalogueResources": 324,
+    "catalogueFailures": 0,
+    "bundleBudget": "pass",
+    "secretSecurityViolations": 0,
+    "sitesArtifact": "pass"
+  },
+  "ci": {
+    "pushRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/38915954400",
+    "pullRequestRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/38915962926",
+    "finalWorkflowUpdateRun": null
+  },
+  "programmeGate": "awaiting CI for Node 24-native action updates"
+}
