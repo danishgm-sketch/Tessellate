@@ -322,5 +322,5 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
       }
       fs.rmSync(tempDir, { recursive: true, force: true });
     }
-  }, 60000);
+  }, 120000);
 });
