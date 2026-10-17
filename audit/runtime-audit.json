@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Step 06 resource certification against the locally built ChatGPT Sites Worker preview; not the public review deployment.",
+  "scope": "Step 06 resource certification and Step 07 renderer/export parity against local built-site and clean exported-app browser runs; not the public review deployment.",
   "entries": [
     {
       "id": "AUD-001",
@@ -1799,6 +1799,38 @@
       ],
       "remediation": "Resolve explicit children from props.children first and then the declared slots.children value, enforce the Gold resource children contract, and compose explicit content with rendered nested nodes. Unit and real Workbench canvas/Preview tests cover both sources.",
       "fixCommit": "37432376face72876ca66c2bc788be116bb377a7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-076",
+      "severity": "high",
+      "route": "standalone React/Vite export",
+      "viewport": "390x844",
+      "category": "export",
+      "title": "Standalone export ignored Workbench responsive node strategies",
+      "expected": "An exported project should apply the same node-level mobile omit, stack, and collapse strategies as Workbench at the corresponding mobile width.",
+      "actual": "At 390 px, the exported app still displayed a node marked omit-nonessential and did not apply stack or collapse layout behavior.",
+      "reproduction": [
+        "Export the shared renderer parity fixture as a standalone React/Vite project.",
+        "Install dependencies in a clean temporary directory, build, start Vite preview, and open the result at 390x844.",
+        "Before the fix, 'Content omitted on mobile' remained visible; the stack and collapse wrappers also lacked their Workbench mobile presentation.",
+        "After the fix, the omit node is hidden, the stack wrapper uses a column layout, and the collapse wrapper clips to its defined height."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-07/before/export-responsive-override-visible.png",
+      "screenshotAfter": "audit/evidence/step-07/after/standalone-export-responsive-390.png",
+      "rootCause": "The exporter serialized nodes without responsive strategy metadata, and shared renderer layout CSS had no mobile rules for those strategies.",
+      "affectedFiles": [
+        "packages/renderer/src/layout-contract.ts",
+        "packages/exporter/src/source-tree.ts",
+        "packages/testing/src/renderer-parity-fixture.ts",
+        "packages/renderer/src/__tests__/renderer-parity.test.tsx",
+        "packages/exporter/src/__tests__/standalone-export-fidelity.test.ts",
+        "tests/e2e/renderer-children-parity.spec.ts"
+      ],
+      "remediation": "Serialize supported responsive strategies on generated node wrappers and add shared mobile container-query rules for omit, stack, and collapse. The same shared fixture now verifies Workbench output and a clean standalone install/build/browser run.",
+      "fixCommit": "6baf9d1e93b2a6e11cac075b21d879cfa2c863ae",
       "status": "fixed-awaiting-deployed-verification"
     }
   ]

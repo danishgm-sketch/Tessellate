@@ -1,12 +1,13 @@
 # Runtime audit — resource and renderer hardening
 
-This is a local browser audit against the built ChatGPT Sites Worker boundary at
-`http://127.0.0.1:4323`. It is not a verification of the public review Site.
+This audit combines local browser checks of the built Astro Site/Workbench,
+ChatGPT Sites Worker boundary, and clean standalone exports. It is not a
+verification of the public review Site.
 Machine-readable findings and their current status are in
 [`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
 published review version during the public-RC phase.
 
-**Current disposition:** 75 findings (15 High, 60 Medium). The Step 06 resource fixes and five Step 07 renderer/export fixes have local regression evidence. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited in the public-RC phase. CI for the current head is pending. An earlier PR run exposed a race in the Gold test's loading-state check; the test now waits for the exact rendered resource node and variant.
+**Current disposition:** 76 findings (16 High, 60 Medium). The Step 06 resource fixes and six Step 07 renderer/export fixes have local regression evidence. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited in the public-RC phase. CI for the current head is pending. An earlier PR run exposed a race in the Gold test's loading-state check; the test now waits for the exact rendered resource node and variant.
 
 At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile browser tests passed, 51 tests were explicitly skipped by project scope, and all 23 Sites Worker tests passed. It included the expanded state and action regressions. The 11-case state matrix, exact-resource readiness check, dialog modal regression, Prompt Composer action regression, and 40 × 3 Axe matrix passed. The catalogue report covered 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covered 40 resources / 120 variants with zero findings. Existing state fixtures cover six Gold data resources; the expanded matrix covers array-driven resources at empty and 30–40 item counts, disabled Button/Input/Select, named loading/error states, long text, and fixed-slot partial data. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
@@ -123,6 +124,14 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Root cause: `NodeRenderer` resolved explicit children from `props.children` only, ignoring `slots.children` even when the resource contract allowed it.
 - Affected code: `packages/renderer/src/node-renderer.tsx`, `packages/renderer/src/__tests__/gold-registry.test.tsx`, and `tests/e2e/renderer-children-parity.spec.ts`.
 - Remediation: resolve the declared slot after prop children, enforce the resource child contract, and compose explicit content with nested nodes. Deployed verification remains outstanding. Fix commit: `37432376face72876ca66c2bc788be116bb377a7`.
+
+### AUD-076 — Standalone export ignored Workbench responsive node strategies
+
+- Evidence: the [before capture](evidence/step-07/before/export-responsive-override-visible.png) shows `Content omitted on mobile` still visible at 390 px; the [fixed export capture](evidence/step-07/after/standalone-export-responsive-390.png) omits it. The same clean generated app applies the mobile stack and collapse strategies. The before browser regression failed on visibility; the fixed browser regression passed with no console errors or failed requests.
+- Reproduction: export the shared renderer parity fixture, perform a clean install/build, start Vite preview, and inspect it at 390x844.
+- Root cause: generated node wrappers omitted responsive strategy metadata, and the shared layout CSS had no mobile rules for those strategies.
+- Affected code: `packages/exporter/src/source-tree.ts`, `packages/renderer/src/layout-contract.ts`, the shared fixture and its renderer/export browser tests.
+- Remediation: emit a `data-responsive-strategy` for supported strategies and apply shared mobile container-query rules for omit, stack, and collapse. Deployed verification remains outstanding. Fix commit: `6baf9d1e93b2a6e11cac075b21d879cfa2c863ae`.
 
 ## MEDIUM
 
