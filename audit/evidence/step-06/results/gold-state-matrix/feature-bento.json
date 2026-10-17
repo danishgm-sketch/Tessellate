@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "1.0.0",
+  "slug": "feature-bento",
+  "stateProp": "items",
+  "stateCoverage": "fixed four-slot composition; empty and partial inputs tested",
+  "empty": "PASS",
+  "noUnresolvedValues": "PASS",
+  "overflow": "PASS",
+  "viewport": "390x844",
+  "screenshots": [
+    "audit/evidence/step-06/before/gold-state-matrix/feature-bento-before-390.png",
+    "audit/evidence/step-06/after/gold-state-matrix/feature-bento-empty-390.png"
+  ]
+}
