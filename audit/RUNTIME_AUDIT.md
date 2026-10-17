@@ -6,9 +6,9 @@ Machine-readable findings and their current status are in
 [`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
 published review version during the public-RC phase.
 
-**Current disposition:** 60 findings (6 High, 54 Medium). The data-state, compact-width, Kanban copy and chart sample-data fixes have passed local browser regressions. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited. A fresh GitHub Linux CI run is still required for the cross-platform fixes.
+**Current disposition:** 66 findings (7 High, 59 Medium). The data-state, compact-width, Kanban copy, chart sample-data and Gold accessibility fixes have passed local browser regressions. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited. A fresh GitHub Linux CI run is still required for the cross-platform fixes.
 
-The latest `pnpm test:e2e` run passed: 73 regular browser tests, 15 explicitly skipped tests, and all 5 Sites Worker tests. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Six Gold data-resource fixtures cover empty and large inputs, long text, keyboard interaction and notification updates. The three Linux-discovered compact overflows now pass the complete local matrix. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
+The latest `pnpm test:e2e` run exited successfully: 73 regular browser tests passed, 15 were explicitly skipped, and all 6 Sites Worker tests passed. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Six Gold data-resource fixtures cover empty and large inputs, long text, keyboard interaction and notification updates. The Axe matrix scans all 40 Gold resources and 120 variants with zero violations. The three Linux-discovered compact overflows now pass the complete local matrix. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
 ## HIGH
 
@@ -51,6 +51,14 @@ The latest `pnpm test:e2e` run passed: 73 regular browser tests, 15 explicitly s
 - Affected code: `apps/site/src/components/PreviewHost.tsx`, `resources/states/error-state/index.tsx`.
 - Remediation: connect a preview-only retry example and disable the control with an accessible explanation if the consuming app supplies no retry handler.
 - Regression: `tests/resource-action-contracts.test.tsx`; keyboard interaction in `tests/e2e/gold-resource-certification.spec.ts`.
+
+### AUD-066 — Input preview had no accessible name
+
+- Evidence: the [before capture](evidence/step-06/before/a11y-gold/input-quiet-1440.png) shows the unlabeled field; the [after capture](evidence/step-06/after/a11y-gold/input-quiet-1440.png) shows its visible label and example value. The Axe baseline recorded this critical violation in all three variants.
+- Reproduction: open `/preview/?resource=input&variant=quiet`, then run the Gold-resource WCAG 2.2 AA Axe matrix.
+- Root cause: the manifest passed no default props to the preview, so PreviewHost rendered an Input without its optional label.
+- Affected code: `resources/primitives/input/manifest.json`, `tests/e2e/gold-resource-accessibility-certification.spec.ts`.
+- Remediation: provide sample label and placeholder values in the manifest. The 120-variant Axe matrix now reports zero violations. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.
 
 ## MEDIUM
 
@@ -371,7 +379,7 @@ the representative iframe overflow and malformed wide resource-detail layout.
 - Remediation: emit the complete title as one expression, use a semantic resource header and keep the preview/inspector columns min-width-safe. Both detail routes now use the same structure.
 - Regression: the browser test requires the exact title and exact level-one heading, checks `/r/ai-prompt-hero/` at 390px and 1440px, and verifies the desktop preview remains at least 500px wide.
 
-### MEDIUM
+## MEDIUM
 
 ### AUD-031 — AI activity feed overflowed at 360px
 
@@ -622,3 +630,43 @@ with zero findings. That harness race is not counted as a product defect.
 - Root cause: a static default dataset was paired with real-time language and no sample label.
 - Affected code: `resources/data/time-series-chart/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
 - Remediation: use a sample-specific title and explicitly disclose that there is no live measurement source. The regression asserts both in the preview iframe. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.
+
+### AUD-061 — Nocturne muted text fell below WCAG contrast across 15 Gold resources
+
+- Evidence: the [before capture](evidence/step-06/before/a11y-gold/ai-prompt-composer-nocturne-1440.png) shows low-contrast muted copy; the [after capture](evidence/step-06/after/a11y-gold/ai-prompt-composer-nocturne-1440.png) uses a readable Nocturne token. The full baseline report records 23 contrast violations across 15 Nocturne resources.
+- Reproduction: open `/preview/?resource=ai-prompt-composer&variant=nocturne` at 1440x900 and run Axe with WCAG 2.2 AA tags.
+- Root cause: muted ink tokens changed for `.dark` but were not scoped to the `data-resource-variant="nocturne"` variant used by isolated resource previews.
+- Affected code: `apps/site/src/styles/global.css` and the muted-copy resources listed in `audit/runtime-audit.json`.
+- Remediation: set Nocturne muted ink tokens on the resource-variant scope and give the fade-up replay control a matching dark surface. The final matrix reports zero violations. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.
+
+### AUD-062 — AI research confidence badge had insufficient contrast on light surfaces
+
+- Evidence: the [before capture](evidence/step-06/before/a11y-gold/ai-research-answer-quiet-1440.png) shows the light green badge; the [after capture](evidence/step-06/after/a11y-gold/ai-research-answer-quiet-1440.png) uses a darker light-theme label.
+- Reproduction: open `/preview/?resource=ai-research-answer&variant=quiet` and run Axe.
+- Root cause: the green confidence color measured 2.34:1 on the pale badge background.
+- Affected code: `resources/ai/ai-research-answer/index.tsx`.
+- Remediation: use a darker green for light variants and a lighter green for Nocturne. The final matrix reports zero violations. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.
+
+### AUD-063 — Feature matrix status text fell below WCAG contrast on light surfaces
+
+- Evidence: the [before capture](evidence/step-06/before/a11y-gold/feature-matrix-quiet-1440.png) shows the status values; the [after capture](evidence/step-06/after/a11y-gold/feature-matrix-quiet-1440.png) uses higher-contrast values.
+- Reproduction: open `/preview/?resource=feature-matrix&variant=quiet` and run Axe.
+- Root cause: emerald-600 measured 3.65:1 on white and 3.32:1 on the Expressive surface.
+- Affected code: `resources/sections/feature-matrix/index.tsx`.
+- Remediation: use emerald-800 on light surfaces and emerald-300 on Nocturne. The final matrix reports zero violations. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.
+
+### AUD-064 — Error-state heading fell below WCAG contrast on its expressive background
+
+- Evidence: the [before capture](evidence/step-06/before/a11y-gold/error-state-expressive-1440.png) shows the red heading; the [after capture](evidence/step-06/after/a11y-gold/error-state-expressive-1440.png) uses a darker red.
+- Reproduction: open `/preview/?resource=error-state&variant=expressive` and run Axe.
+- Root cause: red-600 measured 4.31:1 on the blush background.
+- Affected code: `resources/states/error-state/index.tsx`.
+- Remediation: use red-700 on light surfaces and preserve red-400 on Nocturne. The final matrix reports zero violations. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.
+
+### AUD-065 — Recommended pricing badge had insufficient contrast in all variants
+
+- Evidence: the [before capture](evidence/step-06/before/a11y-gold/pricing-three-tier-nocturne-1440.png) shows the low-contrast badge; the [after capture](evidence/step-06/after/a11y-gold/pricing-three-tier-nocturne-1440.png) uses a lighter label on the dark surface.
+- Reproduction: open `/preview/?resource=pricing-three-tier&variant=nocturne` and run Axe.
+- Root cause: emerald-600 measured 3.31:1 on light surfaces and 4.17:1 on the Nocturne badge.
+- Affected code: `resources/sections/pricing-three-tier/index.tsx`.
+- Remediation: use emerald-800 on light surfaces and emerald-300 on Nocturne. The final matrix reports zero violations. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.

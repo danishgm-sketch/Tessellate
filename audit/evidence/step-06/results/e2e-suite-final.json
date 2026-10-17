@@ -25,10 +25,16 @@
     "standaloneReactExport": "passed"
   },
   "sitesWorkerSuite": {
-    "total": 5,
-    "passed": 5,
+    "total": 6,
+    "passed": 6,
     "skipped": 0,
     "failed": 0
+  },
+  "goldAccessibilityCertification": {
+    "resources": 40,
+    "variants": 120,
+    "violations": 0,
+    "report": "audit/evidence/step-06/after/gold-accessibility-clean.json"
   },
   "catalogueCertification": {
     "resources": 324,
@@ -106,7 +112,7 @@
     ],
     "status": "passed"
   },
-  "verifiedCommit": "20dcad16f073e3629d8e9acd2a1f1c39372e9fa9",
+  "verifiedCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
   "sampleDataTruth": {
     "resources": 4,
     "assertionsPerResource": [

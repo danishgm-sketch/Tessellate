@@ -1370,6 +1370,178 @@
       "remediation": "Use sample-specific titles and label bundled values as illustrative sample data, without implying a live source.",
       "fixCommit": "20dcad16f073e3629d8e9acd2a1f1c39372e9fa9",
       "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-061",
+      "severity": "medium",
+      "route": "/preview/?resource=ai-prompt-composer&variant=nocturne",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Nocturne muted text fell below WCAG contrast across 15 Gold resources",
+      "expected": "Muted text in Nocturne resources must meet at least 4.5:1 contrast against its rendered surface.",
+      "actual": "Axe reported 23 contrast violations in Nocturne variants across 15 Gold resources. Reused muted ink was #62666F on dark surfaces at 3.05:1 to 3.38:1.",
+      "reproduction": [
+        "Open /preview/?resource=ai-prompt-composer&variant=nocturne at 1440x900.",
+        "Run the Gold-resource Axe matrix with WCAG 2.2 AA tags.",
+        "Compare the retained before and after captures."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/a11y-gold/ai-prompt-composer-nocturne-1440.png",
+      "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/ai-prompt-composer-nocturne-1440.png",
+      "rootCause": "Global muted ink changed for .dark but not for data-resource-variant=\"nocturne\". During remediation, FadeUpReveal also required its replay control to sit on a matching dark surface.",
+      "affectedFiles": [
+        "apps/site/src/styles/global.css",
+        "resources/ai/ai-prompt-composer/index.tsx",
+        "resources/ai/ai-research-answer/index.tsx",
+        "resources/ai/ai-suggested-actions/index.tsx",
+        "resources/data/area-chart/index.tsx",
+        "resources/data/bar-chart/index.tsx",
+        "resources/data/donut-chart/index.tsx",
+        "resources/data/time-series-chart/index.tsx",
+        "resources/blocks/dashboard-kpi-grid/index.tsx",
+        "resources/states/error-state/index.tsx",
+        "resources/motion/fade-up-reveal/index.tsx",
+        "resources/sections/feature-bento/index.tsx",
+        "resources/blocks/notification-centre/index.tsx",
+        "resources/sections/split-product-hero/index.tsx",
+        "resources/blocks/timeline/index.tsx",
+        "resources/shells/two-pane-master-detail-shell/index.tsx"
+      ],
+      "remediation": "Set the Nocturne muted ink tokens on the resource-variant scope and give the fade-up replay control a matching dark surface. Axe now reports zero violations across all Gold resources and variants.",
+      "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-062",
+      "severity": "medium",
+      "route": "/preview/?resource=ai-research-answer&variant=quiet",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "AI research confidence badge had insufficient contrast on light surfaces",
+      "expected": "The confidence badge text must meet at least 4.5:1 contrast against its badge background.",
+      "actual": "Axe measured 2.34:1 for #00BC7D on #ECFDF5 in Quiet and Expressive variants.",
+      "reproduction": [
+        "Open /preview/?resource=ai-research-answer&variant=quiet at 1440x900.",
+        "Run the Gold-resource Axe matrix with WCAG 2.2 AA tags.",
+        "Compare the retained before and after captures."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/a11y-gold/ai-research-answer-quiet-1440.png",
+      "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/ai-research-answer-quiet-1440.png",
+      "rootCause": "The green confidence color was chosen without validating contrast on the pale green badge.",
+      "affectedFiles": [
+        "resources/ai/ai-research-answer/index.tsx"
+      ],
+      "remediation": "Use a darker green for light variants and a lighter green for Nocturne. The 120-variant Axe matrix now passes.",
+      "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-063",
+      "severity": "medium",
+      "route": "/preview/?resource=feature-matrix&variant=quiet",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Feature matrix status text fell below WCAG contrast on light surfaces",
+      "expected": "Status values in the feature matrix must meet at least 4.5:1 contrast.",
+      "actual": "Axe measured 3.65:1 for #009966 on white and 3.32:1 on the Expressive surface across 16 cells in each affected variant.",
+      "reproduction": [
+        "Open /preview/?resource=feature-matrix&variant=quiet at 1440x900.",
+        "Run the Gold-resource Axe matrix with WCAG 2.2 AA tags.",
+        "Compare the retained before and after captures."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/a11y-gold/feature-matrix-quiet-1440.png",
+      "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/feature-matrix-quiet-1440.png",
+      "rootCause": "The matrix reused emerald-600 text color that was too light for normal-size text.",
+      "affectedFiles": [
+        "resources/sections/feature-matrix/index.tsx"
+      ],
+      "remediation": "Use emerald-800 on light surfaces and emerald-300 on Nocturne. The 120-variant Axe matrix now passes.",
+      "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-064",
+      "severity": "medium",
+      "route": "/preview/?resource=error-state&variant=expressive",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Error-state heading fell below WCAG contrast on its expressive background",
+      "expected": "The error heading must meet at least 4.5:1 contrast against the blush surface.",
+      "actual": "Axe measured 4.31:1 for #E7000B on #F9F2F0.",
+      "reproduction": [
+        "Open /preview/?resource=error-state&variant=expressive at 1440x900.",
+        "Run the Gold-resource Axe matrix with WCAG 2.2 AA tags.",
+        "Compare the retained before and after captures."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/a11y-gold/error-state-expressive-1440.png",
+      "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/error-state-expressive-1440.png",
+      "rootCause": "The heading used red-600 on a lightly tinted red surface.",
+      "affectedFiles": [
+        "resources/states/error-state/index.tsx"
+      ],
+      "remediation": "Use red-700 on light variants while retaining red-400 on Nocturne. The 120-variant Axe matrix now passes.",
+      "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-065",
+      "severity": "medium",
+      "route": "/preview/?resource=pricing-three-tier&variant=nocturne",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Recommended pricing badge had insufficient contrast in all variants",
+      "expected": "The Recommended badge must meet at least 4.5:1 contrast in Quiet, Expressive and Nocturne.",
+      "actual": "Axe measured 3.31:1 on light badges and 4.17:1 in Nocturne.",
+      "reproduction": [
+        "Open /preview/?resource=pricing-three-tier&variant=nocturne at 1440x900.",
+        "Run the Gold-resource Axe matrix with WCAG 2.2 AA tags.",
+        "Compare the retained before and after captures."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/a11y-gold/pricing-three-tier-nocturne-1440.png",
+      "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/pricing-three-tier-nocturne-1440.png",
+      "rootCause": "The badge used emerald-600 for every surface, including its dark Nocturne background.",
+      "affectedFiles": [
+        "resources/sections/pricing-three-tier/index.tsx"
+      ],
+      "remediation": "Use emerald-800 on light surfaces and emerald-300 on Nocturne. The 120-variant Axe matrix now passes.",
+      "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-066",
+      "severity": "high",
+      "route": "/preview/?resource=input&variant=quiet",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Input resource preview rendered a field without an accessible name",
+      "expected": "The Gold Input preview must expose a programmatic label in all three variants.",
+      "actual": "Axe reported a critical form-label violation in Quiet, Expressive and Nocturne. The preview showed only an empty input.",
+      "reproduction": [
+        "Open /preview/?resource=input&variant=quiet at 1440x900.",
+        "Run the Gold-resource Axe matrix with WCAG 2.2 AA tags.",
+        "Compare the retained before and after captures."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/a11y-gold/input-quiet-1440.png",
+      "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/input-quiet-1440.png",
+      "rootCause": "The manifest supplied no preview props, so PreviewHost rendered Input without its optional label.",
+      "affectedFiles": [
+        "resources/primitives/input/manifest.json",
+        "tests/e2e/gold-resource-accessibility-certification.spec.ts"
+      ],
+      "remediation": "Provide a sample label and placeholder in preview defaultProps. The browser Axe matrix now finds an accessible name in every variant.",
+      "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
+      "status": "fixed-awaiting-deployed-verification"
     }
   ]
 }
