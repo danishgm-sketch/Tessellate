@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "verifiedDate": "2026-10-17",
+  "command": "pnpm test:e2e",
+  "status": "passed",
+  "regularBrowserSuite": {
+    "total": 84,
+    "passed": 73,
+    "skipped": 11,
+    "failed": 0,
+    "flagshipAcceptance": "passed"
+  },
+  "sitesWorkerSuite": {
+    "total": 3,
+    "passed": 3,
+    "skipped": 0,
+    "failed": 0
+  },
+  "catalogueCertification": {
+    "resources": 324,
+    "defaultPreviewWidths": [360, 390, 430, 768, 1024, 1280, 1440],
+    "variantsRenderedAtWidth": 1440,
+    "variantsRendered": 972,
+    "findings": 0,
+    "failedRequests": 0,
+    "cancelledRequests": 0,
+    "report": "audit/evidence/step-06/results/catalog-324-e2e-final.json"
+  },
+  "goldCertification": {
+    "resources": 40,
+    "variants": 120,
+    "widths": [360, 390, 430, 768, 1024, 1280, 1440],
+    "keyboard": "enabled controls tested for tab reachability, visible focus, Enter activation, and visible response",
+    "reducedMotion": "preference exercised across all 40 renderers",
+    "findings": 0,
+    "report": "audit/evidence/step-06/results/gold-40-e2e-final.json"
+  },
+  "canonicalResourceRoute": {
+    "route": "/r/ai-prompt-hero/",
+    "viewports": ["390x844", "1440x900"],
+    "status": "passed"
+  }
+}

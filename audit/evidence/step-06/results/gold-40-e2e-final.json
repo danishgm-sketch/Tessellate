@@ -1,0 +1,1297 @@
+{
+  "schemaVersion": "1.0.0",
+  "browserProject": "sites-chromium",
+  "widths": [
+    360,
+    390,
+    430,
+    768,
+    1024,
+    1280,
+    1440
+  ],
+  "resourceCount": 40,
+  "findings": 0,
+  "resources": [
+    {
+      "slug": "button",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 1,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/button-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/button-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/button-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/button/"
+    },
+    {
+      "slug": "input",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/input-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/input-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/input-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/input/"
+    },
+    {
+      "slug": "select",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/select-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/select-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/select-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/select/"
+    },
+    {
+      "slug": "dialog",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/dialog-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/dialog-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/dialog-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/dialog/"
+    },
+    {
+      "slug": "badge",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/badge-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/badge-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/badge-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/badge/"
+    },
+    {
+      "slug": "collapsible-sidebar",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 1,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/collapsible-sidebar-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/collapsible-sidebar-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/collapsible-sidebar-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/collapsible-sidebar/"
+    },
+    {
+      "slug": "three-pane-app-shell",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/three-pane-app-shell-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/three-pane-app-shell-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/three-pane-app-shell-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/three-pane-app-shell/"
+    },
+    {
+      "slug": "minimal-top-nav",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/minimal-top-nav-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/minimal-top-nav-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/minimal-top-nav-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/minimal-top-nav/"
+    },
+    {
+      "slug": "two-pane-master-detail-shell",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 3,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/two-pane-master-detail-shell-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/two-pane-master-detail-shell-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/two-pane-master-detail-shell-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/two-pane-master-detail-shell/"
+    },
+    {
+      "slug": "marketing-nav-cta",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 1,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/marketing-nav-cta-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/marketing-nav-cta-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/marketing-nav-cta-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/marketing-nav-cta/"
+    },
+    {
+      "slug": "editorial-hero",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/editorial-hero-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/editorial-hero-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/editorial-hero-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/editorial-hero/"
+    },
+    {
+      "slug": "feature-bento",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/feature-bento-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/feature-bento-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/feature-bento-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/feature-bento/"
+    },
+    {
+      "slug": "pricing-three-tier",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 3,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/pricing-three-tier-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/pricing-three-tier-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/pricing-three-tier-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/pricing-three-tier/"
+    },
+    {
+      "slug": "testimonial-grid",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/testimonial-grid-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/testimonial-grid-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/testimonial-grid-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/testimonial-grid/"
+    },
+    {
+      "slug": "split-product-hero",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 3,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/split-product-hero-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/split-product-hero-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/split-product-hero-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/split-product-hero/"
+    },
+    {
+      "slug": "feature-matrix",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/feature-matrix-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/feature-matrix-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/feature-matrix-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/feature-matrix/"
+    },
+    {
+      "slug": "cta-minimal",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/cta-minimal-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/cta-minimal-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/cta-minimal-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/cta-minimal/"
+    },
+    {
+      "slug": "faq-accordion",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 3,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/faq-accordion-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/faq-accordion-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/faq-accordion-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/faq-accordion/"
+    },
+    {
+      "slug": "logo-cloud-minimal",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/logo-cloud-minimal-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/logo-cloud-minimal-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/logo-cloud-minimal-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/logo-cloud-minimal/"
+    },
+    {
+      "slug": "footer-product",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/footer-product-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/footer-product-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/footer-product-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/footer-product/"
+    },
+    {
+      "slug": "advanced-data-table",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/advanced-data-table-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/advanced-data-table-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/advanced-data-table-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/advanced-data-table/"
+    },
+    {
+      "slug": "kanban-board",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 5,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/kanban-board-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/kanban-board-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/kanban-board-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/kanban-board/"
+    },
+    {
+      "slug": "timeline",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/timeline-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/timeline-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/timeline-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/timeline/"
+    },
+    {
+      "slug": "dashboard-kpi-grid",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/dashboard-kpi-grid-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/dashboard-kpi-grid-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/dashboard-kpi-grid-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/dashboard-kpi-grid/"
+    },
+    {
+      "slug": "entity-profile-header",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/entity-profile-header-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/entity-profile-header-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/entity-profile-header-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/entity-profile-header/"
+    },
+    {
+      "slug": "empty-workspace",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 1,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/empty-workspace-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/empty-workspace-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/empty-workspace-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/empty-workspace/"
+    },
+    {
+      "slug": "filter-builder",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 1,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/filter-builder-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/filter-builder-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/filter-builder-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/filter-builder/"
+    },
+    {
+      "slug": "notification-centre",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 1,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/notification-centre-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/notification-centre-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/notification-centre-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/notification-centre/"
+    },
+    {
+      "slug": "time-series-chart",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/time-series-chart-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/time-series-chart-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/time-series-chart-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/time-series-chart/"
+    },
+    {
+      "slug": "bar-chart",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/bar-chart-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/bar-chart-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/bar-chart-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/bar-chart/"
+    },
+    {
+      "slug": "donut-chart",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/donut-chart-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/donut-chart-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/donut-chart-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/donut-chart/"
+    },
+    {
+      "slug": "area-chart",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/area-chart-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/area-chart-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/area-chart-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/area-chart/"
+    },
+    {
+      "slug": "ai-prompt-composer",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 4,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/ai-prompt-composer-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/ai-prompt-composer-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/ai-prompt-composer-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/ai-prompt-composer/"
+    },
+    {
+      "slug": "ai-research-answer",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/ai-research-answer-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/ai-research-answer-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/ai-research-answer-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/ai-research-answer/"
+    },
+    {
+      "slug": "ai-suggested-actions",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 3,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/ai-suggested-actions-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/ai-suggested-actions-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/ai-suggested-actions-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/ai-suggested-actions/"
+    },
+    {
+      "slug": "magnetic-button",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 1,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/magnetic-button-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/magnetic-button-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/magnetic-button-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/magnetic-button/"
+    },
+    {
+      "slug": "fade-up-reveal",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 1,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/fade-up-reveal-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/fade-up-reveal-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/fade-up-reveal-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/fade-up-reveal/"
+    },
+    {
+      "slug": "subtle-grid-field",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/subtle-grid-field-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/subtle-grid-field-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/subtle-grid-field-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/subtle-grid-field/"
+    },
+    {
+      "slug": "dashboard-skeleton",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 0,
+        "disabledButtons": 0,
+        "tabNavigation": false,
+        "visibleFocus": false,
+        "enterActivated": false,
+        "visibleResponse": false
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/dashboard-skeleton-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/dashboard-skeleton-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/dashboard-skeleton-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/dashboard-skeleton/"
+    },
+    {
+      "slug": "error-state",
+      "widths": [
+        360,
+        390,
+        430,
+        768,
+        1024,
+        1280,
+        1440
+      ],
+      "variants": [
+        "quiet",
+        "expressive",
+        "nocturne"
+      ],
+      "keyboard": {
+        "enabledButtons": 1,
+        "disabledButtons": 0,
+        "tabNavigation": true,
+        "visibleFocus": true,
+        "enterActivated": true,
+        "visibleResponse": true
+      },
+      "findings": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/browser-captures/gold-40/error-state-360.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/error-state-390.png",
+        "audit/evidence/step-06/after/browser-captures/gold-40/error-state-1440.png"
+      ],
+      "url": "http://127.0.0.1:4323/resources/error-state/"
+    }
+  ]
+}

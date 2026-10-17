@@ -1,0 +1,881 @@
+{
+  "schemaVersion": "1.0.0",
+  "scope": "Step 06 resource certification against the locally built ChatGPT Sites Worker preview; not the public review deployment.",
+  "entries": [
+    {
+      "id": "AUD-001",
+      "severity": "high",
+      "route": "/resources/marketing-nav-cta/",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Marketing CTA looked enabled but performed no action",
+      "expected": "The CTA should call a connected host action or be visibly and accessibly disabled until one is provided.",
+      "actual": "The resource rendered an enabled button with no click handler or feedback.",
+      "reproduction": [
+        "Open /resources/marketing-nav-cta/.",
+        "Focus Start Free and press Enter; no navigation or state change occurs."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/actions/marketing-nav-cta-1440.png",
+      "rootCause": "MarketingNavCta declared no action prop and rendered an unconditional button; the resource preview host could not supply a meaningful demo action.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-002",
+      "severity": "high",
+      "route": "/resources/pricing-three-tier/",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Pricing plan buttons had no selection behavior",
+      "expected": "Each plan action should report its selected plan, or be disabled with an explanation until connected.",
+      "actual": "All three enabled Get Started buttons had no handler or visible feedback.",
+      "reproduction": [
+        "Open /resources/pricing-three-tier/.",
+        "Focus the first Get Started button and press Enter; no state change occurs."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/actions/pricing-three-tier-1440.png",
+      "rootCause": "PricingThreeTier rendered three static buttons without an onSelectPlan integration contract.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-003",
+      "severity": "high",
+      "route": "/resources/empty-workspace/",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Create New Project action was a dead control",
+      "expected": "The control should invoke project creation or be disabled with a clear explanation until connected.",
+      "actual": "The enabled button did not invoke an action or change visible state.",
+      "reproduction": [
+        "Open /resources/empty-workspace/.",
+        "Focus Create New Project and press Enter; nothing happens."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/actions/empty-workspace-1440.png",
+      "rootCause": "EmptyWorkspace exposed no host callback and rendered the action unconditionally enabled.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-004",
+      "severity": "high",
+      "route": "/resources/magnetic-button/",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Magnetic button advertised a click action but only moved on hover",
+      "expected": "A button should perform a host action or be disabled with an explanation until connected.",
+      "actual": "The control reacted to pointer movement but keyboard/click activation produced no action or feedback.",
+      "reproduction": [
+        "Open /resources/magnetic-button/.",
+        "Focus the button and press Enter; it remains unchanged."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/actions/magnetic-button-1440.png",
+      "rootCause": "MagneticButton implemented only pointer tracking and omitted a click callback contract.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-005",
+      "severity": "high",
+      "route": "/resources/error-state/",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Retry Operation did not reach the preview host",
+      "expected": "The preview should report a retry example, and consumers without a retry operation should see a disabled control.",
+      "actual": "ErrorState accepted onRetry, but PreviewHost did not supply it, leaving an enabled inert button.",
+      "reproduction": [
+        "Open /resources/error-state/.",
+        "Activate Retry Operation; there is no visible response."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/actions/error-state-1440.png",
+      "rootCause": "The preview host mapped several generic example callbacks but omitted the existing onRetry prop.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-006",
+      "severity": "medium",
+      "route": "/resources/documentation-shell/",
+      "viewport": "390x844",
+      "category": "visual",
+      "title": "Documentation reading column overflowed the mobile preview",
+      "expected": "The navigation, reading column and optional page index should stack within the available preview width.",
+      "actual": "The fixed 224px sidebar plus 80px main padding forced the reading column past the 322px iframe viewport (376px scroll width).",
+      "reproduction": [
+        "Open /resources/documentation-shell/ at 390x844.",
+        "Inspect the embedded preview; the main heading and text are clipped horizontally."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/documentation-shell-390.png",
+      "rootCause": "The shell used fixed desktop flex widths and large padding without a container-responsive stacking rule.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-007",
+      "severity": "medium",
+      "route": "/resources/floating-nav/",
+      "viewport": "390x844",
+      "category": "visual",
+      "title": "Floating navigation exceeded the mobile preview width",
+      "expected": "The pill navigation should wrap and remain inside the preview viewport.",
+      "actual": "The non-wrapping navigation measured 347px against a 322px iframe viewport.",
+      "reproduction": [
+        "Open /resources/floating-nav/ at 390x844.",
+        "Inspect the embedded preview; the navigation pill extends beyond its viewport."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/floating-nav-390.png",
+      "rootCause": "The pill used a single-row inline flex layout with fixed gaps and horizontal padding.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-008",
+      "severity": "medium",
+      "route": "/resources/webhook-management/",
+      "viewport": "390x844",
+      "category": "visual",
+      "title": "Long webhook URL clipped its status on mobile",
+      "expected": "The endpoint URL and status should reflow into a readable vertical row at narrow widths.",
+      "actual": "The 341px resource content exceeded a 322px iframe viewport and clipped the endpoint/status row.",
+      "reproduction": [
+        "Open /resources/webhook-management/ at 390x844.",
+        "Inspect the embedded preview; the URL and 200 OK status are clipped."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/webhook-management-390.png",
+      "rootCause": "A non-wrapping flex row contained a long unbreakable endpoint URL and a status badge.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-009",
+      "severity": "medium",
+      "route": "/resources/app-sidebar-expanded/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "app-sidebar-expanded exposed navigation entries with placeholder destinations",
+      "expected": "A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label.",
+      "actual": "Dashboard; Telemetry; Composition Engine; Design DNA; API Tokens rendered as anchors with href=\"#\"; activation did not navigate to a page or matching in-preview section.",
+      "reproduction": [
+        "Open /resources/app-sidebar-expanded/.",
+        "Inspect or activate Dashboard; its destination is only #."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/app-sidebar-expanded-dead-links-before.png",
+      "rootCause": "resources/shells/app-sidebar-expanded/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-010",
+      "severity": "medium",
+      "route": "/resources/breadcrumb-header/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "breadcrumb-header exposed navigation entries with placeholder destinations",
+      "expected": "A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label.",
+      "actual": "Projects; Telemetry rendered as anchors with href=\"#\"; activation did not navigate to a page or matching in-preview section.",
+      "reproduction": [
+        "Open /resources/breadcrumb-header/.",
+        "Inspect or activate Projects; its destination is only #."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/breadcrumb-header-dead-links-before.png",
+      "rootCause": "resources/shells/breadcrumb-header/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-011",
+      "severity": "medium",
+      "route": "/resources/centered-top-nav/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "centered-top-nav exposed navigation entries with placeholder destinations",
+      "expected": "A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label.",
+      "actual": "Features; Showcase; Pricing; Blog rendered as anchors with href=\"#\"; activation did not navigate to a page or matching in-preview section.",
+      "reproduction": [
+        "Open /resources/centered-top-nav/.",
+        "Inspect or activate Features; its destination is only #."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/centered-top-nav-dead-links-before.png",
+      "rootCause": "resources/shells/centered-top-nav/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-012",
+      "severity": "medium",
+      "route": "/resources/collapsible-sidebar/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "collapsible-sidebar exposed navigation entries with placeholder destinations",
+      "expected": "A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label.",
+      "actual": "Overview; Settings rendered as anchors with href=\"#\"; activation did not navigate to a page or matching in-preview section.",
+      "reproduction": [
+        "Open /resources/collapsible-sidebar/.",
+        "Inspect or activate Overview; its destination is only #."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/collapsible-sidebar-dead-links-before.png",
+      "rootCause": "resources/shells/collapsible-sidebar/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-013",
+      "severity": "medium",
+      "route": "/resources/floating-nav/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "floating-nav exposed navigation entries with placeholder destinations",
+      "expected": "A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label.",
+      "actual": "Overview; Specs; Changelog rendered as anchors with href=\"#\"; activation did not navigate to a page or matching in-preview section.",
+      "reproduction": [
+        "Open /resources/floating-nav/.",
+        "Inspect or activate Overview; its destination is only #."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/floating-nav-dead-links-before.png",
+      "rootCause": "resources/shells/floating-nav/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-014",
+      "severity": "medium",
+      "route": "/resources/footer-minimal/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "footer-minimal exposed navigation entries with placeholder destinations",
+      "expected": "A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label.",
+      "actual": "Privacy; Terms; Status: Operational rendered as anchors with href=\"#\"; activation did not navigate to a page or matching in-preview section.",
+      "reproduction": [
+        "Open /resources/footer-minimal/.",
+        "Inspect or activate Privacy; its destination is only #."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/footer-minimal-dead-links-before.png",
+      "rootCause": "resources/sections/footer-minimal/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-015",
+      "severity": "medium",
+      "route": "/resources/footer-sitemap/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "footer-sitemap exposed navigation entries with placeholder destinations",
+      "expected": "A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label.",
+      "actual": "17 sitemap entries across Resources, Platform, Community and Legal rendered as anchors with href=\"#\"; activation did not navigate to a page or matching in-preview section.",
+      "reproduction": [
+        "Open /resources/footer-sitemap/.",
+        "Inspect or activate 17 sitemap entries across Resources, Platform, Community and Legal; its destination is only #."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/footer-sitemap-dead-links-before.png",
+      "rootCause": "resources/sections/footer-sitemap/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-016",
+      "severity": "medium",
+      "route": "/resources/marketing-nav-cta/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "marketing-nav-cta exposed navigation entries with placeholder destinations",
+      "expected": "A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label.",
+      "actual": "Features; Pricing rendered as anchors with href=\"#\"; activation did not navigate to a page or matching in-preview section.",
+      "reproduction": [
+        "Open /resources/marketing-nav-cta/.",
+        "Inspect or activate Features; its destination is only #."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/marketing-nav-cta-dead-links-before.png",
+      "rootCause": "resources/shells/marketing-nav-cta/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-017",
+      "severity": "medium",
+      "route": "/resources/mega-nav/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "mega-nav exposed navigation entries with placeholder destinations",
+      "expected": "A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label.",
+      "actual": "Enterprise; Docs rendered as anchors with href=\"#\"; activation did not navigate to a page or matching in-preview section.",
+      "reproduction": [
+        "Open /resources/mega-nav/.",
+        "Inspect or activate Enterprise; its destination is only #."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/mega-nav-dead-links-before.png",
+      "rootCause": "resources/shells/mega-nav/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-018",
+      "severity": "medium",
+      "route": "/resources/minimal-top-nav/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "minimal-top-nav exposed navigation entries with placeholder destinations",
+      "expected": "A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label.",
+      "actual": "Overview; People; Settings rendered as anchors with href=\"#\"; activation did not navigate to a page or matching in-preview section.",
+      "reproduction": [
+        "Open /resources/minimal-top-nav/.",
+        "Inspect or activate Overview; its destination is only #."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/minimal-top-nav-dead-links-before.png",
+      "rootCause": "resources/shells/minimal-top-nav/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-019",
+      "severity": "medium",
+      "route": "/resources/mobile-drawer-nav/",
+      "viewport": "390x844",
+      "category": "state",
+      "title": "mobile-drawer-nav exposed navigation entries with placeholder destinations",
+      "expected": "A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label.",
+      "actual": "Catalogue; Workbench; Design DNA; Documentation rendered as anchors with href=\"#\"; activation did not navigate to a page or matching in-preview section.",
+      "reproduction": [
+        "Open /resources/mobile-drawer-nav/.",
+        "Open the Menu drawer.",
+        "Inspect or activate Catalogue; its destination is only #."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/mobile-drawer-nav-dead-links-before.png",
+      "rootCause": "resources/shells/mobile-drawer-nav/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-020",
+      "severity": "medium",
+      "route": "/resources/responsive-app-shell/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "responsive-app-shell exposed navigation entries with placeholder destinations",
+      "expected": "A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label.",
+      "actual": "Dashboard; Analytics; Settings rendered as anchors with href=\"#\"; activation did not navigate to a page or matching in-preview section.",
+      "reproduction": [
+        "Open /resources/responsive-app-shell/.",
+        "Inspect or activate Dashboard; its destination is only #."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/responsive-app-shell-dead-links-before.png",
+      "rootCause": "resources/shells/responsive-app-shell/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-021",
+      "severity": "medium",
+      "route": "/resources/transparent-solid-nav/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "transparent-solid-nav exposed navigation entries with placeholder destinations",
+      "expected": "A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label.",
+      "actual": "Engine; Gallery rendered as anchors with href=\"#\"; activation did not navigate to a page or matching in-preview section.",
+      "reproduction": [
+        "Open /resources/transparent-solid-nav/.",
+        "Inspect or activate Engine; its destination is only #."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/transparent-solid-nav-dead-links-before.png",
+      "rootCause": "resources/shells/transparent-solid-nav/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-022",
+      "severity": "medium",
+      "route": "/resources/breadcrumb-header/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Breadcrumb Header Export was an enabled no-op",
+      "expected": "Export should produce a visible host action or be disabled with an accessible explanation until its consumer is connected.",
+      "actual": "The browser accepted activation of Export, but there was no response, navigation or state change.",
+      "reproduction": [
+        "Open /resources/breadcrumb-header/.",
+        "Activate Export; no feedback or state change occurs."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/actions/breadcrumb-header-dead-control-before.png",
+      "rootCause": "resources/shells/breadcrumb-header/index.tsx The button had no export callback and no disabled state.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-023",
+      "severity": "medium",
+      "route": "/resources/breadcrumb-header/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Breadcrumb Header Save was an enabled no-op",
+      "expected": "Save should produce a visible host action or be disabled with an accessible explanation until its consumer is connected.",
+      "actual": "The browser accepted activation of Save, but there was no response, navigation or state change.",
+      "reproduction": [
+        "Open /resources/breadcrumb-header/.",
+        "Activate Save; no feedback or state change occurs."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/actions/breadcrumb-header-dead-control-before.png",
+      "rootCause": "resources/shells/breadcrumb-header/index.tsx The button had no save callback and no disabled state.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-024",
+      "severity": "medium",
+      "route": "/resources/centered-top-nav/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Centered Top Navigation included an unconnected default CTA",
+      "expected": "Get Started should produce a visible host action or be disabled with an accessible explanation until its consumer is connected.",
+      "actual": "The browser accepted activation of Get Started, but there was no response, navigation or state change.",
+      "reproduction": [
+        "Open /resources/centered-top-nav/.",
+        "Activate Get Started; no feedback or state change occurs."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/actions/centered-top-nav-dead-control-before.png",
+      "rootCause": "resources/shells/centered-top-nav/index.tsx The default CTA button had no action contract.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-025",
+      "severity": "medium",
+      "route": "/resources/floating-nav/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Floating Navigation Open was an enabled no-op",
+      "expected": "Open should produce a visible host action or be disabled with an accessible explanation until its consumer is connected.",
+      "actual": "The browser accepted activation of Open, but there was no response, navigation or state change.",
+      "reproduction": [
+        "Open /resources/floating-nav/.",
+        "Activate Open; no feedback or state change occurs."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/actions/floating-nav-dead-control-before.png",
+      "rootCause": "resources/shells/floating-nav/index.tsx The button had no open callback and no disabled state.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-026",
+      "severity": "medium",
+      "route": "/resources/mega-nav/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Mega Navigation Launch was an enabled no-op",
+      "expected": "Launch should produce a visible host action or be disabled with an accessible explanation until its consumer is connected.",
+      "actual": "The browser accepted activation of Launch, but there was no response, navigation or state change.",
+      "reproduction": [
+        "Open /resources/mega-nav/.",
+        "Activate Launch; no feedback or state change occurs."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/actions/mega-nav-dead-control-before.png",
+      "rootCause": "resources/shells/mega-nav/index.tsx The button had no launch callback and no disabled state.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-027",
+      "severity": "medium",
+      "route": "/resources/transparent-solid-nav/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Transparent Navigation Docs was an enabled no-op",
+      "expected": "Docs should produce a visible host action or be disabled with an accessible explanation until its consumer is connected.",
+      "actual": "The browser accepted activation of Docs, but there was no response, navigation or state change.",
+      "reproduction": [
+        "Open /resources/transparent-solid-nav/.",
+        "Activate Docs; no feedback or state change occurs."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/actions/transparent-solid-nav-dead-control-before.png",
+      "rootCause": "resources/shells/transparent-solid-nav/index.tsx The button had no navigation/action callback and no disabled state.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-028",
+      "severity": "medium",
+      "route": "/resources/mega-nav/",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Mega Navigation disclosure did not expose its expanded state",
+      "expected": "The Products disclosure should report aria-expanded and identify the controlled menu while opening and closing it.",
+      "actual": "The menu opened visually, but the button had no expanded-state attribute or controlled-menu relationship.",
+      "reproduction": [
+        "Open /resources/mega-nav/.",
+        "Activate Products; the menu appears without an exposed expanded state."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/actions/mega-nav-disclosure-before.png",
+      "rootCause": "resources/shells/mega-nav/index.tsx toggled a menu visually without aria-expanded or aria-controls.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-029",
+      "severity": "medium",
+      "route": "/resources/footer-minimal/",
+      "viewport": "390x844",
+      "category": "content",
+      "title": "Footer claimed system status was Operational without a live status source",
+      "expected": "A status label should not claim availability unless it is backed by a live status source.",
+      "actual": "The default footer stated “Status: Operational” in a static resource preview.",
+      "reproduction": [
+        "Open /resources/footer-minimal/ at 390x844.",
+        "Read the footer status label."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/navigation/footer-minimal-dead-links-before.png",
+      "rootCause": "resources/sections/footer-minimal/index.tsx hardcoded an operational-health claim into a generic static footer.",
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-030",
+      "severity": "high",
+      "route": "/resources/ai-prompt-hero/",
+      "viewport": "1280x900",
+      "category": "runtime",
+      "title": "Resource detail title markup corrupted the desktop page layout",
+      "expected": "The title should remain in the document head and the resource heading, tag list, preview and inspector should render as separate layout regions.",
+      "actual": "Astro split the interpolated title at the slug expression, placing the closing title/head tags before the trailing text. The browser then parsed resource-header children incorrectly and reduced the preview to 237px at 1280px.",
+      "reproduction": [
+        "Open /resources/ai-prompt-hero/ at 1280x900.",
+        "Inspect the document title and resource preview; the title was truncated, the detail DOM was misnested and the preview was too narrow."
+      ],
+      "rootCause": "The Astro template split one title string across multiple text/interpolation segments containing parentheses. The compiler hoisted closing head markup between those segments, corrupting all following body markup.",
+      "affectedFiles": [
+        "apps/site/src/pages/resources/[slug].astro",
+        "apps/site/src/pages/r/[slug].astro"
+      ],
+      "remediation": "Render each resource document title as one Astro expression; align both resource-detail routes on the same semantic header and min-width-safe responsive grid.",
+      "screenshot": "audit/evidence/step-06/before/wide-matrix/ai-prompt-hero-1280-overflow.png",
+      "afterScreenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-1280.png",
+      "console": [],
+      "network": [],
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-031",
+      "severity": "medium",
+      "route": "/resources/ai-agent-activity-feed/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "AI activity rows overflowed the compact preview",
+      "expected": "Event metadata and action copy should wrap within the preview without horizontal scrolling.",
+      "actual": "Long event actions and agent names exceeded the 360px preview width.",
+      "rootCause": "The event row reserved a single non-wrapping horizontal line for timestamp, agent badge and action text.",
+      "affectedFiles": [
+        "resources/ai/ai-agent-activity-feed/index.tsx"
+      ],
+      "remediation": "Allow row metadata to wrap and give the action copy a full-width row at compact widths.",
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-agent-activity-feed-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The initial failing run reported this resource; its ephemeral before screenshot was not retained.",
+      "console": [],
+      "network": [],
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-032",
+      "severity": "medium",
+      "route": "/resources/ai-prompt-hero/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "AI prompt hero content exceeded its narrow preview",
+      "expected": "The hero heading, prompt input, engine label and preset chips should fit and wrap within the preview.",
+      "actual": "The preview document was 306px wide inside a 292px viewport at 360px; at 1280px and 1440px outer widths the inner preview also exceeded its 237px viewport.",
+      "rootCause": "The centered flex content used intrinsic-width children and fixed horizontal padding; chips and the engine row could not shrink or wrap within the iframe.",
+      "affectedFiles": [
+        "resources/sections/ai-prompt-hero/index.tsx"
+      ],
+      "remediation": "Make the content column full-width and min-width-safe, wrap long heading and helper text, and allow prompt controls and preset chips to wrap.",
+      "screenshot": "audit/evidence/step-06/before/wide-matrix/ai-prompt-hero-360-overflow.png",
+      "afterScreenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-360.png",
+      "console": [],
+      "network": [],
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-033",
+      "severity": "medium",
+      "route": "/resources/ai-source-citations/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "Citation paths forced a source card wider than the preview",
+      "expected": "Citation title, file path, and quote should wrap inside each source card.",
+      "actual": "The source title/path row exceeded the 360px preview width.",
+      "rootCause": "A fixed justify-between row kept the citation title and long path on one line.",
+      "affectedFiles": [
+        "resources/ai/ai-source-citations/index.tsx"
+      ],
+      "remediation": "Allow the title and path to wrap, break long paths, and keep only the verification status unshrunk.",
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-source-citations-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The initial failing run reported this resource; its ephemeral before screenshot was not retained.",
+      "console": [],
+      "network": [],
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-034",
+      "severity": "medium",
+      "route": "/resources/breadcrumb-header/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "Breadcrumb header controls overflowed at phone width",
+      "expected": "Breadcrumbs and actions should wrap into readable rows within the viewport.",
+      "actual": "The breadcrumb trail and action controls occupied one fixed row and extended past the preview.",
+      "rootCause": "The header used a fixed-height, single-line flex layout with fixed horizontal padding.",
+      "affectedFiles": [
+        "resources/shells/breadcrumb-header/index.tsx"
+      ],
+      "remediation": "Use a minimum height, compact padding and wrapping layout for both breadcrumb items and action controls.",
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-breadcrumb-header-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The initial failing run reported this resource; its ephemeral before screenshot was not retained.",
+      "console": [],
+      "network": [],
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-035",
+      "severity": "medium",
+      "route": "/resources/counter-typography/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "Counter typography row exceeded the compact preview width",
+      "expected": "The number, unit and delta should wrap without clipping or horizontal scrolling.",
+      "actual": "The large counter value, unit and delta were forced into one row at 360px.",
+      "rootCause": "A non-wrapping baseline flex row combined the large numeric display with the unit and delta label.",
+      "affectedFiles": [
+        "resources/typography/counter-typography/index.tsx"
+      ],
+      "remediation": "Allow the value and unit row to wrap and place the delta on its own line at compact widths.",
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-counter-typography-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The initial failing run reported this resource; its ephemeral before screenshot was not retained.",
+      "console": [],
+      "network": [],
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-036",
+      "severity": "medium",
+      "route": "/resources/floating-ai-assistant/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "Floating assistant dialog exceeded its compact preview",
+      "expected": "The dialog and launcher should remain inside the preview width.",
+      "actual": "The fixed-width assistant panel extended beyond the preview at 360px.",
+      "rootCause": "An inline-flex wrapper and fixed 20rem dialog retained desktop intrinsic width inside a narrow preview.",
+      "affectedFiles": [
+        "resources/ai/floating-ai-assistant/index.tsx"
+      ],
+      "remediation": "Use a full-width wrapper capped at the existing 20rem maximum and let the dialog inherit the available width.",
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-floating-ai-assistant-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The initial failing run reported this resource; its ephemeral before screenshot was not retained.",
+      "console": [],
+      "network": [],
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-037",
+      "severity": "medium",
+      "route": "/resources/inline-ai-rewrite/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "Inline rewrite toolbar overflowed at phone width",
+      "expected": "Rewrite tones and acceptance actions should wrap within the preview.",
+      "actual": "The tone and action controls remained on a single row and overflowed the 360px preview.",
+      "rootCause": "The toolbar grouped keyboard hint, tone buttons and actions in non-wrapping flex rows.",
+      "affectedFiles": [
+        "resources/ai/inline-ai-rewrite/index.tsx"
+      ],
+      "remediation": "Allow the header and tone/action groups to wrap and permit the keyboard hint to occupy its own compact row.",
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-inline-ai-rewrite-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The initial failing run reported this resource; its ephemeral before screenshot was not retained.",
+      "console": [],
+      "network": [],
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-038",
+      "severity": "medium",
+      "route": "/resources/integration-directory-preview/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "Integration category filters overflowed the preview",
+      "expected": "Filter chips should wrap into multiple rows at compact widths.",
+      "actual": "The category filter controls rendered as one unbreakable row wider than the preview.",
+      "rootCause": "The filter container used a centered flex row without wrapping.",
+      "affectedFiles": [
+        "resources/sections/integration-directory-preview/index.tsx"
+      ],
+      "remediation": "Enable wrapping for the category chips while preserving centered alignment.",
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-integration-directory-preview-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The initial failing run reported this resource; its ephemeral before screenshot was not retained.",
+      "console": [],
+      "network": [],
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-039",
+      "severity": "medium",
+      "route": "/resources/interactive-demo-hero/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "Interactive demo controls overflowed the compact preview",
+      "expected": "Density, mode and status controls should wrap within the demo card.",
+      "actual": "The demo controls and preview status were constrained to desktop-width rows.",
+      "rootCause": "The density and mode control groups and status row used non-wrapping flex layouts.",
+      "affectedFiles": [
+        "resources/sections/interactive-demo-hero/index.tsx"
+      ],
+      "remediation": "Allow each control group and the preview status row to wrap at compact widths.",
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-interactive-demo-hero-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The initial failing run reported this resource; its ephemeral before screenshot was not retained.",
+      "console": [],
+      "network": [],
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-040",
+      "severity": "medium",
+      "route": "/resources/mega-nav/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "Mega navigation exceeded compact preview width",
+      "expected": "Brand, menu links and launch control should reflow within the viewport.",
+      "actual": "A fixed-height single-row navigation and dropdown padding exceeded the preview width.",
+      "rootCause": "The navigation forced all controls into one line and used desktop-only menu spacing.",
+      "affectedFiles": [
+        "resources/shells/mega-nav/index.tsx"
+      ],
+      "remediation": "Allow the navigation and menu grid to wrap, reduce compact padding, and use a minimum rather than fixed height.",
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-mega-nav-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The initial failing run reported this resource; its ephemeral before screenshot was not retained.",
+      "console": [],
+      "network": [],
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-041",
+      "severity": "medium",
+      "route": "/resources/multi-series-line-chart/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "Multi-series chart legend extended beyond the preview",
+      "expected": "Series controls and chart content should wrap and scale inside the preview.",
+      "actual": "The legend controls stayed on a single row and widened the preview document.",
+      "rootCause": "Legend buttons were held in a fixed horizontal flex row next to the chart heading.",
+      "affectedFiles": [
+        "resources/data/multi-series-line-chart/index.tsx"
+      ],
+      "remediation": "Allow legend buttons to wrap and cap the legend container to the available width.",
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-multi-series-line-chart-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The initial failing run reported this resource; its ephemeral before screenshot was not retained.",
+      "console": [],
+      "network": [],
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-042",
+      "severity": "medium",
+      "route": "/resources/ai-agent-activity-feed/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "AI activity action text was unreadably narrow on mobile",
+      "expected": "Each event description should have enough width to wrap as phrases on a 360px phone preview.",
+      "actual": "A browser assertion measured the description at 56px inside a 292px preview; words broke into narrow fragments.",
+      "reproduction": [
+        "Open /resources/ai-agent-activity-feed/ at 360x844.",
+        "Inspect the first event description; before the fix it occupied 56px of the 292px preview."
+      ],
+      "rootCause": "After the row was made wrapping, its action flex item could still shrink beside timestamp and agent metadata.",
+      "affectedFiles": [
+        "resources/ai/ai-agent-activity-feed/index.tsx",
+        "tests/e2e/catalog-resource-render.spec.ts"
+      ],
+      "remediation": "Give the action a full-width flex basis below the small-screen breakpoint; assert a minimum readable width in the browser test.",
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-agent-activity-feed-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The failing state is captured by the assertion output; after screenshot shows the corrected row.",
+      "console": [],
+      "network": [],
+      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    }
+  ]
+}

@@ -1,0 +1,475 @@
+# Runtime audit — Step 06 resource certification
+
+This is a local browser audit against the built ChatGPT Sites Worker boundary at
+`http://127.0.0.1:4323`. It is not a verification of the public review Site.
+Machine-readable findings and their current status are in
+[`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
+published review version during the public-RC phase.
+
+**Current disposition:** 42 findings (6 High, 36 Medium); all recorded findings have local remediation and passed the final local browser certification. They remain open pending verification in a newly published review Site. This audit records local Worker-preview evidence only.
+
+The final `pnpm test:e2e` run passed: 73 regular browser tests, 11 explicitly skipped tests, and all 3 Sites Worker tests. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
+
+## HIGH
+
+### AUD-001 — Marketing CTA had no action
+
+- Evidence: initial Gold browser keyboard probe found an enabled CTA with no visible response. Reproduction: open `/resources/marketing-nav-cta/`, focus **Start Free**, press Enter.
+- Root cause: `MarketingNavCta` had no action contract and always rendered an enabled button.
+- Affected code: `resources/shells/marketing-nav-cta/index.tsx`, `apps/site/src/components/PreviewHost.tsx`.
+- Remediation: accept a host callback, disable the button with an accessible explanation when disconnected, and show explicit preview feedback when connected.
+- Regression: `tests/resource-action-contracts.test.tsx`; keyboard interaction in `tests/e2e/gold-resource-certification.spec.ts`.
+
+### AUD-002 — Pricing plan actions were dead
+
+- Evidence: initial Gold browser keyboard probe found three enabled **Get Started** controls with no feedback. Reproduction: open `/resources/pricing-three-tier/`, press Enter on a plan action.
+- Root cause: no callback contract existed for plan selection.
+- Affected code: `resources/sections/pricing-three-tier/index.tsx`, `apps/site/src/components/PreviewHost.tsx`.
+- Remediation: route the selected plan to the host, disable unconnected controls accessibly, and report selection in the isolated preview.
+- Regression: `tests/resource-action-contracts.test.tsx`; keyboard interaction in `tests/e2e/gold-resource-certification.spec.ts`.
+
+### AUD-003 — Empty workspace action was dead
+
+- Evidence: initial Gold browser keyboard probe found **Create New Project** enabled without a response. Reproduction: open `/resources/empty-workspace/`, press Enter on the action.
+- Root cause: the component had no creation callback and did not signal the missing integration.
+- Affected code: `resources/blocks/empty-workspace/index.tsx`, `apps/site/src/components/PreviewHost.tsx`.
+- Remediation: add a host action, disable it with an accessible explanation when absent, and provide visible preview feedback.
+- Regression: `tests/resource-action-contracts.test.tsx`; keyboard interaction in `tests/e2e/gold-resource-certification.spec.ts`.
+
+### AUD-004 — Magnetic button had no click action
+
+- Evidence: initial Gold browser keyboard probe found the button responded to pointer movement but pressing Enter had no response. Reproduction: open `/resources/magnetic-button/`, focus the button, press Enter.
+- Root cause: the component implemented only pointer tracking while exposing button semantics.
+- Affected code: `resources/motion/magnetic-button/index.tsx`, `apps/site/src/components/PreviewHost.tsx`.
+- Remediation: add an optional host action, disable the button with an accessible explanation when disconnected, and show preview feedback when connected.
+- Regression: `tests/resource-action-contracts.test.tsx`; keyboard interaction in `tests/e2e/gold-resource-certification.spec.ts`.
+
+### AUD-005 — Preview retry did not invoke feedback
+
+- Evidence: initial Gold browser keyboard probe found **Retry Operation** enabled without response. Reproduction: open `/resources/error-state/`, activate retry.
+- Root cause: `ErrorState` already accepted `onRetry`, but `PreviewHost` did not provide it.
+- Affected code: `apps/site/src/components/PreviewHost.tsx`, `resources/states/error-state/index.tsx`.
+- Remediation: connect a preview-only retry example and disable the control with an accessible explanation if the consuming app supplies no retry handler.
+- Regression: `tests/resource-action-contracts.test.tsx`; keyboard interaction in `tests/e2e/gold-resource-certification.spec.ts`.
+
+## MEDIUM
+
+### AUD-006 — Documentation shell overflowed on mobile
+
+- Evidence: before screenshot [`documentation-shell-390.png`](evidence/step-06/before/documentation-shell-390.png); 376px document scroll width inside a 322px preview at a 390x844 browser viewport. Reproduction: open `/resources/documentation-shell/` at mobile width.
+- Root cause: fixed desktop sidebar and main padding without a responsive stacking strategy.
+- Affected code: `resources/shells/documentation-shell/index.tsx`.
+- Remediation: stack panes under the container breakpoint, reduce compact-width padding and hide the optional page index until there is room.
+- Regression: `tests/e2e/catalog-resource-render.spec.ts`.
+
+### AUD-007 — Floating navigation overflowed on mobile
+
+- Evidence: before screenshot [`floating-nav-390.png`](evidence/step-06/before/floating-nav-390.png); 347px content width inside a 322px preview at 390x844. Reproduction: open `/resources/floating-nav/` at mobile width.
+- Root cause: a single-row pill with fixed gaps and padding.
+- Affected code: `resources/shells/floating-nav/index.tsx`.
+- Remediation: allow the pill to wrap and tighten the gaps and padding at compact widths.
+- Regression: `tests/e2e/catalog-resource-render.spec.ts`.
+
+### AUD-008 — Webhook endpoint row clipped on mobile
+
+- Evidence: before screenshot [`webhook-management-390.png`](evidence/step-06/before/webhook-management-390.png); 341px content width inside a 322px preview at 390x844. Reproduction: open `/resources/webhook-management/` at mobile width.
+- Root cause: a long, unbreakable URL shared a non-wrapping row with its status badge.
+- Affected code: `resources/blocks/webhook-management/index.tsx`.
+- Remediation: stack the row at compact widths, allow the URL to break anywhere and keep the status badge fixed-width.
+- Regression: `tests/e2e/catalog-resource-render.spec.ts`.
+
+### AUD-009 — app-sidebar-expanded exposed navigation entries with placeholder destinations
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/app-sidebar-expanded-dead-links-before.png). Expected: A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label. Actual: Dashboard; Telemetry; Composition Engine; Design DNA; API Tokens rendered as anchors with href="#"; activation did not navigate to a page or matching in-preview section.
+- Reproduction:
+  - Open /resources/app-sidebar-expanded/.
+  - Inspect or activate Dashboard; its destination is only #.
+- Root cause: resources/shells/app-sidebar-expanded/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.
+- Affected code: `resources/shells/app-sidebar-expanded/index.tsx`
+- Remediation: Accept real destinations from consumer props and render entries without an href as plain labels. The default demo no longer pretends that a placeholder fragment is a working route.
+- Regression: The all-resource Sites Worker browser test now rejects empty, #, and unresolved fragment destinations; resource contract tests verify real destinations pass through.
+
+### AUD-010 — breadcrumb-header exposed navigation entries with placeholder destinations
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/breadcrumb-header-dead-links-before.png). Expected: A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label. Actual: Projects; Telemetry rendered as anchors with href="#"; activation did not navigate to a page or matching in-preview section.
+- Reproduction:
+  - Open /resources/breadcrumb-header/.
+  - Inspect or activate Projects; its destination is only #.
+- Root cause: resources/shells/breadcrumb-header/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.
+- Affected code: `resources/shells/breadcrumb-header/index.tsx`
+- Remediation: Accept real destinations from consumer props and render entries without an href as plain labels. The default demo no longer pretends that a placeholder fragment is a working route.
+- Regression: The all-resource Sites Worker browser test now rejects empty, #, and unresolved fragment destinations; resource contract tests verify real destinations pass through.
+
+### AUD-011 — centered-top-nav exposed navigation entries with placeholder destinations
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/centered-top-nav-dead-links-before.png). Expected: A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label. Actual: Features; Showcase; Pricing; Blog rendered as anchors with href="#"; activation did not navigate to a page or matching in-preview section.
+- Reproduction:
+  - Open /resources/centered-top-nav/.
+  - Inspect or activate Features; its destination is only #.
+- Root cause: resources/shells/centered-top-nav/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.
+- Affected code: `resources/shells/centered-top-nav/index.tsx`
+- Remediation: Accept real destinations from consumer props and render entries without an href as plain labels. The default demo no longer pretends that a placeholder fragment is a working route.
+- Regression: The all-resource Sites Worker browser test now rejects empty, #, and unresolved fragment destinations; resource contract tests verify real destinations pass through.
+
+### AUD-012 — collapsible-sidebar exposed navigation entries with placeholder destinations
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/collapsible-sidebar-dead-links-before.png). Expected: A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label. Actual: Overview; Settings rendered as anchors with href="#"; activation did not navigate to a page or matching in-preview section.
+- Reproduction:
+  - Open /resources/collapsible-sidebar/.
+  - Inspect or activate Overview; its destination is only #.
+- Root cause: resources/shells/collapsible-sidebar/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.
+- Affected code: `resources/shells/collapsible-sidebar/index.tsx`
+- Remediation: Accept real destinations from consumer props and render entries without an href as plain labels. The default demo no longer pretends that a placeholder fragment is a working route.
+- Regression: The all-resource Sites Worker browser test now rejects empty, #, and unresolved fragment destinations; resource contract tests verify real destinations pass through.
+
+### AUD-013 — floating-nav exposed navigation entries with placeholder destinations
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/floating-nav-dead-links-before.png). Expected: A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label. Actual: Overview; Specs; Changelog rendered as anchors with href="#"; activation did not navigate to a page or matching in-preview section.
+- Reproduction:
+  - Open /resources/floating-nav/.
+  - Inspect or activate Overview; its destination is only #.
+- Root cause: resources/shells/floating-nav/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.
+- Affected code: `resources/shells/floating-nav/index.tsx`
+- Remediation: Accept real destinations from consumer props and render entries without an href as plain labels. The default demo no longer pretends that a placeholder fragment is a working route.
+- Regression: The all-resource Sites Worker browser test now rejects empty, #, and unresolved fragment destinations; resource contract tests verify real destinations pass through.
+
+### AUD-014 — footer-minimal exposed navigation entries with placeholder destinations
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/footer-minimal-dead-links-before.png). Expected: A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label. Actual: Privacy; Terms; Status: Operational rendered as anchors with href="#"; activation did not navigate to a page or matching in-preview section.
+- Reproduction:
+  - Open /resources/footer-minimal/.
+  - Inspect or activate Privacy; its destination is only #.
+- Root cause: resources/sections/footer-minimal/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.
+- Affected code: `resources/sections/footer-minimal/index.tsx`
+- Remediation: Accept real destinations from consumer props and render entries without an href as plain labels. The default demo no longer pretends that a placeholder fragment is a working route.
+- Regression: The all-resource Sites Worker browser test now rejects empty, #, and unresolved fragment destinations; resource contract tests verify real destinations pass through.
+
+### AUD-015 — footer-sitemap exposed navigation entries with placeholder destinations
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/footer-sitemap-dead-links-before.png). Expected: A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label. Actual: 17 sitemap entries across Resources, Platform, Community and Legal rendered as anchors with href="#"; activation did not navigate to a page or matching in-preview section.
+- Reproduction:
+  - Open /resources/footer-sitemap/.
+  - Inspect or activate 17 sitemap entries across Resources, Platform, Community and Legal; its destination is only #.
+- Root cause: resources/sections/footer-sitemap/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.
+- Affected code: `resources/sections/footer-sitemap/index.tsx`
+- Remediation: Accept real destinations from consumer props and render entries without an href as plain labels. The default demo no longer pretends that a placeholder fragment is a working route.
+- Regression: The all-resource Sites Worker browser test now rejects empty, #, and unresolved fragment destinations; resource contract tests verify real destinations pass through.
+
+### AUD-016 — marketing-nav-cta exposed navigation entries with placeholder destinations
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/marketing-nav-cta-dead-links-before.png). Expected: A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label. Actual: Features; Pricing rendered as anchors with href="#"; activation did not navigate to a page or matching in-preview section.
+- Reproduction:
+  - Open /resources/marketing-nav-cta/.
+  - Inspect or activate Features; its destination is only #.
+- Root cause: resources/shells/marketing-nav-cta/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.
+- Affected code: `resources/shells/marketing-nav-cta/index.tsx`
+- Remediation: Accept real destinations from consumer props and render entries without an href as plain labels. The default demo no longer pretends that a placeholder fragment is a working route.
+- Regression: The all-resource Sites Worker browser test now rejects empty, #, and unresolved fragment destinations; resource contract tests verify real destinations pass through.
+
+### AUD-017 — mega-nav exposed navigation entries with placeholder destinations
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/mega-nav-dead-links-before.png). Expected: A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label. Actual: Enterprise; Docs rendered as anchors with href="#"; activation did not navigate to a page or matching in-preview section.
+- Reproduction:
+  - Open /resources/mega-nav/.
+  - Inspect or activate Enterprise; its destination is only #.
+- Root cause: resources/shells/mega-nav/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.
+- Affected code: `resources/shells/mega-nav/index.tsx`
+- Remediation: Accept real destinations from consumer props and render entries without an href as plain labels. The default demo no longer pretends that a placeholder fragment is a working route.
+- Regression: The all-resource Sites Worker browser test now rejects empty, #, and unresolved fragment destinations; resource contract tests verify real destinations pass through.
+
+### AUD-018 — minimal-top-nav exposed navigation entries with placeholder destinations
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/minimal-top-nav-dead-links-before.png). Expected: A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label. Actual: Overview; People; Settings rendered as anchors with href="#"; activation did not navigate to a page or matching in-preview section.
+- Reproduction:
+  - Open /resources/minimal-top-nav/.
+  - Inspect or activate Overview; its destination is only #.
+- Root cause: resources/shells/minimal-top-nav/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.
+- Affected code: `resources/shells/minimal-top-nav/index.tsx`
+- Remediation: Accept real destinations from consumer props and render entries without an href as plain labels. The default demo no longer pretends that a placeholder fragment is a working route.
+- Regression: The all-resource Sites Worker browser test now rejects empty, #, and unresolved fragment destinations; resource contract tests verify real destinations pass through.
+
+### AUD-019 — mobile-drawer-nav exposed navigation entries with placeholder destinations
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/mobile-drawer-nav-dead-links-before.png). Expected: A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label. Actual: Catalogue; Workbench; Design DNA; Documentation rendered as anchors with href="#"; activation did not navigate to a page or matching in-preview section.
+- Reproduction:
+  - Open /resources/mobile-drawer-nav/.
+  - Open the Menu drawer.
+  - Inspect or activate Catalogue; its destination is only #.
+- Root cause: resources/shells/mobile-drawer-nav/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.
+- Affected code: `resources/shells/mobile-drawer-nav/index.tsx`
+- Remediation: Accept real destinations from consumer props and render entries without an href as plain labels. The default demo no longer pretends that a placeholder fragment is a working route.
+- Regression: The all-resource Sites Worker browser test now rejects empty, #, and unresolved fragment destinations; resource contract tests verify real destinations pass through.
+
+### AUD-020 — responsive-app-shell exposed navigation entries with placeholder destinations
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/responsive-app-shell-dead-links-before.png). Expected: A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label. Actual: Dashboard; Analytics; Settings rendered as anchors with href="#"; activation did not navigate to a page or matching in-preview section.
+- Reproduction:
+  - Open /resources/responsive-app-shell/.
+  - Inspect or activate Dashboard; its destination is only #.
+- Root cause: resources/shells/responsive-app-shell/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.
+- Affected code: `resources/shells/responsive-app-shell/index.tsx`
+- Remediation: Accept real destinations from consumer props and render entries without an href as plain labels. The default demo no longer pretends that a placeholder fragment is a working route.
+- Regression: The all-resource Sites Worker browser test now rejects empty, #, and unresolved fragment destinations; resource contract tests verify real destinations pass through.
+
+### AUD-021 — transparent-solid-nav exposed navigation entries with placeholder destinations
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/transparent-solid-nav-dead-links-before.png). Expected: A visible link should have a real destination. If the consuming application has not supplied one, the preview should show a non-interactive label. Actual: Engine; Gallery rendered as anchors with href="#"; activation did not navigate to a page or matching in-preview section.
+- Reproduction:
+  - Open /resources/transparent-solid-nav/.
+  - Inspect or activate Engine; its destination is only #.
+- Root cause: resources/shells/transparent-solid-nav/index.tsx hardcoded placeholder fragment destinations instead of accepting consumer-provided links; the preview presented those placeholders as working navigation.
+- Affected code: `resources/shells/transparent-solid-nav/index.tsx`
+- Remediation: Accept real destinations from consumer props and render entries without an href as plain labels. The default demo no longer pretends that a placeholder fragment is a working route.
+- Regression: The all-resource Sites Worker browser test now rejects empty, #, and unresolved fragment destinations; resource contract tests verify real destinations pass through.
+
+### AUD-022 — Breadcrumb Header Export was an enabled no-op
+
+- Evidence: [before screenshot](evidence/step-06/before/actions/breadcrumb-header-dead-control-before.png). Expected: Export should produce a visible host action or be disabled with an accessible explanation until its consumer is connected. Actual: The browser accepted activation of Export, but there was no response, navigation or state change.
+- Reproduction:
+  - Open /resources/breadcrumb-header/.
+  - Activate Export; no feedback or state change occurs.
+- Root cause: resources/shells/breadcrumb-header/index.tsx The button had no export callback and no disabled state.
+- Affected code: `resources/shells/breadcrumb-header/index.tsx`
+- Remediation: Add an optional callback, disable the control with an accessible reason when it is not connected, and wire a preview callback that produces visible status feedback.
+- Regression: The Sites Worker browser test activates the control and checks its visible feedback; unit tests cover disabled and connected states.
+
+### AUD-023 — Breadcrumb Header Save was an enabled no-op
+
+- Evidence: [before screenshot](evidence/step-06/before/actions/breadcrumb-header-dead-control-before.png). Expected: Save should produce a visible host action or be disabled with an accessible explanation until its consumer is connected. Actual: The browser accepted activation of Save, but there was no response, navigation or state change.
+- Reproduction:
+  - Open /resources/breadcrumb-header/.
+  - Activate Save; no feedback or state change occurs.
+- Root cause: resources/shells/breadcrumb-header/index.tsx The button had no save callback and no disabled state.
+- Affected code: `resources/shells/breadcrumb-header/index.tsx`
+- Remediation: Add an optional callback, disable the control with an accessible reason when it is not connected, and wire a preview callback that produces visible status feedback.
+- Regression: The Sites Worker browser test activates the control and checks its visible feedback; unit tests cover disabled and connected states.
+
+### AUD-024 — Centered Top Navigation included an unconnected default CTA
+
+- Evidence: [before screenshot](evidence/step-06/before/actions/centered-top-nav-dead-control-before.png). Expected: Get Started should produce a visible host action or be disabled with an accessible explanation until its consumer is connected. Actual: The browser accepted activation of Get Started, but there was no response, navigation or state change.
+- Reproduction:
+  - Open /resources/centered-top-nav/.
+  - Activate Get Started; no feedback or state change occurs.
+- Root cause: resources/shells/centered-top-nav/index.tsx The default CTA button had no action contract.
+- Affected code: `resources/shells/centered-top-nav/index.tsx`
+- Remediation: Add an optional callback, disable the control with an accessible reason when it is not connected, and wire a preview callback that produces visible status feedback.
+- Regression: The Sites Worker browser test activates the control and checks its visible feedback; unit tests cover disabled and connected states.
+
+### AUD-025 — Floating Navigation Open was an enabled no-op
+
+- Evidence: [before screenshot](evidence/step-06/before/actions/floating-nav-dead-control-before.png). Expected: Open should produce a visible host action or be disabled with an accessible explanation until its consumer is connected. Actual: The browser accepted activation of Open, but there was no response, navigation or state change.
+- Reproduction:
+  - Open /resources/floating-nav/.
+  - Activate Open; no feedback or state change occurs.
+- Root cause: resources/shells/floating-nav/index.tsx The button had no open callback and no disabled state.
+- Affected code: `resources/shells/floating-nav/index.tsx`
+- Remediation: Add an optional callback, disable the control with an accessible reason when it is not connected, and wire a preview callback that produces visible status feedback.
+- Regression: The Sites Worker browser test activates the control and checks its visible feedback; unit tests cover disabled and connected states.
+
+### AUD-026 — Mega Navigation Launch was an enabled no-op
+
+- Evidence: [before screenshot](evidence/step-06/before/actions/mega-nav-dead-control-before.png). Expected: Launch should produce a visible host action or be disabled with an accessible explanation until its consumer is connected. Actual: The browser accepted activation of Launch, but there was no response, navigation or state change.
+- Reproduction:
+  - Open /resources/mega-nav/.
+  - Activate Launch; no feedback or state change occurs.
+- Root cause: resources/shells/mega-nav/index.tsx The button had no launch callback and no disabled state.
+- Affected code: `resources/shells/mega-nav/index.tsx`
+- Remediation: Add an optional callback, disable the control with an accessible reason when it is not connected, and wire a preview callback that produces visible status feedback.
+- Regression: The Sites Worker browser test activates the control and checks its visible feedback; unit tests cover disabled and connected states.
+
+### AUD-027 — Transparent Navigation Docs was an enabled no-op
+
+- Evidence: [before screenshot](evidence/step-06/before/actions/transparent-solid-nav-dead-control-before.png). Expected: Docs should produce a visible host action or be disabled with an accessible explanation until its consumer is connected. Actual: The browser accepted activation of Docs, but there was no response, navigation or state change.
+- Reproduction:
+  - Open /resources/transparent-solid-nav/.
+  - Activate Docs; no feedback or state change occurs.
+- Root cause: resources/shells/transparent-solid-nav/index.tsx The button had no navigation/action callback and no disabled state.
+- Affected code: `resources/shells/transparent-solid-nav/index.tsx`
+- Remediation: Add an optional callback, disable the control with an accessible reason when it is not connected, and wire a preview callback that produces visible status feedback.
+- Regression: The Sites Worker browser test activates the control and checks its visible feedback; unit tests cover disabled and connected states.
+
+### AUD-028 — Mega Navigation disclosure did not expose its expanded state
+
+- Evidence: [before screenshot](evidence/step-06/before/actions/mega-nav-disclosure-before.png). Expected: The Products disclosure should report aria-expanded and identify the controlled menu while opening and closing it. Actual: The menu opened visually, but the button had no expanded-state attribute or controlled-menu relationship.
+- Reproduction:
+  - Open /resources/mega-nav/.
+  - Activate Products; the menu appears without an exposed expanded state.
+- Root cause: resources/shells/mega-nav/index.tsx toggled a menu visually without aria-expanded or aria-controls.
+- Affected code: `resources/shells/mega-nav/index.tsx`
+- Remediation: Expose aria-expanded and aria-controls on the disclosure button and identify the controlled menu. Keep the visual open/close behavior unchanged.
+- Regression: The Sites Worker browser test opens and closes the menu and checks its visible state and aria-expanded value.
+
+### AUD-029 — Footer claimed system status was Operational without a live status source
+
+- Evidence: [before screenshot](evidence/step-06/before/navigation/footer-minimal-dead-links-before.png). Expected: A status label should not claim availability unless it is backed by a live status source. Actual: The default footer stated “Status: Operational” in a static resource preview.
+- Reproduction:
+  - Open /resources/footer-minimal/ at 390x844.
+  - Read the footer status label.
+- Root cause: resources/sections/footer-minimal/index.tsx hardcoded an operational-health claim into a generic static footer.
+- Affected code: `resources/sections/footer-minimal/index.tsx`
+- Remediation: Replace the unsupported live-status claim with neutral status text unless a real status source is supplied.
+- Regression: The resource browser evidence and content review verify the neutral default label.
+
+## False-positive probe results
+
+The first generic keyboard probe compared whole-document HTML before and after
+pressing Enter on the first button. It also flagged the already-selected row/tab
+in the two-pane and split-hero examples and missed the transient fade transition.
+Those three were not defects. The final test now checks the native click event and
+the expected control-specific visible result; the full Gold matrix passes.
+
+## Audit-tool isolation limit
+
+Attempting to inject Axe into the opaque resource iframe caused Axe's stylesheet
+inspection to issue a fetch that the intended preview policy blocked with
+`connect-src 'none'`. This came from the injected audit script, not from the
+application during normal use. The CSP was preserved, the failed probe was
+removed from product evidence, and accessibility scanning inside the isolated
+preview remains outstanding until an isolation-preserving approach is available.
+
+## Current browser evidence
+
+- All 324 catalogue previews rendered at 360, 390, 430, 768, 1024, 1280 and
+  1440px. All 972 declared variants were selected and rendered at desktop width.
+  Zero console errors, page exceptions, failed requests, HTTP errors, unresolved
+  resource fallbacks, dead links or overflows remained after fixes.
+- The canonical `/r/ai-prompt-hero/` page returned HTTP 200 at 390x844 and
+  1440x900, with the exact document title, exact heading, live preview, no
+  browser errors and no horizontal page overflow. Its desktop preview measured
+  764px; evidence is in `results/canonical-resource-route.json`.
+- The focused 13-resource navigation/control run covered the 52 former placeholder links, six no-op controls, mobile drawer behavior and mega-menu disclosure; it recorded zero browser findings.
+- All 40 Gold resources rendered each of their three declared variants at 360,
+  390, 430, 768, 1024, 1280 and 1440; each preview retained its isolated iframe
+  sandbox. All 33 tested enabled controls were reachable with visible keyboard
+  focus, Enter activated them and the expected result appeared. Reduced Motion
+  was toggled through the visible toolbar and reached the renderer for all 40.
+- Before/after screenshots are under `audit/evidence/step-06/`; machine-readable outputs are in `audit/evidence/step-06/results/`.
+- All 42 entries remain `fixed-awaiting-deployed-verification`; local success
+  does not establish behavior on the public review Site.
+- This does not yet certify every loading, empty, error, long-text or large-data
+  state; screen-reader semantics, full contrast coverage, or public deployment
+  behavior.
+
+## Expanded resource-certification findings
+
+These findings came from the seven-width audit and subsequent visual review. The
+initial failed run recorded compact-preview overflow in 11 resources. Its
+Playwright screenshots were cleared by a later run before 10 of those images had
+been copied into durable evidence; the limitation is recorded in the machine
+ledger rather than inventing before screenshots. Current screenshots document
+the corrected layouts. The two retained AI Prompt Hero before screenshots show
+the representative iframe overflow and malformed wide resource-detail layout.
+
+### HIGH
+
+### AUD-030 — Interpolated resource title corrupted the detail-page DOM
+
+- Evidence: before screenshot [`ai-prompt-hero-1280-overflow.png`](evidence/step-06/before/wide-matrix/ai-prompt-hero-1280-overflow.png); after screenshot [`resources-ai-prompt-hero-1280.png`](evidence/step-06/after/resource-layout/resources-ai-prompt-hero-1280.png). Before the fix, the title was truncated and the preview measured 237px at a 1280px viewport.
+- Reproduction: open `/resources/ai-prompt-hero/` at 1280x900 and inspect the document title, heading, tag list and preview/inspector grid.
+- Root cause: splitting the title around `manifest.slug` made Astro hoist the closing `title` and `head` markup into the middle of the title text. The malformed template then produced invalid body nesting and a narrow preview across the resource-detail pages.
+- Affected code: `apps/site/src/pages/resources/[slug].astro`, `apps/site/src/pages/r/[slug].astro`.
+- Remediation: emit the complete title as one expression, use a semantic resource header and keep the preview/inspector columns min-width-safe. Both detail routes now use the same structure.
+- Regression: the browser test requires the exact title and exact level-one heading, checks `/r/ai-prompt-hero/` at 390px and 1440px, and verifies the desktop preview remains at least 500px wide.
+
+### MEDIUM
+
+### AUD-031 — AI activity feed overflowed at 360px
+
+- Evidence: current screenshot [`resources-ai-agent-activity-feed-360.png`](evidence/step-06/after/resource-layout/resources-ai-agent-activity-feed-360.png). The initial seven-width run recorded inner preview overflow.
+- Reproduction: open `/resources/ai-agent-activity-feed/` at 360x844.
+- Root cause: timestamp, agent badge and long action text competed for one row without a compact reflow.
+- Affected code: `resources/ai/ai-agent-activity-feed/index.tsx`.
+- Remediation: wrap event metadata and give action text a full-width flex basis on compact screens. A regression also asserts the action occupies at least 60% of the preview width.
+
+### AUD-032 — AI prompt hero overflowed its preview
+
+- Evidence: before screenshots [`360px`](evidence/step-06/before/wide-matrix/ai-prompt-hero-360-overflow.png) and [`1280px`](evidence/step-06/before/wide-matrix/ai-prompt-hero-1280-overflow.png); corrected screenshots are under `evidence/step-06/after/resource-layout/`. The initial widths were 306px content in a 292px preview at 360px, and 279px content in a 237px preview at 1280px and 1440px.
+- Reproduction: open `/resources/ai-prompt-hero/` at 360x844 or 1280x900.
+- Root cause: centered intrinsic-width flex content, fixed side padding and non-wrapping prompt controls exceeded the iframe.
+- Affected code: `resources/sections/ai-prompt-hero/index.tsx`.
+- Remediation: make the content column full-width and shrinkable, break long text, and wrap the prompt action row and preset chips.
+
+### AUD-033 — AI source citation rows overflowed at 360px
+
+- Evidence: current screenshot [`resources-ai-source-citations-360.png`](evidence/step-06/after/resource-layout/resources-ai-source-citations-360.png); the initial width matrix recorded overflow.
+- Reproduction: open `/resources/ai-source-citations/` at 360x844.
+- Root cause: source title and long path shared a fixed non-wrapping row.
+- Affected code: `resources/ai/ai-source-citations/index.tsx`.
+- Remediation: wrap the row and allow source paths to break anywhere.
+
+### AUD-034 — Breadcrumb header overflowed at 360px
+
+- Evidence: current screenshot [`resources-breadcrumb-header-360.png`](evidence/step-06/after/resource-layout/resources-breadcrumb-header-360.png); the initial width matrix recorded overflow.
+- Reproduction: open `/resources/breadcrumb-header/` at 360x844.
+- Root cause: fixed-height, single-row breadcrumbs and actions used desktop padding.
+- Affected code: `resources/shells/breadcrumb-header/index.tsx`.
+- Remediation: use a minimum height, compact padding and wrapping layouts for the trail and actions.
+
+### AUD-035 — Counter typography overflowed at 360px
+
+- Evidence: current screenshot [`resources-counter-typography-360.png`](evidence/step-06/after/resource-layout/resources-counter-typography-360.png); the initial width matrix recorded overflow.
+- Reproduction: open `/resources/counter-typography/` at 360x844.
+- Root cause: large value, unit and delta were forced onto one baseline row.
+- Affected code: `resources/typography/counter-typography/index.tsx`.
+- Remediation: allow the number/unit row to wrap and move the delta onto its own compact-width line.
+
+### AUD-036 — Floating assistant dialog overflowed at 360px
+
+- Evidence: current screenshot [`resources-floating-ai-assistant-360.png`](evidence/step-06/after/resource-layout/resources-floating-ai-assistant-360.png); the initial width matrix recorded overflow.
+- Reproduction: open `/resources/floating-ai-assistant/` at 360x844.
+- Root cause: an inline-flex wrapper and fixed 20rem dialog retained desktop intrinsic width.
+- Affected code: `resources/ai/floating-ai-assistant/index.tsx`.
+- Remediation: let the dialog use its wrapper width and cap that wrapper at the existing 20rem maximum.
+
+### AUD-037 — Inline rewrite toolbar overflowed at 360px
+
+- Evidence: current screenshot [`resources-inline-ai-rewrite-360.png`](evidence/step-06/after/resource-layout/resources-inline-ai-rewrite-360.png); the initial width matrix recorded overflow.
+- Reproduction: open `/resources/inline-ai-rewrite/` at 360x844.
+- Root cause: header, tone and action controls were grouped in fixed horizontal flex rows.
+- Affected code: `resources/ai/inline-ai-rewrite/index.tsx`.
+- Remediation: permit the header and control groups to wrap at compact widths.
+
+### AUD-038 — Integration filters overflowed at 360px
+
+- Evidence: current screenshot [`resources-integration-directory-preview-360.png`](evidence/step-06/after/resource-layout/resources-integration-directory-preview-360.png); the initial width matrix recorded overflow.
+- Reproduction: open `/resources/integration-directory-preview/` at 360x844.
+- Root cause: the category-chip row was centered but did not wrap.
+- Affected code: `resources/sections/integration-directory-preview/index.tsx`.
+- Remediation: enable wrapping while preserving centered alignment.
+
+### AUD-039 — Interactive demo controls overflowed at 360px
+
+- Evidence: current screenshot [`resources-interactive-demo-hero-360.png`](evidence/step-06/after/resource-layout/resources-interactive-demo-hero-360.png); the initial width matrix recorded overflow.
+- Reproduction: open `/resources/interactive-demo-hero/` at 360x844.
+- Root cause: density, mode and workspace status controls were fixed to horizontal rows.
+- Affected code: `resources/sections/interactive-demo-hero/index.tsx`.
+- Remediation: let control groups and preview status wrap within the demo card.
+
+### AUD-040 — Mega navigation overflowed at 360px
+
+- Evidence: current screenshot [`resources-mega-nav-360.png`](evidence/step-06/after/resource-layout/resources-mega-nav-360.png); the initial width matrix recorded overflow.
+- Reproduction: open `/resources/mega-nav/` at 360x844.
+- Root cause: a fixed-height single row and desktop dropdown spacing required more width than the preview had.
+- Affected code: `resources/shells/mega-nav/index.tsx`.
+- Remediation: use a minimum height, wrapping navigation and a compact single-column dropdown.
+
+### AUD-041 — Multi-series chart legend overflowed at 360px
+
+- Evidence: current screenshot [`resources-multi-series-line-chart-360.png`](evidence/step-06/after/resource-layout/resources-multi-series-line-chart-360.png); the initial width matrix recorded overflow.
+- Reproduction: open `/resources/multi-series-line-chart/` at 360x844.
+- Root cause: legend controls occupied one unbreakable horizontal row beside the chart heading.
+- Affected code: `resources/data/multi-series-line-chart/index.tsx`.
+- Remediation: cap and wrap legend controls within the chart width.
+
+### AUD-042 — AI activity text remained too narrow after wrapping
+
+- Evidence: the failing browser assertion measured 56px of action text in a 292px preview. The corrected screenshot is [`resources-ai-agent-activity-feed-360.png`](evidence/step-06/after/resource-layout/resources-ai-agent-activity-feed-360.png).
+- Reproduction: open `/resources/ai-agent-activity-feed/` at 360x844 and inspect the first activity action.
+- Root cause: wrapping the row fixed horizontal overflow but still allowed the action flex item to shrink alongside timestamp and agent metadata.
+- Affected code: `resources/ai/ai-agent-activity-feed/index.tsx`, `tests/e2e/catalog-resource-render.spec.ts`.
+- Remediation: give the action a full row below the small-screen breakpoint and assert a 60% minimum content width.
+
+The first 324-resource all-variant attempt exposed a test-only iframe navigation
+race: it inspected the old document after the variant `src` changed. The test
+now waits for the preview frame's load event; the 12-resource regression passed
+with zero findings. That harness race is not counted as a product defect.
