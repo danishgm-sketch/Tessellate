@@ -1,13 +1,14 @@
 # Runtime audit — resource and renderer hardening
 
-This audit combines local browser checks of the built Astro Site/Workbench,
-ChatGPT Sites Worker boundary, and clean standalone exports. It is not a
-verification of the public review Site.
+This audit combines the public v9 Site route and flagship workflow inspection
+with local checks of the built Astro Site/Workbench, Sites Worker boundary, and
+clean standalone exports. The live v9 evidence predates the current-source
+fixes, so those fixes still require a deployed re-audit.
 Machine-readable findings and their current status are in
 [`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
 published review version during the public-RC phase.
 
-**Current disposition:** 77 findings (16 High, 61 Medium). The Step 06 resource fixes and seven Step 07 renderer/export fixes have local regression evidence. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited in the public-RC phase. CI for the current head is pending. An earlier PR run exposed a race in the Gold test's loading-state check; the test now waits for the exact rendered resource node and variant.
+**Current disposition:** 78 findings (17 High, 61 Medium). The Step 06 resource fixes and eight Step 07 renderer/export fixes have local regression evidence. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited in the public-RC phase. CI for the current source edits is pending. The latest complete local `pnpm test:e2e` run passed: 81 main-browser tests, 23 Sites Worker tests, and 1 preview-app test; the saved 324-resource/972-variant report recorded zero findings, failed requests, or cancellations. An earlier run exposed races in Gold readiness and animation assertions; the tests now wait for the exact rendered resource node and observe the animated card itself.
 
 At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile browser tests passed, 51 tests were explicitly skipped by project scope, and all 23 Sites Worker tests passed. It included the expanded state and action regressions. The 11-case state matrix, exact-resource readiness check, dialog modal regression, Prompt Composer action regression, and 40 × 3 Axe matrix passed. The catalogue report covered 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covered 40 resources / 120 variants with zero findings. Existing state fixtures cover six Gold data resources; the expanded matrix covers array-driven resources at empty and 30–40 item counts, disabled Button/Input/Select, named loading/error states, long text, and fixed-slot partial data. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
@@ -132,6 +133,14 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Root cause: generated node wrappers omitted responsive strategy metadata, and the shared layout CSS had no mobile rules for those strategies.
 - Affected code: `packages/exporter/src/source-tree.ts`, `packages/renderer/src/layout-contract.ts`, the shared fixture and its renderer/export browser tests.
 - Remediation: emit a `data-responsive-strategy` for supported strategies and apply shared mobile container-query rules for omit, stack, and collapse. Deployed verification remains outstanding. Fix commit: `6baf9d1e93b2a6e11cac075b21d879cfa2c863ae`.
+
+### AUD-078 — The Dialog resource made standalone exports fail to build
+
+- Evidence: the [pre-fix clean-build log](evidence/step-07/before/gold-dialog-export-build-failure.txt) shows TypeScript rejecting every exported Dialog variant because `onClose` was required. The [standalone browser capture](evidence/step-07/after/export-dialog-open-1440.png) shows the generated Dialog; the clean-export test closes it with Escape and records no browser errors or failed requests.
+- Reproduction: export a manifest containing the canonical Dialog with its sample `open`, `title`, and `children` props; install dependencies in a clean directory and run `pnpm build`. Before the fix, TS2741 reported a missing `onClose` prop.
+- Root cause: the resource required a function callback that ProjectManifest cannot serialize and had no local close behavior when used without a host callback.
+- Affected code: `resources/primitives/dialog/index.tsx`, generated Gold source, the shared Gold parity fixture, and `packages/exporter/src/__tests__/standalone-export-fidelity.test.ts`.
+- Remediation: make `onClose` optional, preserve controlled behavior when supplied, and close local state on Escape or backdrop when no host callback exists. The clean exported application builds and closes the dialog by keyboard. Public review verification remains outstanding.
 
 ## MEDIUM
 

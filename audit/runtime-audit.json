@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Step 06 resource certification and Step 07 renderer/export parity against local built-site and clean exported-app browser runs; not the public review deployment.",
+  "scope": "Deployed public review Site v9 route/flagship audit and local built-site, Workbench/Preview, Sites Worker and clean standalone export browser verification. Local fixes still require a new review deployment and re-audit.",
   "entries": [
     {
       "id": "AUD-001",
@@ -1862,6 +1862,38 @@
       ],
       "remediation": "Allow standard data-* and aria-* resource props through exporter filtering while continuing to reject undeclared ordinary props. The shared parity fixture now checks the contract in renderer, Workbench browser and a clean standalone install/build/browser run.",
       "fixCommit": "1f92c1ed2d3e7e54f129f0d844faf2ef22e2a956",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-078",
+      "severity": "high",
+      "route": "Standalone React/Vite export",
+      "viewport": "1440x900",
+      "category": "export",
+      "title": "The canonical Dialog resource made standalone exports fail TypeScript build",
+      "expected": "A project containing the Dialog resource should build independently, and the dialog should close safely when Escape is pressed even when the saved manifest has no host callback.",
+      "actual": "A clean exported project containing the canonical Dialog failed TypeScript with TS2741 because DialogProps required onClose, a function that cannot be serialized in ProjectManifest.",
+      "reproduction": [
+        "Create an export project with the canonical Dialog resource and its open/title/children sample props.",
+        "Generate and extract the standalone Vite project into a clean temporary directory.",
+        "Install its own dependencies and run pnpm build; before the fix, TypeScript rejected all three Dialog variants for missing onClose.",
+        "After the fix, the clean install/build/browser test renders the Dialog and closes it with Escape without a supplied callback."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "screenshotAfter": "audit/evidence/step-07/after/export-dialog-open-1440.png",
+      "evidence": "audit/evidence/step-07/before/gold-dialog-export-build-failure.txt",
+      "rootCause": "The persisted resource contract allowed a Dialog node to omit its event callback, but DialogProps required onClose even though ProjectManifest cannot store functions; the component had no self-managed close path.",
+      "affectedFiles": [
+        "resources/primitives/dialog/index.tsx",
+        "scripts/generate-gold-artifacts.ts",
+        "packages/exporter/src/generated-gold-sources.ts",
+        "packages/exporter/src/__tests__/standalone-export-fidelity.test.ts",
+        "packages/testing/src/gold-resource-parity-fixture.ts"
+      ],
+      "remediation": "Make onClose optional, retain controlled behavior when provided, and use local open state to close on Escape or backdrop when no host callback is available. Regenerate Gold source and verify the clean exported app build and keyboard behavior.",
+      "fixCommit": "81c89af2c40eb862234b35c4c48ed962bb2de8d9",
       "status": "fixed-awaiting-deployed-verification"
     }
   ]
