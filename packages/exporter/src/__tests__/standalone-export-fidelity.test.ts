@@ -289,7 +289,28 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
 
   it('builds standalone project with real pnpm install and verifies interactive execution in Playwright via vite preview', async () => {
     const parityProject = appendRendererParityNodes(appendGoldResourceVariantParityNodes(testProject));
-    const sourceTree = generateSourceTree(parityProject);
+    const additionalScreens = Array.from({ length: 8 }, (_, index) => {
+      const screen = structuredClone(parityProject.screens[0]!);
+      const suffix = index + 1;
+      screen.id = `screen-workspace-${suffix}`;
+      screen.screenNodeId = `root-workspace-${suffix}`;
+      screen.name = `Workspace ${suffix}`;
+      screen.slug = `workspace-${suffix}`;
+      screen.rootNode = { ...screen.rootNode, id: `root-workspace-${suffix}`, children: [] };
+      return screen;
+    });
+    const screenNavigationProject: ProjectManifest = {
+      ...parityProject,
+      screens: [...parityProject.screens, ...additionalScreens],
+      navigation: {
+        ...parityProject.navigation,
+        primaryItems: [
+          ...parityProject.navigation.primaryItems,
+          ...additionalScreens.map((screen) => ({ label: screen.name, targetScreenId: screen.id })),
+        ],
+      },
+    };
+    const sourceTree = generateSourceTree(screenNavigationProject);
 
     // Create a temporary export directory
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'tess-export-live-'));
@@ -419,6 +440,29 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         await page.locator('[data-node-id="node-canvas-content"]').screenshot({ path: screenshotPath });
 
         await page.setViewportSize({ width: 390, height: 844 });
+        await page.evaluate(() => window.scrollTo(0, 0));
+        const projectScreenNavigation = page.locator('[aria-label="Project screens"]');
+        const projectScreenNavigationMetrics = await projectScreenNavigation.evaluate((element) => ({
+          flexWrap: getComputedStyle(element).flexWrap,
+          height: element.getBoundingClientRect().height,
+        }));
+        if (projectScreenNavigationMetrics.flexWrap !== 'nowrap' || projectScreenNavigationMetrics.height > 48) {
+          const beforeNavigationScreenshot = path.resolve(
+            process.cwd(),
+            'audit/evidence/step-07/before/export-project-navigation-wraps-390.png'
+          );
+          fs.mkdirSync(path.dirname(beforeNavigationScreenshot), { recursive: true });
+          await page.screenshot({ path: beforeNavigationScreenshot });
+        }
+        expect(projectScreenNavigationMetrics.flexWrap, 'the exported screen selector must stay on one mobile row').toBe('nowrap');
+        expect(projectScreenNavigationMetrics.height, 'the exported screen selector must not consume multiple mobile rows').toBeLessThanOrEqual(48);
+        const afterNavigationScreenshot = path.resolve(
+          process.cwd(),
+          'audit/evidence/step-07/after/export-project-navigation-mobile-390.png'
+        );
+        fs.mkdirSync(path.dirname(afterNavigationScreenshot), { recursive: true });
+        await page.screenshot({ path: afterNavigationScreenshot });
+
         const hiddenOnMobileIsVisible = await hiddenOnMobile.isVisible();
         if (hiddenOnMobileIsVisible) {
           const beforeResponsiveFix = path.resolve(process.cwd(), 'audit/evidence/step-07/before/export-responsive-override-visible.png');
@@ -431,6 +475,9 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
 
         const responsiveScreenshot = path.resolve(process.cwd(), 'audit/evidence/step-07/after/standalone-export-gold-responsive-390.png');
         await page.locator('[data-node-id="parity-mobile-stack"]').screenshot({ path: responsiveScreenshot });
+
+        await page.getByRole('button', { name: 'Workspace 1', exact: true }).click();
+        expect(page.url()).toContain('#screen-workspace-1');
 
         // 6. Assert no console errors
         expect(consoleErrors).toEqual([]);

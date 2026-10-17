@@ -350,9 +350,9 @@ export default function App() {
   return (
     <div className="min-h-screen flex flex-col bg-[var(--tess-canvas,#FAF9F6)] text-[var(--tess-ink,#111217)] font-sans">
       {/* Top Navigation */}
-      <div className="border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface)] px-4 py-3 flex flex-wrap gap-3 items-center justify-between">
+      <div className="border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface)] px-4 py-3 flex flex-col sm:flex-row sm:flex-wrap gap-3 items-start sm:items-center justify-between">
         <div className="font-bold text-sm tracking-tight">{${JSON.stringify(manifest.name)}}</div>
-        <div aria-label="Project screens" className="flex flex-wrap items-center gap-2">
+        <div aria-label="Project screens" role="group" className="flex flex-nowrap items-center gap-2 min-w-0 max-w-full overflow-x-auto whitespace-nowrap pb-1">
           ${navButtonsStr}
         </div>
       </div>
