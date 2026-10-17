@@ -19,7 +19,7 @@ Do not advance a checkbox merely because code exists. Record evidence and defect
 - [x] 03 Inventory every existing feature in `CURRENT_PRODUCT_INVENTORY.md`.
 - [x] 04 Classify Core / Beta / Lab, with visible labels and safe isolation. See `quality/STEP_04_EVIDENCE.md`; the reviewed DNA mutation defect is locally fixed and remains open for deployed verification at the public-RC gate.
 - [x] 05 Freeze and test contracts/schemas, versions, migrations and round trips. Evidence: `quality/SCHEMA_CONTRACT_MATRIX.md` and `quality/STEP_05_EVIDENCE.md`; all 87 leaf-contract cases and repository tests pass.
-- [ ] 06 Certify all 324 resources; Gold requires browser evidence, not metadata.
+- [x] 06 Certify all 324 resources; Gold requires browser evidence, not metadata. Local resource certification passed the seven-width catalogue matrix, 972-variant smoke, Gold 40 × 3-variant/seven-width matrix, Axe, keyboard, reduced-motion and state checks; see `quality/STEP_06_EVIDENCE.md`. Keep the 70 fixed findings open until public-RC deployed re-audit.
 - [ ] 07 Certify renderer and Workbench/preview/export semantic parity.
 - [ ] 08 Catalogue/search, including manually adjudicated real queries.
 - [ ] 09 Product interpretation — at least 100 adjudicated briefs, no overrides.

@@ -1,4 +1,4 @@
-# Step 06 — Resource certification (in progress)
+# Step 06 — Resource certification (complete)
 
 ## Scope and test boundary
 
@@ -34,8 +34,8 @@ this step.
 | `pnpm lint` | PASS — 0 errors, 51 existing warnings. |
 | `pnpm test` | PASS — 54 files, 613 tests. |
 | `pnpm audit:all` | PASS — 16/16 release gates, 717-page production build, bundle budgets, catalogue licence/provenance and secret/security audits. |
-| `pnpm test:e2e` | PASS on CI head `fcfde05e75e88814f27f021feb2039bc2d8afa96` — 73/124 desktop/mobile tests passed, 51 were explicitly skipped by project scope, and all 23 Sites Worker tests passed. This includes the 324-resource responsive matrix, Gold 40 × 3-variant Axe scan, Gold 40-resource/seven-width keyboard matrix, state fixtures, dialog and Prompt Composer regressions, form-preview regressions, flagship journey and standalone export. The full 11-case state-matrix follow-up and all 40 Gold resource variants across seven widths also pass locally. Aggregate: [`e2e-suite-final.json`](../audit/evidence/step-06/results/e2e-suite-final.json). |
-| GitHub Linux CI | PASS — [PR CI run 39043394540](https://github.com/danishgm-sketch/Tessellate/actions/runs/39043394540) and [component quality/security gate 39043394586](https://github.com/danishgm-sketch/Tessellate/actions/runs/39043394586) passed on `fcfde05e75e88814f27f021feb2039bc2d8afa96`. An earlier PR run exposed a loading-readiness race in the Gold browser test; the fixed readiness check now waits for the exact rendered resource node and variant. |
+| `pnpm test:e2e` | PASS on code-bearing CI head `fcfde05e75e88814f27f021feb2039bc2d8afa96` and again on documentation head `372873fd5feb72e87a8dcac275533bf5664df9d3` — 73/124 desktop/mobile tests passed, 51 were explicitly skipped by project scope, and all 23 Sites Worker tests passed. This includes the 324-resource responsive matrix, Gold 40 × 3-variant Axe scan, Gold 40-resource/seven-width keyboard matrix, state fixtures, dialog and Prompt Composer regressions, form-preview regressions, flagship journey and standalone export. The full 11-case state-matrix follow-up and all 40 Gold resource variants across seven widths also pass locally. Aggregate: [`e2e-suite-final.json`](../audit/evidence/step-06/results/e2e-suite-final.json). |
+| GitHub Linux CI | PASS — [PR CI run 39044821284](https://github.com/danishgm-sketch/Tessellate/actions/runs/39044821284) and [component quality/security gate 39044821241](https://github.com/danishgm-sketch/Tessellate/actions/runs/39044821241) passed on `372873fd5feb72e87a8dcac275533bf5664df9d3`; the code-bearing parent commit also passed [PR CI 39043394540](https://github.com/danishgm-sketch/Tessellate/actions/runs/39043394540) and [quality/security gate 39043394586](https://github.com/danishgm-sketch/Tessellate/actions/runs/39043394586). An earlier PR run exposed a loading-readiness race in the Gold browser test; the fixed readiness check now waits for the exact rendered resource node and variant. |
 
 The full catalogue and Gold browser reports reference 183 saved screenshots
 under `audit/evidence/step-06/after/` and record zero missing screenshot paths.
@@ -105,8 +105,7 @@ per issue; no screenshot has been reconstructed or presented as a baseline.
   navigation now reflows its search field, feature tabs wrap with compact spacing,
   and gradient headlines reduce padding/type size and wrap long words.
 
-## Remaining before Step 06 can close
+## Follow-up at later programme gates
 
-- Manual assistive-technology smoke, zoom, target-size and contrast review remain open. NVDA is not installed; Narrator is present, but its spoken output is not observable through this browser session. The 40 × 3 Axe matrix, keyboard checks, visible-focus checks, semantic dialog test and responsive state tests pass; they are not a substitute for NVDA/VoiceOver.
-- Run the same resource and accessibility regressions against a published review Site during the public-RC phase before recording deployed closure.
-- The current branch head passes GitHub CI and the component quality/security gate. A published review deployment and re-audit are still required before findings can be marked closed.
+- The 70 resource findings are fixed locally and remain `fixed-awaiting-deployed-verification`. Do not close them until the public-RC deployment is re-audited in Step 45; no Site version was deployed during this local certification step.
+- Manual assistive-technology smoke, 200% zoom, target-size and contrast review remain required in the global accessibility gate, Step 35. NVDA is not installed; Narrator is present, but its spoken output is not observable through this browser session. This does not replace the completed Gold Axe, keyboard, visible-focus, reduced-motion and responsive resource evidence recorded above.
