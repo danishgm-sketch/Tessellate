@@ -29,6 +29,21 @@ const goldResources = selectedGoldSlugs.map((slug) => {
 });
 const viewportWidths = [360, 390, 430, 768, 1024, 1280, 1440];
 
+async function waitForActualResource(
+  frame: import('@playwright/test').FrameLocator,
+  slug: string,
+  variantId?: string,
+) {
+  const resourceNode = frame.locator(`[data-node-id="preview-${slug}"]`);
+  await expect(resourceNode).toHaveCount(1, { timeout: 15000 });
+  if (variantId) await expect(resourceNode).toHaveAttribute('data-resource-variant', variantId, { timeout: 15000 });
+  // The preview host intentionally shows a loading status while the actual
+  // resource's split chunk is loading. Wait for that status to leave the DOM
+  // before classifying the preview body; a slow CI runner can expose the
+  // transient state after the screen wrapper has appeared.
+  await expect(frame.getByText('Loading the actual resource…', { exact: true })).toHaveCount(0, { timeout: 15000 });
+}
+
 test('Gold resources render at every certified width and each declared variant', async ({ page }, testInfo) => {
   // This one Chromium run explicitly drives every required width. The separate
   // mobile project covers touch/mobile-shell behavior in the regular E2E suite.
@@ -121,7 +136,7 @@ test('Gold resources render at every certified width and each declared variant',
       }
 
       const frame = page.frameLocator('iframe[title$=" live preview"]');
-      await expect(frame.locator('.tess-screen')).toHaveCount(1, { timeout: 15000 });
+      await waitForActualResource(frame, resource.slug, resource.variants[0]?.id);
       const initialBody = await frame.locator('body').innerText();
       if (/Preview failed:|missing-resource-recovery|No component registered|Loading the actual resource/i.test(initialBody)) {
         record.findings.push({ type: 'preview-error', detail: initialBody.slice(0, 400) });
@@ -151,7 +166,7 @@ test('Gold resources render at every certified width and each declared variant',
             variant: variant.id,
           });
         }
-        await expect(frame.locator('.tess-screen')).toHaveCount(1, { timeout: 15000 });
+        await waitForActualResource(frame, resource.slug, variant.id);
         const bodyText = await frame.locator('body').innerText();
         if (/Preview failed:|missing-resource-recovery|No component registered|Loading the actual resource/i.test(bodyText)) {
           record.findings.push({ type: 'preview-error', detail: bodyText.slice(0, 400), variant: variant.id });
