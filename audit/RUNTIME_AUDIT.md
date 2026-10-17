@@ -1,4 +1,4 @@
-# Runtime audit — Step 06 resource certification
+# Runtime audit — resource and renderer hardening
 
 This is a local browser audit against the built ChatGPT Sites Worker boundary at
 `http://127.0.0.1:4323`. It is not a verification of the public review Site.
@@ -6,9 +6,9 @@ Machine-readable findings and their current status are in
 [`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
 published review version during the public-RC phase.
 
-**Current disposition:** 70 findings (10 High, 60 Medium). The data-state, compact-width, Kanban copy, chart sample-data, Gold accessibility, form-preview, modal-accessibility and Prompt Composer action fixes have passed local browser regressions. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited in the public-RC phase. PR CI and the component quality/security gate pass on `372873fd5feb72e87a8dcac275533bf5664df9d3`. An earlier PR run exposed a race in the Gold test's loading-state check; the test now waits for the exact rendered resource node and variant, and the full rerun passes.
+**Current disposition:** 74 findings (14 High, 60 Medium). The Step 06 resource fixes and four Step 07 renderer/export fixes have local regression evidence. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited in the public-RC phase. PR CI passed on the pre-Step-07 baseline `dbc85c436047e0ae9c17896afd96722132b7ae58`; the new Step 07 changes are queued for CI. An earlier PR run exposed a race in the Gold test's loading-state check; the test now waits for the exact rendered resource node and variant.
 
-The latest full `pnpm test:e2e` run passed: 73 of 124 desktop/mobile browser tests passed, 51 tests were explicitly skipped by project scope, and all 23 Sites Worker tests passed. It includes the expanded state and action regressions. The 11-case state matrix, exact-resource readiness check, dialog modal regression, Prompt Composer action regression, and 40 × 3 Axe matrix pass. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Existing state fixtures cover six Gold data resources; the expanded matrix covers array-driven resources at empty and 30–40 item counts, disabled Button/Input/Select, named loading/error states, long text, and fixed-slot partial data. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
+At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile browser tests passed, 51 tests were explicitly skipped by project scope, and all 23 Sites Worker tests passed. It included the expanded state and action regressions. The 11-case state matrix, exact-resource readiness check, dialog modal regression, Prompt Composer action regression, and 40 × 3 Axe matrix passed. The catalogue report covered 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covered 40 resources / 120 variants with zero findings. Existing state fixtures cover six Gold data resources; the expanded matrix covers array-driven resources at empty and 30–40 item counts, disabled Button/Input/Select, named loading/error states, long text, and fixed-slot partial data. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
 ## HIGH
 
@@ -83,6 +83,38 @@ The latest full `pnpm test:e2e` run passed: 73 of 124 desktop/mobile browser tes
 - Root cause: the component had no execute callback contract or disabled fallback, and its preview host did not inject an action.
 - Affected code: `resources/ai/ai-prompt-composer/index.tsx`, `resources/ai/ai-prompt-composer/README.md`, `apps/site/src/components/PreviewHost.tsx` and `tests/e2e/gold-resource-action-completion.spec.ts`.
 - Remediation: require an optional `onExecute` callback, disable the control accessibly when disconnected, and make the isolated preview say that it only previewed locally without sending a provider request. The pre-fix browser regression failed; the focused fixed regression passes. Deployed review verification remains pending.
+
+### AUD-071 — Unknown resource preview rendered an unrelated Button
+
+- Evidence: the [before capture](evidence/step-07/before/unknown-resource-button-fallback.png) shows Button UI for an unknown resource ID; the [fixed capture](evidence/step-07/after/unknown-resource-error-state.png) shows the unavailable-resource alert. The pre-fix browser test failed because no alert existed. The fixed browser test receives `TESSELLATE_PREVIEW_ERROR`, sends no READY message, and reports zero console errors or failed requests.
+- Reproduction: open `/preview/?resource=__missing-resource-for-renderer-audit__` at 1440x900.
+- Root cause: `PreviewApp` substituted the Button component when lookup failed, making its missing-resource branch unreachable.
+- Affected code: `apps/preview/src/main.tsx` and `tests/e2e/preview-unknown-resource-regression.spec.ts`.
+- Remediation: initialize URL state before rendering, remove the unrelated fallback, display an accessible unavailable state, and report an error without reporting readiness. Deployed verification remains outstanding.
+
+### AUD-072 — Workbench dropped nested children when a resource also had prop children
+
+- Evidence: the [before capture](evidence/step-07/before/manifest-prop-child-only.png) contains only the explicit prop child; the [fixed capture](evidence/step-07/after/manifest-and-prop-children.png) contains both sources. The pre-fix browser probe found the nested node count was zero, with no console or network errors.
+- Reproduction: open the seeded Workbench manifest with `canvas-workspace-shell`, a `props.children` value, and a nested manifest child.
+- Root cause: `NodeRenderer` treated `props.children` and rendered nested nodes as alternatives.
+- Affected code: `packages/renderer/src/node-renderer.tsx`, `packages/renderer/src/__tests__/gold-registry.test.tsx`, and `tests/e2e/renderer-children-parity.spec.ts`.
+- Remediation: compose both sources into the declared resource slot, filtering explicit children through the Gold prop contract. The renderer and Workbench browser regressions cover the case. Deployed verification remains outstanding.
+
+### AUD-073 — Standalone export discarded resource prop children when nested children existed
+
+- Evidence: the generated-source regression failed before the fix because screen JSX omitted the literal prop child whenever the node had nested children. The fixed export is installed in a clean temporary directory, built, opened in a real browser, and shows both child sources in [this capture](evidence/step-07/after/standalone-export-children.png) with no browser console errors.
+- Reproduction: export a project where `canvas-workspace-shell` receives `props.children` and a nested manifest child; inspect and run the generated screen.
+- Root cause: the source generator emitted resource prop children or nested children, never both.
+- Affected code: `packages/exporter/src/source-tree.ts` and `packages/exporter/src/__tests__/standalone-export-fidelity.test.ts`.
+- Remediation: emit the serialized prop child followed by nested child JSX. Clean install/build/browser verification is part of the regression. Deployed verification remains outstanding.
+
+### AUD-074 — Unsupported variants silently fell through to component defaults
+
+- Evidence: the [before capture](evidence/step-07/before/unsupported-variant-fell-through.png) shows Button rendered for an undeclared variant; the [fixed capture](evidence/step-07/after/unsupported-variant-diagnostic.png) shows a recoverable diagnostic. The pre-fix Workbench test failed because the diagnostic was absent. The fixed Workbench test and exporter regression pass without console errors.
+- Reproduction: load a Workbench manifest or export containing `variant=unsupported-variant` for the Button resource.
+- Root cause: renderer and exporter had no canonical access to each resource's declared variant IDs.
+- Affected code: `scripts/generate-gold-artifacts.ts`, generated renderer/exporter metadata, `packages/renderer/src/node-renderer.tsx`, `packages/exporter/src/node-disk-resolver.ts`, and `packages/exporter/src/source-tree.ts`.
+- Remediation: generate variant declarations from each canonical resource manifest, render a visible non-substitution diagnostic in Workbench, and reject invalid exported variants with the accepted values. Deployed verification remains outstanding.
 
 ## MEDIUM
 

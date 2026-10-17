@@ -1655,6 +1655,120 @@
       "remediation": "Add an optional onExecute callback and disable the control with an accessible explanation when unconnected. The isolated preview reports that the prompt was previewed locally and no provider request was sent. The focused browser regression passes with zero runtime or network diagnostics.",
       "fixCommit": "f486af22975f14ed3acf39fcf5ba1cd2e62ab136",
       "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-071",
+      "severity": "high",
+      "route": "/preview/?resource=__missing-resource-for-renderer-audit__",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Unknown resource preview rendered an unrelated Button",
+      "expected": "An unavailable resource should show an explicit error and notify its host; it must not report readiness or display another resource.",
+      "actual": "An unknown resource ID displayed the default Button preview and sent no resource-specific failure state.",
+      "reproduction": [
+        "Open /preview/?resource=__missing-resource-for-renderer-audit__.",
+        "Before the fix, the preview rendered the interactive Button instead of an unavailable-resource message.",
+        "After the fix, the visible alert and TESSELLATE_PREVIEW_ERROR replace the fallback, and no READY message is sent."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-07/before/unknown-resource-button-fallback.png",
+      "screenshotAfter": "audit/evidence/step-07/after/unknown-resource-error-state.png",
+      "rootCause": "PreviewApp selected PREVIEW_COMPONENTS.button when resource lookup failed, while its error branch was unreachable; URL state was also applied after the first render.",
+      "affectedFiles": [
+        "apps/preview/src/main.tsx",
+        "tests/e2e/preview-unknown-resource-regression.spec.ts"
+      ],
+      "remediation": "Initialize preview state from the URL before rendering, remove the Button fallback, display a role=alert unavailable state, and report an error without sending READY. The old implementation failed the browser regression; the fixed app passes with no console errors or failed requests.",
+      "fixCommit": "f08e9b41a74a58f56426574c22f4fc043bd8ccb6",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-072",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "data",
+      "title": "Workbench dropped nested manifest children when a resource also supplied prop children",
+      "expected": "The renderer should preserve both explicit resource children and nested ProjectNode children in the rendered slot.",
+      "actual": "The resource-provided child rendered, but the nested manifest child disappeared from the canvas.",
+      "reproduction": [
+        "Load a Workbench project whose canvas-workspace-shell has props.children and a nested child node.",
+        "Before the fix, only Content from resource props appeared; the nested child count was zero.",
+        "After the fix, both child sources appear in the canvas."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-07/before/manifest-prop-child-only.png",
+      "screenshotAfter": "audit/evidence/step-07/after/manifest-and-prop-children.png",
+      "rootCause": "NodeRenderer used a nullish fallback from props.children to renderedChildren, making the two valid child sources mutually exclusive.",
+      "affectedFiles": [
+        "packages/renderer/src/node-renderer.tsx",
+        "packages/renderer/src/__tests__/gold-registry.test.tsx",
+        "tests/e2e/renderer-children-parity.spec.ts"
+      ],
+      "remediation": "Compose explicit and nested children in a single React fragment while honoring the Gold resource's declared children prop contract. A renderer regression and Workbench browser regression cover the user-visible case.",
+      "fixCommit": "8b2cf2cd5cae1a0e87ae0e37e479b0b74ed5c2e8",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-073",
+      "severity": "high",
+      "route": "Standalone React/Vite export",
+      "viewport": "1440x900",
+      "category": "export",
+      "title": "Standalone export discarded resource prop children when nested manifest children existed",
+      "expected": "Exported JSX should retain props.children and render every nested manifest child in the resource slot.",
+      "actual": "Exported JSX selected the nested children path and omitted the text supplied through props.children.",
+      "reproduction": [
+        "Export a project containing canvas-workspace-shell with props.children plus one nested manifest child.",
+        "Before the fix, the source-generation regression failed because the emitted screen JSX omitted Content from resource props.",
+        "After the fix, a clean installed and built export shows both sources."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-07/after/standalone-export-children.png",
+      "rootCause": "The source generator emitted node.children or props.children as alternatives instead of composing both sources.",
+      "affectedFiles": [
+        "packages/exporter/src/source-tree.ts",
+        "packages/exporter/src/__tests__/standalone-export-fidelity.test.ts"
+      ],
+      "remediation": "Emit serialized resource prop children followed by generated nested child JSX. The standalone fidelity regression performs a clean package install, build, real browser render, verifies both sources and captures the result.",
+      "fixCommit": "8b2cf2cd5cae1a0e87ae0e37e479b0b74ed5c2e8",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-074",
+      "severity": "high",
+      "route": "/workbench and standalone React/Vite export",
+      "viewport": "1440x900",
+      "category": "data",
+      "title": "Unsupported resource variants silently fell through to component defaults",
+      "expected": "A variant outside the resource manifest's declared variant IDs should be rejected with a visible diagnostic and preserved source data.",
+      "actual": "Workbench rendered the resource anyway using its own default style; export also generated a project without identifying the invalid variant.",
+      "reproduction": [
+        "Open a Workbench manifest whose Button node has variant=unsupported-variant.",
+        "Before the fix, the unrelated default Button rendered with no diagnostic.",
+        "After the fix, Workbench shows an unsupported-variant alert and does not render the resource; export throws an actionable error listing declared variants."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-07/before/unsupported-variant-fell-through.png",
+      "screenshotAfter": "audit/evidence/step-07/after/unsupported-variant-diagnostic.png",
+      "rootCause": "Resource variant declarations were not available to renderer or exporter validation, so invalid values reached components that silently chose defaults.",
+      "affectedFiles": [
+        "scripts/generate-gold-artifacts.ts",
+        "packages/renderer/src/generated-resource-variants.ts",
+        "packages/renderer/src/node-renderer.tsx",
+        "packages/exporter/src/node-disk-resolver.ts",
+        "packages/exporter/src/source-tree.ts",
+        "packages/renderer/src/__tests__/gold-registry.test.tsx",
+        "packages/exporter/src/__tests__/standalone-export-fidelity.test.ts",
+        "tests/e2e/unsupported-resource-variant-regression.spec.ts"
+      ],
+      "remediation": "Generate canonical variant-ID maps from all resource manifests, reject invalid variants in Workbench with a recoverable diagnostic, and fail export with the resource slug and accepted variants. Unit, export and real Workbench browser regressions cover the failure.",
+      "fixCommit": "8b2cf2cd5cae1a0e87ae0e37e479b0b74ed5c2e8",
+      "status": "fixed-awaiting-deployed-verification"
     }
   ]
 }
