@@ -11,6 +11,8 @@ export default defineConfig({
     'gold-resource-state-matrix.spec.ts',
     'gold-resource-action-completion.spec.ts',
     'preview-form-interactions.spec.ts',
+    'site-favicon.spec.ts',
+    'sites-unknown-resource-preview.spec.ts',
   ],
   fullyParallel: false,
   workers: 1,

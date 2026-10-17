@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public review Site v9 route/flagship audit and local built-site, Workbench/Preview, Sites Worker and clean standalone export browser verification. Local fixes still require a new review deployment and re-audit.",
+  "scope": "Deployed public review Site v10 flagship and unknown-resource smoke, plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification.",
   "entries": [
     {
       "id": "AUD-001",
@@ -571,7 +571,7 @@
       "category": "content",
       "title": "Footer claimed system status was Operational without a live status source",
       "expected": "A status label should not claim availability unless it is backed by a live status source.",
-      "actual": "The default footer stated “Status: Operational” in a static resource preview.",
+      "actual": "The default footer stated \u201cStatus: Operational\u201d in a static resource preview.",
       "reproduction": [
         "Open /resources/footer-minimal/ at 390x844.",
         "Read the footer status label."
@@ -1681,7 +1681,13 @@
       ],
       "remediation": "Initialize preview state from the URL before rendering, remove the Button fallback, display a role=alert unavailable state, and report an error without sending READY. The old implementation failed the browser regression; the fixed app passes with no console errors or failed requests.",
       "fixCommit": "f08e9b41a74a58f56426574c22f4fc043bd8ccb6",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "version": 10,
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=__missing-resource-for-renderer-audit__",
+        "result": "The page showed the unknown-resource diagnostic and explicitly stated that no substitute component rendered; it contained no buttons and reported no browser console errors.",
+        "screenshot": "audit/evidence/public-site-v10/unknown-resource-1440.png"
+      }
     },
     {
       "id": "AUD-072",
@@ -1894,6 +1900,95 @@
       ],
       "remediation": "Make onClose optional, retain controlled behavior when provided, and use local open state to close on Escape or backdrop when no host callback is available. Regenerate Gold source and verify the clean exported app build and keyboard behavior.",
       "fixCommit": "81c89af2c40eb862234b35c4c48ed962bb2de8d9",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-079",
+      "severity": "low",
+      "route": "/favicon.svg",
+      "viewport": "1440x900",
+      "category": "network",
+      "title": "Published Site declared a favicon URL that returned 404",
+      "expected": "Every public page should load the declared Tessellate mark with an HTTP 200 SVG response.",
+      "actual": "The v10 Site returned HTTP 404 for /favicon.svg. The flagship browser smoke had zero page errors and failed requests, but the explicit asset request and Cloudflare Worker log both recorded the 404.",
+      "reproduction": [
+        "Open /compose on the public review Site.",
+        "Request /favicon.svg; the deployed v10 Site returns 404."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "/favicon.svg",
+          "status": 404,
+          "source": "public Sites Worker log and Playwright request"
+        }
+      ],
+      "screenshot": "audit/evidence/public-site-v10/compose-directions-1440.png",
+      "rootCause": "Multiple Astro pages declared /favicon.svg, but apps/site/public contained no matching asset, so the generated Site consistently returned 404.",
+      "affectedFiles": [
+        "apps/site/public/favicon.svg",
+        "apps/site/src/layouts/PublicLayout.astro",
+        "apps/site/src/pages/index.astro"
+      ],
+      "remediation": "Add the Tessellate mark as apps/site/public/favicon.svg and a desktop/mobile browser regression that checks status, SVG content type and markup.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-080",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900",
+      "category": "visual",
+      "title": "Direction previews do not show the structural differences their metadata claims",
+      "expected": "The three directions should be visibly different design solutions, with previews that demonstrate each direction\u2019s navigation model, composition grammar, hierarchy and resource selection.",
+      "actual": "The three cards preview the same Team Overview content and essentially the same section sequence. Direction 03 reports a rail and tri-column-intelligence grammar, but its thumbnail shows a conventional navigation/header and content pane. Most visible differences are theme and navigation treatment, so the cards do not substantiate their structural labels.",
+      "reproduction": [
+        "Open /compose on the public review Site.",
+        "Compose the flagship employee-experience brief with Refined ambition and Inventive structural creativity.",
+        "Compare all three cards and their Team Overview previews; Direction 03 is labelled tri-column-intelligence but does not render that layout."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/public-site-v10/compose-directions-1440.png",
+      "rootCause": "ComposeView direction cards render the same primary screen through ManifestRenderer. Direction-specific grammar and navigation metadata are shown as labels, but are not reflected in an observably different screen composition; the direction generator\u2019s grammar choices are not integrated into the generated manifest structure.",
+      "affectedFiles": [
+        "apps/site/src/components/ComposeView.tsx",
+        "packages/compatibility/src/direction-generator.ts",
+        "packages/composer"
+      ],
+      "remediation": "Address in ordered Step 12: make direction grammar affect generated structure, navigation and resource selection, then add browser-level comparisons that reject superficial theme-only variation.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-081",
+      "severity": "medium",
+      "route": "/preview/?resource=__missing-resource-for-renderer-audit__",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Unknown-resource error on the public preview is not announced to assistive technology",
+      "expected": "A missing-resource failure should be exposed as an assertive alert and remain readable against its preview surface.",
+      "actual": "The v10 Site visibly displayed the diagnostic and did not render a substitute or any controls, but the message was a plain div with no alert semantics. The public smoke had zero console/page errors and the route returned 200.",
+      "reproduction": [
+        "Open the public v10 preview URL with the unknown resource query.",
+        "Inspect the accessibility tree: there is no alert role although the diagnostic is visible."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "/preview/?resource=__missing-resource-for-renderer-audit__",
+          "status": 200
+        }
+      ],
+      "screenshot": "audit/evidence/public-site-v10/unknown-resource-1440.png",
+      "rootCause": "The public Astro PreviewHost returned its loadError as a styled div without role=alert; neutral-500 text was rendered on a transparent preview background.",
+      "affectedFiles": [
+        "apps/site/src/components/PreviewHost.tsx",
+        "tests/e2e/sites-unknown-resource-preview.spec.ts"
+      ],
+      "remediation": "Expose the missing-resource message as role=alert with assertive live semantics and use a solid, high-contrast error surface. Verify desktop and mobile in the public Site.",
+      "fixCommit": null,
       "status": "fixed-awaiting-deployed-verification"
     }
   ]

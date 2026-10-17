@@ -1,14 +1,17 @@
 # Runtime audit — resource and renderer hardening
 
-This audit combines the public v9 Site route and flagship workflow inspection
-with local checks of the built Astro Site/Workbench, Sites Worker boundary, and
-clean standalone exports. The live v9 evidence predates the current-source
-fixes, so those fixes still require a deployed re-audit.
+This audit combines the public v9 route inspection, the public v10 flagship
+smoke, and local checks of the built Astro Site/Workbench, Sites Worker
+boundary, and clean standalone exports. Version 10 confirmed that the 324-item
+catalogue loads and the exact flagship brief reaches Direction C in Workbench
+without browser console errors. It also exposed a missing favicon request and a
+direction-preview fidelity issue; evidence is under
+[`evidence/public-site-v10`](evidence/public-site-v10).
 Machine-readable findings and their current status are in
-[`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
-published review version during the public-RC phase.
+[`runtime-audit.json`](./runtime-audit.json). Fixes remain pending until the
+specific affected behavior is verified on a published review version.
 
-**Current disposition:** 78 findings (17 High, 61 Medium). The Step 06 resource fixes and eight Step 07 renderer/export fixes have local regression evidence. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited in the public-RC phase. CI for the current source edits is pending. The latest complete local `pnpm test:e2e` run passed: 81 main-browser tests, 23 Sites Worker tests, and 1 preview-app test; the saved 324-resource/972-variant report recorded zero findings, failed requests, or cancellations. An earlier run exposed races in Gold readiness and animation assertions; the tests now wait for the exact rendered resource node and observe the animated card itself.
+**Current disposition:** 81 findings (17 High, 63 Medium, 1 Low). AUD-071 is closed after the v10 public preview showed the missing-resource message and rendered no substitute. The other 77 earlier findings still await issue-specific deployed verification. AUD-079 and AUD-081 are fixed locally and await deployment; AUD-080 remains open for the ordered direction-generation step. The v10 flagship smoke at 1440 × 900 loaded all 324 catalogue resources, generated three directions, and opened Direction C in Workbench with zero browser console errors, page errors, or failed requests. Two explicit runtime defects were recorded: `/favicon.svg` returned 404, and the unknown-resource preview message was not announced as an alert. The source PR's previous `e6d2b9c` head passed GitHub validation and security checks; these local fixes have not yet been pushed or checked by CI. Local verification now includes the 16/16 behavioral release gate, all 622 unit/integration tests, 85/85 main-browser passes (51 project-scoped skips), 23/23 original Sites Worker tests plus both added Worker-boundary regressions, and 1/1 preview-app test. The first Sites Worker full run had a transient Playwright `write UNKNOWN`; the full 23-test rerun passed, including the 324-resource/972-variant matrix with zero findings, failed requests, or cancellations. A first main-browser run also transiently missed the opt-in Lab switch; its isolated test and the complete 85-pass rerun succeeded.
 
 At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile browser tests passed, 51 tests were explicitly skipped by project scope, and all 23 Sites Worker tests passed. It included the expanded state and action regressions. The 11-case state matrix, exact-resource readiness check, dialog modal regression, Prompt Composer action regression, and 40 × 3 Axe matrix passed. The catalogue report covered 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covered 40 resources / 120 variants with zero findings. Existing state fixtures cover six Gold data resources; the expanded matrix covers array-driven resources at empty and 30–40 item counts, disabled Button/Input/Select, named loading/error states, long text, and fixed-slot partial data. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
@@ -92,7 +95,7 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Reproduction: open `/preview/?resource=__missing-resource-for-renderer-audit__` at 1440x900.
 - Root cause: `PreviewApp` substituted the Button component when lookup failed, making its missing-resource branch unreachable.
 - Affected code: `apps/preview/src/main.tsx` and `tests/e2e/preview-unknown-resource-regression.spec.ts`.
-- Remediation: initialize URL state before rendering, remove the unrelated fallback, display an accessible unavailable state, and report an error without reporting readiness. Deployed verification remains outstanding.
+- Remediation: initialize URL state before rendering, remove the unrelated fallback, display an unavailable state, and report an error without reporting readiness. Site v10 now displays the unknown-resource diagnostic and no substitute button, so this finding is closed after deployed verification; a separate alert-semantics finding is AUD-081.
 
 ### AUD-072 — Workbench dropped nested children when a resource also had prop children
 
@@ -768,3 +771,29 @@ with zero findings. That harness race is not counted as a product defect.
 - Root cause: emerald-600 measured 3.31:1 on light surfaces and 4.17:1 on the Nocturne badge.
 - Affected code: `resources/sections/pricing-three-tier/index.tsx`.
 - Remediation: use emerald-800 on light surfaces and emerald-300 on Nocturne. The final matrix reports zero violations. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.
+
+### AUD-080 — Direction previews do not show their advertised structural differences
+
+- Evidence: [Site v10 Compose capture](evidence/public-site-v10/compose-directions-1440.png) shows three Team Overview previews with the same content and section order. Direction 03 advertises rail navigation and a tri-column-intelligence layout, but its preview still uses a conventional header and content pane.
+- Reproduction: open `/compose` at 1440 × 900, compose the employee-experience brief with Refined ambition and Inventive creativity, then compare the three previews.
+- Root cause: the direction cards render each manifest's same primary screen through `ManifestRenderer`; the generated grammar and navigation differences are shown as metadata but do not produce the promised structural variation in the rendered preview.
+- Affected code: `apps/site/src/components/ComposeView.tsx`, `packages/compatibility/src/direction-generator.ts`, and the ordered Step 12 composition integration.
+- Remediation: make each direction's grammar change manifest structure, navigation, and resource selection, and add a browser-level regression that rejects theme-only variation. This remains open until Step 12.
+
+### AUD-081 — Public unknown-resource preview is not announced as an alert
+
+- Evidence: [Site v10 unknown-resource capture](evidence/public-site-v10/unknown-resource-1440.png) shows the diagnostic, and the [smoke report](evidence/public-site-v10/flagship-smoke.json) records HTTP 200, zero buttons, and zero browser errors but no alert role.
+- Reproduction: open `/preview/?resource=__missing-resource-for-renderer-audit__` on Site v10 and inspect its accessibility tree.
+- Root cause: the public Astro `PreviewHost` rendered load failures as a plain `div` with muted text on a transparent preview background.
+- Affected code: `apps/site/src/components/PreviewHost.tsx` and `tests/e2e/sites-unknown-resource-preview.spec.ts`.
+- Remediation: expose the diagnostic as an assertive `role=alert`, use a solid higher-contrast surface, and cover desktop/mobile behavior. The pre-fix browser test failed on both viewports; deployment verification is pending.
+
+## LOW
+
+### AUD-079 — Published Site favicon returned 404
+
+- Evidence: the v10 [Compose capture](evidence/public-site-v10/compose-directions-1440.png) identifies the affected public page; the [machine-readable smoke report](evidence/public-site-v10/flagship-smoke.json) records `/favicon.svg` as HTTP 404, corroborated by the Site Worker log.
+- Reproduction: open `/compose` on Site v10 and request `/favicon.svg`.
+- Root cause: pages declared the favicon URL, but the public asset directory did not contain the file.
+- Affected code: `apps/site/public/favicon.svg`, `apps/site/src/layouts/PublicLayout.astro`, and the public page head declarations.
+- Remediation: add the mark as a public SVG and cover status, content type, and SVG markup in desktop and mobile browser tests. The regression failed 2/2 before the asset was added and passed 2/2 locally; deployed verification is pending.

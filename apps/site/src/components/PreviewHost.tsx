@@ -187,7 +187,7 @@ export default function PreviewHost() {
     }
 
     return (
-      <div className="flex min-h-screen items-center justify-center p-6 text-sm text-neutral-500">
+      <div role="alert" aria-live="assertive" className="flex min-h-screen items-center justify-center bg-white p-6 text-sm text-neutral-800">
         Preview failed: {loadError}. The original source remains available; no substitute component is rendered.
       </div>
     );
