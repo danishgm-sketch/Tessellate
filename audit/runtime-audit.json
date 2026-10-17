@@ -878,7 +878,7 @@
         "tests/e2e/gold-resource-state-certification.spec.ts"
       ],
       "remediation": "Render a polite live status for both empty input and filters that return no matches; add a real-browser state regression.",
-      "fixCommit": null,
+      "fixCommit": "8cc16cf2c408323ffe6b38b2d9483adabbf2814e",
       "status": "fixed-awaiting-deployed-verification"
     },
     {
@@ -904,7 +904,7 @@
         "tests/e2e/gold-resource-state-certification.spec.ts"
       ],
       "remediation": "Render a polite, responsive empty-state explanation and cover it with a real-browser state regression.",
-      "fixCommit": null,
+      "fixCommit": "8cc16cf2c408323ffe6b38b2d9483adabbf2814e",
       "status": "fixed-awaiting-deployed-verification"
     }
   ]
