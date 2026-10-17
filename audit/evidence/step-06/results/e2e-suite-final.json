@@ -4,9 +4,9 @@
   "command": "pnpm test:e2e",
   "status": "passed",
   "regularBrowserSuite": {
-    "total": 122,
+    "total": 124,
     "passed": 73,
-    "skipped": 49,
+    "skipped": 51,
     "failed": 0,
     "flagshipAcceptance": "passed",
     "axeChecks": {
@@ -25,8 +25,8 @@
     "standaloneReactExport": "passed"
   },
   "sitesWorkerSuite": {
-    "total": 22,
-    "passed": 22,
+    "total": 23,
+    "passed": 23,
     "skipped": 0,
     "failed": 0
   },
@@ -143,7 +143,7 @@
     ],
     "status": "passed"
   },
-  "verifiedCommit": "e750f0f8b0e97acf238d0f6af6bf1356215883dc",
+  "verifiedCommit": "fcfde05e75e88814f27f021feb2039bc2d8afa96",
   "verifiedBaseCommit": "3a6ef7f19ff2dfd68ab4fffaa684d4d9838ccdb1",
   "sampleDataTruth": {
     "resources": 4,
