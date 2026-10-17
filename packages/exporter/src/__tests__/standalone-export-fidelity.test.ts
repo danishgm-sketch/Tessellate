@@ -206,6 +206,14 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     expect(screenCode).toContain('Content from resource props');
     expect(screenCode).toContain('Content from nested manifest node');
 
+    const slotProject = JSON.parse(JSON.stringify(testProject)) as ProjectManifest;
+    const slotNode = slotProject.screens[0]!.rootNode.children.find((node) => node.id === 'node-canvas-content')!;
+    slotNode.props = {};
+    slotNode.slots = { children: 'Content from declared resource slot' };
+    const slotScreenCode = generateSourceTree(slotProject)['src/screens/Dashboard.tsx'];
+    expect(slotScreenCode).toContain('Content from declared resource slot');
+    expect(slotScreenCode).toContain('Content from nested manifest node');
+
     // 4. Verify no runtime dependency on @tessellate packages
     const pkg = JSON.parse(sourceTree['package.json']!);
     const allDeps = { ...(pkg.dependencies || {}), ...(pkg.devDependencies || {}) };

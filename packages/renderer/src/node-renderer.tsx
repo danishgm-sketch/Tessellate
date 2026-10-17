@@ -173,13 +173,15 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
     };
 
     const acceptsExplicitChildren = !GOLD_RESOURCE_PROPS[slug] || GOLD_RESOURCE_PROPS[slug].includes('children');
-    const hasPropChildren = acceptsExplicitChildren && node.props?.children !== undefined && node.props.children !== null;
+    const propsHaveChildren = Object.prototype.hasOwnProperty.call(node.props ?? {}, 'children');
+    const explicitChildren = propsHaveChildren ? node.props?.children : node.slots?.children;
+    const hasExplicitChildren = acceptsExplicitChildren && explicitChildren !== undefined && explicitChildren !== null;
     const hasRenderedChildren = Boolean(renderedChildren && renderedChildren.length > 0);
-    const hasChildren = hasPropChildren || hasRenderedChildren;
-    const childrenToPass = hasPropChildren && hasRenderedChildren
-      ? <>{node.props?.children as React.ReactNode}{renderedChildren}</>
-      : hasPropChildren
-      ? node.props?.children as React.ReactNode
+    const hasChildren = hasExplicitChildren || hasRenderedChildren;
+    const childrenToPass = hasExplicitChildren && hasRenderedChildren
+      ? <>{explicitChildren as React.ReactNode}{renderedChildren}</>
+      : hasExplicitChildren
+      ? explicitChildren as React.ReactNode
       : hasRenderedChildren
       ? renderedChildren
       : undefined;
