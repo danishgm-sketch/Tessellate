@@ -533,6 +533,9 @@ importers:
 
   packages/testing:
     dependencies:
+      '@tessellate/catalog':
+        specifier: workspace:*
+        version: link:../catalog
       '@tessellate/schemas':
         specifier: workspace:*
         version: link:../schemas

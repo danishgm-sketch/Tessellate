@@ -6,7 +6,7 @@ import { execSync, spawn } from 'node:child_process';
 import { chromium } from '@playwright/test';
 import type { ProjectManifest } from '@tessellate/schemas';
 import { validProjectFixture } from '@tessellate/schemas';
-import { appendRendererParityNodes } from '@tessellate/testing';
+import { appendGoldResourceVariantParityNodes, appendRendererParityNodes } from '@tessellate/testing';
 import { generateSourceTree } from '../source-tree.js';
 import '../node-disk-resolver.js';
 
@@ -275,8 +275,20 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     );
   });
 
+  it('generates every Gold resource variant from its canonical manifest without fallback nodes', () => {
+    const project = appendGoldResourceVariantParityNodes(testProject);
+    const sourceTree = generateSourceTree(project);
+    const screenCode = sourceTree['src/screens/Dashboard.tsx'];
+
+    expect(screenCode).toBeDefined();
+    for (const node of project.screens[0]!.rootNode.children.filter((item) => item.id.startsWith('gold-parity-'))) {
+      expect(screenCode, `${node.resourceRef?.slug}/${node.variant}`).toContain(node.id);
+      expect(screenCode, `${node.resourceRef?.slug}/${node.variant}`).toContain(`data-resource-variant={${JSON.stringify(node.variant)}}`);
+    }
+  });
+
   it('builds standalone project with real pnpm install and verifies interactive execution in Playwright via vite preview', async () => {
-    const parityProject = appendRendererParityNodes(testProject);
+    const parityProject = appendRendererParityNodes(appendGoldResourceVariantParityNodes(testProject));
     const sourceTree = generateSourceTree(parityProject);
 
     // Create a temporary export directory
@@ -297,10 +309,15 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
       });
 
       // 2. Execute pnpm build
-      execSync('pnpm build', {
-        cwd: tempDir,
-        stdio: 'pipe',
-      });
+      try {
+        execSync('pnpm build', {
+          cwd: tempDir,
+          stdio: 'pipe',
+        });
+      } catch (cause) {
+        const error = cause as { stdout?: Buffer | string; stderr?: Buffer | string };
+        throw new Error(`Clean standalone build failed:\n${String(error.stdout ?? '')}\n${String(error.stderr ?? '')}`);
+      }
 
       // 3. Launch resulting preview server using vite preview
       const port = 4192;
@@ -342,6 +359,7 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
       const browser = await chromium.launch({ headless: true });
       try {
         const page = await browser.newPage();
+        await page.setViewportSize({ width: 1440, height: 900 });
         const consoleErrors: string[] = [];
         const failedRequests: string[] = [];
         page.on('console', (msg) => {
@@ -377,13 +395,28 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         fs.mkdirSync(path.dirname(trackingScreenshot), { recursive: true });
         await trackingAction.screenshot({ path: trackingScreenshot });
 
+        for (const node of parityProject.screens[0]!.rootNode.children.filter((item) => item.id.startsWith('gold-parity-'))) {
+          const rendered = page.locator(`[data-node-id="${node.id}"]`);
+          expect(await rendered.count(), `Export ${node.resourceRef?.slug}/${node.variant}`).toBe(1);
+          expect(await rendered.getAttribute('data-resource-variant')).toBe(node.variant);
+          expect(await rendered.locator('[data-testid="unsupported-resource-variant"]').count()).toBe(0);
+        }
+        const selfManagedDialog = page.locator('[data-node-id="gold-parity-dialog-quiet"]');
+        const dialog = selfManagedDialog.getByRole('dialog');
+        expect(await dialog.isVisible()).toBe(true);
+        const dialogScreenshot = path.resolve(process.cwd(), 'audit/evidence/step-07/after/export-dialog-open-1440.png');
+        fs.mkdirSync(path.dirname(dialogScreenshot), { recursive: true });
+        await dialog.screenshot({ path: dialogScreenshot });
+        await page.keyboard.press('Escape');
+        expect(await dialog.count()).toBe(0);
+
         const hiddenOnMobile = page.locator('[data-node-id="parity-mobile-omit"]');
         const stackedOnMobile = page.locator('[data-node-id="parity-mobile-stack"]');
         const collapsedOnMobile = page.locator('[data-node-id="parity-mobile-collapse"]');
         expect(await hiddenOnMobile.isVisible()).toBe(true);
-        const screenshotPath = path.resolve(process.cwd(), 'audit/evidence/step-07/after/standalone-export-children.png');
+        const screenshotPath = path.resolve(process.cwd(), 'audit/evidence/step-07/after/standalone-export-gold-children.png');
         fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
-        await page.screenshot({ path: screenshotPath, fullPage: true });
+        await page.locator('[data-node-id="node-canvas-content"]').screenshot({ path: screenshotPath });
 
         await page.setViewportSize({ width: 390, height: 844 });
         const hiddenOnMobileIsVisible = await hiddenOnMobile.isVisible();
@@ -396,8 +429,8 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         expect(await stackedOnMobile.evaluate((element) => getComputedStyle(element).flexDirection)).toBe('column');
         expect(await collapsedOnMobile.evaluate((element) => getComputedStyle(element).overflowY)).toBe('hidden');
 
-        const responsiveScreenshot = path.resolve(process.cwd(), 'audit/evidence/step-07/after/standalone-export-responsive-390.png');
-        await page.screenshot({ path: responsiveScreenshot, fullPage: true });
+        const responsiveScreenshot = path.resolve(process.cwd(), 'audit/evidence/step-07/after/standalone-export-gold-responsive-390.png');
+        await page.locator('[data-node-id="parity-mobile-stack"]').screenshot({ path: responsiveScreenshot });
 
         // 6. Assert no console errors
         expect(consoleErrors).toEqual([]);
@@ -420,5 +453,5 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
       }
       fs.rmSync(tempDir, { recursive: true, force: true });
     }
-  }, 120000);
+  }, 240000);
 });

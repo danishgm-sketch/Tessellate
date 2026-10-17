@@ -2,7 +2,50 @@ import { expect, test } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 import path from 'node:path';
 import type { ProjectManifest } from '@tessellate/schemas';
-import { createRendererParityProject } from '../../packages/testing/src/renderer-parity-fixture.js';
+import { createGoldResourceVariantParityProject, createRendererParityProject } from '../../packages/testing/src/index.js';
+
+test('Workbench canvas and Preview render all canonical Gold resource variants', async ({ page }) => {
+  const consoleErrors: string[] = [];
+  const failedRequests: string[] = [];
+  page.on('pageerror', (error) => consoleErrors.push(error.message));
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
+  page.on('requestfailed', (request) => failedRequests.push(`${request.method()} ${request.url()}`));
+  page.on('response', (response) => {
+    if (response.status() >= 400) failedRequests.push(`${response.status()} ${response.url()}`);
+  });
+
+  const manifest = createGoldResourceVariantParityProject();
+  const nodes = manifest.screens[0]!.rootNode.children;
+  await page.addInitScript((savedManifest: ProjectManifest) => {
+    const json = JSON.stringify(savedManifest);
+    localStorage.setItem(`tessellate_project_${savedManifest.id}`, json);
+    localStorage.setItem('tessellate_active_project', json);
+  }, manifest);
+
+  await page.goto(`/workbench?project=${manifest.id}`);
+  const renderSurface = page.getByTestId((page.viewportSize()?.width ?? 1440) < 1024 ? 'mobile-workbench' : 'workbench-canvas');
+  await expect(renderSurface).toBeVisible();
+  for (const node of nodes) {
+    const rendered = renderSurface.locator(`[data-node-id="${node.id}"]`);
+    await expect(rendered, `${node.resourceRef?.slug}/${node.variant}`).toBeAttached();
+    await expect(rendered).toHaveAttribute('data-resource-variant', node.variant!);
+    await expect(rendered.locator('[data-testid="unsupported-resource-variant"]')).toHaveCount(0);
+  }
+  await expect(renderSurface.getByRole('dialog', { name: 'Example dialog' })).toHaveCount(1);
+
+  await page.getByRole('button', { name: 'Preview' }).first().click();
+  const preview = page.getByTestId('preview-modal');
+  for (const node of nodes) {
+    const rendered = preview.locator(`[data-node-id="${node.id}"]`);
+    await expect(rendered, `Preview ${node.resourceRef?.slug}/${node.variant}`).toBeAttached();
+    await expect(rendered).toHaveAttribute('data-resource-variant', node.variant!);
+  }
+
+  expect(consoleErrors).toEqual([]);
+  expect(failedRequests).toEqual([]);
+});
 
 test('Workbench renders the shared semantic parity fixture in canvas and Preview', async ({ page }) => {
   const consoleErrors: string[] = [];

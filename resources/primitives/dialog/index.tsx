@@ -1,11 +1,11 @@
-import React, { useEffect, useId, useRef } from 'react';
+import React, { useEffect, useId, useRef, useState } from 'react';
 
 export type DialogVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface DialogProps {
   variant?: DialogVariant;
   open: boolean;
-  onClose: () => void;
+  onClose?: () => void;
   title: string;
   description?: string;
   children: React.ReactNode;
@@ -23,6 +23,7 @@ export function Dialog({
 }: DialogProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const onCloseRef = useRef(onClose);
+  const [internalOpen, setInternalOpen] = useState(open);
   const titleId = useId();
   const descriptionId = useId();
 
@@ -31,7 +32,18 @@ export function Dialog({
   }, [onClose]);
 
   useEffect(() => {
-    if (!open) return;
+    setInternalOpen(open);
+  }, [open]);
+
+  const isOpen = onClose ? open : internalOpen;
+
+  const closeDialog = () => {
+    if (onCloseRef.current) onCloseRef.current();
+    else setInternalOpen(false);
+  };
+
+  useEffect(() => {
+    if (!isOpen) return;
 
     const dialog = dialogRef.current;
     if (!dialog) return;
@@ -47,7 +59,7 @@ export function Dialog({
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         event.preventDefault();
-        onCloseRef.current();
+        closeDialog();
         return;
       }
 
@@ -75,9 +87,9 @@ export function Dialog({
       document.removeEventListener('keydown', handleKeyDown);
       if (previousFocus?.isConnected) previousFocus.focus();
     };
-  }, [open]);
+  }, [isOpen]);
 
-  if (!open) return null;
+  if (!isOpen) return null;
 
   let theme = 'bg-white border-neutral-200 text-neutral-900 shadow-2xl';
   if (variant === 'expressive') theme = 'bg-white border-[#D9D6CF] text-neutral-900 shadow-2xl';
@@ -85,7 +97,7 @@ export function Dialog({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-xs">
-      <div className="fixed inset-0" onClick={onClose} />
+      <div className="fixed inset-0" onClick={closeDialog} />
       <div
         ref={dialogRef}
         role="dialog"

@@ -3,6 +3,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import type { ProjectManifest, ProjectNode } from '@tessellate/schemas';
 import { GOLD_40_SLUGS } from '@tessellate/catalog';
+import { createGoldResourceVariantParityNodes } from '@tessellate/testing';
 import { ManifestRenderer, NodeRenderer } from '../index.js';
 
 function createTestNode(slug: string, props: Record<string, unknown> = {}): ProjectNode {
@@ -121,6 +122,18 @@ describe('Requirement 4 & 6: Runtime Resource Registry for Gold 40 with Family S
       expect(manifestHtml).toContain(`data-node-id="node_test_${slug}"`);
     }
   );
+
+  it('renders every declared Gold variant through the same manifest renderer contract', () => {
+    const nodes = createGoldResourceVariantParityNodes();
+
+    expect(nodes).toHaveLength(GOLD_40_SLUGS.length * 3);
+    for (const node of nodes) {
+      const html = renderToString(<NodeRenderer node={node} />);
+      expect(html, `${node.resourceRef?.slug}/${node.variant}`).toContain(`data-resource-variant="${node.variant}"`);
+      expect(html, `${node.resourceRef?.slug}/${node.variant}`).not.toContain('unsupported-resource-variant');
+      expect(html, `${node.resourceRef?.slug}/${node.variant}`).toContain(`data-node-id="${node.id}"`);
+    }
+  });
 
   describe('Family-Level Semantic Assertions', () => {
     it('verifies Usable Controls family renders interactive elements', () => {

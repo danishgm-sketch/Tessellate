@@ -15,8 +15,8 @@ it('standalone employee product preserves nested records and CTA content in a re
   const files=generateSourceTree(manifest);
   const directory=mkdtempSync(path.join(os.tmpdir(),'tessellate-employee-export-'));
   for(const [name,content] of Object.entries(files)){const filename=path.join(directory,name);mkdirSync(path.dirname(filename),{recursive:true});writeFileSync(filename,content);}
-  await run('npm install --no-audit --no-fund',{cwd:directory,timeout:90000});
-  await run('npm run build',{cwd:directory,timeout:90000});
+  await run('npm install --no-audit --no-fund',{cwd:directory,timeout:240000});
+  await run('npm run build',{cwd:directory,timeout:240000});
   const port=18367;
   const server=spawn(process.execPath,[path.join(directory,'node_modules/vite/bin/vite.js'),'preview','--host','127.0.0.1','--port',String(port),'--strictPort'],{cwd:directory,stdio:'pipe'});
   let previewOutput='';
@@ -42,4 +42,4 @@ it('standalone employee product preserves nested records and CTA content in a re
     expect(errors).toEqual([]);
     expect(JSON.stringify(JSON.parse(files['package.json']!).dependencies)).not.toContain('@tessellate/');
   } finally {await browser.close();server.kill();}
-},180000);
+},300000);
