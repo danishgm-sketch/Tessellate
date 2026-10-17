@@ -4,12 +4,12 @@
   "command": "pnpm test:e2e",
   "result": "passed",
   "mainBrowserSuite": {
-    "passed": 81,
+    "passed": 85,
     "skipped": 51,
     "failed": 0
   },
   "sitesWorkerSuite": {
-    "passed": 23,
+    "passed": 25,
     "failed": 0,
     "catalogResources": 324,
     "catalogVariants": 972,
@@ -20,7 +20,12 @@
     "goldResources": 40,
     "goldVariants": 120,
     "goldFindings": 0,
-    "goldScreenshots": 120
+    "goldScreenshots": 120,
+    "addedWorkerRegressions": {
+      "favicon": 1,
+      "unknownResourceAlert": 1,
+      "passed": 2
+    }
   },
   "previewAppSuite": {
     "passed": 1,
