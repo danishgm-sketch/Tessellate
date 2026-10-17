@@ -906,6 +906,34 @@
       "remediation": "Render a polite, responsive empty-state explanation and cover it with a real-browser state regression.",
       "fixCommit": "8cc16cf2c408323ffe6b38b2d9483adabbf2814e",
       "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-045",
+      "severity": "medium",
+      "route": "/resources/marketing-nav-cta/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "Marketing CTA preview header overflowed at narrow width in Linux Chromium",
+      "expected": "The brand, navigation links and CTA should reflow inside the isolated preview at compact widths.",
+      "actual": "CI measured the 292px preview document at 316px and 321px. The local Windows browser did not reproduce the font-metric-sensitive overflow until the failing Linux CI report was reviewed.",
+      "reproduction": [
+        "Run the Sites Worker catalogue and Gold browser matrices in Linux Chromium.",
+        "Open /resources/marketing-nav-cta/ at a 360px outer viewport.",
+        "Inspect the 292px iframe document; the header forces content beyond its right edge."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/resource-layout/marketing-nav-cta-360-after.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The failing CI log and DOM geometry are preserved in audit/evidence/step-06/before/marketing-nav-cta-ci-failure.md; the workflow did not retain a baseline screenshot.",
+      "rootCause": "The header and navigation used a single horizontal flex row with desktop gaps and padding, so Linux font metrics made the combined intrinsic width exceed the narrow iframe.",
+      "affectedFiles": [
+        "resources/shells/marketing-nav-cta/index.tsx",
+        "tests/e2e/catalog-resource-render.spec.ts"
+      ],
+      "remediation": "Allow the brand and navigation groups to wrap within the preview, reduce compact CTA padding, and test document width and item overlap at 360px and 390px in browser.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification"
     }
   ]
 }

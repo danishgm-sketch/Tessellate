@@ -20,18 +20,18 @@ export function MarketingNavCta({ variant = 'quiet', links = [{ label: 'Features
   }
 
   return (
-    <header className={`w-full px-3 @sm:px-6 min-h-16 flex items-center justify-between gap-2 ${bar}`}>
-      <div className="flex items-center gap-3">
+    <header className={`w-full px-3 py-3 @sm:px-6 @sm:py-0 min-h-16 flex flex-wrap items-center justify-between gap-x-2 gap-y-2 ${bar}`}>
+      <div className="flex min-w-0 items-center gap-3">
         <span className="font-semibold text-sm">Tessellate</span>
         <span className="text-[10px] bg-neutral-100 dark:bg-neutral-800 text-[var(--tess-ink-secondary,#62666F)] dark:text-neutral-300 rounded px-1.5 py-0.5 font-mono">
           BETA
         </span>
       </div>
-      <div className="flex items-center gap-2 @sm:gap-4 text-xs">
+      <div className="flex max-w-full flex-wrap items-center justify-end gap-x-2 gap-y-2 text-xs @sm:gap-x-4">
         {links.map((link) => link.href
           ? <a key={link.label} href={link.href} className="opacity-70 hover:opacity-100">{link.label}</a>
           : <span key={link.label} className="opacity-70">{link.label}</span>)}
-        <button type="button" onClick={onCtaClick} disabled={!onCtaClick} aria-describedby={!onCtaClick ? 'marketing-nav-cta-action-help' : undefined} className={`px-4 py-1.5 rounded-[var(--tess-radius-lg,8px)] text-xs font-medium transition-all disabled:cursor-not-allowed disabled:opacity-60 ${cta}`}>
+        <button type="button" onClick={onCtaClick} disabled={!onCtaClick} aria-describedby={!onCtaClick ? 'marketing-nav-cta-action-help' : undefined} className={`px-3 @sm:px-4 py-1.5 rounded-[var(--tess-radius-lg,8px)] text-xs font-medium transition-all disabled:cursor-not-allowed disabled:opacity-60 ${cta}`}>
           Start Free
         </button>
       </div>

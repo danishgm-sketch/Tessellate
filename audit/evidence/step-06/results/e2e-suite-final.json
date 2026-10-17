@@ -4,15 +4,15 @@
   "command": "pnpm test:e2e",
   "status": "passed",
   "regularBrowserSuite": {
-    "total": 86,
+    "total": 88,
     "passed": 73,
-    "skipped": 13,
+    "skipped": 15,
     "failed": 0,
     "flagshipAcceptance": "passed"
   },
   "sitesWorkerSuite": {
-    "total": 4,
-    "passed": 4,
+    "total": 5,
+    "passed": 5,
     "skipped": 0,
     "failed": 0
   },
@@ -44,6 +44,16 @@
     "failedRequests": 0,
     "httpErrors": 0,
     "report": "audit/evidence/step-06/results/gold-resource-states-final.json"
+  },
+  "marketingCtaResponsive": {
+    "route": "/resources/marketing-nav-cta/",
+    "viewports": ["360x844", "390x844"],
+    "overflow": false,
+    "overlap": false,
+    "consoleErrors": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "report": "audit/evidence/step-06/results/marketing-nav-cta-responsive.json"
   },
   "canonicalResourceRoute": {
     "route": "/r/ai-prompt-hero/",

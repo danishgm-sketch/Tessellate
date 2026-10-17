@@ -6,9 +6,9 @@ Machine-readable findings and their current status are in
 [`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
 published review version during the public-RC phase.
 
-**Current disposition:** 44 findings (6 High, 38 Medium); all recorded findings have local remediation and passed the final local browser certification. They remain open pending verification in a newly published review Site. This audit records local Worker-preview evidence only.
+**Current disposition:** 45 findings (6 High, 39 Medium); all recorded findings have local remediation and passed the final local browser certification. They remain open pending verification in a newly published review Site. This audit records local Worker-preview evidence only.
 
-The final `pnpm test:e2e` run passed: 73 regular browser tests, 13 explicitly skipped tests, and all 4 Sites Worker tests. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Two additional Gold data-resource state fixtures passed with zero console errors, page errors, failed requests or HTTP errors. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
+The final `pnpm test:e2e` run passed: 73 regular browser tests, 15 explicitly skipped tests, and all 5 Sites Worker tests. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Two Gold data-resource state fixtures and the compact-width marketing CTA regression passed with zero console errors, failed requests or HTTP errors. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
 ## HIGH
 
@@ -489,3 +489,11 @@ with zero findings. That harness race is not counted as a product defect.
 - Root cause: the board rendered its heading and an empty column grid with no explanation when the array was empty.
 - Affected code: `resources/blocks/kanban-board/index.tsx`.
 - Remediation: render a responsive, accessible empty-state message and cover it with a browser regression.
+
+### AUD-045 — Marketing CTA preview header overflowed in Linux Chromium
+
+- Evidence: the [failed CI log and captured DOM measurements](evidence/step-06/before/marketing-nav-cta-ci-failure.md) show a 316–321px document inside a 292px iframe at a 360px outer viewport. The [post-fix 360px and 390px captures](evidence/step-06/after/resource-layout/) show the header reflow. The new regression diagnostics are in `evidence/step-06/results/marketing-nav-cta-responsive.json`.
+- Reproduction: run the Sites Worker catalogue matrix in Linux Chromium and open `/resources/marketing-nav-cta/` at 360x844.
+- Root cause: the brand and navigation/CTA occupied one horizontal flex row with desktop spacing. Linux font metrics pushed its intrinsic width beyond the preview.
+- Affected code: `resources/shells/marketing-nav-cta/index.tsx`, `tests/e2e/catalog-resource-render.spec.ts`.
+- Remediation: allow the header and navigation group to wrap, tighten compact CTA spacing, and assert no overflow or overlap at 360px and 390px.

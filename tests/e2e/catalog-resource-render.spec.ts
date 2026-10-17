@@ -398,3 +398,68 @@ test('canonical /r resource detail route preserves title, preview, and responsiv
     JSON.stringify({ route: `/r/${slug}/`, errors, results }, null, 2),
   ));
 });
+
+test('marketing CTA header reflows without overflow in compact resource previews', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'sites-chromium', 'This regression runs against the Sites Worker preview boundary.');
+
+  const viewports = [{ width: 360, height: 844 }, { width: 390, height: 844 }];
+  const errors: string[] = [];
+  const warnings: string[] = [];
+  const failedRequests: string[] = [];
+  const httpErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') errors.push(message.text());
+    if (message.type() === 'warning') warnings.push(message.text());
+  });
+  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('requestfailed', (request) => failedRequests.push(`${request.method()} ${request.url()}: ${request.failure()?.errorText ?? 'unknown failure'}`));
+  page.on('response', (response) => {
+    if (response.status() >= 400) httpErrors.push(`${response.status()} ${response.url()}`);
+  });
+
+  const evidenceDir = path.resolve(process.cwd(), 'audit/evidence/step-06/after/resource-layout');
+  mkdirSync(evidenceDir, { recursive: true });
+  await page.setViewportSize(viewports[0]);
+  const response = await page.goto('/resources/marketing-nav-cta/', { waitUntil: 'domcontentloaded' });
+  expect(response?.status()).toBe(200);
+  const frame = page.frameLocator('iframe[title$=" live preview"]');
+  const header = frame.locator('header');
+  await expect(header).toBeVisible();
+  await expect(frame.getByRole('button', { name: 'Start Free' })).toBeVisible();
+
+  const results: Array<{ viewport: string; frameWidth: number; documentWidth: number; headerWidth: number; itemsOverlap: boolean; screenshot: string }> = [];
+  for (const viewport of viewports) {
+    await page.setViewportSize(viewport);
+    await header.evaluate(async (element) => { await element.ownerDocument.fonts.ready; });
+    const measurements = await header.evaluate((element) => {
+      const frameDocument = element.ownerDocument;
+      const headerBounds = element.getBoundingClientRect();
+      const brandBounds = element.children[0].getBoundingClientRect();
+      const navigationBounds = element.children[1].getBoundingClientRect();
+      const itemsOverlap = brandBounds.left < navigationBounds.right - 1
+        && navigationBounds.left < brandBounds.right - 1
+        && brandBounds.top < navigationBounds.bottom - 1
+        && navigationBounds.top < brandBounds.bottom - 1;
+      return {
+        frameWidth: frameDocument.documentElement.clientWidth,
+        documentWidth: frameDocument.documentElement.scrollWidth,
+        headerWidth: headerBounds.width,
+        itemsOverlap,
+      };
+    });
+    expect(measurements.documentWidth, `Header overflowed at ${viewport.width}px outer viewport`).toBeLessThanOrEqual(measurements.frameWidth + 2);
+    expect(measurements.itemsOverlap, `Header items overlap at ${viewport.width}px outer viewport`).toBe(false);
+
+    const screenshot = path.join(evidenceDir, `marketing-nav-cta-${viewport.width}-after.png`);
+    await page.screenshot({ path: screenshot, animations: 'disabled' });
+    results.push({ ...measurements, viewport: `${viewport.width}x${viewport.height}`, screenshot: path.relative(process.cwd(), screenshot).replaceAll('\\', '/') });
+  }
+
+  expect(errors, `Browser errors: ${errors.join('\n')}`).toEqual([]);
+  expect(failedRequests, `Failed requests: ${failedRequests.join('\n')}`).toEqual([]);
+  expect(httpErrors, `HTTP errors: ${httpErrors.join('\n')}`).toEqual([]);
+  await import('node:fs/promises').then(({ writeFile }) => writeFile(
+    path.resolve(process.cwd(), 'audit/evidence/step-06/results/marketing-nav-cta-responsive.json'),
+    JSON.stringify({ route: '/resources/marketing-nav-cta/', status: response?.status() ?? null, errors, warnings, failedRequests, httpErrors, results }, null, 2),
+  ));
+});
