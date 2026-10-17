@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public review Site v10 flagship and unknown-resource smoke, plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification.",
+  "scope": "Deployed public review Site v11 desktop/mobile flagship and unknown-resource smoke, public v9 route sweep, plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification.",
   "entries": [
     {
       "id": "AUD-001",
@@ -1923,7 +1923,7 @@
           "source": "public Sites Worker log and Playwright request"
         }
       ],
-      "screenshot": "audit/evidence/public-site-v10/compose-directions-1440.png",
+      "screenshot": "audit/evidence/public-site-v11/compose-directions-1440.png",
       "rootCause": "Multiple Astro pages declared /favicon.svg, but apps/site/public contained no matching asset, so the generated Site consistently returned 404.",
       "affectedFiles": [
         "apps/site/public/favicon.svg",
@@ -1932,7 +1932,15 @@
       ],
       "remediation": "Add the Tessellate mark as apps/site/public/favicon.svg and a desktop/mobile browser regression that checks status, SVG content type and markup.",
       "fixCommit": "522c888e0952ed221a9df597e3796b8b40b2719c",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "version": 11,
+        "sourceCommit": "f2d0443bd9cbd0c3172dd1d85f199ee552c43248",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/favicon.svg",
+        "result": "HTTP 200 with image/svg+xml at 1440x900 and 390x844; deployed smoke reported zero browser errors, failed requests or HTTP errors.",
+        "screenshot": "audit/evidence/public-site-v11/compose-directions-1440.png",
+        "report": "audit/evidence/public-site-v11/flagship-smoke.json"
+      }
     },
     {
       "id": "AUD-080",
@@ -1959,7 +1967,15 @@
       ],
       "remediation": "Address in ordered Step 12: make direction grammar affect generated structure, navigation and resource selection, then add browser-level comparisons that reject superficial theme-only variation.",
       "fixCommit": null,
-      "status": "open"
+      "status": "open",
+      "latestDeployedVerification": {
+        "version": 11,
+        "sourceCommit": "f2d0443bd9cbd0c3172dd1d85f199ee552c43248",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+        "result": "The v11 1440x900 capture still shows three Team Overview previews with the same content and section order; Direction 03 remains labelled rail/tri-column while its rendered structure remains conventional. This is open for ordered Step 12.",
+        "screenshot": "audit/evidence/public-site-v11/compose-directions-1440.png",
+        "report": "audit/evidence/public-site-v11/flagship-smoke.json"
+      }
     },
     {
       "id": "AUD-081",
@@ -1981,7 +1997,7 @@
           "status": 200
         }
       ],
-      "screenshot": "audit/evidence/public-site-v10/unknown-resource-1440.png",
+      "screenshot": "audit/evidence/public-site-v11/unknown-resource-1440.png",
       "rootCause": "The public Astro PreviewHost returned its loadError as a styled div without role=alert; neutral-500 text was rendered on a transparent preview background.",
       "affectedFiles": [
         "apps/site/src/components/PreviewHost.tsx",
@@ -1989,7 +2005,16 @@
       ],
       "remediation": "Expose the missing-resource message as role=alert with assertive live semantics and use a solid, high-contrast error surface. Verify desktop and mobile in the public Site.",
       "fixCommit": "522c888e0952ed221a9df597e3796b8b40b2719c",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "version": 11,
+        "sourceCommit": "f2d0443bd9cbd0c3172dd1d85f199ee552c43248",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=__missing-resource-for-renderer-audit__",
+        "result": "At 1440x900 and 390x844 the page returned HTTP 200, exposed one assertive alert, rendered no substitute or buttons, and reported zero browser errors, failed requests or HTTP errors.",
+        "screenshot": "audit/evidence/public-site-v11/unknown-resource-1440.png",
+        "mobileScreenshot": "audit/evidence/public-site-v11/unknown-resource-390.png",
+        "report": "audit/evidence/public-site-v11/flagship-smoke.json"
+      }
     }
   ]
 }
