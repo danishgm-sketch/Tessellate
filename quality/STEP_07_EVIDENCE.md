@@ -1,7 +1,7 @@
 # Step 07 — Renderer and export parity evidence
 
-Status: in progress on 6baf9d1e93b2a6e11cac075b21d879cfa2c863ae. These are local regression results; no public Site or review
-deployment has been updated. The six new runtime-audit findings remain open until
+Status: in progress on the current consolidation branch. These are local regression results; no public Site or review
+deployment has been updated. The seven new runtime-audit findings remain open until
 the deployed review build is re-audited.
 
 ## Defects reproduced and corrected locally
@@ -14,6 +14,7 @@ the deployed review build is re-audited.
 | AUD-074 | Workbench allowed an undeclared variant to reach a component, which silently selected its default style; export also accepted it. | Workbench shows a recoverable diagnostic without rendering that component; export rejects it and lists the declared variants. | `packages/renderer/src/__tests__/gold-registry.test.tsx`, `packages/exporter/src/__tests__/standalone-export-fidelity.test.ts`, `tests/e2e/unsupported-resource-variant-regression.spec.ts`; [before](../audit/evidence/step-07/before/unsupported-variant-fell-through.png), [after](../audit/evidence/step-07/after/unsupported-variant-diagnostic.png). |
 | AUD-075 | Workbench ignored a resource's declared `slots.children` when the node also had nested manifest children. | Canvas and Preview show both slot content and nested nodes, with resource child-prop eligibility enforced. | `packages/renderer/src/__tests__/gold-registry.test.tsx`, `tests/e2e/renderer-children-parity.spec.ts`; [before](../audit/evidence/step-07/before/resource-slot-child-lost.png), [canvas](../audit/evidence/step-07/after/resource-slot-and-nested-children.png), [Preview](../audit/evidence/step-07/after/preview-modal-slot-children.png). |
 | AUD-076 | Standalone export ignored node-level mobile `omit`, `stack`, and `collapse` strategies. | Generated React applies the strategies at 390 px; Workbench and exported browser use the same shared fixture. | `packages/testing/src/renderer-parity-fixture.ts`, `packages/renderer/src/__tests__/renderer-parity.test.tsx`, `packages/exporter/src/__tests__/standalone-export-fidelity.test.ts`, `tests/e2e/renderer-children-parity.spec.ts`; [before](../audit/evidence/step-07/before/export-responsive-override-visible.png), [export after](../audit/evidence/step-07/after/standalone-export-responsive-390.png), [Workbench after](../audit/evidence/step-07/after/workbench-responsive-390.png). |
+| AUD-077 | Standalone export filtered standard `data-*` and `aria-*` resource props that Workbench preserves. | Exported resources retain these standard attributes while other undeclared props remain filtered. | Shared Button fixture and clean standalone install/build/browser regression in `packages/exporter/src/__tests__/standalone-export-fidelity.test.ts`; [before](../audit/evidence/step-07/before/export-data-attribute-dropped.png), [after](../audit/evidence/step-07/after/export-data-attribute-preserved.png). |
 
 The before captures were gathered by running the prior implementations against a
 local browser session. Unknown Preview IDs showed Button controls. The first
@@ -26,15 +27,16 @@ These failures were silent: no console errors or failed network requests.
 - `pnpm build` passed after regenerating catalogue and runtime resource artifacts. The build retains existing large-chunk warnings; they are not introduced by this parity fix.
 - `pnpm typecheck` passed across the workspace.
 - `pnpm lint` passed with zero errors and 51 existing warnings.
-- Focused Vitest: 69 passed across renderer registry, renderer behavior, the shared desktop/mobile parity fixture, all 324 resource variant declarations, and exporter fidelity. The standalone project is installed in a clean temporary directory, built, started with Vite preview, and opened in Chromium. The final run completed without worker errors.
-- Focused Playwright: 4 passed across PreviewApp, shared Workbench canvas/Preview/mobile rendering, declared-slot child rendering, and Workbench invalid-variant handling. The standalone browser run also recorded zero console errors and failed requests.
-- `pnpm typecheck` passed across the workspace. `pnpm lint` passed with zero errors and 51 existing warnings. `pnpm build` passed, including the Sites artifact build.
-- `pnpm audit:all` passed on the responsive renderer fix: all 16 release criteria, 717-page production build, bundle budgets, catalogue licence/provenance, and security/secret checks.
-- `audit/runtime-audit.json` now contains 76 findings: 16 High and 60 Medium. The six new findings are `fixed-awaiting-deployed-verification`.
+- Renderer/exporter Vitest suites passed 81/81 across seven files, including all 324 resource variant declarations and the clean standalone install/build/browser test. The exported app ran in Chromium with zero console errors and failed requests.
+- Focused Workbench/Preview Playwright checks passed 3/3 for shared canvas/Preview/mobile parity, declared-slot content, and unsupported variants. The earlier PreviewApp regression also passed.
+- `pnpm install --frozen-lockfile` had already passed on this checkout; `pnpm typecheck` passed across the workspace. `pnpm lint` passed with zero errors and 51 existing warnings.
+- `pnpm audit:all` passed on the current source: all 16 behavioral release criteria, 717-page production build, bundle budgets, catalogue licence/provenance, and security/secret checks. The build emits existing large-chunk warnings; bundle budgets pass.
+- AUD-077 regression proof: the clean standalone install/build/browser assertion passed after the exporter fix; before the fix, the same test failed because the data attribute locator was absent. It also verified zero console errors and failed requests. Renderer parity unit tests passed 2/2; Workbench parity browser checks passed 3/3.
+- `audit/runtime-audit.json` now contains 77 findings: 16 High and 61 Medium. The seven new findings are `fixed-awaiting-deployed-verification`.
 
 ## Remaining Step 07 work
 
-This evidence covers the six failures found while tracing the renderer contract.
+This evidence covers the seven failures found while tracing the renderer contract.
 It does not yet certify parity for every manifest/resource combination, every
 variant/slot/prop edge, or every Preview, Workbench, and export rendering path.
 Do not mark Step 07 complete until a broader shared-fixture parity matrix verifies

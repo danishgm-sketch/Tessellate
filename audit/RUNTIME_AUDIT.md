@@ -7,7 +7,7 @@ Machine-readable findings and their current status are in
 [`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
 published review version during the public-RC phase.
 
-**Current disposition:** 76 findings (16 High, 60 Medium). The Step 06 resource fixes and six Step 07 renderer/export fixes have local regression evidence. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited in the public-RC phase. CI for the current head is pending. An earlier PR run exposed a race in the Gold test's loading-state check; the test now waits for the exact rendered resource node and variant.
+**Current disposition:** 77 findings (16 High, 61 Medium). The Step 06 resource fixes and seven Step 07 renderer/export fixes have local regression evidence. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited in the public-RC phase. CI for the current head is pending. An earlier PR run exposed a race in the Gold test's loading-state check; the test now waits for the exact rendered resource node and variant.
 
 At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile browser tests passed, 51 tests were explicitly skipped by project scope, and all 23 Sites Worker tests passed. It included the expanded state and action regressions. The 11-case state matrix, exact-resource readiness check, dialog modal regression, Prompt Composer action regression, and 40 × 3 Axe matrix passed. The catalogue report covered 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covered 40 resources / 120 variants with zero findings. Existing state fixtures cover six Gold data resources; the expanded matrix covers array-driven resources at empty and 30–40 item counts, disabled Button/Input/Select, named loading/error states, long text, and fixed-slot partial data. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
@@ -134,6 +134,14 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Remediation: emit a `data-responsive-strategy` for supported strategies and apply shared mobile container-query rules for omit, stack, and collapse. Deployed verification remains outstanding. Fix commit: `6baf9d1e93b2a6e11cac075b21d879cfa2c863ae`.
 
 ## MEDIUM
+
+### AUD-077 — Standalone export dropped standard data and accessibility attributes
+
+- Evidence: the [before capture](evidence/step-07/before/export-data-attribute-dropped.png) and failing clean-export browser assertion showed the shared Button fixture lacked its `data-tracking-id` attribute. The [after capture](evidence/step-07/after/export-data-attribute-preserved.png) shows the generated standalone resource; its browser assertion verifies the attribute is present. The passing clean install/build/browser run recorded zero console errors or failed requests.
+- Reproduction: export the shared renderer parity fixture, clean-install its generated dependencies, build and preview it, then query `[data-tracking-id="parity-action"]`. Before the fix the locator count was zero; Workbench retained the same attribute.
+- Root cause: exporter prop filtering allowed only names explicitly declared by the resource, dropping standard `data-*` and `aria-*` attributes that Workbench intentionally forwards.
+- Affected code: `packages/exporter/src/source-tree.ts`, `packages/testing/src/renderer-parity-fixture.ts`, and renderer/exporter/Workbench parity tests.
+- Remediation: preserve `data-*` and `aria-*` props while continuing to filter undeclared ordinary props. Deployed verification remains outstanding. Fix commit: `1f92c1ed2d3e7e54f129f0d844faf2ef22e2a956`.
 
 ### AUD-068 — Form controls announced a false generic action when clicked
 
