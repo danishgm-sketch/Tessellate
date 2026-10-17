@@ -29,6 +29,7 @@ export function TimeSeriesChart({
   title = 'API Throughput (req/s)',
 }: TimeSeriesChartProps) {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const hasData = data.length > 0;
 
   const cardBg =
     variant === 'nocturne'
@@ -71,17 +72,20 @@ export function TimeSeriesChart({
       <div className="flex items-center justify-between mb-4">
         <div>
           <h4 className="text-sm font-semibold tracking-tight">{title}</h4>
-          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Real-time sampling window</p>
+          {hasData && <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Real-time sampling window</p>}
         </div>
-        <div className="text-right">
-          <span className="text-lg font-mono font-semibold">
-            {activePoint ? activePoint.value : points[points.length - 1]?.value ?? 0}
-          </span>
-          <span className="text-xs text-neutral-400 ml-1">req/s</span>
-        </div>
+        {hasData && (
+          <div className="text-right">
+            <span className="text-lg font-mono font-semibold">
+              {activePoint ? activePoint.value : points[points.length - 1]?.value}
+            </span>
+            <span className="text-xs text-neutral-400 ml-1">req/s</span>
+          </div>
+        )}
       </div>
 
       <div className="relative w-full overflow-hidden">
+        {hasData ? (
         <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-auto overflow-visible select-none">
           <defs>
             <linearGradient id={`ts-grad-${variant}`} x1="0" y1="0" x2="0" y2="1">
@@ -125,6 +129,12 @@ export function TimeSeriesChart({
             </g>
           ))}
         </svg>
+        ) : (
+          <p role="status" aria-live="polite" className="rounded border border-dashed border-neutral-300 p-6 text-center text-sm opacity-75 dark:border-neutral-700">
+            <span className="block font-semibold">No data yet</span>
+            <span className="mt-1 block">No time-series data available for this period.</span>
+          </p>
+        )}
       </div>
     </div>
   );

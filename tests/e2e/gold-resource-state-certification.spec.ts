@@ -8,7 +8,7 @@ type StateEvidence = {
   viewport: string;
   emptyState: 'PASS';
   largeData: 'PASS';
-  interaction: 'PASS';
+  interaction: 'PASS' | 'NOT_APPLICABLE';
   screenshots: string[];
 };
 
@@ -114,6 +114,149 @@ test('Gold data resources handle empty states, large datasets, long content, and
     screenshots: [tableEmptyScreenshot, tableLargeScreenshot].map((file) =>
       path.relative(process.cwd(), file).replaceAll('\\', '/')
     ),
+  });
+
+  await page.goto('/resources/timeline/', { waitUntil: 'domcontentloaded' });
+  const timelineIframe = page.locator('iframe[title$=" live preview"]');
+  const timeline = page.frameLocator('iframe[title$=" live preview"]');
+  await expect(timeline.locator('.tess-screen')).toHaveCount(1);
+  await updatePreviewProps(timelineIframe, { title: 'Employee activity', events: [] });
+  const timelineEmptyBeforeDir = path.resolve(process.cwd(), 'audit/evidence/step-06/before/state-captures');
+  mkdirSync(timelineEmptyBeforeDir, { recursive: true });
+  await page.screenshot({ path: path.join(timelineEmptyBeforeDir, 'timeline-empty-360-before.png'), animations: 'disabled' });
+  await expect(timeline.getByRole('status')).toHaveText('No activity to show yet.');
+  const timelineEmptyScreenshot = path.join(evidenceDir, 'timeline-empty-360.png');
+  await page.screenshot({ path: timelineEmptyScreenshot, animations: 'disabled' });
+  const timelineEvents = Array.from({ length: 40 }, (_, index) => ({
+    time: `Week ${index + 1}`,
+    title: `Employee milestone ${String(index + 1).padStart(2, '0')}`,
+    desc: `Welcome and onboarding check-in for ${'Alexandria '.repeat(8).trim()} across the engineering team.`,
+  }));
+  await updatePreviewProps(timelineIframe, { events: timelineEvents });
+  await expect(timeline.getByText(timelineEvents[39].title, { exact: true })).toBeVisible();
+  const timelineDimensions = await timeline.locator('html').evaluate((html) => ({ clientWidth: html.clientWidth, scrollWidth: html.scrollWidth }));
+  expect(timelineDimensions.scrollWidth).toBeLessThanOrEqual(timelineDimensions.clientWidth + 2);
+  const timelineLargeScreenshot = path.join(evidenceDir, 'timeline-large-360.png');
+  await page.screenshot({ path: timelineLargeScreenshot, animations: 'disabled' });
+  results.push({
+    slug: 'timeline',
+    route: '/resources/timeline/',
+    viewport: '360x844',
+    emptyState: 'PASS',
+    largeData: 'PASS',
+    interaction: 'NOT_APPLICABLE',
+    screenshots: [timelineEmptyScreenshot, timelineLargeScreenshot].map((file) => path.relative(process.cwd(), file).replaceAll('\\', '/')),
+  });
+
+  await page.goto('/resources/dashboard-kpi-grid/', { waitUntil: 'domcontentloaded' });
+  const kpiIframe = page.locator('iframe[title$=" live preview"]');
+  const kpi = page.frameLocator('iframe[title$=" live preview"]');
+  await expect(kpi.locator('.tess-screen')).toHaveCount(1);
+  await updatePreviewProps(kpiIframe, { title: 'People overview', cards: [] });
+  const kpiEmptyBeforeDir = path.resolve(process.cwd(), 'audit/evidence/step-06/before/state-captures');
+  mkdirSync(kpiEmptyBeforeDir, { recursive: true });
+  await page.screenshot({ path: path.join(kpiEmptyBeforeDir, 'dashboard-kpi-grid-empty-360-before.png'), animations: 'disabled' });
+  await expect(kpi.getByRole('status')).toHaveText('No metrics to show yet.');
+  const kpiEmptyScreenshot = path.join(evidenceDir, 'dashboard-kpi-grid-empty-360.png');
+  await page.screenshot({ path: kpiEmptyScreenshot, animations: 'disabled' });
+  const kpiCards = Array.from({ length: 50 }, (_, index) => ({
+    label: `Employee measure ${String(index + 1).padStart(2, '0')} ${'across teams '.repeat(4).trim()}`,
+    val: `${50 + index} people`,
+    status: `Updated across ${24 + index} departments`,
+  }));
+  await updatePreviewProps(kpiIframe, { cards: kpiCards });
+  await expect(kpi.getByText(kpiCards[49].label, { exact: true })).toBeVisible();
+  const kpiDimensions = await kpi.locator('html').evaluate((html) => ({ clientWidth: html.clientWidth, scrollWidth: html.scrollWidth }));
+  expect(kpiDimensions.scrollWidth).toBeLessThanOrEqual(kpiDimensions.clientWidth + 2);
+  const kpiLargeScreenshot = path.join(evidenceDir, 'dashboard-kpi-grid-large-360.png');
+  await page.screenshot({ path: kpiLargeScreenshot, animations: 'disabled' });
+  results.push({
+    slug: 'dashboard-kpi-grid',
+    route: '/resources/dashboard-kpi-grid/',
+    viewport: '360x844',
+    emptyState: 'PASS',
+    largeData: 'PASS',
+    interaction: 'NOT_APPLICABLE',
+    screenshots: [kpiEmptyScreenshot, kpiLargeScreenshot].map((file) => path.relative(process.cwd(), file).replaceAll('\\', '/')),
+  });
+
+  await page.goto('/resources/notification-centre/', { waitUntil: 'domcontentloaded' });
+  const defaultNotification = page.frameLocator('iframe[title$=" live preview"]');
+  await expect(defaultNotification.getByText('Build Succeeded', { exact: true })).toBeVisible();
+  const defaultMarkAllRead = defaultNotification.getByRole('button', { name: 'Mark all as read' });
+  const notificationBeforeActionScreenshot = path.join(evidenceDir, 'notification-centre-before-mark-read-360.png');
+  await page.screenshot({ path: notificationBeforeActionScreenshot, animations: 'disabled' });
+  await defaultMarkAllRead.press('Enter');
+  await expect(defaultNotification.getByRole('status')).toHaveText('2 notifications marked as read.');
+  await expect(defaultMarkAllRead).toBeDisabled();
+  const notificationFeedbackScreenshot = path.join(evidenceDir, 'notification-centre-read-feedback-360.png');
+  await page.screenshot({ path: notificationFeedbackScreenshot, animations: 'disabled' });
+
+  await page.goto('/resources/notification-centre/', { waitUntil: 'domcontentloaded' });
+  const notificationIframe = page.locator('iframe[title$=" live preview"]');
+  const notifications = page.frameLocator('iframe[title$=" live preview"]');
+  await expect(notifications.locator('.tess-screen')).toHaveCount(1);
+  await updatePreviewProps(notificationIframe, { title: 'Team updates', events: [] });
+  const notificationEmptyBeforeDir = path.resolve(process.cwd(), 'audit/evidence/step-06/before/state-captures');
+  mkdirSync(notificationEmptyBeforeDir, { recursive: true });
+  await page.screenshot({ path: path.join(notificationEmptyBeforeDir, 'notification-centre-empty-360-before.png'), animations: 'disabled' });
+  await expect(notifications.getByRole('status')).toHaveText('No notifications yet.');
+  const markAllRead = notifications.getByRole('button', { name: 'Mark all as read' });
+  await expect(markAllRead).toBeDisabled();
+  const notificationEmptyScreenshot = path.join(evidenceDir, 'notification-centre-empty-360.png');
+  await page.screenshot({ path: notificationEmptyScreenshot, animations: 'disabled' });
+  const notificationEvents = Array.from({ length: 50 }, (_, index) => ({
+    time: `${index + 1} minutes ago`,
+    title: `Onboarding update ${String(index + 1).padStart(2, '0')} ${'for a new employee '.repeat(4).trim()}`,
+    desc: 'A team member completed a first-week task.',
+  }));
+  await updatePreviewProps(notificationIframe, { events: notificationEvents });
+  await expect(notifications.getByText(notificationEvents[49].title, { exact: true })).toBeVisible();
+  await expect(markAllRead).toBeEnabled();
+  await markAllRead.press('Enter');
+  await expect(notifications.getByRole('status')).toHaveText('50 notifications marked as read.');
+  const notificationDimensions = await notifications.locator('html').evaluate((html) => ({ clientWidth: html.clientWidth, scrollWidth: html.scrollWidth }));
+  expect(notificationDimensions.scrollWidth).toBeLessThanOrEqual(notificationDimensions.clientWidth + 2);
+  const notificationLargeScreenshot = path.join(evidenceDir, 'notification-centre-large-360.png');
+  await page.screenshot({ path: notificationLargeScreenshot, animations: 'disabled' });
+  results.push({
+    slug: 'notification-centre',
+    route: '/resources/notification-centre/',
+    viewport: '360x844',
+    emptyState: 'PASS',
+    largeData: 'PASS',
+    interaction: 'PASS',
+    screenshots: [notificationBeforeActionScreenshot, notificationFeedbackScreenshot, notificationEmptyScreenshot, notificationLargeScreenshot].map((file) => path.relative(process.cwd(), file).replaceAll('\\', '/')),
+  });
+
+  await page.goto('/resources/time-series-chart/', { waitUntil: 'domcontentloaded' });
+  const chartIframe = page.locator('iframe[title$=" live preview"]');
+  const chart = page.frameLocator('iframe[title$=" live preview"]');
+  await expect(chart.locator('.tess-screen')).toHaveCount(1);
+  await updatePreviewProps(chartIframe, { title: 'People onboarding activity', data: [] });
+  const chartEmptyBeforeDir = path.resolve(process.cwd(), 'audit/evidence/step-06/before/state-captures');
+  mkdirSync(chartEmptyBeforeDir, { recursive: true });
+  await page.screenshot({ path: path.join(chartEmptyBeforeDir, 'time-series-chart-empty-360-before.png'), animations: 'disabled' });
+  await expect(chart.getByRole('status')).toContainText('No time-series data available for this period.');
+  await expect(chart.getByText('No data yet', { exact: true })).toBeVisible();
+  const chartEmptyScreenshot = path.join(evidenceDir, 'time-series-chart-empty-360.png');
+  await page.screenshot({ path: chartEmptyScreenshot, animations: 'disabled' });
+  const chartData = Array.from({ length: 48 }, (_, index) => ({ time: `Week ${index + 1}`, value: 40 + index * 2 }));
+  await updatePreviewProps(chartIframe, { data: chartData });
+  await expect(chart.locator('svg circle')).toHaveCount(0);
+  await expect(chart.getByText('Week 48', { exact: true })).toBeVisible();
+  const chartDimensions = await chart.locator('html').evaluate((html) => ({ clientWidth: html.clientWidth, scrollWidth: html.scrollWidth }));
+  expect(chartDimensions.scrollWidth).toBeLessThanOrEqual(chartDimensions.clientWidth + 2);
+  const chartLargeScreenshot = path.join(evidenceDir, 'time-series-chart-large-360.png');
+  await page.screenshot({ path: chartLargeScreenshot, animations: 'disabled' });
+  results.push({
+    slug: 'time-series-chart',
+    route: '/resources/time-series-chart/',
+    viewport: '360x844',
+    emptyState: 'PASS',
+    largeData: 'PASS',
+    interaction: 'NOT_APPLICABLE',
+    screenshots: [chartEmptyScreenshot, chartLargeScreenshot].map((file) => path.relative(process.cwd(), file).replaceAll('\\', '/')),
   });
 
   await page.goto('/resources/kanban-board/', { waitUntil: 'domcontentloaded' });

@@ -35,7 +35,7 @@ test('all catalogue resources render at every certified width in the Sites Worke
   mkdirSync(evidenceDir, { recursive: true });
   const responsiveFixes = new Set(['documentation-shell', 'floating-nav', 'webhook-management']);
   const navigationFixes = new Set(['app-sidebar-expanded', 'breadcrumb-header', 'centered-top-nav', 'collapsible-sidebar', 'floating-nav', 'footer-minimal', 'footer-sitemap', 'marketing-nav-cta', 'mega-nav', 'minimal-top-nav', 'mobile-drawer-nav', 'responsive-app-shell', 'transparent-solid-nav']);
-  const responsiveEvidenceSlugs = new Set(['ai-agent-activity-feed', 'ai-prompt-hero', 'ai-source-citations', 'breadcrumb-header', 'counter-typography', 'floating-ai-assistant', 'inline-ai-rewrite', 'integration-directory-preview', 'interactive-demo-hero', 'mega-nav', 'multi-series-line-chart']);
+  const responsiveEvidenceSlugs = new Set(['ai-agent-activity-feed', 'ai-prompt-hero', 'ai-source-citations', 'breadcrumb-header', 'command-first-nav', 'counter-typography', 'feature-tabs', 'floating-ai-assistant', 'gradient-accent-text', 'inline-ai-rewrite', 'integration-directory-preview', 'interactive-demo-hero', 'mega-nav', 'multi-series-line-chart']);
   const records: Array<{ slug: string; url?: string; variants: string[]; testedVariants: string[]; findings: Finding[]; screenshots: string[]; cancelledRequests: Array<{ method: string; url: string; reason: string }> }> = [];
   let activeRecord: (typeof records)[number] | undefined;
   let operationGeneration = 0;

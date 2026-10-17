@@ -25,13 +25,13 @@ export function FeatureTabs({ variant = 'quiet' }: FeatureTabsProps) {
       <div className="max-w-5xl mx-auto flex flex-col items-center">
         <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-center mb-8">One System. Three Audiences.</h2>
 
-        <div className="flex gap-2 p-1.5 rounded-xl bg-neutral-200/60 dark:bg-neutral-800 mb-12">
+        <div className="flex max-w-full flex-wrap justify-center gap-2 p-1.5 rounded-xl bg-neutral-200/60 dark:bg-neutral-800 mb-12">
           {(['design', 'code', 'agents'] as const).map((tab) => (
             <button
               key={tab}
               type="button"
               onClick={() => setActiveTab(tab)}
-              className={`px-6 py-2 rounded-lg text-xs font-semibold capitalize transition-all ${
+              className={`px-3 sm:px-6 py-2 rounded-lg text-xs font-semibold capitalize transition-all ${
                 activeTab === tab ? tabActive : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900'
               }`}
             >

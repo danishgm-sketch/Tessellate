@@ -26,16 +26,22 @@ export function Timeline({ variant = 'quiet', title='Sample activity', events: s
   return (
     <div className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border transition-colors ${bg}`}>
       <h3 className="text-sm font-semibold mb-6">{title}</h3>
-      <div className="space-y-6 border-l-2 border-neutral-200 dark:border-neutral-800 ml-3 pl-6">
-        {events.map((e) => (
-          <div key={e.title} className="relative">
-            <span className="absolute -left-[31px] top-1 h-3 w-3 rounded-full bg-neutral-900 dark:bg-white" />
-            <span className="text-[10px] font-mono text-[var(--tess-ink-muted,#62666F)] uppercase block mb-0.5">{e.time}</span>
-            <div className="font-semibold text-xs mb-0.5">{e.title}</div>
-            <p className="text-[11px] opacity-75">{e.desc}</p>
-          </div>
-        ))}
-      </div>
+      {events.length === 0 ? (
+        <p role="status" aria-live="polite" className="rounded border border-dashed border-neutral-300 p-6 text-center text-sm opacity-75 dark:border-neutral-700">
+          No activity to show yet.
+        </p>
+      ) : (
+        <div className="space-y-6 border-l-2 border-neutral-200 dark:border-neutral-800 ml-3 pl-6">
+          {events.map((e) => (
+            <div key={e.title} className="relative">
+              <span className="absolute -left-[31px] top-1 h-3 w-3 rounded-full bg-neutral-900 dark:bg-white" />
+              <span className="text-[10px] font-mono text-[var(--tess-ink-muted,#62666F)] uppercase block mb-0.5">{e.time}</span>
+              <div className="font-semibold text-xs mb-0.5">{e.title}</div>
+              <p className="text-[11px] opacity-75">{e.desc}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
