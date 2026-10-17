@@ -4,15 +4,15 @@
   "command": "pnpm test:e2e",
   "status": "passed",
   "regularBrowserSuite": {
-    "total": 84,
+    "total": 86,
     "passed": 73,
-    "skipped": 11,
+    "skipped": 13,
     "failed": 0,
     "flagshipAcceptance": "passed"
   },
   "sitesWorkerSuite": {
-    "total": 3,
-    "passed": 3,
+    "total": 4,
+    "passed": 4,
     "skipped": 0,
     "failed": 0
   },
@@ -34,6 +34,16 @@
     "reducedMotion": "preference exercised across all 40 renderers",
     "findings": 0,
     "report": "audit/evidence/step-06/results/gold-40-e2e-final.json"
+  },
+  "goldStateFixtures": {
+    "resources": 2,
+    "passed": 2,
+    "findings": 0,
+    "consoleErrors": 0,
+    "pageErrors": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "report": "audit/evidence/step-06/results/gold-resource-states-final.json"
   },
   "canonicalResourceRoute": {
     "route": "/r/ai-prompt-hero/",

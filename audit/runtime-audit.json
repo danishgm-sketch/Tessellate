@@ -619,9 +619,7 @@
       "expected": "Event metadata and action copy should wrap within the preview without horizontal scrolling.",
       "actual": "Long event actions and agent names exceeded the 360px preview width.",
       "rootCause": "The event row reserved a single non-wrapping horizontal line for timestamp, agent badge and action text.",
-      "affectedFiles": [
-        "resources/ai/ai-agent-activity-feed/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/ai-agent-activity-feed/index.tsx"],
       "remediation": "Allow row metadata to wrap and give the action copy a full-width row at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-agent-activity-feed-360.png",
       "screenshotBefore": null,
@@ -641,9 +639,7 @@
       "expected": "The hero heading, prompt input, engine label and preset chips should fit and wrap within the preview.",
       "actual": "The preview document was 306px wide inside a 292px viewport at 360px; at 1280px and 1440px outer widths the inner preview also exceeded its 237px viewport.",
       "rootCause": "The centered flex content used intrinsic-width children and fixed horizontal padding; chips and the engine row could not shrink or wrap within the iframe.",
-      "affectedFiles": [
-        "resources/sections/ai-prompt-hero/index.tsx"
-      ],
+      "affectedFiles": ["resources/sections/ai-prompt-hero/index.tsx"],
       "remediation": "Make the content column full-width and min-width-safe, wrap long heading and helper text, and allow prompt controls and preset chips to wrap.",
       "screenshot": "audit/evidence/step-06/before/wide-matrix/ai-prompt-hero-360-overflow.png",
       "afterScreenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-360.png",
@@ -662,9 +658,7 @@
       "expected": "Citation title, file path, and quote should wrap inside each source card.",
       "actual": "The source title/path row exceeded the 360px preview width.",
       "rootCause": "A fixed justify-between row kept the citation title and long path on one line.",
-      "affectedFiles": [
-        "resources/ai/ai-source-citations/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/ai-source-citations/index.tsx"],
       "remediation": "Allow the title and path to wrap, break long paths, and keep only the verification status unshrunk.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-source-citations-360.png",
       "screenshotBefore": null,
@@ -684,9 +678,7 @@
       "expected": "Breadcrumbs and actions should wrap into readable rows within the viewport.",
       "actual": "The breadcrumb trail and action controls occupied one fixed row and extended past the preview.",
       "rootCause": "The header used a fixed-height, single-line flex layout with fixed horizontal padding.",
-      "affectedFiles": [
-        "resources/shells/breadcrumb-header/index.tsx"
-      ],
+      "affectedFiles": ["resources/shells/breadcrumb-header/index.tsx"],
       "remediation": "Use a minimum height, compact padding and wrapping layout for both breadcrumb items and action controls.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-breadcrumb-header-360.png",
       "screenshotBefore": null,
@@ -706,9 +698,7 @@
       "expected": "The number, unit and delta should wrap without clipping or horizontal scrolling.",
       "actual": "The large counter value, unit and delta were forced into one row at 360px.",
       "rootCause": "A non-wrapping baseline flex row combined the large numeric display with the unit and delta label.",
-      "affectedFiles": [
-        "resources/typography/counter-typography/index.tsx"
-      ],
+      "affectedFiles": ["resources/typography/counter-typography/index.tsx"],
       "remediation": "Allow the value and unit row to wrap and place the delta on its own line at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-counter-typography-360.png",
       "screenshotBefore": null,
@@ -728,9 +718,7 @@
       "expected": "The dialog and launcher should remain inside the preview width.",
       "actual": "The fixed-width assistant panel extended beyond the preview at 360px.",
       "rootCause": "An inline-flex wrapper and fixed 20rem dialog retained desktop intrinsic width inside a narrow preview.",
-      "affectedFiles": [
-        "resources/ai/floating-ai-assistant/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/floating-ai-assistant/index.tsx"],
       "remediation": "Use a full-width wrapper capped at the existing 20rem maximum and let the dialog inherit the available width.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-floating-ai-assistant-360.png",
       "screenshotBefore": null,
@@ -750,9 +738,7 @@
       "expected": "Rewrite tones and acceptance actions should wrap within the preview.",
       "actual": "The tone and action controls remained on a single row and overflowed the 360px preview.",
       "rootCause": "The toolbar grouped keyboard hint, tone buttons and actions in non-wrapping flex rows.",
-      "affectedFiles": [
-        "resources/ai/inline-ai-rewrite/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/inline-ai-rewrite/index.tsx"],
       "remediation": "Allow the header and tone/action groups to wrap and permit the keyboard hint to occupy its own compact row.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-inline-ai-rewrite-360.png",
       "screenshotBefore": null,
@@ -772,9 +758,7 @@
       "expected": "Filter chips should wrap into multiple rows at compact widths.",
       "actual": "The category filter controls rendered as one unbreakable row wider than the preview.",
       "rootCause": "The filter container used a centered flex row without wrapping.",
-      "affectedFiles": [
-        "resources/sections/integration-directory-preview/index.tsx"
-      ],
+      "affectedFiles": ["resources/sections/integration-directory-preview/index.tsx"],
       "remediation": "Enable wrapping for the category chips while preserving centered alignment.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-integration-directory-preview-360.png",
       "screenshotBefore": null,
@@ -794,9 +778,7 @@
       "expected": "Density, mode and status controls should wrap within the demo card.",
       "actual": "The demo controls and preview status were constrained to desktop-width rows.",
       "rootCause": "The density and mode control groups and status row used non-wrapping flex layouts.",
-      "affectedFiles": [
-        "resources/sections/interactive-demo-hero/index.tsx"
-      ],
+      "affectedFiles": ["resources/sections/interactive-demo-hero/index.tsx"],
       "remediation": "Allow each control group and the preview status row to wrap at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-interactive-demo-hero-360.png",
       "screenshotBefore": null,
@@ -816,9 +798,7 @@
       "expected": "Brand, menu links and launch control should reflow within the viewport.",
       "actual": "A fixed-height single-row navigation and dropdown padding exceeded the preview width.",
       "rootCause": "The navigation forced all controls into one line and used desktop-only menu spacing.",
-      "affectedFiles": [
-        "resources/shells/mega-nav/index.tsx"
-      ],
+      "affectedFiles": ["resources/shells/mega-nav/index.tsx"],
       "remediation": "Allow the navigation and menu grid to wrap, reduce compact padding, and use a minimum rather than fixed height.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-mega-nav-360.png",
       "screenshotBefore": null,
@@ -838,9 +818,7 @@
       "expected": "Series controls and chart content should wrap and scale inside the preview.",
       "actual": "The legend controls stayed on a single row and widened the preview document.",
       "rootCause": "Legend buttons were held in a fixed horizontal flex row next to the chart heading.",
-      "affectedFiles": [
-        "resources/data/multi-series-line-chart/index.tsx"
-      ],
+      "affectedFiles": ["resources/data/multi-series-line-chart/index.tsx"],
       "remediation": "Allow legend buttons to wrap and cap the legend container to the available width.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-multi-series-line-chart-360.png",
       "screenshotBefore": null,
@@ -875,6 +853,58 @@
       "console": [],
       "network": [],
       "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-043",
+      "severity": "medium",
+      "route": "/resources/advanced-data-table/",
+      "viewport": "360x844",
+      "category": "state",
+      "title": "Advanced data table rendered an empty body without an empty-state message",
+      "expected": "An empty dataset should produce a clear, accessible explanation in the table body.",
+      "actual": "With rows set to an empty array, the table showed headers and a blank body, giving no indication whether it was empty or still loading.",
+      "reproduction": [
+        "Open /resources/advanced-data-table/ at 360x844.",
+        "Set the live preview rows prop to an empty array.",
+        "Observe that the table body has no rows and no status message."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/state-captures/advanced-data-table-empty-360.png",
+      "rootCause": "The resource rendered only mapped records and had no zero-row or zero-filter-match state.",
+      "affectedFiles": [
+        "resources/blocks/advanced-data-table/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Render a polite live status for both empty input and filters that return no matches; add a real-browser state regression.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-044",
+      "severity": "medium",
+      "route": "/resources/kanban-board/",
+      "viewport": "360x844",
+      "category": "state",
+      "title": "Kanban board rendered no guidance when it had no columns",
+      "expected": "An empty board should explain that there are no tasks and how to start populating it.",
+      "actual": "With an empty columns array, the board rendered its title and a blank area without an empty-state message.",
+      "reproduction": [
+        "Open /resources/kanban-board/ at 360x844.",
+        "Set the live preview columns prop to an empty array.",
+        "Observe that the board has no lanes and no status message."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/state-captures/kanban-board-empty-360.png",
+      "rootCause": "The board mapped its columns directly and provided no zero-column state.",
+      "affectedFiles": [
+        "resources/blocks/kanban-board/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Render a polite, responsive empty-state explanation and cover it with a real-browser state regression.",
+      "fixCommit": null,
       "status": "fixed-awaiting-deployed-verification"
     }
   ]

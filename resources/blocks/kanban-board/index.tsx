@@ -33,21 +33,27 @@ export function KanbanBoard({ variant = 'quiet', title='Sample task board', colu
   return (
     <div className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border overflow-x-auto transition-colors ${bg}`}>
       <h3 className="text-sm font-semibold mb-6">{title}</h3>
-      <div className="grid grid-cols-1 @md:grid-cols-3 gap-4">
-        {columns.map((col) => (
-          <div key={col.title} className={`p-4 rounded-[var(--tess-radius-xl,8px)] border flex flex-col gap-3 ${lane}`}>
-            <div className="flex items-center justify-between text-xs font-semibold mb-1">
-              <span>{col.title}</span>
-              <span className="font-mono text-[10px] opacity-60">({col.tasks.length})</span>
+      {columns.length === 0 ? (
+        <div role="status" aria-live="polite" className="rounded border border-dashed border-neutral-300 p-8 text-center text-sm opacity-75 dark:border-neutral-700">
+          No tasks yet. Add a column or task to get started.
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 @md:grid-cols-3 gap-4">
+          {columns.map((col) => (
+            <div key={col.title} className={`p-4 rounded-[var(--tess-radius-xl,8px)] border flex flex-col gap-3 ${lane}`}>
+              <div className="flex items-center justify-between text-xs font-semibold mb-1">
+                <span>{col.title}</span>
+                <span className="font-mono text-[10px] opacity-60">({col.tasks.length})</span>
+              </div>
+              {col.tasks.map((task) => (
+                <button type="button" key={task} aria-pressed={completed.includes(task)} onClick={()=>setCompleted(previous=>previous.includes(task)?previous.filter(value=>value!==task):[...previous,task])} className={`p-3 text-left rounded-[var(--tess-radius-lg,8px)] border text-xs ${card}`}>
+                  <span className="font-medium">{completed.includes(task)?'✓ ':''}{task}</span>
+                </button>
+              ))}
             </div>
-            {col.tasks.map((task) => (
-              <button type="button" key={task} aria-pressed={completed.includes(task)} onClick={()=>setCompleted(previous=>previous.includes(task)?previous.filter(value=>value!==task):[...previous,task])} className={`p-3 text-left rounded-[var(--tess-radius-lg,8px)] border text-xs ${card}`}>
-                <span className="font-medium">{completed.includes(task)?'✓ ':''}{task}</span>
-              </button>
-            ))}
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

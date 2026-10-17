@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "browserProject": "sites-chromium",
+  "findings": 0,
+  "viewport": "360x844",
+  "diagnostics": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "resources": [
+    {
+      "slug": "advanced-data-table",
+      "route": "/resources/advanced-data-table/",
+      "viewport": "360x844",
+      "emptyState": "PASS",
+      "largeData": "PASS",
+      "interaction": "PASS",
+      "screenshots": [
+        "audit/evidence/step-06/after/state-captures/advanced-data-table-empty-360.png",
+        "audit/evidence/step-06/after/state-captures/advanced-data-table-large-360.png"
+      ]
+    },
+    {
+      "slug": "kanban-board",
+      "route": "/resources/kanban-board/",
+      "viewport": "360x844",
+      "emptyState": "PASS",
+      "largeData": "PASS",
+      "interaction": "PASS",
+      "screenshots": [
+        "audit/evidence/step-06/after/state-captures/kanban-board-empty-360.png",
+        "audit/evidence/step-06/after/state-captures/kanban-board-large-360.png"
+      ]
+    }
+  ]
+}

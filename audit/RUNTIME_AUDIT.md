@@ -6,9 +6,9 @@ Machine-readable findings and their current status are in
 [`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
 published review version during the public-RC phase.
 
-**Current disposition:** 42 findings (6 High, 36 Medium); all recorded findings have local remediation and passed the final local browser certification. They remain open pending verification in a newly published review Site. This audit records local Worker-preview evidence only.
+**Current disposition:** 44 findings (6 High, 38 Medium); all recorded findings have local remediation and passed the final local browser certification. They remain open pending verification in a newly published review Site. This audit records local Worker-preview evidence only.
 
-The final `pnpm test:e2e` run passed: 73 regular browser tests, 11 explicitly skipped tests, and all 3 Sites Worker tests. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
+The final `pnpm test:e2e` run passed: 73 regular browser tests, 13 explicitly skipped tests, and all 4 Sites Worker tests. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Two additional Gold data-resource state fixtures passed with zero console errors, page errors, failed requests or HTTP errors. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
 ## HIGH
 
@@ -473,3 +473,19 @@ The first 324-resource all-variant attempt exposed a test-only iframe navigation
 race: it inspected the old document after the variant `src` changed. The test
 now waits for the preview frame's load event; the 12-resource regression passed
 with zero findings. That harness race is not counted as a product defect.
+
+### AUD-043 — Advanced data table had no empty or no-match state
+
+- Evidence: [`advanced-data-table-empty-360.png`](evidence/step-06/after/state-captures/advanced-data-table-empty-360.png); machine diagnostics and long/large-data interactions are in [`gold-resource-states-final.json`](evidence/step-06/results/gold-resource-states-final.json).
+- Reproduction: open `/resources/advanced-data-table/` at 360x844, pass an empty `rows` array, or filter a non-empty table to a value with no matches.
+- Root cause: the table mapped the filtered rows but rendered no row or status when the result count was zero.
+- Affected code: `resources/blocks/advanced-data-table/index.tsx`.
+- Remediation: render an accessible live status that distinguishes an empty dataset from a filter with no matches; exercise both states in the browser regression.
+
+### AUD-044 — Kanban board had no empty-board guidance
+
+- Evidence: [`kanban-board-empty-360.png`](evidence/step-06/after/state-captures/kanban-board-empty-360.png); machine diagnostics and long/large-data interactions are in [`gold-resource-states-final.json`](evidence/step-06/results/gold-resource-states-final.json).
+- Reproduction: open `/resources/kanban-board/` at 360x844 and pass an empty `columns` array.
+- Root cause: the board rendered its heading and an empty column grid with no explanation when the array was empty.
+- Affected code: `resources/blocks/kanban-board/index.tsx`.
+- Remediation: render a responsive, accessible empty-state message and cover it with a browser regression.

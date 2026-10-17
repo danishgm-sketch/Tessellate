@@ -26,6 +26,7 @@ export function AdvancedDataTable({ variant = 'quiet', title='Sample records', r
     { id: 2, name: 'editorial-hero', type: 'section', quality: 96, status: 'verified' },
     { id: 3, name: 'admin-console-shell', type: 'block', quality: 96, status: 'verified' },
   ];
+  const filteredRows = rows.filter((row) => `${row.name} ${row.type} ${row.status}`.toLowerCase().includes(query.toLowerCase()));
 
   const toggle = (id: number) => {
     setSelected((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]));
@@ -50,7 +51,7 @@ export function AdvancedDataTable({ variant = 'quiet', title='Sample records', r
             </tr>
           </thead>
           <tbody className="divide-y divide-neutral-200 dark:divide-neutral-800">
-            {rows.filter(row=>`${row.name} ${row.type} ${row.status}`.toLowerCase().includes(query.toLowerCase())).map((r) => (
+            {filteredRows.length > 0 ? filteredRows.map((r) => (
               <tr key={r.id} className="hover:bg-neutral-50 dark:hover:bg-neutral-900/40">
                 <td className="p-3">
                   <input
@@ -66,7 +67,13 @@ export function AdvancedDataTable({ variant = 'quiet', title='Sample records', r
                 <td className={`p-3 ${variant==='nocturne'?'text-emerald-300':'text-emerald-800'} font-bold`}>{r.quality}/100</td>
                 <td className="p-3 uppercase text-[10px]">{r.status}</td>
               </tr>
-            ))}
+            )) : (
+              <tr>
+                <td colSpan={5} className="p-6 text-center text-sm text-neutral-500">
+                  <p role="status" aria-live="polite">{rows.length === 0 ? 'No records to show.' : 'No records match this filter.'}</p>
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
