@@ -6,7 +6,7 @@ Machine-readable findings and their current status are in
 [`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
 published review version during the public-RC phase.
 
-**Current disposition:** 74 findings (14 High, 60 Medium). The Step 06 resource fixes and four Step 07 renderer/export fixes have local regression evidence. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited in the public-RC phase. PR CI passed on the pre-Step-07 baseline `dbc85c436047e0ae9c17896afd96722132b7ae58`; the new Step 07 changes are queued for CI. An earlier PR run exposed a race in the Gold test's loading-state check; the test now waits for the exact rendered resource node and variant.
+**Current disposition:** 75 findings (15 High, 60 Medium). The Step 06 resource fixes and five Step 07 renderer/export fixes have local regression evidence. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited in the public-RC phase. CI for the current head is pending. An earlier PR run exposed a race in the Gold test's loading-state check; the test now waits for the exact rendered resource node and variant.
 
 At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile browser tests passed, 51 tests were explicitly skipped by project scope, and all 23 Sites Worker tests passed. It included the expanded state and action regressions. The 11-case state matrix, exact-resource readiness check, dialog modal regression, Prompt Composer action regression, and 40 × 3 Axe matrix passed. The catalogue report covered 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covered 40 resources / 120 variants with zero findings. Existing state fixtures cover six Gold data resources; the expanded matrix covers array-driven resources at empty and 30–40 item counts, disabled Button/Input/Select, named loading/error states, long text, and fixed-slot partial data. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
@@ -115,6 +115,14 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Root cause: renderer and exporter had no canonical access to each resource's declared variant IDs.
 - Affected code: `scripts/generate-gold-artifacts.ts`, generated renderer/exporter metadata, `packages/renderer/src/node-renderer.tsx`, `packages/exporter/src/node-disk-resolver.ts`, and `packages/exporter/src/source-tree.ts`.
 - Remediation: generate variant declarations from each canonical resource manifest, render a visible non-substitution diagnostic in Workbench, and reject invalid exported variants with the accepted values. Deployed verification remains outstanding.
+
+### AUD-075 — Workbench dropped declared slot content when nested children existed
+
+- Evidence: the [before capture](evidence/step-07/before/resource-slot-child-lost.png) shows only the nested manifest node; the [fixed canvas capture](evidence/step-07/after/resource-slot-and-nested-children.png) and [Preview capture](evidence/step-07/after/preview-modal-slot-children.png) show both the declared slot content and nested node. The pre-fix renderer unit and Workbench browser tests failed; the fixed tests pass with no console errors or failed requests.
+- Reproduction: load a Workbench manifest whose `canvas-workspace-shell` has `slots.children` text plus a nested child node, then inspect the canvas and Preview modal.
+- Root cause: `NodeRenderer` resolved explicit children from `props.children` only, ignoring `slots.children` even when the resource contract allowed it.
+- Affected code: `packages/renderer/src/node-renderer.tsx`, `packages/renderer/src/__tests__/gold-registry.test.tsx`, and `tests/e2e/renderer-children-parity.spec.ts`.
+- Remediation: resolve the declared slot after prop children, enforce the resource child contract, and compose explicit content with nested nodes. Deployed verification remains outstanding. Fix commit: `37432376face72876ca66c2bc788be116bb377a7`.
 
 ## MEDIUM
 

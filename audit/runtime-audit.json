@@ -1772,6 +1772,34 @@
       "remediation": "Generate canonical variant-ID maps from all resource manifests, reject invalid variants in Workbench with a recoverable diagnostic, and fail export with the resource slug and accepted variants. Unit, export and real Workbench browser regressions cover the failure.",
       "fixCommit": "8b2cf2cd5cae1a0e87ae0e37e479b0b74ed5c2e8",
       "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-075",
+      "severity": "high",
+      "route": "/workbench and standalone React/Vite export",
+      "viewport": "1440x900",
+      "category": "data",
+      "title": "Workbench dropped declared resource slot content when nested manifest children existed",
+      "expected": "A declared resource children slot and nested ProjectNode children should both be represented in the rendered resource when the resource contract permits children.",
+      "actual": "Workbench showed the nested manifest node but omitted the content supplied through the resource's declared children slot.",
+      "reproduction": [
+        "Load a Workbench project whose canvas-workspace-shell has slots.children set to 'Content from declared resource slot' and a nested child node with 'Content from nested manifest node'.",
+        "Before the fix, only the nested node text appeared in the canvas and Preview modal.",
+        "After the fix, both the declared slot text and nested node text appear in the canvas and Preview modal."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-07/before/resource-slot-child-lost.png",
+      "screenshotAfter": "audit/evidence/step-07/after/resource-slot-and-nested-children.png",
+      "rootCause": "NodeRenderer read explicit child content only from node.props.children and did not use node.slots.children even when the canonical resource prop contract declared the children slot.",
+      "affectedFiles": [
+        "packages/renderer/src/node-renderer.tsx",
+        "packages/renderer/src/__tests__/gold-registry.test.tsx",
+        "tests/e2e/renderer-children-parity.spec.ts"
+      ],
+      "remediation": "Resolve explicit children from props.children first and then the declared slots.children value, enforce the Gold resource children contract, and compose explicit content with rendered nested nodes. Unit and real Workbench canvas/Preview tests cover both sources.",
+      "fixCommit": "37432376face72876ca66c2bc788be116bb377a7",
+      "status": "fixed-awaiting-deployed-verification"
     }
   ]
 }
