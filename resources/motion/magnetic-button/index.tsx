@@ -5,9 +5,10 @@ export type MagneticButtonVariant = 'quiet' | 'expressive' | 'nocturne';
 export interface MagneticButtonProps {
   variant?: MagneticButtonVariant;
   children?: React.ReactNode;
+  onAction?: () => void;
 }
 
-export function MagneticButton({ variant = 'quiet', children = 'Explore Interface System →' }: MagneticButtonProps) {
+export function MagneticButton({ variant = 'quiet', children = 'Explore Interface System →', onAction }: MagneticButtonProps) {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
 
   const btnClass =
@@ -33,13 +34,18 @@ export function MagneticButton({ variant = 'quiet', children = 'Explore Interfac
   return (
     <div className="p-8 flex items-center justify-center">
       <button
+        type="button"
+        onClick={onAction}
+        disabled={!onAction}
+        aria-describedby={!onAction ? 'magnetic-button-action-help' : undefined}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ transform: `translate3d(${offset.x}px, ${offset.y}px, 0)` }}
-        className={`px-6 py-3 rounded-[var(--tess-radius-xl,8px)] text-xs transition-transform duration-150 ease-out select-none motion-reduce:transform-none ${btnClass}`}
+        className={`px-6 py-3 rounded-[var(--tess-radius-xl,8px)] text-xs transition-transform duration-150 ease-out select-none motion-reduce:transform-none disabled:cursor-not-allowed disabled:opacity-60 ${btnClass}`}
       >
         {children}
       </button>
+      {!onAction && <span id="magnetic-button-action-help" className="sr-only">Connect an action before enabling this button.</span>}
     </div>
   );
 }

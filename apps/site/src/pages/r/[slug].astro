@@ -42,7 +42,7 @@ if(!componentName)throw new Error(`No component export in ${manifest.slug}`);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{manifest.name} — Tessellate Resource</title>
+    <title>{`${manifest.name} (@tess/${manifest.slug}) — Tessellate Resource`}</title>
     <meta name="description" content={manifest.description} />
   </head>
   <body class="bg-[var(--tess-canvas,#F4F2ED)] text-[var(--tess-ink,#111217)] antialiased min-h-screen flex flex-col font-sans">
@@ -61,13 +61,13 @@ if(!componentName)throw new Error(`No component export in ${manifest.slug}`);
       </nav>
 
       <!-- Resource Header Title & Description -->
-      <div class="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div class="space-y-2 max-w-3xl">
-          <div class="flex flex-wrap items-center gap-2.5">
-            <h1 class="text-3xl font-bold tracking-tight text-[var(--tess-ink,#111217)]">
-              {manifest.name}
-            </h1>
-            <span class="px-2 py-0.5 rounded text-xs font-mono font-semibold bg-[var(--tess-canvas-strong,#ECE9E2)] text-[var(--tess-ink-secondary,#62666F)]">
+      <header class="mb-8 grid min-w-0 grid-cols-1 items-end gap-4 xl:grid-cols-[minmax(0,1fr)_auto]">
+        <div class="min-w-0 max-w-3xl space-y-2">
+          <h1 class="break-words text-3xl font-bold tracking-tight text-[var(--tess-ink,#111217)]">
+            {manifest.name}
+          </h1>
+          <div class="flex min-w-0 flex-wrap items-center gap-2.5">
+            <span class="max-w-full break-all px-2 py-0.5 rounded text-xs font-mono font-semibold bg-[var(--tess-canvas-strong,#ECE9E2)] text-[var(--tess-ink-secondary,#62666F)]">
               @tess/{manifest.slug}
             </span>
             <span class="px-2 py-0.5 rounded text-xs font-mono font-semibold bg-[var(--tess-canvas-strong,#ECE9E2)] text-[var(--tess-ink-secondary,#62666F)]">
@@ -92,19 +92,15 @@ if(!componentName)throw new Error(`No component export in ${manifest.slug}`);
         </div>
 
         <!-- Tags -->
-        <div class="flex flex-wrap gap-1.5 shrink-0">
-          {manifest.tags.map((tag) => (
-            <span class="px-2 py-0.5 rounded text-xs font-mono bg-white border border-[var(--tess-hairline,#D9D6CF)] text-[var(--tess-ink-secondary,#62666F)]">
-              #{tag}
-            </span>
-          ))}
-        </div>
-      </div>
+        <ul class="flex min-w-0 max-w-full flex-wrap gap-1.5 xl:justify-end">
+          {manifest.tags.map((tag) => <li class="max-w-full break-all px-2 py-0.5 rounded text-xs font-mono bg-white border border-[var(--tess-hairline,#D9D6CF)] text-[var(--tess-ink-secondary,#62666F)]">#{tag}</li>)}
+        </ul>
+      </header>
 
       <!-- 72/28 Desktop Layout Split -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div class="grid min-w-0 grid-cols-1 items-start gap-8 xl:grid-cols-12">
         <!-- Left: 72% (approx 8.5 of 12 cols, or 8/12 = 67% / 9/12 = 75%) -->
-        <div class="lg:col-span-8 xl:col-span-8 flex flex-col gap-8">
+        <div class="min-w-0 flex flex-col gap-8 xl:col-span-8">
           <!-- Live Preview Frame -->
           <ResourcePreviewFrame manifest={manifest} client:load />
 
@@ -113,7 +109,7 @@ if(!componentName)throw new Error(`No component export in ${manifest.slug}`);
         </div>
 
         <!-- Right: 28% Sticky Inspector (4 cols) -->
-        <div class="lg:col-span-4 xl:col-span-4">
+        <div class="min-w-0 xl:col-span-4">
           <ResourceInspector manifest={manifest} componentName={componentName} client:load />
         </div>
       </div>

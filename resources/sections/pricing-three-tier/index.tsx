@@ -4,9 +4,10 @@ export type PricingThreeTierVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface PricingThreeTierProps {
   variant?: PricingThreeTierVariant;
+  onSelectPlan?: (plan: string) => void;
 }
 
-export function PricingThreeTier({ variant = 'quiet' }: PricingThreeTierProps) {
+export function PricingThreeTier({ variant = 'quiet', onSelectPlan }: PricingThreeTierProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-900 border-neutral-200';
   let card = 'bg-white border-neutral-200';
   let featuredCard = 'bg-white border-neutral-900 shadow-lg ring-1 ring-neutral-900';
@@ -45,12 +46,16 @@ export function PricingThreeTier({ variant = 'quiet' }: PricingThreeTierProps) {
               </div>
               <button
                 type="button"
-                className={`w-full py-3 rounded-[var(--tess-radius-lg,8px)] text-xs font-semibold uppercase tracking-wider transition-colors ${
+                onClick={() => onSelectPlan?.(t.name)}
+                disabled={!onSelectPlan}
+                aria-describedby={!onSelectPlan ? `pricing-${t.name.toLowerCase().replaceAll(' ', '-')}-action-help` : undefined}
+                className={`w-full py-3 rounded-[var(--tess-radius-lg,8px)] text-xs font-semibold uppercase tracking-wider transition-colors disabled:cursor-not-allowed disabled:opacity-60 ${
                   t.featured ? 'bg-neutral-900 text-white dark:bg-white dark:text-neutral-900' : 'border hover:bg-neutral-100 dark:hover:bg-neutral-800'
                 }`}
               >
                 Get Started
               </button>
+              {!onSelectPlan && <span id={`pricing-${t.name.toLowerCase().replaceAll(' ', '-')}-action-help`} className="sr-only">Connect a plan selection action before enabling checkout.</span>}
             </div>
           ))}
         </div>

@@ -35,14 +35,14 @@ export function CounterTypography({
 
   return (
     <div className={`p-8 md:p-12 rounded-xl border max-w-4xl mx-auto space-y-4 transition-colors ${containerBg}`}>
-      <div className="flex items-baseline gap-2">
+      <div className="flex flex-wrap items-baseline gap-2">
         <span className="text-6xl md:text-8xl font-black tracking-tighter tabular-nums leading-none">
           {value}
         </span>
         <span className="text-3xl md:text-5xl font-bold text-neutral-400">
           {unit}
         </span>
-        <span className={`ml-4 text-xs font-mono font-bold px-2 py-0.5 rounded border ${deltaColor}`}>
+        <span className={`basis-full text-xs font-mono font-bold px-2 py-0.5 rounded border sm:ml-4 sm:basis-auto ${deltaColor}`}>
           {deltaText}
         </span>
       </div>

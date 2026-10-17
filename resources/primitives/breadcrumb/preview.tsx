@@ -7,8 +7,8 @@ export function BreadcrumbPreview() {
       <Breadcrumb
         variant="expressive"
         items={[
-          { label: 'Workspaces', href: '#' },
-          { label: 'Telemetry Hub', href: '#' },
+          { label: 'Workspaces' },
+          { label: 'Telemetry Hub' },
           { label: 'Analytics Screen', current: true },
         ]}
       />

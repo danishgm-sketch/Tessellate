@@ -5,7 +5,7 @@ export type MinimalTopNavVariant = 'quiet' | 'expressive' | 'nocturne';
 export interface MinimalTopNavProps {
   variant?: MinimalTopNavVariant;
   brand?: React.ReactNode;
-  links?: Array<{ label: string; href: string }>;
+  links?: Array<{ label: string; href?: string }>;
   actions?: React.ReactNode;
   orientation?: 'horizontal'|'vertical';
 }
@@ -14,9 +14,9 @@ export function MinimalTopNav({
   variant = 'quiet',
   brand = 'Example workspace',
   links = [
-    { label: 'Overview', href: '#overview' },
-    { label: 'People', href: '#people' },
-    { label: 'Settings', href: '#settings' },
+    { label: 'Overview' },
+    { label: 'People' },
+    { label: 'Settings' },
   ],
   actions,
   orientation,
@@ -41,9 +41,9 @@ export function MinimalTopNav({
           </div>
           <nav aria-label="Product screens" className={`flex flex-wrap gap-3 text-xs ${orientation==='vertical' ? '@3xl:flex-col' : ''}`}>
             {links.map((l) => (
-              <a key={l.label} href={l.href} className={`transition-colors ${linkStyle}`}>
-                {l.label}
-              </a>
+              l.href
+                ? <a key={l.label} href={l.href} className={`transition-colors ${linkStyle}`}>{l.label}</a>
+                : <span key={l.label} className={`transition-colors ${linkStyle}`}>{l.label}</span>
             ))}
           </nav>
         </div>

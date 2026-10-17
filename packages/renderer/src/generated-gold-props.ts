@@ -116,7 +116,9 @@ export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = {
     "activeId"
   ],
   "app-sidebar-expanded": [
-    "variant"
+    "variant",
+    "workspaceLinks",
+    "settingsLinks"
   ],
   "approval-queue": [
     "variant"
@@ -186,7 +188,10 @@ export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = {
     "items"
   ],
   "breadcrumb-header": [
-    "variant"
+    "variant",
+    "items",
+    "onExport",
+    "onSave"
   ],
   "bubble-plot": [
     "variant"
@@ -516,7 +521,8 @@ export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = {
     "children"
   ],
   "empty-workspace": [
-    "variant"
+    "variant",
+    "onCreateProject"
   ],
   "entity-list": [
     "variant"
@@ -632,13 +638,16 @@ export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = {
     "variant"
   ],
   "floating-nav": [
-    "variant"
+    "variant",
+    "links",
+    "onOpen"
   ],
   "footer-developer": [
     "variant"
   ],
   "footer-minimal": [
-    "variant"
+    "variant",
+    "links"
   ],
   "footer-newsletter": [
     "variant"
@@ -650,7 +659,8 @@ export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = {
     "links"
   ],
   "footer-sitemap": [
-    "variant"
+    "variant",
+    "columns"
   ],
   "funnel-chart": [
     "variant"
@@ -853,10 +863,13 @@ export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = {
   ],
   "magnetic-button": [
     "variant",
-    "children"
+    "children",
+    "onAction"
   ],
   "marketing-nav-cta": [
-    "variant"
+    "variant",
+    "links",
+    "onCtaClick"
   ],
   "marquee-typography": [
     "items",
@@ -875,7 +888,9 @@ export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = {
     "text"
   ],
   "mega-nav": [
-    "variant"
+    "variant",
+    "links",
+    "onLaunch"
   ],
   "messaging-shell": [
     "variant"
@@ -911,7 +926,8 @@ export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = {
     "variant"
   ],
   "mobile-drawer-nav": [
-    "variant"
+    "variant",
+    "links"
   ],
   "monospace-data-headline": [
     "systemTag",
@@ -1058,7 +1074,8 @@ export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = {
     "onConsultation"
   ],
   "pricing-three-tier": [
-    "variant"
+    "variant",
+    "onSelectPlan"
   ],
   "pricing-toggle": [
     "variant"
@@ -1151,7 +1168,8 @@ export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = {
   ],
   "responsive-app-shell": [
     "variant",
-    "children"
+    "children",
+    "navigation"
   ],
   "role-permissions": [
     "variant"
@@ -1459,7 +1477,9 @@ export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = {
     "variant"
   ],
   "transparent-solid-nav": [
-    "variant"
+    "variant",
+    "links",
+    "onDocsClick"
   ],
   "treemap": [
     "variant"

@@ -4,9 +4,10 @@ export type EmptyWorkspaceVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface EmptyWorkspaceProps {
   variant?: EmptyWorkspaceVariant;
+  onCreateProject?: () => void;
 }
 
-export function EmptyWorkspace({ variant = 'quiet' }: EmptyWorkspaceProps) {
+export function EmptyWorkspace({ variant = 'quiet', onCreateProject }: EmptyWorkspaceProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';
 
   if (variant === 'expressive') {
@@ -24,9 +25,10 @@ export function EmptyWorkspace({ variant = 'quiet' }: EmptyWorkspaceProps) {
       <p className="text-xs opacity-75 max-w-sm mb-6">
         Start by creating a new composition or choose from 12 pre-built blueprints.
       </p>
-      <button type="button" className="px-5 py-2.5 rounded-[var(--tess-radius-lg,8px)] bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold">
+      <button type="button" onClick={onCreateProject} disabled={!onCreateProject} aria-describedby={!onCreateProject ? 'empty-workspace-action-help' : undefined} className="px-5 py-2.5 rounded-[var(--tess-radius-lg,8px)] bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 text-xs font-semibold disabled:cursor-not-allowed disabled:opacity-60">
         + Create New Project
       </button>
+      {!onCreateProject && <span id="empty-workspace-action-help" className="sr-only">Connect a project creation action before enabling this control.</span>}
     </div>
   );
 }

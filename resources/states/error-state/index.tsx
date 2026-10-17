@@ -58,11 +58,15 @@ export function ErrorState({
 
       <div className="pt-2 flex gap-3">
         <button
+          type="button"
           onClick={onRetry}
-          className="px-4 py-2 text-xs font-semibold rounded-[var(--tess-radius-lg,8px)] bg-red-600 text-white hover:bg-red-700"
+          disabled={!onRetry}
+          aria-describedby={!onRetry ? 'error-state-retry-help' : undefined}
+          className="px-4 py-2 text-xs font-semibold rounded-[var(--tess-radius-lg,8px)] bg-red-600 text-white hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
         >
           Retry Operation
         </button>
+        {!onRetry && <span id="error-state-retry-help" className="sr-only">Retry is unavailable until the operation is connected.</span>}
       </div>
 
       {children}

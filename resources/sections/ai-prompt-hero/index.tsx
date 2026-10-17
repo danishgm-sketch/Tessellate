@@ -35,10 +35,10 @@ export function AiPromptHero({
   }
 
   return (
-    <section className={`relative w-full py-24 sm:py-32 px-6 sm:px-12 border-b transition-colors ${bg}`}>
-      <div className="max-w-3xl mx-auto text-center flex flex-col items-center">
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-4">{headline}</h1>
-        <p className="text-base sm:text-lg opacity-75 max-w-xl mb-10">{subheadline}</p>
+    <section className={`relative w-full min-w-0 py-24 sm:py-32 px-4 sm:px-12 border-b transition-colors ${bg}`}>
+      <div className="mx-auto flex w-full min-w-0 max-w-3xl flex-col items-center text-center">
+        <h1 className="mb-4 max-w-full break-words text-3xl font-bold tracking-tight sm:text-5xl">{headline}</h1>
+        <p className="mb-10 w-full min-w-0 max-w-xl break-words text-base opacity-75 sm:text-lg">{subheadline}</p>
 
         <div className={`w-full rounded-2xl border p-4 text-left transition-all ${box}`}>
           <textarea
@@ -46,13 +46,13 @@ export function AiPromptHero({
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="E.g. Create a healthcare admin console with patient timeline and audit log..."
-            className="w-full bg-transparent text-sm sm:text-base outline-none resize-none placeholder:text-neutral-400"
+            className="block w-full min-w-0 max-w-full bg-transparent text-sm sm:text-base outline-none resize-none placeholder:text-neutral-400"
           />
-          <div className="flex items-center justify-between pt-3 border-t border-neutral-100 dark:border-neutral-800">
-            <span className="text-xs font-mono opacity-60">Engine: Gemini 2.5 Flash / BYO Key</span>
+          <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-neutral-100 dark:border-neutral-800">
+            <span className="min-w-0 flex-1 break-words text-xs font-mono opacity-60">Engine: Gemini 2.5 Flash / BYO Key</span>
             <button
               type="button"
-              className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all ${btn}`}
+              className={`shrink-0 px-4 py-2 rounded-lg text-xs font-semibold transition-all ${btn}`}
             >
               Synthesize Blueprint →
             </button>
@@ -65,7 +65,7 @@ export function AiPromptHero({
               key={p}
               type="button"
               onClick={() => setPrompt(p)}
-              className="px-3 py-1 rounded-full bg-neutral-200/60 dark:bg-neutral-800 opacity-80 hover:opacity-100 transition-opacity truncate max-w-xs"
+              className="max-w-full whitespace-normal break-words rounded-full bg-neutral-200/60 px-3 py-1 text-left opacity-80 transition-opacity hover:opacity-100 dark:bg-neutral-800 sm:max-w-xs"
             >
               {p}
             </button>
