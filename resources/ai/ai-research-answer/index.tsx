@@ -28,7 +28,7 @@ export function AIResearchAnswer({ variant = 'quiet' }: AIResearchAnswerProps) {
           <h4 className="text-sm font-semibold tracking-tight">Synthesis: Micro-frontend vs Monolith Export</h4>
           <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Synthesized from 12 architectural repository documents</p>
         </div>
-        <span className="text-xs font-mono font-medium text-emerald-500 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
+        <span className="text-xs font-mono font-medium text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
           Confidence: 98%
         </span>
       </div>

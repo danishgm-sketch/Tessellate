@@ -82,7 +82,10 @@
   },
   "preview": {
     "component": "InputPreview",
-    "defaultProps": {},
+      "defaultProps": {
+        "label": "Full name",
+        "placeholder": "Ada Lovelace"
+      },
     "viewport": 1440
   },
   "slots": [

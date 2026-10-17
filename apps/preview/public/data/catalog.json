@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-10-17T12:37:42.829Z",
+  "generatedAt": "2026-10-17T12:59:05.592Z",
   "count": 324,
   "resources": [
     {
@@ -42634,7 +42634,10 @@
       },
       "preview": {
         "component": "InputPreview",
-        "defaultProps": {},
+        "defaultProps": {
+          "label": "Full name",
+          "placeholder": "Ada Lovelace"
+        },
         "viewport": 1440
       },
       "slots": [

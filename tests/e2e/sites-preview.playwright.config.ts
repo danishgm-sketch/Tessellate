@@ -2,7 +2,12 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: '.',
-  testMatch: ['gold-resource-certification.spec.ts', 'catalog-resource-render.spec.ts', 'gold-resource-state-certification.spec.ts'],
+  testMatch: [
+    'gold-resource-certification.spec.ts',
+    'catalog-resource-render.spec.ts',
+    'gold-resource-state-certification.spec.ts',
+    'gold-resource-accessibility-certification.spec.ts',
+  ],
   fullyParallel: false,
   workers: 1,
   reporter: 'list',

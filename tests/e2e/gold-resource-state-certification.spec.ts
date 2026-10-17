@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { expect, test } from '@playwright/test';
 
@@ -30,6 +30,15 @@ async function updatePreviewProps(
     // PreviewHost validates the sender against window.parent and document.referrer.
     previewWindow?.postMessage({ type: 'TESSELLATE_PREVIEW_UPDATE', props: nextProps }, '*');
   }, props);
+}
+
+async function preserveBaselineScreenshot(
+  page: import('@playwright/test').Page,
+  screenshotPath: string
+) {
+  if (existsSync(screenshotPath)) return;
+  mkdirSync(path.dirname(screenshotPath), { recursive: true });
+  await page.screenshot({ path: screenshotPath, animations: 'disabled' });
 }
 
 test('Gold data resources handle empty states, large datasets, long content, and interaction', async ({
@@ -121,9 +130,8 @@ test('Gold data resources handle empty states, large datasets, long content, and
   const timeline = page.frameLocator('iframe[title$=" live preview"]');
   await expect(timeline.locator('.tess-screen')).toHaveCount(1);
   await updatePreviewProps(timelineIframe, { title: 'Employee activity', events: [] });
-  const timelineEmptyBeforeDir = path.resolve(process.cwd(), 'audit/evidence/step-06/before/state-captures');
-  mkdirSync(timelineEmptyBeforeDir, { recursive: true });
-  await page.screenshot({ path: path.join(timelineEmptyBeforeDir, 'timeline-empty-360-before.png'), animations: 'disabled' });
+  const timelineEmptyBeforePath = path.resolve(process.cwd(), 'audit/evidence/step-06/before/state-captures/timeline-empty-360-before.png');
+  await preserveBaselineScreenshot(page, timelineEmptyBeforePath);
   await expect(timeline.getByRole('status')).toHaveText('No activity to show yet.');
   const timelineEmptyScreenshot = path.join(evidenceDir, 'timeline-empty-360.png');
   await page.screenshot({ path: timelineEmptyScreenshot, animations: 'disabled' });
@@ -153,9 +161,8 @@ test('Gold data resources handle empty states, large datasets, long content, and
   const kpi = page.frameLocator('iframe[title$=" live preview"]');
   await expect(kpi.locator('.tess-screen')).toHaveCount(1);
   await updatePreviewProps(kpiIframe, { title: 'People overview', cards: [] });
-  const kpiEmptyBeforeDir = path.resolve(process.cwd(), 'audit/evidence/step-06/before/state-captures');
-  mkdirSync(kpiEmptyBeforeDir, { recursive: true });
-  await page.screenshot({ path: path.join(kpiEmptyBeforeDir, 'dashboard-kpi-grid-empty-360-before.png'), animations: 'disabled' });
+  const kpiEmptyBeforePath = path.resolve(process.cwd(), 'audit/evidence/step-06/before/state-captures/dashboard-kpi-grid-empty-360-before.png');
+  await preserveBaselineScreenshot(page, kpiEmptyBeforePath);
   await expect(kpi.getByRole('status')).toHaveText('No metrics to show yet.');
   const kpiEmptyScreenshot = path.join(evidenceDir, 'dashboard-kpi-grid-empty-360.png');
   await page.screenshot({ path: kpiEmptyScreenshot, animations: 'disabled' });
@@ -197,9 +204,8 @@ test('Gold data resources handle empty states, large datasets, long content, and
   const notifications = page.frameLocator('iframe[title$=" live preview"]');
   await expect(notifications.locator('.tess-screen')).toHaveCount(1);
   await updatePreviewProps(notificationIframe, { title: 'Team updates', events: [] });
-  const notificationEmptyBeforeDir = path.resolve(process.cwd(), 'audit/evidence/step-06/before/state-captures');
-  mkdirSync(notificationEmptyBeforeDir, { recursive: true });
-  await page.screenshot({ path: path.join(notificationEmptyBeforeDir, 'notification-centre-empty-360-before.png'), animations: 'disabled' });
+  const notificationEmptyBeforePath = path.resolve(process.cwd(), 'audit/evidence/step-06/before/state-captures/notification-centre-empty-360-before.png');
+  await preserveBaselineScreenshot(page, notificationEmptyBeforePath);
   await expect(notifications.getByRole('status')).toHaveText('No notifications yet.');
   const markAllRead = notifications.getByRole('button', { name: 'Mark all as read' });
   await expect(markAllRead).toBeDisabled();
@@ -234,9 +240,8 @@ test('Gold data resources handle empty states, large datasets, long content, and
   const chart = page.frameLocator('iframe[title$=" live preview"]');
   await expect(chart.locator('.tess-screen')).toHaveCount(1);
   await updatePreviewProps(chartIframe, { title: 'People onboarding activity', data: [] });
-  const chartEmptyBeforeDir = path.resolve(process.cwd(), 'audit/evidence/step-06/before/state-captures');
-  mkdirSync(chartEmptyBeforeDir, { recursive: true });
-  await page.screenshot({ path: path.join(chartEmptyBeforeDir, 'time-series-chart-empty-360-before.png'), animations: 'disabled' });
+  const chartEmptyBeforePath = path.resolve(process.cwd(), 'audit/evidence/step-06/before/state-captures/time-series-chart-empty-360-before.png');
+  await preserveBaselineScreenshot(page, chartEmptyBeforePath);
   await expect(chart.getByRole('status')).toContainText('No time-series data available for this period.');
   await expect(chart.getByText('No data yet', { exact: true })).toBeVisible();
   const chartEmptyScreenshot = path.join(evidenceDir, 'time-series-chart-empty-360.png');

@@ -9,6 +9,7 @@ export interface FadeUpRevealProps {
 
 export function FadeUpReveal({ variant = 'quiet', children }: FadeUpRevealProps) {
   const [revealed, setRevealed] = useState(true);
+  const previewBg = variant === 'nocturne' ? 'bg-[#0B0D10] text-white' : 'bg-[#FAF9F6] text-neutral-900';
 
   const cardBg =
     variant === 'nocturne'
@@ -25,7 +26,7 @@ export function FadeUpReveal({ variant = 'quiet', children }: FadeUpRevealProps)
       : 'transition-all duration-300 ease-linear';
 
   return (
-    <div className="w-full flex flex-col gap-4">
+    <div className={`w-full flex flex-col gap-4 ${previewBg}`}>
       <div className="flex justify-end">
         <button
           onClick={() => {

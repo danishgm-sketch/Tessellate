@@ -47,10 +47,10 @@ export function FeatureMatrix({ variant = 'quiet', title='Example capability mat
               {rows.map((r) => (
                 <tr key={r.capability} className="hover:bg-neutral-50 dark:hover:bg-neutral-900/40">
                   <td className="p-4 font-semibold">{r.capability}</td>
-                  <td className="p-4 text-emerald-600 dark:text-emerald-400 font-mono">{r.primitives}</td>
-                  <td className="p-4 text-emerald-600 dark:text-emerald-400 font-mono">{r.shells}</td>
-                  <td className="p-4 text-emerald-600 dark:text-emerald-400 font-mono">{r.sections}</td>
-                  <td className="p-4 text-emerald-600 dark:text-emerald-400 font-mono">{r.blocks}</td>
+                  <td className="p-4 text-emerald-800 dark:text-emerald-300 font-mono">{r.primitives}</td>
+                  <td className="p-4 text-emerald-800 dark:text-emerald-300 font-mono">{r.shells}</td>
+                  <td className="p-4 text-emerald-800 dark:text-emerald-300 font-mono">{r.sections}</td>
+                  <td className="p-4 text-emerald-800 dark:text-emerald-300 font-mono">{r.blocks}</td>
                 </tr>
               ))}
             </tbody>
