@@ -9,6 +9,8 @@ export interface FadeUpRevealProps {
 
 export function FadeUpReveal({ variant = 'quiet', children }: FadeUpRevealProps) {
   const [revealed, setRevealed] = useState(true);
+  const [motionStatus, setMotionStatus] = useState('');
+  const transitionDuration = variant === 'expressive' ? 700 : variant === 'nocturne' ? 500 : 300;
   const previewBg = variant === 'nocturne' ? 'bg-[#0B0D10] text-white' : 'bg-[#FAF9F6] text-neutral-900';
 
   const cardBg =
@@ -30,14 +32,22 @@ export function FadeUpReveal({ variant = 'quiet', children }: FadeUpRevealProps)
       <div className="flex justify-end">
         <button
           onClick={() => {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+              setMotionStatus('Entrance animation skipped because reduced motion is enabled.');
+              return;
+            }
+            setMotionStatus('');
             setRevealed(false);
-            setTimeout(() => setRevealed(true), 50);
+            // Let the exit transition finish before replaying the entrance. A
+            // 50 ms reset reversed the transition before it became visible.
+            setTimeout(() => setRevealed(true), transitionDuration + 120);
           }}
           className="text-xs px-3 py-1 rounded border border-neutral-200 dark:border-neutral-800 text-[var(--tess-ink-muted,#62666F)] hover:text-current"
         >
           Replay Entrance
         </button>
       </div>
+      {motionStatus && <p role="status" className="text-xs text-[var(--tess-ink-muted,#62666F)]">{motionStatus}</p>}
 
       <div
         className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border ${cardBg} ${transitionClass} motion-reduce:transition-none motion-reduce:transform-none ${

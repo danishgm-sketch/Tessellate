@@ -272,7 +272,16 @@ test('Gold resources render at every certified width and each declared variant',
                   record.keyboard.visibleResponse = true;
                 } else if (resource.slug === 'fade-up-reveal') {
                   await expect(fadeRevealCard).not.toBeNull();
-                  await expect.poll(() => fadeRevealCard!.evaluate((element) => Number(getComputedStyle(element).opacity))).toBeLessThan(1);
+                  await expect.poll(() => fadeRevealCard!.evaluate((element) => element.classList.contains('opacity-0'))).toBe(true);
+                  await frame.locator('body').evaluate(() => new Promise((resolve) => window.setTimeout(resolve, 350)));
+                  await expect.poll(() => fadeRevealCard!.evaluate((element) => Number(getComputedStyle(element).opacity))).toBeLessThan(0.05);
+                  await expect.poll(() => fadeRevealCard!.evaluate((element) => element.classList.contains('opacity-100'))).toBe(true);
+                  await expect.poll(() => fadeRevealCard!.evaluate((element) => Number(getComputedStyle(element).opacity))).toBe(1);
+                  await page.emulateMedia({ reducedMotion: 'reduce' });
+                  await firstButton.press('Enter');
+                  await expect(frame.getByRole('status')).toHaveText('Entrance animation skipped because reduced motion is enabled.');
+                  await expect.poll(() => fadeRevealCard!.evaluate((element) => Number(getComputedStyle(element).opacity))).toBe(1);
+                  await page.emulateMedia({ reducedMotion: 'no-preference' });
                   record.keyboard.visibleResponse = true;
                 } else {
                   const expectedResponse: Record<string, string> = {
