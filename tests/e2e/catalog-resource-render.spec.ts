@@ -25,6 +25,13 @@ if (requestedSlugs && requestedSlugs.some((slug) => !resources.some((resource) =
   throw new Error(`Unknown resource slug(s): ${missing.join(', ')}.`);
 }
 
+async function waitForActualResource(frame: import('@playwright/test').FrameLocator, slug: string, variantId?: string) {
+  const resourceNode = frame.locator(`[data-node-id="preview-${slug}"]`);
+  await expect(resourceNode).toHaveCount(1, { timeout: 15000 });
+  if (variantId) await expect(resourceNode).toHaveAttribute('data-resource-variant', variantId, { timeout: 15000 });
+  await expect(frame.getByText('Loading the actual resource…', { exact: true })).toHaveCount(0, { timeout: 15000 });
+}
+
 test('all catalogue resources render at every certified width in the Sites Worker', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'sites-chromium', 'This matrix runs against the Sites Worker preview boundary.');
   test.setTimeout(30 * 60 * 1000);
@@ -68,11 +75,22 @@ test('all catalogue resources render at every certified width in the Sites Worke
     if (owner) pendingByRecord.get(owner)?.delete(request);
     const failure = request.failure()?.errorText ?? 'unknown failure';
     const requestGeneration = requestGenerations.get(request);
-    if (failure === 'net::ERR_ABORTED' && requestGeneration !== undefined && requestGeneration < operationGeneration) {
+    const abortedPreviewNavigation = failure === 'net::ERR_ABORTED'
+      && request.isNavigationRequest()
+      && (() => {
+        try {
+          const frame = request.frame();
+          const url = new URL(request.url());
+          return frame.parentFrame() === page.mainFrame() && ['/preview', '/preview/'].includes(url.pathname);
+        } catch {
+          return false;
+        }
+      })();
+    if (failure === 'net::ERR_ABORTED' && requestGeneration !== undefined && requestGeneration < operationGeneration && abortedPreviewNavigation) {
       owner?.cancelledRequests.push({
         method: request.method(),
         url: request.url(),
-        reason: operationReasons.get(requestGeneration + 1) ?? 'The certification test explicitly replaced the prior preview operation.',
+        reason: operationReasons.get(requestGeneration + 1) ?? 'The next resource route replaced the isolated preview document.',
       });
       return;
     }
@@ -111,6 +129,7 @@ test('all catalogue resources render at every certified width in the Sites Worke
         }
         const frame = page.frameLocator('iframe[title$=" live preview"]');
         await expect(frame.locator('.tess-screen')).toHaveCount(1, { timeout: 15000 });
+        await waitForActualResource(frame, resource.slug);
         if (resource.variants.length === 0) record.findings.push({ type: 'preview-error', detail: 'Resource has no declared variant.' });
         for (const variant of resource.variants) {
           const variantButton = page.getByRole('button', { name: variant.name, exact: true });
@@ -126,9 +145,13 @@ test('all catalogue resources render at every certified width in the Sites Worke
           const previewFrame = await iframeHandle?.contentFrame();
           await previewFrame?.waitForLoadState('load', { timeout: 15000 });
           await expect(frame.locator('.tess-screen')).toHaveCount(1, { timeout: 15000 });
+          await waitForActualResource(frame, resource.slug, variant.id);
           const variantText = await frame.locator('body').innerText();
           if (/Preview failed:|missing-resource-recovery|No component registered|Loading the actual resource/i.test(variantText)) {
             record.findings.push({ type: 'preview-error', detail: variantText.slice(0, 400), variant: variant.id });
+            const screenshotPath = path.join(outputDir, `${resource.slug}-${variant.id}-preview-error.png`);
+            await page.screenshot({ path: screenshotPath, animations: 'disabled' });
+            record.screenshots.push(path.relative(process.cwd(), screenshotPath).replaceAll('\\', '/'));
           }
           const variantDimensions = await frame.locator('html').evaluate((html) => ({ clientWidth: html.clientWidth, scrollWidth: html.scrollWidth }));
           if (variantDimensions.scrollWidth > variantDimensions.clientWidth + 2) {
@@ -142,6 +165,7 @@ test('all catalogue resources render at every certified width in the Sites Worke
           const iframeHandle = await preview.elementHandle();
           const previewFrame = await iframeHandle?.contentFrame();
           await previewFrame?.waitForLoadState('load', { timeout: 15000 });
+          await waitForActualResource(frame, resource.slug, firstVariant.id);
         }
         if (navigationFixes.has(resource.slug)) {
           const screenshotPath = path.join(outputDir, `${resource.slug}-1440-after.png`);
@@ -242,6 +266,7 @@ test('all catalogue resources render at every certified width in the Sites Worke
           const currentPreviewFrame = await currentPreviewHandle?.contentFrame();
           await currentPreviewFrame?.waitForLoadState('load', { timeout: 15000 });
           await expect(frame.locator('.tess-screen')).toHaveCount(1, { timeout: 15000 });
+          await waitForActualResource(frame, resource.slug, firstVariant?.id);
           if (resource.slug === 'ai-prompt-hero' && [360, 390, 1280, 1440].includes(width)) {
             const screenshotPath = path.join(evidenceDir, `resources-ai-prompt-hero-${width}.png`);
             await page.screenshot({ path: screenshotPath, animations: 'disabled' });
@@ -346,7 +371,8 @@ test('all catalogue resources render at every certified width in the Sites Worke
   }
 
   activeRecord = undefined;
-  const reportPath = path.resolve(process.cwd(), 'test-results/resource-certification/catalog-324.json');
+  const reportPath = path.resolve(process.cwd(), 'audit/evidence/step-07/after/catalog-324-worker-pass.json');
+  mkdirSync(path.dirname(reportPath), { recursive: true });
   await import('node:fs/promises').then(({ writeFile }) => writeFile(reportPath, JSON.stringify({
     schemaVersion: '1.0.0',
     browserProject: testInfo.project.name,

@@ -19,9 +19,12 @@ type BrowserFinding = {
 
 const catalogPath = path.resolve(process.cwd(), 'apps/site/public/data/catalog.json');
 const catalogResources = (JSON.parse(readFileSync(catalogPath, 'utf8')) as { resources: CatalogResource[] }).resources;
-const requestedSlug = process.env.TESS_RESOURCE_SLUG;
-const selectedGoldSlugs = requestedSlug ? GOLD_40_SLUGS.filter((slug) => slug === requestedSlug) : GOLD_40_SLUGS;
-if (requestedSlug && selectedGoldSlugs.length === 0) throw new Error(`Unknown Gold resource slug: ${requestedSlug}.`);
+const requestedSlugs = process.env.TESS_RESOURCE_SLUG?.split(',').map((slug) => slug.trim()).filter(Boolean);
+const selectedGoldSlugs = requestedSlugs ? GOLD_40_SLUGS.filter((slug) => requestedSlugs.includes(slug)) : GOLD_40_SLUGS;
+const unknownRequestedSlugs = requestedSlugs?.filter((slug) => !catalogResources.some((resource) => resource.slug === slug)) ?? [];
+if (unknownRequestedSlugs.length > 0) {
+  throw new Error(`Unknown catalogue resource slug(s): ${unknownRequestedSlugs.join(', ')}.`);
+}
 const goldResources = selectedGoldSlugs.map((slug) => {
   const resource = catalogResources.find((entry) => entry.slug === slug);
   if (!resource) throw new Error(`Gold resource "${slug}" is missing from the canonical catalogue.`);
@@ -45,6 +48,7 @@ async function waitForActualResource(
 }
 
 test('Gold resources render at every certified width and each declared variant', async ({ page }, testInfo) => {
+  test.skip(Boolean(requestedSlugs) && selectedGoldSlugs.length === 0, 'TESS_RESOURCE_SLUG selected no Gold resources.');
   // This one Chromium run explicitly drives every required width. The separate
   // mobile project covers touch/mobile-shell behavior in the regular E2E suite.
   test.skip(testInfo.project.name !== 'sites-chromium', 'This matrix runs against the Sites Worker preview boundary.');
@@ -252,6 +256,9 @@ test('Gold resources render at every certified width and each declared variant',
                 if (!record.keyboard.visibleFocus) {
                   record.findings.push({ type: 'preview-error', detail: 'Keyboard-focused preview button has no visible focus indicator.', viewport: width, variant: variant.id });
                 }
+                const fadeRevealCard = resource.slug === 'fade-up-reveal'
+                  ? frame.getByRole('heading', { name: 'Deterministic Fade-Up Reveal' }).locator('xpath=../..')
+                  : null;
                 await firstButton.press('Enter');
                 await expect.poll(() => frame.locator('html').getAttribute('data-keyboard-click-count')).toBe('1');
                 record.keyboard.enterActivated = true;
@@ -264,8 +271,8 @@ test('Gold resources render at every certified width and each declared variant',
                   await expect(frame.getByText('Validated resource references and editable content.', { exact: true })).toBeVisible();
                   record.keyboard.visibleResponse = true;
                 } else if (resource.slug === 'fade-up-reveal') {
-                  const card = frame.locator('.tess-screen [class*="opacity-100"]').last();
-                  await expect.poll(() => card.evaluate((element) => Number(getComputedStyle(element).opacity))).toBeLessThan(1);
+                  await expect(fadeRevealCard).not.toBeNull();
+                  await expect.poll(() => fadeRevealCard!.evaluate((element) => Number(getComputedStyle(element).opacity))).toBeLessThan(1);
                   record.keyboard.visibleResponse = true;
                 } else {
                   const expectedResponse: Record<string, string> = {
