@@ -571,7 +571,7 @@
       "category": "content",
       "title": "Footer claimed system status was Operational without a live status source",
       "expected": "A status label should not claim availability unless it is backed by a live status source.",
-      "actual": "The default footer stated \u201cStatus: Operational\u201d in a static resource preview.",
+      "actual": "The default footer stated “Status: Operational” in a static resource preview.",
       "reproduction": [
         "Open /resources/footer-minimal/ at 390x844.",
         "Read the footer status label."
@@ -1949,7 +1949,7 @@
       "viewport": "1440x900",
       "category": "visual",
       "title": "Direction previews do not show the structural differences their metadata claims",
-      "expected": "The three directions should be visibly different design solutions, with previews that demonstrate each direction\u2019s navigation model, composition grammar, hierarchy and resource selection.",
+      "expected": "The three directions should be visibly different design solutions, with previews that demonstrate each direction’s navigation model, composition grammar, hierarchy and resource selection.",
       "actual": "The three cards preview the same Team Overview content and essentially the same section sequence. Direction 03 reports a rail and tri-column-intelligence grammar, but its thumbnail shows a conventional navigation/header and content pane. Most visible differences are theme and navigation treatment, so the cards do not substantiate their structural labels.",
       "reproduction": [
         "Open /compose on the public review Site.",
@@ -1959,7 +1959,7 @@
       "console": [],
       "network": [],
       "screenshot": "audit/evidence/public-site-v10/compose-directions-1440.png",
-      "rootCause": "ComposeView direction cards render the same primary screen through ManifestRenderer. Direction-specific grammar and navigation metadata are shown as labels, but are not reflected in an observably different screen composition; the direction generator\u2019s grammar choices are not integrated into the generated manifest structure.",
+      "rootCause": "ComposeView direction cards render the same primary screen through ManifestRenderer. Direction-specific grammar and navigation metadata are shown as labels, but are not reflected in an observably different screen composition; the direction generator’s grammar choices are not integrated into the generated manifest structure.",
       "affectedFiles": [
         "apps/site/src/components/ComposeView.tsx",
         "packages/compatibility/src/direction-generator.ts",
@@ -2014,6 +2014,71 @@
         "screenshot": "audit/evidence/public-site-v11/unknown-resource-1440.png",
         "mobileScreenshot": "audit/evidence/public-site-v11/unknown-resource-390.png",
         "report": "audit/evidence/public-site-v11/flagship-smoke.json"
+      }
+    },
+    {
+      "id": "AUD-082",
+      "severity": "medium",
+      "route": "Standalone React/Vite export",
+      "viewport": "390x844",
+      "category": "visual",
+      "title": "Exported screen selector wrapped into three rows on mobile",
+      "expected": "The project screen selector should remain compact and usable on mobile without pushing the exported product interface below multiple rows of editor-like navigation.",
+      "actual": "The public v11 flagship ZIP wrapped its nine project-screen buttons into three rows above the product's own navigation. The controls consumed most of the initial mobile viewport before product content appeared.",
+      "reproduction": [
+        "Compose the employee-experience flagship brief on the public v11 Site and open Direction C in Workbench.",
+        "Download the Standalone React Project ZIP from the visible Export menu.",
+        "Install the ZIP in a clean directory, build it, start the Vite preview, and open the dashboard at 390x844.",
+        "Observe the screen-selector buttons wrap across three rows while the product navigation renders below them."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-07/before/export-project-navigation-wraps-390.png",
+      "rootCause": "packages/exporter/src/source-tree.ts rendered the generated project screen selector with flex-wrap inside a header that also wrapped. Nine screen buttons therefore occupied three mobile rows before the manifest's own navigation. The export integration regression failed with computed flexWrap=wrap.",
+      "affectedFiles": [
+        "packages/exporter/src/source-tree.ts",
+        "packages/exporter/src/__tests__/standalone-export-fidelity.test.ts"
+      ],
+      "remediation": "Stack the generated project title and selector on narrow screens, keep the selector itself nowrap and horizontally scrollable, and retain keyboard-accessible screen buttons. The clean-export browser regression now passes locally; public Site re-verification is pending.",
+      "fixCommit": "d6102e53b203355e68411ce91f0630346534e6f3",
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "result": "The new Playwright regression failed before the fix with flexWrap=wrap, then passed after the fix. The test built and previewed a clean standalone export, verified one-row navigation, switched to a second screen, exercised responsive resource strategies, and recorded no console errors or failed requests.",
+        "test": "packages/exporter/src/__tests__/standalone-export-fidelity.test.ts",
+        "beforeScreenshot": "audit/evidence/step-07/before/export-project-navigation-wraps-390.png",
+        "afterScreenshot": "audit/evidence/step-07/after/export-project-navigation-mobile-390.png"
+      }
+    },
+    {
+      "id": "AUD-083",
+      "severity": "medium",
+      "route": "/resources/fade-up-reveal/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Replay Entrance reversed before the transition became visible",
+      "expected": "The Replay Entrance control should visibly complete its exit and replay the configured entrance transition.",
+      "actual": "On the deployed v11 page, the Quiet card changed to opacity-0 for about 40 ms, then returned to opacity-100. Its computed opacity reached only about 0.83 before resetting, so the replay looked like a brief flicker instead of a complete entrance.",
+      "reproduction": [
+        "Open the deployed /resources/fade-up-reveal/ page at 1440x900.",
+        "Activate Replay Entrance and record the card classes and computed opacity over the next 60 ms."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-07/before/fade-up-replay-transient-1440.png",
+      "rootCause": "resources/motion/fade-up-reveal/index.tsx reset revealed after a fixed 50 ms, shorter than the 300 ms Quiet transition (and the 500/700 ms other variants). The transition reversed before the hidden state could complete.",
+      "affectedFiles": [
+        "resources/motion/fade-up-reveal/index.tsx",
+        "tests/e2e/gold-resource-certification.spec.ts"
+      ],
+      "remediation": "Keep the hidden state through the active variant transition, then replay the entrance. Extend the Gold browser regression to confirm the card reaches its hidden state and completes the return transition.",
+      "fixCommit": "6c8ecc0f0e11a7707b997326fd3855a6060eca91",
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "result": "The deployed v11 timeline reproduced the brief opacity dip and recorded no console, network, or HTTP errors. The fixed browser test passed the full 40-resource/120-variant Gold certification, checking a completed exit, return to opacity one, and an announced reduced-motion skip. The complete E2E run passed with 85 main-browser tests, 25 Sites Worker tests, and one preview-app test; the 324-resource matrix recorded zero findings.",
+        "test": "tests/e2e/gold-resource-certification.spec.ts",
+        "beforeEvidence": "audit/evidence/step-07/before/fade-up-replay-timeline.json",
+        "afterEvidence": "audit/evidence/step-07/after/fade-up-replay-timeline.json",
+        "fullRun": "audit/evidence/step-07/after/e2e-summary.json"
       }
     }
   ]

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "runDate": "2026-10-17",
+  "runDate": "2026-10-18",
   "command": "pnpm test:e2e",
   "result": "passed",
   "mainBrowserSuite": {
@@ -24,11 +24,30 @@
     "addedWorkerRegressions": {
       "favicon": 1,
       "unknownResourceAlert": 1,
-      "passed": 2
+      "fadeUpReplayCycleAndReducedMotion": 1,
+      "passed": 3
     }
   },
   "previewAppSuite": {
     "passed": 1,
     "failed": 0
+  },
+  "qualityGates": {
+    "unitTests": {
+      "files": 56,
+      "passed": 622
+    },
+    "typecheck": "passed",
+    "lint": {
+      "errors": 0,
+      "warnings": 51
+    },
+    "auditAll": {
+      "releaseGateChecks": 16,
+      "bundleBudgets": "passed",
+      "licenseProvenance": "passed",
+      "securitySecretsAndIsolation": "passed",
+      "productionBuild": "passed"
+    }
   }
 }
