@@ -25,9 +25,9 @@ export function KanbanBoard({ variant = 'quiet', title='Sample task board', colu
   }
 
   const columns = suppliedColumns ?? [
-    { title: 'Backlog', tasks: ['Audit contrast on Nocturne tokens', 'Generate OpenAPI spec'] },
-    { title: 'In Progress', tasks: ['Scale 56 application blocks'] },
-    { title: 'Complete', tasks: ['72 Marketing sections verified', '44 Primitives complete'] },
+    { title: 'Backlog', tasks: ['Prepare employee welcome materials', 'Review first-week checklist'] },
+    { title: 'In Progress', tasks: ['Assign an onboarding mentor'] },
+    { title: 'Complete', tasks: ['Publish the remote-work guide', 'Confirm team directory details'] },
   ];
 
   return (
@@ -35,7 +35,7 @@ export function KanbanBoard({ variant = 'quiet', title='Sample task board', colu
       <h3 className="text-sm font-semibold mb-6">{title}</h3>
       {columns.length === 0 ? (
         <div role="status" aria-live="polite" className="rounded border border-dashed border-neutral-300 p-8 text-center text-sm opacity-75 dark:border-neutral-700">
-          No tasks yet. Add a column or task to get started.
+          This board has no columns or tasks.
         </div>
       ) : (
         <div className="grid grid-cols-1 @md:grid-cols-3 gap-4">

@@ -263,10 +263,12 @@ test('Gold data resources handle empty states, large datasets, long content, and
   const boardIframe = page.locator('iframe[title$=" live preview"]');
   const board = page.frameLocator('iframe[title$=" live preview"]');
   await expect(board.locator('.tess-screen')).toHaveCount(1);
+  await expect(board.getByText('Scale 56 application blocks', { exact: true })).toHaveCount(0);
+  await expect(board.getByText('72 Marketing sections verified', { exact: true })).toHaveCount(0);
+  await expect(board.getByText('44 Primitives complete', { exact: true })).toHaveCount(0);
   await updatePreviewProps(boardIframe, { title: 'Employee onboarding', columns: [] });
-  await expect(board.getByRole('status')).toHaveText(
-    'No tasks yet. Add a column or task to get started.'
-  );
+  await expect(board.getByRole('status')).toHaveText('This board has no columns or tasks.');
+  await expect(board.getByRole('button')).toHaveCount(0);
   const boardEmptyScreenshot = path.join(evidenceDir, 'kanban-board-empty-360.png');
   await page.screenshot({ path: boardEmptyScreenshot, animations: 'disabled' });
 
