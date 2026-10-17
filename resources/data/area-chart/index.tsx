@@ -49,11 +49,11 @@ export function AreaChart({ variant = 'quiet' }: AreaChartProps) {
     <div className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col transition-colors ${cardBg}`}>
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h4 className="text-sm font-semibold tracking-tight">Active Ingestion Volume</h4>
-          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Cumulative GB ingested across cluster</p>
+          <h4 className="text-sm font-semibold tracking-tight">Sample ingestion volume</h4>
+          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Illustrative sample data — not live measurements.</p>
         </div>
         <span className="text-xs font-mono font-medium px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800">
-          Peak: 420 GB
+          Sample peak: 420 GB
         </span>
       </div>
 

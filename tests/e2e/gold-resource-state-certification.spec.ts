@@ -259,6 +259,20 @@ test('Gold data resources handle empty states, large datasets, long content, and
     screenshots: [chartEmptyScreenshot, chartLargeScreenshot].map((file) => path.relative(process.cwd(), file).replaceAll('\\', '/')),
   });
 
+  const sampleCharts = [
+    { slug: 'bar-chart', heading: 'Sample daily sign-ups' },
+    { slug: 'donut-chart', heading: 'Sample subscription mix' },
+    { slug: 'area-chart', heading: 'Sample ingestion volume' },
+    { slug: 'time-series-chart', heading: 'Sample API throughput (req/s)' },
+  ];
+  for (const sampleChart of sampleCharts) {
+    await page.goto(`/resources/${sampleChart.slug}/`, { waitUntil: 'domcontentloaded' });
+    const samplePreview = page.frameLocator('iframe[title$=" live preview"]');
+    await expect(samplePreview.locator('.tess-screen')).toHaveCount(1);
+    await expect(samplePreview.getByRole('heading', { name: sampleChart.heading, exact: true })).toBeVisible();
+    await expect(samplePreview.getByText('Illustrative sample data — not live measurements.', { exact: true })).toBeVisible();
+  }
+
   await page.goto('/resources/kanban-board/', { waitUntil: 'domcontentloaded' });
   const boardIframe = page.locator('iframe[title$=" live preview"]');
   const board = page.frameLocator('iframe[title$=" live preview"]');

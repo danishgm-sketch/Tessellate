@@ -26,7 +26,7 @@ const DEFAULT_DATA: DataPoint[] = [
 export function TimeSeriesChart({
   variant = 'quiet',
   data = DEFAULT_DATA,
-  title = 'API Throughput (req/s)',
+  title = 'Sample API throughput (req/s)',
 }: TimeSeriesChartProps) {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const hasData = data.length > 0;
@@ -72,7 +72,7 @@ export function TimeSeriesChart({
       <div className="flex items-center justify-between mb-4">
         <div>
           <h4 className="text-sm font-semibold tracking-tight">{title}</h4>
-          {hasData && <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Real-time sampling window</p>}
+          {hasData && <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Illustrative sample data — not live measurements.</p>}
         </div>
         {hasData && (
           <div className="text-right">

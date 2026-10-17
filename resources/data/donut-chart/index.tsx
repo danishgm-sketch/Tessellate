@@ -42,8 +42,8 @@ export function DonutChart({ variant = 'quiet' }: DonutChartProps) {
     <div className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col transition-colors ${cardBg}`}>
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h4 className="text-sm font-semibold tracking-tight">Subscription Shares</h4>
-          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Tier revenue contribution</p>
+          <h4 className="text-sm font-semibold tracking-tight">Sample subscription mix</h4>
+          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Illustrative sample data — not live measurements.</p>
         </div>
       </div>
 

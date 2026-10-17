@@ -42,11 +42,11 @@ export function BarChart({ variant = 'quiet' }: BarChartProps) {
     <div className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col transition-colors ${cardBg}`}>
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h4 className="text-sm font-semibold tracking-tight">Daily User Conversions</h4>
-          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Signups completed over the past week</p>
+          <h4 className="text-sm font-semibold tracking-tight">Sample daily sign-ups</h4>
+          <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Illustrative sample data — not live measurements.</p>
         </div>
         <div className="text-xs font-mono font-medium">
-          Total: <span className="text-base font-semibold">{data.reduce((a, b) => a + b.value, 0)}</span>
+          Sample total: <span className="text-base font-semibold">{data.reduce((a, b) => a + b.value, 0)}</span>
         </div>
       </div>
 
