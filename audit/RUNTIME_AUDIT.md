@@ -6,7 +6,7 @@ Machine-readable findings and their current status are in
 [`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
 published review version during the public-RC phase.
 
-**Current disposition:** 56 findings (6 High, 50 Medium). The data-state, compact-width and Kanban copy fixes have passed local browser regressions. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited. A fresh GitHub Linux CI run is still required for the cross-platform fixes.
+**Current disposition:** 60 findings (6 High, 54 Medium). The data-state, compact-width, Kanban copy and chart sample-data fixes have passed local browser regressions. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited. A fresh GitHub Linux CI run is still required for the cross-platform fixes.
 
 The latest `pnpm test:e2e` run passed: 73 regular browser tests, 15 explicitly skipped tests, and all 5 Sites Worker tests. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Six Gold data-resource fixtures cover empty and large inputs, long text, keyboard interaction and notification updates. The three Linux-discovered compact overflows now pass the complete local matrix. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
@@ -590,3 +590,35 @@ with zero findings. That harness race is not counted as a product defect.
 - Affected code: `resources/blocks/kanban-board/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
 - Remediation: replace fabricated totals with representative onboarding tasks and assert those false claims are absent in the browser preview.
 - Regression: the Sites Worker browser test failed when the old metric was visible; the rebuilt 40-resource Gold matrix and updated six-resource state test pass. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.
+
+### AUD-057 — Bar chart implied its sample values were real sign-up data
+
+- Evidence: the [before capture](evidence/step-06/before/state-captures/bar-chart-unlabelled-sample-360.png) shows operational sign-up copy and a total without a sample-data disclosure; the [after capture](evidence/step-06/after/browser-captures/gold-40/bar-chart-360.png) names sample sign-ups and labels the values illustrative.
+- Reproduction: open `/resources/bar-chart/` at 360x844 and inspect the chart heading, description and total.
+- Root cause: fixed demo values were labeled as daily conversions and a total.
+- Affected code: `resources/data/bar-chart/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
+- Remediation: identify the chart and total as sample data and show an explicit illustrative-data disclaimer. The regression asserts both in the real preview iframe. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.
+
+### AUD-058 — Donut chart implied sample subscription shares were actual revenue data
+
+- Evidence: the [before capture](evidence/step-06/before/state-captures/donut-chart-unlabelled-sample-360.png) describes fixed segments as tier revenue contribution; the [after capture](evidence/step-06/after/browser-captures/gold-40/donut-chart-360.png) labels the subscription mix as a sample and discloses illustrative data.
+- Reproduction: open `/resources/donut-chart/` at 360x844 and inspect the title, explanation and fixed segments.
+- Root cause: bundled demo values used product revenue copy without a disclosure.
+- Affected code: `resources/data/donut-chart/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
+- Remediation: identify the visualization as a sample and disclose that values are illustrative. The regression asserts both labels in the preview iframe. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.
+
+### AUD-059 — Area chart implied fixed ingestion values were live measurements
+
+- Evidence: the [before capture](evidence/step-06/before/state-captures/area-chart-unlabelled-sample-360.png) shows a cluster-ingestion claim and 420 GB peak without sample context; the [after capture](evidence/step-06/after/browser-captures/gold-40/area-chart-360.png) identifies a sample and discloses illustrative values.
+- Reproduction: open `/resources/area-chart/` at 360x844 and inspect the chart heading, explanation and peak value.
+- Root cause: fixed demo values were described as current ingestion measurements.
+- Affected code: `resources/data/area-chart/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
+- Remediation: make the sample context explicit and label the peak as a sample value. The regression asserts the sample title and disclosure in the preview iframe. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.
+
+### AUD-060 — Time-series chart claimed real-time data without a source
+
+- Evidence: the [before capture](evidence/step-06/before/state-captures/time-series-chart-unlabelled-live-data-360.png) shows a hard-coded API throughput series labeled as real-time; the [after capture](evidence/step-06/after/browser-captures/gold-40/time-series-chart-360.png) identifies a sample series and discloses illustrative data.
+- Reproduction: open `/resources/time-series-chart/` at 360x844 and inspect the default title and status copy.
+- Root cause: a static default dataset was paired with real-time language and no sample label.
+- Affected code: `resources/data/time-series-chart/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
+- Remediation: use a sample-specific title and explicitly disclose that there is no live measurement source. The regression asserts both in the preview iframe. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.

@@ -1262,6 +1262,114 @@
       "remediation": "Replace fabricated totals with representative onboarding tasks and add browser assertions against the false claims.",
       "fixCommit": "62972d7c82ef35dad3af9427c91203080e240ea6",
       "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-057",
+      "severity": "medium",
+      "route": "/resources/bar-chart/",
+      "viewport": "360x844",
+      "category": "content",
+      "title": "Bar chart presented illustrative sign-up totals as actual data",
+      "expected": "A static preview should clearly identify its values as illustrative sample data.",
+      "actual": "The preview showed a daily conversion chart and total with no sample disclosure, implying that the figures described real activity.",
+      "reproduction": [
+        "Open /resources/bar-chart/ at 360x844.",
+        "Inspect the chart title, explanatory copy, and summary values.",
+        "The before capture shows the original misleading copy; the updated preview must disclose illustrative sample data."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/browser-captures/gold-40/bar-chart-360.png",
+      "screenshotBefore": "audit/evidence/step-06/before/state-captures/bar-chart-unlabelled-sample-360.png",
+      "rootCause": "The component bundled static example values under operational copy and labeled their sum as a live total.",
+      "affectedFiles": [
+        "resources/data/bar-chart/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Use sample-specific titles and label bundled values as illustrative sample data, without implying a live source.",
+      "fixCommit": "20dcad16f073e3629d8e9acd2a1f1c39372e9fa9",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-058",
+      "severity": "medium",
+      "route": "/resources/donut-chart/",
+      "viewport": "360x844",
+      "category": "content",
+      "title": "Donut chart implied sample subscription shares were real revenue data",
+      "expected": "A static preview should clearly identify its values as illustrative sample data.",
+      "actual": "The preview described fixed segments as subscription revenue contribution without identifying them as sample values.",
+      "reproduction": [
+        "Open /resources/donut-chart/ at 360x844.",
+        "Inspect the chart title, explanatory copy, and summary values.",
+        "The before capture shows the original misleading copy; the updated preview must disclose illustrative sample data."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/browser-captures/gold-40/donut-chart-360.png",
+      "screenshotBefore": "audit/evidence/step-06/before/state-captures/donut-chart-unlabelled-sample-360.png",
+      "rootCause": "The component bundled static example values under product-performance copy without a sample-data disclosure.",
+      "affectedFiles": [
+        "resources/data/donut-chart/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Use sample-specific titles and label bundled values as illustrative sample data, without implying a live source.",
+      "fixCommit": "20dcad16f073e3629d8e9acd2a1f1c39372e9fa9",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-059",
+      "severity": "medium",
+      "route": "/resources/area-chart/",
+      "viewport": "360x844",
+      "category": "content",
+      "title": "Area chart presented fixed ingestion values as live operational measurements",
+      "expected": "A static preview should clearly identify its values as illustrative sample data.",
+      "actual": "The preview showed cluster ingestion and a 420 GB peak without disclosing that its values were fixed example data.",
+      "reproduction": [
+        "Open /resources/area-chart/ at 360x844.",
+        "Inspect the chart title, explanatory copy, and summary values.",
+        "The before capture shows the original misleading copy; the updated preview must disclose illustrative sample data."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/browser-captures/gold-40/area-chart-360.png",
+      "screenshotBefore": "audit/evidence/step-06/before/state-captures/area-chart-unlabelled-sample-360.png",
+      "rootCause": "The component bundled static example values under operational copy and described the peak as an actual measurement.",
+      "affectedFiles": [
+        "resources/data/area-chart/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Use sample-specific titles and label bundled values as illustrative sample data, without implying a live source.",
+      "fixCommit": "20dcad16f073e3629d8e9acd2a1f1c39372e9fa9",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-060",
+      "severity": "medium",
+      "route": "/resources/time-series-chart/",
+      "viewport": "360x844",
+      "category": "content",
+      "title": "Time-series chart claimed a live sampling window without a live data source",
+      "expected": "A chart without a connected data source should identify its values as sample data and must not claim real-time status.",
+      "actual": "The default preview described hard-coded API throughput values as a real-time sampling window.",
+      "reproduction": [
+        "Open /resources/time-series-chart/ at 360x844.",
+        "Inspect the chart title, explanatory copy, and summary values.",
+        "The before capture shows the original misleading copy; the updated preview must disclose illustrative sample data."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/browser-captures/gold-40/time-series-chart-360.png",
+      "screenshotBefore": "audit/evidence/step-06/before/state-captures/time-series-chart-unlabelled-live-data-360.png",
+      "rootCause": "The component defaulted to a bundled static dataset but used a real-time label and an unlabeled API-throughput title.",
+      "affectedFiles": [
+        "resources/data/time-series-chart/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Use sample-specific titles and label bundled values as illustrative sample data, without implying a live source.",
+      "fixCommit": "20dcad16f073e3629d8e9acd2a1f1c39372e9fa9",
+      "status": "fixed-awaiting-deployed-verification"
     }
   ]
 }

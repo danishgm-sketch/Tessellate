@@ -106,5 +106,13 @@
     ],
     "status": "passed"
   },
-  "verifiedCommit": "62972d7c82ef35dad3af9427c91203080e240ea6"
+  "verifiedCommit": "20dcad16f073e3629d8e9acd2a1f1c39372e9fa9",
+  "sampleDataTruth": {
+    "resources": 4,
+    "assertionsPerResource": [
+      "sample-specific title",
+      "illustrative sample-data disclosure"
+    ],
+    "status": "passed"
+  }
 }

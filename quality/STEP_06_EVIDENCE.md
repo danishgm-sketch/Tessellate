@@ -13,14 +13,15 @@ this step.
 
 | Evidence | Result |
 | --- | --- |
+| `pnpm install --frozen-lockfile` | PASS — all 23 workspace projects already up to date. |
 | `pnpm build:catalog` | PASS — all 324 ResourceManifest entries and declared required files validated; 40 Gold candidates emitted. |
-| `pnpm build` | PASS — 717 static pages and the Sites Worker artifact built. Preview client chunk is approximately 188.06 KB gzip, under the configured bundle gate. |
+| `pnpm build` | PASS — 717 static pages and the Sites Worker artifact built. The preview client bundle is 188.77 KB gzip and remains under its configured budget. |
 | 324-resource browser matrix | PASS locally — every default preview at 360, 390, 430, 768, 1024, 1280 and 1440px; zero console, page, network, HTTP, link, preview or overflow findings. Final official E2E report: [`catalog-324-e2e-final.json`](../audit/evidence/step-06/results/catalog-324-e2e-final.json). |
 | 324-resource variant smoke | PASS locally — all 972 declared variants selected and rendered at 1440px with zero findings, failed requests or cancellations. |
 | Canonical `/r/:slug` route | PASS locally — `/r/ai-prompt-hero/` returned HTTP 200 at 390x844 and 1440x900 with exact title/heading, live preview, no browser errors or overflow; desktop preview measured 764px. |
 | 40-resource Gold browser matrix | PASS locally — all 120 Gold variants at 360, 390, 430, 768, 1024, 1280 and 1440px; isolated iframe preserved; zero findings. Final report: [`gold-40-e2e-final.json`](../audit/evidence/step-06/results/gold-40-e2e-final.json), with 120 browser captures preserved in the same evidence tree. |
 | Gold keyboard/reduced-motion checks | PASS locally — 33 enabled controls were keyboard reachable with visible focus and produced expected feedback; reduced-motion preference reached all 40 renderers. |
-| Gold data-resource state fixtures | PASS locally for `advanced-data-table`, `timeline`, `dashboard-kpi-grid`, `notification-centre`, `time-series-chart` and `kanban-board` at 360x844 — empty states, large inputs, long content, filtering, keyboard actions, notification prop updates, document width, and console/page/network diagnostics. Screenshots and machine diagnostics: [`gold-resource-states-final.json`](../audit/evidence/step-06/results/gold-resource-states-final.json). |
+| Gold data-resource state fixtures | PASS locally for `advanced-data-table`, `timeline`, `dashboard-kpi-grid`, `notification-centre`, `time-series-chart` and `kanban-board` at 360x844 — empty states, large inputs, long content, filtering, keyboard actions, notification prop updates, truthful sample labels on four charts, document width, and console/page/network diagnostics. Screenshots and machine diagnostics: [`gold-resource-states-final.json`](../audit/evidence/step-06/results/gold-resource-states-final.json). |
 | Linux compact-header regression | PASS locally — `marketing-nav-cta` at outer widths 360px and 390px measured exact document/frame widths of 292/292px and 322/322px, no overlap, console errors or failed/HTTP requests. The prior Linux CI failure measured 316–321px inside a 292px frame; before evidence is retained as a log excerpt because CI did not upload screenshots. After screenshots and machine diagnostics: [`marketing-nav-cta-responsive.json`](../audit/evidence/step-06/results/marketing-nav-cta-responsive.json). |
 | Navigation/control regression | PASS locally — all 324 previews were checked for dead fragment links; visible action feedback, mega-menu disclosure and mobile drawer behavior passed. |
 | `pnpm typecheck` | PASS — all 22 workspace packages. |
@@ -29,9 +30,9 @@ this step.
 | `pnpm audit:all` | PASS — 16/16 release gates, build, bundle budgets, catalogue licence/provenance and secret/security audits. |
 | `pnpm test:e2e` | PASS — 73/88 regular browser tests passed, 15 explicitly skipped; all 5 Sites Worker tests passed. The flagship acceptance journey and standalone export passed; Gold state fixtures cover six resources; compact-width regressions and the 324-resource matrix passed. Aggregate: [`e2e-suite-final.json`](../audit/evidence/step-06/results/e2e-suite-final.json). |
 
-The full catalogue and Gold browser reports reference 180 saved screenshots
+The full catalogue and Gold browser reports reference 183 saved screenshots
 under `audit/evidence/step-06/after/` and record zero missing screenshot paths.
-The additional state and marketing-header reports reference 16 after-state screenshots; four earlier empty-state baselines plus two Kanban copy baselines are preserved separately. All 231 unique screenshot paths referenced by the runtime audit and final E2E reports exist.
+The additional state and marketing-header reports reference 16 after-state screenshots; four earlier empty-state baselines, two Kanban copy baselines and four chart sample-data baselines are preserved separately. All 205 unique screenshot paths referenced by the runtime audit and final E2E reports exist.
 
 An earlier catalogue-matrix attempt recorded 39 iframe execution-context errors
 when the test switched variants before the prior preview finished loading. The
@@ -41,7 +42,7 @@ official run completed with zero such errors, failed requests or cancellations.
 
 ## Findings and remediation
 
-The local browser audit has **56 defects** recorded: 6 High and 50 Medium. The
+The local browser audit has **60 defects** recorded: 6 High and 54 Medium. The
 original 29 include enabled actions without behavior, 52 placeholder navigation
 links, compact-width overflows, an undisclosed menu state and an unsupported
 operational-status claim. The expanded resource matrix found a malformed Astro
@@ -57,12 +58,9 @@ found eight defects across the advanced table, timeline, KPI grid, notifications
 time-series chart and kanban board. These include blank empty states, stale
 notification inputs, missing action feedback and a false zero chart value. Each
 was reproduced before fixing and now passes the browser state regression.
-The Kanban review additionally found an empty-state message that promised
-unavailable add actions and fabricated resource totals in its sample tasks;
-both content defects have failing-before/passing-after browser assertions and
-before/after screenshots.
+The chart review additionally found four unlabeled synthetic datasets presented as live operational data. Each now uses sample-specific copy and an explicit illustrative-data disclaimer. Browser assertions cover the preview title and disclosure, and before/after captures are preserved. The Kanban review found an empty-state message promising unavailable add actions and fabricated resource totals; both defects have failing-before/passing-after assertions and before/after screenshots.
 
-All 56 fixes pass local resource-specific browser regressions and the full
+All 60 fixes pass local resource-specific browser regressions and the full
 catalogue/Gold render matrices. Their machine-readable status remains
 `fixed-awaiting-deployed-verification`; none is closed because the public review
 Site has not been updated and re-audited. Before and after screenshots are
