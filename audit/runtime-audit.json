@@ -1599,6 +1599,62 @@
       "remediation": "Limit the generic callback to action primitives that declare click behavior; retain specific host callbacks for other preview actions. Browser regressions confirm form controls produce no false status while Button still reports its action.",
       "fixCommit": "c7d3a7cdec9ab7f0702cc5898a9bfe440a510e95",
       "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-069",
+      "severity": "high",
+      "route": "/resources/dialog/",
+      "viewport": "390x844",
+      "category": "accessibility",
+      "title": "Gold Dialog preview lacked accessible modal semantics and keyboard focus handling",
+      "expected": "The open dialog should expose a labelled modal role, receive focus, contain keyboard focus, and close on Escape.",
+      "actual": "The visible overlay was absent from the accessibility tree as a dialog and did not expose the documented modal semantics or keyboard behavior.",
+      "reproduction": [
+        "Open /resources/dialog/ at 390x844.",
+        "Inspect the live preview accessibility tree; the visible modal has no dialog role or accessible name relationship.",
+        "Run the Gold dialog browser regression; it fails on the missing role before remediation."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/dialog-accessibility-390.png",
+      "screenshotAfter": "audit/evidence/step-06/after/dialog-accessibility-390.png",
+      "rootCause": "The Dialog component rendered only a visual overlay and panel; it did not implement the semantic and keyboard behavior promised by its manifest.",
+      "affectedFiles": [
+        "resources/primitives/dialog/index.tsx",
+        "tests/e2e/gold-dialog-accessibility.spec.ts"
+      ],
+      "remediation": "Add role=dialog, aria-modal, stable title/description associations, initial focus, Tab containment, and Escape handling. The focused browser regression now verifies the modal contract and diagnostics; public review verification remains outstanding.",
+      "fixCommit": "f486af22975f14ed3acf39fcf5ba1cd2e62ab136",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-070",
+      "severity": "high",
+      "route": "/resources/ai-prompt-composer/",
+      "viewport": "390x844",
+      "category": "state",
+      "title": "AI Prompt Composer Execute control was a dead button",
+      "expected": "Executing a composed prompt should either call a connected handler or be disabled with an honest explanation; the preview must not imply that an AI request was sent.",
+      "actual": "The enabled Execute Prompt button accepted clicks but produced no visible state change and sent no request.",
+      "reproduction": [
+        "Open /resources/ai-prompt-composer/ at 390x844.",
+        "Enter a prompt and click Execute Prompt.",
+        "Observe no confirmation, disabled state, or provider request. The pre-fix browser regression fails because no status is present."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/ai-prompt-action-390.png",
+      "screenshotAfter": "audit/evidence/step-06/after/ai-prompt-action-390.png",
+      "rootCause": "The component rendered the primary action without an onExecute contract or disabled fallback, while the preview host intentionally did not provide a callback for this resource.",
+      "affectedFiles": [
+        "resources/ai/ai-prompt-composer/index.tsx",
+        "resources/ai/ai-prompt-composer/README.md",
+        "apps/site/src/components/PreviewHost.tsx",
+        "tests/e2e/gold-resource-action-completion.spec.ts"
+      ],
+      "remediation": "Add an optional onExecute callback and disable the control with an accessible explanation when unconnected. The isolated preview reports that the prompt was previewed locally and no provider request was sent. The focused browser regression passes with zero runtime or network diagnostics.",
+      "fixCommit": "f486af22975f14ed3acf39fcf5ba1cd2e62ab136",
+      "status": "fixed-awaiting-deployed-verification"
     }
   ]
 }

@@ -6,9 +6,9 @@ Machine-readable findings and their current status are in
 [`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
 published review version during the public-RC phase.
 
-**Current disposition:** 68 findings (8 High, 60 Medium). The data-state, compact-width, Kanban copy, chart sample-data, Gold accessibility, and live form-preview fixes have passed local browser regressions. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited. GitHub Linux CI run [39036100751](https://github.com/danishgm-sketch/Tessellate/actions/runs/39036100751) passed on `2ab36cdd29e745e49a0fafc1c5c7c9ecf15ea300`; CI for the current form fix is pending.
+**Current disposition:** 70 findings (10 High, 60 Medium). The data-state, compact-width, Kanban copy, chart sample-data, Gold accessibility, form-preview, modal-accessibility and Prompt Composer action fixes have passed local browser regressions. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited. GitHub CI passed for the previously pushed form-preview revision; the current dialog, prompt-action and expanded state-matrix changes still need a push and CI run.
 
-The latest `pnpm test:e2e` run exited successfully: 73 regular browser tests passed, 25 were explicitly skipped, and all 10 Sites Worker tests passed. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Six Gold data-resource fixtures cover empty and large inputs, long text, keyboard interaction and notification updates. The Axe matrix scans all 40 Gold resources and 120 variants with zero violations. Four native Gold controls passed tab reachability and visible-focus checks, and the Select keyboard commit was verified in the visible browser. The focused Input/Textarea/Select regression suite passed 4/4, retaining before/after captures. The three Linux-discovered compact overflows now pass the complete local matrix. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
+The latest full `pnpm test:e2e` run passed: 73 regular browser tests passed, 49 tests were explicitly skipped by project scope, and all 22 Sites Worker tests passed. It includes the expanded state and action regressions. A separate follow-up passed all 11 state-matrix tests after adding the final marketing-navigation empty/40-link case. The dialog modal regression, Prompt Composer action regression, and 40 × 3 Axe matrix also pass with zero violations. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Existing state fixtures cover six Gold data resources; the expanded matrix covers array-driven resources at empty and 30–40 item counts, disabled Button/Input/Select, named loading/error states, long text, and fixed-slot partial data. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
 ## HIGH
 
@@ -67,6 +67,22 @@ The latest `pnpm test:e2e` run exited successfully: 73 regular browser tests pas
 - Root cause: `PreviewHost` stored React's native `onChange` event instead of extracting `target.value` or `target.checked`.
 - Affected code: `apps/site/src/components/PreviewHost.tsx`.
 - Remediation: normalize native control events while preserving primitive/array callback values from custom resources. Focused browser regressions now pass for Input, Textarea, Select and adjacent action-feedback behavior. The issue remains `fixed-awaiting-deployed-verification` until a published review build is audited.
+
+### AUD-069 — Gold Dialog lacked accessible modal semantics and keyboard behavior
+
+- Evidence: the [before capture](evidence/step-06/before/dialog-accessibility-390.png) shows the open preview. The red browser regression failed because the visible panel had no `role="dialog"`; after remediation the [after capture](evidence/step-06/after/dialog-accessibility-390.png) and the focused test show a labelled modal, focus containment and Escape close with no console, page, HTTP or failed-request diagnostics.
+- Reproduction: open `/resources/dialog/` at 390x844, inspect the preview accessibility tree, then run `tests/e2e/gold-dialog-accessibility.spec.ts`. Before the fix the visible panel was not exposed as a dialog.
+- Root cause: the component implemented a visual overlay only, despite its manifest promising an accessible modal and focus trapping.
+- Affected code: `resources/primitives/dialog/index.tsx` and `tests/e2e/gold-dialog-accessibility.spec.ts`.
+- Remediation: add modal semantics and labelled title/description associations, move focus into the modal, contain Tab navigation, and close on Escape. The focused regression now passes locally; deployed review verification is pending.
+
+### AUD-070 — AI Prompt Composer Execute control was a dead button
+
+- Evidence: the [before capture](evidence/step-06/before/ai-prompt-action-390.png) shows a composed prompt with an enabled Execute Prompt control but no connected result; the [after capture](evidence/step-06/after/ai-prompt-action-390.png) and [machine report](evidence/step-06/results/ai-prompt-action.json) show explicit local preview feedback, zero provider requests and zero browser diagnostics.
+- Reproduction: open `/resources/ai-prompt-composer/` at 390x844, enter a prompt and click **Execute Prompt**. Before remediation, the action produced no state change or feedback.
+- Root cause: the component had no execute callback contract or disabled fallback, and its preview host did not inject an action.
+- Affected code: `resources/ai/ai-prompt-composer/index.tsx`, `resources/ai/ai-prompt-composer/README.md`, `apps/site/src/components/PreviewHost.tsx` and `tests/e2e/gold-resource-action-completion.spec.ts`.
+- Remediation: require an optional `onExecute` callback, disable the control accessibly when disconnected, and make the isolated preview say that it only previewed locally without sending a provider request. The pre-fix browser regression failed; the focused fixed regression passes. Deployed review verification remains pending.
 
 ## MEDIUM
 
