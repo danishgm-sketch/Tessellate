@@ -6,9 +6,9 @@ Machine-readable findings and their current status are in
 [`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
 published review version during the public-RC phase.
 
-**Current disposition:** 45 findings (6 High, 39 Medium); all recorded findings have local remediation and passed the final local browser certification. They remain open pending verification in a newly published review Site. This audit records local Worker-preview evidence only.
+**Current disposition:** 54 findings (6 High, 48 Medium). The six data-state fixes and three compact-width fixes have passed the rebuilt local browser matrix. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited. A fresh GitHub Linux CI run is still required for the cross-platform fixes.
 
-The final `pnpm test:e2e` run passed: 73 regular browser tests, 15 explicitly skipped tests, and all 5 Sites Worker tests. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Two Gold data-resource state fixtures and the compact-width marketing CTA regression passed with zero console errors, failed requests or HTTP errors. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
+The latest `pnpm test:e2e` run passed: 73 regular browser tests, 15 explicitly skipped tests, and all 5 Sites Worker tests. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Six Gold data-resource fixtures cover empty and large inputs, long text, keyboard interaction and notification updates. The three Linux-discovered compact overflows now pass the complete local matrix. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
 ## HIGH
 
@@ -497,3 +497,78 @@ with zero findings. That harness race is not counted as a product defect.
 - Root cause: the brand and navigation/CTA occupied one horizontal flex row with desktop spacing. Linux font metrics pushed its intrinsic width beyond the preview.
 - Affected code: `resources/shells/marketing-nav-cta/index.tsx`, `tests/e2e/catalog-resource-render.spec.ts`.
 - Remediation: allow the header and navigation group to wrap, tighten compact CTA spacing, and assert no overflow or overlap at 360px and 390px.
+
+### AUD-046 — Timeline had no empty-event state
+
+- Evidence: the before capture [`timeline-empty-360-before.png`](evidence/step-06/before/state-captures/timeline-empty-360-before.png) shows a blank event area; the corrected [`timeline-empty-360.png`](evidence/step-06/after/state-captures/timeline-empty-360.png) shows the accessible status.
+- Reproduction: open `/resources/timeline/` at 360x844 and set the preview `events` array to empty.
+- Root cause: Timeline mapped events without a zero-event branch.
+- Affected code: `resources/blocks/timeline/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
+- Remediation: render a polite status for an empty event list and test it alongside long event content.
+
+### AUD-047 — KPI grid had no empty-card state
+
+- Evidence: [`dashboard-kpi-grid-empty-360-before.png`](evidence/step-06/before/state-captures/dashboard-kpi-grid-empty-360-before.png) shows the unexplained blank card area; [`dashboard-kpi-grid-empty-360.png`](evidence/step-06/after/state-captures/dashboard-kpi-grid-empty-360.png) shows the empty status.
+- Reproduction: open `/resources/dashboard-kpi-grid/` at 360x844 and set `cards` to an empty array.
+- Root cause: the grid mapped cards directly and had no zero-card state.
+- Affected code: `resources/blocks/dashboard-kpi-grid/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
+- Remediation: display an accessible empty-state status and test large, long-label input.
+
+### AUD-048 — Empty notification centre had no status and an enabled no-op action
+
+- Evidence: [`notification-centre-empty-360-before.png`](evidence/step-06/before/state-captures/notification-centre-empty-360-before.png) shows the empty list and active action; [`notification-centre-empty-360.png`](evidence/step-06/after/state-captures/notification-centre-empty-360.png) shows the truthful message and disabled action.
+- Reproduction: open `/resources/notification-centre/` at 360x844 with an empty `events` array, then activate **Mark all as read**.
+- Root cause: there was no empty-state branch and the action did not check whether unread notifications existed.
+- Affected code: `resources/blocks/notification-centre/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
+- Remediation: announce the empty list and disable the action unless unread notifications are present.
+
+### AUD-049 — Notification centre ignored event updates after mount
+
+- Evidence: the browser regression started from [`notification-centre-empty-360-before.png`](evidence/step-06/before/state-captures/notification-centre-empty-360-before.png) and then supplied 50 events; the final event is visible in [`notification-centre-large-360.png`](evidence/step-06/after/state-captures/notification-centre-large-360.png).
+- Reproduction: set `events` to empty, update it with 50 entries, and check for the 50th notification.
+- Root cause: the component read `events` only in the `useState` initializer, so preview-host updates left stale local state.
+- Affected code: `resources/blocks/notification-centre/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
+- Remediation: synchronize item state when supplied events change and verify the update through the isolated preview iframe.
+
+### AUD-050 — Mark-all-read action had no accessible confirmation
+
+- Evidence: the original browser test failed to find a status region after keyboard activation; the corrected interaction capture [`notification-centre-read-feedback-360.png`](evidence/step-06/after/state-captures/notification-centre-read-feedback-360.png) shows the announced result. The pre-fix after-click screenshot was not retained.
+- Reproduction: focus **Mark all as read** with unread notifications and press Enter; the original implementation changed styling without announcing completion.
+- Root cause: the action only changed local read flags and rendered no live status.
+- Affected code: `resources/blocks/notification-centre/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
+- Remediation: announce the count in a polite status and disable the action after all notifications are read.
+
+### AUD-051 — Empty time-series chart displayed a false zero
+
+- Evidence: [`time-series-chart-empty-360-before.png`](evidence/step-06/before/state-captures/time-series-chart-empty-360-before.png) shows the zero metric and axes without samples; the corrected [`time-series-chart-empty-360.png`](evidence/step-06/after/state-captures/time-series-chart-empty-360.png) reports the no-data state.
+- Reproduction: open `/resources/time-series-chart/` at 360x844 and set `data` to an empty array.
+- Root cause: the missing final sample fell through to a numeric zero, while the chart always rendered axes and had no empty-data state.
+- Affected code: `resources/data/time-series-chart/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
+- Remediation: hide the numeric metric and axes for an empty dataset and expose an accessible no-data message.
+
+### AUD-052 — Command-first navigation overflowed at 360px in Linux Chromium
+
+- Evidence: the [Linux CI failure log](evidence/step-06/before/linux-compact-resource-overflows.md) measured 303px of content in a 292px preview; the after capture is [`resources-command-first-nav-360.png`](evidence/step-06/after/resource-layout/resources-command-first-nav-360.png).
+- Reproduction: run the Sites Worker catalogue matrix in Linux Chromium and open `/resources/command-first-nav/` at 360x844.
+- Root cause: the title, search prompt and status were forced into one fixed-height row with desktop padding.
+- Affected code: `resources/shells/command-first-nav/index.tsx`, `tests/e2e/catalog-resource-render.spec.ts`.
+- Remediation: put the search prompt on a full-width compact row, allow header height to grow, and capture 360px/1440px evidence.
+- Verification: the rebuilt 324-resource matrix passed at all seven widths with zero findings; status remains `fixed-awaiting-deployed-verification` pending Linux CI and public review re-audit.
+
+### AUD-053 — Feature tabs overflowed at 360px in Linux Chromium
+
+- Evidence: the [Linux CI failure log](evidence/step-06/before/linux-compact-resource-overflows.md) measured 296px of content in a 292px preview; the after capture is [`resources-feature-tabs-360.png`](evidence/step-06/after/resource-layout/resources-feature-tabs-360.png).
+- Reproduction: run the Sites Worker catalogue matrix in Linux Chromium and open `/resources/feature-tabs/` at 360x844.
+- Root cause: three tab buttons used fixed horizontal padding in a non-wrapping row.
+- Affected code: `resources/sections/feature-tabs/index.tsx`, `tests/e2e/catalog-resource-render.spec.ts`.
+- Remediation: permit wrapping and reduce button padding at compact widths.
+- Verification: the rebuilt 324-resource matrix passed at all seven widths with zero findings; status remains `fixed-awaiting-deployed-verification` pending Linux CI and public review re-audit.
+
+### AUD-054 — Gradient headline overflowed at 360px in Linux Chromium
+
+- Evidence: the [Linux CI failure log](evidence/step-06/before/linux-compact-resource-overflows.md) measured 304px of content in a 292px preview; the after capture is [`resources-gradient-accent-text-360.png`](evidence/step-06/after/resource-layout/resources-gradient-accent-text-360.png).
+- Reproduction: run the Sites Worker catalogue matrix in Linux Chromium and open `/resources/gradient-accent-text/` at 360x844.
+- Root cause: desktop padding and a 30px heading left too little space for longer headline words inside the preview.
+- Affected code: `resources/typography/gradient-accent-text/index.tsx`, `tests/e2e/catalog-resource-render.spec.ts`.
+- Remediation: reduce compact-width padding and heading size, and allow long headline words to wrap.
+- Verification: the rebuilt 324-resource matrix passed at all seven widths with zero findings; status remains `fixed-awaiting-deployed-verification` pending Linux CI and public review re-audit.

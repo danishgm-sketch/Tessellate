@@ -619,7 +619,9 @@
       "expected": "Event metadata and action copy should wrap within the preview without horizontal scrolling.",
       "actual": "Long event actions and agent names exceeded the 360px preview width.",
       "rootCause": "The event row reserved a single non-wrapping horizontal line for timestamp, agent badge and action text.",
-      "affectedFiles": ["resources/ai/ai-agent-activity-feed/index.tsx"],
+      "affectedFiles": [
+        "resources/ai/ai-agent-activity-feed/index.tsx"
+      ],
       "remediation": "Allow row metadata to wrap and give the action copy a full-width row at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-agent-activity-feed-360.png",
       "screenshotBefore": null,
@@ -639,7 +641,9 @@
       "expected": "The hero heading, prompt input, engine label and preset chips should fit and wrap within the preview.",
       "actual": "The preview document was 306px wide inside a 292px viewport at 360px; at 1280px and 1440px outer widths the inner preview also exceeded its 237px viewport.",
       "rootCause": "The centered flex content used intrinsic-width children and fixed horizontal padding; chips and the engine row could not shrink or wrap within the iframe.",
-      "affectedFiles": ["resources/sections/ai-prompt-hero/index.tsx"],
+      "affectedFiles": [
+        "resources/sections/ai-prompt-hero/index.tsx"
+      ],
       "remediation": "Make the content column full-width and min-width-safe, wrap long heading and helper text, and allow prompt controls and preset chips to wrap.",
       "screenshot": "audit/evidence/step-06/before/wide-matrix/ai-prompt-hero-360-overflow.png",
       "afterScreenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-360.png",
@@ -658,7 +662,9 @@
       "expected": "Citation title, file path, and quote should wrap inside each source card.",
       "actual": "The source title/path row exceeded the 360px preview width.",
       "rootCause": "A fixed justify-between row kept the citation title and long path on one line.",
-      "affectedFiles": ["resources/ai/ai-source-citations/index.tsx"],
+      "affectedFiles": [
+        "resources/ai/ai-source-citations/index.tsx"
+      ],
       "remediation": "Allow the title and path to wrap, break long paths, and keep only the verification status unshrunk.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-source-citations-360.png",
       "screenshotBefore": null,
@@ -678,7 +684,9 @@
       "expected": "Breadcrumbs and actions should wrap into readable rows within the viewport.",
       "actual": "The breadcrumb trail and action controls occupied one fixed row and extended past the preview.",
       "rootCause": "The header used a fixed-height, single-line flex layout with fixed horizontal padding.",
-      "affectedFiles": ["resources/shells/breadcrumb-header/index.tsx"],
+      "affectedFiles": [
+        "resources/shells/breadcrumb-header/index.tsx"
+      ],
       "remediation": "Use a minimum height, compact padding and wrapping layout for both breadcrumb items and action controls.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-breadcrumb-header-360.png",
       "screenshotBefore": null,
@@ -698,7 +706,9 @@
       "expected": "The number, unit and delta should wrap without clipping or horizontal scrolling.",
       "actual": "The large counter value, unit and delta were forced into one row at 360px.",
       "rootCause": "A non-wrapping baseline flex row combined the large numeric display with the unit and delta label.",
-      "affectedFiles": ["resources/typography/counter-typography/index.tsx"],
+      "affectedFiles": [
+        "resources/typography/counter-typography/index.tsx"
+      ],
       "remediation": "Allow the value and unit row to wrap and place the delta on its own line at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-counter-typography-360.png",
       "screenshotBefore": null,
@@ -718,7 +728,9 @@
       "expected": "The dialog and launcher should remain inside the preview width.",
       "actual": "The fixed-width assistant panel extended beyond the preview at 360px.",
       "rootCause": "An inline-flex wrapper and fixed 20rem dialog retained desktop intrinsic width inside a narrow preview.",
-      "affectedFiles": ["resources/ai/floating-ai-assistant/index.tsx"],
+      "affectedFiles": [
+        "resources/ai/floating-ai-assistant/index.tsx"
+      ],
       "remediation": "Use a full-width wrapper capped at the existing 20rem maximum and let the dialog inherit the available width.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-floating-ai-assistant-360.png",
       "screenshotBefore": null,
@@ -738,7 +750,9 @@
       "expected": "Rewrite tones and acceptance actions should wrap within the preview.",
       "actual": "The tone and action controls remained on a single row and overflowed the 360px preview.",
       "rootCause": "The toolbar grouped keyboard hint, tone buttons and actions in non-wrapping flex rows.",
-      "affectedFiles": ["resources/ai/inline-ai-rewrite/index.tsx"],
+      "affectedFiles": [
+        "resources/ai/inline-ai-rewrite/index.tsx"
+      ],
       "remediation": "Allow the header and tone/action groups to wrap and permit the keyboard hint to occupy its own compact row.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-inline-ai-rewrite-360.png",
       "screenshotBefore": null,
@@ -758,7 +772,9 @@
       "expected": "Filter chips should wrap into multiple rows at compact widths.",
       "actual": "The category filter controls rendered as one unbreakable row wider than the preview.",
       "rootCause": "The filter container used a centered flex row without wrapping.",
-      "affectedFiles": ["resources/sections/integration-directory-preview/index.tsx"],
+      "affectedFiles": [
+        "resources/sections/integration-directory-preview/index.tsx"
+      ],
       "remediation": "Enable wrapping for the category chips while preserving centered alignment.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-integration-directory-preview-360.png",
       "screenshotBefore": null,
@@ -778,7 +794,9 @@
       "expected": "Density, mode and status controls should wrap within the demo card.",
       "actual": "The demo controls and preview status were constrained to desktop-width rows.",
       "rootCause": "The density and mode control groups and status row used non-wrapping flex layouts.",
-      "affectedFiles": ["resources/sections/interactive-demo-hero/index.tsx"],
+      "affectedFiles": [
+        "resources/sections/interactive-demo-hero/index.tsx"
+      ],
       "remediation": "Allow each control group and the preview status row to wrap at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-interactive-demo-hero-360.png",
       "screenshotBefore": null,
@@ -798,7 +816,9 @@
       "expected": "Brand, menu links and launch control should reflow within the viewport.",
       "actual": "A fixed-height single-row navigation and dropdown padding exceeded the preview width.",
       "rootCause": "The navigation forced all controls into one line and used desktop-only menu spacing.",
-      "affectedFiles": ["resources/shells/mega-nav/index.tsx"],
+      "affectedFiles": [
+        "resources/shells/mega-nav/index.tsx"
+      ],
       "remediation": "Allow the navigation and menu grid to wrap, reduce compact padding, and use a minimum rather than fixed height.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-mega-nav-360.png",
       "screenshotBefore": null,
@@ -818,7 +838,9 @@
       "expected": "Series controls and chart content should wrap and scale inside the preview.",
       "actual": "The legend controls stayed on a single row and widened the preview document.",
       "rootCause": "Legend buttons were held in a fixed horizontal flex row next to the chart heading.",
-      "affectedFiles": ["resources/data/multi-series-line-chart/index.tsx"],
+      "affectedFiles": [
+        "resources/data/multi-series-line-chart/index.tsx"
+      ],
       "remediation": "Allow legend buttons to wrap and cap the legend container to the available width.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-multi-series-line-chart-360.png",
       "screenshotBefore": null,
@@ -933,6 +955,258 @@
       ],
       "remediation": "Allow the brand and navigation groups to wrap within the preview, reduce compact CTA padding, and test document width and item overlap at 360px and 390px in browser.",
       "fixCommit": "4f2fc5a821ce66eab7cd44ec97eb64726427a7e8",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-046",
+      "severity": "medium",
+      "route": "/resources/timeline/",
+      "viewport": "360x844",
+      "category": "state",
+      "title": "Timeline showed a blank panel when there were no events",
+      "expected": "An empty event list should explain that there is no activity yet.",
+      "actual": "After passing an empty events array, the title remained but the event area was blank with no accessible status.",
+      "reproduction": [
+        "Open /resources/timeline/ at 360x844.",
+        "Set the live preview events prop to an empty array.",
+        "Observe that the timeline body contains no status or guidance."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/state-captures/timeline-empty-360.png",
+      "screenshotBefore": "audit/evidence/step-06/before/state-captures/timeline-empty-360-before.png",
+      "baselineScreenshotStatus": null,
+      "rootCause": "Timeline mapped events directly and had no zero-event rendering branch.",
+      "affectedFiles": [
+        "resources/blocks/timeline/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Render a polite empty-state status when the event list is empty and cover both empty and long event lists in a browser regression.",
+      "fixCommit": "65d094086a68ea0966e8e96d99f4d8e66caa7d4e",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-047",
+      "severity": "medium",
+      "route": "/resources/dashboard-kpi-grid/",
+      "viewport": "360x844",
+      "category": "state",
+      "title": "Dashboard KPI grid showed no explanation when there were no cards",
+      "expected": "An empty metrics array should explain that no metrics are available yet.",
+      "actual": "An empty cards array left the dashboard title over an empty content area with no accessible status.",
+      "reproduction": [
+        "Open /resources/dashboard-kpi-grid/ at 360x844.",
+        "Set the live preview cards prop to an empty array.",
+        "Observe that the metrics region is blank."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/state-captures/dashboard-kpi-grid-empty-360.png",
+      "screenshotBefore": "audit/evidence/step-06/before/state-captures/dashboard-kpi-grid-empty-360-before.png",
+      "baselineScreenshotStatus": null,
+      "rootCause": "The KPI grid mapped cards directly and had no zero-card state.",
+      "affectedFiles": [
+        "resources/blocks/dashboard-kpi-grid/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Render a polite empty-state status when the card list is empty and exercise empty and long, large datasets in a browser regression.",
+      "fixCommit": "65d094086a68ea0966e8e96d99f4d8e66caa7d4e",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-048",
+      "severity": "medium",
+      "route": "/resources/notification-centre/",
+      "viewport": "360x844",
+      "category": "state",
+      "title": "Empty notification centre left an enabled action with no result",
+      "expected": "With no notifications, the preview should show an empty-state message and disable Mark all as read.",
+      "actual": "The empty notification list had no status message. Mark all as read remained enabled and produced no visible result.",
+      "reproduction": [
+        "Open /resources/notification-centre/ at 360x844.",
+        "Set the preview events prop to an empty array.",
+        "Inspect the blank list and activate Mark all as read."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/state-captures/notification-centre-empty-360.png",
+      "screenshotBefore": "audit/evidence/step-06/before/state-captures/notification-centre-empty-360-before.png",
+      "baselineScreenshotStatus": null,
+      "rootCause": "The component had no zero-item state or unread-item guard for the action.",
+      "affectedFiles": [
+        "resources/blocks/notification-centre/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Show an accessible empty state and disable the action when there are no unread notifications.",
+      "fixCommit": "65d094086a68ea0966e8e96d99f4d8e66caa7d4e",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-049",
+      "severity": "medium",
+      "route": "/resources/notification-centre/",
+      "viewport": "360x844",
+      "category": "state",
+      "title": "Notification centre ignored event data updates after mount",
+      "expected": "New event props should replace stale preview data and render the supplied notifications.",
+      "actual": "After an empty list was shown, updating events with 50 notifications did not render the final supplied event.",
+      "reproduction": [
+        "Open /resources/notification-centre/ at 360x844.",
+        "Set events to an empty array, then update events with 50 notifications.",
+        "Look for the 50th supplied notification; it does not appear."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/state-captures/notification-centre-large-360.png",
+      "screenshotBefore": "audit/evidence/step-06/before/state-captures/notification-centre-empty-360-before.png",
+      "baselineScreenshotStatus": null,
+      "rootCause": "The events prop was read only by the useState initializer, so later host updates did not synchronize the local list.",
+      "affectedFiles": [
+        "resources/blocks/notification-centre/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Synchronize local read-state records when the events input changes, then verify incoming data and keyboard interaction through the isolated preview.",
+      "fixCommit": "65d094086a68ea0966e8e96d99f4d8e66caa7d4e",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-050",
+      "severity": "medium",
+      "route": "/resources/notification-centre/",
+      "viewport": "360x844",
+      "category": "accessibility",
+      "title": "Mark all as read gave no accessible confirmation",
+      "expected": "Marking unread notifications should announce how many were updated and disable the completed action.",
+      "actual": "The original action updated local read styling silently; there was no status region or confirmation for keyboard and assistive-technology users.",
+      "reproduction": [
+        "Open /resources/notification-centre/ at 360x844 with unread notifications.",
+        "Focus Mark all as read and press Enter.",
+        "Observe that no status announces the completed update."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/state-captures/notification-centre-read-feedback-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The original run retained the empty-state baseline and failing role=status assertion; it did not retain an after-click screenshot from the pre-fix bundle.",
+      "rootCause": "The action only changed item styling and did not set or render an accessible result message.",
+      "affectedFiles": [
+        "resources/blocks/notification-centre/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Announce the updated notification count in a polite live status and disable the action when no unread item remains.",
+      "fixCommit": "65d094086a68ea0966e8e96d99f4d8e66caa7d4e",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-051",
+      "severity": "medium",
+      "route": "/resources/time-series-chart/",
+      "viewport": "360x844",
+      "category": "state",
+      "title": "Empty time-series chart displayed a false zero reading",
+      "expected": "An empty dataset should report that no data is available and avoid presenting a numeric reading.",
+      "actual": "With data set to an empty array, the chart still showed axes and a 0 req/s metric without an empty-state message.",
+      "reproduction": [
+        "Open /resources/time-series-chart/ at 360x844.",
+        "Set the preview data prop to an empty array.",
+        "Observe the zero metric and chart axes despite there being no samples."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/state-captures/time-series-chart-empty-360.png",
+      "screenshotBefore": "audit/evidence/step-06/before/state-captures/time-series-chart-empty-360-before.png",
+      "baselineScreenshotStatus": null,
+      "rootCause": "The metric fell back to zero when there was no final point, and the renderer did not distinguish empty data from valid zero-valued data.",
+      "affectedFiles": [
+        "resources/data/time-series-chart/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Render an accessible no-data state, omit the numeric metric and axes for an empty array, and test recovery when data arrives.",
+      "fixCommit": "65d094086a68ea0966e8e96d99f4d8e66caa7d4e",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-052",
+      "severity": "medium",
+      "route": "/resources/command-first-nav/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "Command-first navigation overflowed in Linux Chromium at 360px",
+      "expected": "The command-search field, terminal label and status should fit or reflow within the 292px isolated preview.",
+      "actual": "Linux CI measured a 303px preview document inside a 292px frame.",
+      "reproduction": [
+        "Run the Sites Worker catalogue matrix in Linux Chromium.",
+        "Open /resources/command-first-nav/ at a 360px outer viewport.",
+        "Inspect the isolated preview document width."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-command-first-nav-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The failing Linux CI log preserved document/frame width and DOM ancestor geometry; the workflow did not upload screenshots or traces.",
+      "rootCause": "The header forced its title, intrinsically wide command field and status into one fixed-height row with desktop padding.",
+      "affectedFiles": [
+        "resources/shells/command-first-nav/index.tsx",
+        "tests/e2e/catalog-resource-render.spec.ts"
+      ],
+      "remediation": "Move the command field to a full-width row at compact breakpoints, permit the header height to grow, and assert the responsive matrix remains within the iframe.",
+      "fixCommit": "65d094086a68ea0966e8e96d99f4d8e66caa7d4e",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-053",
+      "severity": "medium",
+      "route": "/resources/feature-tabs/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "Feature tab controls overflowed in Linux Chromium at 360px",
+      "expected": "The three selectable audience tabs should wrap or compact within the 292px preview.",
+      "actual": "Linux CI measured a 296px preview document inside a 292px frame.",
+      "reproduction": [
+        "Run the Sites Worker catalogue matrix in Linux Chromium.",
+        "Open /resources/feature-tabs/ at a 360px outer viewport.",
+        "Inspect the tab control group and isolated preview width."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-feature-tabs-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The failing Linux CI log preserved document/frame width and DOM ancestor geometry; the workflow did not upload screenshots or traces.",
+      "rootCause": "Three tab buttons used fixed 24px horizontal padding inside a non-wrapping flex row.",
+      "affectedFiles": [
+        "resources/sections/feature-tabs/index.tsx",
+        "tests/e2e/catalog-resource-render.spec.ts"
+      ],
+      "remediation": "Allow the tab row to wrap and use compact horizontal button padding at small widths; capture 360px and desktop browser evidence.",
+      "fixCommit": "65d094086a68ea0966e8e96d99f4d8e66caa7d4e",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-054",
+      "severity": "medium",
+      "route": "/resources/gradient-accent-text/",
+      "viewport": "360x844",
+      "category": "visual",
+      "title": "Gradient headline container overflowed in Linux Chromium at 360px",
+      "expected": "The expressive headline and container padding should adapt to the 292px preview without widening its document.",
+      "actual": "Linux CI measured a 304px preview document inside a 292px frame.",
+      "reproduction": [
+        "Run the Sites Worker catalogue matrix in Linux Chromium.",
+        "Open /resources/gradient-accent-text/ at a 360px outer viewport.",
+        "Inspect the headline and isolated preview width."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/resource-layout/resources-gradient-accent-text-360.png",
+      "screenshotBefore": null,
+      "baselineScreenshotStatus": "The failing Linux CI log preserved document/frame width and DOM ancestor geometry; the workflow did not upload screenshots or traces.",
+      "rootCause": "The component retained 32px padding and a 30px heading at the preview width, leaving too little room for its longer headline words.",
+      "affectedFiles": [
+        "resources/typography/gradient-accent-text/index.tsx",
+        "tests/e2e/catalog-resource-render.spec.ts"
+      ],
+      "remediation": "Reduce compact-width padding and heading size, allow long headline words to wrap, and certify the 360px resource matrix.",
+      "fixCommit": "65d094086a68ea0966e8e96d99f4d8e66caa7d4e",
       "status": "fixed-awaiting-deployed-verification"
     }
   ]

@@ -603,8 +603,8 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/app-sidebar-expanded-1440-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/app-sidebar-expanded-390-after.png"
+        "test-results/resource-certification/catalog-324/app-sidebar-expanded-1440-after.png",
+        "test-results/resource-certification/catalog-324/app-sidebar-expanded-390-after.png"
       ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/app-sidebar-expanded/"
@@ -878,9 +878,9 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/breadcrumb-header-1440-after.png",
+        "test-results/resource-certification/catalog-324/breadcrumb-header-1440-after.png",
         "audit/evidence/step-06/after/resource-layout/resources-breadcrumb-header-360.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/breadcrumb-header-390-after.png",
+        "test-results/resource-certification/catalog-324/breadcrumb-header-390-after.png",
         "audit/evidence/step-06/after/resource-layout/resources-breadcrumb-header-1440.png"
       ],
       "cancelledRequests": [],
@@ -1070,8 +1070,8 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/centered-top-nav-1440-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/centered-top-nav-390-after.png"
+        "test-results/resource-certification/catalog-324/centered-top-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/centered-top-nav-390-after.png"
       ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/centered-top-nav/"
@@ -1175,8 +1175,8 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/collapsible-sidebar-1440-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/collapsible-sidebar-390-after.png"
+        "test-results/resource-certification/catalog-324/collapsible-sidebar-1440-after.png",
+        "test-results/resource-certification/catalog-324/collapsible-sidebar-390-after.png"
       ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/collapsible-sidebar/"
@@ -1228,7 +1228,10 @@
         "nocturne"
       ],
       "findings": [],
-      "screenshots": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/resource-layout/resources-command-first-nav-360.png",
+        "audit/evidence/step-06/after/resource-layout/resources-command-first-nav-1440.png"
+      ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/command-first-nav/"
     },
@@ -1776,7 +1779,7 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/documentation-shell-390-after.png"
+        "test-results/resource-certification/catalog-324/documentation-shell-390-after.png"
       ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/documentation-shell/"
@@ -2406,7 +2409,10 @@
         "nocturne"
       ],
       "findings": [],
-      "screenshots": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/resource-layout/resources-feature-tabs-360.png",
+        "audit/evidence/step-06/after/resource-layout/resources-feature-tabs-1440.png"
+      ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/feature-tabs/"
     },
@@ -2563,9 +2569,9 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/floating-nav-1440-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/floating-nav-390-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/floating-nav-390-after.png"
+        "test-results/resource-certification/catalog-324/floating-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/floating-nav-390-after.png",
+        "test-results/resource-certification/catalog-324/floating-nav-390-after.png"
       ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/floating-nav/"
@@ -2601,8 +2607,8 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/footer-minimal-1440-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/footer-minimal-390-after.png"
+        "test-results/resource-certification/catalog-324/footer-minimal-1440-after.png",
+        "test-results/resource-certification/catalog-324/footer-minimal-390-after.png"
       ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/footer-minimal/"
@@ -2655,8 +2661,8 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/footer-sitemap-1440-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/footer-sitemap-390-after.png"
+        "test-results/resource-certification/catalog-324/footer-sitemap-1440-after.png",
+        "test-results/resource-certification/catalog-324/footer-sitemap-390-after.png"
       ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/footer-sitemap/"
@@ -2759,7 +2765,10 @@
         "nocturne"
       ],
       "findings": [],
-      "screenshots": [],
+      "screenshots": [
+        "audit/evidence/step-06/after/resource-layout/resources-gradient-accent-text-360.png",
+        "audit/evidence/step-06/after/resource-layout/resources-gradient-accent-text-1440.png"
+      ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/gradient-accent-text/"
     },
@@ -3296,8 +3305,8 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/marketing-nav-cta-1440-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/marketing-nav-cta-390-after.png"
+        "test-results/resource-certification/catalog-324/marketing-nav-cta-1440-after.png",
+        "test-results/resource-certification/catalog-324/marketing-nav-cta-390-after.png"
       ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/marketing-nav-cta/"
@@ -3367,10 +3376,10 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/mega-nav-1440-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/mega-nav-disclosure-after.png",
+        "test-results/resource-certification/catalog-324/mega-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/mega-nav-disclosure-after.png",
         "audit/evidence/step-06/after/resource-layout/resources-mega-nav-360.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/mega-nav-390-after.png",
+        "test-results/resource-certification/catalog-324/mega-nav-390-after.png",
         "audit/evidence/step-06/after/resource-layout/resources-mega-nav-1440.png"
       ],
       "cancelledRequests": [],
@@ -3492,8 +3501,8 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/minimal-top-nav-1440-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/minimal-top-nav-390-after.png"
+        "test-results/resource-certification/catalog-324/minimal-top-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/minimal-top-nav-390-after.png"
       ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/minimal-top-nav/"
@@ -3529,9 +3538,9 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/mobile-drawer-nav-1440-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/mobile-drawer-nav-menu-390-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/mobile-drawer-nav-390-after.png"
+        "test-results/resource-certification/catalog-324/mobile-drawer-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/mobile-drawer-nav-menu-390-after.png",
+        "test-results/resource-certification/catalog-324/mobile-drawer-nav-390-after.png"
       ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/mobile-drawer-nav/"
@@ -4420,8 +4429,8 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/responsive-app-shell-1440-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/responsive-app-shell-390-after.png"
+        "test-results/resource-certification/catalog-324/responsive-app-shell-1440-after.png",
+        "test-results/resource-certification/catalog-324/responsive-app-shell-390-after.png"
       ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/responsive-app-shell/"
@@ -5341,8 +5350,8 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/transparent-solid-nav-1440-after.png",
-        "audit/evidence/step-06/after/browser-captures/catalog-324/transparent-solid-nav-390-after.png"
+        "test-results/resource-certification/catalog-324/transparent-solid-nav-1440-after.png",
+        "test-results/resource-certification/catalog-324/transparent-solid-nav-390-after.png"
       ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/transparent-solid-nav/"
@@ -5531,7 +5540,7 @@
       ],
       "findings": [],
       "screenshots": [
-        "audit/evidence/step-06/after/browser-captures/catalog-324/webhook-management-390-after.png"
+        "test-results/resource-certification/catalog-324/webhook-management-390-after.png"
       ],
       "cancelledRequests": [],
       "url": "http://127.0.0.1:4323/resources/webhook-management/"

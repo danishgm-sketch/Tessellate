@@ -8,7 +8,21 @@
     "passed": 73,
     "skipped": 15,
     "failed": 0,
-    "flagshipAcceptance": "passed"
+    "flagshipAcceptance": "passed",
+    "axeChecks": {
+      "desktop": [
+        "homepage",
+        "showcases",
+        "explore"
+      ],
+      "mobile": [
+        "homepage",
+        "showcases",
+        "explore"
+      ]
+    },
+    "responsive": "passed",
+    "standaloneReactExport": "passed"
   },
   "sitesWorkerSuite": {
     "total": 5,
@@ -18,7 +32,15 @@
   },
   "catalogueCertification": {
     "resources": 324,
-    "defaultPreviewWidths": [360, 390, 430, 768, 1024, 1280, 1440],
+    "defaultPreviewWidths": [
+      360,
+      390,
+      430,
+      768,
+      1024,
+      1280,
+      1440
+    ],
     "variantsRenderedAtWidth": 1440,
     "variantsRendered": 972,
     "findings": 0,
@@ -29,15 +51,23 @@
   "goldCertification": {
     "resources": 40,
     "variants": 120,
-    "widths": [360, 390, 430, 768, 1024, 1280, 1440],
+    "widths": [
+      360,
+      390,
+      430,
+      768,
+      1024,
+      1280,
+      1440
+    ],
     "keyboard": "enabled controls tested for tab reachability, visible focus, Enter activation, and visible response",
     "reducedMotion": "preference exercised across all 40 renderers",
     "findings": 0,
     "report": "audit/evidence/step-06/results/gold-40-e2e-final.json"
   },
   "goldStateFixtures": {
-    "resources": 2,
-    "passed": 2,
+    "resources": 6,
+    "passed": 6,
     "findings": 0,
     "consoleErrors": 0,
     "pageErrors": 0,
@@ -47,7 +77,10 @@
   },
   "marketingCtaResponsive": {
     "route": "/resources/marketing-nav-cta/",
-    "viewports": ["360x844", "390x844"],
+    "viewports": [
+      "360x844",
+      "390x844"
+    ],
     "overflow": false,
     "overlap": false,
     "consoleErrors": 0,
@@ -55,9 +88,22 @@
     "httpErrors": 0,
     "report": "audit/evidence/step-06/results/marketing-nav-cta-responsive.json"
   },
+  "compactResourceOverflowRegression": {
+    "routes": [
+      "/resources/command-first-nav/",
+      "/resources/feature-tabs/",
+      "/resources/gradient-accent-text/"
+    ],
+    "viewport": "360x844",
+    "catalogueFindings": 0,
+    "report": "audit/evidence/step-06/results/catalog-324-e2e-final.json"
+  },
   "canonicalResourceRoute": {
     "route": "/r/ai-prompt-hero/",
-    "viewports": ["390x844", "1440x900"],
+    "viewports": [
+      "390x844",
+      "1440x900"
+    ],
     "status": "passed"
   }
 }

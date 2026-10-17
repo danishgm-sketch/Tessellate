@@ -20,18 +20,18 @@ this step.
 | Canonical `/r/:slug` route | PASS locally — `/r/ai-prompt-hero/` returned HTTP 200 at 390x844 and 1440x900 with exact title/heading, live preview, no browser errors or overflow; desktop preview measured 764px. |
 | 40-resource Gold browser matrix | PASS locally — all 120 Gold variants at 360, 390, 430, 768, 1024, 1280 and 1440px; isolated iframe preserved; zero findings. Final report: [`gold-40-e2e-final.json`](../audit/evidence/step-06/results/gold-40-e2e-final.json), with 120 browser captures preserved in the same evidence tree. |
 | Gold keyboard/reduced-motion checks | PASS locally — 33 enabled controls were keyboard reachable with visible focus and produced expected feedback; reduced-motion preference reached all 40 renderers. |
-| Gold data-resource state fixtures | PASS locally for `advanced-data-table` and `kanban-board` at 360x844 — empty states, 100-row/20-task inputs, long content, filter/checkbox/task keyboard interactions, document width, console/page errors and failed/HTTP-error requests. Screenshots and machine diagnostics: [`gold-resource-states-final.json`](../audit/evidence/step-06/results/gold-resource-states-final.json). |
+| Gold data-resource state fixtures | PASS locally for `advanced-data-table`, `timeline`, `dashboard-kpi-grid`, `notification-centre`, `time-series-chart` and `kanban-board` at 360x844 — empty states, large inputs, long content, filtering, keyboard actions, notification prop updates, document width, and console/page/network diagnostics. Screenshots and machine diagnostics: [`gold-resource-states-final.json`](../audit/evidence/step-06/results/gold-resource-states-final.json). |
 | Linux compact-header regression | PASS locally — `marketing-nav-cta` at outer widths 360px and 390px measured exact document/frame widths of 292/292px and 322/322px, no overlap, console errors or failed/HTTP requests. The prior Linux CI failure measured 316–321px inside a 292px frame; before evidence is retained as a log excerpt because CI did not upload screenshots. After screenshots and machine diagnostics: [`marketing-nav-cta-responsive.json`](../audit/evidence/step-06/results/marketing-nav-cta-responsive.json). |
 | Navigation/control regression | PASS locally — all 324 previews were checked for dead fragment links; visible action feedback, mega-menu disclosure and mobile drawer behavior passed. |
 | `pnpm typecheck` | PASS — all 22 workspace packages. |
 | `pnpm lint` | PASS — 0 errors, 51 existing warnings. |
 | `pnpm test` | PASS — 54 files, 612 tests. |
 | `pnpm audit:all` | PASS — 16/16 release gates, build, bundle budgets, catalogue licence/provenance and secret/security audits. |
-| `pnpm test:e2e` | PASS — 73/88 regular browser tests passed, 15 explicitly skipped; all 5 Sites Worker tests passed. The flagship acceptance journey, standalone export browser build, Gold state fixtures and compact-header cross-platform regression passed. Aggregate: [`e2e-suite-final.json`](../audit/evidence/step-06/results/e2e-suite-final.json). |
+| `pnpm test:e2e` | PASS — 73/88 regular browser tests passed, 15 explicitly skipped; all 5 Sites Worker tests passed. The flagship acceptance journey and standalone export passed; Gold state fixtures cover six resources; compact-width regressions and the 324-resource matrix passed. Aggregate: [`e2e-suite-final.json`](../audit/evidence/step-06/results/e2e-suite-final.json). |
 
-The full catalogue and Gold browser reports reference 177 saved screenshots
+The full catalogue and Gold browser reports reference 180 saved screenshots
 under `audit/evidence/step-06/after/` and record zero missing screenshot paths.
-The additional state and marketing-header reports reference six saved screenshots.
+The additional state and marketing-header reports reference 16 after-state screenshots; four baseline empty-state screenshots are preserved separately. All 196 unique screenshot paths referenced by the final local reports exist.
 
 An earlier catalogue-matrix attempt recorded 39 iframe execution-context errors
 when the test switched variants before the prior preview finished loading. The
@@ -41,28 +41,33 @@ official run completed with zero such errors, failed requests or cancellations.
 
 ## Findings and remediation
 
-The local browser audit has **45 defects** recorded: 6 High and 39 Medium. The
+The local browser audit has **54 defects** recorded: 6 High and 48 Medium. The
 original 29 include enabled actions without behavior, 52 placeholder navigation
 links, compact-width overflows, an undisclosed menu state and an unsupported
 operational-status claim. The expanded resource matrix found a malformed Astro
 resource-detail title/layout, 11 compact-preview overflows and a separate narrow
-activity-text and cross-platform header regressions. Every issue has its own machine-readable record with
+activity-text and cross-platform header regressions. A Linux CI run later exposed
+three additional 360px preview overflows in command-first navigation, feature tabs
+and gradient accent text; each now has a responsive fix and passed the rebuilt
+324-resource browser matrix. Every issue has its own machine-readable record with
 reproduction, root cause, affected code, remediation and evidence references in
 [audit/RUNTIME_AUDIT.md](../audit/RUNTIME_AUDIT.md) and
-[audit/runtime-audit.json](../audit/runtime-audit.json). The state probe found
-two additional defects: a blank advanced-data-table body for empty/filter-miss
-results, and no guidance when kanban-board had no columns. Each was reproduced
-before fixing and now passes the browser state regression.
+[audit/runtime-audit.json](../audit/runtime-audit.json). The data-state probe
+found eight defects across the advanced table, timeline, KPI grid, notifications,
+time-series chart and kanban board. These include blank empty states, stale
+notification inputs, missing action feedback and a false zero chart value. Each
+was reproduced before fixing and now passes the browser state regression.
 
-All 45 fixes pass local resource-specific browser regressions and the full
+All 54 fixes pass local resource-specific browser regressions and the full
 catalogue/Gold render matrices. Their machine-readable status remains
 `fixed-awaiting-deployed-verification`; none is closed because the public review
-Site has not been updated and re-audited. Before and
-after screenshots are under `audit/evidence/step-06/`; 10 of the 11 newly found
-overflow defects have no retained before screenshot because their original
-Playwright output directory was cleared before preservation. This evidence gap
-is recorded in each corresponding issue; no screenshot has been reconstructed
-or presented as a baseline.
+Site has not been updated and re-audited. Before and after screenshots are
+under `audit/evidence/step-06/`. Ten of the 11 earlier catalogue overflow
+defects have no retained before screenshot because their original Playwright
+output directory was cleared before preservation. The three later Linux CI
+findings also have no screenshot baseline; their measured widths and DOM
+geometry are recorded in the CI log excerpt. These evidence gaps are recorded
+per issue; no screenshot has been reconstructed or presented as a baseline.
 
 ## Changes made
 
@@ -78,17 +83,21 @@ or presented as a baseline.
 - Added repeatable browser matrices for all 324 default previews at seven widths,
   all 972 declared catalogue variants at desktop, all Gold variants across seven
   widths, plus exact `/r` route and narrow-content regression checks.
-- Added isolated state fixtures for empty, long and large datasets in two Gold
-  data resources, including keyboard actions and runtime/network diagnostics.
+- Added isolated state fixtures for empty, long and large datasets in six Gold
+  data resources, including keyboard actions, notification updates and
+  runtime/network diagnostics.
 - Corrected the marketing CTA header after Linux CI measured overflow that was
   not reproduced by the initial Windows matrix; retained the failing CI geometry,
   added 360/390px overlap/overflow checks and saved after screenshots.
+- Corrected three compact resource layouts identified by Linux CI: command-first
+  navigation now reflows its search field, feature tabs wrap with compact spacing,
+  and gradient headlines reduce padding/type size and wrap long words.
 
 ## Remaining before Step 06 can close
 
 - Expand Gold state coverage to interactive, loading, error, empty, long-text and
   large-data cases for every applicable resource, including disabled states. The
-  new fixtures cover only two data resources and do not certify every Gold state.
+  new fixtures cover six data resources and do not certify every Gold state.
 - Verify screen-reader semantics and contrast in real browser runs. Keyboard,
   visible-focus and reduced-motion checks are recorded above; they do not replace
   screen-reader or contrast evidence.
@@ -98,5 +107,5 @@ or presented as a baseline.
   This was test instrumentation, not a product request; the CSP remains intact.
 - Run the same regression matrix against a published review Site during the
   public-RC phase before recording deployed closure.
-- Verify the Linux CI run for the compact-header regression before considering
-  the cross-platform finding fully closed.
+- Push the fixes and confirm a fresh Linux CI run before considering the
+  cross-platform findings fully closed.
