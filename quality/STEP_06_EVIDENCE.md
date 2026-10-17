@@ -31,7 +31,7 @@ this step.
 
 The full catalogue and Gold browser reports reference 180 saved screenshots
 under `audit/evidence/step-06/after/` and record zero missing screenshot paths.
-The additional state and marketing-header reports reference 16 after-state screenshots; four baseline empty-state screenshots are preserved separately. All 196 unique screenshot paths referenced by the final local reports exist.
+The additional state and marketing-header reports reference 16 after-state screenshots; four earlier empty-state baselines plus two Kanban copy baselines are preserved separately. All 231 unique screenshot paths referenced by the runtime audit and final E2E reports exist.
 
 An earlier catalogue-matrix attempt recorded 39 iframe execution-context errors
 when the test switched variants before the prior preview finished loading. The
@@ -41,7 +41,7 @@ official run completed with zero such errors, failed requests or cancellations.
 
 ## Findings and remediation
 
-The local browser audit has **54 defects** recorded: 6 High and 48 Medium. The
+The local browser audit has **56 defects** recorded: 6 High and 50 Medium. The
 original 29 include enabled actions without behavior, 52 placeholder navigation
 links, compact-width overflows, an undisclosed menu state and an unsupported
 operational-status claim. The expanded resource matrix found a malformed Astro
@@ -57,8 +57,12 @@ found eight defects across the advanced table, timeline, KPI grid, notifications
 time-series chart and kanban board. These include blank empty states, stale
 notification inputs, missing action feedback and a false zero chart value. Each
 was reproduced before fixing and now passes the browser state regression.
+The Kanban review additionally found an empty-state message that promised
+unavailable add actions and fabricated resource totals in its sample tasks;
+both content defects have failing-before/passing-after browser assertions and
+before/after screenshots.
 
-All 54 fixes pass local resource-specific browser regressions and the full
+All 56 fixes pass local resource-specific browser regressions and the full
 catalogue/Gold render matrices. Their machine-readable status remains
 `fixed-awaiting-deployed-verification`; none is closed because the public review
 Site has not been updated and re-audited. Before and after screenshots are

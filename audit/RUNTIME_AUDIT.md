@@ -6,7 +6,7 @@ Machine-readable findings and their current status are in
 [`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
 published review version during the public-RC phase.
 
-**Current disposition:** 54 findings (6 High, 48 Medium). The six data-state fixes and three compact-width fixes have passed the rebuilt local browser matrix. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited. A fresh GitHub Linux CI run is still required for the cross-platform fixes.
+**Current disposition:** 56 findings (6 High, 50 Medium). The data-state, compact-width and Kanban copy fixes have passed local browser regressions. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited. A fresh GitHub Linux CI run is still required for the cross-platform fixes.
 
 The latest `pnpm test:e2e` run passed: 73 regular browser tests, 15 explicitly skipped tests, and all 5 Sites Worker tests. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Six Gold data-resource fixtures cover empty and large inputs, long text, keyboard interaction and notification updates. The three Linux-discovered compact overflows now pass the complete local matrix. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
@@ -572,3 +572,21 @@ with zero findings. That harness race is not counted as a product defect.
 - Affected code: `resources/typography/gradient-accent-text/index.tsx`, `tests/e2e/catalog-resource-render.spec.ts`.
 - Remediation: reduce compact-width padding and heading size, and allow long headline words to wrap.
 - Verification: the rebuilt 324-resource matrix passed at all seven widths with zero findings; status remains `fixed-awaiting-deployed-verification` pending Linux CI and public review re-audit.
+
+### AUD-055 — Empty Kanban state suggested unavailable add actions
+
+- Evidence: the before capture shows an empty status telling the user to add a column or task, while the preview exposes no add controls. The after capture states the board condition without promising an action.
+- Reproduction: open `/resources/kanban-board/` at 360x844, set `columns` to an empty array, and inspect the status and controls.
+- Root cause: the empty-state copy described add functionality that the standalone resource does not implement.
+- Affected code: `resources/blocks/kanban-board/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
+- Remediation: use a factual empty-state status and assert the empty preview does not promise absent actions.
+- Regression: the Sites Worker browser test first failed on the old status, then passed with the updated status and zero buttons in the empty state. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.
+
+### AUD-056 — Kanban sample tasks displayed fabricated catalogue counts
+
+- Evidence: the before capture contains “Scale 56 application blocks”, “72 Marketing sections verified” and “44 Primitives complete”. The after capture uses representative onboarding tasks without product totals.
+- Reproduction: open `/resources/kanban-board/` at 360x844 and inspect the default task cards.
+- Root cause: the default demo fixture embedded unsupported product counts in task text.
+- Affected code: `resources/blocks/kanban-board/index.tsx`, `tests/e2e/gold-resource-state-certification.spec.ts`.
+- Remediation: replace fabricated totals with representative onboarding tasks and assert those false claims are absent in the browser preview.
+- Regression: the Sites Worker browser test failed when the old metric was visible; the rebuilt 40-resource Gold matrix and updated six-resource state test pass. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.

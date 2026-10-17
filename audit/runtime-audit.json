@@ -1208,6 +1208,60 @@
       "remediation": "Reduce compact-width padding and heading size, allow long headline words to wrap, and certify the 360px resource matrix.",
       "fixCommit": "65d094086a68ea0966e8e96d99f4d8e66caa7d4e",
       "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-055",
+      "severity": "medium",
+      "route": "/resources/kanban-board/",
+      "viewport": "360x844",
+      "category": "content",
+      "title": "Empty Kanban state suggested unavailable add actions",
+      "expected": "The empty board should state its condition without implying the preview can add columns or tasks.",
+      "actual": "The status said \"Add a column or task to get started\" although the resource exposes no add controls.",
+      "reproduction": [
+        "Open /resources/kanban-board/ at 360x844.",
+        "Set columns to an empty array in the preview.",
+        "Read the empty status and inspect available controls; there is no add action."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/state-captures/kanban-board-empty-360.png",
+      "screenshotBefore": "audit/evidence/step-06/before/state-captures/kanban-board-empty-misleading-360.png",
+      "rootCause": "The empty-state copy described add functionality that the standalone resource does not implement.",
+      "affectedFiles": [
+        "resources/blocks/kanban-board/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Use a factual empty-state status and assert the empty preview does not promise absent actions.",
+      "fixCommit": "62972d7c82ef35dad3af9427c91203080e240ea6",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-056",
+      "severity": "medium",
+      "route": "/resources/kanban-board/",
+      "viewport": "360x844",
+      "category": "content",
+      "title": "Kanban sample tasks displayed fabricated Tessellate catalogue counts",
+      "expected": "The sample board should use representative tasks without asserting unsupported product totals.",
+      "actual": "Default tasks claimed \"Scale 56 application blocks\", \"72 Marketing sections verified\" and \"44 Primitives complete\".",
+      "reproduction": [
+        "Open /resources/kanban-board/ at 360x844.",
+        "Inspect the default task cards.",
+        "Observe the three unsubstantiated catalogue totals."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/after/browser-captures/gold-40/kanban-board-360.png",
+      "screenshotBefore": "audit/evidence/step-06/before/state-captures/kanban-board-fake-counts-360.png",
+      "rootCause": "The default demo fixture embedded hard-coded product counts in task text.",
+      "affectedFiles": [
+        "resources/blocks/kanban-board/index.tsx",
+        "tests/e2e/gold-resource-state-certification.spec.ts"
+      ],
+      "remediation": "Replace fabricated totals with representative onboarding tasks and add browser assertions against the false claims.",
+      "fixCommit": "62972d7c82ef35dad3af9427c91203080e240ea6",
+      "status": "fixed-awaiting-deployed-verification"
     }
   ]
 }
