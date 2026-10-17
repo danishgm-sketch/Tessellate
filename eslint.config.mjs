@@ -6,12 +6,17 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   {
     ignores: [
+      '**/.claude/**',
       '**/dist/**',
+      '**/.static/**',
+      '**/.wrangler/**',
       '**/build/**',
       '**/.astro/**',
-      '**/.wrangler/**',
       '**/node_modules/**',
       '**/coverage/**',
+      '**/test-results/**',
+      '**/playwright-report/**',
+      'audit/evidence/**/standalone/**',
     ],
   },
   {

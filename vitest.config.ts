@@ -27,6 +27,7 @@ export default defineConfig({
     },
   },
   test: {
+    maxWorkers: 4,
     globals: true,
     environment: 'node',
     include: [
@@ -34,6 +35,7 @@ export default defineConfig({
       'packages/**/*.test.tsx',
       'apps/**/*.test.ts',
       'tests/**/*.test.ts',
+      'tests/**/*.test.tsx',
     ],
   },
 });

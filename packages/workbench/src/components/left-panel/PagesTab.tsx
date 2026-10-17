@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
+import { cloneNodeWithNewIds } from '../../utils/tree-helpers.js';
 import type { ProjectScreen } from '@tessellate/schemas';
 import {
   FileText,
@@ -71,7 +72,7 @@ export function PagesTab() {
       screenNodeId: dupId,
       name: `${screen.name} (Copy)`,
       slug: `${screen.slug}-copy`,
-      rootNode: JSON.parse(JSON.stringify(screen.rootNode)),
+      rootNode: cloneNodeWithNewIds(screen.rootNode,dupId),
     };
     addScreen(duplicated);
   };
@@ -79,7 +80,7 @@ export function PagesTab() {
   return (
     <div data-testid="pages-tab" className="p-4 space-y-4 text-xs">
       <div className="flex items-center justify-between">
-        <span className="text-[10px] uppercase font-mono tracking-wider text-[#8B8F97]">
+        <span className="text-[10px] uppercase font-mono tracking-wider text-[var(--text-muted)]">
           Screens & Navigation ({manifest.screens.length})
         </span>
         <button
@@ -102,7 +103,7 @@ export function PagesTab() {
           </div>
           <input
             type="text"
-            placeholder="Page Title (e.g. Transactions)"
+            aria-label="Page title" placeholder="Page title"
             value={newScreenName}
             onChange={(e) => setNewScreenName(e.target.value)}
             className="w-full rounded border border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#0B0D10] px-2 py-1 text-xs"
@@ -110,7 +111,7 @@ export function PagesTab() {
           />
           <input
             type="text"
-            placeholder="Route Slug (e.g. /transactions)"
+            aria-label="Route slug" placeholder="Route slug"
             value={newScreenSlug}
             onChange={(e) => setNewScreenSlug(e.target.value)}
             className="w-full rounded border border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#0B0D10] px-2 py-1 text-xs font-mono"
@@ -144,17 +145,16 @@ export function PagesTab() {
           return (
             <div
               key={screen.id}
-              onClick={() => setActiveScreen(screen.id)}
               className={`group flex items-center justify-between rounded-xl border p-2.5 cursor-pointer transition-all ${
                 isActive
                   ? 'border-[#2547E8] bg-white dark:border-[#6782FF] dark:bg-[#171B21] shadow-xs'
                   : 'border-[#D9D6CF] bg-[#FAF9F6] hover:bg-white dark:border-[#272C34] dark:bg-[#0B0D10] dark:hover:bg-[#171B21]'
               }`}
             >
-              <div className="flex items-center gap-2.5 overflow-hidden">
+              <button type="button" aria-label={`Select screen ${screen.name}`} aria-pressed={isActive} onClick={()=>setActiveScreen(screen.id)} className="min-w-0 flex-1 flex items-center gap-2.5 overflow-hidden text-left rounded focus-visible:outline-2 focus-visible:outline-[#879DFF]">
                 <FileText
                   className={`h-4 w-4 shrink-0 ${
-                    isActive ? 'text-[#2547E8] dark:text-[#6782FF]' : 'text-[#8B8F97]'
+                    isActive ? 'text-[#2547E8] dark:text-[#879DFF]' : 'text-[var(--text-muted)]'
                   }`}
                 />
                 <div className="overflow-hidden">
@@ -168,21 +168,21 @@ export function PagesTab() {
                       </span>
                     )}
                   </div>
-                  <div className="text-[10px] font-mono text-[#8B8F97] truncate">
+                  <div className="text-[10px] font-mono text-[var(--text-muted)] truncate">
                     {screen.slug}
                   </div>
                 </div>
-              </div>
+              </button>
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="flex items-center gap-1 opacity-100 transition-opacity">
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     handleDuplicate(screen);
                   }}
-                  title="Duplicate screen"
-                  className="p-1 text-[#8B8F97] hover:text-[#111217] dark:hover:text-[#F5F7FA]"
+                  aria-label={`Duplicate ${screen.name}`} title="Duplicate screen"
+                  className="min-h-6 min-w-6 p-1.5 text-[var(--text-muted)] hover:text-[#111217] dark:hover:text-[#F5F7FA]"
                 >
                   <Copy className="h-3 w-3" />
                 </button>
@@ -192,8 +192,8 @@ export function PagesTab() {
                       e.stopPropagation();
                       deleteScreen(screen.id);
                     }}
-                    title="Delete screen"
-                    className="p-1 text-[#8B8F97] hover:text-rose-500"
+                    aria-label={`Delete ${screen.name}`} title="Delete screen"
+                    className="min-h-6 min-w-6 p-1.5 text-[var(--text-muted)] hover:text-rose-500"
                   >
                     <Trash2 className="h-3 w-3" />
                   </button>

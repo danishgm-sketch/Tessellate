@@ -16,6 +16,21 @@ export interface ScreenPlanResult {
   inferredAssumptions: string[];
 }
 
+function canonicalize(value: unknown): string {
+  if (value === null || typeof value !== 'object') return JSON.stringify(value) ?? 'null';
+  if (Array.isArray(value)) return `[${value.map(canonicalize).join(',')}]`;
+  const record = value as Record<string, unknown>;
+  return `{${Object.keys(record).sort().map((key) => `${JSON.stringify(key)}:${canonicalize(record[key])}`).join(',')}}`;
+}
+
+function stableScreenGraphId(productModel: ProductModel, archetype: string): string {
+  let hash = 0x811c9dc5;
+  for (const character of canonicalize(productModel)) {
+    hash = Math.imul(hash ^ character.charCodeAt(0), 0x01000193);
+  }
+  return `graph-${archetype}-${(hash >>> 0).toString(36)}`;
+}
+
 /**
  * Deterministically constructs a validated ScreenGraph from a ProductModel.
  * Follows required/optional screen rules, groups screens logically, and connects navigation edges.
@@ -249,6 +264,25 @@ export function planScreenGraph(productModel: ProductModel): ScreenPlanResult {
     });
   }
 
+  // Domain-specific screen intents must survive generic planning. A dashboard
+  // keyword does not turn an employee platform into an analytics product.
+  if (productModel.entities.some(entity=>entity.name==='Employee')) {
+    const overview = appNodes.find(screen=>screen.id==='screen-overview');
+    if (overview) { overview.name='Team Overview'; overview.purpose='Employee summary, onboarding progress and team pulse'; overview.expectedData=['employeeSummary','onboardingProgress','teamPulse']; }
+    const directory = appNodes.find(screen=>screen.id==='screen-collection-index');
+    if (directory) {directory.name='People Directory'; directory.slug='/people';}
+    const detail = appNodes.find(screen=>screen.id==='screen-entity-detail');
+    if (detail) {detail.name='Employee Profile'; detail.slug='/people/:id';}
+    const settings = settingsNodes.find(screen=>screen.id==='screen-settings');
+    if (settings) {settings.name='Settings & Policies'; settings.purpose='Organisational policies, notifications and account preferences';}
+    for (const intended of productModel.likelyScreens.filter(screen=>['Teams','Onboarding','Engagement'].includes(screen.name))) {
+      const slug = `/${intended.name.toLowerCase()}`;
+      if (forbiddenScreens.has(intended.name.toLowerCase()) || forbiddenScreens.has(intended.screenType)) continue;
+      const grammar = getScreenClassGrammar(intended.screenType);
+      appNodes.push({id:`screen-${intended.name.toLowerCase()}`,name:intended.name,slug,screenType:intended.screenType,purpose:intended.purpose,jobs:intended.jobs ?? [],required:true,navigationVisibility:'primary',importance:85,expectedData:[],requiredRoles:grammar.requiredRoles,optionalRoles:grammar.optionalRoles});
+    }
+  }
+
   // Enforce explicit required screens
   for (const exp of explicitRequiredScreens) {
     const allNodes = [...marketingNodes, ...appNodes, ...settingsNodes, ...authNodes];
@@ -276,14 +310,14 @@ export function planScreenGraph(productModel: ProductModel): ScreenPlanResult {
   }
 
   // Construct navigation edges
-  const edges: ScreenEdge[] = [
+  const candidateEdges: ScreenEdge[] = [
     { id: 'edge-marketing-to-signin', fromScreenId: 'screen-marketing-home', toScreenId: 'screen-sign-in', label: 'Start building / Sign in' },
     { id: 'edge-signin-to-overview', fromScreenId: 'screen-sign-in', toScreenId: 'screen-overview', label: 'Successful authentication' },
     { id: 'edge-overview-to-collection', fromScreenId: 'screen-overview', toScreenId: 'screen-collection-index', label: 'View all items' },
   ];
 
   if (appNodes.some((n) => n.id === 'screen-entity-detail')) {
-    edges.push({
+    candidateEdges.push({
       id: 'edge-collection-to-detail',
       fromScreenId: 'screen-collection-index',
       toScreenId: 'screen-entity-detail',
@@ -291,8 +325,13 @@ export function planScreenGraph(productModel: ProductModel): ScreenPlanResult {
     });
   }
 
+  const plannedScreenIds = new Set(groups.flatMap((group) => group.screens.map((screen) => screen.id)));
+  const edges = candidateEdges.filter(
+    (edge) => plannedScreenIds.has(edge.fromScreenId) && plannedScreenIds.has(edge.toScreenId)
+  );
+
   const screenGraph = ScreenGraphSchema.parse({
-    id: `graph-${primaryArchetypeTag}-${Date.now().toString(36)}`,
+    id: stableScreenGraphId(productModel, primaryArchetypeTag),
     groups,
     edges,
   });

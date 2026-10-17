@@ -1,130 +1,30 @@
-import React from 'react';
+import {assertContentShape} from '../../utils/content-shape.js';
+import React, { useState } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { findNodeById } from '../../utils/tree-helpers.js';
-import { Edit3 } from 'lucide-react';
+import { isScopeLocked } from '../../utils/dna-helpers.js';
+
+function StructuredField({name,value,onApply,disabled}:{name:string;value:unknown;onApply:(value:unknown)=>void;disabled:boolean}) {
+  const [draft,setDraft] = useState(JSON.stringify(value,null,2));
+  const [error,setError] = useState('');
+  return <div className="space-y-2"><label className="block space-y-1"><span>{name} (JSON)</span><textarea aria-label={`${name} JSON`} value={draft} disabled={disabled} onChange={event=>setDraft(event.target.value)} rows={7} className="w-full font-mono border border-[#272C34] bg-[#171B21] rounded p-2" /></label><button disabled={disabled} className="border border-[#6782FF] rounded px-2 py-1" onClick={()=>{try {const parsed:unknown=JSON.parse(draft);assertContentShape(value,parsed,name);onApply(parsed);setError('');} catch(cause){setError(String(cause));}}}>Apply {name}</button>{error && <p role="alert">{error}</p>}</div>;
+}
 
 export function ContentTab() {
-  const manifest = useWorkbenchStore((state) => state.manifest);
-  const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
-  const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
-  const updateNodeProps = useWorkbenchStore((state) => state.updateNodeProps);
-
-  const activeScreen = manifest.screens.find((s) => s.id === activeScreenId);
-  const selectedNode =
-    activeScreen && selectedNodeId
-      ? findNodeById(activeScreen.rootNode, selectedNodeId)
-      : null;
-
-  if (!selectedNode) {
-    return (
-      <div data-testid="content-tab" className="p-6 text-center text-xs text-[#8B8F97] space-y-2">
-        <Edit3 className="h-6 w-6 mx-auto opacity-40" />
-        <p>Select a node on the canvas or layers tree to inspect and edit its content slots.</p>
-      </div>
-    );
-  }
-
-  const props = selectedNode.props ?? {};
-
-  const handlePropChange = (key: string, value: unknown) => {
-    updateNodeProps(selectedNode.id, { [key]: value });
-  };
-
-  return (
-    <div data-testid="content-tab" className="p-4 space-y-4 text-xs overflow-y-auto">
-      <div className="flex items-center justify-between pb-2 border-b border-[#D9D6CF] dark:border-[#272C34]">
-        <div className="font-bold text-[#111217] dark:text-[#F5F7FA]">
-          Content Slots: {selectedNode.semanticRole}
-        </div>
-        <span className="font-mono text-[10px] text-[#8B8F97]">ID: {selectedNode.id}</span>
-      </div>
-
-      {/* Editable Fields based on available props */}
-      <div className="space-y-3">
-        {/* Title / Heading Slot */}
-        {('title' in props || selectedNode.semanticRole.includes('header') || selectedNode.semanticRole.includes('kpi')) && (
-          <div className="space-y-1">
-            <label className="text-[10px] uppercase font-mono text-[#8B8F97] font-semibold">
-              Title / Header Slot
-            </label>
-            <input
-              type="text"
-              value={String(props.title ?? '')}
-              onChange={(e) => handlePropChange('title', e.target.value)}
-              className="w-full rounded-xl border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#171B21] px-3 py-2 text-xs focus:ring-1 focus:ring-[#2547E8]"
-            />
-          </div>
-        )}
-
-        {/* Label Slot */}
-        {('label' in props || selectedNode.semanticRole.includes('button')) && (
-          <div className="space-y-1">
-            <label className="text-[10px] uppercase font-mono text-[#8B8F97] font-semibold">
-              Action Label
-            </label>
-            <input
-              type="text"
-              value={String(props.label ?? '')}
-              onChange={(e) => handlePropChange('label', e.target.value)}
-              className="w-full rounded-xl border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#171B21] px-3 py-2 text-xs focus:ring-1 focus:ring-[#2547E8]"
-            />
-          </div>
-        )}
-
-        {/* Value Slot */}
-        {('value' in props || selectedNode.semanticRole.includes('kpi') || selectedNode.semanticRole.includes('metric')) && (
-          <div className="space-y-1">
-            <label className="text-[10px] uppercase font-mono text-[#8B8F97] font-semibold">
-              Metric Value Display
-            </label>
-            <input
-              type="text"
-              value={String(props.value ?? '')}
-              onChange={(e) => handlePropChange('value', e.target.value)}
-              className="w-full rounded-xl border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#171B21] px-3 py-2 text-xs font-mono font-bold focus:ring-1 focus:ring-[#2547E8]"
-            />
-          </div>
-        )}
-
-        {/* Trend / Change Slot */}
-        {('change' in props || selectedNode.semanticRole.includes('metric')) && (
-          <div className="space-y-1">
-            <label className="text-[10px] uppercase font-mono text-[#8B8F97] font-semibold">
-              Trend / Telemetry Delta
-            </label>
-            <input
-              type="text"
-              value={String(props.change ?? '')}
-              onChange={(e) => handlePropChange('change', e.target.value)}
-              className="w-full rounded-xl border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#171B21] px-3 py-2 text-xs focus:ring-1 focus:ring-[#2547E8]"
-            />
-          </div>
-        )}
-
-        {/* Variant */}
-        {('variant' in props || selectedNode.semanticRole.includes('button')) && (
-          <div className="space-y-1">
-            <label className="text-[10px] uppercase font-mono text-[#8B8F97] font-semibold">
-              Semantic Variant
-            </label>
-            <div className="grid grid-cols-3 gap-2">
-              {['primary', 'secondary', 'outline'].map((v) => (
-                <button
-                  key={v}
-                  onClick={() => handlePropChange('variant', v)}
-                  className={`py-1.5 rounded-lg border text-xs capitalize font-medium ${
-                    props.variant === v
-                      ? 'border-[#2547E8] bg-[#E7EBFF] dark:bg-[#1C2752] text-[#2547E8] dark:text-[#6782FF]'
-                      : 'border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#171B21] text-[#62666F]'
-                  }`}
-                >
-                  {v}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+  const manifest = useWorkbenchStore(state=>state.manifest);
+  const screenId = useWorkbenchStore(state=>state.activeScreenId);
+  const nodeId = useWorkbenchStore(state=>state.selectedNodeId);
+  const update = useWorkbenchStore(state=>state.updateNodeProps);
+  const screen = manifest.screens.find(item=>item.id===screenId);
+  const node = screen && nodeId ? findNodeById(screen.rootNode,nodeId) : null;
+  if(!node) return <div data-testid="content-tab" className="p-4 text-sm">Select a resource in Layers to edit its content.</div>;
+  const locked = isScopeLocked(manifest,screenId,nodeId,'content');
+  const entries = Object.entries(node.props ?? {}).filter(([key])=>!['layoutFamily','navigationModel','divergenceLevel'].includes(key));
+  return <div data-testid="content-tab" className="p-4 space-y-4 text-xs">
+    <h3 className="font-semibold">Content: {node.semanticRole}</h3>
+    {locked && <p role="status">Content is locked. Unlock this node or its ancestor to edit.</p>}
+    {entries.length===0 && <p>This layout container has no content fields. Select one of its resource children.</p>}
+    {entries.map(([name,value])=>typeof value==='object' && value!==null ? <StructuredField key={`${node.id}-${name}`} name={name} value={value} disabled={locked} onApply={changed=>update(node.id,{[name]:changed})}/> :
+      <label key={name} className="block space-y-1"><span>{name}</span>{typeof value==='boolean' ? <input aria-label={name} type="checkbox" checked={value} disabled={locked} onChange={event=>update(node.id,{[name]:event.target.checked})}/> : <input aria-label={name} type={typeof value==='number'?'number':'text'} disabled={locked} value={String(value ?? '')} onChange={event=>update(node.id,{[name]:typeof value==='number'?Number(event.target.value):event.target.value})} className="w-full border border-[#272C34] bg-[#171B21] rounded p-2"/>}</label>)}
+  </div>;
 }

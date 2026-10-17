@@ -1,0 +1,33 @@
+{
+  "recordedAt": "2026-10-13T20:31:45.800Z",
+  "checks": [
+    {
+      "check": "real-model-completion",
+      "result": "PASS",
+      "action": "adjust-dna",
+      "preserveLockedNodes": true
+    },
+    {
+      "check": "host-control-authentication",
+      "result": "PASS"
+    },
+    {
+      "check": "queue-survives-api-container-restart",
+      "result": "PASS"
+    },
+    {
+      "check": "host-stopped-features-unavailable",
+      "result": "PASS",
+      "status": 503,
+      "maximumHeartbeatGraceMs": 15000
+    },
+    {
+      "check": "pending-task-recovers-on-host-resume",
+      "result": "PASS"
+    },
+    {
+      "check": "backend-stopped-network-unavailable",
+      "result": "PASS"
+    }
+  ]
+}

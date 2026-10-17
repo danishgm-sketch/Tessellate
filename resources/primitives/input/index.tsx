@@ -34,11 +34,11 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <input
           ref={ref}
           id={inputId}
-          className={`w-full rounded-lg border px-3 py-2 text-sm outline-none transition-all focus:ring-1 ${borderTheme} ${className}`}
+          className={`w-full rounded-[var(--tess-radius-lg,8px)] border px-3 py-2 text-sm outline-none transition-all focus:ring-1 ${borderTheme} ${className}`}
           {...rest}
         />
         {error && <p className="text-xs text-rose-600">{error}</p>}
-        {!error && helperText && <p className="text-xs text-neutral-500">{helperText}</p>}
+        {!error && helperText && <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">{helperText}</p>}
       </div>
     );
   }

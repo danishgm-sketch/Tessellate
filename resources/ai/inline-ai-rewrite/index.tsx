@@ -28,12 +28,12 @@ export function InlineAIRewrite({ variant = 'quiet' }: InlineAIRewriteProps) {
 
   return (
     <div className={`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>
-      <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
-        <div className="flex items-center gap-2">
+      <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-neutral-100 dark:border-neutral-800">
+        <div className="flex min-w-0 flex-wrap items-center gap-2">
           <span className="text-xs font-semibold">Inline AI Rewrite</span>
           <span className="text-[10px] font-mono text-neutral-400">Ctrl + Shift + R</span>
         </div>
-        <div className="flex gap-1.5">
+        <div className="flex flex-wrap gap-1.5">
           {tones.map((t) => (
             <button
               key={t}

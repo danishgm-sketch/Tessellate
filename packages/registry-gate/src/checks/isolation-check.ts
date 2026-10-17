@@ -11,7 +11,7 @@ export function checkSecurityIsolationGate(code: string): GateCheckResult {
   if (/\b(?:fetch|axios|XMLHttpRequest)\s*\(/.test(code) && !/mock|test/i.test(code)) {
     violations.push('Direct outbound network requests (fetch/axios) inside presentation component');
   }
-  if (/(?:api[_-]?key|secret[_-]?key|auth[_-]?token)\s*=\s*['"][a-zA-Z0-9_\-]{16,}['"]/i.test(code)) {
+  if (/(?:api[_-]?key|secret[_-]?key|auth[_-]?token)\s*=\s*['"][a-zA-Z0-9_-]{16,}['"]/i.test(code)) {
     violations.push('Hardcoded credential or API secret token detected');
   }
 

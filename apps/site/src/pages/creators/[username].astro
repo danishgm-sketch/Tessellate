@@ -2,6 +2,7 @@
 import '../../styles/global.css';
 import { SiteHeader } from '../../components/home/SiteHeader';
 import { FinalComposerFooter } from '../../components/home/FinalComposerFooter';
+import CapabilityNotice from '../../components/CapabilityNotice.astro';
 
 export function getStaticPaths() {
   return [
@@ -28,15 +29,16 @@ const formattedName = username ? username.charAt(0).toUpperCase() + username.sli
     <SiteHeader client:load />
 
     <main id="main-content" class="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 space-y-8">
+      <CapabilityNotice tier="Beta" note="This is a static review profile. Creator accounts, verified identities, usage metrics and account-linked authored-resource lists are not connected." />
       <div class="flex items-center gap-4 p-6 rounded-2xl bg-white border border-[#D9D6CF]">
         <div class="h-16 w-16 rounded-2xl bg-[#2547E8] text-white flex items-center justify-center font-bold text-2xl font-mono">
           {formattedName.charAt(0)}
         </div>
         <div>
           <h1 class="text-2xl font-bold text-[#111217]">{formattedName}</h1>
-          <p class="text-xs text-[#62666F] font-mono">@{username} • Core System Contributor</p>
+          <p class="text-xs text-[#62666F] font-mono">@{username} • Static example profile</p>
           <p class="text-xs text-[#62666F] mt-1">
-            Author of verified canonical primitives and design systems in the Tessellate registry.
+            This route demonstrates the profile layout. It does not verify this identity or associate resources with an authenticated account.
           </p>
         </div>
       </div>
@@ -44,7 +46,7 @@ const formattedName = username ? username.charAt(0).toUpperCase() + username.sli
       <div class="space-y-4">
         <h2 class="text-lg font-bold text-[#111217]">Authored Resources</h2>
         <div class="p-6 rounded-2xl bg-white border border-[#D9D6CF] text-xs text-[#62666F]">
-          Showing canonical components contributed by @{username}. Browse the full catalog at <a href="/explore" class="text-[#2547E8] hover:underline font-semibold">Explore Catalogue</a>.
+          No account-linked resource list is available in this review. Browse the canonical catalogue at <a href="/explore" class="text-[#2547E8] hover:underline font-semibold">Explore Catalogue</a>.
         </div>
       </div>
     </main>

@@ -6,6 +6,7 @@ import { execSync, spawn } from 'node:child_process';
 import { chromium } from '@playwright/test';
 import type { ProjectManifest } from '@tessellate/schemas';
 import { validProjectFixture } from '@tessellate/schemas';
+import { appendGoldResourceVariantParityNodes, appendRendererParityNodes } from '@tessellate/testing';
 import { generateSourceTree } from '../source-tree.js';
 import '../node-disk-resolver.js';
 
@@ -16,7 +17,7 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     ...validProjectFixture,
     id: 'proj-export-fidelity',
     name: 'Omni Telemetry Suite',
-    description: 'High-fidelity standalone test project with 7 distinct architectural components',
+    description: 'High-fidelity standalone test project with 8 distinct architectural components',
     screens: [
       {
         id: 'screen-dashboard',
@@ -139,13 +140,37 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
               slots: {},
               children: [],
             },
+            // 8. Resource props and nested ProjectNode children must reach the same output.
+            {
+              id: 'node-canvas-content',
+              nodeType: 'component',
+              semanticRole: 'workspace-canvas',
+              resourceRef: {
+                id: 'res-canvas-content',
+                slug: 'canvas-workspace-shell',
+                version: '1.0.0',
+              },
+              variant: 'expressive',
+              props: { children: 'Content from resource props' },
+              slots: {},
+              children: [
+                {
+                  id: 'node-nested-content',
+                  nodeType: 'element',
+                  semanticRole: 'content',
+                  props: { children: 'Content from nested manifest node' },
+                  slots: {},
+                  children: [],
+                },
+              ],
+            },
           ],
         },
       },
     ],
   };
 
-  it('resolves actual resource files for all 7 components and preserves variants and slots without generic div fallback', () => {
+  it('resolves actual resource files for all 8 components and preserves variants, slots, and both child sources', () => {
     const sourceTree = generateSourceTree(testProject);
 
     // 1. Verify component files are resolved from disk and emitted to src/components
@@ -156,6 +181,7 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     expect(sourceTree['src/components/EmptyDashboardState.tsx']).toBeDefined();
     expect(sourceTree['src/components/InteractiveGlobe.tsx']).toBeDefined();
     expect(sourceTree['src/components/ParticleConstellation.tsx']).toBeDefined();
+    expect(sourceTree['src/components/CanvasWorkspaceShell.tsx']).toBeDefined();
 
     // 2. Verify screen imports all 7 resolved components
     const screenCode = sourceTree['src/screens/Dashboard.tsx'];
@@ -167,16 +193,27 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     expect(screenCode).toContain("import { EmptyDashboardState } from '../components/EmptyDashboardState';");
     expect(screenCode).toContain("import { InteractiveGlobe } from '../components/InteractiveGlobe';");
     expect(screenCode).toContain("import { ParticleConstellation } from '../components/ParticleConstellation';");
+    expect(screenCode).toContain("import { CanvasWorkspaceShell } from '../components/CanvasWorkspaceShell';");
 
     // 3. Verify screen renders each component preserving variants and slots
-    expect(screenCode).toContain('<MinimalTopNav variant="nocturne" brand="Omni Telemetry" />');
-    expect(screenCode).toContain('<CinematicMediaHero variant="nocturne"');
-    expect(screenCode).toContain('title="Real-Time Planetary Infrastructure"');
-    expect(screenCode).toContain('<AreaChart variant="nocturne" />');
-    expect(screenCode).toContain('<CompactDataTable variant="nocturne" />');
-    expect(screenCode).toContain('<EmptyDashboardState variant="nocturne" />');
-    expect(screenCode).toContain('<InteractiveGlobe variant="nocturne" />');
-    expect(screenCode).toContain('<ParticleConstellation variant="nocturne" />');
+    expect(screenCode).toContain('<MinimalTopNav variant={"nocturne"} brand={"Omni Telemetry"} />');
+    expect(screenCode).toContain('<CinematicMediaHero variant={"nocturne"}');
+    expect(screenCode).toContain('title={"Real-Time Planetary Infrastructure"}');
+    expect(screenCode).toContain('<AreaChart variant={"nocturne"} />');
+    expect(screenCode).toContain('<CompactDataTable variant={"nocturne"} />');
+    expect(screenCode).toContain('<EmptyDashboardState variant={"nocturne"} />');
+    expect(screenCode).toContain('<InteractiveGlobe variant={"nocturne"} />');
+    expect(screenCode).toContain('<ParticleConstellation variant={"nocturne"} />');
+    expect(screenCode).toContain('Content from resource props');
+    expect(screenCode).toContain('Content from nested manifest node');
+
+    const slotProject = JSON.parse(JSON.stringify(testProject)) as ProjectManifest;
+    const slotNode = slotProject.screens[0]!.rootNode.children.find((node) => node.id === 'node-canvas-content')!;
+    slotNode.props = {};
+    slotNode.slots = { children: 'Content from declared resource slot' };
+    const slotScreenCode = generateSourceTree(slotProject)['src/screens/Dashboard.tsx'];
+    expect(slotScreenCode).toContain('Content from declared resource slot');
+    expect(slotScreenCode).toContain('Content from nested manifest node');
 
     // 4. Verify no runtime dependency on @tessellate packages
     const pkg = JSON.parse(sourceTree['package.json']!);
@@ -219,8 +256,40 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     );
   });
 
+  it('rejects an unsupported resource variant instead of exporting a component fallback style', () => {
+    const invalidVariantProject: ProjectManifest = {
+      ...testProject,
+      screens: testProject.screens.map((screen) => ({
+        ...screen,
+        rootNode: {
+          ...screen.rootNode,
+          children: screen.rootNode.children.map((node) => node.id === 'node-canvas-content'
+            ? { ...node, variant: 'unsupported-variant' }
+            : node),
+        },
+      })),
+    };
+
+    expect(() => generateSourceTree(invalidVariantProject)).toThrowError(
+      /Unsupported variant "unsupported-variant" for resource "canvas-workspace-shell"/
+    );
+  });
+
+  it('generates every Gold resource variant from its canonical manifest without fallback nodes', () => {
+    const project = appendGoldResourceVariantParityNodes(testProject);
+    const sourceTree = generateSourceTree(project);
+    const screenCode = sourceTree['src/screens/Dashboard.tsx'];
+
+    expect(screenCode).toBeDefined();
+    for (const node of project.screens[0]!.rootNode.children.filter((item) => item.id.startsWith('gold-parity-'))) {
+      expect(screenCode, `${node.resourceRef?.slug}/${node.variant}`).toContain(node.id);
+      expect(screenCode, `${node.resourceRef?.slug}/${node.variant}`).toContain(`data-resource-variant={${JSON.stringify(node.variant)}}`);
+    }
+  });
+
   it('builds standalone project with real pnpm install and verifies interactive execution in Playwright via vite preview', async () => {
-    const sourceTree = generateSourceTree(testProject);
+    const parityProject = appendRendererParityNodes(appendGoldResourceVariantParityNodes(testProject));
+    const sourceTree = generateSourceTree(parityProject);
 
     // Create a temporary export directory
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'tess-export-live-'));
@@ -240,16 +309,21 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
       });
 
       // 2. Execute pnpm build
-      execSync('pnpm build', {
-        cwd: tempDir,
-        stdio: 'pipe',
-      });
+      try {
+        execSync('pnpm build', {
+          cwd: tempDir,
+          stdio: 'pipe',
+        });
+      } catch (cause) {
+        const error = cause as { stdout?: Buffer | string; stderr?: Buffer | string };
+        throw new Error(`Clean standalone build failed:\n${String(error.stdout ?? '')}\n${String(error.stderr ?? '')}`);
+      }
 
       // 3. Launch resulting preview server using vite preview
       const port = 4192;
-      previewProcess = spawn('pnpm', ['exec', 'vite', 'preview', '--port', String(port), '--strictPort'], {
+      const viteCli = path.join(tempDir, 'node_modules', 'vite', 'bin', 'vite.js');
+      previewProcess = spawn(process.execPath, [viteCli, 'preview', '--port', String(port), '--strictPort'], {
         cwd: tempDir,
-        shell: true,
         stdio: ['ignore', 'pipe', 'pipe'],
       });
 
@@ -285,11 +359,17 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
       const browser = await chromium.launch({ headless: true });
       try {
         const page = await browser.newPage();
+        await page.setViewportSize({ width: 1440, height: 900 });
         const consoleErrors: string[] = [];
+        const failedRequests: string[] = [];
         page.on('console', (msg) => {
           if (msg.type() === 'error') {
             consoleErrors.push(msg.text());
           }
+        });
+        page.on('requestfailed', (request) => failedRequests.push(`${request.method()} ${request.url()}`));
+        page.on('response', (response) => {
+          if (response.status() >= 400) failedRequests.push(`${response.status()} ${response.url()}`);
         });
 
         await page.goto(`http://localhost:${port}`);
@@ -302,8 +382,59 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         const navBrand = page.locator('text=Omni Telemetry').first();
         expect(await navBrand.isVisible()).toBe(true);
 
+        expect(await page.getByText('Content from resource props').first().isVisible()).toBe(true);
+        expect(await page.getByText('Content from nested manifest node').first().isVisible()).toBe(true);
+        const trackingAction = page.locator('[data-tracking-id="parity-action"]');
+        if (await trackingAction.count() === 0) {
+          const beforeDataAttributeFix = path.resolve(process.cwd(), 'audit/evidence/step-07/before/export-data-attribute-dropped.png');
+          fs.mkdirSync(path.dirname(beforeDataAttributeFix), { recursive: true });
+          await page.screenshot({ path: beforeDataAttributeFix, fullPage: true });
+        }
+        expect(await trackingAction.isVisible()).toBe(true);
+        const trackingScreenshot = path.resolve(process.cwd(), 'audit/evidence/step-07/after/export-data-attribute-preserved.png');
+        fs.mkdirSync(path.dirname(trackingScreenshot), { recursive: true });
+        await trackingAction.screenshot({ path: trackingScreenshot });
+
+        for (const node of parityProject.screens[0]!.rootNode.children.filter((item) => item.id.startsWith('gold-parity-'))) {
+          const rendered = page.locator(`[data-node-id="${node.id}"]`);
+          expect(await rendered.count(), `Export ${node.resourceRef?.slug}/${node.variant}`).toBe(1);
+          expect(await rendered.getAttribute('data-resource-variant')).toBe(node.variant);
+          expect(await rendered.locator('[data-testid="unsupported-resource-variant"]').count()).toBe(0);
+        }
+        const selfManagedDialog = page.locator('[data-node-id="gold-parity-dialog-quiet"]');
+        const dialog = selfManagedDialog.getByRole('dialog');
+        expect(await dialog.isVisible()).toBe(true);
+        const dialogScreenshot = path.resolve(process.cwd(), 'audit/evidence/step-07/after/export-dialog-open-1440.png');
+        fs.mkdirSync(path.dirname(dialogScreenshot), { recursive: true });
+        await dialog.screenshot({ path: dialogScreenshot });
+        await page.keyboard.press('Escape');
+        expect(await dialog.count()).toBe(0);
+
+        const hiddenOnMobile = page.locator('[data-node-id="parity-mobile-omit"]');
+        const stackedOnMobile = page.locator('[data-node-id="parity-mobile-stack"]');
+        const collapsedOnMobile = page.locator('[data-node-id="parity-mobile-collapse"]');
+        expect(await hiddenOnMobile.isVisible()).toBe(true);
+        const screenshotPath = path.resolve(process.cwd(), 'audit/evidence/step-07/after/standalone-export-gold-children.png');
+        fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
+        await page.locator('[data-node-id="node-canvas-content"]').screenshot({ path: screenshotPath });
+
+        await page.setViewportSize({ width: 390, height: 844 });
+        const hiddenOnMobileIsVisible = await hiddenOnMobile.isVisible();
+        if (hiddenOnMobileIsVisible) {
+          const beforeResponsiveFix = path.resolve(process.cwd(), 'audit/evidence/step-07/before/export-responsive-override-visible.png');
+          fs.mkdirSync(path.dirname(beforeResponsiveFix), { recursive: true });
+          await page.screenshot({ path: beforeResponsiveFix, fullPage: true });
+        }
+        expect(hiddenOnMobileIsVisible).toBe(false);
+        expect(await stackedOnMobile.evaluate((element) => getComputedStyle(element).flexDirection)).toBe('column');
+        expect(await collapsedOnMobile.evaluate((element) => getComputedStyle(element).overflowY)).toBe('hidden');
+
+        const responsiveScreenshot = path.resolve(process.cwd(), 'audit/evidence/step-07/after/standalone-export-gold-responsive-390.png');
+        await page.locator('[data-node-id="parity-mobile-stack"]').screenshot({ path: responsiveScreenshot });
+
         // 6. Assert no console errors
         expect(consoleErrors).toEqual([]);
+        expect(failedRequests).toEqual([]);
       } finally {
         await browser.close();
       }
@@ -322,5 +453,5 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
       }
       fs.rmSync(tempDir, { recursive: true, force: true });
     }
-  }, 60000);
+  }, 240000);
 });

@@ -41,7 +41,7 @@ export function generateRegistryItem(
     if (fileSpec.kind === 'component' || fileSpec.kind === 'utility' || fileSpec.kind === 'style') {
       const fullPath = path.join(resourceDir, fileSpec.path);
       if (fs.existsSync(fullPath)) {
-        const content = fs.readFileSync(fullPath, 'utf-8');
+        const content = fs.readFileSync(fullPath, 'utf-8').replace(/\r\n/g,'\n');
         files.push({
           path: fileSpec.path,
           content,
@@ -58,7 +58,7 @@ export function generateRegistryItem(
     if (fs.existsSync(indexPath)) {
       files.push({
         path: 'index.tsx',
-        content: fs.readFileSync(indexPath, 'utf-8'),
+        content: fs.readFileSync(indexPath, 'utf-8').replace(/\r\n/g,'\n'),
         type: regType,
         target: `components/ui/${manifest.slug}.tsx`,
       });

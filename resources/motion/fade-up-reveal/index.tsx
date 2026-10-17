@@ -9,6 +9,7 @@ export interface FadeUpRevealProps {
 
 export function FadeUpReveal({ variant = 'quiet', children }: FadeUpRevealProps) {
   const [revealed, setRevealed] = useState(true);
+  const previewBg = variant === 'nocturne' ? 'bg-[#0B0D10] text-white' : 'bg-[#FAF9F6] text-neutral-900';
 
   const cardBg =
     variant === 'nocturne'
@@ -25,28 +26,28 @@ export function FadeUpReveal({ variant = 'quiet', children }: FadeUpRevealProps)
       : 'transition-all duration-300 ease-linear';
 
   return (
-    <div className="w-full flex flex-col gap-4">
+    <div className={`w-full flex flex-col gap-4 ${previewBg}`}>
       <div className="flex justify-end">
         <button
           onClick={() => {
             setRevealed(false);
             setTimeout(() => setRevealed(true), 50);
           }}
-          className="text-xs px-3 py-1 rounded border border-neutral-200 dark:border-neutral-800 text-neutral-500 hover:text-current"
+          className="text-xs px-3 py-1 rounded border border-neutral-200 dark:border-neutral-800 text-[var(--tess-ink-muted,#62666F)] hover:text-current"
         >
           Replay Entrance
         </button>
       </div>
 
       <div
-        className={`w-full p-6 rounded-xl border ${cardBg} ${transitionClass} motion-reduce:transition-none motion-reduce:transform-none ${
+        className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border ${cardBg} ${transitionClass} motion-reduce:transition-none motion-reduce:transform-none ${
           revealed ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
         }`}
       >
         {children ?? (
           <div className="space-y-2">
             <h4 className="text-sm font-semibold tracking-tight">Deterministic Fade-Up Reveal</h4>
-            <p className="text-xs text-neutral-500 leading-relaxed">
+            <p className="text-xs text-[var(--tess-ink-muted,#62666F)] leading-relaxed">
               Entrance animation triggered with CSS transitions. Respects prefers-reduced-motion to eliminate motion sickness.
             </p>
           </div>

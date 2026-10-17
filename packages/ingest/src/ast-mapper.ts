@@ -136,7 +136,7 @@ export function mapSourceFilesToProject(
       id,
       name,
       slug,
-      screenNodeId: rootNode.id,
+      screenNodeId: id,
       rootNode,
     });
   }
@@ -212,11 +212,9 @@ export function mapSourceFilesToProject(
     screens: manifestScreens,
     navigation: {
       model: 'sidebar-fixed',
-      primaryItems: screens.map((s, idx) => ({
-        id: `nav-${s.slug}`,
+      primaryItems: screens.map((s) => ({
         label: s.name,
         targetScreenId: s.id,
-        order: idx + 1,
       })),
     },
     assets: [],

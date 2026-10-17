@@ -1,3 +1,3 @@
 # Footer Developer
 
-Terminal-styled developer footer featuring CLI verification and edge status telemetry.
+Terminal-styled developer footer template. Supply verified build metadata and live status before displaying them.

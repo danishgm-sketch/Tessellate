@@ -277,81 +277,22 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
     await assertZeroUnresolvedResources(page);
 
     // Step 19: Replace a non-locked node with Gold resource (area-chart / bar-chart)
-    const replacedSlug = await page.evaluate((lockedId) => {
-      const store = (window as any).__tessellate_workbench_store__;
-      const manifest = store.getState().manifest;
-      const screen = manifest.screens[0];
-      let candidate: any = null;
-
-      function search(node: any) {
-        if (candidate) return;
-        if (node.id !== lockedId && node.resourceRef && node.nodeType !== 'layout') {
-          candidate = node;
-          return;
-        }
-        if (node.children) {
-          for (const c of node.children) search(c);
-        }
-      }
-      search(screen.rootNode);
-      if (!candidate && screen.rootNode.children) {
-        candidate = screen.rootNode.children.find((c: any) => c.id !== lockedId);
-      }
-
-      if (!candidate) throw new Error('No candidate node found to replace');
-
-      const targetSlug = candidate.resourceRef?.slug === 'area-chart' ? 'bar-chart' : 'area-chart';
-      store.getState().selectNode(candidate.id);
-      store.getState().replaceNodeWithResource(
-        candidate.id,
-        {
-          schemaVersion: '1.0.0',
-          id: `res_gold_${targetSlug}`,
-          slug: targetSlug,
-          name: targetSlug === 'area-chart' ? 'Area Chart' : 'Bar Chart',
-          version: '1.0.0',
-          status: 'verified',
-          description: 'Interactive SVG metric chart.',
-          resourceType: 'component',
-          roles: ['data-chart', 'content-grid'],
-          categories: ['charts', 'data-visualization'],
-          purposes: ['dashboard', 'analytics'],
-          framework: 'react',
-          language: 'typescript',
-          styling: 'tailwind',
-          dependencies: [],
-          files: [{ path: 'index.tsx', kind: 'component', required: true }],
-          slots: [],
-          variants: [
-            { id: 'quiet', name: 'quiet', description: 'Quiet' },
-            { id: 'expressive', name: 'expressive', description: 'Expressive' },
-            { id: 'nocturne', name: 'nocturne', description: 'Nocturne' },
-          ],
-          tags: [targetSlug, 'chart'],
-          creator: { id: 'tess-core', displayName: 'Tessellate Core', handle: 'tessellate' },
-          provenance: { origin: 'tessellate', derivative: false, aiAssistance: 'none' },
-          license: { spdx: 'MIT', name: 'MIT', redistributionVerified: true, attributionRequired: false },
-          intent: { summary: 'Chart visualization', idealFor: ['dashboards'], avoidFor: ['text-heavy'], jobs: ['Display trend'] },
-          visualDNA: {},
-          interactionDNA: {},
-          layoutDNA: {},
-          responsive: { verifiedWidths: [360, 768, 1440], defaultStrategy: 'compress' },
-          accessibility: { levelTarget: 'AA', keyboardVerified: true, screenReaderSemantics: true, reducedMotionVerified: true, contrastTokenCompatible: true, focusVisible: true },
-          performance: { jsCost: 'low', gpuCost: 'low', mediaCost: 'none', runtimeComplexity: 'low', lazyRecommended: false, continuousAnimation: false },
-          quality: { overall: 95 },
-          createdAt: '2026-10-10T00:00:00Z',
-          updatedAt: '2026-10-10T00:00:00Z',
-        } as any,
-        'quiet'
-      );
-      return targetSlug;
-    }, kpiNodeId);
-
-    await page.waitForTimeout(500);
-
-    // Assert replaced node rendered and zero unresolved resources in Workbench
+    const activityId=await page.evaluate(()=>{
+      const manifest=(window as any).__tessellate_workbench_store__.getState().manifest;
+      const walk=(node:any):any[]=>[node,...node.children.flatMap(walk)];
+      return manifest.screens.flatMap((screen:any)=>walk(screen.rootNode)).find((node:any)=>node.semanticRole==='activity-feed').id;
+    });
+    await page.getByTestId('left-panel').getByRole('button',{name:'Pages',exact:true}).click();
+    await page.getByRole('button',{name:'Select screen Team Overview',exact:true}).click();
+    await page.getByTestId('left-panel').getByRole('button',{name:'Layers',exact:true}).click();
+    await page.getByTestId(`layer-node-${activityId}`).click();
+    await page.getByTestId('right-inspector').getByRole('button',{name:'Resource',exact:true}).click();
+    await page.getByRole('button',{name:/Open Replace Drawer/}).click();
+    const candidate=page.getByTestId('apply-replacement-btn').first();
+    const replacedSlug=await candidate.getAttribute('data-resource-slug');
+    expect(replacedSlug).toBeTruthy();
+    await candidate.click();
     await assertZeroUnresolvedResources(page);
-    expect(replacedSlug).toMatch(/(area-chart|bar-chart)/);
 
     // Step 20: Surprise Me at divergenceLevel: 60 preserves locked KPI subtree hash
     const surpriseBtn = page.locator('[data-testid="surprise-me-button"]');
@@ -433,9 +374,9 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
       });
 
       // Launch standalone vite preview server
-      previewProcess = spawn('pnpm', ['exec', 'vite', 'preview', '--port', String(previewPort), '--strictPort'], {
+      const viteCli = path.join(tempDir, 'node_modules', 'vite', 'bin', 'vite.js');
+      previewProcess = spawn(process.execPath, [viteCli, 'preview', '--port', String(previewPort), '--strictPort'], {
         cwd: tempDir,
-        shell: true,
         stdio: ['ignore', 'pipe', 'pipe'],
       });
 
@@ -583,7 +524,7 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
       await layersTab.click();
     }
 
-    const lockBtn = page.locator('[data-testid^="toggle-lock-"]').first();
+    const lockBtn = page.locator('[data-testid^="toggle-lock-"]').nth(1);
     await expect(lockBtn).toBeVisible({ timeout: 5000 });
     const lockTestId = await lockBtn.getAttribute('data-testid');
     expect(lockTestId).toBeTruthy();

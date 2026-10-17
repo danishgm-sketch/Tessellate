@@ -5,7 +5,7 @@
   "name": "Footer Developer",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Terminal-styled developer footer with CLI command snippet, API status, and git commit sha.",
+  "description": "Developer footer template with space for verified runtime metadata.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,7 +130,7 @@
     "developer"
   ],
   "intent": {
-    "summary": "Terminal-styled developer footer with CLI command snippet, API status, and git commit sha.",
+    "summary": "Example footer; supply actual build and runtime details before publishing.",
     "idealFor": [
       "Technical tools, CLI homepages, and developer ecosystems"
     ],
@@ -138,7 +138,7 @@
       "Consumer lifestyle products"
     ],
     "jobs": [
-      "Provide terminal-styled developer footer with CLI snippets and git sha"
+      "Expose current build metadata supplied by the host application"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"

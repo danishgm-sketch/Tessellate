@@ -1,5 +1,8 @@
 # Tessellate Architecture
 
+> Current operating state (2026-10-16): D-041 retains the owner-authorized optional laptop Docker API/local D1/CPU host; D-042 freezes expansion. Static Astro/browser-local Core remains independent. Existing Sites packaging is an isolated hosting adapter, not a new app stack. Cloud D1/R2, GitHub OAuth and a permanent laptop tunnel are configuration-dependent, not proven live by these historical launch plans. All deployment/pricing assertions below are architectural targets until verified.
+
+
 ## 1. Architecture objective
 
 Tessellate must deliver a large, sophisticated product while remaining inexpensive to operate. The architecture therefore maximises:
@@ -252,15 +255,12 @@ Orama index built from:
 Ship compressed browser index.
 
 ### Semantic
-Precompute resource embeddings at build time.
-
-Browser query embedding:
-- use Transformers.js;
-- prefer WebGPU when supported;
-- fall back to WASM;
-- do not load embedding model until semantic search is requested/beneficial.
-
-If semantic is unavailable, full-text and metadata filters remain fully functional.
+Semantic embedding is an experimental Lab and is not connected to Explore or
+Compose. The current adapter reports unavailable until a real embedding model
+and semantic-quality evaluation are supplied. Orama full-text search and
+metadata filters are the only active search path. D-043 records this as a
+deliberate capability boundary; the Transformers.js design in D-012 remains a
+future option, not a current implementation claim.
 
 ## 10. AI provider architecture
 

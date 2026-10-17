@@ -1,0 +1,2 @@
+import {test,expect} from '@playwright/test';
+test('an exact resource search displays the best matching resource first',async({page})=>{await page.goto('/explore/');await expect(page.getByText('Showing 50 resources',{exact:true})).toBeVisible();await page.getByLabel('Search catalogue').fill('advanced data table');await expect(page).toHaveURL(/q=advanced/);await expect(page.getByRole('link',{name:'Preview',exact:true}).first()).toHaveAttribute('href','/r/advanced-data-table');});

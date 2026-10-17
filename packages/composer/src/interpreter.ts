@@ -13,6 +13,7 @@ import {
 } from '@tessellate/dna';
 import { detectProductArchetypes, getProductArchetype } from './archetypes.js';
 import { findBlueprintByArchetype, type ProductBlueprint } from './blueprints.js';
+import { specialisePeopleOperations } from './domain-context.js';
 
 export interface ProductBriefInput {
   description: string;
@@ -52,7 +53,7 @@ export function deriveInitialDesignDNA(
     const presetId = blueprint.applicableDnaPresets[0];
     const foundPreset = DNA_PRESETS.find((p) => p.id === presetId);
     if (foundPreset) {
-      base = { ...foundPreset.dna };
+      base = { ...foundPreset.dna, primaryArchetype };
     }
   }
 
@@ -128,7 +129,8 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   // 1. Detect archetypes
   const detectedArchetypes = detectProductArchetypes(text, input.archetypeOverride);
   const primaryTag = detectedArchetypes[0]?.tag ?? 'saas';
-  const archetypeDef = getProductArchetype(primaryTag);
+  const definition = getProductArchetype(primaryTag);
+  const archetypeDef = definition ? specialisePeopleOperations(definition,text) : undefined;
   const blueprint = findBlueprintByArchetype(primaryTag);
 
   assumptions.push(`Identified primary archetype as "${archetypeDef?.name ?? primaryTag}" based on domain vocabulary.`);
@@ -145,12 +147,12 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   }
 
   // 3. User Sophistication & Metric Priors
-  let userSophistication = blueprint.priors.userSophistication;
+  let userSophistication = archetypeDef?.userSophistication ?? blueprint.priors.userSophistication;
   let trustRequirement = blueprint.priors.trustRequirement;
-  let informationComplexity = blueprint.priors.informationComplexity;
-  let dataDensity = blueprint.priors.dataDensity;
+  let informationComplexity = archetypeDef?.informationComplexity ?? blueprint.priors.informationComplexity;
+  let dataDensity = archetypeDef?.dataDensity ?? blueprint.priors.dataDensity;
   let collaborationLevel = blueprint.priors.collaborationLevel;
-  let transactionCriticality = blueprint.priors.transactionCriticality;
+  let transactionCriticality = archetypeDef?.transactionCriticality ?? blueprint.priors.transactionCriticality;
   let navigationComplexity = blueprint.priors.navigationComplexity;
   let mobileImportance = blueprint.priors.mobileImportance;
 
@@ -195,7 +197,7 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   // 4. Jobs To Be Done (JTBD)
   const jobsToBeDone: string[] = [
     `Authenticate and access ${archetypeDef?.name ?? 'workspace'}`,
-    `Inspect primary overview telemetry and health metrics`,
+    `Review the overview and priority actions`,
     `Create, update, and manage records`,
   ];
 

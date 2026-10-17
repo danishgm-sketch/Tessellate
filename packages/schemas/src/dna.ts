@@ -83,7 +83,7 @@ export const DesignDNASchema = z.object({
   motionPersonality: z.string().min(1),
   typographyPersonality: z.string().min(1),
   surfacePersonality: z.string().min(1),
-});
+}).strict();
 
 export type DesignDNA = z.infer<typeof DesignDNASchema>;
 

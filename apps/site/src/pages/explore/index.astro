@@ -1,5 +1,6 @@
 ---
-import { Header } from '@tessellate/ui';
+import '../../styles/global.css';
+import {SiteHeader} from '../../components/home/SiteHeader';
 import { ExploreView } from '../../components/ExploreView';
 ---
 
@@ -13,10 +14,10 @@ import { ExploreView } from '../../components/ExploreView';
       name="description"
       content="Browse all components, patterns, layouts and motion primitives in the Tessellate open interface intelligence catalogue."
     />
-    <link rel="stylesheet" href="/src/styles/global.css" />
+
   </head>
   <body class="bg-[var(--tess-canvas,#F4F2ED)] text-[var(--tess-ink,#111217)] antialiased min-h-screen flex flex-col font-sans">
-    <Header client:load />
+    <SiteHeader client:load />
 
     <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-6 space-y-1">
@@ -31,7 +32,7 @@ import { ExploreView } from '../../components/ExploreView';
       <ExploreView client:load />
     </main>
 
-    <footer class="mt-auto border-t border-[var(--tess-hairline,#D9D6CF)] py-8 px-4 text-center text-xs text-[var(--tess-ink-muted,#8B8F97)]">
+    <footer class="mt-auto border-t border-[var(--tess-hairline,#D9D6CF)] py-8 px-4 text-center text-xs text-[var(--tess-ink-muted,#62666F)]">
       Tessellate Interface Intelligence Layer — Free, open resource vocabulary under permissive licenses.
     </footer>
   </body>

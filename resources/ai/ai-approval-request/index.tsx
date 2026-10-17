@@ -19,11 +19,11 @@ export function AIApprovalRequest({ variant = 'quiet' }: AIApprovalRequestProps)
   return (
     <div className={`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>
       <div className="flex items-center justify-between pb-3 border-b border-amber-200/50 dark:border-amber-900/40">
-        <div className="flex items-center gap-2 text-xs font-semibold text-amber-600 dark:text-amber-400">
+        <div className="flex items-center gap-2 text-xs font-semibold text-amber-800 dark:text-amber-300">
           <span className="text-base">⚠</span>
           <span>Human Approval Required</span>
         </div>
-        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400">
+        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-800 dark:text-amber-300">
           HIGH IMPACT
         </span>
       </div>
@@ -50,7 +50,7 @@ export function AIApprovalRequest({ variant = 'quiet' }: AIApprovalRequestProps)
           <button
             onClick={() => setStatus('approved')}
             disabled={status !== 'pending'}
-            className="px-4 py-1.5 text-xs font-medium rounded-lg bg-amber-600 text-white hover:bg-amber-700 disabled:opacity-50"
+            className="px-4 py-1.5 text-xs font-medium rounded-lg bg-amber-700 text-white hover:bg-amber-800 disabled:opacity-50"
           >
             {status === 'approved' ? '✓ Authorized' : 'Approve & Proceed'}
           </button>

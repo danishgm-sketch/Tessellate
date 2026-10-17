@@ -5,7 +5,7 @@
   "name": "AI Generation Compare",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Side-by-side comparative split card evaluating two candidate AI generations with score metrics and selection trigger.",
+  "description": "Interactive comparison of two illustrative interface candidates.",
   "resourceType": "ai-pattern",
   "categories": [
     "ai",
@@ -132,7 +132,7 @@
     "candidates"
   ],
   "intent": {
-    "summary": "Side-by-side comparative split card evaluating two candidate AI generations with score metrics and selection trigger.",
+    "summary": "Example candidate comparison; timings and scores are not measured.",
     "idealFor": [
       "Comparing 2 design variations",
       "Prompt output benchmarking",
@@ -143,7 +143,7 @@
       "Simple checkbox settings"
     ],
     "jobs": [
-      "Present dual candidate AI responses side-by-side for human judgment and picking"
+      "Allow a person to compare and select candidate interfaces"
     ],
     "contentRequirements": [
       "Model state reflection, streaming message blocks, citation cards, human-in-the-loop approvals"

@@ -2,11 +2,11 @@
   "schemaVersion": "1.0.0",
   "id": "showcase-financial-terminal",
   "name": "Apex Financial Intelligence Terminal",
-  "description": "Institutional trading terminal with real-time order books and risk telemetry.",
+  "description": "Example project. Institutional trading terminal with real-time order books and risk telemetry.",
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z",
-  "catalogVersion": "1.0.0",
-  "seed": "seed_showcase-financial-terminal",
+  "catalogVersion": "0.1.0",
+  "seed": "showcase-financial-terminal",
   "productModel": {
     "schemaVersion": "1.0.0",
     "productArchetypes": [
@@ -15,39 +15,154 @@
         "weight": 100
       }
     ],
-    "primaryAudience": "Domain specialists",
-    "userSophistication": 98,
-    "primaryObjective": "Institutional trading terminal with real-time order books and risk telemetry.",
+    "primaryAudience": "Finance managers, compliance teams, and account holders",
+    "userSophistication": 85,
+    "primaryObjective": "Guarantee accurate, transparent, compliant money movement and reconciliation",
     "secondaryObjectives": [
-      "Maximize workflow speed and cognitive clarity"
+      "Ensure high accessibility standards",
+      "Maintain responsive layout across devices"
     ],
     "jobsToBeDone": [
-      "Analyze domain data",
-      "Execute actions",
-      "Inspect telemetry"
+      "Authenticate and access Fintech",
+      "Review the overview and priority actions",
+      "Create, update, and manage records",
+      "Initiate and confirm two-factor balance transfer",
+      "Export and review verified monthly bank statements"
     ],
-    "entities": [],
-    "workflows": [],
+    "entities": [
+      {
+        "name": "Account",
+        "description": "Financial ledger holding settled currency balance",
+        "fields": [
+          "id",
+          "iban",
+          "balance",
+          "currency"
+        ]
+      },
+      {
+        "name": "Transaction",
+        "description": "Audited immutable debit or credit ledger event",
+        "fields": [
+          "id",
+          "amount",
+          "direction",
+          "counterparty",
+          "timestamp"
+        ]
+      },
+      {
+        "name": "Transfer",
+        "description": "Pending or executed settlement instruction",
+        "fields": [
+          "id",
+          "source",
+          "destination",
+          "amount",
+          "status"
+        ]
+      }
+    ],
+    "workflows": [
+      {
+        "id": "transfer-funds",
+        "name": "Initiate and confirm two-factor balance transfer",
+        "steps": [
+          "enter-recipient",
+          "verify-amount",
+          "2fa-confirm",
+          "receipt"
+        ]
+      },
+      {
+        "id": "reconcile-statements",
+        "name": "Export and review verified monthly bank statements",
+        "steps": [
+          "select-period",
+          "filter-categories",
+          "export-pdf"
+        ]
+      }
+    ],
     "trustRequirement": 98,
-    "informationComplexity": 98,
-    "dataDensity": 98,
-    "collaborationLevel": 50,
-    "transactionCriticality": 70,
-    "navigationComplexity": 60,
-    "mobileImportance": 50,
-    "likelyScreens": [],
-    "requiredCapabilities": [
-      "export",
-      "search",
-      "audit"
+    "informationComplexity": 95,
+    "dataDensity": 95,
+    "collaborationLevel": 45,
+    "transactionCriticality": 100,
+    "navigationComplexity": 65,
+    "mobileImportance": 80,
+    "likelyScreens": [
+      {
+        "name": "Account Balances",
+        "screenType": "dashboard",
+        "purpose": "Aggregate liquidity, spend trends, and alerts",
+        "jobs": [
+          "check-balance",
+          "monitor-spend"
+        ]
+      },
+      {
+        "name": "Transaction History",
+        "screenType": "index-list",
+        "purpose": "Filterable audited chronological ledger",
+        "jobs": [
+          "search-transactions",
+          "download-receipts"
+        ]
+      },
+      {
+        "name": "Transfer Funds",
+        "screenType": "checkout-transaction",
+        "purpose": "Secure payment routing modal or page",
+        "jobs": [
+          "send-money",
+          "confirm-exchange-rate"
+        ]
+      },
+      {
+        "name": "Security & 2FA",
+        "screenType": "settings",
+        "purpose": "Hardware keys, passcodes, and device sessions",
+        "jobs": [
+          "manage-devices",
+          "setup-2fa"
+        ]
+      }
     ],
-    "forbiddenPatterns": [],
+    "requiredCapabilities": [
+      "two-factor-authentication",
+      "audit-trail",
+      "currency-precision-formatting"
+    ],
+    "forbiddenPatterns": [
+      "Ambiguous pending vs settled transaction states",
+      "Low-contrast text on critical financial balance amounts",
+      "Executing money transfers without explicit multi-factor verification"
+    ],
     "constraints": {
       "accessibilityFloor": "AA",
-      "performanceCeiling": "rich",
+      "performanceCeiling": "balanced",
       "targetDevices": [
         "desktop",
-        "tablet"
+        "tablet",
+        "mobile"
+      ],
+      "allowedDependencies": [
+        "react",
+        "tailwindcss",
+        "lucide-react"
+      ],
+      "prohibitedDependencies": [
+        "jquery",
+        "bootstrap"
+      ],
+      "requiredScreens": [],
+      "forbiddenScreens": [],
+      "requiredPatterns": [],
+      "forbiddenPatterns": [
+        "Ambiguous pending vs settled transaction states",
+        "Low-contrast text on critical financial balance amounts",
+        "Executing money transfers without explicit multi-factor verification"
       ]
     }
   },
@@ -83,7 +198,7 @@
     "primaryArchetype": "fintech",
     "visualMode": "dark",
     "geometryFamily": "sharp",
-    "navigationModel": "cockpit-dense",
+    "navigationModel": "rail",
     "responsivePhilosophy": "desktop-dense-mobile-focused",
     "contentTone": "technical-authoritative",
     "primaryStack": "react-tailwind",
@@ -91,364 +206,1830 @@
     "typographyPersonality": "monospace-data",
     "surfacePersonality": "obsidian-subtle-borders"
   },
+  "brand": {
+    "name": "FINTECH System"
+  },
   "constraints": {
     "accessibilityFloor": "AA",
-    "performanceCeiling": "rich",
+    "performanceCeiling": "balanced",
     "targetDevices": [
       "desktop",
-      "tablet"
+      "tablet",
+      "mobile"
+    ],
+    "allowedDependencies": [
+      "react",
+      "tailwindcss",
+      "lucide-react"
+    ],
+    "prohibitedDependencies": [
+      "jquery",
+      "bootstrap"
+    ],
+    "requiredScreens": [],
+    "forbiddenScreens": [],
+    "requiredPatterns": [],
+    "forbiddenPatterns": [
+      "Ambiguous pending vs settled transaction states",
+      "Low-contrast text on critical financial balance amounts",
+      "Executing money transfers without explicit multi-factor verification"
     ]
   },
   "screenGraph": {
-    "id": "sg_showcase-financial-terminal",
+    "id": "graph-fintech-181raw2",
     "groups": [
       {
-        "id": "group_main",
-        "name": "Main Workspace",
+        "id": "group-marketing",
+        "name": "Marketing",
         "screens": [
           {
-            "id": "node-app-overview",
-            "name": "Application Overview Dashboard",
-            "slug": "/overview",
-            "screenType": "application-overview-dashboard",
-            "purpose": "Application Overview Dashboard",
+            "id": "screen-marketing-home",
+            "name": "Marketing Home",
+            "slug": "/",
+            "screenType": "marketing",
+            "purpose": "Product value proposition, interactive preview, and conversion funnel.",
             "jobs": [
-              "inspect-view"
+              "explain-product-value",
+              "initiate-signup"
             ],
             "required": true,
             "navigationVisibility": "primary",
-            "importance": 80,
+            "importance": 90,
             "expectedData": [
-              "records"
+              "headline",
+              "socialProof",
+              "pricingSummary"
             ],
             "requiredRoles": [
-              "content"
+              "navigation",
+              "hero",
+              "value-proposition",
+              "conversion-cta",
+              "footer"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "trust-proof",
+              "product-demo",
+              "feature-grid",
+              "pricing-table",
+              "faq-accordion"
+            ]
           },
           {
-            "id": "node-analytics-dashboard",
-            "name": "Analytics Dashboard",
-            "slug": "/analytics",
-            "screenType": "analytics-dashboard",
-            "purpose": "Analytics Dashboard",
+            "id": "screen-documentation",
+            "name": "Documentation & API",
+            "slug": "/docs",
+            "screenType": "documentation",
+            "purpose": "Technical integration guides, API endpoints, and SDK references.",
             "jobs": [
-              "inspect-view"
-            ],
-            "required": false,
-            "navigationVisibility": "primary",
-            "importance": 75,
-            "expectedData": [
-              "records"
-            ],
-            "requiredRoles": [
-              "content"
-            ],
-            "optionalRoles": []
-          },
-          {
-            "id": "node-watchlists",
-            "name": "Watchlists",
-            "slug": "/watchlists",
-            "screenType": "watchlists",
-            "purpose": "Watchlists",
-            "jobs": [
-              "inspect-view"
+              "read-api-docs",
+              "inspect-code-samples"
             ],
             "required": false,
             "navigationVisibility": "primary",
             "importance": 70,
             "expectedData": [
-              "records"
+              "codeSnippets",
+              "apiSchema",
+              "endpoints"
             ],
             "requiredRoles": [
-              "content"
+              "docs-sidebar",
+              "prose-article",
+              "on-this-page-toc"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "code-playground",
+              "feedback-widget",
+              "version-dropdown"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "group-app",
+        "name": "Application",
+        "screens": [
+          {
+            "id": "screen-overview",
+            "name": "Overview Dashboard",
+            "slug": "/overview",
+            "screenType": "dashboard",
+            "purpose": "Central operational telemetry, KPI scorecard, and high-priority action queue.",
+            "jobs": [
+              "Authenticate and access Fintech",
+              "Review the overview and priority actions"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 95,
+            "expectedData": [
+              "kpiMetrics",
+              "recentActivity",
+              "alerts"
+            ],
+            "requiredRoles": [
+              "overview-header",
+              "metric-cards",
+              "activity-feed"
+            ],
+            "optionalRoles": [
+              "quick-action-bar",
+              "data-table",
+              "alert-banner",
+              "insight-rail"
+            ]
           },
           {
-            "id": "node-reports-library",
-            "name": "Reports Library",
-            "slug": "/reports",
-            "screenType": "reports-library",
-            "purpose": "Reports Library",
+            "id": "screen-collection-index",
+            "name": "Account Directory",
+            "slug": "/accounts",
+            "screenType": "index-list",
+            "purpose": "Searchable, filterable catalog of all account records.",
             "jobs": [
-              "inspect-view"
+              "search-and-filter-records",
+              "bulk-actions"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 85,
+            "expectedData": [
+              "recordRows",
+              "filterFacets",
+              "paginationState"
+            ],
+            "requiredRoles": [
+              "index-header",
+              "filter-bar",
+              "data-table",
+              "pagination"
+            ],
+            "optionalRoles": [
+              "bulk-action-bar",
+              "view-mode-toggle",
+              "stats-summary"
+            ]
+          },
+          {
+            "id": "screen-entity-detail",
+            "name": "Account Detail",
+            "slug": "/accounts/:id",
+            "screenType": "detail-entity",
+            "purpose": "Deep inspection, metadata attributes, timeline, and actions for a single account.",
+            "jobs": [
+              "inspect-attributes",
+              "edit-record-state"
+            ],
+            "required": false,
+            "navigationVisibility": "secondary",
+            "importance": 75,
+            "expectedData": [
+              "recordDetails",
+              "activityHistory",
+              "linkedRelations"
+            ],
+            "requiredRoles": [
+              "entity-header",
+              "detail-tabs",
+              "main-content-pane",
+              "metadata-sidebar"
+            ],
+            "optionalRoles": [
+              "activity-timeline",
+              "related-items-carousel",
+              "danger-zone"
+            ]
+          },
+          {
+            "id": "screen-analytics",
+            "name": "Analytics & Insights",
+            "slug": "/analytics",
+            "screenType": "analytics-reporting",
+            "purpose": "Deep time-series breakdown, cohort retention, and reporting exports.",
+            "jobs": [
+              "analyze-trends",
+              "export-csv"
             ],
             "required": false,
             "navigationVisibility": "primary",
-            "importance": 65,
+            "importance": 75,
             "expectedData": [
-              "records"
+              "timeSeriesPoints",
+              "cohortCurves"
             ],
             "requiredRoles": [
-              "content"
+              "date-range-picker",
+              "chart-canvas",
+              "summary-kpis"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "dimension-slicer",
+              "cohort-table",
+              "export-drawer"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "group-settings",
+        "name": "Settings & Administration",
+        "screens": [
+          {
+            "id": "screen-settings",
+            "name": "Settings & Preferences",
+            "slug": "/settings",
+            "screenType": "settings",
+            "purpose": "User profile, notification triggers, security keys, and display theme.",
+            "jobs": [
+              "update-profile",
+              "configure-notifications"
+            ],
+            "required": true,
+            "navigationVisibility": "secondary",
+            "importance": 60,
+            "expectedData": [
+              "userProfile",
+              "notificationPreferences"
+            ],
+            "requiredRoles": [
+              "settings-nav",
+              "settings-form",
+              "save-footer"
+            ],
+            "optionalRoles": [
+              "avatar-uploader",
+              "2fa-toggle",
+              "danger-zone"
+            ]
+          },
+          {
+            "id": "screen-billing",
+            "name": "Billing & Subscriptions",
+            "slug": "/billing",
+            "screenType": "billing-account",
+            "purpose": "Plan upgrades, payment method on file, and download invoices.",
+            "jobs": [
+              "change-subscription-tier",
+              "download-invoices"
+            ],
+            "required": false,
+            "navigationVisibility": "secondary",
+            "importance": 65,
+            "expectedData": [
+              "currentPlan",
+              "usageMeters",
+              "invoicesList"
+            ],
+            "requiredRoles": [
+              "current-plan-card",
+              "usage-meter",
+              "invoices-table"
+            ],
+            "optionalRoles": [
+              "payment-method-card",
+              "seat-manager",
+              "tax-id-form"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "group-auth",
+        "name": "Authentication",
+        "screens": [
+          {
+            "id": "screen-sign-in",
+            "name": "Sign In",
+            "slug": "/sign-in",
+            "screenType": "authentication",
+            "purpose": "User authentication with GitHub OAuth and session tokens.",
+            "jobs": [
+              "authenticate-user"
+            ],
+            "required": true,
+            "navigationVisibility": "hidden",
+            "importance": 80,
+            "expectedData": [
+              "authCredentials"
+            ],
+            "requiredRoles": [
+              "auth-card",
+              "auth-footer"
+            ],
+            "optionalRoles": [
+              "social-oauth-buttons",
+              "passkey-option",
+              "terms-disclaimer",
+              "brand-panel"
+            ]
           }
         ]
       }
     ],
     "edges": [
       {
-        "id": "edge_0",
-        "fromScreenId": "node-app-overview",
-        "toScreenId": "node-analytics-dashboard"
+        "id": "edge-marketing-to-signin",
+        "fromScreenId": "screen-marketing-home",
+        "toScreenId": "screen-sign-in",
+        "label": "Start building / Sign in"
       },
       {
-        "id": "edge_1",
-        "fromScreenId": "node-app-overview",
-        "toScreenId": "node-watchlists"
+        "id": "edge-signin-to-overview",
+        "fromScreenId": "screen-sign-in",
+        "toScreenId": "screen-overview",
+        "label": "Successful authentication"
       },
       {
-        "id": "edge_2",
-        "fromScreenId": "node-app-overview",
-        "toScreenId": "node-reports-library"
+        "id": "edge-overview-to-collection",
+        "fromScreenId": "screen-overview",
+        "toScreenId": "screen-collection-index",
+        "label": "View all items"
+      },
+      {
+        "id": "edge-collection-to-detail",
+        "fromScreenId": "screen-collection-index",
+        "toScreenId": "screen-entity-detail",
+        "label": "Select item row"
       }
     ]
   },
   "screens": [
     {
-      "id": "screen-app-overview",
-      "screenNodeId": "node-app-overview",
-      "name": "Application Overview Dashboard",
+      "id": "screen-marketing-home",
+      "screenNodeId": "screen-marketing-home",
+      "name": "Marketing Home",
+      "slug": "/",
+      "rootNode": {
+        "id": "root-screen-marketing-home",
+        "nodeType": "layout",
+        "semanticRole": "marketing-page",
+        "children": [
+          {
+            "id": "node-screen-marketing-home-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Account Workspace",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Documentation & API",
+                  "href": "#screen-documentation"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Account Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Analytics & Insights",
+                  "href": "#screen-analytics"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                },
+                {
+                  "label": "Billing & Subscriptions",
+                  "href": "#screen-billing"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-hero-2",
+            "nodeType": "section",
+            "semanticRole": "hero",
+            "resourceRef": {
+              "id": "res_sec_editorial_hero",
+              "slug": "editorial-hero",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "eyebrow": "Example organisation · sample content",
+              "headline": "Guarantee accurate, transparent, compliant money movement and reconciliation",
+              "subheadline": "A workspace for finance managers, compliance teams, and account holders. Guarantee accurate, transparent, compliant money movement and reconciliation.",
+              "primaryCta": {
+                "label": "Open workspace",
+                "href": "#screen-overview"
+              },
+              "secondaryCta": {
+                "label": "Browse records",
+                "href": "#screen-collection-index"
+              },
+              "note": "Example interface · replace sample data with your organisation"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-value-proposition-3",
+            "nodeType": "section",
+            "semanticRole": "value-proposition",
+            "resourceRef": {
+              "id": "res_sec_feature_bento",
+              "slug": "feature-bento",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "title": "Marketing Home",
+              "items": [
+                {
+                  "title": "Account",
+                  "description": "Financial ledger holding settled currency balance",
+                  "detail": "Example content"
+                },
+                {
+                  "title": "Transaction",
+                  "description": "Audited immutable debit or credit ledger event",
+                  "detail": "Example content"
+                },
+                {
+                  "title": "Transfer",
+                  "description": "Pending or executed settlement instruction",
+                  "detail": "Example content"
+                }
+              ]
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-conversion-cta-4",
+            "nodeType": "section",
+            "semanticRole": "conversion-cta",
+            "resourceRef": {
+              "id": "res_sec_cta_minimal",
+              "slug": "cta-minimal",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "headline": "Guarantee accurate, transparent, compliant money movement and reconciliation",
+              "description": "A workspace for finance managers, compliance teams, and account holders. Guarantee accurate, transparent, compliant money movement and reconciliation.",
+              "label": "Continue onboarding",
+              "href": "#screen-overview"
+            }
+          },
+          {
+            "id": "node-screen-marketing-home-footer-5",
+            "nodeType": "section",
+            "semanticRole": "footer",
+            "resourceRef": {
+              "id": "res_sec_footer_product",
+              "slug": "footer-product",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Account Workspace",
+              "description": "A workspace for finance managers, compliance teams, and account holders. Guarantee accurate, transparent, compliant money movement and reconciliation.",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Documentation & API",
+                  "href": "#screen-documentation"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Account Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Analytics & Insights",
+                  "href": "#screen-analytics"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                },
+                {
+                  "label": "Billing & Subscriptions",
+                  "href": "#screen-billing"
+                }
+              ]
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutFamily": "docked-panes"
+        }
+      }
+    },
+    {
+      "id": "screen-documentation",
+      "screenNodeId": "screen-documentation",
+      "name": "Documentation & API",
+      "slug": "/docs",
+      "rootNode": {
+        "id": "root-screen-documentation",
+        "nodeType": "layout",
+        "semanticRole": "workspace-dock-shell",
+        "children": [
+          {
+            "id": "node-screen-documentation-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Account Workspace",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Documentation & API",
+                  "href": "#screen-documentation"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Account Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Analytics & Insights",
+                  "href": "#screen-analytics"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                },
+                {
+                  "label": "Billing & Subscriptions",
+                  "href": "#screen-billing"
+                }
+              ],
+              "orientation": "vertical"
+            }
+          },
+          {
+            "id": "container-screen-documentation-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-documentation-docs-sidebar-2",
+                "nodeType": "section",
+                "semanticRole": "docs-sidebar",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Account Workspace",
+                  "links": [
+                    {
+                      "label": "Marketing Home",
+                      "href": "#screen-marketing-home"
+                    },
+                    {
+                      "label": "Documentation & API",
+                      "href": "#screen-documentation"
+                    },
+                    {
+                      "label": "Overview Dashboard",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Account Directory",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Analytics & Insights",
+                      "href": "#screen-analytics"
+                    },
+                    {
+                      "label": "Settings & Preferences",
+                      "href": "#screen-settings"
+                    },
+                    {
+                      "label": "Billing & Subscriptions",
+                      "href": "#screen-billing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-documentation-prose-article-3",
+                "nodeType": "section",
+                "semanticRole": "prose-article",
+                "resourceRef": {
+                  "id": "res_sec_feature_matrix",
+                  "slug": "feature-matrix",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Documentation & API",
+                  "items": [
+                    {
+                      "title": "Account",
+                      "description": "Financial ledger holding settled currency balance",
+                      "detail": "Example content"
+                    },
+                    {
+                      "title": "Transaction",
+                      "description": "Audited immutable debit or credit ledger event",
+                      "detail": "Example content"
+                    },
+                    {
+                      "title": "Transfer",
+                      "description": "Pending or executed settlement instruction",
+                      "detail": "Example content"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-documentation-on-this-page-toc-4",
+                "nodeType": "section",
+                "semanticRole": "on-this-page-toc",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Account Workspace",
+                  "links": [
+                    {
+                      "label": "Marketing Home",
+                      "href": "#screen-marketing-home"
+                    },
+                    {
+                      "label": "Documentation & API",
+                      "href": "#screen-documentation"
+                    },
+                    {
+                      "label": "Overview Dashboard",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Account Directory",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Analytics & Insights",
+                      "href": "#screen-analytics"
+                    },
+                    {
+                      "label": "Settings & Preferences",
+                      "href": "#screen-settings"
+                    },
+                    {
+                      "label": "Billing & Subscriptions",
+                      "href": "#screen-billing"
+                    }
+                  ]
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "docked-panes"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "split-dock"
+        }
+      }
+    },
+    {
+      "id": "screen-overview",
+      "screenNodeId": "screen-overview",
+      "name": "Overview Dashboard",
       "slug": "/overview",
       "rootNode": {
-        "id": "root-app-overview",
+        "id": "root-screen-overview",
         "nodeType": "layout",
-        "semanticRole": "dashboard-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-dash-metrics",
-            "nodeType": "section",
-            "semanticRole": "kpi-metrics",
+            "id": "node-screen-overview-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_metrics_scorecard",
-              "slug": "metrics-scorecard",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Account Workspace",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Documentation & API",
+                  "href": "#screen-documentation"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Account Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Analytics & Insights",
+                  "href": "#screen-analytics"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                },
+                {
+                  "label": "Billing & Subscriptions",
+                  "href": "#screen-billing"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-dash-chart",
-            "nodeType": "section",
-            "semanticRole": "trend-chart",
-            "resourceRef": {
-              "id": "res_time_series_chart",
-              "slug": "time-series-chart",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-overview-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-overview-overview-header-2",
+                "nodeType": "section",
+                "semanticRole": "overview-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Overview Dashboard",
+                  "subtitle": "Central operational telemetry, KPI scorecard, and high-priority action queue.",
+                  "badge": "EXAMPLE",
+                  "initials": "WS"
+                }
+              },
+              {
+                "id": "node-screen-overview-metric-cards-3",
+                "nodeType": "section",
+                "semanticRole": "metric-cards",
+                "resourceRef": {
+                  "id": "res_blk_dashboard_kpi_grid",
+                  "slug": "dashboard-kpi-grid",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Overview Dashboard",
+                  "cards": [
+                    {
+                      "label": "Account",
+                      "val": "—",
+                      "status": "Connect your data"
+                    },
+                    {
+                      "label": "Transaction",
+                      "val": "—",
+                      "status": "Connect your data"
+                    },
+                    {
+                      "label": "Transfer",
+                      "val": "—",
+                      "status": "Connect your data"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-overview-activity-feed-4",
+                "nodeType": "section",
+                "semanticRole": "activity-feed",
+                "resourceRef": {
+                  "id": "res_blk_notification_centre",
+                  "slug": "notification-centre",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Overview Dashboard",
+                  "events": [
+                    {
+                      "time": "Step 1",
+                      "title": "Initiate and confirm two-factor balance transfer",
+                      "desc": "enter-recipient → verify-amount → 2fa-confirm → receipt"
+                    },
+                    {
+                      "time": "Step 2",
+                      "title": "Export and review verified monthly bank statements",
+                      "desc": "select-period → filter-categories → export-pdf"
+                    }
+                  ]
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-dash-activity",
-            "nodeType": "section",
-            "semanticRole": "recent-activity",
-            "resourceRef": {
-              "id": "res_activity_timeline",
-              "slug": "activity-timeline",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "docked-panes"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-analytics-dashboard",
-      "screenNodeId": "node-analytics-dashboard",
-      "name": "Analytics Dashboard",
+      "id": "screen-collection-index",
+      "screenNodeId": "screen-collection-index",
+      "name": "Account Directory",
+      "slug": "/accounts",
+      "rootNode": {
+        "id": "root-screen-collection-index",
+        "nodeType": "layout",
+        "semanticRole": "workspace-dock-shell",
+        "children": [
+          {
+            "id": "node-screen-collection-index-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Account Workspace",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Documentation & API",
+                  "href": "#screen-documentation"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Account Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Analytics & Insights",
+                  "href": "#screen-analytics"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                },
+                {
+                  "label": "Billing & Subscriptions",
+                  "href": "#screen-billing"
+                }
+              ],
+              "orientation": "vertical"
+            }
+          },
+          {
+            "id": "container-screen-collection-index-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-collection-index-index-header-2",
+                "nodeType": "section",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Account Directory",
+                  "subtitle": "Searchable, filterable catalog of all account records.",
+                  "badge": "EXAMPLE",
+                  "initials": "WS"
+                }
+              },
+              {
+                "id": "node-screen-collection-index-filter-bar-3",
+                "nodeType": "section",
+                "semanticRole": "filter-bar",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-collection-index-data-table-4",
+                "nodeType": "section",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Account Directory",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Account",
+                      "type": "Financial ledger holding settled currency balance",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Transaction",
+                      "type": "Audited immutable debit or credit ledger event",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Transfer",
+                      "type": "Pending or executed settlement instruction",
+                      "quality": 0,
+                      "status": "Sample"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Progress",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-collection-index-pagination-5",
+                "nodeType": "section",
+                "semanticRole": "pagination",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Continue",
+                  "disabled": false,
+                  "title": "Account Directory"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "docked-panes"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "split-dock"
+        }
+      }
+    },
+    {
+      "id": "screen-entity-detail",
+      "screenNodeId": "screen-entity-detail",
+      "name": "Account Detail",
+      "slug": "/accounts/:id",
+      "rootNode": {
+        "id": "root-screen-entity-detail",
+        "nodeType": "layout",
+        "semanticRole": "workspace-dock-shell",
+        "children": [
+          {
+            "id": "node-screen-entity-detail-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Account Workspace",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Documentation & API",
+                  "href": "#screen-documentation"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Account Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Analytics & Insights",
+                  "href": "#screen-analytics"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                },
+                {
+                  "label": "Billing & Subscriptions",
+                  "href": "#screen-billing"
+                }
+              ],
+              "orientation": "vertical"
+            }
+          },
+          {
+            "id": "container-screen-entity-detail-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-entity-detail-entity-header-2",
+                "nodeType": "section",
+                "semanticRole": "entity-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Account Detail",
+                  "subtitle": "Deep inspection, metadata attributes, timeline, and actions for a single account.",
+                  "badge": "EXAMPLE",
+                  "initials": "WS"
+                }
+              },
+              {
+                "id": "node-screen-entity-detail-detail-tabs-3",
+                "nodeType": "section",
+                "semanticRole": "detail-tabs",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Account Workspace",
+                  "links": [
+                    {
+                      "label": "Marketing Home",
+                      "href": "#screen-marketing-home"
+                    },
+                    {
+                      "label": "Documentation & API",
+                      "href": "#screen-documentation"
+                    },
+                    {
+                      "label": "Overview Dashboard",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Account Directory",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Analytics & Insights",
+                      "href": "#screen-analytics"
+                    },
+                    {
+                      "label": "Settings & Preferences",
+                      "href": "#screen-settings"
+                    },
+                    {
+                      "label": "Billing & Subscriptions",
+                      "href": "#screen-billing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-entity-detail-main-content-pane-4",
+                "nodeType": "section",
+                "semanticRole": "main-content-pane",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Account Detail",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Account",
+                      "type": "Financial ledger holding settled currency balance",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Transaction",
+                      "type": "Audited immutable debit or credit ledger event",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Transfer",
+                      "type": "Pending or executed settlement instruction",
+                      "quality": 0,
+                      "status": "Sample"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Progress",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-entity-detail-metadata-sidebar-5",
+                "nodeType": "section",
+                "semanticRole": "metadata-sidebar",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Account Detail",
+                  "subtitle": "Deep inspection, metadata attributes, timeline, and actions for a single account.",
+                  "badge": "EXAMPLE",
+                  "initials": "WS"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "docked-panes"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "split-dock"
+        }
+      }
+    },
+    {
+      "id": "screen-analytics",
+      "screenNodeId": "screen-analytics",
+      "name": "Analytics & Insights",
       "slug": "/analytics",
       "rootNode": {
-        "id": "root-analytics-dashboard",
+        "id": "root-screen-analytics",
         "nodeType": "layout",
-        "semanticRole": "analytics-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-an-kpis",
-            "nodeType": "section",
-            "semanticRole": "summary-kpis",
+            "id": "node-screen-analytics-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_metrics_scorecard",
-              "slug": "metrics-scorecard",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Account Workspace",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Documentation & API",
+                  "href": "#screen-documentation"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Account Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Analytics & Insights",
+                  "href": "#screen-analytics"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                },
+                {
+                  "label": "Billing & Subscriptions",
+                  "href": "#screen-billing"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-an-trend",
-            "nodeType": "section",
-            "semanticRole": "trend-chart",
-            "resourceRef": {
-              "id": "res_time_series_chart",
-              "slug": "time-series-chart",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-analytics-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-analytics-date-range-picker-2",
+                "nodeType": "section",
+                "semanticRole": "date-range-picker",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-analytics-chart-canvas-3",
+                "nodeType": "section",
+                "semanticRole": "chart-canvas",
+                "resourceRef": {
+                  "id": "res_dat_area_chart",
+                  "slug": "area-chart",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-analytics-summary-kpis-4",
+                "nodeType": "section",
+                "semanticRole": "summary-kpis",
+                "resourceRef": {
+                  "id": "res_blk_dashboard_kpi_grid",
+                  "slug": "dashboard-kpi-grid",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Analytics & Insights",
+                  "cards": [
+                    {
+                      "label": "Account",
+                      "val": "—",
+                      "status": "Connect your data"
+                    },
+                    {
+                      "label": "Transaction",
+                      "val": "—",
+                      "status": "Connect your data"
+                    },
+                    {
+                      "label": "Transfer",
+                      "val": "—",
+                      "status": "Connect your data"
+                    }
+                  ]
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-an-bar",
-            "nodeType": "section",
-            "semanticRole": "distribution",
-            "resourceRef": {
-              "id": "res_bar_chart",
-              "slug": "bar-chart",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-an-cohort",
-            "nodeType": "section",
-            "semanticRole": "retention-cohort",
-            "resourceRef": {
-              "id": "res_cohort_matrix",
-              "slug": "cohort-matrix",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "docked-panes"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-watchlists",
-      "screenNodeId": "node-watchlists",
-      "name": "Watchlists",
-      "slug": "/watchlists",
+      "id": "screen-settings",
+      "screenNodeId": "screen-settings",
+      "name": "Settings & Preferences",
+      "slug": "/settings",
       "rootNode": {
-        "id": "root-watchlists",
+        "id": "root-screen-settings",
         "nodeType": "layout",
-        "semanticRole": "watchlist-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-wl-filters",
-            "nodeType": "section",
-            "semanticRole": "filters",
+            "id": "node-screen-settings-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_filter_bar",
-              "slug": "filter-bar",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Account Workspace",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Documentation & API",
+                  "href": "#screen-documentation"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Account Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Analytics & Insights",
+                  "href": "#screen-analytics"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                },
+                {
+                  "label": "Billing & Subscriptions",
+                  "href": "#screen-billing"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-wl-table",
-            "nodeType": "section",
-            "semanticRole": "table",
-            "resourceRef": {
-              "id": "res_data_table",
-              "slug": "data-table",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-settings-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-settings-settings-nav-2",
+                "nodeType": "section",
+                "semanticRole": "settings-nav",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Account Workspace",
+                  "links": [
+                    {
+                      "label": "Marketing Home",
+                      "href": "#screen-marketing-home"
+                    },
+                    {
+                      "label": "Documentation & API",
+                      "href": "#screen-documentation"
+                    },
+                    {
+                      "label": "Overview Dashboard",
+                      "href": "#screen-overview"
+                    },
+                    {
+                      "label": "Account Directory",
+                      "href": "#screen-collection-index"
+                    },
+                    {
+                      "label": "Analytics & Insights",
+                      "href": "#screen-analytics"
+                    },
+                    {
+                      "label": "Settings & Preferences",
+                      "href": "#screen-settings"
+                    },
+                    {
+                      "label": "Billing & Subscriptions",
+                      "href": "#screen-billing"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-settings-settings-form-3",
+                "nodeType": "section",
+                "semanticRole": "settings-form",
+                "resourceRef": {
+                  "id": "res_primitive_input",
+                  "slug": "input",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Notification preferences",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
+                }
+              },
+              {
+                "id": "node-screen-settings-save-footer-4",
+                "nodeType": "section",
+                "semanticRole": "save-footer",
+                "resourceRef": {
+                  "id": "res_mot_magnetic_button",
+                  "slug": "magnetic-button",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Save preferences",
+                  "disabled": true,
+                  "title": "Connect the exported application to your backend to enable this action."
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "docked-panes"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        },
+        "dnaOverrides": {
+          "professionalism": 96,
+          "playfulness": 8,
+          "curvature": 12,
+          "motion": 10
+        }
       }
     },
     {
-      "id": "screen-reports-library",
-      "screenNodeId": "node-reports-library",
-      "name": "Reports Library",
-      "slug": "/reports",
+      "id": "screen-billing",
+      "screenNodeId": "screen-billing",
+      "name": "Billing & Subscriptions",
+      "slug": "/billing",
       "rootNode": {
-        "id": "root-reports-library",
+        "id": "root-screen-billing",
         "nodeType": "layout",
-        "semanticRole": "table-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-rep-filters",
-            "nodeType": "section",
-            "semanticRole": "filters",
+            "id": "node-screen-billing-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_filter_bar",
-              "slug": "filter-bar",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Account Workspace",
+              "links": [
+                {
+                  "label": "Marketing Home",
+                  "href": "#screen-marketing-home"
+                },
+                {
+                  "label": "Documentation & API",
+                  "href": "#screen-documentation"
+                },
+                {
+                  "label": "Overview Dashboard",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Account Directory",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Analytics & Insights",
+                  "href": "#screen-analytics"
+                },
+                {
+                  "label": "Settings & Preferences",
+                  "href": "#screen-settings"
+                },
+                {
+                  "label": "Billing & Subscriptions",
+                  "href": "#screen-billing"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-rep-table",
-            "nodeType": "section",
-            "semanticRole": "reports-table",
-            "resourceRef": {
-              "id": "res_data_table",
-              "slug": "data-table",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-billing-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-billing-current-plan-card-2",
+                "nodeType": "section",
+                "semanticRole": "current-plan-card",
+                "resourceRef": {
+                  "id": "res_sec_pricing_three_tier",
+                  "slug": "pricing-three-tier",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-billing-usage-meter-3",
+                "nodeType": "section",
+                "semanticRole": "usage-meter",
+                "resourceRef": {
+                  "id": "res_dat_bar_chart",
+                  "slug": "bar-chart",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-billing-invoices-table-4",
+                "nodeType": "section",
+                "semanticRole": "invoices-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Billing & Subscriptions",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Account",
+                      "type": "Financial ledger holding settled currency balance",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Transaction",
+                      "type": "Audited immutable debit or credit ledger event",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Transfer",
+                      "type": "Pending or executed settlement instruction",
+                      "quality": 0,
+                      "status": "Sample"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Progress",
+                    "status": "Status"
+                  }
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "docked-panes"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
+      }
+    },
+    {
+      "id": "screen-sign-in",
+      "screenNodeId": "screen-sign-in",
+      "name": "Sign In",
+      "slug": "/sign-in",
+      "rootNode": {
+        "id": "root-screen-sign-in",
+        "nodeType": "layout",
+        "semanticRole": "workspace-dock-shell",
+        "children": [
+          {
+            "id": "node-screen-sign-in-auth-card-1",
+            "nodeType": "section",
+            "semanticRole": "auth-card",
+            "resourceRef": {
+              "id": "res_primitive_input",
+              "slug": "input",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "label": "Work email",
+              "helperText": "Example field. Connect persistence and your backend in the exported application."
+            }
+          },
+          {
+            "id": "container-screen-sign-in-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-sign-in-auth-footer-2",
+                "nodeType": "section",
+                "semanticRole": "auth-footer",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Authentication backend required",
+                  "disabled": true,
+                  "title": "Connect the exported application to your backend to enable this action."
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "docked-panes"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     }
   ],
   "navigation": {
-    "model": "cockpit-dense",
+    "model": "rail",
     "primaryItems": [
       {
-        "label": "Overview",
-        "targetScreenId": "node-app-overview"
+        "label": "Marketing Home",
+        "targetScreenId": "screen-marketing-home"
       },
       {
-        "label": "Analytics",
-        "targetScreenId": "node-analytics-dashboard"
+        "label": "Documentation & API",
+        "targetScreenId": "screen-documentation"
       },
       {
-        "label": "Watchlists",
-        "targetScreenId": "node-watchlists"
+        "label": "Overview Dashboard",
+        "targetScreenId": "screen-overview"
       },
       {
-        "label": "Reports",
-        "targetScreenId": "node-reports-library"
+        "label": "Account Directory",
+        "targetScreenId": "screen-collection-index"
+      },
+      {
+        "label": "Account Detail",
+        "targetScreenId": "screen-entity-detail"
+      },
+      {
+        "label": "Analytics & Insights",
+        "targetScreenId": "screen-analytics"
+      },
+      {
+        "label": "Settings & Preferences",
+        "targetScreenId": "screen-settings"
+      },
+      {
+        "label": "Billing & Subscriptions",
+        "targetScreenId": "screen-billing"
+      },
+      {
+        "label": "Sign In",
+        "targetScreenId": "screen-sign-in"
       }
     ]
   },
   "assets": [],
   "locks": [],
   "historyMeta": {
-    "totalOperations": 12,
-    "headRevision": 1
+    "totalOperations": 0,
+    "headRevision": 0
   },
   "exportSettings": {
     "framework": "react",

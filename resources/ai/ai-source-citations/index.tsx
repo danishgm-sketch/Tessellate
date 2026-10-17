@@ -24,9 +24,9 @@ export function AISourceCitations({ variant = 'quiet' }: AISourceCitationsProps)
 
   return (
     <div className={`w-full p-5 rounded-xl border flex flex-col gap-3 transition-colors ${cardBg}`}>
-      <div className="flex items-center justify-between pb-2 border-b border-neutral-100 dark:border-neutral-800">
-        <span className="text-xs font-semibold">Grounded Sources & Citations (3)</span>
-        <span className="text-[10px] font-mono text-emerald-500">✓ 100% Verified</span>
+      <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 pb-2 border-b border-neutral-100 dark:border-neutral-800">
+        <span className="min-w-0 text-xs font-semibold">Grounded Sources & Citations (3)</span>
+        <span className="shrink-0 text-[10px] font-mono text-emerald-500">✓ 100% Verified</span>
       </div>
 
       <div className="space-y-2">
@@ -42,9 +42,9 @@ export function AISourceCitations({ variant = 'quiet' }: AISourceCitationsProps)
                   : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300'
               }`}
             >
-              <div className="flex items-center justify-between mb-1">
-                <span className="font-medium font-mono">[{src.id}] {src.title}</span>
-                <span className="text-[10px] text-neutral-400 font-mono">{src.path}</span>
+              <div className="flex flex-wrap items-start justify-between gap-x-2 gap-y-1 mb-1">
+                <span className="min-w-0 break-words font-medium font-mono">[{src.id}] {src.title}</span>
+                <span className="min-w-0 break-all text-[10px] text-neutral-400 font-mono">{src.path}</span>
               </div>
               <p className="text-[11px] text-neutral-500 italic leading-relaxed">
                 "{src.quote}"

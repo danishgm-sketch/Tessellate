@@ -73,12 +73,14 @@ describe('Catalogue Browsing and Search', () => {
     expect(cosineSimilarity(vecA, vecC)).toBeCloseTo(0.0);
   });
 
-  it('semantic adapter stays unloaded on init and loads lazily on demand', async () => {
+  it('semantic Lab stays unavailable until a real embedding model is installed', async () => {
     const adapter = new LocalSemanticAdapter();
     expect(adapter.isAvailable()).toBe(false);
 
     const loaded = await adapter.loadModel();
-    expect(loaded).toBe(true);
-    expect(adapter.isAvailable()).toBe(true);
+    expect(loaded).toBe(false);
+    expect(adapter.isAvailable()).toBe(false);
+    expect(adapter.getBackend()).toBe('none');
+    await expect(adapter.embedText('employee onboarding')).resolves.toBeNull();
   });
 });

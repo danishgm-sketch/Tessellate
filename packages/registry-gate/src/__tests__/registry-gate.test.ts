@@ -51,7 +51,7 @@ describe('Phase 18 — @tessellate/registry-gate Test Suite', () => {
     const res = checkSecurityIsolationGate(dangerousCode);
     expect(res.status).toBe('fail');
     expect(res.score).toBe(0);
-    expect(res.details).toContain('eval()');
+    expect(res.details).toContain('dynamic code execution');
     expect(res.details).toContain('dangerouslySetInnerHTML');
   });
 

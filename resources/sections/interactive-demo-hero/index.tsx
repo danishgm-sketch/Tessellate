@@ -36,7 +36,7 @@ export function InteractiveDemoHero({
 
       <div className={`max-w-3xl mx-auto rounded-2xl border p-6 sm:p-8 transition-all ${demoCard}`}>
         <div className="flex flex-wrap items-center justify-between gap-4 border-b pb-6 mb-6">
-          <div className="flex items-center gap-2 text-xs font-semibold">
+          <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
             <span>Density:</span>
             {(['compact', 'normal', 'relaxed'] as const).map((s) => (
               <button
@@ -52,7 +52,7 @@ export function InteractiveDemoHero({
             ))}
           </div>
 
-          <div className="flex items-center gap-2 text-xs font-semibold">
+          <div className="flex flex-wrap items-center gap-2 text-xs font-semibold">
             <span>Mode:</span>
             <button
               type="button"
@@ -67,7 +67,7 @@ export function InteractiveDemoHero({
         <div className={`rounded-xl border p-6 transition-all ${
           activeTheme === 'dark' ? 'bg-[#0B0D10] text-white border-neutral-800' : 'bg-neutral-50 text-neutral-900 border-neutral-200'
         } ${scale === 'compact' ? 'space-y-2' : scale === 'relaxed' ? 'space-y-6' : 'space-y-4'}`}>
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <span className="font-semibold text-sm">Preview Workspace</span>
             <span className="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-mono">200 OK</span>
           </div>

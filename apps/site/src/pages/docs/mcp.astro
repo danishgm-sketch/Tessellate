@@ -2,6 +2,7 @@
 import '../../styles/global.css';
 import { SiteHeader } from '../../components/home/SiteHeader';
 import { FinalComposerFooter } from '../../components/home/FinalComposerFooter';
+import CapabilityNotice from '../../components/CapabilityNotice.astro';
 ---
 
 <!doctype html>
@@ -17,6 +18,7 @@ import { FinalComposerFooter } from '../../components/home/FinalComposerFooter';
     <SiteHeader client:load />
 
     <main id="main-content" class="max-w-[960px] mx-auto px-4 sm:px-6 py-12 space-y-8">
+      <CapabilityNotice tier="Beta" note="Local stdio resource discovery and manifest tools are the supported core boundary. Remote HTTP/SSE, recommendations and advanced mutation workflows are Beta; this public Site does not host an MCP process." />
       <div class="space-y-2">
         <a href="/docs" class="text-xs font-mono text-[#2547E8] hover:underline">← Back to Documentation</a>
         <h1 class="text-3xl font-bold tracking-tight text-[#111217]">Model Context Protocol (MCP)</h1>
@@ -52,10 +54,10 @@ import { FinalComposerFooter } from '../../components/home/FinalComposerFooter';
               <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">get_resource_code</code>: Fetches the raw TypeScript React source code for immediate insertion.
             </li>
             <li>
-              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">recommend_resources</code>: Scores and recommends the highest-compatibility components for a page goal.
+              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">recommend_resources</code> <span class="font-mono text-[9px] uppercase text-[#6D4A12]">Beta</span>: Scores and recommends resources for a page goal; semantic quality has not yet been manually adjudicated.
             </li>
             <li>
-              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">find_alternatives</code>: Suggests drop-in replacements for components based on accessibility or performance.
+              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">find_alternatives</code> <span class="font-mono text-[9px] uppercase text-[#6D4A12]">Beta</span>: Suggests alternatives; candidate relevance and compatibility need further evaluation.
             </li>
           </ul>
         </section>

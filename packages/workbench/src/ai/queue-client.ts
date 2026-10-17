@@ -1,18 +1,21 @@
-import type { ProjectManifest, ProjectMutation } from '@tessellate/schemas';
-import type { IntentCommand } from './intent-command.js';
+import {
+  IntentCommandSchema,
+  type ProjectManifest,
+  type ProjectMutation,
+  type IntentCommand,
+} from '@tessellate/schemas';
 import { planMutationsFromIntent } from './mutation-planner.js';
 import { tryDeterministicCommandMatch } from './ai-service.js';
 
 export interface QueueProgressCallback {
   (status: {
-    status: 'checking' | 'queued' | 'processing' | 'completed' | 'fallback';
+    status: 'checking' | 'queued' | 'processing' | 'completed' | 'fallback' | 'unavailable';
     tokenNumber?: number;
     position?: number;
     estimatedWaitSeconds?: number;
     message?: string;
   }): void;
 }
-
 export interface QueueExecutionResult {
   success: boolean;
   command?: IntentCommand;
@@ -22,187 +25,180 @@ export interface QueueExecutionResult {
   usedFallback: boolean;
   error?: string;
 }
+export interface HostHealth {
+  apiOnline: boolean;
+  hostOnline: boolean;
+  pendingTasks: number;
+}
+const OFFLINE_HEALTH: HostHealth = { apiOnline: false, hostOnline: false, pendingTasks: 0 };
+function getApiBase(): string | null {
+  if (
+    typeof window === 'undefined' ||
+    !['localhost', '127.0.0.1'].includes(window.location.hostname)
+  )
+    return '';
+  if (window.location.port === '4323') return ''; // Local Sites Worker owns the server-side proxy.
+  return null;
+}
+const unavailable = (message: string): QueueExecutionResult => ({
+  success: false,
+  mutations: [],
+  explanation: message,
+  usedFallback: false,
+  error: message,
+});
 
-const API_BASE = typeof window !== 'undefined' && window.location.hostname === 'localhost'
-  ? 'http://localhost:8787'
-  : '';
-
-/**
- * Checks if the bespoke host ML worker is currently online and healthy.
- */
-export async function checkHostHealth(): Promise<{ hostOnline: boolean; pendingTasks: number }> {
+export async function checkHostHealth(): Promise<HostHealth> {
+  const apiBase = getApiBase();
+  // The static Astro preview has no server-side API proxy. Avoid probing a
+  // laptop service the user has not explicitly enabled for local development.
+  if (apiBase === null) return OFFLINE_HEALTH;
   try {
-    const res = await fetch(`${API_BASE}/api/inference/health`, { method: 'GET' });
-    if (res.ok) {
-      const data = await res.json();
-      return { hostOnline: Boolean(data.hostOnline), pendingTasks: data.pendingTasks || 0 };
+    const response = await fetch(`${apiBase}/api/inference/health`, {
+      signal: AbortSignal.timeout(4000),
+      cache: 'no-store',
+    });
+    if (response.ok) {
+      const data = (await response.json()) as Partial<HostHealth>;
+      return {
+        apiOnline: data.apiOnline === true,
+        hostOnline: data.hostOnline === true,
+        pendingTasks: typeof data.pendingTasks === 'number' ? data.pendingTasks : 0,
+      };
     }
   } catch {
-    // If backend is unreachable or local preview
+    /* A sleeping laptop or stopped Docker is an explicit offline state. */
   }
-  return { hostOnline: false, pendingTasks: 0 };
+  return OFFLINE_HEALTH;
 }
 
-/**
- * Dispatches a natural-language command to the host queue with real-time token feedback,
- * or falls back seamlessly to the deterministic engine when host is offline.
- */
 export async function executeQueuedCommand(
   manifest: ProjectManifest,
   activeScreenId: string,
   userPrompt: string,
-  onProgress?: QueueProgressCallback
+  onProgress?: QueueProgressCallback,
+  options: { useExperimentalHost?: boolean } = {}
 ): Promise<QueueExecutionResult> {
-  const trimmed = userPrompt.trim();
-  if (!trimmed) {
-    return {
-      success: false,
-      mutations: [],
-      explanation: 'Prompt cannot be empty.',
-      usedFallback: false,
-      error: 'Prompt cannot be empty.',
-    };
-  }
-
-  const activeScreen = manifest.screens.find((s) => s.id === activeScreenId);
-
-  // 1. Check Host Liveness
-  if (onProgress) onProgress({ status: 'checking', message: 'Checking host worker...' });
-  const health = await checkHostHealth();
-
-  if (!health.hostOnline) {
-    // Host is offline: Trigger Deterministic Rule Fallback immediately
-    if (onProgress) {
-      onProgress({
-        status: 'fallback',
-        message: 'Host DL offline · Deterministic fallback active',
-      });
-    }
-
-    const detCommand = tryDeterministicCommandMatch(manifest, activeScreenId, trimmed);
-    if (detCommand) {
-      const plan = planMutationsFromIntent(manifest, activeScreenId, detCommand);
-      return {
-        success: true,
-        command: detCommand,
-        mutations: plan.mutations,
-        explanation: `[Deterministic Engine] ${plan.explanation}`,
-        usedFallback: true,
-      };
-    }
-
-    // Default recomposition fallback if no keyword matched
-    const fallbackCommand: IntentCommand = {
-      action: 'recompose-screen',
-      summary: `Deterministic fallback: Recomposed "${activeScreen?.name || 'Screen'}"`,
-      preserveLockedNodes: true,
-      explanation: 'Deterministic engine recomposition',
-    };
-    const plan = planMutationsFromIntent(manifest, activeScreenId, fallbackCommand);
+  const prompt = userPrompt.trim();
+  if (!prompt) return unavailable('Prompt cannot be empty.');
+  const screen = manifest.screens.find((item) => item.id === activeScreenId);
+  if (!screen) return unavailable('Select a screen before issuing a command.');
+  const local = tryDeterministicCommandMatch(manifest, activeScreenId, prompt);
+  if (local) {
+    const plan = planMutationsFromIntent(manifest, activeScreenId, local);
+    onProgress?.({ status: 'fallback', message: 'Local deterministic command' });
     return {
       success: true,
-      command: fallbackCommand,
+      command: local,
       mutations: plan.mutations,
-      explanation: `[Deterministic Engine] Recomposed layout around locked nodes.`,
+      explanation: `[Deterministic Engine] ${plan.explanation}`,
       usedFallback: true,
     };
   }
-
-  // 2. Submit to Host Queue
+  if (!options.useExperimentalHost) {
+    return unavailable(
+      'No deterministic command matches. Laptop inference is unavailable unless you explicitly enable the experimental Lab. Your project has not been changed.'
+    );
+  }
+  onProgress?.({ status: 'checking', message: 'Checking laptop availability…' });
+  const health = await checkHostHealth();
+  if (!health.hostOnline) {
+    const message =
+      getApiBase() === null
+        ? 'Laptop inference is not connected to this local Astro preview. Use the configured Sites runtime; local inspection and deterministic commands remain available.'
+        : 'Laptop inference is unavailable. The Site backend and this laptop’s Docker host must be running; local inspection and deterministic commands remain available.';
+    onProgress?.({ status: 'unavailable', message });
+    return unavailable(message);
+  }
   try {
-    const queueRes = await fetch(`${API_BASE}/api/inference/queue`, {
+    const apiBase = getApiBase();
+    if (apiBase === null)
+      return unavailable(
+        'Laptop inference is not configured for this local preview. Use the Sites runtime or explicitly enable the local development backend.'
+      );
+    const submitted = await fetch(`${apiBase}/api/inference/queue`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        prompt: trimmed,
-        screenAst: activeScreen?.rootNode || {},
-        designDna: manifest.designDNA || {},
-      }),
+      body: JSON.stringify({ prompt, screenAst: screen.rootNode, designDna: manifest.designDNA }),
+      signal: AbortSignal.timeout(5000),
     });
-
-    if (!queueRes.ok) {
-      throw new Error(`Queue submission failed (HTTP ${queueRes.status})`);
-    }
-
-    const queueData = await queueRes.json();
-    const ticketId = queueData.ticketId;
-    const tokenNumber = queueData.tokenNumber;
-
-    if (onProgress) {
-      onProgress({
-        status: 'queued',
-        tokenNumber,
-        position: queueData.position,
-        estimatedWaitSeconds: queueData.estimatedWaitSeconds,
-        message: `Token #${tokenNumber} · Position ${queueData.position} in queue`,
-      });
-    }
-
-    // 3. Poll ticket status until complete (max 30s)
-    const startTime = Date.now();
-    while (Date.now() - startTime < 30000) {
-      await new Promise((r) => setTimeout(r, 1000));
-
-      const statusRes = await fetch(`${API_BASE}/api/inference/status/${ticketId}`);
-      if (statusRes.ok) {
-        const statusData = await statusRes.json();
-
-        if (statusData.status === 'processing' && onProgress) {
-          onProgress({
-            status: 'processing',
-            tokenNumber,
-            message: `Token #${tokenNumber} · Processing on Host Hardware...`,
-          });
+    if (!submitted.ok)
+      throw new Error('Laptop queue is unavailable or busy. Your project has not been changed.');
+    const ticket = (await submitted.json()) as {
+      ticketId: string;
+      accessToken: string;
+      tokenNumber: number;
+      position: number;
+      estimatedWaitSeconds: number;
+    };
+    if (typeof ticket.ticketId !== 'string' || typeof ticket.accessToken !== 'string')
+      throw new Error('Laptop returned an invalid ticket. Your project has not been changed.');
+    onProgress?.({
+      status: 'queued',
+      tokenNumber: ticket.tokenNumber,
+      position: ticket.position,
+      estimatedWaitSeconds: ticket.estimatedWaitSeconds,
+      message: `Token #${ticket.tokenNumber} · queued on this laptop`,
+    });
+    const started = Date.now();
+    while (Date.now() - started < 45000) {
+      await new Promise((resolve) => setTimeout(resolve, 750));
+      const status = await fetch(
+        `${apiBase}/api/inference/status/${encodeURIComponent(ticket.ticketId)}`,
+        {
+          headers: { Authorization: `Bearer ${ticket.accessToken}` },
+          signal: AbortSignal.timeout(5000),
+          cache: 'no-store',
         }
-
-        if (statusData.status === 'completed' && statusData.resultCommand) {
-          const command = statusData.resultCommand as IntentCommand;
-          const plan = planMutationsFromIntent(manifest, activeScreenId, command);
-
-          if (onProgress) {
-            onProgress({
-              status: 'completed',
-              tokenNumber,
-              message: `Token #${tokenNumber} · Completed!`,
-            });
-          }
-
-          return {
-            success: true,
-            command,
-            mutations: plan.mutations,
-            explanation: `[Host DL Model] ${command.summary || plan.explanation}`,
-            tokenNumber,
-            usedFallback: false,
-          };
-        }
+      );
+      if (!status.ok)
+        throw new Error(
+          'Laptop connection was lost. Your project has not been changed; the request may be retried when the host is available.'
+        );
+      const data = (await status.json()) as {
+        status: string;
+        resultCommand?: unknown;
+        errorMessage?: string;
+        position?: number;
+      };
+      if (data.status === 'failed')
+        throw new Error(
+          data.errorMessage ?? 'Laptop inference failed. Your project has not been changed.'
+        );
+      if (data.status === 'completed') {
+        const command = IntentCommandSchema.parse(data.resultCommand);
+        const plan = planMutationsFromIntent(manifest, activeScreenId, {
+          ...command,
+          preserveLockedNodes: true,
+        });
+        onProgress?.({
+          status: 'completed',
+          tokenNumber: ticket.tokenNumber,
+          message: `Token #${ticket.tokenNumber} · completed by the laptop model`,
+        });
+        return {
+          success: true,
+          command,
+          mutations: plan.mutations,
+          explanation: `[Laptop Model] ${plan.explanation}`,
+          tokenNumber: ticket.tokenNumber,
+          usedFallback: false,
+        };
       }
-    }
-
-    throw new Error('Host queue timeout after 30s.');
-  } catch (_err) {
-    // If queue communication fails at runtime, degrade cleanly to deterministic engine
-    if (onProgress) {
-      onProgress({
-        status: 'fallback',
-        message: 'Host communication timed out · Reverting to deterministic engine',
+      onProgress?.({
+        status: data.status === 'processing' ? 'processing' : 'queued',
+        tokenNumber: ticket.tokenNumber,
+        position: data.position,
+        message: `Token #${ticket.tokenNumber} · ${data.status} on laptop`,
       });
     }
-
-    const detCommand: IntentCommand = tryDeterministicCommandMatch(manifest, activeScreenId, trimmed) || {
-      action: 'recompose-screen',
-      summary: 'Recomposed screen',
-      preserveLockedNodes: true,
-      explanation: 'Deterministic engine recomposition',
-    };
-    const plan = planMutationsFromIntent(manifest, activeScreenId, detCommand);
-
-    return {
-      success: true,
-      command: detCommand,
-      mutations: plan.mutations,
-      explanation: `[Deterministic Fallback] ${plan.explanation}`,
-      usedFallback: true,
-    };
+    throw new Error('Laptop inference timed out. Your project has not been changed.');
+  } catch (error) {
+    const message =
+      error instanceof Error
+        ? error.message
+        : 'Laptop inference is unavailable. Your project has not been changed.';
+    onProgress?.({ status: 'unavailable', message });
+    return unavailable(message);
   }
 }

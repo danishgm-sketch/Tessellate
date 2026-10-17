@@ -1,3 +1,3 @@
 export const trustBadgesStripFixtures = {
-  badges: ['SOC2 TYPE II', 'ISO 27001', 'WCAG 2.2 AA'],
+  badges: ['SOC 2: EVIDENCE REQUIRED', 'ISO 27001: VERIFY SCOPE', 'WCAG 2.2 AA: TARGET'],
 };

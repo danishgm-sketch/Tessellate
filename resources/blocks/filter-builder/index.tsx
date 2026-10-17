@@ -25,7 +25,7 @@ export function FilterBuilder({ variant = 'quiet' }: FilterBuilderProps) {
   };
 
   return (
-    <div className={`w-full p-6 rounded-xl border transition-colors ${bg}`}>
+    <div className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border transition-colors ${bg}`}>
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-sm font-semibold">Filter Rules</h3>
         <button type="button" onClick={addRule} className="text-xs px-2.5 py-1 rounded border">
@@ -35,7 +35,7 @@ export function FilterBuilder({ variant = 'quiet' }: FilterBuilderProps) {
 
       <div className="space-y-3 font-mono text-xs">
         {rules.map((r) => (
-          <div key={r.id} className="p-3 rounded-lg border border-neutral-100 dark:border-neutral-800 flex items-center gap-3">
+          <div key={r.id} className="p-3 rounded-[var(--tess-radius-lg,8px)] border border-neutral-100 dark:border-neutral-800 flex items-center gap-3">
             <span className="font-bold">{r.field}</span>
             <span className="opacity-60">{r.op}</span>
             <span className="px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800">{r.val}</span>

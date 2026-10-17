@@ -1,4 +1,5 @@
 import React from 'react';
+import {useDialogFocus} from '@tessellate/ui';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { ManifestRenderer } from '@tessellate/renderer';
 import { DeviceFrame } from '../canvas/DeviceFrame.js';
@@ -14,22 +15,23 @@ export function PreviewModal() {
   const reducedMotion = useWorkbenchStore((state) => state.reducedMotion);
   const toggleReducedMotion = useWorkbenchStore((state) => state.toggleReducedMotion);
 
+  const dialogRef=useDialogFocus<HTMLDivElement>(true,togglePreview);
   const isMobileViewport = ['430', '390', '360'].includes(devicePreset);
   const isTabletViewport = devicePreset === '768';
   const viewportCategory = isMobileViewport ? 'mobile' : isTabletViewport ? 'tablet' : 'desktop';
 
   return (
     <div
-      data-testid="preview-modal"
+      data-testid="preview-modal" ref={dialogRef} role="dialog" aria-modal="true" aria-label="Project preview" tabIndex={-1}
       className="fixed inset-0 z-50 bg-[#FAF9F6] dark:bg-[#07090C] flex flex-col overflow-hidden"
     >
       {/* Floating Preview Controls Banner */}
-      <div className="absolute top-4 inset-x-0 mx-auto w-fit z-50 flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/90 dark:bg-[#171B21]/90 backdrop-blur-md border border-[#D9D6CF] dark:border-[#272C34] shadow-lg text-xs font-mono select-none">
+      <div className="dark shrink-0 flex-wrap max-w-full z-50 flex items-center gap-3 px-4 py-2 rounded-2xl bg-white/90 dark:bg-[#171B21]/90 backdrop-blur-md border border-[#D9D6CF] dark:border-[#272C34] shadow-lg text-xs font-mono select-none">
         {/* Screen Switcher */}
         <div className="flex items-center gap-1.5 border-r border-[#D9D6CF] dark:border-[#272C34] pr-3">
-          <span className="text-[#8B8F97]">Screen:</span>
+          <span className="text-[var(--text-muted)]">Screen:</span>
           <select
-            value={activeScreenId}
+            aria-label="Preview screen" value={activeScreenId}
             onChange={(e) => setActiveScreen(e.target.value)}
             className="rounded bg-[#FAF9F6] dark:bg-[#0B0D10] border border-[#D9D6CF] dark:border-[#272C34] px-2 py-1 text-xs font-bold font-sans text-[#111217] dark:text-[#F5F7FA] focus:outline-none"
           >
@@ -50,7 +52,7 @@ export function PreviewModal() {
                 ? 'bg-[#2547E8] text-white'
                 : 'text-[#62666F] dark:text-[#A8AFBA]'
             }`}
-            title="Desktop"
+            aria-label="Desktop" title="Desktop"
           >
             <Monitor className="h-3.5 w-3.5" />
           </button>
@@ -61,7 +63,7 @@ export function PreviewModal() {
                 ? 'bg-[#2547E8] text-white'
                 : 'text-[#62666F] dark:text-[#A8AFBA]'
             }`}
-            title="Tablet"
+            aria-label="Tablet" title="Tablet"
           >
             <Tablet className="h-3.5 w-3.5" />
           </button>
@@ -72,7 +74,7 @@ export function PreviewModal() {
                 ? 'bg-[#2547E8] text-white'
                 : 'text-[#62666F] dark:text-[#A8AFBA]'
             }`}
-            title="Mobile"
+            aria-label="Mobile" title="Mobile"
           >
             <Smartphone className="h-3.5 w-3.5" />
           </button>
@@ -102,7 +104,7 @@ export function PreviewModal() {
       </div>
 
       {/* Render Canvas in Device Frame */}
-      <div className="flex-1 overflow-auto p-8 pt-20 flex justify-center items-start">
+      <div className="flex-1 overflow-auto p-2 flex items-start">
         <DeviceFrame preset={devicePreset}>
           <ManifestRenderer
             manifest={manifest}

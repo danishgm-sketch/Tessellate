@@ -83,7 +83,10 @@
   },
   "preview": {
     "component": "BottomSheetPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "open": true,
+      "children": "An example sheet with local controls."
+    },
     "viewport": 1440
   },
   "slots": [

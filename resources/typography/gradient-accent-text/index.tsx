@@ -32,8 +32,8 @@ export function GradientAccentText({
       : 'bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-500 text-transparent bg-clip-text';
 
   return (
-    <div className={`p-8 md:p-12 rounded-xl border max-w-4xl mx-auto space-y-4 transition-colors ${containerBg}`}>
-      <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">
+    <div className={`w-full min-w-0 p-4 sm:p-8 md:p-12 rounded-xl border max-w-4xl mx-auto space-y-4 transition-colors ${containerBg}`}>
+      <h2 className="break-words text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">
         {leadText} <span className={gradientClass}>{gradientText}</span> {tailText}
       </h2>
       <p className="text-xs text-neutral-400 font-mono">

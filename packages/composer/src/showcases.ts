@@ -49,6 +49,7 @@ function createShowcaseManifest(params: {
     requiredRoles: ['content'],
     optionalRoles: [],
   }));
+  const screenIdsByGraphNodeId = new Map(screens.map((screen) => [screen.screenNodeId, screen.id]));
 
   const manifest: ProjectManifest = {
     schemaVersion: '1.0.0',
@@ -109,7 +110,10 @@ function createShowcaseManifest(params: {
     screens,
     navigation: {
       model: params.navigationModel,
-      primaryItems: params.navItems,
+      primaryItems: params.navItems.map((item) => ({
+        ...item,
+        targetScreenId: screenIdsByGraphNodeId.get(item.targetScreenId) ?? item.targetScreenId,
+      })),
     },
     assets: [],
     locks: [],

@@ -83,7 +83,9 @@
   },
   "preview": {
     "component": "ButtonGroupPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "children": "Example grouped content"
+    },
     "viewport": 1440
   },
   "slots": [
