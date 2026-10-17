@@ -7,6 +7,7 @@ export default defineConfig({
     'catalog-resource-render.spec.ts',
     'gold-resource-state-certification.spec.ts',
     'gold-resource-accessibility-certification.spec.ts',
+    'preview-form-interactions.spec.ts',
   ],
   fullyParallel: false,
   workers: 1,

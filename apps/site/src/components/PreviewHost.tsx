@@ -9,6 +9,19 @@ import {
 } from '@tessellate/catalog/protocol';
 import { NodeRenderer } from '@tessellate/renderer';
 
+function readChangeValue(input: unknown): unknown {
+  if (typeof input !== 'object' || input === null || !('target' in input)) return input;
+
+  const target = (input as { target?: unknown }).target;
+  if (typeof target !== 'object' || target === null) return input;
+
+  const control = target as { type?: unknown; checked?: unknown; value?: unknown };
+  if ((control.type === 'checkbox' || control.type === 'radio') && typeof control.checked === 'boolean') {
+    return control.checked;
+  }
+  return 'value' in control ? control.value : input;
+}
+
 const resourceManifests=import.meta.glob<{default:{preview:{defaultProps?:Record<string,unknown>}}}>('../../../../resources/**/manifest.json');
 const resourceModules=import.meta.glob<Record<string,unknown>>('../../../../resources/**/index.tsx');
 function isResourceComponent(value:unknown):value is React.ComponentType<Record<string,unknown>> {return typeof value==='function' || (typeof value==='object' && value!==null && '$$typeof' in value && (value.$$typeof===Symbol.for('react.forward_ref') || value.$$typeof===Symbol.for('react.memo')));}
@@ -126,8 +139,36 @@ export default function PreviewHost() {
     return () => observer.disconnect();
   }, [resourceId, variant, theme, component]);
 
-  const onChange=(value:unknown)=>setProps(previous=>({...previous,...(resourceId==='checkbox'||resourceId==='switch'?{checked:value}:resourceId==='multi-select'?{selected:value}:resourceId==='tabs'?{activeId:value}:{value})}));
-  const interactiveProps={...props,onChange,onSelect:(value:unknown)=>{setProps(previous=>({...previous,value}));setActionStatus(`Selected ${String(value)}`);},onClose:()=>setProps(previous=>({...previous,open:false})),onConfirm:()=>{setProps(previous=>({...previous,open:false}));setActionStatus('Example action confirmed.');},onPageChange:(currentPage:number)=>setProps(previous=>({...previous,currentPage})),onClick:()=>setActionStatus('Example action activated.'),onCtaClick:()=>setActionStatus('Start action previewed.'),onLaunch:()=>setActionStatus('Launch action previewed.'),onOpen:()=>setActionStatus('Open action previewed.'),onDocsClick:()=>setActionStatus('Documentation action previewed.'),onExport:()=>setActionStatus('Export action previewed.'),onSave:()=>setActionStatus('Save action previewed.'),onSelectPlan:(plan:string)=>setActionStatus(`${plan} plan selected.`),onCreateProject:()=>setActionStatus('Project creation previewed.'),onAction:()=>setActionStatus('Example action activated.'),onRetry:()=>setActionStatus('Retry action previewed.')};
+  const onChange = (input: unknown) => {
+    const value=readChangeValue(input);
+    setProps(previous=>({...previous,...(resourceId==='checkbox'||resourceId==='switch'?{checked:value}:resourceId==='multi-select'?{selected:value}:resourceId==='tabs'?{activeId:value}:{value})}));
+  };
+  const onClick = () => setActionStatus('Example action activated.');
+  const interactiveProps = {
+    ...props,
+    onChange,
+    onSelect: (value: unknown) => {
+      setProps(previous => ({ ...previous, value }));
+      setActionStatus(`Selected ${String(value)}`);
+    },
+    onClose: () => setProps(previous => ({ ...previous, open: false })),
+    onConfirm: () => {
+      setProps(previous => ({ ...previous, open: false }));
+      setActionStatus('Example action confirmed.');
+    },
+    onPageChange: (currentPage: number) => setProps(previous => ({ ...previous, currentPage })),
+    ...(['button', 'icon-button', 'tag-chip', 'split-button'].includes(resourceId) ? { onClick } : {}),
+    onCtaClick: () => setActionStatus('Start action previewed.'),
+    onLaunch: () => setActionStatus('Launch action previewed.'),
+    onOpen: () => setActionStatus('Open action previewed.'),
+    onDocsClick: () => setActionStatus('Documentation action previewed.'),
+    onExport: () => setActionStatus('Export action previewed.'),
+    onSave: () => setActionStatus('Save action previewed.'),
+    onSelectPlan: (plan: string) => setActionStatus(`${plan} plan selected.`),
+    onCreateProject: () => setActionStatus('Project creation previewed.'),
+    onAction: () => setActionStatus('Example action activated.'),
+    onRetry: () => setActionStatus('Retry action previewed.'),
+  };
   const available = Boolean(component);
 
   if (loadError) {

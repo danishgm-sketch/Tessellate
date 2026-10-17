@@ -43,7 +43,17 @@ test('Gold resources render at every certified width and each declared variant',
     url?: string;
     widths: number[];
     variants: string[];
-    keyboard: { enabledButtons: number; disabledButtons: number; tabNavigation: boolean; visibleFocus: boolean; enterActivated: boolean; visibleResponse: boolean };
+    keyboard: {
+      enabledButtons: number;
+      disabledButtons: number;
+      tabNavigation: boolean;
+      visibleFocus: boolean;
+      enterActivated: boolean;
+      visibleResponse: boolean;
+      nativeControls: number;
+      nativeControlTabNavigation: boolean;
+      nativeControlFocusVisible: boolean;
+    };
     findings: BrowserFinding[];
     screenshots: string[];
   }> = [];
@@ -77,7 +87,17 @@ test('Gold resources render at every certified width and each declared variant',
       slug: resource.slug,
       widths: viewportWidths,
       variants: resource.variants.map((variant) => variant.id),
-      keyboard: { enabledButtons: 0, disabledButtons: 0, tabNavigation: false, visibleFocus: false, enterActivated: false, visibleResponse: false },
+      keyboard: {
+        enabledButtons: 0,
+        disabledButtons: 0,
+        tabNavigation: false,
+        visibleFocus: false,
+        enterActivated: false,
+        visibleResponse: false,
+        nativeControls: 0,
+        nativeControlTabNavigation: false,
+        nativeControlFocusVisible: false,
+      },
       findings: [] as BrowserFinding[],
       screenshots: [] as string[],
     };
@@ -163,6 +183,36 @@ test('Gold resources render at every certified width and each declared variant',
           if (variantIndex === 0 && width === 1440) {
             record.keyboard.enabledButtons = await frame.locator('button:visible:not([disabled])').count();
             record.keyboard.disabledButtons = await frame.locator('button:visible:disabled').count();
+            const nativeControlSelector = 'input:visible:not([disabled]), select:visible:not([disabled]), textarea:visible:not([disabled])';
+            const nativeControls = frame.locator(nativeControlSelector);
+            record.keyboard.nativeControls = await nativeControls.count();
+            if (record.keyboard.nativeControls > 0) {
+              const firstNativeControl = nativeControls.first();
+              await page.getByRole('button', { name: variant.name, exact: true }).first().focus();
+              let nativeControlFocused = false;
+              for (let tab = 0; tab < 24 && !nativeControlFocused; tab += 1) {
+                await page.keyboard.press('Tab');
+                nativeControlFocused = await firstNativeControl.evaluate((element) => element === document.activeElement);
+              }
+              record.keyboard.nativeControlTabNavigation = nativeControlFocused;
+              if (!nativeControlFocused) {
+                record.findings.push({ type: 'preview-error', detail: 'Tab navigation could not reach the first enabled native form control.', viewport: width, variant: variant.id });
+              } else {
+                const focusState = await firstNativeControl.evaluate((element) => {
+                  const style = getComputedStyle(element);
+                  const hasOutline = style.outlineStyle !== 'none' && Number.parseFloat(style.outlineWidth) > 0;
+                  return {
+                    keyboardFocus: element.matches(':focus-visible'),
+                    visibleIndicator: hasOutline || style.boxShadow !== 'none',
+                  };
+                });
+                record.keyboard.nativeControlFocusVisible = focusState.keyboardFocus && focusState.visibleIndicator;
+                if (!record.keyboard.nativeControlFocusVisible) {
+                  record.findings.push({ type: 'preview-error', detail: 'Keyboard-focused native form control has no visible focus indicator.', viewport: width, variant: variant.id });
+                }
+
+              }
+            }
             const buttonIndex = resource.slug === 'two-pane-master-detail-shell' || resource.slug === 'split-product-hero' ? 1 : 0;
             const firstButton = frame.locator('button:visible:not([disabled])').nth(buttonIndex);
             if (record.keyboard.enabledButtons > 0) {
