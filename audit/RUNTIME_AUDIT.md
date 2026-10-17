@@ -6,9 +6,9 @@ Machine-readable findings and their current status are in
 [`runtime-audit.json`](./runtime-audit.json). All fixes await verification in a
 published review version during the public-RC phase.
 
-**Current disposition:** 66 findings (7 High, 59 Medium). The data-state, compact-width, Kanban copy, chart sample-data and Gold accessibility fixes have passed local browser regressions. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited. A fresh GitHub Linux CI run is still required for the cross-platform fixes.
+**Current disposition:** 68 findings (8 High, 60 Medium). The data-state, compact-width, Kanban copy, chart sample-data, Gold accessibility, and live form-preview fixes have passed local browser regressions. All findings remain `fixed-awaiting-deployed-verification` until the public review Site is updated and re-audited. GitHub Linux CI run [39036100751](https://github.com/danishgm-sketch/Tessellate/actions/runs/39036100751) passed on `2ab36cdd29e745e49a0fafc1c5c7c9ecf15ea300`; CI for the current form fix is pending.
 
-The latest `pnpm test:e2e` run exited successfully: 73 regular browser tests passed, 15 were explicitly skipped, and all 6 Sites Worker tests passed. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Six Gold data-resource fixtures cover empty and large inputs, long text, keyboard interaction and notification updates. The Axe matrix scans all 40 Gold resources and 120 variants with zero violations. The three Linux-discovered compact overflows now pass the complete local matrix. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
+The latest `pnpm test:e2e` run exited successfully: 73 regular browser tests passed, 25 were explicitly skipped, and all 10 Sites Worker tests passed. The catalogue report covers 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covers 40 resources / 120 variants with zero findings. Six Gold data-resource fixtures cover empty and large inputs, long text, keyboard interaction and notification updates. The Axe matrix scans all 40 Gold resources and 120 variants with zero violations. Four native Gold controls passed tab reachability and visible-focus checks, and the Select keyboard commit was verified in the visible browser. The focused Input/Textarea/Select regression suite passed 4/4, retaining before/after captures. The three Linux-discovered compact overflows now pass the complete local matrix. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
 ## HIGH
 
@@ -60,7 +60,23 @@ The latest `pnpm test:e2e` run exited successfully: 73 regular browser tests pas
 - Affected code: `resources/primitives/input/manifest.json`, `tests/e2e/gold-resource-accessibility-certification.spec.ts`.
 - Remediation: provide sample label and placeholder values in the manifest. The 120-variant Axe matrix now reports zero violations. Status remains `fixed-awaiting-deployed-verification` pending public review re-audit.
 
+### AUD-067 — Native form values were corrupted in live resource previews
+
+- Evidence: the [before Input capture](evidence/step-06/before/form-interactions/input-event-corruption-1440.png) shows `[object Object]` after typing; the [fixed Input capture](evidence/step-06/after/form-interactions/input-retains-value-1440.png) shows `Ada Lovelace`. The fixed Textarea capture shows the retained sentence. The Select regression is captured [before](evidence/step-06/before/form-interactions/select-state-reset-1440.png) and [after](evidence/step-06/after/form-interactions/select-retains-choice-1440.png).
+- Reproduction: open `/resources/input/` and type `Ada Lovelace`, then type a sentence in `/resources/textarea/`; open `/resources/select/` and choose **Second option**. Previously, native text controls stored the change event as their value and Select reverted to its initial choice.
+- Root cause: `PreviewHost` stored React's native `onChange` event instead of extracting `target.value` or `target.checked`.
+- Affected code: `apps/site/src/components/PreviewHost.tsx`.
+- Remediation: normalize native control events while preserving primitive/array callback values from custom resources. Focused browser regressions now pass for Input, Textarea, Select and adjacent action-feedback behavior. The issue remains `fixed-awaiting-deployed-verification` until a published review build is audited.
+
 ## MEDIUM
+
+### AUD-068 — Form controls announced a false generic action when clicked
+
+- Evidence: the [before capture](evidence/step-06/before/form-interactions/input-misleading-action-status-1440.png) shows an action status after merely focusing the Input; the [fixed capture](evidence/step-06/after/form-interactions/input-no-false-action-status-1440.png) has no status. Textarea and Select also pass the no-false-status assertion.
+- Reproduction: open `/resources/input/`, `/resources/textarea/` or `/resources/select/` and click the form control. Previously, the preview announced “Example action activated.”
+- Root cause: `PreviewHost` injected a generic `onClick` callback into every resource, including form controls.
+- Affected code: `apps/site/src/components/PreviewHost.tsx`.
+- Remediation: limit the generic callback to action primitives and preserve dedicated callbacks for other preview actions. A browser regression confirms Button still provides feedback. The issue remains `fixed-awaiting-deployed-verification` pending public review re-audit.
 
 ### AUD-006 — Documentation shell overflowed on mobile
 

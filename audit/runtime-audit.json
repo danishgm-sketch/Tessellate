@@ -1542,6 +1542,63 @@
       "remediation": "Provide a sample label and placeholder in preview defaultProps. The browser Axe matrix now finds an accessible name in every variant.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
       "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-067",
+      "severity": "high",
+      "route": "/resources/input/, /resources/textarea/ and /resources/select/",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Native form values were corrupted in live resource previews",
+      "expected": "Text Input and Textarea should retain typed text and Select should retain the chosen option.",
+      "actual": "Typing stored the React change event as the Input or Textarea value and rendered [object Object]; selecting an option reverted to the initial value.",
+      "reproduction": [
+        "Open /resources/input/ at 1440x900 and type Ada Lovelace into Full name.",
+        "Open /resources/textarea/ and type a sentence into its live preview.",
+        "Open /resources/select/ and choose Second option.",
+        "Observe the preview value after React applies the controlled props update."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/form-interactions/input-event-corruption-1440.png",
+      "screenshotAfter": "audit/evidence/step-06/after/form-interactions/input-retains-value-1440.png",
+      "additionalScreenshotAfter": "audit/evidence/step-06/after/form-interactions/textarea-retains-value-1440.png",
+      "rootCause": "PreviewHost treated React's native onChange SyntheticEvent as a resource value instead of reading target.value or target.checked.",
+      "affectedFiles": [
+        "apps/site/src/components/PreviewHost.tsx",
+        "tests/e2e/preview-form-interactions.spec.ts"
+      ],
+      "remediation": "Extract native control values from the event target while leaving custom resources' primitive and array callbacks unchanged. Focused browser regressions now cover Input, Select, form status feedback and Button action feedback.",
+      "fixCommit": "c7d3a7cdec9ab7f0702cc5898a9bfe440a510e95",
+      "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-068",
+      "severity": "medium",
+      "route": "/resources/input/, /resources/textarea/ and /resources/select/",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Form controls announced a false generic action when clicked",
+      "expected": "Focusing or clicking an input/select control should not announce that an example action ran.",
+      "actual": "PreviewHost announced Example action activated. when a form control was clicked, despite no action occurring.",
+      "reproduction": [
+        "Open /resources/input/ and click Full name.",
+        "Open /resources/textarea/ and click inside its preview field.",
+        "Observe the status message above the preview.",
+        "Repeat on /resources/select/."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-06/before/form-interactions/input-misleading-action-status-1440.png",
+      "screenshotAfter": "audit/evidence/step-06/after/form-interactions/input-no-false-action-status-1440.png",
+      "rootCause": "PreviewHost injected the same generic onClick action callback into every resource component, including form controls.",
+      "affectedFiles": [
+        "apps/site/src/components/PreviewHost.tsx",
+        "tests/e2e/preview-form-interactions.spec.ts"
+      ],
+      "remediation": "Limit the generic callback to action primitives that declare click behavior; retain specific host callbacks for other preview actions. Browser regressions confirm form controls produce no false status while Button still reports its action.",
+      "fixCommit": "c7d3a7cdec9ab7f0702cc5898a9bfe440a510e95",
+      "status": "fixed-awaiting-deployed-verification"
     }
   ]
 }
