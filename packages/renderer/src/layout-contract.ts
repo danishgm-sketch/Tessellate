@@ -17,6 +17,11 @@ export const MANIFEST_LAYOUT_CSS = `
 .tess-layout-main-content-scroll,.tess-layout-workspace-multi-pane,.tess-layout-grid-dashboard-container,.tess-layout-compound-workspace-pane,.tess-layout-split-workspace-columns{display:grid;gap:var(--tess-space-md,16px);align-items:start}
 .tess-layout-marketing-page{display:grid;gap:var(--tess-space-lg,24px)}
 .tess-layout-marketing-page>.tess-node{grid-column:1/-1}
+@container tess-screen (max-width:430px){
+ .tess-node[data-responsive-strategy="omit-nonessential"]{display:none!important}
+ .tess-node[data-responsive-strategy="stack"]{display:flex;flex-direction:column;gap:var(--tess-space-md,16px);width:100%}
+ .tess-node[data-responsive-strategy="collapse"]{overflow:hidden;max-height:12rem}
+}
 @container tess-screen (min-width:900px){
  .tess-layout-sidebar-shell{grid-template-columns:220px minmax(0,1fr)}
  .tess-layout-workspace-dock-shell{grid-template-columns:180px minmax(0,1fr)}

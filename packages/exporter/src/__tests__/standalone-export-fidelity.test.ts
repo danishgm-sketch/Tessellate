@@ -6,6 +6,7 @@ import { execSync, spawn } from 'node:child_process';
 import { chromium } from '@playwright/test';
 import type { ProjectManifest } from '@tessellate/schemas';
 import { validProjectFixture } from '@tessellate/schemas';
+import { appendRendererParityNodes } from '@tessellate/testing';
 import { generateSourceTree } from '../source-tree.js';
 import '../node-disk-resolver.js';
 
@@ -275,7 +276,8 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
   });
 
   it('builds standalone project with real pnpm install and verifies interactive execution in Playwright via vite preview', async () => {
-    const sourceTree = generateSourceTree(testProject);
+    const parityProject = appendRendererParityNodes(testProject);
+    const sourceTree = generateSourceTree(parityProject);
 
     // Create a temporary export directory
     const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'tess-export-live-'));
@@ -341,10 +343,15 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
       try {
         const page = await browser.newPage();
         const consoleErrors: string[] = [];
+        const failedRequests: string[] = [];
         page.on('console', (msg) => {
           if (msg.type() === 'error') {
             consoleErrors.push(msg.text());
           }
+        });
+        page.on('requestfailed', (request) => failedRequests.push(`${request.method()} ${request.url()}`));
+        page.on('response', (response) => {
+          if (response.status() >= 400) failedRequests.push(`${response.status()} ${response.url()}`);
         });
 
         await page.goto(`http://localhost:${port}`);
@@ -360,12 +367,31 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         expect(await page.getByText('Content from resource props').first().isVisible()).toBe(true);
         expect(await page.getByText('Content from nested manifest node').first().isVisible()).toBe(true);
 
+        const hiddenOnMobile = page.locator('[data-node-id="parity-mobile-omit"]');
+        const stackedOnMobile = page.locator('[data-node-id="parity-mobile-stack"]');
+        const collapsedOnMobile = page.locator('[data-node-id="parity-mobile-collapse"]');
+        expect(await hiddenOnMobile.isVisible()).toBe(true);
         const screenshotPath = path.resolve(process.cwd(), 'audit/evidence/step-07/after/standalone-export-children.png');
         fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
         await page.screenshot({ path: screenshotPath, fullPage: true });
 
+        await page.setViewportSize({ width: 390, height: 844 });
+        const hiddenOnMobileIsVisible = await hiddenOnMobile.isVisible();
+        if (hiddenOnMobileIsVisible) {
+          const beforeResponsiveFix = path.resolve(process.cwd(), 'audit/evidence/step-07/before/export-responsive-override-visible.png');
+          fs.mkdirSync(path.dirname(beforeResponsiveFix), { recursive: true });
+          await page.screenshot({ path: beforeResponsiveFix, fullPage: true });
+        }
+        expect(hiddenOnMobileIsVisible).toBe(false);
+        expect(await stackedOnMobile.evaluate((element) => getComputedStyle(element).flexDirection)).toBe('column');
+        expect(await collapsedOnMobile.evaluate((element) => getComputedStyle(element).overflowY)).toBe('hidden');
+
+        const responsiveScreenshot = path.resolve(process.cwd(), 'audit/evidence/step-07/after/standalone-export-responsive-390.png');
+        await page.screenshot({ path: responsiveScreenshot, fullPage: true });
+
         // 6. Assert no console errors
         expect(consoleErrors).toEqual([]);
+        expect(failedRequests).toEqual([]);
       } finally {
         await browser.close();
       }

@@ -479,7 +479,11 @@ function renderNodeToJsx(
   const variantExpression=dna.visualMode==='adaptive'?`systemDark ? 'nocturne' : ${JSON.stringify(staticVariant ?? null)}`:JSON.stringify(staticVariant ?? null);
   const darkStyle=tokensToCssVariables(normalizeDesignTokens(dna,{tokenOverrides:tokens,activeMode:'dark'}));
   const styleExpression=dna.visualMode==='adaptive' && (node.dnaOverrides || node.tokenOverrides)?`systemDark ? ${JSON.stringify(darkStyle)} : ${JSON.stringify(localStyle)}`:JSON.stringify(localStyle);
-  const wrapperAttributes = `data-resource-variant={${variantExpression}} data-node-id={${JSON.stringify(node.id)}} data-semantic-role={${JSON.stringify(node.semanticRole)}} style={(${styleExpression}) as React.CSSProperties}`;
+  const responsiveStrategy = node.responsiveOverrides?.strategy;
+  const responsiveAttribute = ['stack', 'collapse', 'omit-nonessential'].includes(String(responsiveStrategy))
+    ? ` data-responsive-strategy={${JSON.stringify(responsiveStrategy)}}`
+    : '';
+  const wrapperAttributes = `data-resource-variant={${variantExpression}} data-node-id={${JSON.stringify(node.id)}} data-semantic-role={${JSON.stringify(node.semanticRole)}}${responsiveAttribute} style={(${styleExpression}) as React.CSSProperties}`;
   const indent = '  '.repeat(indentLevel);
   const className = (node.props['className'] as string) || '';
 

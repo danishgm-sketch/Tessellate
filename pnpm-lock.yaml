@@ -342,6 +342,9 @@ importers:
         specifier: ^0.8.2
         version: 0.8.3
     devDependencies:
+      '@tessellate/testing':
+        specifier: workspace:*
+        version: link:../testing
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
@@ -480,6 +483,9 @@ importers:
       '@tessellate/catalog':
         specifier: workspace:*
         version: link:../catalog
+      '@tessellate/testing':
+        specifier: workspace:*
+        version: link:../testing
       '@types/react':
         specifier: ^19.0.8
         version: 19.3.0
