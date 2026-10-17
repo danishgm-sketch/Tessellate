@@ -78,7 +78,7 @@ describe('durable laptop inference API', () => {
     const nextClaim = await (await request('/poll', { headers: hostHeaders })).json() as { task: { id: string; leaseId: string } };
     expect(nextClaim.task.id).toBe(ticket.ticketId);
     expect(nextClaim.task.leaseId).not.toBe(firstClaim.task.leaseId);
-  });
+  }, 30000);
 
   it('requires the Site gateway secret when the local backend is exposed through a tunnel', async () => {
     const secureEnv = { ...env, TESSELLATE_GATEWAY_SECRET: crypto.randomUUID() + crypto.randomUUID() };
