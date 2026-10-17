@@ -44,6 +44,20 @@ export function createRendererParityNodes(): ProjectNode[] {
       children: [contentNode('parity-slot-nested-child', 'Content from nested manifest node')],
     },
     {
+      id: 'parity-data-attribute-action',
+      nodeType: 'component',
+      semanticRole: 'action-button',
+      resourceRef: { id: 'res_primitive_button_01', slug: 'button', version: '1.0.0' },
+      variant: 'expressive',
+      props: {
+        children: 'Parity action',
+        'aria-label': 'Parity action',
+        'data-tracking-id': 'parity-action',
+      },
+      slots: {},
+      children: [],
+    },
+    {
       id: 'parity-mobile-omit',
       nodeType: 'element',
       semanticRole: 'content',

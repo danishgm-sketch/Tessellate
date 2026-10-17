@@ -16,6 +16,7 @@ describe('renderer semantic parity fixture', () => {
     expect(html).toContain('Content from resource props');
     expect(html).toContain('Content from declared resource slot');
     expect(html).toContain('Content from nested manifest node');
+    expect(html).toContain('data-tracking-id="parity-action"');
     expect(html).toContain('Content omitted on mobile');
     expect(html).toContain('First stacked child');
     expect(html).toContain('Content with a collapsed mobile presentation');

@@ -30,6 +30,7 @@ test('Workbench renders the shared semantic parity fixture in canvas and Preview
   await expect(canvas.locator('[data-node-id="parity-resource-prop-children"]')).toContainText('Content from nested manifest node');
   await expect(canvas.locator('[data-node-id="parity-resource-slot-children"]')).toContainText('Content from declared resource slot');
   await expect(canvas.locator('[data-node-id="parity-resource-slot-children"]')).toContainText('Content from nested manifest node');
+  await expect(canvas.locator('[data-tracking-id="parity-action"]')).toBeVisible();
   await expect(canvas.locator('[data-node-id="parity-mobile-omit"]')).toContainText('Content omitted on mobile');
   await expect(canvas).toContainText('Content from resource props');
   await expect(canvas).toContainText('Content from nested manifest node');

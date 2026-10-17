@@ -509,7 +509,7 @@ function renderNodeToJsx(
 
     for (const [key, val] of Object.entries(candidateProps)) {
       if (key === 'className' || key === 'variant' || key === 'children') continue;
-      if (acceptedProps && !acceptedProps.has(key)) continue;
+      if (acceptedProps && !acceptedProps.has(key) && !key.startsWith('aria-') && !key.startsWith('data-')) continue;
 
       if (val !== undefined && typeof val !== 'function') attributes.push(`${key}={${JSON.stringify(val)}}`);
     }

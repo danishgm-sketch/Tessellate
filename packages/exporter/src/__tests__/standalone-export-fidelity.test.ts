@@ -366,6 +366,16 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
 
         expect(await page.getByText('Content from resource props').first().isVisible()).toBe(true);
         expect(await page.getByText('Content from nested manifest node').first().isVisible()).toBe(true);
+        const trackingAction = page.locator('[data-tracking-id="parity-action"]');
+        if (await trackingAction.count() === 0) {
+          const beforeDataAttributeFix = path.resolve(process.cwd(), 'audit/evidence/step-07/before/export-data-attribute-dropped.png');
+          fs.mkdirSync(path.dirname(beforeDataAttributeFix), { recursive: true });
+          await page.screenshot({ path: beforeDataAttributeFix, fullPage: true });
+        }
+        expect(await trackingAction.isVisible()).toBe(true);
+        const trackingScreenshot = path.resolve(process.cwd(), 'audit/evidence/step-07/after/export-data-attribute-preserved.png');
+        fs.mkdirSync(path.dirname(trackingScreenshot), { recursive: true });
+        await trackingAction.screenshot({ path: trackingScreenshot });
 
         const hiddenOnMobile = page.locator('[data-node-id="parity-mobile-omit"]');
         const stackedOnMobile = page.locator('[data-node-id="parity-mobile-stack"]');
