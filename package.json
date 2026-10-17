@@ -14,7 +14,7 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test && playwright test --config tests/e2e/sites-preview.playwright.config.ts",
+    "test:e2e": "playwright test && playwright test --config tests/e2e/sites-preview.playwright.config.ts && playwright test --config tests/e2e/preview-app.playwright.config.ts",
     "audit:release-gate": "tsx scripts/verify-release-gate.ts",
     "audit:licenses": "tsx scripts/audit-license-provenance.ts",
     "audit:secrets": "tsx scripts/audit-security-secrets.ts",

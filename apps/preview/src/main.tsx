@@ -20,25 +20,28 @@ const PREVIEW_COMPONENTS: Record<string, React.ComponentType<Record<string, unkn
 };
 
 export function PreviewApp() {
-  const [resourceId, setResourceId] = useState<string>('button');
-  const [variant, setVariant] = useState<string>('expressive');
-  const [theme, setTheme] = useState<PreviewTheme>('light');
-  const [device, setDevice] = useState<PreviewDevice>('desktop');
+  const [resourceId, setResourceId] = useState<string>(() =>
+    typeof window === 'undefined' ? 'button' : new URLSearchParams(window.location.search).get('resource') ?? 'button'
+  );
+  const [variant, setVariant] = useState<string>(() =>
+    typeof window === 'undefined' ? 'expressive' : new URLSearchParams(window.location.search).get('variant') ?? 'expressive'
+  );
+  const [theme, setTheme] = useState<PreviewTheme>(() => {
+    const value = typeof window === 'undefined' ? null : new URLSearchParams(window.location.search).get('theme');
+    return value === 'dark' ? 'dark' : 'light';
+  });
+  const [device, setDevice] = useState<PreviewDevice>(() => {
+    const value = typeof window === 'undefined' ? null : new URLSearchParams(window.location.search).get('device');
+    return value === 'tablet' || value === 'mobile' ? value : 'desktop';
+  });
   const [props, setProps] = useState<Record<string, unknown>>({});
   const [reducedMotion, setReducedMotion] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const Component = PREVIEW_COMPONENTS[resourceId];
 
   // Initialize from URL search parameters if provided
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const res = params.get('resource');
-    if (res) setResourceId(res);
-    const v = params.get('variant');
-    if (v) setVariant(v);
-    const th = params.get('theme') as PreviewTheme;
-    if (th === 'light' || th === 'dark') setTheme(th);
-    const dev = params.get('device') as PreviewDevice;
-    if (dev === 'desktop' || dev === 'tablet' || dev === 'mobile') setDevice(dev);
     const rm = params.get('reducedMotion');
     if (rm === 'true') setReducedMotion(true);
   }, []);
@@ -84,6 +87,7 @@ export function PreviewApp() {
 
   // Post READY message and observe container resize
   useEffect(() => {
+    if (!Component) return;
     const el = containerRef.current;
     if (!el) return;
 
@@ -117,25 +121,23 @@ export function PreviewApp() {
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [resourceId, variant, theme]);
+  }, [Component, resourceId, variant, theme]);
 
-  // Lookup Component
-  const Component = PREVIEW_COMPONENTS[resourceId] ?? PREVIEW_COMPONENTS.button;
+  // Report missing resources after commit; never render a different resource as a substitute.
+  useEffect(() => {
+    if (Component) return;
 
-  if (!Component) {
     const errorMsg: PreviewErrorMessage = {
       type: 'TESSELLATE_PREVIEW_ERROR',
       resourceId,
       error: `Resource preview not found for '${resourceId}'`,
     };
-    try {
-      window.parent.postMessage(errorMsg, '*');
-    } catch {
-      // Ignored
-    }
+    window.parent.postMessage(errorMsg, '*');
+  }, [Component, resourceId]);
 
+  if (!Component) {
     return (
-      <div className="flex min-h-screen items-center justify-center p-6 text-sm text-neutral-500">
+      <div role="alert" className="flex min-h-screen items-center justify-center p-6 text-sm text-neutral-500">
         Preview component for &quot;{resourceId}&quot; is not available.
       </div>
     );
