@@ -51,6 +51,14 @@ test('Workbench preserves both resource prop children and nested manifest childr
   const screenshot = path.resolve(process.cwd(), 'audit/evidence/step-07/after/manifest-and-prop-children.png');
   mkdirSync(path.dirname(screenshot), { recursive: true });
   await page.screenshot({ path: screenshot, fullPage: true });
+
+  await page.getByRole('button', { name: 'Preview' }).first().click();
+  const preview = page.getByTestId('preview-modal');
+  await expect(preview).toContainText('Content from resource props');
+  await expect(preview).toContainText('Content from nested manifest node');
+  const previewScreenshot = path.resolve(process.cwd(), 'audit/evidence/step-07/after/preview-modal-children.png');
+  await page.screenshot({ path: previewScreenshot, fullPage: true });
+
   expect(consoleErrors).toEqual([]);
   expect(failedRequests).toEqual([]);
 });

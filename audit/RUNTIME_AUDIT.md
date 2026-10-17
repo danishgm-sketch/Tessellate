@@ -94,7 +94,7 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 
 ### AUD-072 — Workbench dropped nested children when a resource also had prop children
 
-- Evidence: the [before capture](evidence/step-07/before/manifest-prop-child-only.png) contains only the explicit prop child; the [fixed capture](evidence/step-07/after/manifest-and-prop-children.png) contains both sources. The pre-fix browser probe found the nested node count was zero, with no console or network errors.
+- Evidence: the [before capture](evidence/step-07/before/manifest-prop-child-only.png) contains only the explicit prop child; the [fixed canvas capture](evidence/step-07/after/manifest-and-prop-children.png) and [Workbench Preview capture](evidence/step-07/after/preview-modal-children.png) contain both sources. The pre-fix browser probe found the nested node count was zero, with no console or network errors.
 - Reproduction: open the seeded Workbench manifest with `canvas-workspace-shell`, a `props.children` value, and a nested manifest child.
 - Root cause: `NodeRenderer` treated `props.children` and rendered nested nodes as alternatives.
 - Affected code: `packages/renderer/src/node-renderer.tsx`, `packages/renderer/src/__tests__/gold-registry.test.tsx`, and `tests/e2e/renderer-children-parity.spec.ts`.

@@ -1695,12 +1695,15 @@
       "reproduction": [
         "Load a Workbench project whose canvas-workspace-shell has props.children and a nested child node.",
         "Before the fix, only Content from resource props appeared; the nested child count was zero.",
-        "After the fix, both child sources appear in the canvas."
+        "After the fix, both child sources appear in the canvas and in Workbench Preview."
       ],
       "console": [],
       "network": [],
       "screenshot": "audit/evidence/step-07/before/manifest-prop-child-only.png",
       "screenshotAfter": "audit/evidence/step-07/after/manifest-and-prop-children.png",
+      "additionalScreenshots": [
+        "audit/evidence/step-07/after/preview-modal-children.png"
+      ],
       "rootCause": "NodeRenderer used a nullish fallback from props.children to renderedChildren, making the two valid child sources mutually exclusive.",
       "affectedFiles": [
         "packages/renderer/src/node-renderer.tsx",
