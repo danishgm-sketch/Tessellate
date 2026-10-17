@@ -1931,7 +1931,7 @@
         "apps/site/src/pages/index.astro"
       ],
       "remediation": "Add the Tessellate mark as apps/site/public/favicon.svg and a desktop/mobile browser regression that checks status, SVG content type and markup.",
-      "fixCommit": null,
+      "fixCommit": "522c888e0952ed221a9df597e3796b8b40b2719c",
       "status": "fixed-awaiting-deployed-verification"
     },
     {
@@ -1988,7 +1988,7 @@
         "tests/e2e/sites-unknown-resource-preview.spec.ts"
       ],
       "remediation": "Expose the missing-resource message as role=alert with assertive live semantics and use a solid, high-contrast error surface. Verify desktop and mobile in the public Site.",
-      "fixCommit": null,
+      "fixCommit": "522c888e0952ed221a9df597e3796b8b40b2719c",
       "status": "fixed-awaiting-deployed-verification"
     }
   ]
