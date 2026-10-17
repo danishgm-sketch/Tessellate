@@ -168,6 +168,9 @@ export default function PreviewHost() {
     onCreateProject: () => setActionStatus('Project creation previewed.'),
     onAction: () => setActionStatus('Example action activated.'),
     onRetry: () => setActionStatus('Retry action previewed.'),
+    ...(resourceId === 'ai-prompt-composer' ? {
+      onExecute: () => setActionStatus('Prompt previewed locally; no provider request was sent.'),
+    } : {}),
   };
   const available = Boolean(component);
 

@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 export type AIPromptComposerVariant = 'quiet' | 'expressive' | 'nocturne';
 
 export interface AIPromptComposerProps {
   variant?: AIPromptComposerVariant;
+  onExecute?: (prompt: string, attachedFiles: string[]) => void;
 }
 
-export function AIPromptComposer({ variant = 'quiet' }: AIPromptComposerProps) {
+export function AIPromptComposer({ variant = 'quiet', onExecute }: AIPromptComposerProps) {
   const [text, setText] = useState('');
   const [attachedFiles, setAttachedFiles] = useState(['tokens.css', 'workbench.ts']);
+  const executeHelpId = useId();
 
   const cardBg =
     variant === 'nocturne'
@@ -61,10 +63,17 @@ export function AIPromptComposer({ variant = 'quiet' }: AIPromptComposerProps) {
 
       <div className="flex items-center justify-between pt-1">
         <span className="text-[11px] text-neutral-400">Shift + Enter for newline</span>
-        <button className="px-4 py-2 text-xs font-medium rounded-[var(--tess-radius-lg,8px)] bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:opacity-90">
+        <button
+          type="button"
+          onClick={() => onExecute?.(text, attachedFiles)}
+          disabled={!onExecute}
+          aria-describedby={!onExecute ? executeHelpId : undefined}
+          className="px-4 py-2 text-xs font-medium rounded-[var(--tess-radius-lg,8px)] bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+        >
           Execute Prompt
         </button>
       </div>
+      {!onExecute && <span id={executeHelpId} className="sr-only">Connect a provider action before executing this prompt.</span>}
     </div>
   );
 }

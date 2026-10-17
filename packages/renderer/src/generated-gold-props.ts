@@ -61,7 +61,8 @@ export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = {
     "variant"
   ],
   "ai-prompt-composer": [
-    "variant"
+    "variant",
+    "onExecute"
   ],
   "ai-prompt-hero": [
     "variant",
