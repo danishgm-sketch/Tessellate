@@ -109,11 +109,21 @@ function extractAcceptedProps(code:string,slug:string):string[] {
   return [...new Set(acceptedProps)];
 }
 
+function extractVariantIds(manifest: Record<string, unknown>): string[] {
+  if (!Array.isArray(manifest.variants)) return [];
+  return manifest.variants.flatMap((variant) => {
+    if (!variant || typeof variant !== 'object' || !('id' in variant)) return [];
+    const id = (variant as { id?: unknown }).id;
+    return typeof id === 'string' ? [id] : [];
+  });
+}
+
 export function generateGoldSources(components: DiscoveredGoldComponent[]): string {
   const records = components.map((c) => {
     const deps = (c.manifest.dependencies as Array<{ name: string; version: string }>) || [];
     const depsObj: Record<string, string> = {};
     const acceptedProps=extractAcceptedProps(c.sourceCode,c.slug);
+    const variants=extractVariantIds(c.manifest);
     for (const d of deps) {
       depsObj[d.name] = d.version || 'latest';
     }
@@ -125,6 +135,7 @@ export function generateGoldSources(components: DiscoveredGoldComponent[]): stri
     componentName: ${JSON.stringify(c.componentName)},
     dependencies: ${JSON.stringify(depsObj)},
     acceptedProps: ${JSON.stringify([...new Set(acceptedProps)])},
+    variants: ${JSON.stringify(variants)},
     code: ${JSON.stringify(c.sourceCode)},
   },`;
   });
@@ -137,6 +148,7 @@ export interface GoldResourceSource {
   componentName: string;
   dependencies: Record<string, string>;
   acceptedProps: string[];
+  variants: string[];
   code: string;
 }
 
@@ -170,6 +182,17 @@ export async function runGenerate() {
   const propsFile=path.join(rootDir,'packages/renderer/src/generated-gold-props.ts');
   fs.writeFileSync(propsFile,`// Generated at build time from TypeScript interfaces.
 export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = ${JSON.stringify(Object.fromEntries(components.map(component=>[component.slug,extractAcceptedProps(component.sourceCode,component.slug)])),null,2)};
+`,'utf-8');
+
+  const variantFile=path.join(rootDir,'packages/renderer/src/generated-resource-variants.ts');
+  const variantEntries=components.flatMap((component) => {
+    const variants=extractVariantIds(component.manifest);
+    const entries:Array<[string,string[]]>=[[component.slug,variants]];
+    if(component.id) entries.push([component.id,variants]);
+    return entries;
+  });
+  fs.writeFileSync(variantFile,`// Generated from canonical ResourceManifest variant declarations.
+export const RESOURCE_VARIANTS: Record<string,readonly string[]> = ${JSON.stringify(Object.fromEntries(variantEntries),null,2)};
 `,'utf-8');
 
   // 2. Write exporter sources

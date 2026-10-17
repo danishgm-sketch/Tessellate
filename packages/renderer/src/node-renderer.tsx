@@ -1,5 +1,6 @@
 import React from 'react';
 import {GOLD_RESOURCE_PROPS} from './generated-gold-props.js';
+import { RESOURCE_VARIANTS } from './generated-resource-variants.js';
 import { nodeLayoutClass, nodeRuntimeVariant } from './layout-contract.js';
 import type { NodeRendererProps } from './types.js';
 import { DEFAULT_RESOURCE_RENDERERS } from './default-registry.js';
@@ -146,13 +147,42 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
     }
 
     const variant = nodeRuntimeVariant(node,childContext?.designDNA ?? {},context?.systemMode);
+    const supportedVariants = RESOURCE_VARIANTS[slug] ?? RESOURCE_VARIANTS[node.resourceRef.id];
+    if (variant && supportedVariants && !supportedVariants.includes(variant)) {
+      return (
+        <div
+          data-node-id={node.id}
+          data-testid="unsupported-resource-variant"
+          data-resource-variant={variant}
+          role="alert"
+          onClick={handleSelect}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          style={localStyle}
+          className={`rounded-lg border border-dashed border-amber-400 bg-amber-50 p-4 text-xs text-amber-900 font-mono ${selectionClasses}`}
+        >
+          <div className="font-semibold">Unsupported variant &quot;{variant}&quot; for resource &quot;{slug}&quot;.</div>
+          <p className="mt-1">Supported variants: {supportedVariants.join(', ')}.</p>
+          <p className="mt-1 text-[11px]">This resource was not rendered; the manifest value remains available to correct.</p>
+        </div>
+      );
+    }
     const mergedProps = {
       ...Object.fromEntries(Object.entries({...node.slots,...node.props}).filter(([key])=>!GOLD_RESOURCE_PROPS[slug] || GOLD_RESOURCE_PROPS[slug]?.includes(key) || key.startsWith('aria-') || key.startsWith('data-'))),
       ...(variant ? { variant } : {}),
     };
 
-    const hasChildren = Boolean(node.props?.children) || Boolean(renderedChildren && renderedChildren.length > 0);
-    const childrenToPass = (node.props?.children as React.ReactNode) ?? (renderedChildren && renderedChildren.length > 0 ? renderedChildren : undefined);
+    const acceptsExplicitChildren = !GOLD_RESOURCE_PROPS[slug] || GOLD_RESOURCE_PROPS[slug].includes('children');
+    const hasPropChildren = acceptsExplicitChildren && node.props?.children !== undefined && node.props.children !== null;
+    const hasRenderedChildren = Boolean(renderedChildren && renderedChildren.length > 0);
+    const hasChildren = hasPropChildren || hasRenderedChildren;
+    const childrenToPass = hasPropChildren && hasRenderedChildren
+      ? <>{node.props?.children as React.ReactNode}{renderedChildren}</>
+      : hasPropChildren
+      ? node.props?.children as React.ReactNode
+      : hasRenderedChildren
+      ? renderedChildren
+      : undefined;
 
     return (
       <div
@@ -180,10 +210,13 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
 
   // 8. Generic layout container node
   const domProps = Object.fromEntries(Object.entries(node.props ?? {}).filter(([key])=>key==='id' || key==='title' || key.startsWith('aria-')));
-  const content =
-    renderedChildren && renderedChildren.length > 0
-      ? renderedChildren
-      : (node.props?.children as React.ReactNode);
+  const hasPropChildren = node.props?.children !== undefined && node.props.children !== null;
+  const hasRenderedChildren = Boolean(renderedChildren && renderedChildren.length > 0);
+  const content = hasPropChildren && hasRenderedChildren
+    ? <>{node.props?.children as React.ReactNode}{renderedChildren}</>
+    : hasRenderedChildren
+    ? renderedChildren
+    : node.props?.children as React.ReactNode;
 
   return (
     <div

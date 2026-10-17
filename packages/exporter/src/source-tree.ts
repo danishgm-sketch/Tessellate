@@ -12,6 +12,7 @@ export interface ResolvedResource {
   fileName: string;
   code: string;
   acceptedProps: Set<string> | null;
+  acceptedVariants?: string[];
   dependencies?: string[];
 }
 
@@ -31,6 +32,7 @@ function resolveResource(slug: string, semanticRole: string, nodeId: string): Re
       fileName: `${goldSource.componentName}.tsx`,
       code: goldSource.code,
       acceptedProps,
+      acceptedVariants: goldSource.variants,
       dependencies: Object.keys(goldSource.dependencies),
     };
   }
@@ -486,9 +488,12 @@ function renderNodeToJsx(
     const resolved = resourceMap[node.resourceRef.slug]!;
     const compName = resolved.componentName;
     const acceptedProps = resolved.acceptedProps;
+    const runtimeVariant = nodeRuntimeVariant(node,dna);
+    if (runtimeVariant && resolved.acceptedVariants && !resolved.acceptedVariants.includes(runtimeVariant)) {
+      throw new Error(`Unsupported variant "${runtimeVariant}" for resource "${node.resourceRef.slug}". Supported variants: ${resolved.acceptedVariants.join(', ') || 'none'}.`);
+    }
 
     const attributes: string[] = [];
-    const runtimeVariant = nodeRuntimeVariant(node,dna);
     if (runtimeVariant && (!acceptedProps || acceptedProps.has('variant'))) {
       attributes.push(`variant={${variantExpression}}`);
     }
@@ -507,12 +512,16 @@ function renderNodeToJsx(
 
     const attrStr = attributes.length > 0 ? ' ' + attributes.join(' ') : '';
 
-    if (node.children && node.children.length > 0) {
-      const childJsx = '\n' + node.children.map((c) => renderNodeToJsx(c, indentLevel + 1, resourceMap, dna, tokens)).join('\n') + '\n' + indent;
-      return `${indent}<div className={${JSON.stringify("@container "+nodeLayoutClass(node))}} ${wrapperAttributes}><${compName}${attrStr}>${childJsx}</${compName}></div>`;
-    }
-    if (candidateProps.children !== undefined && (!acceptedProps || acceptedProps.has('children'))) {
-      return `${indent}<div className={${JSON.stringify("@container "+nodeLayoutClass(node))}} ${wrapperAttributes}><${compName}${attrStr}>{${JSON.stringify(candidateProps.children)}}</${compName}></div>`;
+    const hasPropChildren = candidateProps.children !== undefined
+      && candidateProps.children !== null
+      && (!acceptedProps || acceptedProps.has('children'));
+    const propChildren = hasPropChildren ? `{${JSON.stringify(candidateProps.children)}}` : '';
+    const hasNodeChildren = Boolean(node.children && node.children.length > 0);
+    const nodeChildren = hasNodeChildren
+      ? '\n' + node.children.map((c) => renderNodeToJsx(c, indentLevel + 1, resourceMap, dna, tokens)).join('\n') + '\n' + indent
+      : '';
+    if (propChildren || hasNodeChildren) {
+      return `${indent}<div className={${JSON.stringify("@container "+nodeLayoutClass(node))}} ${wrapperAttributes}><${compName}${attrStr}>${propChildren}${nodeChildren}</${compName}></div>`;
     }
 
     return `${indent}<div className={${JSON.stringify("@container "+nodeLayoutClass(node))}} ${wrapperAttributes}><${compName}${attrStr} /></div>`;
@@ -547,8 +556,11 @@ function renderNodeToJsx(
   const childJsx = node.children && node.children.length > 0
     ? '\n' + node.children.map((c) => renderNodeToJsx(c, indentLevel + 1, resourceMap, dna, tokens)).join('\n') + '\n' + indent
     : '';
+  const propChildren = node.props.children !== undefined && node.props.children !== null
+    ? `{${JSON.stringify(node.props.children)}}`
+    : '';
 
-  return `${indent}<div className={${JSON.stringify(nodeLayoutClass(node)+" "+className)}} ${wrapperAttributes}>${childJsx || `{${JSON.stringify(node.props.children ?? null)}}`}</div>`;
+  return `${indent}<div className={${JSON.stringify(nodeLayoutClass(node)+" "+className)}} ${wrapperAttributes}>${propChildren}${childJsx || (propChildren ? '' : '{null}')}</div>`;
 }
 
 export const BASE_BUTTON_CODE = `import React from 'react';

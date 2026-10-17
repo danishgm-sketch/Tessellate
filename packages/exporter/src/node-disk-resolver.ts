@@ -59,12 +59,20 @@ export function resolveResourceFromDisk(slug: string): ResolvedResource | null {
           const acceptedProps = getAcceptedPropNames(code);
 
           let deps: string[] = [];
+          let acceptedVariants: string[] | undefined;
           const manifestPath = path.join(resourceDir, 'manifest.json');
           if (fs.existsSync(manifestPath)) {
             try {
               const manifestJson = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
               if (Array.isArray(manifestJson.dependencies)) {
                 deps = manifestJson.dependencies;
+              }
+              if (Array.isArray(manifestJson.variants)) {
+                acceptedVariants = manifestJson.variants.flatMap((variant: unknown) => {
+                  if (!variant || typeof variant !== 'object' || !('id' in variant)) return [];
+                  const id = (variant as { id?: unknown }).id;
+                  return typeof id === 'string' ? [id] : [];
+                });
               }
             } catch {
               // ignore
@@ -77,6 +85,7 @@ export function resolveResourceFromDisk(slug: string): ResolvedResource | null {
             fileName: `${componentName}.tsx`,
             code,
             acceptedProps,
+            acceptedVariants,
             dependencies: deps,
           };
         }

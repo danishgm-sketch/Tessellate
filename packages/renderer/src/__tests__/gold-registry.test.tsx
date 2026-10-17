@@ -54,6 +54,34 @@ function createTestManifest(slug: string, node: ProjectNode): ProjectManifest {
 }
 
 describe('Requirement 4 & 6: Runtime Resource Registry for Gold 40 with Family Semantics', () => {
+  it('preserves resource prop children and nested manifest children in the same rendered slot', () => {
+    const node = createTestNode('canvas-workspace-shell', { children: 'Content from resource props' });
+    node.children = [{
+      id: 'nested-content',
+      nodeType: 'element',
+      semanticRole: 'content',
+      props: { children: 'Content from nested manifest node' },
+      slots: {},
+      children: [],
+    }];
+
+    const html = renderToString(<ManifestRenderer manifest={createTestManifest('canvas', node)} activeScreenId="screen_1" />);
+
+    expect(html).toContain('Content from resource props');
+    expect(html).toContain('Content from nested manifest node');
+  });
+
+  it('shows a recoverable diagnostic instead of rendering an unsupported resource variant', () => {
+    const node = createTestNode('button');
+    node.variant = 'unsupported-variant';
+
+    const html = renderToString(<NodeRenderer node={node} />);
+
+    expect(html).toContain('data-testid="unsupported-resource-variant"');
+    expect(html).toContain('unsupported-variant');
+    expect(html).not.toContain('<button');
+  });
+
   it.each(GOLD_40_SLUGS.map((slug) => [slug]))(
     'renders Gold resource slug "%s" without missing-resource-recovery fallback',
     (slug) => {
