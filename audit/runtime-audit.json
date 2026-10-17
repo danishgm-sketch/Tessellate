@@ -932,7 +932,7 @@
         "tests/e2e/catalog-resource-render.spec.ts"
       ],
       "remediation": "Allow the brand and navigation groups to wrap within the preview, reduce compact CTA padding, and test document width and item overlap at 360px and 390px in browser.",
-      "fixCommit": null,
+      "fixCommit": "4f2fc5a821ce66eab7cd44ec97eb64726427a7e8",
       "status": "fixed-awaiting-deployed-verification"
     }
   ]
