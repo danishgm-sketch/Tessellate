@@ -7,8 +7,11 @@ adjudicated no-override briefs and their semantic acceptance profiles into the
 composition layer. `composition-quality-benchmark.test.ts` generates directions
 A/B/C for every brief and checks 300 manifests for schema validity, audience and
 workflow relevance, cross-domain residue, route integrity, Gold/Core resource
-eligibility, mobile strategy, truthful illustrative metrics, resolved roles, and
-structural differences across at least two axes.
+eligibility, mobile strategy, truthful illustrative metrics, resolved roles,
+standalone Vite source-tree generation without Tessellate runtime dependencies,
+and structural differences across at least two axes. These checks verify
+generation and resource source resolution; clean install/build/browser checks
+for benchmark exports remain in Step 23.
 
 Step 14 remains **in progress**. The current batch submitted all 100 adjudicated
 briefs through the visible `/compose` UI and captured all 300 directions at
@@ -18,7 +21,11 @@ captures and 20 contact sheets are under `quality/evidence/step-14/manual-review
 and `verified-contact-sheets/`. All desktop and mobile contact sheets were
 visually inspected. The previews had no unresolved-role diagnostics, horizontal
 overflow, console errors, uncaught exceptions, failed requests, or HTTP errors.
-The review found AUD-111 through AUD-115 below. Their source fixes and focused local regressions pass, while all five findings remain open until issue-specific deployed review verification. All-benchmark exportability and the remaining composition checks are still open. This checkpoint does not claim public review-site verification.
+The review found AUD-111 through AUD-115 below. Their source fixes and focused
+local regressions pass, while all five findings remain open until issue-specific
+deployed review verification. Manual output adjudication, tablet review, and
+clean-build verification of benchmark exports remain open. This checkpoint does
+not claim public review-site verification.
 
 The local fixes for AUD-101–105 and AUD-107–110 are in commit
 `8686e0b9d7e7aca869a7677113492ded53af27b6`. The runtime audit records this SHA

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import type { ProjectManifest, ProjectNode } from '@tessellate/schemas';
 import { ProjectManifestSchema, ProductModelSchema, ScreenGraphSchema } from '@tessellate/schemas';
 import { isGoldResource } from '@tessellate/catalog/gold';
+import { generateViteSourceTree } from '@tessellate/exporter';
 import { composeProjectPipeline } from '../compose-pipeline.js';
 import { isResourceComposerEligible } from '../capabilities.js';
 import { loadTestCatalog } from './test-catalog-loader.js';
@@ -127,6 +128,19 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
         const output = result[name];
         const manifest = ProjectManifestSchema.safeParse(output.manifest);
         expect(manifest.success, `${brief.id} ${name} manifest must satisfy its schema`).toBe(true);
+        const standaloneTree = generateViteSourceTree(output.manifest);
+        const standalonePackage = JSON.parse(standaloneTree['package.json']!) as {
+          dependencies: Record<string, string>;
+        };
+        expect(standaloneTree['src/main.tsx']).toBeDefined();
+        expect(standaloneTree['src/App.tsx']).toBeDefined();
+        expect(JSON.parse(standaloneTree['project.tess.json']!).id).toBe(output.manifest.id);
+        expect(
+          Object.keys(standalonePackage.dependencies).filter((dependency) =>
+            dependency.startsWith('@tessellate/')
+          ),
+          `${brief.id} ${name} standalone export must not depend on Tessellate runtime packages`
+        ).toEqual([]);
         expect(
           output.diagnostics ?? [],
           `${brief.id} ${name} unresolved required roles: ${JSON.stringify(output.diagnostics ?? [])}`
