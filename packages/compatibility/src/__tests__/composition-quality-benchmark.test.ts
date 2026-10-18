@@ -328,8 +328,24 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
         }
         for (const screen of output.manifest.screens) {
           const screenNodes = collectNodes(screen.rootNode);
+          const metricSections = screenNodes.filter(
+            (node) => node.semanticRole === 'metric-cards' || node.semanticRole === 'summary-kpis'
+          );
+          for (const node of metricSections) {
+            expect(
+              node.props.title,
+              `${brief.id} ${name} ${screen.name} metric section must not repeat the page heading`
+            ).not.toBe(screen.name);
+          }
           const activity = screenNodes.find((node) => node.semanticRole === 'activity-feed');
           if (activity) {
+            const activityEvents = activity.props.events as
+              | Array<{ time: string; title: string; desc: string }>
+              | undefined;
+            expect(
+              activityEvents?.every((event) => !/^example$/i.test(event.time)),
+              `${brief.id} ${name} ${screen.name} activity timestamps must read like user-facing time labels`
+            ).toBe(true);
             const isNotificationScreen = /notifications?|inbox|alerts/i.test(screen.name);
             expect(
               activity.resourceRef?.slug,
@@ -366,6 +382,16 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
               }
             }
           }
+          const conversation = screenNodes.find((node) => node.semanticRole === 'message-thread');
+          if (conversation) {
+            const messages = conversation.props.events as
+              | Array<{ time: string; title: string; desc: string }>
+              | undefined;
+            expect(
+              messages?.every((message) => !/^example(?:\s+exchange)?$/i.test(message.time)),
+              `${brief.id} ${name} ${screen.name} conversation timestamps must be readable`
+            ).toBe(true);
+          }
           if (brief.expectedPrimaryArchetype === 'consumer' && screen.name === 'Activity Stream') {
             expect(
               activity?.resourceRef?.slug,
@@ -383,7 +409,7 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
               const events = activity?.props.events as
                 Array<{ time: string; title: string; desc: string }> | undefined;
               expect(events?.length).toBeGreaterThan(0);
-              expect(events?.every((event) => event.time === 'Example')).toBe(true);
+              expect(events?.map((event) => event.time)).toEqual(['Today', 'Yesterday']);
               expect(JSON.stringify(events)).not.toMatch(
                 /(?:choose|write|reply|welcome|publish|organize)-[a-z-]+/i
               );

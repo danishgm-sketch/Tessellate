@@ -339,7 +339,7 @@ test('SaaS overview activity uses a truthful chronological feed with human-reada
     const events = activity?.props.events as
       Array<{ time: string; title: string; desc: string }> | undefined;
     expect(events?.length).toBeGreaterThan(0);
-    expect(events?.every((event) => event.time === 'Example')).toBe(true);
+    expect(events?.every((event) => event.time.trim() && !/^example$/i.test(event.time))).toBe(true);
     const eventCopy = JSON.stringify(events);
     expect(eventCopy).not.toMatch(/\bStep\s+\d+\b/i);
     expect(eventCopy).not.toMatch(/\b[a-z][a-z0-9]*(?:-[a-z0-9]+)+\b/i);
@@ -348,7 +348,35 @@ test('SaaS overview activity uses a truthful chronological feed with human-reada
     const screenSelect = dialog.getByLabel('Direction preview screen');
     await screenSelect.selectOption(dashboard!.id);
     const canvas = dialog.locator('.tess-screen');
+    const workspaceBrand = canvas.getByText('Team Workspace', { exact: true });
+    await workspaceBrand.scrollIntoViewIfNeeded();
+    await expect(workspaceBrand).toBeInViewport();
+    if (number === '01') {
+      const screenshotPath = path.resolve(
+        process.cwd(),
+        'quality/evidence/step-14/manual-review/after',
+        `aud-122-workspace-brand-fixed-${viewportLabel}.png`
+      );
+      fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
+      await page.screenshot({ path: screenshotPath, animations: 'disabled' });
+    }
     await expect(canvas).toContainText('Recent activity');
+    await expect(canvas).not.toContainText(/Workspace\s+Workspace/i);
+    await expect(workspaceBrand).toBeVisible();
+    await expect(canvas.getByText('TW', { exact: true })).toBeVisible();
+    await expect(
+      canvas.getByRole('heading', { name: 'Overview Dashboard', exact: true })
+    ).toHaveCount(1);
+    await expect(canvas.getByRole('heading', { name: 'Key metrics', exact: true })).toBeVisible();
+    if (number === '01') {
+      const screenshotPath = path.resolve(
+        process.cwd(),
+        'quality/evidence/step-14/manual-review/after',
+        `aud-123-kpi-heading-fixed-${viewportLabel}.png`
+      );
+      fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
+      await page.screenshot({ path: screenshotPath, animations: 'disabled' });
+    }
     await expect(canvas).not.toContainText('Mark all as read');
     await expect(canvas).not.toContainText('Step 1');
     await expect(canvas.locator('[data-testid="missing-resource-recovery"]')).toHaveCount(0);
@@ -374,6 +402,20 @@ test('SaaS overview activity uses a truthful chronological feed with human-reada
     }
     await activityVisual.scrollIntoViewIfNeeded();
     await expect(activityVisual).toBeInViewport();
+    const visibleTimes = (await activityVisual.locator('span').allTextContents())
+      .map((value) => value.trim())
+      .filter(Boolean);
+    expect(visibleTimes.length).toBeGreaterThan(0);
+    expect(visibleTimes).not.toContain('Example');
+    if (number === '01') {
+      const timestampScreenshot = path.resolve(
+        process.cwd(),
+        'quality/evidence/step-14/manual-review/after',
+        `aud-124-activity-timestamp-fixed-${viewportLabel}.png`
+      );
+      fs.mkdirSync(path.dirname(timestampScreenshot), { recursive: true });
+      await page.screenshot({ path: timestampScreenshot, animations: 'disabled' });
+    }
 
     const screenshot = `activity-feed-sas-01-direction-${number}-${viewportLabel}.png`;
     const screenshotPath = path.resolve(
@@ -394,6 +436,11 @@ test('SaaS overview activity uses a truthful chronological feed with human-reada
       activityResource: activity!.resourceRef?.slug,
       activityTitle: activity!.props.title,
       events,
+      workspaceBrand: await workspaceBrand.innerText(),
+      avatarInitials: await canvas.getByText('TW', { exact: true }).innerText(),
+      metricSectionHeading: await canvas
+        .getByRole('heading', { name: 'Key metrics', exact: true })
+        .innerText(),
       screenshot,
       topScreenshot,
     });
@@ -504,7 +551,7 @@ test('brokerage terminal brief composes market workflows instead of banking scre
     const events = activity?.props.events as
       Array<{ time: string; title: string; desc: string }> | undefined;
     expect(events?.length).toBeGreaterThan(0);
-    expect(events?.every((event) => event.time === 'Example')).toBe(true);
+    expect(events?.every((event) => event.time.trim() && !/^example$/i.test(event.time))).toBe(true);
     expect(JSON.stringify(events)).not.toMatch(/\bStep\s+\d+\b|\b[a-z][a-z0-9]*(?:-[a-z0-9]+)+\b/i);
 
     await details.locator('summary').click();

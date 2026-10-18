@@ -10,6 +10,16 @@ function humanizeWorkflowLabel(value: string): string {
   return words ? words[0]!.toUpperCase() + words.slice(1) : 'Workspace activity';
 }
 
+function workspaceBrand(entityName?: string): string {
+  const name = entityName?.trim();
+  if (!name || /^workspace$/i.test(name)) return 'Team Workspace';
+  return /\bworkspace$/i.test(name) ? name : `${name} Workspace`;
+}
+
+function sampleActivityTime(index: number): string {
+  return ['Today', 'Yesterday', 'Earlier this week'][Math.min(index, 2)]!;
+}
+
 export function bindResourceContent(
   product: ProductModel,
   screen: ScreenNode,
@@ -44,7 +54,7 @@ export function bindResourceContent(
           ? 'Example Community'
           : isTradingTerminal
             ? 'Market Workspace'
-            : `${product.entities[0]?.name ?? 'Team'} Workspace`;
+            : workspaceBrand(product.entities[0]?.name);
   const brandWords = brand.match(/[A-Za-z0-9]+/g) ?? [];
   const initials = employee
     ? 'PT'
@@ -158,12 +168,12 @@ export function bindResourceContent(
   const conversationExamples = /freelance|designer|proposal/i.test(briefDescription)
     ? [
         {
-          time: 'Example exchange',
+          time: 'Today',
           title: 'Project inquiry',
           desc: 'A client shares a brief and asks an independent designer about the work.',
         },
         {
-          time: 'Example exchange',
+          time: 'Yesterday',
           title: 'Proposal reply',
           desc: 'A designer outlines a possible scope and the next step.',
         },
@@ -171,12 +181,12 @@ export function bindResourceContent(
     : product.productArchetypes[0]?.tag === 'marketplace'
       ? [
           {
-            time: 'Example exchange',
+            time: 'Today',
             title: 'Listing question',
             desc: 'A buyer asks the seller about listing details and next steps.',
           },
           {
-            time: 'Example exchange',
+            time: 'Yesterday',
             title: 'Seller reply',
             desc: 'The seller responds with information relevant to the listing.',
           },
@@ -184,24 +194,24 @@ export function bindResourceContent(
       : /community|neighborhood|hobby group/i.test(briefDescription)
         ? [
             {
-              time: 'Example exchange',
+              time: 'Today',
               title: 'Community update',
               desc: 'A member shares a local update with a nearby group.',
             },
             {
-              time: 'Example exchange',
+              time: 'Yesterday',
               title: 'Neighbor reply',
               desc: 'Another member adds context to the conversation.',
             },
           ]
         : [
             {
-              time: 'Example exchange',
+              time: 'Today',
               title: 'New conversation',
               desc: 'A team member shares a question about the current work.',
             },
             {
-              time: 'Example exchange',
+              time: 'Yesterday',
               title: 'Follow-up',
               desc: 'A colleague responds with context and a suggested next step.',
             },
@@ -230,12 +240,12 @@ export function bindResourceContent(
         : isReturnsPortal && role === 'activity-feed'
           ? [
               {
-                time: 'Example',
+                time: sampleActivityTime(0),
                 title: 'Return request received',
                 desc: 'The request is being reviewed against the original order and selected items.',
               },
               {
-                time: 'Example',
+                time: sampleActivityTime(1),
                 title: 'Refund progress updated',
                 desc: 'Approval, return delivery, and refund steps appear in one timeline.',
               },
@@ -243,18 +253,18 @@ export function bindResourceContent(
           : isCommunityActivity
             ? [
                 {
-                  time: 'Example',
+                  time: sampleActivityTime(0),
                   title: 'A neighbour shared a local update',
                   desc: 'A local question or story can start a conversation with nearby group members.',
                 },
                 {
-                  time: 'Example',
+                  time: sampleActivityTime(1),
                   title: 'A hobby group welcomed new members',
                   desc: 'Shared-interest groups can bring introductions and upcoming events together.',
                 },
               ]
-            : product.workflows.slice(0, 3).map((workflow) => ({
-                time: 'Example',
+            : product.workflows.slice(0, 3).map((workflow, index) => ({
+                time: sampleActivityTime(index),
                 title: humanizeWorkflowLabel(workflow.name),
                 desc:
                   workflow.steps.map(humanizeWorkflowLabel).join(' → ') ||
@@ -280,7 +290,10 @@ export function bindResourceContent(
           'activity-feed': 'Return progress',
           'data-table': 'Orders and returns',
         }
-      : {};
+      : {
+          'metric-cards': 'Key metrics',
+          'summary-kpis': 'Key metrics',
+        };
   const content: Record<string, unknown> = {
     title:
       role === 'message-thread'
