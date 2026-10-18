@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records one moderate desktop Axe heading-order issue in the AI Chat Panel isolated resource preview for the ordered accessibility/resource hardening step.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records one moderate desktop Axe heading-order issue in the AI Chat Panel isolated resource preview for the ordered accessibility/resource hardening step. Step 14's 100-brief visible composition review added AUD-116–121 for activity-feed semantics, trading-domain interpretation, metric truthfulness, and mobile card layout; local red/green regressions and desktop/mobile browser captures are recorded, with deployed review verification still pending.",
   "entries": [
     {
       "id": "AUD-001",
@@ -3028,6 +3028,7 @@
       "affectedFiles": [
         "packages/composer/src/domain-context.ts",
         "packages/composer/src/interpreter.ts",
+        "packages/composer/src/golden-briefs.ts",
         "packages/compatibility/src/content-bindings.ts"
       ],
       "remediation": "Specialize the existing marketplace archetype using service, proposal, appointment, and listing context; add forbidden-content benchmark assertions.",
@@ -3462,7 +3463,232 @@
         "quality/evidence/step-14/manual-review/after/ecom-06-runtime-desktop.json",
         "quality/evidence/step-14/manual-review/after/ecom-06-runtime-mobile.json"
       ]
+    },
+    {
+      "id": "AUD-116",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Ordinary activity feeds rendered notification-inbox controls",
+      "expected": "An overview or activity stream should show a chronological timeline; notification actions should be reserved for explicit notification, inbox, or alert screens.",
+      "actual": "SaaS Overview Dashboard used notification-centre and displayed the unrelated ‘Mark all as read’ control.",
+      "reproduction": [
+        "Open /compose and enter the SAS-01 brief: A cloud workspace helps a 120-person design consultancy plan client projects, assign ownership, review milestones, and control access by team role.",
+        "Compose and inspect Overview Dashboard in Direction A at desktop or mobile size.",
+        "Observe the activity panel resource and its inbox action."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/sas-01-direction-01.png",
+      "rootCause": "The activity-feed resource contract allowed both timeline and notification-centre, while composition only forced timeline for consumer briefs and Direction C. Other activity screens were left to scoring and could receive inbox semantics.",
+      "affectedFiles": [
+        "packages/compatibility/src/compose-pipeline.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Resolve activity-feed to timeline by default and filter to notification-centre only when the screen name explicitly identifies Notifications, Inbox, or Alerts. The benchmark and visible browser regression now check all three directions at desktop and mobile sizes.",
+      "fixCommit": "a8735ca2",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-01-desktop.png",
+        "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-01-mobile.png",
+        "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-01-mobile-top.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/activity-feed-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/activity-feed-runtime-mobile.json"
+      ]
+    },
+    {
+      "id": "AUD-117",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Generated activity examples exposed sequence numbers and internal workflow IDs",
+      "expected": "Sample events should be clearly labeled as examples and use readable, user-facing activity language.",
+      "actual": "The SaaS overview showed ‘Step 1’ and another direction exposed raw values such as ‘send-invites’ and ‘configure-workspace’.",
+      "reproduction": [
+        "Open /compose and enter the SAS-01 design-consultancy workspace brief.",
+        "Compose and inspect the Overview Dashboard activity panel in Directions A and C.",
+        "Read the event timestamp, title, and detail copy."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/sas-01-direction-03.png",
+      "rootCause": "Generic activity binding presented workflow array position as a timestamp and copied workflow step identifiers directly into user-facing event details.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Label generated timestamps ‘Example’, humanize workflow titles and step labels, and assert that examples contain no sequence labels or raw identifiers.",
+      "fixCommit": "a8735ca2",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-01-desktop.png",
+        "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-01-mobile.png",
+        "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-01-mobile-top.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/activity-feed-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/activity-feed-runtime-mobile.json"
+      ]
+    },
+    {
+      "id": "AUD-118",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Activity panel repeated the enclosing screen heading",
+      "expected": "An activity panel should have its own useful contextual heading instead of repeating the screen's title.",
+      "actual": "The Overview Dashboard screen header, KPI section, and notification panel were all titled ‘Overview Dashboard’.",
+      "reproduction": [
+        "Open /compose and enter the SAS-01 design-consultancy workspace brief.",
+        "Compose and inspect the Overview Dashboard in Direction A.",
+        "Compare the screen header and activity panel heading."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/sas-01-direction-01.png",
+      "rootCause": "The generic content-binding fallback assigned screen.name to activity-feed title when no domain-specific title existed.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Give ordinary activity panels the heading ‘Recent activity’, with contextual headings for community, employee, returns, and explicit notification screens.",
+      "fixCommit": "a8735ca2",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-01-desktop.png",
+        "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-01-mobile.png",
+        "quality/evidence/step-14/manual-review/after/activity-feed-sas-01-direction-01-mobile-top.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/activity-feed-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/activity-feed-runtime-mobile.json"
+      ]
+    },
+    {
+      "id": "AUD-119",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Brokerage terminal brief inherited retail banking workflows",
+      "expected": "A professional brokerage brief should produce market, order-book, position, and trade workflows without retail banking copy.",
+      "actual": "FIN-05 produced Account Balances, bank statements, and reconcile statements, with raw workflow identifiers in activity details.",
+      "reproduction": [
+        "Open /compose at desktop or mobile size and enter the FIN-05 brokerage terminal brief from the composition benchmark.",
+        "Compose and inspect Direction 01 Account Balances and Direction 03 Market Overview.",
+        "Observe banking screens, statement copy, or raw workflow IDs."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/fin-05-direction-01.png",
+      "rootCause": "The broad fintech defaults did not specialize explicit trading-terminal, market-depth, and equity-dealer language, so the bank-account workflow was reused.",
+      "affectedFiles": [
+        "packages/composer/src/domain-context.ts",
+        "packages/composer/src/interpreter.ts",
+        "packages/compatibility/src/content-bindings.ts",
+        "quality/PRODUCT_INTERPRETATION_BENCHMARK.json",
+        "quality/COMPOSITION_QUALITY_BENCHMARK.json",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Specialize the existing fintech archetype only for explicit trading-terminal intent, create market-specific screens and entities, and bind market events. The 100-brief interpretation and composition benchmarks plus visible desktop/mobile browser flow now reject banking residue.",
+      "fixCommit": "a8735ca2",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-01-desktop.png",
+        "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-01-mobile.png",
+        "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-01-mobile-bottom.png",
+        "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-02-desktop.png",
+        "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-02-mobile.png",
+        "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-02-mobile-bottom.png",
+        "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-03-desktop.png",
+        "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-03-mobile.png",
+        "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-03-mobile-bottom.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/fintech-trading-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/fintech-trading-runtime-mobile.json"
+      ]
+    },
+    {
+      "id": "AUD-120",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Generated KPI cards used the word Example as a metric value",
+      "expected": "When no source data exists, metric cards should show an unavailable value and disclose that data is not connected.",
+      "actual": "The KPI grid displayed Example as the large numeric value for securities, orders, and positions, even though the status said Illustrative only.",
+      "reproduction": [
+        "Open /compose and enter the FIN-05 brokerage terminal brief.",
+        "Compose and inspect Market Overview at desktop or mobile size.",
+        "Read the large KPI values and their status labels."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/fin-05-direction-01.png",
+      "rootCause": "The shared content binder used a generic Example string for every entity-backed metric rather than representing absent source data explicitly.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "resources/blocks/dashboard-kpi-grid/index.tsx",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Use an em dash with a truthful data-connection status; distinguish values explicitly supplied by the brief. Render unavailable states with neutral status styling rather than a green success badge.",
+      "fixCommit": "aa1d47e3",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-01-desktop.png",
+        "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-01-mobile.png",
+        "quality/evidence/directions/current/direction-01-team-overview.png",
+        "quality/evidence/directions/current/direction-02-team-overview.png",
+        "quality/evidence/directions/current/direction-03-team-overview.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/fintech-trading-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/fintech-trading-runtime-mobile.json"
+      ]
+    },
+    {
+      "id": "AUD-121",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "390x844",
+      "category": "visual",
+      "title": "KPI cards cramped long status text into two mobile columns",
+      "expected": "Small preview widths should use a layout that keeps metric labels and statuses readable without narrow word wrapping.",
+      "actual": "At 390px, three cards shared two columns and split ‘Market data not connected’ into several short lines.",
+      "reproduction": [
+        "Open /compose at 390x844 and enter the FIN-05 brokerage terminal brief.",
+        "Compose and inspect Direction 01 Market Overview.",
+        "Observe the KPI grid and the wrapped status labels."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/before/fintech-kpi-mobile-before-layout.png",
+      "rootCause": "The Gold KPI resource always used two columns below its medium container breakpoint, even when the preview column was too narrow for the card copy.",
+      "affectedFiles": [
+        "resources/blocks/dashboard-kpi-grid/index.tsx",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Use one column for compact containers, two for small/medium containers, and three when the resource has enough width. The browser regression checks actual computed grid columns at desktop and mobile widths.",
+      "fixCommit": "aa1d47e3",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-01-mobile.png",
+        "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-01-mobile-bottom.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/fintech-trading-runtime-mobile.json"
+      ]
     }
   ],
-  "generatedAt": "2026-10-18T13:09:07Z"
+  "generatedAt": "2026-10-18T14:20:35Z"
 }

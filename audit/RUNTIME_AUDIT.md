@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 115 findings (25 High, 89 Medium, 1 Low): 27 closed after deployed verification, 84 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080, AUD-100, and AUD-106 open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–115; these composition and data-truth findings are fixed locally and await deployed review verification. AUD-111 records the e-commerce CTA copy and nonexistent destination found across the 100-brief visible UI review; AUD-112 records a returns-portal brief that inherited a storefront purchase architecture. Those two local fixes await review-site verification. AUD-113 records an empty fourth Feature Bento card when the binder provides three items; the three-item Sites Worker regression now passes locally. AUD-114 records a returns-service explanation overwritten by a generic disabled-action tooltip; its semantic and visible browser regressions pass locally. AUD-115 records duplicate primary navigation on the returns request screen; its semantic regression fails before the planner fix and passes locally afterward. These composition fixes remain awaiting deployed review verification. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), which is tracked for Step 43. The desktop Explore Axe scan also found one moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100); it is tracked for the ordered accessibility/resource hardening work. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See `quality/STEP_08_EVIDENCE.md`, `quality/STEP_14_EVIDENCE.md`, and `evidence/catalog-search-v20/`.
+**Current disposition:** 121 findings (26 High, 94 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080, AUD-100, and AUD-106 open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–121; these composition and data-truth findings are fixed locally and await deployed review verification. AUD-111 records the e-commerce CTA copy and nonexistent destination found across the 100-brief visible UI review; AUD-112 records a returns-portal brief that inherited a storefront purchase architecture. AUD-113 records an empty fourth Feature Bento card for three-item input; the isolated Sites Worker regression passes locally. AUD-114 records a returns-service explanation overwritten by a generic disabled-action tooltip; its semantic and visible browser regressions pass. AUD-115 records duplicate primary navigation on the returns request screen; its semantic and browser regressions pass. AUD-116–118 cover inbox semantics, internal labels, and a repeated heading in ordinary activity feeds. The next review found AUD-119: brokerage intent inherited retail banking workflows; AUD-120: KPI cards displayed “Example” as a value; and AUD-121: KPI statuses wrapped into narrow columns on mobile. The 100-brief interpretation and composition tests plus visible desktop/mobile regressions now pass for these cases. These changes await deployed review verification. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), which is tracked for Step 43. The desktop Explore Axe scan also found one moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100); it is tracked for the ordered accessibility/resource hardening work. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See `quality/STEP_08_EVIDENCE.md`, `quality/STEP_14_EVIDENCE.md`, and `evidence/catalog-search-v20/`.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -231,6 +231,28 @@ No Critical findings are recorded in this audit register.
 - **Remediation:** specialize the existing ecommerce archetype for returns intent with order lookup, return request, and refund status workflows/screens; bind return-specific sample content and CTA copy.
 - **Verification:** the benchmark assertion was red before the fix and passes after it; a visible Compose regression now checks the three direction manifests and selected preview. Review-site verification remains open.
 - **Fix commit:** `77cbad5f`.
+
+### AUD-119 — Brokerage terminal brief inherited retail banking workflows
+
+- **Evidence:** the before screenshot at
+  `quality/evidence/step-14/manual-review/verified/desktop/fin-05-direction-01.png`
+  shows Account Balances, bank statements, and a notification action. After
+  captures show Market Overview, Order Book, Positions & Risk, and Trade History
+  at desktop and mobile sizes.
+- **Reproduction:** open `/compose`, enter benchmark brief FIN-05, compose, and
+  inspect Directions 01–03 at 1440 × 900 and 390 × 844.
+- **Root cause:** the general fintech profile was reused for explicit brokerage
+  and order-book intent, leaving retail banking screens and content in place.
+- **Affected code:** `packages/composer/src/domain-context.ts`,
+  `packages/composer/src/interpreter.ts`,
+  `packages/compatibility/src/content-bindings.ts`, the adjudicated interpreter
+  and composition benchmarks, and the visible Compose regression.
+- **Remediation:** specialize the existing fintech archetype only when the brief
+  explicitly describes trading terminals, market depth, brokerages, order books,
+  or equity dealers. The 100-brief regressions were red before the fix and now
+  enforce market screens, relevant events, and no banking residue. Desktop and
+  mobile browser reports record no console errors, uncaught exceptions, failed
+  requests, or HTTP errors. Deployed review verification remains open.
 
 ## MEDIUM
 
@@ -1094,6 +1116,95 @@ with zero findings. That harness race is not counted as a product defect.
 - **Remediation:** omit the settings sub-navigation for an explicit returns request form. The semantic regression failed before the planner fix and passes after it. The rebuilt visible browser test confirms a single rendered nav and captures the corrected screen; deployed verification remains open.
 
 - **Fix commit:** `77cbad5f`.
+
+### AUD-116 — Ordinary activity feeds rendered notification-inbox controls
+
+- **Evidence:** the pre-fix SAS-01 Direction A screenshot at
+  `evidence/step-14/manual-review/verified/desktop/sas-01-direction-01.png`
+  shows a notification panel on Overview Dashboard with “Mark all as read”. The
+  after captures under `evidence/step-14/manual-review/after/activity-feed-sas-01-*`
+  show a chronological timeline instead.
+- **Reproduction:** open `/compose`, enter the SAS-01 design-consultancy brief,
+  compose, and inspect Overview Dashboard in each direction at desktop or mobile
+  size.
+- **Root cause:** ordinary `activity-feed` roles could score either `timeline` or
+  `notification-centre`; only consumer screens and Direction C were forced to use
+  the timeline.
+- **Affected code:** `packages/compatibility/src/compose-pipeline.ts`, its 100-brief
+  composition benchmark, and the visible Compose browser regression.
+- **Remediation:** use the timeline for activity by default and allow the
+  notification centre only on explicitly named Notifications, Inbox, or Alerts
+  screens. The benchmark red/green check covers every generated activity role;
+  the browser test confirms all three SAS-01 directions at desktop and mobile.
+  Local reports record no console, uncaught, failed-request, or HTTP errors.
+  Deployed review verification remains open.
+
+### AUD-117 — Activity examples exposed sequence labels and workflow identifiers
+
+- **Evidence:** the pre-fix SAS-01 Direction A screenshot displays “Step 1”; the
+  Direction C screenshot also shows raw identifiers such as `send-invites` and
+  `configure-workspace`. The after captures show “Example” and readable labels.
+- **Reproduction:** compose the SAS-01 brief and inspect the event time, title,
+  and details in Directions A and C.
+- **Root cause:** generic activity binding used the workflow array index as a
+  timestamp and copied internal workflow step identifiers into the event detail.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`, the
+  composition benchmark, and the visible Compose browser regression.
+- **Remediation:** mark sample time as “Example” and humanize workflow names and
+  steps before binding them to the resource. The benchmark checks all generated
+  activity events for raw internal values, and the desktop/mobile browser test
+  confirms the three rendered directions. Deployed review verification remains
+  open.
+
+### AUD-118 — Activity panel repeated the enclosing screen title
+
+- **Evidence:** the pre-fix SAS-01 Direction A screenshot shows “Overview
+  Dashboard” as the screen heading, KPI heading, and activity panel heading. The
+  after capture labels the panel “Recent activity”.
+- **Reproduction:** compose the SAS-01 brief, select Overview Dashboard, and
+  compare the screen heading with the activity panel heading.
+- **Root cause:** the generic `activity-feed` title fallback reused `screen.name`.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`, the
+  composition benchmark, and the visible Compose browser regression.
+- **Remediation:** use contextual activity headings for generic, employee,
+  community, returns, and notification content. A manifest-level regression and
+  real browser assertion cover every generated direction at desktop and mobile.
+  Deployed review verification remains open.
+
+### AUD-120 — Generated KPI cards used “Example” as a metric value
+
+- **Evidence:** the before screenshot at
+  `quality/evidence/step-14/manual-review/verified/desktop/fin-05-direction-01.png`
+  shows “Example” as the large value for Account, Transaction, and Transfer cards,
+  even though their badge says “Illustrative only”. The after screenshots show an
+  em dash and “Market data not connected”.
+- **Reproduction:** compose FIN-05 in `/compose` and inspect Market Overview.
+- **Root cause:** the shared content binder supplied the literal word “Example”
+  whenever a product entity had no connected source value.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`,
+  `resources/blocks/dashboard-kpi-grid/index.tsx`, the 100-brief composition
+  benchmark, and the visible browser regression.
+- **Remediation:** represent missing values as an em dash, disclose missing data
+  connections, and style unavailable statuses neutrally. Values directly present
+  in a brief are identified as brief-derived. The benchmark failed before the fix
+  on FIN-05; it now checks all briefs. Deployed review verification remains open.
+
+### AUD-121 — KPI status copy was cramped into two mobile columns
+
+- **Evidence:**
+  `quality/evidence/step-14/manual-review/before/fintech-kpi-mobile-before-layout.png`
+  shows “Market data not connected” split across several short lines in two
+  columns. The after mobile screenshot shows one card per row.
+- **Reproduction:** open `/compose` at 390 × 844, compose FIN-05, and inspect
+  Direction 01 Market Overview.
+- **Root cause:** the shared KPI resource forced two columns below its medium
+  container breakpoint even when cards were too narrow for their status copy.
+- **Affected code:** `resources/blocks/dashboard-kpi-grid/index.tsx` and the
+  visible Compose browser regression.
+- **Remediation:** use one column in compact containers, two in intermediate
+  containers, and three in wide containers. The browser test verifies computed
+  grid columns at 390 × 844 and 1440 × 900; deployed review verification remains
+  open.
 
 ## LOW
 

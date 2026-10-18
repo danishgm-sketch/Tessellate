@@ -8,7 +8,7 @@
   "directions": [
     {
       "number": "01",
-      "projectId": "proj-direction-a-782491108307445ea60641e234667dafdira",
+      "projectId": "proj-direction-a-cde12600b2274780b389410084c7a654dira",
       "navigation": "sidebar",
       "grammar": "classic-sidebar-dashboard",
       "dna": {
@@ -70,7 +70,7 @@
         "activity-feed",
         "data-table"
       ],
-      "dashboardActivityResource": "notification-centre",
+      "dashboardActivityResource": "timeline",
       "selectedResources": [
         {
           "screen": "Marketing Home",
@@ -123,7 +123,7 @@
         {
           "screen": "Team Overview",
           "role": "activity-feed",
-          "slug": "notification-centre",
+          "slug": "timeline",
           "variant": "quiet"
         },
         {
@@ -213,7 +213,7 @@
         {
           "screen": "Engagement",
           "role": "activity-feed",
-          "slug": "notification-centre",
+          "slug": "timeline",
           "variant": "quiet"
         },
         {
@@ -274,9 +274,9 @@
       "geometry": {
         "sidebar-shell": {
           "left": 45,
-          "top": -64,
+          "top": -115,
           "width": 1350,
-          "height": 863,
+          "height": 914,
           "display": "grid",
           "gridColumn": "auto"
         },
@@ -301,9 +301,9 @@
         },
         "activity-feed": {
           "left": 297,
-          "top": 295,
+          "top": 244,
           "width": 1082,
-          "height": 245,
+          "height": 297,
           "display": "block",
           "gridColumn": "auto"
         }
@@ -312,7 +312,7 @@
     },
     {
       "number": "02",
-      "projectId": "proj-direction-b-782491108307445ea60641e234667dafdirb",
+      "projectId": "proj-direction-b-cde12600b2274780b389410084c7a654dirb",
       "navigation": "top-nav",
       "grammar": "product-proof-marketing",
       "dna": {
@@ -373,7 +373,7 @@
         "activity-feed",
         "data-table"
       ],
-      "dashboardActivityResource": "notification-centre",
+      "dashboardActivityResource": "timeline",
       "selectedResources": [
         {
           "screen": "Marketing Home",
@@ -426,7 +426,7 @@
         {
           "screen": "Team Overview",
           "role": "activity-feed",
-          "slug": "notification-centre",
+          "slug": "timeline",
           "variant": "expressive"
         },
         {
@@ -516,7 +516,7 @@
         {
           "screen": "Engagement",
           "role": "activity-feed",
-          "slug": "notification-centre",
+          "slug": "timeline",
           "variant": "expressive"
         },
         {
@@ -578,9 +578,9 @@
         "sidebar-shell": null,
         "top-nav-page-canvas": {
           "left": 45,
-          "top": -133,
+          "top": -184,
           "width": 1350,
-          "height": 932,
+          "height": 983,
           "display": "grid",
           "gridColumn": "auto"
         },
@@ -588,7 +588,7 @@
         "workspace-multi-pane": null,
         "navigation": {
           "left": 61,
-          "top": -117,
+          "top": -168,
           "width": 1318,
           "height": 53,
           "display": "block",
@@ -604,9 +604,9 @@
         },
         "activity-feed": {
           "left": 61,
-          "top": 295,
+          "top": 244,
           "width": 1318,
-          "height": 245,
+          "height": 297,
           "display": "block",
           "gridColumn": "auto"
         }
@@ -615,7 +615,7 @@
     },
     {
       "number": "03",
-      "projectId": "proj-direction-c-782491108307445ea60641e234667dafdirc",
+      "projectId": "proj-direction-c-cde12600b2274780b389410084c7a654dirc",
       "navigation": "rail",
       "grammar": "three-pane-intelligence-workspace",
       "dna": {
@@ -937,11 +937,10 @@
         "footer-product",
         "entity-profile-header",
         "dashboard-kpi-grid",
-        "notification-centre",
+        "timeline",
         "advanced-data-table",
         "filter-builder",
         "button",
-        "timeline",
         "kanban-board",
         "input"
       ],
@@ -949,7 +948,7 @@
         "collapsible-sidebar"
       ],
       "onlyRight": [],
-      "jaccard": 0.933
+      "jaccard": 0.929
     },
     {
       "left": "01",
@@ -962,19 +961,18 @@
         "footer-product",
         "entity-profile-header",
         "dashboard-kpi-grid",
+        "timeline",
         "advanced-data-table",
         "filter-builder",
         "button",
-        "timeline",
         "kanban-board",
         "input"
       ],
       "onlyLeft": [
-        "collapsible-sidebar",
-        "notification-centre"
+        "collapsible-sidebar"
       ],
       "onlyRight": [],
-      "jaccard": 0.867
+      "jaccard": 0.929
     },
     {
       "left": "02",
@@ -987,18 +985,16 @@
         "footer-product",
         "entity-profile-header",
         "dashboard-kpi-grid",
+        "timeline",
         "advanced-data-table",
         "filter-builder",
         "button",
-        "timeline",
         "kanban-board",
         "input"
       ],
-      "onlyLeft": [
-        "notification-centre"
-      ],
+      "onlyLeft": [],
       "onlyRight": [],
-      "jaccard": 0.929
+      "jaccard": 1
     }
   ],
   "consoleErrors": [],

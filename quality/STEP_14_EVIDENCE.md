@@ -21,11 +21,16 @@ captures and 20 contact sheets are under `quality/evidence/step-14/manual-review
 and `verified-contact-sheets/`. All desktop and mobile contact sheets were
 visually inspected. The previews had no unresolved-role diagnostics, horizontal
 overflow, console errors, uncaught exceptions, failed requests, or HTTP errors.
-The review found AUD-111 through AUD-115 below. Their source fixes and focused
-local regressions pass, while all five findings remain open until issue-specific
-deployed review verification. Manual output adjudication, tablet review, and
-clean-build verification of benchmark exports remain open. This checkpoint does
-not claim public review-site verification.
+The review found AUD-111 through AUD-121 below. Their source fixes and focused
+local regressions pass, while all eleven findings remain open until issue-specific
+deployed review verification. The latest FIN-05 screenshots exposed a fintech
+trading brief that inherited banking workflows (AUD-119), generic “Example” KPI
+values (AUD-120), and status copy crammed into two columns on mobile (AUD-121).
+The interpretation/composition benchmarks and visible Compose tests now check
+market-specific screens, truthful unavailable-data values, and actual responsive
+grid columns. Manual output adjudication, tablet review, and clean-build
+verification of benchmark exports remain open. This checkpoint does not claim
+public review-site verification.
 
 The local fixes for AUD-101–105 and AUD-107–110 are in commit
 `8686e0b9d7e7aca869a7677113492ded53af27b6`. The runtime audit records this SHA
@@ -42,6 +47,49 @@ product navigation from the returns form. Red semantic/browser regressions were
 recorded for the underlying failures; the rebuilt local Site now passes the CTA
 and returns workflows, and the Sites Worker passes the partial Bento state. All
 remain awaiting deployed review verification.
+
+The full-benchmark screenshot review found AUD-116–118 in an ordinary SaaS
+overview. The fixed pipeline uses `timeline` for ordinary activity and reserves
+`notification-centre` for explicit Notifications, Inbox, and Alerts screens. The
+shared content binder labels generated event times as “Example”, humanizes
+workflow steps, and gives the feed a distinct “Recent activity” heading. The
+benchmark regression passed for all 100 briefs and all three directions after
+being verified red on SAS-01 Direction A. A separate visible Compose test
+recomposes the SAS-01 brief and checks all three rendered directions at
+1440 × 900 and 390 × 844. Screenshots and machine-readable console/network
+reports are under `quality/evidence/step-14/manual-review/after/`. Local browser
+reports show zero console errors, uncaught exceptions, failed requests, or HTTP
+errors. All three findings await deployed review verification.
+
+The FIN-05 brokerage terminal review found that `fintech` defaults had assigned
+retail banking workflows to explicit trading intent. The before screenshot at
+`quality/evidence/step-14/manual-review/verified/desktop/fin-05-direction-01.png`
+shows Account Balances and a bank-statement event. A focused specialization now
+produces Market Overview, Order Book, Positions & Risk, and Trade History, with
+market-depth and equity-trade examples; the 100-brief interpreter and composition
+tests were red before the specialization and pass afterward. The visible browser
+test opens and checks all three directions at 1440 × 900 and 390 × 844. Captures
+and runtime reports are under
+`quality/evidence/step-14/manual-review/after/fintech-trading-*`. The browser
+reports contain zero console errors, uncaught exceptions, failed requests, or
+HTTP errors. This remains awaiting deployed review verification.
+
+The same before screenshot showed generic KPI values rendered as the literal
+word “Example”. Composition now uses an em dash when source data is unavailable,
+states when market data or another connection is missing, and marks brief-derived
+values without calling them examples. Unavailable status badges use neutral
+styling. The composition benchmark failed on FIN-05 before this change and now
+checks all benchmark briefs for placeholder metric values.
+
+The mobile FIN-05 capture also showed “Market data not connected” split across
+multiple narrow lines because the Gold KPI resource forced two columns at small
+widths. A screenshot was preserved at
+`quality/evidence/step-14/manual-review/before/fintech-kpi-mobile-before-layout.png`.
+The resource now uses one column in compact containers, two at intermediate
+widths, and three at wide widths; the browser test checks computed grid columns,
+not just the absence of page overflow. The after mobile capture and report are in
+the same `fintech-trading-*` evidence directory. Both KPI changes await deployed
+review verification.
 
 ## Browser findings fixed locally
 
@@ -251,16 +299,23 @@ and HTTP errors.
 
 ## Local validation
 
+- `pnpm install --frozen-lockfile` — passed; all 23 workspace projects were
+  already current.
 - `pnpm build:catalog` — passed; 324 resources validated, Gold registry rebuilt.
-- Focused interpreter/planner/composition benchmark — 212 tests passed.
-- `pnpm test` — 901 tests passed across 63 files.
+- Focused interpreter and composition benchmarks — all 100 reviewed briefs
+  passed, including the explicit fintech-trading profile.
+- `pnpm test` — 902 tests passed across 63 files.
 - `pnpm typecheck` — all 22 projects passed.
 - `pnpm lint` — zero errors; 51 existing warnings.
-- `pnpm audit:all` — all 16 release gates passed, including production build,
-  bundle budget, provenance and security audits.
-- `pnpm test:e2e` — desktop/mobile suite 119 passed and 59 explicitly skipped;
+- `pnpm audit:all` — all 16 release gates passed; the production build emitted
+  717 pages and bundle budget, provenance, licence, and security audits passed.
+- `pnpm test:e2e` — public desktop/mobile suite 117 passed and 59 explicitly skipped;
   Sites Worker suite 28 passed, including all 324 resources at certified widths;
   standalone preview suite 3 passed.
+- The same E2E run passed the Compose activity/trading regressions at 1440 × 900
+  and 390 × 844, including the truthful missing-data metric state and computed
+  one/three-column KPI layout. Runtime reports record zero console errors,
+  uncaught exceptions, failed requests, or HTTP errors.
 - Focused composition browser journey — passed at 1440 × 900 and 390 × 844 with
   clean console/network reports and separate screenshots for each viewport.
 - Flagship direction browser journey — passed at 1440 × 900 with three visible
@@ -271,6 +326,8 @@ and HTTP errors.
   fix from AUD-112 and predates the disabled-action and duplicate-navigation fixes
   from AUD-114/115; the focused browser regression recaptures ECOM-06 after all
   three fixes at both viewports.
+- Current-source `pnpm audit:all` — passed all 16 release gates, production build,
+  bundle budget, provenance, and security/secret checks.
 
 The local production build has existing chunk-size advisory output for Workbench
 and the separate Vite preview app; the configured bundle budget audit passed.
