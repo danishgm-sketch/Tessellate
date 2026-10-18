@@ -2080,6 +2080,85 @@
         "afterEvidence": "audit/evidence/step-07/after/fade-up-replay-timeline.json",
         "fullRun": "audit/evidence/step-07/after/e2e-summary.json"
       }
+    },
+    {
+      "id": "AUD-084",
+      "severity": "medium",
+      "route": "/resources/fade-up-reveal/",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Reduced Motion preview control changed its label but left transitions enabled",
+      "expected": "Turning Reduced Motion ON should disable CSS motion in the isolated resource preview, and turning it OFF should restore the normal transition.",
+      "actual": "On deployed Site v12, the control changed to ON and the iframe URL changed, but the Fade-Up card still reported a 0.3s transition while the browser preference remained no-preference. Replay Entrance visibly animated. Desktop and mobile routes returned 200, the catalogue contained 324 resources, and there were no console errors, uncaught exceptions, failed requests, or HTTP errors.",
+      "reproduction": [
+        "Open /resources/fade-up-reveal/ at 1440x900.",
+        "Turn on the visible Motion / Reduced Motion preview control.",
+        "Inspect the preview card computed transition-duration, then activate Replay Entrance.",
+        "The control reports ON but transition-duration remains 0.3s and the card animates."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-07/deployed-v12-before-fix/fade-up-reduced-motion-on-1440x900.png",
+      "rootCause": "The preview stored reducedMotion in React state and added Tailwind's motion-reduce class, but that utility is conditional on the browser's prefers-reduced-motion media query. The preview toggle did not activate the media query or apply an equivalent CSS override.",
+      "affectedFiles": [
+        "apps/site/src/components/PreviewHost.tsx",
+        "apps/site/src/styles/global.css",
+        "packages/ui/package.json",
+        "packages/ui/src/preview-motion.css",
+        "tests/e2e/preview-form-interactions.spec.ts"
+      ],
+      "remediation": "Expose the preview toggle state on the Astro iframe document root and apply a shared reduced-motion override that sets transition and animation durations to zero, regardless of the browser's operating-system preference. The Sites Worker regression verifies OFF-to-ON and ON-to-OFF computed styles. Local verification passes; the fix remains pending a public Site recheck.",
+      "fixCommit": "35a8fe5634fde34d3f0a38b41ab70aafdbb5ae2d",
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "result": "The Sites Worker browser regression failed before the fix with expected transitionDuration 0s but received 0.3s. After the fix it passes with 0s when Reduced Motion is ON and 0.3s when OFF.",
+        "test": "tests/e2e/preview-form-interactions.spec.ts",
+        "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts --grep \"Reduced Motion toggle disables CSS transitions\""
+      },
+      "deployedEvidence": {
+        "report": "audit/evidence/step-07/deployed-v12-before-fix/runtime.json",
+        "screenshots": [
+          "audit/evidence/step-07/deployed-v12-before-fix/fade-up-initial-1440x900.png",
+          "audit/evidence/step-07/deployed-v12-before-fix/fade-up-reduced-motion-on-1440x900.png",
+          "audit/evidence/step-07/deployed-v12-before-fix/fade-up-reduced-motion-replay-60ms-1440x900.png",
+          "audit/evidence/step-07/deployed-v12-before-fix/fade-up-resource-390x844.png"
+        ]
+      },
+      "failingTest": "tests/e2e/preview-form-interactions.spec.ts"
+    },
+    {
+      "id": "AUD-085",
+      "severity": "medium",
+      "route": "apps/preview/?resource=fade-up-reveal",
+      "viewport": "1440x900",
+      "category": "visual",
+      "title": "Standalone preview app omitted canonical resource utility styles",
+      "expected": "A resource preview should compile and apply the Tailwind utility classes used by that resource, including the Fade-Up transition duration.",
+      "actual": "Before the fix, Fade-Up rendered with its duration-300 class in the DOM but computed transitionDuration was 0s. The card, variant controls and replay control also lost their intended layout and surface styling. The page had no console, uncaught or network errors.",
+      "reproduction": [
+        "Run the standalone @tessellate/preview app and open /?resource=fade-up-reveal at 1440x900.",
+        "Inspect the Fade-Up card class list and computed transitionDuration; before the fix it was 0s despite the duration-300 class."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-07/preview-app-before/resource-styles-1440x900.png",
+      "rootCause": "apps/preview/src/style.css did not register the shared resources directory as a Tailwind source. Classes authored in resource packages were therefore absent from the standalone preview stylesheet.",
+      "affectedFiles": [
+        "apps/preview/src/style.css",
+        "tests/e2e/preview-reduced-motion.spec.ts",
+        "tests/e2e/preview-app.playwright.config.ts"
+      ],
+      "remediation": "Register ../../../resources as a Tailwind source in the standalone preview app. The browser regression verifies the canonical 300ms transition and confirms reduced motion switches it to 0ms and back. The public Sites app does not serve this separate Vite runtime; its local browser runtime and production bundle pass verification.",
+      "fixCommit": "5ef3c2bfb65764b8102f7e3ad8e8f251509a2c3f",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "result": "The browser regression failed before the fix with Expected 0.3s, Received 0s. After registering the resource source it passes at 0.3s, 0s with reduced motion, and 0.3s after motion is restored. The production CSS bundle grew from 34.75 kB to 149.42 kB (18.73 kB to 34.43 kB gzip) to include the existing resource styles. No console, uncaught or network errors were recorded.",
+        "test": "tests/e2e/preview-reduced-motion.spec.ts",
+        "beforeEvidence": "audit/evidence/step-07/preview-app-before/runtime.json",
+        "afterEvidence": "audit/evidence/step-07/preview-app-after/runtime.json",
+        "beforeScreenshot": "audit/evidence/step-07/preview-app-before/resource-styles-1440x900.png",
+        "afterScreenshot": "audit/evidence/step-07/preview-app-after/resource-styles-1440x900.png"
+      }
     }
   ]
 }
