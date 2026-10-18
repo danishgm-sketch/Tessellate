@@ -220,6 +220,14 @@ export function composeProjectForDirection(options: DirectionCompositionOptions)
     ) {
       screenRoles.unshift('navigation');
     }
+    if (screenNode.screenType === 'workspace-editor') {
+      // The available editor-toolbar candidate is minimal-top-nav. Rendering it
+      // beside the shell navigation duplicates every product destination and
+      // advertises links as editor controls, so leave the workspace canvas and
+      // inspector as the screen's working surface until a real toolbar exists.
+      const editorToolbarIndex = screenRoles.indexOf('editor-toolbar');
+      if (editorToolbarIndex >= 0) screenRoles.splice(editorToolbarIndex, 1);
+    }
     if (direction.type === 'structural-alternative') {
       const activityIndex = screenRoles.indexOf('activity-feed');
       const tableIndex = screenRoles.indexOf('data-table');

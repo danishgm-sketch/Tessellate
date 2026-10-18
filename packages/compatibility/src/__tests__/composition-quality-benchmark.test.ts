@@ -462,6 +462,24 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
               `${brief.id} ${name} ${screen.name} conversation timestamps must be readable`
             ).toBe(true);
           }
+          for (const board of screenNodes.filter((node) => node.semanticRole === 'canvas-viewport')) {
+            const columns = board.props.columns as
+              | Array<{ title: string; tasks: string[] }>
+              | undefined;
+            expect(columns?.length, `${brief.id} ${name} ${screen.name} canvas needs workflow content`).toBeGreaterThan(0);
+            const boardCopy = JSON.stringify(columns);
+            for (const identifier of result.productModel.workflows.flatMap((workflow) => [
+              workflow.name,
+              ...workflow.steps,
+            ])) {
+              if (/[_-]|[a-z][A-Z]/.test(identifier)) {
+                expect(
+                  boardCopy,
+                  `${brief.id} ${name} ${screen.name} canvas must humanise workflow identifier ${identifier}`
+                ).not.toContain(identifier);
+              }
+            }
+          }
           if (brief.expectedPrimaryArchetype === 'consumer' && screen.name === 'Activity Stream') {
             expect(
               activity?.resourceRef?.slug,

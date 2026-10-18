@@ -462,7 +462,10 @@ export function bindResourceContent(
             tasks: ['Read organisational policies', 'Share your first-week feedback'],
           },
         ]
-      : product.workflows.map((workflow) => ({ title: workflow.name, tasks: workflow.steps })),
+      : product.workflows.map((workflow) => ({
+          title: humanizeWorkflowLabel(workflow.name),
+          tasks: workflow.steps.map(humanizeWorkflowLabel),
+        })),
     label:
       role === 'search-header'
         ? searchCopy.label

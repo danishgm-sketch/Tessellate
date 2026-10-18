@@ -86,8 +86,20 @@ test('compose all adjudicated briefs and inspect all three visible directions', 
   const viewportName = isMobile ? 'mobile' : 'desktop';
   const benchmarkPath = path.resolve(process.cwd(), 'quality/COMPOSITION_QUALITY_BENCHMARK.json');
   const benchmark = JSON.parse(fs.readFileSync(benchmarkPath, 'utf8')) as Benchmark;
+  const requestedIds = new Set(
+    (process.env.COMPOSITION_REVIEW_IDS ?? '')
+      .split(',')
+      .map((id) => id.trim())
+      .filter(Boolean)
+  );
+  const requestedBriefs = requestedIds.size
+    ? benchmark.briefs.filter((brief) => requestedIds.has(brief.id))
+    : benchmark.briefs;
+  expect(requestedBriefs.map((brief) => brief.id).sort()).toEqual(
+    requestedIds.size ? [...requestedIds].sort() : requestedBriefs.map((brief) => brief.id).sort()
+  );
   const requestedLimit = Number(process.env.COMPOSITION_REVIEW_LIMIT ?? benchmark.briefs.length);
-  const briefs = benchmark.briefs.slice(0, Number.isFinite(requestedLimit) ? requestedLimit : undefined);
+  const briefs = requestedBriefs.slice(0, Number.isFinite(requestedLimit) ? requestedLimit : undefined);
   const evidenceDirectory = path.resolve(
     process.cwd(),
     'quality/evidence/step-14/manual-review/current',
@@ -161,6 +173,20 @@ test('compose all adjudicated briefs and inspect all three visible directions', 
       const dialog = page.getByRole('dialog', { name: new RegExp(`Direction ${number}`) });
       await expect(dialog).toBeVisible();
       const manifest = await readVisibleManifest(page);
+      const manifestCaptureIds = new Set(
+        (process.env.COMPOSITION_REVIEW_CAPTURE_MANIFESTS ?? '')
+          .split(',')
+          .map((id) => id.trim())
+          .filter(Boolean)
+      );
+      if (manifestCaptureIds.has(brief.id)) {
+        const manifestDirectory = path.join(evidenceDirectory, 'manifests');
+        fs.mkdirSync(manifestDirectory, { recursive: true });
+        fs.writeFileSync(
+          path.join(manifestDirectory, `${brief.id.toLowerCase()}-direction-${number}.json`),
+          `${JSON.stringify(manifest, null, 2)}\n`
+        );
+      }
       expect(manifest.id, `${brief.id} Direction ${number} must have a project identity`).toBeTruthy();
       expect(manifest.dna.primaryArchetype).toBeTruthy();
       expect(brief.acceptableArchetypes).toContain(manifest.dna.primaryArchetype);
@@ -191,6 +217,39 @@ test('compose all adjudicated briefs and inspect all three visible directions', 
       await expect(canvas.locator('[data-semantic-role]')).not.toHaveCount(0);
       await expect(canvas.locator('[data-testid="missing-resource-recovery"]')).toHaveCount(0);
       await expect(canvas.locator('[data-testid="unresolved-required-role-diagnostic"]')).toHaveCount(0);
+
+      if (brief.id === 'RES-01' && number === '03' && screen.name === 'Research Terminal') {
+        await expect(
+          canvas.locator('nav[aria-label="Product screens"]'),
+          'Direction C should expose the product navigation once'
+        ).toHaveCount(1);
+        const canvasViewport = canvas.locator('[data-semantic-role="canvas-viewport"]');
+        const inspector = canvas.locator('[data-semantic-role="inspector-panel"]');
+        await expect(canvasViewport).toContainText('Global search');
+        await expect(canvasViewport).not.toContainText(
+          /global-search|expand-relations|highlight-findings|export-dossier/
+        );
+        const [canvasBounds, inspectorBounds] = await Promise.all([
+          canvasViewport.boundingBox(),
+          inspector.boundingBox(),
+        ]);
+        expect(canvasBounds, 'the main research canvas should render').not.toBeNull();
+        expect(inspectorBounds, 'the research inspector should render').not.toBeNull();
+        if (canvasBounds && inspectorBounds) {
+          if (isMobile) {
+            expect(canvasBounds.y, 'mobile canvas should precede its inspector').toBeLessThan(
+              inspectorBounds.y
+            );
+          } else {
+            expect(canvasBounds.x, 'desktop canvas should occupy the primary column').toBeLessThan(
+              inspectorBounds.x
+            );
+            expect(canvasBounds.width, 'desktop canvas should be wider than the inspector').toBeGreaterThan(
+              inspectorBounds.width
+            );
+          }
+        }
+      }
 
       const geometry = await canvas.evaluate((element) => {
         const bounds = element.getBoundingClientRect();

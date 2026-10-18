@@ -38,6 +38,8 @@ export const MANIFEST_LAYOUT_CSS = `
  .tess-layout-workspace-multi-pane>.tess-layout-overview-header,.tess-layout-workspace-multi-pane>.tess-layout-metric-cards{grid-column:1/-1}
  .tess-layout-workspace-multi-pane>.tess-layout-data-table{grid-column:1}
  .tess-layout-workspace-multi-pane>.tess-layout-activity-feed{grid-column:2}
+ .tess-layout-workspace-multi-pane>.tess-layout-canvas-viewport,.tess-layout-workspace-multi-pane>.tess-layout-main-content-pane,.tess-layout-workspace-multi-pane>.tess-layout-results-grid{grid-column:1}
+ .tess-layout-workspace-multi-pane>.tess-layout-inspector-panel,.tess-layout-workspace-multi-pane>.tess-layout-metadata-sidebar{grid-column:2}
  .tess-layout-workspace-multi-pane-activity-only{grid-template-columns:minmax(0,1fr)}
  .tess-layout-workspace-multi-pane-activity-only>.tess-layout-activity-feed{grid-column:1/-1}
  .tess-layout-workspace-multi-pane>.tess-layout-compound-workspace-pane,.tess-layout-workspace-multi-pane>.tess-layout-split-workspace-columns{grid-column:1/-1}
