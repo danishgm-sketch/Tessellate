@@ -82,9 +82,9 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
         {activeTab === 'intent' && (
           <div className="space-y-6">
             <div>
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)] mb-1">
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)] mb-1">
                 Summary & Purpose
-              </h4>
+              </h2>
               <p className="text-base text-[var(--tess-ink,#111217)] font-medium">
                 {manifest.intent.summary}
               </p>
@@ -126,9 +126,9 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
 
             {/* Jobs to be done */}
             <div className="space-y-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
                 Jobs To Be Done
-              </h4>
+              </h2>
               <div className="flex flex-wrap gap-2">
                 {manifest.intent.jobs.map((job, idx) => (
                   <span
@@ -143,9 +143,9 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
 
             {/* Content Requirements */}
             <div className="space-y-2">
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
+              <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
                 Expected Content Requirements
-              </h4>
+              </h2>
               <ul className="list-disc list-inside text-xs space-y-1 text-[var(--tess-ink-secondary,#62666F)]">
                 {manifest.intent.contentRequirements.map((req, idx) => (
                   <li key={idx}>{req}</li>
@@ -156,9 +156,9 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
             {/* Product Archetypes */}
             {manifest.productArchetypes.length > 0 && (
               <div className="space-y-2">
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
+                <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
                   Target Product Archetypes
-                </h4>
+                </h2>
                 <div className="flex flex-wrap gap-2">
                   {manifest.productArchetypes.map((arch, idx) => (
                     <span
@@ -212,6 +212,9 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
         {/* VARIANTS TAB */}
         {activeTab === 'variants' && (
           <div className="space-y-4">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
+              Declared Variants
+            </h2>
             <p className="text-xs text-[var(--tess-ink-secondary,#62666F)]">
               The configurations declared by this resource are listed below. Inspect them in the
               live preview.
@@ -223,7 +226,7 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
                   className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white p-4 space-y-2 shadow-2xs"
                 >
                   <div className="flex items-center justify-between">
-                    <h5 className="font-semibold text-sm">{v.name}</h5>
+                    <h3 className="font-semibold text-sm">{v.name}</h3>
                     <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[var(--tess-canvas,#F4F2ED)] text-[var(--tess-ink-secondary,#62666F)]">
                       {v.id}
                     </span>
@@ -240,9 +243,9 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
         {/* ANATOMY TAB */}
         {activeTab === 'anatomy' && (
           <div className="space-y-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--tess-ink-muted,#62666F)]">
               Configurable Slots & Props
-            </h4>
+            </h2>
             <div className="rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-white overflow-hidden">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>

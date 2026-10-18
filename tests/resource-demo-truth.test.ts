@@ -32,9 +32,17 @@ import {ComparisonTable} from '../resources/blocks/comparison-table/index.js';
 import {FaqTwoColumn} from '../resources/sections/faq-two-column/index.js';
 import {FeatureGrid3x2} from '../resources/sections/feature-grid-3x2/index.js';
 import {AIGenerationCompare} from '../resources/ai/ai-generation-compare/index.js';
+import {AIAgentActivityFeed} from '../resources/ai/ai-agent-activity-feed/index.js';
 import {EditorialHero} from '../resources/sections/editorial-hero/index.js';
 const hasDisabledButton=(html:string)=>/<button\b[^>]*\sdisabled(?:=|\s|>)/.test(html);
 describe('resource demonstrations do not invent product evidence',()=>{
+ it('labels agent-feed events as sample data and uses a valid standalone heading',()=>{
+  const html=renderToStaticMarkup(createElement(AIAgentActivityFeed));
+  expect(html).toContain('Static sample data');
+  expect(html).toContain('<h2');
+  expect(html).not.toContain('animate-ping');
+  expect(html).not.toMatch(/Real-time telemetry|CatalogResearcher|24 data visualization|17 packages: 0 errors|0 warnings/);
+ });
  it('does not invent press quotations',()=>{
   const html=renderToStaticMarkup(createElement(PressMentionsStrip));
   expect(html).not.toMatch(/TechCrunch|Wired|The Verge/);

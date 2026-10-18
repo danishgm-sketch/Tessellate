@@ -17,10 +17,10 @@ export function AIAgentActivityFeed({ variant = 'quiet' }: AIAgentActivityFeedPr
       : 'bg-white border-neutral-200 text-neutral-900';
 
   const events = [
-    { time: '01:14:02', agent: 'CatalogResearcher', action: 'Scanned 24 data visualization definitions in resources/data', type: 'info' },
-    { time: '01:14:15', agent: 'TypeChecker', action: 'Completed full monorepo tsc --noEmit across 17 packages: 0 errors', type: 'milestone' },
-    { time: '01:14:28', agent: 'RegistryGenerator', action: 'Generated shadcn-compatible endpoints in apps/site/public/r', type: 'milestone' },
-    { time: '01:14:40', agent: 'Linter', action: 'Enforced strict 0 warnings rule on all components', type: 'info' },
+    { time: '09:14', agent: 'Catalog review', action: 'Checked sample UI resources for duplicate patterns', type: 'info' },
+    { time: '09:16', agent: 'Accessibility review', action: 'Reviewed keyboard flow for a sample onboarding screen', type: 'milestone' },
+    { time: '09:18', agent: 'Component review', action: 'Compared responsive behavior across dashboard examples', type: 'milestone' },
+    { time: '09:20', agent: 'Release review', action: 'Prepared a review summary for a person to verify', type: 'info' },
   ];
 
   const displayed = filter === 'milestones' ? events.filter((e) => e.type === 'milestone') : events;
@@ -29,17 +29,19 @@ export function AIAgentActivityFeed({ variant = 'quiet' }: AIAgentActivityFeedPr
     <div className={`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>
       <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-neutral-100 dark:border-neutral-800">
         <div className="flex min-w-0 items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping" />
-          <h4 className="text-sm font-semibold tracking-tight">Agent Swarm Activity</h4>
+          <h2 className="text-sm font-semibold tracking-tight">Example agent activity</h2>
         </div>
+        <span className="rounded border border-neutral-200 px-1.5 py-0.5 text-[10px] font-mono uppercase tracking-wide text-neutral-500 dark:border-neutral-700 dark:text-neutral-400">Static sample data</span>
         <div className="flex gap-2 text-xs">
           <button
+            type="button"
             onClick={() => setFilter('all')}
             className={`px-2.5 py-1 rounded font-mono ${filter === 'all' ? 'bg-neutral-100 dark:bg-neutral-800 font-semibold' : 'text-neutral-400'}`}
           >
             All Events
           </button>
           <button
+            type="button"
             onClick={() => setFilter('milestones')}
             className={`px-2.5 py-1 rounded font-mono ${filter === 'milestones' ? 'bg-neutral-100 dark:bg-neutral-800 font-semibold' : 'text-neutral-400'}`}
           >

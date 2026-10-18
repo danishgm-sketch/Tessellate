@@ -1,6 +1,7 @@
 import { readFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { expect, test } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
 
 type CatalogResource = {
   slug: string;
@@ -31,6 +32,40 @@ async function waitForActualResource(frame: import('@playwright/test').FrameLoca
   if (variantId) await expect(resourceNode).toHaveAttribute('data-resource-variant', variantId, { timeout: 15000 });
   await expect(frame.getByText('Loading the actual resource…', { exact: true })).toHaveCount(0, { timeout: 15000 });
 }
+
+test('AI agent activity preview labels sample content and follows heading hierarchy', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'sites-chromium', 'This preview runs against the Sites Worker isolation boundary.');
+
+  const browserErrors: string[] = [];
+  const failedRequests: string[] = [];
+  const httpErrors: string[] = [];
+  page.on('console', (message) => { if (message.type() === 'error') browserErrors.push(message.text()); });
+  page.on('pageerror', (error) => browserErrors.push(error.message));
+  page.on('requestfailed', (request) => failedRequests.push(`${request.method()} ${request.url()}: ${request.failure()?.errorText ?? 'unknown failure'}`));
+  page.on('response', (response) => { if (response.status() >= 400) httpErrors.push(`${response.status()} ${response.url()}`); });
+
+  const response = await page.goto('/r/ai-agent-activity-feed/', { waitUntil: 'domcontentloaded' });
+  expect(response?.status()).toBe(200);
+  await expect(page.getByRole('heading', { level: 1, name: 'AI Agent Activity Feed', exact: true })).toBeVisible();
+  const preview = page.frameLocator('iframe[title$=" live preview"]');
+  await expect(preview.getByRole('heading', { level: 2, name: 'Example agent activity', exact: true })).toBeVisible();
+  await expect(preview.getByText('Static sample data', { exact: true })).toBeVisible();
+  await expect(preview.getByText(/real-time telemetry/i)).toHaveCount(0);
+  const headingOrderResults: Array<{ tab: string; violations: string[] }> = [];
+  for (const tab of ['Intent', 'Code', 'Variants', 'Anatomy', 'Accessibility', 'Performance', 'Dependencies', 'Versions']) {
+    if (tab !== 'Intent') await page.getByRole('button', { name: tab, exact: true }).click();
+    const axe = await new AxeBuilder({ page }).withRules(['heading-order']).analyze();
+    headingOrderResults.push({ tab, violations: axe.violations.map(({ id, nodes }) => `${id}: ${nodes.map((node) => node.target.join(' ')).join(', ')}`) });
+  }
+
+  expect(headingOrderResults.filter((result) => result.violations.length > 0)).toEqual([]);
+  expect(browserErrors).toEqual([]);
+  expect(failedRequests).toEqual([]);
+  expect(httpErrors).toEqual([]);
+  const evidenceDir = path.resolve(process.cwd(), 'audit/evidence/catalog-search-local');
+  mkdirSync(evidenceDir, { recursive: true });
+  await page.screenshot({ path: path.join(evidenceDir, 'ai-agent-activity-feed-after-1440x900.png'), animations: 'disabled' });
+});
 
 test('all catalogue resources render at every certified width in the Sites Worker', async ({ page }, testInfo) => {
   test.skip(testInfo.project.name !== 'sites-chromium', 'This matrix runs against the Sites Worker preview boundary.');
@@ -290,7 +325,7 @@ test('all catalogue resources render at every certified width in the Sites Worke
             record.screenshots.push(path.relative(process.cwd(), screenshotPath).replaceAll('\\', '/'));
           }
           if (resource.slug === 'ai-agent-activity-feed' && width === 360) {
-            const action = frame.getByText('Scanned 24 data visualization definitions in resources/data', { exact: true });
+            const action = frame.getByText('Checked sample UI resources for duplicate patterns', { exact: true });
             const actionBounds = await action.boundingBox();
             const frameWidth = await frame.locator('html').evaluate((html) => html.clientWidth);
             if (!actionBounds || actionBounds.width < frameWidth * 0.6) {

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "catalogVersion": "0.1.0",
-  "generatedAt": "2026-10-18T00:41:10.057Z",
+  "generatedAt": "2026-10-18T04:50:13.102Z",
   "count": 324,
   "resources": [
     {
@@ -1486,7 +1486,7 @@
       "name": "AI Agent Activity Feed",
       "version": "1.0.0",
       "status": "verified",
-      "description": "Real-time telemetry stream showing background agent thoughts, state transitions, subagent spawns, and progress percentages.",
+      "description": "Static sample activity feed for an AI-agent workspace. The example events are local demo content; no live telemetry connection is included.",
       "resourceType": "ai-pattern",
       "categories": [
         "ai",
@@ -1583,7 +1583,7 @@
         {
           "id": "quiet",
           "name": "Quiet",
-          "description": "Subtle slate borders, minimal badge accents, calm tool call telemetry for deep work.",
+          "description": "Subtle slate borders and restrained styling for a sample activity feed.",
           "props": {
             "variant": "quiet"
           }
@@ -1591,7 +1591,7 @@
         {
           "id": "expressive",
           "name": "Expressive",
-          "description": "Vibrant cobalt highlights, fluid gradient thinking indicators, and rich model card pills.",
+          "description": "Vibrant cobalt highlights and lively status accents for sample events.",
           "props": {
             "variant": "expressive"
           }
@@ -1599,7 +1599,7 @@
         {
           "id": "nocturne",
           "name": "Nocturne",
-          "description": "Obsidian dark canvas, electric cyan luminescence, and high-contrast monospace code surfaces.",
+          "description": "Obsidian canvas, cyan accents, and high-contrast event details.",
           "props": {
             "variant": "nocturne"
           }
@@ -1613,24 +1613,24 @@
         "telemetry"
       ],
       "intent": {
-        "summary": "Real-time telemetry stream showing background agent thoughts, state transitions, subagent spawns, and progress percentages.",
+        "summary": "Static sample activity feed for an AI-agent workspace; it is not connected to live telemetry.",
         "idealFor": [
-          "Autonomous multi-agent execution dashboard",
-          "Background code synthesis monitoring",
-          "Agent swarm status viewer"
+          "Example AI-agent activity feed",
+          "Agent workflow status interface",
+          "A host application that supplies its own activity events"
         ],
         "avoidFor": [
           "Synchronous modal alerts",
           "Single number KPI cards"
         ],
         "jobs": [
-          "Stream live subagent events, thought traces, and task completion milestones"
+          "Display agent task events and completion milestones from the host application"
         ],
         "contentRequirements": [
-          "Model state reflection, streaming message blocks, citation cards, human-in-the-loop approvals"
+          "Event times, agent labels, activity descriptions, and milestone states"
         ],
         "notes": [
-          "Local state mockable, BYO endpoint compatible, zero lock-in contracts"
+          "Replace sample events with host data; the component makes no network requests"
         ]
       },
       "visualDNA": {
