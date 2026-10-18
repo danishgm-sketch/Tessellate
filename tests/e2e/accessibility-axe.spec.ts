@@ -38,7 +38,13 @@ test.describe('Accessibility & WCAG 2.2 AA Audits', () => {
 
   test('resource detail gives primary and breadcrumb navigation unique landmark names', async ({ page }) => {
     await page.goto('/resources/ai-agent-activity-feed/');
-    await expect(page.getByRole('navigation', { name: 'Primary' })).toBeVisible();
+    const primaryNavigation = page.locator('nav[aria-label="Primary"]');
+    await expect(primaryNavigation).toHaveCount(1);
+    if ((page.viewportSize()?.width ?? 0) >= 1280) {
+      await expect(page.getByRole('navigation', { name: 'Primary' })).toBeVisible();
+    } else {
+      await expect(primaryNavigation).toBeHidden();
+    }
     await expect(page.getByRole('navigation', { name: 'Resource breadcrumb' })).toBeVisible();
 
     const accessibilityScanResults = await new AxeBuilder({ page })
