@@ -10,17 +10,31 @@ workflow relevance, cross-domain residue, route integrity, Gold/Core resource
 eligibility, mobile strategy, truthful illustrative metrics, resolved roles, and
 structural differences across at least two axes.
 
-Step 14 remains **in progress**. Nine full previews were inspected in real
-1440 × 900 browser sessions: all three directions for marketplace MKT-01,
-community CON-04, and the flagship employee-experience brief. The full manual
-visual review of all 300 generated directions, and responsive review across the
-full benchmark, are still required before this gate can be marked complete. This
-checkpoint does not claim public review-site verification.
+Step 14 remains **in progress**. The current batch submitted all 100 adjudicated
+briefs through the visible `/compose` UI and captured all 300 directions at
+1440 × 900 and 390 × 844. The machine-readable report is
+`quality/evidence/step-14/manual-review/browser-review-verified.json`; full-size
+captures and 20 contact sheets are under `quality/evidence/step-14/manual-review/verified/`
+and `verified-contact-sheets/`. All desktop and mobile contact sheets were
+visually inspected. The previews had no unresolved-role diagnostics, horizontal
+overflow, console errors, uncaught exceptions, failed requests, or HTTP errors.
+The review found AUD-111 through AUD-115 below. Their source fixes and focused local regressions pass, while all five findings remain open until issue-specific deployed review verification. All-benchmark exportability and the remaining composition checks are still open. This checkpoint does not claim public review-site verification.
 
 The local fixes for AUD-101–105 and AUD-107–110 are in commit
 `8686e0b9d7e7aca869a7677113492ded53af27b6`. The runtime audit records this SHA
 for those findings; they remain open to release until the public review Site is
 verified during Step 45.
+
+The visible UI review found AUD-111 through AUD-115. AUD-111 fixed e-commerce
+conversion actions that said “Continue onboarding” and linked to a missing
+overview fragment. AUD-112 specialized an explicit returns-portal brief away from
+a new-purchase storefront and checkout plan. AUD-113 removed the blank fourth
+Feature Bento card for three-item input. AUD-114 preserves the returns-service
+explanation on the disabled request action. AUD-115 removes the duplicated
+product navigation from the returns form. Red semantic/browser regressions were
+recorded for the underlying failures; the rebuilt local Site now passes the CTA
+and returns workflows, and the Sites Worker passes the partial Bento state. All
+remain awaiting deployed review verification.
 
 ## Browser findings fixed locally
 
@@ -167,6 +181,31 @@ verified during Step 45.
 - **Remediation:** use the supplied employee count only and mark remaining summary values as illustrative.
 - **Verification:** the composition benchmark checks employee summary-card provenance, and the visible browser journey records updated desktop screenshots. Deployed verification remains open.
 
+### AUD-113 through AUD-115 — E-commerce detail verification
+
+The post-fix ECOM-06 browser test inspects Order Lookup, Return Request, and
+Refund Status in each of the three directions. It verifies the request form is
+truthfully disabled until a returns service is connected, the disabled title
+identifies that service, and the refund timeline contains return-specific sample
+events. It also checks the Return Request canvas renders only one navigation
+landmark. Direction C screenshots are in
+`quality/evidence/step-14/manual-review/after/ecom-06-return-request-direction-03-desktop.png`
+and `quality/evidence/step-14/manual-review/after/ecom-06-return-request-direction-03-mobile.png`;
+the refund timeline appears in `ecom-06-direction-03-desktop.png` and
+`ecom-06-direction-03-mobile.png` in the same directory. The storefront CTA
+regression also has separate desktop/mobile screenshots and runtime reports under
+`after/`. All four browser reports record zero console errors, uncaught errors,
+failed requests, or HTTP errors.
+
+The isolated Sites Worker test supplies exactly three feature items, verifies
+three non-empty cards and no horizontal overflow at 390 × 844 and 1440 × 900,
+and captures the full resource page at both widths under
+`audit/evidence/step-06/after/gold-state-matrix/feature-bento-three-items-*.png`.
+The before image shows the empty fourth card at
+`quality/evidence/step-14/manual-review/before/feature-bento-three-items-order-lookup-desktop.png`.
+The focused Sites Worker regression asserts three non-empty cards and clean
+browser diagnostics at both widths.
+
 ## Browser evidence
 
 The Playwright journey uses the visible `/compose` UI and captures every full
@@ -195,6 +234,10 @@ and HTTP errors.
   during remediation. The follow-on entity-derived mark check passes after restoring
   context-rich workspace names and two-character initials; the two public showcase
   routes now have dedicated browser regressions.
+- The verified full-benchmark browser report records 100 briefs, 300 distinct
+  projects, 600 desktop/mobile screenshots, zero unresolved roles, zero horizontal
+  overflow, and zero console, uncaught, failed-request, or HTTP errors. All 20
+  contact sheets were visually inspected.
 - Distinctness: all 100 benchmark cases must differ between every direction pair
   across at least two structural axes (navigation, grammar, hierarchy, and resource
   selection).
@@ -208,14 +251,19 @@ and HTTP errors.
 - `pnpm lint` — zero errors; 51 existing warnings.
 - `pnpm audit:all` — all 16 release gates passed, including production build,
   bundle budget, provenance and security audits.
-- `pnpm test:e2e` — desktop/mobile suite 109 passed and 59 explicitly skipped;
+- `pnpm test:e2e` — desktop/mobile suite 119 passed and 59 explicitly skipped;
   Sites Worker suite 28 passed, including all 324 resources at certified widths;
   standalone preview suite 3 passed.
-- Focused composition browser journey — passed at 1440 × 900 with clean
-  console/network report and the six preview screenshots above.
+- Focused composition browser journey — passed at 1440 × 900 and 390 × 844 with
+  clean console/network reports and separate screenshots for each viewport.
 - Flagship direction browser journey — passed at 1440 × 900 with three visible
   direction previews and zero unresolved roles, console errors, uncaught errors,
   failed requests or HTTP errors.
+- Full composition benchmark browser capture — 100 briefs / 300 directions at
+  1440 × 900 and 390 × 844. The capture includes the returns-portal interpretation
+  fix from AUD-112 and predates the disabled-action and duplicate-navigation fixes
+  from AUD-114/115; the focused browser regression recaptures ECOM-06 after all
+  three fixes at both viewports.
 
 The local production build has existing chunk-size advisory output for Workbench
 and the separate Vite preview app; the configured bundle budget audit passed.
@@ -228,9 +276,9 @@ is recorded and deferred to the ordered showcase-hardening step (Step 43).
 
 ## Remaining gate work
 
-1. Manually inspect the generated output for all 100 briefs × 3 directions and
-   attach adjudicated output-quality results, not just structural assertions.
-2. Repeat composition visual checks at mobile/tablet widths and exercise Compose
-   loading, failure, empty and invalid-input states under the Compose UX gate.
+1. Finish semantic output and exportability adjudication for all 100 briefs × 3
+   directions, including the remaining tablet widths.
+2. Exercise Compose loading, failure, empty, invalid-input, and rapid-repeat
+   states under the Compose UX gate.
 3. Re-run the same browser checks on the public review Site during Step 45; these
    local fixes are not closed for release until deployed verification succeeds.

@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 110 findings (23 High, 86 Medium, 1 Low): 27 closed after deployed verification, 79 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080, AUD-100, and AUD-106 open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–110; these composition and data-truth findings are fixed locally and await deployed review verification. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), which is tracked for Step 43. The desktop Explore Axe scan also found one moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100); it is tracked for the ordered accessibility/resource hardening work. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See `quality/STEP_08_EVIDENCE.md`, `quality/STEP_14_EVIDENCE.md`, and `evidence/catalog-search-v20/`.
+**Current disposition:** 115 findings (25 High, 89 Medium, 1 Low): 27 closed after deployed verification, 84 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080, AUD-100, and AUD-106 open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–115; these composition and data-truth findings are fixed locally and await deployed review verification. AUD-111 records the e-commerce CTA copy and nonexistent destination found across the 100-brief visible UI review; AUD-112 records a returns-portal brief that inherited a storefront purchase architecture. Those two local fixes await review-site verification. AUD-113 records an empty fourth Feature Bento card when the binder provides three items; the three-item Sites Worker regression now passes locally. AUD-114 records a returns-service explanation overwritten by a generic disabled-action tooltip; its semantic and visible browser regressions pass locally. AUD-115 records duplicate primary navigation on the returns request screen; its semantic regression fails before the planner fix and passes locally afterward. These composition fixes remain awaiting deployed review verification. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), which is tracked for Step 43. The desktop Explore Axe scan also found one moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100); it is tracked for the ordered accessibility/resource hardening work. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See `quality/STEP_08_EVIDENCE.md`, `quality/STEP_14_EVIDENCE.md`, and `evidence/catalog-search-v20/`.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -211,6 +211,26 @@ No Critical findings are recorded in this audit register.
 - Root cause: preview CSP used `connect-src 'none'`. Astro/Vite fetches the compiled stylesheet while preloading resource modules; `style-src` alone did not authorize that fetch from an opaque frame.
 - Affected code: `apps/sites/worker.ts` and its CSP contract tests.
 - Remediation: allow `connect-src` only to same-origin immutable `/_astro/` assets. Keep APIs, arbitrary same-origin paths, external hosts, and nested frames blocked. Site v19 rendered the real Accordion preview in its opaque sandbox with zero CSP or compiled-asset errors; closed after deployed verification. See `evidence/catalog-search-v19/runtime-audit.json` and the Sites Worker browser regression.
+
+### AUD-111 — E-commerce conversion CTA used onboarding copy and a missing route
+
+- **Evidence:** the before screenshot at `quality/evidence/step-14/manual-review/before/ecom-01-direction-01-before-desktop.png` shows “Continue onboarding” on the storefront. The visible UI regression records the after state at `quality/evidence/step-14/manual-review/after/ecom-01-direction-01-desktop.png`; its runtime report checks navigation and browser/network errors.
+- **Reproduction:** open `/compose`, compose ECOM-01, inspect each direction’s Storefront Catalog, and activate the conversion CTA. Before the fix the fragment was `#screen-overview`, absent from the project’s screen IDs.
+- **Root cause:** e-commerce had no archetype-specific CTA copy or target rule and inherited the generic onboarding label and overview fallback.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`, the composition quality benchmark, and the visible Compose browser test.
+- **Remediation:** use “View product details” and resolve the CTA fragment to the generated Product Detail screen; assert semantic target validity in all three directions and click the CTA through the visible UI.
+- **Verification:** the composition benchmark failed before the fix and passes after it. The visible browser regression also passes locally; this finding remains open until a published review version is re-audited.
+- **Fix commit:** `77cbad5f`.
+
+### AUD-112 — Returns portal brief generated a storefront purchase flow
+
+- **Evidence:** the before browser screenshots at `quality/evidence/step-14/manual-review/desktop/ecom-06-direction-01.png` and `quality/evidence/step-14/manual-review/mobile/ecom-06-direction-01.png` show the return-portal brief rendered with a generic product-discovery objective and the onboarding CTA. The visible preview’s manifest contains Storefront Catalog, Product Detail, Checkout, and Order Confirmation.
+- **Reproduction:** open `/compose`, enter benchmark brief ECOM-06 without an archetype override, compose, and inspect Product Architecture and each direction.
+- **Root cause:** the interpreter applied the single generic ecommerce archetype to an explicit returns portal, so the screen planner inherited a new-purchase funnel.
+- **Affected code:** `packages/composer/src/domain-context.ts`, `packages/composer/src/interpreter.ts`, `packages/compatibility/src/content-bindings.ts`, and the adjudicated interpretation/composition benchmarks.
+- **Remediation:** specialize the existing ecommerce archetype for returns intent with order lookup, return request, and refund status workflows/screens; bind return-specific sample content and CTA copy.
+- **Verification:** the benchmark assertion was red before the fix and passes after it; a visible Compose regression now checks the three direction manifests and selected preview. Review-site verification remains open.
+- **Fix commit:** `77cbad5f`.
 
 ## MEDIUM
 
@@ -860,7 +880,7 @@ with zero findings. That harness race is not counted as a product defect.
 - Evidence: the [public v11 export capture](evidence/step-07/before/export-project-navigation-wraps-390.png) shows nine screen buttons spread across three rows above the manifest product navigation. Site v14 export through the visible Workbench produced a nine-screen manifest and ZIP. The manifest passed ProjectManifestSchema; clean install and production build passed outside the repository; the exported project switched screens at 1440 × 900 and 390 × 844 with a one-row selector, no mobile overflow, and zero console or network errors. See the [visible export report](evidence/deployed-v14-flagship/visible-export-audit.json), [external build record](evidence/deployed-v14-flagship/external-export-build.json), [runtime report](evidence/deployed-v14-flagship/standalone-runtime-audit.json), and [mobile after capture](evidence/deployed-v14-flagship/standalone-export-390x844.png).
 - Reproduction: compose the employee-experience brief on the public Site, open Direction C, download the Standalone React ZIP, clean-install/build it, then view the project at 390 × 844.
 - Root cause: packages/exporter/src/source-tree.ts used a wrapping flex group for the nine generated screen buttons and a wrapping header for the project name.
-- Affected code: packages/exporter/src/source-tree.ts and packages/exporter/src/__tests__/standalone-export-fidelity.test.ts.
+- Affected code: packages/exporter/src/source-tree.ts and packages/exporter/src/**tests**/standalone-export-fidelity.test.ts.
 - Remediation: stack the title and keep screen controls in a single horizontally scrollable row on narrow screens. The clean-install browser test verifies computed layout, screen switching, responsive resource strategies and zero console/request failures. Fix commit: d6102e53b203355e68411ce91f0630346534e6f3. Closed after public Site v14 (Sites source commit 7323e8e9edfb6e07c5485c9d19ff37a8ca8043f5).
 
 ### AUD-083 — Fade-Up Replay Entrance reversed before its transition completed
@@ -1045,6 +1065,35 @@ with zero findings. That harness race is not counted as a product defect.
 - **Affected code:** `resources/blocks/entity-profile-header/index.tsx` and `packages/exporter/src/generated-gold-sources.ts`.
 - **Remediation:** remove the hardcoded phrase; catalog rebuild propagates the resource source. The local browser regression passes; deployed verification remains open.
 - **Related evidence:** `quality/STEP_14_EVIDENCE.md`, `quality/evidence/composition-quality/after/runtime.json`.
+
+### AUD-113 — Feature Bento rendered a blank card for three-item compositions
+
+- **Evidence:** the before capture at `quality/evidence/step-14/manual-review/before/feature-bento-three-items-order-lookup-desktop.png` shows three return-portal items and a fourth card containing only decorative dots.
+- **Reproduction:** open the Feature Bento resource preview and provide three items, or compose a product whose value-proposition binder provides three entities; inspect the grid.
+- **Root cause:** the component always rendered four card slots although its `items` prop is optional and composition commonly supplies three entities.
+- **Affected code:** `resources/sections/feature-bento/index.tsx` and its Gold resource browser-state regression.
+- **Remediation:** render only supplied cards and use balanced one-, two-, three-, or four-item grid layouts.
+- **Verification:** the Sites Worker browser test failed before the fix with four headings for three items. After the fix it checks three nonempty cards, no overflow, and clean browser diagnostics at 390 × 844 and 1440 × 900. Local verification passes; deployed review verification remains open.
+- **Fix commit:** `993714e9`.
+
+### AUD-114 — Returns request disable message was replaced by a generic backend tooltip
+
+- **Evidence:** the ECOM-06 Return Request screen shows the disabled Submit return request action and service-connection helper copy in [the after capture](evidence/step-14/manual-review/after/ecom-06-return-request-direction-03-desktop.png). The [pre-fix reproduction record](evidence/step-14/manual-review/before/aud-114-disabled-tooltip-reproduction.md) records the observed generic backend title and notes that the first tooltip hover was not preserved as a screenshot. Desktop and mobile after captures show the disabled action. Viewport-specific runtime reports record the corrected title.
+- **Reproduction:** open /compose, compose ECOM-06, select Return Request in a direction preview, and inspect the disabled submit button title.
+- **Root cause:** the shared disabled-action fallback overwrote the specific returns-service explanation assigned by the content binder.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`, its composition benchmark, and the visible Compose browser regression.
+- **Remediation:** preserve the returns-specific disabled title and assert it in both the manifest benchmark and real Compose UI test. Both local regressions pass; deployed verification remains open.
+- **Fix commit:** `77cbad5f`.
+
+### AUD-115 — Returns request screen duplicated the primary navigation
+
+- **Evidence:** the before capture at [Direction C, Return Request](evidence/step-14/manual-review/before/ecom-06-return-request-duplicate-navigation-before.png) shows Order Lookup, Refund Status, and Return Request repeated in the sidebar and a second top bar. The composition benchmark assertion failed before the planner fix because the screen contained a `settings-nav` node.
+- **Reproduction:** open /compose, compose ECOM-06, inspect Direction C, and select Return Request.
+- **Root cause:** the settings-screen grammar adds `settings-nav`; the generic resource mapping rendered another full product navigation inside the global sidebar shell.
+- **Affected code:** `packages/composer/src/planner.ts` and the semantic and browser regressions for ECOM-06.
+- **Remediation:** omit the settings sub-navigation for an explicit returns request form. The semantic regression failed before the planner fix and passes after it. The rebuilt visible browser test confirms a single rendered nav and captures the corrected screen; deployed verification remains open.
+
+- **Fix commit:** `77cbad5f`.
 
 ## LOW
 

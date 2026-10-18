@@ -619,9 +619,7 @@
       "expected": "Event metadata and action copy should wrap within the preview without horizontal scrolling.",
       "actual": "Long event actions and agent names exceeded the 360px preview width.",
       "rootCause": "The event row reserved a single non-wrapping horizontal line for timestamp, agent badge and action text.",
-      "affectedFiles": [
-        "resources/ai/ai-agent-activity-feed/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/ai-agent-activity-feed/index.tsx"],
       "remediation": "Allow row metadata to wrap and give the action copy a full-width row at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-agent-activity-feed-360.png",
       "screenshotBefore": null,
@@ -641,9 +639,7 @@
       "expected": "The hero heading, prompt input, engine label and preset chips should fit and wrap within the preview.",
       "actual": "The preview document was 306px wide inside a 292px viewport at 360px; at 1280px and 1440px outer widths the inner preview also exceeded its 237px viewport.",
       "rootCause": "The centered flex content used intrinsic-width children and fixed horizontal padding; chips and the engine row could not shrink or wrap within the iframe.",
-      "affectedFiles": [
-        "resources/sections/ai-prompt-hero/index.tsx"
-      ],
+      "affectedFiles": ["resources/sections/ai-prompt-hero/index.tsx"],
       "remediation": "Make the content column full-width and min-width-safe, wrap long heading and helper text, and allow prompt controls and preset chips to wrap.",
       "screenshot": "audit/evidence/step-06/before/wide-matrix/ai-prompt-hero-360-overflow.png",
       "afterScreenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-360.png",
@@ -662,9 +658,7 @@
       "expected": "Citation title, file path, and quote should wrap inside each source card.",
       "actual": "The source title/path row exceeded the 360px preview width.",
       "rootCause": "A fixed justify-between row kept the citation title and long path on one line.",
-      "affectedFiles": [
-        "resources/ai/ai-source-citations/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/ai-source-citations/index.tsx"],
       "remediation": "Allow the title and path to wrap, break long paths, and keep only the verification status unshrunk.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-source-citations-360.png",
       "screenshotBefore": null,
@@ -684,9 +678,7 @@
       "expected": "Breadcrumbs and actions should wrap into readable rows within the viewport.",
       "actual": "The breadcrumb trail and action controls occupied one fixed row and extended past the preview.",
       "rootCause": "The header used a fixed-height, single-line flex layout with fixed horizontal padding.",
-      "affectedFiles": [
-        "resources/shells/breadcrumb-header/index.tsx"
-      ],
+      "affectedFiles": ["resources/shells/breadcrumb-header/index.tsx"],
       "remediation": "Use a minimum height, compact padding and wrapping layout for both breadcrumb items and action controls.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-breadcrumb-header-360.png",
       "screenshotBefore": null,
@@ -706,9 +698,7 @@
       "expected": "The number, unit and delta should wrap without clipping or horizontal scrolling.",
       "actual": "The large counter value, unit and delta were forced into one row at 360px.",
       "rootCause": "A non-wrapping baseline flex row combined the large numeric display with the unit and delta label.",
-      "affectedFiles": [
-        "resources/typography/counter-typography/index.tsx"
-      ],
+      "affectedFiles": ["resources/typography/counter-typography/index.tsx"],
       "remediation": "Allow the value and unit row to wrap and place the delta on its own line at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-counter-typography-360.png",
       "screenshotBefore": null,
@@ -728,9 +718,7 @@
       "expected": "The dialog and launcher should remain inside the preview width.",
       "actual": "The fixed-width assistant panel extended beyond the preview at 360px.",
       "rootCause": "An inline-flex wrapper and fixed 20rem dialog retained desktop intrinsic width inside a narrow preview.",
-      "affectedFiles": [
-        "resources/ai/floating-ai-assistant/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/floating-ai-assistant/index.tsx"],
       "remediation": "Use a full-width wrapper capped at the existing 20rem maximum and let the dialog inherit the available width.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-floating-ai-assistant-360.png",
       "screenshotBefore": null,
@@ -750,9 +738,7 @@
       "expected": "Rewrite tones and acceptance actions should wrap within the preview.",
       "actual": "The tone and action controls remained on a single row and overflowed the 360px preview.",
       "rootCause": "The toolbar grouped keyboard hint, tone buttons and actions in non-wrapping flex rows.",
-      "affectedFiles": [
-        "resources/ai/inline-ai-rewrite/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/inline-ai-rewrite/index.tsx"],
       "remediation": "Allow the header and tone/action groups to wrap and permit the keyboard hint to occupy its own compact row.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-inline-ai-rewrite-360.png",
       "screenshotBefore": null,
@@ -772,9 +758,7 @@
       "expected": "Filter chips should wrap into multiple rows at compact widths.",
       "actual": "The category filter controls rendered as one unbreakable row wider than the preview.",
       "rootCause": "The filter container used a centered flex row without wrapping.",
-      "affectedFiles": [
-        "resources/sections/integration-directory-preview/index.tsx"
-      ],
+      "affectedFiles": ["resources/sections/integration-directory-preview/index.tsx"],
       "remediation": "Enable wrapping for the category chips while preserving centered alignment.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-integration-directory-preview-360.png",
       "screenshotBefore": null,
@@ -794,9 +778,7 @@
       "expected": "Density, mode and status controls should wrap within the demo card.",
       "actual": "The demo controls and preview status were constrained to desktop-width rows.",
       "rootCause": "The density and mode control groups and status row used non-wrapping flex layouts.",
-      "affectedFiles": [
-        "resources/sections/interactive-demo-hero/index.tsx"
-      ],
+      "affectedFiles": ["resources/sections/interactive-demo-hero/index.tsx"],
       "remediation": "Allow each control group and the preview status row to wrap at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-interactive-demo-hero-360.png",
       "screenshotBefore": null,
@@ -816,9 +798,7 @@
       "expected": "Brand, menu links and launch control should reflow within the viewport.",
       "actual": "A fixed-height single-row navigation and dropdown padding exceeded the preview width.",
       "rootCause": "The navigation forced all controls into one line and used desktop-only menu spacing.",
-      "affectedFiles": [
-        "resources/shells/mega-nav/index.tsx"
-      ],
+      "affectedFiles": ["resources/shells/mega-nav/index.tsx"],
       "remediation": "Allow the navigation and menu grid to wrap, reduce compact padding, and use a minimum rather than fixed height.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-mega-nav-360.png",
       "screenshotBefore": null,
@@ -838,9 +818,7 @@
       "expected": "Series controls and chart content should wrap and scale inside the preview.",
       "actual": "The legend controls stayed on a single row and widened the preview document.",
       "rootCause": "Legend buttons were held in a fixed horizontal flex row next to the chart heading.",
-      "affectedFiles": [
-        "resources/data/multi-series-line-chart/index.tsx"
-      ],
+      "affectedFiles": ["resources/data/multi-series-line-chart/index.tsx"],
       "remediation": "Allow legend buttons to wrap and cap the legend container to the available width.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-multi-series-line-chart-360.png",
       "screenshotBefore": null,
@@ -1431,9 +1409,7 @@
       "screenshot": "audit/evidence/step-06/after/a11y-gold/ai-research-answer-quiet-1440.png",
       "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/ai-research-answer-quiet-1440.png",
       "rootCause": "The green confidence color was chosen without validating contrast on the pale green badge.",
-      "affectedFiles": [
-        "resources/ai/ai-research-answer/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/ai-research-answer/index.tsx"],
       "remediation": "Use a darker green for light variants and a lighter green for Nocturne. The 120-variant Axe matrix now passes.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
       "status": "fixed-awaiting-deployed-verification"
@@ -1457,9 +1433,7 @@
       "screenshot": "audit/evidence/step-06/after/a11y-gold/feature-matrix-quiet-1440.png",
       "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/feature-matrix-quiet-1440.png",
       "rootCause": "The matrix reused emerald-600 text color that was too light for normal-size text.",
-      "affectedFiles": [
-        "resources/sections/feature-matrix/index.tsx"
-      ],
+      "affectedFiles": ["resources/sections/feature-matrix/index.tsx"],
       "remediation": "Use emerald-800 on light surfaces and emerald-300 on Nocturne. The 120-variant Axe matrix now passes.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
       "status": "fixed-awaiting-deployed-verification"
@@ -1483,9 +1457,7 @@
       "screenshot": "audit/evidence/step-06/after/a11y-gold/error-state-expressive-1440.png",
       "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/error-state-expressive-1440.png",
       "rootCause": "The heading used red-600 on a lightly tinted red surface.",
-      "affectedFiles": [
-        "resources/states/error-state/index.tsx"
-      ],
+      "affectedFiles": ["resources/states/error-state/index.tsx"],
       "remediation": "Use red-700 on light variants while retaining red-400 on Nocturne. The 120-variant Axe matrix now passes.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
       "status": "fixed-awaiting-deployed-verification"
@@ -1509,9 +1481,7 @@
       "screenshot": "audit/evidence/step-06/after/a11y-gold/pricing-three-tier-nocturne-1440.png",
       "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/pricing-three-tier-nocturne-1440.png",
       "rootCause": "The badge used emerald-600 for every surface, including its dark Nocturne background.",
-      "affectedFiles": [
-        "resources/sections/pricing-three-tier/index.tsx"
-      ],
+      "affectedFiles": ["resources/sections/pricing-three-tier/index.tsx"],
       "remediation": "Use emerald-800 on light surfaces and emerald-300 on Nocturne. The 120-variant Axe matrix now passes.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
       "status": "fixed-awaiting-deployed-verification"
@@ -1707,9 +1677,7 @@
       "network": [],
       "screenshot": "audit/evidence/step-07/before/manifest-prop-child-only.png",
       "screenshotAfter": "audit/evidence/step-07/after/manifest-and-prop-children.png",
-      "additionalScreenshots": [
-        "audit/evidence/step-07/after/preview-modal-children.png"
-      ],
+      "additionalScreenshots": ["audit/evidence/step-07/after/preview-modal-children.png"],
       "rootCause": "NodeRenderer used a nullish fallback from props.children to renderedChildren, making the two valid child sources mutually exclusive.",
       "affectedFiles": [
         "packages/renderer/src/node-renderer.tsx",
@@ -2772,9 +2740,7 @@
       "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
-        "tests": [
-          "tests/e2e/explore-search-hardening.spec.ts"
-        ],
+        "tests": ["tests/e2e/explore-search-hardening.spec.ts"],
         "verifiedAt": "2026-10-18T04:53:01.000Z",
         "fullUnitTests": "630 passed",
         "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
@@ -2816,10 +2782,7 @@
       "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
-        "tests": [
-          "tests/e2e/catalog-resource-render.spec.ts",
-          "tests/resource-demo-truth.test.ts"
-        ],
+        "tests": ["tests/e2e/catalog-resource-render.spec.ts", "tests/resource-demo-truth.test.ts"],
         "verifiedAt": "2026-10-18T04:53:01.000Z",
         "fullUnitTests": "630 passed",
         "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
@@ -2863,10 +2826,7 @@
       "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
-        "tests": [
-          "tests/e2e/catalog-resource-render.spec.ts",
-          "tests/resource-demo-truth.test.ts"
-        ],
+        "tests": ["tests/e2e/catalog-resource-render.spec.ts", "tests/resource-demo-truth.test.ts"],
         "verifiedAt": "2026-10-18T04:53:01.000Z",
         "fullUnitTests": "630 passed",
         "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
@@ -2913,10 +2873,7 @@
       "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
-        "tests": [
-          "tests/e2e/catalog-resource-render.spec.ts",
-          "tests/resource-demo-truth.test.ts"
-        ],
+        "tests": ["tests/e2e/catalog-resource-render.spec.ts", "tests/resource-demo-truth.test.ts"],
         "verifiedAt": "2026-10-18T04:53:01.000Z",
         "fullUnitTests": "630 passed",
         "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
@@ -3236,9 +3193,7 @@
       "network": [],
       "screenshot": "quality/evidence/composition-quality/before/community-intermediate-metrics-direction-01.png",
       "rootCause": "Generic workflow binding copied internal workflow step IDs directly into timeline descriptions.",
-      "affectedFiles": [
-        "packages/compatibility/src/content-bindings.ts"
-      ],
+      "affectedFiles": ["packages/compatibility/src/content-bindings.ts"],
       "remediation": "Bind community activity to explicitly labelled examples with natural-language titles and descriptions.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
       "status": "fixed-awaiting-deployed-verification",
@@ -3263,9 +3218,7 @@
       "network": [],
       "screenshot": "quality/evidence/composition-quality/before/community-intermediate-metrics-direction-01.png",
       "rootCause": "The generic content binder used the screen name as the activity-feed title even when the screen already had a matching overview header.",
-      "affectedFiles": [
-        "packages/compatibility/src/content-bindings.ts"
-      ],
+      "affectedFiles": ["packages/compatibility/src/content-bindings.ts"],
       "remediation": "Use the contextual heading Latest community updates for the community feed.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
       "status": "fixed-awaiting-deployed-verification",
@@ -3290,9 +3243,7 @@
       "network": [],
       "screenshot": "quality/evidence/composition-quality/before/composition-con-04-direction-03.png",
       "rootCause": "The shared multi-pane layout always assigned activity-feed to the second grid column, even when no data-table occupied the first column.",
-      "affectedFiles": [
-        "packages/renderer/src/layout-contract.ts"
-      ],
+      "affectedFiles": ["packages/renderer/src/layout-contract.ts"],
       "remediation": "Use a single-column workspace modifier when an activity feed has no data-table sibling; retain the two-pane layout for the flagship dashboard pair.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
       "status": "fixed-awaiting-deployed-verification",
@@ -3317,15 +3268,201 @@
       "network": [],
       "screenshot": "quality/evidence/directions/before/direction-01-team-overview.png",
       "rootCause": "The employee content binder inserted plausible-looking count and sentiment values that were not present in the brief or backed by data.",
-      "affectedFiles": [
-        "packages/compatibility/src/content-bindings.ts"
-      ],
+      "affectedFiles": ["packages/compatibility/src/content-bindings.ts"],
       "remediation": "Use only the 500-person count provided in the brief and mark the remaining values Example / Illustrative only.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
       "status": "fixed-awaiting-deployed-verification",
       "afterScreenshot": "quality/evidence/directions/current/direction-01-team-overview.png",
       "runtimeReport": "quality/evidence/directions/current/runtime.json"
+    },
+    {
+      "id": "AUD-111",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "state",
+      "title": "E-commerce conversion CTA used onboarding copy and a missing route",
+      "expected": "Storefront conversion actions should use commerce-specific wording and open a generated product screen that exists in the selected project.",
+      "actual": "Every e-commerce direction used “Continue onboarding” and linked to #screen-overview, which was absent from the generated screen graph.",
+      "reproduction": [
+        "Open /compose at 1440x900.",
+        "Compose benchmark brief ECOM-01.",
+        "Inspect the Storefront Catalog preview in Directions A, B, and C.",
+        "Activate the primary conversion CTA and inspect the selected screen."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/before/ecom-01-direction-01-before-desktop.png",
+      "rootCause": "The archetype content binder had no e-commerce CTA label or destination rule, so it fell through to a generic onboarding label and overview-screen fragment.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Bind e-commerce conversion copy to “View product details” and resolve the target against the generated Product Detail screen ID; cover route existence in the semantic benchmark and visible Compose UI test.",
+      "fixCommit": "77cbad5f",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "quality/evidence/step-14/manual-review/after/ecom-01-direction-01-desktop.png",
+      "runtimeReport": "quality/evidence/step-14/manual-review/after/ecom-cta-runtime-desktop.json",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/ecom-01-direction-01-desktop.png",
+        "quality/evidence/step-14/manual-review/after/ecom-01-direction-01-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/ecom-cta-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/ecom-cta-runtime-mobile.json"
+      ]
+    },
+    {
+      "id": "AUD-112",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Returns portal brief generated a storefront purchase flow",
+      "expected": "A returns portal should let customers find a previous order, request eligible returns, and follow refund status.",
+      "actual": "The generated ProductModel retained a generic shop objective and planned Storefront Catalog, Product Detail, Checkout, and Order Confirmation screens.",
+      "reproduction": [
+        "Open /compose at 1440x900.",
+        "Compose benchmark brief ECOM-06 without an archetype override.",
+        "Inspect Product Architecture and each direction’s visible screen selector."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/desktop/ecom-06-direction-01.png",
+      "rootCause": "The interpreter used the single generic ecommerce archetype for explicit returns-portal intent; it had no domain specialization, so the screen planner inherited a new-purchase funnel.",
+      "affectedFiles": [
+        "packages/composer/src/domain-context.ts",
+        "packages/composer/src/interpreter.ts",
+        "packages/compatibility/src/content-bindings.ts",
+        "quality/PRODUCT_INTERPRETATION_BENCHMARK.json",
+        "quality/COMPOSITION_QUALITY_BENCHMARK.json"
+      ],
+      "remediation": "Specialize explicit returns-portal briefs within the existing ecommerce archetype, with Order Lookup, Return Request, and Refund Status screens, return/refund workflows, accurate CTA copy, and a visible UI regression.",
+      "fixCommit": "77cbad5f",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "quality/evidence/step-14/manual-review/after/ecom-06-direction-03-desktop.png",
+      "runtimeReport": "quality/evidence/step-14/manual-review/after/ecom-06-runtime-desktop.json",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/ecom-06-direction-03-desktop.png",
+        "quality/evidence/step-14/manual-review/after/ecom-06-direction-03-mobile.png"
+      ],
+      "beforeScreenshots": [
+        "quality/evidence/step-14/manual-review/desktop/ecom-06-direction-01.png",
+        "quality/evidence/step-14/manual-review/mobile/ecom-06-direction-01.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/ecom-06-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/ecom-06-runtime-mobile.json"
+      ]
+    },
+    {
+      "id": "AUD-113",
+      "severity": "medium",
+      "route": "/resources/feature-bento/",
+      "viewport": "390x844, 1440x900",
+      "category": "visual",
+      "title": "Feature Bento rendered an empty card when composition supplied three items",
+      "expected": "A flexible feature section should render only supplied items and adapt its grid without an empty card.",
+      "actual": "The resource always rendered four cards; with three bound items the last card had no heading or description and showed only decorative dots.",
+      "reproduction": [
+        "Open an ecommerce storefront preview with three bound entities, or /resources/feature-bento/.",
+        "Set the Feature Bento items prop to three meaningful entries.",
+        "Inspect the fourth card at desktop or mobile width."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/before/feature-bento-three-items-order-lookup-desktop.png",
+      "rootCause": "FeatureBento treated its four-card visual fixture as a required fixed contract even though the public items prop accepts arbitrary array length and composition commonly supplies three entities.",
+      "affectedFiles": [
+        "resources/sections/feature-bento/index.tsx",
+        "tests/e2e/gold-resource-state-matrix.spec.ts"
+      ],
+      "remediation": "Render cards only when an item is present and choose a balanced grid for one, two, three, and four items; exercise a three-item state in the isolated Sites Worker preview.",
+      "fixCommit": "993714e9",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "audit/evidence/step-06/after/gold-state-matrix/feature-bento-three-items-390.png",
+      "runtimeReport": "audit/evidence/step-06/results/gold-state-matrix/feature-bento.json",
+      "afterScreenshots": [
+        "audit/evidence/step-06/after/gold-state-matrix/feature-bento-three-items-390.png",
+        "audit/evidence/step-06/after/gold-state-matrix/feature-bento-three-items-1440.png"
+      ]
+    },
+    {
+      "id": "AUD-114",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Returns request disable message was replaced by a generic backend tooltip",
+      "expected": "A disabled returns action should name the returns service the user must connect.",
+      "actual": "The button correctly remained disabled but its title said only to connect a generic backend.",
+      "reproduction": [
+        "Open /compose at 1440x900.",
+        "Compose the ECOM-06 returns portal brief and inspect Direction A, Return Request.",
+        "Inspect the disabled Submit return request button title."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/after/ecom-06-return-request-direction-03-desktop.png",
+      "rootCause": "A shared disabled-action fallback unconditionally overwrote the returns-specific title assigned by the content binder.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Preserve the returns-service explanation for the returns submit action and assert the exact disabled-state title in semantic and visible UI regressions.",
+      "fixCommit": "77cbad5f",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "quality/evidence/step-14/manual-review/after/ecom-06-return-request-direction-03-desktop.png",
+      "runtimeReport": "quality/evidence/step-14/manual-review/after/ecom-06-runtime-desktop.json",
+      "beforeEvidence": "quality/evidence/step-14/manual-review/before/aud-114-disabled-tooltip-reproduction.md",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/ecom-06-return-request-direction-03-desktop.png",
+        "quality/evidence/step-14/manual-review/after/ecom-06-return-request-direction-03-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/ecom-06-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/ecom-06-runtime-mobile.json"
+      ]
+    },
+    {
+      "id": "AUD-115",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "visual",
+      "title": "Returns request screen duplicated the primary navigation",
+      "expected": "A returns request screen should show the product navigation once and reserve its form area for the request.",
+      "actual": "Direction C rendered the same Order Lookup, Refund Status, and Return Request links in both the sidebar and a second top navigation.",
+      "reproduction": [
+        "Open /compose at 1440x900.",
+        "Compose ECOM-06 and inspect Direction C.",
+        "Select Return Request and compare the sidebar and content-area navigation."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/before/ecom-06-return-request-duplicate-navigation-before.png",
+      "rootCause": "The screen planner inherited the generic settings-nav role for the returns request form; its resource mapped to a product-level top navigation containing the same links as the enclosing sidebar.",
+      "affectedFiles": [
+        "packages/composer/src/planner.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Omit the settings sub-navigation role for explicit returns request screens while retaining the shell navigation; assert one rendered nav and the absence of the inappropriate role.",
+      "fixCommit": "77cbad5f",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "quality/evidence/step-14/manual-review/after/ecom-06-return-request-direction-03-desktop.png",
+      "runtimeReport": "quality/evidence/step-14/manual-review/after/ecom-06-runtime-desktop.json",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/ecom-06-return-request-direction-03-desktop.png",
+        "quality/evidence/step-14/manual-review/after/ecom-06-return-request-direction-03-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/ecom-06-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/ecom-06-runtime-mobile.json"
+      ]
     }
   ],
-  "generatedAt": "2026-10-18T11:45:05.000Z"
+  "generatedAt": "2026-10-18T13:09:07Z"
 }
