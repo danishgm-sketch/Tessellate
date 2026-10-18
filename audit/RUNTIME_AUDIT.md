@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 121 findings (26 High, 94 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080, AUD-100, and AUD-106 open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–121; these composition and data-truth findings are fixed locally and await deployed review verification. AUD-111 records the e-commerce CTA copy and nonexistent destination found across the 100-brief visible UI review; AUD-112 records a returns-portal brief that inherited a storefront purchase architecture. AUD-113 records an empty fourth Feature Bento card for three-item input; the isolated Sites Worker regression passes locally. AUD-114 records a returns-service explanation overwritten by a generic disabled-action tooltip; its semantic and visible browser regressions pass. AUD-115 records duplicate primary navigation on the returns request screen; its semantic and browser regressions pass. AUD-116–118 cover inbox semantics, internal labels, and a repeated heading in ordinary activity feeds. The next review found AUD-119: brokerage intent inherited retail banking workflows; AUD-120: KPI cards displayed “Example” as a value; and AUD-121: KPI statuses wrapped into narrow columns on mobile. The 100-brief interpretation and composition tests plus visible desktop/mobile regressions now pass for these cases. These changes await deployed review verification. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), which is tracked for Step 43. The desktop Explore Axe scan also found one moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100); it is tracked for the ordered accessibility/resource hardening work. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See `quality/STEP_08_EVIDENCE.md`, `quality/STEP_14_EVIDENCE.md`, and `evidence/catalog-search-v20/`.
+**Current disposition:** 132 findings (26 High, 105 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 12 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–132 in Compose/resource previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–132; the composition and data-truth findings are fixed locally, with issue-specific deployed review verification still pending. AUD-111 records the e-commerce CTA copy and nonexistent destination found across the 100-brief visible UI review; AUD-112 records a returns-portal brief that inherited a storefront purchase architecture. AUD-113 records an empty fourth Feature Bento card for three-item input; the isolated Sites Worker regression passes locally. AUD-114 records a returns-service explanation overwritten by a generic disabled-action tooltip; its semantic and visible browser regressions pass. AUD-115 records duplicate primary navigation on the returns request screen; its semantic and browser regressions pass. AUD-116–118 cover inbox semantics, internal labels, and a repeated heading in ordinary activity feeds. The next review found AUD-119: brokerage intent inherited retail banking workflows; AUD-120: KPI cards displayed “Example” as a value; and AUD-121: KPI statuses wrapped into narrow columns on mobile. AUD-122 records duplicate “Workspace” branding; AUD-123 repeated the page heading above its KPI cards; and AUD-124 put “Example” in activity timestamp positions. AUD-125–127 cover real-estate search rendered as marketing cards, onboarding copy in marketplace search, and duplicate travel hero copy. AUD-128 found static Filter Builder rules and an Add Condition action that inserted an unrelated canned row. AUD-129–130 found marketplace results from unrelated proposal/review entities and fabricated numeric progress values. AUD-131 found mobile data-table fields clipped outside the visible preview; AUD-132 showed unavailable values in the success color. These eight findings now have visible-browser regressions and desktop/mobile captures where applicable; focused Sites Worker checks report no console errors, uncaught exceptions, failed requests, or HTTP errors. The fixes await deployed review verification. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See `quality/STEP_08_EVIDENCE.md`, `quality/STEP_14_EVIDENCE.md`, and `evidence/catalog-search-v20/`.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -1205,6 +1205,153 @@ with zero findings. That harness race is not counted as a product defect.
   containers, and three in wide containers. The browser test verifies computed
   grid columns at 390 × 844 and 1440 × 900; deployed review verification remains
   open.
+
+### AUD-122 — Generic workspace branding repeated the word Workspace
+
+- **Evidence:** the desktop and mobile before screenshots at
+  `quality/evidence/step-14/manual-review/before/aud-122-workspace-brand-duplicate-desktop.png`
+  and `...-mobile.png` show “Workspace Workspace” with a “WW” avatar. The after
+  screenshots in `quality/evidence/step-14/manual-review/after/` show “Team
+  Workspace” and “TW”.
+- **Reproduction:** open `/compose` at 1440 × 900 or 390 × 844; enter the SAS-01
+  design-consultancy brief; compose; inspect Direction 01, Overview Dashboard.
+- **Root cause:** the shared content binder always appended “Workspace” to the
+  first inferred entity, including when that entity was already named Workspace.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts` and the
+  visible browser regression in `tests/e2e/composition-quality-smoke.spec.ts`.
+- **Remediation:** use “Team Workspace” for a generic Workspace entity, preserve
+  existing Workspace suffixes, and derive the two-letter avatar mark from the
+  final brand. The red browser assertion failed at both viewports before the fix;
+  the desktop/mobile browser run now passes with no captured browser/network
+  errors.
+- **Disposition:** fixed and locally verified; deployed review verification is
+  still required.
+
+### AUD-123 — SaaS overview repeated its page heading above KPI cards
+
+- **Evidence:** the before screenshots at
+  `quality/evidence/step-14/manual-review/before/aud-123-duplicate-kpi-heading-desktop.png`
+  and `...-mobile.png` show two exact “Overview Dashboard” headings. The after
+  screenshots at `quality/evidence/step-14/manual-review/after/` retain one page
+  heading and label the KPI section “Key metrics”.
+- **Reproduction:** open `/compose` at 1440 × 900 or 390 × 844; enter the SAS-01
+  design-consultancy brief; compose; inspect Direction 01, Overview Dashboard.
+- **Root cause:** generic metric-card titles fell back to `screen.name`, duplicating
+  the parent page heading.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`, the
+  100-brief composition benchmark, and the visible Compose browser regression.
+- **Remediation:** assign generic KPI sections the heading “Key metrics” while
+  retaining employee and returns-specific labels. The red browser assertion
+  observed two page headings at both viewport sizes before the fix; browser and
+  all-direction benchmark checks now pass locally.
+- **Disposition:** fixed and locally verified; deployed review verification is
+  still required.
+
+### AUD-124 — Timeline sample data used “Example” as a timestamp
+
+- **Evidence:** the desktop and mobile before captures for AUD-123 in
+  `quality/evidence/step-14/manual-review/before/` show the Recent activity feed
+  rendering “EXAMPLE” in the timestamp position beneath the sample event. The
+  same shared binding produced that label for multiple industries.
+- **Reproduction:** compose the SAS-01 consultancy workspace brief at 1440 × 900
+  or 390 × 844, open Direction 01's Overview Dashboard, and inspect Recent
+  activity. The prior 100-brief browser and composition data showed literal
+  `time: "Example"` values in activity feeds across 51 briefs.
+- **Root cause:** generic workflows and several domain-specific feed fixtures
+  placed the sample marker in the `time` field instead of a human-readable
+  relative label.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`, the
+  composition-quality benchmark, and the visible Compose regression.
+- **Remediation:** replace placeholder timestamp values with deterministic
+  relative labels such as Today, Yesterday, and Earlier this week. The benchmark
+  now rejects literal Example timestamps.
+- **Verification:** the 100-brief benchmark failed on 51 brief cases before the
+  fix and passes after it. The visible Compose regression passes at desktop and
+  mobile sizes; both screenshots and runtime reports show no console, uncaught,
+  failed-request, or HTTP errors.
+- **Disposition:** fixed and locally verified; deployed review verification is
+  still required.
+
+### AUD-125 — Real-estate property search rendered marketing feature cards
+
+- **Severity:** Medium.
+- **Evidence:** `quality/evidence/step-14/manual-review/before/aud-125-real-estate-search-grid-before-desktop.png` shows a screen titled “Search & Map Explorer” with generic feature cards and no map or property results. The after capture `quality/evidence/step-14/manual-review/after/rea-01-direction-01-desktop.png` shows a truthful Property Search screen and listing table.
+- **Reproduction:** Compose the REA-01 home-search brief, inspect Direction 01, and select the search screen.
+- **Root cause:** The screen plan promised an unimplemented map and the results-grid semantic role resolved to a marketing Feature Bento resource.
+- **Affected code:** `packages/composer/src/archetypes.ts`, `packages/compatibility/src/semantic-roles.ts`, `packages/compatibility/src/content-bindings.ts`, and composition benchmark/browser tests.
+- **Remediation:** Rename the screen Property Search and bind results-grid to the existing Gold data table with domain-specific, clearly unconnected property fields. Desktop/mobile checks cover all three directions.
+- **Disposition:** Fixed and verified in the local Sites Worker; public review deployment verification remains pending.
+
+### AUD-126 — Marketplace search header used onboarding copy
+
+- **Severity:** Medium.
+- **Evidence:** The before capture `quality/evidence/step-14/manual-review/before/aud-126-search-input-onboarding-copy-before-desktop.png` shows “Continue onboarding” on a marketplace search page. The after MKT-01 captures show a “Search listings” label and service-connection disclosure.
+- **Reproduction:** Compose the MKT-01 marketplace brief and inspect Explore Listings in each direction.
+- **Root cause:** The shared search-header binder reused employee onboarding defaults when no domain-specific copy was present.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts` and the composition benchmark/browser tests.
+- **Remediation:** Bind search label, placeholder, and help text to the detected marketplace, real-estate, education, and developer-tool context with a truthful generic fallback.
+- **Disposition:** Fixed and verified in the local Sites Worker at desktop/mobile; public review deployment verification remains pending.
+
+### AUD-127 — Travel hero repeated the objective in its subtitle
+
+- **Severity:** Medium.
+- **Evidence:** The before captures under `quality/evidence/step-14/manual-review/before/aud-127-travel-duplicate-objective-before-*` repeat the trip-planning objective in the hero. After captures `quality/evidence/step-14/manual-review/after/trv-01-direction-01-*` show concise audience-oriented supporting copy.
+- **Reproduction:** Compose the TRV-01 trip-planning brief and compare the Direction 01 hero headline and subtitle.
+- **Root cause:** Generic hero fallback copy restated the brief objective and appended a generic booking promise.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`, the composition benchmark, and visible browser tests.
+- **Remediation:** Use concise contextual copy that does not repeat the objective or imply an unimplemented booking service.
+- **Disposition:** Fixed and verified in the local Sites Worker at desktop/mobile; public review deployment verification remains pending.
+
+### AUD-128 — Filter Builder did not edit conditions
+
+- **Severity:** Medium.
+- **Evidence:** The before capture `audit/evidence/step-06/after/browser-captures/gold-40/filter-builder-1440.png` shows static example rules; Add Condition inserted a fixed unrelated category. After captures under `quality/evidence/step-14/manual-review/after/aud-128-filter-builder-editable-*` show an empty state and an editable field/operator/value row.
+- **Reproduction:** Open `/resources/filter-builder/`, add a condition, change its field, operator, and value, then remove it.
+- **Root cause:** The add action appended a canned fixture row; existing rules were static text rather than stateful controls.
+- **Affected code:** `resources/blocks/filter-builder/index.tsx`, its README, and `tests/e2e/preview-form-interactions.spec.ts`.
+- **Remediation:** Add blank editable rules, support editing and removal, and explain that example rules do not apply until a data source is connected.
+- **Verification:** The visible browser regression passes at 1440 and 390 widths, with screenshots and a runtime report showing no console, uncaught, failed-request, or HTTP errors.
+- **Disposition:** Fixed and verified in the local Sites Worker; public review deployment verification remains pending.
+
+### AUD-129 — Marketplace search showed unrelated proposal and review rows
+
+- **Severity:** Medium.
+- **Evidence:** The before marketplace captures at `quality/evidence/step-14/manual-review/verified/desktop/mkt-01-direction-01.png` and the corresponding mobile path show non-listing records. After `quality/evidence/step-14/manual-review/after/mkt-01-search-direction-01-desktop.png` shows listing-specific records.
+- **Reproduction:** Compose the MKT-01 marketplace brief and inspect the Explore Listings rows in Direction 01.
+- **Root cause:** The generic entity-table binding reused proposal/review entities on a listing-discovery screen.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`, the 100-brief quality benchmark, and the visible browser regression.
+- **Remediation:** Supply listing-specific sample records and reject proposal/review rows in marketplace search. The browser check covers all three directions at desktop/mobile sizes.
+- **Disposition:** Fixed and verified in the local Sites Worker; public review deployment verification remains pending.
+
+### AUD-130 — Entity rows implied fabricated numeric progress values
+
+- **Severity:** Medium.
+- **Evidence:** The same before MKT-01 capture shows `0/100` values for records with no numeric source. After screenshots label the values “Availability not connected”; related employee rows explicitly disclose that progress data is not connected.
+- **Reproduction:** Compose MKT-01 and inspect the Explore Listings table values and status column.
+- **Root cause:** The shared entity fallback formatted absent data as an arbitrary quality percentage, without regard to the record’s meaning.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`, the composition benchmark, and the visible browser regression.
+- **Remediation:** Provide domain-specific unavailable states and reject generated numeric scores when source data contains no measure.
+- **Disposition:** Fixed and verified in the local Sites Worker at desktop/mobile; public review deployment verification remains pending.
+
+### AUD-131 — Mobile data tables clipped important fields
+
+- **Severity:** Medium.
+- **Evidence:** The before MKT-01 mobile capture at `quality/evidence/step-14/manual-review/verified/mobile/mkt-01-direction-01.png` shows the table cropped at the viewport edge, hiding later fields. The after mobile capture shows full-width listing cards with the record and all fields stacked.
+- **Reproduction:** Compose MKT-01 at 390 × 844 and inspect Explore Listings without horizontal scrolling.
+- **Root cause:** `advanced-data-table` relied on an overflow-x scroll surface at all sizes and had no mobile record layout.
+- **Affected code:** `resources/blocks/advanced-data-table/index.tsx`, its README, and the composition browser regression.
+- **Remediation:** Preserve the keyboard-scrollable semantic table at wider widths and render each record as a labeled mobile card. The mobile browser check verifies all rows and no card overflow.
+- **Disposition:** Fixed and verified in the local Sites Worker at 390 × 844; public review deployment verification remains pending.
+
+### AUD-132 — Unavailable table values used the success color
+
+- **Severity:** Medium.
+- **Evidence:** The before MKT-01 capture shows “Availability not connected” in green. After desktop/mobile MKT-01 and REA-01 captures use neutral text for unavailable values. The browser regression asserts the neutral state class.
+- **Reproduction:** Compose MKT-01 or REA-01 and inspect the listing table value color at desktop and mobile widths.
+- **Root cause:** `advanced-data-table` applied the success green to every display value, including values explicitly marked unavailable.
+- **Affected code:** `resources/blocks/advanced-data-table/index.tsx` and the visible browser regression.
+- **Remediation:** Use neutral styling for not-connected/unavailable values while retaining success styling only for available values.
+- **Disposition:** Fixed and verified in the local Sites Worker at desktop/mobile; public review deployment verification remains pending.
 
 ## LOW
 

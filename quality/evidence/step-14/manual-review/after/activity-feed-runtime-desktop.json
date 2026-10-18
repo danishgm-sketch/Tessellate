@@ -1,5 +1,5 @@
 {
-  "url": "http://localhost:4321/compose",
+  "url": "http://127.0.0.1:4323/compose",
   "viewport": {
     "width": 1440,
     "height": 900
@@ -13,11 +13,14 @@
       "activityTitle": "Recent activity",
       "events": [
         {
-          "time": "Example",
+          "time": "Today",
           "title": "Invite and onboard team members",
           "desc": "Send invites → Assign roles → Configure workspace"
         }
       ],
+      "workspaceBrand": "Team Workspace",
+      "avatarInitials": "TW",
+      "metricSectionHeading": "Key metrics",
       "screenshot": "activity-feed-sas-01-direction-01-desktop.png"
     },
     {
@@ -27,11 +30,14 @@
       "activityTitle": "Recent activity",
       "events": [
         {
-          "time": "Example",
+          "time": "Today",
           "title": "Invite and onboard team members",
           "desc": "Send invites → Assign roles → Configure workspace"
         }
       ],
+      "workspaceBrand": "Team Workspace",
+      "avatarInitials": "TW",
+      "metricSectionHeading": "Key metrics",
       "screenshot": "activity-feed-sas-01-direction-02-desktop.png"
     },
     {
@@ -41,11 +47,14 @@
       "activityTitle": "Recent activity",
       "events": [
         {
-          "time": "Example",
+          "time": "Today",
           "title": "Invite and onboard team members",
           "desc": "Send invites → Assign roles → Configure workspace"
         }
       ],
+      "workspaceBrand": "Team Workspace",
+      "avatarInitials": "TW",
+      "metricSectionHeading": "Key metrics",
       "screenshot": "activity-feed-sas-01-direction-03-desktop.png"
     }
   ],

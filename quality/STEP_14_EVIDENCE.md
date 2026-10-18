@@ -21,16 +21,40 @@ captures and 20 contact sheets are under `quality/evidence/step-14/manual-review
 and `verified-contact-sheets/`. All desktop and mobile contact sheets were
 visually inspected. The previews had no unresolved-role diagnostics, horizontal
 overflow, console errors, uncaught exceptions, failed requests, or HTTP errors.
-The review found AUD-111 through AUD-121 below. Their source fixes and focused
-local regressions pass, while all eleven findings remain open until issue-specific
-deployed review verification. The latest FIN-05 screenshots exposed a fintech
+The review found AUD-111 through AUD-132 below. Their source fixes and focused
+local regressions pass. AUD-111–121 remain open until issue-specific deployed
+review verification; AUD-122–132 are verified locally and still await deployed
+verification. The follow-up timeline review found literal “Example” labels in
+activity timestamp positions across generated product domains (AUD-124); its
+benchmark failure was reproduced and fixed, and desktop/mobile visible-browser
+checks now pass with clean console and network reports. The latest FIN-05
+screenshots exposed a fintech
 trading brief that inherited banking workflows (AUD-119), generic “Example” KPI
 values (AUD-120), and status copy crammed into two columns on mobile (AUD-121).
 The interpretation/composition benchmarks and visible Compose tests now check
 market-specific screens, truthful unavailable-data values, and actual responsive
-grid columns. Manual output adjudication, tablet review, and clean-build
-verification of benchmark exports remain open. This checkpoint does not claim
-public review-site verification.
+grid columns. The follow-up SaaS visual review found repeated generic workspace
+branding (AUD-122) and a duplicated page/KPI heading (AUD-123); both now have
+red-to-green visible-browser regressions and desktop/mobile before/after captures.
+The preview review then found placeholder timeline timestamps across the benchmark
+set (AUD-124); the benchmark and visible desktop/mobile browser regression now
+pass, with before/after captures recorded.
+The next content review found AUD-125–127: a real-estate search screen rendered
+generic marketing cards under a false map title, marketplace search inherited
+onboarding copy, and a travel hero repeated its objective. AUD-128 exposed a
+Filter Builder whose apparent controls were static and inserted a canned rule.
+AUD-129–130 found unrelated proposal/review search rows and fabricated numeric
+progress values. Mobile screenshots then exposed AUD-131–132: important table
+fields were clipped offscreen, and unavailable values used the success color.
+The screen planner/content bindings, editable filter state, and shared table
+renderer now address those root causes. Visible Sites Worker regressions cover
+all three directions at desktop/mobile widths and the Filter Builder add/edit/
+remove flow; before/after screenshots and clean console/network reports are
+recorded. These local checks do not close the findings until a deployed review
+version is audited.
+Manual output adjudication, tablet review, and clean-build verification of
+benchmark exports remain open. This checkpoint does not claim public review-site
+verification.
 
 The local fixes for AUD-101–105 and AUD-107–110 are in commit
 `8686e0b9d7e7aca869a7677113492ded53af27b6`. The runtime audit records this SHA
@@ -261,6 +285,63 @@ The before image shows the empty fourth card at
 The focused Sites Worker regression asserts three non-empty cards and clean
 browser diagnostics at both widths.
 
+### AUD-122 — Generic workspace branding repeated the word Workspace (medium)
+
+- **Evidence:** the desktop and mobile before captures in
+  `quality/evidence/step-14/manual-review/before/aud-122-workspace-brand-duplicate-*`
+  show “Workspace Workspace” with a “WW” avatar. The after captures replace them
+  with “Team Workspace” and “TW”.
+- **Reproduction:** compose benchmark brief SAS-01 and open Direction 01's Overview
+  Dashboard at 1440 × 900 or 390 × 844.
+- **Root cause:** the shared content binder appended “Workspace” to the first
+  inferred entity even when that entity was already named Workspace.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts` and the
+  visible browser regression in `tests/e2e/composition-quality-smoke.spec.ts`.
+- **Remediation:** use “Team Workspace” for a generic Workspace entity, preserve
+  existing Workspace suffixes, and derive initials from the final brand.
+- **Verification:** the visible assertion failed at desktop and mobile before the
+  fix; both browser runs pass and the after screenshots were visually inspected.
+  Local runtime reports record zero browser/network errors. Deployed verification
+  remains open.
+
+### AUD-123 — SaaS overview repeated its page heading above KPI cards (medium)
+
+- **Evidence:** the before captures at
+  `quality/evidence/step-14/manual-review/before/aud-123-duplicate-kpi-heading-*`
+  show two exact “Overview Dashboard” headings. The after captures retain one
+  page heading and label the metric section “Key metrics”.
+- **Reproduction:** compose benchmark brief SAS-01 and open Direction 01's Overview
+  Dashboard at 1440 × 900 or 390 × 844.
+- **Root cause:** generic metric-card sections fell back to `screen.name`, repeating
+  the parent page heading.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`, the
+  composition benchmark, and the visible Compose browser regression.
+- **Remediation:** assign generic metric-card roles a “Key metrics” heading while
+  retaining employee and returns-specific labels.
+- **Verification:** the visible browser assertion found two page headings at both
+  viewport sizes before the fix. The 300-direction composition benchmark and the
+  desktop/mobile browser journey now pass. Deployed verification remains open.
+
+### AUD-124 — Timeline sample data used “Example” as a timestamp (medium)
+
+- **Evidence:** the desktop and mobile before captures in
+  `quality/evidence/step-14/manual-review/before/` show the activity feed's
+  timestamp label rendered as “EXAMPLE”. The composition benchmark found the
+  placeholder in activity feeds across 51 brief cases.
+- **Reproduction:** compose the SAS-01 consultancy workspace brief at 1440 × 900
+  or 390 × 844, open Direction 01's Overview Dashboard, and inspect Recent
+  activity.
+- **Root cause:** the shared content binder used the sample marker as the
+  timeline's time value for generic and several domain-specific feed examples.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`, the
+  composition-quality benchmark, and the visible Compose browser regression.
+- **Remediation:** use deterministic relative labels such as Today, Yesterday,
+  and Earlier this week; keep sample provenance in the existing example banner.
+- **Verification:** the new 100-brief benchmark failed before the fix (51 failing
+  brief cases) and passes after it. Desktop and mobile visible-browser assertions
+  pass; after captures and runtime reports show zero browser/network errors.
+  Deployed review verification remains open.
+
 ## Browser evidence
 
 The Playwright journey uses the visible `/compose` UI and captures every full
@@ -309,9 +390,12 @@ and HTTP errors.
 - `pnpm lint` — zero errors; 51 existing warnings.
 - `pnpm audit:all` — all 16 release gates passed; the production build emitted
   717 pages and bundle budget, provenance, licence, and security audits passed.
-- `pnpm test:e2e` — public desktop/mobile suite 117 passed and 59 explicitly skipped;
-  Sites Worker suite 28 passed, including all 324 resources at certified widths;
-  standalone preview suite 3 passed.
+- Playwright public desktop/mobile suite — 119 passed and 61 explicitly skipped.
+  The Sites Worker suite passed after the first run exposed a stale test selector
+  following the mobile-card change; its corrected state test now checks the actual
+  mobile layout. The full Worker suite passed 45 tests, with 27 explicitly skipped,
+  including all 324 resources at certified widths. The standalone preview suite
+  passed all 3 tests.
 - The same E2E run passed the Compose activity/trading regressions at 1440 × 900
   and 390 × 844, including the truthful missing-data metric state and computed
   one/three-column KPI layout. Runtime reports record zero console errors,

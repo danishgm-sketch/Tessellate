@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records one moderate desktop Axe heading-order issue in the AI Chat Panel isolated resource preview for the ordered accessibility/resource hardening step. Step 14's 100-brief visible composition review added AUD-116–121 for activity-feed semantics, trading-domain interpretation, metric truthfulness, and mobile card layout; local red/green regressions and desktop/mobile browser captures are recorded, with deployed review verification still pending.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records one moderate desktop Axe heading-order issue in the AI Chat Panel isolated resource preview for the ordered accessibility/resource hardening step. Step 14's 100-brief visible composition review added AUD-116–124 for activity-feed semantics, trading-domain interpretation, truthful example content, repeated branding and headings, placeholder timeline timestamps, and mobile layout; local red/green regressions and desktop/mobile browser captures are recorded, with deployed review verification still pending.",
   "entries": [
     {
       "id": "AUD-001",
@@ -619,7 +619,9 @@
       "expected": "Event metadata and action copy should wrap within the preview without horizontal scrolling.",
       "actual": "Long event actions and agent names exceeded the 360px preview width.",
       "rootCause": "The event row reserved a single non-wrapping horizontal line for timestamp, agent badge and action text.",
-      "affectedFiles": ["resources/ai/ai-agent-activity-feed/index.tsx"],
+      "affectedFiles": [
+        "resources/ai/ai-agent-activity-feed/index.tsx"
+      ],
       "remediation": "Allow row metadata to wrap and give the action copy a full-width row at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-agent-activity-feed-360.png",
       "screenshotBefore": null,
@@ -639,7 +641,9 @@
       "expected": "The hero heading, prompt input, engine label and preset chips should fit and wrap within the preview.",
       "actual": "The preview document was 306px wide inside a 292px viewport at 360px; at 1280px and 1440px outer widths the inner preview also exceeded its 237px viewport.",
       "rootCause": "The centered flex content used intrinsic-width children and fixed horizontal padding; chips and the engine row could not shrink or wrap within the iframe.",
-      "affectedFiles": ["resources/sections/ai-prompt-hero/index.tsx"],
+      "affectedFiles": [
+        "resources/sections/ai-prompt-hero/index.tsx"
+      ],
       "remediation": "Make the content column full-width and min-width-safe, wrap long heading and helper text, and allow prompt controls and preset chips to wrap.",
       "screenshot": "audit/evidence/step-06/before/wide-matrix/ai-prompt-hero-360-overflow.png",
       "afterScreenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-360.png",
@@ -658,7 +662,9 @@
       "expected": "Citation title, file path, and quote should wrap inside each source card.",
       "actual": "The source title/path row exceeded the 360px preview width.",
       "rootCause": "A fixed justify-between row kept the citation title and long path on one line.",
-      "affectedFiles": ["resources/ai/ai-source-citations/index.tsx"],
+      "affectedFiles": [
+        "resources/ai/ai-source-citations/index.tsx"
+      ],
       "remediation": "Allow the title and path to wrap, break long paths, and keep only the verification status unshrunk.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-source-citations-360.png",
       "screenshotBefore": null,
@@ -678,7 +684,9 @@
       "expected": "Breadcrumbs and actions should wrap into readable rows within the viewport.",
       "actual": "The breadcrumb trail and action controls occupied one fixed row and extended past the preview.",
       "rootCause": "The header used a fixed-height, single-line flex layout with fixed horizontal padding.",
-      "affectedFiles": ["resources/shells/breadcrumb-header/index.tsx"],
+      "affectedFiles": [
+        "resources/shells/breadcrumb-header/index.tsx"
+      ],
       "remediation": "Use a minimum height, compact padding and wrapping layout for both breadcrumb items and action controls.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-breadcrumb-header-360.png",
       "screenshotBefore": null,
@@ -698,7 +706,9 @@
       "expected": "The number, unit and delta should wrap without clipping or horizontal scrolling.",
       "actual": "The large counter value, unit and delta were forced into one row at 360px.",
       "rootCause": "A non-wrapping baseline flex row combined the large numeric display with the unit and delta label.",
-      "affectedFiles": ["resources/typography/counter-typography/index.tsx"],
+      "affectedFiles": [
+        "resources/typography/counter-typography/index.tsx"
+      ],
       "remediation": "Allow the value and unit row to wrap and place the delta on its own line at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-counter-typography-360.png",
       "screenshotBefore": null,
@@ -718,7 +728,9 @@
       "expected": "The dialog and launcher should remain inside the preview width.",
       "actual": "The fixed-width assistant panel extended beyond the preview at 360px.",
       "rootCause": "An inline-flex wrapper and fixed 20rem dialog retained desktop intrinsic width inside a narrow preview.",
-      "affectedFiles": ["resources/ai/floating-ai-assistant/index.tsx"],
+      "affectedFiles": [
+        "resources/ai/floating-ai-assistant/index.tsx"
+      ],
       "remediation": "Use a full-width wrapper capped at the existing 20rem maximum and let the dialog inherit the available width.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-floating-ai-assistant-360.png",
       "screenshotBefore": null,
@@ -738,7 +750,9 @@
       "expected": "Rewrite tones and acceptance actions should wrap within the preview.",
       "actual": "The tone and action controls remained on a single row and overflowed the 360px preview.",
       "rootCause": "The toolbar grouped keyboard hint, tone buttons and actions in non-wrapping flex rows.",
-      "affectedFiles": ["resources/ai/inline-ai-rewrite/index.tsx"],
+      "affectedFiles": [
+        "resources/ai/inline-ai-rewrite/index.tsx"
+      ],
       "remediation": "Allow the header and tone/action groups to wrap and permit the keyboard hint to occupy its own compact row.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-inline-ai-rewrite-360.png",
       "screenshotBefore": null,
@@ -758,7 +772,9 @@
       "expected": "Filter chips should wrap into multiple rows at compact widths.",
       "actual": "The category filter controls rendered as one unbreakable row wider than the preview.",
       "rootCause": "The filter container used a centered flex row without wrapping.",
-      "affectedFiles": ["resources/sections/integration-directory-preview/index.tsx"],
+      "affectedFiles": [
+        "resources/sections/integration-directory-preview/index.tsx"
+      ],
       "remediation": "Enable wrapping for the category chips while preserving centered alignment.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-integration-directory-preview-360.png",
       "screenshotBefore": null,
@@ -778,7 +794,9 @@
       "expected": "Density, mode and status controls should wrap within the demo card.",
       "actual": "The demo controls and preview status were constrained to desktop-width rows.",
       "rootCause": "The density and mode control groups and status row used non-wrapping flex layouts.",
-      "affectedFiles": ["resources/sections/interactive-demo-hero/index.tsx"],
+      "affectedFiles": [
+        "resources/sections/interactive-demo-hero/index.tsx"
+      ],
       "remediation": "Allow each control group and the preview status row to wrap at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-interactive-demo-hero-360.png",
       "screenshotBefore": null,
@@ -798,7 +816,9 @@
       "expected": "Brand, menu links and launch control should reflow within the viewport.",
       "actual": "A fixed-height single-row navigation and dropdown padding exceeded the preview width.",
       "rootCause": "The navigation forced all controls into one line and used desktop-only menu spacing.",
-      "affectedFiles": ["resources/shells/mega-nav/index.tsx"],
+      "affectedFiles": [
+        "resources/shells/mega-nav/index.tsx"
+      ],
       "remediation": "Allow the navigation and menu grid to wrap, reduce compact padding, and use a minimum rather than fixed height.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-mega-nav-360.png",
       "screenshotBefore": null,
@@ -818,7 +838,9 @@
       "expected": "Series controls and chart content should wrap and scale inside the preview.",
       "actual": "The legend controls stayed on a single row and widened the preview document.",
       "rootCause": "Legend buttons were held in a fixed horizontal flex row next to the chart heading.",
-      "affectedFiles": ["resources/data/multi-series-line-chart/index.tsx"],
+      "affectedFiles": [
+        "resources/data/multi-series-line-chart/index.tsx"
+      ],
       "remediation": "Allow legend buttons to wrap and cap the legend container to the available width.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-multi-series-line-chart-360.png",
       "screenshotBefore": null,
@@ -1409,7 +1431,9 @@
       "screenshot": "audit/evidence/step-06/after/a11y-gold/ai-research-answer-quiet-1440.png",
       "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/ai-research-answer-quiet-1440.png",
       "rootCause": "The green confidence color was chosen without validating contrast on the pale green badge.",
-      "affectedFiles": ["resources/ai/ai-research-answer/index.tsx"],
+      "affectedFiles": [
+        "resources/ai/ai-research-answer/index.tsx"
+      ],
       "remediation": "Use a darker green for light variants and a lighter green for Nocturne. The 120-variant Axe matrix now passes.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
       "status": "fixed-awaiting-deployed-verification"
@@ -1433,7 +1457,9 @@
       "screenshot": "audit/evidence/step-06/after/a11y-gold/feature-matrix-quiet-1440.png",
       "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/feature-matrix-quiet-1440.png",
       "rootCause": "The matrix reused emerald-600 text color that was too light for normal-size text.",
-      "affectedFiles": ["resources/sections/feature-matrix/index.tsx"],
+      "affectedFiles": [
+        "resources/sections/feature-matrix/index.tsx"
+      ],
       "remediation": "Use emerald-800 on light surfaces and emerald-300 on Nocturne. The 120-variant Axe matrix now passes.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
       "status": "fixed-awaiting-deployed-verification"
@@ -1457,7 +1483,9 @@
       "screenshot": "audit/evidence/step-06/after/a11y-gold/error-state-expressive-1440.png",
       "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/error-state-expressive-1440.png",
       "rootCause": "The heading used red-600 on a lightly tinted red surface.",
-      "affectedFiles": ["resources/states/error-state/index.tsx"],
+      "affectedFiles": [
+        "resources/states/error-state/index.tsx"
+      ],
       "remediation": "Use red-700 on light variants while retaining red-400 on Nocturne. The 120-variant Axe matrix now passes.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
       "status": "fixed-awaiting-deployed-verification"
@@ -1481,7 +1509,9 @@
       "screenshot": "audit/evidence/step-06/after/a11y-gold/pricing-three-tier-nocturne-1440.png",
       "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/pricing-three-tier-nocturne-1440.png",
       "rootCause": "The badge used emerald-600 for every surface, including its dark Nocturne background.",
-      "affectedFiles": ["resources/sections/pricing-three-tier/index.tsx"],
+      "affectedFiles": [
+        "resources/sections/pricing-three-tier/index.tsx"
+      ],
       "remediation": "Use emerald-800 on light surfaces and emerald-300 on Nocturne. The 120-variant Axe matrix now passes.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
       "status": "fixed-awaiting-deployed-verification"
@@ -1677,7 +1707,9 @@
       "network": [],
       "screenshot": "audit/evidence/step-07/before/manifest-prop-child-only.png",
       "screenshotAfter": "audit/evidence/step-07/after/manifest-and-prop-children.png",
-      "additionalScreenshots": ["audit/evidence/step-07/after/preview-modal-children.png"],
+      "additionalScreenshots": [
+        "audit/evidence/step-07/after/preview-modal-children.png"
+      ],
       "rootCause": "NodeRenderer used a nullish fallback from props.children to renderedChildren, making the two valid child sources mutually exclusive.",
       "affectedFiles": [
         "packages/renderer/src/node-renderer.tsx",
@@ -2740,7 +2772,9 @@
       "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
-        "tests": ["tests/e2e/explore-search-hardening.spec.ts"],
+        "tests": [
+          "tests/e2e/explore-search-hardening.spec.ts"
+        ],
         "verifiedAt": "2026-10-18T04:53:01.000Z",
         "fullUnitTests": "630 passed",
         "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
@@ -2782,7 +2816,10 @@
       "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
-        "tests": ["tests/e2e/catalog-resource-render.spec.ts", "tests/resource-demo-truth.test.ts"],
+        "tests": [
+          "tests/e2e/catalog-resource-render.spec.ts",
+          "tests/resource-demo-truth.test.ts"
+        ],
         "verifiedAt": "2026-10-18T04:53:01.000Z",
         "fullUnitTests": "630 passed",
         "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
@@ -2826,7 +2863,10 @@
       "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
-        "tests": ["tests/e2e/catalog-resource-render.spec.ts", "tests/resource-demo-truth.test.ts"],
+        "tests": [
+          "tests/e2e/catalog-resource-render.spec.ts",
+          "tests/resource-demo-truth.test.ts"
+        ],
         "verifiedAt": "2026-10-18T04:53:01.000Z",
         "fullUnitTests": "630 passed",
         "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
@@ -2873,7 +2913,10 @@
       "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
-        "tests": ["tests/e2e/catalog-resource-render.spec.ts", "tests/resource-demo-truth.test.ts"],
+        "tests": [
+          "tests/e2e/catalog-resource-render.spec.ts",
+          "tests/resource-demo-truth.test.ts"
+        ],
         "verifiedAt": "2026-10-18T04:53:01.000Z",
         "fullUnitTests": "630 passed",
         "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
@@ -3194,7 +3237,9 @@
       "network": [],
       "screenshot": "quality/evidence/composition-quality/before/community-intermediate-metrics-direction-01.png",
       "rootCause": "Generic workflow binding copied internal workflow step IDs directly into timeline descriptions.",
-      "affectedFiles": ["packages/compatibility/src/content-bindings.ts"],
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts"
+      ],
       "remediation": "Bind community activity to explicitly labelled examples with natural-language titles and descriptions.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
       "status": "fixed-awaiting-deployed-verification",
@@ -3219,7 +3264,9 @@
       "network": [],
       "screenshot": "quality/evidence/composition-quality/before/community-intermediate-metrics-direction-01.png",
       "rootCause": "The generic content binder used the screen name as the activity-feed title even when the screen already had a matching overview header.",
-      "affectedFiles": ["packages/compatibility/src/content-bindings.ts"],
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts"
+      ],
       "remediation": "Use the contextual heading Latest community updates for the community feed.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
       "status": "fixed-awaiting-deployed-verification",
@@ -3244,7 +3291,9 @@
       "network": [],
       "screenshot": "quality/evidence/composition-quality/before/composition-con-04-direction-03.png",
       "rootCause": "The shared multi-pane layout always assigned activity-feed to the second grid column, even when no data-table occupied the first column.",
-      "affectedFiles": ["packages/renderer/src/layout-contract.ts"],
+      "affectedFiles": [
+        "packages/renderer/src/layout-contract.ts"
+      ],
       "remediation": "Use a single-column workspace modifier when an activity feed has no data-table sibling; retain the two-pane layout for the flagship dashboard pair.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
       "status": "fixed-awaiting-deployed-verification",
@@ -3269,7 +3318,9 @@
       "network": [],
       "screenshot": "quality/evidence/directions/before/direction-01-team-overview.png",
       "rootCause": "The employee content binder inserted plausible-looking count and sentiment values that were not present in the brief or backed by data.",
-      "affectedFiles": ["packages/compatibility/src/content-bindings.ts"],
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts"
+      ],
       "remediation": "Use only the 500-person count provided in the brief and mark the remaining values Example / Illustrative only.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
       "status": "fixed-awaiting-deployed-verification",
@@ -3688,7 +3739,379 @@
       "runtimeReports": [
         "quality/evidence/step-14/manual-review/after/fintech-trading-runtime-mobile.json"
       ]
+    },
+    {
+      "id": "AUD-122",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Generic workspace branding repeated the word Workspace",
+      "expected": "A generated workspace shell should show one coherent brand label and initials that correspond to it.",
+      "actual": "The SaaS preview labelled its navigation Workspace Workspace and used WW as its avatar mark.",
+      "reproduction": [
+        "Open /compose at desktop or mobile size and enter the SAS-01 consultancy workspace brief.",
+        "Compose, open Direction 01, select Overview Dashboard, and inspect the navigation brand and avatar."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/before/aud-122-workspace-brand-duplicate-desktop.png",
+      "rootCause": "The content binder always appended Workspace to the first product entity, including when that entity was already named Workspace.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Use Team Workspace when the inferred entity is only Workspace, retain an existing Workspace suffix, and derive a two-letter avatar mark from the final brand. Red-to-green visible-browser checks cover desktop and mobile.",
+      "fixCommit": "7f7aa28c",
+      "status": "fixed-local-verified",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/aud-122-workspace-brand-fixed-desktop.png",
+        "quality/evidence/step-14/manual-review/after/aud-122-workspace-brand-fixed-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/activity-feed-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/activity-feed-runtime-mobile.json"
+      ]
+    },
+    {
+      "id": "AUD-123",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "SaaS overview repeated its page heading above the KPI cards",
+      "expected": "Each major section should have a contextual heading that does not duplicate the page heading.",
+      "actual": "The Overview Dashboard page header and KPI card section both rendered Overview Dashboard as headings.",
+      "reproduction": [
+        "Open /compose at desktop or mobile size and enter the SAS-01 consultancy workspace brief.",
+        "Compose, open Direction 01, select Overview Dashboard, and count the exact Overview Dashboard headings."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/before/aud-123-duplicate-kpi-heading-desktop.png",
+      "rootCause": "The content binder fell back to the screen name for metric-card section titles, repeating the page heading in the nested KPI grid.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Give generic metric-card roles a concise Key metrics heading while preserving employee and returns-specific headings. The 100-brief benchmark rejects metric section titles that repeat their screen heading; the visible browser test checks the rendered heading hierarchy on desktop and mobile.",
+      "fixCommit": "7f7aa28c",
+      "status": "fixed-local-verified",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/aud-123-kpi-heading-fixed-desktop.png",
+        "quality/evidence/step-14/manual-review/after/aud-123-kpi-heading-fixed-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/activity-feed-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/activity-feed-runtime-mobile.json"
+      ]
+    },
+    {
+      "id": "AUD-124",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Timeline preview shows the literal word Example where a timestamp should be",
+      "expected": "Generated sample activity should use readable relative time labels and remain clearly identified as sample content.",
+      "actual": "Activity feed events displayed Example in the timestamp position, including the SaaS overview preview.",
+      "reproduction": [
+        "Open /compose at desktop or mobile size and enter the SAS-01 consultancy workspace brief.",
+        "Compose, open Direction 01, select Overview Dashboard, and inspect the Recent activity timeline."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/before/aud-123-duplicate-kpi-heading-desktop.png",
+      "rootCause": "The shared content binder marked generic and domain-specific sample activity with the literal placeholder Example in the time field rendered as a timeline timestamp.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Use deterministic relative time labels for example activity and conversation events. The 100-brief composition benchmark rejects placeholder timestamps; visible desktop/mobile Compose assertions and screenshots verify the rendered timeline.",
+      "fixCommit": "7f7aa28c",
+      "status": "fixed-local-verified",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/aud-124-activity-timestamp-fixed-desktop.png",
+        "quality/evidence/step-14/manual-review/after/aud-124-activity-timestamp-fixed-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/activity-feed-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/activity-feed-runtime-mobile.json"
+      ]
+    },
+    {
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "console": [],
+      "network": [],
+      "fixCommit": "3549e452",
+      "status": "fixed-local-verified",
+      "id": "AUD-125",
+      "category": "content",
+      "title": "Real-estate search rendered marketing feature cards",
+      "expected": "Property search should show real search and listing structure and name a map only when one is present.",
+      "actual": "Search & Map Explorer rendered generic feature cards without a map or property results.",
+      "reproduction": [
+        "Compose the REA-01 home-search brief.",
+        "Inspect Direction 01 and open Search & Map Explorer."
+      ],
+      "screenshot": "quality/evidence/step-14/manual-review/before/aud-125-real-estate-search-grid-before-desktop.png",
+      "rootCause": "The archetype promised an unimplemented map and results-grid resolved to a marketing resource.",
+      "affectedFiles": [
+        "packages/composer/src/archetypes.ts",
+        "packages/compatibility/src/semantic-roles.ts",
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Rename the screen Property Search and bind results-grid to the existing Gold table with truthful property fields.",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/rea-01-direction-01-desktop.png",
+        "quality/evidence/step-14/manual-review/after/rea-01-direction-01-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/domain-content-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/domain-content-runtime-mobile.json"
+      ]
+    },
+    {
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "console": [],
+      "network": [],
+      "fixCommit": "3549e452",
+      "status": "fixed-local-verified",
+      "id": "AUD-126",
+      "category": "content",
+      "title": "Marketplace search used onboarding copy",
+      "expected": "Search copy should describe listing discovery and disclose its data connection state.",
+      "actual": "The search header displayed Continue onboarding and unrelated backend help.",
+      "reproduction": [
+        "Compose the MKT-01 marketplace brief.",
+        "Inspect Explore Listings in all three directions."
+      ],
+      "screenshot": "quality/evidence/step-14/manual-review/before/aud-126-search-input-onboarding-copy-before-desktop.png",
+      "rootCause": "The common search-header binder reused employee onboarding defaults when context copy was absent.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Use domain-specific labels, placeholders and connection help with a truthful generic fallback.",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/mkt-01-search-direction-01-desktop.png",
+        "quality/evidence/step-14/manual-review/after/mkt-01-search-direction-01-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/domain-content-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/domain-content-runtime-mobile.json"
+      ]
+    },
+    {
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "console": [],
+      "network": [],
+      "fixCommit": "3549e452",
+      "status": "fixed-local-verified",
+      "id": "AUD-127",
+      "category": "content",
+      "title": "Travel hero repeated its objective",
+      "expected": "The subtitle should add context without restating the travel objective or implying unsupported booking.",
+      "actual": "Headline and subtitle repeated generic trip-planning copy.",
+      "reproduction": [
+        "Compose the TRV-01 trip-planning brief.",
+        "Compare Direction 01 hero headline and subtitle."
+      ],
+      "screenshot": "quality/evidence/step-14/manual-review/before/aud-127-travel-duplicate-objective-before-desktop.png",
+      "rootCause": "Generic hero fallback restated the objective and added a generic booking promise.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Use concise audience-oriented supporting copy that does not repeat the objective.",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/trv-01-direction-01-desktop.png",
+        "quality/evidence/step-14/manual-review/after/trv-01-direction-01-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/domain-content-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/domain-content-runtime-mobile.json"
+      ]
+    },
+    {
+      "severity": "medium",
+      "route": "/resources/filter-builder/",
+      "viewport": "1440x900, 390x844",
+      "console": [],
+      "network": [],
+      "fixCommit": "28ef7fc0",
+      "status": "fixed-local-verified",
+      "id": "AUD-128",
+      "category": "state",
+      "title": "Filter Builder did not edit conditions",
+      "expected": "Add Condition should create editable field, operator and value controls.",
+      "actual": "Rules were static; Add Condition inserted an unrelated canned Category = primitives row.",
+      "reproduction": [
+        "Open /resources/filter-builder/.",
+        "Add a condition and try to edit or remove its parts."
+      ],
+      "screenshot": "audit/evidence/step-06/after/browser-captures/gold-40/filter-builder-1440.png",
+      "rootCause": "The add action inserted fixture text rather than managing condition state.",
+      "affectedFiles": [
+        "resources/blocks/filter-builder/index.tsx",
+        "resources/blocks/filter-builder/README.md",
+        "tests/e2e/preview-form-interactions.spec.ts"
+      ],
+      "remediation": "Create editable blank rows with update/remove actions and disclose that applying rules requires a connected data source.",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/aud-128-filter-builder-editable-desktop.png",
+        "quality/evidence/step-14/manual-review/after/aud-128-filter-builder-editable-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/aud-128-filter-builder-runtime.json"
+      ]
+    },
+    {
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "console": [],
+      "network": [],
+      "fixCommit": "3549e452",
+      "status": "fixed-local-verified",
+      "id": "AUD-129",
+      "category": "data",
+      "title": "Marketplace results contained unrelated proposal and review rows",
+      "expected": "Listing search rows should represent listings.",
+      "actual": "The results contained Proposal and Review records.",
+      "reproduction": [
+        "Compose the MKT-01 marketplace brief.",
+        "Inspect the Explore Listings rows in Direction 01."
+      ],
+      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/mkt-01-direction-01.png",
+      "rootCause": "Generic entity-table bindings reused proposal/review entities on a listing-discovery screen.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Use listing-specific sample records and reject proposal/review rows for marketplace search.",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/mkt-01-search-direction-01-desktop.png",
+        "quality/evidence/step-14/manual-review/after/mkt-01-search-direction-01-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/domain-content-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/domain-content-runtime-mobile.json"
+      ]
+    },
+    {
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "console": [],
+      "network": [],
+      "fixCommit": "3549e452",
+      "status": "fixed-local-verified",
+      "id": "AUD-130",
+      "category": "data",
+      "title": "Entity rows implied fabricated numeric progress",
+      "expected": "Without a source measure, table values should be explicitly unavailable rather than numeric.",
+      "actual": "Generic records displayed invented 0/100 progress values.",
+      "reproduction": [
+        "Compose the MKT-01 brief.",
+        "Inspect values and status in Explore Listings."
+      ],
+      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/mkt-01-direction-01.png",
+      "rootCause": "The shared entity fallback formatted absent data as an arbitrary quality percentage.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Use domain-specific unavailable states and reject numeric scores without source data.",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/mkt-01-search-direction-01-desktop.png",
+        "quality/evidence/step-14/manual-review/after/mkt-01-search-direction-01-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/domain-content-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/domain-content-runtime-mobile.json"
+      ]
+    },
+    {
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "390x844",
+      "console": [],
+      "network": [],
+      "fixCommit": "28ef7fc0",
+      "status": "fixed-local-verified",
+      "id": "AUD-131",
+      "category": "visual",
+      "title": "Mobile data table clipped important fields",
+      "expected": "Narrow previews should show each record and its fields without hidden horizontal scrolling.",
+      "actual": "Later listing columns were offscreen in the mobile preview.",
+      "reproduction": [
+        "Open /compose at 390x844.",
+        "Compose MKT-01 and inspect Explore Listings without horizontal scrolling."
+      ],
+      "screenshot": "quality/evidence/step-14/manual-review/verified/mobile/mkt-01-direction-01.png",
+      "rootCause": "The shared table used overflow-x at every viewport and had no narrow-screen record layout.",
+      "affectedFiles": [
+        "resources/blocks/advanced-data-table/index.tsx",
+        "resources/blocks/advanced-data-table/README.md",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Keep the keyboard-scrollable table on wide screens and render labeled record cards on mobile.",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/mkt-01-search-direction-01-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/domain-content-runtime-mobile.json"
+      ]
+    },
+    {
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "console": [],
+      "network": [],
+      "fixCommit": "28ef7fc0",
+      "status": "fixed-local-verified",
+      "id": "AUD-132",
+      "category": "visual",
+      "title": "Unavailable values used the success color",
+      "expected": "Unavailable values should be neutral so users do not mistake them for successful data.",
+      "actual": "Not connected price and availability values appeared green.",
+      "reproduction": [
+        "Compose MKT-01 or REA-01.",
+        "Inspect unavailable data values in the results table."
+      ],
+      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/mkt-01-direction-01.png",
+      "rootCause": "The shared table applied success green unconditionally to displayValue.",
+      "affectedFiles": [
+        "resources/blocks/advanced-data-table/index.tsx",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Use neutral text for not-connected/unavailable values in light and dark variants.",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/mkt-01-search-direction-01-desktop.png",
+        "quality/evidence/step-14/manual-review/after/mkt-01-search-direction-01-mobile.png",
+        "quality/evidence/step-14/manual-review/after/rea-01-direction-01-desktop.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/domain-content-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/domain-content-runtime-mobile.json"
+      ]
     }
   ],
-  "generatedAt": "2026-10-18T14:20:35Z"
+  "generatedAt": "2026-10-18T16:19:14Z"
 }
