@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 93 findings (19 High, 73 Medium, 1 Low): 15 closed after deployed verification, 76 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080 open. AUD-088–093 were found in the Site v16 Explore/search audit; local regressions now pass, with hosted verification pending. See `quality/STEP_08_EVIDENCE.md` and `evidence/catalog-search-v16/`.
+**Current disposition:** 97 findings (19 High, 77 Medium, 1 Low): 15 closed after deployed verification, 80 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080 open. AUD-088–093 came from the Site v16 Explore/search audit. AUD-094–097 were found on the deployed Site v17 in the mobile filter drawer and resource-detail experience. Local regressions pass; hosted verification is pending. See `quality/STEP_08_EVIDENCE.md`, `evidence/catalog-search-v16/`, and `evidence/catalog-search-v17/`.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -895,6 +895,39 @@ with zero findings. That harness race is not counted as a product defect.
 - Root cause: ExploreRail rendered fixed filter choices without deriving the actual option set from loaded search documents.
 - Affected code: `apps/site/src/components/ExploreRail.tsx`, `apps/site/src/components/ExploreView.tsx`, `packages/search/src/indexer.ts`, and Explore browser tests.
 - Remediation: intersect the supported facet vocabulary with indexed manifest values, hide empty choices, and retain a stale URL-selected value so it can be removed. Local desktop/mobile tests pass; the finding remains fixed pending deployed verification.
+
+### AUD-094 — Mobile Explore filters were not a keyboard dialog
+
+- Evidence: the deployed v17 [390 × 844 keyboard report](evidence/catalog-search-v17/mobile-filter-keyboard-before.json) records zero dialog semantics, focus left on the trigger behind the open drawer, and the drawer still visible after Escape. The [before screenshot](evidence/catalog-search-v17/mobile-filter-drawer-before-escape-390x844.png) shows the overlay. The reproduction produced no console errors or failed requests.
+- Reproduction: open `/explore` at 390 × 844, activate **Filters**, inspect the accessibility tree and focus, then press Escape.
+- Root cause: the mobile filter overlay had no dialog semantics or modal keyboard/focus lifecycle.
+- Affected code: `apps/site/src/components/ExploreView.tsx`, `apps/site/src/components/ExploreRail.tsx`.
+- Remediation: add a labeled modal dialog, focus containment, Escape and backdrop closing, focus restoration, page scroll locking, and one clear dialog title. A user-facing browser regression now verifies these behaviors; deployment verification remains pending.
+
+### AUD-095 — The isolated activity preview skipped to an H4 heading
+
+- Evidence: the deployed v17 [resource report](evidence/catalog-search-v17/ai-agent-heading-before.json) records an H4 primary heading and Axe `heading-order` impact `moderate`; the [before screenshot](evidence/catalog-search-v17/ai-agent-heading-before-1440x900.png) shows the preview. The route returned HTTP 200 with no console errors, failed requests, or HTTP errors.
+- Reproduction: open `/r/ai-agent-activity-feed/` at 1440 × 900 and inspect the preview heading or run Axe heading-order.
+- Root cause: the resource authored its standalone primary heading as H4 despite being rendered in its own isolated document.
+- Affected code: `resources/ai/ai-agent-activity-feed/index.tsx` and generated Gold export source.
+- Remediation: use an H2 in the isolated preview and assert its level and sample-data label in the Sites Worker browser regression. Local preview and Axe checks pass; deployed verification remains pending.
+
+### AUD-096 — Resource detail tabs skipped heading levels
+
+- Evidence: the deployed v17 [resource detail report](evidence/catalog-search-v17/resource-tabs-heading-before.json) records H1 followed by four H4 headings and a moderate Axe `heading-order` violation. The route returned HTTP 200 with zero console errors, uncaught exceptions, failed requests, or HTTP errors; the [before screenshot](evidence/catalog-search-v17/resource-tabs-heading-before-1440x900.png) captures the page.
+- Reproduction: open `/r/ai-agent-activity-feed/` at 1440 × 900 with Intent selected, then inspect headings or run Axe. The same tab renderer is shared by every resource detail page.
+- Root cause: `ResourceTabs` used H4 section headings and an H5 variant heading beneath the page H1.
+- Affected code: `apps/site/src/components/ResourceTabs.tsx`.
+- Remediation: use H2 for tab sections, add a declared-variants H2, and use H3 for each variant card. The Sites Worker regression runs heading-order across all eight tabs; it passes locally. Deployed verification remains pending.
+
+### AUD-097 — Fixed sample events were presented as live telemetry
+
+- Evidence: the deployed v17 [resource screenshot](evidence/catalog-search-v17/ai-agent-heading-before-1440x900.png) and [catalogue record](evidence/catalog-search-v17/ai-agent-heading-before.json) show a fixed local activity example described as a real-time telemetry stream. The public route itself had zero console errors, failed requests, and HTTP errors.
+- Reproduction: open `/r/ai-agent-activity-feed/` and compare the real-time description and pulsing green indicator with the fixed hardcoded rows and intent metadata.
+- Root cause: the resource fixture contained static project-internal events while its README, manifest, variant copy, and generated catalogue advertised live behavior.
+- Affected code: `resources/ai/ai-agent-activity-feed/index.tsx`, its README and manifest, generated catalogue records, and `packages/exporter/src/generated-gold-sources.ts`.
+- Remediation: label rows as static sample data, remove the live pulse, use generic sample events, and describe the host-data contract. Unit and Sites Worker browser regressions pass; public Site verification remains pending.
+
 ## LOW
 
 ### AUD-079 — Published Site favicon returned 404

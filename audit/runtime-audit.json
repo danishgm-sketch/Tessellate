@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship, Site v16 renderer/export and Explore/search audits at desktop/mobile sizes, public v9 route sweep, plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Step 08 local fixes for AUD-088–093 are awaiting a new deployed Sites verification.",
+  "scope": "Deployed public Site v11/v14 flagship, Site v16/v17 catalogue and renderer audits, plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Step 08 remediation findings AUD-088–097 await deployed verification.",
   "entries": [
     {
       "id": "AUD-001",
@@ -2461,7 +2461,7 @@
         "packages/search/src/types.ts"
       ],
       "remediation": "Derive each visible facet from canonical ResourceManifest metadata, apply all advertised filters with documented AND/OR semantics, and parse/serialize every selected facet in the URL. Add browser tests for visible result changes, combined filters, clear, and reload/deep-link restoration.",
-      "fixCommit": null,
+      "fixCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
       "status": "fixed-awaiting-deployed-verification",
       "deployedVerification": {
         "siteVersion": 16,
@@ -2471,9 +2471,14 @@
         "screenshot": "audit/evidence/catalog-search-v16/density-filter-after-1440x900.png"
       },
       "localVerification": {
-        "result": "PASS locally: unit and browser regressions plus full repository audit pass; deployed verification remains pending on the next Sites version.",
-        "report": "quality/STEP_08_LOCAL_VERIFICATION.json",
-        "verifiedAt": "2026-10-18T03:53:00.208Z",
+        "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
+        "tests": [
+          "tests/e2e/explore-search-hardening.spec.ts",
+          "packages/search/src/__tests__/search-discovery-quality.test.ts"
+        ],
+        "verifiedAt": "2026-10-18T04:53:01.000Z",
+        "fullUnitTests": "630 passed",
+        "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
         "screenshots": [
           "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png",
           "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
@@ -2507,7 +2512,7 @@
         "tests/e2e/search-ranking-regression.spec.ts"
       ],
       "remediation": "Index semantically useful intent fields, rank by meaningful query-term coverage before BM25 score, and return a clear empty state when no resource meets a multi-term query rather than showing unrelated matches. Add adjudicated regressions for checkout, payment, and luxury checkout.",
-      "fixCommit": null,
+      "fixCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
       "status": "fixed-awaiting-deployed-verification",
       "deployedVerification": {
         "siteVersion": 16,
@@ -2517,9 +2522,14 @@
         "screenshot": "audit/evidence/catalog-search-v16/luxury-checkout-suggested-query-1440x900.png"
       },
       "localVerification": {
-        "result": "PASS locally: unit and browser regressions plus full repository audit pass; deployed verification remains pending on the next Sites version.",
-        "report": "quality/STEP_08_LOCAL_VERIFICATION.json",
-        "verifiedAt": "2026-10-18T03:53:00.208Z",
+        "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
+        "tests": [
+          "tests/e2e/explore-search-hardening.spec.ts",
+          "packages/search/src/__tests__/search-discovery-quality.test.ts"
+        ],
+        "verifiedAt": "2026-10-18T04:53:01.000Z",
+        "fullUnitTests": "630 passed",
+        "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
         "screenshots": [
           "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png",
           "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
@@ -2556,7 +2566,7 @@
         "tests/e2e/search-ranking-regression.spec.ts"
       ],
       "remediation": "Debounce committed query execution while keeping the input responsive, avoid remounting previews for intermediate keystrokes, and verify a normal typed phrase causes no repeated preview-request cancellation storm.",
-      "fixCommit": null,
+      "fixCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
       "status": "fixed-awaiting-deployed-verification",
       "deployedVerification": {
         "siteVersion": 16,
@@ -2566,9 +2576,14 @@
         "screenshot": "audit/evidence/catalog-search-v16/explore-initial-1440x900.png"
       },
       "localVerification": {
-        "result": "PASS locally: unit and browser regressions plus full repository audit pass; deployed verification remains pending on the next Sites version.",
-        "report": "quality/STEP_08_LOCAL_VERIFICATION.json",
-        "verifiedAt": "2026-10-18T03:53:00.208Z",
+        "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
+        "tests": [
+          "tests/e2e/explore-search-hardening.spec.ts",
+          "packages/search/src/__tests__/search-discovery-quality.test.ts"
+        ],
+        "verifiedAt": "2026-10-18T04:53:01.000Z",
+        "fullUnitTests": "630 passed",
+        "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
         "screenshots": [
           "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png",
           "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
@@ -2601,7 +2616,7 @@
         "tests/e2e/search-ranking-regression.spec.ts"
       ],
       "remediation": "Compute total matching hits after filtering, support offset-based pages or incremental loading, and show “Showing X of Y” with a keyboard-accessible continuation control. Ensure filters are applied before pagination so valid late-ranked matches remain discoverable.",
-      "fixCommit": null,
+      "fixCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
       "status": "fixed-awaiting-deployed-verification",
       "deployedVerification": {
         "siteVersion": 16,
@@ -2611,9 +2626,14 @@
         "screenshot": "audit/evidence/catalog-search-v16/explore-initial-1440x900.png"
       },
       "localVerification": {
-        "result": "PASS locally: unit and browser regressions plus full repository audit pass; deployed verification remains pending on the next Sites version.",
-        "report": "quality/STEP_08_LOCAL_VERIFICATION.json",
-        "verifiedAt": "2026-10-18T03:53:00.208Z",
+        "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
+        "tests": [
+          "tests/e2e/explore-search-hardening.spec.ts",
+          "packages/search/src/__tests__/search-discovery-quality.test.ts"
+        ],
+        "verifiedAt": "2026-10-18T04:53:01.000Z",
+        "fullUnitTests": "630 passed",
+        "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
         "screenshots": [
           "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png",
           "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
@@ -2645,7 +2665,7 @@
         "tests/e2e/explore-search-hardening.spec.ts"
       ],
       "remediation": "Expose “AA target or higher” and “AAA target” as declared-target filters, retain separate verification fields, and test the truthful labels.",
-      "fixCommit": null,
+      "fixCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
       "status": "fixed-awaiting-deployed-verification",
       "deployedVerification": {
         "siteVersion": 16,
@@ -2655,9 +2675,14 @@
         "screenshot": "audit/evidence/catalog-search-v16/accessibility-label-before-1440x900.png"
       },
       "localVerification": {
-        "result": "PASS locally: unit and browser regressions plus full repository audit pass; deployed verification remains pending on the next Sites version.",
-        "report": "quality/STEP_08_LOCAL_VERIFICATION.json",
-        "verifiedAt": "2026-10-18T03:53:00.208Z",
+        "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
+        "tests": [
+          "tests/e2e/explore-search-hardening.spec.ts",
+          "packages/search/src/__tests__/search-discovery-quality.test.ts"
+        ],
+        "verifiedAt": "2026-10-18T04:53:01.000Z",
+        "fullUnitTests": "630 passed",
+        "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
         "screenshots": [
           "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png",
           "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
@@ -2689,7 +2714,7 @@
         "tests/e2e/explore-search-hardening.spec.ts"
       ],
       "remediation": "Intersect the supported facet vocabulary with indexed manifest values, hide empty options, and retain a stale URL-selected option so users can remove it.",
-      "fixCommit": null,
+      "fixCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
       "status": "fixed-awaiting-deployed-verification",
       "deployedVerification": {
         "siteVersion": 16,
@@ -2699,15 +2724,209 @@
         "screenshot": "audit/evidence/catalog-search-v16/empty-motion-facet-options-1440x900.png"
       },
       "localVerification": {
-        "result": "PASS locally: unit and browser regressions plus full repository audit pass; deployed verification remains pending on the next Sites version.",
-        "report": "quality/STEP_08_LOCAL_VERIFICATION.json",
-        "verifiedAt": "2026-10-18T03:53:00.208Z",
+        "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
+        "tests": [
+          "tests/e2e/explore-search-hardening.spec.ts",
+          "packages/search/src/__tests__/search-discovery-quality.test.ts"
+        ],
+        "verifiedAt": "2026-10-18T04:53:01.000Z",
+        "fullUnitTests": "630 passed",
+        "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
         "screenshots": [
           "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png",
           "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
         ]
       }
+    },
+    {
+      "id": "AUD-094",
+      "severity": "medium",
+      "route": "/explore",
+      "viewport": "390x844",
+      "category": "accessibility",
+      "title": "Mobile filter drawer did not behave as a keyboard dialog",
+      "expected": "Opening Filters should move focus into a modal dialog, contain keyboard focus, close on Escape, and restore focus to its trigger.",
+      "actual": "The drawer had no dialog semantics, focus remained on the hidden Filters trigger, and Escape left the drawer open. The deployed browser showed no console or failed-network events during reproduction.",
+      "reproduction": [
+        "Open the deployed /explore route at 390x844.",
+        "Open Filters and inspect the accessibility tree and active element.",
+        "Press Escape; observe the drawer remains open and focus stays on the trigger behind it."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/catalog-search-v17/mobile-filter-drawer-before-escape-390x844.png",
+      "rootCause": "The mobile drawer was a visual overlay without dialog semantics or modal keyboard/focus lifecycle handling.",
+      "affectedFiles": [
+        "apps/site/src/components/ExploreView.tsx",
+        "apps/site/src/components/ExploreRail.tsx",
+        "tests/e2e/explore-search-hardening.spec.ts"
+      ],
+      "remediation": "Expose a labeled modal dialog, move and contain focus, close on Escape or backdrop activation, restore focus to the trigger, lock page scroll while open, and avoid duplicating the Filters title. Verify the same behavior in deployed mobile browser tests.",
+      "fixCommit": "d404cc71705c029eb9b5eec57139248b490d44cc",
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
+        "tests": [
+          "tests/e2e/explore-search-hardening.spec.ts"
+        ],
+        "verifiedAt": "2026-10-18T04:53:01.000Z",
+        "fullUnitTests": "630 passed",
+        "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
+        "screenshots": []
+      },
+      "deployedVerification": {
+        "siteVersion": 17,
+        "canonicalGitCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
+        "sitesSourceCommit": "adbe7877dff0cdfb896b81b1af7b8e5fe53927b8",
+        "result": "FAIL: the deployed issue was reproduced through the visible Site at the recorded viewport; network/console details are retained in the report. The fix is pending the next Site version.",
+        "report": "audit/evidence/catalog-search-v17/mobile-filter-keyboard-before.json",
+        "screenshot": "audit/evidence/catalog-search-v17/mobile-filter-drawer-before-escape-390x844.png"
+      }
+    },
+    {
+      "id": "AUD-095",
+      "severity": "medium",
+      "route": "/r/ai-agent-activity-feed/",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Activity preview began with a level-four heading",
+      "expected": "The isolated preview should start its content hierarchy with a level-two heading and avoid an Axe heading-order violation.",
+      "actual": "The first visible preview heading was H4 ‘Agent Swarm Activity’; Axe reported a moderate heading-order violation targeting the iframe heading. The route returned HTTP 200 with no console errors, failed requests, or HTTP errors.",
+      "reproduction": [
+        "Open deployed /r/ai-agent-activity-feed/ at 1440x900.",
+        "Inspect the isolated preview heading and run Axe heading-order."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/catalog-search-v17/ai-agent-heading-before-1440x900.png",
+      "rootCause": "The resource used H4 for its primary content heading despite rendering as a standalone isolated preview document.",
+      "affectedFiles": [
+        "resources/ai/ai-agent-activity-feed/index.tsx",
+        "packages/exporter/src/generated-gold-sources.ts",
+        "tests/e2e/catalog-resource-render.spec.ts"
+      ],
+      "remediation": "Use a level-two heading for the standalone resource content and verify the live iframe heading and heading-order rule in the Sites Worker and deployed Site.",
+      "fixCommit": "0b47d366302c3c90395eef7ae55ceecb04186261",
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
+        "tests": [
+          "tests/e2e/catalog-resource-render.spec.ts",
+          "tests/resource-demo-truth.test.ts"
+        ],
+        "verifiedAt": "2026-10-18T04:53:01.000Z",
+        "fullUnitTests": "630 passed",
+        "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
+        "screenshots": [
+          "audit/evidence/catalog-search-local/ai-agent-activity-feed-after-1440x900.png"
+        ]
+      },
+      "deployedVerification": {
+        "siteVersion": 17,
+        "canonicalGitCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
+        "sitesSourceCommit": "adbe7877dff0cdfb896b81b1af7b8e5fe53927b8",
+        "result": "FAIL: the deployed issue was reproduced through the visible Site at the recorded viewport; network/console details are retained in the report. The fix is pending the next Site version.",
+        "report": "audit/evidence/catalog-search-v17/ai-agent-heading-before.json",
+        "screenshot": "audit/evidence/catalog-search-v17/ai-agent-heading-before-1440x900.png"
+      }
+    },
+    {
+      "id": "AUD-096",
+      "severity": "medium",
+      "route": "/r/ai-agent-activity-feed/",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Resource detail tabs skipped heading levels after the page title",
+      "expected": "Each resource-detail tab should use a semantic hierarchy that starts below the H1 page title and remains valid when switching tabs.",
+      "actual": "The deployed detail page exposed H1 followed directly by four H4 headings. Axe reported a moderate heading-order violation on ‘Summary & Purpose’. The route returned HTTP 200 with no console errors, uncaught exceptions, failed requests, or HTTP errors.",
+      "reproduction": [
+        "Open deployed /r/ai-agent-activity-feed/ at 1440x900.",
+        "Inspect the page headings or run Axe heading-order while Intent is selected.",
+        "Switch through the resource tabs; the same shared renderer supplies their headings."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/catalog-search-v17/resource-tabs-heading-before-1440x900.png",
+      "rootCause": "The shared ResourceTabs renderer used H4 for top-level tab section headings and H5 for variant cards while the containing resource page provides only an H1.",
+      "affectedFiles": [
+        "apps/site/src/components/ResourceTabs.tsx",
+        "tests/e2e/catalog-resource-render.spec.ts"
+      ],
+      "remediation": "Use H2 for tab-level sections, add a H2 group heading for declared variants, and use H3 for each variant card. Run heading-order across every resource tab in the Sites Worker and the deployed Site.",
+      "fixCommit": "0b47d366302c3c90395eef7ae55ceecb04186261",
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
+        "tests": [
+          "tests/e2e/catalog-resource-render.spec.ts",
+          "tests/resource-demo-truth.test.ts"
+        ],
+        "verifiedAt": "2026-10-18T04:53:01.000Z",
+        "fullUnitTests": "630 passed",
+        "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
+        "screenshots": [
+          "audit/evidence/catalog-search-local/ai-agent-activity-feed-after-1440x900.png"
+        ]
+      },
+      "deployedVerification": {
+        "siteVersion": 17,
+        "canonicalGitCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
+        "sitesSourceCommit": "adbe7877dff0cdfb896b81b1af7b8e5fe53927b8",
+        "result": "FAIL: the deployed issue was reproduced through the visible Site at the recorded viewport; network/console details are retained in the report. The fix is pending the next Site version.",
+        "report": "audit/evidence/catalog-search-v17/resource-tabs-heading-before.json",
+        "screenshot": "audit/evidence/catalog-search-v17/resource-tabs-heading-before-1440x900.png"
+      }
+    },
+    {
+      "id": "AUD-097",
+      "severity": "medium",
+      "route": "/r/ai-agent-activity-feed/",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Static example events were presented as live telemetry",
+      "expected": "A preview with fixed local event data should clearly identify it as sample content and must not imply a live telemetry connection.",
+      "actual": "The resource description claimed a real-time stream of agent thoughts, transitions, spawns, and progress, while its UI showed fixed project-internal example events under a pulsing green indicator. Metadata also described it as a live stream.",
+      "reproduction": [
+        "Open deployed /r/ai-agent-activity-feed/.",
+        "Compare the live-stream description and indicator with the fixed event rows and the resource intent metadata."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/catalog-search-v17/ai-agent-heading-before-1440x900.png",
+      "rootCause": "The resource fixture used local hardcoded events, but the component, README, manifest intent, variant copy, and generated catalogue advertised live telemetry behavior.",
+      "affectedFiles": [
+        "resources/ai/ai-agent-activity-feed/index.tsx",
+        "resources/ai/ai-agent-activity-feed/README.md",
+        "resources/ai/ai-agent-activity-feed/manifest.json",
+        "apps/site/public/data/catalog.json",
+        "apps/site/public/r/ai-agent-activity-feed.json",
+        "packages/exporter/src/generated-gold-sources.ts"
+      ],
+      "remediation": "Label the component’s local rows as static sample data, remove the live pulse, replace project-internal fixture claims with generic example events, and describe the host-data contract in the README and manifest. Verify the deployed page and catalogue record.",
+      "fixCommit": "0b47d366302c3c90395eef7ae55ceecb04186261",
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
+        "tests": [
+          "tests/e2e/catalog-resource-render.spec.ts",
+          "tests/resource-demo-truth.test.ts"
+        ],
+        "verifiedAt": "2026-10-18T04:53:01.000Z",
+        "fullUnitTests": "630 passed",
+        "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
+        "screenshots": [
+          "audit/evidence/catalog-search-local/ai-agent-activity-feed-after-1440x900.png"
+        ]
+      },
+      "deployedVerification": {
+        "siteVersion": 17,
+        "canonicalGitCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
+        "sitesSourceCommit": "adbe7877dff0cdfb896b81b1af7b8e5fe53927b8",
+        "result": "FAIL: the deployed issue was reproduced through the visible Site at the recorded viewport; network/console details are retained in the report. The fix is pending the next Site version.",
+        "report": "audit/evidence/catalog-search-v17/ai-agent-heading-before.json",
+        "screenshot": "audit/evidence/catalog-search-v17/ai-agent-heading-before-1440x900.png"
+      }
     }
   ],
-  "generatedAt": "2026-10-18T03:53:00.208Z"
+  "generatedAt": "2026-10-18T04:53:01.000Z"
 }

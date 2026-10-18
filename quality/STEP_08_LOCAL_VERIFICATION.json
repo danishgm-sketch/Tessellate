@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T03:53:00.208Z",
+  "generatedAt": "2026-10-18T04:50:41.000Z",
   "scope": "Step 08 local remediation checks only; not deployed acceptance.",
   "frozenDependencyInstall": {
     "status": "PASS",
@@ -19,30 +19,33 @@
   },
   "browserTests": {
     "status": "PASS",
-    "command": "pnpm exec playwright test tests/e2e/explore-search-hardening.spec.ts --project=desktop-chrome --project=mobile-chrome --workers=2",
-    "passed": 16,
+    "command": "pnpm test:e2e",
+    "passed": 132,
+    "skipped": 56,
     "failed": 0,
-    "viewports": [
-      "1440x900",
-      "390x844"
+    "projects": [
+      {
+        "name": "standard Playwright projects",
+        "passed": 102,
+        "skipped": 56
+      },
+      {
+        "name": "Sites Worker Chromium",
+        "passed": 27,
+        "skipped": 0
+      },
+      {
+        "name": "preview app Chromium",
+        "passed": 3,
+        "skipped": 0
+      }
     ],
-    "checks": [
-      "intent-aware checkout/payment search",
-      "eight suggested-query results",
-      "combined facets and URL reload persistence",
-      "manifest target wording",
-      "no empty facet choices",
-      "stale facet removal",
-      "truthful total and Show more",
-      "zero aborted preview document requests during natural typing"
-    ]
+    "detail": "Full suite completed after the Step 08 UI/resource changes; 56 skips are configured scope skips."
   },
   "typecheck": {
     "status": "PASS",
-    "commands": [
-      "pnpm --filter @tessellate/search typecheck",
-      "pnpm --filter @tessellate/site typecheck"
-    ]
+    "command": "pnpm typecheck",
+    "workspaceProjects": 22
   },
   "lint": {
     "status": "PASS",
@@ -87,7 +90,7 @@
   "fullUnitTests": {
     "status": "PASS",
     "command": "pnpm test",
-    "passed": 629,
+    "passed": 630,
     "failed": 0,
     "filesPassed": 57
   },
@@ -105,21 +108,29 @@
   "aggregateAudit": {
     "status": "PASS",
     "command": "pnpm audit:all",
-    "releaseGateCriteria": "16/16",
-    "productionBuild": "PASS (717 Astro pages; 324 catalog resources; 40 Gold resources)",
+    "releaseGateCriteria": "16/16 scripted criteria",
+    "productionBuild": "PASS (717 Astro pages; 324 catalogue resources; 40 Gold resources)",
     "bundleBudget": "PASS",
     "licenseProvenance": "PASS (324; zero failures)",
-    "secretSecurity": "PASS (zero violations)"
+    "secretSecurity": "PASS (zero violations)",
+    "qualification": "Local repository gate only; it does not certify deployed runtime behavior."
   },
   "bundleBudget": {
     "status": "PASS",
     "publicInitialGzipKb": 65.52,
-    "exploreViewGzipKb": 28.04,
+    "exploreViewGzipKb": 28.52,
     "workbenchRouteGzipKb": 191.01,
-    "catalogGzipKb": 111.11
+    "catalogGzipKb": 111.25
   },
   "exploreAxe": {
-    "status": "NOT_RUN_IN_STEP_08",
-    "note": "Explore Axe and global manual accessibility coverage remain in the later accessibility phase."
+    "status": "PASS_LOCAL_SCOPED",
+    "note": "The full Playwright suite includes an Explore Axe scan. A separate deployed Site re-audit is required to close route findings; broader keyboard/screen-reader coverage remains in the ordered accessibility phase."
+  },
+  "deployedRemediationReaudit": {
+    "status": "PENDING",
+    "siteVersion": null,
+    "routeAudit": "audit/audit-deployed-explore.mjs",
+    "resourceAudit": "audit/audit-deployed-resource-details.mjs",
+    "note": "Close AUD-088–097 only after the same checks pass on the new public Sites version."
   }
 }
