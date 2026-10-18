@@ -148,13 +148,13 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
 
   // 3. User Sophistication & Metric Priors
   let userSophistication = archetypeDef?.userSophistication ?? blueprint.priors.userSophistication;
-  let trustRequirement = blueprint.priors.trustRequirement;
+  let trustRequirement = archetypeDef?.trustRequirement ?? blueprint.priors.trustRequirement;
   let informationComplexity = archetypeDef?.informationComplexity ?? blueprint.priors.informationComplexity;
   let dataDensity = archetypeDef?.dataDensity ?? blueprint.priors.dataDensity;
-  let collaborationLevel = blueprint.priors.collaborationLevel;
+  let collaborationLevel = archetypeDef?.collaborationLevel ?? blueprint.priors.collaborationLevel;
   let transactionCriticality = archetypeDef?.transactionCriticality ?? blueprint.priors.transactionCriticality;
-  let navigationComplexity = blueprint.priors.navigationComplexity;
-  let mobileImportance = blueprint.priors.mobileImportance;
+  let navigationComplexity = archetypeDef?.navigationComplexity ?? blueprint.priors.navigationComplexity;
+  let mobileImportance = archetypeDef?.mobileImportance ?? blueprint.priors.mobileImportance;
 
   // Nuanced keyword tuning
   const lower = text.toLowerCase();
@@ -174,9 +174,9 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     assumptions.push('Elevated collaboration requirement for multi-user workflow.');
   }
 
-  if (lower.includes('checkout') || lower.includes('payment') || lower.includes('transaction') || lower.includes('order')) {
+  if (lower.includes('checkout') || lower.includes('payment') || lower.includes('money transfer')) {
     transactionCriticality = Math.min(100, transactionCriticality + 20);
-    assumptions.push('Elevated transaction criticality for fiscal operations.');
+    assumptions.push('Elevated transaction criticality for payment and purchase workflows.');
   }
 
   if (lower.includes('analytics') || lower.includes('scientific') || lower.includes('telemetry') || lower.includes('dataset')) {
@@ -232,7 +232,7 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     requiredScreens: input.requiredScreens ?? [],
     forbiddenScreens: input.forbiddenScreens ?? [],
     requiredPatterns: [],
-    forbiddenPatterns: blueprint.antiPatterns,
+    forbiddenPatterns: archetypeDef?.forbiddenPatterns ?? blueprint.antiPatterns,
     allowedDependencies: ['react', 'tailwindcss', 'lucide-react'],
     prohibitedDependencies: ['jquery', 'bootstrap'],
   };
@@ -256,7 +256,7 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     mobileImportance,
     likelyScreens,
     requiredCapabilities: archetypeDef?.requiredCapabilities ?? ['authentication', 'responsive-layout'],
-    forbiddenPatterns: blueprint.antiPatterns,
+    forbiddenPatterns: archetypeDef?.forbiddenPatterns ?? blueprint.antiPatterns,
     constraints,
   });
 

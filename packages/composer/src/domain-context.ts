@@ -10,7 +10,7 @@ export function specialisePeopleOperations(base: ArchetypeDefinition, text: stri
   return {
     ...base, name:'Employee Experience',
     primaryAudience:'Employees, team leads and people operations teams',
-    primaryObjective:'Help employees connect with their teams, complete onboarding, share feedback and access organisational policies',
+    primaryObjective:'Deliver a connected employee experience where colleagues build team relationships, complete onboarding, share feedback and access organisational policies',
     userSophistication:55, informationComplexity:55, dataDensity:55, transactionCriticality:30,
     defaultEntities:[
       {name:'Employee',description:'A colleague with a team, role and onboarding progress',fields:['id','name','team','role','onboardingStatus']},

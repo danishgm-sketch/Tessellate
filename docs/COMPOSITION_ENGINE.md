@@ -93,6 +93,21 @@ Use:
 
 Never pretend deterministic interpretation has model-level semantic depth. Show the user inferred assumptions where ambiguity matters.
 
+Archetype selection gives high-information domain phrases more weight than broad
+cues such as “workspace”, “stream” or “order”. Supporting keywords can refine a
+match, but a secondary archetype is emitted only when it has corroborating
+weight (at least 28 points and 45% of the leading score). Hyphenated phrases
+are normalized before matching. The 0–100 weights are relative deterministic
+ranking signals, not calibrated probabilities.
+
+ProductModel metric priors and forbidden-pattern defaults come from the
+selected archetype definition. A matching blueprint may still shape downstream
+composition, but a generic SaaS blueprint fallback must not overwrite the
+archetype’s trust, collaboration, navigation or mobile assumptions. Fiscal
+transaction elevation is limited to explicit payment, checkout or money
+transfer language; operational work orders and procurement requests are not
+treated as financial transactions.
+
 ### AI interpretation
 
 If provider configured, send compact structured prompt and require JSON matching `ProductModel` schema.

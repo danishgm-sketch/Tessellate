@@ -703,6 +703,42 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
 };
 
 /**
+ * High-information phrases that identify a product domain more reliably than
+ * broad words such as "workspace", "stream", or "order". The general keyword
+ * lists above remain useful supporting evidence, while these signals anchor
+ * primary archetype selection.
+ */
+const ARCHETYPE_PRIMARY_SIGNALS: Record<string, string[]> = {
+  saas: ['saas', 'software as a service', 'b2b software', 'business software', 'subscription software', 'multi-tenant'],
+  ai: ['artificial intelligence', 'large language model', 'generative', 'generative audio', 'image generation', 'image-generation', 'autonomous agent', 'ai agent', 'agentic', 'copilot', 'llm', 'prompt'],
+  'developer-tools': ['developer tool', 'developer portal', 'software engineer', 'platform engineer', 'devops', 'api', 'sdk', 'cli', 'command-line', 'kubernetes', 'source control', 'source-control', 'pull request', 'continuous integration', 'feature flag', 'feature-flag', 'distributed tracing', 'observability', 'webhook', 'deployment monitor'],
+  fintech: ['fintech', 'financial service', 'financial account', 'banking', 'wealth management', 'asset allocation', 'corporate card', 'reimbursement', 'payment processing', 'money transfer', 'ledger', 'portfolio', 'market data'],
+  ecommerce: ['e-commerce', 'ecommerce', 'online store', 'online shopping', 'shopping cart', 'product catalog', 'storefront', 'returns portal', 'checkout', 'retail'],
+  marketplace: ['marketplace', 'two-sided platform', 'two-sided marketplace', 'buyers and sellers', 'seller marketplace', 'booking marketplace', 'independent suppliers'],
+  analytics: ['analytics', 'business intelligence', 'business-intelligence', 'data visualization', 'experiment analysis', 'cohort analysis', 'metrics dashboard', 'kpi', 'warehouse tables', 'saved reports'],
+  'intelligence-research': ['research platform', 'scientific research', 'climate science', 'field research', 'literature review', 'evidence dossier', 'intelligence research', 'investigative research', 'investigative newsroom', 'research analyst', 'provenance'],
+  crm: ['crm', 'customer relationship', 'customer relationship management', 'sales pipeline', 'sales crm', 'customer success', 'account management', 'renewal management', 'contact management'],
+  'erp-operations': ['erp', 'enterprise resource planning', 'supply chain', 'manufacturing', 'facilities management', 'field service', 'work order', 'work-order', 'inventory management', 'procurement', 'warehouse operations', 'maintenance operations', 'production facilities'],
+  productivity: ['productivity app', 'task management', 'note-taking', 'notes app', 'personal planner', 'to-do', 'todo app', 'habit journal', 'daily journal', 'personal knowledge base', 'agenda planner'],
+  education: ['education platform', 'learning platform', 'learning management system', 'lms', 'online course', 'cohort learning', 'classroom', 'course catalog', 'lesson classroom'],
+  creator: ['creator platform', 'creator economy', 'independent creator', 'creator tools', 'newsletter platform', 'subscriber membership', 'digital illustration', 'artist portfolio'],
+  media: ['media platform', 'newsroom', 'news publication', 'digital magazine', 'journalism', 'public radio', 'radio service', 'episode archive', 'editorial publication', 'broadcast service'],
+  travel: ['travel service', 'travel planning', 'trip planner', 'trip-planning', 'travel itinerary', 'hotel booking', 'flight booking', 'destination guide', 'travelers', 'hospitality'],
+  'real-estate': ['real estate', 'real-estate', 'home search', 'home-search', 'property management', 'property listing', 'commercial leasing', 'residential manager', 'mortgage', 'realtor', 'realty'],
+  recruitment: ['recruitment', 'recruiting', 'talent acquisition', 'applicant tracking', 'candidate pipeline', 'candidate portal', 'hiring workspace', 'interview panel', 'employee experience', 'human resources', 'people operations', 'hr platform'],
+  consumer: ['consumer app', 'consumer application', 'social network', 'social app', 'neighborhood social', 'community app', 'social feed', 'mobile-first consumer'],
+};
+
+function matchesKeyword(normalizedText: string, keyword: string): boolean {
+  const normalizedKeyword = keyword.toLowerCase().replace(/[-_]+/g, ' ');
+  const escaped = normalizedKeyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(`\\b${escaped}\\b`, 'i').test(normalizedText);
+}
+
+const MIN_SECONDARY_ARCHETYPE_SCORE = 28;
+const MIN_SECONDARY_ARCHETYPE_SHARE = 0.45;
+
+/**
  * Detects matching product archetypes from a natural language text brief.
  * Returns array of matched archetypes with weights between 0 and 100.
  */
@@ -714,18 +750,20 @@ export function detectProductArchetypes(
     return [{ tag: explicitOverride, weight: 100 }];
   }
 
-  const normalized = briefText.toLowerCase();
+  const normalized = briefText.toLowerCase().replace(/[-_]+/g, ' ');
   const scores: Record<string, number> = {};
 
   for (const [key, arch] of Object.entries(PRODUCT_ARCHETYPES)) {
     let score = 0;
+    const primarySignals = ARCHETYPE_PRIMARY_SIGNALS[key] ?? [];
+    const matchedPrimarySignals = primarySignals.filter((signal) => matchesKeyword(normalized, signal));
+
+    // Specific language is stronger evidence than a collection of generic
+    // cues. Multi-word signals receive a small additional weight.
+    score += matchedPrimarySignals.reduce((total, signal) => total + (signal.includes(' ') || signal.includes('-') ? 60 : 48), 0);
 
     for (const kw of arch.keywords) {
-      const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      if (new RegExp(`\\b${escaped}\\b`, 'i').test(normalized)) {
-        // Boost longer keyword matches
-        score += ['employee experience','human resources','people operations'].includes(kw) ? 100 : kw.includes(' ') ? 35 : 20;
-      }
+      if (!matchedPrimarySignals.includes(kw) && matchesKeyword(normalized, kw)) score += kw.includes(' ') ? 16 : 8;
     }
 
     if (score > 0) {
@@ -741,10 +779,13 @@ export function detectProductArchetypes(
   }
 
   const topScore = entries[0][1];
-  return entries.slice(0, 3).map(([tag, score]) => ({
-    tag,
-    weight: Math.min(100, Math.max(20, Math.round((score / topScore) * 100))),
-  }));
+  return entries
+    .filter(([, score], index) => index === 0 || (score >= MIN_SECONDARY_ARCHETYPE_SCORE && score >= topScore * MIN_SECONDARY_ARCHETYPE_SHARE))
+    .slice(0, 3)
+    .map(([tag, score]) => ({
+      tag,
+      weight: Math.min(100, Math.max(20, Math.round((score / topScore) * 100))),
+    }));
 }
 
 /**

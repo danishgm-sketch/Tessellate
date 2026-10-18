@@ -21,8 +21,8 @@ Do not advance a checkbox merely because code exists. Record evidence and defect
 - [x] 05 Freeze and test contracts/schemas, versions, migrations and round trips. Evidence: `quality/SCHEMA_CONTRACT_MATRIX.md` and `quality/STEP_05_EVIDENCE.md`; all 87 leaf-contract cases and repository tests pass.
 - [x] 06 Certify all 324 resources; Gold requires browser evidence, not metadata. Local resource certification passed the seven-width catalogue matrix, 972-variant smoke, Gold 40 × 3-variant/seven-width matrix, Axe, keyboard, reduced-motion and state checks; see `quality/STEP_06_EVIDENCE.md`. Keep the 70 fixed findings open until public-RC deployed re-audit.
 - [x] 07 Certify renderer and Workbench/preview/export semantic parity. All 40 Gold resources and 120 variants pass the local renderer parity matrix. Site v14 closed AUD-072–073 and AUD-075–078; Site v15 found an unsupported baseline Button variant in export, which was fixed and rejected in v15. Site v15 then exposed expected validation logging as a console error; Site v16 confirms the invalid ZIP is rejected with no download, console error, uncaught exception, failed request, or HTTP error. AUD-085 is locally verified in the separate Vite preview runtime. D1/R2 remain unbound. See `quality/STEP_07_EVIDENCE.md`; completion is limited to the renderer/export parity scope and does not close the broader runtime audit.
-- [ ] 08 Catalogue/search, including manually adjudicated real queries. Site v16 audit found inert facets, weak multi-term retrieval, preview request churn while typing, an unpaginated 50-of-324 result cap, misleading accessibility target copy, and empty facet choices; see `quality/STEP_08_EVIDENCE.md` and AUD-088–093. Local regressions pass; repeat the checks on a new Sites version before moving to product interpretation.
-- [ ] 09 Product interpretation — at least 100 adjudicated briefs, no overrides.
+- [x] 08 Catalogue/search, including manually adjudicated real queries. Site v20 desktop/mobile verification passed the catalogue search and facet interactions, and resource-detail tabs passed the responsive and Axe checks. AUD-099 is closed; AUD-100 remains tracked for the isolated AI preview heading order. See `quality/STEP_08_EVIDENCE.md` and `audit/evidence/catalog-search-v20/`.
+- [x] 09 Product interpretation — 100 adjudicated briefs across all 18 archetypes, interpreted from descriptions only. The benchmark rose from 45/100 to 100/100 cases after fixing primary-signal weighting, secondary-tag noise, blueprint metric fallback, and fiscal keyword overreach. The exact employee-experience brief now validates against its specialized audience, objective, entities, workflows and screens. See `quality/STEP_09_EVIDENCE.md` and `quality/PRODUCT_INTERPRETATION_BENCHMARK_RESULTS.json`. The deployed review Site remains v20; browser verification is still required at the RC gate.
 - [ ] 10 Screen planning — necessary, domain-correct, navigable mobile-aware screens.
 - [ ] 11 Design DNA — observable independent dimensions and interactions.
 - [ ] 12 Directions — meaningful grammar, hierarchy, navigation and resource differences.
@@ -93,10 +93,10 @@ all owner-specified input/state/persistence/browser/accessibility/network/securi
 dimensions. Allowed results: PASS, FAIL, DEGRADED, NOT APPLICABLE, LAB ONLY.
 Unexecuted applicable checks are FAIL (missing evidence), never presumed PASS.
 
-Step 05 is complete locally: the nested leaf-schema and all mutation-payload
-cases are exercised, and the repository test suite passes. Step 06 is the next
-permitted phase; its resource certification must add real browser evidence and
-must not infer Gold status from metadata alone.
+Steps 05–09 are complete within their stated scope and evidence files. Step 10
+is the next permitted phase: screen planning must verify necessity, domain
+correctness, navigation and mobile awareness. Local interpreter tests do not
+replace the deployed-browser checks planned for the public RC gate.
 
 For P0/P1 keep issue, reproduction, screenshot/log, root cause, failing regression,
 fix, passing regression, deployment verification and regression protection.
