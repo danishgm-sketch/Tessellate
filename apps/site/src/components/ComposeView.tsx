@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import {
   PRODUCT_BLUEPRINTS,
   getAllGoldenBriefs,
@@ -54,9 +54,12 @@ export function ComposeView() {
 
   // Result state
   const [compositionError,setCompositionError] = useState('');
+  const [briefError, setBriefError] = useState('');
   const [hasComposed, setHasComposed] = useState<boolean>(false);
+  const [lastComposedBriefKey, setLastComposedBriefKey] = useState('');
   const [catalogStatus, setCatalogStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [catalogResources, setCatalogResources] = useState<ResourceManifest[]>([]);
+  const descriptionRef = useRef<HTMLTextAreaElement>(null);
 
   const loadCatalog = () => {
     setCatalogStatus('loading');
@@ -74,7 +77,9 @@ export function ComposeView() {
         }
       })
       .catch((err) => {
-        console.error('Failed to load /data/catalog.json in ComposeView:', err);
+        if (import.meta.env.DEV) {
+          console.error('Failed to load /data/catalog.json in ComposeView:', err);
+        }
         setCatalogStatus('error');
       });
   };
@@ -93,6 +98,7 @@ export function ComposeView() {
   const handleSelectGoldenBrief = (id: string) => {
     const brief = getGoldenBrief(id);
     if (!brief) return;
+    setBriefError('');
     setDescription(brief.input.description);
     setFeel(brief.input.feel ?? '');
     setVisualAmbition(brief.input.visualAmbition ?? 40);
@@ -125,6 +131,12 @@ export function ComposeView() {
     performanceCeiling,
     targetDevices,
   };
+  const currentBriefKey = JSON.stringify({
+    ...briefInput,
+    description: description.trim(),
+    targetDevices: [...targetDevices].sort(),
+  });
+  const directionsAreCurrent = hasComposed && currentBriefKey === lastComposedBriefKey;
 
   // Commit generation only on submit. Editing a brief must never alter a chosen snapshot.
   const [compositionResult,setCompositionResult] = useState(()=>composeProjectPipeline(briefInput,{catalogResources:[],seed:'initial-unsubmitted'}));
@@ -148,14 +160,22 @@ export function ComposeView() {
 
   const handleCompose = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!description.trim()) {
+      setBriefError('Enter a product description before composing.');
+      descriptionRef.current?.focus();
+      return;
+    }
+    setBriefError('');
     if (catalogStatus !== 'ready' || catalogResources.length === 0) {
       return;
     }
     try {
-      const generated = composeProjectPipeline(briefInput,{catalogResources,seed:crypto.randomUUID()});
+      const normalizedBriefInput = { ...briefInput, description: description.trim() };
+      const generated = composeProjectPipeline(normalizedBriefInput,{catalogResources,seed:crypto.randomUUID()});
       setCompositionResult(generated);
       setCompositionError('');
       setHasComposed(true);
+      setLastComposedBriefKey(currentBriefKey);
     } catch(cause) {setCompositionError(`Composition failed: ${String(cause)}`);}
 
   };
@@ -203,13 +223,28 @@ export function ComposeView() {
           </label>
           <textarea
             id="description"
+            ref={descriptionRef}
             rows={4}
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => {
+              setDescription(e.target.value);
+              setBriefError('');
+            }}
+            onInvalid={(event) => {
+              event.preventDefault();
+              setBriefError('Enter a product description before composing.');
+            }}
             placeholder="Describe what your product does, who it is for, and key operational capabilities..."
             className="w-full rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] p-4 text-sm text-[#111217] focus:border-[#2547E8] focus:bg-white focus:outline-none dark:border-[#272C34] dark:bg-[#0B0D10] dark:text-[#F5F7FA] dark:focus:border-[#6782FF]"
             required
+            aria-invalid={briefError ? 'true' : undefined}
+            aria-describedby={briefError ? 'brief-error' : undefined}
           />
+          {briefError && (
+            <p id="brief-error" role="alert" className="text-sm text-[#C83D48]">
+              {briefError}
+            </p>
+          )}
         </div>
 
         {/* Controls Grid */}
@@ -272,7 +307,7 @@ export function ComposeView() {
                 {currentVisualStop} ({visualAmbition})
               </span>
             </div>
-            <div className="grid grid-cols-5 gap-1">
+            <div role="group" aria-label="Visual Ambition" className="grid grid-cols-5 gap-1">
               {(['essential', 'refined', 'striking', 'stunning', 'experimental'] as const).map((stop) => {
                 const def = VISUAL_AMBITION_STOPS[stop as VisualAmbitionStop];
                 const isSelected = currentVisualStop === stop;
@@ -280,6 +315,7 @@ export function ComposeView() {
                   <button
                     key={stop}
                     type="button"
+                    aria-pressed={isSelected}
                     onClick={() => setVisualAmbition(def.defaultScore)}
                     className={`rounded-md p-2 text-center text-xs transition-all ${
                       isSelected
@@ -304,7 +340,7 @@ export function ComposeView() {
                 {currentStructuralStop} ({structuralCreativity})
               </span>
             </div>
-            <div className="grid grid-cols-5 gap-1">
+            <div role="group" aria-label="Structural Creativity" className="grid grid-cols-5 gap-1">
               {(['familiar', 'modern', 'inventive', 'radical', 'experimental'] as const).map((stop) => {
                 const def = STRUCTURAL_CREATIVITY_STOPS[stop as StructuralCreativityStop];
                 const isSelected = currentStructuralStop === stop;
@@ -312,6 +348,7 @@ export function ComposeView() {
                   <button
                     key={stop}
                     type="button"
+                    aria-pressed={isSelected}
                     onClick={() => setStructuralCreativity(def.defaultScore)}
                     className={`rounded-md p-2 text-center text-xs transition-all ${
                       isSelected
@@ -331,6 +368,8 @@ export function ComposeView() {
         <div className="border-t border-[#D9D6CF] pt-4 dark:border-[#272C34]">
           <button
             type="button"
+            aria-expanded={showAdvanced}
+            aria-controls={showAdvanced ? 'advanced-compose-constraints' : undefined}
             onClick={() => setShowAdvanced(!showAdvanced)}
             className="inline-flex items-center gap-1.5 text-xs font-bold text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA]"
           >
@@ -339,15 +378,17 @@ export function ComposeView() {
           </button>
 
           {showAdvanced && (
-            <div className="mt-4 grid grid-cols-1 gap-4 rounded-xl bg-[#FAF9F6] p-4 dark:bg-[#0B0D10] sm:grid-cols-3">
+            <div id="advanced-compose-constraints" className="mt-4 grid grid-cols-1 gap-4 rounded-xl bg-[#FAF9F6] p-4 dark:bg-[#0B0D10] sm:grid-cols-3">
               {/* Devices */}
               <div>
                 <span className="text-xs font-bold">Target Devices</span>
-                <div className="mt-2 flex gap-1.5">
+                <div role="group" aria-label="Target Devices" className="mt-2 flex flex-wrap gap-1.5">
                   <button
                     type="button"
+                    aria-pressed={targetDevices.includes('desktop')}
+                    disabled={targetDevices.length === 1 && targetDevices.includes('desktop')}
                     onClick={() => handleToggleDevice('desktop')}
-                    className={`inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs ${
+                    className={`inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs disabled:cursor-not-allowed disabled:opacity-60 ${
                       targetDevices.includes('desktop')
                         ? 'bg-[#2547E8] text-white'
                         : 'border border-[#D9D6CF] text-[#62666F] dark:border-[#272C34]'
@@ -357,8 +398,10 @@ export function ComposeView() {
                   </button>
                   <button
                     type="button"
+                    aria-pressed={targetDevices.includes('tablet')}
+                    disabled={targetDevices.length === 1 && targetDevices.includes('tablet')}
                     onClick={() => handleToggleDevice('tablet')}
-                    className={`inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs ${
+                    className={`inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs disabled:cursor-not-allowed disabled:opacity-60 ${
                       targetDevices.includes('tablet')
                         ? 'bg-[#2547E8] text-white'
                         : 'border border-[#D9D6CF] text-[#62666F] dark:border-[#272C34]'
@@ -368,8 +411,10 @@ export function ComposeView() {
                   </button>
                   <button
                     type="button"
+                    aria-pressed={targetDevices.includes('mobile')}
+                    disabled={targetDevices.length === 1 && targetDevices.includes('mobile')}
                     onClick={() => handleToggleDevice('mobile')}
-                    className={`inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs ${
+                    className={`inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs disabled:cursor-not-allowed disabled:opacity-60 ${
                       targetDevices.includes('mobile')
                         ? 'bg-[#2547E8] text-white'
                         : 'border border-[#D9D6CF] text-[#62666F] dark:border-[#272C34]'
@@ -378,6 +423,11 @@ export function ComposeView() {
                     <Smartphone className="h-3 w-3" /> Mobile
                   </button>
                 </div>
+                {targetDevices.length === 1 && (
+                  <p className="mt-1 text-[11px] text-[var(--text-muted)]" role="status">
+                    At least one target device must remain selected.
+                  </p>
+                )}
               </div>
 
               {/* Accessibility Floor */}
@@ -454,8 +504,13 @@ export function ComposeView() {
       </form>
 
       {compositionError && <p role="alert" className="text-[#C83D48]">{compositionError}</p>}
+      {hasComposed && !directionsAreCurrent && (
+        <p role="status" className="border-l-2 border-[#2547E8] bg-[#E7EBFF] p-3 text-sm text-[#111217] dark:border-[#6782FF] dark:bg-[#1C2752] dark:text-[#F5F7FA]">
+          Your brief or design settings changed. Compose again to update the directions.
+        </p>
+      )}
       {/* Output Sections (Visible after composing with ready catalogue) */}
-      {hasComposed && catalogStatus === 'ready' && (
+      {directionsAreCurrent && catalogStatus === 'ready' && (
         <div className="space-y-12">
           {/* Inferred ProductModel & Assumptions */}
           <section className="space-y-6">
