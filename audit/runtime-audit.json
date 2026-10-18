@@ -4833,7 +4833,7 @@
         "tests/e2e/workbench-inheritance-hardening.spec.ts"
       ],
       "remediation": "Render Project at project scope, Inherited or Overridden at an editable node scope, and Locked where a local or ancestor lock applies. A browser regression checks all seven project-scope labels and representative mobile inheritance.",
-      "fixCommit": null,
+      "fixCommit": "9c4daf74",
       "runtimeReports": [
         "quality/evidence/step-18/before/project-scope-reported-as-inherited.json",
         "quality/evidence/step-18/after/project-scope-labelled-as-project.json",
@@ -4877,7 +4877,7 @@
         "tests/e2e/workbench-inheritance-hardening.spec.ts"
       ],
       "remediation": "Explain the snapshot and reset behavior in the Lock Design DNA control and name the ancestor inheritance behavior in the reset tooltip. The visible browser regression verifies locked, overridden-after-unlock, and inherited-after-reset states.",
-      "fixCommit": null,
+      "fixCommit": "9c4daf74",
       "runtimeReports": [
         "quality/evidence/step-18/before/unlock-snapshots-as-overrides.json",
         "quality/evidence/step-18/after/locked-dna-stays-frozen.json",
@@ -4891,5 +4891,5 @@
       "status": "fixed-local-verified"
     }
   ],
-  "generatedAt": "2026-10-18T22:41:46.805Z"
+  "generatedAt": "2026-10-18T22:41:53.999Z"
 }
