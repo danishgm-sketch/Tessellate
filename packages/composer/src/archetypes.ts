@@ -532,7 +532,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
     name: 'Media & Publishing',
     description: 'Newsrooms, digital magazines, video streaming, and high-volume article feeds.',
     keywords: ['media', 'news', 'publishing', 'article', 'editorial', 'magazine', 'journalism', 'stream', 'broadcast'],
-    primaryAudience: 'Readers, viewers, editors, and digital journalists',
+    primaryAudience: 'Readers, listeners, editors, and digital journalists',
     userSophistication: 50,
     trustRequirement: 85,
     informationComplexity: 65,
@@ -541,7 +541,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
     transactionCriticality: 40,
     navigationComplexity: 60,
     mobileImportance: 90,
-    primaryObjective: 'Deliver breaking journalism, compelling editorial reads, and immersive streaming',
+    primaryObjective: 'Deliver timely journalism, compelling editorial reads, and clear topic discovery',
     defaultEntities: [
       { name: 'Article', description: 'Published story with byline, hero media, and body', fields: ['id', 'headline', 'author', 'section', 'publishedAt'] },
       { name: 'Section', description: 'Category vertical (e.g. Technology, Opinion)', fields: ['id', 'name', 'slug', 'editor'] },
@@ -552,7 +552,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
       { id: 'curate-frontpage', name: 'Editor adjusts top headline placement and Breaking ticker', steps: ['drag-stories', 'set-breaking-flag', 'publish-edition'] },
     ],
     recommendedScreens: [
-      { name: 'Front Page Feed', screenType: 'marketing', purpose: 'Grid of hero top stories and section rivers', jobs: ['scan-breaking-news', 'choose-article'], required: true },
+      { name: 'Front Page Feed', screenType: 'marketing', purpose: 'Grid of leading stories and editorial sections', jobs: ['scan-breaking-news', 'choose-article'], required: true },
       { name: 'Article Reader', screenType: 'detail-entity', purpose: 'High-readability serif column with photo galleries and pullquotes', jobs: ['read-story', 'share'], required: true },
       { name: 'Section Explorer', screenType: 'index-list', purpose: 'Archive by topic and author bylines', jobs: ['filter-by-topic', 'search-archives'], required: false },
     ],

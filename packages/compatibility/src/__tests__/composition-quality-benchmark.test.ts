@@ -83,7 +83,7 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
 
     expect(catalogScreen?.screenType).toBe('search-explore');
     expect(catalogScreen?.requiredRoles).toEqual(
-      expect.arrayContaining(['search-header', 'facet-rail', 'results-grid', 'conversion-cta'])
+      expect.arrayContaining(['search-header', 'facet-rail', 'results-grid'])
     );
     for (const direction of [result.directionA, result.directionB, result.directionC]) {
       const screen = direction.manifest.screens.find(
@@ -92,14 +92,15 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
       const nodes = screen ? collectNodes(screen.rootNode) : [];
       const search = nodes.find((node) => node.semanticRole === 'search-header');
       const products = nodes.find((node) => node.semanticRole === 'results-grid');
-      const detailsCta = nodes.find((node) => node.resourceRef?.slug === 'cta-minimal');
+      const detailRows = (products?.props.rows ?? []) as Array<{ name: string; href?: string }>;
       const productDetail = result.screenGraph.groups
         .flatMap((group) => group.screens)
         .find((candidate) => candidate.name === 'Product Detail');
 
       expect(search?.props.label).toBe('Search products');
-      expect(detailsCta?.props.label).toBe('View product details');
-      expect(detailsCta?.props.href).toBe(`#${productDetail?.id}`);
+      expect(nodes.some((node) => node.resourceRef?.slug === 'cta-minimal')).toBe(false);
+      expect(detailRows).toHaveLength(3);
+      expect(detailRows.every((row) => row.href === `#${productDetail?.id}`)).toBe(true);
       expect(products?.props.title).toBe('Available products');
       expect(products?.props.columnLabels).toEqual({
         name: 'Product',
@@ -137,12 +138,13 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
 
       expect(search?.props.label).toBe('Search albums');
       expect(albums?.props.title).toBe('Available albums');
-      const detailsCta = nodes.find((node) => node.resourceRef?.slug === 'cta-minimal');
+      const detailRows = (albums?.props.rows ?? []) as Array<{ name: string; href?: string }>;
       const productDetail = result.screenGraph.groups
         .flatMap((group) => group.screens)
         .find((candidate) => candidate.name === 'Product Detail');
-      expect(detailsCta?.props.label).toBe('View album details');
-      expect(detailsCta?.props.href).toBe(`#${productDetail?.id}`);
+      expect(nodes.some((node) => node.resourceRef?.slug === 'cta-minimal')).toBe(false);
+      expect(detailRows).toHaveLength(3);
+      expect(detailRows.every((row) => row.href === `#${productDetail?.id}`)).toBe(true);
       expect(albums?.props.columnLabels).toEqual({
         name: 'Album',
         type: 'Artist and tracks',
@@ -205,6 +207,166 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
         quality: 'Runtime',
         status: 'Availability',
       });
+    }
+  });
+
+  it('keeps distinct AI products on domain-specific screens and workflows', () => {
+    const cases = [
+      {
+        id: 'AI-02',
+        screens: ['Audio Studio', 'Track Library'],
+        entities: /track|stem/i,
+        content: /approved stems|music drafts/i,
+      },
+      {
+        id: 'AI-03',
+        screens: ['Support Assistant', 'Answer Review Queue'],
+        entities: /support case|knowledge source/i,
+        content: /support specialist|help-center passage/i,
+      },
+      {
+        id: 'AI-04',
+        screens: ['Evaluation Runs', 'Failure Cases'],
+        entities: /evaluation|test case/i,
+        content: /fixed test set|regression/i,
+      },
+      {
+        id: 'AI-05',
+        screens: ['Agent Workspace', 'Approval Queue'],
+        entities: /agent run|approval/i,
+        content: /bounded actions|approve.*execution/i,
+      },
+      {
+        id: 'AI-06',
+        screens: ['Image Studio', 'Generation Library'],
+        entities: /image|generation/i,
+        content: /visual concepts|image prompt/i,
+      },
+    ];
+
+    for (const testCase of cases) {
+      const brief = briefs.find((candidate) => candidate.id === testCase.id)!;
+      const result = composeProjectPipeline(
+        { description: brief.brief },
+        { catalogResources: catalog, seed: `composition-quality-${testCase.id}-specialty` }
+      );
+      const screenNames = result.screenGraph.groups.flatMap((group) =>
+        group.screens.map((screen) => screen.name)
+      );
+
+      expect(result.productModel.productArchetypes[0]?.tag).toBe('ai');
+      expect(screenNames).toEqual(expect.arrayContaining(testCase.screens));
+      expect(JSON.stringify(result.productModel.entities)).toMatch(testCase.entities);
+      expect(screenNames).not.toEqual(
+        expect.arrayContaining(['Prompt Canvas', 'Model & API Settings'])
+      );
+      for (const direction of [result.directionA, result.directionB, result.directionC]) {
+        expect(direction.manifest.screens.map((screen) => screen.name)).toEqual(
+          expect.arrayContaining(testCase.screens)
+        );
+        expect(JSON.stringify(direction.manifest)).toMatch(testCase.content);
+        expect(JSON.stringify(direction.manifest).toLocaleLowerCase()).not.toContain(
+          'equip agent with tools and memory'
+        );
+      }
+    }
+  });
+
+  it('plans developer tools around the operational workflow named in each brief', () => {
+    const cases = [
+      {
+        id: 'DEV-01',
+        screens: ['Request Inspector', 'Saved Requests'],
+        forbidden: ['Telemetry Dashboard', 'Log Explorer'],
+        content: /API Request|replay-failing-request/i,
+      },
+      {
+        id: 'DEV-02',
+        screens: ['Deployment Overview', 'Release History'],
+        forbidden: ['Documentation & SDKs'],
+        content: /Kubernetes Service|failed-release/i,
+      },
+      {
+        id: 'DEV-04',
+        screens: ['Trace Explorer', 'Span Detail'],
+        forbidden: ['Documentation & SDKs'],
+        content: /distributed trace|critical-span/i,
+      },
+      {
+        id: 'DEV-05',
+        screens: ['Pull Requests', 'CI Checks'],
+        forbidden: ['Telemetry Dashboard', 'Log Explorer'],
+        content: /Pull Request|CI check/i,
+      },
+      {
+        id: 'DEV-06',
+        screens: ['Flag Rules', 'Change History'],
+        forbidden: ['Telemetry Dashboard', 'Log Explorer'],
+        content: /Feature Flag|Rollout Rule/i,
+      },
+    ];
+
+    for (const testCase of cases) {
+      const brief = briefs.find((candidate) => candidate.id === testCase.id)!;
+      const result = composeProjectPipeline(
+        { description: brief.brief },
+        { catalogResources: catalog, seed: `composition-quality-${testCase.id}-specialty` }
+      );
+      const screenNames = result.screenGraph.groups.flatMap((group) =>
+        group.screens.map((screen) => screen.name)
+      );
+
+      expect(result.productModel.productArchetypes[0]?.tag).toBe('developer-tools');
+      expect(screenNames).toEqual(expect.arrayContaining(testCase.screens));
+      expect(screenNames).not.toEqual(expect.arrayContaining(testCase.forbidden));
+      expect(JSON.stringify(result.productModel.workflows)).not.toContain('rotate-keys');
+      for (const direction of [result.directionA, result.directionB, result.directionC]) {
+        expect(JSON.stringify(direction.manifest)).toMatch(testCase.content);
+      }
+    }
+  });
+
+  it('keeps magazine, radio, and newsroom products distinct from newspaper and film defaults', () => {
+    const cases = [
+      {
+        id: 'MED-02',
+        screens: ['Magazine Issues', 'Photo Essays'],
+        forbidden: ['Front Page Feed', 'Film Catalogue'],
+        content: /magazine issue|photo essay/i,
+      },
+      {
+        id: 'MED-03',
+        screens: ['Live Radio', 'Episode Archive', 'Listening Schedule'],
+        forbidden: ['Article Reader', 'Film Catalogue'],
+        content: /radio episode|programme archive/i,
+      },
+      {
+        id: 'MED-05',
+        screens: ['Newsroom Planner', 'Story Assignments', 'Edition Preview'],
+        forbidden: ['Article Reader', 'Film Catalogue'],
+        content: /newsroom story|story assignment/i,
+      },
+    ];
+
+    for (const testCase of cases) {
+      const brief = briefs.find((candidate) => candidate.id === testCase.id)!;
+      const result = composeProjectPipeline(
+        { description: brief.brief },
+        { catalogResources: catalog, seed: `composition-quality-${testCase.id}-specialty` }
+      );
+      const screenNames = result.screenGraph.groups.flatMap((group) =>
+        group.screens.map((screen) => screen.name)
+      );
+
+      expect(result.productModel.productArchetypes[0]?.tag).toBe('media');
+      expect(screenNames).toEqual(expect.arrayContaining(testCase.screens));
+      expect(screenNames).not.toEqual(expect.arrayContaining(testCase.forbidden));
+      expect(result.productModel.primaryObjective).not.toMatch(/immersive streaming/i);
+      for (const direction of [result.directionA, result.directionB, result.directionC]) {
+        const manifestText = JSON.stringify(direction.manifest);
+        expect(manifestText).toMatch(testCase.content);
+        expect(manifestText).not.toMatch(/Search films|film catalogue/i);
+      }
     }
   });
 
@@ -471,6 +633,33 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
               output.manifest.screens.find((screen) => screen.screenNodeId === target)?.name
             ).toBe('Product Detail');
           }
+        }
+        const catalogScreen = output.manifest.screens.find(
+          (screen) => screen.name === 'Product Catalog'
+        );
+        if (brief.expectedPrimaryArchetype === 'ecommerce' && catalogScreen) {
+          const table = catalogScreen
+            ? collectNodes(catalogScreen.rootNode).find(
+                (node) => node.semanticRole === 'results-grid'
+              )
+            : undefined;
+          const linkedRows = table?.props.rows as
+            Array<{ name: string; href?: string }> | undefined;
+          const targetIds = new Set(output.manifest.screens.map((screen) => screen.screenNodeId));
+          expect(
+            conversionCtas,
+            `${brief.id} must avoid a marketing CTA inside the product catalog`
+          ).toHaveLength(0);
+          expect(linkedRows).toHaveLength(3);
+          expect(
+            linkedRows?.every(
+              (row) => row.href?.startsWith('#') && targetIds.has(row.href.slice(1))
+            )
+          ).toBe(true);
+          const detailTarget = linkedRows?.[0]?.href?.slice(1);
+          expect(
+            output.manifest.screens.find((screen) => screen.screenNodeId === detailTarget)?.name
+          ).toBe('Product Detail');
         }
         const metricNodes = nodes.filter((node) => node.resourceRef?.slug === 'dashboard-kpi-grid');
         if (!result.productModel.entities.some((entity) => entity.name === 'Employee')) {

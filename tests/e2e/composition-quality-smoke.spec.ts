@@ -703,59 +703,71 @@ test('product catalog offers a clear path to the generated product detail screen
       screens: Array<{ id: string; screenNodeId: string; name: string; rootNode: AuditNode }>;
     };
     const catalogScreen = manifest.screens.find((screen) => screen.name === 'Product Catalog');
-    const ctaNodes = (catalogScreen ? collectNodes(catalogScreen.rootNode) : []).filter(
-      (node) => node.resourceRef?.slug === 'cta-minimal'
+    const resultTable = (catalogScreen ? collectNodes(catalogScreen.rootNode) : []).find(
+      (node) => node.semanticRole === 'results-grid'
     );
+    const rows = resultTable?.props.rows as Array<{ name: string; href?: string }> | undefined;
     expect(
-      ctaNodes.length,
-      `Direction ${number} should connect product discovery to product details`
-    ).toBe(1);
-    for (const node of ctaNodes) {
-      expect(node.props.label).toBe('View product details');
-      const targetId = typeof node.props.href === 'string' ? node.props.href.slice(1) : '';
-      const targetScreen = manifest.screens.find(
-        (screen) => screen.id === targetId || screen.screenNodeId === targetId
-      );
-      expect(targetScreen?.name).toBe('Product Detail');
+      rows?.length,
+      `Direction ${number} should provide product-specific paths to product details`
+    ).toBe(3);
+    expect(rows?.every((row) => row.href?.startsWith('#'))).toBe(true);
+    const targetId = rows?.[0]?.href?.slice(1) ?? '';
+    const targetScreen = manifest.screens.find(
+      (screen) => screen.id === targetId || screen.screenNodeId === targetId
+    );
+    expect(targetScreen?.name).toBe('Product Detail');
+    expect(
+      (catalogScreen ? collectNodes(catalogScreen.rootNode) : []).some(
+        (node) => node.resourceRef?.slug === 'cta-minimal'
+      )
+    ).toBe(false);
 
-      const screenSelect = dialog.getByLabel('Direction preview screen');
-      await details.locator('summary').click();
-      const productDetailLinks = dialog.getByRole('link', { name: /View product details/ });
-      await expect(productDetailLinks).toHaveCount(1);
-      await productDetailLinks.click();
-      await expect(screenSelect).toHaveValue(targetScreen?.id ?? '');
-      await expect(dialog.locator('.tess-screen')).toContainText('Product Detail');
-      if (number === '01') {
-        const screenshotPath = path.resolve(
-          process.cwd(),
-          `quality/evidence/step-14/manual-review/after/ecom-01-direction-01-${viewportLabel}.png`
-        );
-        fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
-        await dialog.screenshot({ path: screenshotPath, animations: 'disabled' });
-        const runtimeReportPath = path.resolve(
-          process.cwd(),
-          `quality/evidence/step-14/manual-review/after/ecom-cta-runtime-${viewportLabel}.json`
-        );
-        fs.writeFileSync(
-          runtimeReportPath,
-          `${JSON.stringify(
-            {
-              url: page.url(),
-              viewport: page.viewportSize(),
-              status: 'passed',
-              direction: number,
-              selectedScreen: await screenSelect.inputValue(),
-              visibleDestination: 'Product Detail',
-              consoleErrors,
-              uncaught,
-              failedRequests,
-              httpErrors,
-            },
-            null,
-            2
-          )}\n`
-        );
-      }
+    const screenSelect = dialog.getByLabel('Direction preview screen');
+    await details.locator('summary').click();
+    const productDetailLinks = dialog.getByRole('link', { name: /Example garment A/ });
+    await expect(productDetailLinks).toHaveCount(1);
+    if (number === '01') {
+      const screenshotPath = path.resolve(
+        process.cwd(),
+        `quality/evidence/step-14/manual-review/after/ecom-01-direction-01-${viewportLabel}.png`
+      );
+      fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
+      await dialog.screenshot({ path: screenshotPath, animations: 'disabled' });
+    }
+    await productDetailLinks.click();
+    await expect(screenSelect).toHaveValue(targetScreen?.id ?? '');
+    await expect(dialog.locator('.tess-screen')).toContainText('Product Detail');
+    if (number === '01') {
+      const screenshotPath = path.resolve(
+        process.cwd(),
+        `quality/evidence/step-14/manual-review/after/ecom-01-product-detail-${viewportLabel}.png`
+      );
+      fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
+      await dialog.screenshot({ path: screenshotPath, animations: 'disabled' });
+      const runtimeReportPath = path.resolve(
+        process.cwd(),
+        `quality/evidence/step-14/manual-review/after/ecom-cta-runtime-${viewportLabel}.json`
+      );
+      fs.writeFileSync(
+        runtimeReportPath,
+        `${JSON.stringify(
+          {
+            url: page.url(),
+            viewport: page.viewportSize(),
+            status: 'passed',
+            direction: number,
+            selectedScreen: await screenSelect.inputValue(),
+            visibleDestination: 'Product Detail',
+            consoleErrors,
+            uncaught,
+            failedRequests,
+            httpErrors,
+          },
+          null,
+          2
+        )}\n`
+      );
     }
     await dialog.getByRole('button', { name: 'Close dialog' }).click();
   }

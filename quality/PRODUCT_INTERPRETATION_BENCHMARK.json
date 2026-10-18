@@ -15,7 +15,7 @@
     },
     "ai": {
       "trustRequirement": [70, 100],
-      "dataDensity": [40, 80],
+      "dataDensity": [40, 90],
       "transactionCriticality": [30, 70]
     },
     "developer-tools": {
@@ -85,7 +85,7 @@
     },
     "media": {
       "trustRequirement": [60, 90],
-      "dataDensity": [50, 75],
+      "dataDensity": [40, 85],
       "transactionCriticality": [10, 50]
     },
     "travel": {
@@ -179,19 +179,92 @@
       "forbiddenAnyOf": ["order book", "trading terminal", "candidate scorecard"]
     },
     "ai": {
-      "audienceAnyOf": ["knowledge workers"],
-      "objectiveAnyOf": ["assistance"],
-      "entityAnyOf": ["Prompt", "Generation"],
-      "workflowAnyOf": ["generation"],
-      "screenAnyOf": ["Prompt Canvas", "History"],
+      "audienceAnyOf": [
+        "knowledge workers",
+        "composers",
+        "support specialists",
+        "practitioners",
+        "operations staff",
+        "illustrators"
+      ],
+      "objectiveAnyOf": [
+        "assistance",
+        "help composers",
+        "assist support",
+        "help practitioners",
+        "help operators",
+        "help illustrators"
+      ],
+      "entityAnyOf": [
+        "Prompt",
+        "Generation",
+        "Track",
+        "Support Case",
+        "Knowledge Source",
+        "Evaluation Run",
+        "Failure Example",
+        "Agent",
+        "Image Prompt"
+      ],
+      "workflowAnyOf": ["generation", "compare", "answer", "review", "approve", "image concept"],
+      "screenAnyOf": [
+        "Prompt Canvas",
+        "History",
+        "Audio Studio",
+        "Support Assistant",
+        "Evaluation Runs",
+        "Agent Workspace",
+        "Image Studio"
+      ],
       "forbiddenAnyOf": ["order book", "trading terminal", "warehouse inventory"]
     },
     "developer-tools": {
-      "audienceAnyOf": ["software engineers"],
-      "objectiveAnyOf": ["diagnostic control"],
-      "entityAnyOf": ["Service", "LogStream"],
-      "workflowAnyOf": ["logs", "credentials"],
-      "screenAnyOf": ["Telemetry Dashboard", "Log Explorer"],
+      "audienceAnyOf": [
+        "software engineers",
+        "software teams",
+        "backend engineers",
+        "platform engineers",
+        "maintainers",
+        "application engineers"
+      ],
+      "objectiveAnyOf": [
+        "diagnostic control",
+        "help engineers",
+        "help platform teams",
+        "help maintainers",
+        "help software teams",
+        "help application engineers"
+      ],
+      "entityAnyOf": [
+        "Service",
+        "LogStream",
+        "API Request",
+        "Kubernetes Service",
+        "Trace",
+        "Pull Request",
+        "Feature Flag",
+        "API Endpoint"
+      ],
+      "workflowAnyOf": [
+        "logs",
+        "credentials",
+        "inspect",
+        "monitor",
+        "investigate",
+        "review",
+        "configure",
+        "integrate"
+      ],
+      "screenAnyOf": [
+        "Telemetry Dashboard",
+        "Log Explorer",
+        "Request Inspector",
+        "Deployment Overview",
+        "Trace Explorer",
+        "Pull Requests",
+        "Flag Rules",
+        "Endpoint Reference"
+      ],
       "forbiddenAnyOf": ["order book", "candidate pipeline", "hotel reservation"]
     },
     "fintech": {
@@ -283,11 +356,40 @@
       "forbiddenAnyOf": ["order book", "warehouse inventory", "lesson classroom"]
     },
     "media": {
-      "audienceAnyOf": ["readers"],
-      "objectiveAnyOf": ["journalism"],
-      "entityAnyOf": ["Article", "Edition"],
-      "workflowAnyOf": ["headline", "editor"],
-      "screenAnyOf": ["Front Page Feed", "Article Reader"],
+      "audienceAnyOf": ["readers", "listeners", "producers", "news editors", "reporters"],
+      "objectiveAnyOf": [
+        "journalism",
+        "magazine issues",
+        "help listeners",
+        "help editors",
+        "local reporting"
+      ],
+      "entityAnyOf": [
+        "Article",
+        "Edition",
+        "Magazine Issue",
+        "Photo Essay",
+        "Programme",
+        "Episode",
+        "Story Assignment",
+        "Draft Story"
+      ],
+      "workflowAnyOf": [
+        "headline",
+        "editor",
+        "browse issues",
+        "find a live programme",
+        "assign story",
+        "prepare edition"
+      ],
+      "screenAnyOf": [
+        "Front Page Feed",
+        "Article Reader",
+        "Magazine Issues",
+        "Live Radio",
+        "Newsroom Planner",
+        "Local News Front Page"
+      ],
       "forbiddenAnyOf": ["order book", "candidate pipeline", "warehouse inventory"]
     },
     "travel": {

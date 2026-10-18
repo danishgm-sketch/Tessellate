@@ -49,6 +49,9 @@ export function bindResourceContent(
       `${briefDescription} ${product.primaryObjective}`
     );
   const isEcommerceCatalog = primaryArchetype === 'ecommerce' && screen.name === 'Product Catalog';
+  const productDetailHref = screens.find((item) => /product detail/i.test(item.name))
+    ? `#${screens.find((item) => /product detail/i.test(item.name))!.id}`
+    : undefined;
   const isMusicStore =
     primaryArchetype === 'ecommerce' && product.entities.some((entity) => entity.name === 'Album');
   const ecommerceItemLabel = isMusicStore
@@ -69,6 +72,22 @@ export function bindResourceContent(
     primaryArchetype === 'travel' && product.entities.some((entity) => entity.name === 'Flight');
   const isFilmStreaming =
     primaryArchetype === 'media' && product.entities.some((entity) => entity.name === 'Film');
+  const isMagazineProduct =
+    primaryArchetype === 'media' &&
+    product.entities.some((entity) => entity.name === 'Magazine Issue');
+  const isRadioProduct =
+    primaryArchetype === 'media' && product.entities.some((entity) => entity.name === 'Programme');
+  const isNewsroom =
+    primaryArchetype === 'media' && product.entities.some((entity) => entity.name === 'Story Assignment');
+  const isLocalJournalism =
+    primaryArchetype === 'media' &&
+    !isFilmStreaming &&
+    !isMagazineProduct &&
+    !isRadioProduct &&
+    !isNewsroom;
+  const isGroundedSupportAssistant =
+    primaryArchetype === 'ai' &&
+    product.entities.some((entity) => entity.name === 'Knowledge Source');
   const isHotelBooking =
     primaryArchetype === 'travel' && product.entities.some((entity) => entity.name === 'Room');
   const isDestinationTravel =
@@ -115,21 +134,29 @@ export function bindResourceContent(
     ? 'Meet your team'
     : isFlightManagement
       ? 'View upcoming flights'
-      : isFilmStreaming
-        ? 'Browse films'
-        : isMusicStore
-          ? screen.name === 'Product Catalog'
-            ? 'View album details'
-            : 'Browse albums'
-          : isDestinationTravel
-            ? 'Explore destinations'
-            : isHotelBooking
-              ? 'Find a stay'
-              : isCommunity
-                ? 'See community updates'
-                : isReturnsPortal
-                  ? 'Find an order'
-                  : (ctaCopyByArchetype[primaryArchetype] ?? 'Explore the workspace');
+      : isGroundedSupportAssistant
+        ? 'Ask a support question'
+        : isRadioProduct
+          ? 'Listen to live radio'
+          : isMagazineProduct
+            ? 'Browse magazine issues'
+            : isNewsroom
+              ? 'Open the newsroom plan'
+              : isFilmStreaming
+                ? 'Browse films'
+                : isMusicStore
+                  ? screen.name === 'Product Catalog'
+                    ? 'View album details'
+                    : 'Browse albums'
+                  : isDestinationTravel
+                    ? 'Explore destinations'
+                    : isHotelBooking
+                      ? 'Find a stay'
+                      : isCommunity
+                        ? 'See community updates'
+                        : isReturnsPortal
+                          ? 'Find an order'
+                          : (ctaCopyByArchetype[primaryArchetype] ?? 'Explore the workspace');
   const targetPatternsByArchetype: Record<string, RegExp> = {
     ecommerce: /product detail/i,
     education: /learning|course|catalog/i,
@@ -145,14 +172,22 @@ export function bindResourceContent(
       ? /journey overview|flight details/i
       : isFilmStreaming
         ? /film catalogue|film detail|watchlist/i
-        : isDestinationTravel
-          ? /destination|neighborhood/i
-          : isHotelBooking
-            ? /find a stay|room details/i
-            : isReturnsPortal
-              ? /order lookup/i
-              : (targetPatternsByArchetype[primaryArchetype] ??
-                /overview|dashboard|home|workspace/i);
+        : isGroundedSupportAssistant
+          ? /support assistant|answer review/i
+          : isRadioProduct
+            ? /live radio|episode archive/i
+            : isMagazineProduct
+              ? /magazine issues|photo essays/i
+              : isNewsroom
+                ? /newsroom planner|story assignments/i
+                : isDestinationTravel
+                  ? /destination|neighborhood/i
+                  : isHotelBooking
+                    ? /find a stay|room details/i
+                    : isReturnsPortal
+                      ? /order lookup/i
+                      : (targetPatternsByArchetype[primaryArchetype] ??
+                        /overview|dashboard|home|workspace/i);
   const primaryActionScreen =
     screens.find((item) => preferredTargetPattern.test(item.name)) ??
     screens.find((item) => /overview|dashboard|home|workspace/i.test(item.name)) ??
@@ -189,11 +224,32 @@ export function bindResourceContent(
         ? 'Example search only. Connect a music catalogue to search licensed releases.'
         : 'Example search only. Connect a product catalogue to search live inventory.',
     },
-    media: {
-      label: 'Search films',
-      placeholder: 'Search films and collections',
-      helperText: 'Example search only. Connect a film catalogue to search available titles.',
-    },
+    media: isFilmStreaming
+      ? {
+          label: 'Search films',
+          placeholder: 'Search films and collections',
+          helperText: 'Example search only. Connect a film catalogue to search available titles.',
+        }
+      : isRadioProduct
+        ? {
+            label: 'Search programmes and episodes',
+            placeholder: 'Search the episode archive',
+            helperText:
+              'Example search only. Connect a broadcast catalogue to search programmes and episodes.',
+          }
+        : isMagazineProduct
+          ? {
+              label: 'Search magazine issues',
+              placeholder: 'Search issues and photo essays',
+              helperText:
+                'Example search only. Connect an editorial catalogue to search published issues.',
+            }
+          : {
+              label: 'Search local reporting',
+              placeholder: 'Search stories and topics',
+              helperText:
+                'Example search only. Connect a newsroom catalogue to search published reporting.',
+            },
     travel: isFlightManagement
       ? {
           label: 'Search flights',
@@ -230,10 +286,12 @@ export function bindResourceContent(
       placeholder: 'Search courses and topics',
       helperText: 'Example search only. Connect a course catalogue to search live results.',
     },
-    'developer-tool': {
-      label: 'Search records',
-      placeholder: 'Search logs and records',
-      helperText: 'Example search only. Connect your data source to search live records.',
+    'developer-tools': {
+      label: /trace/i.test(screen.name) ? 'Search traces and spans' : 'Search developer records',
+      placeholder: /trace/i.test(screen.name)
+        ? 'Search by trace, service, or error'
+        : 'Search requests, releases, or changes',
+      helperText: 'Example search only. Connect your service to search live developer records.',
     },
   };
   const searchCopy = searchCopyByArchetype[primaryArchetype] ?? {
@@ -288,57 +346,70 @@ export function bindResourceContent(
           description: entity.description ?? entity.name,
           detail: 'Example content',
         }));
-  const conversationExamples = /freelance|designer|proposal/i.test(briefDescription)
+  const conversationExamples = isGroundedSupportAssistant
     ? [
         {
-          time: 'Today',
-          title: 'Project inquiry',
-          desc: 'A client shares a brief and asks an independent designer about the work.',
+          time: 'Example question',
+          title: 'Can I change the delivery address on my order?',
+          desc: 'A help-center passage is attached so a support specialist can check the policy before replying.',
         },
         {
-          time: 'Yesterday',
-          title: 'Proposal reply',
-          desc: 'A designer outlines a possible scope and the next step.',
+          time: 'Human review',
+          title: 'Address changes after dispatch',
+          desc: 'This example response is waiting for a person to confirm the cited guidance and confidence.',
         },
       ]
-    : product.productArchetypes[0]?.tag === 'marketplace'
+    : /freelance|designer|proposal/i.test(briefDescription)
       ? [
           {
             time: 'Today',
-            title: 'Listing question',
-            desc: 'A buyer asks the seller about listing details and next steps.',
+            title: 'Project inquiry',
+            desc: 'A client shares a brief and asks an independent designer about the work.',
           },
           {
             time: 'Yesterday',
-            title: 'Seller reply',
-            desc: 'The seller responds with information relevant to the listing.',
+            title: 'Proposal reply',
+            desc: 'A designer outlines a possible scope and the next step.',
           },
         ]
-      : /community|neighborhood|hobby group/i.test(briefDescription)
+      : product.productArchetypes[0]?.tag === 'marketplace'
         ? [
             {
               time: 'Today',
-              title: 'Community update',
-              desc: 'A member shares a local update with a nearby group.',
+              title: 'Listing question',
+              desc: 'A buyer asks the seller about listing details and next steps.',
             },
             {
               time: 'Yesterday',
-              title: 'Neighbor reply',
-              desc: 'Another member adds context to the conversation.',
+              title: 'Seller reply',
+              desc: 'The seller responds with information relevant to the listing.',
             },
           ]
-        : [
-            {
-              time: 'Today',
-              title: 'New conversation',
-              desc: 'A team member shares a question about the current work.',
-            },
-            {
-              time: 'Yesterday',
-              title: 'Follow-up',
-              desc: 'A colleague responds with context and a suggested next step.',
-            },
-          ];
+        : /community|neighborhood|hobby group/i.test(briefDescription)
+          ? [
+              {
+                time: 'Today',
+                title: 'Community update',
+                desc: 'A member shares a local update with a nearby group.',
+              },
+              {
+                time: 'Yesterday',
+                title: 'Neighbor reply',
+                desc: 'Another member adds context to the conversation.',
+              },
+            ]
+          : [
+              {
+                time: 'Today',
+                title: 'New conversation',
+                desc: 'A team member shares a question about the current work.',
+              },
+              {
+                time: 'Yesterday',
+                title: 'Follow-up',
+                desc: 'A colleague responds with context and a suggested next step.',
+              },
+            ];
   const events =
     role === 'message-thread'
       ? conversationExamples
@@ -420,7 +491,13 @@ export function bindResourceContent(
             ? 'Available property listings'
             : isMarketplaceListings
               ? 'Available listings'
-              : 'Search results',
+              : isMagazineProduct
+                ? 'Magazine archive'
+                : isRadioProduct
+                  ? 'Programme archive'
+                  : isLocalJournalism
+                    ? 'Local reporting archive'
+                    : 'Search results',
         };
   const content: Record<string, unknown> = {
     title:
@@ -446,7 +523,13 @@ export function bindResourceContent(
                       : 'Available products'
                     : isStreamingCatalogue
                       ? 'Film catalogue'
-                      : 'Search results'
+                      : isMagazineProduct
+                        ? 'Magazine archive'
+                        : isRadioProduct
+                          ? 'Programme archive'
+                          : isLocalJournalism
+                            ? 'Local reporting archive'
+                            : 'Search results'
               : (titles[role] ?? screen.name),
     brand,
     links,
@@ -496,80 +579,117 @@ export function bindResourceContent(
             ? 'Release availability not connected'
             : 'Availability not connected',
           displayValue: isMusicStore ? 'Release price not connected' : 'Price not connected',
+          ...(productDetailHref ? { href: productDetailHref } : {}),
         }))
-      : isStreamingCatalogue
+      : isMagazineProduct && /issues|essays|stories/i.test(screen.name)
         ? ['A', 'B', 'C'].map((letter) => ({
             id: letter.charCodeAt(0),
-            name: `Example film ${letter}`,
-            type: 'Genre and format not connected',
+            name: `Example ${screen.name.toLowerCase().includes('essay') ? 'photo essay' : 'magazine issue'} ${letter}`,
+            type: 'Editorial section and publication date',
             quality: 0,
-            status: 'Availability not connected',
-            displayValue: 'Runtime not connected',
+            status: 'Issue details not connected',
+            displayValue: 'Story count not connected',
           }))
-        : isFlightDocuments
+        : isNewsroom && /assignments|planner|edition/i.test(screen.name)
           ? ['A', 'B', 'C'].map((letter) => ({
               id: letter.charCodeAt(0),
-              name: `Example travel document ${letter}`,
-              type: 'Boarding pass or journey document',
+              name: `Example newsroom story ${letter}`,
+              type: 'Reporter and editorial section',
               quality: 0,
-              status: 'Offline status not connected',
-              displayValue: 'Journey details not connected',
+              status: 'Assignment status not connected',
+              displayValue: 'Copy review not connected',
             }))
-          : employee
-            ? [
-                {
-                  id: 1,
-                  name: 'Example colleague A',
-                  type: 'Product team',
-                  quality: 80,
-                  status: 'Onboarding',
-                  displayValue: 'Progress not connected',
-                },
-                {
-                  id: 2,
-                  name: 'Example colleague B',
-                  type: 'Engineering team',
-                  quality: 100,
-                  status: 'Settled in',
-                  displayValue: 'Progress not connected',
-                },
-                {
-                  id: 3,
-                  name: 'Example colleague C',
-                  type: 'People team',
-                  quality: 40,
-                  status: 'Welcome week',
-                  displayValue: 'Progress not connected',
-                },
-              ]
-            : isRealEstate
-              ? ['A', 'B', 'C'].map((letter, index) => ({
-                  id: index + 1,
-                  name: `Example property ${letter}`,
-                  type: 'Location and features not connected',
+          : isRadioProduct && /episode|schedule/i.test(screen.name)
+            ? ['A', 'B', 'C'].map((letter) => ({
+                id: letter.charCodeAt(0),
+                name: `Example radio episode ${letter}`,
+                type: 'Programme and transcript',
+                quality: 0,
+                status: 'Transcript not connected',
+                displayValue: 'Duration not connected',
+              }))
+            : isLocalJournalism && /topic|archive/i.test(screen.name)
+              ? ['A', 'B', 'C'].map((letter) => ({
+                  id: letter.charCodeAt(0),
+                  name: `Example local story ${letter}`,
+                  type: 'Topic and byline',
                   quality: 0,
-                  status: 'Availability not connected',
-                  displayValue: 'Price not connected',
+                  status: 'Article not connected',
+                  displayValue: 'Publication date not connected',
                 }))
-              : isMarketplaceListings
-                ? ['A', 'B', 'C'].map((letter, index) => ({
-                    id: index + 1,
-                    name: `Example listing ${letter}`,
-                    type: 'Service details and availability not connected',
+              : isStreamingCatalogue
+                ? ['A', 'B', 'C'].map((letter) => ({
+                    id: letter.charCodeAt(0),
+                    name: `Example film ${letter}`,
+                    type: 'Genre and format not connected',
                     quality: 0,
-                    status: 'Example listing',
-                    displayValue: 'Availability not connected',
+                    status: 'Availability not connected',
+                    displayValue: 'Runtime not connected',
                   }))
-                : product.entities.map((entity, index) => ({
-                    id: index + 1,
-                    name: `Example ${entity.name}`,
-                    type: entity.description ?? 'Record',
-                    quality: 0,
-                    status: 'Sample',
-                    displayValue: isTradingTerminal
-                      ? 'Market data not connected'
-                      : 'Details not connected',
-                  })),
+                : isFlightDocuments
+                  ? ['A', 'B', 'C'].map((letter) => ({
+                      id: letter.charCodeAt(0),
+                      name: `Example travel document ${letter}`,
+                      type: 'Boarding pass or journey document',
+                      quality: 0,
+                      status: 'Offline status not connected',
+                      displayValue: 'Journey details not connected',
+                    }))
+                  : employee
+                    ? [
+                        {
+                          id: 1,
+                          name: 'Example colleague A',
+                          type: 'Product team',
+                          quality: 80,
+                          status: 'Onboarding',
+                          displayValue: 'Progress not connected',
+                        },
+                        {
+                          id: 2,
+                          name: 'Example colleague B',
+                          type: 'Engineering team',
+                          quality: 100,
+                          status: 'Settled in',
+                          displayValue: 'Progress not connected',
+                        },
+                        {
+                          id: 3,
+                          name: 'Example colleague C',
+                          type: 'People team',
+                          quality: 40,
+                          status: 'Welcome week',
+                          displayValue: 'Progress not connected',
+                        },
+                      ]
+                    : isRealEstate
+                      ? ['A', 'B', 'C'].map((letter, index) => ({
+                          id: index + 1,
+                          name: `Example property ${letter}`,
+                          type: 'Location and features not connected',
+                          quality: 0,
+                          status: 'Availability not connected',
+                          displayValue: 'Price not connected',
+                        }))
+                      : isMarketplaceListings
+                        ? ['A', 'B', 'C'].map((letter, index) => ({
+                            id: index + 1,
+                            name: `Example listing ${letter}`,
+                            type: 'Service details and availability not connected',
+                            quality: 0,
+                            status: 'Example listing',
+                            displayValue: 'Availability not connected',
+                          }))
+                        : product.entities.map((entity, index) => ({
+                            id: index + 1,
+                            name: `Example ${entity.name}`,
+                            type: entity.description ?? 'Record',
+                            quality: 0,
+                            status: 'Sample',
+                            displayValue: isTradingTerminal
+                              ? 'Market data not connected'
+                              : 'Details not connected',
+                          })),
     columnLabels: isEcommerceCatalog
       ? isMusicStore
         ? {
@@ -584,33 +704,61 @@ export function bindResourceContent(
             quality: 'Price',
             status: 'Availability',
           }
-      : isStreamingCatalogue
+      : isMagazineProduct && /issues|essays|stories/i.test(screen.name)
         ? {
-            name: 'Film',
-            type: 'Genre and format',
-            quality: 'Runtime',
-            status: 'Availability',
+            name: screen.name.toLowerCase().includes('essay') ? 'Photo essay' : 'Issue',
+            type: 'Editorial section and date',
+            quality: 'Stories',
+            status: 'Publication status',
           }
-        : isFlightDocuments
+        : isNewsroom && /assignments|planner|edition/i.test(screen.name)
           ? {
-              name: 'Document',
-              type: 'Journey',
-              quality: 'Offline access',
-              status: 'Status',
+              name: 'Story',
+              type: 'Reporter and section',
+              quality: 'Copy review',
+              status: 'Assignment status',
             }
-          : isRealEstate
+          : isRadioProduct && /episode|schedule/i.test(screen.name)
             ? {
-                name: 'Property',
-                type: 'Location and features',
-                quality: 'Price',
-                status: 'Availability',
+                name: 'Programme or episode',
+                type: 'Broadcast time and transcript',
+                quality: 'Duration',
+                status: 'Archive status',
               }
-            : {
-                name: employee ? 'Colleague' : 'Record',
-                type: employee ? 'Team' : 'Context',
-                quality: employee ? 'Progress' : 'Data',
-                status: 'Status',
-              },
+            : isLocalJournalism && /topic|archive/i.test(screen.name)
+              ? {
+                  name: 'Local story',
+                  type: 'Topic and byline',
+                  quality: 'Published',
+                  status: 'Article status',
+                }
+              : isStreamingCatalogue
+                ? {
+                    name: 'Film',
+                    type: 'Genre and format',
+                    quality: 'Runtime',
+                    status: 'Availability',
+                  }
+                : isFlightDocuments
+                  ? {
+                      name: 'Document',
+                      type: 'Journey',
+                      quality: 'Offline access',
+                      status: 'Status',
+                    }
+                  : isRealEstate
+                    ? {
+                        name: 'Property',
+                        type: 'Location and features',
+                        quality: 'Price',
+                        status: 'Availability',
+                      }
+                    : {
+                        name: employee ? 'Colleague' : 'Record',
+                        type: employee ? 'Team' : 'Context',
+                        quality: employee ? 'Progress' : 'Data',
+                        status: 'Status',
+                      },
     columns: employee
       ? [
           { title: 'Discover', tasks: ['Meet your buddy', 'Find your team'] },

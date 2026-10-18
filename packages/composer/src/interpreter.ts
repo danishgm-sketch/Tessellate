@@ -16,6 +16,8 @@ import { detectProductArchetypes, getProductArchetype } from './archetypes.js';
 import { findBlueprintByArchetype, type ProductBlueprint } from './blueprints.js';
 import {
   specialiseConsumer,
+  specialiseAi,
+  specialiseDeveloperTools,
   specialiseEcommerce,
   specialiseFintechTrading,
   specialiseMedia,
@@ -108,12 +110,18 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   const primaryTag = detectedArchetypes[0]?.tag ?? 'saas';
   const definition = getProductArchetype(primaryTag);
   const archetypeDef = definition
-    ? specialiseTravel(
-        specialiseMedia(
-          specialiseConsumer(
-            specialiseEcommerce(
-              specialiseMarketplace(
-                specialiseFintechTrading(specialisePeopleOperations(definition, text), text),
+    ? specialiseDeveloperTools(
+        specialiseAi(
+          specialiseTravel(
+            specialiseMedia(
+              specialiseConsumer(
+                specialiseEcommerce(
+                  specialiseMarketplace(
+                    specialiseFintechTrading(specialisePeopleOperations(definition, text), text),
+                    text
+                  ),
+                  text
+                ),
                 text
               ),
               text
