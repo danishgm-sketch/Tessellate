@@ -1,0 +1,51 @@
+{
+  "id": "STEP-17-MOBILE",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "url": "http://localhost:4321/workbench?project=proj-direction-c-d4d9f5024f994d188b50f384b73f0f51dirc",
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "checks": {
+    "shell": {
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "documentWidth": 390,
+      "navigationHeight": 64,
+      "shellHeight": 844
+    },
+    "disabledControlSelection": {
+      "nodeId": "node-screen-settings-save-footer-4",
+      "nodeType": "component",
+      "inspectorOpened": true,
+      "screenshot": "quality\\evidence\\step-17\\after\\disabled-resource-canvas-selection-mobile-390x844.png"
+    },
+    "navigation": {
+      "pages": [
+        "Select screen Marketing Home",
+        "Select screen Team Overview",
+        "Select screen People Directory",
+        "Select screen Teams",
+        "Select screen Engagement",
+        "Select screen Onboarding",
+        "Select screen Settings & Policies"
+      ],
+      "firstScreen": "screen-marketing-home",
+      "selectedScreen": "screen-settings",
+      "selectedComponent": "node-screen-settings-save-footer-4",
+      "selectedElement": "node-screen-settings-settings-form-3",
+      "tabs": [
+        "Preview",
+        "Pages",
+        "Inspect",
+        "Command",
+        "Audit"
+      ]
+    }
+  },
+  "screenshot": "quality\\evidence\\step-17\\after\\workbench-fundamentals-mobile-chrome.png"
+}

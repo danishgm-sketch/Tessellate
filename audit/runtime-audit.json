@@ -4718,7 +4718,90 @@
         "after": "The test passes on desktop and mobile; the alert is removed and aria-invalid is cleared."
       },
       "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-148",
+      "severity": "medium",
+      "route": "/workbench?project=Direction-C",
+      "viewport": "390x844",
+      "category": "state",
+      "title": "Canvas taps on disabled resource actions did not select the resource",
+      "expected": "Tapping a disabled resource action in the canvas should select its containing node and open Inspect without activating the disabled action.",
+      "actual": "The disabled Explore Interface System button swallowed the pointer interaction, leaving the mobile Workbench on Preview with no selected node.",
+      "reproduction": [
+        "Compose the employee-experience brief, open Direction C in Workbench, and switch to Settings & Policies.",
+        "Tap the disabled Explore Interface System button in the canvas.",
+        "Before the fix, Preview remained active and the inspector showed no selected node."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-17/before/disabled-resource-canvas-selection-not-selectable-mobile-390x844.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-17/before/disabled-resource-canvas-selection-not-selectable-mobile-390x844.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-17/after/disabled-resource-canvas-selection-mobile-390x844.png"
+      ],
+      "rootCause": "Native disabled controls suppress the click event used by the Workbench canvas selection handler, so the containing resource node never received selection.",
+      "affectedFiles": [
+        "packages/renderer/src/node-renderer.tsx",
+        "tests/e2e/workbench-fundamentals-hardening.spec.ts"
+      ],
+      "remediation": "Capture pointerdown on the containing resource node when its target is disabled, prevent the disabled action, and select the node. Keep the action disabled until it has a connected behavior.",
+      "fixCommit": "0a55f86c109f8cf1dd29b94dfb0ddda2462aa1cd",
+      "runtimeReports": [
+        "quality/evidence/step-17/before/disabled-resource-canvas-selection-not-selectable-mobile-390x844.json",
+        "quality/evidence/step-17/after/workbench-fundamentals-mobile-chrome.json"
+      ],
+      "regression": {
+        "before": "The visible mobile regression failed at the inspector assertion when the disabled resource action was tapped.",
+        "after": "The visible mobile regression passes; the same tap selects the containing component, opens Inspect, and the action remains disabled."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-149",
+      "severity": "high",
+      "route": "/compose → /workbench",
+      "viewport": "1440x900,390x844",
+      "category": "data",
+      "title": "Composition flattened resource kinds into section nodes",
+      "expected": "Composed resource nodes should preserve the catalogue kind in ProjectManifest.nodeType so the Workbench exposes layout, section, block, component, and element hierarchy accurately.",
+      "actual": "The composition pipeline assigned section to every non-navigation resource, so block, component, and primitive resources appeared as sections and the generated tree contained no truthful component or element levels.",
+      "reproduction": [
+        "Compose the exact employee-experience brief through /compose and open Direction C in Workbench.",
+        "Inspect the visible Layers tree and select resource-backed nodes.",
+        "Before the fix, an entity-profile-header block was serialized with nodeType section; the type contract regression failed."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-17/before/resource-kinds-flattened-desktop-1440x900.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-17/before/resource-kinds-flattened-desktop-1440x900.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-17/after/workbench-fundamentals-desktop-chrome.png",
+        "quality/evidence/step-17/after/workbench-fundamentals-mobile-chrome.png"
+      ],
+      "rootCause": "composeProjectForDirection hard-coded section for every resource-backed node except navigation, discarding ResourceManifest.resourceType.",
+      "affectedFiles": [
+        "packages/compatibility/src/compose-pipeline.ts",
+        "packages/compatibility/src/__tests__/compose-pipeline.test.ts",
+        "tests/e2e/workbench-fundamentals-hardening.spec.ts"
+      ],
+      "remediation": "Derive the editor node type from the selected catalogue resource type, with navigation retained as layout, then verify the visible tree and inspector expose root, section, component, and element selection.",
+      "fixCommit": "3178f09d34d233220ae192eec09bdcb5b4a3f85c",
+      "runtimeReports": [
+        "quality/evidence/step-17/before/resource-kinds-flattened-desktop-1440x900.json",
+        "quality/evidence/step-17/after/workbench-fundamentals-desktop-chrome.json",
+        "quality/evidence/step-17/after/workbench-fundamentals-mobile-chrome.json"
+      ],
+      "regression": {
+        "before": "The new composer contract test failed because a block resource was emitted as section.",
+        "after": "The composer contract and desktop/mobile visible selection journeys pass with resource-kind-preserving nodes."
+      },
+      "status": "fixed-local-verified"
     }
   ],
-  "generatedAt": "2026-10-18T21:29:58.998Z"
+  "generatedAt": "2026-10-18T22:13:33.000Z"
 }

@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 142 findings (33 High, 108 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 22 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–142 in Compose/resource previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–142; the composition, data-truth, and resource-accessibility findings are fixed locally, with deployed review verification still pending. AUD-134–137 record ecommerce, digital music, flight-management, and film-streaming briefs that inherited unrelated product workflows; AUD-138 records flight-oriented copy in destination search; AUD-139 records the missing Product Catalog to Product Detail path; AUD-140 records dark-canvas contrast failures in expressive Gold resource variants; AUD-141 records keyboard-inaccessible scrollable Gold resource content; AUD-142 records mobile clipping in the three-pane shell. The full current-source visible benchmark covered 100 briefs and 300 directions at desktop and mobile sizes; reports record zero unresolved diagnostics, console errors, warnings, uncaught exceptions, failed requests, or HTTP errors. Issue-specific before/after captures and red/green regressions are recorded. These fixes await deployed review verification. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See quality/STEP_08_EVIDENCE.md, quality/STEP_14_EVIDENCE.md, and evidence/catalog-search-v20/.
+**Current disposition:** 149 findings (36 High, 112 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 29 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–149 in Compose/resource/Workbench previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–142; Step 15 added AUD-143–147; Step 17 adds AUD-148–149. The composition, data-truth, resource-accessibility, and Workbench findings are fixed locally, with deployed review verification still pending. AUD-134–137 record ecommerce, digital music, flight-management, and film-streaming briefs that inherited unrelated product workflows; AUD-138 records flight-oriented copy in destination search; AUD-139 records the missing Product Catalog to Product Detail path; AUD-140 records dark-canvas contrast failures in expressive Gold resource variants; AUD-141 records keyboard-inaccessible scrollable Gold resource content; AUD-142 records mobile clipping in the three-pane shell; AUD-148 records disabled-control canvas selection failure; AUD-149 records resource-kind flattening in composition. The full current-source visible benchmark covered 100 briefs and 300 directions at desktop and mobile sizes; reports record zero unresolved diagnostics, console errors, warnings, uncaught exceptions, failed requests, or HTTP errors. Issue-specific before/after captures and red/green regressions are recorded. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See quality/STEP_08_EVIDENCE.md, quality/STEP_14_EVIDENCE.md, quality/STEP_15_EVIDENCE.md, quality/STEP_17_EVIDENCE.md, and evidence/catalog-search-v20/.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -356,7 +356,60 @@ No Critical findings are recorded in this audit register.
   SHA and viewport for both runs. CI on the fixed commit is pending.
 - **Disposition:** fixed locally; deployed verification remains pending.
 
+### AUD-149 — Composition flattened resource kinds into section nodes
+
+- **Severity:** High.
+- **Evidence:** the before Workbench capture at
+  `../quality/evidence/step-17/before/resource-kinds-flattened-desktop-1440x900.png`
+  shows the visible Layers tree without component or element levels. The failing
+  composer contract named the concrete mismatch: `entity-profile-header` is a
+  block resource but was emitted as a section. The after desktop/mobile reports
+  record root, section, component and element selection through the visible UI.
+- **Reproduction:** enter the exact employee-experience brief in `/compose`, open
+  Direction C in Workbench, and inspect the Layers tree and inspector. Before the
+  fix, the composer test rejected the block-to-section mapping, and the browser
+  journey could not find any component node.
+- **Root cause:** the composition pipeline assigned `section` to every
+  resource-backed node except navigation, discarding `ResourceManifest.resourceType`.
+- **Affected code:** `packages/compatibility/src/compose-pipeline.ts`,
+  `packages/compatibility/src/__tests__/compose-pipeline.test.ts`, and
+  `tests/e2e/workbench-fundamentals-hardening.spec.ts`.
+- **Remediation:** map the selected resource type to its editor node type while
+  keeping navigation as layout. A red-to-green contract regression now checks
+  every resource-backed node; desktop and mobile browser journeys confirm the
+  Workbench shows and selects root, section, component and element nodes.
+- **Verification:** `quality/STEP_17_EVIDENCE.md` records the passing production
+  preview runs and zero browser or network errors. Public review verification is
+  still required at Step 45.
+- **Disposition:** fixed locally; deployed verification remains pending.
+
 ## MEDIUM
+
+### AUD-148 — Disabled canvas actions prevented resource selection
+
+- **Severity:** Medium.
+- **Evidence:** the before screenshot at
+  `../quality/evidence/step-17/before/disabled-resource-canvas-selection-not-selectable-mobile-390x844.png`
+  shows the disabled action on the selected settings screen, while the associated
+  failed browser report leaves Preview active. The after capture at
+  `../quality/evidence/step-17/after/disabled-resource-canvas-selection-mobile-390x844.png`
+  shows the containing resource selected with Inspect open.
+- **Reproduction:** enter the exact employee-experience brief, open Direction C,
+  switch to Settings & Policies at 390 × 844, and tap the disabled
+  “Explore Interface System” control. Before the fix, Workbench remained on
+  Preview and the inspector showed no selected node.
+- **Root cause:** native disabled controls suppress the click event used by the
+  canvas selection handler, so selection never reached the containing node.
+- **Affected code:** `packages/renderer/src/node-renderer.tsx` and
+  `tests/e2e/workbench-fundamentals-hardening.spec.ts`.
+- **Remediation:** capture pointerdown at the resource boundary when its target
+  is disabled, prevent the disabled action, and select the resource node. The
+  control stays disabled until it has a real action.
+- **Verification:** the explicit mobile browser regression failed before the
+  renderer change and passes after it; Workbench opens Inspect for the component
+  with zero console errors, uncaught exceptions, failed requests or HTTP errors.
+  Public review verification remains at Step 45.
+- **Disposition:** fixed locally; deployed verification remains pending.
 
 ### AUD-077 — Standalone export dropped standard data and accessibility attributes
 

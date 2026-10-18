@@ -30,7 +30,7 @@ Do not advance a checkbox merely because code exists. Record evidence and defect
 - [x] 14 Composition — manually reviewed quality benchmark, separate from integrity. The 100-brief × 3-direction visible review passed at 1440 × 900, 390 × 844, and 768 × 1024 from source `fbfe17db24a076c152ac7905334437053a23d346`. All three reports capture visible Product Architecture, all 38 Design DNA fields, and zero unresolved resources or browser/network errors. Thirty contact sheets and full-size flagship captures were visually reviewed. Every direction pair differs on navigation, composition grammar, and semantic component roles across all 100 briefs. Evidence: `quality/STEP_14_EVIDENCE.md` and `quality/evidence/step-14/manual-review/current/`.
 - [x] 15 Compose UX — controls, loading, invalid input, interruption and mobile. Local production-preview browser checks pass on desktop/mobile with red-to-green regressions for five input, state, and accessibility defects. Evidence: `quality/STEP_15_EVIDENCE.md` and `quality/evidence/step-15/`; deployed review verification remains at Step 45.
 - [x] 16 Exact Compose → Workbench manifest handoff, including props and locks. Direction C was selected through the visible preview and compared with the Workbench manifest export at desktop and mobile widths; evidence: `quality/STEP_16_EVIDENCE.md` and `quality/evidence/step-16/after/`.
-- [ ] 17 Workbench fundamentals — selection, canvas, panels, keyboard, mobile.
+- [x] 17 Workbench fundamentals — selection, canvas, panels, keyboard, mobile. The visible Direction C journey now selects project/root, section, component and element nodes, exercises all five modes and panels, and verifies desktop/mobile navigation. It exposed and fixed resource-kind flattening and canvas selection on disabled controls; both red-to-green regressions and runtime captures are in `quality/STEP_17_EVIDENCE.md` and `quality/evidence/step-17/`. Public review verification remains at Step 45.
 - [ ] 18 Intent inheritance — inherited/overridden/locked/reset at all levels.
 - [ ] 19 Individual mutations — correct changes, unique IDs, undo and export.
 - [ ] 20 Structural mutations — divergence, required content and exact lock preservation.
@@ -93,10 +93,10 @@ all owner-specified input/state/persistence/browser/accessibility/network/securi
 dimensions. Allowed results: PASS, FAIL, DEGRADED, NOT APPLICABLE, LAB ONLY.
 Unexecuted applicable checks are FAIL (missing evidence), never presumed PASS.
 
-Steps 05–11 are complete within their stated local scopes and evidence files.
-Step 12 is next: direction generation must produce visibly different structures,
-navigation and resource selections for the same product. Local tests and browser
-evidence do not replace the deployed-site checks planned for the public RC gate.
+Steps 05–17 are complete within their stated local scopes and evidence files.
+Step 18 is next: verify inherited, overridden, locked and reset values through the
+visible Workbench hierarchy. Local tests and browser evidence do not replace the
+deployed-site checks planned for the public RC gate.
 
 For P0/P1 keep issue, reproduction, screenshot/log, root cause, failing regression,
 fix, passing regression, deployment verification and regression protection.

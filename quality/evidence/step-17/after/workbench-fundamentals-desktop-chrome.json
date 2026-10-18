@@ -1,0 +1,52 @@
+{
+  "id": "STEP-17-DESKTOP",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "url": "http://localhost:4321/workbench?project=proj-direction-c-f12598e140da4ce78a7979ba617fd213dirc",
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "checks": {
+    "shell": {
+      "viewportWidth": 1440,
+      "documentWidth": 1440,
+      "leftPanelWidth": 280,
+      "rightPanelWidth": 340,
+      "canvasWidth": 820
+    },
+    "selection": {
+      "screens": [
+        "Select screen Marketing Home",
+        "Select screen Team Overview",
+        "Select screen People Directory",
+        "Select screen Teams",
+        "Select screen Engagement",
+        "Select screen Onboarding",
+        "Select screen Settings & Policies"
+      ],
+      "selectedScreenId": "screen-settings",
+      "marketingScreenId": "screen-marketing-home",
+      "rootId": "root-screen-settings",
+      "sectionId": "node-screen-marketing-home-hero-2",
+      "componentId": "node-screen-settings-save-footer-4",
+      "elementId": "node-screen-settings-settings-form-3",
+      "breadcrumbBeforeEscape": "Settings & Policies\nworkspace-dock-shell\nworkspace-multi-pane\nSettings & Policies\n(Esc to climb)",
+      "breadcrumbAfterEscape": "Settings & Policies\nworkspace-dock-shell\nworkspace-multi-pane\n(Esc to climb)"
+    },
+    "canvas": {
+      "zoomRestoredByShortcut": "100%",
+      "viewportShortcuts": [
+        "1440",
+        "768",
+        "390"
+      ],
+      "finalPreset": "1440",
+      "deviceWidth": 1440
+    }
+  },
+  "screenshot": "quality\\evidence\\step-17\\after\\workbench-fundamentals-desktop-chrome.png"
+}
