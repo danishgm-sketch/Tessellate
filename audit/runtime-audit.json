@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records one moderate desktop Axe heading-order issue in the AI Chat Panel isolated resource preview for the ordered accessibility/resource hardening step. Step 14's 100-brief visible composition review added AUD-116–124 for activity-feed semantics, trading-domain interpretation, truthful example content, repeated branding and headings, placeholder timeline timestamps, and mobile layout; local red/green regressions and desktop/mobile browser captures are recorded, with deployed review verification still pending. AUD-133 records a remaining disconnected-metric status color defect found during the current-source review. AUD-134–139 record commerce, travel, and streaming domain-planning defects found during the full current-source visible composition review; local browser reruns and issue-specific before/after captures are recorded, while deployed review verification remains pending. AUD-140–142 record dark-canvas contrast and mobile resource keyboard/responsive defects, with local fixes and deployed review verification pending.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147 with desktop/mobile browser evidence; public-site verification remains pending for Step 45.",
   "entries": [
     {
       "id": "AUD-001",
@@ -4499,7 +4499,226 @@
         "after": "The mobile layout test confirms all three panes fit within 390px; desktop retains all three columns without overflow."
       },
       "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-143",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900,390x844",
+      "category": "state",
+      "title": "Whitespace-only brief was accepted and generated directions",
+      "expected": "A brief containing only whitespace should be rejected, explained beside the field, and never produce a Product Architecture or direction cards.",
+      "actual": "Submitting spaces and line breaks passed the browser required constraint and composed directions from an empty description.",
+      "reproduction": [
+        "Open /compose and wait for Catalogue ready.",
+        "Enter spaces and line breaks only, then select Compose Interface System.",
+        "Before the fix, no alert appeared and generated direction cards remained visible."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-15/before/whitespace-brief-desktop-chrome.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-15/before/whitespace-brief-desktop-chrome.png",
+        "quality/evidence/step-15/before/whitespace-brief-mobile-chrome.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-15/after/whitespace-brief-desktop-chrome.png",
+        "quality/evidence/step-15/after/whitespace-brief-mobile-chrome.png"
+      ],
+      "rootCause": "The submit handler did not trim or validate the description before calling the deterministic composition pipeline; HTML required validation considers whitespace non-empty.",
+      "affectedFiles": [
+        "apps/site/src/components/ComposeView.tsx",
+        "tests/e2e/compose-ux-hardening.spec.ts"
+      ],
+      "remediation": "Trim the description before composition. Reject empty normalized input, focus the field, and expose an associated alert with aria-invalid.",
+      "fixCommit": "37d9acacc343f71a51af68fa8728fc372c2f51c6",
+      "runtimeReports": [
+        "quality/evidence/step-15/after/runtime/compose-rejects-whitespace-only-briefs-with-a-clear-message-desktop-chrome.json",
+        "quality/evidence/step-15/after/runtime/compose-rejects-whitespace-only-briefs-with-a-clear-message-mobile-chrome.json"
+      ],
+      "regression": {
+        "before": "Visible UI browser checks failed on desktop and mobile: no validation alert was shown and directions could be generated from whitespace.",
+        "after": "Both browser projects reject the input, focus the field, expose an accessible error, and show no direction cards."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-144",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900,390x844",
+      "category": "state",
+      "title": "Edited Compose inputs left directions for the previous brief available",
+      "expected": "Any change to the brief or design controls should make prior generated directions unavailable until the user composes again.",
+      "actual": "Old Product Architecture and direction cards remained available after editing the brief or Visual Ambition, so the user could open a project that did not match the current form.",
+      "reproduction": [
+        "Compose a product brief and wait for all three direction cards.",
+        "Edit the brief or change Visual Ambition.",
+        "Before the fix, the original directions remained visible and actionable."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-15/before/changed-brief-desktop-chrome.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-15/before/changed-brief-desktop-chrome.png",
+        "quality/evidence/step-15/before/changed-brief-mobile-chrome.png",
+        "quality/evidence/step-15/before/changed-settings-only-desktop-chrome.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-15/after/changed-brief-desktop-chrome.png",
+        "quality/evidence/step-15/after/changed-brief-mobile-chrome.png",
+        "quality/evidence/step-15/after/changed-settings-desktop-chrome.png",
+        "quality/evidence/step-15/after/changed-settings-mobile-chrome.png",
+        "quality/evidence/step-15/after/changed-settings-only-desktop-chrome.png",
+        "quality/evidence/step-15/after/changed-settings-only-mobile-chrome.png"
+      ],
+      "rootCause": "The output was gated only by a hasComposed flag and catalogue readiness; the rendered controls were not compared with the input snapshot used for composition.",
+      "affectedFiles": [
+        "apps/site/src/components/ComposeView.tsx",
+        "tests/e2e/compose-ux-hardening.spec.ts"
+      ],
+      "remediation": "Fingerprint the normalized brief and all composition controls at submit. Hide stale output and announce that the user must compose again when the fingerprint changes.",
+      "fixCommit": "37d9acacc343f71a51af68fa8728fc372c2f51c6",
+      "runtimeReports": [
+        "quality/evidence/step-15/after/runtime/compose-hides-stale-directions-after-the-brief-or-design-settings-change-desktop-chrome.json",
+        "quality/evidence/step-15/after/runtime/compose-hides-stale-directions-after-the-brief-or-design-settings-change-mobile-chrome.json",
+        "quality/evidence/step-15/before/runtime/compose-hides-stale-directions-after-visual-ambition-changes-desktop-chrome.json",
+        "quality/evidence/step-15/after/runtime/compose-hides-stale-directions-after-visual-ambition-changes-desktop-chrome.json",
+        "quality/evidence/step-15/after/runtime/compose-hides-stale-directions-after-visual-ambition-changes-mobile-chrome.json"
+      ],
+      "regression": {
+        "before": "Separate visible UI browser tests failed on the old source: both editing the brief and changing Visual Ambition left the previous direction cards available; the setting-specific run produced no stale-state status.",
+        "after": "The 16-run desktop/mobile suite hides stale directions after either a brief or setting change and announces that recomposition is required."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-145",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900,390x844",
+      "category": "accessibility",
+      "title": "Compose toggle choices did not expose their selected state",
+      "expected": "Visual Ambition, Structural Creativity, and target-device choices should expose their current selection to keyboard and assistive-technology users.",
+      "actual": "Selected buttons changed color but had no pressed state or named toggle group.",
+      "reproduction": [
+        "Open /compose and focus a Visual Ambition or Structural Creativity stop.",
+        "Use Enter or Space to select a different stop.",
+        "Before the fix, the visual style changed but aria-pressed was absent."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-15/before/compose-control-state-desktop-chrome.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-15/before/compose-control-state-desktop-chrome.png",
+        "quality/evidence/step-15/before/compose-control-state-mobile-chrome.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-15/after/compose-control-state-desktop-chrome.png",
+        "quality/evidence/step-15/after/compose-control-state-mobile-chrome.png",
+        "quality/evidence/step-15/after/ambition-keyboard-state-desktop-chrome.png",
+        "quality/evidence/step-15/after/ambition-keyboard-state-mobile-chrome.png"
+      ],
+      "rootCause": "The controls were ordinary buttons with color-only selected styling and no grouped or pressed semantics.",
+      "affectedFiles": [
+        "apps/site/src/components/ComposeView.tsx",
+        "tests/e2e/compose-ux-hardening.spec.ts"
+      ],
+      "remediation": "Add accessible labels to toggle groups and expose each selected state through aria-pressed while preserving existing keyboard button interaction.",
+      "fixCommit": "37d9acacc343f71a51af68fa8728fc372c2f51c6",
+      "runtimeReports": [
+        "quality/evidence/step-15/after/runtime/compose-exposes-selected-ambition-and-target-device-controls-to-keyboard-users-desktop-chrome.json",
+        "quality/evidence/step-15/after/runtime/compose-exposes-selected-ambition-and-target-device-controls-to-keyboard-users-mobile-chrome.json"
+      ],
+      "regression": {
+        "before": "Desktop and mobile checks found selected controls without aria-pressed.",
+        "after": "Enter and Space operate the toggles, the selected state is announced, and the 390px Compose document has no horizontal overflow."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-146",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900,390x844",
+      "category": "state",
+      "title": "Last selected target device looked active but silently refused removal",
+      "expected": "A user should understand that at least one target device must remain selected and the final selected control should not look actionable.",
+      "actual": "The final selected device button remained enabled and visually active; clicking it caused no state change and gave no explanation.",
+      "reproduction": [
+        "Open Advanced Constraints & Devices.",
+        "Remove devices until one remains.",
+        "Click the remaining selected device; before the fix, it remained selected without feedback."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-15/before/last-target-device-desktop-chrome.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-15/before/last-target-device-desktop-chrome.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-15/after/last-target-device-desktop-chrome.png",
+        "quality/evidence/step-15/after/last-target-device-mobile-chrome.png"
+      ],
+      "rootCause": "The toggle handler prevented an empty target list, but the view did not reflect that invariant or explain the refused interaction.",
+      "affectedFiles": [
+        "apps/site/src/components/ComposeView.tsx",
+        "tests/e2e/compose-ux-hardening.spec.ts"
+      ],
+      "remediation": "Disable the final selected device button, expose pressed state for all device toggles, and announce the minimum-one-device rule.",
+      "fixCommit": "37d9acacc343f71a51af68fa8728fc372c2f51c6",
+      "runtimeReports": [
+        "quality/evidence/step-15/after/runtime/compose-explains-why-the-final-selected-target-device-cannot-be-removed-desktop-chrome.json",
+        "quality/evidence/step-15/after/runtime/compose-explains-why-the-final-selected-target-device-cannot-be-removed-mobile-chrome.json"
+      ],
+      "regression": {
+        "before": "The last selected device remained enabled and no explanation appeared.",
+        "after": "The last selected device is disabled and a status message explains the constraint on both desktop and mobile."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-147",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900,390x844",
+      "category": "state",
+      "title": "Selecting a valid sample brief left the previous input error visible",
+      "expected": "Loading a valid sample brief should clear the empty-brief alert and invalid field state.",
+      "actual": "After an empty submission, selecting the Playful HR Platform sample updated the brief but left the prior error visible.",
+      "reproduction": [
+        "Open /compose and submit a whitespace-only brief.",
+        "Select the Playful HR Platform sample brief.",
+        "Before the fix, the validation alert and aria-invalid state persisted beside a valid description."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-15/before/sample-brief-clears-error-desktop-chrome.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-15/before/sample-brief-clears-error-desktop-chrome.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-15/after/sample-brief-clears-error-desktop-chrome.png",
+        "quality/evidence/step-15/after/sample-brief-clears-error-mobile-chrome.png"
+      ],
+      "rootCause": "The manual text-input handler cleared the validation error, but the separate sample-brief selection handler updated form state without clearing validation state.",
+      "affectedFiles": [
+        "apps/site/src/components/ComposeView.tsx",
+        "tests/e2e/compose-ux-hardening.spec.ts"
+      ],
+      "remediation": "Clear the validation error when a valid sample brief is selected and verify the alert and invalid state disappear.",
+      "fixCommit": "37d9acacc343f71a51af68fa8728fc372c2f51c6",
+      "runtimeReports": [
+        "quality/evidence/step-15/before/runtime/selecting-a-sample-brief-clears-the-empty-brief-error-desktop-chrome.json",
+        "quality/evidence/step-15/after/runtime/selecting-a-sample-brief-clears-the-empty-brief-error-desktop-chrome.json",
+        "quality/evidence/step-15/after/runtime/selecting-a-sample-brief-clears-the-empty-brief-error-mobile-chrome.json"
+      ],
+      "regression": {
+        "before": "The visible regression failed: one alert remained after the valid sample was selected.",
+        "after": "The test passes on desktop and mobile; the alert is removed and aria-invalid is cleared."
+      },
+      "status": "fixed-local-verified"
     }
   ],
-  "generatedAt": "2026-10-18T20:07:17Z"
+  "generatedAt": "2026-10-18T21:29:58.998Z"
 }

@@ -1,0 +1,128 @@
+{
+  "test": "Compose hides stale directions after the brief or design settings change",
+  "url": "http://localhost:4321/compose",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "injectedFault": null,
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "responses": [
+    {
+      "url": "http://localhost:4321/compose",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/style.DNja3XoF.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/ui.CYeoo9gP.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/ComposeView.LZ3J_t8E.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/client.OPlYM6bF.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/jsx-runtime.D_zvdyIk.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/mark.D3kO5Jny.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/use-dialog-focus.Dx4AAyKA.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/index.CHQCpkZ9.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/select.BIqT08Pb.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/sliders.CTk-x-1S.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/strategies.QxSTTuqj.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/string.DApZBA9s.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/cpu.C-Si7Rfn.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/manifest-renderer.DdEcYPM7.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/showcases.ChqX-x7E.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/compose-pipeline.B_jeCXQd.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/checkpoint-journal.BVPnV1bV.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/chevron-down.bxWQEq6j.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/smartphone.HluLiZ4e.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/sparkles.gqHQXRUX.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/shield.BJe9CZcU.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/createLucideIcon.CKwyFV_x.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/gold.DGqaD5Gc.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/arrow-right.DCnLzGjB.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/json-schema.D-EPqUj7.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/node-renderer.BYyGLCpI.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/data/catalog.json",
+      "status": 200
+    }
+  ]
+}
