@@ -3,6 +3,7 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: '.',
   testMatch: [
+    'composition-quality-smoke.spec.ts',
     'gold-resource-certification.spec.ts',
     'catalog-resource-render.spec.ts',
     'gold-resource-state-certification.spec.ts',
@@ -28,6 +29,14 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         viewport: { width: 1440, height: 900 },
+      },
+    },
+    {
+      name: 'sites-mobile-chromium',
+      use: {
+        ...devices['Pixel 7'],
+        viewport: { width: 390, height: 844 },
+        isMobile: true,
       },
     },
   ],
