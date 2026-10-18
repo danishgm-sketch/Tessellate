@@ -3049,7 +3049,283 @@
         "result": "OPEN: a moderate desktop heading-order Axe violation was observed; mobile had zero Axe violations. Deferred to the ordered resource/accessibility hardening step.",
         "report": "audit/evidence/catalog-search-v20/explore-1440x900.json"
       }
+    },
+    {
+      "id": "AUD-101",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Freelance marketplace messaging inherited unrelated booking workflows",
+      "expected": "A freelance services marketplace inbox should show client inquiries and designer proposals, without accommodation bookings or seller inventory setup.",
+      "actual": "The preview showed host booking, date selection, payment confirmation, and seller-side asset upload workflows.",
+      "reproduction": [
+        "Open /compose at 1440x900.",
+        "Enter benchmark brief MKT-01 and compose.",
+        "Inspect Direction A on Messages & Inquiries."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/composition-quality/before/composition-mkt-01-direction-01.png",
+      "rootCause": "The generic marketplace archetype reused accommodation and transactional workflows for a freelance-services marketplace.",
+      "affectedFiles": [
+        "packages/composer/src/domain-context.ts",
+        "packages/composer/src/interpreter.ts",
+        "packages/compatibility/src/content-bindings.ts"
+      ],
+      "remediation": "Specialize the existing marketplace archetype using service, proposal, appointment, and listing context; add forbidden-content benchmark assertions.",
+      "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "quality/evidence/composition-quality/after/composition-mkt-01-direction-01.png",
+      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json"
+    },
+    {
+      "id": "AUD-102",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Community activity stream was rendered as a notification inbox",
+      "expected": "A casual group community feed should present chronological posts and conversations, not unread-notification actions.",
+      "actual": "The community Activity Stream used the notification-centre resource and displayed Mark all as read.",
+      "reproduction": [
+        "Open /compose at 1440x900.",
+        "Enter benchmark brief CON-04 and compose.",
+        "Inspect Activity Stream in Directions A, B, and C."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/composition-quality/before/composition-con-04-direction-01.png",
+      "rootCause": "The shared activity-feed role admitted an inbox resource whose semantics conflict with community posts and conversation chronology.",
+      "affectedFiles": [
+        "packages/compatibility/src/compose-pipeline.ts",
+        "packages/compatibility/src/semantic-roles.ts"
+      ],
+      "remediation": "Prefer the Gold timeline for consumer community activity and retain notification-centre only where inbox behavior is intended.",
+      "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "quality/evidence/composition-quality/after/composition-con-04-direction-01.png",
+      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json"
+    },
+    {
+      "id": "AUD-103",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Marketplace messaging roles had no explicit Gold resource contracts",
+      "expected": "Channels, chronological messages, and the message input should resolve to known Gold resources with no unresolved-role diagnostics.",
+      "actual": "The first composition benchmark run returned unresolved required messaging roles across marketplace cases.",
+      "reproduction": [
+        "Run the no-override composition benchmark before adding role mappings.",
+        "Inspect required-role diagnostics for the marketplace message screens."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/composition-quality/before/composition-mkt-01-direction-01.png",
+      "rootCause": "The semantic role allowlist omitted channels-rail, message-thread, and message-composer contracts.",
+      "affectedFiles": [
+        "packages/compatibility/src/semantic-roles.ts",
+        "packages/compatibility/src/compose-pipeline.ts",
+        "packages/compatibility/src/content-bindings.ts"
+      ],
+      "remediation": "Map the roles to collapsible-sidebar, timeline, and input, remove duplicate generic navigation, and state that sending requires a messaging backend.",
+      "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "quality/evidence/composition-quality/after/composition-mkt-01-direction-01.png",
+      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json"
+    },
+    {
+      "id": "AUD-104",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Community activity screen contained irrelevant placeholder KPI cards",
+      "expected": "A community activity stream should prioritize local posts and conversations without unrelated entity counts or a nonexistent data integration.",
+      "actual": "The Activity Stream showed Profile, Group, Community Update, and Notification cards with the value Example, which were not meaningful community measures.",
+      "reproduction": [
+        "Open /compose at 1440x900.",
+        "Compose benchmark brief CON-04.",
+        "Inspect the Activity Stream summary area in any direction."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/composition-quality/before/composition-con-04-direction-01.png",
+      "rootCause": "The generic dashboard grammar required metric-cards even when the consumer Activity Stream had no meaningful summary data.",
+      "affectedFiles": [
+        "packages/composer/src/planner.ts",
+        "packages/compatibility/src/content-bindings.ts"
+      ],
+      "remediation": "Omit the KPI role from community Activity Stream planning; keep summary cards only on screens with relevant, explicitly sourced or illustrative values.",
+      "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "quality/evidence/composition-quality/after/composition-con-04-direction-01.png",
+      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json"
+    },
+    {
+      "id": "AUD-105",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Profile header displayed hardcoded generic summary copy",
+      "expected": "A composed profile header should only show content supplied through its declared props.",
+      "actual": "The community profile header displayed an unrelated Example profile summary phrase.",
+      "reproduction": [
+        "Open /compose at 1440x900.",
+        "Compose benchmark brief CON-04.",
+        "Inspect the profile header in any direction."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/composition-quality/before/composition-con-04-direction-01.png",
+      "rootCause": "The reusable entity-profile-header rendered static summary copy outside its typed props.",
+      "affectedFiles": [
+        "resources/blocks/entity-profile-header/index.tsx",
+        "packages/exporter/src/generated-gold-sources.ts"
+      ],
+      "remediation": "Remove the hardcoded phrase and keep header content bound to declared props.",
+      "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "quality/evidence/composition-quality/after/composition-con-04-direction-01.png",
+      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json"
+    },
+    {
+      "id": "AUD-106",
+      "severity": "medium",
+      "route": "/showcase/showcase-ai-developer-platform/",
+      "viewport": "390x844",
+      "category": "visual",
+      "title": "AI developer showcase renders two identical navigation bars",
+      "expected": "The Prompt Canvas example should show one product navigation/header before its editor content.",
+      "actual": "The first screen renders two consecutive Prompt Workspace navigation bars before the canvas.",
+      "reproduction": [
+        "Open /showcase/showcase-ai-developer-platform/ at 390x844.",
+        "Inspect the first Prompt Canvas preview and count its consecutive navigation bars."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/composition-quality/after/showcase-ai-developer-platform-mobile.png",
+      "rootCause": "The Prompt Canvas screen contains both navigation and editor-toolbar roles, while the editor-toolbar compatibility mapping selects the same minimal-top-nav resource.",
+      "affectedFiles": [
+        "packages/composer/src/screen-grammar.ts",
+        "packages/compatibility/src/semantic-roles.ts",
+        "packages/composer/src/showcases.ts"
+      ],
+      "remediation": "During showcase hardening, give editor-toolbar an appropriate non-navigation resource contract or remove the duplicate role where the global navigation already exists; verify the AI showcase preview on mobile and desktop.",
+      "fixCommit": null,
+      "status": "open",
+      "runtimeReport": "quality/evidence/composition-quality/after/showcase-runtime-mobile.json"
+    },
+    {
+      "id": "AUD-107",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Community timeline exposed internal workflow step identifiers",
+      "expected": "Visible example activity should use clear human-facing copy and identify itself as sample content.",
+      "actual": "Timeline entries displayed generic Step 1/Step 2 labels and internal identifiers such as choose-community and publish-community-event.",
+      "reproduction": [
+        "Open /compose at 1440x900.",
+        "Compose benchmark brief CON-04 and inspect Direction A's Activity Stream.",
+        "Read the timeline labels and descriptions."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/composition-quality/before/community-intermediate-metrics-direction-01.png",
+      "rootCause": "Generic workflow binding copied internal workflow step IDs directly into timeline descriptions.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts"
+      ],
+      "remediation": "Bind community activity to explicitly labelled examples with natural-language titles and descriptions.",
+      "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "quality/evidence/composition-quality/after/composition-con-04-direction-01.png",
+      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json"
+    },
+    {
+      "id": "AUD-108",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Community Activity Stream repeated its screen heading",
+      "expected": "The timeline heading should add context beneath the screen heading instead of repeating it verbatim.",
+      "actual": "Both the screen header and the timeline card were titled Activity Stream.",
+      "reproduction": [
+        "Open /compose at 1440x900.",
+        "Compose benchmark brief CON-04 and inspect Direction A's Activity Stream.",
+        "Compare the screen header with the timeline card heading."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/composition-quality/before/community-intermediate-metrics-direction-01.png",
+      "rootCause": "The generic content binder used the screen name as the activity-feed title even when the screen already had a matching overview header.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts"
+      ],
+      "remediation": "Use the contextual heading Latest community updates for the community feed.",
+      "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "quality/evidence/composition-quality/after/composition-con-04-direction-01.png",
+      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json"
+    },
+    {
+      "id": "AUD-109",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900",
+      "category": "visual",
+      "title": "Direction C left most of a community activity canvas empty",
+      "expected": "A single community activity feed should use the available content width when no companion table exists.",
+      "actual": "The Direction C layout assigned the lone timeline to the right column and left the larger column blank.",
+      "reproduction": [
+        "Open /compose at 1440x900.",
+        "Compose benchmark brief CON-04 and inspect Direction C's Activity Stream.",
+        "Compare the timeline width with the workspace-multi-pane content area."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/composition-quality/before/composition-con-04-direction-03.png",
+      "rootCause": "The shared multi-pane layout always assigned activity-feed to the second grid column, even when no data-table occupied the first column.",
+      "affectedFiles": [
+        "packages/renderer/src/layout-contract.ts"
+      ],
+      "remediation": "Use a single-column workspace modifier when an activity feed has no data-table sibling; retain the two-pane layout for the flagship dashboard pair.",
+      "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "quality/evidence/composition-quality/after/composition-con-04-direction-03.png",
+      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json"
+    },
+    {
+      "id": "AUD-110",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900",
+      "category": "data",
+      "title": "Employee dashboard invented onboarding and team-pulse values",
+      "expected": "Summary values should come from the supplied brief or be identified as illustrative examples.",
+      "actual": "The employee dashboard displayed an invented count of 12 onboarding journeys and a Positive team-pulse result.",
+      "reproduction": [
+        "Open /compose at 1440x900.",
+        "Enter the flagship employee-experience brief and compose.",
+        "Inspect Direction A's Team Overview KPI cards."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/directions/before/direction-01-team-overview.png",
+      "rootCause": "The employee content binder inserted plausible-looking count and sentiment values that were not present in the brief or backed by data.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts"
+      ],
+      "remediation": "Use only the 500-person count provided in the brief and mark the remaining values Example / Illustrative only.",
+      "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshot": "quality/evidence/directions/current/direction-01-team-overview.png",
+      "runtimeReport": "quality/evidence/directions/current/runtime.json"
     }
   ],
-  "generatedAt": "2026-10-18T06:02:19.404Z"
+  "generatedAt": "2026-10-18T11:45:05.000Z"
 }

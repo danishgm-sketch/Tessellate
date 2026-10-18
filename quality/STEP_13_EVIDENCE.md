@@ -138,7 +138,8 @@ strategy, archetype avoidance, and relationship conflicts.
   passed. The employee acceptance workflow and mobile Compose-to-Workbench journey
   passed. These browser tests exercise the locally built runtime; public review Site
   verification remains scheduled for Step 45.
-- **Hosted CI:** pending push of the scoped Step 13 commit.
+- **Hosted CI:** both `validate` workflows and the 16-point quality/security workflow
+  passed for `1d1951f347b403ade6b25aea085a317a54d81fc9`. See [validate run 39117954315](https://github.com/danishgm-sketch/Tessellate/actions/runs/39117954315), [validate run 39117951397](https://github.com/danishgm-sketch/Tessellate/actions/runs/39117951397), and [16-point audit 39117954323](https://github.com/danishgm-sketch/Tessellate/actions/runs/39117954323).
 
 No public review-site re-verification is claimed in this step; it remains scheduled
 for Step 45.

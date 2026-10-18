@@ -1,0 +1,137 @@
+{
+  "url": "http://localhost:4321/compose",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "cases": [
+    {
+      "id": "MKT-01",
+      "brief": "A freelance services marketplace connects independent designers with clients, supports profile discovery, project proposals, messaging, and mutual reviews.",
+      "directions": [
+        {
+          "id": "01",
+          "screen": "Messages & Inquiries",
+          "roles": [
+            "sidebar-shell",
+            "channels-rail",
+            "main-content-scroll",
+            "message-thread",
+            "message-composer"
+          ],
+          "resourceSlugs": [
+            "collapsible-sidebar",
+            "timeline",
+            "input"
+          ],
+          "diagnostics": [],
+          "screenshot": "composition-mkt-01-direction-01.png"
+        },
+        {
+          "id": "02",
+          "screen": "Messages & Inquiries",
+          "roles": [
+            "top-nav-page-canvas",
+            "channels-rail",
+            "message-thread",
+            "message-composer"
+          ],
+          "resourceSlugs": [
+            "collapsible-sidebar",
+            "timeline",
+            "input"
+          ],
+          "diagnostics": [],
+          "screenshot": "composition-mkt-01-direction-02.png"
+        },
+        {
+          "id": "03",
+          "screen": "Messages & Inquiries",
+          "roles": [
+            "workspace-dock-shell",
+            "channels-rail",
+            "workspace-multi-pane",
+            "message-thread",
+            "message-composer"
+          ],
+          "resourceSlugs": [
+            "collapsible-sidebar",
+            "timeline",
+            "input"
+          ],
+          "diagnostics": [],
+          "screenshot": "composition-mkt-01-direction-03.png"
+        }
+      ]
+    },
+    {
+      "id": "CON-04",
+      "brief": "A casual community app lets hobby groups post updates, welcome members, and organize lightweight conversations around shared interests.",
+      "directions": [
+        {
+          "id": "01",
+          "screen": "Activity Stream",
+          "roles": [
+            "sidebar-shell",
+            "navigation",
+            "main-content-scroll",
+            "overview-header",
+            "metric-cards",
+            "activity-feed"
+          ],
+          "resourceSlugs": [
+            "collapsible-sidebar",
+            "entity-profile-header",
+            "dashboard-kpi-grid",
+            "notification-centre"
+          ],
+          "diagnostics": [],
+          "screenshot": "composition-con-04-direction-01.png"
+        },
+        {
+          "id": "02",
+          "screen": "Activity Stream",
+          "roles": [
+            "top-nav-page-canvas",
+            "navigation",
+            "overview-header",
+            "metric-cards",
+            "activity-feed"
+          ],
+          "resourceSlugs": [
+            "minimal-top-nav",
+            "entity-profile-header",
+            "dashboard-kpi-grid",
+            "notification-centre"
+          ],
+          "diagnostics": [],
+          "screenshot": "composition-con-04-direction-02.png"
+        },
+        {
+          "id": "03",
+          "screen": "Activity Stream",
+          "roles": [
+            "workspace-dock-shell",
+            "navigation",
+            "workspace-multi-pane",
+            "overview-header",
+            "metric-cards",
+            "activity-feed"
+          ],
+          "resourceSlugs": [
+            "minimal-top-nav",
+            "entity-profile-header",
+            "dashboard-kpi-grid",
+            "timeline"
+          ],
+          "diagnostics": [],
+          "screenshot": "composition-con-04-direction-03.png"
+        }
+      ]
+    }
+  ],
+  "consoleErrors": [],
+  "uncaught": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

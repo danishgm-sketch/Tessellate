@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 100 findings (20 High, 79 Medium, 1 Low): 27 closed after deployed verification, 70 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080 plus AUD-100 open. Site v20 closes AUD-088–099. The desktop Explore Axe scan also found one moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100); it is tracked for the ordered accessibility/resource hardening work. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See `quality/STEP_08_EVIDENCE.md` and `evidence/catalog-search-v20/`.
+**Current disposition:** 110 findings (23 High, 86 Medium, 1 Low): 27 closed after deployed verification, 79 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080, AUD-100, and AUD-106 open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–110; these composition and data-truth findings are fixed locally and await deployed review verification. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), which is tracked for Step 43. The desktop Explore Axe scan also found one moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100); it is tracked for the ordered accessibility/resource hardening work. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See `quality/STEP_08_EVIDENCE.md`, `quality/STEP_14_EVIDENCE.md`, and `evidence/catalog-search-v20/`.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -27,7 +27,38 @@ The separate Vite preview app also omitted resource utility classes (AUD-085); i
 
 At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile browser tests passed, 51 tests were explicitly skipped by project scope, and all 23 Sites Worker tests passed. It included the expanded state and action regressions. The 11-case state matrix, exact-resource readiness check, dialog modal regression, Prompt Composer action regression, and 40 × 3 Axe matrix passed. The catalogue report covered 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covered 40 resources / 120 variants with zero findings. Existing state fixtures cover six Gold data resources; the expanded matrix covers array-driven resources at empty and 30–40 item counts, disabled Button/Input/Select, named loading/error states, long text, and fixed-slot partial data. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
+## CRITICAL
+
+No Critical findings are recorded in this audit register.
+
 ## HIGH
+
+### AUD-101 — Freelance marketplace messages contained booking workflows
+
+- **Evidence:** the before browser screenshot `quality/evidence/composition-quality/before/composition-mkt-01-direction-01.png` shows host booking, date selection, payment confirmation, and seller inventory setup in a freelance designer inbox. The after capture shows client inquiry and designer proposal examples.
+- **Reproduction:** open `/compose` at 1440 × 900, enter benchmark brief MKT-01, compose, then inspect Direction A's Messages & Inquiries screen.
+- **Root cause:** the generic marketplace archetype reused accommodation and transaction workflows for freelance services.
+- **Affected code:** `packages/composer/src/domain-context.ts`, `packages/composer/src/interpreter.ts`, and `packages/compatibility/src/content-bindings.ts`.
+- **Remediation:** specialize the existing marketplace archetype using service/proposal intent and protect other appointment/listing contexts with benchmark fixtures. The fix passes locally; deployed verification remains open.
+- **Related evidence:** `quality/STEP_14_EVIDENCE.md`, `quality/evidence/composition-quality/after/runtime.json`.
+
+### AUD-102 — Community activity stream used an inbox resource
+
+- **Evidence:** the before screenshot `quality/evidence/composition-quality/before/composition-con-04-direction-01.png` shows a chronological community stream rendered with the notification centre and “Mark all as read”. After the fix all three directions use the Gold timeline.
+- **Reproduction:** open `/compose` at 1440 × 900, enter CON-04, compose, and inspect Activity Stream in Directions A, B, and C.
+- **Root cause:** `activity-feed` admitted an inbox resource whose semantics conflict with community posts and conversations.
+- **Affected code:** `packages/compatibility/src/compose-pipeline.ts` and `packages/compatibility/src/semantic-roles.ts`.
+- **Remediation:** select the chronological Gold timeline for consumer community feeds. Local benchmark and browser regressions pass; deployed verification remains open.
+- **Related evidence:** `quality/STEP_14_EVIDENCE.md`, `quality/evidence/composition-quality/after/runtime.json`.
+
+### AUD-103 — Marketplace messaging roles lacked Gold contracts
+
+- **Evidence:** the initial no-override benchmark reported unresolved required message roles. The after runtime report records channels-rail, message-thread, and message-composer resolved to `collapsible-sidebar`, `timeline`, and `input` across A/B/C.
+- **Reproduction:** run the no-override composition benchmark before adding the role mappings and inspect required-role diagnostics for marketplace message screens.
+- **Root cause:** `ROLE_RESOURCES` omitted channels-rail, message-thread, and message-composer.
+- **Affected code:** `packages/compatibility/src/semantic-roles.ts`, `packages/compatibility/src/compose-pipeline.ts`, and `packages/compatibility/src/content-bindings.ts`.
+- **Remediation:** add explicit Gold contracts, avoid duplicate navigation beside a channels rail, and disclose that message sending requires a connected backend. Local benchmark and browser tests pass; deployed verification remains open.
+- **Related evidence:** `quality/STEP_14_EVIDENCE.md`, `quality/evidence/composition-quality/after/runtime.json`.
 
 ### AUD-001 — Marketing CTA had no action
 
@@ -951,6 +982,69 @@ with zero findings. That harness race is not counted as a product defect.
 - Root cause: the resource component uses a level-four heading even when rendered as the first heading in its standalone preview document.
 - Affected code: `resources/ai/ai-chat-panel/index.tsx` and its generated preview/export source.
 - Remediation: choose heading semantics that remain correct in the isolated resource preview and composed product contexts, add a browser regression, then verify the deployed desktop and mobile routes. Status remains open for the ordered resource/accessibility hardening work.
+
+## MEDIUM
+
+### AUD-106 — AI Developer Platform showcase duplicates its navigation
+
+- **Evidence:** `quality/evidence/composition-quality/after/showcase-ai-developer-platform-mobile.png` shows two consecutive Prompt Workspace navigation bars before the mobile Prompt Canvas content. The public browser route returned HTTP 200 without console, uncaught, failed-request, or HTTP errors. Desktop and mobile runtime reports are in `quality/evidence/composition-quality/after/showcase-runtime-desktop.json` and `showcase-runtime-mobile.json`.
+- **Reproduction:** open `/showcase/showcase-ai-developer-platform/` at 390 × 844 and inspect the first Prompt Canvas screen.
+- **Root cause:** the screen graph contains both `navigation` and `editor-toolbar`; the `editor-toolbar` role maps to the same `minimal-top-nav` resource as navigation.
+- **Affected code:** `packages/composer/src/screen-grammar.ts`, `packages/compatibility/src/semantic-roles.ts`, and `packages/composer/src/showcases.ts`.
+- **Remediation:** during Step 43, provide an appropriate non-navigation toolbar resource contract or remove the duplicate role when global navigation is already present, then verify both desktop and mobile showcases.
+- **Status:** open; intentionally deferred to the ordered showcase-hardening step.
+- **Related evidence:** `quality/STEP_14_EVIDENCE.md`, `quality/evidence/composition-quality/after/runtime.json`.
+
+### AUD-107 — Community timeline exposed internal workflow step identifiers
+
+- **Evidence:** `quality/evidence/composition-quality/before/community-intermediate-metrics-direction-01.png` and its runtime record show `Step 1`, `choose-community`, and other internal identifiers in user-facing activity copy. The fixed browser capture uses natural-language example entries.
+- **Reproduction:** compose CON-04 and inspect Direction A's Activity Stream timeline.
+- **Root cause:** generic workflow binding copied internal step IDs into timeline descriptions.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`.
+- **Remediation:** bind contextual community examples with human-facing copy and an explicit Example label. Local unit and browser checks pass; deployed verification remains open.
+- **Related evidence:** `quality/STEP_14_EVIDENCE.md`, `quality/evidence/composition-quality/after/runtime.json`.
+
+### AUD-108 — Community Activity Stream repeated its screen heading
+
+- **Evidence:** the intermediate capture titled both the screen header and timeline card “Activity Stream”. The fixed capture calls the feed “Latest community updates”.
+- **Reproduction:** compose CON-04 and compare the screen header with the timeline heading in Direction A.
+- **Root cause:** the generic activity-feed title defaulted to the screen name even when the screen header already used it.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`.
+- **Remediation:** give the community timeline its own contextual heading. Local browser and benchmark assertions pass; deployed verification remains open.
+
+### AUD-109 — Direction C left most of a community activity canvas empty
+
+- **Evidence:** the before screenshot `quality/evidence/composition-quality/before/composition-con-04-direction-03.png` places a lone activity panel in the narrow right column. The after screenshot uses the full content width, and the browser test measures feed width against its parent grid.
+- **Reproduction:** compose CON-04, select Direction C, and compare the Activity Stream width with the workspace grid.
+- **Root cause:** shared workspace layout always placed `activity-feed` in column 2, even when no data table filled column 1.
+- **Affected code:** `packages/renderer/src/layout-contract.ts`.
+- **Remediation:** add a shared activity-only workspace modifier that spans the feed across the single available column. Local browser regression passes; deployed verification remains open.
+
+### AUD-110 — Employee dashboard invented onboarding and team-pulse values
+
+- **Evidence:** the before flagship screenshot shows an unprovided count of 12 journeys and a Positive team-pulse result. The updated screenshot displays Example / Illustrative only for those values while retaining the 500-person figure from the brief.
+- **Reproduction:** compose the flagship employee-experience brief and inspect Direction A's Team Overview.
+- **Root cause:** default employee bindings inserted plausible count and sentiment data without a source.
+- **Affected code:** `packages/compatibility/src/content-bindings.ts`.
+- **Remediation:** bind only the people count supplied by the brief and label other summary cards as illustrative examples. The 100-brief benchmark and visible browser check pass; deployed verification remains open.
+
+### AUD-104 — Community activity screen contained irrelevant placeholder KPI cards
+
+- **Evidence:** the before community screenshot shows em-dash KPI values and “Connect your data” prompts without a data integration feature. The intermediate capture shows entity-name cards labelled “Example” that still do not represent meaningful community measures. The fixed capture removes the unrelated metric section.
+- **Reproduction:** compose CON-04 and inspect the Activity Stream summary area in all three directions at 1440 × 900.
+- **Root cause:** the generic dashboard grammar required KPI cards even when the community feed had no relevant summary metrics.
+- **Affected code:** `packages/composer/src/planner.ts` and `packages/compatibility/src/content-bindings.ts`.
+- **Remediation:** omit the KPI role for the community Activity Stream and keep example metrics only on screens where they add useful context. The benchmark and visible browser regression pass; deployed verification remains open.
+- **Related evidence:** `quality/STEP_14_EVIDENCE.md`, `quality/evidence/composition-quality/after/runtime.json`.
+
+### AUD-105 — Profile header contained unbound summary copy
+
+- **Evidence:** the before community screenshot shows “Example profile summary” despite no corresponding prop. The after screenshot omits that unrelated phrase.
+- **Reproduction:** compose CON-04 and inspect the header at 1440 × 900.
+- **Root cause:** `entity-profile-header` rendered static text outside its declared props.
+- **Affected code:** `resources/blocks/entity-profile-header/index.tsx` and `packages/exporter/src/generated-gold-sources.ts`.
+- **Remediation:** remove the hardcoded phrase; catalog rebuild propagates the resource source. The local browser regression passes; deployed verification remains open.
+- **Related evidence:** `quality/STEP_14_EVIDENCE.md`, `quality/evidence/composition-quality/after/runtime.json`.
 
 ## LOW
 

@@ -46,6 +46,20 @@ and replacement candidate paths. Other dimensions remain FAIL until tested. See
 `quality/STEP_13_EVIDENCE.md`; public review-site verification remains scheduled
 for Step 45.
 
+Step 14 adds `quality/COMPOSITION_QUALITY_BENCHMARK.json`: all 100 manually
+adjudicated briefs are composed in all three directions and checked for semantic
+fit, domain contamination, valid routes, Gold/Core-eligible mobile-capable resource
+references, truthful sample metrics, and structural differentiation. The Compose
+and Direction generation rows record local happy-path, desktop, console and network
+PASS evidence from the benchmark and a real-browser review of nine full previews
+(marketplace, community and flagship employee experience, A/B/C). Visual review
+found and fixed domain-inappropriate marketplace workflows, inbox semantics and
+irrelevant KPI cards on community streams, raw workflow IDs and duplicate headings,
+an underfilled Direction C canvas, fabricated employee summary values, and generic
+profile copy. The broader manual visual review of all 300 generated directions,
+responsive review, error states and public review-site verification remain open. See
+`quality/STEP_14_EVIDENCE.md` and `quality/evidence/composition-quality/`.
+
 | Feature | Tier | Happy path | Empty state | Invalid input | Boundary input | Reload | Back/forward navigation | Persistence | Undo | Redo | Mobile | Tablet | Desktop | Keyboard | Screen reader semantics | Reduced motion | High contrast | Slow network | Network failure | Offline behavior | Refresh during operation | Concurrent interaction | Malformed data | Old stored data | Export/import round trip | Console errors | Network errors | Performance | Security |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Homepage | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
@@ -61,7 +75,7 @@ for Step 45.
 | Data resources | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | Resource detail | Core | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | FAIL | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | PASS | FAIL | FAIL |
 | Legacy resource detail | Beta | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
-| Compose | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
+| Compose | Core | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | PASS | FAIL | FAIL |
 | Workbench | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | Blueprint gallery | Beta | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | Blueprint detail | Beta | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
