@@ -110,7 +110,7 @@ export const GOLDEN_PRODUCT_BRIEFS: GoldenBrief[] = [
       minDataDensity: 85,
       minSophistication: 85,
     },
-    expectedScreens: ['screen-overview', 'screen-documentation'],
+    expectedScreens: ['screen-trace-explorer', 'screen-overview', 'screen-span-detail'],
   },
 
   // 5. Minimalist Personal Finance Tool
