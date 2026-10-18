@@ -112,6 +112,61 @@
       "trustRequirement": [80, 95],
       "dataDensity": [45, 70],
       "transactionCriticality": [15, 45]
+    },
+    "ecommerce-clothing": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [40, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "ecommerce-grocery": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [40, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "ecommerce-home-goods": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [40, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "ecommerce-music": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [40, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "ecommerce-cosmetics": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [40, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "media-streaming": {
+      "trustRequirement": [60, 90],
+      "dataDensity": [50, 75],
+      "transactionCriticality": [10, 50]
+    },
+    "travel-trip-planning": {
+      "trustRequirement": [85, 100],
+      "dataDensity": [45, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "travel-hotel-booking": {
+      "trustRequirement": [85, 100],
+      "dataDensity": [45, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "travel-flight-management": {
+      "trustRequirement": [85, 100],
+      "dataDensity": [45, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "travel-resort-guest": {
+      "trustRequirement": [85, 100],
+      "dataDensity": [45, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "travel-destination-guide": {
+      "trustRequirement": [85, 100],
+      "dataDensity": [45, 75],
+      "transactionCriticality": [80, 100]
     }
   },
   "semanticProfiles": {
@@ -290,6 +345,94 @@
       "workflowAnyOf": ["return request", "refund progress"],
       "screenAnyOf": ["Order Lookup", "Return Request", "Refund Status"],
       "forbiddenAnyOf": ["candidate scorecard", "log explorer", "course catalog"]
+    },
+    "ecommerce-clothing": {
+      "audienceAnyOf": ["shoppers"],
+      "objectiveAnyOf": ["seasonal clothing"],
+      "entityAnyOf": ["Product"],
+      "workflowAnyOf": ["checkout"],
+      "screenAnyOf": ["Product Catalog"],
+      "forbiddenAnyOf": ["trading terminal", "course catalog", "room reservation"]
+    },
+    "ecommerce-grocery": {
+      "audienceAnyOf": ["grocery shoppers"],
+      "objectiveAnyOf": ["fresh food"],
+      "entityAnyOf": ["Product"],
+      "workflowAnyOf": ["delivery window"],
+      "screenAnyOf": ["Product Catalog"],
+      "forbiddenAnyOf": ["trading terminal", "course catalog", "room reservation"]
+    },
+    "ecommerce-home-goods": {
+      "audienceAnyOf": ["shoppers"],
+      "objectiveAnyOf": ["home-goods"],
+      "entityAnyOf": ["Product"],
+      "workflowAnyOf": ["product specifications"],
+      "screenAnyOf": ["Product Catalog"],
+      "forbiddenAnyOf": ["trading terminal", "course catalog", "room reservation"]
+    },
+    "ecommerce-music": {
+      "audienceAnyOf": ["music listeners"],
+      "objectiveAnyOf": ["licensed albums"],
+      "entityAnyOf": ["Album", "Release"],
+      "workflowAnyOf": ["play a sample"],
+      "screenAnyOf": ["Product Catalog"],
+      "forbiddenAnyOf": ["courier tracking", "room galleries", "trading terminal"]
+    },
+    "ecommerce-cosmetics": {
+      "audienceAnyOf": ["cosmetics shoppers"],
+      "objectiveAnyOf": ["ingredients"],
+      "entityAnyOf": ["Product"],
+      "workflowAnyOf": ["compare ingredients"],
+      "screenAnyOf": ["Product Catalog"],
+      "forbiddenAnyOf": ["trading terminal", "course catalog", "room reservation"]
+    },
+    "media-streaming": {
+      "audienceAnyOf": ["viewers"],
+      "objectiveAnyOf": ["watchlist"],
+      "entityAnyOf": ["Film"],
+      "workflowAnyOf": ["save a film"],
+      "screenAnyOf": ["Film Catalogue"],
+      "forbiddenAnyOf": ["headline journalism", "article reader", "order book"]
+    },
+    "travel-trip-planning": {
+      "audienceAnyOf": ["travelers"],
+      "objectiveAnyOf": ["shared itinerary"],
+      "entityAnyOf": ["Trip"],
+      "workflowAnyOf": ["coordinate dates"],
+      "screenAnyOf": ["Shared Itinerary"],
+      "forbiddenAnyOf": ["trading terminal", "employee onboarding", "warehouse inventory"]
+    },
+    "travel-hotel-booking": {
+      "audienceAnyOf": ["travelers"],
+      "objectiveAnyOf": ["reservation"],
+      "entityAnyOf": ["Room", "Reservation"],
+      "workflowAnyOf": ["compare rooms"],
+      "screenAnyOf": ["Find a Stay"],
+      "forbiddenAnyOf": ["trading terminal", "employee onboarding", "warehouse inventory"]
+    },
+    "travel-flight-management": {
+      "audienceAnyOf": ["frequent flyers"],
+      "objectiveAnyOf": ["confirmed journeys"],
+      "entityAnyOf": ["Flight"],
+      "workflowAnyOf": ["gate updates"],
+      "screenAnyOf": ["Journey Overview"],
+      "forbiddenAnyOf": ["hotel reservations", "property detail", "trading terminal"]
+    },
+    "travel-resort-guest": {
+      "audienceAnyOf": ["resort guests"],
+      "objectiveAnyOf": ["concierge assistance"],
+      "entityAnyOf": ["Concierge Request"],
+      "workflowAnyOf": ["request concierge"],
+      "screenAnyOf": ["Stay Overview"],
+      "forbiddenAnyOf": ["flight check-in", "room search", "trading terminal"]
+    },
+    "travel-destination-guide": {
+      "audienceAnyOf": ["travelers"],
+      "objectiveAnyOf": ["destination neighborhoods"],
+      "entityAnyOf": ["Recommendation"],
+      "workflowAnyOf": ["save places"],
+      "screenAnyOf": ["Explore Destinations"],
+      "forbiddenAnyOf": ["room reservation", "flight check-in", "trading terminal"]
     }
   },
   "briefs": [
@@ -491,7 +634,7 @@
       "description": "A direct-to-consumer clothing store helps shoppers browse a seasonal catalog, compare garment details, choose a size, and complete checkout.",
       "expectedPrimaryArchetype": "ecommerce",
       "acceptableArchetypes": ["ecommerce"],
-      "semanticProfile": "ecommerce"
+      "semanticProfile": "ecommerce-clothing"
     },
     {
       "id": "ECOM-02",
@@ -499,7 +642,7 @@
       "description": "A neighborhood grocery shop lets customers search fresh food, build a cart, choose a delivery window, and confirm a purchase.",
       "expectedPrimaryArchetype": "ecommerce",
       "acceptableArchetypes": ["ecommerce"],
-      "semanticProfile": "ecommerce"
+      "semanticProfile": "ecommerce-grocery"
     },
     {
       "id": "ECOM-03",
@@ -507,7 +650,7 @@
       "description": "An online retailer organizes home goods into collections, presents product specifications, and guides shoppers through a clear purchase flow.",
       "expectedPrimaryArchetype": "ecommerce",
       "acceptableArchetypes": ["ecommerce"],
-      "semanticProfile": "ecommerce"
+      "semanticProfile": "ecommerce-home-goods"
     },
     {
       "id": "ECOM-04",
@@ -515,7 +658,7 @@
       "description": "A digital music shop sells licensed albums, supports sample playback, and lets listeners buy and download selected releases.",
       "expectedPrimaryArchetype": "ecommerce",
       "acceptableArchetypes": ["ecommerce", "media"],
-      "semanticProfile": "ecommerce"
+      "semanticProfile": "ecommerce-music"
     },
     {
       "id": "ECOM-05",
@@ -523,7 +666,7 @@
       "description": "A cosmetics storefront helps shoppers compare ingredients, select product variations, and review delivery and return information before buying.",
       "expectedPrimaryArchetype": "ecommerce",
       "acceptableArchetypes": ["ecommerce"],
-      "semanticProfile": "ecommerce"
+      "semanticProfile": "ecommerce-cosmetics"
     },
     {
       "id": "ECOM-06",
@@ -923,7 +1066,7 @@
       "description": "A streaming service helps viewers browse films, continue a watchlist, and explore editorial collections by theme.",
       "expectedPrimaryArchetype": "media",
       "acceptableArchetypes": ["media", "consumer"],
-      "semanticProfile": "media"
+      "semanticProfile": "media-streaming"
     },
     {
       "id": "MED-05",
@@ -939,7 +1082,7 @@
       "description": "A trip-planning service helps travelers compare destinations, save places, coordinate dates, and keep a shared itinerary.",
       "expectedPrimaryArchetype": "travel",
       "acceptableArchetypes": ["travel", "productivity"],
-      "semanticProfile": "travel"
+      "semanticProfile": "travel-trip-planning"
     },
     {
       "id": "TRV-02",
@@ -947,7 +1090,7 @@
       "description": "A boutique hotel booking site presents room details, amenities, local guides, availability, and a clear reservation flow.",
       "expectedPrimaryArchetype": "travel",
       "acceptableArchetypes": ["travel", "marketplace"],
-      "semanticProfile": "travel"
+      "semanticProfile": "travel-hotel-booking"
     },
     {
       "id": "TRV-03",
@@ -955,7 +1098,7 @@
       "description": "A flight-management app organizes confirmed journeys, check-in reminders, gate updates, and travel documents for frequent flyers.",
       "expectedPrimaryArchetype": "travel",
       "acceptableArchetypes": ["travel"],
-      "semanticProfile": "travel"
+      "semanticProfile": "travel-flight-management"
     },
     {
       "id": "TRV-04",
@@ -963,7 +1106,7 @@
       "description": "A resort guest portal lets visitors review their stay details, request concierge assistance, and find on-property services.",
       "expectedPrimaryArchetype": "travel",
       "acceptableArchetypes": ["travel", "saas"],
-      "semanticProfile": "travel"
+      "semanticProfile": "travel-resort-guest"
     },
     {
       "id": "TRV-05",
@@ -971,7 +1114,7 @@
       "description": "A destination guide helps travelers explore neighborhoods, save recommendations, and build a day-by-day plan.",
       "expectedPrimaryArchetype": "travel",
       "acceptableArchetypes": ["travel", "media"],
-      "semanticProfile": "travel"
+      "semanticProfile": "travel-destination-guide"
     },
     {
       "id": "REA-01",

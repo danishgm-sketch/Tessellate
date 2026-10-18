@@ -48,6 +48,32 @@ export function bindResourceContent(
     /\b(?:returns? portal|return approval|refund steps|refund status|return request|previous purchase)\b/i.test(
       `${briefDescription} ${product.primaryObjective}`
     );
+  const isEcommerceCatalog = primaryArchetype === 'ecommerce' && screen.name === 'Product Catalog';
+  const isMusicStore =
+    primaryArchetype === 'ecommerce' && product.entities.some((entity) => entity.name === 'Album');
+  const ecommerceItemLabel = isMusicStore
+    ? { name: 'album', type: 'Artist and tracks' }
+    : /fresh food|grocery/i.test(product.primaryObjective)
+      ? { name: 'grocery item', type: 'Item details' }
+      : /home-goods/i.test(product.primaryObjective)
+        ? { name: 'home good', type: 'Specifications' }
+        : /cosmetic/i.test(product.primaryObjective)
+          ? { name: 'cosmetic product', type: 'Ingredients and variations' }
+          : { name: 'garment', type: 'Material and sizing' };
+  const isStreamingCatalogue = primaryArchetype === 'media' && screen.name === 'Film Catalogue';
+  const isFlightDocuments =
+    primaryArchetype === 'travel' &&
+    screen.name === 'Travel Documents' &&
+    product.entities.some((entity) => entity.name === 'Flight');
+  const isFlightManagement =
+    primaryArchetype === 'travel' && product.entities.some((entity) => entity.name === 'Flight');
+  const isFilmStreaming =
+    primaryArchetype === 'media' && product.entities.some((entity) => entity.name === 'Film');
+  const isHotelBooking =
+    primaryArchetype === 'travel' && product.entities.some((entity) => entity.name === 'Room');
+  const isDestinationTravel =
+    primaryArchetype === 'travel' &&
+    product.entities.some((entity) => entity.name === 'Destination');
   const brand =
     role === 'channels-rail'
       ? 'Example channels'
@@ -87,11 +113,21 @@ export function bindResourceContent(
   };
   const primaryActionLabel = employee
     ? 'Meet your team'
-    : isCommunity
-      ? 'See community updates'
-      : isReturnsPortal
-        ? 'Find an order'
-        : (ctaCopyByArchetype[primaryArchetype] ?? 'Explore the workspace');
+    : isFlightManagement
+      ? 'View upcoming flights'
+      : isFilmStreaming
+        ? 'Browse films'
+        : isMusicStore
+          ? 'Browse albums'
+          : isDestinationTravel
+            ? 'Explore destinations'
+            : isHotelBooking
+              ? 'Find a stay'
+              : isCommunity
+                ? 'See community updates'
+                : isReturnsPortal
+                  ? 'Find an order'
+                  : (ctaCopyByArchetype[primaryArchetype] ?? 'Explore the workspace');
   const targetPatternsByArchetype: Record<string, RegExp> = {
     ecommerce: /product detail/i,
     education: /learning|course|catalog/i,
@@ -103,9 +139,20 @@ export function bindResourceContent(
   };
   const preferredTargetPattern = employee
     ? /onboarding|welcome/i
-    : isReturnsPortal
-      ? /order lookup/i
-      : (targetPatternsByArchetype[primaryArchetype] ?? /overview|dashboard|home|workspace/i);
+    : isFlightManagement
+      ? /journey overview|flight details/i
+      : isFilmStreaming
+        ? /film catalogue|film detail|watchlist/i
+        : isMusicStore
+          ? /product catalog/i
+          : isDestinationTravel
+            ? /destination|neighborhood/i
+            : isHotelBooking
+              ? /find a stay|room details/i
+              : isReturnsPortal
+                ? /order lookup/i
+                : (targetPatternsByArchetype[primaryArchetype] ??
+                  /overview|dashboard|home|workspace/i);
   const primaryActionScreen =
     screens.find((item) => preferredTargetPattern.test(item.name)) ??
     screens.find((item) => /overview|dashboard|home|workspace/i.test(item.name)) ??
@@ -121,7 +168,10 @@ export function bindResourceContent(
     : isReturnsPortal
       ? 'Find a previous purchase, choose eligible items, and follow each return and refund step.'
       : `A workspace for ${product.primaryAudience.toLowerCase()}.`;
-  const searchCopyByArchetype: Record<string, { label: string; placeholder: string; helperText: string }> = {
+  const searchCopyByArchetype: Record<
+    string,
+    { label: string; placeholder: string; helperText: string }
+  > = {
     'real-estate': {
       label: 'Search property listings',
       placeholder: 'Search by area or property details',
@@ -132,6 +182,49 @@ export function bindResourceContent(
       placeholder: 'Search listings',
       helperText: 'Example search only. Connect a listings service to search live results.',
     },
+    ecommerce: {
+      label: isMusicStore ? 'Search albums' : 'Search products',
+      placeholder: isMusicStore ? 'Search albums and artists' : 'Search products and collections',
+      helperText: isMusicStore
+        ? 'Example search only. Connect a music catalogue to search licensed releases.'
+        : 'Example search only. Connect a product catalogue to search live inventory.',
+    },
+    media: {
+      label: 'Search films',
+      placeholder: 'Search films and collections',
+      helperText: 'Example search only. Connect a film catalogue to search available titles.',
+    },
+    travel: isFlightManagement
+      ? {
+          label: 'Search flights',
+          placeholder: 'Search by route or flight number',
+          helperText:
+            'Example search only. Connect a travel service to search live flight details.',
+        }
+      : isHotelBooking
+        ? {
+            label: 'Search stays',
+            placeholder: 'Search hotels, dates, and amenities',
+            helperText:
+              'Example search only. Connect a booking service to search live availability.',
+          }
+        : isDestinationTravel
+          ? {
+              label: screen.name.toLowerCase().includes('neighborhood')
+                ? 'Search neighborhoods'
+                : 'Search destinations',
+              placeholder: screen.name.toLowerCase().includes('neighborhood')
+                ? 'Search neighborhoods and local places'
+                : 'Search destinations and saved places',
+              helperText:
+                'Example search only. Connect a travel service to search live destinations.',
+            }
+          : {
+              label: 'Search resort services',
+              placeholder: 'Search on-property services',
+              helperText:
+                'Example search only. Connect a resort service to search live availability.',
+            },
     education: {
       label: 'Search courses',
       placeholder: 'Search courses and topics',
@@ -347,8 +440,14 @@ export function bindResourceContent(
                 ? 'Available property listings'
                 : isMarketplaceListings
                   ? 'Available listings'
-                  : 'Search results'
-            : (titles[role] ?? screen.name),
+                  : isEcommerceCatalog
+                    ? isMusicStore
+                      ? 'Available albums'
+                      : 'Available products'
+                    : isStreamingCatalogue
+                      ? 'Film catalogue'
+                      : 'Search results'
+              : (titles[role] ?? screen.name),
     brand,
     links,
     eyebrow: 'Example organisation · sample content',
@@ -387,72 +486,129 @@ export function bindResourceContent(
           val: '—',
           status: isTradingTerminal ? 'Market data not connected' : 'No connected data',
         })),
-    rows: employee
-      ? [
-          {
-            id: 1,
-            name: 'Example colleague A',
-            type: 'Product team',
-            quality: 80,
-            status: 'Onboarding',
-            displayValue: 'Progress not connected',
-          },
-          {
-            id: 2,
-            name: 'Example colleague B',
-            type: 'Engineering team',
-            quality: 100,
-            status: 'Settled in',
-            displayValue: 'Progress not connected',
-          },
-          {
-            id: 3,
-            name: 'Example colleague C',
-            type: 'People team',
-            quality: 40,
-            status: 'Welcome week',
-            displayValue: 'Progress not connected',
-          },
-        ]
-      : isRealEstate
-        ? ['A', 'B', 'C'].map((letter, index) => ({
-            id: index + 1,
-            name: `Example property ${letter}`,
-            type: 'Location and features not connected',
+    rows: isEcommerceCatalog
+      ? ['A', 'B', 'C'].map((letter) => ({
+          id: letter.charCodeAt(0),
+          name: `Example ${ecommerceItemLabel.name} ${letter}`,
+          type: `${ecommerceItemLabel.type} not connected`,
+          quality: 0,
+          status: isMusicStore ? 'Release availability not connected' : 'Availability not connected',
+          displayValue: isMusicStore ? 'Release price not connected' : 'Price not connected',
+        }))
+      : isStreamingCatalogue
+        ? ['A', 'B', 'C'].map((letter) => ({
+            id: letter.charCodeAt(0),
+            name: `Example film ${letter}`,
+            type: 'Genre and format not connected',
             quality: 0,
             status: 'Availability not connected',
-            displayValue: 'Price not connected',
+            displayValue: 'Runtime not connected',
           }))
-        : isMarketplaceListings
-          ? ['A', 'B', 'C'].map((letter, index) => ({
-              id: index + 1,
-              name: `Example listing ${letter}`,
-              type: 'Service details and availability not connected',
+        : isFlightDocuments
+          ? ['A', 'B', 'C'].map((letter) => ({
+              id: letter.charCodeAt(0),
+              name: `Example travel document ${letter}`,
+              type: 'Boarding pass or journey document',
               quality: 0,
-              status: 'Example listing',
-              displayValue: 'Availability not connected',
+              status: 'Offline status not connected',
+              displayValue: 'Journey details not connected',
             }))
-        : product.entities.map((entity, index) => ({
-            id: index + 1,
-            name: `Example ${entity.name}`,
-            type: entity.description ?? 'Record',
-            quality: 0,
-            status: 'Sample',
-            displayValue: isTradingTerminal ? 'Market data not connected' : 'Details not connected',
-          })),
-    columnLabels: isRealEstate
-      ? {
-          name: 'Property',
-          type: 'Location and features',
-          quality: 'Price',
-          status: 'Availability',
-        }
-      : {
-          name: employee ? 'Colleague' : 'Record',
-          type: employee ? 'Team' : 'Context',
-          quality: employee ? 'Progress' : 'Data',
-          status: 'Status',
-        },
+          : employee
+            ? [
+                {
+                  id: 1,
+                  name: 'Example colleague A',
+                  type: 'Product team',
+                  quality: 80,
+                  status: 'Onboarding',
+                  displayValue: 'Progress not connected',
+                },
+                {
+                  id: 2,
+                  name: 'Example colleague B',
+                  type: 'Engineering team',
+                  quality: 100,
+                  status: 'Settled in',
+                  displayValue: 'Progress not connected',
+                },
+                {
+                  id: 3,
+                  name: 'Example colleague C',
+                  type: 'People team',
+                  quality: 40,
+                  status: 'Welcome week',
+                  displayValue: 'Progress not connected',
+                },
+              ]
+            : isRealEstate
+              ? ['A', 'B', 'C'].map((letter, index) => ({
+                  id: index + 1,
+                  name: `Example property ${letter}`,
+                  type: 'Location and features not connected',
+                  quality: 0,
+                  status: 'Availability not connected',
+                  displayValue: 'Price not connected',
+                }))
+              : isMarketplaceListings
+                ? ['A', 'B', 'C'].map((letter, index) => ({
+                    id: index + 1,
+                    name: `Example listing ${letter}`,
+                    type: 'Service details and availability not connected',
+                    quality: 0,
+                    status: 'Example listing',
+                    displayValue: 'Availability not connected',
+                  }))
+                : product.entities.map((entity, index) => ({
+                    id: index + 1,
+                    name: `Example ${entity.name}`,
+                    type: entity.description ?? 'Record',
+                    quality: 0,
+                    status: 'Sample',
+                    displayValue: isTradingTerminal
+                      ? 'Market data not connected'
+                      : 'Details not connected',
+                  })),
+    columnLabels: isEcommerceCatalog
+      ? isMusicStore
+        ? {
+            name: 'Album',
+            type: 'Artist and tracks',
+            quality: 'Release price',
+            status: 'Availability',
+          }
+        : {
+            name: 'Product',
+            type: ecommerceItemLabel.type,
+            quality: 'Price',
+            status: 'Availability',
+          }
+      : isStreamingCatalogue
+        ? {
+            name: 'Film',
+            type: 'Genre and format',
+            quality: 'Runtime',
+            status: 'Availability',
+          }
+        : isFlightDocuments
+          ? {
+              name: 'Document',
+              type: 'Journey',
+              quality: 'Offline access',
+              status: 'Status',
+            }
+          : isRealEstate
+            ? {
+                name: 'Property',
+                type: 'Location and features',
+                quality: 'Price',
+                status: 'Availability',
+              }
+            : {
+                name: employee ? 'Colleague' : 'Record',
+                type: employee ? 'Team' : 'Context',
+                quality: employee ? 'Progress' : 'Data',
+                status: 'Status',
+              },
     columns: employee
       ? [
           { title: 'Discover', tasks: ['Meet your buddy', 'Find your team'] },
@@ -470,38 +626,38 @@ export function bindResourceContent(
       role === 'search-header'
         ? searchCopy.label
         : role === 'conversion-cta'
-        ? primaryActionLabel
-        : role === 'message-composer'
-          ? 'Write a message'
-          : role === 'auth-card'
-            ? 'Work email'
-            : role === 'settings-form'
-              ? isReturnsPortal
-                ? 'Return reason'
-                : 'Notification preferences'
-              : role === 'save-footer'
+          ? primaryActionLabel
+          : role === 'message-composer'
+            ? 'Write a message'
+            : role === 'auth-card'
+              ? 'Work email'
+              : role === 'settings-form'
                 ? isReturnsPortal
-                  ? 'Submit return request'
-                  : 'Save preferences'
-                : role === 'auth-footer'
-                  ? 'Sign in requires your authentication backend'
-                  : 'Continue onboarding',
+                  ? 'Return reason'
+                  : 'Notification preferences'
+                : role === 'save-footer'
+                  ? isReturnsPortal
+                    ? 'Submit return request'
+                    : 'Save preferences'
+                  : role === 'auth-footer'
+                    ? 'Sign in requires your authentication backend'
+                    : 'Continue onboarding',
     placeholder:
       role === 'search-header'
         ? searchCopy.placeholder
         : role === 'message-composer'
-        ? 'Write a message…'
-        : role === 'settings-form' && isReturnsPortal
-          ? 'Describe why these items are being returned'
-          : undefined,
+          ? 'Write a message…'
+          : role === 'settings-form' && isReturnsPortal
+            ? 'Describe why these items are being returned'
+            : undefined,
     helperText:
       role === 'search-header'
         ? searchCopy.helperText
         : role === 'message-composer'
-        ? 'Example input. Connect a messaging backend to send messages.'
-        : role === 'settings-form' && isReturnsPortal
-          ? 'Example field. Connect order data and a returns service in the exported application.'
-          : 'Example field. Connect persistence and your backend in the exported application.',
+          ? 'Example input. Connect a messaging backend to send messages.'
+          : role === 'settings-form' && isReturnsPortal
+            ? 'Example field. Connect order data and a returns service in the exported application.'
+            : 'Example field. Connect persistence and your backend in the exported application.',
     children:
       role === 'save-footer'
         ? isReturnsPortal

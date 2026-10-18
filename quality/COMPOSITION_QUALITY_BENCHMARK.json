@@ -241,7 +241,7 @@
       "brief": "A direct-to-consumer clothing store helps shoppers browse a seasonal catalog, compare garment details, choose a size, and complete checkout.",
       "expectedPrimaryArchetype": "ecommerce",
       "acceptableArchetypes": ["ecommerce"],
-      "semanticProfile": "ecommerce"
+      "semanticProfile": "ecommerce-clothing"
     },
     {
       "id": "ECOM-02",
@@ -249,7 +249,7 @@
       "brief": "A neighborhood grocery shop lets customers search fresh food, build a cart, choose a delivery window, and confirm a purchase.",
       "expectedPrimaryArchetype": "ecommerce",
       "acceptableArchetypes": ["ecommerce"],
-      "semanticProfile": "ecommerce"
+      "semanticProfile": "ecommerce-grocery"
     },
     {
       "id": "ECOM-03",
@@ -257,7 +257,7 @@
       "brief": "An online retailer organizes home goods into collections, presents product specifications, and guides shoppers through a clear purchase flow.",
       "expectedPrimaryArchetype": "ecommerce",
       "acceptableArchetypes": ["ecommerce"],
-      "semanticProfile": "ecommerce"
+      "semanticProfile": "ecommerce-home-goods"
     },
     {
       "id": "ECOM-04",
@@ -265,7 +265,7 @@
       "brief": "A digital music shop sells licensed albums, supports sample playback, and lets listeners buy and download selected releases.",
       "expectedPrimaryArchetype": "ecommerce",
       "acceptableArchetypes": ["ecommerce", "media"],
-      "semanticProfile": "ecommerce"
+      "semanticProfile": "ecommerce-music"
     },
     {
       "id": "ECOM-05",
@@ -273,7 +273,7 @@
       "brief": "A cosmetics storefront helps shoppers compare ingredients, select product variations, and review delivery and return information before buying.",
       "expectedPrimaryArchetype": "ecommerce",
       "acceptableArchetypes": ["ecommerce"],
-      "semanticProfile": "ecommerce"
+      "semanticProfile": "ecommerce-cosmetics"
     },
     {
       "id": "ECOM-06",
@@ -681,7 +681,7 @@
       "brief": "A streaming service helps viewers browse films, continue a watchlist, and explore editorial collections by theme.",
       "expectedPrimaryArchetype": "media",
       "acceptableArchetypes": ["media", "consumer"],
-      "semanticProfile": "media"
+      "semanticProfile": "media-streaming"
     },
     {
       "id": "MED-05",
@@ -697,7 +697,7 @@
       "brief": "A trip-planning service helps travelers compare destinations, save places, coordinate dates, and keep a shared itinerary.",
       "expectedPrimaryArchetype": "travel",
       "acceptableArchetypes": ["travel", "productivity"],
-      "semanticProfile": "travel"
+      "semanticProfile": "travel-trip-planning"
     },
     {
       "id": "TRV-02",
@@ -705,7 +705,7 @@
       "brief": "A boutique hotel booking site presents room details, amenities, local guides, availability, and a clear reservation flow.",
       "expectedPrimaryArchetype": "travel",
       "acceptableArchetypes": ["travel", "marketplace"],
-      "semanticProfile": "travel"
+      "semanticProfile": "travel-hotel-booking"
     },
     {
       "id": "TRV-03",
@@ -713,7 +713,7 @@
       "brief": "A flight-management app organizes confirmed journeys, check-in reminders, gate updates, and travel documents for frequent flyers.",
       "expectedPrimaryArchetype": "travel",
       "acceptableArchetypes": ["travel"],
-      "semanticProfile": "travel"
+      "semanticProfile": "travel-flight-management"
     },
     {
       "id": "TRV-04",
@@ -721,7 +721,7 @@
       "brief": "A resort guest portal lets visitors review their stay details, request concierge assistance, and find on-property services.",
       "expectedPrimaryArchetype": "travel",
       "acceptableArchetypes": ["travel", "saas"],
-      "semanticProfile": "travel"
+      "semanticProfile": "travel-resort-guest"
     },
     {
       "id": "TRV-05",
@@ -729,7 +729,7 @@
       "brief": "A destination guide helps travelers explore neighborhoods, save recommendations, and build a day-by-day plan.",
       "expectedPrimaryArchetype": "travel",
       "acceptableArchetypes": ["travel", "media"],
-      "semanticProfile": "travel"
+      "semanticProfile": "travel-destination-guide"
     },
     {
       "id": "REA-01",

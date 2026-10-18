@@ -71,6 +71,131 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
     ).toBe(true);
   });
 
+  it('plans an ecommerce catalog as a real product-discovery surface', () => {
+    const brief = briefs.find((candidate) => candidate.id === 'ECOM-01')!;
+    const result = composeProjectPipeline(
+      { description: brief.brief },
+      { catalogResources: catalog, seed: 'composition-quality-ECOM-01-entry' }
+    );
+    const catalogScreen = result.screenGraph.groups
+      .flatMap((group) => group.screens)
+      .find((screen) => screen.name === 'Product Catalog');
+
+    expect(catalogScreen?.screenType).toBe('search-explore');
+    expect(catalogScreen?.requiredRoles).toEqual(
+      expect.arrayContaining(['search-header', 'facet-rail', 'results-grid'])
+    );
+    for (const direction of [result.directionA, result.directionB, result.directionC]) {
+      const screen = direction.manifest.screens.find(
+        (candidate) => candidate.name === 'Product Catalog'
+      );
+      const nodes = screen ? collectNodes(screen.rootNode) : [];
+      const search = nodes.find((node) => node.semanticRole === 'search-header');
+      const products = nodes.find((node) => node.semanticRole === 'results-grid');
+
+      expect(search?.props.label).toBe('Search products');
+      expect(products?.props.title).toBe('Available products');
+      expect(products?.props.columnLabels).toEqual({
+        name: 'Product',
+        type: 'Material and sizing',
+        quality: 'Price',
+        status: 'Availability',
+      });
+      expect(products?.props.rows).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ name: expect.stringMatching(/example garment/i) }),
+        ])
+      );
+    }
+  });
+
+  it('keeps a digital music shop focused on sample playback and licensed downloads', () => {
+    const brief = briefs.find((candidate) => candidate.id === 'ECOM-04')!;
+    const result = composeProjectPipeline(
+      { description: brief.brief },
+      { catalogResources: catalog, seed: 'composition-quality-ECOM-04-music' }
+    );
+
+    expect(result.productModel.entities.map((entity) => entity.name)).toEqual(
+      expect.arrayContaining(['Album', 'Release', 'Download'])
+    );
+    expect(JSON.stringify(result.productModel.workflows)).toMatch(/play a sample|download/i);
+    expect(JSON.stringify(result.productModel.workflows)).not.toMatch(/courier|shipping/i);
+    for (const direction of [result.directionA, result.directionB, result.directionC]) {
+      const screen = direction.manifest.screens.find(
+        (candidate) => candidate.name === 'Product Catalog'
+      );
+      const nodes = screen ? collectNodes(screen.rootNode) : [];
+      const search = nodes.find((node) => node.semanticRole === 'search-header');
+      const albums = nodes.find((node) => node.semanticRole === 'results-grid');
+
+      expect(search?.props.label).toBe('Search albums');
+      expect(albums?.props.title).toBe('Available albums');
+      expect(albums?.props.columnLabels).toEqual({
+        name: 'Album',
+        type: 'Artist and tracks',
+        quality: 'Release price',
+        status: 'Availability',
+      });
+      expect(albums?.props.rows).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({ name: expect.stringMatching(/example album/i) }),
+        ])
+      );
+    }
+  });
+
+  it('plans a flight-management product around confirmed journeys and travel documents', () => {
+    const brief = briefs.find((candidate) => candidate.id === 'TRV-03')!;
+    const result = composeProjectPipeline(
+      { description: brief.brief },
+      { catalogResources: catalog, seed: 'composition-quality-TRV-03-flight' }
+    );
+    const screens = result.screenGraph.groups.flatMap((group) => group.screens);
+    const names = screens.map((screen) => screen.name);
+
+    expect(result.productModel.primaryObjective).toMatch(/flight|journey|check-in|gate/i);
+    expect(names).toEqual(
+      expect.arrayContaining(['Journey Overview', 'Flight Details', 'Travel Documents'])
+    );
+    expect(names).not.toEqual(expect.arrayContaining(['Destination Showcase', 'Property Detail']));
+    for (const direction of [result.directionA, result.directionB, result.directionC]) {
+      const serialized = JSON.stringify(direction.manifest).toLocaleLowerCase();
+      expect(serialized).toMatch(/flight|boarding|gate|check.in|travel document/);
+      expect(serialized).not.toMatch(/room galleries|hotel confirmations/);
+    }
+  });
+
+  it('plans a streaming service around film discovery and a watchlist', () => {
+    const brief = briefs.find((candidate) => candidate.id === 'MED-04')!;
+    const result = composeProjectPipeline(
+      { description: brief.brief },
+      { catalogResources: catalog, seed: 'composition-quality-MED-04-streaming' }
+    );
+    const screens = result.screenGraph.groups.flatMap((group) => group.screens);
+    const names = screens.map((screen) => screen.name);
+
+    expect(result.productModel.primaryObjective).toMatch(/film|watchlist|viewers/i);
+    expect(names).toEqual(expect.arrayContaining(['Film Catalogue', 'Film Detail', 'Watchlist']));
+    expect(names).not.toEqual(expect.arrayContaining(['Article Reader', 'Section Explorer']));
+    for (const direction of [result.directionA, result.directionB, result.directionC]) {
+      const screen = direction.manifest.screens.find(
+        (candidate) => candidate.name === 'Film Catalogue'
+      );
+      const nodes = screen ? collectNodes(screen.rootNode) : [];
+      const search = nodes.find((node) => node.semanticRole === 'search-header');
+      const films = nodes.find((node) => node.semanticRole === 'results-grid');
+
+      expect(search?.props.label).toBe('Search films');
+      expect(films?.props.columnLabels).toEqual({
+        name: 'Film',
+        type: 'Genre and format',
+        quality: 'Runtime',
+        status: 'Availability',
+      });
+    }
+  });
+
   for (const brief of briefs) {
     it(`${brief.id} composes three semantically coherent, resolvable directions`, () => {
       const result = composeProjectPipeline(
@@ -228,22 +353,33 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
 
         const nodes = output.manifest.screens.flatMap((screen) => collectNodes(screen.rootNode));
         if (brief.id === 'TRV-01') {
-          const destinationHero = nodes.find((node) => node.semanticRole === 'hero');
-          expect(destinationHero?.props.subheadline).not.toContain(
-            result.productModel.primaryObjective
+          const destinationSearch = output.manifest.screens.find(
+            (screen) => screen.name === 'Destination Search'
+          );
+          const searchNodes = destinationSearch ? collectNodes(destinationSearch.rootNode) : [];
+          const searchInput = searchNodes.find((node) => node.semanticRole === 'search-header');
+          const destinations = searchNodes.find((node) => node.semanticRole === 'results-grid');
+          expect(searchInput?.props.label).toBe('Search destinations');
+          expect(searchInput?.props.placeholder).toContain('destinations');
+          expect(destinations?.props.rows).toEqual(
+            expect.arrayContaining([expect.objectContaining({ name: 'Example Destination' })])
           );
         }
         if (brief.id === 'REA-01') {
           const propertySearch = output.manifest.screens.find(
             (screen) => screen.name === 'Property Search'
           );
-          expect(propertySearch, `${name} must include the real-estate search screen`).toBeDefined();
+          expect(
+            propertySearch,
+            `${name} must include the real-estate search screen`
+          ).toBeDefined();
           const searchNodes = propertySearch ? collectNodes(propertySearch.rootNode) : [];
           const searchInput = searchNodes.find((node) => node.semanticRole === 'search-header');
           const resultGrid = searchNodes.find((node) => node.semanticRole === 'results-grid');
-          expect(searchInput?.props.label, `${name} property search must be labelled by its task`).toBe(
-            'Search property listings'
-          );
+          expect(
+            searchInput?.props.label,
+            `${name} property search must be labelled by its task`
+          ).toBe('Search property listings');
           expect(
             resultGrid?.resourceRef?.slug,
             `${name} search results must render listings, not marketing features`
@@ -278,13 +414,14 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
               )
             : undefined;
           const rows = listingResults?.props.rows as
-            | Array<{ name: string; displayValue?: string }>
-            | undefined;
+            Array<{ name: string; displayValue?: string }> | undefined;
           expect(rows?.length).toBeGreaterThan(0);
           expect(rows?.every((row) => /listing/i.test(row.name))).toBe(true);
           expect(JSON.stringify(rows).toLowerCase()).not.toMatch(/proposal|review/);
         }
-        for (const node of nodes.filter((candidate) => candidate.semanticRole === 'search-header')) {
+        for (const node of nodes.filter(
+          (candidate) => candidate.semanticRole === 'search-header'
+        )) {
           expect(node.props.label).not.toBe('Continue onboarding');
           expect(node.props.helperText).not.toBe(
             'Example field. Connect persistence and your backend in the exported application.'
@@ -410,8 +547,7 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
           const activity = screenNodes.find((node) => node.semanticRole === 'activity-feed');
           if (activity) {
             const activityEvents = activity.props.events as
-              | Array<{ time: string; title: string; desc: string }>
-              | undefined;
+              Array<{ time: string; title: string; desc: string }> | undefined;
             expect(
               activityEvents?.every((event) => !/^example$/i.test(event.time)),
               `${brief.id} ${name} ${screen.name} activity timestamps must read like user-facing time labels`
@@ -455,18 +591,21 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
           const conversation = screenNodes.find((node) => node.semanticRole === 'message-thread');
           if (conversation) {
             const messages = conversation.props.events as
-              | Array<{ time: string; title: string; desc: string }>
-              | undefined;
+              Array<{ time: string; title: string; desc: string }> | undefined;
             expect(
               messages?.every((message) => !/^example(?:\s+exchange)?$/i.test(message.time)),
               `${brief.id} ${name} ${screen.name} conversation timestamps must be readable`
             ).toBe(true);
           }
-          for (const board of screenNodes.filter((node) => node.semanticRole === 'canvas-viewport')) {
+          for (const board of screenNodes.filter(
+            (node) => node.semanticRole === 'canvas-viewport'
+          )) {
             const columns = board.props.columns as
-              | Array<{ title: string; tasks: string[] }>
-              | undefined;
-            expect(columns?.length, `${brief.id} ${name} ${screen.name} canvas needs workflow content`).toBeGreaterThan(0);
+              Array<{ title: string; tasks: string[] }> | undefined;
+            expect(
+              columns?.length,
+              `${brief.id} ${name} ${screen.name} canvas needs workflow content`
+            ).toBeGreaterThan(0);
             const boardCopy = JSON.stringify(columns);
             for (const identifier of result.productModel.workflows.flatMap((workflow) => [
               workflow.name,
