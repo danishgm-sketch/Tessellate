@@ -31,7 +31,7 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
             <span className="text-base font-semibold tracking-tight">Tessellate</span>
           </a>
 
-          <nav className="hidden xl:flex items-center gap-4 text-sm">
+          <nav aria-label="Primary" className="hidden xl:flex items-center gap-4 text-sm">
             {navLinks.map((link) => {
               const isActive = currentPath === link.href || currentPath.startsWith(link.href + '/');
               return (

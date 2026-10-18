@@ -36,6 +36,18 @@ test.describe('Accessibility & WCAG 2.2 AA Audits', () => {
     expect(accessibilityScanResults.violations).toEqual([]);
   });
 
+  test('resource detail gives primary and breadcrumb navigation unique landmark names', async ({ page }) => {
+    await page.goto('/resources/ai-agent-activity-feed/');
+    await expect(page.getByRole('navigation', { name: 'Primary' })).toBeVisible();
+    await expect(page.getByRole('navigation', { name: 'Resource breadcrumb' })).toBeVisible();
+
+    const accessibilityScanResults = await new AxeBuilder({ page })
+      .withRules(['landmark-unique'])
+      .analyze();
+
+    expect(accessibilityScanResults.violations).toEqual([]);
+  });
+
   test('reduced-motion preference is respected across pages', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.goto('/');
