@@ -139,6 +139,29 @@ test('Explore reports the real total and exposes more than the first 50 resource
   await expect(page.getByText('Showing 100 of 324 resources', { exact: true })).toBeVisible();
 });
 
+test('mobile filter drawer is a keyboard dialog with focus containment and Escape close', async ({ page }) => {
+  test.skip((page.viewportSize()?.width ?? 1440) >= 1024, 'Mobile drawer behavior is only applicable below the desktop breakpoint.');
+  await page.goto('/explore/');
+  const opener = page.getByRole('button', { name: 'Filters', exact: true });
+  await opener.click();
+
+  const dialog = page.getByRole('dialog', { name: 'Explore filters' });
+  const close = page.getByRole('button', { name: 'Close filters' });
+  await expect(dialog).toBeVisible();
+  await expect(dialog).toHaveAttribute('aria-modal', 'true');
+  await expect(close).toBeFocused();
+
+  await page.keyboard.press('Shift+Tab');
+  const focusable = dialog.locator('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+  await expect(focusable.last()).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(close).toBeFocused();
+
+  await page.keyboard.press('Escape');
+  await expect(dialog).toHaveCount(0);
+  await expect(opener).toBeFocused();
+});
+
 test('typing a query does not repeatedly abort resource preview requests', async ({ page }) => {
   const abortedPreviews: string[] = [];
   await page.route('**/preview/**', async (route) => {

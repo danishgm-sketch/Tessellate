@@ -104,6 +104,9 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [urlReady, setUrlReady] = useState(false);
+  const mobileRailDialogRef = useRef<HTMLDivElement>(null);
+  const mobileRailToggleRef = useRef<HTMLButtonElement>(null);
+  const mobileRailCloseRef = useRef<HTMLButtonElement>(null);
 
   const oramaDbRef = useRef<ResourceOramaDb | null>(null);
   const searchRequestRef = useRef(0);
@@ -153,6 +156,46 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
     const timer = window.setTimeout(() => setCommittedQuery(query), 250);
     return () => window.clearTimeout(timer);
   }, [query, committedQuery, urlReady]);
+
+  useEffect(() => {
+    if (!mobileRailOpen) return;
+    const dialog = mobileRailDialogRef.current;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    mobileRailCloseRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setMobileRailOpen(false);
+        return;
+      }
+      if (event.key !== 'Tab' || !dialog) return;
+
+      const focusable = Array.from(dialog.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      )).filter((element) => element.getClientRects().length > 0);
+      const first = focusable[0];
+      const last = focusable.at(-1);
+      if (!first || !last) {
+        event.preventDefault();
+        dialog.focus();
+      } else if (event.shiftKey && (document.activeElement === first || !dialog.contains(document.activeElement))) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || !dialog.contains(document.activeElement))) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      window.requestAnimationFrame(() => mobileRailToggleRef.current?.focus());
+    };
+  }, [mobileRailOpen]);
 
   useEffect(() => {
     if (urlReady) writeSearchUrl(committedQuery, filters);
@@ -304,6 +347,10 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
         {/* Mobile Filter Toggle */}
         <button
           type="button"
+          ref={mobileRailToggleRef}
+          aria-haspopup="dialog"
+          aria-expanded={mobileRailOpen}
+          aria-controls="explore-mobile-filter-dialog"
           onClick={() => setMobileRailOpen(!mobileRailOpen)}
           className="lg:hidden flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[var(--tess-hairline,#D9D6CF)] bg-white text-xs font-medium text-[var(--tess-ink,#111217)] shadow-2xs"
         >
@@ -449,17 +496,27 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
 
       {/* Mobile Drawer Filter Rail */}
       {mobileRailOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden flex">
+        <div
+          id="explore-mobile-filter-dialog"
+          ref={mobileRailDialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="explore-filter-dialog-title"
+          tabIndex={-1}
+          className="fixed inset-0 z-50 lg:hidden flex"
+        >
           <div
             className="fixed inset-0 bg-black/30 backdrop-blur-xs"
             onClick={() => setMobileRailOpen(false)}
           />
           <div className="relative ml-auto w-80 max-w-full bg-[var(--tess-surface,#FAF9F6)] p-6 shadow-2xl flex flex-col h-full overflow-y-auto">
             <div className="flex items-center justify-between pb-4 border-b border-[var(--tess-hairline,#D9D6CF)] mb-4">
-              <span className="font-semibold text-sm">Filters</span>
+              <span id="explore-filter-dialog-title" className="font-semibold text-sm">Explore filters</span>
               <button
                 type="button"
-                aria-label="Close filters" onClick={() => setMobileRailOpen(false)}
+                ref={mobileRailCloseRef}
+                aria-label="Close filters"
+                onClick={() => setMobileRailOpen(false)}
                 className="p-1 rounded text-[var(--tess-ink-muted,#62666F)]"
               >
                 <X className="w-5 h-5" />
@@ -471,6 +528,7 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
               onReset={() => setFilters({})}
               availableOptions={availableFacetOptions}
               className="w-full"
+              showHeading={false}
             />
           </div>
         </div>
