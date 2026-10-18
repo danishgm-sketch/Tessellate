@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 132 findings (26 High, 105 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 12 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–132 in Compose/resource previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–132; the composition and data-truth findings are fixed locally, with issue-specific deployed review verification still pending. AUD-111 records the e-commerce CTA copy and nonexistent destination found across the 100-brief visible UI review; AUD-112 records a returns-portal brief that inherited a storefront purchase architecture. AUD-113 records an empty fourth Feature Bento card for three-item input; the isolated Sites Worker regression passes locally. AUD-114 records a returns-service explanation overwritten by a generic disabled-action tooltip; its semantic and visible browser regressions pass. AUD-115 records duplicate primary navigation on the returns request screen; its semantic and browser regressions pass. AUD-116–118 cover inbox semantics, internal labels, and a repeated heading in ordinary activity feeds. The next review found AUD-119: brokerage intent inherited retail banking workflows; AUD-120: KPI cards displayed “Example” as a value; and AUD-121: KPI statuses wrapped into narrow columns on mobile. AUD-122 records duplicate “Workspace” branding; AUD-123 repeated the page heading above its KPI cards; and AUD-124 put “Example” in activity timestamp positions. AUD-125–127 cover real-estate search rendered as marketing cards, onboarding copy in marketplace search, and duplicate travel hero copy. AUD-128 found static Filter Builder rules and an Add Condition action that inserted an unrelated canned row. AUD-129–130 found marketplace results from unrelated proposal/review entities and fabricated numeric progress values. AUD-131 found mobile data-table fields clipped outside the visible preview; AUD-132 showed unavailable values in the success color. These eight findings now have visible-browser regressions and desktop/mobile captures where applicable; focused Sites Worker checks report no console errors, uncaught exceptions, failed requests, or HTTP errors. The fixes await deployed review verification. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See `quality/STEP_08_EVIDENCE.md`, `quality/STEP_14_EVIDENCE.md`, and `evidence/catalog-search-v20/`.
+**Current disposition:** 140 findings (32 High, 107 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 20 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–140 in Compose/resource previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–140; the composition and data-truth findings are fixed locally, with deployed review verification still pending. AUD-134–137 record ecommerce, digital music, flight-management, and film-streaming briefs that inherited unrelated product workflows; AUD-138 records flight-oriented copy in destination search; AUD-139 records the missing Product Catalog to Product Detail path; AUD-140 records dark-canvas contrast failures in expressive Gold resource variants. The full current-source visible benchmark covered 100 briefs and 300 directions at desktop and mobile sizes; reports record zero unresolved diagnostics, console errors, warnings, uncaught exceptions, failed requests, or HTTP errors. Issue-specific before/after captures and red/green regressions are recorded. These fixes await deployed review verification. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See quality/STEP_08_EVIDENCE.md, quality/STEP_14_EVIDENCE.md, and evidence/catalog-search-v20/.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -235,7 +235,7 @@ No Critical findings are recorded in this audit register.
 ### AUD-119 — Brokerage terminal brief inherited retail banking workflows
 
 - **Evidence:** the before screenshot at
-  `quality/evidence/step-14/manual-review/verified/desktop/fin-05-direction-01.png`
+  `quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/fin-05-direction-01.png`
   shows Account Balances, bank statements, and a notification action. After
   captures show Market Overview, Order Book, Positions & Risk, and Trade History
   at desktop and mobile sizes.
@@ -253,6 +253,47 @@ No Critical findings are recorded in this audit register.
   enforce market screens, relevant events, and no banking residue. Desktop and
   mobile browser reports record no console errors, uncaught exceptions, failed
   requests, or HTTP errors. Deployed review verification remains open.
+
+### AUD-134 — Clothing commerce brief composed as a marketing storefront
+
+- **Evidence:** the baseline preview at quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/ecom-01-direction-01.png starts with a marketing hero and delivery promise. The current preview at quality/evidence/step-14/manual-review/current/desktop/ecom-01-direction-01.png starts with Product Catalog and product search; a mobile capture is alongside it.
+- **Reproduction:** open /compose, enter benchmark brief ECOM-01, compose, and inspect Direction 01’s screen plan and Product Catalog preview.
+- **Root cause:** the ecommerce archetype defaulted to a Storefront Catalog marketing screen and the generic planner mapped it to marketing-page semantics.
+- **Affected code:** packages/composer/src/archetypes.ts, packages/composer/src/domain-context.ts, packages/composer/src/planner.ts, and the composition benchmark.
+- **Remediation:** make searchable Product Catalog the ecommerce default and bind clothing discovery, details, sizing, and checkout content. The 100-brief benchmark and current desktop/mobile UI run pass locally; deployed verification remains open.
+
+### AUD-135 — Digital music commerce inherited a physical storefront workflow
+
+- **Evidence:** baseline ECOM-04 screenshots use Storefront Catalog and generic order-delivery copy. Current desktop/mobile captures show album search, release details, licensed sample/download context, and the generated purchase flow.
+- **Reproduction:** open /compose, enter benchmark brief ECOM-04, compose, and inspect the product model, screen plan, and catalog resource data.
+- **Root cause:** the generic ecommerce model did not distinguish physical goods from digital music releases.
+- **Affected code:** packages/composer/src/domain-context.ts, packages/composer/src/interpreter.ts, packages/compatibility/src/content-bindings.ts, and the interpretation/composition benchmarks.
+- **Remediation:** specialize music commerce around albums and releases, with sample, purchase, and download workflows. The semantic regression passed after failing on the generic plan; deployed verification remains open.
+
+### AUD-136 — Flight-management brief planned as a destination and hotel product
+
+- **Evidence:** baseline TRV-03 shows Destination Showcase and a travel-discovery hero. Current desktop/mobile captures show Journey Overview, Flight Details, and Travel Documents with check-in, gate, and confirmed-flight context.
+- **Reproduction:** open /compose, enter benchmark brief TRV-03, compose, and inspect the generated screens and direction preview.
+- **Root cause:** broad travel planning reused a destination/hospitality architecture for confirmed-flight operations.
+- **Affected code:** packages/composer/src/domain-context.ts, packages/composer/src/interpreter.ts, and the interpretation/composition benchmarks.
+- **Remediation:** distinguish flight management from destination discovery and specialize the model and screens around confirmed journeys. The regression passes locally; deployed verification remains open.
+
+### AUD-137 — Film-streaming brief inherited a newspaper publishing architecture
+
+- **Evidence:** baseline MED-04 contains Front Page Feed and a journalism hero. Current desktop/mobile captures show Film Catalogue, Film Detail, and Watchlist with film search and collection context.
+- **Reproduction:** open /compose, enter benchmark brief MED-04, compose, and inspect the generated screens, hero copy, and catalogue.
+- **Root cause:** the media archetype shared a news-publishing product model with streaming products.
+- **Affected code:** packages/composer/src/domain-context.ts, packages/composer/src/interpreter.ts, packages/compatibility/src/content-bindings.ts, and the interpretation/composition benchmarks.
+- **Remediation:** specialize film streaming around catalogue, detail, and watchlist workflows. Red/green semantic coverage and the current desktop/mobile visible benchmark pass locally; deployed verification remains open.
+
+### AUD-139 — Product Catalog could not navigate to Product Detail
+
+- **Severity:** High.
+- **Evidence:** the archived ECOM-01 desktop/mobile screenshots under `quality/evidence/step-14/manual-review/versions/062c7f0e/` show a Product Catalog with no detail action. The after captures under `quality/evidence/step-14/manual-review/after/` show the “View product details” action and the Product Detail screen it opens. Runtime reports record zero console errors, uncaught exceptions, failed requests, or HTTP errors.
+- **Reproduction:** compose benchmark brief ECOM-01, inspect Product Catalog in each direction, and look for a route to Product Detail. Before the fix no such link was rendered.
+- **Root cause:** Product Catalog did not require the `conversion-cta` role; the music-store target override could also match Product Catalog itself.
+- **Affected code:** `packages/composer/src/planner.ts`, `packages/compatibility/src/content-bindings.ts`, and the composition unit and browser regressions.
+- **Remediation:** require a detail action on ecommerce discovery screens, bind it to Product Detail with product or album wording, and verify that selecting it changes the visible preview screen. The unit regression failed before the fix; focused desktop/mobile UI checks and the visible catalog-to-detail browser test now pass. Fix commit: `a84b6f0c`. Deployed verification remains open.
 
 ## MEDIUM
 
@@ -1120,7 +1161,7 @@ with zero findings. That harness race is not counted as a product defect.
 ### AUD-116 — Ordinary activity feeds rendered notification-inbox controls
 
 - **Evidence:** the pre-fix SAS-01 Direction A screenshot at
-  `evidence/step-14/manual-review/verified/desktop/sas-01-direction-01.png`
+  `evidence/step-14/manual-review/before/full-benchmark-initial/desktop/sas-01-direction-01.png`
   shows a notification panel on Overview Dashboard with “Mark all as read”. The
   after captures under `evidence/step-14/manual-review/after/activity-feed-sas-01-*`
   show a chronological timeline instead.
@@ -1174,7 +1215,7 @@ with zero findings. That harness race is not counted as a product defect.
 ### AUD-120 — Generated KPI cards used “Example” as a metric value
 
 - **Evidence:** the before screenshot at
-  `quality/evidence/step-14/manual-review/verified/desktop/fin-05-direction-01.png`
+  `quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/fin-05-direction-01.png`
   shows “Example” as the large value for Account, Transaction, and Transfer cards,
   even though their badge says “Illustrative only”. The after screenshots show an
   em dash and “Market data not connected”.
@@ -1316,7 +1357,7 @@ with zero findings. That harness race is not counted as a product defect.
 ### AUD-129 — Marketplace search showed unrelated proposal and review rows
 
 - **Severity:** Medium.
-- **Evidence:** The before marketplace captures at `quality/evidence/step-14/manual-review/verified/desktop/mkt-01-direction-01.png` and the corresponding mobile path show non-listing records. After `quality/evidence/step-14/manual-review/after/mkt-01-search-direction-01-desktop.png` shows listing-specific records.
+- **Evidence:** The before marketplace captures at `quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/mkt-01-direction-01.png` and the corresponding mobile path show non-listing records. After `quality/evidence/step-14/manual-review/after/mkt-01-search-direction-01-desktop.png` shows listing-specific records.
 - **Reproduction:** Compose the MKT-01 marketplace brief and inspect the Explore Listings rows in Direction 01.
 - **Root cause:** The generic entity-table binding reused proposal/review entities on a listing-discovery screen.
 - **Affected code:** `packages/compatibility/src/content-bindings.ts`, the 100-brief quality benchmark, and the visible browser regression.
@@ -1336,7 +1377,7 @@ with zero findings. That harness race is not counted as a product defect.
 ### AUD-131 — Mobile data tables clipped important fields
 
 - **Severity:** Medium.
-- **Evidence:** The before MKT-01 mobile capture at `quality/evidence/step-14/manual-review/verified/mobile/mkt-01-direction-01.png` shows the table cropped at the viewport edge, hiding later fields. The after mobile capture shows full-width listing cards with the record and all fields stacked.
+- **Evidence:** The before MKT-01 mobile capture at `quality/evidence/step-14/manual-review/before/full-benchmark-initial/mobile/mkt-01-direction-01.png` shows the table cropped at the viewport edge, hiding later fields. The after mobile capture shows full-width listing cards with the record and all fields stacked.
 - **Reproduction:** Compose MKT-01 at 390 × 844 and inspect Explore Listings without horizontal scrolling.
 - **Root cause:** `advanced-data-table` relied on an overflow-x scroll surface at all sizes and had no mobile record layout.
 - **Affected code:** `resources/blocks/advanced-data-table/index.tsx`, its README, and the composition browser regression.
@@ -1352,6 +1393,59 @@ with zero findings. That harness race is not counted as a product defect.
 - **Affected code:** `resources/blocks/advanced-data-table/index.tsx` and the visible browser regression.
 - **Remediation:** Use neutral styling for not-connected/unavailable values while retaining success styling only for available values.
 - **Disposition:** Fixed and verified in the local Sites Worker at desktop/mobile; public review deployment verification remains pending.
+
+### AUD-133 — Employee dashboard marked disconnected metrics with success-green badges
+
+- **Severity:** Medium.
+- **Evidence:** The before captures at `quality/evidence/step-14/manual-review/before/aud-133-unavailable-kpi-success-tone-desktop.png` and `...-mobile.png` show em-dash values labelled “No connected data” in green. The after captures under `quality/evidence/step-14/manual-review/after/` use neutral gray badges.
+- **Reproduction:** Open `/compose` at 1440 × 900 or 390 × 844, enter the exact employee-experience brief, compose, and inspect Team Overview in each direction.
+- **Root cause:** The KPI status matcher recognized “not connected” but not “No connected data”, so the badge fell through to its success tone.
+- **Affected code:** `resources/blocks/dashboard-kpi-grid/index.tsx` and `tests/e2e/direction-generation-audit.spec.ts`.
+- **Remediation:** Classify common no-data, unavailable, unconfigured, illustrative, and sample states as neutral in the shared KPI resource.
+- **Verification:** The visible-browser regression failed before the change on the success-green classes, then passed for all three directions at desktop and mobile sizes. Captured runtime reports record no console errors, uncaught exceptions, failed requests, or HTTP errors.
+- **Fix commit:** `554c4ee6`.
+- **Disposition:** Fixed and locally verified; deployed review verification is still required.
+
+### AUD-138 — Destination search used flight-oriented search instructions
+
+- **Severity:** Medium.
+- **Evidence:** the baseline TRV-01 preview at quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/trv-01-direction-01.png used travel-generic search language; current desktop/mobile previews say “Search destinations” and refer to saved places.
+- **Reproduction:** open /compose, enter benchmark brief TRV-01, compose, and inspect the Destination Search label and placeholder.
+- **Root cause:** shared travel search bindings used flight-oriented wording for a destination-planning screen.
+- **Affected code:** packages/compatibility/src/content-bindings.ts and the composition-quality benchmark.
+- **Remediation:** bind search copy to product and screen semantics. The all-directions regression and full desktop/mobile visible benchmark pass locally; deployed verification remains open.
+
+### AUD-140 — Dark product canvases made light resource variants unreadable
+
+- **Severity:** High.
+- **Evidence:** the pre-fix Direction 02 screenshot at
+  `quality/evidence/step-14/manual-review/versions/87a90100/desktop/ai-03-direction-02.png`
+  shows muted labels disappearing against the dark canvas. The all-Gold dark
+  canvas Axe sweep found contrast failures in 16 of 40 expressive resource
+  variants: advanced-data-table reached 1.44:1, entity-profile-header 1.53:1,
+  error-state 1.65:1, and muted labels on white surfaces 2.20:1.
+- **Reproduction:** open `/compose`, enter benchmark brief AI-03, compose, open
+  Direction 02 (Neural Flow), and inspect Support Assistant. Run
+  `tests/e2e/resource-dark-expressive-contrast.spec.ts` to check all Gold
+  resources against the dark canvas.
+- **Root cause:** Design DNA supplies dark muted-text tokens at screen scope,
+  while multiple resource variants render fixed light surfaces and inherit those
+  tokens. Several expressive panels were translucent, so they also blended with
+  the dark canvas beneath them.
+- **Affected code:** the 16 resource implementations listed in
+  `audit/runtime-audit.json` under AUD-140, their generated registry/export
+  sources, and the resource contrast regressions.
+- **Remediation:** scope semantic text tokens to each component's declared
+  variant and make the affected expressive surfaces opaque. Light variants now
+  retain dark text and nocturne retains light text, including in standalone
+  resource source.
+- **Verification:** before the fix, Axe failed for 16/40 Gold resources. After
+  commit `79e780b1`, the focused 12-case Playwright suite passes and the 40-Gold
+  expressive/dark sweep reports zero violations. The full 100-brief desktop and
+  mobile Compose review also passes against this commit with 600 screenshots and
+  clean runtime reports; see `quality/STEP_14_EVIDENCE.md`.
+- **Disposition:** fixed locally; public/review deployment verification remains
+  pending under the ordered release programme.
 
 ## LOW
 

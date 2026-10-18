@@ -13,18 +13,11 @@ and structural differences across at least two axes. These checks verify
 generation and resource source resolution; clean install/build/browser checks
 for benchmark exports remain in Step 23.
 
-Step 14 remains **in progress**. The current batch submitted all 100 adjudicated
-briefs through the visible `/compose` UI and captured all 300 directions at
-1440 × 900 and 390 × 844. The machine-readable report is
-`quality/evidence/step-14/manual-review/browser-review-verified.json`; full-size
-captures and 20 contact sheets are under `quality/evidence/step-14/manual-review/verified/`
-and `verified-contact-sheets/`. All desktop and mobile contact sheets were
-visually inspected. The previews had no unresolved-role diagnostics, horizontal
-overflow, console errors, uncaught exceptions, failed requests, or HTTP errors.
-The review found AUD-111 through AUD-132 below. Their source fixes and focused
-local regressions pass. AUD-111–121 remain open until issue-specific deployed
-review verification; AUD-122–132 are verified locally and still await deployed
-verification. The follow-up timeline review found literal “Example” labels in
+Step 14 remains **in progress**. The complete current-source visible Compose benchmark covers 100 adjudicated briefs and all three directions at 1440 × 900 and 390 × 844. It captured 600 screenshots from source commit `79e780b1a05ba9f6bc77b977345677f884de0861`. Both desktop and mobile reports passed with zero unresolved diagnostics, console errors or warnings, uncaught exceptions, failed requests, and HTTP errors. All 20 post-fix contact sheets have been visually reviewed; direction differences remain visible across navigation, layout grammar, and resource arrangement. The before/after AI-03 Direction 02 captures show the resource contrast correction at full size. AUD-134–140 record the current content and accessibility findings and their locally verified fixes. Local findings remain open until a deployed review Site is checked during Step 45.
+
+AUD-140 was reproduced in the visible product and by Axe against all 40 Gold resources in expressive variants on dark canvases. Before the fix, 16 resources failed contrast, including 1.44:1 table values, 1.53:1 profile badges, and 2.20:1 muted labels on white. Resource-local semantic text tokens and opaque expressive surfaces fix the shared cause. The 40-resource regression now reports no violations in `quality/evidence/step-14/accessibility/gold-expressive-dark-after.json`; 12 targeted preview checks pass as well. Before and after screenshots are `quality/evidence/step-14/manual-review/versions/87a90100/desktop/ai-03-direction-02.png` and `quality/evidence/step-14/manual-review/current/desktop/ai-03-direction-02.png`. The source fix is commit `79e780b1`; deployed review verification remains pending.
+
+The follow-up timeline review found literal “Example” labels in
 activity timestamp positions across generated product domains (AUD-124); its
 benchmark failure was reproduced and fixed, and desktop/mobile visible-browser
 checks now pass with clean console and network reports. The latest FIN-05
@@ -52,9 +45,13 @@ all three directions at desktop/mobile widths and the Filter Builder add/edit/
 remove flow; before/after screenshots and clean console/network reports are
 recorded. These local checks do not close the findings until a deployed review
 version is audited.
-Manual output adjudication, tablet review, and clean-build verification of
-benchmark exports remain open. This checkpoint does not claim public review-site
-verification.
+The current-source flagship review found AUD-133: employee KPI badges said “No
+connected data” while using the green success treatment. A visible Playwright
+regression first failed on the employee UI, then passed after the shared KPI
+resource classified no-data states as neutral. Desktop/mobile before/after
+captures and clean runtime reports are recorded; deployed verification remains
+open.
+Additional full-size output adjudication, tablet review, and clean-build verification of benchmark exports remain open. This checkpoint does not claim public review-site verification.
 
 The local fixes for AUD-101–105 and AUD-107–110 are in commit
 `8686e0b9d7e7aca869a7677113492ded53af27b6`. The runtime audit records this SHA
@@ -87,7 +84,7 @@ errors. All three findings await deployed review verification.
 
 The FIN-05 brokerage terminal review found that `fintech` defaults had assigned
 retail banking workflows to explicit trading intent. The before screenshot at
-`quality/evidence/step-14/manual-review/verified/desktop/fin-05-direction-01.png`
+`quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/fin-05-direction-01.png`
 shows Account Balances and a bank-statement event. A focused specialization now
 produces Market Overview, Order Book, Positions & Risk, and Trade History, with
 market-depth and equity-trade examples; the 100-brief interpreter and composition
@@ -370,10 +367,7 @@ and HTTP errors.
   during remediation. The follow-on entity-derived mark check passes after restoring
   context-rich workspace names and two-character initials; the two public showcase
   routes now have dedicated browser regressions.
-- The verified full-benchmark browser report records 100 briefs, 300 distinct
-  projects, 600 desktop/mobile screenshots, zero unresolved roles, zero horizontal
-  overflow, and zero console, uncaught, failed-request, or HTTP errors. All 20
-  contact sheets were visually inspected.
+- The initial 46b53fcb full-benchmark report remains baseline evidence. Its screenshots expose defects fixed later and do not certify current output. The current run is archived separately with the tested source SHA.
 - Distinctness: all 100 benchmark cases must differ between every direction pair
   across at least two structural axes (navigation, grammar, hierarchy, and resource
   selection).
@@ -390,7 +384,7 @@ and HTTP errors.
 - `pnpm lint` — zero errors; 51 existing warnings.
 - `pnpm audit:all` — all 16 release gates passed; the production build emitted
   717 pages and bundle budget, provenance, licence, and security audits passed.
-- Playwright public desktop/mobile suite — 119 passed and 61 explicitly skipped.
+- Playwright public desktop/mobile suite — 121 passed and 61 explicitly skipped.
   The Sites Worker suite passed after the first run exposed a stale test selector
   following the mobile-card change; its corrected state test now checks the actual
   mobile layout. The full Worker suite passed 45 tests, with 27 explicitly skipped,
@@ -405,11 +399,8 @@ and HTTP errors.
 - Flagship direction browser journey — passed at 1440 × 900 with three visible
   direction previews and zero unresolved roles, console errors, uncaught errors,
   failed requests or HTTP errors.
-- Full composition benchmark browser capture — 100 briefs / 300 directions at
-  1440 × 900 and 390 × 844. The capture includes the returns-portal interpretation
-  fix from AUD-112 and predates the disabled-action and duplicate-navigation fixes
-  from AUD-114/115; the focused browser regression recaptures ECOM-06 after all
-  three fixes at both viewports.
+- `pnpm quality:composition-review` passed the full current-source run: 100 briefs and 300 directions at desktop and mobile, 600 screenshots total. Reports and captures are under `quality/evidence/step-14/manual-review/current/`; both reports contain zero resource diagnostics, console errors/warnings, uncaught exceptions, failed requests, or HTTP errors.
+- The prior 46b53fcb full capture remains baseline-only. The current 062c7f0e reports and screenshots cover the same 100 briefs × 3 directions at both viewports. AUD-134–138 were fixed locally and are included in the current-source run; all issue-specific deployed checks remain scheduled for Step 45.
 - Current-source `pnpm audit:all` — passed all 16 release gates, production build,
   bundle budget, provenance, and security/secret checks.
 
@@ -424,9 +415,19 @@ is recorded and deferred to the ordered showcase-hardening step (Step 43).
 
 ## Remaining gate work
 
-1. Finish semantic output and exportability adjudication for all 100 briefs × 3
-   directions, including the remaining tablet widths.
-2. Exercise Compose loading, failure, empty, invalid-input, and rapid-repeat
+1. Add tablet review and finish full-size output adjudication for the benchmark;
+   the 100-brief desktop/mobile visible run and contact-sheet review are complete.
+2. Finish semantic output and exportability adjudication for all directions;
+   benchmark-export clean installs and builds remain in Step 23.
+3. Exercise Compose loading, failure, empty, invalid-input, and rapid-repeat
    states under the Compose UX gate.
-3. Re-run the same browser checks on the public review Site during Step 45; these
-   local fixes are not closed for release until deployed verification succeeds.
+4. Re-run the same browser checks on the public review Site during Step 45; local
+   fixes are not closed for release until deployed verification succeeds.
+
+The full unit test run also exposed a stale golden expectation for the Developer
+Observability Platform: it expected generic Documentation, while the generated
+architecture correctly contains Trace Explorer, Service Map, and Span Detail.
+The fixture now uses the canonical screen IDs (`screen-trace-explorer`,
+`screen-overview`, and `screen-span-detail`). This is test-data maintenance, not
+a deployed product finding. The focused composer test passes (14/14), and the
+full unit suite passes (63 files, 909 tests).

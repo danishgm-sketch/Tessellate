@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records one moderate desktop Axe heading-order issue in the AI Chat Panel isolated resource preview for the ordered accessibility/resource hardening step. Step 14's 100-brief visible composition review added AUD-116–124 for activity-feed semantics, trading-domain interpretation, truthful example content, repeated branding and headings, placeholder timeline timestamps, and mobile layout; local red/green regressions and desktop/mobile browser captures are recorded, with deployed review verification still pending.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records one moderate desktop Axe heading-order issue in the AI Chat Panel isolated resource preview for the ordered accessibility/resource hardening step. Step 14's 100-brief visible composition review added AUD-116–124 for activity-feed semantics, trading-domain interpretation, truthful example content, repeated branding and headings, placeholder timeline timestamps, and mobile layout; local red/green regressions and desktop/mobile browser captures are recorded, with deployed review verification still pending. AUD-133 records a remaining disconnected-metric status color defect found during the current-source review. AUD-134–139 record commerce, travel, and streaming domain-planning defects found during the full current-source visible composition review; local browser reruns and issue-specific before/after captures are recorded, while deployed review verification remains pending. AUD-140 records a contrast failure across 16/40 Gold resource previews in dark product canvases and the local source-level remediation; deployment review remains pending.",
   "entries": [
     {
       "id": "AUD-001",
@@ -3531,7 +3531,7 @@
       ],
       "console": [],
       "network": [],
-      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/sas-01-direction-01.png",
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/sas-01-direction-01.png",
       "rootCause": "The activity-feed resource contract allowed both timeline and notification-centre, while composition only forced timeline for consumer briefs and Direction C. Other activity screens were left to scoring and could receive inbox semantics.",
       "affectedFiles": [
         "packages/compatibility/src/compose-pipeline.ts",
@@ -3567,7 +3567,7 @@
       ],
       "console": [],
       "network": [],
-      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/sas-01-direction-03.png",
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/sas-01-direction-03.png",
       "rootCause": "Generic activity binding presented workflow array position as a timestamp and copied workflow step identifiers directly into user-facing event details.",
       "affectedFiles": [
         "packages/compatibility/src/content-bindings.ts",
@@ -3603,7 +3603,7 @@
       ],
       "console": [],
       "network": [],
-      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/sas-01-direction-01.png",
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/sas-01-direction-01.png",
       "rootCause": "The generic content-binding fallback assigned screen.name to activity-feed title when no domain-specific title existed.",
       "affectedFiles": [
         "packages/compatibility/src/content-bindings.ts",
@@ -3639,7 +3639,7 @@
       ],
       "console": [],
       "network": [],
-      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/fin-05-direction-01.png",
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/fin-05-direction-01.png",
       "rootCause": "The broad fintech defaults did not specialize explicit trading-terminal, market-depth, and equity-dealer language, so the bank-account workflow was reused.",
       "affectedFiles": [
         "packages/composer/src/domain-context.ts",
@@ -3684,7 +3684,7 @@
       ],
       "console": [],
       "network": [],
-      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/fin-05-direction-01.png",
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/fin-05-direction-01.png",
       "rootCause": "The shared content binder used a generic Example string for every entity-backed metric rather than representing absent source data explicitly.",
       "affectedFiles": [
         "packages/compatibility/src/content-bindings.ts",
@@ -3843,13 +3843,13 @@
     },
     {
       "severity": "medium",
+      "id": "AUD-125",
       "route": "/compose",
       "viewport": "1440x900, 390x844",
       "console": [],
       "network": [],
       "fixCommit": "3549e452",
       "status": "fixed-local-verified",
-      "id": "AUD-125",
       "category": "content",
       "title": "Real-estate search rendered marketing feature cards",
       "expected": "Property search should show real search and listing structure and name a map only when one is present.",
@@ -3995,7 +3995,7 @@
         "Compose the MKT-01 marketplace brief.",
         "Inspect the Explore Listings rows in Direction 01."
       ],
-      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/mkt-01-direction-01.png",
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/mkt-01-direction-01.png",
       "rootCause": "Generic entity-table bindings reused proposal/review entities on a listing-discovery screen.",
       "affectedFiles": [
         "packages/compatibility/src/content-bindings.ts",
@@ -4029,7 +4029,7 @@
         "Compose the MKT-01 brief.",
         "Inspect values and status in Explore Listings."
       ],
-      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/mkt-01-direction-01.png",
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/mkt-01-direction-01.png",
       "rootCause": "The shared entity fallback formatted absent data as an arbitrary quality percentage.",
       "affectedFiles": [
         "packages/compatibility/src/content-bindings.ts",
@@ -4063,7 +4063,7 @@
         "Open /compose at 390x844.",
         "Compose MKT-01 and inspect Explore Listings without horizontal scrolling."
       ],
-      "screenshot": "quality/evidence/step-14/manual-review/verified/mobile/mkt-01-direction-01.png",
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/mobile/mkt-01-direction-01.png",
       "rootCause": "The shared table used overflow-x at every viewport and had no narrow-screen record layout.",
       "affectedFiles": [
         "resources/blocks/advanced-data-table/index.tsx",
@@ -4095,7 +4095,7 @@
         "Compose MKT-01 or REA-01.",
         "Inspect unavailable data values in the results table."
       ],
-      "screenshot": "quality/evidence/step-14/manual-review/verified/desktop/mkt-01-direction-01.png",
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/mkt-01-direction-01.png",
       "rootCause": "The shared table applied success green unconditionally to displayValue.",
       "affectedFiles": [
         "resources/blocks/advanced-data-table/index.tsx",
@@ -4111,7 +4111,315 @@
         "quality/evidence/step-14/manual-review/after/domain-content-runtime-desktop.json",
         "quality/evidence/step-14/manual-review/after/domain-content-runtime-mobile.json"
       ]
+    },
+    {
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "visual",
+      "title": "Employee dashboard marked disconnected metrics with success-green badges",
+      "expected": "Metrics without a connected data source should use a neutral status treatment so they cannot be read as successful measurements.",
+      "actual": "The Onboarding and Team pulse cards showed em dashes and ‘No connected data’ inside green success badges.",
+      "reproduction": [
+        "Open /compose at desktop or mobile size.",
+        "Enter the exact employee-experience brief and compose.",
+        "Open Direction 01, 02, or 03 and select Team Overview.",
+        "Inspect the Onboarding and Team pulse status badges."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/before/aud-133-unavailable-kpi-success-tone-desktop.png",
+      "rootCause": "The dashboard KPI renderer classified unavailable statuses by matching ‘not connected’ but the shared content binder emitted ‘No connected data’, so the badge fell through to its green success style.",
+      "affectedFiles": [
+        "resources/blocks/dashboard-kpi-grid/index.tsx",
+        "tests/e2e/direction-generation-audit.spec.ts"
+      ],
+      "remediation": "Classify common no-data, unavailable, unconfigured, illustrative, and sample states as neutral in the shared KPI resource.",
+      "fixCommit": "554c4ee6",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/aud-133-unavailable-kpi-neutral-tone-desktop.png",
+        "quality/evidence/step-14/manual-review/after/aud-133-unavailable-kpi-neutral-tone-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/aud-133-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/aud-133-runtime-mobile.json"
+      ],
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-134",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Clothing commerce brief composed as a marketing storefront",
+      "expected": "A direct-to-consumer clothing product should start with product discovery, comparison, sizing, and checkout screens that support the shopping workflow.",
+      "actual": "The generated plan started with a Storefront Catalog marketing hero and generic order-delivery copy; product search and garment comparison were not represented as the core application workflow.",
+      "reproduction": [
+        "Open /compose and enter the adjudicated benchmark brief recorded in the corresponding benchmark case.",
+        "Compose, open Direction 01, and inspect the screen names, navigation and rendered screen content.",
+        "Compare the baseline screenshot with the current desktop and mobile captures."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/ecom-01-direction-01.png",
+      "rootCause": "The ecommerce archetype defaulted to a Storefront Catalog marketing screen, and the generic planner inherited marketing-page semantics for a product-discovery brief.",
+      "affectedFiles": [
+        "packages/composer/src/archetypes.ts",
+        "packages/composer/src/domain-context.ts",
+        "packages/composer/src/planner.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts"
+      ],
+      "remediation": "Use a Product Catalog search/explore screen as the ecommerce default and bind the clothing catalog to product-specific search, details, sizing, and order content.",
+      "fixCommit": "062c7f0e",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/desktop/ecom-01-direction-01.png",
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/mobile/ecom-01-direction-01.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/desktop-full-062c7f0e.json",
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/mobile-full-062c7f0e.json"
+      ],
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-135",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Digital music commerce inherited a physical storefront workflow",
+      "expected": "A licensed music shop should represent album discovery, sample playback, release details, purchase, and digital download.",
+      "actual": "The music brief received the generic physical storefront and order-delivery plan; the generated workflow did not model licensed albums, sample playback, or downloads.",
+      "reproduction": [
+        "Open /compose and enter the adjudicated benchmark brief recorded in the corresponding benchmark case.",
+        "Compose, open Direction 01, and inspect the screen names, navigation and rendered screen content.",
+        "Compare the baseline screenshot with the current desktop and mobile captures."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/ecom-04-direction-01.png",
+      "rootCause": "The generic ecommerce workflow treated physical goods and digital releases alike and had no music-specific product model or content bindings.",
+      "affectedFiles": [
+        "packages/composer/src/domain-context.ts",
+        "packages/composer/src/interpreter.ts",
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "quality/PRODUCT_INTERPRETATION_BENCHMARK.json"
+      ],
+      "remediation": "Specialize music commerce around albums/releases and sample, purchase, and download actions, with matching search and catalog content.",
+      "fixCommit": "062c7f0e",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/desktop/ecom-04-direction-01.png",
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/mobile/ecom-04-direction-01.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/desktop-full-062c7f0e.json",
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/mobile-full-062c7f0e.json"
+      ],
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-136",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Flight management brief planned as a destination and hotel product",
+      "expected": "A flight-management app should focus on confirmed journeys, flight details, check-in, gate changes, and travel documents.",
+      "actual": "The generated plan used destination showcase, property detail, and trip itinerary screens, which describe travel discovery and lodging rather than managing confirmed flights.",
+      "reproduction": [
+        "Open /compose and enter the adjudicated benchmark brief recorded in the corresponding benchmark case.",
+        "Compose, open Direction 01, and inspect the screen names, navigation and rendered screen content.",
+        "Compare the baseline screenshot with the current desktop and mobile captures."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/trv-03-direction-01.png",
+      "rootCause": "Travel interpretation used a broad destination/hospitality architecture for flight operations and did not distinguish confirmed-journey management from trip discovery.",
+      "affectedFiles": [
+        "packages/composer/src/domain-context.ts",
+        "packages/composer/src/interpreter.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "quality/PRODUCT_INTERPRETATION_BENCHMARK.json"
+      ],
+      "remediation": "Detect flight-management intent and specialize its model and screens around confirmed flights, check-in, gates, and travel documents.",
+      "fixCommit": "062c7f0e",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/desktop/trv-03-direction-01.png",
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/mobile/trv-03-direction-01.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/desktop-full-062c7f0e.json",
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/mobile-full-062c7f0e.json"
+      ],
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-137",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Film-streaming brief inherited a newspaper publishing architecture",
+      "expected": "A streaming product should support film discovery, film details, watchlists, and editorial collections.",
+      "actual": "The generated plan contained a front-page feed, article reader, and section explorer, with journalism copy in the hero.",
+      "reproduction": [
+        "Open /compose and enter the adjudicated benchmark brief recorded in the corresponding benchmark case.",
+        "Compose, open Direction 01, and inspect the screen names, navigation and rendered screen content.",
+        "Compare the baseline screenshot with the current desktop and mobile captures."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/med-04-direction-01.png",
+      "rootCause": "The media archetype shared one editorial/news publishing model across news and streaming products without a streaming-specific interpretation.",
+      "affectedFiles": [
+        "packages/composer/src/domain-context.ts",
+        "packages/composer/src/interpreter.ts",
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "quality/PRODUCT_INTERPRETATION_BENCHMARK.json"
+      ],
+      "remediation": "Specialize film streaming around catalogue, detail, and watchlist screens, and bind film-specific search and sample data.",
+      "fixCommit": "062c7f0e",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/desktop/med-04-direction-01.png",
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/mobile/med-04-direction-01.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/desktop-full-062c7f0e.json",
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/mobile-full-062c7f0e.json"
+      ],
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-138",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Destination search used flight-oriented search instructions",
+      "expected": "A shared trip-planning service should ask users to search destinations and saved places.",
+      "actual": "The destination search control described journeys/flights and travel details, suggesting an air-travel workflow that the brief did not request.",
+      "reproduction": [
+        "Open /compose and enter the adjudicated benchmark brief recorded in the corresponding benchmark case.",
+        "Compose, open Direction 01, and inspect the screen names, navigation and rendered screen content.",
+        "Compare the baseline screenshot with the current desktop and mobile captures."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/before/full-benchmark-initial/desktop/trv-01-direction-01.png",
+      "rootCause": "The shared search binding used travel-generic copy instead of selecting labels and placeholders from the screen and product domain.",
+      "affectedFiles": [
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts"
+      ],
+      "remediation": "Bind destination-search labels and placeholders to the destination-planning screen semantics and cover them in the all-directions composition benchmark.",
+      "fixCommit": "062c7f0e",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/desktop/trv-01-direction-01.png",
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/mobile/trv-01-direction-01.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/desktop-full-062c7f0e.json",
+        "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/mobile-full-062c7f0e.json"
+      ],
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-139",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "runtime",
+      "title": "Product Catalog could not navigate to Product Detail",
+      "expected": "A shopper should be able to open the generated Product Detail screen from the Product Catalog in each direction.",
+      "actual": "The composed project included a Product Detail screen, but its Product Catalog rendered no link to reach it. Digital music catalogs could also target themselves.",
+      "reproduction": [
+        "Open /compose, enter the ECOM-01 clothing-store brief from the reviewed composition benchmark, and compose.",
+        "Inspect Direction 01 and select Product Catalog; the initial preview has no Product Detail action.",
+        "Repeat for directions 02 and 03; each catalog lacks the discovery-to-detail link."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/versions/062c7f0e/desktop/ecom-01-direction-01.png",
+      "rootCause": "Product Catalog did not require the conversion-cta role, and the music-store target override matched Product Catalog itself instead of Product Detail.",
+      "affectedFiles": [
+        "packages/composer/src/planner.ts",
+        "packages/compatibility/src/content-bindings.ts",
+        "packages/compatibility/src/__tests__/composition-quality-benchmark.test.ts",
+        "tests/e2e/composition-quality-smoke.spec.ts"
+      ],
+      "remediation": "Require a conversion action on ecommerce Product Catalog screens, bind it to Product Detail with domain-specific product or album wording, and verify the UI navigation at desktop and mobile widths.",
+      "fixCommit": "a84b6f0c",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/after/ecom-01-direction-01-desktop.png",
+        "quality/evidence/step-14/manual-review/after/ecom-01-direction-01-mobile.png",
+        "quality/evidence/step-14/manual-review/after/ecom-01-product-detail-desktop.png",
+        "quality/evidence/step-14/manual-review/after/ecom-01-product-detail-mobile.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/after/ecom-cta-runtime-desktop.json",
+        "quality/evidence/step-14/manual-review/after/ecom-cta-runtime-mobile.json"
+      ],
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-140",
+      "severity": "high",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "accessibility",
+      "title": "Dark product canvases made light resource variants unreadable",
+      "expected": "Resource variants must retain readable text when composed inside a dark Design DNA canvas, with at least WCAG AA contrast for normal text.",
+      "actual": "Axe found color-contrast failures in 16 of 40 Gold resources using the expressive variant on a dark canvas. Examples measured 1.44:1 for advanced-data-table values, 1.53:1 for an entity-profile badge, 1.65:1 for error text, and 2.20:1 for muted labels on white.",
+      "reproduction": [
+        "Open /compose and enter benchmark brief AI-03.",
+        "Compose and open Direction 02, Neural Flow.",
+        "Inspect the Support Assistant preview; muted labels on its light timeline panel are nearly unreadable against the dark canvas.",
+        "Run the resource contrast regression against all 40 Gold resources with variant=expressive and theme=dark."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/manual-review/versions/87a90100/desktop/ai-03-direction-02.png",
+      "rootCause": "The renderer applies dark Design DNA semantic text tokens to the screen, while several resource variants render fixed light surfaces. Those resources inherited the dark muted text token; translucent expressive surfaces also mixed with the dark canvas and further reduced contrast.",
+      "affectedFiles": [
+        "resources/blocks/advanced-data-table/index.tsx",
+        "resources/blocks/dashboard-kpi-grid/index.tsx",
+        "resources/blocks/entity-profile-header/index.tsx",
+        "resources/blocks/notification-centre/index.tsx",
+        "resources/blocks/timeline/index.tsx",
+        "resources/ai/ai-prompt-composer/index.tsx",
+        "resources/ai/ai-research-answer/index.tsx",
+        "resources/ai/ai-suggested-actions/index.tsx",
+        "resources/data/area-chart/index.tsx",
+        "resources/data/bar-chart/index.tsx",
+        "resources/data/donut-chart/index.tsx",
+        "resources/data/time-series-chart/index.tsx",
+        "resources/states/error-state/index.tsx",
+        "resources/motion/fade-up-reveal/index.tsx",
+        "resources/sections/feature-bento/index.tsx",
+        "resources/shells/two-pane-master-detail-shell/index.tsx",
+        "tests/e2e/resource-preview-contrast-regression.spec.ts",
+        "tests/e2e/resource-dark-expressive-contrast.spec.ts"
+      ],
+      "remediation": "Scope semantic muted and secondary text tokens to each resource variant, keeping light variants dark-text-on-light-surface and nocturne light-text-on-dark-surface. Make affected expressive neutral and error surfaces opaque so their declared foreground colors are evaluated against a stable background.",
+      "fixCommit": "79e780b1",
+      "afterScreenshots": [
+        "quality/evidence/step-14/manual-review/current/desktop/ai-03-direction-02.png",
+        "quality/evidence/step-14/manual-review/current/mobile/ai-03-direction-02.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/manual-review/current/desktop/browser-review.json",
+        "quality/evidence/step-14/manual-review/current/mobile/browser-review.json",
+        "quality/evidence/step-14/accessibility/gold-expressive-dark-after.json"
+      ],
+      "regression": {
+        "before": "The 40-Gold-resource Playwright/Axe sweep failed for 16 resources.",
+        "after": "12 focused Playwright/Axe cases passed, and the 40-resource sweep reports zero violations."
+      },
+      "status": "fixed-local-verified"
     }
   ],
-  "generatedAt": "2026-10-18T16:19:14Z"
+  "generatedAt": "2026-10-18T19:38:33.422Z"
 }
