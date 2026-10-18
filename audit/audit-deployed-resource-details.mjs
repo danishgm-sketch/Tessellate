@@ -83,25 +83,38 @@ try {
       await page.locator('iframe[title$=" live preview"]').scrollIntoViewIfNeeded();
       await page.screenshot({ path: result.screenshots.preview, animations: 'disabled' });
 
-      const tabContent = {
-        Intent: 'Summary & Purpose',
-        Code: 'Actual published source (React + Tailwind):',
-        Variants: 'Declared Variants',
-        Anatomy: 'Configurable Slots & Props',
-        Accessibility: 'Compliance Level Target:',
-        Performance: 'JS Payload',
-        Dependencies: 'Declared runtime and registry dependencies',
-        Versions: 'v1.0.0',
-      };
-      for (const [tab, expectedText] of Object.entries(tabContent)) {
+      const tabContent = [
+        ['Intent', 'Summary & Purpose'],
+        ['Code', 'Actual published source (React + Tailwind):'],
+        ['Variants', 'Declared Variants'],
+        ['Anatomy', 'Configurable Slots & Props'],
+        ['Accessibility', 'Compliance Level Target:'],
+        ['Performance', 'JS Payload'],
+        ['Dependencies', 'Declared runtime and registry dependencies'],
+        ['Versions', null],
+      ];
+      for (const [tab, expectedText] of tabContent) {
         await page.getByRole('button', { name: tab, exact: true }).click();
-        await page.getByText(expectedText, { exact: false }).waitFor({ state: 'visible', timeout: 10000 });
+        if (tab === 'Versions') {
+          const versionMarkers = page.getByText('v1.0.0', { exact: true });
+          await versionMarkers.first().waitFor({ state: 'visible', timeout: 10000 });
+          assert(await versionMarkers.count() >= 2, 'Versions tab did not show both the version label and release entry.');
+        } else {
+          await page.getByText(expectedText, { exact: false }).waitFor({ state: 'visible', timeout: 10000 });
+        }
         const axe = await new AxeBuilder({ page }).analyze();
         const headingOrder = await new AxeBuilder({ page }).withRules(['heading-order']).analyze();
         const critical = axe.violations.filter((violation) => ['serious', 'critical'].includes(violation.impact ?? ''));
         result.axe.push({
           tab,
           violationCount: axe.violations.length,
+          violations: axe.violations.map((violation) => ({
+            id: violation.id,
+            impact: violation.impact,
+            description: violation.description,
+            help: violation.help,
+            nodes: violation.nodes.map((node) => ({ target: node.target, summary: node.failureSummary })),
+          })),
           seriousOrCritical: critical.map((violation) => ({ id: violation.id, impact: violation.impact, nodes: violation.nodes.map((node) => node.target) })),
           headingOrderViolations: headingOrder.violations.map((violation) => ({ id: violation.id, nodes: violation.nodes.map((node) => node.target) })),
         });

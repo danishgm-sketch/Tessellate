@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 97 findings (19 High, 77 Medium, 1 Low): 15 closed after deployed verification, 80 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080 open. AUD-088–093 came from the Site v16 Explore/search audit. AUD-094–097 were found on the deployed Site v17 in the mobile filter drawer and resource-detail experience. Local regressions pass; hosted verification is pending. See `quality/STEP_08_EVIDENCE.md`, `evidence/catalog-search-v16/`, and `evidence/catalog-search-v17/`.
+**Current disposition:** 99 findings (20 High, 78 Medium, 1 Low): 26 closed after deployed verification, 71 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080 open. Site v19 closes AUD-088–098; Site v19 also revealed AUD-099, a moderate desktop landmark naming issue now fixed locally and awaiting Site v20 verification. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See `quality/STEP_08_EVIDENCE.md` and `evidence/catalog-search-v19/`.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -163,7 +163,7 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Reproduction: open `/explore` at 1440 × 900, search `dashboard`, expand Density and select Dense, then compare the count and URL before and after reload.
 - Root cause: `ExploreRail` exposes filter fields that `executeSearch` never applies; `ExploreView` only reads and writes query, type, purpose and feel parameters.
 - Affected code: `apps/site/src/components/ExploreRail.tsx`, `apps/site/src/components/ExploreView.tsx`, `packages/search/src/query.ts`, `packages/search/src/indexer.ts`, and `packages/search/src/types.ts`.
-- Remediation: derive each facet from canonical manifest metadata, apply selected facets, serialize them in the URL, and verify visible result changes, combined filters and reload restoration. The local desktop/mobile regression passes; status remains fixed pending deployed verification on the next Sites version.
+- Remediation: derive each facet from canonical manifest metadata, apply selected facets, serialize them in the URL, and verify visible result changes, combined filters and reload restoration. Site v19 passed combined facet, reload, and stale-selection checks at 1440 × 900 and 390 × 844; closed after deployed verification. See `evidence/catalog-search-v19/runtime-audit.json`.
 
 ### AUD-089 — Multi-term search returns unrelated resources and omits searchable intent
 
@@ -171,7 +171,7 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Reproduction: open `/explore`, choose the suggested `luxury checkout` query, then search `payment` and `checkout`.
 - Root cause: the search document omits `intent.contentRequirements`, while the query is passed to Orama without a product-level rule that checks coverage of meaningful terms. A result matching only `luxury` can outrank an absent checkout match.
 - Affected code: `packages/search/src/indexer.ts`, `packages/search/src/query.ts`, `packages/search/src/types.ts`, and `packages/search/src/__tests__/search.test.ts`.
-- Remediation: index intent fields that describe supported content, rank by meaningful token coverage before text relevance, and show a truthful empty state when no result satisfies a multi-term query. `checkout` now finds Funnel Chart, `payment` finds Billing Overview, and `luxury checkout` returns no unrelated result. The local desktop/mobile regression passes; deployed verification remains pending.
+- Remediation: index intent fields that describe supported content, rank by meaningful token coverage before text relevance, and show a truthful empty state when no result satisfies a multi-term query. Site v19 found relevant `payment` results and kept `luxury checkout` empty rather than returning unrelated resources at both viewports; closed after deployed verification. See `evidence/catalog-search-v19/runtime-audit.json`.
 
 ### AUD-098 — Opaque Explore previews could not fetch compiled styles
 
@@ -179,7 +179,7 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Reproduction: open `/explore` at 1440 × 900 or 390 × 844, wait for sandboxed resource previews, then inspect console/network events for the stylesheet request.
 - Root cause: preview CSP used `connect-src 'none'`. Astro/Vite fetches the compiled stylesheet while preloading resource modules; `style-src` alone did not authorize that fetch from an opaque frame.
 - Affected code: `apps/sites/worker.ts` and its CSP contract tests.
-- Remediation: allow `connect-src` only to same-origin immutable `/_astro/` assets. Keep APIs, arbitrary same-origin paths, external hosts, and nested frames blocked. Local unit and browser checks pass; Site v19 verification is pending.
+- Remediation: allow `connect-src` only to same-origin immutable `/_astro/` assets. Keep APIs, arbitrary same-origin paths, external hosts, and nested frames blocked. Site v19 rendered the real Accordion preview in its opaque sandbox with zero CSP or compiled-asset errors; closed after deployed verification. See `evidence/catalog-search-v19/runtime-audit.json` and the Sites Worker browser regression.
 
 ## MEDIUM
 
@@ -878,7 +878,7 @@ with zero findings. That harness race is not counted as a product defect.
 - Reproduction: open `/explore`, wait for the initial list and type `luxury checkout` at a natural cadence while recording failed requests.
 - Root cause: `ExploreView` executes search on each input change. This repeatedly replaces `ResourceCard` instances while their intersection-triggered preview iframes are still loading.
 - Affected code: `apps/site/src/components/ExploreView.tsx`, `apps/site/src/components/ResourceCard.tsx`, and the Explore browser tests.
-- Remediation: debounce committed query execution without delaying the input and cover request behavior during natural typing. The local desktop/mobile regression passes; deployed network verification remains pending.
+- Remediation: debounce committed query execution without delaying the input and cover request behavior during natural typing. Site v19's natural-paced typing checks passed at both viewports with no unresolved failures. The report retains result-replacement `ERR_ABORTED` requests as expected cancellations rather than discarding them; closed after deployed verification. See `evidence/catalog-search-v19/runtime-audit.json`.
 
 ### AUD-091 — Explore stops at 50 of 324 resources without a continuation control
 
@@ -886,7 +886,7 @@ with zero findings. That harness race is not counted as a product defect.
 - Reproduction: open `/explore`, note the 324-resource catalogue, search `data table`, and inspect the end of the results.
 - Root cause: `executeSearch` truncates candidate hits before strict filters, defaults to 50 returned results, and reports the truncated count as `totalHits`; `ExploreView` renders the one page without pagination.
 - Affected code: `packages/search/src/query.ts`, `packages/search/src/types.ts`, `apps/site/src/components/ExploreView.tsx`, and the Explore browser tests.
-- Remediation: count matches after filtering, support offset-based incremental results, show `Showing X of Y`, and expose a keyboard-accessible continuation control. The local desktop/mobile regression passes; deployed verification remains pending.
+- Remediation: count matches after filtering, support offset-based incremental results, show `Showing X of Y`, and expose a keyboard-accessible continuation control. Site v19 continued beyond the initial 50 results and showed the true total at both viewports; closed after deployed verification. See `evidence/catalog-search-v19/runtime-audit.json`.
 
 ### AUD-092 — Accessibility facet overstates what catalogue metadata proves
 
@@ -894,7 +894,7 @@ with zero findings. That harness race is not counted as a product defect.
 - Reproduction: open deployed `/explore`, expand Accessibility, and compare the “Verified AA” option to `accessibility.levelTarget` in `/data/catalog.json`.
 - Root cause: the indexer collapsed AA and AAA declared targets into one AA value, while the facet wording presented a target as verified conformance.
 - Affected code: `packages/search/src/indexer.ts`, `apps/site/src/components/ExploreRail.tsx`, `docs/PRODUCT_SPEC.md`, and Explore browser tests.
-- Remediation: expose “AA target or higher” and “AAA target” as declared target values and keep verification fields distinct. Local desktop/mobile tests pass; the finding remains fixed pending deployed verification.
+- Remediation: expose “AA target or higher” and “AAA target” as declared target values and keep verification fields distinct. Site v19 showed the declared target wording at both viewports; closed after deployed verification. See `evidence/catalog-search-v19/runtime-audit.json`.
 
 ### AUD-093 — Explore advertises facet values absent from the loaded catalogue
 
@@ -902,7 +902,7 @@ with zero findings. That harness race is not counted as a product defect.
 - Reproduction: open deployed `/explore`, expand Motion, Density, and Resource, then compare the options to the values in `/data/catalog.json`.
 - Root cause: ExploreRail rendered fixed filter choices without deriving the actual option set from loaded search documents.
 - Affected code: `apps/site/src/components/ExploreRail.tsx`, `apps/site/src/components/ExploreView.tsx`, `packages/search/src/indexer.ts`, and Explore browser tests.
-- Remediation: intersect the supported facet vocabulary with indexed manifest values, hide empty choices, and retain a stale URL-selected value so it can be removed. Local desktop/mobile tests pass; the finding remains fixed pending deployed verification.
+- Remediation: intersect the supported facet vocabulary with indexed manifest values, hide empty choices, and retain a stale URL-selected value so it can be removed. Site v19 hid absent values and allowed a stale URL selection to be removed at both viewports; closed after deployed verification. See `evidence/catalog-search-v19/runtime-audit.json`.
 
 ### AUD-094 — Mobile Explore filters were not a keyboard dialog
 
@@ -910,7 +910,7 @@ with zero findings. That harness race is not counted as a product defect.
 - Reproduction: open `/explore` at 390 × 844, activate **Filters**, inspect the accessibility tree and focus, then press Escape.
 - Root cause: the mobile filter overlay had no dialog semantics or modal keyboard/focus lifecycle.
 - Affected code: `apps/site/src/components/ExploreView.tsx`, `apps/site/src/components/ExploreRail.tsx`.
-- Remediation: add a labeled modal dialog, focus containment, Escape and backdrop closing, focus restoration, page scroll locking, and one clear dialog title. A user-facing browser regression now verifies these behaviors; deployment verification remains pending.
+- Remediation: add a labeled modal dialog, focus containment, Escape and backdrop closing, focus restoration, page scroll locking, and one clear dialog title. Site v19 passed the mobile dialog semantics, focus-wrap, Escape-close, and focus-return checks; closed after deployed verification. See `evidence/catalog-search-v19/explore-390x844.json`.
 
 ### AUD-095 — The isolated activity preview skipped to an H4 heading
 
@@ -918,7 +918,7 @@ with zero findings. That harness race is not counted as a product defect.
 - Reproduction: open `/r/ai-agent-activity-feed/` at 1440 × 900 and inspect the preview heading or run Axe heading-order.
 - Root cause: the resource authored its standalone primary heading as H4 despite being rendered in its own isolated document.
 - Affected code: `resources/ai/ai-agent-activity-feed/index.tsx` and generated Gold export source.
-- Remediation: use an H2 in the isolated preview and assert its level and sample-data label in the Sites Worker browser regression. Local preview and Axe checks pass; deployed verification remains pending.
+- Remediation: use an H2 in the isolated preview and assert its level and sample-data label in the Sites Worker browser regression. Site v19's isolated preview began with H2 and exposed the static-sample label; closed after deployed verification. See `evidence/catalog-search-v19/resource-detail-audit.json`.
 
 ### AUD-096 — Resource detail tabs skipped heading levels
 
@@ -926,7 +926,7 @@ with zero findings. That harness race is not counted as a product defect.
 - Reproduction: open `/r/ai-agent-activity-feed/` at 1440 × 900 with Intent selected, then inspect headings or run Axe. The same tab renderer is shared by every resource detail page.
 - Root cause: `ResourceTabs` used H4 section headings and an H5 variant heading beneath the page H1.
 - Affected code: `apps/site/src/components/ResourceTabs.tsx`.
-- Remediation: use H2 for tab sections, add a declared-variants H2, and use H3 for each variant card. The Sites Worker regression runs heading-order across all eight tabs; it passes locally. Deployed verification remains pending.
+- Remediation: use H2 for tab sections, add a declared-variants H2, and use H3 for each variant card. Site v19 passed heading-order checks across all eight tabs at desktop and mobile widths; closed after deployed verification. See `evidence/catalog-search-v19/resource-detail-audit.json`.
 
 ### AUD-097 — Fixed sample events were presented as live telemetry
 
@@ -934,7 +934,15 @@ with zero findings. That harness race is not counted as a product defect.
 - Reproduction: open `/r/ai-agent-activity-feed/` and compare the real-time description and pulsing green indicator with the fixed hardcoded rows and intent metadata.
 - Root cause: the resource fixture contained static project-internal events while its README, manifest, variant copy, and generated catalogue advertised live behavior.
 - Affected code: `resources/ai/ai-agent-activity-feed/index.tsx`, its README and manifest, generated catalogue records, and `packages/exporter/src/generated-gold-sources.ts`.
-- Remediation: label rows as static sample data, remove the live pulse, use generic sample events, and describe the host-data contract. Unit and Sites Worker browser regressions pass; public Site verification remains pending.
+- Remediation: label rows as static sample data, remove the live pulse, use generic sample events, and describe the host-data contract. Site v19's detail description and isolated preview consistently identified the rows as static sample activity and the Milestones filter behaved correctly; closed after deployed verification. See `evidence/catalog-search-v19/resource-detail-audit.json`.
+
+### AUD-099 — Resource detail navigation landmarks were not distinguishable by name
+
+- Evidence: Site v19's [resource detail report](evidence/catalog-search-v19/resource-detail-audit.json) records the desktop `landmark-unique` violation (`moderate`) on `.xl\\:flex`; the mobile run records no violation because the desktop primary navigation is hidden. The [desktop screenshot](evidence/catalog-search-v19/resource-detail-after-1440x900.png) captures the affected route.
+- Reproduction: open `/r/ai-agent-activity-feed/` at 1440 × 900 and run Axe on any detail tab.
+- Root cause: the shared `Header` primary navigation and resource breadcrumb both lacked accessible names.
+- Affected code: `packages/ui/src/components/header.tsx` and `apps/site/src/pages/resources/[slug].astro`.
+- Remediation: name them “Primary” and “Resource breadcrumb” respectively and assert both navigation roles plus the `landmark-unique` rule in Playwright. The regression and full production build pass locally; Site v20 verification is pending. Fix commit: `96ec0b04f234c209e43e462943e588a58d0308c3`.
 
 ## LOW
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship, Site v16/v17/v18 catalogue and renderer audits, plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Step 08 remediation findings AUD-088–097 await deployed verification; AUD-098 is a new deployed preview-CSP finding.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v19 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v19 closes catalogue/search findings AUD-088–098; AUD-099 is a new moderate desktop landmark naming finding fixed locally and pending Site v20 verification.",
   "entries": [
     {
       "id": "AUD-001",
@@ -2462,13 +2462,14 @@
       ],
       "remediation": "Derive each visible facet from canonical ResourceManifest metadata, apply all advertised filters with documented AND/OR semantics, and parse/serialize every selected facet in the URL. Add browser tests for visible result changes, combined filters, clear, and reload/deep-link restoration.",
       "fixCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "deployedVerification": {
-        "siteVersion": 16,
-        "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
-        "result": "FAIL: Density > Dense remains selected without changing results; the URL omits the filter and reload clears it.",
-        "report": "audit/evidence/catalog-search-v16/density-filter-regression.json",
-        "screenshot": "audit/evidence/catalog-search-v16/density-filter-after-1440x900.png"
+        "siteVersion": 19,
+        "canonicalGitCommit": "96258ba989ac9c777e12c42c2693a9a9cc8c32b0",
+        "sitesSourceCommit": "6c6e1a6bb38961ea0daf706a2c8261f2f8e4c82f",
+        "result": "PASS: deployed Explore checks pass at desktop and mobile; catalogue 324/324, zero console errors, uncaught errors, HTTP errors, or unresolved network failures. Preview cancellations from result replacement remain in raw evidence as expected; natural-paced typing is stable.",
+        "report": "audit/evidence/catalog-search-v19/runtime-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v19/combined-facets-1440x900.png"
       },
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
@@ -2513,13 +2514,14 @@
       ],
       "remediation": "Index semantically useful intent fields, rank by meaningful query-term coverage before BM25 score, and return a clear empty state when no resource meets a multi-term query rather than showing unrelated matches. Add adjudicated regressions for checkout, payment, and luxury checkout.",
       "fixCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "deployedVerification": {
-        "siteVersion": 16,
-        "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
-        "result": "FAIL: luxury checkout returned 13 unrelated items; payment returned one item and omitted Billing Overview; checkout returned no result despite matching manifest intent content.",
-        "report": "audit/evidence/catalog-search-v16/normal-use-network-audit.json",
-        "screenshot": "audit/evidence/catalog-search-v16/luxury-checkout-suggested-query-1440x900.png"
+        "siteVersion": 19,
+        "canonicalGitCommit": "96258ba989ac9c777e12c42c2693a9a9cc8c32b0",
+        "sitesSourceCommit": "6c6e1a6bb38961ea0daf706a2c8261f2f8e4c82f",
+        "result": "PASS: deployed Explore checks pass at desktop and mobile; catalogue 324/324, zero console errors, uncaught errors, HTTP errors, or unresolved network failures. Preview cancellations from result replacement remain in raw evidence as expected; natural-paced typing is stable.",
+        "report": "audit/evidence/catalog-search-v19/runtime-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v19/common-query-relevance-1440x900.png"
       },
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
@@ -2567,13 +2569,14 @@
       ],
       "remediation": "Debounce committed query execution while keeping the input responsive, avoid remounting previews for intermediate keystrokes, and verify a normal typed phrase causes no repeated preview-request cancellation storm.",
       "fixCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "deployedVerification": {
-        "siteVersion": 16,
-        "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
-        "result": "FAIL: one natural-pace query caused 45 aborted preview/resource requests; zero console errors and zero HTTP errors.",
-        "report": "audit/evidence/catalog-search-v16/typed-search-network-audit.json",
-        "screenshot": "audit/evidence/catalog-search-v16/explore-initial-1440x900.png"
+        "siteVersion": 19,
+        "canonicalGitCommit": "96258ba989ac9c777e12c42c2693a9a9cc8c32b0",
+        "sitesSourceCommit": "6c6e1a6bb38961ea0daf706a2c8261f2f8e4c82f",
+        "result": "PASS: deployed Explore checks pass at desktop and mobile; catalogue 324/324, zero console errors, uncaught errors, HTTP errors, or unresolved network failures. Preview cancellations from result replacement remain in raw evidence as expected; natural-paced typing is stable.",
+        "report": "audit/evidence/catalog-search-v19/runtime-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v19/natural-typing-1440x900.png"
       },
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
@@ -2617,13 +2620,14 @@
       ],
       "remediation": "Compute total matching hits after filtering, support offset-based pages or incremental loading, and show “Showing X of Y” with a keyboard-accessible continuation control. Ensure filters are applied before pagination so valid late-ranked matches remain discoverable.",
       "fixCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "deployedVerification": {
-        "siteVersion": 16,
-        "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
-        "result": "FAIL: only 50 of 324 resources are shown and no continuation control exists.",
-        "report": "audit/evidence/catalog-search-v16/normal-use-network-audit.json",
-        "screenshot": "audit/evidence/catalog-search-v16/explore-initial-1440x900.png"
+        "siteVersion": 19,
+        "canonicalGitCommit": "96258ba989ac9c777e12c42c2693a9a9cc8c32b0",
+        "sitesSourceCommit": "6c6e1a6bb38961ea0daf706a2c8261f2f8e4c82f",
+        "result": "PASS: deployed Explore checks pass at desktop and mobile; catalogue 324/324, zero console errors, uncaught errors, HTTP errors, or unresolved network failures. Preview cancellations from result replacement remain in raw evidence as expected; natural-paced typing is stable.",
+        "report": "audit/evidence/catalog-search-v19/runtime-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v19/data-table-pagination-1440x900.png"
       },
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
@@ -2666,13 +2670,14 @@
       ],
       "remediation": "Expose “AA target or higher” and “AAA target” as declared-target filters, retain separate verification fields, and test the truthful labels.",
       "fixCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "deployedVerification": {
-        "siteVersion": 16,
-        "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
-        "result": "FAIL: the visible facet overstates declaration metadata as Verified AA; all 324 entries only declare AAA as levelTarget.",
-        "report": "audit/evidence/catalog-search-v16/accessibility-label-before.json",
-        "screenshot": "audit/evidence/catalog-search-v16/accessibility-label-before-1440x900.png"
+        "siteVersion": 19,
+        "canonicalGitCommit": "96258ba989ac9c777e12c42c2693a9a9cc8c32b0",
+        "sitesSourceCommit": "6c6e1a6bb38961ea0daf706a2c8261f2f8e4c82f",
+        "result": "PASS: deployed Explore checks pass at desktop and mobile; catalogue 324/324, zero console errors, uncaught errors, HTTP errors, or unresolved network failures. Preview cancellations from result replacement remain in raw evidence as expected; natural-paced typing is stable.",
+        "report": "audit/evidence/catalog-search-v19/runtime-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v19/accessibility-facet-1440x900.png"
       },
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
@@ -2715,13 +2720,14 @@
       ],
       "remediation": "Intersect the supported facet vocabulary with indexed manifest values, hide empty options, and retain a stale URL-selected option so users can remove it.",
       "fixCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "deployedVerification": {
-        "siteVersion": 16,
-        "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
-        "result": "FAIL: the visible panel contains options absent from the canonical 324-record catalogue.",
-        "report": "audit/evidence/catalog-search-v16/empty-filter-options-before.json",
-        "screenshot": "audit/evidence/catalog-search-v16/empty-motion-facet-options-1440x900.png"
+        "siteVersion": 19,
+        "canonicalGitCommit": "96258ba989ac9c777e12c42c2693a9a9cc8c32b0",
+        "sitesSourceCommit": "6c6e1a6bb38961ea0daf706a2c8261f2f8e4c82f",
+        "result": "PASS: deployed Explore checks pass at desktop and mobile; catalogue 324/324, zero console errors, uncaught errors, HTTP errors, or unresolved network failures. Preview cancellations from result replacement remain in raw evidence as expected; natural-paced typing is stable.",
+        "report": "audit/evidence/catalog-search-v19/runtime-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v19/stale-facet-1440x900.png"
       },
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
@@ -2763,7 +2769,7 @@
       ],
       "remediation": "Expose a labeled modal dialog, move and contain focus, close on Escape or backdrop activation, restore focus to the trigger, lock page scroll while open, and avoid duplicating the Filters title. Verify the same behavior in deployed mobile browser tests.",
       "fixCommit": "d404cc71705c029eb9b5eec57139248b490d44cc",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
         "tests": [
@@ -2775,12 +2781,12 @@
         "screenshots": []
       },
       "deployedVerification": {
-        "siteVersion": 17,
-        "canonicalGitCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
-        "sitesSourceCommit": "adbe7877dff0cdfb896b81b1af7b8e5fe53927b8",
-        "result": "FAIL: the deployed issue was reproduced through the visible Site at the recorded viewport; network/console details are retained in the report. The fix is pending the next Site version.",
-        "report": "audit/evidence/catalog-search-v17/mobile-filter-keyboard-before.json",
-        "screenshot": "audit/evidence/catalog-search-v17/mobile-filter-drawer-before-escape-390x844.png"
+        "siteVersion": 19,
+        "canonicalGitCommit": "96258ba989ac9c777e12c42c2693a9a9cc8c32b0",
+        "sitesSourceCommit": "6c6e1a6bb38961ea0daf706a2c8261f2f8e4c82f",
+        "result": "PASS: deployed Explore checks pass at desktop and mobile; catalogue 324/324, zero console errors, uncaught errors, HTTP errors, or unresolved network failures. Preview cancellations from result replacement remain in raw evidence as expected; natural-paced typing is stable.",
+        "report": "audit/evidence/catalog-search-v19/runtime-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v19/explore-initial-390x844.png"
       }
     },
     {
@@ -2807,7 +2813,7 @@
       ],
       "remediation": "Use a level-two heading for the standalone resource content and verify the live iframe heading and heading-order rule in the Sites Worker and deployed Site.",
       "fixCommit": "0b47d366302c3c90395eef7ae55ceecb04186261",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
         "tests": [
@@ -2822,12 +2828,12 @@
         ]
       },
       "deployedVerification": {
-        "siteVersion": 17,
-        "canonicalGitCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
-        "sitesSourceCommit": "adbe7877dff0cdfb896b81b1af7b8e5fe53927b8",
-        "result": "FAIL: the deployed issue was reproduced through the visible Site at the recorded viewport; network/console details are retained in the report. The fix is pending the next Site version.",
-        "report": "audit/evidence/catalog-search-v17/ai-agent-heading-before.json",
-        "screenshot": "audit/evidence/catalog-search-v17/ai-agent-heading-before-1440x900.png"
+        "siteVersion": 19,
+        "canonicalGitCommit": "96258ba989ac9c777e12c42c2693a9a9cc8c32b0",
+        "sitesSourceCommit": "6c6e1a6bb38961ea0daf706a2c8261f2f8e4c82f",
+        "result": "PASS: representative resource detail completed all eight tabs at desktop and mobile with zero console errors, uncaught errors, failed requests, HTTP errors, overflow, or heading-order violations. The separate moderate desktop landmark-unique issue is AUD-099.",
+        "report": "audit/evidence/catalog-search-v19/resource-detail-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v19/ai-agent-activity-after-1440x900.png"
       }
     },
     {
@@ -2854,7 +2860,7 @@
       ],
       "remediation": "Use H2 for tab-level sections, add a H2 group heading for declared variants, and use H3 for each variant card. Run heading-order across every resource tab in the Sites Worker and the deployed Site.",
       "fixCommit": "0b47d366302c3c90395eef7ae55ceecb04186261",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
         "tests": [
@@ -2869,12 +2875,12 @@
         ]
       },
       "deployedVerification": {
-        "siteVersion": 17,
-        "canonicalGitCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
-        "sitesSourceCommit": "adbe7877dff0cdfb896b81b1af7b8e5fe53927b8",
-        "result": "FAIL: the deployed issue was reproduced through the visible Site at the recorded viewport; network/console details are retained in the report. The fix is pending the next Site version.",
-        "report": "audit/evidence/catalog-search-v17/resource-tabs-heading-before.json",
-        "screenshot": "audit/evidence/catalog-search-v17/resource-tabs-heading-before-1440x900.png"
+        "siteVersion": 19,
+        "canonicalGitCommit": "96258ba989ac9c777e12c42c2693a9a9cc8c32b0",
+        "sitesSourceCommit": "6c6e1a6bb38961ea0daf706a2c8261f2f8e4c82f",
+        "result": "PASS: representative resource detail completed all eight tabs at desktop and mobile with zero console errors, uncaught errors, failed requests, HTTP errors, overflow, or heading-order violations. The separate moderate desktop landmark-unique issue is AUD-099.",
+        "report": "audit/evidence/catalog-search-v19/resource-detail-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v19/resource-detail-after-1440x900.png"
       }
     },
     {
@@ -2904,7 +2910,7 @@
       ],
       "remediation": "Label the component’s local rows as static sample data, remove the live pulse, replace project-internal fixture claims with generic example events, and describe the host-data contract in the README and manifest. Verify the deployed page and catalogue record.",
       "fixCommit": "0b47d366302c3c90395eef7ae55ceecb04186261",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
         "tests": [
@@ -2919,12 +2925,12 @@
         ]
       },
       "deployedVerification": {
-        "siteVersion": 17,
-        "canonicalGitCommit": "60aae2107ebd246dc1615b2cd36a8bc30f4e78f2",
-        "sitesSourceCommit": "adbe7877dff0cdfb896b81b1af7b8e5fe53927b8",
-        "result": "FAIL: the deployed issue was reproduced through the visible Site at the recorded viewport; network/console details are retained in the report. The fix is pending the next Site version.",
-        "report": "audit/evidence/catalog-search-v17/ai-agent-heading-before.json",
-        "screenshot": "audit/evidence/catalog-search-v17/ai-agent-heading-before-1440x900.png"
+        "siteVersion": 19,
+        "canonicalGitCommit": "96258ba989ac9c777e12c42c2693a9a9cc8c32b0",
+        "sitesSourceCommit": "6c6e1a6bb38961ea0daf706a2c8261f2f8e4c82f",
+        "result": "PASS: representative resource detail completed all eight tabs at desktop and mobile with zero console errors, uncaught errors, failed requests, HTTP errors, overflow, or heading-order violations. The separate moderate desktop landmark-unique issue is AUD-099.",
+        "report": "audit/evidence/catalog-search-v19/resource-detail-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v19/ai-agent-activity-after-1440x900.png"
       }
     },
     {
@@ -2962,17 +2968,50 @@
         "tests/sites-security-proxy.test.ts"
       ],
       "remediation": "Allow connect-src only for the same-origin immutable /_astro/ asset path. Keep arbitrary API routes, external hosts and nested frames blocked, and verify the deployed Explore flow at both viewports.",
-      "fixCommit": null,
-      "status": "open",
+      "fixCommit": "e84e775ab16f7d89f163cb6a99b960d432df1c4b",
+      "status": "closed-deployed-verified",
       "deployedVerification": {
-        "siteVersion": 18,
-        "canonicalGitCommit": "44fd9852c4b07f677472bff9f8215c9513aca252",
-        "sitesSourceCommit": "1a279b7fee54ba3b9270d38f96a58ba07d9c22fc",
-        "result": "FAIL: deployed v18 blocked compiled stylesheet preload in opaque Explore previews; the finding remains open until a fixed Site version passes.",
-        "report": "audit/evidence/catalog-search-v18/runtime-audit.json",
-        "screenshot": "audit/evidence/catalog-search-v18/explore-initial-1440x900.png"
+        "siteVersion": 19,
+        "canonicalGitCommit": "96258ba989ac9c777e12c42c2693a9a9cc8c32b0",
+        "sitesSourceCommit": "6c6e1a6bb38961ea0daf706a2c8261f2f8e4c82f",
+        "result": "PASS: deployed Explore checks pass at desktop and mobile; catalogue 324/324, zero console errors, uncaught errors, HTTP errors, or unresolved network failures. Preview cancellations from result replacement remain in raw evidence as expected; natural-paced typing is stable.",
+        "report": "audit/evidence/catalog-search-v19/runtime-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v19/explore-initial-1440x900.png"
+      }
+    },
+    {
+      "id": "AUD-099",
+      "severity": "medium",
+      "route": "/r/ai-agent-activity-feed/",
+      "viewport": "1440x900; 390x844",
+      "category": "accessibility",
+      "title": "Resource detail navigation landmarks were not distinguishable by name",
+      "expected": "The primary navigation and resource breadcrumb expose distinct accessible names.",
+      "actual": "Site v19 Axe reported a moderate landmark-unique violation on desktop: the primary navigation and resource breadcrumb were both unnamed. At mobile width the desktop primary navigation is hidden and this violation does not occur.",
+      "reproduction": [
+        "Open /r/ai-agent-activity-feed/ at 1440x900.",
+        "Run Axe on the detail route; landmark-unique reports the desktop navigation landmark."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/catalog-search-v19/resource-detail-after-1440x900.png",
+      "rootCause": "The shared resource-page Header navigation and the resource breadcrumb nav had no distinct accessible names.",
+      "affectedFiles": [
+        "packages/ui/src/components/header.tsx",
+        "apps/site/src/pages/resources/[slug].astro"
+      ],
+      "remediation": "Name the shared primary navigation and resource breadcrumb separately, then assert both landmarks and the landmark-unique Axe rule in a browser regression.",
+      "fixCommit": "96ec0b04f234c209e43e462943e588a58d0308c3",
+      "status": "fixed-awaiting-deployed-verification",
+      "deployedVerification": {
+        "siteVersion": 19,
+        "canonicalGitCommit": "96258ba989ac9c777e12c42c2693a9a9cc8c32b0",
+        "sitesSourceCommit": "6c6e1a6bb38961ea0daf706a2c8261f2f8e4c82f",
+        "result": "FAIL on Site v19: desktop Axe found one moderate landmark-unique violation; mobile had none. The local fix commit is available, and Site v20 verification is pending.",
+        "report": "audit/evidence/catalog-search-v19/resource-detail-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v19/resource-detail-after-1440x900.png"
       }
     }
   ],
-  "generatedAt": "2026-10-18T05:10:36.000Z"
+  "generatedAt": "2026-10-18T05:52:35.000Z"
 }
