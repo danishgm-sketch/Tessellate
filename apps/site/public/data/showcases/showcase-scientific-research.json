@@ -98,7 +98,8 @@
         "jobs": [
           "expand-graph",
           "annotate-evidence"
-        ]
+        ],
+        "required": true
       },
       {
         "name": "Entity Index",
@@ -107,7 +108,8 @@
         "jobs": [
           "faceted-lookup",
           "filter-by-jurisdiction"
-        ]
+        ],
+        "required": true
       },
       {
         "name": "Dossier Reader",
@@ -116,7 +118,8 @@
         "jobs": [
           "read-synthesis",
           "verify-citations"
-        ]
+        ],
+        "required": true
       },
       {
         "name": "Watchlists & Alerts",
@@ -125,7 +128,8 @@
         "jobs": [
           "triage-alerts",
           "mute-notifications"
-        ]
+        ],
+        "required": false
       }
     ],
     "requiredCapabilities": [
@@ -134,9 +138,8 @@
       "high-contrast-readability"
     ],
     "forbiddenPatterns": [
-      "Uncited summary claims without direct evidence source links",
-      "Unrecoverable loss of analyst working notes",
-      "Low readability contrast in long investigative texts"
+      "unverifiable-ai-summaries-without-citations",
+      "ephemeral-data-loss"
     ],
     "constraints": {
       "accessibilityFloor": "AA",
@@ -159,9 +162,8 @@
       "forbiddenScreens": [],
       "requiredPatterns": [],
       "forbiddenPatterns": [
-        "Uncited summary claims without direct evidence source links",
-        "Unrecoverable loss of analyst working notes",
-        "Low readability contrast in long investigative texts"
+        "unverifiable-ai-summaries-without-citations",
+        "ephemeral-data-loss"
       ]
     }
   },
@@ -229,132 +231,36 @@
     "forbiddenScreens": [],
     "requiredPatterns": [],
     "forbiddenPatterns": [
-      "Uncited summary claims without direct evidence source links",
-      "Unrecoverable loss of analyst working notes",
-      "Low readability contrast in long investigative texts"
+      "unverifiable-ai-summaries-without-citations",
+      "ephemeral-data-loss"
     ]
   },
   "screenGraph": {
-    "id": "graph-intelligence-research-16m16ha",
+    "id": "graph-intelligence-research-mff2kf",
     "groups": [
-      {
-        "id": "group-marketing",
-        "name": "Marketing",
-        "screens": [
-          {
-            "id": "screen-marketing-home",
-            "name": "Marketing Home",
-            "slug": "/",
-            "screenType": "marketing",
-            "purpose": "Product value proposition, interactive preview, and conversion funnel.",
-            "jobs": [
-              "explain-product-value",
-              "initiate-signup"
-            ],
-            "required": true,
-            "navigationVisibility": "primary",
-            "importance": 90,
-            "expectedData": [
-              "headline",
-              "socialProof",
-              "pricingSummary"
-            ],
-            "requiredRoles": [
-              "navigation",
-              "hero",
-              "value-proposition",
-              "conversion-cta",
-              "footer"
-            ],
-            "optionalRoles": [
-              "trust-proof",
-              "product-demo",
-              "feature-grid",
-              "pricing-table",
-              "faq-accordion"
-            ]
-          },
-          {
-            "id": "screen-documentation",
-            "name": "Documentation & API",
-            "slug": "/docs",
-            "screenType": "documentation",
-            "purpose": "Technical integration guides, API endpoints, and SDK references.",
-            "jobs": [
-              "read-api-docs",
-              "inspect-code-samples"
-            ],
-            "required": false,
-            "navigationVisibility": "primary",
-            "importance": 70,
-            "expectedData": [
-              "codeSnippets",
-              "apiSchema",
-              "endpoints"
-            ],
-            "requiredRoles": [
-              "docs-sidebar",
-              "prose-article",
-              "on-this-page-toc"
-            ],
-            "optionalRoles": [
-              "code-playground",
-              "feedback-widget",
-              "version-dropdown"
-            ]
-          }
-        ]
-      },
       {
         "id": "group-app",
         "name": "Application",
         "screens": [
           {
-            "id": "screen-overview",
-            "name": "Overview Dashboard",
-            "slug": "/overview",
-            "screenType": "dashboard",
-            "purpose": "Central operational telemetry, KPI scorecard, and high-priority action queue.",
-            "jobs": [
-              "Authenticate and access Research & Intelligence Platform",
-              "Review the overview and priority actions"
-            ],
-            "required": true,
-            "navigationVisibility": "primary",
-            "importance": 95,
-            "expectedData": [
-              "kpiMetrics",
-              "recentActivity",
-              "alerts"
-            ],
-            "requiredRoles": [
-              "overview-header",
-              "metric-cards",
-              "activity-feed"
-            ],
-            "optionalRoles": [
-              "quick-action-bar",
-              "data-table",
-              "alert-banner",
-              "insight-rail"
-            ]
-          },
-          {
             "id": "screen-workspace",
-            "name": "Workspace Canvas",
-            "slug": "/workspace",
+            "name": "Research Terminal",
+            "slug": "/research-terminal",
             "screenType": "workspace-editor",
-            "purpose": "Direct manipulation authoring canvas, multi-pane exploration, and active items.",
+            "purpose": "Three-pane entity investigation workspace",
             "jobs": [
-              "create-and-edit-items",
-              "inspect-details"
+              "expand-graph",
+              "annotate-evidence"
             ],
             "required": true,
             "navigationVisibility": "primary",
-            "importance": 90,
+            "importance": 85,
             "expectedData": [
-              "workingCanvasState",
-              "entityAttributes"
+              "Entity.id",
+              "Entity.name",
+              "Entity.type",
+              "Entity.riskScore",
+              "Entity.relations"
             ],
             "requiredRoles": [
               "editor-toolbar",
@@ -365,55 +271,71 @@
               "layers-tree",
               "version-history",
               "status-bar"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
             ]
           },
           {
-            "id": "screen-collection-index",
-            "name": "Entity Directory",
-            "slug": "/entitys",
-            "screenType": "index-list",
-            "purpose": "Searchable, filterable catalog of all entity records.",
+            "id": "screen-entity-index",
+            "name": "Entity Index",
+            "slug": "/entity-index",
+            "screenType": "search-explore",
+            "purpose": "Global search across millions of verified profiles",
             "jobs": [
-              "search-and-filter-records",
-              "bulk-actions"
+              "faceted-lookup",
+              "filter-by-jurisdiction"
             ],
             "required": true,
             "navigationVisibility": "primary",
             "importance": 85,
             "expectedData": [
-              "recordRows",
-              "filterFacets",
-              "paginationState"
+              "Entity.id",
+              "Entity.name",
+              "Entity.type",
+              "Entity.riskScore",
+              "Entity.relations"
             ],
             "requiredRoles": [
-              "index-header",
-              "filter-bar",
-              "data-table",
-              "pagination"
+              "search-header",
+              "facet-rail",
+              "results-grid"
             ],
             "optionalRoles": [
-              "bulk-action-bar",
-              "view-mode-toggle",
-              "stats-summary"
+              "recent-searches",
+              "active-filter-chips",
+              "empty-state"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
             ]
           },
           {
-            "id": "screen-entity-detail",
-            "name": "Entity Detail",
-            "slug": "/entitys/:id",
+            "id": "screen-dossier-reader",
+            "name": "Dossier Reader",
+            "slug": "/dossiers/:id",
             "screenType": "detail-entity",
-            "purpose": "Deep inspection, metadata attributes, timeline, and actions for a single entity.",
+            "purpose": "Published long-form report with linked evidence footnotes",
             "jobs": [
-              "inspect-attributes",
-              "edit-record-state"
+              "read-synthesis",
+              "verify-citations"
             ],
-            "required": false,
+            "required": true,
             "navigationVisibility": "secondary",
-            "importance": 75,
+            "importance": 85,
             "expectedData": [
-              "recordDetails",
-              "activityHistory",
-              "linkedRelations"
+              "Evidence.id",
+              "Evidence.source",
+              "Evidence.confidence",
+              "Evidence.extractedDate",
+              "Dossier.id",
+              "Dossier.title",
+              "Dossier.analyst",
+              "Dossier.classification"
             ],
             "requiredRoles": [
               "entity-header",
@@ -425,100 +347,48 @@
               "activity-timeline",
               "related-items-carousel",
               "danger-zone"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
             ]
           },
           {
-            "id": "screen-analytics",
-            "name": "Analytics & Insights",
-            "slug": "/analytics",
-            "screenType": "analytics-reporting",
-            "purpose": "Deep time-series breakdown, cohort retention, and reporting exports.",
+            "id": "screen-collection-index",
+            "name": "Watchlists & Alerts",
+            "slug": "/watchlists-and-alerts",
+            "screenType": "index-list",
+            "purpose": "Active signal alerts and entity delta log",
             "jobs": [
-              "analyze-trends",
-              "export-csv"
+              "triage-alerts",
+              "mute-notifications"
             ],
             "required": false,
             "navigationVisibility": "primary",
-            "importance": 75,
-            "expectedData": [
-              "timeSeriesPoints",
-              "cohortCurves"
-            ],
-            "requiredRoles": [
-              "date-range-picker",
-              "chart-canvas",
-              "summary-kpis"
-            ],
-            "optionalRoles": [
-              "dimension-slicer",
-              "cohort-table",
-              "export-drawer"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "group-settings",
-        "name": "Settings & Administration",
-        "screens": [
-          {
-            "id": "screen-settings",
-            "name": "Settings & Preferences",
-            "slug": "/settings",
-            "screenType": "settings",
-            "purpose": "User profile, notification triggers, security keys, and display theme.",
-            "jobs": [
-              "update-profile",
-              "configure-notifications"
-            ],
-            "required": true,
-            "navigationVisibility": "secondary",
             "importance": 60,
             "expectedData": [
-              "userProfile",
-              "notificationPreferences"
+              "Entity.id",
+              "Entity.name",
+              "Entity.type",
+              "Entity.riskScore",
+              "Entity.relations"
             ],
             "requiredRoles": [
-              "settings-nav",
-              "settings-form",
-              "save-footer"
+              "index-header",
+              "filter-bar",
+              "data-table",
+              "pagination"
             ],
             "optionalRoles": [
-              "avatar-uploader",
-              "2fa-toggle",
-              "danger-zone"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "group-auth",
-        "name": "Authentication",
-        "screens": [
-          {
-            "id": "screen-sign-in",
-            "name": "Sign In",
-            "slug": "/sign-in",
-            "screenType": "authentication",
-            "purpose": "User authentication with GitHub OAuth and session tokens.",
-            "jobs": [
-              "authenticate-user"
+              "bulk-action-bar",
+              "view-mode-toggle",
+              "stats-summary"
             ],
-            "required": true,
-            "navigationVisibility": "hidden",
-            "importance": 80,
-            "expectedData": [
-              "authCredentials"
-            ],
-            "requiredRoles": [
-              "auth-card",
-              "auth-footer"
-            ],
-            "optionalRoles": [
-              "social-oauth-buttons",
-              "passkey-option",
-              "terms-disclaimer",
-              "brand-panel"
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
             ]
           }
         ]
@@ -526,582 +396,31 @@
     ],
     "edges": [
       {
-        "id": "edge-marketing-to-signin",
-        "fromScreenId": "screen-marketing-home",
-        "toScreenId": "screen-sign-in",
-        "label": "Start building / Sign in"
+        "id": "edge-screen-workspace-to-screen-entity-index",
+        "fromScreenId": "screen-workspace",
+        "toScreenId": "screen-entity-index",
+        "label": "Entity Index"
       },
       {
-        "id": "edge-signin-to-overview",
-        "fromScreenId": "screen-sign-in",
-        "toScreenId": "screen-overview",
-        "label": "Successful authentication"
+        "id": "edge-screen-workspace-to-screen-dossier-reader",
+        "fromScreenId": "screen-workspace",
+        "toScreenId": "screen-dossier-reader",
+        "label": "Dossier Reader"
       },
       {
-        "id": "edge-overview-to-collection",
-        "fromScreenId": "screen-overview",
+        "id": "edge-screen-workspace-to-screen-collection-index",
+        "fromScreenId": "screen-workspace",
         "toScreenId": "screen-collection-index",
-        "label": "View all items"
-      },
-      {
-        "id": "edge-collection-to-detail",
-        "fromScreenId": "screen-collection-index",
-        "toScreenId": "screen-entity-detail",
-        "label": "Select item row"
+        "label": "Watchlists & Alerts"
       }
     ]
   },
   "screens": [
     {
-      "id": "screen-marketing-home",
-      "screenNodeId": "screen-marketing-home",
-      "name": "Marketing Home",
-      "slug": "/",
-      "rootNode": {
-        "id": "root-screen-marketing-home",
-        "nodeType": "layout",
-        "semanticRole": "marketing-page",
-        "children": [
-          {
-            "id": "node-screen-marketing-home-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Entity Workspace",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Entity Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Analytics & Insights",
-                  "href": "#screen-analytics"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ],
-              "orientation": "horizontal"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-hero-2",
-            "nodeType": "section",
-            "semanticRole": "hero",
-            "resourceRef": {
-              "id": "res_sec_editorial_hero",
-              "slug": "editorial-hero",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "eyebrow": "Example organisation · sample content",
-              "headline": "Synthesize heterogeneous source evidence into verified intelligence dossiers",
-              "subheadline": "A workspace for research analysts, investigative journalists, and risk officers. Synthesize heterogeneous source evidence into verified intelligence dossiers.",
-              "primaryCta": {
-                "label": "Open workspace",
-                "href": "#screen-overview"
-              },
-              "secondaryCta": {
-                "label": "Browse records",
-                "href": "#screen-collection-index"
-              },
-              "note": "Example interface · replace sample data with your organisation"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-value-proposition-3",
-            "nodeType": "section",
-            "semanticRole": "value-proposition",
-            "resourceRef": {
-              "id": "res_sec_feature_bento",
-              "slug": "feature-bento",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "title": "Marketing Home",
-              "items": [
-                {
-                  "title": "Entity",
-                  "description": "Investigated company, person, or asset node",
-                  "detail": "Example content"
-                },
-                {
-                  "title": "Evidence",
-                  "description": "Verified document, filing, or signal reference",
-                  "detail": "Example content"
-                },
-                {
-                  "title": "Dossier",
-                  "description": "Curated dossier binder and synthesis report",
-                  "detail": "Example content"
-                }
-              ]
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-conversion-cta-4",
-            "nodeType": "section",
-            "semanticRole": "conversion-cta",
-            "resourceRef": {
-              "id": "res_sec_cta_minimal",
-              "slug": "cta-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "headline": "Synthesize heterogeneous source evidence into verified intelligence dossiers",
-              "description": "A workspace for research analysts, investigative journalists, and risk officers. Synthesize heterogeneous source evidence into verified intelligence dossiers.",
-              "label": "Continue onboarding",
-              "href": "#screen-overview"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-footer-5",
-            "nodeType": "section",
-            "semanticRole": "footer",
-            "resourceRef": {
-              "id": "res_sec_footer_product",
-              "slug": "footer-product",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Entity Workspace",
-              "description": "A workspace for research analysts, investigative journalists, and risk officers. Synthesize heterogeneous source evidence into verified intelligence dossiers.",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Entity Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Analytics & Insights",
-                  "href": "#screen-analytics"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ]
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutFamily": "tri-column-intelligence"
-        }
-      }
-    },
-    {
-      "id": "screen-documentation",
-      "screenNodeId": "screen-documentation",
-      "name": "Documentation & API",
-      "slug": "/docs",
-      "rootNode": {
-        "id": "root-screen-documentation",
-        "nodeType": "layout",
-        "semanticRole": "workspace-dock-shell",
-        "children": [
-          {
-            "id": "node-screen-documentation-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Entity Workspace",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Entity Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Analytics & Insights",
-                  "href": "#screen-analytics"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ],
-              "orientation": "vertical"
-            }
-          },
-          {
-            "id": "container-screen-documentation-canvas",
-            "nodeType": "layout",
-            "semanticRole": "workspace-multi-pane",
-            "children": [
-              {
-                "id": "node-screen-documentation-docs-sidebar-2",
-                "nodeType": "section",
-                "semanticRole": "docs-sidebar",
-                "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "brand": "Entity Workspace",
-                  "links": [
-                    {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Documentation & API",
-                      "href": "#screen-documentation"
-                    },
-                    {
-                      "label": "Overview Dashboard",
-                      "href": "#screen-overview"
-                    },
-                    {
-                      "label": "Workspace Canvas",
-                      "href": "#screen-workspace"
-                    },
-                    {
-                      "label": "Entity Directory",
-                      "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Analytics & Insights",
-                      "href": "#screen-analytics"
-                    },
-                    {
-                      "label": "Settings & Preferences",
-                      "href": "#screen-settings"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-documentation-prose-article-3",
-                "nodeType": "section",
-                "semanticRole": "prose-article",
-                "resourceRef": {
-                  "id": "res_sec_feature_matrix",
-                  "slug": "feature-matrix",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Documentation & API",
-                  "items": [
-                    {
-                      "title": "Entity",
-                      "description": "Investigated company, person, or asset node",
-                      "detail": "Example content"
-                    },
-                    {
-                      "title": "Evidence",
-                      "description": "Verified document, filing, or signal reference",
-                      "detail": "Example content"
-                    },
-                    {
-                      "title": "Dossier",
-                      "description": "Curated dossier binder and synthesis report",
-                      "detail": "Example content"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-documentation-on-this-page-toc-4",
-                "nodeType": "section",
-                "semanticRole": "on-this-page-toc",
-                "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "brand": "Entity Workspace",
-                  "links": [
-                    {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Documentation & API",
-                      "href": "#screen-documentation"
-                    },
-                    {
-                      "label": "Overview Dashboard",
-                      "href": "#screen-overview"
-                    },
-                    {
-                      "label": "Workspace Canvas",
-                      "href": "#screen-workspace"
-                    },
-                    {
-                      "label": "Entity Directory",
-                      "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Analytics & Insights",
-                      "href": "#screen-analytics"
-                    },
-                    {
-                      "label": "Settings & Preferences",
-                      "href": "#screen-settings"
-                    }
-                  ]
-                }
-              }
-            ],
-            "slots": {},
-            "props": {
-              "layoutFamily": "tri-column-intelligence"
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutVariant": "split-dock"
-        }
-      }
-    },
-    {
-      "id": "screen-overview",
-      "screenNodeId": "screen-overview",
-      "name": "Overview Dashboard",
-      "slug": "/overview",
-      "rootNode": {
-        "id": "root-screen-overview",
-        "nodeType": "layout",
-        "semanticRole": "workspace-dock-shell",
-        "children": [
-          {
-            "id": "node-screen-overview-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Entity Workspace",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Entity Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Analytics & Insights",
-                  "href": "#screen-analytics"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ],
-              "orientation": "vertical"
-            }
-          },
-          {
-            "id": "container-screen-overview-canvas",
-            "nodeType": "layout",
-            "semanticRole": "workspace-multi-pane",
-            "children": [
-              {
-                "id": "node-screen-overview-overview-header-2",
-                "nodeType": "section",
-                "semanticRole": "overview-header",
-                "resourceRef": {
-                  "id": "res_blk_entity_profile_header",
-                  "slug": "entity-profile-header",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Overview Dashboard",
-                  "subtitle": "Central operational telemetry, KPI scorecard, and high-priority action queue.",
-                  "badge": "EXAMPLE",
-                  "initials": "WS"
-                }
-              },
-              {
-                "id": "node-screen-overview-metric-cards-3",
-                "nodeType": "section",
-                "semanticRole": "metric-cards",
-                "resourceRef": {
-                  "id": "res_blk_dashboard_kpi_grid",
-                  "slug": "dashboard-kpi-grid",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Overview Dashboard",
-                  "cards": [
-                    {
-                      "label": "Entity",
-                      "val": "—",
-                      "status": "Connect your data"
-                    },
-                    {
-                      "label": "Evidence",
-                      "val": "—",
-                      "status": "Connect your data"
-                    },
-                    {
-                      "label": "Dossier",
-                      "val": "—",
-                      "status": "Connect your data"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-overview-activity-feed-4",
-                "nodeType": "section",
-                "semanticRole": "activity-feed",
-                "resourceRef": {
-                  "id": "res_blk_notification_centre",
-                  "slug": "notification-centre",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Overview Dashboard",
-                  "events": [
-                    {
-                      "time": "Step 1",
-                      "title": "Search entity, map relationship network, and tag evidence",
-                      "desc": "global-search → expand-relations → highlight-findings → export-dossier"
-                    },
-                    {
-                      "time": "Step 2",
-                      "title": "Set automated monitoring triggers for entity changes",
-                      "desc": "define-alert-rules → select-entities → choose-cadence"
-                    }
-                  ]
-                }
-              }
-            ],
-            "slots": {},
-            "props": {
-              "layoutFamily": "tri-column-intelligence"
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutVariant": "split-dock"
-        }
-      }
-    },
-    {
       "id": "screen-workspace",
       "screenNodeId": "screen-workspace",
-      "name": "Workspace Canvas",
-      "slug": "/workspace",
+      "name": "Research Terminal",
+      "slug": "/research-terminal",
       "rootNode": {
         "id": "root-screen-workspace",
         "nodeType": "layout",
@@ -1123,32 +442,16 @@
               "brand": "Entity Workspace",
               "links": [
                 {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
+                  "label": "Research Terminal",
                   "href": "#screen-workspace"
                 },
                 {
-                  "label": "Entity Directory",
+                  "label": "Entity Index",
+                  "href": "#screen-entity-index"
+                },
+                {
+                  "label": "Watchlists & Alerts",
                   "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Analytics & Insights",
-                  "href": "#screen-analytics"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
                 }
               ],
               "orientation": "vertical"
@@ -1175,32 +478,16 @@
                   "brand": "Entity Workspace",
                   "links": [
                     {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Documentation & API",
-                      "href": "#screen-documentation"
-                    },
-                    {
-                      "label": "Overview Dashboard",
-                      "href": "#screen-overview"
-                    },
-                    {
-                      "label": "Workspace Canvas",
+                      "label": "Research Terminal",
                       "href": "#screen-workspace"
                     },
                     {
-                      "label": "Entity Directory",
+                      "label": "Entity Index",
+                      "href": "#screen-entity-index"
+                    },
+                    {
+                      "label": "Watchlists & Alerts",
                       "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Analytics & Insights",
-                      "href": "#screen-analytics"
-                    },
-                    {
-                      "label": "Settings & Preferences",
-                      "href": "#screen-settings"
                     }
                   ]
                 }
@@ -1218,7 +505,7 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Workspace Canvas",
+                  "title": "Research Terminal",
                   "columns": [
                     {
                       "title": "Search entity, map relationship network, and tag evidence",
@@ -1253,8 +540,305 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Workspace Canvas",
-                  "subtitle": "Direct manipulation authoring canvas, multi-pane exploration, and active items.",
+                  "title": "Research Terminal",
+                  "subtitle": "Three-pane entity investigation workspace",
+                  "badge": "EXAMPLE",
+                  "initials": "WS"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "split-dock"
+        }
+      }
+    },
+    {
+      "id": "screen-entity-index",
+      "screenNodeId": "screen-entity-index",
+      "name": "Entity Index",
+      "slug": "/entity-index",
+      "rootNode": {
+        "id": "root-screen-entity-index",
+        "nodeType": "layout",
+        "semanticRole": "workspace-dock-shell",
+        "children": [
+          {
+            "id": "node-screen-entity-index-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Entity Workspace",
+              "links": [
+                {
+                  "label": "Research Terminal",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "Entity Index",
+                  "href": "#screen-entity-index"
+                },
+                {
+                  "label": "Watchlists & Alerts",
+                  "href": "#screen-collection-index"
+                }
+              ],
+              "orientation": "vertical"
+            }
+          },
+          {
+            "id": "container-screen-entity-index-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-entity-index-search-header-2",
+                "nodeType": "section",
+                "semanticRole": "search-header",
+                "resourceRef": {
+                  "id": "res_primitive_input",
+                  "slug": "input",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Continue onboarding",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application.",
+                  "disabled": false,
+                  "title": "Entity Index"
+                }
+              },
+              {
+                "id": "node-screen-entity-index-facet-rail-3",
+                "nodeType": "section",
+                "semanticRole": "facet-rail",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-entity-index-results-grid-4",
+                "nodeType": "section",
+                "semanticRole": "results-grid",
+                "resourceRef": {
+                  "id": "res_sec_feature_bento",
+                  "slug": "feature-bento",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Entity Index",
+                  "items": [
+                    {
+                      "title": "Entity",
+                      "description": "Investigated company, person, or asset node",
+                      "detail": "Example content"
+                    },
+                    {
+                      "title": "Evidence",
+                      "description": "Verified document, filing, or signal reference",
+                      "detail": "Example content"
+                    },
+                    {
+                      "title": "Dossier",
+                      "description": "Curated dossier binder and synthesis report",
+                      "detail": "Example content"
+                    }
+                  ]
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "split-dock"
+        }
+      }
+    },
+    {
+      "id": "screen-dossier-reader",
+      "screenNodeId": "screen-dossier-reader",
+      "name": "Dossier Reader",
+      "slug": "/dossiers/:id",
+      "rootNode": {
+        "id": "root-screen-dossier-reader",
+        "nodeType": "layout",
+        "semanticRole": "workspace-dock-shell",
+        "children": [
+          {
+            "id": "node-screen-dossier-reader-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Entity Workspace",
+              "links": [
+                {
+                  "label": "Research Terminal",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "Entity Index",
+                  "href": "#screen-entity-index"
+                },
+                {
+                  "label": "Watchlists & Alerts",
+                  "href": "#screen-collection-index"
+                }
+              ],
+              "orientation": "vertical"
+            }
+          },
+          {
+            "id": "container-screen-dossier-reader-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-dossier-reader-entity-header-2",
+                "nodeType": "section",
+                "semanticRole": "entity-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Dossier Reader",
+                  "subtitle": "Published long-form report with linked evidence footnotes",
+                  "badge": "EXAMPLE",
+                  "initials": "WS"
+                }
+              },
+              {
+                "id": "node-screen-dossier-reader-detail-tabs-3",
+                "nodeType": "section",
+                "semanticRole": "detail-tabs",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Entity Workspace",
+                  "links": [
+                    {
+                      "label": "Research Terminal",
+                      "href": "#screen-workspace"
+                    },
+                    {
+                      "label": "Entity Index",
+                      "href": "#screen-entity-index"
+                    },
+                    {
+                      "label": "Watchlists & Alerts",
+                      "href": "#screen-collection-index"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-dossier-reader-main-content-pane-4",
+                "nodeType": "section",
+                "semanticRole": "main-content-pane",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Dossier Reader",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Entity",
+                      "type": "Investigated company, person, or asset node",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Evidence",
+                      "type": "Verified document, filing, or signal reference",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Dossier",
+                      "type": "Curated dossier binder and synthesis report",
+                      "quality": 0,
+                      "status": "Sample"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Progress",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-dossier-reader-metadata-sidebar-5",
+                "nodeType": "section",
+                "semanticRole": "metadata-sidebar",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Dossier Reader",
+                  "subtitle": "Published long-form report with linked evidence footnotes",
                   "badge": "EXAMPLE",
                   "initials": "WS"
                 }
@@ -1275,8 +859,8 @@
     {
       "id": "screen-collection-index",
       "screenNodeId": "screen-collection-index",
-      "name": "Entity Directory",
-      "slug": "/entitys",
+      "name": "Watchlists & Alerts",
+      "slug": "/watchlists-and-alerts",
       "rootNode": {
         "id": "root-screen-collection-index",
         "nodeType": "layout",
@@ -1298,32 +882,16 @@
               "brand": "Entity Workspace",
               "links": [
                 {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
+                  "label": "Research Terminal",
                   "href": "#screen-workspace"
                 },
                 {
-                  "label": "Entity Directory",
+                  "label": "Entity Index",
+                  "href": "#screen-entity-index"
+                },
+                {
+                  "label": "Watchlists & Alerts",
                   "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Analytics & Insights",
-                  "href": "#screen-analytics"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
                 }
               ],
               "orientation": "vertical"
@@ -1347,8 +915,8 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Entity Directory",
-                  "subtitle": "Searchable, filterable catalog of all entity records.",
+                  "title": "Watchlists & Alerts",
+                  "subtitle": "Active signal alerts and entity delta log",
                   "badge": "EXAMPLE",
                   "initials": "WS"
                 }
@@ -1380,7 +948,7 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Entity Directory",
+                  "title": "Watchlists & Alerts",
                   "rows": [
                     {
                       "id": 1,
@@ -1427,572 +995,7 @@
                 "props": {
                   "children": "Continue",
                   "disabled": false,
-                  "title": "Entity Directory"
-                }
-              }
-            ],
-            "slots": {},
-            "props": {
-              "layoutFamily": "tri-column-intelligence"
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutVariant": "split-dock"
-        }
-      }
-    },
-    {
-      "id": "screen-entity-detail",
-      "screenNodeId": "screen-entity-detail",
-      "name": "Entity Detail",
-      "slug": "/entitys/:id",
-      "rootNode": {
-        "id": "root-screen-entity-detail",
-        "nodeType": "layout",
-        "semanticRole": "workspace-dock-shell",
-        "children": [
-          {
-            "id": "node-screen-entity-detail-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Entity Workspace",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Entity Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Analytics & Insights",
-                  "href": "#screen-analytics"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ],
-              "orientation": "vertical"
-            }
-          },
-          {
-            "id": "container-screen-entity-detail-canvas",
-            "nodeType": "layout",
-            "semanticRole": "workspace-multi-pane",
-            "children": [
-              {
-                "id": "node-screen-entity-detail-entity-header-2",
-                "nodeType": "section",
-                "semanticRole": "entity-header",
-                "resourceRef": {
-                  "id": "res_blk_entity_profile_header",
-                  "slug": "entity-profile-header",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Entity Detail",
-                  "subtitle": "Deep inspection, metadata attributes, timeline, and actions for a single entity.",
-                  "badge": "EXAMPLE",
-                  "initials": "WS"
-                }
-              },
-              {
-                "id": "node-screen-entity-detail-detail-tabs-3",
-                "nodeType": "section",
-                "semanticRole": "detail-tabs",
-                "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "brand": "Entity Workspace",
-                  "links": [
-                    {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Documentation & API",
-                      "href": "#screen-documentation"
-                    },
-                    {
-                      "label": "Overview Dashboard",
-                      "href": "#screen-overview"
-                    },
-                    {
-                      "label": "Workspace Canvas",
-                      "href": "#screen-workspace"
-                    },
-                    {
-                      "label": "Entity Directory",
-                      "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Analytics & Insights",
-                      "href": "#screen-analytics"
-                    },
-                    {
-                      "label": "Settings & Preferences",
-                      "href": "#screen-settings"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-entity-detail-main-content-pane-4",
-                "nodeType": "section",
-                "semanticRole": "main-content-pane",
-                "resourceRef": {
-                  "id": "res_blk_advanced_data_table",
-                  "slug": "advanced-data-table",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Entity Detail",
-                  "rows": [
-                    {
-                      "id": 1,
-                      "name": "Example Entity",
-                      "type": "Investigated company, person, or asset node",
-                      "quality": 0,
-                      "status": "Sample"
-                    },
-                    {
-                      "id": 2,
-                      "name": "Example Evidence",
-                      "type": "Verified document, filing, or signal reference",
-                      "quality": 0,
-                      "status": "Sample"
-                    },
-                    {
-                      "id": 3,
-                      "name": "Example Dossier",
-                      "type": "Curated dossier binder and synthesis report",
-                      "quality": 0,
-                      "status": "Sample"
-                    }
-                  ],
-                  "columnLabels": {
-                    "name": "Record",
-                    "type": "Context",
-                    "quality": "Progress",
-                    "status": "Status"
-                  }
-                }
-              },
-              {
-                "id": "node-screen-entity-detail-metadata-sidebar-5",
-                "nodeType": "section",
-                "semanticRole": "metadata-sidebar",
-                "resourceRef": {
-                  "id": "res_blk_entity_profile_header",
-                  "slug": "entity-profile-header",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Entity Detail",
-                  "subtitle": "Deep inspection, metadata attributes, timeline, and actions for a single entity.",
-                  "badge": "EXAMPLE",
-                  "initials": "WS"
-                }
-              }
-            ],
-            "slots": {},
-            "props": {
-              "layoutFamily": "tri-column-intelligence"
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutVariant": "split-dock"
-        }
-      }
-    },
-    {
-      "id": "screen-analytics",
-      "screenNodeId": "screen-analytics",
-      "name": "Analytics & Insights",
-      "slug": "/analytics",
-      "rootNode": {
-        "id": "root-screen-analytics",
-        "nodeType": "layout",
-        "semanticRole": "workspace-dock-shell",
-        "children": [
-          {
-            "id": "node-screen-analytics-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Entity Workspace",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Entity Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Analytics & Insights",
-                  "href": "#screen-analytics"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ],
-              "orientation": "vertical"
-            }
-          },
-          {
-            "id": "container-screen-analytics-canvas",
-            "nodeType": "layout",
-            "semanticRole": "workspace-multi-pane",
-            "children": [
-              {
-                "id": "node-screen-analytics-date-range-picker-2",
-                "nodeType": "section",
-                "semanticRole": "date-range-picker",
-                "resourceRef": {
-                  "id": "res_blk_filter_builder",
-                  "slug": "filter-builder",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {}
-              },
-              {
-                "id": "node-screen-analytics-chart-canvas-3",
-                "nodeType": "section",
-                "semanticRole": "chart-canvas",
-                "resourceRef": {
-                  "id": "res_dat_area_chart",
-                  "slug": "area-chart",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {}
-              },
-              {
-                "id": "node-screen-analytics-summary-kpis-4",
-                "nodeType": "section",
-                "semanticRole": "summary-kpis",
-                "resourceRef": {
-                  "id": "res_blk_dashboard_kpi_grid",
-                  "slug": "dashboard-kpi-grid",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Analytics & Insights",
-                  "cards": [
-                    {
-                      "label": "Entity",
-                      "val": "—",
-                      "status": "Connect your data"
-                    },
-                    {
-                      "label": "Evidence",
-                      "val": "—",
-                      "status": "Connect your data"
-                    },
-                    {
-                      "label": "Dossier",
-                      "val": "—",
-                      "status": "Connect your data"
-                    }
-                  ]
-                }
-              }
-            ],
-            "slots": {},
-            "props": {
-              "layoutFamily": "tri-column-intelligence"
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutVariant": "split-dock"
-        }
-      }
-    },
-    {
-      "id": "screen-settings",
-      "screenNodeId": "screen-settings",
-      "name": "Settings & Preferences",
-      "slug": "/settings",
-      "rootNode": {
-        "id": "root-screen-settings",
-        "nodeType": "layout",
-        "semanticRole": "workspace-dock-shell",
-        "children": [
-          {
-            "id": "node-screen-settings-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Entity Workspace",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Entity Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Analytics & Insights",
-                  "href": "#screen-analytics"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ],
-              "orientation": "vertical"
-            }
-          },
-          {
-            "id": "container-screen-settings-canvas",
-            "nodeType": "layout",
-            "semanticRole": "workspace-multi-pane",
-            "children": [
-              {
-                "id": "node-screen-settings-settings-nav-2",
-                "nodeType": "section",
-                "semanticRole": "settings-nav",
-                "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "brand": "Entity Workspace",
-                  "links": [
-                    {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Documentation & API",
-                      "href": "#screen-documentation"
-                    },
-                    {
-                      "label": "Overview Dashboard",
-                      "href": "#screen-overview"
-                    },
-                    {
-                      "label": "Workspace Canvas",
-                      "href": "#screen-workspace"
-                    },
-                    {
-                      "label": "Entity Directory",
-                      "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Analytics & Insights",
-                      "href": "#screen-analytics"
-                    },
-                    {
-                      "label": "Settings & Preferences",
-                      "href": "#screen-settings"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-settings-settings-form-3",
-                "nodeType": "section",
-                "semanticRole": "settings-form",
-                "resourceRef": {
-                  "id": "res_primitive_input",
-                  "slug": "input",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "label": "Notification preferences",
-                  "helperText": "Example field. Connect persistence and your backend in the exported application."
-                }
-              },
-              {
-                "id": "node-screen-settings-save-footer-4",
-                "nodeType": "section",
-                "semanticRole": "save-footer",
-                "resourceRef": {
-                  "id": "res_mot_magnetic_button",
-                  "slug": "magnetic-button",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "label": "Save preferences",
-                  "disabled": true,
-                  "title": "Connect the exported application to your backend to enable this action."
-                }
-              }
-            ],
-            "slots": {},
-            "props": {
-              "layoutFamily": "tri-column-intelligence"
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutVariant": "split-dock"
-        },
-        "dnaOverrides": {
-          "professionalism": 96,
-          "playfulness": 8,
-          "curvature": 12,
-          "motion": 10
-        }
-      }
-    },
-    {
-      "id": "screen-sign-in",
-      "screenNodeId": "screen-sign-in",
-      "name": "Sign In",
-      "slug": "/sign-in",
-      "rootNode": {
-        "id": "root-screen-sign-in",
-        "nodeType": "layout",
-        "semanticRole": "workspace-dock-shell",
-        "children": [
-          {
-            "id": "node-screen-sign-in-auth-card-1",
-            "nodeType": "section",
-            "semanticRole": "auth-card",
-            "resourceRef": {
-              "id": "res_primitive_input",
-              "slug": "input",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "label": "Work email",
-              "helperText": "Example field. Connect persistence and your backend in the exported application."
-            }
-          },
-          {
-            "id": "container-screen-sign-in-canvas",
-            "nodeType": "layout",
-            "semanticRole": "workspace-multi-pane",
-            "children": [
-              {
-                "id": "node-screen-sign-in-auth-footer-2",
-                "nodeType": "section",
-                "semanticRole": "auth-footer",
-                "resourceRef": {
-                  "id": "res_primitive_button_01",
-                  "slug": "button",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "children": "Authentication backend required",
-                  "disabled": true,
-                  "title": "Connect the exported application to your backend to enable this action."
+                  "title": "Watchlists & Alerts"
                 }
               }
             ],
@@ -2013,40 +1016,22 @@
     "model": "rail",
     "primaryItems": [
       {
-        "label": "Marketing Home",
-        "targetScreenId": "screen-marketing-home"
-      },
-      {
-        "label": "Documentation & API",
-        "targetScreenId": "screen-documentation"
-      },
-      {
-        "label": "Overview Dashboard",
-        "targetScreenId": "screen-overview"
-      },
-      {
-        "label": "Workspace Canvas",
+        "label": "Research Terminal",
         "targetScreenId": "screen-workspace"
       },
       {
-        "label": "Entity Directory",
+        "label": "Entity Index",
+        "targetScreenId": "screen-entity-index"
+      },
+      {
+        "label": "Watchlists & Alerts",
         "targetScreenId": "screen-collection-index"
-      },
+      }
+    ],
+    "secondaryItems": [
       {
-        "label": "Entity Detail",
-        "targetScreenId": "screen-entity-detail"
-      },
-      {
-        "label": "Analytics & Insights",
-        "targetScreenId": "screen-analytics"
-      },
-      {
-        "label": "Settings & Preferences",
-        "targetScreenId": "screen-settings"
-      },
-      {
-        "label": "Sign In",
-        "targetScreenId": "screen-sign-in"
+        "label": "Dossier Reader",
+        "targetScreenId": "screen-dossier-reader"
       }
     ]
   },

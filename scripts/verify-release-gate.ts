@@ -403,26 +403,27 @@ export async function runReleaseGate(): Promise<{ passed: boolean; results: Gate
       throw new Error('Composed manifest unavailable from Gate 8');
     }
 
-    const screen = composedManifest.screens[0]!;
-    let targetNode: ProjectNode | null = null;
-    function findTarget(n: ProjectNode) {
-      if (targetNode) return;
-      if (n.resourceRef && n.nodeType !== 'layout') {
-        targetNode = n;
-        return;
-      }
-      if (n.children) {
-        for (const c of n.children) findTarget(c);
-      }
+    const resourceNodes: ProjectNode[] = [];
+    function collectResourceNodes(node: ProjectNode) {
+      if (node.resourceRef && node.nodeType !== 'layout') resourceNodes.push(node);
+      for (const child of node.children ?? []) collectResourceNodes(child);
     }
-    findTarget(screen.rootNode);
-    if (!targetNode) {
-      targetNode = screen.rootNode.children?.[0] || screen.rootNode;
-    }
+    for (const screen of composedManifest.screens) collectResourceNodes(screen.rootNode);
 
-    const candidates = getReplaceCandidates(composedManifest, targetNode.id,allCatalogResources);
-    if (candidates.length === 0) {
-      throw new Error(`No replacement candidates found for node ${targetNode.id}`);
+    let targetNode: ProjectNode | undefined;
+    let candidates: ReturnType<typeof getReplaceCandidates> = [];
+    for (const node of resourceNodes) {
+      const compatible = getReplaceCandidates(composedManifest, node.id, allCatalogResources);
+      if (compatible.length > 0) {
+        targetNode = node;
+        candidates = compatible;
+        break;
+      }
+    }
+    if (!targetNode) {
+      throw new Error(
+        `No composed resource node has a compatible replacement candidate (${resourceNodes.length} resource nodes inspected)`,
+      );
     }
 
     const replacementCandidate = candidates[0]!.resource;

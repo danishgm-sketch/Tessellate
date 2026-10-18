@@ -38,6 +38,7 @@ export const ScreenSuggestionSchema = z.object({
   screenType: z.string().min(1),
   purpose: z.string().min(1),
   jobs: z.array(z.string()).optional(),
+  required: z.boolean().optional(),
 }).strict();
 export type ScreenSuggestion = z.infer<typeof ScreenSuggestionSchema>;
 
@@ -83,6 +84,7 @@ export const ScreenNodeSchema = z.object({
   expectedData: z.array(z.string()).default([]),
   requiredRoles: z.array(z.string()).default([]),
   optionalRoles: z.array(z.string()).default([]),
+  deviceRelevance: z.array(DeviceTargetSchema).min(1).optional(),
 }).strict();
 export type ScreenNode = z.infer<typeof ScreenNodeSchema>;
 
@@ -111,6 +113,7 @@ const ScreenGraphBaseSchema = z.object({
 export const ScreenGraphSchema = ScreenGraphBaseSchema.superRefine((graph, context) => {
   const groupIds = new Set<string>();
   const screenIds = new Set<string>();
+  const routeSlugs = new Set<string>();
   const edgeIds = new Set<string>();
 
   graph.groups.forEach((group, groupIndex) => {
@@ -132,6 +135,16 @@ export const ScreenGraphSchema = ScreenGraphBaseSchema.superRefine((graph, conte
         });
       }
       screenIds.add(screen.id);
+
+      const normalizedSlug = screen.slug.toLocaleLowerCase().replace(/\/+$/, '') || '/';
+      if (routeSlugs.has(normalizedSlug)) {
+        context.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: ['groups', groupIndex, 'screens', screenIndex, 'slug'],
+          message: `Duplicate screen route: ${screen.slug}.`,
+        });
+      }
+      routeSlugs.add(normalizedSlug);
     });
   });
 

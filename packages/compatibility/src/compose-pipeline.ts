@@ -350,10 +350,12 @@ export function composeProjectForDirection(
     screens,
     navigation: {
       model: direction.navigationModel,
-      primaryItems: screens.map((s) => ({
-        label: s.name,
-        targetScreenId: s.id,
-      })),
+      primaryItems: screensToInstantiate
+        .filter((screen) => screen.navigationVisibility === 'primary')
+        .map((screen) => ({ label: screen.name, targetScreenId: screen.id })),
+      secondaryItems: screensToInstantiate
+        .filter((screen) => screen.navigationVisibility === 'secondary')
+        .map((screen) => ({ label: screen.name, targetScreenId: screen.id })),
     },
     assets: [],
     locks: [],

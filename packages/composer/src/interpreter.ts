@@ -158,6 +158,9 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
 
   // Nuanced keyword tuning
   const lower = text.toLowerCase();
+  const commercialIntentText = `${text} ${input.objective ?? ''}`;
+  const hasExplicitBillingIntent = /\b(billing|subscriptions?|invoices?|paid plans?|pricing|monetiz(?:e|ation)|monetis(?:e|ation)|charge customers|payment plans?)\b/i.test(commercialIntentText);
+  const hasExplicitFundsTransferIntent = /\b(?:transfer|send|move|withdraw|deposit)\b.{0,32}\b(?:funds?|money|cash|balances?|accounts?)\b|\b(?:funds?|money|cash)\b.{0,32}\b(?:transfer|send|move|withdraw|deposit)\b/i.test(commercialIntentText);
   if (lower.includes('developer') || lower.includes('engineer') || lower.includes('terminal')) {
     userSophistication = Math.min(100, userSophistication + 15);
     dataDensity = Math.min(100, dataDensity + 10);
@@ -201,8 +204,16 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     `Create, update, and manage records`,
   ];
 
+  const defaultWorkflows = (archetypeDef?.defaultWorkflows ?? [
+    { id: 'manage-record', name: 'Create and update record', steps: ['open-form', 'fill-fields', 'save'] },
+  ]).filter((workflow) => {
+    if (workflow.id === 'manage-billing' && !hasExplicitBillingIntent) return false;
+    if (primaryTag === 'fintech' && workflow.id === 'transfer-funds' && !hasExplicitFundsTransferIntent) return false;
+    return true;
+  });
+
   if (archetypeDef) {
-    for (const wf of archetypeDef.defaultWorkflows) {
+    for (const wf of defaultWorkflows) {
       jobsToBeDone.push(wf.name);
     }
   }
@@ -212,17 +223,19 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     { name: 'Item', description: 'Core operational record', fields: ['id', 'title', 'createdAt'] },
   ];
 
-  const workflows = archetypeDef?.defaultWorkflows ?? [
-    { id: 'manage-record', name: 'Create and update record', steps: ['open-form', 'fill-fields', 'save'] },
-  ];
+  const workflows = defaultWorkflows;
 
   // 6. Likely Screens
-  const likelyScreens = (archetypeDef?.recommendedScreens ?? []).map((s) => ({
-    name: s.name,
-    screenType: s.screenType,
-    purpose: s.purpose,
-    jobs: s.jobs,
-  }));
+  const likelyScreens = (archetypeDef?.recommendedScreens ?? [])
+    .filter((screen) => screen.screenType !== 'billing-account' || hasExplicitBillingIntent)
+    .filter((screen) => primaryTag !== 'fintech' || screen.screenType !== 'checkout-transaction' || hasExplicitFundsTransferIntent)
+    .map((s) => ({
+      name: s.name,
+      screenType: s.screenType,
+      purpose: s.purpose,
+      jobs: s.jobs,
+      required: s.required,
+    }));
 
   // 7. Constraints
   const constraints: ProjectConstraints = {

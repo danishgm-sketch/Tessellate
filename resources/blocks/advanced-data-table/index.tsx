@@ -5,7 +5,7 @@ export type AdvancedDataTableVariant = 'quiet' | 'expressive' | 'nocturne';
 export interface AdvancedDataTableProps {
   variant?: AdvancedDataTableVariant;
   title?: string;
-  rows?: Array<{id:number;name:string;type:string;quality:number;status:string}>;
+  rows?: Array<{id:number;name:string;type:string;quality:number;status:string;displayValue?:string}>;
   columnLabels?: {name:string;type:string;quality:string;status:string};
 }
 
@@ -64,7 +64,7 @@ export function AdvancedDataTable({ variant = 'quiet', title='Sample records', r
                 </td>
                 <td className="p-3 font-semibold font-sans">{r.name}</td>
                 <td className="p-3 opacity-75">{r.type}</td>
-                <td className={`p-3 ${variant==='nocturne'?'text-emerald-300':'text-emerald-800'} font-bold`}>{r.quality}/100</td>
+                <td className={`p-3 ${variant==='nocturne'?'text-emerald-300':'text-emerald-800'} font-bold`}>{r.displayValue ?? `${r.quality}/100`}</td>
                 <td className="p-3 uppercase text-[10px]">{r.status}</td>
               </tr>
             )) : (

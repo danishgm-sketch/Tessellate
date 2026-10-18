@@ -52,7 +52,34 @@ export function bindResourceContent(product:ProductModel, screen:ScreenNode, rol
     disabled:['save-footer','auth-footer','action-controls'].includes(role),
     href:employee?'#screen-onboarding':'#screen-overview',
   };
-  if(content.disabled)content.title='Connect the exported application to your backend to enable this action.';
+  if (role === 'order-summary') {
+    const item = product.entities.find((entity) => /product|item|listing/i.test(entity.name));
+    content.title = 'Order summary · example';
+    content.rows = [{
+      id: 1,
+      name: `Example ${item?.name ?? 'item'}`,
+      type: 'Sample cart item',
+      quality: 0,
+      displayValue: 'Price from your catalogue',
+      status: 'Example',
+    }];
+    content.columnLabels = { name: 'Item', type: 'Details', quality: 'Price', status: 'State' };
+  }
+  if (role === 'payment-fields') {
+    content.label = 'Payment provider';
+    content.placeholder = 'Connect a provider to enable checkout';
+    content.helperText = 'Preview only. This field does not collect or store payment details.';
+    content.disabled = true;
+    content.title = 'A payment provider is required before checkout can be enabled.';
+  }
+  if (role === 'submit-button') {
+    content.children = 'Payment provider required';
+    content.disabled = true;
+    content.title = 'Connect a payment provider before enabling payment submission.';
+  }
+  if (content.disabled && role !== 'payment-fields' && role !== 'submit-button') {
+    content.title='Connect the exported application to your backend to enable this action.';
+  }
   const accepted:Record<string,string[]> = {
     'minimal-top-nav':['brand','links','orientation'], 'marketing-nav-cta':['brand','links'], 'collapsible-sidebar':['brand','links'],
     'editorial-hero':['eyebrow','headline','subheadline','primaryCta','secondaryCta','note'],
@@ -63,7 +90,7 @@ export function bindResourceContent(product:ProductModel, screen:ScreenNode, rol
     timeline:['title','events'], 'notification-centre':['title','events'],
     'advanced-data-table':['title','rows','columnLabels'], 'kanban-board':['title','columns'],
     button:['children','disabled','title'], 'magnetic-button':['label','disabled','title'],
-    input:['label','helperText'],
+    input:['label','helperText','placeholder','disabled','title'],
   };
   return Object.fromEntries((accepted[resourceSlug] ?? []).filter(key=>content[key]!==undefined).map(key=>[key,content[key]]));
 }

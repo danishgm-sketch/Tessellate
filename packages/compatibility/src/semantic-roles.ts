@@ -21,6 +21,7 @@ export const ROLE_RESOURCES: Record<string, readonly string[]> = {
   pagination:['button'], 'search-header':['input'], 'facet-rail':['filter-builder'], 'results-grid':['feature-bento'],
   'editor-toolbar':['minimal-top-nav'], 'canvas-viewport':['kanban-board'], 'inspector-panel':['entity-profile-header'],
   'current-plan-card':['pricing-three-tier'], 'usage-meter':['bar-chart'],
+  'order-summary':['advanced-data-table'], 'payment-fields':['input'],
   'docs-sidebar':['minimal-top-nav'], 'prose-article':['feature-matrix'], 'on-this-page-toc':['minimal-top-nav'],
 };
 

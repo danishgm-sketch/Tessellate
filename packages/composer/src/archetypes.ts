@@ -220,7 +220,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
       { name: 'Storefront Catalog', screenType: 'marketing', purpose: 'Featured collections and hero promotions', jobs: ['browse-catalog', 'filter-categories'], required: true },
       { name: 'Product Detail', screenType: 'detail-entity', purpose: 'Gallery, specs, variant selector, and Add to Cart', jobs: ['inspect-photos', 'add-to-cart'], required: true },
       { name: 'Checkout', screenType: 'checkout-transaction', purpose: 'Frictionless payment and address capture', jobs: ['enter-shipping', 'submit-payment'], required: true },
-      { name: 'Order Confirmation', screenType: 'support', purpose: 'Tracking link and receipt confirmation', jobs: ['view-tracking', 'download-receipt'], required: true },
+      { name: 'Order Confirmation', screenType: 'detail-entity', purpose: 'Confirmed order details, delivery status, and receipt', jobs: ['view-tracking', 'download-receipt'], required: true },
     ],
     requiredCapabilities: ['responsive-image-gallery', 'persistent-cart-state', 'secure-payment-fields'],
     forbiddenPatterns: ['unclear-shipping-costs-at-final-step', 'broken-mobile-checkout-forms'],

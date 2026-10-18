@@ -96,7 +96,8 @@
         "jobs": [
           "prompt-generation",
           "compare-variants"
-        ]
+        ],
+        "required": true
       },
       {
         "name": "History & Generations",
@@ -105,7 +106,8 @@
         "jobs": [
           "search-history",
           "export-results"
-        ]
+        ],
+        "required": true
       },
       {
         "name": "Model & API Settings",
@@ -114,7 +116,8 @@
         "jobs": [
           "set-api-keys",
           "tune-parameters"
-        ]
+        ],
+        "required": true
       }
     ],
     "requiredCapabilities": [
@@ -123,9 +126,8 @@
       "cancelable-requests"
     ],
     "forbiddenPatterns": [
-      "Blocking full-screen loader without streaming feedback",
-      "Hiding token cost and rate limits from users",
-      "No way to copy or export raw generation output"
+      "blocking-synchronous-waits-without-feedback",
+      "hidden-hallucination-risks"
     ],
     "constraints": {
       "accessibilityFloor": "AA",
@@ -148,9 +150,8 @@
       "forbiddenScreens": [],
       "requiredPatterns": [],
       "forbiddenPatterns": [
-        "Blocking full-screen loader without streaming feedback",
-        "Hiding token cost and rate limits from users",
-        "No way to copy or export raw generation output"
+        "blocking-synchronous-waits-without-feedback",
+        "hidden-hallucination-risks"
       ]
     }
   },
@@ -218,132 +219,35 @@
     "forbiddenScreens": [],
     "requiredPatterns": [],
     "forbiddenPatterns": [
-      "Blocking full-screen loader without streaming feedback",
-      "Hiding token cost and rate limits from users",
-      "No way to copy or export raw generation output"
+      "blocking-synchronous-waits-without-feedback",
+      "hidden-hallucination-risks"
     ]
   },
   "screenGraph": {
-    "id": "graph-ai-1otop5x",
+    "id": "graph-ai-18x46ri",
     "groups": [
-      {
-        "id": "group-marketing",
-        "name": "Marketing",
-        "screens": [
-          {
-            "id": "screen-marketing-home",
-            "name": "Marketing Home",
-            "slug": "/",
-            "screenType": "marketing",
-            "purpose": "Product value proposition, interactive preview, and conversion funnel.",
-            "jobs": [
-              "explain-product-value",
-              "initiate-signup"
-            ],
-            "required": true,
-            "navigationVisibility": "primary",
-            "importance": 90,
-            "expectedData": [
-              "headline",
-              "socialProof",
-              "pricingSummary"
-            ],
-            "requiredRoles": [
-              "navigation",
-              "hero",
-              "value-proposition",
-              "conversion-cta",
-              "footer"
-            ],
-            "optionalRoles": [
-              "trust-proof",
-              "product-demo",
-              "feature-grid",
-              "pricing-table",
-              "faq-accordion"
-            ]
-          },
-          {
-            "id": "screen-documentation",
-            "name": "Documentation & API",
-            "slug": "/docs",
-            "screenType": "documentation",
-            "purpose": "Technical integration guides, API endpoints, and SDK references.",
-            "jobs": [
-              "read-api-docs",
-              "inspect-code-samples"
-            ],
-            "required": false,
-            "navigationVisibility": "primary",
-            "importance": 70,
-            "expectedData": [
-              "codeSnippets",
-              "apiSchema",
-              "endpoints"
-            ],
-            "requiredRoles": [
-              "docs-sidebar",
-              "prose-article",
-              "on-this-page-toc"
-            ],
-            "optionalRoles": [
-              "code-playground",
-              "feedback-widget",
-              "version-dropdown"
-            ]
-          }
-        ]
-      },
       {
         "id": "group-app",
         "name": "Application",
         "screens": [
           {
-            "id": "screen-overview",
-            "name": "Overview Dashboard",
-            "slug": "/overview",
-            "screenType": "dashboard",
-            "purpose": "Central operational telemetry, KPI scorecard, and high-priority action queue.",
-            "jobs": [
-              "Authenticate and access AI Product",
-              "Review the overview and priority actions"
-            ],
-            "required": true,
-            "navigationVisibility": "primary",
-            "importance": 95,
-            "expectedData": [
-              "kpiMetrics",
-              "recentActivity",
-              "alerts"
-            ],
-            "requiredRoles": [
-              "overview-header",
-              "metric-cards",
-              "activity-feed"
-            ],
-            "optionalRoles": [
-              "quick-action-bar",
-              "data-table",
-              "alert-banner",
-              "insight-rail"
-            ]
-          },
-          {
             "id": "screen-workspace",
-            "name": "Workspace Canvas",
-            "slug": "/workspace",
+            "name": "Prompt Canvas",
+            "slug": "/prompt-canvas",
             "screenType": "workspace-editor",
-            "purpose": "Direct manipulation authoring canvas, multi-pane exploration, and active items.",
+            "purpose": "Interactive prompt formulation and output stream",
             "jobs": [
-              "create-and-edit-items",
-              "inspect-details"
+              "prompt-generation",
+              "compare-variants"
             ],
             "required": true,
             "navigationVisibility": "primary",
-            "importance": 90,
+            "importance": 85,
             "expectedData": [
-              "workingCanvasState",
-              "entityAttributes"
+              "Prompt.id",
+              "Prompt.text",
+              "Prompt.model",
+              "Prompt.createdAt"
             ],
             "requiredRoles": [
               "editor-toolbar",
@@ -354,25 +258,31 @@
               "layers-tree",
               "version-history",
               "status-bar"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
             ]
           },
           {
             "id": "screen-collection-index",
-            "name": "Prompt Directory",
-            "slug": "/prompts",
+            "name": "History & Generations",
+            "slug": "/history-and-generations",
             "screenType": "index-list",
-            "purpose": "Searchable, filterable catalog of all prompt records.",
+            "purpose": "Browse and fork past generations",
             "jobs": [
-              "search-and-filter-records",
-              "bulk-actions"
+              "search-history",
+              "export-results"
             ],
             "required": true,
             "navigationVisibility": "primary",
             "importance": 85,
             "expectedData": [
-              "recordRows",
-              "filterFacets",
-              "paginationState"
+              "Generation.id",
+              "Generation.output",
+              "Generation.status",
+              "Generation.tokens"
             ],
             "requiredRoles": [
               "index-header",
@@ -384,60 +294,37 @@
               "bulk-action-bar",
               "view-mode-toggle",
               "stats-summary"
-            ]
-          },
-          {
-            "id": "screen-entity-detail",
-            "name": "Prompt Detail",
-            "slug": "/prompts/:id",
-            "screenType": "detail-entity",
-            "purpose": "Deep inspection, metadata attributes, timeline, and actions for a single prompt.",
-            "jobs": [
-              "inspect-attributes",
-              "edit-record-state"
             ],
-            "required": false,
-            "navigationVisibility": "secondary",
-            "importance": 75,
-            "expectedData": [
-              "recordDetails",
-              "activityHistory",
-              "linkedRelations"
-            ],
-            "requiredRoles": [
-              "entity-header",
-              "detail-tabs",
-              "main-content-pane",
-              "metadata-sidebar"
-            ],
-            "optionalRoles": [
-              "activity-timeline",
-              "related-items-carousel",
-              "danger-zone"
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
             ]
           }
         ]
       },
       {
         "id": "group-settings",
-        "name": "Settings & Administration",
+        "name": "Settings & administration",
         "screens": [
           {
             "id": "screen-settings",
-            "name": "Settings & Preferences",
+            "name": "Model & API Settings",
             "slug": "/settings",
             "screenType": "settings",
-            "purpose": "User profile, notification triggers, security keys, and display theme.",
+            "purpose": "Configure provider keys and model hyperparameters",
             "jobs": [
-              "update-profile",
-              "configure-notifications"
+              "set-api-keys",
+              "tune-parameters"
             ],
             "required": true,
             "navigationVisibility": "secondary",
-            "importance": 60,
+            "importance": 85,
             "expectedData": [
-              "userProfile",
-              "notificationPreferences"
+              "Prompt.id",
+              "Prompt.text",
+              "Prompt.model",
+              "Prompt.createdAt"
             ],
             "requiredRoles": [
               "settings-nav",
@@ -448,38 +335,11 @@
               "avatar-uploader",
               "2fa-toggle",
               "danger-zone"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "group-auth",
-        "name": "Authentication",
-        "screens": [
-          {
-            "id": "screen-sign-in",
-            "name": "Sign In",
-            "slug": "/sign-in",
-            "screenType": "authentication",
-            "purpose": "User authentication with GitHub OAuth and session tokens.",
-            "jobs": [
-              "authenticate-user"
             ],
-            "required": true,
-            "navigationVisibility": "hidden",
-            "importance": 80,
-            "expectedData": [
-              "authCredentials"
-            ],
-            "requiredRoles": [
-              "auth-card",
-              "auth-footer"
-            ],
-            "optionalRoles": [
-              "social-oauth-buttons",
-              "passkey-option",
-              "terms-disclaimer",
-              "brand-panel"
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
             ]
           }
         ]
@@ -487,558 +347,25 @@
     ],
     "edges": [
       {
-        "id": "edge-marketing-to-signin",
-        "fromScreenId": "screen-marketing-home",
-        "toScreenId": "screen-sign-in",
-        "label": "Start building / Sign in"
-      },
-      {
-        "id": "edge-signin-to-overview",
-        "fromScreenId": "screen-sign-in",
-        "toScreenId": "screen-overview",
-        "label": "Successful authentication"
-      },
-      {
-        "id": "edge-overview-to-collection",
-        "fromScreenId": "screen-overview",
+        "id": "edge-screen-workspace-to-screen-collection-index",
+        "fromScreenId": "screen-workspace",
         "toScreenId": "screen-collection-index",
-        "label": "View all items"
+        "label": "History & Generations"
       },
       {
-        "id": "edge-collection-to-detail",
-        "fromScreenId": "screen-collection-index",
-        "toScreenId": "screen-entity-detail",
-        "label": "Select item row"
+        "id": "edge-screen-workspace-to-screen-settings",
+        "fromScreenId": "screen-workspace",
+        "toScreenId": "screen-settings",
+        "label": "Model & API Settings"
       }
     ]
   },
   "screens": [
     {
-      "id": "screen-marketing-home",
-      "screenNodeId": "screen-marketing-home",
-      "name": "Marketing Home",
-      "slug": "/",
-      "rootNode": {
-        "id": "root-screen-marketing-home",
-        "nodeType": "layout",
-        "semanticRole": "marketing-page",
-        "children": [
-          {
-            "id": "node-screen-marketing-home-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Prompt Workspace",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Prompt Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ],
-              "orientation": "horizontal"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-hero-2",
-            "nodeType": "section",
-            "semanticRole": "hero",
-            "resourceRef": {
-              "id": "res_sec_editorial_hero",
-              "slug": "editorial-hero",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "eyebrow": "Example organisation · sample content",
-              "headline": "Amplify human productivity through generative and predictive assistance",
-              "subheadline": "A workspace for knowledge workers, creatives, and technical practitioners. Amplify human productivity through generative and predictive assistance.",
-              "primaryCta": {
-                "label": "Open workspace",
-                "href": "#screen-overview"
-              },
-              "secondaryCta": {
-                "label": "Browse records",
-                "href": "#screen-collection-index"
-              },
-              "note": "Example interface · replace sample data with your organisation"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-value-proposition-3",
-            "nodeType": "section",
-            "semanticRole": "value-proposition",
-            "resourceRef": {
-              "id": "res_sec_feature_bento",
-              "slug": "feature-bento",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "title": "Marketing Home",
-              "items": [
-                {
-                  "title": "Prompt",
-                  "description": "User instruction and system framing",
-                  "detail": "Example content"
-                },
-                {
-                  "title": "Generation",
-                  "description": "Synthesized model output and history",
-                  "detail": "Example content"
-                },
-                {
-                  "title": "Agent",
-                  "description": "Configured automated agent instance",
-                  "detail": "Example content"
-                }
-              ]
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-conversion-cta-4",
-            "nodeType": "section",
-            "semanticRole": "conversion-cta",
-            "resourceRef": {
-              "id": "res_sec_cta_minimal",
-              "slug": "cta-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "headline": "Amplify human productivity through generative and predictive assistance",
-              "description": "A workspace for knowledge workers, creatives, and technical practitioners. Amplify human productivity through generative and predictive assistance.",
-              "label": "Continue onboarding",
-              "href": "#screen-overview"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-footer-5",
-            "nodeType": "section",
-            "semanticRole": "footer",
-            "resourceRef": {
-              "id": "res_sec_footer_product",
-              "slug": "footer-product",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Prompt Workspace",
-              "description": "A workspace for knowledge workers, creatives, and technical practitioners. Amplify human productivity through generative and predictive assistance.",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Prompt Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ]
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutFamily": "tri-column-intelligence"
-        }
-      }
-    },
-    {
-      "id": "screen-documentation",
-      "screenNodeId": "screen-documentation",
-      "name": "Documentation & API",
-      "slug": "/docs",
-      "rootNode": {
-        "id": "root-screen-documentation",
-        "nodeType": "layout",
-        "semanticRole": "workspace-dock-shell",
-        "children": [
-          {
-            "id": "node-screen-documentation-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Prompt Workspace",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Prompt Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ],
-              "orientation": "vertical"
-            }
-          },
-          {
-            "id": "container-screen-documentation-canvas",
-            "nodeType": "layout",
-            "semanticRole": "workspace-multi-pane",
-            "children": [
-              {
-                "id": "node-screen-documentation-docs-sidebar-2",
-                "nodeType": "section",
-                "semanticRole": "docs-sidebar",
-                "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "brand": "Prompt Workspace",
-                  "links": [
-                    {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Documentation & API",
-                      "href": "#screen-documentation"
-                    },
-                    {
-                      "label": "Overview Dashboard",
-                      "href": "#screen-overview"
-                    },
-                    {
-                      "label": "Workspace Canvas",
-                      "href": "#screen-workspace"
-                    },
-                    {
-                      "label": "Prompt Directory",
-                      "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Settings & Preferences",
-                      "href": "#screen-settings"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-documentation-prose-article-3",
-                "nodeType": "section",
-                "semanticRole": "prose-article",
-                "resourceRef": {
-                  "id": "res_sec_feature_matrix",
-                  "slug": "feature-matrix",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Documentation & API",
-                  "items": [
-                    {
-                      "title": "Prompt",
-                      "description": "User instruction and system framing",
-                      "detail": "Example content"
-                    },
-                    {
-                      "title": "Generation",
-                      "description": "Synthesized model output and history",
-                      "detail": "Example content"
-                    },
-                    {
-                      "title": "Agent",
-                      "description": "Configured automated agent instance",
-                      "detail": "Example content"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-documentation-on-this-page-toc-4",
-                "nodeType": "section",
-                "semanticRole": "on-this-page-toc",
-                "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "brand": "Prompt Workspace",
-                  "links": [
-                    {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Documentation & API",
-                      "href": "#screen-documentation"
-                    },
-                    {
-                      "label": "Overview Dashboard",
-                      "href": "#screen-overview"
-                    },
-                    {
-                      "label": "Workspace Canvas",
-                      "href": "#screen-workspace"
-                    },
-                    {
-                      "label": "Prompt Directory",
-                      "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Settings & Preferences",
-                      "href": "#screen-settings"
-                    }
-                  ]
-                }
-              }
-            ],
-            "slots": {},
-            "props": {
-              "layoutFamily": "tri-column-intelligence"
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutVariant": "split-dock"
-        }
-      }
-    },
-    {
-      "id": "screen-overview",
-      "screenNodeId": "screen-overview",
-      "name": "Overview Dashboard",
-      "slug": "/overview",
-      "rootNode": {
-        "id": "root-screen-overview",
-        "nodeType": "layout",
-        "semanticRole": "workspace-dock-shell",
-        "children": [
-          {
-            "id": "node-screen-overview-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Prompt Workspace",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Prompt Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ],
-              "orientation": "vertical"
-            }
-          },
-          {
-            "id": "container-screen-overview-canvas",
-            "nodeType": "layout",
-            "semanticRole": "workspace-multi-pane",
-            "children": [
-              {
-                "id": "node-screen-overview-overview-header-2",
-                "nodeType": "section",
-                "semanticRole": "overview-header",
-                "resourceRef": {
-                  "id": "res_blk_entity_profile_header",
-                  "slug": "entity-profile-header",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Overview Dashboard",
-                  "subtitle": "Central operational telemetry, KPI scorecard, and high-priority action queue.",
-                  "badge": "EXAMPLE",
-                  "initials": "WS"
-                }
-              },
-              {
-                "id": "node-screen-overview-metric-cards-3",
-                "nodeType": "section",
-                "semanticRole": "metric-cards",
-                "resourceRef": {
-                  "id": "res_blk_dashboard_kpi_grid",
-                  "slug": "dashboard-kpi-grid",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Overview Dashboard",
-                  "cards": [
-                    {
-                      "label": "Prompt",
-                      "val": "—",
-                      "status": "Connect your data"
-                    },
-                    {
-                      "label": "Generation",
-                      "val": "—",
-                      "status": "Connect your data"
-                    },
-                    {
-                      "label": "Agent",
-                      "val": "—",
-                      "status": "Connect your data"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-overview-activity-feed-4",
-                "nodeType": "section",
-                "semanticRole": "activity-feed",
-                "resourceRef": {
-                  "id": "res_blk_notification_centre",
-                  "slug": "notification-centre",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Overview Dashboard",
-                  "events": [
-                    {
-                      "time": "Step 1",
-                      "title": "Formulate prompt and inspect generation",
-                      "desc": "compose-prompt → stream-response → iterate-output"
-                    },
-                    {
-                      "time": "Step 2",
-                      "title": "Equip agent with tools and memory",
-                      "desc": "define-role → connect-tools → test-run"
-                    }
-                  ]
-                }
-              }
-            ],
-            "slots": {},
-            "props": {
-              "layoutFamily": "tri-column-intelligence"
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutVariant": "split-dock"
-        }
-      }
-    },
-    {
       "id": "screen-workspace",
       "screenNodeId": "screen-workspace",
-      "name": "Workspace Canvas",
-      "slug": "/workspace",
+      "name": "Prompt Canvas",
+      "slug": "/prompt-canvas",
       "rootNode": {
         "id": "root-screen-workspace",
         "nodeType": "layout",
@@ -1060,27 +387,15 @@
               "brand": "Prompt Workspace",
               "links": [
                 {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
+                  "label": "Prompt Canvas",
                   "href": "#screen-workspace"
                 },
                 {
-                  "label": "Prompt Directory",
+                  "label": "History & Generations",
                   "href": "#screen-collection-index"
                 },
                 {
-                  "label": "Settings & Preferences",
+                  "label": "Model & API Settings",
                   "href": "#screen-settings"
                 }
               ],
@@ -1108,27 +423,15 @@
                   "brand": "Prompt Workspace",
                   "links": [
                     {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Documentation & API",
-                      "href": "#screen-documentation"
-                    },
-                    {
-                      "label": "Overview Dashboard",
-                      "href": "#screen-overview"
-                    },
-                    {
-                      "label": "Workspace Canvas",
+                      "label": "Prompt Canvas",
                       "href": "#screen-workspace"
                     },
                     {
-                      "label": "Prompt Directory",
+                      "label": "History & Generations",
                       "href": "#screen-collection-index"
                     },
                     {
-                      "label": "Settings & Preferences",
+                      "label": "Model & API Settings",
                       "href": "#screen-settings"
                     }
                   ]
@@ -1147,7 +450,7 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Workspace Canvas",
+                  "title": "Prompt Canvas",
                   "columns": [
                     {
                       "title": "Formulate prompt and inspect generation",
@@ -1181,8 +484,8 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Workspace Canvas",
-                  "subtitle": "Direct manipulation authoring canvas, multi-pane exploration, and active items.",
+                  "title": "Prompt Canvas",
+                  "subtitle": "Interactive prompt formulation and output stream",
                   "badge": "EXAMPLE",
                   "initials": "WS"
                 }
@@ -1203,8 +506,8 @@
     {
       "id": "screen-collection-index",
       "screenNodeId": "screen-collection-index",
-      "name": "Prompt Directory",
-      "slug": "/prompts",
+      "name": "History & Generations",
+      "slug": "/history-and-generations",
       "rootNode": {
         "id": "root-screen-collection-index",
         "nodeType": "layout",
@@ -1226,27 +529,15 @@
               "brand": "Prompt Workspace",
               "links": [
                 {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
+                  "label": "Prompt Canvas",
                   "href": "#screen-workspace"
                 },
                 {
-                  "label": "Prompt Directory",
+                  "label": "History & Generations",
                   "href": "#screen-collection-index"
                 },
                 {
-                  "label": "Settings & Preferences",
+                  "label": "Model & API Settings",
                   "href": "#screen-settings"
                 }
               ],
@@ -1271,8 +562,8 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Prompt Directory",
-                  "subtitle": "Searchable, filterable catalog of all prompt records.",
+                  "title": "History & Generations",
+                  "subtitle": "Browse and fork past generations",
                   "badge": "EXAMPLE",
                   "initials": "WS"
                 }
@@ -1304,7 +595,7 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Prompt Directory",
+                  "title": "History & Generations",
                   "rows": [
                     {
                       "id": 1,
@@ -1351,203 +642,7 @@
                 "props": {
                   "children": "Continue",
                   "disabled": false,
-                  "title": "Prompt Directory"
-                }
-              }
-            ],
-            "slots": {},
-            "props": {
-              "layoutFamily": "tri-column-intelligence"
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutVariant": "split-dock"
-        }
-      }
-    },
-    {
-      "id": "screen-entity-detail",
-      "screenNodeId": "screen-entity-detail",
-      "name": "Prompt Detail",
-      "slug": "/prompts/:id",
-      "rootNode": {
-        "id": "root-screen-entity-detail",
-        "nodeType": "layout",
-        "semanticRole": "workspace-dock-shell",
-        "children": [
-          {
-            "id": "node-screen-entity-detail-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Prompt Workspace",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Prompt Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ],
-              "orientation": "vertical"
-            }
-          },
-          {
-            "id": "container-screen-entity-detail-canvas",
-            "nodeType": "layout",
-            "semanticRole": "workspace-multi-pane",
-            "children": [
-              {
-                "id": "node-screen-entity-detail-entity-header-2",
-                "nodeType": "section",
-                "semanticRole": "entity-header",
-                "resourceRef": {
-                  "id": "res_blk_entity_profile_header",
-                  "slug": "entity-profile-header",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Prompt Detail",
-                  "subtitle": "Deep inspection, metadata attributes, timeline, and actions for a single prompt.",
-                  "badge": "EXAMPLE",
-                  "initials": "WS"
-                }
-              },
-              {
-                "id": "node-screen-entity-detail-detail-tabs-3",
-                "nodeType": "section",
-                "semanticRole": "detail-tabs",
-                "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "brand": "Prompt Workspace",
-                  "links": [
-                    {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Documentation & API",
-                      "href": "#screen-documentation"
-                    },
-                    {
-                      "label": "Overview Dashboard",
-                      "href": "#screen-overview"
-                    },
-                    {
-                      "label": "Workspace Canvas",
-                      "href": "#screen-workspace"
-                    },
-                    {
-                      "label": "Prompt Directory",
-                      "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Settings & Preferences",
-                      "href": "#screen-settings"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-entity-detail-main-content-pane-4",
-                "nodeType": "section",
-                "semanticRole": "main-content-pane",
-                "resourceRef": {
-                  "id": "res_blk_advanced_data_table",
-                  "slug": "advanced-data-table",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Prompt Detail",
-                  "rows": [
-                    {
-                      "id": 1,
-                      "name": "Example Prompt",
-                      "type": "User instruction and system framing",
-                      "quality": 0,
-                      "status": "Sample"
-                    },
-                    {
-                      "id": 2,
-                      "name": "Example Generation",
-                      "type": "Synthesized model output and history",
-                      "quality": 0,
-                      "status": "Sample"
-                    },
-                    {
-                      "id": 3,
-                      "name": "Example Agent",
-                      "type": "Configured automated agent instance",
-                      "quality": 0,
-                      "status": "Sample"
-                    }
-                  ],
-                  "columnLabels": {
-                    "name": "Record",
-                    "type": "Context",
-                    "quality": "Progress",
-                    "status": "Status"
-                  }
-                }
-              },
-              {
-                "id": "node-screen-entity-detail-metadata-sidebar-5",
-                "nodeType": "section",
-                "semanticRole": "metadata-sidebar",
-                "resourceRef": {
-                  "id": "res_blk_entity_profile_header",
-                  "slug": "entity-profile-header",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Prompt Detail",
-                  "subtitle": "Deep inspection, metadata attributes, timeline, and actions for a single prompt.",
-                  "badge": "EXAMPLE",
-                  "initials": "WS"
+                  "title": "History & Generations"
                 }
               }
             ],
@@ -1566,7 +661,7 @@
     {
       "id": "screen-settings",
       "screenNodeId": "screen-settings",
-      "name": "Settings & Preferences",
+      "name": "Model & API Settings",
       "slug": "/settings",
       "rootNode": {
         "id": "root-screen-settings",
@@ -1589,27 +684,15 @@
               "brand": "Prompt Workspace",
               "links": [
                 {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Documentation & API",
-                  "href": "#screen-documentation"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
+                  "label": "Prompt Canvas",
                   "href": "#screen-workspace"
                 },
                 {
-                  "label": "Prompt Directory",
+                  "label": "History & Generations",
                   "href": "#screen-collection-index"
                 },
                 {
-                  "label": "Settings & Preferences",
+                  "label": "Model & API Settings",
                   "href": "#screen-settings"
                 }
               ],
@@ -1637,27 +720,15 @@
                   "brand": "Prompt Workspace",
                   "links": [
                     {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Documentation & API",
-                      "href": "#screen-documentation"
-                    },
-                    {
-                      "label": "Overview Dashboard",
-                      "href": "#screen-overview"
-                    },
-                    {
-                      "label": "Workspace Canvas",
+                      "label": "Prompt Canvas",
                       "href": "#screen-workspace"
                     },
                     {
-                      "label": "Prompt Directory",
+                      "label": "History & Generations",
                       "href": "#screen-collection-index"
                     },
                     {
-                      "label": "Settings & Preferences",
+                      "label": "Model & API Settings",
                       "href": "#screen-settings"
                     }
                   ]
@@ -1677,7 +748,9 @@
                 "slots": {},
                 "props": {
                   "label": "Notification preferences",
-                  "helperText": "Example field. Connect persistence and your backend in the exported application."
+                  "helperText": "Example field. Connect persistence and your backend in the exported application.",
+                  "disabled": false,
+                  "title": "Model & API Settings"
                 }
               },
               {
@@ -1716,105 +789,24 @@
           "motion": 10
         }
       }
-    },
-    {
-      "id": "screen-sign-in",
-      "screenNodeId": "screen-sign-in",
-      "name": "Sign In",
-      "slug": "/sign-in",
-      "rootNode": {
-        "id": "root-screen-sign-in",
-        "nodeType": "layout",
-        "semanticRole": "workspace-dock-shell",
-        "children": [
-          {
-            "id": "node-screen-sign-in-auth-card-1",
-            "nodeType": "section",
-            "semanticRole": "auth-card",
-            "resourceRef": {
-              "id": "res_primitive_input",
-              "slug": "input",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "label": "Work email",
-              "helperText": "Example field. Connect persistence and your backend in the exported application."
-            }
-          },
-          {
-            "id": "container-screen-sign-in-canvas",
-            "nodeType": "layout",
-            "semanticRole": "workspace-multi-pane",
-            "children": [
-              {
-                "id": "node-screen-sign-in-auth-footer-2",
-                "nodeType": "section",
-                "semanticRole": "auth-footer",
-                "resourceRef": {
-                  "id": "res_primitive_button_01",
-                  "slug": "button",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "children": "Authentication backend required",
-                  "disabled": true,
-                  "title": "Connect the exported application to your backend to enable this action."
-                }
-              }
-            ],
-            "slots": {},
-            "props": {
-              "layoutFamily": "tri-column-intelligence"
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutVariant": "split-dock"
-        }
-      }
     }
   ],
   "navigation": {
     "model": "rail",
     "primaryItems": [
       {
-        "label": "Marketing Home",
-        "targetScreenId": "screen-marketing-home"
-      },
-      {
-        "label": "Documentation & API",
-        "targetScreenId": "screen-documentation"
-      },
-      {
-        "label": "Overview Dashboard",
-        "targetScreenId": "screen-overview"
-      },
-      {
-        "label": "Workspace Canvas",
+        "label": "Prompt Canvas",
         "targetScreenId": "screen-workspace"
       },
       {
-        "label": "Prompt Directory",
+        "label": "History & Generations",
         "targetScreenId": "screen-collection-index"
-      },
+      }
+    ],
+    "secondaryItems": [
       {
-        "label": "Prompt Detail",
-        "targetScreenId": "screen-entity-detail"
-      },
-      {
-        "label": "Settings & Preferences",
+        "label": "Model & API Settings",
         "targetScreenId": "screen-settings"
-      },
-      {
-        "label": "Sign In",
-        "targetScreenId": "screen-sign-in"
       }
     ]
   },

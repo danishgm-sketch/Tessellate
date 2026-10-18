@@ -97,7 +97,8 @@
         "jobs": [
           "check-tasks",
           "add-quick-note"
-        ]
+        ],
+        "required": true
       },
       {
         "name": "Notes & Canvas",
@@ -106,7 +107,8 @@
         "jobs": [
           "write-thoughts",
           "link-notes"
-        ]
+        ],
+        "required": true
       },
       {
         "name": "Calendar Schedule",
@@ -115,7 +117,8 @@
         "jobs": [
           "schedule-deadlines",
           "block-time"
-        ]
+        ],
+        "required": false
       }
     ],
     "requiredCapabilities": [
@@ -124,9 +127,8 @@
       "fluid-keyboard-navigation"
     ],
     "forbiddenPatterns": [
-      "High keystroke latency in the text editor",
-      "Requiring internet access for basic task creation and note taking",
-      "Over-complicated taxonomy requirements before saving a thought"
+      "sluggish-keystroke-latency",
+      "overly-cluttered-chrome"
     ],
     "constraints": {
       "accessibilityFloor": "AA",
@@ -149,9 +151,8 @@
       "forbiddenScreens": [],
       "requiredPatterns": [],
       "forbiddenPatterns": [
-        "High keystroke latency in the text editor",
-        "Requiring internet access for basic task creation and note taking",
-        "Over-complicated taxonomy requirements before saving a thought"
+        "sluggish-keystroke-latency",
+        "overly-cluttered-chrome"
       ]
     }
   },
@@ -219,74 +220,36 @@
     "forbiddenScreens": [],
     "requiredPatterns": [],
     "forbiddenPatterns": [
-      "High keystroke latency in the text editor",
-      "Requiring internet access for basic task creation and note taking",
-      "Over-complicated taxonomy requirements before saving a thought"
+      "sluggish-keystroke-latency",
+      "overly-cluttered-chrome"
     ]
   },
   "screenGraph": {
-    "id": "graph-productivity-1cndzo0",
+    "id": "graph-productivity-p68wrw",
     "groups": [
-      {
-        "id": "group-marketing",
-        "name": "Marketing",
-        "screens": [
-          {
-            "id": "screen-marketing-home",
-            "name": "Marketing Home",
-            "slug": "/",
-            "screenType": "marketing",
-            "purpose": "Product value proposition, interactive preview, and conversion funnel.",
-            "jobs": [
-              "explain-product-value",
-              "initiate-signup"
-            ],
-            "required": true,
-            "navigationVisibility": "primary",
-            "importance": 90,
-            "expectedData": [
-              "headline",
-              "socialProof",
-              "pricingSummary"
-            ],
-            "requiredRoles": [
-              "navigation",
-              "hero",
-              "value-proposition",
-              "conversion-cta",
-              "footer"
-            ],
-            "optionalRoles": [
-              "trust-proof",
-              "product-demo",
-              "feature-grid",
-              "pricing-table",
-              "faq-accordion"
-            ]
-          }
-        ]
-      },
       {
         "id": "group-app",
         "name": "Application",
         "screens": [
           {
             "id": "screen-overview",
-            "name": "Overview Dashboard",
-            "slug": "/overview",
+            "name": "Today Agenda",
+            "slug": "/today-agenda",
             "screenType": "dashboard",
-            "purpose": "Central operational telemetry, KPI scorecard, and high-priority action queue.",
+            "purpose": "Focused view of immediate tasks and scheduled events",
             "jobs": [
-              "Authenticate and access Consumer Productivity",
-              "Review the overview and priority actions"
+              "check-tasks",
+              "add-quick-note"
             ],
             "required": true,
             "navigationVisibility": "primary",
-            "importance": 95,
+            "importance": 85,
             "expectedData": [
-              "kpiMetrics",
-              "recentActivity",
-              "alerts"
+              "Task.id",
+              "Task.title",
+              "Task.due",
+              "Task.completed",
+              "Task.tags"
             ],
             "requiredRoles": [
               "overview-header",
@@ -298,24 +261,31 @@
               "data-table",
               "alert-banner",
               "insight-rail"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
             ]
           },
           {
             "id": "screen-workspace",
-            "name": "Workspace Canvas",
-            "slug": "/workspace",
+            "name": "Notes & Canvas",
+            "slug": "/notes-and-canvas",
             "screenType": "workspace-editor",
-            "purpose": "Direct manipulation authoring canvas, multi-pane exploration, and active items.",
+            "purpose": "Distraction-free Markdown editor",
             "jobs": [
-              "create-and-edit-items",
-              "inspect-details"
+              "write-thoughts",
+              "link-notes"
             ],
             "required": true,
             "navigationVisibility": "primary",
-            "importance": 90,
+            "importance": 85,
             "expectedData": [
-              "workingCanvasState",
-              "entityAttributes"
+              "Note.id",
+              "Note.title",
+              "Note.body",
+              "Note.updatedAt"
             ],
             "requiredRoles": [
               "editor-toolbar",
@@ -326,132 +296,47 @@
               "layers-tree",
               "version-history",
               "status-bar"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
             ]
           },
           {
-            "id": "screen-collection-index",
-            "name": "Task Directory",
-            "slug": "/tasks",
-            "screenType": "index-list",
-            "purpose": "Searchable, filterable catalog of all task records.",
+            "id": "screen-calendar-schedule",
+            "name": "Calendar Schedule",
+            "slug": "/calendar-schedule",
+            "screenType": "workspace-editor",
+            "purpose": "Week and month grid view",
             "jobs": [
-              "search-and-filter-records",
-              "bulk-actions"
-            ],
-            "required": true,
-            "navigationVisibility": "primary",
-            "importance": 85,
-            "expectedData": [
-              "recordRows",
-              "filterFacets",
-              "paginationState"
-            ],
-            "requiredRoles": [
-              "index-header",
-              "filter-bar",
-              "data-table",
-              "pagination"
-            ],
-            "optionalRoles": [
-              "bulk-action-bar",
-              "view-mode-toggle",
-              "stats-summary"
-            ]
-          },
-          {
-            "id": "screen-entity-detail",
-            "name": "Task Detail",
-            "slug": "/tasks/:id",
-            "screenType": "detail-entity",
-            "purpose": "Deep inspection, metadata attributes, timeline, and actions for a single task.",
-            "jobs": [
-              "inspect-attributes",
-              "edit-record-state"
+              "schedule-deadlines",
+              "block-time"
             ],
             "required": false,
-            "navigationVisibility": "secondary",
-            "importance": 75,
-            "expectedData": [
-              "recordDetails",
-              "activityHistory",
-              "linkedRelations"
-            ],
-            "requiredRoles": [
-              "entity-header",
-              "detail-tabs",
-              "main-content-pane",
-              "metadata-sidebar"
-            ],
-            "optionalRoles": [
-              "activity-timeline",
-              "related-items-carousel",
-              "danger-zone"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "group-settings",
-        "name": "Settings & Administration",
-        "screens": [
-          {
-            "id": "screen-settings",
-            "name": "Settings & Preferences",
-            "slug": "/settings",
-            "screenType": "settings",
-            "purpose": "User profile, notification triggers, security keys, and display theme.",
-            "jobs": [
-              "update-profile",
-              "configure-notifications"
-            ],
-            "required": true,
-            "navigationVisibility": "secondary",
+            "navigationVisibility": "primary",
             "importance": 60,
             "expectedData": [
-              "userProfile",
-              "notificationPreferences"
+              "Task.id",
+              "Task.title",
+              "Task.due",
+              "Task.completed",
+              "Task.tags"
             ],
             "requiredRoles": [
-              "settings-nav",
-              "settings-form",
-              "save-footer"
+              "editor-toolbar",
+              "canvas-viewport",
+              "inspector-panel"
             ],
             "optionalRoles": [
-              "avatar-uploader",
-              "2fa-toggle",
-              "danger-zone"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "group-auth",
-        "name": "Authentication",
-        "screens": [
-          {
-            "id": "screen-sign-in",
-            "name": "Sign In",
-            "slug": "/sign-in",
-            "screenType": "authentication",
-            "purpose": "User authentication with GitHub OAuth and session tokens.",
-            "jobs": [
-              "authenticate-user"
+              "layers-tree",
+              "version-history",
+              "status-bar"
             ],
-            "required": true,
-            "navigationVisibility": "hidden",
-            "importance": 80,
-            "expectedData": [
-              "authCredentials"
-            ],
-            "requiredRoles": [
-              "auth-card",
-              "auth-footer"
-            ],
-            "optionalRoles": [
-              "social-oauth-buttons",
-              "passkey-option",
-              "terms-disclaimer",
-              "brand-panel"
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
             ]
           }
         ]
@@ -459,211 +344,25 @@
     ],
     "edges": [
       {
-        "id": "edge-marketing-to-signin",
-        "fromScreenId": "screen-marketing-home",
-        "toScreenId": "screen-sign-in",
-        "label": "Start building / Sign in"
-      },
-      {
-        "id": "edge-signin-to-overview",
-        "fromScreenId": "screen-sign-in",
-        "toScreenId": "screen-overview",
-        "label": "Successful authentication"
-      },
-      {
-        "id": "edge-overview-to-collection",
+        "id": "edge-screen-overview-to-screen-workspace",
         "fromScreenId": "screen-overview",
-        "toScreenId": "screen-collection-index",
-        "label": "View all items"
+        "toScreenId": "screen-workspace",
+        "label": "Notes & Canvas"
       },
       {
-        "id": "edge-collection-to-detail",
-        "fromScreenId": "screen-collection-index",
-        "toScreenId": "screen-entity-detail",
-        "label": "Select item row"
+        "id": "edge-screen-overview-to-screen-calendar-schedule",
+        "fromScreenId": "screen-overview",
+        "toScreenId": "screen-calendar-schedule",
+        "label": "Calendar Schedule"
       }
     ]
   },
   "screens": [
     {
-      "id": "screen-marketing-home",
-      "screenNodeId": "screen-marketing-home",
-      "name": "Marketing Home",
-      "slug": "/",
-      "rootNode": {
-        "id": "root-screen-marketing-home",
-        "nodeType": "layout",
-        "semanticRole": "marketing-page",
-        "children": [
-          {
-            "id": "node-screen-marketing-home-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Task Workspace",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Task Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ],
-              "orientation": "horizontal"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-hero-2",
-            "nodeType": "section",
-            "semanticRole": "hero",
-            "resourceRef": {
-              "id": "res_sec_editorial_hero",
-              "slug": "editorial-hero",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "eyebrow": "Example organisation · sample content",
-              "headline": "Minimize friction between thought and capture, keeping daily tasks organized",
-              "subheadline": "A workspace for individuals, creators, and focused self-directed professionals. Minimize friction between thought and capture, keeping daily tasks organized.",
-              "primaryCta": {
-                "label": "Open workspace",
-                "href": "#screen-overview"
-              },
-              "secondaryCta": {
-                "label": "Browse records",
-                "href": "#screen-collection-index"
-              },
-              "note": "Example interface · replace sample data with your organisation"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-value-proposition-3",
-            "nodeType": "section",
-            "semanticRole": "value-proposition",
-            "resourceRef": {
-              "id": "res_sec_feature_bento",
-              "slug": "feature-bento",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "title": "Marketing Home",
-              "items": [
-                {
-                  "title": "Task",
-                  "description": "Actionable item with deadline and priority",
-                  "detail": "Example content"
-                },
-                {
-                  "title": "Note",
-                  "description": "Rich text thought or document",
-                  "detail": "Example content"
-                },
-                {
-                  "title": "ProjectList",
-                  "description": "Grouping container for related tasks and notes",
-                  "detail": "Example content"
-                }
-              ]
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-conversion-cta-4",
-            "nodeType": "section",
-            "semanticRole": "conversion-cta",
-            "resourceRef": {
-              "id": "res_sec_cta_minimal",
-              "slug": "cta-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "headline": "Minimize friction between thought and capture, keeping daily tasks organized",
-              "description": "A workspace for individuals, creators, and focused self-directed professionals. Minimize friction between thought and capture, keeping daily tasks organized.",
-              "label": "Continue onboarding",
-              "href": "#screen-overview"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-footer-5",
-            "nodeType": "section",
-            "semanticRole": "footer",
-            "resourceRef": {
-              "id": "res_sec_footer_product",
-              "slug": "footer-product",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Task Workspace",
-              "description": "A workspace for individuals, creators, and focused self-directed professionals. Minimize friction between thought and capture, keeping daily tasks organized.",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Task Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ]
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutFamily": "tri-column-intelligence"
-        }
-      }
-    },
-    {
       "id": "screen-overview",
       "screenNodeId": "screen-overview",
-      "name": "Overview Dashboard",
-      "slug": "/overview",
+      "name": "Today Agenda",
+      "slug": "/today-agenda",
       "rootNode": {
         "id": "root-screen-overview",
         "nodeType": "layout",
@@ -685,24 +384,16 @@
               "brand": "Task Workspace",
               "links": [
                 {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Overview Dashboard",
+                  "label": "Today Agenda",
                   "href": "#screen-overview"
                 },
                 {
-                  "label": "Workspace Canvas",
+                  "label": "Notes & Canvas",
                   "href": "#screen-workspace"
                 },
                 {
-                  "label": "Task Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
+                  "label": "Calendar Schedule",
+                  "href": "#screen-calendar-schedule"
                 }
               ],
               "orientation": "vertical"
@@ -726,8 +417,8 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Overview Dashboard",
-                  "subtitle": "Central operational telemetry, KPI scorecard, and high-priority action queue.",
+                  "title": "Today Agenda",
+                  "subtitle": "Focused view of immediate tasks and scheduled events",
                   "badge": "EXAMPLE",
                   "initials": "WS"
                 }
@@ -745,7 +436,7 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Overview Dashboard",
+                  "title": "Today Agenda",
                   "cards": [
                     {
                       "label": "Task",
@@ -778,7 +469,7 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Overview Dashboard",
+                  "title": "Today Agenda",
                   "events": [
                     {
                       "time": "Step 1",
@@ -809,8 +500,8 @@
     {
       "id": "screen-workspace",
       "screenNodeId": "screen-workspace",
-      "name": "Workspace Canvas",
-      "slug": "/workspace",
+      "name": "Notes & Canvas",
+      "slug": "/notes-and-canvas",
       "rootNode": {
         "id": "root-screen-workspace",
         "nodeType": "layout",
@@ -832,24 +523,16 @@
               "brand": "Task Workspace",
               "links": [
                 {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Overview Dashboard",
+                  "label": "Today Agenda",
                   "href": "#screen-overview"
                 },
                 {
-                  "label": "Workspace Canvas",
+                  "label": "Notes & Canvas",
                   "href": "#screen-workspace"
                 },
                 {
-                  "label": "Task Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
+                  "label": "Calendar Schedule",
+                  "href": "#screen-calendar-schedule"
                 }
               ],
               "orientation": "vertical"
@@ -876,24 +559,16 @@
                   "brand": "Task Workspace",
                   "links": [
                     {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Overview Dashboard",
+                      "label": "Today Agenda",
                       "href": "#screen-overview"
                     },
                     {
-                      "label": "Workspace Canvas",
+                      "label": "Notes & Canvas",
                       "href": "#screen-workspace"
                     },
                     {
-                      "label": "Task Directory",
-                      "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Settings & Preferences",
-                      "href": "#screen-settings"
+                      "label": "Calendar Schedule",
+                      "href": "#screen-calendar-schedule"
                     }
                   ]
                 }
@@ -911,7 +586,7 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Workspace Canvas",
+                  "title": "Notes & Canvas",
                   "columns": [
                     {
                       "title": "Press global hotkey, enter thought, and categorize",
@@ -945,8 +620,8 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Workspace Canvas",
-                  "subtitle": "Direct manipulation authoring canvas, multi-pane exploration, and active items.",
+                  "title": "Notes & Canvas",
+                  "subtitle": "Distraction-free Markdown editor",
                   "badge": "EXAMPLE",
                   "initials": "WS"
                 }
@@ -965,17 +640,17 @@
       }
     },
     {
-      "id": "screen-collection-index",
-      "screenNodeId": "screen-collection-index",
-      "name": "Task Directory",
-      "slug": "/tasks",
+      "id": "screen-calendar-schedule",
+      "screenNodeId": "screen-calendar-schedule",
+      "name": "Calendar Schedule",
+      "slug": "/calendar-schedule",
       "rootNode": {
-        "id": "root-screen-collection-index",
+        "id": "root-screen-calendar-schedule",
         "nodeType": "layout",
         "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "node-screen-collection-index-navigation-1",
+            "id": "node-screen-calendar-schedule-navigation-1",
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
@@ -990,220 +665,30 @@
               "brand": "Task Workspace",
               "links": [
                 {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Overview Dashboard",
+                  "label": "Today Agenda",
                   "href": "#screen-overview"
                 },
                 {
-                  "label": "Workspace Canvas",
+                  "label": "Notes & Canvas",
                   "href": "#screen-workspace"
                 },
                 {
-                  "label": "Task Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
+                  "label": "Calendar Schedule",
+                  "href": "#screen-calendar-schedule"
                 }
               ],
               "orientation": "vertical"
             }
           },
           {
-            "id": "container-screen-collection-index-canvas",
+            "id": "container-screen-calendar-schedule-canvas",
             "nodeType": "layout",
             "semanticRole": "workspace-multi-pane",
             "children": [
               {
-                "id": "node-screen-collection-index-index-header-2",
+                "id": "node-screen-calendar-schedule-editor-toolbar-2",
                 "nodeType": "section",
-                "semanticRole": "index-header",
-                "resourceRef": {
-                  "id": "res_blk_entity_profile_header",
-                  "slug": "entity-profile-header",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Task Directory",
-                  "subtitle": "Searchable, filterable catalog of all task records.",
-                  "badge": "EXAMPLE",
-                  "initials": "WS"
-                }
-              },
-              {
-                "id": "node-screen-collection-index-filter-bar-3",
-                "nodeType": "section",
-                "semanticRole": "filter-bar",
-                "resourceRef": {
-                  "id": "res_blk_filter_builder",
-                  "slug": "filter-builder",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {}
-              },
-              {
-                "id": "node-screen-collection-index-data-table-4",
-                "nodeType": "section",
-                "semanticRole": "data-table",
-                "resourceRef": {
-                  "id": "res_blk_advanced_data_table",
-                  "slug": "advanced-data-table",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Task Directory",
-                  "rows": [
-                    {
-                      "id": 1,
-                      "name": "Example Task",
-                      "type": "Actionable item with deadline and priority",
-                      "quality": 0,
-                      "status": "Sample"
-                    },
-                    {
-                      "id": 2,
-                      "name": "Example Note",
-                      "type": "Rich text thought or document",
-                      "quality": 0,
-                      "status": "Sample"
-                    },
-                    {
-                      "id": 3,
-                      "name": "Example ProjectList",
-                      "type": "Grouping container for related tasks and notes",
-                      "quality": 0,
-                      "status": "Sample"
-                    }
-                  ],
-                  "columnLabels": {
-                    "name": "Record",
-                    "type": "Context",
-                    "quality": "Progress",
-                    "status": "Status"
-                  }
-                }
-              },
-              {
-                "id": "node-screen-collection-index-pagination-5",
-                "nodeType": "section",
-                "semanticRole": "pagination",
-                "resourceRef": {
-                  "id": "res_primitive_button_01",
-                  "slug": "button",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "children": "Continue",
-                  "disabled": false,
-                  "title": "Task Directory"
-                }
-              }
-            ],
-            "slots": {},
-            "props": {
-              "layoutFamily": "tri-column-intelligence"
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutVariant": "split-dock"
-        }
-      }
-    },
-    {
-      "id": "screen-entity-detail",
-      "screenNodeId": "screen-entity-detail",
-      "name": "Task Detail",
-      "slug": "/tasks/:id",
-      "rootNode": {
-        "id": "root-screen-entity-detail",
-        "nodeType": "layout",
-        "semanticRole": "workspace-dock-shell",
-        "children": [
-          {
-            "id": "node-screen-entity-detail-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Task Workspace",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Task Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ],
-              "orientation": "vertical"
-            }
-          },
-          {
-            "id": "container-screen-entity-detail-canvas",
-            "nodeType": "layout",
-            "semanticRole": "workspace-multi-pane",
-            "children": [
-              {
-                "id": "node-screen-entity-detail-entity-header-2",
-                "nodeType": "section",
-                "semanticRole": "entity-header",
-                "resourceRef": {
-                  "id": "res_blk_entity_profile_header",
-                  "slug": "entity-profile-header",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Task Detail",
-                  "subtitle": "Deep inspection, metadata attributes, timeline, and actions for a single task.",
-                  "badge": "EXAMPLE",
-                  "initials": "WS"
-                }
-              },
-              {
-                "id": "node-screen-entity-detail-detail-tabs-3",
-                "nodeType": "section",
-                "semanticRole": "detail-tabs",
+                "semanticRole": "editor-toolbar",
                 "resourceRef": {
                   "id": "res_shell_minimal_top_nav",
                   "slug": "minimal-top-nav",
@@ -1216,77 +701,58 @@
                   "brand": "Task Workspace",
                   "links": [
                     {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Overview Dashboard",
+                      "label": "Today Agenda",
                       "href": "#screen-overview"
                     },
                     {
-                      "label": "Workspace Canvas",
+                      "label": "Notes & Canvas",
                       "href": "#screen-workspace"
                     },
                     {
-                      "label": "Task Directory",
-                      "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Settings & Preferences",
-                      "href": "#screen-settings"
+                      "label": "Calendar Schedule",
+                      "href": "#screen-calendar-schedule"
                     }
                   ]
                 }
               },
               {
-                "id": "node-screen-entity-detail-main-content-pane-4",
+                "id": "node-screen-calendar-schedule-canvas-viewport-3",
                 "nodeType": "section",
-                "semanticRole": "main-content-pane",
+                "semanticRole": "canvas-viewport",
                 "resourceRef": {
-                  "id": "res_blk_advanced_data_table",
-                  "slug": "advanced-data-table",
+                  "id": "res_blk_kanban_board",
+                  "slug": "kanban-board",
                   "version": "1.0.0"
                 },
                 "variant": "nocturne",
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Task Detail",
-                  "rows": [
+                  "title": "Calendar Schedule",
+                  "columns": [
                     {
-                      "id": 1,
-                      "name": "Example Task",
-                      "type": "Actionable item with deadline and priority",
-                      "quality": 0,
-                      "status": "Sample"
+                      "title": "Press global hotkey, enter thought, and categorize",
+                      "tasks": [
+                        "invoke-capture",
+                        "type-text",
+                        "save"
+                      ]
                     },
                     {
-                      "id": 2,
-                      "name": "Example Note",
-                      "type": "Rich text thought or document",
-                      "quality": 0,
-                      "status": "Sample"
-                    },
-                    {
-                      "id": 3,
-                      "name": "Example ProjectList",
-                      "type": "Grouping container for related tasks and notes",
-                      "quality": 0,
-                      "status": "Sample"
+                      "title": "Review today agenda and check off morning goals",
+                      "tasks": [
+                        "open-today",
+                        "reorder-priorities",
+                        "execute"
+                      ]
                     }
-                  ],
-                  "columnLabels": {
-                    "name": "Record",
-                    "type": "Context",
-                    "quality": "Progress",
-                    "status": "Status"
-                  }
+                  ]
                 }
               },
               {
-                "id": "node-screen-entity-detail-metadata-sidebar-5",
+                "id": "node-screen-calendar-schedule-inspector-panel-4",
                 "nodeType": "section",
-                "semanticRole": "metadata-sidebar",
+                "semanticRole": "inspector-panel",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
                   "slug": "entity-profile-header",
@@ -1296,219 +762,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Task Detail",
-                  "subtitle": "Deep inspection, metadata attributes, timeline, and actions for a single task.",
+                  "title": "Calendar Schedule",
+                  "subtitle": "Week and month grid view",
                   "badge": "EXAMPLE",
                   "initials": "WS"
-                }
-              }
-            ],
-            "slots": {},
-            "props": {
-              "layoutFamily": "tri-column-intelligence"
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutVariant": "split-dock"
-        }
-      }
-    },
-    {
-      "id": "screen-settings",
-      "screenNodeId": "screen-settings",
-      "name": "Settings & Preferences",
-      "slug": "/settings",
-      "rootNode": {
-        "id": "root-screen-settings",
-        "nodeType": "layout",
-        "semanticRole": "workspace-dock-shell",
-        "children": [
-          {
-            "id": "node-screen-settings-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Task Workspace",
-              "links": [
-                {
-                  "label": "Marketing Home",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Overview Dashboard",
-                  "href": "#screen-overview"
-                },
-                {
-                  "label": "Workspace Canvas",
-                  "href": "#screen-workspace"
-                },
-                {
-                  "label": "Task Directory",
-                  "href": "#screen-collection-index"
-                },
-                {
-                  "label": "Settings & Preferences",
-                  "href": "#screen-settings"
-                }
-              ],
-              "orientation": "vertical"
-            }
-          },
-          {
-            "id": "container-screen-settings-canvas",
-            "nodeType": "layout",
-            "semanticRole": "workspace-multi-pane",
-            "children": [
-              {
-                "id": "node-screen-settings-settings-nav-2",
-                "nodeType": "section",
-                "semanticRole": "settings-nav",
-                "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "brand": "Task Workspace",
-                  "links": [
-                    {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Overview Dashboard",
-                      "href": "#screen-overview"
-                    },
-                    {
-                      "label": "Workspace Canvas",
-                      "href": "#screen-workspace"
-                    },
-                    {
-                      "label": "Task Directory",
-                      "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Settings & Preferences",
-                      "href": "#screen-settings"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-settings-settings-form-3",
-                "nodeType": "section",
-                "semanticRole": "settings-form",
-                "resourceRef": {
-                  "id": "res_primitive_input",
-                  "slug": "input",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "label": "Notification preferences",
-                  "helperText": "Example field. Connect persistence and your backend in the exported application."
-                }
-              },
-              {
-                "id": "node-screen-settings-save-footer-4",
-                "nodeType": "section",
-                "semanticRole": "save-footer",
-                "resourceRef": {
-                  "id": "res_primitive_button_01",
-                  "slug": "button",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "children": "Save preferences",
-                  "disabled": true,
-                  "title": "Connect the exported application to your backend to enable this action."
-                }
-              }
-            ],
-            "slots": {},
-            "props": {
-              "layoutFamily": "tri-column-intelligence"
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutVariant": "split-dock"
-        },
-        "dnaOverrides": {
-          "professionalism": 96,
-          "playfulness": 8,
-          "curvature": 12,
-          "motion": 10
-        }
-      }
-    },
-    {
-      "id": "screen-sign-in",
-      "screenNodeId": "screen-sign-in",
-      "name": "Sign In",
-      "slug": "/sign-in",
-      "rootNode": {
-        "id": "root-screen-sign-in",
-        "nodeType": "layout",
-        "semanticRole": "workspace-dock-shell",
-        "children": [
-          {
-            "id": "node-screen-sign-in-auth-card-1",
-            "nodeType": "section",
-            "semanticRole": "auth-card",
-            "resourceRef": {
-              "id": "res_primitive_input",
-              "slug": "input",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "label": "Work email",
-              "helperText": "Example field. Connect persistence and your backend in the exported application."
-            }
-          },
-          {
-            "id": "container-screen-sign-in-canvas",
-            "nodeType": "layout",
-            "semanticRole": "workspace-multi-pane",
-            "children": [
-              {
-                "id": "node-screen-sign-in-auth-footer-2",
-                "nodeType": "section",
-                "semanticRole": "auth-footer",
-                "resourceRef": {
-                  "id": "res_primitive_button_01",
-                  "slug": "button",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "children": "Authentication backend required",
-                  "disabled": true,
-                  "title": "Connect the exported application to your backend to enable this action."
                 }
               }
             ],
@@ -1529,34 +786,19 @@
     "model": "rail",
     "primaryItems": [
       {
-        "label": "Marketing Home",
-        "targetScreenId": "screen-marketing-home"
-      },
-      {
-        "label": "Overview Dashboard",
+        "label": "Today Agenda",
         "targetScreenId": "screen-overview"
       },
       {
-        "label": "Workspace Canvas",
+        "label": "Notes & Canvas",
         "targetScreenId": "screen-workspace"
       },
       {
-        "label": "Task Directory",
-        "targetScreenId": "screen-collection-index"
-      },
-      {
-        "label": "Task Detail",
-        "targetScreenId": "screen-entity-detail"
-      },
-      {
-        "label": "Settings & Preferences",
-        "targetScreenId": "screen-settings"
-      },
-      {
-        "label": "Sign In",
-        "targetScreenId": "screen-sign-in"
+        "label": "Calendar Schedule",
+        "targetScreenId": "screen-calendar-schedule"
       }
-    ]
+    ],
+    "secondaryItems": []
   },
   "assets": [],
   "locks": [],

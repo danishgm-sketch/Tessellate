@@ -97,6 +97,46 @@ describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
     }
   });
 
+  it('composes checkout screens with real Gold resources and disables unsupported payment submission truthfully', () => {
+    const result = composeProjectPipeline(
+      {
+        description: 'A direct-to-consumer ecommerce store with a product catalogue and checkout.',
+        archetypeOverride: 'ecommerce',
+      },
+      { catalogResources: loadTestCatalog(), seed: 'checkout-role-compatibility' }
+    );
+    const checkout = result.directionA.manifest.screens.find((screen) => screen.name === 'Checkout');
+    expect(checkout).toBeDefined();
+
+    const nodes = [checkout!.rootNode];
+    const allNodes = [] as typeof nodes;
+    while (nodes.length > 0) {
+      const node = nodes.pop()!;
+      allNodes.push(node);
+      nodes.push(...node.children);
+    }
+    const orderSummary = allNodes.find((node) => node.semanticRole === 'order-summary');
+    const paymentFields = allNodes.find((node) => node.semanticRole === 'payment-fields');
+    const submitButton = allNodes.find((node) => node.semanticRole === 'submit-button');
+
+    expect(orderSummary?.resourceRef?.slug).toBe('advanced-data-table');
+    expect(paymentFields?.resourceRef?.slug).toBe('input');
+    expect(paymentFields?.props).toMatchObject({
+      disabled: true,
+      helperText: expect.stringContaining('does not collect or store payment details'),
+    });
+    expect(submitButton?.resourceRef?.slug).toBe('button');
+    expect(submitButton?.props).toMatchObject({
+      disabled: true,
+      title: expect.stringContaining('Connect a payment provider'),
+    });
+    expect(result.directionA.diagnostics).toEqual([]);
+    expect(
+      result.productModel.likelyScreens.find((screen) => screen.name === 'Order Confirmation')
+        ?.screenType
+    ).toBe('detail-entity');
+  });
+
   it('Acceptance Test 4: Composing HR app and selecting Direction C yields exact matching manifest', () => {
     // 1. Compose a professional/playful HR application
     const hrBrief = {
@@ -120,6 +160,17 @@ describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
     expect(expectedManifest.designDNA.structuralCreativity).toBeGreaterThan(60);
     expect(expectedManifest.screens.length).toBeGreaterThan(0);
     expect(expectedManifest.navigation.model).toBe(directionCOutput.direction.navigationModel);
+
+    const graphScreens = pipelineResult.screenGraph.groups.flatMap((group) => group.screens);
+    expect(expectedManifest.navigation.primaryItems.map((item) => item.targetScreenId)).toEqual(
+      graphScreens.filter((screen) => screen.navigationVisibility === 'primary').map((screen) => screen.id)
+    );
+    expect(expectedManifest.navigation.secondaryItems?.map((item) => item.targetScreenId)).toEqual(
+      graphScreens.filter((screen) => screen.navigationVisibility === 'secondary').map((screen) => screen.id)
+    );
+    expect(expectedManifest.navigation.primaryItems.some((item) =>
+      graphScreens.some((screen) => screen.id === item.targetScreenId && screen.navigationVisibility === 'hidden')
+    )).toBe(false);
 
     // 4. Assert all screens have valid instantiated nodes and real resource refs
     for (const screen of expectedManifest.screens) {

@@ -242,6 +242,18 @@ describe('Tessellate Canonical Schemas', () => {
       }).success).toBe(false);
     });
 
+    it('rejects duplicate routes within a screen graph', () => {
+      const graph = structuredClone(validProjectFixture.screenGraph);
+      const firstGroup = graph.groups[0]!;
+      firstGroup.screens.push({
+        ...structuredClone(firstGroup.screens[0]!),
+        id: 'screen-duplicate-route',
+        name: 'Duplicate route',
+      });
+
+      expect(ScreenGraphSchema.safeParse(graph).success).toBe(false);
+    });
+
     it('round-trips JSON serialization faithfully', () => {
       expect(ScreenGraphSchema.parse(JSON.parse(JSON.stringify(validProjectFixture.screenGraph))))
         .toEqual(validProjectFixture.screenGraph);

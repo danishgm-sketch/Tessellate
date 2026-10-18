@@ -75,6 +75,38 @@ describe('Semantic Token Contract & Normalisation', () => {
 });
 
 describe('NodeRenderer & Responsive Strategy', () => {
+  it('renders a domain-specific table value without exposing the unrelated quality score', () => {
+    const orderSummaryNode: ProjectNode = {
+      id: 'node_order_summary',
+      nodeType: 'component',
+      semanticRole: 'order-summary',
+      resourceRef: {
+        id: 'res_blk_advanced_data_table',
+        slug: 'advanced-data-table',
+        version: '1.0.0',
+      },
+      props: {
+        title: 'Order summary · example',
+        columnLabels: { name: 'Item', type: 'Details', quality: 'Price', status: 'State' },
+        rows: [{
+          id: 1,
+          name: 'Example Product',
+          type: 'Sample cart item',
+          quality: 0,
+          displayValue: 'Price from your catalogue',
+          status: 'Example',
+        }],
+      },
+      slots: {},
+      children: [],
+    };
+
+    const html = renderToString(<NodeRenderer node={orderSummaryNode} />);
+
+    expect(html).toContain('Price from your catalogue');
+    expect(html).not.toContain('0/100');
+  });
+
   it('renders a canonical button resource node with variant', () => {
     const buttonNode: ProjectNode = {
       id: 'node_btn_1',
