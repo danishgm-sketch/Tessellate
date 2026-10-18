@@ -204,6 +204,14 @@ export function composeProjectForDirection(
     const screenRoles = [...new Set(screenNode.requiredRoles ?? [])];
     if (productModel.entities.some(entity=>entity.name==='Employee') && screenNode.screenType==='dashboard' && !screenRoles.includes('data-table')) screenRoles.push('data-table');
     if (!screenRoles.includes('navigation') && screenNode.screenType!=='authentication') screenRoles.unshift('navigation');
+    if (direction.type === 'structural-alternative') {
+      const activityIndex = screenRoles.indexOf('activity-feed');
+      const tableIndex = screenRoles.indexOf('data-table');
+      if (activityIndex >= 0 && tableIndex > activityIndex) {
+        screenRoles.splice(tableIndex, 1);
+        screenRoles.splice(activityIndex, 0, 'data-table');
+      }
+    }
     if (screenRoles.length === 0) {
       screenRoles.push('navigation', 'header', 'content-grid', 'footer');
     }
@@ -213,11 +221,26 @@ export function composeProjectForDirection(
 
     for (let i = 0; i < screenRoles.length; i++) {
       const role = screenRoles[i]!;
+      let roleCatalog = catalog;
+      if (role === 'navigation') {
+        const navigationSlug = screenNode.screenType !== 'marketing' && direction.navigationModel === 'sidebar'
+          ? 'collapsible-sidebar'
+          : 'minimal-top-nav';
+        roleCatalog = catalog.filter((resource) => resource.slug === navigationSlug);
+      } else if (
+        role === 'activity-feed' &&
+        direction.type === 'structural-alternative' &&
+        catalog.some((resource) => resource.slug === 'timeline')
+      ) {
+        // The C direction's companion pane is a chronological stream, not a wide
+        // notification panel; fall back to ordinary role scoring if absent.
+        roleCatalog = catalog.filter((resource) => resource.slug === 'timeline');
+      }
       const { resource, ref, diagnostic } = resolveBestResourceForRole(
         role,
         direction.dna,
         grammar,
-        role==='navigation' ? catalog.filter(resource=>resource.slug === (screenNode.screenType!=='marketing' && direction.navigationModel==='sidebar' ? 'collapsible-sidebar' : 'minimal-top-nav')) : catalog,
+        roleCatalog,
         productModel,
         surroundingForScreen
       );

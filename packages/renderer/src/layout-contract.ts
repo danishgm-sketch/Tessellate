@@ -28,6 +28,7 @@ export const MANIFEST_LAYOUT_CSS = `
  .tess-layout-workspace-multi-pane,.tess-layout-grid-dashboard-container,.tess-layout-compound-workspace-pane{grid-template-columns:minmax(0,2fr) minmax(0,1fr)}
  .tess-layout-workspace-multi-pane>.tess-layout-overview-header,.tess-layout-workspace-multi-pane>.tess-layout-metric-cards{grid-column:1/-1}
  .tess-layout-workspace-multi-pane>.tess-layout-data-table{grid-column:1}
+ .tess-layout-workspace-multi-pane>.tess-layout-activity-feed{grid-column:2}
  .tess-layout-workspace-multi-pane>.tess-layout-compound-workspace-pane,.tess-layout-workspace-multi-pane>.tess-layout-split-workspace-columns{grid-column:1/-1}
  .tess-layout-compound-workspace-pane{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
  .tess-layout-sidebar-shell>.tess-layout-navigation nav,.tess-layout-workspace-dock-shell>.tess-layout-navigation nav{flex-direction:column}
