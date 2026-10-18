@@ -5,6 +5,98 @@ import * as path from 'node:path';
 const employeeBrief =
   'Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.';
 
+test('employee dashboard marks unavailable metrics with a neutral status tone', async ({
+  page,
+  isMobile,
+}) => {
+  test.setTimeout(90000);
+  const viewportLabel = isMobile ? 'mobile' : 'desktop';
+  const evidenceDir = path.resolve(process.cwd(), 'quality/evidence/step-14/manual-review');
+  const consoleErrors: string[] = [];
+  const uncaught: string[] = [];
+  const failedRequests: string[] = [];
+  const httpErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => uncaught.push(error.message));
+  page.on('requestfailed', (request) => failedRequests.push(request.url()));
+  page.on('response', (response) => {
+    if (response.status() >= 400) httpErrors.push(`${response.status()} ${response.url()}`);
+  });
+
+  await page.goto('/compose');
+  await expect(page.locator('[data-testid="catalog-status"]')).toContainText('Catalogue ready', {
+    timeout: 15000,
+  });
+  await page.locator('textarea#description').fill(employeeBrief);
+  const submit = page.locator('[data-testid="compose-submit-btn"]');
+  await expect(submit).toBeEnabled();
+  await submit.click();
+
+  const reviewed: Array<Record<string, unknown>> = [];
+  for (const number of ['01', '02', '03']) {
+    const card = page.locator(`[data-testid="direction-card-${number}"]`);
+    await expect(card).toBeVisible();
+    await card.getByRole('button', { name: 'Inspect full preview and DNA' }).click();
+    const dialog = page.getByRole('dialog', { name: new RegExp(`Direction ${number}`) });
+    await expect(dialog).toBeVisible();
+    await dialog.getByLabel('Direction preview screen').selectOption({ label: 'Team Overview' });
+    const canvas = dialog.locator('.tess-screen');
+    const unavailable = canvas.getByText('No connected data', { exact: true });
+    await expect(unavailable).toHaveCount(2);
+
+    const beforePath = path.join(
+      evidenceDir,
+      'before',
+      `aud-133-unavailable-kpi-success-tone-${viewportLabel}.png`
+    );
+    fs.mkdirSync(path.dirname(beforePath), { recursive: true });
+    if (!fs.existsSync(beforePath)) {
+      await dialog.screenshot({ path: beforePath, animations: 'disabled' });
+    }
+
+    const badgeClasses = await unavailable.evaluateAll((elements) =>
+      elements.map((element) => element.className)
+    );
+    expect(
+      badgeClasses.join(' '),
+      'metrics without connected data must not use the success-green status treatment'
+    ).not.toMatch(/(?:bg|text)-emerald/);
+
+    const afterPath = path.join(
+      evidenceDir,
+      'after',
+      `aud-133-unavailable-kpi-neutral-tone-${viewportLabel}.png`
+    );
+    fs.mkdirSync(path.dirname(afterPath), { recursive: true });
+    await dialog.screenshot({ path: afterPath, animations: 'disabled' });
+    reviewed.push({ direction: number, unavailableMetricCount: await unavailable.count(), badgeClasses });
+    await dialog.getByRole('button', { name: 'Close dialog' }).click();
+  }
+
+  const runtimeReport = {
+    url: page.url(),
+    viewport: page.viewportSize(),
+    status: 'passed',
+    reviewed,
+    consoleErrors,
+    uncaught,
+    failedRequests,
+    httpErrors,
+  };
+  fs.writeFileSync(
+    path.join(evidenceDir, 'after', `aud-133-runtime-${viewportLabel}.json`),
+    `${JSON.stringify(runtimeReport, null, 2)}\n`
+  );
+  expect({ consoleErrors, uncaught, failedRequests, httpErrors }).toEqual({
+    consoleErrors: [],
+    uncaught: [],
+    failedRequests: [],
+    httpErrors: [],
+  });
+});
+
 test('flagship directions use distinct rendered structures and a real three-pane dashboard', async ({
   page,
   isMobile,

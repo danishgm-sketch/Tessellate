@@ -50,9 +50,10 @@ export function DashboardKpiGrid({
       ) : (
         <div className="grid grid-cols-1 @sm:grid-cols-2 @lg:grid-cols-3 gap-4">
           {cards.map((c) => {
-            const isUnavailable = /not connected|illustrative only|example|sample|awaiting/i.test(
-              c.status
-            );
+            const isUnavailable =
+              /no connected data|not connected|not configured|not available|no data|unavailable|illustrative only|example|sample|awaiting/i.test(
+                c.status
+              );
             const statusTone = isUnavailable
               ? variant === 'nocturne'
                 ? 'bg-neutral-700/50 text-neutral-300'
