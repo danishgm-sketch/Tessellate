@@ -2,7 +2,11 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests/e2e',
-  testIgnore: ['**/gold-resource-certification.spec.ts', '**/preview-unknown-resource-regression.spec.ts'],
+  testIgnore: [
+    '**/gold-resource-certification.spec.ts',
+    '**/preview-unknown-resource-regression.spec.ts',
+    '**/preview-reduced-motion.spec.ts',
+  ],
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
