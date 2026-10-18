@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync } from 'node:fs';
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { expect, test } from '@playwright/test';
 
@@ -44,6 +44,72 @@ test('Select retains the chosen option in the live preview', async ({ page }) =>
 
   await expect(select).toHaveValue('second');
   await page.screenshot({ path: path.join(afterDir, 'select-retains-choice-1440.png'), animations: 'disabled' });
+});
+
+test('Filter Builder adds editable conditions and removes them without inserting unrelated rules', async ({ page }) => {
+  const evidenceDir = path.resolve(process.cwd(), 'quality/evidence/step-14/manual-review/after');
+  mkdirSync(evidenceDir, { recursive: true });
+  const consoleErrors: string[] = [];
+  const uncaught: string[] = [];
+  const failedRequests: string[] = [];
+  const httpErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => uncaught.push(error.message));
+  page.on('requestfailed', (request) => failedRequests.push(request.url()));
+  page.on('response', (response) => {
+    if (response.status() >= 400) httpErrors.push(`${response.status()} ${response.url()}`);
+  });
+  await page.goto('/resources/filter-builder/', { waitUntil: 'domcontentloaded' });
+  const preview = page.frameLocator('iframe[title$=" live preview"]');
+
+  await preview.getByRole('button', { name: /Add Condition/i }).click();
+  const field = preview.getByRole('combobox', { name: 'Field 1' });
+  await expect(field).toBeVisible();
+  await field.selectOption('status');
+  await preview.getByRole('combobox', { name: 'Operator 1' }).selectOption('equals');
+  await preview.getByRole('textbox', { name: 'Value 1' }).fill('available');
+  await expect(preview.getByText('Status equals available')).toBeVisible();
+  const desktopScreenshot = 'aud-128-filter-builder-editable-desktop.png';
+  await page.screenshot({ path: path.join(evidenceDir, desktopScreenshot), animations: 'disabled' });
+
+  await preview.getByRole('button', { name: /Add Condition/i }).click();
+  await expect(preview.getByRole('combobox', { name: 'Field 2' })).toBeVisible();
+  await preview.getByRole('button', { name: 'Remove condition 1' }).click();
+  await expect(preview.getByRole('combobox', { name: 'Field 1' })).toBeVisible();
+  await expect(preview.getByRole('combobox', { name: 'Field 2' })).toHaveCount(0);
+  await preview.getByRole('combobox', { name: 'Field 1' }).selectOption('location');
+  await preview.getByRole('textbox', { name: 'Value 1' }).fill('London');
+  await expect(preview.getByText('Location contains London')).toBeVisible();
+  await expect(preview.getByText(/Example rules only/i)).toBeVisible();
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(preview.getByRole('combobox', { name: 'Field 1' })).toBeVisible();
+  const previewWidth = await preview.locator('body').evaluate((body) => {
+    const documentElement = body.ownerDocument.documentElement;
+    return { viewport: documentElement.clientWidth, content: documentElement.scrollWidth };
+  });
+  expect(previewWidth.content).toBeLessThanOrEqual(previewWidth.viewport);
+  await expect(preview.getByText('Location contains London')).toBeVisible();
+  const mobileScreenshot = 'aud-128-filter-builder-editable-mobile.png';
+  await page.screenshot({ path: path.join(evidenceDir, mobileScreenshot), animations: 'disabled' });
+  const runtime = {
+    url: page.url(),
+    viewports: ['1440x900', '390x844'],
+    desktopScreenshot,
+    mobileScreenshot,
+    interaction: ['add condition', 'select field/operator/value', 'remove condition', 'edit remaining condition'],
+    consoleErrors,
+    uncaught,
+    failedRequests,
+    httpErrors,
+  };
+  writeFileSync(path.join(evidenceDir, 'aud-128-filter-builder-runtime.json'), `${JSON.stringify(runtime, null, 2)}\n`);
+  expect(consoleErrors).toEqual([]);
+  expect(uncaught).toEqual([]);
+  expect(failedRequests).toEqual([]);
+  expect(httpErrors).toEqual([]);
 });
 
 test('form-control focus does not announce a generic action', async ({ page }) => {

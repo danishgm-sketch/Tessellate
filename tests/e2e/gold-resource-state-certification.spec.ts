@@ -96,19 +96,21 @@ test('Gold data resources handle empty states, large datasets, long content, and
     status: 'active',
   }));
   await updatePreviewProps(tableIframe, { rows });
-  await expect(table.locator('tbody tr')).toHaveCount(100);
-  await expect(table.getByText(longName, { exact: true })).toBeVisible();
+  const mobileRows = table.getByTestId('advanced-data-table-mobile-record');
+  await expect(mobileRows).toHaveCount(100);
+  await expect(mobileRows.nth(99).getByRole('heading', { name: longName, exact: true })).toBeVisible();
   const tableDimensions = await table
     .locator('html')
     .evaluate((html) => ({ clientWidth: html.clientWidth, scrollWidth: html.scrollWidth }));
   expect(tableDimensions.scrollWidth).toBeLessThanOrEqual(tableDimensions.clientWidth + 2);
-  const firstCheckbox = table.getByRole('checkbox', { name: 'Select employee-001' });
+  const firstCheckbox = mobileRows.nth(0).getByRole('checkbox', { name: 'Select employee-001' });
   await firstCheckbox.press('Space');
   await expect(firstCheckbox).toBeChecked();
   await table.getByRole('textbox', { name: 'Filter People directory' }).fill('employee-099');
-  await expect(table.locator('tbody tr')).toHaveCount(1);
-  await expect(table.getByText('employee-099', { exact: true })).toBeVisible();
+  await expect(mobileRows).toHaveCount(1);
+  await expect(mobileRows.getByRole('heading', { name: 'employee-099', exact: true })).toBeVisible();
   await table.getByRole('textbox', { name: 'Filter People directory' }).fill('no-matching-person');
+  await expect(mobileRows).toHaveCount(0);
   await expect(table.getByRole('status')).toHaveText('No records match this filter.');
   await table.getByRole('textbox', { name: 'Filter People directory' }).fill('employee-099');
   const tableLargeScreenshot = path.join(evidenceDir, 'advanced-data-table-large-360.png');

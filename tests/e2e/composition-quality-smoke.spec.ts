@@ -913,6 +913,163 @@ test('returns portal brief composes order lookup, return request, and refund sta
   expect(httpErrors).toEqual([]);
 });
 
+test('real-estate and travel directions use truthful, domain-fit content', async ({ page, isMobile }) => {
+  test.setTimeout(120000);
+  const viewportLabel = isMobile ? 'mobile' : 'desktop';
+  const evidenceDir = path.resolve(process.cwd(), 'quality/evidence/step-14/manual-review/after');
+  fs.mkdirSync(evidenceDir, { recursive: true });
+
+  const consoleErrors: string[] = [];
+  const uncaught: string[] = [];
+  const failedRequests: string[] = [];
+  const httpErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => uncaught.push(error.message));
+  page.on('requestfailed', (request) => failedRequests.push(request.url()));
+  page.on('response', (response) => {
+    if (response.status() >= 400) httpErrors.push(`${response.status()} ${response.url()}`);
+  });
+
+  const domainCases = [
+    {
+      id: 'MKT-01-SEARCH',
+      brief:
+        'A freelance services marketplace connects independent designers with clients, supports profile discovery, project proposals, messaging, and mutual reviews.',
+      screen: 'Explore Listings',
+    },
+    {
+      id: 'REA-01',
+      brief:
+        'A home-search service helps buyers compare neighborhoods, filter available properties, save favorites, and arrange a viewing with an agent.',
+      screen: 'Property Search',
+    },
+    {
+      id: 'TRV-01',
+      brief:
+        'A trip-planning service helps travelers compare destinations, save places, coordinate dates, and keep a shared itinerary.',
+      screen: 'Destination Showcase',
+    },
+  ];
+  const reviewed: Array<Record<string, unknown>> = [];
+
+  for (const item of domainCases) {
+    await page.goto('/compose');
+    await expect(page.locator('[data-testid="catalog-status"]')).toContainText('Catalogue ready', {
+      timeout: 15000,
+    });
+    await page.locator('textarea#description').fill(item.brief);
+    const submit = page.locator('[data-testid="compose-submit-btn"]');
+    await expect(submit).toBeEnabled();
+    await submit.click();
+
+    for (const number of ['01', '02', '03']) {
+      const card = page.locator(`[data-testid="direction-card-${number}"]`);
+      await expect(card).toBeVisible();
+      await expect(card.locator(`[data-testid="direction-preview-${number}"] [data-testid="missing-resource-recovery"]`)).toHaveCount(0);
+      await expect(card.locator(`[data-testid="direction-preview-${number}"] [data-testid="unresolved-required-role-diagnostic"]`)).toHaveCount(0);
+      await card.getByRole('button', { name: 'Inspect full preview and DNA' }).click();
+
+      const dialog = page.getByRole('dialog', { name: new RegExp(`Direction ${number}`) });
+      await expect(dialog).toBeVisible();
+      const screenSelect = dialog.getByLabel('Direction preview screen');
+      await screenSelect.selectOption({ label: item.screen });
+      const canvas = dialog.locator('.tess-screen');
+      await expect(canvas.locator('[data-semantic-role]')).not.toHaveCount(0);
+      const visibleCopy = await canvas.innerText();
+      const screenshot = `${item.id.toLowerCase()}-direction-${number}-${viewportLabel}.png`;
+      await dialog.screenshot({ path: path.join(evidenceDir, screenshot) });
+
+      const details = dialog
+        .locator('details')
+        .filter({ hasText: 'Design DNA and resource references' });
+      await details.locator('summary').click();
+      const manifest = JSON.parse(await details.locator('pre').innerText()) as {
+        diagnostics: unknown[];
+        screens: Array<{ name: string; rootNode: AuditNode }>;
+      };
+      expect(manifest.diagnostics).toEqual([]);
+      const selectedScreen = manifest.screens.find((screen) => screen.name === item.screen);
+      expect(selectedScreen).toBeDefined();
+      const nodes = selectedScreen ? collectNodes(selectedScreen.rootNode) : [];
+      const resources = nodes.flatMap((node) => (node.resourceRef ? [node.resourceRef.slug] : []));
+
+      if (item.id === 'MKT-01-SEARCH') {
+        const searchInput = nodes.find((node) => node.semanticRole === 'search-header');
+        const results = nodes.find((node) => node.semanticRole === 'results-grid');
+        expect(searchInput?.props.label).toBe('Search listings');
+        expect(results?.resourceRef?.slug).toBe('advanced-data-table');
+        expect(results?.props.title).toBe('Available listings');
+        expect(visibleCopy).toContain('Search listings');
+        expect(visibleCopy).toContain('Example listing A');
+        expect(visibleCopy).toContain('Availability not connected');
+        expect(visibleCopy).not.toContain('Continue onboarding');
+        expect(visibleCopy.toLowerCase()).not.toMatch(/proposal|review|0\/100/);
+        expect(visibleCopy).not.toContain(
+          'Example field. Connect persistence and your backend in the exported application.'
+        );
+        if (isMobile) {
+          const mobileRecords = canvas.locator('[data-testid="advanced-data-table-mobile-record"]');
+          await expect(mobileRecords).toHaveCount(3);
+          await expect(mobileRecords.first()).toContainText('Example listing A');
+          await expect(mobileRecords.first()).toContainText('Availability not connected');
+          await expect(canvas.locator('[data-testid="advanced-data-table-scroll"]')).toBeHidden();
+          await expect(mobileRecords.first().locator('dd').nth(1)).toHaveClass(/text-neutral-(300|600)/);
+          expect(
+            await mobileRecords.first().evaluate((element) => element.scrollWidth <= element.clientWidth)
+          ).toBe(true);
+        } else {
+          await expect(canvas.getByText('Availability not connected', { exact: true }).first()).toHaveClass(/text-neutral-(300|600)/);
+        }
+      } else if (item.id === 'REA-01') {
+        const searchInput = nodes.find((node) => node.semanticRole === 'search-header');
+        const results = nodes.find((node) => node.semanticRole === 'results-grid');
+        expect(searchInput?.props.label).toBe('Search property listings');
+        expect(results?.resourceRef?.slug).toBe('advanced-data-table');
+        expect(results?.props.title).toBe('Available property listings');
+        expect(visibleCopy).toContain('Search property listings');
+        expect(visibleCopy).toContain('Example property A');
+        expect(visibleCopy).toContain('Price not connected');
+        expect(visibleCopy).not.toContain('Search & Map Explorer');
+        expect(visibleCopy.toLowerCase()).not.toMatch(/latency|telemetry|portfolio/);
+      } else {
+        const hero = nodes.find((node) => node.semanticRole === 'hero');
+        expect(typeof hero?.props.headline).toBe('string');
+        expect(typeof hero?.props.subheadline).toBe('string');
+        expect(hero?.props.subheadline).not.toContain(
+          'Inspire destination discovery and provide seamless, transparent booking itineraries'
+        );
+        expect(visibleCopy).not.toContain(
+          'Inspire destination discovery and provide seamless, transparent booking itineraries.'
+        );
+      }
+
+      reviewed.push({
+        id: item.id,
+        direction: number,
+        route: page.url(),
+        viewport: page.viewportSize(),
+        screen: item.screen,
+        resources,
+        diagnostics: manifest.diagnostics,
+        screenshot,
+      });
+      await dialog.getByRole('button', { name: 'Close dialog' }).click();
+    }
+  }
+
+  const runtime = { route: page.url(), viewport: page.viewportSize(), reviewed, consoleErrors, uncaught, failedRequests, httpErrors };
+  fs.writeFileSync(
+    path.join(evidenceDir, `domain-content-runtime-${viewportLabel}.json`),
+    `${JSON.stringify(runtime, null, 2)}\n`
+  );
+  expect(consoleErrors).toEqual([]);
+  expect(uncaught).toEqual([]);
+  expect(failedRequests).toEqual([]);
+  expect(httpErrors).toEqual([]);
+});
+
 interface AuditNode {
   semanticRole: string;
   resourceRef?: { slug: string };
