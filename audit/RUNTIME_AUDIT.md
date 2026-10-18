@@ -3,18 +3,27 @@
 This audit combines public route inspections and real-browser checks of the
 deployed Astro/React Site, Workbench, Sites Worker boundary, and clean standalone
 exports. Site v11 verified the exact employee-experience brief from Compose to
-Direction C in Workbench at desktop and mobile widths. Site v13 verified the
-Reduced Motion toolbar state; Site v14 verifies the toolbar and Replay Entrance
-together. Historic route and flagship captures remain under
+Direction C in Workbench at desktop and mobile widths; Site v14 reran that visible
+Compose-to-Direction-C smoke at the same widths. Site v13 verified the Reduced
+Motion toolbar state; Site v14 verifies the toolbar and Replay Entrance together.
+Historic route and flagship captures remain under
 [`evidence/public-site-v10`](evidence/public-site-v10) and
 [`evidence/public-site-v11`](evidence/public-site-v11). The latest targeted
 captures are under `evidence/step-07/deployed-v13-after-fix/`,
 `evidence/step-07/deployed-v13-replay-failure/`, and
-`evidence/step-07/deployed-v14-after-fix/`. Machine-readable findings and status
+`evidence/step-07/deployed-v14-after-fix/`, and `evidence/deployed-v14-flagship/`. Machine-readable findings and status
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 86 findings (17 High, 68 Medium, 1 Low): 5 closed after deployed verification, 79 fixed and awaiting issue-specific deployed checks, AUD-085 fixed and verified in the separate Vite preview runtime, and AUD-080 open for ordered Step 12. Site v11 ran the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as `image/svg+xml`, and the unknown-resource route exposed one assertive alert without a substitute or controls. Compose and Workbench had zero horizontal overflow at 390px; both viewports reported zero browser errors or failed essential requests. The v11 audit also found AUD-082 (the exported nine-screen selector wrapped into three rows at 390px) and AUD-083 (Fade-Up Replay Entrance reversed after 50 ms, before its 300–700 ms transition completed); local regressions pass, but their own deployed rechecks remain pending. Site v12 reproduced AUD-084; Site v13 confirms the control sets transition and animation duration to 0s while ON and restores 0.3s while OFF. A race in the first v13 audit sampled before iframe reload completed; the corrected harness waits for the computed style and root state. That audit exposed AUD-086: Replay still hid the card while Reduced Motion was on. The fix is on Site v14, where Replay now keeps opacity at 1 and announces that motion was skipped. Both deployed runs loaded the 324-resource catalogue and recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors; the mobile route had no overflow. The separate Vite preview app also omitted resource utility classes (AUD-085); its before/after captures show the layout correction, and its production CSS grew from 34.75 kB to 149.42 kB to include existing resource styles. Local validation for canonical commit `32803eb15d72b4020fe6aec90e9b587e2f7812fb` passed: 85 main-browser tests (53 project-scoped skips), 26 Sites Worker tests, 3 preview-app tests, 622 unit/integration tests, lint with zero errors and 51 configured warnings, and all 16 `pnpm audit:all` gates plus build, bundle, provenance, and security audits. GitHub CI for that commit is still running. The production build created 717 Astro pages. Public Site v14 is based on Sites source commit `7323e8e9edfb6e07c5485c9d19ff37a8ca8043f5`; its canonical code source is GitHub commit `32803eb15d72b4020fe6aec90e9b587e2f7812fb`.
+**Current disposition:** 86 findings (17 High, 68 Medium, 1 Low): 13 closed after deployed verification, 71 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080 open.
+
+The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
+
+The v11 audit found AUD-082 (the exported nine-screen selector wrapped into three rows at 390px) and AUD-083 (Fade-Up Replay Entrance reversed after 50 ms, before its 300–700 ms transition completed). Site v14 closes AUD-082: the exported nine-screen project was downloaded through the public Workbench, validated against the canonical manifest schema, installed and built outside the repo, then opened in a real browser at desktop and mobile sizes. All nine selector buttons stayed in one row, screen switches worked, and there were zero browser/network errors. Site v14 also closes AUD-083: a 40-sample replay trace reached opacity 0 at 310 ms for four samples and finished at opacity 1.
+
+Site v12 reproduced AUD-084; Site v13 confirms the Reduced Motion toggle sets transition and animation duration to 0s while ON and restores 0.3s while OFF. A race in the first v13 audit sampled before iframe reload completed; the corrected harness waits for computed styles and root state. That recheck exposed AUD-086: Replay still hid the card while Reduced Motion was on. Site v14 now keeps opacity at 1 and announces that motion was skipped. The v13/v14 resource-page runs loaded the 324-resource catalogue and recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors; the mobile route had no overflow.
+
+The separate Vite preview app also omitted resource utility classes (AUD-085); its before/after captures show the layout correction, and its production CSS grew from 34.75 kB to 149.42 kB to include existing resource styles. Local validation for canonical code commit 32803eb15d72b4020fe6aec90e9b587e2f7812fb passed: 85 main-browser tests (53 project-scoped skips), 26 Sites Worker tests, 3 preview-app tests, 622 unit/integration tests, lint with zero errors and 51 configured warnings, and all 16 pnpm audit:all gates plus build, bundle, provenance, and security audits. GitHub CI for that code commit passed. The production build created 717 Astro pages. Public Site v14 is based on Sites source commit 7323e8e9edfb6e07c5485c9d19ff37a8ca8043f5; its canonical code source is GitHub commit 32803eb15d72b4020fe6aec90e9b587e2f7812fb.
 
 At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile browser tests passed, 51 tests were explicitly skipped by project scope, and all 23 Sites Worker tests passed. It included the expanded state and action regressions. The 11-case state matrix, exact-resource readiness check, dialog modal regression, Prompt Composer action regression, and 40 × 3 Axe matrix passed. The catalogue report covered 324 resources and 972 variants with zero findings, failed requests or cancellations; the Gold report covered 40 resources / 120 variants with zero findings. Existing state fixtures cover six Gold data resources; the expanded matrix covers array-driven resources at empty and 30–40 item counts, disabled Button/Input/Select, named loading/error states, long text, and fixed-slot partial data. See [`e2e-suite-final.json`](evidence/step-06/results/e2e-suite-final.json) and the individual browser reports alongside it.
 
@@ -106,7 +115,7 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Reproduction: open the seeded Workbench manifest with `canvas-workspace-shell`, a `props.children` value, and a nested manifest child.
 - Root cause: `NodeRenderer` treated `props.children` and rendered nested nodes as alternatives.
 - Affected code: `packages/renderer/src/node-renderer.tsx`, `packages/renderer/src/__tests__/gold-registry.test.tsx`, and `tests/e2e/renderer-children-parity.spec.ts`.
-- Remediation: compose both sources into the declared resource slot, filtering explicit children through the Gold prop contract. The renderer and Workbench browser regressions cover the case. Deployed verification remains outstanding.
+- Remediation: compose both sources into the declared resource slot, filtering explicit children through the Gold prop contract. Unit and browser regressions pass. Site v14 visibly rendered both prop and nested child content in Workbench; see `evidence/deployed-v14-flagship/deployed-renderer-parity-audit.json` and its desktop capture. Closed after deployed verification.
 
 ### AUD-073 — Standalone export discarded resource prop children when nested children existed
 
@@ -114,15 +123,15 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Reproduction: export a project where `canvas-workspace-shell` receives `props.children` and a nested manifest child; inspect and run the generated screen.
 - Root cause: the source generator emitted resource prop children or nested children, never both.
 - Affected code: `packages/exporter/src/source-tree.ts` and `packages/exporter/src/__tests__/standalone-export-fidelity.test.ts`.
-- Remediation: emit the serialized prop child followed by nested child JSX. Clean install/build/browser verification is part of the regression. Deployed verification remains outstanding.
+- Remediation: emit the serialized prop child followed by nested child JSX. A project exported from the deployed v14 Workbench showed both sources after a clean external install/build and desktop/mobile runtime check; see `evidence/deployed-v14-flagship/deployed-parity-export-build.json` and `deployed-parity-export-runtime.json`. Closed after deployed verification.
 
 ### AUD-074 — Unsupported variants silently fell through to component defaults
 
-- Evidence: the [before capture](evidence/step-07/before/unsupported-variant-fell-through.png) shows Button rendered for an undeclared variant; the [fixed capture](evidence/step-07/after/unsupported-variant-diagnostic.png) shows a recoverable diagnostic. The pre-fix Workbench test failed because the diagnostic was absent. The fixed Workbench test and exporter regression pass without console errors.
+- Evidence: the [before capture](evidence/step-07/before/unsupported-variant-fell-through.png) shows Button rendered for an undeclared variant; the [Workbench diagnostic](evidence/deployed-v14-flagship/deployed-unsupported-variant-1440x900.png) shows the deployed UI now blocks that component. However, activating Export on Site v14 downloads an invalid ZIP; its clean build fails with TS2322 in [this build log](evidence/deployed-v14-flagship/deployed-invalid-variant-export-build-failure.txt). A new local Vite/Next regression failed before the baseline resolver fix and passes after it.
 - Reproduction: load a Workbench manifest or export containing `variant=unsupported-variant` for the Button resource.
 - Root cause: renderer and exporter had no canonical access to each resource's declared variant IDs.
 - Affected code: `scripts/generate-gold-artifacts.ts`, generated renderer/exporter metadata, `packages/renderer/src/node-renderer.tsx`, `packages/exporter/src/node-disk-resolver.ts`, and `packages/exporter/src/source-tree.ts`.
-- Remediation: generate variant declarations from each canonical resource manifest, render a visible non-substitution diagnostic in Workbench, and reject invalid exported variants with the accepted values. Deployed verification remains outstanding.
+- Remediation: generate variant declarations from each canonical resource manifest, render a visible non-substitution diagnostic in Workbench, and reject invalid exported variants with the accepted values. The built-in Button resolver lacked `acceptedVariants`, bypassing the exporter check even though resource-backed Gold components were covered. The local fix adds the canonical `quiet`, `expressive`, and `nocturne` values to the shared Vite/Next baseline resolver, with a failing-then-passing regression. Site v14 still exhibits the export defect; AUD-074 is fixed locally and awaits deployed verification on a newly saved review version. See `evidence/deployed-v14-flagship/deployed-invalid-variant-export-build.json`.
 
 ### AUD-075 — Workbench dropped declared slot content when nested children existed
 
@@ -130,7 +139,7 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Reproduction: load a Workbench manifest whose `canvas-workspace-shell` has `slots.children` text plus a nested child node, then inspect the canvas and Preview modal.
 - Root cause: `NodeRenderer` resolved explicit children from `props.children` only, ignoring `slots.children` even when the resource contract allowed it.
 - Affected code: `packages/renderer/src/node-renderer.tsx`, `packages/renderer/src/__tests__/gold-registry.test.tsx`, and `tests/e2e/renderer-children-parity.spec.ts`.
-- Remediation: resolve the declared slot after prop children, enforce the resource child contract, and compose explicit content with nested nodes. Deployed verification remains outstanding. Fix commit: `37432376face72876ca66c2bc788be116bb377a7`.
+- Remediation: resolve the declared slot after prop children, enforce the resource child contract, and compose explicit content with nested nodes. Site v14 visibly rendered both declared slot content and nested nodes; see `evidence/deployed-v14-flagship/deployed-renderer-parity-audit.json`. Closed after deployed verification. Fix commit: `37432376face72876ca66c2bc788be116bb377a7`.
 
 ### AUD-076 — Standalone export ignored Workbench responsive node strategies
 
@@ -138,7 +147,7 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Reproduction: export the shared renderer parity fixture, perform a clean install/build, start Vite preview, and inspect it at 390x844.
 - Root cause: generated node wrappers omitted responsive strategy metadata, and the shared layout CSS had no mobile rules for those strategies.
 - Affected code: `packages/exporter/src/source-tree.ts`, `packages/renderer/src/layout-contract.ts`, the shared fixture and its renderer/export browser tests.
-- Remediation: emit a `data-responsive-strategy` for supported strategies and apply shared mobile container-query rules for omit, stack, and collapse. Deployed verification remains outstanding. Fix commit: `6baf9d1e93b2a6e11cac075b21d879cfa2c863ae`.
+- Remediation: emit a `data-responsive-strategy` for supported strategies and apply shared mobile container-query rules for omit, stack, and collapse. Site v14's Workbench 390 preset and the UI-generated standalone export both hid, stacked, and collapsed the expected nodes at mobile width; see `evidence/deployed-v14-flagship/deployed-renderer-parity-390-preset.png` and `deployed-parity-export-runtime.json`. Closed after deployed verification. Fix commit: `6baf9d1e93b2a6e11cac075b21d879cfa2c863ae`.
 
 ### AUD-078 — The Dialog resource made standalone exports fail to build
 
@@ -146,7 +155,7 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Reproduction: export a manifest containing the canonical Dialog with its sample `open`, `title`, and `children` props; install dependencies in a clean directory and run `pnpm build`. Before the fix, TS2741 reported a missing `onClose` prop.
 - Root cause: the resource required a function callback that ProjectManifest cannot serialize and had no local close behavior when used without a host callback.
 - Affected code: `resources/primitives/dialog/index.tsx`, generated Gold source, the shared Gold parity fixture, and `packages/exporter/src/__tests__/standalone-export-fidelity.test.ts`.
-- Remediation: make `onClose` optional, preserve controlled behavior when supplied, and close local state on Escape or backdrop when no host callback exists. The clean exported application builds and closes the dialog by keyboard. Public review verification remains outstanding.
+- Remediation: make `onClose` optional, preserve controlled behavior when supplied, and close local state on Escape or backdrop when no host callback exists. The deployed Workbench and standalone ZIP both opened the Dialog and closed it with Escape; the clean export built successfully with no Tessellate runtime dependency. See `evidence/deployed-v14-flagship/deployed-parity-export-build.json` and `deployed-parity-export-runtime.json`. Closed after deployed verification.
 
 ## MEDIUM
 
@@ -156,7 +165,7 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Reproduction: export the shared renderer parity fixture, clean-install its generated dependencies, build and preview it, then query `[data-tracking-id="parity-action"]`. Before the fix the locator count was zero; Workbench retained the same attribute.
 - Root cause: exporter prop filtering allowed only names explicitly declared by the resource, dropping standard `data-*` and `aria-*` attributes that Workbench intentionally forwards.
 - Affected code: `packages/exporter/src/source-tree.ts`, `packages/testing/src/renderer-parity-fixture.ts`, and renderer/exporter/Workbench parity tests.
-- Remediation: preserve `data-*` and `aria-*` props while continuing to filter undeclared ordinary props. Deployed verification remains outstanding. Fix commit: `1f92c1ed2d3e7e54f129f0d844faf2ef22e2a956`.
+- Remediation: preserve `data-*` and `aria-*` props while continuing to filter undeclared ordinary props. Site v14 Workbench and the clean standalone export retained `data-tracking-id="parity-action"` and its accessible label; see `evidence/deployed-v14-flagship/deployed-parity-export-runtime.json`. Closed after deployed verification. Fix commit: `1f92c1ed2d3e7e54f129f0d844faf2ef22e2a956`.
 
 ### AUD-068 — Form controls announced a false generic action when clicked
 
@@ -793,19 +802,19 @@ with zero findings. That harness race is not counted as a product defect.
 
 ### AUD-082 — Exported screen selector wrapped into three rows on mobile
 
-- Evidence: the [public v11 export capture](evidence/step-07/before/export-project-navigation-wraps-390.png) shows nine screen buttons spread across three rows above the manifest's own product navigation. The local exporter regression failed before the fix with computed `flex-wrap: wrap`, then passed after the fix; the [after capture](evidence/step-07/after/export-project-navigation-mobile-390.png) shows the compact horizontal selector.
-- Reproduction: compose the employee-experience brief on the public Site, open Direction C, download the Standalone React ZIP, clean-install/build it, then view its dashboard at 390 × 844.
-- Root cause: `packages/exporter/src/source-tree.ts` used a wrapping flex group for the nine generated screen buttons and a wrapping header for the project name.
-- Affected code: `packages/exporter/src/source-tree.ts` and `packages/exporter/src/__tests__/standalone-export-fidelity.test.ts`.
-- Remediation: stack the title and keep screen controls in a single horizontally scrollable row on narrow screens. The clean-install browser test now verifies computed layout, screen switching, responsive resource strategies and zero console/request failures. Fix commit: `d6102e53b203355e68411ce91f0630346534e6f3`. Awaiting public Site redeploy and recheck.
+- Evidence: the [public v11 export capture](evidence/step-07/before/export-project-navigation-wraps-390.png) shows nine screen buttons spread across three rows above the manifest product navigation. Site v14 export through the visible Workbench produced a nine-screen manifest and ZIP. The manifest passed ProjectManifestSchema; clean install and production build passed outside the repository; the exported project switched screens at 1440 × 900 and 390 × 844 with a one-row selector, no mobile overflow, and zero console or network errors. See the [visible export report](evidence/deployed-v14-flagship/visible-export-audit.json), [external build record](evidence/deployed-v14-flagship/external-export-build.json), [runtime report](evidence/deployed-v14-flagship/standalone-runtime-audit.json), and [mobile after capture](evidence/deployed-v14-flagship/standalone-export-390x844.png).
+- Reproduction: compose the employee-experience brief on the public Site, open Direction C, download the Standalone React ZIP, clean-install/build it, then view the project at 390 × 844.
+- Root cause: packages/exporter/src/source-tree.ts used a wrapping flex group for the nine generated screen buttons and a wrapping header for the project name.
+- Affected code: packages/exporter/src/source-tree.ts and packages/exporter/src/__tests__/standalone-export-fidelity.test.ts.
+- Remediation: stack the title and keep screen controls in a single horizontally scrollable row on narrow screens. The clean-install browser test verifies computed layout, screen switching, responsive resource strategies and zero console/request failures. Fix commit: d6102e53b203355e68411ce91f0630346534e6f3. Closed after public Site v14 (Sites source commit 7323e8e9edfb6e07c5485c9d19ff37a8ca8043f5).
 
 ### AUD-083 — Fade-Up Replay Entrance reversed before its transition completed
 
-- Evidence: the [deployed v11 browser timeline](evidence/step-07/before/fade-up-replay-timeline.json) records the Quiet card in `opacity-0` for only about 40 ms before it returned to `opacity-100`; computed opacity reached about 0.83 and then reset. The [before capture](evidence/step-07/before/fade-up-replay-transient-1440.png) is from the public resource page at 1440 × 900. The browser reported no console errors, failed requests, or HTTP errors.
-- Reproduction: open `/resources/fade-up-reveal/` at 1440 × 900, activate Replay Entrance, and observe the card's classes and computed opacity over the next 60 ms.
-- Root cause: `resources/motion/fade-up-reveal/index.tsx` restored the card after a fixed 50 ms, shorter than the 300 ms Quiet transition and the 500/700 ms Nocturne/Expressive transitions.
-- Affected code: `resources/motion/fade-up-reveal/index.tsx` and `tests/e2e/gold-resource-certification.spec.ts`.
-- Remediation: hold the hidden state through the active variant's exit transition, then replay the entrance. Reduced-motion preference skips the animation with a polite status message. The Gold browser certification verifies the hidden opacity and full return to opacity one; its focused and complete Sites Worker runs pass. The [local after timeline](evidence/step-07/after/fade-up-replay-timeline.json) records opacity 0, a visible entrance at 0.44, and completion at 1 with no console or network errors. Fix commit: `6c8ecc0f0e11a7707b997326fd3855a6060eca91`. Awaiting public Site redeploy and recheck.
+- Evidence: the [deployed v11 browser timeline](evidence/step-07/before/fade-up-replay-timeline.json) records only a brief opacity dip before the animation resets. The v14 [after report](evidence/step-07/deployed-v14-after-fix/runtime.json) samples the live card 40 times after replay: opacity reached 0 at 310 ms, remained at or below 0.01 for four samples, and completed at 1. The same Site v14 report confirms Reduced Motion ON skips the animation while leaving the card visible and announcing the skip; OFF restores the 0.3s transition. The route and 324-resource catalogue returned HTTP 200; desktop and mobile had zero console errors, uncaught exceptions, failed requests or HTTP errors, and mobile had no overflow. See the [completed replay capture](evidence/step-07/deployed-v14-after-fix/fade-up-replay-final-1440x900.png).
+- Reproduction: open /resources/fade-up-reveal/ at 1440 × 900 and activate Replay Entrance. The v11 version reset after 50 ms, reversing before the 300 ms Quiet transition could complete.
+- Root cause: resources/motion/fade-up-reveal/index.tsx restored the card after a fixed 50 ms, shorter than the 300 ms Quiet transition and the 500/700 ms Nocturne/Expressive transitions.
+- Affected code: resources/motion/fade-up-reveal/index.tsx and tests/e2e/gold-resource-certification.spec.ts.
+- Remediation: hold the hidden state through the active variant exit transition, then replay the entrance. Reduced-motion preference or preview toggle skips the animation with a polite status message. The Gold browser certification verifies hidden opacity and full return to opacity one; focused and complete Sites Worker runs pass. Fix commit: 6c8ecc0f0e11a7707b997326fd3855a6060eca91. **Closed after public Site v14** (Sites source commit 7323e8e9edfb6e07c5485c9d19ff37a8ca8043f5).
 
 ### AUD-084 — Reduced Motion preview control left transitions enabled
 

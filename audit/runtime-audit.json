@@ -1718,7 +1718,22 @@
       ],
       "remediation": "Compose explicit and nested children in a single React fragment while honoring the Gold resource's declared children prop contract. A renderer regression and Workbench browser regression cover the user-visible case.",
       "fixCommit": "8b2cf2cd5cae1a0e87ae0e37e479b0b74ed5c2e8",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 14,
+        "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+        "result": "PASS: deployed Workbench visibly rendered both resource-prop children and nested manifest children.",
+        "browserErrors": 0,
+        "uncaughtErrors": 0,
+        "failedRequests": 0,
+        "httpErrors": 0,
+        "report": "audit/evidence/deployed-v14-flagship/deployed-renderer-parity-audit.json",
+        "exportBuild": "audit/evidence/deployed-v14-flagship/deployed-parity-export-build.json",
+        "screenshots": [
+          "audit/evidence/deployed-v14-flagship/deployed-renderer-parity-1440x900.png"
+        ]
+      }
     },
     {
       "id": "AUD-073",
@@ -1744,7 +1759,23 @@
       ],
       "remediation": "Emit serialized resource prop children followed by generated nested child JSX. The standalone fidelity regression performs a clean package install, build, real browser render, verifies both sources and captures the result.",
       "fixCommit": "8b2cf2cd5cae1a0e87ae0e37e479b0b74ed5c2e8",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 14,
+        "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+        "result": "PASS: standalone project generated through the deployed Export UI rendered both child sources, passed a clean external npm install and TypeScript/Vite build, then passed desktop/mobile browser checks.",
+        "browserErrors": 0,
+        "uncaughtErrors": 0,
+        "failedRequests": 0,
+        "httpErrors": 0,
+        "report": "audit/evidence/deployed-v14-flagship/deployed-renderer-parity-audit.json",
+        "exportBuild": "audit/evidence/deployed-v14-flagship/deployed-parity-export-build.json",
+        "screenshots": [
+          "audit/evidence/deployed-v14-flagship/deployed-renderer-parity-1440x900.png",
+          "audit/evidence/deployed-v14-flagship/deployed-parity-export-1440x900.png"
+        ]
+      }
     },
     {
       "id": "AUD-074",
@@ -1754,30 +1785,46 @@
       "category": "data",
       "title": "Unsupported resource variants silently fell through to component defaults",
       "expected": "A variant outside the resource manifest's declared variant IDs should be rejected with a visible diagnostic and preserved source data.",
-      "actual": "Workbench rendered the resource anyway using its own default style; export also generated a project without identifying the invalid variant.",
+      "actual": "The deployed Workbench showed the unsupported-variant diagnostic and did not render the invalid Button. Its visible Export action nevertheless downloaded a ZIP; a clean external install passed, but TypeScript failed because the invalid variant was emitted into Overview.tsx.",
       "reproduction": [
         "Open a Workbench manifest whose Button node has variant=unsupported-variant.",
-        "Before the fix, the unrelated default Button rendered with no diagnostic.",
-        "After the fix, Workbench shows an unsupported-variant alert and does not render the resource; export throws an actionable error listing declared variants."
+        "Open a schema-valid diagnostic manifest with a Button node variant set to unsupported-variant.",
+        "On Site v14, verify Workbench shows the unsupported-variant alert and does not render the Button.",
+        "Use Workbench Export > Download Standalone React Project; Site v14 downloads a ZIP instead of rejecting it.",
+        "Extract outside the repository, install from the exported package.json, and run npm run build; TypeScript reports TS2322 in Overview.tsx.",
+        "Locally, generate the same invalid project for Vite and Next; both exporters now throw an error listing quiet, expressive, and nocturne."
       ],
       "console": [],
       "network": [],
       "screenshot": "audit/evidence/step-07/before/unsupported-variant-fell-through.png",
       "screenshotAfter": "audit/evidence/step-07/after/unsupported-variant-diagnostic.png",
-      "rootCause": "Resource variant declarations were not available to renderer or exporter validation, so invalid values reached components that silently chose defaults.",
+      "rootCause": "The generic resource resolver validated declared variants, but the built-in baseline Button resolver in source-tree.ts omitted acceptedVariants in both Vite and Next export maps. That path bypassed the shared validation guard, so Workbench could show an error while the export still emitted invalid Button JSX.",
       "affectedFiles": [
         "scripts/generate-gold-artifacts.ts",
         "packages/renderer/src/generated-resource-variants.ts",
         "packages/renderer/src/node-renderer.tsx",
         "packages/exporter/src/node-disk-resolver.ts",
         "packages/exporter/src/source-tree.ts",
+        "packages/exporter/src/source-tree.ts",
         "packages/renderer/src/__tests__/gold-registry.test.tsx",
         "packages/exporter/src/__tests__/standalone-export-fidelity.test.ts",
         "tests/e2e/unsupported-resource-variant-regression.spec.ts"
       ],
-      "remediation": "Generate canonical variant-ID maps from all resource manifests, reject invalid variants in Workbench with a recoverable diagnostic, and fail export with the resource slug and accepted variants. Unit, export and real Workbench browser regressions cover the failure.",
-      "fixCommit": "8b2cf2cd5cae1a0e87ae0e37e479b0b74ed5c2e8",
-      "status": "fixed-awaiting-deployed-verification"
+      "remediation": "Keep canonical variant-ID maps for renderer resources and declare the Button's acceptedVariants on both baseline exporter resolver maps. Reject unsupported variants with an actionable error before generating either Vite or Next source. Unit tests reproduce the visible-export defect and pass after the fix; deployed verification remains pending.",
+      "fixCommit": "ca3454100b3e55b2987201212bd1e4c26bf0b727",
+      "status": "fixed-awaiting-deployed-verification",
+      "deployedVerification": {
+        "siteVersion": 14,
+        "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+        "result": "FAIL: Workbench displayed an accessible diagnostic and did not render the invalid Button, but the visible Export action downloaded a ZIP instead of rejecting it. A clean external install succeeded; TypeScript failed with TS2322 because the invalid variant was emitted into Overview.tsx.",
+        "report": "audit/evidence/deployed-v14-flagship/deployed-renderer-parity-audit.json",
+        "exportBuild": "audit/evidence/deployed-v14-flagship/deployed-invalid-variant-export-build.json",
+        "screenshot": "audit/evidence/deployed-v14-flagship/deployed-unsupported-variant-1440x900.png",
+        "archive": "audit/evidence/deployed-v14-flagship/deployed-invalid-variant-export.zip",
+        "archiveSha256": "a81bb71b2f77c1deb04264275dc7031f233921b7f37ee43312e9c9b9830786b2",
+        "fixCommit": null
+      }
     },
     {
       "id": "AUD-075",
@@ -1805,7 +1852,22 @@
       ],
       "remediation": "Resolve explicit children from props.children first and then the declared slots.children value, enforce the Gold resource children contract, and compose explicit content with rendered nested nodes. Unit and real Workbench canvas/Preview tests cover both sources.",
       "fixCommit": "37432376face72876ca66c2bc788be116bb377a7",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 14,
+        "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+        "result": "PASS: deployed Workbench visibly rendered declared slot content and nested manifest children together.",
+        "browserErrors": 0,
+        "uncaughtErrors": 0,
+        "failedRequests": 0,
+        "httpErrors": 0,
+        "report": "audit/evidence/deployed-v14-flagship/deployed-renderer-parity-audit.json",
+        "exportBuild": "audit/evidence/deployed-v14-flagship/deployed-parity-export-build.json",
+        "screenshots": [
+          "audit/evidence/deployed-v14-flagship/deployed-renderer-parity-1440x900.png"
+        ]
+      }
     },
     {
       "id": "AUD-076",
@@ -1837,7 +1899,23 @@
       ],
       "remediation": "Serialize supported responsive strategies on generated node wrappers and add shared mobile container-query rules for omit, stack, and collapse. The same shared fixture now verifies Workbench output and a clean standalone install/build/browser run.",
       "fixCommit": "6baf9d1e93b2a6e11cac075b21d879cfa2c863ae",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 14,
+        "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+        "result": "PASS: Workbench 390 preset and the clean exported app at 390px hid the omit node, stacked the stack node, and collapsed the collapse node.",
+        "browserErrors": 0,
+        "uncaughtErrors": 0,
+        "failedRequests": 0,
+        "httpErrors": 0,
+        "report": "audit/evidence/deployed-v14-flagship/deployed-renderer-parity-audit.json",
+        "exportBuild": "audit/evidence/deployed-v14-flagship/deployed-parity-export-build.json",
+        "screenshots": [
+          "audit/evidence/deployed-v14-flagship/deployed-renderer-parity-390-preset.png",
+          "audit/evidence/deployed-v14-flagship/deployed-parity-export-390x844.png"
+        ]
+      }
     },
     {
       "id": "AUD-077",
@@ -1868,7 +1946,23 @@
       ],
       "remediation": "Allow standard data-* and aria-* resource props through exporter filtering while continuing to reject undeclared ordinary props. The shared parity fixture now checks the contract in renderer, Workbench browser and a clean standalone install/build/browser run.",
       "fixCommit": "1f92c1ed2d3e7e54f129f0d844faf2ef22e2a956",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 14,
+        "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+        "result": "PASS: deployed Workbench and standalone app retained data-tracking-id and aria-label on the rendered Button.",
+        "browserErrors": 0,
+        "uncaughtErrors": 0,
+        "failedRequests": 0,
+        "httpErrors": 0,
+        "report": "audit/evidence/deployed-v14-flagship/deployed-renderer-parity-audit.json",
+        "exportBuild": "audit/evidence/deployed-v14-flagship/deployed-parity-export-build.json",
+        "screenshots": [
+          "audit/evidence/deployed-v14-flagship/deployed-renderer-parity-1440x900.png",
+          "audit/evidence/deployed-v14-flagship/deployed-parity-export-1440x900.png"
+        ]
+      }
     },
     {
       "id": "AUD-078",
@@ -1900,7 +1994,23 @@
       ],
       "remediation": "Make onClose optional, retain controlled behavior when provided, and use local open state to close on Escape or backdrop when no host callback is available. Regenerate Gold source and verify the clean exported app build and keyboard behavior.",
       "fixCommit": "81c89af2c40eb862234b35c4c48ed962bb2de8d9",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 14,
+        "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+        "result": "PASS: deployed Workbench Dialog opened and closed with Escape without a host callback; the standalone build and browser runtime did the same.",
+        "browserErrors": 0,
+        "uncaughtErrors": 0,
+        "failedRequests": 0,
+        "httpErrors": 0,
+        "report": "audit/evidence/deployed-v14-flagship/deployed-renderer-parity-audit.json",
+        "exportBuild": "audit/evidence/deployed-v14-flagship/deployed-parity-export-build.json",
+        "screenshots": [
+          "audit/evidence/deployed-v14-flagship/deployed-renderer-parity-1440x900.png",
+          "audit/evidence/deployed-v14-flagship/deployed-parity-export-1440x900.png"
+        ]
+      }
     },
     {
       "id": "AUD-079",
@@ -2024,7 +2134,7 @@
       "category": "visual",
       "title": "Exported screen selector wrapped into three rows on mobile",
       "expected": "The project screen selector should remain compact and usable on mobile without pushing the exported product interface below multiple rows of editor-like navigation.",
-      "actual": "The public v11 flagship ZIP wrapped its nine project-screen buttons into three rows above the product's own navigation. The controls consumed most of the initial mobile viewport before product content appeared.",
+      "actual": "The deployed v11 flagship ZIP wrapped its nine screen buttons into three rows at 390px. Site v14 now exports a single horizontally scrollable row; a clean install and real desktop/mobile browser run confirmed all nine screen controls and working screen switches.",
       "reproduction": [
         "Compose the employee-experience flagship brief on the public v11 Site and open Direction C in Workbench.",
         "Download the Standalone React Project ZIP from the visible Export menu.",
@@ -2039,14 +2149,36 @@
         "packages/exporter/src/source-tree.ts",
         "packages/exporter/src/__tests__/standalone-export-fidelity.test.ts"
       ],
-      "remediation": "Stack the generated project title and selector on narrow screens, keep the selector itself nowrap and horizontally scrollable, and retain keyboard-accessible screen buttons. The clean-export browser regression now passes locally; public Site re-verification is pending.",
+      "remediation": "Stack the generated project title and selector on narrow screens, keep the selector itself nowrap and horizontally scrollable, and retain keyboard-accessible screen buttons. The deployed v14 export now passes a clean install, production build, and desktop/mobile browser check.",
       "fixCommit": "d6102e53b203355e68411ce91f0630346534e6f3",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "result": "The new Playwright regression failed before the fix with flexWrap=wrap, then passed after the fix. The test built and previewed a clean standalone export, verified one-row navigation, switched to a second screen, exercised responsive resource strategies, and recorded no console errors or failed requests.",
         "test": "packages/exporter/src/__tests__/standalone-export-fidelity.test.ts",
         "beforeScreenshot": "audit/evidence/step-07/before/export-project-navigation-wraps-390.png",
         "afterScreenshot": "audit/evidence/step-07/after/export-project-navigation-mobile-390.png"
+      },
+      "deployedVerification": {
+        "siteVersion": 14,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_91cf00b4e3b48191949a2182af3f0117",
+        "deploymentId": "appgdep_6ad41bc2e2948191be756eb6a3df21f4",
+        "siteSourceCommit": "7323e8e9edfb6e07c5485c9d19ff37a8ca8043f5",
+        "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "result": "PASS: Direction C was composed and exported through the visible v14 Site UI. The manifest ID matched the selected project and validated against ProjectManifestSchema at v1.0.0 with nine screens. The ZIP had 34 safe entries and no @tessellate runtime dependency; npm install in a clean temporary directory and npm run build both exited 0. Chromium runtime switched to Team Overview and Onboarding at 1440x900 and 390x844. All nine selector buttons stayed on one row, mobile had no document overflow, and the runtime had zero console errors, uncaught errors, failed requests, or HTTP errors. The exported browser check found no unresolved-resource placeholders.",
+        "report": "audit/evidence/deployed-v14-flagship/visible-export-audit.json",
+        "manifest": "audit/evidence/deployed-v14-flagship/adaptive-architecture-—-employee-experience.tess.json",
+        "manifestSha256": "abae74f831a139eaef16407b5e1bcebf2e8b29a0c4fa8f51c8ccbbb9cfe11e0d",
+        "zip": "audit/evidence/deployed-v14-flagship/adaptive-architecture-employee-experience.zip",
+        "zipSha256": "045e138deab390a3cbfb13bc97a360241f5f37d6e30803bdacaec90a3fa05fe4",
+        "cleanInstallDirectory": "%TEMP%\\tessellate-v14-export-verified-693a84d89b20471eabc593bd365c5a66",
+        "build": "npm run build passed (tsc and Vite production build); Vite 6.4.4 output 284.81 kB JS (79.67 kB gzip) and 37.74 kB CSS (7.58 kB gzip).",
+        "runtimeReport": "audit/evidence/deployed-v14-flagship/standalone-runtime-audit.json",
+        "screenshots": [
+          "audit/evidence/step-07/before/export-project-navigation-wraps-390.png",
+          "audit/evidence/deployed-v14-flagship/standalone-export-390x844.png",
+          "audit/evidence/deployed-v14-flagship/standalone-export-1440x900.png"
+        ]
       }
     },
     {
@@ -2057,7 +2189,7 @@
       "category": "state",
       "title": "Replay Entrance reversed before the transition became visible",
       "expected": "The Replay Entrance control should visibly complete its exit and replay the configured entrance transition.",
-      "actual": "On the deployed v11 page, the Quiet card changed to opacity-0 for about 40 ms, then returned to opacity-100. Its computed opacity reached only about 0.83 before resetting, so the replay looked like a brief flicker instead of a complete entrance.",
+      "actual": "The public v11 page reversed the Fade-Up transition before it finished. On Site v14, 40 samples after Replay recorded opacity reaching 0 (three samples at or below 0.01) and completing at 1. The reduced-motion toggle also skips the animation without hiding the card.",
       "reproduction": [
         "Open the deployed /resources/fade-up-reveal/ page at 1440x900.",
         "Activate Replay Entrance and record the card classes and computed opacity over the next 60 ms."
@@ -2070,15 +2202,30 @@
         "resources/motion/fade-up-reveal/index.tsx",
         "tests/e2e/gold-resource-certification.spec.ts"
       ],
-      "remediation": "Keep the hidden state through the active variant transition, then replay the entrance. Extend the Gold browser regression to confirm the card reaches its hidden state and completes the return transition.",
+      "remediation": "Keep the hidden state through the active variant exit transition, then replay the entrance. Reduced-motion preference or the preview toggle skips the animation and announces why. The deployed v14 replay and reduced-motion checks both pass.",
       "fixCommit": "6c8ecc0f0e11a7707b997326fd3855a6060eca91",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "result": "The deployed v11 timeline reproduced the brief opacity dip and recorded no console, network, or HTTP errors. The fixed browser test passed the full 40-resource/120-variant Gold certification, checking a completed exit, return to opacity one, and an announced reduced-motion skip. The complete E2E run passed with 85 main-browser tests, 25 Sites Worker tests, and one preview-app test; the 324-resource matrix recorded zero findings.",
         "test": "tests/e2e/gold-resource-certification.spec.ts",
         "beforeEvidence": "audit/evidence/step-07/before/fade-up-replay-timeline.json",
         "afterEvidence": "audit/evidence/step-07/after/fade-up-replay-timeline.json",
         "fullRun": "audit/evidence/step-07/after/e2e-summary.json"
+      },
+      "deployedVerification": {
+        "siteVersion": 14,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_91cf00b4e3b48191afd06a86db72f06c",
+        "deploymentId": "appgdep_6ad41bc2e2948191be756eb6a3df21f4",
+        "siteSourceCommit": "7323e8e9edfb6e07c5485c9d19ff37a8ca8043f5",
+        "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "result": "PASS: On the deployed resource route at 1440x900, the normal Fade-Up Replay sample trace reached opacity 0 at 310ms, stayed at or below 0.01 for four samples, and completed at opacity 1. Reduced Motion ON reported 0s transition/animation, Replay held opacity 1 and announced the skip; OFF restored 0.3s. The 390x844 route had no overflow. Both viewports had zero console errors, uncaught exceptions, failed requests, and HTTP errors.",
+        "report": "audit/evidence/step-07/deployed-v14-after-fix/runtime.json",
+        "screenshots": [
+          "audit/evidence/step-07/deployed-v14-after-fix/fade-up-replay-final-1440x900.png",
+          "audit/evidence/step-07/deployed-v14-after-fix/fade-up-reduced-motion-replay-80ms-1440x900.png",
+          "audit/evidence/step-07/deployed-v14-after-fix/fade-up-resource-390x844.png"
+        ]
       }
     },
     {
@@ -2228,5 +2375,6 @@
         ]
       }
     }
-  ]
+  ],
+  "generatedAt": "2026-10-18T01:30:30.029Z"
 }

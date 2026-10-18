@@ -1,0 +1,71 @@
+{
+  "target": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "deployment": {
+    "version": 14,
+    "sourceCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb"
+  },
+  "console": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "publicWorkflow": {
+    "composeStatus": 200,
+    "directionCount": 3,
+    "directionTitlesDiffer": true,
+    "projectId": "proj-direction-c-9b3c5b345658408e8ba3df812b3f3fa8dirc",
+    "workbenchUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=proj-direction-c-9b3c5b345658408e8ba3df812b3f3fa8dirc",
+    "manifest": {
+      "file": "adaptive-architecture-—-employee-experience.tess.json",
+      "bytes": 70302,
+      "sha256": "abae74f831a139eaef16407b5e1bcebf2e8b29a0c4fa8f51c8ccbbb9cfe11e0d",
+      "id": "proj-direction-c-9b3c5b345658408e8ba3df812b3f3fa8dirc",
+      "schemaVersion": "1.0.0",
+      "screenCount": 9,
+      "screenNames": [
+        "Marketing Home",
+        "Team Overview",
+        "People Directory",
+        "Employee Profile",
+        "Teams",
+        "Onboarding",
+        "Engagement",
+        "Settings & Policies",
+        "Sign In"
+      ],
+      "identityMatchesHandoff": true,
+      "screensHaveRoots": true
+    },
+    "standaloneZip": {
+      "file": "adaptive-architecture-employee-experience.zip",
+      "bytes": 41699,
+      "sha256": "045e138deab390a3cbfb13bc97a360241f5f37d6e30803bdacaec90a3fa05fe4",
+      "signature": "504b0304"
+    },
+    "screenshots": [
+      "workbench-exported-project-1440x900.png"
+    ]
+  },
+  "mobile": {
+    "composeStatus": 200,
+    "workbenchShellCount": 1,
+    "viewport": 390,
+    "document": 390,
+    "body": 390,
+    "noHorizontalOverflow": true,
+    "screenshot": "workbench-exported-project-390x844.png"
+  },
+  "finishedAt": "2026-10-18T01:16:27.793Z",
+  "summary": {
+    "composeLoaded": true,
+    "threeDirections": true,
+    "manifestMatchesDirectionC": true,
+    "manifestContainsNineScreens": true,
+    "standaloneZipLooksValid": true,
+    "mobileWorkbenchLoaded": true,
+    "mobileHasNoOverflow": true,
+    "zeroConsoleErrors": true,
+    "zeroPageErrors": true,
+    "zeroFailedRequests": true,
+    "zeroHttpErrors": true
+  }
+}

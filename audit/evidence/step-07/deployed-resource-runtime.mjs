@@ -78,11 +78,17 @@ const reducedMotionOff = await card.evaluate((element) => ({
 }));
 
 await preview.getByRole('button', { name: 'Replay Entrance' }).click();
-await desktop.waitForTimeout(60);
-const opacityAt60ms = await card.evaluate((element) => Number(getComputedStyle(element).opacity));
-await desktop.screenshot({ path: path.join(evidenceDir, 'fade-up-reduced-motion-replay-60ms-1440x900.png'), fullPage: true });
-await desktop.waitForTimeout(300);
-const opacityAt360ms = await card.evaluate((element) => Number(getComputedStyle(element).opacity));
+const replayProbeStartedAt = Date.now();
+const replaySamples = [];
+for (let attempt = 0; attempt < 40; attempt += 1) {
+  await desktop.waitForTimeout(25);
+  const opacity = await card.evaluate((element) => Number(getComputedStyle(element).opacity));
+  replaySamples.push({ elapsedMs: Date.now() - replayProbeStartedAt, opacity });
+}
+const replayMinimum = replaySamples.reduce((minimum, sample) => sample.opacity < minimum.opacity ? sample : minimum);
+const replayFinal = replaySamples.at(-1);
+const zeroOpacitySamples = replaySamples.filter((sample) => sample.opacity <= 0.01).length;
+await desktop.screenshot({ path: path.join(evidenceDir, 'fade-up-replay-final-1440x900.png'), fullPage: true });
 
 const catalogueResponse = await desktopContext.request.get(`${baseUrl}/data/catalog.json`);
 const catalogue = catalogueResponse.ok() ? await catalogueResponse.json() : null;
@@ -100,7 +106,15 @@ const desktopReport = {
     && reducedMotionOn.rootAttribute === 'true'
     && reducedMotionOff.transitionDuration === '0.3s'
     && reducedMotionOff.rootAttribute === null,
-  replayOpacity: { at60ms: opacityAt60ms, at360ms: opacityAt360ms },
+  replayOpacity: {
+    probeDurationMs: replayFinal?.elapsedMs ?? null,
+    sampleCount: replaySamples.length,
+    minimum: replayMinimum,
+    zeroOpacitySamples,
+    final: replayFinal ?? null,
+    samples: replaySamples,
+  },
+  standardReplayCompletes: replayMinimum.opacity <= 0.01 && zeroOpacitySamples >= 2 && replayFinal.opacity >= 0.99,
   console: errors.console,
   uncaught: errors.uncaught,
   failedRequests: errors.requests,
@@ -108,7 +122,8 @@ const desktopReport = {
   screenshots: [
     evidencePath('fade-up-initial-1440x900.png'),
     evidencePath('fade-up-reduced-motion-on-1440x900.png'),
-  evidencePath('fade-up-reduced-motion-replay-80ms-1440x900.png'),
+    evidencePath('fade-up-reduced-motion-replay-80ms-1440x900.png'),
+    evidencePath('fade-up-replay-final-1440x900.png'),
   ],
 };
 await fs.writeFile(path.join(evidenceDir, 'runtime.json'), JSON.stringify(desktopReport, null, 2));
@@ -140,3 +155,4 @@ await desktopContext.close();
 await mobileContext.close();
 await browser.close();
 console.log(JSON.stringify(desktopReport, null, 2));
+if (!desktopReport.standardReplayCompletes) throw new Error(`Standard Fade-Up replay did not complete: ${JSON.stringify(desktopReport.replayOpacity)}`);
