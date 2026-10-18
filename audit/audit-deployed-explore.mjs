@@ -248,6 +248,11 @@ for (const viewport of viewportCases) {
     result.failureScreenshot = `${outputDirectory}/failure-${viewport.name}.png`;
     await page.screenshot({ path: result.failureScreenshot, fullPage: true }).catch(() => {});
   } finally {
+    // A search or filter replacement intentionally cancels work for iframes
+    // belonging to results the user left. Keep every cancellation in the raw
+    // report; distinguish it from CSP and other failures that need remediation.
+    result.expectedRequestCancellations = result.failedRequests.filter((failure) => failure.error === 'net::ERR_ABORTED');
+    result.unresolvedNetworkFailures = result.failedRequests.filter((failure) => failure.error !== 'net::ERR_ABORTED');
     await writeFile(`${outputDirectory}/explore-${viewport.name}.json`, `${JSON.stringify(result, null, 2)}\n`);
     await browser.close();
     report.viewports.push(result);
@@ -260,7 +265,7 @@ const failedChecks = report.viewports.flatMap((viewport) => [
   ...viewport.checks.filter((check) => check.status !== 'PASS').map((check) => ({ viewport: viewport.viewport, ...check })),
   ...viewport.uncaughtErrors.map((error) => ({ viewport: viewport.viewport, uncaughtError: error })),
   ...viewport.httpErrors.map((error) => ({ viewport: viewport.viewport, httpError: error })),
-  ...viewport.failedRequests.map((error) => ({ viewport: viewport.viewport, failedRequest: error })),
+  ...(viewport.unresolvedNetworkFailures ?? viewport.failedRequests).map((error) => ({ viewport: viewport.viewport, failedRequest: error })),
   ...(viewport.overflow?.horizontalOverflow ? [{ viewport: viewport.viewport, overflow: viewport.overflow }] : []),
   ...(viewport.axe?.seriousOrCritical.length ? [{ viewport: viewport.viewport, axe: viewport.axe.seriousOrCritical }] : []),
 ]);
@@ -275,6 +280,8 @@ console.log(JSON.stringify({
     consoleErrors: viewport.consoleErrors.length,
     uncaughtErrors: viewport.uncaughtErrors.length,
     failedRequests: viewport.failedRequests.length,
+    expectedRequestCancellations: viewport.expectedRequestCancellations?.length ?? 0,
+    unresolvedNetworkFailures: viewport.unresolvedNetworkFailures?.length ?? viewport.failedRequests.length,
     httpErrors: viewport.httpErrors.length,
     axeSeriousOrCritical: viewport.axe?.seriousOrCritical.length ?? null,
     screenshots: viewport.screenshots,

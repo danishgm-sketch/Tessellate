@@ -173,6 +173,14 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Affected code: `packages/search/src/indexer.ts`, `packages/search/src/query.ts`, `packages/search/src/types.ts`, and `packages/search/src/__tests__/search.test.ts`.
 - Remediation: index intent fields that describe supported content, rank by meaningful token coverage before text relevance, and show a truthful empty state when no result satisfies a multi-term query. `checkout` now finds Funnel Chart, `payment` finds Billing Overview, and `luxury checkout` returns no unrelated result. The local desktop/mobile regression passes; deployed verification remains pending.
 
+### AUD-098 — Opaque Explore previews could not fetch compiled styles
+
+- Evidence: Site v18's [Explore report](evidence/catalog-search-v18/runtime-audit.json) recorded nine desktop and two mobile CSP errors plus blocked requests for `/_astro/style.RWED2-xG.css`. The [desktop screenshot](evidence/catalog-search-v18/explore-initial-1440x900.png) shows multiple preview cards still on “Loading the actual resource…”.
+- Reproduction: open `/explore` at 1440 × 900 or 390 × 844, wait for sandboxed resource previews, then inspect console/network events for the stylesheet request.
+- Root cause: preview CSP used `connect-src 'none'`. Astro/Vite fetches the compiled stylesheet while preloading resource modules; `style-src` alone did not authorize that fetch from an opaque frame.
+- Affected code: `apps/sites/worker.ts` and its CSP contract tests.
+- Remediation: allow `connect-src` only to same-origin immutable `/_astro/` assets. Keep APIs, arbitrary same-origin paths, external hosts, and nested frames blocked. Local unit and browser checks pass; Site v19 verification is pending.
+
 ## MEDIUM
 
 ### AUD-077 — Standalone export dropped standard data and accessibility attributes

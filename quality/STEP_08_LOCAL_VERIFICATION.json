@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T04:50:41.000Z",
+  "generatedAt": "2026-10-18T05:36:35.000Z",
   "scope": "Step 08 local remediation checks only; not deployed acceptance.",
   "frozenDependencyInstall": {
     "status": "PASS",
@@ -20,7 +20,7 @@
   "browserTests": {
     "status": "PASS",
     "command": "pnpm test:e2e",
-    "passed": 132,
+    "passed": 133,
     "skipped": 56,
     "failed": 0,
     "projects": [
@@ -31,7 +31,7 @@
       },
       {
         "name": "Sites Worker Chromium",
-        "passed": 27,
+        "passed": 28,
         "skipped": 0
       },
       {
@@ -40,7 +40,18 @@
         "skipped": 0
       }
     ],
-    "detail": "Full suite completed after the Step 08 UI/resource changes; 56 skips are configured scope skips."
+    "detail": "Full suite completed after the Step 08 UI/resource changes; the Sites Worker suite includes the opaque-preview compiled-asset CSP regression. The mobile filter keyboard dialog passed three repeated runs. The 56 skips are configured scope skips."
+  },
+  "sitesPreviewCspRegression": {
+    "status": "PASS_LOCAL",
+    "test": "tests/e2e/sites-preview-csp.spec.ts",
+    "assertions": [
+      "Actual accordion resource renders inside sandbox=allow-scripts preview",
+      "Preview connect-src permits only the same-origin /_astro/ path",
+      "API origin and nested frames remain blocked",
+      "No browser console errors or failed compiled-asset requests"
+    ],
+    "deployedVerification": "PENDING"
   },
   "typecheck": {
     "status": "PASS",
@@ -131,6 +142,6 @@
     "siteVersion": null,
     "routeAudit": "audit/audit-deployed-explore.mjs",
     "resourceAudit": "audit/audit-deployed-resource-details.mjs",
-    "note": "Close AUD-088–097 only after the same checks pass on the new public Sites version."
+    "note": "Close AUD-088–098 only after the same checks pass on the new public Sites version."
   }
 }

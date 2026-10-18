@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship, Site v16/v17 catalogue and renderer audits, plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Step 08 remediation findings AUD-088–097 await deployed verification.",
+  "scope": "Deployed public Site v11/v14 flagship, Site v16/v17/v18 catalogue and renderer audits, plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Step 08 remediation findings AUD-088–097 await deployed verification; AUD-098 is a new deployed preview-CSP finding.",
   "entries": [
     {
       "id": "AUD-001",
@@ -2926,7 +2926,53 @@
         "report": "audit/evidence/catalog-search-v17/ai-agent-heading-before.json",
         "screenshot": "audit/evidence/catalog-search-v17/ai-agent-heading-before-1440x900.png"
       }
+    },
+    {
+      "id": "AUD-098",
+      "severity": "high",
+      "route": "/explore",
+      "viewport": "1440x900; 390x844",
+      "category": "runtime",
+      "title": "Opaque resource previews hit CSP failures while loading compiled styles",
+      "expected": "Explore resource previews should load their actual component and compiled styles without browser console errors or failed essential requests.",
+      "actual": "The v18 Explore audit recorded repeated console errors and failed XHRs for /_astro/style.RWED2-xG.css. The preview Worker policy set connect-src 'none', blocking the browser's fetch-based stylesheet preload in opaque sandbox frames; several cards remained on 'Loading the actual resource…'.",
+      "reproduction": [
+        "Open the public Site /explore at 1440x900 or 390x844.",
+        "Wait for visible sandboxed resource previews to initialize and search through the catalogue.",
+        "Inspect console/network events for /_astro/style.*.css blocked by connect-src 'none'."
+      ],
+      "console": [
+        "Connecting to the same-origin /_astro/style.RWED2-xG.css violates Content Security Policy: connect-src 'none'.",
+        "Couldn't load preload assets: ProgressEvent"
+      ],
+      "network": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/style.RWED2-xG.css",
+          "status": null,
+          "error": "csp",
+          "resourceType": "xhr"
+        }
+      ],
+      "screenshot": "audit/evidence/catalog-search-v18/explore-initial-1440x900.png",
+      "rootCause": "The Sites Worker applied connect-src 'none' to opaque previews. Astro/Vite performs a same-origin fetch for the compiled stylesheet while preloading resource modules; style-src alone does not authorize that fetch.",
+      "affectedFiles": [
+        "apps/sites/worker.ts",
+        "apps/sites/README.md",
+        "apps/sites/VALIDATION.md",
+        "tests/sites-security-proxy.test.ts"
+      ],
+      "remediation": "Allow connect-src only for the same-origin immutable /_astro/ asset path. Keep arbitrary API routes, external hosts and nested frames blocked, and verify the deployed Explore flow at both viewports.",
+      "fixCommit": null,
+      "status": "open",
+      "deployedVerification": {
+        "siteVersion": 18,
+        "canonicalGitCommit": "44fd9852c4b07f677472bff9f8215c9513aca252",
+        "sitesSourceCommit": "1a279b7fee54ba3b9270d38f96a58ba07d9c22fc",
+        "result": "FAIL: deployed v18 blocked compiled stylesheet preload in opaque Explore previews; the finding remains open until a fixed Site version passes.",
+        "report": "audit/evidence/catalog-search-v18/runtime-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v18/explore-initial-1440x900.png"
+      }
     }
   ],
-  "generatedAt": "2026-10-18T04:53:01.000Z"
+  "generatedAt": "2026-10-18T05:10:36.000Z"
 }

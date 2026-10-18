@@ -65,8 +65,9 @@ try {
       const preview = page.frameLocator('iframe[title$=" live preview"]');
       await preview.getByRole('heading', { level: 2, name: 'Example agent activity', exact: true }).waitFor({ state: 'visible', timeout: 15000 });
       await preview.getByText('Static sample data', { exact: true }).waitFor({ state: 'visible' });
-      assert(await page.getByText(/real-time telemetry|live telemetry/i).count() === 0, 'The page still claims these sample events are live telemetry.');
-      assert(await preview.getByText(/real-time telemetry|live telemetry/i).count() === 0, 'The preview still claims these sample events are live telemetry.');
+      const description = await page.locator('meta[name="description"]').getAttribute('content') ?? '';
+      assert(/static sample activity feed/i.test(description) && /no live telemetry connection/i.test(description), 'The page description must disclose that the displayed activity is sample data.');
+      assert(await preview.getByText(/real-time telemetry|live telemetry/i).count() === 0, 'The preview still presents sample events as live telemetry.');
       const previewHeadings = await preview.locator('h1,h2,h3,h4,h5,h6').evaluateAll((elements) => elements.map((element) => ({ tag: element.tagName, text: element.textContent?.trim() ?? '' })));
       assert(previewHeadings[0]?.tag === 'H2', `Preview begins with ${previewHeadings[0]?.tag ?? 'no heading'}, expected H2.`);
       result.headings.push({ scope: 'isolated preview', headings: previewHeadings });

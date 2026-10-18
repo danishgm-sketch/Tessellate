@@ -142,6 +142,7 @@ test('Explore reports the real total and exposes more than the first 50 resource
 test('mobile filter drawer is a keyboard dialog with focus containment and Escape close', async ({ page }) => {
   test.skip((page.viewportSize()?.width ?? 1440) >= 1024, 'Mobile drawer behavior is only applicable below the desktop breakpoint.');
   await page.goto('/explore/');
+  await expect(page.getByText('Showing 50 of 324 resources', { exact: true })).toBeVisible();
   const opener = page.getByRole('button', { name: 'Filters', exact: true });
   await opener.click();
 
