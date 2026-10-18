@@ -59,6 +59,14 @@ export function IntentTab() {
 
   const isVisualOverridden = nodeOverrides?.visualAmbition !== undefined;
   const isStructuralOverridden = nodeOverrides?.structuralCreativity !== undefined;
+  const statusLabel = (overridden: boolean) =>
+    locked ? 'Locked' : selectedNode ? (overridden ? 'Overridden' : 'Inherited') : 'Project';
+  const statusClass = (overridden: boolean) =>
+    locked
+      ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300'
+      : selectedNode && overridden
+        ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300'
+        : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[var(--text-muted)]';
 
   return (
     <div data-testid="intent-tab" className="p-4 space-y-6 text-xs overflow-y-auto">
@@ -78,13 +86,9 @@ export function IntentTab() {
           </div>
           <div className="flex items-center gap-1.5">
             <span
-              className={`rounded px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider ${
-                isVisualOverridden
-                  ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300'
-                  : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[var(--text-muted)]'
-              }`}
+              className={`rounded px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider ${statusClass(isVisualOverridden)}`}
             >
-              {isVisualOverridden ? 'Overridden' : 'Inherited'}
+              {statusLabel(isVisualOverridden)}
             </span>
             <span className="font-mono text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
               {visualAmbitionVal}
@@ -122,13 +126,9 @@ export function IntentTab() {
           </div>
           <div className="flex items-center gap-1.5">
             <span
-              className={`rounded px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider ${
-                isStructuralOverridden
-                  ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300'
-                  : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[var(--text-muted)]'
-              }`}
+              className={`rounded px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider ${statusClass(isStructuralOverridden)}`}
             >
-              {isStructuralOverridden ? 'Overridden' : 'Inherited'}
+              {statusLabel(isStructuralOverridden)}
             </span>
             <span className="font-mono text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
               {structuralCreativityVal}

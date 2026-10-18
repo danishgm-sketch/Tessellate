@@ -38,6 +38,12 @@ export function FeelMixer() {
   const effectiveDNA = getScopedDNA(manifest, activeScreenId, selectedNodeId);
   const traits = extractFeelTraits(effectiveDNA, nodeOverrides, pinnedTraits);
 
+  const statusLabel = (status: string) => {
+    if (locked) return 'Locked';
+    if (!selectedNode) return 'Project';
+    return status === 'overridden' ? 'Overridden' : 'Inherited';
+  };
+
   const handleTraitChange = (id: string, value: number) => {
     const canonical = CANONICAL_FEEL_TRAITS.find((t) => t.id === id);
     const key = canonical?.dnaKey ?? id;
@@ -73,7 +79,6 @@ export function FeelMixer() {
 
   return (
     <div data-testid="feel-mixer" className="space-y-4">
-      {locked && <p role="status">This node inherits an active lock. Unlock it in Locks to edit.</p>}
       <fieldset disabled={locked} className="space-y-4 border-0 p-0 m-0 min-w-0">
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -85,7 +90,7 @@ export function FeelMixer() {
           <button
             onClick={handleResetNode}
             className="flex items-center gap-1 text-[10px] text-[#2547E8] dark:text-[#879DFF] hover:underline"
-            title="Reset node overrides to inherit from project"
+            title="Remove local DNA overrides and inherit from this node's ancestors"
           >
             <RotateCcw className="h-2.5 w-2.5" />
             <span>Reset to Inherited</span>
@@ -95,7 +100,14 @@ export function FeelMixer() {
 
       {/* Trait Sliders */}
       <div className="space-y-3">
-        {traits.map((trait) => (
+        {traits.map((trait) => {
+          const label = statusLabel(trait.status);
+          const statusClass = locked
+            ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-800 dark:text-amber-300'
+            : trait.status === 'overridden' && selectedNode
+              ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300'
+              : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[var(--text-muted)]';
+          return (
           <div key={trait.id} className="space-y-1">
             <div className="flex items-center justify-between text-xs">
               <span className="font-medium text-[#111217] dark:text-[#F5F7FA]">
@@ -103,13 +115,9 @@ export function FeelMixer() {
               </span>
               <div className="flex items-center gap-1.5">
                 <span
-                  className={`rounded px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider ${
-                    trait.status === 'overridden'
-                      ? 'bg-violet-100 dark:bg-violet-950/60 text-violet-700 dark:text-violet-300'
-                      : 'bg-[#FAF9F6] dark:bg-[#0B0D10] text-[var(--text-muted)]'
-                  }`}
+                  className={`rounded px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider ${statusClass}`}
                 >
-                  {trait.status}
+                  {label}
                 </span>
                 <span className="font-mono text-xs font-bold text-[#111217] dark:text-[#F5F7FA] w-7 text-right">
                   {trait.value}
@@ -127,7 +135,8 @@ export function FeelMixer() {
               className="w-full h-1.5 bg-[#D9D6CF] dark:bg-[#272C34] rounded-lg appearance-none cursor-pointer accent-[#2547E8] dark:accent-[#6782FF]"
             />
           </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Natural Language Feel Mapper */}

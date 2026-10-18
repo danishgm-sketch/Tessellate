@@ -220,6 +220,7 @@ Every control visibly indicates one of:
 - overridden;
 - locked.
 
+At Project Scope, values are labelled `Project`, because no ancestor value is being inherited.
 Reset returns to inheritance.
 
 ### 7.2 Style
@@ -385,6 +386,8 @@ UI supports:
 - `Unlock all`.
 
 Recomposition must preserve locked dimensions.
+
+Locking Design DNA snapshots the current effective values so parent or project edits do not restyle the locked node. When the node is unlocked, those frozen values remain local overrides; `Reset to Inherited` removes them and resumes the ancestor cascade. The lock control must explain this behavior.
 
 ## 12. Replace flow
 

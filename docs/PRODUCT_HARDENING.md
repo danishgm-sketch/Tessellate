@@ -31,7 +31,7 @@ Do not advance a checkbox merely because code exists. Record evidence and defect
 - [x] 15 Compose UX — controls, loading, invalid input, interruption and mobile. Local production-preview browser checks pass on desktop/mobile with red-to-green regressions for five input, state, and accessibility defects. Evidence: `quality/STEP_15_EVIDENCE.md` and `quality/evidence/step-15/`; deployed review verification remains at Step 45.
 - [x] 16 Exact Compose → Workbench manifest handoff, including props and locks. Direction C was selected through the visible preview and compared with the Workbench manifest export at desktop and mobile widths; evidence: `quality/STEP_16_EVIDENCE.md` and `quality/evidence/step-16/after/`.
 - [x] 17 Workbench fundamentals — selection, canvas, panels, keyboard, mobile. The visible Direction C journey now selects project/root, section, component and element nodes, exercises all five modes and panels, and verifies desktop/mobile navigation. It exposed and fixed resource-kind flattening and canvas selection on disabled controls; both red-to-green regressions and runtime captures are in `quality/STEP_17_EVIDENCE.md` and `quality/evidence/step-17/`. Public review verification remains at Step 45.
-- [ ] 18 Intent inheritance — inherited/overridden/locked/reset at all levels.
+- [x] 18 Intent inheritance — inherited/overridden/locked/reset at available visible Workbench levels. Project-scope DNA now says Project; locks disclose snapshot persistence; reset resumes ancestor inheritance. Desktop/mobile browser evidence and local runtime reports: `quality/STEP_18_EVIDENCE.md` and `quality/evidence/step-18/`. Public review verification remains at Step 45.
 - [ ] 19 Individual mutations — correct changes, unique IDs, undo and export.
 - [ ] 20 Structural mutations — divergence, required content and exact lock preservation.
 - [ ] 21 History — 50+ operations, exact undo/redo, reload and checkpoints.
@@ -93,9 +93,9 @@ all owner-specified input/state/persistence/browser/accessibility/network/securi
 dimensions. Allowed results: PASS, FAIL, DEGRADED, NOT APPLICABLE, LAB ONLY.
 Unexecuted applicable checks are FAIL (missing evidence), never presumed PASS.
 
-Steps 05–17 are complete within their stated local scopes and evidence files.
-Step 18 is next: verify inherited, overridden, locked and reset values through the
-visible Workbench hierarchy. Local tests and browser evidence do not replace the
+Steps 05–18 are complete within their stated local scopes and evidence files.
+Step 19 is next: verify each individual mutation, its exact change, unique IDs,
+undo behavior, and export. Local tests and browser evidence do not replace the
 deployed-site checks planned for the public RC gate.
 
 For P0/P1 keep issue, reproduction, screenshot/log, root cause, failing regression,

@@ -73,7 +73,7 @@ describe('Workbench UI Components', () => {
     expect(html).toContain('Warmth');
     expect(html).toContain('Technicality');
     expect(html).toContain('Luxury');
-    expect(html).toContain('inherited');
+    expect(html).toContain('Inherited');
   });
 
   it('renders RightInspector with tabs and target scope', () => {

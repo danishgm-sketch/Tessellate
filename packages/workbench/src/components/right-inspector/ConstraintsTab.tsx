@@ -23,7 +23,7 @@ export function ConstraintsTab() {
     { key: 'style', label: 'Lock Style', desc: 'Freezes local colors, radiuses, and typography.' },
     { key: 'content', label: 'Lock Content', desc: 'Locks text and data fixture content.' },
     { key: 'motion', label: 'Lock Motion', desc: 'Locks transition and animation settings.' },
-    { key: 'dna', label: 'Lock Design DNA', desc: 'Protects DNA overrides during global re-composition.' },
+    { key: 'dna', label: 'Lock Design DNA', desc: 'Preserves current effective DNA during re-composition. Inherited values stay local after unlock; reset to inherit them again.' },
   ];
 
   return (

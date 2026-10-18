@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147 with desktop/mobile browser evidence; public-site verification remains pending for Step 45.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45.",
   "entries": [
     {
       "id": "AUD-001",
@@ -4801,7 +4801,95 @@
         "after": "The composer contract and desktop/mobile visible selection journeys pass with resource-kind-preserving nodes."
       },
       "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-150",
+      "severity": "medium",
+      "route": "/workbench?project=Direction-C",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Project DNA values were labelled inherited",
+      "expected": "When no node is selected, Design DNA status labels should identify the project as the value source. Node scopes should continue to distinguish inherited, overridden, and locked values.",
+      "actual": "The Feel Mixer, Visual Ambition, and Structural Creativity all displayed INHERITED while Project Scope was active, even though those values were the project-level source.",
+      "reproduction": [
+        "Compose the exact employee-experience brief, open Direction C, and open the Workbench at 1440×900.",
+        "Select any node, then use Deselect Node to enter Project Scope.",
+        "Inspect the Feel Mixer, Visual Ambition, and Structural Creativity status badges. Before the fix all seven badges read INHERITED."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-18/before/project-scope-reported-as-inherited.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-18/before/project-scope-reported-as-inherited.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-18/after/project-scope-labelled-as-project.png",
+        "quality/evidence/step-18/after/mobile-project-and-inherited-status.png"
+      ],
+      "rootCause": "FeelMixer and IntentTab treated a missing selected node as the inherited state instead of as the project-level source scope.",
+      "affectedFiles": [
+        "packages/workbench/src/components/feel-mixer/FeelMixer.tsx",
+        "packages/workbench/src/components/right-inspector/IntentTab.tsx",
+        "tests/e2e/workbench-inheritance-hardening.spec.ts"
+      ],
+      "remediation": "Render Project at project scope, Inherited or Overridden at an editable node scope, and Locked where a local or ancestor lock applies. A browser regression checks all seven project-scope labels and representative mobile inheritance.",
+      "fixCommit": null,
+      "runtimeReports": [
+        "quality/evidence/step-18/before/project-scope-reported-as-inherited.json",
+        "quality/evidence/step-18/after/project-scope-labelled-as-project.json",
+        "quality/evidence/step-18/after/mobile-project-and-inherited-status.json"
+      ],
+      "regression": {
+        "before": "The visible desktop assertion failed because the Project label was absent and the seven values were reported as inherited.",
+        "after": "Desktop shows seven Project labels at Project Scope; mobile shows the Project source and inherited child value. Both runs report zero console errors, warnings, uncaught exceptions, failed requests, and HTTP errors."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-151",
+      "severity": "medium",
+      "route": "/workbench?project=Direction-C",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "DNA lock snapshot behavior was not explained after unlocking",
+      "expected": "The lock control should explain that a lock preserves current effective DNA as local values and that Reset to Inherited resumes ancestor values after unlocking.",
+      "actual": "Lock Design DNA only said it protected overrides during global recomposition. After unlock, inherited values appeared as local overrides and required an explicit reset without explaining why.",
+      "reproduction": [
+        "In Workbench, select a node inheriting from its parent and lock Design DNA.",
+        "Change the parent value while the child remains locked, then unlock the child.",
+        "Observe that the child retains its frozen value as an override and that Reset to Inherited restores the new parent value."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-18/before/unlock-snapshots-as-overrides.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-18/before/unlock-snapshots-as-overrides.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-18/after/locked-dna-stays-frozen.png",
+        "quality/evidence/step-18/after/unlocked-snapshot-before-reset.png",
+        "quality/evidence/step-18/after/inheritance-restored-after-reset.png"
+      ],
+      "rootCause": "The lock description documented protection during recomposition but omitted that the frozen effective values remain local after unlock until explicitly reset.",
+      "affectedFiles": [
+        "packages/workbench/src/components/right-inspector/ConstraintsTab.tsx",
+        "packages/workbench/src/components/feel-mixer/FeelMixer.tsx",
+        "tests/e2e/workbench-inheritance-hardening.spec.ts"
+      ],
+      "remediation": "Explain the snapshot and reset behavior in the Lock Design DNA control and name the ancestor inheritance behavior in the reset tooltip. The visible browser regression verifies locked, overridden-after-unlock, and inherited-after-reset states.",
+      "fixCommit": null,
+      "runtimeReports": [
+        "quality/evidence/step-18/before/unlock-snapshots-as-overrides.json",
+        "quality/evidence/step-18/after/locked-dna-stays-frozen.json",
+        "quality/evidence/step-18/after/unlocked-snapshot-before-reset.json",
+        "quality/evidence/step-18/after/inheritance-restored-after-reset.json"
+      ],
+      "regression": {
+        "before": "The visible test expected immediate inheritance after unlock and received the frozen snapshot; the saved screenshot showed six DNA properties marked Overridden and a Reset to Inherited control with no explanation.",
+        "after": "The Locks panel explains snapshot persistence. The desktop regression confirms the frozen child value remains local after unlock, then Reset to Inherited picks up the changed parent value with no runtime or network errors."
+      },
+      "status": "fixed-local-verified"
     }
   ],
-  "generatedAt": "2026-10-18T22:13:33.000Z"
+  "generatedAt": "2026-10-18T22:41:46.805Z"
 }

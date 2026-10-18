@@ -1,0 +1,31 @@
+{
+  "url": "http://localhost:4321/workbench?project=proj-direction-c-9c94f6d0c3af42688be7b71b7eedda6cdirc",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "checks": {
+    "selectedScreen": "Team Overview",
+    "nodePath": [
+      {
+        "id": "root-screen-overview",
+        "type": "layout"
+      },
+      {
+        "id": "container-screen-overview-canvas",
+        "type": "layout"
+      },
+      {
+        "id": "node-screen-overview-overview-header-2",
+        "type": "block"
+      }
+    ],
+    "mobilePersistence": "project edit visible on child after navigation"
+  },
+  "screenshot": "quality\\evidence\\step-18\\after\\mobile-project-and-inherited-status.png"
+}

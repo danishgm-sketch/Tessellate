@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 149 findings (36 High, 112 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 29 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–149 in Compose/resource/Workbench previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–142; Step 15 added AUD-143–147; Step 17 adds AUD-148–149. The composition, data-truth, resource-accessibility, and Workbench findings are fixed locally, with deployed review verification still pending. AUD-134–137 record ecommerce, digital music, flight-management, and film-streaming briefs that inherited unrelated product workflows; AUD-138 records flight-oriented copy in destination search; AUD-139 records the missing Product Catalog to Product Detail path; AUD-140 records dark-canvas contrast failures in expressive Gold resource variants; AUD-141 records keyboard-inaccessible scrollable Gold resource content; AUD-142 records mobile clipping in the three-pane shell; AUD-148 records disabled-control canvas selection failure; AUD-149 records resource-kind flattening in composition. The full current-source visible benchmark covered 100 briefs and 300 directions at desktop and mobile sizes; reports record zero unresolved diagnostics, console errors, warnings, uncaught exceptions, failed requests, or HTTP errors. Issue-specific before/after captures and red/green regressions are recorded. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See quality/STEP_08_EVIDENCE.md, quality/STEP_14_EVIDENCE.md, quality/STEP_15_EVIDENCE.md, quality/STEP_17_EVIDENCE.md, and evidence/catalog-search-v20/.
+**Current disposition:** 151 findings (36 High, 114 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 31 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–151 in Compose/resource/Workbench previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–142; Step 15 added AUD-143–147; Step 17 added AUD-148–149; Step 18 added AUD-150–151. The composition, data-truth, resource-accessibility, and Workbench findings are fixed locally, with deployed review verification still pending. AUD-134–137 record ecommerce, digital music, flight-management, and film-streaming briefs that inherited unrelated product workflows; AUD-138 records flight-oriented copy in destination search; AUD-139 records the missing Product Catalog to Product Detail path; AUD-140 records dark-canvas contrast failures in expressive Gold resource variants; AUD-141 records keyboard-inaccessible scrollable Gold resource content; AUD-142 records mobile clipping in the three-pane shell; AUD-148 records disabled-control canvas selection failure; AUD-149 records resource-kind flattening in composition; AUD-150 records incorrect Project Scope DNA labels; AUD-151 records unclear lock snapshot behavior. The full current-source visible benchmark covered 100 briefs and 300 directions at desktop and mobile sizes; reports record zero unresolved diagnostics, console errors, warnings, uncaught exceptions, failed requests, or HTTP errors. Issue-specific before/after captures and red/green regressions are recorded. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See quality/STEP_08_EVIDENCE.md, quality/STEP_14_EVIDENCE.md, quality/STEP_15_EVIDENCE.md, quality/STEP_17_EVIDENCE.md, quality/STEP_18_EVIDENCE.md, and evidence/catalog-search-v20/.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -1550,6 +1550,50 @@ with zero findings. That harness race is not counted as a product defect.
   all three panes fit within 390px; desktop checks confirm all three columns
   remain present with no horizontal overflow. CI on the fixed commit is pending.
 - **Disposition:** fixed locally; deployed verification remains pending.
+
+### AUD-150 — Project DNA values were labelled inherited
+
+- **Severity:** Medium.
+- **Evidence:** the before screenshot at
+  `quality/evidence/step-18/before/project-scope-reported-as-inherited.png`
+  shows Project Scope while all Feel Mixer and Intent badges say INHERITED. The
+  after desktop capture labels the same seven values PROJECT; the mobile report
+  verifies the project source and an inherited child value.
+- **Reproduction:** compose the exact employee-experience brief, open Direction C,
+  select a node, deselect it, and inspect all DNA status badges at 1440 × 900.
+- **Root cause:** the inspector treated a missing selected node as an inherited
+  value rather than as the project-level source.
+- **Affected code:** `packages/workbench/src/components/feel-mixer/FeelMixer.tsx`,
+  `packages/workbench/src/components/right-inspector/IntentTab.tsx`, and the
+  inheritance browser regression.
+- **Remediation:** show Project at the base scope, Inherited or Overridden for
+  node values, and Locked when a lock applies. The desktop regression checks all
+  seven project-scope labels; mobile exercises an inherited node value.
+- **Verification:** both desktop and mobile Playwright checks pass with zero
+  console errors, warnings, uncaught exceptions, failed requests, or HTTP errors.
+  Public review verification remains scheduled for Step 45.
+
+### AUD-151 — DNA lock snapshot behavior was not explained after unlocking
+
+- **Severity:** Medium.
+- **Evidence:** the before capture at
+  `quality/evidence/step-18/before/unlock-snapshots-as-overrides.png` shows all
+  visible DNA dimensions marked Overridden after unlock, with Reset to Inherited
+  available. The after captures show the locked value frozen, the unlocked
+  snapshot explained by the lock control, and the changed parent value restored
+  after an explicit reset.
+- **Reproduction:** lock Design DNA on an inheriting child, change its parent,
+  unlock the child, then inspect its status and reset control.
+- **Root cause:** the control described protection during recomposition but did
+  not disclose that the frozen effective values remain local after unlock.
+- **Affected code:** `packages/workbench/src/components/right-inspector/ConstraintsTab.tsx`,
+  `packages/workbench/src/components/feel-mixer/FeelMixer.tsx`, and the
+  inheritance browser regression.
+- **Remediation:** explain that the DNA snapshot remains local after unlock and
+  that Reset to Inherited resumes ancestor values. The visible regression checks
+  locked, unlocked-overridden, and reset-inherited states.
+- **Verification:** desktop visible UI checks pass with clean runtime/network
+  reports. Public review verification remains scheduled for Step 45.
 
 ## LOW
 
