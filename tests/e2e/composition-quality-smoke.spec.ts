@@ -46,8 +46,9 @@ test('showcase identity survives composition and renders in the public preview',
     },
     {
       slug: 'showcase-financial-terminal',
-      brand: 'Account Workspace',
-      initials: 'AW',
+      brand: 'Market Workspace',
+      initials: 'MW',
+      screen: 'Market Overview',
     },
   ];
   const viewport = page.viewportSize();
@@ -58,6 +59,14 @@ test('showcase identity survives composition and renders in the public preview',
     await expect(page.getByLabel('Example screen')).toBeVisible();
     await expect(page.getByText(item.brand, { exact: true }).first()).toBeVisible();
     await expect(page.getByText(item.initials, { exact: true }).first()).toBeVisible();
+    if (item.screen) {
+      const screen = page.getByLabel('Example screen');
+      await expect(screen.locator('option').filter({ hasText: item.screen })).toHaveCount(1);
+      await screen.selectOption({ label: item.screen });
+      const preview = page.locator('.tess-screen');
+      await expect(preview).toContainText(item.screen);
+      await expect(preview).not.toContainText(/bank statements|reconcile statements/i);
+    }
     const screenshot = `${item.slug}-${viewportLabel}.png`;
     await page.screenshot({
       path: path.resolve(process.cwd(), 'quality/evidence/composition-quality/after', screenshot),
@@ -267,6 +276,330 @@ test('review representative marketplace and community compositions in the real b
   };
   fs.writeFileSync(path.join(evidenceDir, 'runtime.json'), `${JSON.stringify(runtime, null, 2)}\n`);
 
+  expect(consoleErrors).toEqual([]);
+  expect(uncaught).toEqual([]);
+  expect(failedRequests).toEqual([]);
+  expect(httpErrors).toEqual([]);
+});
+
+test('SaaS overview activity uses a truthful chronological feed with human-readable examples', async ({
+  page,
+  isMobile,
+}) => {
+  const viewportLabel = isMobile ? 'mobile' : 'desktop';
+  test.setTimeout(120000);
+  const consoleErrors: string[] = [];
+  const uncaught: string[] = [];
+  const failedRequests: string[] = [];
+  const httpErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => uncaught.push(error.message));
+  page.on('requestfailed', (request) => failedRequests.push(request.url()));
+  page.on('response', (response) => {
+    if (response.status() >= 400) httpErrors.push(`${response.status()} ${response.url()}`);
+  });
+
+  await page.goto('/compose');
+  await expect(page.locator('[data-testid="catalog-status"]')).toContainText('Catalogue ready', {
+    timeout: 15000,
+  });
+  await page
+    .locator('textarea#description')
+    .fill(
+      'A cloud workspace helps a 120-person design consultancy plan client projects, assign ownership, review milestones, and control access by team role.'
+    );
+  const submit = page.locator('[data-testid="compose-submit-btn"]');
+  await expect(submit).toBeEnabled();
+  await submit.click();
+
+  const reviewed: Array<Record<string, unknown>> = [];
+  for (const number of ['01', '02', '03']) {
+    const card = page.locator(`[data-testid="direction-card-${number}"]`);
+    await expect(card).toBeVisible();
+    await card.getByRole('button', { name: 'Inspect full preview and DNA' }).click();
+    const dialog = page.getByRole('dialog', { name: new RegExp(`Direction ${number}`) });
+    await expect(dialog).toBeVisible();
+    const details = dialog
+      .locator('details')
+      .filter({ hasText: 'Design DNA and resource references' });
+    await details.locator('summary').click();
+    const manifest = JSON.parse(await details.locator('pre').innerText()) as {
+      diagnostics: unknown[];
+      screens: Array<{ id: string; name: string; rootNode: AuditNode }>;
+    };
+    const dashboard = manifest.screens.find((screen) => screen.name === 'Overview Dashboard');
+    expect(dashboard, `Direction ${number} must include the SaaS overview`).toBeDefined();
+    const activity = dashboard
+      ? collectNodes(dashboard.rootNode).find((node) => node.semanticRole === 'activity-feed')
+      : undefined;
+    expect(activity?.resourceRef?.slug).toBe('timeline');
+    expect(activity?.props.title).toBe('Recent activity');
+    const events = activity?.props.events as
+      Array<{ time: string; title: string; desc: string }> | undefined;
+    expect(events?.length).toBeGreaterThan(0);
+    expect(events?.every((event) => event.time === 'Example')).toBe(true);
+    const eventCopy = JSON.stringify(events);
+    expect(eventCopy).not.toMatch(/\bStep\s+\d+\b/i);
+    expect(eventCopy).not.toMatch(/\b[a-z][a-z0-9]*(?:-[a-z0-9]+)+\b/i);
+
+    await details.locator('summary').click();
+    const screenSelect = dialog.getByLabel('Direction preview screen');
+    await screenSelect.selectOption(dashboard!.id);
+    const canvas = dialog.locator('.tess-screen');
+    await expect(canvas).toContainText('Recent activity');
+    await expect(canvas).not.toContainText('Mark all as read');
+    await expect(canvas).not.toContainText('Step 1');
+    await expect(canvas.locator('[data-testid="missing-resource-recovery"]')).toHaveCount(0);
+    await expect(canvas.locator('[data-testid="unresolved-required-role-diagnostic"]')).toHaveCount(
+      0
+    );
+    const activityVisual = canvas.locator('[data-semantic-role="activity-feed"]');
+    await dialog.evaluate((element) => {
+      element.scrollTop = 0;
+    });
+    const topScreenshot = isMobile
+      ? `activity-feed-sas-01-direction-${number}-${viewportLabel}-top.png`
+      : undefined;
+    if (topScreenshot) {
+      await page.screenshot({
+        path: path.resolve(
+          process.cwd(),
+          'quality/evidence/step-14/manual-review/after',
+          topScreenshot
+        ),
+        animations: 'disabled',
+      });
+    }
+    await activityVisual.scrollIntoViewIfNeeded();
+    await expect(activityVisual).toBeInViewport();
+
+    const screenshot = `activity-feed-sas-01-direction-${number}-${viewportLabel}.png`;
+    const screenshotPath = path.resolve(
+      process.cwd(),
+      'quality/evidence/step-14/manual-review/after',
+      screenshot
+    );
+    fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
+    await page.screenshot({ path: screenshotPath, animations: 'disabled' });
+    const dialogTitle = dialog.getByRole('heading', {
+      name: new RegExp(`Direction ${number}`),
+    });
+    await dialogTitle.scrollIntoViewIfNeeded();
+    await expect(dialogTitle).toBeInViewport();
+    reviewed.push({
+      direction: number,
+      screen: dashboard!.name,
+      activityResource: activity!.resourceRef?.slug,
+      activityTitle: activity!.props.title,
+      events,
+      screenshot,
+      topScreenshot,
+    });
+    await dialog.getByRole('button', { name: 'Close dialog' }).click();
+  }
+
+  const runtimeReportPath = path.resolve(
+    process.cwd(),
+    'quality/evidence/step-14/manual-review/after',
+    `activity-feed-runtime-${viewportLabel}.json`
+  );
+  fs.writeFileSync(
+    runtimeReportPath,
+    `${JSON.stringify(
+      {
+        url: page.url(),
+        viewport: page.viewportSize(),
+        status: 'passed',
+        reviewed,
+        consoleErrors,
+        uncaught,
+        failedRequests,
+        httpErrors,
+      },
+      null,
+      2
+    )}\n`
+  );
+  expect(consoleErrors).toEqual([]);
+  expect(uncaught).toEqual([]);
+  expect(failedRequests).toEqual([]);
+  expect(httpErrors).toEqual([]);
+});
+
+test('brokerage terminal brief composes market workflows instead of banking screens', async ({
+  page,
+  isMobile,
+}) => {
+  const viewportLabel = isMobile ? 'mobile' : 'desktop';
+  test.setTimeout(120000);
+  const consoleErrors: string[] = [];
+  const uncaught: string[] = [];
+  const failedRequests: string[] = [];
+  const httpErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => uncaught.push(error.message));
+  page.on('requestfailed', (request) => failedRequests.push(request.url()));
+  page.on('response', (response) => {
+    if (response.status() >= 400) httpErrors.push(`${response.status()} ${response.url()}`);
+  });
+
+  await page.goto('/compose');
+  await expect(page.locator('[data-testid="catalog-status"]')).toContainText('Catalogue ready', {
+    timeout: 15000,
+  });
+  await page
+    .locator('textarea#description')
+    .fill(
+      'A brokerage terminal displays securities, market data, order-book depth, and verified trade execution for professional equity dealers.'
+    );
+  const submit = page.locator('[data-testid="compose-submit-btn"]');
+  await expect(submit).toBeEnabled();
+  await submit.click();
+
+  const reviewed: Array<Record<string, unknown>> = [];
+  for (const number of ['01', '02', '03']) {
+    const card = page.locator(`[data-testid="direction-card-${number}"]`);
+    await expect(card).toBeVisible();
+    await card.getByRole('button', { name: 'Inspect full preview and DNA' }).click();
+    const dialog = page.getByRole('dialog', { name: new RegExp(`Direction ${number}`) });
+    await expect(dialog).toBeVisible();
+    const details = dialog
+      .locator('details')
+      .filter({ hasText: 'Design DNA and resource references' });
+    await details.locator('summary').click();
+    const manifest = JSON.parse(await details.locator('pre').innerText()) as {
+      diagnostics: unknown[];
+      screens: Array<{ id: string; name: string; rootNode: AuditNode }>;
+    };
+    const screenNames = manifest.screens.map((screen) => screen.name);
+    expect(screenNames).toEqual(
+      expect.arrayContaining(['Market Overview', 'Order Book', 'Positions & Risk'])
+    );
+    expect(manifest.diagnostics).toEqual([]);
+    expect(JSON.stringify(manifest.screens).toLocaleLowerCase()).not.toMatch(
+      /bank statements|reconcile statements|household budget/
+    );
+
+    const marketOverview = manifest.screens.find((screen) => screen.name === 'Market Overview');
+    expect(marketOverview).toBeDefined();
+    const metrics = marketOverview
+      ? collectNodes(marketOverview.rootNode).find(
+          (node) => node.resourceRef?.slug === 'dashboard-kpi-grid'
+        )
+      : undefined;
+    const metricCards = metrics?.props.cards as Array<{ val: string; status: string }> | undefined;
+    expect(metricCards?.length).toBeGreaterThan(0);
+    expect(
+      metricCards?.every((card) => card.val === '—' && card.status === 'Market data not connected')
+    ).toBe(true);
+    const activity = marketOverview
+      ? collectNodes(marketOverview.rootNode).find((node) => node.semanticRole === 'activity-feed')
+      : undefined;
+    expect(activity?.resourceRef?.slug).toBe('timeline');
+    expect(activity?.props.title).toBe('Recent activity');
+    const events = activity?.props.events as
+      Array<{ time: string; title: string; desc: string }> | undefined;
+    expect(events?.length).toBeGreaterThan(0);
+    expect(events?.every((event) => event.time === 'Example')).toBe(true);
+    expect(JSON.stringify(events)).not.toMatch(/\bStep\s+\d+\b|\b[a-z][a-z0-9]*(?:-[a-z0-9]+)+\b/i);
+
+    await details.locator('summary').click();
+    const screenSelect = dialog.getByLabel('Direction preview screen');
+    const canvas = dialog.locator('.tess-screen');
+    await screenSelect.selectOption(marketOverview!.id);
+    await expect(canvas).toContainText('Market Overview');
+    await expect(canvas).not.toContainText(/bank statements|reconcile statements/i);
+    for (const screenName of ['Order Book', 'Positions & Risk']) {
+      const screen = manifest.screens.find((candidate) => candidate.name === screenName);
+      expect(screen, `${screenName} should exist in Direction ${number}`).toBeDefined();
+      await screenSelect.selectOption(screen!.id);
+      await expect(canvas).toContainText(screenName);
+    }
+    await screenSelect.selectOption(marketOverview!.id);
+    await expect(canvas).toContainText('Recent activity');
+    const unavailableBadges = canvas.getByText('Market data not connected', { exact: true });
+    await expect(unavailableBadges).toHaveCount(metricCards!.length);
+    for (let index = 0; index < metricCards!.length; index += 1) {
+      await expect(unavailableBadges.nth(index)).toHaveClass(/bg-neutral-/);
+      await expect(unavailableBadges.nth(index)).not.toHaveClass(/bg-emerald-/);
+    }
+    const metricGrid = unavailableBadges.first().locator('xpath=../..');
+    const gridColumnCount = await metricGrid.evaluate(
+      (element) => getComputedStyle(element).gridTemplateColumns.split(' ').length
+    );
+    expect(gridColumnCount).toBe(isMobile ? 1 : 3);
+    const screenshot = `fintech-trading-fin-05-direction-${number}-${viewportLabel}.png`;
+    const screenshotPath = path.resolve(
+      process.cwd(),
+      'quality/evidence/step-14/manual-review/after',
+      screenshot
+    );
+    fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
+    await dialog.evaluate((root) => {
+      const scrollables = [root, ...root.querySelectorAll('*')].filter(
+        (element): element is HTMLElement =>
+          element instanceof HTMLElement && element.scrollHeight > element.clientHeight + 1
+      );
+      for (const element of scrollables) element.scrollTop = 0;
+    });
+    await page.screenshot({ path: screenshotPath, animations: 'disabled' });
+    const screenshots = [screenshot];
+    if (isMobile) {
+      const bottomScreenshot = `fintech-trading-fin-05-direction-${number}-mobile-bottom.png`;
+      const bottomScreenshotPath = path.resolve(
+        process.cwd(),
+        'quality/evidence/step-14/manual-review/after',
+        bottomScreenshot
+      );
+      await dialog.evaluate((root) => {
+        const scrollables = [root, ...root.querySelectorAll('*')].filter(
+          (element): element is HTMLElement =>
+            element instanceof HTMLElement && element.scrollHeight > element.clientHeight + 1
+        );
+        for (const element of scrollables) element.scrollTop = element.scrollHeight;
+      });
+      await page.screenshot({ path: bottomScreenshotPath, animations: 'disabled' });
+      screenshots.push(bottomScreenshot);
+    }
+    reviewed.push({
+      direction: number,
+      screenNames,
+      activityResource: activity?.resourceRef?.slug,
+      activityTitle: activity?.props.title,
+      metricCards,
+      metricGridColumns: gridColumnCount,
+      events,
+      screenshots,
+    });
+    await dialog.getByRole('button', { name: 'Close dialog' }).click();
+  }
+
+  const runtimeReportPath = path.resolve(
+    process.cwd(),
+    'quality/evidence/step-14/manual-review/after',
+    `fintech-trading-runtime-${viewportLabel}.json`
+  );
+  fs.writeFileSync(
+    runtimeReportPath,
+    `${JSON.stringify(
+      {
+        url: page.url(),
+        viewport: page.viewportSize(),
+        status: 'passed',
+        reviewed,
+        consoleErrors,
+        uncaught,
+        failedRequests,
+        httpErrors,
+      },
+      null,
+      2
+    )}\n`
+  );
   expect(consoleErrors).toEqual([]);
   expect(uncaught).toEqual([]);
   expect(failedRequests).toEqual([]);
