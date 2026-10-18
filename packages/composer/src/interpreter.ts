@@ -16,6 +16,7 @@ import { detectProductArchetypes, getProductArchetype } from './archetypes.js';
 import { findBlueprintByArchetype, type ProductBlueprint } from './blueprints.js';
 import {
   specialiseConsumer,
+  specialiseEcommerce,
   specialiseMarketplace,
   specialisePeopleOperations,
 } from './domain-context.js';
@@ -105,7 +106,10 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   const definition = getProductArchetype(primaryTag);
   const archetypeDef = definition
     ? specialiseConsumer(
-        specialiseMarketplace(specialisePeopleOperations(definition, text), text),
+        specialiseEcommerce(
+          specialiseMarketplace(specialisePeopleOperations(definition, text), text),
+          text
+        ),
         text
       )
     : undefined;

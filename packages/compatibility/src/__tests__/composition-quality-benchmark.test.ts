@@ -99,6 +99,19 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
         includesAny(JSON.stringify(result.productModel.workflows), profile!.workflowAnyOf)
       ).toBe(true);
       expect(includesAny(JSON.stringify(result.screenGraph), profile!.screenAnyOf)).toBe(true);
+      if (brief.id === 'ECOM-06') {
+        const screenNames = result.screenGraph.groups.flatMap((group) =>
+          group.screens.map((screen) => screen.name)
+        );
+        expect(result.productModel.primaryObjective).toMatch(/return|refund/i);
+        expect(JSON.stringify(result.productModel.workflows)).toMatch(/return|refund/i);
+        expect(screenNames).toEqual(
+          expect.arrayContaining(['Order Lookup', 'Return Request', 'Refund Status'])
+        );
+        expect(screenNames).not.toEqual(
+          expect.arrayContaining(['Storefront Catalog', 'Product Detail', 'Checkout'])
+        );
+      }
       if (brief.id === 'CON-04') {
         const activityScreen = result.screenGraph.groups
           .flatMap((group) => group.screens)
@@ -119,6 +132,28 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
           `${brief.id} ${name} unresolved required roles: ${JSON.stringify(output.diagnostics ?? [])}`
         ).toEqual([]);
         expect(output.manifest.screens).not.toHaveLength(0);
+        if (brief.id === 'ECOM-06') {
+          const returnScreen = output.manifest.screens.find(
+            (screen) => screen.name === 'Return Request'
+          );
+          expect(returnScreen).toBeDefined();
+          expect(
+            returnScreen
+              ? collectNodes(returnScreen.rootNode).filter(
+                  (node) => node.semanticRole === 'settings-nav'
+                )
+              : []
+          ).toHaveLength(0);
+          const submitAction = returnScreen
+            ? collectNodes(returnScreen.rootNode).find(
+                (node) => node.semanticRole === 'save-footer'
+              )
+            : undefined;
+          expect(submitAction?.props.disabled).toBe(true);
+          expect(submitAction?.props.title).toBe(
+            'Connect a returns service before submitting requests.'
+          );
+        }
         const generatedProductCopy = JSON.stringify({
           model: result.productModel,
           graph: result.screenGraph,
@@ -178,9 +213,31 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
         }
 
         const nodes = output.manifest.screens.flatMap((screen) => collectNodes(screen.rootNode));
-        const metricNodes = nodes.filter(
-          (node) => node.resourceRef?.slug === 'dashboard-kpi-grid'
-        );
+        const conversionCtas = nodes.filter((node) => node.resourceRef?.slug === 'cta-minimal');
+        for (const node of conversionCtas) {
+          expect(
+            node.props.label,
+            `${brief.id} ${name} conversion CTA must not carry generic onboarding copy`
+          ).not.toBe('Continue onboarding');
+          if (brief.expectedPrimaryArchetype === 'ecommerce') {
+            expect(node.props.label).toBe('View product details');
+          }
+          const href = typeof node.props.href === 'string' ? node.props.href : '';
+          const target = href.startsWith('#') ? href.slice(1) : '';
+          const availableScreenIds = new Set(
+            output.manifest.screens.map((screen) => screen.screenNodeId)
+          );
+          expect(
+            availableScreenIds.has(target),
+            `${brief.id} ${name} conversion CTA target ${href || '(missing)'} must name a screen in this project`
+          ).toBe(true);
+          if (brief.expectedPrimaryArchetype === 'ecommerce') {
+            expect(
+              output.manifest.screens.find((screen) => screen.screenNodeId === target)?.name
+            ).toBe('Product Detail');
+          }
+        }
+        const metricNodes = nodes.filter((node) => node.resourceRef?.slug === 'dashboard-kpi-grid');
         if (!result.productModel.entities.some((entity) => entity.name === 'Employee')) {
           for (const node of metricNodes) {
             const cards = node.props.cards as Array<{ val: string; status: string }> | undefined;
@@ -267,8 +324,7 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
               const activity = screenNodes.find((node) => node.semanticRole === 'activity-feed');
               expect(activity?.props.title).toBe('Latest community updates');
               const events = activity?.props.events as
-                | Array<{ time: string; title: string; desc: string }>
-                | undefined;
+                Array<{ time: string; title: string; desc: string }> | undefined;
               expect(events?.length).toBeGreaterThan(0);
               expect(events?.every((event) => event.time === 'Example')).toBe(true);
               expect(JSON.stringify(events)).not.toMatch(

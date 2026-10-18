@@ -350,6 +350,84 @@ export function specialiseMarketplace(
   return base;
 }
 
+/** Route explicit returns-portal briefs through returns and refunds, not new purchases. */
+export function specialiseEcommerce(base: ArchetypeDefinition, text: string): ArchetypeDefinition {
+  if (
+    base.id !== 'ecommerce' ||
+    !/\b(?:returns? portal|return approval|refund steps|refund status|return request|process returns)\b/i.test(
+      text
+    )
+  ) {
+    return base;
+  }
+
+  return {
+    ...base,
+    name: 'Returns Portal',
+    primaryAudience: 'Online shoppers returning a purchase and support teams processing refunds',
+    primaryObjective:
+      'Help customers find a previous order, choose eligible items, and follow return approval and refund progress',
+    defaultEntities: [
+      {
+        name: 'Order',
+        description: 'A previous purchase and its items, date, and delivery status',
+        fields: ['id', 'orderNumber', 'customerId', 'purchasedAt', 'items', 'deliveryStatus'],
+      },
+      {
+        name: 'Return',
+        description: 'Selected eligible items, return reason, and approval status',
+        fields: ['id', 'orderId', 'itemIds', 'reason', 'approvalStatus', 'requestedAt'],
+      },
+      {
+        name: 'Refund',
+        description: 'The refund amount, destination, and processing status',
+        fields: ['id', 'returnId', 'amount', 'method', 'status', 'completedAt'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'request-return',
+        name: 'Find a previous order, choose eligible items, and submit a return request',
+        steps: ['find-order', 'check-eligible-items', 'choose-return-reason', 'submit-request'],
+      },
+      {
+        id: 'track-refund',
+        name: 'Follow return approval and refund progress',
+        steps: ['review-approval', 'track-return', 'confirm-refund'],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Order Lookup',
+        screenType: 'index-list',
+        purpose: 'Find a previous purchase by order number or account details',
+        jobs: ['find-order', 'review-purchased-items'],
+        required: true,
+      },
+      {
+        name: 'Return Request',
+        screenType: 'settings',
+        purpose: 'Choose eligible items, record a return reason, and submit the request',
+        jobs: ['check-eligible-items', 'choose-return-reason', 'submit-request'],
+        required: true,
+      },
+      {
+        name: 'Refund Status',
+        screenType: 'dashboard',
+        purpose: 'Review return approval, shipment progress, and refund status',
+        jobs: ['track-return', 'track-refund'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: base.requiredCapabilities.filter(
+      (capability) =>
+        !['responsive-image-gallery', 'persistent-cart-state', 'secure-payment-fields'].includes(
+          capability
+        )
+    ),
+  };
+}
+
 /** Keep community briefs focused on local groups and updates, not photo-story defaults. */
 export function specialiseConsumer(base: ArchetypeDefinition, text: string): ArchetypeDefinition {
   if (

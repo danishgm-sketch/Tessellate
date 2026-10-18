@@ -10,10 +10,16 @@ export function bindResourceContent(
   briefDescription = ''
 ): Record<string, unknown> {
   const employee = product.entities.some((entity) => entity.name === 'Employee');
+  const primaryArchetype = product.productArchetypes[0]?.tag ?? '';
   const isCommunity = /community|neighborhood/i.test(
     `${product.primaryAudience} ${product.primaryObjective}`
   );
   const isCommunityActivity = isCommunity && screen.name === 'Activity Stream';
+  const isReturnsPortal =
+    primaryArchetype === 'ecommerce' &&
+    /\b(?:returns? portal|return approval|refund steps|refund status|return request|previous purchase)\b/i.test(
+      `${briefDescription} ${product.primaryObjective}`
+    );
   const brand =
     role === 'channels-rail'
       ? 'Example channels'
@@ -34,10 +40,57 @@ export function bindResourceContent(
   const links = screens
     .filter((item) => item.navigationVisibility !== 'hidden' && !item.slug.includes(':'))
     .map((item) => ({ label: item.name, href: `#${item.id}` }));
+  const ctaCopyByArchetype: Record<string, string> = {
+    ai: 'Try the workspace',
+    analytics: 'Explore analytics',
+    creator: 'Explore creators',
+    ecommerce: 'View product details',
+    education: 'Explore courses',
+    fintech: 'Explore accounts',
+    marketplace: 'Explore listings',
+    media: 'Read stories',
+    productivity: 'Open your workspace',
+    'real-estate': 'Search properties',
+    recruitment: 'View open roles',
+    saas: 'Open your workspace',
+    travel: 'Explore destinations',
+  };
+  const primaryActionLabel = employee
+    ? 'Meet your team'
+    : isCommunity
+      ? 'See community updates'
+      : isReturnsPortal
+        ? 'Find an order'
+        : (ctaCopyByArchetype[primaryArchetype] ?? 'Explore the workspace');
+  const targetPatternsByArchetype: Record<string, RegExp> = {
+    ecommerce: /product detail/i,
+    education: /learning|course|catalog/i,
+    marketplace: /listing|marketplace|discover/i,
+    media: /article|story|feed|library/i,
+    'real-estate': /property|listing|search|map/i,
+    recruitment: /candidate|hiring|requisition|jobs/i,
+    travel: /destination|trip|travel|search/i,
+  };
+  const preferredTargetPattern = employee
+    ? /onboarding|welcome/i
+    : isReturnsPortal
+      ? /order lookup/i
+      : (targetPatternsByArchetype[primaryArchetype] ?? /overview|dashboard|home|workspace/i);
+  const primaryActionScreen =
+    screens.find((item) => preferredTargetPattern.test(item.name)) ??
+    screens.find((item) => /overview|dashboard|home|workspace/i.test(item.name)) ??
+    screens[0];
+  const secondaryActionScreen = screens.find((item) => item.id !== primaryActionScreen?.id);
+  const primaryActionHref = primaryActionScreen ? `#${primaryActionScreen.id}` : undefined;
+  const secondaryActionHref = secondaryActionScreen
+    ? `#${secondaryActionScreen.id}`
+    : primaryActionHref;
   const headline = employee ? 'A better workday starts with people.' : product.primaryObjective;
   const description = employee
     ? 'Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.'
-    : `A workspace for ${product.primaryAudience.toLowerCase()}. ${product.primaryObjective}.`;
+    : isReturnsPortal
+      ? 'Find a previous purchase, choose eligible items, and follow each return and refund step.'
+      : `A workspace for ${product.primaryAudience.toLowerCase()}. ${product.primaryObjective}.`;
   const items = employee
     ? [
         {
@@ -62,11 +115,29 @@ export function bindResourceContent(
           detail: 'Settings & policies',
         },
       ]
-    : product.entities.map((entity) => ({
-        title: entity.name,
-        description: entity.description ?? entity.name,
-        detail: 'Example content',
-      }));
+    : isReturnsPortal
+      ? [
+          {
+            title: 'Find a purchase',
+            description: 'Look up an order and review the items included in it.',
+            detail: 'Order lookup',
+          },
+          {
+            title: 'Choose eligible items',
+            description: 'Select what to return and record a reason for each item.',
+            detail: 'Return request',
+          },
+          {
+            title: 'Follow refund progress',
+            description: 'See approval, return delivery, and refund status together.',
+            detail: 'Refund status',
+          },
+        ]
+      : product.entities.map((entity) => ({
+          title: entity.name,
+          description: entity.description ?? entity.name,
+          detail: 'Example content',
+        }));
   const conversationExamples = /freelance|designer|proposal/i.test(briefDescription)
     ? [
         {
@@ -139,24 +210,37 @@ export function bindResourceContent(
               desc: 'Review organisational guidance and choose your notification preferences.',
             },
           ]
-        : isCommunityActivity
+        : isReturnsPortal && role === 'activity-feed'
           ? [
               {
                 time: 'Example',
-                title: 'A neighbour shared a local update',
-                desc: 'A local question or story can start a conversation with nearby group members.',
+                title: 'Return request received',
+                desc: 'The request is being reviewed against the original order and selected items.',
               },
               {
                 time: 'Example',
-                title: 'A hobby group welcomed new members',
-                desc: 'Shared-interest groups can bring introductions and upcoming events together.',
+                title: 'Refund progress updated',
+                desc: 'Approval, return delivery, and refund steps appear in one timeline.',
               },
             ]
-          : product.workflows.map((workflow, index) => ({
-              time: `Step ${index + 1}`,
-              title: workflow.name,
-              desc: workflow.steps.join(' → '),
-            }));
+          : isCommunityActivity
+            ? [
+                {
+                  time: 'Example',
+                  title: 'A neighbour shared a local update',
+                  desc: 'A local question or story can start a conversation with nearby group members.',
+                },
+                {
+                  time: 'Example',
+                  title: 'A hobby group welcomed new members',
+                  desc: 'Shared-interest groups can bring introductions and upcoming events together.',
+                },
+              ]
+            : product.workflows.map((workflow, index) => ({
+                time: `Step ${index + 1}`,
+                title: workflow.name,
+                desc: workflow.steps.join(' → '),
+              }));
   const count = briefDescription
     .match(/\b([\d,]+)[ -]+(?:person|employee|people)/i)?.[1]
     ?.replaceAll(',', '');
@@ -171,7 +255,13 @@ export function bindResourceContent(
         'progress-stepper': 'Welcome milestones',
         'value-proposition': 'Made for everyday employee experiences',
       }
-    : {};
+    : isReturnsPortal
+      ? {
+          'metric-cards': 'Return overview',
+          'activity-feed': 'Return progress',
+          'data-table': 'Orders and returns',
+        }
+      : {};
   const content: Record<string, unknown> = {
     title:
       role === 'message-thread'
@@ -191,17 +281,15 @@ export function bindResourceContent(
     description,
     subtitle: screen.purpose,
     panelTitle: employee ? 'Your first weeks, made clearer' : 'Your workspace',
-    panels: items
-      .slice(0, 3)
-      .map((item, index) => ({
-        id: `panel-${index}`,
-        label: item.detail,
-        text: `${item.title}\n${item.description}`,
-      })),
-    primaryCta: { label: employee ? 'Meet your team' : 'Open workspace', href: '#screen-overview' },
+    panels: items.slice(0, 3).map((item, index) => ({
+      id: `panel-${index}`,
+      label: item.detail,
+      text: `${item.title}\n${item.description}`,
+    })),
+    primaryCta: { label: primaryActionLabel, href: primaryActionHref },
     secondaryCta: {
-      label: employee ? 'Explore onboarding' : 'Browse records',
-      href: employee ? '#screen-onboarding' : '#screen-collection-index',
+      label: employee ? 'Explore onboarding' : 'See how it works',
+      href: secondaryActionHref,
     },
     note: 'Example interface · replace sample data with your organisation',
     items,
@@ -269,31 +357,49 @@ export function bindResourceContent(
         ]
       : product.workflows.map((workflow) => ({ title: workflow.name, tasks: workflow.steps })),
     label:
+      role === 'conversion-cta'
+        ? primaryActionLabel
+        : role === 'message-composer'
+          ? 'Write a message'
+          : role === 'auth-card'
+            ? 'Work email'
+            : role === 'settings-form'
+              ? isReturnsPortal
+                ? 'Return reason'
+                : 'Notification preferences'
+              : role === 'save-footer'
+                ? isReturnsPortal
+                  ? 'Submit return request'
+                  : 'Save preferences'
+                : role === 'auth-footer'
+                  ? 'Sign in requires your authentication backend'
+                  : 'Continue onboarding',
+    placeholder:
       role === 'message-composer'
-        ? 'Write a message'
-        : role === 'auth-card'
-          ? 'Work email'
-          : role === 'settings-form'
-            ? 'Notification preferences'
-            : role === 'save-footer'
-              ? 'Save preferences'
-              : role === 'auth-footer'
-                ? 'Sign in requires your authentication backend'
-                : 'Continue onboarding',
-    placeholder: role === 'message-composer' ? 'Write a message…' : undefined,
+        ? 'Write a message…'
+        : role === 'settings-form' && isReturnsPortal
+          ? 'Describe why these items are being returned'
+          : undefined,
     helperText:
       role === 'message-composer'
         ? 'Example input. Connect a messaging backend to send messages.'
-        : 'Example field. Connect persistence and your backend in the exported application.',
+        : role === 'settings-form' && isReturnsPortal
+          ? 'Example field. Connect order data and a returns service in the exported application.'
+          : 'Example field. Connect persistence and your backend in the exported application.',
     children:
       role === 'save-footer'
-        ? 'Save preferences'
+        ? isReturnsPortal
+          ? 'Submit return request'
+          : 'Save preferences'
         : role === 'auth-footer'
           ? 'Authentication backend required'
           : 'Continue',
     disabled: ['save-footer', 'auth-footer', 'action-controls'].includes(role),
-    href: employee ? '#screen-onboarding' : '#screen-overview',
+    href: primaryActionHref,
   };
+  if (role === 'save-footer' && isReturnsPortal) {
+    content.title = 'Connect a returns service before submitting requests.';
+  }
   if (role === 'order-summary') {
     const item = product.entities.find((entity) => /product|item|listing/i.test(entity.name));
     content.title = 'Order summary · example';
@@ -321,7 +427,12 @@ export function bindResourceContent(
     content.disabled = true;
     content.title = 'Connect a payment provider before enabling payment submission.';
   }
-  if (content.disabled && role !== 'payment-fields' && role !== 'submit-button') {
+  if (
+    content.disabled &&
+    role !== 'payment-fields' &&
+    role !== 'submit-button' &&
+    !(role === 'save-footer' && isReturnsPortal)
+  ) {
     content.title = 'Connect the exported application to your backend to enable this action.';
   }
   const accepted: Record<string, string[]> = {

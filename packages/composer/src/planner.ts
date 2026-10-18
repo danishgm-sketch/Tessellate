@@ -85,12 +85,21 @@ function requiredRolesForScreen(
     normalizeName(screenName) === 'activity stream' &&
     productModel.productArchetypes.some((archetype) => archetype.tag === 'consumer') &&
     productModel.entities.some((entity) => entity.name === 'Community Update');
+  const returnsPortalRequest =
+    screenType === 'settings' &&
+    normalizeName(screenName) === 'return request' &&
+    productModel.productArchetypes.some((archetype) => archetype.tag === 'ecommerce') &&
+    /return|refund/i.test(
+      `${productModel.primaryObjective} ${JSON.stringify(productModel.workflows)}`
+    );
 
   // A chronological community stream is the primary content, not a KPI
   // dashboard. Requiring metric cards here creates invented summary data.
   return communityActivityStream
     ? grammarRoles.filter((role) => role !== 'metric-cards')
-    : grammarRoles;
+    : returnsPortalRequest
+      ? grammarRoles.filter((role) => role !== 'settings-nav')
+      : grammarRoles;
 }
 
 function pluralizePath(value: string): string {
@@ -265,15 +274,17 @@ export function planScreenGraph(productModel: ProductModel): ScreenPlanResult {
   const explicitRequiredScreens = constraints.requiredScreens ?? [];
   const targetDevices =
     constraints.targetDevices.length > 0 ? constraints.targetDevices : [...ALL_DEVICE_TARGETS];
-  const hasBillingIntent = productModel.likelyScreens.some(
-    (screen) => screen.screenType === 'billing-account'
-  ) || [
-    ...productModel.jobsToBeDone,
-    ...productModel.workflows.map((workflow) => `${workflow.id} ${workflow.name}`),
-    productModel.primaryObjective,
-  ].some((value) =>
-    /\b(billing|subscriptions?|invoices?|paid plans?|pricing|monetiz|monetis|payment plans?|charge customers)\b/i.test(value)
-  );
+  const hasBillingIntent =
+    productModel.likelyScreens.some((screen) => screen.screenType === 'billing-account') ||
+    [
+      ...productModel.jobsToBeDone,
+      ...productModel.workflows.map((workflow) => `${workflow.id} ${workflow.name}`),
+      productModel.primaryObjective,
+    ].some((value) =>
+      /\b(billing|subscriptions?|invoices?|paid plans?|pricing|monetiz|monetis|payment plans?|charge customers)\b/i.test(
+        value
+      )
+    );
 
   if (!hasBillingIntent) {
     assumptions.push(

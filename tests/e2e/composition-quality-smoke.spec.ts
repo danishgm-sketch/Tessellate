@@ -17,7 +17,9 @@ const cases = [
   },
 ];
 
-test('showcase identity survives composition and renders in the public preview', async ({ page }) => {
+test('showcase identity survives composition and renders in the public preview', async ({
+  page,
+}) => {
   const consoleErrors: string[] = [];
   const uncaught: string[] = [];
   const failedRequests: string[] = [];
@@ -155,14 +157,21 @@ test('review representative marketplace and community compositions in the real b
       }));
       let continuationScreenshot: string | undefined;
       if (scrollState.overflows) {
-        await dialog.evaluate((element) => { element.scrollTop = element.scrollHeight; });
+        await dialog.evaluate((element) => {
+          element.scrollTop = element.scrollHeight;
+        });
         const reachedEnd = await dialog.evaluate(
-          (element) => element.scrollTop + element.clientHeight >= element.scrollHeight - 2,
+          (element) => element.scrollTop + element.clientHeight >= element.scrollHeight - 2
         );
-        expect(reachedEnd, `${item.id} Direction ${number} preview content must remain scroll-reachable`).toBe(true);
+        expect(
+          reachedEnd,
+          `${item.id} Direction ${number} preview content must remain scroll-reachable`
+        ).toBe(true);
         continuationScreenshot = `composition-${item.id.toLowerCase()}-direction-${number}-continued.png`;
         await dialog.screenshot({ path: path.join(evidenceDir, continuationScreenshot) });
-        await dialog.evaluate((element) => { element.scrollTop = 0; });
+        await dialog.evaluate((element) => {
+          element.scrollTop = 0;
+        });
       }
       const visibleCopy = await canvas.innerText();
 
@@ -257,6 +266,266 @@ test('review representative marketplace and community compositions in the real b
     httpErrors,
   };
   fs.writeFileSync(path.join(evidenceDir, 'runtime.json'), `${JSON.stringify(runtime, null, 2)}\n`);
+
+  expect(consoleErrors).toEqual([]);
+  expect(uncaught).toEqual([]);
+  expect(failedRequests).toEqual([]);
+  expect(httpErrors).toEqual([]);
+});
+
+test('storefront conversion CTAs use truthful copy and navigate to the generated product detail screen', async ({
+  page,
+  isMobile,
+}) => {
+  const viewportLabel = isMobile ? 'mobile' : 'desktop';
+  test.setTimeout(90000);
+  const consoleErrors: string[] = [];
+  const uncaught: string[] = [];
+  const failedRequests: string[] = [];
+  const httpErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => uncaught.push(error.message));
+  page.on('requestfailed', (request) => failedRequests.push(request.url()));
+  page.on('response', (response) => {
+    if (response.status() >= 400) httpErrors.push(`${response.status()} ${response.url()}`);
+  });
+
+  await page.goto('/compose');
+  await expect(page.locator('[data-testid="catalog-status"]')).toContainText('Catalogue ready', {
+    timeout: 15000,
+  });
+  await page
+    .locator('textarea#description')
+    .fill(
+      'A direct-to-consumer clothing store helps shoppers browse a seasonal catalog, compare garment details, choose a size, and complete checkout.'
+    );
+  const submit = page.locator('[data-testid="compose-submit-btn"]');
+  await expect(submit).toBeEnabled();
+  await submit.click();
+
+  for (const number of ['01', '02', '03']) {
+    const card = page.locator(`[data-testid="direction-card-${number}"]`);
+    await expect(card).toBeVisible();
+    await card.getByRole('button', { name: 'Inspect full preview and DNA' }).click();
+    const dialog = page.getByRole('dialog', { name: new RegExp(`Direction ${number}`) });
+    await expect(dialog).toBeVisible();
+    const details = dialog
+      .locator('details')
+      .filter({ hasText: 'Design DNA and resource references' });
+    await details.locator('summary').click();
+    const manifest = JSON.parse(await details.locator('pre').innerText()) as {
+      screens: Array<{ id: string; screenNodeId: string; name: string; rootNode: AuditNode }>;
+    };
+    const ctaNodes = manifest.screens
+      .flatMap((screen) => collectNodes(screen.rootNode))
+      .filter((node) => node.resourceRef?.slug === 'cta-minimal');
+    expect(
+      ctaNodes.length,
+      `Direction ${number} should include a marketing conversion CTA`
+    ).toBeGreaterThan(0);
+    for (const node of ctaNodes) {
+      expect(node.props.label).toBe('View product details');
+      const targetId = typeof node.props.href === 'string' ? node.props.href.slice(1) : '';
+      const targetScreen = manifest.screens.find(
+        (screen) => screen.id === targetId || screen.screenNodeId === targetId
+      );
+      expect(targetScreen?.name).toBe('Product Detail');
+
+      const screenSelect = dialog.getByLabel('Direction preview screen');
+      await details.locator('summary').click();
+      const productDetailLinks = dialog.getByRole('link', { name: /View product details/ });
+      await expect(productDetailLinks).toHaveCount(2);
+      await productDetailLinks.first().click();
+      await expect(screenSelect).toHaveValue(targetScreen?.id ?? '');
+      await expect(dialog.locator('.tess-screen')).toContainText('Product Detail');
+      if (number === '01') {
+        const screenshotPath = path.resolve(
+          process.cwd(),
+          `quality/evidence/step-14/manual-review/after/ecom-01-direction-01-${viewportLabel}.png`
+        );
+        fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
+        await dialog.screenshot({ path: screenshotPath, animations: 'disabled' });
+        const runtimeReportPath = path.resolve(
+          process.cwd(),
+          `quality/evidence/step-14/manual-review/after/ecom-cta-runtime-${viewportLabel}.json`
+        );
+        fs.writeFileSync(
+          runtimeReportPath,
+          `${JSON.stringify(
+            {
+              url: page.url(),
+              viewport: page.viewportSize(),
+              status: 'passed',
+              direction: number,
+              selectedScreen: await screenSelect.inputValue(),
+              visibleDestination: 'Product Detail',
+              consoleErrors,
+              uncaught,
+              failedRequests,
+              httpErrors,
+            },
+            null,
+            2
+          )}\n`
+        );
+      }
+    }
+    await dialog.getByRole('button', { name: 'Close dialog' }).click();
+  }
+
+  expect(consoleErrors).toEqual([]);
+  expect(uncaught).toEqual([]);
+  expect(failedRequests).toEqual([]);
+  expect(httpErrors).toEqual([]);
+});
+
+test('returns portal brief composes order lookup, return request, and refund status', async ({
+  page,
+  isMobile,
+}) => {
+  const viewportLabel = isMobile ? 'mobile' : 'desktop';
+  test.setTimeout(90000);
+  const consoleErrors: string[] = [];
+  const uncaught: string[] = [];
+  const failedRequests: string[] = [];
+  const httpErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => uncaught.push(error.message));
+  page.on('requestfailed', (request) => failedRequests.push(request.url()));
+  page.on('response', (response) => {
+    if (response.status() >= 400) httpErrors.push(`${response.status()} ${response.url()}`);
+  });
+
+  await page.goto('/compose');
+  await expect(page.locator('[data-testid="catalog-status"]')).toContainText('Catalogue ready', {
+    timeout: 15000,
+  });
+  await page
+    .locator('textarea#description')
+    .fill(
+      'An online returns portal lets customers find a previous purchase, choose eligible items, and follow the return approval and refund steps.'
+    );
+  const submit = page.locator('[data-testid="compose-submit-btn"]');
+  await expect(submit).toBeEnabled();
+  await submit.click();
+
+  for (const number of ['01', '02', '03']) {
+    const card = page.locator(`[data-testid="direction-card-${number}"]`);
+    await expect(card).toBeVisible();
+    await card.getByRole('button', { name: 'Inspect full preview and DNA' }).click();
+    const dialog = page.getByRole('dialog', { name: new RegExp(`Direction ${number}`) });
+    await expect(dialog).toBeVisible();
+    const details = dialog
+      .locator('details')
+      .filter({ hasText: 'Design DNA and resource references' });
+    await details.locator('summary').click();
+    const manifest = JSON.parse(await details.locator('pre').innerText()) as {
+      diagnostics: unknown[];
+      screens: Array<{ id: string; screenNodeId: string; name: string; rootNode: AuditNode }>;
+    };
+    const screenNames = manifest.screens.map((screen) => screen.name);
+    expect(screenNames).toEqual(
+      expect.arrayContaining(['Order Lookup', 'Return Request', 'Refund Status'])
+    );
+    expect(screenNames).not.toEqual(
+      expect.arrayContaining(['Storefront Catalog', 'Product Detail', 'Checkout'])
+    );
+    expect(manifest.diagnostics).toEqual([]);
+
+    const orderLookup = manifest.screens.find((screen) => screen.name === 'Order Lookup');
+    const returnRequest = manifest.screens.find((screen) => screen.name === 'Return Request');
+    const refundStatus = manifest.screens.find((screen) => screen.name === 'Refund Status');
+    expect(orderLookup).toBeDefined();
+    expect(returnRequest).toBeDefined();
+    expect(refundStatus).toBeDefined();
+    expect(
+      returnRequest
+        ? collectNodes(returnRequest.rootNode).filter(
+            (node) => node.semanticRole === 'settings-nav'
+          )
+        : []
+    ).toHaveLength(0);
+    const screenSelect = dialog.getByLabel('Direction preview screen');
+    const canvas = dialog.locator('.tess-screen');
+    await details.locator('summary').click();
+    await screenSelect.selectOption(orderLookup!.id);
+    await expect(canvas).toContainText('Order Lookup');
+    await expect(canvas).toContainText('Orders and returns');
+    await expect(canvas).not.toContainText('Flagship Feature');
+
+    await screenSelect.selectOption(returnRequest!.id);
+    await expect(canvas).toContainText('Return Request');
+    await expect(canvas.locator('nav')).toHaveCount(1);
+    await expect(canvas.getByLabel('Return reason')).toBeVisible();
+    const disabledSubmit = canvas.getByRole('button', { name: 'Submit return request' });
+    await expect(disabledSubmit).toBeDisabled();
+    await expect(disabledSubmit).toHaveAttribute(
+      'title',
+      'Connect a returns service before submitting requests.'
+    );
+    const disabledSubmitTitle = await disabledSubmit.getAttribute('title');
+    if (number === '03') {
+      const screenshotPath = path.resolve(
+        process.cwd(),
+        `quality/evidence/step-14/manual-review/after/ecom-06-return-request-direction-03-${viewportLabel}.png`
+      );
+      fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
+      await dialog.screenshot({ path: screenshotPath, animations: 'disabled' });
+    }
+
+    await screenSelect.selectOption(refundStatus!.id);
+    await expect(canvas).toContainText('Return progress');
+    await expect(canvas).toContainText('Return request received');
+    await expect(canvas).toContainText('Refund progress updated');
+    const selectedScreenId = await screenSelect.inputValue();
+    expect(manifest.screens.find((screen) => screen.id === selectedScreenId)?.name).toBe(
+      'Refund Status'
+    );
+    if (number === '03') {
+      const screenshotPath = path.resolve(
+        process.cwd(),
+        `quality/evidence/step-14/manual-review/after/ecom-06-direction-03-${viewportLabel}.png`
+      );
+      fs.mkdirSync(path.dirname(screenshotPath), { recursive: true });
+      await dialog.screenshot({ path: screenshotPath, animations: 'disabled' });
+      const runtimeReportPath = path.resolve(
+        process.cwd(),
+        `quality/evidence/step-14/manual-review/after/ecom-06-runtime-${viewportLabel}.json`
+      );
+      fs.writeFileSync(
+        runtimeReportPath,
+        `${JSON.stringify(
+          {
+            url: page.url(),
+            viewport: page.viewportSize(),
+            status: 'passed',
+            selectedDirection: number,
+            screens: screenNames,
+            selectedScreen: selectedScreenId,
+            selectedScreenName: manifest.screens.find((screen) => screen.id === selectedScreenId)
+              ?.name,
+            disabledSubmitTitle,
+            verifiedVisibleStates: [
+              'Order Lookup',
+              'Return Request (truthfully disabled)',
+              'Refund Status timeline',
+            ],
+            consoleErrors,
+            uncaught,
+            failedRequests,
+            httpErrors,
+          },
+          null,
+          2
+        )}\n`
+      );
+    }
+    await dialog.getByRole('button', { name: 'Close dialog' }).click();
+  }
 
   expect(consoleErrors).toEqual([]);
   expect(uncaught).toEqual([]);
