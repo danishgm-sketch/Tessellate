@@ -414,7 +414,7 @@
             "props": {
               "eyebrow": "Example organisation · sample content",
               "headline": "Deliver breaking journalism, compelling editorial reads, and immersive streaming",
-              "subheadline": "A workspace for readers, viewers, editors, and digital journalists. Deliver breaking journalism, compelling editorial reads, and immersive streaming.",
+              "subheadline": "A workspace for readers, viewers, editors, and digital journalists.",
               "primaryCta": {
                 "label": "Read stories",
                 "href": "#screen-marketing-home"
@@ -473,7 +473,7 @@
             "slots": {},
             "props": {
               "headline": "Deliver breaking journalism, compelling editorial reads, and immersive streaming",
-              "description": "A workspace for readers, viewers, editors, and digital journalists. Deliver breaking journalism, compelling editorial reads, and immersive streaming.",
+              "description": "A workspace for readers, viewers, editors, and digital journalists.",
               "label": "Read stories",
               "href": "#screen-marketing-home"
             }
@@ -492,7 +492,7 @@
             "slots": {},
             "props": {
               "brand": "Article Workspace",
-              "description": "A workspace for readers, viewers, editors, and digital journalists. Deliver breaking journalism, compelling editorial reads, and immersive streaming.",
+              "description": "A workspace for readers, viewers, editors, and digital journalists.",
               "links": [
                 {
                   "label": "Front Page Feed",
@@ -619,27 +619,30 @@
                       "name": "Example Article",
                       "type": "Published story with byline, hero media, and body",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 2,
                       "name": "Example Section",
                       "type": "Category vertical (e.g. Technology, Opinion)",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 3,
                       "name": "Example Edition",
                       "type": "Curated daily or weekly bundle",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     }
                   ],
                   "columnLabels": {
                     "name": "Record",
                     "type": "Context",
-                    "quality": "Progress",
+                    "quality": "Data",
                     "status": "Status"
                   }
                 }
@@ -771,27 +774,30 @@
                       "name": "Example Article",
                       "type": "Published story with byline, hero media, and body",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 2,
                       "name": "Example Section",
                       "type": "Category vertical (e.g. Technology, Opinion)",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 3,
                       "name": "Example Edition",
                       "type": "Curated daily or weekly bundle",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     }
                   ],
                   "columnLabels": {
                     "name": "Record",
                     "type": "Context",
-                    "quality": "Progress",
+                    "quality": "Data",
                     "status": "Status"
                   }
                 }

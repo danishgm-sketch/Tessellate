@@ -466,7 +466,7 @@
             "props": {
               "eyebrow": "Example organisation · sample content",
               "headline": "Drive frictionless product discovery, confident purchase, and order delivery",
-              "subheadline": "A workspace for online shoppers, merchandising managers, and fulfillment teams. Drive frictionless product discovery, confident purchase, and order delivery.",
+              "subheadline": "A workspace for online shoppers, merchandising managers, and fulfillment teams.",
               "primaryCta": {
                 "label": "View product details",
                 "href": "#screen-product-detail"
@@ -525,7 +525,7 @@
             "slots": {},
             "props": {
               "headline": "Drive frictionless product discovery, confident purchase, and order delivery",
-              "description": "A workspace for online shoppers, merchandising managers, and fulfillment teams. Drive frictionless product discovery, confident purchase, and order delivery.",
+              "description": "A workspace for online shoppers, merchandising managers, and fulfillment teams.",
               "label": "View product details",
               "href": "#screen-product-detail"
             }
@@ -544,7 +544,7 @@
             "slots": {},
             "props": {
               "brand": "Product Workspace",
-              "description": "A workspace for online shoppers, merchandising managers, and fulfillment teams. Drive frictionless product discovery, confident purchase, and order delivery.",
+              "description": "A workspace for online shoppers, merchandising managers, and fulfillment teams.",
               "links": [
                 {
                   "label": "Storefront Catalog",
@@ -659,27 +659,30 @@
                       "name": "Example Product",
                       "type": "Merchandise item with variants, media, and price",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 2,
                       "name": "Example Order",
                       "type": "Customer purchase agreement and payment status",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 3,
                       "name": "Example Customer",
                       "type": "Shopper profile and order history",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     }
                   ],
                   "columnLabels": {
                     "name": "Record",
                     "type": "Context",
-                    "quality": "Progress",
+                    "quality": "Data",
                     "status": "Status"
                   }
                 }
@@ -815,27 +818,30 @@
                       "name": "Example Product",
                       "type": "Merchandise item with variants, media, and price",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 2,
                       "name": "Example Order",
                       "type": "Customer purchase agreement and payment status",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 3,
                       "name": "Example Customer",
                       "type": "Shopper profile and order history",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     }
                   ],
                   "columnLabels": {
                     "name": "Record",
                     "type": "Context",
-                    "quality": "Progress",
+                    "quality": "Data",
                     "status": "Status"
                   }
                 }

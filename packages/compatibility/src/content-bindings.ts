@@ -30,6 +30,9 @@ export function bindResourceContent(
 ): Record<string, unknown> {
   const employee = product.entities.some((entity) => entity.name === 'Employee');
   const primaryArchetype = product.productArchetypes[0]?.tag ?? '';
+  const isRealEstate = primaryArchetype === 'real-estate';
+  const isMarketplaceListings =
+    primaryArchetype === 'marketplace' && screen.name === 'Explore Listings';
   const isCommunity = /community|neighborhood/i.test(
     `${product.primaryAudience} ${product.primaryObjective}`
   );
@@ -117,7 +120,34 @@ export function bindResourceContent(
     ? 'Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.'
     : isReturnsPortal
       ? 'Find a previous purchase, choose eligible items, and follow each return and refund step.'
-      : `A workspace for ${product.primaryAudience.toLowerCase()}. ${product.primaryObjective}.`;
+      : `A workspace for ${product.primaryAudience.toLowerCase()}.`;
+  const searchCopyByArchetype: Record<string, { label: string; placeholder: string; helperText: string }> = {
+    'real-estate': {
+      label: 'Search property listings',
+      placeholder: 'Search by area or property details',
+      helperText: 'Example search only. Connect a listings service to search live properties.',
+    },
+    marketplace: {
+      label: 'Search listings',
+      placeholder: 'Search listings',
+      helperText: 'Example search only. Connect a listings service to search live results.',
+    },
+    education: {
+      label: 'Search courses',
+      placeholder: 'Search courses and topics',
+      helperText: 'Example search only. Connect a course catalogue to search live results.',
+    },
+    'developer-tool': {
+      label: 'Search records',
+      placeholder: 'Search logs and records',
+      helperText: 'Example search only. Connect your data source to search live records.',
+    },
+  };
+  const searchCopy = searchCopyByArchetype[primaryArchetype] ?? {
+    label: 'Search records',
+    placeholder: 'Search records',
+    helperText: 'Example search only. Connect your data source to search live records.',
+  };
   const items = employee
     ? [
         {
@@ -293,6 +323,11 @@ export function bindResourceContent(
       : {
           'metric-cards': 'Key metrics',
           'summary-kpis': 'Key metrics',
+          'results-grid': isRealEstate
+            ? 'Available property listings'
+            : isMarketplaceListings
+              ? 'Available listings'
+              : 'Search results',
         };
   const content: Record<string, unknown> = {
     title:
@@ -307,6 +342,12 @@ export function bindResourceContent(
                 : 'Recent activity'))
           : role === 'hero' || role === 'conversion-cta'
             ? headline
+            : role === 'results-grid'
+              ? isRealEstate
+                ? 'Available property listings'
+                : isMarketplaceListings
+                  ? 'Available listings'
+                  : 'Search results'
             : (titles[role] ?? screen.name),
     brand,
     links,
@@ -354,6 +395,7 @@ export function bindResourceContent(
             type: 'Product team',
             quality: 80,
             status: 'Onboarding',
+            displayValue: 'Progress not connected',
           },
           {
             id: 2,
@@ -361,6 +403,7 @@ export function bindResourceContent(
             type: 'Engineering team',
             quality: 100,
             status: 'Settled in',
+            displayValue: 'Progress not connected',
           },
           {
             id: 3,
@@ -368,21 +411,48 @@ export function bindResourceContent(
             type: 'People team',
             quality: 40,
             status: 'Welcome week',
+            displayValue: 'Progress not connected',
           },
         ]
-      : product.entities.map((entity, index) => ({
-          id: index + 1,
-          name: `Example ${entity.name}`,
-          type: entity.description ?? 'Record',
-          quality: 0,
-          status: 'Sample',
-        })),
-    columnLabels: {
-      name: employee ? 'Colleague' : 'Record',
-      type: employee ? 'Team' : 'Context',
-      quality: 'Progress',
-      status: 'Status',
-    },
+      : isRealEstate
+        ? ['A', 'B', 'C'].map((letter, index) => ({
+            id: index + 1,
+            name: `Example property ${letter}`,
+            type: 'Location and features not connected',
+            quality: 0,
+            status: 'Availability not connected',
+            displayValue: 'Price not connected',
+          }))
+        : isMarketplaceListings
+          ? ['A', 'B', 'C'].map((letter, index) => ({
+              id: index + 1,
+              name: `Example listing ${letter}`,
+              type: 'Service details and availability not connected',
+              quality: 0,
+              status: 'Example listing',
+              displayValue: 'Availability not connected',
+            }))
+        : product.entities.map((entity, index) => ({
+            id: index + 1,
+            name: `Example ${entity.name}`,
+            type: entity.description ?? 'Record',
+            quality: 0,
+            status: 'Sample',
+            displayValue: isTradingTerminal ? 'Market data not connected' : 'Details not connected',
+          })),
+    columnLabels: isRealEstate
+      ? {
+          name: 'Property',
+          type: 'Location and features',
+          quality: 'Price',
+          status: 'Availability',
+        }
+      : {
+          name: employee ? 'Colleague' : 'Record',
+          type: employee ? 'Team' : 'Context',
+          quality: employee ? 'Progress' : 'Data',
+          status: 'Status',
+        },
     columns: employee
       ? [
           { title: 'Discover', tasks: ['Meet your buddy', 'Find your team'] },
@@ -394,7 +464,9 @@ export function bindResourceContent(
         ]
       : product.workflows.map((workflow) => ({ title: workflow.name, tasks: workflow.steps })),
     label:
-      role === 'conversion-cta'
+      role === 'search-header'
+        ? searchCopy.label
+        : role === 'conversion-cta'
         ? primaryActionLabel
         : role === 'message-composer'
           ? 'Write a message'
@@ -412,13 +484,17 @@ export function bindResourceContent(
                   ? 'Sign in requires your authentication backend'
                   : 'Continue onboarding',
     placeholder:
-      role === 'message-composer'
+      role === 'search-header'
+        ? searchCopy.placeholder
+        : role === 'message-composer'
         ? 'Write a message…'
         : role === 'settings-form' && isReturnsPortal
           ? 'Describe why these items are being returned'
           : undefined,
     helperText:
-      role === 'message-composer'
+      role === 'search-header'
+        ? searchCopy.helperText
+        : role === 'message-composer'
         ? 'Example input. Connect a messaging backend to send messages.'
         : role === 'settings-form' && isReturnsPortal
           ? 'Example field. Connect order data and a returns service in the exported application.'

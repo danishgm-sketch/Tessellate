@@ -602,27 +602,30 @@
                       "name": "Example Prompt",
                       "type": "User instruction and system framing",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 2,
                       "name": "Example Generation",
                       "type": "Synthesized model output and history",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 3,
                       "name": "Example Agent",
                       "type": "Configured automated agent instance",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     }
                   ],
                   "columnLabels": {
                     "name": "Record",
                     "type": "Context",
-                    "quality": "Progress",
+                    "quality": "Data",
                     "status": "Status"
                   }
                 }

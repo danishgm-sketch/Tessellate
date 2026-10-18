@@ -43,7 +43,9 @@ export const ROLE_RESOURCES: Record<string, readonly string[]> = {
   pagination: ['button'],
   'search-header': ['input'],
   'facet-rail': ['filter-builder'],
-  'results-grid': ['feature-bento'],
+  // Search results are records, not marketing feature cards. The Gold table is
+  // the certified result surface available to deterministic composition.
+  'results-grid': ['advanced-data-table'],
   'editor-toolbar': ['minimal-top-nav'],
   'canvas-viewport': ['kanban-board'],
   'inspector-panel': ['entity-profile-header'],

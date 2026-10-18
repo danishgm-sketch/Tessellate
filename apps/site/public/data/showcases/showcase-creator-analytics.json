@@ -438,7 +438,7 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Executive Overview",
+                  "title": "Key metrics",
                   "cards": [
                     {
                       "label": "Metric",
@@ -474,12 +474,12 @@
                   "title": "Recent activity",
                   "events": [
                     {
-                      "time": "Example",
+                      "time": "Today",
                       "title": "Construct custom chart visualization with filters",
                       "desc": "Select dataset → Choose aggregation → Apply date range → Save to dashboard"
                     },
                     {
-                      "time": "Example",
+                      "time": "Yesterday",
                       "title": "Inspect unexpected metric dip and isolate segment",
                       "desc": "Click datapoint → Segment by dimension → Export findings"
                     }
@@ -586,7 +586,7 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Metric Explorer",
+                  "title": "Key metrics",
                   "cards": [
                     {
                       "label": "Metric",
@@ -718,27 +718,30 @@
                       "name": "Example Metric",
                       "type": "Time-series quantitative indicator",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 2,
                       "name": "Example Report",
                       "type": "Collection of charts, pivots, and explanatory notes",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 3,
                       "name": "Example Cohort",
                       "type": "Segment of entities sharing common behavior",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     }
                   ],
                   "columnLabels": {
                     "name": "Record",
                     "type": "Context",
-                    "quality": "Progress",
+                    "quality": "Data",
                     "status": "Status"
                   }
                 }

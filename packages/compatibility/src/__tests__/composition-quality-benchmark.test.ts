@@ -227,6 +227,76 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
         }
 
         const nodes = output.manifest.screens.flatMap((screen) => collectNodes(screen.rootNode));
+        if (brief.id === 'TRV-01') {
+          const destinationHero = nodes.find((node) => node.semanticRole === 'hero');
+          expect(destinationHero?.props.subheadline).not.toContain(
+            result.productModel.primaryObjective
+          );
+        }
+        if (brief.id === 'REA-01') {
+          const propertySearch = output.manifest.screens.find(
+            (screen) => screen.name === 'Property Search'
+          );
+          expect(propertySearch, `${name} must include the real-estate search screen`).toBeDefined();
+          const searchNodes = propertySearch ? collectNodes(propertySearch.rootNode) : [];
+          const searchInput = searchNodes.find((node) => node.semanticRole === 'search-header');
+          const resultGrid = searchNodes.find((node) => node.semanticRole === 'results-grid');
+          expect(searchInput?.props.label, `${name} property search must be labelled by its task`).toBe(
+            'Search property listings'
+          );
+          expect(
+            resultGrid?.resourceRef?.slug,
+            `${name} search results must render listings, not marketing features`
+          ).toBe('advanced-data-table');
+          expect(resultGrid?.props.title).toBe('Available property listings');
+          expect(resultGrid?.props.columnLabels).toEqual({
+            name: 'Property',
+            type: 'Location and features',
+            quality: 'Price',
+            status: 'Availability',
+          });
+          expect(resultGrid?.props.rows).toEqual(
+            expect.arrayContaining([
+              expect.objectContaining({
+                name: 'Example property A',
+                displayValue: 'Price not connected',
+                status: 'Availability not connected',
+              }),
+            ])
+          );
+          expect(JSON.stringify(resultGrid?.props).toLowerCase()).not.toMatch(
+            /latency|telemetry|portfolio/
+          );
+        }
+        if (brief.id === 'MKT-01') {
+          const listingSearch = output.manifest.screens.find(
+            (screen) => screen.name === 'Explore Listings'
+          );
+          const listingResults = listingSearch
+            ? collectNodes(listingSearch.rootNode).find(
+                (node) => node.semanticRole === 'results-grid'
+              )
+            : undefined;
+          const rows = listingResults?.props.rows as
+            | Array<{ name: string; displayValue?: string }>
+            | undefined;
+          expect(rows?.length).toBeGreaterThan(0);
+          expect(rows?.every((row) => /listing/i.test(row.name))).toBe(true);
+          expect(JSON.stringify(rows).toLowerCase()).not.toMatch(/proposal|review/);
+        }
+        for (const node of nodes.filter((candidate) => candidate.semanticRole === 'search-header')) {
+          expect(node.props.label).not.toBe('Continue onboarding');
+          expect(node.props.helperText).not.toBe(
+            'Example field. Connect persistence and your backend in the exported application.'
+          );
+        }
+        for (const node of nodes.filter(
+          (candidate) => candidate.resourceRef?.slug === 'advanced-data-table'
+        )) {
+          const rows = node.props.rows as Array<{ displayValue?: string }> | undefined;
+          expect(rows?.every((row) => typeof row.displayValue === 'string')).toBe(true);
+          expect(JSON.stringify(rows)).not.toMatch(/\b\d+\/100\b/);
+        }
         const conversionCtas = nodes.filter((node) => node.resourceRef?.slug === 'cta-minimal');
         for (const node of conversionCtas) {
           expect(

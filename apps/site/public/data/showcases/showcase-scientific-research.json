@@ -618,8 +618,9 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "label": "Continue onboarding",
-                  "helperText": "Example field. Connect persistence and your backend in the exported application.",
+                  "label": "Search records",
+                  "helperText": "Example search only. Connect your data source to search live records.",
+                  "placeholder": "Search records",
                   "disabled": false,
                   "title": "Entity Index"
                 }
@@ -643,32 +644,47 @@
                 "nodeType": "section",
                 "semanticRole": "results-grid",
                 "resourceRef": {
-                  "id": "res_sec_feature_bento",
-                  "slug": "feature-bento",
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
                   "version": "1.0.0"
                 },
                 "variant": "nocturne",
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Entity Index",
-                  "items": [
+                  "title": "Search results",
+                  "rows": [
                     {
-                      "title": "Entity",
-                      "description": "Investigated company, person, or asset node",
-                      "detail": "Example content"
+                      "id": 1,
+                      "name": "Example Entity",
+                      "type": "Investigated company, person, or asset node",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
-                      "title": "Evidence",
-                      "description": "Verified document, filing, or signal reference",
-                      "detail": "Example content"
+                      "id": 2,
+                      "name": "Example Evidence",
+                      "type": "Verified document, filing, or signal reference",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
-                      "title": "Dossier",
-                      "description": "Curated dossier binder and synthesis report",
-                      "detail": "Example content"
+                      "id": 3,
+                      "name": "Example Dossier",
+                      "type": "Curated dossier binder and synthesis report",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     }
-                  ]
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
                 }
               }
             ],
@@ -799,27 +815,30 @@
                       "name": "Example Entity",
                       "type": "Investigated company, person, or asset node",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 2,
                       "name": "Example Evidence",
                       "type": "Verified document, filing, or signal reference",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 3,
                       "name": "Example Dossier",
                       "type": "Curated dossier binder and synthesis report",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     }
                   ],
                   "columnLabels": {
                     "name": "Record",
                     "type": "Context",
-                    "quality": "Progress",
+                    "quality": "Data",
                     "status": "Status"
                   }
                 }
@@ -955,27 +974,30 @@
                       "name": "Example Entity",
                       "type": "Investigated company, person, or asset node",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 2,
                       "name": "Example Evidence",
                       "type": "Verified document, filing, or signal reference",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     },
                     {
                       "id": 3,
                       "name": "Example Dossier",
                       "type": "Curated dossier binder and synthesis report",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
                     }
                   ],
                   "columnLabels": {
                     "name": "Record",
                     "type": "Context",
-                    "quality": "Progress",
+                    "quality": "Data",
                     "status": "Status"
                   }
                 }

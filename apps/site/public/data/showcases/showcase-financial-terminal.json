@@ -528,7 +528,7 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Market Overview",
+                  "title": "Key metrics",
                   "cards": [
                     {
                       "label": "Security",
@@ -564,17 +564,17 @@
                   "title": "Recent activity",
                   "events": [
                     {
-                      "time": "Example",
+                      "time": "Today",
                       "title": "Review market depth and compare liquidity across listed securities",
                       "desc": "Select security → Review market depth → Compare liquidity"
                     },
                     {
-                      "time": "Example",
+                      "time": "Yesterday",
                       "title": "Prepare and verify an equity trade within risk limits",
                       "desc": "Enter order terms → Review risk checks → Confirm trade"
                     },
                     {
-                      "time": "Example",
+                      "time": "Earlier this week",
                       "title": "Review position exposure and portfolio risk limits",
                       "desc": "Compare position exposure → Review risk limits → Resolve risk alert"
                     }
@@ -697,27 +697,30 @@
                       "name": "Example Security",
                       "type": "A listed equity with a ticker, venue, market price, and trading status",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Market data not connected"
                     },
                     {
                       "id": 2,
                       "name": "Example Order",
                       "type": "A verified market or limit order with quantity, side, and execution state",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Market data not connected"
                     },
                     {
                       "id": 3,
                       "name": "Example Position",
                       "type": "A trading position with exposure, valuation, and risk limits",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Market data not connected"
                     }
                   ],
                   "columnLabels": {
                     "name": "Record",
                     "type": "Context",
-                    "quality": "Progress",
+                    "quality": "Data",
                     "status": "Status"
                   }
                 }
@@ -835,7 +838,7 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Positions & Risk",
+                  "title": "Key metrics",
                   "cards": [
                     {
                       "label": "Security",
@@ -871,17 +874,17 @@
                   "title": "Recent activity",
                   "events": [
                     {
-                      "time": "Example",
+                      "time": "Today",
                       "title": "Review market depth and compare liquidity across listed securities",
                       "desc": "Select security → Review market depth → Compare liquidity"
                     },
                     {
-                      "time": "Example",
+                      "time": "Yesterday",
                       "title": "Prepare and verify an equity trade within risk limits",
                       "desc": "Enter order terms → Review risk checks → Confirm trade"
                     },
                     {
-                      "time": "Example",
+                      "time": "Earlier this week",
                       "title": "Review position exposure and portfolio risk limits",
                       "desc": "Compare position exposure → Review risk limits → Resolve risk alert"
                     }
@@ -1004,27 +1007,30 @@
                       "name": "Example Security",
                       "type": "A listed equity with a ticker, venue, market price, and trading status",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Market data not connected"
                     },
                     {
                       "id": 2,
                       "name": "Example Order",
                       "type": "A verified market or limit order with quantity, side, and execution state",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Market data not connected"
                     },
                     {
                       "id": 3,
                       "name": "Example Position",
                       "type": "A trading position with exposure, valuation, and risk limits",
                       "quality": 0,
-                      "status": "Sample"
+                      "status": "Sample",
+                      "displayValue": "Market data not connected"
                     }
                   ],
                   "columnLabels": {
                     "name": "Record",
                     "type": "Context",
-                    "quality": "Progress",
+                    "quality": "Data",
                     "status": "Status"
                   }
                 }

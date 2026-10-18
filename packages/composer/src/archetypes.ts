@@ -622,7 +622,7 @@ export const PRODUCT_ARCHETYPES: Record<string, ArchetypeDefinition> = {
       { id: 'schedule-viewing', name: 'Select available open house slot and confirm with agent', steps: ['pick-time', 'enter-contact', 'calendar-invite'] },
     ],
     recommendedScreens: [
-      { name: 'Search & Map Explorer', screenType: 'search-explore', purpose: 'Synchronized split view of property cards and neighborhood map', jobs: ['draw-map-boundary', 'filter-listings'], required: true },
+      { name: 'Property Search', screenType: 'search-explore', purpose: 'Search property listings, compare key details, and arrange a viewing', jobs: ['filter-listings', 'compare-properties'], required: true },
       { name: 'Property Profile', screenType: 'detail-entity', purpose: 'Virtual 3D tour, tax history, floorplans, and agent card', jobs: ['view-floorplan', 'calculate-mortgage'], required: true },
       { name: 'Saved Homes', screenType: 'index-list', purpose: 'Comparison matrix of favorited properties', jobs: ['compare-sqft-cost', 'share-with-partner'], required: false },
     ],
