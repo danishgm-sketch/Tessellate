@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45. Step 19 added AUD-152–155 from local visible Workbench checks. Their fixes are verified locally; public review deployment verification remains pending in Step 45.",
   "entries": [
     {
       "id": "AUD-001",
@@ -4889,7 +4889,173 @@
         "after": "The Locks panel explains snapshot persistence. The desktop regression confirms the frozen child value remains local after unlock, then Reset to Inherited picks up the changed parent value with no runtime or network errors."
       },
       "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-152",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "data",
+      "title": "Duplicating a screen could produce an invalid project route",
+      "expected": "Every duplicate screen should receive a unique route and fresh screen/node identities so the manifest remains valid.",
+      "actual": "Two rapid duplicates of the root route both appeared as Marketing Home (Copy) at /-copy. The visible UI accepted both and the downloaded manifest failed canonical validation for duplicate routes.",
+      "reproduction": [
+        "Open the Playful HR showcase in Workbench at 1440x900.",
+        "Open Pages and duplicate Marketing Home twice.",
+        "Inspect the two copy rows and export the manifest."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-19/before/duplicate-screen-collision.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-19/before/duplicate-screen-collision.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-19/after/duplicate-screen-collision.png",
+        "quality/evidence/step-19/after/duplicate-screen-export.tess.json"
+      ],
+      "rootCause": "The duplicate handler always appended a fixed -copy suffix and copy name without checking existing screens. For root route /, both copies therefore became /-copy. Screen IDs were also derived from millisecond timestamps, which risked collisions under rapid duplication.",
+      "affectedFiles": [
+        "packages/workbench/src/components/left-panel/PagesTab.tsx",
+        "tests/e2e/workbench-mutation-hardening.spec.ts"
+      ],
+      "remediation": "Normalize the source route with the screen name as the root fallback, allocate a unique copy suffix from the current screens, use createId for screen identities, and verify the downloaded manifest against ProjectManifestSchema.",
+      "fixCommit": "95748bdf452d59b125faa872da842afb2f612a25",
+      "runtimeReports": [
+        "quality/evidence/step-19/before/duplicate-screen-collision.json",
+        "quality/evidence/step-19/after/duplicate-screen-collision.json",
+        "quality/evidence/step-19/baseline-duplicate-test.log"
+      ],
+      "regression": {
+        "before": "The visible regression failed: both copies had route /-copy, and canonical manifest validation returned false.",
+        "after": "Two copies receive /marketing-home-copy and /marketing-home-copy-2; screen/node IDs and routes are unique, and the exported manifest validates."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-153",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Add Page accepted a route already assigned to another screen",
+      "expected": "The Add Page form should reject a normalized route collision, show an accessible error, and leave the screen list unchanged.",
+      "actual": "Submitting /people created an eighth screen even though /people already belonged to People Directory; no alert explained the collision.",
+      "reproduction": [
+        "Open the Playful HR showcase in Workbench at 1440x900.",
+        "Open Pages, choose Add Page, enter a new title and /people as the route.",
+        "Submit and observe that the duplicate route is added without an error."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-19/before/add-screen-route-collision.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-19/before/add-screen-route-collision.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-19/after/add-screen-route-collision.png"
+      ],
+      "rootCause": "The Add Page handler normalized slashes and case for display but did not compare the candidate route with routes already in the manifest before calling addScreen.",
+      "affectedFiles": [
+        "packages/workbench/src/components/left-panel/PagesTab.tsx",
+        "tests/e2e/workbench-mutation-hardening.spec.ts"
+      ],
+      "remediation": "Normalize both existing and proposed routes, reject a duplicate before mutation, and render a role=alert message. The regression checks that the count remains 7 for /people and that a unique route can then be added.",
+      "fixCommit": "95748bdf452d59b125faa872da842afb2f612a25",
+      "runtimeReports": [
+        "quality/evidence/step-19/before/add-screen-route-collision.json",
+        "quality/evidence/step-19/after/add-screen-route-collision.json",
+        "quality/evidence/step-19/baseline-components-test.log"
+      ],
+      "regression": {
+        "before": "The baseline browser run showed screen count 7 before submit and 8 after; the expected alert was absent.",
+        "after": "The browser run shows count 7 before and after /people, exposes an accessible collision message, then accepts /people-route-check."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-154",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Tree mutation engine actions were not reachable from the Layers UI",
+      "expected": "A selected non-root layer should expose usable duplicate, sibling move, and confirmed delete actions; invalid root and locked operations should be disabled with an explanation.",
+      "actual": "The Layers panel exposed selection, expansion, and lock toggles, but no Duplicate, Move, or Delete controls. Playwright could not find the expected root-disabled Duplicate action.",
+      "reproduction": [
+        "Open the Playful HR showcase in Workbench at 1440x900.",
+        "Select Layers and select the screen root.",
+        "Observe the missing selected-layer action group; repeat with a non-root layer."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-19/before/layer-actions-root.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-19/before/layer-actions-root.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-19/after/layer-actions-enabled.png",
+        "quality/evidence/step-19/after/mobile-layer-mutations-390x844.png"
+      ],
+      "rootCause": "The mutation executor supported INSERT_NODE, MOVE_NODE and DELETE_NODE, but LayersTab rendered only lock toggles and did not connect those operations to user controls.",
+      "affectedFiles": [
+        "packages/workbench/src/components/left-panel/LayersTab.tsx",
+        "tests/e2e/workbench-mutation-hardening.spec.ts",
+        "docs/WORKBENCH_SPEC.md"
+      ],
+      "remediation": "Expose actions for selected non-root nodes through the existing mutation/history path; preserve root/ancestor-lock guards, require a second delete action, provide keyboard selection and visible status, and document that Move is sibling-only.",
+      "fixCommit": "95748bdf452d59b125faa872da842afb2f612a25",
+      "runtimeReports": [
+        "quality/evidence/step-19/before/layer-actions-root.json",
+        "quality/evidence/step-19/after/layer-actions-enabled.json",
+        "quality/evidence/step-19/after/layer-mutations.json",
+        "quality/evidence/step-19/after/mobile-layer-mutations-390x844.json",
+        "quality/evidence/step-19/baseline-components-test.log"
+      ],
+      "regression": {
+        "before": "The baseline browser run failed because the selected root had no Duplicate action or disabled-state explanation.",
+        "after": "Desktop and 390x844 browser checks verify root/lock guard messages, keyboard selection, duplicate/move/delete, exact undo/redo, schema-valid export, and action reachability above the mobile navigation."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-155",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Workbench mutation capabilities were inaccurately classified",
+      "expected": "Each advertised mutation verb should have distinct observable semantics, or be labelled experimental and excluded from Core workflows.",
+      "actual": "Improve, Simplify, Intensify, and Match DNA appeared as Beta rows despite lacking separate deterministic operation contracts; no corresponding mutation controls existed in the Workbench. The visible selected-layer actions exposed only concrete duplicate, sibling move, delete, lock and unlock controls.",
+      "reproduction": [
+        "Review the Step 19 mutation inventory and Workbench mutation specification.",
+        "Compare the listed Improve, Simplify, Intensify and Match DNA operations with the visible Workbench controls and mutation schema.",
+        "Observe that no operation-specific behavior or acceptance criteria are defined."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-19/after/layer-actions-enabled.png",
+      "beforeScreenshots": [],
+      "afterScreenshots": [
+        "quality/evidence/step-19/after/layer-actions-enabled.png"
+      ],
+      "rootCause": "Natural-language intent labels were recorded as shipped mutation features without an operation-specific target, output contract, or observable result.",
+      "affectedFiles": [
+        "docs/CURRENT_PRODUCT_INVENTORY.md",
+        "docs/WORKBENCH_SPEC.md",
+        "quality/FEATURE_MATRIX.md"
+      ],
+      "remediation": "Classify these verbs as Lab until their behavior and safety criteria are defined, keep unsupported natural-language proposals out of production mutation controls, and record Hide as Lab because ProjectNode has no persisted visibility field.",
+      "fixCommit": "95748bdf452d59b125faa872da842afb2f612a25",
+      "runtimeReports": [
+        "quality/evidence/step-19/after/layer-actions-enabled.json"
+      ],
+      "regression": {
+        "before": "The inventory and Workbench contract described unsupported verbs as Beta or as available layer actions.",
+        "after": "The inventory and matrix mark the unspecified verbs Lab, and the Workbench contract lists only implemented controls and their limits."
+      },
+      "status": "fixed-local-verified"
     }
   ],
-  "generatedAt": "2026-10-18T22:41:53.999Z"
+  "generatedAt": "2026-10-18T23:46:10.000Z"
 }

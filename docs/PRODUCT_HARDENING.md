@@ -32,7 +32,7 @@ Do not advance a checkbox merely because code exists. Record evidence and defect
 - [x] 16 Exact Compose → Workbench manifest handoff, including props and locks. Direction C was selected through the visible preview and compared with the Workbench manifest export at desktop and mobile widths; evidence: `quality/STEP_16_EVIDENCE.md` and `quality/evidence/step-16/after/`.
 - [x] 17 Workbench fundamentals — selection, canvas, panels, keyboard, mobile. The visible Direction C journey now selects project/root, section, component and element nodes, exercises all five modes and panels, and verifies desktop/mobile navigation. It exposed and fixed resource-kind flattening and canvas selection on disabled controls; both red-to-green regressions and runtime captures are in `quality/STEP_17_EVIDENCE.md` and `quality/evidence/step-17/`. Public review verification remains at Step 45.
 - [x] 18 Intent inheritance — inherited/overridden/locked/reset at available visible Workbench levels. Project-scope DNA now says Project; locks disclose snapshot persistence; reset resumes ancestor inheritance. Desktop/mobile browser evidence and local runtime reports: `quality/STEP_18_EVIDENCE.md` and `quality/evidence/step-18/`. Public review verification remains at Step 45.
-- [ ] 19 Individual mutations — correct changes, unique IDs, undo and export.
+- [x] 19 Individual mutations — correct changes, unique IDs, undo and export. Local browser evidence covers screen and node duplication, unique route/ID handling, sibling move, confirmed delete, lock/unlock, Gold resource replacement, accessibility/performance Beta fixes, undo/redo, and manifest export at desktop/mobile sizes. Unspecified mutation verbs and hide remain Lab; untested matrix dimensions remain FAIL. See `quality/STEP_19_EVIDENCE.md`; public review verification remains scheduled for Step 45.
 - [ ] 20 Structural mutations — divergence, required content and exact lock preservation.
 - [ ] 21 History — 50+ operations, exact undo/redo, reload and checkpoints.
 - [ ] 22 Persistence — failures, corruption recovery, old data, quotas and conflicts.
@@ -93,10 +93,20 @@ all owner-specified input/state/persistence/browser/accessibility/network/securi
 dimensions. Allowed results: PASS, FAIL, DEGRADED, NOT APPLICABLE, LAB ONLY.
 Unexecuted applicable checks are FAIL (missing evidence), never presumed PASS.
 
-Steps 05–18 are complete within their stated local scopes and evidence files.
-Step 19 is next: verify each individual mutation, its exact change, unique IDs,
-undo behavior, and export. Local tests and browser evidence do not replace the
-deployed-site checks planned for the public RC gate.
+Steps 05–19 are complete within their stated local scopes and evidence files.
+Step 19's visible-browser checks cover screen duplicate/add, node duplicate/sibling
+move/confirmed delete, lock/unlock, Gold replacement, exact undo/redo, mobile action
+reachability, manifest export, and the accessibility/performance Beta suggestion
+apply flow. The audit regressions verify the finding clears and the corrected values
+survive schema-valid manifest export. Operations without specified, distinct
+semantics are isolated as Lab. Evidence is in `quality/STEP_19_EVIDENCE.md` and
+`quality/evidence/step-19/`.
+
+The feature matrix keeps every untested dimension at FAIL. Public review verification
+remains scheduled for Step 45; local evidence does not close a deployed finding or
+certify release readiness. The audit suggestions remain Beta: browser contrast,
+measured runtime performance gain, and other suggestion rules still need separate
+validation.
 
 For P0/P1 keep issue, reproduction, screenshot/log, root cause, failing regression,
 fix, passing regression, deployment verification and regression protection.

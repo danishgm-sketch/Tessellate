@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 151 findings (36 High, 114 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 31 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–151 in Compose/resource/Workbench previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–142; Step 15 added AUD-143–147; Step 17 added AUD-148–149; Step 18 added AUD-150–151. The composition, data-truth, resource-accessibility, and Workbench findings are fixed locally, with deployed review verification still pending. AUD-134–137 record ecommerce, digital music, flight-management, and film-streaming briefs that inherited unrelated product workflows; AUD-138 records flight-oriented copy in destination search; AUD-139 records the missing Product Catalog to Product Detail path; AUD-140 records dark-canvas contrast failures in expressive Gold resource variants; AUD-141 records keyboard-inaccessible scrollable Gold resource content; AUD-142 records mobile clipping in the three-pane shell; AUD-148 records disabled-control canvas selection failure; AUD-149 records resource-kind flattening in composition; AUD-150 records incorrect Project Scope DNA labels; AUD-151 records unclear lock snapshot behavior. The full current-source visible benchmark covered 100 briefs and 300 directions at desktop and mobile sizes; reports record zero unresolved diagnostics, console errors, warnings, uncaught exceptions, failed requests, or HTTP errors. Issue-specific before/after captures and red/green regressions are recorded. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See quality/STEP_08_EVIDENCE.md, quality/STEP_14_EVIDENCE.md, quality/STEP_15_EVIDENCE.md, quality/STEP_17_EVIDENCE.md, quality/STEP_18_EVIDENCE.md, and evidence/catalog-search-v20/.
+**Current disposition:** 155 findings (37 High, 117 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 35 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–155 in Compose/resource/Workbench previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–142; Step 15 added AUD-143–147; Step 17 added AUD-148–149; Step 18 added AUD-150–151; Step 19 added AUD-152–155 for screen route integrity, page route validation, reachable layer mutations, and mutation-tier accuracy. The composition, data-truth, resource-accessibility, and Workbench findings are fixed locally, with deployed review verification still pending. AUD-134–137 record ecommerce, digital music, flight-management, and film-streaming briefs that inherited unrelated product workflows; AUD-138 records flight-oriented copy in destination search; AUD-139 records the missing Product Catalog to Product Detail path; AUD-140 records dark-canvas contrast failures in expressive Gold resource variants; AUD-141 records keyboard-inaccessible scrollable Gold resource content; AUD-142 records mobile clipping in the three-pane shell; AUD-148 records disabled-control canvas selection failure; AUD-149 records resource-kind flattening in composition; AUD-150 records incorrect Project Scope DNA labels; AUD-151 records unclear lock snapshot behavior. The full current-source visible benchmark covered 100 briefs and 300 directions at desktop and mobile sizes; reports record zero unresolved diagnostics, console errors, warnings, uncaught exceptions, failed requests, or HTTP errors. Issue-specific before/after captures and red/green regressions are recorded. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See quality/STEP_08_EVIDENCE.md, quality/STEP_14_EVIDENCE.md, quality/STEP_15_EVIDENCE.md, quality/STEP_17_EVIDENCE.md, quality/STEP_18_EVIDENCE.md, and evidence/catalog-search-v20/.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -383,6 +383,17 @@ No Critical findings are recorded in this audit register.
   still required at Step 45.
 - **Disposition:** fixed locally; deployed verification remains pending.
 
+
+### AUD-152 — Duplicate screens generated a duplicate route and invalid manifest
+
+- **Severity:** High.
+- **Evidence:** `quality/evidence/step-19/before/duplicate-screen-collision.png` and its JSON show both copied Marketing Home pages at `/-copy`; the raw downloaded manifest failed canonical validation because routes were duplicated. The after captures show distinct routes and schema validation passing.
+- **Reproduction:** Open the Playful HR showcase in Workbench at 1440 × 900, duplicate Marketing Home twice from Pages, then inspect the routes and export the manifest.
+- **Root cause:** Screen duplication always appended the fixed `-copy` suffix and used the same copy name without checking existing screens; root `/` therefore became `/-copy` every time. The former timestamp ID generation also risked repeated IDs for rapid actions.
+- **Affected code:** `packages/workbench/src/components/left-panel/PagesTab.tsx` and `tests/e2e/workbench-mutation-hardening.spec.ts`.
+- **Remediation:** Normalize root paths from the screen name, choose a unique copy name/route, create fresh IDs with the shared ID generator, and validate the exported manifest.
+- **Verification:** The baseline browser test fails and records an invalid manifest. Current desktop/mobile runs verify two unique routes and IDs and a schema-valid download. Public review verification remains pending for Step 45.
+- **Disposition:** Fixed and verified locally.
 ## MEDIUM
 
 ### AUD-148 — Disabled canvas actions prevented resource selection
@@ -1595,6 +1606,38 @@ with zero findings. That harness race is not counted as a product defect.
 - **Verification:** desktop visible UI checks pass with clean runtime/network
   reports. Public review verification remains scheduled for Step 45.
 
+### AUD-153 — Add Page accepted a route already in use
+
+- **Severity:** Medium.
+- **Evidence:** Baseline capture `quality/evidence/step-19/before/add-screen-route-collision.png` and JSON show `/people` submitted while the list count rose from 7 to 8 with no alert. The after report shows the count remains 7 and an accessible error is shown.
+- **Reproduction:** In the Workbench Pages panel, add a new screen using the existing `/people` route.
+- **Root cause:** The Add Page handler did not compare the normalized candidate route with routes already present in the manifest.
+- **Affected code:** `packages/workbench/src/components/left-panel/PagesTab.tsx` and `tests/e2e/workbench-mutation-hardening.spec.ts`.
+- **Remediation:** Normalize existing and proposed paths, reject collisions before mutation, and expose the reason as an alert. A unique route is then accepted.
+- **Verification:** The baseline browser test fails because the route was added; current desktop/mobile checks verify rejection and successful unique route creation. Public review verification remains pending for Step 45.
+- **Disposition:** Fixed and verified locally.
+
+### AUD-154 — Tree mutation engine actions were not reachable from the Layers UI
+
+- **Severity:** Medium.
+- **Evidence:** The baseline screenshot `quality/evidence/step-19/before/layer-actions-root.png` shows no selected-layer action panel. The baseline test cannot find the Duplicate action. After captures show the available actions at desktop and 390 × 844.
+- **Reproduction:** Open the Playful HR Workbench, select Layers, then select the screen root or a child node.
+- **Root cause:** The mutation executor supported insert, move and delete, but `LayersTab` rendered only node locks and no controls for those mutations.
+- **Affected code:** `packages/workbench/src/components/left-panel/LayersTab.tsx`, `tests/e2e/workbench-mutation-hardening.spec.ts`, and `docs/WORKBENCH_SPEC.md`.
+- **Remediation:** Connect non-root duplicate, sibling move and confirmed delete actions to the existing mutation/history path; explain disabled root/locked operations and document that cross-parent move is unavailable.
+- **Verification:** Desktop/mobile regressions verify selection, locking guards, duplicate/move/delete, undo/redo, manifest fidelity, mobile bounds and no horizontal overflow. The action-region Axe scan reports no WCAG 2.0/2.1/2.2 A/AA violations. Public review verification remains pending for Step 45.
+- **Disposition:** Fixed and verified locally.
+
+### AUD-155 — Unspecified mutation verbs were classified as Beta
+
+- **Severity:** Medium.
+- **Evidence:** Before inventory rows listed Improve, Simplify, Intensify and Match DNA as Beta, while the selected-layer UI had no corresponding distinct operations. The updated inventory, feature matrix and Workbench contract list them as Lab; Hide is Lab because visibility is absent from the manifest schema.
+- **Reproduction:** Compare the mutation inventory and Workbench capability list with the visible controls and mutation schemas.
+- **Root cause:** Natural-language intent language was recorded as a shipped capability without an operation-specific target, output contract or observable success criterion.
+- **Affected code/docs:** `docs/CURRENT_PRODUCT_INVENTORY.md`, `docs/WORKBENCH_SPEC.md`, and `quality/FEATURE_MATRIX.md`.
+- **Remediation:** Keep unspecified verbs out of the production mutation promise until their behavior and safety criteria are defined; mark them Lab and keep unsupported requests from silently mutating the manifest.
+- **Verification:** Inventory, matrix and Workbench contract now describe implemented actions and documented Lab boundaries. This is a documentation/capability-tier correction; public review verification remains pending for Step 45.
+- **Disposition:** Corrected and verified locally.
 ## LOW
 
 ### AUD-079 — Published Site favicon returned 404
