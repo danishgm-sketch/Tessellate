@@ -13,9 +13,22 @@ and structural differences across at least two axes. These checks verify
 generation and resource source resolution; clean install/build/browser checks
 for benchmark exports remain in Step 23.
 
-Step 14 remains **in progress**. The complete current-source visible Compose benchmark covers 100 adjudicated briefs and all three directions at 1440 × 900 and 390 × 844. It captured 600 screenshots from source commit `79e780b1a05ba9f6bc77b977345677f884de0861`. Both desktop and mobile reports passed with zero unresolved diagnostics, console errors or warnings, uncaught exceptions, failed requests, and HTTP errors. All 20 post-fix contact sheets have been visually reviewed; direction differences remain visible across navigation, layout grammar, and resource arrangement. The before/after AI-03 Direction 02 captures show the resource contrast correction at full size. AUD-134–140 record the current content and accessibility findings and their locally verified fixes. Local findings remain open until a deployed review Site is checked during Step 45.
+Step 14 remains **in progress**. The complete visible Compose benchmark covers 100 adjudicated briefs and all three directions at 1440 × 900 and 390 × 844. It captured 600 screenshots from source commit `79e780b1a05ba9f6bc77b977345677f884de0861`. Both desktop and mobile reports passed with zero unresolved diagnostics, console errors or warnings, uncaught exceptions, failed requests, and HTTP errors. All 20 post-fix contact sheets have been visually reviewed; direction differences remain visible across navigation, layout grammar, and resource arrangement. The before/after AI-03 Direction 02 captures show the resource contrast correction at full size. AUD-134–142 record the current content, contrast, keyboard-accessibility, and responsive findings. The resource-level Axe and responsive regressions were rerun after the new fixes; all local findings remain open until a deployed review Site is checked during Step 45.
 
-AUD-140 was reproduced in the visible product and by Axe against all 40 Gold resources in expressive variants on dark canvases. Before the fix, 16 resources failed contrast, including 1.44:1 table values, 1.53:1 profile badges, and 2.20:1 muted labels on white. Resource-local semantic text tokens and opaque expressive surfaces fix the shared cause. The 40-resource regression now reports no violations in `quality/evidence/step-14/accessibility/gold-expressive-dark-after.json`; 12 targeted preview checks pass as well. Before and after screenshots are `quality/evidence/step-14/manual-review/versions/87a90100/desktop/ai-03-direction-02.png` and `quality/evidence/step-14/manual-review/current/desktop/ai-03-direction-02.png`. The source fix is commit `79e780b1`; deployed review verification remains pending.
+AUD-140 was reproduced in the visible product and by Axe against all 40 Gold resources in expressive variants on dark canvases. Before the fix, 16 resources failed contrast, including 1.44:1 table values, 1.53:1 profile badges, and 2.20:1 muted labels on white. Resource-local semantic text tokens and opaque expressive surfaces fix the shared cause. The desktop 40-resource report is `quality/evidence/step-14/accessibility/gold-expressive-dark-after.json`; the mobile report is `quality/evidence/step-14/accessibility/gold-expressive-dark-mobile-after.json`. Before and after screenshots are `quality/evidence/step-14/manual-review/versions/87a90100/desktop/ai-03-direction-02.png` and `quality/evidence/step-14/manual-review/current/desktop/ai-03-direction-02.png`. The source fix is commit `79e780b1`; deployed review verification remains pending.
+
+The PR mobile Axe gate then exposed AUD-141: scrollable regions in Error State,
+Feature Matrix, and Three-Pane App Shell were skipped by keyboard navigation.
+Local reproduction failed on Feature Matrix and Three-Pane; the CI run also
+identified Error State. The resources now provide focusable, labelled scroll
+regions with visible focus. AUD-142 was found in the same inspection: the
+three-pane shell's fixed desktop columns clipped the inspector at 390px despite
+declaring a mobile collapse strategy. It now stacks navigation, canvas, and
+inspector on phones and retains its columns at desktop width. The 40-resource
+mobile Axe sweep and six focused browser checks pass locally. Desktop/mobile
+after screenshots and desktop/mobile Axe reports, each containing the exact fix
+SHA and viewport, are committed under `quality/evidence/step-14/accessibility/`;
+hosted verification remains pending.
 
 The follow-up timeline review found literal “Example” labels in
 activity timestamp positions across generated product domains (AUD-124); its

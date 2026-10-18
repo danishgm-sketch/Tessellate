@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 140 findings (32 High, 107 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 20 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–140 in Compose/resource previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–140; the composition and data-truth findings are fixed locally, with deployed review verification still pending. AUD-134–137 record ecommerce, digital music, flight-management, and film-streaming briefs that inherited unrelated product workflows; AUD-138 records flight-oriented copy in destination search; AUD-139 records the missing Product Catalog to Product Detail path; AUD-140 records dark-canvas contrast failures in expressive Gold resource variants. The full current-source visible benchmark covered 100 briefs and 300 directions at desktop and mobile sizes; reports record zero unresolved diagnostics, console errors, warnings, uncaught exceptions, failed requests, or HTTP errors. Issue-specific before/after captures and red/green regressions are recorded. These fixes await deployed review verification. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See quality/STEP_08_EVIDENCE.md, quality/STEP_14_EVIDENCE.md, and evidence/catalog-search-v20/.
+**Current disposition:** 142 findings (33 High, 108 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 22 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–142 in Compose/resource previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–142; the composition, data-truth, and resource-accessibility findings are fixed locally, with deployed review verification still pending. AUD-134–137 record ecommerce, digital music, flight-management, and film-streaming briefs that inherited unrelated product workflows; AUD-138 records flight-oriented copy in destination search; AUD-139 records the missing Product Catalog to Product Detail path; AUD-140 records dark-canvas contrast failures in expressive Gold resource variants; AUD-141 records keyboard-inaccessible scrollable Gold resource content; AUD-142 records mobile clipping in the three-pane shell. The full current-source visible benchmark covered 100 briefs and 300 directions at desktop and mobile sizes; reports record zero unresolved diagnostics, console errors, warnings, uncaught exceptions, failed requests, or HTTP errors. Issue-specific before/after captures and red/green regressions are recorded. These fixes await deployed review verification. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See quality/STEP_08_EVIDENCE.md, quality/STEP_14_EVIDENCE.md, and evidence/catalog-search-v20/.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -294,6 +294,67 @@ No Critical findings are recorded in this audit register.
 - **Root cause:** Product Catalog did not require the `conversion-cta` role; the music-store target override could also match Product Catalog itself.
 - **Affected code:** `packages/composer/src/planner.ts`, `packages/compatibility/src/content-bindings.ts`, and the composition unit and browser regressions.
 - **Remediation:** require a detail action on ecommerce discovery screens, bind it to Product Detail with product or album wording, and verify that selecting it changes the visible preview screen. The unit regression failed before the fix; focused desktop/mobile UI checks and the visible catalog-to-detail browser test now pass. Fix commit: `a84b6f0c`. Deployed verification remains open.
+
+### AUD-140 — Dark product canvases made light resource variants unreadable
+
+- **Severity:** High.
+- **Evidence:** the pre-fix Direction 02 screenshot at
+  `quality/evidence/step-14/manual-review/versions/87a90100/desktop/ai-03-direction-02.png`
+  shows muted labels disappearing against the dark canvas. The all-Gold dark
+  canvas Axe sweep found contrast failures in 16 of 40 expressive resource
+  variants: advanced-data-table reached 1.44:1, entity-profile-header 1.53:1,
+  error-state 1.65:1, and muted labels on white surfaces 2.20:1.
+- **Reproduction:** open `/compose`, enter benchmark brief AI-03, compose, open
+  Direction 02 (Neural Flow), and inspect Support Assistant. Run
+  `tests/e2e/resource-dark-expressive-contrast.spec.ts` to check all Gold
+  resources against the dark canvas.
+- **Root cause:** Design DNA supplies dark muted-text tokens at screen scope,
+  while multiple resource variants render fixed light surfaces and inherit those
+  tokens. Several expressive panels were translucent, so they also blended with
+  the dark canvas beneath them.
+- **Affected code:** the 16 resource implementations listed in
+  `audit/runtime-audit.json` under AUD-140, their generated registry/export
+  sources, and the resource contrast regressions.
+- **Remediation:** scope semantic text tokens to each component's declared
+  variant and make the affected expressive surfaces opaque. Light variants retain
+  dark text and nocturne retains light text, including in standalone resource
+  source.
+- **Verification:** before the fix, Axe failed for 16/40 Gold resources. After
+  commit `79e780b1`, the focused 12-case Playwright suite passes and the 40-Gold
+  expressive/dark sweep reports zero violations. The full 100-brief desktop and
+  mobile Compose review also passes against this commit with 600 screenshots and
+  clean runtime reports; see `quality/STEP_14_EVIDENCE.md`.
+- **Disposition:** fixed locally; public/review deployment verification remains
+  pending under the ordered release programme.
+
+### AUD-141 — Scrollable Gold resource panels were not keyboard reachable
+
+- **Severity:** High.
+- **Evidence:** the [failed CI mobile Axe run](https://github.com/danishgm-sketch/Tessellate/actions/runs/39160229735)
+  reported serious
+  `scrollable-region-focusable` violations in `error-state`, `feature-matrix`,
+  and `three-pane-app-shell`. The local mobile repro reported the latter two.
+  The fixed mobile shell capture is
+  `quality/evidence/step-14/accessibility/three-pane-shell-mobile-390-after.png`;
+  the 40-resource Axe result is in
+  `quality/evidence/step-14/accessibility/gold-expressive-dark-mobile-after.json`.
+- **Reproduction:** run
+  `pnpm exec playwright test tests/e2e/resource-dark-expressive-contrast.spec.ts --project=mobile-chrome --workers=1`,
+  then tab through the overflowing error sample, comparison table, and workspace
+  canvas. Before the fix, Axe fails and keyboard focus skips those scroll regions.
+- **Root cause:** the resources used overflow containers without keyboard focus,
+  accessible names where needed, or a visible focus treatment.
+- **Affected code:** the three resource implementations and
+  `tests/e2e/resource-dark-expressive-contrast.spec.ts` plus
+  `tests/e2e/resource-scroll-accessibility.spec.ts`.
+- **Remediation:** add keyboard focus and visible focus styling to the overflow
+  regions, give the comparison table and canvas meaningful names, and assert
+  both Axe results and actual keyboard focus in a mobile browser.
+- **Verification:** after fix commit `8a53e00c`, the 40-Gold-resource Axe sweep
+  passes at 1440 × 900 and 390 × 844 with zero findings; six keyboard and
+  responsive browser checks pass locally. The report JSON records the source
+  SHA and viewport for both runs. CI on the fixed commit is pending.
+- **Disposition:** fixed locally; deployed verification remains pending.
 
 ## MEDIUM
 
@@ -1415,37 +1476,27 @@ with zero findings. That harness race is not counted as a product defect.
 - **Affected code:** packages/compatibility/src/content-bindings.ts and the composition-quality benchmark.
 - **Remediation:** bind search copy to product and screen semantics. The all-directions regression and full desktop/mobile visible benchmark pass locally; deployed verification remains open.
 
-### AUD-140 — Dark product canvases made light resource variants unreadable
+### AUD-142 — Three-pane app shell clipped its navigation and inspector on mobile
 
-- **Severity:** High.
-- **Evidence:** the pre-fix Direction 02 screenshot at
-  `quality/evidence/step-14/manual-review/versions/87a90100/desktop/ai-03-direction-02.png`
-  shows muted labels disappearing against the dark canvas. The all-Gold dark
-  canvas Axe sweep found contrast failures in 16 of 40 expressive resource
-  variants: advanced-data-table reached 1.44:1, entity-profile-header 1.53:1,
-  error-state 1.65:1, and muted labels on white surfaces 2.20:1.
-- **Reproduction:** open `/compose`, enter benchmark brief AI-03, compose, open
-  Direction 02 (Neural Flow), and inspect Support Assistant. Run
-  `tests/e2e/resource-dark-expressive-contrast.spec.ts` to check all Gold
-  resources against the dark canvas.
-- **Root cause:** Design DNA supplies dark muted-text tokens at screen scope,
-  while multiple resource variants render fixed light surfaces and inherit those
-  tokens. Several expressive panels were translucent, so they also blended with
-  the dark canvas beneath them.
-- **Affected code:** the 16 resource implementations listed in
-  `audit/runtime-audit.json` under AUD-140, their generated registry/export
-  sources, and the resource contrast regressions.
-- **Remediation:** scope semantic text tokens to each component's declared
-  variant and make the affected expressive surfaces opaque. Light variants now
-  retain dark text and nocturne retains light text, including in standalone
-  resource source.
-- **Verification:** before the fix, Axe failed for 16/40 Gold resources. After
-  commit `79e780b1`, the focused 12-case Playwright suite passes and the 40-Gold
-  expressive/dark sweep reports zero violations. The full 100-brief desktop and
-  mobile Compose review also passes against this commit with 600 screenshots and
-  clean runtime reports; see `quality/STEP_14_EVIDENCE.md`.
-- **Disposition:** fixed locally; public/review deployment verification remains
-  pending under the ordered release programme.
+- **Severity:** Medium.
+- **Evidence:** the phone-width shell capture at
+  `quality/evidence/step-14/accessibility/three-pane-shell-mobile-390-after.png`
+  shows navigation, canvas, and inspector stacked in the available width. Before
+  the fix, the fixed-width side panes exceeded 390px and the parent clipped them.
+- **Reproduction:** open
+  `/preview/?resource=three-pane-app-shell&variant=expressive&theme=dark` at
+  390 × 844. The original fixed desktop row cut off the inspector; the repaired
+  shell stacks all three panes with no horizontal overflow.
+- **Root cause:** a desktop-only row with 14rem and 16rem fixed side panes used
+  `overflow-hidden`, despite the resource declaring a mobile collapse strategy.
+- **Affected code:** `resources/shells/three-pane-app-shell/index.tsx` and its
+  responsive browser regression.
+- **Remediation:** stack all panes on small screens, constrain the canvas width,
+  and restore the three-column workspace at the tablet breakpoint.
+- **Verification:** after fix commit `8a53e00c`, mobile browser checks confirm
+  all three panes fit within 390px; desktop checks confirm all three columns
+  remain present with no horizontal overflow. CI on the fixed commit is pending.
+- **Disposition:** fixed locally; deployed verification remains pending.
 
 ## LOW
 

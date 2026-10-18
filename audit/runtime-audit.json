@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records one moderate desktop Axe heading-order issue in the AI Chat Panel isolated resource preview for the ordered accessibility/resource hardening step. Step 14's 100-brief visible composition review added AUD-116–124 for activity-feed semantics, trading-domain interpretation, truthful example content, repeated branding and headings, placeholder timeline timestamps, and mobile layout; local red/green regressions and desktop/mobile browser captures are recorded, with deployed review verification still pending. AUD-133 records a remaining disconnected-metric status color defect found during the current-source review. AUD-134–139 record commerce, travel, and streaming domain-planning defects found during the full current-source visible composition review; local browser reruns and issue-specific before/after captures are recorded, while deployed review verification remains pending. AUD-140 records a contrast failure across 16/40 Gold resource previews in dark product canvases and the local source-level remediation; deployment review remains pending.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records one moderate desktop Axe heading-order issue in the AI Chat Panel isolated resource preview for the ordered accessibility/resource hardening step. Step 14's 100-brief visible composition review added AUD-116–124 for activity-feed semantics, trading-domain interpretation, truthful example content, repeated branding and headings, placeholder timeline timestamps, and mobile layout; local red/green regressions and desktop/mobile browser captures are recorded, with deployed review verification still pending. AUD-133 records a remaining disconnected-metric status color defect found during the current-source review. AUD-134–139 record commerce, travel, and streaming domain-planning defects found during the full current-source visible composition review; local browser reruns and issue-specific before/after captures are recorded, while deployed review verification remains pending. AUD-140–142 record dark-canvas contrast and mobile resource keyboard/responsive defects, with local fixes and deployed review verification pending.",
   "entries": [
     {
       "id": "AUD-001",
@@ -4419,7 +4419,86 @@
         "after": "12 focused Playwright/Axe cases passed, and the 40-resource sweep reports zero violations."
       },
       "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-141",
+      "severity": "high",
+      "route": "/preview/",
+      "viewport": "390x844",
+      "category": "accessibility",
+      "title": "Scrollable Gold resource panels were not keyboard reachable",
+      "expected": "Scrollable resource content must be reachable by keyboard with visible focus, and the mobile Gold-resource Axe sweep must have no serious violations.",
+      "actual": "The CI mobile Axe run reported scrollable-region-focusable violations in error-state, feature-matrix, and three-pane-app-shell. A local mobile reproduction found the feature-matrix and three-pane-app-shell violations.",
+      "reproduction": [
+        "Run pnpm exec playwright test tests/e2e/resource-dark-expressive-contrast.spec.ts --project=mobile-chrome --workers=1.",
+        "Before the fix, Axe reports serious scrollable-region-focusable violations for the affected Gold resources.",
+        "Tab through the overflowing code sample, comparison table, and workspace canvas; before the fix these regions are skipped."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/accessibility/three-pane-shell-mobile-390-after.png",
+      "rootCause": "The resource source contained overflow-auto regions without tabindex, accessible names, or visible focus styling, so keyboard users could not reach their scroll controls.",
+      "affectedFiles": [
+        "resources/states/error-state/index.tsx",
+        "resources/sections/feature-matrix/index.tsx",
+        "resources/shells/three-pane-app-shell/index.tsx",
+        "tests/e2e/resource-dark-expressive-contrast.spec.ts",
+        "tests/e2e/resource-scroll-accessibility.spec.ts"
+      ],
+      "remediation": "Make the scroll regions keyboard focusable, give the table and workspace regions accessible names, provide a visible focus outline, and run the all-Gold mobile Axe sweep plus explicit focus regressions.",
+      "fixCommit": "8a53e00c",
+      "afterScreenshots": [
+        "quality/evidence/step-14/accessibility/three-pane-shell-mobile-390-after.png",
+        "quality/evidence/step-14/accessibility/three-pane-shell-desktop-1440-after.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/accessibility/gold-expressive-dark-mobile-after.json",
+        "https://github.com/danishgm-sketch/Tessellate/actions/runs/39160229735"
+      ],
+      "regression": {
+        "before": "The CI mobile run found three serious violations; the local mobile run found two.",
+        "after": "The 40-Gold-resource Axe sweep passes on desktop and mobile; six keyboard and responsive browser checks pass."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-142",
+      "severity": "medium",
+      "route": "/preview/?resource=three-pane-app-shell",
+      "viewport": "390x844",
+      "category": "visual",
+      "title": "Three-pane app shell clipped its navigation and inspector on mobile",
+      "expected": "The resource's collapse strategy should keep navigation, workspace canvas, and inspector visible and usable at its declared 360px mobile width.",
+      "actual": "The fixed 224px and 256px side panes sat beside the canvas inside a 390px hidden-overflow row, clipping part or all of the inspector.",
+      "reproduction": [
+        "Open /preview/?resource=three-pane-app-shell&variant=expressive&theme=dark at 390x844.",
+        "Before the fix, the three fixed-width panes remain in one row and the hidden-overflow shell clips the right pane.",
+        "Compare with the after screenshot: navigation, workspace canvas, and inspector are stacked vertically, with no horizontal overflow."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-14/accessibility/three-pane-shell-mobile-390-after.png",
+      "rootCause": "The implementation kept a desktop-only fixed-width row despite declaring a responsive collapse strategy and phone-width certification.",
+      "affectedFiles": [
+        "resources/shells/three-pane-app-shell/index.tsx",
+        "resources/shells/three-pane-app-shell/README.md",
+        "tests/e2e/resource-scroll-accessibility.spec.ts"
+      ],
+      "remediation": "Stack panes on small screens, constrain the canvas width, preserve its scroll access, and restore the three-column workspace at the tablet breakpoint.",
+      "fixCommit": "8a53e00c",
+      "afterScreenshots": [
+        "quality/evidence/step-14/accessibility/three-pane-shell-mobile-390-after.png",
+        "quality/evidence/step-14/accessibility/three-pane-shell-desktop-1440-after.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-14/accessibility/gold-expressive-dark-mobile-after.json"
+      ],
+      "regression": {
+        "before": "The CSS fixed the side panes at 14rem and 16rem with overflow hidden on the parent row.",
+        "after": "The mobile layout test confirms all three panes fit within 390px; desktop retains all three columns without overflow."
+      },
+      "status": "fixed-local-verified"
     }
   ],
-  "generatedAt": "2026-10-18T19:38:33.422Z"
+  "generatedAt": "2026-10-18T20:07:17Z"
 }
