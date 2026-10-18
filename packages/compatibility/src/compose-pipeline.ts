@@ -27,6 +27,35 @@ import { bindResourceContent } from './content-bindings.js';
 import { isResourceComposerEligible, isResourceCompositionCapable } from './capabilities.js';
 export { isResourceComposerEligible, isResourceCompositionCapable };
 
+function compositionNodeType(
+  role: string,
+  resource?: ResourceManifest | null
+): ProjectNode['nodeType'] {
+  if (role === 'navigation') return 'layout';
+
+  switch (resource?.resourceType) {
+    case 'primitive':
+      return 'element';
+    case 'component':
+    case 'data-visualization':
+    case 'state':
+    case 'motion':
+    case 'background':
+    case 'effect':
+    case 'typography':
+    case 'ai-pattern':
+      return 'component';
+    case 'block':
+    case 'flow':
+      return 'block';
+    case 'page':
+      return 'layout';
+    case 'section':
+    default:
+      return 'section';
+  }
+}
+
 export interface RoleResolutionDiagnostic {
   code: 'UNRESOLVED_REQUIRED_ROLE';
   role: string;
@@ -314,7 +343,7 @@ export function composeProjectForDirection(options: DirectionCompositionOptions)
 
       sectionNodes.push({
         id: `node-${screenNode.id}-${role}-${i + 1}`,
-        nodeType: role === 'navigation' ? 'layout' : 'section',
+        nodeType: compositionNodeType(role, resource),
         semanticRole: role,
         resourceRef: ref,
         variant,

@@ -2,8 +2,59 @@ import { describe, it, expect } from 'vitest';
 import { composeProjectPipeline } from '../index.js';
 import { interpretProductBrief } from '@tessellate/composer';
 import { loadTestCatalog } from './test-catalog-loader.js';
+import type { NodeType, ProjectNode, ResourceType } from '@tessellate/schemas';
+
+const resourceTypeNodeType: Record<ResourceType, NodeType> = {
+  primitive: 'element',
+  component: 'component',
+  section: 'section',
+  block: 'block',
+  page: 'layout',
+  flow: 'block',
+  effect: 'component',
+  background: 'component',
+  typography: 'component',
+  motion: 'component',
+  'data-visualization': 'component',
+  'ai-pattern': 'component',
+  state: 'component',
+};
 
 describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
+  it('preserves resource granularity in the generated editor tree', () => {
+    const catalog = loadTestCatalog();
+    const result = composeProjectPipeline(
+      {
+        description:
+          'Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.',
+        feel: 'professional but playful',
+        visualAmbition: 40,
+        structuralCreativity: 95,
+      },
+      { catalogResources: catalog, seed: 'workbench-node-granularity' }
+    );
+    const resources = new Map(catalog.map((resource) => [resource.slug, resource]));
+    const nodes: ProjectNode[] = [];
+    const visit = (node: ProjectNode) => {
+      nodes.push(node);
+      node.children.forEach(visit);
+    };
+    result.directionC.manifest.screens.forEach((screen) => visit(screen.rootNode));
+
+    const resourceNodes = nodes.filter((node) => node.resourceRef);
+    expect(resourceNodes.length).toBeGreaterThan(0);
+    for (const node of resourceNodes) {
+      const resource = resources.get(node.resourceRef!.slug);
+      expect(resource, `Missing catalog resource ${node.resourceRef!.slug}`).toBeDefined();
+      const expected =
+        node.semanticRole === 'navigation' ? 'layout' : resourceTypeNodeType[resource!.resourceType];
+      expect(
+        node.nodeType,
+        `${node.resourceRef!.slug} should retain its ${resource!.resourceType} kind`
+      ).toBe(expected);
+    }
+  });
+
   it('makes "feel" a real input: "professional but playful" measurably elevates both dimensions', () => {
     const baseWithoutFeel = interpretProductBrief({
       description: 'Human resources management platform for employee onboarding, reviews, and time-off tracking.',
