@@ -6,6 +6,7 @@ export default defineConfig({
     '**/gold-resource-certification.spec.ts',
     '**/preview-unknown-resource-regression.spec.ts',
     '**/preview-reduced-motion.spec.ts',
+    '**/sites-preview-csp.spec.ts',
   ],
   fullyParallel: true,
   forbidOnly: !!process.env.CI,

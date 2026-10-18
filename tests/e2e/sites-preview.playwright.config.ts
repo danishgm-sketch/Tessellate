@@ -12,6 +12,7 @@ export default defineConfig({
     'gold-resource-action-completion.spec.ts',
     'preview-form-interactions.spec.ts',
     'site-favicon.spec.ts',
+    'sites-preview-csp.spec.ts',
     'sites-unknown-resource-preview.spec.ts',
   ],
   fullyParallel: false,

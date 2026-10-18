@@ -399,3 +399,19 @@ approved possible implementation, not a shipped capability.
 **Cost/security:** No model download, external inference, credential or new
 service is introduced. Core discovery remains available without semantic search.
 **Status:** Applied in adapter; catalogue/search audit remains pending at step 08.
+
+### D-044 — Limit opaque preview connections to compiled assets
+**Date:** 2026-10-18
+**Context:** The deployed v18 Explore audit found CSP errors when the browser
+fetched the compiled Astro stylesheet from within an opaque sandbox preview.
+`style-src` permitted the stylesheet, but the browser's fetch-based preload also
+requires `connect-src`; `connect-src 'none'` left some cards loading and emitted
+console errors.
+**Decision:** Permit `connect-src` only to the same-origin immutable `/_astro/`
+asset path in preview frames. Keep API routes, other same-origin paths, external
+hosts, credentials and nested frames unavailable. Preserve `sandbox="allow-scripts"`
+without `allow-same-origin`.
+**Security impact:** A preview can read public compiled assets only; it cannot
+reach APIs or exfiltrate data to external origins. The exact exception is
+documented and covered by header and browser tests.
+**Status:** Implemented locally; public Site verification pending.
