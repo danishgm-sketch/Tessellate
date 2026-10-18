@@ -1,0 +1,383 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "deployed-unsupported-variant-diagnostic",
+  "name": "Unsupported variant diagnostic",
+  "description": "Shared fixture for Workbench and standalone export rendering checks.",
+  "createdAt": "2026-10-10T19:00:00.000Z",
+  "updatedAt": "2026-10-18T01:27:12.825Z",
+  "catalogVersion": "1.0.0",
+  "seed": "seed_meridian_42",
+  "productModel": {
+    "schemaVersion": "1.0.0",
+    "productArchetypes": [
+      {
+        "tag": "analytics",
+        "weight": 90
+      },
+      {
+        "tag": "fintech",
+        "weight": 85
+      },
+      {
+        "tag": "intelligence",
+        "weight": 80
+      }
+    ],
+    "primaryAudience": "Institutional analysts and quantitative portfolio managers",
+    "userSophistication": 90,
+    "primaryObjective": "Analyze real-time market data and synthesize macro reports",
+    "secondaryObjectives": [
+      "Track watchlist anomalies",
+      "Export compliance briefs"
+    ],
+    "jobsToBeDone": [
+      "Monitor live multi-asset pricing",
+      "Compare yield curves against historical models",
+      "Generate automated executive briefing"
+    ],
+    "entities": [
+      {
+        "name": "Asset",
+        "description": "Traded financial instrument",
+        "fields": [
+          "ticker",
+          "price",
+          "change"
+        ]
+      },
+      {
+        "name": "Watchlist",
+        "description": "Curated asset collection",
+        "fields": [
+          "id",
+          "name",
+          "assets"
+        ]
+      }
+    ],
+    "workflows": [
+      {
+        "id": "wf_monitor",
+        "name": "Market Monitoring",
+        "steps": [
+          "View Overview",
+          "Inspect Anomaly",
+          "Export Alert"
+        ]
+      }
+    ],
+    "trustRequirement": 95,
+    "informationComplexity": 90,
+    "dataDensity": 88,
+    "collaborationLevel": 40,
+    "transactionCriticality": 85,
+    "navigationComplexity": 70,
+    "mobileImportance": 60,
+    "likelyScreens": [
+      {
+        "name": "Overview",
+        "screenType": "dashboard",
+        "purpose": "Market heatmaps and KPI overview"
+      },
+      {
+        "name": "Research Workspace",
+        "screenType": "workspace",
+        "purpose": "Deep quantitative analysis"
+      }
+    ],
+    "requiredCapabilities": [
+      "tabular-data",
+      "realtime-charts",
+      "context-rail"
+    ],
+    "forbiddenPatterns": [
+      "playful-illustrations",
+      "confetti-animations"
+    ],
+    "constraints": {
+      "accessibilityFloor": "AA",
+      "performanceCeiling": "rich",
+      "targetDevices": [
+        "desktop",
+        "tablet"
+      ]
+    }
+  },
+  "designDNA": {
+    "professionalism": 95,
+    "playfulness": 10,
+    "luxury": 70,
+    "warmth": 30,
+    "technicality": 92,
+    "editorial": 65,
+    "futurism": 60,
+    "visualAmbition": 75,
+    "structuralCreativity": 55,
+    "density": 85,
+    "whitespace": 40,
+    "contrast": 90,
+    "colourfulness": 25,
+    "curvature": 15,
+    "depth": 40,
+    "motion": 30,
+    "motionPlayfulness": 10,
+    "typographicExpression": 50,
+    "imageryIntensity": 20,
+    "videoIntensity": 0,
+    "threeDIntensity": 0,
+    "dataDensity": 90,
+    "interactionDensity": 85,
+    "asymmetry": 35,
+    "conversionIntensity": 20,
+    "trust": 96,
+    "accessibilityPriority": 90,
+    "performancePriority": 85,
+    "primaryArchetype": "analytics",
+    "visualMode": "dark",
+    "geometryFamily": "sharp-structural",
+    "navigationModel": "dual-rail",
+    "responsivePhilosophy": "compress-and-contextualize",
+    "contentTone": "analytical-precise",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "fast-damped",
+    "typographyPersonality": "technical-grotesk",
+    "surfacePersonality": "layered-dark-panels"
+  },
+  "brand": {
+    "name": "Meridian",
+    "primaryColor": "#6782FF",
+    "accentColor": "#C9FF57"
+  },
+  "constraints": {
+    "accessibilityFloor": "AA",
+    "performanceCeiling": "rich",
+    "targetDevices": [
+      "desktop",
+      "tablet"
+    ]
+  },
+  "screenGraph": {
+    "id": "sg_meridian",
+    "groups": [
+      {
+        "id": "group_core",
+        "name": "Core Application",
+        "screens": [
+          {
+            "id": "scr_overview",
+            "name": "Overview",
+            "slug": "overview",
+            "screenType": "dashboard",
+            "purpose": "Executive market overview",
+            "jobs": [
+              "High-level metrics scan",
+              "Active alerts triage"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 100,
+            "expectedData": [
+              "market-indices",
+              "alert-feed"
+            ],
+            "requiredRoles": [
+              "app-shell",
+              "kpi-summary",
+              "chart-grid"
+            ],
+            "optionalRoles": [
+              "context-rail"
+            ]
+          }
+        ]
+      }
+    ],
+    "edges": []
+  },
+  "screens": [
+    {
+      "id": "scr_inst_overview",
+      "screenNodeId": "scr_overview",
+      "name": "Overview",
+      "slug": "overview",
+      "rootNode": {
+        "id": "node_shell_01",
+        "nodeType": "layout",
+        "semanticRole": "container",
+        "children": [
+          {
+            "id": "parity-resource-prop-children",
+            "nodeType": "component",
+            "semanticRole": "application-shell",
+            "resourceRef": {
+              "id": "res_shell_canvas_workspace_shell",
+              "slug": "canvas-workspace-shell",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [
+              {
+                "id": "parity-prop-nested-child",
+                "nodeType": "element",
+                "semanticRole": "content",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Content from nested manifest node"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "children": "Content from resource props"
+            }
+          },
+          {
+            "id": "parity-resource-slot-children",
+            "nodeType": "component",
+            "semanticRole": "application-shell",
+            "resourceRef": {
+              "id": "res_shell_canvas_workspace_shell",
+              "slug": "canvas-workspace-shell",
+              "version": "1.0.0"
+            },
+            "variant": "expressive",
+            "children": [
+              {
+                "id": "parity-slot-nested-child",
+                "nodeType": "element",
+                "semanticRole": "content",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Content from nested manifest node"
+                }
+              }
+            ],
+            "slots": {
+              "children": "Content from declared resource slot"
+            },
+            "props": {}
+          },
+          {
+            "id": "parity-data-attribute-action",
+            "nodeType": "component",
+            "semanticRole": "action-button",
+            "resourceRef": {
+              "id": "res_primitive_button_01",
+              "slug": "button",
+              "version": "1.0.0"
+            },
+            "variant": "deliberately-unsupported",
+            "children": [],
+            "slots": {},
+            "props": {
+              "children": "Parity action",
+              "aria-label": "Parity action",
+              "data-tracking-id": "parity-action"
+            }
+          },
+          {
+            "id": "parity-mobile-omit",
+            "nodeType": "element",
+            "semanticRole": "content",
+            "children": [],
+            "slots": {},
+            "props": {
+              "children": "Content omitted on mobile"
+            },
+            "responsiveOverrides": {
+              "strategy": "omit-nonessential"
+            }
+          },
+          {
+            "id": "parity-mobile-stack",
+            "nodeType": "element",
+            "semanticRole": "container",
+            "children": [
+              {
+                "id": "parity-stack-child-one",
+                "nodeType": "element",
+                "semanticRole": "content",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "First stacked child"
+                }
+              },
+              {
+                "id": "parity-stack-child-two",
+                "nodeType": "element",
+                "semanticRole": "content",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Second stacked child"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {},
+            "responsiveOverrides": {
+              "strategy": "stack"
+            }
+          },
+          {
+            "id": "parity-mobile-collapse",
+            "nodeType": "element",
+            "semanticRole": "content",
+            "children": [],
+            "slots": {},
+            "props": {
+              "children": "Content with a collapsed mobile presentation"
+            },
+            "responsiveOverrides": {
+              "strategy": "collapse"
+            }
+          },
+          {
+            "id": "parity-hostless-dialog",
+            "nodeType": "component",
+            "semanticRole": "dialog",
+            "resourceRef": {
+              "id": "res_primitive_dialog",
+              "slug": "dialog",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "open": true,
+              "title": "Hostless dialog",
+              "children": "Dialog closes with Escape."
+            }
+          }
+        ],
+        "slots": {},
+        "props": {}
+      }
+    }
+  ],
+  "navigation": {
+    "model": "dual-rail",
+    "primaryItems": [
+      {
+        "label": "Overview",
+        "targetScreenId": "scr_inst_overview"
+      }
+    ]
+  },
+  "assets": [],
+  "locks": [],
+  "historyMeta": {
+    "totalOperations": 1,
+    "headRevision": 1
+  },
+  "exportSettings": {
+    "framework": "react",
+    "styling": "tailwind",
+    "includeTypes": true,
+    "target": "vite-react-tailwind"
+  }
+}

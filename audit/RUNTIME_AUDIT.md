@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 87 findings (17 High, 69 Medium, 1 Low): 14 closed after deployed verification, 71 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, AUD-087 fixed and awaiting Site v16 verification, and AUD-080 open.
+**Current disposition:** 87 findings (17 High, 69 Medium, 1 Low): 15 closed after deployed verification, 70 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080 open.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -842,11 +842,11 @@ with zero findings. That harness race is not counted as a product defect.
 
 ### AUD-087 — Handled export validation failure was logged as a browser console error
 
-- Evidence: Site v15's [renderer parity report](evidence/deployed-v15-export-fix/deployed-renderer-parity-audit.json) records the expected unsupported-variant dialog, no download, no uncaught exception, no failed request and no HTTP error, but `zeroConsoleErrors` is false. The [Workbench capture](evidence/deployed-v15-export-fix/deployed-unsupported-variant-1440x900.png) shows the preserved diagnostic before export.
+- Evidence: Site v15's [renderer parity report](evidence/deployed-v15-export-fix/deployed-renderer-parity-audit.json) records the expected unsupported-variant dialog, no download, no uncaught exception, no failed request and no HTTP error, but `zeroConsoleErrors` is false. Site v16's [renderer parity report](evidence/deployed-v16-export-fix/deployed-renderer-parity-audit.json) records the same visible rejection with no download and `zeroConsoleErrors`, `zeroUncaughtErrors`, `zeroFailedRequests`, and `zeroHttpErrors` all true. The [v16 Workbench capture](evidence/deployed-v16-export-fix/deployed-unsupported-variant-1440x900.png) shows the preserved diagnostic before export.
 - Reproduction: open a schema-valid Workbench manifest with an unsupported Button variant, choose **Export → Download Standalone React Project**, then inspect the browser console after the validation dialog appears.
 - Root cause: `TopToolbar` logged every caught ZIP export failure through `console.error`; the exporter represented expected project validation failures as generic `Error` values.
 - Affected code: `packages/exporter/src/source-tree.ts`, `packages/workbench/src/components/TopToolbar.tsx`, and `tests/e2e/unsupported-resource-variant-regression.spec.ts`.
-- Remediation: represent export validation failures with `ExportValidationError`, suppress error logging for that expected user-correctable case, retain logging for unexpected faults, and cover the visible dialog, rejected download, and zero-console-error result in Playwright. Local browser regression passes; awaiting Site v16 verification.
+- Remediation: represent export validation failures with `ExportValidationError`, suppress error logging for that expected user-correctable case, retain logging for unexpected faults, and cover the visible dialog, rejected download, and zero-console-error result in Playwright. The regression passes locally and on deployed Site v16 (canonical commit `7b49224898066edc9162d901e0cc945af7b24105`, Sites source commit `37fd259499ac4a634db77e091f0a8cd3ff6f1464`); status: closed after deployed verification.
 ## LOW
 
 ### AUD-079 — Published Site favicon returned 404

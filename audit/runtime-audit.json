@@ -2414,14 +2414,23 @@
         "tests/e2e/unsupported-resource-variant-regression.spec.ts"
       ],
       "remediation": "Introduce a typed ExportValidationError for invalid or unresolved project resources. Keep console.error for unexpected failures only, show the validation message, and assert the browser-visible export rejection, no download, and zero console errors in Playwright.",
-      "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
+      "fixCommit": "7b49224898066edc9162d901e0cc945af7b24105",
+      "status": "closed-deployed-verified",
       "deployedVerification": {
         "siteVersion": 15,
         "canonicalGitCommit": "8222a16defce36cc5b7ee3eae581e53bfc0f6b23",
         "result": "FAIL for the zero-console-errors acceptance condition: the export was rejected and no file was downloaded, but console.error logged the expected validation error.",
         "report": "audit/evidence/deployed-v15-export-fix/deployed-renderer-parity-audit.json",
         "screenshot": "audit/evidence/deployed-v15-export-fix/deployed-unsupported-variant-1440x900.png"
+      },
+      "latestDeployedVerification": {
+        "siteVersion": 16,
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
+        "sitesSourceCommit": "37fd259499ac4a634db77e091f0a8cd3ff6f1464",
+        "result": "PASS: visible unsupported-variant diagnostic preserved, standalone ZIP rejected without download, and zero console errors, uncaught errors, failed requests, or HTTP errors.",
+        "report": "audit/evidence/deployed-v16-export-fix/deployed-renderer-parity-audit.json",
+        "screenshot": "audit/evidence/deployed-v16-export-fix/deployed-unsupported-variant-1440x900.png"
       }
     }
   ],
