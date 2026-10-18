@@ -359,6 +359,14 @@ interface DesignDNA {
 ## 18. ProductModel
 
 ```ts
+interface ScreenSuggestion {
+  name: string;
+  screenType: string;
+  purpose: string;
+  jobs?: string[];
+  required?: boolean;
+}
+
 interface ProductModel {
   schemaVersion: string;
   productArchetypes: WeightedTag[];
@@ -411,8 +419,11 @@ interface ScreenNode {
   expectedData: string[];
   requiredRoles: string[];
   optionalRoles: string[];
+  deviceRelevance?: Array<'desktop' | 'tablet' | 'mobile'>;
 }
 ```
+
+Newly planned graphs preserve each recommendation's `required` value and record the product's target devices. Older serialized graphs may omit `deviceRelevance`; consumers use the project target-device set for those records.
 
 ## 20. ProjectManifest
 

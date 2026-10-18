@@ -13,6 +13,12 @@ signals, metric ranges and contamination checks. The Product Interpreter row
 records only the dimensions covered by that benchmark; untested error, browser,
 security and performance dimensions remain FAIL. See `quality/STEP_09_EVIDENCE.md`.
 
+Step 10 adds a no-override 100-brief Screen Planner benchmark. It checks exact
+recommendation semantics, route uniqueness, graph reachability, target-device
+metadata, mobile navigation limits, unknown screen grammars, and the no-recommendation
+fallback. Screen planner results remain local engine evidence; deployed visual and
+browser validation is scheduled with the later Compose and RC gates.
+
 | Feature | Tier | Happy path | Empty state | Invalid input | Boundary input | Reload | Back/forward navigation | Persistence | Undo | Redo | Mobile | Tablet | Desktop | Keyboard | Screen reader semantics | Reduced motion | High contrast | Slow network | Network failure | Offline behavior | Refresh during operation | Concurrent interaction | Malformed data | Old stored data | Export/import round trip | Console errors | Network errors | Performance | Security |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Homepage | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
@@ -54,8 +60,8 @@ security and performance dimensions remain FAIL. See `quality/STEP_09_EVIDENCE.m
 | Product interpreter | Core | PASS | FAIL | FAIL | FAIL | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | PASS | NOT APPLICABLE | NOT APPLICABLE | FAIL | NOT APPLICABLE | NOT APPLICABLE | FAIL | NOT APPLICABLE | FAIL | FAIL |
 | Product archetype taxonomy | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | ProductModel contract | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
-| Screen planner | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
-| ScreenGraph | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
+| Screen planner | Core | PASS | PASS | PASS | PASS | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | PASS | PASS | PASS | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | PASS | PASS | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | FAIL | FAIL |
+| ScreenGraph | Core | PASS | PASS | PASS | PASS | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | PASS | PASS | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | FAIL | FAIL |
 | Design DNA | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | Direction generation | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | Compatibility engine | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |

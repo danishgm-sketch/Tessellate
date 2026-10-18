@@ -157,6 +157,8 @@ Each screen node contains:
 - navigation visibility;
 - device relevance.
 
+The planner preserves the interpreter's recommended screen names, types, purposes, jobs, and required flags. It derives route suggestions from screen semantics and the ProductModel's entities, validates route uniqueness, groups by screen grammar, and connects the public entry to application destinations. It does not append a generic dashboard, sign-in, settings, documentation, or entity-detail screen when the ProductModel did not recommend one. If an explicit required-screen constraint cannot be matched to a recommendation or supported screen class, planning fails with an actionable error.
+
 ### Example
 
 For research/intelligence:
@@ -180,7 +182,9 @@ App
 └── Settings
 ```
 
-The planner should not automatically create pricing/billing for products that do not imply commerce.
+The planner should not automatically create pricing/billing for products that do not imply commerce. In particular, SaaS classification alone is not evidence of paid plans; billing screens and workflows require explicit monetization intent. Payment and checkout screens remain separate transaction flows.
+
+When mobile is a target and the inferred mobile importance or navigation complexity is high, no more than five destinations remain in primary navigation. Lower-priority routes remain in secondary navigation, and the planned screen graph retains their device relevance and routes.
 
 ## 5. Design DNA
 
