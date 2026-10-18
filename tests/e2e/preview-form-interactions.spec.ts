@@ -84,6 +84,9 @@ test('Reduced Motion toggle disables CSS transitions in the live resource previe
   await page.getByTitle('Reduced Motion: OFF').click();
   await expect(page.getByTitle('Reduced Motion: ON')).toBeVisible();
   await expect.poll(() => card.evaluate((element) => getComputedStyle(element).transitionDuration)).toBe('0s');
+  await preview.getByRole('button', { name: 'Replay Entrance' }).click();
+  await expect(preview.getByRole('status')).toHaveText('Entrance animation skipped because reduced motion is enabled.');
+  await expect.poll(() => card.evaluate((element) => getComputedStyle(element).opacity)).toBe('1');
 
   await page.getByTitle('Reduced Motion: ON').click();
   await expect(page.getByTitle('Reduced Motion: OFF')).toBeVisible();

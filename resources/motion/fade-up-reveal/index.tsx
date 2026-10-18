@@ -32,7 +32,9 @@ export function FadeUpReveal({ variant = 'quiet', children }: FadeUpRevealProps)
       <div className="flex justify-end">
         <button
           onClick={() => {
-            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+              || document.documentElement.dataset.tessellateReducedMotion === 'true';
+            if (reducedMotion) {
               setMotionStatus('Entrance animation skipped because reduced motion is enabled.');
               return;
             }
