@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import { execFileSync } from 'node:child_process';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 
@@ -130,7 +131,9 @@ test('compose all adjudicated briefs and inspect all three visible directions', 
   const reportPath = path.join(evidenceDirectory, 'browser-review.json');
   const report: Record<string, unknown> = {
     generatedAt: new Date().toISOString(),
-    sourceSha: process.env.AUDIT_SOURCE_SHA ?? null,
+    sourceSha:
+      process.env.AUDIT_SOURCE_SHA ??
+      execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
     source: 'Visible /compose UI; each brief entered through the form and each direction opened in the preview dialog.',
     viewport: { label: viewportName, ...page.viewportSize() },
     expectedBriefCount: briefs.length,
