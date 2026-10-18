@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship; Site v16-v19 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v19 closes catalogue/search findings AUD-088–098; AUD-099 is a new moderate desktop landmark naming finding fixed locally and pending Site v20 verification.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records one moderate desktop Axe heading-order issue in the AI Chat Panel isolated resource preview for the ordered accessibility/resource hardening step.",
   "entries": [
     {
       "id": "AUD-001",
@@ -3002,16 +3002,54 @@
       ],
       "remediation": "Name the shared primary navigation and resource breadcrumb separately, then assert both landmarks and the landmark-unique Axe rule in a browser regression.",
       "fixCommit": "96ec0b04f234c209e43e462943e588a58d0308c3",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "deployedVerification": {
-        "siteVersion": 19,
-        "canonicalGitCommit": "96258ba989ac9c777e12c42c2693a9a9cc8c32b0",
-        "sitesSourceCommit": "6c6e1a6bb38961ea0daf706a2c8261f2f8e4c82f",
-        "result": "FAIL on Site v19: desktop Axe found one moderate landmark-unique violation; mobile had none. The local fix commit is available, and Site v20 verification is pending.",
-        "report": "audit/evidence/catalog-search-v19/resource-detail-audit.json",
-        "screenshot": "audit/evidence/catalog-search-v19/resource-detail-after-1440x900.png"
+        "siteVersion": 20,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_611be9ded45c8191b5f705f8826feead",
+        "deploymentId": "appgdep_6ad45ff2fb748191a691bef39121747b",
+        "canonicalGitCommit": "ac9ad17a8513ad879974a86634c20e7db1a95ac5",
+        "sitesSourceCommit": "ba10560aa5be5771e9565af250d4be5012072b88",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "result": "PASS: the resource detail route completed all eight tabs at 1440x900 and 390x844. Each viewport recorded zero Axe violations, console errors, uncaught errors, failed requests, HTTP errors, or horizontal overflow. The desktop primary navigation is named Primary and correctly hidden below 1280px; the visible breadcrumb is named Resource breadcrumb.",
+        "report": "audit/evidence/catalog-search-v20/resource-detail-audit.json",
+        "screenshots": [
+          "audit/evidence/catalog-search-v20/resource-detail-after-1440x900.png",
+          "audit/evidence/catalog-search-v20/resource-detail-after-390x844.png"
+        ]
+      }
+    },
+    {
+      "id": "AUD-100",
+      "severity": "medium",
+      "route": "/explore",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Explore AI Chat Panel preview starts at an out-of-order heading level",
+      "expected": "The standalone resource preview presents a coherent heading hierarchy to screen-reader and automated accessibility users.",
+      "actual": "Site v20 desktop Axe reports one moderate heading-order violation in the AI Chat Panel actual preview iframe, targeting its first h4. The mobile Explore scan has no Axe violations.",
+      "reproduction": [
+        "Open /explore at 1440x900 and wait for the resource previews.",
+        "Run Axe with WCAG 2.2 AA tags; inspect the AI Chat Panel actual preview iframe finding."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/catalog-search-v20/explore-initial-1440x900.png",
+      "rootCause": "The AI Chat Panel component uses a level-four heading when it is the first heading in its standalone resource preview document.",
+      "affectedFiles": [
+        "resources/ai/ai-chat-panel/index.tsx",
+        "packages/exporter/src/generated-gold-sources.ts"
+      ],
+      "remediation": "Choose heading semantics that remain correct in both isolated resource previews and composed product contexts, add a browser regression, and verify the deployed desktop and mobile route.",
+      "fixCommit": null,
+      "status": "open",
+      "deployedVerification": {
+        "siteVersion": 20,
+        "canonicalGitCommit": "ac9ad17a8513ad879974a86634c20e7db1a95ac5",
+        "sitesSourceCommit": "ba10560aa5be5771e9565af250d4be5012072b88",
+        "result": "OPEN: a moderate desktop heading-order Axe violation was observed; mobile had zero Axe violations. Deferred to the ordered resource/accessibility hardening step.",
+        "report": "audit/evidence/catalog-search-v20/explore-1440x900.json"
       }
     }
   ],
-  "generatedAt": "2026-10-18T05:52:35.000Z"
+  "generatedAt": "2026-10-18T06:02:19.404Z"
 }

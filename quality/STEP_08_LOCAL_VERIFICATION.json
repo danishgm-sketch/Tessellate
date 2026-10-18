@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-18T05:52:35.000Z",
+  "generatedAt": "2026-10-18T06:13:38.424Z",
   "scope": "Step 08 local remediation checks only; not deployed acceptance.",
   "frozenDependencyInstall": {
     "status": "PASS",
@@ -20,13 +20,13 @@
   "browserTests": {
     "status": "PASS",
     "command": "pnpm test:e2e",
-    "passed": 133,
+    "passed": 135,
     "skipped": 56,
     "failed": 0,
     "projects": [
       {
-        "name": "standard Playwright projects",
-        "passed": 102,
+        "name": "standard Playwright desktop/mobile projects",
+        "passed": 104,
         "skipped": 56
       },
       {
@@ -40,7 +40,7 @@
         "skipped": 0
       }
     ],
-    "detail": "Full suite completed after the Step 08 UI/resource changes; the Sites Worker suite includes the opaque-preview compiled-asset CSP regression. The mobile filter keyboard dialog passed three repeated runs. The 56 skips are configured scope skips."
+    "detail": "Full suite rerun after correcting the responsive resource landmark regression. The 324-resource Sites Worker render matrix, all 40 Gold resources and variants, opaque-preview CSP regression, flagship desktop workflow and separate preview app all passed. The 56 skips are configured project-scope skips."
   },
   "sitesPreviewCspRegression": {
     "status": "PASS_LOCAL",
@@ -51,16 +51,16 @@
       "API origin and nested frames remain blocked",
       "No browser console errors or failed compiled-asset requests"
     ],
-    "deployedVerification": "PASS_SITE_V19"
+    "deployedVerification": "PASS_SITE_V20"
   },
   "resourceDetailLandmarkRegression": {
-    "status": "PASS_LOCAL",
+    "status": "PASS",
     "test": "tests/e2e/accessibility-axe.spec.ts",
-    "command": "pnpm exec playwright test tests/e2e/accessibility-axe.spec.ts --project=desktop-chrome --grep 'resource detail gives primary'",
-    "passed": 1,
-    "result": "Primary and breadcrumb navigation landmarks have distinct accessible names; landmark-unique Axe rule passes.",
+    "command": "pnpm exec playwright test tests/e2e/accessibility-axe.spec.ts --grep 'resource detail gives primary'",
+    "passed": 2,
+    "result": "Primary and breadcrumb navigation landmarks have distinct accessible names on desktop and mobile. Desktop navigation is visible at 1440px and correctly hidden at 390px; landmark-unique Axe passes in both contexts.",
     "fixCommit": "96ec0b04f234c209e43e462943e588a58d0308c3",
-    "deployedVerification": "PENDING_SITE_V20"
+    "deployedVerification": "PASS_SITE_V20"
   },
   "typecheck": {
     "status": "PASS",
@@ -143,14 +143,15 @@
     "catalogGzipKb": 111.25
   },
   "exploreAxe": {
-    "status": "PASS_LOCAL_SCOPED",
-    "note": "The full Playwright suite includes an Explore Axe scan. A separate deployed Site re-audit is required to close route findings; broader keyboard/screen-reader coverage remains in the ordered accessibility phase."
+    "status": "PASS_SITE_V20_WITH_TRACKED_MODERATE",
+    "note": "Site v20 Explore has zero serious/critical Axe violations at desktop or mobile. Mobile has zero Axe violations; desktop has one moderate heading-order finding in the AI Chat Panel isolated preview, recorded as AUD-100 and deferred to the ordered resource/accessibility hardening step."
   },
   "deployedRemediationReaudit": {
-    "status": "PARTIAL",
-    "siteVersion": 19,
+    "status": "PASS_SITE_V20",
+    "siteVersion": 20,
     "routeAudit": "audit/audit-deployed-explore.mjs",
     "resourceAudit": "audit/audit-deployed-resource-details.mjs",
-    "note": "Site v19 closes AUD-088–098. AUD-099 was found by the v19 detail Axe run; verify the local landmark fix on Site v20 before closing it and completing Step 08."
+    "scope": "Explore at 1440x900 and 390x844 plus resource detail across eight tabs at both viewports.",
+    "note": "Site v20 closes AUD-088–099. Search/catalogue checks pass, network unresolved failures and console errors are zero, and resource detail has zero Axe violations. One moderate desktop Explore preview heading-order finding remains explicitly tracked as AUD-100."
   }
 }

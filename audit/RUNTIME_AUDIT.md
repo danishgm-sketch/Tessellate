@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 99 findings (20 High, 78 Medium, 1 Low): 26 closed after deployed verification, 71 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080 open. Site v19 closes AUD-088–098; Site v19 also revealed AUD-099, a moderate desktop landmark naming issue now fixed locally and awaiting Site v20 verification. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See `quality/STEP_08_EVIDENCE.md` and `evidence/catalog-search-v19/`.
+**Current disposition:** 100 findings (20 High, 79 Medium, 1 Low): 27 closed after deployed verification, 70 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080 plus AUD-100 open. Site v20 closes AUD-088–099. The desktop Explore Axe scan also found one moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100); it is tracked for the ordered accessibility/resource hardening work. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See `quality/STEP_08_EVIDENCE.md` and `evidence/catalog-search-v20/`.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -938,11 +938,19 @@ with zero findings. That harness race is not counted as a product defect.
 
 ### AUD-099 — Resource detail navigation landmarks were not distinguishable by name
 
-- Evidence: Site v19's [resource detail report](evidence/catalog-search-v19/resource-detail-audit.json) records the desktop `landmark-unique` violation (`moderate`) on `.xl\\:flex`; the mobile run records no violation because the desktop primary navigation is hidden. The [desktop screenshot](evidence/catalog-search-v19/resource-detail-after-1440x900.png) captures the affected route.
+- Evidence: Site v19's [resource detail report](evidence/catalog-search-v19/resource-detail-audit.json) records the desktop `landmark-unique` violation (`moderate`) on `.xl\\:flex`; the mobile run records no violation because the desktop primary navigation is hidden. The [v20 desktop screenshot](evidence/catalog-search-v20/resource-detail-after-1440x900.png) captures the corrected route.
 - Reproduction: open `/r/ai-agent-activity-feed/` at 1440 × 900 and run Axe on any detail tab.
 - Root cause: the shared `Header` primary navigation and resource breadcrumb both lacked accessible names.
 - Affected code: `packages/ui/src/components/header.tsx` and `apps/site/src/pages/resources/[slug].astro`.
-- Remediation: name them “Primary” and “Resource breadcrumb” respectively and assert both navigation roles plus the `landmark-unique` rule in Playwright. The regression and full production build pass locally; Site v20 verification is pending. Fix commit: `96ec0b04f234c209e43e462943e588a58d0308c3`.
+- Remediation: name them “Primary” and “Resource breadcrumb” respectively and assert both landmarks plus the `landmark-unique` Axe rule in desktop and mobile Playwright projects. Site v20 passes all eight tabs at both viewports with zero Axe violations, console errors, uncaught errors, failed requests, HTTP errors, or overflow. The desktop-only navigation remains correctly hidden below 1280px. Fix commit: `96ec0b04f234c209e43e462943e588a58d0308c3`.
+
+### AUD-100 — Explore AI Chat Panel preview starts at an out-of-order heading level
+
+- Evidence: The Site v20 desktop Explore report records one moderate Axe `heading-order` violation in the `AI Chat Panel actual preview` iframe, targeting its leading `h4`. The mobile Explore report has no Axe violations. See [`explore-1440x900.json`](evidence/catalog-search-v20/explore-1440x900.json) and the [desktop Explore capture](evidence/catalog-search-v20/explore-initial-1440x900.png).
+- Reproduction: open `/explore` at 1440 × 900, wait for resource previews, and run Axe with WCAG 2.2 AA tags. The isolated AI Chat Panel preview begins at H4 without preceding headings.
+- Root cause: the resource component uses a level-four heading even when rendered as the first heading in its standalone preview document.
+- Affected code: `resources/ai/ai-chat-panel/index.tsx` and its generated preview/export source.
+- Remediation: choose heading semantics that remain correct in the isolated resource preview and composed product contexts, add a browser regression, then verify the deployed desktop and mobile routes. Status remains open for the ordered resource/accessibility hardening work.
 
 ## LOW
 
