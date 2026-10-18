@@ -30,7 +30,13 @@ export function AISuggestedActions({ variant = 'quiet' }: AISuggestedActionsProp
   ];
 
   return (
-    <div className={`w-full p-5 rounded-[var(--tess-radius-xl,8px)] border flex flex-col gap-3 transition-colors ${cardBg}`}>
+    <div
+      style={{
+        '--tess-ink-muted': variant === 'nocturne' ? '#A8AFBA' : '#62666F',
+        '--tess-ink-secondary': variant === 'nocturne' ? '#D1D5DB' : '#4B5563',
+      } as React.CSSProperties}
+      className={`w-full p-5 rounded-[var(--tess-radius-xl,8px)] border flex flex-col gap-3 transition-colors ${cardBg}`}
+    >
       <div className="flex items-center gap-2 text-xs font-semibold">
         <span className="text-amber-500">✦</span>
         <span>Suggested Next Steps</span>

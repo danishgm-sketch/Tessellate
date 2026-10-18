@@ -46,7 +46,13 @@ export function AreaChart({ variant = 'quiet' }: AreaChartProps) {
   const areaD = points.length > 0 ? `${pathD} L ${points[points.length - 1]?.x ?? 0} ${padding.top + chartH} L ${points[0]?.x ?? 0} ${padding.top + chartH} Z` : '';
 
   return (
-    <div className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col transition-colors ${cardBg}`}>
+    <div
+      style={{
+        '--tess-ink-muted': variant === 'nocturne' ? '#A8AFBA' : '#62666F',
+        '--tess-ink-secondary': variant === 'nocturne' ? '#D1D5DB' : '#4B5563',
+      } as React.CSSProperties}
+      className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col transition-colors ${cardBg}`}
+    >
       <div className="flex items-center justify-between mb-4">
         <div>
           <h4 className="text-sm font-semibold tracking-tight">Sample ingestion volume</h4>

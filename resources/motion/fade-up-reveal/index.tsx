@@ -28,7 +28,13 @@ export function FadeUpReveal({ variant = 'quiet', children }: FadeUpRevealProps)
       : 'transition-all duration-300 ease-linear';
 
   return (
-    <div className={`w-full flex flex-col gap-4 ${previewBg}`}>
+    <div
+      style={{
+        '--tess-ink-muted': variant === 'nocturne' ? '#A8AFBA' : '#62666F',
+        '--tess-ink-secondary': variant === 'nocturne' ? '#D1D5DB' : '#4B5563',
+      } as React.CSSProperties}
+      className={`w-full flex flex-col gap-4 ${previewBg}`}
+    >
       <div className="flex justify-end">
         <button
           onClick={() => {

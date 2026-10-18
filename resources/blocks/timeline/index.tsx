@@ -12,7 +12,7 @@ export function Timeline({ variant = 'quiet', title='Sample activity', events: s
   let bg = 'bg-white text-neutral-900 border-neutral-200';
 
   if (variant === 'expressive') {
-    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';
+    bg = 'bg-neutral-50 text-neutral-950 border-[#D9D6CF]';
   } else if (variant === 'nocturne') {
     bg = 'bg-[#0B0D10] text-white border-[#2E3440]';
   }
@@ -24,7 +24,13 @@ export function Timeline({ variant = 'quiet', title='Sample activity', events: s
   ];
 
   return (
-    <div className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border transition-colors ${bg}`}>
+    <div
+      style={{
+        '--tess-ink-muted': variant === 'nocturne' ? '#A8AFBA' : '#62666F',
+        '--tess-ink-secondary': variant === 'nocturne' ? '#D1D5DB' : '#4B5563',
+      } as React.CSSProperties}
+      className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border transition-colors ${bg}`}
+    >
       <h3 className="text-sm font-semibold mb-6">{title}</h3>
       {events.length === 0 ? (
         <p role="status" aria-live="polite" className="rounded border border-dashed border-neutral-300 p-6 text-center text-sm opacity-75 dark:border-neutral-700">

@@ -23,7 +23,7 @@ export function ErrorState({
     variant === 'nocturne'
       ? 'bg-[#0B0D10] text-white border-red-900/60'
       : variant === 'expressive'
-      ? 'bg-red-50/50 text-neutral-900 border-red-200'
+      ? 'bg-red-50 text-neutral-900 border-red-200'
       : 'bg-white text-neutral-900 border-neutral-200';
 
   const badgeColor =
@@ -36,6 +36,10 @@ export function ErrorState({
   return (
     <div
       role="alert"
+      style={{
+        '--tess-ink-muted': variant === 'nocturne' ? '#A8AFBA' : '#62666F',
+        '--tess-ink-secondary': variant === 'nocturne' ? '#D1D5DB' : '#4B5563',
+      } as React.CSSProperties}
       className={`p-6 @md:p-8 rounded-[var(--tess-radius-xl,8px)] border max-w-4xl mx-auto space-y-4 transition-colors ${containerBg}`}
     >
       <div className="flex items-center gap-3">

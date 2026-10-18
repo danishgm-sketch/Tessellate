@@ -19,7 +19,13 @@ export function TwoPaneMasterDetailShell({ variant = 'quiet' }: TwoPaneMasterDet
   ];
 
   return (
-    <div className={`min-h-screen @container flex flex-col @lg:flex-row divide-y @lg:divide-y-0 @lg:divide-x text-xs ${theme}`}>
+    <div
+      style={{
+        '--tess-ink-muted': variant === 'nocturne' ? '#A8AFBA' : '#62666F',
+        '--tess-ink-secondary': variant === 'nocturne' ? '#D1D5DB' : '#4B5563',
+      } as React.CSSProperties}
+      className={`min-h-screen @container flex flex-col @lg:flex-row divide-y @lg:divide-y-0 @lg:divide-x text-xs ${theme}`}
+    >
       <div className="w-full @lg:w-80 p-4 space-y-2 shrink-0">
         <span className="font-semibold block mb-2">Incidents Queue</span>
         {items.map((it) => (

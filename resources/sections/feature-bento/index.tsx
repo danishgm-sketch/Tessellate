@@ -46,7 +46,7 @@ export function FeatureBento({
   let card = 'bg-neutral-50 border-neutral-200';
 
   if (variant === 'expressive') {
-    bg = 'bg-neutral-50/50 text-neutral-950 border-[#D9D6CF]';
+    bg = 'bg-neutral-50 text-neutral-950 border-[#D9D6CF]';
     card = 'bg-white border-blue-200 shadow-md';
   } else if (variant === 'nocturne') {
     bg = 'bg-[#0B0D10] text-white border-[#2E3440]';
@@ -54,7 +54,13 @@ export function FeatureBento({
   }
 
   return (
-    <section className={`relative w-full py-20 px-6 @sm:px-12 border-b transition-colors ${bg}`}>
+    <section
+      style={{
+        '--tess-ink-muted': variant === 'nocturne' ? '#A8AFBA' : '#62666F',
+        '--tess-ink-secondary': variant === 'nocturne' ? '#D1D5DB' : '#4B5563',
+      } as React.CSSProperties}
+      className={`relative w-full py-20 px-6 @sm:px-12 border-b transition-colors ${bg}`}
+    >
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl @sm:text-5xl font-bold tracking-tight text-center mb-16">
           {title}
