@@ -103,6 +103,24 @@ describe('Resource Replacement Fidelity', () => {
     }
   });
 
+  it('does not offer an unverified resource as a replacement for an otherwise matching custom role', () => {
+    const customRoleManifest: ProjectManifest = structuredClone(testManifest);
+    const target = customRoleManifest.screens[0]!.rootNode.children![0]!;
+    target.semanticRole = 'employee-action';
+    const button = catalog.find((resource) => resource.slug === 'button')!;
+    const experimental = {
+      ...button,
+      id: 'res_experimental_employee_action',
+      slug: 'experimental-employee-action',
+      roles: ['employee-action'],
+      tags: ['employee-action'],
+    };
+
+    const candidates = getReplaceCandidates(customRoleManifest, target.id, [button, experimental]);
+
+    expect(candidates.map((candidate) => candidate.resource.slug)).not.toContain('experimental-employee-action');
+  });
+
   it('replaces node with a real resourceRef and initializes slots from the replacement manifest', () => {
     const targetNodeId = 'node-btn-primary';
     const ghostResource = catalog.find((r) => r.slug === 'magnetic-button')!;

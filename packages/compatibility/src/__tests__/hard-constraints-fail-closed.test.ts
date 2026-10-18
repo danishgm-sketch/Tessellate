@@ -23,7 +23,11 @@ describe('Requirement 3: Hard Constraints Fail Closed', () => {
       styling: 'tailwind',
       dependencies: [],
       files: [{ path: 'index.tsx', kind: 'component', required: true }],
-      variants: [{ id: 'default', name: 'default', description: 'Default' }],
+      variants: [
+        { id: 'quiet', name: 'Quiet', description: 'Quiet' },
+        { id: 'expressive', name: 'Expressive', description: 'Expressive' },
+        { id: 'nocturne', name: 'Nocturne', description: 'Nocturne' },
+      ],
       slots: [],
       relationships: [],
       tags: ['hero'],

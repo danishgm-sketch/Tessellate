@@ -98,6 +98,7 @@ function resolveBestResourceForRole(
   for (const candidate of candidates) {
     const constraintResult = evaluateHardConstraints({
       resource: candidate,
+      constraints: productModel.constraints,
       targetFramework: 'react',
       targetStyling: 'tailwind-v4',
       requiredAccessibilityFloor: productModel.constraints.accessibilityFloor,
