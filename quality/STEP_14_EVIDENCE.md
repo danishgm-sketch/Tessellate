@@ -13,7 +13,7 @@ and structural differences across at least two axes. These checks verify
 generation and resource source resolution; clean install/build/browser checks
 for benchmark exports remain in Step 23.
 
-Step 14 remains **in progress**. The complete visible Compose benchmark covers 100 adjudicated briefs and all three directions at 1440 × 900 and 390 × 844. It captured 600 screenshots from source commit `79e780b1a05ba9f6bc77b977345677f884de0861`. Both desktop and mobile reports passed with zero unresolved diagnostics, console errors or warnings, uncaught exceptions, failed requests, and HTTP errors. All 20 post-fix contact sheets have been visually reviewed; direction differences remain visible across navigation, layout grammar, and resource arrangement. The before/after AI-03 Direction 02 captures show the resource contrast correction at full size. AUD-134–142 record the current content, contrast, keyboard-accessibility, and responsive findings. The resource-level Axe and responsive regressions were rerun after the new fixes; all local findings remain open until a deployed review Site is checked during Step 45.
+Step 14 is **complete locally**. The visible Compose benchmark covers 100 adjudicated briefs and all three directions at 1440 × 900, 768 × 1024, and 390 × 844. All three reports were captured from source commit `fbfe17db24a076c152ac7905334437053a23d346`; each records the visible Product Architecture summary and all 38 Design DNA fields for each direction. The reports contain 300 directions each, with zero unresolved diagnostics, console errors or warnings, uncaught exceptions, failed requests, and HTTP errors. All 30 contact sheets were visually reviewed, together with the full-size flagship direction captures at desktop and mobile. The directions retain readable layouts and visibly distinct navigation, composition grammar, and component-role structures. The flagship architecture identifies Employee Experience, preserves the 500-person input, and uses people, teams, onboarding, engagement, and policy content without finance or observability residue. The before/after AI-03 Direction 02 captures show the resource contrast correction at full size. AUD-134–142 record current content, contrast, keyboard-accessibility, and responsive findings. Resource-level Axe and responsive regressions pass locally; runtime findings remain open until a deployed review Site is checked during Step 45.
 
 AUD-140 was reproduced in the visible product and by Axe against all 40 Gold resources in expressive variants on dark canvases. Before the fix, 16 resources failed contrast, including 1.44:1 table values, 1.53:1 profile badges, and 2.20:1 muted labels on white. Resource-local semantic text tokens and opaque expressive surfaces fix the shared cause. The desktop 40-resource report is `quality/evidence/step-14/accessibility/gold-expressive-dark-after.json`; the mobile report is `quality/evidence/step-14/accessibility/gold-expressive-dark-mobile-after.json`. Before and after screenshots are `quality/evidence/step-14/manual-review/versions/87a90100/desktop/ai-03-direction-02.png` and `quality/evidence/step-14/manual-review/current/desktop/ai-03-direction-02.png`. The source fix is commit `79e780b1`; deployed review verification remains pending.
 
@@ -64,7 +64,7 @@ regression first failed on the employee UI, then passed after the shared KPI
 resource classified no-data states as neutral. Desktop/mobile before/after
 captures and clean runtime reports are recorded; deployed verification remains
 open.
-Additional full-size output adjudication, tablet review, and clean-build verification of benchmark exports remain open. This checkpoint does not claim public review-site verification.
+The full-size flagship and tablet reviews are complete. Independent clean-install/build/runtime verification of benchmark exports remains in Step 23. This checkpoint does not claim public review-site verification.
 
 The local fixes for AUD-101–105 and AUD-107–110 are in commit
 `8686e0b9d7e7aca869a7677113492ded53af27b6`. The runtime audit records this SHA
@@ -381,9 +381,10 @@ and HTTP errors.
   context-rich workspace names and two-character initials; the two public showcase
   routes now have dedicated browser regressions.
 - The initial 46b53fcb full-benchmark report remains baseline evidence. Its screenshots expose defects fixed later and do not certify current output. The current run is archived separately with the tested source SHA.
-- Distinctness: all 100 benchmark cases must differ between every direction pair
-  across at least two structural axes (navigation, grammar, hierarchy, and resource
-  selection).
+- Distinctness: every pair must differ across at least two of navigation model,
+  composition grammar, semantic component roles, and selected resources. The
+  benchmark now compares component-role structure instead of screen names, which
+  remain intentionally consistent across directions.
 
 ## Local validation
 
@@ -412,8 +413,10 @@ and HTTP errors.
 - Flagship direction browser journey — passed at 1440 × 900 with three visible
   direction previews and zero unresolved roles, console errors, uncaught errors,
   failed requests or HTTP errors.
-- `pnpm quality:composition-review` passed the full current-source run: 100 briefs and 300 directions at desktop and mobile, 600 screenshots total. Reports and captures are under `quality/evidence/step-14/manual-review/current/`; both reports contain zero resource diagnostics, console errors/warnings, uncaught exceptions, failed requests, or HTTP errors.
-- The prior 46b53fcb full capture remains baseline-only. The current 062c7f0e reports and screenshots cover the same 100 briefs × 3 directions at both viewports. AUD-134–138 were fixed locally and are included in the current-source run; all issue-specific deployed checks remain scheduled for Step 45.
+- `pnpm quality:composition-review` passed all 100 briefs and 300 directions at 1440 × 900, 390 × 844, and 768 × 1024. The reports are under `quality/evidence/step-14/manual-review/current/`; all identify source `fbfe17db24a076c152ac7905334437053a23d346` and record zero unresolved resources, console errors or warnings, uncaught exceptions, failed requests, or HTTP errors. Each direction includes the complete 38-field Design DNA snapshot; each brief includes the visible Product Architecture text.
+- `pnpm quality:composition-contact-sheets` produced 30 sheets (ten per viewport), which were visually reviewed. The previews retain readable content and show distinct sidebar, top-navigation, and rail/workspace structures. The exact employee-experience case retains the 500-person figure and people, teams, engagement, onboarding, and policies content at all three sizes. Full-size Direction A/B/C screenshots are also captured at desktop; Direction C is captured at mobile.
+- Structural comparison across all three reports: every pair differs in navigation model, composition grammar, and semantic component roles for all 100 briefs. A/B and A/C also select different resources in 89 cases; B/C share resource sets but remain structurally distinct. Machine-readable counts are in `quality/evidence/step-14/manual-review/current/direction-distinctness.json`.
+- The prior 46b53fcb full capture remains baseline-only. AUD-134–138 were fixed locally and are included in the reviewed current outputs; issue-specific deployed checks remain scheduled for Step 45.
 - Current-source `pnpm audit:all` — passed all 16 release gates, production build,
   bundle budget, provenance, and security/secret checks.
 
@@ -426,16 +429,14 @@ surfaced AUD-106: the first AI editor screen renders its global navigation twice
 because `editor-toolbar` resolves to the same top-navigation resource. The finding
 is recorded and deferred to the ordered showcase-hardening step (Step 43).
 
-## Remaining gate work
+## Subsequent ordered gates
 
-1. Add tablet review and finish full-size output adjudication for the benchmark;
-   the 100-brief desktop/mobile visible run and contact-sheet review are complete.
-2. Finish semantic output and exportability adjudication for all directions;
-   benchmark-export clean installs and builds remain in Step 23.
-3. Exercise Compose loading, failure, empty, invalid-input, and rapid-repeat
-   states under the Compose UX gate.
-4. Re-run the same browser checks on the public review Site during Step 45; local
-   fixes are not closed for release until deployed verification succeeds.
+1. Step 15 covers catalogue loading/failure, retry, empty and invalid input,
+   repeated composition, interruption, and mobile controls.
+2. Step 23 independently installs, builds, and runs benchmark exports outside
+   the monorepo.
+3. Step 45 repeats release-critical browser checks against the public review
+   Site; locally verified findings remain open for deployed verification.
 
 The full unit test run also exposed a stale golden expectation for the Developer
 Observability Platform: it expected generic Documentation, while the generated

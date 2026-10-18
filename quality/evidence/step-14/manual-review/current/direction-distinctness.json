@@ -1,0 +1,171 @@
+{
+  "schemaVersion": "1.0.0",
+  "benchmark": "quality/COMPOSITION_QUALITY_BENCHMARK.json",
+  "generatedAt": "2026-10-18T20:57:57.557Z",
+  "sourceSha": "fbfe17db24a076c152ac7905334437053a23d346",
+  "minimumDistinctAxesPerDirectionPair": 2,
+  "axisDefinitions": {
+    "navigationModel": "ProjectManifest.navigation.model differs",
+    "compositionGrammar": "ProjectManifest.grammar differs",
+    "semanticComponentRoles": "Unique semantic role sets differ",
+    "selectedResources": "Unique resource slug sets differ"
+  },
+  "viewports": [
+    {
+      "label": "desktop",
+      "viewport": {
+        "label": "desktop",
+        "width": 1440,
+        "height": 900
+      },
+      "briefs": 100,
+      "directions": 300,
+      "designDNAFields": 38,
+      "productArchitectureSummaries": 100,
+      "unresolvedResources": 0,
+      "runtime": {
+        "consoleErrors": 0,
+        "consoleWarnings": 0,
+        "uncaught": 0,
+        "failedRequests": 0,
+        "httpErrors": 0
+      },
+      "pairs": [
+        {
+          "pair": "1/2",
+          "minimumDistinctAxes": 3,
+          "briefsDifferingByAxis": {
+            "navigationModel": 100,
+            "compositionGrammar": 100,
+            "semanticComponentRoles": 100,
+            "selectedResources": 89
+          }
+        },
+        {
+          "pair": "1/3",
+          "minimumDistinctAxes": 3,
+          "briefsDifferingByAxis": {
+            "navigationModel": 100,
+            "compositionGrammar": 100,
+            "semanticComponentRoles": 100,
+            "selectedResources": 89
+          }
+        },
+        {
+          "pair": "2/3",
+          "minimumDistinctAxes": 3,
+          "briefsDifferingByAxis": {
+            "navigationModel": 100,
+            "compositionGrammar": 100,
+            "semanticComponentRoles": 100,
+            "selectedResources": 0
+          }
+        }
+      ]
+    },
+    {
+      "label": "mobile",
+      "viewport": {
+        "label": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      "briefs": 100,
+      "directions": 300,
+      "designDNAFields": 38,
+      "productArchitectureSummaries": 100,
+      "unresolvedResources": 0,
+      "runtime": {
+        "consoleErrors": 0,
+        "consoleWarnings": 0,
+        "uncaught": 0,
+        "failedRequests": 0,
+        "httpErrors": 0
+      },
+      "pairs": [
+        {
+          "pair": "1/2",
+          "minimumDistinctAxes": 3,
+          "briefsDifferingByAxis": {
+            "navigationModel": 100,
+            "compositionGrammar": 100,
+            "semanticComponentRoles": 100,
+            "selectedResources": 89
+          }
+        },
+        {
+          "pair": "1/3",
+          "minimumDistinctAxes": 3,
+          "briefsDifferingByAxis": {
+            "navigationModel": 100,
+            "compositionGrammar": 100,
+            "semanticComponentRoles": 100,
+            "selectedResources": 89
+          }
+        },
+        {
+          "pair": "2/3",
+          "minimumDistinctAxes": 3,
+          "briefsDifferingByAxis": {
+            "navigationModel": 100,
+            "compositionGrammar": 100,
+            "semanticComponentRoles": 100,
+            "selectedResources": 0
+          }
+        }
+      ]
+    },
+    {
+      "label": "tablet",
+      "viewport": {
+        "label": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      "briefs": 100,
+      "directions": 300,
+      "designDNAFields": 38,
+      "productArchitectureSummaries": 100,
+      "unresolvedResources": 0,
+      "runtime": {
+        "consoleErrors": 0,
+        "consoleWarnings": 0,
+        "uncaught": 0,
+        "failedRequests": 0,
+        "httpErrors": 0
+      },
+      "pairs": [
+        {
+          "pair": "1/2",
+          "minimumDistinctAxes": 3,
+          "briefsDifferingByAxis": {
+            "navigationModel": 100,
+            "compositionGrammar": 100,
+            "semanticComponentRoles": 100,
+            "selectedResources": 89
+          }
+        },
+        {
+          "pair": "1/3",
+          "minimumDistinctAxes": 3,
+          "briefsDifferingByAxis": {
+            "navigationModel": 100,
+            "compositionGrammar": 100,
+            "semanticComponentRoles": 100,
+            "selectedResources": 89
+          }
+        },
+        {
+          "pair": "2/3",
+          "minimumDistinctAxes": 3,
+          "briefsDifferingByAxis": {
+            "navigationModel": 100,
+            "compositionGrammar": 100,
+            "semanticComponentRoles": 100,
+            "selectedResources": 0
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -23,7 +23,7 @@ type Screen = { id: string; name: string; rootNode: AuditNode };
 
 type ProjectManifest = {
   id: string;
-  dna: { primaryArchetype?: string };
+  dna: { primaryArchetype?: string; [key: string]: unknown };
   navigation: { model: string };
   grammar: string;
   screens: Screen[];
@@ -34,6 +34,7 @@ type DirectionEvidence = {
   number: string;
   projectId: string;
   archetype: string | undefined;
+  dna: ProjectManifest['dna'];
   directionCardCopy: string;
   navigation: string;
   grammar: string;
@@ -81,10 +82,9 @@ async function readVisibleManifest(page: Page): Promise<ProjectManifest> {
 
 test('compose all adjudicated briefs and inspect all three visible directions', async ({
   page,
-  isMobile,
-}) => {
+}, testInfo) => {
   test.setTimeout(3_600_000);
-  const viewportName = isMobile ? 'mobile' : 'desktop';
+  const viewportName = testInfo.project.name.replace('composition-', '');
   const benchmarkPath = path.resolve(process.cwd(), 'quality/COMPOSITION_QUALITY_BENCHMARK.json');
   const benchmark = JSON.parse(fs.readFileSync(benchmarkPath, 'utf8')) as Benchmark;
   const requestedIds = new Set(
@@ -100,7 +100,10 @@ test('compose all adjudicated briefs and inspect all three visible directions', 
     requestedIds.size ? [...requestedIds].sort() : requestedBriefs.map((brief) => brief.id).sort()
   );
   const requestedLimit = Number(process.env.COMPOSITION_REVIEW_LIMIT ?? benchmark.briefs.length);
-  const briefs = requestedBriefs.slice(0, Number.isFinite(requestedLimit) ? requestedLimit : undefined);
+  const briefs = requestedBriefs.slice(
+    0,
+    Number.isFinite(requestedLimit) ? requestedLimit : undefined
+  );
   const evidenceDirectory = path.resolve(
     process.cwd(),
     'quality/evidence/step-14/manual-review/current',
@@ -113,7 +116,12 @@ test('compose all adjudicated briefs and inspect all three visible directions', 
   const uncaught: string[] = [];
   const failedRequests: string[] = [];
   const httpErrors: string[] = [];
-  const briefsEvidence: Array<{ id: string; brief: string; directions: DirectionEvidence[] }> = [];
+  const briefsEvidence: Array<{
+    id: string;
+    brief: string;
+    productArchitecture: string;
+    directions: DirectionEvidence[];
+  }> = [];
   page.on('console', (message) => {
     if (message.type() === 'error') consoleErrors.push(message.text());
     if (message.type() === 'warning') consoleWarnings.push(message.text());
@@ -134,7 +142,8 @@ test('compose all adjudicated briefs and inspect all three visible directions', 
     sourceSha:
       process.env.AUDIT_SOURCE_SHA ??
       execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
-    source: 'Visible /compose UI; each brief entered through the form and each direction opened in the preview dialog.',
+    source:
+      'Visible /compose UI; each brief entered through the form and each direction opened in the preview dialog.',
     viewport: { label: viewportName, ...page.viewportSize() },
     expectedBriefCount: briefs.length,
     completedBriefCount: 0,
@@ -160,12 +169,23 @@ test('compose all adjudicated briefs and inspect all three visible directions', 
     await expect(submit).toBeEnabled();
     await submit.click();
 
+    const architecture = page
+      .getByRole('heading', { name: 'Inferred Product Architecture', exact: true })
+      .locator('xpath=ancestor::section[1]');
+    await expect(architecture).toBeVisible();
+    const productArchitecture = await architecture.innerText();
+    expect(productArchitecture).toContain('Inferred Product Architecture');
+
     const directions: DirectionEvidence[] = [];
     for (const number of ['01', '02', '03']) {
       const card = page.locator(`[data-testid="direction-card-${number}"]`);
       await expect(card).toBeVisible();
       const cardCopy = await card.innerText();
-      await expect(card.locator(`[data-testid="direction-preview-${number}"] [data-testid="missing-resource-recovery"]`)).toHaveCount(0);
+      await expect(
+        card.locator(
+          `[data-testid="direction-preview-${number}"] [data-testid="missing-resource-recovery"]`
+        )
+      ).toHaveCount(0);
       await expect(
         card.locator(
           `[data-testid="direction-preview-${number}"] [data-testid="unresolved-required-role-diagnostic"]`
@@ -190,36 +210,59 @@ test('compose all adjudicated briefs and inspect all three visible directions', 
           `${JSON.stringify(manifest, null, 2)}\n`
         );
       }
-      expect(manifest.id, `${brief.id} Direction ${number} must have a project identity`).toBeTruthy();
+      expect(
+        manifest.id,
+        `${brief.id} Direction ${number} must have a project identity`
+      ).toBeTruthy();
       expect(manifest.dna.primaryArchetype).toBeTruthy();
       expect(brief.acceptableArchetypes).toContain(manifest.dna.primaryArchetype);
-      expect(manifest.screens.length, `${brief.id} Direction ${number} needs product screens`).toBeGreaterThan(0);
+      expect(
+        manifest.screens.length,
+        `${brief.id} Direction ${number} needs product screens`
+      ).toBeGreaterThan(0);
       expect(new Set(manifest.screens.map((screen) => screen.name)).size).toBe(
         manifest.screens.length
       );
-      expect(manifest.diagnostics, `${brief.id} Direction ${number} must resolve all resources`).toEqual([]);
+      expect(
+        manifest.diagnostics,
+        `${brief.id} Direction ${number} must resolve all resources`
+      ).toEqual([]);
 
       const nodes = manifest.screens.flatMap((screen) => walk(screen.rootNode));
-      const resources = [...new Set(nodes.flatMap((node) => (node.resourceRef?.slug ? [node.resourceRef.slug] : [])))].sort();
-      expect(resources.length, `${brief.id} Direction ${number} must use real resources`).toBeGreaterThan(0);
-      const screen = manifest.screens.find((candidate) => !/marketing|landing/i.test(candidate.name)) ?? manifest.screens[0]!;
+      const resources = [
+        ...new Set(
+          nodes.flatMap((node) => (node.resourceRef?.slug ? [node.resourceRef.slug] : []))
+        ),
+      ].sort();
+      expect(
+        resources.length,
+        `${brief.id} Direction ${number} must use real resources`
+      ).toBeGreaterThan(0);
+      const screen =
+        manifest.screens.find((candidate) => !/marketing|landing/i.test(candidate.name)) ??
+        manifest.screens[0]!;
       const screenSelect = dialog.getByLabel('Direction preview screen');
       await expect(screenSelect.locator('option')).toHaveCount(manifest.screens.length);
       await screenSelect.selectOption({ value: screen.id });
-      await expect(dialog.getByRole('heading', { name: new RegExp(`Direction ${number}`) })).toBeVisible();
+      await expect(
+        dialog.getByRole('heading', { name: new RegExp(`Direction ${number}`) })
+      ).toBeVisible();
       const remainingDialogScroll = await dialog.evaluate((element) => {
         const scrollables = [element, ...element.querySelectorAll<HTMLElement>('*')].filter(
           (candidate) => candidate.scrollHeight > candidate.clientHeight
         );
         return scrollables.map((candidate) => candidate.scrollTop);
       });
-      expect(remainingDialogScroll, `${brief.id} Direction ${number} screenshot must start at the preview top`).toEqual(
-        remainingDialogScroll.map(() => 0)
-      );
+      expect(
+        remainingDialogScroll,
+        `${brief.id} Direction ${number} screenshot must start at the preview top`
+      ).toEqual(remainingDialogScroll.map(() => 0));
       const canvas = dialog.locator('.tess-screen');
       await expect(canvas.locator('[data-semantic-role]')).not.toHaveCount(0);
       await expect(canvas.locator('[data-testid="missing-resource-recovery"]')).toHaveCount(0);
-      await expect(canvas.locator('[data-testid="unresolved-required-role-diagnostic"]')).toHaveCount(0);
+      await expect(
+        canvas.locator('[data-testid="unresolved-required-role-diagnostic"]')
+      ).toHaveCount(0);
 
       if (brief.id === 'RES-01' && number === '03' && screen.name === 'Research Terminal') {
         await expect(
@@ -239,17 +282,18 @@ test('compose all adjudicated briefs and inspect all three visible directions', 
         expect(canvasBounds, 'the main research canvas should render').not.toBeNull();
         expect(inspectorBounds, 'the research inspector should render').not.toBeNull();
         if (canvasBounds && inspectorBounds) {
-          if (isMobile) {
-            expect(canvasBounds.y, 'mobile canvas should precede its inspector').toBeLessThan(
+          if (Math.abs(canvasBounds.x - inspectorBounds.x) <= 1) {
+            expect(canvasBounds.y, 'stacked canvas should precede its inspector').toBeLessThan(
               inspectorBounds.y
             );
           } else {
             expect(canvasBounds.x, 'desktop canvas should occupy the primary column').toBeLessThan(
               inspectorBounds.x
             );
-            expect(canvasBounds.width, 'desktop canvas should be wider than the inspector').toBeGreaterThan(
-              inspectorBounds.width
-            );
+            expect(
+              canvasBounds.width,
+              'desktop canvas should be wider than the inspector'
+            ).toBeGreaterThan(inspectorBounds.width);
           }
         }
       }
@@ -276,6 +320,7 @@ test('compose all adjudicated briefs and inspect all three visible directions', 
         number,
         projectId: manifest.id,
         archetype: manifest.dna.primaryArchetype,
+        dna: manifest.dna,
         directionCardCopy: cardCopy,
         navigation: manifest.navigation.model,
         grammar: manifest.grammar,
@@ -300,15 +345,21 @@ test('compose all adjudicated briefs and inspect all three visible directions', 
       const differenceAxes = [
         left.navigation !== right.navigation,
         left.grammar !== right.grammar,
-        distinctValues(left.screenNames) !== distinctValues(right.screenNames),
+        distinctValues(left.semanticRoles) !== distinctValues(right.semanticRoles),
         distinctValues(left.uniqueResourceSlugs) !== distinctValues(right.uniqueResourceSlugs),
       ].filter(Boolean).length;
-      expect(differenceAxes, `${brief.id} directions ${left.number}/${right.number} need structural differences`).toBeGreaterThanOrEqual(2);
+      expect(
+        differenceAxes,
+        `${brief.id} directions ${left.number}/${right.number} need structural differences`
+      ).toBeGreaterThanOrEqual(2);
     }
 
-    briefsEvidence.push({ id: brief.id, brief: brief.brief, directions });
+    briefsEvidence.push({ id: brief.id, brief: brief.brief, productArchitecture, directions });
     report.completedBriefCount = briefsEvidence.length;
-    report.directionCount = briefsEvidence.reduce((count, item) => count + item.directions.length, 0);
+    report.directionCount = briefsEvidence.reduce(
+      (count, item) => count + item.directions.length,
+      0
+    );
     serializeReport(reportPath, report);
   }
 

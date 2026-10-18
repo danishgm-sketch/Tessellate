@@ -28,7 +28,9 @@ function escapeHtml(value: string) {
 function imageData(screenshot: string) {
   const imagePath = path.resolve(root, screenshot);
   if (!imagePath.startsWith(sourceDirectory)) {
-    throw new Error(`Refusing screenshot outside the current Step 14 evidence directory: ${imagePath}`);
+    throw new Error(
+      `Refusing screenshot outside the current Step 14 evidence directory: ${imagePath}`
+    );
   }
   return `data:image/png;base64,${fs.readFileSync(imagePath).toString('base64')}`;
 }
@@ -42,21 +44,27 @@ function renderCard(brief: BriefEvidence, direction: DirectionEvidence) {
 
 const browser = await chromium.launch({ headless: true });
 try {
-  for (const viewport of ['desktop', 'mobile'] as const) {
+  for (const viewport of ['desktop', 'tablet', 'mobile'] as const) {
     const reportPath = path.join(sourceDirectory, viewport, 'browser-review.json');
     const report = JSON.parse(fs.readFileSync(reportPath, 'utf8')) as ReviewReport;
     if (report.status !== 'passed' || report.briefs.length !== 100) {
       throw new Error(`${viewport} review is incomplete; contact sheets require all 100 briefs.`);
     }
 
-    const page = await browser.newPage({ viewport: viewport === 'desktop' ? { width: 1680, height: 1000 } : { width: 1000, height: 1000 } });
+    const page = await browser.newPage({
+      viewport:
+        viewport === 'desktop' ? { width: 1680, height: 1000 } : { width: 1000, height: 1000 },
+    });
     for (let start = 0; start < report.briefs.length; start += 10) {
       const group = report.briefs.slice(start, start + 10);
-      const cards = group.flatMap((brief) => brief.directions.map((direction) => renderCard(brief, direction)));
-      const columns = viewport === 'desktop' ? 3 : 2;
-      const imageRule = viewport === 'desktop'
-        ? 'img{display:block;width:100%;max-height:300px;object-fit:contain;background:#fff}'
-        : 'img{display:block;width:auto;height:440px;max-width:100%;object-fit:contain;background:#fff;margin:auto}';
+      const cards = group.flatMap((brief) =>
+        brief.directions.map((direction) => renderCard(brief, direction))
+      );
+      const columns = viewport === 'mobile' ? 2 : 3;
+      const imageRule =
+        viewport !== 'mobile'
+          ? 'img{display:block;width:100%;max-height:300px;object-fit:contain;background:#fff}'
+          : 'img{display:block;width:auto;height:440px;max-width:100%;object-fit:contain;background:#fff;margin:auto}';
       const html = `<!doctype html><html lang="en"><meta charset="utf-8"><title>${viewport} briefs ${start + 1}-${start + group.length}</title>
         <style>
           *{box-sizing:border-box}body{margin:0;padding:16px;background:#d8d8d5;color:#181818;font:14px/1.35 Arial,sans-serif}

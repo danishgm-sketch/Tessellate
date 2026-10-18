@@ -28,6 +28,13 @@ export default defineConfig({
         isMobile: true,
       },
     },
+    {
+      name: 'composition-tablet',
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 768, height: 1024 },
+      },
+    },
   ],
   webServer: {
     command: 'pnpm --filter @tessellate/site preview --port 4325',
