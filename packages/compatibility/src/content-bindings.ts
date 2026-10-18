@@ -1,6 +1,15 @@
 import type { ProductModel, ScreenNode } from '@tessellate/schemas';
 
 /** Deterministic, serialisable content: examples are identified, never customer claims. */
+function humanizeWorkflowLabel(value: string): string {
+  const words = value
+    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+    .replace(/[_-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return words ? words[0]!.toUpperCase() + words.slice(1) : 'Workspace activity';
+}
+
 export function bindResourceContent(
   product: ProductModel,
   screen: ScreenNode,
@@ -15,6 +24,12 @@ export function bindResourceContent(
     `${product.primaryAudience} ${product.primaryObjective}`
   );
   const isCommunityActivity = isCommunity && screen.name === 'Activity Stream';
+  const isNotificationScreen = /notifications?|inbox|alerts/i.test(screen.name);
+  const isTradingTerminal =
+    primaryArchetype === 'fintech' &&
+    /market depth|equity trade|trading terminal|order book/i.test(
+      `${product.primaryObjective} ${briefDescription}`
+    );
   const isReturnsPortal =
     primaryArchetype === 'ecommerce' &&
     /\b(?:returns? portal|return approval|refund steps|refund status|return request|previous purchase)\b/i.test(
@@ -27,7 +42,9 @@ export function bindResourceContent(
         ? 'People & Teams'
         : isCommunity
           ? 'Example Community'
-          : `${product.entities[0]?.name ?? 'Team'} Workspace`;
+          : isTradingTerminal
+            ? 'Market Workspace'
+            : `${product.entities[0]?.name ?? 'Team'} Workspace`;
   const brandWords = brand.match(/[A-Za-z0-9]+/g) ?? [];
   const initials = employee
     ? 'PT'
@@ -236,10 +253,12 @@ export function bindResourceContent(
                   desc: 'Shared-interest groups can bring introductions and upcoming events together.',
                 },
               ]
-            : product.workflows.map((workflow, index) => ({
-                time: `Step ${index + 1}`,
-                title: workflow.name,
-                desc: workflow.steps.join(' → '),
+            : product.workflows.slice(0, 3).map((workflow) => ({
+                time: 'Example',
+                title: humanizeWorkflowLabel(workflow.name),
+                desc:
+                  workflow.steps.map(humanizeWorkflowLabel).join(' → ') ||
+                  'Example activity from this workflow.',
               }));
   const count = briefDescription
     .match(/\b([\d,]+)[ -]+(?:person|employee|people)/i)?.[1]
@@ -266,8 +285,13 @@ export function bindResourceContent(
     title:
       role === 'message-thread'
         ? `Example ${screen.name}`
-        : role === 'activity-feed' && isCommunityActivity
-          ? 'Latest community updates'
+        : role === 'activity-feed'
+          ? (titles[role] ??
+            (isCommunityActivity
+              ? 'Latest community updates'
+              : isNotificationScreen
+                ? 'Recent notifications'
+                : 'Recent activity'))
           : role === 'hero' || role === 'conversion-cta'
             ? headline
             : (titles[role] ?? screen.name),
@@ -298,16 +322,16 @@ export function bindResourceContent(
       ? [
           {
             label: 'People',
-            val: count ?? 'Example',
-            status: count ? 'From your brief · example' : 'Illustrative only',
+            val: count ?? '—',
+            status: count ? 'From your brief' : 'No connected data',
           },
-          { label: 'Onboarding', val: 'Example', status: 'Illustrative only' },
-          { label: 'Team pulse', val: 'Example', status: 'Illustrative only' },
+          { label: 'Onboarding', val: '—', status: 'No connected data' },
+          { label: 'Team pulse', val: '—', status: 'No connected data' },
         ]
       : product.entities.map((entity) => ({
           label: entity.name,
-          val: 'Example',
-          status: 'Illustrative only',
+          val: '—',
+          status: isTradingTerminal ? 'Market data not connected' : 'No connected data',
         })),
     rows: employee
       ? [

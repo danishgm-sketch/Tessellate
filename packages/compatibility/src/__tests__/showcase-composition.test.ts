@@ -3,7 +3,9 @@ import { describe, expect, it } from 'vitest';
 import type { ProjectNode, ResourceManifest } from '@tessellate/schemas';
 import { composeShowcase } from '../showcase-composition.js';
 
-const catalogue: ResourceManifest[] = JSON.parse(readFileSync('apps/site/public/data/catalog.json', 'utf8')).resources;
+const catalogue: ResourceManifest[] = JSON.parse(
+  readFileSync('apps/site/public/data/catalog.json', 'utf8')
+).resources;
 
 function collectNodes(node: ProjectNode, result: ProjectNode[] = []): ProjectNode[] {
   result.push(node);
@@ -24,12 +26,24 @@ describe('showcase composition stability', () => {
 
   it.each([
     ['showcase-ai-developer-platform', 'Prompt Workspace', 'PW'],
-    ['showcase-financial-terminal', 'Account Workspace', 'AW'],
+    ['showcase-financial-terminal', 'Market Workspace', 'MW'],
   ])('preserves the %s product identity through content binding', (id, brand, initials) => {
     const manifest = composeShowcase(id, catalogue);
     const nodes = manifest.screens.flatMap((screen) => collectNodes(screen.rootNode));
 
     expect(nodes.some((node) => node.props.brand === brand)).toBe(true);
     expect(nodes.some((node) => node.props.initials === initials)).toBe(true);
+  });
+
+  it('keeps the financial terminal showcase within its market-trading domain', () => {
+    const manifest = composeShowcase('showcase-financial-terminal', catalogue);
+    const serialized = JSON.stringify(manifest).toLocaleLowerCase();
+
+    expect(manifest.screens.map((screen) => screen.name)).toEqual(
+      expect.arrayContaining(['Market Overview', 'Order Book', 'Positions & Risk'])
+    );
+    expect(serialized).toContain('market depth');
+    expect(serialized).toContain('equity trade');
+    expect(serialized).not.toMatch(/bank statements|reconcile statements|household budget/);
   });
 });

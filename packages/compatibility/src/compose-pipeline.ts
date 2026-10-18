@@ -244,14 +244,15 @@ export function composeProjectForDirection(options: DirectionCompositionOptions)
             ? 'collapsible-sidebar'
             : 'minimal-top-nav';
         roleCatalog = catalog.filter((resource) => resource.slug === navigationSlug);
-      } else if (
-        role === 'activity-feed' &&
-        (primaryArchetype === 'consumer' || direction.type === 'structural-alternative') &&
-        catalog.some((resource) => resource.slug === 'timeline')
-      ) {
-        // Consumer activity streams and the C companion pane are chronological
-        // feeds, not notification inboxes. Fall back to ordinary scoring if absent.
-        roleCatalog = catalog.filter((resource) => resource.slug === 'timeline');
+      } else if (role === 'activity-feed') {
+        // Activity feeds are chronological by default. Only a screen explicitly
+        // named for notifications, an inbox, or alerts should behave like an inbox.
+        const resourceSlug = /notifications?|inbox|alerts/i.test(screenNode.name)
+          ? 'notification-centre'
+          : 'timeline';
+        if (catalog.some((resource) => resource.slug === resourceSlug)) {
+          roleCatalog = catalog.filter((resource) => resource.slug === resourceSlug);
+        }
       }
       const { resource, ref, diagnostic } = resolveBestResourceForRole(
         role,

@@ -15,99 +15,135 @@
         "weight": 100
       }
     ],
-    "primaryAudience": "Finance managers, compliance teams, and account holders",
-    "userSophistication": 85,
-    "primaryObjective": "Guarantee accurate, transparent, compliant money movement and reconciliation",
+    "primaryAudience": "Professional equity dealers and trading teams",
+    "userSophistication": 100,
+    "primaryObjective": "Monitor market depth, assess portfolio exposure, and execute verified trades",
     "secondaryObjectives": [
       "Ensure high accessibility standards",
       "Maintain responsive layout across devices"
     ],
     "jobsToBeDone": [
-      "Authenticate and access Fintech",
+      "Authenticate and access Trading Terminal",
       "Review the overview and priority actions",
       "Create, update, and manage records",
-      "Export and review verified monthly bank statements"
+      "Review market depth and compare liquidity across listed securities",
+      "Prepare and verify an equity trade within risk limits",
+      "Review position exposure and portfolio risk limits"
     ],
     "entities": [
       {
-        "name": "Account",
-        "description": "Financial ledger holding settled currency balance",
+        "name": "Security",
+        "description": "A listed equity with a ticker, venue, market price, and trading status",
         "fields": [
           "id",
-          "iban",
-          "balance",
-          "currency"
-        ]
-      },
-      {
-        "name": "Transaction",
-        "description": "Audited immutable debit or credit ledger event",
-        "fields": [
-          "id",
-          "amount",
-          "direction",
-          "counterparty",
-          "timestamp"
-        ]
-      },
-      {
-        "name": "Transfer",
-        "description": "Pending or executed settlement instruction",
-        "fields": [
-          "id",
-          "source",
-          "destination",
-          "amount",
+          "ticker",
+          "exchange",
+          "bid",
+          "ask",
+          "currency",
           "status"
+        ]
+      },
+      {
+        "name": "Order",
+        "description": "A verified market or limit order with quantity, side, and execution state",
+        "fields": [
+          "id",
+          "securityId",
+          "side",
+          "quantity",
+          "orderType",
+          "limitPrice",
+          "status"
+        ]
+      },
+      {
+        "name": "Position",
+        "description": "A trading position with exposure, valuation, and risk limits",
+        "fields": [
+          "id",
+          "securityId",
+          "quantity",
+          "marketValue",
+          "exposure",
+          "riskLimit"
         ]
       }
     ],
     "workflows": [
       {
-        "id": "reconcile-statements",
-        "name": "Export and review verified monthly bank statements",
+        "id": "monitor-market-depth",
+        "name": "Review market depth and compare liquidity across listed securities",
         "steps": [
-          "select-period",
-          "filter-categories",
-          "export-pdf"
+          "select-security",
+          "review-market-depth",
+          "compare-liquidity"
+        ]
+      },
+      {
+        "id": "execute-verified-trade",
+        "name": "Prepare and verify an equity trade within risk limits",
+        "steps": [
+          "enter-order-terms",
+          "review-risk-checks",
+          "confirm-trade"
+        ]
+      },
+      {
+        "id": "review-portfolio-risk",
+        "name": "Review position exposure and portfolio risk limits",
+        "steps": [
+          "compare-position-exposure",
+          "review-risk-limits",
+          "resolve-risk-alert"
         ]
       }
     ],
     "trustRequirement": 98,
-    "informationComplexity": 95,
-    "dataDensity": 95,
+    "informationComplexity": 100,
+    "dataDensity": 100,
     "collaborationLevel": 45,
-    "transactionCriticality": 98,
-    "navigationComplexity": 65,
+    "transactionCriticality": 100,
+    "navigationComplexity": 86,
     "mobileImportance": 80,
     "likelyScreens": [
       {
-        "name": "Account Balances",
+        "name": "Market Overview",
         "screenType": "dashboard",
-        "purpose": "Aggregate liquidity, spend trends, and alerts",
+        "purpose": "Monitor market breadth, active securities, and high-priority risk changes",
         "jobs": [
-          "check-balance",
-          "monitor-spend"
+          "review-market-depth",
+          "review-risk-alerts"
         ],
         "required": true
       },
       {
-        "name": "Transaction History",
+        "name": "Order Book",
         "screenType": "index-list",
-        "purpose": "Filterable audited chronological ledger",
+        "purpose": "Compare bid and ask depth, liquidity, and order status by security",
         "jobs": [
-          "search-transactions",
-          "download-receipts"
+          "inspect-order-book",
+          "compare-liquidity"
         ],
         "required": true
       },
       {
-        "name": "Security & 2FA",
-        "screenType": "settings",
-        "purpose": "Hardware keys, passcodes, and device sessions",
+        "name": "Positions & Risk",
+        "screenType": "dashboard",
+        "purpose": "Review portfolio exposure against documented trading risk limits",
         "jobs": [
-          "manage-devices",
-          "setup-2fa"
+          "review-position-exposure",
+          "resolve-risk-alert"
+        ],
+        "required": true
+      },
+      {
+        "name": "Trade History",
+        "screenType": "index-list",
+        "purpose": "Inspect verified equity trade executions and their audit trail",
+        "jobs": [
+          "review-executions",
+          "inspect-trade-audit"
         ],
         "required": true
       }
@@ -115,7 +151,10 @@
     "requiredCapabilities": [
       "two-factor-authentication",
       "audit-trail",
-      "currency-precision-formatting"
+      "currency-precision-formatting",
+      "market-depth-review",
+      "equity-trade-controls",
+      "portfolio-risk-limits"
     ],
     "forbiddenPatterns": [
       "ambiguous-settlement-states",
@@ -216,7 +255,7 @@
     ]
   },
   "screenGraph": {
-    "id": "graph-fintech-10t52un",
+    "id": "graph-fintech-13pexei",
     "groups": [
       {
         "id": "group-app",
@@ -224,22 +263,25 @@
         "screens": [
           {
             "id": "screen-overview",
-            "name": "Account Balances",
-            "slug": "/account-balances",
+            "name": "Market Overview",
+            "slug": "/overview",
             "screenType": "dashboard",
-            "purpose": "Aggregate liquidity, spend trends, and alerts",
+            "purpose": "Monitor market breadth, active securities, and high-priority risk changes",
             "jobs": [
-              "check-balance",
-              "monitor-spend"
+              "review-market-depth",
+              "review-risk-alerts"
             ],
             "required": true,
             "navigationVisibility": "primary",
             "importance": 85,
             "expectedData": [
-              "Account.id",
-              "Account.iban",
-              "Account.balance",
-              "Account.currency"
+              "Security.id",
+              "Security.ticker",
+              "Security.exchange",
+              "Security.bid",
+              "Security.ask",
+              "Security.currency",
+              "Security.status"
             ],
             "requiredRoles": [
               "overview-header",
@@ -260,23 +302,107 @@
           },
           {
             "id": "screen-collection-index",
-            "name": "Transaction History",
-            "slug": "/transaction-history",
+            "name": "Order Book",
+            "slug": "/order-book",
             "screenType": "index-list",
-            "purpose": "Filterable audited chronological ledger",
+            "purpose": "Compare bid and ask depth, liquidity, and order status by security",
             "jobs": [
-              "search-transactions",
-              "download-receipts"
+              "inspect-order-book",
+              "compare-liquidity"
             ],
             "required": true,
             "navigationVisibility": "primary",
             "importance": 85,
             "expectedData": [
-              "Transaction.id",
-              "Transaction.amount",
-              "Transaction.direction",
-              "Transaction.counterparty",
-              "Transaction.timestamp"
+              "Security.id",
+              "Security.ticker",
+              "Security.exchange",
+              "Security.bid",
+              "Security.ask",
+              "Security.currency",
+              "Security.status",
+              "Order.id",
+              "Order.securityId",
+              "Order.side",
+              "Order.quantity",
+              "Order.orderType"
+            ],
+            "requiredRoles": [
+              "index-header",
+              "filter-bar",
+              "data-table",
+              "pagination"
+            ],
+            "optionalRoles": [
+              "bulk-action-bar",
+              "view-mode-toggle",
+              "stats-summary"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
+          },
+          {
+            "id": "screen-positions-and-risk",
+            "name": "Positions & Risk",
+            "slug": "/positions-and-risk",
+            "screenType": "dashboard",
+            "purpose": "Review portfolio exposure against documented trading risk limits",
+            "jobs": [
+              "review-position-exposure",
+              "resolve-risk-alert"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 85,
+            "expectedData": [
+              "Position.id",
+              "Position.securityId",
+              "Position.quantity",
+              "Position.marketValue",
+              "Position.exposure",
+              "Position.riskLimit"
+            ],
+            "requiredRoles": [
+              "overview-header",
+              "metric-cards",
+              "activity-feed"
+            ],
+            "optionalRoles": [
+              "quick-action-bar",
+              "data-table",
+              "alert-banner",
+              "insight-rail"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
+          },
+          {
+            "id": "screen-trade-history",
+            "name": "Trade History",
+            "slug": "/trade-history",
+            "screenType": "index-list",
+            "purpose": "Inspect verified equity trade executions and their audit trail",
+            "jobs": [
+              "review-executions",
+              "inspect-trade-audit"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 85,
+            "expectedData": [
+              "Security.id",
+              "Security.ticker",
+              "Security.exchange",
+              "Security.bid",
+              "Security.ask",
+              "Security.currency",
+              "Security.status"
             ],
             "requiredRoles": [
               "index-header",
@@ -296,47 +422,6 @@
             ]
           }
         ]
-      },
-      {
-        "id": "group-settings",
-        "name": "Settings & administration",
-        "screens": [
-          {
-            "id": "screen-settings",
-            "name": "Security & 2FA",
-            "slug": "/security-and-2fa",
-            "screenType": "settings",
-            "purpose": "Hardware keys, passcodes, and device sessions",
-            "jobs": [
-              "manage-devices",
-              "setup-2fa"
-            ],
-            "required": true,
-            "navigationVisibility": "secondary",
-            "importance": 85,
-            "expectedData": [
-              "Account.id",
-              "Account.iban",
-              "Account.balance",
-              "Account.currency"
-            ],
-            "requiredRoles": [
-              "settings-nav",
-              "settings-form",
-              "save-footer"
-            ],
-            "optionalRoles": [
-              "avatar-uploader",
-              "2fa-toggle",
-              "danger-zone"
-            ],
-            "deviceRelevance": [
-              "desktop",
-              "tablet",
-              "mobile"
-            ]
-          }
-        ]
       }
     ],
     "edges": [
@@ -344,13 +429,19 @@
         "id": "edge-screen-overview-to-screen-collection-index",
         "fromScreenId": "screen-overview",
         "toScreenId": "screen-collection-index",
-        "label": "Transaction History"
+        "label": "Order Book"
       },
       {
-        "id": "edge-screen-overview-to-screen-settings",
+        "id": "edge-screen-overview-to-screen-positions-and-risk",
         "fromScreenId": "screen-overview",
-        "toScreenId": "screen-settings",
-        "label": "Security & 2FA"
+        "toScreenId": "screen-positions-and-risk",
+        "label": "Positions & Risk"
+      },
+      {
+        "id": "edge-screen-overview-to-screen-trade-history",
+        "fromScreenId": "screen-overview",
+        "toScreenId": "screen-trade-history",
+        "label": "Trade History"
       }
     ]
   },
@@ -358,8 +449,8 @@
     {
       "id": "screen-overview",
       "screenNodeId": "screen-overview",
-      "name": "Account Balances",
-      "slug": "/account-balances",
+      "name": "Market Overview",
+      "slug": "/overview",
       "rootNode": {
         "id": "root-screen-overview",
         "nodeType": "layout",
@@ -378,19 +469,23 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "Account Workspace",
+              "brand": "Market Workspace",
               "links": [
                 {
-                  "label": "Account Balances",
+                  "label": "Market Overview",
                   "href": "#screen-overview"
                 },
                 {
-                  "label": "Transaction History",
+                  "label": "Order Book",
                   "href": "#screen-collection-index"
                 },
                 {
-                  "label": "Security & 2FA",
-                  "href": "#screen-settings"
+                  "label": "Positions & Risk",
+                  "href": "#screen-positions-and-risk"
+                },
+                {
+                  "label": "Trade History",
+                  "href": "#screen-trade-history"
                 }
               ],
               "orientation": "vertical"
@@ -414,10 +509,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Account Balances",
-                  "subtitle": "Aggregate liquidity, spend trends, and alerts",
+                  "title": "Market Overview",
+                  "subtitle": "Monitor market breadth, active securities, and high-priority risk changes",
                   "badge": "EXAMPLE",
-                  "initials": "AW"
+                  "initials": "MW"
                 }
               },
               {
@@ -433,22 +528,22 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Account Balances",
+                  "title": "Market Overview",
                   "cards": [
                     {
-                      "label": "Account",
-                      "val": "Example",
-                      "status": "Illustrative only"
+                      "label": "Security",
+                      "val": "—",
+                      "status": "Market data not connected"
                     },
                     {
-                      "label": "Transaction",
-                      "val": "Example",
-                      "status": "Illustrative only"
+                      "label": "Order",
+                      "val": "—",
+                      "status": "Market data not connected"
                     },
                     {
-                      "label": "Transfer",
-                      "val": "Example",
-                      "status": "Illustrative only"
+                      "label": "Position",
+                      "val": "—",
+                      "status": "Market data not connected"
                     }
                   ]
                 }
@@ -466,12 +561,22 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Account Balances",
+                  "title": "Recent activity",
                   "events": [
                     {
-                      "time": "Step 1",
-                      "title": "Export and review verified monthly bank statements",
-                      "desc": "select-period → filter-categories → export-pdf"
+                      "time": "Example",
+                      "title": "Review market depth and compare liquidity across listed securities",
+                      "desc": "Select security → Review market depth → Compare liquidity"
+                    },
+                    {
+                      "time": "Example",
+                      "title": "Prepare and verify an equity trade within risk limits",
+                      "desc": "Enter order terms → Review risk checks → Confirm trade"
+                    },
+                    {
+                      "time": "Example",
+                      "title": "Review position exposure and portfolio risk limits",
+                      "desc": "Compare position exposure → Review risk limits → Resolve risk alert"
                     }
                   ]
                 }
@@ -492,8 +597,8 @@
     {
       "id": "screen-collection-index",
       "screenNodeId": "screen-collection-index",
-      "name": "Transaction History",
-      "slug": "/transaction-history",
+      "name": "Order Book",
+      "slug": "/order-book",
       "rootNode": {
         "id": "root-screen-collection-index",
         "nodeType": "layout",
@@ -512,19 +617,23 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "Account Workspace",
+              "brand": "Market Workspace",
               "links": [
                 {
-                  "label": "Account Balances",
+                  "label": "Market Overview",
                   "href": "#screen-overview"
                 },
                 {
-                  "label": "Transaction History",
+                  "label": "Order Book",
                   "href": "#screen-collection-index"
                 },
                 {
-                  "label": "Security & 2FA",
-                  "href": "#screen-settings"
+                  "label": "Positions & Risk",
+                  "href": "#screen-positions-and-risk"
+                },
+                {
+                  "label": "Trade History",
+                  "href": "#screen-trade-history"
                 }
               ],
               "orientation": "vertical"
@@ -548,10 +657,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Transaction History",
-                  "subtitle": "Filterable audited chronological ledger",
+                  "title": "Order Book",
+                  "subtitle": "Compare bid and ask depth, liquidity, and order status by security",
                   "badge": "EXAMPLE",
-                  "initials": "AW"
+                  "initials": "MW"
                 }
               },
               {
@@ -581,26 +690,26 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Transaction History",
+                  "title": "Order Book",
                   "rows": [
                     {
                       "id": 1,
-                      "name": "Example Account",
-                      "type": "Financial ledger holding settled currency balance",
+                      "name": "Example Security",
+                      "type": "A listed equity with a ticker, venue, market price, and trading status",
                       "quality": 0,
                       "status": "Sample"
                     },
                     {
                       "id": 2,
-                      "name": "Example Transaction",
-                      "type": "Audited immutable debit or credit ledger event",
+                      "name": "Example Order",
+                      "type": "A verified market or limit order with quantity, side, and execution state",
                       "quality": 0,
                       "status": "Sample"
                     },
                     {
                       "id": 3,
-                      "name": "Example Transfer",
-                      "type": "Pending or executed settlement instruction",
+                      "name": "Example Position",
+                      "type": "A trading position with exposure, valuation, and risk limits",
                       "quality": 0,
                       "status": "Sample"
                     }
@@ -628,7 +737,7 @@
                 "props": {
                   "children": "Continue",
                   "disabled": false,
-                  "title": "Transaction History"
+                  "title": "Order Book"
                 }
               }
             ],
@@ -645,17 +754,17 @@
       }
     },
     {
-      "id": "screen-settings",
-      "screenNodeId": "screen-settings",
-      "name": "Security & 2FA",
-      "slug": "/security-and-2fa",
+      "id": "screen-positions-and-risk",
+      "screenNodeId": "screen-positions-and-risk",
+      "name": "Positions & Risk",
+      "slug": "/positions-and-risk",
       "rootNode": {
-        "id": "root-screen-settings",
+        "id": "root-screen-positions-and-risk",
         "nodeType": "layout",
         "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "node-screen-settings-navigation-1",
+            "id": "node-screen-positions-and-risk-navigation-1",
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
@@ -667,94 +776,116 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "Account Workspace",
+              "brand": "Market Workspace",
               "links": [
                 {
-                  "label": "Account Balances",
+                  "label": "Market Overview",
                   "href": "#screen-overview"
                 },
                 {
-                  "label": "Transaction History",
+                  "label": "Order Book",
                   "href": "#screen-collection-index"
                 },
                 {
-                  "label": "Security & 2FA",
-                  "href": "#screen-settings"
+                  "label": "Positions & Risk",
+                  "href": "#screen-positions-and-risk"
+                },
+                {
+                  "label": "Trade History",
+                  "href": "#screen-trade-history"
                 }
               ],
               "orientation": "vertical"
             }
           },
           {
-            "id": "container-screen-settings-canvas",
+            "id": "container-screen-positions-and-risk-canvas",
             "nodeType": "layout",
             "semanticRole": "workspace-multi-pane",
             "children": [
               {
-                "id": "node-screen-settings-settings-nav-2",
+                "id": "node-screen-positions-and-risk-overview-header-2",
                 "nodeType": "section",
-                "semanticRole": "settings-nav",
+                "semanticRole": "overview-header",
                 "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
                   "version": "1.0.0"
                 },
                 "variant": "nocturne",
                 "children": [],
                 "slots": {},
                 "props": {
-                  "brand": "Account Workspace",
-                  "links": [
+                  "title": "Positions & Risk",
+                  "subtitle": "Review portfolio exposure against documented trading risk limits",
+                  "badge": "EXAMPLE",
+                  "initials": "MW"
+                }
+              },
+              {
+                "id": "node-screen-positions-and-risk-metric-cards-3",
+                "nodeType": "section",
+                "semanticRole": "metric-cards",
+                "resourceRef": {
+                  "id": "res_blk_dashboard_kpi_grid",
+                  "slug": "dashboard-kpi-grid",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Positions & Risk",
+                  "cards": [
                     {
-                      "label": "Account Balances",
-                      "href": "#screen-overview"
+                      "label": "Security",
+                      "val": "—",
+                      "status": "Market data not connected"
                     },
                     {
-                      "label": "Transaction History",
-                      "href": "#screen-collection-index"
+                      "label": "Order",
+                      "val": "—",
+                      "status": "Market data not connected"
                     },
                     {
-                      "label": "Security & 2FA",
-                      "href": "#screen-settings"
+                      "label": "Position",
+                      "val": "—",
+                      "status": "Market data not connected"
                     }
                   ]
                 }
               },
               {
-                "id": "node-screen-settings-settings-form-3",
+                "id": "node-screen-positions-and-risk-activity-feed-4",
                 "nodeType": "section",
-                "semanticRole": "settings-form",
+                "semanticRole": "activity-feed",
                 "resourceRef": {
-                  "id": "res_primitive_input",
-                  "slug": "input",
+                  "id": "res_blk_timeline",
+                  "slug": "timeline",
                   "version": "1.0.0"
                 },
                 "variant": "nocturne",
                 "children": [],
                 "slots": {},
                 "props": {
-                  "label": "Notification preferences",
-                  "helperText": "Example field. Connect persistence and your backend in the exported application.",
-                  "disabled": false,
-                  "title": "Security & 2FA"
-                }
-              },
-              {
-                "id": "node-screen-settings-save-footer-4",
-                "nodeType": "section",
-                "semanticRole": "save-footer",
-                "resourceRef": {
-                  "id": "res_mot_magnetic_button",
-                  "slug": "magnetic-button",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "label": "Save preferences",
-                  "disabled": true,
-                  "title": "Connect the exported application to your backend to enable this action."
+                  "title": "Recent activity",
+                  "events": [
+                    {
+                      "time": "Example",
+                      "title": "Review market depth and compare liquidity across listed securities",
+                      "desc": "Select security → Review market depth → Compare liquidity"
+                    },
+                    {
+                      "time": "Example",
+                      "title": "Prepare and verify an equity trade within risk limits",
+                      "desc": "Enter order terms → Review risk checks → Confirm trade"
+                    },
+                    {
+                      "time": "Example",
+                      "title": "Review position exposure and portfolio risk limits",
+                      "desc": "Compare position exposure → Review risk limits → Resolve risk alert"
+                    }
+                  ]
                 }
               }
             ],
@@ -767,12 +898,165 @@
         "slots": {},
         "props": {
           "layoutVariant": "split-dock"
-        },
-        "dnaOverrides": {
-          "professionalism": 96,
-          "playfulness": 8,
-          "curvature": 12,
-          "motion": 10
+        }
+      }
+    },
+    {
+      "id": "screen-trade-history",
+      "screenNodeId": "screen-trade-history",
+      "name": "Trade History",
+      "slug": "/trade-history",
+      "rootNode": {
+        "id": "root-screen-trade-history",
+        "nodeType": "layout",
+        "semanticRole": "workspace-dock-shell",
+        "children": [
+          {
+            "id": "node-screen-trade-history-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Market Workspace",
+              "links": [
+                {
+                  "label": "Market Overview",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Order Book",
+                  "href": "#screen-collection-index"
+                },
+                {
+                  "label": "Positions & Risk",
+                  "href": "#screen-positions-and-risk"
+                },
+                {
+                  "label": "Trade History",
+                  "href": "#screen-trade-history"
+                }
+              ],
+              "orientation": "vertical"
+            }
+          },
+          {
+            "id": "container-screen-trade-history-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-trade-history-index-header-2",
+                "nodeType": "section",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Trade History",
+                  "subtitle": "Inspect verified equity trade executions and their audit trail",
+                  "badge": "EXAMPLE",
+                  "initials": "MW"
+                }
+              },
+              {
+                "id": "node-screen-trade-history-filter-bar-3",
+                "nodeType": "section",
+                "semanticRole": "filter-bar",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-trade-history-data-table-4",
+                "nodeType": "section",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Trade History",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Security",
+                      "type": "A listed equity with a ticker, venue, market price, and trading status",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Order",
+                      "type": "A verified market or limit order with quantity, side, and execution state",
+                      "quality": 0,
+                      "status": "Sample"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Position",
+                      "type": "A trading position with exposure, valuation, and risk limits",
+                      "quality": 0,
+                      "status": "Sample"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Progress",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-trade-history-pagination-5",
+                "nodeType": "section",
+                "semanticRole": "pagination",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Continue",
+                  "disabled": false,
+                  "title": "Trade History"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "docked-panes"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "split-dock"
         }
       }
     }
@@ -781,20 +1065,23 @@
     "model": "rail",
     "primaryItems": [
       {
-        "label": "Account Balances",
+        "label": "Market Overview",
         "targetScreenId": "screen-overview"
       },
       {
-        "label": "Transaction History",
+        "label": "Order Book",
         "targetScreenId": "screen-collection-index"
+      },
+      {
+        "label": "Positions & Risk",
+        "targetScreenId": "screen-positions-and-risk"
+      },
+      {
+        "label": "Trade History",
+        "targetScreenId": "screen-trade-history"
       }
     ],
-    "secondaryItems": [
-      {
-        "label": "Security & 2FA",
-        "targetScreenId": "screen-settings"
-      }
-    ]
+    "secondaryItems": []
   },
   "assets": [],
   "locks": [],

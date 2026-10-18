@@ -255,9 +255,14 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
         if (!result.productModel.entities.some((entity) => entity.name === 'Employee')) {
           for (const node of metricNodes) {
             const cards = node.props.cards as Array<{ val: string; status: string }> | undefined;
-            expect(cards, `${brief.id} ${name} sample metric cards must be explicit`).toBeDefined();
+            expect(cards, `${brief.id} ${name} metric cards must be explicit`).toBeDefined();
             expect(
-              cards?.every((card) => card.val === 'Example' && card.status === 'Illustrative only')
+              cards?.every(
+                (card) =>
+                  card.val === '—' &&
+                  /^(?:No connected data|Market data not connected)$/i.test(card.status)
+              ),
+              `${brief.id} ${name} must not present placeholder words as metric values`
             ).toBe(true);
           }
         } else {
@@ -267,8 +272,8 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
             expect(
               cards.every(
                 (card) =>
-                  (card.status === 'Illustrative only' && card.val === 'Example') ||
-                  (card.label === 'People' && card.status === 'From your brief · example')
+                  (card.val === '—' && card.status === 'No connected data') ||
+                  (card.label === 'People' && card.status === 'From your brief')
               ),
               `${brief.id} ${name} employee summary cards must not invent counts or outcomes`
             ).toBe(true);
@@ -323,9 +328,47 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
         }
         for (const screen of output.manifest.screens) {
           const screenNodes = collectNodes(screen.rootNode);
+          const activity = screenNodes.find((node) => node.semanticRole === 'activity-feed');
+          if (activity) {
+            const isNotificationScreen = /notifications?|inbox|alerts/i.test(screen.name);
+            expect(
+              activity.resourceRef?.slug,
+              `${brief.id} ${name} ${screen.name} must use the resource matching its activity semantics`
+            ).toBe(isNotificationScreen ? 'notification-centre' : 'timeline');
+            expect(
+              activity.props.title,
+              `${brief.id} ${name} ${screen.name} activity heading must add context instead of repeating the screen title`
+            ).not.toBe(screen.name);
+            const events = activity.props.events as
+              Array<{ time: string; title: string; desc: string }> | undefined;
+            expect(
+              events?.length,
+              `${brief.id} ${name} ${screen.name} needs example events`
+            ).toBeGreaterThan(0);
+            expect(JSON.stringify(events)).not.toMatch(/\bStep\s+\d+\b/i);
+            for (const step of result.productModel.workflows.flatMap(
+              (workflow) => workflow.steps
+            )) {
+              expect(
+                JSON.stringify(events),
+                `${brief.id} ${name} ${screen.name} must not expose the internal workflow step ${step}`
+              ).not.toContain(step);
+            }
+            for (const identifier of result.productModel.workflows.flatMap((workflow) => [
+              workflow.name,
+              ...workflow.steps,
+            ])) {
+              if (/[_-]|[a-z][A-Z]/.test(identifier)) {
+                expect(
+                  JSON.stringify(events),
+                  `${brief.id} ${name} ${screen.name} must not expose internal workflow identifier ${identifier}`
+                ).not.toContain(identifier);
+              }
+            }
+          }
           if (brief.expectedPrimaryArchetype === 'consumer' && screen.name === 'Activity Stream') {
             expect(
-              screenNodes.find((node) => node.semanticRole === 'activity-feed')?.resourceRef?.slug,
+              activity?.resourceRef?.slug,
               `${brief.id} ${name} activity stream should use a chronological feed`
             ).toBe('timeline');
             if (result.productModel.entities.some((entity) => entity.name === 'Community Update')) {

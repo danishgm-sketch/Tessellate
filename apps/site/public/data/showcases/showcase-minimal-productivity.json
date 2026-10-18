@@ -440,18 +440,18 @@
                   "cards": [
                     {
                       "label": "Task",
-                      "val": "Example",
-                      "status": "Illustrative only"
+                      "val": "—",
+                      "status": "No connected data"
                     },
                     {
                       "label": "Note",
-                      "val": "Example",
-                      "status": "Illustrative only"
+                      "val": "—",
+                      "status": "No connected data"
                     },
                     {
                       "label": "ProjectList",
-                      "val": "Example",
-                      "status": "Illustrative only"
+                      "val": "—",
+                      "status": "No connected data"
                     }
                   ]
                 }
@@ -469,17 +469,17 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Today Agenda",
+                  "title": "Recent activity",
                   "events": [
                     {
-                      "time": "Step 1",
+                      "time": "Example",
                       "title": "Press global hotkey, enter thought, and categorize",
-                      "desc": "invoke-capture → type-text → save"
+                      "desc": "Invoke capture → Type text → Save"
                     },
                     {
-                      "time": "Step 2",
+                      "time": "Example",
                       "title": "Review today agenda and check off morning goals",
-                      "desc": "open-today → reorder-priorities → execute"
+                      "desc": "Open today → Reorder priorities → Execute"
                     }
                   ]
                 }

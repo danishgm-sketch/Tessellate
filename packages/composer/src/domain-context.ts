@@ -118,6 +118,104 @@ export function specialisePeopleOperations(
   };
 }
 
+/** Separate institutional market tooling from the fintech archetype's banking defaults. */
+export function specialiseFintechTrading(
+  base: ArchetypeDefinition,
+  text: string
+): ArchetypeDefinition {
+  if (
+    base.id !== 'fintech' ||
+    !/\b(?:trading terminal|brokerage terminal|brokerage|order[- ]book|market depth|equity dealers?)\b/i.test(
+      text
+    )
+  ) {
+    return base;
+  }
+
+  return {
+    ...base,
+    name: 'Trading Terminal',
+    primaryAudience: 'Professional equity dealers and trading teams',
+    primaryObjective:
+      'Monitor market depth, assess portfolio exposure, and execute verified trades',
+    userSophistication: 92,
+    informationComplexity: 95,
+    dataDensity: 96,
+    transactionCriticality: 100,
+    navigationComplexity: 86,
+    defaultEntities: [
+      {
+        name: 'Security',
+        description: 'A listed equity with a ticker, venue, market price, and trading status',
+        fields: ['id', 'ticker', 'exchange', 'bid', 'ask', 'currency', 'status'],
+      },
+      {
+        name: 'Order',
+        description: 'A verified market or limit order with quantity, side, and execution state',
+        fields: ['id', 'securityId', 'side', 'quantity', 'orderType', 'limitPrice', 'status'],
+      },
+      {
+        name: 'Position',
+        description: 'A trading position with exposure, valuation, and risk limits',
+        fields: ['id', 'securityId', 'quantity', 'marketValue', 'exposure', 'riskLimit'],
+      },
+    ],
+    defaultWorkflows: [
+      {
+        id: 'monitor-market-depth',
+        name: 'Review market depth and compare liquidity across listed securities',
+        steps: ['select-security', 'review-market-depth', 'compare-liquidity'],
+      },
+      {
+        id: 'execute-verified-trade',
+        name: 'Prepare and verify an equity trade within risk limits',
+        steps: ['enter-order-terms', 'review-risk-checks', 'confirm-trade'],
+      },
+      {
+        id: 'review-portfolio-risk',
+        name: 'Review position exposure and portfolio risk limits',
+        steps: ['compare-position-exposure', 'review-risk-limits', 'resolve-risk-alert'],
+      },
+    ],
+    recommendedScreens: [
+      {
+        name: 'Market Overview',
+        screenType: 'dashboard',
+        purpose: 'Monitor market breadth, active securities, and high-priority risk changes',
+        jobs: ['review-market-depth', 'review-risk-alerts'],
+        required: true,
+      },
+      {
+        name: 'Order Book',
+        screenType: 'index-list',
+        purpose: 'Compare bid and ask depth, liquidity, and order status by security',
+        jobs: ['inspect-order-book', 'compare-liquidity'],
+        required: true,
+      },
+      {
+        name: 'Positions & Risk',
+        screenType: 'dashboard',
+        purpose: 'Review portfolio exposure against documented trading risk limits',
+        jobs: ['review-position-exposure', 'resolve-risk-alert'],
+        required: true,
+      },
+      {
+        name: 'Trade History',
+        screenType: 'index-list',
+        purpose: 'Inspect verified equity trade executions and their audit trail',
+        jobs: ['review-executions', 'inspect-trade-audit'],
+        required: true,
+      },
+    ],
+    requiredCapabilities: [
+      ...base.requiredCapabilities,
+      'market-depth-review',
+      'equity-trade-controls',
+      'portfolio-risk-limits',
+    ],
+  };
+}
+
 /** Replace broad archetype defaults when a brief names a distinct marketplace transaction. */
 export function specialiseMarketplace(
   base: ArchetypeDefinition,

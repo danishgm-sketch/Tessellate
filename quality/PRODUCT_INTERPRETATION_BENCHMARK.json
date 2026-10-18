@@ -28,6 +28,11 @@
       "dataDensity": [75, 100],
       "transactionCriticality": [85, 100]
     },
+    "fintech-trading": {
+      "trustRequirement": [95, 100],
+      "dataDensity": [90, 100],
+      "transactionCriticality": [90, 100]
+    },
     "ecommerce": {
       "trustRequirement": [80, 100],
       "dataDensity": [40, 75],
@@ -141,6 +146,14 @@
       "workflowAnyOf": ["transfer", "statements"],
       "screenAnyOf": ["Account Balances", "Transaction History"],
       "forbiddenAnyOf": ["lesson classroom", "candidate pipeline", "social feed"]
+    },
+    "fintech-trading": {
+      "audienceAnyOf": ["equity dealers"],
+      "objectiveAnyOf": ["market depth", "trade execution"],
+      "entityAnyOf": ["Security", "Order", "Position"],
+      "workflowAnyOf": ["market depth", "equity trade", "portfolio risk"],
+      "screenAnyOf": ["Market Overview", "Order Book", "Positions & Risk"],
+      "forbiddenAnyOf": ["bank statement", "reconcile statements", "household budget"]
     },
     "ecommerce": {
       "audienceAnyOf": ["online shoppers"],
@@ -462,7 +475,7 @@
       "description": "A brokerage terminal displays securities, market data, order-book depth, and verified trade execution for professional equity dealers.",
       "expectedPrimaryArchetype": "fintech",
       "acceptableArchetypes": ["fintech"],
-      "semanticProfile": "fintech"
+      "semanticProfile": "fintech-trading"
     },
     {
       "id": "FIN-06",

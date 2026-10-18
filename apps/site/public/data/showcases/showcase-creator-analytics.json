@@ -442,18 +442,18 @@
                   "cards": [
                     {
                       "label": "Metric",
-                      "val": "Example",
-                      "status": "Illustrative only"
+                      "val": "—",
+                      "status": "No connected data"
                     },
                     {
                       "label": "Report",
-                      "val": "Example",
-                      "status": "Illustrative only"
+                      "val": "—",
+                      "status": "No connected data"
                     },
                     {
                       "label": "Cohort",
-                      "val": "Example",
-                      "status": "Illustrative only"
+                      "val": "—",
+                      "status": "No connected data"
                     }
                   ]
                 }
@@ -463,25 +463,25 @@
                 "nodeType": "section",
                 "semanticRole": "activity-feed",
                 "resourceRef": {
-                  "id": "res_blk_notification_centre",
-                  "slug": "notification-centre",
+                  "id": "res_blk_timeline",
+                  "slug": "timeline",
                   "version": "1.0.0"
                 },
                 "variant": "quiet",
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Executive Overview",
+                  "title": "Recent activity",
                   "events": [
                     {
-                      "time": "Step 1",
+                      "time": "Example",
                       "title": "Construct custom chart visualization with filters",
-                      "desc": "select-dataset → choose-aggregation → apply-date-range → save-to-dashboard"
+                      "desc": "Select dataset → Choose aggregation → Apply date range → Save to dashboard"
                     },
                     {
-                      "time": "Step 2",
+                      "time": "Example",
                       "title": "Inspect unexpected metric dip and isolate segment",
-                      "desc": "click-datapoint → segment-by-dimension → export-findings"
+                      "desc": "Click datapoint → Segment by dimension → Export findings"
                     }
                   ]
                 }
@@ -590,18 +590,18 @@
                   "cards": [
                     {
                       "label": "Metric",
-                      "val": "Example",
-                      "status": "Illustrative only"
+                      "val": "—",
+                      "status": "No connected data"
                     },
                     {
                       "label": "Report",
-                      "val": "Example",
-                      "status": "Illustrative only"
+                      "val": "—",
+                      "status": "No connected data"
                     },
                     {
                       "label": "Cohort",
-                      "val": "Example",
-                      "status": "Illustrative only"
+                      "val": "—",
+                      "status": "No connected data"
                     }
                   ]
                 }

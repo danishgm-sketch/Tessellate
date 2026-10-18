@@ -223,7 +223,9 @@
       "brief": "A brokerage terminal displays securities, market data, order-book depth, and verified trade execution for professional equity dealers.",
       "expectedPrimaryArchetype": "fintech",
       "acceptableArchetypes": ["fintech"],
-      "semanticProfile": "fintech"
+      "semanticProfile": "fintech-trading",
+      "requiredContentAnyOf": ["market depth", "trade execution"],
+      "forbiddenContentAnyOf": ["bank statement", "reconcile statements", "household budget"]
     },
     {
       "id": "FIN-06",

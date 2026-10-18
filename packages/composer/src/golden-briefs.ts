@@ -36,7 +36,12 @@ export const GOLDEN_PRODUCT_BRIEFS: GoldenBrief[] = [
       minDataDensity: 80,
       minSophistication: 70,
     },
-    expectedScreens: ['screen-overview', 'screen-collection-index', 'screen-settings'],
+    expectedScreens: [
+      'screen-overview',
+      'screen-collection-index',
+      'screen-positions-and-risk',
+      'screen-trade-history',
+    ],
   },
 
   // 2. Playful HR Platform
