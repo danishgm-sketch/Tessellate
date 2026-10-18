@@ -1,0 +1,125 @@
+{
+  "generatedAt": "2026-10-18T03:53:00.208Z",
+  "scope": "Step 08 local remediation checks only; not deployed acceptance.",
+  "frozenDependencyInstall": {
+    "status": "PASS",
+    "command": "pnpm install --frozen-lockfile",
+    "result": "23 workspace projects already up to date; lockfile unchanged."
+  },
+  "catalogue": {
+    "status": "PASS",
+    "resourceCount": 324,
+    "report": "quality/STEP_08_SEARCH_RESULTS.json"
+  },
+  "searchUnitTests": {
+    "status": "PASS",
+    "command": "pnpm exec vitest run packages/search/src/__tests__/search-discovery-quality.test.ts packages/search/src/__tests__/search.test.ts",
+    "passed": 13,
+    "failed": 0
+  },
+  "browserTests": {
+    "status": "PASS",
+    "command": "pnpm exec playwright test tests/e2e/explore-search-hardening.spec.ts --project=desktop-chrome --project=mobile-chrome --workers=2",
+    "passed": 16,
+    "failed": 0,
+    "viewports": [
+      "1440x900",
+      "390x844"
+    ],
+    "checks": [
+      "intent-aware checkout/payment search",
+      "eight suggested-query results",
+      "combined facets and URL reload persistence",
+      "manifest target wording",
+      "no empty facet choices",
+      "stale facet removal",
+      "truthful total and Show more",
+      "zero aborted preview document requests during natural typing"
+    ]
+  },
+  "typecheck": {
+    "status": "PASS",
+    "commands": [
+      "pnpm --filter @tessellate/search typecheck",
+      "pnpm --filter @tessellate/site typecheck"
+    ]
+  },
+  "lint": {
+    "status": "PASS",
+    "command": "pnpm exec eslint packages/search/src/indexer.ts packages/search/src/query.ts packages/search/src/types.ts packages/search/src/__tests__/search-discovery-quality.test.ts apps/site/src/components/ExploreRail.tsx apps/site/src/components/ExploreView.tsx tests/e2e/explore-search-hardening.spec.ts scripts/audit-search-query-quality.ts --max-warnings=0"
+  },
+  "siteBuild": {
+    "status": "PASS",
+    "command": "pnpm --filter @tessellate/site build",
+    "pages": 717
+  },
+  "browserRuntimeLimit": {
+    "status": "DEPLOYED_CHECK_REQUIRED",
+    "detail": "The local Astro preview embeds resource previews in opaque sandboxed iframes. Its preview host returns a localhost-specific Access-Control-Allow-Origin value, causing local iframe module CORS/hydration errors in the separate local screenshot harness. The deployed Site v16 had zero Explore console, failed-request, and HTTP errors. Do not treat the local harness failure as a deployed product failure; repeat runtime diagnostics against the next Sites version.",
+    "evidence": "audit/evidence/catalog-search-v16/explore-after-browser-audit.json"
+  },
+  "localScreenshotAudit": {
+    "report": "audit/evidence/catalog-search-step-08-local/browser-audit.json",
+    "viewports": [
+      {
+        "viewport": "1440x900",
+        "httpStatus": 200,
+        "horizontalOverflow": false,
+        "consoleErrors": 75,
+        "uncaughtErrors": 0,
+        "failedRequests": 30,
+        "httpErrors": 0,
+        "screenshot": "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png"
+      },
+      {
+        "viewport": "390x844",
+        "httpStatus": 200,
+        "horizontalOverflow": false,
+        "consoleErrors": 10,
+        "uncaughtErrors": 0,
+        "failedRequests": 4,
+        "httpErrors": 0,
+        "screenshot": "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
+      }
+    ],
+    "result": "UI labels and curated facet options are visible, but preview island scripts fail locally because the opaque sandbox origin is blocked by localhost-specific CORS. This is not deployed verification; screenshots are retained as local-only visual evidence."
+  },
+  "fullUnitTests": {
+    "status": "PASS",
+    "command": "pnpm test",
+    "passed": 629,
+    "failed": 0,
+    "filesPassed": 57
+  },
+  "workspaceTypecheck": {
+    "status": "PASS",
+    "command": "pnpm typecheck",
+    "projectsPassed": 22
+  },
+  "repositoryLint": {
+    "status": "PASS",
+    "command": "pnpm lint",
+    "errors": 0,
+    "configuredWarnings": 51
+  },
+  "aggregateAudit": {
+    "status": "PASS",
+    "command": "pnpm audit:all",
+    "releaseGateCriteria": "16/16",
+    "productionBuild": "PASS (717 Astro pages; 324 catalog resources; 40 Gold resources)",
+    "bundleBudget": "PASS",
+    "licenseProvenance": "PASS (324; zero failures)",
+    "secretSecurity": "PASS (zero violations)"
+  },
+  "bundleBudget": {
+    "status": "PASS",
+    "publicInitialGzipKb": 65.52,
+    "exploreViewGzipKb": 28.04,
+    "workbenchRouteGzipKb": 191.01,
+    "catalogGzipKb": 111.11
+  },
+  "exploreAxe": {
+    "status": "NOT_RUN_IN_STEP_08",
+    "note": "Explore Axe and global manual accessibility coverage remain in the later accessibility phase."
+  }
+}

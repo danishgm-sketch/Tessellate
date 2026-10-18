@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 87 findings (17 High, 69 Medium, 1 Low): 15 closed after deployed verification, 70 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080 open.
+**Current disposition:** 93 findings (19 High, 73 Medium, 1 Low): 15 closed after deployed verification, 76 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080 open. AUD-088–093 were found in the Site v16 Explore/search audit; local regressions now pass, with hosted verification pending. See `quality/STEP_08_EVIDENCE.md` and `evidence/catalog-search-v16/`.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -156,6 +156,22 @@ At the Step 06 checkpoint, `pnpm test:e2e` passed: 73 of 124 desktop/mobile brow
 - Root cause: the resource required a function callback that ProjectManifest cannot serialize and had no local close behavior when used without a host callback.
 - Affected code: `resources/primitives/dialog/index.tsx`, generated Gold source, the shared Gold parity fixture, and `packages/exporter/src/__tests__/standalone-export-fidelity.test.ts`.
 - Remediation: make `onClose` optional, preserve controlled behavior when supplied, and close local state on Escape or backdrop when no host callback exists. The deployed Workbench and standalone ZIP both opened the Dialog and closed it with Escape; the clean export built successfully with no Tessellate runtime dependency. See `evidence/deployed-v14-flagship/deployed-parity-export-build.json` and `deployed-parity-export-runtime.json`. Closed after deployed verification.
+
+### AUD-088 — Advertised catalog facet filters do not affect results or survive reload
+
+- Evidence: Site v16's [browser report](evidence/catalog-search-v16/density-filter-regression.json) records 15 dashboard results both before and after selecting **Density → Dense**, `?q=dashboard` without the selected facet, and the facet cleared after reload. The [after screenshot](evidence/catalog-search-v16/density-filter-after-1440x900.png) shows Dense checked while the same results remain.
+- Reproduction: open `/explore` at 1440 × 900, search `dashboard`, expand Density and select Dense, then compare the count and URL before and after reload.
+- Root cause: `ExploreRail` exposes filter fields that `executeSearch` never applies; `ExploreView` only reads and writes query, type, purpose and feel parameters.
+- Affected code: `apps/site/src/components/ExploreRail.tsx`, `apps/site/src/components/ExploreView.tsx`, `packages/search/src/query.ts`, `packages/search/src/indexer.ts`, and `packages/search/src/types.ts`.
+- Remediation: derive each facet from canonical manifest metadata, apply selected facets, serialize them in the URL, and verify visible result changes, combined filters and reload restoration. The local desktop/mobile regression passes; status remains fixed pending deployed verification on the next Sites version.
+
+### AUD-089 — Multi-term search returns unrelated resources and omits searchable intent
+
+- Evidence: the Site v16 suggested query [luxury checkout screenshot](evidence/catalog-search-v16/luxury-checkout-suggested-query-1440x900.png) shows 13 results led by Conic Light Field, Counter Typography and Editorial Display Stack, with no checkout resource. The [query report](evidence/catalog-search-v16/normal-use-network-audit.json) records only one result for `payment` and zero for `checkout`, despite checkout/payment intent in catalogue manifests.
+- Reproduction: open `/explore`, choose the suggested `luxury checkout` query, then search `payment` and `checkout`.
+- Root cause: the search document omits `intent.contentRequirements`, while the query is passed to Orama without a product-level rule that checks coverage of meaningful terms. A result matching only `luxury` can outrank an absent checkout match.
+- Affected code: `packages/search/src/indexer.ts`, `packages/search/src/query.ts`, `packages/search/src/types.ts`, and `packages/search/src/__tests__/search.test.ts`.
+- Remediation: index intent fields that describe supported content, rank by meaningful token coverage before text relevance, and show a truthful empty state when no result satisfies a multi-term query. `checkout` now finds Funnel Chart, `payment` finds Billing Overview, and `luxury checkout` returns no unrelated result. The local desktop/mobile regression passes; deployed verification remains pending.
 
 ## MEDIUM
 
@@ -847,6 +863,38 @@ with zero findings. That harness race is not counted as a product defect.
 - Root cause: `TopToolbar` logged every caught ZIP export failure through `console.error`; the exporter represented expected project validation failures as generic `Error` values.
 - Affected code: `packages/exporter/src/source-tree.ts`, `packages/workbench/src/components/TopToolbar.tsx`, and `tests/e2e/unsupported-resource-variant-regression.spec.ts`.
 - Remediation: represent export validation failures with `ExportValidationError`, suppress error logging for that expected user-correctable case, retain logging for unexpected faults, and cover the visible dialog, rejected download, and zero-console-error result in Playwright. The regression passes locally and on deployed Site v16 (canonical commit `7b49224898066edc9162d901e0cc945af7b24105`, Sites source commit `37fd259499ac4a634db77e091f0a8cd3ff6f1464`); status: closed after deployed verification.
+
+### AUD-090 — Typing a search phrase starts and aborts dozens of preview requests
+
+- Evidence: the Site v16 [typed-search network report](evidence/catalog-search-v16/typed-search-network-audit.json) records 45 `net::ERR_ABORTED` requests while typing `luxury checkout` at 70 ms per character. Most were preview iframe documents and their JS/CSS chunks; there were no HTTP status errors or browser console errors.
+- Reproduction: open `/explore`, wait for the initial list and type `luxury checkout` at a natural cadence while recording failed requests.
+- Root cause: `ExploreView` executes search on each input change. This repeatedly replaces `ResourceCard` instances while their intersection-triggered preview iframes are still loading.
+- Affected code: `apps/site/src/components/ExploreView.tsx`, `apps/site/src/components/ResourceCard.tsx`, and the Explore browser tests.
+- Remediation: debounce committed query execution without delaying the input and cover request behavior during natural typing. The local desktop/mobile regression passes; deployed network verification remains pending.
+
+### AUD-091 — Explore stops at 50 of 324 resources without a continuation control
+
+- Evidence: Site v16's [search report](evidence/catalog-search-v16/normal-use-network-audit.json) records 324 catalogue resources but only 50 displayed results for the broad `data table` query and no continuation control. The [initial Explore screenshot](evidence/catalog-search-v16/explore-initial-1440x900.png) shows the truncated list.
+- Reproduction: open `/explore`, note the 324-resource catalogue, search `data table`, and inspect the end of the results.
+- Root cause: `executeSearch` truncates candidate hits before strict filters, defaults to 50 returned results, and reports the truncated count as `totalHits`; `ExploreView` renders the one page without pagination.
+- Affected code: `packages/search/src/query.ts`, `packages/search/src/types.ts`, `apps/site/src/components/ExploreView.tsx`, and the Explore browser tests.
+- Remediation: count matches after filtering, support offset-based incremental results, show `Showing X of Y`, and expose a keyboard-accessible continuation control. The local desktop/mobile regression passes; deployed verification remains pending.
+
+### AUD-092 — Accessibility facet overstates what catalogue metadata proves
+
+- Evidence: the Site v16 [before report](evidence/catalog-search-v16/accessibility-label-before.json) records the visible “Verified AA” label while all 324 manifests declare `levelTarget: AAA`; the [before screenshot](evidence/catalog-search-v16/accessibility-label-before-1440x900.png) captures the claim.
+- Reproduction: open deployed `/explore`, expand Accessibility, and compare the “Verified AA” option to `accessibility.levelTarget` in `/data/catalog.json`.
+- Root cause: the indexer collapsed AA and AAA declared targets into one AA value, while the facet wording presented a target as verified conformance.
+- Affected code: `packages/search/src/indexer.ts`, `apps/site/src/components/ExploreRail.tsx`, `docs/PRODUCT_SPEC.md`, and Explore browser tests.
+- Remediation: expose “AA target or higher” and “AAA target” as declared target values and keep verification fields distinct. Local desktop/mobile tests pass; the finding remains fixed pending deployed verification.
+
+### AUD-093 — Explore advertises facet values absent from the loaded catalogue
+
+- Evidence: the Site v16 [before report](evidence/catalog-search-v16/empty-filter-options-before.json) records `None`, `Heavy`, and `Sparse` options despite zero matching records; the [before screenshot](evidence/catalog-search-v16/empty-motion-facet-options-1440x900.png) shows the Motion facet.
+- Reproduction: open deployed `/explore`, expand Motion, Density, and Resource, then compare the options to the values in `/data/catalog.json`.
+- Root cause: ExploreRail rendered fixed filter choices without deriving the actual option set from loaded search documents.
+- Affected code: `apps/site/src/components/ExploreRail.tsx`, `apps/site/src/components/ExploreView.tsx`, `packages/search/src/indexer.ts`, and Explore browser tests.
+- Remediation: intersect the supported facet vocabulary with indexed manifest values, hide empty choices, and retain a stale URL-selected value so it can be removed. Local desktop/mobile tests pass; the finding remains fixed pending deployed verification.
 ## LOW
 
 ### AUD-079 — Published Site favicon returned 404

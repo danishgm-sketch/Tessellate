@@ -27,8 +27,15 @@ export interface SearchDocument {
   intentSummary: string;
   intentJobs: string[];
   intentIdealFor: string[];
+  contentRequirements: string[];
   archetypes: string[];
   feel: string[];
+  intensity: string[];
+  motion: string[];
+  density: string[];
+  performance: string[];
+  accessibility: string[];
+  dependencies: string[];
   qualityScore: number;
   license: string;
 }

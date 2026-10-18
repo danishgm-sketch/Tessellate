@@ -6,11 +6,12 @@ export interface ExploreRailProps {
   filters: SearchFilters;
   onFilterChange: (filters: SearchFilters) => void;
   onReset: () => void;
+  availableOptions?: Partial<Record<Exclude<keyof SearchFilters, 'minQuality'>, string[]>>;
   className?: string;
 }
 
 interface FilterSectionConfig {
-  id: keyof SearchFilters;
+  id: Exclude<keyof SearchFilters, 'minQuality'>;
   title: string;
   options: string[];
 }
@@ -94,7 +95,7 @@ const FILTER_SECTIONS: FilterSectionConfig[] = [
   {
     id: 'accessibility',
     title: 'Accessibility',
-    options: ['Verified AA', 'Keyboard verified', 'Reduced-motion verified'],
+    options: ['AA target or higher', 'AAA target', 'Keyboard verified', 'Reduced-motion verified'],
   },
   {
     id: 'dependencies',
@@ -107,6 +108,7 @@ export function ExploreRail({
   filters,
   onFilterChange,
   onReset,
+  availableOptions,
   className = '',
 }: ExploreRailProps) {
   // Collapsed state for sections (first 3 expanded by default)
@@ -174,6 +176,16 @@ export function ExploreRail({
           const isExpanded = !!expandedSections[section.id];
           const activeValues = (filters[section.id] as string[] | undefined) ?? [];
           const sectionActiveCount = activeValues.length;
+          const available = availableOptions?.[section.id];
+          const options = availableOptions
+            ? [
+              ...section.options.filter((option) => available?.some((value) => value.toLocaleLowerCase() === option.toLocaleLowerCase())
+                || activeValues.some((value) => value.toLocaleLowerCase() === option.toLocaleLowerCase())),
+              ...activeValues.filter((value) => !section.options.some((option) => option.toLocaleLowerCase() === value.toLocaleLowerCase())),
+            ]
+            : section.options;
+
+          if (options.length === 0 && sectionActiveCount === 0) return null;
 
           return (
             <div
@@ -202,7 +214,7 @@ export function ExploreRail({
 
               {isExpanded && (
                 <div className="mt-2 flex flex-col gap-1.5 pl-0.5">
-                  {section.options.map((option) => {
+                  {options.map((option) => {
                     const isChecked = activeValues.includes(option);
 
                     return (

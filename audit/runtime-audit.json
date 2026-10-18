@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public review Site v11 desktop/mobile flagship and unknown-resource smoke, public v9 route sweep, plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification.",
+  "scope": "Deployed public Site v11/v14 flagship, Site v16 renderer/export and Explore/search audits at desktop/mobile sizes, public v9 route sweep, plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Step 08 local fixes for AUD-088–093 are awaiting a new deployed Sites verification.",
   "entries": [
     {
       "id": "AUD-001",
@@ -2432,7 +2432,282 @@
         "report": "audit/evidence/deployed-v16-export-fix/deployed-renderer-parity-audit.json",
         "screenshot": "audit/evidence/deployed-v16-export-fix/deployed-unsupported-variant-1440x900.png"
       }
+    },
+    {
+      "id": "AUD-088",
+      "severity": "high",
+      "route": "/explore",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Advertised catalog facet filters do not affect results or survive reload",
+      "expected": "Every visible facet selection should filter the catalog by its documented metadata and persist in the URL so refresh and sharing preserve the same search.",
+      "actual": "With q=dashboard, selecting Density > Dense checked the control but left the result count at 15. The URL remained ?q=dashboard and reload cleared the selection. The same Explore component exposes Intensity, Motion, Performance, Accessibility, and Dependencies facets that the search engine also does not apply.",
+      "reproduction": [
+        "Open the deployed /explore route at 1440x900.",
+        "Search for dashboard and record the 15 results.",
+        "Expand Density and select Dense.",
+        "Observe that the count remains 15 and the URL only contains q=dashboard.",
+        "Reload, expand Density, and observe Dense is unchecked."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/catalog-search-v16/density-filter-after-1440x900.png",
+      "rootCause": "ExploreRail exposes SearchFilters fields, but executeSearch only applies resourceTypes, purposes, feel, license, and minQuality. ExploreView URL parsing and serialization also only handles type, purpose, and feel.",
+      "affectedFiles": [
+        "apps/site/src/components/ExploreRail.tsx",
+        "apps/site/src/components/ExploreView.tsx",
+        "packages/search/src/query.ts",
+        "packages/search/src/indexer.ts",
+        "packages/search/src/types.ts"
+      ],
+      "remediation": "Derive each visible facet from canonical ResourceManifest metadata, apply all advertised filters with documented AND/OR semantics, and parse/serialize every selected facet in the URL. Add browser tests for visible result changes, combined filters, clear, and reload/deep-link restoration.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "deployedVerification": {
+        "siteVersion": 16,
+        "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
+        "result": "FAIL: Density > Dense remains selected without changing results; the URL omits the filter and reload clears it.",
+        "report": "audit/evidence/catalog-search-v16/density-filter-regression.json",
+        "screenshot": "audit/evidence/catalog-search-v16/density-filter-after-1440x900.png"
+      },
+      "localVerification": {
+        "result": "PASS locally: unit and browser regressions plus full repository audit pass; deployed verification remains pending on the next Sites version.",
+        "report": "quality/STEP_08_LOCAL_VERIFICATION.json",
+        "verifiedAt": "2026-10-18T03:53:00.208Z",
+        "screenshots": [
+          "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png",
+          "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
+        ]
+      }
+    },
+    {
+      "id": "AUD-089",
+      "severity": "high",
+      "route": "/explore?q=luxury+checkout",
+      "viewport": "1440x900",
+      "category": "data",
+      "title": "Multi-term search returns unrelated results and omits searchable resource intent",
+      "expected": "Search should prioritize resources matching all meaningful query terms and include content requirements such as checkout and payment when those are present in resource metadata.",
+      "actual": "Clicking the suggested “luxury checkout” query returned 13 resources led by Conic Light Field, Counter Typography, and Editorial Display Stack; none of the visible results described checkout. A separate payment query returned only Radio Group and missed Billing Overview, whose intent content requirements mention payment. A single checkout query returned zero results.",
+      "reproduction": [
+        "Open deployed /explore.",
+        "Click the suggested luxury checkout chip.",
+        "Observe 13 results led by background and typography resources with no checkout match.",
+        "Search payment and observe that Billing Overview is missing."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/catalog-search-v16/luxury-checkout-suggested-query-1440x900.png",
+      "rootCause": "The search document omits ResourceManifest.intent.contentRequirements and searches only a subset of intent fields. The full multiword query is passed to Orama without a product-level all-term coverage rule, allowing a result that matches only “luxury” to outrank the missing checkout intent.",
+      "affectedFiles": [
+        "packages/search/src/indexer.ts",
+        "packages/search/src/query.ts",
+        "packages/search/src/types.ts",
+        "packages/search/src/__tests__/search.test.ts",
+        "tests/e2e/search-ranking-regression.spec.ts"
+      ],
+      "remediation": "Index semantically useful intent fields, rank by meaningful query-term coverage before BM25 score, and return a clear empty state when no resource meets a multi-term query rather than showing unrelated matches. Add adjudicated regressions for checkout, payment, and luxury checkout.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "deployedVerification": {
+        "siteVersion": 16,
+        "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
+        "result": "FAIL: luxury checkout returned 13 unrelated items; payment returned one item and omitted Billing Overview; checkout returned no result despite matching manifest intent content.",
+        "report": "audit/evidence/catalog-search-v16/normal-use-network-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v16/luxury-checkout-suggested-query-1440x900.png"
+      },
+      "localVerification": {
+        "result": "PASS locally: unit and browser regressions plus full repository audit pass; deployed verification remains pending on the next Sites version.",
+        "report": "quality/STEP_08_LOCAL_VERIFICATION.json",
+        "verifiedAt": "2026-10-18T03:53:00.208Z",
+        "screenshots": [
+          "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png",
+          "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
+        ]
+      }
+    },
+    {
+      "id": "AUD-090",
+      "severity": "medium",
+      "route": "/explore",
+      "viewport": "1440x900",
+      "category": "performance",
+      "title": "Typing a search phrase starts and aborts dozens of preview requests",
+      "expected": "Typing should update search without repeatedly mounting previews and cancelling requests for resources that are immediately removed from the result list.",
+      "actual": "Typing “luxury checkout” at 70 ms per character produced 45 net::ERR_ABORTED requests, mostly preview iframe documents and their JS/CSS chunks. There were no HTTP status errors or console errors, and the final search rendered, but the request churn is real browser behavior.",
+      "reproduction": [
+        "Open deployed /explore and wait for the initial 50 resources.",
+        "Type luxury checkout into Search catalogue at a natural 70 ms per-character cadence.",
+        "Inspect failed requests while results update."
+      ],
+      "console": [],
+      "network": [
+        {
+          "kind": "aborted-request-count",
+          "count": 45,
+          "detail": "Preview iframe documents and their Astro JS/CSS dependencies; full list in the linked machine report."
+        }
+      ],
+      "screenshot": "audit/evidence/catalog-search-v16/explore-initial-1440x900.png",
+      "rootCause": "ExploreView runs the search on every input change, replacing the resource-card list while ResourceCard mounts visible iframe previews. Each intermediate query tears down previews whose requests are still in flight.",
+      "affectedFiles": [
+        "apps/site/src/components/ExploreView.tsx",
+        "apps/site/src/components/ResourceCard.tsx",
+        "tests/e2e/search-ranking-regression.spec.ts"
+      ],
+      "remediation": "Debounce committed query execution while keeping the input responsive, avoid remounting previews for intermediate keystrokes, and verify a normal typed phrase causes no repeated preview-request cancellation storm.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "deployedVerification": {
+        "siteVersion": 16,
+        "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
+        "result": "FAIL: one natural-pace query caused 45 aborted preview/resource requests; zero console errors and zero HTTP errors.",
+        "report": "audit/evidence/catalog-search-v16/typed-search-network-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v16/explore-initial-1440x900.png"
+      },
+      "localVerification": {
+        "result": "PASS locally: unit and browser regressions plus full repository audit pass; deployed verification remains pending on the next Sites version.",
+        "report": "quality/STEP_08_LOCAL_VERIFICATION.json",
+        "verifiedAt": "2026-10-18T03:53:00.208Z",
+        "screenshots": [
+          "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png",
+          "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
+        ]
+      }
+    },
+    {
+      "id": "AUD-091",
+      "severity": "medium",
+      "route": "/explore",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Explore silently stops at 50 of 324 resources with no continuation control",
+      "expected": "Users should be able to browse every catalog result or see an honest total and an accessible way to load the remaining results.",
+      "actual": "The deployed catalogue response contains 324 resources, while the unfiltered Explore view renders 50 and the “data table” query returns 50. There is no Load more, pagination, or continuation control; the summary says only “Showing 50 resources.”",
+      "reproduction": [
+        "Open deployed /explore and wait for the catalogue.",
+        "Observe the 324-resource catalogue request but only 50 displayed resources.",
+        "Search data table, which also renders 50 matches.",
+        "Reach the end of the cards and observe there is no continuation control."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/catalog-search-v16/explore-initial-1440x900.png",
+      "rootCause": "executeSearch retrieves at most 100 Orama hits before strict filtering and defaults to returning 50 items. Its totalHits is the truncated result length, and ExploreView renders only those items without pagination.",
+      "affectedFiles": [
+        "packages/search/src/query.ts",
+        "packages/search/src/types.ts",
+        "apps/site/src/components/ExploreView.tsx",
+        "tests/e2e/search-ranking-regression.spec.ts"
+      ],
+      "remediation": "Compute total matching hits after filtering, support offset-based pages or incremental loading, and show “Showing X of Y” with a keyboard-accessible continuation control. Ensure filters are applied before pagination so valid late-ranked matches remain discoverable.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "deployedVerification": {
+        "siteVersion": 16,
+        "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
+        "result": "FAIL: only 50 of 324 resources are shown and no continuation control exists.",
+        "report": "audit/evidence/catalog-search-v16/normal-use-network-audit.json",
+        "screenshot": "audit/evidence/catalog-search-v16/explore-initial-1440x900.png"
+      },
+      "localVerification": {
+        "result": "PASS locally: unit and browser regressions plus full repository audit pass; deployed verification remains pending on the next Sites version.",
+        "report": "quality/STEP_08_LOCAL_VERIFICATION.json",
+        "verifiedAt": "2026-10-18T03:53:00.208Z",
+        "screenshots": [
+          "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png",
+          "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
+        ]
+      }
+    },
+    {
+      "id": "AUD-092",
+      "severity": "medium",
+      "route": "/explore",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Accessibility facet overstates what catalogue metadata proves",
+      "expected": "Explore should distinguish declared accessibility targets from completed conformance verification.",
+      "actual": "The deployed facet says “Verified AA”, but all 324 public manifests declare levelTarget AAA; the field is a target and does not certify rendered resources or the Site.",
+      "reproduction": [
+        "Open deployed /explore at 1440 × 900.",
+        "Expand Accessibility and observe “Verified AA”.",
+        "Fetch /data/catalog.json and inspect accessibility.levelTarget: all 324 entries say AAA."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/catalog-search-v16/accessibility-label-before-1440x900.png",
+      "rootCause": "The search index maps both AA and AAA levelTarget declarations to an AA value and the facet copy calls the declaration verified.",
+      "affectedFiles": [
+        "packages/search/src/indexer.ts",
+        "apps/site/src/components/ExploreRail.tsx",
+        "docs/PRODUCT_SPEC.md",
+        "tests/e2e/explore-search-hardening.spec.ts"
+      ],
+      "remediation": "Expose “AA target or higher” and “AAA target” as declared-target filters, retain separate verification fields, and test the truthful labels.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "deployedVerification": {
+        "siteVersion": 16,
+        "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
+        "result": "FAIL: the visible facet overstates declaration metadata as Verified AA; all 324 entries only declare AAA as levelTarget.",
+        "report": "audit/evidence/catalog-search-v16/accessibility-label-before.json",
+        "screenshot": "audit/evidence/catalog-search-v16/accessibility-label-before-1440x900.png"
+      },
+      "localVerification": {
+        "result": "PASS locally: unit and browser regressions plus full repository audit pass; deployed verification remains pending on the next Sites version.",
+        "report": "quality/STEP_08_LOCAL_VERIFICATION.json",
+        "verifiedAt": "2026-10-18T03:53:00.208Z",
+        "screenshots": [
+          "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png",
+          "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
+        ]
+      }
+    },
+    {
+      "id": "AUD-093",
+      "severity": "medium",
+      "route": "/explore",
+      "viewport": "1440x900",
+      "category": "data",
+      "title": "Explore advertises facet values absent from the loaded catalogue",
+      "expected": "Facet options should come from values present in the current catalogue; a stale URL selection should remain removable.",
+      "actual": "The deployed panel lists Motion None and Heavy, Density Sparse, and resource types including Component and Page, although the 324 records contain none of those values.",
+      "reproduction": [
+        "Open deployed /explore at 1440 × 900.",
+        "Expand Motion, Density and Resource.",
+        "Compare the visible options with the actual values counted in /data/catalog.json."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/catalog-search-v16/empty-motion-facet-options-1440x900.png",
+      "rootCause": "ExploreRail rendered fixed options without checking whether their values were represented in the loaded search documents.",
+      "affectedFiles": [
+        "apps/site/src/components/ExploreRail.tsx",
+        "apps/site/src/components/ExploreView.tsx",
+        "packages/search/src/indexer.ts",
+        "tests/e2e/explore-search-hardening.spec.ts"
+      ],
+      "remediation": "Intersect the supported facet vocabulary with indexed manifest values, hide empty options, and retain a stale URL-selected option so users can remove it.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "deployedVerification": {
+        "siteVersion": 16,
+        "canonicalGitCommit": "7b49224898066edc9162d901e0cc945af7b24105",
+        "result": "FAIL: the visible panel contains options absent from the canonical 324-record catalogue.",
+        "report": "audit/evidence/catalog-search-v16/empty-filter-options-before.json",
+        "screenshot": "audit/evidence/catalog-search-v16/empty-motion-facet-options-1440x900.png"
+      },
+      "localVerification": {
+        "result": "PASS locally: unit and browser regressions plus full repository audit pass; deployed verification remains pending on the next Sites version.",
+        "report": "quality/STEP_08_LOCAL_VERIFICATION.json",
+        "verifiedAt": "2026-10-18T03:53:00.208Z",
+        "screenshots": [
+          "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png",
+          "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
+        ]
+      }
     }
   ],
-  "generatedAt": "2026-10-18T01:30:30.029Z"
+  "generatedAt": "2026-10-18T03:53:00.208Z"
 }
