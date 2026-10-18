@@ -1,13 +1,48 @@
 import React, { useState } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { cloneNodeWithNewIds } from '../../utils/tree-helpers.js';
-import type { ProjectScreen } from '@tessellate/schemas';
+import { createId, type ProjectScreen } from '@tessellate/schemas';
 import {
   FileText,
   Plus,
   Trash2,
   Copy,
 } from 'lucide-react';
+
+function routeSegment(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'screen';
+}
+
+function normalizeScreenSlug(value: string, fallbackName: string) {
+  const source = value.trim() || fallbackName;
+  const segments = source.split('/').filter(Boolean).map(routeSegment);
+  return segments.length > 0 ? `/${segments.join('/')}` : `/${routeSegment(fallbackName)}`;
+}
+
+function duplicateScreenIdentity(screen: ProjectScreen, screens: ProjectScreen[]) {
+  const usedNames = new Set(screens.map((item) => item.name.toLowerCase()));
+  const usedSlugs = new Set(screens.map((item) => item.slug.replace(/\/+$/, '').toLowerCase()));
+  const routeBase = normalizeScreenSlug(screen.slug, screen.name);
+  let copyNumber = 1;
+  let name = '';
+  let slug = '';
+
+  do {
+    const suffix = copyNumber === 1 ? '' : ` ${copyNumber}`;
+    const routeSuffix = copyNumber === 1 ? '' : `-${copyNumber}`;
+    name = `${screen.name} (Copy${suffix})`;
+    slug = `${routeBase}-copy${routeSuffix}`;
+    copyNumber += 1;
+  } while (usedNames.has(name.toLowerCase()) || usedSlugs.has(slug.toLowerCase()));
+
+  return { id: createId('screen'), name, slug };
+}
 
 export function PagesTab() {
   const manifest = useWorkbenchStore((state) => state.manifest);
@@ -19,16 +54,20 @@ export function PagesTab() {
   const [isAdding, setIsAdding] = useState(false);
   const [newScreenName, setNewScreenName] = useState('');
   const [newScreenSlug, setNewScreenSlug] = useState('');
+  const [screenFormError, setScreenFormError] = useState<string | null>(null);
 
   const handleCreateScreen = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newScreenName.trim()) return;
 
-    const slug = newScreenSlug.trim().startsWith('/')
-      ? newScreenSlug.trim()
-      : `/${newScreenSlug.trim().toLowerCase().replace(/\s+/g, '-') || newScreenName.toLowerCase().replace(/\s+/g, '-')}`;
+    const slug = normalizeScreenSlug(newScreenSlug, newScreenName);
+    const routeKey = slug.toLowerCase();
+    if (manifest.screens.some((screen) => normalizeScreenSlug(screen.slug, screen.name).toLowerCase() === routeKey)) {
+      setScreenFormError(`The route ${slug} is already used by another screen. Choose a different route.`);
+      return;
+    }
 
-    const newId = `screen-${Date.now()}`;
+    const newId = createId('screen');
     const newScreen: ProjectScreen = {
       id: newId,
       screenNodeId: newId,
@@ -61,18 +100,19 @@ export function PagesTab() {
     addScreen(newScreen);
     setNewScreenName('');
     setNewScreenSlug('');
+    setScreenFormError(null);
     setIsAdding(false);
   };
 
   const handleDuplicate = (screen: ProjectScreen) => {
-    const dupId = `screen-${Date.now()}`;
+    const identity = duplicateScreenIdentity(screen, manifest.screens);
     const duplicated: ProjectScreen = {
       ...screen,
-      id: dupId,
-      screenNodeId: dupId,
-      name: `${screen.name} (Copy)`,
-      slug: `${screen.slug}-copy`,
-      rootNode: cloneNodeWithNewIds(screen.rootNode,dupId),
+      id: identity.id,
+      screenNodeId: identity.id,
+      name: identity.name,
+      slug: identity.slug,
+      rootNode: cloneNodeWithNewIds(screen.rootNode, identity.id),
     };
     addScreen(duplicated);
   };
@@ -105,7 +145,7 @@ export function PagesTab() {
             type="text"
             aria-label="Page title" placeholder="Page title"
             value={newScreenName}
-            onChange={(e) => setNewScreenName(e.target.value)}
+            onChange={(e) => { setNewScreenName(e.target.value); setScreenFormError(null); }}
             className="w-full rounded border border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#0B0D10] px-2 py-1 text-xs"
             autoFocus
           />
@@ -113,9 +153,10 @@ export function PagesTab() {
             type="text"
             aria-label="Route slug" placeholder="Route slug"
             value={newScreenSlug}
-            onChange={(e) => setNewScreenSlug(e.target.value)}
+            onChange={(e) => { setNewScreenSlug(e.target.value); setScreenFormError(null); }}
             className="w-full rounded border border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#0B0D10] px-2 py-1 text-xs font-mono"
           />
+          {screenFormError && <p role="alert" className="text-[11px] text-rose-700 dark:text-rose-300">{screenFormError}</p>}
           <div className="flex items-center justify-end gap-2 pt-1">
             <button
               type="button"

@@ -96,18 +96,15 @@ Allows editing inputs and reinterpreting the project while respecting locked scr
 ### 4.2 Pages
 Tree of screens/pages grouped by domain.
 
-Capabilities:
-- select;
-- rename;
-- add;
-- duplicate;
-- delete;
-- reorder;
-- nest;
-- group;
-- set route slug;
-- mark required/optional;
-- set responsive availability.
+Capabilities exposed by the current Workbench:
+- select a screen;
+- add a screen with a title and route;
+- duplicate a screen with fresh IDs and a unique route;
+- delete a screen.
+
+Screen reorder, nesting, grouping, renaming, and changing required/optional or
+responsive availability are not exposed in the current UI. The required marker
+is read-only metadata from the screen graph.
 
 ### 4.3 Layers
 Semantic tree for selected screen.
@@ -127,15 +124,17 @@ Dashboard
     └── InsightRail
 ```
 
-Capabilities:
-- select;
+Capabilities exposed by the current Workbench:
+- select with pointer or Enter/Space;
 - expand/collapse;
-- drag reorder within allowed grammar;
-- lock;
-- hide in preview;
-- duplicate where allowed;
-- delete;
-- replace.
+- lock/unlock;
+- duplicate a non-root subtree;
+- move a selected node up/down among its current siblings;
+- confirm deletion of a non-root subtree;
+- replace a resource through the Resource inspector.
+
+Cross-parent moves and layer visibility are not exposed. Hide remains Lab-only
+because the manifest does not persist node visibility.
 
 Do not expose meaningless implementation wrappers. Tree nodes represent semantic interface concepts.
 
@@ -344,25 +343,20 @@ Without AI provider configured, supported deterministic command patterns map to 
 
 ## 10. Context action menu
 
-Right click / action button on selection:
+Selection actions implemented in the current Workbench:
 
-- Replace
-- Alternative
-- Duplicate
-- Move
-- Lock
-- Hide
-- Delete
-- Improve
-- Simplify
-- Intensify
-- Match project DNA
-- Improve accessibility
-- Improve performance
-- Rethink structure
-- Surprise me
+- Replace opens the compatible Gold candidate drawer; previews are temporary until Apply.
+- Duplicate copies a non-root node/subtree after its source with fresh recursive IDs.
+- Move up/down reorders a non-root node among its current siblings.
+- Lock and Unlock guard structural mutations across the selected node and its ancestors.
+- Delete requires a second explicit action and cannot remove a screen root.
 
-Unavailable actions are disabled with reason.
+Root-level actions that cannot preserve a valid screen are disabled with a visible reason.
+Cross-parent Move is not exposed. Hide remains Lab-only because `ProjectNode` has no persisted visibility field.
+Improve, Simplify, Intensify, Match DNA, and general accessibility/performance improvement do not
+have separate, specified mutation semantics. They are not represented as production actions. A
+natural-language request that has no deterministic operation must leave the manifest unchanged and
+explain that laptop inference requires the explicitly enabled Lab; any Lab proposal requires review.
 
 ## 11. Locking
 
@@ -570,6 +564,11 @@ Issue examples:
 - inconsistent spacing family.
 
 AI critique, when configured, appears separately under `AI review` and cannot overwrite deterministic findings.
+
+Accessibility and performance suggested mutations are labelled Beta in the UI.
+They make deterministic manifest edits and require review of the rendered result;
+they do not replace browser accessibility or performance measurement. Findings
+without a suggested mutation remain informational and have no Fix control.
 
 ## 23. Mobile Workbench
 

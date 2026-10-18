@@ -218,6 +218,7 @@ export function AuditPanel({ manifest: propManifest }: { manifest?: ProjectManif
           filteredIssues.map((issue) => {
             const isTargetSelected =
               issue.nodeIds && issue.nodeIds.includes(selectedNodeId || '');
+            const isBetaSuggestion = issue.category === 'accessibility' || issue.category === 'performance';
             return (
               <div
                 key={issue.id}
@@ -273,6 +274,15 @@ export function AuditPanel({ manifest: propManifest }: { manifest?: ProjectManif
                     >
                       <Wand2 className="h-3 w-3" />
                       <span>Fix</span>
+                      {isBetaSuggestion && (
+                        <span
+                          data-testid="audit-fix-beta-badge"
+                          title="Beta: review the suggested manifest change and verify the rendered result."
+                          className="rounded border border-white/40 px-1 py-0.5 text-[9px] font-bold uppercase tracking-wide"
+                        >
+                          Beta
+                        </span>
+                      )}
                     </button>
                   )}
                 </div>
