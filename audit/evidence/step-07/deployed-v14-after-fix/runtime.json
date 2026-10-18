@@ -1,0 +1,54 @@
+{
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/resources/fade-up-reveal/",
+  "viewport": "1440x900",
+  "routeStatus": 200,
+  "catalogueStatus": 200,
+  "catalogueCount": 324,
+  "before": {
+    "transitionDuration": "0.3s",
+    "opacity": "1",
+    "reducedMotionPreference": false
+  },
+  "reducedMotionOn": {
+    "transitionDuration": "0s",
+    "animationDuration": "0s",
+    "reducedMotionPreference": false,
+    "rootAttribute": "true"
+  },
+  "reducedMotionReplay": {
+    "opacity": "1",
+    "status": "Entrance animation skipped because reduced motion is enabled."
+  },
+  "reducedMotionOff": {
+    "transitionDuration": "0.3s",
+    "rootAttribute": null
+  },
+  "reducedMotionToggleEffective": true,
+  "replayOpacity": {
+    "at60ms": 0.77776,
+    "at360ms": 0.166733
+  },
+  "console": [],
+  "uncaught": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "screenshots": [
+    "audit/evidence/step-07/deployed-v14-after-fix/fade-up-initial-1440x900.png",
+    "audit/evidence/step-07/deployed-v14-after-fix/fade-up-reduced-motion-on-1440x900.png",
+    "audit/evidence/step-07/deployed-v14-after-fix/fade-up-reduced-motion-replay-80ms-1440x900.png"
+  ],
+  "mobile": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/resources/fade-up-reveal/",
+    "viewport": "390x844",
+    "routeStatus": 200,
+    "innerWidth": 390,
+    "documentWidth": 390,
+    "bodyWidth": 390,
+    "horizontalOverflow": false,
+    "console": [],
+    "uncaught": [],
+    "failedRequests": [],
+    "httpErrors": [],
+    "screenshot": "audit/evidence/step-07/deployed-v14-after-fix/fade-up-resource-390x844.png"
+  }
+}

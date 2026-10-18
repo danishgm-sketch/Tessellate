@@ -10,6 +10,17 @@ const evidenceDir = path.resolve(`audit/evidence/step-07/${runLabel}`);
 const evidencePath = (name) => `audit/evidence/step-07/${runLabel}/${name}`;
 await fs.mkdir(evidenceDir, { recursive: true });
 
+async function waitForTransitionDuration(page, locator, expected) {
+  const deadline = Date.now() + 5000;
+  let actual;
+  while (Date.now() < deadline) {
+    actual = await locator.evaluate((element) => getComputedStyle(element).transitionDuration);
+    if (actual === expected) return actual;
+    await page.waitForTimeout(50);
+  }
+  throw new Error(`Timed out waiting for transition-duration ${expected}; received ${actual}.`);
+}
+
 const browser = await chromium.launch({ headless: true });
 const errors = { console: [], uncaught: [], requests: [], http: [] };
 function instrument(page) {
@@ -32,6 +43,7 @@ const routeResponse = await desktop.goto(`${baseUrl}/resources/fade-up-reveal/`,
 const preview = desktop.frameLocator('iframe[title$=" live preview"]');
 const card = preview.locator('div.w-full.p-6');
 await card.waitFor({ state: 'visible' });
+await waitForTransitionDuration(desktop, card, '0.3s');
 const before = await card.evaluate((element) => ({
   transitionDuration: getComputedStyle(element).transitionDuration,
   opacity: getComputedStyle(element).opacity,
@@ -41,12 +53,29 @@ await desktop.screenshot({ path: path.join(evidenceDir, 'fade-up-initial-1440x90
 
 await desktop.getByTitle('Reduced Motion: OFF').click();
 await desktop.getByTitle('Reduced Motion: ON').waitFor({ state: 'visible' });
+await waitForTransitionDuration(desktop, card, '0s');
 const reducedMotionOn = await card.evaluate((element) => ({
   transitionDuration: getComputedStyle(element).transitionDuration,
   animationDuration: getComputedStyle(element).animationDuration,
   reducedMotionPreference: matchMedia('(prefers-reduced-motion: reduce)').matches,
+  rootAttribute: document.documentElement.getAttribute('data-tessellate-reduced-motion'),
 }));
 await desktop.screenshot({ path: path.join(evidenceDir, 'fade-up-reduced-motion-on-1440x900.png'), fullPage: true });
+await preview.getByRole('button', { name: 'Replay Entrance' }).click();
+await desktop.waitForTimeout(80);
+const reducedMotionReplay = await card.evaluate((element) => ({
+  opacity: getComputedStyle(element).opacity,
+  status: document.querySelector('[role="status"]')?.textContent ?? null,
+}));
+await desktop.screenshot({ path: path.join(evidenceDir, 'fade-up-reduced-motion-replay-80ms-1440x900.png'), fullPage: true });
+
+await desktop.getByTitle('Reduced Motion: ON').click();
+await desktop.getByTitle('Reduced Motion: OFF').waitFor({ state: 'visible' });
+await waitForTransitionDuration(desktop, card, '0.3s');
+const reducedMotionOff = await card.evaluate((element) => ({
+  transitionDuration: getComputedStyle(element).transitionDuration,
+  rootAttribute: document.documentElement.getAttribute('data-tessellate-reduced-motion'),
+}));
 
 await preview.getByRole('button', { name: 'Replay Entrance' }).click();
 await desktop.waitForTimeout(60);
@@ -65,7 +94,12 @@ const desktopReport = {
   catalogueCount: catalogue?.count ?? null,
   before,
   reducedMotionOn,
-  reducedMotionToggleEffective: reducedMotionOn.transitionDuration === '0s',
+  reducedMotionReplay,
+  reducedMotionOff,
+  reducedMotionToggleEffective: reducedMotionOn.transitionDuration === '0s'
+    && reducedMotionOn.rootAttribute === 'true'
+    && reducedMotionOff.transitionDuration === '0.3s'
+    && reducedMotionOff.rootAttribute === null,
   replayOpacity: { at60ms: opacityAt60ms, at360ms: opacityAt360ms },
   console: errors.console,
   uncaught: errors.uncaught,
@@ -74,7 +108,7 @@ const desktopReport = {
   screenshots: [
     evidencePath('fade-up-initial-1440x900.png'),
     evidencePath('fade-up-reduced-motion-on-1440x900.png'),
-    evidencePath('fade-up-reduced-motion-replay-60ms-1440x900.png'),
+  evidencePath('fade-up-reduced-motion-replay-80ms-1440x900.png'),
   ],
 };
 await fs.writeFile(path.join(evidenceDir, 'runtime.json'), JSON.stringify(desktopReport, null, 2));

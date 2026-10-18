@@ -2089,7 +2089,7 @@
       "category": "accessibility",
       "title": "Reduced Motion preview control changed its label but left transitions enabled",
       "expected": "Turning Reduced Motion ON should disable CSS motion in the isolated resource preview, and turning it OFF should restore the normal transition.",
-      "actual": "On deployed Site v12, the control changed to ON and the iframe URL changed, but the Fade-Up card still reported a 0.3s transition while the browser preference remained no-preference. Replay Entrance visibly animated. Desktop and mobile routes returned 200, the catalogue contained 324 resources, and there were no console errors, uncaught exceptions, failed requests, or HTTP errors.",
+      "actual": "Site v12 reproduced the defect: ON left a 0.3s transition. Site v13 now applies 0s CSS transition and animation while ON, and restores 0.3s when OFF, with no OS reduced-motion preference. The public 1440x900 and 390x844 audit recorded HTTP 200, 324 catalogue entries, zero browser/network errors, and no mobile overflow.",
       "reproduction": [
         "Open /resources/fade-up-reveal/ at 1440x900.",
         "Turn on the visible Motion / Reduced Motion preview control.",
@@ -2107,9 +2107,9 @@
         "packages/ui/src/preview-motion.css",
         "tests/e2e/preview-form-interactions.spec.ts"
       ],
-      "remediation": "Expose the preview toggle state on the Astro iframe document root and apply a shared reduced-motion override that sets transition and animation durations to zero, regardless of the browser's operating-system preference. The Sites Worker regression verifies OFF-to-ON and ON-to-OFF computed styles. Local verification passes; the fix remains pending a public Site recheck.",
+      "remediation": "Expose the preview toggle state on the isolated iframe document root and apply a shared reduced-motion CSS override that sets transition and animation durations to zero regardless of the browser preference. A browser audit waits for iframe navigation to settle before inspecting computed styles.",
       "fixCommit": "35a8fe5634fde34d3f0a38b41ab70aafdbb5ae2d",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "result": "The Sites Worker browser regression failed before the fix with expected transitionDuration 0s but received 0.3s. After the fix it passes with 0s when Reduced Motion is ON and 0.3s when OFF.",
         "test": "tests/e2e/preview-form-interactions.spec.ts",
@@ -2124,7 +2124,23 @@
           "audit/evidence/step-07/deployed-v12-before-fix/fade-up-resource-390x844.png"
         ]
       },
-      "failingTest": "tests/e2e/preview-form-interactions.spec.ts"
+      "failingTest": "tests/e2e/preview-form-interactions.spec.ts",
+      "deployedVerification": {
+        "siteVersion": 13,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_3b91344861b48191afd06a86db72f06c",
+        "deploymentId": "appgdep_6ad414a944548191bfc200fcdc09845e",
+        "siteSourceCommit": "148f16a972e74e1859d3f6c3523cf5fc3b292a9e",
+        "canonicalGitCommit": "07c1ce41e15705da451b9117183d693755c0af42",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "result": "PASS: Reduced Motion ON yielded transition-duration 0s and animation-duration 0s; OFF restored 0.3s. The browser preference remained no-preference. Route and catalogue returned HTTP 200, catalogue count was 324, and desktop/mobile recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors; mobile document width equaled its 390px viewport.",
+        "report": "audit/evidence/step-07/deployed-v13-after-fix/runtime.json",
+        "screenshots": [
+          "audit/evidence/step-07/deployed-v13-after-fix/fade-up-initial-1440x900.png",
+          "audit/evidence/step-07/deployed-v13-after-fix/fade-up-reduced-motion-on-1440x900.png",
+          "audit/evidence/step-07/deployed-v13-after-fix/fade-up-reduced-motion-replay-60ms-1440x900.png",
+          "audit/evidence/step-07/deployed-v13-after-fix/fade-up-resource-390x844.png"
+        ]
+      }
     },
     {
       "id": "AUD-085",
@@ -2158,6 +2174,58 @@
         "afterEvidence": "audit/evidence/step-07/preview-app-after/runtime.json",
         "beforeScreenshot": "audit/evidence/step-07/preview-app-before/resource-styles-1440x900.png",
         "afterScreenshot": "audit/evidence/step-07/preview-app-after/resource-styles-1440x900.png"
+      }
+    },
+    {
+      "id": "AUD-086",
+      "severity": "medium",
+      "route": "/resources/fade-up-reveal/",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Reduced Motion still let Replay Entrance hide the Fade-Up card",
+      "expected": "When the visible preview Reduced Motion toggle is ON, Replay Entrance should keep the card visible and announce that the animation was skipped.",
+      "actual": "On deployed Site v13, the toggle correctly reduced computed transition and animation durations to 0s, but Replay Entrance still ran its hide/reset handler. After 80ms the card had opacity 0 and there was no status message. The route and catalogue returned HTTP 200; the 324-resource catalogue loaded, and there were no console, uncaught, failed-request, or HTTP errors.",
+      "reproduction": [
+        "Open /resources/fade-up-reveal/ at 1440x900 with the browser preference set to no-preference.",
+        "Turn on the visible Reduced Motion preview toggle and wait for the iframe to reload.",
+        "Activate Replay Entrance and inspect the card at 80ms.",
+        "The card is opacity 0 and no reduced-motion status is announced."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/step-07/deployed-v13-replay-failure/fade-up-reduced-motion-replay-80ms-1440x900.png",
+      "rootCause": "The Fade-Up click handler checked only matchMedia(prefers-reduced-motion). The preview toolbar represents its explicit toggle with data-tessellate-reduced-motion on the iframe document root. Shared CSS forced 0s transitions, but the component logic did not see that explicit state and still set revealed=false before its timeout.",
+      "affectedFiles": [
+        "resources/motion/fade-up-reveal/index.tsx",
+        "apps/site/src/components/PreviewHost.tsx",
+        "tests/e2e/preview-form-interactions.spec.ts",
+        "packages/exporter/src/generated-gold-sources.ts"
+      ],
+      "remediation": "Treat either the operating-system media query or the iframe document root data attribute as reduced motion before changing component state. When enabled, keep the card visible and announce that the entrance was skipped. Add a browser regression that asserts both the live status and opacity.",
+      "fixCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+      "status": "closed-deployed-verified",
+      "localVerification": {
+        "result": "The UI regression failed before the fix because no status element appeared; after the fix and fresh production build it passed with the status message and opacity 1. Full local E2E passed 85 Astro tests, 26 Sites Worker tests, and 3 Vite preview tests (53 project-scope skips); unit/integration passed 622 tests; pnpm audit:all passed 16/16 gates, build, bundle budgets, licence/provenance, and security audits; lint had 0 errors and 51 existing configured warnings.",
+        "test": "tests/e2e/preview-form-interactions.spec.ts",
+        "command": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts --grep \"Reduced Motion toggle disables CSS transitions\"",
+        "failingTest": "The pre-fix browser run expected the reduced-motion skip status but found no status element.",
+        "productionBuild": "pnpm build"
+      },
+      "deployedVerification": {
+        "siteVersion": 14,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_91cf00b4e3b48191949a2182af3f0117",
+        "deploymentId": "appgdep_6ad41bc2e2948191be756eb6a3df21f4",
+        "siteSourceCommit": "7323e8e9edfb6e07c5485c9d19ff37a8ca8043f5",
+        "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "result": "PASS: On deployed Site v14, the ON state reported transition-duration 0s and animation-duration 0s; pressing Replay kept opacity at 1 and announced “Entrance animation skipped because reduced motion is enabled.” Turning the toggle OFF restored 0.3s. Route/catalogue returned HTTP 200 with 324 entries; desktop/mobile had no console errors, uncaught exceptions, failed requests, or HTTP errors, and mobile had no overflow.",
+        "report": "audit/evidence/step-07/deployed-v14-after-fix/runtime.json",
+        "screenshots": [
+          "audit/evidence/step-07/deployed-v14-after-fix/fade-up-initial-1440x900.png",
+          "audit/evidence/step-07/deployed-v14-after-fix/fade-up-reduced-motion-on-1440x900.png",
+          "audit/evidence/step-07/deployed-v14-after-fix/fade-up-reduced-motion-replay-80ms-1440x900.png",
+          "audit/evidence/step-07/deployed-v14-after-fix/fade-up-resource-390x844.png"
+        ]
       }
     }
   ]
