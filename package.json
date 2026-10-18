@@ -19,6 +19,8 @@
     "audit:licenses": "tsx scripts/audit-license-provenance.ts",
     "audit:secrets": "tsx scripts/audit-security-secrets.ts",
     "audit:budgets": "tsx scripts/audit-bundle-budgets.ts",
+    "quality:composition-review": "playwright test --config quality/composition-review.playwright.config.ts",
+    "quality:composition-contact-sheets": "tsx quality/browser/create-composition-contact-sheets.ts",
     "audit:all": "pnpm audit:release-gate && pnpm build && pnpm audit:budgets && pnpm audit:licenses && pnpm audit:secrets"
   },
   "devDependencies": {
