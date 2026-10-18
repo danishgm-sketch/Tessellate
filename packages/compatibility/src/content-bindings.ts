@@ -118,7 +118,9 @@ export function bindResourceContent(
       : isFilmStreaming
         ? 'Browse films'
         : isMusicStore
-          ? 'Browse albums'
+          ? screen.name === 'Product Catalog'
+            ? 'View album details'
+            : 'Browse albums'
           : isDestinationTravel
             ? 'Explore destinations'
             : isHotelBooking
@@ -143,16 +145,14 @@ export function bindResourceContent(
       ? /journey overview|flight details/i
       : isFilmStreaming
         ? /film catalogue|film detail|watchlist/i
-        : isMusicStore
-          ? /product catalog/i
-          : isDestinationTravel
-            ? /destination|neighborhood/i
-            : isHotelBooking
-              ? /find a stay|room details/i
-              : isReturnsPortal
-                ? /order lookup/i
-                : (targetPatternsByArchetype[primaryArchetype] ??
-                  /overview|dashboard|home|workspace/i);
+        : isDestinationTravel
+          ? /destination|neighborhood/i
+          : isHotelBooking
+            ? /find a stay|room details/i
+            : isReturnsPortal
+              ? /order lookup/i
+              : (targetPatternsByArchetype[primaryArchetype] ??
+                /overview|dashboard|home|workspace/i);
   const primaryActionScreen =
     screens.find((item) => preferredTargetPattern.test(item.name)) ??
     screens.find((item) => /overview|dashboard|home|workspace/i.test(item.name)) ??
@@ -492,7 +492,9 @@ export function bindResourceContent(
           name: `Example ${ecommerceItemLabel.name} ${letter}`,
           type: `${ecommerceItemLabel.type} not connected`,
           quality: 0,
-          status: isMusicStore ? 'Release availability not connected' : 'Availability not connected',
+          status: isMusicStore
+            ? 'Release availability not connected'
+            : 'Availability not connected',
           displayValue: isMusicStore ? 'Release price not connected' : 'Price not connected',
         }))
       : isStreamingCatalogue

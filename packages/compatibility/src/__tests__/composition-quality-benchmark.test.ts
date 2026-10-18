@@ -83,7 +83,7 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
 
     expect(catalogScreen?.screenType).toBe('search-explore');
     expect(catalogScreen?.requiredRoles).toEqual(
-      expect.arrayContaining(['search-header', 'facet-rail', 'results-grid'])
+      expect.arrayContaining(['search-header', 'facet-rail', 'results-grid', 'conversion-cta'])
     );
     for (const direction of [result.directionA, result.directionB, result.directionC]) {
       const screen = direction.manifest.screens.find(
@@ -92,8 +92,14 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
       const nodes = screen ? collectNodes(screen.rootNode) : [];
       const search = nodes.find((node) => node.semanticRole === 'search-header');
       const products = nodes.find((node) => node.semanticRole === 'results-grid');
+      const detailsCta = nodes.find((node) => node.resourceRef?.slug === 'cta-minimal');
+      const productDetail = result.screenGraph.groups
+        .flatMap((group) => group.screens)
+        .find((candidate) => candidate.name === 'Product Detail');
 
       expect(search?.props.label).toBe('Search products');
+      expect(detailsCta?.props.label).toBe('View product details');
+      expect(detailsCta?.props.href).toBe(`#${productDetail?.id}`);
       expect(products?.props.title).toBe('Available products');
       expect(products?.props.columnLabels).toEqual({
         name: 'Product',
@@ -131,6 +137,12 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
 
       expect(search?.props.label).toBe('Search albums');
       expect(albums?.props.title).toBe('Available albums');
+      const detailsCta = nodes.find((node) => node.resourceRef?.slug === 'cta-minimal');
+      const productDetail = result.screenGraph.groups
+        .flatMap((group) => group.screens)
+        .find((candidate) => candidate.name === 'Product Detail');
+      expect(detailsCta?.props.label).toBe('View album details');
+      expect(detailsCta?.props.href).toBe(`#${productDetail?.id}`);
       expect(albums?.props.columnLabels).toEqual({
         name: 'Album',
         type: 'Artist and tracks',
@@ -441,7 +453,9 @@ describe('COMPOSITION_QUALITY_BENCHMARK', () => {
             `${brief.id} ${name} conversion CTA must not carry generic onboarding copy`
           ).not.toBe('Continue onboarding');
           if (brief.expectedPrimaryArchetype === 'ecommerce') {
-            expect(node.props.label).toBe('View product details');
+            expect(node.props.label).toBe(
+              brief.id === 'ECOM-04' ? 'View album details' : 'View product details'
+            );
           }
           const href = typeof node.props.href === 'string' ? node.props.href : '';
           const target = href.startsWith('#') ? href.slice(1) : '';

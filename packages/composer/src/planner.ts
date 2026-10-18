@@ -92,14 +92,20 @@ function requiredRolesForScreen(
     /return|refund/i.test(
       `${productModel.primaryObjective} ${JSON.stringify(productModel.workflows)}`
     );
+  const ecommerceProductCatalog =
+    screenType === 'search-explore' &&
+    normalizeName(screenName) === 'product catalog' &&
+    productModel.productArchetypes.some((archetype) => archetype.tag === 'ecommerce');
 
   // A chronological community stream is the primary content, not a KPI
   // dashboard. Requiring metric cards here creates invented summary data.
-  return communityActivityStream
-    ? grammarRoles.filter((role) => role !== 'metric-cards')
-    : returnsPortalRequest
-      ? grammarRoles.filter((role) => role !== 'settings-nav')
-      : grammarRoles;
+  return ecommerceProductCatalog
+    ? [...new Set([...grammarRoles, 'conversion-cta'])]
+    : communityActivityStream
+      ? grammarRoles.filter((role) => role !== 'metric-cards')
+      : returnsPortalRequest
+        ? grammarRoles.filter((role) => role !== 'settings-nav')
+        : grammarRoles;
 }
 
 function pluralizePath(value: string): string {

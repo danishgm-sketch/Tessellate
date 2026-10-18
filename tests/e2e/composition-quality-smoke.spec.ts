@@ -339,7 +339,9 @@ test('SaaS overview activity uses a truthful chronological feed with human-reada
     const events = activity?.props.events as
       Array<{ time: string; title: string; desc: string }> | undefined;
     expect(events?.length).toBeGreaterThan(0);
-    expect(events?.every((event) => event.time.trim() && !/^example$/i.test(event.time))).toBe(true);
+    expect(events?.every((event) => event.time.trim() && !/^example$/i.test(event.time))).toBe(
+      true
+    );
     const eventCopy = JSON.stringify(events);
     expect(eventCopy).not.toMatch(/\bStep\s+\d+\b/i);
     expect(eventCopy).not.toMatch(/\b[a-z][a-z0-9]*(?:-[a-z0-9]+)+\b/i);
@@ -551,7 +553,9 @@ test('brokerage terminal brief composes market workflows instead of banking scre
     const events = activity?.props.events as
       Array<{ time: string; title: string; desc: string }> | undefined;
     expect(events?.length).toBeGreaterThan(0);
-    expect(events?.every((event) => event.time.trim() && !/^example$/i.test(event.time))).toBe(true);
+    expect(events?.every((event) => event.time.trim() && !/^example$/i.test(event.time))).toBe(
+      true
+    );
     expect(JSON.stringify(events)).not.toMatch(/\bStep\s+\d+\b|\b[a-z][a-z0-9]*(?:-[a-z0-9]+)+\b/i);
 
     await details.locator('summary').click();
@@ -653,7 +657,7 @@ test('brokerage terminal brief composes market workflows instead of banking scre
   expect(httpErrors).toEqual([]);
 });
 
-test('storefront conversion CTAs use truthful copy and navigate to the generated product detail screen', async ({
+test('product catalog offers a clear path to the generated product detail screen', async ({
   page,
   isMobile,
 }) => {
@@ -698,13 +702,14 @@ test('storefront conversion CTAs use truthful copy and navigate to the generated
     const manifest = JSON.parse(await details.locator('pre').innerText()) as {
       screens: Array<{ id: string; screenNodeId: string; name: string; rootNode: AuditNode }>;
     };
-    const ctaNodes = manifest.screens
-      .flatMap((screen) => collectNodes(screen.rootNode))
-      .filter((node) => node.resourceRef?.slug === 'cta-minimal');
+    const catalogScreen = manifest.screens.find((screen) => screen.name === 'Product Catalog');
+    const ctaNodes = (catalogScreen ? collectNodes(catalogScreen.rootNode) : []).filter(
+      (node) => node.resourceRef?.slug === 'cta-minimal'
+    );
     expect(
       ctaNodes.length,
-      `Direction ${number} should include a marketing conversion CTA`
-    ).toBeGreaterThan(0);
+      `Direction ${number} should connect product discovery to product details`
+    ).toBe(1);
     for (const node of ctaNodes) {
       expect(node.props.label).toBe('View product details');
       const targetId = typeof node.props.href === 'string' ? node.props.href.slice(1) : '';
@@ -716,8 +721,8 @@ test('storefront conversion CTAs use truthful copy and navigate to the generated
       const screenSelect = dialog.getByLabel('Direction preview screen');
       await details.locator('summary').click();
       const productDetailLinks = dialog.getByRole('link', { name: /View product details/ });
-      await expect(productDetailLinks).toHaveCount(2);
-      await productDetailLinks.first().click();
+      await expect(productDetailLinks).toHaveCount(1);
+      await productDetailLinks.click();
       await expect(screenSelect).toHaveValue(targetScreen?.id ?? '');
       await expect(dialog.locator('.tess-screen')).toContainText('Product Detail');
       if (number === '01') {
@@ -913,7 +918,10 @@ test('returns portal brief composes order lookup, return request, and refund sta
   expect(httpErrors).toEqual([]);
 });
 
-test('real-estate and travel directions use truthful, domain-fit content', async ({ page, isMobile }) => {
+test('real-estate and travel directions use truthful, domain-fit content', async ({
+  page,
+  isMobile,
+}) => {
   test.setTimeout(120000);
   const viewportLabel = isMobile ? 'mobile' : 'desktop';
   const evidenceDir = path.resolve(process.cwd(), 'quality/evidence/step-14/manual-review/after');
@@ -949,7 +957,7 @@ test('real-estate and travel directions use truthful, domain-fit content', async
       id: 'TRV-01',
       brief:
         'A trip-planning service helps travelers compare destinations, save places, coordinate dates, and keep a shared itinerary.',
-      screen: 'Destination Showcase',
+      screen: 'Destination Search',
     },
   ];
   const reviewed: Array<Record<string, unknown>> = [];
@@ -967,8 +975,16 @@ test('real-estate and travel directions use truthful, domain-fit content', async
     for (const number of ['01', '02', '03']) {
       const card = page.locator(`[data-testid="direction-card-${number}"]`);
       await expect(card).toBeVisible();
-      await expect(card.locator(`[data-testid="direction-preview-${number}"] [data-testid="missing-resource-recovery"]`)).toHaveCount(0);
-      await expect(card.locator(`[data-testid="direction-preview-${number}"] [data-testid="unresolved-required-role-diagnostic"]`)).toHaveCount(0);
+      await expect(
+        card.locator(
+          `[data-testid="direction-preview-${number}"] [data-testid="missing-resource-recovery"]`
+        )
+      ).toHaveCount(0);
+      await expect(
+        card.locator(
+          `[data-testid="direction-preview-${number}"] [data-testid="unresolved-required-role-diagnostic"]`
+        )
+      ).toHaveCount(0);
       await card.getByRole('button', { name: 'Inspect full preview and DNA' }).click();
 
       const dialog = page.getByRole('dialog', { name: new RegExp(`Direction ${number}`) });
@@ -1015,12 +1031,18 @@ test('real-estate and travel directions use truthful, domain-fit content', async
           await expect(mobileRecords.first()).toContainText('Example listing A');
           await expect(mobileRecords.first()).toContainText('Availability not connected');
           await expect(canvas.locator('[data-testid="advanced-data-table-scroll"]')).toBeHidden();
-          await expect(mobileRecords.first().locator('dd').nth(1)).toHaveClass(/text-neutral-(300|600)/);
+          await expect(mobileRecords.first().locator('dd').nth(1)).toHaveClass(
+            /text-neutral-(300|600)/
+          );
           expect(
-            await mobileRecords.first().evaluate((element) => element.scrollWidth <= element.clientWidth)
+            await mobileRecords
+              .first()
+              .evaluate((element) => element.scrollWidth <= element.clientWidth)
           ).toBe(true);
         } else {
-          await expect(canvas.getByText('Availability not connected', { exact: true }).first()).toHaveClass(/text-neutral-(300|600)/);
+          await expect(
+            canvas.getByText('Availability not connected', { exact: true }).first()
+          ).toHaveClass(/text-neutral-(300|600)/);
         }
       } else if (item.id === 'REA-01') {
         const searchInput = nodes.find((node) => node.semanticRole === 'search-header');
@@ -1034,15 +1056,15 @@ test('real-estate and travel directions use truthful, domain-fit content', async
         expect(visibleCopy).not.toContain('Search & Map Explorer');
         expect(visibleCopy.toLowerCase()).not.toMatch(/latency|telemetry|portfolio/);
       } else {
-        const hero = nodes.find((node) => node.semanticRole === 'hero');
-        expect(typeof hero?.props.headline).toBe('string');
-        expect(typeof hero?.props.subheadline).toBe('string');
-        expect(hero?.props.subheadline).not.toContain(
-          'Inspire destination discovery and provide seamless, transparent booking itineraries'
-        );
-        expect(visibleCopy).not.toContain(
-          'Inspire destination discovery and provide seamless, transparent booking itineraries.'
-        );
+        const searchInput = nodes.find((node) => node.semanticRole === 'search-header');
+        const results = nodes.find((node) => node.semanticRole === 'results-grid');
+        expect(searchInput?.props.label).toBe('Search destinations');
+        expect(results?.resourceRef?.slug).toBe('advanced-data-table');
+        expect(results?.props.title).toBe('Search results');
+        expect(visibleCopy).toContain('Search destinations');
+        expect(visibleCopy).toContain('Example Destination');
+        expect(visibleCopy).toContain('A destination being considered or saved for the trip');
+        expect(visibleCopy.toLowerCase()).not.toMatch(/latency|telemetry|portfolio|order book/);
       }
 
       reviewed.push({
@@ -1059,7 +1081,15 @@ test('real-estate and travel directions use truthful, domain-fit content', async
     }
   }
 
-  const runtime = { route: page.url(), viewport: page.viewportSize(), reviewed, consoleErrors, uncaught, failedRequests, httpErrors };
+  const runtime = {
+    route: page.url(),
+    viewport: page.viewportSize(),
+    reviewed,
+    consoleErrors,
+    uncaught,
+    failedRequests,
+    httpErrors,
+  };
   fs.writeFileSync(
     path.join(evidenceDir, `domain-content-runtime-${viewportLabel}.json`),
     `${JSON.stringify(runtime, null, 2)}\n`
