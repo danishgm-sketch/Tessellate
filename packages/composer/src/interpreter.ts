@@ -9,7 +9,8 @@ import {
   DEFAULT_DESIGN_DNA,
   DNA_PRESETS,
   applyFeelDescriptors,
-  clampScore,
+  applyVisualAmbition,
+  applyStructuralCreativity,
 } from '@tessellate/dna';
 import { detectProductArchetypes, getProductArchetype } from './archetypes.js';
 import { findBlueprintByArchetype, type ProductBlueprint } from './blueprints.js';
@@ -62,43 +63,11 @@ export function deriveInitialDesignDNA(
   }
 
   if (typeof input.visualAmbition === 'number') {
-    const va = clampScore(input.visualAmbition);
-    base.visualAmbition = va;
-
-    if (va <= 25) {
-      base.motion = Math.min(base.motion ?? 40, 20);
-      base.motionPlayfulness = Math.min(base.motionPlayfulness ?? 30, 10);
-      base.motionPersonality = 'calm-precision';
-      base.typographicExpression = Math.min(base.typographicExpression ?? 45, 30);
-      base.imageryIntensity = Math.min(base.imageryIntensity ?? 30, 15);
-      base.depth = Math.min(base.depth ?? 30, 15);
-    } else if (va <= 50) {
-      base.motion = clampScore((base.motion ?? 40) * 0.9);
-      base.typographicExpression = clampScore(base.typographicExpression ?? 45);
-    } else if (va <= 75) {
-      base.motion = clampScore(Math.max(base.motion ?? 40, 55));
-      base.typographicExpression = clampScore(Math.max(base.typographicExpression ?? 45, 60));
-      base.imageryIntensity = clampScore(Math.max(base.imageryIntensity ?? 30, 50));
-      base.depth = clampScore(Math.max(base.depth ?? 30, 45));
-    } else {
-      base.motion = clampScore(Math.max(base.motion ?? 40, 75));
-      base.motionPlayfulness = clampScore(Math.max(base.motionPlayfulness ?? 30, 65));
-      base.motionPersonality = 'playful-spring';
-      base.typographicExpression = clampScore(Math.max(base.typographicExpression ?? 45, 80));
-      base.imageryIntensity = clampScore(Math.max(base.imageryIntensity ?? 30, 75));
-      base.depth = clampScore(Math.max(base.depth ?? 30, 70));
-    }
+    base = applyVisualAmbition(base, input.visualAmbition);
   }
 
   if (typeof input.structuralCreativity === 'number') {
-    const sc = clampScore(input.structuralCreativity);
-    base.structuralCreativity = sc;
-    if (sc >= 70) {
-      base.asymmetry = clampScore(Math.max(base.asymmetry ?? 25, 45));
-      base.interactionDensity = clampScore(Math.max(base.interactionDensity ?? 50, 65));
-    } else if (sc <= 30) {
-      base.asymmetry = clampScore(Math.min(base.asymmetry ?? 25, 15));
-    }
+    base = applyStructuralCreativity(base, input.structuralCreativity);
   }
 
   if (input.accessibilityFloor === 'AAA') {

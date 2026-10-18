@@ -33,7 +33,7 @@ export const MANIFEST_LAYOUT_CSS = `
  .tess-layout-sidebar-shell>.tess-layout-navigation nav,.tess-layout-workspace-dock-shell>.tess-layout-navigation nav{flex-direction:column}
  .tess-layout-sidebar-shell>.tess-layout-navigation,.tess-layout-workspace-dock-shell>.tess-layout-navigation{position:sticky;top:0}
 }
-.tess-screen h1,.tess-screen h2,.tess-screen h3,.tess-screen h4,.tess-screen h5,.tess-screen h6{font-family:var(--tess-font-heading,sans-serif)}
+.tess-screen h1,.tess-screen h2,.tess-screen h3,.tess-screen h4,.tess-screen h5,.tess-screen h6{font-family:var(--tess-font-heading,sans-serif);letter-spacing:var(--tess-heading-letter-spacing,normal)}
 .tess-screen[data-reduced-motion=true] *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 .tess-screen :focus-visible{outline:2px solid var(--tess-accent-primary,#2547E8);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){.tess-screen *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}

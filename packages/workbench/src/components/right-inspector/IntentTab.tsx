@@ -4,6 +4,9 @@ import { findNodeById } from '../../utils/tree-helpers.js';
 import { getScopedDNA, isScopeLocked } from '../../utils/dna-helpers.js';
 import { FeelMixer } from '../feel-mixer/FeelMixer.js';
 import {
+  applyVisualAmbition,
+  applyStructuralCreativity,
+  diffDNA,
   getVisualAmbitionStop,
   getStructuralCreativityStop,
   VISUAL_AMBITION_STOPS,
@@ -35,6 +38,14 @@ export function IntentTab() {
     } else {
       updateProjectDNA(partial);
     }
+  };
+
+  const handleVisualAmbitionChange = (value: number) => {
+    handleUpdate(diffDNA(effectiveDNA, applyVisualAmbition(effectiveDNA, value)));
+  };
+
+  const handleStructuralCreativityChange = (value: number) => {
+    handleUpdate(diffDNA(effectiveDNA, applyStructuralCreativity(effectiveDNA, value)));
   };
 
   const visualAmbitionVal = effectiveDNA.visualAmbition ?? 50;
@@ -86,7 +97,7 @@ export function IntentTab() {
           min={0}
           max={100}
           aria-label="Visual Ambition" value={visualAmbitionVal}
-          onChange={(e) => handleUpdate({ visualAmbition: Number(e.target.value) })}
+          onChange={(e) => handleVisualAmbitionChange(Number(e.target.value))}
           className="w-full h-1.5 bg-[#D9D6CF] dark:bg-[#272C34] rounded-lg appearance-none cursor-pointer accent-[#2547E8] dark:accent-[#6782FF]"
         />
 
@@ -130,7 +141,7 @@ export function IntentTab() {
           min={0}
           max={100}
           aria-label="Structural Creativity" value={structuralCreativityVal}
-          onChange={(e) => handleUpdate({ structuralCreativity: Number(e.target.value) })}
+          onChange={(e) => handleStructuralCreativityChange(Number(e.target.value))}
           className="w-full h-1.5 bg-[#D9D6CF] dark:bg-[#272C34] rounded-lg appearance-none cursor-pointer accent-[#2547E8] dark:accent-[#6782FF]"
         />
 
@@ -140,6 +151,9 @@ export function IntentTab() {
           </div>
           <p className="text-[11px] text-[#62666F] dark:text-[#A8AFBA] leading-normal">
             {structuralDef.description}
+          </p>
+          <p className="text-[10px] text-[#62666F] dark:text-[#A8AFBA] leading-normal">
+            Guides composition and replacement matching. This setting does not reorder the current screen by itself.
           </p>
         </div>
       </div>

@@ -72,6 +72,76 @@ describe('Semantic Token Contract & Normalisation', () => {
     const strictA11y = normalizeDesignTokens({ accessibilityPriority: 90 });
     expect(strictA11y.focus.ringWidth).toBe('3px');
   });
+
+  it('keeps each directly rendered numeric DNA dimension observable without changing unrelated token families', () => {
+    const base = normalizeDesignTokens();
+
+    const denser = normalizeDesignTokens({ density: 80 });
+    expect(denser.spacing.multiplier).not.toBe(base.spacing.multiplier);
+    expect(denser.colors).toEqual(base.colors);
+    expect(denser.radius).toEqual(base.radius);
+
+    const roomier = normalizeDesignTokens({ whitespace: 90 });
+    expect(roomier.spacing.multiplier).not.toBe(base.spacing.multiplier);
+    expect(roomier.colors).toEqual(base.colors);
+    expect(roomier.radius).toEqual(base.radius);
+
+    const morePlayful = normalizeDesignTokens({ playfulness: 100 });
+    expect(morePlayful.radius).not.toEqual(base.radius);
+    expect(morePlayful.spacing).toEqual(base.spacing);
+    expect(morePlayful.colors).toEqual(base.colors);
+
+    const higherContrast = normalizeDesignTokens({ contrast: 90 });
+    expect(higherContrast.surfaceDepth.borderWidth).not.toBe(base.surfaceDepth.borderWidth);
+    expect(higherContrast.spacing).toEqual(base.spacing);
+    expect(higherContrast.radius).toEqual(base.radius);
+
+    const deeper = normalizeDesignTokens({ depth: 80 });
+    expect(deeper.surfaceDepth.shadowMedium).not.toBe(base.surfaceDepth.shadowMedium);
+    expect(deeper.colors).toEqual(base.colors);
+
+    const quickerMotion = normalizeDesignTokens({ motion: 90 });
+    expect(quickerMotion.motion.durationNormal).not.toBe(base.motion.durationNormal);
+    expect(quickerMotion.colors).toEqual(base.colors);
+
+    const strictFocus = normalizeDesignTokens({ accessibilityPriority: 50 });
+    expect(strictFocus.focus.ringWidth).not.toBe(base.focus.ringWidth);
+    expect(strictFocus.spacing).toEqual(base.spacing);
+  });
+
+  it('changes the relevant rendered token family for visual mode and typography personality', () => {
+    const light = normalizeDesignTokens({ visualMode: 'light' });
+    const dark = normalizeDesignTokens({ visualMode: 'dark' });
+    expect(dark.colors.canvas).not.toBe(light.colors.canvas);
+    expect(dark.typography).toEqual(light.typography);
+
+    const system = normalizeDesignTokens({ typographyPersonality: 'geist-system' });
+    const editorial = normalizeDesignTokens({ typographyPersonality: 'editorial-serif-geist' });
+    expect(editorial.typography.headingFont).not.toBe(system.typography.headingFont);
+    expect(editorial.colors).toEqual(system.colors);
+  });
+
+  it('makes typographic expression, motion playfulness, and surface personality visible in tokens', () => {
+    const restrainedType = normalizeDesignTokens({ typographicExpression: 15 });
+    const expressiveType = normalizeDesignTokens({ typographicExpression: 90 });
+    expect(expressiveType.typography.headingLetterSpacing).not.toBe(
+      restrainedType.typography.headingLetterSpacing
+    );
+    expect(expressiveType.typography.scaleRatio).not.toBe(restrainedType.typography.scaleRatio);
+    expect(tokensToCssVariables(expressiveType)['--tess-type-scale-ratio']).toBe(
+      String(expressiveType.typography.scaleRatio)
+    );
+
+    const preciseMotion = normalizeDesignTokens({ motionPlayfulness: 10 });
+    const playfulMotion = normalizeDesignTokens({ motionPlayfulness: 90 });
+    expect(playfulMotion.motion.easing).not.toBe(preciseMotion.motion.easing);
+
+    const paperSurface = normalizeDesignTokens({ surfacePersonality: 'paper-flat' });
+    const contrastSurface = normalizeDesignTokens({ surfacePersonality: 'subtle-contrast' });
+    expect(paperSurface.surfaceDepth.shadowMedium).not.toBe(
+      contrastSurface.surfaceDepth.shadowMedium
+    );
+  });
 });
 
 describe('NodeRenderer & Responsive Strategy', () => {

@@ -19,6 +19,13 @@ metadata, mobile navigation limits, unknown screen grammars, and the no-recommen
 fallback. Screen planner results remain local engine evidence; deployed visual and
 browser validation is scheduled with the later Compose and RC gates.
 
+Step 11 records the tested Design DNA dimensions in `quality/STEP_11_EVIDENCE.md`.
+Only the happy path, numeric boundaries, desktop rendering, keyboard slider input,
+console errors and network errors have feature-specific PASS evidence so far.
+Mobile has screenshot-only DEGRADED evidence; all other untested matrix dimensions
+remain FAIL. Catalog categorical uniformity and metadata-only `contentTone` are
+explicitly tracked rather than treated as working effects.
+
 | Feature | Tier | Happy path | Empty state | Invalid input | Boundary input | Reload | Back/forward navigation | Persistence | Undo | Redo | Mobile | Tablet | Desktop | Keyboard | Screen reader semantics | Reduced motion | High contrast | Slow network | Network failure | Offline behavior | Refresh during operation | Concurrent interaction | Malformed data | Old stored data | Export/import round trip | Console errors | Network errors | Performance | Security |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Homepage | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
@@ -62,7 +69,7 @@ browser validation is scheduled with the later Compose and RC gates.
 | ProductModel contract | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | Screen planner | Core | PASS | PASS | PASS | PASS | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | PASS | PASS | PASS | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | PASS | PASS | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | FAIL | FAIL |
 | ScreenGraph | Core | PASS | PASS | PASS | PASS | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | PASS | PASS | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | FAIL | FAIL |
-| Design DNA | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
+| Design DNA | Core | PASS | FAIL | FAIL | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | DEGRADED | FAIL | PASS | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | PASS | FAIL | FAIL |
 | Direction generation | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | Compatibility engine | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | Resource scoring and synergy | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |

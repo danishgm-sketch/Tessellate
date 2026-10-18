@@ -24,7 +24,7 @@ Do not advance a checkbox merely because code exists. Record evidence and defect
 - [x] 08 Catalogue/search, including manually adjudicated real queries. Site v20 desktop/mobile verification passed the catalogue search and facet interactions, and resource-detail tabs passed the responsive and Axe checks. AUD-099 is closed; AUD-100 remains tracked for the isolated AI preview heading order. See `quality/STEP_08_EVIDENCE.md` and `audit/evidence/catalog-search-v20/`.
 - [x] 09 Product interpretation — 100 adjudicated briefs across all 18 archetypes, interpreted from descriptions only. The benchmark rose from 45/100 to 100/100 cases after fixing primary-signal weighting, secondary-tag noise, blueprint metric fallback, and fiscal keyword overreach. The exact employee-experience brief now validates against its specialized audience, objective, entities, workflows and screens. See `quality/STEP_09_EVIDENCE.md` and `quality/PRODUCT_INTERPRETATION_BENCHMARK_RESULTS.json`. The deployed review Site remains v20; browser verification is still required at the RC gate.
 - [x] 10 Screen planning — necessary, domain-correct, navigable mobile-aware screens. The 100-brief no-override planner benchmark, composition/build integration, all 744 unit/integration tests, production build, all 16 release gates, and the complete local Playwright command passed. Evidence: `quality/STEP_10_EVIDENCE.md`. Public review-site verification remains open for step 45.
-- [ ] 11 Design DNA — observable independent dimensions and interactions.
+- [x] 11 Design DNA — observable independent dimensions and interactions. Shared continuous slider mapping now preserves exact 0–100 scores in Compose/Workbench; token tests and the desktop Workbench browser journey verify rendered typography, motion and surface effects. Full tests (787), typecheck, lint, production build and `audit:all` passed; runtime evidence reports no browser errors or failed requests. Remaining catalog metadata/content-tone limits are documented for resource/showcase phases. See `quality/STEP_11_EVIDENCE.md` and `quality/evidence/design-dna/`. Public verification remains at Step 45.
 - [ ] 12 Directions — meaningful grammar, hierarchy, navigation and resource differences.
 - [ ] 13 Compatibility — fail closed on all hard constraints and missing candidates.
 - [ ] 14 Composition — manually reviewed quality benchmark, separate from integrity.
@@ -93,10 +93,10 @@ all owner-specified input/state/persistence/browser/accessibility/network/securi
 dimensions. Allowed results: PASS, FAIL, DEGRADED, NOT APPLICABLE, LAB ONLY.
 Unexecuted applicable checks are FAIL (missing evidence), never presumed PASS.
 
-Steps 05–09 are complete within their stated scope and evidence files. Step 10
-is the next permitted phase: screen planning must verify necessity, domain
-correctness, navigation and mobile awareness. Local interpreter tests do not
-replace the deployed-browser checks planned for the public RC gate.
+Steps 05–11 are complete within their stated local scopes and evidence files.
+Step 12 is next: direction generation must produce visibly different structures,
+navigation and resource selections for the same product. Local tests and browser
+evidence do not replace the deployed-site checks planned for the public RC gate.
 
 For P0/P1 keep issue, reproduction, screenshot/log, root cause, failing regression,
 fix, passing regression, deployment verification and regression protection.

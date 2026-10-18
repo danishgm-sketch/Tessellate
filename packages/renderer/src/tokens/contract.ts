@@ -114,6 +114,7 @@ export function tokensToCssVariables(tokens: SemanticTokenContract): Record<stri
     '--tess-font-mono': tokens.typography.monoFont,
     '--tess-heading-letter-spacing': tokens.typography.headingLetterSpacing,
     '--tess-body-line-height': String(tokens.typography.bodyLineHeight),
+    '--tess-type-scale-ratio': String(tokens.typography.scaleRatio),
 
     '--tess-space-md': `${Math.round(tokens.spacing.baseUnit*4*tokens.spacing.multiplier)}px`,
     '--tess-space-lg': `${Math.round(tokens.spacing.baseUnit*6*tokens.spacing.multiplier)}px`,
