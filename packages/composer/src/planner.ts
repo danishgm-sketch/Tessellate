@@ -74,6 +74,25 @@ function toSlug(value: string): string {
     .replace(/^-+|-+$/g, '');
 }
 
+function requiredRolesForScreen(
+  productModel: ProductModel,
+  screenName: string,
+  screenType: string,
+  grammarRoles: string[]
+): string[] {
+  const communityActivityStream =
+    screenType === 'dashboard' &&
+    normalizeName(screenName) === 'activity stream' &&
+    productModel.productArchetypes.some((archetype) => archetype.tag === 'consumer') &&
+    productModel.entities.some((entity) => entity.name === 'Community Update');
+
+  // A chronological community stream is the primary content, not a KPI
+  // dashboard. Requiring metric cards here creates invented summary data.
+  return communityActivityStream
+    ? grammarRoles.filter((role) => role !== 'metric-cards')
+    : grammarRoles;
+}
+
 function pluralizePath(value: string): string {
   const slug = toSlug(value);
   if (slug === 'person') return 'people';
@@ -296,7 +315,12 @@ export function planScreenGraph(productModel: ProductModel): ScreenPlanResult {
         suggestion.purpose,
         suggestion.screenType
       ),
-      requiredRoles: grammar.requiredRoles,
+      requiredRoles: requiredRolesForScreen(
+        productModel,
+        suggestion.name,
+        suggestion.screenType,
+        grammar.requiredRoles
+      ),
       optionalRoles: grammar.optionalRoles,
       deviceRelevance: [...targetDevices],
     };
@@ -338,7 +362,12 @@ export function planScreenGraph(productModel: ProductModel): ScreenPlanResult {
         productModel.primaryObjective,
         screenType
       ),
-      requiredRoles: grammar.requiredRoles,
+      requiredRoles: requiredRolesForScreen(
+        productModel,
+        constraint,
+        screenType,
+        grammar.requiredRoles
+      ),
       optionalRoles: grammar.optionalRoles,
       deviceRelevance: [...targetDevices],
     };

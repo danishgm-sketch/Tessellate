@@ -420,7 +420,7 @@
                   "title": "Today Agenda",
                   "subtitle": "Focused view of immediate tasks and scheduled events",
                   "badge": "EXAMPLE",
-                  "initials": "WS"
+                  "initials": "TW"
                 }
               },
               {
@@ -440,18 +440,18 @@
                   "cards": [
                     {
                       "label": "Task",
-                      "val": "—",
-                      "status": "Connect your data"
+                      "val": "Example",
+                      "status": "Illustrative only"
                     },
                     {
                       "label": "Note",
-                      "val": "—",
-                      "status": "Connect your data"
+                      "val": "Example",
+                      "status": "Illustrative only"
                     },
                     {
                       "label": "ProjectList",
-                      "val": "—",
-                      "status": "Connect your data"
+                      "val": "Example",
+                      "status": "Illustrative only"
                     }
                   ]
                 }
@@ -461,8 +461,8 @@
                 "nodeType": "section",
                 "semanticRole": "activity-feed",
                 "resourceRef": {
-                  "id": "res_blk_notification_centre",
-                  "slug": "notification-centre",
+                  "id": "res_blk_timeline",
+                  "slug": "timeline",
                   "version": "1.0.0"
                 },
                 "variant": "nocturne",
@@ -623,7 +623,7 @@
                   "title": "Notes & Canvas",
                   "subtitle": "Distraction-free Markdown editor",
                   "badge": "EXAMPLE",
-                  "initials": "WS"
+                  "initials": "TW"
                 }
               }
             ],
@@ -765,7 +765,7 @@
                   "title": "Calendar Schedule",
                   "subtitle": "Week and month grid view",
                   "badge": "EXAMPLE",
-                  "initials": "WS"
+                  "initials": "TW"
                 }
               }
             ],

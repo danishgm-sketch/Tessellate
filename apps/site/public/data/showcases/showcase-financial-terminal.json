@@ -417,7 +417,7 @@
                   "title": "Account Balances",
                   "subtitle": "Aggregate liquidity, spend trends, and alerts",
                   "badge": "EXAMPLE",
-                  "initials": "WS"
+                  "initials": "AW"
                 }
               },
               {
@@ -437,18 +437,18 @@
                   "cards": [
                     {
                       "label": "Account",
-                      "val": "—",
-                      "status": "Connect your data"
+                      "val": "Example",
+                      "status": "Illustrative only"
                     },
                     {
                       "label": "Transaction",
-                      "val": "—",
-                      "status": "Connect your data"
+                      "val": "Example",
+                      "status": "Illustrative only"
                     },
                     {
                       "label": "Transfer",
-                      "val": "—",
-                      "status": "Connect your data"
+                      "val": "Example",
+                      "status": "Illustrative only"
                     }
                   ]
                 }
@@ -458,8 +458,8 @@
                 "nodeType": "section",
                 "semanticRole": "activity-feed",
                 "resourceRef": {
-                  "id": "res_blk_notification_centre",
-                  "slug": "notification-centre",
+                  "id": "res_blk_timeline",
+                  "slug": "timeline",
                   "version": "1.0.0"
                 },
                 "variant": "nocturne",
@@ -551,7 +551,7 @@
                   "title": "Transaction History",
                   "subtitle": "Filterable audited chronological ledger",
                   "badge": "EXAMPLE",
-                  "initials": "WS"
+                  "initials": "AW"
                 }
               },
               {

@@ -613,7 +613,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Co",
+              "brand": "People & Teams",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -740,7 +740,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Co",
+              "brand": "People & Teams",
               "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
               "links": [
                 {
@@ -805,7 +805,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Co",
+              "brand": "People & Teams",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -856,7 +856,7 @@
                   "title": "Team Overview",
                   "subtitle": "Refined employee summary and upcoming team actions",
                   "badge": "EXAMPLE",
-                  "initials": "PC"
+                  "initials": "PT"
                 }
               },
               {
@@ -876,57 +876,24 @@
                   "cards": [
                     {
                       "label": "People",
-                      "val": "—",
-                      "status": "Connect your roster"
+                      "val": "Example",
+                      "status": "Illustrative only"
                     },
                     {
                       "label": "Onboarding",
-                      "val": "12",
-                      "status": "Sample journeys"
+                      "val": "Example",
+                      "status": "Illustrative only"
                     },
                     {
                       "label": "Team pulse",
-                      "val": "Positive",
-                      "status": "Illustrative feedback"
+                      "val": "Example",
+                      "status": "Illustrative only"
                     }
                   ]
                 }
               },
               {
-                "id": "node-screen-overview-activity-feed-4",
-                "nodeType": "section",
-                "semanticRole": "activity-feed",
-                "resourceRef": {
-                  "id": "res_blk_notification_centre",
-                  "slug": "notification-centre",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "People updates",
-                  "events": [
-                    {
-                      "time": "Today",
-                      "title": "Welcome to the team",
-                      "desc": "Meet your onboarding buddy and introduce yourself to colleagues."
-                    },
-                    {
-                      "time": "This week",
-                      "title": "Team check-in",
-                      "desc": "Share how your first week is going and ask for support."
-                    },
-                    {
-                      "time": "Next milestone",
-                      "title": "Policies and preferences",
-                      "desc": "Review organisational guidance and choose your notification preferences."
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-overview-data-table-5",
+                "id": "node-screen-overview-data-table-4",
                 "nodeType": "section",
                 "semanticRole": "data-table",
                 "resourceRef": {
@@ -969,6 +936,39 @@
                     "status": "Status"
                   }
                 }
+              },
+              {
+                "id": "node-screen-overview-activity-feed-5",
+                "nodeType": "section",
+                "semanticRole": "activity-feed",
+                "resourceRef": {
+                  "id": "res_blk_timeline",
+                  "slug": "timeline",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "People updates",
+                  "events": [
+                    {
+                      "time": "Today",
+                      "title": "Welcome to the team",
+                      "desc": "Meet your onboarding buddy and introduce yourself to colleagues."
+                    },
+                    {
+                      "time": "This week",
+                      "title": "Team check-in",
+                      "desc": "Share how your first week is going and ask for support."
+                    },
+                    {
+                      "time": "Next milestone",
+                      "title": "Policies and preferences",
+                      "desc": "Review organisational guidance and choose your notification preferences."
+                    }
+                  ]
+                }
               }
             ],
             "slots": {},
@@ -1006,7 +1006,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Co",
+              "brand": "People & Teams",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -1057,7 +1057,7 @@
                   "title": "People Directory",
                   "subtitle": "Find colleagues and their teams",
                   "badge": "EXAMPLE",
-                  "initials": "PC"
+                  "initials": "PT"
                 }
               },
               {
@@ -1173,7 +1173,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Co",
+              "brand": "People & Teams",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -1224,7 +1224,7 @@
                   "title": "Teams",
                   "subtitle": "Explore team membership and shared priorities",
                   "badge": "EXAMPLE",
-                  "initials": "PC"
+                  "initials": "PT"
                 }
               },
               {
@@ -1340,7 +1340,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Co",
+              "brand": "People & Teams",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -1391,7 +1391,7 @@
                   "title": "Engagement",
                   "subtitle": "Review employee feedback and recognition",
                   "badge": "EXAMPLE",
-                  "initials": "PC"
+                  "initials": "PT"
                 }
               },
               {
@@ -1411,57 +1411,24 @@
                   "cards": [
                     {
                       "label": "People",
-                      "val": "—",
-                      "status": "Connect your roster"
+                      "val": "Example",
+                      "status": "Illustrative only"
                     },
                     {
                       "label": "Onboarding",
-                      "val": "12",
-                      "status": "Sample journeys"
+                      "val": "Example",
+                      "status": "Illustrative only"
                     },
                     {
                       "label": "Team pulse",
-                      "val": "Positive",
-                      "status": "Illustrative feedback"
+                      "val": "Example",
+                      "status": "Illustrative only"
                     }
                   ]
                 }
               },
               {
-                "id": "node-screen-engagement-activity-feed-4",
-                "nodeType": "section",
-                "semanticRole": "activity-feed",
-                "resourceRef": {
-                  "id": "res_blk_notification_centre",
-                  "slug": "notification-centre",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "People updates",
-                  "events": [
-                    {
-                      "time": "Today",
-                      "title": "Welcome to the team",
-                      "desc": "Meet your onboarding buddy and introduce yourself to colleagues."
-                    },
-                    {
-                      "time": "This week",
-                      "title": "Team check-in",
-                      "desc": "Share how your first week is going and ask for support."
-                    },
-                    {
-                      "time": "Next milestone",
-                      "title": "Policies and preferences",
-                      "desc": "Review organisational guidance and choose your notification preferences."
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-engagement-data-table-5",
+                "id": "node-screen-engagement-data-table-4",
                 "nodeType": "section",
                 "semanticRole": "data-table",
                 "resourceRef": {
@@ -1504,6 +1471,39 @@
                     "status": "Status"
                   }
                 }
+              },
+              {
+                "id": "node-screen-engagement-activity-feed-5",
+                "nodeType": "section",
+                "semanticRole": "activity-feed",
+                "resourceRef": {
+                  "id": "res_blk_timeline",
+                  "slug": "timeline",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "People updates",
+                  "events": [
+                    {
+                      "time": "Today",
+                      "title": "Welcome to the team",
+                      "desc": "Meet your onboarding buddy and introduce yourself to colleagues."
+                    },
+                    {
+                      "time": "This week",
+                      "title": "Team check-in",
+                      "desc": "Share how your first week is going and ask for support."
+                    },
+                    {
+                      "time": "Next milestone",
+                      "title": "Policies and preferences",
+                      "desc": "Review organisational guidance and choose your notification preferences."
+                    }
+                  ]
+                }
               }
             ],
             "slots": {},
@@ -1541,7 +1541,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Co",
+              "brand": "People & Teams",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -1708,7 +1708,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Co",
+              "brand": "People & Teams",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -1756,7 +1756,7 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "brand": "People & Co",
+                  "brand": "People & Teams",
                   "links": [
                     {
                       "label": "Marketing Home",

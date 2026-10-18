@@ -2,7 +2,16 @@ import type { ProjectNode, PartialDesignDNA } from '@tessellate/schemas';
 
 /** Shared by the manifest renderer and standalone exporter. No hosting dependency. */
 export function nodeLayoutClass(node: ProjectNode): string {
-  return `tess-node tess-layout-${node.semanticRole.replace(/[^a-z0-9-]/gi,'-')}`;
+  const className = `tess-layout-${node.semanticRole.replace(/[^a-z0-9-]/gi, '-')}`;
+  const activityOnlyWorkspace =
+    node.semanticRole === 'workspace-multi-pane' &&
+    node.children.some((child) => child.semanticRole === 'activity-feed') &&
+    !node.children.some((child) => child.semanticRole === 'data-table');
+
+  const activityOnlyClass = activityOnlyWorkspace
+    ? ' tess-layout-workspace-multi-pane-activity-only'
+    : '';
+  return `tess-node ${className}${activityOnlyClass}`;
 }
 export function nodeRuntimeVariant(node: ProjectNode, dna: PartialDesignDNA,systemMode?:'light'|'dark'): string | undefined {
   if(dna.visualMode==='adaptive')return systemMode==='dark'?'nocturne':node.variant==='nocturne'?'quiet':node.variant;
@@ -29,6 +38,8 @@ export const MANIFEST_LAYOUT_CSS = `
  .tess-layout-workspace-multi-pane>.tess-layout-overview-header,.tess-layout-workspace-multi-pane>.tess-layout-metric-cards{grid-column:1/-1}
  .tess-layout-workspace-multi-pane>.tess-layout-data-table{grid-column:1}
  .tess-layout-workspace-multi-pane>.tess-layout-activity-feed{grid-column:2}
+ .tess-layout-workspace-multi-pane-activity-only{grid-template-columns:minmax(0,1fr)}
+ .tess-layout-workspace-multi-pane-activity-only>.tess-layout-activity-feed{grid-column:1/-1}
  .tess-layout-workspace-multi-pane>.tess-layout-compound-workspace-pane,.tess-layout-workspace-multi-pane>.tess-layout-split-workspace-columns{grid-column:1/-1}
  .tess-layout-compound-workspace-pane{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
  .tess-layout-sidebar-shell>.tess-layout-navigation nav,.tess-layout-workspace-dock-shell>.tess-layout-navigation nav{flex-direction:column}
