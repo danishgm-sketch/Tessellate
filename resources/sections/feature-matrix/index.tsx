@@ -32,7 +32,12 @@ export function FeatureMatrix({ variant = 'quiet', title='Example capability mat
       <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold tracking-tight text-center mb-12">{title}</h2>
 
-        <div className={`overflow-x-auto rounded-[var(--tess-radius-xl,8px)] border ${tableBorder}`}>
+        <div
+          role="region"
+          aria-label={`${title} comparison table`}
+          tabIndex={0}
+          className={`overflow-x-auto rounded-[var(--tess-radius-xl,8px)] border focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 ${tableBorder}`}
+        >
           <table className="w-full text-left text-xs @sm:text-sm">
             <thead className="border-b bg-neutral-100/60 dark:bg-neutral-900/60 text-xs uppercase tracking-wider font-mono">
               <tr>

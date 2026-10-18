@@ -55,7 +55,11 @@ export function ErrorState({
       </div>
 
       {codeSnippet && (
-        <pre className="p-3 rounded-[var(--tess-radius-lg,8px)] bg-neutral-950 text-neutral-300 text-xs font-mono overflow-x-auto">
+        <pre
+          tabIndex={0}
+          aria-label="Error code sample"
+          className="p-3 rounded-[var(--tess-radius-lg,8px)] bg-neutral-950 text-neutral-300 text-xs font-mono overflow-x-auto focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
+        >
           {codeSnippet}
         </pre>
       )}

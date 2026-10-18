@@ -1,5 +1,6 @@
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
@@ -47,7 +48,22 @@ test('Gold resources keep expressive variants readable on dark product canvases'
 
   const outputPath = path.resolve(process.cwd(), 'test-results/resource-dark-expressive-contrast.json');
   mkdirSync(path.dirname(outputPath), { recursive: true });
-  writeFileSync(outputPath, `${JSON.stringify({ resourceCount: goldResources.length, findings }, null, 2)}\n`);
+  writeFileSync(
+    outputPath,
+    `${JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        sourceSha:
+          process.env.AUDIT_SOURCE_SHA ??
+          execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(),
+        viewport: page.viewportSize(),
+        resourceCount: goldResources.length,
+        findings,
+      },
+      null,
+      2,
+    )}\n`,
+  );
 
   expect(goldResources).toHaveLength(40);
   const failures = findings.map(({ slug, id, impact }) => `${slug}: ${id} (${impact ?? 'unknown'})`);
