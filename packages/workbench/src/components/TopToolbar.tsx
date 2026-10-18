@@ -14,7 +14,7 @@ import {
   RefreshCw,
   ChevronDown,
 } from 'lucide-react';
-import { generateSourceTree, createZipArchive } from '@tessellate/exporter';
+import { ExportValidationError, generateSourceTree, createZipArchive } from '@tessellate/exporter';
 import { CheckpointsMenu } from './checkpoints/CheckpointsMenu.js';
 
 export function TopToolbar() {
@@ -84,8 +84,10 @@ export function TopToolbar() {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
     } catch (err) {
-      console.error('Failed to generate standalone ZIP project:', err);
-      alert(`Export failed: ${(err as Error).message}`);
+      if (!(err instanceof ExportValidationError)) {
+        console.error('Failed to generate standalone ZIP project:', err);
+      }
+      alert(`Export failed: ${err instanceof Error ? err.message : String(err)}`);
     }
   };
 

@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 86 findings (17 High, 68 Medium, 1 Low): 13 closed after deployed verification, 71 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, and AUD-080 open.
+**Current disposition:** 87 findings (17 High, 69 Medium, 1 Low): 14 closed after deployed verification, 71 fixed and awaiting issue-specific deployed checks, AUD-085 verified locally in the separate Vite preview runtime, AUD-087 fixed and awaiting Site v16 verification, and AUD-080 open.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -840,6 +840,13 @@ with zero findings. That harness race is not counted as a product defect.
 - Affected code: `apps/preview/src/style.css`, `tests/e2e/preview-reduced-motion.spec.ts`, and `tests/e2e/preview-app.playwright.config.ts`.
 - Remediation: register the existing resource tree with Tailwind and assert the normal/reduced/restored motion durations through the browser. The regression failed before the fix with 0s and now passes with 0.3s → 0s → 0.3s. This Vite runtime is separate from the public Sites Astro app and has been verified locally. Fix commit: `5ef3c2bfb65764b8102f7e3ad8e8f251509a2c3f`.
 
+### AUD-087 — Handled export validation failure was logged as a browser console error
+
+- Evidence: Site v15's [renderer parity report](evidence/deployed-v15-export-fix/deployed-renderer-parity-audit.json) records the expected unsupported-variant dialog, no download, no uncaught exception, no failed request and no HTTP error, but `zeroConsoleErrors` is false. The [Workbench capture](evidence/deployed-v15-export-fix/deployed-unsupported-variant-1440x900.png) shows the preserved diagnostic before export.
+- Reproduction: open a schema-valid Workbench manifest with an unsupported Button variant, choose **Export → Download Standalone React Project**, then inspect the browser console after the validation dialog appears.
+- Root cause: `TopToolbar` logged every caught ZIP export failure through `console.error`; the exporter represented expected project validation failures as generic `Error` values.
+- Affected code: `packages/exporter/src/source-tree.ts`, `packages/workbench/src/components/TopToolbar.tsx`, and `tests/e2e/unsupported-resource-variant-regression.spec.ts`.
+- Remediation: represent export validation failures with `ExportValidationError`, suppress error logging for that expected user-correctable case, retain logging for unexpected faults, and cover the visible dialog, rejected download, and zero-console-error result in Playwright. Local browser regression passes; awaiting Site v16 verification.
 ## LOW
 
 ### AUD-079 — Published Site favicon returned 404

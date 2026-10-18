@@ -1812,7 +1812,7 @@
       ],
       "remediation": "Keep canonical variant-ID maps for renderer resources and declare the Button's acceptedVariants on both baseline exporter resolver maps. Reject unsupported variants with an actionable error before generating either Vite or Next source. Unit tests reproduce the visible-export defect and pass after the fix; deployed verification remains pending.",
       "fixCommit": "ca3454100b3e55b2987201212bd1e4c26bf0b727",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "deployedVerification": {
         "siteVersion": 14,
         "canonicalGitCommit": "32803eb15d72b4020fe6aec90e9b587e2f7812fb",
@@ -1824,6 +1824,14 @@
         "archive": "audit/evidence/deployed-v14-flagship/deployed-invalid-variant-export.zip",
         "archiveSha256": "a81bb71b2f77c1deb04264275dc7031f233921b7f37ee43312e9c9b9830786b2",
         "fixCommit": null
+      },
+      "latestDeployedVerification": {
+        "siteVersion": 15,
+        "canonicalGitCommit": "8222a16defce36cc5b7ee3eae581e53bfc0f6b23",
+        "sitesSourceCommit": "b38d87b369e77a2d70e2a0ec4f697f345a1bf0dc",
+        "result": "PASS: deployed Workbench preserved the unsupported variant diagnostic, rejected standalone ZIP export with the supported variant list, and produced no download.",
+        "report": "audit/evidence/deployed-v15-export-fix/deployed-renderer-parity-audit.json",
+        "screenshot": "audit/evidence/deployed-v15-export-fix/deployed-unsupported-variant-1440x900.png"
       }
     },
     {
@@ -2373,6 +2381,47 @@
           "audit/evidence/step-07/deployed-v14-after-fix/fade-up-reduced-motion-replay-80ms-1440x900.png",
           "audit/evidence/step-07/deployed-v14-after-fix/fade-up-resource-390x844.png"
         ]
+      }
+    },
+    {
+      "id": "AUD-087",
+      "severity": "medium",
+      "route": "/workbench > Export",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Handled export validation failure was logged as a browser console error",
+      "expected": "An unsupported resource variant should be rejected with a visible explanation and no browser console error.",
+      "actual": "Version 15 displayed the correct validation dialog and produced no ZIP, but TopToolbar logged the expected ExportValidationError with console.error.",
+      "reproduction": [
+        "Open a schema-valid Workbench manifest whose Button variant is deliberately unsupported.",
+        "Open Export and choose Download Standalone React Project.",
+        "Observe the validation dialog and check the browser console."
+      ],
+      "console": [
+        {
+          "level": "error",
+          "text": "Failed to generate standalone ZIP project: Error: Unsupported variant \"deliberately-unsupported\" for resource \"button\". Supported variants: quiet, expressive, nocturne.\n    at Re (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18126:1014)\n    at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18130:21\n    at Array.map (<anonymous>)\n    at Re (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18130:14)\n    at Hr (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18122:9)\n    at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18030:917\n    at Array.forEach (<anonymous>)\n    at Ua (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18030:716)\n    at Ja (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18212:130)\n    at M (https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js:18339:12883)",
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/workbench.Cg56BaYo.js",
+          "viewport": "1440x900"
+        }
+      ],
+      "network": [],
+      "screenshot": "audit/evidence/deployed-v15-export-fix/deployed-unsupported-variant-1440x900.png",
+      "rootCause": "TopToolbar treated every caught ZIP export failure as an unexpected runtime fault. Export validation errors were ordinary user-correctable input failures but shared the generic Error type and were always logged.",
+      "affectedFiles": [
+        "packages/exporter/src/source-tree.ts",
+        "packages/workbench/src/components/TopToolbar.tsx",
+        "tests/e2e/unsupported-resource-variant-regression.spec.ts"
+      ],
+      "remediation": "Introduce a typed ExportValidationError for invalid or unresolved project resources. Keep console.error for unexpected failures only, show the validation message, and assert the browser-visible export rejection, no download, and zero console errors in Playwright.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "deployedVerification": {
+        "siteVersion": 15,
+        "canonicalGitCommit": "8222a16defce36cc5b7ee3eae581e53bfc0f6b23",
+        "result": "FAIL for the zero-console-errors acceptance condition: the export was rejected and no file was downloaded, but console.error logged the expected validation error.",
+        "report": "audit/evidence/deployed-v15-export-fix/deployed-renderer-parity-audit.json",
+        "screenshot": "audit/evidence/deployed-v15-export-fix/deployed-unsupported-variant-1440x900.png"
       }
     }
   ],

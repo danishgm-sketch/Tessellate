@@ -16,6 +16,13 @@ export interface ResolvedResource {
   dependencies?: string[];
 }
 
+export class ExportValidationError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = 'ExportValidationError';
+  }
+}
+
 export type ResourceResolver = (slug: string) => ResolvedResource | null;
 let customDiskResolver: ResourceResolver | null = null;
 export function setDiskResourceResolver(resolver: ResourceResolver | null) {
@@ -44,7 +51,7 @@ function resolveResource(slug: string, semanticRole: string, nodeId: string): Re
     }
   }
 
-  throw new Error(
+  throw new ExportValidationError(
     `Unresolved resource in export: "${slug}" (referenced by node "${nodeId}", role "${semanticRole}"). In production exports, all resources must resolve to their actual implementations rather than synthetic fallbacks.`
   );
 }
@@ -495,7 +502,7 @@ function renderNodeToJsx(
     const acceptedProps = resolved.acceptedProps;
     const runtimeVariant = nodeRuntimeVariant(node,dna);
     if (runtimeVariant && resolved.acceptedVariants && !resolved.acceptedVariants.includes(runtimeVariant)) {
-      throw new Error(`Unsupported variant "${runtimeVariant}" for resource "${node.resourceRef.slug}". Supported variants: ${resolved.acceptedVariants.join(', ') || 'none'}.`);
+      throw new ExportValidationError(`Unsupported variant "${runtimeVariant}" for resource "${node.resourceRef.slug}". Supported variants: ${resolved.acceptedVariants.join(', ') || 'none'}.`);
     }
 
     const attributes: string[] = [];
