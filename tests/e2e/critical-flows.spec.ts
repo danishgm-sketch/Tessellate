@@ -25,7 +25,7 @@ test.describe('Critical Anonymous User Flows', () => {
     // Header and filter elements
     await expect(page.locator('h1')).toContainText('Explore Resource Library');
 
-    await expect(page.getByText('Showing 50 resources',{exact:true})).toBeVisible();
+    await expect(page.getByText('Showing 50 of 324 resources',{exact:true})).toBeVisible();
     await page.getByLabel('Search catalogue').fill('advanced data table');
     await expect(page.getByRole('link',{name:'Advanced Data Table',exact:true})).toBeVisible();
     await expect(page).toHaveURL(/q=advanced/);
