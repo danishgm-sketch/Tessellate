@@ -256,6 +256,7 @@ export function AppHeader({ title = 'Application', navItems = [] }: AppHeaderPro
       fileName: 'Button.tsx',
       code: files['src/components/Button.tsx'],
       acceptedProps: new Set(['variant', 'label', 'className', 'children', 'disabled', 'onClick', 'type']),
+      acceptedVariants: ['quiet', 'expressive', 'nocturne'],
     },
     'metric-card': {
       slug: 'metric-card',
@@ -806,6 +807,7 @@ export default function RootLayout({
       fileName: 'Button.tsx',
       code: files['components/Button.tsx'],
       acceptedProps: new Set(['variant', 'label', 'className', 'children', 'disabled', 'onClick', 'type']),
+      acceptedVariants: ['quiet', 'expressive', 'nocturne'],
     },
     'metric-card': {
       slug: 'metric-card',

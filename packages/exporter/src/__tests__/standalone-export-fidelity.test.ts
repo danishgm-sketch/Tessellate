@@ -275,6 +275,24 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     );
   });
 
+  it('rejects unsupported variants for the built-in Button resolver in Vite and Next exports', () => {
+    const invalidButtonProject: ProjectManifest = structuredClone(testProject);
+    invalidButtonProject.screens[0]!.rootNode.children.push({
+      id: 'node-invalid-button-variant',
+      nodeType: 'component',
+      semanticRole: 'action-button',
+      resourceRef: { id: 'res_primitive_button_01', slug: 'button', version: '1.0.0' },
+      variant: 'unsupported-variant',
+      props: { children: 'Unsupported variant action' },
+      slots: {},
+      children: [],
+    });
+
+    const expectedError = /Unsupported variant "unsupported-variant" for resource "button"\. Supported variants: quiet, expressive, nocturne\./;
+    expect(() => generateSourceTree(invalidButtonProject)).toThrowError(expectedError);
+    expect(() => generateSourceTree(invalidButtonProject, { target: 'nextjs' })).toThrowError(expectedError);
+  });
+
   it('generates every Gold resource variant from its canonical manifest without fallback nodes', () => {
     const project = appendGoldResourceVariantParityNodes(testProject);
     const sourceTree = generateSourceTree(project);
