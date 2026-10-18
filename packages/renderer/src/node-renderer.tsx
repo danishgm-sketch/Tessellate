@@ -34,6 +34,14 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
     }
   };
 
+  const handleDisabledControlPointerDownCapture = (e: React.PointerEvent) => {
+    if (context?.onNodeSelect && e.target instanceof Element && e.target.closest(':disabled')) {
+      e.preventDefault();
+      e.stopPropagation();
+      context.onNodeSelect(node.id);
+    }
+  };
+
   const handleMouseEnter = (e: React.MouseEvent) => {
     if (context?.onNodeHover) {
       e.stopPropagation();
@@ -192,6 +200,7 @@ export function NodeRenderer({ node, context }: NodeRendererProps): React.ReactE
         data-resource-variant={variant}
         data-node-type={node.nodeType}
         data-semantic-role={node.semanticRole}
+        onPointerDownCapture={handleDisabledControlPointerDownCapture}
         onClick={handleSelect}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
