@@ -72,3 +72,20 @@ test('Button preview still reports an activated example action', async ({ page }
   await preview.getByRole('button', { name: 'Click me' }).click();
   await expect(preview.getByRole('status')).toHaveText('Example action activated.');
 });
+
+test('Reduced Motion toggle disables CSS transitions in the live resource preview', async ({ page }) => {
+  await page.goto('/resources/fade-up-reveal/', { waitUntil: 'domcontentloaded' });
+  const preview = page.frameLocator('iframe[title$=" live preview"]');
+  const card = preview.locator('div.w-full.p-6');
+
+  await expect(card).toHaveCount(1);
+  await expect.poll(() => card.evaluate((element) => getComputedStyle(element).transitionDuration)).toBe('0.3s');
+
+  await page.getByTitle('Reduced Motion: OFF').click();
+  await expect(page.getByTitle('Reduced Motion: ON')).toBeVisible();
+  await expect.poll(() => card.evaluate((element) => getComputedStyle(element).transitionDuration)).toBe('0s');
+
+  await page.getByTitle('Reduced Motion: ON').click();
+  await expect(page.getByTitle('Reduced Motion: OFF')).toBeVisible();
+  await expect.poll(() => card.evaluate((element) => getComputedStyle(element).transitionDuration)).toBe('0.3s');
+});

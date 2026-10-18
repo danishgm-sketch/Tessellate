@@ -77,6 +77,14 @@ export default function PreviewHost() {
   }, [theme]);
 
   useEffect(() => {
+    if (reducedMotion) {
+      document.documentElement.dataset.tessellateReducedMotion = 'true';
+    } else {
+      delete document.documentElement.dataset.tessellateReducedMotion;
+    }
+  }, [reducedMotion]);
+
+  useEffect(() => {
     function handleMessage(event: MessageEvent) {
       if (event.source!==window.parent || !document.referrer || event.origin!==new URL(document.referrer).origin || !isParentToPreviewMessage(event.data)) {
         return;

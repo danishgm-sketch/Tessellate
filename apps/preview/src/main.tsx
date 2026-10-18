@@ -57,6 +57,14 @@ export function PreviewApp() {
     }
   }, [theme]);
 
+  useEffect(() => {
+    if (reducedMotion) {
+      document.documentElement.dataset.tessellateReducedMotion = 'true';
+    } else {
+      delete document.documentElement.dataset.tessellateReducedMotion;
+    }
+  }, [reducedMotion]);
+
   // Handle postMessage protocol from parent shell
   useEffect(() => {
     function handleMessage(event: MessageEvent) {
