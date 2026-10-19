@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 155 findings (37 High, 117 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 35 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–155 in Compose/resource/Workbench previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–142; Step 15 added AUD-143–147; Step 17 added AUD-148–149; Step 18 added AUD-150–151; Step 19 added AUD-152–155 for screen route integrity, page route validation, reachable layer mutations, and mutation-tier accuracy. The composition, data-truth, resource-accessibility, and Workbench findings are fixed locally, with deployed review verification still pending. AUD-134–137 record ecommerce, digital music, flight-management, and film-streaming briefs that inherited unrelated product workflows; AUD-138 records flight-oriented copy in destination search; AUD-139 records the missing Product Catalog to Product Detail path; AUD-140 records dark-canvas contrast failures in expressive Gold resource variants; AUD-141 records keyboard-inaccessible scrollable Gold resource content; AUD-142 records mobile clipping in the three-pane shell; AUD-148 records disabled-control canvas selection failure; AUD-149 records resource-kind flattening in composition; AUD-150 records incorrect Project Scope DNA labels; AUD-151 records unclear lock snapshot behavior. The full current-source visible benchmark covered 100 briefs and 300 directions at desktop and mobile sizes; reports record zero unresolved diagnostics, console errors, warnings, uncaught exceptions, failed requests, or HTTP errors. Issue-specific before/after captures and red/green regressions are recorded. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See quality/STEP_08_EVIDENCE.md, quality/STEP_14_EVIDENCE.md, quality/STEP_15_EVIDENCE.md, quality/STEP_17_EVIDENCE.md, quality/STEP_18_EVIDENCE.md, and evidence/catalog-search-v20/.
+**Current disposition:** 156 findings (37 High, 118 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 36 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–156 in Compose/resource/Workbench previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–142; Step 15 added AUD-143–147; Step 17 added AUD-148–149; Step 18 added AUD-150–151; Step 19 added AUD-152–155 for screen route integrity, page route validation, reachable layer mutations, and mutation-tier accuracy; Step 20 added AUD-156 for mobile structural-action feedback hidden outside the Command tab. The composition, data-truth, resource-accessibility, and Workbench findings are fixed locally, with deployed review verification still pending. AUD-134–137 record ecommerce, digital music, flight-management, and film-streaming briefs that inherited unrelated product workflows; AUD-138 records flight-oriented copy in destination search; AUD-139 records the missing Product Catalog to Product Detail path; AUD-140 records dark-canvas contrast failures in expressive Gold resource variants; AUD-141 records keyboard-inaccessible scrollable Gold resource content; AUD-142 records mobile clipping in the three-pane shell; AUD-148 records disabled-control canvas selection failure; AUD-149 records resource-kind flattening in composition; AUD-150 records incorrect Project Scope DNA labels; AUD-151 records unclear lock snapshot behavior. The full current-source visible benchmark covered 100 briefs and 300 directions at desktop and mobile sizes; reports record zero unresolved diagnostics, console errors, warnings, uncaught exceptions, failed requests, or HTTP errors. Issue-specific before/after captures and red/green regressions are recorded. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See quality/STEP_08_EVIDENCE.md, quality/STEP_14_EVIDENCE.md, quality/STEP_15_EVIDENCE.md, quality/STEP_17_EVIDENCE.md, quality/STEP_18_EVIDENCE.md, quality/STEP_20_EVIDENCE.md, and evidence/catalog-search-v20/.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -1638,6 +1638,34 @@ with zero findings. That harness race is not counted as a product defect.
 - **Remediation:** Keep unspecified verbs out of the production mutation promise until their behavior and safety criteria are defined; mark them Lab and keep unsupported requests from silently mutating the manifest.
 - **Verification:** Inventory, matrix and Workbench contract now describe implemented actions and documented Lab boundaries. This is a documentation/capability-tier correction; public review verification remains pending for Step 45.
 - **Disposition:** Corrected and verified locally.
+### AUD-156 — Mobile Workbench hid structural-action results outside the Command tab
+
+- **Severity:** Medium.
+- **Evidence:** The before captures at
+  `quality/evidence/step-20/before/recompose-feedback-hidden-mobile-390.png` and
+  `quality/evidence/step-20/before/surprise-feedback-hidden-mobile-390.png` show
+  the 390 × 844 Pages view after each action with no visible success message.
+  Their runtime reports record `mutationApplied: true`, `feedbackVisible: false`,
+  and no console errors, uncaught exceptions, failed requests, or HTTP errors.
+  The after reports and screenshots show each action message below the toolbar.
+- **Reproduction:** At 390 × 844, open the Playful HR showcase in Workbench,
+  select Pages, lock the Team Overview KPI subtree, then run Recompose or
+  Surprise Me. Export the manifest to confirm the operation occurred and inspect
+  the active tab for a status announcement.
+- **Root cause:** `MobileWorkbench` mounted `CommandBar` only on the Command tab;
+  the shared `lastActionMessage` was consumed only by that panel.
+- **Affected code:** `packages/workbench/src/components/mobile/MobileWorkbench.tsx`
+  and `tests/e2e/workbench-structural-hardening.spec.ts`.
+- **Remediation:** Render the shared action message as a polite live status below
+  the toolbar on all other mobile tabs. The regression checks message content,
+  viewport bounds, exact lock preservation, catalogue resolution, and undo/redo.
+- **Verification:** All four desktop/mobile browser cases pass at 1440 × 900 and
+  390 × 844. They report 324 resolvable catalogue resources, no duplicate node
+  IDs, no console/runtime/network errors, and exact undo/redo restoration.
+  Structural unit tests cover Recompose divergence 20, 50, 70 and 95; Surprise Me
+  covers 20, 60 and 90. Public review verification remains pending for Step 45.
+- **Disposition:** Fixed and verified locally.
+
 ## LOW
 
 ### AUD-079 — Published Site favicon returned 404

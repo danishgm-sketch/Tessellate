@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45. Step 19 added AUD-152–155 from local visible Workbench checks. Their fixes are verified locally; public review deployment verification remains pending in Step 45.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45. Step 19 added AUD-152–155 from local visible Workbench checks. Step 20 added AUD-156 after mobile UI testing found hidden structural-action feedback; the fix is verified locally, with public review deployment verification pending in Step 45.",
   "entries": [
     {
       "id": "AUD-001",
@@ -5055,7 +5055,52 @@
         "after": "The inventory and matrix mark the unspecified verbs Lab, and the Workbench contract lists only implemented controls and their limits."
       },
       "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-156",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "390x844",
+      "category": "state",
+      "title": "Mobile Workbench hid structural-action results outside the Command tab",
+      "expected": "After Recompose or Surprise Me, the Workbench should announce the completed action and its outcome on the current mobile tab.",
+      "actual": "The manifest changed and locked content remained intact, but the success explanation was rendered only inside CommandBar, which is not mounted while Pages or other mobile tabs are active.",
+      "reproduction": [
+        "At 390x844, open the Playful HR showcase in Workbench and select Pages.",
+        "Lock the Team Overview KPI subtree, then click Recompose.",
+        "Export the manifest and confirm the workspace hierarchy changed while the locked KPI subtree remained identical; observe that no role=status feedback is visible.",
+        "Repeat with Surprise Me and observe that the manifest changes but the explanation is absent from the active tab."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-20/before/recompose-feedback-hidden-mobile-390.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-20/before/recompose-feedback-hidden-mobile-390.png",
+        "quality/evidence/step-20/before/surprise-feedback-hidden-mobile-390.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-20/after/recompose-feedback-visible-mobile-390.png",
+        "quality/evidence/step-20/after/surprise-feedback-visible-mobile-390.png"
+      ],
+      "rootCause": "MobileWorkbench mounted CommandBar only on the Command tab, while the store's lastActionMessage was consumed only by CommandBar. Other active tabs therefore hid feedback for successful top-toolbar mutations.",
+      "affectedFiles": [
+        "packages/workbench/src/components/mobile/MobileWorkbench.tsx",
+        "tests/e2e/workbench-structural-hardening.spec.ts"
+      ],
+      "remediation": "Subscribe to the shared lastActionMessage in MobileWorkbench and render it as a polite status region below the toolbar on non-Command tabs. Keep the detailed message in CommandBar when that tab is active. Add desktop/mobile browser regressions for both structural actions and ensure the live status fits the viewport.",
+      "fixCommit": "a666a848d995a404a6f434ec4828f0cdd36ca154",
+      "runtimeReports": [
+        "quality/evidence/step-20/before/recompose-feedback-hidden-mobile-390.json",
+        "quality/evidence/step-20/before/surprise-feedback-hidden-mobile-390.json",
+        "quality/evidence/step-20/after/radical-recompose-mobile-390.json",
+        "quality/evidence/step-20/after/surprise-me-mobile-390.json"
+      ],
+      "regression": {
+        "before": "Both mobile browser tests observed mutationApplied=true and feedbackVisible=false, then failed because no role=status element existed on the active Pages tab.",
+        "after": "Desktop and 390x844 browser tests confirm the status region announces Recompose and Surprise Me, remains within viewport bounds, and the resulting manifests preserve locked subtrees, resolve all catalogue resources, and undo/redo exactly."
+      },
+      "status": "fixed-local-verified"
     }
   ],
-  "generatedAt": "2026-10-18T23:46:10.000Z"
+  "generatedAt": "2026-10-19T01:19:00.000Z"
 }

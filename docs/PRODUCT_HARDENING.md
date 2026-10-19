@@ -33,7 +33,7 @@ Do not advance a checkbox merely because code exists. Record evidence and defect
 - [x] 17 Workbench fundamentals — selection, canvas, panels, keyboard, mobile. The visible Direction C journey now selects project/root, section, component and element nodes, exercises all five modes and panels, and verifies desktop/mobile navigation. It exposed and fixed resource-kind flattening and canvas selection on disabled controls; both red-to-green regressions and runtime captures are in `quality/STEP_17_EVIDENCE.md` and `quality/evidence/step-17/`. Public review verification remains at Step 45.
 - [x] 18 Intent inheritance — inherited/overridden/locked/reset at available visible Workbench levels. Project-scope DNA now says Project; locks disclose snapshot persistence; reset resumes ancestor inheritance. Desktop/mobile browser evidence and local runtime reports: `quality/STEP_18_EVIDENCE.md` and `quality/evidence/step-18/`. Public review verification remains at Step 45.
 - [x] 19 Individual mutations — correct changes, unique IDs, undo and export. Local browser evidence covers screen and node duplication, unique route/ID handling, sibling move, confirmed delete, lock/unlock, Gold resource replacement, accessibility/performance Beta fixes, undo/redo, and manifest export at desktop/mobile sizes. Unspecified mutation verbs and hide remain Lab; untested matrix dimensions remain FAIL. See `quality/STEP_19_EVIDENCE.md`; public review verification remains scheduled for Step 45.
-- [ ] 20 Structural mutations — divergence, required content and exact lock preservation.
+- [x] 20 Structural mutations — Recompose tests divergence 20/50/70/95, preserves exact locked subtrees, and is exercised at 95% through the visible desktop/mobile Workbench with undo/redo. Surprise Me tests 20/60/90 and is exercised at 60% through the visible Workbench. The browser run exposed AUD-156: mobile action feedback was hidden outside Command; a shared polite status now remains visible on the active tab. `Rethink Structure` stays isolated as Lab until its operation contract is defined. Evidence: `quality/STEP_20_EVIDENCE.md`; public review verification remains scheduled for Step 45.
 - [ ] 21 History — 50+ operations, exact undo/redo, reload and checkpoints.
 - [ ] 22 Persistence — failures, corruption recovery, old data, quotas and conflicts.
 - [ ] 23 React export — independent clean install/build/browser for benchmark projects.
@@ -93,7 +93,7 @@ all owner-specified input/state/persistence/browser/accessibility/network/securi
 dimensions. Allowed results: PASS, FAIL, DEGRADED, NOT APPLICABLE, LAB ONLY.
 Unexecuted applicable checks are FAIL (missing evidence), never presumed PASS.
 
-Steps 05–19 are complete within their stated local scopes and evidence files.
+Steps 05–20 are complete within their stated local scopes and evidence files.
 Step 19's visible-browser checks cover screen duplicate/add, node duplicate/sibling
 move/confirmed delete, lock/unlock, Gold replacement, exact undo/redo, mobile action
 reachability, manifest export, and the accessibility/performance Beta suggestion
@@ -101,6 +101,15 @@ apply flow. The audit regressions verify the finding clears and the corrected va
 survive schema-valid manifest export. Operations without specified, distinct
 semantics are isolated as Lab. Evidence is in `quality/STEP_19_EVIDENCE.md` and
 `quality/evidence/step-19/`.
+
+Step 20 covers the 20/50/70/95 Recompose and 20/60/90 Surprise Me divergence
+levels, exact locked-subtree hashes, resource resolution, duplicate IDs, and
+visible UI undo/redo at desktop and mobile sizes. The mobile check found and
+fixed AUD-156, where successful action feedback was mounted only inside the
+Command tab. `Rethink Structure` remains Lab-only pending a distinct operation
+contract. Evidence is in `quality/STEP_20_EVIDENCE.md` and
+`quality/evidence/step-20/`; public review verification remains scheduled for
+Step 45.
 
 The feature matrix keeps every untested dimension at FAIL. Public review verification
 remains scheduled for Step 45; local evidence does not close a deployed finding or
