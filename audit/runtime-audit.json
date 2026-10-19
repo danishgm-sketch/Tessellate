@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45. Step 19 added AUD-152–155 from local visible Workbench checks. Step 20 added AUD-156 after mobile UI testing found hidden structural-action feedback; the fix is verified locally, with public review deployment verification pending in Step 45.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45. Step 19 added AUD-152–155 from local visible Workbench checks. Step 20 added AUD-156 after mobile UI testing found hidden structural-action feedback. Step 21 added AUD-157 after desktop/mobile Workbench testing found that undo/redo history disappeared after reload; the local fix is verified and public review verification remains pending for Step 45. AUD-158 was added after the browser regression showed Blend overwrote source-project undo snapshots; owner-scoped snapshot IDs now keep the source project intact, verified locally and pending Step 45 review-site confirmation.",
   "entries": [
     {
       "id": "AUD-001",
@@ -5100,7 +5100,98 @@
         "after": "Desktop and 390x844 browser tests confirm the status region announces Recompose and Surprise Me, remains within viewport bounds, and the resulting manifests preserve locked subtrees, resolve all catalogue resources, and undo/redo exactly."
       },
       "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-157",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Undo and redo history disappeared after reloading a local project",
+      "expected": "After a project edit is saved locally, refreshing Workbench should preserve the bounded undo and redo stacks so the user can restore exact recent states.",
+      "actual": "The latest manifest remained available after reload, but Workbench reset history and future to empty arrays. Undo was disabled despite 51 visible Design DNA edits immediately before reload.",
+      "reproduction": [
+        "At 1440x900 or 390x844, open the Playful HR showcase in Workbench and open Project Scope > Intent.",
+        "Use the Visual Ambition slider to create 51 sequential keyboard edits; export the final manifest and verify the slider reads 51.",
+        "Reload the Workbench URL. The manifest remains at 51, but Undo is disabled and none of the prior states can be restored."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-21/before/undo-after-reload-desktop-1440.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-21/before/undo-after-reload-desktop-1440.png",
+        "quality/evidence/step-21/before/undo-after-reload-mobile-390.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-21/after/history-persistence-desktop-1440.png",
+        "quality/evidence/step-21/after/history-persistence-mobile-390.png"
+      ],
+      "rootCause": "WorkbenchShell persisted the current ProjectManifest and checkpoint journal, but not the in-memory history and future stacks. setManifest correctly reset those arrays on load, leaving the saved project without its recent edit history.",
+      "affectedFiles": [
+        "packages/workbench/src/persistence/storage.ts",
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "packages/workbench/src/components/TopToolbar.tsx",
+        "packages/workbench/src/components/mobile/MobileWorkbench.tsx",
+        "packages/workbench/src/store/workbench-store.ts",
+        "tests/e2e/workbench-history-hardening.spec.ts",
+        "packages/workbench/src/__tests__/persistence.test.ts",
+        "packages/workbench/src/__tests__/workbench-store.test.ts"
+      ],
+      "remediation": "Persist bounded, schema-validated history stacks in a versioned IndexedDB store using immutable snapshots and a small stack pointer; coalesce rapid UI edits so the newest state is durable before the save status reports Saved; restore history before enabling the loaded Workbench; cap checkpoint restoration to the same 50-step window; and show local history save state in the toolbar.",
+      "fixCommit": "96a6fcffe52aa7619d470d19edc040feebf7a04e",
+      "runtimeReports": [
+        "quality/evidence/step-21/before/undo-after-reload-desktop-1440.json",
+        "quality/evidence/step-21/before/undo-after-reload-mobile-390.json",
+        "quality/evidence/step-21/after/history-persistence-desktop-1440.json",
+        "quality/evidence/step-21/after/history-persistence-mobile-390.json"
+      ],
+      "regression": {
+        "before": "The baseline desktop and mobile reports record 51 visible edits, a project manifest restored at ambition 51, and undoEnabledAfterReload=false. The browser regression failed on the disabled Undo control.",
+        "after": "Desktop and mobile browser tests preserve the 50-step history window across reload, undo all 50 edits to the exact retained manifest, redo all 50 to the exact final manifest, and restore a named checkpoint after another reload. Each report records zero console errors or warnings, uncaught exceptions, failed requests, and HTTP errors."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-158",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Blending a project overwrote the source project history",
+      "expected": "Creating and reloading a blended project should leave its source project and undo history independently reloadable.",
+      "actual": "After Blend wrote source snapshots under the new project ID, reopening the source project entered recovery mode because one of its history snapshots had been overwritten.",
+      "reproduction": [
+        "Open a Compose direction in Workbench and record its project URL and manifest.",
+        "Change Visual Ambition through the visible Intent control and wait for the local history status to report Saved.",
+        "Use Blend to create a new project, reload it, then reopen the source project URL.",
+        "The source project displays Local project needs attention with a missing undo history snapshot error."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-21/before/blend-source-history-overwritten-desktop-1440.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-21/before/blend-source-history-overwritten-desktop-1440.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-21/after/blend-source-history-preserved-desktop-1440.png"
+      ],
+      "rootCause": "History snapshot IDs were generated per manifest object but the IndexedDB key was global. When Blend reused a source manifest snapshot in the new project history, its record was overwritten with the blended project ownership metadata, so the source pointer referenced a missing record.",
+      "affectedFiles": [
+        "packages/workbench/src/persistence/storage.ts",
+        "tests/e2e/workbench-actions-regression.spec.ts"
+      ],
+      "remediation": "Allocate each snapshot ID within its owning project scope and include that owner in the IndexedDB key. Keep the same manifest object mapped to distinct snapshot IDs when it belongs to multiple project histories.",
+      "fixCommit": "96a6fcffe52aa7619d470d19edc040feebf7a04e",
+      "runtimeReports": [
+        "quality/evidence/step-21/before/blend-source-history-overwritten-desktop-1440.json",
+        "quality/evidence/step-21/after/blend-source-history-preserved-desktop-1440.json"
+      ],
+      "regression": {
+        "before": "The visible-browser regression passed through Blend and blended-project reload, then failed when returning to the source project. The source UI entered recovery mode with a missing history snapshot. The baseline report records zero console errors, failed requests, or HTTP errors.",
+        "after": "The same desktop UI regression reloads the blended project, returns to the source project, confirms Undo is enabled, and undoes the source edit to its prior Design DNA value. The report records zero console errors, failed requests, or HTTP errors."
+      },
+      "status": "fixed-local-verified"
     }
   ],
-  "generatedAt": "2026-10-19T01:19:00.000Z"
+  "generatedAt": "2026-10-19T01:28:10.716Z"
 }

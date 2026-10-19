@@ -80,6 +80,13 @@ consistency and lock preservation. Runtime browser checks cover 1440 × 900 and
 390 × 844; all other matrix dimensions remain FAIL until separately exercised.
 See `quality/STEP_20_EVIDENCE.md`.
 
+Step 21 records the visible 51-edit history workflow at 1440 × 900 and
+390 × 844. It verifies reload persistence, exact restoration through all 50
+retained undo/redo states, checkpoint persistence and restoration, independent
+history storage across Blend project identities, and clean console/network
+results. Other history dimensions remain FAIL until separately tested. See
+`quality/STEP_21_EVIDENCE.md`.
+
 | Feature | Tier | Happy path | Empty state | Invalid input | Boundary input | Reload | Back/forward navigation | Persistence | Undo | Redo | Mobile | Tablet | Desktop | Keyboard | Screen reader semantics | Reduced motion | High contrast | Slow network | Network failure | Offline behavior | Refresh during operation | Concurrent interaction | Malformed data | Old stored data | Export/import round trip | Console errors | Network errors | Performance | Security |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Homepage | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
@@ -162,8 +169,8 @@ See `quality/STEP_20_EVIDENCE.md`.
 | Match DNA | Lab | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | Accessibility improvement | Beta | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | FAIL | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | PASS | FAIL | FAIL |
 | Performance improvement | Beta | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | FAIL | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | PASS | FAIL | FAIL |
-| Undo/redo | Core | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | PASS | FAIL | FAIL | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | PASS | FAIL | FAIL |
-| History and checkpoints | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
+| Undo/redo | Core | PASS | FAIL | FAIL | PASS | PASS | FAIL | PASS | PASS | PASS | PASS | FAIL | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | PASS | FAIL | FAIL |
+| History and checkpoints | Core | PASS | FAIL | FAIL | PASS | PASS | FAIL | PASS | PASS | PASS | PASS | FAIL | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | PASS | FAIL | FAIL |
 | Preview mode | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | Responsive views | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | Save/local persistence | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |

@@ -34,7 +34,7 @@ Do not advance a checkbox merely because code exists. Record evidence and defect
 - [x] 18 Intent inheritance — inherited/overridden/locked/reset at available visible Workbench levels. Project-scope DNA now says Project; locks disclose snapshot persistence; reset resumes ancestor inheritance. Desktop/mobile browser evidence and local runtime reports: `quality/STEP_18_EVIDENCE.md` and `quality/evidence/step-18/`. Public review verification remains at Step 45.
 - [x] 19 Individual mutations — correct changes, unique IDs, undo and export. Local browser evidence covers screen and node duplication, unique route/ID handling, sibling move, confirmed delete, lock/unlock, Gold resource replacement, accessibility/performance Beta fixes, undo/redo, and manifest export at desktop/mobile sizes. Unspecified mutation verbs and hide remain Lab; untested matrix dimensions remain FAIL. See `quality/STEP_19_EVIDENCE.md`; public review verification remains scheduled for Step 45.
 - [x] 20 Structural mutations — Recompose tests divergence 20/50/70/95, preserves exact locked subtrees, and is exercised at 95% through the visible desktop/mobile Workbench with undo/redo. Surprise Me tests 20/60/90 and is exercised at 60% through the visible Workbench. The browser run exposed AUD-156: mobile action feedback was hidden outside Command; a shared polite status now remains visible on the active tab. `Rethink Structure` stays isolated as Lab until its operation contract is defined. Evidence: `quality/STEP_20_EVIDENCE.md`; public review verification remains scheduled for Step 45.
-- [ ] 21 History — 50+ operations, exact undo/redo, reload and checkpoints.
+- [x] 21 History — a visible 51-edit desktop/mobile journey verifies the 50-step undo/redo window survives reload, restores exact manifests, and persists named checkpoints. It exposed AUD-157 (history discarded on reload); versioned IndexedDB snapshots, latest-state coalescing, save feedback, and bounded checkpoint restoration now pass the browser regression. Evidence: `quality/STEP_21_EVIDENCE.md`; public review verification remains scheduled for Step 45.
 - [ ] 22 Persistence — failures, corruption recovery, old data, quotas and conflicts.
 - [ ] 23 React export — independent clean install/build/browser for benchmark projects.
 - [ ] 24 Agent handoff — final-project documents and fresh-agent continuation evaluation.
@@ -110,6 +110,17 @@ Command tab. `Rethink Structure` remains Lab-only pending a distinct operation
 contract. Evidence is in `quality/STEP_20_EVIDENCE.md` and
 `quality/evidence/step-20/`; public review verification remains scheduled for
 Step 45.
+
+Step 21 covers the 50-step history window through visible keyboard edits,
+project reload, exact undo/redo manifest comparisons, and named checkpoint
+restoration at desktop and mobile sizes. It found and locally fixed AUD-157,
+where the manifest persisted but the undo/redo stacks were reset on reload, and
+AUD-158, where Blend could overwrite its source project's history snapshots.
+The browser regression also verifies that rapid edits finish persisting before
+the local history state reports Saved and that Blend and source-project histories
+remain independent. Evidence is in `quality/STEP_21_EVIDENCE.md` and
+`quality/evidence/step-21/`; issue-specific published Site verification remains
+scheduled for Step 45.
 
 The feature matrix keeps every untested dimension at FAIL. Public review verification
 remains scheduled for Step 45; local evidence does not close a deployed finding or

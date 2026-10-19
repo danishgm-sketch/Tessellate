@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 156 findings (37 High, 118 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 36 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–156 in Compose/resource/Workbench previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–142; Step 15 added AUD-143–147; Step 17 added AUD-148–149; Step 18 added AUD-150–151; Step 19 added AUD-152–155 for screen route integrity, page route validation, reachable layer mutations, and mutation-tier accuracy; Step 20 added AUD-156 for mobile structural-action feedback hidden outside the Command tab. The composition, data-truth, resource-accessibility, and Workbench findings are fixed locally, with deployed review verification still pending. AUD-134–137 record ecommerce, digital music, flight-management, and film-streaming briefs that inherited unrelated product workflows; AUD-138 records flight-oriented copy in destination search; AUD-139 records the missing Product Catalog to Product Detail path; AUD-140 records dark-canvas contrast failures in expressive Gold resource variants; AUD-141 records keyboard-inaccessible scrollable Gold resource content; AUD-142 records mobile clipping in the three-pane shell; AUD-148 records disabled-control canvas selection failure; AUD-149 records resource-kind flattening in composition; AUD-150 records incorrect Project Scope DNA labels; AUD-151 records unclear lock snapshot behavior. The full current-source visible benchmark covered 100 briefs and 300 directions at desktop and mobile sizes; reports record zero unresolved diagnostics, console errors, warnings, uncaught exceptions, failed requests, or HTTP errors. Issue-specific before/after captures and red/green regressions are recorded. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See quality/STEP_08_EVIDENCE.md, quality/STEP_14_EVIDENCE.md, quality/STEP_15_EVIDENCE.md, quality/STEP_17_EVIDENCE.md, quality/STEP_18_EVIDENCE.md, quality/STEP_20_EVIDENCE.md, and evidence/catalog-search-v20/.
+**Current disposition:** 158 findings (39 High, 118 Medium, 1 Low): 27 closed after deployed verification, 90 fixed and awaiting issue-specific deployed checks, 38 verified locally (AUD-085 in the separate Vite preview runtime and AUD-122–158 in Compose/resource/Workbench previews), and AUD-080, AUD-100, and AUD-106 remain open. Site v20 closes AUD-088–099. Step 14 added AUD-101–105 and AUD-107–142; Step 15 added AUD-143–147; Step 17 added AUD-148–149; Step 18 added AUD-150–151; Step 19 added AUD-152–155 for screen route integrity, page route validation, reachable layer mutations, and mutation-tier accuracy; Step 20 added AUD-156 for mobile structural-action feedback hidden outside the Command tab; Step 21 added AUD-157 for undo/redo history lost on reload and AUD-158 for blended projects overwriting their source project's history. The composition, data-truth, resource-accessibility, and Workbench findings are fixed locally, with deployed review verification still pending. AUD-134–137 record ecommerce, digital music, flight-management, and film-streaming briefs that inherited unrelated product workflows; AUD-138 records flight-oriented copy in destination search; AUD-139 records the missing Product Catalog to Product Detail path; AUD-140 records dark-canvas contrast failures in expressive Gold resource variants; AUD-141 records keyboard-inaccessible scrollable Gold resource content; AUD-142 records mobile clipping in the three-pane shell; AUD-148 records disabled-control canvas selection failure; AUD-149 records resource-kind flattening in composition; AUD-150 records incorrect Project Scope DNA labels; AUD-151 records unclear lock snapshot behavior. The full current-source visible benchmark covered 100 briefs and 300 directions at desktop and mobile sizes; reports record zero unresolved diagnostics, console errors, warnings, uncaught exceptions, failed requests, or HTTP errors. Issue-specific before/after captures and red/green regressions are recorded. The showcase browser check also exposed duplicate navigation in the AI Developer Platform (AUD-106), tracked for Step 43. The desktop Explore Axe scan found a moderate heading-order issue inside the AI Chat Panel resource preview (AUD-100), tracked for the ordered accessibility/resource hardening step. Broader route, accessibility, and flagship work remains in the ordered hardening programme. See quality/STEP_08_EVIDENCE.md, quality/STEP_14_EVIDENCE.md, quality/STEP_15_EVIDENCE.md, quality/STEP_17_EVIDENCE.md, quality/STEP_18_EVIDENCE.md, quality/STEP_20_EVIDENCE.md, quality/STEP_21_EVIDENCE.md, and evidence/catalog-search-v20/.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -394,6 +394,52 @@ No Critical findings are recorded in this audit register.
 - **Remediation:** Normalize root paths from the screen name, choose a unique copy name/route, create fresh IDs with the shared ID generator, and validate the exported manifest.
 - **Verification:** The baseline browser test fails and records an invalid manifest. Current desktop/mobile runs verify two unique routes and IDs and a schema-valid download. Public review verification remains pending for Step 45.
 - **Disposition:** Fixed and verified locally.
+
+### AUD-157 — Undo and redo history disappeared after reloading a local project
+
+- **Severity:** High.
+- **Evidence:** The desktop and mobile baseline reports in
+  `quality/evidence/step-21/before/` record 51 visible edits and a saved manifest
+  at Visual Ambition 51, but `undoEnabledAfterReload` is false. The screenshots
+  show the loaded Workbench with Undo disabled. The after reports record exact
+  undo, redo and checkpoint restoration, with no console or network errors.
+- **Reproduction:** At 1440 × 900 or 390 × 844, open the Playful HR showcase in
+  Workbench, open Project Scope > Intent, and make 51 keyboard changes on Visual
+  Ambition. Reload the project URL. The manifest stays at 51 while Undo becomes
+  disabled.
+- **Root cause:** `WorkbenchShell` persisted the current manifest and checkpoint
+  journal, but not the in-memory `history` and `future` stacks. `setManifest`
+  correctly reset those arrays when the project loaded again.
+- **Affected code:** `packages/workbench/src/persistence/storage.ts`,
+  `packages/workbench/src/components/WorkbenchShell.tsx`,
+  `packages/workbench/src/components/TopToolbar.tsx`,
+  `packages/workbench/src/components/mobile/MobileWorkbench.tsx`, and
+  `packages/workbench/src/store/workbench-store.ts`.
+- **Remediation:** Store the 50-step stacks in a versioned IndexedDB store as
+  validated immutable snapshots with a small pointer. Coalesce rapid edits so
+  the latest stack reaches durable storage before reporting Saved, restore it
+  when loading a project, and keep checkpoint restoration inside the same
+  history bound.
+- **Verification:** The desktop and mobile browser regression reloads after 51
+  visible edits, undoes all 50 retained steps to the exact retained manifest,
+  redoes all 50 to the exact final manifest, then reloads and restores a named
+  checkpoint to the exact project state. Reports record zero console errors or
+  warnings, uncaught exceptions, failed requests or HTTP errors. See
+  `quality/STEP_21_EVIDENCE.md`. Public review verification remains pending for
+  Step 45.
+- **Disposition:** Fixed and verified locally.
+
+### AUD-158 — Blending a project overwrote the source project history
+
+- **Severity:** High.
+- **Evidence:** The [before screenshot](../quality/evidence/step-21/before/blend-source-history-overwritten-desktop-1440.png) and machine-readable report show the original project entering recovery mode with a missing undo-history snapshot after the blended project was reloaded. The [after screenshot](../quality/evidence/step-21/after/blend-source-history-preserved-desktop-1440.png) and report show both projects reloading independently and the source Undo restoring its prior DNA value.
+- **Reproduction:** Open a Compose direction in Workbench and make a visible Intent edit. Blend it into a new project, reload the blend, then reopen the source project URL. Before the fix, the source Workbench displayed “Local project needs attention” and the missing-snapshot error.
+- **Root cause:** Snapshot IDs were attached to manifest objects without an owning project scope, while IndexedDB used a global key. Blend reused a source snapshot in the new project history, overwrote the source record with blend ownership metadata, and left the source history pointer unresolved.
+- **Affected code:** `packages/workbench/src/persistence/storage.ts` and `tests/e2e/workbench-actions-regression.spec.ts`.
+- **Remediation:** Allocate snapshot IDs per owning project and include the project scope in each IndexedDB key so one manifest object can safely participate in multiple histories.
+- **Verification:** The browser test was red before the fix and now creates/reloads the blend, reopens the source project, verifies Undo is enabled, and undoes the original edit. The reports contain zero console errors, failed requests, or HTTP errors. Public review verification remains pending for Step 45. See `quality/STEP_21_EVIDENCE.md`.
+- **Disposition:** Fixed and verified locally.
+
 ## MEDIUM
 
 ### AUD-148 — Disabled canvas actions prevented resource selection
