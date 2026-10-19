@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45. Step 19 added AUD-152–155 from local visible Workbench checks. Step 20 added AUD-156 after mobile UI testing found hidden structural-action feedback. Step 21 added AUD-157 after desktop/mobile Workbench testing found that undo/redo history disappeared after reload; the local fix is verified and public review verification remains pending for Step 45. AUD-158 was added after the browser regression showed Blend overwrote source-project undo snapshots; owner-scoped snapshot IDs now keep the source project intact, verified locally and pending Step 45 review-site confirmation.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45. Step 19 added AUD-152–155 from local visible Workbench checks. Step 20 added AUD-156 after mobile UI testing found hidden structural-action feedback. Step 21 added AUD-157 after desktop/mobile Workbench testing found that undo/redo history disappeared after reload; the local fix is verified and public review verification remains pending for Step 45. AUD-158 was added after the browser regression showed Blend overwrote source-project undo snapshots; owner-scoped snapshot IDs now keep the source project intact, verified locally and pending Step 45 review-site confirmation. Step 22 added AUD-159–164 from desktop/mobile Workbench storage fault-injection; all six are fixed and locally browser-verified, with deployed verification pending for Step 45.",
   "entries": [
     {
       "id": "AUD-001",
@@ -5189,6 +5189,273 @@
       "regression": {
         "before": "The visible-browser regression passed through Blend and blended-project reload, then failed when returning to the source project. The source UI entered recovery mode with a missing history snapshot. The baseline report records zero console errors, failed requests, or HTTP errors.",
         "after": "The same desktop UI regression reloads the blended project, returns to the source project, confirms Undo is enabled, and undoes the source edit to its prior Design DNA value. The report records zero console errors, failed requests, or HTTP errors."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-159",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "A blocked localStorage read prevented IndexedDB project recovery",
+      "expected": "A stored project should load from IndexedDB when browser policy denies localStorage reads.",
+      "actual": "Workbench showed a recovery error despite a valid project and undo history in IndexedDB.",
+      "reproduction": [
+        "Open a saved Workbench project at 1440×900 or 390×844.",
+        "Deny reads for its project and active-project localStorage keys, then reload.",
+        "Before the fix, Workbench stops rather than restoring the IndexedDB project."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-22/before/localstorage-read-blocks-indexeddb-recovery-desktop-1440.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-22/before/localstorage-read-blocks-indexeddb-recovery-desktop-1440.png",
+        "quality/evidence/step-22/before/localstorage-read-blocks-indexeddb-recovery-mobile-390.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-22/after/localstorage-read-blocks-indexeddb-recovery-desktop-1440.png",
+        "quality/evidence/step-22/after/localstorage-read-blocks-indexeddb-recovery-mobile-390.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-22/before/localstorage-read-blocks-indexeddb-recovery-desktop-1440.json",
+        "quality/evidence/step-22/before/localstorage-read-blocks-indexeddb-recovery-mobile-390.json",
+        "quality/evidence/step-22/after/localstorage-read-blocks-indexeddb-recovery-desktop-1440.json",
+        "quality/evidence/step-22/after/localstorage-read-blocks-indexeddb-recovery-mobile-390.json"
+      ],
+      "rootCause": "The browser loader read the synchronous journal without isolating per-key SecurityError exceptions, aborting the independent IndexedDB lookup.",
+      "affectedFiles": [
+        "packages/workbench/src/persistence/browser-session.ts",
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "tests/e2e/workbench-persistence-hardening.spec.ts"
+      ],
+      "remediation": "Catch journal read failures independently, continue with the durable store, and show which store recovered the project.",
+      "fixCommit": "2cb87c5b20ed82c41475843a0d1cb951fa883593",
+      "regression": {
+        "before": "The visible browser regression reproduced the failure at desktop and mobile viewports.",
+        "after": "The matching browser regression passed at desktop and mobile viewports; runtime reports record zero console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-160",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "A full recovery journal treated a successful database save as fatal",
+      "expected": "A quota failure in the synchronous recovery journal should not block a successful IndexedDB save.",
+      "actual": "Workbench stopped after localStorage raised QuotaExceededError even though IndexedDB could persist the project.",
+      "reproduction": [
+        "Make localStorage.setItem throw QuotaExceededError.",
+        "Open Workbench, edit Visual Ambition, then reload.",
+        "Before the fix, the UI blocks before using IndexedDB."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-22/before/recovery-journal-quota-blocks-workbench-desktop-1440.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-22/before/recovery-journal-quota-blocks-workbench-desktop-1440.png",
+        "quality/evidence/step-22/before/recovery-journal-quota-blocks-workbench-mobile-390.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-22/after/recovery-journal-quota-indexeddb-fallback-desktop-1440.png",
+        "quality/evidence/step-22/after/recovery-journal-quota-indexeddb-fallback-mobile-390.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-22/before/recovery-journal-quota-blocks-workbench-desktop-1440.json",
+        "quality/evidence/step-22/before/recovery-journal-quota-blocks-workbench-mobile-390.json",
+        "quality/evidence/step-22/after/recovery-journal-quota-indexeddb-fallback-desktop-1440.json",
+        "quality/evidence/step-22/after/recovery-journal-quota-indexeddb-fallback-mobile-390.json"
+      ],
+      "rootCause": "The synchronous journal write was reported as a fatal save error before the independent database write completed.",
+      "affectedFiles": [
+        "packages/workbench/src/persistence/browser-session.ts",
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "tests/e2e/workbench-persistence-hardening.spec.ts"
+      ],
+      "remediation": "Catch journal and database failures independently, persist through IndexedDB, and report the available recovery path.",
+      "fixCommit": "2cb87c5b20ed82c41475843a0d1cb951fa883593",
+      "regression": {
+        "before": "The visible browser regression reproduced the failure at desktop and mobile viewports.",
+        "after": "The matching browser regression passed at desktop and mobile viewports; runtime reports record zero console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-161",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "IndexedDB failure blocked journal-backed editing and history recovery",
+      "expected": "When IndexedDB is unavailable, a valid local recovery journal should keep the project editable with an explicit history limitation.",
+      "actual": "Project, history, or checkpoint database errors sent Workbench into a fatal recovery screen despite a usable journal.",
+      "reproduction": [
+        "Make IDBFactory.open fail.",
+        "Open a showcase as a local project, edit its DNA, and reload.",
+        "Before the fix, initial save or history/checkpoint reads end the Workbench."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-22/before/indexeddb-unavailable-blocks-workbench-desktop-1440.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-22/before/indexeddb-unavailable-blocks-workbench-desktop-1440.png",
+        "quality/evidence/step-22/before/indexeddb-unavailable-blocks-workbench-mobile-390.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-22/after/indexeddb-unavailable-journal-recovery-desktop-1440.png",
+        "quality/evidence/step-22/after/indexeddb-unavailable-journal-recovery-mobile-390.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-22/before/indexeddb-unavailable-blocks-workbench-desktop-1440.json",
+        "quality/evidence/step-22/before/indexeddb-unavailable-blocks-workbench-mobile-390.json",
+        "quality/evidence/step-22/after/indexeddb-unavailable-journal-recovery-desktop-1440.json",
+        "quality/evidence/step-22/after/indexeddb-unavailable-journal-recovery-mobile-390.json"
+      ],
+      "rootCause": "Optional IndexedDB reads and writes for project, history, and checkpoint state shared the fatal load path even when localStorage retained the current project.",
+      "affectedFiles": [
+        "packages/workbench/src/persistence/browser-session.ts",
+        "packages/workbench/src/persistence/storage.ts",
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "packages/workbench/src/components/TopToolbar.tsx",
+        "packages/workbench/src/components/mobile/MobileWorkbench.tsx",
+        "tests/e2e/workbench-persistence-hardening.spec.ts"
+      ],
+      "remediation": "Keep journal-backed editing available, isolate optional history/checkpoint failures, and label history as limited.",
+      "fixCommit": "2cb87c5b20ed82c41475843a0d1cb951fa883593",
+      "regression": {
+        "before": "The visible browser regression reproduced the failure at desktop and mobile viewports.",
+        "after": "The matching browser regression passed at desktop and mobile viewports; runtime reports record zero console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-162",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "data",
+      "title": "Legacy project migrations were not written back to browser storage",
+      "expected": "A successfully migrated project should be saved in the canonical schema so subsequent reloads use the migrated record.",
+      "actual": "Workbench rendered the migrated project in memory while browser storage still contained schema 0.1.0.",
+      "reproduction": [
+        "Seed a valid schema 0.1.0 project in the browser journal.",
+        "Open its Workbench URL and inspect the stored record.",
+        "Before the fix, the UI displays schema 1.0.0 but storage remains at 0.1.0."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-22/before/legacy-project-not-upgraded-desktop-1440.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-22/before/legacy-project-not-upgraded-desktop-1440.png",
+        "quality/evidence/step-22/before/legacy-project-not-upgraded-mobile-390.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-22/after/legacy-project-upgraded-desktop-1440.png",
+        "quality/evidence/step-22/after/legacy-project-upgraded-mobile-390.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-22/before/legacy-project-not-upgraded-desktop-1440.json",
+        "quality/evidence/step-22/before/legacy-project-not-upgraded-mobile-390.json",
+        "quality/evidence/step-22/after/legacy-project-upgraded-desktop-1440.json",
+        "quality/evidence/step-22/after/legacy-project-upgraded-mobile-390.json"
+      ],
+      "rootCause": "The loader did not report that migration occurred, so Workbench never persisted the validated canonical manifest.",
+      "affectedFiles": [
+        "packages/workbench/src/persistence/browser-session.ts",
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "tests/e2e/workbench-persistence-hardening.spec.ts"
+      ],
+      "remediation": "Track successful migration and save the current-schema manifest to browser storage when the project opens.",
+      "fixCommit": "2cb87c5b20ed82c41475843a0d1cb951fa883593",
+      "regression": {
+        "before": "The visible browser regression reproduced the failure at desktop and mobile viewports.",
+        "after": "The matching browser regression passed at desktop and mobile viewports; runtime reports record zero console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-163",
+      "severity": "low",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "data",
+      "title": "Mirrored corrupt project data appeared twice in recovery mode",
+      "expected": "A damaged raw record mirrored across the per-project and active-project journals should appear once, while distinct records remain separately recoverable.",
+      "actual": "Safe recovery displayed duplicate raw-record export links for the same malformed project payload.",
+      "reproduction": [
+        "Store the same malformed raw project in its project-specific and active-project journal keys.",
+        "Open the project URL and inspect recovery exports.",
+        "Before the fix, the same record appears twice."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-22/before/duplicate-corrupt-recovery-records-desktop-1440.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-22/before/duplicate-corrupt-recovery-records-desktop-1440.png",
+        "quality/evidence/step-22/before/duplicate-corrupt-recovery-records-mobile-390.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-22/after/corrupted-project-safe-recovery-desktop-1440.png",
+        "quality/evidence/step-22/after/corrupted-project-safe-recovery-mobile-390.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-22/before/duplicate-corrupt-recovery-records-desktop-1440.json",
+        "quality/evidence/step-22/before/duplicate-corrupt-recovery-records-mobile-390.json",
+        "quality/evidence/step-22/after/corrupted-project-safe-recovery-desktop-1440.json",
+        "quality/evidence/step-22/after/corrupted-project-safe-recovery-mobile-390.json"
+      ],
+      "rootCause": "The loader appended journal entries independently without deduplicating identical raw payload and validation-reason pairs.",
+      "affectedFiles": [
+        "packages/workbench/src/persistence/browser-session.ts",
+        "tests/e2e/workbench-persistence-hardening.spec.ts"
+      ],
+      "remediation": "Deduplicate identical damaged records while preserving the raw payload and any distinct corruption records.",
+      "fixCommit": "2cb87c5b20ed82c41475843a0d1cb951fa883593",
+      "regression": {
+        "before": "The visible browser regression reproduced the failure at desktop and mobile viewports.",
+        "after": "The matching browser regression passed at desktop and mobile viewports; runtime reports record zero console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
+      },
+      "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-164",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900; 390x844",
+      "category": "state",
+      "title": "Total storage failure falsely claimed a durable save",
+      "expected": "When both persistent stores fail, Workbench should clearly say the project is unsaved and offer export.",
+      "actual": "The warning claimed the project had been saved in the recovery journal even though journal writes hit quota and IndexedDB was unavailable.",
+      "reproduction": [
+        "Disable IndexedDB and make all Tessellate localStorage writes throw QuotaExceededError.",
+        "Open /workbench and inspect the storage warning.",
+        "Before the fix, it falsely promises a durable journal save."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-22/after/storage-unavailable-export-warning-desktop-1440.png",
+      "beforeScreenshots": [],
+      "afterScreenshots": [
+        "quality/evidence/step-22/after/storage-unavailable-export-warning-desktop-1440.png",
+        "quality/evidence/step-22/after/storage-unavailable-export-warning-mobile-390.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-22/after/storage-unavailable-export-warning-desktop-1440.json",
+        "quality/evidence/step-22/after/storage-unavailable-export-warning-mobile-390.json"
+      ],
+      "rootCause": "The in-memory fallback was reported as journal-backed even after the journal write failed.",
+      "affectedFiles": [
+        "packages/workbench/src/persistence/browser-session.ts",
+        "packages/workbench/src/components/TopToolbar.tsx",
+        "tests/e2e/workbench-persistence-hardening.spec.ts"
+      ],
+      "remediation": "Distinguish memory-only state from a successful journal fallback; warn that data is unsaved and prompt manifest export.",
+      "fixCommit": "2cb87c5b20ed82c41475843a0d1cb951fa883593",
+      "regression": {
+        "before": "The browser regression is configured to save a before capture if the false recovery-journal claim appears; no before capture was produced in this run.",
+        "after": "Desktop and mobile reports confirm that the unavailable stores are reported truthfully, the current manifest remains exportable, and editing remains available, with no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
       },
       "status": "fixed-local-verified"
     }

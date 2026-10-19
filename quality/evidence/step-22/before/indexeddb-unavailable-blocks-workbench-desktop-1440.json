@@ -1,0 +1,17 @@
+{
+  "url": "http://localhost:4321/workbench?project=local-cb33c8c3-cddf-4e57-94be-1957814709cd",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "status": "reproduced",
+  "issue": "AUD-161",
+  "expected": "Keep the Workbench available from its browser recovery journal while IndexedDB is unavailable, and report that undo history is session-only.",
+  "actual": "Local save failed: SecurityError: IndexedDB disabled by persistence regression test. Export your manifest before leaving.",
+  "screenshot": "quality/evidence/step-22/before/indexeddb-unavailable-blocks-workbench-desktop-1440.png"
+}

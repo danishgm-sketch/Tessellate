@@ -1,0 +1,20 @@
+{
+  "url": "http://localhost:4321/workbench?project=local-50356433-896b-4219-8282-ceb2733a2ca8",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "status": "passed",
+  "issue": "AUD-161",
+  "checks": {
+    "journalManifestRestoredExactly": true,
+    "workbenchRemainedEditable": true,
+    "historyAvailabilityWasTruthful": true
+  },
+  "screenshot": "quality/evidence/step-22/after/indexeddb-unavailable-journal-recovery-desktop-1440.png"
+}

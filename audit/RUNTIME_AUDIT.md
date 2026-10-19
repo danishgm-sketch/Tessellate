@@ -440,6 +440,50 @@ No Critical findings are recorded in this audit register.
 - **Verification:** The browser test was red before the fix and now creates/reloads the blend, reopens the source project, verifies Undo is enabled, and undoes the original edit. The reports contain zero console errors, failed requests, or HTTP errors. Public review verification remains pending for Step 45. See `quality/STEP_21_EVIDENCE.md`.
 - **Disposition:** Fixed and verified locally.
 
+### AUD-159 — A blocked localStorage read prevented IndexedDB project recovery
+
+- **Severity:** High.
+- **Evidence:** The before captures at `../quality/evidence/step-22/before/localstorage-read-blocks-indexeddb-recovery-desktop-1440.png` and `...mobile-390.png` show “Local project needs attention” even though the saved manifest and undo history exist in IndexedDB. After captures at `../quality/evidence/step-22/after/localstorage-read-blocks-indexeddb-recovery-desktop-1440.png` and `...mobile-390.png` show the exact project restored with a recovery warning.
+- **Reproduction:** Open a saved Workbench project, deny reads for its project and active-project localStorage keys, then reload. Before the fix, Workbench stopped instead of using IndexedDB.
+- **Root cause:** `loadBrowserProject` read the synchronous journal without a per-key exception boundary, so a browser `SecurityError` aborted the independent IndexedDB lookup.
+- **Affected code:** `packages/workbench/src/persistence/browser-session.ts`, `packages/workbench/src/components/WorkbenchShell.tsx`, and `tests/e2e/workbench-persistence-hardening.spec.ts`.
+- **Remediation:** Isolate journal reads, continue to the project database, and announce which store recovered the project.
+- **Verification:** The desktop/mobile test failed before the fix and now restores the exported manifest and enabled Undo exactly, with no console, uncaught, failed-request or HTTP errors. Site deployment verification remains pending for Step 45.
+- **Disposition:** Fixed and verified locally.
+
+### AUD-160 — A full recovery journal treated a successful database save as fatal
+
+- **Severity:** High.
+- **Evidence:** The before reports at `../quality/evidence/step-22/before/recovery-journal-quota-blocks-workbench-desktop-1440.json` and `...mobile-390.json` record the Workbench blocking after `QuotaExceededError`. The after screenshots at `../quality/evidence/step-22/after/recovery-journal-quota-indexeddb-fallback-desktop-1440.png` and `...mobile-390.png` show an editable project restored from IndexedDB.
+- **Reproduction:** Make browser `localStorage.setItem` throw `QuotaExceededError`, open Workbench, edit Visual Ambition, and reload. Before the fix, a journal-write failure ended the Workbench load even though IndexedDB was available.
+- **Root cause:** `createProjectSaver` reported the synchronous recovery-journal write as a fatal save error before awaiting the independent database write.
+- **Affected code:** `packages/workbench/src/persistence/browser-session.ts`, `packages/workbench/src/components/WorkbenchShell.tsx`, and `tests/e2e/workbench-persistence-hardening.spec.ts`.
+- **Remediation:** Catch journal failures independently, probe quota at startup, save through IndexedDB, and show a truthful recovery message.
+- **Verification:** Desktop/mobile regressions now edit, reload, and compare the exact saved manifest and history. Reports contain zero browser or network errors. Site deployment verification remains pending for Step 45.
+- **Disposition:** Fixed and verified locally.
+
+### AUD-161 — IndexedDB failure blocked journal-backed editing and history recovery
+
+- **Severity:** High.
+- **Evidence:** The before screenshots at `../quality/evidence/step-22/before/indexeddb-unavailable-blocks-workbench-desktop-1440.png` and `...mobile-390.png` show “Local project needs attention” after a visible project was opened. The after captures at `../quality/evidence/step-22/after/indexeddb-unavailable-journal-recovery-desktop-1440.png` and `...mobile-390.png` show an editable project with history explicitly marked limited.
+- **Reproduction:** Make `IDBFactory.open` fail, open a showcase as a local project, edit its DNA, and reload. Before the fix, initial save or checkpoint/history reads ended the Workbench.
+- **Root cause:** Project, history and checkpoint database failures were routed through the fatal load error even when the localStorage recovery journal retained the current project.
+- **Affected code:** `packages/workbench/src/persistence/browser-session.ts`, `packages/workbench/src/persistence/storage.ts`, `packages/workbench/src/components/WorkbenchShell.tsx`, `packages/workbench/src/components/TopToolbar.tsx`, `packages/workbench/src/components/mobile/MobileWorkbench.tsx`, and `tests/e2e/workbench-persistence-hardening.spec.ts`.
+- **Remediation:** Keep journal-backed editing available, catch optional history/checkpoint failures, and label undo history as unavailable after reload instead of reporting it as saved.
+- **Verification:** Desktop/mobile browser tests edit, reload, and compare the exact manifest while confirming the limited-history status, with no console or network errors. Site deployment verification remains pending for Step 45.
+- **Disposition:** Fixed and verified locally.
+
+### AUD-164 — Total storage failure falsely claimed a durable save
+
+- **Severity:** High.
+- **Evidence:** The desktop/mobile regression disables IndexedDB and makes Tessellate journal writes fail. Its assertion rejects any claim that the project was saved in the recovery journal. The after captures at `../quality/evidence/step-22/after/storage-unavailable-export-warning-desktop-1440.png` and `...mobile-390.png`, with runtime reports beside them, show the truthful unsaved warning and working manifest export. The regression is configured to save a before capture if the false claim is observed; no such before capture was produced in this run.
+- **Reproduction:** Disable IndexedDB and make all Tessellate journal writes throw `QuotaExceededError`, open `/workbench`, and inspect the storage warning. Before the fix, the warning promised a journal save that never happened.
+- **Root cause:** `createProjectSaver` reported the in-memory project fallback as journal-backed even when the journal write had failed.
+- **Affected code:** `packages/workbench/src/persistence/browser-session.ts`, `packages/workbench/src/components/TopToolbar.tsx`, and `tests/e2e/workbench-persistence-hardening.spec.ts`.
+- **Remediation:** Distinguish memory fallback with a failed journal from a successful journal fallback; say that the project is unsaved and prompt an immediate manifest export.
+- **Verification:** The desktop and mobile browser regression keeps the session editable, validates the exported manifest, confirms no durable-save claim, and reports no console or network errors. The test contains a failing assertion for the false claim; the original before screenshot was not retained. Site deployment verification remains pending for Step 45.
+- **Disposition:** Fixed and verified locally.
+
 ## MEDIUM
 
 ### AUD-148 — Disabled canvas actions prevented resource selection
@@ -1712,7 +1756,29 @@ with zero findings. That harness race is not counted as a product defect.
   covers 20, 60 and 90. Public review verification remains pending for Step 45.
 - **Disposition:** Fixed and verified locally.
 
+### AUD-162 — Legacy project migrations were not written back to browser storage
+
+- **Severity:** Medium.
+- **Evidence:** Before reports at `../quality/evidence/step-22/before/legacy-project-not-upgraded-desktop-1440.json` and `...mobile-390.json` record Workbench rendering schema `1.0.0` while browser storage remained `0.1.0`. After reports at `../quality/evidence/step-22/after/legacy-project-upgraded-desktop-1440.json` and `...mobile-390.json` confirm current-schema persistence and exact reload restoration.
+- **Reproduction:** Seed a valid `0.1.0` project in the browser journal, open its Workbench URL, then inspect the saved record. Before the fix, only the in-memory manifest was migrated.
+- **Root cause:** The browser loader returned the migrated manifest without recording that migration occurred, so Workbench did not persist the canonical form.
+- **Affected code:** `packages/workbench/src/persistence/browser-session.ts`, `packages/workbench/src/components/WorkbenchShell.tsx`, and `tests/e2e/workbench-persistence-hardening.spec.ts`.
+- **Remediation:** Track a successful migration, announce the upgrade, and save the validated current-schema manifest back to the browser stores.
+- **Verification:** The desktop/mobile regression failed before the fix and now verifies the exported schema, stored schema, and exact project after reload. Site deployment verification remains pending for Step 45.
+- **Disposition:** Fixed and verified locally.
+
 ## LOW
+
+### AUD-163 — Mirrored corrupt project data appeared twice in recovery mode
+
+- **Severity:** Low.
+- **Evidence:** The before captures at `../quality/evidence/step-22/before/duplicate-corrupt-recovery-records-desktop-1440.png` and `...mobile-390.png` show two identical raw-record export links. The after captures at `../quality/evidence/step-22/after/corrupted-project-safe-recovery-desktop-1440.png` and `...mobile-390.png` show one preserved record and one exact raw export.
+- **Reproduction:** Store the same malformed raw project in its project-specific journal and the active-project journal, then open the project URL.
+- **Root cause:** Each journal entry was added independently to the recovery list even when both contained the same raw record and validation error.
+- **Affected code:** `packages/workbench/src/persistence/browser-session.ts` and `tests/e2e/workbench-persistence-hardening.spec.ts`.
+- **Remediation:** Deduplicate damaged records by their raw payload and validation reason while preserving distinct damaged records.
+- **Verification:** The visible-browser regression failed before the fix and now confirms one export link, byte-for-byte raw export preservation, no overflow, and zero browser/network errors. Site deployment verification remains pending for Step 45.
+- **Disposition:** Fixed and verified locally.
 
 ### AUD-079 — Published Site favicon returned 404
 
