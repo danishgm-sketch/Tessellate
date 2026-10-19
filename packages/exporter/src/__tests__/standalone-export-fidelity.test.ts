@@ -434,12 +434,18 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         const page = await browser.newPage();
         await page.setViewportSize({ width: 1440, height: 900 });
         const consoleErrors: string[] = [];
+        const consoleWarnings: string[] = [];
+        const uncaughtExceptions: string[] = [];
         const failedRequests: string[] = [];
         page.on('console', (msg) => {
           if (msg.type() === 'error') {
             consoleErrors.push(msg.text());
           }
+          if (msg.type() === 'warning') {
+            consoleWarnings.push(msg.text());
+          }
         });
+        page.on('pageerror', (error) => uncaughtExceptions.push(error.message));
         page.on('requestfailed', (request) => failedRequests.push(`${request.method()} ${request.url()}`));
         page.on('response', (response) => {
           if (response.status() >= 400) failedRequests.push(`${response.status()} ${response.url()}`);
@@ -546,7 +552,37 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
 
         // 6. Assert no console errors
         expect(consoleErrors).toEqual([]);
+        expect(consoleWarnings).toEqual([]);
+        expect(uncaughtExceptions).toEqual([]);
         expect(failedRequests).toEqual([]);
+        const runtimeReport = path.resolve(process.cwd(), 'quality/evidence/step-23/after/user-authored-semantic-copy-runtime.json');
+        fs.writeFileSync(runtimeReport, `${JSON.stringify({
+          schemaVersion: '1.0.0',
+          issue: 'AUD-165',
+          status: 'passed',
+          project: 'Omni Telemetry Suite export fixture',
+          previewUrl: `http://localhost:${port}`,
+          desktopViewport: { width: 1440, height: 900 },
+          mobileViewport: { width: 390, height: 844 },
+          checks: {
+            cleanDependencyInstall: true,
+            productionBuild: true,
+            quotedHeaderAndMetricTextRendered: true,
+            quotedActionLabelRendered: true,
+            angleBracketAndAmpersandTextRenderedLiterally: true,
+            noInjectedScriptElements: true,
+            mobileLayoutHasNoHorizontalOverflow: true,
+            noTessellateRuntimeDependency: true,
+          },
+          consoleErrors,
+          consoleWarnings,
+          uncaughtExceptions,
+          failedRequests,
+          screenshots: [
+            'quality/evidence/step-23/after/user-authored-semantic-copy-desktop-1440.png',
+            'quality/evidence/step-23/after/user-authored-semantic-copy-mobile-390.png',
+          ],
+        }, null, 2)}\n`, 'utf8');
       } finally {
         await browser.close();
       }
