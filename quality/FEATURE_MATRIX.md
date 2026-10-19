@@ -87,6 +87,23 @@ history storage across Blend project identities, and clean console/network
 results. Other history dimensions remain FAIL until separately tested. See
 `quality/STEP_21_EVIDENCE.md`.
 
+Step 22 records browser-persistence degradation at desktop and mobile sizes,
+including storage denial, quota exhaustion, IndexedDB failure, schema upgrade,
+corrupt-record recovery, and a full browser-process restart. The Workbench local
+persistence row records only the checks with visible-browser evidence; cross-tab
+conflicts, offline network, high contrast, and other untested dimensions remain
+FAIL or DEGRADED. See `quality/STEP_22_EVIDENCE.md`.
+
+Step 23 runs all 100 composition-quality briefs in three directions. Every one
+of the 300 exported projects is schema-validated, ZIP-round-tripped, installed in
+a fresh directory outside repository `node_modules`, built, served by Vite
+preview, and exercised screen-by-screen in Chromium at 1440×900 and 390×844.
+The React/Vite export row records only the dimensions covered by that run and
+the existing invalid-resource/variant regressions. Keyboard, tablet, offline,
+performance, and other untested dimensions remain FAIL. See
+`quality/STEP_23_EVIDENCE.md` and
+`quality/evidence/step-23/benchmark-standalone-runtime.json`.
+
 | Feature | Tier | Happy path | Empty state | Invalid input | Boundary input | Reload | Back/forward navigation | Persistence | Undo | Redo | Mobile | Tablet | Desktop | Keyboard | Screen reader semantics | Reduced motion | High contrast | Slow network | Network failure | Offline behavior | Refresh during operation | Concurrent interaction | Malformed data | Old stored data | Export/import round trip | Console errors | Network errors | Performance | Security |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Homepage | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
@@ -194,7 +211,7 @@ results. Other history dimensions remain FAIL until separately tested. See
 | Local semantic search | Lab | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | Alternatives and recommendations | Beta | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | `.tess.json` manifest export | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
-| React/Vite standalone export | Core | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
+| React/Vite standalone export | Core | PASS | FAIL | PASS | FAIL | FAIL | FAIL | NOT APPLICABLE | NOT APPLICABLE | NOT APPLICABLE | PASS | FAIL | PASS | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | NOT APPLICABLE | PASS | PASS | PASS | FAIL | FAIL |
 | Next.js export | Beta | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | Agent handoff documentation | Beta | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |
 | W3C design-token export | Beta | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL | FAIL |

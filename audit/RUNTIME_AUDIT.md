@@ -484,6 +484,17 @@ No Critical findings are recorded in this audit register.
 - **Verification:** The desktop and mobile browser regression keeps the session editable, validates the exported manifest, confirms no durable-save claim, and reports no console or network errors. The test contains a failing assertion for the false claim; the original before screenshot was not retained. Site deployment verification remains pending for Step 45.
 - **Disposition:** Fixed and verified locally.
 
+### AUD-165 — User-authored semantic copy broke standalone React/Vite builds
+
+- **Severity:** High.
+- **Evidence:** The failing clean-export log at `../quality/evidence/step-23/before/user-authored-semantic-copy-clean-build.log` records TypeScript parser errors in the generated Dashboard after ordinary text included quotes and `<`. The fixed desktop and mobile previews at `../quality/evidence/step-23/after/user-authored-semantic-copy-desktop-1440.png` and `...mobile-390.png`, with [runtime report](../quality/evidence/step-23/after/user-authored-semantic-copy-runtime.json), show that the exact copy renders as text in the independent build.
+- **Reproduction:** Export a manifest containing built-in navigation, KPI, action, and status nodes with user-authored strings containing quotes, `<`, or `&`; install the generated package in a clean directory and run `pnpm build`. Before the fix, the generated TSX fails with `TS1003`, `TS1382`, and `TS1002`.
+- **Root cause:** The Vite generator inserted semantic-role values directly into quoted JSX attributes and raw JSX children, without escaping them as JavaScript string expressions.
+- **Affected code:** `packages/exporter/src/source-tree.ts`, `packages/exporter/src/__tests__/standalone-export-fidelity.test.ts`, and `quality/export/benchmark-standalone-runtime.ts`.
+- **Remediation:** Serialize user-authored header, metric, action, status, and class values with `JSON.stringify` into JSX expressions so React renders them as text and attributes.
+- **Verification:** The red-to-green regression performs a clean install/build and checks visible text, absence of injected script elements, desktop/mobile layout, console, and network state. All 300 projects in the 100-brief × three-direction export benchmark also install, build, open in Vite preview, and pass every-screen desktop/mobile checks with zero Tessellate runtime dependencies. See `quality/STEP_23_EVIDENCE.md`. Public review verification remains pending for Step 45.
+- **Disposition:** Fixed and verified locally.
+
 ## MEDIUM
 
 ### AUD-148 — Disabled canvas actions prevented resource selection

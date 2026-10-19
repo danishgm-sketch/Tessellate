@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45. Step 19 added AUD-152–155 from local visible Workbench checks. Step 20 added AUD-156 after mobile UI testing found hidden structural-action feedback. Step 21 added AUD-157 after desktop/mobile Workbench testing found that undo/redo history disappeared after reload; the local fix is verified and public review verification remains pending for Step 45. AUD-158 was added after the browser regression showed Blend overwrote source-project undo snapshots; owner-scoped snapshot IDs now keep the source project intact, verified locally and pending Step 45 review-site confirmation. Step 22 added AUD-159–164 from desktop/mobile Workbench storage fault-injection; all six are fixed and locally browser-verified, with deployed verification pending for Step 45.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45. Step 19 added AUD-152–155 from local visible Workbench checks. Step 20 added AUD-156 after mobile UI testing found hidden structural-action feedback. Step 21 added AUD-157 after desktop/mobile Workbench testing found that undo/redo history disappeared after reload; the local fix is verified and public review verification remains pending for Step 45. AUD-158 was added after the browser regression showed Blend overwrote source-project undo snapshots; owner-scoped snapshot IDs now keep the source project intact, verified locally and pending Step 45 review-site confirmation. Step 22 added AUD-159–164 from desktop/mobile Workbench storage fault-injection; all six are fixed and locally browser-verified, with deployed verification pending for Step 45. Step 23 added AUD-165 after the standalone export regression showed that authored quote/markup text could break the clean Vite build; the encoded JSX fix and all 300 benchmark direction exports pass locally, with public verification pending for Step 45.",
   "entries": [
     {
       "id": "AUD-001",
@@ -5458,7 +5458,49 @@
         "after": "Desktop and mobile reports confirm that the unavailable stores are reported truthfully, the current manifest remains exportable, and editing remains available, with no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
       },
       "status": "fixed-local-verified"
+    },
+    {
+      "id": "AUD-165",
+      "severity": "high",
+      "route": "/workbench → standalone React/Vite export",
+      "viewport": "1440x900; 390x844",
+      "category": "export",
+      "title": "User-authored semantic copy broke standalone React/Vite builds",
+      "expected": "User text in built-in navigation, KPI, action, and status roles should compile into a standalone project and render literally as text.",
+      "actual": "The Vite generator inserted authored values directly into quoted JSX attributes and raw JSX children. Quotes and angle-bracket text made the extracted clean project fail TypeScript compilation with TS1003, TS1382, and TS1002.",
+      "reproduction": [
+        "Create a valid ProjectManifest with navigation-header, metric-kpi, action-button, and status-indicator nodes whose user-authored values contain double quotes, apostrophes, <, and &.",
+        "Generate the React/Vite ZIP and extract it into a fresh temporary directory outside the Tessellate repository.",
+        "Install dependencies from the exported package.json and run pnpm build.",
+        "Before the fix, tsc fails while parsing the generated screen component."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-23/after/user-authored-semantic-copy-desktop-1440.png",
+      "beforeScreenshots": [],
+      "afterScreenshots": [
+        "quality/evidence/step-23/after/user-authored-semantic-copy-desktop-1440.png",
+        "quality/evidence/step-23/after/user-authored-semantic-copy-mobile-390.png"
+      ],
+      "runtimeReports": [
+        "quality/evidence/step-23/before/user-authored-semantic-copy-clean-build.log",
+        "quality/evidence/step-23/after/user-authored-semantic-copy-runtime.json",
+        "quality/evidence/step-23/benchmark-standalone-runtime.json"
+      ],
+      "rootCause": "The semantic-role branches in generateScreenCode emitted raw string values in JSX attributes and text rather than serializing them into JavaScript expressions.",
+      "affectedFiles": [
+        "packages/exporter/src/source-tree.ts",
+        "packages/exporter/src/__tests__/standalone-export-fidelity.test.ts",
+        "quality/export/benchmark-standalone-runtime.ts"
+      ],
+      "remediation": "Serialize built-in semantic-role prop, className, and child text values using JSON.stringify inside JSX expressions so React preserves literal text and escapes DOM output.",
+      "fixCommit": "cffb9d0994f4783a29f143df3d9ccbb9116f909b",
+      "regression": {
+        "before": "The visible standalone-export regression failed during clean TypeScript build; the retained output records TS1003, TS1382, and TS1002 for the generated Dashboard.tsx.",
+        "after": "The clean install/build/browser regression renders the exact quoted and markup-like values at desktop and mobile, verifies that no script element was injected, and records zero console errors or warnings, uncaught exceptions, failed requests, and HTTP errors. All 300 benchmark direction exports also install, build, preview, and pass every-screen desktop/mobile checks."
+      },
+      "status": "fixed-local-verified"
     }
   ],
-  "generatedAt": "2026-10-19T01:28:10.716Z"
+  "generatedAt": "2026-10-19T03:43:56.584Z"
 }
