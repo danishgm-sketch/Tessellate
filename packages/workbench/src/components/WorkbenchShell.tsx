@@ -1,4 +1,5 @@
 import {loadCheckpointJournal,saveCheckpointJournal} from '../persistence/checkpoint-journal.js';
+import { loadLocalHistoryState, saveLocalHistoryState } from '../persistence/storage.js';
 import { composeProjectPipeline } from '@tessellate/compatibility';
 import React, { useEffect, useState } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
@@ -15,7 +16,7 @@ import { ReplaceDrawer } from './replace/ReplaceDrawer.js';
 import { AuditPanel } from './audit/AuditPanel.js';
 import { loadBrowserProject, createProjectSaver } from '../persistence/browser-session.js';
 import { setActiveCatalog } from '../mutations/replace.js';
-import { ResourceManifestSchema, ProjectManifestSchema } from '@tessellate/schemas';
+import { ResourceManifestSchema, ProjectManifestSchema, type ProjectManifest } from '@tessellate/schemas';
 
 export function WorkbenchShell() {
   const activeMode = useWorkbenchStore((state) => state.activeMode);
@@ -32,6 +33,7 @@ export function WorkbenchShell() {
 
   const [isMobileScreen, setIsMobileScreen] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [historySaveStatus, setHistorySaveStatus] = useState<'loading' | 'saving' | 'saved'>('loading');
   const [storageError, setStorageError] = useState<string | null>(null);
   const [damagedRecords, setDamagedRecords] = useState<Array<{raw:string; reason:string}>>([]);
 
@@ -68,7 +70,12 @@ export function WorkbenchShell() {
           setLoading(false);
         })().catch(error=>{if(!disposed){setStorageError(String(error));setLoading(false);}});
       }
-      else if (loaded.manifest) setManifest(loaded.manifest);
+      else if (loaded.manifest) {
+        setManifest(loaded.manifest);
+        const history = await loadLocalHistoryState(loaded.manifest.id);
+        if (disposed) return;
+        if (history) useWorkbenchStore.setState({ history: history.history, future: history.future });
+      }
       else if (projectId) throw new Error(`Project ${projectId} was not found in this browser.`);
       else if (loaded.damagedRecords.length===0) {
         const starter=composeProjectPipeline({description:'An employee experience platform with people, teams, onboarding and policies. This is a sample local project.',feel:'professional but playful',visualAmbition:40,structuralCreativity:55,targetDevices:['desktop','tablet','mobile']},{catalogResources:catalog,seed:crypto.randomUUID()}).directionA.manifest;
@@ -81,8 +88,28 @@ export function WorkbenchShell() {
         if(disposed)return;
         if(checkpoints.length)useWorkbenchStore.setState({checkpoints});
       }
+      setHistorySaveStatus('saved');
       // Never overwrite corrupt records with a sample. Recovery remains read-only.
       if (loaded.damagedRecords.length === 0) {
+        let pendingHistory: { manifest: ProjectManifest; history: ProjectManifest[]; future: ProjectManifest[] } | null = null;
+        let historySaveRunning = false;
+        const flushHistory = async () => {
+          if (historySaveRunning) return;
+          historySaveRunning = true;
+          try {
+            while (pendingHistory) {
+              const snapshot = pendingHistory;
+              pendingHistory = null;
+              await saveLocalHistoryState(snapshot.manifest.id, snapshot.manifest, snapshot.history, snapshot.future);
+            }
+            if (!disposed) setHistorySaveStatus('saved');
+          } catch (error) {
+            if (!disposed) setStorageError(`Undo history save failed: ${String(error)}. Export the current manifest before leaving.`);
+          } finally {
+            historySaveRunning = false;
+            if (pendingHistory) void flushHistory();
+          }
+        };
         unsubscribe = useWorkbenchStore.subscribe((state, previous) => {
           if (state.manifest !== previous.manifest) {
             void saver(state.manifest);
@@ -93,6 +120,11 @@ export function WorkbenchShell() {
                 if(raw && !localStorage.getItem(`tessellate_directions_${state.manifest.id}`))localStorage.setItem(`tessellate_directions_${state.manifest.id}`,JSON.stringify(ProjectManifestSchema.array().parse(JSON.parse(raw))));
               }catch(error){if(!disposed)setStorageError(`Direction metadata could not be carried forward: ${String(error)}. Your current project is preserved.`);}
             }
+          }
+          if (state.manifest !== previous.manifest || state.history !== previous.history || state.future !== previous.future) {
+            pendingHistory = { manifest: state.manifest, history: state.history, future: state.future };
+            if (!disposed) setHistorySaveStatus('saving');
+            void flushHistory();
           }
           if(state.checkpoints!==previous.checkpoints)void saveCheckpointJournal(state.manifest.id,state.checkpoints).catch(error=>{if(!disposed)setStorageError(`Checkpoint save failed: ${String(error)}. Export your current project.`);});
         });
@@ -201,7 +233,7 @@ export function WorkbenchShell() {
 
   // Mobile layout below 1024px
   if (isMobileScreen) {
-    return <MobileWorkbench />;
+    return <MobileWorkbench historySaveStatus={historySaveStatus} />;
   }
 
   // Desktop viewport-filling shell
@@ -211,7 +243,7 @@ export function WorkbenchShell() {
       className="h-screen w-screen overflow-hidden flex flex-col bg-[#0B0D10] text-[#F5F7FA]"
     >
       {/* 56px Top Toolbar */}
-      <TopToolbar />
+      <TopToolbar historySaveStatus={historySaveStatus} />
 
       {/* Main 3-column composition canvas workspace */}
       <div className="flex-1 flex overflow-hidden relative">

@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { AuditPanel } from '../audit/AuditPanel.js';
 
-export function MobileWorkbench() {
+export function MobileWorkbench({ historySaveStatus = 'saved' }: { historySaveStatus?: 'loading' | 'saving' | 'saved' }) {
   const manifest = useWorkbenchStore((state) => state.manifest);
   const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
@@ -42,7 +42,7 @@ export function MobileWorkbench() {
       data-testid="mobile-workbench"
       className="flex flex-col h-screen w-full bg-[#0B0D10] text-[#F5F7FA] overflow-hidden"
     >
-      <TopToolbar />
+      <TopToolbar historySaveStatus={historySaveStatus} />
       {lastActionMessage && mobileTab !== 'command' && (
         <div
           data-testid="mobile-action-feedback"

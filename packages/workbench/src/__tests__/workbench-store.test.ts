@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { getNodePath, findNodeById } from '../utils/tree-helpers.js';
 import { getScopedDNA } from '../utils/dna-helpers.js';
+import { createCheckpoint } from '../history/checkpoints.js';
 
 describe('Workbench Store & Tree Navigation', () => {
   beforeEach(() => {
@@ -169,5 +170,19 @@ describe('Workbench Store & Tree Navigation', () => {
     // Redo mutation
     useWorkbenchStore.getState().redo();
     expect(useWorkbenchStore.getState().manifest.designDNA.professionalism).toBe(99);
+  });
+
+  it('keeps checkpoint restoration within the same 50-step history limit as other edits', () => {
+    for (let value = 0; value < 51; value += 1) {
+      useWorkbenchStore.getState().updateProjectDNA({ visualAmbition: value });
+    }
+    const current = useWorkbenchStore.getState().manifest;
+    const checkpoint = createCheckpoint(current, { name: 'bounded restore', trigger: 'manual' });
+
+    useWorkbenchStore.getState().restoreCheckpoint(checkpoint);
+
+    expect(useWorkbenchStore.getState().history).toHaveLength(50);
+    useWorkbenchStore.getState().undo();
+    expect(useWorkbenchStore.getState().manifest.designDNA.visualAmbition).toBe(current.designDNA.visualAmbition);
   });
 });

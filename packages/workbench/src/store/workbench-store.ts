@@ -180,7 +180,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     const restored = restoreCheckpoint(checkpoint);
     set({
       manifest: restored,
-      history: [manifest, ...history],
+      history: [manifest, ...history.slice(0, 49)],
       future: [],
       selectedNodeId: null,
     });
