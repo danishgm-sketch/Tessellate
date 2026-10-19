@@ -542,7 +542,7 @@ function renderNodeToJsx(
   // 2. Built-in Semantic Roles
   if (node.semanticRole === 'navigation-header') {
     const title = (node.props['title'] as string) || 'Header';
-    return `${indent}<AppHeader title="${title}" />`;
+    return `${indent}<AppHeader title={${JSON.stringify(title)}} />`;
   }
 
   if (node.semanticRole === 'metric-kpi') {
@@ -550,18 +550,18 @@ function renderNodeToJsx(
     const value = (node.props['value'] as string) || (node.slots?.['value'] as string) || '0';
     const change = (node.props['change'] as string) || '';
     const isPositive = Boolean(node.props['isPositive']);
-    return `${indent}<MetricCard title="${title}" value="${value}" change="${change}" isPositive={${isPositive}} />`;
+    return `${indent}<MetricCard title={${JSON.stringify(title)}} value={${JSON.stringify(value)}} change={${JSON.stringify(change)}} isPositive={${isPositive}} />`;
   }
 
   if (node.semanticRole === 'action-button') {
     const label = (node.props['label'] as string) || (node.slots?.['label'] as string) || 'Action';
     const variant = (node.props['variant'] as string) || 'primary';
-    return `${indent}<Button variant="${variant}" label="${label}" />`;
+    return `${indent}<Button variant={${JSON.stringify(variant)}} label={${JSON.stringify(label)}} />`;
   }
 
   if (node.semanticRole === 'status-indicator') {
     const text = (node.props['children'] as string) || 'Active';
-    return `${indent}<div className="${className}">${text}</div>`;
+    return `${indent}<div className={${JSON.stringify(className)}}>{${JSON.stringify(text)}}</div>`;
   }
 
   // 3. Layout / Generic Containers

@@ -328,6 +328,40 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         ],
       },
     };
+    screenNavigationProject.screens[0]!.rootNode.children.unshift(
+      {
+        id: 'export-user-authored-header',
+        nodeType: 'component',
+        semanticRole: 'navigation-header',
+        props: { title: `People's "Today" < overview` },
+        slots: {},
+        children: [],
+      },
+      {
+        id: 'export-user-authored-metric',
+        nodeType: 'component',
+        semanticRole: 'metric-kpi',
+        props: { title: `People's "headcount"`, value: '500 employees', change: '+8% this month' },
+        slots: {},
+        children: [],
+      },
+      {
+        id: 'export-user-authored-action',
+        nodeType: 'component',
+        semanticRole: 'action-button',
+        props: { label: `Invite "a colleague"` },
+        slots: {},
+        children: [],
+      },
+      {
+        id: 'export-user-authored-status',
+        nodeType: 'component',
+        semanticRole: 'status-indicator',
+        props: { className: 'sample-status', children: 'New hires < starting this week & ready' },
+        slots: {},
+        children: [],
+      },
+    );
     const sourceTree = generateSourceTree(screenNavigationProject);
 
     // Create a temporary export directory
@@ -423,6 +457,12 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
 
         expect(await page.getByText('Content from resource props').first().isVisible()).toBe(true);
         expect(await page.getByText('Content from nested manifest node').first().isVisible()).toBe(true);
+        expect(await page.getByText(`People's "Today" < overview`, { exact: true }).isVisible()).toBe(true);
+        expect(await page.getByText(`People's "headcount"`, { exact: true }).isVisible()).toBe(true);
+        expect(await page.getByText('500 employees', { exact: true }).isVisible()).toBe(true);
+        expect(await page.getByRole('button', { name: `Invite "a colleague"`, exact: true }).isVisible()).toBe(true);
+        expect(await page.getByText('New hires < starting this week & ready', { exact: true }).isVisible()).toBe(true);
+        expect(await page.locator('#root script').count()).toBe(0);
         const trackingAction = page.locator('[data-tracking-id="parity-action"]');
         if (await trackingAction.count() === 0) {
           const beforeDataAttributeFix = path.resolve(process.cwd(), 'audit/evidence/step-07/before/export-data-attribute-dropped.png');
@@ -448,6 +488,10 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         await dialog.screenshot({ path: dialogScreenshot });
         await page.keyboard.press('Escape');
         expect(await dialog.count()).toBe(0);
+        await page.evaluate(() => window.scrollTo(0, 0));
+        const authoredCopyScreenshot = path.resolve(process.cwd(), 'quality/evidence/step-23/after/user-authored-semantic-copy-desktop-1440.png');
+        fs.mkdirSync(path.dirname(authoredCopyScreenshot), { recursive: true });
+        await page.screenshot({ path: authoredCopyScreenshot });
 
         const hiddenOnMobile = page.locator('[data-node-id="parity-mobile-omit"]');
         const stackedOnMobile = page.locator('[data-node-id="parity-mobile-stack"]');
@@ -490,6 +534,9 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         expect(hiddenOnMobileIsVisible).toBe(false);
         expect(await stackedOnMobile.evaluate((element) => getComputedStyle(element).flexDirection)).toBe('column');
         expect(await collapsedOnMobile.evaluate((element) => getComputedStyle(element).overflowY)).toBe('hidden');
+        await page.evaluate(() => window.scrollTo(0, 0));
+        const authoredCopyMobileScreenshot = path.resolve(process.cwd(), 'quality/evidence/step-23/after/user-authored-semantic-copy-mobile-390.png');
+        await page.screenshot({ path: authoredCopyMobileScreenshot });
 
         const responsiveScreenshot = path.resolve(process.cwd(), 'audit/evidence/step-07/after/standalone-export-gold-responsive-390.png');
         await page.locator('[data-node-id="parity-mobile-stack"]').screenshot({ path: responsiveScreenshot });
