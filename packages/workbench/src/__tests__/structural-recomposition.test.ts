@@ -61,6 +61,40 @@ describe('Genuine Structural Recomposition & Hash Verification (Req 5)', () => {
     expect(rootNode.props['layoutVariant']).toBe('modular-grid');
   });
 
+  it('divergence 50 creates the middle split grammar while locked nodes survive byte-equivalent', () => {
+    const manifest = createSampleProject();
+    const chartNode = findNodeById(manifest.screens[0]!.rootNode, 'node-chart-overview')!;
+    const lockedManifest = executeMutation(manifest, {
+      id: 'mut-lock-50',
+      type: 'LOCK_NODE',
+      targetId: chartNode.id,
+      payload: {
+        targetNodeId: chartNode.id,
+        lockTypes: ['node', 'structure', 'style', 'content'],
+      },
+      actor: 'user',
+      timestamp: new Date().toISOString(),
+      preconditionRevision: manifest.historyMeta.headRevision,
+    }).nextManifest;
+    const lockedChart = findNodeById(lockedManifest.screens[0]!.rootNode, chartNode.id)!;
+    const originalHash = computeCanonicalSubtreeHash(lockedChart);
+
+    const result = recomposeScreenAroundLocks(lockedManifest, 'screen-overview', {
+      divergenceLevel: 50,
+      seed: 'div-50-middle',
+    });
+    const recomposed = new HistoryManager().execute(lockedManifest, result.operation).nextManifest;
+    const root = recomposed.screens[0]!.rootNode;
+    const nodes = flattenTree(root);
+    const splitContainer = nodes.find((node) => node.semanticRole === 'grid-dashboard-container');
+
+    expect(computeCanonicalSubtreeHash(findNodeById(root, chartNode.id)!)).toBe(originalHash);
+    expect(root.props['layoutVariant']).toBe('split-focus');
+    expect(splitContainer).toBeDefined();
+    expect(splitContainer!.children.length).toBeGreaterThan(0);
+    expect(nodes.map((node) => node.id)).toHaveLength(new Set(nodes.map((node) => node.id)).size);
+  });
+
   it('divergence 70 creates a materially different hierarchy while locked nodes survive byte-equivalent', () => {
     const manifest = createSampleProject();
 

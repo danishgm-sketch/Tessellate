@@ -27,6 +27,7 @@ export function MobileWorkbench() {
   const mobileTab = useWorkbenchStore((state) => state.mobileTab);
   const setMobileTab = useWorkbenchStore((state) => state.setMobileTab);
   const reducedMotion = useWorkbenchStore((state) => state.reducedMotion);
+  const lastActionMessage = useWorkbenchStore((state) => state.lastActionMessage);
 
   const tabs: Array<{ id: MobileTab; label: string; icon: React.ReactNode }> = [
     { id: 'preview', label: 'Preview', icon: <Eye className="h-4 w-4" /> },
@@ -42,6 +43,16 @@ export function MobileWorkbench() {
       className="flex flex-col h-screen w-full bg-[#0B0D10] text-[#F5F7FA] overflow-hidden"
     >
       <TopToolbar />
+      {lastActionMessage && mobileTab !== 'command' && (
+        <div
+          data-testid="mobile-action-feedback"
+          role="status"
+          aria-live="polite"
+          className="shrink-0 border-b border-[#272C34] bg-[#111217] px-4 py-2 text-xs leading-5 text-[#D7DCE5]"
+        >
+          {lastActionMessage}
+        </div>
+      )}
       {/* Main Content Area */}
       <div className="relative z-0 flex-1 overflow-y-auto">
         {mobileTab === 'preview' && (
