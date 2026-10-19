@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import { AuditPanel } from '../audit/AuditPanel.js';
 
-export function MobileWorkbench({ historySaveStatus = 'saved' }: { historySaveStatus?: 'loading' | 'saving' | 'saved' }) {
+export function MobileWorkbench({ historySaveStatus = 'saved', storageWarning = null }: { historySaveStatus?: 'loading' | 'saving' | 'saved' | 'unavailable'; storageWarning?: string | null }) {
   const manifest = useWorkbenchStore((state) => state.manifest);
   const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
@@ -43,6 +43,11 @@ export function MobileWorkbench({ historySaveStatus = 'saved' }: { historySaveSt
       className="flex flex-col h-screen w-full bg-[#0B0D10] text-[#F5F7FA] overflow-hidden"
     >
       <TopToolbar historySaveStatus={historySaveStatus} />
+      {storageWarning && (
+        <div role="status" aria-live="polite" data-testid="storage-warning" className="border-b border-amber-500/30 bg-amber-950/40 px-3 py-2 text-xs text-amber-100">
+          {storageWarning}
+        </div>
+      )}
       {lastActionMessage && mobileTab !== 'command' && (
         <div
           data-testid="mobile-action-feedback"

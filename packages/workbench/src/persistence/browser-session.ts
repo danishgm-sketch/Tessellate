@@ -1,44 +1,107 @@
 import type { ProjectManifest } from '@tessellate/schemas';
-import { loadLocalProject, saveLocalProject } from './storage.js';
+import { listLocalProjects, loadLocalProject, saveLocalProject } from './storage.js';
 import { safelyLoadProjectRecord } from './recovery.js';
 
 export interface BrowserProjectLoad {
   manifest: ProjectManifest | null;
   damagedRecords: Array<{ raw: string; reason: string }>;
+  storageWarnings: string[];
+  migrated: boolean;
+}
+
+function storageFailureMessage(error: unknown, operation: 'read' | 'write'): string {
+  const name = typeof error === 'object' && error !== null && 'name' in error ? String(error.name) : '';
+  if (name === 'QuotaExceededError' || name === 'NS_ERROR_DOM_QUOTA_REACHED') {
+    return 'The browser recovery journal storage is full.';
+  }
+  return operation === 'read'
+    ? 'The browser recovery journal could not be read.'
+    : 'The browser recovery journal could not be written.';
 }
 
 /** Validate both stores; the synchronous journal records the latest user intent,
  * including Undo to an older timestamp. Legacy stores use timestamp comparison. */
 export async function loadBrowserProject(projectId?: string): Promise<BrowserProjectLoad> {
-  const result: BrowserProjectLoad = {manifest:null, damagedRecords:[]};
+  const result: BrowserProjectLoad = {manifest:null, damagedRecords:[], storageWarnings:[], migrated:false};
+  const addStorageWarning = (message: string) => {
+    if (!result.storageWarnings.includes(message)) result.storageWarnings.push(message);
+  };
+  const addDamagedRecord = (raw: string, reason: string) => {
+    if (!result.damagedRecords.some((record) => record.raw === raw && record.reason === reason)) {
+      result.damagedRecords.push({ raw, reason });
+    }
+  };
+  const migratedProjectIds = new Set<string>();
+  try {
+    const probeKey = `tessellate_storage_probe_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+    localStorage.setItem(probeKey, '1');
+    localStorage.removeItem(probeKey);
+  } catch (error) {
+    addStorageWarning(storageFailureMessage(error, 'write'));
+  }
   const candidates: ProjectManifest[] = [];
   let journal:ProjectManifest | null=null;
   const keys = projectId ? [`tessellate_project_${projectId}`, 'tessellate_active_project'] : ['tessellate_active_project'];
   for (const key of keys) {
-    const raw = localStorage.getItem(key);
+    let raw: string | null;
+    try {
+      raw = localStorage.getItem(key);
+    } catch (error) {
+      addStorageWarning(storageFailureMessage(error, 'read'));
+      continue;
+    }
     if (!raw) continue;
     try {
       const record = safelyLoadProjectRecord(JSON.parse(raw));
-      if (record.status === 'corrupted') result.damagedRecords.push({raw, reason: record.validationIssues.join('; ')});
+      if (record.status === 'corrupted') addDamagedRecord(raw, record.validationIssues.join('; '));
       else if (!projectId || record.manifest.id === projectId) {
+        if (record.status === 'recovered') migratedProjectIds.add(record.manifest.id);
         candidates.push(record.manifest);
-        if(localStorage.getItem(`tessellate_journal_version_${record.manifest.id}`)==='1') journal ??=record.manifest;
+        try {
+          if (localStorage.getItem(`tessellate_journal_version_${record.manifest.id}`) === '1') journal ??=record.manifest;
+        } catch (error) {
+          addStorageWarning(storageFailureMessage(error, 'read'));
+        }
       }
     } catch (error) {
-      result.damagedRecords.push({raw, reason:String(error)});
+      addDamagedRecord(raw, String(error));
     }
   }
-  const id = projectId ?? candidates[0]?.id;
+  let id = projectId ?? candidates[0]?.id;
+  if (!id && result.storageWarnings.length > 0) {
+    try {
+      const projects = await listLocalProjects();
+      id = projects.sort((a, b) => Date.parse(b.updatedAt) - Date.parse(a.updatedAt))[0]?.id;
+    } catch {
+      addStorageWarning('The local project database could not be listed.');
+    }
+  }
   if (id) {
-    const stored = await loadLocalProject(id);
+    let stored: ProjectManifest | null;
+    try {
+      stored = await loadLocalProject(id);
+    } catch {
+      stored = null;
+      addStorageWarning('The local project database could not be read; the browser recovery journal will be used when available.');
+    }
     if (stored) {
       const record = safelyLoadProjectRecord(stored);
-      if (record.status === 'corrupted') result.damagedRecords.push({raw: JSON.stringify(stored), reason:record.validationIssues.join('; ')});
-      else candidates.push(record.manifest);
+      if (record.status === 'corrupted') addDamagedRecord(JSON.stringify(stored), record.validationIssues.join('; '));
+      else {
+        if (record.status === 'recovered') migratedProjectIds.add(record.manifest.id);
+        candidates.push(record.manifest);
+      }
     }
   }
   candidates.sort((a,b) => Date.parse(b.updatedAt)-Date.parse(a.updatedAt) || b.historyMeta.headRevision-a.historyMeta.headRevision);
   result.manifest = journal ?? candidates[0] ?? null;
+  result.migrated = Boolean(result.manifest && migratedProjectIds.has(result.manifest.id));
+  if (result.migrated) addStorageWarning('Older project data was upgraded to the current schema.');
+  if (result.manifest && result.storageWarnings.length > 0 && candidates.length > 0 && !journal) {
+    if (!result.storageWarnings.some((warning) => warning.includes('local database'))) {
+      result.storageWarnings.push('The project was restored from local database storage.');
+    }
+  }
   return result;
 }
 
@@ -50,11 +113,31 @@ export function journalBrowserProject(manifest: ProjectManifest): void {
   localStorage.setItem(`tessellate_journal_version_${manifest.id}`,'1');
 }
 
-export function createProjectSaver(onError: (error: unknown) => void) {
+export function createProjectSaver(onWarning: (warning: string, undoHistoryAvailable: boolean) => void) {
   let queue = Promise.resolve();
   return (manifest: ProjectManifest) => {
-    try { journalBrowserProject(manifest); } catch(error) { onError(error); }
-    queue = queue.then(() => saveLocalProject(manifest)).catch(onError);
+    let journalError: unknown;
+    try { journalBrowserProject(manifest); } catch(error) { journalError = error; }
+    queue = queue.then(async () => {
+      try {
+        const mode = await saveLocalProject(manifest);
+        if (mode === 'memory') {
+          if (journalError) {
+            onWarning('The project could not be saved to browser storage. Export the manifest before closing this tab.', false);
+          } else {
+            onWarning('IndexedDB is unavailable. The project is saved in the browser recovery journal, but undo history will not survive a reload.', false);
+          }
+        } else if (journalError) {
+          onWarning(`${storageFailureMessage(journalError, 'write')} The project was saved to local database storage.`, true);
+        }
+      } catch {
+        if (journalError) {
+          onWarning('The project could not be saved to browser storage. Export the manifest before closing this tab.', false);
+        } else {
+          onWarning('IndexedDB is unavailable. The browser recovery journal has the current project, but undo history may not survive a reload.', false);
+        }
+      }
+    });
     return queue;
   };
 }

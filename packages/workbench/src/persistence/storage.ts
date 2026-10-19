@@ -51,10 +51,10 @@ const memoryCheckpoints = new Map<string, Checkpoint & { projectId: string }>();
 const memoryHistory = new Map<string, MemoryHistoryState>();
 const historySnapshotIds = new WeakMap<ProjectManifest, Map<string, string>>();
 const persistedHistoryIds = new Map<string, Set<string>>();
-const historyWriteQueues = new Map<string, Promise<void>>();
+const historyWriteQueues = new Map<string, Promise<'indexeddb' | 'memory'>>();
 let nextHistorySnapshotId = 1;
 
-function hasIndexedDB(): boolean {
+export function hasIndexedDB(): boolean {
   return typeof window !== 'undefined' && typeof window.indexedDB !== 'undefined';
 }
 
@@ -90,10 +90,10 @@ function openDB(): Promise<IDBDatabase> {
 /**
  * Saves or updates a project manifest in local IndexedDB (or fallback).
  */
-export async function saveLocalProject(manifest: ProjectManifest): Promise<void> {
+export async function saveLocalProject(manifest: ProjectManifest): Promise<'indexeddb' | 'memory'> {
   if (!hasIndexedDB()) {
     memoryProjects.set(manifest.id, JSON.parse(JSON.stringify(manifest)));
-    return;
+    return 'memory';
   }
 
   const db = await openDB();
@@ -102,7 +102,7 @@ export async function saveLocalProject(manifest: ProjectManifest): Promise<void>
     const store = tx.objectStore(STORE_PROJECTS);
     const req = store.put(JSON.parse(JSON.stringify(manifest)));
 
-    tx.oncomplete = () => { db.close(); resolve(); };
+    tx.oncomplete = () => { db.close(); resolve('indexeddb'); };
     tx.onabort = () => { db.close(); reject(tx.error ?? new Error('Local project transaction aborted.')); };
     tx.onerror = () => { db.close(); reject(tx.error); };
     req.onerror = () => reject(req.error);
@@ -244,8 +244,8 @@ export function saveLocalHistoryState(
   manifest: ProjectManifest,
   history: ProjectManifest[],
   future: ProjectManifest[]
-): Promise<void> {
-  const previous = historyWriteQueues.get(projectId) ?? Promise.resolve();
+): Promise<'indexeddb' | 'memory'> {
+  const previous = historyWriteQueues.get(projectId) ?? Promise.resolve<'indexeddb' | 'memory'>('memory');
   const queued = previous.catch(() => undefined).then(() => persistLocalHistoryState(projectId, manifest, history, future));
   historyWriteQueues.set(projectId, queued);
   void queued.finally(() => {
@@ -259,7 +259,7 @@ async function persistLocalHistoryState(
   manifest: ProjectManifest,
   history: ProjectManifest[],
   future: ProjectManifest[]
-): Promise<void> {
+): Promise<'indexeddb' | 'memory'> {
   const pointer = makeHistoryPointer(projectId, manifest, history, future);
   const manifests = new Map<string, ProjectManifest>();
   for (const snapshot of [manifest, ...history, ...future]) {
@@ -273,12 +273,12 @@ async function persistLocalHistoryState(
     const keep = new Set([pointer.currentId, ...pointer.historyIds, ...pointer.futureIds]);
     for (const id of snapshots.keys()) if (!keep.has(id)) snapshots.delete(id);
     memoryHistory.set(projectId, { pointer, snapshots });
-    return;
+    return 'memory';
   }
 
   const db = await openDB();
   const previouslyPersisted = persistedHistoryIds.get(projectId) ?? new Set<string>();
-  await new Promise<void>((resolve, reject) => {
+  return new Promise<'indexeddb' | 'memory'>((resolve, reject) => {
     const tx = db.transaction(STORE_HISTORY, 'readwrite');
     const store = tx.objectStore(STORE_HISTORY);
     for (const [id, snapshot] of manifests) {
@@ -300,7 +300,7 @@ async function persistLocalHistoryState(
       const persisted = new Set([...keep].filter((key) => key !== pointer.key));
       persistedHistoryIds.set(projectId, persisted);
       db.close();
-      resolve();
+      resolve('indexeddb');
     };
     tx.onabort = () => { db.close(); reject(tx.error ?? new Error('Local undo history transaction aborted.')); };
     tx.onerror = () => { db.close(); reject(tx.error); };

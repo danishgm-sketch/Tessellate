@@ -1,5 +1,5 @@
 import {loadCheckpointJournal,saveCheckpointJournal} from '../persistence/checkpoint-journal.js';
-import { loadLocalHistoryState, saveLocalHistoryState } from '../persistence/storage.js';
+import { hasIndexedDB, loadLocalHistoryState, saveLocalHistoryState } from '../persistence/storage.js';
 import { composeProjectPipeline } from '@tessellate/compatibility';
 import React, { useEffect, useState } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
@@ -33,8 +33,9 @@ export function WorkbenchShell() {
 
   const [isMobileScreen, setIsMobileScreen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [historySaveStatus, setHistorySaveStatus] = useState<'loading' | 'saving' | 'saved'>('loading');
+  const [historySaveStatus, setHistorySaveStatus] = useState<'loading' | 'saving' | 'saved' | 'unavailable'>('loading');
   const [storageError, setStorageError] = useState<string | null>(null);
+  const [storageWarning, setStorageWarning] = useState<string | null>(null);
   const [damagedRecords, setDamagedRecords] = useState<Array<{raw:string; reason:string}>>([]);
 
   // Load project from URL or local persistence on mount
@@ -46,7 +47,21 @@ export function WorkbenchShell() {
     const projectId=params.get('project') ?? undefined;
     const showcaseId=params.get('showcase');
     const resourceSlug=params.get('resource');
-    const saver = createProjectSaver(error => { if (!disposed) setStorageError(`Local save failed: ${String(error)}. Export your manifest before leaving.`); });
+    const addStorageWarning = (warning: string) => {
+      if (!disposed) setStorageWarning((current) => {
+        if (!current || current.includes(warning) || current.startsWith(warning)) return current ?? warning;
+        if (warning.startsWith(current)) return warning;
+        return `${current} ${warning}`;
+      });
+    };
+    let durableHistoryAvailable = true;
+    const saver = createProjectSaver((warning, undoHistoryAvailable) => {
+      addStorageWarning(warning);
+      if (!undoHistoryAvailable && !disposed) {
+        durableHistoryAvailable = false;
+        setHistorySaveStatus('unavailable');
+      }
+    });
     Promise.all([
       loadBrowserProject(projectId),
       fetch('/data/catalog.json').then(async response => {
@@ -57,6 +72,7 @@ export function WorkbenchShell() {
     ]).then(async ([loaded, catalog]) => {
       if (disposed) return;
       setDamagedRecords(loaded.damagedRecords);
+      loaded.storageWarnings.forEach(addStorageWarning);
       setActiveCatalog(catalog);
       if(showcaseId || resourceSlug){
         void (async()=>{
@@ -72,9 +88,19 @@ export function WorkbenchShell() {
       }
       else if (loaded.manifest) {
         setManifest(loaded.manifest);
-        const history = await loadLocalHistoryState(loaded.manifest.id);
+        if (loaded.migrated) await saver(loaded.manifest);
+        try {
+          const history = await loadLocalHistoryState(loaded.manifest.id);
+          if (history) useWorkbenchStore.setState({ history: history.history, future: history.future });
+          if (!hasIndexedDB()) {
+            durableHistoryAvailable = false;
+            addStorageWarning('Undo and redo history are only available until this tab closes because IndexedDB is unavailable.');
+          }
+        } catch {
+          durableHistoryAvailable = false;
+          addStorageWarning('Undo and redo history could not be restored because IndexedDB is unavailable.');
+        }
         if (disposed) return;
-        if (history) useWorkbenchStore.setState({ history: history.history, future: history.future });
       }
       else if (projectId) throw new Error(`Project ${projectId} was not found in this browser.`);
       else if (loaded.damagedRecords.length===0) {
@@ -84,11 +110,15 @@ export function WorkbenchShell() {
         void saver(starter);
       }
       if(loaded.manifest && !showcaseId && !resourceSlug){
-        const checkpoints=await loadCheckpointJournal(loaded.manifest.id);
-        if(disposed)return;
-        if(checkpoints.length)useWorkbenchStore.setState({checkpoints});
+        try {
+          const checkpoints=await loadCheckpointJournal(loaded.manifest.id);
+          if(disposed)return;
+          if(checkpoints.length)useWorkbenchStore.setState({checkpoints});
+        } catch {
+          addStorageWarning('Saved checkpoints could not be restored because browser storage is unavailable.');
+        }
       }
-      setHistorySaveStatus('saved');
+      setHistorySaveStatus(durableHistoryAvailable ? 'saved' : 'unavailable');
       // Never overwrite corrupt records with a sample. Recovery remains read-only.
       if (loaded.damagedRecords.length === 0) {
         let pendingHistory: { manifest: ProjectManifest; history: ProjectManifest[]; future: ProjectManifest[] } | null = null;
@@ -100,11 +130,24 @@ export function WorkbenchShell() {
             while (pendingHistory) {
               const snapshot = pendingHistory;
               pendingHistory = null;
-              await saveLocalHistoryState(snapshot.manifest.id, snapshot.manifest, snapshot.history, snapshot.future);
+              const mode = await saveLocalHistoryState(snapshot.manifest.id, snapshot.manifest, snapshot.history, snapshot.future);
+              if (mode === 'memory') {
+                durableHistoryAvailable = false;
+                if (!disposed) {
+                  setHistorySaveStatus('unavailable');
+                  addStorageWarning('Undo and redo history are only available until this tab closes because IndexedDB is unavailable.');
+                }
+              } else if (!disposed) {
+                durableHistoryAvailable = true;
+                setHistorySaveStatus('saved');
+              }
             }
-            if (!disposed) setHistorySaveStatus('saved');
-          } catch (error) {
-            if (!disposed) setStorageError(`Undo history save failed: ${String(error)}. Export the current manifest before leaving.`);
+          } catch {
+            durableHistoryAvailable = false;
+            if (!disposed) {
+              setHistorySaveStatus('unavailable');
+              addStorageWarning('Undo and redo history could not be saved because IndexedDB is unavailable.');
+            }
           } finally {
             historySaveRunning = false;
             if (pendingHistory) void flushHistory();
@@ -118,7 +161,7 @@ export function WorkbenchShell() {
               try {
                 const raw=localStorage.getItem(`tessellate_directions_${previous.manifest.id}`);
                 if(raw && !localStorage.getItem(`tessellate_directions_${state.manifest.id}`))localStorage.setItem(`tessellate_directions_${state.manifest.id}`,JSON.stringify(ProjectManifestSchema.array().parse(JSON.parse(raw))));
-              }catch(error){if(!disposed)setStorageError(`Direction metadata could not be carried forward: ${String(error)}. Your current project is preserved.`);}
+              }catch(error){if(!disposed)addStorageWarning(`Direction metadata could not be carried forward: ${String(error)}. Your current project is preserved.`);}
             }
           }
           if (state.manifest !== previous.manifest || state.history !== previous.history || state.future !== previous.future) {
@@ -126,7 +169,7 @@ export function WorkbenchShell() {
             if (!disposed) setHistorySaveStatus('saving');
             void flushHistory();
           }
-          if(state.checkpoints!==previous.checkpoints)void saveCheckpointJournal(state.manifest.id,state.checkpoints).catch(error=>{if(!disposed)setStorageError(`Checkpoint save failed: ${String(error)}. Export your current project.`);});
+          if(state.checkpoints!==previous.checkpoints)void saveCheckpointJournal(state.manifest.id,state.checkpoints).catch(()=>{if(!disposed)addStorageWarning('Checkpoint saving is limited because browser storage is unavailable. Export the current project before closing this tab.');});
         });
       }
       if(!showcaseId && !resourceSlug){setLoading(false);if(params.get('open')==='blend')useWorkbenchStore.getState().openBlend();}
@@ -233,7 +276,7 @@ export function WorkbenchShell() {
 
   // Mobile layout below 1024px
   if (isMobileScreen) {
-    return <MobileWorkbench historySaveStatus={historySaveStatus} />;
+    return <MobileWorkbench historySaveStatus={historySaveStatus} storageWarning={storageWarning} />;
   }
 
   // Desktop viewport-filling shell
@@ -244,6 +287,11 @@ export function WorkbenchShell() {
     >
       {/* 56px Top Toolbar */}
       <TopToolbar historySaveStatus={historySaveStatus} />
+      {storageWarning && (
+        <div role="status" aria-live="polite" data-testid="storage-warning" className="border-b border-amber-500/30 bg-amber-950/40 px-4 py-2 text-xs text-amber-100">
+          {storageWarning}
+        </div>
+      )}
 
       {/* Main 3-column composition canvas workspace */}
       <div className="flex-1 flex overflow-hidden relative">

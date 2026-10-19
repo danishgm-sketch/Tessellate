@@ -17,7 +17,7 @@ import {
 import { ExportValidationError, generateSourceTree, createZipArchive } from '@tessellate/exporter';
 import { CheckpointsMenu } from './checkpoints/CheckpointsMenu.js';
 
-export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?: 'loading' | 'saving' | 'saved' }) {
+export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?: 'loading' | 'saving' | 'saved' | 'unavailable' }) {
   const manifest = useWorkbenchStore((state) => state.manifest);
   const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
   const updateProjectName = useWorkbenchStore((state) => state.updateProjectName);
@@ -138,13 +138,13 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
         <div
           data-testid="history-save-status"
           data-state={historySaveStatus}
-          title={`Project and undo history ${historySaveStatus} on this device`}
-          aria-label={`Project and undo history ${historySaveStatus} on this device`}
+          title={historySaveStatus === 'unavailable' ? 'Undo and redo history may not survive a reload on this device' : `Project and undo history ${historySaveStatus} on this device`}
+          aria-label={historySaveStatus === 'unavailable' ? 'Undo and redo history unavailable after reload' : `Project and undo history ${historySaveStatus} on this device`}
           className="flex items-center gap-1 rounded-full bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] px-2 py-0.5 text-[10px] font-mono text-[#62666F] dark:text-[#A8AFBA]"
         >
-          <Database className="h-2.5 w-2.5 text-emerald-700" />
+          <Database className={`h-2.5 w-2.5 ${historySaveStatus === 'unavailable' ? 'text-amber-500' : 'text-emerald-700'}`} />
           <span>Local</span>
-          <span className="text-[9px] uppercase tracking-wide">{historySaveStatus === 'loading' ? 'Loading' : historySaveStatus === 'saving' ? 'Saving' : 'Saved'}</span>
+          <span className="text-[9px] uppercase tracking-wide">{historySaveStatus === 'loading' ? 'Loading' : historySaveStatus === 'saving' ? 'Saving' : historySaveStatus === 'unavailable' ? 'History limited' : 'Saved'}</span>
         </div>
       </div>
 
