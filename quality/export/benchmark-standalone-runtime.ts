@@ -52,7 +52,7 @@ const options = new Map(process.argv.slice(2).map((argument, index, args) => [
   args[index + 1],
 ]));
 const requestedLimit = Number(options.get('--limit') ?? benchmark.briefs.length);
-const workerCount = Math.max(1, Math.min(8, Number(options.get('--jobs') ?? 4)));
+const workerCount = Math.max(1, Math.min(8, Number(options.get('--jobs') ?? 2)));
 if (!Number.isInteger(requestedLimit) || requestedLimit <= 0) throw new Error('Use a positive --limit.');
 const briefs = benchmark.briefs.slice(0, requestedLimit);
 const directions = ['A', 'B', 'C'] as const;
@@ -182,6 +182,7 @@ function saveReport() {
     updatedAt: new Date().toISOString(),
     expectedBriefs: briefs.length,
     expectedProjects: briefs.length * directions.length,
+    workerCount,
     completedProjects: results.length,
     failedProjects: results.filter((result) => result.error).length,
     results,
