@@ -12,11 +12,12 @@ import { reportsRoute } from './routes/reports.js';
 import { inferenceRoute } from './routes/inference.js';
 import type { Env } from './types.js';
 import { verifySecret } from './secrets.js';
+import { boundApiRequestBody } from './request-body.js';
 
 const app = new Hono<{ Bindings: Env }>();
 
 app.use('/api/*', async (c, next) => {
-  const hostControl = /^\/api\/inference\/(heartbeat|poll|complete)$/.test(c.req.path);
+  const hostControl = /^\/api\/inference\/(heartbeat|poll|complete|fail)$/.test(c.req.path);
   if (!hostControl && c.env?.TESSELLATE_GATEWAY_SECRET &&
       !await verifySecret(c.req.header('X-Tessellate-Gateway'), c.env.TESSELLATE_GATEWAY_SECRET)) {
     return c.json({ error: 'Unauthorized' }, 401);
@@ -56,6 +57,18 @@ app.use('*', async (c, next) => {
   c.header('X-Frame-Options', 'DENY');
   c.header('Referrer-Policy', 'strict-origin-when-cross-origin');
   c.header('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+});
+
+app.use('/api/*', async (c, next) => {
+  const bounded = await boundApiRequestBody(c.req.raw);
+  if (!bounded.ok) {
+    return c.json(
+      { error: 'Payload too large', message: 'Request body exceeds this endpoint’s size limit.' },
+      413
+    );
+  }
+  c.req.raw = bounded.request;
+  return next();
 });
 
 app.route('/api/ai', aiProxyRoute);

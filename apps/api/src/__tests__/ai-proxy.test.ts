@@ -30,6 +30,54 @@ describe('Apps/API: AI Proxy Worker Route', () => {
     expect(json.error).toBe('Payload too large');
   });
 
+  it('stops reading an oversized request stream as soon as it crosses the payload limit', async () => {
+    let pulledChunks = 0;
+    let cancelled = false;
+    const body = new ReadableStream<Uint8Array>({
+      pull(controller) {
+        pulledChunks += 1;
+        if (pulledChunks > 40) {
+          controller.close();
+          return;
+        }
+        controller.enqueue(new Uint8Array(64 * 1024));
+      },
+      cancel() {
+        cancelled = true;
+      },
+    });
+    const request = new Request('http://localhost/api/ai/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Content-Length': '1' },
+      body,
+      duplex: 'half',
+    } as RequestInit & { duplex: 'half' });
+
+    const res = await app.fetch(request);
+
+    expect(res.status).toBe(413);
+    expect(pulledChunks).toBeLessThan(20);
+    expect(cancelled).toBe(true);
+  });
+
+  it('rejects an upstream provider response that exceeds the response limit', async () => {
+    const mockFetch = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
+      new Response(new Uint8Array(8 * 1024 * 1024 + 1), {
+        status: 200,
+        headers: { 'content-type': 'application/json' },
+      })
+    );
+
+    try {
+      const res = await app.request('/api/ai/openai/v1/chat/completions', { method: 'POST', body: '{}' });
+
+      expect(res.status).toBe(502);
+      expect(await res.json()).toMatchObject({ error: 'Provider response too large' });
+    } finally {
+      mockFetch.mockRestore();
+    }
+  });
+
   it('proxies request to allowlisted provider and enforces strict no-cache headers', async () => {
     // Mock global fetch for upstream OpenAI call
     const mockFetch = vi.spyOn(globalThis, 'fetch').mockResolvedValue(
