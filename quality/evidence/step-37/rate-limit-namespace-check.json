@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-22",
+  "configs": [
+    {
+      "path": "apps/api/wrangler.jsonc",
+      "bindingCount": 5,
+      "namespaceIdsWellFormed": true
+    },
+    {
+      "path": "apps/laptop-backend/wrangler.jsonc",
+      "bindingCount": 5,
+      "namespaceIdsWellFormed": true
+    }
+  ],
+  "staticResult": {
+    "totalBindings": 10,
+    "uniqueIds": 10,
+    "idsAreTwelveDigitNumbers": true,
+    "bindingNamesMatchAcrossConfigs": true
+  },
+  "remoteResult": {
+    "wranglerVersion": "4.92.0",
+    "command": "pnpm --filter @tessellate/api exec wrangler whoami",
+    "status": "unverified",
+    "reason": "Wrangler returned 400 Bad Request while fetching the auth token and reported Not logged in.",
+    "cloudflareResourcesChanged": false
+  },
+  "interactiveLoginAttempt": {
+    "command": "pnpm --filter @tessellate/api exec wrangler login",
+    "status": "timed_out_waiting_for_authorization_code",
+    "checkedAt": "2026-10-22",
+    "reason": "Wrangler did not receive an OAuth callback before its login timeout.",
+    "cloudflareResourcesChanged": false
+  }
+}
