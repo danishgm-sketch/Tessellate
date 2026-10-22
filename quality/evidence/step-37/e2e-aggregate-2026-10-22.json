@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "STEP-37-E2E-2026-10-22",
+  "programmeStep": 37,
+  "title": "Aggregate local Playwright verification after preview-frame harness correction",
+  "command": "pnpm test:e2e",
+  "startedAtApproximate": true,
+  "recordedAtUtc": "2026-10-22T13:26:03.8418960Z",
+  "source": {
+    "head": "c6de9441f83527cef4f8a052cdc384e8e31111ca",
+    "branch": "consolidation/product-hardening",
+    "worktreeWasDirty": true,
+    "sourceNote": "Run exercised the current working tree on top of HEAD; this evidence does not certify the HEAD commit alone."
+  },
+  "result": {
+    "skipped": 133,
+    "passed": 438,
+    "failed": 0,
+    "status": "passed",
+    "exitCode": 0,
+    "total": 571
+  },
+  "suites": [
+    {
+      "failed": 0,
+      "name": "Astro preview",
+      "skipped": 100,
+      "projects": "Chromium desktop and mobile",
+      "passed": 262
+    },
+    {
+      "failed": 0,
+      "name": "Sites Worker",
+      "skipped": 33,
+      "projects": "Chromium desktop and mobile",
+      "passed": 173
+    },
+    {
+      "failed": 0,
+      "name": "Isolated preview app",
+      "skipped": 0,
+      "projects": "Chromium",
+      "passed": 3
+    }
+  ],
+  "coverageNotes": [
+    "The configured run includes the 324-resource responsive browser matrix, Gold accessibility and variant checks, route and Compose/Workbench flows, CSP and preview-isolation probes, and configured constrained-network and large-Workbench workloads.",
+    "Configured skips remain skips and are not treated as passes.",
+    "Playwright timing checks are local browser benchmarks; trace-based Core Web Vitals were not run because Chrome DevTools setup is pending.",
+    "No production Site was deployed or modified by this run."
+  ],
+  "materialToolWarnings": [
+    "Node reported that NO_COLOR is ignored when FORCE_COLOR is set. No test failed because of this warning."
+  ]
+}
