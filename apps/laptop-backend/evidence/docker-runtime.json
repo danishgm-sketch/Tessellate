@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-13T20:31:45.800Z",
+  "recordedAt": "2026-10-22T11:36:56.868Z",
   "checks": [
     {
       "check": "real-model-completion",
@@ -12,8 +12,16 @@
       "result": "PASS"
     },
     {
+      "check": "local-worker-rate-limit-simulation",
+      "result": "PASS",
+      "allowed": 20,
+      "rejected": 1,
+      "route": "/api/reports"
+    },
+    {
       "check": "queue-survives-api-container-restart",
-      "result": "PASS"
+      "result": "PASS",
+      "recoveryAttempts": 7
     },
     {
       "check": "host-stopped-features-unavailable",
@@ -24,6 +32,12 @@
     {
       "check": "pending-task-recovers-on-host-resume",
       "result": "PASS"
+    },
+    {
+      "check": "inference-recovers-after-host-container-restart",
+      "result": "PASS",
+      "action": "adjust-dna",
+      "recoveryAttempts": 1
     },
     {
       "check": "backend-stopped-network-unavailable",
