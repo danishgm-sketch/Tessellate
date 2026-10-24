@@ -235,7 +235,9 @@ test('phone header keeps its primary action on one line', async ({ page }) => {
     await page.goto('/');
     const action = page.getByRole('link', { name: 'Start building' });
     await expect(action).toBeVisible();
-    const lineCount = await action.locator('span').evaluate((element) => {
+    const visibleLabel = action.locator('span:visible');
+    await expect(visibleLabel).toHaveCount(1);
+    const lineCount = await visibleLabel.evaluate((element) => {
       const range = document.createRange();
       range.selectNodeContents(element);
       return range.getClientRects().length;

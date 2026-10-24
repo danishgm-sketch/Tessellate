@@ -3153,6 +3153,16 @@ with zero findings. That harness race is not counted as a product defect.
 - **Remediation:** Add stable IDs and names to the controlled fields.
 - **Verification:** Local browser tests pass with IDs/names in place. The current fields already have accessible names, so this is limited to browser form semantics and autofill. Public review verification remains pending.
 
+### AUD-319 — Mobile header actions exceeded the narrow viewport
+
+- **Severity:** Medium; responsive layout and navigation.
+- **Evidence:** The original layout measured `documentElement.scrollWidth=336` against `clientWidth=320` in both local desktop and mobile Playwright projects. The pull-request CI run also measured 376px at a 360px viewport. Before/after captures are `quality/evidence/step-45/cli-header-before-320.png` and `quality/evidence/step-45/cli-header-after-320.png`.
+- **Reproduction:** Open `/docs/cli/` at 320×844 and compare the document scroll width with the viewport client width. Before the fix, both browser projects failed the assertion. The existing 360px test failed in GitHub CI with 16px of horizontal overflow.
+- **Root cause:** The shared header used a full “Start building” label and 12px gaps in its mobile action group. The combined intrinsic widths exceeded the available row width on narrow screens and with wider font metrics.
+- **Affected code:** `apps/site/src/components/home/SiteHeader.tsx` and `tests/e2e/documentation-keyboard-regression.spec.ts`.
+- **Remediation:** Use smaller mobile gaps and the short visible “Build” label below 400px while retaining the established “Start building” accessible name and link destination.
+- **Verification:** The new 320px regression failed before the change and passes after it in desktop and mobile projects. The full local browser run passes with 548 passed, 149 configured skips, and zero failures; the Sites Worker certifies all 324 resources. Current-head GitHub CI and deployed Site verification are pending.
+
 ## LOW (continued)
 
 ### AUD-286 — Astro View Transitions allowed CSS declaration injection in an affected release

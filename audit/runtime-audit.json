@@ -10194,7 +10194,35 @@
       "status": "fixed-local-verified",
       "evidence": "quality/evidence/step-45/pre-rc-public-browser.json; tests/e2e/home-performance-step-38.spec.ts",
       "verification": "The current local HeroComposer assigns stable IDs and names to its interactive fields; its browser tests pass. These fields were already individually named for accessibility, so this finding is limited to form identity and autofill semantics. Public verification remains pending."
+    },
+    {
+      "id": "AUD-319",
+      "severity": "medium",
+      "route": "/docs/cli/",
+      "viewport": "320x844, 360x844",
+      "category": "visual",
+      "title": "Mobile header actions exceeded the narrow viewport",
+      "expected": "The public header should keep its navigation actions visible without widening the document beyond the viewport.",
+      "actual": "At 320px, the original full-width action label and 12px gaps produced document scrollWidth 336px (viewport clientWidth 320px). The pull-request CI run also measured 376px at a 360px viewport. The new mobile header layout measures 320px at 320px locally.",
+      "reproduction": [
+        "Open /docs/cli/ at 320x844 and inspect documentElement.scrollWidth against clientWidth.",
+        "Before the fix, Playwright reported 336px document width against a 320px client width in both desktop and mobile browser projects.",
+        "The failed GitHub CI run reported 376px document width against a 360px client width in the existing 360px regression."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-45/cli-header-after-320.png",
+      "beforeScreenshot": "quality/evidence/step-45/cli-header-before-320.png",
+      "rootCause": "The shared SiteHeader kept a long 'Start building' label and 12px gaps in the compact mobile action group. The combined intrinsic widths could exceed a narrow viewport, especially with wider font metrics.",
+      "affectedCode": [
+        "apps/site/src/components/home/SiteHeader.tsx",
+        "tests/e2e/documentation-keyboard-regression.spec.ts"
+      ],
+      "fixCommit": null,
+      "status": "fixed-local-verified",
+      "evidence": "quality/evidence/step-45/cli-header-before-320.png; quality/evidence/step-45/cli-header-after-320.png",
+      "verification": "A red-to-green Playwright regression checks 320px in both desktop and mobile projects. The header exposes the established Start building accessible name while showing a compact visible label below 400px. The full local browser run passes with 548 passed, 149 configured skips, and zero failures; the Sites Worker certifies all 324 resources. Current-head GitHub CI and deployed Site verification remain pending."
     }
   ],
-  "generatedAt": "2026-10-24T06:00:00Z"
+  "generatedAt": "2026-10-24T08:19:57Z"
 }

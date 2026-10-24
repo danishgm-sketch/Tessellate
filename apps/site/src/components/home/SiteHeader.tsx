@@ -52,7 +52,7 @@ export function SiteHeader() {
           </div>
 
           {/* Right: Search, GitHub, Sign In, CTA */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <button
               type="button"
               disabled={!interactive} onClick={() => setIsSearchOpen(true)}
@@ -86,9 +86,11 @@ export function SiteHeader() {
 
             <a
               href="/workbench"
+              aria-label="Start building"
               className="flex items-center gap-1.5 whitespace-nowrap rounded-lg bg-[#111217] px-2.5 py-2 text-xs font-semibold text-white hover:bg-[#2547E8] transition-colors shadow-sm sm:px-4"
             >
-              <span>Start building</span>
+              <span className="min-[400px]:hidden">Build</span>
+              <span className="hidden min-[400px]:inline">Start building</span>
               <ArrowRight className="h-3.5 w-3.5" />
             </a>
 

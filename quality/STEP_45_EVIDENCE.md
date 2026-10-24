@@ -1,6 +1,6 @@
 # Step 45 — Public review verification
 
-Status: in progress. No new version has been saved or deployed yet.
+Status: in progress. Sites version 21 was saved, but not deployed. It predates the AUD-319 narrow-header correction and is superseded; do not deploy it. A corrected version must be saved after the fix passes the release checks, then shown for owner approval.
 
 ## Baseline capture
 
@@ -47,7 +47,7 @@ are recorded in `quality/evidence/step-45/pre-rc-performance.json`.
   the deployed version. The local responsive change is covered by browser
   tests and is awaiting deployed verification.
 
-The audit contains 318 findings: 0 critical, 66 high, 238 medium, and 14 low.
+The audit contains 319 findings: 0 critical, 66 high, 239 medium, and 14 low.
 At this point 27 are closed after deployed verification, 203 are fixed locally
 and awaiting deployed checks, 86 are locally verified, and 2 retain a legacy
 `fixed` status. No new issue is closed based on local-only evidence.
@@ -58,9 +58,11 @@ On the current source, frozen install, catalogue build, typecheck, lint, all 77
 unit-test files (1,214 passed / 1 configured skip), all 16 behavioral release
 gates, resource-isolation, licence/provenance, secret/security/dependency audits,
 bundle budgets, production build (733 Astro pages), and the full three-profile
-E2E run passed. E2E totals are 544 passed, 149 configured skips, zero failures;
-the Sites Worker suite rendered/certified all 324 catalogue resources. Exact
-counts and limitations are in `quality/evidence/step-45/local-release-gates.json`.
+E2E run passed. E2E totals are 548 passed, 149 configured skips, zero failures
+(Astro: 290 passed / 108 skips; Sites Worker: 255 passed / 41 skips; isolated
+preview: 3 passed / 0 skips). The Sites Worker suite rendered/certified all 324
+catalogue resources. Exact counts and limitations are in
+`quality/evidence/step-45/local-release-gates.json`.
 Lint initially caught missing globals in the newly added evidence-capture script;
 the script declaration was corrected and lint rerun successfully before the full
 suite. Vite still prints its raw minified-chunk size warning, while the measured
@@ -68,10 +70,22 @@ gzip budgets pass.
 
 ## Release boundary
 
-The only version currently available to the public is version 20. No D1 or R2
-binding is configured. A new version will not be published until the source is
-committed and pushed, the matching artifact is saved, and the owner approves
-publication after inspecting that saved preview.
+The only version currently available to the public is version 20. Version 21
+was saved from Sites source commit
+`5b4280647b1ce9443e72d56a17f292810ecd2e63`; its deployment ID and hosted
+screenshot are null. D1 and R2 bindings are also null. The exact packaged
+Worker was smoke-tested locally at 1440×900 and 390×844: 26/26 requests returned
+HTTP 200, there were no console errors or horizontal overflow, and the mobile
+document width matched 390px. Its screenshots were shown in the Codex task but
+Sites did not provide a hosted preview URL. This version predates the latest
+narrow-header fix and is superseded. The fixed source must pass release checks
+and be saved as a new version; publication remains blocked pending the owner's
+approval of that exact version.
+
+The Sites source mirror excludes only the large audit screenshot/evidence
+directories to fit the connector's source-push limits. Those files remain in
+the canonical GitHub repository; the runtime application source is included in
+the saved Worker artifact.
 
 The Sites connector uses a separate `cloudflare_artifact` source repository
 whose own branch is `main`; it is not the canonical GitHub repository branch.

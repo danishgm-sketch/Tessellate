@@ -12,6 +12,17 @@ test('registry command is keyboard scrollable on mobile', async ({ page }) => {
   await expect(page.locator('pre')).toBeFocused();
 });
 
+test('the CLI documentation shell stays within a 320px phone viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 844 });
+  await page.goto('/docs/cli/');
+
+  const documentWidth = await page.evaluate(() => ({
+    viewport: document.documentElement.clientWidth,
+    document: document.documentElement.scrollWidth,
+  }));
+  expect(documentWidth.document).toBeLessThanOrEqual(documentWidth.viewport);
+});
+
 test('CLI examples stay within the phone viewport and long commands scroll by keyboard', async ({ page }) => {
   await page.setViewportSize({ width: 360, height: 844 });
   await page.goto('/docs/cli/');
