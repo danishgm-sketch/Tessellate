@@ -2,23 +2,31 @@ name: CI
 
 on:
   push:
-    branches: [main, 'antigravity/*']
+    branches: [main, 'antigravity/*', 'consolidation/product-hardening']
   pull_request:
     branches: [main]
 
 jobs:
-  validate:
-    runs-on: ubuntu-latest
+  windows-host-secret-acl:
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+      - name: Verify legacy laptop secret ACLs are restricted
+        shell: pwsh
+        run: ./scripts/tests/Test-LaptopSecretAcl.ps1
+
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v4
+        uses: pnpm/action-setup@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24.20.0
           cache: 'pnpm'
 
       - name: Install dependencies (frozen)
@@ -36,17 +44,11 @@ jobs:
       - name: Lint
         run: pnpm lint
 
-      - name: Licence & provenance audit
-        run: pnpm audit:licenses
-
-      - name: Secret & security audit
-        run: pnpm audit:secrets
-
       - name: Vitest (unit & integration)
         run: pnpm test
 
-      - name: Behavioural release gate
-        run: pnpm audit:release-gate
+      - name: Complete audits with fresh build prerequisites
+        run: pnpm audit:all
 
       - name: Production build
         run: pnpm build

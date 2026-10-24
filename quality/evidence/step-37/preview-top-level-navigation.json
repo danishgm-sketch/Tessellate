@@ -1,0 +1,49 @@
+{
+  "finding": "SEC-37-111",
+  "severity": "medium",
+  "title": "Standalone preview renderer could navigate the host tab",
+  "status": "fixed_locally_pending_deployed_verification",
+  "captured_at": "2026-10-21",
+  "reproduction": {
+    "before_fix": [
+      "Open /preview/?resource=button, create an external anchor with target _self, then activate it through anchor.click().",
+      "The direct preview document navigated the top-level tab to chrome-error://chromewebdata/ after the intercepted external request.",
+      "The response had sandbox allow-scripts CSP, but the preview was itself the top-level browsing context, so the sandbox could not keep the Site shell visible."
+    ],
+    "after_fix": [
+      "The top-level /preview route is a trusted wrapper with the actual renderer nested in an opaque iframe sandbox.",
+      "A browser document navigation to /preview-content is redirected to /preview; only the nested renderer is served as content.",
+      "Desktop 1440x900 and mobile 390x844 probes leave the top-level route unchanged, emit no external request, and report no uncaught errors."
+    ]
+  },
+  "root_cause": "The Sites adapter applied a CSP sandbox to the React preview document but served that document directly as the top-level page. A sandboxed top-level document can still navigate its own browsing context.",
+  "affected_files": [
+    "apps/site/src/pages/preview/index.astro",
+    "apps/site/src/pages/preview-content/index.astro",
+    "apps/site/src/scripts/preview-wrapper.ts",
+    "apps/site/src/components/PreviewHost.tsx",
+    "apps/sites/worker.ts",
+    "apps/sites/worker.test.ts",
+    "apps/sites/prepare-static.mjs",
+    "apps/sites/VALIDATION.md",
+    "tests/e2e/sites-preview-csp.spec.ts",
+    "tests/e2e/sites-unknown-resource-preview.spec.ts"
+  ],
+  "remediation": "Keep /preview as a constrained trusted shell and run PreviewHost only inside an additional sandboxed child iframe. Relay only schema-valid preview protocol messages between the containing frame and child. Redirect top-level document requests to the renderer route. Remove same-origin ancestor headers only from the child response because its opaque parent cannot satisfy them; retain the response sandbox, iframe sandbox, strict network CSP, and opaque origin.",
+  "local_validation": {
+    "astro_build": "passed; 718 pages",
+    "sites_adapter_build": "passed",
+    "worker_regression": "3/3 passed",
+    "sites_preview_csp_and_unknown_resource_browser_suite": "24/24 passed across desktop 1440x900 and mobile 390x844 Chromium",
+    "browser_anchor_probe": "top-level URL unchanged; zero external requests; zero uncaught errors",
+    "browser_popup_probe": "zero popups and zero external requests",
+    "deployed_verification": "pending release-candidate deployment"
+  },
+  "screenshots": {
+    "desktop_before_interaction": "quality/evidence/step-37/preview-anchor-navigation-before-1440.png",
+    "mobile_before_interaction": "quality/evidence/step-37/preview-anchor-navigation-before-390.png",
+    "desktop_after_interaction": "quality/evidence/step-37/preview-anchor-navigation-after-1440.png",
+    "mobile_after_interaction": "quality/evidence/step-37/preview-anchor-navigation-after-390.png"
+  },
+  "deployed_verification": "pending release-candidate deployment"
+}

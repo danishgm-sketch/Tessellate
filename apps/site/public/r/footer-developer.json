@@ -3,14 +3,14 @@
   "name": "footer-developer",
   "type": "registry:block",
   "title": "Footer Developer",
-  "description": "Terminal-styled developer footer with CLI command snippet, API status, and git commit sha.",
+  "description": "Developer footer template with space for verified runtime metadata.",
   "dependencies": [],
   "devDependencies": [],
   "registryDependencies": [],
   "files": [
     {
       "path": "index.tsx",
-      "content": "import React from 'react';\n\nexport type FooterDeveloperVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FooterDeveloperProps {\n  variant?: FooterDeveloperVariant;\n}\n\nexport function FooterDeveloper({ variant = 'quiet' }: FooterDeveloperProps) {\n  let bg = 'bg-[#18181B] text-neutral-300 border-neutral-800';\n\n  if (variant === 'expressive') {\n    bg = 'bg-[#0E1528] text-blue-100 border-blue-900/50';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-cyan-50 border-[#2E3440]';\n  }\n\n  return (\n    <footer className={`w-full py-12 px-6 sm:px-12 border-t font-mono text-xs transition-colors ${bg}`}>\n      <div className=\"max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6\">\n        <div className=\"flex items-center gap-3\">\n          <span className=\"text-emerald-400\">$</span>\n          <span>npx @tessellate/cli --version</span>\n          <span className=\"opacity-50\">// 1.0.0</span>\n        </div>\n        <div className=\"flex items-center gap-6 text-[11px] opacity-70\">\n          <span>SHA: c4b2a9f</span>\n          <span>Edge: 100% OK</span>\n          <span>Latency: 0.8ms</span>\n        </div>\n      </div>\n    </footer>\n  );\n}\n",
+      "content": "import React from 'react';\n\nexport type FooterDeveloperVariant = 'quiet' | 'expressive' | 'nocturne';\n\nexport interface FooterDeveloperProps {\n  variant?: FooterDeveloperVariant;\n}\n\nexport function FooterDeveloper({ variant = 'quiet' }: FooterDeveloperProps) {\n  let bg = 'bg-[#18181B] text-neutral-300 border-neutral-800';\n\n  if (variant === 'expressive') {\n    bg = 'bg-[#0E1528] text-blue-100 border-blue-900/50';\n  } else if (variant === 'nocturne') {\n    bg = 'bg-[#0B0D10] text-cyan-50 border-[#2E3440]';\n  }\n\n  return (\n    <footer className={`w-full py-12 px-6 sm:px-12 border-t font-mono text-xs transition-colors ${bg}`}>\n      <div className=\"max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6\">\n        <div className=\"flex items-center gap-3\">\n          <span className=\"text-emerald-400\">$</span>\n          <span>Example CLI footer</span>\n        </div>\n        <div className=\"flex items-center gap-6 text-[11px] opacity-70\">\n          <span>Replace with verified build and runtime details</span>\n        </div>\n      </div>\n    </footer>\n  );\n}\n",
       "type": "registry:block",
       "target": "components/ui/index.tsx"
     },

@@ -1,0 +1,30 @@
+{
+  "routes": [
+    {
+      "url": "http://127.0.0.1:4323/showcase/showcase-ai-developer-platform/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "brand": "Prompt Workspace",
+      "initials": "PW",
+      "screenshot": "showcase-ai-developer-platform-mobile.png"
+    },
+    {
+      "url": "http://127.0.0.1:4323/showcase/showcase-financial-terminal/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "httpStatus": 200,
+      "brand": "Market Workspace",
+      "initials": "MW",
+      "screenshot": "showcase-financial-terminal-mobile.png"
+    }
+  ],
+  "consoleErrors": [],
+  "uncaught": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

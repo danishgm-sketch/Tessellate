@@ -82,11 +82,14 @@ export function generateOpenApiSpec(apiUrl = 'https://api.tessellate.design'): R
                 schema: {
                   type: 'object',
                   properties: {
-                    bio: { type: 'string' },
-                    githubUrl: { type: 'string' },
-                    specialtyTags: { type: 'array', items: { type: 'string' } },
+                    username: { type: 'string', minLength: 1, maxLength: 80 },
+                    bio: { type: ['string', 'null'], maxLength: 2000 },
+                    avatarUrl: { type: ['string', 'null'], format: 'uri', description: 'HTTPS URL' },
+                    githubHandle: { type: ['string', 'null'], maxLength: 39 },
+                    specialtyTags: { type: 'array', maxItems: 20, items: { type: 'string', minLength: 1, maxLength: 64 } },
                     isAvailableForWork: { type: 'boolean' },
                   },
+                  additionalProperties: false,
                 },
               },
             },

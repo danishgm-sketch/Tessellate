@@ -7,6 +7,7 @@ import {
   ResourceManifestSchema,
   type ProjectManifest,
   type ProjectNode,
+  validProjectFixture,
 } from '../packages/schemas/src/index.js';
 import { isGoldResource } from '../packages/catalog/src/gold.js';
 import {
@@ -31,6 +32,7 @@ import { generateSourceTree } from '../packages/exporter/src/source-tree.js';
 import '../packages/exporter/src/node-disk-resolver.js';
 import { createMcpServer } from '../packages/mcp/src/index.js';
 import app from '../apps/api/src/index.js';
+import { testAuthBearer, testAuthEnv } from '../apps/api/src/__tests__/test-auth-fixture.js';
 
 interface GateResult {
   num: number;
@@ -52,6 +54,36 @@ function computeCanonicalSubtreeHash(node: ProjectNode): string {
   return crypto.createHash('sha256').update(JSON.stringify(canonicalize(node))).digest('hex');
 }
 
+
+function createExportGateProject(): ProjectManifest {
+  const project = structuredClone(validProjectFixture);
+  project.id = 'proj-gate-export';
+  project.name = 'Omni Telemetry Suite';
+  project.description = 'Export gate fixture with seven real runtime resources.';
+
+  const exportResources = [
+    'minimal-top-nav',
+    'cinematic-media-hero',
+    'area-chart',
+    'compact-data-table',
+    'empty-dashboard-state',
+    'interactive-globe',
+    'particle-constellation',
+  ];
+  const screen = project.screens[0];
+  if (!screen) throw new Error('Export gate fixture is missing its canonical screen.');
+  screen.rootNode.children = exportResources.map((slug, index) => ({
+    id: 'node-export-' + (index + 1),
+    nodeType: slug.endsWith('hero') ? 'section' : 'component',
+    semanticRole: slug,
+    resourceRef: { id: 'resource-export-' + (index + 1), slug, version: '1.0.0' },
+    props: {},
+    slots: {},
+    children: [],
+  }));
+
+  return project;
+}
 
 export async function runReleaseGate(): Promise<{ passed: boolean; results: GateResult[] }> {
   console.log('========================================================');
@@ -372,26 +404,27 @@ export async function runReleaseGate(): Promise<{ passed: boolean; results: Gate
       throw new Error('Composed manifest unavailable from Gate 8');
     }
 
-    const screen = composedManifest.screens[0]!;
-    let targetNode: ProjectNode | null = null;
-    function findTarget(n: ProjectNode) {
-      if (targetNode) return;
-      if (n.resourceRef && n.nodeType !== 'layout') {
-        targetNode = n;
-        return;
-      }
-      if (n.children) {
-        for (const c of n.children) findTarget(c);
-      }
+    const resourceNodes: ProjectNode[] = [];
+    function collectResourceNodes(node: ProjectNode) {
+      if (node.resourceRef && node.nodeType !== 'layout') resourceNodes.push(node);
+      for (const child of node.children ?? []) collectResourceNodes(child);
     }
-    findTarget(screen.rootNode);
-    if (!targetNode) {
-      targetNode = screen.rootNode.children?.[0] || screen.rootNode;
-    }
+    for (const screen of composedManifest.screens) collectResourceNodes(screen.rootNode);
 
-    const candidates = getReplaceCandidates(composedManifest, targetNode.id);
-    if (candidates.length === 0) {
-      throw new Error(`No replacement candidates found for node ${targetNode.id}`);
+    let targetNode: ProjectNode | undefined;
+    let candidates: ReturnType<typeof getReplaceCandidates> = [];
+    for (const node of resourceNodes) {
+      const compatible = getReplaceCandidates(composedManifest, node.id, allCatalogResources);
+      if (compatible.length > 0) {
+        targetNode = node;
+        candidates = compatible;
+        break;
+      }
+    }
+    if (!targetNode) {
+      throw new Error(
+        `No composed resource node has a compatible replacement candidate (${resourceNodes.length} resource nodes inspected)`,
+      );
     }
 
     const replacementCandidate = candidates[0]!.resource;
@@ -426,133 +459,9 @@ export async function runReleaseGate(): Promise<{ passed: boolean; results: Gate
   let g12Passed = false;
   let g12Details = '';
   try {
-    const exportProject: ProjectManifest = {
-      schemaVersion: '0.1.0',
-      id: 'proj-gate-export',
-      name: 'Omni Telemetry Suite',
-      version: '1.0.0',
-      description: 'Export gate test project with 7 distinct components',
-      status: 'draft',
-      productModel: {
-        domain: 'developer-tools',
-        primaryJobs: ['monitor infrastructure'],
-        targetUsers: ['systems engineers'],
-        complexity: 'medium',
-        confidence: 95,
-        productArchetypes: [{ tag: 'developer-tool', weight: 95 }],
-      },
-      designDNA: {
-        mode: 'dark',
-        density: 75,
-        radius: 12,
-        depth: 40,
-        motionPersonality: 'expressive',
-        motion: 50,
-        visualAmbition: 75,
-        typographicExpression: 60,
-        colorFamily: 'cyan',
-        palette: {
-          primary: '#06b6d4',
-          secondary: '#64748b',
-          accent: '#3b82f6',
-          background: '#0B0D10',
-          surface: '#151921',
-          text: '#f8fafc',
-          muted: '#94a3b8',
-          border: '#2E3440',
-        },
-      },
-      screens: [
-        {
-          id: 'screen-dash',
-          name: 'Dashboard',
-          slug: 'dashboard',
-          screenType: 'dashboard',
-          path: '/dashboard',
-          roles: ['primary-view'],
-          layoutVariant: 'standard',
-          rootNode: {
-            id: 'root-layout',
-            nodeType: 'layout',
-            semanticRole: 'application-shell',
-            props: {},
-            slots: {},
-            children: [
-              {
-                id: 'n-nav',
-                nodeType: 'component',
-                semanticRole: 'navigation-header',
-                resourceRef: { id: 'r-nav', slug: 'minimal-top-nav', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: { brand: 'Gate Telemetry' },
-              },
-              {
-                id: 'n-hero',
-                nodeType: 'section',
-                semanticRole: 'editorial-hero',
-                resourceRef: { id: 'r-hero', slug: 'cinematic-media-hero', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: { title: 'Infrastructure Telemetry' },
-              },
-              {
-                id: 'n-chart',
-                nodeType: 'section',
-                semanticRole: 'data-chart',
-                resourceRef: { id: 'r-chart', slug: 'area-chart', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: {},
-              },
-              {
-                id: 'n-table',
-                nodeType: 'component',
-                semanticRole: 'data-table',
-                resourceRef: { id: 'r-table', slug: 'compact-data-table', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: {},
-              },
-              {
-                id: 'n-state',
-                nodeType: 'component',
-                semanticRole: 'empty-state',
-                resourceRef: { id: 'r-state', slug: 'empty-dashboard-state', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: {},
-              },
-              {
-                id: 'n-globe',
-                nodeType: 'component',
-                semanticRole: 'interactive-globe',
-                resourceRef: { id: 'r-globe', slug: 'interactive-globe', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: {},
-              },
-              {
-                id: 'n-particle',
-                nodeType: 'component',
-                semanticRole: 'particle-background',
-                resourceRef: { id: 'r-particle', slug: 'particle-constellation', version: '1.0.0' },
-                variant: 'nocturne',
-                props: {},
-                slots: {},
-              },
-            ],
-          },
-        },
-      ],
-      routes: [{ screenId: 'screen-dash', path: '/dashboard', label: 'Dashboard' }],
-      constraints: { supportedDevices: ['desktop'] },
-      historyMeta: { headRevision: 1, operations: [] },
-      createdAt: '2026-03-01T00:00:00Z',
-      updatedAt: '2026-03-01T00:00:00Z',
-    };
-
-    const tree = generateSourceTree(exportProject);
+    const exportProject = createExportGateProject();
+    const validatedExportProject = ProjectManifestSchema.parse(exportProject);
+    const tree = generateSourceTree(validatedExportProject);
     const hasAllComponents =
       Boolean(tree['src/components/MinimalTopNav.tsx']) &&
       Boolean(tree['src/components/CinematicMediaHero.tsx']) &&
@@ -597,7 +506,7 @@ export async function runReleaseGate(): Promise<{ passed: boolean; results: Gate
     }
 
     // 2. CLI execution
-    const cliOutput = child_process.execSync('pnpm exec tsx packages/cli/src/index.ts --version', {
+    const cliOutput = child_process.execSync('pnpm exec tsx packages/cli/src/bin.ts --version', {
       encoding: 'utf-8',
       cwd: process.cwd(),
     }).trim();
@@ -641,34 +550,45 @@ export async function runReleaseGate(): Promise<{ passed: boolean; results: Gate
   let g14Passed = false;
   let g14Details = '';
   try {
+    const projectId = 'proj_gate_auth_test';
+    const manifest = structuredClone(validProjectFixture);
+    manifest.id = projectId;
+    manifest.name = 'Gate Auth Project';
+    manifest.description = 'Testing authenticated persistence';
+
     const listRes = await app.request('/api/projects', {
       method: 'GET',
-      headers: { Authorization: 'Bearer test-user-alice' },
-    });
+      headers: { Authorization: testAuthBearer('test-user-alice') },
+    }, testAuthEnv);
     const listJson = await listRes.json() as { projects: unknown[] };
 
     const createRes = await app.request('/api/projects', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer test-user-alice',
+        Authorization: testAuthBearer('test-user-alice'),
       },
       body: JSON.stringify({
-        id: 'proj_gate_auth_test',
+        id: projectId,
         name: 'Gate Auth Project',
         description: 'Testing authenticated persistence',
-        manifest: {
-          id: 'proj_gate_auth_test',
-          name: 'Gate Auth Project',
-          description: 'Testing authenticated persistence',
-          screens: [],
-          designDNA: { density: 50, visualAmbition: 50 },
-        },
+        manifest,
       }),
-    });
+    }, testAuthEnv);
 
-    g14Passed = listRes.status === 200 && Array.isArray(listJson.projects) && (createRes.status === 200 || createRes.status === 201);
-    g14Details = `Executed authenticated /api/projects requests via test bindings with owner isolation.`;
+    const ownerRead = await app.request(`/api/projects/${projectId}`, {
+      headers: { Authorization: testAuthBearer('test-user-alice') },
+    }, testAuthEnv);
+    const crossAccountRead = await app.request(`/api/projects/${projectId}`, {
+      headers: { Authorization: testAuthBearer('test-user-bob') },
+    }, testAuthEnv);
+
+    g14Passed = listRes.status === 200 &&
+      Array.isArray(listJson.projects) &&
+      createRes.status === 201 &&
+      ownerRead.status === 200 &&
+      crossAccountRead.status === 403;
+    g14Details = `Authenticated project list/create/owner-read pass; non-owner read is denied.`;
   } catch (err) {
     g14Details = `Error: ${err}`;
   }

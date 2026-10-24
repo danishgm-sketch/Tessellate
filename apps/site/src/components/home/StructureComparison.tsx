@@ -13,13 +13,18 @@ export function StructureComparison() {
           Familiar → Experimental structure.
         </h2>
         <p className="text-lg text-[#62666F] font-normal leading-relaxed">
-          Tessellate breaks free from the ubiquitous left-sidebar-and-table monoculture when your user workflows demand deeper structural density.
+          Tessellate breaks free from the ubiquitous left-sidebar-and-table monoculture when your
+          user workflows demand deeper structural density.
+        </p>
+        <p className="text-sm text-[#62666F]">
+          Illustrative layout · no connected project. The selectors change this diagram only.
         </p>
 
         {/* Mode Selector */}
         <div className="inline-flex p-1 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] gap-1">
           <button
             type="button"
+            aria-pressed={layoutMode === 'familiar'}
             onClick={() => setLayoutMode('familiar')}
             className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all ${
               layoutMode === 'familiar'
@@ -31,6 +36,7 @@ export function StructureComparison() {
           </button>
           <button
             type="button"
+            aria-pressed={layoutMode === 'cockpit'}
             onClick={() => setLayoutMode('cockpit')}
             className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all ${
               layoutMode === 'cockpit'
@@ -42,6 +48,7 @@ export function StructureComparison() {
           </button>
           <button
             type="button"
+            aria-pressed={layoutMode === 'spatial'}
             onClick={() => setLayoutMode('spatial')}
             className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all ${
               layoutMode === 'spatial'
@@ -49,7 +56,7 @@ export function StructureComparison() {
                 : 'text-[#62666F] hover:text-[#111217]'
             }`}
           >
-            Spatial Canvas (Infinite Node)
+            Spatial Canvas (Exploratory)
           </button>
         </div>
       </div>
@@ -58,7 +65,7 @@ export function StructureComparison() {
       <div className="rounded-3xl border border-[#D9D6CF] bg-[#FAF9F6] p-6 sm:p-10">
         <div className="aspect-[21/9] min-h-[300px] w-full rounded-2xl bg-white border border-[#D9D6CF] p-4 shadow-sm flex flex-col justify-between">
           {/* Top chrome bar */}
-          <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[#8B8F97]">
+          <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[var(--text-muted)]">
             <div className="flex items-center gap-2">
               <span className="h-2.5 w-2.5 rounded-full bg-[#C83D48]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#A66A15]" />
@@ -66,10 +73,10 @@ export function StructureComparison() {
               <span className="ml-2 font-semibold text-[#111217]">
                 {layoutMode === 'familiar' && 'LAYOUT GRAMMAR: STANDARD_SIDEBAR'}
                 {layoutMode === 'cockpit' && 'LAYOUT GRAMMAR: THREE_PANE_COCKPIT'}
-                {layoutMode === 'spatial' && 'LAYOUT GRAMMAR: SPATIAL_PROMPT_CANVAS'}
+                {layoutMode === 'spatial' && 'EXPLORATORY LAYOUT: SPATIAL CANVAS'}
               </span>
             </div>
-            <span>PORT: 1440 × 900</span>
+            <span>DESKTOP WIREFRAME</span>
           </div>
 
           {/* Dynamic Wireframe Body */}
@@ -108,7 +115,7 @@ export function StructureComparison() {
                 <div className="flex-1 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-3 space-y-2">
                   <div className="h-4 w-32 rounded bg-[#111217]" />
                   <div className="h-44 rounded bg-white border border-[#D9D6CF] p-2 flex items-center justify-center font-mono text-xs text-[#2547E8]">
-                    Real-time Central Stream
+                    Example main content
                   </div>
                 </div>
                 <div className="w-64 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-3 space-y-2">
@@ -123,17 +130,22 @@ export function StructureComparison() {
               <div className="flex-1 rounded-lg bg-[#111217] p-6 relative overflow-hidden flex items-center justify-center">
                 {/* Node cluster */}
                 <div className="absolute top-6 left-12 p-3 rounded-xl bg-white/10 border border-white/20 text-white font-mono text-xs">
-                  Prompt Ingestion Node
+                  Brief
                 </div>
                 <svg className="w-full h-full absolute inset-0" viewBox="0 0 400 200" fill="none">
-                  <path d="M120,40 Q200,80 200,100" stroke="#2547E8" strokeWidth="2" strokeDasharray="4 4" />
+                  <path
+                    d="M120,40 Q200,80 200,100"
+                    stroke="#2547E8"
+                    strokeWidth="2"
+                    strokeDasharray="4 4"
+                  />
                   <path d="M200,100 Q200,120 280,140" stroke="#C9FF57" strokeWidth="2" />
                 </svg>
                 <div className="p-4 rounded-xl bg-[#2547E8] text-white font-semibold text-xs shadow-xl z-10">
-                  Adaptive Synthesis Center
+                  Composition
                 </div>
                 <div className="absolute bottom-6 right-16 p-3 rounded-xl bg-white/10 border border-white/20 text-[#C9FF57] font-mono text-xs">
-                  Agent Pipeline Output
+                  Preview
                 </div>
               </div>
             )}
@@ -142,11 +154,14 @@ export function StructureComparison() {
           {/* Footer stats */}
           <div className="flex justify-between items-center pt-2 text-[11px] font-mono text-[#62666F]">
             <span>
-              {layoutMode === 'familiar' && 'Best for: Executive Dashboards, Settings, Documentation'}
-              {layoutMode === 'cockpit' && 'Best for: Financial Terminals, Developer APMs, Observability'}
-              {layoutMode === 'spatial' && 'Best for: AI Canvas Exploration, Prompt Graph Engineering'}
+              {layoutMode === 'familiar' &&
+                'Best for: Executive Dashboards, Settings, Documentation'}
+              {layoutMode === 'cockpit' &&
+                'Best for: Financial Terminals, Developer APMs, Observability'}
+              {layoutMode === 'spatial' &&
+                'Best for: AI Canvas Exploration, Prompt Graph Engineering'}
             </span>
-            <span className="text-[#177B55] font-semibold">100% Keyboard Navigable</span>
+            <span className="text-[#12603F] font-semibold">Keyboard-accessible selectors</span>
           </div>
         </div>
       </div>

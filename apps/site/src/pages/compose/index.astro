@@ -18,12 +18,12 @@ import { ComposeView } from '../../components/ComposeView';
   <body class="bg-[#F4F2ED] text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA] antialiased min-h-screen flex flex-col font-sans">
     <Header client:load />
 
-    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main id="main-content" tabindex="-1" class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="mb-6 space-y-1">
         <h1 class="text-3xl font-bold tracking-tight text-[#111217] dark:text-[#F5F7FA]">
           Product Composer
         </h1>
-        <p class="text-sm text-[#62666F] dark:text-[#8B8F97]">
+        <p class="text-sm text-[#62666F] dark:text-[var(--text-muted)]">
           Describe product intent to deterministically interpret entities, derive Design DNA, and generate a multi-screen plan.
         </p>
       </div>
@@ -31,7 +31,7 @@ import { ComposeView } from '../../components/ComposeView';
       <ComposeView client:load />
     </main>
 
-    <footer class="mt-auto border-t border-[#D9D6CF] dark:border-[#272B33] py-8 px-4 text-center text-xs text-[#8B8F97]">
+    <footer class="mt-auto border-t border-[#D9D6CF] dark:border-[#272B33] py-8 px-4 text-center text-xs text-[var(--text-muted)]">
       Tessellate Interface Intelligence Layer — Deterministic screen planning and multi-entity UI synthesis.
     </footer>
   </body>

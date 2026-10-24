@@ -1,0 +1,157 @@
+{
+  "generatedAt": "2026-10-18T06:13:38.424Z",
+  "scope": "Step 08 local remediation checks only; not deployed acceptance.",
+  "frozenDependencyInstall": {
+    "status": "PASS",
+    "command": "pnpm install --frozen-lockfile",
+    "result": "23 workspace projects already up to date; lockfile unchanged."
+  },
+  "catalogue": {
+    "status": "PASS",
+    "resourceCount": 324,
+    "report": "quality/STEP_08_SEARCH_RESULTS.json"
+  },
+  "searchUnitTests": {
+    "status": "PASS",
+    "command": "pnpm exec vitest run packages/search/src/__tests__/search-discovery-quality.test.ts packages/search/src/__tests__/search.test.ts",
+    "passed": 13,
+    "failed": 0
+  },
+  "browserTests": {
+    "status": "PASS",
+    "command": "pnpm test:e2e",
+    "passed": 135,
+    "skipped": 56,
+    "failed": 0,
+    "projects": [
+      {
+        "name": "standard Playwright desktop/mobile projects",
+        "passed": 104,
+        "skipped": 56
+      },
+      {
+        "name": "Sites Worker Chromium",
+        "passed": 28,
+        "skipped": 0
+      },
+      {
+        "name": "preview app Chromium",
+        "passed": 3,
+        "skipped": 0
+      }
+    ],
+    "detail": "Full suite rerun after correcting the responsive resource landmark regression. The 324-resource Sites Worker render matrix, all 40 Gold resources and variants, opaque-preview CSP regression, flagship desktop workflow and separate preview app all passed. The 56 skips are configured project-scope skips."
+  },
+  "sitesPreviewCspRegression": {
+    "status": "PASS_LOCAL",
+    "test": "tests/e2e/sites-preview-csp.spec.ts",
+    "assertions": [
+      "Actual accordion resource renders inside sandbox=allow-scripts preview",
+      "Preview connect-src permits only the same-origin /_astro/ path",
+      "API origin and nested frames remain blocked",
+      "No browser console errors or failed compiled-asset requests"
+    ],
+    "deployedVerification": "PASS_SITE_V20"
+  },
+  "resourceDetailLandmarkRegression": {
+    "status": "PASS",
+    "test": "tests/e2e/accessibility-axe.spec.ts",
+    "command": "pnpm exec playwright test tests/e2e/accessibility-axe.spec.ts --grep 'resource detail gives primary'",
+    "passed": 2,
+    "result": "Primary and breadcrumb navigation landmarks have distinct accessible names on desktop and mobile. Desktop navigation is visible at 1440px and correctly hidden at 390px; landmark-unique Axe passes in both contexts.",
+    "fixCommit": "96ec0b04f234c209e43e462943e588a58d0308c3",
+    "deployedVerification": "PASS_SITE_V20"
+  },
+  "typecheck": {
+    "status": "PASS",
+    "command": "pnpm typecheck",
+    "workspaceProjects": 22
+  },
+  "lint": {
+    "status": "PASS",
+    "command": "pnpm exec eslint packages/search/src/indexer.ts packages/search/src/query.ts packages/search/src/types.ts packages/search/src/__tests__/search-discovery-quality.test.ts apps/site/src/components/ExploreRail.tsx apps/site/src/components/ExploreView.tsx tests/e2e/explore-search-hardening.spec.ts scripts/audit-search-query-quality.ts --max-warnings=0"
+  },
+  "siteBuild": {
+    "status": "PASS",
+    "command": "pnpm build",
+    "pages": 717
+  },
+  "browserRuntimeLimit": {
+    "status": "DEPLOYED_CHECK_REQUIRED",
+    "detail": "The local Astro preview embeds resource previews in opaque sandboxed iframes. Its preview host returns a localhost-specific Access-Control-Allow-Origin value, causing local iframe module CORS/hydration errors in the separate local screenshot harness. The deployed Site v16 had zero Explore console, failed-request, and HTTP errors. Do not treat the local harness failure as a deployed product failure; repeat runtime diagnostics against the next Sites version.",
+    "evidence": "audit/evidence/catalog-search-v16/explore-after-browser-audit.json"
+  },
+  "localScreenshotAudit": {
+    "report": "audit/evidence/catalog-search-step-08-local/browser-audit.json",
+    "viewports": [
+      {
+        "viewport": "1440x900",
+        "httpStatus": 200,
+        "horizontalOverflow": false,
+        "consoleErrors": 75,
+        "uncaughtErrors": 0,
+        "failedRequests": 30,
+        "httpErrors": 0,
+        "screenshot": "audit/evidence/catalog-search-step-08-local/explore-after-1440x900.png"
+      },
+      {
+        "viewport": "390x844",
+        "httpStatus": 200,
+        "horizontalOverflow": false,
+        "consoleErrors": 10,
+        "uncaughtErrors": 0,
+        "failedRequests": 4,
+        "httpErrors": 0,
+        "screenshot": "audit/evidence/catalog-search-step-08-local/explore-after-390x844.png"
+      }
+    ],
+    "result": "UI labels and curated facet options are visible, but preview island scripts fail locally because the opaque sandbox origin is blocked by localhost-specific CORS. This is not deployed verification; screenshots are retained as local-only visual evidence."
+  },
+  "fullUnitTests": {
+    "status": "PASS",
+    "command": "pnpm test",
+    "passed": 630,
+    "failed": 0,
+    "filesPassed": 57
+  },
+  "workspaceTypecheck": {
+    "status": "PASS",
+    "command": "pnpm typecheck",
+    "projectsPassed": 22
+  },
+  "repositoryLint": {
+    "status": "PASS",
+    "command": "pnpm lint",
+    "errors": 0,
+    "configuredWarnings": 51
+  },
+  "aggregateAudit": {
+    "status": "PASS",
+    "command": "pnpm audit:all",
+    "releaseGateCriteria": "16/16 scripted criteria",
+    "productionBuild": "PASS (717 Astro pages; 324 catalogue resources; 40 Gold resources)",
+    "bundleBudget": "PASS",
+    "licenseProvenance": "PASS (324; zero failures)",
+    "secretSecurity": "PASS (zero violations)",
+    "qualification": "Local repository gate only; it does not certify deployed runtime behavior."
+  },
+  "bundleBudget": {
+    "status": "PASS",
+    "publicInitialGzipKb": 65.52,
+    "exploreViewGzipKb": 28.52,
+    "workbenchRouteGzipKb": 191.01,
+    "catalogGzipKb": 111.25
+  },
+  "exploreAxe": {
+    "status": "PASS_SITE_V20_WITH_TRACKED_MODERATE",
+    "note": "Site v20 Explore has zero serious/critical Axe violations at desktop or mobile. Mobile has zero Axe violations; desktop has one moderate heading-order finding in the AI Chat Panel isolated preview, recorded as AUD-100 and deferred to the ordered resource/accessibility hardening step."
+  },
+  "deployedRemediationReaudit": {
+    "status": "PASS_SITE_V20",
+    "siteVersion": 20,
+    "routeAudit": "audit/audit-deployed-explore.mjs",
+    "resourceAudit": "audit/audit-deployed-resource-details.mjs",
+    "scope": "Explore at 1440x900 and 390x844 plus resource detail across eight tabs at both viewports.",
+    "note": "Site v20 closes AUD-088–099. Search/catalogue checks pass, network unresolved failures and console errors are zero, and resource detail has zero Axe violations. One moderate desktop Explore preview heading-order finding remains explicitly tracked as AUD-100."
+  }
+}

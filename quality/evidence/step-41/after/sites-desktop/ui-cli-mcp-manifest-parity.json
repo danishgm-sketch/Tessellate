@@ -1,0 +1,56 @@
+{
+  "route": "/compose -> /workbench",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "direction": "C",
+  "manifestId": "proj-direction-c-54e0d5621e734f92aabeb597b20df954dirc",
+  "manifestName": "Adaptive Architecture — Employee experience",
+  "screenNames": [
+    "Marketing Home",
+    "Team Overview",
+    "People Directory",
+    "Teams",
+    "Engagement",
+    "Onboarding",
+    "Settings & Policies"
+  ],
+  "manifestBytes": 59798,
+  "workbench": {
+    "zipFiles": 31
+  },
+  "cli": {
+    "validation": "valid",
+    "exportedFiles": 31
+  },
+  "mcp": {
+    "validation": "valid",
+    "exportedFiles": 31
+  },
+  "generatedFilesMatchExactly": true,
+  "mcpMutation": {
+    "action": "adjust_dna",
+    "designDNAPlayfulness": 74,
+    "cliValidation": "valid",
+    "mcpValidation": "valid",
+    "cliAndMcpFilesMatchExactly": true,
+    "exportedFiles": 31
+  },
+  "ingestion": {
+    "inputSourceBytes": 112,
+    "sourcePreserved": true,
+    "inferredScreens": [
+      "Home"
+    ],
+    "cliValidation": "valid",
+    "mcpValidation": "valid",
+    "cliMcpExportFilesMatchExactly": true,
+    "exportedFiles": 13,
+    "capabilityTier": "Beta; source behavior and business logic are not inferred"
+  },
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

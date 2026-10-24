@@ -7,6 +7,7 @@ import { enforceAccessibleContrastRule } from './rules/enforce-accessible-contra
 import { enforceSemanticLandmarksRule } from './rules/enforce-semantic-landmarks.js';
 import { noArbitrarySpacingRule } from './rules/no-arbitrary-spacing.js';
 import { enforceReducedMotionRule } from './rules/enforce-reduced-motion.js';
+import { maskComments } from './mask-comments.js';
 
 export const ALL_LINT_RULES: LintRule[] = [
   noHardcodedColorsRule,
@@ -25,9 +26,10 @@ export function lintSource(
   options: LinterOptions = {}
 ): { issues: LintIssue[]; fixedCode?: string } {
   const issues: LintIssue[] = [];
+  const lintableCode = maskComments(code);
 
   for (const rule of ALL_LINT_RULES) {
-    const ruleIssues = rule.check({ filePath, code, designDna: options.designDna });
+    const ruleIssues = rule.check({ filePath, code: lintableCode, designDna: options.designDna });
     issues.push(...ruleIssues);
   }
 
@@ -41,9 +43,7 @@ export function lintSource(
 
     for (const fix of fixes) {
       fixedCode =
-        fixedCode.slice(0, fix.startIndex) +
-        fix.replacement +
-        fixedCode.slice(fix.endIndex);
+        fixedCode.slice(0, fix.startIndex) + fix.replacement + fixedCode.slice(fix.endIndex);
     }
   }
 
@@ -114,15 +114,15 @@ export function formatPrettyReport(report: LintReport): string {
   lines.push('━'.repeat(50));
 
   if (report.issues.length === 0) {
-    lines.push(`✨ 0 issues found across ${report.fileCount} file(s). All Design DNA & accessibility checks pass!`);
+    lines.push(
+      `✨ No findings from the current heuristic rules across ${report.fileCount} file(s). Review remains necessary for computed styles, rendered contrast, keyboard behavior and assistive technology.`
+    );
     return lines.join('\n');
   }
 
   for (const issue of report.issues) {
     const icon = issue.severity === 'error' ? '❌' : issue.severity === 'warning' ? '⚠️' : 'ℹ️';
-    lines.push(
-      `${icon} ${issue.file}:${issue.line}:${issue.column} [${issue.ruleId}]`
-    );
+    lines.push(`${icon} ${issue.file}:${issue.line}:${issue.column} [${issue.ruleId}]`);
     lines.push(`   ${issue.message}`);
     if (issue.snippet) {
       lines.push(`   Snippet: "${issue.snippet}"`);
@@ -146,7 +146,8 @@ export function formatPrettyReport(report: LintReport): string {
  */
 export function formatSarifReport(report: LintReport): string {
   const sarif = {
-    $schema: 'https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json',
+    $schema:
+      'https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json',
     version: '2.1.0',
     runs: [
       {

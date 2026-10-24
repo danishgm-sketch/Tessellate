@@ -1,0 +1,38 @@
+{
+  "capturedAt": "2026-10-20T19:19:51.776Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/docs/cli",
+  "viewport": "1440x900",
+  "status": 200,
+  "title": "CLI Reference — Tessellate Documentation",
+  "headings": [
+    "Tessellate CLI (`tess`)",
+    "Installation",
+    "Commands",
+    "tess add <slug>",
+    "tess search [query]",
+    "tess validate [path]",
+    "tess export [project-file]",
+    "Start composing in seconds."
+  ],
+  "visibleText": "BETA\nCore commands use the deterministic catalogue and Vite/React export. The linter, ingestion, resource scaffolder and contribution gate are Beta and have not completed black-box hardening.\n← Back to Documentation\nTessellate CLI (`tess`)\n\nThe official command-line interface for installing, validating, and exporting Tessellate components.\n\nInstallation\npnpm add -g @tessellate/cli\n# Or run with npx:\nnpx @tessellate/cli --help\nCommands\ntess add <slug>\n\nResolves and writes component source code into your project directory.\n\ntess add metric-card\ntess add ai-chat-panel --overwrite\ntess search [query]\n\nSearch the 324-resource open catalogue directly from your terminal.\n\ntess search \"fintech\"\ntess search --category \"data\"\ntess validate [path]\n\nValidates a local ResourceManifest or ProjectManifest against canonical Zod schemas.\n\ntess validate ./resources/my-card/manifest.json\ntess export [project-file]\n\nGenerates a standalone Vite + React + Tailwind project from a ProjectManifest. Next.js and native targets are not selected by this CLI command.\n\ntess export project.tess.json --output ./my-app",
+  "links": [
+    {
+      "text": "← Back to Documentation",
+      "href": "/docs"
+    }
+  ],
+  "layout": {
+    "viewportWidth": 1440,
+    "documentWidth": 1440,
+    "horizontalOverflow": false
+  },
+  "accessibility": [],
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\deployed-before\\docs\\desktop\\cli.png"
+}

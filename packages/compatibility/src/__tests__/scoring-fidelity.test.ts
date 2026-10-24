@@ -65,6 +65,25 @@ describe('Compatibility Scoring Fidelity & Hard Constraints', () => {
     expect(goldResult.totalScore).toBeGreaterThanOrEqual(nonGoldResult.totalScore);
   });
 
+  it('does not let unassessed template scores influence resource selection', () => {
+    const lowDeclaredScore: ResourceManifest = {
+      ...baseButton,
+      quality: { ...baseButton.quality, overall: 0, assessment: { status: 'unassessed', evidence: [] } },
+    };
+    const highDeclaredScore: ResourceManifest = {
+      ...baseButton,
+      quality: { ...baseButton.quality, overall: 100, assessment: { status: 'unassessed', evidence: [] } },
+    };
+
+    const low = calculateCompatibilityScore({ candidate: lowDeclaredScore, targetDna: { density: 50 }, semanticRole: 'action' });
+    const high = calculateCompatibilityScore({ candidate: highDeclaredScore, targetDna: { density: 50 }, semanticRole: 'action' });
+
+    expect(low.breakdown.quality).toBe(50);
+    expect(high.breakdown.quality).toBe(50);
+    expect(low.totalScore).toBe(high.totalScore);
+    expect(low.rationale).toContain('Resource quality is unassessed; neutral quality weighting applied.');
+  });
+
   it('rejects heavy WebGL / simulation tags under lightweight performance constraint', () => {
     const heavyResource: ResourceManifest = {
       ...baseButton,

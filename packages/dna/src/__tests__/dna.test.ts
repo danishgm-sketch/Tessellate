@@ -322,6 +322,38 @@ describe('Visual Ambition & Structural Creativity Sliders', () => {
     expect(stunning.threeDIntensity).toBe(45);
   });
 
+  it('changes the visual subdimensions continuously when the numeric control moves within a stop', () => {
+    const base = DEFAULT_DESIGN_DNA;
+    const refinedLow = applyVisualAmbition(base, 22);
+    const refinedHigh = applyVisualAmbition(base, 40);
+    expect(refinedLow.visualAmbition).toBe(22);
+    expect(refinedHigh.visualAmbition).toBe(40);
+    expect(refinedLow.typographicExpression).not.toBe(refinedHigh.typographicExpression);
+    expect(refinedLow.motion).not.toBe(refinedHigh.motion);
+
+    const structuralLow = applyStructuralCreativity(base, 42);
+    const structuralHigh = applyStructuralCreativity(base, 64);
+    expect(structuralLow.structuralCreativity).toBe(42);
+    expect(structuralHigh.structuralCreativity).toBe(64);
+    expect(structuralLow.asymmetry).not.toBe(structuralHigh.asymmetry);
+  });
+
+  it('preserves exact numeric slider endpoints while mapping companion dimensions', () => {
+    const ambitionAtZero = applyVisualAmbition(DEFAULT_DESIGN_DNA, 0);
+    const ambitionAtTen = applyVisualAmbition(DEFAULT_DESIGN_DNA, 10);
+    const ambitionAtNinetyFive = applyVisualAmbition(DEFAULT_DESIGN_DNA, 95);
+    const ambitionAtOneHundred = applyVisualAmbition(DEFAULT_DESIGN_DNA, 100);
+    expect(ambitionAtZero.visualAmbition).toBe(0);
+    expect(ambitionAtOneHundred.visualAmbition).toBe(100);
+    expect(ambitionAtTen.typographicExpression).toBeGreaterThan(ambitionAtZero.typographicExpression);
+    expect(ambitionAtOneHundred.typographicExpression).toBeGreaterThan(ambitionAtNinetyFive.typographicExpression);
+    expect(applyStructuralCreativity(DEFAULT_DESIGN_DNA, 0)).toMatchObject({ structuralCreativity: 0 });
+    const creativityAtNinetyFive = applyStructuralCreativity(DEFAULT_DESIGN_DNA, 95);
+    const creativityAtOneHundred = applyStructuralCreativity(DEFAULT_DESIGN_DNA, 100);
+    expect(creativityAtOneHundred.structuralCreativity).toBe(100);
+    expect(creativityAtOneHundred.asymmetry).toBeGreaterThan(creativityAtNinetyFive.asymmetry);
+  });
+
   it('correctly maps 5 Structural Creativity stops', () => {
     expect(getStructuralCreativityStop(10)).toBe('familiar');
     expect(getStructuralCreativityStop(30)).toBe('modern');

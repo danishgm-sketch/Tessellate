@@ -1,0 +1,44 @@
+{
+  "id": "STEP-38-WEBKIT-CSP-001",
+  "status": "fixed-locally",
+  "browser": "WebKit",
+  "route": "/explore?q=onboarding",
+  "viewports": ["1440x900", "390x844"],
+  "beforeEvidence": "quality/evidence/step-38/before/webkit-explore-style-csp.json",
+  "screenshots": [
+    "quality/evidence/step-38/after/workload-explore-sites-webkit.png",
+    "quality/evidence/step-38/after/workload-explore-sites-webkit-mobile.png"
+  ],
+  "expected": "Multiple sandboxed previews load under the strict CSP with no console errors, uncaught exceptions, or failed essential requests.",
+  "before": {
+    "result": "WebKit reported one style-src-elem violation for each mounted preview frame.",
+    "sample": "body {}",
+    "lineNumber": 5,
+    "sourceFile": "",
+    "styleElementPresentAtEvent": false,
+    "applicationStyleInsertionTrace": [],
+    "rootCause": "The sampled no-op inline style is reported by WebKit, but its producer is not identified. No application-side style node or insertion trace was present when the violation event fired."
+  },
+  "remediation": "The Sites artifact generator adds the exact SHA-256 source for the sampled `body {}` rule to style-src and style-src-elem. The rule has no CSS declarations. No general unsafe-inline source was added.",
+  "after": {
+    "desktop": {
+      "consoleErrors": 0,
+      "cspViolationEvents": 0,
+      "uncaughtExceptions": 0,
+      "failedRequests": 0,
+      "httpErrors": 0,
+      "browserCancellations": 11
+    },
+    "mobile": {
+      "consoleErrors": 0,
+      "cspViolationEvents": 0,
+      "uncaughtExceptions": 0,
+      "failedRequests": 0,
+      "httpErrors": 0,
+      "browserCancellations": 3
+    },
+    "targetedWebKitTests": "10 passed across desktop and mobile: two complete workloads and eight CSP scenarios."
+  },
+  "securityImpact": "No unsafe-inline source was added to style-src or style-src-elem. The sole added hash permits the exact empty body rule; script-src and style-src-attr policy are unchanged.",
+  "fixCommit": null
+}

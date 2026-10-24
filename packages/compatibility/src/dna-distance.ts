@@ -102,7 +102,9 @@ export function calculateDnaDistance(
 
   const numericDistance = totalWeight > 0 ? Math.sqrt(weightedSquaredSum / totalWeight) : 0;
 
-  // Categorical adjustments
+  // Resource-level categorical adjustments. Product-level fields such as
+  // navigationModel and primaryArchetype are resolved by the planner/scorer,
+  // while primaryStack is enforced as a hard compatibility constraint.
   let categoricalPenalty = 0;
   let categoricalComparisons = 0;
 
@@ -123,6 +125,20 @@ export function calculateDnaDistance(
   if (targetDna.motionPersonality && candidateDna.motionPersonality) {
     categoricalComparisons++;
     if (targetDna.motionPersonality !== candidateDna.motionPersonality) {
+      categoricalPenalty += 10;
+    }
+  }
+
+  if (targetDna.typographyPersonality && candidateDna.typographyPersonality) {
+    categoricalComparisons++;
+    if (targetDna.typographyPersonality !== candidateDna.typographyPersonality) {
+      categoricalPenalty += 10;
+    }
+  }
+
+  if (targetDna.surfacePersonality && candidateDna.surfacePersonality) {
+    categoricalComparisons++;
+    if (targetDna.surfacePersonality !== candidateDna.surfacePersonality) {
       categoricalPenalty += 10;
     }
   }

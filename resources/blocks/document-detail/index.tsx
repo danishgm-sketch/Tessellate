@@ -17,16 +17,16 @@ export function DocumentDetail({ variant = 'quiet' }: DocumentDetailProps) {
 
   return (
     <div className={`w-full p-6 sm:p-8 rounded-xl border transition-colors ${bg}`}>
-      <span className="text-[10px] font-mono font-bold text-neutral-500 uppercase mb-2 block">Architecture Spec</span>
-      <h2 className="text-xl font-bold mb-4">Deterministic Composition Invariants</h2>
+      <span className="text-[10px] font-mono font-bold text-neutral-500 uppercase mb-2 block">Sample Project Note</span>
+      <h2 className="text-xl font-bold mb-4">Interface structure in a project manifest</h2>
       <div className="space-y-3 text-xs sm:text-sm opacity-80 leading-relaxed mb-6">
         <p>
-          All Tessellate interfaces compose through validated manifests rather than arbitrary runtime code mutations. This guarantees full exportability to any modern React environment.
+          Tessellate stores interface structure in validated manifests. Its React/Vite exporter generates project source that you can review and adapt for your application.
         </p>
       </div>
-      <button type="button" className="px-4 py-2 rounded-lg border text-xs font-semibold">
-        Export Spec (PDF / Markdown)
-      </button>
+      <p className="text-xs text-neutral-600 dark:text-neutral-300">
+        This card is a static example. Connect an export action in the host application when needed.
+      </p>
     </div>
   );
 }

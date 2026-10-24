@@ -1,0 +1,986 @@
+{
+  "route": "http://localhost:4321/compose",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+  "directions": [
+    {
+      "number": "01",
+      "projectId": "proj-direction-a-6e608dca2a3441fb8cccf87a6c2cb8addira",
+      "navigation": "sidebar",
+      "grammar": "classic-sidebar-dashboard",
+      "dna": {
+        "professionalism": 100,
+        "playfulness": 53,
+        "luxury": 40,
+        "warmth": 45,
+        "technicality": 65,
+        "editorial": 35,
+        "futurism": 35,
+        "visualAmbition": 20,
+        "structuralCreativity": 40,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 75,
+        "colourfulness": 54,
+        "curvature": 53,
+        "depth": 25,
+        "motion": 25,
+        "motionPlayfulness": 25,
+        "typographicExpression": 35,
+        "imageryIntensity": 25,
+        "videoIntensity": 5,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 60,
+        "asymmetry": 40,
+        "conversionIntensity": 55,
+        "trust": 100,
+        "accessibilityPriority": 100,
+        "performancePriority": 97,
+        "primaryArchetype": "recruitment",
+        "visualMode": "light",
+        "geometryFamily": "pill",
+        "navigationModel": "sidebar",
+        "responsivePhilosophy": "desktop-dense-mobile-focused",
+        "contentTone": "calm",
+        "primaryStack": "react-tailwind",
+        "motionPersonality": "playful-spring",
+        "typographyPersonality": "geist-system",
+        "surfacePersonality": "subtle-contrast"
+      },
+      "screenNames": [
+        "Marketing Home",
+        "Team Overview",
+        "People Directory",
+        "Teams",
+        "Engagement",
+        "Onboarding",
+        "Settings & Policies"
+      ],
+      "dashboardRoot": "sidebar-shell",
+      "dashboardHierarchy": [
+        "sidebar-shell",
+        "navigation",
+        "main-content-scroll",
+        "overview-header",
+        "metric-cards",
+        "activity-feed",
+        "data-table"
+      ],
+      "dashboardActivityResource": "timeline",
+      "selectedResources": [
+        {
+          "screen": "Marketing Home",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Marketing Home",
+          "role": "hero",
+          "slug": "editorial-hero",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Marketing Home",
+          "role": "value-proposition",
+          "slug": "feature-bento",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Marketing Home",
+          "role": "conversion-cta",
+          "slug": "cta-minimal",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Marketing Home",
+          "role": "footer",
+          "slug": "footer-product",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "navigation",
+          "slug": "collapsible-sidebar",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "overview-header",
+          "slug": "entity-profile-header",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "metric-cards",
+          "slug": "dashboard-kpi-grid",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "activity-feed",
+          "slug": "timeline",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "data-table",
+          "slug": "advanced-data-table",
+          "variant": "quiet"
+        },
+        {
+          "screen": "People Directory",
+          "role": "navigation",
+          "slug": "collapsible-sidebar",
+          "variant": "quiet"
+        },
+        {
+          "screen": "People Directory",
+          "role": "index-header",
+          "slug": "entity-profile-header",
+          "variant": "quiet"
+        },
+        {
+          "screen": "People Directory",
+          "role": "filter-bar",
+          "slug": "filter-builder",
+          "variant": "quiet"
+        },
+        {
+          "screen": "People Directory",
+          "role": "data-table",
+          "slug": "advanced-data-table",
+          "variant": "quiet"
+        },
+        {
+          "screen": "People Directory",
+          "role": "pagination",
+          "slug": "button",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Teams",
+          "role": "navigation",
+          "slug": "collapsible-sidebar",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Teams",
+          "role": "index-header",
+          "slug": "entity-profile-header",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Teams",
+          "role": "filter-bar",
+          "slug": "filter-builder",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Teams",
+          "role": "data-table",
+          "slug": "advanced-data-table",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Teams",
+          "role": "pagination",
+          "slug": "button",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Engagement",
+          "role": "navigation",
+          "slug": "collapsible-sidebar",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Engagement",
+          "role": "overview-header",
+          "slug": "entity-profile-header",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Engagement",
+          "role": "metric-cards",
+          "slug": "dashboard-kpi-grid",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Engagement",
+          "role": "activity-feed",
+          "slug": "timeline",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Engagement",
+          "role": "data-table",
+          "slug": "advanced-data-table",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Onboarding",
+          "role": "navigation",
+          "slug": "collapsible-sidebar",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Onboarding",
+          "role": "progress-stepper",
+          "slug": "timeline",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Onboarding",
+          "role": "wizard-content",
+          "slug": "kanban-board",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Onboarding",
+          "role": "action-controls",
+          "slug": "button",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Settings & Policies",
+          "role": "navigation",
+          "slug": "collapsible-sidebar",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Settings & Policies",
+          "role": "settings-form",
+          "slug": "input",
+          "variant": "quiet"
+        },
+        {
+          "screen": "Settings & Policies",
+          "role": "save-footer",
+          "slug": "button",
+          "variant": "quiet"
+        }
+      ],
+      "geometry": {
+        "sidebar-shell": {
+          "left": 45,
+          "top": -115,
+          "width": 1350,
+          "height": 914,
+          "display": "grid",
+          "gridColumn": "auto"
+        },
+        "top-nav-page-canvas": null,
+        "workspace-dock-shell": null,
+        "workspace-multi-pane": null,
+        "navigation": {
+          "left": 61,
+          "top": 61,
+          "width": 220,
+          "height": 296,
+          "display": "block",
+          "gridColumn": "auto"
+        },
+        "data-table": {
+          "left": 297,
+          "top": 556,
+          "width": 1082,
+          "height": 227,
+          "display": "block",
+          "gridColumn": "auto"
+        },
+        "activity-feed": {
+          "left": 297,
+          "top": 244,
+          "width": 1082,
+          "height": 297,
+          "display": "block",
+          "gridColumn": "auto"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "number": "02",
+      "projectId": "proj-direction-b-6e608dca2a3441fb8cccf87a6c2cb8addirb",
+      "navigation": "top-nav",
+      "grammar": "product-proof-marketing",
+      "dna": {
+        "professionalism": 100,
+        "playfulness": 53,
+        "luxury": 40,
+        "warmth": 45,
+        "technicality": 65,
+        "editorial": 35,
+        "futurism": 35,
+        "visualAmbition": 55,
+        "structuralCreativity": 55,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 75,
+        "colourfulness": 74,
+        "curvature": 63,
+        "depth": 40,
+        "motion": 45,
+        "motionPlayfulness": 70,
+        "typographicExpression": 60,
+        "imageryIntensity": 45,
+        "videoIntensity": 5,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 60,
+        "asymmetry": 40,
+        "conversionIntensity": 55,
+        "trust": 100,
+        "accessibilityPriority": 85,
+        "performancePriority": 82,
+        "primaryArchetype": "recruitment",
+        "visualMode": "light",
+        "geometryFamily": "pill",
+        "navigationModel": "top-nav",
+        "responsivePhilosophy": "desktop-dense-mobile-focused",
+        "contentTone": "calm",
+        "primaryStack": "react-tailwind",
+        "motionPersonality": "playful-spring",
+        "typographyPersonality": "geist-system",
+        "surfacePersonality": "subtle-contrast"
+      },
+      "screenNames": [
+        "Marketing Home",
+        "Team Overview",
+        "People Directory",
+        "Teams",
+        "Engagement",
+        "Onboarding",
+        "Settings & Policies"
+      ],
+      "dashboardRoot": "top-nav-page-canvas",
+      "dashboardHierarchy": [
+        "top-nav-page-canvas",
+        "navigation",
+        "overview-header",
+        "metric-cards",
+        "activity-feed",
+        "data-table"
+      ],
+      "dashboardActivityResource": "timeline",
+      "selectedResources": [
+        {
+          "screen": "Marketing Home",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Marketing Home",
+          "role": "hero",
+          "slug": "editorial-hero",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Marketing Home",
+          "role": "value-proposition",
+          "slug": "feature-bento",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Marketing Home",
+          "role": "conversion-cta",
+          "slug": "cta-minimal",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Marketing Home",
+          "role": "footer",
+          "slug": "footer-product",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "overview-header",
+          "slug": "entity-profile-header",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "metric-cards",
+          "slug": "dashboard-kpi-grid",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "activity-feed",
+          "slug": "timeline",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "data-table",
+          "slug": "advanced-data-table",
+          "variant": "expressive"
+        },
+        {
+          "screen": "People Directory",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "expressive"
+        },
+        {
+          "screen": "People Directory",
+          "role": "index-header",
+          "slug": "entity-profile-header",
+          "variant": "expressive"
+        },
+        {
+          "screen": "People Directory",
+          "role": "filter-bar",
+          "slug": "filter-builder",
+          "variant": "expressive"
+        },
+        {
+          "screen": "People Directory",
+          "role": "data-table",
+          "slug": "advanced-data-table",
+          "variant": "expressive"
+        },
+        {
+          "screen": "People Directory",
+          "role": "pagination",
+          "slug": "button",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Teams",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Teams",
+          "role": "index-header",
+          "slug": "entity-profile-header",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Teams",
+          "role": "filter-bar",
+          "slug": "filter-builder",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Teams",
+          "role": "data-table",
+          "slug": "advanced-data-table",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Teams",
+          "role": "pagination",
+          "slug": "button",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Engagement",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Engagement",
+          "role": "overview-header",
+          "slug": "entity-profile-header",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Engagement",
+          "role": "metric-cards",
+          "slug": "dashboard-kpi-grid",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Engagement",
+          "role": "activity-feed",
+          "slug": "timeline",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Engagement",
+          "role": "data-table",
+          "slug": "advanced-data-table",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Onboarding",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Onboarding",
+          "role": "progress-stepper",
+          "slug": "timeline",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Onboarding",
+          "role": "wizard-content",
+          "slug": "kanban-board",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Onboarding",
+          "role": "action-controls",
+          "slug": "button",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Settings & Policies",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Settings & Policies",
+          "role": "settings-form",
+          "slug": "input",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Settings & Policies",
+          "role": "save-footer",
+          "slug": "button",
+          "variant": "expressive"
+        }
+      ],
+      "geometry": {
+        "sidebar-shell": null,
+        "top-nav-page-canvas": {
+          "left": 45,
+          "top": -184,
+          "width": 1350,
+          "height": 983,
+          "display": "grid",
+          "gridColumn": "auto"
+        },
+        "workspace-dock-shell": null,
+        "workspace-multi-pane": null,
+        "navigation": {
+          "left": 61,
+          "top": -168,
+          "width": 1318,
+          "height": 53,
+          "display": "block",
+          "gridColumn": "auto"
+        },
+        "data-table": {
+          "left": 61,
+          "top": 556,
+          "width": 1318,
+          "height": 227,
+          "display": "block",
+          "gridColumn": "auto"
+        },
+        "activity-feed": {
+          "left": 61,
+          "top": 244,
+          "width": 1318,
+          "height": 297,
+          "display": "block",
+          "gridColumn": "auto"
+        }
+      },
+      "diagnostics": []
+    },
+    {
+      "number": "03",
+      "projectId": "proj-direction-c-6e608dca2a3441fb8cccf87a6c2cb8addirc",
+      "navigation": "rail",
+      "grammar": "three-pane-intelligence-workspace",
+      "dna": {
+        "professionalism": 100,
+        "playfulness": 53,
+        "luxury": 40,
+        "warmth": 45,
+        "technicality": 65,
+        "editorial": 35,
+        "futurism": 35,
+        "visualAmbition": 40,
+        "structuralCreativity": 85,
+        "density": 60,
+        "whitespace": 65,
+        "contrast": 75,
+        "colourfulness": 54,
+        "curvature": 63,
+        "depth": 25,
+        "motion": 25,
+        "motionPlayfulness": 45,
+        "typographicExpression": 35,
+        "imageryIntensity": 25,
+        "videoIntensity": 5,
+        "threeDIntensity": 0,
+        "dataDensity": 65,
+        "interactionDensity": 80,
+        "asymmetry": 65,
+        "conversionIntensity": 55,
+        "trust": 100,
+        "accessibilityPriority": 85,
+        "performancePriority": 82,
+        "primaryArchetype": "recruitment",
+        "visualMode": "dark",
+        "geometryFamily": "pill",
+        "navigationModel": "rail",
+        "responsivePhilosophy": "desktop-dense-mobile-focused",
+        "contentTone": "calm",
+        "primaryStack": "react-tailwind",
+        "motionPersonality": "playful-spring",
+        "typographyPersonality": "geist-system",
+        "surfacePersonality": "subtle-contrast"
+      },
+      "screenNames": [
+        "Marketing Home",
+        "Team Overview",
+        "People Directory",
+        "Teams",
+        "Engagement",
+        "Onboarding",
+        "Settings & Policies"
+      ],
+      "dashboardRoot": "workspace-dock-shell",
+      "dashboardHierarchy": [
+        "workspace-dock-shell",
+        "navigation",
+        "workspace-multi-pane",
+        "overview-header",
+        "metric-cards",
+        "data-table",
+        "activity-feed"
+      ],
+      "dashboardActivityResource": "timeline",
+      "selectedResources": [
+        {
+          "screen": "Marketing Home",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Marketing Home",
+          "role": "hero",
+          "slug": "editorial-hero",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Marketing Home",
+          "role": "value-proposition",
+          "slug": "feature-bento",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Marketing Home",
+          "role": "conversion-cta",
+          "slug": "cta-minimal",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Marketing Home",
+          "role": "footer",
+          "slug": "footer-product",
+          "variant": "expressive"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "overview-header",
+          "slug": "entity-profile-header",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "metric-cards",
+          "slug": "dashboard-kpi-grid",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "data-table",
+          "slug": "advanced-data-table",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Team Overview",
+          "role": "activity-feed",
+          "slug": "timeline",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "People Directory",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "People Directory",
+          "role": "index-header",
+          "slug": "entity-profile-header",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "People Directory",
+          "role": "filter-bar",
+          "slug": "filter-builder",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "People Directory",
+          "role": "data-table",
+          "slug": "advanced-data-table",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "People Directory",
+          "role": "pagination",
+          "slug": "button",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Teams",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Teams",
+          "role": "index-header",
+          "slug": "entity-profile-header",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Teams",
+          "role": "filter-bar",
+          "slug": "filter-builder",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Teams",
+          "role": "data-table",
+          "slug": "advanced-data-table",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Teams",
+          "role": "pagination",
+          "slug": "button",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Engagement",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Engagement",
+          "role": "overview-header",
+          "slug": "entity-profile-header",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Engagement",
+          "role": "metric-cards",
+          "slug": "dashboard-kpi-grid",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Engagement",
+          "role": "data-table",
+          "slug": "advanced-data-table",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Engagement",
+          "role": "activity-feed",
+          "slug": "timeline",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Onboarding",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Onboarding",
+          "role": "progress-stepper",
+          "slug": "timeline",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Onboarding",
+          "role": "wizard-content",
+          "slug": "kanban-board",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Onboarding",
+          "role": "action-controls",
+          "slug": "button",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Settings & Policies",
+          "role": "navigation",
+          "slug": "minimal-top-nav",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Settings & Policies",
+          "role": "settings-form",
+          "slug": "input",
+          "variant": "nocturne"
+        },
+        {
+          "screen": "Settings & Policies",
+          "role": "save-footer",
+          "slug": "button",
+          "variant": "nocturne"
+        }
+      ],
+      "geometry": {
+        "sidebar-shell": null,
+        "top-nav-page-canvas": null,
+        "workspace-dock-shell": {
+          "left": 45,
+          "top": 95,
+          "width": 1350,
+          "height": 704,
+          "display": "grid",
+          "gridColumn": "auto"
+        },
+        "workspace-multi-pane": {
+          "left": 257,
+          "top": 111,
+          "width": 1122,
+          "height": 672,
+          "display": "grid",
+          "gridColumn": "auto"
+        },
+        "navigation": {
+          "left": 61,
+          "top": 111,
+          "width": 180,
+          "height": 225,
+          "display": "block",
+          "gridColumn": "auto"
+        },
+        "data-table": {
+          "left": 257,
+          "top": 454,
+          "width": 737,
+          "height": 227,
+          "display": "block",
+          "gridColumn": "1"
+        },
+        "activity-feed": {
+          "left": 1010,
+          "top": 454,
+          "width": 369,
+          "height": 330,
+          "display": "block",
+          "gridColumn": "2"
+        }
+      },
+      "diagnostics": []
+    }
+  ],
+  "resourceOverlap": [
+    {
+      "left": "01",
+      "right": "02",
+      "shared": [
+        "minimal-top-nav",
+        "editorial-hero",
+        "feature-bento",
+        "cta-minimal",
+        "footer-product",
+        "entity-profile-header",
+        "dashboard-kpi-grid",
+        "timeline",
+        "advanced-data-table",
+        "filter-builder",
+        "button",
+        "kanban-board",
+        "input"
+      ],
+      "onlyLeft": [
+        "collapsible-sidebar"
+      ],
+      "onlyRight": [],
+      "jaccard": 0.929
+    },
+    {
+      "left": "01",
+      "right": "03",
+      "shared": [
+        "minimal-top-nav",
+        "editorial-hero",
+        "feature-bento",
+        "cta-minimal",
+        "footer-product",
+        "entity-profile-header",
+        "dashboard-kpi-grid",
+        "timeline",
+        "advanced-data-table",
+        "filter-builder",
+        "button",
+        "kanban-board",
+        "input"
+      ],
+      "onlyLeft": [
+        "collapsible-sidebar"
+      ],
+      "onlyRight": [],
+      "jaccard": 0.929
+    },
+    {
+      "left": "02",
+      "right": "03",
+      "shared": [
+        "minimal-top-nav",
+        "editorial-hero",
+        "feature-bento",
+        "cta-minimal",
+        "footer-product",
+        "entity-profile-header",
+        "dashboard-kpi-grid",
+        "timeline",
+        "advanced-data-table",
+        "filter-builder",
+        "button",
+        "kanban-board",
+        "input"
+      ],
+      "onlyLeft": [],
+      "onlyRight": [],
+      "jaccard": 1
+    }
+  ],
+  "consoleErrors": [],
+  "uncaught": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

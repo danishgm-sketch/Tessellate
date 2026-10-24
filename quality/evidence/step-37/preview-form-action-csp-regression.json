@@ -1,0 +1,37 @@
+{
+  "findingId": "SEC-37-103",
+  "severity": "medium",
+  "title": "Preview CSP did not explicitly restrict form submission destinations",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "steps": [
+      "Open /preview/?resource=button in the Sites Worker browser build.",
+      "Insert a POST form targeting https://collector.invalid/collect with employeeName=Alice Example.",
+      "Call requestSubmit and inspect both the response CSP and intercepted requests."
+    ],
+    "beforeFix": "The preview CSP used default-src 'none' but omitted form-action. The attempted form emitted no external request because the existing opaque sandbox CSP has sandbox allow-scripts without allow-forms; the missing form-action directive left the policy implicit and fragile.",
+    "browserEvidence": "The red Playwright run failed because the CSP header lacked form-action 'none'. Its request observer recorded zero external submissions, confirming that the current sandbox independently blocked the attempt."
+  },
+  "rootCause": "The preview policy relied on sandboxing for form isolation and assumed default-src also covered form submissions.",
+  "affectedFiles": [
+    "apps/sites/worker.ts",
+    "apps/site/public/_headers",
+    "apps/preview/public/_headers",
+    "tests/e2e/sites-preview-csp.spec.ts",
+    "apps/sites/README.md",
+    "apps/sites/VALIDATION.md"
+  ],
+  "remediation": "Set form-action 'none' for isolated Sites previews, form-action 'self' for the Sites app shell, and form-action 'none' for the standalone preview host policy. Keep the sandbox control as an independent boundary.",
+  "validation": {
+    "redBeforeFix": "pnpm exec playwright test --config tests/e2e/sites-preview.playwright.config.ts tests/e2e/sites-preview-csp.spec.ts -g \"preview CSP blocks forms\"",
+    "redBeforeFixResult": "failed as expected: form-action 'none' was absent; the sandbox prevented a network request",
+    "greenAfterFix": "the same test passed for desktop Chromium and the mobile Chromium profile",
+    "assertions": [
+      "POST submission containing a sample field value produced no request to collector.invalid",
+      "preview response explicitly includes form-action 'none'"
+    ]
+  },
+  "runtimeBoundary": "The external URL was intercepted in Playwright. No request left the local browser. Before the fix, the existing sandbox blocked the submission even though the explicit form-action rule was missing.",
+  "capturedAt": "2026-10-21T18:22:50Z"
+}

@@ -5,7 +5,7 @@
   "name": "Case Study Spotlight",
   "version": "1.0.0",
   "status": "verified",
-  "description": "In-depth customer story card featuring measurable impact metrics, quote, and read study link.",
+  "description": "Customer case study card template with slots for customer-approved, evidence-backed outcomes.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,7 +130,7 @@
     "trust"
   ],
   "intent": {
-    "summary": "In-depth customer story card featuring measurable impact metrics, quote, and read study link.",
+    "summary": "Case study card template; publish only approved customer evidence.",
     "idealFor": [
       "Deep-dive enterprise case study features"
     ],
@@ -138,7 +138,7 @@
       "Casual generic landing pages"
     ],
     "jobs": [
-      "Prove ROI through concrete numbers and customer narrative"
+      "Present verified outcomes with a customer-approved narrative"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"
@@ -209,12 +209,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

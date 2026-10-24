@@ -1,0 +1,85 @@
+{
+  "capturedAt": "2026-10-20T19:30:35.502Z",
+  "cliPath": "C:\\Users\\ismay\\Development\\Tessellate\\packages\\cli\\dist\\index.cjs",
+  "workingDirectory": "fresh OS temporary directory, outside the repository",
+  "create": {
+    "args": [
+      "create-resource",
+      "--slug",
+      "draft-scaffold-evidence",
+      "--name",
+      "Draft Scaffold Evidence"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "[tess] Scaffolding new resource: Draft Scaffold Evidence (draft-scaffold-evidence)...\n[tess] Successfully created resource files:\n  ✓ resources\\primitives\\draft-scaffold-evidence\\resource.json\n  ✓ resources\\primitives\\draft-scaffold-evidence\\index.tsx\n  ✓ resources\\primitives\\draft-scaffold-evidence\\README.md\n\nNext: run 'tess validate resources\\primitives\\draft-scaffold-evidence\\resource.json' to test manifest validity.\n",
+    "stderr": "",
+    "error": null
+  },
+  "validate": {
+    "args": [
+      "validate",
+      "resources\\primitives\\draft-scaffold-evidence\\resource.json"
+    ],
+    "status": 0,
+    "signal": null,
+    "stdout": "[tess] Valid ResourceManifest: Draft Scaffold Evidence (draft-scaffold-evidence) v0.1.0\n",
+    "stderr": "",
+    "error": null
+  },
+  "manifest": {
+    "status": "draft",
+    "description": "Starter scaffold for Draft Scaffold Evidence. Review its behavior and metadata before sharing it.",
+    "creator": {
+      "id": "contrib_draft-scaffold-evidence",
+      "displayName": "Unassigned contributor",
+      "handle": "draft-scaffold-evidence"
+    },
+    "provenance": {
+      "origin": "unknown",
+      "derivative": "unknown",
+      "aiAssistance": "unknown"
+    },
+    "license": {
+      "spdx": "NOASSERTION",
+      "name": "License not selected",
+      "redistributionVerified": false,
+      "attributionRequired": false
+    },
+    "verifiedWidths": [],
+    "accessibility": {
+      "levelTarget": "none",
+      "keyboardVerified": false,
+      "screenReaderSemantics": false,
+      "reducedMotionVerified": false,
+      "contrastTokenCompatible": true,
+      "focusVisible": false,
+      "knownLimitations": [
+        "Draft scaffold; accessibility behavior has not been tested."
+      ]
+    },
+    "quality": {
+      "overall": 0,
+      "accessibility": 0,
+      "responsive": 0,
+      "performance": 0,
+      "codeQuality": 0,
+      "composability": 0,
+      "visualCraft": 0,
+      "dependencyCleanliness": 0,
+      "documentation": 0
+    }
+  },
+  "generatedSource": "import React from 'react';\n\nexport interface DraftScaffoldEvidenceProps {\n  children?: React.ReactNode;\n  className?: string;\n}\n\n/**\n * Draft Scaffold Evidence — Starter scaffold for Draft Scaffold Evidence. Review its behavior and metadata before sharing it.\n * Adheres strictly to Tessellate semantic design tokens.\n */\nexport function DraftScaffoldEvidence({\n  children,\n  className = '',\n}: DraftScaffoldEvidenceProps) {\n  return (\n    <div\n      className={`inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium bg-[var(--tess-surface,#FFFFFF)] text-[var(--tess-ink,#111217)] border border-[var(--tess-border,#E5E3DC)] rounded-[var(--tess-radius,6px)] ${className}`}\n    >\n      {children || \"Draft Scaffold Evidence\"}\n    </div>\n  );\n}\n\nexport default DraftScaffoldEvidence;\n",
+  "generatedReadme": "# Draft Scaffold Evidence\n\n> Starter scaffold for Draft Scaffold Evidence. Review its behavior and metadata before sharing it.\n\nThis is an unpublished draft scaffold. It is not registered in the Tessellate catalogue.\n\n## Before sharing\n- Replace the unassigned contributor and unknown provenance with accurate attribution.\n- Select a license and verify redistribution rights.\n- Test accessibility and responsive behavior, then record only the widths and quality results you actually verified.\n- Run `tess validate resource.json`; schema validation does not certify the source or its behavior.\n\n## Usage\n```tsx\nimport { DraftScaffoldEvidence } from './components/ui/DraftScaffoldEvidence';\n\nexport function Example() {\n  return <DraftScaffoldEvidence>Hello World</DraftScaffoldEvidence>;\n}\n```\n",
+  "assertions": {
+    "created": true,
+    "schemaValidation": true,
+    "unregisteredDraft": true,
+    "provenanceUnresolved": true,
+    "redistributionUnverified": true,
+    "noResponsiveWidthsClaimed": true,
+    "accessibilityNotCertified": true,
+    "noInstallClaim": true
+  }
+}

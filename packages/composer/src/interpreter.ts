@@ -9,10 +9,22 @@ import {
   DEFAULT_DESIGN_DNA,
   DNA_PRESETS,
   applyFeelDescriptors,
-  clampScore,
+  applyVisualAmbition,
+  applyStructuralCreativity,
 } from '@tessellate/dna';
 import { detectProductArchetypes, getProductArchetype } from './archetypes.js';
 import { findBlueprintByArchetype, type ProductBlueprint } from './blueprints.js';
+import {
+  specialiseConsumer,
+  specialiseAi,
+  specialiseDeveloperTools,
+  specialiseEcommerce,
+  specialiseFintechTrading,
+  specialiseMedia,
+  specialiseMarketplace,
+  specialisePeopleOperations,
+  specialiseTravel,
+} from './domain-context.js';
 
 export interface ProductBriefInput {
   description: string;
@@ -52,7 +64,7 @@ export function deriveInitialDesignDNA(
     const presetId = blueprint.applicableDnaPresets[0];
     const foundPreset = DNA_PRESETS.find((p) => p.id === presetId);
     if (foundPreset) {
-      base = { ...foundPreset.dna };
+      base = { ...foundPreset.dna, primaryArchetype };
     }
   }
 
@@ -61,43 +73,11 @@ export function deriveInitialDesignDNA(
   }
 
   if (typeof input.visualAmbition === 'number') {
-    const va = clampScore(input.visualAmbition);
-    base.visualAmbition = va;
-
-    if (va <= 25) {
-      base.motion = Math.min(base.motion ?? 40, 20);
-      base.motionPlayfulness = Math.min(base.motionPlayfulness ?? 30, 10);
-      base.motionPersonality = 'calm-precision';
-      base.typographicExpression = Math.min(base.typographicExpression ?? 45, 30);
-      base.imageryIntensity = Math.min(base.imageryIntensity ?? 30, 15);
-      base.depth = Math.min(base.depth ?? 30, 15);
-    } else if (va <= 50) {
-      base.motion = clampScore((base.motion ?? 40) * 0.9);
-      base.typographicExpression = clampScore(base.typographicExpression ?? 45);
-    } else if (va <= 75) {
-      base.motion = clampScore(Math.max(base.motion ?? 40, 55));
-      base.typographicExpression = clampScore(Math.max(base.typographicExpression ?? 45, 60));
-      base.imageryIntensity = clampScore(Math.max(base.imageryIntensity ?? 30, 50));
-      base.depth = clampScore(Math.max(base.depth ?? 30, 45));
-    } else {
-      base.motion = clampScore(Math.max(base.motion ?? 40, 75));
-      base.motionPlayfulness = clampScore(Math.max(base.motionPlayfulness ?? 30, 65));
-      base.motionPersonality = 'playful-spring';
-      base.typographicExpression = clampScore(Math.max(base.typographicExpression ?? 45, 80));
-      base.imageryIntensity = clampScore(Math.max(base.imageryIntensity ?? 30, 75));
-      base.depth = clampScore(Math.max(base.depth ?? 30, 70));
-    }
+    base = applyVisualAmbition(base, input.visualAmbition);
   }
 
   if (typeof input.structuralCreativity === 'number') {
-    const sc = clampScore(input.structuralCreativity);
-    base.structuralCreativity = sc;
-    if (sc >= 70) {
-      base.asymmetry = clampScore(Math.max(base.asymmetry ?? 25, 45));
-      base.interactionDensity = clampScore(Math.max(base.interactionDensity ?? 50, 65));
-    } else if (sc <= 30) {
-      base.asymmetry = clampScore(Math.min(base.asymmetry ?? 25, 15));
-    }
+    base = applyStructuralCreativity(base, input.structuralCreativity);
   }
 
   if (input.accessibilityFloor === 'AAA') {
@@ -128,41 +108,88 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   // 1. Detect archetypes
   const detectedArchetypes = detectProductArchetypes(text, input.archetypeOverride);
   const primaryTag = detectedArchetypes[0]?.tag ?? 'saas';
-  const archetypeDef = getProductArchetype(primaryTag);
+  const definition = getProductArchetype(primaryTag);
+  const archetypeDef = definition
+    ? specialiseDeveloperTools(
+        specialiseAi(
+          specialiseTravel(
+            specialiseMedia(
+              specialiseConsumer(
+                specialiseEcommerce(
+                  specialiseMarketplace(
+                    specialiseFintechTrading(specialisePeopleOperations(definition, text), text),
+                    text
+                  ),
+                  text
+                ),
+                text
+              ),
+              text
+            ),
+            text
+          ),
+          text
+        ),
+        text
+      )
+    : undefined;
   const blueprint = findBlueprintByArchetype(primaryTag);
 
-  assumptions.push(`Identified primary archetype as "${archetypeDef?.name ?? primaryTag}" based on domain vocabulary.`);
+  assumptions.push(
+    `Identified primary archetype as "${archetypeDef?.name ?? primaryTag}" based on domain vocabulary.`
+  );
 
   // 2. Audience & Objective
-  const audience = input.audience?.trim() || archetypeDef?.primaryAudience || 'Professional teams and operators';
+  const audience =
+    input.audience?.trim() || archetypeDef?.primaryAudience || 'Professional teams and operators';
   if (!input.audience) {
     assumptions.push(`Inferred target audience as "${audience}".`);
   }
 
-  const primaryObjective = input.objective?.trim() || archetypeDef?.primaryObjective || 'Streamline workflows and manage resources';
+  const primaryObjective =
+    input.objective?.trim() ||
+    archetypeDef?.primaryObjective ||
+    'Streamline workflows and manage resources';
   if (!input.objective) {
     assumptions.push(`Inferred primary objective: "${primaryObjective}".`);
   }
 
   // 3. User Sophistication & Metric Priors
-  let userSophistication = blueprint.priors.userSophistication;
-  let trustRequirement = blueprint.priors.trustRequirement;
-  let informationComplexity = blueprint.priors.informationComplexity;
-  let dataDensity = blueprint.priors.dataDensity;
-  let collaborationLevel = blueprint.priors.collaborationLevel;
-  let transactionCriticality = blueprint.priors.transactionCriticality;
-  let navigationComplexity = blueprint.priors.navigationComplexity;
-  let mobileImportance = blueprint.priors.mobileImportance;
+  let userSophistication = archetypeDef?.userSophistication ?? blueprint.priors.userSophistication;
+  let trustRequirement = archetypeDef?.trustRequirement ?? blueprint.priors.trustRequirement;
+  let informationComplexity =
+    archetypeDef?.informationComplexity ?? blueprint.priors.informationComplexity;
+  let dataDensity = archetypeDef?.dataDensity ?? blueprint.priors.dataDensity;
+  let collaborationLevel = archetypeDef?.collaborationLevel ?? blueprint.priors.collaborationLevel;
+  let transactionCriticality =
+    archetypeDef?.transactionCriticality ?? blueprint.priors.transactionCriticality;
+  let navigationComplexity =
+    archetypeDef?.navigationComplexity ?? blueprint.priors.navigationComplexity;
+  let mobileImportance = archetypeDef?.mobileImportance ?? blueprint.priors.mobileImportance;
 
   // Nuanced keyword tuning
   const lower = text.toLowerCase();
+  const commercialIntentText = `${text} ${input.objective ?? ''}`;
+  const hasExplicitBillingIntent =
+    /\b(billing|subscriptions?|invoices?|paid plans?|pricing|monetiz(?:e|ation)|monetis(?:e|ation)|charge customers|payment plans?)\b/i.test(
+      commercialIntentText
+    );
+  const hasExplicitFundsTransferIntent =
+    /\b(?:transfer|send|move|withdraw|deposit)\b.{0,32}\b(?:funds?|money|cash|balances?|accounts?)\b|\b(?:funds?|money|cash)\b.{0,32}\b(?:transfer|send|move|withdraw|deposit)\b/i.test(
+      commercialIntentText
+    );
   if (lower.includes('developer') || lower.includes('engineer') || lower.includes('terminal')) {
     userSophistication = Math.min(100, userSophistication + 15);
     dataDensity = Math.min(100, dataDensity + 10);
     assumptions.push('Elevated technical user sophistication due to developer/terminal focus.');
   }
 
-  if (lower.includes('bank') || lower.includes('security') || lower.includes('compliance') || lower.includes('confidential')) {
+  if (
+    lower.includes('bank') ||
+    lower.includes('security') ||
+    lower.includes('compliance') ||
+    lower.includes('confidential')
+  ) {
     trustRequirement = Math.min(100, trustRequirement + 15);
     assumptions.push('Elevated trust & compliance requirement to maximum priority.');
   }
@@ -172,12 +199,17 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     assumptions.push('Elevated collaboration requirement for multi-user workflow.');
   }
 
-  if (lower.includes('checkout') || lower.includes('payment') || lower.includes('transaction') || lower.includes('order')) {
+  if (lower.includes('checkout') || lower.includes('payment') || lower.includes('money transfer')) {
     transactionCriticality = Math.min(100, transactionCriticality + 20);
-    assumptions.push('Elevated transaction criticality for fiscal operations.');
+    assumptions.push('Elevated transaction criticality for payment and purchase workflows.');
   }
 
-  if (lower.includes('analytics') || lower.includes('scientific') || lower.includes('telemetry') || lower.includes('dataset')) {
+  if (
+    lower.includes('analytics') ||
+    lower.includes('scientific') ||
+    lower.includes('telemetry') ||
+    lower.includes('dataset')
+  ) {
     informationComplexity = Math.min(100, informationComplexity + 15);
     assumptions.push('Elevated information complexity for dense telemetry and dataset analysis.');
   }
@@ -187,7 +219,12 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     assumptions.push('Elevated navigation complexity for deep hierarchical structures.');
   }
 
-  if (lower.includes('mobile') || lower.includes('ios') || lower.includes('android') || lower.includes('phone')) {
+  if (
+    lower.includes('mobile') ||
+    lower.includes('ios') ||
+    lower.includes('android') ||
+    lower.includes('phone')
+  ) {
     mobileImportance = Math.min(100, mobileImportance + 20);
     assumptions.push('Prioritized mobile ergonomics and touch-first interaction.');
   }
@@ -195,12 +232,31 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   // 4. Jobs To Be Done (JTBD)
   const jobsToBeDone: string[] = [
     `Authenticate and access ${archetypeDef?.name ?? 'workspace'}`,
-    `Inspect primary overview telemetry and health metrics`,
+    `Review the overview and priority actions`,
     `Create, update, and manage records`,
   ];
 
+  const defaultWorkflows = (
+    archetypeDef?.defaultWorkflows ?? [
+      {
+        id: 'manage-record',
+        name: 'Create and update record',
+        steps: ['open-form', 'fill-fields', 'save'],
+      },
+    ]
+  ).filter((workflow) => {
+    if (workflow.id === 'manage-billing' && !hasExplicitBillingIntent) return false;
+    if (
+      primaryTag === 'fintech' &&
+      workflow.id === 'transfer-funds' &&
+      !hasExplicitFundsTransferIntent
+    )
+      return false;
+    return true;
+  });
+
   if (archetypeDef) {
-    for (const wf of archetypeDef.defaultWorkflows) {
+    for (const wf of defaultWorkflows) {
       jobsToBeDone.push(wf.name);
     }
   }
@@ -210,17 +266,24 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     { name: 'Item', description: 'Core operational record', fields: ['id', 'title', 'createdAt'] },
   ];
 
-  const workflows = archetypeDef?.defaultWorkflows ?? [
-    { id: 'manage-record', name: 'Create and update record', steps: ['open-form', 'fill-fields', 'save'] },
-  ];
+  const workflows = defaultWorkflows;
 
   // 6. Likely Screens
-  const likelyScreens = (archetypeDef?.recommendedScreens ?? []).map((s) => ({
-    name: s.name,
-    screenType: s.screenType,
-    purpose: s.purpose,
-    jobs: s.jobs,
-  }));
+  const likelyScreens = (archetypeDef?.recommendedScreens ?? [])
+    .filter((screen) => screen.screenType !== 'billing-account' || hasExplicitBillingIntent)
+    .filter(
+      (screen) =>
+        primaryTag !== 'fintech' ||
+        screen.screenType !== 'checkout-transaction' ||
+        hasExplicitFundsTransferIntent
+    )
+    .map((s) => ({
+      name: s.name,
+      screenType: s.screenType,
+      purpose: s.purpose,
+      jobs: s.jobs,
+      required: s.required,
+    }));
 
   // 7. Constraints
   const constraints: ProjectConstraints = {
@@ -230,7 +293,7 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     requiredScreens: input.requiredScreens ?? [],
     forbiddenScreens: input.forbiddenScreens ?? [],
     requiredPatterns: [],
-    forbiddenPatterns: blueprint.antiPatterns,
+    forbiddenPatterns: archetypeDef?.forbiddenPatterns ?? blueprint.antiPatterns,
     allowedDependencies: ['react', 'tailwindcss', 'lucide-react'],
     prohibitedDependencies: ['jquery', 'bootstrap'],
   };
@@ -241,7 +304,10 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     primaryAudience: audience,
     userSophistication,
     primaryObjective,
-    secondaryObjectives: ['Ensure high accessibility standards', 'Maintain responsive layout across devices'],
+    secondaryObjectives: [
+      'Ensure high accessibility standards',
+      'Maintain responsive layout across devices',
+    ],
     jobsToBeDone,
     entities,
     workflows,
@@ -253,8 +319,11 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     navigationComplexity,
     mobileImportance,
     likelyScreens,
-    requiredCapabilities: archetypeDef?.requiredCapabilities ?? ['authentication', 'responsive-layout'],
-    forbiddenPatterns: blueprint.antiPatterns,
+    requiredCapabilities: archetypeDef?.requiredCapabilities ?? [
+      'authentication',
+      'responsive-layout',
+    ],
+    forbiddenPatterns: archetypeDef?.forbiddenPatterns ?? blueprint.antiPatterns,
     constraints,
   });
 
@@ -262,10 +331,14 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     assumptions.push(`Applied feel descriptors "${input.feel}" with mathematical DNA adjustments.`);
   }
   if (typeof input.visualAmbition === 'number') {
-    assumptions.push(`Applied Visual Ambition level ${input.visualAmbition} to motion, typography, and depth.`);
+    assumptions.push(
+      `Applied Visual Ambition level ${input.visualAmbition} to motion, typography, and depth.`
+    );
   }
   if (typeof input.structuralCreativity === 'number') {
-    assumptions.push(`Applied Structural Creativity level ${input.structuralCreativity} to spatial topology.`);
+    assumptions.push(
+      `Applied Structural Creativity level ${input.structuralCreativity} to spatial topology.`
+    );
   }
 
   const initialDesignDna = deriveInitialDesignDNA(primaryTag, blueprint, input);

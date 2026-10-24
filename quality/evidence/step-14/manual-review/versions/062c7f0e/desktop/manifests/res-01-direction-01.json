@@ -1,0 +1,657 @@
+{
+  "id": "proj-direction-a-eee9fddb0bd8457bbb47647ed595add8dira",
+  "dna": {
+    "professionalism": 100,
+    "playfulness": 38,
+    "luxury": 45,
+    "warmth": 30,
+    "technicality": 82,
+    "editorial": 45,
+    "futurism": 25,
+    "visualAmbition": 30,
+    "structuralCreativity": 20,
+    "density": 75,
+    "whitespace": 50,
+    "contrast": 85,
+    "colourfulness": 39,
+    "curvature": 33,
+    "depth": 35,
+    "motion": 35,
+    "motionPlayfulness": 15,
+    "typographicExpression": 43,
+    "imageryIntensity": 35,
+    "videoIntensity": 15,
+    "threeDIntensity": 6,
+    "dataDensity": 85,
+    "interactionDensity": 75,
+    "asymmetry": 24,
+    "conversionIntensity": 25,
+    "trust": 100,
+    "accessibilityPriority": 100,
+    "performancePriority": 100,
+    "primaryArchetype": "intelligence-research",
+    "visualMode": "adaptive",
+    "geometryFamily": "pill",
+    "navigationModel": "sidebar",
+    "responsivePhilosophy": "desktop-dense-mobile-focused",
+    "contentTone": "calm",
+    "primaryStack": "react-tailwind",
+    "motionPersonality": "playful-spring",
+    "typographyPersonality": "financial-sans-tabular-mono",
+    "surfacePersonality": "subtle-contrast"
+  },
+  "navigation": {
+    "model": "sidebar",
+    "primaryItems": [
+      {
+        "label": "Research Terminal",
+        "targetScreenId": "screen-workspace"
+      },
+      {
+        "label": "Entity Index",
+        "targetScreenId": "screen-entity-index"
+      },
+      {
+        "label": "Watchlists & Alerts",
+        "targetScreenId": "screen-collection-index"
+      }
+    ],
+    "secondaryItems": [
+      {
+        "label": "Dossier Reader",
+        "targetScreenId": "screen-dossier-reader"
+      }
+    ]
+  },
+  "grammar": "classic-sidebar-dashboard",
+  "screens": [
+    {
+      "id": "screen-workspace",
+      "screenNodeId": "screen-workspace",
+      "name": "Research Terminal",
+      "slug": "/research-terminal",
+      "rootNode": {
+        "id": "root-screen-workspace",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-workspace-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Entity Workspace",
+              "links": [
+                {
+                  "label": "Research Terminal",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "Entity Index",
+                  "href": "#screen-entity-index"
+                },
+                {
+                  "label": "Watchlists & Alerts",
+                  "href": "#screen-collection-index"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-workspace-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-workspace-canvas-viewport-2",
+                "nodeType": "section",
+                "semanticRole": "canvas-viewport",
+                "resourceRef": {
+                  "id": "res_blk_kanban_board",
+                  "slug": "kanban-board",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Research Terminal",
+                  "columns": [
+                    {
+                      "title": "Search entity, map relationship network, and tag evidence",
+                      "tasks": [
+                        "Global search",
+                        "Expand relations",
+                        "Highlight findings",
+                        "Export dossier"
+                      ]
+                    },
+                    {
+                      "title": "Set automated monitoring triggers for entity changes",
+                      "tasks": [
+                        "Define alert rules",
+                        "Select entities",
+                        "Choose cadence"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-workspace-inspector-panel-3",
+                "nodeType": "section",
+                "semanticRole": "inspector-panel",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Research Terminal",
+                  "subtitle": "Three-pane entity investigation workspace",
+                  "badge": "EXAMPLE",
+                  "initials": "EW"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    },
+    {
+      "id": "screen-entity-index",
+      "screenNodeId": "screen-entity-index",
+      "name": "Entity Index",
+      "slug": "/entity-index",
+      "rootNode": {
+        "id": "root-screen-entity-index",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-entity-index-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Entity Workspace",
+              "links": [
+                {
+                  "label": "Research Terminal",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "Entity Index",
+                  "href": "#screen-entity-index"
+                },
+                {
+                  "label": "Watchlists & Alerts",
+                  "href": "#screen-collection-index"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-entity-index-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-entity-index-search-header-2",
+                "nodeType": "section",
+                "semanticRole": "search-header",
+                "resourceRef": {
+                  "id": "res_primitive_input",
+                  "slug": "input",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Search records",
+                  "helperText": "Example search only. Connect your data source to search live records.",
+                  "placeholder": "Search records",
+                  "disabled": false,
+                  "title": "Entity Index"
+                }
+              },
+              {
+                "id": "node-screen-entity-index-facet-rail-3",
+                "nodeType": "section",
+                "semanticRole": "facet-rail",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-entity-index-results-grid-4",
+                "nodeType": "section",
+                "semanticRole": "results-grid",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Search results",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Entity",
+                      "type": "Investigated company, person, or asset node",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Evidence",
+                      "type": "Verified document, filing, or signal reference",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Dossier",
+                      "type": "Curated dossier binder and synthesis report",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    },
+    {
+      "id": "screen-dossier-reader",
+      "screenNodeId": "screen-dossier-reader",
+      "name": "Dossier Reader",
+      "slug": "/dossiers/:id",
+      "rootNode": {
+        "id": "root-screen-dossier-reader",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-dossier-reader-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Entity Workspace",
+              "links": [
+                {
+                  "label": "Research Terminal",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "Entity Index",
+                  "href": "#screen-entity-index"
+                },
+                {
+                  "label": "Watchlists & Alerts",
+                  "href": "#screen-collection-index"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-dossier-reader-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-dossier-reader-entity-header-2",
+                "nodeType": "section",
+                "semanticRole": "entity-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Dossier Reader",
+                  "subtitle": "Published long-form report with linked evidence footnotes",
+                  "badge": "EXAMPLE",
+                  "initials": "EW"
+                }
+              },
+              {
+                "id": "node-screen-dossier-reader-detail-tabs-3",
+                "nodeType": "section",
+                "semanticRole": "detail-tabs",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Entity Workspace",
+                  "links": [
+                    {
+                      "label": "Research Terminal",
+                      "href": "#screen-workspace"
+                    },
+                    {
+                      "label": "Entity Index",
+                      "href": "#screen-entity-index"
+                    },
+                    {
+                      "label": "Watchlists & Alerts",
+                      "href": "#screen-collection-index"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-dossier-reader-main-content-pane-4",
+                "nodeType": "section",
+                "semanticRole": "main-content-pane",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Dossier Reader",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Entity",
+                      "type": "Investigated company, person, or asset node",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Evidence",
+                      "type": "Verified document, filing, or signal reference",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Dossier",
+                      "type": "Curated dossier binder and synthesis report",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-dossier-reader-metadata-sidebar-5",
+                "nodeType": "section",
+                "semanticRole": "metadata-sidebar",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Dossier Reader",
+                  "subtitle": "Published long-form report with linked evidence footnotes",
+                  "badge": "EXAMPLE",
+                  "initials": "EW"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    },
+    {
+      "id": "screen-collection-index",
+      "screenNodeId": "screen-collection-index",
+      "name": "Watchlists & Alerts",
+      "slug": "/watchlists-and-alerts",
+      "rootNode": {
+        "id": "root-screen-collection-index",
+        "nodeType": "layout",
+        "semanticRole": "sidebar-shell",
+        "children": [
+          {
+            "id": "node-screen-collection-index-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_collapsible_sidebar",
+              "slug": "collapsible-sidebar",
+              "version": "1.0.0"
+            },
+            "variant": "quiet",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Entity Workspace",
+              "links": [
+                {
+                  "label": "Research Terminal",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "Entity Index",
+                  "href": "#screen-entity-index"
+                },
+                {
+                  "label": "Watchlists & Alerts",
+                  "href": "#screen-collection-index"
+                }
+              ],
+              "orientation": "horizontal"
+            }
+          },
+          {
+            "id": "container-screen-collection-index-main",
+            "nodeType": "layout",
+            "semanticRole": "main-content-scroll",
+            "children": [
+              {
+                "id": "node-screen-collection-index-index-header-2",
+                "nodeType": "section",
+                "semanticRole": "index-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Watchlists & Alerts",
+                  "subtitle": "Active signal alerts and entity delta log",
+                  "badge": "EXAMPLE",
+                  "initials": "EW"
+                }
+              },
+              {
+                "id": "node-screen-collection-index-filter-bar-3",
+                "nodeType": "section",
+                "semanticRole": "filter-bar",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-collection-index-data-table-4",
+                "nodeType": "section",
+                "semanticRole": "data-table",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Watchlists & Alerts",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Entity",
+                      "type": "Investigated company, person, or asset node",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Evidence",
+                      "type": "Verified document, filing, or signal reference",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Dossier",
+                      "type": "Curated dossier binder and synthesis report",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-collection-index-pagination-5",
+                "nodeType": "section",
+                "semanticRole": "pagination",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "quiet",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Continue",
+                  "disabled": false,
+                  "title": "Watchlists & Alerts"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "sidebar-card-grid"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "sidebar"
+        }
+      }
+    }
+  ],
+  "diagnostics": []
+}

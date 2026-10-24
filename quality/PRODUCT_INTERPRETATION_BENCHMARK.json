@@ -1,0 +1,1342 @@
+{
+  "schemaVersion": "1.0.0",
+  "title": "Product Interpreter Semantic Quality Benchmark",
+  "scope": "100 manually adjudicated, no-override briefs covering all 18 shipped archetypes and the exact employee-experience acceptance brief. Structural integrity coverage remains a separate test suite.",
+  "notes": [
+    "Every case is interpreted from its description only; no archetype override, audience, or objective is supplied.",
+    "acceptableArchetypes includes the expected primary and only semantically defensible secondary classifications for this specific brief.",
+    "Metric ranges are acceptance intervals for trust, information density, and transaction criticality; they do not award correctness for schema validity alone."
+  ],
+  "metricProfiles": {
+    "saas": {
+      "trustRequirement": [75, 100],
+      "dataDensity": [45, 85],
+      "transactionCriticality": [40, 85]
+    },
+    "ai": {
+      "trustRequirement": [70, 100],
+      "dataDensity": [40, 90],
+      "transactionCriticality": [30, 70]
+    },
+    "developer-tools": {
+      "trustRequirement": [85, 100],
+      "dataDensity": [80, 100],
+      "transactionCriticality": [50, 90]
+    },
+    "fintech": {
+      "trustRequirement": [90, 100],
+      "dataDensity": [75, 100],
+      "transactionCriticality": [85, 100]
+    },
+    "fintech-trading": {
+      "trustRequirement": [95, 100],
+      "dataDensity": [90, 100],
+      "transactionCriticality": [90, 100]
+    },
+    "ecommerce": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [40, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "ecommerce-returns": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [35, 65],
+      "transactionCriticality": [70, 100]
+    },
+    "marketplace": {
+      "trustRequirement": [85, 100],
+      "dataDensity": [45, 80],
+      "transactionCriticality": [75, 100]
+    },
+    "analytics": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [85, 100],
+      "transactionCriticality": [20, 60]
+    },
+    "intelligence-research": {
+      "trustRequirement": [90, 100],
+      "dataDensity": [80, 100],
+      "transactionCriticality": [20, 75]
+    },
+    "crm": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [60, 85],
+      "transactionCriticality": [60, 90]
+    },
+    "erp-operations": {
+      "trustRequirement": [90, 100],
+      "dataDensity": [80, 100],
+      "transactionCriticality": [75, 95]
+    },
+    "productivity": {
+      "trustRequirement": [50, 80],
+      "dataDensity": [30, 60],
+      "transactionCriticality": [10, 40]
+    },
+    "education": {
+      "trustRequirement": [70, 90],
+      "dataDensity": [40, 65],
+      "transactionCriticality": [30, 60]
+    },
+    "creator": {
+      "trustRequirement": [70, 90],
+      "dataDensity": [45, 70],
+      "transactionCriticality": [50, 80]
+    },
+    "media": {
+      "trustRequirement": [60, 90],
+      "dataDensity": [40, 85],
+      "transactionCriticality": [10, 50]
+    },
+    "travel": {
+      "trustRequirement": [85, 100],
+      "dataDensity": [45, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "real-estate": {
+      "trustRequirement": [90, 100],
+      "dataDensity": [50, 80],
+      "transactionCriticality": [80, 100]
+    },
+    "recruitment": {
+      "trustRequirement": [80, 95],
+      "dataDensity": [55, 85],
+      "transactionCriticality": [40, 75]
+    },
+    "consumer": {
+      "trustRequirement": [50, 80],
+      "dataDensity": [30, 55],
+      "transactionCriticality": [15, 45]
+    },
+    "employee-experience": {
+      "trustRequirement": [80, 95],
+      "dataDensity": [45, 70],
+      "transactionCriticality": [15, 45]
+    },
+    "ecommerce-clothing": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [40, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "ecommerce-grocery": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [40, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "ecommerce-home-goods": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [40, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "ecommerce-music": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [40, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "ecommerce-cosmetics": {
+      "trustRequirement": [80, 100],
+      "dataDensity": [40, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "media-streaming": {
+      "trustRequirement": [60, 90],
+      "dataDensity": [50, 75],
+      "transactionCriticality": [10, 50]
+    },
+    "travel-trip-planning": {
+      "trustRequirement": [85, 100],
+      "dataDensity": [45, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "travel-hotel-booking": {
+      "trustRequirement": [85, 100],
+      "dataDensity": [45, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "travel-flight-management": {
+      "trustRequirement": [85, 100],
+      "dataDensity": [45, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "travel-resort-guest": {
+      "trustRequirement": [85, 100],
+      "dataDensity": [45, 75],
+      "transactionCriticality": [80, 100]
+    },
+    "travel-destination-guide": {
+      "trustRequirement": [85, 100],
+      "dataDensity": [45, 75],
+      "transactionCriticality": [80, 100]
+    }
+  },
+  "semanticProfiles": {
+    "saas": {
+      "audienceAnyOf": ["business teams"],
+      "objectiveAnyOf": ["team workflows"],
+      "entityAnyOf": ["Workspace", "Member"],
+      "workflowAnyOf": ["onboard team members"],
+      "screenAnyOf": ["Overview Dashboard", "Projects Index"],
+      "forbiddenAnyOf": ["order book", "trading terminal", "candidate scorecard"]
+    },
+    "ai": {
+      "audienceAnyOf": [
+        "knowledge workers",
+        "composers",
+        "support specialists",
+        "practitioners",
+        "operations staff",
+        "illustrators"
+      ],
+      "objectiveAnyOf": [
+        "assistance",
+        "help composers",
+        "assist support",
+        "help practitioners",
+        "help operators",
+        "help illustrators"
+      ],
+      "entityAnyOf": [
+        "Prompt",
+        "Generation",
+        "Track",
+        "Support Case",
+        "Knowledge Source",
+        "Evaluation Run",
+        "Failure Example",
+        "Agent",
+        "Image Prompt"
+      ],
+      "workflowAnyOf": ["generation", "compare", "answer", "review", "approve", "image concept"],
+      "screenAnyOf": [
+        "Prompt Canvas",
+        "History",
+        "Audio Studio",
+        "Support Assistant",
+        "Evaluation Runs",
+        "Agent Workspace",
+        "Image Studio"
+      ],
+      "forbiddenAnyOf": ["order book", "trading terminal", "warehouse inventory"]
+    },
+    "developer-tools": {
+      "audienceAnyOf": [
+        "software engineers",
+        "software teams",
+        "backend engineers",
+        "platform engineers",
+        "maintainers",
+        "application engineers"
+      ],
+      "objectiveAnyOf": [
+        "diagnostic control",
+        "help engineers",
+        "help platform teams",
+        "help maintainers",
+        "help software teams",
+        "help application engineers"
+      ],
+      "entityAnyOf": [
+        "Service",
+        "LogStream",
+        "API Request",
+        "Kubernetes Service",
+        "Trace",
+        "Pull Request",
+        "Feature Flag",
+        "API Endpoint"
+      ],
+      "workflowAnyOf": [
+        "logs",
+        "credentials",
+        "inspect",
+        "monitor",
+        "investigate",
+        "review",
+        "configure",
+        "integrate"
+      ],
+      "screenAnyOf": [
+        "Telemetry Dashboard",
+        "Log Explorer",
+        "Request Inspector",
+        "Deployment Overview",
+        "Trace Explorer",
+        "Pull Requests",
+        "Flag Rules",
+        "Endpoint Reference"
+      ],
+      "forbiddenAnyOf": ["order book", "candidate pipeline", "hotel reservation"]
+    },
+    "fintech": {
+      "audienceAnyOf": ["finance managers"],
+      "objectiveAnyOf": ["money movement"],
+      "entityAnyOf": ["Account", "Transaction"],
+      "workflowAnyOf": ["transfer", "statements"],
+      "screenAnyOf": ["Account Balances", "Transaction History"],
+      "forbiddenAnyOf": ["lesson classroom", "candidate pipeline", "social feed"]
+    },
+    "fintech-trading": {
+      "audienceAnyOf": ["equity dealers"],
+      "objectiveAnyOf": ["market depth", "trade execution"],
+      "entityAnyOf": ["Security", "Order", "Position"],
+      "workflowAnyOf": ["market depth", "equity trade", "portfolio risk"],
+      "screenAnyOf": ["Market Overview", "Order Book", "Positions & Risk"],
+      "forbiddenAnyOf": ["bank statement", "reconcile statements", "household budget"]
+    },
+    "ecommerce": {
+      "audienceAnyOf": ["online shoppers"],
+      "objectiveAnyOf": ["purchase"],
+      "entityAnyOf": ["Product", "Order"],
+      "workflowAnyOf": ["checkout", "fulfillment"],
+      "screenAnyOf": ["Storefront Catalog", "Product Detail"],
+      "forbiddenAnyOf": ["candidate scorecard", "log explorer", "course catalog"]
+    },
+    "marketplace": {
+      "audienceAnyOf": ["buyers"],
+      "objectiveAnyOf": ["independent parties"],
+      "entityAnyOf": ["Listing", "Booking"],
+      "workflowAnyOf": ["listing", "host"],
+      "screenAnyOf": ["Explore Listings", "Listing Detail"],
+      "forbiddenAnyOf": ["order book", "candidate scorecard", "lesson classroom"]
+    },
+    "analytics": {
+      "audienceAnyOf": ["data analysts"],
+      "objectiveAnyOf": ["quantitative intelligence"],
+      "entityAnyOf": ["Metric", "Report"],
+      "workflowAnyOf": ["chart", "metric dip"],
+      "screenAnyOf": ["Executive Overview", "Metric Explorer"],
+      "forbiddenAnyOf": ["candidate scorecard", "shopping cart", "hotel reservation"]
+    },
+    "intelligence-research": {
+      "audienceAnyOf": ["research analysts"],
+      "objectiveAnyOf": ["evidence"],
+      "entityAnyOf": ["Entity", "Evidence"],
+      "workflowAnyOf": ["evidence", "entity"],
+      "screenAnyOf": ["Research Terminal", "Dossier Reader"],
+      "forbiddenAnyOf": ["shopping cart", "employee onboarding", "order book"]
+    },
+    "crm": {
+      "audienceAnyOf": ["account executives"],
+      "objectiveAnyOf": ["customer interactions"],
+      "entityAnyOf": ["Contact", "Deal"],
+      "workflowAnyOf": ["deal", "prospects"],
+      "screenAnyOf": ["Pipeline Kanban", "Contacts Directory"],
+      "forbiddenAnyOf": ["order book", "lesson classroom", "log explorer"]
+    },
+    "erp-operations": {
+      "audienceAnyOf": ["operations controllers"],
+      "objectiveAnyOf": ["physical assets"],
+      "entityAnyOf": ["WorkOrder", "PurchaseOrder"],
+      "workflowAnyOf": ["technician", "inventory"],
+      "screenAnyOf": ["Operations Overview", "Work Orders"],
+      "forbiddenAnyOf": ["social feed", "newsletter", "lesson classroom"]
+    },
+    "productivity": {
+      "audienceAnyOf": ["individuals"],
+      "objectiveAnyOf": ["capture"],
+      "entityAnyOf": ["Task", "Note"],
+      "workflowAnyOf": ["agenda", "capture"],
+      "screenAnyOf": ["Today Agenda", "Notes"],
+      "forbiddenAnyOf": ["order book", "warehouse inventory", "candidate scorecard"]
+    },
+    "education": {
+      "audienceAnyOf": ["learners"],
+      "objectiveAnyOf": ["learning progression"],
+      "entityAnyOf": ["Course", "Lesson"],
+      "workflowAnyOf": ["lesson", "quiz"],
+      "screenAnyOf": ["Learning Path", "Lesson Classroom"],
+      "forbiddenAnyOf": ["order book", "trading terminal", "hotel reservation"]
+    },
+    "creator": {
+      "audienceAnyOf": ["independent authors"],
+      "objectiveAnyOf": ["subscriber audience"],
+      "entityAnyOf": ["Post", "Subscriber"],
+      "workflowAnyOf": ["newsletter", "membership"],
+      "screenAnyOf": ["Creator Hub", "Post Editor"],
+      "forbiddenAnyOf": ["order book", "warehouse inventory", "lesson classroom"]
+    },
+    "media": {
+      "audienceAnyOf": ["readers", "listeners", "producers", "news editors", "reporters"],
+      "objectiveAnyOf": [
+        "journalism",
+        "magazine issues",
+        "help listeners",
+        "help editors",
+        "local reporting"
+      ],
+      "entityAnyOf": [
+        "Article",
+        "Edition",
+        "Magazine Issue",
+        "Photo Essay",
+        "Programme",
+        "Episode",
+        "Story Assignment",
+        "Draft Story"
+      ],
+      "workflowAnyOf": [
+        "headline",
+        "editor",
+        "browse issues",
+        "find a live programme",
+        "assign story",
+        "prepare edition"
+      ],
+      "screenAnyOf": [
+        "Front Page Feed",
+        "Article Reader",
+        "Magazine Issues",
+        "Live Radio",
+        "Newsroom Planner",
+        "Local News Front Page"
+      ],
+      "forbiddenAnyOf": ["order book", "candidate pipeline", "warehouse inventory"]
+    },
+    "travel": {
+      "audienceAnyOf": ["travelers"],
+      "objectiveAnyOf": ["booking itineraries"],
+      "entityAnyOf": ["Destination", "Reservation"],
+      "workflowAnyOf": ["dates", "itinerary"],
+      "screenAnyOf": ["Destination Showcase", "Trip Itinerary"],
+      "forbiddenAnyOf": ["trading terminal", "employee onboarding", "warehouse inventory"]
+    },
+    "real-estate": {
+      "audienceAnyOf": ["home buyers"],
+      "objectiveAnyOf": ["properties"],
+      "entityAnyOf": ["Property", "Tour"],
+      "workflowAnyOf": ["property", "viewing"],
+      "screenAnyOf": ["Search & Map Explorer", "Property Profile"],
+      "forbiddenAnyOf": ["order book", "patient diagnosis", "newsletter"]
+    },
+    "recruitment": {
+      "audienceAnyOf": ["recruiters"],
+      "objectiveAnyOf": ["hiring decisions"],
+      "entityAnyOf": ["Candidate", "JobRequisition"],
+      "workflowAnyOf": ["interview", "scorecard"],
+      "screenAnyOf": ["Hiring Pipeline", "Candidate Profile"],
+      "forbiddenAnyOf": ["order book", "trading terminal", "market data", "telemetry"]
+    },
+    "consumer": {
+      "audienceAnyOf": ["everyday consumers"],
+      "objectiveAnyOf": ["social discovery"],
+      "entityAnyOf": ["Profile", "Notification"],
+      "workflowAnyOf": ["feed", "friends"],
+      "screenAnyOf": ["Activity Stream", "User Profile"],
+      "forbiddenAnyOf": ["order book", "market data", "employee directory"]
+    },
+    "employee-experience": {
+      "audienceAnyOf": ["employees", "people operations"],
+      "objectiveAnyOf": ["employee experience"],
+      "entityAnyOf": ["Employee", "Team", "Policy"],
+      "workflowAnyOf": ["onboarding", "engagement", "policies"],
+      "screenAnyOf": ["People Directory", "Onboarding", "Settings & Policies"],
+      "forbiddenAnyOf": [
+        "trading",
+        "portfolio",
+        "order book",
+        "market data",
+        "telemetry",
+        "bank transfer",
+        "invoice"
+      ]
+    },
+    "ecommerce-returns": {
+      "audienceAnyOf": ["online shoppers"],
+      "objectiveAnyOf": ["return", "refund"],
+      "entityAnyOf": ["Order", "Return", "Refund"],
+      "workflowAnyOf": ["return request", "refund progress"],
+      "screenAnyOf": ["Order Lookup", "Return Request", "Refund Status"],
+      "forbiddenAnyOf": ["candidate scorecard", "log explorer", "course catalog"]
+    },
+    "ecommerce-clothing": {
+      "audienceAnyOf": ["shoppers"],
+      "objectiveAnyOf": ["seasonal clothing"],
+      "entityAnyOf": ["Product"],
+      "workflowAnyOf": ["checkout"],
+      "screenAnyOf": ["Product Catalog"],
+      "forbiddenAnyOf": ["trading terminal", "course catalog", "room reservation"]
+    },
+    "ecommerce-grocery": {
+      "audienceAnyOf": ["grocery shoppers"],
+      "objectiveAnyOf": ["fresh food"],
+      "entityAnyOf": ["Product"],
+      "workflowAnyOf": ["delivery window"],
+      "screenAnyOf": ["Product Catalog"],
+      "forbiddenAnyOf": ["trading terminal", "course catalog", "room reservation"]
+    },
+    "ecommerce-home-goods": {
+      "audienceAnyOf": ["shoppers"],
+      "objectiveAnyOf": ["home-goods"],
+      "entityAnyOf": ["Product"],
+      "workflowAnyOf": ["product specifications"],
+      "screenAnyOf": ["Product Catalog"],
+      "forbiddenAnyOf": ["trading terminal", "course catalog", "room reservation"]
+    },
+    "ecommerce-music": {
+      "audienceAnyOf": ["music listeners"],
+      "objectiveAnyOf": ["licensed albums"],
+      "entityAnyOf": ["Album", "Release"],
+      "workflowAnyOf": ["play a sample"],
+      "screenAnyOf": ["Product Catalog"],
+      "forbiddenAnyOf": ["courier tracking", "room galleries", "trading terminal"]
+    },
+    "ecommerce-cosmetics": {
+      "audienceAnyOf": ["cosmetics shoppers"],
+      "objectiveAnyOf": ["ingredients"],
+      "entityAnyOf": ["Product"],
+      "workflowAnyOf": ["compare ingredients"],
+      "screenAnyOf": ["Product Catalog"],
+      "forbiddenAnyOf": ["trading terminal", "course catalog", "room reservation"]
+    },
+    "media-streaming": {
+      "audienceAnyOf": ["viewers"],
+      "objectiveAnyOf": ["watchlist"],
+      "entityAnyOf": ["Film"],
+      "workflowAnyOf": ["save a film"],
+      "screenAnyOf": ["Film Catalogue"],
+      "forbiddenAnyOf": ["headline journalism", "article reader", "order book"]
+    },
+    "travel-trip-planning": {
+      "audienceAnyOf": ["travelers"],
+      "objectiveAnyOf": ["shared itinerary"],
+      "entityAnyOf": ["Trip"],
+      "workflowAnyOf": ["coordinate dates"],
+      "screenAnyOf": ["Shared Itinerary"],
+      "forbiddenAnyOf": ["trading terminal", "employee onboarding", "warehouse inventory"]
+    },
+    "travel-hotel-booking": {
+      "audienceAnyOf": ["travelers"],
+      "objectiveAnyOf": ["reservation"],
+      "entityAnyOf": ["Room", "Reservation"],
+      "workflowAnyOf": ["compare rooms"],
+      "screenAnyOf": ["Find a Stay"],
+      "forbiddenAnyOf": ["trading terminal", "employee onboarding", "warehouse inventory"]
+    },
+    "travel-flight-management": {
+      "audienceAnyOf": ["frequent flyers"],
+      "objectiveAnyOf": ["confirmed journeys"],
+      "entityAnyOf": ["Flight"],
+      "workflowAnyOf": ["gate updates"],
+      "screenAnyOf": ["Journey Overview"],
+      "forbiddenAnyOf": ["hotel reservations", "property detail", "trading terminal"]
+    },
+    "travel-resort-guest": {
+      "audienceAnyOf": ["resort guests"],
+      "objectiveAnyOf": ["concierge assistance"],
+      "entityAnyOf": ["Concierge Request"],
+      "workflowAnyOf": ["request concierge"],
+      "screenAnyOf": ["Stay Overview"],
+      "forbiddenAnyOf": ["flight check-in", "room search", "trading terminal"]
+    },
+    "travel-destination-guide": {
+      "audienceAnyOf": ["travelers"],
+      "objectiveAnyOf": ["destination neighborhoods"],
+      "entityAnyOf": ["Recommendation"],
+      "workflowAnyOf": ["save places"],
+      "screenAnyOf": ["Explore Destinations"],
+      "forbiddenAnyOf": ["room reservation", "flight check-in", "trading terminal"]
+    }
+  },
+  "briefs": [
+    {
+      "id": "SAS-01",
+      "domain": "saas",
+      "description": "A cloud workspace helps a 120-person design consultancy plan client projects, assign ownership, review milestones, and control access by team role.",
+      "expectedPrimaryArchetype": "saas",
+      "acceptableArchetypes": ["saas"],
+      "semanticProfile": "saas"
+    },
+    {
+      "id": "SAS-02",
+      "domain": "saas",
+      "description": "A multi-tenant service gives regional nonprofits one place to coordinate programs, share operating documents, and manage staff permissions.",
+      "expectedPrimaryArchetype": "saas",
+      "acceptableArchetypes": ["saas"],
+      "semanticProfile": "saas"
+    },
+    {
+      "id": "SAS-03",
+      "domain": "saas",
+      "description": "A subscription platform lets independent clinics schedule internal work, manage shared resources, and invite colleagues into separate organizations.",
+      "expectedPrimaryArchetype": "saas",
+      "acceptableArchetypes": ["saas"],
+      "semanticProfile": "saas"
+    },
+    {
+      "id": "SAS-04",
+      "domain": "saas",
+      "description": "A B2B workspace helps legal teams coordinate matters, assign review tasks, track deadlines, and keep client documents within the right group.",
+      "expectedPrimaryArchetype": "saas",
+      "acceptableArchetypes": ["saas"],
+      "semanticProfile": "saas"
+    },
+    {
+      "id": "SAS-05",
+      "domain": "saas",
+      "description": "A cloud help desk lets support teams organize customer requests, assign agents, monitor response targets, and maintain a shared knowledge base.",
+      "expectedPrimaryArchetype": "saas",
+      "acceptableArchetypes": ["saas", "crm"],
+      "semanticProfile": "saas"
+    },
+    {
+      "id": "SAS-06",
+      "domain": "saas",
+      "description": "A release-planning workspace helps product teams collect proposals, prioritize roadmaps, coordinate owners, and communicate delivery status to stakeholders.",
+      "expectedPrimaryArchetype": "saas",
+      "acceptableArchetypes": ["saas", "productivity"],
+      "semanticProfile": "saas"
+    },
+    {
+      "id": "AI-01",
+      "domain": "ai",
+      "description": "An LLM prompt studio helps research teams compare model generations, save reusable instructions, and inspect source citations before sharing an answer.",
+      "expectedPrimaryArchetype": "ai",
+      "acceptableArchetypes": ["ai", "intelligence-research"],
+      "semanticProfile": "ai"
+    },
+    {
+      "id": "AI-02",
+      "domain": "ai",
+      "description": "A generative audio tool turns written direction into short music drafts, lets composers compare variations, and keeps approved stems organized.",
+      "expectedPrimaryArchetype": "ai",
+      "acceptableArchetypes": ["ai", "creator"],
+      "semanticProfile": "ai"
+    },
+    {
+      "id": "AI-03",
+      "domain": "ai",
+      "description": "An AI support assistant answers questions from a company help center, shows supporting passages, and lets a human review uncertain responses.",
+      "expectedPrimaryArchetype": "ai",
+      "acceptableArchetypes": ["ai", "saas"],
+      "semanticProfile": "ai"
+    },
+    {
+      "id": "AI-04",
+      "domain": "ai",
+      "description": "A machine-learning evaluation workbench compares model versions on a fixed test set, records failure examples, and helps practitioners review regressions.",
+      "expectedPrimaryArchetype": "ai",
+      "acceptableArchetypes": ["ai", "analytics"],
+      "semanticProfile": "ai"
+    },
+    {
+      "id": "AI-05",
+      "domain": "ai",
+      "description": "An autonomous agent workspace lets operations staff configure tools, test bounded actions, inspect run history, and approve changes before execution.",
+      "expectedPrimaryArchetype": "ai",
+      "acceptableArchetypes": ["ai", "saas"],
+      "semanticProfile": "ai"
+    },
+    {
+      "id": "AI-06",
+      "domain": "ai",
+      "description": "A mobile image-generation app helps illustrators develop visual concepts, organize saved generations, and refine prompts without losing earlier drafts.",
+      "expectedPrimaryArchetype": "ai",
+      "acceptableArchetypes": ["ai", "creator"],
+      "semanticProfile": "ai"
+    },
+    {
+      "id": "DEV-01",
+      "domain": "developer-tools",
+      "description": "An API debugging console lets backend engineers inspect requests, compare responses, replay a failing call, and save working examples.",
+      "expectedPrimaryArchetype": "developer-tools",
+      "acceptableArchetypes": ["developer-tools"],
+      "semanticProfile": "developer-tools"
+    },
+    {
+      "id": "DEV-02",
+      "domain": "developer-tools",
+      "description": "A command-line deployment monitor tracks Kubernetes services, highlights failed releases, and links each incident to its recent log stream.",
+      "expectedPrimaryArchetype": "developer-tools",
+      "acceptableArchetypes": ["developer-tools"],
+      "semanticProfile": "developer-tools"
+    },
+    {
+      "id": "DEV-03",
+      "domain": "developer-tools",
+      "description": "An SDK portal helps software teams explore endpoints, copy runnable examples, manage version changes, and validate webhook delivery.",
+      "expectedPrimaryArchetype": "developer-tools",
+      "acceptableArchetypes": ["developer-tools"],
+      "semanticProfile": "developer-tools"
+    },
+    {
+      "id": "DEV-04",
+      "domain": "developer-tools",
+      "description": "A distributed tracing console lets platform engineers follow service latency, filter runtime errors, and inspect the span behind an incident.",
+      "expectedPrimaryArchetype": "developer-tools",
+      "acceptableArchetypes": ["developer-tools", "analytics"],
+      "semanticProfile": "developer-tools"
+    },
+    {
+      "id": "DEV-05",
+      "domain": "developer-tools",
+      "description": "A source-control review tool organizes pull requests, shows continuous integration checks, and helps maintainers resolve requested changes.",
+      "expectedPrimaryArchetype": "developer-tools",
+      "acceptableArchetypes": ["developer-tools"],
+      "semanticProfile": "developer-tools"
+    },
+    {
+      "id": "DEV-06",
+      "domain": "developer-tools",
+      "description": "A feature-flag console lets application engineers define rollout rules, target environments, and inspect change history before a release.",
+      "expectedPrimaryArchetype": "developer-tools",
+      "acceptableArchetypes": ["developer-tools"],
+      "semanticProfile": "developer-tools"
+    },
+    {
+      "id": "FIN-01",
+      "domain": "fintech",
+      "description": "A business banking portal helps finance managers review account balances, prepare verified transfers, reconcile statements, and manage account access.",
+      "expectedPrimaryArchetype": "fintech",
+      "acceptableArchetypes": ["fintech"],
+      "semanticProfile": "fintech"
+    },
+    {
+      "id": "FIN-02",
+      "domain": "fintech",
+      "description": "A personal money app organizes wallet balances, monthly budgets, recurring bills, and card activity for people managing household finances.",
+      "expectedPrimaryArchetype": "fintech",
+      "acceptableArchetypes": ["fintech", "productivity"],
+      "semanticProfile": "fintech"
+    },
+    {
+      "id": "FIN-03",
+      "domain": "fintech",
+      "description": "A payment reconciliation tool matches incoming settlements with merchant records, flags discrepancies, and prepares an auditable close.",
+      "expectedPrimaryArchetype": "fintech",
+      "acceptableArchetypes": ["fintech", "ecommerce"],
+      "semanticProfile": "fintech"
+    },
+    {
+      "id": "FIN-04",
+      "domain": "fintech",
+      "description": "A wealth-management workspace helps advisers compare client asset allocations, review risk exposure, and prepare documented portfolio recommendations.",
+      "expectedPrimaryArchetype": "fintech",
+      "acceptableArchetypes": ["fintech", "analytics"],
+      "semanticProfile": "fintech"
+    },
+    {
+      "id": "FIN-05",
+      "domain": "fintech",
+      "description": "A brokerage terminal displays securities, market data, order-book depth, and verified trade execution for professional equity dealers.",
+      "expectedPrimaryArchetype": "fintech",
+      "acceptableArchetypes": ["fintech"],
+      "semanticProfile": "fintech-trading"
+    },
+    {
+      "id": "FIN-06",
+      "domain": "fintech",
+      "description": "A corporate card system helps employees submit purchase evidence while finance teams review policy exceptions, reimbursements, and monthly balances.",
+      "expectedPrimaryArchetype": "fintech",
+      "acceptableArchetypes": ["fintech", "erp-operations"],
+      "semanticProfile": "fintech"
+    },
+    {
+      "id": "ECOM-01",
+      "domain": "ecommerce",
+      "description": "A direct-to-consumer clothing store helps shoppers browse a seasonal catalog, compare garment details, choose a size, and complete checkout.",
+      "expectedPrimaryArchetype": "ecommerce",
+      "acceptableArchetypes": ["ecommerce"],
+      "semanticProfile": "ecommerce-clothing"
+    },
+    {
+      "id": "ECOM-02",
+      "domain": "ecommerce",
+      "description": "A neighborhood grocery shop lets customers search fresh food, build a cart, choose a delivery window, and confirm a purchase.",
+      "expectedPrimaryArchetype": "ecommerce",
+      "acceptableArchetypes": ["ecommerce"],
+      "semanticProfile": "ecommerce-grocery"
+    },
+    {
+      "id": "ECOM-03",
+      "domain": "ecommerce",
+      "description": "An online retailer organizes home goods into collections, presents product specifications, and guides shoppers through a clear purchase flow.",
+      "expectedPrimaryArchetype": "ecommerce",
+      "acceptableArchetypes": ["ecommerce"],
+      "semanticProfile": "ecommerce-home-goods"
+    },
+    {
+      "id": "ECOM-04",
+      "domain": "ecommerce",
+      "description": "A digital music shop sells licensed albums, supports sample playback, and lets listeners buy and download selected releases.",
+      "expectedPrimaryArchetype": "ecommerce",
+      "acceptableArchetypes": ["ecommerce", "media"],
+      "semanticProfile": "ecommerce-music"
+    },
+    {
+      "id": "ECOM-05",
+      "domain": "ecommerce",
+      "description": "A cosmetics storefront helps shoppers compare ingredients, select product variations, and review delivery and return information before buying.",
+      "expectedPrimaryArchetype": "ecommerce",
+      "acceptableArchetypes": ["ecommerce"],
+      "semanticProfile": "ecommerce-cosmetics"
+    },
+    {
+      "id": "ECOM-06",
+      "domain": "ecommerce",
+      "description": "An online returns portal lets customers find a previous purchase, choose eligible items, and follow the return approval and refund steps.",
+      "expectedPrimaryArchetype": "ecommerce",
+      "acceptableArchetypes": ["ecommerce", "fintech"],
+      "semanticProfile": "ecommerce-returns"
+    },
+    {
+      "id": "MKT-01",
+      "domain": "marketplace",
+      "description": "A freelance services marketplace connects independent designers with clients, supports profile discovery, project proposals, messaging, and mutual reviews.",
+      "expectedPrimaryArchetype": "marketplace",
+      "acceptableArchetypes": ["marketplace", "creator"],
+      "semanticProfile": "marketplace"
+    },
+    {
+      "id": "MKT-02",
+      "domain": "marketplace",
+      "description": "A musical-instrument marketplace helps buyers compare local listings, ask sellers questions, and arrange a protected exchange.",
+      "expectedPrimaryArchetype": "marketplace",
+      "acceptableArchetypes": ["marketplace", "ecommerce"],
+      "semanticProfile": "marketplace"
+    },
+    {
+      "id": "MKT-03",
+      "domain": "marketplace",
+      "description": "A home-cleaning marketplace lets households compare verified providers, request a time, message the provider, and review completed work.",
+      "expectedPrimaryArchetype": "marketplace",
+      "acceptableArchetypes": ["marketplace"],
+      "semanticProfile": "marketplace"
+    },
+    {
+      "id": "MKT-04",
+      "domain": "marketplace",
+      "description": "A parking marketplace connects drivers with private space owners, showing availability, location details, host messages, and booking confirmation.",
+      "expectedPrimaryArchetype": "marketplace",
+      "acceptableArchetypes": ["marketplace", "travel"],
+      "semanticProfile": "marketplace"
+    },
+    {
+      "id": "MKT-05",
+      "domain": "marketplace",
+      "description": "A tutoring marketplace matches families with independent tutors, displays teaching profiles, supports lesson inquiries, and collects post-session reviews.",
+      "expectedPrimaryArchetype": "marketplace",
+      "acceptableArchetypes": ["marketplace", "education"],
+      "semanticProfile": "marketplace"
+    },
+    {
+      "id": "MKT-06",
+      "domain": "marketplace",
+      "description": "A used-outdoor-gear marketplace helps buyers search seller listings, inspect item condition, negotiate questions, and arrange collection.",
+      "expectedPrimaryArchetype": "marketplace",
+      "acceptableArchetypes": ["marketplace", "ecommerce"],
+      "semanticProfile": "marketplace"
+    },
+    {
+      "id": "AN-01",
+      "domain": "analytics",
+      "description": "A product-adoption dashboard helps growth analysts compare active-user trends, segment cohorts, and share a weekly usage report.",
+      "expectedPrimaryArchetype": "analytics",
+      "acceptableArchetypes": ["analytics"],
+      "semanticProfile": "analytics"
+    },
+    {
+      "id": "AN-02",
+      "domain": "analytics",
+      "description": "A business-intelligence workspace turns warehouse tables into filtered charts, saved reports, and an executive overview of operating metrics.",
+      "expectedPrimaryArchetype": "analytics",
+      "acceptableArchetypes": ["analytics", "erp-operations"],
+      "semanticProfile": "analytics"
+    },
+    {
+      "id": "AN-03",
+      "domain": "analytics",
+      "description": "A subscription-retention dashboard measures cancellations by cohort, identifies unusual changes, and helps teams investigate customer behavior.",
+      "expectedPrimaryArchetype": "analytics",
+      "acceptableArchetypes": ["analytics", "saas"],
+      "semanticProfile": "analytics"
+    },
+    {
+      "id": "AN-04",
+      "domain": "analytics",
+      "description": "An experiment-analysis tool compares control and treatment groups, checks sample quality, and summarizes the measured outcome for product teams.",
+      "expectedPrimaryArchetype": "analytics",
+      "acceptableArchetypes": ["analytics"],
+      "semanticProfile": "analytics"
+    },
+    {
+      "id": "AN-05",
+      "domain": "analytics",
+      "description": "A customer-support analytics console compares response times, resolution rates, and topic volume across support teams and periods.",
+      "expectedPrimaryArchetype": "analytics",
+      "acceptableArchetypes": ["analytics", "crm"],
+      "semanticProfile": "analytics"
+    },
+    {
+      "id": "AN-06",
+      "domain": "analytics",
+      "description": "A fleet-usage dashboard aggregates vehicle activity, fuel consumption, and maintenance intervals to help managers plan service capacity.",
+      "expectedPrimaryArchetype": "analytics",
+      "acceptableArchetypes": ["analytics", "erp-operations"],
+      "semanticProfile": "analytics"
+    },
+    {
+      "id": "RES-01",
+      "domain": "intelligence-research",
+      "description": "A scientific laboratory workspace records reproducible protocols, organizes chemical samples, compares spectra, and links findings to source evidence.",
+      "expectedPrimaryArchetype": "intelligence-research",
+      "acceptableArchetypes": ["intelligence-research"],
+      "semanticProfile": "intelligence-research"
+    },
+    {
+      "id": "RES-02",
+      "domain": "intelligence-research",
+      "description": "A clinical-trial research portal helps coordinators review study cohorts, record approved observations, and assemble an evidence-linked dossier.",
+      "expectedPrimaryArchetype": "intelligence-research",
+      "acceptableArchetypes": ["intelligence-research"],
+      "semanticProfile": "intelligence-research"
+    },
+    {
+      "id": "RES-03",
+      "domain": "intelligence-research",
+      "description": "An investigative newsroom tool maps public entities, attaches verified documents, records source confidence, and prepares a research brief.",
+      "expectedPrimaryArchetype": "intelligence-research",
+      "acceptableArchetypes": ["intelligence-research", "media"],
+      "semanticProfile": "intelligence-research"
+    },
+    {
+      "id": "RES-04",
+      "domain": "intelligence-research",
+      "description": "A climate-science workspace compares field observations, tracks instrument methods, and preserves the provenance needed to reproduce each analysis.",
+      "expectedPrimaryArchetype": "intelligence-research",
+      "acceptableArchetypes": ["intelligence-research", "analytics"],
+      "semanticProfile": "intelligence-research"
+    },
+    {
+      "id": "RES-05",
+      "domain": "intelligence-research",
+      "description": "A policy research library lets analysts search primary sources, connect claims to evidence, and maintain a versioned case dossier.",
+      "expectedPrimaryArchetype": "intelligence-research",
+      "acceptableArchetypes": ["intelligence-research"],
+      "semanticProfile": "intelligence-research"
+    },
+    {
+      "id": "RES-06",
+      "domain": "intelligence-research",
+      "description": "A materials-research environment catalogs experiments, tracks synthesis conditions, and compares peer-reviewed measurements across laboratory runs.",
+      "expectedPrimaryArchetype": "intelligence-research",
+      "acceptableArchetypes": ["intelligence-research"],
+      "semanticProfile": "intelligence-research"
+    },
+    {
+      "id": "CRM-01",
+      "domain": "crm",
+      "description": "A sales CRM helps account executives manage leads, qualify opportunities, log client meetings, and forecast a shared pipeline.",
+      "expectedPrimaryArchetype": "crm",
+      "acceptableArchetypes": ["crm"],
+      "semanticProfile": "crm"
+    },
+    {
+      "id": "CRM-02",
+      "domain": "crm",
+      "description": "A customer relationship workspace records contacts, renewal conversations, account plans, and follow-up ownership for a service team.",
+      "expectedPrimaryArchetype": "crm",
+      "acceptableArchetypes": ["crm", "saas"],
+      "semanticProfile": "crm"
+    },
+    {
+      "id": "CRM-03",
+      "domain": "crm",
+      "description": "A nonprofit donor CRM organizes supporter histories, campaign interactions, giving preferences, and relationship follow-ups for fundraisers.",
+      "expectedPrimaryArchetype": "crm",
+      "acceptableArchetypes": ["crm"],
+      "semanticProfile": "crm"
+    },
+    {
+      "id": "CRM-04",
+      "domain": "crm",
+      "description": "A customer-success console helps account managers review adoption risks, plan check-ins, and track renewal conversations across customer accounts.",
+      "expectedPrimaryArchetype": "crm",
+      "acceptableArchetypes": ["crm", "analytics"],
+      "semanticProfile": "crm"
+    },
+    {
+      "id": "CRM-05",
+      "domain": "crm",
+      "description": "A vehicle dealership CRM organizes prospective buyers, sales conversations, test-drive requests, and next actions for the sales team.",
+      "expectedPrimaryArchetype": "crm",
+      "acceptableArchetypes": ["crm"],
+      "semanticProfile": "crm"
+    },
+    {
+      "id": "CRM-06",
+      "domain": "crm",
+      "description": "A property brokerage CRM helps agents organize client contacts, viewing conversations, offer follow-ups, and relationship notes.",
+      "expectedPrimaryArchetype": "crm",
+      "acceptableArchetypes": ["crm", "real-estate"],
+      "semanticProfile": "crm"
+    },
+    {
+      "id": "ERP-01",
+      "domain": "erp-operations",
+      "description": "A warehouse operations system tracks item locations, stock counts, pick queues, and replenishment tasks across distribution sites.",
+      "expectedPrimaryArchetype": "erp-operations",
+      "acceptableArchetypes": ["erp-operations"],
+      "semanticProfile": "erp-operations"
+    },
+    {
+      "id": "ERP-02",
+      "domain": "erp-operations",
+      "description": "A procurement application routes purchase requests, compares approved suppliers, records approvals, and tracks delivery commitments.",
+      "expectedPrimaryArchetype": "erp-operations",
+      "acceptableArchetypes": ["erp-operations"],
+      "semanticProfile": "erp-operations"
+    },
+    {
+      "id": "ERP-03",
+      "domain": "erp-operations",
+      "description": "A manufacturing operations console assigns work orders, tracks machine maintenance, records quality checks, and coordinates shift handovers.",
+      "expectedPrimaryArchetype": "erp-operations",
+      "acceptableArchetypes": ["erp-operations"],
+      "semanticProfile": "erp-operations"
+    },
+    {
+      "id": "ERP-04",
+      "domain": "erp-operations",
+      "description": "A logistics platform plans carrier capacity, tracks shipments between depots, and resolves late-delivery exceptions for dispatch teams.",
+      "expectedPrimaryArchetype": "erp-operations",
+      "acceptableArchetypes": ["erp-operations"],
+      "semanticProfile": "erp-operations"
+    },
+    {
+      "id": "ERP-05",
+      "domain": "erp-operations",
+      "description": "A field-service system dispatches technicians, attaches repair instructions, records parts used, and tracks each work order to completion.",
+      "expectedPrimaryArchetype": "erp-operations",
+      "acceptableArchetypes": ["erp-operations"],
+      "semanticProfile": "erp-operations"
+    },
+    {
+      "id": "ERP-06",
+      "domain": "erp-operations",
+      "description": "A supply-chain planning tool forecasts component demand, monitors supplier lead times, and coordinates replenishment across production facilities.",
+      "expectedPrimaryArchetype": "erp-operations",
+      "acceptableArchetypes": ["erp-operations"],
+      "semanticProfile": "erp-operations"
+    },
+    {
+      "id": "PROD-01",
+      "domain": "productivity",
+      "description": "A personal task planner helps busy professionals capture commitments, prioritize today’s work, and move tasks between a calendar and project list.",
+      "expectedPrimaryArchetype": "productivity",
+      "acceptableArchetypes": ["productivity"],
+      "semanticProfile": "productivity"
+    },
+    {
+      "id": "PROD-02",
+      "domain": "productivity",
+      "description": "A note-taking app lets individuals save quick thoughts, organize reference pages, and retrieve them with a lightweight search.",
+      "expectedPrimaryArchetype": "productivity",
+      "acceptableArchetypes": ["productivity"],
+      "semanticProfile": "productivity"
+    },
+    {
+      "id": "PROD-03",
+      "domain": "productivity",
+      "description": "A habit journal helps people set weekly routines, record completion, and reflect on changes without public rankings.",
+      "expectedPrimaryArchetype": "productivity",
+      "acceptableArchetypes": ["productivity"],
+      "semanticProfile": "productivity"
+    },
+    {
+      "id": "PROD-04",
+      "domain": "productivity",
+      "description": "A reading organizer stores saved articles, groups them into lists, and helps a reader resume where they stopped.",
+      "expectedPrimaryArchetype": "productivity",
+      "acceptableArchetypes": ["productivity", "media"],
+      "semanticProfile": "productivity"
+    },
+    {
+      "id": "PROD-05",
+      "domain": "productivity",
+      "description": "A daily planning app combines a personal agenda, focus sessions, reminders, and a short end-of-day review.",
+      "expectedPrimaryArchetype": "productivity",
+      "acceptableArchetypes": ["productivity"],
+      "semanticProfile": "productivity"
+    },
+    {
+      "id": "EDU-01",
+      "domain": "education",
+      "description": "An online academy organizes courses into lessons, short quizzes, and visible learning milestones for independent learners.",
+      "expectedPrimaryArchetype": "education",
+      "acceptableArchetypes": ["education"],
+      "semanticProfile": "education"
+    },
+    {
+      "id": "EDU-02",
+      "domain": "education",
+      "description": "A classroom platform helps teachers publish assignments, review student submissions, and give feedback against a course rubric.",
+      "expectedPrimaryArchetype": "education",
+      "acceptableArchetypes": ["education"],
+      "semanticProfile": "education"
+    },
+    {
+      "id": "EDU-03",
+      "domain": "education",
+      "description": "A language-learning app guides learners through vocabulary practice, listening lessons, and spaced review sessions.",
+      "expectedPrimaryArchetype": "education",
+      "acceptableArchetypes": ["education"],
+      "semanticProfile": "education"
+    },
+    {
+      "id": "EDU-04",
+      "domain": "education",
+      "description": "A cohort learning portal coordinates seminar schedules, reading material, group exercises, and instructor feedback for adult learners.",
+      "expectedPrimaryArchetype": "education",
+      "acceptableArchetypes": ["education", "saas"],
+      "semanticProfile": "education"
+    },
+    {
+      "id": "EDU-05",
+      "domain": "education",
+      "description": "A safety-training system assigns required lessons, records quiz completion, and gives supervisors a clear view of learner progress.",
+      "expectedPrimaryArchetype": "education",
+      "acceptableArchetypes": ["education", "erp-operations"],
+      "semanticProfile": "education"
+    },
+    {
+      "id": "CRE-01",
+      "domain": "creator",
+      "description": "A newsletter creator helps independent writers draft editions, preview subscriber-only sections, schedule delivery, and review membership tiers.",
+      "expectedPrimaryArchetype": "creator",
+      "acceptableArchetypes": ["creator", "media"],
+      "semanticProfile": "creator"
+    },
+    {
+      "id": "CRE-02",
+      "domain": "creator",
+      "description": "A podcast membership hub lets hosts publish episodes, organize paid subscriber access, and share show notes with listeners.",
+      "expectedPrimaryArchetype": "creator",
+      "acceptableArchetypes": ["creator", "media"],
+      "semanticProfile": "creator"
+    },
+    {
+      "id": "CRE-03",
+      "domain": "creator",
+      "description": "A video-creator studio organizes channel drafts, release schedules, audience comments, and supporter membership benefits.",
+      "expectedPrimaryArchetype": "creator",
+      "acceptableArchetypes": ["creator", "media"],
+      "semanticProfile": "creator"
+    },
+    {
+      "id": "CRE-04",
+      "domain": "creator",
+      "description": "A digital-illustration workspace helps artists prepare collections, publish selected work, and manage subscriber updates.",
+      "expectedPrimaryArchetype": "creator",
+      "acceptableArchetypes": ["creator"],
+      "semanticProfile": "creator"
+    },
+    {
+      "id": "CRE-05",
+      "domain": "creator",
+      "description": "A creator community tool helps authors share early drafts, gather reader feedback, and keep a direct member directory.",
+      "expectedPrimaryArchetype": "creator",
+      "acceptableArchetypes": ["creator", "consumer"],
+      "semanticProfile": "creator"
+    },
+    {
+      "id": "MED-01",
+      "domain": "media",
+      "description": "A local newspaper website presents breaking headlines, long-form reporting, topic sections, and a calm article-reading experience.",
+      "expectedPrimaryArchetype": "media",
+      "acceptableArchetypes": ["media"],
+      "semanticProfile": "media"
+    },
+    {
+      "id": "MED-02",
+      "domain": "media",
+      "description": "A digital magazine platform organizes editorial issues, photo essays, saved stories, and typography preferences for readers.",
+      "expectedPrimaryArchetype": "media",
+      "acceptableArchetypes": ["media"],
+      "semanticProfile": "media"
+    },
+    {
+      "id": "MED-03",
+      "domain": "media",
+      "description": "A public-radio service publishes live programs, episode archives, transcripts, and listening schedules for its audience.",
+      "expectedPrimaryArchetype": "media",
+      "acceptableArchetypes": ["media"],
+      "semanticProfile": "media"
+    },
+    {
+      "id": "MED-04",
+      "domain": "media",
+      "description": "A streaming service helps viewers browse films, continue a watchlist, and explore editorial collections by theme.",
+      "expectedPrimaryArchetype": "media",
+      "acceptableArchetypes": ["media", "consumer"],
+      "semanticProfile": "media-streaming"
+    },
+    {
+      "id": "MED-05",
+      "domain": "media",
+      "description": "A newsroom planning tool lets editors arrange a front page, assign story coverage, review copy, and prepare an edition for publication.",
+      "expectedPrimaryArchetype": "media",
+      "acceptableArchetypes": ["media", "saas"],
+      "semanticProfile": "media"
+    },
+    {
+      "id": "TRV-01",
+      "domain": "travel",
+      "description": "A trip-planning service helps travelers compare destinations, save places, coordinate dates, and keep a shared itinerary.",
+      "expectedPrimaryArchetype": "travel",
+      "acceptableArchetypes": ["travel", "productivity"],
+      "semanticProfile": "travel-trip-planning"
+    },
+    {
+      "id": "TRV-02",
+      "domain": "travel",
+      "description": "A boutique hotel booking site presents room details, amenities, local guides, availability, and a clear reservation flow.",
+      "expectedPrimaryArchetype": "travel",
+      "acceptableArchetypes": ["travel", "marketplace"],
+      "semanticProfile": "travel-hotel-booking"
+    },
+    {
+      "id": "TRV-03",
+      "domain": "travel",
+      "description": "A flight-management app organizes confirmed journeys, check-in reminders, gate updates, and travel documents for frequent flyers.",
+      "expectedPrimaryArchetype": "travel",
+      "acceptableArchetypes": ["travel"],
+      "semanticProfile": "travel-flight-management"
+    },
+    {
+      "id": "TRV-04",
+      "domain": "travel",
+      "description": "A resort guest portal lets visitors review their stay details, request concierge assistance, and find on-property services.",
+      "expectedPrimaryArchetype": "travel",
+      "acceptableArchetypes": ["travel", "saas"],
+      "semanticProfile": "travel-resort-guest"
+    },
+    {
+      "id": "TRV-05",
+      "domain": "travel",
+      "description": "A destination guide helps travelers explore neighborhoods, save recommendations, and build a day-by-day plan.",
+      "expectedPrimaryArchetype": "travel",
+      "acceptableArchetypes": ["travel", "media"],
+      "semanticProfile": "travel-destination-guide"
+    },
+    {
+      "id": "REA-01",
+      "domain": "real-estate",
+      "description": "A home-search service helps buyers compare neighborhoods, filter available properties, save favorites, and arrange a viewing with an agent.",
+      "expectedPrimaryArchetype": "real-estate",
+      "acceptableArchetypes": ["real-estate", "marketplace"],
+      "semanticProfile": "real-estate"
+    },
+    {
+      "id": "REA-02",
+      "domain": "real-estate",
+      "description": "A rental platform helps tenants inspect apartment details, check lease terms, ask a property manager questions, and request a tour.",
+      "expectedPrimaryArchetype": "real-estate",
+      "acceptableArchetypes": ["real-estate", "marketplace"],
+      "semanticProfile": "real-estate"
+    },
+    {
+      "id": "REA-03",
+      "domain": "real-estate",
+      "description": "A property-management system organizes building maintenance, tenant requests, inspection dates, and lease documents for residential managers.",
+      "expectedPrimaryArchetype": "real-estate",
+      "acceptableArchetypes": ["real-estate", "erp-operations"],
+      "semanticProfile": "real-estate"
+    },
+    {
+      "id": "REA-04",
+      "domain": "real-estate",
+      "description": "A commercial leasing workspace helps brokers track available spaces, client requirements, scheduled tours, and proposal status.",
+      "expectedPrimaryArchetype": "real-estate",
+      "acceptableArchetypes": ["real-estate", "crm"],
+      "semanticProfile": "real-estate"
+    },
+    {
+      "id": "REA-05",
+      "domain": "real-estate",
+      "description": "A realtor portal helps agents prepare property pages, coordinate open-house visits, and keep buyer communications in one record.",
+      "expectedPrimaryArchetype": "real-estate",
+      "acceptableArchetypes": ["real-estate", "crm"],
+      "semanticProfile": "real-estate"
+    },
+    {
+      "id": "REC-01",
+      "domain": "recruitment",
+      "description": "An applicant-tracking system helps recruiting teams organize open roles, candidate interviews, scorecards, and hiring decisions.",
+      "expectedPrimaryArchetype": "recruitment",
+      "acceptableArchetypes": ["recruitment", "crm"],
+      "semanticProfile": "recruitment"
+    },
+    {
+      "id": "REC-02",
+      "domain": "recruitment",
+      "description": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+      "expectedPrimaryArchetype": "recruitment",
+      "acceptableArchetypes": ["recruitment"],
+      "semanticProfile": "employee-experience"
+    },
+    {
+      "id": "REC-03",
+      "domain": "recruitment",
+      "description": "A hiring workspace helps managers review applicants, coordinate interview panels, compare structured feedback, and prepare a respectful offer process.",
+      "expectedPrimaryArchetype": "recruitment",
+      "acceptableArchetypes": ["recruitment", "saas"],
+      "semanticProfile": "recruitment"
+    },
+    {
+      "id": "REC-04",
+      "domain": "recruitment",
+      "description": "A recruiting pipeline gives talent teams a clear view of candidate stages, role ownership, interview notes, and pending decisions.",
+      "expectedPrimaryArchetype": "recruitment",
+      "acceptableArchetypes": ["recruitment", "crm"],
+      "semanticProfile": "recruitment"
+    },
+    {
+      "id": "REC-05",
+      "domain": "recruitment",
+      "description": "A candidate portal lets job applicants schedule interviews, upload requested documents, and follow the status of an active application.",
+      "expectedPrimaryArchetype": "recruitment",
+      "acceptableArchetypes": ["recruitment"],
+      "semanticProfile": "recruitment"
+    },
+    {
+      "id": "CON-01",
+      "domain": "consumer",
+      "description": "A neighborhood social app helps residents share local updates, discover community events, and keep conversations connected to nearby places.",
+      "expectedPrimaryArchetype": "consumer",
+      "acceptableArchetypes": ["consumer"],
+      "semanticProfile": "consumer"
+    },
+    {
+      "id": "CON-02",
+      "domain": "consumer",
+      "description": "A mobile photo-sharing app lets friends publish albums, react to moments, and manage a private circle of followers.",
+      "expectedPrimaryArchetype": "consumer",
+      "acceptableArchetypes": ["consumer"],
+      "semanticProfile": "consumer"
+    },
+    {
+      "id": "CON-03",
+      "domain": "consumer",
+      "description": "A local-activity discovery app helps people find nearby events, follow friends’ recommendations, and save plans for the weekend.",
+      "expectedPrimaryArchetype": "consumer",
+      "acceptableArchetypes": ["consumer", "travel"],
+      "semanticProfile": "consumer"
+    },
+    {
+      "id": "CON-04",
+      "domain": "consumer",
+      "description": "A casual community app lets hobby groups post updates, welcome members, and organize lightweight conversations around shared interests.",
+      "expectedPrimaryArchetype": "consumer",
+      "acceptableArchetypes": ["consumer"],
+      "semanticProfile": "consumer"
+    },
+    {
+      "id": "CON-05",
+      "domain": "consumer",
+      "description": "A personal streaming companion helps people share playlists, follow friends, and discover independent audio through a simple social feed.",
+      "expectedPrimaryArchetype": "consumer",
+      "acceptableArchetypes": ["consumer", "media"],
+      "semanticProfile": "consumer"
+    }
+  ]
+}

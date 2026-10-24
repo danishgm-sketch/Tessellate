@@ -1,10 +1,6 @@
-import React, { useState, useMemo } from 'react';
-import {
-  Copy,
-  Check,
-  RotateCcw,
-  Sliders,
-} from 'lucide-react';
+import React, { useState, useMemo, useRef } from 'react';
+import { Copy, Check, RotateCcw, Sliders } from 'lucide-react';
+import { CopyFailureNotice, useToolClipboard } from './useToolClipboard';
 
 export type ChartRecipeType = 'line' | 'area' | 'bar' | 'donut';
 
@@ -16,10 +12,30 @@ interface ChartRecipePreset {
 }
 
 const RECIPE_PRESETS: ChartRecipePreset[] = [
-  { id: 'line', name: 'Time Series Line Spline', category: 'Continuous', description: 'Smooth cubic Bezier spline for high-frequency telemetry.' },
-  { id: 'area', name: 'Gradient Area Stream', category: 'Volume', description: 'Dual-pass area gradient highlighting throughput density.' },
-  { id: 'bar', name: 'Categorical Column Ledger', category: 'Comparative', description: 'Uniform columnar records with optical rounded tops.' },
-  { id: 'donut', name: 'Radial Allocation Ring', category: 'Proportional', description: 'Multi-segment proportional ring with central summary metric.' },
+  {
+    id: 'line',
+    name: 'Time Series Line Spline',
+    category: 'Continuous',
+    description: 'Smooth cubic Bezier spline for high-frequency telemetry.',
+  },
+  {
+    id: 'area',
+    name: 'Gradient Area Stream',
+    category: 'Volume',
+    description: 'Dual-pass area gradient highlighting throughput density.',
+  },
+  {
+    id: 'bar',
+    name: 'Categorical Column Ledger',
+    category: 'Comparative',
+    description: 'Uniform columnar records with optical rounded tops.',
+  },
+  {
+    id: 'donut',
+    name: 'Radial Allocation Ring',
+    category: 'Proportional',
+    description: 'Multi-segment proportional ring with central summary metric.',
+  },
 ];
 
 const RAW_DATA = [
@@ -40,23 +56,35 @@ export function DatavizStyler() {
   const [curveType, setCurveType] = useState<'smooth' | 'linear' | 'stepped'>('smooth');
   const [themeMode, setThemeMode] = useState<'light' | 'dark'>('light');
   const [copiedFormat, setCopiedFormat] = useState<'svg' | 'react' | null>(null);
+  const { copyText, copyFailed } = useToolClipboard();
+  const chartSvgRef = useRef<SVGSVGElement>(null);
 
   // SVG coordinates calculation
   const width = 500;
   const height = 220;
   const padding = 30;
+  const sampleCount = Math.min(7, Math.max(3, Math.round(3 + ((densityScore - 20) / 55) * 4)));
+  const sampledData = useMemo(
+    () =>
+      Array.from({ length: sampleCount }, (_, index) => {
+        const sourceIndex = Math.round((index * (RAW_DATA.length - 1)) / (sampleCount - 1));
+        return RAW_DATA[sourceIndex]!;
+      }),
+    [sampleCount]
+  );
 
   const points = useMemo(() => {
     const minVal = 0;
     const maxVal = 100;
-    const xStep = (width - padding * 2) / (RAW_DATA.length - 1);
+    const xStep = (width - padding * 2) / (sampledData.length - 1);
 
-    return RAW_DATA.map((d, i) => {
+    return sampledData.map((d, i) => {
       const x = padding + i * xStep;
-      const y = height - padding - ((d.value - minVal) / (maxVal - minVal)) * (height - padding * 2);
+      const y =
+        height - padding - ((d.value - minVal) / (maxVal - minVal)) * (height - padding * 2);
       return { x, y, value: d.value, label: d.label };
     });
-  }, [width, height, padding]);
+  }, [width, height, padding, sampledData]);
 
   // Construct SVG Path String based on curveType
   const pathD = useMemo(() => {
@@ -89,18 +117,25 @@ export function DatavizStyler() {
     return `${pathD} L ${last.x} ${height - padding} L ${first.x} ${height - padding} Z`;
   }, [pathD, points, height, padding]);
 
-  const generatedSvgSnippet = useMemo(() => {
-    return `<svg viewBox="0 0 ${width} ${height}" className="w-full h-auto">\n  <path d="${pathD}" fill="none" stroke="#2547E8" stroke-width="${strokeWidth}" />\n</svg>`;
-  }, [width, height, pathD, strokeWidth]);
+  const copyToClipboard = async (text: string, format: 'svg' | 'react') => {
+    const copied = await copyText(text);
+    setCopiedFormat(copied ? format : null);
+    if (copied) setTimeout(() => setCopiedFormat(null), 2000);
+  };
 
-  const copyToClipboard = (text: string, format: 'svg' | 'react') => {
-    navigator.clipboard.writeText(text);
-    setCopiedFormat(format);
-    setTimeout(() => setCopiedFormat(null), 2000);
+  const copyChartSvg = () => {
+    const preview = chartSvgRef.current;
+    if (!preview) return;
+    const standalone = preview.cloneNode(true) as SVGSVGElement;
+    standalone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+    standalone.setAttribute('width', String(width));
+    standalone.setAttribute('height', String(height));
+    standalone.removeAttribute('class');
+    copyToClipboard(new XMLSerializer().serializeToString(standalone), 'svg');
   };
 
   return (
-    <div className="space-y-8 select-none">
+    <div className="space-y-8">
       {/* Header Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#D9D6CF] pb-6">
         <div>
@@ -116,7 +151,8 @@ export function DatavizStyler() {
             Data Visualisation Styler
           </h1>
           <p className="text-sm text-[#62666F] mt-1">
-            Imbue charts, telemetry graphs, and ledgers with project Design DNA, responsive curves, and WCAG contrast.
+            Tune sample chart recipes, density, curve, and display settings, then copy the rendered
+            SVG.
           </p>
         </div>
 
@@ -124,18 +160,24 @@ export function DatavizStyler() {
         <div className="flex items-center gap-2">
           <button
             type="button"
-            onClick={() => copyToClipboard(generatedSvgSnippet, 'svg')}
+            onClick={copyChartSvg}
             className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2547E8] text-white text-xs font-semibold hover:bg-[#1E3CCD] transition-all shadow-sm"
           >
-            {copiedFormat === 'svg' ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+            {copiedFormat === 'svg' ? (
+              <Check className="h-3.5 w-3.5" />
+            ) : (
+              <Copy className="h-3.5 w-3.5" />
+            )}
             <span>Copy SVG Chart Code</span>
           </button>
         </div>
       </div>
 
+      <CopyFailureNotice failed={copyFailed} />
+
       {/* Recipe Presets */}
       <div className="space-y-2">
-        <span className="block font-mono text-xs font-semibold uppercase text-[#8B8F97]">
+        <span className="block font-mono text-xs font-semibold uppercase text-[var(--text-muted)]">
           Chart Recipes
         </span>
         <div className="flex flex-wrap gap-2">
@@ -144,10 +186,11 @@ export function DatavizStyler() {
               key={p.id}
               type="button"
               onClick={() => setRecipe(p.id)}
+              aria-pressed={recipe === p.id}
               className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                 recipe === p.id
                   ? 'border-[#111217] bg-[#111217] text-white shadow-sm'
-                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#8B8F97]'
+                  : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#62666F]'
               }`}
             >
               {p.name}
@@ -163,7 +206,7 @@ export function DatavizStyler() {
           <div className="flex items-center justify-between border-b border-[#D9D6CF] pb-3">
             <div className="flex items-center gap-2">
               <Sliders className="h-4 w-4 text-[#2547E8]" />
-              <h2 className="text-sm font-semibold text-[#111217]">DNA Chart Parameters</h2>
+              <h2 className="text-sm font-semibold text-[#111217]">Chart Parameters</h2>
             </div>
             <button
               type="button"
@@ -172,8 +215,10 @@ export function DatavizStyler() {
                 setStrokeWidth(2.5);
                 setShowGrid(true);
                 setCurveType('smooth');
+                setRecipe('line');
+                setThemeMode('light');
               }}
-              className="text-xs font-mono text-[#8B8F97] hover:text-[#111217] flex items-center gap-1"
+              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
             >
               <RotateCcw className="h-3 w-3" />
               <span>Reset</span>
@@ -191,6 +236,8 @@ export function DatavizStyler() {
                   key={c}
                   type="button"
                   onClick={() => setCurveType(c)}
+                  aria-pressed={curveType === c}
+                  disabled={recipe === 'bar' || recipe === 'donut'}
                   className={`py-1.5 px-2 rounded-lg border text-xs font-medium capitalize transition-all ${
                     curveType === c
                       ? 'border-[#2547E8] bg-[#E7EBFF] text-[#2547E8] font-semibold'
@@ -201,6 +248,11 @@ export function DatavizStyler() {
                 </button>
               ))}
             </div>
+            {(recipe === 'bar' || recipe === 'donut') && (
+              <p id="chart-line-control-help" className="text-xs text-[#62666F]">
+                Curve and line-width settings apply to line and area recipes.
+              </p>
+            )}
           </div>
 
           {/* Density Slider */}
@@ -210,6 +262,7 @@ export function DatavizStyler() {
               <span className="font-mono text-[#62666F]">{densityScore}/100</span>
             </div>
             <input
+              aria-label="Data density"
               type="range"
               min="20"
               max="95"
@@ -223,15 +276,20 @@ export function DatavizStyler() {
           {/* Stroke Width Slider */}
           <div className="space-y-2 pt-2 border-t border-[#D9D6CF]">
             <div className="flex justify-between text-xs font-medium">
-              <span className="text-[#111217]">Telemetry Stroke Width</span>
+              <span className="text-[#111217]">Line / area stroke width</span>
               <span className="font-mono text-[#62666F]">{strokeWidth}px</span>
             </div>
             <input
+              aria-label="Line and area stroke width"
               type="range"
               min="1"
               max="5"
               step="0.5"
               value={strokeWidth}
+              disabled={recipe === 'bar' || recipe === 'donut'}
+              aria-describedby={
+                recipe === 'bar' || recipe === 'donut' ? 'chart-line-control-help' : undefined
+              }
               onChange={(e) => setStrokeWidth(Number(e.target.value))}
               className="w-full accent-[#2547E8] cursor-pointer"
             />
@@ -241,6 +299,7 @@ export function DatavizStyler() {
           <div className="pt-2 border-t border-[#D9D6CF] flex items-center justify-between">
             <span className="text-xs font-medium text-[#111217]">Cartesian Hairline Grid</span>
             <input
+              aria-label="Show grid"
               type="checkbox"
               checked={showGrid}
               onChange={(e) => setShowGrid(e.target.checked)}
@@ -255,8 +314,11 @@ export function DatavizStyler() {
               <button
                 type="button"
                 onClick={() => setThemeMode('light')}
+                aria-pressed={themeMode === 'light'}
                 className={`px-2 py-1 text-xs rounded font-medium ${
-                  themeMode === 'light' ? 'bg-white shadow text-[#111217]' : 'text-[#8B8F97]'
+                  themeMode === 'light'
+                    ? 'bg-white shadow text-[#111217]'
+                    : 'text-[var(--text-muted)]'
                 }`}
               >
                 Light
@@ -264,8 +326,11 @@ export function DatavizStyler() {
               <button
                 type="button"
                 onClick={() => setThemeMode('dark')}
+                aria-pressed={themeMode === 'dark'}
                 className={`px-2 py-1 text-xs rounded font-medium ${
-                  themeMode === 'dark' ? 'bg-[#0B0D10] shadow text-white' : 'text-[#8B8F97]'
+                  themeMode === 'dark'
+                    ? 'bg-[#0B0D10] shadow text-white'
+                    : 'text-[var(--text-muted)]'
                 }`}
               >
                 Dark
@@ -285,16 +350,22 @@ export function DatavizStyler() {
           >
             <div
               className={`flex items-center justify-between pb-3 text-xs font-mono border-b mb-4 ${
-                themeMode === 'dark' ? 'border-[#272B33] text-[#8B8F97]' : 'border-[#D9D6CF] text-[#8B8F97]'
+                themeMode === 'dark'
+                  ? 'border-[#272B33] text-[var(--text-muted)]'
+                  : 'border-[#D9D6CF] text-[var(--text-muted)]'
               }`}
             >
               <span>SVG VECTOR RENDER ENGINE</span>
-              <span className="text-[#2547E8] font-bold">INTERVAL: 100ms</span>
+              <span className="text-[#2547E8] font-bold">STATIC SAMPLE DATA</span>
             </div>
 
             {/* SVG Visual Stage */}
             <div className="w-full aspect-[2/1] relative">
-              <svg viewBox={`0 0 ${width} ${height}`} className="w-full h-full overflow-visible">
+              <svg
+                ref={chartSvgRef}
+                viewBox={`0 0 ${width} ${height}`}
+                className="w-full h-full overflow-visible"
+              >
                 {/* Defs: Gradients */}
                 <defs>
                   <linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
@@ -351,12 +422,7 @@ export function DatavizStyler() {
                 {recipe === 'area' && (
                   <>
                     <path d={areaD} fill="url(#areaGradient)" />
-                    <path
-                      d={pathD}
-                      fill="none"
-                      stroke="#2547E8"
-                      strokeWidth={strokeWidth}
-                    />
+                    <path d={pathD} fill="none" stroke="#2547E8" strokeWidth={strokeWidth} />
                   </>
                 )}
 
@@ -383,7 +449,12 @@ export function DatavizStyler() {
 
                 {recipe === 'donut' && (
                   <g transform={`translate(${width / 2}, ${height / 2})`}>
-                    <circle r="70" fill="none" stroke={themeMode === 'dark' ? '#272B33' : '#D9D6CF'} strokeWidth="20" />
+                    <circle
+                      r="70"
+                      fill="none"
+                      stroke={themeMode === 'dark' ? '#272B33' : '#D9D6CF'}
+                      strokeWidth="20"
+                    />
                     <circle
                       r="70"
                       fill="none"
@@ -403,11 +474,20 @@ export function DatavizStyler() {
                     />
                     <text
                       textAnchor="middle"
-                      dy="6"
+                      dy="2"
                       className="text-base font-bold font-mono"
                       fill={themeMode === 'dark' ? '#F5F7FA' : '#111217'}
                     >
-                      £4.2M
+                      64%
+                    </text>
+                    <text
+                      textAnchor="middle"
+                      dy="22"
+                      fontSize="9"
+                      fontFamily="monospace"
+                      fill={themeMode === 'dark' ? '#A8AFBA' : '#62666F'}
+                    >
+                      SAMPLE SHARE
                     </text>
                   </g>
                 )}

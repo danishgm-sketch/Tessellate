@@ -2,11 +2,11 @@
   "schemaVersion": "1.0.0",
   "id": "showcase-luxury-ecommerce",
   "name": "Atelier Chronos Horology",
-  "description": "Bespoke mechanical timepiece catalog and artisanal craftsmanship storytelling.",
+  "description": "Example project. Bespoke mechanical timepiece catalog and artisanal craftsmanship storytelling.",
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z",
-  "catalogVersion": "1.0.0",
-  "seed": "seed_showcase-luxury-ecommerce",
+  "catalogVersion": "0.1.0",
+  "seed": "showcase-luxury-ecommerce",
   "productModel": {
     "schemaVersion": "1.0.0",
     "productArchetypes": [
@@ -15,39 +15,157 @@
         "weight": 100
       }
     ],
-    "primaryAudience": "Domain specialists",
-    "userSophistication": 35,
-    "primaryObjective": "Bespoke mechanical timepiece catalog and artisanal craftsmanship storytelling.",
+    "primaryAudience": "Online shoppers, merchandising managers, and fulfillment teams",
+    "userSophistication": 45,
+    "primaryObjective": "Help shoppers browse seasonal clothing, compare garment details and sizes, and complete checkout",
     "secondaryObjectives": [
-      "Maximize workflow speed and cognitive clarity"
+      "Ensure high accessibility standards",
+      "Maintain responsive layout across devices"
     ],
     "jobsToBeDone": [
-      "Analyze domain data",
-      "Execute actions",
-      "Inspect telemetry"
+      "Authenticate and access Online Store",
+      "Review the overview and priority actions",
+      "Create, update, and manage records",
+      "Browse, add to cart, and checkout",
+      "Check courier tracking and fulfillment status"
     ],
-    "entities": [],
-    "workflows": [],
-    "trustRequirement": 95,
-    "informationComplexity": 45,
-    "dataDensity": 45,
-    "collaborationLevel": 50,
-    "transactionCriticality": 70,
-    "navigationComplexity": 60,
-    "mobileImportance": 50,
-    "likelyScreens": [],
+    "entities": [
+      {
+        "name": "Product",
+        "description": "Merchandise item with variants, media, and price",
+        "fields": [
+          "id",
+          "title",
+          "price",
+          "inventory",
+          "sku"
+        ]
+      },
+      {
+        "name": "Order",
+        "description": "Customer purchase agreement and payment status",
+        "fields": [
+          "id",
+          "items",
+          "total",
+          "shippingAddress",
+          "status"
+        ]
+      },
+      {
+        "name": "Customer",
+        "description": "Shopper profile and order history",
+        "fields": [
+          "id",
+          "name",
+          "email",
+          "lifetimeSpend"
+        ]
+      }
+    ],
+    "workflows": [
+      {
+        "id": "purchase-item",
+        "name": "Browse, add to cart, and checkout",
+        "steps": [
+          "select-variant",
+          "add-to-cart",
+          "shipping-info",
+          "payment-complete"
+        ]
+      },
+      {
+        "id": "track-order",
+        "name": "Check courier tracking and fulfillment status",
+        "steps": [
+          "enter-order-id",
+          "view-milestones",
+          "receipt"
+        ]
+      }
+    ],
+    "trustRequirement": 90,
+    "informationComplexity": 50,
+    "dataDensity": 50,
+    "collaborationLevel": 25,
+    "transactionCriticality": 90,
+    "navigationComplexity": 55,
+    "mobileImportance": 90,
+    "likelyScreens": [
+      {
+        "name": "Product Catalog",
+        "screenType": "search-explore",
+        "purpose": "Browse seasonal garments, compare materials and sizes, and choose a product",
+        "jobs": [
+          "browse-seasonal-clothing",
+          "compare-garments-and-sizes",
+          "choose-product"
+        ],
+        "required": true
+      },
+      {
+        "name": "Product Detail",
+        "screenType": "detail-entity",
+        "purpose": "Gallery, specs, variant selector, and Add to Cart",
+        "jobs": [
+          "inspect-photos",
+          "add-to-cart"
+        ],
+        "required": true
+      },
+      {
+        "name": "Checkout",
+        "screenType": "checkout-transaction",
+        "purpose": "Frictionless payment and address capture",
+        "jobs": [
+          "enter-shipping",
+          "submit-payment"
+        ],
+        "required": true
+      },
+      {
+        "name": "Order Confirmation",
+        "screenType": "detail-entity",
+        "purpose": "Confirmed order details, delivery status, and receipt",
+        "jobs": [
+          "view-tracking",
+          "download-receipt"
+        ],
+        "required": true
+      }
+    ],
     "requiredCapabilities": [
-      "export",
-      "search",
-      "audit"
+      "responsive-image-gallery",
+      "persistent-cart-state",
+      "secure-payment-fields"
     ],
-    "forbiddenPatterns": [],
+    "forbiddenPatterns": [
+      "unclear-shipping-costs-at-final-step",
+      "broken-mobile-checkout-forms"
+    ],
     "constraints": {
       "accessibilityFloor": "AA",
-      "performanceCeiling": "rich",
+      "performanceCeiling": "balanced",
       "targetDevices": [
         "desktop",
-        "tablet"
+        "tablet",
+        "mobile"
+      ],
+      "allowedDependencies": [
+        "react",
+        "tailwindcss",
+        "lucide-react"
+      ],
+      "prohibitedDependencies": [
+        "jquery",
+        "bootstrap"
+      ],
+      "requiredScreens": [],
+      "forbiddenScreens": [],
+      "requiredPatterns": [],
+      "forbiddenPatterns": [
+        "unclear-shipping-costs-at-final-step",
+        "broken-mobile-checkout-forms"
       ]
     }
   },
@@ -83,7 +201,7 @@
     "primaryArchetype": "ecommerce",
     "visualMode": "light",
     "geometryFamily": "sharp-minimal",
-    "navigationModel": "minimal-editorial",
+    "navigationModel": "rail",
     "responsivePhilosophy": "mobile-first-progressive",
     "contentTone": "chic-aspirational",
     "primaryStack": "react-tailwind",
@@ -91,334 +209,814 @@
     "typographyPersonality": "monumental-display",
     "surfacePersonality": "monochrome-specular"
   },
+  "brand": {
+    "name": "Product Workspace"
+  },
   "constraints": {
     "accessibilityFloor": "AA",
-    "performanceCeiling": "rich",
+    "performanceCeiling": "balanced",
     "targetDevices": [
       "desktop",
-      "tablet"
+      "tablet",
+      "mobile"
+    ],
+    "allowedDependencies": [
+      "react",
+      "tailwindcss",
+      "lucide-react"
+    ],
+    "prohibitedDependencies": [
+      "jquery",
+      "bootstrap"
+    ],
+    "requiredScreens": [],
+    "forbiddenScreens": [],
+    "requiredPatterns": [],
+    "forbiddenPatterns": [
+      "unclear-shipping-costs-at-final-step",
+      "broken-mobile-checkout-forms"
     ]
   },
   "screenGraph": {
-    "id": "sg_showcase-luxury-ecommerce",
+    "id": "graph-ecommerce-1q0l80k",
     "groups": [
       {
-        "id": "group_main",
-        "name": "Main Workspace",
+        "id": "group-app",
+        "name": "Application",
         "screens": [
           {
-            "id": "node-marketing-home",
-            "name": "Marketing Home",
-            "slug": "/",
-            "screenType": "marketing-home",
-            "purpose": "Marketing Home",
+            "id": "screen-product-catalog",
+            "name": "Product Catalog",
+            "slug": "/product-catalog",
+            "screenType": "search-explore",
+            "purpose": "Browse seasonal garments, compare materials and sizes, and choose a product",
             "jobs": [
-              "inspect-view"
+              "browse-seasonal-clothing",
+              "compare-garments-and-sizes",
+              "choose-product"
             ],
             "required": true,
             "navigationVisibility": "primary",
-            "importance": 80,
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Product.id",
+              "Product.title",
+              "Product.price",
+              "Product.inventory",
+              "Product.sku"
             ],
             "requiredRoles": [
-              "content"
+              "search-header",
+              "facet-rail",
+              "results-grid"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "recent-searches",
+              "active-filter-chips",
+              "empty-state"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           },
           {
-            "id": "node-entity-detail",
-            "name": "Entity Detail",
-            "slug": "/entities/:id",
-            "screenType": "entity-detail",
-            "purpose": "Entity Detail",
+            "id": "screen-product-detail",
+            "name": "Product Detail",
+            "slug": "/products/:id",
+            "screenType": "detail-entity",
+            "purpose": "Gallery, specs, variant selector, and Add to Cart",
             "jobs": [
-              "inspect-view"
+              "inspect-photos",
+              "add-to-cart"
             ],
-            "required": false,
-            "navigationVisibility": "primary",
-            "importance": 75,
+            "required": true,
+            "navigationVisibility": "secondary",
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Product.id",
+              "Product.title",
+              "Product.price",
+              "Product.inventory",
+              "Product.sku"
             ],
             "requiredRoles": [
-              "content"
+              "entity-header",
+              "detail-tabs",
+              "main-content-pane",
+              "metadata-sidebar"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "activity-timeline",
+              "related-items-carousel",
+              "danger-zone"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           },
           {
-            "id": "node-pricing",
-            "name": "Pricing",
-            "slug": "/pricing",
-            "screenType": "pricing",
-            "purpose": "Pricing",
+            "id": "screen-order-confirmation",
+            "name": "Order Confirmation",
+            "slug": "/orders/:id",
+            "screenType": "detail-entity",
+            "purpose": "Confirmed order details, delivery status, and receipt",
             "jobs": [
-              "inspect-view"
+              "view-tracking",
+              "download-receipt"
             ],
-            "required": false,
-            "navigationVisibility": "primary",
-            "importance": 70,
+            "required": true,
+            "navigationVisibility": "secondary",
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Order.id",
+              "Order.items",
+              "Order.total",
+              "Order.shippingAddress",
+              "Order.status"
             ],
             "requiredRoles": [
-              "content"
+              "entity-header",
+              "detail-tabs",
+              "main-content-pane",
+              "metadata-sidebar"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "activity-timeline",
+              "related-items-carousel",
+              "danger-zone"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "group-utility",
+        "name": "Tasks & support",
+        "screens": [
+          {
+            "id": "screen-checkout",
+            "name": "Checkout",
+            "slug": "/checkout",
+            "screenType": "checkout-transaction",
+            "purpose": "Frictionless payment and address capture",
+            "jobs": [
+              "enter-shipping",
+              "submit-payment"
+            ],
+            "required": true,
+            "navigationVisibility": "hidden",
+            "importance": 85,
+            "expectedData": [
+              "Product.id",
+              "Product.title",
+              "Product.price",
+              "Product.inventory",
+              "Product.sku"
+            ],
+            "requiredRoles": [
+              "order-summary",
+              "payment-fields",
+              "submit-button"
+            ],
+            "optionalRoles": [
+              "coupon-input",
+              "shipping-selector",
+              "security-trust-badges"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           }
         ]
       }
     ],
     "edges": [
       {
-        "id": "edge_0",
-        "fromScreenId": "node-marketing-home",
-        "toScreenId": "node-entity-detail"
+        "id": "edge-screen-product-catalog-to-screen-product-detail",
+        "fromScreenId": "screen-product-catalog",
+        "toScreenId": "screen-product-detail",
+        "label": "Product Detail"
       },
       {
-        "id": "edge_1",
-        "fromScreenId": "node-marketing-home",
-        "toScreenId": "node-pricing"
+        "id": "edge-screen-product-catalog-to-screen-order-confirmation",
+        "fromScreenId": "screen-product-catalog",
+        "toScreenId": "screen-order-confirmation",
+        "label": "Order Confirmation"
       }
     ]
   },
   "screens": [
     {
-      "id": "screen-marketing-home",
-      "screenNodeId": "node-marketing-home",
-      "name": "Marketing Home",
-      "slug": "/",
+      "id": "screen-product-catalog",
+      "screenNodeId": "screen-product-catalog",
+      "name": "Product Catalog",
+      "slug": "/product-catalog",
       "rootNode": {
-        "id": "root-marketing-home",
+        "id": "root-screen-product-catalog",
         "nodeType": "layout",
-        "semanticRole": "page-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-nav",
-            "nodeType": "section",
+            "id": "node-screen-product-catalog-navigation-1",
+            "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_header_minimal",
-              "slug": "header-minimal",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Product Workspace",
+              "links": [
+                {
+                  "label": "Product Catalog",
+                  "href": "#screen-product-catalog"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-hero",
-            "nodeType": "section",
-            "semanticRole": "hero",
-            "resourceRef": {
-              "id": "res_hero_minimal",
-              "slug": "hero-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-product-catalog-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-product-catalog-search-header-2",
+                "nodeType": "element",
+                "semanticRole": "search-header",
+                "resourceRef": {
+                  "id": "res_primitive_input",
+                  "slug": "input",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Search products",
+                  "helperText": "Example search only. Connect a product catalogue to search live inventory.",
+                  "placeholder": "Search products and collections",
+                  "disabled": false,
+                  "title": "Product Catalog"
+                }
+              },
+              {
+                "id": "node-screen-product-catalog-facet-rail-3",
+                "nodeType": "block",
+                "semanticRole": "facet-rail",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-product-catalog-results-grid-4",
+                "nodeType": "block",
+                "semanticRole": "results-grid",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Available products",
+                  "rows": [
+                    {
+                      "id": 65,
+                      "name": "Example garment A",
+                      "type": "Material and sizing not connected",
+                      "quality": 0,
+                      "status": "Availability not connected",
+                      "displayValue": "Price not connected",
+                      "href": "#screen-product-detail"
+                    },
+                    {
+                      "id": 66,
+                      "name": "Example garment B",
+                      "type": "Material and sizing not connected",
+                      "quality": 0,
+                      "status": "Availability not connected",
+                      "displayValue": "Price not connected",
+                      "href": "#screen-product-detail"
+                    },
+                    {
+                      "id": 67,
+                      "name": "Example garment C",
+                      "type": "Material and sizing not connected",
+                      "quality": 0,
+                      "status": "Availability not connected",
+                      "displayValue": "Price not connected",
+                      "href": "#screen-product-detail"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Product",
+                    "type": "Material and sizing",
+                    "quality": "Price",
+                    "status": "Availability"
+                  }
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-proof",
-            "nodeType": "section",
-            "semanticRole": "trust-proof",
-            "resourceRef": {
-              "id": "res_logo_cloud_clean",
-              "slug": "logo-cloud-clean",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-features",
-            "nodeType": "section",
-            "semanticRole": "feature-grid",
-            "resourceRef": {
-              "id": "res_feature_grid_cards",
-              "slug": "feature-grid-cards",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-cta",
-            "nodeType": "section",
-            "semanticRole": "conversion-cta",
-            "resourceRef": {
-              "id": "res_cta_minimal",
-              "slug": "cta-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-footer",
-            "nodeType": "section",
-            "semanticRole": "footer",
-            "resourceRef": {
-              "id": "res_footer_minimal",
-              "slug": "footer-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-entity-detail",
-      "screenNodeId": "node-entity-detail",
-      "name": "Entity Detail",
-      "slug": "/entities/:id",
+      "id": "screen-product-detail",
+      "screenNodeId": "screen-product-detail",
+      "name": "Product Detail",
+      "slug": "/products/:id",
       "rootNode": {
-        "id": "root-entity-detail",
+        "id": "root-screen-product-detail",
         "nodeType": "layout",
-        "semanticRole": "detail-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-det-kpis",
-            "nodeType": "section",
-            "semanticRole": "header-kpis",
+            "id": "node-screen-product-detail-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_metrics_scorecard",
-              "slug": "metrics-scorecard",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Product Workspace",
+              "links": [
+                {
+                  "label": "Product Catalog",
+                  "href": "#screen-product-catalog"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-det-timeline",
-            "nodeType": "section",
-            "semanticRole": "timeline",
-            "resourceRef": {
-              "id": "res_activity_timeline",
-              "slug": "activity-timeline",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-product-detail-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-product-detail-entity-header-2",
+                "nodeType": "block",
+                "semanticRole": "entity-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Product Detail",
+                  "subtitle": "Gallery, specs, variant selector, and Add to Cart",
+                  "badge": "EXAMPLE",
+                  "initials": "PW"
+                }
+              },
+              {
+                "id": "node-screen-product-detail-detail-tabs-3",
+                "nodeType": "block",
+                "semanticRole": "detail-tabs",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Product Workspace",
+                  "links": [
+                    {
+                      "label": "Product Catalog",
+                      "href": "#screen-product-catalog"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-product-detail-main-content-pane-4",
+                "nodeType": "block",
+                "semanticRole": "main-content-pane",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Product Detail",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Product",
+                      "type": "Merchandise item with variants, media, and price",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Order",
+                      "type": "Customer purchase agreement and payment status",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Customer",
+                      "type": "Shopper profile and order history",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-product-detail-metadata-sidebar-5",
+                "nodeType": "block",
+                "semanticRole": "metadata-sidebar",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Product Detail",
+                  "subtitle": "Gallery, specs, variant selector, and Add to Cart",
+                  "badge": "EXAMPLE",
+                  "initials": "PW"
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-det-history",
-            "nodeType": "section",
-            "semanticRole": "audit-history",
-            "resourceRef": {
-              "id": "res_version_history",
-              "slug": "version-history",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-pricing",
-      "screenNodeId": "node-pricing",
-      "name": "Pricing",
-      "slug": "/pricing",
+      "id": "screen-order-confirmation",
+      "screenNodeId": "screen-order-confirmation",
+      "name": "Order Confirmation",
+      "slug": "/orders/:id",
       "rootNode": {
-        "id": "root-pricing",
+        "id": "root-screen-order-confirmation",
         "nodeType": "layout",
-        "semanticRole": "page-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-price-cards",
-            "nodeType": "section",
-            "semanticRole": "pricing-cards",
+            "id": "node-screen-order-confirmation-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_pricing_cards_three_tier",
-              "slug": "pricing-cards-three-tier",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Product Workspace",
+              "links": [
+                {
+                  "label": "Product Catalog",
+                  "href": "#screen-product-catalog"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-price-matrix",
-            "nodeType": "section",
-            "semanticRole": "feature-matrix",
-            "resourceRef": {
-              "id": "res_pricing_comparison_table",
-              "slug": "pricing-comparison-table",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-order-confirmation-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-order-confirmation-entity-header-2",
+                "nodeType": "block",
+                "semanticRole": "entity-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Order Confirmation",
+                  "subtitle": "Confirmed order details, delivery status, and receipt",
+                  "badge": "EXAMPLE",
+                  "initials": "PW"
+                }
+              },
+              {
+                "id": "node-screen-order-confirmation-detail-tabs-3",
+                "nodeType": "block",
+                "semanticRole": "detail-tabs",
+                "resourceRef": {
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "brand": "Product Workspace",
+                  "links": [
+                    {
+                      "label": "Product Catalog",
+                      "href": "#screen-product-catalog"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-order-confirmation-main-content-pane-4",
+                "nodeType": "block",
+                "semanticRole": "main-content-pane",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Order Confirmation",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Product",
+                      "type": "Merchandise item with variants, media, and price",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 2,
+                      "name": "Example Order",
+                      "type": "Customer purchase agreement and payment status",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    },
+                    {
+                      "id": 3,
+                      "name": "Example Customer",
+                      "type": "Shopper profile and order history",
+                      "quality": 0,
+                      "status": "Sample",
+                      "displayValue": "Details not connected"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Record",
+                    "type": "Context",
+                    "quality": "Data",
+                    "status": "Status"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-order-confirmation-metadata-sidebar-5",
+                "nodeType": "block",
+                "semanticRole": "metadata-sidebar",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Order Confirmation",
+                  "subtitle": "Confirmed order details, delivery status, and receipt",
+                  "badge": "EXAMPLE",
+                  "initials": "PW"
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
-          },
-          {
-            "id": "sec-price-faq",
-            "nodeType": "section",
-            "semanticRole": "faq",
-            "resourceRef": {
-              "id": "res_faq_accordion_simple",
-              "slug": "faq-accordion-simple",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
-            "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
+      }
+    },
+    {
+      "id": "screen-checkout",
+      "screenNodeId": "screen-checkout",
+      "name": "Checkout",
+      "slug": "/checkout",
+      "rootNode": {
+        "id": "root-screen-checkout",
+        "nodeType": "layout",
+        "semanticRole": "workspace-dock-shell",
+        "children": [
+          {
+            "id": "node-screen-checkout-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Product Workspace",
+              "links": [
+                {
+                  "label": "Product Catalog",
+                  "href": "#screen-product-catalog"
+                }
+              ],
+              "orientation": "vertical"
+            }
+          },
+          {
+            "id": "container-screen-checkout-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-checkout-order-summary-2",
+                "nodeType": "block",
+                "semanticRole": "order-summary",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Order summary · example",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example Product",
+                      "type": "Sample cart item",
+                      "quality": 0,
+                      "displayValue": "Price from your catalogue",
+                      "status": "Example"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Item",
+                    "type": "Details",
+                    "quality": "Price",
+                    "status": "State"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-checkout-payment-fields-3",
+                "nodeType": "element",
+                "semanticRole": "payment-fields",
+                "resourceRef": {
+                  "id": "res_primitive_input",
+                  "slug": "input",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Payment provider",
+                  "helperText": "Preview only. This field does not collect or store payment details.",
+                  "placeholder": "Connect a provider to enable checkout",
+                  "disabled": true,
+                  "title": "A payment provider is required before checkout can be enabled."
+                }
+              },
+              {
+                "id": "node-screen-checkout-submit-button-4",
+                "nodeType": "element",
+                "semanticRole": "submit-button",
+                "resourceRef": {
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "children": "Payment provider required",
+                  "disabled": true,
+                  "title": "Connect a payment provider before enabling payment submission.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     }
   ],
   "navigation": {
-    "model": "minimal-editorial",
+    "model": "rail",
     "primaryItems": [
       {
-        "label": "Catalogue",
-        "targetScreenId": "node-marketing-home"
+        "label": "Product Catalog",
+        "targetScreenId": "screen-product-catalog"
+      }
+    ],
+    "secondaryItems": [
+      {
+        "label": "Product Detail",
+        "targetScreenId": "screen-product-detail"
       },
       {
-        "label": "Specimen",
-        "targetScreenId": "node-entity-detail"
-      },
-      {
-        "label": "Pricing",
-        "targetScreenId": "node-pricing"
+        "label": "Order Confirmation",
+        "targetScreenId": "screen-order-confirmation"
       }
     ]
   },
   "assets": [],
   "locks": [],
   "historyMeta": {
-    "totalOperations": 12,
-    "headRevision": 1
+    "totalOperations": 0,
+    "headRevision": 0
   },
   "exportSettings": {
     "framework": "react",

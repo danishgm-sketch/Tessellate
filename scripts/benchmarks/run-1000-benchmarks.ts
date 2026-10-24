@@ -5,7 +5,6 @@ import type { ResourceManifest } from '../../packages/schemas/src/index.js';
 import { generate1000ClientScenarios } from './scenarios-1000.js';
 import { evaluateScenario } from './evaluate-scenario.js';
 import type {
-  ClientScenario,
   ScenarioBenchmarkResult,
   BenchmarkAggregateSummary,
 } from './benchmark-types.js';

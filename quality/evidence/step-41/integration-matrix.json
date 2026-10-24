@@ -1,0 +1,187 @@
+{
+  "step": 41,
+  "title": "Cross-feature workflow evidence",
+  "environment": {
+    "runtime": "Locally built ChatGPT Sites Worker",
+    "publicReviewDeploymentVerified": false,
+    "viewports": [
+      "1440x900",
+      "390x844"
+    ],
+    "browser": "Chromium"
+  },
+  "findings": [
+    "AUD-310",
+    "AUD-311",
+    "AUD-312",
+    "AUD-313"
+  ],
+  "workflows": [
+    {
+      "id": "ui-compose-workbench-cli-mcp-export",
+      "status": "pass",
+      "steps": [
+        "Compose the employee-experience brief through the visible UI.",
+        "Select Direction C and verify the seven-screen project in Workbench.",
+        "Export the Workbench project ZIP and validate/export the same manifest through CLI and MCP.",
+        "Adjust Design DNA through MCP; validate and export the result through CLI and MCP."
+      ],
+      "assertions": {
+        "projectIdPreserved": true,
+        "screenCount": 7,
+        "zipFileCount": 31,
+        "cliMcpValidation": "valid",
+        "generatedTreesMatchExactly": true,
+        "mutatedDnaPlayfulness": 74,
+        "mutatedCliMcpTreesMatchExactly": true,
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "evidence": {
+        "desktop": "quality/evidence/step-41/after/sites-desktop/ui-cli-mcp-parity/parity.json",
+        "desktopScreenshot": "quality/evidence/step-41/after/sites-desktop/ui-cli-mcp-parity/direction-c-workbench.png",
+        "mobile": "quality/evidence/step-41/after/sites-mobile/ui-cli-mcp-parity/parity.json"
+      }
+    },
+    {
+      "id": "cli-compose-workbench-import-export-validate",
+      "status": "pass",
+      "steps": [
+        "Compose a CLI manifest.",
+        "Import the manifest through Workbench's visible Open Tessellate Manifest file chooser.",
+        "Edit Design DNA visibly, export the manifest, and validate with CLI."
+      ],
+      "assertions": {
+        "projectIdPreserved": true,
+        "visibleDnaEditPreserved": true,
+        "cliValidation": "valid",
+        "invalidManifestRejectedWithoutReplacingProject": true,
+        "duplicateProjectIdRejectedWithoutReplacingProject": true,
+        "axeViolations": 0,
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "evidence": {
+        "desktop": "quality/evidence/step-41/after/sites-desktop/cli-workbench-roundtrip/roundtrip.json",
+        "desktopScreenshot": "quality/evidence/step-41/after/sites-desktop/cli-workbench-roundtrip/workbench-after-import.png",
+        "mobile": "quality/evidence/step-41/after/sites-mobile/cli-workbench-roundtrip/roundtrip.json",
+        "mobileScreenshot": "quality/evidence/step-41/after/sites-mobile/cli-workbench-roundtrip/workbench-after-import.png"
+      }
+    },
+    {
+      "id": "mcp-compose-workbench-import-export-validate",
+      "status": "pass",
+      "steps": [
+        "Compose a manifest through the real MCP client workflow.",
+        "Import it through the visible Workbench file chooser.",
+        "Edit Design DNA visibly and validate the export through CLI and MCP."
+      ],
+      "assertions": {
+        "projectIdPreserved": true,
+        "visibleDnaEditPreserved": true,
+        "cliValidation": "valid",
+        "mcpValidation": "valid",
+        "consoleErrors": [],
+        "pageErrors": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "evidence": {
+        "desktop": "quality/evidence/step-41/after/sites-desktop/mcp-workbench-roundtrip/roundtrip.json",
+        "desktopScreenshot": "quality/evidence/step-41/after/sites-desktop/mcp-workbench-roundtrip/workbench-after-import.png",
+        "mobile": "quality/evidence/step-41/after/sites-mobile/mcp-workbench-roundtrip/roundtrip.json",
+        "mobileScreenshot": "quality/evidence/step-41/after/sites-mobile/mcp-workbench-roundtrip/workbench-after-import.png"
+      }
+    },
+    {
+      "id": "beta-ingestion-cli-mcp-export",
+      "status": "pass-with-beta-boundary",
+      "steps": [
+        "Ingest a clean 112-byte React fixture through the CLI.",
+        "Validate and export the resulting manifest through CLI and MCP.",
+        "Compare source preservation and emitted trees."
+      ],
+      "assertions": {
+        "inputSourcePreserved": true,
+        "inferredScreenCount": 1,
+        "cliValidation": "valid",
+        "mcpValidation": "valid",
+        "generatedTreesMatchExactly": true,
+        "businessLogicReconstructionClaimed": false
+      },
+      "limitation": "Code ingestion is Beta: it recognizes a simple screen boundary and preserves source, but does not reconstruct application behavior or business logic.",
+      "evidence": "quality/evidence/step-41/after/sites-desktop/ui-cli-mcp-parity/parity.json"
+    }
+  ],
+  "postRestartRecovery": {
+    "status": "pass",
+    "evidence": "quality/evidence/step-37/os-restart-recovery-2026-10-24-followup.json",
+    "summary": "After Windows restart, Docker recovered all 8 expected MGI/Tessellate containers without manual container starts; Tessellate API and host healthchecks passed and localhost API health returned HTTP 200."
+  },
+  "dependencyAudit": {
+    "before": {
+      "status": "fail",
+      "advisories": 10,
+      "high": 2,
+      "moderate": 6,
+      "low": 2,
+      "evidence": "quality/evidence/step-41/pnpm-audit.json"
+    },
+    "after": {
+      "status": "pass",
+      "resolvedUndici": [
+        "7.30.1",
+        "8.12.2"
+      ],
+      "resolvedFastUri": "3.1.9",
+      "evidence": "quality/evidence/step-41/dependency-audit-after.log"
+    }
+  },
+  "qualityGateResults": {
+    "frozenInstall": "pass",
+    "unitTests": {
+      "status": "pass",
+      "tests": 1214,
+      "testFiles": 77
+    },
+    "typecheck": "pass",
+    "lint": "pass",
+    "auditAll": {
+      "status": "pass",
+      "behavioralGates": "16/16",
+      "resourceIsolation": "324/324",
+      "astroPages": 733,
+      "bundleBudgets": "pass",
+      "provenanceAndLicenses": "pass",
+      "securityAndSecrets": "pass",
+      "dependencyAudit": "pass"
+    },
+    "playwright": {
+      "status": "pass",
+      "passed": 521,
+      "configuredSkipped": 144,
+      "failed": 0,
+      "mainProjects": {
+        "passed": 284,
+        "configuredSkipped": 108
+      },
+      "sitesWorkerProjects": {
+        "passed": 234,
+        "configuredSkipped": 36
+      },
+      "isolatedPreviewApp": {
+        "passed": 3,
+        "configuredSkipped": 0
+      },
+      "evidence": "quality/evidence/step-41/full-e2e-final.log"
+    }
+  },
+  "remaining": [
+    "Repeat these workflows against a published review Site after the release-candidate deployment gate.",
+    "This evidence does not certify the complete hardening programme or all cross-feature combinations."
+  ]
+}

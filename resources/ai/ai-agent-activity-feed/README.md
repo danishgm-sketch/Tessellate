@@ -1,3 +1,3 @@
 # AI Agent Activity Feed
 
-Real-time telemetry stream displaying agent thoughts, state transitions, subagent executions, and milestones.
+Static sample activity feed for an AI-agent workspace. The preview uses local example events and does not connect to live telemetry; replace the event list with data from the host application.

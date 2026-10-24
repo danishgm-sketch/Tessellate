@@ -1,3 +1,3 @@
 # AI Chat Panel
 
-Multi-turn conversational AI message stream with role badges, markdown bubbles, and input composer.
+Example conversation UI with local-only message submission. It does not connect to an AI service.

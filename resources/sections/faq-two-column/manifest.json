@@ -5,7 +5,7 @@
   "name": "FAQ Two Column",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Dual-column question layout for high question density without excessive vertical length.",
+  "description": "Two-column layout for questions and answers.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,7 +130,7 @@
     "answers"
   ],
   "intent": {
-    "summary": "Dual-column question layout for high question density without excessive vertical length.",
+    "summary": "Question layout; keep answers specific to the host app supported behavior.",
     "idealFor": [
       "Presenting 6+ questions compactly without requiring clicks to expand"
     ],
@@ -138,7 +138,7 @@
       "Narrow single-column mobile-only pages"
     ],
     "jobs": [
-      "Display questions in side-by-side balanced columns"
+      "Display concise, verified answers to product questions"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"
@@ -209,12 +209,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

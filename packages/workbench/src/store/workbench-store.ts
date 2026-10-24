@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import type {
   ProjectManifest,
+  ProjectNode,
   ProjectScreen,
   PartialDesignDNA,
   NodeLocks,
@@ -34,6 +35,20 @@ import { surpriseMe, type SurpriseMeOptions } from '../mutations/surprise.js';
 import { createReplaceOperation } from '../mutations/replace.js';
 import { blendManifests, type BlendConfig } from '../blend/blend-engine.js';
 import { executeMutation as runMutation } from '../mutations/executor.js';
+import { getScopedDNA, getScopedTokens, isScopeLocked } from '../utils/dna-helpers.js';
+import {getSemanticPalette} from '@tessellate/dna';
+import { syncManifestLocks } from '../locks/lock-engine.js';
+
+function syncRenderedNavigation(manifest:ProjectManifest):ProjectManifest {
+ const links=manifest.navigation.primaryItems.filter(item=>manifest.screens.some(screen=>screen.id===item.targetScreenId)).map(item=>({label:item.label,href:`#${item.targetScreenId}`}));
+ const update=(node:ProjectNode):ProjectNode=>node.locks?.node || node.locks?.content?node:{...node,...(node.semanticRole==='navigation'?{props:{...node.props,links}}:{}),children:node.children.map(update)};
+ return {...manifest,screens:manifest.screens.map(screen=>({...screen,rootNode:update(screen.rootNode)}))};
+}
+function applyVisualMode(node:ProjectNode,mode:'light'|'dark'|'adaptive'):ProjectNode {
+ if(node.locks?.node || node.locks?.style || node.locks?.dna)return node;
+ const effective=node.dnaOverrides?.visualMode ?? mode;
+ return {...node,...(node.resourceRef ? {variant:effective==='dark' ? 'nocturne' : node.variant==='nocturne' ? 'quiet' : node.variant} : {}),children:node.children.map(child=>applyVisualMode(child,effective))};
+}
 
 const initialSample = createSampleProject();
 const initialCheckpoint = createCheckpoint(initialSample, {
@@ -71,6 +86,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
   isBlendOpen: false,
   isReplaceDrawerOpen: false,
 
+  lastActionMessage:'',
   // History & Checkpoints
   history: [],
   future: [],
@@ -86,6 +102,10 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       history: [],
       future: [],
       operations: [],
+      lastActionMessage:'',
+      checkpoints: [createCheckpoint(manifest, {trigger:'initial-generation', name:'Opened project', description:'Baseline of this project when opened'})],
+      compareManifest: null,
+      isCompareOpen: false,
     });
   },
 
@@ -128,7 +148,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
 
   setActiveLeftTab: (tab: LeftTab) => set({ activeLeftTab: tab }),
   setActiveRightTab: (tab: RightTab) => set({ activeRightTab: tab }),
-  setActiveMode: (mode: WorkbenchMode) => set({ activeMode: mode }),
+  setActiveMode: (mode: WorkbenchMode) => set({ activeMode: mode, activeRightTab: mode === 'style' || mode === 'motion' || mode === 'content' ? mode : 'intent' }),
   setDevicePreset: (preset: DevicePreset) => set({ devicePreset: preset }),
   setZoom: (zoom: number) => set({ zoom: Math.min(2.0, Math.max(0.25, zoom)) }),
   setPan: (pan: { x: number; y: number }) => set({ pan }),
@@ -160,7 +180,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     const restored = restoreCheckpoint(checkpoint);
     set({
       manifest: restored,
-      history: [manifest, ...history],
+      history: [manifest, ...history.slice(0, 49)],
       future: [],
       selectedNodeId: null,
     });
@@ -174,6 +194,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       history: [manifest, ...history.slice(0, 49)],
       future: [],
       operations: [result.executedOperation, ...operations],
+      lastActionMessage:result.executedOperation.summary,
       manifest: result.nextManifest,
     });
   },
@@ -206,6 +227,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       history: [manifest, ...get().history.slice(0, 49)],
       future: [],
       operations: [result.executedOperation, ...get().operations],
+      lastActionMessage:result.executedOperation.summary,
       checkpoints: [autoChk, ...checkpoints],
       manifest: result.nextManifest,
     });
@@ -213,7 +235,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
 
   surpriseMe: (options?: SurpriseMeOptions) => {
     const { manifest } = get();
-    const result = surpriseMe(manifest, options);
+    const result = surpriseMe(manifest, {...options,screenId:get().activeScreenId});
     get().executeOperation(result.operation);
   },
 
@@ -224,14 +246,14 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     set({ isReplaceDrawerOpen: false });
   },
 
-  blendWith: (otherManifest: ProjectManifest, config: BlendConfig) => {
+  blendWith: (otherManifest: ProjectManifest, config: BlendConfig, thirdManifest?:ProjectManifest) => {
     const { manifest, checkpoints } = get();
     const autoChk = createCheckpoint(manifest, {
       trigger: 'pre-blend',
       name: 'Pre-Blend Snapshot',
     });
 
-    const blended = blendManifests(manifest, otherManifest, undefined, config);
+    const blended = blendManifests(manifest, otherManifest, thirdManifest, config);
 
     set({
       history: [manifest, ...get().history.slice(0, 49)],
@@ -243,6 +265,19 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
   },
 
   // DNA & Mutation Actions
+  setPalette:(paletteId:string)=>{
+    if(!getSemanticPalette(paletteId)) throw new Error('Unknown semantic palette.');
+    const {manifest,activeScreenId,selectedNodeId,history}=get();
+    if(selectedNodeId && isScopeLocked(manifest,activeScreenId,selectedNodeId))return;
+    const screens=manifest.screens.map(screen=>{
+      if(selectedNodeId && screen.id!==activeScreenId)return screen;
+      const targetId=selectedNodeId ?? screen.rootNode.id;
+      if(isScopeLocked(manifest,screen.id,targetId))return screen;
+      return {...screen,rootNode:updateNodeInTree(screen.rootNode,targetId,node=>({...node,tokenOverrides:{...node.tokenOverrides,paletteId}}))};
+    });
+    set({manifest:{...manifest,screens,updatedAt:new Date().toISOString()},history:[manifest,...history.slice(0,49)],future:[]});
+  },
+
   updateProjectDNA: (dnaChanges: PartialDesignDNA) => {
     const { manifest, history } = get();
     const nextManifest: ProjectManifest = {
@@ -251,6 +286,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
         ...manifest.designDNA,
         ...dnaChanges,
       },
+      screens:dnaChanges.visualMode ? manifest.screens.map(screen=>({...screen,rootNode:applyVisualMode(screen.rootNode,dnaChanges.visualMode!)})) : manifest.screens,
       updatedAt: new Date().toISOString(),
     };
 
@@ -263,13 +299,14 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
 
   updateNodeDNA: (nodeId: string, dnaOverrides: PartialDesignDNA) => {
     const { manifest, activeScreenId, history } = get();
+    if (isScopeLocked(manifest,activeScreenId,nodeId)) return;
     const screenIndex = manifest.screens.findIndex((s) => s.id === activeScreenId);
     if (screenIndex === -1) return;
 
     const targetScreen = manifest.screens[screenIndex];
     if (!targetScreen) return;
 
-    const updatedRoot = updateNodeInTree(targetScreen.rootNode, nodeId, (node) => ({
+    let updatedRoot = updateNodeInTree(targetScreen.rootNode, nodeId, (node) => ({
       ...node,
       dnaOverrides: {
         ...(node.dnaOverrides ?? {}),
@@ -277,6 +314,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       },
     }));
 
+    if(dnaOverrides.visualMode) updatedRoot=updateNodeInTree(updatedRoot,nodeId,node=>applyVisualMode(node,dnaOverrides.visualMode!));
     const nextScreens = [...manifest.screens];
     nextScreens[screenIndex] = {
       ...targetScreen,
@@ -298,6 +336,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
 
   resetNodeDNA: (nodeId: string) => {
     const { manifest, activeScreenId, history } = get();
+    if (isScopeLocked(manifest,activeScreenId,nodeId)) return;
     const screenIndex = manifest.screens.findIndex((s) => s.id === activeScreenId);
     if (screenIndex === -1) return;
 
@@ -332,6 +371,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
 
   updateNodeProps: (nodeId: string, props: Record<string, unknown>) => {
     const { manifest, activeScreenId, history } = get();
+    if (isScopeLocked(manifest,activeScreenId,nodeId,'content')) return;
     const screenIndex = manifest.screens.findIndex((s) => s.id === activeScreenId);
     if (screenIndex === -1) return;
 
@@ -378,6 +418,8 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       const nextVal = !currentLocks[lockType];
       return {
         ...node,
+        // Freeze inherited visual intent before a lock; ancestor edits cannot restyle it.
+        ...((nextVal && ['node','dna','style','motion'].includes(lockType)) ? {dnaOverrides:getScopedDNA(manifest,activeScreenId,nodeId),tokenOverrides:getScopedTokens(manifest,activeScreenId,nodeId)} : {}),
         locks: {
           ...currentLocks,
           [lockType]: nextVal,
@@ -400,7 +442,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     set({
       history: [manifest, ...history.slice(0, 49)],
       future: [],
-      manifest: nextManifest,
+      manifest: syncManifestLocks(nextManifest),
     });
   },
 
@@ -432,7 +474,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     set({
       history: [manifest, ...history.slice(0, 49)],
       future: [],
-      manifest: nextManifest,
+      manifest: syncManifestLocks(nextManifest),
     });
   },
 
@@ -441,12 +483,14 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     const nextManifest: ProjectManifest = {
       ...manifest,
       screens: [...manifest.screens, screen],
+      navigation:{...manifest.navigation,primaryItems:[...manifest.navigation.primaryItems,{label:screen.name,targetScreenId:screen.id}]},
+      screenGraph:{...manifest.screenGraph,groups:manifest.screenGraph.groups.map((group,index)=>index===0 ? {...group,screens:[...group.screens,{id:screen.id,name:screen.name,slug:screen.slug,screenType:'custom',purpose:`User-created ${screen.name}`,jobs:[],required:false,navigationVisibility:'primary',importance:50,expectedData:[],requiredRoles:[],optionalRoles:[]}]} : group)},
       updatedAt: new Date().toISOString(),
     };
     set({
       history: [manifest, ...history.slice(0, 49)],
       future: [],
-      manifest: nextManifest,
+      manifest: syncRenderedNavigation(nextManifest),
       activeScreenId: screen.id,
     });
   },
@@ -461,13 +505,15 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     const nextManifest: ProjectManifest = {
       ...manifest,
       screens: nextScreens,
+      navigation:{...manifest.navigation,primaryItems:manifest.navigation.primaryItems.filter(item=>item.targetScreenId!==screenId)},
+      screenGraph:{...manifest.screenGraph,groups:manifest.screenGraph.groups.map(group=>({...group,screens:group.screens.filter(screen=>screen.id!==screenId)})),edges:manifest.screenGraph.edges.filter(edge=>edge.fromScreenId!==screenId && edge.toScreenId!==screenId)},
       updatedAt: new Date().toISOString(),
     };
 
     set({
       history: [manifest, ...history.slice(0, 49)],
       future: [],
-      manifest: nextManifest,
+      manifest: syncRenderedNavigation(nextManifest),
       activeScreenId: nextActive,
       selectedNodeId: null,
     });
@@ -482,13 +528,15 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     const nextManifest: ProjectManifest = {
       ...manifest,
       screens: nextScreens,
+      navigation:{...manifest.navigation,primaryItems:manifest.navigation.primaryItems.map(item=>item.targetScreenId===screenId?{...item,label:name}:item)},
+      screenGraph:{...manifest.screenGraph,groups:manifest.screenGraph.groups.map(group=>({...group,screens:group.screens.map(screen=>screen.id===screenId?{...screen,name}:screen)}))},
       updatedAt: new Date().toISOString(),
     };
 
     set({
       history: [manifest, ...history.slice(0, 49)],
       future: [],
-      manifest: nextManifest,
+      manifest: syncRenderedNavigation(nextManifest),
     });
   },
 
@@ -511,6 +559,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       history: [],
       future: [],
       operations: [],
+      lastActionMessage:'',
     });
   },
 
@@ -524,6 +573,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
 
     set({
       manifest: previous,
+      lastActionMessage:'Undid the latest project change.',
       history: restHistory,
       future: [manifest, ...future],
       selectedNodeId: (() => {
@@ -544,6 +594,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
 
     set({
       manifest: next,
+      lastActionMessage:'Restored the next project change.',
       history: [manifest, ...history],
       future: restFuture,
       selectedNodeId: (() => {
@@ -554,7 +605,3 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     });
   },
 }));
-
-if (typeof window !== 'undefined') {
-  (window as unknown as { __tessellate_workbench_store__: unknown }).__tessellate_workbench_store__ = useWorkbenchStore;
-}

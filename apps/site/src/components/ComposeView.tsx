@@ -1,9 +1,9 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef, useTransition } from 'react';
 import {
+  PRODUCT_BLUEPRINTS,
   getAllGoldenBriefs,
   getGoldenBrief,
   getAllProductArchetypes,
-  findBlueprintByArchetype,
   planScreenGraph,
   type ProductBriefInput,
 } from '@tessellate/composer';
@@ -11,9 +11,10 @@ import {
   composeProjectPipeline,
   type ComposedDirectionOutput,
 } from '@tessellate/compatibility';
-import { saveLocalProject } from '@tessellate/workbench';
+import { Dialog } from '@tessellate/ui';
+import { saveLocalProject } from '@tessellate/workbench/persistence';
 import { ManifestRenderer } from '@tessellate/renderer';
-import type { ProjectManifest, ResourceManifest } from '@tessellate/schemas';
+import { ResourceManifestSchema, type ProjectManifest, type ResourceManifest } from '@tessellate/schemas';
 import {
   VISUAL_AMBITION_STOPS,
   STRUCTURAL_CREATIVITY_STOPS,
@@ -34,42 +35,57 @@ import {
   Laptop,
 } from 'lucide-react';
 
+const HOME_COMPOSE_HANDOFF_KEY = 'tessellate:pending-compose-brief';
+
+function isHomeComposeHandoff(value: unknown): value is ProductBriefInput {
+  if (!value || typeof value !== 'object') return false;
+  const brief = value as Record<string, unknown>;
+  return typeof brief.description === 'string'
+    && brief.description.trim().length > 0
+    && brief.description.length <= 20_000
+    && typeof brief.feel === 'string'
+    && brief.feel.length <= 200
+    && typeof brief.visualAmbition === 'number'
+    && Number.isFinite(brief.visualAmbition)
+    && brief.visualAmbition >= 10
+    && brief.visualAmbition <= 95
+    && typeof brief.structuralCreativity === 'number'
+    && Number.isFinite(brief.structuralCreativity)
+    && brief.structuralCreativity >= 10
+    && brief.structuralCreativity <= 90
+    && brief.accessibilityFloor === 'AA'
+    && brief.performanceCeiling === 'balanced'
+    && Array.isArray(brief.targetDevices)
+    && brief.targetDevices.every((device) => device === 'desktop' || device === 'tablet' || device === 'mobile');
+}
+
 export function ComposeView() {
   const goldenBriefs = getAllGoldenBriefs();
   const archetypes = getAllProductArchetypes();
 
   // Form State
   const [description, setDescription] = useState(
-    'A high-density financial intelligence trading terminal for equity analysts and portfolio managers, featuring real-time market data streams, order book depth, SEC filings research, and multi-asset risk telemetry.'
+    'An employee experience platform with a warm marketing site, a refined team dashboard, playful onboarding and conservative settings.'
   );
   const [selectedArchetypeOverride, setSelectedArchetypeOverride] = useState<string>('');
-  const [feel, setFeel] = useState<string>('dense and technical');
+  const [feel, setFeel] = useState<string>('professional but playful');
   const [visualAmbition, setVisualAmbition] = useState<number>(40);
   const [structuralCreativity, setStructuralCreativity] = useState<number>(35);
   const [accessibilityFloor, setAccessibilityFloor] = useState<'A' | 'AA' | 'AAA'>('AA');
   const [performanceCeiling, setPerformanceCeiling] = useState<'lightweight' | 'balanced' | 'rich'>('rich');
-  const [targetDevices, setTargetDevices] = useState<Array<'desktop' | 'tablet' | 'mobile'>>(['desktop']);
+  const [targetDevices, setTargetDevices] = useState<Array<'desktop' | 'tablet' | 'mobile'>>(['desktop','tablet','mobile']);
   const [showAdvanced, setShowAdvanced] = useState<boolean>(false);
 
-  // Prefill from ?blueprint= URL parameter
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const params = new URLSearchParams(window.location.search);
-    const blueprintParam = params.get('blueprint');
-    if (blueprintParam) {
-      const bp = findBlueprintByArchetype(blueprintParam);
-      if (bp) {
-        setDescription(`A specialized ${bp.name.toLowerCase()} platform: ${bp.description}`);
-        setSelectedArchetypeOverride(bp.archetypeId);
-        setFeel(bp.defaultObjective || 'professional and fast');
-      }
-    }
-  }, []);
-
   // Result state
+  const [compositionError,setCompositionError] = useState('');
+  const [briefError, setBriefError] = useState('');
   const [hasComposed, setHasComposed] = useState<boolean>(false);
+  const [isComposing, setIsComposing] = useState(false);
+  const [isRenderingDirections, startDirectionRender] = useTransition();
+  const [lastComposedBriefKey, setLastComposedBriefKey] = useState('');
   const [catalogStatus, setCatalogStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [catalogResources, setCatalogResources] = useState<ResourceManifest[]>([]);
+  const descriptionRef = useRef<HTMLTextAreaElement>(null);
 
   const loadCatalog = () => {
     setCatalogStatus('loading');
@@ -80,19 +96,51 @@ export function ComposeView() {
       })
       .then((data) => {
         if (data && Array.isArray(data.resources) && data.resources.length > 0) {
-          setCatalogResources(data.resources);
+          setCatalogResources(ResourceManifestSchema.array().parse(data.resources));
           setCatalogStatus('ready');
         } else {
           throw new Error('Empty or invalid catalogue payload');
         }
       })
       .catch((err) => {
-        console.error('Failed to load /data/catalog.json in ComposeView:', err);
+        if (import.meta.env.DEV) {
+          console.error('Failed to load /data/catalog.json in ComposeView:', err);
+        }
         setCatalogStatus('error');
       });
   };
 
   useEffect(() => {
+    const params=new URLSearchParams(window.location.search);
+    const blueprint=PRODUCT_BLUEPRINTS.find(item=>item.id===params.get('blueprint'));
+    let appliedHandoff = false;
+    try {
+      const pending = window.sessionStorage.getItem(HOME_COMPOSE_HANDOFF_KEY);
+      if (pending) {
+        window.sessionStorage.removeItem(HOME_COMPOSE_HANDOFF_KEY);
+        const parsed: unknown = JSON.parse(pending);
+        if (isHomeComposeHandoff(parsed)) {
+          setDescription(parsed.description);
+          setFeel(parsed.feel ?? '');
+          setVisualAmbition(parsed.visualAmbition ?? 40);
+          setStructuralCreativity(parsed.structuralCreativity ?? 35);
+          setAccessibilityFloor(parsed.accessibilityFloor ?? 'AA');
+          setPerformanceCeiling(parsed.performanceCeiling ?? 'rich');
+          setTargetDevices(parsed.targetDevices ?? ['desktop','tablet','mobile']);
+          appliedHandoff = true;
+        } else {
+          setCompositionError('The brief passed from the homepage was invalid. Enter it again to continue.');
+        }
+      }
+    } catch {
+      setCompositionError('The brief passed from the homepage could not be loaded. Enter it again to continue.');
+    }
+
+    if (!appliedHandoff && params.get('brief')) setDescription(params.get('brief')!);
+    else if (!appliedHandoff && blueprint) {
+      setDescription(`${blueprint.description} ${blueprint.defaultObjective}. For ${blueprint.defaultAudience}.`);
+      setSelectedArchetypeOverride(blueprint.archetypeId);
+    }
     loadCatalog();
   }, []);
 
@@ -102,6 +150,7 @@ export function ComposeView() {
   const handleSelectGoldenBrief = (id: string) => {
     const brief = getGoldenBrief(id);
     if (!brief) return;
+    setBriefError('');
     setDescription(brief.input.description);
     setFeel(brief.input.feel ?? '');
     setVisualAmbition(brief.input.visualAmbition ?? 40);
@@ -134,53 +183,72 @@ export function ComposeView() {
     performanceCeiling,
     targetDevices,
   };
+  const currentBriefKey = JSON.stringify({
+    ...briefInput,
+    description: description.trim(),
+    targetDevices: [...targetDevices].sort(),
+  });
+  const directionsAreCurrent = hasComposed && currentBriefKey === lastComposedBriefKey;
 
-  // Run deterministic composition pipeline
-  const compositionResult = useMemo(() => {
-    return composeProjectPipeline(briefInput, { catalogResources });
-  }, [
-    description,
-    selectedArchetypeOverride,
-    feel,
-    visualAmbition,
-    structuralCreativity,
-    accessibilityFloor,
-    performanceCeiling,
-    targetDevices,
-    catalogResources,
-  ]);
+  // Commit generation only on submit. Editing a brief must never alter a chosen snapshot.
+  const [compositionResult,setCompositionResult] = useState(()=>composeProjectPipeline(briefInput,{catalogResources:[],seed:'initial-unsubmitted'}));
 
   const { productModel, screenGraph: _screenGraph, inferredAssumptions, directionA, directionB, directionC } = compositionResult;
   const screenPlan = planScreenGraph(productModel);
 
-  const handleOpenDirection = (manifest: ProjectManifest) => {
-    if (typeof window !== 'undefined') {
-      try {
-        localStorage.setItem('tessellate_active_project', JSON.stringify(manifest));
-        localStorage.setItem(`tessellate_project_${manifest.id}`, JSON.stringify(manifest));
-      } catch (err) {
-        console.error('Failed to store manifest locally:', err);
+  const handleOpenDirection = async (manifest: ProjectManifest) => {
+    try {
+      const outputs = [compositionResult.directionA,compositionResult.directionB,compositionResult.directionC];
+      const siblings=outputs.map(output=>output.manifest);
+      for(const sibling of siblings) {
+        localStorage.setItem(`tessellate_project_${sibling.id}`,JSON.stringify(sibling));
+        await saveLocalProject(sibling);
       }
-      saveLocalProject(manifest).finally(() => {
-        window.location.href = `/workbench?project=${encodeURIComponent(manifest.id)}`;
-      });
-    }
+      localStorage.setItem(`tessellate_directions_${manifest.id}`,JSON.stringify(siblings));
+      localStorage.setItem('tessellate_active_project',JSON.stringify(manifest));
+      window.location.href=`/workbench?project=${encodeURIComponent(manifest.id)}`;
+    } catch(cause) { setCompositionError(`Could not save your direction: ${String(cause)}. Your preview remains available.`); }
   };
 
-  const handleCompose = (e: React.FormEvent) => {
+  const handleCompose = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isComposing || isRenderingDirections) return;
+    if (!description.trim()) {
+      setBriefError('Enter a product description before composing.');
+      descriptionRef.current?.focus();
+      return;
+    }
+    setBriefError('');
     if (catalogStatus !== 'ready' || catalogResources.length === 0) {
       return;
     }
-    setHasComposed(true);
+    setIsComposing(true);
+    await new Promise<void>((resolve) => {
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+    });
+    try {
+      const normalizedBriefInput = { ...briefInput, description: description.trim() };
+      const generated = composeProjectPipeline(normalizedBriefInput,{catalogResources,seed:crypto.randomUUID()});
+      startDirectionRender(() => {
+        setCompositionResult(generated);
+        setCompositionError('');
+        setHasComposed(true);
+        setLastComposedBriefKey(currentBriefKey);
+        setIsComposing(false);
+      });
+    } catch(cause) {
+      setCompositionError(`Composition failed: ${String(cause)}`);
+      setIsComposing(false);
+    }
+
   };
 
   return (
     <div className="mx-auto max-w-6xl space-y-12">
       {/* Header */}
       <div className="space-y-3">
-        <div className="inline-flex items-center gap-2 rounded-full bg-[#E7EBFF] px-2.5 py-0.5 text-[11px] font-semibold text-[#2547E8] dark:bg-[#1C2752] dark:text-[#6782FF]">
-          <Cpu className="h-3 w-3" /> Deterministic Product Composer (Phase 6)
+        <div className="inline-flex items-center gap-2 rounded-full bg-[#E7EBFF] px-2.5 py-0.5 text-[11px] font-semibold text-[#2547E8] dark:bg-[#1C2752] dark:text-[#879DFF]">
+          <Cpu className="h-3 w-3" /> Local product composer
         </div>
         <h1 className="text-4xl font-bold tracking-tight text-[#111217] dark:text-[#F5F7FA]">
           Describe the product. Get the interface.
@@ -191,7 +259,7 @@ export function ComposeView() {
 
         {/* Golden Brief Preset Pills */}
         <div className="pt-2">
-          <div className="text-xs font-semibold text-[#8B8F97] dark:text-[#707986]">
+          <div className="text-xs font-semibold text-[var(--text-muted)] dark:text-[var(--text-muted)]">
             Load Golden Specification Briefs:
           </div>
           <div className="mt-2 flex flex-wrap gap-2">
@@ -218,13 +286,28 @@ export function ComposeView() {
           </label>
           <textarea
             id="description"
+            ref={descriptionRef}
             rows={4}
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
+            onChange={(e) => {
+              setDescription(e.target.value);
+              setBriefError('');
+            }}
+            onInvalid={(event) => {
+              event.preventDefault();
+              setBriefError('Enter a product description before composing.');
+            }}
             placeholder="Describe what your product does, who it is for, and key operational capabilities..."
             className="w-full rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] p-4 text-sm text-[#111217] focus:border-[#2547E8] focus:bg-white focus:outline-none dark:border-[#272C34] dark:bg-[#0B0D10] dark:text-[#F5F7FA] dark:focus:border-[#6782FF]"
             required
+            aria-invalid={briefError ? 'true' : undefined}
+            aria-describedby={briefError ? 'brief-error' : undefined}
           />
+          {briefError && (
+            <p id="brief-error" role="alert" className="text-sm text-[#C83D48]">
+              {briefError}
+            </p>
+          )}
         </div>
 
         {/* Controls Grid */}
@@ -266,9 +349,9 @@ export function ComposeView() {
 
           {/* Primary Stack */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
+            <span className="block text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
               Primary Front-End Stack
-            </label>
+            </span>
             <div className="rounded-lg border border-[#D9D6CF] bg-[#FAF9F6] px-3 py-2 text-xs font-mono text-[#62666F] dark:border-[#272C34] dark:bg-[#0B0D10] dark:text-[#A8AFBA]">
               React 19 + Tailwind CSS 4 (V1 Standard)
             </div>
@@ -280,14 +363,14 @@ export function ComposeView() {
           {/* Visual Ambition */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
+              <span className="text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
                 Visual Ambition
-              </label>
-              <span className="text-xs font-semibold text-[#2547E8] uppercase dark:text-[#6782FF]">
+              </span>
+              <span className="text-xs font-semibold text-[#2547E8] uppercase dark:text-[#879DFF]">
                 {currentVisualStop} ({visualAmbition})
               </span>
             </div>
-            <div className="grid grid-cols-5 gap-1">
+            <div role="group" aria-label="Visual Ambition" className="grid grid-cols-5 gap-1">
               {(['essential', 'refined', 'striking', 'stunning', 'experimental'] as const).map((stop) => {
                 const def = VISUAL_AMBITION_STOPS[stop as VisualAmbitionStop];
                 const isSelected = currentVisualStop === stop;
@@ -295,6 +378,7 @@ export function ComposeView() {
                   <button
                     key={stop}
                     type="button"
+                    aria-pressed={isSelected}
                     onClick={() => setVisualAmbition(def.defaultScore)}
                     className={`rounded-md p-2 text-center text-xs transition-all ${
                       isSelected
@@ -312,14 +396,14 @@ export function ComposeView() {
           {/* Structural Creativity */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
+              <span className="text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
                 Structural Creativity
-              </label>
-              <span className="text-xs font-semibold text-[#2547E8] uppercase dark:text-[#6782FF]">
+              </span>
+              <span className="text-xs font-semibold text-[#2547E8] uppercase dark:text-[#879DFF]">
                 {currentStructuralStop} ({structuralCreativity})
               </span>
             </div>
-            <div className="grid grid-cols-5 gap-1">
+            <div role="group" aria-label="Structural Creativity" className="grid grid-cols-5 gap-1">
               {(['familiar', 'modern', 'inventive', 'radical', 'experimental'] as const).map((stop) => {
                 const def = STRUCTURAL_CREATIVITY_STOPS[stop as StructuralCreativityStop];
                 const isSelected = currentStructuralStop === stop;
@@ -327,6 +411,7 @@ export function ComposeView() {
                   <button
                     key={stop}
                     type="button"
+                    aria-pressed={isSelected}
                     onClick={() => setStructuralCreativity(def.defaultScore)}
                     className={`rounded-md p-2 text-center text-xs transition-all ${
                       isSelected
@@ -346,6 +431,8 @@ export function ComposeView() {
         <div className="border-t border-[#D9D6CF] pt-4 dark:border-[#272C34]">
           <button
             type="button"
+            aria-expanded={showAdvanced}
+            aria-controls={showAdvanced ? 'advanced-compose-constraints' : undefined}
             onClick={() => setShowAdvanced(!showAdvanced)}
             className="inline-flex items-center gap-1.5 text-xs font-bold text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA]"
           >
@@ -354,15 +441,17 @@ export function ComposeView() {
           </button>
 
           {showAdvanced && (
-            <div className="mt-4 grid grid-cols-1 gap-4 rounded-xl bg-[#FAF9F6] p-4 dark:bg-[#0B0D10] sm:grid-cols-3">
+            <div id="advanced-compose-constraints" className="mt-4 grid grid-cols-1 gap-4 rounded-xl bg-[#FAF9F6] p-4 dark:bg-[#0B0D10] sm:grid-cols-3">
               {/* Devices */}
               <div>
                 <span className="text-xs font-bold">Target Devices</span>
-                <div className="mt-2 flex gap-1.5">
+                <div role="group" aria-label="Target Devices" className="mt-2 flex flex-wrap gap-1.5">
                   <button
                     type="button"
+                    aria-pressed={targetDevices.includes('desktop')}
+                    disabled={targetDevices.length === 1 && targetDevices.includes('desktop')}
                     onClick={() => handleToggleDevice('desktop')}
-                    className={`inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs ${
+                    className={`inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs disabled:cursor-not-allowed disabled:opacity-60 ${
                       targetDevices.includes('desktop')
                         ? 'bg-[#2547E8] text-white'
                         : 'border border-[#D9D6CF] text-[#62666F] dark:border-[#272C34]'
@@ -372,8 +461,10 @@ export function ComposeView() {
                   </button>
                   <button
                     type="button"
+                    aria-pressed={targetDevices.includes('tablet')}
+                    disabled={targetDevices.length === 1 && targetDevices.includes('tablet')}
                     onClick={() => handleToggleDevice('tablet')}
-                    className={`inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs ${
+                    className={`inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs disabled:cursor-not-allowed disabled:opacity-60 ${
                       targetDevices.includes('tablet')
                         ? 'bg-[#2547E8] text-white'
                         : 'border border-[#D9D6CF] text-[#62666F] dark:border-[#272C34]'
@@ -383,8 +474,10 @@ export function ComposeView() {
                   </button>
                   <button
                     type="button"
+                    aria-pressed={targetDevices.includes('mobile')}
+                    disabled={targetDevices.length === 1 && targetDevices.includes('mobile')}
                     onClick={() => handleToggleDevice('mobile')}
-                    className={`inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs ${
+                    className={`inline-flex items-center gap-1 rounded px-2.5 py-1 text-xs disabled:cursor-not-allowed disabled:opacity-60 ${
                       targetDevices.includes('mobile')
                         ? 'bg-[#2547E8] text-white'
                         : 'border border-[#D9D6CF] text-[#62666F] dark:border-[#272C34]'
@@ -393,6 +486,11 @@ export function ComposeView() {
                     <Smartphone className="h-3 w-3" /> Mobile
                   </button>
                 </div>
+                {targetDevices.length === 1 && (
+                  <p className="mt-1 text-[11px] text-[var(--text-muted)]" role="status">
+                    At least one target device must remain selected.
+                  </p>
+                )}
               </div>
 
               {/* Accessibility Floor */}
@@ -436,7 +534,7 @@ export function ComposeView() {
               </span>
             )}
             {catalogStatus === 'ready' && (
-              <span className="inline-flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400 font-medium">
+              <span className="inline-flex items-center gap-1.5 text-emerald-700 dark:text-emerald-400 font-medium">
                 <span className="h-2 w-2 rounded-full bg-emerald-500" />
                 Catalogue ready
               </span>
@@ -459,17 +557,34 @@ export function ComposeView() {
           <button
             type="submit"
             data-testid="compose-submit-btn"
-            disabled={catalogStatus !== 'ready'}
-            className="inline-flex items-center gap-2 rounded-xl bg-[#2547E8] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#1E3CCD] disabled:opacity-50 disabled:cursor-not-allowed dark:bg-[#6782FF] dark:text-[#0B0D10] dark:hover:bg-[#879DFF]"
+            disabled={catalogStatus !== 'ready' || isComposing || isRenderingDirections}
+            className="inline-flex items-center gap-2 rounded-xl bg-[#2547E8] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#1E3CCD] disabled:bg-[#62666F] disabled:text-white disabled:cursor-not-allowed dark:disabled:bg-[#A8AFBA] dark:disabled:text-[#0B0D10] dark:bg-[#6782FF] dark:text-[#0B0D10] dark:hover:bg-[#879DFF]"
           >
             <Sparkles className="h-4 w-4" />
-            Compose Interface System
+            {isComposing || isRenderingDirections ? 'Composing three directions…' : 'Compose Interface System'}
           </button>
         </div>
       </form>
 
+      {(isComposing || isRenderingDirections) && (
+        <p
+          data-testid="compose-progress"
+          role="status"
+          aria-live="polite"
+          className="border-l-2 border-[#2547E8] bg-[#E7EBFF] p-3 text-sm text-[#111217] dark:border-[#6782FF] dark:bg-[#1C2752] dark:text-[#F5F7FA]"
+        >
+          Building the product model and three interface directions…
+        </p>
+      )}
+
+      {compositionError && <p role="alert" className="text-[#C83D48]">{compositionError}</p>}
+      {hasComposed && !directionsAreCurrent && (
+        <p role="status" className="border-l-2 border-[#2547E8] bg-[#E7EBFF] p-3 text-sm text-[#111217] dark:border-[#6782FF] dark:bg-[#1C2752] dark:text-[#F5F7FA]">
+          Your brief or design settings changed. Compose again to update the directions.
+        </p>
+      )}
       {/* Output Sections (Visible after composing with ready catalogue) */}
-      {hasComposed && catalogStatus === 'ready' && (
+      {directionsAreCurrent && catalogStatus === 'ready' && (
         <div className="space-y-12">
           {/* Inferred ProductModel & Assumptions */}
           <section className="space-y-6">
@@ -482,14 +597,14 @@ export function ComposeView() {
                   Deterministic inferences derived from brief vocabulary and archetype priors.
                 </p>
               </div>
-              <span className="rounded-full bg-[#177B55]/10 px-3 py-1 text-xs font-bold text-[#177B55]">
-                Schema Valid (ProductModel 1.0.0)
+              <span className="rounded-full bg-[#177B55]/10 px-3 py-1 text-xs font-bold text-[#12603F]">
+                Validated product model
               </span>
             </div>
 
             {/* Inferred Assumptions Box */}
             <div className="rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] p-5 dark:border-[#272C34] dark:bg-[#111419]">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2547E8] dark:text-[#6782FF]">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2547E8] dark:text-[#879DFF]">
                 <Shield className="h-4 w-4" /> Deterministic Assumptions
               </div>
               <ul className="mt-3 list-inside list-disc space-y-1 text-xs text-[#62666F] dark:text-[#A8AFBA]">
@@ -502,29 +617,29 @@ export function ComposeView() {
             {/* Metrics Scorecard */}
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-6">
               <div className="rounded-xl border border-[#D9D6CF] bg-white p-4 dark:border-[#272C34] dark:bg-[#171B21]">
-                <div className="text-[10px] text-[#8B8F97]">Primary Archetype</div>
-                <div className="mt-1 font-bold text-sm text-[#2547E8] uppercase dark:text-[#6782FF]">
-                  {productModel.productArchetypes[0]?.tag}
+                <div className="text-[10px] text-[var(--text-muted)]">Primary Archetype</div>
+                <div className="mt-1 font-bold text-sm text-[#2547E8] uppercase dark:text-[#879DFF]">
+                  {productModel.entities.some(entity=>entity.name==='Employee') ? 'Employee experience' : productModel.productArchetypes[0]?.tag}
                 </div>
               </div>
               <div className="rounded-xl border border-[#D9D6CF] bg-white p-4 dark:border-[#272C34] dark:bg-[#171B21]">
-                <div className="text-[10px] text-[#8B8F97]">User Sophistication</div>
+                <div className="text-[10px] text-[var(--text-muted)]">User Sophistication</div>
                 <div className="mt-1 font-mono font-bold text-base">{productModel.userSophistication}/100</div>
               </div>
               <div className="rounded-xl border border-[#D9D6CF] bg-white p-4 dark:border-[#272C34] dark:bg-[#171B21]">
-                <div className="text-[10px] text-[#8B8F97]">Trust Requirement</div>
+                <div className="text-[10px] text-[var(--text-muted)]">Trust Requirement</div>
                 <div className="mt-1 font-mono font-bold text-base">{productModel.trustRequirement}/100</div>
               </div>
               <div className="rounded-xl border border-[#D9D6CF] bg-white p-4 dark:border-[#272C34] dark:bg-[#171B21]">
-                <div className="text-[10px] text-[#8B8F97]">Data Density</div>
+                <div className="text-[10px] text-[var(--text-muted)]">Data Density</div>
                 <div className="mt-1 font-mono font-bold text-base">{productModel.dataDensity}/100</div>
               </div>
               <div className="rounded-xl border border-[#D9D6CF] bg-white p-4 dark:border-[#272C34] dark:bg-[#171B21]">
-                <div className="text-[10px] text-[#8B8F97]">Information Complexity</div>
+                <div className="text-[10px] text-[var(--text-muted)]">Information Complexity</div>
                 <div className="mt-1 font-mono font-bold text-base">{productModel.informationComplexity}/100</div>
               </div>
               <div className="rounded-xl border border-[#D9D6CF] bg-white p-4 dark:border-[#272C34] dark:bg-[#171B21]">
-                <div className="text-[10px] text-[#8B8F97]">Mobile Priority</div>
+                <div className="text-[10px] text-[var(--text-muted)]">Mobile Priority</div>
                 <div className="mt-1 font-mono font-bold text-base">{productModel.mobileImportance}/100</div>
               </div>
             </div>
@@ -542,7 +657,7 @@ export function ComposeView() {
                 </p>
               </div>
               <div className="flex gap-2 text-xs">
-                <span className="rounded bg-[#E7EBFF] px-2.5 py-1 font-semibold text-[#2547E8] dark:bg-[#1C2752] dark:text-[#6782FF]">
+                <span className="rounded bg-[#E7EBFF] px-2.5 py-1 font-semibold text-[#2547E8] dark:bg-[#1C2752] dark:text-[#879DFF]">
                   {screenPlan.requiredScreensCount} Required
                 </span>
                 <span className="rounded bg-[#FAF9F6] px-2.5 py-1 font-semibold text-[#62666F] dark:bg-[#171B21] dark:text-[#A8AFBA]">
@@ -557,7 +672,7 @@ export function ComposeView() {
                   key={group.id}
                   className="rounded-2xl border border-[#D9D6CF] bg-white p-6 shadow-sm dark:border-[#272C34] dark:bg-[#171B21]"
                 >
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-[#8B8F97] dark:text-[#707986]">
+                  <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] dark:text-[var(--text-muted)]">
                     {group.name} Group
                   </h3>
 
@@ -572,16 +687,16 @@ export function ComposeView() {
                             <span className="font-bold text-sm text-[#111217] dark:text-[#F5F7FA]">
                               {screen.name}
                             </span>
-                            <div className="font-mono text-xs text-[#2547E8] dark:text-[#6782FF]">
+                            <div className="font-mono text-xs text-[#2547E8] dark:text-[#879DFF]">
                               {screen.slug}
                             </div>
                           </div>
                           {screen.required ? (
-                            <span className="rounded bg-[#177B55]/10 px-1.5 py-0.5 text-[10px] font-bold text-[#177B55]">
+                            <span className="rounded bg-[#177B55]/10 px-1.5 py-0.5 text-[10px] font-bold text-[#12603F]">
                               Required
                             </span>
                           ) : (
-                            <span className="rounded bg-black/5 px-1.5 py-0.5 text-[10px] font-bold text-[#8B8F97] dark:bg-white/10">
+                            <span className="rounded bg-black/5 px-1.5 py-0.5 text-[10px] font-bold text-[var(--text-muted)] dark:bg-white/10">
                               Optional
                             </span>
                           )}
@@ -591,7 +706,7 @@ export function ComposeView() {
                           {screen.purpose}
                         </p>
 
-                        <div className="mt-3 border-t border-[#D9D6CF]/40 pt-2 text-[10px] text-[#8B8F97]">
+                        <div className="mt-3 border-t border-[#D9D6CF]/40 pt-2 text-[10px] text-[var(--text-muted)]">
                           <span className="font-semibold">Required Roles:</span>{' '}
                           {screen.requiredRoles.slice(0, 3).join(', ')}...
                         </div>
@@ -651,11 +766,15 @@ function DirectionCard({
   onOpen: (manifest: ProjectManifest) => void;
 }) {
   const { direction, manifest } = output;
-  const primaryScreen = manifest.screens[0];
+  const primaryScreen = manifest.screens.find(screen=>screen.slug==='/overview') ?? manifest.screens[0];
+  const [previewOpen,setPreviewOpen] = useState(false);
+  const [previewScreen,setPreviewScreen] = useState(primaryScreen?.id ?? '');
+  const closePreview=useCallback(()=>setPreviewOpen(false),[]);
+
 
   return (
     <div
-      data-testid={`direction-card-${number}`}
+      data-testid={`direction-card-${number}`} data-project-id={manifest.id}
       className={`flex flex-col justify-between rounded-2xl p-6 shadow-sm transition-all ${
         isFeatured
           ? 'border-2 border-[#2547E8] bg-white dark:border-[#6782FF] dark:bg-[#171B21]'
@@ -665,13 +784,13 @@ function DirectionCard({
       <div className="space-y-4">
         {/* Top Badges */}
         <div className="flex items-center justify-between">
-          <span className="font-mono text-[10px] uppercase font-bold text-[#2547E8] dark:text-[#6782FF]">
+          <span className="font-mono text-[10px] uppercase font-bold text-[#2547E8] dark:text-[#879DFF]">
             Direction {number}
           </span>
           <span
             className={`rounded px-2 py-0.5 text-[10px] font-bold ${
               isFeatured
-                ? 'bg-[#E7EBFF] text-[#2547E8] dark:bg-[#1C2752] dark:text-[#6782FF]'
+                ? 'bg-[#E7EBFF] text-[#2547E8] dark:bg-[#1C2752] dark:text-[#879DFF]'
                 : 'bg-[#FAF9F6] text-[#62666F] dark:bg-[#0B0D10] dark:text-[#A8AFBA]'
             }`}
           >
@@ -696,26 +815,26 @@ function DirectionCard({
         {/* Telemetry metadata */}
         <div className="grid grid-cols-2 gap-2 rounded-xl bg-[#FAF9F6] p-2.5 text-[11px] dark:bg-[#0B0D10]">
           <div>
-            <span className="text-[#8B8F97]">Navigation:</span>{' '}
+            <span className="text-[var(--text-muted)]">Navigation:</span>{' '}
             <span className="font-semibold text-[#111217] dark:text-[#F5F7FA] uppercase">
               {direction.navigationModel}
             </span>
           </div>
           <div>
-            <span className="text-[#8B8F97]">Layout:</span>{' '}
+            <span className="text-[var(--text-muted)]">Layout:</span>{' '}
             <span className="font-semibold text-[#111217] dark:text-[#F5F7FA]">
               {direction.layoutFamily}
             </span>
           </div>
           <div>
-            <span className="text-[#8B8F97]">Visual Ambition:</span>{' '}
-            <span className="font-semibold text-[#2547E8] dark:text-[#6782FF]">
+            <span className="text-[var(--text-muted)]">Visual Ambition:</span>{' '}
+            <span className="font-semibold text-[#2547E8] dark:text-[#879DFF]">
               {direction.dna.visualAmbition}
             </span>
           </div>
           <div>
-            <span className="text-[#8B8F97]">Creativity:</span>{' '}
-            <span className="font-semibold text-[#2547E8] dark:text-[#6782FF]">
+            <span className="text-[var(--text-muted)]">Creativity:</span>{' '}
+            <span className="font-semibold text-[#2547E8] dark:text-[#879DFF]">
               {direction.dna.structuralCreativity}
             </span>
           </div>
@@ -723,23 +842,17 @@ function DirectionCard({
 
         {/* Real Scaled Project Preview */}
         <div className="rounded-xl border border-[#D9D6CF]/70 bg-[#FAF9F6] p-3 dark:border-[#272C34] dark:bg-[#0B0D10]">
-          <div className="flex items-center justify-between text-[10px] font-bold uppercase text-[#8B8F97]">
+          <div className="flex items-center justify-between text-[10px] font-bold uppercase text-[var(--text-muted)]">
             <span>Screen Preview: {primaryScreen?.name ?? 'Overview'}</span>
             <span>{manifest.screens.length} Screens</span>
           </div>
 
           <div
             data-testid={`direction-preview-${number}`}
-            className="mt-2 relative h-48 w-full overflow-hidden rounded-lg border border-[#D9D6CF] bg-white shadow-inner dark:border-[#272C34] dark:bg-[#0B0D10]"
+            aria-label={`Direction ${number} preview`} role="region" tabIndex={0} className="mt-2 relative h-72 w-full overflow-auto rounded-lg border border-[#D9D6CF] bg-white shadow-inner dark:border-[#272C34] dark:bg-[#0B0D10]"
           >
             <div
-              className="origin-top-left pointer-events-none select-none"
-              style={{
-                width: '1000px',
-                minHeight: '700px',
-                transform: 'scale(0.28)',
-                transformOrigin: '0 0',
-              }}
+              className="w-full"
             >
               <ManifestRenderer
                 manifest={manifest}
@@ -759,17 +872,17 @@ function DirectionCard({
           className={`inline-flex w-full items-center justify-center gap-1.5 rounded-lg py-2.5 text-xs font-semibold shadow-sm transition-all ${
             isFeatured
               ? 'bg-[#2547E8] text-white hover:bg-[#1E3CCD] dark:bg-[#6782FF] dark:text-[#0B0D10]'
-              : 'border border-[#2547E8] bg-white text-[#2547E8] hover:bg-[#FAF9F6] dark:border-[#6782FF] dark:bg-[#171B21] dark:text-[#6782FF]'
+              : 'border border-[#2547E8] bg-white text-[#2547E8] hover:bg-[#FAF9F6] dark:border-[#6782FF] dark:bg-[#171B21] dark:text-[#879DFF]'
           }`}
         >
           Open in Workbench <ArrowRight className="h-3.5 w-3.5" />
         </button>
-        <a
-          href={`/dev/dna?direction=${direction.id}`}
-          className="inline-flex w-full items-center justify-center gap-1 text-[11px] text-[#62666F] hover:text-[#111217] dark:text-[#A8AFBA] dark:hover:text-[#F5F7FA]"
-        >
-          Inspect in DNA Lab
-        </a>
+        <button type="button" onClick={()=>setPreviewOpen(true)} className="underline py-2 text-sm">Inspect full preview and DNA</button>
+        <Dialog open={previewOpen} onClose={closePreview} title={`Direction ${number}: ${direction.name}`} className="max-w-[1400px] max-h-[92vh] overflow-auto">
+          <label className="block mb-4">Screen <select aria-label="Direction preview screen" className="border p-2" value={previewScreen} onChange={event=>setPreviewScreen(event.target.value)}>{manifest.screens.map(screen=><option key={screen.id} value={screen.id}>{screen.name}</option>)}</select></label>
+          <div onClickCapture={event=>{const anchor=(event.target as HTMLElement).closest('a[href^="#"]');const id=anchor?.getAttribute('href')?.slice(1);if(id && manifest.screens.some(screen=>screen.id===id)){event.preventDefault();setPreviewScreen(id);}}}><ManifestRenderer manifest={manifest} activeScreenId={previewScreen}/></div>
+          <details className="mt-4"><summary>Design DNA and resource references</summary><pre tabIndex={0} className="text-xs overflow-auto">{JSON.stringify({id:manifest.id,dna:manifest.designDNA,navigation:manifest.navigation,grammar:direction.primaryGrammarId,screens:manifest.screens,diagnostics:output.diagnostics},null,2)}</pre></details>
+        </Dialog>
       </div>
     </div>
   );

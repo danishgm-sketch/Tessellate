@@ -1,3 +1,3 @@
 # Social Proof Hero
 
-Conversion-focused hero emphasizing community validation, ratings, and active user metrics.
+Illustrative social-proof hero layout. Its default count and rating are examples. Replace them with sourced, approved evidence before publishing.

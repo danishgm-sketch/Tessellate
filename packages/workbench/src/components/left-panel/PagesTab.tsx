@@ -1,12 +1,48 @@
 import React, { useState } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
-import type { ProjectScreen } from '@tessellate/schemas';
+import { cloneNodeWithNewIds } from '../../utils/tree-helpers.js';
+import { createId, type ProjectScreen } from '@tessellate/schemas';
 import {
   FileText,
   Plus,
   Trash2,
   Copy,
 } from 'lucide-react';
+
+function routeSegment(value: string) {
+  return value
+    .trim()
+    .toLowerCase()
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'screen';
+}
+
+function normalizeScreenSlug(value: string, fallbackName: string) {
+  const source = value.trim() || fallbackName;
+  const segments = source.split('/').filter(Boolean).map(routeSegment);
+  return segments.length > 0 ? `/${segments.join('/')}` : `/${routeSegment(fallbackName)}`;
+}
+
+function duplicateScreenIdentity(screen: ProjectScreen, screens: ProjectScreen[]) {
+  const usedNames = new Set(screens.map((item) => item.name.toLowerCase()));
+  const usedSlugs = new Set(screens.map((item) => item.slug.replace(/\/+$/, '').toLowerCase()));
+  const routeBase = normalizeScreenSlug(screen.slug, screen.name);
+  let copyNumber = 1;
+  let name = '';
+  let slug = '';
+
+  do {
+    const suffix = copyNumber === 1 ? '' : ` ${copyNumber}`;
+    const routeSuffix = copyNumber === 1 ? '' : `-${copyNumber}`;
+    name = `${screen.name} (Copy${suffix})`;
+    slug = `${routeBase}-copy${routeSuffix}`;
+    copyNumber += 1;
+  } while (usedNames.has(name.toLowerCase()) || usedSlugs.has(slug.toLowerCase()));
+
+  return { id: createId('screen'), name, slug };
+}
 
 export function PagesTab() {
   const manifest = useWorkbenchStore((state) => state.manifest);
@@ -18,16 +54,20 @@ export function PagesTab() {
   const [isAdding, setIsAdding] = useState(false);
   const [newScreenName, setNewScreenName] = useState('');
   const [newScreenSlug, setNewScreenSlug] = useState('');
+  const [screenFormError, setScreenFormError] = useState<string | null>(null);
 
   const handleCreateScreen = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newScreenName.trim()) return;
 
-    const slug = newScreenSlug.trim().startsWith('/')
-      ? newScreenSlug.trim()
-      : `/${newScreenSlug.trim().toLowerCase().replace(/\s+/g, '-') || newScreenName.toLowerCase().replace(/\s+/g, '-')}`;
+    const slug = normalizeScreenSlug(newScreenSlug, newScreenName);
+    const routeKey = slug.toLowerCase();
+    if (manifest.screens.some((screen) => normalizeScreenSlug(screen.slug, screen.name).toLowerCase() === routeKey)) {
+      setScreenFormError(`The route ${slug} is already used by another screen. Choose a different route.`);
+      return;
+    }
 
-    const newId = `screen-${Date.now()}`;
+    const newId = createId('screen');
     const newScreen: ProjectScreen = {
       id: newId,
       screenNodeId: newId,
@@ -60,18 +100,19 @@ export function PagesTab() {
     addScreen(newScreen);
     setNewScreenName('');
     setNewScreenSlug('');
+    setScreenFormError(null);
     setIsAdding(false);
   };
 
   const handleDuplicate = (screen: ProjectScreen) => {
-    const dupId = `screen-${Date.now()}`;
+    const identity = duplicateScreenIdentity(screen, manifest.screens);
     const duplicated: ProjectScreen = {
       ...screen,
-      id: dupId,
-      screenNodeId: dupId,
-      name: `${screen.name} (Copy)`,
-      slug: `${screen.slug}-copy`,
-      rootNode: JSON.parse(JSON.stringify(screen.rootNode)),
+      id: identity.id,
+      screenNodeId: identity.id,
+      name: identity.name,
+      slug: identity.slug,
+      rootNode: cloneNodeWithNewIds(screen.rootNode, identity.id),
     };
     addScreen(duplicated);
   };
@@ -79,7 +120,7 @@ export function PagesTab() {
   return (
     <div data-testid="pages-tab" className="p-4 space-y-4 text-xs">
       <div className="flex items-center justify-between">
-        <span className="text-[10px] uppercase font-mono tracking-wider text-[#8B8F97]">
+        <span className="text-[10px] uppercase font-mono tracking-wider text-[var(--text-muted)]">
           Screens & Navigation ({manifest.screens.length})
         </span>
         <button
@@ -102,19 +143,20 @@ export function PagesTab() {
           </div>
           <input
             type="text"
-            placeholder="Page Title (e.g. Transactions)"
+            aria-label="Page title" placeholder="Page title"
             value={newScreenName}
-            onChange={(e) => setNewScreenName(e.target.value)}
+            onChange={(e) => { setNewScreenName(e.target.value); setScreenFormError(null); }}
             className="w-full rounded border border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#0B0D10] px-2 py-1 text-xs"
             autoFocus
           />
           <input
             type="text"
-            placeholder="Route Slug (e.g. /transactions)"
+            aria-label="Route slug" placeholder="Route slug"
             value={newScreenSlug}
-            onChange={(e) => setNewScreenSlug(e.target.value)}
+            onChange={(e) => { setNewScreenSlug(e.target.value); setScreenFormError(null); }}
             className="w-full rounded border border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#0B0D10] px-2 py-1 text-xs font-mono"
           />
+          {screenFormError && <p role="alert" className="text-[11px] text-rose-700 dark:text-rose-300">{screenFormError}</p>}
           <div className="flex items-center justify-end gap-2 pt-1">
             <button
               type="button"
@@ -144,17 +186,16 @@ export function PagesTab() {
           return (
             <div
               key={screen.id}
-              onClick={() => setActiveScreen(screen.id)}
               className={`group flex items-center justify-between rounded-xl border p-2.5 cursor-pointer transition-all ${
                 isActive
                   ? 'border-[#2547E8] bg-white dark:border-[#6782FF] dark:bg-[#171B21] shadow-xs'
                   : 'border-[#D9D6CF] bg-[#FAF9F6] hover:bg-white dark:border-[#272C34] dark:bg-[#0B0D10] dark:hover:bg-[#171B21]'
               }`}
             >
-              <div className="flex items-center gap-2.5 overflow-hidden">
+              <button type="button" aria-label={`Select screen ${screen.name}`} aria-pressed={isActive} onClick={()=>setActiveScreen(screen.id)} className="min-w-0 flex-1 flex items-center gap-2.5 overflow-hidden text-left rounded focus-visible:outline-2 focus-visible:outline-[#879DFF]">
                 <FileText
                   className={`h-4 w-4 shrink-0 ${
-                    isActive ? 'text-[#2547E8] dark:text-[#6782FF]' : 'text-[#8B8F97]'
+                    isActive ? 'text-[#2547E8] dark:text-[#879DFF]' : 'text-[var(--text-muted)]'
                   }`}
                 />
                 <div className="overflow-hidden">
@@ -168,21 +209,21 @@ export function PagesTab() {
                       </span>
                     )}
                   </div>
-                  <div className="text-[10px] font-mono text-[#8B8F97] truncate">
+                  <div className="text-[10px] font-mono text-[var(--text-muted)] truncate">
                     {screen.slug}
                   </div>
                 </div>
-              </div>
+              </button>
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="flex items-center gap-1 opacity-100 transition-opacity">
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     handleDuplicate(screen);
                   }}
-                  title="Duplicate screen"
-                  className="p-1 text-[#8B8F97] hover:text-[#111217] dark:hover:text-[#F5F7FA]"
+                  aria-label={`Duplicate ${screen.name}`} title="Duplicate screen"
+                  className="min-h-6 min-w-6 p-1.5 text-[var(--text-muted)] hover:text-[#111217] dark:hover:text-[#F5F7FA]"
                 >
                   <Copy className="h-3 w-3" />
                 </button>
@@ -192,8 +233,8 @@ export function PagesTab() {
                       e.stopPropagation();
                       deleteScreen(screen.id);
                     }}
-                    title="Delete screen"
-                    className="p-1 text-[#8B8F97] hover:text-rose-500"
+                    aria-label={`Delete ${screen.name}`} title="Delete screen"
+                    className="min-h-6 min-w-6 p-1.5 text-[var(--text-muted)] hover:text-rose-500"
                   >
                     <Trash2 className="h-3 w-3" />
                   </button>

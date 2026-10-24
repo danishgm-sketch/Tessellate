@@ -1,0 +1,1615 @@
+{
+  "generatedAt": "2026-10-19T07:19:05.617Z",
+  "corpus": {
+    "paths": [
+      "apps/site/src/**/*.{tsx,jsx,ts,js,css}",
+      "apps/preview/src/**/*.{tsx,jsx,ts,js,css}",
+      "packages/workbench/src/**/*.{tsx,jsx,ts,js,css}",
+      "resources/**/*.{tsx,jsx,ts,js,css}"
+    ],
+    "purpose": "Read-only baseline over production React/TypeScript application and canonical resource source."
+  },
+  "totals": {
+    "files": 1095,
+    "issues": 3677,
+    "errors": 0,
+    "warnings": 3677,
+    "information": 0
+  },
+  "byRule": {
+    "enforce-reduced-motion": {
+      "count": 18,
+      "files": 16,
+      "examples": [
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-spin\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ComposeView.tsx",
+          "line": 469,
+          "column": 45,
+          "snippet": "animate-spin"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\packages\\workbench\\src\\components\\CommandBar.tsx",
+          "line": 166,
+          "column": 233,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\typography\\monospace-data-headline\\index.tsx",
+          "line": 53,
+          "column": 37,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\table-skeleton\\index.tsx",
+          "line": 30,
+          "column": 69,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\progressive-loader\\index.tsx",
+          "line": 56,
+          "column": 66,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\page-skeleton\\index.tsx",
+          "line": 29,
+          "column": 76,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-spin\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\inline-spinner\\index.tsx",
+          "line": 38,
+          "column": 21,
+          "snippet": "animate-spin"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\processing-queued-state\\index.tsx",
+          "line": 36,
+          "column": 101,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\dashboard-skeleton\\index.tsx",
+          "line": 29,
+          "column": 102,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\states\\card-grid-skeleton\\index.tsx",
+          "line": 30,
+          "column": 76,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\primitives\\skeleton\\index.tsx",
+          "line": 16,
+          "column": 22,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\sections\\cinematic-media-hero\\index.tsx",
+          "line": 45,
+          "column": 68,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\data\\interactive-globe\\index.tsx",
+          "line": 57,
+          "column": 70,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-ping\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\data\\interactive-globe\\index.tsx",
+          "line": 104,
+          "column": 112,
+          "snippet": "animate-ping"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\data\\geographic-map\\index.tsx",
+          "line": 86,
+          "column": 113,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\backgrounds\\beam-grid\\index.tsx",
+          "line": 32,
+          "column": 71,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\backgrounds\\beam-grid\\index.tsx",
+          "line": 35,
+          "column": 71,
+          "snippet": "animate-pulse"
+        },
+        {
+          "ruleId": "enforce-reduced-motion",
+          "severity": "warning",
+          "message": "Animation \"animate-pulse\" lacks \"motion-reduce:animate-none\" modifier to support prefers-reduced-motion.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\resources\\ai\\ai-chat-panel\\index.tsx",
+          "line": 59,
+          "column": 68,
+          "snippet": "animate-pulse"
+        }
+      ]
+    },
+    "no-arbitrary-spacing": {
+      "count": 1,
+      "files": 1,
+      "examples": [
+        {
+          "ruleId": "no-arbitrary-spacing",
+          "severity": "warning",
+          "message": "Irregular arbitrary spacing \"mb-[1px]\" breaks Design DNA 4px baseline grid. Suggest \"mb-[0px]\".",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ResourceTabs.tsx",
+          "line": 66,
+          "column": 123,
+          "snippet": "mb-[1px]",
+          "fix": {
+            "replacement": "mb-[0px]",
+            "startIndex": 2558,
+            "endIndex": 2566
+          }
+        }
+      ]
+    },
+    "no-hardcoded-colors": {
+      "count": 3658,
+      "files": 428,
+      "examples": [
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#62666F]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 30,
+          "column": 36,
+          "snippet": "text-[#62666F]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 818,
+            "endIndex": 832
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 30,
+          "column": 56,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 838,
+            "endIndex": 852
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#2547E8]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 36,
+          "column": 32,
+          "snippet": "bg-[#2547E8]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 1098,
+            "endIndex": 1110
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#6782FF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 36,
+          "column": 95,
+          "snippet": "bg-[#6782FF]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 1161,
+            "endIndex": 1173
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#0B0D10]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 36,
+          "column": 113,
+          "snippet": "text-[#0B0D10]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 1179,
+            "endIndex": 1193
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#D9D6CF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 42,
+          "column": 39,
+          "snippet": "border-[#D9D6CF]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 1337,
+            "endIndex": 1353
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#111217]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 42,
+          "column": 99,
+          "snippet": "text-[#111217]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 1397,
+            "endIndex": 1411
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#FAF9F6]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 42,
+          "column": 120,
+          "snippet": "bg-[#FAF9F6]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 1418,
+            "endIndex": 1430
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#272C34]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 42,
+          "column": 138,
+          "snippet": "border-[#272C34]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 1436,
+            "endIndex": 1452
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#171B21]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 42,
+          "column": 160,
+          "snippet": "bg-[#171B21]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 1458,
+            "endIndex": 1470
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#F5F7FA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 42,
+          "column": 178,
+          "snippet": "text-[#F5F7FA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 1476,
+            "endIndex": 1490
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#D9D6CF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 52,
+          "column": 68,
+          "snippet": "border-[#D9D6CF]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 1810,
+            "endIndex": 1826
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#FFFFFF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 52,
+          "column": 85,
+          "snippet": "bg-[#FFFFFF]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 1827,
+            "endIndex": 1839
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#272C34]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 52,
+          "column": 107,
+          "snippet": "border-[#272C34]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 1849,
+            "endIndex": 1865
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#111419]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 52,
+          "column": 129,
+          "snippet": "bg-[#111419]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 1871,
+            "endIndex": 1883
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#D9D6CF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 75,
+          "column": 78,
+          "snippet": "border-[#D9D6CF]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 2896,
+            "endIndex": 2912
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#FFFFFF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 75,
+          "column": 95,
+          "snippet": "bg-[#FFFFFF]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 2913,
+            "endIndex": 2925
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#272C34]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 75,
+          "column": 117,
+          "snippet": "border-[#272C34]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 2935,
+            "endIndex": 2951
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#111419]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 75,
+          "column": 139,
+          "snippet": "bg-[#111419]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 2957,
+            "endIndex": 2969
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#D9D6CF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 89,
+          "column": 82,
+          "snippet": "border-[#D9D6CF]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 3715,
+            "endIndex": 3731
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#FFFFFF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 89,
+          "column": 99,
+          "snippet": "bg-[#FFFFFF]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 3732,
+            "endIndex": 3744
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#272C34]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 89,
+          "column": 121,
+          "snippet": "border-[#272C34]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 3754,
+            "endIndex": 3770
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#111419]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 89,
+          "column": 143,
+          "snippet": "bg-[#111419]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 3776,
+            "endIndex": 3788
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#62666F]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 91,
+          "column": 57,
+          "snippet": "text-[#62666F]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 3885,
+            "endIndex": 3899
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 91,
+          "column": 77,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 3905,
+            "endIndex": 3919
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#62666F]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 94,
+          "column": 57,
+          "snippet": "text-[#62666F]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 4090,
+            "endIndex": 4104
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 94,
+          "column": 77,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 4110,
+            "endIndex": 4124
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#62666F]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 97,
+          "column": 57,
+          "snippet": "text-[#62666F]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 4297,
+            "endIndex": 4311
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 97,
+          "column": 77,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 4317,
+            "endIndex": 4331
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#62666F]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 109,
+          "column": 57,
+          "snippet": "text-[#62666F]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 4897,
+            "endIndex": 4911
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 109,
+          "column": 77,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 4917,
+            "endIndex": 4931
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#D9D6CF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 118,
+          "column": 78,
+          "snippet": "border-[#D9D6CF]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 5339,
+            "endIndex": 5355
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#FFFFFF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 118,
+          "column": 95,
+          "snippet": "bg-[#FFFFFF]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 5356,
+            "endIndex": 5368
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#272C34]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 118,
+          "column": 117,
+          "snippet": "border-[#272C34]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 5378,
+            "endIndex": 5394
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#111419]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 118,
+          "column": 139,
+          "snippet": "bg-[#111419]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 5400,
+            "endIndex": 5412
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#D9D6CF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 130,
+          "column": 54,
+          "snippet": "border-[#D9D6CF]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 5964,
+            "endIndex": 5980
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#FFFFFF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 130,
+          "column": 71,
+          "snippet": "bg-[#FFFFFF]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 5981,
+            "endIndex": 5993
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#272C34]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 130,
+          "column": 93,
+          "snippet": "border-[#272C34]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 6003,
+            "endIndex": 6019
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#111419]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 130,
+          "column": 115,
+          "snippet": "bg-[#111419]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 6025,
+            "endIndex": 6037
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#62666F]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 132,
+          "column": 56,
+          "snippet": "text-[#62666F]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 6111,
+            "endIndex": 6125
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 132,
+          "column": 76,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 6131,
+            "endIndex": 6145
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#62666F]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 145,
+          "column": 56,
+          "snippet": "text-[#62666F]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 6606,
+            "endIndex": 6620
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 145,
+          "column": 76,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 6626,
+            "endIndex": 6640
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#272C34]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 170,
+          "column": 60,
+          "snippet": "border-[#272C34]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 7480,
+            "endIndex": 7496
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#0B0D10]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 170,
+          "column": 77,
+          "snippet": "bg-[#0B0D10]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 7497,
+            "endIndex": 7509
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#F5F7FA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 170,
+          "column": 90,
+          "snippet": "text-[#F5F7FA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 7510,
+            "endIndex": 7524
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#6782FF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 196,
+          "column": 33,
+          "snippet": "text-[#6782FF]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 8588,
+            "endIndex": 8602
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 197,
+          "column": 38,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 8669,
+            "endIndex": 8683
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 198,
+          "column": 38,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 8752,
+            "endIndex": 8766
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 199,
+          "column": 38,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 8835,
+            "endIndex": 8849
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 209,
+          "column": 45,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 9298,
+            "endIndex": 9312
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 210,
+          "column": 45,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 9388,
+            "endIndex": 9402
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\UiGallery.tsx",
+          "line": 211,
+          "column": 45,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 9475,
+            "endIndex": 9489
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#111217]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 21,
+          "column": 22,
+          "snippet": "bg-[#111217]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 947,
+            "endIndex": 959
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#111217]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 21,
+          "column": 46,
+          "snippet": "border-[#111217]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 971,
+            "endIndex": 987
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#62666F]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 22,
+          "column": 34,
+          "snippet": "text-[#62666F]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 1033,
+            "endIndex": 1047
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#D9D6CF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 22,
+          "column": 49,
+          "snippet": "border-[#D9D6CF]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 1048,
+            "endIndex": 1064
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#111217]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 22,
+          "column": 72,
+          "snippet": "border-[#111217]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 1071,
+            "endIndex": 1087
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#111217]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 22,
+          "column": 95,
+          "snippet": "text-[#111217]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 1094,
+            "endIndex": 1108
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#0B0D10]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 34,
+          "column": 14,
+          "snippet": "bg-[#0B0D10]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 1477,
+            "endIndex": 1489
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#2E3440]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 34,
+          "column": 38,
+          "snippet": "border-[#2E3440]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 1501,
+            "endIndex": 1517
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#111217]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 35,
+          "column": 23,
+          "snippet": "text-[#111217]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 1542,
+            "endIndex": 1556
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#D9D6CF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 35,
+          "column": 38,
+          "snippet": "border-[#D9D6CF]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 1557,
+            "endIndex": 1573
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#E8E6DF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 41,
+          "column": 109,
+          "snippet": "bg-[#E8E6DF]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 2010,
+            "endIndex": 2022
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#111217]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 41,
+          "column": 122,
+          "snippet": "text-[#111217]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 2023,
+            "endIndex": 2037
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#2547E8]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 77,
+          "column": 100,
+          "snippet": "bg-[#2547E8]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 3755,
+            "endIndex": 3767
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#1E3AB8]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ShowcasesGallery.tsx",
+          "line": 77,
+          "column": 130,
+          "snippet": "bg-[#1E3AB8]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 3785,
+            "endIndex": 3797
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#E7EBFF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ResourcePreviewFrame.tsx",
+          "line": 161,
+          "column": 56,
+          "snippet": "bg-[#E7EBFF]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 7127,
+            "endIndex": 7139
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#0B0D10]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ResourcePreviewFrame.tsx",
+          "line": 184,
+          "column": 147,
+          "snippet": "bg-[#0B0D10]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 8276,
+            "endIndex": 8288
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#C83D48]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ExploreView.tsx",
+          "line": 317,
+          "column": 60,
+          "snippet": "border-[#C83D48]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 12363,
+            "endIndex": 12379
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#C83D48]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ExploreView.tsx",
+          "line": 453,
+          "column": 61,
+          "snippet": "border-[#C83D48]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 18562,
+            "endIndex": 18578
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#8F2530]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\ExploreView.tsx",
+          "line": 453,
+          "column": 99,
+          "snippet": "text-[#8F2530]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 18600,
+            "endIndex": 18614
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#D9D6CF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 130,
+          "column": 52,
+          "snippet": "border-[#D9D6CF]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 3750,
+            "endIndex": 3766
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#272C34]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 130,
+          "column": 79,
+          "snippet": "border-[#272C34]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 3777,
+            "endIndex": 3793
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#E7EBFF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 132,
+          "column": 71,
+          "snippet": "bg-[#E7EBFF]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 3927,
+            "endIndex": 3939
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#2547E8]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 132,
+          "column": 124,
+          "snippet": "text-[#2547E8]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 3980,
+            "endIndex": 3994
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#1C2752]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 132,
+          "column": 144,
+          "snippet": "bg-[#1C2752]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 4000,
+            "endIndex": 4012
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#879DFF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 132,
+          "column": 162,
+          "snippet": "text-[#879DFF]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 4018,
+            "endIndex": 4032
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#111217]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 135,
+          "column": 65,
+          "snippet": "text-[#111217]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 4187,
+            "endIndex": 4201
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#F5F7FA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 135,
+          "column": 85,
+          "snippet": "text-[#F5F7FA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 4207,
+            "endIndex": 4221
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#62666F]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 138,
+          "column": 38,
+          "snippet": "text-[#62666F]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 4304,
+            "endIndex": 4318
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 138,
+          "column": 58,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 4324,
+            "endIndex": 4338
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#D9D6CF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 75,
+          "snippet": "border-[#D9D6CF]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 4740,
+            "endIndex": 4756
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#111217]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 133,
+          "snippet": "text-[#111217]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 4798,
+            "endIndex": 4812
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#FAF9F6]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 154,
+          "snippet": "bg-[#FAF9F6]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 4819,
+            "endIndex": 4831
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#272C34]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 172,
+          "snippet": "border-[#272C34]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 4837,
+            "endIndex": 4853
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#171B21]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 194,
+          "snippet": "bg-[#171B21]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 4859,
+            "endIndex": 4871
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#F5F7FA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 212,
+          "snippet": "text-[#F5F7FA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 4877,
+            "endIndex": 4891
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#1C2128]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 147,
+          "column": 238,
+          "snippet": "bg-[#1C2128]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 4903,
+            "endIndex": 4915
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#D9D6CF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 156,
+          "column": 53,
+          "snippet": "border-[#D9D6CF]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 5144,
+            "endIndex": 5160
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"border-[#272C34]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 156,
+          "column": 80,
+          "snippet": "border-[#272C34]",
+          "fix": {
+            "replacement": "border-[var(--tess-hairline,#D9D6CF)]",
+            "startIndex": 5171,
+            "endIndex": 5187
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#2547E8]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 175,
+          "column": 22,
+          "snippet": "bg-[#2547E8]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 6114,
+            "endIndex": 6126
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#6782FF]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 175,
+          "column": 61,
+          "snippet": "bg-[#6782FF]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 6153,
+            "endIndex": 6165
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#0B0D10]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 175,
+          "column": 79,
+          "snippet": "text-[#0B0D10]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 6171,
+            "endIndex": 6185
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#62666F]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 176,
+          "column": 37,
+          "snippet": "text-[#62666F]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 6223,
+            "endIndex": 6237
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#FAF9F6]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 176,
+          "column": 58,
+          "snippet": "bg-[#FAF9F6]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 6244,
+            "endIndex": 6256
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#111217]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 176,
+          "column": 77,
+          "snippet": "text-[#111217]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 6263,
+            "endIndex": 6277
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#A8AFBA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 176,
+          "column": 97,
+          "snippet": "text-[#A8AFBA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 6283,
+            "endIndex": 6297
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"bg-[#171B21]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 176,
+          "column": 123,
+          "snippet": "bg-[#171B21]",
+          "fix": {
+            "replacement": "bg-[var(--tess-surface-secondary,#F2EFE9)]",
+            "startIndex": 6309,
+            "endIndex": 6321
+          }
+        },
+        {
+          "ruleId": "no-hardcoded-colors",
+          "severity": "warning",
+          "message": "Hardcoded color \"text-[#F5F7FA]\" detected. Replace with Design DNA semantic variable.",
+          "file": "C:\\Users\\ismay\\Development\\Tessellate\\apps\\site\\src\\components\\DnaLab.tsx",
+          "line": 176,
+          "column": 147,
+          "snippet": "text-[#F5F7FA]",
+          "fix": {
+            "replacement": "text-[var(--tess-ink,#111217)]",
+            "startIndex": 6333,
+            "endIndex": 6347
+          }
+        }
+      ]
+    }
+  }
+}

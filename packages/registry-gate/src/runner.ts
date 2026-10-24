@@ -13,10 +13,10 @@ import { checkLicenseProvenanceGate } from './checks/license-provenance-check.js
 export function formatReportMarkdown(report: RegistryGateReport): string {
   const badge =
     report.overallStatus === 'approved'
-      ? '🟢 **GATE PASSED — APPROVED FOR REGISTRY**'
+      ? '🟢 **STATIC CHECKS PASSED — READY FOR HUMAN REVIEW**'
       : report.overallStatus === 'rejected'
-      ? '🔴 **GATE FAILED — REJECTED**'
-      : '🟡 **NEEDS REVIEW**';
+        ? '🔴 **GATE FAILED — REJECTED**'
+        : '🟡 **NEEDS REVIEW**';
 
   const rows = report.checks
     .map((c) => {
@@ -26,7 +26,7 @@ export function formatReportMarkdown(report: RegistryGateReport): string {
     .join('\n');
 
   return `
-### Tessellate Component Registry Quality Gate Audit
+### Tessellate Registry ${report.checks.length}-Check Static Contribution Gate
 
 ${badge}
 **Resource:** \`${report.resourceSlug}\` (${report.resourceName})
@@ -40,19 +40,135 @@ ${rows}
 `.trim();
 }
 
+const skippedSourceDirectories = new Set([
+  '.git',
+  'node_modules',
+  '.next',
+  'dist',
+  'build',
+  'coverage',
+]);
+const sourceExtensions = new Set(['.tsx', '.jsx', '.ts', '.js', '.mjs', '.cjs', '.css']);
+const maxScannedFileBytes = 1024 * 1024;
+const maxScannedSourceBytes = 2 * 1024 * 1024;
+const maxScannedFiles = 512;
+
+interface InspectedSourceFile {
+  relativePath: string;
+  code: string;
+  sizeBytes: number;
+}
+
+function isSupportSource(relativePath: string): boolean {
+  const segments = relativePath.toLowerCase().split('/');
+  const supportDirectories = new Set([
+    '__tests__',
+    'test',
+    'tests',
+    'stories',
+    'fixtures',
+    'previews',
+  ]);
+  if (segments.slice(0, -1).some((segment) => supportDirectories.has(segment))) return true;
+  return /(?:^|[.-])(?:test|spec|stories|story|preview|fixture)(?:[.-]|$)/i.test(
+    path.basename(relativePath)
+  );
+}
+
+function inspectSourceTree(resourceDir: string): {
+  files: InspectedSourceFile[];
+  violations: string[];
+  sourceBytes: number;
+} {
+  const files: InspectedSourceFile[] = [];
+  const violations: string[] = [];
+  let scannedBytes = 0;
+  const visit = (directory: string) => {
+    let entries: fs.Dirent[];
+    try {
+      entries = fs.readdirSync(directory, { withFileTypes: true });
+    } catch (error) {
+      violations.push(
+        `Resource source directory could not be inspected: ${path.relative(resourceDir, directory) || '.'} (${error instanceof Error ? error.message : 'read failure'})`
+      );
+      return;
+    }
+    for (const entry of entries) {
+      if (entry.isDirectory() && skippedSourceDirectories.has(entry.name.toLowerCase())) continue;
+      const absolutePath = path.join(directory, entry.name);
+      const relativePath = path.relative(resourceDir, absolutePath).replaceAll('\\', '/');
+      if (entry.isSymbolicLink()) {
+        violations.push(
+          `Resource source tree contains an unaudited symbolic link: ${relativePath}`
+        );
+        continue;
+      }
+      if (entry.isDirectory()) {
+        visit(absolutePath);
+        continue;
+      }
+      if (
+        !entry.isFile() ||
+        !sourceExtensions.has(path.extname(entry.name).toLowerCase()) ||
+        entry.name.toLowerCase().endsWith('.d.ts')
+      )
+        continue;
+      try {
+        const sizeBytes = fs.lstatSync(absolutePath).size;
+        scannedBytes += sizeBytes;
+        if (
+          files.length >= maxScannedFiles ||
+          sizeBytes > maxScannedFileBytes ||
+          scannedBytes > maxScannedSourceBytes
+        ) {
+          violations.push(
+            `Resource source exceeds safe inspection limits at ${relativePath} (file cap ${maxScannedFileBytes} bytes; tree cap ${maxScannedSourceBytes} bytes; file cap ${maxScannedFiles}).`
+          );
+          continue;
+        }
+        const code = fs.readFileSync(absolutePath, 'utf-8');
+        files.push({ relativePath, code, sizeBytes });
+      } catch (error) {
+        violations.push(
+          `Resource source could not be inspected: ${relativePath} (${error instanceof Error ? error.message : 'read failure'})`
+        );
+      }
+    }
+  };
+  try {
+    const root = fs.lstatSync(resourceDir);
+    if (root.isSymbolicLink()) {
+      violations.push('Resource root is a symbolic link and cannot be safely inspected.');
+    } else if (!root.isDirectory()) {
+      violations.push('Resource root is not a directory.');
+    } else {
+      visit(resourceDir);
+    }
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== 'ENOENT') {
+      violations.push(
+        `Resource root could not be inspected (${error instanceof Error ? error.message : 'read failure'}).`
+      );
+    }
+  }
+  return { files, violations, sourceBytes: scannedBytes };
+}
+
 export async function runRegistryGate(resourceDir: string): Promise<RegistryGateReport> {
   const dir = path.resolve(resourceDir);
 
   // 1. Locate manifest file
   const manifestCandidates = ['manifest.json', 'resource.json'];
   let manifestData: unknown = null;
-  let foundManifestPath = '';
 
   for (const f of manifestCandidates) {
     const p = path.join(dir, f);
     if (fs.existsSync(p)) {
-      foundManifestPath = p;
       try {
+        if (fs.lstatSync(p).isSymbolicLink()) {
+          manifestData = null;
+          break;
+        }
         manifestData = JSON.parse(fs.readFileSync(p, 'utf-8'));
       } catch {
         manifestData = { parseError: true };
@@ -62,30 +178,20 @@ export async function runRegistryGate(resourceDir: string): Promise<RegistryGate
   }
 
   // 2. Read source code files (.tsx, .jsx, .ts)
-  let allCode = '';
-  let componentCode = '';
-  let totalBytes = 0;
-  if (fs.existsSync(dir)) {
-    const files = fs.readdirSync(dir);
-    for (const f of files) {
-      if (f.endsWith('.tsx') || f.endsWith('.jsx') || (f.endsWith('.ts') && !f.endsWith('.d.ts'))) {
-        const fullPath = path.join(dir, f);
-        const content = fs.readFileSync(fullPath, 'utf-8');
-        allCode += `\n// File: ${f}\n` + content;
-        totalBytes += fs.statSync(fullPath).size;
-
-        const isSecondaryFixture =
-          f.toLowerCase().includes('preview') ||
-          f.toLowerCase().includes('fixture') ||
-          f.toLowerCase().includes('test') ||
-          f.toLowerCase().includes('story');
-
-        if (!isSecondaryFixture || f.toLowerCase() === 'index.tsx') {
-          componentCode += `\n// File: ${f}\n` + content;
-        }
-      }
-    }
-  }
+  const inspected = inspectSourceTree(dir);
+  const allCode = inspected.files
+    .map(({ relativePath, code }) => `\n// File: ${relativePath}\n${code}`)
+    .join('\n');
+  let componentCode = inspected.files
+    .filter(({ relativePath }) =>
+      ['.tsx', '.jsx', '.ts', '.js', '.mjs', '.cjs'].includes(
+        path.extname(relativePath).toLowerCase()
+      )
+    )
+    .filter(({ relativePath }) => !isSupportSource(relativePath))
+    .map(({ relativePath, code }) => `\n// File: ${relativePath}\n${code}`)
+    .join('\n');
+  const totalBytes = inspected.sourceBytes;
 
   // If no standalone component file was isolated, evaluate against all code
   if (!componentCode.trim()) {
@@ -109,14 +215,26 @@ export async function runRegistryGate(resourceDir: string): Promise<RegistryGate
   // Check 4: Responsive (component code)
   checks.push(checkResponsiveGate(componentCode));
 
-  // Check 5: Reduced Motion (component code)
-  checks.push(checkReducedMotionGate(componentCode));
+  // Check 5: Reduced Motion (component and stylesheet source)
+  checks.push(checkReducedMotionGate(allCode));
 
   // Check 6: Security Isolation (all source code)
-  checks.push(checkSecurityIsolationGate(allCode));
+  checks.push(
+    checkSecurityIsolationGate(
+      allCode,
+      inspected.violations,
+      inspected.files
+        .filter(({ relativePath }) =>
+          ['.tsx', '.jsx', '.ts', '.js', '.mjs', '.cjs'].includes(
+            path.extname(relativePath).toLowerCase()
+          )
+        )
+        .map(({ relativePath, code }) => ({ fileName: relativePath, code }))
+    )
+  );
 
   // Check 7: Bundle Budget (all source code)
-  checks.push(checkBundleBudgetGate(allCode, totalBytes));
+  checks.push(checkBundleBudgetGate(allCode, totalBytes, manifest?.dependencies));
 
   // Check 8: License & Provenance
   checks.push(checkLicenseProvenanceGate(manifest));
@@ -126,9 +244,7 @@ export async function runRegistryGate(resourceDir: string): Promise<RegistryGate
   const failedChecks = checks.filter((c) => c.status === 'fail').length;
   const warningChecks = checks.filter((c) => c.status === 'warn').length;
 
-  const totalScore = Math.round(
-    checks.reduce((acc, c) => acc + c.score, 0) / checks.length
-  );
+  const totalScore = Math.round(checks.reduce((acc, c) => acc + c.score, 0) / checks.length);
 
   const overallStatus =
     failedChecks > 0 ? 'rejected' : totalScore >= 80 ? 'approved' : 'needs-review';
@@ -138,10 +254,10 @@ export async function runRegistryGate(resourceDir: string): Promise<RegistryGate
 
   const summary =
     overallStatus === 'approved'
-      ? `Resource "${resourceName}" passed all 8 security, accessibility, and design hygiene quality gates.`
+      ? `Resource "${resourceName}" passed all ${checks.length} static source checks; human review and runtime certification are still required.`
       : overallStatus === 'rejected'
-      ? `Resource "${resourceName}" failed ${failedChecks} mandatory gate(s). Must resolve critical failures prior to merging.`
-      : `Resource "${resourceName}" passed with warnings. Manual review recommended.`;
+        ? `Resource "${resourceName}" failed ${failedChecks} mandatory gate(s). Must resolve critical failures prior to merging.`
+        : `Resource "${resourceName}" passed with warnings. Manual review recommended.`;
 
   const report: RegistryGateReport = {
     resourceSlug,

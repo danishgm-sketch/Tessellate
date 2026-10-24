@@ -1,0 +1,19 @@
+{
+  "url": "http://localhost:4321/workbench?project=local-b5971e42-82a1-4044-ae9e-9c129f126c6d",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "status": "passed",
+  "issue": "AUD-159",
+  "checks": {
+    "idbManifestRestoredExactly": true,
+    "undoHistoryRestored": true
+  },
+  "screenshot": "quality/evidence/step-22/after/localstorage-read-blocks-indexeddb-recovery-desktop-1440.png"
+}

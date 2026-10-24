@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { findNodeById } from '../utils/tree-helpers.js';
-import { executeQueuedCommand } from '../ai/queue-client.js';
+import { createHistoryOperation } from '../history/history-manager.js';
+import { executeQueuedCommand, checkHostHealth, type HostHealth } from '../ai/queue-client.js';
+import type { ProjectManifest, ProjectMutation } from '@tessellate/schemas';
 import { Terminal, CornerDownLeft, Cpu } from 'lucide-react';
 
 export function CommandBar() {
+  const lastActionMessage = useWorkbenchStore((state) => state.lastActionMessage);
   const manifest = useWorkbenchStore((state) => state.manifest);
   const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
@@ -12,10 +15,23 @@ export function CommandBar() {
   const openCompare = useWorkbenchStore((state) => state.openCompare);
   const openBlend = useWorkbenchStore((state) => state.openBlend);
   const executeMutation = useWorkbenchStore((state) => state.executeMutation);
+  const executeOperation = useWorkbenchStore((state) => state.executeOperation);
 
   const [inputVal, setInputVal] = useState('');
   const [feedback, setFeedback] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [labModelEnabled, setLabModelEnabled] = useState(false);
+  const [pendingLabProposal, setPendingLabProposal] = useState<{
+    summary: string;
+    explanation: string;
+    mutations: ProjectMutation[];
+    projectId: string;
+    screenId: string;
+    baseManifest: ProjectManifest;
+    baseRevision: number;
+    tokenNumber?: number;
+  } | null>(null);
+  const [hostHealth, setHostHealth] = useState<HostHealth | null>(null);
   const [queueStatus, setQueueStatus] = useState<{
     status: string;
     tokenNumber?: number;
@@ -24,11 +40,25 @@ export function CommandBar() {
   } | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  useEffect(() => {
+    let stopped = false;
+    const update = async () => {
+      const health = await checkHostHealth();
+      if (!stopped) setHostHealth(health);
+    };
+    void update();
+    const timer = setInterval(() => {
+      void update();
+    }, 10000);
+    return () => {
+      stopped = true;
+      clearInterval(timer);
+    };
+  }, []);
+
   const activeScreen = manifest.screens.find((s) => s.id === activeScreenId);
   const selectedNode =
-    activeScreen && selectedNodeId
-      ? findNodeById(activeScreen.rootNode, selectedNodeId)
-      : null;
+    activeScreen && selectedNodeId ? findNodeById(activeScreen.rootNode, selectedNodeId) : null;
 
   // Global key listener for '/' shortcut
   useEffect(() => {
@@ -81,14 +111,29 @@ export function CommandBar() {
         cmd,
         (progress) => {
           setQueueStatus(progress);
-        }
+        },
+        { useExperimentalHost: labModelEnabled }
       );
 
       if (result.success) {
-        for (const mut of result.mutations) {
-          executeMutation(mut);
+        if (!result.usedFallback) {
+          setPendingLabProposal({
+            summary: result.command?.summary ?? 'Laptop model proposal',
+            explanation: result.explanation,
+            mutations: result.mutations,
+            projectId: manifest.id,
+            screenId: activeScreenId,
+            baseManifest: manifest,
+            baseRevision: manifest.historyMeta.headRevision,
+            ...(result.tokenNumber ? { tokenNumber: result.tokenNumber } : {}),
+          });
+          setFeedback(null);
+        } else {
+          for (const mut of result.mutations) {
+            executeMutation(mut);
+          }
+          setFeedback(result.explanation);
         }
-        setFeedback(result.explanation);
         setInputVal('');
       } else {
         setFeedback(result.error || 'Command execution failed.');
@@ -107,20 +152,18 @@ export function CommandBar() {
   return (
     <div
       data-testid="command-bar"
-      className="h-16 shrink-0 border-t border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] px-4 flex items-center justify-between select-none z-20"
+      className="min-h-16 py-2 shrink-0 border-t border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] px-4 flex flex-wrap items-center justify-between gap-y-2 select-none z-20"
     >
-      <form onSubmit={handleExecute} className="flex-1 max-w-4xl flex items-center gap-3">
+      <form onSubmit={handleExecute} className="flex-1 min-w-0 max-w-4xl flex items-center gap-3">
         {/* Target Context Pill */}
         <div className="hidden sm:flex items-center gap-1.5 rounded-lg bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] px-2.5 py-1 text-xs font-mono text-[#62666F] dark:text-[#A8AFBA] shrink-0">
           <Terminal className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#6782FF]" />
-          <span>
-            {selectedNode ? selectedNode.semanticRole : 'Project Scope'}
-          </span>
+          <span>{selectedNode ? selectedNode.semanticRole : 'Project Scope'}</span>
         </div>
 
         {/* Live Queue Token Badge */}
         {queueStatus?.tokenNumber && (
-          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-mono shrink-0 animate-pulse">
+          <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-700 dark:text-indigo-300 text-xs font-mono shrink-0 animate-pulse">
             <Cpu className="h-3.5 w-3.5 text-indigo-600 dark:text-indigo-400" />
             <span className="font-semibold">Token #{queueStatus.tokenNumber}</span>
             {typeof queueStatus.position === 'number' && queueStatus.position > 0 && (
@@ -130,10 +173,13 @@ export function CommandBar() {
         )}
 
         {/* Command Input Field */}
-        <div className="relative flex-1">
+        <div className="relative flex-1 min-w-0">
           <input
             ref={inputRef}
+            name="tessellate-command"
             type="text"
+            aria-label="Tessellate command"
+            disabled={isProcessing || pendingLabProposal !== null}
             placeholder={
               selectedNode
                 ? `Tell Tess what to change on ${selectedNode.semanticRole}… (e.g. recompose, replace, lock, reduce motion)`
@@ -141,32 +187,190 @@ export function CommandBar() {
             }
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
-            className="w-full bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] rounded-xl px-3.5 py-2 text-xs text-[#111217] dark:text-[#F5F7FA] placeholder-[#8B8F97] focus:outline-none focus:border-[#2547E8] dark:focus:border-[#6782FF] transition-colors pr-10 font-sans"
+            className="w-full bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] rounded-xl px-3.5 py-2 text-xs text-[#111217] dark:text-[#F5F7FA] placeholder-[#8B8F97] focus:outline-none focus:border-[#2547E8] dark:focus:border-[#6782FF] transition-colors font-sans"
           />
-          <button
-            type="submit"
-            className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8B8F97] hover:text-[#111217] dark:hover:text-[#F5F7FA] transition-colors"
-            title="Execute command (Enter)"
-          >
-            <CornerDownLeft className="h-3.5 w-3.5" />
-          </button>
         </div>
+        <button
+          type="submit"
+          aria-label="Execute command"
+          disabled={isProcessing || pendingLabProposal !== null}
+          className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#D9D6CF] dark:border-[#272C34] text-[#62666F] hover:text-[#111217] dark:hover:text-[#F5F7FA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#2547E8] transition-colors disabled:cursor-not-allowed"
+          title="Execute command (Enter)"
+        >
+          <CornerDownLeft className="h-3.5 w-3.5" />
+        </button>
       </form>
 
+      <button
+        type="button"
+        data-testid="lab-model-toggle"
+        role="switch"
+        aria-label="Laptop model Lab"
+        aria-checked={labModelEnabled}
+        aria-describedby="lab-model-description"
+        disabled={!hostHealth?.hostOnline || isProcessing || pendingLabProposal !== null}
+        onClick={() => setLabModelEnabled((enabled) => !enabled)}
+        title={
+          hostHealth?.hostOnline
+            ? 'Opt in to the experimental laptop model. Its changes require review.'
+            : 'Laptop model Lab is unavailable while the laptop backend and Docker are offline.'
+        }
+        className="ml-2 inline-flex min-h-8 items-center gap-1.5 rounded-lg border border-[#D9D6CF] dark:border-[#272C34] px-2.5 py-1 text-[10px] font-medium text-[#62666F] dark:text-[#A8AFBA] disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        <span>Laptop model</span>
+        <span className="rounded border border-amber-300 bg-amber-50 px-1 py-0.5 font-mono uppercase text-[9px] text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-200">
+          Lab
+        </span>
+        <span className="font-mono">{labModelEnabled ? 'On' : 'Off'}</span>
+      </button>
+
+      <span
+        data-testid="laptop-host-status"
+        role="status"
+        className="text-[10px] ml-2 shrink-0 text-[#62666F] dark:text-[#A8AFBA]"
+        title="Host features require this laptop and Docker. Local deterministic controls remain available."
+      >
+        {hostHealth === null
+          ? 'Checking host…'
+          : !hostHealth.apiOnline
+            ? 'Backend offline'
+            : hostHealth.hostOnline
+              ? 'Host online'
+              : 'Host offline'}
+      </span>
+      <span id="lab-model-description" className="sr-only">
+        The experimental laptop model is off by default. When enabled, its proposed mutations are
+        not applied until you review and confirm them.
+      </span>
+      {labModelEnabled && !pendingLabProposal && (
+        <p
+          className="basis-full text-[10px] text-amber-800 dark:text-amber-200"
+          data-testid="lab-model-warning"
+        >
+          Experimental Lab enabled. Laptop model output is untrusted and will be presented for
+          review before it can change this project.
+        </p>
+      )}
+      {pendingLabProposal && (
+        <section
+          data-testid="lab-proposal-review"
+          role="group"
+          aria-label="Review experimental laptop model proposal"
+          className="basis-full flex flex-wrap items-start justify-between gap-3 rounded-lg border border-amber-300 bg-amber-50 p-3 text-xs text-amber-950 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100"
+        >
+          <div className="min-w-0 flex-1">
+            <p className="font-semibold">Laptop model proposal · Lab · review required</p>
+            <p className="mt-1">{pendingLabProposal.summary}</p>
+            <p className="mt-1 text-[11px]">{pendingLabProposal.explanation}</p>
+            <p className="mt-1 text-[10px]">
+              {pendingLabProposal.mutations.length} proposed change(s). Nothing has been applied
+              yet.
+            </p>
+            <details className="mt-2 max-h-48 overflow-auto rounded border border-amber-300/70 p-2 dark:border-amber-800">
+              <summary className="cursor-pointer font-semibold">
+                Inspect proposed operations
+              </summary>
+              <ol className="mt-2 space-y-2">
+                {pendingLabProposal.mutations.map((mutation) => (
+                  <li
+                    key={mutation.id}
+                    className="border-t border-amber-300/70 pt-2 dark:border-amber-800"
+                  >
+                    <p>
+                      <code>{mutation.type}</code> · target <code>{mutation.targetId}</code>
+                    </p>
+                    <pre className="mt-1 overflow-x-auto whitespace-pre-wrap break-words font-mono text-[10px]">
+                      {JSON.stringify(mutation.payload, null, 2)}
+                    </pre>
+                  </li>
+                ))}
+              </ol>
+            </details>
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              data-testid="apply-lab-proposal"
+              onClick={() => {
+                const current = useWorkbenchStore.getState();
+                if (
+                  current.manifest.id !== pendingLabProposal.projectId ||
+                  current.manifest !== pendingLabProposal.baseManifest ||
+                  current.manifest.historyMeta.headRevision !== pendingLabProposal.baseRevision ||
+                  current.activeScreenId !== pendingLabProposal.screenId
+                ) {
+                  setPendingLabProposal(null);
+                  setFeedback(
+                    'The project or selected screen changed after this proposal was generated. It was discarded; run the command again to review a fresh proposal.'
+                  );
+                  return;
+                }
+
+                try {
+                  executeOperation(
+                    createHistoryOperation(
+                      `Laptop model: ${pendingLabProposal.summary}`,
+                      pendingLabProposal.mutations,
+                      'ai'
+                    )
+                  );
+                  setFeedback('Reviewed laptop model proposal applied as one undoable change.');
+                  setPendingLabProposal(null);
+                } catch (error) {
+                  setPendingLabProposal(null);
+                  setFeedback(
+                    error instanceof Error
+                      ? `The proposal could not be applied and was discarded: ${error.message}`
+                      : 'The proposal could not be applied and was discarded. The project was not changed.'
+                  );
+                }
+              }}
+              className="min-h-8 rounded-md bg-amber-900 px-3 py-1.5 font-semibold text-white hover:bg-amber-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2547E8]"
+            >
+              Apply proposal
+            </button>
+            <button
+              type="button"
+              data-testid="discard-lab-proposal"
+              onClick={() => {
+                setPendingLabProposal(null);
+                setFeedback('Laptop model proposal discarded. The project was not changed.');
+              }}
+              className="min-h-8 rounded-md border border-amber-700 px-3 py-1.5 font-semibold hover:bg-amber-100 dark:hover:bg-amber-900/50"
+            >
+              Discard
+            </button>
+          </div>
+        </section>
+      )}
       {/* Feedback or Keyboard Shortcuts Hint */}
-      <div className="hidden md:flex items-center gap-3 text-[11px] text-[#62666F] dark:text-[#A8AFBA] font-mono">
+      <div
+        role="status"
+        className={`${feedback || queueStatus?.message ? 'flex basis-full' : 'hidden md:flex'} items-center gap-3 text-[11px] text-[#62666F] dark:text-[#A8AFBA] font-mono`}
+      >
         {queueStatus?.message && !feedback ? (
           <span className="text-indigo-600 dark:text-indigo-400 font-medium">
             {queueStatus.message}
           </span>
-        ) : feedback ? (
+        ) : feedback || lastActionMessage ? (
           <span className="text-[#2547E8] dark:text-[#6782FF] font-semibold animate-fade-in">
-            {feedback}
+            {feedback ?? lastActionMessage}
           </span>
         ) : (
           <div className="flex items-center gap-2">
-            <span>Press <kbd className="px-1.5 py-0.5 rounded bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] text-[10px]">Esc</kbd> climb parent</span>
-            <span><kbd className="px-1.5 py-0.5 rounded bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] text-[10px]">/</kbd> command</span>
+            <span>
+              Press{' '}
+              <kbd className="px-1.5 py-0.5 rounded bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] text-[10px]">
+                Esc
+              </kbd>{' '}
+              climb parent
+            </span>
+            <span>
+              <kbd className="px-1.5 py-0.5 rounded bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] text-[10px]">
+                /
+              </kbd>{' '}
+              command
+            </span>
           </div>
         )}
       </div>

@@ -1,0 +1,210 @@
+{
+  "step": 29,
+  "capturedAt": "2026-10-19",
+  "branch": "consolidation/product-hardening",
+  "status": "complete",
+  "fixtures": [
+    {
+      "id": "UPSTREAM-VITE-01",
+      "repository": "https://github.com/vitejs/vite",
+      "commit": "467f7ac3b8c7cca0b33290e7fd86f3fc79ce92cb",
+      "sourcePath": "packages/create-vite/template-react-ts",
+      "fixture": "official create-vite React + TypeScript template",
+      "runtimeVersions": {
+        "vite": "8.3.4",
+        "react": "19.3.1"
+      },
+      "ingest": {
+        "status": "PASS",
+        "routes": ["/"],
+        "productArchetype": "unknown",
+        "navigation": "unspecified-imported",
+        "dnaDefaultsDisclosed": true,
+        "sourceModifiedByIngest": false
+      },
+      "patch": {
+        "status": "PASS",
+        "change": "two uniquely targeted static App.tsx className strings on separate elements",
+        "gitApplyCheck": "PASS",
+        "originalBusinessInteractionPreserved": true
+      },
+      "install": "PASS; pnpm offline in a clean temporary project outside repository node_modules",
+      "productionBuild": "PASS",
+      "browser": {
+        "status": "PASS",
+        "engine": "Chromium",
+        "desktopViewport": "1440x900",
+        "mobileViewport": "390x844",
+        "httpStatus": 200,
+        "visualPatch": "PASS; CSS box-shadow and image drop-shadow change only when their patched classes are present",
+        "keyboardInteraction": "PASS; Tab focuses the existing counter and Enter increments it",
+        "horizontalOverflow": false,
+        "uncaughtExceptions": [],
+        "consoleErrors": [],
+        "failedRequests": [],
+        "failedResponses": []
+      },
+      "screenshots": [
+        "quality/evidence/step-29/upstream-vite/desktop-before.png",
+        "quality/evidence/step-29/upstream-vite/desktop.png",
+        "quality/evidence/step-29/upstream-vite/mobile.png"
+      ]
+    },
+    {
+      "id": "UPSTREAM-NEXT-01",
+      "repository": "https://github.com/vercel/next.js",
+      "commit": "3b1cc0b0d9cb1a4836b69caf6b0b59ed2c668852",
+      "sourcePath": "examples/hello-world",
+      "fixture": "official Next.js App Router starter",
+      "runtimeVersions": {
+        "next": "16.4.2",
+        "react": "18.3.1"
+      },
+      "ingest": {
+        "status": "PASS",
+        "routes": ["/"],
+        "rootScreenName": "Home",
+        "productArchetype": "unknown",
+        "navigation": "unspecified-imported",
+        "dnaDefaultsDisclosed": true,
+        "sourceModifiedByIngest": false
+      },
+      "install": "PASS; independent pnpm install in a clean temporary project outside repository node_modules",
+      "productionBuild": "PASS",
+      "browser": {
+        "status": "PASS",
+        "engine": "Chromium",
+        "desktopViewport": "1440x900",
+        "mobileViewport": "390x844",
+        "httpStatus": 200,
+        "rootHeading": "PASS",
+        "horizontalOverflow": false,
+        "uncaughtExceptions": [],
+        "consoleErrors": [],
+        "failedRequests": [],
+        "failedResponses": []
+      },
+      "screenshots": [
+        "quality/evidence/step-29/upstream-next/desktop.png",
+        "quality/evidence/step-29/upstream-next/mobile.png"
+      ]
+    },
+    {
+      "id": "UPSTREAM-SHADCN-01",
+      "repository": "https://github.com/shadcn-ui/ui",
+      "commit": "ba1503c64472b82256d9de95e2e62c5901a38e8b",
+      "sourcePath": "apps/v4",
+      "fixture": "large shadcn v4 application source tree",
+      "sourceFileCount": 3504,
+      "runtimeVersions": {
+        "next": "16.3.8",
+        "react": "19.2.3"
+      },
+      "ingest": {
+        "status": "PASS",
+        "routeCount": 19,
+        "rootScreenName": "Home",
+        "productArchetype": "unknown",
+        "navigation": "unspecified-imported",
+        "dynamicRoute": "/charts/:type",
+        "catchAllRoute": "/blocks/[...categories]",
+        "optionalCatchAllRoute": "/docs/[[...slug]]",
+        "dnaEvidence": ["curvature", "visualMode"],
+        "detectedPalette": "paper-cobalt",
+        "detectedCurvature": 72,
+        "detectedVisualMode": "light",
+        "dnaDefaultsDisclosed": true,
+        "sourceModifiedByIngest": false,
+        "layoutFileCount": 11,
+        "layoutHandlingWarning": "Next.js layout wrappers are associated with route files in the ingestion result but are not merged into ProjectManifest route trees",
+        "layoutAssociationExamples": [
+          {
+            "route": "/examples/dashboard",
+            "layoutFilePaths": [
+              "app/layout.tsx",
+              "app/(app)/layout.tsx",
+              "app/(app)/examples/layout.tsx"
+            ]
+          },
+          {
+            "route": "/preview/typeset/:name",
+            "layoutFilePaths": [
+              "app/layout.tsx",
+              "app/(view)/preview/layout.tsx",
+              "app/(view)/preview/typeset/layout.tsx"
+            ]
+          }
+        ],
+        "layoutAssociationEvidence": "quality/evidence/step-29/upstream-shadcn/mapping.json"
+      },
+      "install": "PASS; pnpm install --filter v4... --frozen-lockfile in an isolated temporary checkout (1,673 packages)",
+      "registryGeneration": "PASS; official build-registry.mts completed in 221.23s after building the workspace packages",
+      "productionBuild": {
+        "status": "DEGRADED",
+        "officialDefault": {
+          "command": "pnpm exec next build",
+          "compiler": "Turbopack",
+          "status": "FAIL",
+          "failure": "Turbopack reported package export ./tailwind.css had no valid target for shadcn, although packages/shadcn/dist/tailwind.css existed."
+        },
+        "alternateCompiler": {
+          "command": "NODE_OPTIONS=--max-old-space-size=6144 pnpm exec next build --webpack",
+          "compiler": "Webpack",
+          "status": "PASS_WITH_WARNINGS",
+          "notes": "Built 812 static pages. Default 4GB Node heap exhausted; 6GB heap succeeded. Build emitted dependency-analysis warnings for dynamic require/require.extensions and broad filesystem tracing."
+        }
+      },
+      "browser": {
+        "status": "DEGRADED",
+        "engine": "Chromium",
+        "viewports": ["1440x900", "390x844"],
+        "routes": [
+          { "path": "/", "status": 200, "heading": "The Foundation for your Design System" },
+          {
+            "path": "/examples/dashboard",
+            "status": 200,
+            "heading": "The Foundation for your Design System"
+          },
+          { "path": "/view/new-york-v4/dashboard-01", "status": 200, "heading": "Documents" }
+        ],
+        "pageErrors": [],
+        "consoleErrors": ["3 failed loads for http://127.0.0.1:4189/_vercel/insights/script.js"],
+        "failedRequests": ["3 requests for http://127.0.0.1:4189/_vercel/insights/script.js"],
+        "failedResponses": [
+          "3 HTTP 404 responses for http://127.0.0.1:4189/_vercel/insights/script.js"
+        ],
+        "otherFailedRequests": 0,
+        "horizontalOverflow": false,
+        "mobileObservation": "The hero demo strip is wider than the viewport and clipped by its overflow-hidden container (546px content in a 390px container); document-level overflow remains hidden.",
+        "screenshots": [
+          "quality/evidence/step-29/upstream-shadcn/desktop.png",
+          "quality/evidence/step-29/upstream-shadcn/mobile.png"
+        ],
+        "evidence": "quality/evidence/step-29/upstream-shadcn/browser.json"
+      },
+      "remainingCoverage": "Default Turbopack production build and Vercel Analytics host integration remain degraded upstream behavior. Nested layout composition, CSS-module and dynamic-style inference, props/data/business behavior fidelity remain unsupported Beta limits disclosed in the CLI and persisted manifest."
+    }
+  ],
+  "regressionsFixed": [
+    "Palette-only source evidence no longer raises Design DNA confidence; imported defaults are identified explicitly.",
+    "Next.js catch-all and optional catch-all route segments retain valid route syntax.",
+    "A root Next.js page named Page is represented to users as Home.",
+    "Variant-prefixed classes no longer masquerade as base palette, curvature, or visual-mode evidence.",
+    "Next.js layout file paths are associated with each route in outermost-to-innermost order, including route groups.",
+    "A standalone capitalized helper component is no longer inferred as a route without a supported Vite or Next.js entrypoint.",
+    "The saved ProjectManifest retains the warning when Next.js layout wrappers are not included, so downstream consumers do not infer wrapper fidelity."
+  ],
+  "repositoryChecks": {
+    "unitIntegration": "977 passed across 67 files",
+    "typecheck": "PASS",
+    "lint": "PASS; 0 errors and 43 existing warnings outside ingestion",
+    "releaseAudit": "PASS; all 16 gates",
+    "playwright": {
+      "status": "PASS",
+      "passed": 253,
+      "skipped": 94,
+      "failed": 0,
+      "sitesWorkerResourceCertification": "324 resources across configured certified widths"
+    }
+  }
+}

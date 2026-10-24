@@ -1,0 +1,104 @@
+{
+  "test": "Compose stays usable with a long brief and repeated submissions",
+  "url": "http://localhost:4321/compose",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "injectedFault": null,
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "responses": [
+    {
+      "url": "http://localhost:4321/compose",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/style.DZ8bxwEx.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/index.DrY5COQr.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/ComposeView.CUNir8Bz.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/jsx-runtime.BZkYIGyD.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/react.B6PPDU_E.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/src.GwxLoPeS.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/createLucideIcon.14lUEEec.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/arrow-right.CrL0QBhc.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/storage.C-dPFDNy.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/src.CQKMLI4p.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/chevron-down.DtfZPbTK.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/smartphone.BKKE0Hdz.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/shield.CClXYlwc.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/cpu.Cewq4aej.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/sparkles.Cox_DJ6k.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/src.ATy6auRg.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/src.DOhVIoh3.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/src.CoqxbQtO.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/_astro/gold.CeiPxNV6.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4321/data/catalog.json",
+      "status": 200
+    }
+  ]
+}

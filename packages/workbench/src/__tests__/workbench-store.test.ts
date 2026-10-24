@@ -1,6 +1,8 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import { getNodePath, findNodeById } from '../utils/tree-helpers.js';
+import { getScopedDNA } from '../utils/dna-helpers.js';
+import { createCheckpoint } from '../history/checkpoints.js';
 
 describe('Workbench Store & Tree Navigation', () => {
   beforeEach(() => {
@@ -120,6 +122,40 @@ describe('Workbench Store & Tree Navigation', () => {
     expect(node.locks?.style).toBeFalsy();
   });
 
+  it('keeps the locked DNA snapshot after unlock until the user resets it', () => {
+    const store = useWorkbenchStore.getState();
+    const nodeId = 'node-metric-arr';
+    const parentId = 'node-kpi-group';
+    store.updateNodeDNA(nodeId, { warmth: 57 });
+    const lockedEffectiveDNA = getScopedDNA(useWorkbenchStore.getState().manifest, 'screen-overview', nodeId);
+
+    store.toggleNodeLock(nodeId, 'style');
+    store.toggleNodeLock(nodeId, 'motion');
+    store.updateNodeDNA(parentId, { playfulness: 65 });
+    expect(getScopedDNA(useWorkbenchStore.getState().manifest, 'screen-overview', nodeId).playfulness).toBe(12);
+
+    store.toggleNodeLock(nodeId, 'style');
+    const stillLocked = findNodeById(
+      useWorkbenchStore.getState().manifest.screens[0]!.rootNode,
+      nodeId
+    )!;
+    expect(stillLocked.locks?.motion).toBe(true);
+    expect(getScopedDNA(useWorkbenchStore.getState().manifest, 'screen-overview', nodeId).playfulness).toBe(12);
+
+    store.unlockAllNodeLocks(nodeId);
+    const unlocked = findNodeById(
+      useWorkbenchStore.getState().manifest.screens[0]!.rootNode,
+      nodeId
+    )!;
+    expect(unlocked.dnaOverrides).toEqual(lockedEffectiveDNA);
+    expect(unlocked.locks).toEqual({});
+    expect(getScopedDNA(useWorkbenchStore.getState().manifest, 'screen-overview', nodeId).playfulness).toBe(12);
+
+    useWorkbenchStore.getState().resetNodeDNA(nodeId);
+    expect(getScopedDNA(useWorkbenchStore.getState().manifest, 'screen-overview', nodeId).playfulness).toBe(65);
+    expect(getScopedDNA(useWorkbenchStore.getState().manifest, 'screen-overview', nodeId).warmth).toBe(28);
+  });
+
   it('supports undo and redo for workbench mutations', () => {
     const store = useWorkbenchStore.getState();
 
@@ -134,5 +170,19 @@ describe('Workbench Store & Tree Navigation', () => {
     // Redo mutation
     useWorkbenchStore.getState().redo();
     expect(useWorkbenchStore.getState().manifest.designDNA.professionalism).toBe(99);
+  });
+
+  it('keeps checkpoint restoration within the same 50-step history limit as other edits', () => {
+    for (let value = 0; value < 51; value += 1) {
+      useWorkbenchStore.getState().updateProjectDNA({ visualAmbition: value });
+    }
+    const current = useWorkbenchStore.getState().manifest;
+    const checkpoint = createCheckpoint(current, { name: 'bounded restore', trigger: 'manual' });
+
+    useWorkbenchStore.getState().restoreCheckpoint(checkpoint);
+
+    expect(useWorkbenchStore.getState().history).toHaveLength(50);
+    useWorkbenchStore.getState().undo();
+    expect(useWorkbenchStore.getState().manifest.designDNA.visualAmbition).toBe(current.designDNA.visualAmbition);
   });
 });

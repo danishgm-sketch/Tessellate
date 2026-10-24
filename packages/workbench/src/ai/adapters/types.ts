@@ -14,8 +14,7 @@ export interface AIProviderConfig {
 export interface StructuredRequest<T> {
   prompt: string;
   systemPrompt?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  schema: z.ZodType<T, z.ZodTypeDef, any>;
+  schema: z.ZodType<T>;
   schemaName: string;
   schemaDescription?: string;
   temperature?: number;

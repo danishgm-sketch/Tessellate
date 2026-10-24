@@ -1,0 +1,32 @@
+{
+  "findingId": "SEC-37-093",
+  "severity": "medium",
+  "title": "Unresolved dynamic React element tags bypassed native-element isolation checks",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "import React from 'react'; const tag: string = resolveTag(); React.createElement(tag, { src: remoteUrl });",
+      "A React factory whose element type has an unresolved string, any, or unknown type"
+    ],
+    "beforeFix": "The source gate returned pass for React.createElement(resolveTag(), ...) because the tag resolver returned no known tag and the scanner treated the empty result as safe.",
+    "afterFix": "The gate rejects a React factory when its tag cannot be statically resolved and its type could be an intrinsic string tag. Statically known custom component types remain eligible for normal scanning."
+  },
+  "rootCause": "The factory scanner applied script, iframe, and resource-prop checks only to resolved tag names. An empty resolution for an any/string/unknown tag did not produce a diagnostic.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Use the TypeScript checker to detect unresolved factory tags that could be intrinsic string elements, then fail closed rather than certifying the missing classification as safe.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"unresolved intrinsic tag\"",
+    "redBeforeFixResult": "failed as expected: the string-typed dynamic tag returned pass before the fix",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "65 tests passed",
+    "fullUnitSuite": "pnpm test passed: 1,190 tests across 76 files",
+    "canonicalResourceIsolationMatrix": "Final 324-resource matrix: 324 passed, zero warnings, zero failures (captured 2026-10-21T17:17:42.782Z)",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "This is static React factory analysis. The input source was parsed but never executed. The opaque-origin preview CSP remains an independent runtime control; deployment verification is pending.",
+  "capturedAt": "2026-10-21T17:08:56Z"
+}

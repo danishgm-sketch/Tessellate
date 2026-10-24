@@ -2,11 +2,11 @@
   "schemaVersion": "1.0.0",
   "id": "showcase-minimal-productivity",
   "name": "Scribe Zen Monastic Notes",
-  "description": "Monastic distraction-free thought buffer with instant local persistence.",
+  "description": "Example project. Monastic distraction-free thought buffer with instant local persistence.",
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z",
-  "catalogVersion": "1.0.0",
-  "seed": "seed_showcase-minimal-productivity",
+  "catalogVersion": "0.1.0",
+  "seed": "showcase-minimal-productivity",
   "productModel": {
     "schemaVersion": "1.0.0",
     "productArchetypes": [
@@ -15,39 +15,144 @@
         "weight": 100
       }
     ],
-    "primaryAudience": "Domain specialists",
-    "userSophistication": 60,
-    "primaryObjective": "Monastic distraction-free thought buffer with instant local persistence.",
+    "primaryAudience": "Individuals, creators, and focused self-directed professionals",
+    "userSophistication": 50,
+    "primaryObjective": "Minimize friction between thought and capture, keeping daily tasks organized",
     "secondaryObjectives": [
-      "Maximize workflow speed and cognitive clarity"
+      "Ensure high accessibility standards",
+      "Maintain responsive layout across devices"
     ],
     "jobsToBeDone": [
-      "Analyze domain data",
-      "Execute actions",
-      "Inspect telemetry"
+      "Authenticate and access Consumer Productivity",
+      "Review the overview and priority actions",
+      "Create, update, and manage records",
+      "Press global hotkey, enter thought, and categorize",
+      "Review today agenda and check off morning goals"
     ],
-    "entities": [],
-    "workflows": [],
-    "trustRequirement": 96,
-    "informationComplexity": 35,
-    "dataDensity": 35,
-    "collaborationLevel": 50,
-    "transactionCriticality": 70,
-    "navigationComplexity": 60,
-    "mobileImportance": 50,
-    "likelyScreens": [],
+    "entities": [
+      {
+        "name": "Task",
+        "description": "Actionable item with deadline and priority",
+        "fields": [
+          "id",
+          "title",
+          "due",
+          "completed",
+          "tags"
+        ]
+      },
+      {
+        "name": "Note",
+        "description": "Rich text thought or document",
+        "fields": [
+          "id",
+          "title",
+          "body",
+          "updatedAt"
+        ]
+      },
+      {
+        "name": "ProjectList",
+        "description": "Grouping container for related tasks and notes",
+        "fields": [
+          "id",
+          "name",
+          "color",
+          "icon"
+        ]
+      }
+    ],
+    "workflows": [
+      {
+        "id": "quick-capture",
+        "name": "Press global hotkey, enter thought, and categorize",
+        "steps": [
+          "invoke-capture",
+          "type-text",
+          "save"
+        ]
+      },
+      {
+        "id": "plan-day",
+        "name": "Review today agenda and check off morning goals",
+        "steps": [
+          "open-today",
+          "reorder-priorities",
+          "execute"
+        ]
+      }
+    ],
+    "trustRequirement": 75,
+    "informationComplexity": 45,
+    "dataDensity": 50,
+    "collaborationLevel": 30,
+    "transactionCriticality": 20,
+    "navigationComplexity": 40,
+    "mobileImportance": 90,
+    "likelyScreens": [
+      {
+        "name": "Today Agenda",
+        "screenType": "dashboard",
+        "purpose": "Focused view of immediate tasks and scheduled events",
+        "jobs": [
+          "check-tasks",
+          "add-quick-note"
+        ],
+        "required": true
+      },
+      {
+        "name": "Notes & Canvas",
+        "screenType": "workspace-editor",
+        "purpose": "Distraction-free Markdown editor",
+        "jobs": [
+          "write-thoughts",
+          "link-notes"
+        ],
+        "required": true
+      },
+      {
+        "name": "Calendar Schedule",
+        "screenType": "workspace-editor",
+        "purpose": "Week and month grid view",
+        "jobs": [
+          "schedule-deadlines",
+          "block-time"
+        ],
+        "required": false
+      }
+    ],
     "requiredCapabilities": [
-      "export",
-      "search",
-      "audit"
+      "instant-offline-save",
+      "markdown-shortcuts",
+      "fluid-keyboard-navigation"
     ],
-    "forbiddenPatterns": [],
+    "forbiddenPatterns": [
+      "sluggish-keystroke-latency",
+      "overly-cluttered-chrome"
+    ],
     "constraints": {
       "accessibilityFloor": "AA",
-      "performanceCeiling": "rich",
+      "performanceCeiling": "balanced",
       "targetDevices": [
         "desktop",
-        "tablet"
+        "tablet",
+        "mobile"
+      ],
+      "allowedDependencies": [
+        "react",
+        "tailwindcss",
+        "lucide-react"
+      ],
+      "prohibitedDependencies": [
+        "jquery",
+        "bootstrap"
+      ],
+      "requiredScreens": [],
+      "forbiddenScreens": [],
+      "requiredPatterns": [],
+      "forbiddenPatterns": [
+        "sluggish-keystroke-latency",
+        "overly-cluttered-chrome"
       ]
     }
   },
@@ -83,7 +188,7 @@
     "primaryArchetype": "productivity",
     "visualMode": "light",
     "geometryFamily": "subtle-radius",
-    "navigationModel": "floating-dock",
+    "navigationModel": "rail",
     "responsivePhilosophy": "mobile-first-progressive",
     "contentTone": "quiet-zen",
     "primaryStack": "react-tailwind",
@@ -91,236 +196,555 @@
     "typographyPersonality": "understated-sans",
     "surfacePersonality": "monastic-white-canvas"
   },
+  "brand": {
+    "name": "Task Workspace"
+  },
   "constraints": {
     "accessibilityFloor": "AA",
-    "performanceCeiling": "rich",
+    "performanceCeiling": "balanced",
     "targetDevices": [
       "desktop",
-      "tablet"
+      "tablet",
+      "mobile"
+    ],
+    "allowedDependencies": [
+      "react",
+      "tailwindcss",
+      "lucide-react"
+    ],
+    "prohibitedDependencies": [
+      "jquery",
+      "bootstrap"
+    ],
+    "requiredScreens": [],
+    "forbiddenScreens": [],
+    "requiredPatterns": [],
+    "forbiddenPatterns": [
+      "sluggish-keystroke-latency",
+      "overly-cluttered-chrome"
     ]
   },
   "screenGraph": {
-    "id": "sg_showcase-minimal-productivity",
+    "id": "graph-productivity-p68wrw",
     "groups": [
       {
-        "id": "group_main",
-        "name": "Main Workspace",
+        "id": "group-app",
+        "name": "Application",
         "screens": [
           {
-            "id": "node-tasks-approvals",
-            "name": "Tasks & Approvals",
-            "slug": "/tasks",
-            "screenType": "tasks-&-approvals",
-            "purpose": "Tasks & Approvals",
+            "id": "screen-overview",
+            "name": "Today Agenda",
+            "slug": "/today-agenda",
+            "screenType": "dashboard",
+            "purpose": "Focused view of immediate tasks and scheduled events",
             "jobs": [
-              "inspect-view"
+              "check-tasks",
+              "add-quick-note"
             ],
             "required": true,
             "navigationVisibility": "primary",
-            "importance": 80,
+            "importance": 85,
             "expectedData": [
-              "records"
+              "Task.id",
+              "Task.title",
+              "Task.due",
+              "Task.completed",
+              "Task.tags"
             ],
             "requiredRoles": [
-              "content"
+              "overview-header",
+              "metric-cards",
+              "activity-feed"
             ],
-            "optionalRoles": []
+            "optionalRoles": [
+              "quick-action-bar",
+              "data-table",
+              "alert-banner",
+              "insight-rail"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           },
           {
-            "id": "node-global-search",
-            "name": "Global Search",
-            "slug": "/search",
-            "screenType": "global-search",
-            "purpose": "Global Search",
+            "id": "screen-workspace",
+            "name": "Notes & Canvas",
+            "slug": "/notes-and-canvas",
+            "screenType": "workspace-editor",
+            "purpose": "Distraction-free Markdown editor",
             "jobs": [
-              "inspect-view"
+              "write-thoughts",
+              "link-notes"
+            ],
+            "required": true,
+            "navigationVisibility": "primary",
+            "importance": 85,
+            "expectedData": [
+              "Note.id",
+              "Note.title",
+              "Note.body",
+              "Note.updatedAt"
+            ],
+            "requiredRoles": [
+              "editor-toolbar",
+              "canvas-viewport",
+              "inspector-panel"
+            ],
+            "optionalRoles": [
+              "layers-tree",
+              "version-history",
+              "status-bar"
+            ],
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
+          },
+          {
+            "id": "screen-calendar-schedule",
+            "name": "Calendar Schedule",
+            "slug": "/calendar-schedule",
+            "screenType": "workspace-editor",
+            "purpose": "Week and month grid view",
+            "jobs": [
+              "schedule-deadlines",
+              "block-time"
             ],
             "required": false,
             "navigationVisibility": "primary",
-            "importance": 75,
+            "importance": 60,
             "expectedData": [
-              "records"
+              "Task.id",
+              "Task.title",
+              "Task.due",
+              "Task.completed",
+              "Task.tags"
             ],
             "requiredRoles": [
-              "content"
+              "editor-toolbar",
+              "canvas-viewport",
+              "inspector-panel"
             ],
-            "optionalRoles": []
-          },
-          {
-            "id": "node-profile",
-            "name": "Profile",
-            "slug": "/profile",
-            "screenType": "profile",
-            "purpose": "Profile",
-            "jobs": [
-              "inspect-view"
+            "optionalRoles": [
+              "layers-tree",
+              "version-history",
+              "status-bar"
             ],
-            "required": false,
-            "navigationVisibility": "primary",
-            "importance": 70,
-            "expectedData": [
-              "records"
-            ],
-            "requiredRoles": [
-              "content"
-            ],
-            "optionalRoles": []
+            "deviceRelevance": [
+              "desktop",
+              "tablet",
+              "mobile"
+            ]
           }
         ]
       }
     ],
     "edges": [
       {
-        "id": "edge_0",
-        "fromScreenId": "node-tasks-approvals",
-        "toScreenId": "node-global-search"
+        "id": "edge-screen-overview-to-screen-workspace",
+        "fromScreenId": "screen-overview",
+        "toScreenId": "screen-workspace",
+        "label": "Notes & Canvas"
       },
       {
-        "id": "edge_1",
-        "fromScreenId": "node-tasks-approvals",
-        "toScreenId": "node-profile"
+        "id": "edge-screen-overview-to-screen-calendar-schedule",
+        "fromScreenId": "screen-overview",
+        "toScreenId": "screen-calendar-schedule",
+        "label": "Calendar Schedule"
       }
     ]
   },
   "screens": [
     {
-      "id": "screen-tasks-approvals",
-      "screenNodeId": "node-tasks-approvals",
-      "name": "Tasks & Approvals",
-      "slug": "/tasks",
+      "id": "screen-overview",
+      "screenNodeId": "screen-overview",
+      "name": "Today Agenda",
+      "slug": "/today-agenda",
       "rootNode": {
-        "id": "root-tasks-approvals",
+        "id": "root-screen-overview",
         "nodeType": "layout",
-        "semanticRole": "tasks-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-tsk-appr",
-            "nodeType": "section",
-            "semanticRole": "approval-request",
+            "id": "node-screen-overview-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_ai_approval_request",
-              "slug": "ai-approval-request",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Task Workspace",
+              "links": [
+                {
+                  "label": "Today Agenda",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Notes & Canvas",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "Calendar Schedule",
+                  "href": "#screen-calendar-schedule"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-tsk-table",
-            "nodeType": "section",
-            "semanticRole": "queue-table",
-            "resourceRef": {
-              "id": "res_data_table",
-              "slug": "data-table",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-overview-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-overview-overview-header-2",
+                "nodeType": "block",
+                "semanticRole": "overview-header",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Today Agenda",
+                  "subtitle": "Focused view of immediate tasks and scheduled events",
+                  "badge": "EXAMPLE",
+                  "initials": "TW"
+                }
+              },
+              {
+                "id": "node-screen-overview-metric-cards-3",
+                "nodeType": "block",
+                "semanticRole": "metric-cards",
+                "resourceRef": {
+                  "id": "res_blk_dashboard_kpi_grid",
+                  "slug": "dashboard-kpi-grid",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Key metrics",
+                  "cards": [
+                    {
+                      "label": "Task",
+                      "val": "—",
+                      "status": "No connected data"
+                    },
+                    {
+                      "label": "Note",
+                      "val": "—",
+                      "status": "No connected data"
+                    },
+                    {
+                      "label": "ProjectList",
+                      "val": "—",
+                      "status": "No connected data"
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-overview-activity-feed-4",
+                "nodeType": "block",
+                "semanticRole": "activity-feed",
+                "resourceRef": {
+                  "id": "res_blk_timeline",
+                  "slug": "timeline",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Recent activity",
+                  "events": [
+                    {
+                      "time": "Today",
+                      "title": "Press global hotkey, enter thought, and categorize",
+                      "desc": "Invoke capture → Type text → Save"
+                    },
+                    {
+                      "time": "Yesterday",
+                      "title": "Review today agenda and check off morning goals",
+                      "desc": "Open today → Reorder priorities → Execute"
+                    }
+                  ]
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-global-search",
-      "screenNodeId": "node-global-search",
-      "name": "Global Search",
-      "slug": "/search",
+      "id": "screen-workspace",
+      "screenNodeId": "screen-workspace",
+      "name": "Notes & Canvas",
+      "slug": "/notes-and-canvas",
       "rootNode": {
-        "id": "root-global-search",
+        "id": "root-screen-workspace",
         "nodeType": "layout",
-        "semanticRole": "search-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-srch-filters",
-            "nodeType": "section",
-            "semanticRole": "filters",
+            "id": "node-screen-workspace-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_filter_bar",
-              "slug": "filter-bar",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Task Workspace",
+              "links": [
+                {
+                  "label": "Today Agenda",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Notes & Canvas",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "Calendar Schedule",
+                  "href": "#screen-calendar-schedule"
+                }
+              ],
+              "orientation": "vertical"
+            }
           },
           {
-            "id": "sec-srch-results",
-            "nodeType": "section",
-            "semanticRole": "results",
-            "resourceRef": {
-              "id": "res_data_table",
-              "slug": "data-table",
-              "version": "1.0.0"
-            },
-            "variant": "quiet",
-            "children": [],
+            "id": "container-screen-workspace-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-workspace-canvas-viewport-2",
+                "nodeType": "block",
+                "semanticRole": "canvas-viewport",
+                "resourceRef": {
+                  "id": "res_blk_kanban_board",
+                  "slug": "kanban-board",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Notes & Canvas",
+                  "columns": [
+                    {
+                      "title": "Press global hotkey, enter thought, and categorize",
+                      "tasks": [
+                        "Invoke capture",
+                        "Type text",
+                        "Save"
+                      ]
+                    },
+                    {
+                      "title": "Review today agenda and check off morning goals",
+                      "tasks": [
+                        "Open today",
+                        "Reorder priorities",
+                        "Execute"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-workspace-inspector-panel-3",
+                "nodeType": "block",
+                "semanticRole": "inspector-panel",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Notes & Canvas",
+                  "subtitle": "Distraction-free Markdown editor",
+                  "badge": "EXAMPLE",
+                  "initials": "TW"
+                }
+              }
+            ],
             "slots": {},
-            "props": {}
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     },
     {
-      "id": "screen-profile",
-      "screenNodeId": "node-profile",
-      "name": "Profile",
-      "slug": "/profile",
+      "id": "screen-calendar-schedule",
+      "screenNodeId": "screen-calendar-schedule",
+      "name": "Calendar Schedule",
+      "slug": "/calendar-schedule",
       "rootNode": {
-        "id": "root-profile",
+        "id": "root-screen-calendar-schedule",
         "nodeType": "layout",
-        "semanticRole": "profile-canvas",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "sec-prof-form",
-            "nodeType": "section",
-            "semanticRole": "form",
+            "id": "node-screen-calendar-schedule-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
             "resourceRef": {
-              "id": "res_profile_settings_form",
-              "slug": "profile-settings-form",
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
               "version": "1.0.0"
             },
-            "variant": "quiet",
+            "variant": "nocturne",
             "children": [],
             "slots": {},
-            "props": {}
+            "props": {
+              "brand": "Task Workspace",
+              "links": [
+                {
+                  "label": "Today Agenda",
+                  "href": "#screen-overview"
+                },
+                {
+                  "label": "Notes & Canvas",
+                  "href": "#screen-workspace"
+                },
+                {
+                  "label": "Calendar Schedule",
+                  "href": "#screen-calendar-schedule"
+                }
+              ],
+              "orientation": "vertical"
+            }
+          },
+          {
+            "id": "container-screen-calendar-schedule-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-calendar-schedule-canvas-viewport-2",
+                "nodeType": "block",
+                "semanticRole": "canvas-viewport",
+                "resourceRef": {
+                  "id": "res_blk_kanban_board",
+                  "slug": "kanban-board",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Calendar Schedule",
+                  "columns": [
+                    {
+                      "title": "Press global hotkey, enter thought, and categorize",
+                      "tasks": [
+                        "Invoke capture",
+                        "Type text",
+                        "Save"
+                      ]
+                    },
+                    {
+                      "title": "Review today agenda and check off morning goals",
+                      "tasks": [
+                        "Open today",
+                        "Reorder priorities",
+                        "Execute"
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "node-screen-calendar-schedule-inspector-panel-3",
+                "nodeType": "block",
+                "semanticRole": "inspector-panel",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Calendar Schedule",
+                  "subtitle": "Week and month grid view",
+                  "badge": "EXAMPLE",
+                  "initials": "TW"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
           }
         ],
         "slots": {},
-        "props": {}
+        "props": {
+          "layoutVariant": "split-dock"
+        }
       }
     }
   ],
   "navigation": {
-    "model": "floating-dock",
+    "model": "rail",
     "primaryItems": [
       {
-        "label": "Today",
-        "targetScreenId": "node-tasks-approvals"
+        "label": "Today Agenda",
+        "targetScreenId": "screen-overview"
       },
       {
-        "label": "Search",
-        "targetScreenId": "node-global-search"
+        "label": "Notes & Canvas",
+        "targetScreenId": "screen-workspace"
       },
       {
-        "label": "Profile",
-        "targetScreenId": "node-profile"
+        "label": "Calendar Schedule",
+        "targetScreenId": "screen-calendar-schedule"
       }
-    ]
+    ],
+    "secondaryItems": []
   },
   "assets": [],
   "locks": [],
   "historyMeta": {
-    "totalOperations": 12,
-    "headRevision": 1
+    "totalOperations": 0,
+    "headRevision": 0
   },
   "exportSettings": {
     "framework": "react",

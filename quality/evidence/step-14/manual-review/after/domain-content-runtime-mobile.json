@@ -1,0 +1,175 @@
+{
+  "route": "http://127.0.0.1:4323/compose",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "reviewed": [
+    {
+      "id": "MKT-01-SEARCH",
+      "direction": "01",
+      "route": "http://127.0.0.1:4323/compose",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screen": "Explore Listings",
+      "resources": [
+        "collapsible-sidebar",
+        "input",
+        "filter-builder",
+        "advanced-data-table"
+      ],
+      "diagnostics": [],
+      "screenshot": "mkt-01-search-direction-01-mobile.png"
+    },
+    {
+      "id": "MKT-01-SEARCH",
+      "direction": "02",
+      "route": "http://127.0.0.1:4323/compose",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screen": "Explore Listings",
+      "resources": [
+        "minimal-top-nav",
+        "input",
+        "filter-builder",
+        "advanced-data-table"
+      ],
+      "diagnostics": [],
+      "screenshot": "mkt-01-search-direction-02-mobile.png"
+    },
+    {
+      "id": "MKT-01-SEARCH",
+      "direction": "03",
+      "route": "http://127.0.0.1:4323/compose",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screen": "Explore Listings",
+      "resources": [
+        "minimal-top-nav",
+        "input",
+        "filter-builder",
+        "advanced-data-table"
+      ],
+      "diagnostics": [],
+      "screenshot": "mkt-01-search-direction-03-mobile.png"
+    },
+    {
+      "id": "REA-01",
+      "direction": "01",
+      "route": "http://127.0.0.1:4323/compose",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screen": "Property Search",
+      "resources": [
+        "collapsible-sidebar",
+        "input",
+        "filter-builder",
+        "advanced-data-table"
+      ],
+      "diagnostics": [],
+      "screenshot": "rea-01-direction-01-mobile.png"
+    },
+    {
+      "id": "REA-01",
+      "direction": "02",
+      "route": "http://127.0.0.1:4323/compose",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screen": "Property Search",
+      "resources": [
+        "minimal-top-nav",
+        "input",
+        "filter-builder",
+        "advanced-data-table"
+      ],
+      "diagnostics": [],
+      "screenshot": "rea-01-direction-02-mobile.png"
+    },
+    {
+      "id": "REA-01",
+      "direction": "03",
+      "route": "http://127.0.0.1:4323/compose",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screen": "Property Search",
+      "resources": [
+        "minimal-top-nav",
+        "input",
+        "filter-builder",
+        "advanced-data-table"
+      ],
+      "diagnostics": [],
+      "screenshot": "rea-01-direction-03-mobile.png"
+    },
+    {
+      "id": "TRV-01",
+      "direction": "01",
+      "route": "http://127.0.0.1:4323/compose",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screen": "Destination Search",
+      "resources": [
+        "collapsible-sidebar",
+        "input",
+        "filter-builder",
+        "advanced-data-table"
+      ],
+      "diagnostics": [],
+      "screenshot": "trv-01-direction-01-mobile.png"
+    },
+    {
+      "id": "TRV-01",
+      "direction": "02",
+      "route": "http://127.0.0.1:4323/compose",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screen": "Destination Search",
+      "resources": [
+        "minimal-top-nav",
+        "input",
+        "filter-builder",
+        "advanced-data-table"
+      ],
+      "diagnostics": [],
+      "screenshot": "trv-01-direction-02-mobile.png"
+    },
+    {
+      "id": "TRV-01",
+      "direction": "03",
+      "route": "http://127.0.0.1:4323/compose",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "screen": "Destination Search",
+      "resources": [
+        "minimal-top-nav",
+        "input",
+        "filter-builder",
+        "advanced-data-table"
+      ],
+      "diagnostics": [],
+      "screenshot": "trv-01-direction-03-mobile.png"
+    }
+  ],
+  "consoleErrors": [],
+  "uncaught": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

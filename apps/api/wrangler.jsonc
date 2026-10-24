@@ -2,8 +2,16 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "tessellate-api",
   "main": "src/index.ts",
-  "compatibility_date": "2025-02-14",
+  "compatibility_date": "2026-05-22",
   "compatibility_flags": ["nodejs_compat"],
+  "vars": { "RUNTIME_ENVIRONMENT": "production" },
+  "ratelimits": [
+    { "name": "API_PUBLIC_WRITE_LIMITER", "namespace_id": "655781537838", "simple": { "limit": 20, "period": 60 } },
+    { "name": "API_USER_WRITE_LIMITER", "namespace_id": "926228202371", "simple": { "limit": 120, "period": 60 } },
+    { "name": "API_AI_LIMITER", "namespace_id": "868094578222", "simple": { "limit": 30, "period": 60 } },
+    { "name": "API_AUTH_LIMITER", "namespace_id": "553597943912", "simple": { "limit": 30, "period": 60 } },
+    { "name": "API_CLIENT_LIMITER", "namespace_id": "511388199174", "simple": { "limit": 120, "period": 60 } }
+  ],
   "d1_databases": [
     {
       "binding": "DB",

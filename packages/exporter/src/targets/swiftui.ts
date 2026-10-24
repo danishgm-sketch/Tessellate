@@ -7,6 +7,16 @@ function sanitizeSwiftName(str: string): string {
   return words.join('') || 'Screen';
 }
 
+function swiftStringLiteral(value: string): string {
+  const escaped = value
+    .replace(/\\/g, '\\\\')
+    .replace(/"/g, '\\"')
+    .replace(/\r/g, '\\r')
+    .replace(/\n/g, '\\n')
+    .replace(/\t/g, '\\t');
+  return `"${escaped}"`;
+}
+
 function hexToSwiftColor(hex: string): string {
   const clean = hex.replace('#', '');
   if (clean.length !== 6) return 'Color.blue';
@@ -65,82 +75,7 @@ public struct TessellateTheme {
 }
 `;
 
-  // 3. Sources/Components/TessButton.swift
-  files['Sources/Components/TessButton.swift'] = `import SwiftUI
-
-public struct TessButton: View {
-    public let title: String
-    public var action: () -> Void
-
-    public init(title: String, action: @escaping () -> Void = {}) {
-        self.title = title
-        self.action = action
-    }
-
-    public var body: some View {
-        Button(action: action) {
-            Text(title)
-                .font(.subheadline)
-                .fontWeight(.semibold)
-                .foregroundColor(.white)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 10)
-                .background(TessellateTheme.accentPrimary)
-                .cornerRadius(TessellateTheme.radiusMd)
-        }
-        .buttonStyle(.plain)
-    }
-}
-`;
-
-  // 4. Sources/Components/TessMetricCard.swift
-  files['Sources/Components/TessMetricCard.swift'] = `import SwiftUI
-
-public struct TessMetricCard: View {
-    public let title: String
-    public let value: String
-    public let change: String?
-    public let isPositive: Bool
-
-    public init(title: String, value: String, change: String? = nil, isPositive: Bool = true) {
-        self.title = title
-        self.value = value
-        self.change = change
-        self.isPositive = isPositive
-    }
-
-    public var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
-            Text(title.uppercased())
-                .font(.caption2)
-                .fontWeight(.bold)
-                .foregroundColor(TessellateTheme.inkMuted)
-
-            Text(value)
-                .font(.title2)
-                .fontWeight(.bold)
-                .foregroundColor(TessellateTheme.inkPrimary)
-
-            if let change = change {
-                Text(change)
-                    .font(.caption)
-                    .fontWeight(.medium)
-                    .foregroundColor(isPositive ? .green : .red)
-            }
-        }
-        .padding(14)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(TessellateTheme.surfaceSecondary)
-        .cornerRadius(TessellateTheme.radiusMd)
-        .overlay(
-            RoundedRectangle(cornerRadius: TessellateTheme.radiusMd)
-                .stroke(TessellateTheme.hairline, lineWidth: 1)
-        )
-    }
-}
-`;
-
-  // 5. Generate screen views
+  // 3. Generate explicitly experimental screen scaffolds.
   const screenViews: Array<{ id: string; name: string; viewName: string }> = [];
 
   for (const screen of manifest.screens) {
@@ -156,31 +91,28 @@ public struct ${viewName}: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 18) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("${screen.name}")
+                    Text(${swiftStringLiteral(screen.name)})
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(TessellateTheme.inkPrimary)
 
-                    Text("Native SwiftUI screen exported from Tessellate AST.")
+                    Text("Screen scaffold from Tessellate manifest data.")
                         .font(.subheadline)
                         .foregroundColor(TessellateTheme.inkMuted)
                 }
 
-                HStack(spacing: 12) {
-                    TessMetricCard(title: "Throughput", value: "99.2%", change: "+1.4%", isPositive: true)
-                    TessMetricCard(title: "Response", value: "32ms", change: "-8ms", isPositive: true)
-                }
-
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("Component Details")
+                    Text("LAB PREVIEW")
                         .font(.headline)
                         .foregroundColor(TessellateTheme.inkPrimary)
 
-                    Text("Root Node: ${screen.rootNode.id} · Role: ${screen.rootNode.semanticRole}")
+                    Text("This scaffold preserves screen names and root-node metadata only. Tessellate resources, nested nodes, props, slots, authored content, navigation, and interactions have not been translated to SwiftUI.")
+                        .font(.subheadline)
+                        .foregroundColor(TessellateTheme.inkSecondary)
+
+                    Text("Root node: ${swiftStringLiteral(screen.rootNode.id)} · Role: ${swiftStringLiteral(screen.rootNode.semanticRole)}")
                         .font(.caption)
                         .foregroundColor(TessellateTheme.inkMuted)
-
-                    TessButton(title: "Trigger Action")
                 }
                 .padding(16)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -199,7 +131,7 @@ public struct ${viewName}: View {
 `;
   }
 
-  // 6. Sources/ContentView.swift
+  // 4. Sources/ContentView.swift
   const tabCases = screenViews
     .map(
       (s) => `            ${s.viewName}()
@@ -226,22 +158,23 @@ ${tabCases}
 }
 `;
 
-  // 7. README.md
+  // 5. README.md
   files['README.md'] = `# ${appName} (SwiftUI Target)
 
-Exported from [Tessellate](https://github.com/danishgm-sketch/Tessellate) on ${new Date().toISOString()}.
-Idiomatic native SwiftUI 6 target for iOS 17+ and macOS 14+.
+Generated by [Tessellate](https://github.com/danishgm-sketch/Tessellate).
+LAB scaffold for SwiftUI. It is not a production-ready native export.
 
 ## Structure
 
-- \`Sources/DesignTokens.swift\`: Design DNA colors, corner radii, and spacing constants.
-- \`Sources/Components/\`: Reusable accessible native components (\`TessButton\`, \`TessMetricCard\`).
-- \`Sources/Views/\`: Declarative SwiftUI views generated for each screen in the ScreenGraph.
-- \`Sources/ContentView.swift\`: Root TabView application coordinator.
+- \`Sources/DesignTokens.swift\`: normalized Design DNA colors, corner radii, and spacing constants.
+- \`Sources/Views/\`: labelled screen scaffolds generated from screen names and root-node metadata.
+- \`Sources/ContentView.swift\`: a SwiftUI view composing the generated screens.
 
-## Open in Xcode
+## Fidelity limits
 
-Double-click \`Package.swift\` or open folder in Xcode to build and run in iOS Simulator.
+This package preserves project name, screen names, root-node IDs, root semantic roles, and normalized Design DNA tokens. It does not translate Tessellate resources, nested nodes, props, slots, authored content, responsive strategies, declared navigation, or interactions. Its tabs are scaffolding over manifest screens, not the product navigation model.
+
+The generated \`Package.swift\` defines a Swift Package library only. It has no executable application or simulator launch target, so this export cannot be opened and run as an app in the iOS Simulator.
 `;
 
   return files;

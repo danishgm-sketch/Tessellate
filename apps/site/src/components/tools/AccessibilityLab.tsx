@@ -1,14 +1,10 @@
 import React, { useState, useMemo } from 'react';
-import {
-  ShieldCheck,
-  Sparkles,
-  MousePointer,
-} from 'lucide-react';
+import { ShieldCheck, Sparkles, MousePointer } from 'lucide-react';
 
 // Relative Luminance per WCAG 2.2 specification
 function getLuminance(hex: string): number {
-  const clean = hex.replace('#', '');
-  if (clean.length !== 6) return 0.5;
+  const clean = hex.replace(/^#/, '');
+  if (!/^[0-9a-fA-F]{6}$/.test(clean)) return Number.NaN;
   const r = parseInt(clean.substring(0, 2), 16) / 255;
   const g = parseInt(clean.substring(2, 4), 16) / 255;
   const b = parseInt(clean.substring(4, 6), 16) / 255;
@@ -18,6 +14,10 @@ function getLuminance(hex: string): number {
   });
 
   return (a[0] ?? 0) * 0.2126 + (a[1] ?? 0) * 0.7152 + (a[2] ?? 0) * 0.0722;
+}
+
+function isHexColor(value: string): boolean {
+  return /^#[0-9a-fA-F]{6}$/.test(value);
 }
 
 // Contrast Ratio between two hex colors
@@ -44,15 +44,22 @@ export function AccessibilityLab() {
   // Target size state
   const [targetSize, setTargetSize] = useState<number>(44);
 
-  const ratio = useMemo(() => getContrastRatio(fgColor, bgColor), [fgColor, bgColor]);
+  const foregroundValid = isHexColor(fgColor);
+  const backgroundValid = isHexColor(bgColor);
+  const colorsValid = foregroundValid && backgroundValid;
+  const ratio = useMemo(
+    () => (colorsValid ? getContrastRatio(fgColor, bgColor) : null),
+    [fgColor, bgColor, colorsValid]
+  );
 
-  const normalTextPass = ratio >= 4.5;
-  const normalTextAaa = ratio >= 7.0;
-  const largeTextPass = ratio >= 3.0;
-  const uiComponentPass = ratio >= 3.0;
+  const normalTextPass = ratio !== null && ratio >= 4.5;
+  const normalTextAaa = ratio !== null && ratio >= 7.0;
+  const largeTextPass = ratio !== null && ratio >= 3.0;
+  const uiComponentPass = ratio !== null && ratio >= 3.0;
 
   // Auto fix contrast if failing
   const autoFixContrast = () => {
+    if (!backgroundValid) return;
     const bgLum = getLuminance(bgColor);
     if (bgLum > 0.5) {
       setFgColor('#111217'); // Dark ink on light background
@@ -62,7 +69,7 @@ export function AccessibilityLab() {
   };
 
   return (
-    <div className="space-y-8 select-none">
+    <div className="space-y-8">
       {/* Header Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#D9D6CF] pb-6">
         <div>
@@ -78,15 +85,16 @@ export function AccessibilityLab() {
             Accessibility Lab
           </h1>
           <p className="text-sm text-[#62666F] mt-1">
-            Audit contrast floors, focus indicators, minimum touch targets, and reduced-motion fallbacks against WCAG 2.2 AA.
+            Check colour contrast, focus-ring dimensions, and minimum touch-target size. These
+            checks do not certify a complete interface.
           </p>
         </div>
 
         {/* Global Badge */}
         <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#D9D6CF] bg-white text-xs font-semibold text-[#177B55]">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-[#D9D6CF] bg-white text-xs font-semibold text-[#12603F]">
             <ShieldCheck className="h-4 w-4" />
-            <span>WCAG 2.2 AA Baseline Guaranteed</span>
+            <span>Three checks · Not a full audit</span>
           </div>
         </div>
       </div>
@@ -96,6 +104,7 @@ export function AccessibilityLab() {
         <button
           type="button"
           onClick={() => setActiveTab('contrast')}
+          aria-pressed={activeTab === 'contrast'}
           className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
             activeTab === 'contrast' ? 'bg-[#111217] text-white shadow-sm' : 'text-[#62666F]'
           }`}
@@ -105,6 +114,7 @@ export function AccessibilityLab() {
         <button
           type="button"
           onClick={() => setActiveTab('focus')}
+          aria-pressed={activeTab === 'focus'}
           className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
             activeTab === 'focus' ? 'bg-[#111217] text-white shadow-sm' : 'text-[#62666F]'
           }`}
@@ -114,6 +124,7 @@ export function AccessibilityLab() {
         <button
           type="button"
           onClick={() => setActiveTab('target')}
+          aria-pressed={activeTab === 'target'}
           className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
             activeTab === 'target' ? 'bg-[#111217] text-white shadow-sm' : 'text-[#62666F]'
           }`}
@@ -133,6 +144,7 @@ export function AccessibilityLab() {
                 <button
                   type="button"
                   onClick={autoFixContrast}
+                  disabled={!backgroundValid}
                   className="text-xs font-mono text-[#2547E8] hover:underline flex items-center gap-1 font-semibold"
                 >
                   <Sparkles className="h-3 w-3" />
@@ -147,14 +159,18 @@ export function AccessibilityLab() {
                 </label>
                 <div className="flex items-center gap-2">
                   <input
+                    aria-label="Foreground colour picker"
                     type="color"
                     value={fgColor}
                     onChange={(e) => setFgColor(e.target.value)}
                     className="h-8 w-8 rounded cursor-pointer border border-[#D9D6CF]"
                   />
                   <input
+                    aria-label="Foreground colour hex value"
                     type="text"
                     value={fgColor}
+                    aria-invalid={!foregroundValid}
+                    aria-describedby="contrast-colour-guidance"
                     onChange={(e) => setFgColor(e.target.value)}
                     className="flex-1 font-mono text-xs uppercase px-2 py-1.5 rounded border border-[#D9D6CF] bg-[#FAF9F6]"
                   />
@@ -168,19 +184,33 @@ export function AccessibilityLab() {
                 </label>
                 <div className="flex items-center gap-2">
                   <input
+                    aria-label="Background colour picker"
                     type="color"
                     value={bgColor}
                     onChange={(e) => setBgColor(e.target.value)}
                     className="h-8 w-8 rounded cursor-pointer border border-[#D9D6CF]"
                   />
                   <input
+                    aria-label="Background colour hex value"
                     type="text"
                     value={bgColor}
+                    aria-invalid={!backgroundValid}
+                    aria-describedby="contrast-colour-guidance"
                     onChange={(e) => setBgColor(e.target.value)}
                     className="flex-1 font-mono text-xs uppercase px-2 py-1.5 rounded border border-[#D9D6CF] bg-[#FAF9F6]"
                   />
                 </div>
               </div>
+
+              <p
+                id="contrast-colour-guidance"
+                role={!colorsValid ? 'alert' : undefined}
+                className={`text-xs ${colorsValid ? 'text-[#62666F]' : 'text-[#C83D48]'}`}
+              >
+                {colorsValid
+                  ? 'Enter six-digit hex colours in the form #2547E8.'
+                  : 'Enter valid six-digit hex colours, for example #2547E8.'}
+              </p>
             </div>
           )}
 
@@ -195,12 +225,14 @@ export function AccessibilityLab() {
                 <label className="block text-xs font-semibold text-[#111217]">Outline Chroma</label>
                 <div className="flex items-center gap-2">
                   <input
+                    aria-label="Focus outline colour picker"
                     type="color"
                     value={ringColor}
                     onChange={(e) => setRingColor(e.target.value)}
                     className="h-8 w-8 rounded cursor-pointer border border-[#D9D6CF]"
                   />
                   <input
+                    aria-label="Focus outline colour hex value"
                     type="text"
                     value={ringColor}
                     onChange={(e) => setRingColor(e.target.value)}
@@ -216,6 +248,7 @@ export function AccessibilityLab() {
                   <span className="font-mono text-[#62666F]">{ringWidth}px</span>
                 </div>
                 <input
+                  aria-label="Focus outline width"
                   type="range"
                   min="1"
                   max="4"
@@ -233,6 +266,7 @@ export function AccessibilityLab() {
                   <span className="font-mono text-[#62666F]">{ringOffset}px</span>
                 </div>
                 <input
+                  aria-label="Focus outline offset"
                   type="range"
                   min="0"
                   max="6"
@@ -257,6 +291,7 @@ export function AccessibilityLab() {
                   <span className="font-mono text-[#62666F]">{targetSize}px</span>
                 </div>
                 <input
+                  aria-label="Touch target size"
                   type="range"
                   min="20"
                   max="64"
@@ -288,28 +323,46 @@ export function AccessibilityLab() {
               {/* Scorecard Matrix */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <div className="rounded-xl border border-[#D9D6CF] bg-white p-3 space-y-1">
-                  <span className="text-[10px] font-mono text-[#8B8F97] block">CONTRAST RATIO</span>
-                  <span className="text-2xl font-bold text-[#111217]">{ratio.toFixed(2)}:1</span>
-                  <span className={`text-[10px] font-mono font-bold block ${normalTextPass ? 'text-[#177B55]' : 'text-[#C83D48]'}`}>
+                  <span className="text-[10px] font-mono text-[var(--text-muted)] block">
+                    CONTRAST RATIO
+                  </span>
+                  <span className="text-2xl font-bold text-[#111217]">
+                    {ratio === null ? '—' : `${ratio.toFixed(2)}:1`}
+                  </span>
+                  <span
+                    className={`text-[10px] font-mono font-bold block ${normalTextPass ? 'text-[#12603F]' : 'text-[#C83D48]'}`}
+                  >
                     {normalTextAaa ? 'AAA HIGHEST' : normalTextPass ? 'AA PASS' : 'FAIL'}
                   </span>
                 </div>
 
                 <div className="rounded-xl border border-[#D9D6CF] bg-white p-3 space-y-1">
-                  <span className="text-[10px] font-mono text-[#8B8F97] block">NORMAL TEXT (16px)</span>
-                  <span className="text-base font-bold text-[#111217]">{normalTextPass ? 'PASS' : 'FAIL'}</span>
+                  <span className="text-[10px] font-mono text-[var(--text-muted)] block">
+                    NORMAL TEXT (16px)
+                  </span>
+                  <span className="text-base font-bold text-[#111217]">
+                    {normalTextPass ? 'PASS' : 'FAIL'}
+                  </span>
                   <span className="text-[10px] font-mono text-[#62666F] block">Req: 4.5:1</span>
                 </div>
 
                 <div className="rounded-xl border border-[#D9D6CF] bg-white p-3 space-y-1">
-                  <span className="text-[10px] font-mono text-[#8B8F97] block">LARGE TEXT (18pt+)</span>
-                  <span className="text-base font-bold text-[#111217]">{largeTextPass ? 'PASS' : 'FAIL'}</span>
+                  <span className="text-[10px] font-mono text-[var(--text-muted)] block">
+                    LARGE TEXT (18pt+)
+                  </span>
+                  <span className="text-base font-bold text-[#111217]">
+                    {largeTextPass ? 'PASS' : 'FAIL'}
+                  </span>
                   <span className="text-[10px] font-mono text-[#62666F] block">Req: 3.0:1</span>
                 </div>
 
                 <div className="rounded-xl border border-[#D9D6CF] bg-white p-3 space-y-1">
-                  <span className="text-[10px] font-mono text-[#8B8F97] block">UI COMPONENTS</span>
-                  <span className="text-base font-bold text-[#111217]">{uiComponentPass ? 'PASS' : 'FAIL'}</span>
+                  <span className="text-[10px] font-mono text-[var(--text-muted)] block">
+                    UI COMPONENTS
+                  </span>
+                  <span className="text-base font-bold text-[#111217]">
+                    {uiComponentPass ? 'PASS' : 'FAIL'}
+                  </span>
                   <span className="text-[10px] font-mono text-[#62666F] block">Req: 3.0:1</span>
                 </div>
               </div>
@@ -324,7 +377,9 @@ export function AccessibilityLab() {
                     Accessible Typographic Contrast
                   </h3>
                   <p className="text-sm leading-relaxed max-w-lg opacity-90">
-                    Verify readability and optical legibility in real conditions. Even when users browse with low screen brightness or high ambient glare, text must remain distinct.
+                    Verify readability and optical legibility in real conditions. Even when users
+                    browse with low screen brightness or high ambient glare, text must remain
+                    distinct.
                   </p>
                 </div>
                 <div className="flex items-center gap-3 pt-4 border-t border-current/20 text-xs font-mono">
@@ -338,7 +393,7 @@ export function AccessibilityLab() {
 
           {activeTab === 'focus' && (
             <div className="rounded-2xl border border-[#D9D6CF] bg-[#FAF9F6] p-6 shadow-sm space-y-6">
-              <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[#8B8F97]">
+              <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[var(--text-muted)]">
                 <span>KEYBOARD FOCUS VISIBILITY STAGE</span>
                 <span>TAB TO FOCUS</span>
               </div>
@@ -361,6 +416,7 @@ export function AccessibilityLab() {
                     Form Input Field Indicator
                   </span>
                   <input
+                    aria-label="Example input field"
                     type="text"
                     defaultValue="Tab-accessible user input field"
                     className="w-full text-xs px-3 py-2 rounded-lg border border-[#D9D6CF] bg-[#FAF9F6]"
@@ -376,10 +432,14 @@ export function AccessibilityLab() {
 
           {activeTab === 'target' && (
             <div className="rounded-2xl border border-[#D9D6CF] bg-[#FAF9F6] p-6 shadow-sm space-y-6">
-              <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[#8B8F97]">
+              <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[var(--text-muted)]">
                 <span>PHYSICAL TARGET COMPARISON</span>
-                <span className={targetSize >= 44 ? 'text-[#177B55] font-bold' : 'text-[#A66A15]'}>
-                  {targetSize >= 44 ? 'OPTIMAL (44px+)' : targetSize >= 24 ? 'COMPLIANT (24px+)' : 'FAIL'}
+                <span className={targetSize >= 44 ? 'text-[#12603F] font-bold' : 'text-[#A66A15]'}>
+                  {targetSize >= 44
+                    ? 'OPTIMAL (44px+)'
+                    : targetSize >= 24
+                      ? 'COMPLIANT (24px+)'
+                      : 'FAIL'}
                 </span>
               </div>
 

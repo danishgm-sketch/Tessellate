@@ -1,0 +1,28 @@
+{
+  "step": 42,
+  "id": "zip-download-failure-visible",
+  "status": "pass",
+  "url": "http://localhost:4321/workbench/?project=local-363075f5-ab07-49c1-9c73-2e29693f33af",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "browser": "Chromium",
+  "injectedFailures": [
+    "URL.createObjectURL throws only for the generated application/zip Blob."
+  ],
+  "checks": {
+    "browserDownloadFailureShownToUser": true,
+    "failureDetailsPreserved": true,
+    "uncaughtExceptions": 0
+  },
+  "runtime": {
+    "consoleErrors": [
+      "Failed to generate standalone ZIP project: Error: Injected ZIP download creation failure\n    at URL.createObjectURL (<anonymous>:6:15)\n    at ae (http://localhost:4321/_astro/index.DvW1Edez.js:19118:4412)\n    at onClick (http://localhost:4321/_astro/index.DvW1Edez.js:19118:15303)\n    at Vf (http://localhost:4321/_astro/client.CZ5CiHPg.js:8:138618)\n    at http://localhost:4321/_astro/client.CZ5CiHPg.js:8:143350\n    at Rn (http://localhost:4321/_astro/client.CZ5CiHPg.js:8:15177)\n    at Kf (http://localhost:4321/_astro/client.CZ5CiHPg.js:8:139845)\n    at yh (http://localhost:4321/_astro/client.CZ5CiHPg.js:9:42534)\n    at _h (http://localhost:4321/_astro/client.CZ5CiHPg.js:9:42356)"
+    ],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "quality/evidence/step-42/zip-download-failure-visible-desktop-chrome.png"
+}

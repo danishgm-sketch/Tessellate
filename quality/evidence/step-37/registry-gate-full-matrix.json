@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-21",
+  "captured_at": "2026-10-21T16:26:07.765Z",
+  "rerun_after": "SEC-37-086",
+  "status": "local static gate snapshot; not runtime certification",
+  "resourcesScanned": 324,
+  "checks": {
+    "schema-validation": {
+      "pass": 324,
+      "warn": 0,
+      "fail": 0
+    },
+    "token-hygiene": {
+      "pass": 6,
+      "warn": 231,
+      "fail": 87
+    },
+    "accessibility-audit": {
+      "pass": 199,
+      "warn": 0,
+      "fail": 125
+    },
+    "responsive-strategy": {
+      "pass": 298,
+      "warn": 25,
+      "fail": 1
+    },
+    "reduced-motion": {
+      "pass": 236,
+      "warn": 0,
+      "fail": 88
+    },
+    "security-isolation": {
+      "pass": 324,
+      "warn": 0,
+      "fail": 0
+    },
+    "bundle-budget": {
+      "pass": 324,
+      "warn": 0,
+      "fail": 0
+    },
+    "license-provenance": {
+      "pass": 324,
+      "warn": 0,
+      "fail": 0
+    }
+  },
+  "interpretation": "The source-isolation check passes across all canonical resources. Token, accessibility, responsive, and reduced-motion failures belong to their ordered product-hardening areas and do not represent security-isolation failures. This static registry gate is Beta and does not replace runtime resource certification or deployed preview tests."
+}

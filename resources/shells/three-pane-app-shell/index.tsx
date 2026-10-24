@@ -19,10 +19,17 @@ export function ThreePaneAppShell({
   if (variant === 'nocturne') theme = 'bg-[#11141B] border-[#2E3440] text-white';
 
   return (
-    <div className={`h-screen flex divide-x overflow-hidden text-xs ${theme}`}>
-      <div className="w-56 shrink-0">{leftPane}</div>
-      <div className="flex-1 overflow-auto bg-neutral-50 dark:bg-[#0B0D10]">{centerPane}</div>
-      <div className="w-64 shrink-0">{rightPane}</div>
+    <div className={`min-h-screen flex flex-col divide-y overflow-x-hidden text-xs md:h-screen md:flex-row md:divide-x md:divide-y-0 md:overflow-hidden ${theme}`}>
+      <div className="w-full shrink-0 md:w-56">{leftPane}</div>
+      <div
+        role="region"
+        aria-label="Workspace canvas"
+        tabIndex={0}
+        className="min-h-[50vh] w-full min-w-0 flex-1 overflow-auto bg-neutral-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-blue-600 dark:bg-[#0B0D10] md:min-h-0"
+      >
+        {centerPane}
+      </div>
+      <div className="w-full shrink-0 md:w-64">{rightPane}</div>
     </div>
   );
 }

@@ -1,0 +1,34 @@
+{
+  "step": 42,
+  "id": "api-offline-deterministic-core",
+  "status": "pass",
+  "url": "http://127.0.0.1:4323/workbench/?project=local-6a1baf9d-a8ba-41ec-b121-cfb9292d76ec",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "browser": "Chromium",
+  "injectedFailures": [
+    "Sites /api/** requests were aborted to simulate an unavailable local backend."
+  ],
+  "checks": {
+    "hostLabDisabled": true,
+    "deterministicMutationCompleted": true,
+    "projectIdentityPreserved": true,
+    "motionReduced": true
+  },
+  "runtime": {
+    "consoleErrors": [
+      "Failed to load resource: net::ERR_FAILED"
+    ],
+    "pageErrors": [],
+    "failedRequests": [
+      {
+        "url": "http://127.0.0.1:4323/api/inference/health",
+        "error": "net::ERR_FAILED"
+      }
+    ],
+    "httpErrors": []
+  },
+  "screenshot": "quality/evidence/step-42/api-offline-deterministic-core-sites-chromium.png"
+}

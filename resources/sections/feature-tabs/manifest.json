@@ -5,7 +5,7 @@
   "name": "Feature Tabs",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Interactive tabbed feature display switching between workflows, previews, and feature descriptions.",
+  "description": "Interactive tabs for presenting information to designers, developers, and agents.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -130,7 +130,7 @@
     "interactive"
   ],
   "intent": {
-    "summary": "Interactive tabbed feature display switching between workflows, previews, and feature descriptions.",
+    "summary": "Interactive tabs for presenting information to designers, developers, and agents.",
     "idealFor": [
       "Showcasing multiple distinct user journeys in a single section"
     ],
@@ -209,12 +209,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

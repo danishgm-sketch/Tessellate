@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-22",
+  "status": "partially_verified",
+  "localConfiguration": {
+    "files": [
+      "apps/api/wrangler.jsonc",
+      "apps/laptop-backend/wrangler.jsonc"
+    ],
+    "namespaceCount": 10,
+    "uniqueNamespaceCount": 10,
+    "result": "passed"
+  },
+  "accountVerification": {
+    "command": "pnpm --filter @tessellate/api exec wrangler whoami",
+    "result": "not_authenticated",
+    "wranglerVersion": "4.92.0",
+    "capturedAt": "2026-10-22T14:31:26Z",
+    "sanitizedOutput": "Wrangler could not fetch an auth token (400 Bad Request) and reported Not logged in.",
+    "namespaceExistenceChecked": false,
+    "rawIdentityOutputRecorded": false
+  },
+  "deploymentApplicability": {
+    "status": "not_applicable",
+    "decision": "D-041",
+    "reason": "The owner-approved architecture keeps the API and inference host on the laptop. It does not deploy a remote Worker/API or provision Cloudflare namespaces, DNS, or a tunnel.",
+    "localValidation": "Rate-limit bindings are shape-checked in both Worker configs; the API rate-limit contract suite passes 9/9."
+  },
+  "nextCheck": "If the owner revises D-041 to authorize a remote API deployment, authenticate the intended Wrangler account and provision or verify all ten namespaces before that deployment."
+}

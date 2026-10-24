@@ -1,0 +1,60 @@
+{
+    "stagedBytes":  818625512,
+    "startedAt":  "2026-10-24T04:46:12.0423700Z",
+    "stagedFileCount":  14946,
+    "log":  "quality/evidence/step-44/clean-container.log",
+    "sourceWorktreeDirty":  true,
+    "sourceSha":  "76812fb26211a779ca93279ec49b7df2d5d02243",
+    "step":  44,
+    "finishedAt":  "2026-10-24T05:15:23.8650443Z",
+    "image":  "mcr.microsoft.com/playwright:v1.63.0-noble",
+    "sensitiveHostEnvironmentPassed":  false,
+    "containerExitCode":  1,
+    "containerName":  "tessellate-step44-20261024T044542Z",
+    "repositoryNodeModulesPresent":  false,
+    "commandResults":  [
+                           {
+                               "name":  "frozen_install",
+                               "exitCode":  0,
+                               "durationSeconds":  21
+                           },
+                           {
+                               "name":  "catalogue_build",
+                               "exitCode":  0,
+                               "durationSeconds":  2
+                           },
+                           {
+                               "name":  "typecheck",
+                               "exitCode":  0,
+                               "durationSeconds":  63
+                           },
+                           {
+                               "name":  "lint",
+                               "exitCode":  0,
+                               "durationSeconds":  8
+                           },
+                           {
+                               "name":  "unit_tests",
+                               "exitCode":  0,
+                               "durationSeconds":  57
+                           },
+                           {
+                               "name":  "full_audit",
+                               "exitCode":  0,
+                               "durationSeconds":  54
+                           },
+                           {
+                               "name":  "production_build",
+                               "exitCode":  0,
+                               "durationSeconds":  42
+                           },
+                           {
+                               "name":  "browser_tests",
+                               "exitCode":  1,
+                               "durationSeconds":  1459
+                           }
+                       ],
+    "filesystemMode":  "container-native",
+    "stagedSourcePath":  "C:\\Users\\ismay\\AppData\\Local\\Temp\\tessellate-step44-20261024T044542Z\\source",
+    "status":  "failed"
+}

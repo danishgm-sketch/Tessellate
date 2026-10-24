@@ -171,12 +171,12 @@ export function writeDataResource(def: DataDef, repoRoot: string) {
       defaultStrategy: 'compress',
     },
     accessibility: {
-      levelTarget: 'AAA',
-      keyboardVerified: true,
-      screenReaderSemantics: true,
-      reducedMotionVerified: true,
-      contrastTokenCompatible: true,
-      focusVisible: true,
+      levelTarget: 'AA',
+      keyboardVerified: false,
+      screenReaderSemantics: false,
+      reducedMotionVerified: false,
+      contrastTokenCompatible: false,
+      focusVisible: false,
     },
     performance: {
       jsCost: 'tiny',
@@ -191,6 +191,7 @@ export function writeDataResource(def: DataDef, repoRoot: string) {
     compatibility: {},
     relationships: [],
     quality: {
+      assessment: { status: 'unassessed', evidence: [] },
       overall: 97,
       accessibility: 98,
       responsive: 96,

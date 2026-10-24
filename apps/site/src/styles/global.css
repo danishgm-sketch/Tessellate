@@ -1,14 +1,19 @@
-@import "tailwindcss";
-@source "../../../packages";
+@import "tailwindcss" source("../");
+@import "@tessellate/ui/preview-motion.css";
+@source "../../../../packages";
+@source "../../../../resources";
+@source not "../../../../packages/exporter/src/generated-gold-sources.ts";
+@custom-variant dark (&:where(.dark, .dark *):not(.tess-screen *), &:where([data-resource-variant="nocturne"], [data-resource-variant="nocturne"] *));
 
 :root {
+  --text-muted: var(--tess-ink-muted);
   --tess-canvas: #F4F2ED;
   --tess-canvas-strong: #ECE9E2;
   --tess-surface: #FAF9F6;
   --tess-surface-raised: #FFFFFF;
   --tess-ink: #111217;
   --tess-ink-secondary: #62666F;
-  --tess-ink-muted: #8B8F97;
+  --tess-ink-muted: #62666F;
   --tess-hairline: #D9D6CF;
   --tess-hairline-strong: #C7C3BA;
   --tess-cobalt: #2547E8;
@@ -20,6 +25,23 @@
   --tess-warning: #A66A15;
 }
 
+.dark {
+  --text-muted: var(--tess-ink-muted);
+  --tess-canvas: #0B0D10;
+  --tess-surface: #111419;
+  --tess-surface-raised: #171B21;
+  --tess-ink: #F5F7FA;
+  --tess-ink-secondary: #A8AFBA;
+  --tess-ink-muted: #A8AFBA;
+  --tess-hairline: #272C34;
+  --tess-cobalt: #6782FF;
+}
+
+:focus-visible { outline: 2px solid var(--tess-cobalt); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
 body {
   background-color: var(--tess-canvas);
   color: var(--tess-ink);
@@ -27,4 +49,10 @@ body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+}
+
+pre {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
 }

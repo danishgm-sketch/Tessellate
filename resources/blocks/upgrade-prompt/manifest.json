@@ -5,7 +5,7 @@
   "name": "Upgrade Prompt",
   "version": "1.0.0",
   "status": "verified",
-  "description": "In-app upgrade callout card presenting locked feature benefits and upgrade trigger.",
+  "description": "Upgrade prompt template with a configurable destination.",
   "resourceType": "block",
   "categories": [
     "blocks",
@@ -130,7 +130,7 @@
     "cta"
   ],
   "intent": {
-    "summary": "In-app upgrade callout card presenting locked feature benefits and upgrade trigger.",
+    "summary": "Example upgrade prompt; provide accurate plan details and a destination.",
     "idealFor": [
       "Gracefully prompting users when they encounter enterprise features"
     ],
@@ -138,7 +138,7 @@
       "Aggressive blocking modal spam"
     ],
     "jobs": [
-      "Explain benefits of cloud team synchronization without hard barriers"
+      "Describe available product plans and direct users to a configured destination"
     ],
     "contentRequirements": [
       "High data density, keyboard accessibility, semantic tokens"
@@ -209,12 +209,12 @@
     "defaultStrategy": "compress"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

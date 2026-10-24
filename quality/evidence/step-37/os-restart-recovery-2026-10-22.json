@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "id": "STEP-37-OS-RESTART-2026-10-22",
+  "recordedAtUtc": "2026-10-22T15:43:41Z",
+  "result": "passed_with_limitations",
+  "restart": {
+    "command": "Restart-Computer -Force -Confirm:$false",
+    "processExitCode": 0,
+    "windowsLastBootUpTimeLocal": "2026-10-22T16:19:41.500+01:00",
+    "observedAtLocal": "2026-10-22T16:42:14.595+01:00",
+    "windowsEdition": "Microsoft Windows 11 Home"
+  },
+  "containerRecovery": {
+    "manualDockerStartIssuedBeforeSnapshot": false,
+    "runningContainersAtSnapshot": 8,
+    "containers": [
+      { "name": "mgiquantlabs-trader-1", "status": "Up 21 minutes" },
+      { "name": "mgiquantlabs-api-1", "status": "Up 21 minutes" },
+      { "name": "mgiquantlabs-marketdata_service-1", "status": "Up 21 minutes" },
+      { "name": "mgiquantlabs-web-1", "status": "Up 21 minutes" },
+      { "name": "mgiquantlabs-postgres-1", "status": "Up 21 minutes (healthy)" },
+      { "name": "mgiquantlabs-cloudflared-1", "status": "Up 21 minutes" },
+      { "name": "tessellate-laptop-api-1", "status": "Up 21 minutes (healthy)" },
+      { "name": "tessellate-laptop-host-1", "status": "Up 21 minutes (healthy)" }
+    ],
+    "tessellateRestartPolicy": "unless-stopped"
+  },
+  "apiHealth": {
+    "url": "http://127.0.0.1:8788/health",
+    "httpStatus": 200,
+    "service": "tessellate-api",
+    "checkedAtUtc": "2026-10-22T15:42:41Z"
+  },
+  "postBootLifecycleVerification": {
+    "command": "node scripts/verify-laptop-backend.mjs",
+    "result": "passed",
+    "checks": 8,
+    "recordedAtUtc": "2026-10-22T15:43:15.724Z",
+    "evidence": "apps/laptop-backend/evidence/docker-runtime.json",
+    "coverage": [
+      "Real model completion after OS restart",
+      "Host control authentication",
+      "Rate-limit behavior",
+      "Queue survival across API container restart",
+      "HTTP 503 while host is stopped",
+      "Pending task recovery after host resume",
+      "Inference after host container restart",
+      "Network unavailability while API container is stopped"
+    ]
+  },
+  "limitations": [
+    "No inference ticket was deliberately left queued across the full OS shutdown, so recovery of a pre-restart pending job across OS reboot is not directly verified. API container restart and host pause/resume queue recovery pass in the post-boot lifecycle verifier.",
+    "D-041 keeps external tunnel ingress out of the approved architecture; no tunnel or remote API deployment was provisioned."
+  ]
+}

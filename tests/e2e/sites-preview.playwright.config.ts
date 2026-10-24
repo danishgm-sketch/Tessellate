@@ -1,0 +1,68 @@
+import { defineConfig, devices } from '@playwright/test';
+
+export default defineConfig({
+  testDir: '.',
+  testMatch: [
+    'composition-quality-smoke.spec.ts',
+    'compose-workbench-handoff.spec.ts',
+    'compose-responsiveness-hardening.spec.ts',
+    'explore-search-hardening.spec.ts',
+    'gold-resource-certification.spec.ts',
+    'catalog-resource-render.spec.ts',
+    'gold-resource-state-certification.spec.ts',
+    'gold-resource-accessibility-certification.spec.ts',
+    'gold-dialog-accessibility.spec.ts',
+    'gold-resource-state-matrix.spec.ts',
+    'gold-resource-action-completion.spec.ts',
+    'inline-ai-rewrite-responsive.spec.ts',
+    'preview-form-interactions.spec.ts',
+    'site-favicon.spec.ts',
+    'documentation-keyboard-regression.spec.ts',
+    'sites-preview-csp.spec.ts',
+    'sites-unknown-resource-preview.spec.ts',
+    'accessibility-hardening-step-35.spec.ts',
+    'responsive-hardening-step-36.spec.ts',
+    'home-performance-step-38.spec.ts',
+    'home-default-brief-truthfulness.spec.ts',
+    'performance-workloads-step-38.spec.ts',
+    'site-route-performance-step-38.spec.ts',
+    'performance-stress-step-38.spec.ts',
+    'copy-quality-step-39.spec.ts',
+    'resource-copy-truthfulness-step-39.spec.ts',
+    'home-visual-rhythm-step-40.spec.ts',
+    'activity-feed-sample-disclosure-step-40.spec.ts',
+    'cross-surface-manifest-step-41.spec.ts',
+    'fault-injection-step-42.spec.ts',
+    'project-scale-step-43.spec.ts',
+  ],
+  fullyParallel: false,
+  workers: 1,
+  reporter: 'list',
+  use: {
+    baseURL: 'http://127.0.0.1:4323',
+    trace: 'on-first-retry',
+  },
+  projects: [
+    {
+      name: 'sites-chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: { width: 1440, height: 900 },
+      },
+    },
+    {
+      name: 'sites-mobile-chromium',
+      use: {
+        ...devices['Pixel 7'],
+        viewport: { width: 390, height: 844 },
+        isMobile: true,
+      },
+    },
+  ],
+  webServer: {
+    command: 'pnpm --filter @tessellate/sites preview',
+    url: 'http://127.0.0.1:4323',
+    reuseExistingServer: !process.env.CI,
+    timeout: 30000,
+  },
+});

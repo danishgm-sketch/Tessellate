@@ -1,7 +1,19 @@
-import { describe, it, expect } from 'vitest';
+import { afterEach, describe, it, expect } from 'vitest';
+import * as fs from 'node:fs';
+import * as os from 'node:os';
 import * as path from 'node:path';
 import { loadJsonManifest } from '@tessellate/catalog';
+import { validResourceFixture } from '@tessellate/schemas';
 import { generateRegistryItem, generateRegistryIndex } from '../index.js';
+
+let temporaryDirectory: string | undefined;
+
+afterEach(() => {
+  if (temporaryDirectory) {
+    fs.rmSync(temporaryDirectory, { recursive: true, force: true });
+    temporaryDirectory = undefined;
+  }
+});
 
 describe('Registry Generation', () => {
   const rootResourcesDir = path.resolve(__dirname, '../../../../resources');
@@ -34,6 +46,77 @@ describe('Registry Generation', () => {
     expect(index.items).toHaveLength(1);
     expect(index.items[0]?.name).toBe('button');
     expect(index.items[0]?.type).toBe('registry:ui');
+  });
+
+  it('rejects a resource file path that escapes the resource directory', () => {
+    temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'tess-registry-path-'));
+    const resourceDir = path.join(temporaryDirectory, 'resources', 'button');
+    const externalFile = path.join(temporaryDirectory, 'secret.tsx');
+    fs.mkdirSync(resourceDir, { recursive: true });
+    fs.writeFileSync(externalFile, 'export const Secret = "must not be published";');
+
+    const hostileManifest = {
+      ...validResourceFixture,
+      files: [{ path: '../../secret.tsx', kind: 'component' as const, required: true }],
+    };
+
+    expect(() => generateRegistryItem(hostileManifest, resourceDir)).toThrow(
+      /escapes the resource directory/i
+    );
+  });
+
+  it('rejects resource files that resolve through a symlink outside their directory', () => {
+    temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'tess-registry-link-'));
+    const resourceDir = path.join(temporaryDirectory, 'resource');
+    const externalDir = path.join(temporaryDirectory, 'external');
+    fs.mkdirSync(resourceDir, { recursive: true });
+    fs.mkdirSync(externalDir, { recursive: true });
+    fs.writeFileSync(path.join(externalDir, 'secret.tsx'), 'export const Secret = "private";');
+    fs.symlinkSync(
+      externalDir,
+      path.join(resourceDir, 'external'),
+      process.platform === 'win32' ? 'junction' : 'dir'
+    );
+
+    const hostileManifest = {
+      ...validResourceFixture,
+      files: [{ path: 'external/secret.tsx', kind: 'component' as const, required: true }],
+    };
+
+    expect(() => generateRegistryItem(hostileManifest, resourceDir)).toThrow(
+      /resolves outside the resource directory/i
+    );
+  });
+
+  it('rejects a symlink passed as the resource directory root', () => {
+    temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'tess-registry-root-link-'));
+    const actualDirectory = path.join(temporaryDirectory, 'actual-resource');
+    const linkedDirectory = path.join(temporaryDirectory, 'resource-link');
+    fs.mkdirSync(actualDirectory, { recursive: true });
+    fs.writeFileSync(path.join(actualDirectory, 'index.tsx'), 'export const Secret = "private";');
+    fs.symlinkSync(actualDirectory, linkedDirectory, process.platform === 'win32' ? 'junction' : 'dir');
+
+    expect(() => generateRegistryItem(validResourceFixture, linkedDirectory)).toThrow(
+      /resource directory cannot be a symlink/i
+    );
+  });
+
+  it('rejects a symlink root when only the index fallback could provide source', () => {
+    temporaryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'tess-registry-root-fallback-link-'));
+    const actualDirectory = path.join(temporaryDirectory, 'actual-resource');
+    const linkedDirectory = path.join(temporaryDirectory, 'resource-link');
+    fs.mkdirSync(actualDirectory, { recursive: true });
+    fs.writeFileSync(path.join(actualDirectory, 'index.tsx'), 'export const Secret = "private";');
+    fs.symlinkSync(actualDirectory, linkedDirectory, process.platform === 'win32' ? 'junction' : 'dir');
+
+    const assetOnlyManifest = {
+      ...validResourceFixture,
+      files: [{ path: 'preview.png', kind: 'asset' as const, required: false }],
+    };
+
+    expect(() => generateRegistryItem(assetOnlyManifest, linkedDirectory)).toThrow(
+      /resource directory cannot be a symlink/i
+    );
   });
 
   it('generates llms.txt and llms-full.txt conforming to standard specifications', async () => {

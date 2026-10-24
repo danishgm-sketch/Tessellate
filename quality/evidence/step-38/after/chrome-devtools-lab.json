@@ -1,0 +1,111 @@
+{
+  "capturedAt": "2026-10-23T15:14:11.609Z",
+  "environment": "Local ChatGPT Sites compatibility Worker at 127.0.0.1:4323; Chrome DevTools MCP cold navigation traces; cache disabled on trace reload; CPU 1x; no network throttling; CrUX field data unavailable.",
+  "browser": "Chrome 156",
+  "results": [
+    {
+      "route": "/",
+      "viewport": "1440x900",
+      "lcpMs": 191,
+      "cls": 0,
+      "requestCount": 26,
+      "httpStatusCounts": {
+        "200": 25,
+        "304": 1
+      },
+      "failedRequests": [],
+      "consoleMessages": []
+    },
+    {
+      "route": "/explore",
+      "viewport": "1440x900",
+      "lcpMs": 194,
+      "cls": 0,
+      "requestCount": 107,
+      "httpStatusCounts": {
+        "200": 100,
+        "304": 7
+      },
+      "failedRequests": [],
+      "consoleMessages": []
+    },
+    {
+      "route": "/compose",
+      "viewport": "1440x900",
+      "lcpMs": 118,
+      "cls": 0,
+      "requestCount": 22,
+      "httpStatusCounts": {
+        "200": 21,
+        "304": 1
+      },
+      "failedRequests": [],
+      "consoleMessages": []
+    },
+    {
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "lcpMs": 587,
+      "cls": 0,
+      "requestCount": 45,
+      "httpStatusCounts": {
+        "200": 44,
+        "304": 1
+      },
+      "failedRequests": [],
+      "consoleMessages": []
+    },
+    {
+      "route": "/",
+      "viewport": "390x844",
+      "lcpMs": 194,
+      "cls": 0,
+      "requestCount": 26,
+      "httpStatusCounts": {
+        "200": 25,
+        "304": 1
+      },
+      "failedRequests": [],
+      "consoleMessages": []
+    },
+    {
+      "route": "/explore",
+      "viewport": "390x844",
+      "lcpMs": 101,
+      "cls": 0,
+      "requestCount": 56,
+      "httpStatusCounts": {
+        "200": 53,
+        "304": 3
+      },
+      "failedRequests": [],
+      "consoleMessages": []
+    },
+    {
+      "route": "/compose",
+      "viewport": "390x844",
+      "lcpMs": 114,
+      "cls": 0,
+      "requestCount": 22,
+      "httpStatusCounts": {
+        "200": 21,
+        "304": 1
+      },
+      "failedRequests": [],
+      "consoleMessages": []
+    },
+    {
+      "route": "/workbench",
+      "viewport": "390x844",
+      "lcpMs": 435,
+      "cls": 0,
+      "requestCount": 44,
+      "httpStatusCounts": {
+        "200": 43,
+        "304": 1
+      },
+      "failedRequests": [],
+      "consoleMessages": []
+    }
+  ]
+}

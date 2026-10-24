@@ -1,0 +1,32 @@
+{
+  "recordedAt": "2026-10-22T11:38:22Z",
+  "lifecycleChecks": 8,
+  "sourceRun": "apps/laptop-backend/evidence/docker-runtime.json",
+  "postRunHealth": {
+    "gatewayAuthenticatedHealthRequest": "PASS",
+    "apiContainerHealth": "healthy",
+    "hostOnline": true,
+    "hostContainerHealth": "healthy"
+  },
+  "limitations": [
+    "This validates the local Docker lifecycle on the current machine; it does not verify a fresh OS boot or tunnel ingress from an external network."
+  ],
+  "sourceRunRecordedAt": "2026-10-22T11:36:56.868Z",
+  "result": "PASS",
+  "focusedRegressions": {
+    "apps/sites/backend.test.ts + worker.test.ts": "8 passed",
+    "tests/e2e/capability-tiers.spec.ts": "1 desktop passed; 1 configured mobile skip"
+  },
+  "workbenchOfflineScreenshot": "quality/evidence/step-37/laptop-backend-offline-workbench-1440x900.png",
+  "dockerRestartPolicies": {
+    "api": "unless-stopped",
+    "host": "unless-stopped"
+  },
+  "tunnelState": {
+    "cloudflaredInstalled": true,
+    "cloudflaredServiceRunning": false,
+    "cloudflaredProcessRunning": false,
+    "provisioned": false,
+    "decisionReference": "docs/DECISIONS.md D-041"
+  }
+}

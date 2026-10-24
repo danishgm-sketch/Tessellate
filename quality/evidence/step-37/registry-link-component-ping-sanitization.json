@@ -1,0 +1,33 @@
+{
+  "findingId": "SEC-37-102",
+  "severity": "medium",
+  "title": "The Link resource forwarded caller-supplied ping beacons",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "Render Link with ping=https://collector.invalid/ping and activate the link.",
+      "The component spread all remaining AnchorHTMLAttributes onto its anchor, which included ping."
+    ],
+    "beforeFix": "The 324-resource source scan returned a failure after SEC-37-101 was added because Link's ...rest spread could forward an unbounded ping prop. The scanner correctly refused to certify that anchor spread.",
+    "browserEvidence": "The SEC-37-101 Chromium probe confirmed that activating an anchor with ping=https://collector.invalid/ping emits an outbound beacon; Playwright intercepted and aborted that request."
+  },
+  "rootCause": "The public Link primitive forwarded the complete native anchor prop rest object, including the hidden outbound ping attribute.",
+  "affectedFiles": [
+    "resources/primitives/link/index.tsx",
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "apps/site/public/r/link.json"
+  ],
+  "remediation": "Remove ping from the Link type contract and strip a runtime ping value before forwarding the remaining anchor props. Teach the static gate to recognize an explicit exclusion in a rest binding while continuing to reject unresolved ping spreads.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"anchor rest props only when the ping beacon is explicitly stripped\"",
+    "redBeforeFixResult": "failed as expected: a safe rest binding with explicit ping exclusion was reported as uncertified",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"anchor rest props only when the ping beacon is explicitly stripped|hidden outbound link ping beacons|scheme-relative and scheme-only forms\"",
+    "targetedAfterFixResult": "3 tests passed; unfiltered anchor rest props fail closed, explicitly excluded ping passes, and remote ping examples remain rejected",
+    "catalogBuild": "pnpm build:catalog passed and regenerated the published Link registry item",
+    "sourceMatrix": "324 resources scanned; 324 pass, 0 warn, 0 fail"
+  },
+  "runtimeBoundary": "The browser request probe demonstrating the beacon was intercepted before network access. The post-fix code removes ping before anchor prop forwarding; no external request was sent.",
+  "capturedAt": "2026-10-21T18:13:15Z"
+}

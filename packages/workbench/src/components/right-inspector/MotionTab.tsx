@@ -1,7 +1,7 @@
 import React from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { findNodeById } from '../../utils/tree-helpers.js';
-import { getEffectiveNodeDNA } from '../../utils/dna-helpers.js';
+import { getScopedDNA, isScopeLocked } from '../../utils/dna-helpers.js';
 import type { PartialDesignDNA } from '@tessellate/schemas';
 import { Wind, Activity } from 'lucide-react';
 
@@ -20,8 +20,8 @@ export function MotionTab() {
       ? findNodeById(activeScreen.rootNode, selectedNodeId)
       : null;
 
-  const nodeOverrides = selectedNode?.dnaOverrides;
-  const effectiveDNA = getEffectiveNodeDNA(manifest.designDNA, nodeOverrides);
+  const locked = isScopeLocked(manifest,activeScreenId,selectedNodeId);
+  const effectiveDNA = getScopedDNA(manifest, activeScreenId, selectedNodeId);
 
   const handleUpdate = (partial: PartialDesignDNA) => {
     if (selectedNode) {
@@ -35,6 +35,8 @@ export function MotionTab() {
 
   return (
     <div data-testid="motion-tab" className="p-4 space-y-6 text-xs overflow-y-auto">
+      {locked && <p role="status">This node inherits an active lock. Unlock it in Locks to edit.</p>}
+      <fieldset disabled={locked} className="space-y-4 border-0 p-0 m-0 min-w-0">
       {/* Reduced Motion Override Simulation */}
       <div className="rounded-xl border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#171B21] p-3 space-y-2">
         <div className="flex items-center justify-between">
@@ -47,7 +49,7 @@ export function MotionTab() {
             className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold transition-all ${
               reducedMotion
                 ? 'bg-amber-100 text-amber-900 dark:bg-amber-950 dark:text-amber-200'
-                : 'bg-[#FAF9F6] text-[#8B8F97] dark:bg-[#0B0D10]'
+                : 'bg-[#FAF9F6] text-[var(--text-muted)] dark:bg-[#0B0D10]'
             }`}
           >
             {reducedMotion ? 'Active (WCAG)' : 'Inactive'}
@@ -64,7 +66,7 @@ export function MotionTab() {
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5 font-bold text-[#111217] dark:text-[#F5F7FA]">
-            <Activity className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#6782FF]" />
+            <Activity className="h-3.5 w-3.5 text-[#2547E8] dark:text-[#879DFF]" />
             <span>Motion Intensity</span>
           </div>
           <span className="font-mono text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
@@ -76,11 +78,11 @@ export function MotionTab() {
           type="range"
           min={0}
           max={100}
-          value={motionVal}
+          aria-label="Motion intensity" value={motionVal}
           onChange={(e) => handleUpdate({ motion: Number(e.target.value) })}
           className="w-full h-1.5 bg-[#D9D6CF] dark:bg-[#272C34] rounded-lg appearance-none cursor-pointer accent-[#2547E8] dark:accent-[#6782FF]"
         />
-        <div className="flex justify-between text-[10px] text-[#8B8F97] font-mono">
+        <div className="flex justify-between text-[10px] text-[var(--text-muted)] font-mono">
           <span>0 (Static)</span>
           <span>50 (Smooth)</span>
           <span>100 (Cinematic)</span>
@@ -101,7 +103,7 @@ export function MotionTab() {
               onClick={() => handleUpdate({ motionPersonality: personality })}
               className={`p-2 rounded-xl border text-left capitalize text-xs font-medium transition-all ${
                 effectiveDNA.motionPersonality === personality
-                  ? 'border-[#2547E8] bg-white dark:border-[#6782FF] dark:bg-[#171B21] text-[#2547E8] dark:text-[#6782FF] shadow-xs'
+                  ? 'border-[#2547E8] bg-white dark:border-[#6782FF] dark:bg-[#171B21] text-[#2547E8] dark:text-[#879DFF] shadow-xs'
                   : 'border-[#D9D6CF] bg-[#FAF9F6] dark:border-[#272C34] dark:bg-[#0B0D10] text-[#62666F] dark:text-[#A8AFBA]'
               }`}
             >
@@ -119,6 +121,7 @@ export function MotionTab() {
           ))}
         </div>
       </div>
+    </fieldset>
     </div>
   );
 }

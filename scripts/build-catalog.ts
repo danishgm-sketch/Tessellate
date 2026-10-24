@@ -1,3 +1,5 @@
+import {composeShowcase} from '../packages/compatibility/src/showcase-composition.js';
+import {SHOWCASE_PROJECTS} from '../packages/composer/src/showcases.js';
 import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -24,7 +26,7 @@ const previewPublicDir = path.join(rootDir, 'apps', 'preview', 'public');
 
 async function main() {
   console.log('[build-catalog] Scanning and validating resources at:', resourcesDir);
-  const { artifact } = await buildCatalogueFromDirectory(resourcesDir);
+  const { artifact, resourceDirectories } = await buildCatalogueFromDirectory(resourcesDir);
 
   console.log(`[build-catalog] Successfully validated ${artifact.count} resource(s).`);
 
@@ -61,8 +63,11 @@ async function main() {
   }
 
   for (const manifest of artifact.resources) {
-    const resDir = path.join(resourcesDir, manifest.categories[0] ?? 'primitives', manifest.slug);
-    const item = generateRegistryItem(manifest, fs.existsSync(resDir) ? resDir : resourcesDir);
+    const resDir = resourceDirectories.get(manifest);
+    if (!resDir) {
+      throw new Error(`Validated resource directory missing for '${manifest.id}'.`);
+    }
+    const item = generateRegistryItem(manifest, resDir);
     registryItems.push(item);
 
     const itemPath = path.join(registryOutputDir, `${manifest.slug}.json`);
@@ -93,8 +98,11 @@ async function main() {
   fs.writeFileSync(path.join(sitePublicDir, 'openapi.json'), JSON.stringify(openApiSpec, null, 2), 'utf-8');
   console.log('[build-catalog] Generated /openapi.json');
 
+  const showcasesDir=path.join(sitePublicDir,'data','showcases');
+  fs.mkdirSync(showcasesDir,{recursive:true});
+  for(const showcase of SHOWCASE_PROJECTS)fs.writeFileSync(path.join(showcasesDir,`${showcase.id}.json`),JSON.stringify(composeShowcase(showcase.id,artifact.resources),null,2),'utf8');
   // 5. Generate Gold 40 runtime registry & exporter sources
-  await generateGoldArtifacts();
+  await generateGoldArtifacts(resourceDirectories);
 }
 
 main().catch((err) => {

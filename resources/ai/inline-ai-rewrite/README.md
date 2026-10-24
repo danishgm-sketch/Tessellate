@@ -1,3 +1,3 @@
 # Inline AI Rewrite
 
-Inline text transformation overlay with tone selection buttons and instant diff acceptance.
+An illustrative inline-rewrite pattern with fixed tone examples and local preview state. It does not call an AI provider or modify content outside the preview.

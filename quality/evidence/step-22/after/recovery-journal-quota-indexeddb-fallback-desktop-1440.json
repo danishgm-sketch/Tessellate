@@ -1,0 +1,20 @@
+{
+  "url": "http://localhost:4321/workbench?project=local-3c096305-4167-4283-b56f-cbe152768068",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "status": "passed",
+  "issue": "AUD-160",
+  "checks": {
+    "workbenchStayedEditable": true,
+    "indexedDbSaveSurvivedReload": true,
+    "exactManifestRestored": true
+  },
+  "screenshot": "quality/evidence/step-22/after/recovery-journal-quota-indexeddb-fallback-desktop-1440.png"
+}

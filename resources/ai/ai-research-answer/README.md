@@ -1,3 +1,3 @@
 # AI Research Answer
 
-Synthesized deep research response block with executive summary callout, numbered findings, and confidence badge.
+Illustrative research answer layout. It displays sample findings and does not retrieve sources or calculate a confidence score.

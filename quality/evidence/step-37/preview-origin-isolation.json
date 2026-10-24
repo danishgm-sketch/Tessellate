@@ -1,0 +1,53 @@
+{
+  "id": "SEC-37-058",
+  "severity": "high",
+  "route": "/preview/?resource=button",
+  "viewport": "1440x900",
+  "environment": "Local Sites Worker Chromium preview",
+  "beforeFix": {
+    "httpStatus": 200,
+    "origin": "http://127.0.0.1:4323",
+    "localStorageAccessible": true,
+    "failure": "The preview document shared the application origin when opened directly, so script could read local project storage."
+  },
+  "afterFix": {
+    "httpStatus": 200,
+    "origin": "null",
+    "localStorageBlocked": true,
+    "previewRendered": true,
+    "consoleErrors": [],
+    "uncaughtErrors": [],
+    "failedRequests": []
+  },
+  "hostilePreviewActions": {
+    "attempts": [
+      "external fetch",
+      "external image load",
+      "external script load",
+      "external nested frame"
+    ],
+    "fetch": "rejected by connect-src",
+    "image": "request failed with csp; img-src violation recorded",
+    "script": "request failed with csp; script-src violation recorded",
+    "nestedFrame": "blocked by frame-src 'none'",
+    "externalResponses": [],
+    "externalInlineScriptExecuted": false,
+    "test": "tests/e2e/sites-preview-csp.spec.ts: an untrusted preview cannot send data to an external origin"
+  },
+  "reproduction": [
+    "Navigate directly to /preview/?resource=button rather than through ResourcePreviewFrame.",
+    "Inspect window.origin and attempt localStorage.setItem from the preview document."
+  ],
+  "screenshots": {
+    "afterDesktop": "quality/evidence/step-37/preview-direct-after-1440.png",
+    "afterMobile": "quality/evidence/step-37/preview-direct-after-390.png"
+  },
+  "rootCause": "Only the embedding iframe element imposed sandboxing; the preview response CSP did not sandbox direct navigations.",
+  "remediation": "The Sites Worker preview CSP now includes sandbox allow-scripts, applying an opaque origin with scripts enabled to both embedded and directly opened preview documents.",
+  "tests": {
+    "beforeFix": "Direct-preview regression failed: expected opaque origin and blocked storage, received http://127.0.0.1:4323 with storage accessible.",
+    "afterFix": "10 sites-preview-csp Playwright tests passed across desktop Chromium and mobile Chromium.",
+    "testFile": "tests/e2e/sites-preview-csp.spec.ts"
+  },
+  "status": "fixed locally; deployed verification pending"
+}

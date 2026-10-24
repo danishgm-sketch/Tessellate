@@ -1,0 +1,30 @@
+{
+  "findingId": "SEC-37-070",
+  "severity": "medium",
+  "title": "Custom Link components were mistaken for native link elements",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "source": "return <Link href=\"https://docs.example.test/guide\">Read the guide</Link>;",
+    "beforeFix": "The uppercase React component name was lowercased to link, then treated as a native <link> asset loader.",
+    "afterFix": "Capitalized JSX component names are not classified as native HTML resource tags."
+  },
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "canonicalResourceIsolationMatrix": {
+    "command": "pnpm exec tsx -e \"import { readdirSync } from 'node:fs'; import { join } from 'node:path'; import { runRegistryGate } from './packages/registry-gate/src/runner.ts'; const walk = (d) => readdirSync(d, { withFileTypes: true }).flatMap((e) => e.isDirectory() ? walk(join(d, e.name)) : e.name === 'manifest.json' ? [d] : []); (async () => { const dirs = walk('resources'); const results = []; for (const dir of dirs) { const report = await runRegistryGate(dir); const isolation = report.checks.find((check) => check.id === 'security-isolation'); if (isolation?.status === 'fail') results.push({ resource: report.resourceSlug, details: isolation.details }); } console.log(JSON.stringify({ scanned: dirs.length, securityFailures: results.length, results }, null, 2)); })();\"",
+    "result": "passed",
+    "resources_scanned": 324,
+    "security_isolation_failures": 0,
+    "failure_details": []
+  },
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"capitalized Link\"",
+    "redBeforeFixResult": "failed as expected: the external navigation component was rejected",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "29 tests passed"
+  },
+  "runtimeBoundary": "The registry gate statically parses source and does not execute community code. Deployed preview isolation verification remains pending."
+}

@@ -1,0 +1,50 @@
+{
+  "id": "STEP-17-MOBILE",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "url": "http://localhost:4321/workbench?project=proj-direction-c-1c51587ebb28492c8d0dc65c3579a92fdirc",
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "checks": {
+    "shell": {
+      "viewportWidth": 390,
+      "viewportHeight": 844,
+      "documentWidth": 390,
+      "navigationHeight": 64,
+      "shellHeight": 844
+    },
+    "disabledControlSelection": {
+      "nodeId": "node-screen-settings-save-footer-3",
+      "nodeType": "element",
+      "inspectorOpened": true,
+      "screenshot": "quality\\evidence\\step-17\\after\\disabled-resource-canvas-selection-mobile-390x844.png"
+    },
+    "navigation": {
+      "pages": [
+        "Select screen Marketing Home",
+        "Select screen Team Overview",
+        "Select screen People Directory",
+        "Select screen Teams",
+        "Select screen Engagement",
+        "Select screen Onboarding",
+        "Select screen Settings & Policies"
+      ],
+      "firstScreen": "screen-marketing-home",
+      "selectedScreen": "screen-settings",
+      "selectedResourceSection": "node-screen-marketing-home-hero-2",
+      "tabs": [
+        "Preview",
+        "Pages",
+        "Inspect",
+        "Command",
+        "Audit"
+      ]
+    }
+  },
+  "screenshot": "quality\\evidence\\step-17\\after\\workbench-fundamentals-mobile-chrome.png"
+}

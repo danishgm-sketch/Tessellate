@@ -1,0 +1,72 @@
+{
+  "id": "AUD-305",
+  "detectedAt": "2026-10-23",
+  "severity": "high",
+  "category": "security",
+  "advisory": {
+    "id": "GHSA-mrhx-c7xc-m3w5",
+    "url": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5",
+    "affectedWorkspaceResolution": ["zod@4.6.5", "zod@3.25.76"],
+    "patchedResolution": "zod@4.6.7"
+  },
+  "before": {
+    "command": "pnpm audit:all",
+    "result": "The dependency-audit phase failed on a high-severity Zod advisory after the build, release checks, bundle, provenance, and secret/security audits had completed.",
+    "schemaCondition": "External collection schemas had no explicit upper bounds, so hostile large arrays could trigger item-level validation work."
+  },
+  "after": {
+    "command": "pnpm audit",
+    "exitCode": 0,
+    "outputFile": "quality/evidence/step-39/zod-audit-after.log",
+    "output": "No known vulnerabilities found",
+    "resolvedVersions": "pnpm why zod -r reports one version: 4.6.7",
+    "schemaRegression": {
+      "command": "pnpm exec vitest run packages/schemas/src/__tests__/schemas.test.ts packages/schemas/src/__tests__/leaf-contracts.test.ts",
+      "exitCode": 0,
+      "testsPassed": 144,
+      "outputFile": "quality/evidence/step-39/zod-schema-regressions.log",
+      "hostileInput": "25,000 malformed project-screen entries and 25,000 malformed recursive-child entries are rejected by one too_big issue each before item validation."
+    },
+    "workspaceTypecheck": "passed across 22 packages",
+    "workspaceLint": "passed with zero errors and 33 existing warnings",
+    "workspaceUnitTests": "1,212 passed across 77 files",
+    "auditAll": {
+      "exitCode": 0,
+      "releaseGates": "16/16",
+      "resourceIsolation": "324/324",
+      "astroPages": 718,
+      "bundleBudgets": "passed",
+      "provenanceAndLicense": "324/324 passed",
+      "securityAndSecrets": "zero violations",
+      "dependencyAudit": "No known vulnerabilities found",
+      "outputFile": "quality/evidence/step-39/audit-all-zod-hardening.log"
+    },
+    "playwright": {
+      "exitCode": 0,
+      "applicationPassed": 274,
+      "sitesWorkerPassed": 224,
+      "isolatedPreviewPassed": 3,
+      "configuredSkips": 144,
+      "failures": 0,
+      "outputFile": "quality/evidence/step-39/e2e-zod-hardening.log"
+    }
+  },
+  "changedFiles": [
+    "pnpm-workspace.yaml",
+    "pnpm-lock.yaml",
+    "apps/api/package.json",
+    "packages/schemas/package.json",
+    "packages/workbench/package.json",
+    "packages/mcp/package.json",
+    "packages/registry-gate/package.json",
+    "packages/schemas/src/audit.ts",
+    "packages/schemas/src/intent-command.ts",
+    "packages/schemas/src/mutations.ts",
+    "packages/schemas/src/product.ts",
+    "packages/schemas/src/project.ts",
+    "packages/schemas/src/resource.ts",
+    "packages/mcp/src/tools.ts",
+    "packages/schemas/src/__tests__/schemas.test.ts"
+  ],
+  "status": "fixed-local-verified; full local gates pass; public review verification remains pending"
+}

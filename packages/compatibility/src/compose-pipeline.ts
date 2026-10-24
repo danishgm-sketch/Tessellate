@@ -22,11 +22,39 @@ import {
 import { getCompositionGrammar, type CompositionGrammar } from './grammars.js';
 import { evaluateHardConstraints } from './hard-constraints.js';
 import { calculateCompatibilityScore } from './scoring.js';
-import {
-  isResourceComposerEligible,
-  isResourceCompositionCapable,
-} from './capabilities.js';
+import { resourceMatchesRole } from './semantic-roles.js';
+import { bindResourceContent, resolveWorkspaceBrand } from './content-bindings.js';
+import { isResourceComposerEligible, isResourceCompositionCapable } from './capabilities.js';
 export { isResourceComposerEligible, isResourceCompositionCapable };
+
+function compositionNodeType(
+  role: string,
+  resource?: ResourceManifest | null
+): ProjectNode['nodeType'] {
+  if (role === 'navigation') return 'layout';
+
+  switch (resource?.resourceType) {
+    case 'primitive':
+      return 'element';
+    case 'component':
+    case 'data-visualization':
+    case 'state':
+    case 'motion':
+    case 'background':
+    case 'effect':
+    case 'typography':
+    case 'ai-pattern':
+      return 'component';
+    case 'block':
+    case 'flow':
+      return 'block';
+    case 'page':
+      return 'layout';
+    case 'section':
+    default:
+      return 'section';
+  }
+}
 
 export interface RoleResolutionDiagnostic {
   code: 'UNRESOLVED_REQUIRED_ROLE';
@@ -42,6 +70,7 @@ export interface DirectionCompositionOptions {
   catalogResources?: ResourceManifest[];
   seed?: string | number;
   diagnostics?: RoleResolutionDiagnostic[];
+  briefDescription?: string;
 }
 
 export interface ComposedDirectionOutput {
@@ -72,7 +101,11 @@ function resolveBestResourceForRole(
   catalog: ResourceManifest[],
   productModel: ProductModel,
   surroundingResources: ResourceManifest[] = []
-): { resource: ResourceManifest | null; ref: ResourceRef | undefined; diagnostic?: RoleResolutionDiagnostic } {
+): {
+  resource: ResourceManifest | null;
+  ref: ResourceRef | undefined;
+  diagnostic?: RoleResolutionDiagnostic;
+} {
   if (!catalog || catalog.length === 0) {
     return {
       resource: null,
@@ -85,21 +118,10 @@ function resolveBestResourceForRole(
     };
   }
 
-  const roleNorm = semanticRole.toLowerCase();
-
   // 1. Role / category filtering
-  let candidates = catalog.filter((res) => {
-    if (!isResourceComposerEligible(res)) return false;
-    const hasRole = (res.roles ?? []).some((r) => r.toLowerCase().includes(roleNorm) || roleNorm.includes(r.toLowerCase()));
-    const hasCategory = grammar?.candidateCategories.some((c) => (res.categories ?? []).includes(c));
-    const hasTag = (res.tags ?? []).some((t) => t.toLowerCase() === roleNorm);
-    return hasRole || hasCategory || hasTag;
-  });
-
-  if (candidates.length === 0) {
-    // If no role-specific candidates match, consider general eligible catalog resources
-    candidates = catalog.filter(isResourceComposerEligible);
-  }
+  const candidates = catalog.filter(
+    (res) => isResourceComposerEligible(res) && resourceMatchesRole(res, semanticRole)
+  );
 
   // 2. Filter by hard constraints — STRICT FAIL CLOSED
   const validCandidates: ResourceManifest[] = [];
@@ -108,6 +130,7 @@ function resolveBestResourceForRole(
   for (const candidate of candidates) {
     const constraintResult = evaluateHardConstraints({
       resource: candidate,
+      constraints: productModel.constraints,
       targetFramework: 'react',
       targetStyling: 'tailwind-v4',
       requiredAccessibilityFloor: productModel.constraints.accessibilityFloor,
@@ -177,9 +200,7 @@ function resolveBestResourceForRole(
 /**
  * Instantiates a complete ProjectManifest for an individual generated direction.
  */
-export function composeProjectForDirection(
-  options: DirectionCompositionOptions
-): ProjectManifest {
+export function composeProjectForDirection(options: DirectionCompositionOptions): ProjectManifest {
   const { productModel, screenGraph, direction, seed = '1' } = options;
   const catalog = options.catalogResources ?? [];
 
@@ -189,28 +210,62 @@ export function composeProjectForDirection(
 
   // Instantiate each screen defined in the ScreenGraph
   const allScreenNodes = screenGraph.groups.flatMap((g) => g.screens);
-  const screensToInstantiate = allScreenNodes.length > 0
-    ? allScreenNodes
-    : [
-        {
-          id: 'screen-overview',
-          name: 'Overview Dashboard',
-          slug: '/overview',
-          screenType: 'dashboard',
-          purpose: 'Operational overview and metrics',
-          required: true,
-          jobs: ['Monitor telemetry', 'Triage alerts'],
-          importance: 90,
-          navigationVisibility: 'primary' as const,
-          expectedData: [],
-          requiredRoles: ['navigation', 'hero', 'overview-header', 'data-table'],
-          optionalRoles: ['activity-feed'],
-        },
-      ];
+  const screensToInstantiate =
+    allScreenNodes.length > 0
+      ? allScreenNodes
+      : [
+          {
+            id: 'screen-overview',
+            name: 'Overview Dashboard',
+            slug: '/overview',
+            screenType: 'dashboard',
+            purpose: 'Operational overview and metrics',
+            required: true,
+            jobs: ['Monitor telemetry', 'Triage alerts'],
+            importance: 90,
+            navigationVisibility: 'primary' as const,
+            expectedData: [],
+            requiredRoles: ['navigation', 'hero', 'overview-header', 'data-table'],
+            optionalRoles: ['activity-feed'],
+          },
+        ];
+  const projectBrand = resolveWorkspaceBrand(productModel, options.briefDescription);
 
   for (const screenNode of screensToInstantiate) {
-    // Role requirements: combine screen required roles with grammar role ordering
-    const screenRoles = [...new Set([...(screenNode.requiredRoles ?? []), ...(grammar?.requiredRoles ?? [])])];
+    // A page keeps its semantic jobs. Direction grammar changes hierarchy, not
+    // the identity of required content (a marketing CTA cannot become an IDE pane).
+    const screenRoles = [...new Set(screenNode.requiredRoles ?? [])];
+    if (
+      productModel.entities.some((entity) => entity.name === 'Employee') &&
+      screenNode.screenType === 'dashboard' &&
+      !screenRoles.includes('data-table')
+    )
+      screenRoles.push('data-table');
+    // A messaging screen's channel rail is its navigation surface; adding a
+    // second generic navigation resource would create nested duplicate sidebars.
+    if (
+      !screenRoles.includes('navigation') &&
+      !screenRoles.includes('channels-rail') &&
+      screenNode.screenType !== 'authentication'
+    ) {
+      screenRoles.unshift('navigation');
+    }
+    if (screenNode.screenType === 'workspace-editor') {
+      // The available editor-toolbar candidate is minimal-top-nav. Rendering it
+      // beside the shell navigation duplicates every product destination and
+      // advertises links as editor controls, so leave the workspace canvas and
+      // inspector as the screen's working surface until a real toolbar exists.
+      const editorToolbarIndex = screenRoles.indexOf('editor-toolbar');
+      if (editorToolbarIndex >= 0) screenRoles.splice(editorToolbarIndex, 1);
+    }
+    if (direction.type === 'structural-alternative') {
+      const activityIndex = screenRoles.indexOf('activity-feed');
+      const tableIndex = screenRoles.indexOf('data-table');
+      if (activityIndex >= 0 && tableIndex > activityIndex) {
+        screenRoles.splice(tableIndex, 1);
+        screenRoles.splice(activityIndex, 0, 'data-table');
+      }
+    }
     if (screenRoles.length === 0) {
       screenRoles.push('navigation', 'header', 'content-grid', 'footer');
     }
@@ -220,11 +275,28 @@ export function composeProjectForDirection(
 
     for (let i = 0; i < screenRoles.length; i++) {
       const role = screenRoles[i]!;
+      let roleCatalog = catalog;
+      if (role === 'navigation') {
+        const navigationSlug =
+          screenNode.screenType !== 'marketing' && direction.navigationModel === 'sidebar'
+            ? 'collapsible-sidebar'
+            : 'minimal-top-nav';
+        roleCatalog = catalog.filter((resource) => resource.slug === navigationSlug);
+      } else if (role === 'activity-feed') {
+        // Activity feeds are chronological by default. Only a screen explicitly
+        // named for notifications, an inbox, or alerts should behave like an inbox.
+        const resourceSlug = /notifications?|inbox|alerts/i.test(screenNode.name)
+          ? 'notification-centre'
+          : 'timeline';
+        if (catalog.some((resource) => resource.slug === resourceSlug)) {
+          roleCatalog = catalog.filter((resource) => resource.slug === resourceSlug);
+        }
+      }
       const { resource, ref, diagnostic } = resolveBestResourceForRole(
         role,
         direction.dna,
         grammar,
-        catalog,
+        roleCatalog,
         productModel,
         surroundingForScreen
       );
@@ -238,15 +310,34 @@ export function composeProjectForDirection(
       }
 
       const variant =
-        direction.type === 'expressive'
-          ? 'expressive'
-          : direction.type === 'structural-alternative'
-          ? 'nocturne'
-          : 'quiet';
+        screenNode.screenType === 'marketing' &&
+        productModel.entities.some((entity) => entity.name === 'Employee')
+          ? direction.type === 'conservative'
+            ? 'quiet'
+            : 'expressive'
+          : direction.type === 'expressive'
+            ? 'expressive'
+            : direction.type === 'structural-alternative'
+              ? 'nocturne'
+              : 'quiet';
 
-      const nodeProps: Record<string, unknown> = {
-        title: `${screenNode.name} ${role}`,
-      };
+      const content = bindResourceContent(
+        productModel,
+        screenNode,
+        role,
+        allScreenNodes,
+        resource?.slug ?? '',
+        options.briefDescription,
+        projectBrand
+      );
+      if (role === 'navigation')
+        content.orientation =
+          screenNode.screenType !== 'marketing' && direction.type === 'structural-alternative'
+            ? 'vertical'
+            : 'horizontal';
+      // Only persist props declared by the selected resource, plus semantic title.
+      // Resource props are consumed by both runtime and standalone source.
+      const nodeProps: Record<string, unknown> = content;
       if (diagnostic) {
         nodeProps.unresolvedRequiredRole = true;
         nodeProps.diagnostic = diagnostic;
@@ -254,7 +345,7 @@ export function composeProjectForDirection(
 
       sectionNodes.push({
         id: `node-${screenNode.id}-${role}-${i + 1}`,
-        nodeType: role === 'navigation' ? 'layout' : 'section',
+        nodeType: compositionNodeType(role, resource),
         semanticRole: role,
         resourceRef: ref,
         variant,
@@ -266,7 +357,16 @@ export function composeProjectForDirection(
 
     // Assemble root layout according to direction navigation topology
     let rootNode: ProjectNode;
-    if (direction.navigationModel === 'sidebar') {
+    if (screenNode.screenType === 'marketing') {
+      rootNode = {
+        id: `root-${screenNode.id}`,
+        nodeType: 'layout',
+        semanticRole: 'marketing-page',
+        children: sectionNodes,
+        slots: {},
+        props: { layoutFamily: direction.layoutFamily },
+      };
+    } else if (direction.navigationModel === 'sidebar') {
       const navNode = sectionNodes.find((n) => n.semanticRole === 'navigation') ?? sectionNodes[0]!;
       const contentNodes = sectionNodes.filter((n) => n.id !== navNode.id);
       rootNode = {
@@ -287,7 +387,10 @@ export function composeProjectForDirection(
         slots: {},
         props: { layoutVariant: 'sidebar' },
       };
-    } else if (direction.navigationModel === 'command-palette' || direction.navigationModel === 'rail') {
+    } else if (
+      direction.navigationModel === 'command-palette' ||
+      direction.navigationModel === 'rail'
+    ) {
       const navNode = sectionNodes.find((n) => n.semanticRole === 'navigation') ?? sectionNodes[0]!;
       const contentNodes = sectionNodes.filter((n) => n.id !== navNode.id);
       rootNode = {
@@ -319,10 +422,19 @@ export function composeProjectForDirection(
         props: { layoutVariant: 'vertical-flow' },
       };
     }
+    if (
+      screenNode.screenType === 'marketing' &&
+      productModel.entities.some((entity) => entity.name === 'Employee')
+    )
+      rootNode.dnaOverrides = { visualMode: 'light', warmth: 82, playfulness: 65 };
+    if (screenNode.screenType === 'onboarding')
+      rootNode.dnaOverrides = { playfulness: 75, warmth: 78, curvature: 65, motionPlayfulness: 55 };
+    if (screenNode.screenType === 'settings')
+      rootNode.dnaOverrides = { playfulness: 8, professionalism: 96, curvature: 12, motion: 10 };
 
     screens.push({
       id: screenNode.id,
-      screenNodeId: `node-${screenNode.id}`,
+      screenNodeId: screenNode.id,
       name: screenNode.name,
       slug: screenNode.slug,
       rootNode,
@@ -334,26 +446,26 @@ export function composeProjectForDirection(
   const manifest: ProjectManifest = {
     schemaVersion: '1.0.0',
     id: manifestId,
-    name: `${direction.name} — ${primaryArchetype.toUpperCase()}`,
-    description: direction.rationale,
+    name: `${direction.name} — ${productModel.entities.some((entity) => entity.name === 'Employee') ? 'Employee experience' : primaryArchetype.toUpperCase()}`,
+    description: options.briefDescription ?? direction.rationale,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
     catalogVersion: '0.1.0',
     seed: String(seed),
     productModel,
     designDNA: direction.dna,
-    brand: {
-      name: `${primaryArchetype.toUpperCase()} System`,
-    },
+    brand: { name: projectBrand },
     constraints: productModel.constraints,
     screenGraph,
     screens,
     navigation: {
       model: direction.navigationModel,
-      primaryItems: screens.map((s) => ({
-        label: s.name,
-        targetScreenId: s.id,
-      })),
+      primaryItems: screensToInstantiate
+        .filter((screen) => screen.navigationVisibility === 'primary')
+        .map((screen) => ({ label: screen.name, targetScreenId: screen.id })),
+      secondaryItems: screensToInstantiate
+        .filter((screen) => screen.navigationVisibility === 'secondary')
+        .map((screen) => ({ label: screen.name, targetScreenId: screen.id })),
     },
     assets: [],
     locks: [],
@@ -403,6 +515,7 @@ export function composeProjectPipeline(
     catalogResources: options?.catalogResources,
     seed: `${seed}-dir-a`,
     diagnostics: diagA,
+    briefDescription: brief.description,
   });
 
   const diagB: RoleResolutionDiagnostic[] = [];
@@ -413,6 +526,7 @@ export function composeProjectPipeline(
     catalogResources: options?.catalogResources,
     seed: `${seed}-dir-b`,
     diagnostics: diagB,
+    briefDescription: brief.description,
   });
 
   const diagC: RoleResolutionDiagnostic[] = [];
@@ -423,6 +537,7 @@ export function composeProjectPipeline(
     catalogResources: options?.catalogResources,
     seed: `${seed}-dir-c`,
     diagnostics: diagC,
+    briefDescription: brief.description,
   });
 
   return {

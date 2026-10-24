@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export function EssentialVsExperimental() {
   const [level, setLevel] = useState<'essential' | 'elevated' | 'experimental'>('elevated');
+  const [interactive, setInteractive] = useState(false);
 
+  useEffect(() => {
+    setInteractive(true);
+  }, []);
   return (
     <section className="py-24 px-6 max-w-[1440px] mx-auto select-none border-t border-[#D9D6CF]">
       <div className="max-w-3xl mb-12 space-y-4">
@@ -13,7 +17,8 @@ export function EssentialVsExperimental() {
           Essential → Experimental.
         </h2>
         <p className="text-lg text-[#62666F] font-normal leading-relaxed">
-          One continuous mathematical spectrum. From a zero-distraction utilitarian compliance tool to a high-ambition expressive product hero, without changing the underlying component vocabulary.
+          Compare restrained, balanced, and expressive treatments using the same resource
+          vocabulary. This illustrative interface is not connected to a live project.
         </p>
 
         {/* Level Selector Pills */}
@@ -22,12 +27,15 @@ export function EssentialVsExperimental() {
             <button
               key={l}
               type="button"
+              aria-pressed={level === l}
+              aria-describedby={!interactive ? 'visual-spectrum-controls-status' : undefined}
+              disabled={!interactive}
               onClick={() => setLevel(l)}
               className={`px-4 py-2 text-xs font-semibold rounded-lg capitalize transition-all ${
                 level === l
                   ? 'bg-[#111217] text-white shadow'
                   : 'text-[#62666F] hover:text-[#111217]'
-              }`}
+              } disabled:cursor-wait disabled:opacity-60`}
             >
               {l === 'essential' && '01 · Essential'}
               {l === 'elevated' && '02 · Elevated (Default)'}
@@ -35,6 +43,14 @@ export function EssentialVsExperimental() {
             </button>
           ))}
         </div>
+        <p
+          id="visual-spectrum-controls-status"
+          role="status"
+          aria-live="polite"
+          className="min-h-4 text-xs text-[#62666F]"
+        >
+          {!interactive && 'Preparing comparison controls…'}
+        </p>
       </div>
 
       {/* Comparison Preview Stage */}
@@ -50,44 +66,61 @@ export function EssentialVsExperimental() {
                     level === 'essential'
                       ? 'bg-[#111217] text-white rounded-none'
                       : level === 'elevated'
-                      ? 'bg-[#2547E8] text-white rounded-md'
-                      : 'bg-gradient-to-tr from-[#2547E8] to-[#C9FF57] text-[#111217] rounded-full shadow-lg'
+                        ? 'bg-[#2547E8] text-white rounded-md'
+                        : 'bg-gradient-to-tr from-[#2547E8] to-[#C9FF57] text-[#111217] rounded-full shadow-lg'
                   }`}
                 >
                   T
                 </div>
                 <div>
-                  <h4 className={`font-semibold text-sm ${level === 'experimental' ? 'font-serif text-base' : ''}`}>
-                    Vault Analytics Dashboard
+                  <h4
+                    className={`font-semibold text-sm ${level === 'experimental' ? 'font-serif text-base' : ''}`}
+                  >
+                    Tessellate Design Preview
                   </h4>
-                  <span className="text-[11px] font-mono text-[#8B8F97]">REVISION · 2026.04</span>
+                  <span className="text-[11px] font-mono text-[var(--text-muted)]">
+                    Illustrative interface · no project connected
+                  </span>
                 </div>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-xs px-2.5 py-1 rounded bg-white border border-[#D9D6CF] font-mono text-[#62666F]">
-                  AA WCAG
+                  WCAG 2.2 AA target
                 </span>
-                <button
-                  type="button"
-                  className={`px-3 py-1.5 text-xs font-semibold text-white transition-all ${
-                    level === 'essential'
-                      ? 'bg-[#111217] rounded-none'
-                      : level === 'elevated'
-                      ? 'bg-[#2547E8] rounded-md shadow-sm'
-                      : 'bg-[#111217] rounded-full hover:scale-105'
-                  }`}
-                >
-                  Export Data
-                </button>
+                <span className="px-3 py-1.5 text-xs font-semibold text-[#62666F] border border-[#D9D6CF] rounded-md">
+                  Preview only
+                </span>
               </div>
             </div>
 
             {/* Metric Cards Row */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
               {[
-                { title: 'Gross Volume', val: '£4.28M', delta: '+12%' },
-                { title: 'Active Accounts', val: '18,400', delta: '+8%' },
-                { title: 'Latency Budget', val: '42ms', delta: 'OPTIMAL' },
+                {
+                  title: 'Visual ambition',
+                  val:
+                    level === 'essential'
+                      ? '25 / 100'
+                      : level === 'elevated'
+                        ? '55 / 100'
+                        : '88 / 100',
+                  detail: 'Design DNA setting',
+                },
+                {
+                  title: 'Geometry',
+                  val:
+                    level === 'essential'
+                      ? 'Angular'
+                      : level === 'elevated'
+                        ? 'Rounded'
+                        : 'Expressive',
+                  detail: 'Shape treatment',
+                },
+                {
+                  title: 'Motion',
+                  val: level === 'essential' ? 'Reduced' : level === 'elevated' ? 'Calm' : 'Spring',
+                  detail: 'Example treatment',
+                },
               ].map((m, i) => (
                 <div
                   key={i}
@@ -95,19 +128,21 @@ export function EssentialVsExperimental() {
                     level === 'essential'
                       ? 'bg-white border border-[#D9D6CF] rounded-none'
                       : level === 'elevated'
-                      ? 'bg-white border border-[#D9D6CF] rounded-xl shadow-sm'
-                      : 'bg-gradient-to-br from-white to-[#FAF9F6] border border-[#2547E8]/20 rounded-2xl shadow-md'
+                        ? 'bg-white border border-[#D9D6CF] rounded-xl shadow-sm'
+                        : 'bg-gradient-to-br from-white to-[#FAF9F6] border border-[#2547E8]/20 rounded-2xl shadow-md'
                   }`}
                 >
-                  <span className="block text-[11px] font-mono text-[#8B8F97] uppercase mb-1">
+                  <span className="block text-[11px] font-mono text-[var(--text-muted)] uppercase mb-1">
                     {m.title}
                   </span>
                   <div className="flex items-baseline justify-between">
-                    <span className={`text-xl font-bold tracking-tight text-[#111217] ${level === 'experimental' ? 'text-2xl text-[#2547E8]' : ''}`}>
+                    <span
+                      className={`text-xl font-bold tracking-tight text-[#111217] ${level === 'experimental' ? 'text-2xl text-[#2547E8]' : ''}`}
+                    >
                       {m.val}
                     </span>
-                    <span className="text-[10px] font-mono text-[#177B55] font-semibold">
-                      {m.delta}
+                    <span className="text-[10px] font-mono text-[#62666F] font-semibold">
+                      {m.detail}
                     </span>
                   </div>
                 </div>
@@ -120,15 +155,15 @@ export function EssentialVsExperimental() {
                 level === 'essential'
                   ? 'bg-white border border-[#D9D6CF] rounded-none'
                   : level === 'elevated'
-                  ? 'bg-white border border-[#D9D6CF] rounded-xl'
-                  : 'bg-white border border-[#2547E8]/30 rounded-2xl shadow-sm'
+                    ? 'bg-white border border-[#D9D6CF] rounded-xl'
+                    : 'bg-white border border-[#2547E8]/30 rounded-2xl shadow-sm'
               }`}
             >
               <div className="flex justify-between items-center mb-4">
                 <span className="text-xs font-semibold text-[#111217]">
-                  Telemetry Stream (24-Hour Settlement)
+                  Illustrative layout rhythm
                 </span>
-                <span className="text-[11px] font-mono text-[#8B8F97]">
+                <span className="text-[11px] font-mono text-[var(--text-muted)]">
                   {level === 'essential' && 'Standard Grid'}
                   {level === 'elevated' && 'Smoothed Cadence'}
                   {level === 'experimental' && 'Kinetic Spring Wave'}
@@ -142,13 +177,16 @@ export function EssentialVsExperimental() {
                       level === 'essential'
                         ? 'bg-[#111217] rounded-none'
                         : level === 'elevated'
-                        ? 'bg-[#2547E8] rounded-t-sm'
-                        : 'bg-gradient-to-t from-[#2547E8] to-[#C9FF57] rounded-t-lg shadow-sm'
+                          ? 'bg-[#2547E8] rounded-t-sm'
+                          : 'bg-gradient-to-t from-[#2547E8] to-[#C9FF57] rounded-t-lg shadow-sm'
                     }`}
                     style={{ height: `${v}%` }}
                   />
                 ))}
               </div>
+              <p className="mt-3 text-[10px] font-mono text-[#62666F]">
+                Decorative bars · no usage data
+              </p>
             </div>
           </div>
 
@@ -167,11 +205,11 @@ export function EssentialVsExperimental() {
               </h3>
               <p className="text-sm text-[#62666F] leading-relaxed">
                 {level === 'essential' &&
-                  'Focuses on maximum speed, zero cognitive overhead, and strict WCAG AAA contrast. Sharp radii and direct utilitarian layout.'}
+                  'Uses concise hierarchy, fewer decorative effects, and high contrast. Check the rendered project against WCAG before making a conformance claim.'}
                 {level === 'elevated' &&
-                  'The standard default for SaaS and enterprise products. Subtle surface elevations, disciplined 8px radii, and calm typography rhythm.'}
+                  'A restrained starting point for product interfaces, with consistent surfaces and a calm typography rhythm.'}
                 {level === 'experimental' &&
-                  'For pioneering products and consumer experiences. Kinetic spring transitions, dynamic chroma gradients, pill-shaped geometries, and bold focal headers.'}
+                  'A more expressive treatment for products that call for stronger color, motion, and typographic contrast.'}
               </p>
             </div>
 
@@ -185,13 +223,21 @@ export function EssentialVsExperimental() {
               <div className="flex justify-between">
                 <span>Geometry Curvature:</span>
                 <span className="font-semibold text-[#111217]">
-                  {level === 'essential' ? '0px (Sharp)' : level === 'elevated' ? '8px (Disciplined)' : '9999px (Pill)'}
+                  {level === 'essential'
+                    ? '0px (Sharp)'
+                    : level === 'elevated'
+                      ? '8px (Disciplined)'
+                      : '9999px (Pill)'}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span>Motion Personality:</span>
                 <span className="font-semibold text-[#111217]">
-                  {level === 'essential' ? 'instant-utility' : level === 'elevated' ? 'soft-ease' : 'playful-spring'}
+                  {level === 'essential'
+                    ? 'instant-utility'
+                    : level === 'elevated'
+                      ? 'soft-ease'
+                      : 'playful-spring'}
                 </span>
               </div>
             </div>

@@ -7,24 +7,29 @@
     "dev": "pnpm -r --parallel run dev",
     "build:catalog": "tsx scripts/build-catalog.ts",
     "build": "pnpm build:catalog && pnpm -r run build",
-    "typecheck": "pnpm -r --parallel run typecheck",
-    "lint": "eslint .",
+    "typecheck": "pnpm -r --workspace-concurrency=4 run typecheck",
+    "lint": "eslint . --max-warnings=51",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test",
+    "test:e2e": "playwright test && playwright test --config tests/e2e/sites-preview.playwright.config.ts && playwright test --config tests/e2e/preview-app.playwright.config.ts",
+    "quality:step-43-long-session": "playwright test --config playwright.long-session-step-43.config.ts",
     "audit:release-gate": "tsx scripts/verify-release-gate.ts",
+    "audit:resource-isolation": "tsx scripts/audit-resource-isolation.ts",
     "audit:licenses": "tsx scripts/audit-license-provenance.ts",
     "audit:secrets": "tsx scripts/audit-security-secrets.ts",
+    "audit:dependencies": "pnpm audit",
     "audit:budgets": "tsx scripts/audit-bundle-budgets.ts",
-    "audit:all": "tsx scripts/verify-release-gate.ts && tsx scripts/audit-bundle-budgets.ts && tsx scripts/audit-license-provenance.ts && tsx scripts/audit-security-secrets.ts"
+    "quality:composition-review": "playwright test --config quality/composition-review.playwright.config.ts",
+    "quality:composition-contact-sheets": "tsx quality/browser/create-composition-contact-sheets.ts",
+    "audit:all": "pnpm audit:release-gate && pnpm audit:resource-isolation && pnpm build && pnpm audit:budgets && pnpm audit:licenses && pnpm audit:secrets && pnpm audit:dependencies"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@eslint/js": "^9.20.0",
-    "@playwright/test": "^1.50.1",
+    "@playwright/test": "1.63.0",
     "@types/node": "^22.13.4",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
@@ -35,6 +40,6 @@
     "tsx": "^4.23.15",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.24.1",
-    "vitest": "^3.0.6"
+    "vitest": "^4.1.12"
   }
 }

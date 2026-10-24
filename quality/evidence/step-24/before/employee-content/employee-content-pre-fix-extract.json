@@ -1,0 +1,170 @@
+{
+  "projectId": "proj-direction-c-e1c2ed4a199c489680814e150144951bdirc",
+  "brand": "People & Co",
+  "brandRefs": [
+    {
+      "screen": "Marketing Home",
+      "actual": "People & Teams",
+      "node": "node-screen-marketing-home-footer-5"
+    },
+    {
+      "screen": "Marketing Home",
+      "actual": "People & Teams",
+      "node": "node-screen-marketing-home-navigation-1"
+    },
+    {
+      "screen": "Team Overview",
+      "actual": "People & Teams",
+      "node": "node-screen-overview-navigation-1"
+    },
+    {
+      "screen": "People Directory",
+      "actual": "People & Teams",
+      "node": "node-screen-collection-index-navigation-1"
+    },
+    {
+      "screen": "Teams",
+      "actual": "People & Teams",
+      "node": "node-screen-teams-navigation-1"
+    },
+    {
+      "screen": "Engagement",
+      "actual": "People & Teams",
+      "node": "node-screen-engagement-navigation-1"
+    },
+    {
+      "screen": "Onboarding",
+      "actual": "People & Teams",
+      "node": "node-screen-onboarding-navigation-1"
+    },
+    {
+      "screen": "Settings & Policies",
+      "actual": "People & Teams",
+      "node": "node-screen-settings-settings-nav-2"
+    },
+    {
+      "screen": "Settings & Policies",
+      "actual": "People & Teams",
+      "node": "node-screen-settings-navigation-1"
+    }
+  ],
+  "marketing": {
+    "eyebrow": "Example organisation · sample content",
+    "headline": "A better workday starts with people.",
+    "subheadline": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
+    "primaryCta": {
+      "label": "Meet your team",
+      "href": "#screen-onboarding"
+    },
+    "secondaryCta": {
+      "label": "Explore onboarding",
+      "href": "#screen-marketing-home"
+    },
+    "note": "Example interface · replace sample data with your organisation"
+  },
+  "teams": {
+    "title": "Team directory",
+    "rows": [
+      {
+        "id": 1,
+        "name": "Example colleague A",
+        "type": "Product team",
+        "quality": 80,
+        "status": "Onboarding",
+        "displayValue": "Progress not connected"
+      },
+      {
+        "id": 2,
+        "name": "Example colleague B",
+        "type": "Engineering team",
+        "quality": 100,
+        "status": "Settled in",
+        "displayValue": "Progress not connected"
+      },
+      {
+        "id": 3,
+        "name": "Example colleague C",
+        "type": "People team",
+        "quality": 40,
+        "status": "Welcome week",
+        "displayValue": "Progress not connected"
+      }
+    ],
+    "columnLabels": {
+      "name": "Colleague",
+      "type": "Team",
+      "quality": "Progress",
+      "status": "Status"
+    }
+  },
+  "engagement": {
+    "title": "People and teams",
+    "rows": [
+      {
+        "id": 1,
+        "name": "Example colleague A",
+        "type": "Product team",
+        "quality": 80,
+        "status": "Onboarding",
+        "displayValue": "Progress not connected"
+      },
+      {
+        "id": 2,
+        "name": "Example colleague B",
+        "type": "Engineering team",
+        "quality": 100,
+        "status": "Settled in",
+        "displayValue": "Progress not connected"
+      },
+      {
+        "id": 3,
+        "name": "Example colleague C",
+        "type": "People team",
+        "quality": 40,
+        "status": "Welcome week",
+        "displayValue": "Progress not connected"
+      }
+    ],
+    "columnLabels": {
+      "name": "Colleague",
+      "type": "Team",
+      "quality": "Progress",
+      "status": "Status"
+    }
+  },
+  "overview": {
+    "title": "People and teams",
+    "rows": [
+      {
+        "id": 1,
+        "name": "Example colleague A",
+        "type": "Product team",
+        "quality": 80,
+        "status": "Onboarding",
+        "displayValue": "Progress not connected"
+      },
+      {
+        "id": 2,
+        "name": "Example colleague B",
+        "type": "Engineering team",
+        "quality": 100,
+        "status": "Settled in",
+        "displayValue": "Progress not connected"
+      },
+      {
+        "id": 3,
+        "name": "Example colleague C",
+        "type": "People team",
+        "quality": 40,
+        "status": "Welcome week",
+        "displayValue": "Progress not connected"
+      }
+    ],
+    "columnLabels": {
+      "name": "Colleague",
+      "type": "Team",
+      "quality": "Progress",
+      "status": "Status"
+    }
+  }
+}

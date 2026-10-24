@@ -1,0 +1,48 @@
+{
+  "id": "STEP-38-WEBKIT-CSP-001",
+  "status": "open",
+  "browser": "WebKit",
+  "route": "/explore?q=onboarding",
+  "viewport": "1440x900",
+  "screenshot": "quality/evidence/step-38/after/workload-explore-sites-webkit.png",
+  "expected": "Sandboxed resource preview frames load without browser console errors under the strict preview CSP.",
+  "actual": "WebKit logs one style-src CSP error for each loaded preview frame. Direct /preview rendering and the resource content still render, but the console is not clean.",
+  "console": [
+    "Refused to apply a stylesheet because its hash, its nonce, or 'unsafe-inline' does not appear in the style-src directive of the Content Security Policy."
+  ],
+  "network": [],
+  "httpErrors": [],
+  "uncaughtExceptions": [],
+  "framePolicy": "default-src 'none'; script-src <origin>/_astro/ <build-certified hashes>; style-src <origin>/_astro/ <build-certified hashes>; style-src-elem <origin>/_astro/ <build-certified hashes>; style-src-attr 'unsafe-inline'; ...",
+  "frameStyles": ["astro-island,astro-slot,astro-static-slot{display:contents}"],
+  "frameStyleAttributes": [],
+  "cspViolationEvents": [
+    {
+      "violatedDirective": "style-src-elem",
+      "blockedURI": "inline",
+      "observedInlineStyle": "astro-island,astro-slot,astro-static-slot{display:contents}",
+      "observedStyleSha256": "'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow='",
+      "sha256PresentInResponsePolicy": true,
+      "computedAstroIslandDisplay": "contents"
+    }
+  ],
+  "reproduction": [
+    "Run the Sites compatibility Worker with WebKit.",
+    "Open /explore and search for onboarding.",
+    "Wait for the first actual resource preview and inspect the browser console."
+  ],
+  "rootCause": "Unresolved. Each affected frame reports a style-src-elem violation for an inline style whose observed text hashes to an allow-listed value and whose rule still computes as display: contents. The evidence cannot establish whether a separate transient style is blocked or WebKit emits a false-positive event for the authorized style.",
+  "securityImpact": "No policy relaxation has been applied. The defect is a browser compatibility failure under the current exact-hash policy.",
+  "reproductionResult": {
+    "playwrightVersion": "1.63.0",
+    "webKitDesktop": "Reproduced: 6 CSP console errors while onboarding results mounted.",
+    "webKitMobile": "Reproduced: 2 CSP console errors while onboarding results mounted.",
+    "browserCancellations": "Variable as filtered cards unmount; latest confirmation run recorded 9 desktop and 0 mobile preview request cancellations. No failed essential requests.",
+    "isolatedCspScenarios": "8 passed across desktop and mobile, including inline style rendering and opaque-origin isolation.",
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "documentWidthOverflow": false
+  },
+  "fixCommit": null
+}

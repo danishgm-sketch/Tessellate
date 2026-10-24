@@ -1,0 +1,43 @@
+{
+  "capturedAt": "2026-10-23T22:34:44Z",
+  "advisory": {
+    "id": "GHSA-27r3-jxmh-p828",
+    "severity": "high",
+    "package": "body-parser",
+    "affectedRange": ">=2.0.0 <2.4.0",
+    "patchedVersion": "2.4.0",
+    "source": "https://github.com/advisories/GHSA-27r3-jxmh-p828"
+  },
+  "before": {
+    "resolvedVersion": "2.3.0",
+    "dependencyPath": "packages__mcp>@modelcontextprotocol/sdk@1.32.1>express@5.3.0>body-parser",
+    "audit": "high advisory reported; pnpm audit:all exited 1",
+    "log": "quality/evidence/step-40/audit-all-body-parser-before.log"
+  },
+  "after": {
+    "resolvedVersion": "2.4.0",
+    "override": "body-parser@2.3.0: 2.4.0",
+    "frozenInstall": "passed",
+    "dependencyAudit": "No known vulnerabilities found",
+    "mcpClientWorkflowTests": {
+      "passed": 7,
+      "failed": 0
+    },
+    "fullAudit": {
+      "command": "pnpm audit:all",
+      "passed": true,
+      "releaseGateChecks": "16/16",
+      "resourceIsolation": "324/324",
+      "productionBuild": "passed",
+      "bundleBudgets": "passed",
+      "licenseProvenance": "passed",
+      "secretsSecurity": "passed",
+      "dependencyAudit": "passed"
+    },
+    "logs": [
+      "quality/evidence/step-40/frozen-install-final.log",
+      "quality/evidence/step-40/audit-all-final.log"
+    ]
+  },
+  "runtimeContext": "The repository's local MCP SSE transport uses node:http directly and does not import Express or body-parser. The patched override removes the high-severity installed dependency from the package graph and restores the release dependency-audit gate."
+}

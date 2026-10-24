@@ -130,10 +130,10 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
 
     const screenIds = plan.screenGraph.groups.flatMap((g) => g.screens.map((s) => s.id));
     expect(screenIds).not.toContain('screen-billing');
-    expect(plan.inferredAssumptions.some((a) => a.includes('Billing and payment screens omitted'))).toBe(true);
+    expect(plan.inferredAssumptions.some((a) => a.includes('Billing omitted because'))).toBe(true);
   });
 
-  it('includes billing screen for commercial SaaS / fintech', () => {
+  it('adds a billing screen only when the brief explicitly describes product monetization', () => {
     const brief = getGoldenBrief('financial-intelligence-terminal');
     expect(brief).toBeDefined();
 
@@ -141,7 +141,15 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
     const plan = planScreenGraph(productModel);
 
     const screenIds = plan.screenGraph.groups.flatMap((g) => g.screens.map((s) => s.id));
-    expect(screenIds).toContain('screen-billing');
+    expect(screenIds).not.toContain('screen-billing');
+
+    const paidWorkspace = interpretProductBrief({
+      description: 'A B2B SaaS workspace for collaborative product teams.',
+      objective: 'Manage paid subscriptions, plans and downloadable invoices.',
+    });
+    const paidScreenIds = planScreenGraph(paidWorkspace.productModel).screenGraph.groups
+      .flatMap((group) => group.screens.map((screen) => screen.id));
+    expect(paidScreenIds).toContain('screen-billing');
   });
 
   it('respects forbiddenScreens constraints strictly', () => {
@@ -154,5 +162,9 @@ describe('Required / Optional Screen Rules & Edge Routing', () => {
     const screenIds = plan.screenGraph.groups.flatMap((g) => g.screens.map((s) => s.id));
     expect(screenIds).not.toContain('screen-settings');
     expect(screenIds).not.toContain('screen-sign-in');
+    for (const edge of plan.screenGraph.edges) {
+      expect(screenIds).toContain(edge.fromScreenId);
+      expect(screenIds).toContain(edge.toScreenId);
+    }
   });
 });

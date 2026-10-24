@@ -47,14 +47,14 @@ export function normalizeDesignTokens(
   const isHighA11y = (dna.accessibilityPriority ?? 80) >= 80;
 
   // 1. Color Mapping
-  const paletteId = options?.paletteId ?? 'paper-cobalt';
+  const paletteId = options?.paletteId ?? (typeof options?.tokenOverrides?.paletteId==='string' ? options.tokenOverrides.paletteId : 'paper-cobalt');
   const palette = getSemanticPalette(paletteId) ?? getSemanticPalette('paper-cobalt')!;
   const mode =
     options?.activeMode ??
     (dna.visualMode === 'dark' ? 'dark' : 'light');
   const paletteTokens = mode === 'dark' ? palette.dark : palette.light;
 
-  const colors: SemanticColorTokens = {
+  let colors: SemanticColorTokens = {
     canvas: paletteTokens.canvas,
     canvasStrong: paletteTokens.canvasStrong,
     surface: paletteTokens.surface,
@@ -63,7 +63,7 @@ export function normalizeDesignTokens(
     borderStrong: paletteTokens.borderStrong,
     textPrimary: isHighA11y && mode === 'light' ? '#0A0A0C' : paletteTokens.textPrimary,
     textSecondary: paletteTokens.textSecondary,
-    textMuted: paletteTokens.textMuted,
+    textMuted: mode==='dark' ? '#A8AFBA' : '#62666F',
     accent: paletteTokens.accent,
     accentHover: paletteTokens.accentHover,
     accentSoft: paletteTokens.accentSoft,
@@ -82,9 +82,12 @@ export function normalizeDesignTokens(
     headingFont: pairing.headingFont,
     bodyFont: pairing.bodyFont,
     monoFont: pairing.monoFont,
-    headingLetterSpacing: pairing.headingLetterSpacing,
+    headingLetterSpacing: getExpressiveLetterSpacing(
+      pairing.headingLetterSpacing,
+      dna.typographicExpression ?? 45
+    ),
     bodyLineHeight: pairing.bodyLineHeight,
-    scaleRatio: pairing.scaleRatio,
+    scaleRatio: Math.round((pairing.scaleRatio + ((dna.typographicExpression ?? 45) - 50) * 0.001) * 1000) / 1000,
   };
 
   // 3. Radius Mapping (Based on curvature 0–100)
@@ -143,6 +146,11 @@ export function normalizeDesignTokens(
     };
   }
 
+  // Feel is a rendering input, not a metadata-only label. At 50, preserve the
+  // canonical curvature tier; reserved/playful endpoints vary its radii by 25%.
+  const feelRadiusScale=0.75+(partialDna?.playfulness ?? 50)/200;
+  for(const key of ['xs','sm','md','lg','xl'] as const)radius[key]=`${Math.round(parseFloat(radius[key])*feelRadiusScale*2)/2}px`;
+
   // 4. Spacing Mapping (Density & Whitespace)
   const density = dna.density ?? 50;
   const whitespace = dna.whitespace ?? 50;
@@ -189,15 +197,65 @@ export function normalizeDesignTokens(
     };
   }
 
+  const surfacePersonality = dna.surfacePersonality;
+  if (surfacePersonality === 'flat' || surfacePersonality === 'paper-flat' || surfacePersonality === 'flat-bordered') {
+    surfaceDepth = {
+      ...surfaceDepth,
+      shadowSubtle: 'none',
+      shadowMedium: 'none',
+      shadowStrong: 'none',
+      ...(surfacePersonality === 'flat-bordered' ? { borderWidth: '1.5px' } : {}),
+    };
+  } else if (surfacePersonality === 'elevated') {
+    surfaceDepth = {
+      ...surfaceDepth,
+      shadowSubtle: '0 2px 6px rgba(17, 18, 23, 0.08)',
+      shadowMedium: '0 10px 28px rgba(17, 18, 23, 0.12)',
+      shadowStrong: '0 24px 64px rgba(17, 18, 23, 0.18)',
+    };
+  } else if (surfacePersonality === 'editorial-bordered') {
+    surfaceDepth = {
+      ...surfaceDepth,
+      borderWidth: '1.5px',
+      shadowSubtle: 'none',
+      shadowMedium: 'none',
+      shadowStrong: 'none',
+    };
+  } else if (surfacePersonality === 'glass') {
+    surfaceDepth = {
+      ...surfaceDepth,
+      borderWidth: '1px',
+      shadowSubtle: '0 1px 2px rgba(17, 18, 23, 0.08)',
+      shadowMedium: '0 8px 24px rgba(17, 18, 23, 0.14)',
+      shadowStrong: '0 20px 60px rgba(17, 18, 23, 0.18)',
+    };
+    colors = {
+      ...colors,
+      surface: mode === 'dark' ? 'rgba(23, 27, 33, 0.84)' : 'rgba(250, 249, 246, 0.84)',
+      surfaceRaised: mode === 'dark' ? 'rgba(28, 33, 40, 0.9)' : 'rgba(255, 255, 255, 0.9)',
+    };
+  } else if (surfacePersonality === 'subtle-contrast') {
+    surfaceDepth = {
+      ...surfaceDepth,
+      borderWidth: dna.contrast >= 75 ? '1.5px' : '1px',
+    };
+  }
+
   // 6. Motion Mapping (Motion personality & reduced motion precedence)
   const motionId = options?.motionId ?? dna.motionPersonality ?? 'snappy-productive';
   const motionConfig = getMotionPersonality(motionId) ?? getMotionPersonality('snappy-productive')!;
 
   const motion: SemanticMotionTokens = {
-    durationFast: isReducedMotion ? '0ms' : `${motionConfig.durationFast}ms`,
-    durationNormal: isReducedMotion ? '0ms' : `${motionConfig.durationNormal}ms`,
-    durationSlow: isReducedMotion ? '0ms' : `${motionConfig.durationSlow}ms`,
-    easing: isReducedMotion ? 'linear' : motionConfig.easing,
+    durationFast: isReducedMotion || dna.motion===0 ? '0ms' : `${Math.round(motionConfig.durationFast*(0.5+dna.motion/100))}ms`,
+    durationNormal: isReducedMotion || dna.motion===0 ? '0ms' : `${Math.round(motionConfig.durationNormal*(0.5+dna.motion/100))}ms`,
+    durationSlow: isReducedMotion || dna.motion===0 ? '0ms' : `${Math.round(motionConfig.durationSlow*(0.5+dna.motion/100))}ms`,
+    easing: isReducedMotion
+      ? 'linear'
+      : (dna.motionPlayfulness ?? 20) >= 70
+      ? 'cubic-bezier(0.34, 1.56, 0.64, 1)'
+      : (dna.motionPlayfulness ?? 20) <= 5
+      ? 'linear'
+      : motionConfig.easing,
     reducedMotion: isReducedMotion,
   };
 
@@ -217,4 +275,12 @@ export function normalizeDesignTokens(
     motion,
     focus,
   };
+}
+
+function getExpressiveLetterSpacing(pairingValue: string, expression: number): string {
+  const match = pairingValue.match(/^(-?\d+(?:\.\d+)?)em$/);
+  if (!match) return pairingValue;
+  const base = Number(match[1]);
+  const expressiveAdjustment = (50 - expression) * 0.0003;
+  return `${Math.round((base + expressiveAdjustment) * 1000) / 1000}em`;
 }

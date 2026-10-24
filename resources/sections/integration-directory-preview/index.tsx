@@ -33,7 +33,7 @@ export function IntegrationDirectoryPreview({ variant = 'quiet' }: IntegrationDi
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold tracking-tight text-center mb-8">Plugin Directory</h2>
 
-        <div className="flex justify-center gap-2 mb-10 text-xs">
+        <div className="flex flex-wrap justify-center gap-2 mb-10 text-xs">
           {['All', 'Auth', 'Database', 'Search', 'Assets'].map((cat) => (
             <button
               key={cat}
