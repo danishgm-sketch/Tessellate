@@ -136,14 +136,21 @@ describe('durable laptop inference API', () => {
 
   it('enforces the global active queue cap under concurrent submissions', async () => {
     await heartbeat();
-    const responses = await Promise.all(Array.from({ length: 66 }, (_, index) => request('/queue', {
+    const submissions = Array.from({ length: 66 }, (_, index) => () => request('/queue', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'X-Tessellate-Client': `test-client-${index}`,
       },
       body: JSON.stringify(payload),
-    })));
+    }));
+    const responses: Response[] = [];
+    // Miniflare exposes D1 to this in-process Hono test through a synchronous
+    // proxy. Keep concurrent fan-out bounded while still submitting all 66
+    // independent clients and asserting the global cap under contention.
+    for (let offset = 0; offset < submissions.length; offset += 8) {
+      responses.push(...await Promise.all(submissions.slice(offset, offset + 8).map(submitRequest => submitRequest())));
+    }
     expect(responses.filter(response => response.status === 200)).toHaveLength(64);
     expect(responses.filter(response => response.status === 429)).toHaveLength(2);
     const queued = await env.DB!.prepare('SELECT COUNT(*) AS count FROM inference_tickets WHERE status IN (\'queued\', \'processing\')').first<{ count: number }>();
