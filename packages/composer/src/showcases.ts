@@ -468,7 +468,12 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
         { label: 'Watchlists', targetScreenId: 'node-watchlists' },
         { label: 'Reports', targetScreenId: 'node-reports-library' },
       ],
-      pageIds: ['app-overview-dashboard', 'analytics-dashboard-page', 'watchlists-page', 'reports-library'],
+      pageIds: [
+        'app-overview-dashboard',
+        'analytics-dashboard-page',
+        'watchlists-page',
+        'reports-library',
+      ],
     }),
   },
 
@@ -495,7 +500,12 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
         { label: 'Developers', targetScreenId: 'node-developers' },
         { label: 'Integrations', targetScreenId: 'node-integrations' },
       ],
-      pageIds: ['marketing-home', 'research-workspace', 'developer-api-landing', 'api-integrations'],
+      pageIds: [
+        'marketing-home',
+        'research-workspace',
+        'developer-api-landing',
+        'api-integrations',
+      ],
     }),
   },
 
@@ -503,7 +513,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
   {
     id: 'showcase-luxury-hospitality',
     name: 'Velluto Private Estate Residences',
-    tagline: 'Bespoke global villa reservations and editorial destination dossiers',
+    tagline: 'Private estate stays with thoughtful concierge service and clear reservation terms',
     archetypeId: 'hospitality',
     navigationModel: 'split-horizontal',
     dnaPresetName: 'luxury-editorial',
@@ -512,8 +522,9 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     manifest: createShowcaseManifest({
       id: 'showcase-luxury-hospitality',
       name: 'Velluto Private Estate Residences',
-      description: 'Curated 5-star private estate reservations with editorial travel essays.',
-      archetypeTag: 'hospitality',
+      description:
+        'Luxury hospitality for private estate stays, with residence discovery, room details, concierge assistance, and clear reservation terms.',
+      archetypeTag: 'travel',
       dna: dnaHospitality,
       navigationModel: 'split-horizontal',
       navItems: [
@@ -528,8 +539,8 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
   // 4. Playful Collaborative HR
   {
     id: 'showcase-playful-hr',
-    name: 'Kudos Team Culture & Hiring',
-    tagline: 'Joyful applicant pipelines, peer recognition kudos, and people operations',
+    name: 'Kudos Employee Experience',
+    tagline: 'A warm workspace for colleagues to connect, onboard, and recognise one another',
     archetypeId: 'hr',
     navigationModel: 'pill-rail',
     dnaPresetName: 'professional-playful',
@@ -537,8 +548,9 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     designDNA: dnaHr,
     manifest: createShowcaseManifest({
       id: 'showcase-playful-hr',
-      name: 'Kudos Team Culture & Hiring',
-      description: 'Approachably joyful hiring pipelines and peer recognition kudos.',
+      name: 'Kudos Employee Experience',
+      description:
+        'A connected employee experience for colleagues, teams, playful onboarding, peer recognition, and trusted workplace policies.',
       archetypeTag: 'hr',
       dna: dnaHr,
       navigationModel: 'pill-rail',
@@ -555,7 +567,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
   {
     id: 'showcase-luxury-ecommerce',
     name: 'Atelier Chronos Horology',
-    tagline: 'Artisanal mechanical timepieces and bespoke bespoke leatherwork catalogue',
+    tagline: 'Artisanal mechanical timepieces and bespoke leatherwork',
     archetypeId: 'ecommerce',
     navigationModel: 'minimal-editorial',
     dnaPresetName: 'high-end-commerce',
@@ -633,7 +645,7 @@ export const SHOWCASE_PROJECTS: ShowcaseProject[] = [
   {
     id: 'showcase-minimal-productivity',
     name: 'Scribe Zen Monastic Notes',
-    tagline: 'Distraction-free markdown thought buffer with zero cloud latency',
+    tagline: 'A quiet markdown workspace for notes, focus, and the week ahead',
     archetypeId: 'productivity',
     navigationModel: 'floating-dock',
     dnaPresetName: 'quiet-productivity',

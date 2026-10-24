@@ -27,7 +27,7 @@ export const IntentCommandSchema = z.object({
   action: IntentActionSchema,
   summary: z.string().min(1).describe('Concise description of the user intention'),
   targetScreenId: z.string().optional().describe('Screen ID to apply changes to. Defaults to active screen.'),
-  targetNodeIds: z.array(z.string()).optional().describe('Node IDs affected by this action'),
+  targetNodeIds: z.array(z.string()).max(5_000).optional().describe('Node IDs affected by this action'),
   preserveLockedNodes: z.boolean().default(true).describe('Whether locked nodes must be preserved strictly'),
   feelDescriptors: z.string().optional().describe('Feel descriptor text (e.g. "luxury without being flashy", "playful")'),
   dnaDeltas: z
@@ -35,7 +35,7 @@ export const IntentCommandSchema = z.object({
     .optional()
     .describe('Direct numeric DNA dimension delta modifications (-100 to 100)'),
   categoricalDna: CategoricalIntentDNASchema.optional(),
-  lockDimensions: z.array(NodeLockDimensionSchema).optional().describe('Dimensions to lock/unlock'),
+  lockDimensions: z.array(NodeLockDimensionSchema).max(4).optional().describe('Dimensions to lock/unlock'),
   replacementResourceSlug: z.string().optional().describe('Catalog slug of replacement component if action is replace-component'),
   explanation: z.string().optional().describe('Design rationale behind the proposed action'),
 }).strict();

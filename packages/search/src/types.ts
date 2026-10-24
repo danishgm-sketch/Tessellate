@@ -37,6 +37,7 @@ export interface SearchDocument {
   accessibility: string[];
   dependencies: string[];
   qualityScore: number;
+  qualityAssessed: boolean;
   license: string;
 }
 

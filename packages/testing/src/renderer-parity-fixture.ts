@@ -20,8 +20,8 @@ export function createRendererParityNodes(): ProjectNode[] {
       nodeType: 'component',
       semanticRole: 'application-shell',
       resourceRef: {
-        id: 'res_shell_canvas_workspace_shell',
-        slug: 'canvas-workspace-shell',
+        id: 'res_states_dashboard_skeleton_01',
+        slug: 'dashboard-skeleton',
         version: '1.0.0',
       },
       variant: 'expressive',
@@ -34,8 +34,8 @@ export function createRendererParityNodes(): ProjectNode[] {
       nodeType: 'component',
       semanticRole: 'application-shell',
       resourceRef: {
-        id: 'res_shell_canvas_workspace_shell',
-        slug: 'canvas-workspace-shell',
+        id: 'res_states_dashboard_skeleton_01',
+        slug: 'dashboard-skeleton',
         version: '1.0.0',
       },
       variant: 'expressive',

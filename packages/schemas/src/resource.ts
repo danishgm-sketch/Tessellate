@@ -19,6 +19,11 @@ export const ResourceTypeSchema = z.enum([
 ]);
 export type ResourceType = z.infer<typeof ResourceTypeSchema>;
 
+export const ResourceSlugSchema = z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/, {
+  message: 'must be a lowercase kebab-case resource slug',
+});
+export type ResourceSlug = z.infer<typeof ResourceSlugSchema>;
+
 export const ResourceStatusSchema = z.enum(['draft', 'experimental', 'verified', 'verified-gold', 'deprecated']);
 export type ResourceStatus = z.infer<typeof ResourceStatusSchema>;
 
@@ -31,13 +36,13 @@ export const CreatorRefSchema = z.object({
 export type CreatorRef = z.infer<typeof CreatorRefSchema>;
 
 export const ProvenanceSchema = z.object({
-  origin: z.enum(['tessellate', 'community', 'open-source', 'sponsored']),
+  origin: z.enum(['tessellate', 'community', 'open-source', 'sponsored', 'unknown']),
   originalUrl: z.string().url().optional(),
   originalRepository: z.string().optional(),
   originalAuthor: z.string().optional(),
-  derivative: z.boolean(),
+  derivative: z.union([z.boolean(), z.literal('unknown')]),
   derivativeNotes: z.string().optional(),
-  aiAssistance: z.enum(['none', 'assisted', 'substantial']).default('none'),
+  aiAssistance: z.enum(['none', 'assisted', 'substantial', 'unknown']).default('unknown'),
 }).strict();
 export type Provenance = z.infer<typeof ProvenanceSchema>;
 
@@ -60,8 +65,22 @@ export const DependencySpecSchema = z.object({
 }).strict();
 export type DependencySpec = z.infer<typeof DependencySpecSchema>;
 
+function isSafeResourceFilePath(value: string): boolean {
+  const normalized = value.replace(/\\/g, '/');
+  const segments = normalized.split('/');
+
+  return (
+    !value.includes('\0') &&
+    !normalized.startsWith('/') &&
+    !/^[a-zA-Z]:/.test(normalized) &&
+    segments.every((segment) => segment.length > 0 && segment !== '.' && segment !== '..')
+  );
+}
+
 export const ResourceFileSpecSchema = z.object({
-  path: z.string().min(1),
+  path: z.string().min(1).refine(isSafeResourceFilePath, {
+    message: 'must be a relative file path contained within its resource directory',
+  }),
   kind: z.enum(['component', 'style', 'utility', 'asset', 'fixture', 'type']),
   required: z.boolean(),
 }).strict();
@@ -69,9 +88,9 @@ export type ResourceFileSpec = z.infer<typeof ResourceFileSpecSchema>;
 
 export const RegistrySpecSchema = z.object({
   name: z.string().min(1),
-  dependencies: z.array(z.string()).default([]),
-  devDependencies: z.array(z.string()).default([]),
-  registryDependencies: z.array(z.string()).default([]),
+  dependencies: z.array(z.string()).max(128).default([]),
+  devDependencies: z.array(z.string()).max(128).default([]),
+  registryDependencies: z.array(z.string()).max(128).default([]),
 }).strict();
 export type RegistrySpec = z.infer<typeof RegistrySpecSchema>;
 
@@ -125,11 +144,11 @@ export type WeightedTag = z.infer<typeof WeightedTagSchema>;
 
 export const ResourceIntentSchema = z.object({
   summary: z.string().min(1),
-  idealFor: z.array(z.string()).default([]),
-  avoidFor: z.array(z.string()).default([]),
-  jobs: z.array(z.string()).default([]),
-  contentRequirements: z.array(z.string()).default([]),
-  notes: z.array(z.string()).optional(),
+  idealFor: z.array(z.string()).max(256).default([]),
+  avoidFor: z.array(z.string()).max(256).default([]),
+  jobs: z.array(z.string()).max(256).default([]),
+  contentRequirements: z.array(z.string()).max(256).default([]),
+  notes: z.array(z.string()).max(256).optional(),
 }).strict();
 export type ResourceIntent = z.infer<typeof ResourceIntentSchema>;
 
@@ -150,8 +169,8 @@ export const LayoutDNASchema = z.object({
   density: z.number().int().min(0).max(100),
   whitespace: z.number().int().min(0).max(100),
   asymmetry: z.number().int().min(0).max(100),
-  preferredWidths: z.array(LayoutWidthSchema).min(1),
-  layoutFamilies: z.array(z.string()).default([]),
+  preferredWidths: z.array(LayoutWidthSchema).min(1).max(4),
+  layoutFamilies: z.array(z.string()).max(128).default([]),
   supportsSticky: z.boolean().optional(),
   supportsOverlap: z.boolean().optional(),
 }).strict();
@@ -176,9 +195,9 @@ export const BreakpointStrategySchema = z.object({
 export type BreakpointStrategy = z.infer<typeof BreakpointStrategySchema>;
 
 export const ResponsiveSpecSchema = z.object({
-  verifiedWidths: z.array(z.number().int().positive()).min(1),
+  verifiedWidths: z.array(z.number().int().positive()).max(32),
   defaultStrategy: ResponsiveStrategySchema,
-  breakpointStrategies: z.array(BreakpointStrategySchema).optional(),
+  breakpointStrategies: z.array(BreakpointStrategySchema).max(32).optional(),
 }).strict();
 export type ResponsiveSpec = z.infer<typeof ResponsiveSpecSchema>;
 
@@ -190,7 +209,7 @@ export const AccessibilitySpecSchema = z.object({
   contrastTokenCompatible: z.boolean(),
   focusVisible: z.boolean(),
   dragKeyboardAlternative: z.boolean().optional(),
-  knownLimitations: z.array(z.string()).optional(),
+  knownLimitations: z.array(z.string()).max(256).optional(),
 }).strict();
 export type AccessibilitySpec = z.infer<typeof AccessibilitySpecSchema>;
 
@@ -204,11 +223,22 @@ export const PerformanceSpecSchema = z.object({
   runtimeComplexity: z.enum(['low', 'medium', 'high']),
   lazyRecommended: z.boolean(),
   continuousAnimation: z.boolean(),
-  notes: z.array(z.string()).optional(),
+  notes: z.array(z.string()).max(256).optional(),
 }).strict();
 export type PerformanceSpec = z.infer<typeof PerformanceSpecSchema>;
 
 const qualityScore = z.number().int().min(0).max(100);
+
+export const QualityAssessmentSchema = z.discriminatedUnion('status', [
+  z.object({
+    status: z.literal('unassessed'),
+    evidence: z.array(z.string().min(1)).max(0).default([]),
+  }).strict(),
+  z.object({
+    status: z.literal('reviewed'),
+    evidence: z.array(z.string().min(1)).min(1).max(100),
+  }).strict(),
+]).default({ status: 'unassessed', evidence: [] });
 
 export const QualitySpecSchema = z.object({
   overall: qualityScore,
@@ -220,6 +250,7 @@ export const QualitySpecSchema = z.object({
   visualCraft: qualityScore,
   dependencyCleanliness: qualityScore,
   documentation: qualityScore,
+  assessment: QualityAssessmentSchema,
 }).strict();
 export type QualitySpec = z.infer<typeof QualitySpecSchema>;
 
@@ -249,14 +280,14 @@ export const ResourceRelationshipSchema = z.object({
 export type ResourceRelationship = z.infer<typeof ResourceRelationshipSchema>;
 
 export const CompatibilitySpecSchema = z.object({
-  requiredContext: z.array(z.string()).optional(),
-  forbiddenContext: z.array(z.string()).optional(),
+  requiredContext: z.array(z.string()).max(256).optional(),
+  forbiddenContext: z.array(z.string()).max(256).optional(),
 }).strict();
 export type CompatibilitySpec = z.infer<typeof CompatibilitySpecSchema>;
 
 export const ResourceRefSchema = z.object({
   id: z.string().min(1),
-  slug: z.string().min(1),
+  slug: ResourceSlugSchema,
   version: z.string().min(1),
 }).strict();
 export type ResourceRef = z.infer<typeof ResourceRefSchema>;
@@ -264,29 +295,29 @@ export type ResourceRef = z.infer<typeof ResourceRefSchema>;
 export const ResourceManifestSchema = z.object({
   schemaVersion: SchemaVersionSchema,
   id: z.string().min(1),
-  slug: z.string().min(1),
+  slug: ResourceSlugSchema,
   name: z.string().min(1),
   version: z.string().min(1),
   status: ResourceStatusSchema,
   description: z.string().min(1),
   resourceType: ResourceTypeSchema,
-  categories: z.array(z.string()).min(1),
-  roles: z.array(z.string()).min(1),
-  purposes: z.array(z.string()).min(1),
-  productArchetypes: z.array(WeightedTagSchema).default([]),
+  categories: z.array(z.string()).min(1).max(64),
+  roles: z.array(z.string()).min(1).max(64),
+  purposes: z.array(z.string()).min(1).max(128),
+  productArchetypes: z.array(WeightedTagSchema).max(128).default([]),
   creator: CreatorRefSchema,
   provenance: ProvenanceSchema,
   license: LicenseInfoSchema,
   framework: z.literal('react'),
   language: z.literal('typescript'),
   styling: z.literal('tailwind'),
-  dependencies: z.array(DependencySpecSchema).default([]),
-  files: z.array(ResourceFileSpecSchema).min(1),
+  dependencies: z.array(DependencySpecSchema).max(128).default([]),
+  files: z.array(ResourceFileSpecSchema).min(1).max(128),
   registry: RegistrySpecSchema,
   preview: PreviewSpecSchema,
-  slots: z.array(SlotSpecSchema).default([]),
-  variants: z.array(VariantSpecSchema).default([]),
-  tags: z.array(z.string()).default([]),
+  slots: z.array(SlotSpecSchema).max(64).default([]),
+  variants: z.array(VariantSpecSchema).max(64).default([]),
+  tags: z.array(z.string()).max(256).default([]),
   intent: ResourceIntentSchema,
   visualDNA: PartialDesignDNASchema,
   dnaRelevance: z.record(z.string(), z.number().min(0).max(1)).optional(),
@@ -298,7 +329,7 @@ export const ResourceManifestSchema = z.object({
   complexity: z.enum(['low', 'medium', 'high']),
   customizability: z.enum(['low', 'medium', 'high']),
   compatibility: CompatibilitySpecSchema,
-  relationships: z.array(ResourceRelationshipSchema).default([]),
+  relationships: z.array(ResourceRelationshipSchema).max(256).default([]),
   quality: QualitySpecSchema,
   createdAt: z.string().datetime(),
   updatedAt: z.string().datetime(),

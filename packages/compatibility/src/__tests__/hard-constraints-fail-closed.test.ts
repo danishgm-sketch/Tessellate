@@ -65,6 +65,7 @@ describe('Requirement 3: Hard Constraints Fail Closed', () => {
       },
       quality: {
         overall: 90,
+        assessment: { status: 'unassessed', evidence: [] },
       },
       createdAt: '2026-10-10T00:00:00Z',
       updatedAt: '2026-10-10T00:00:00Z',

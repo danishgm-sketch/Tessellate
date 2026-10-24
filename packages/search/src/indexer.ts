@@ -25,6 +25,7 @@ export const resourceSearchSchema = {
   accessibility: 'string[]',
   dependencies: 'string[]',
   qualityScore: 'number',
+  qualityAssessed: 'boolean',
   license: 'string',
 } as const;
 
@@ -111,7 +112,8 @@ export function manifestToSearchDocument(manifest: ResourceManifest): SearchDocu
     performance: [performance],
     accessibility,
     dependencies: dependencyFacets,
-    qualityScore: manifest.quality.overall,
+    qualityScore: manifest.quality.assessment.status === 'reviewed' ? manifest.quality.overall : 0,
+    qualityAssessed: manifest.quality.assessment.status === 'reviewed',
     license: manifest.license.spdx,
   };
 }

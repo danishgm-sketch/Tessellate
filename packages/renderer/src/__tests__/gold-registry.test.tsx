@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import type { ProjectManifest, ProjectNode } from '@tessellate/schemas';
-import { GOLD_40_SLUGS } from '@tessellate/catalog';
+import { GOLD_40_SLUGS, isGoldResource } from '@tessellate/catalog';
 import { createGoldResourceVariantParityNodes } from '@tessellate/testing';
-import { ManifestRenderer, NodeRenderer } from '../index.js';
+import { DEFAULT_RESOURCE_RENDERERS, ManifestRenderer, NodeRenderer } from '../index.js';
 
 function createTestNode(slug: string, props: Record<string, unknown> = {}): ProjectNode {
   return {
@@ -56,7 +56,7 @@ function createTestManifest(slug: string, node: ProjectNode): ProjectManifest {
 
 describe('Requirement 4 & 6: Runtime Resource Registry for Gold 40 with Family Semantics', () => {
   it('preserves resource prop children and nested manifest children in the same rendered slot', () => {
-    const node = createTestNode('canvas-workspace-shell', { children: 'Content from resource props' });
+    const node = createTestNode('dashboard-skeleton', { children: 'Content from resource props' });
     node.children = [{
       id: 'nested-content',
       nodeType: 'element',
@@ -73,7 +73,7 @@ describe('Requirement 4 & 6: Runtime Resource Registry for Gold 40 with Family S
   });
 
   it('preserves a declared resource children slot alongside nested manifest children', () => {
-    const node = createTestNode('canvas-workspace-shell');
+    const node = createTestNode('dashboard-skeleton');
     node.slots = { children: 'Content from declared resource slot' };
     node.children = [{
       id: 'nested-slot-content',
@@ -99,6 +99,16 @@ describe('Requirement 4 & 6: Runtime Resource Registry for Gold 40 with Family S
     expect(html).toContain('data-testid="unsupported-resource-variant"');
     expect(html).toContain('unsupported-variant');
     expect(html).not.toContain('<button');
+  });
+
+  it('does not execute non-Gold catalogue resources in the authenticated app renderer', () => {
+    const nonGoldSlug = 'ai-chat-panel';
+
+    expect(isGoldResource(nonGoldSlug)).toBe(false);
+    expect(DEFAULT_RESOURCE_RENDERERS[nonGoldSlug]).toBeUndefined();
+
+    const html = renderToString(<NodeRenderer node={createTestNode(nonGoldSlug)} />);
+    expect(html).toContain('data-testid="missing-resource-recovery"');
   });
 
   it.each(GOLD_40_SLUGS.map((slug) => [slug]))(

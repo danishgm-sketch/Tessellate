@@ -22,6 +22,8 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
   ];
 
   return (
+    <>
+    <a href="#main-content" className="sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:not-sr-only focus:bg-white focus:px-3 focus:py-2 focus:text-[#111217] focus:outline-2 focus:outline-offset-2 focus:outline-[#2547E8]">Skip to content</a>
     <header className="sticky top-0 z-40 w-full border-b border-[#D9D6CF] bg-[#F4F2ED]/90 backdrop-blur-md transition-colors dark:border-[#272C34] dark:bg-[#0B0D10]/90">
       <div className="mx-auto flex h-16 max-w-[1480px] items-center justify-between px-3 sm:px-6">
         {/* Left: Mark + Brand + Desktop Nav */}
@@ -128,5 +130,6 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
         </nav>
       </Sheet>
     </header>
+    </>
   );
 }

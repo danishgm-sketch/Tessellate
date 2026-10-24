@@ -10,6 +10,7 @@ import {
   ExportSettingsSchema,
   ResourceManifestSchema,
   ProjectManifestSchema,
+  ProjectNodeSchema,
   ScreenGraphSchema,
   ProjectMutationSchema,
   IntentCommandSchema,
@@ -138,6 +139,33 @@ describe('Tessellate Canonical Schemas', () => {
       expect(parsed).toEqual(validResourceFixture);
     });
 
+    it('defaults legacy resource scores to unassessed and requires evidence for reviewed scores', () => {
+      const { assessment: _assessment, ...legacyQuality } = validResourceFixture.quality;
+      const parsedLegacy = ResourceManifestSchema.parse({
+        ...validResourceFixture,
+        quality: legacyQuality,
+      });
+      expect(parsedLegacy.quality.assessment).toEqual({ status: 'unassessed', evidence: [] });
+
+      const reviewedWithoutEvidence = ResourceManifestSchema.safeParse({
+        ...validResourceFixture,
+        quality: {
+          ...validResourceFixture.quality,
+          assessment: { status: 'reviewed', evidence: [] },
+        },
+      });
+      expect(reviewedWithoutEvidence.success).toBe(false);
+
+      const reviewedWithEvidence = ResourceManifestSchema.parse({
+        ...validResourceFixture,
+        quality: {
+          ...validResourceFixture.quality,
+          assessment: { status: 'reviewed', evidence: ['quality/evidence/resource-review.json'] },
+        },
+      });
+      expect(reviewedWithEvidence.quality.assessment.status).toBe('reviewed');
+    });
+
     it('rejects unknown nested creator fields instead of stripping them', () => {
       const candidate = {
         ...validResourceFixture,
@@ -221,6 +249,41 @@ describe('Tessellate Canonical Schemas', () => {
       });
 
       expect(ProjectManifestSchema.safeParse(candidate).success).toBe(false);
+    });
+
+    it('rejects oversized project collections before parsing hostile entries', () => {
+      const oversizedScreens = Array.from({ length: 25_000 }, () => null);
+      const result = ProjectManifestSchema.safeParse({
+        ...validProjectFixture,
+        screens: oversizedScreens,
+      });
+
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        expect(result.error.issues).toHaveLength(1);
+        expect(result.error.issues[0]).toMatchObject({
+          code: 'too_big',
+          path: ['screens'],
+        });
+      }
+    });
+
+    it('bounds recursive node children before validating their contents', () => {
+      const result = ProjectNodeSchema.safeParse({
+        id: 'node_root',
+        nodeType: 'section',
+        semanticRole: 'root',
+        children: Array.from({ length: 25_000 }, () => null),
+      });
+
+      expect(result.success).toBe(false);
+      if (!result.success) {
+        expect(result.error.issues).toHaveLength(1);
+        expect(result.error.issues[0]).toMatchObject({
+          code: 'too_big',
+          path: ['children'],
+        });
+      }
     });
   });
 

@@ -6,7 +6,7 @@ import { validResourceFixture } from '../fixtures/valid-resource.js';
 
 type ContractCase = {
   name: string;
-  schema: z.ZodTypeAny;
+  schema: z.ZodType;
   value: unknown;
   requiredField: string;
   allowMissing?: boolean;
@@ -209,6 +209,15 @@ describe('Nested schema contracts reject drift and preserve JSON round trips', (
       ...validResourceFixture.responsive,
       verifiedWidths: [0],
     }).success).toBe(false);
+    expect(schemas.ResponsiveSpecSchema.safeParse({
+      ...validResourceFixture.responsive,
+      verifiedWidths: [],
+    }).success).toBe(true);
+    expect(schemas.ProvenanceSchema.safeParse({
+      origin: 'unknown',
+      derivative: 'unknown',
+      aiAssistance: 'unknown',
+    }).success).toBe(true);
 
     expect(schemas.ProjectConstraintsSchema.safeParse({ ...validProjectFixture.constraints, targetDevices: [] }).success).toBe(false);
     expect(schemas.HistoryMetaSchema.safeParse({ totalOperations: 0, headRevision: 0 }).success).toBe(true);
@@ -216,8 +225,9 @@ describe('Nested schema contracts reject drift and preserve JSON round trips', (
     expect(schemas.ProjectAssetSchema.safeParse({ id: 'a', name: 'A', mimeType: 'image/png', url: '/a.png', size: 1 }).success).toBe(true);
     expect(schemas.ProjectAssetSchema.safeParse({ id: 'a', name: 'A', mimeType: 'image/png', url: '/a.png', size: 0 }).success).toBe(false);
 
-    const zeroQuality = Object.fromEntries(Object.keys(validResourceFixture.quality).map((key) => [key, 0]));
-    const fullQuality = Object.fromEntries(Object.keys(validResourceFixture.quality).map((key) => [key, 100]));
+    const scoreFields = Object.keys(validResourceFixture.quality).filter((key) => key !== 'assessment');
+    const zeroQuality = Object.fromEntries(scoreFields.map((key) => [key, 0]));
+    const fullQuality = Object.fromEntries(scoreFields.map((key) => [key, 100]));
     expect(schemas.QualitySpecSchema.safeParse(zeroQuality).success).toBe(true);
     expect(schemas.QualitySpecSchema.safeParse(fullQuality).success).toBe(true);
     expect(schemas.QualitySpecSchema.safeParse({ ...fullQuality, overall: 101 }).success).toBe(false);
@@ -230,6 +240,36 @@ describe('Nested schema contracts reject drift and preserve JSON round trips', (
       ...validResourceFixture,
       dnaRelevance: { density: 1.1 },
     }).success).toBe(false);
+  });
+
+  it('rejects absolute and traversal paths in resource file contracts', () => {
+    for (const unsafePath of [
+      '../secret.tsx',
+      'nested/../../secret.tsx',
+      '/etc/passwd',
+      'C:\\private\\secret.tsx',
+      '..\\secret.tsx',
+      '\\\\server\\share\\secret.tsx',
+    ]) {
+      expect(schemas.ResourceFileSpecSchema.safeParse({
+        ...validResourceFixture.files[0],
+        path: unsafePath,
+      }).success).toBe(false);
+    }
+  });
+
+  it('rejects noncanonical and path-like resource slugs at both manifest and reference boundaries', () => {
+    for (const unsafeSlug of ['../private', '../../catalog', 'C:\\private', 'Uppercase', 'has_underscore']) {
+      expect(schemas.ResourceManifestSchema.safeParse({
+        ...validResourceFixture,
+        slug: unsafeSlug,
+      }).success).toBe(false);
+      expect(schemas.ResourceRefSchema.safeParse({
+        id: 'res_1',
+        slug: unsafeSlug,
+        version: '1.0.0',
+      }).success).toBe(false);
+    }
   });
 
   it('rejects empty collections where the contract requires at least one value', () => {

@@ -58,7 +58,8 @@ function matchesFilters(document: SearchDocument, filters?: SearchFilters): bool
   if (!matchesFacet(filters.accessibility, document.accessibility)) return false;
   if (!matchesFacet(filters.dependencies, document.dependencies)) return false;
   if (!matchesFacet(filters.license, [document.license])) return false;
-  return typeof filters.minQuality !== 'number' || document.qualityScore >= filters.minQuality;
+  return typeof filters.minQuality !== 'number' ||
+    (document.qualityAssessed && document.qualityScore >= filters.minQuality);
 }
 
 /**

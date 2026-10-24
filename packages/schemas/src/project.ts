@@ -62,22 +62,36 @@ export type ProjectNodeInput = {
   locks?: NodeLocks;
 };
 
-export const ProjectNodeSchema: z.ZodType<ProjectNode, z.ZodTypeDef, ProjectNodeInput> = z.lazy(() =>
-  z.object({
+const MAX_PROJECT_NODE_DEPTH = 64;
+const projectNodeSchemaCache = new Map<number, z.ZodType<ProjectNode, ProjectNodeInput>>();
+
+function createProjectNodeSchema(depth: number): z.ZodType<ProjectNode, ProjectNodeInput> {
+  const cached = projectNodeSchemaCache.get(depth);
+  if (cached) return cached;
+
+  const schema = z.lazy(() => z.object({
     id: z.string().min(1),
     nodeType: NodeTypeSchema,
     semanticRole: z.string().min(1),
     resourceRef: ResourceRefSchema.optional(),
     variant: z.string().optional(),
-    children: z.array(ProjectNodeSchema).default([]),
+    // Stop recursive validation at the contract boundary so hostile deep
+    // manifests produce a normal Zod error instead of exhausting the stack.
+    children: depth >= MAX_PROJECT_NODE_DEPTH
+      ? z.array(z.never()).max(0).default([])
+      : z.array(createProjectNodeSchema(depth + 1)).max(200).default([]),
     slots: z.record(z.string(), z.unknown()).default({}),
     props: z.record(z.string(), z.unknown()).default({}),
     dnaOverrides: PartialDesignDNASchema.optional(),
     tokenOverrides: z.record(z.string(), z.union([z.string(), z.number()])).optional(),
     responsiveOverrides: z.record(z.string(), z.unknown()).optional(),
     locks: NodeLocksSchema.optional(),
-  }).strict()
-);
+  }).strict());
+  projectNodeSchemaCache.set(depth, schema);
+  return schema;
+}
+
+export const ProjectNodeSchema = createProjectNodeSchema(0);
 
 export const ProjectScreenSchema = z.object({
   id: z.string().min(1),
@@ -97,8 +111,8 @@ export type NavigationItem = z.infer<typeof NavigationItemSchema>;
 
 export const NavigationModelSchema = z.object({
   model: z.string().min(1),
-  primaryItems: z.array(NavigationItemSchema).default([]),
-  secondaryItems: z.array(NavigationItemSchema).optional(),
+  primaryItems: z.array(NavigationItemSchema).max(200).default([]),
+  secondaryItems: z.array(NavigationItemSchema).max(200).optional(),
 }).strict();
 export type NavigationModel = z.infer<typeof NavigationModelSchema>;
 
@@ -123,7 +137,7 @@ export type ProjectAsset = z.infer<typeof ProjectAssetSchema>;
 
 export const LockSpecSchema = z.object({
   targetNodeId: z.string().min(1),
-  lockTypes: z.array(LockTypeSchema).min(1),
+  lockTypes: z.array(LockTypeSchema).min(1).max(8),
   reason: z.string().optional(),
 }).strict();
 export type LockSpec = z.infer<typeof LockSpecSchema>;
@@ -159,7 +173,7 @@ export const DesignDirectionSchema = z.object({
   screenGraph: ScreenGraphSchema,
   navigationModel: NavigationModelSchema,
   layoutGrammarFamily: z.string().min(1),
-  representativeResources: z.array(ResourceRefSchema).default([]),
+  representativeResources: z.array(ResourceRefSchema).max(256).default([]),
   seed: z.string().min(1),
 }).strict();
 export type DesignDirection = z.infer<typeof DesignDirectionSchema>;
@@ -178,10 +192,10 @@ const ProjectManifestBaseSchema = z.object({
   brand: BrandDNASchema.optional(),
   constraints: ProjectConstraintsSchema,
   screenGraph: ScreenGraphSchema,
-  screens: z.array(ProjectScreenSchema).default([]),
+  screens: z.array(ProjectScreenSchema).max(200).default([]),
   navigation: NavigationModelSchema,
-  assets: z.array(ProjectAssetSchema).default([]),
-  locks: z.array(LockSpecSchema).default([]),
+  assets: z.array(ProjectAssetSchema).max(1_000).default([]),
+  locks: z.array(LockSpecSchema).max(5_000).default([]),
   historyMeta: HistoryMetaSchema,
   exportSettings: ExportSettingsSchema,
 }).strict();

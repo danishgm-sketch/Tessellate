@@ -23,7 +23,7 @@ import { getCompositionGrammar, type CompositionGrammar } from './grammars.js';
 import { evaluateHardConstraints } from './hard-constraints.js';
 import { calculateCompatibilityScore } from './scoring.js';
 import { resourceMatchesRole } from './semantic-roles.js';
-import { bindResourceContent } from './content-bindings.js';
+import { bindResourceContent, resolveWorkspaceBrand } from './content-bindings.js';
 import { isResourceComposerEligible, isResourceCompositionCapable } from './capabilities.js';
 export { isResourceComposerEligible, isResourceCompositionCapable };
 
@@ -229,6 +229,7 @@ export function composeProjectForDirection(options: DirectionCompositionOptions)
             optionalRoles: ['activity-feed'],
           },
         ];
+  const projectBrand = resolveWorkspaceBrand(productModel, options.briefDescription);
 
   for (const screenNode of screensToInstantiate) {
     // A page keeps its semantic jobs. Direction grammar changes hierarchy, not
@@ -326,7 +327,8 @@ export function composeProjectForDirection(options: DirectionCompositionOptions)
         role,
         allScreenNodes,
         resource?.slug ?? '',
-        options.briefDescription
+        options.briefDescription,
+        projectBrand
       );
       if (role === 'navigation')
         content.orientation =
@@ -452,11 +454,7 @@ export function composeProjectForDirection(options: DirectionCompositionOptions)
     seed: String(seed),
     productModel,
     designDNA: direction.dna,
-    brand: {
-      name: productModel.entities.some((entity) => entity.name === 'Employee')
-        ? 'People & Co'
-        : `${primaryArchetype.toUpperCase()} System`,
-    },
+    brand: { name: projectBrand },
     constraints: productModel.constraints,
     screenGraph,
     screens,

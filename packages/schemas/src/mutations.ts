@@ -78,13 +78,13 @@ export const ChangeLayoutPayloadSchema = z.object({
 // 12. LOCK_NODE
 export const LockNodePayloadSchema = z.object({
   targetNodeId: z.string().min(1),
-  lockTypes: z.array(LockTypeSchema).min(1),
+  lockTypes: z.array(LockTypeSchema).min(1).max(8),
 }).strict();
 
 // 13. UNLOCK_NODE
 export const UnlockNodePayloadSchema = z.object({
   targetNodeId: z.string().min(1),
-  lockTypes: z.array(LockTypeSchema).min(1),
+  lockTypes: z.array(LockTypeSchema).min(1).max(8),
 }).strict();
 
 // 14. ADD_SCREEN
@@ -123,7 +123,7 @@ export const SetMediaPayloadSchema = z.object({
 }).strict();
 
 // Helper builder for discriminated mutation schemas
-function createMutationSchema<TType extends string, TPayload extends z.ZodTypeAny>(
+function createMutationSchema<TType extends string, TPayload extends z.ZodType>(
   type: TType,
   payloadSchema: TPayload
 ) {
@@ -236,9 +236,9 @@ export const HistoryOperationSchema = z.object({
   summary: z.string().min(1),
   actor: MutationActorSchema,
   createdAt: z.string().datetime(),
-  mutations: z.array(ProjectMutationSchema).min(1),
-  inverseMutations: z.array(ProjectMutationSchema).default([]),
-  affectedNodeIds: z.array(z.string()).default([]),
+  mutations: z.array(ProjectMutationSchema).min(1).max(500),
+  inverseMutations: z.array(ProjectMutationSchema).max(500).default([]),
+  affectedNodeIds: z.array(z.string()).max(5_000).default([]),
 }).strict();
 
 export type HistoryOperation = z.infer<typeof HistoryOperationSchema>;

@@ -16,6 +16,24 @@ function workspaceBrand(entityName?: string): string {
   return /\bworkspace$/i.test(name) ? name : `${name} Workspace`;
 }
 
+export function resolveWorkspaceBrand(product: ProductModel, briefDescription = ''): string {
+  const employee = product.entities.some((entity) => entity.name === 'Employee');
+  const primaryArchetype = product.productArchetypes[0]?.tag ?? '';
+  const community = /community|neighborhood/i.test(
+    `${product.primaryAudience} ${product.primaryObjective}`
+  );
+  const tradingTerminal =
+    primaryArchetype === 'fintech' &&
+    /market depth|equity trade|trading terminal|order book/i.test(
+      `${product.primaryObjective} ${briefDescription}`
+    );
+
+  if (employee) return 'People & Co';
+  if (community) return 'Example Community';
+  if (tradingTerminal) return 'Market Workspace';
+  return workspaceBrand(product.entities[0]?.name);
+}
+
 function sampleActivityTime(index: number): string {
   return ['Today', 'Yesterday', 'Earlier this week'][Math.min(index, 2)]!;
 }
@@ -26,7 +44,8 @@ export function bindResourceContent(
   role: string,
   screens: ScreenNode[],
   resourceSlug: string,
-  briefDescription = ''
+  briefDescription = '',
+  projectBrand?: string
 ): Record<string, unknown> {
   const employee = product.entities.some((entity) => entity.name === 'Employee');
   const primaryArchetype = product.productArchetypes[0]?.tag ?? '';
@@ -96,22 +115,14 @@ export function bindResourceContent(
   const brand =
     role === 'channels-rail'
       ? 'Example channels'
-      : employee
-        ? 'People & Teams'
-        : isCommunity
-          ? 'Example Community'
-          : isTradingTerminal
-            ? 'Market Workspace'
-            : workspaceBrand(product.entities[0]?.name);
+      : projectBrand ?? resolveWorkspaceBrand(product, briefDescription);
   const brandWords = brand.match(/[A-Za-z0-9]+/g) ?? [];
-  const initials = employee
-    ? 'PT'
-    : brandWords
-        .slice(0, 2)
-        .map((part) => part[0])
-        .join('')
-        .toUpperCase()
-        .padEnd(2, brandWords[0]?.[1]?.toUpperCase() ?? 'W');
+  const initials = brandWords
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join('')
+    .toUpperCase()
+    .padEnd(2, brandWords[0]?.[1]?.toUpperCase() ?? 'W');
   const links = screens
     .filter((item) => item.navigationVisibility !== 'hidden' && !item.slug.includes(':'))
     .map((item) => ({ label: item.name, href: `#${item.id}` }));
@@ -167,7 +178,7 @@ export function bindResourceContent(
     travel: /destination|trip|travel|search/i,
   };
   const preferredTargetPattern = employee
-    ? /onboarding|welcome/i
+    ? /^teams?$/i
     : isFlightManagement
       ? /journey overview|flight details/i
       : isFilmStreaming
@@ -192,12 +203,18 @@ export function bindResourceContent(
     screens.find((item) => preferredTargetPattern.test(item.name)) ??
     screens.find((item) => /overview|dashboard|home|workspace/i.test(item.name)) ??
     screens[0];
-  const secondaryActionScreen = screens.find((item) => item.id !== primaryActionScreen?.id);
+  const secondaryActionScreen = employee
+    ? screens.find((item) => /onboarding|welcome/i.test(item.name)) ??
+      screens.find((item) => item.id !== primaryActionScreen?.id)
+    : screens.find((item) => item.id !== primaryActionScreen?.id);
   const primaryActionHref = primaryActionScreen ? `#${primaryActionScreen.id}` : undefined;
   const secondaryActionHref = secondaryActionScreen
     ? `#${secondaryActionScreen.id}`
     : primaryActionHref;
   const headline = employee ? 'A better workday starts with people.' : product.primaryObjective;
+  const isEmployeeTeamsScreen = employee && /^teams$/i.test(screen.name.trim());
+  const isEmployeeEngagementScreen = employee && /engagement|feedback|recognition/i.test(screen.name);
+  const isEmployeeSettingsScreen = employee && /settings|policy/i.test(screen.name);
   const description = employee
     ? 'Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.'
     : isReturnsPortal
@@ -413,7 +430,25 @@ export function bindResourceContent(
   const events =
     role === 'message-thread'
       ? conversationExamples
-      : employee
+      : employee && isEmployeeEngagementScreen
+        ? [
+            {
+              time: 'This week',
+              title: 'Example feedback check-in',
+              desc: 'Sample prompt: what would help your team work well together? Responses are not connected.',
+            },
+            {
+              time: 'Today',
+              title: 'Example peer recognition',
+              desc: 'Sample recognition for a colleague contribution. No employee activity is connected.',
+            },
+            {
+              time: 'Next week',
+              title: 'Example team pulse',
+              desc: 'Sample engagement check-in. Participation data is not connected.',
+            },
+          ]
+        : employee
         ? [
             {
               time: 'Today',
@@ -469,11 +504,15 @@ export function bindResourceContent(
     ?.replaceAll(',', '');
   const titles: Record<string, string> = employee
     ? {
-        'metric-cards': 'Your organisation at a glance',
-        'summary-kpis': 'Your organisation at a glance',
-        'activity-feed': 'People updates',
+        'metric-cards': isEmployeeEngagementScreen ? 'Engagement overview' : 'Your organisation at a glance',
+        'summary-kpis': isEmployeeEngagementScreen ? 'Engagement overview' : 'Your organisation at a glance',
+        'activity-feed': isEmployeeEngagementScreen ? 'Feedback and recognition' : 'People updates',
         'activity-timeline': 'Recent employee activity',
-        'data-table': screen.name === 'Teams' ? 'Team directory' : 'People and teams',
+        'data-table': isEmployeeTeamsScreen
+          ? 'Team directory'
+          : isEmployeeEngagementScreen
+            ? 'Feedback and recognition'
+            : 'People and teams',
         'wizard-content': 'Your onboarding journey',
         'progress-stepper': 'Welcome milestones',
         'value-proposition': 'Made for everyday employee experiences',
@@ -499,6 +538,11 @@ export function bindResourceContent(
                     ? 'Local reporting archive'
                     : 'Search results',
         };
+  const saveFooterLabel = isReturnsPortal
+    ? 'Submit return request'
+    : isEmployeeSettingsScreen
+      ? 'Save preferences'
+      : 'Save changes';
   const content: Record<string, unknown> = {
     title:
       role === 'message-thread'
@@ -554,7 +598,13 @@ export function bindResourceContent(
     note: 'Example interface · replace sample data with your organisation',
     items,
     events,
-    cards: employee
+    cards: employee && isEmployeeEngagementScreen
+      ? [
+          { label: 'Feedback', val: '—', status: 'No connected data' },
+          { label: 'Recognition', val: '—', status: 'No connected data' },
+          { label: 'Participation', val: '—', status: 'No connected data' },
+        ]
+      : employee
       ? [
           {
             label: 'People',
@@ -635,7 +685,61 @@ export function bindResourceContent(
                       status: 'Offline status not connected',
                       displayValue: 'Journey details not connected',
                     }))
-                  : employee
+                  : isEmployeeTeamsScreen
+                    ? [
+                        {
+                          id: 1,
+                          name: 'Example Product team',
+                          type: 'Product planning and delivery · sample',
+                          quality: 0,
+                          status: 'Membership not connected',
+                          displayValue: 'Member count not connected',
+                        },
+                        {
+                          id: 2,
+                          name: 'Example Engineering team',
+                          type: 'Engineering systems · sample',
+                          quality: 0,
+                          status: 'Membership not connected',
+                          displayValue: 'Member count not connected',
+                        },
+                        {
+                          id: 3,
+                          name: 'Example People team',
+                          type: 'People operations · sample',
+                          quality: 0,
+                          status: 'Membership not connected',
+                          displayValue: 'Member count not connected',
+                        },
+                      ]
+                    : isEmployeeEngagementScreen
+                      ? [
+                          {
+                            id: 1,
+                            name: 'Example feedback topic',
+                            type: 'Employee feedback · sample',
+                            quality: 0,
+                            status: 'Responses not connected',
+                            displayValue: 'No connected data',
+                          },
+                          {
+                            id: 2,
+                            name: 'Example peer recognition',
+                            type: 'Recognition · sample',
+                            quality: 0,
+                            status: 'Responses not connected',
+                            displayValue: 'No connected data',
+                          },
+                          {
+                            id: 3,
+                            name: 'Example team pulse',
+                            type: 'Engagement check-in · sample',
+                            quality: 0,
+                            status: 'Responses not connected',
+                            displayValue: 'No connected data',
+                          },
+                        ]
+                      : employee
                     ? [
                         {
                           id: 1,
@@ -690,7 +794,11 @@ export function bindResourceContent(
                               ? 'Market data not connected'
                               : 'Details not connected',
                           })),
-    columnLabels: isEcommerceCatalog
+    columnLabels: isEmployeeTeamsScreen
+      ? { name: 'Team', type: 'Focus', quality: 'Members', status: 'Status' }
+      : isEmployeeEngagementScreen
+        ? { name: 'Item', type: 'Type', quality: 'Details', status: 'Status' }
+        : isEcommerceCatalog
       ? isMusicStore
         ? {
             name: 'Album',
@@ -784,11 +892,11 @@ export function bindResourceContent(
               : role === 'settings-form'
                 ? isReturnsPortal
                   ? 'Return reason'
-                  : 'Notification preferences'
+                  : isEmployeeSettingsScreen
+                    ? 'Policy acknowledgement (preview only)'
+                    : 'Notification preferences'
                 : role === 'save-footer'
-                  ? isReturnsPortal
-                    ? 'Submit return request'
-                    : 'Save preferences'
+                  ? saveFooterLabel
                   : role === 'auth-footer'
                     ? 'Sign in requires your authentication backend'
                     : 'Continue onboarding',
@@ -797,6 +905,8 @@ export function bindResourceContent(
         ? searchCopy.placeholder
         : role === 'message-composer'
           ? 'Write a message…'
+          : role === 'settings-form' && isEmployeeSettingsScreen
+            ? 'Local preview — not saved'
           : role === 'settings-form' && isReturnsPortal
             ? 'Describe why these items are being returned'
             : undefined,
@@ -805,22 +915,38 @@ export function bindResourceContent(
         ? searchCopy.helperText
         : role === 'message-composer'
           ? 'Example input. Connect a messaging backend to send messages.'
+          : role === 'save-footer' && isReturnsPortal
+            ? 'Connect a returns service before submitting requests.'
+            : role === 'save-footer' && isEmployeeSettingsScreen
+              ? 'Connect persistence to save.'
+              : role === 'save-footer'
+                ? 'Connect persistence to save changes.'
+          : role === 'settings-form' && isEmployeeSettingsScreen
+            ? 'Sample respectful workplace and information security guidance. Replace with approved company text; acknowledgements are not stored in this preview.'
           : role === 'settings-form' && isReturnsPortal
             ? 'Example field. Connect order data and a returns service in the exported application.'
             : 'Example field. Connect persistence and your backend in the exported application.',
     children:
-      role === 'save-footer'
-        ? isReturnsPortal
-          ? 'Submit return request'
-          : 'Save preferences'
+      role === 'pagination'
+        ? 'Paging unavailable'
+        : role === 'action-controls' || role === 'action-button'
+          ? 'Connect an action to continue'
+        : role === 'save-footer'
+          ? saveFooterLabel
         : role === 'auth-footer'
           ? 'Authentication backend required'
           : 'Continue',
-    disabled: ['save-footer', 'auth-footer', 'action-controls'].includes(role),
+    disabled: ['save-footer', 'auth-footer', 'action-controls', 'action-button', 'pagination'].includes(role),
     href: primaryActionHref,
   };
   if (role === 'save-footer' && isReturnsPortal) {
     content.title = 'Connect a returns service before submitting requests.';
+  }
+  if (role === 'save-footer' && isEmployeeSettingsScreen) {
+    content.title = 'Connect persistence to save.';
+  }
+  if (role === 'pagination') {
+    content.title = 'Connect a paging data source before navigating additional records.';
   }
   if (role === 'order-summary') {
     const item = product.entities.find((entity) => /product|item|listing/i.test(entity.name));
@@ -853,7 +979,8 @@ export function bindResourceContent(
     content.disabled &&
     role !== 'payment-fields' &&
     role !== 'submit-button' &&
-    !(role === 'save-footer' && isReturnsPortal)
+    role !== 'pagination' &&
+    !(role === 'save-footer' && (isReturnsPortal || isEmployeeSettingsScreen))
   ) {
     content.title = 'Connect the exported application to your backend to enable this action.';
   }
@@ -881,8 +1008,8 @@ export function bindResourceContent(
     'notification-centre': ['title', 'events'],
     'advanced-data-table': ['title', 'rows', 'columnLabels'],
     'kanban-board': ['title', 'columns'],
-    button: ['children', 'disabled', 'title'],
-    'magnetic-button': ['label', 'disabled', 'title'],
+    button: ['children', 'disabled', 'title', 'helperText'],
+    'magnetic-button': ['children', 'disabled', 'title', 'helperText'],
     input: ['label', 'helperText', 'placeholder', 'disabled', 'title'],
   };
   return Object.fromEntries(

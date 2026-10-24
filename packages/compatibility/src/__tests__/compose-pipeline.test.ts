@@ -20,7 +20,136 @@ const resourceTypeNodeType: Record<ResourceType, NodeType> = {
   state: 'component',
 };
 
+const employeeExperienceBrief =
+  'Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.';
+
+function composeEmployeeExperience() {
+  return composeProjectPipeline(
+    {
+      description: employeeExperienceBrief,
+      feel: 'professional but playful',
+      visualAmbition: 40,
+      structuralCreativity: 95,
+    },
+    { catalogResources: loadTestCatalog(), seed: 'employee-content-contract' }
+  ).directionC.manifest;
+}
+
+function nodesForScreen(manifest: ReturnType<typeof composeEmployeeExperience>, screenName: string) {
+  const screen = manifest.screens.find((item) => item.name === screenName);
+  if (!screen) throw new Error(`Missing ${screenName} screen`);
+  const nodes: ProjectNode[] = [];
+  const visit = (node: ProjectNode) => {
+    nodes.push(node);
+    node.children.forEach(visit);
+  };
+  visit(screen.rootNode);
+  return nodes;
+}
+
 describe('Real Product Composer Pipeline & Inputs (Req 2, 3, 4)', () => {
+  it('keeps resource navigation branding identical to the project brand', () => {
+    const manifest = composeEmployeeExperience();
+    const brandedNodes = manifest.screens.flatMap((screen) => nodesForScreen(manifest, screen.name))
+      .filter((node) => typeof node.props.brand === 'string');
+
+    expect(manifest.brand?.name).toBeTruthy();
+    expect(brandedNodes.length).toBeGreaterThan(0);
+    expect(brandedNodes.map((node) => node.props.brand)).toEqual(
+      brandedNodes.map(() => manifest.brand?.name)
+    );
+  });
+
+  it('routes employee marketing actions to their stated destinations', () => {
+    const manifest = composeEmployeeExperience();
+    const hero = nodesForScreen(manifest, 'Marketing Home').find((node) => node.semanticRole === 'hero');
+    const primary = hero?.props.primaryCta as { label: string; href: string };
+    const secondary = hero?.props.secondaryCta as { label: string; href: string };
+    const targetName = (href: string) =>
+      manifest.screens.find((screen) => `#${screen.id}` === href)?.name;
+
+    expect(primary.label).toBe('Meet your team');
+    expect(targetName(primary.href)).toBe('Teams');
+    expect(secondary.label).toBe('Explore onboarding');
+    expect(targetName(secondary.href)).toBe('Onboarding');
+  });
+
+  it('uses team records and team-specific columns on the Teams screen', () => {
+    const manifest = composeEmployeeExperience();
+    const table = nodesForScreen(manifest, 'Teams').find((node) => node.semanticRole === 'data-table');
+    const rows = table?.props.rows as Array<{ name: string; status: string }>;
+    const labels = table?.props.columnLabels as { name: string; type: string; quality: string; status: string };
+
+    expect(labels.name).toBe('Team');
+    expect(labels.type).toBe('Focus');
+    expect(rows.length).toBeGreaterThan(0);
+    expect(rows.map((row) => row.name).join(' ')).not.toMatch(/Example colleague/i);
+    expect(rows.every((row) => /membership not connected/i.test(row.status))).toBe(true);
+  });
+
+  it('gives Engagement feedback and recognition content distinct from Overview', () => {
+    const manifest = composeEmployeeExperience();
+    const overviewNodes = nodesForScreen(manifest, 'Team Overview');
+    const engagementNodes = nodesForScreen(manifest, 'Engagement');
+    const overviewTable = overviewNodes.find((node) => node.semanticRole === 'data-table');
+    const engagementTable = engagementNodes.find((node) => node.semanticRole === 'data-table');
+    const engagementCards = engagementNodes.find((node) => node.semanticRole === 'metric-cards')?.props.cards as
+      Array<{ label: string; val: string; status: string }>;
+
+    expect(engagementTable?.props.title).toBe('Feedback and recognition');
+    expect(engagementTable?.props.rows).not.toEqual(overviewTable?.props.rows);
+    expect(engagementCards.map((card) => card.label)).toEqual(
+      expect.arrayContaining(['Feedback', 'Recognition'])
+    );
+    expect(engagementCards.every((card) => card.val === '—' && card.status === 'No connected data')).toBe(true);
+  });
+
+  it('labels the Settings policy field as a sample preview that does not persist', () => {
+    const manifest = composeEmployeeExperience();
+    const policy = nodesForScreen(manifest, 'Settings & Policies').find(
+      (node) => node.semanticRole === 'settings-form'
+    );
+
+    expect(policy?.resourceRef?.slug).toBe('input');
+    expect(policy?.props.label).toBe('Policy acknowledgement (preview only)');
+    expect(policy?.props.placeholder).toContain('Local preview — not saved');
+    expect(policy?.props.helperText).toMatch(/sample|example/i);
+    expect(policy?.props.helperText).toMatch(/not stored/i);
+  });
+
+  it('renders only one shared navigation surface on Settings', () => {
+    const manifest = composeEmployeeExperience();
+    const navigationNodes = nodesForScreen(manifest, 'Settings & Policies').filter((node) =>
+      ['navigation', 'settings-nav'].includes(node.semanticRole)
+    );
+
+    expect(navigationNodes.map((node) => node.semanticRole)).toEqual(['navigation']);
+  });
+
+  it('does not present inert employee directory pagination as an enabled action', () => {
+    const manifest = composeEmployeeExperience();
+    const pagination = nodesForScreen(manifest, 'Teams').find(
+      (node) => node.semanticRole === 'pagination'
+    );
+
+    expect(pagination?.props.disabled).toBe(true);
+    expect(pagination?.props.children).toBe('Paging unavailable');
+    expect(pagination?.props.title).toMatch(/connect a paging data source/i);
+  });
+
+  it('preserves the disabled Settings action label and its missing persistence requirement', () => {
+    const manifest = composeEmployeeExperience();
+    const save = nodesForScreen(manifest, 'Settings & Policies').find(
+      (node) => node.semanticRole === 'save-footer'
+    );
+
+    expect(save?.resourceRef?.slug).toBe('magnetic-button');
+    expect(save?.props.children).toBe('Save preferences');
+    expect(save?.props.helperText).toBe('Connect persistence to save.');
+    expect(save?.props.title).toBe('Connect persistence to save.');
+    expect(save?.props.children).not.toMatch(/Explore Interface System/i);
+  });
+
   it('preserves resource granularity in the generated editor tree', () => {
     const catalog = loadTestCatalog();
     const result = composeProjectPipeline(

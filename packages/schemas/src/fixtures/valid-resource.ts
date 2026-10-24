@@ -152,6 +152,7 @@ export const validResourceFixture: ResourceManifest = {
     visualCraft: 95,
     dependencyCleanliness: 100,
     documentation: 90,
+    assessment: { status: 'unassessed', evidence: [] },
   },
   createdAt: '2026-10-10T19:00:00.000Z',
   updatedAt: '2026-10-10T19:00:00.000Z',

@@ -18,6 +18,15 @@ export function discoverResources(rootDir: string): DiscoveredResource[] {
     return discovered;
   }
 
+  const rootStat = fs.lstatSync(rootDir);
+  if (rootStat.isSymbolicLink()) {
+    throw new Error(`Resource root '${rootDir}' cannot be a symlink.`);
+  }
+  if (!rootStat.isDirectory()) {
+    throw new Error(`Resource root '${rootDir}' must be a directory.`);
+  }
+  const canonicalRoot = fs.realpathSync(rootDir);
+
   function scan(currentDir: string) {
     const entries = fs.readdirSync(currentDir, { withFileTypes: true });
 
@@ -62,7 +71,7 @@ export function discoverResources(rootDir: string): DiscoveredResource[] {
     }
   }
 
-  scan(rootDir);
+  scan(canonicalRoot);
 
   // Return sorted deterministically by slug
   return discovered.sort((a, b) => a.slug.localeCompare(b.slug));

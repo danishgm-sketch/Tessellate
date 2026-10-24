@@ -85,18 +85,14 @@ function requiredRolesForScreen(
     normalizeName(screenName) === 'activity stream' &&
     productModel.productArchetypes.some((archetype) => archetype.tag === 'consumer') &&
     productModel.entities.some((entity) => entity.name === 'Community Update');
-  const returnsPortalRequest =
-    screenType === 'settings' &&
-    normalizeName(screenName) === 'return request' &&
-    productModel.productArchetypes.some((archetype) => archetype.tag === 'ecommerce') &&
-    /return|refund/i.test(
-      `${productModel.primaryObjective} ${JSON.stringify(productModel.workflows)}`
-    );
   // A chronological community stream is the primary content, not a KPI
   // dashboard. Requiring metric cards here creates invented summary data.
+  // Settings grammar's current Gold navigation candidate is the same product
+  // navigation used by the shared shell. Requiring both creates duplicate
+  // destinations on every settings page, so keep the single shared navigation.
   return communityActivityStream
     ? grammarRoles.filter((role) => role !== 'metric-cards')
-    : returnsPortalRequest
+    : screenType === 'settings'
       ? grammarRoles.filter((role) => role !== 'settings-nav')
       : grammarRoles;
 }

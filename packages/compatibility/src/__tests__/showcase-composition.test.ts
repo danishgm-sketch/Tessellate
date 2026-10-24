@@ -46,4 +46,34 @@ describe('showcase composition stability', () => {
     expect(serialized).toContain('equity trade');
     expect(serialized).not.toMatch(/bank statements|reconcile statements|household budget/);
   });
+
+  it('composes the luxury hospitality showcase as a stay and reservation product', () => {
+    const manifest = composeShowcase('showcase-luxury-hospitality', catalogue);
+    const serialized = JSON.stringify(manifest).toLocaleLowerCase();
+
+    expect(manifest.productModel.productArchetypes[0]?.tag).toBe('travel');
+    expect(manifest.screens.map((screen) => screen.name)).toEqual(
+      expect.arrayContaining(['Find a Stay', 'Room Details', 'Reservation Checkout'])
+    );
+    expect(serialized).toMatch(/residence|room|reservation/);
+    expect(serialized).not.toMatch(/article reader|journalist|newsroom|editorial publication/);
+  });
+
+  it('keeps the employee experience showcase focused on colleagues rather than hiring', () => {
+    const manifest = composeShowcase('showcase-playful-hr', catalogue);
+    const serialized = JSON.stringify(manifest).toLocaleLowerCase();
+
+    expect(manifest.name).toBe('Kudos Employee Experience');
+    expect(manifest.screens.map((screen) => screen.name)).toEqual(
+      expect.arrayContaining([
+        'People Directory',
+        'Teams',
+        'Onboarding',
+        'Engagement',
+        'Settings & Policies',
+      ])
+    );
+    expect(serialized).toMatch(/employee|colleague|onboarding|policy/);
+    expect(serialized).not.toMatch(/applicant pipeline|recruiting dashboard|candidate sourcing/);
+  });
 });
