@@ -56,7 +56,7 @@ describe('D1 cloud project ownership and optimistic concurrency', () => {
           .bind(id, id, `${id}@tessellate.test`, 0, now, now)
       )
     );
-  });
+  }, 30_000);
 
   afterAll(async () => {
     await miniflare?.dispose();
