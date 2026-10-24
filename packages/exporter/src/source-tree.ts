@@ -129,6 +129,7 @@ export default defineConfig({
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>${manifest.name.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</title>
   </head>
   <body class="bg-[#FAF9F6] text-[#111217] antialiased">
@@ -136,6 +137,14 @@ export default defineConfig({
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+`;
+
+  files['public/favicon.svg'] = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect x="2" y="2" width="12" height="12" rx="2.5" fill="#111217" transform="rotate(6 8 8)" />
+  <rect x="18" y="3" width="12" height="12" rx="2.5" fill="#2547E8" transform="rotate(-6 24 9)" />
+  <rect x="3" y="18" width="12" height="12" rx="2.5" fill="#2547E8" transform="rotate(-4 9 24)" />
+  <rect x="18" y="18" width="12" height="12" rx="2.5" fill="#111217" transform="rotate(6 24 24)" />
+</svg>
 `;
 
   // 5. src/index.css (Tailwind 4 + Normalized CSS variables)

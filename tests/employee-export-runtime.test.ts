@@ -13,6 +13,8 @@ it('standalone employee product preserves nested records and CTA content in a re
   const resources=JSON.parse(readFileSync('apps/site/public/data/catalog.json','utf8')).resources;
   const manifest=composeProjectPipeline({description:'Employee experience platform with people, teams, onboarding and policies',feel:'professional but playful'}, {catalogResources:resources,seed:'export-employee'}).directionC.manifest;
   const files=generateSourceTree(manifest);
+  expect(files['index.html']).toContain('<link rel="icon" type="image/svg+xml" href="/favicon.svg" />');
+  expect(files['public/favicon.svg']).toContain('<svg');
   const directory=mkdtempSync(path.join(os.tmpdir(),'tessellate-employee-export-'));
   for(const [name,content] of Object.entries(files)){const filename=path.join(directory,name);mkdirSync(path.dirname(filename),{recursive:true});writeFileSync(filename,content);}
   await run('npm install --no-audit --no-fund',{cwd:directory,timeout:240000});
@@ -34,6 +36,9 @@ it('standalone employee product preserves nested records and CTA content in a re
     await ready;
     const page=await browser.newPage({viewport:{width:1440,height:900}});
     const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
+    page.on('console',message=>{if(message.type()==='error')errors.push(message.text());});
+    page.on('requestfailed',request=>errors.push(`request failed: ${request.url()}`));
+    page.on('response',response=>{if(response.status()>=400)errors.push(`HTTP ${response.status()}: ${response.url()}`);});
     await page.goto(`http://127.0.0.1:${port}`);
     expect(await page.getByRole('link',{name:'Meet your team',exact:true}).count()).toBe(1);
     const productNavigation=page.getByRole('navigation',{name:'Product screens'}).first();
@@ -41,6 +46,7 @@ it('standalone employee product preserves nested records and CTA content in a re
     await productNavigation.getByRole('link',{name:'People Directory',exact:true}).click();
     await page.getByRole('cell',{name:'Example colleague A',exact:true}).waitFor();
     expect(await page.getByText('Product team',{exact:true}).count()).toBeGreaterThan(0);
+    expect(await page.locator('link[rel="icon"]').getAttribute('href')).toBe('/favicon.svg');
     expect(errors).toEqual([]);
     expect(JSON.stringify(JSON.parse(files['package.json']!).dependencies)).not.toContain('@tessellate/');
   } finally {await browser.close();server.kill();}
