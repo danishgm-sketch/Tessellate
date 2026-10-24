@@ -81,6 +81,17 @@ const inlineScriptHashes = [...previewHtml.matchAll(/<script\b([^>]*)>([\s\S]*?)
 const previewStyleHashes = [...previewHtml.matchAll(/<style\b[^>]*>([\s\S]*?)<\/style>/gi)].map(
   ([, content]) => hashInline(content ?? '')
 );
+function collectInlineStyleHashesFromCode(sourceText, sourcePath) {
+  const hashes = [];
+  for (const [, content] of sourceText.matchAll(/<style>\{`([\s\S]*?)`\}<\/style>/g)) {
+    if (content.includes('${')) {
+      throw new Error(`Cannot certify a dynamic inline style block in ${sourcePath}.`);
+    }
+    hashes.push(hashInline(content));
+  }
+  return hashes;
+}
+
 function collectResourceInlineStyleHashes(directory) {
   const hashes = [];
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
@@ -88,18 +99,37 @@ function collectResourceInlineStyleHashes(directory) {
     if (entry.isDirectory()) {
       hashes.push(...collectResourceInlineStyleHashes(entryPath));
     } else if (/\.(?:tsx|jsx)$/.test(entry.name)) {
-      const sourceText = readFileSync(entryPath, 'utf8');
-      for (const [, content] of sourceText.matchAll(/<style>\{`([\s\S]*?)`\}<\/style>/g)) {
-        if (content.includes('${')) {
-          throw new Error(`Cannot certify a dynamic inline style block in ${entryPath}.`);
-        }
-        hashes.push(hashInline(content));
+      hashes.push(...collectInlineStyleHashesFromCode(readFileSync(entryPath, 'utf8'), entryPath));
+    }
+  }
+  return hashes;
+}
+
+function collectRuntimeResourceInlineStyleHashes(directory) {
+  const hashes = [];
+  for (const entry of readdirSync(directory, { withFileTypes: true })) {
+    if (!entry.isFile() || !entry.name.endsWith('.json')) continue;
+    const entryPath = path.join(directory, entry.name);
+    const resource = JSON.parse(readFileSync(entryPath, 'utf8'));
+    for (const resourceFile of resource.files ?? []) {
+      if (typeof resourceFile.content === 'string') {
+        hashes.push(
+          ...collectInlineStyleHashesFromCode(
+            resourceFile.content,
+            `${entryPath}:${resourceFile.path ?? 'unknown'}`
+          )
+        );
       }
     }
   }
   return hashes;
 }
-const resourceInlineStyleHashes = collectResourceInlineStyleHashes(path.join(root, 'resources'));
+const resourceInlineStyleHashes = [
+  ...collectResourceInlineStyleHashes(path.join(root, 'resources')),
+  // Certify the exact sources copied into the public runtime registry too. The
+  // preview executes these files, so the registry is the CSP contract of record.
+  ...collectRuntimeResourceInlineStyleHashes(path.join(assetsDestination, 'r')),
+];
 // WebKit reports the no-op inline rule `body {}` in preview frames during the
 // multi-preview workflow. Certify only that exact empty rule rather than allowing
 // general inline styles; it has no visual effect and does not broaden script policy.

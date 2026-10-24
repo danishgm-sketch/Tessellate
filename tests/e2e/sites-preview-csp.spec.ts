@@ -342,6 +342,43 @@ test('sandboxed Explore previews preserve resource inline style behavior', async
   expect(consoleErrors).toEqual([]);
 });
 
+test('resource detail preview styles are authorized by its runtime CSP', async ({ page, request }) => {
+  const consoleErrors: string[] = [];
+  const pageErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => pageErrors.push(error.message));
+
+  const previewResponse = await request.get('/preview-content/?resource=advanced-data-table');
+  expect(previewResponse.status()).toBe(200);
+  const policy = previewResponse.headers()['content-security-policy'] ?? '';
+  const directives = new Map(
+    policy.split(';').map((directive) => {
+      const [name, ...sources] = directive.trim().split(/\s+/);
+      return [name, sources];
+    })
+  );
+
+  const response = await page.goto('/r/advanced-data-table');
+  expect(response?.status()).toBe(200);
+  const preview = page.frameLocator('iframe[title="Advanced Data Table live preview"]');
+  await expect(preview.locator('body')).toContainText('Sample records');
+
+  const inlineStyles = await preview.locator('style').evaluateAll((styles) =>
+    styles.map((style) => style.textContent ?? '').filter((content) => content.trim().length > 0)
+  );
+  const contentHash = (content: string) =>
+    `'sha256-${createHash('sha256').update(content).digest('base64')}'`;
+  for (const style of inlineStyles) {
+    expect(directives.get('style-src-elem'), 'runtime inline style hash').toContain(
+      contentHash(style)
+    );
+  }
+  expect(consoleErrors).toEqual([]);
+  expect(pageErrors).toEqual([]);
+});
+
 test('an untrusted preview cannot send data to an external origin', async ({ page }) => {
   const blockedByPolicy: string[] = [];
   const unexpectedErrors: string[] = [];
