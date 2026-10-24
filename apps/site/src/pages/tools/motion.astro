@@ -15,13 +15,13 @@ import { MotionStudio } from '../../components/tools/MotionStudio';
     <title>Motion Studio — Tessellate Tools</title>
     <meta
       name="description"
-      content="Edit easing, duration, spring physics, stagger, reveal, and WCAG reduced motion behaviours."
+      content="Compare easing curves, spring settings, stagger timing, and reduced-motion examples."
     />
   </head>
   <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white flex flex-col font-sans">
     <SiteHeader client:load />
 
-    <main class="flex-1 max-w-[1440px] w-full mx-auto px-6 py-12">
+    <main id="main-content" tabindex="-1" class="flex-1 max-w-[1440px] w-full mx-auto px-6 py-12">
       <CapabilityNotice tier="Beta" note="Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project." />
       <MotionStudio client:load />
     </main>

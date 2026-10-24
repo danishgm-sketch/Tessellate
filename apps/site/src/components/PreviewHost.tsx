@@ -86,7 +86,15 @@ export default function PreviewHost() {
 
   useEffect(() => {
     function handleMessage(event: MessageEvent) {
-      if (event.source!==window.parent || !document.referrer || event.origin!==new URL(document.referrer).origin || !isParentToPreviewMessage(event.data)) {
+      // The renderer's own origin is opaque, but event.origin identifies the
+      // sender. Only a same-origin application host may change the preview;
+      // the top-level safety wrapper supplies initial state through the URL.
+      if (
+        window.parent === window ||
+        event.source !== window.parent ||
+        event.origin !== window.location.origin ||
+        !isParentToPreviewMessage(event.data)
+      ) {
         return;
       }
 
@@ -155,10 +163,14 @@ export default function PreviewHost() {
   const interactiveProps = {
     ...props,
     onChange,
-    onSelect: (value: unknown) => {
-      setProps(previous => ({ ...previous, value }));
-      setActionStatus(`Selected ${String(value)}`);
-    },
+    ...(['command-menu', 'combobox', 'dropdown-menu'].includes(resourceId)
+      ? {
+          onSelect: (value: unknown) => {
+            setProps((previous) => ({ ...previous, value }));
+            setActionStatus(`Selected ${String(value)}`);
+          },
+        }
+      : {}),
     onClose: () => setProps(previous => ({ ...previous, open: false })),
     onConfirm: () => {
       setProps(previous => ({ ...previous, open: false }));

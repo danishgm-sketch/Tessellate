@@ -37,11 +37,6 @@
   --tess-cobalt: #6782FF;
 }
 
-[data-resource-variant="nocturne"] {
-  --tess-ink-secondary: #A8AFBA;
-  --tess-ink-muted: #A8AFBA;
-}
-
 :focus-visible { outline: 2px solid var(--tess-cobalt); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -54,4 +49,10 @@ body {
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+}
+
+pre {
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: auto;
 }

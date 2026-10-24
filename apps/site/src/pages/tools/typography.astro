@@ -15,13 +15,13 @@ import { TypographyLab } from '../../components/tools/TypographyLab';
     <title>Typography Lab — Tessellate Tools</title>
     <meta
       name="description"
-      content="Explore type scales, pairing archetypes, tabular figures, and telemetry typesetting."
+      content="Explore typographic scales, font-pairing previews, numeric samples, and OpenType feature settings."
     />
   </head>
   <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white flex flex-col font-sans">
     <SiteHeader client:load />
 
-    <main class="flex-1 max-w-[1440px] w-full mx-auto px-6 py-12">
+    <main id="main-content" tabindex="-1" class="flex-1 max-w-[1440px] w-full mx-auto px-6 py-12">
       <CapabilityNotice tier="Beta" note="Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project." />
       <TypographyLab client:load />
     </main>

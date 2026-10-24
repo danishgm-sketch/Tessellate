@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
+import { unified } from '@astrojs/markdown-remark';
 
 // Build-time keyboard access for scrollable canonical documentation code/tables.
 function keyboardScrollableContent(){
@@ -15,7 +16,7 @@ function keyboardScrollableContent(){
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
-  markdown: {rehypePlugins:[keyboardScrollableContent]},
+  markdown: {processor: unified({rehypePlugins:[keyboardScrollableContent]})},
   vite: {
     build: {cssCodeSplit:false},
     plugins: [tailwindcss()],

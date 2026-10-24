@@ -17,7 +17,7 @@ export function ResourcePreviewFrame({
   initialVariant,
   initialDevice = 'desktop',
   initialTheme = 'light',
-  previewUrl = '/preview',
+  previewUrl = '/preview-content/',
 }: ResourcePreviewFrameProps) {
   const defaultVariant = initialVariant ?? manifest.variants[0]?.id ?? 'expressive';
   const [variant, setVariant] = useState<string>(defaultVariant);
@@ -26,15 +26,37 @@ export function ResourcePreviewFrame({
   const [reducedMotion, setReducedMotion] = useState<boolean>(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const initializedRef = useRef(false);
 
-  useEffect(()=>{
-    const receive=(event:MessageEvent)=>{
-      if(event.source!==iframeRef.current?.contentWindow || !isPreviewToParentMessage(event.data) || event.data.type!=='TESSELLATE_PREVIEW_READY') return;
-      iframeRef.current?.contentWindow?.postMessage({type:'TESSELLATE_PREVIEW_INIT',resourceId:manifest.slug,props:manifest.preview.defaultProps,variant,theme,device,reducedMotion},'*');
+  useEffect(() => {
+    const receive = (event: MessageEvent) => {
+      if (
+        event.source !== iframeRef.current?.contentWindow ||
+        event.origin !== 'null' ||
+        !isPreviewToParentMessage(event.data) ||
+        event.data.type !== 'TESSELLATE_PREVIEW_READY' ||
+        event.data.resourceId !== manifest.slug ||
+        initializedRef.current
+      ) {
+        return;
+      }
+      initializedRef.current = true;
+      iframeRef.current?.contentWindow?.postMessage(
+        {
+          type: 'TESSELLATE_PREVIEW_INIT',
+          resourceId: manifest.slug,
+          props: manifest.preview.defaultProps,
+          variant,
+          theme,
+          device,
+          reducedMotion,
+        },
+        '*'
+      );
     };
-    window.addEventListener('message',receive);
-    return ()=>window.removeEventListener('message',receive);
-  },[manifest,variant,theme,device,reducedMotion]);
+    window.addEventListener('message', receive);
+    return () => window.removeEventListener('message', receive);
+  }, [manifest, variant, theme, device, reducedMotion]);
 
   // Send updates to iframe whenever controls change
   useEffect(() => {
@@ -188,7 +210,10 @@ export function ResourcePreviewFrame({
             src={constructedSrc}
             title={`${manifest.name} live preview`}
             sandbox="allow-scripts"
-            onLoad={() => setIframeLoaded(true)}
+            onLoad={() => {
+              initializedRef.current = false;
+              setIframeLoaded(true);
+            }}
             className="w-full min-h-[500px] border-0 bg-transparent block"
           />
         </div>

@@ -1,19 +1,20 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import {
-  interpretProductBrief,
   type ProductBriefInput,
 } from '@tessellate/composer';
-import {
-  getVisualAmbitionStop,
-  getStructuralCreativityStop,
-  VISUAL_AMBITION_STOPS,
-  STRUCTURAL_CREATIVITY_STOPS,
-} from '@tessellate/dna';
 import { ArrowRight, SlidersHorizontal, Sparkles } from 'lucide-react';
 
 interface HeroComposerProps {
   onComposed?: (input: ProductBriefInput) => void;
 }
+
+const DEFAULT_BRIEF = {
+  label: 'playful HR platform',
+  desc: 'A professional but playful employee experience platform for a 500-person technology company. Warm onboarding journeys, team discovery, peer recognition, and trusted workplace policies.',
+  feel: 'professional but playful',
+  ambition: 60,
+  structure: 50,
+};
 
 const PRESET_BRIEFS = [
   {
@@ -30,13 +31,7 @@ const PRESET_BRIEFS = [
     ambition: 85,
     structure: 45,
   },
-  {
-    label: 'playful HR platform',
-    desc: 'A modern people and culture hub for remote product organizations. Warm onboarding journeys, team celebration pulses, peer recognition, and automated pulse surveys.',
-    feel: 'playful and warm',
-    ambition: 60,
-    structure: 50,
-  },
+  DEFAULT_BRIEF,
   {
     label: 'developer observability tool',
     desc: 'High-throughput microservices APM cockpit for infrastructure engineers. Real-time distributed traces, flamegraphs, incident post-mortems, and eBPF network metrics.',
@@ -55,35 +50,13 @@ const PRESET_BRIEFS = [
 
 export function HeroComposer({ onComposed }: HeroComposerProps) {
   const [description, setDescription] = useState(
-    'An AI market-intelligence platform for procurement teams. Serious and technical in the app, premium and cinematic on marketing pages…'
+    DEFAULT_BRIEF.desc
   );
-  const [feel, setFeel] = useState('Professional + Playful');
-  const [visualAmbition, setVisualAmbition] = useState(76);
-  const [structuralCreativity, setStructuralCreativity] = useState(64);
-  const [stack, setStack] = useState('React + Tailwind 4');
+  const [feel, setFeel] = useState(DEFAULT_BRIEF.feel);
+  const [visualAmbition, setVisualAmbition] = useState(DEFAULT_BRIEF.ambition);
+  const [structuralCreativity, setStructuralCreativity] = useState(DEFAULT_BRIEF.structure);
   const [isComposing, setIsComposing] = useState(false);
-
-  // Real-time deterministic interpretation of current input
-  const liveInterpreted = useMemo(() => {
-    try {
-      const briefInput: ProductBriefInput = {
-        description,
-        feel,
-        visualAmbition,
-        structuralCreativity,
-        accessibilityFloor: 'AA',
-        performanceCeiling: 'balanced',
-        targetDevices: ['desktop', 'tablet', 'mobile'],
-      };
-      return interpretProductBrief(briefInput);
-    } catch {
-      return null;
-    }
-  }, [description, feel, visualAmbition, structuralCreativity]);
-
-  const dna = liveInterpreted?.productModel;
-  const profScore = dna ? Math.round(dna.trustRequirement) : 88;
-  const techScore = dna ? Math.round(dna.informationComplexity) : 82;
+  const [handoffError, setHandoffError] = useState('');
 
   const handleApplyPreset = (p: typeof PRESET_BRIEFS[number]) => {
     setDescription(p.desc);
@@ -94,6 +67,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
 
   const handleComposeSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setHandoffError('');
     setIsComposing(true);
 
     const input: ProductBriefInput = {
@@ -108,22 +82,23 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
 
     if (onComposed) {
       onComposed(input);
+      setIsComposing(false);
+      return;
     }
 
-    setTimeout(() => {
+    try {
+      window.sessionStorage.setItem('tessellate:pending-compose-brief', JSON.stringify(input));
+      window.location.assign('/compose');
+    } catch {
       setIsComposing(false);
-      // Scroll to directions section
-      const directionsEl = document.getElementById('three-directions-demo');
-      if (directionsEl) {
-        directionsEl.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 350);
+      setHandoffError('Your browser could not pass this brief to Compose. Copy it before continuing.');
+    }
   };
 
   return (
-    <section className="relative pt-12 pb-20 px-6 max-w-[1440px] mx-auto select-none">
+    <section className="relative pt-8 pb-10 px-6 max-w-[1440px] mx-auto select-none md:pt-12 md:pb-12">
       {/* Kicker badge */}
-      <div className="flex items-center gap-2.5 mb-6">
+      <div className="flex items-center gap-2.5 mb-3 sm:mb-6">
         <span className="h-2 w-2 rounded-full bg-[#C9FF57] ring-4 ring-[#C9FF57]/20" />
         <span className="font-mono text-xs font-semibold tracking-wider text-[#62666F] uppercase">
           Open Interface Intelligence
@@ -131,29 +106,29 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
       </div>
 
       {/* Hero Headline and Subhead */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-end mb-7 sm:mb-12">
         <div className="lg:col-span-8 space-y-4">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-[#111217] leading-[1.04]">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-[#111217] leading-[1.04]">
             Describe the product.<br />
             Get the interface.
           </h1>
-          <p className="text-lg sm:text-xl text-[#62666F] max-w-2xl font-normal leading-relaxed">
+          <p className="text-base sm:text-xl text-[#62666F] max-w-2xl font-normal leading-relaxed">
             Tessellate turns product intent into cohesive interface systems using an open library of components, patterns, motion and design intelligence.
           </p>
         </div>
 
         {/* Preset Quick Chips */}
-        <div className="lg:col-span-4 flex flex-col gap-2">
-          <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-[var(--text-muted)]">
+        <div className="lg:col-span-4 flex min-w-0 flex-col gap-2">
+          <span className="text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-wider text-[var(--text-muted)]">
             Preset Exemplars:
           </span>
-          <div className="flex flex-wrap gap-1.5">
+          <div aria-label="Preset briefs" className="flex flex-nowrap gap-1.5 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-visible">
             {PRESET_BRIEFS.map((p) => (
               <button
                 key={p.label}
                 type="button"
                 onClick={() => handleApplyPreset(p)}
-                className="text-xs px-2.5 py-1 rounded-md bg-[#FAF9F6] border border-[#D9D6CF] text-[#62666F] hover:text-[#111217] hover:border-[#111217] transition-all"
+                className="shrink-0 text-[11px] sm:text-xs px-2.5 py-1 rounded-md bg-[#FAF9F6] border border-[#D9D6CF] text-[#62666F] hover:text-[#111217] hover:border-[#111217] transition-all"
               >
                 {p.label}
               </button>
@@ -163,11 +138,11 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
       </div>
 
       {/* Hero Composer Surface & Side Telemetry */}
-      <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-4 sm:gap-8 items-start">
         {/* Main Composer Instrument Card */}
         <form
           onSubmit={handleComposeSubmit}
-          className="xl:col-span-9 bg-white border border-[#D9D6CF] rounded-[20px] p-6 sm:p-7 shadow-[0_18px_30px_rgba(17,18,23,0.08)] transition-all hover:border-[#C7C3BA]"
+          className="xl:col-span-9 bg-white border border-[#D9D6CF] rounded-[20px] p-4 sm:p-7 shadow-[0_18px_30px_rgba(17,18,23,0.08)] transition-all hover:border-[#C7C3BA]"
         >
           {/* Header row */}
           <div className="flex items-center justify-between pb-3">
@@ -182,30 +157,38 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
 
           {/* Prompt input area */}
           <textarea
+            id="hero-product-brief"
+            name="productBrief"
             value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            rows={3}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+            rows={2}
             aria-label="Product description and requirements"
             placeholder="Describe what this product does, its users, complexity, and visual atmosphere…"
-            className="w-full text-base sm:text-lg text-[#111217] placeholder-[#62666F] bg-transparent resize-none border-none focus:outline-none focus:ring-0 leading-relaxed font-sans"
+            className="w-full min-h-14 sm:min-h-[4.5rem] text-base sm:text-lg text-[#111217] placeholder-[#62666F] bg-transparent resize-none border-none focus:outline-none focus:ring-0 leading-relaxed font-sans"
           />
 
           {/* Separator */}
-          <div className="h-px bg-[#E5E2DC] my-4" />
+          <div className="h-px bg-[#E5E2DC] my-3 sm:my-4" />
 
           {/* Bottom Tool Row */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pt-1">
-            <div className="flex flex-wrap items-center gap-6 text-xs">
+          <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+            <div className="hidden flex-wrap items-center gap-6 text-xs sm:flex">
               {/* Feel Parameter */}
               <div className="space-y-1">
                 <span className="block font-mono text-[10px] uppercase font-semibold text-[var(--text-muted)]">
                   Feel
                 </span>
                 <input
+                  id="hero-interface-feel"
+                  name="interfaceFeel"
                   type="text"
                   value={feel}
                   aria-label="Interface feel"
-                  onChange={(e) => setFeel(e.target.value)}
+                  onChange={(e) => {
+                    setFeel(e.target.value);
+                  }}
                   className="font-semibold text-[#111217] bg-transparent border-none p-0 focus:outline-none text-xs w-36 hover:underline cursor-pointer"
                   title="Click to edit feel prompt"
                 />
@@ -214,20 +197,24 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
               {/* Ambition Parameter */}
               <div className="space-y-1">
                 <span className="block font-mono text-[10px] uppercase font-semibold text-[var(--text-muted)]">
-                  Ambition ({visualAmbition})
+                  Ambition
                 </span>
                 <div className="flex items-center gap-2">
                   <input
+                    id="hero-visual-ambition"
+                    name="visualAmbition"
                     type="range"
                     min="10"
                     max="95"
                     value={visualAmbition}
                     aria-label="Visual ambition level"
-                    onChange={(e) => setVisualAmbition(Number(e.target.value))}
+                    onChange={(e) => {
+                      setVisualAmbition(Number(e.target.value));
+                    }}
                     className="w-20 accent-[#2547E8] cursor-pointer"
                   />
                   <span className="font-semibold text-[#111217]">
-                    {VISUAL_AMBITION_STOPS[getVisualAmbitionStop(visualAmbition)].label}
+                    {visualAmbition} / 100
                   </span>
                 </div>
               </div>
@@ -235,20 +222,24 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
               {/* Structure Parameter */}
               <div className="space-y-1">
                 <span className="block font-mono text-[10px] uppercase font-semibold text-[var(--text-muted)]">
-                  Structure ({structuralCreativity})
+                  Structure
                 </span>
                 <div className="flex items-center gap-2">
                   <input
+                    id="hero-structural-creativity"
+                    name="structuralCreativity"
                     type="range"
                     min="10"
                     max="90"
                     value={structuralCreativity}
                     aria-label="Structural creativity level"
-                    onChange={(e) => setStructuralCreativity(Number(e.target.value))}
+                    onChange={(e) => {
+                      setStructuralCreativity(Number(e.target.value));
+                    }}
                     className="w-20 accent-[#111217] cursor-pointer"
                   />
                   <span className="font-semibold text-[#111217]">
-                    {STRUCTURAL_CREATIVITY_STOPS[getStructuralCreativityStop(structuralCreativity)].label}
+                    {structuralCreativity} / 100
                   </span>
                 </div>
               </div>
@@ -258,73 +249,90 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
                 <span className="block font-mono text-[10px] uppercase font-semibold text-[var(--text-muted)]">
                   Stack
                 </span>
-                <select
-                  value={stack}
-                  aria-label="Target technical stack"
-                  onChange={(e) => setStack(e.target.value)}
-                  className="font-semibold text-[#111217] bg-transparent border-none p-0 focus:outline-none text-xs cursor-pointer"
-                >
-                  <option value="React + Tailwind 4">React + Tailwind 4</option>
-                  <option value="Vite + React 19">Vite + React 19</option>
-                </select>
+                <span className="block font-semibold text-[#111217] text-xs">React 19 + Tailwind CSS 4</span>
               </div>
             </div>
+
+            <details className="group rounded-lg border border-[#D9D6CF] bg-[#FAF9F6] text-xs sm:hidden">
+              <summary className="flex cursor-pointer list-none flex-col gap-1 px-3 py-2.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2547E8]">
+                <span className="font-semibold text-[#111217]">Feel, ambition and structure</span>
+                <span className="text-[11px] text-[#62666F]">{feel} · {visualAmbition} ambition · {structuralCreativity} structure</span>
+              </summary>
+              <div className="grid grid-cols-2 gap-3 border-t border-[#D9D6CF] p-3">
+                <label className="col-span-2 space-y-1">
+                  <span className="block font-mono text-[10px] uppercase font-semibold text-[var(--text-muted)]">Feel</span>
+                  <input
+                    id="hero-mobile-interface-feel"
+                    name="mobileInterfaceFeel"
+                    type="text"
+                    value={feel}
+                    aria-label="Interface feel"
+                    onChange={(e) => setFeel(e.target.value)}
+                    className="w-full border-b border-[#C7C3BA] bg-transparent py-1 font-semibold text-[#111217] focus:border-[#2547E8] focus:outline-none"
+                  />
+                </label>
+                <label className="space-y-1">
+                  <span className="block font-mono text-[10px] uppercase font-semibold text-[var(--text-muted)]">Ambition</span>
+                  <input
+                    id="hero-mobile-visual-ambition"
+                    name="mobileVisualAmbition"
+                    type="range"
+                    min="10"
+                    max="95"
+                    value={visualAmbition}
+                    aria-label="Visual ambition level"
+                    onChange={(e) => setVisualAmbition(Number(e.target.value))}
+                    className="w-full accent-[#2547E8]"
+                  />
+                  <output className="block font-mono text-[11px]">{visualAmbition} / 100</output>
+                </label>
+                <label className="space-y-1">
+                  <span className="block font-mono text-[10px] uppercase font-semibold text-[var(--text-muted)]">Structure</span>
+                  <input
+                    id="hero-mobile-structural-creativity"
+                    name="mobileStructuralCreativity"
+                    type="range"
+                    min="10"
+                    max="90"
+                    value={structuralCreativity}
+                    aria-label="Structural creativity level"
+                    onChange={(e) => setStructuralCreativity(Number(e.target.value))}
+                    className="w-full accent-[#111217]"
+                  />
+                  <output className="block font-mono text-[11px]">{structuralCreativity} / 100</output>
+                </label>
+              </div>
+            </details>
 
             {/* Compose CTA Button */}
             <button
               type="submit"
               disabled={isComposing}
-              className="flex items-center gap-2 rounded-lg bg-[#2547E8] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#1E3CCD] transition-colors shadow-sm disabled:opacity-75 cursor-pointer ml-auto"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-[#2547E8] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#1E3CCD] transition-colors shadow-sm disabled:opacity-75 cursor-pointer sm:ml-auto sm:w-auto"
             >
-              <span>{isComposing ? 'Synthesizing…' : 'Compose'}</span>
+              <span>{isComposing ? 'Opening Compose…' : 'Compose'}</span>
               <ArrowRight className="h-4 w-4" />
             </button>
           </div>
+          {handoffError && <p role="alert" className="mt-4 text-sm text-[#C83D48]">{handoffError}</p>}
         </form>
 
-        {/* Side Design DNA Telemetry Widget */}
-        <div className="xl:col-span-3 bg-[#FAF9F6] border border-[#D9D6CF] rounded-[20px] p-6 space-y-5">
+        {/* Side panel echoes the user's selected controls without running the full engine. */}
+        <div className="hidden xl:col-span-3 bg-[#FAF9F6] border border-[#D9D6CF] rounded-[20px] p-6 space-y-5 xl:block">
           <div className="flex items-center justify-between border-b border-[#D9D6CF] pb-3">
             <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--text-muted)] uppercase">
-              Design DNA Priors
+              Current settings
             </span>
             <SlidersHorizontal className="h-3.5 w-3.5 text-[#62666F]" />
           </div>
 
           <div className="space-y-4 text-xs font-medium">
-            {/* Professional Meter */}
-            <div className="space-y-1.5">
-              <div className="flex justify-between text-[#62666F]">
-                <span>Professional</span>
-                <span className="font-mono text-[#111217] font-semibold">{profScore}</span>
-              </div>
-              <div className="h-1.5 w-full rounded-full bg-[#D9D6CF] overflow-hidden">
-                <div
-                  className="h-full bg-[#2547E8] transition-all duration-300"
-                  style={{ width: `${profScore}%` }}
-                />
-              </div>
-            </div>
-
-            {/* Technical Meter */}
-            <div className="space-y-1.5">
-              <div className="flex justify-between text-[#62666F]">
-                <span>Technical</span>
-                <span className="font-mono text-[#111217] font-semibold">{techScore}</span>
-              </div>
-              <div className="h-1.5 w-full rounded-full bg-[#D9D6CF] overflow-hidden">
-                <div
-                  className="h-full bg-[#2547E8] transition-all duration-300"
-                  style={{ width: `${techScore}%` }}
-                />
-              </div>
-            </div>
-
-            {/* Visual Ambition Meter */}
             <div className="space-y-1.5">
               <div className="flex justify-between text-[#62666F]">
                 <span>Visual ambition</span>
-                <span className="font-mono text-[#111217] font-semibold">{visualAmbition}</span>
+                <output aria-label="Selected visual ambition" className="font-mono text-[#111217] font-semibold">
+                  {visualAmbition} / 100
+                </output>
               </div>
               <div className="h-1.5 w-full rounded-full bg-[#D9D6CF] overflow-hidden">
                 <div
@@ -334,11 +342,12 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
               </div>
             </div>
 
-            {/* Structure Creativity Meter */}
             <div className="space-y-1.5">
               <div className="flex justify-between text-[#62666F]">
-                <span>Structure creativity</span>
-                <span className="font-mono text-[#111217] font-semibold">{structuralCreativity}</span>
+                <span>Structural creativity</span>
+                <output aria-label="Selected structural creativity" className="font-mono text-[#111217] font-semibold">
+                  {structuralCreativity} / 100
+                </output>
               </div>
               <div className="h-1.5 w-full rounded-full bg-[#D9D6CF] overflow-hidden">
                 <div
@@ -350,7 +359,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
           </div>
 
           <p className="text-[11px] text-[var(--text-muted)] pt-2 border-t border-[#D9D6CF] font-sans">
-            Calibrated deterministically from input semantics without requiring external cloud inference.
+            These are your selected values. Compose carries them with the brief into the deterministic product pipeline.
           </p>
         </div>
       </div>

@@ -28,7 +28,7 @@ const formattedName = username ? username.charAt(0).toUpperCase() + username.sli
   <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white">
     <SiteHeader client:load />
 
-    <main id="main-content" class="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 space-y-8">
+    <main id="main-content" tabindex="-1" class="max-w-[1200px] mx-auto px-4 sm:px-6 py-12 space-y-8">
       <CapabilityNotice tier="Beta" note="This is a static review profile. Creator accounts, verified identities, usage metrics and account-linked authored-resource lists are not connected." />
       <div class="flex items-center gap-4 p-6 rounded-2xl bg-white border border-[#D9D6CF]">
         <div class="h-16 w-16 rounded-2xl bg-[#2547E8] text-white flex items-center justify-center font-bold text-2xl font-mono">

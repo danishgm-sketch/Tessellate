@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useEffect, useRef, useTransition } from 'react';
 import {
   PRODUCT_BLUEPRINTS,
   getAllGoldenBriefs,
@@ -12,7 +12,7 @@ import {
   type ComposedDirectionOutput,
 } from '@tessellate/compatibility';
 import { Dialog } from '@tessellate/ui';
-import { saveLocalProject } from '@tessellate/workbench';
+import { saveLocalProject } from '@tessellate/workbench/persistence';
 import { ManifestRenderer } from '@tessellate/renderer';
 import { ResourceManifestSchema, type ProjectManifest, type ResourceManifest } from '@tessellate/schemas';
 import {
@@ -35,6 +35,30 @@ import {
   Laptop,
 } from 'lucide-react';
 
+const HOME_COMPOSE_HANDOFF_KEY = 'tessellate:pending-compose-brief';
+
+function isHomeComposeHandoff(value: unknown): value is ProductBriefInput {
+  if (!value || typeof value !== 'object') return false;
+  const brief = value as Record<string, unknown>;
+  return typeof brief.description === 'string'
+    && brief.description.trim().length > 0
+    && brief.description.length <= 20_000
+    && typeof brief.feel === 'string'
+    && brief.feel.length <= 200
+    && typeof brief.visualAmbition === 'number'
+    && Number.isFinite(brief.visualAmbition)
+    && brief.visualAmbition >= 10
+    && brief.visualAmbition <= 95
+    && typeof brief.structuralCreativity === 'number'
+    && Number.isFinite(brief.structuralCreativity)
+    && brief.structuralCreativity >= 10
+    && brief.structuralCreativity <= 90
+    && brief.accessibilityFloor === 'AA'
+    && brief.performanceCeiling === 'balanced'
+    && Array.isArray(brief.targetDevices)
+    && brief.targetDevices.every((device) => device === 'desktop' || device === 'tablet' || device === 'mobile');
+}
+
 export function ComposeView() {
   const goldenBriefs = getAllGoldenBriefs();
   const archetypes = getAllProductArchetypes();
@@ -56,6 +80,8 @@ export function ComposeView() {
   const [compositionError,setCompositionError] = useState('');
   const [briefError, setBriefError] = useState('');
   const [hasComposed, setHasComposed] = useState<boolean>(false);
+  const [isComposing, setIsComposing] = useState(false);
+  const [isRenderingDirections, startDirectionRender] = useTransition();
   const [lastComposedBriefKey, setLastComposedBriefKey] = useState('');
   const [catalogStatus, setCatalogStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [catalogResources, setCatalogResources] = useState<ResourceManifest[]>([]);
@@ -87,8 +113,34 @@ export function ComposeView() {
   useEffect(() => {
     const params=new URLSearchParams(window.location.search);
     const blueprint=PRODUCT_BLUEPRINTS.find(item=>item.id===params.get('blueprint'));
-    if(params.get('brief'))setDescription(params.get('brief')!);
-    else if(blueprint){setDescription(`${blueprint.description} ${blueprint.defaultObjective}. For ${blueprint.defaultAudience}.`);setSelectedArchetypeOverride(blueprint.archetypeId);}
+    let appliedHandoff = false;
+    try {
+      const pending = window.sessionStorage.getItem(HOME_COMPOSE_HANDOFF_KEY);
+      if (pending) {
+        window.sessionStorage.removeItem(HOME_COMPOSE_HANDOFF_KEY);
+        const parsed: unknown = JSON.parse(pending);
+        if (isHomeComposeHandoff(parsed)) {
+          setDescription(parsed.description);
+          setFeel(parsed.feel ?? '');
+          setVisualAmbition(parsed.visualAmbition ?? 40);
+          setStructuralCreativity(parsed.structuralCreativity ?? 35);
+          setAccessibilityFloor(parsed.accessibilityFloor ?? 'AA');
+          setPerformanceCeiling(parsed.performanceCeiling ?? 'rich');
+          setTargetDevices(parsed.targetDevices ?? ['desktop','tablet','mobile']);
+          appliedHandoff = true;
+        } else {
+          setCompositionError('The brief passed from the homepage was invalid. Enter it again to continue.');
+        }
+      }
+    } catch {
+      setCompositionError('The brief passed from the homepage could not be loaded. Enter it again to continue.');
+    }
+
+    if (!appliedHandoff && params.get('brief')) setDescription(params.get('brief')!);
+    else if (!appliedHandoff && blueprint) {
+      setDescription(`${blueprint.description} ${blueprint.defaultObjective}. For ${blueprint.defaultAudience}.`);
+      setSelectedArchetypeOverride(blueprint.archetypeId);
+    }
     loadCatalog();
   }, []);
 
@@ -158,8 +210,9 @@ export function ComposeView() {
     } catch(cause) { setCompositionError(`Could not save your direction: ${String(cause)}. Your preview remains available.`); }
   };
 
-  const handleCompose = (e: React.FormEvent) => {
+  const handleCompose = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isComposing || isRenderingDirections) return;
     if (!description.trim()) {
       setBriefError('Enter a product description before composing.');
       descriptionRef.current?.focus();
@@ -169,14 +222,24 @@ export function ComposeView() {
     if (catalogStatus !== 'ready' || catalogResources.length === 0) {
       return;
     }
+    setIsComposing(true);
+    await new Promise<void>((resolve) => {
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+    });
     try {
       const normalizedBriefInput = { ...briefInput, description: description.trim() };
       const generated = composeProjectPipeline(normalizedBriefInput,{catalogResources,seed:crypto.randomUUID()});
-      setCompositionResult(generated);
-      setCompositionError('');
-      setHasComposed(true);
-      setLastComposedBriefKey(currentBriefKey);
-    } catch(cause) {setCompositionError(`Composition failed: ${String(cause)}`);}
+      startDirectionRender(() => {
+        setCompositionResult(generated);
+        setCompositionError('');
+        setHasComposed(true);
+        setLastComposedBriefKey(currentBriefKey);
+        setIsComposing(false);
+      });
+    } catch(cause) {
+      setCompositionError(`Composition failed: ${String(cause)}`);
+      setIsComposing(false);
+    }
 
   };
 
@@ -286,9 +349,9 @@ export function ComposeView() {
 
           {/* Primary Stack */}
           <div className="space-y-2">
-            <label className="block text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
+            <span className="block text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
               Primary Front-End Stack
-            </label>
+            </span>
             <div className="rounded-lg border border-[#D9D6CF] bg-[#FAF9F6] px-3 py-2 text-xs font-mono text-[#62666F] dark:border-[#272C34] dark:bg-[#0B0D10] dark:text-[#A8AFBA]">
               React 19 + Tailwind CSS 4 (V1 Standard)
             </div>
@@ -300,9 +363,9 @@ export function ComposeView() {
           {/* Visual Ambition */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
+              <span className="text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
                 Visual Ambition
-              </label>
+              </span>
               <span className="text-xs font-semibold text-[#2547E8] uppercase dark:text-[#879DFF]">
                 {currentVisualStop} ({visualAmbition})
               </span>
@@ -333,9 +396,9 @@ export function ComposeView() {
           {/* Structural Creativity */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
+              <span className="text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
                 Structural Creativity
-              </label>
+              </span>
               <span className="text-xs font-semibold text-[#2547E8] uppercase dark:text-[#879DFF]">
                 {currentStructuralStop} ({structuralCreativity})
               </span>
@@ -494,14 +557,25 @@ export function ComposeView() {
           <button
             type="submit"
             data-testid="compose-submit-btn"
-            disabled={catalogStatus !== 'ready'}
+            disabled={catalogStatus !== 'ready' || isComposing || isRenderingDirections}
             className="inline-flex items-center gap-2 rounded-xl bg-[#2547E8] px-6 py-3 text-sm font-semibold text-white shadow-md transition-all hover:bg-[#1E3CCD] disabled:bg-[#62666F] disabled:text-white disabled:cursor-not-allowed dark:disabled:bg-[#A8AFBA] dark:disabled:text-[#0B0D10] dark:bg-[#6782FF] dark:text-[#0B0D10] dark:hover:bg-[#879DFF]"
           >
             <Sparkles className="h-4 w-4" />
-            Compose Interface System
+            {isComposing || isRenderingDirections ? 'Composing three directions…' : 'Compose Interface System'}
           </button>
         </div>
       </form>
+
+      {(isComposing || isRenderingDirections) && (
+        <p
+          data-testid="compose-progress"
+          role="status"
+          aria-live="polite"
+          className="border-l-2 border-[#2547E8] bg-[#E7EBFF] p-3 text-sm text-[#111217] dark:border-[#6782FF] dark:bg-[#1C2752] dark:text-[#F5F7FA]"
+        >
+          Building the product model and three interface directions…
+        </p>
+      )}
 
       {compositionError && <p role="alert" className="text-[#C83D48]">{compositionError}</p>}
       {hasComposed && !directionsAreCurrent && (

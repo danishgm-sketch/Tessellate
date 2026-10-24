@@ -1,10 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import {
-  Copy,
-  Check,
-  RotateCcw,
-  Sliders,
-} from 'lucide-react';
+import { Copy, Check, RotateCcw, Sliders } from 'lucide-react';
+import { CopyFailureNotice, useToolClipboard } from './useToolClipboard';
 
 interface TypeScaleOption {
   id: string;
@@ -14,11 +10,36 @@ interface TypeScaleOption {
 }
 
 const TYPE_SCALES: TypeScaleOption[] = [
-  { id: 'major-second', name: 'Major Second', ratio: 1.125, description: 'Compact & dense, ideal for information-dense trading cockpits.' },
-  { id: 'minor-third', name: 'Minor Third', ratio: 1.200, description: 'Balanced and clean standard for modern SaaS product interfaces.' },
-  { id: 'major-third', name: 'Major Third', ratio: 1.250, description: 'Expressive and clear, distinct hierarchy between headings and body.' },
-  { id: 'perfect-fourth', name: 'Perfect Fourth', ratio: 1.333, description: 'Editorial and authorial, generous contrast between levels.' },
-  { id: 'golden-ratio', name: 'Golden Ratio', ratio: 1.618, description: 'High dramatic contrast for hero landing narratives and marketing.' },
+  {
+    id: 'major-second',
+    name: 'Major Second',
+    ratio: 1.125,
+    description: 'Compact hierarchy for information-dense interfaces.',
+  },
+  {
+    id: 'minor-third',
+    name: 'Minor Third',
+    ratio: 1.2,
+    description: 'Balanced and clean standard for modern SaaS product interfaces.',
+  },
+  {
+    id: 'major-third',
+    name: 'Major Third',
+    ratio: 1.25,
+    description: 'Expressive and clear, distinct hierarchy between headings and body.',
+  },
+  {
+    id: 'perfect-fourth',
+    name: 'Perfect Fourth',
+    ratio: 1.333,
+    description: 'Editorial and authorial, generous contrast between levels.',
+  },
+  {
+    id: 'golden-ratio',
+    name: 'Golden Ratio',
+    ratio: 1.618,
+    description: 'High dramatic contrast for hero landing narratives and marketing.',
+  },
 ];
 
 interface TypePairingPreset {
@@ -57,6 +78,21 @@ const PAIRING_PRESETS: TypePairingPreset[] = [
   },
 ];
 
+const NUMBER_SAMPLE_ROWS = [
+  { id: 'A-1024', value: '1,420.89', change: '+12.4%', elapsed: '00:14.02' },
+  { id: 'B-0318', value: '84.50', change: '-0.8%', elapsed: '00:08.90' },
+  { id: 'C-7750', value: '12,000.00', change: '+104.2%', elapsed: '01:42.15' },
+  { id: 'D-4402', value: '905.10', change: '+0.0%', elapsed: '00:00.45' },
+];
+
+const DESKTOP_TYPE_SCALE_WIDTH = 1440;
+
+function fluidTypeSize(maximumSizePx: number, minimumSizePx: number): string {
+  if (maximumSizePx <= minimumSizePx) return `${maximumSizePx}px`;
+  const fluidWidth = `${((maximumSizePx / DESKTOP_TYPE_SCALE_WIDTH) * 100).toFixed(2)}vw`;
+  return `clamp(${minimumSizePx}px, ${fluidWidth}, ${maximumSizePx}px)`;
+}
+
 export function TypographyLab() {
   const [selectedScaleId, setSelectedScaleId] = useState<string>('minor-third');
   const [selectedPairingId, setSelectedPairingId] = useState<string>('geist-modern');
@@ -65,6 +101,7 @@ export function TypographyLab() {
   const [useSlashedZero, setUseSlashedZero] = useState<boolean>(true);
   const [activeTab, setActiveTab] = useState<'hierarchy' | 'numerical'>('hierarchy');
   const [copiedFormat, setCopiedFormat] = useState<'css' | 'tailwind' | null>(null);
+  const { copyText, copyFailed } = useToolClipboard();
 
   const activeScale = useMemo(() => {
     return TYPE_SCALES.find((s) => s.id === selectedScaleId) ?? TYPE_SCALES[1]!;
@@ -97,17 +134,26 @@ export function TypographyLab() {
   }, [useTabularNums, useSlashedZero]);
 
   const generatedCss = useMemo(() => {
-    return `/* Tessellate Type Scale: ${activeScale.name} (${activeScale.ratio}) */\n:root {\n  --font-heading: ${activePairing.headingFamily};\n  --font-body: ${activePairing.bodyFamily};\n  --font-mono: ${activePairing.monoFamily};\n  --font-numeric: ${fontVariantNumeric};\n\n  --font-size-h1: ${steps.h1}px;\n  --font-size-h2: ${steps.h2}px;\n  --font-size-h3: ${steps.h3}px;\n  --font-size-h4: ${steps.h4}px;\n  --font-size-body: ${steps.body}px;\n  --font-size-small: ${steps.small}px;\n}`;
+    return `/* Tessellate Type Scale: ${activeScale.name} (${activeScale.ratio}) */\n:root {\n  --font-heading: ${activePairing.headingFamily};\n  --font-body: ${activePairing.bodyFamily};\n  --font-mono: ${activePairing.monoFamily};\n  --font-numeric: ${fontVariantNumeric};\n\n  --font-size-h1: ${fluidTypeSize(steps.h1, 36)};\n  --font-size-h2: ${fluidTypeSize(steps.h2, 30)};\n  --font-size-h3: ${fluidTypeSize(steps.h3, 24)};\n  --font-size-h4: ${fluidTypeSize(steps.h4, 20)};\n  --font-size-body: ${steps.body}px;\n  --font-size-small: ${steps.small}px;\n}`;
   }, [activeScale, activePairing, fontVariantNumeric, steps]);
 
-  const copyToClipboard = (text: string, format: 'css' | 'tailwind') => {
-    navigator.clipboard.writeText(text);
-    setCopiedFormat(format);
-    setTimeout(() => setCopiedFormat(null), 2000);
+  const copyToClipboard = async (text: string, format: 'css' | 'tailwind') => {
+    const copied = await copyText(text);
+    setCopiedFormat(copied ? format : null);
+    if (copied) setTimeout(() => setCopiedFormat(null), 2000);
+  };
+
+  const resetTypography = () => {
+    setSelectedScaleId('minor-third');
+    setSelectedPairingId('geist-modern');
+    setBaseSizePx(16);
+    setUseTabularNums(true);
+    setUseSlashedZero(true);
+    setActiveTab('hierarchy');
   };
 
   return (
-    <div className="space-y-8 select-none">
+    <div className="space-y-8">
       {/* Header Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#D9D6CF] pb-6">
         <div>
@@ -123,7 +169,8 @@ export function TypographyLab() {
             Typography Lab
           </h1>
           <p className="text-sm text-[#62666F] mt-1">
-            Explore harmonic typographic scales, typeface pairing, tabular figures, and dense telemetry typesetting.
+            Compare type scales and font pairings, then test how tabular figures affect number
+            alignment.
           </p>
         </div>
 
@@ -134,11 +181,17 @@ export function TypographyLab() {
             onClick={() => copyToClipboard(generatedCss, 'css')}
             className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2547E8] text-white text-xs font-semibold hover:bg-[#1E3CCD] transition-all shadow-sm"
           >
-            {copiedFormat === 'css' ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+            {copiedFormat === 'css' ? (
+              <Check className="h-3.5 w-3.5" />
+            ) : (
+              <Copy className="h-3.5 w-3.5" />
+            )}
             <span>Copy Scale CSS</span>
           </button>
         </div>
       </div>
+
+      <CopyFailureNotice failed={copyFailed} />
 
       {/* Main Grid: Parameters (Left 5) & Stage (Right 7) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -151,11 +204,7 @@ export function TypographyLab() {
             </div>
             <button
               type="button"
-              onClick={() => {
-                setSelectedScaleId('minor-third');
-                setBaseSizePx(16);
-                setUseTabularNums(true);
-              }}
+              onClick={resetTypography}
               className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
             >
               <RotateCcw className="h-3 w-3" />
@@ -174,6 +223,7 @@ export function TypographyLab() {
                   key={s.id}
                   type="button"
                   onClick={() => setSelectedScaleId(s.id)}
+                  aria-pressed={selectedScaleId === s.id}
                   className={`w-full flex items-center justify-between p-2.5 rounded-xl border text-xs transition-all ${
                     selectedScaleId === s.id
                       ? 'border-[#2547E8] bg-[#E7EBFF] text-[#2547E8] font-semibold'
@@ -193,7 +243,8 @@ export function TypographyLab() {
               <span className="text-[#111217]">Base Body Size</span>
               <span className="font-mono text-[#62666F]">{baseSizePx}px</span>
             </div>
-            <input aria-label="Base body size"
+            <input
+              aria-label="Base body size"
               type="range"
               min="14"
               max="20"
@@ -215,6 +266,7 @@ export function TypographyLab() {
                   key={p.id}
                   type="button"
                   onClick={() => setSelectedPairingId(p.id)}
+                  aria-pressed={selectedPairingId === p.id}
                   className={`w-full text-left p-2.5 rounded-xl border text-xs transition-all ${
                     selectedPairingId === p.id
                       ? 'border-[#111217] bg-[#111217] text-white shadow-sm'
@@ -235,7 +287,8 @@ export function TypographyLab() {
             </label>
             <div className="space-y-2 text-xs">
               <label className="flex items-center gap-2 cursor-pointer text-[#111217]">
-                <input aria-label="Use tabular nums"
+                <input
+                  aria-label="Use tabular nums"
                   type="checkbox"
                   checked={useTabularNums}
                   onChange={(e) => setUseTabularNums(e.target.checked)}
@@ -244,7 +297,8 @@ export function TypographyLab() {
                 <span>Tabular Figures (Mono-width align)</span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer text-[#111217]">
-                <input aria-label="Use slashed zero"
+                <input
+                  aria-label="Use slashed zero"
                   type="checkbox"
                   checked={useSlashedZero}
                   onChange={(e) => setUseSlashedZero(e.target.checked)}
@@ -263,6 +317,7 @@ export function TypographyLab() {
             <button
               type="button"
               onClick={() => setActiveTab('hierarchy')}
+              aria-pressed={activeTab === 'hierarchy'}
               className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
                 activeTab === 'hierarchy' ? 'bg-[#111217] text-white shadow-sm' : 'text-[#62666F]'
               }`}
@@ -272,11 +327,12 @@ export function TypographyLab() {
             <button
               type="button"
               onClick={() => setActiveTab('numerical')}
+              aria-pressed={activeTab === 'numerical'}
               className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
                 activeTab === 'numerical' ? 'bg-[#111217] text-white shadow-sm' : 'text-[#62666F]'
               }`}
             >
-              Numerical Telemetry Specimen
+              Tabular Figure Sample
             </button>
           </div>
 
@@ -289,7 +345,7 @@ export function TypographyLab() {
               <div className="space-y-6">
                 <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[var(--text-muted)]">
                   <span>SCALE STEP</span>
-                  <span>MEASURED METRIC</span>
+                  <span>MAXIMUM SIZE</span>
                 </div>
 
                 <div className="space-y-4">
@@ -298,12 +354,14 @@ export function TypographyLab() {
                       className="font-bold tracking-tight text-[#111217] leading-tight"
                       style={{
                         fontFamily: activePairing.headingFamily,
-                        fontSize: `${steps.h1}px`,
+                        fontSize: fluidTypeSize(steps.h1, 36),
                       }}
                     >
-                      Display Hero Level (H1)
+                      A product, shaped by people.
                     </h1>
-                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">{steps.h1}px</span>
+                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">
+                      {steps.h1}px max
+                    </span>
                   </div>
 
                   <div className="flex items-baseline justify-between gap-4">
@@ -311,12 +369,14 @@ export function TypographyLab() {
                       className="font-semibold tracking-tight text-[#111217]"
                       style={{
                         fontFamily: activePairing.headingFamily,
-                        fontSize: `${steps.h2}px`,
+                        fontSize: fluidTypeSize(steps.h2, 30),
                       }}
                     >
-                      Section Primary Title (H2)
+                      Workspace activity
                     </h2>
-                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">{steps.h2}px</span>
+                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">
+                      {steps.h2}px max
+                    </span>
                   </div>
 
                   <div className="flex items-baseline justify-between gap-4">
@@ -324,12 +384,14 @@ export function TypographyLab() {
                       className="font-semibold text-[#111217]"
                       style={{
                         fontFamily: activePairing.headingFamily,
-                        fontSize: `${steps.h3}px`,
+                        fontSize: fluidTypeSize(steps.h3, 24),
                       }}
                     >
-                      Card Subheading & Grouping (H3)
+                      Recent updates
                     </h3>
-                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">{steps.h3}px</span>
+                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">
+                      {steps.h3}px max
+                    </span>
                   </div>
 
                   <div className="flex items-baseline justify-between gap-4">
@@ -340,9 +402,12 @@ export function TypographyLab() {
                         fontSize: `${steps.body}px`,
                       }}
                     >
-                      Body paragraph reading standard. Engineered for calm contrast, optimal line length, and zero cognitive strain during long analytical sessions.
+                      Clear type sizes help people scan information and understand how each part of
+                      a page fits together.
                     </p>
-                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">{steps.body}px</span>
+                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">
+                      {steps.body}px
+                    </span>
                   </div>
 
                   <div className="flex items-baseline justify-between gap-4">
@@ -350,49 +415,111 @@ export function TypographyLab() {
                       className="font-mono uppercase text-[var(--text-muted)] font-semibold"
                       style={{ fontSize: `${steps.small}px` }}
                     >
-                      Micro Metadata · Status Indicator AA
+                      Compact metadata · Example status
                     </span>
-                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">{steps.small}px</span>
+                    <span className="font-mono text-xs text-[var(--text-muted)] shrink-0">
+                      {steps.small}px
+                    </span>
                   </div>
                 </div>
               </div>
             ) : (
               <div className="space-y-5">
                 <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[var(--text-muted)]">
-                  <span>TABULAR LEDGER TEST BENCH</span>
+                  <span>ILLUSTRATIVE NUMBER SAMPLE</span>
                   <span>{fontVariantNumeric.toUpperCase()}</span>
                 </div>
 
+                <p className="text-xs text-[#62666F]">
+                  Illustrative sample data for comparing numeral alignment; these values are not
+                  live metrics.
+                </p>
+
                 <div className="rounded-xl border border-[#D9D6CF] bg-white overflow-hidden shadow-sm">
-                  <table className="w-full text-xs text-left">
+                  <table
+                    aria-label="Illustrative numeric sample records"
+                    className="hidden w-full text-xs text-left sm:table"
+                  >
+                    <caption className="sr-only">
+                      Illustrative numeric sample records for checking number alignment.
+                    </caption>
                     <thead className="bg-[#FAF9F6] border-b border-[#D9D6CF] text-[#62666F] font-mono text-[11px]">
                       <tr>
-                        <th className="py-2.5 px-4 font-semibold">ASSET ID</th>
-                        <th className="py-2.5 px-4 font-semibold text-right">SETTLEMENT</th>
-                        <th className="py-2.5 px-4 font-semibold text-right">DELTA %</th>
-                        <th className="py-2.5 px-4 font-semibold text-right">LATENCY</th>
+                        <th className="py-2.5 px-4 font-semibold">RECORD ID</th>
+                        <th className="py-2.5 px-4 font-semibold text-right">VALUE</th>
+                        <th className="py-2.5 px-4 font-semibold text-right">CHANGE</th>
+                        <th className="py-2.5 px-4 font-semibold text-right">ELAPSED</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-[#D9D6CF] font-medium text-[#111217]">
-                      {[
-                        { id: '0x8892', val: '£1,420,890.00', delta: '+12.4%', latency: '00:00:14.02' },
-                        { id: '0x0014', val: '£84,000.50', delta: '-0.8%', latency: '00:00:08.90' },
-                        { id: '0x7B99', val: '£12,000,000.00', delta: '+104.2%', latency: '00:01:42.15' },
-                        { id: '0x3301', val: '£905.10', delta: '+0.0%', latency: '00:00:00.45' },
-                      ].map((row) => (
+                      {NUMBER_SAMPLE_ROWS.map((row) => (
                         <tr key={row.id} className="hover:bg-[#FAF9F6]">
-                          <td className="py-2.5 px-4 font-mono text-[var(--text-muted)]">{row.id}</td>
-                          <td className="py-2.5 px-4 text-right font-bold">{row.val}</td>
-                          <td className="py-2.5 px-4 text-right text-[#12603F]">{row.delta}</td>
-                          <td className="py-2.5 px-4 text-right font-mono text-[#62666F]">{row.latency}</td>
+                          <td className="py-2.5 px-4 font-mono text-[var(--text-muted)]">
+                            {row.id}
+                          </td>
+                          <td className="py-2.5 px-4 text-right font-bold">{row.value}</td>
+                          <td
+                            className={`py-2.5 px-4 text-right ${row.change.startsWith('-') ? 'text-[#9B2C2C]' : 'text-[#12603F]'}`}
+                          >
+                            {row.change}
+                          </td>
+                          <td className="py-2.5 px-4 text-right font-mono text-[#62666F]">
+                            {row.elapsed}
+                          </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
+
+                  <div
+                    role="list"
+                    aria-label="Illustrative numeric sample records"
+                    className="space-y-2 p-3 sm:hidden"
+                  >
+                    {NUMBER_SAMPLE_ROWS.map((row) => (
+                      <div
+                        key={row.id}
+                        role="listitem"
+                        className="grid grid-cols-2 gap-x-3 gap-y-2 rounded-lg border border-[#D9D6CF] p-3"
+                      >
+                        <div>
+                          <div className="font-mono text-[10px] uppercase text-[#62666F]">
+                            Record ID
+                          </div>
+                          <div className="font-mono text-xs text-[#111217]">{row.id}</div>
+                        </div>
+                        <div>
+                          <div className="font-mono text-[10px] uppercase text-[#62666F]">
+                            Value
+                          </div>
+                          <div className="font-mono text-xs font-bold text-[#111217]">
+                            {row.value}
+                          </div>
+                        </div>
+                        <div>
+                          <div className="font-mono text-[10px] uppercase text-[#62666F]">
+                            Change
+                          </div>
+                          <div
+                            className={`font-mono text-xs ${row.change.startsWith('-') ? 'text-[#9B2C2C]' : 'text-[#12603F]'}`}
+                          >
+                            {row.change}
+                          </div>
+                        </div>
+                        <div>
+                          <div className="font-mono text-[10px] uppercase text-[#62666F]">
+                            Elapsed
+                          </div>
+                          <div className="font-mono text-xs text-[#62666F]">{row.elapsed}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 <p className="text-xs text-[#62666F]">
-                  Notice how columns with tabular figures remain strictly aligned vertically regardless of character glyphs (1 vs 0).
+                  Tabular figures give digits a consistent width when the selected font supports
+                  them.
                 </p>
               </div>
             )}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { ResourceManifest } from '@tessellate/schemas';
+import { isGoldResource } from '@tessellate/catalog/gold';
 import {
   Code,
   Layers,
@@ -11,6 +12,7 @@ import {
   History,
   CheckCircle2,
   XCircle,
+  CircleHelp,
 } from 'lucide-react';
 
 export interface ResourceTabsProps {
@@ -280,16 +282,21 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
         {/* ACCESSIBILITY TAB */}
         {activeTab === 'accessibility' && (
           <div className="space-y-4">
+            <p role="note" className="text-xs leading-relaxed text-[var(--tess-ink-secondary,#62666F)]">
+              This shows resource-manifest declarations. Gold browser checks provide independent evidence for the validated runtime set; other resource claims remain unverified. Test the rendered component in your application.
+            </p>
             <div className="flex items-center gap-3">
               <span className="text-xs font-semibold text-[var(--tess-ink-secondary,#62666F)]">
-                Compliance Level Target:
+                WCAG target:
               </span>
-              <span className="px-2 py-0.5 rounded font-mono font-bold text-xs bg-emerald-100 text-emerald-800">
-                WCAG {manifest.accessibility.levelTarget}
+              <span className="px-2 py-0.5 rounded font-mono font-bold text-xs bg-[var(--tess-canvas,#F4F2ED)] text-[var(--tess-ink-secondary,#62666F)]">
+                {manifest.accessibility.levelTarget === 'none'
+                  ? 'No WCAG target declared'
+                  : `WCAG ${manifest.accessibility.levelTarget} target`}
               </span>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {[
                 { label: 'Keyboard Navigation', verified: manifest.accessibility.keyboardVerified },
                 {
@@ -308,13 +315,20 @@ export function ResourceTabs({ manifest, sourceCode }: ResourceTabsProps) {
               ].map((item, idx) => (
                 <div
                   key={idx}
+                  data-accessibility-assessment-card
                   className="rounded-lg border border-[var(--tess-hairline,#D9D6CF)] bg-white p-3 flex items-center justify-between text-xs"
                 >
                   <span>{item.label}</span>
-                  {item.verified ? (
-                    <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0" />
+                  {isGoldResource(manifest.slug) && item.verified ? (
+                    <span className="flex items-center gap-1 text-[var(--tess-ink-secondary,#62666F)]">
+                      <CheckCircle2 aria-hidden="true" className="w-4 h-4 text-emerald-700 shrink-0" />
+                      <span>Gold browser checked</span>
+                    </span>
                   ) : (
-                    <XCircle className="w-4 h-4 text-rose-500 shrink-0" />
+                    <span className="flex items-center gap-1 text-[var(--tess-ink-muted,#62666F)]">
+                      <CircleHelp aria-hidden="true" className="w-4 h-4 text-[var(--tess-ink-muted,#62666F)] shrink-0" />
+                      <span>{item.verified ? 'Manifest claim only' : 'Not independently verified'}</span>
+                    </span>
                   )}
                 </div>
               ))}

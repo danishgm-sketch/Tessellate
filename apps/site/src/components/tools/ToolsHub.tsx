@@ -32,7 +32,7 @@ const TOOLS_LIST: ToolItem[] = [
     name: 'Design DNA Lab',
     category: 'System Intelligence',
     description:
-      'Interactively manipulate canonical 10-dimensional DNA vectors, feel mixing, and component inheritance.',
+      'Explore presets, adjust Design DNA dimensions, compare samples, and inspect inheritance examples.',
     icon: Sliders,
     href: '/tools/dna',
     tier: 'Beta',
@@ -43,7 +43,7 @@ const TOOLS_LIST: ToolItem[] = [
     name: 'Background Studio',
     category: 'Surface Fields',
     description:
-      'Generate mathematical gradients, luminous meshes, Cartesian coordinate grids, noise, and CSS visual fields.',
+      'Adjust background patterns and copy the CSS or Tailwind examples for use in a project.',
     icon: Sparkles,
     href: '/tools/backgrounds',
     tier: 'Beta',
@@ -54,7 +54,7 @@ const TOOLS_LIST: ToolItem[] = [
     name: 'Motion Studio',
     category: 'Kinetic Physics',
     description:
-      'Edit cubic-bezier easing curves, spring dynamics (stiffness, damping, mass), stagger pacing, and WCAG reduced motion.',
+      'Adjust easing, spring, and stagger settings, then preview and copy example motion values.',
     icon: Zap,
     href: '/tools/motion',
     tier: 'Beta',
@@ -65,7 +65,7 @@ const TOOLS_LIST: ToolItem[] = [
     name: 'Palette Studio',
     category: 'Chroma Architecture',
     description:
-      'Synthesize semantic, accessible palette tokens with real-time WCAG 2.2 AA and AAA contrast floor calculations.',
+      'Edit semantic colour tokens and inspect calculated contrast for selected colour pairs.',
     icon: Palette,
     href: '/tools/palette',
     tier: 'Beta',
@@ -76,7 +76,7 @@ const TOOLS_LIST: ToolItem[] = [
     name: 'Typography Lab',
     category: 'Hierarchical Scale',
     description:
-      'Explore harmonic musical type scales, typeface pairing archetypes, tabular figures, and dense telemetry typesetting.',
+      'Explore type scales, font-pairing previews, numeric samples, and OpenType feature settings.',
     icon: Type,
     href: '/tools/typography',
     tier: 'Beta',
@@ -87,7 +87,7 @@ const TOOLS_LIST: ToolItem[] = [
     name: 'Layout Composer',
     category: 'Structural Grammars',
     description:
-      'Compose and stress-test responsive wireframe architectures across mobile, tablet, and wide desktop ports.',
+      'Adjust a responsive wireframe preview and copy its CSS or Tailwind layout snippet.',
     icon: Layout,
     href: '/tools/layout',
     tier: 'Beta',
@@ -96,9 +96,8 @@ const TOOLS_LIST: ToolItem[] = [
     id: 'section-planner',
     num: '07',
     name: 'Section Planner',
-    category: 'Narrative Orchestration',
-    description:
-      'Generate ordered, balanced section grammars tailored for B2B conversion, developer platforms, or editorial storytelling.',
+    category: 'Page Structure',
+    description: 'Plan and reorder example sections, then copy a JSON outline for review.',
     icon: ListOrdered,
     href: '/tools/section-planner',
     tier: 'Beta',
@@ -108,8 +107,7 @@ const TOOLS_LIST: ToolItem[] = [
     num: '08',
     name: 'Data Visualisation Styler',
     category: 'Information Graphics',
-    description:
-      'Imbue continuous splines, area volume streams, bar ledgers, and donut charts with project Design DNA.',
+    description: 'Adjust sample chart recipes and copy the rendered SVG for review or adaptation.',
     icon: BarChart3,
     href: '/tools/dataviz',
     tier: 'Beta',
@@ -120,7 +118,7 @@ const TOOLS_LIST: ToolItem[] = [
     name: 'Accessibility Lab',
     category: 'Inclusive Compliance',
     description:
-      'Audit APCA contrast ratios, focus indicator visibility, minimum touch target sizes, and keyboard heuristics.',
+      'Check selected colour contrast, focus-ring dimensions, and minimum touch-target size.',
     icon: ShieldCheck,
     href: '/tools/accessibility',
     tier: 'Beta',
@@ -131,7 +129,7 @@ const TOOLS_LIST: ToolItem[] = [
     name: 'SVG / Icon Lab',
     category: 'Permissive Vocabulary',
     description:
-      'Search, tune optical stroke geometry, recolour, and export permissively licensed icons under the ISC license.',
+      'Search and adjust ISC-licensed Lucide icons, then copy React JSX or SVG for project review.',
     icon: Shapes,
     href: '/tools/icons',
     tier: 'Beta',
@@ -140,7 +138,7 @@ const TOOLS_LIST: ToolItem[] = [
 
 export function ToolsHub() {
   return (
-    <div className="space-y-12 select-none">
+    <div className="space-y-12">
       {/* Editorial Header */}
       <div className="max-w-3xl space-y-4">
         <div className="flex items-center gap-2">

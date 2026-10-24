@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import {
   ListOrdered,
   ArrowUp,
@@ -10,6 +10,7 @@ import {
   RotateCcw,
   ShieldCheck,
 } from 'lucide-react';
+import { CopyFailureNotice, useToolClipboard } from './useToolClipboard';
 
 export type PageObjectiveId =
   | 'saas-conversion'
@@ -37,41 +38,164 @@ const OBJECTIVE_BLUEPRINTS: ObjectiveBlueprint[] = [
   {
     id: 'saas-conversion',
     name: 'B2B SaaS Conversion Landing',
-    tagline: 'High-trust conversion journey engineered to turn technical evaluators into trials.',
+    tagline:
+      'Plan a page that helps technical evaluators review product value, evidence, pricing, and next steps.',
     sections: [
-      { id: 'sec-1', name: 'Hero Value Proposition & Composer', type: 'hero', description: 'Immediate punchy headline with interactive product simulation.', enabled: true },
-      { id: 'sec-2', name: 'Institutional Trust & Compliance Badges', type: 'proof', description: 'SOC2, ISO27001, and enterprise customer logos.', enabled: true },
-      { id: 'sec-3', name: 'Interactive Feature Playground', type: 'interactive', description: 'Zero-friction live browser sandbox demonstrating core capability.', enabled: true },
-      { id: 'sec-4', name: 'Architectural Difference Matrix', type: 'feature', description: 'Side-by-side comparison with legacy alternatives.', enabled: true },
-      { id: 'sec-5', name: 'Quantified Performance Proof', type: 'proof', description: 'Verified audit benchmarks, latency metrics, and throughput.', enabled: true },
-      { id: 'sec-6', name: 'Transparent Pricing Tiers', type: 'pricing', description: 'Free tier, Pro workspace, and Enterprise custom tiers.', enabled: true },
-      { id: 'sec-7', name: 'Technical Evaluation FAQ', type: 'faq', description: 'Answers to security, self-hosting, and export questions.', enabled: true },
-      { id: 'sec-8', name: 'Final Action Call & Terminal Run', type: 'cta', description: 'Single-command CLI launch and web app entry.', enabled: true },
+      {
+        id: 'sec-1',
+        name: 'Hero Value Proposition',
+        type: 'hero',
+        description: 'State the product’s value and link to an implemented primary action.',
+        enabled: true,
+      },
+      {
+        id: 'sec-2',
+        name: 'Evidence and Customer References',
+        type: 'proof',
+        description:
+          'Use certifications and customer references only when they are documented and approved.',
+        enabled: true,
+      },
+      {
+        id: 'sec-3',
+        name: 'Interactive Feature Playground',
+        type: 'interactive',
+        description:
+          'Add a product demo; connect a working sandbox before presenting it as interactive.',
+        enabled: true,
+      },
+      {
+        id: 'sec-4',
+        name: 'Architectural Difference Matrix',
+        type: 'feature',
+        description: 'Compare product capabilities using criteria that are specific and supported.',
+        enabled: true,
+      },
+      {
+        id: 'sec-5',
+        name: 'Measured Performance Evidence',
+        type: 'proof',
+        description: 'Include measured benchmarks and their methodology, or omit this section.',
+        enabled: true,
+      },
+      {
+        id: 'sec-6',
+        name: 'Pricing and Plan Details',
+        type: 'pricing',
+        description: 'List current plan names and terms supplied by the product owner.',
+        enabled: true,
+      },
+      {
+        id: 'sec-7',
+        name: 'Technical Evaluation FAQ',
+        type: 'faq',
+        description:
+          'Answer security, hosting, and export questions from verified product documentation.',
+        enabled: true,
+      },
+      {
+        id: 'sec-8',
+        name: 'Final Call to Action',
+        type: 'cta',
+        description: 'Use configured URLs or actions for web and CLI entry points.',
+        enabled: true,
+      },
     ],
   },
   {
     id: 'developer-platform',
     name: 'Developer Documentation Hub',
-    tagline: 'Terminal-first information architecture prioritizing fast reference and code examples.',
+    tagline:
+      'Organize a developer site around its quickstart, reference material, and code examples.',
     sections: [
-      { id: 'sec-1', name: 'Quickstart Hero & CLI Installation', type: 'hero', description: 'One-click npm/pnpm copy command and interactive sandbox.', enabled: true },
-      { id: 'sec-2', name: 'API Reference Matrix', type: 'feature', description: 'Categorized endpoints and schema validations.', enabled: true },
-      { id: 'sec-3', name: 'Live Code Sandbox', type: 'interactive', description: 'Editable TypeScript snippet with real-time output.', enabled: true },
-      { id: 'sec-4', name: 'Architecture & Security Spec', type: 'proof', description: 'Sandboxed iframe, worker isolation, and data flow.', enabled: true },
-      { id: 'sec-5', name: 'SDKs & Integrations Grid', type: 'feature', description: 'React, Node, CLI, and MCP client packages.', enabled: true },
-      { id: 'sec-6', name: 'Community & GitHub Actions CTA', type: 'cta', description: 'Fork on GitHub and join Discord/Discussions.', enabled: true },
+      {
+        id: 'sec-1',
+        name: 'Quickstart Hero & CLI Installation',
+        type: 'hero',
+        description:
+          'Show a verified install command and a first task that works with the current package.',
+        enabled: true,
+      },
+      {
+        id: 'sec-2',
+        name: 'API Reference',
+        type: 'feature',
+        description: 'Link to current endpoints, request schemas, and response schemas.',
+        enabled: true,
+      },
+      {
+        id: 'sec-3',
+        name: 'Code Example',
+        type: 'feature',
+        description: 'Show a code sample; add an executable sandbox only when one is connected.',
+        enabled: true,
+      },
+      {
+        id: 'sec-4',
+        name: 'Architecture & Security Spec',
+        type: 'proof',
+        description: 'Describe the security boundaries and data flows that have been verified.',
+        enabled: true,
+      },
+      {
+        id: 'sec-5',
+        name: 'Packages and Integrations',
+        type: 'feature',
+        description: 'List only packages and integrations that are currently supported.',
+        enabled: true,
+      },
+      {
+        id: 'sec-6',
+        name: 'Community & GitHub Actions CTA',
+        type: 'cta',
+        description: 'Link to active repository or discussion destinations that are maintained.',
+        enabled: true,
+      },
     ],
   },
   {
     id: 'fintech-analytics',
     name: 'Fintech Analytics Cockpit',
-    tagline: 'High-density institutional ledger with real-time streaming charts and audit logging.',
+    tagline:
+      'Plan a financial analytics page around its data sources, review tasks, and reporting needs.',
     sections: [
-      { id: 'sec-1', name: 'Executive Gross Volume Header', type: 'hero', description: 'Key metric pulse, delta indicators, and system health status.', enabled: true },
-      { id: 'sec-2', name: 'Streaming Telemetry Time Series', type: 'interactive', description: 'WebGL chart with 100ms interval updates.', enabled: true },
-      { id: 'sec-3', name: 'Audited Settlement Transaction Table', type: 'feature', description: 'Virtualised ledger with inline column filtering.', enabled: true },
-      { id: 'sec-4', name: 'Risk & Compliance Scorecard', type: 'proof', description: '100-point deterministic security audit results.', enabled: true },
-      { id: 'sec-5', name: 'Export & Regulatory Reporting CTA', type: 'cta', description: 'Generate signed audit PDF and CSV extract.', enabled: true },
+      {
+        id: 'sec-1',
+        name: 'Financial Overview',
+        type: 'hero',
+        description: 'Show organization-approved measures from the selected data source.',
+        enabled: true,
+      },
+      {
+        id: 'sec-2',
+        name: 'Time-Series Chart',
+        type: 'interactive',
+        description: 'Plot the selected series and state its update cadence only when measured.',
+        enabled: true,
+      },
+      {
+        id: 'sec-3',
+        name: 'Transaction Table',
+        type: 'feature',
+        description:
+          'Present transaction records and disclose whether data is sample, delayed, or live.',
+        enabled: true,
+      },
+      {
+        id: 'sec-4',
+        name: 'Risk & Compliance Scorecard',
+        type: 'proof',
+        description: 'Summarize risk measures with their source, scope, and update time.',
+        enabled: true,
+      },
+      {
+        id: 'sec-5',
+        name: 'Reporting Actions',
+        type: 'cta',
+        description:
+          'Link to reporting formats the product actually provides; describe signing only when verified.',
+        enabled: true,
+      },
     ],
   },
   {
@@ -79,32 +203,91 @@ const OBJECTIVE_BLUEPRINTS: ObjectiveBlueprint[] = [
     name: 'Luxury Editorial Sanctuary',
     tagline: 'Generous whitespace, editorial typography, and high-resolution imagery pacing.',
     sections: [
-      { id: 'sec-1', name: 'Cinematic Visual Hero', type: 'hero', description: 'Full-bleed imagery with bespoke serif title and quiet entrance.', enabled: true },
-      { id: 'sec-2', name: 'Curated Collection Narrative', type: 'feature', description: 'Authorial statement on craftsmanship and origin.', enabled: true },
-      { id: 'sec-3', name: 'Interactive Lookbook Pacing', type: 'interactive', description: 'Seamless horizontal image reel with detail cards.', enabled: true },
-      { id: 'sec-4', name: 'Private Concierge Reservation', type: 'cta', description: 'Discreet appointment booking modal.', enabled: true },
+      {
+        id: 'sec-1',
+        name: 'Cinematic Visual Hero',
+        type: 'hero',
+        description:
+          'Use licensed imagery with meaningful alt text and reduced-motion support for entrances.',
+        enabled: true,
+      },
+      {
+        id: 'sec-2',
+        name: 'Curated Collection Narrative',
+        type: 'feature',
+        description:
+          'Describe craftsmanship and origin using details supplied by the product owner.',
+        enabled: true,
+      },
+      {
+        id: 'sec-3',
+        name: 'Interactive Lookbook Pacing',
+        type: 'interactive',
+        description:
+          'If using a moving image reel, support keyboard, touch, and reduced-motion preferences.',
+        enabled: true,
+      },
+      {
+        id: 'sec-4',
+        name: 'Private Concierge Reservation',
+        type: 'cta',
+        description:
+          'Connect an appointment form or booking service before promising a reservation.',
+        enabled: true,
+      },
     ],
   },
   {
     id: 'internal-tool',
     name: 'Operational Triage & Admin Tool',
-    tagline: 'Utilitarian zero-distraction workspace for rapid bulk triage and account management.',
+    tagline: 'Plan a focused workspace for prioritizing records and supported account actions.',
     sections: [
-      { id: 'sec-1', name: 'Global Command Bar & Filters', type: 'hero', description: 'Keyboard-first query launcher and quick status chips.', enabled: true },
-      { id: 'sec-2', name: 'Triage Queue Table', type: 'feature', description: 'High-density records table with multi-select bulk operations.', enabled: true },
-      { id: 'sec-3', name: 'Side Inspector Panel', type: 'interactive', description: 'Deep record payload viewer with JSON diff.', enabled: true },
-      { id: 'sec-4', name: 'Audit Action Trail', type: 'proof', description: 'Immutable chronological event log.', enabled: true },
+      {
+        id: 'sec-1',
+        name: 'Global Command Bar & Filters',
+        type: 'hero',
+        description: 'Expose keyboard commands only when the application handles them.',
+        enabled: true,
+      },
+      {
+        id: 'sec-2',
+        name: 'Triage Queue Table',
+        type: 'feature',
+        description: 'Describe available bulk actions and confirm high-impact changes.',
+        enabled: true,
+      },
+      {
+        id: 'sec-3',
+        name: 'Side Inspector Panel',
+        type: 'interactive',
+        description:
+          'Show fields authorized for the current user and handle sensitive values carefully.',
+        enabled: true,
+      },
+      {
+        id: 'sec-4',
+        name: 'Audit Action Trail',
+        type: 'proof',
+        description: 'List supported audit events with their access and retention rules.',
+        enabled: true,
+      },
     ],
   },
 ];
 
 export function SectionPlanner() {
+  const [isClientReady, setIsClientReady] = useState(false);
   const [objectiveId, setObjectiveId] = useState<PageObjectiveId>('saas-conversion');
   const [sections, setSections] = useState<SectionTemplateItem[]>(() => {
     return OBJECTIVE_BLUEPRINTS[0]!.sections.map((s) => ({ ...s }));
   });
   const [newSectionName, setNewSectionName] = useState<string>('');
   const [copied, setCopied] = useState<boolean>(false);
+  const { copyText, copyFailed } = useToolClipboard();
+
+  useEffect(() => {
+    setIsClientReady(true);
+  }, []);
 
   const selectObjective = (id: PageObjectiveId) => {
     setObjectiveId(id);
@@ -125,9 +308,7 @@ export function SectionPlanner() {
   };
 
   const toggleSection = (id: string) => {
-    setSections((prev) =>
-      prev.map((s) => (s.id === id ? { ...s, enabled: !s.enabled } : s))
-    );
+    setSections((prev) => prev.map((s) => (s.id === id ? { ...s, enabled: !s.enabled } : s)));
   };
 
   const removeSection = (id: string) => {
@@ -159,6 +340,41 @@ export function SectionPlanner() {
     return counts;
   }, [activeSections]);
 
+  const balanceGuide = [
+    { label: 'Attention (Hero & Visual)', count: typeCounts.hero, target: '1-2', min: 1, max: 2 },
+    {
+      label: 'Proof & Trust (Audit / Metrics)',
+      count: typeCounts.proof,
+      target: '1-3',
+      min: 1,
+      max: 3,
+    },
+    {
+      label: 'Interaction (Playground / Sandbox)',
+      count: typeCounts.interactive,
+      target: '1-2',
+      min: 1,
+      max: 2,
+    },
+    {
+      label: 'Information (Features / FAQ)',
+      count: typeCounts.feature + typeCounts.faq,
+      target: '2-4',
+      min: 2,
+      max: 4,
+    },
+    {
+      label: 'Action & Conversion (Pricing / CTA)',
+      count: typeCounts.pricing + typeCounts.cta,
+      target: '1-2',
+      min: 1,
+      max: 2,
+    },
+  ];
+  const withinBalanceGuide = balanceGuide.every(
+    (row) => row.count >= row.min && row.count <= row.max
+  );
+
   const exportedJson = useMemo(() => {
     return JSON.stringify(
       {
@@ -177,20 +393,28 @@ export function SectionPlanner() {
     );
   }, [objectiveId, activeSections]);
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(exportedJson);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+  const copyToClipboard = async () => {
+    const didCopy = await copyText(exportedJson);
+    setCopied(didCopy);
+    if (didCopy) setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <div className="space-y-8 select-none">
+    <div className="space-y-8">
+      {!isClientReady && (
+        <p
+          role="status"
+          className="border-l-2 border-[#2547E8] bg-white px-3 py-2 text-xs text-[#62666F]"
+        >
+          Loading planner controls…
+        </p>
+      )}
       {/* Header Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#D9D6CF] pb-6">
         <div>
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs font-semibold uppercase tracking-wider text-[#62666F]">
-              Tool 07 · Narrative Orchestration
+              Tool 07 · Page Structure
             </span>
             <span className="px-2 py-0.5 rounded-full text-[10px] font-mono font-semibold bg-[#E7EBFF] text-[#2547E8]">
               Client-Side · Zero Login
@@ -200,7 +424,8 @@ export function SectionPlanner() {
             Section Planner
           </h1>
           <p className="text-sm text-[#62666F] mt-1">
-            Generate and balance structured section grammars optimized for conversion, technical documentation, or editorial storytelling.
+            Plan and edit example section structures for conversion pages, technical documentation,
+            and editorial sites. The planner does not implement the described sections.
           </p>
         </div>
 
@@ -209,13 +434,21 @@ export function SectionPlanner() {
           <button
             type="button"
             onClick={copyToClipboard}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2547E8] text-white text-xs font-semibold hover:bg-[#1E3CCD] transition-all shadow-sm"
+            disabled={!isClientReady}
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2547E8] text-white text-xs font-semibold hover:bg-[#1E3CCD] transition-all shadow-sm disabled:cursor-wait disabled:opacity-60"
           >
             {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-            <span>Export Section Graph JSON</span>
+            <span>Copy Section Graph JSON</span>
           </button>
         </div>
       </div>
+
+      <CopyFailureNotice failed={copyFailed} />
+
+      <p className="border-l-2 border-[#D9D6CF] pl-3 text-xs leading-relaxed text-[#62666F]">
+        Template descriptions are planning prompts, not implementation or verified proof. Replace
+        sample claims with sourced product details before publishing.
+      </p>
 
       {/* Objective Blueprint Selector */}
       <div className="space-y-2">
@@ -228,11 +461,13 @@ export function SectionPlanner() {
               key={b.id}
               type="button"
               onClick={() => selectObjective(b.id)}
+              aria-pressed={objectiveId === b.id}
+              disabled={!isClientReady}
               className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                 objectiveId === b.id
                   ? 'border-[#111217] bg-[#111217] text-white shadow-sm'
                   : 'border-[#D9D6CF] bg-white text-[#62666F] hover:text-[#111217] hover:border-[#62666F]'
-              }`}
+              } disabled:cursor-wait disabled:opacity-60`}
             >
               {b.name}
             </button>
@@ -248,16 +483,17 @@ export function SectionPlanner() {
             <div className="flex items-center gap-2">
               <ListOrdered className="h-4 w-4 text-[#2547E8]" />
               <h2 className="text-sm font-semibold text-[#111217]">
-                Ordered Section Grammar ({activeSections.length} Active)
+                Page Sections ({activeSections.length} active)
               </h2>
             </div>
             <button
               type="button"
               onClick={() => selectObjective(objectiveId)}
-              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
+              disabled={!isClientReady}
+              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1 disabled:cursor-wait disabled:opacity-60"
             >
               <RotateCcw className="h-3 w-3" />
-              <span>Reset Order</span>
+              <span>Reset Blueprint</span>
             </button>
           </div>
 
@@ -294,7 +530,8 @@ export function SectionPlanner() {
                   <button
                     type="button"
                     onClick={() => moveSection(idx, 'up')}
-                    disabled={idx === 0}
+                    disabled={!isClientReady || idx === 0}
+                    aria-label={`Move ${s.name} up`}
                     className="p-1 rounded text-[var(--text-muted)] hover:text-[#111217] disabled:opacity-30"
                     title="Move section up"
                   >
@@ -303,7 +540,8 @@ export function SectionPlanner() {
                   <button
                     type="button"
                     onClick={() => moveSection(idx, 'down')}
-                    disabled={idx === sections.length - 1}
+                    disabled={!isClientReady || idx === sections.length - 1}
+                    aria-label={`Move ${s.name} down`}
                     className="p-1 rounded text-[var(--text-muted)] hover:text-[#111217] disabled:opacity-30"
                     title="Move section down"
                   >
@@ -312,16 +550,21 @@ export function SectionPlanner() {
                   <button
                     type="button"
                     onClick={() => toggleSection(s.id)}
+                    aria-pressed={s.enabled}
+                    aria-label={`${s.enabled ? 'Omit' : 'Include'} ${s.name}`}
+                    disabled={!isClientReady}
                     className={`px-2 py-1 text-[10px] font-semibold rounded ${
                       s.enabled ? 'bg-[#E7EBFF] text-[#2547E8]' : 'bg-[#D9D6CF] text-[#62666F]'
-                    }`}
+                    } disabled:cursor-wait disabled:opacity-60`}
                   >
                     {s.enabled ? 'Active' : 'Omit'}
                   </button>
                   <button
                     type="button"
                     onClick={() => removeSection(s.id)}
-                    className="p-1 rounded text-[var(--text-muted)] hover:text-[#C83D48]"
+                    aria-label={`Delete ${s.name}`}
+                    disabled={!isClientReady}
+                    className="p-1 rounded text-[var(--text-muted)] hover:text-[#C83D48] disabled:cursor-wait disabled:opacity-60"
                     title="Delete section"
                   >
                     <Trash2 className="h-3.5 w-3.5" />
@@ -333,8 +576,10 @@ export function SectionPlanner() {
 
           {/* Add Section Input */}
           <div className="flex gap-2 pt-2 border-t border-[#D9D6CF]">
-            <input aria-label="Custom section title"
+            <input
+              aria-label="Custom section title"
               type="text"
+              disabled={!isClientReady}
               placeholder="Add custom section title (e.g. Migration Guide)..."
               value={newSectionName}
               onChange={(e) => setNewSectionName(e.target.value)}
@@ -344,7 +589,8 @@ export function SectionPlanner() {
             <button
               type="button"
               onClick={addCustomSection}
-              className="flex items-center gap-1 px-3 py-2 rounded-xl bg-[#111217] text-white text-xs font-semibold hover:bg-[#2547E8] transition-colors"
+              disabled={!isClientReady}
+              className="flex items-center gap-1 px-3 py-2 rounded-xl bg-[#111217] text-white text-xs font-semibold hover:bg-[#2547E8] transition-colors disabled:cursor-wait disabled:opacity-60"
             >
               <Plus className="h-3.5 w-3.5" />
               <span>Add</span>
@@ -358,29 +604,25 @@ export function SectionPlanner() {
             <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF]">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="h-4 w-4 text-[#12603F]" />
-                <h3 className="text-sm font-semibold text-[#111217]">
-                  Grammar Balance Telemetry
-                </h3>
+                <h3 className="text-sm font-semibold text-[#111217]">Section Mix Guide</h3>
               </div>
-              <span className="font-mono text-[11px] text-[#12603F] font-semibold">
-                BALANCED FLOW
+              <span
+                className={`font-mono text-[11px] font-semibold ${withinBalanceGuide ? 'text-[#12603F]' : 'text-[#A66A15]'}`}
+              >
+                {withinBalanceGuide ? 'WITHIN GUIDE' : 'REVIEW MIX'}
               </span>
             </div>
 
             <div className="space-y-3">
-              {[
-                { label: 'Attention (Hero & Visual)', count: typeCounts.hero, target: '1-2' },
-                { label: 'Proof & Trust (Audit / Metrics)', count: typeCounts.proof, target: '1-3' },
-                { label: 'Interaction (Playground / Sandbox)', count: typeCounts.interactive, target: '1-2' },
-                { label: 'Information (Features / FAQ)', count: typeCounts.feature + typeCounts.faq, target: '2-4' },
-                { label: 'Action & Conversion (Pricing / CTA)', count: typeCounts.pricing + typeCounts.cta, target: '1-2' },
-              ].map((m, i) => (
-                <div key={i} className="flex items-center justify-between text-xs">
+              {balanceGuide.map((m) => (
+                <div key={m.label} className="flex items-center justify-between text-xs">
                   <span className="text-[#62666F]">{m.label}</span>
                   <div className="flex items-center gap-2">
-                    <span className="font-bold text-[#111217]">{m.count} sections</span>
+                    <span className="font-bold text-[#111217]">
+                      {m.count} {m.count === 1 ? 'section' : 'sections'}
+                    </span>
                     <span className="font-mono text-[10px] text-[var(--text-muted)]">
-                      (target {m.target})
+                      (guide {m.target})
                     </span>
                   </div>
                 </div>
@@ -388,7 +630,8 @@ export function SectionPlanner() {
             </div>
 
             <p className="text-xs text-[#62666F] leading-relaxed pt-2 border-t border-[#D9D6CF]">
-              A balanced section grammar establishes immediate clarity, backs claims with proof, offers zero-friction interaction, and guides users to decisive conversion.
+              These reference ranges are prompts for review, not a quality score. Adjust the
+              sequence to fit the product goal.
             </p>
           </div>
 
@@ -399,12 +642,16 @@ export function SectionPlanner() {
               <button
                 type="button"
                 onClick={copyToClipboard}
-                className="text-[#6782FF] hover:text-white"
+                disabled={!isClientReady}
+                className="text-[#6782FF] hover:text-white disabled:cursor-wait disabled:opacity-60"
               >
                 {copied ? 'Copied!' : 'Copy'}
               </button>
             </div>
-            <pre tabIndex={0} className="overflow-x-auto text-[10px] text-[#D9D6CF] leading-relaxed max-h-56">
+            <pre
+              tabIndex={0}
+              className="overflow-x-auto text-[10px] text-[#D9D6CF] leading-relaxed max-h-56"
+            >
               {exportedJson}
             </pre>
           </div>

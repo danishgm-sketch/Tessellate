@@ -62,12 +62,21 @@ export function ResourceInspector({ manifest,componentName }: ResourceInspectorP
 
       {/* Meta Specs */}
       <div className="space-y-3">
-        <div className="flex items-center justify-between text-xs">
-          <span className="text-[var(--tess-ink-secondary,#62666F)]">Declared quality</span>
-          <span className="font-mono font-semibold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
-            {manifest.quality.overall} / 100
-          </span>
-        </div>
+        {manifest.quality.assessment.status === 'reviewed' ? (
+          <div className="space-y-1">
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-[var(--tess-ink-secondary,#62666F)]">Reviewed quality score</span>
+              <span className="font-mono font-semibold px-2 py-0.5 rounded bg-[var(--tess-canvas,#F4F2ED)] text-[var(--tess-ink,#111217)] border border-[var(--tess-hairline,#D9D6CF)]">
+                {manifest.quality.overall} / 100
+              </span>
+            </div>
+            <p role="note" className="text-[11px] leading-relaxed text-[var(--tess-ink-muted,#62666F)]">
+              Assessment evidence: {manifest.quality.assessment.evidence.join(', ')}
+            </p>
+          </div>
+        ) : (
+          <p role="note" className="text-xs text-[var(--tess-ink-secondary,#62666F)]">Quality assessment: Not assessed.</p>
+        )}
 
         <div className="flex items-center justify-between text-xs">
           <span className="text-[var(--tess-ink-secondary,#62666F)]">Category</span>

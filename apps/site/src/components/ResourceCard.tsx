@@ -25,9 +25,10 @@ export function ResourceCard({
   const [previewVisible,setPreviewVisible]=useState(false);
   useEffect(()=>{
     if(typeof IntersectionObserver==='undefined'){setPreviewVisible(true);return undefined;}
+    // Mount the isolated resource runtime only when its card enters the viewport.
     const observer=new IntersectionObserver(entries=>{
       if(entries.some(entry=>entry.isIntersecting)){setPreviewVisible(true);observer.disconnect();}
-    },{rootMargin:'160px'});
+    },{rootMargin:'0px'});
     if(previewRef.current)observer.observe(previewRef.current);
     return ()=>observer.disconnect();
   },[]);
@@ -46,16 +47,13 @@ export function ResourceCard({
     onSave?.(manifest);
   };
 
-  const qualityScore = manifest.quality.overall;
-  const isVerified = manifest.status === 'verified';
-
   return (
     <div className="group relative flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] transition-all duration-200 hover:border-[var(--tess-hairline-strong,#C7C3BA)] hover:shadow-md overflow-hidden">
       {/* 16:10 Preview Frame */}
       <div ref={previewRef} className="relative aspect-[16/10] w-full bg-[var(--tess-canvas,#F4F2ED)] border-b border-[var(--tess-hairline,#D9D6CF)] flex items-center justify-center p-6 overflow-hidden">
-        {previewVisible ? <iframe src={`/preview/?resource=${manifest.slug}`} title={`${manifest.name} actual preview`} sandbox="allow-scripts" loading="lazy" className="w-full h-full border-0 bg-white" /> : <span className="text-xs text-[var(--tess-ink-muted)]">Preview loads when visible</span>}
+        {previewVisible ? <iframe src={`/preview-content/?resource=${manifest.slug}`} title={`${manifest.name} actual preview`} sandbox="allow-scripts" loading="lazy" className="w-full h-full border-0 bg-white" /> : <span className="text-xs text-[var(--tess-ink-muted)]">Preview loads when visible</span>}
         {/* Hover Actions Overlay (Max 4 actions: Preview, Save, Use, Copy) */}
-        <div className="absolute inset-0 bg-[var(--tess-ink,#111217)]/10 backdrop-blur-[2px] opacity-100 sm:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-150 flex items-center justify-center gap-2 p-4">
+        <div className="absolute inset-x-0 bottom-0 sm:inset-0 bg-white sm:bg-[var(--tess-ink,#111217)]/10 backdrop-blur-0 sm:backdrop-blur-[2px] opacity-100 sm:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-150 flex items-center justify-center gap-2 px-2 py-2 sm:p-4">
           <a
             href={`/r/${manifest.slug}`}
             onClick={(e) => {
@@ -124,11 +122,6 @@ export function ResourceCard({
         <div className="flex items-center justify-between text-xs text-[var(--tess-ink-muted,#62666F)]">
           <span className="line-clamp-1">{manifest.creator.displayName}</span>
           <div className="flex items-center gap-1.5 shrink-0">
-            {isVerified && (
-              <span className="text-[10px] font-mono px-1 py-0.2 rounded bg-emerald-50 text-emerald-700 font-semibold border border-emerald-200">
-                {qualityScore}
-              </span>
-            )}
             <span className="text-[10px] uppercase font-mono tracking-tight text-[var(--tess-ink-secondary,#62666F)]">
               {manifest.license.spdx}
             </span>

@@ -22,7 +22,8 @@ export function SiteHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 h-16 w-full border-b border-[#DEDAD2] bg-[#F4F2ED]/95 backdrop-blur-md px-6 select-none transition-colors">
+      <a href="#main-content" className="sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:not-sr-only focus:bg-white focus:px-3 focus:py-2 focus:text-[#111217] focus:outline-2 focus:outline-offset-2 focus:outline-[#2547E8]">Skip to content</a>
+      <header className="sticky top-0 z-50 h-16 w-full border-b border-[#DEDAD2] bg-[#F4F2ED]/95 backdrop-blur-md px-4 sm:px-6 select-none transition-colors">
         <div className="mx-auto flex h-full max-w-[1440px] items-center justify-between">
           {/* Left: Brand Mark + Desktop Nav */}
           <div className="flex items-center gap-8">
@@ -85,7 +86,7 @@ export function SiteHeader() {
 
             <a
               href="/workbench"
-              className="flex items-center gap-1.5 rounded-lg bg-[#111217] px-4 py-2 text-xs font-semibold text-white hover:bg-[#2547E8] transition-colors shadow-sm"
+              className="flex items-center gap-1.5 whitespace-nowrap rounded-lg bg-[#111217] px-2.5 py-2 text-xs font-semibold text-white hover:bg-[#2547E8] transition-colors shadow-sm sm:px-4"
             >
               <span>Start building</span>
               <ArrowRight className="h-3.5 w-3.5" />

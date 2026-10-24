@@ -36,14 +36,7 @@ import {
   Zap,
 } from 'lucide-react';
 
-type LabTab =
-  | 'presets'
-  | 'feel'
-  | 'sliders'
-  | 'palettes'
-  | 'typography'
-  | 'motion'
-  | 'inheritance';
+type LabTab = 'presets' | 'feel' | 'sliders' | 'palettes' | 'typography' | 'motion' | 'inheritance';
 
 export function DnaLab() {
   const [activeTab, setActiveTab] = useState<LabTab>('presets');
@@ -62,7 +55,9 @@ export function DnaLab() {
   // Hierarchy inheritance simulator state
   const [pageOverrides, setPageOverrides] = useState<PartialDesignDNA>({ curvature: 60 });
   const [sectionOverrides, setSectionOverrides] = useState<PartialDesignDNA>({ warmth: 80 });
-  const [componentOverrides, setComponentOverrides] = useState<PartialDesignDNA>({ playfulness: 75 });
+  const [componentOverrides, setComponentOverrides] = useState<PartialDesignDNA>({
+    playfulness: 75,
+  });
   const [elementOverrides, setElementOverrides] = useState<PartialDesignDNA>({});
 
   // Active motion test trigger
@@ -121,7 +116,9 @@ export function DnaLab() {
   };
 
   const handleResetToDefault = () => {
-    setActiveDna(DEFAULT_DESIGN_DNA);
+    const baselinePresetId = 'institutional-intelligence';
+    setSelectedPresetId(baselinePresetId);
+    setActiveDna(getDNAPreset(baselinePresetId)?.dna ?? DEFAULT_DESIGN_DNA);
   };
 
   return (
@@ -130,13 +127,14 @@ export function DnaLab() {
       <div className="flex flex-col gap-4 border-b border-[#D9D6CF] pb-6 dark:border-[#272C34] md:flex-row md:items-center md:justify-between">
         <div>
           <div className="inline-flex items-center gap-2 rounded-full bg-[#E7EBFF] px-2.5 py-0.5 text-[11px] font-semibold text-[#2547E8] dark:bg-[#1C2752] dark:text-[#879DFF]">
-            <Sparkles className="h-3 w-3" /> Phase 5 Client Instrument
+            <Sparkles className="h-3 w-3" /> Preset & DNA Explorer
           </div>
           <h1 className="mt-2 text-3xl font-bold tracking-tight text-[#111217] dark:text-[#F5F7FA]">
             Design DNA Lab
           </h1>
           <p className="mt-1 text-sm text-[#62666F] dark:text-[#A8AFBA]">
-            Explore 30 canonical presets, 28 numeric dimensions, feel mappings, 5-stop ambition & structure sliders, and 5-level node inheritance.
+            Explore 30 canonical presets, 28 numeric dimensions, feel mappings, 5-stop ambition &
+            structure sliders, and 5-level node inheritance.
           </p>
         </div>
 
@@ -170,6 +168,7 @@ export function DnaLab() {
               key={tab.id}
               type="button"
               onClick={() => setActiveTab(tab.id as LabTab)}
+              aria-pressed={isActive}
               className={`inline-flex items-center gap-2 rounded-lg px-3.5 py-2 text-xs font-medium transition-colors ${
                 isActive
                   ? 'bg-[#2547E8] text-white shadow-sm dark:bg-[#6782FF] dark:text-[#0B0D10]'
@@ -190,7 +189,8 @@ export function DnaLab() {
           <div className="lg:col-span-4 space-y-4">
             <div className="relative">
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-[var(--text-muted)]" />
-              <input aria-label="Filter presets"
+              <input
+                aria-label="Filter presets"
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -207,6 +207,7 @@ export function DnaLab() {
                     key={preset.id}
                     type="button"
                     onClick={() => handleSelectPreset(preset.id)}
+                    aria-pressed={selectedPresetId === preset.id}
                     className={`w-full text-left rounded-lg p-3 text-xs transition-all ${
                       isSelected
                         ? 'border-2 border-[#2547E8] bg-[#E7EBFF] dark:border-[#6782FF] dark:bg-[#1C2752]'
@@ -334,11 +335,13 @@ export function DnaLab() {
               Natural Language Feel Mixer
             </h2>
             <p className="mt-1 text-xs text-[#62666F] dark:text-[#A8AFBA]">
-              Type adjective phrases (including compound conjunctions like “professional but playful” or “luxury without being flashy”).
+              Type adjective phrases (including compound conjunctions like “professional but
+              playful” or “luxury without being flashy”).
             </p>
 
             <div className="mt-4 flex flex-col gap-3 sm:flex-row">
-              <input aria-label="Describe the desired feel"
+              <input
+                aria-label="Describe the desired feel"
                 type="text"
                 value={feelQuery}
                 onChange={(e) => setFeelQuery(e.target.value)}
@@ -379,7 +382,7 @@ export function DnaLab() {
             {/* Parsing Details */}
             <div className="mt-6 rounded-lg border border-[#D9D6CF]/80 bg-[#FAF9F6] p-4 dark:border-[#272C34] dark:bg-[#0B0D10]">
               <h3 className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)]">
-                Parser Telemetry
+                Feel Mapping Details
               </h3>
               <div className="mt-2 flex flex-wrap gap-2">
                 {parsedFeel.recognizedAdjectives.map((adj, idx) => (
@@ -394,9 +397,16 @@ export function DnaLab() {
 
               <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4 text-xs font-mono">
                 {Object.entries(parsedFeel.accumulatedDeltas).map(([k, delta]) => (
-                  <div key={k} className="flex items-center justify-between border-b border-[#D9D6CF]/40 py-1 dark:border-[#272C34]">
+                  <div
+                    key={k}
+                    className="flex items-center justify-between border-b border-[#D9D6CF]/40 py-1 dark:border-[#272C34]"
+                  >
                     <span className="text-[#62666F] dark:text-[#A8AFBA]">{k}</span>
-                    <span className={typeof delta === 'number' && delta > 0 ? 'text-[#12603F]' : 'text-[#C83D48]'}>
+                    <span
+                      className={
+                        typeof delta === 'number' && delta > 0 ? 'text-[#12603F]' : 'text-[#C83D48]'
+                      }
+                    >
                       {typeof delta === 'number' && delta > 0 ? `+${delta}` : delta}
                     </span>
                   </div>
@@ -421,7 +431,8 @@ export function DnaLab() {
               </span>
             </div>
             <p className="text-xs text-[#62666F] dark:text-[#A8AFBA]">
-              Controls expressive surface design budget, from essential clarity to experimental spectacle.
+              Controls expressive surface design budget, from essential clarity to experimental
+              spectacle.
             </p>
 
             <div className="grid grid-cols-5 gap-1.5 pt-2">
@@ -435,6 +446,7 @@ export function DnaLab() {
                       key={stop}
                       type="button"
                       onClick={() => setActiveDna(applyVisualAmbition(activeDna, stop))}
+                      aria-pressed={isCurrent}
                       className={`rounded-lg p-2 text-center text-xs transition-all ${
                         isCurrent
                           ? 'border-2 border-[#2547E8] bg-[#E7EBFF] font-bold text-[#2547E8] dark:border-[#6782FF] dark:bg-[#1C2752] dark:text-[#879DFF]'
@@ -461,11 +473,13 @@ export function DnaLab() {
                 Structural Creativity (5 Stops)
               </h3>
               <span className="rounded bg-[#E7EBFF] px-2 py-0.5 text-xs font-semibold text-[#2547E8] uppercase dark:bg-[#1C2752] dark:text-[#879DFF]">
-                {getStructuralCreativityStop(activeDna.structuralCreativity)} ({activeDna.structuralCreativity})
+                {getStructuralCreativityStop(activeDna.structuralCreativity)} (
+                {activeDna.structuralCreativity})
               </span>
             </div>
             <p className="text-xs text-[#62666F] dark:text-[#A8AFBA]">
-              Controls information architecture freedom, from familiar conventions to inventive layouts.
+              Controls information architecture freedom, from familiar conventions to inventive
+              layouts.
             </p>
 
             <div className="grid grid-cols-5 gap-1.5 pt-2">
@@ -479,6 +493,7 @@ export function DnaLab() {
                       key={stop}
                       type="button"
                       onClick={() => setActiveDna(applyStructuralCreativity(activeDna, stop))}
+                      aria-pressed={isCurrent}
                       className={`rounded-lg p-2 text-center text-xs transition-all ${
                         isCurrent
                           ? 'border-2 border-[#2547E8] bg-[#E7EBFF] font-bold text-[#2547E8] dark:border-[#6782FF] dark:bg-[#1C2752] dark:text-[#879DFF]'
@@ -494,7 +509,11 @@ export function DnaLab() {
             </div>
 
             <p className="text-xs italic text-[var(--text-muted)] dark:text-[var(--text-muted)]">
-              {STRUCTURAL_CREATIVITY_STOPS[getStructuralCreativityStop(activeDna.structuralCreativity)].description}
+              {
+                STRUCTURAL_CREATIVITY_STOPS[
+                  getStructuralCreativityStop(activeDna.structuralCreativity)
+                ].description
+              }
             </p>
           </div>
         </div>
@@ -511,6 +530,7 @@ export function DnaLab() {
               <button
                 type="button"
                 onClick={() => setPaletteMode('light')}
+                aria-pressed={paletteMode === 'light'}
                 className={`rounded px-3 py-1 text-xs font-medium ${
                   paletteMode === 'light'
                     ? 'bg-[#2547E8] text-white'
@@ -522,6 +542,7 @@ export function DnaLab() {
               <button
                 type="button"
                 onClick={() => setPaletteMode('dark')}
+                aria-pressed={paletteMode === 'dark'}
                 className={`rounded px-3 py-1 text-xs font-medium ${
                   paletteMode === 'dark'
                     ? 'bg-[#2547E8] text-white'
@@ -624,7 +645,9 @@ export function DnaLab() {
 
                 <div className="mt-4 space-y-3">
                   <div>
-                    <span className="text-[10px] uppercase font-mono text-[var(--text-muted)]">Display</span>
+                    <span className="text-[10px] uppercase font-mono text-[var(--text-muted)]">
+                      Display
+                    </span>
                     <div
                       className="text-2xl font-bold tracking-tight text-[#111217] dark:text-[#F5F7FA]"
                       style={{ fontFamily: pairing.displayFont }}
@@ -634,22 +657,27 @@ export function DnaLab() {
                   </div>
 
                   <div>
-                    <span className="text-[10px] uppercase font-mono text-[var(--text-muted)]">Body</span>
+                    <span className="text-[10px] uppercase font-mono text-[var(--text-muted)]">
+                      Body
+                    </span>
                     <div
                       className="text-sm text-[#62666F] dark:text-[#A8AFBA]"
                       style={{ fontFamily: pairing.bodyFont, lineHeight: pairing.bodyLineHeight }}
                     >
-                      Tessellate composes validated interface systems using canonical Design DNA and open primitives.
+                      Tessellate composes validated interface systems using canonical Design DNA and
+                      open primitives.
                     </div>
                   </div>
 
                   <div>
-                    <span className="text-[10px] uppercase font-mono text-[var(--text-muted)]">Monospace</span>
+                    <span className="text-[10px] uppercase font-mono text-[var(--text-muted)]">
+                      Monospace
+                    </span>
                     <div
                       className="text-xs font-mono text-[#2547E8] dark:text-[#879DFF]"
                       style={{ fontFamily: pairing.monoFont }}
                     >
-                      const dnaScore = 92.4; // latency 4.2ms
+                      const feel = "professional but playful";
                     </div>
                   </div>
                 </div>
@@ -719,7 +747,8 @@ export function DnaLab() {
               5-Level Node Inheritance Explorer
             </h2>
             <p className="mt-1 text-xs text-[#62666F] dark:text-[#A8AFBA]">
-              Simulate DNA overrides flowing down Project → Page → Section → Component → Element. Notice how resets restore inherited values cleanly.
+              Simulate DNA overrides flowing down Project → Page → Section → Component → Element.
+              Notice how resets restore inherited values cleanly.
             </p>
 
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-5 text-xs">
@@ -742,7 +771,9 @@ export function DnaLab() {
                     </button>
                   )}
                 </div>
-                <div className="mt-1 text-[11px] text-[#62666F]">Curvature: {pageOverrides.curvature ?? 'inherited'}</div>
+                <div className="mt-1 text-[11px] text-[#62666F]">
+                  Curvature: {pageOverrides.curvature ?? 'inherited'}
+                </div>
               </div>
 
               <div className="rounded-lg border border-[#D9D6CF] bg-[#FAF9F6] p-3 dark:border-[#272C34] dark:bg-[#0B0D10]">
@@ -758,7 +789,9 @@ export function DnaLab() {
                     </button>
                   )}
                 </div>
-                <div className="mt-1 text-[11px] text-[#62666F]">Warmth: {sectionOverrides.warmth ?? 'inherited'}</div>
+                <div className="mt-1 text-[11px] text-[#62666F]">
+                  Warmth: {sectionOverrides.warmth ?? 'inherited'}
+                </div>
               </div>
 
               <div className="rounded-lg border border-[#D9D6CF] bg-[#FAF9F6] p-3 dark:border-[#272C34] dark:bg-[#0B0D10]">
@@ -774,7 +807,9 @@ export function DnaLab() {
                     </button>
                   )}
                 </div>
-                <div className="mt-1 text-[11px] text-[#62666F]">Playfulness: {componentOverrides.playfulness ?? 'inherited'}</div>
+                <div className="mt-1 text-[11px] text-[#62666F]">
+                  Playfulness: {componentOverrides.playfulness ?? 'inherited'}
+                </div>
               </div>
 
               <div className="rounded-lg border border-[#D9D6CF] bg-[#FAF9F6] p-3 dark:border-[#272C34] dark:bg-[#0B0D10]">
@@ -798,7 +833,9 @@ export function DnaLab() {
                     </button>
                   )}
                 </div>
-                <div className="mt-1 text-[11px] text-[#62666F]">Prof: {elementOverrides.professionalism ?? 'inherited'}</div>
+                <div className="mt-1 text-[11px] text-[#62666F]">
+                  Prof: {elementOverrides.professionalism ?? 'inherited'}
+                </div>
               </div>
             </div>
 
@@ -809,11 +846,19 @@ export function DnaLab() {
                   Effective Resolved Values & Provenance
                 </h3>
                 <span className="text-[11px] font-mono text-[var(--text-muted)]">
-                  Archetype: {effectiveHierarchyDna.primaryArchetype} | Mode: {effectiveHierarchyDna.visualMode}
+                  Archetype: {effectiveHierarchyDna.primaryArchetype} | Mode:{' '}
+                  {effectiveHierarchyDna.visualMode}
                 </span>
               </div>
               <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-6 text-xs">
-                {['professionalism', 'playfulness', 'warmth', 'curvature', 'luxury', 'technicality'].map((k) => {
+                {[
+                  'professionalism',
+                  'playfulness',
+                  'warmth',
+                  'curvature',
+                  'luxury',
+                  'technicality',
+                ].map((k) => {
                   const key = k as DesignDNANumericKey;
                   const inspected = inspectedProperties[key];
                   return (

@@ -17,50 +17,58 @@ import CapabilityNotice from '../../components/CapabilityNotice.astro';
   <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white">
     <SiteHeader client:load />
 
-    <main id="main-content" class="max-w-[960px] mx-auto px-4 sm:px-6 py-12 space-y-8">
+    <main id="main-content" tabindex="-1" class="max-w-[960px] mx-auto px-4 sm:px-6 py-12 space-y-8">
       <CapabilityNotice tier="Beta" note="Local stdio resource discovery and manifest tools are the supported core boundary. Remote HTTP/SSE, recommendations and advanced mutation workflows are Beta; this public Site does not host an MCP process." />
       <div class="space-y-2">
         <a href="/docs" class="text-xs font-mono text-[#2547E8] hover:underline">← Back to Documentation</a>
         <h1 class="text-3xl font-bold tracking-tight text-[#111217]">Model Context Protocol (MCP)</h1>
         <p class="text-sm text-[#62666F]">
-          Enable AI coding agents (Claude Desktop, Cursor, Antigravity) to query and integrate Tessellate components autonomously.
+          Connect a local MCP client to search resources, read manifests and source, compose projects, validate or audit manifests, and generate export files.
         </p>
       </div>
 
       <div class="space-y-6 text-sm leading-relaxed text-[#31353E]">
         <section class="space-y-3 p-6 rounded-2xl bg-white border border-[#D9D6CF]">
           <h2 class="text-base font-bold text-[#111217]">Configuration</h2>
-          <p class="text-xs text-[#62666F]">Add the Tessellate MCP server to your AI agent configuration:</p>
-          <pre class="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 font-mono text-xs overflow-x-auto"><code>{`{
+          <p class="text-xs text-[#62666F]">
+            The MCP server is a private workspace package, not an npm download. Clone Tessellate locally, then point your agent at that checkout:
+          </p>
+          <pre tabindex="0" aria-label="MCP server configuration example" class="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 font-mono text-xs overflow-x-auto"><code>{`{
   "mcpServers": {
     "tessellate": {
-      "command": "npx",
-      "args": ["-y", "@tessellate/mcp"]
+      "command": "pnpm",
+      "args": ["--dir", "C:\\\\path\\\\to\\\\Tessellate", "exec", "tsx", "packages/mcp/src/index.ts"]
     }
   }
 }`}</code></pre>
+          <p class="text-xs text-[#62666F]">Use the absolute path to your checkout. Keep the local catalogue and resource source in that checkout; stdio is the supported local transport.</p>
         </section>
 
         <section class="space-y-4 p-6 rounded-2xl bg-white border border-[#D9D6CF]">
           <h2 class="text-base font-bold text-[#111217]">Available MCP Tools</h2>
           <ul class="space-y-3 text-xs">
             <li>
-              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">search_resources</code>: Searches the 324-resource catalogue by keyword, category, or role.
+              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">search_resources</code>: Searches the validated catalogue by query and category.
             </li>
             <li>
               <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">get_resource</code>: Retrieves the complete validated ResourceManifest for a given component slug.
             </li>
             <li>
-              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">get_resource_code</code>: Fetches the raw TypeScript React source code for immediate insertion.
+              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">get_resource_code</code>: Reads the resource source from the local checkout. A missing local file returns an explicit tool error.
             </li>
             <li>
-              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">recommend_resources</code> <span class="font-mono text-[9px] uppercase text-[#6D4A12]">Beta</span>: Scores and recommends resources for a page goal; semantic quality has not yet been manually adjudicated.
+              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">recommend_resources</code> <span class="font-mono text-[9px] uppercase text-[#6D4A12]">Beta</span>: Ranks candidates by lexical token overlap. It does not perform semantic ranking or guarantee a fit.
             </li>
             <li>
-              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">find_alternatives</code> <span class="font-mono text-[9px] uppercase text-[#6D4A12]">Beta</span>: Suggests alternatives; candidate relevance and compatibility need further evaluation.
+              <code class="font-bold text-purple-700 bg-purple-50 px-1.5 py-0.5 rounded">find_alternatives</code> <span class="font-mono text-[9px] uppercase text-[#6D4A12]">Beta</span>: Lists same-type resources with a shared category. These candidates are not guaranteed drop-in replacements.
             </li>
+            <li><code class="font-bold text-purple-700">compose_screen</code> and <code class="font-bold text-purple-700">compose_product</code> <span class="font-mono text-[9px] uppercase text-[#6D4A12]">Beta</span>: Call the shared deterministic product pipeline; a fixed seed reproduces a direction.</li>
+            <li><code class="font-bold text-purple-700">validate_project</code>, <code class="font-bold text-purple-700">mutate_screen_ast</code>, and <code class="font-bold text-purple-700">export_project_code</code> <span class="font-mono text-[9px] uppercase text-[#6D4A12]">Beta</span>: Validate manifests, apply supported atomic edits, and generate source files. Export generation does not install or build the result.</li>
+            <li><code class="font-bold text-purple-700">audit_project</code> and <code class="font-bold text-purple-700">audit_project_accessibility</code> <span class="font-mono text-[9px] uppercase text-[#6D4A12]">Beta</span>: Manifest heuristics only; neither tool certifies rendered WCAG conformance.</li>
+            <li><code class="font-bold text-purple-700">get_resource_metadata</code>, <code class="font-bold text-purple-700">get_design_dna</code>, and <code class="font-bold text-purple-700">list_design_directions</code>: Return canonical metadata, preset IDs, and the stable A/B/C composition approaches.</li>
           </ul>
         </section>
+        <p class="text-xs text-[#62666F]">The optional HTTP/SSE helper is Beta, has no authentication, and binds to loopback by default. Do not expose it through a tunnel or network interface. Browser origins require an explicit allowlist.</p>
       </div>
     </main>
 

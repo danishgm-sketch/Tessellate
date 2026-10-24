@@ -15,13 +15,13 @@ import { LayoutComposer } from '../../components/tools/LayoutComposer';
     <title>Layout Composer — Tessellate Tools</title>
     <meta
       name="description"
-      content="Create and test responsive grid and container wireframe structures across viewports."
+      content="Adjust container and grid settings, inspect a responsive wireframe preview, and copy a CSS or Tailwind layout snippet."
     />
   </head>
   <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white flex flex-col font-sans">
     <SiteHeader client:load />
 
-    <main class="flex-1 max-w-[1440px] w-full mx-auto px-6 py-12">
+    <main id="main-content" tabindex="-1" class="flex-1 max-w-[1440px] w-full mx-auto px-6 py-12">
       <CapabilityNotice tier="Beta" note="Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project." />
       <LayoutComposer client:load />
     </main>

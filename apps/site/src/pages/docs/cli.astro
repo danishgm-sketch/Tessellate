@@ -17,22 +17,24 @@ import CapabilityNotice from '../../components/CapabilityNotice.astro';
   <body class="min-h-screen bg-[#F4F2ED] text-[#111217] selection:bg-[#2547E8] selection:text-white">
     <SiteHeader client:load />
 
-    <main id="main-content" class="max-w-[960px] mx-auto px-4 sm:px-6 py-12 space-y-8">
-      <CapabilityNotice tier="Beta" note="Core commands use the deterministic catalogue and Vite/React export. The linter, ingestion, resource scaffolder and contribution gate are Beta and have not completed black-box hardening." />
+    <main id="main-content" tabindex="-1" class="max-w-[960px] mx-auto px-4 sm:px-6 py-12 space-y-8">
+      <CapabilityNotice tier="Beta" note="Core commands use the deterministic catalogue and Vite/React export. The linter, ingestion, resource scaffolder and contribution gate are Beta. Ingestion provides partial AST-based route/JSX structure only: it leaves source untouched and does not infer product intent, navigation behavior, business logic, CSS Modules or dynamic styles. The linter reports static heuristic findings and does not certify rendered accessibility; color findings are review-only." />
       <div class="space-y-2">
         <a href="/docs" class="text-xs font-mono text-[#2547E8] hover:underline">← Back to Documentation</a>
         <h1 class="text-3xl font-bold tracking-tight text-[#111217]">Tessellate CLI (`tess`)</h1>
         <p class="text-sm text-[#62666F]">
-          The official command-line interface for installing, validating, and exporting Tessellate components.
+          A private workspace CLI for searching the catalogue, composing and validating manifests, and generating standalone Vite/React source. It is not published on npm.
         </p>
       </div>
 
       <div class="space-y-6 text-sm leading-relaxed text-[#31353E]">
         <section class="space-y-3 p-6 rounded-2xl bg-white border border-[#D9D6CF]">
-          <h2 class="text-base font-bold text-[#111217]">Installation</h2>
-          <pre class="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 font-mono text-xs overflow-x-auto"><code>pnpm add -g @tessellate/cli
-# Or run with npx:
-npx @tessellate/cli --help</code></pre>
+          <h2 class="text-base font-bold text-[#111217]">Build from a Tessellate checkout</h2>
+          <p class="text-xs text-[#62666F]">The package is private and is not available from npm. From the repository root, build the bundled catalogue and CLI:</p>
+          <pre tabindex="0" aria-label="CLI build commands" class="p-3.5 rounded-lg bg-neutral-900 text-neutral-100 font-mono text-xs overflow-x-auto"><code>pnpm install --frozen-lockfile
+pnpm build:catalog
+pnpm --filter @tessellate/cli build
+node packages/cli/dist/index.cjs --help</code></pre>
         </section>
 
         <section class="space-y-3 p-6 rounded-2xl bg-white border border-[#D9D6CF]">
@@ -41,30 +43,31 @@ npx @tessellate/cli --help</code></pre>
           <div class="space-y-4">
             <div>
               <h3 class="font-mono font-semibold text-xs text-[#2547E8]">tess add &lt;slug&gt;</h3>
-              <p class="text-xs text-[#62666F] mt-1">Resolves and writes component source code into your project directory.</p>
-              <pre class="p-2.5 rounded-lg bg-neutral-100 text-neutral-800 font-mono text-xs mt-1.5"><code>tess add metric-card
+              <p class="text-xs text-[#62666F] mt-1">Resolves a resource from a local or configured registry and writes its files into the configured components directory.</p>
+              <pre tabindex="0" aria-label="Add component commands" class="p-2.5 rounded-lg bg-neutral-100 text-neutral-800 font-mono text-xs mt-1.5"><code>tess add metric-card
 tess add ai-chat-panel --overwrite</code></pre>
             </div>
 
             <div>
               <h3 class="font-mono font-semibold text-xs text-[#2547E8]">tess search [query]</h3>
               <p class="text-xs text-[#62666F] mt-1">Search the 324-resource open catalogue directly from your terminal.</p>
-              <pre class="p-2.5 rounded-lg bg-neutral-100 text-neutral-800 font-mono text-xs mt-1.5"><code>tess search "fintech"
+              <pre tabindex="0" aria-label="Search catalogue commands" class="p-2.5 rounded-lg bg-neutral-100 text-neutral-800 font-mono text-xs mt-1.5"><code>tess search "fintech"
 tess search --category "data"</code></pre>
             </div>
 
             <div>
-              <h3 class="font-mono font-semibold text-xs text-[#2547E8]">tess validate [path]</h3>
+              <h3 class="font-mono font-semibold text-xs text-[#2547E8]">tess validate &lt;file&gt;</h3>
               <p class="text-xs text-[#62666F] mt-1">Validates a local ResourceManifest or ProjectManifest against canonical Zod schemas.</p>
-              <pre class="p-2.5 rounded-lg bg-neutral-100 text-neutral-800 font-mono text-xs mt-1.5"><code>tess validate ./resources/my-card/manifest.json</code></pre>
+              <pre tabindex="0" aria-label="Validate a resource manifest command" class="p-2.5 rounded-lg bg-neutral-100 text-neutral-800 font-mono text-xs mt-1.5"><code>tess validate ./resources/my-card/manifest.json</code></pre>
             </div>
 
             <div>
               <h3 class="font-mono font-semibold text-xs text-[#2547E8]">tess export [project-file]</h3>
               <p class="text-xs text-[#62666F] mt-1">Generates a standalone Vite + React + Tailwind project from a ProjectManifest. Next.js and native targets are not selected by this CLI command.</p>
-              <pre class="p-2.5 rounded-lg bg-neutral-100 text-neutral-800 font-mono text-xs mt-1.5"><code>tess export project.tess.json --output ./my-app</code></pre>
+              <pre tabindex="0" aria-label="Export a standalone project command" class="p-2.5 rounded-lg bg-neutral-100 text-neutral-800 font-mono text-xs mt-1.5"><code>tess export project.tess.json --output ./my-app</code></pre>
             </div>
           </div>
+          <p class="text-xs text-[#62666F]">Other core commands include <code>init</code>, <code>view</code>, <code>compose</code>, and <code>doctor</code>. See <code>tess --help</code> for their options and for the separately labelled Beta commands.</p>
         </section>
       </div>
     </main>

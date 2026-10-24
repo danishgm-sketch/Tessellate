@@ -1,13 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import {
-  Copy,
-  Check,
-  RotateCcw,
-  Smartphone,
-  Tablet,
-  Monitor,
-  Sliders,
-} from 'lucide-react';
+import { Copy, Check, RotateCcw, Smartphone, Tablet, Monitor, Sliders } from 'lucide-react';
+import { CopyFailureNotice, useToolClipboard } from './useToolClipboard';
 
 export type LayoutGrammarId =
   | 'standard-sidebar'
@@ -40,7 +33,8 @@ const LAYOUT_PRESETS: LayoutGrammarPreset[] = [
     category: 'Technical / IDE',
     defaultCols: 12,
     defaultGap: 16,
-    description: 'Dense developer cockpit: left file tree, center work canvas, right telemetry inspector.',
+    description:
+      'Dense developer cockpit: left file tree, center work canvas, right telemetry inspector.',
   },
   {
     id: 'bento-modular',
@@ -56,7 +50,8 @@ const LAYOUT_PRESETS: LayoutGrammarPreset[] = [
     category: 'Narrative / E-comm',
     defaultCols: 12,
     defaultGap: 32,
-    description: '50/50 sticky authorial thesis on the left with scrolling visual artifacts on the right.',
+    description:
+      '50/50 sticky authorial thesis on the left with scrolling visual artifacts on the right.',
   },
   {
     id: 'spatial-canvas',
@@ -75,8 +70,11 @@ export function LayoutComposer() {
   const [viewport, setViewport] = useState<ViewportSize>('desktop');
   const [cols, setCols] = useState<number>(12);
   const [gapPx, setGapPx] = useState<number>(24);
-  const [containerWidth, setContainerWidth] = useState<'1024px' | '1280px' | '1440px' | '100%'>('1440px');
+  const [containerWidth, setContainerWidth] = useState<'1024px' | '1280px' | '1440px' | '100%'>(
+    '1440px'
+  );
   const [copiedFormat, setCopiedFormat] = useState<'tailwind' | 'css' | null>(null);
+  const { copyText, copyFailed } = useToolClipboard();
 
   const activePreset = useMemo(() => {
     return LAYOUT_PRESETS.find((p) => p.id === grammarId) ?? LAYOUT_PRESETS[0]!;
@@ -86,6 +84,12 @@ export function LayoutComposer() {
     setGrammarId(g.id);
     setCols(g.defaultCols);
     setGapPx(g.defaultGap);
+  };
+
+  const resetLayout = () => {
+    selectGrammar(LAYOUT_PRESETS[0]!);
+    setViewport('desktop');
+    setContainerWidth('1440px');
   };
 
   // Generated Tailwind snippet
@@ -104,14 +108,14 @@ export function LayoutComposer() {
     }
   }, [grammarId, containerWidth, cols, gapPx]);
 
-  const copyToClipboard = (text: string, format: 'tailwind' | 'css') => {
-    navigator.clipboard.writeText(text);
-    setCopiedFormat(format);
-    setTimeout(() => setCopiedFormat(null), 2000);
+  const copyToClipboard = async (text: string, format: 'tailwind' | 'css') => {
+    const copied = await copyText(text);
+    setCopiedFormat(copied ? format : null);
+    if (copied) setTimeout(() => setCopiedFormat(null), 2000);
   };
 
   return (
-    <div className="space-y-8 select-none">
+    <div className="space-y-8">
       {/* Header Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#D9D6CF] pb-6">
         <div>
@@ -127,7 +131,8 @@ export function LayoutComposer() {
             Layout Composer
           </h1>
           <p className="text-sm text-[#62666F] mt-1">
-            Design and stress-test responsive layout structures, container bounds, and responsive grid reflow.
+            Adjust container and grid settings, inspect a responsive wireframe preview, and copy a
+            CSS or Tailwind layout snippet.
           </p>
         </div>
 
@@ -138,11 +143,17 @@ export function LayoutComposer() {
             onClick={() => copyToClipboard(generatedTailwind, 'tailwind')}
             className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2547E8] text-white text-xs font-semibold hover:bg-[#1E3CCD] transition-all shadow-sm"
           >
-            {copiedFormat === 'tailwind' ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+            {copiedFormat === 'tailwind' ? (
+              <Check className="h-3.5 w-3.5" />
+            ) : (
+              <Copy className="h-3.5 w-3.5" />
+            )}
             <span>Copy Layout Snippet</span>
           </button>
         </div>
       </div>
+
+      <CopyFailureNotice failed={copyFailed} />
 
       {/* Grammar Presets */}
       <div className="space-y-2">
@@ -155,6 +166,7 @@ export function LayoutComposer() {
               key={p.id}
               type="button"
               onClick={() => selectGrammar(p)}
+              aria-pressed={grammarId === p.id}
               className={`px-3 py-1.5 rounded-xl border text-xs font-semibold transition-all ${
                 grammarId === p.id
                   ? 'border-[#111217] bg-[#111217] text-white shadow-sm'
@@ -178,7 +190,7 @@ export function LayoutComposer() {
             </div>
             <button
               type="button"
-              onClick={() => selectGrammar(LAYOUT_PRESETS[0]!)}
+              onClick={resetLayout}
               className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
             >
               <RotateCcw className="h-3 w-3" />
@@ -215,7 +227,8 @@ export function LayoutComposer() {
               <span className="text-[#111217]">Grid Columns (Desktop)</span>
               <span className="font-mono text-[#62666F]">{cols} cols</span>
             </div>
-            <input aria-label="Grid columns"
+            <input
+              aria-label="Grid columns"
               type="range"
               min="2"
               max="16"
@@ -232,7 +245,8 @@ export function LayoutComposer() {
               <span className="text-[#111217]">Gutter Pitch (Gap)</span>
               <span className="font-mono text-[#62666F]">{gapPx}px</span>
             </div>
-            <input aria-label="Grid gap"
+            <input
+              aria-label="Grid gap"
               type="range"
               min="8"
               max="48"
@@ -249,7 +263,7 @@ export function LayoutComposer() {
           {/* Viewport Width Simulator Switcher */}
           <div className="flex items-center justify-between pb-2 border-b border-[#D9D6CF]">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono text-[var(--text-muted)]">PORT SIMULATION</span>
+              <span className="text-xs font-mono text-[var(--text-muted)]">WIREFRAME PREVIEW</span>
               <span className="text-xs font-bold text-[#111217]">{activePreset.name}</span>
             </div>
 
@@ -257,8 +271,12 @@ export function LayoutComposer() {
               <button
                 type="button"
                 onClick={() => setViewport('mobile')}
+                aria-label="Mobile preview (375px)"
+                aria-pressed={viewport === 'mobile'}
                 className={`p-1.5 rounded-lg text-xs flex items-center gap-1 ${
-                  viewport === 'mobile' ? 'bg-[#111217] text-white' : 'text-[#62666F] hover:text-[#111217]'
+                  viewport === 'mobile'
+                    ? 'bg-[#111217] text-white'
+                    : 'text-[#62666F] hover:text-[#111217]'
                 }`}
                 title="Mobile (375px)"
               >
@@ -268,8 +286,12 @@ export function LayoutComposer() {
               <button
                 type="button"
                 onClick={() => setViewport('tablet')}
+                aria-label="Tablet preview (768px)"
+                aria-pressed={viewport === 'tablet'}
                 className={`p-1.5 rounded-lg text-xs flex items-center gap-1 ${
-                  viewport === 'tablet' ? 'bg-[#111217] text-white' : 'text-[#62666F] hover:text-[#111217]'
+                  viewport === 'tablet'
+                    ? 'bg-[#111217] text-white'
+                    : 'text-[#62666F] hover:text-[#111217]'
                 }`}
                 title="Tablet (768px)"
               >
@@ -279,8 +301,12 @@ export function LayoutComposer() {
               <button
                 type="button"
                 onClick={() => setViewport('desktop')}
+                aria-label="Desktop preview (1440px)"
+                aria-pressed={viewport === 'desktop'}
                 className={`p-1.5 rounded-lg text-xs flex items-center gap-1 ${
-                  viewport === 'desktop' ? 'bg-[#111217] text-white' : 'text-[#62666F] hover:text-[#111217]'
+                  viewport === 'desktop'
+                    ? 'bg-[#111217] text-white'
+                    : 'text-[#62666F] hover:text-[#111217]'
                 }`}
                 title="Desktop (1440px)"
               >
@@ -289,6 +315,11 @@ export function LayoutComposer() {
               </button>
             </div>
           </div>
+
+          <p className="text-xs text-[var(--text-muted)]">
+            Schematic preview for comparing layout options; it does not run or test a generated
+            page.
+          </p>
 
           {/* Wireframe Stage Container */}
           <div className="rounded-2xl border border-[#D9D6CF] bg-[#FAF9F6] p-4 flex justify-center shadow-sm overflow-hidden min-h-[380px]">
@@ -299,8 +330,8 @@ export function LayoutComposer() {
                   viewport === 'mobile'
                     ? '375px'
                     : viewport === 'tablet'
-                    ? '640px'
-                    : containerWidth,
+                      ? '640px'
+                      : containerWidth,
               }}
             >
               {grammarId === 'standard-sidebar' && (

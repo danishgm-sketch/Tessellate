@@ -48,7 +48,7 @@ if(!componentName)throw new Error(`No component export in ${manifest.slug}`);
   <body class="bg-[var(--tess-canvas,#F4F2ED)] text-[var(--tess-ink,#111217)] antialiased min-h-screen flex flex-col font-sans">
     <Header client:load />
 
-    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <main id="main-content" tabindex="-1" class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <!-- Breadcrumbs -->
       <nav class="flex items-center gap-2 text-xs text-[var(--tess-ink-secondary,#62666F)] mb-6">
         <a href="/" class="hover:text-[var(--tess-cobalt,#2547E8)]">Home</a>
@@ -74,7 +74,7 @@ if(!componentName)throw new Error(`No component export in ${manifest.slug}`);
               v{manifest.version}
             </span>
             <span class="px-2 py-0.5 rounded text-xs font-mono font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
-              {manifest.status}
+              Manifest status: {manifest.status}
             </span>
           </div>
           <p class="text-sm md:text-base text-[var(--tess-ink-secondary,#62666F)]">

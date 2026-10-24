@@ -19,25 +19,38 @@ export function AgentsSection() {
           </h2>
 
           <p className="text-lg text-[#62666F] font-normal leading-relaxed">
-            Coding agents like Claude Code, Gemini CLI, Cursor, and Copilot struggle when asked to edit arbitrary CSS and complex component hierarchies from scratch. Tessellate gives them a deterministic, schema-validated operating contract.
+            Coding agents and people can inspect the same project manifest and use the same typed
+            mutation contracts to change an interface.
           </p>
 
           <ul className="space-y-3 text-sm text-[#111217]">
             <li className="flex items-center gap-3">
               <CheckCircle2 className="h-4 w-4 text-[#2547E8] shrink-0" />
-              <span><strong>Machine-Readable Manifests:</strong> Everything compiles to validated <code>.tess.json</code> files.</span>
+              <span>
+                <strong>Project manifests:</strong> Export a composed project as a schema-validated{' '}
+                <code>.tess.json</code> file.
+              </span>
             </li>
             <li className="flex items-center gap-3">
               <CheckCircle2 className="h-4 w-4 text-[#2547E8] shrink-0" />
-              <span><strong>Structured Mutations:</strong> Agents modify layouts via typed operations with inverse rollbacks.</span>
+              <span>
+                <strong>Structured mutations:</strong> Typed operations can update project structure
+                and provide inverse changes for undo.
+              </span>
             </li>
             <li className="flex items-center gap-3">
               <CheckCircle2 className="h-4 w-4 text-[#2547E8] shrink-0" />
-              <span><strong>Zero Hallucinations:</strong> Components use registered semantic slots rather than loose arbitrary HTML.</span>
+              <span>
+                <strong>Registered resources:</strong> Composition selects from the resource
+                registry; unsupported roles remain visible for review.
+              </span>
             </li>
             <li className="flex items-center gap-3">
               <CheckCircle2 className="h-4 w-4 text-[#2547E8] shrink-0" />
-              <span><strong>Complete Handoff Package:</strong> Generates <code>AGENT_HANDOFF.md</code> with setup instructions and schema tokens.</span>
+              <span>
+                <strong>Agent handoff:</strong> Exports the project brief, design, implementation,
+                components, dependencies, and an agent prompt.
+              </span>
             </li>
           </ul>
         </div>
@@ -52,8 +65,12 @@ export function AgentsSection() {
             <span className="text-[10px] text-[#C9FF57]">ILLUSTRATIVE EXCERPT</span>
           </div>
 
-          <pre className="text-white/90 overflow-x-auto leading-relaxed text-[11px]" tabIndex={0} aria-label="AGENT_HANDOFF JSON specification">
-{`{
+          <pre
+            className="text-white/90 overflow-x-auto leading-relaxed text-[11px]"
+            tabIndex={0}
+            aria-label="AGENT_HANDOFF JSON specification"
+          >
+            {`{
   "schemaVersion": "1.0.0",
   "name": "Employee experience",
   "productModel": {

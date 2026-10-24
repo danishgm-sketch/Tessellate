@@ -26,6 +26,31 @@ const SUGGESTED_QUERIES = [
 ];
 
 const PAGE_SIZE = 50;
+function ResourceCardSkeleton({ index }: { index: number }) {
+  return (
+    <div
+      aria-hidden="true"
+      className="flex flex-col overflow-hidden rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)]"
+      data-testid="resource-card-skeleton"
+      data-skeleton-index={index}
+    >
+      <div className="aspect-[16/10] w-full border-b border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-canvas,#F4F2ED)] p-6">
+        <div className="h-full w-full border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)]" />
+      </div>
+      <div className="flex flex-col gap-1.5 p-3.5">
+        <div className="flex h-5 items-center justify-between gap-3">
+          <span className="h-3 w-2/5 rounded-sm bg-[var(--tess-canvas-strong,#ECE9E2)]" />
+          <span className="h-4 w-14 rounded-sm bg-[var(--tess-canvas-strong,#ECE9E2)]" />
+        </div>
+        <div className="flex h-4 items-center justify-between gap-3">
+          <span className="h-2.5 w-1/4 rounded-sm bg-[var(--tess-canvas-strong,#ECE9E2)]" />
+          <span className="h-2.5 w-10 rounded-sm bg-[var(--tess-canvas-strong,#ECE9E2)]" />
+        </div>
+        <span className="h-[17.5px] w-3/4 rounded-sm bg-[var(--tess-canvas-strong,#ECE9E2)]" />
+      </div>
+    </div>
+  );
+}
 const FILTER_PARAMS = [
   ['resourceTypes', 'type'],
   ['purposes', 'purpose'],
@@ -63,6 +88,13 @@ function readFilters(params: URLSearchParams): SearchFilters {
   const minQuality = Number(params.get('minQuality'));
   if (params.has('minQuality') && Number.isFinite(minQuality)) filters.minQuality = minQuality;
   return filters;
+}
+
+function searchSignature(query: string, filters: SearchFilters): string {
+  const orderedFilters = Object.fromEntries(
+    Object.entries(filters).sort(([left], [right]) => left.localeCompare(right)),
+  );
+  return JSON.stringify({ query: query.trim(), filters: orderedFilters });
 }
 
 function writeSearchUrl(query: string, filters: SearchFilters): void {
@@ -103,6 +135,7 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
   const [mobileRailOpen, setMobileRailOpen] = useState(false);
   const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [completedSearchKey, setCompletedSearchKey] = useState<string | null>(null);
   const [urlReady, setUrlReady] = useState(false);
   const mobileRailDialogRef = useRef<HTMLDivElement>(null);
   const mobileRailToggleRef = useRef<HTMLButtonElement>(null);
@@ -110,6 +143,8 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
 
   const oramaDbRef = useRef<ResourceOramaDb | null>(null);
   const searchRequestRef = useRef(0);
+  const hasCompletedSearch = completedSearchKey !== null;
+  const isSearchPending = isLoading || isSearching || completedSearchKey !== searchSignature(query, filters);
   const availableFacetOptions = useMemo(() => {
     const values: Record<SearchFacetKey, Set<string>> = {
       resourceTypes: new Set(),
@@ -218,6 +253,7 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
     async function initCatalog() {
       setIsLoading(true);setCatalogError('');
       setSearchError('');
+      setCompletedSearchKey(null);
       oramaDbRef.current = null;
       setSearchResults([]);
       setTotalHits(0);
@@ -254,6 +290,7 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
         setSearchResults(rankedResources(manifests,result.items));
         setTotalHits(result.totalHits);
         setIsSearching(false);
+        setCompletedSearchKey(searchSignature(committedQuery, filters));
       })
       .catch((error: unknown) => {
         if (cancelled || requestId !== searchRequestRef.current) return;
@@ -320,7 +357,9 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
         <Search className="w-4 h-4 text-[var(--tess-ink-muted,#62666F)] shrink-0" />
 
         <input
-          ref={queryRef} aria-label="Search catalogue" type="text"
+          ref={queryRef} id="catalogue-search" name="q" aria-label="Search catalogue" type="text"
+          disabled={!urlReady}
+          aria-describedby={!urlReady ? 'explore-search-hydration-status' : undefined}
           value={query}
           onFocus={() => setIsInputFocused(true)}
           onBlur={() => setTimeout(() => setIsInputFocused(false), 200)}
@@ -333,6 +372,17 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
           placeholder="Search by component, outcome, style or vibe…"
           className="flex-1 min-w-0 bg-transparent text-sm text-[var(--tess-ink,#111217)] placeholder-[var(--tess-ink-muted,#62666F)] focus:outline-none"
         />
+
+        {!urlReady && (
+          <span
+            id="explore-search-hydration-status"
+            role="status"
+            data-testid="explore-search-hydration-status"
+            className="shrink-0 text-[10px] text-[var(--tess-ink-muted,#62666F)] sm:text-xs"
+          >
+            Preparing search…
+          </span>
+        )}
 
         {query && (
           <button
@@ -432,11 +482,13 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
             <span aria-live="polite" aria-atomic="true">
               {isLoading
                 ? 'Loading catalogue...'
-                : isSearching
-                  ? 'Searching catalogue...'
                 : catalogError
                   ? 'Catalogue unavailable'
-                  : `Showing ${searchResults.length} of ${totalHits} resource${totalHits === 1 ? '' : 's'}`}
+                  : searchError
+                    ? 'Search unavailable'
+                    : isSearchPending
+                      ? 'Searching catalogue...'
+                      : `Showing ${searchResults.length} of ${totalHits} resource${totalHits === 1 ? '' : 's'}`}
             </span>
 
             {Object.keys(filters).length > 0 && (
@@ -453,7 +505,39 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
           {searchError && <p role="alert" className="border border-[#C83D48] bg-white p-3 text-xs text-[#8F2530]">{searchError}</p>}
 
           {/* Cards Grid */}
-          {searchResults.length === 0 && !isLoading && !isSearching && !catalogError && !searchError ? (
+          {searchResults.length === 0 && !catalogError && !searchError && !hasCompletedSearch ? (
+            <div
+              aria-busy="true"
+              aria-label="Loading catalogue resources"
+              className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3"
+              data-testid="resource-card-skeleton-grid"
+              role="status"
+            >
+              {Array.from({ length: PAGE_SIZE }, (_, index) => (
+                <ResourceCardSkeleton key={index} index={index} />
+              ))}
+            </div>
+          ) : searchResults.length > 0 && isSearchPending && !catalogError && !searchError ? (
+            <div
+              aria-busy="true"
+              aria-label="Updating catalogue results"
+              className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3"
+              data-testid="resource-card-skeleton-grid"
+              role="status"
+            >
+              {Array.from({ length: searchResults.length }, (_, index) => (
+                <ResourceCardSkeleton key={index} index={index} />
+              ))}
+            </div>
+          ) : searchResults.length === 0 && isSearchPending && hasCompletedSearch && !catalogError && !searchError ? (
+            <div
+              aria-busy="true"
+              className="flex min-h-[250px] items-center justify-center rounded-xl border border-dashed border-[var(--tess-hairline,#D9D6CF)] bg-white p-8 text-center text-xs text-[var(--tess-ink-muted,#62666F)]"
+              role="status"
+            >
+              Searching catalogue…
+            </div>
+          ) : searchResults.length === 0 && !isSearchPending && !catalogError && !searchError ? (
             <div className="py-16 text-center rounded-xl border border-dashed border-[var(--tess-hairline,#D9D6CF)] bg-white p-8 space-y-3">
               <h3 className="text-base font-semibold text-[var(--tess-ink,#111217)]">
                 No matching resources found
