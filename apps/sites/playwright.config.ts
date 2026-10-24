@@ -8,11 +8,13 @@ export default defineConfig({
   workers: 1,
   reporter: 'list',
   outputDir: '../../test-results/sites',
-  use: { baseURL: deployedURL ?? 'http://localhost:4322', viewport: { width: 1440, height: 1000 } },
-  webServer: deployedURL ? undefined : {
-    command: 'pnpm --filter @tessellate/site preview --config ../sites/astro.preview.config.mjs --port 4322',
-    cwd: '../..',
-    url: 'http://localhost:4322',
-    reuseExistingServer: true,
-  },
+  use: { baseURL: deployedURL ?? 'http://127.0.0.1:4323', viewport: { width: 1440, height: 1000 } },
+  webServer: deployedURL
+    ? undefined
+    : {
+        command: 'pnpm --filter @tessellate/sites preview',
+        cwd: '../..',
+        url: 'http://127.0.0.1:4323',
+        reuseExistingServer: true,
+      },
 });

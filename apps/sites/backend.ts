@@ -31,7 +31,8 @@ export async function proxyBackend(request: Request, config: BackendConfiguratio
   if (!['GET', 'HEAD', 'OPTIONS'].includes(request.method) && origin && origin !== source.origin) {
     return Response.json({ error: 'ForbiddenOrigin' }, { status: 403 });
   }
-  if (path.startsWith('/api/inference/') && !/^\/api\/inference\/(health|queue|status\/[a-f0-9-]+)$/.test(path)) {
+  const ticketId = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
+  if (path.startsWith('/api/inference/') && !new RegExp(`^/api/inference/(health|queue|(?:status|cancel)/${ticketId})$`).test(path)) {
     return Response.json({ error: 'NotFound' }, { status: 404, headers: { 'Cache-Control': 'no-store' } });
   }
   if (!config.url || !config.secret) return offline(path, 'Laptop backend connection is not configured');

@@ -32,6 +32,19 @@ describe('laptop backend transport', () => {
     expect(privateRoute.status).toBe(404);
     expect(transport).not.toHaveBeenCalled();
   });
+  it('allows an authenticated ticket cancellation through the server-side gateway', async () => {
+    const transport = vi.fn().mockResolvedValue(Response.json({ success: true }));
+    vi.stubGlobal('fetch', transport);
+    const result = await proxyBackend(new Request('https://site.test/api/inference/cancel/123e4567-e89b-12d3-a456-426614174000', {
+      method: 'POST',
+      headers: { Origin: 'https://site.test', Authorization: 'Bearer private-ticket-token' },
+    }), config);
+    expect(result.status).toBe(200);
+    const [, init] = transport.mock.calls[0]!;
+    expect(init.headers.get('Authorization')).toBe('Bearer private-ticket-token');
+    expect(init.headers.get('X-Tessellate-Gateway')).toBe(config.secret);
+    expect(init.headers.get('X-Host-Secret')).toBeNull();
+  });
   it('rejects oversized jobs and insecure public transport', async () => {
     const transport = vi.fn(); vi.stubGlobal('fetch', transport);
     expect((await proxyBackend(new Request('https://site.test/api/inference/queue', { method: 'POST', body: 'x'.repeat(100000) }), config)).status).toBe(413);

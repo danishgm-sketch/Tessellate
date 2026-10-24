@@ -8,12 +8,12 @@
     "preview": "wrangler dev --config ../../dist/server/wrangler.json --local --ip 127.0.0.1 --port 4323 --inspector-port 0"
   },
   "devDependencies": {
-    "@tessellate/site": "workspace:*",
     "@cloudflare/vite-plugin": "1.37.1",
-    "@cloudflare/workers-types": "5.20261012.1",
-    "vite": "8.0.13",
-    "wrangler": "4.92.0",
+    "@cloudflare/workers-types": "4.20260702.1",
+    "@tessellate/site": "workspace:*",
+    "@types/node": "^22.13.4",
     "typescript": "^5.7.3",
-    "@types/node": "^22.13.4"
+    "vite": "8.3.4",
+    "wrangler": "4.92.0"
   }
 }

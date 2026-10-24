@@ -18,4 +18,15 @@ describe('Sites host capability', () => {
       expect(await response.json()).toMatchObject({ error: pathname === 'queue' ? 'BackendUnavailable' : 'NotFound' });
     }
   });
+
+  it('redirects a top-level request for the isolated preview document to its trusted wrapper', async () => {
+    const response = await worker.fetch(
+      new Request('https://example.test/preview-content/?resource=button', {
+        headers: { 'Sec-Fetch-Dest': 'document' },
+      }),
+      env,
+    );
+    expect(response.status).toBe(302);
+    expect(response.headers.get('Location')).toBe('https://example.test/preview/?resource=button');
+  });
 });
