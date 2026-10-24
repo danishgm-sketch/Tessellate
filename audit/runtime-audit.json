@@ -10311,7 +10311,330 @@
       "status": "fixed-local-verified",
       "evidence": "quality/evidence/step-45/explore-zod-csp-after-desktop-1440x900.png; quality/evidence/step-45/explore-zod-csp-after-mobile-390x844.png; quality/evidence/step-45/explore-zod-csp-performance-trace.json.gz; tests/e2e/sites-preview-csp.spec.ts",
       "verification": "The focused browser regression was red before the fix and passes in desktop and mobile Sites Chromium after it. The complete run passes: pnpm test (1214 passed, 1 skipped); pnpm audit:all (16/16 gates, 324/324 resources, clean security and dependency checks, bundle budgets, and production build); pnpm test:e2e (Astro 290 passed/108 configured skips, Sites Worker 257 passed/41 configured skips, isolated preview app 3 passed); typecheck and lint pass. A final local DevTools trace measured desktop Explore LCP 151ms, CLS 0.00, and TTFB 9ms at 1x CPU with no network throttling; CrUX field data and navigation-only INP are unavailable. Public review Site verification remains pending."
+    },
+    {
+      "id": "AUD-323",
+      "severity": "medium",
+      "route": "/explore and /r/animated-gradient-line",
+      "viewport": "1440x900",
+      "category": "runtime",
+      "title": "Animated gradient preview inline style was absent from the Sites CSP hash list",
+      "expected": "The animated-gradient-line preview renders without weakening the sandboxed preview CSP or producing a style-src violation.",
+      "actual": "On deployed v24 the resource source contains an exact inline style block that was not included in the generated Sites CSP hashes. The browser blocks that style in isolated previews. The static Sites preparation step did not inspect the final public runtime registry JSON, where this resource source is shipped.",
+      "reproduction": [
+        "Open /explore on deployed v24 and load the animated-gradient-line preview.",
+        "Inspect securitypolicyviolation events for style-src-elem and compare the blocked style hash to the response CSP.",
+        "Rebuild the Sites artifact with the updated scanner and verify the style hash is present without broadening style-src."
+      ],
+      "console": [
+        "The v24 route crawl recorded style-src CSP violations while rendering affected previews; no uncaught exception."
+      ],
+      "network": [
+        "Catalogue and route requests returned HTTP 200; failure was inline style policy, not an HTTP request."
+      ],
+      "screenshot": "audit/evidence/v24/explore-desktop-1440x900.png",
+      "rootCause": "apps/sites/prepare-static.mjs scanned source-tree resource files but not the final /r/*.json runtime registry files that Sites publishes.",
+      "affectedCode": [
+        "apps/sites/prepare-static.mjs",
+        "tests/e2e/sites-preview-csp.spec.ts"
+      ],
+      "fixCommit": "c82900964b868474b35326a6860f1fbeba3c5ff5",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "Deployed baseline: audit/evidence/v24/route-audit.json; fixed regression: tests/e2e/sites-preview-csp.spec.ts; local after capture: audit/evidence/local-fixed-final/route-audit.json.",
+      "verification": "The Sites CSP builder now hashes exact style blocks found in the final shipped runtime resource registry. Focused desktop/mobile browser regression passes locally. Public v24 remains unchanged; deployed verification is pending."
+    },
+    {
+      "id": "AUD-324",
+      "severity": "low",
+      "route": "/explore",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Explore filter checkboxes lacked native id and name identity",
+      "expected": "Each category checkbox exposes a stable accessible label and native form identity for assistive technology and browser tooling.",
+      "actual": "The deployed filter checkboxes were labelled visually but rendered without id/name attributes, making their identity less reliable to form and automation consumers.",
+      "reproduction": [
+        "Open /explore at desktop width.",
+        "Inspect category filters and query each input for id and name.",
+        "Compare labels and values; before the fix the input had neither id nor name."
+      ],
+      "console": [],
+      "network": [
+        "Explore and catalogue returned HTTP 200."
+      ],
+      "screenshot": "audit/evidence/v24/explore-desktop-1440x900.png",
+      "rootCause": "ExploreRail rendered each checkbox without a unique input identity.",
+      "affectedCode": [
+        "apps/site/src/components/ExploreRail.tsx",
+        "tests/e2e/explore-filter-control-identity.spec.ts"
+      ],
+      "fixCommit": "fdfa83181376d4983520efe07c59cf5706e88dd9",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "v24 route snapshot: audit/evidence/v24/route-audit.json; regression added at tests/e2e/explore-filter-control-identity.spec.ts.",
+      "verification": "A UI-level browser regression verifies each category checkbox has a unique id, matching label, and name on desktop and mobile. Local regression passes; deployment verification pending."
+    },
+    {
+      "id": "AUD-325",
+      "severity": "medium",
+      "route": "/",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Homepage heading hierarchy skipped from level two to level four",
+      "expected": "Homepage sections follow a coherent heading hierarchy without skipped levels.",
+      "actual": "The deployed homepage exposed a level-four heading beneath a level-two section heading, which Axe reported as heading-order.",
+      "reproduction": [
+        "Open / at 1440x900.",
+        "Inspect the Build and Runtime Budgets section heading hierarchy or run Axe heading-order.",
+        "Before the fix, the subheading was h4 beneath h2."
+      ],
+      "console": [],
+      "network": [
+        "Homepage route and assets returned HTTP 200."
+      ],
+      "screenshot": "audit/evidence/v24/home-desktop-1440x900.png",
+      "rootCause": "Two homepage proof sections used h4 for their section heading, despite having no intervening h3.",
+      "affectedCode": [
+        "apps/site/src/components/home/AuditPerformanceProof.tsx",
+        "apps/site/src/components/home/EssentialVsExperimental.tsx"
+      ],
+      "fixCommit": "fdfa83181376d4983520efe07c59cf5706e88dd9",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "Deployed baseline screenshot and crawl under audit/evidence/v24/; local fixed crawl under audit/evidence/local-fixed-final/route-audit.json.",
+      "verification": "Both headings now use h3. Local Axe and route audit report zero violations; deployed recheck pending."
+    },
+    {
+      "id": "AUD-326",
+      "severity": "medium",
+      "route": "/explore",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Catalogue result heading had no level-two parent section",
+      "expected": "The catalogue results region is introduced by a meaningful heading in the page outline.",
+      "actual": "The deployed result cards started at h3 without a preceding results heading; Axe flagged heading-order.",
+      "reproduction": [
+        "Open /explore at 1440x900.",
+        "Inspect the document heading outline and run Axe heading-order.",
+        "Before the fix, result headings appeared as h3 with no level-two heading."
+      ],
+      "console": [],
+      "network": [
+        "Explore and catalogue returned HTTP 200."
+      ],
+      "screenshot": "audit/evidence/v24/explore-desktop-1440x900.png",
+      "rootCause": "The result grid was treated as visually self-explanatory and had no semantic section heading.",
+      "affectedCode": [
+        "apps/site/src/components/ExploreView.tsx",
+        "tests/e2e/core-accessibility-landmarks.spec.ts"
+      ],
+      "fixCommit": "fdfa83181376d4983520efe07c59cf5706e88dd9",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "Deployed baseline: audit/evidence/v24/explore-desktop-1440x900.png; local after: audit/evidence/local-fixed-final/route-audit.json.",
+      "verification": "ExploreView now includes a visually-hidden h2 for Catalogue results. Local Axe has zero violations; deployed verification pending."
+    },
+    {
+      "id": "AUD-327",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Workbench navigation sidebar landmark was unnamed",
+      "expected": "The navigation landmark is named so screen-reader users can distinguish Workbench navigation from other landmarks.",
+      "actual": "The deployed Workbench exposed an unnamed sidebar landmark, contributing to landmark-unique and region accessibility failures.",
+      "reproduction": [
+        "Open /workbench at 1440x900.",
+        "Inspect landmark names or run Axe landmark-unique and region rules.",
+        "Before the fix, the left navigation aside had no accessible name."
+      ],
+      "console": [],
+      "network": [
+        "Workbench route and app chunks returned HTTP 200."
+      ],
+      "screenshot": "audit/evidence/v24/workbench-desktop-1440x900.png",
+      "rootCause": "LeftPanel rendered an aside landmark without an aria-label.",
+      "affectedCode": [
+        "packages/workbench/src/components/left-panel/LeftPanel.tsx",
+        "tests/e2e/core-accessibility-landmarks.spec.ts"
+      ],
+      "fixCommit": "fdfa83181376d4983520efe07c59cf5706e88dd9",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "Deployed v24 Axe baseline: audit/evidence/v24/route-audit.json; fixed local browser regression: tests/e2e/core-accessibility-landmarks.spec.ts.",
+      "verification": "LeftPanel now names its navigation landmark “Workbench navigation”. Local Axe reports no serious/critical issues on covered screens; deployed verification pending."
+    },
+    {
+      "id": "AUD-328",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Workbench command controls were outside a named landmark",
+      "expected": "The persistent command area is grouped in a named region for efficient assistive-technology navigation.",
+      "actual": "The deployed Workbench command controls were exposed as ungrouped content, contributing to Axe region failures.",
+      "reproduction": [
+        "Open /workbench at 1440x900.",
+        "Inspect the landmark tree or run Axe region.",
+        "Before the fix, the command bar had no region role or accessible name."
+      ],
+      "console": [],
+      "network": [
+        "Workbench route and app chunks returned HTTP 200."
+      ],
+      "screenshot": "audit/evidence/v24/workbench-desktop-1440x900.png",
+      "rootCause": "CommandBar exposed persistent editor actions without a named region boundary.",
+      "affectedCode": [
+        "packages/workbench/src/components/CommandBar.tsx",
+        "tests/e2e/core-accessibility-landmarks.spec.ts"
+      ],
+      "fixCommit": "fdfa83181376d4983520efe07c59cf5706e88dd9",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "Deployed v24 Axe baseline: audit/evidence/v24/route-audit.json; local regression: tests/e2e/core-accessibility-landmarks.spec.ts.",
+      "verification": "CommandBar now has role=region and the accessible name “Workbench command bar”. Local browser/Axe regression passes; deployed verification pending."
+    },
+    {
+      "id": "AUD-329",
+      "severity": "low",
+      "route": "standalone React export",
+      "viewport": "1440x900",
+      "category": "export",
+      "title": "Standalone React export omitted the product favicon",
+      "expected": "The standalone project retains Tessellate’s product favicon and returns it successfully at runtime.",
+      "actual": "A clean exported Vite application had no favicon link or copied favicon asset, producing a browser request failure / missing tab icon.",
+      "reproduction": [
+        "Export and extract a standalone React/Vite project.",
+        "Install its dependencies outside the monorepo and run the production preview.",
+        "Inspect the document head and network requests for /favicon.svg."
+      ],
+      "console": [
+        "The exported browser run recorded a failed favicon request before the fix."
+      ],
+      "network": [
+        "GET /favicon.svg failed before the fix because neither the link nor asset was emitted."
+      ],
+      "screenshot": "audit/evidence/local-fixed-final/home-export-desktop-1440x900.png",
+      "rootCause": "The generated Vite index template did not copy/link the favicon from the site public assets.",
+      "affectedCode": [
+        "packages/exporter/src/source-tree.ts",
+        "tests/employee-export-runtime.test.ts"
+      ],
+      "fixCommit": "0bad8cd0ebc28a4a1030cf8255f9c5d82594efe3",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "Regression asserts favicon source and zero browser/network errors after clean standalone build in tests/employee-export-runtime.test.ts.",
+      "verification": "The generated project now includes favicon.svg and a link element. Clean-install/build/browser export regression passes locally; deployed export verification pending."
+    },
+    {
+      "id": "AUD-330",
+      "severity": "medium",
+      "route": "/r/advanced-data-table preview document",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Isolated resource preview document had no top-level heading",
+      "expected": "Each isolated preview has a meaningful document heading that identifies the rendered resource.",
+      "actual": "The iframe content document used for resource previews had no h1; screen-reader users entering the frame lacked page context.",
+      "reproduction": [
+        "Open /explore and inspect a preview iframe after it loads.",
+        "Switch into the preview frame and inspect its heading outline.",
+        "Before the fix, the frame had no h1."
+      ],
+      "console": [],
+      "network": [
+        "Preview document and resource source returned HTTP 200; Axe injection can separately trigger strict-CSP style messages."
+      ],
+      "screenshot": "audit/evidence/v24/r__advanced-data-table-desktop-1440x900.png",
+      "rootCause": "PreviewHost mounted resource UI inside an isolated document without an accessible document title heading.",
+      "affectedCode": [
+        "apps/site/src/components/PreviewHost.tsx",
+        "tests/e2e/core-accessibility-landmarks.spec.ts"
+      ],
+      "fixCommit": "fdfa83181376d4983520efe07c59cf5706e88dd9",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "The local browser regression enters preview frames and checks a resource-name h1; see tests/e2e/core-accessibility-landmarks.spec.ts.",
+      "verification": "PreviewHost now emits a visually hidden h1 derived from the validated resource manifest name. Local browser/Axe regression passes; deployed verification pending."
+    },
+    {
+      "id": "AUD-331",
+      "severity": "medium",
+      "route": "/r/activity-feed preview",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Activity Feed resource title skipped to heading level three",
+      "expected": "The isolated resource document starts at h1 and resource sections use a coherent hierarchy.",
+      "actual": "The root title inside the Activity Feed resource was h3, skipping expected heading levels within the document.",
+      "reproduction": [
+        "Open the Activity Feed resource preview.",
+        "Inspect its accessible heading outline.",
+        "Before the fix, the resource root title was h3."
+      ],
+      "console": [],
+      "network": [
+        "Resource JSON and preview assets returned HTTP 200."
+      ],
+      "screenshot": "audit/evidence/v24/explore-desktop-1440x900.png",
+      "rootCause": "The resource component encoded an h3 title despite being the top-level content section in its isolated document.",
+      "affectedCode": [
+        "resources/blocks/activity-feed/index.tsx",
+        "tests/e2e/core-accessibility-landmarks.spec.ts"
+      ],
+      "fixCommit": "fdfa83181376d4983520efe07c59cf5706e88dd9",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "Local browser test scrolls the corresponding Explore card to mount its iframe, then validates resource document headings.",
+      "verification": "The title now uses h2 beneath the new preview-document h1. Local regression passes; deployed verification pending."
+    },
+    {
+      "id": "AUD-332",
+      "severity": "medium",
+      "route": "/r/accordion-spring preview",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Accordion Spring resource title started at heading level four",
+      "expected": "The isolated resource document has a coherent heading outline beginning at h1.",
+      "actual": "The resource root title was h4, skipping heading levels and making the preview outline incoherent.",
+      "reproduction": [
+        "Open the Accordion Spring resource preview.",
+        "Inspect its accessible heading outline.",
+        "Before the fix, the root title was rendered as h4."
+      ],
+      "console": [],
+      "network": [
+        "Resource JSON and preview assets returned HTTP 200."
+      ],
+      "screenshot": "audit/evidence/v24/explore-desktop-1440x900.png",
+      "rootCause": "The resource component used a styling heading level as its semantic document level.",
+      "affectedCode": [
+        "resources/motion/accordion-spring/index.tsx",
+        "tests/e2e/core-accessibility-landmarks.spec.ts"
+      ],
+      "fixCommit": "fdfa83181376d4983520efe07c59cf5706e88dd9",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "Local browser regression scrolls the resource into view, loads its isolated frame, and checks headings.",
+      "verification": "The root title now uses h2 beneath PreviewHost’s h1. Local regression passes; deployed verification pending."
+    },
+    {
+      "id": "AUD-333",
+      "severity": "medium",
+      "route": "/r/advanced-data-table preview",
+      "viewport": "390x844",
+      "category": "accessibility",
+      "title": "Mobile data-record labels were exposed as page headings",
+      "expected": "Mobile table-card record labels remain readable without polluting the document’s section heading outline.",
+      "actual": "Each mobile record title was exposed as h3 even though it labels a data row rather than a new page section.",
+      "reproduction": [
+        "Open the Advanced Data Table resource on a 390x844 viewport.",
+        "Inspect the mobile card heading outline with multiple rows.",
+        "Before the fix, each row title appeared as h3."
+      ],
+      "console": [],
+      "network": [
+        "Resource JSON and preview assets returned HTTP 200."
+      ],
+      "screenshot": "audit/evidence/v24/r__advanced-data-table-mobile-390x844.png",
+      "rootCause": "The mobile card renderer reused heading markup for row labels.",
+      "affectedCode": [
+        "resources/blocks/advanced-data-table/index.tsx",
+        "tests/e2e/core-accessibility-landmarks.spec.ts"
+      ],
+      "fixCommit": "fdfa83181376d4983520efe07c59cf5706e88dd9",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "The resource browser regression covers the mobile resource frame; local Axe shows no violations for covered routes.",
+      "verification": "Mobile record labels now render as paragraphs, preserving visual styling while removing false section semantics. Local regression passes; deployed verification pending."
     }
   ],
-  "generatedAt": "2026-10-24T11:53:18.000Z"
+  "generatedAt": "2026-10-24T17:20:00.168Z"
 }

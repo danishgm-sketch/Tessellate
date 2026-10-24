@@ -1,8 +1,12 @@
-# Runtime audit — resource and renderer hardening
+# Runtime audit — product hardening and deployed-site verification
 
-This audit combines public route inspections and real-browser checks of the
-deployed Astro/React Site, Workbench, Sites Worker boundary, and clean standalone
-exports. Site v11 verified the exact employee-experience brief from Compose to
+This register preserves the historical resource/renderer audit and adds the
+current production review audit. The current public baseline is ChatGPT Site
+v24 at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`; local fixes
+are not considered closed until verified on a newly published Site. Evidence
+for the v24 route sweep and screenshots is in `evidence/v24/`, and local post-fix
+route evidence is in `evidence/local-fixed-final/`. Trace measurements are in
+`evidence/v24/performance-audit.json`. Site v11 verified the exact employee-experience brief from Compose to
 Direction C in Workbench at desktop and mobile widths; Site v14 reran that visible
 Compose-to-Direction-C smoke at the same widths. Site v13 verified the Reduced
 Motion toolbar state; Site v14 verifies the toolbar and Replay Entrance together.
@@ -15,7 +19,53 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low): 28 closed after deployed verification, 203 fixed locally and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy “fixed” status, and 0 remain open locally. Deployed verification remains a release gate.
+**Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
+
+**Current disposition:** 333 findings (0 Critical, 66 High, 250 Medium, 17 Low): 28 closed after deployed verification, 214 fixed locally and awaiting issue-specific deployed checks, 89 fixed and verified locally, 2 retain the legacy `fixed` status, and 0 remain open locally. AUD-323–AUD-333 are local fixes awaiting deployed verification. The v24 Site remains the deployed baseline; the user must approve publication of a new saved version before those findings can be closed.
+
+The v24 crawl visited all 31 requested canonical paths at desktop (1440 × 900) and mobile (390 × 844): 62/62 canonical document responses were HTTP 200. Its route crawl recorded 13 console errors, five aborted preview iframe requests, and no uncaught exceptions or horizontal overflow. Console errors were strict CSP blocks for the animated-gradient inline style on Explore, Effects, Motion, Backgrounds, and the representative resource detail; the separate automated Axe injector also produces CSP-only console output on preview frames. The aborted `preview-content` requests occurred while the route-sweep browser was moving through lazy previews; they had no HTTP status and are not treated as successful loads. The exact visible Compose journey was separately verified with a Playwright UI interaction; its exact brief persisted when the user changed controls. The browser automation helper artifact that initially appeared to clear the brief is excluded from defects.
+
+The local fixed route crawl visited the same 31 paths at both viewports: 62/62 HTTP 200, zero product console errors, uncaught exceptions, failed requests, or horizontal overflow. Axe returned zero violations on the six audited routes (home, Explore, Compose, Workbench, representative resource, and showcase). The Axe tool emits CSP messages only when injecting its scanner styles into isolated preview frames; those scanner messages are recorded separately and do not represent an application violation. A focused browser regression for landmark, heading, and native filter identities was red before fixes and passes on desktop and mobile. These results are local-only until a new Sites version is published and re-audited.
+
+### Current v24 route classification
+
+Classification is based on the captured route rendering, browser errors, and the interactions actually exercised. `PASS` means this audit observed a coherent page render and no material defect in its sampled experience; it does not claim every secondary control on the route has been exhaustively certified. Representative child routes are separately listed. The legacy `/licence` spelling is not canonical and is not part of the requested route set; `/license` is canonical.
+
+| Route | v24 classification | Evidence / qualification |
+|---|---|---|
+| `/` | DEGRADED | Page renders; heading order violation in the Build and Runtime Budgets section. |
+| `/explore` | DEGRADED | Catalogue renders; checkbox identity issue, missing result-section heading, and an animated preview style blocked by strict CSP. |
+| `/components` | PASS | Catalogue category page renders at both viewports. |
+| `/sections` | PASS | Catalogue category page renders at both viewports. |
+| `/blocks` | PASS | Catalogue category page renders at both viewports. |
+| `/pages` | PASS | Catalogue category page renders at both viewports. |
+| `/effects` | DEGRADED | Animated-gradient inline style blocked by preview CSP. |
+| `/motion` | DEGRADED | Animated-gradient inline style blocked by preview CSP; route-sweep preview request was aborted during traversal. |
+| `/backgrounds` | DEGRADED | Animated-gradient inline style blocked by preview CSP. |
+| `/ai` | PASS | Catalogue category page renders at both viewports. |
+| `/data` | PASS | Catalogue category page renders at both viewports. |
+| `/compose` | PASS | Compose UI, ready catalogue, brief fields, and controls render; exact brief/control interaction separately verified. Route-sweep iframe cancellations are noted above. |
+| `/workbench` | DEGRADED | Workbench renders, but unnamed/ungrouped landmarks fail accessibility checks. |
+| `/blueprints` | PASS | Blueprint listing renders at both viewports. |
+| `/collections` | PASS | Collection route renders at both viewports. |
+| `/creators` | PASS | Creator route renders at both viewports. |
+| `/showcase` | PASS | Showcase listing renders at both viewports. |
+| `/trends` | PASS | Trends route renders at both viewports. |
+| `/tools` | PASS | Tool listing renders at both viewports. |
+| `/agents` | PASS | Agent route renders at both viewports. |
+| `/docs` | PASS | Documentation landing route renders at both viewports. |
+| `/sponsor` | PASS | Sponsor route renders at both viewports. |
+| `/about` | PASS | About route renders at both viewports. |
+| `/license` | PASS | Canonical licence route renders at both viewports. |
+| `/privacy` | PASS | Privacy route renders at both viewports. |
+| `/terms` | PASS | Terms route renders at both viewports. |
+| `/r/advanced-data-table` | DEGRADED | Resource detail renders, but animated-gradient preview CSP blocks occur in the scanned preview context; Axe scanner injection output is separated. |
+| `/showcase/showcase-playful-hr` | PASS | Representative showcase renders at both viewports. |
+| `/blueprints/b2b-saas` | PASS | Representative blueprint renders at both viewports. |
+| `/tools/typography` | PASS | Representative tool renders at both viewports. |
+| `/docs/cli` | PASS | Representative documentation page renders at both viewports. |
+
+The route `PASS` rows above record successful sampled rendering; they should not be read as completion of the broader product-hardening programme or as proof every nested interaction has been exhaustively exercised. The core flagship flow remains the deeper acceptance path.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -3222,3 +3272,103 @@ with zero findings. That harness race is not counted as a product defect.
 - **Affected code:** `packages/schemas/src/configure-zod.ts`, `packages/schemas/src/index.ts`, and `tests/e2e/sites-preview-csp.spec.ts`.
 - **Remediation:** Configure browser-side Zod through the first side-effect import, before schema modules evaluate. Browser builds use Zod's jitless validation path; server and build processes retain normal JIT validation. The application's strict CSP remains unchanged.
 - **Verification:** The new regression failed before the fix and passes for desktop and mobile Sites Chromium. Explore loaded all 324 catalogue entries; the final local trace measured LCP 151ms, CLS 0.00, and TTFB 9ms at 1× CPU without network throttling. Frozen install, catalogue build, typecheck, lint, 1,214 unit tests, `pnpm audit:all`, and all three E2E targets pass. The public review Site has not yet been updated, so deployed verification remains pending.
+
+## MEDIUM (continued — v24 deployed-site audit)
+
+### AUD-323 — Animated gradient preview style was missing from the Sites CSP hash list
+
+- **Evidence:** v24 route capture on `/explore`, `/effects`, `/motion`, `/backgrounds`, and `/r/advanced-data-table` recorded strict `style-src-elem` blocks for the shipped animated gradient style. Baseline screenshots are in [`evidence/v24/`](evidence/v24/); local post-fix route evidence is [`evidence/local-fixed-final/route-audit.json`](evidence/local-fixed-final/route-audit.json).
+- **Reproduction:** Open a route containing the animated-gradient-line preview, then inspect `securitypolicyviolation` for `style-src-elem`. The v24 CSP omitted the exact hash used by the resource.
+- **Root cause:** `apps/sites/prepare-static.mjs` scanned the resource source tree but did not scan the final public `/r/*.json` files consumed by the preview runtime.
+- **Affected code:** `apps/sites/prepare-static.mjs`, `tests/e2e/sites-preview-csp.spec.ts`.
+- **Remediation:** Include exact inline style blocks from the final shipped runtime registry in the generated CSP hashes. No CSP directive was weakened. The desktop/mobile regression passes locally; v24 remains affected until a new version is published.
+
+### AUD-325 — Homepage heading hierarchy skipped from level two to level four
+
+- **Evidence:** v24 homepage Axe reported `heading-order`; before screenshot: [`home-desktop-1440x900.png`](evidence/v24/home-desktop-1440x900.png).
+- **Reproduction:** Open `/` at 1440×900 and inspect the Build and Runtime Budgets heading outline or run Axe `heading-order`.
+- **Root cause:** Two proof sections used h4 headings without an intervening h3.
+- **Affected code:** `apps/site/src/components/home/AuditPerformanceProof.tsx`, `apps/site/src/components/home/EssentialVsExperimental.tsx`.
+- **Remediation:** Use h3 for those sections. Local Axe is clean; deployed verification is pending.
+
+### AUD-326 — Explore catalogue result headings had no section heading
+
+- **Evidence:** v24 Explore Axe reported `heading-order`; before screenshot: [`explore-desktop-1440x900.png`](evidence/v24/explore-desktop-1440x900.png).
+- **Reproduction:** Open `/explore`, inspect the heading outline, or run Axe `heading-order`; resource result headings began at h3.
+- **Root cause:** The result grid had no semantic heading because its label was previously treated as visual-only.
+- **Affected code:** `apps/site/src/components/ExploreView.tsx`, `tests/e2e/core-accessibility-landmarks.spec.ts`.
+- **Remediation:** Add a visually hidden h2 named “Catalogue results”. Local Axe is clean; deployed verification is pending.
+
+### AUD-327 — Workbench navigation landmark was unnamed
+
+- **Evidence:** v24 Workbench Axe reported landmark errors; before screenshot: [`workbench-desktop-1440x900.png`](evidence/v24/workbench-desktop-1440x900.png).
+- **Reproduction:** Open `/workbench` and inspect landmarks or run Axe `landmark-unique`/`region`.
+- **Root cause:** `LeftPanel` rendered an aside without a distinguishing accessible name.
+- **Affected code:** `packages/workbench/src/components/left-panel/LeftPanel.tsx`, `tests/e2e/core-accessibility-landmarks.spec.ts`.
+- **Remediation:** Name the landmark “Workbench navigation”. Local regression passes; deployed verification is pending.
+
+### AUD-328 — Workbench command controls were not grouped in a named landmark
+
+- **Evidence:** v24 Workbench Axe reported a `region` violation around persistent command controls; before screenshot: [`workbench-desktop-1440x900.png`](evidence/v24/workbench-desktop-1440x900.png).
+- **Reproduction:** Open `/workbench` and inspect the landmark tree or run Axe `region`.
+- **Root cause:** `CommandBar` exposed editor commands outside a named region.
+- **Affected code:** `packages/workbench/src/components/CommandBar.tsx`, `tests/e2e/core-accessibility-landmarks.spec.ts`.
+- **Remediation:** Group the command bar in a region labelled “Workbench command bar”. Local regression passes; deployed verification is pending.
+
+### AUD-330 — Isolated resource preview document lacked a top-level heading
+
+- **Evidence:** v24 preview iframe had no h1 identifying its rendered resource. Baseline screenshot: [`r__advanced-data-table-desktop-1440x900.png`](evidence/v24/r__advanced-data-table-desktop-1440x900.png).
+- **Reproduction:** Open `/explore`, enter a resource preview iframe, and inspect its document heading outline.
+- **Root cause:** The isolated `PreviewHost` document mounted resource UI without document-level context.
+- **Affected code:** `apps/site/src/components/PreviewHost.tsx`, `tests/e2e/core-accessibility-landmarks.spec.ts`.
+- **Remediation:** Add a visually hidden h1 sourced from the validated resource manifest name. Local iframe regression passes; deployed verification is pending.
+
+### AUD-331 — Activity Feed used h3 for the resource root heading
+
+- **Evidence:** Resource heading outline in its isolated preview began at h3. The local regression mounts the actual iframe by scrolling the resource card into view.
+- **Reproduction:** Open the Activity Feed preview and inspect its headings.
+- **Root cause:** The resource reused a visual heading level despite being root content in its own preview document.
+- **Affected code:** `resources/blocks/activity-feed/index.tsx`, `tests/e2e/core-accessibility-landmarks.spec.ts`.
+- **Remediation:** Use h2 under the preview document’s h1. Local regression passes; deployed verification is pending.
+
+### AUD-332 — Accordion Spring used h4 for the resource root heading
+
+- **Evidence:** Resource heading outline in its isolated preview began at h4.
+- **Reproduction:** Open the Accordion Spring preview and inspect its headings.
+- **Root cause:** A visual styling level was used as the semantic heading level in the preview document.
+- **Affected code:** `resources/motion/accordion-spring/index.tsx`, `tests/e2e/core-accessibility-landmarks.spec.ts`.
+- **Remediation:** Use h2 under the preview document’s h1. Local regression passes; deployed verification is pending.
+
+### AUD-333 — Mobile data-record labels appeared as section headings
+
+- **Evidence:** In the Advanced Data Table mobile preview, each record title was exposed as h3 even though it labels a data row. Baseline screenshot: [`r__advanced-data-table-mobile-390x844.png`](evidence/v24/r__advanced-data-table-mobile-390x844.png).
+- **Reproduction:** Open the resource at 390×844 and inspect the mobile card heading outline with several records.
+- **Root cause:** The mobile card renderer reused heading markup for row labels.
+- **Affected code:** `resources/blocks/advanced-data-table/index.tsx`, `tests/e2e/core-accessibility-landmarks.spec.ts`.
+- **Remediation:** Render record labels as paragraphs while preserving their visual style. Local regression passes; deployed verification is pending.
+
+## LOW (continued — v24 deployed-site audit)
+
+### AUD-324 — Explore filter checkboxes lacked native identity
+
+- **Evidence:** v24 filters were labelled but had neither `id` nor `name`; before screenshot: [`explore-desktop-1440x900.png`](evidence/v24/explore-desktop-1440x900.png).
+- **Reproduction:** Open `/explore` and inspect each category checkbox’s native identity and associated label.
+- **Root cause:** `ExploreRail` emitted filter checkboxes without unique IDs or names.
+- **Affected code:** `apps/site/src/components/ExploreRail.tsx`, `tests/e2e/explore-filter-control-identity.spec.ts`.
+- **Remediation:** Generate a stable unique id/name for each control and associate its label. Desktop/mobile browser regression passes locally; deployed verification is pending.
+
+### AUD-329 — Standalone React/Vite export omitted its favicon
+
+- **Evidence:** Before the fix, clean standalone browser validation recorded a failed `/favicon.svg` request. The export runtime regression now checks the copied asset and zero HTTP/browser errors.
+- **Reproduction:** Export and extract a standalone Vite project, install outside the monorepo, serve it, and inspect the favicon request.
+- **Root cause:** The generated Vite entry did not link or copy the existing favicon.
+- **Affected code:** `packages/exporter/src/source-tree.ts`, `tests/employee-export-runtime.test.ts`.
+- **Remediation:** Include the favicon asset and link in generated output. Clean export build/browser regression passes locally; deployed export verification remains pending.
+
+## Performance observations — deployed v24
+
+Chrome DevTools traces are recorded in [`evidence/v24/performance-audit.json`](evidence/v24/performance-audit.json). Cold desktop homepage: LCP 306ms, TTFB 54ms, CLS 0, 25 requests, maximum critical path 593ms. Cold desktop Compose: LCP 196ms, TTFB 48ms, CLS 0. Mobile Compose (390×844, DPR 3, 4× CPU, Fast 4G): LCP 686ms, TTFB 49ms, CLS 0; the trace noted a 53ms forced reflow without source attribution or an estimated saving. An interaction trace measured lab INP 29ms. CrUX field data was unavailable. The desktop document compression insight estimated no FCP/LCP savings; it is retained as an observation, not recorded as a confirmed defect.
+
+## Current local closure gate
+
+AUD-323–AUD-333 are fixed and regression-tested locally, not closed. The current local evidence includes 62 route/viewport checks across the same 31 canonical routes, six Axe scans with zero violations, and targeted CSP, accessibility, checkbox identity, and clean standalone-export regressions. Final local validation passed: frozen install; catalogue build; TypeScript; lint; 1,214 unit/integration tests (one skipped); `pnpm audit:all` including all 16 behavioural gates and the production build; and the complete Playwright run (558 passed, 149 configured skips across the Astro, Sites Worker desktop/mobile, and preview-app projects). These results are local evidence, not deployed closure. The remaining release steps are: commit and push the audited source; obtain green GitHub CI; save a new Sites version from the exact source commit; show that saved version and wait for explicit approval; then publish and repeat the deployed audit. No current v24 screenshot is represented as an after-fix deployment.
