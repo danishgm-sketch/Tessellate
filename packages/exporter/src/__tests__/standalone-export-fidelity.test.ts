@@ -196,7 +196,7 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     expect(screenCode).toContain("import { CanvasWorkspaceShell } from '../components/CanvasWorkspaceShell';");
 
     // 3. Verify screen renders each component preserving variants and slots
-    expect(screenCode).toContain('<MinimalTopNav variant={"nocturne"} brand={"Omni Telemetry"} />');
+    expect(screenCode).toContain('<MinimalTopNav variant={"nocturne"} brand={"Omni Telemetry"} links={[{"label":"Overview","href":"#scr_inst_overview"}]} />');
     expect(screenCode).toContain('<CinematicMediaHero variant={"nocturne"}');
     expect(screenCode).toContain('title={"Real-Time Planetary Infrastructure"}');
     expect(screenCode).toContain('<AreaChart variant={"nocturne"} />');
@@ -221,6 +221,33 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     for (const dep of Object.keys(allDeps)) {
       expect(dep.startsWith('@tessellate/')).toBe(false);
     }
+  });
+
+  it('exports the responsive Inline AI Rewrite implementation from the generated Gold registry', () => {
+    const inlineProject = JSON.parse(JSON.stringify(testProject)) as ProjectManifest;
+    inlineProject.screens[0]!.rootNode.children = [
+      {
+        id: 'node-inline-ai-rewrite',
+        nodeType: 'component',
+        semanticRole: 'text-assistance',
+        resourceRef: {
+          id: 'res-inline-ai-rewrite',
+          slug: 'inline-ai-rewrite',
+          version: '1.0.0',
+        },
+        variant: 'quiet',
+        props: {},
+        slots: {},
+        children: [],
+      },
+    ];
+
+    const sourceTree = generateSourceTree(inlineProject);
+    const component = sourceTree['src/components/InlineAIRewrite.tsx'];
+
+    expect(component).toContain('w-full min-w-0 p-4 sm:p-6');
+    expect(component).toContain('aria-pressed={tone === t}');
+    expect(component).not.toContain('Ctrl + Shift + R');
   });
 
   it('fails with a descriptive error when a referenced resource is genuinely unresolved', () => {
@@ -317,17 +344,33 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
       screen.rootNode = { ...screen.rootNode, id: `root-workspace-${suffix}`, children: [] };
       return screen;
     });
+    const hiddenScreen = structuredClone(parityProject.screens[0]!);
+    hiddenScreen.id = 'screen-hidden-onboarding';
+    hiddenScreen.screenNodeId = 'root-hidden-onboarding';
+    hiddenScreen.name = 'Hidden Onboarding';
+    hiddenScreen.slug = 'hidden-onboarding';
+    hiddenScreen.rootNode = { ...hiddenScreen.rootNode, id: 'root-hidden-onboarding', children: [] };
     const screenNavigationProject: ProjectManifest = {
       ...parityProject,
-      screens: [...parityProject.screens, ...additionalScreens],
+      screens: [...parityProject.screens, ...additionalScreens, hiddenScreen],
       navigation: {
         ...parityProject.navigation,
         primaryItems: [
-          ...parityProject.navigation.primaryItems,
+          { label: 'Dashboard', targetScreenId: 'screen-dashboard' },
           ...additionalScreens.map((screen) => ({ label: screen.name, targetScreenId: screen.id })),
         ],
+        secondaryItems: [],
       },
     };
+    const generatedNavigationLinks = screenNavigationProject.navigation.primaryItems.map((item) => ({
+      label: item.label,
+      href: `#${item.targetScreenId}`,
+    }));
+    const manifestNavigationNode = screenNavigationProject.screens[0]!.rootNode.children.find(
+      (node) => node.id === 'node-nav'
+    );
+    expect(manifestNavigationNode).toBeDefined();
+    manifestNavigationNode!.props = { brand: 'Omni Telemetry', links: generatedNavigationLinks };
     screenNavigationProject.screens[0]!.rootNode.children.unshift(
       {
         id: 'export-user-authored-header',
@@ -461,6 +504,12 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         const navBrand = page.locator('text=Omni Telemetry').first();
         expect(await navBrand.isVisible()).toBe(true);
 
+        const productNavigation = page.getByRole('navigation', { name: 'Product screens' }).first();
+        expect(await productNavigation.count(), 'the manifest navigation component should render').toBe(1);
+        expect(await page.getByRole('group', { name: 'Project screens' }).count()).toBe(0);
+        expect(await page.getByRole('navigation', { name: 'Project navigation' }).count()).toBe(0);
+        expect(await productNavigation.getByRole('link', { name: 'Dashboard', exact: true }).count()).toBe(1);
+        expect(await productNavigation.getByRole('link', { name: 'Hidden Onboarding', exact: true }).count()).toBe(0);
         expect(await page.getByText('Content from resource props').first().isVisible()).toBe(true);
         expect(await page.getByText('Content from nested manifest node').first().isVisible()).toBe(true);
         expect(await page.getByText(`People's "Today" < overview`, { exact: true }).isVisible()).toBe(true);
@@ -495,6 +544,12 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         await page.keyboard.press('Escape');
         expect(await dialog.count()).toBe(0);
         await page.evaluate(() => window.scrollTo(0, 0));
+        const navigationDesktopScreenshot = path.resolve(
+          process.cwd(),
+          'quality/evidence/step-24/after/standalone-export-navigation-desktop-1440.png'
+        );
+        fs.mkdirSync(path.dirname(navigationDesktopScreenshot), { recursive: true });
+        await page.screenshot({ path: navigationDesktopScreenshot });
         const authoredCopyScreenshot = path.resolve(process.cwd(), 'quality/evidence/step-23/after/user-authored-semantic-copy-desktop-1440.png');
         fs.mkdirSync(path.dirname(authoredCopyScreenshot), { recursive: true });
         await page.screenshot({ path: authoredCopyScreenshot });
@@ -509,27 +564,31 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
 
         await page.setViewportSize({ width: 390, height: 844 });
         await page.evaluate(() => window.scrollTo(0, 0));
-        const projectScreenNavigation = page.locator('[aria-label="Project screens"]');
-        const projectScreenNavigationMetrics = await projectScreenNavigation.evaluate((element) => ({
-          flexWrap: getComputedStyle(element).flexWrap,
-          height: element.getBoundingClientRect().height,
-        }));
-        if (projectScreenNavigationMetrics.flexWrap !== 'nowrap' || projectScreenNavigationMetrics.height > 48) {
-          const beforeNavigationScreenshot = path.resolve(
-            process.cwd(),
-            'audit/evidence/step-07/before/export-project-navigation-wraps-390.png'
-          );
-          fs.mkdirSync(path.dirname(beforeNavigationScreenshot), { recursive: true });
-          await page.screenshot({ path: beforeNavigationScreenshot });
-        }
-        expect(projectScreenNavigationMetrics.flexWrap, 'the exported screen selector must stay on one mobile row').toBe('nowrap');
-        expect(projectScreenNavigationMetrics.height, 'the exported screen selector must not consume multiple mobile rows').toBeLessThanOrEqual(48);
+        const projectScreenNavigation = page.getByRole('navigation', { name: 'Product screens' }).first();
+        expect(await projectScreenNavigation.getByRole('link', { name: 'Workspace 1', exact: true }).isVisible()).toBe(true);
         const afterNavigationScreenshot = path.resolve(
           process.cwd(),
-          'audit/evidence/step-07/after/export-project-navigation-mobile-390.png'
+          'quality/evidence/step-24/after/standalone-export-navigation-mobile-390.png'
         );
         fs.mkdirSync(path.dirname(afterNavigationScreenshot), { recursive: true });
         await page.screenshot({ path: afterNavigationScreenshot });
+        const mobileOverflow = await page.evaluate(() => ({
+          documentWidth: document.documentElement.scrollWidth,
+          elements: Array.from(document.body.querySelectorAll<HTMLElement>('*'))
+            .map((element) => ({
+              tag: element.tagName,
+              role: element.getAttribute('data-semantic-role'),
+              node: element.getAttribute('data-node-id'),
+              className: String(element.className).slice(0, 100),
+              left: Math.round(element.getBoundingClientRect().left),
+              right: Math.round(element.getBoundingClientRect().right),
+              overflowX: getComputedStyle(element).overflowX,
+            }))
+            .filter((element) => element.right > window.innerWidth + 1 && element.left < window.innerWidth)
+            .sort((a, b) => b.right - a.right)
+            .slice(0, 8),
+        }));
+        expect(mobileOverflow.documentWidth, JSON.stringify(mobileOverflow.elements)).toBeLessThanOrEqual(390);
 
         const hiddenOnMobileIsVisible = await hiddenOnMobile.isVisible();
         if (hiddenOnMobileIsVisible) {
@@ -547,8 +606,17 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
         const responsiveScreenshot = path.resolve(process.cwd(), 'audit/evidence/step-07/after/standalone-export-gold-responsive-390.png');
         await page.locator('[data-node-id="parity-mobile-stack"]').screenshot({ path: responsiveScreenshot });
 
-        await page.getByRole('button', { name: 'Workspace 1', exact: true }).click();
+        await projectScreenNavigation.getByRole('link', { name: 'Workspace 1', exact: true }).click();
         expect(page.url()).toContain('#screen-workspace-1');
+        await page.waitForSelector('nav[aria-label="Project navigation"]');
+        const shellNavigation = page.getByRole('navigation', { name: 'Project navigation' });
+        const shellNavigationCount = await shellNavigation.count();
+        expect(shellNavigationCount, 'screens without a navigation resource should use the declared shell navigation').toBe(1);
+        expect(await shellNavigation.getByRole('link', { name: 'Hidden Onboarding', exact: true }).count()).toBe(0);
+        await shellNavigation.getByRole('link', { name: 'Dashboard', exact: true }).click();
+        expect(page.url()).toContain('#screen-dashboard');
+        await page.waitForFunction(() => document.querySelector('nav[aria-label="Project navigation"]') === null);
+        expect(await page.getByRole('navigation', { name: 'Project navigation' }).count()).toBe(0);
 
         // 6. Assert no console errors
         expect(consoleErrors).toEqual([]);
@@ -581,6 +649,37 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
           screenshots: [
             'quality/evidence/step-23/after/user-authored-semantic-copy-desktop-1440.png',
             'quality/evidence/step-23/after/user-authored-semantic-copy-mobile-390.png',
+          ],
+        }, null, 2)}\n`, 'utf8');
+
+        const navigationReport = path.resolve(
+          process.cwd(),
+          'quality/evidence/step-24/after/standalone-export-navigation-mobile-chrome.json'
+        );
+        fs.mkdirSync(path.dirname(navigationReport), { recursive: true });
+        fs.writeFileSync(navigationReport, `${JSON.stringify({
+          schemaVersion: '1.0.0',
+          issue: 'AUD-175',
+          status: 'passed',
+          project: screenNavigationProject.name,
+          route: page.url(),
+          viewport: { width: 390, height: 844 },
+          checks: {
+            manifestNavigationLabels: screenNavigationProject.navigation.primaryItems.map((item) => item.label),
+            hiddenScreenOmittedFromNavigation: await page.getByRole('link', { name: 'Hidden Onboarding', exact: true }).count() === 0,
+            screenNavigationResourceDidNotDuplicateShell: await page.getByRole('navigation', { name: 'Project navigation' }).count() === 0,
+            shellNavigationUsedWithoutScreenResource: shellNavigationCount === 1,
+            navigationLinksSwitchScreens: page.url().includes('#screen-dashboard'),
+            mobileDocumentWidth: mobileOverflow.documentWidth,
+            mobileDocumentFitsViewport: mobileOverflow.documentWidth <= 390,
+          },
+          consoleErrors,
+          consoleWarnings,
+          uncaughtExceptions,
+          failedRequests,
+          screenshots: [
+            'quality/evidence/step-24/after/standalone-export-navigation-desktop-1440.png',
+            'quality/evidence/step-24/after/standalone-export-navigation-mobile-390.png',
           ],
         }, null, 2)}\n`, 'utf8');
       } finally {

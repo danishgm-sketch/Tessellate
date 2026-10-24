@@ -605,8 +605,3 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     });
   },
 }));
-
-// Local test diagnostics only. Acceptance audits use visible UI and downloaded manifests.
-if (typeof window !== 'undefined' && ['localhost','127.0.0.1'].includes(window.location.hostname)) {
-  (window as unknown as { __tessellate_workbench_store__: unknown }).__tessellate_workbench_store__ = useWorkbenchStore;
-}

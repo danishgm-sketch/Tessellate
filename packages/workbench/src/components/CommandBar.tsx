@@ -176,6 +176,7 @@ export function CommandBar() {
         <div className="relative flex-1 min-w-0">
           <input
             ref={inputRef}
+            name="tessellate-command"
             type="text"
             aria-label="Tessellate command"
             disabled={isProcessing || pendingLabProposal !== null}

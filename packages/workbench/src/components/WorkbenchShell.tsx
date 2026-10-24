@@ -20,6 +20,7 @@ import { ResourceManifestSchema, ProjectManifestSchema, type ProjectManifest } f
 
 export function WorkbenchShell() {
   const activeMode = useWorkbenchStore((state) => state.activeMode);
+  const projectName = useWorkbenchStore((state) => state.manifest.name);
   const isPreview = useWorkbenchStore((state) => state.isPreview);
   const selectParentNode = useWorkbenchStore((state) => state.selectParentNode);
   const undo = useWorkbenchStore((state) => state.undo);
@@ -267,7 +268,20 @@ export function WorkbenchShell() {
 
   if (loading) return <div role="status" className="p-8">Loading local project and verified catalogue…</div>;
   if (damagedRecords.length) return <main className="p-8 space-y-4"><h1>Recover your local project</h1><p role="alert">A stored record could not be validated. Its original data has been preserved. Editing is paused to protect your work.</p>{damagedRecords.map((record,index)=><div key={index}><p>{record.reason}</p><a download={`recovered-record-${index}.json`} href={`data:application/json;charset=utf-8,${encodeURIComponent(record.raw)}`}>Export raw record {index+1}</a></div>)}<a href="/compose">Create a separate project</a></main>;
-  if (storageError) return <main className="p-8 space-y-4"><h1>Local project needs attention</h1><p role="alert">{storageError}</p><a download="unsaved-project.tess.json" href={`data:application/json;charset=utf-8,${encodeURIComponent(JSON.stringify(useWorkbenchStore.getState().manifest,null,2))}`}>Export the current manifest</a><p><a href="/compose">Open Compose</a></p></main>;
+  if (storageError) return (
+    <main id="workbench-main" className="min-h-screen bg-[#FAF9F6] px-4 py-10 text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA] sm:px-8">
+      <section className="mx-auto max-w-2xl space-y-4 rounded-xl border border-[#D9D6CF] bg-white p-6 shadow-sm dark:border-[#272C34] dark:bg-[#171B21] sm:p-8">
+        <p className="text-xs font-semibold uppercase tracking-wide text-[#62666F] dark:text-[#A8AFBA]">Local project recovery</p>
+        <h1 className="text-2xl font-bold tracking-tight">Local project needs attention</h1>
+        <p role="alert" className="break-words rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100">{storageError}</p>
+        <p className="text-sm text-[#62666F] dark:text-[#A8AFBA]">No project was opened. Saved browser records were left unchanged. Open Compose or start a new local sample project.</p>
+        <div className="flex flex-wrap gap-3 pt-2">
+          <a href="/compose" className="inline-flex min-h-10 items-center rounded-lg bg-[#2547E8] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3CCD] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2547E8] dark:bg-[#6782FF] dark:text-[#0B0D10] dark:hover:bg-[#879DFF]">Open Compose</a>
+          <a href="/workbench/" className="inline-flex min-h-10 items-center rounded-lg border border-[#D9D6CF] px-4 py-2 text-sm font-semibold hover:bg-[#FAF9F6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2547E8] dark:border-[#272C34] dark:hover:bg-[#20252D]">Start a new local sample</a>
+        </div>
+      </section>
+    </main>
+  );
 
   // Clean full-screen preview mode
   if (isPreview) {
@@ -285,6 +299,7 @@ export function WorkbenchShell() {
       data-testid="workbench-shell"
       className="h-screen w-screen overflow-hidden flex flex-col bg-[#0B0D10] text-[#F5F7FA]"
     >
+      <a href="#workbench-main" className="sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:not-sr-only focus:bg-white focus:px-3 focus:py-2 focus:text-[#111217] focus:outline-2 focus:outline-offset-2 focus:outline-[#6782FF]">Skip to editor</a>
       {/* 56px Top Toolbar */}
       <TopToolbar historySaveStatus={historySaveStatus} />
       {storageWarning && (
@@ -294,7 +309,8 @@ export function WorkbenchShell() {
       )}
 
       {/* Main 3-column composition canvas workspace */}
-      <div className="flex-1 flex overflow-hidden relative">
+      <main id="workbench-main" tabIndex={-1} aria-label="Workbench editor" className="relative flex flex-1 overflow-hidden">
+        <h1 className="sr-only">Workbench: {projectName}</h1>
         {/* Left Panel (280px) */}
         <LeftPanel />
 
@@ -308,7 +324,7 @@ export function WorkbenchShell() {
         <ReplaceDrawer />
         <CompareModal />
         <BlendModal />
-      </div>
+      </main>
 
       {/* 64px Command Bar */}
       <CommandBar />

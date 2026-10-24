@@ -18,7 +18,7 @@ export function ResourceTab() {
     {!node ? <p>Select a node to inspect its source resource.</p> : !node.resourceRef ? <p>This is a semantic layout container. Select a resource child to replace it.</p> : !resource ? <p role="alert">Unresolved resource: {node.resourceRef.slug}. Export the manifest and inspect the catalogue.</p> : <>
       <h3 className="font-semibold text-sm">{resource.name}</h3><p className="font-mono">{resource.slug} · v{resource.version} · variant {node.variant}</p>
       <p>{resource.description}</p><p>Creator: {resource.creator.displayName}</p><p>Licence: {resource.license.spdx}</p>
-      <p>Catalogue quality assessment: {resource.quality.overall}/100. This metadata is not a browser accessibility certification.</p>
+      {resource.quality.assessment.status === 'reviewed' ? <p>Reviewed quality assessment: {resource.quality.overall}/100. Evidence: {resource.quality.assessment.evidence.join(', ')}</p> : <p>Quality assessment: Not assessed.</p>}
       <p>Declared dependencies: {resource.dependencies.map(item=>typeof item==='string'?item:JSON.stringify(item)).join(', ') || 'None'}</p>
       <a className="block underline" href={`/r/${resource.slug}/`} target="_blank" rel="noreferrer">Open provenance and resource details</a>
       <button data-testid="open-replace-drawer-btn" disabled={locked || candidates.length===0} onClick={openReplace} className="w-full border border-[#6782FF] rounded p-2 disabled:opacity-50">Open Replace Drawer ({candidates.length} alternatives)</button>

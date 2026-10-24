@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
 import type { WorkbenchMode } from '../types.js';
 import {
@@ -14,8 +14,15 @@ import {
   RefreshCw,
   ChevronDown,
 } from 'lucide-react';
-import { ExportValidationError, generateSourceTree, createZipArchive } from '@tessellate/exporter';
+import {
+  ExportValidationError,
+  generateAgentHandoffPackage,
+  generateSourceTree,
+  createZipArchive,
+  importProjectManifestFromJson,
+} from '@tessellate/exporter';
 import { CheckpointsMenu } from './checkpoints/CheckpointsMenu.js';
+import { listLocalProjects } from '../persistence/storage.js';
 
 export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?: 'loading' | 'saving' | 'saved' | 'unavailable' }) {
   const manifest = useWorkbenchStore((state) => state.manifest);
@@ -34,6 +41,7 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
   const openBlend = useWorkbenchStore((state) => state.openBlend);
   const surpriseMe = useWorkbenchStore((state) => state.surpriseMe);
   const recomposeScreenAroundLocks = useWorkbenchStore((state) => state.recomposeScreenAroundLocks);
+  const setManifest = useWorkbenchStore((state) => state.setManifest);
 
 
   const [actionError,setActionError]=useState('');
@@ -44,6 +52,9 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
   const [titleValue, setTitleValue] = useState(manifest.name);
   const [isCheckpointsOpen, setIsCheckpointsOpen] = useState(false);
   const [isExportOpen, setIsExportOpen] = useState(false);
+  const [isImporting, setIsImporting] = useState(false);
+  const [manifestImportStatus, setManifestImportStatus] = useState('');
+  const manifestInputRef = useRef<HTMLInputElement>(null);
 
   const modes: WorkbenchMode[] = ['structure', 'style', 'motion', 'content', 'audit'];
 
@@ -91,14 +102,73 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
     }
   };
 
+  const handleDownloadAgentHandoff = () => {
+    try {
+      const handoffFiles = generateAgentHandoffPackage(manifest).files;
+      const zipBytes = createZipArchive(handoffFiles);
+      const blob = new Blob([zipBytes as unknown as BlobPart], { type: 'application/zip' });
+      const url = URL.createObjectURL(blob);
+      const fileSlug = manifest.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || 'tessellate-project';
+      const anchor = document.createElement('a');
+      anchor.href = url;
+      anchor.download = `${fileSlug}-agent-handoff.zip`;
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+      URL.revokeObjectURL(url);
+      setActionError('');
+    } catch (cause) {
+      setActionError(`Agent handoff export failed: ${cause instanceof Error ? cause.message : String(cause)}`);
+    }
+  };
+
+  const handleImportManifest = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const input = event.currentTarget;
+    const file = input.files?.[0];
+    if (!file) return;
+
+    setIsImporting(true);
+    setManifestImportStatus('');
+    setActionError('');
+    try {
+      if (file.size > 5 * 1024 * 1024) {
+        throw new Error('Manifest files must be 5 MiB or smaller.');
+      }
+      const parsed = importProjectManifestFromJson(await file.text());
+      if (!parsed.success || !parsed.manifest) {
+        throw new Error(parsed.error ?? 'This file is not a valid Tessellate project manifest.');
+      }
+
+      const existingJournal = localStorage.getItem(`tessellate_project_${parsed.manifest.id}`);
+      const existingProjects = await listLocalProjects();
+      if (existingJournal || existingProjects.some((project) => project.id === parsed.manifest!.id)) {
+        throw new Error(
+          `A local project already uses ID ${parsed.manifest.id}. Import was cancelled to protect the saved project.`,
+        );
+      }
+
+      setManifest(parsed.manifest);
+      setManifestImportStatus(
+        `${parsed.warnings?.join(' ') ?? ''}${parsed.warnings?.length ? ' ' : ''}Opened ${parsed.manifest.name}.`,
+      );
+      setIsExportOpen(false);
+    } catch (cause) {
+      setActionError(`Manifest import failed: ${cause instanceof Error ? cause.message : String(cause)}`);
+    } finally {
+      input.value = '';
+      setIsImporting(false);
+    }
+  };
+
   return (
     <header
       data-testid="top-toolbar"
       className="dark min-h-14 shrink-0 px-3 py-2 gap-2 flex-wrap border-b border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] flex items-center justify-between select-none z-30 relative"
     >
       {actionError && <p role="alert" className="w-full text-sm">{actionError}</p>}
+      {manifestImportStatus && <p role="status" data-testid="manifest-import-status" className="w-full text-xs">{manifestImportStatus}</p>}
       {/* Left Cluster: Brand, Title, Save Status */}
-      <div className="flex items-center gap-3">
+      <div className="flex basis-full min-w-0 flex-none items-center gap-3 md:basis-auto md:flex-1 lg:flex-none">
         <a
           href="/"
           className="flex items-center gap-2 group hover:opacity-80 transition-opacity"
@@ -119,7 +189,7 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
             onChange={(e) => setTitleValue(e.target.value)}
             onBlur={handleTitleBlur}
             onKeyDown={(e) => e.key === 'Enter' && handleTitleBlur()}
-            className="text-sm max-w-[220px] truncate font-bold text-[#111217] dark:text-[#F5F7FA] border border-[#2547E8] rounded px-1.5 py-0.5 bg-white dark:bg-[#171B21] focus:outline-none"
+            className="min-w-0 flex-1 max-w-[220px] text-sm truncate font-bold text-[#111217] dark:text-[#F5F7FA] border border-[#2547E8] rounded px-1.5 py-0.5 bg-white dark:bg-[#171B21] focus:outline-none"
             autoFocus
           />
         ) : (
@@ -128,7 +198,7 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
               setTitleValue(manifest.name);
               setIsEditingTitle(true);
             }}
-            className="text-sm max-w-[220px] truncate font-bold text-[#111217] dark:text-[#F5F7FA] hover:text-[#2547E8] transition-colors"
+            className="min-w-0 max-w-[220px] flex-1 truncate text-sm font-bold text-[#111217] dark:text-[#F5F7FA] hover:text-[#2547E8] transition-colors"
             title="Click to rename project"
           >
             {manifest.name}
@@ -140,7 +210,7 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
           data-state={historySaveStatus}
           title={historySaveStatus === 'unavailable' ? 'Undo and redo history may not survive a reload on this device' : `Project and undo history ${historySaveStatus} on this device`}
           aria-label={historySaveStatus === 'unavailable' ? 'Undo and redo history unavailable after reload' : `Project and undo history ${historySaveStatus} on this device`}
-          className="flex items-center gap-1 rounded-full bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] px-2 py-0.5 text-[10px] font-mono text-[#62666F] dark:text-[#A8AFBA]"
+          className="flex shrink-0 items-center gap-1 rounded-full bg-[#FAF9F6] dark:bg-[#171B21] border border-[#D9D6CF] dark:border-[#272C34] px-2 py-0.5 text-[10px] font-mono text-[#62666F] dark:text-[#A8AFBA]"
         >
           <Database className={`h-2.5 w-2.5 ${historySaveStatus === 'unavailable' ? 'text-amber-500' : 'text-emerald-700'}`} />
           <span>Local</span>
@@ -295,6 +365,25 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
               data-testid="export-menu"
               className="fixed left-3 right-3 mt-2 w-auto sm:absolute sm:left-auto sm:right-0 sm:w-64 rounded-xl border border-[#D9D6CF] bg-white p-1.5 shadow-lg dark:border-[#272C34] dark:bg-[#171B21] z-50 text-xs"
             >
+              <input
+                ref={manifestInputRef}
+                data-testid="manifest-import-input"
+                type="file"
+                accept=".tess.json,application/json"
+                aria-label="Choose a Tessellate manifest"
+                hidden
+                onChange={handleImportManifest}
+              />
+              <button
+                data-testid="import-manifest-btn"
+                disabled={isImporting}
+                onClick={() => manifestInputRef.current?.click()}
+                className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#FAF9F6] dark:hover:bg-[#20252D] text-[#111217] dark:text-[#F5F7FA] font-medium transition-colors flex flex-col gap-0.5 disabled:opacity-60"
+              >
+                <span className="font-semibold">{isImporting ? 'Opening manifest…' : 'Open Tessellate Manifest'}</span>
+                <span className="text-[10px] text-[var(--text-muted)] font-mono">Validated .tess.json · existing projects are protected</span>
+              </button>
+              <div className="my-1 border-t border-[#D9D6CF] dark:border-[#272C34]" />
               <button
                 data-testid="export-manifest-btn"
                 onClick={() => {
@@ -316,6 +405,20 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
               >
                 <span className="font-semibold">Download Standalone React Project</span>
                 <span className="text-[10px] text-[#2547E8] dark:text-[#879DFF] font-mono">Vite + React + Tailwind 4 (.zip)</span>
+              </button>
+              <button
+                data-testid="export-agent-handoff-btn"
+                onClick={() => {
+                  handleDownloadAgentHandoff();
+                  setIsExportOpen(false);
+                }}
+                className="w-full text-left px-3 py-2 rounded-lg hover:bg-[#FAF9F6] dark:hover:bg-[#20252D] text-[#111217] dark:text-[#F5F7FA] font-medium transition-colors flex flex-col gap-0.5"
+              >
+                <span className="font-semibold flex items-center gap-1.5">
+                  <span>Download Agent Handoff Package</span>
+                  <span className="rounded border border-amber-500/50 px-1 py-0.5 text-[9px] uppercase tracking-wide text-amber-700 dark:text-amber-300">Beta</span>
+                </span>
+                <span className="text-[10px] text-[var(--text-muted)] font-mono">Review resources and dependency policy (.zip)</span>
               </button>
             </div>
           )}

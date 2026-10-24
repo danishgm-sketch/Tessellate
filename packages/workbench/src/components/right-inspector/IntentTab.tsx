@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { findNodeById } from '../../utils/tree-helpers.js';
 import { getScopedDNA, isScopeLocked } from '../../utils/dna-helpers.js';
@@ -16,6 +16,7 @@ import type { PartialDesignDNA } from '@tessellate/schemas';
 import { Eye, Compass } from 'lucide-react';
 
 export function IntentTab() {
+  const controlId = useId();
   const manifest = useWorkbenchStore((state) => state.manifest);
   const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
@@ -97,6 +98,8 @@ export function IntentTab() {
         </div>
 
         <input
+          id={`${controlId}-visual-ambition`}
+          name="visual-ambition"
           type="range"
           min={0}
           max={100}
@@ -137,6 +140,8 @@ export function IntentTab() {
         </div>
 
         <input
+          id={`${controlId}-structural-creativity`}
+          name="structural-creativity"
           type="range"
           min={0}
           max={100}

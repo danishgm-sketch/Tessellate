@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { findNodeById } from '../../utils/tree-helpers.js';
 import {
@@ -11,6 +11,7 @@ import type { PartialDesignDNA } from '@tessellate/schemas';
 import { Sliders, RotateCcw } from 'lucide-react';
 
 export function FeelMixer() {
+  const controlId = useId();
   const manifest = useWorkbenchStore((state) => state.manifest);
   const activeScreenId = useWorkbenchStore((state) => state.activeScreenId);
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
@@ -126,6 +127,8 @@ export function FeelMixer() {
             </div>
 
             <input
+              id={`${controlId}-${trait.id}`}
+              name={`feel-${trait.id}`}
               type="range"
               aria-label={trait.name}
               min={0}
@@ -141,11 +144,13 @@ export function FeelMixer() {
 
       {/* Natural Language Feel Mapper */}
       <form onSubmit={handleApplyPhrase} className="pt-2 border-t border-[#D9D6CF] dark:border-[#272C34] space-y-1.5">
-        <label className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block">
+        <label htmlFor={`${controlId}-feel-phrase`} className="text-[10px] font-semibold text-[var(--text-muted)] uppercase tracking-wider block">
           Add Trait or Feel Phrase
         </label>
         <div className="flex items-center gap-1.5">
           <input
+            id={`${controlId}-feel-phrase`}
+            name="feel-phrase"
             type="text"
             aria-label="Feel phrase"
             placeholder="e.g. professional but playful, dense and technical"

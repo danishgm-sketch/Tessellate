@@ -42,6 +42,7 @@ export function MobileWorkbench({ historySaveStatus = 'saved', storageWarning = 
       data-testid="mobile-workbench"
       className="flex flex-col h-screen w-full bg-[#0B0D10] text-[#F5F7FA] overflow-hidden"
     >
+      <a href="#workbench-main" className="sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:not-sr-only focus:bg-white focus:px-3 focus:py-2 focus:text-[#111217] focus:outline-2 focus:outline-offset-2 focus:outline-[#6782FF]">Skip to editor</a>
       <TopToolbar historySaveStatus={historySaveStatus} />
       {storageWarning && (
         <div role="status" aria-live="polite" data-testid="storage-warning" className="border-b border-amber-500/30 bg-amber-950/40 px-3 py-2 text-xs text-amber-100">
@@ -59,7 +60,8 @@ export function MobileWorkbench({ historySaveStatus = 'saved', storageWarning = 
         </div>
       )}
       {/* Main Content Area */}
-      <div className="relative z-0 flex-1 overflow-y-auto">
+      <main id="workbench-main" tabIndex={-1} aria-label="Workbench editor" className="relative z-0 flex-1 overflow-y-auto">
+        <h1 className="sr-only">Workbench: {manifest.name}</h1>
         {mobileTab === 'preview' && (
           <div className="p-4">
             <div className="rounded-2xl border border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#111217] overflow-hidden shadow-sm">
@@ -95,7 +97,7 @@ export function MobileWorkbench({ historySaveStatus = 'saved', storageWarning = 
             <AuditPanel />
           </div>
         )}
-      </div>
+      </main>
 
       {/* Mobile Bottom Tab Bar */}
       <nav aria-label="Mobile Workbench" className="dark h-16 shrink-0 border-t border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#111217] flex items-center justify-around px-2 select-none z-30">

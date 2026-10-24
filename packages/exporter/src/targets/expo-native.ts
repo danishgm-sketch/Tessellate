@@ -1,10 +1,14 @@
-import type { ProjectManifest, ProjectScreen, ProjectNode } from '@tessellate/schemas';
+import type { ProjectManifest } from '@tessellate/schemas';
 import { normalizeDesignTokens } from '@tessellate/renderer';
 
 function sanitizeName(str: string): string {
   const clean = str.replace(/[^a-zA-Z0-9]/g, ' ').trim();
   const words = clean.split(/\s+/).map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
   return words.join('') || 'Screen';
+}
+
+function tsString(value: string): string {
+  return JSON.stringify(value);
 }
 
 export function generateExpoNativeSourceTree(manifest: ProjectManifest): Record<string, string> {
@@ -128,65 +132,7 @@ module.exports = {
 @tailwind utilities;
 `;
 
-  // 7. components/ui/Button.tsx
-  files['components/ui/Button.tsx'] = `import React from 'react';
-import { Pressable, Text } from 'react-native';
-
-export interface ButtonProps {
-  label: string;
-  onPress?: () => void;
-  variant?: 'primary' | 'secondary' | 'outline';
-  className?: string;
-}
-
-export function Button({ label, onPress, variant = 'primary', className = '' }: ButtonProps) {
-  const baseClass = "px-4 py-2.5 rounded-lg flex-row items-center justify-center";
-  const variantClasses = {
-    primary: "bg-accent-primary",
-    secondary: "bg-surface-secondary",
-    outline: "border border-hairline bg-transparent",
-  };
-  const textClasses = {
-    primary: "text-white font-semibold text-sm",
-    secondary: "text-ink-primary font-medium text-sm",
-    outline: "text-ink-primary font-medium text-sm",
-  };
-
-  return (
-    <Pressable onPress={onPress} className={\`\${baseClass} \${variantClasses[variant]} \${className}\`}>
-      <Text className={textClasses[variant]}>{label}</Text>
-    </Pressable>
-  );
-}
-`;
-
-  // 8. components/ui/MetricCard.tsx
-  files['components/ui/MetricCard.tsx'] = `import React from 'react';
-import { View, Text } from 'react-native';
-
-export interface MetricCardProps {
-  title: string;
-  value: string | number;
-  change?: string;
-  isPositive?: boolean;
-}
-
-export function MetricCard({ title, value, change, isPositive }: MetricCardProps) {
-  return (
-    <View className="p-4 rounded-xl border border-hairline bg-surface-secondary mb-3">
-      <Text className="text-xs text-ink-muted uppercase tracking-wider font-semibold mb-1">{title}</Text>
-      <Text className="text-2xl font-bold text-ink-primary mb-1">{value}</Text>
-      {change && (
-        <Text className={\`text-xs font-medium \${isPositive ? 'text-emerald-500' : 'text-rose-500'}\`}>
-          {change}
-        </Text>
-      )}
-    </View>
-  );
-}
-`;
-
-  // 9. Generate screen components
+  // 7. Generate truthful, explicitly experimental screen scaffolds.
   const screenEntries: Array<{ id: string; name: string; componentName: string }> = [];
 
   for (const screen of manifest.screens) {
@@ -195,32 +141,23 @@ export function MetricCard({ title, value, change, isPositive }: MetricCardProps
 
     files[`components/screens/${compName}.tsx`] = `import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
-import { Button } from '../ui/Button';
-import { MetricCard } from '../ui/MetricCard';
 
 export function ${compName}() {
   return (
     <ScrollView className="flex-1 bg-surface-primary p-4">
       <View className="mb-6">
-        <Text className="text-2xl font-bold text-ink-primary tracking-tight">${screen.name}</Text>
-        <Text className="text-sm text-ink-muted mt-1">Exported mobile screen from Tessellate AST.</Text>
-      </View>
-
-      <View className="flex-row gap-3 mb-4">
-        <View className="flex-1">
-          <MetricCard title="Activity" value="98.4%" change="+2.1%" isPositive={true} />
-        </View>
-        <View className="flex-1">
-          <MetricCard title="Latency" value="24ms" change="-4ms" isPositive={true} />
-        </View>
+        <Text className="text-2xl font-bold text-ink-primary tracking-tight">{${tsString(screen.name)}}</Text>
+        <Text className="text-sm text-ink-muted mt-1">Screen scaffold from Tessellate manifest data.</Text>
       </View>
 
       <View className="p-4 rounded-xl border border-hairline bg-surface-secondary mb-6">
-        <Text className="text-base font-semibold text-ink-primary mb-2">Screen Hierarchy</Text>
-        <Text className="text-xs text-ink-muted mb-4">
-          Node ID: ${screen.rootNode.id} · Role: ${screen.rootNode.semanticRole}
+        <Text className="text-base font-semibold text-ink-primary mb-2">LAB PREVIEW</Text>
+        <Text className="text-xs text-ink-muted">
+          This screen name and root-node metadata come from the manifest. Tessellate resources, content, layout, navigation, and actions have not been translated to React Native.
         </Text>
-        <Button label="Execute Action" onPress={() => console.log('Action triggered in ${screen.name}')} />
+        <Text className="text-xs text-ink-muted mt-3">
+          Root node: {${tsString(screen.rootNode.id)}} · Role: {${tsString(screen.rootNode.semanticRole)}}
+        </Text>
       </View>
     </ScrollView>
   );
@@ -244,14 +181,13 @@ export default function RootLayout() {
 `;
 
   // 11. app/index.tsx
-  const defaultScreen = screenEntries[0]?.componentName || 'HomeScreen';
   const importStatements = screenEntries
-    .map((s) => `import { ${s.componentName} } from '../components/screens/${s.componentName}';`)
+      .map((s) => `import { ${s.componentName} } from '../components/screens/${s.componentName}';`)
     .join('\n');
 
   const screenBranches = screenEntries
-    .map(
-      (s) => `if (activeScreen === '${s.id}') {
+      .map(
+      (s) => `if (activeScreen === ${tsString(s.id)}) {
     return <${s.componentName} />;
   }`
     )
@@ -260,12 +196,12 @@ export default function RootLayout() {
   const tabButtons = screenEntries
     .map(
       (s) => `<Pressable
-          key="${s.id}"
-          onPress={() => setActiveScreen('${s.id}')}
-          className={\`flex-1 py-3 items-center justify-center \${activeScreen === '${s.id}' ? 'border-t-2 border-accent-primary' : ''}\`}
+          key={${tsString(s.id)}}
+          onPress={() => setActiveScreen(${tsString(s.id)})}
+          className={\`flex-1 py-3 items-center justify-center \${activeScreen === ${tsString(s.id)} ? 'border-t-2 border-accent-primary' : ''}\`}
         >
-          <Text className={\`text-xs font-semibold \${activeScreen === '${s.id}' ? 'text-accent-primary' : 'text-ink-muted'}\`}>
-            ${s.name}
+        <Text className={\`text-xs font-semibold \${activeScreen === ${tsString(s.id)} ? 'text-accent-primary' : 'text-ink-muted'}\`}>
+          {${tsString(s.name)}}
           </Text>
         </Pressable>`
     )
@@ -276,7 +212,7 @@ import { View, Text, Pressable, SafeAreaView } from 'react-native';
 ${importStatements}
 
 export default function Index() {
-  const [activeScreen, setActiveScreen] = useState('${screenEntries[0]?.id || ''}');
+  const [activeScreen, setActiveScreen] = useState(${tsString(screenEntries[0]?.id || '')});
 
   const renderScreen = () => {
     ${screenBranches}
@@ -287,7 +223,7 @@ export default function Index() {
     <SafeAreaView className="flex-1 bg-surface-primary">
       {/* Top App Header */}
       <View className="px-4 py-3 border-b border-hairline flex-row items-center justify-between">
-        <Text className="font-bold text-base text-ink-primary tracking-tight">${manifest.name}</Text>
+        <Text className="font-bold text-base text-ink-primary tracking-tight">{${tsString(manifest.name)}}</Text>
         <View className="px-2 py-0.5 rounded-full bg-surface-secondary">
           <Text className="text-[10px] font-mono text-ink-muted">React Native</Text>
         </View>
@@ -310,8 +246,12 @@ export default function Index() {
   // 12. README.md
   files['README.md'] = `# ${manifest.name} (Expo / React Native)
 
-Exported from [Tessellate](https://github.com/danishgm-sketch/Tessellate) on ${new Date().toISOString()}.
-Universal mobile application target built with Expo SDK 52 and NativeWind v4 (Tailwind CSS for React Native).
+Generated by [Tessellate](https://github.com/danishgm-sketch/Tessellate).
+LAB scaffold using Expo SDK 52 and NativeWind v4. It is not a production-ready React Native export.
+
+## Fidelity limits
+
+This scaffold preserves the project name, screen names, root-node IDs, root semantic roles, and normalized Design DNA tokens. It does not translate Tessellate resources, nested nodes, props, slots, authored content, responsive strategies, navigation semantics, or interactions. The generated tabs are scaffold navigation over manifest screens, not the product's declared navigation model. Every screen is labelled as a lab preview so it cannot be mistaken for a faithful export.
 
 ## Getting Started
 

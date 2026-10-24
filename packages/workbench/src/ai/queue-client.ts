@@ -1,4 +1,5 @@
 import {
+  isNonActionableIntentPrompt,
   IntentCommandSchema,
   type ProjectManifest,
   type ProjectMutation,
@@ -29,6 +30,13 @@ export interface HostHealth {
   apiOnline: boolean;
   hostOnline: boolean;
   pendingTasks: number;
+}
+interface QueueTicket {
+  ticketId: string;
+  accessToken: string;
+  tokenNumber: number;
+  position: number;
+  estimatedWaitSeconds: number;
 }
 const OFFLINE_HEALTH: HostHealth = { apiOnline: false, hostOnline: false, pendingTasks: 0 };
 function getApiBase(): string | null {
@@ -81,6 +89,9 @@ export async function executeQueuedCommand(
 ): Promise<QueueExecutionResult> {
   const prompt = userPrompt.trim();
   if (!prompt) return unavailable('Prompt cannot be empty.');
+  if (isNonActionableIntentPrompt(prompt)) {
+    return unavailable('Questions, negated intent, and requests to keep the current design are not sent to the laptop model. Rephrase as a direct request; your project was not changed.');
+  }
   const screen = manifest.screens.find((item) => item.id === activeScreenId);
   if (!screen) return unavailable('Select a screen before issuing a command.');
   const local = tryDeterministicCommandMatch(manifest, activeScreenId, prompt);
@@ -110,29 +121,34 @@ export async function executeQueuedCommand(
     onProgress?.({ status: 'unavailable', message });
     return unavailable(message);
   }
+  let activeApiBase: string | null = null;
+  let pendingTicket: QueueTicket | null = null;
   try {
     const apiBase = getApiBase();
     if (apiBase === null)
       return unavailable(
         'Laptop inference is not configured for this local preview. Use the Sites runtime or explicitly enable the local development backend.'
       );
+    activeApiBase = apiBase;
     const submitted = await fetch(`${apiBase}/api/inference/queue`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ prompt, screenAst: screen.rootNode, designDna: manifest.designDNA }),
       signal: AbortSignal.timeout(5000),
     });
-    if (!submitted.ok)
-      throw new Error('Laptop queue is unavailable or busy. Your project has not been changed.');
-    const ticket = (await submitted.json()) as {
-      ticketId: string;
-      accessToken: string;
-      tokenNumber: number;
-      position: number;
-      estimatedWaitSeconds: number;
-    };
+    if (!submitted.ok) {
+      const failure: unknown = await submitted.json().catch(() => null);
+      const serverMessage =
+        typeof failure === 'object' && failure !== null && 'message' in failure &&
+        typeof failure.message === 'string' && failure.message.length <= 240
+          ? failure.message
+          : null;
+      throw new Error(serverMessage ?? 'Laptop queue is unavailable or busy. Your project has not been changed.');
+    }
+    const ticket = (await submitted.json()) as QueueTicket;
     if (typeof ticket.ticketId !== 'string' || typeof ticket.accessToken !== 'string')
       throw new Error('Laptop returned an invalid ticket. Your project has not been changed.');
+    pendingTicket = ticket;
     onProgress?.({
       status: 'queued',
       tokenNumber: ticket.tokenNumber,
@@ -176,6 +192,7 @@ export async function executeQueuedCommand(
           tokenNumber: ticket.tokenNumber,
           message: `Token #${ticket.tokenNumber} · completed by the laptop model`,
         });
+        pendingTicket = null;
         return {
           success: true,
           command,
@@ -194,6 +211,17 @@ export async function executeQueuedCommand(
     }
     throw new Error('Laptop inference timed out. Your project has not been changed.');
   } catch (error) {
+    if (activeApiBase !== null && pendingTicket !== null) {
+      try {
+        await fetch(`${activeApiBase}/api/inference/cancel/${encodeURIComponent(pendingTicket.ticketId)}`, {
+          method: 'POST',
+          headers: { Authorization: `Bearer ${pendingTicket.accessToken}` },
+          signal: AbortSignal.timeout(3000),
+        });
+      } catch {
+        // A disconnected host is already fail-safe; cancellation is best effort.
+      }
+    }
     const message =
       error instanceof Error
         ? error.message
