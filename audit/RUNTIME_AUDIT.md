@@ -2,11 +2,11 @@
 
 This register preserves the historical resource/renderer audit and adds the
 current production review audit. The current public baseline is ChatGPT Site
-v25 at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`; local fixes
+v26 at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`; local fixes
 are not considered closed until verified on a newly published Site. Evidence
-for the v24 route sweep and screenshots is in `evidence/v24/`, v25 route and
-resource evidence is in `evidence/v25/`, and local post-fix route evidence is in
-`evidence/local-fixed-final/`. Trace measurements are in
+for the v24 and v25 route sweeps is in `evidence/v24/` and `evidence/v25/`, v26
+route, resource and flagship evidence is in `evidence/v26/`, and local post-fix
+route evidence is in `evidence/local-fixed-final/`. Trace measurements are in
 `evidence/v24/performance-audit.json`. Site v11 verified the exact employee-experience brief from Compose to
 Direction C in Workbench at desktop and mobile widths; Site v14 reran that visible
 Compose-to-Direction-C smoke at the same widths. Site v13 verified the Reduced
@@ -22,7 +22,52 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 334 findings (0 Critical, 66 High, 251 Medium, 17 Low): 28 closed after deployed verification, 216 fixed locally and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 0 remain open locally. AUD-140 and AUD-323–AUD-334 are local fixes awaiting deployed verification. The v25 Site remains the deployed baseline; the user must approve publication of a new saved version before those findings can be closed.
+**Current disposition:** 335 findings (0 Critical, 66 High, 252 Medium, 17 Low): 30 closed after deployed verification, 215 fixed locally and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 0 remain open locally. The v26 Site closes AUD-140 and AUD-334. AUD-335 is fixed locally and awaits deployed verification; older findings also remain pending their issue-specific checks.
+
+## v26 deployed-site checkpoint
+
+The public v26 sweep captured all 31 requested routes at 1440×900 and 390×844
+(62 route/viewport records). Every document returned HTTP 200, with no
+application console errors, uncaught exceptions, failed requests, unloaded
+images, or document overflow. Six selected Axe scans reported zero violations.
+The two “Couldn't load preload assets” console warnings from the route harness
+occurred only while Axe injected its scanner; a separate direct-browser check of
+Explore and the resource detail recorded no warnings. The same-origin link audit
+checked 630 unique targets with zero failures. The catalogue endpoint returned
+324 unique resources, including 40 Gold runtime resources. Seven core routes
+were sampled at 360, 390, 430, 768, 1024, 1280, 1440 and 1536 CSS pixels: all 56
+captures returned HTTP 200 without runtime/network errors or document overflow.
+Machine-readable route classifications are in
+[`evidence/v26/route-classifications.json`](evidence/v26/route-classifications.json).
+
+The v26 flagship user journey used the exact employee-experience brief at
+desktop and mobile: all three distinct directions rendered, Direction C opened
+its selected project in Workbench, the dashboard summary lock survived 95%
+recomposition and Surprise Me, resource replacement changed Activity Feed to
+Notification Centre, and Undo/Redo restored the exact prior manifests. The
+desktop standalone ZIP installed outside the repository, built and opened in a
+real browser; the mobile journey completed through ZIP download. Reports and
+screenshots are under `evidence/v26/flagship/`. The ten tool routes passed 41
+browser cases with 21 documented mobile-only skips. Forty Gold resources passed
+the Expressive dark-theme contrast scan at both viewports; this closes AUD-140.
+The Explore filter stayed disabled while its island was deliberately blocked;
+the normal dialog opened, closed with Escape and returned focus to its opener;
+this closes AUD-334. Both closures are recorded in `runtime-audit.json`.
+
+The same deployed audit found AUD-335: at both sampled viewports,
+“Generate example directions” was enabled while its React island script was
+blocked, but clicking it produced no directions. The screenshots and reports
+are in `evidence/v26/home-demo/`. The source now keeps the control disabled
+until the island's effect marks it hydrated and announces the preparation
+state. The local production-preview regression passes at desktop and mobile,
+including actual previews and Direction C handoff, but the published v26 Site
+still contains the defect. After the regression also asserted the visible
+readiness message, it passed 6/6 cases against the Astro production preview and
+6/6 against the Sites Worker at desktop and mobile. The reports and captures
+are in `evidence/local-final-home-fix/` and
+`evidence/local-final-sites-home-fix/`. Keep the homepage classification
+`DEGRADED` until a new saved Sites version is published and the same deployed
+checks pass.
 
 The v25 route sweep captured all 31 canonical routes at 1440×900 and 390×844
 (62 route/viewport records). Every captured route returned HTTP 200 and the
@@ -396,8 +441,8 @@ No Critical findings are recorded in this audit register.
   expressive/dark sweep reports zero violations. The full 100-brief desktop and
   mobile Compose review also passes against this commit with 600 screenshots and
   clean runtime reports; see `quality/STEP_14_EVIDENCE.md`.
-- **Disposition:** fixed locally; public/review deployment verification remains
-  pending under the ordered release programme.
+- **Disposition:** closed after v26 deployment verification. The v25 result below
+  is historical.
 
 - **Latest deployed evidence (v25):** the real `/resources/:slug` dark +
   Expressive sweep found text contrast failures in 17 of 40 Gold resources on
@@ -418,6 +463,11 @@ No Critical findings are recorded in this audit register.
   violations. Local before/after screenshots and reports are under
   `evidence/local-dark-contrast/`. The fix is recorded as
   `fixed-awaiting-deployed-verification`; v25 itself still contains the defect.
+- **Deployed verification (v26):** all 40 Gold resources passed the visible
+  Expressive dark-theme contrast scan at 1440×900 and 390×844 with zero
+  contrast findings, browser errors, warnings, failed requests, or HTTP errors.
+  Reports are in `evidence/v26/gold-dark-contrast-accurate/`. The deployed check
+  closes AUD-140.
 
 ### AUD-141 — Scrollable Gold resource panels were not keyboard reachable
 
@@ -3398,7 +3448,35 @@ with zero findings. That harness race is not counted as a product defect.
 - **Reproduction:** Open `/explore/` at 390×844; block `/_astro/ExploreView.*.js`; click Filters before hydration. The deployed button accepts the click but does nothing.
 - **Root cause:** The server-rendered mobile filter control was enabled before Explore attached its click handler. The initial opacity-only disabled treatment also left a correctly disabled control looking active on mobile.
 - **Affected code:** `apps/site/src/components/ExploreView.tsx`, `tests/e2e/explore-search-hardening.spec.ts`.
-- **Remediation:** Disable Filters while URL state is uninitialized, the catalogue is loading, or catalogue loading has failed; describe the visible readiness/error status to assistive technology; use a muted surface and text, dashed border, and no shadow so the unavailable state is clear on touch screens. The local Sites Worker regression was observed failing before the visual correction and now passes with the expected disabled state. Before/after captures are in `evidence/v25/mobile-filter-hydration/` and `../quality/evidence/step-45/after/`. Published v25 is still affected; close only after re-running this test on the next deployed Site.
+- **Remediation:** Disable Filters while URL state is uninitialized, the catalogue is loading, or catalogue loading has failed; describe the visible readiness/error status to assistive technology; use a muted surface and text, dashed border, and no shadow so the unavailable state is clear on touch screens. The local Sites Worker regression was observed failing before the visual correction and now passes with the expected disabled state. Before/after captures are in `evidence/v25/mobile-filter-hydration/` and `../quality/evidence/step-45/after/`.
+- **Deployed verification (v26):** the blocked-island control remained disabled with its readiness description at 390×844. With the island loaded, the filter dialog opened, closed with Escape and returned focus to the opener. Both runs had clean application, browser and network diagnostics. Evidence is in `evidence/v26/mobile-filter-hydration/`; AUD-334 is closed.
+
+## MEDIUM — v26 deployed-site audit
+
+### AUD-335 — Homepage example composer was clickable before its React island hydrated
+
+- **Evidence:** On deployed v26, `/` returned HTTP 200 at 1440×900 and
+  390×844, but with the ThreeDirectionsDemo island request blocked, the
+  server-rendered “Generate example directions” button remained enabled and
+  had no readiness description. Activating it produced no direction cards.
+  Before screenshots and machine-readable reports are in
+  `evidence/v26/home-demo/`.
+- **Reproduction:** Open the public homepage at either viewport, block
+  `/_astro/ThreeDirectionsDemo.*.js`, and activate “Generate example
+  directions” before hydration. The button accepts the interaction but no
+  action occurs.
+- **Root cause:** The button defaulted to enabled in server-rendered markup,
+  while its click handler is attached only when the React island hydrates.
+- **Affected code:** `apps/site/src/components/home/ThreeDirectionsDemo.tsx`,
+  `tests/e2e/home-demo-hydration.spec.ts`.
+- **Remediation:** Keep the control disabled until a mount effect confirms the
+  island is hydrated, and expose a visible status linked with
+  `aria-describedby`. A production-preview regression now covers the blocked
+  hydration case, the normal three-direction render, and Direction C handoff at
+  desktop and mobile widths. The local captures are in
+  `evidence/local-final-home-fix/` and
+  `evidence/local-final-sites-home-fix/`; the deployed fix remains open until a
+  new Sites version passes the same checks.
 
 ## LOW (continued — v24 deployed-site audit)
 
@@ -3437,4 +3515,15 @@ certify field Core Web Vitals or the remaining routes; detailed results are in
 
 ## Current local closure gate
 
-AUD-323–AUD-334 are fixed and regression-tested locally, not closed. The current local evidence includes 62 route/viewport checks across the same 31 canonical routes, six Axe scans with zero violations, and targeted CSP, accessibility, checkbox identity, hydration-state, all-Gold contrast, and clean standalone-export regressions. Final local validation passed: frozen install; catalogue build; TypeScript; lint; 1,215 unit/integration tests (one skipped); `pnpm audit:all` including all 16 behavioural gates and the production build; and the complete Playwright run (597 passed, 152 configured skips across Astro desktop/mobile, Sites Worker desktop/mobile, and the isolated preview app). The Sites Worker certification rendered all 324 resources; the focused Explore/CSP run also passed 47 cases with one expected skip. These are local results, not deployed closure. The current public baseline remains v25 and still contains AUD-140’s 17/40 Gold contrast failures and AUD-334’s pre-hydration dead Filters control. The next review build must be saved from the exact source commit, shown for approval, then published and re-audited. No after-fix screenshot is represented as a deployed result.
+The latest public deployment is v26. The v26 browser audit covered all 31
+canonical routes at 1440×900 and 390×844, 630 unique internal link targets, all
+324 catalogue resources, the 40 Gold dark-theme contrast checks, ten tool
+surfaces, and the exact employee-experience Compose-to-Workbench workflow.
+AUD-140 and AUD-334 are closed from deployed evidence. AUD-335 is locally fixed
+and awaits a new deployed version; no claim is made that the current public
+homepage is clean. Overall, the register has 335 findings: 30 closed after
+deployment verification, 215 fixed locally and awaiting issue-specific
+deployment checks, 88 locally verified, and two legacy `fixed` records. The
+product-hardening release programme is still in progress. The new version must
+be saved from the pushed source commit, shown for approval, then published and
+re-audited; local screenshots are not a substitute for that check.

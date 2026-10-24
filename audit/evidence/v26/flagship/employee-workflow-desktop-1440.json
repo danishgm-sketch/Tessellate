@@ -1,0 +1,40 @@
+{
+  "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "route": "http://localhost:4321/workbench?project=proj-direction-c-c0e9de7f17f944e3867a7238375c9a9fdirc",
+  "projectId": "proj-direction-c-c0e9de7f17f944e3867a7238375c9a9fdirc",
+  "selectedDirection": "C",
+  "screens": [
+    "Marketing Home",
+    "Team Overview",
+    "People Directory",
+    "Teams",
+    "Engagement",
+    "Onboarding",
+    "Settings & Policies"
+  ],
+  "lockedNode": {
+    "id": "node-screen-overview-metric-cards-3",
+    "subtreeSha256": "34f785dbb7562f5287b16b0091ec14785cded809132af918562e1ea4b239a8ce",
+    "resource": "dashboard-kpi-grid"
+  },
+  "replacement": {
+    "nodeId": "node-screen-overview-activity-feed-5",
+    "resource": "notification-centre"
+  },
+  "undoRedo": "surprise, replacement and recomposition restored exactly through exported manifests",
+  "standaloneZip": {
+    "filename": "adaptive-architecture-employee-experience.zip",
+    "files": 33,
+    "builtAndBrowsed": true
+  },
+  "screenshot": "audit\\evidence\\v26\\flagship\\employee-workbench-desktop-1440.png",
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": []
+}

@@ -1,0 +1,39 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersion": 26,
+  "capturedAt": "2026-10-24",
+  "source": "Chrome DevTools performance traces with cold reload and ignored cache",
+  "fieldData": "No CrUX field data is available for this Site URL.",
+  "metrics": [
+    {
+      "viewport": "1440x900",
+      "cpuThrottling": "1x",
+      "network": "Fast 4G",
+      "lcpMs": 553,
+      "ttfbMs": 59,
+      "renderDelayMs": 494,
+      "cls": 0,
+      "lcpElement": "Hero h1 text",
+      "documentRequestMs": 288,
+      "documentRedirects": 0,
+      "documentStatus": 200
+    },
+    {
+      "viewport": "390x844",
+      "cpuThrottling": "4x",
+      "network": "Fast 4G",
+      "lcpMs": 713,
+      "ttfbMs": 43,
+      "renderDelayMs": 669,
+      "cls": 0,
+      "documentStatus": 200
+    }
+  ],
+  "interactionMetrics": "INP was not captured because the trace run only measured cold-load navigation.",
+  "networkFinding": {
+    "finding": "The Site response did not include compression according to the DevTools DocumentLatency insight.",
+    "estimatedImpact": "0 ms estimated FCP/LCP savings under the measured Fast 4G profile.",
+    "platformBoundary": "ChatGPT Sites owns the static-response compression layer; this repository cannot safely set Content-Encoding itself."
+  },
+  "traceRawArtifact": "Chrome DevTools returned a trace summary; saving the raw trace to the repository path was rejected by its configured workspace-root restriction."
+}
