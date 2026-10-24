@@ -15,6 +15,11 @@ Containers restart unless explicitly stopped. The API listens only on
 for the API and 2 CPUs / 512 MB for inference. No GPU or paid inference service
 is required by the current model.
 
+The local API worker pins compatibility date `2026-05-22`, the newest date
+accepted by the repository's pinned Wrangler 4.92 local runtime. This setting
+applies to the local API; the separate Sites Worker keeps its own compatibility
+date.
+
 Local D1 uses SQLite in the persistent `tessellate-laptop_laptop-data` Docker
 volume. Container replacement and ordinary shutdown preserve it. Do not delete
 the volume if you need its records. Local migrations run on startup; no hosted

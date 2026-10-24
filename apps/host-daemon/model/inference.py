@@ -1,8 +1,4 @@
-"""
-Tessellate Bespoke ML Engine - Inference Runtime
-Loads trained Tree-GNN + Bi-GRU weights and executes sub-millisecond forward inference.
-Zero external LLM / transformer weights.
-"""
+"""Experimental laptop proposal adapter; not calibrated or Core-certified."""
 
 import json
 import os
