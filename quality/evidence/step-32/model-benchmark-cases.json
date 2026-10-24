@@ -1,0 +1,190 @@
+{
+  "version": 1,
+  "trainingSource": "apps/host-daemon/model/dataset.py::generate_synthetic_samples",
+  "trainingCount": 10,
+  "validation": [
+    {
+      "id": "VAL-01",
+      "prompt": "Recompose the dashboard around the weekly report",
+      "expectedAction": "recompose-screen"
+    },
+    {
+      "id": "VAL-02",
+      "prompt": "Rethink the settings hierarchy",
+      "expectedAction": "recompose-screen"
+    },
+    {
+      "id": "VAL-03",
+      "prompt": "Surprise me with a more expressive page",
+      "expectedAction": "surprise-me"
+    },
+    {
+      "id": "VAL-04",
+      "prompt": "Make onboarding playful and warm",
+      "expectedAction": "apply-feel"
+    },
+    {
+      "id": "VAL-05",
+      "prompt": "Make settings professional and institutional",
+      "expectedAction": "apply-feel"
+    },
+    {
+      "id": "VAL-06",
+      "prompt": "Reduce motion for this screen",
+      "expectedAction": "adjust-dna",
+      "expectedDnaDirections": { "motion": -1 }
+    },
+    {
+      "id": "VAL-07",
+      "prompt": "Set card corners to sharp",
+      "expectedAction": "adjust-dna",
+      "expectedDnaDirections": { "curvature": -1 }
+    },
+    {
+      "id": "VAL-08",
+      "prompt": "Round the actions into pill controls",
+      "expectedAction": "adjust-dna",
+      "expectedDnaDirections": { "curvature": 1 }
+    }
+  ],
+  "heldOut": [
+    {
+      "id": "HOLD-01",
+      "prompt": "Lock the employee summary section",
+      "expectedAction": "lock-nodes",
+      "expectedNodeId": "employee-summary"
+    },
+    {
+      "id": "HOLD-02",
+      "prompt": "Freeze the onboarding checklist in place",
+      "expectedAction": "lock-nodes",
+      "expectedNodeId": "onboarding-checklist"
+    },
+    {
+      "id": "HOLD-03",
+      "prompt": "Unlock the old onboarding section",
+      "expectedAction": "unlock-nodes",
+      "expectedNodeId": "onboarding-checklist"
+    },
+    {
+      "id": "HOLD-04",
+      "prompt": "Release the header so it can be edited",
+      "expectedAction": "unlock-nodes",
+      "expectedNodeId": "site-header"
+    },
+    {
+      "id": "HOLD-05",
+      "prompt": "Replace the employee metric tile with a small trend chart",
+      "expectedAction": "replace-component",
+      "expectedNodeId": "employee-metric"
+    },
+    {
+      "id": "HOLD-06",
+      "prompt": "Swap the header card for a compact toolbar",
+      "expectedAction": "replace-component",
+      "expectedNodeId": "site-header"
+    },
+    {
+      "id": "HOLD-07",
+      "prompt": "Increase the data density but keep the colours steady",
+      "expectedAction": "adjust-dna",
+      "expectedDnaDirections": { "dataDensity": 1 }
+    },
+    {
+      "id": "HOLD-08",
+      "prompt": "Give headings more typographic expression",
+      "expectedAction": "adjust-dna",
+      "expectedDnaDirections": { "typographicExpression": 1 }
+    },
+    {
+      "id": "HOLD-09",
+      "prompt": "The employee portal should feel calm and precise",
+      "expectedAction": "apply-feel"
+    },
+    {
+      "id": "HOLD-10",
+      "prompt": "Use a professional institutional tone",
+      "expectedAction": "apply-feel"
+    },
+    {
+      "id": "HOLD-11",
+      "prompt": "Recompose the dashboard with a quieter hierarchy",
+      "expectedAction": "recompose-screen",
+      "expectedDivergence": 20
+    },
+    {
+      "id": "HOLD-12",
+      "prompt": "Rethink the settings page structure",
+      "expectedAction": "recompose-screen"
+    },
+    {
+      "id": "HOLD-13",
+      "prompt": "Surprise me with a coherent alternative layout",
+      "expectedAction": "surprise-me"
+    },
+    {
+      "id": "HOLD-14",
+      "prompt": "Surprise me with a radical 95 percent structural change",
+      "expectedAction": "surprise-me",
+      "expectedDivergence": 95
+    },
+    {
+      "id": "HOLD-15",
+      "prompt": "Increase motion playfulness for onboarding",
+      "expectedAction": "adjust-dna",
+      "expectedDnaDirections": { "motion": 1 }
+    },
+    {
+      "id": "HOLD-16",
+      "prompt": "Make the dashboard geometry more rounded",
+      "expectedAction": "adjust-dna",
+      "expectedDnaDirections": { "curvature": 1 }
+    }
+  ],
+  "adversarial": [
+    { "id": "ADV-01", "prompt": "Do not recompose the dashboard", "expectedAction": null },
+    { "id": "ADV-02", "prompt": "Don't surprise me with a new layout", "expectedAction": null },
+    { "id": "ADV-03", "prompt": "Never lock the employee summary", "expectedAction": null },
+    { "id": "ADV-04", "prompt": "Don't unlock the onboarding checklist", "expectedAction": null },
+    { "id": "ADV-05", "prompt": "Avoid rounded geometry", "expectedAction": null },
+    {
+      "id": "ADV-06",
+      "prompt": "I am not asking to change the typography",
+      "expectedAction": null
+    },
+    {
+      "id": "ADV-07",
+      "prompt": "Leave the screen as it is; do not reduce motion",
+      "expectedAction": null
+    },
+    {
+      "id": "ADV-08",
+      "prompt": "Do not replace the header yet, just show the options",
+      "expectedAction": null
+    },
+    { "id": "ADV-09", "prompt": "What does the Surprise Me command do?", "expectedAction": null },
+    {
+      "id": "ADV-10",
+      "prompt": "The old lock was removed; don't change this page",
+      "expectedAction": null
+    },
+    {
+      "id": "ADV-11",
+      "prompt": "Unlock is not what I meant; leave it locked",
+      "expectedAction": null
+    },
+    {
+      "id": "ADV-12",
+      "prompt": "I like the playful section; don't alter it",
+      "expectedAction": null
+    },
+    { "id": "ADV-13", "prompt": "Delete the selected section", "expectedAction": null },
+    { "id": "ADV-14", "prompt": "Move the button below the table", "expectedAction": null },
+    { "id": "ADV-15", "prompt": "Explain how the dashboard is composed", "expectedAction": null },
+    {
+      "id": "ADV-16",
+      "prompt": "Maybe make it less rounded? Actually keep the current design",
+      "expectedAction": null
+    }
+  ]
+}

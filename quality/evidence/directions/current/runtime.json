@@ -8,7 +8,7 @@
   "directions": [
     {
       "number": "01",
-      "projectId": "proj-direction-a-cde12600b2274780b389410084c7a654dira",
+      "projectId": "proj-direction-a-6e608dca2a3441fb8cccf87a6c2cb8addira",
       "navigation": "sidebar",
       "grammar": "classic-sidebar-dashboard",
       "dna": {
@@ -254,12 +254,6 @@
         },
         {
           "screen": "Settings & Policies",
-          "role": "settings-nav",
-          "slug": "minimal-top-nav",
-          "variant": "quiet"
-        },
-        {
-          "screen": "Settings & Policies",
           "role": "settings-form",
           "slug": "input",
           "variant": "quiet"
@@ -312,7 +306,7 @@
     },
     {
       "number": "02",
-      "projectId": "proj-direction-b-cde12600b2274780b389410084c7a654dirb",
+      "projectId": "proj-direction-b-6e608dca2a3441fb8cccf87a6c2cb8addirb",
       "navigation": "top-nav",
       "grammar": "product-proof-marketing",
       "dna": {
@@ -557,12 +551,6 @@
         },
         {
           "screen": "Settings & Policies",
-          "role": "settings-nav",
-          "slug": "minimal-top-nav",
-          "variant": "expressive"
-        },
-        {
-          "screen": "Settings & Policies",
           "role": "settings-form",
           "slug": "input",
           "variant": "expressive"
@@ -615,7 +603,7 @@
     },
     {
       "number": "03",
-      "projectId": "proj-direction-c-cde12600b2274780b389410084c7a654dirc",
+      "projectId": "proj-direction-c-6e608dca2a3441fb8cccf87a6c2cb8addirc",
       "navigation": "rail",
       "grammar": "three-pane-intelligence-workspace",
       "dna": {
@@ -856,12 +844,6 @@
         {
           "screen": "Settings & Policies",
           "role": "navigation",
-          "slug": "minimal-top-nav",
-          "variant": "nocturne"
-        },
-        {
-          "screen": "Settings & Policies",
-          "role": "settings-nav",
           "slug": "minimal-top-nav",
           "variant": "nocturne"
         },

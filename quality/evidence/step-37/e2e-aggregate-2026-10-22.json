@@ -2,15 +2,15 @@
   "schemaVersion": 1,
   "id": "STEP-37-E2E-2026-10-22",
   "programmeStep": 37,
-  "title": "Aggregate local Playwright verification after preview-frame harness correction",
+  "title": "Aggregate local Playwright verification after Worklet CSP coverage update",
   "command": "pnpm test:e2e",
   "startedAtApproximate": true,
-  "recordedAtUtc": "2026-10-22T13:26:03.8418960Z",
+  "recordedAtUtc": "2026-10-22T15:09:20Z",
   "source": {
-    "head": "c6de9441f83527cef4f8a052cdc384e8e31111ca",
+    "head": "76812fb26211a779ca93279ec49b7df2d5d02243",
     "branch": "consolidation/product-hardening",
     "worktreeWasDirty": true,
-    "sourceNote": "Run exercised the current working tree on top of HEAD; this evidence does not certify the HEAD commit alone."
+    "sourceNote": "Run exercised the current working tree on top of HEAD, including the Worklet CSP regression; this evidence does not certify the HEAD commit alone."
   },
   "result": {
     "skipped": 133,
@@ -45,6 +45,7 @@
   ],
   "coverageNotes": [
     "The configured run includes the 324-resource responsive browser matrix, Gold accessibility and variant checks, route and Compose/Workbench flows, CSP and preview-isolation probes, and configured constrained-network and large-Workbench workloads.",
+    "The Worklet module-loading regression passed in the Sites Worker CSP suite on desktop and mobile; browser CSP rejected the addModule request and no external response succeeded.",
     "Configured skips remain skips and are not treated as passes.",
     "Playwright timing checks are local browser benchmarks; trace-based Core Web Vitals were not run because Chrome DevTools setup is pending.",
     "No production Site was deployed or modified by this run."

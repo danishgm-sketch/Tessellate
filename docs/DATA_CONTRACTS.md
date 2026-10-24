@@ -33,7 +33,7 @@ interface ResourceManifest {
   slug: string;
   name: string;
   version: string;
-  status: 'draft' | 'experimental' | 'verified' | 'deprecated';
+  status: 'draft' | 'experimental' | 'verified' | 'verified-gold' | 'deprecated';
   description: string;
   resourceType:
     | 'primitive'
@@ -84,6 +84,10 @@ interface ResourceManifest {
 }
 ```
 
+`ResourceManifest.slug` and `ResourceRef.slug` are lower-case kebab-case
+segments. They are used in URLs and registry filenames, so path separators,
+traversal syntax, uppercase letters, and underscores are invalid.
+
 ## 3. CreatorRef
 
 ```ts
@@ -99,15 +103,17 @@ interface CreatorRef {
 
 ```ts
 interface Provenance {
-  origin: 'tessellate' | 'community' | 'open-source' | 'sponsored';
+  origin: 'tessellate' | 'community' | 'open-source' | 'sponsored' | 'unknown';
   originalUrl?: string;
   originalRepository?: string;
   originalAuthor?: string;
-  derivative: boolean;
+  derivative: boolean | 'unknown';
   derivativeNotes?: string;
-  aiAssistance?: 'none' | 'assisted' | 'substantial';
+  aiAssistance?: 'none' | 'assisted' | 'substantial' | 'unknown';
 }
 ```
+
+Drafts may use `unknown` until provenance is reviewed. The registry contribution gate rejects unknown origin, derivation, and AI assistance, as well as non-approved SPDX values or unverified redistribution rights; unknown metadata must not be published as verified.
 
 ## 5. LicenseInfo
 
@@ -145,6 +151,11 @@ interface ResourceFileSpec {
   required: boolean;
 }
 ```
+
+`path` is relative to the resource directory. Absolute paths, empty path
+segments, and `.` or `..` traversal segments are invalid. Filesystem consumers
+also verify the canonical target stays inside that directory, including when
+the resource tree contains symbolic links or junctions.
 
 ## 8. SlotSpec
 
@@ -236,11 +247,15 @@ interface ResponsiveSpec {
 }
 ```
 
+An empty `verifiedWidths` array means no viewport has been verified. Do not fill it with target or planned widths. Registry submissions must include actual required verification evidence.
+
 ## 13. AccessibilitySpec
 
 ```ts
 interface AccessibilitySpec {
+  // A target, not evidence that the target has been achieved.
   levelTarget: 'none' | 'A' | 'AA' | 'AAA';
+  // True values are resource-manifest claims. UI must distinguish them from independent test evidence.
   keyboardVerified: boolean;
   screenReaderSemantics: boolean;
   reducedMotionVerified: boolean;
@@ -304,10 +319,15 @@ interface QualitySpec {
   visualCraft: number;
   dependencyCleanliness: number;
   documentation: number;
+  assessment:
+    | { status: 'unassessed'; evidence: [] }
+    | { status: 'reviewed'; evidence: [string, ...string[]] };
 }
 ```
 
-Verified resources require `overall >= 80`.
+Legacy manifests default to `assessment.status: 'unassessed'`. Unassessed scores are not shown as ratings, indexed as quality results, or used to rank composition candidates. They contribute a neutral score until review evidence is attached. A reviewed assessment requires at least one evidence reference; verified resources then require `overall >= 80`.
+
+`levelTarget` and accessibility booleans are manifest declarations, not certification. Only retained browser evidence may be presented as an independent verification result. Draft scaffolds may use zero scores to mean “not assessed yet”; they must not be presented as measured results or promoted as reviewed resources.
 
 ## 17. DesignDNA
 
@@ -633,3 +653,23 @@ Rules:
 - raw invalid user data is preserved before destructive recovery;
 - no silent project reset;
 - export command can migrate older manifest to current version.
+
+## 31. Bounded collections
+
+Every collection in a public or persisted Zod contract has an explicit maximum.
+The limits are chosen for product-scale manifests and reject oversized arrays
+before validating their entries.
+
+- Product models and project screen graphs support up to 200 screens.
+- Project manifests support up to 200 screens, 1,000 assets, and 5,000 locks.
+- A project node supports up to 200 direct children and recursive depth remains
+  capped at 64.
+- A history operation supports up to 500 forward and inverse mutations.
+- Resource metadata collections have field-specific caps (generally 64–256);
+  resource file lists support up to 128 files and variants up to 64.
+- Audit issue lists support up to 1,000 items; node reference lists support up
+  to 5,000.
+
+The API also enforces endpoint-specific request-body byte limits before JSON
+parsing. These size and collection limits are complementary: the byte limit
+protects transport and parsing, while schema limits bound element validation.

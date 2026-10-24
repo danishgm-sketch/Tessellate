@@ -1,0 +1,144 @@
+{
+  "step": 42,
+  "title": "Fault injection across catalogue, API, storage, auth, malformed data, and ZIP export",
+  "environment": {
+    "primaryRuntime": "Locally built ChatGPT Sites Worker at http://127.0.0.1:4323",
+    "secondaryRuntime": "Astro production preview at http://localhost:4321",
+    "browser": "Chromium",
+    "viewports": ["1440x900", "390x844"],
+    "publicReviewDeploymentVerified": false
+  },
+  "browserCases": [
+    {
+      "id": "corrupt-catalogue-recovers",
+      "runtime": "Sites Worker",
+      "viewports": ["1440x900", "390x844"],
+      "injection": "The first /data/catalog.json response returned HTTP 200 with resources=[{}], then retry continued to the real catalogue.",
+      "result": "pass",
+      "checks": ["invalid payload rejected", "Compose disabled until ready", "visible retry reloaded catalogue", "three direction previews rendered"],
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "failedRequests": 0,
+      "httpErrors": 0,
+      "evidence": [
+        "quality/evidence/step-42/corrupt-catalogue-recovers-sites-chromium.json",
+        "quality/evidence/step-42/corrupt-catalogue-recovers-sites-mobile-chromium.json",
+        "quality/evidence/step-42/corrupt-catalogue-recovers-sites-chromium.png",
+        "quality/evidence/step-42/corrupt-catalogue-recovers-sites-mobile-chromium.png"
+      ]
+    },
+    {
+      "id": "stale-project-safe-recovery",
+      "runtime": "Sites Worker",
+      "viewports": ["1440x900", "390x844"],
+      "injection": "Opened Workbench with a unique project ID absent from browser storage.",
+      "result": "pass",
+      "checks": ["missing project reported", "editing paused", "unrelated initial-sample export not offered", "Compose and new-sample actions available", "zero Axe violations", "no horizontal overflow"],
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "failedRequests": 0,
+      "httpErrors": 0,
+      "evidence": [
+        "quality/evidence/step-42/stale-project-safe-recovery-sites-chromium.json",
+        "quality/evidence/step-42/stale-project-safe-recovery-sites-mobile-chromium.json",
+        "quality/evidence/step-42/stale-project-safe-recovery-sites-chromium.png",
+        "quality/evidence/step-42/stale-project-safe-recovery-sites-mobile-chromium.png"
+      ]
+    },
+    {
+      "id": "zip-download-failure-visible",
+      "runtime": "Sites Worker",
+      "viewports": ["1440x900", "390x844"],
+      "injection": "URL.createObjectURL threw only for the generated application/zip Blob.",
+      "result": "pass",
+      "checks": ["native failure alert shown", "failure detail preserved", "zero uncaught exceptions"],
+      "consoleErrors": 1,
+      "expectedDiagnostics": ["Workbench logs the caught ZIP error to console.error before showing the alert."],
+      "pageErrors": 0,
+      "failedRequests": 0,
+      "httpErrors": 0,
+      "evidence": [
+        "quality/evidence/step-42/zip-download-failure-visible-sites-chromium.json",
+        "quality/evidence/step-42/zip-download-failure-visible-sites-mobile-chromium.json",
+        "quality/evidence/step-42/zip-download-failure-visible-sites-chromium.png",
+        "quality/evidence/step-42/zip-download-failure-visible-sites-mobile-chromium.png"
+      ]
+    },
+    {
+      "id": "unresolved-resource-export-blocked",
+      "runtime": "Sites Worker",
+      "viewports": ["1440x900", "390x844"],
+      "injection": "Imported a schema-valid manifest whose first resource reference used an unknown kebab-case slug.",
+      "result": "pass",
+      "checks": ["manifest import remained visible", "ZIP export rejected the unknown resource", "no fallback component exported", "zero uncaught exceptions"],
+      "consoleErrors": 0,
+      "pageErrors": 0,
+      "failedRequests": 0,
+      "httpErrors": 0,
+      "evidence": [
+        "quality/evidence/step-42/unresolved-resource-export-blocked-sites-chromium.json",
+        "quality/evidence/step-42/unresolved-resource-export-blocked-sites-mobile-chromium.json",
+        "quality/evidence/step-42/unresolved-resource-export-blocked-sites-chromium.png",
+        "quality/evidence/step-42/unresolved-resource-export-blocked-sites-mobile-chromium.png"
+      ]
+    },
+    {
+      "id": "api-offline-deterministic-core",
+      "runtime": "Sites Worker",
+      "viewports": ["1440x900"],
+      "injection": "Aborted /api/** requests to simulate an unavailable backend.",
+      "result": "pass",
+      "checks": ["Laptop model Lab disabled", "deterministic reduce-motion command changed Design DNA", "project identity preserved"],
+      "consoleErrors": 1,
+      "expectedDiagnostics": ["One failed health request and Chromium net::ERR_FAILED console message are caused by the injected API outage; no uncaught page exception occurs."],
+      "pageErrors": 0,
+      "failedRequests": 1,
+      "httpErrors": 0,
+      "evidence": [
+        "quality/evidence/step-42/api-offline-deterministic-core-sites-chromium.json",
+        "quality/evidence/step-42/api-offline-deterministic-core-sites-chromium.png"
+      ]
+    }
+  ],
+  "reusedFaultCoverage": [
+    {
+      "area": "Browser persistence",
+      "test": "tests/e2e/workbench-persistence-hardening.spec.ts",
+      "result": "7 passed on desktop Chromium",
+      "cases": ["localStorage read failure with IndexedDB recovery", "full recovery journal", "IndexedDB unavailable", "legacy schema migration", "corrupt record raw export", "browser-process restart", "both durable stores unavailable"]
+    },
+    {
+      "area": "Authentication bindings",
+      "test": "apps/api/src/__tests__/auth-hardening.test.ts",
+      "result": "6 passed",
+      "cases": ["guest access", "test-token rejection", "missing auth bindings return 503", "session credential redaction", "expired session", "account mutation returns 503"]
+    },
+    {
+      "area": "CLI catalogue and registry outage",
+      "test": "packages/cli/src/__tests__/black-box.test.ts",
+      "result": "19 passed",
+      "cases": ["offline catalogue failure is not shown as zero results", "registry security failures are actionable"]
+    },
+    {
+      "area": "Standalone export source and variant validation",
+      "test": "packages/exporter/src/__tests__/standalone-export-fidelity.test.ts",
+      "result": "7 passed in the focused fidelity file",
+      "cases": ["unresolved source rejected", "unsupported variants rejected", "actual resources and variants resolve", "clean install/build/browser smoke"]
+    },
+    {
+      "area": "Laptop model Lab unavailable",
+      "test": "tests/e2e/capability-tiers.spec.ts",
+      "result": "1 passed on desktop Chromium",
+      "cases": ["Lab remains opt-in; unsupported command reports safe failure without proposal"]
+    },
+    {
+      "area": "Laptop/container restart recovery",
+      "evidence": "quality/evidence/step-37/os-restart-recovery-2026-10-24-followup.json",
+      "result": "pass",
+      "cases": ["all expected containers recovered without manual starts", "Tessellate API and host healthy", "local API health returned HTTP 200"]
+    }
+  ],
+  "newFindings": ["AUD-314"],
+  "findingDisposition": "AUD-314 fixed and verified locally; public review deployment verification remains pending for Step 45.",
+  "releaseBoundary": "No Site version was saved, published, or deployed in this step."
+}

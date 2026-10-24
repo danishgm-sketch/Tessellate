@@ -1,0 +1,51 @@
+{
+  "capturedAt": "2026-10-20T20:30:40.161Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=ai-research-answer&variant=expressive&theme=dark",
+  "viewport": "390x844",
+  "status": 200,
+  "accessibility": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "nodes": [
+        {
+          "target": [
+            "p"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.2 (foreground color: #a8afba, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "html": "<p class=\"text-xs text-[var(--tess-ink-muted,#62666F)]\">Synthesized from 12 architectural repository documents</p>"
+        },
+        {
+          "target": [
+            ".items-start.gap-2.flex:nth-child(1) > span:nth-child(2)"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.2 (foreground color: #a8afba, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "html": "<span>Zero Lock-in: Component code exports as self-contained TypeScript and Tailwind files with no proprietary wrapper tags.</span>"
+        },
+        {
+          "target": [
+            ".items-start.gap-2.flex:nth-child(2) > span:nth-child(2)"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.2 (foreground color: #a8afba, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "html": "<span>Bundle Performance: Exported apps load in under 150ms with zero remote asset fetching.</span>"
+        },
+        {
+          "target": [
+            ".items-start.gap-2.flex:nth-child(3) > span:nth-child(2)"
+          ],
+          "summary": "Fix any of the following:\n  Element has insufficient color contrast of 2.2 (foreground color: #a8afba, background color: #ffffff, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1",
+          "html": "<span>Guest Independence: Full export and preview lifecycle works offline in IndexedDB.</span>"
+        }
+      ]
+    }
+  ],
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\deployed-before\\final-regressions\\mobile\\ai-research-answer-dark-expressive.png"
+}

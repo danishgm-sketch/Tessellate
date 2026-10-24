@@ -1,0 +1,33 @@
+{
+  "findingId": "SEC-37-095",
+  "severity": "medium",
+  "title": "Object.assign could add remote resource URLs to browser-created elements",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "Object.assign(document.createElement('img'), { src: 'https://collector.invalid/pixel' })",
+      "const assign = Object.assign; assign(image, { src: 'https://collector.invalid/pixel' })",
+      "Object.assign(document.createElementNS(svgNamespace, 'image'), { href: 'https://collector.invalid/pixel' })",
+      "Object.assign(image, unresolvedProps)"
+    ],
+    "beforeFix": "Direct, aliased and namespace-aware Object.assign calls returned pass, including an unknown source object that could contain an image URL.",
+    "afterFix": "The scanner resolves Object.assign targets and source property spreads, rejects statically remote resource values, and fails closed when a dynamic source may set a URL on an automatically loading resource element."
+  },
+  "rootCause": "The DOM resource mutation scanner handled setAttribute, Reflect.set, and Object.defineProperty, but did not inspect Object.assign target/source pairs.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Inspect Object.assign for resource-bearing DOM targets, recursively resolve static source objects and aliases, and reject uncertifiable source spreads for auto-loading tags.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"remote resource mutations through Object.assign\"",
+    "redBeforeFixResult": "failed as expected: direct Object.assign to an img passed before the fix; independent probes also passed for aliases, SVG image nodes, and unresolved props",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "65 tests passed",
+    "canonicalResourceIsolationMatrix": "324 resources passed, zero warnings, zero failures",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "Static source analysis only; resource code was not executed. Preview CSP remains an independent network restriction. Release-candidate deployment verification remains pending.",
+  "capturedAt": "2026-10-21T17:17:01Z"
+}

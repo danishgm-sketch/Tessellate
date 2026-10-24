@@ -1,0 +1,34 @@
+{
+  "findingId": "SEC-37-078",
+  "severity": "medium",
+  "title": "Aliased and reflected eval/Function calls bypassed the registry gate",
+  "status": "fixed_locally",
+  "reproduction": {
+    "examples": [
+      "const execute = eval; execute('alert(1)');",
+      "const DynamicFunction = Function; new DynamicFunction('return 1');",
+      "Reflect.apply(eval, undefined, ['alert(1)']);",
+      "Reflect.construct(Function, ['return 1'])();",
+      "Reflect.get(globalThis, 'Function')('return 1')();"
+    ],
+    "beforeFix": "The source-isolation check returned pass for aliased eval and Function constructors, Reflect.apply, Reflect.construct, and Reflect.get of Function.",
+    "afterFix": "Alias- and reflection-based dynamic code execution attempts fail the source-isolation gate without evaluating the supplied code."
+  },
+  "rootCause": "Dynamic code rejection used source-text patterns for direct eval and new Function syntax without resolving aliases or reflective access to those globals.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve aliases to eval and Function plus Reflect/Object method aliases in the TypeScript AST, and reject calls/construction without executing resource source.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"dynamic code execution through aliases and reflection\"",
+    "redBeforeFixResult": "failed as expected: aliased eval returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "50 tests passed",
+    "fullUnitSuite": "pnpm test passed: 1,175 tests across 76 files",
+    "typecheck": "pnpm typecheck passed across 22 workspace packages",
+    "lint": "pnpm lint passed with 0 errors and 33 warnings",
+    "untrustedCodeExecuted": false,
+    "runtimeBoundary": "The local source gate complements, but does not replace, the preview sandbox and CSP."
+  }
+}

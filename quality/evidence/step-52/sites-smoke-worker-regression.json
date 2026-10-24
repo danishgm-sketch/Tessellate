@@ -1,0 +1,33 @@
+{
+  "capturedAt": "2026-10-21T20:56:49.6183285Z",
+  "issueId": "AUD-273",
+  "command": "pnpm exec playwright test --config apps/sites/playwright.config.ts apps/sites/sites-smoke.spec.ts",
+  "before": {
+    "target": "Astro preview at localhost:4322",
+    "failures": [
+      "Root and Workbench routes returned 404 when preview pointed to root dist after Sites build.",
+      "Astro preview omitted Sites Worker response headers; sandboxed preview modules failed opaque-origin CORS."
+    ],
+    "failedRequests": [
+      "http://localhost:4322/_astro/client.CZ5CiHPg.js",
+      "http://localhost:4322/_astro/PreviewHost.BA8G9wyR.js"
+    ]
+  },
+  "after": {
+    "target": "Locally built Sites Worker at http://127.0.0.1:4323",
+    "testsPassed": 2,
+    "testsFailed": 0,
+    "testNames": [
+      "packaged employee-experience journey, actual ZIP and zero browser errors",
+      "all existing tools, catalogue and a resource detail load without browser errors"
+    ],
+    "browserErrors": [],
+    "failedRequests": [],
+    "httpErrors": [],
+    "screenshots": [
+      "quality/evidence/step-52/after/sites-worker-home-desktop.png",
+      "quality/evidence/step-52/after/sites-worker-home-mobile.png"
+    ]
+  },
+  "limitations": ["Local only; review Site not redeployed from this branch."]
+}

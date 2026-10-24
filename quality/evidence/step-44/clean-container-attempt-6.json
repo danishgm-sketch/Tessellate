@@ -1,0 +1,58 @@
+{
+    "sensitiveHostEnvironmentPassed":  false,
+    "log":  "quality/evidence/step-44/clean-container.log",
+    "repositoryNodeModulesPresent":  false,
+    "containerName":  "tessellate-step44-20261024T035745Z",
+    "finishedAt":  "2026-10-24T04:11:15.2808790Z",
+    "stagedSourcePath":  "C:\\Users\\ismay\\AppData\\Local\\Temp\\tessellate-step44-20261024T035745Z\\source",
+    "startedAt":  "2026-10-24T03:58:14.5481662Z",
+    "commandResults":  [
+                           {
+                               "name":  "frozen_install",
+                               "exitCode":  0,
+                               "durationSeconds":  26
+                           },
+                           {
+                               "name":  "catalogue_build",
+                               "exitCode":  0,
+                               "durationSeconds":  2
+                           },
+                           {
+                               "name":  "typecheck",
+                               "exitCode":  0,
+                               "durationSeconds":  49
+                           },
+                           {
+                               "name":  "lint",
+                               "exitCode":  0,
+                               "durationSeconds":  9
+                           },
+                           {
+                               "name":  "unit_tests",
+                               "exitCode":  0,
+                               "durationSeconds":  57
+                           },
+                           {
+                               "name":  "full_audit",
+                               "exitCode":  0,
+                               "durationSeconds":  52
+                           },
+                           {
+                               "name":  "production_build",
+                               "exitCode":  0,
+                               "durationSeconds":  42
+                           },
+                           {
+                               "name":  "browser_tests",
+                               "exitCode":  1,
+                               "durationSeconds":  491
+                           }
+                       ],
+    "status":  "failed",
+    "stagedFileCount":  14927,
+    "step":  44,
+    "filesystemMode":  "container-native",
+    "image":  "mcr.microsoft.com/playwright:v1.63.0-noble",
+    "containerExitCode":  1,
+    "stagedBytes":  815910528
+}

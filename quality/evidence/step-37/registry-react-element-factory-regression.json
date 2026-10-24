@@ -1,0 +1,34 @@
+{
+  "findingId": "SEC-37-091",
+  "severity": "high",
+  "title": "Registry isolation checks were bypassed through React element factory APIs",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "React.createElement('script', { src: '/local-code.js' })",
+      "import { createElement as h } from 'react'; h('iframe', { sandbox: '', src: '/same-origin' })",
+      "import { jsx as _jsx } from 'react/jsx-runtime'; _jsx('script', { src: '/local-code.js' })",
+      "React.createElement('img', { src: 'https://collector.invalid/pixel' })"
+    ],
+    "beforeFix": "The registry gate accepted native script/iframe nodes and remote image requests when created through React.createElement or JSX runtime factories rather than JSX syntax.",
+    "afterFix": "The scanner resolves React default/named imports, aliases, and jsx/jsxs/jsxDEV runtime factories, then applies native tag and resource-URL rules to their props. External anchors and local image paths remain allowed."
+  },
+  "rootCause": "Native element and resource URL checks were driven primarily by JSX AST nodes, while React factory calls encode the same DOM output as ordinary call expressions.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Recognize React.createElement, imported createElement aliases, and react/jsx-runtime factories; run the same script/iframe/remote-resource checks on static tags and props, preserving safe link navigation and local assets.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"unsafe native resources passed through React element factories\"",
+    "redBeforeFixResult": "failed as expected: script, iframe, and remote image factory calls passed before the fix",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "59 tests passed",
+    "safeNavigationRegression": "passed: external anchor URLs remain allowed",
+    "safeLocalAssetRegression": "passed: local image src values remain allowed",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "This is static registry source analysis. Factory calls were parsed, not executed. The local source-isolation matrix passes all canonical resources; release-candidate deployment verification remains pending.",
+  "capturedAt": "2026-10-21T16:57:33Z"
+}

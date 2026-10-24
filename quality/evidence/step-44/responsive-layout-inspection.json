@@ -1,0 +1,316 @@
+[
+  {
+    "route": "/docs/cli/",
+    "width": 360,
+    "viewport": 360,
+    "layoutViewport": 389,
+    "documentWidth": 389,
+    "overflows": [
+      {
+        "tag": "CODE",
+        "testId": null,
+        "className": "",
+        "text": "tess validate ./resources/my-card/manifest.json",
+        "bounds": {
+          "left": 51,
+          "right": 389,
+          "top": 1190,
+          "bottom": 1204,
+          "width": 338,
+          "height": 14
+        },
+        "overflowX": "visible",
+        "display": "inline",
+        "flex": "0 1 auto"
+      },
+      {
+        "tag": "CODE",
+        "testId": null,
+        "className": "",
+        "text": "tess export project.tess.json --output ./my-app",
+        "bounds": {
+          "left": 51,
+          "right": 389,
+          "top": 1316,
+          "bottom": 1330,
+          "width": 338,
+          "height": 14
+        },
+        "overflowX": "visible",
+        "display": "inline",
+        "flex": "0 1 auto"
+      }
+    ],
+    "toolbar": null,
+    "title": null,
+    "ancestors": []
+  },
+  {
+    "route": "/docs/cli/",
+    "width": 390,
+    "viewport": 390,
+    "layoutViewport": 390,
+    "documentWidth": 390,
+    "overflows": [],
+    "toolbar": null,
+    "title": null,
+    "ancestors": []
+  },
+  {
+    "route": "/docs/cli/",
+    "width": 430,
+    "viewport": 430,
+    "layoutViewport": 430,
+    "documentWidth": 430,
+    "overflows": [],
+    "toolbar": null,
+    "title": null,
+    "ancestors": []
+  },
+  {
+    "route": "/workbench/",
+    "width": 360,
+    "viewport": 360,
+    "layoutViewport": 360,
+    "documentWidth": 360,
+    "overflows": [],
+    "toolbar": {
+      "left": 0,
+      "right": 360,
+      "top": 0,
+      "bottom": 219,
+      "width": 360,
+      "height": 219
+    },
+    "title": {
+      "text": "Example employee workspace",
+      "bounds": {
+        "left": 65,
+        "right": 242,
+        "top": 12,
+        "bottom": 32,
+        "width": 177,
+        "height": 20
+      },
+      "display": "block",
+      "visibility": "visible"
+    },
+    "ancestors": [
+      {
+        "tag": "BUTTON",
+        "testId": null,
+        "className": "min-w-0 max-w-[220px] flex-1 truncate text-sm font-bold text-[#111217] dark:text-[#F5F7FA] hover:text-[#2547E8] transition-colors",
+        "bounds": {
+          "left": 65,
+          "right": 242,
+          "top": 12,
+          "bottom": 32,
+          "width": 177,
+          "height": 20
+        },
+        "display": "block",
+        "visibility": "visible",
+        "flex": "1 1 0%",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "DIV",
+        "testId": null,
+        "className": "flex min-w-0 flex-1 items-center gap-3 lg:flex-none",
+        "bounds": {
+          "left": 12,
+          "right": 348,
+          "top": 8,
+          "bottom": 36,
+          "width": 336,
+          "height": 28
+        },
+        "display": "flex",
+        "visibility": "visible",
+        "flex": "1 1 0%",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "HEADER",
+        "testId": "top-toolbar",
+        "className": "dark min-h-14 shrink-0 px-3 py-2 gap-2 flex-wrap border-b border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] flex items-center justify-between select-none z-30 relative",
+        "bounds": {
+          "left": 0,
+          "right": 360,
+          "top": 0,
+          "bottom": 219,
+          "width": 360,
+          "height": 219
+        },
+        "display": "flex",
+        "visibility": "visible",
+        "flex": "0 0 auto",
+        "minWidth": "auto"
+      }
+    ]
+  },
+  {
+    "route": "/workbench/",
+    "width": 390,
+    "viewport": 390,
+    "layoutViewport": 390,
+    "documentWidth": 390,
+    "overflows": [],
+    "toolbar": {
+      "left": 0,
+      "right": 390,
+      "top": 0,
+      "bottom": 219,
+      "width": 390,
+      "height": 219
+    },
+    "title": {
+      "text": "Example employee workspace",
+      "bounds": {
+        "left": 65,
+        "right": 272,
+        "top": 12,
+        "bottom": 32,
+        "width": 207,
+        "height": 20
+      },
+      "display": "block",
+      "visibility": "visible"
+    },
+    "ancestors": [
+      {
+        "tag": "BUTTON",
+        "testId": null,
+        "className": "min-w-0 max-w-[220px] flex-1 truncate text-sm font-bold text-[#111217] dark:text-[#F5F7FA] hover:text-[#2547E8] transition-colors",
+        "bounds": {
+          "left": 65,
+          "right": 272,
+          "top": 12,
+          "bottom": 32,
+          "width": 207,
+          "height": 20
+        },
+        "display": "block",
+        "visibility": "visible",
+        "flex": "1 1 0%",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "DIV",
+        "testId": null,
+        "className": "flex min-w-0 flex-1 items-center gap-3 lg:flex-none",
+        "bounds": {
+          "left": 12,
+          "right": 378,
+          "top": 8,
+          "bottom": 36,
+          "width": 366,
+          "height": 28
+        },
+        "display": "flex",
+        "visibility": "visible",
+        "flex": "1 1 0%",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "HEADER",
+        "testId": "top-toolbar",
+        "className": "dark min-h-14 shrink-0 px-3 py-2 gap-2 flex-wrap border-b border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] flex items-center justify-between select-none z-30 relative",
+        "bounds": {
+          "left": 0,
+          "right": 390,
+          "top": 0,
+          "bottom": 219,
+          "width": 390,
+          "height": 219
+        },
+        "display": "flex",
+        "visibility": "visible",
+        "flex": "0 0 auto",
+        "minWidth": "auto"
+      }
+    ]
+  },
+  {
+    "route": "/workbench/",
+    "width": 430,
+    "viewport": 430,
+    "layoutViewport": 430,
+    "documentWidth": 430,
+    "overflows": [],
+    "toolbar": {
+      "left": 0,
+      "right": 430,
+      "top": 0,
+      "bottom": 159,
+      "width": 430,
+      "height": 159
+    },
+    "title": {
+      "text": "Example employee workspace",
+      "bounds": {
+        "left": 64,
+        "right": 64,
+        "top": 15,
+        "bottom": 35,
+        "width": 0,
+        "height": 20
+      },
+      "display": "block",
+      "visibility": "visible"
+    },
+    "ancestors": [
+      {
+        "tag": "BUTTON",
+        "testId": null,
+        "className": "min-w-0 max-w-[220px] flex-1 truncate text-sm font-bold text-[#111217] dark:text-[#F5F7FA] hover:text-[#2547E8] transition-colors",
+        "bounds": {
+          "left": 64,
+          "right": 64,
+          "top": 15,
+          "bottom": 35,
+          "width": 0,
+          "height": 20
+        },
+        "display": "block",
+        "visibility": "visible",
+        "flex": "1 1 0%",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "DIV",
+        "testId": null,
+        "className": "flex min-w-0 flex-1 items-center gap-3 lg:flex-none",
+        "bounds": {
+          "left": 12,
+          "right": 14,
+          "top": 11,
+          "bottom": 39,
+          "width": 2,
+          "height": 28
+        },
+        "display": "flex",
+        "visibility": "visible",
+        "flex": "1 1 0%",
+        "minWidth": "0px"
+      },
+      {
+        "tag": "HEADER",
+        "testId": "top-toolbar",
+        "className": "dark min-h-14 shrink-0 px-3 py-2 gap-2 flex-wrap border-b border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] flex items-center justify-between select-none z-30 relative",
+        "bounds": {
+          "left": 0,
+          "right": 430,
+          "top": 0,
+          "bottom": 159,
+          "width": 430,
+          "height": 159
+        },
+        "display": "flex",
+        "visibility": "visible",
+        "flex": "0 0 auto",
+        "minWidth": "auto"
+      }
+    ]
+  }
+]

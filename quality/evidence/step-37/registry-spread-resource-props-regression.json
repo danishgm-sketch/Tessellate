@@ -1,0 +1,35 @@
+{
+  "findingId": "SEC-37-092",
+  "severity": "medium",
+  "title": "JSX and React prop spreads hid remote resource requests from registry isolation",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "const props = { src: 'https://collector.invalid/pixel' }; <img {...props} />",
+      "React.createElement('img', { ...props })",
+      "<img {...props} /> where props is an unresolved parameter",
+      "React.createElement('img', { ...props }) where props is an unresolved parameter",
+      "Object.defineProperty(img, 'src', { ...{ value: 'https://collector.invalid/pixel' } })"
+    ],
+    "beforeFix": "Static probes and a red regression showed pass for external asset URLs hidden in JSX spread attributes, React factory spread props, unresolved runtime prop spreads, and a spread descriptor passed to Object.defineProperty.",
+    "afterFix": "The source scan recursively resolves static object spreads and aliases in JSX attributes, React factory props, and property descriptors. It rejects statically remote URLs and fails closed when an unresolved spread can supply a URL to an automatically loading resource element."
+  },
+  "rootCause": "The JSX visitor skipped JsxSpreadAttribute nodes, and React factory/property descriptor resolution only read direct object properties. The shared resolver did not follow SpreadAssignment values or treat an unknown spread as an uncertified network-loading attribute.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve object-literal properties through spreads and const aliases for JSX, React factory props, and DOM property descriptors. Fail closed on an unknown spread for an automatically loading resource tag; retain external links and user-submitted form controls under their existing behavior and CSP controls.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"hidden in JSX and React factory prop spreads\"",
+    "redBeforeFixResult": "failed as expected on a statically remote JSX spread; direct probes also returned pass for React spreads, unresolved JSX/React spreads, and the Object.defineProperty descriptor spread",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "65 tests passed",
+    "fullUnitSuite": "pnpm test passed: 1,190 tests across 76 files",
+    "canonicalResourceIsolationMatrix": "Final 324-resource matrix: 324 passed, zero warnings, zero failures (captured 2026-10-21T17:17:42.782Z)",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "This is static registry source analysis. The source probes were parsed but never executed. The preview CSP remains a separate restriction on external resource requests; deployed release-candidate verification is pending.",
+  "capturedAt": "2026-10-21T17:08:56Z"
+}

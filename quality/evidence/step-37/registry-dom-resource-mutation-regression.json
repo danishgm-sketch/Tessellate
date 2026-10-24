@@ -1,0 +1,29 @@
+{
+  "findingId": "SEC-37-079",
+  "severity": "medium",
+  "title": "Remote resource URLs assigned through DOM mutation APIs bypassed the registry gate",
+  "status": "fixed_locally",
+  "reproduction": {
+    "examples": [
+      "document.createElement('img').setAttribute('src', 'https://collector.invalid/pixel.png');",
+      "Reflect.set(document.createElement('img'), 'src', 'https://collector.invalid/pixel.png');",
+      "Object.defineProperty(document.createElement('img'), 'src', { value: 'https://collector.invalid/pixel.png' });"
+    ],
+    "beforeFix": "All three DOM mutation forms returned pass even though they request a remote image.",
+    "afterFix": "Remote resource URLs written through setAttribute, Reflect.set, and Object.defineProperty fail the source-isolation gate."
+  },
+  "rootCause": "Remote request scanning covered static markup and direct property assignments but not the DOM APIs that assign resource-bearing attributes.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve element tags, resource attributes, descriptor values, and static URLs for DOM mutation calls; reject remote requests without running source.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"remote resource URLs assigned through DOM mutation APIs\"",
+    "redBeforeFixResult": "failed as expected: remote img src mutations returned pass",
+    "targetedAfterFix": "50 registry-gate tests passed",
+    "fullUnitSuite": "1,175 tests passed across 76 files",
+    "resourceScan": "All 324 catalogue resources pass source isolation",
+    "untrustedCodeExecuted": false
+  }
+}

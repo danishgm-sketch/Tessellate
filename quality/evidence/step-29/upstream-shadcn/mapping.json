@@ -1,0 +1,122 @@
+{
+  "status": "PASS",
+  "sourceFileCount": 3504,
+  "routeCount": 19,
+  "layoutFileCount": 11,
+  "routes": [
+    {
+      "route": "/create",
+      "sourceFile": "app/(app)/(create)/create/page.tsx",
+      "layoutFilePaths": [
+        "app/layout.tsx",
+        "app/(app)/layout.tsx",
+        "app/(app)/(create)/create/layout.tsx"
+      ]
+    },
+    {
+      "route": "/",
+      "sourceFile": "app/(app)/(root)/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(app)/layout.tsx"]
+    },
+    {
+      "route": "/sera",
+      "sourceFile": "app/(app)/(styles)/sera/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(app)/layout.tsx"]
+    },
+    {
+      "route": "/typeset",
+      "sourceFile": "app/(app)/(typeset)/typeset/page.tsx",
+      "layoutFilePaths": [
+        "app/layout.tsx",
+        "app/(app)/layout.tsx",
+        "app/(app)/(typeset)/typeset/layout.tsx"
+      ]
+    },
+    {
+      "route": "/blocks/[...categories]",
+      "sourceFile": "app/(app)/blocks/[...categories]/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(app)/layout.tsx", "app/(app)/blocks/layout.tsx"]
+    },
+    {
+      "route": "/blocks",
+      "sourceFile": "app/(app)/blocks/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(app)/layout.tsx", "app/(app)/blocks/layout.tsx"]
+    },
+    {
+      "route": "/charts/:type",
+      "sourceFile": "app/(app)/charts/[type]/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(app)/layout.tsx", "app/(app)/charts/layout.tsx"]
+    },
+    {
+      "route": "/colors",
+      "sourceFile": "app/(app)/colors/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(app)/layout.tsx", "app/(app)/colors/layout.tsx"]
+    },
+    {
+      "route": "/docs/[[...slug]]",
+      "sourceFile": "app/(app)/docs/[[...slug]]/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(app)/layout.tsx", "app/(app)/docs/layout.tsx"]
+    },
+    {
+      "route": "/docs/changelog",
+      "sourceFile": "app/(app)/docs/changelog/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(app)/layout.tsx", "app/(app)/docs/layout.tsx"]
+    },
+    {
+      "route": "/examples/authentication",
+      "sourceFile": "app/(app)/examples/authentication/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(app)/layout.tsx", "app/(app)/examples/layout.tsx"]
+    },
+    {
+      "route": "/examples/dashboard",
+      "sourceFile": "app/(app)/examples/dashboard/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(app)/layout.tsx", "app/(app)/examples/layout.tsx"]
+    },
+    {
+      "route": "/examples/playground",
+      "sourceFile": "app/(app)/examples/playground/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(app)/layout.tsx", "app/(app)/examples/layout.tsx"]
+    },
+    {
+      "route": "/examples/rtl",
+      "sourceFile": "app/(app)/examples/rtl/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(app)/layout.tsx", "app/(app)/examples/layout.tsx"]
+    },
+    {
+      "route": "/examples/tasks",
+      "sourceFile": "app/(app)/examples/tasks/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(app)/layout.tsx", "app/(app)/examples/layout.tsx"]
+    },
+    {
+      "route": "/examples/:base/:name",
+      "sourceFile": "app/(view)/examples/[base]/[name]/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx"]
+    },
+    {
+      "route": "/preview/:base/:name",
+      "sourceFile": "app/(view)/preview/[base]/[name]/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx", "app/(view)/preview/layout.tsx"]
+    },
+    {
+      "route": "/preview/typeset/:name",
+      "sourceFile": "app/(view)/preview/typeset/[name]/page.tsx",
+      "layoutFilePaths": [
+        "app/layout.tsx",
+        "app/(view)/preview/layout.tsx",
+        "app/(view)/preview/typeset/layout.tsx"
+      ]
+    },
+    {
+      "route": "/view/:style/:name",
+      "sourceFile": "app/(view)/view/[style]/[name]/page.tsx",
+      "layoutFilePaths": ["app/layout.tsx"]
+    }
+  ],
+  "warnings": [
+    "Beta analysis: route and JSX structure are inferred from TypeScript AST; source files remain untouched.",
+    "Product intent, data bindings, navigation behavior, business logic, CSS Modules, and dynamic style values are not inferred. The product archetype is unknown; review this manifest before using composition or export.",
+    "Design DNA evidence: curvature, visualMode. 36 required Design DNA fields use schema defaults and are not inferred.",
+    "Next.js layout wrappers are associated with route files in the ingestion result but are not merged into ProjectManifest route trees."
+  ],
+  "sourceModifiedByMapping": false
+}

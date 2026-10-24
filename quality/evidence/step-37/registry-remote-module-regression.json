@@ -1,0 +1,26 @@
+{
+  "findingId": "SEC-37-068",
+  "severity": "medium",
+  "title": "Registry gate allowed remote JavaScript module imports",
+  "status": "fixed_locally",
+  "reproduction": {
+    "staticImport": "import remoteComponent from 'https://modules.invalid/component.js';",
+    "dynamicImport": "const moduleUrl = 'https://modules.invalid/runtime.js'; void import(moduleUrl);",
+    "beforeFix": "Both forms passed the source-isolation check.",
+    "afterFix": "The static and dynamic import examples fail with a remote module request violation."
+  },
+  "rootCause": "The previous outbound-request patterns did not inspect module-loading syntax.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "The TypeScript AST scan rejects statically resolved HTTP(S) import, export-from, import(), and require() module specifiers without executing the submitted source.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"remote modules\"",
+    "redBeforeFixResult": "failed as expected: the static remote import returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "targetedAfterFixResult": "29 tests passed",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "The source gate complements, but does not replace, isolated preview origin and CSP enforcement. Deployed verification remains pending."
+}

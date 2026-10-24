@@ -1,0 +1,33 @@
+{
+  "id": "E2E-37-PREVIEW-FRAME-01",
+  "date": "2026-10-22",
+  "classification": "test-harness-regression",
+  "severity": "medium",
+  "route": "/preview/?resource={slug}",
+  "viewports": ["desktop-chromium", "mobile-chromium"],
+  "expected": "Content and interactions are asserted inside the isolated resource-renderer frame.",
+  "actualBeforeFix": "Seven resource-copy tests per viewport queried .tess-screen and resource controls in the trusted outer wrapper, which contains only the opaque sandbox iframe; each timed out after 15 seconds.",
+  "rootCause": "The test helper still assumed the resource DOM was in the top-level preview document after the preview security design moved rendering into iframe[data-tessellate-preview-frame].",
+  "affectedFile": "tests/e2e/resource-copy-truthfulness-step-39.spec.ts",
+  "remediation": "Return a Playwright FrameLocator from openResourcePreview and perform preview text, role, and interaction assertions through that frame locator. Product runtime and its origin/CSP isolation were unchanged.",
+  "beforeEvidence": "quality/evidence/step-37/preview-frame-harness-before.md",
+  "afterEvidence": "The post-fix aggregate pnpm test:e2e result is summarized in quality/STEP_37_EVIDENCE.md; the targeted resource-copy run also passed 22/22 across Sites Worker desktop and mobile.",
+  "validation": {
+    "focusedResourceCopy": "22 passed across Sites Worker desktop and mobile",
+    "isolatedPreviewApp": "3 passed",
+    "aggregateE2E": {
+      "passed": 438,
+      "configuredSkipped": 133,
+      "failed": 0,
+      "stages": [
+        "Astro desktop/mobile: 262 passed, 100 configured skips",
+        "Sites Worker desktop/mobile: 173 passed, 33 configured skips",
+        "Isolated preview app: 3 passed"
+      ]
+    },
+    "typecheck": "22 workspace packages passed",
+    "lint": "passed"
+  },
+  "deploymentVerification": "pending release-candidate deployment; no production claim",
+  "traceCoreWebVitals": "paused at owner request pending Chrome DevTools MCP setup"
+}

@@ -1,0 +1,69 @@
+{
+  "step": 36,
+  "name": "Responsive behavior",
+  "date": "2026-10-20",
+  "status": "local-browser-gate-passed",
+  "runtime": "ChatGPT Sites-compatible local Worker preview",
+  "browserProfiles": [
+    "sites-chromium (desktop Chromium)",
+    "sites-mobile-chromium (Pixel 7 Chromium emulation)"
+  ],
+  "viewportsCssPixels": [360, 390, 430, 768, 1024, 1280, 1440, 1536],
+  "routes": [
+    "/",
+    "/explore/",
+    "/compose/",
+    "/workbench/",
+    "/r/button/",
+    "/tools/",
+    "/tools/accessibility/",
+    "/blueprints/",
+    "/blueprints/ai-product/",
+    "/showcases/",
+    "/showcase/showcase-playful-hr/",
+    "/docs/",
+    "/docs/cli/",
+    "/about/"
+  ],
+  "routeViewportPairs": 224,
+  "routeScreenshots": 224,
+  "httpFailures": 0,
+  "horizontalOverflowFindings": 0,
+  "consoleErrors": 0,
+  "uncaughtExceptions": 0,
+  "failedRequests": 0,
+  "httpErrors": 0,
+  "playwrightTests": {
+    "passed": 10,
+    "failed": 0,
+    "skipped": 0
+  },
+  "interactionCoverage": [
+    "public mobile navigation open/close",
+    "Explore filter drawer open/close",
+    "Workbench phone/tablet tabs and desktop panels at 1023/1024px",
+    "Compose exact brief and three directions at all eight widths",
+    "Home primary action line wrapping at 360/390/430px",
+    "Workbench save badge and project-title bounds at 360/390/430px"
+  ],
+  "issues": {
+    "found": 2,
+    "fixed": 2,
+    "critical": 0,
+    "high": 0,
+    "medium": 2,
+    "low": 0
+  },
+  "evidence": {
+    "report": "quality/STEP_36_EVIDENCE.md",
+    "desktopRoutes": "quality/evidence/step-36/sites-chromium/",
+    "mobileRoutes": "quality/evidence/step-36/sites-mobile-chromium/",
+    "interactions": "quality/evidence/step-36/interactions/",
+    "compose": "quality/evidence/step-36/compose-workflows/"
+  },
+  "limitations": [
+    "The full catalogue resource-by-viewport matrix is not covered by this shell audit.",
+    "Firefox and WebKit are not covered by this step.",
+    "The published review Site has not been verified by this local gate."
+  ]
+}

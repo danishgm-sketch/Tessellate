@@ -1,0 +1,29 @@
+{
+  "capturedAt": "2026-10-21T19:55:42Z",
+  "scope": "Workspace unit-test reliability; not a deployed product runtime issue",
+  "test": "tests/security/gold-artifacts.test.ts › uses only resources admitted by canonical catalogue validation",
+  "before": {
+    "command": "pnpm test",
+    "isolationCheck": {
+      "durationMs": 3280,
+      "command": "pnpm exec vitest run tests/security/gold-artifacts.test.ts",
+      "result": "passed"
+    },
+    "observedDurationMs": 7104,
+    "failure": "Test timed out in 5000ms while building canonical catalogue and enumerating Gold resources under the full 76-file suite.",
+    "result": "failed",
+    "testTimeoutMs": 5000
+  },
+  "fix": {
+    "file": "tests/security/gold-artifacts.test.ts",
+    "testTimeoutMs": 15000,
+    "assertionsChanged": false
+  },
+  "after": {
+    "testFiles": "76/76",
+    "command": "pnpm test",
+    "tests": "1195/1195",
+    "durationMs": 83520,
+    "result": "passed"
+  }
+}

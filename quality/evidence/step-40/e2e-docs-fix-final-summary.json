@@ -1,0 +1,45 @@
+{
+  "capturedAt": "2026-10-23T23:20:56Z",
+  "command": "pnpm test:e2e",
+  "exitCode": 0,
+  "suites": [
+    {
+      "config": "playwright.config.ts",
+      "passed": 278,
+      "skipped": 108,
+      "failed": 0,
+      "duration": "8.0m"
+    },
+    {
+      "config": "tests/e2e/sites-preview.playwright.config.ts",
+      "passed": 226,
+      "skipped": 36,
+      "failed": 0,
+      "duration": "18.7m",
+      "resourceCertification": "324/324 resources at certified widths"
+    },
+    {
+      "config": "tests/e2e/preview-app.playwright.config.ts",
+      "passed": 3,
+      "skipped": 0,
+      "failed": 0,
+      "duration": "8.4s"
+    }
+  ],
+  "total": {
+    "passed": 507,
+    "skipped": 144,
+    "failed": 0
+  },
+  "includes": [
+    "desktop and mobile docs-index regression",
+    "compose-to-workbench acceptance flows",
+    "all-catalogue resource rendering",
+    "Gold accessibility and state matrices",
+    "resource truthfulness",
+    "responsive coverage",
+    "preview isolation and CSP",
+    "standalone preview app"
+  ],
+  "timingNote": "This full run used the docs-index fix and patched dependency graph; it completed before the Activity Feed sample disclosure patch. The Activity Feed change was subsequently verified by the full unit suite, pnpm audit:all, and its own desktop/mobile Sites Worker iframe regression."
+}

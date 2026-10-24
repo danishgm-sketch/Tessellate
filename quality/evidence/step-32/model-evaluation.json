@@ -1,0 +1,997 @@
+{
+  "version": 1,
+  "recordedAt": "2026-10-19T21:16:57.128Z",
+  "benchmarkCases": "quality/evidence/step-32/model-benchmark-cases.json",
+  "trainingSource": "apps/host-daemon/model/dataset.py::generate_synthetic_samples",
+  "trainingExamples": 10,
+  "comparison": "BespokeInferenceEngine output versus tryDeterministicCommandMatch from the Workbench.",
+  "note": "Action strings normalize rethink-screen to recompose-screen only because the deterministic parser intentionally treats rethink as its recompose alias. The laptop model has no abstention output, so every adversarial proposal counts as a false positive.",
+  "splits": {
+    "training": {
+      "cases": 10,
+      "labeledActions": 10,
+      "modelActionAccuracy": 0.8,
+      "deterministicParserActionAccuracy": 0.3,
+      "deterministicParserCoverage": 0.4,
+      "modelFalsePositiveRate": null,
+      "deterministicParserFalsePositiveRate": null,
+      "nodeSelectionAccuracy": null,
+      "nodeSelectionCases": 0,
+      "dnaDirectionAccuracy": 0,
+      "dnaDirectionChecks": 17,
+      "divergenceMeanAbsoluteError": 19,
+      "divergenceCases": 10,
+      "confidenceBrierScore": 0.51458,
+      "confidenceExpectedCalibrationError": 0.5956,
+      "calibrationBins": [
+        {
+          "range": "0-20%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        },
+        {
+          "range": "20-40%",
+          "count": 10,
+          "meanConfidence": 0.2044,
+          "observedAccuracy": 0.8
+        },
+        {
+          "range": "40-60%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        },
+        {
+          "range": "60-80%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        },
+        {
+          "range": "80-100%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        }
+      ]
+    },
+    "validation": {
+      "cases": 8,
+      "labeledActions": 8,
+      "modelActionAccuracy": 0.625,
+      "deterministicParserActionAccuracy": 1,
+      "deterministicParserCoverage": 1,
+      "modelFalsePositiveRate": null,
+      "deterministicParserFalsePositiveRate": null,
+      "nodeSelectionAccuracy": null,
+      "nodeSelectionCases": 0,
+      "dnaDirectionAccuracy": 0,
+      "dnaDirectionChecks": 3,
+      "divergenceMeanAbsoluteError": null,
+      "divergenceCases": 0,
+      "confidenceBrierScore": 0.41126937500000005,
+      "confidenceExpectedCalibrationError": 0.420625,
+      "calibrationBins": [
+        {
+          "range": "0-20%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        },
+        {
+          "range": "20-40%",
+          "count": 8,
+          "meanConfidence": 0.204375,
+          "observedAccuracy": 0.625
+        },
+        {
+          "range": "40-60%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        },
+        {
+          "range": "60-80%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        },
+        {
+          "range": "80-100%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        }
+      ]
+    },
+    "heldOut": {
+      "cases": 16,
+      "labeledActions": 16,
+      "modelActionAccuracy": 0.6875,
+      "deterministicParserActionAccuracy": 0.375,
+      "deterministicParserCoverage": 0.4375,
+      "modelFalsePositiveRate": null,
+      "deterministicParserFalsePositiveRate": null,
+      "nodeSelectionAccuracy": 0,
+      "nodeSelectionCases": 6,
+      "dnaDirectionAccuracy": 0,
+      "dnaDirectionChecks": 4,
+      "divergenceMeanAbsoluteError": 30,
+      "divergenceCases": 2,
+      "confidenceBrierScore": 0.4481446250000001,
+      "confidenceExpectedCalibrationError": 0.48312499999999997,
+      "calibrationBins": [
+        {
+          "range": "0-20%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        },
+        {
+          "range": "20-40%",
+          "count": 16,
+          "meanConfidence": 0.20437500000000003,
+          "observedAccuracy": 0.6875
+        },
+        {
+          "range": "40-60%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        },
+        {
+          "range": "60-80%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        },
+        {
+          "range": "80-100%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        }
+      ]
+    },
+    "adversarial": {
+      "cases": 16,
+      "labeledActions": 0,
+      "modelActionAccuracy": null,
+      "deterministicParserActionAccuracy": null,
+      "deterministicParserCoverage": null,
+      "modelFalsePositiveRate": 1,
+      "deterministicParserFalsePositiveRate": 0,
+      "nodeSelectionAccuracy": null,
+      "nodeSelectionCases": 0,
+      "dnaDirectionAccuracy": null,
+      "dnaDirectionChecks": 0,
+      "divergenceMeanAbsoluteError": null,
+      "divergenceCases": 0,
+      "confidenceBrierScore": 0.04176937499999999,
+      "confidenceExpectedCalibrationError": 0.20437500000000006,
+      "calibrationBins": [
+        {
+          "range": "0-20%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        },
+        {
+          "range": "20-40%",
+          "count": 16,
+          "meanConfidence": 0.20437500000000006,
+          "observedAccuracy": 0
+        },
+        {
+          "range": "40-60%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        },
+        {
+          "range": "60-80%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        },
+        {
+          "range": "80-100%",
+          "count": 0,
+          "meanConfidence": null,
+          "observedAccuracy": null
+        }
+      ]
+    }
+  },
+  "disposition": "LAB: evidence is diagnostic; no quality promotion is implied.",
+  "cases": {
+    "training": [
+      {
+        "id": "TRAIN-01",
+        "prompt": "recompose screen with higher data density",
+        "expectedAction": "recompose-screen",
+        "expectedDnaDirections": {
+          "dataDensity": 1,
+          "interactionDensity": 1
+        },
+        "expectedDivergence": 50,
+        "split": "training",
+        "model": {
+          "action": "recompose-screen",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["onboarding-checklist"]
+        }
+      },
+      {
+        "id": "TRAIN-02",
+        "prompt": "rethink the layout with high divergence",
+        "expectedAction": "rethink-screen",
+        "expectedDnaDirections": {
+          "visualAmbition": 1,
+          "motion": 1
+        },
+        "expectedDivergence": 85,
+        "split": "training",
+        "model": {
+          "action": "rethink-screen",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 80,
+          "dnaDeltas": {},
+          "targetNodeIds": ["employee-summary"]
+        }
+      },
+      {
+        "id": "TRAIN-03",
+        "prompt": "make it feel calm and precise with reduced motion",
+        "expectedAction": "apply-feel",
+        "expectedDnaDirections": {
+          "motion": -1,
+          "trust": 1,
+          "contrastFloor": 1
+        },
+        "expectedDivergence": 30,
+        "split": "training",
+        "model": {
+          "action": "replace-component",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["onboarding-checklist"]
+        }
+      },
+      {
+        "id": "TRAIN-04",
+        "prompt": "surprise me with expressive typography and rich visual style",
+        "expectedAction": "surprise-me",
+        "expectedDnaDirections": {
+          "typographicExpression": 1,
+          "visualAmbition": 1,
+          "imageryIntensity": 1
+        },
+        "expectedDivergence": 75,
+        "split": "training",
+        "model": {
+          "action": "surprise-me",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 65,
+          "dnaDeltas": {},
+          "targetNodeIds": ["onboarding-checklist"]
+        }
+      },
+      {
+        "id": "TRAIN-05",
+        "prompt": "lock navigation and header nodes",
+        "expectedAction": "lock-nodes",
+        "expectedDnaDirections": {},
+        "expectedDivergence": 0,
+        "split": "training",
+        "model": {
+          "action": "lock-nodes",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["employee-summary"]
+        }
+      },
+      {
+        "id": "TRAIN-06",
+        "prompt": "unlock all locked nodes in the screen",
+        "expectedAction": "unlock-nodes",
+        "expectedDnaDirections": {},
+        "expectedDivergence": 0,
+        "split": "training",
+        "model": {
+          "action": "unlock-nodes",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "TRAIN-07",
+        "prompt": "replace metric card with advanced analytics data display",
+        "expectedAction": "replace-component",
+        "expectedDnaDirections": {
+          "dataDensity": 1
+        },
+        "expectedDivergence": 40,
+        "split": "training",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "TRAIN-08",
+        "prompt": "adjust design dna for modern editorial fintech style",
+        "expectedAction": "adjust-dna",
+        "expectedDnaDirections": {
+          "trust": 1,
+          "contrastFloor": 1,
+          "borderWeight": 1
+        },
+        "expectedDivergence": 35,
+        "split": "training",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.206,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": [],
+          "feel": "modern editorial"
+        }
+      },
+      {
+        "id": "TRAIN-09",
+        "prompt": "increase visual ambition and motion playfulness",
+        "expectedAction": "adjust-dna",
+        "expectedDnaDirections": {
+          "visualAmbition": 1,
+          "motion": 1
+        },
+        "expectedDivergence": 40,
+        "split": "training",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.206,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": [],
+          "feel": "playful"
+        }
+      },
+      {
+        "id": "TRAIN-10",
+        "prompt": "swap hero banner for compact app header",
+        "expectedAction": "replace-component",
+        "expectedDnaDirections": {
+          "dataDensity": 1
+        },
+        "expectedDivergence": 30,
+        "split": "training",
+        "model": {
+          "action": "replace-component",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["onboarding-checklist"]
+        }
+      }
+    ],
+    "validation": [
+      {
+        "id": "VAL-01",
+        "prompt": "Recompose the dashboard around the weekly report",
+        "expectedAction": "recompose-screen",
+        "split": "validation",
+        "model": {
+          "action": "recompose-screen",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.205,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "VAL-02",
+        "prompt": "Rethink the settings hierarchy",
+        "expectedAction": "recompose-screen",
+        "split": "validation",
+        "model": {
+          "action": "rethink-screen",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 80,
+          "dnaDeltas": {},
+          "targetNodeIds": ["employee-metric"]
+        }
+      },
+      {
+        "id": "VAL-03",
+        "prompt": "Surprise me with a more expressive page",
+        "expectedAction": "surprise-me",
+        "split": "validation",
+        "model": {
+          "action": "surprise-me",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 65,
+          "dnaDeltas": {},
+          "targetNodeIds": ["onboarding-checklist"]
+        }
+      },
+      {
+        "id": "VAL-04",
+        "prompt": "Make onboarding playful and warm",
+        "expectedAction": "apply-feel",
+        "split": "validation",
+        "model": {
+          "action": "replace-component",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["onboarding-checklist"],
+          "feel": "playful"
+        }
+      },
+      {
+        "id": "VAL-05",
+        "prompt": "Make settings professional and institutional",
+        "expectedAction": "apply-feel",
+        "split": "validation",
+        "model": {
+          "action": "replace-component",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["onboarding-checklist"]
+        }
+      },
+      {
+        "id": "VAL-06",
+        "prompt": "Reduce motion for this screen",
+        "expectedAction": "adjust-dna",
+        "expectedDnaDirections": {
+          "motion": -1
+        },
+        "split": "validation",
+        "model": {
+          "action": "replace-component",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.205,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["employee-metric"]
+        }
+      },
+      {
+        "id": "VAL-07",
+        "prompt": "Set card corners to sharp",
+        "expectedAction": "adjust-dna",
+        "expectedDnaDirections": {
+          "curvature": -1
+        },
+        "split": "validation",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.205,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "VAL-08",
+        "prompt": "Round the actions into pill controls",
+        "expectedAction": "adjust-dna",
+        "expectedDnaDirections": {
+          "curvature": 1
+        },
+        "split": "validation",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      }
+    ],
+    "heldOut": [
+      {
+        "id": "HOLD-01",
+        "prompt": "Lock the employee summary section",
+        "expectedAction": "lock-nodes",
+        "expectedNodeId": "employee-summary",
+        "split": "heldOut",
+        "model": {
+          "action": "lock-nodes",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["site-header"]
+        }
+      },
+      {
+        "id": "HOLD-02",
+        "prompt": "Freeze the onboarding checklist in place",
+        "expectedAction": "lock-nodes",
+        "expectedNodeId": "onboarding-checklist",
+        "split": "heldOut",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "HOLD-03",
+        "prompt": "Unlock the old onboarding section",
+        "expectedAction": "unlock-nodes",
+        "expectedNodeId": "onboarding-checklist",
+        "split": "heldOut",
+        "model": {
+          "action": "unlock-nodes",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "HOLD-04",
+        "prompt": "Release the header so it can be edited",
+        "expectedAction": "unlock-nodes",
+        "expectedNodeId": "site-header",
+        "split": "heldOut",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "HOLD-05",
+        "prompt": "Replace the employee metric tile with a small trend chart",
+        "expectedAction": "replace-component",
+        "expectedNodeId": "employee-metric",
+        "split": "heldOut",
+        "model": {
+          "action": "replace-component",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["onboarding-checklist"]
+        }
+      },
+      {
+        "id": "HOLD-06",
+        "prompt": "Swap the header card for a compact toolbar",
+        "expectedAction": "replace-component",
+        "expectedNodeId": "site-header",
+        "split": "heldOut",
+        "model": {
+          "action": "replace-component",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["onboarding-checklist"]
+        }
+      },
+      {
+        "id": "HOLD-07",
+        "prompt": "Increase the data density but keep the colours steady",
+        "expectedAction": "adjust-dna",
+        "expectedDnaDirections": {
+          "dataDensity": 1
+        },
+        "split": "heldOut",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.206,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "HOLD-08",
+        "prompt": "Give headings more typographic expression",
+        "expectedAction": "adjust-dna",
+        "expectedDnaDirections": {
+          "typographicExpression": 1
+        },
+        "split": "heldOut",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "HOLD-09",
+        "prompt": "The employee portal should feel calm and precise",
+        "expectedAction": "apply-feel",
+        "split": "heldOut",
+        "model": {
+          "action": "replace-component",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["employee-summary"]
+        }
+      },
+      {
+        "id": "HOLD-10",
+        "prompt": "Use a professional institutional tone",
+        "expectedAction": "apply-feel",
+        "split": "heldOut",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.205,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "HOLD-11",
+        "prompt": "Recompose the dashboard with a quieter hierarchy",
+        "expectedAction": "recompose-screen",
+        "expectedDivergence": 20,
+        "split": "heldOut",
+        "model": {
+          "action": "recompose-screen",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.205,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "HOLD-12",
+        "prompt": "Rethink the settings page structure",
+        "expectedAction": "recompose-screen",
+        "split": "heldOut",
+        "model": {
+          "action": "rethink-screen",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 80,
+          "dnaDeltas": {},
+          "targetNodeIds": ["employee-metric"]
+        }
+      },
+      {
+        "id": "HOLD-13",
+        "prompt": "Surprise me with a coherent alternative layout",
+        "expectedAction": "surprise-me",
+        "split": "heldOut",
+        "model": {
+          "action": "surprise-me",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 65,
+          "dnaDeltas": {},
+          "targetNodeIds": ["onboarding-checklist"]
+        }
+      },
+      {
+        "id": "HOLD-14",
+        "prompt": "Surprise me with a radical 95 percent structural change",
+        "expectedAction": "surprise-me",
+        "expectedDivergence": 95,
+        "split": "heldOut",
+        "model": {
+          "action": "surprise-me",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 65,
+          "dnaDeltas": {},
+          "targetNodeIds": ["onboarding-checklist"]
+        }
+      },
+      {
+        "id": "HOLD-15",
+        "prompt": "Increase motion playfulness for onboarding",
+        "expectedAction": "adjust-dna",
+        "expectedDnaDirections": {
+          "motion": 1
+        },
+        "split": "heldOut",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.206,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": [],
+          "feel": "playful"
+        }
+      },
+      {
+        "id": "HOLD-16",
+        "prompt": "Make the dashboard geometry more rounded",
+        "expectedAction": "adjust-dna",
+        "expectedDnaDirections": {
+          "curvature": 1
+        },
+        "split": "heldOut",
+        "model": {
+          "action": "replace-component",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["onboarding-checklist"]
+        }
+      }
+    ],
+    "adversarial": [
+      {
+        "id": "ADV-01",
+        "prompt": "Do not recompose the dashboard",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "recompose-screen",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.205,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "ADV-02",
+        "prompt": "Don't surprise me with a new layout",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "surprise-me",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 65,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "ADV-03",
+        "prompt": "Never lock the employee summary",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "lock-nodes",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "ADV-04",
+        "prompt": "Don't unlock the onboarding checklist",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "unlock-nodes",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.205,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "ADV-05",
+        "prompt": "Avoid rounded geometry",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.205,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "ADV-06",
+        "prompt": "I am not asking to change the typography",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.205,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "ADV-07",
+        "prompt": "Leave the screen as it is; do not reduce motion",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "replace-component",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["employee-summary"]
+        }
+      },
+      {
+        "id": "ADV-08",
+        "prompt": "Do not replace the header yet, just show the options",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "ADV-09",
+        "prompt": "What does the Surprise Me command do?",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "surprise-me",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 65,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "ADV-10",
+        "prompt": "The old lock was removed; don't change this page",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "lock-nodes",
+          "summary": "Bespoke Host ML: Executed replace-component on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": ["employee-summary"]
+        }
+      },
+      {
+        "id": "ADV-11",
+        "prompt": "Unlock is not what I meant; leave it locked",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "unlock-nodes",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.205,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "ADV-12",
+        "prompt": "I like the playful section; don't alter it",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": [],
+          "feel": "playful"
+        }
+      },
+      {
+        "id": "ADV-13",
+        "prompt": "Delete the selected section",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "ADV-14",
+        "prompt": "Move the button below the table",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "ADV-15",
+        "prompt": "Explain how the dashboard is composed",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.205,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      },
+      {
+        "id": "ADV-16",
+        "prompt": "Maybe make it less rounded? Actually keep the current design",
+        "expectedAction": null,
+        "split": "adversarial",
+        "model": {
+          "action": "adjust-dna",
+          "summary": "Bespoke Host ML: Executed adjust-dna on screen AST.",
+          "confidence": 0.204,
+          "divergenceLevel": 50,
+          "dnaDeltas": {},
+          "targetNodeIds": []
+        }
+      }
+    ]
+  }
+}

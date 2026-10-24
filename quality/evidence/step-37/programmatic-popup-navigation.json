@@ -1,0 +1,48 @@
+{
+  "finding": "SEC-37-110",
+  "severity": "medium",
+  "title": "Registry gate allowed scripted popup navigation",
+  "status": "fixed_locally",
+  "captured_at": "2026-10-21T21:54:59Z",
+  "reproduction": {
+    "before_fix": [
+      "window.open(destination, '_blank', 'noopener') returned pass",
+      "The registry gate did not classify window.open as a navigation sink"
+    ],
+    "after_fix": [
+      "Direct and computed window.open calls fail for remote or unresolved destinations",
+      "Window aliases and destructured popup references fail closed",
+      "Function call/apply and Reflect.apply/Reflect.get popup paths fail closed",
+      "Bare global open(destination) fails closed",
+      "Fragment-only popup navigation remains allowed"
+    ],
+    "red_before_fix": "The focused popup-navigation regression returned pass before the scanner change and passes after the change."
+  },
+  "root_cause": "The static source gate rejected external location navigation but did not classify window.open as a programmatic navigation capability.",
+  "affected_files": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts",
+    "packages/cli/src/__tests__/black-box.test.ts",
+    "tests/e2e/sites-preview-csp.spec.ts"
+  ],
+  "remediation": "Resolve popup references through direct, computed, aliased, destructured, call/apply, and reflected access, and reject remote or unresolved destinations using the same policy as location navigation.",
+  "local_validation": {
+    "registry_gate_suite": "73/73 passed",
+    "registry_popup_regression": "9 hostile access forms rejected; fragment-only navigation accepted",
+    "cli_black_box_popup_regression": "passed; tess gate returns rejected JSON and nonzero process status",
+    "full_unit_suite": "1200 passed across 76 files",
+    "sites_preview_csp_browser_suite": "20/20 passed across desktop 1440x900 and mobile 390x844 Chromium",
+    "browser_popup_probe": "No popup, external request, or uncaught exception",
+    "resource_isolation": "324/324 passed; zero findings",
+    "workspace_typecheck": "22/22 packages passed",
+    "changed_file_eslint": "passed",
+    "audit_all": "passed all 16 behavioral gates, production build, bundle budgets, provenance, security/secrets, and dependency audit"
+  },
+  "screenshots": {
+    "desktop": "quality/evidence/step-37/preview-popup-after-1440.png",
+    "mobile": "quality/evidence/step-37/preview-popup-after-390.png"
+  },
+  "untrusted_resource_code_executed": false,
+  "deployed_verification": "pending release-candidate deployment",
+  "last_local_verification_at": "2026-10-21T21:59:55Z"
+}

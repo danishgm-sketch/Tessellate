@@ -131,3 +131,7 @@ the activity feed at (1010px, 454px) beside the table at (257px, 454px) for C.
 This is local Step 12 evidence, not a public deployment audit. The remaining
 multi-width direction checks are covered by the later responsive gate; public review
 Site confirmation remains scheduled for Step 45.
+
+### 2026-10-21 local verification follow-up
+
+The latest visible browser regression compares all three directions at 1440×900. A renders a sidebar shell, B a top-navigation page canvas, and C a workspace dock/rail with aligned table and activity panes. Required employee-experience screens remain stable, while grammar and navigation differ in the actual rendered structure. All selected resources resolve; unresolved-role diagnostics, console errors, uncaught exceptions, failed requests, and HTTP errors are empty. Screenshots and machine-readable results are in `quality/evidence/directions/current/`. `pnpm exec playwright test tests/e2e/direction-generation-audit.spec.ts --project=desktop-chrome --grep "flagship directions use distinct rendered structures"` passed. This verifies the local build only; public review confirmation remains at Step 45.

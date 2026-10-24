@@ -1,0 +1,11 @@
+{
+  "step": 44,
+  "attempt": 3,
+  "status": "harness-failed",
+  "failureStage": "script-write",
+  "exitCode": 1,
+  "failure": "Windows PowerShell 5.1 does not support Set-Content -Encoding utf8NoBOM.",
+  "containerStarted": false,
+  "remediation": "Use System.IO.File.WriteAllText with UTF8Encoding(false).",
+  "capturedAtUtc": "2026-10-24T03:49:43.5752273Z"
+}

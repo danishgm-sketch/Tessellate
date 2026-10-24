@@ -1,10 +1,10 @@
 {
   "schemaVersion": "1.0.0",
-  "id": "local-aac35bf5-b363-4f48-bee1-374e59fa733b",
-  "name": "Kudos Team Culture & Hiring",
+  "id": "local-c130ff65-43c6-476b-9746-c8c7de137768",
+  "name": "Kudos Employee Experience",
   "description": "Example project. Employee experience platform for people, teams, playful onboarding and peer recognition.",
   "createdAt": "2026-10-10T12:00:00.000Z",
-  "updatedAt": "2026-10-18T23:54:11.457Z",
+  "updatedAt": "2026-10-24T06:08:11.223Z",
   "catalogVersion": "0.1.0",
   "seed": "showcase-playful-hr",
   "productModel": {
@@ -538,7 +538,6 @@
               "Policy.acknowledgedAt"
             ],
             "requiredRoles": [
-              "settings-nav",
               "settings-form",
               "save-footer"
             ],
@@ -613,7 +612,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Teams",
+              "brand": "People & Co",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -688,7 +687,7 @@
             }
           },
           {
-            "id": "node_3c4074c1389c4416-node-screen-marketing-home-navigation-1",
+            "id": "node_37d3fa77767541aa-node-screen-marketing-home-navigation-1",
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
@@ -700,7 +699,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Teams",
+              "brand": "People & Co",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -790,11 +789,11 @@
               "subheadline": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
               "primaryCta": {
                 "label": "Meet your team",
-                "href": "#screen-onboarding"
+                "href": "#screen-teams"
               },
               "secondaryCta": {
                 "label": "Explore onboarding",
-                "href": "#screen-marketing-home"
+                "href": "#screen-onboarding"
               },
               "note": "Example interface · replace sample data with your organisation"
             }
@@ -853,7 +852,7 @@
               "headline": "A better workday starts with people.",
               "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
               "label": "Meet your team",
-              "href": "#screen-onboarding"
+              "href": "#screen-teams"
             }
           },
           {
@@ -869,7 +868,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Teams",
+              "brand": "People & Co",
               "description": "Bring your people, teams and everyday employee experiences together. A warm welcome, clear priorities and trusted policies.",
               "links": [
                 {
@@ -934,7 +933,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Teams",
+              "brand": "People & Co",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -985,7 +984,7 @@
                   "title": "Team Overview",
                   "subtitle": "Refined employee summary and upcoming team actions",
                   "badge": "EXAMPLE",
-                  "initials": "PT"
+                  "initials": "PC"
                 }
               },
               {
@@ -1138,7 +1137,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Teams",
+              "brand": "People & Co",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -1189,7 +1188,7 @@
                   "title": "People Directory",
                   "subtitle": "Find colleagues and their teams",
                   "badge": "EXAMPLE",
-                  "initials": "PT"
+                  "initials": "PC"
                 }
               },
               {
@@ -1267,9 +1266,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "children": "Continue",
-                  "disabled": false,
-                  "title": "People Directory"
+                  "children": "Paging unavailable",
+                  "disabled": true,
+                  "title": "Connect a paging data source before navigating additional records.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
                 }
               }
             ],
@@ -1308,7 +1308,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Teams",
+              "brand": "People & Co",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -1359,7 +1359,7 @@
                   "title": "Teams",
                   "subtitle": "Explore team membership and shared priorities",
                   "badge": "EXAMPLE",
-                  "initials": "PT"
+                  "initials": "PC"
                 }
               },
               {
@@ -1393,33 +1393,33 @@
                   "rows": [
                     {
                       "id": 1,
-                      "name": "Example colleague A",
-                      "type": "Product team",
-                      "quality": 80,
-                      "status": "Onboarding",
-                      "displayValue": "Progress not connected"
+                      "name": "Example Product team",
+                      "type": "Product planning and delivery · sample",
+                      "quality": 0,
+                      "status": "Membership not connected",
+                      "displayValue": "Member count not connected"
                     },
                     {
                       "id": 2,
-                      "name": "Example colleague B",
-                      "type": "Engineering team",
-                      "quality": 100,
-                      "status": "Settled in",
-                      "displayValue": "Progress not connected"
+                      "name": "Example Engineering team",
+                      "type": "Engineering systems · sample",
+                      "quality": 0,
+                      "status": "Membership not connected",
+                      "displayValue": "Member count not connected"
                     },
                     {
                       "id": 3,
-                      "name": "Example colleague C",
-                      "type": "People team",
-                      "quality": 40,
-                      "status": "Welcome week",
-                      "displayValue": "Progress not connected"
+                      "name": "Example People team",
+                      "type": "People operations · sample",
+                      "quality": 0,
+                      "status": "Membership not connected",
+                      "displayValue": "Member count not connected"
                     }
                   ],
                   "columnLabels": {
-                    "name": "Colleague",
-                    "type": "Team",
-                    "quality": "Progress",
+                    "name": "Team",
+                    "type": "Focus",
+                    "quality": "Members",
                     "status": "Status"
                   }
                 }
@@ -1437,9 +1437,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "children": "Continue",
-                  "disabled": false,
-                  "title": "Teams"
+                  "children": "Paging unavailable",
+                  "disabled": true,
+                  "title": "Connect a paging data source before navigating additional records.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
                 }
               }
             ],
@@ -1478,7 +1479,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Teams",
+              "brand": "People & Co",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -1529,7 +1530,7 @@
                   "title": "Engagement",
                   "subtitle": "Review employee feedback and recognition",
                   "badge": "EXAMPLE",
-                  "initials": "PT"
+                  "initials": "PC"
                 }
               },
               {
@@ -1545,20 +1546,20 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Your organisation at a glance",
+                  "title": "Engagement overview",
                   "cards": [
                     {
-                      "label": "People",
+                      "label": "Feedback",
                       "val": "—",
                       "status": "No connected data"
                     },
                     {
-                      "label": "Onboarding",
+                      "label": "Recognition",
                       "val": "—",
                       "status": "No connected data"
                     },
                     {
-                      "label": "Team pulse",
+                      "label": "Participation",
                       "val": "—",
                       "status": "No connected data"
                     }
@@ -1578,37 +1579,37 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "People and teams",
+                  "title": "Feedback and recognition",
                   "rows": [
                     {
                       "id": 1,
-                      "name": "Example colleague A",
-                      "type": "Product team",
-                      "quality": 80,
-                      "status": "Onboarding",
-                      "displayValue": "Progress not connected"
+                      "name": "Example feedback topic",
+                      "type": "Employee feedback · sample",
+                      "quality": 0,
+                      "status": "Responses not connected",
+                      "displayValue": "No connected data"
                     },
                     {
                       "id": 2,
-                      "name": "Example colleague B",
-                      "type": "Engineering team",
-                      "quality": 100,
-                      "status": "Settled in",
-                      "displayValue": "Progress not connected"
+                      "name": "Example peer recognition",
+                      "type": "Recognition · sample",
+                      "quality": 0,
+                      "status": "Responses not connected",
+                      "displayValue": "No connected data"
                     },
                     {
                       "id": 3,
-                      "name": "Example colleague C",
-                      "type": "People team",
-                      "quality": 40,
-                      "status": "Welcome week",
-                      "displayValue": "Progress not connected"
+                      "name": "Example team pulse",
+                      "type": "Engagement check-in · sample",
+                      "quality": 0,
+                      "status": "Responses not connected",
+                      "displayValue": "No connected data"
                     }
                   ],
                   "columnLabels": {
-                    "name": "Colleague",
-                    "type": "Team",
-                    "quality": "Progress",
+                    "name": "Item",
+                    "type": "Type",
+                    "quality": "Details",
                     "status": "Status"
                   }
                 }
@@ -1626,22 +1627,22 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "People updates",
+                  "title": "Feedback and recognition",
                   "events": [
                     {
-                      "time": "Today",
-                      "title": "Welcome to the team",
-                      "desc": "Meet your onboarding buddy and introduce yourself to colleagues."
-                    },
-                    {
                       "time": "This week",
-                      "title": "Team check-in",
-                      "desc": "Share how your first week is going and ask for support."
+                      "title": "Example feedback check-in",
+                      "desc": "Sample prompt: what would help your team work well together? Responses are not connected."
                     },
                     {
-                      "time": "Next milestone",
-                      "title": "Policies and preferences",
-                      "desc": "Review organisational guidance and choose your notification preferences."
+                      "time": "Today",
+                      "title": "Example peer recognition",
+                      "desc": "Sample recognition for a colleague contribution. No employee activity is connected."
+                    },
+                    {
+                      "time": "Next week",
+                      "title": "Example team pulse",
+                      "desc": "Sample engagement check-in. Participation data is not connected."
                     }
                   ]
                 }
@@ -1682,7 +1683,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Teams",
+              "brand": "People & Co",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -1802,9 +1803,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "children": "Continue",
+                  "children": "Connect an action to continue",
                   "disabled": true,
-                  "title": "Connect the exported application to your backend to enable this action."
+                  "title": "Connect the exported application to your backend to enable this action.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
                 }
               }
             ],
@@ -1849,7 +1851,7 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "People & Teams",
+              "brand": "People & Co",
               "links": [
                 {
                   "label": "Marketing Home",
@@ -1885,49 +1887,7 @@
             "semanticRole": "workspace-multi-pane",
             "children": [
               {
-                "id": "node-screen-settings-settings-nav-2",
-                "nodeType": "block",
-                "semanticRole": "settings-nav",
-                "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "brand": "People & Teams",
-                  "links": [
-                    {
-                      "label": "Marketing Home",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Team Overview",
-                      "href": "#screen-overview"
-                    },
-                    {
-                      "label": "People Directory",
-                      "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Teams",
-                      "href": "#screen-teams"
-                    },
-                    {
-                      "label": "Engagement",
-                      "href": "#screen-engagement"
-                    },
-                    {
-                      "label": "Settings & Policies",
-                      "href": "#screen-settings"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-settings-settings-form-3",
+                "id": "node-screen-settings-settings-form-2",
                 "nodeType": "element",
                 "semanticRole": "settings-form",
                 "resourceRef": {
@@ -1939,14 +1899,15 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "label": "Notification preferences",
-                  "helperText": "Example field. Connect persistence and your backend in the exported application.",
+                  "label": "Policy acknowledgement (preview only)",
+                  "helperText": "Sample respectful workplace and information security guidance. Replace with approved company text; acknowledgements are not stored in this preview.",
+                  "placeholder": "Local preview — not saved",
                   "disabled": false,
                   "title": "Settings & Policies"
                 }
               },
               {
-                "id": "node-screen-settings-save-footer-4",
+                "id": "node-screen-settings-save-footer-3",
                 "nodeType": "component",
                 "semanticRole": "save-footer",
                 "resourceRef": {
@@ -1958,9 +1919,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "label": "Save preferences",
+                  "children": "Save preferences",
                   "disabled": true,
-                  "title": "Connect the exported application to your backend to enable this action."
+                  "title": "Connect persistence to save.",
+                  "helperText": "Connect persistence to save."
                 }
               }
             ],

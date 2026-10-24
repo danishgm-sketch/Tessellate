@@ -658,6 +658,13 @@ Export performs validation before completion and lists unresolved issues.
 
 Warnings may be bypassed; schema-invalid export may not.
 
+The Export menu also opens an existing `.tess.json` project. Import parses the
+file through the canonical manifest importer, applies supported migrations,
+rejects files larger than 5 MiB, and reports errors without changing the open
+project. A manifest whose project ID is already present in browser storage is
+rejected to protect that saved project; import never silently overwrites local
+work.
+
 ## 28. Workbench acceptance criteria
 
 Workbench V1 is not complete until a user can:

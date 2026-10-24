@@ -1,0 +1,31 @@
+{
+  "findingId": "SEC-37-061",
+  "severity": "high",
+  "title": "Catalogue metadata controlled registry source and output paths",
+  "scope": [
+    "packages/schemas/src/resource.ts",
+    "packages/catalog/src/flatten.ts",
+    "scripts/build-catalog.ts"
+  ],
+  "reproductions": [
+    {
+      "boundary": "resource slug schema",
+      "test": "rejects noncanonical and path-like resource slugs at both manifest and reference boundaries",
+      "beforeFix": "Failed: ResourceManifestSchema accepted ../private and other noncanonical slugs.",
+      "afterFix": "Passed: both ResourceManifest and ResourceRef enforce lowercase kebab-case slugs."
+    },
+    {
+      "boundary": "catalogue source directory provenance",
+      "test": "retains the discovered resource directory instead of trusting manifest category metadata",
+      "beforeFix": "Failed: buildCatalogueFromDirectory returned no mapping from the validated manifest to its actual discovered directory, leaving the registry script to reconstruct a filesystem path from manifest metadata.",
+      "afterFix": "Passed: the validated manifest maps to its discovered folder even when its category metadata contains ../outside."
+    }
+  ],
+  "verification": {
+    "command": "pnpm exec vitest run packages/schemas/src/__tests__/leaf-contracts.test.ts packages/catalog/src/__tests__/catalog.test.ts",
+    "result": "passed",
+    "testFiles": 2,
+    "testsPassed": 101,
+    "deployedVerification": "pending"
+  }
+}

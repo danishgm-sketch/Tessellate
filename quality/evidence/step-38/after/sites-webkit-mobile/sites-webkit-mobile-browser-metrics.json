@@ -1,0 +1,1036 @@
+{
+  "capturedAt": "2026-10-21T10:01:33.174Z",
+  "method": "Local ChatGPT Sites compatibility Worker preview, Playwright WebKit, standard laptop CPU/network without throttling. LCP/CLS are lab PerformanceObserver samples; Long Tasks is supplemental. Not field Web Vitals or DevTools traces.",
+  "browserProject": "sites-webkit-mobile",
+  "results": [
+    {
+      "route": "/",
+      "url": "http://127.0.0.1:4323/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "readyMs": 324,
+      "fcp": 122,
+      "lcp": 170,
+      "cls": 0,
+      "longTaskMs": 0,
+      "longTaskCount": 0,
+      "domContentLoaded": 51,
+      "load": 93,
+      "resourceCount": 19,
+      "jsTransferBytes": 104284,
+      "jsDecodedBytes": 310338,
+      "jsResourceCount": 18,
+      "mainFrameScriptUrls": [
+        "http://127.0.0.1:4323/_astro/SiteHeader.C4iZZWhI.js",
+        "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
+        "http://127.0.0.1:4323/_astro/HeroComposer.Dp4sgUbq.js",
+        "http://127.0.0.1:4323/_astro/ThreeDirectionsDemo.B4wEe--q.js",
+        "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
+        "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+        "http://127.0.0.1:4323/_astro/createLucideIcon.14lUEEec.js",
+        "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
+        "http://127.0.0.1:4323/_astro/arrow-right.CrL0QBhc.js",
+        "http://127.0.0.1:4323/_astro/CommandPalette.JKUhS8aA.js",
+        "http://127.0.0.1:4323/_astro/github.61P_G89B.js",
+        "http://127.0.0.1:4323/_astro/search.CyDEvGzC.js",
+        "http://127.0.0.1:4323/_astro/x.K_99xudA.js",
+        "http://127.0.0.1:4323/_astro/sliders-horizontal.B8xEUDjw.js",
+        "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
+        "http://127.0.0.1:4323/_astro/preload-helper.DHhhL8Zf.js",
+        "http://127.0.0.1:4323/_astro/compass.CD8f5pEM.js",
+        "http://127.0.0.1:4323/_astro/sliders-vertical.Bj_t08Fa.js"
+      ],
+      "previewFrameGeometry": [],
+      "viewportHeight": 844,
+      "catalogRequests": [],
+      "viewportWidth": 390,
+      "documentWidth": 390,
+      "scriptResponses": [
+        {
+          "url": "http://127.0.0.1:4323/_astro/SiteHeader.C4iZZWhI.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 2186,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 65818,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/HeroComposer.Dp4sgUbq.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 3081,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/ThreeDirectionsDemo.B4wEe--q.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 2408,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 3281,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 295,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/createLucideIcon.14lUEEec.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 544,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/arrow-right.CrL0QBhc.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 163,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 16129,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/CommandPalette.JKUhS8aA.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 2391,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/github.61P_G89B.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 291,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/search.CyDEvGzC.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 167,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/x.K_99xudA.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 151,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/sliders-horizontal.B8xEUDjw.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 264,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 297,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/preload-helper.DHhhL8Zf.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 852,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/compass.CD8f5pEM.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 300,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/sliders-vertical.Bj_t08Fa.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 266,
+          "contentEncoding": "gzip"
+        }
+      ],
+      "scriptResponseCount": 18,
+      "uniqueScriptAssetCount": 18,
+      "uniqueEncodedScriptBodyBytes": 98884,
+      "uniquePreviewOnlyScriptAssetCount": 0,
+      "uniqueEncodedPreviewOnlyScriptBodyBytes": 0,
+      "scriptAssetsMissingEncodedSize": [],
+      "screenshot": "quality\\evidence\\step-38\\after\\sites-webkit-mobile\\sites-webkit-mobile-home.png"
+    },
+    {
+      "route": "/explore",
+      "url": "http://127.0.0.1:4323/explore",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "readyMs": 835,
+      "fcp": 63,
+      "lcp": 63,
+      "cls": 0,
+      "longTaskMs": 0,
+      "longTaskCount": 0,
+      "domContentLoaded": 38,
+      "load": 115,
+      "resourceCount": 31,
+      "jsTransferBytes": 161226,
+      "jsDecodedBytes": 495236,
+      "jsResourceCount": 27,
+      "mainFrameScriptUrls": [
+        "http://127.0.0.1:4323/_astro/SiteHeader.C4iZZWhI.js",
+        "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
+        "http://127.0.0.1:4323/_astro/ExploreView.BunhxPuG.js",
+        "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
+        "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+        "http://127.0.0.1:4323/_astro/createLucideIcon.14lUEEec.js",
+        "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
+        "http://127.0.0.1:4323/_astro/arrow-right.CrL0QBhc.js",
+        "http://127.0.0.1:4323/_astro/CommandPalette.JKUhS8aA.js",
+        "http://127.0.0.1:4323/_astro/github.61P_G89B.js",
+        "http://127.0.0.1:4323/_astro/search.CyDEvGzC.js",
+        "http://127.0.0.1:4323/_astro/x.K_99xudA.js",
+        "http://127.0.0.1:4323/_astro/chevron-down.DtfZPbTK.js",
+        "http://127.0.0.1:4323/_astro/clock.B8yMDytp.js",
+        "http://127.0.0.1:4323/_astro/rotate-ccw.divXcstY.js",
+        "http://127.0.0.1:4323/_astro/src.DFvWqcz1.js",
+        "http://127.0.0.1:4323/_astro/sliders-horizontal.B8xEUDjw.js",
+        "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
+        "http://127.0.0.1:4323/_astro/ResourceCard.2v2t5lMS.js",
+        "http://127.0.0.1:4323/_astro/compass.CD8f5pEM.js",
+        "http://127.0.0.1:4323/_astro/sliders-vertical.Bj_t08Fa.js",
+        "http://127.0.0.1:4323/_astro/gold.CeiPxNV6.js",
+        "http://127.0.0.1:4323/_astro/arrow-up-right.ERzt_9ei.js",
+        "http://127.0.0.1:4323/_astro/bookmark.BGuXTOA4.js",
+        "http://127.0.0.1:4323/_astro/check.DZheQPi7.js",
+        "http://127.0.0.1:4323/_astro/copy.BIIza9m3.js",
+        "http://127.0.0.1:4323/_astro/eye.uoIoxOcf.js"
+      ],
+      "previewFrameGeometry": [
+        {
+          "src": "http://127.0.0.1:4323/preview/?resource=accessibility-commitment-section",
+          "top": 371,
+          "bottom": 544,
+          "visible": true
+        },
+        {
+          "src": "http://127.0.0.1:4323/preview/?resource=accordion",
+          "top": 712,
+          "bottom": 885,
+          "visible": true
+        }
+      ],
+      "viewportHeight": 844,
+      "catalogRequests": [
+        {
+          "url": "http://127.0.0.1:4323/data/catalog.json",
+          "transferBytes": 145103,
+          "decodedBytes": 2142756
+        }
+      ],
+      "viewportWidth": 390,
+      "documentWidth": 390,
+      "scriptResponses": [
+        {
+          "url": "http://127.0.0.1:4323/_astro/SiteHeader.C4iZZWhI.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 2186,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/ExploreView.BunhxPuG.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 27962,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 65818,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 3281,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 295,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/createLucideIcon.14lUEEec.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 544,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/arrow-right.CrL0QBhc.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 163,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/CommandPalette.JKUhS8aA.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 2391,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 16129,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/github.61P_G89B.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 291,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/search.CyDEvGzC.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 167,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/x.K_99xudA.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 151,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/chevron-down.DtfZPbTK.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 140,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/clock.B8yMDytp.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 217,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/rotate-ccw.divXcstY.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 182,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.DFvWqcz1.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 28722,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/sliders-horizontal.B8xEUDjw.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 264,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 297,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/ResourceCard.2v2t5lMS.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 2088,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/compass.CD8f5pEM.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 300,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/sliders-vertical.Bj_t08Fa.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 266,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/gold.CeiPxNV6.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 403,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/arrow-up-right.ERzt_9ei.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 159,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/check.DZheQPi7.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 140,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/bookmark.BGuXTOA4.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 163,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/copy.BIIza9m3.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 209,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/eye.uoIoxOcf.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 198,
+          "contentEncoding": "gzip"
+        }
+      ],
+      "scriptResponseCount": 27,
+      "uniqueScriptAssetCount": 27,
+      "uniqueEncodedScriptBodyBytes": 153126,
+      "uniquePreviewOnlyScriptAssetCount": 0,
+      "uniqueEncodedPreviewOnlyScriptBodyBytes": 0,
+      "scriptAssetsMissingEncodedSize": [],
+      "screenshot": "quality\\evidence\\step-38\\after\\sites-webkit-mobile\\sites-webkit-mobile-explore.png",
+      "lazyPreviewScrollEvidence": {
+        "resourceHref": "/r/accordion-spring",
+        "scrollY": 1000,
+        "loadedPreviewVisible": true,
+        "renderedResourceScreenVisible": true,
+        "screenshot": "quality\\evidence\\step-38\\after\\sites-webkit-mobile\\sites-webkit-mobile-explore-scrolled-preview.png"
+      }
+    },
+    {
+      "route": "/compose",
+      "url": "http://127.0.0.1:4323/compose",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "readyMs": 629,
+      "fcp": 69,
+      "lcp": 69,
+      "cls": 0,
+      "longTaskMs": 0,
+      "longTaskCount": 0,
+      "domContentLoaded": 37,
+      "load": 57,
+      "resourceCount": 21,
+      "jsTransferBytes": 349756,
+      "jsDecodedBytes": 1387940,
+      "jsResourceCount": 19,
+      "mainFrameScriptUrls": [
+        "http://127.0.0.1:4323/_astro/index.DrY5COQr.js",
+        "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
+        "http://127.0.0.1:4323/_astro/ComposeView.EO9fvdJ8.js",
+        "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
+        "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
+        "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+        "http://127.0.0.1:4323/_astro/src.BggETCgd.js",
+        "http://127.0.0.1:4323/_astro/src.DFvWqcz1.js",
+        "http://127.0.0.1:4323/_astro/src.CwJnigzM.js",
+        "http://127.0.0.1:4323/_astro/storage.B-6fLZcJ.js",
+        "http://127.0.0.1:4323/_astro/createLucideIcon.14lUEEec.js",
+        "http://127.0.0.1:4323/_astro/arrow-right.CrL0QBhc.js",
+        "http://127.0.0.1:4323/_astro/chevron-down.DtfZPbTK.js",
+        "http://127.0.0.1:4323/_astro/cpu.Cewq4aej.js",
+        "http://127.0.0.1:4323/_astro/smartphone.BKKE0Hdz.js",
+        "http://127.0.0.1:4323/_astro/shield.CClXYlwc.js",
+        "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
+        "http://127.0.0.1:4323/_astro/src.m-ZCY4Cl.js",
+        "http://127.0.0.1:4323/_astro/gold.CeiPxNV6.js"
+      ],
+      "previewFrameGeometry": [],
+      "viewportHeight": 844,
+      "catalogRequests": [
+        {
+          "url": "http://127.0.0.1:4323/data/catalog.json",
+          "transferBytes": 145103,
+          "decodedBytes": 2142756
+        }
+      ],
+      "viewportWidth": 390,
+      "documentWidth": 390,
+      "scriptResponses": [
+        {
+          "url": "http://127.0.0.1:4323/_astro/index.DrY5COQr.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 289,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/ComposeView.EO9fvdJ8.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 7943,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 65818,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 16129,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 3281,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 295,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.BggETCgd.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 20042,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.DFvWqcz1.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 28722,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/storage.B-6fLZcJ.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 2162,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/createLucideIcon.14lUEEec.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 544,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/arrow-right.CrL0QBhc.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 163,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.CwJnigzM.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 71338,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/chevron-down.DtfZPbTK.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 140,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/cpu.Cewq4aej.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 259,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/smartphone.BKKE0Hdz.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 270,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/shield.CClXYlwc.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 226,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 297,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/gold.CeiPxNV6.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 403,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.m-ZCY4Cl.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 125735,
+          "contentEncoding": "gzip"
+        }
+      ],
+      "scriptResponseCount": 19,
+      "uniqueScriptAssetCount": 19,
+      "uniqueEncodedScriptBodyBytes": 344056,
+      "uniquePreviewOnlyScriptAssetCount": 0,
+      "uniqueEncodedPreviewOnlyScriptBodyBytes": 0,
+      "scriptAssetsMissingEncodedSize": [],
+      "screenshot": "quality\\evidence\\step-38\\after\\sites-webkit-mobile\\sites-webkit-mobile-compose.png"
+    },
+    {
+      "route": "/workbench",
+      "url": "http://127.0.0.1:4323/workbench",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "readyMs": 718,
+      "fcp": 364,
+      "lcp": 550,
+      "cls": 0,
+      "longTaskMs": 0,
+      "longTaskCount": 0,
+      "domContentLoaded": 34,
+      "load": 91,
+      "resourceCount": 43,
+      "jsTransferBytes": 582823,
+      "jsDecodedBytes": 2456301,
+      "jsResourceCount": 41,
+      "mainFrameScriptUrls": [
+        "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
+        "http://127.0.0.1:4323/_astro/index.C8sQh9yp.js",
+        "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
+        "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+        "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
+        "http://127.0.0.1:4323/_astro/gold.CeiPxNV6.js",
+        "http://127.0.0.1:4323/_astro/src.DFvWqcz1.js",
+        "http://127.0.0.1:4323/_astro/src.CwJnigzM.js",
+        "http://127.0.0.1:4323/_astro/src.BggETCgd.js",
+        "http://127.0.0.1:4323/_astro/storage.B-6fLZcJ.js",
+        "http://127.0.0.1:4323/_astro/createLucideIcon.14lUEEec.js",
+        "http://127.0.0.1:4323/_astro/activity.DGq5j_oI.js",
+        "http://127.0.0.1:4323/_astro/arrow-up.vGbmiYPw.js",
+        "http://127.0.0.1:4323/_astro/arrow-right.CrL0QBhc.js",
+        "http://127.0.0.1:4323/_astro/compass.CD8f5pEM.js",
+        "http://127.0.0.1:4323/_astro/bookmark.BGuXTOA4.js",
+        "http://127.0.0.1:4323/_astro/check.DZheQPi7.js",
+        "http://127.0.0.1:4323/_astro/chevron-down.DtfZPbTK.js",
+        "http://127.0.0.1:4323/_astro/clock.B8yMDytp.js",
+        "http://127.0.0.1:4323/_astro/circle-check.BnrBU8lA.js",
+        "http://127.0.0.1:4323/_astro/copy.BIIza9m3.js",
+        "http://127.0.0.1:4323/_astro/cpu.Cewq4aej.js",
+        "http://127.0.0.1:4323/_astro/eye.uoIoxOcf.js",
+        "http://127.0.0.1:4323/_astro/refresh-cw.SKQyrYtj.js",
+        "http://127.0.0.1:4323/_astro/layers.CtXwhj7g.js",
+        "http://127.0.0.1:4323/_astro/smartphone.BKKE0Hdz.js",
+        "http://127.0.0.1:4323/_astro/palette.Dfv1e2Eu.js",
+        "http://127.0.0.1:4323/_astro/sun.DHWleJN4.js",
+        "http://127.0.0.1:4323/_astro/panels-top-left.B-jdE7pS.js",
+        "http://127.0.0.1:4323/_astro/play.CLWN6hGw.js",
+        "http://127.0.0.1:4323/_astro/trash-2.CStjAi3B.js",
+        "http://127.0.0.1:4323/_astro/rotate-ccw.divXcstY.js",
+        "http://127.0.0.1:4323/_astro/shield.CClXYlwc.js",
+        "http://127.0.0.1:4323/_astro/sliders-vertical.Bj_t08Fa.js",
+        "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
+        "http://127.0.0.1:4323/_astro/tablet.Dz7Mkca5.js",
+        "http://127.0.0.1:4323/_astro/terminal.D1yAK8-f.js",
+        "http://127.0.0.1:4323/_astro/type.47V9oe1O.js",
+        "http://127.0.0.1:4323/_astro/x.K_99xudA.js",
+        "http://127.0.0.1:4323/_astro/zap.BZ4uBrvW.js",
+        "http://127.0.0.1:4323/_astro/src.m-ZCY4Cl.js"
+      ],
+      "previewFrameGeometry": [],
+      "viewportHeight": 844,
+      "catalogRequests": [
+        {
+          "url": "http://127.0.0.1:4323/data/catalog.json",
+          "transferBytes": 145103,
+          "decodedBytes": 2142756
+        }
+      ],
+      "viewportWidth": 390,
+      "documentWidth": 390,
+      "scriptResponses": [
+        {
+          "url": "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 65818,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 3281,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/index.C8sQh9yp.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 229505,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 295,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 16129,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/gold.CeiPxNV6.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 403,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.BggETCgd.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 20042,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.DFvWqcz1.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 28722,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/storage.B-6fLZcJ.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 2162,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/createLucideIcon.14lUEEec.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 544,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/activity.DGq5j_oI.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 199,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.CwJnigzM.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 71338,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/arrow-up.vGbmiYPw.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 206,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/arrow-right.CrL0QBhc.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 163,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/compass.CD8f5pEM.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 300,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/check.DZheQPi7.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 140,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/bookmark.BGuXTOA4.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 163,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/chevron-down.DtfZPbTK.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 140,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/circle-check.BnrBU8lA.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 168,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/clock.B8yMDytp.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 217,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/copy.BIIza9m3.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 209,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/cpu.Cewq4aej.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 259,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/eye.uoIoxOcf.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 198,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/refresh-cw.SKQyrYtj.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 521,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/layers.CtXwhj7g.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 240,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/smartphone.BKKE0Hdz.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 270,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/palette.Dfv1e2Eu.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 342,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/panels-top-left.B-jdE7pS.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 195,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/sun.DHWleJN4.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 298,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/play.CLWN6hGw.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 148,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/trash-2.CStjAi3B.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 286,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/rotate-ccw.divXcstY.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 182,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/shield.CClXYlwc.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 226,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/sliders-vertical.Bj_t08Fa.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 266,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 297,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/tablet.Dz7Mkca5.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 190,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/terminal.D1yAK8-f.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 178,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/type.47V9oe1O.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 189,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/x.K_99xudA.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 151,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/zap.BZ4uBrvW.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 208,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.m-ZCY4Cl.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 125735,
+          "contentEncoding": "gzip"
+        }
+      ],
+      "scriptResponseCount": 41,
+      "uniqueScriptAssetCount": 41,
+      "uniqueEncodedScriptBodyBytes": 570523,
+      "uniquePreviewOnlyScriptAssetCount": 0,
+      "uniqueEncodedPreviewOnlyScriptBodyBytes": 0,
+      "scriptAssetsMissingEncodedSize": [],
+      "screenshot": "quality\\evidence\\step-38\\after\\sites-webkit-mobile\\sites-webkit-mobile-workbench.png"
+    }
+  ],
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "browserCancellations": [],
+    "httpErrors": []
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1.0.0",
+  "issue": "SEC-37-056",
+  "before": {
+    "command": "node scripts/verify-laptop-backend.mjs",
+    "result": "failed",
+    "error": "Transient UND_ERR_SOCKET: other side closed while checking queued ticket after API container restart"
+  },
+  "rootCause": "The verifier used a short general-health probe, then immediately read ticket status while the restarted Worker was still reconnecting to persistent D1.",
+  "after": {
+    "command": "node scripts/verify-laptop-backend.mjs",
+    "result": "passed",
+    "checks": 7,
+    "apiRestartTicketRecoveryAttempts": 20,
+    "hostOfflineStatus": 503,
+    "taskRecovered": true,
+    "apiStoppedUnreachable": true
+  },
+  "fix": "Retry the authenticated idempotent ticket-status read until the expected queued state is returned or the 30-second recovery bound expires.",
+  "credentialsLogged": false
+}

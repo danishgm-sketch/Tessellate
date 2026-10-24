@@ -441,7 +441,7 @@ Weights:
 - 8% performance
 - 6% responsive fit
 - 5% composition synergy
-- 4% quality score
+- 4% reviewed quality score (neutral score when assessment is unassessed)
 - 3% novelty preference
 - 2% diversity adjustment
 
