@@ -12,7 +12,8 @@ export function checkResponsiveGate(code: string): GateCheckResult {
       status: 'fail',
       score: 30,
       details: `Detected rigid wide viewport containers: ${fixedLargeWidths.join(', ')} which break 360px mobile viewports.`,
-      remediation: 'Use fluid sizing (e.g. w-full max-w-5xl) and responsive breakpoint prefixes (sm:, md:, lg:) instead of hardcoded wide pixel widths.',
+      remediation:
+        'Use fluid sizing (e.g. w-full max-w-5xl) and responsive breakpoint prefixes (sm:, md:, lg:) instead of hardcoded wide pixel widths.',
     };
   }
 
@@ -23,7 +24,8 @@ export function checkResponsiveGate(code: string): GateCheckResult {
       category: 'responsive',
       status: 'warn',
       score: 75,
-      details: 'Component does not declare explicit responsive modifiers (sm:, md:) or max-w constraints.',
+      details:
+        'Component does not declare explicit responsive modifiers (sm:, md:) or max-w constraints.',
       remediation: 'Verify layout reflow on 360px mobile and 768px tablet viewports.',
     };
   }
@@ -34,6 +36,7 @@ export function checkResponsiveGate(code: string): GateCheckResult {
     category: 'responsive',
     status: 'pass',
     score: 100,
-    details: 'Verified fluid responsiveness. Safely scales across 360px mobile, 768px tablet, and 1440px desktop viewports.',
+    details:
+      'Responsive sizing or breakpoint signals were found; actual behavior still requires browser checks at mobile, tablet, and desktop widths.',
   };
 }

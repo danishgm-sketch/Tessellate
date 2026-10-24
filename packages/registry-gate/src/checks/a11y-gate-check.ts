@@ -39,15 +39,15 @@ export function checkAccessibilityGate(code: string): GateCheckResult {
   }
 
   if (issues.length > 0) {
-    const isFatal = issues.some((i) => i.includes('missing required alt') || i.includes('Icon-only'));
     return {
       id: 'accessibility-audit',
       name: 'WCAG 2.2 AA / AAA Accessibility Floor',
       category: 'accessibility',
-      status: isFatal ? 'fail' : 'warn',
+      status: 'fail',
       score: Math.max(0, 100 - issues.length * 20),
       details: `Accessibility audit identified ${issues.length} issue(s): ${issues.slice(0, 2).join('; ')}.`,
-      remediation: 'Ensure all buttons have accessible names (aria-label), images have alt tags, and keyboard focus outlines are visible.',
+      remediation:
+        'Ensure all buttons have accessible names (aria-label), images have alt tags, and keyboard focus outlines are visible.',
     };
   }
 
@@ -57,6 +57,7 @@ export function checkAccessibilityGate(code: string): GateCheckResult {
     category: 'accessibility',
     status: 'pass',
     score: 100,
-    details: 'Meets WCAG 2.2 AA floor. Proper ARIA attributes, image alt descriptions, keyboard focusability, and accessible names present.',
+    details:
+      'Static accessibility checks found no listed markup issues; this does not replace runtime Axe, screen-reader, or keyboard testing.',
   };
 }

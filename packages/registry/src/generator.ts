@@ -6,6 +6,47 @@ import type { RegistryItem, RegistryFile, RegistryIndex, RegistryIndexItem } fro
 export const SHADCN_REGISTRY_ITEM_SCHEMA = 'https://ui.shadcn.com/schema/registry-item.json';
 export const SHADCN_REGISTRY_INDEX_SCHEMA = 'https://ui.shadcn.com/schema/registry.json';
 
+function isPathWithinDirectory(directory: string, candidate: string): boolean {
+  const relativePath = path.relative(directory, candidate);
+  return (
+    relativePath !== '' &&
+    relativePath !== '..' &&
+    !relativePath.startsWith(`..${path.sep}`) &&
+    !path.isAbsolute(relativePath)
+  );
+}
+
+function resolveResourceFilePath(resourceDir: string, filePath: string): string {
+  if (fs.existsSync(resourceDir)) {
+    const resourceDirStat = fs.lstatSync(resourceDir);
+    if (resourceDirStat.isSymbolicLink()) {
+      throw new Error('Resource directory cannot be a symlink.');
+    }
+    if (!resourceDirStat.isDirectory()) {
+      throw new Error('Resource path must be a directory.');
+    }
+  }
+
+  const resourceRoot = fs.existsSync(resourceDir)
+    ? fs.realpathSync(resourceDir)
+    : path.resolve(resourceDir);
+  const candidate = path.resolve(resourceRoot, filePath);
+
+  if (!isPathWithinDirectory(resourceRoot, candidate)) {
+    throw new Error(`Resource file path '${filePath}' escapes the resource directory.`);
+  }
+
+  if (fs.existsSync(candidate)) {
+    const realCandidate = fs.realpathSync(candidate);
+    if (!isPathWithinDirectory(resourceRoot, realCandidate)) {
+      throw new Error(`Resource file path '${filePath}' resolves outside the resource directory.`);
+    }
+    return realCandidate;
+  }
+
+  return candidate;
+}
+
 /**
  * Maps a Tessellate resourceType to shadcn registry item type.
  */
@@ -39,7 +80,7 @@ export function generateRegistryItem(
   for (const fileSpec of manifest.files) {
     // Only package component and utility files into the registry distribution
     if (fileSpec.kind === 'component' || fileSpec.kind === 'utility' || fileSpec.kind === 'style') {
-      const fullPath = path.join(resourceDir, fileSpec.path);
+      const fullPath = resolveResourceFilePath(resourceDir, fileSpec.path);
       if (fs.existsSync(fullPath)) {
         const content = fs.readFileSync(fullPath, 'utf-8').replace(/\r\n/g,'\n');
         files.push({
@@ -54,7 +95,7 @@ export function generateRegistryItem(
 
   // Fallback: if no files matched kind above, grab index.tsx if present
   if (files.length === 0) {
-    const indexPath = path.join(resourceDir, 'index.tsx');
+    const indexPath = resolveResourceFilePath(resourceDir, 'index.tsx');
     if (fs.existsSync(indexPath)) {
       files.push({
         path: 'index.tsx',
