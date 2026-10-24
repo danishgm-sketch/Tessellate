@@ -10218,7 +10218,7 @@
         "apps/site/src/components/home/SiteHeader.tsx",
         "tests/e2e/documentation-keyboard-regression.spec.ts"
       ],
-      "fixCommit": null,
+      "fixCommit": "38aa6d31",
       "status": "fixed-local-verified",
       "evidence": "quality/evidence/step-45/cli-header-before-320.png; quality/evidence/step-45/cli-header-after-320.png",
       "verification": "A red-to-green Playwright regression checks 320px in both desktop and mobile projects. The header exposes the established Start building accessible name while showing a compact visible label below 400px. The full local browser run passes with 548 passed, 149 configured skips, and zero failures; the Sites Worker certifies all 324 resources. Current-head GitHub CI and deployed Site verification remain pending."
