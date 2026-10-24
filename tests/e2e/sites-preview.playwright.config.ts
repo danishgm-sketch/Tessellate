@@ -19,6 +19,7 @@ export default defineConfig({
     'site-favicon.spec.ts',
     'documentation-keyboard-regression.spec.ts',
     'sites-preview-csp.spec.ts',
+    'sites-preview-csp-live-v25.spec.ts',
     'core-accessibility-landmarks.spec.ts',
     'explore-filter-control-identity.spec.ts',
     'sites-unknown-resource-preview.spec.ts',

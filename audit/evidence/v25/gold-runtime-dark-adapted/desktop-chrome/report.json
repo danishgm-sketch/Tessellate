@@ -1,0 +1,110 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "capturedAt": "2026-10-24T19:57:10.783Z",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "contrast": [
+    {
+      "slug": "advanced-data-table",
+      "theme": "dark",
+      "textSamples": 0,
+      "failures": [],
+      "samples": []
+    },
+    {
+      "slug": "error-state",
+      "theme": "dark",
+      "textSamples": 2,
+      "failures": [
+        {
+          "text": "Retry Operation",
+          "selector": "button.px-4.py-2",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(255,255,255)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "size": "12px",
+          "weight": "600"
+        }
+      ],
+      "samples": [
+        {
+          "text": "Resource dependency schema validation failed: missing required property \"layoutDNA.density\".",
+          "selector": "p.text-xs.text-[var(--tess-ink-muted,#62666F)]",
+          "color": "rgb(98, 102, 111)",
+          "background": "rgb(255,255,255)",
+          "ratio": 5.75,
+          "threshold": 4.5,
+          "gradient": false,
+          "size": "12px",
+          "weight": "400"
+        },
+        {
+          "text": "Retry Operation",
+          "selector": "button.px-4.py-2",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(255,255,255)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "size": "12px",
+          "weight": "600"
+        }
+      ]
+    },
+    {
+      "slug": "feature-matrix",
+      "theme": "dark",
+      "textSamples": 0,
+      "failures": [],
+      "samples": []
+    },
+    {
+      "slug": "three-pane-app-shell",
+      "theme": "dark",
+      "textSamples": 0,
+      "failures": [],
+      "samples": []
+    },
+    {
+      "slug": "pricing-three-tier",
+      "theme": "dark",
+      "textSamples": 1,
+      "failures": [
+        {
+          "text": "Get Started",
+          "selector": "button.w-full.py-3",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(255,255,255)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "size": "12px",
+          "weight": "600"
+        }
+      ],
+      "samples": [
+        {
+          "text": "Get Started",
+          "selector": "button.w-full.py-3",
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(255,255,255)",
+          "ratio": 1,
+          "threshold": 4.5,
+          "gradient": false,
+          "size": "12px",
+          "weight": "600"
+        }
+      ]
+    }
+  ],
+  "diagnostics": {
+    "consoleErrors": [],
+    "pageErrors": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

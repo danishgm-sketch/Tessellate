@@ -2,10 +2,11 @@
 
 This register preserves the historical resource/renderer audit and adds the
 current production review audit. The current public baseline is ChatGPT Site
-v24 at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`; local fixes
+v25 at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`; local fixes
 are not considered closed until verified on a newly published Site. Evidence
-for the v24 route sweep and screenshots is in `evidence/v24/`, and local post-fix
-route evidence is in `evidence/local-fixed-final/`. Trace measurements are in
+for the v24 route sweep and screenshots is in `evidence/v24/`, v25 route and
+resource evidence is in `evidence/v25/`, and local post-fix route evidence is in
+`evidence/local-fixed-final/`. Trace measurements are in
 `evidence/v24/performance-audit.json`. Site v11 verified the exact employee-experience brief from Compose to
 Direction C in Workbench at desktop and mobile widths; Site v14 reran that visible
 Compose-to-Direction-C smoke at the same widths. Site v13 verified the Reduced
@@ -21,49 +22,70 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 333 findings (0 Critical, 66 High, 250 Medium, 17 Low): 28 closed after deployed verification, 214 fixed locally and awaiting issue-specific deployed checks, 89 fixed and verified locally, 2 retain the legacy `fixed` status, and 0 remain open locally. AUD-323–AUD-333 are local fixes awaiting deployed verification. The v24 Site remains the deployed baseline; the user must approve publication of a new saved version before those findings can be closed.
+**Current disposition:** 334 findings (0 Critical, 66 High, 251 Medium, 17 Low): 28 closed after deployed verification, 216 fixed locally and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 0 remain open locally. AUD-140 and AUD-323–AUD-334 are local fixes awaiting deployed verification. The v25 Site remains the deployed baseline; the user must approve publication of a new saved version before those findings can be closed.
+
+The v25 route sweep captured all 31 canonical routes at 1440×900 and 390×844
+(62 route/viewport records). Every captured route returned HTTP 200 and the
+records show no product console errors, uncaught exceptions, failed requests,
+unloaded images, or horizontal overflow. Six selected route Axe scans had zero
+violations. The separate Gold dark-theme sweep exercised all 40 resources at
+both viewports using the visible resource detail controls; it found contrast
+failures in 17 resources on desktop and the same 17 on mobile. This extends the
+earlier local-only AUD-140 fix and keeps that finding open until the revised
+resource/theme boundary is deployed and rechecked. The detailed reports and
+before captures are under `evidence/v25/gold-dark-contrast-accurate/`.
+
+The deployed v25 mobile hydration probe also found that the server-rendered
+“Filters” button is enabled before its client handler is ready. With the Explore
+island script blocked at 390×844, the page reports “Preparing search…” and
+“Loading catalogue…”, but Filters remains enabled and clicking it leaves
+`aria-expanded=false`. Evidence and the baseline screenshot are under
+`evidence/v25/mobile-filter-hydration/`. AUD-334 records this independently
+from the contrast defects. The local fix ties its disabled state and accessible
+description to URL initialization and catalogue loading/error state; the
+desktop/mobile regression is scheduled for the refreshed Sites build.
 
 The v24 crawl visited all 31 requested canonical paths at desktop (1440 × 900) and mobile (390 × 844): 62/62 canonical document responses were HTTP 200. Its route crawl recorded 13 console errors, five aborted preview iframe requests, and no uncaught exceptions or horizontal overflow. Console errors were strict CSP blocks for the animated-gradient inline style on Explore, Effects, Motion, Backgrounds, and the representative resource detail; the separate automated Axe injector also produces CSP-only console output on preview frames. The aborted `preview-content` requests occurred while the route-sweep browser was moving through lazy previews; they had no HTTP status and are not treated as successful loads. The exact visible Compose journey was separately verified with a Playwright UI interaction; its exact brief persisted when the user changed controls. The browser automation helper artifact that initially appeared to clear the brief is excluded from defects.
 
 The local fixed route crawl visited the same 31 paths at both viewports: 62/62 HTTP 200, zero product console errors, uncaught exceptions, failed requests, or horizontal overflow. Axe returned zero violations on the six audited routes (home, Explore, Compose, Workbench, representative resource, and showcase). The Axe tool emits CSP messages only when injecting its scanner styles into isolated preview frames; those scanner messages are recorded separately and do not represent an application violation. A focused browser regression for landmark, heading, and native filter identities was red before fixes and passes on desktop and mobile. These results are local-only until a new Sites version is published and re-audited.
 
-### Current v24 route classification
+### v24 route classification (historical)
 
 Classification is based on the captured route rendering, browser errors, and the interactions actually exercised. `PASS` means this audit observed a coherent page render and no material defect in its sampled experience; it does not claim every secondary control on the route has been exhaustively certified. Representative child routes are separately listed. The legacy `/licence` spelling is not canonical and is not part of the requested route set; `/license` is canonical.
 
-| Route | v24 classification | Evidence / qualification |
-|---|---|---|
-| `/` | DEGRADED | Page renders; heading order violation in the Build and Runtime Budgets section. |
-| `/explore` | DEGRADED | Catalogue renders; checkbox identity issue, missing result-section heading, and an animated preview style blocked by strict CSP. |
-| `/components` | PASS | Catalogue category page renders at both viewports. |
-| `/sections` | PASS | Catalogue category page renders at both viewports. |
-| `/blocks` | PASS | Catalogue category page renders at both viewports. |
-| `/pages` | PASS | Catalogue category page renders at both viewports. |
-| `/effects` | DEGRADED | Animated-gradient inline style blocked by preview CSP. |
-| `/motion` | DEGRADED | Animated-gradient inline style blocked by preview CSP; route-sweep preview request was aborted during traversal. |
-| `/backgrounds` | DEGRADED | Animated-gradient inline style blocked by preview CSP. |
-| `/ai` | PASS | Catalogue category page renders at both viewports. |
-| `/data` | PASS | Catalogue category page renders at both viewports. |
-| `/compose` | PASS | Compose UI, ready catalogue, brief fields, and controls render; exact brief/control interaction separately verified. Route-sweep iframe cancellations are noted above. |
-| `/workbench` | DEGRADED | Workbench renders, but unnamed/ungrouped landmarks fail accessibility checks. |
-| `/blueprints` | PASS | Blueprint listing renders at both viewports. |
-| `/collections` | PASS | Collection route renders at both viewports. |
-| `/creators` | PASS | Creator route renders at both viewports. |
-| `/showcase` | PASS | Showcase listing renders at both viewports. |
-| `/trends` | PASS | Trends route renders at both viewports. |
-| `/tools` | PASS | Tool listing renders at both viewports. |
-| `/agents` | PASS | Agent route renders at both viewports. |
-| `/docs` | PASS | Documentation landing route renders at both viewports. |
-| `/sponsor` | PASS | Sponsor route renders at both viewports. |
-| `/about` | PASS | About route renders at both viewports. |
-| `/license` | PASS | Canonical licence route renders at both viewports. |
-| `/privacy` | PASS | Privacy route renders at both viewports. |
-| `/terms` | PASS | Terms route renders at both viewports. |
-| `/r/advanced-data-table` | DEGRADED | Resource detail renders, but animated-gradient preview CSP blocks occur in the scanned preview context; Axe scanner injection output is separated. |
-| `/showcase/showcase-playful-hr` | PASS | Representative showcase renders at both viewports. |
-| `/blueprints/b2b-saas` | PASS | Representative blueprint renders at both viewports. |
-| `/tools/typography` | PASS | Representative tool renders at both viewports. |
-| `/docs/cli` | PASS | Representative documentation page renders at both viewports. |
+| Route                           | v24 classification | Evidence / qualification                                                                                                                                               |
+| ------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`                             | DEGRADED           | Page renders; heading order violation in the Build and Runtime Budgets section.                                                                                        |
+| `/explore`                      | DEGRADED           | Catalogue renders; checkbox identity issue, missing result-section heading, and an animated preview style blocked by strict CSP.                                       |
+| `/components`                   | PASS               | Catalogue category page renders at both viewports.                                                                                                                     |
+| `/sections`                     | PASS               | Catalogue category page renders at both viewports.                                                                                                                     |
+| `/blocks`                       | PASS               | Catalogue category page renders at both viewports.                                                                                                                     |
+| `/pages`                        | PASS               | Catalogue category page renders at both viewports.                                                                                                                     |
+| `/effects`                      | DEGRADED           | Animated-gradient inline style blocked by preview CSP.                                                                                                                 |
+| `/motion`                       | DEGRADED           | Animated-gradient inline style blocked by preview CSP; route-sweep preview request was aborted during traversal.                                                       |
+| `/backgrounds`                  | DEGRADED           | Animated-gradient inline style blocked by preview CSP.                                                                                                                 |
+| `/ai`                           | PASS               | Catalogue category page renders at both viewports.                                                                                                                     |
+| `/data`                         | PASS               | Catalogue category page renders at both viewports.                                                                                                                     |
+| `/compose`                      | PASS               | Compose UI, ready catalogue, brief fields, and controls render; exact brief/control interaction separately verified. Route-sweep iframe cancellations are noted above. |
+| `/workbench`                    | DEGRADED           | Workbench renders, but unnamed/ungrouped landmarks fail accessibility checks.                                                                                          |
+| `/blueprints`                   | PASS               | Blueprint listing renders at both viewports.                                                                                                                           |
+| `/collections`                  | PASS               | Collection route renders at both viewports.                                                                                                                            |
+| `/creators`                     | PASS               | Creator route renders at both viewports.                                                                                                                               |
+| `/showcase`                     | PASS               | Showcase listing renders at both viewports.                                                                                                                            |
+| `/trends`                       | PASS               | Trends route renders at both viewports.                                                                                                                                |
+| `/tools`                        | PASS               | Tool listing renders at both viewports.                                                                                                                                |
+| `/agents`                       | PASS               | Agent route renders at both viewports.                                                                                                                                 |
+| `/docs`                         | PASS               | Documentation landing route renders at both viewports.                                                                                                                 |
+| `/sponsor`                      | PASS               | Sponsor route renders at both viewports.                                                                                                                               |
+| `/about`                        | PASS               | About route renders at both viewports.                                                                                                                                 |
+| `/license`                      | PASS               | Canonical licence route renders at both viewports.                                                                                                                     |
+| `/privacy`                      | PASS               | Privacy route renders at both viewports.                                                                                                                               |
+| `/terms`                        | PASS               | Terms route renders at both viewports.                                                                                                                                 |
+| `/r/advanced-data-table`        | DEGRADED           | Resource detail renders, but animated-gradient preview CSP blocks occur in the scanned preview context; Axe scanner injection output is separated.                     |
+| `/showcase/showcase-playful-hr` | PASS               | Representative showcase renders at both viewports.                                                                                                                     |
+| `/blueprints/b2b-saas`          | PASS               | Representative blueprint renders at both viewports.                                                                                                                    |
+| `/tools/typography`             | PASS               | Representative tool renders at both viewports.                                                                                                                         |
+| `/docs/cli`                     | PASS               | Representative documentation page renders at both viewports.                                                                                                           |
 
 The route `PASS` rows above record successful sampled rendering; they should not be read as completion of the broader product-hardening programme or as proof every nested interaction has been exhaustively exercised. The core flagship flow remains the deeper acceptance path.
 
@@ -376,6 +398,26 @@ No Critical findings are recorded in this audit register.
   clean runtime reports; see `quality/STEP_14_EVIDENCE.md`.
 - **Disposition:** fixed locally; public/review deployment verification remains
   pending under the ordered release programme.
+
+- **Latest deployed evidence (v25):** the real `/resources/:slug` dark +
+  Expressive sweep found text contrast failures in 17 of 40 Gold resources on
+  desktop and the same 17 on mobile. The scan captured screenshots for all 40
+  resources and recorded zero console errors, uncaught exceptions, failed
+  requests, and HTTP errors. The machine-readable evidence and affected captures
+  are in `evidence/v25/gold-dark-contrast-accurate/`.
+- **Updated root cause:** `@custom-variant dark` excluded `.tess-screen` even
+  though the screen canvas could be dark. This suppressed the resources' authored
+  dark utilities. Enabling them exposed a second layer of local foreground and
+  surface mismatches, including a light-surface notification timestamp and a
+  half-opacity Select arrow.
+- **Updated remediation and local verification:** the dark variant now applies
+  within resource canvases and the exporter uses the same selector. Resource
+  foregrounds are corrected at their actual light or dark surfaces. The new
+  all-40 rendered-text contrast regression passes at 1440×900 and 390×844; the
+  all-40 Gold Axe regression also passes at both viewports with zero WCAG A/AA
+  violations. Local before/after screenshots and reports are under
+  `evidence/local-dark-contrast/`. The fix is recorded as
+  `fixed-awaiting-deployed-verification`; v25 itself still contains the defect.
 
 ### AUD-141 — Scrollable Gold resource panels were not keyboard reachable
 
@@ -2860,6 +2902,7 @@ with zero findings. That harness race is not counted as a product defect.
 - **Affected code:** `packages/registry-gate/src/checks/isolation-check.ts` and `packages/registry-gate/src/__tests__/window-proxy-network-alias.test.ts`.
 - **Remediation:** Resolve nested Window proxies and `Document.defaultView` before applying existing network-sink detection. The full contribution gate rejects the temporary resource with a failed security-isolation report.
 - **Validation:** The focused regression passes 2/2 tests and covers 23 proxy/alias/callback forms; the registry-gate package passes 76 tests; `pnpm test` passes 1206 tests in 77 files; all 22 workspace typechecks pass; changed-file ESLint passes; source isolation passes 324/324; and `pnpm audit:all` passes. The fix is local; deployed verification remains open.
+
 ### AUD-277 — Registry gate accepted fetch through a destructured Window proxy alias
 
 - **Evidence:** Before the fix, `const { window: browserWindow } = globalThis; const request = browserWindow.fetch; request('https://collector.invalid/data')` passed static source admission. The red regression and the final three-form destructuring matrix are recorded in [`window-proxy-destructured-alias.json`](../quality/evidence/step-37/window-proxy-destructured-alias.json). Source was parsed only; it was never executed.
@@ -2868,6 +2911,7 @@ with zero findings. That harness race is not counted as a product defect.
 - **Affected code:** `packages/registry-gate/src/checks/isolation-check.ts` and `packages/registry-gate/src/__tests__/window-proxy-network-alias.test.ts`.
 - **Remediation:** Resolve a destructured Window proxy only when its property name is statically known and its initializer is already a recognized Window or Document reference. The complete contribution gate rejects the representative temporary resource.
 - **Validation:** The focused regression passes 2/2 tests and covers 23 proxy/alias/callback forms; the registry-gate package passes 76 tests; the full workspace suite passes 1206 tests in 77 files; all 22 workspace typechecks and changed-file ESLint pass; source isolation passes 324/324; and `pnpm audit:all` passes all 16 gates, production builds, budgets, provenance, secret/security, and dependency audits. Deployed verification remains open.
+
 ### AUD-278 — Registry gate accepted direct and destructured assignments from Window proxies
 
 - **Evidence:** Before the fix, both `browserWindow = globalThis.window` and `({ window: browserWindow } = globalThis)` allowed a later aliased fetch to pass static admission. The red/green record is [`window-proxy-assignment-alias.json`](../quality/evidence/step-37/window-proxy-assignment-alias.json). Resource source was analyzed, not executed.
@@ -2876,6 +2920,7 @@ with zero findings. That harness race is not counted as a product defect.
 - **Affected code:** `packages/registry-gate/src/checks/isolation-check.ts` and `packages/registry-gate/src/__tests__/window-proxy-network-alias.test.ts`.
 - **Remediation:** Index identifier assignment expressions once per TypeScript checker/source file, then resolve only earlier direct or statically named object-pattern assignments through the trusted Window-reference analysis.
 - **Validation:** The focused regression passes 2/2 tests and covers 23 proxy/alias/callback forms; the registry-gate package passes 76 tests; the full workspace suite passes 1206 tests in 77 files; all 22 workspace typechecks and changed-file ESLint pass; source isolation passes 324/324; and `pnpm audit:all` passes all 16 gates, production builds, budgets, provenance, secret/security, and dependency audits. Deployed verification remains open.
+
 ### AUD-279 — Registry gate allowed network capability references to escape through callbacks
 
 - **Evidence:** Before the fix, passing `globalThis.fetch` into a callback parameter passed static admission; equivalent callback transfers also escaped for WebSocket, XMLHttpRequest, EventSource, and `navigator.sendBeacon`. The red/green report is [`window-proxy-callback-transfer.json`](../quality/evidence/step-37/window-proxy-callback-transfer.json). Resource source was statically analyzed only; it was never executed.
@@ -3347,6 +3392,14 @@ with zero findings. That harness race is not counted as a product defect.
 - **Affected code:** `resources/blocks/advanced-data-table/index.tsx`, `tests/e2e/core-accessibility-landmarks.spec.ts`.
 - **Remediation:** Render record labels as paragraphs while preserving their visual style. Local regression passes; deployed verification is pending.
 
+### AUD-334 — Mobile Explore filters appeared active before hydration
+
+- **Evidence:** Deployed v25 at 390×844 returned HTTP 200. With only the Explore island request intentionally blocked, the Filters button was enabled while the search field was disabled and the page announced “Preparing search…” and “Loading catalogue…”. Clicking Filters left `aria-expanded=false` and opened no dialog. Before capture and machine-readable report: [`mobile-filter-hydration/`](evidence/v25/mobile-filter-hydration/). The deliberate blocked-request console message is excluded from application errors; no unrelated failed requests were recorded.
+- **Reproduction:** Open `/explore/` at 390×844; block `/_astro/ExploreView.*.js`; click Filters before hydration. The deployed button accepts the click but does nothing.
+- **Root cause:** The server-rendered mobile filter control was enabled before Explore attached its click handler. The initial opacity-only disabled treatment also left a correctly disabled control looking active on mobile.
+- **Affected code:** `apps/site/src/components/ExploreView.tsx`, `tests/e2e/explore-search-hardening.spec.ts`.
+- **Remediation:** Disable Filters while URL state is uninitialized, the catalogue is loading, or catalogue loading has failed; describe the visible readiness/error status to assistive technology; use a muted surface and text, dashed border, and no shadow so the unavailable state is clear on touch screens. The local Sites Worker regression was observed failing before the visual correction and now passes with the expected disabled state. Before/after captures are in `evidence/v25/mobile-filter-hydration/` and `../quality/evidence/step-45/after/`. Published v25 is still affected; close only after re-running this test on the next deployed Site.
+
 ## LOW (continued — v24 deployed-site audit)
 
 ### AUD-324 — Explore filter checkboxes lacked native identity
@@ -3369,6 +3422,19 @@ with zero findings. That harness race is not counted as a product defect.
 
 Chrome DevTools traces are recorded in [`evidence/v24/performance-audit.json`](evidence/v24/performance-audit.json). Cold desktop homepage: LCP 306ms, TTFB 54ms, CLS 0, 25 requests, maximum critical path 593ms. Cold desktop Compose: LCP 196ms, TTFB 48ms, CLS 0. Mobile Compose (390×844, DPR 3, 4× CPU, Fast 4G): LCP 686ms, TTFB 49ms, CLS 0; the trace noted a 53ms forced reflow without source attribution or an estimated saving. An interaction trace measured lab INP 29ms. CrUX field data was unavailable. The desktop document compression insight estimated no FCP/LCP savings; it is retained as an observation, not recorded as a confirmed defect.
 
+## Performance observations — deployed v25 Explore
+
+Chrome DevTools cold-navigation traces measured desktop Explore (1440×900, 1×
+CPU, unthrottled network) at LCP 192ms, TTFB 42ms, CLS 0; the route made 107
+requests while mounting visible isolated resource previews. Mobile Explore
+(390×844, DPR 3, 4× CPU, Fast 4G) measured LCP 600ms, TTFB 58ms, CLS 0 and 56
+requests. Both runs recorded no console messages or failed requests. CrUX field
+data was unavailable. The initial HTML was not compressed (47.4kB estimated
+wasted transfer), but DevTools estimated 0ms FCP/LCP savings, so this remains an
+observation rather than a confirmed defect. These single-run traces do not
+certify field Core Web Vitals or the remaining routes; detailed results are in
+`../quality/evidence/step-47/v25-explore.json`.
+
 ## Current local closure gate
 
-AUD-323–AUD-333 are fixed and regression-tested locally, not closed. The current local evidence includes 62 route/viewport checks across the same 31 canonical routes, six Axe scans with zero violations, and targeted CSP, accessibility, checkbox identity, and clean standalone-export regressions. Final local validation passed: frozen install; catalogue build; TypeScript; lint; 1,214 unit/integration tests (one skipped); `pnpm audit:all` including all 16 behavioural gates and the production build; and the complete Playwright run (558 passed, 149 configured skips across the Astro, Sites Worker desktop/mobile, and preview-app projects). These results are local evidence, not deployed closure. The remaining release steps are: commit and push the audited source; obtain green GitHub CI; save a new Sites version from the exact source commit; show that saved version and wait for explicit approval; then publish and repeat the deployed audit. No current v24 screenshot is represented as an after-fix deployment.
+AUD-323–AUD-334 are fixed and regression-tested locally, not closed. The current local evidence includes 62 route/viewport checks across the same 31 canonical routes, six Axe scans with zero violations, and targeted CSP, accessibility, checkbox identity, hydration-state, all-Gold contrast, and clean standalone-export regressions. Final local validation passed: frozen install; catalogue build; TypeScript; lint; 1,215 unit/integration tests (one skipped); `pnpm audit:all` including all 16 behavioural gates and the production build; and the complete Playwright run (597 passed, 152 configured skips across Astro desktop/mobile, Sites Worker desktop/mobile, and the isolated preview app). The Sites Worker certification rendered all 324 resources; the focused Explore/CSP run also passed 47 cases with one expected skip. These are local results, not deployed closure. The current public baseline remains v25 and still contains AUD-140’s 17/40 Gold contrast failures and AUD-334’s pre-hydration dead Filters control. The next review build must be saved from the exact source commit, shown for approval, then published and re-audited. No after-fix screenshot is represented as a deployed result.

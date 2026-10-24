@@ -20,6 +20,27 @@ Step 34 audits the three blueprint/showcase gallery routes, all 12 blueprint det
 
 Step 06 adds named local Sites Worker browser evidence for all 324 default previews at seven widths and all 972 declared catalogue variants at desktop width; the 40-resource Gold matrix covers all 120 Gold variants at seven widths, keyboard behavior for enabled controls, reduced motion and iframe isolation. A focused 13-resource navigation/control regression covers placeholder destinations and visible actions. The final official `pnpm test:e2e` run passed (73 regular tests, 11 explicit skips, and 3/3 Sites Worker tests); the catalogue and Gold reports record zero findings. The catalogue responsive/variant cells now record PASS for the tested render contract; unexecuted semantics, states and network conditions remain FAIL. Local fixes remain open pending published review verification. Evidence is in `quality/STEP_06_EVIDENCE.md` and `audit/evidence/step-06/results/`.
 
+Step 45 v25 production-review contrast extension (2026-10-24): the visible
+deployed dark + Expressive preview sweep covered all 40 Gold resources at
+1440×900 and 390×844 and found readable-text contrast failures in 17 resources
+at each viewport. The local theme-boundary and resource-surface corrections now
+pass the same rendered-text contrast regression and the all-40 Gold Axe suite
+at both viewports; evidence and before/after screenshots are in
+`audit/evidence/v25/gold-dark-contrast-accurate/` and
+`audit/evidence/local-dark-contrast/`. The deployed defect remains open until a
+new published review Site passes the same checks, so this note does not promote
+the matrix's high-contrast cells to PASS.
+
+The same deployed audit found a dead mobile Filters control during pre-hydration:
+the search field showed “Preparing search…” but Filters accepted a click without
+opening its dialog. The local fix disables the control until client URL state and
+catalogue readiness are resolved, associates the visible status with it, and
+uses a clearly muted dashed treatment. The Sites Worker regression failed on
+the previous visual treatment and now passes at 390×844; the after capture is
+`quality/evidence/step-45/after/explore-filters-disabled-before-hydration-390x844.png`.
+The deployed baseline remains v25, so the mobile hydration cell stays FAIL until
+the refreshed Site is tested.
+
 Step 09 adds a no-override 100-brief Product Interpreter benchmark with semantic
 signals, metric ranges and contamination checks. The Product Interpreter row
 records only the dimensions covered by that benchmark; untested error, browser,

@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-24T06:20:49.521Z",
+  "capturedAt": "2026-10-24T21:32:31.341Z",
   "method": "Local ChatGPT Sites compatibility Worker preview, Playwright Chromium, standard laptop CPU/network without throttling. LCP/CLS are lab PerformanceObserver samples; Long Tasks is supplemental. Not field Web Vitals or DevTools traces.",
   "browserProject": "sites-chromium",
   "results": [
@@ -10,42 +10,42 @@
         "width": 1440,
         "height": 900
       },
-      "readyMs": 349,
-      "fcp": 184,
-      "lcp": 184,
+      "readyMs": 427,
+      "fcp": 208,
+      "lcp": 208,
       "cls": 0,
       "longTaskMs": 0,
       "longTaskCount": 0,
-      "domContentLoaded": 155.10000000149012,
-      "load": 155.10000000149012,
+      "domContentLoaded": 191,
+      "load": 191,
       "resourceCount": 24,
-      "jsTransferBytes": 111468,
-      "jsDecodedBytes": 328934,
+      "jsTransferBytes": 111496,
+      "jsDecodedBytes": 329079,
       "jsResourceCount": 23,
       "mainFrameScriptUrls": [
-        "http://127.0.0.1:4323/_astro/SiteHeader.C4iZZWhI.js",
+        "http://127.0.0.1:4323/_astro/SiteHeader.DNyGnBc4.js",
         "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
         "http://127.0.0.1:4323/_astro/HeroComposer.CnuvBo9E.js",
-        "http://127.0.0.1:4323/_astro/ThreeDirectionsDemo.Q7_OjjHi.js",
+        "http://127.0.0.1:4323/_astro/ThreeDirectionsDemo.D3eoWb0B.js",
         "http://127.0.0.1:4323/_astro/CatalogueMosaic.CQ3B5yTw.js",
         "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
-        "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
         "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+        "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
         "http://127.0.0.1:4323/_astro/createLucideIcon.14lUEEec.js",
         "http://127.0.0.1:4323/_astro/arrow-right.CrL0QBhc.js",
         "http://127.0.0.1:4323/_astro/CommandPalette.JKUhS8aA.js",
         "http://127.0.0.1:4323/_astro/github.61P_G89B.js",
         "http://127.0.0.1:4323/_astro/search.CyDEvGzC.js",
         "http://127.0.0.1:4323/_astro/x.K_99xudA.js",
-        "http://127.0.0.1:4323/_astro/preload-helper.DHhhL8Zf.js",
         "http://127.0.0.1:4323/_astro/sliders-horizontal.B8xEUDjw.js",
         "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
+        "http://127.0.0.1:4323/_astro/preload-helper.DHhhL8Zf.js",
         "http://127.0.0.1:4323/_astro/activity.DGq5j_oI.js",
         "http://127.0.0.1:4323/_astro/arrow-up-right.ERzt_9ei.js",
         "http://127.0.0.1:4323/_astro/terminal.D1yAK8-f.js",
         "http://127.0.0.1:4323/_astro/FinalComposerFooter.D3aMTTDa.js",
-        "http://127.0.0.1:4323/_astro/compass.CD8f5pEM.js",
-        "http://127.0.0.1:4323/_astro/sliders-vertical.Bj_t08Fa.js"
+        "http://127.0.0.1:4323/_astro/sliders-vertical.Bj_t08Fa.js",
+        "http://127.0.0.1:4323/_astro/compass.CD8f5pEM.js"
       ],
       "previewFrameGeometry": [],
       "viewportHeight": 900,
@@ -54,17 +54,10 @@
       "documentWidth": 1440,
       "scriptResponses": [
         {
-          "url": "http://127.0.0.1:4323/_astro/SiteHeader.C4iZZWhI.js",
+          "url": "http://127.0.0.1:4323/_astro/SiteHeader.DNyGnBc4.js",
           "frameUrl": "http://127.0.0.1:4323/",
           "status": 200,
-          "encodedResponseBodyBytes": 2208,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/ThreeDirectionsDemo.Q7_OjjHi.js",
-          "frameUrl": "http://127.0.0.1:4323/",
-          "status": 200,
-          "encodedResponseBodyBytes": 2444,
+          "encodedResponseBodyBytes": 2240,
           "contentEncoding": "gzip"
         },
         {
@@ -72,6 +65,13 @@
           "frameUrl": "http://127.0.0.1:4323/",
           "status": 200,
           "encodedResponseBodyBytes": 3510,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/ThreeDirectionsDemo.D3eoWb0B.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 2441,
           "contentEncoding": "gzip"
         },
         {
@@ -92,7 +92,7 @@
           "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
           "frameUrl": "http://127.0.0.1:4323/",
           "status": 200,
-          "encodedResponseBodyBytes": 3304,
+          "encodedResponseBodyBytes": 3303,
           "contentEncoding": "gzip"
         },
         {
@@ -152,13 +152,6 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/preload-helper.DHhhL8Zf.js",
-          "frameUrl": "http://127.0.0.1:4323/",
-          "status": 200,
-          "encodedResponseBodyBytes": 875,
-          "contentEncoding": "gzip"
-        },
-        {
           "url": "http://127.0.0.1:4323/_astro/sliders-horizontal.B8xEUDjw.js",
           "frameUrl": "http://127.0.0.1:4323/",
           "status": 200,
@@ -169,7 +162,14 @@
           "url": "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
           "frameUrl": "http://127.0.0.1:4323/",
           "status": 200,
-          "encodedResponseBodyBytes": 319,
+          "encodedResponseBodyBytes": 320,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/preload-helper.DHhhL8Zf.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 875,
           "contentEncoding": "gzip"
         },
         {
@@ -194,13 +194,6 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/compass.CD8f5pEM.js",
-          "frameUrl": "http://127.0.0.1:4323/",
-          "status": 200,
-          "encodedResponseBodyBytes": 323,
-          "contentEncoding": "gzip"
-        },
-        {
           "url": "http://127.0.0.1:4323/_astro/FinalComposerFooter.D3aMTTDa.js",
           "frameUrl": "http://127.0.0.1:4323/",
           "status": 200,
@@ -213,11 +206,18 @@
           "status": 200,
           "encodedResponseBodyBytes": 288,
           "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/compass.CD8f5pEM.js",
+          "frameUrl": "http://127.0.0.1:4323/",
+          "status": 200,
+          "encodedResponseBodyBytes": 323,
+          "contentEncoding": "gzip"
         }
       ],
       "scriptResponseCount": 23,
       "uniqueScriptAssetCount": 23,
-      "uniqueEncodedScriptBodyBytes": 105270,
+      "uniqueEncodedScriptBodyBytes": 105299,
       "uniquePreviewOnlyScriptAssetCount": 0,
       "uniqueEncodedPreviewOnlyScriptBodyBytes": 0,
       "scriptAssetsMissingEncodedSize": [],
@@ -230,44 +230,44 @@
         "width": 1440,
         "height": 900
       },
-      "readyMs": 1142,
-      "fcp": 100,
-      "lcp": 100,
+      "readyMs": 1259,
+      "fcp": 136,
+      "lcp": 136,
       "cls": 0,
-      "longTaskMs": 81,
-      "longTaskCount": 1,
-      "domContentLoaded": 46.19999999925494,
-      "load": 49.69999999925494,
+      "longTaskMs": 163,
+      "longTaskCount": 2,
+      "domContentLoaded": 62.19999999925494,
+      "load": 66.5,
       "resourceCount": 35,
-      "jsTransferBytes": 187913,
-      "jsDecodedBytes": 592494,
+      "jsTransferBytes": 188176,
+      "jsDecodedBytes": 593134,
       "jsResourceCount": 27,
       "mainFrameScriptUrls": [
-        "http://127.0.0.1:4323/_astro/SiteHeader.C4iZZWhI.js",
+        "http://127.0.0.1:4323/_astro/SiteHeader.DNyGnBc4.js",
         "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
-        "http://127.0.0.1:4323/_astro/ExploreView.oNXuHUAR.js",
+        "http://127.0.0.1:4323/_astro/ExploreView.Bj_C6-HR.js",
         "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
+        "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
         "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
         "http://127.0.0.1:4323/_astro/createLucideIcon.14lUEEec.js",
         "http://127.0.0.1:4323/_astro/arrow-right.CrL0QBhc.js",
         "http://127.0.0.1:4323/_astro/CommandPalette.JKUhS8aA.js",
-        "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
         "http://127.0.0.1:4323/_astro/github.61P_G89B.js",
         "http://127.0.0.1:4323/_astro/search.CyDEvGzC.js",
         "http://127.0.0.1:4323/_astro/x.K_99xudA.js",
         "http://127.0.0.1:4323/_astro/chevron-down.DtfZPbTK.js",
-        "http://127.0.0.1:4323/_astro/src.DOhVIoh3.js",
+        "http://127.0.0.1:4323/_astro/src.DnGFRryG.js",
         "http://127.0.0.1:4323/_astro/clock.B8yMDytp.js",
         "http://127.0.0.1:4323/_astro/rotate-ccw.divXcstY.js",
-        "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
         "http://127.0.0.1:4323/_astro/sliders-horizontal.B8xEUDjw.js",
+        "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
         "http://127.0.0.1:4323/_astro/ResourceCard.8-QwV2SS.js",
         "http://127.0.0.1:4323/_astro/compass.CD8f5pEM.js",
         "http://127.0.0.1:4323/_astro/sliders-vertical.Bj_t08Fa.js",
         "http://127.0.0.1:4323/_astro/gold.CeiPxNV6.js",
         "http://127.0.0.1:4323/_astro/arrow-up-right.ERzt_9ei.js",
-        "http://127.0.0.1:4323/_astro/check.DZheQPi7.js",
         "http://127.0.0.1:4323/_astro/bookmark.BGuXTOA4.js",
+        "http://127.0.0.1:4323/_astro/check.DZheQPi7.js",
         "http://127.0.0.1:4323/_astro/copy.BIIza9m3.js",
         "http://127.0.0.1:4323/_astro/eye.uoIoxOcf.js"
       ],
@@ -313,7 +313,7 @@
       "catalogRequests": [
         {
           "url": "http://127.0.0.1:4323/data/catalog.json",
-          "transferBytes": 145524,
+          "transferBytes": 145527,
           "decodedBytes": 2143734
         }
       ],
@@ -321,17 +321,17 @@
       "documentWidth": 1440,
       "scriptResponses": [
         {
-          "url": "http://127.0.0.1:4323/_astro/SiteHeader.C4iZZWhI.js",
+          "url": "http://127.0.0.1:4323/_astro/SiteHeader.DNyGnBc4.js",
           "frameUrl": "http://127.0.0.1:4323/explore",
           "status": 200,
-          "encodedResponseBodyBytes": 2209,
+          "encodedResponseBodyBytes": 2240,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/ExploreView.oNXuHUAR.js",
+          "url": "http://127.0.0.1:4323/_astro/ExploreView.Bj_C6-HR.js",
           "frameUrl": "http://127.0.0.1:4323/explore",
           "status": 200,
-          "encodedResponseBodyBytes": 28546,
+          "encodedResponseBodyBytes": 28755,
           "contentEncoding": "gzip"
         },
         {
@@ -415,7 +415,7 @@
           "url": "http://127.0.0.1:4323/_astro/clock.B8yMDytp.js",
           "frameUrl": "http://127.0.0.1:4323/explore",
           "status": 200,
-          "encodedResponseBodyBytes": 238,
+          "encodedResponseBodyBytes": 239,
           "contentEncoding": "gzip"
         },
         {
@@ -426,13 +426,6 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
-          "frameUrl": "http://127.0.0.1:4323/explore",
-          "status": 200,
-          "encodedResponseBodyBytes": 320,
-          "contentEncoding": "gzip"
-        },
-        {
           "url": "http://127.0.0.1:4323/_astro/sliders-horizontal.B8xEUDjw.js",
           "frameUrl": "http://127.0.0.1:4323/explore",
           "status": 200,
@@ -440,10 +433,17 @@
           "contentEncoding": "gzip"
         },
         {
+          "url": "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 320,
+          "contentEncoding": "gzip"
+        },
+        {
           "url": "http://127.0.0.1:4323/_astro/ResourceCard.8-QwV2SS.js",
           "frameUrl": "http://127.0.0.1:4323/explore",
           "status": 200,
-          "encodedResponseBodyBytes": 2116,
+          "encodedResponseBodyBytes": 2115,
           "contentEncoding": "gzip"
         },
         {
@@ -454,10 +454,10 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.DOhVIoh3.js",
+          "url": "http://127.0.0.1:4323/_astro/src.DnGFRryG.js",
           "frameUrl": "http://127.0.0.1:4323/explore",
           "status": 200,
-          "encodedResponseBodyBytes": 55063,
+          "encodedResponseBodyBytes": 55086,
           "contentEncoding": "gzip"
         },
         {
@@ -482,13 +482,6 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/check.DZheQPi7.js",
-          "frameUrl": "http://127.0.0.1:4323/explore",
-          "status": 200,
-          "encodedResponseBodyBytes": 162,
-          "contentEncoding": "gzip"
-        },
-        {
           "url": "http://127.0.0.1:4323/_astro/bookmark.BGuXTOA4.js",
           "frameUrl": "http://127.0.0.1:4323/explore",
           "status": 200,
@@ -496,10 +489,17 @@
           "contentEncoding": "gzip"
         },
         {
+          "url": "http://127.0.0.1:4323/_astro/check.DZheQPi7.js",
+          "frameUrl": "http://127.0.0.1:4323/explore",
+          "status": 200,
+          "encodedResponseBodyBytes": 162,
+          "contentEncoding": "gzip"
+        },
+        {
           "url": "http://127.0.0.1:4323/_astro/copy.BIIza9m3.js",
           "frameUrl": "http://127.0.0.1:4323/explore",
           "status": 200,
-          "encodedResponseBodyBytes": 230,
+          "encodedResponseBodyBytes": 231,
           "contentEncoding": "gzip"
         },
         {
@@ -518,77 +518,63 @@
         },
         {
           "url": "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/PreviewHost.DH8-R45o.js",
+          "url": "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/PreviewHost.DdNOSp-2.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion-spring",
           "status": 200,
-          "encodedResponseBodyBytes": 20068,
+          "encodedResponseBodyBytes": 20134,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/PreviewHost.DdNOSp-2.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/PreviewHost.DdNOSp-2.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/PreviewHost.DdNOSp-2.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
           "url": "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/PreviewHost.DH8-R45o.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/PreviewHost.DH8-R45o.js",
+          "url": "http://127.0.0.1:4323/_astro/PreviewHost.DdNOSp-2.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/PreviewHost.DH8-R45o.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/PreviewHost.DH8-R45o.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/PreviewHost.DH8-R45o.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
+          "url": "http://127.0.0.1:4323/_astro/PreviewHost.DdNOSp-2.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
@@ -601,7 +587,14 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+          "url": "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
           "status": 200,
           "encodedResponseBodyBytes": null,
@@ -615,6 +608,62 @@
           "contentEncoding": "gzip"
         },
         {
+          "url": "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
           "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
           "status": 200,
@@ -622,57 +671,8 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
           "url": "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
@@ -685,6 +685,41 @@
           "contentEncoding": "gzip"
         },
         {
+          "url": "http://127.0.0.1:4323/_astro/preview-protocol.TFkClQi-.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/preview-protocol.TFkClQi-.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/preview-protocol.TFkClQi-.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/preview-protocol.TFkClQi-.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/preview-protocol.TFkClQi-.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
           "url": "http://127.0.0.1:4323/_astro/preload-helper.DHhhL8Zf.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion-spring",
           "status": 200,
@@ -692,34 +727,6 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/preview-protocol.TFkClQi-.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/preview-protocol.TFkClQi-.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/preview-protocol.TFkClQi-.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/preload-helper.DHhhL8Zf.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
           "url": "http://127.0.0.1:4323/_astro/preload-helper.DHhhL8Zf.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
           "status": 200,
@@ -734,22 +741,8 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/preview-protocol.TFkClQi-.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/preview-protocol.TFkClQi-.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
           "url": "http://127.0.0.1:4323/_astro/preload-helper.DHhhL8Zf.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
@@ -762,143 +755,136 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.CoqxbQtO.js",
+          "url": "http://127.0.0.1:4323/_astro/preload-helper.DHhhL8Zf.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.CoqxbQtO.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/src.CoqxbQtO.js",
+          "url": "http://127.0.0.1:4323/_astro/src.B3msyF6l.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion-spring",
           "status": 200,
-          "encodedResponseBodyBytes": 32362,
+          "encodedResponseBodyBytes": 32751,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.CoqxbQtO.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
+          "url": "http://127.0.0.1:4323/_astro/src.B3msyF6l.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.CoqxbQtO.js",
+          "url": "http://127.0.0.1:4323/_astro/src.B3msyF6l.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.CoqxbQtO.js",
+          "url": "http://127.0.0.1:4323/_astro/src.B3msyF6l.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.B3msyF6l.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.CQKMLI4p.js",
+          "url": "http://127.0.0.1:4323/_astro/src.B3msyF6l.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.BOYsAstn.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.BOYsAstn.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.BOYsAstn.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion-spring",
           "status": 200,
           "encodedResponseBodyBytes": 20101,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.CQKMLI4p.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/src.CQKMLI4p.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/src.CQKMLI4p.js",
+          "url": "http://127.0.0.1:4323/_astro/src.BOYsAstn.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.CQKMLI4p.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion-spring",
-          "status": 200,
-          "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/src.CQKMLI4p.js",
+          "url": "http://127.0.0.1:4323/_astro/src.BOYsAstn.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.DOhVIoh3.js",
+          "url": "http://127.0.0.1:4323/_astro/src.BOYsAstn.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.DOhVIoh3.js",
+          "url": "http://127.0.0.1:4323/_astro/src.DnGFRryG.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accessibility-commitment-section",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.DOhVIoh3.js",
+          "url": "http://127.0.0.1:4323/_astro/src.DnGFRryG.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.DOhVIoh3.js",
+          "url": "http://127.0.0.1:4323/_astro/src.DnGFRryG.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
+          "status": 200,
+          "encodedResponseBodyBytes": null,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.DnGFRryG.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.DOhVIoh3.js",
+          "url": "http://127.0.0.1:4323/_astro/src.DnGFRryG.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion-spring",
           "status": 200,
           "encodedResponseBodyBytes": null,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.DOhVIoh3.js",
+          "url": "http://127.0.0.1:4323/_astro/src.DnGFRryG.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
           "status": 200,
           "encodedResponseBodyBytes": null,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/admin-console-shell.C1sG9kvi.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
-          "status": 200,
-          "encodedResponseBodyBytes": 576,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/manifest.0wITfxTh.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
-          "status": 200,
-          "encodedResponseBodyBytes": 2132,
           "contentEncoding": "gzip"
         },
         {
@@ -930,17 +916,31 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/manifest.ggb3czWA.js",
-          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
+          "url": "http://127.0.0.1:4323/_astro/admin-console-shell.C1sG9kvi.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
           "status": 200,
-          "encodedResponseBodyBytes": 2153,
+          "encodedResponseBodyBytes": 576,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/accordion-spring.D2CvcHtT.js",
+          "url": "http://127.0.0.1:4323/_astro/manifest.0wITfxTh.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=admin-console-shell",
+          "status": 200,
+          "encodedResponseBodyBytes": 2132,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/manifest.ggb3czWA.js",
+          "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=advanced-data-table",
+          "status": 200,
+          "encodedResponseBodyBytes": 2154,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/accordion-spring.BZflmuJo.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=accordion-spring",
           "status": 200,
-          "encodedResponseBodyBytes": 1084,
+          "encodedResponseBodyBytes": 1085,
           "contentEncoding": "gzip"
         },
         {
@@ -951,25 +951,25 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/activity-feed.Cdo8sCd9.js",
+          "url": "http://127.0.0.1:4323/_astro/activity-feed.Dv9h69QR.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
           "status": 200,
-          "encodedResponseBodyBytes": 772,
+          "encodedResponseBodyBytes": 771,
           "contentEncoding": "gzip"
         },
         {
           "url": "http://127.0.0.1:4323/_astro/manifest.D3ve3XyF.js",
           "frameUrl": "http://127.0.0.1:4323/preview-content/?resource=activity-feed",
           "status": 200,
-          "encodedResponseBodyBytes": 2206,
+          "encodedResponseBodyBytes": 2207,
           "contentEncoding": "gzip"
         }
       ],
       "scriptResponseCount": 92,
       "uniqueScriptAssetCount": 43,
-      "uniqueEncodedScriptBodyBytes": 271498,
+      "uniqueEncodedScriptBodyBytes": 272219,
       "uniquePreviewOnlyScriptAssetCount": 16,
-      "uniqueEncodedPreviewOnlyScriptBodyBytes": 90701,
+      "uniqueEncodedPreviewOnlyScriptBodyBytes": 91158,
       "scriptAssetsMissingEncodedSize": [],
       "screenshot": "quality\\evidence\\step-38\\after\\sites-worker\\sites-chromium-explore.png",
       "lazyPreviewScrollEvidence": {
@@ -987,29 +987,29 @@
         "width": 1440,
         "height": 900
       },
-      "readyMs": 497,
-      "fcp": 100,
-      "lcp": 100,
+      "readyMs": 644,
+      "fcp": 148,
+      "lcp": 148,
       "cls": 0,
-      "longTaskMs": 0,
-      "longTaskCount": 0,
-      "domContentLoaded": 35.30000000074506,
-      "load": 80.20000000298023,
+      "longTaskMs": 54,
+      "longTaskCount": 1,
+      "domContentLoaded": 66.59999999776483,
+      "load": 121,
       "resourceCount": 21,
-      "jsTransferBytes": 282624,
-      "jsDecodedBytes": 1025369,
+      "jsTransferBytes": 283035,
+      "jsDecodedBytes": 1027601,
       "jsResourceCount": 19,
       "mainFrameScriptUrls": [
         "http://127.0.0.1:4323/_astro/index.DrY5COQr.js",
         "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
-        "http://127.0.0.1:4323/_astro/ComposeView.CUNir8Bz.js",
+        "http://127.0.0.1:4323/_astro/ComposeView.CzjgBK1r.js",
         "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
         "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
         "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
-        "http://127.0.0.1:4323/_astro/src.CQKMLI4p.js",
-        "http://127.0.0.1:4323/_astro/src.DOhVIoh3.js",
-        "http://127.0.0.1:4323/_astro/src.ATy6auRg.js",
-        "http://127.0.0.1:4323/_astro/storage.C-dPFDNy.js",
+        "http://127.0.0.1:4323/_astro/src.DnGFRryG.js",
+        "http://127.0.0.1:4323/_astro/src.DspsG8UY.js",
+        "http://127.0.0.1:4323/_astro/src.BOYsAstn.js",
+        "http://127.0.0.1:4323/_astro/storage.DQkcCoR4.js",
         "http://127.0.0.1:4323/_astro/createLucideIcon.14lUEEec.js",
         "http://127.0.0.1:4323/_astro/arrow-right.CrL0QBhc.js",
         "http://127.0.0.1:4323/_astro/chevron-down.DtfZPbTK.js",
@@ -1017,7 +1017,7 @@
         "http://127.0.0.1:4323/_astro/smartphone.BKKE0Hdz.js",
         "http://127.0.0.1:4323/_astro/shield.CClXYlwc.js",
         "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
-        "http://127.0.0.1:4323/_astro/src.CoqxbQtO.js",
+        "http://127.0.0.1:4323/_astro/src.B3msyF6l.js",
         "http://127.0.0.1:4323/_astro/gold.CeiPxNV6.js"
       ],
       "previewFrameGeometry": [],
@@ -1025,7 +1025,7 @@
       "catalogRequests": [
         {
           "url": "http://127.0.0.1:4323/data/catalog.json",
-          "transferBytes": 145524,
+          "transferBytes": 145527,
           "decodedBytes": 2143734
         }
       ],
@@ -1040,7 +1040,7 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/ComposeView.CUNir8Bz.js",
+          "url": "http://127.0.0.1:4323/_astro/ComposeView.CzjgBK1r.js",
           "frameUrl": "http://127.0.0.1:4323/compose",
           "status": 200,
           "encodedResponseBodyBytes": 8126,
@@ -1075,17 +1075,17 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.CQKMLI4p.js",
+          "url": "http://127.0.0.1:4323/_astro/src.BOYsAstn.js",
           "frameUrl": "http://127.0.0.1:4323/compose",
           "status": 200,
           "encodedResponseBodyBytes": 20101,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/storage.C-dPFDNy.js",
+          "url": "http://127.0.0.1:4323/_astro/storage.DQkcCoR4.js",
           "frameUrl": "http://127.0.0.1:4323/compose",
           "status": 200,
-          "encodedResponseBodyBytes": 2184,
+          "encodedResponseBodyBytes": 2185,
           "contentEncoding": "gzip"
         },
         {
@@ -1103,10 +1103,10 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.DOhVIoh3.js",
+          "url": "http://127.0.0.1:4323/_astro/src.DnGFRryG.js",
           "frameUrl": "http://127.0.0.1:4323/compose",
           "status": 200,
-          "encodedResponseBodyBytes": 55063,
+          "encodedResponseBodyBytes": 55086,
           "contentEncoding": "gzip"
         },
         {
@@ -1117,31 +1117,24 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.ATy6auRg.js",
-          "frameUrl": "http://127.0.0.1:4323/compose",
-          "status": 200,
-          "encodedResponseBodyBytes": 71530,
-          "contentEncoding": "gzip"
-        },
-        {
           "url": "http://127.0.0.1:4323/_astro/cpu.Cewq4aej.js",
           "frameUrl": "http://127.0.0.1:4323/compose",
           "status": 200,
-          "encodedResponseBodyBytes": 281,
+          "encodedResponseBodyBytes": 280,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.DspsG8UY.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 71529,
           "contentEncoding": "gzip"
         },
         {
           "url": "http://127.0.0.1:4323/_astro/smartphone.BKKE0Hdz.js",
           "frameUrl": "http://127.0.0.1:4323/compose",
           "status": 200,
-          "encodedResponseBodyBytes": 291,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
-          "frameUrl": "http://127.0.0.1:4323/compose",
-          "status": 200,
-          "encodedResponseBodyBytes": 319,
+          "encodedResponseBodyBytes": 292,
           "contentEncoding": "gzip"
         },
         {
@@ -1152,6 +1145,13 @@
           "contentEncoding": "gzip"
         },
         {
+          "url": "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
+          "frameUrl": "http://127.0.0.1:4323/compose",
+          "status": 200,
+          "encodedResponseBodyBytes": 319,
+          "contentEncoding": "gzip"
+        },
+        {
           "url": "http://127.0.0.1:4323/_astro/gold.CeiPxNV6.js",
           "frameUrl": "http://127.0.0.1:4323/compose",
           "status": 200,
@@ -1159,16 +1159,16 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.CoqxbQtO.js",
+          "url": "http://127.0.0.1:4323/_astro/src.B3msyF6l.js",
           "frameUrl": "http://127.0.0.1:4323/compose",
           "status": 200,
-          "encodedResponseBodyBytes": 32362,
+          "encodedResponseBodyBytes": 32750,
           "contentEncoding": "gzip"
         }
       ],
       "scriptResponseCount": 19,
       "uniqueScriptAssetCount": 19,
-      "uniqueEncodedScriptBodyBytes": 277954,
+      "uniqueEncodedScriptBodyBytes": 278365,
       "uniquePreviewOnlyScriptAssetCount": 0,
       "uniqueEncodedPreviewOnlyScriptBodyBytes": 0,
       "scriptAssetsMissingEncodedSize": [],
@@ -1181,29 +1181,29 @@
         "width": 1440,
         "height": 900
       },
-      "readyMs": 1063,
-      "fcp": 392,
-      "lcp": 592,
+      "readyMs": 1114,
+      "fcp": 508,
+      "lcp": 768,
       "cls": 0,
-      "longTaskMs": 65,
+      "longTaskMs": 70,
       "longTaskCount": 1,
-      "domContentLoaded": 41.899999998509884,
-      "load": 41.899999998509884,
+      "domContentLoaded": 78.30000000074506,
+      "load": 78.39999999850988,
       "resourceCount": 44,
-      "jsTransferBytes": 517366,
-      "jsDecodedBytes": 2099819,
+      "jsTransferBytes": 518506,
+      "jsDecodedBytes": 2104931,
       "jsResourceCount": 41,
       "mainFrameScriptUrls": [
-        "http://127.0.0.1:4323/_astro/index.DrlXOyXV.js",
+        "http://127.0.0.1:4323/_astro/index.Dp9Elqad.js",
         "http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js",
         "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
-        "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
         "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
+        "http://127.0.0.1:4323/_astro/jsx-runtime.BZkYIGyD.js",
         "http://127.0.0.1:4323/_astro/gold.CeiPxNV6.js",
-        "http://127.0.0.1:4323/_astro/src.DOhVIoh3.js",
-        "http://127.0.0.1:4323/_astro/src.ATy6auRg.js",
-        "http://127.0.0.1:4323/_astro/src.CQKMLI4p.js",
-        "http://127.0.0.1:4323/_astro/storage.C-dPFDNy.js",
+        "http://127.0.0.1:4323/_astro/src.BOYsAstn.js",
+        "http://127.0.0.1:4323/_astro/storage.DQkcCoR4.js",
+        "http://127.0.0.1:4323/_astro/src.DnGFRryG.js",
+        "http://127.0.0.1:4323/_astro/src.DspsG8UY.js",
         "http://127.0.0.1:4323/_astro/createLucideIcon.14lUEEec.js",
         "http://127.0.0.1:4323/_astro/activity.DGq5j_oI.js",
         "http://127.0.0.1:4323/_astro/arrow-up.vGbmiYPw.js",
@@ -1234,14 +1234,14 @@
         "http://127.0.0.1:4323/_astro/type.47V9oe1O.js",
         "http://127.0.0.1:4323/_astro/x.K_99xudA.js",
         "http://127.0.0.1:4323/_astro/zap.BZ4uBrvW.js",
-        "http://127.0.0.1:4323/_astro/src.CoqxbQtO.js"
+        "http://127.0.0.1:4323/_astro/src.B3msyF6l.js"
       ],
       "previewFrameGeometry": [],
       "viewportHeight": 900,
       "catalogRequests": [
         {
           "url": "http://127.0.0.1:4323/data/catalog.json",
-          "transferBytes": 145524,
+          "transferBytes": 145527,
           "decodedBytes": 2143734
         }
       ],
@@ -1259,14 +1259,21 @@
           "url": "http://127.0.0.1:4323/_astro/react.B6PPDU_E.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 3303,
+          "encodedResponseBodyBytes": 3304,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/index.DrlXOyXV.js",
+          "url": "http://127.0.0.1:4323/_astro/index.Dp9Elqad.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 231912,
+          "encodedResponseBodyBytes": 232641,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 16175,
           "contentEncoding": "gzip"
         },
         {
@@ -1284,24 +1291,17 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.GwxLoPeS.js",
-          "frameUrl": "http://127.0.0.1:4323/workbench",
-          "status": 200,
-          "encodedResponseBodyBytes": 16176,
-          "contentEncoding": "gzip"
-        },
-        {
-          "url": "http://127.0.0.1:4323/_astro/src.CQKMLI4p.js",
+          "url": "http://127.0.0.1:4323/_astro/src.BOYsAstn.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
           "encodedResponseBodyBytes": 20101,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/storage.C-dPFDNy.js",
+          "url": "http://127.0.0.1:4323/_astro/storage.DQkcCoR4.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 2184,
+          "encodedResponseBodyBytes": 2185,
           "contentEncoding": "gzip"
         },
         {
@@ -1312,17 +1312,17 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.DOhVIoh3.js",
-          "frameUrl": "http://127.0.0.1:4323/workbench",
-          "status": 200,
-          "encodedResponseBodyBytes": 55063,
-          "contentEncoding": "gzip"
-        },
-        {
           "url": "http://127.0.0.1:4323/_astro/activity.DGq5j_oI.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
           "encodedResponseBodyBytes": 221,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.DnGFRryG.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 55086,
           "contentEncoding": "gzip"
         },
         {
@@ -1333,17 +1333,17 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.ATy6auRg.js",
-          "frameUrl": "http://127.0.0.1:4323/workbench",
-          "status": 200,
-          "encodedResponseBodyBytes": 71530,
-          "contentEncoding": "gzip"
-        },
-        {
           "url": "http://127.0.0.1:4323/_astro/arrow-right.CrL0QBhc.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 185,
+          "encodedResponseBodyBytes": 184,
+          "contentEncoding": "gzip"
+        },
+        {
+          "url": "http://127.0.0.1:4323/_astro/src.DspsG8UY.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 71529,
           "contentEncoding": "gzip"
         },
         {
@@ -1361,6 +1361,13 @@
           "contentEncoding": "gzip"
         },
         {
+          "url": "http://127.0.0.1:4323/_astro/chevron-down.DtfZPbTK.js",
+          "frameUrl": "http://127.0.0.1:4323/workbench",
+          "status": 200,
+          "encodedResponseBodyBytes": 162,
+          "contentEncoding": "gzip"
+        },
+        {
           "url": "http://127.0.0.1:4323/_astro/check.DZheQPi7.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
@@ -1368,31 +1375,24 @@
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/chevron-down.DtfZPbTK.js",
-          "frameUrl": "http://127.0.0.1:4323/workbench",
-          "status": 200,
-          "encodedResponseBodyBytes": 161,
-          "contentEncoding": "gzip"
-        },
-        {
           "url": "http://127.0.0.1:4323/_astro/clock.B8yMDytp.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 238,
+          "encodedResponseBodyBytes": 239,
           "contentEncoding": "gzip"
         },
         {
           "url": "http://127.0.0.1:4323/_astro/circle-check.BnrBU8lA.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 190,
+          "encodedResponseBodyBytes": 189,
           "contentEncoding": "gzip"
         },
         {
           "url": "http://127.0.0.1:4323/_astro/copy.BIIza9m3.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 231,
+          "encodedResponseBodyBytes": 230,
           "contentEncoding": "gzip"
         },
         {
@@ -1413,7 +1413,7 @@
           "url": "http://127.0.0.1:4323/_astro/refresh-cw.SKQyrYtj.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 543,
+          "encodedResponseBodyBytes": 544,
           "contentEncoding": "gzip"
         },
         {
@@ -1434,7 +1434,7 @@
           "url": "http://127.0.0.1:4323/_astro/sun.DHWleJN4.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 321,
+          "encodedResponseBodyBytes": 320,
           "contentEncoding": "gzip"
         },
         {
@@ -1448,14 +1448,14 @@
           "url": "http://127.0.0.1:4323/_astro/panels-top-left.B-jdE7pS.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 217,
+          "encodedResponseBodyBytes": 216,
           "contentEncoding": "gzip"
         },
         {
           "url": "http://127.0.0.1:4323/_astro/play.CLWN6hGw.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 169,
+          "encodedResponseBodyBytes": 170,
           "contentEncoding": "gzip"
         },
         {
@@ -1469,28 +1469,28 @@
           "url": "http://127.0.0.1:4323/_astro/rotate-ccw.divXcstY.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 204,
+          "encodedResponseBodyBytes": 203,
           "contentEncoding": "gzip"
         },
         {
           "url": "http://127.0.0.1:4323/_astro/shield.CClXYlwc.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 248,
+          "encodedResponseBodyBytes": 247,
           "contentEncoding": "gzip"
         },
         {
           "url": "http://127.0.0.1:4323/_astro/sliders-vertical.Bj_t08Fa.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 288,
+          "encodedResponseBodyBytes": 287,
           "contentEncoding": "gzip"
         },
         {
           "url": "http://127.0.0.1:4323/_astro/sparkles.Cox_DJ6k.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 320,
+          "encodedResponseBodyBytes": 319,
           "contentEncoding": "gzip"
         },
         {
@@ -1504,7 +1504,7 @@
           "url": "http://127.0.0.1:4323/_astro/terminal.D1yAK8-f.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 199,
+          "encodedResponseBodyBytes": 200,
           "contentEncoding": "gzip"
         },
         {
@@ -1518,27 +1518,27 @@
           "url": "http://127.0.0.1:4323/_astro/x.K_99xudA.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 173,
+          "encodedResponseBodyBytes": 172,
           "contentEncoding": "gzip"
         },
         {
           "url": "http://127.0.0.1:4323/_astro/zap.BZ4uBrvW.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 230,
+          "encodedResponseBodyBytes": 229,
           "contentEncoding": "gzip"
         },
         {
-          "url": "http://127.0.0.1:4323/_astro/src.CoqxbQtO.js",
+          "url": "http://127.0.0.1:4323/_astro/src.B3msyF6l.js",
           "frameUrl": "http://127.0.0.1:4323/workbench",
           "status": 200,
-          "encodedResponseBodyBytes": 32362,
+          "encodedResponseBodyBytes": 32750,
           "contentEncoding": "gzip"
         }
       ],
       "scriptResponseCount": 41,
       "uniqueScriptAssetCount": 41,
-      "uniqueEncodedScriptBodyBytes": 507127,
+      "uniqueEncodedScriptBodyBytes": 508261,
       "uniquePreviewOnlyScriptAssetCount": 0,
       "uniqueEncodedPreviewOnlyScriptBodyBytes": 0,
       "scriptAssetsMissingEncodedSize": [],

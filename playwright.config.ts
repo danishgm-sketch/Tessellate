@@ -7,6 +7,9 @@ export default defineConfig({
     '**/preview-unknown-resource-regression.spec.ts',
     '**/preview-reduced-motion.spec.ts',
     '**/sites-preview-csp.spec.ts',
+    // The live v25 CSP/security probes require the Sites Worker response headers
+    // and opaque-origin asset policy; plain Astro preview cannot satisfy them.
+    '**/sites-preview-csp-live-v25.spec.ts',
     // This browser test inspects resource content inside opaque preview frames;
     // it requires the Sites Worker asset CORS policy, not plain `astro preview`.
     '**/core-accessibility-landmarks.spec.ts',

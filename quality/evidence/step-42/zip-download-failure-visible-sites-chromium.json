@@ -2,7 +2,7 @@
   "step": 42,
   "id": "zip-download-failure-visible",
   "status": "pass",
-  "url": "http://127.0.0.1:4323/workbench/?project=local-fed092c9-5c02-4970-b901-356a2e529858",
+  "url": "http://127.0.0.1:4323/workbench/?project=local-4859ee46-6eca-4eb1-9625-89b1c187cee5",
   "viewport": {
     "width": 1440,
     "height": 900
@@ -18,7 +18,7 @@
   },
   "runtime": {
     "consoleErrors": [
-      "Failed to generate standalone ZIP project: Error: Injected ZIP download creation failure\n    at URL.createObjectURL (<anonymous>:6:15)\n    at ae (http://127.0.0.1:4323/_astro/index.DrlXOyXV.js:19118:4412)\n    at onClick (http://127.0.0.1:4323/_astro/index.DrlXOyXV.js:19118:15341)\n    at Vf (http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js:8:138618)\n    at http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js:8:143350\n    at Rn (http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js:8:15177)\n    at Kf (http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js:8:139845)\n    at yh (http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js:9:42534)\n    at _h (http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js:9:42356)"
+      "Failed to generate standalone ZIP project: Error: Injected ZIP download creation failure\n    at URL.createObjectURL (<anonymous>:6:15)\n    at ae (http://127.0.0.1:4323/_astro/index.Dp9Elqad.js:19121:4412)\n    at onClick (http://127.0.0.1:4323/_astro/index.Dp9Elqad.js:19121:15341)\n    at Vf (http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js:8:138618)\n    at http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js:8:143350\n    at Rn (http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js:8:15177)\n    at Kf (http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js:8:139845)\n    at yh (http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js:9:42534)\n    at _h (http://127.0.0.1:4323/_astro/client.CZ5CiHPg.js:9:42356)"
     ],
     "pageErrors": [],
     "failedRequests": [],

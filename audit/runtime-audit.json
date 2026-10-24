@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45. Step 19 added AUD-152–155 from local visible Workbench checks. Step 20 added AUD-156 after mobile UI testing found hidden structural-action feedback. Step 21 added AUD-157 after desktop/mobile Workbench testing found that undo/redo history disappeared after reload; the local fix is verified and public review verification remains pending for Step 45. AUD-158 was added after the browser regression showed Blend overwrote source-project undo snapshots; owner-scoped snapshot IDs now keep the source project intact, verified locally and pending Step 45 review-site confirmation. Step 22 added AUD-159–164 from desktop/mobile Workbench storage fault-injection; all six are fixed and locally browser-verified, with deployed verification pending for Step 45. Step 23 added AUD-165 after the standalone export regression showed that authored quote/markup text could break the clean Vite build; the encoded JSX fix and all 300 benchmark direction exports pass locally, with public verification pending for Step 45. Step 24 added AUD-166 after the UI review found the promised agent handoff package absent and the generator output incomplete; the seven-file contract, keyboard download, manifest parity and desktop/mobile runtime checks now pass locally, with public review verification pending for Step 45. Step 24 added AUD-167–174 after the fresh employee-experience runtime review exposed brand, CTA, screen-content, duplicate-navigation, and inert-control defects; all eight are locally verified after red-to-green unit and desktop/mobile Preview regressions. AUD-175 records a standalone-export navigation mismatch fixed by a clean-install/build/browser regression. Published review verification for all these local fixes remains pending for Step 45. Step 39 added AUD-179–189 for AI resource copy, data, keyboard, state, and visual defects; local Sites Worker regressions now pass, with deployed checks pending. Step 39 added AUD-190 after screenshots showed an unqualified manifest status label; the header now identifies it as manifest status, with a red-to-green desktop/mobile regression. Deployment verification remains pending. Step 39 added AUD-191–195 after a real desktop/mobile browser check of the deployed review Site found unsupported social proof, inert CTAs, and a static sample presented as live Workbench/certification status. Local Sites Worker regressions pass; these fixes await public redeployment. Step 39 added AUD-196–206 from the deployed homepage copy review and local visual checks. Local corrections qualify audit, agent, compatibility, creator, and export claims; fix mobile overlap in resource and Workbench examples; and remove an unmeasured compose-time promise. The refreshed Sites Worker regression passes 24/24 desktop/mobile cases. All new fixes await review-Site verification. Step 39 added AUD-207–210 after a deployed desktop/mobile Section Planner review found invented template claims, a clipboard action labeled as export, a misleading telemetry label, and incorrect singular grammar. Five template JSON outputs and planner controls now pass local desktop/mobile browser regressions (26/26 copy suite plus the planner interaction suite); deployed verification remains pending. Step 39 tool review added AUD-217–228 from desktop/mobile deployed evidence across Accessibility, Background, Data Visualisation, Motion, Palette, Design DNA, Layout Composer and Tools Hub; local copy and state corrections await deployed verification. AUD-229 records the deployed Design DNA reset state failure; the local state regression passes and public verification remains pending. Step 39 added AUD-236–261 from deployed desktop/mobile resource previews and detail routes covering accessibility/compliance/security claims, sample success states, inactive actions, motion semantics, AI examples, palette scope, declared metadata, and the Success State contrast failure. AUD-262 records the 360px Inline AI Rewrite preview overflow reproduced in the Sites Worker and fixed with a focused responsive regression. AUD-263 records evidence-gated accessibility/quality metadata; AUD-264 reproduces and fixes clipped resource accessibility statuses at 390px. These local fixes await public re-verification. Step 38 added AUD-266 after local browser evidence found three sandboxed resource previews mounting below the initial viewport; the visibility gate now defers those frames until visible and verifies scroll-to-render on desktop/mobile. Public review verification remains pending. AUD-267 records a local Sites Worker preview regression found during Step 37 security/runtime validation; its fix is locally verified and public verification remains pending for Step 45. Step 37 added AUD-268: the deployed app-shell CSP accepted arbitrary inline script execution; the local Sites Worker now uses build-certified inline script/style hashes and the red-to-green browser regression passes. Live verification remains pending for Step 45. AUD-274 records the local preview-navigation probe and registry-gate remediation; the request was intercepted locally and public Site verification remains pending. AUD-275 records the Sites Worker reproduction where sandboxed PreviewHost rejected same-origin host updates; the fix passes local state, variant, accessibility, typecheck, unit, and audit checks, with deployed verification pending. AUD-276 fixed nested Window and Document.defaultView fetch aliases; AUD-277 fixed renamed destructured Window/Document proxy aliases. Twenty-three Window/Document alias and callback-transfer forms are rejected across fetch, WebSocket, XMLHttpRequest, EventSource, and sendBeacon, including bare global fetch. Resource code is denied static access to these network capabilities regardless of receiver. Resource source was analyzed, not executed, and release-candidate verification remains pending. Step 39 added AUD-301–304 for deployed metrics and testimonial truth issues; AUD-305 records the high Zod advisory and missing collection bounds, fixed locally and awaiting full gate verification. AUD-307 records the MCP SDK dependency audit failure for body-parser@2.3.0 and the patched 2.4.0 workspace override. Step 40 added AUD-306 after the built Sites Worker visual audit found the mobile homepage composer below the first viewport; the local responsive fix and red-to-green regression are recorded under quality/evidence/step-40/. Public review verification remains scheduled for the release-candidate phase. Step 40 additionally records AUD-308, where the documentation index glob resolved one parent above the repository; the root index therefore exposed only its hard-coded registry guide. The four-level path fix restores all 15 repository Markdown pages and their static detail routes, verified by a red-to-green browser test at desktop and mobile. Expanded visual route evidence covers 31 paths at 1440x900 and 390x844. Step 40 also records AUD-309: the Activity Feed resource displayed fabricated people, revision and PR identifiers, and a validation count without a sample label. Static events are now clearly labeled and the fabricated identifiers are removed; a unit regression and desktop/mobile Sites Worker iframe test pass. The final visual capture covers 33 routes at 1440x900 and 390x844. Step 41 adds AUD-310 for timestamp-dependent source export and AUD-311 for the missing visible Workbench manifest import; both are fixed and verified locally across UI, CLI, MCP and the local Sites Worker, with public review verification pending for Step 45. The Step 41 dependency gate also found AUD-312 (vulnerable undici 7/8 lines; high) and AUD-313 (vulnerable fast-uri 3 line; moderate); targeted patched-version overrides clear the dependency audit locally, with full gate and public review verification pending. Step 42 fault injection adds AUD-314: a missing Workbench project route offered an unrelated initial-sample manifest export; the recovery action is removed and red-to-green desktop/mobile Sites Worker evidence is recorded in quality/STEP_42_EVIDENCE.md. Public review verification remains pending. Step 38 added AUD-320 after a browser regression found Explore results disappeared and preview frames were torn down during the search debounce; the fix and desktop/mobile regression pass locally, with published review verification pending. AUD-321 records a stale zero-results message during query debounce; the empty-result pending state and its Sites Worker regression now pass locally, with deployed verification pending.",
+  "scope": "Deployed public Site v11/v14 flagship; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45. Step 19 added AUD-152–155 from local visible Workbench checks. Step 20 added AUD-156 after mobile UI testing found hidden structural-action feedback. Step 21 added AUD-157 after desktop/mobile Workbench testing found that undo/redo history disappeared after reload; the local fix is verified and public review verification remains pending for Step 45. AUD-158 was added after the browser regression showed Blend overwrote source-project undo snapshots; owner-scoped snapshot IDs now keep the source project intact, verified locally and pending Step 45 review-site confirmation. Step 22 added AUD-159–164 from desktop/mobile Workbench storage fault-injection; all six are fixed and locally browser-verified, with deployed verification pending for Step 45. Step 23 added AUD-165 after the standalone export regression showed that authored quote/markup text could break the clean Vite build; the encoded JSX fix and all 300 benchmark direction exports pass locally, with public verification pending for Step 45. Step 24 added AUD-166 after the UI review found the promised agent handoff package absent and the generator output incomplete; the seven-file contract, keyboard download, manifest parity and desktop/mobile runtime checks now pass locally, with public review verification pending for Step 45. Step 24 added AUD-167–174 after the fresh employee-experience runtime review exposed brand, CTA, screen-content, duplicate-navigation, and inert-control defects; all eight are locally verified after red-to-green unit and desktop/mobile Preview regressions. AUD-175 records a standalone-export navigation mismatch fixed by a clean-install/build/browser regression. Published review verification for all these local fixes remains pending for Step 45. Step 39 added AUD-179–189 for AI resource copy, data, keyboard, state, and visual defects; local Sites Worker regressions now pass, with deployed checks pending. Step 39 added AUD-190 after screenshots showed an unqualified manifest status label; the header now identifies it as manifest status, with a red-to-green desktop/mobile regression. Deployment verification remains pending. Step 39 added AUD-191–195 after a real desktop/mobile browser check of the deployed review Site found unsupported social proof, inert CTAs, and a static sample presented as live Workbench/certification status. Local Sites Worker regressions pass; these fixes await public redeployment. Step 39 added AUD-196–206 from the deployed homepage copy review and local visual checks. Local corrections qualify audit, agent, compatibility, creator, and export claims; fix mobile overlap in resource and Workbench examples; and remove an unmeasured compose-time promise. The refreshed Sites Worker regression passes 24/24 desktop/mobile cases. All new fixes await review-Site verification. Step 39 added AUD-207–210 after a deployed desktop/mobile Section Planner review found invented template claims, a clipboard action labeled as export, a misleading telemetry label, and incorrect singular grammar. Five template JSON outputs and planner controls now pass local desktop/mobile browser regressions (26/26 copy suite plus the planner interaction suite); deployed verification remains pending. Step 39 tool review added AUD-217–228 from desktop/mobile deployed evidence across Accessibility, Background, Data Visualisation, Motion, Palette, Design DNA, Layout Composer and Tools Hub; local copy and state corrections await deployed verification. AUD-229 records the deployed Design DNA reset state failure; the local state regression passes and public verification remains pending. Step 39 added AUD-236–261 from deployed desktop/mobile resource previews and detail routes covering accessibility/compliance/security claims, sample success states, inactive actions, motion semantics, AI examples, palette scope, declared metadata, and the Success State contrast failure. AUD-262 records the 360px Inline AI Rewrite preview overflow reproduced in the Sites Worker and fixed with a focused responsive regression. AUD-263 records evidence-gated accessibility/quality metadata; AUD-264 reproduces and fixes clipped resource accessibility statuses at 390px. These local fixes await public re-verification. Step 38 added AUD-266 after local browser evidence found three sandboxed resource previews mounting below the initial viewport; the visibility gate now defers those frames until visible and verifies scroll-to-render on desktop/mobile. Public review verification remains pending. AUD-267 records a local Sites Worker preview regression found during Step 37 security/runtime validation; its fix is locally verified and public verification remains pending for Step 45. Step 37 added AUD-268: the deployed app-shell CSP accepted arbitrary inline script execution; the local Sites Worker now uses build-certified inline script/style hashes and the red-to-green browser regression passes. Live verification remains pending for Step 45. AUD-274 records the local preview-navigation probe and registry-gate remediation; the request was intercepted locally and public Site verification remains pending. AUD-275 records the Sites Worker reproduction where sandboxed PreviewHost rejected same-origin host updates; the fix passes local state, variant, accessibility, typecheck, unit, and audit checks, with deployed verification pending. AUD-276 fixed nested Window and Document.defaultView fetch aliases; AUD-277 fixed renamed destructured Window/Document proxy aliases. Twenty-three Window/Document alias and callback-transfer forms are rejected across fetch, WebSocket, XMLHttpRequest, EventSource, and sendBeacon, including bare global fetch. Resource code is denied static access to these network capabilities regardless of receiver. Resource source was analyzed, not executed, and release-candidate verification remains pending. Step 39 added AUD-301–304 for deployed metrics and testimonial truth issues; AUD-305 records the high Zod advisory and missing collection bounds, fixed locally and awaiting full gate verification. AUD-307 records the MCP SDK dependency audit failure for body-parser@2.3.0 and the patched 2.4.0 workspace override. Step 40 added AUD-306 after the built Sites Worker visual audit found the mobile homepage composer below the first viewport; the local responsive fix and red-to-green regression are recorded under quality/evidence/step-40/. Public review verification remains scheduled for the release-candidate phase. Step 40 additionally records AUD-308, where the documentation index glob resolved one parent above the repository; the root index therefore exposed only its hard-coded registry guide. The four-level path fix restores all 15 repository Markdown pages and their static detail routes, verified by a red-to-green browser test at desktop and mobile. Expanded visual route evidence covers 31 paths at 1440x900 and 390x844. Step 40 also records AUD-309: the Activity Feed resource displayed fabricated people, revision and PR identifiers, and a validation count without a sample label. Static events are now clearly labeled and the fabricated identifiers are removed; a unit regression and desktop/mobile Sites Worker iframe test pass. The final visual capture covers 33 routes at 1440x900 and 390x844. Step 41 adds AUD-310 for timestamp-dependent source export and AUD-311 for the missing visible Workbench manifest import; both are fixed and verified locally across UI, CLI, MCP and the local Sites Worker, with public review verification pending for Step 45. The Step 41 dependency gate also found AUD-312 (vulnerable undici 7/8 lines; high) and AUD-313 (vulnerable fast-uri 3 line; moderate); targeted patched-version overrides clear the dependency audit locally, with full gate and public review verification pending. Step 42 fault injection adds AUD-314: a missing Workbench project route offered an unrelated initial-sample manifest export; the recovery action is removed and red-to-green desktop/mobile Sites Worker evidence is recorded in quality/STEP_42_EVIDENCE.md. Public review verification remains pending. Step 38 added AUD-320 after a browser regression found Explore results disappeared and preview frames were torn down during the search debounce; the fix and desktop/mobile regression pass locally, with published review verification pending. AUD-321 records a stale zero-results message during query debounce; the empty-result pending state and its Sites Worker regression now pass locally, with deployed verification pending. Latest live v25 dark-theme Gold-resource scan records 17 contrast failures at desktop and mobile (AUD-140); local source remediation now passes all-40 desktop/mobile contrast and Axe regressions and awaits a newly published Site. AUD-334 records the v25 mobile Explore hydration dead-control reproduction and local fix; see the dedicated evidence in audit/evidence/v25/mobile-filter-hydration/. The issue remains open until the revised Site is deployed and rechecked.",
   "entries": [
     {
       "id": "AUD-001",
@@ -619,9 +619,7 @@
       "expected": "Event metadata and action copy should wrap within the preview without horizontal scrolling.",
       "actual": "Long event actions and agent names exceeded the 360px preview width.",
       "rootCause": "The event row reserved a single non-wrapping horizontal line for timestamp, agent badge and action text.",
-      "affectedFiles": [
-        "resources/ai/ai-agent-activity-feed/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/ai-agent-activity-feed/index.tsx"],
       "remediation": "Allow row metadata to wrap and give the action copy a full-width row at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-agent-activity-feed-360.png",
       "screenshotBefore": null,
@@ -641,9 +639,7 @@
       "expected": "The hero heading, prompt input, engine label and preset chips should fit and wrap within the preview.",
       "actual": "The preview document was 306px wide inside a 292px viewport at 360px; at 1280px and 1440px outer widths the inner preview also exceeded its 237px viewport.",
       "rootCause": "The centered flex content used intrinsic-width children and fixed horizontal padding; chips and the engine row could not shrink or wrap within the iframe.",
-      "affectedFiles": [
-        "resources/sections/ai-prompt-hero/index.tsx"
-      ],
+      "affectedFiles": ["resources/sections/ai-prompt-hero/index.tsx"],
       "remediation": "Make the content column full-width and min-width-safe, wrap long heading and helper text, and allow prompt controls and preset chips to wrap.",
       "screenshot": "audit/evidence/step-06/before/wide-matrix/ai-prompt-hero-360-overflow.png",
       "afterScreenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-prompt-hero-360.png",
@@ -662,9 +658,7 @@
       "expected": "Citation title, file path, and quote should wrap inside each source card.",
       "actual": "The source title/path row exceeded the 360px preview width.",
       "rootCause": "A fixed justify-between row kept the citation title and long path on one line.",
-      "affectedFiles": [
-        "resources/ai/ai-source-citations/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/ai-source-citations/index.tsx"],
       "remediation": "Allow the title and path to wrap, break long paths, and keep only the verification status unshrunk.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-ai-source-citations-360.png",
       "screenshotBefore": null,
@@ -684,9 +678,7 @@
       "expected": "Breadcrumbs and actions should wrap into readable rows within the viewport.",
       "actual": "The breadcrumb trail and action controls occupied one fixed row and extended past the preview.",
       "rootCause": "The header used a fixed-height, single-line flex layout with fixed horizontal padding.",
-      "affectedFiles": [
-        "resources/shells/breadcrumb-header/index.tsx"
-      ],
+      "affectedFiles": ["resources/shells/breadcrumb-header/index.tsx"],
       "remediation": "Use a minimum height, compact padding and wrapping layout for both breadcrumb items and action controls.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-breadcrumb-header-360.png",
       "screenshotBefore": null,
@@ -706,9 +698,7 @@
       "expected": "The number, unit and delta should wrap without clipping or horizontal scrolling.",
       "actual": "The large counter value, unit and delta were forced into one row at 360px.",
       "rootCause": "A non-wrapping baseline flex row combined the large numeric display with the unit and delta label.",
-      "affectedFiles": [
-        "resources/typography/counter-typography/index.tsx"
-      ],
+      "affectedFiles": ["resources/typography/counter-typography/index.tsx"],
       "remediation": "Allow the value and unit row to wrap and place the delta on its own line at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-counter-typography-360.png",
       "screenshotBefore": null,
@@ -728,9 +718,7 @@
       "expected": "The dialog and launcher should remain inside the preview width.",
       "actual": "The fixed-width assistant panel extended beyond the preview at 360px.",
       "rootCause": "An inline-flex wrapper and fixed 20rem dialog retained desktop intrinsic width inside a narrow preview.",
-      "affectedFiles": [
-        "resources/ai/floating-ai-assistant/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/floating-ai-assistant/index.tsx"],
       "remediation": "Use a full-width wrapper capped at the existing 20rem maximum and let the dialog inherit the available width.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-floating-ai-assistant-360.png",
       "screenshotBefore": null,
@@ -750,9 +738,7 @@
       "expected": "Rewrite tones and acceptance actions should wrap within the preview.",
       "actual": "The tone and action controls remained on a single row and overflowed the 360px preview.",
       "rootCause": "The toolbar grouped keyboard hint, tone buttons and actions in non-wrapping flex rows.",
-      "affectedFiles": [
-        "resources/ai/inline-ai-rewrite/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/inline-ai-rewrite/index.tsx"],
       "remediation": "Allow the header and tone/action groups to wrap and permit the keyboard hint to occupy its own compact row.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-inline-ai-rewrite-360.png",
       "screenshotBefore": null,
@@ -772,9 +758,7 @@
       "expected": "Filter chips should wrap into multiple rows at compact widths.",
       "actual": "The category filter controls rendered as one unbreakable row wider than the preview.",
       "rootCause": "The filter container used a centered flex row without wrapping.",
-      "affectedFiles": [
-        "resources/sections/integration-directory-preview/index.tsx"
-      ],
+      "affectedFiles": ["resources/sections/integration-directory-preview/index.tsx"],
       "remediation": "Enable wrapping for the category chips while preserving centered alignment.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-integration-directory-preview-360.png",
       "screenshotBefore": null,
@@ -794,9 +778,7 @@
       "expected": "Density, mode and status controls should wrap within the demo card.",
       "actual": "The demo controls and preview status were constrained to desktop-width rows.",
       "rootCause": "The density and mode control groups and status row used non-wrapping flex layouts.",
-      "affectedFiles": [
-        "resources/sections/interactive-demo-hero/index.tsx"
-      ],
+      "affectedFiles": ["resources/sections/interactive-demo-hero/index.tsx"],
       "remediation": "Allow each control group and the preview status row to wrap at compact widths.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-interactive-demo-hero-360.png",
       "screenshotBefore": null,
@@ -816,9 +798,7 @@
       "expected": "Brand, menu links and launch control should reflow within the viewport.",
       "actual": "A fixed-height single-row navigation and dropdown padding exceeded the preview width.",
       "rootCause": "The navigation forced all controls into one line and used desktop-only menu spacing.",
-      "affectedFiles": [
-        "resources/shells/mega-nav/index.tsx"
-      ],
+      "affectedFiles": ["resources/shells/mega-nav/index.tsx"],
       "remediation": "Allow the navigation and menu grid to wrap, reduce compact padding, and use a minimum rather than fixed height.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-mega-nav-360.png",
       "screenshotBefore": null,
@@ -838,9 +818,7 @@
       "expected": "Series controls and chart content should wrap and scale inside the preview.",
       "actual": "The legend controls stayed on a single row and widened the preview document.",
       "rootCause": "Legend buttons were held in a fixed horizontal flex row next to the chart heading.",
-      "affectedFiles": [
-        "resources/data/multi-series-line-chart/index.tsx"
-      ],
+      "affectedFiles": ["resources/data/multi-series-line-chart/index.tsx"],
       "remediation": "Allow legend buttons to wrap and cap the legend container to the available width.",
       "screenshot": "audit/evidence/step-06/after/resource-layout/resources-multi-series-line-chart-360.png",
       "screenshotBefore": null,
@@ -1433,9 +1411,7 @@
       "deployedScreenshot": "quality/evidence/step-39/deployed-before/final-regressions/desktop/ai-research-answer-dark-expressive.png",
       "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/ai-research-answer-quiet-1440.png",
       "rootCause": "The green confidence color was chosen without validating contrast on the pale green badge.",
-      "affectedFiles": [
-        "resources/ai/ai-research-answer/index.tsx"
-      ],
+      "affectedFiles": ["resources/ai/ai-research-answer/index.tsx"],
       "remediation": "Use a darker green for light variants and a lighter green for Nocturne. The 120-variant Axe matrix now passes.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
       "status": "fixed-awaiting-deployed-verification"
@@ -1459,9 +1435,7 @@
       "screenshot": "audit/evidence/step-06/after/a11y-gold/feature-matrix-quiet-1440.png",
       "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/feature-matrix-quiet-1440.png",
       "rootCause": "The matrix reused emerald-600 text color that was too light for normal-size text.",
-      "affectedFiles": [
-        "resources/sections/feature-matrix/index.tsx"
-      ],
+      "affectedFiles": ["resources/sections/feature-matrix/index.tsx"],
       "remediation": "Use emerald-800 on light surfaces and emerald-300 on Nocturne. The 120-variant Axe matrix now passes.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
       "status": "fixed-awaiting-deployed-verification"
@@ -1485,9 +1459,7 @@
       "screenshot": "audit/evidence/step-06/after/a11y-gold/error-state-expressive-1440.png",
       "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/error-state-expressive-1440.png",
       "rootCause": "The heading used red-600 on a lightly tinted red surface.",
-      "affectedFiles": [
-        "resources/states/error-state/index.tsx"
-      ],
+      "affectedFiles": ["resources/states/error-state/index.tsx"],
       "remediation": "Use red-700 on light variants while retaining red-400 on Nocturne. The 120-variant Axe matrix now passes.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
       "status": "fixed-awaiting-deployed-verification"
@@ -1511,9 +1483,7 @@
       "screenshot": "audit/evidence/step-06/after/a11y-gold/pricing-three-tier-nocturne-1440.png",
       "screenshotBefore": "audit/evidence/step-06/before/a11y-gold/pricing-three-tier-nocturne-1440.png",
       "rootCause": "The badge used emerald-600 for every surface, including its dark Nocturne background.",
-      "affectedFiles": [
-        "resources/sections/pricing-three-tier/index.tsx"
-      ],
+      "affectedFiles": ["resources/sections/pricing-three-tier/index.tsx"],
       "remediation": "Use emerald-800 on light surfaces and emerald-300 on Nocturne. The 120-variant Axe matrix now passes.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
       "status": "fixed-awaiting-deployed-verification"
@@ -1709,9 +1679,7 @@
       "network": [],
       "screenshot": "audit/evidence/step-07/before/manifest-prop-child-only.png",
       "screenshotAfter": "audit/evidence/step-07/after/manifest-and-prop-children.png",
-      "additionalScreenshots": [
-        "audit/evidence/step-07/after/preview-modal-children.png"
-      ],
+      "additionalScreenshots": ["audit/evidence/step-07/after/preview-modal-children.png"],
       "rootCause": "NodeRenderer used a nullish fallback from props.children to renderedChildren, making the two valid child sources mutually exclusive.",
       "affectedFiles": [
         "packages/renderer/src/node-renderer.tsx",
@@ -2787,9 +2755,7 @@
       "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
-        "tests": [
-          "tests/e2e/explore-search-hardening.spec.ts"
-        ],
+        "tests": ["tests/e2e/explore-search-hardening.spec.ts"],
         "verifiedAt": "2026-10-18T04:53:01Z",
         "fullUnitTests": "630 passed",
         "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
@@ -2831,10 +2797,7 @@
       "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
-        "tests": [
-          "tests/e2e/catalog-resource-render.spec.ts",
-          "tests/resource-demo-truth.test.ts"
-        ],
+        "tests": ["tests/e2e/catalog-resource-render.spec.ts", "tests/resource-demo-truth.test.ts"],
         "verifiedAt": "2026-10-18T04:53:01Z",
         "fullUnitTests": "630 passed",
         "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
@@ -2878,10 +2841,7 @@
       "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
-        "tests": [
-          "tests/e2e/catalog-resource-render.spec.ts",
-          "tests/resource-demo-truth.test.ts"
-        ],
+        "tests": ["tests/e2e/catalog-resource-render.spec.ts", "tests/resource-demo-truth.test.ts"],
         "verifiedAt": "2026-10-18T04:53:01Z",
         "fullUnitTests": "630 passed",
         "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
@@ -2928,10 +2888,7 @@
       "status": "closed-deployed-verified",
       "localVerification": {
         "result": "PASS in local automated browser/unit coverage; awaiting issue-specific deployed confirmation.",
-        "tests": [
-          "tests/e2e/catalog-resource-render.spec.ts",
-          "tests/resource-demo-truth.test.ts"
-        ],
+        "tests": ["tests/e2e/catalog-resource-render.spec.ts", "tests/resource-demo-truth.test.ts"],
         "verifiedAt": "2026-10-18T04:53:01Z",
         "fullUnitTests": "630 passed",
         "fullBrowserSuite": "132 passed, 56 configured skips, 0 failed",
@@ -3067,10 +3024,7 @@
       "latestLocalVerification": {
         "date": "2026-10-21",
         "route": "/r/ai-chat-panel/",
-        "viewports": [
-          "1440x900",
-          "390x844"
-        ],
+        "viewports": ["1440x900", "390x844"],
         "result": "A red browser run observed the leading heading as H4. After changing the resource source to H2 and regenerating the resource/export artifacts, both Sites Worker projects passed; the first heading is H2, the preview is visible, and runtime/network error arrays are empty.",
         "screenshots": [
           "quality/evidence/step-35/after/ai-chat-panel-heading-sites-chromium.png",
@@ -3254,10 +3208,7 @@
       "latestLocalVerification": {
         "date": "2026-10-21",
         "route": "/showcase/showcase-ai-developer-platform/",
-        "viewports": [
-          "1440x900",
-          "390x844"
-        ],
+        "viewports": ["1440x900", "390x844"],
         "result": "The current local Showcase preview shows exactly one navigation role and zero editor-toolbar substitutes on Prompt Canvas at both widths. The route matrix recorded HTTP 200, no Axe violations, console errors, uncaught exceptions, failed requests, HTTP errors, or horizontal overflow.",
         "screenshots": [
           "quality/evidence/step-34/after/desktop-chrome-showcase-ai-developer-platform-prompt-canvas.png",
@@ -3285,9 +3236,7 @@
       "network": [],
       "screenshot": "quality/evidence/composition-quality/before/community-intermediate-metrics-direction-01.png",
       "rootCause": "Generic workflow binding copied internal workflow step IDs directly into timeline descriptions.",
-      "affectedFiles": [
-        "packages/compatibility/src/content-bindings.ts"
-      ],
+      "affectedFiles": ["packages/compatibility/src/content-bindings.ts"],
       "remediation": "Bind community activity to explicitly labelled examples with natural-language titles and descriptions.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
       "status": "fixed-awaiting-deployed-verification",
@@ -3312,9 +3261,7 @@
       "network": [],
       "screenshot": "quality/evidence/composition-quality/before/community-intermediate-metrics-direction-01.png",
       "rootCause": "The generic content binder used the screen name as the activity-feed title even when the screen already had a matching overview header.",
-      "affectedFiles": [
-        "packages/compatibility/src/content-bindings.ts"
-      ],
+      "affectedFiles": ["packages/compatibility/src/content-bindings.ts"],
       "remediation": "Use the contextual heading Latest community updates for the community feed.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
       "status": "fixed-awaiting-deployed-verification",
@@ -3339,9 +3286,7 @@
       "network": [],
       "screenshot": "quality/evidence/composition-quality/before/composition-con-04-direction-03.png",
       "rootCause": "The shared multi-pane layout always assigned activity-feed to the second grid column, even when no data-table occupied the first column.",
-      "affectedFiles": [
-        "packages/renderer/src/layout-contract.ts"
-      ],
+      "affectedFiles": ["packages/renderer/src/layout-contract.ts"],
       "remediation": "Use a single-column workspace modifier when an activity feed has no data-table sibling; retain the two-pane layout for the flagship dashboard pair.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
       "status": "fixed-awaiting-deployed-verification",
@@ -3366,9 +3311,7 @@
       "network": [],
       "screenshot": "quality/evidence/directions/before/direction-01-team-overview.png",
       "rootCause": "The employee content binder inserted plausible-looking count and sentiment values that were not present in the brief or backed by data.",
-      "affectedFiles": [
-        "packages/compatibility/src/content-bindings.ts"
-      ],
+      "affectedFiles": ["packages/compatibility/src/content-bindings.ts"],
       "remediation": "Use only the 500-person count provided in the brief and mark the remaining values Example / Illustrative only.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
       "status": "fixed-awaiting-deployed-verification",
@@ -4421,7 +4364,7 @@
       "category": "accessibility",
       "title": "Dark product canvases made light resource variants unreadable",
       "expected": "Resource variants must retain readable text when composed inside a dark Design DNA canvas, with at least WCAG AA contrast for normal text.",
-      "actual": "Axe found color-contrast failures in 16 of 40 Gold resources using the expressive variant on a dark canvas. Examples measured 1.44:1 for advanced-data-table values, 1.53:1 for an entity-profile badge, 1.65:1 for error text, and 2.20:1 for muted labels on white.",
+      "actual": "The public v25 Site still had WCAG AA text-contrast failures in 17 of 40 Gold resource previews at both 1440x900 and 390x844 when Expressive resources were shown on the dark canvas. The deployed browser recorded zero console errors, page exceptions, failed requests, and HTTP errors during the scan.",
       "reproduction": [
         "Open /compose and enter benchmark brief AI-03.",
         "Compose and open Direction 02, Neural Flow.",
@@ -4431,43 +4374,55 @@
       "console": [],
       "network": [],
       "screenshot": "quality/evidence/step-14/manual-review/versions/87a90100/desktop/ai-03-direction-02.png",
-      "rootCause": "The renderer applies dark Design DNA semantic text tokens to the screen, while several resource variants render fixed light surfaces. Those resources inherited the dark muted text token; translucent expressive surfaces also mixed with the dark canvas and further reduced contrast.",
+      "rootCause": "The site dark utility variant explicitly excluded descendants of .tess-screen, so intended dark styles did not apply within resource previews even though the preview canvas was dark. After enabling those styles, a full Gold scan also exposed resource-specific foreground/background mismatches in dark utility surfaces. Several components used theme-dark text against a fixed light surface, or inherited dark text onto a dark badge/canvas.",
       "affectedFiles": [
-        "resources/blocks/advanced-data-table/index.tsx",
-        "resources/blocks/dashboard-kpi-grid/index.tsx",
-        "resources/blocks/entity-profile-header/index.tsx",
-        "resources/blocks/notification-centre/index.tsx",
-        "resources/blocks/timeline/index.tsx",
+        "apps/site/src/styles/global.css",
+        "packages/exporter/src/source-tree.ts",
         "resources/ai/ai-prompt-composer/index.tsx",
         "resources/ai/ai-research-answer/index.tsx",
         "resources/ai/ai-suggested-actions/index.tsx",
+        "resources/backgrounds/subtle-grid-field/index.tsx",
+        "resources/blocks/advanced-data-table/index.tsx",
+        "resources/blocks/empty-workspace/index.tsx",
+        "resources/blocks/entity-profile-header/index.tsx",
+        "resources/blocks/filter-builder/index.tsx",
+        "resources/blocks/kanban-board/index.tsx",
+        "resources/blocks/notification-centre/index.tsx",
         "resources/data/area-chart/index.tsx",
-        "resources/data/bar-chart/index.tsx",
         "resources/data/donut-chart/index.tsx",
         "resources/data/time-series-chart/index.tsx",
-        "resources/states/error-state/index.tsx",
-        "resources/motion/fade-up-reveal/index.tsx",
+        "resources/primitives/select/index.tsx",
+        "resources/sections/cta-minimal/index.tsx",
         "resources/sections/feature-bento/index.tsx",
+        "resources/sections/feature-matrix/index.tsx",
+        "resources/sections/logo-cloud-minimal/index.tsx",
+        "resources/sections/pricing-three-tier/index.tsx",
+        "resources/shells/marketing-nav-cta/index.tsx",
+        "resources/shells/three-pane-app-shell/index.tsx",
         "resources/shells/two-pane-master-detail-shell/index.tsx",
-        "tests/e2e/resource-preview-contrast-regression.spec.ts",
+        "resources/states/error-state/index.tsx",
+        "tests/e2e/resource-preview-dark-contrast.spec.ts",
         "tests/e2e/resource-dark-expressive-contrast.spec.ts"
       ],
-      "remediation": "Scope semantic muted and secondary text tokens to each resource variant, keeping light variants dark-text-on-light-surface and nocturne light-text-on-dark-surface. Make affected expressive neutral and error surfaces opaque so their declared foreground colors are evaluated against a stable background.",
-      "fixCommit": "79e780b1",
+      "remediation": "Keep the global .dark utility active inside .tess-screen and preserve that theme boundary in exported resources. Make each affected component declare readable foregrounds for its actual dark or light surface, including local overrides for light surfaces in a dark page. The Playwright regression checks rendered text/background contrast across all 40 Gold resources in Expressive dark mode at desktop and mobile, and the parallel Axe sweep checks WCAG A/AA rules.",
+      "fixCommit": null,
       "afterScreenshots": [
-        "quality/evidence/step-14/manual-review/current/desktop/ai-03-direction-02.png",
-        "quality/evidence/step-14/manual-review/current/mobile/ai-03-direction-02.png"
+        "audit/evidence/local-dark-contrast/after/desktop-chrome/feature-matrix-1440x900.png",
+        "audit/evidence/local-dark-contrast/after/mobile-chrome/feature-matrix-390x844.png"
       ],
       "runtimeReports": [
-        "quality/evidence/step-14/manual-review/current/desktop/browser-review.json",
-        "quality/evidence/step-14/manual-review/current/mobile/browser-review.json",
-        "quality/evidence/step-14/accessibility/gold-expressive-dark-after.json"
+        "audit/evidence/v25/gold-dark-contrast-accurate/desktop-chrome/report.json",
+        "audit/evidence/v25/gold-dark-contrast-accurate/mobile-chrome/report.json",
+        "audit/evidence/local-dark-contrast/after/desktop-chrome/report.json",
+        "audit/evidence/local-dark-contrast/after/mobile-chrome/report.json",
+        "audit/evidence/local-dark-contrast/axe-desktop-chrome.json",
+        "audit/evidence/local-dark-contrast/axe-mobile-chrome.json"
       ],
       "regression": {
-        "before": "The 40-Gold-resource Playwright/Axe sweep failed for 16 resources.",
-        "after": "12 focused Playwright/Axe cases passed, and the 40-resource sweep reports zero violations."
+        "before": "Public v25 real-browser scan: 17 of 40 Gold Expressive previews failed measured text contrast on desktop and 17 of 40 on mobile. The deployed scan recorded no console errors, uncaught exceptions, failed requests, or HTTP errors.",
+        "after": "Local production build passed. The all-40 Playwright text/background contrast regression reports 0 findings at 1440x900 and 390x844. The all-40 Gold Axe test reports 0 WCAG A/AA violations at both viewports. Screenshots for all 24 affected resource slugs are captured per viewport."
       },
-      "status": "fixed-local-verified"
+      "status": "fixed-awaiting-deployed-verification"
     },
     {
       "id": "AUD-141",
@@ -4910,9 +4865,7 @@
       "console": [],
       "network": [],
       "screenshot": "quality/evidence/step-18/before/unlock-snapshots-as-overrides.png",
-      "beforeScreenshots": [
-        "quality/evidence/step-18/before/unlock-snapshots-as-overrides.png"
-      ],
+      "beforeScreenshots": ["quality/evidence/step-18/before/unlock-snapshots-as-overrides.png"],
       "afterScreenshots": [
         "quality/evidence/step-18/after/locked-dna-stays-frozen.png",
         "quality/evidence/step-18/after/unlocked-snapshot-before-reset.png",
@@ -4955,9 +4908,7 @@
       "console": [],
       "network": [],
       "screenshot": "quality/evidence/step-19/before/duplicate-screen-collision.png",
-      "beforeScreenshots": [
-        "quality/evidence/step-19/before/duplicate-screen-collision.png"
-      ],
+      "beforeScreenshots": ["quality/evidence/step-19/before/duplicate-screen-collision.png"],
       "afterScreenshots": [
         "quality/evidence/step-19/after/duplicate-screen-collision.png",
         "quality/evidence/step-19/after/duplicate-screen-export.tess.json"
@@ -4997,12 +4948,8 @@
       "console": [],
       "network": [],
       "screenshot": "quality/evidence/step-19/before/add-screen-route-collision.png",
-      "beforeScreenshots": [
-        "quality/evidence/step-19/before/add-screen-route-collision.png"
-      ],
-      "afterScreenshots": [
-        "quality/evidence/step-19/after/add-screen-route-collision.png"
-      ],
+      "beforeScreenshots": ["quality/evidence/step-19/before/add-screen-route-collision.png"],
+      "afterScreenshots": ["quality/evidence/step-19/after/add-screen-route-collision.png"],
       "rootCause": "The Add Page handler normalized slashes and case for display but did not compare the candidate route with routes already in the manifest before calling addScreen.",
       "affectedFiles": [
         "packages/workbench/src/components/left-panel/PagesTab.tsx",
@@ -5038,9 +4985,7 @@
       "console": [],
       "network": [],
       "screenshot": "quality/evidence/step-19/before/layer-actions-root.png",
-      "beforeScreenshots": [
-        "quality/evidence/step-19/before/layer-actions-root.png"
-      ],
+      "beforeScreenshots": ["quality/evidence/step-19/before/layer-actions-root.png"],
       "afterScreenshots": [
         "quality/evidence/step-19/after/layer-actions-enabled.png",
         "quality/evidence/step-19/after/mobile-layer-mutations-390x844.png"
@@ -5084,9 +5029,7 @@
       "network": [],
       "screenshot": "quality/evidence/step-19/after/layer-actions-enabled.png",
       "beforeScreenshots": [],
-      "afterScreenshots": [
-        "quality/evidence/step-19/after/layer-actions-enabled.png"
-      ],
+      "afterScreenshots": ["quality/evidence/step-19/after/layer-actions-enabled.png"],
       "rootCause": "Natural-language intent labels were recorded as shipped mutation features without an operation-specific target, output contract, or observable result.",
       "affectedFiles": [
         "docs/CURRENT_PRODUCT_INVENTORY.md",
@@ -5095,9 +5038,7 @@
       ],
       "remediation": "Classify these verbs as Lab until their behavior and safety criteria are defined, keep unsupported natural-language proposals out of production mutation controls, and record Hide as Lab because ProjectNode has no persisted visibility field.",
       "fixCommit": "95748bdf452d59b125faa872da842afb2f612a25",
-      "runtimeReports": [
-        "quality/evidence/step-19/after/layer-actions-enabled.json"
-      ],
+      "runtimeReports": ["quality/evidence/step-19/after/layer-actions-enabled.json"],
       "regression": {
         "before": "The inventory and Workbench contract described unsupported verbs as Beta or as available layer actions.",
         "after": "The inventory and matrix mark the unspecified verbs Lab, and the Workbench contract lists only implemented controls and their limits."
@@ -6083,10 +6024,7 @@
         "date": "2026-10-21",
         "runtime": "Rebuilt local Sites Worker adapter",
         "route": "/r/ai-prompt-hero/",
-        "viewports": [
-          "390x844",
-          "1440x900"
-        ],
+        "viewports": ["390x844", "1440x900"],
         "result": "The sandboxed resource preview rendered .tess-screen at both viewports with HTTP 200 and zero console, uncaught, failed-request, or HTTP errors. This is the published-runtime adapter check; plain Astro preview still does not apply _headers and is not used to judge this deployment behavior.",
         "report": "audit/evidence/step-06/results/canonical-resource-route.json",
         "screenshots": [
@@ -6114,9 +6052,7 @@
         "Inspect the default state, choose Energetic, and apply the rewrite."
       ],
       "screenshot": "quality/evidence/step-39/pre-fix-source-diff.patch",
-      "beforeEvidence": [
-        "quality/evidence/step-39/pre-fix-source-diff.patch"
-      ],
+      "beforeEvidence": ["quality/evidence/step-39/pre-fix-source-diff.patch"],
       "afterEvidence": [
         "quality/evidence/step-39/after/desktop/inline-ai-rewrite.png",
         "quality/evidence/step-39/after/mobile/inline-ai-rewrite.png"
@@ -6151,9 +6087,7 @@
         "Inspect the displayed result, durations, and exported-file status."
       ],
       "screenshot": "quality/evidence/step-39/pre-fix-source-diff.patch",
-      "beforeEvidence": [
-        "quality/evidence/step-39/pre-fix-source-diff.patch"
-      ],
+      "beforeEvidence": ["quality/evidence/step-39/pre-fix-source-diff.patch"],
       "afterEvidence": [
         "quality/evidence/step-39/after/desktop/ai-tool-execution-timeline.png",
         "quality/evidence/step-39/after/mobile/ai-tool-execution-timeline.png"
@@ -6188,12 +6122,8 @@
         "Compare the generic metadata against controls and behavior actually present in each resource."
       ],
       "screenshot": "quality/evidence/step-39/ai-generator-metadata.json",
-      "beforeEvidence": [
-        "quality/evidence/step-39/ai-generator-metadata.json"
-      ],
-      "afterEvidence": [
-        "quality/evidence/step-39/ai-generator-metadata.json"
-      ],
+      "beforeEvidence": ["quality/evidence/step-39/ai-generator-metadata.json"],
+      "afterEvidence": ["quality/evidence/step-39/ai-generator-metadata.json"],
       "rootCause": "scripts/ai-builder.ts applied capability boilerplate to every AI resource regardless of its implementation.",
       "affectedFiles": [
         "scripts/ai-builder.ts",
@@ -6222,9 +6152,7 @@
         "Inspect the header and initial assistant response."
       ],
       "screenshot": "quality/evidence/step-39/pre-fix-source-diff.patch",
-      "beforeEvidence": [
-        "quality/evidence/step-39/pre-fix-source-diff.patch"
-      ],
+      "beforeEvidence": ["quality/evidence/step-39/pre-fix-source-diff.patch"],
       "afterEvidence": [
         "quality/evidence/step-39/after/desktop/ai-chat-panel.png",
         "quality/evidence/step-39/after/mobile/ai-chat-panel.png"
@@ -6258,9 +6186,7 @@
         "Inspect the selected model, provider descriptions, and credential status."
       ],
       "screenshot": "quality/evidence/step-39/pre-fix-source-diff.patch",
-      "beforeEvidence": [
-        "quality/evidence/step-39/pre-fix-source-diff.patch"
-      ],
+      "beforeEvidence": ["quality/evidence/step-39/pre-fix-source-diff.patch"],
       "afterEvidence": [
         "quality/evidence/step-39/after/desktop/ai-model-mode-switcher.png",
         "quality/evidence/step-39/after/mobile/ai-model-mode-switcher.png"
@@ -6295,9 +6221,7 @@
         "Inspect the source paths, quotes, and verification badge."
       ],
       "screenshot": "quality/evidence/step-39/pre-fix-source-diff.patch",
-      "beforeEvidence": [
-        "quality/evidence/step-39/pre-fix-source-diff.patch"
-      ],
+      "beforeEvidence": ["quality/evidence/step-39/pre-fix-source-diff.patch"],
       "afterEvidence": [
         "quality/evidence/step-39/after/desktop/ai-source-citations.png",
         "quality/evidence/step-39/after/mobile/ai-source-citations.png"
@@ -6332,9 +6256,7 @@
         "Inspect the document count, confidence badge, and performance statement."
       ],
       "screenshot": "quality/evidence/step-39/pre-fix-source-diff.patch",
-      "beforeEvidence": [
-        "quality/evidence/step-39/pre-fix-source-diff.patch"
-      ],
+      "beforeEvidence": ["quality/evidence/step-39/pre-fix-source-diff.patch"],
       "afterEvidence": [
         "quality/evidence/step-39/after/desktop/ai-research-answer.png",
         "quality/evidence/step-39/after/mobile/ai-research-answer.png"
@@ -6369,9 +6291,7 @@
         "Type a message and click Send example, then repeat and press Enter."
       ],
       "screenshot": "quality/evidence/step-39/pre-fix-source-diff.patch",
-      "beforeEvidence": [
-        "quality/evidence/step-39/pre-fix-source-diff.patch"
-      ],
+      "beforeEvidence": ["quality/evidence/step-39/pre-fix-source-diff.patch"],
       "afterEvidence": [
         "quality/evidence/step-39/after/desktop/ai-chat-panel.json",
         "quality/evidence/step-39/after/mobile/ai-chat-panel.json"
@@ -6436,9 +6356,7 @@
         "Tab through the preview and attempt to select Long context with Enter."
       ],
       "screenshot": "quality/evidence/step-39/pre-fix-source-diff.patch",
-      "beforeEvidence": [
-        "quality/evidence/step-39/pre-fix-source-diff.patch"
-      ],
+      "beforeEvidence": ["quality/evidence/step-39/pre-fix-source-diff.patch"],
       "afterEvidence": [
         "quality/evidence/step-39/after/desktop/ai-model-mode-switcher.png",
         "quality/evidence/step-39/after/mobile/ai-model-mode-switcher.png"
@@ -6470,9 +6388,7 @@
         "Tab through the preview and attempt to select a row with Enter or Space."
       ],
       "screenshot": "quality/evidence/step-39/pre-fix-source-diff.patch",
-      "beforeEvidence": [
-        "quality/evidence/step-39/pre-fix-source-diff.patch"
-      ],
+      "beforeEvidence": ["quality/evidence/step-39/pre-fix-source-diff.patch"],
       "afterEvidence": [
         "quality/evidence/step-39/after/desktop/ai-source-citations.png",
         "quality/evidence/step-39/after/mobile/ai-source-citations.png"
@@ -7039,9 +6955,7 @@
       "fixCommit": null,
       "title": "Workbench sample toolbar overlapped at mobile width",
       "network": [],
-      "afterEvidence": [
-        "quality/evidence/step-39/after/mobile/homepage-workbench-example.png"
-      ],
+      "afterEvidence": ["quality/evidence/step-39/after/mobile/homepage-workbench-example.png"],
       "status": "fixed-awaiting-deployed-verification",
       "severity": "medium"
     },
@@ -7356,9 +7270,7 @@
       ],
       "remediation": "Label the column Maximum Size and test that “MEASURED METRIC” is absent.",
       "screenshot": "quality/evidence/step-39/deployed-before/desktop-typography-lab.png",
-      "beforeEvidence": [
-        "quality/evidence/step-39/deployed-before/desktop-typography-lab.png"
-      ],
+      "beforeEvidence": ["quality/evidence/step-39/deployed-before/desktop-typography-lab.png"],
       "afterEvidence": [
         "quality/evidence/step-39/after/desktop/typography-lab.png",
         "quality/evidence/step-39/after/mobile/typography-lab.png"
@@ -7614,10 +7526,7 @@
       "title": "Design DNA Lab showed a fabricated score and latency in its type specimen",
       "expected": "Typography specimens should use neutral example code and disclose sample content; performance metrics must be measured.",
       "actual": "The deployed code sample read “const dnaScore = 92.4; // latency 4.2ms” with no source or disclosure.",
-      "reproduction": [
-        "Open /tools/dna.",
-        "Open Typography and inspect the Monospace specimen."
-      ],
+      "reproduction": ["Open /tools/dna.", "Open Typography and inspect the Monospace specimen."],
       "console": [],
       "network": [],
       "screenshot": "quality/evidence/step-39/deployed-before/tools/desktop/dna.png",
@@ -8661,10 +8570,7 @@
       "latestLocalVerification": {
         "date": "2026-10-21",
         "route": "/compose",
-        "viewports": [
-          "1440x900",
-          "390x844"
-        ],
+        "viewports": ["1440x900", "390x844"],
         "result": "The red desktop Chromium run measured 588984 JavaScript transfer bytes and failed the 450000-byte limit. After switching Compose to the persistence subpath, Chromium and WebKit desktop/mobile runs all measured 349756 transfer bytes, 1387940 decoded bytes and 19 JS resources with zero console errors, uncaught exceptions, failed requests or HTTP errors. The visible Compose-to-Workbench/Recompose workflow passed in both engines at desktop and mobile. pnpm audit:budgets reports 335.99 KiB gzip for eager Compose route. Public-site verification remains pending.",
         "beforeEvidence": "quality/evidence/step-38/before/compose-workbench-bundle-isolation-sites-chromium.json",
         "afterEvidence": [
@@ -8676,10 +8582,7 @@
         "routeMetrics": "quality/evidence/step-38/after/sites-worker/sites-chromium-browser-metrics.json",
         "test": "tests/e2e/site-route-performance-step-38.spec.ts",
         "integrationTest": "tests/e2e/performance-workloads-step-38.spec.ts",
-        "browsers": [
-          "Chromium",
-          "WebKit"
-        ]
+        "browsers": ["Chromium", "WebKit"]
       }
     },
     {
@@ -8712,10 +8615,7 @@
       "latestLocalVerification": {
         "date": "2026-10-21",
         "route": "/explore",
-        "viewports": [
-          "1440x900",
-          "390x844"
-        ],
+        "viewports": ["1440x900", "390x844"],
         "browser": "Playwright Chromium against the local Sites compatibility Worker",
         "result": "Desktop: 6 visible preview frames, 0 offscreen, 87 script responses, 326813 unique measured encoded script-body bytes. Mobile: 2 visible preview frames, 0 offscreen. In both profiles a real wheel scroll mounted the next resource iframe and its .tess-screen. Zero console errors, uncaught exceptions, failed requests, and HTTP errors.",
         "beforeEvidence": "quality/evidence/step-38/before/explore-preview-visibility.json",
@@ -8898,10 +8798,7 @@
       ],
       "screenshot": "quality/evidence/step-52/after/sites-worker-home-desktop.png",
       "rootCause": "The smoke configuration used an Astro preview command against root dist, which the Sites build replaces with Worker output. Astro preview also omits the Worker-specific CSP/CORS headers needed by opaque preview frames.",
-      "affectedCode": [
-        "apps/sites/playwright.config.ts",
-        "apps/sites/astro.preview.config.mjs"
-      ],
+      "affectedCode": ["apps/sites/playwright.config.ts", "apps/sites/astro.preview.config.mjs"],
       "fixCommit": null,
       "status": "fixed-local-verified",
       "verification": "Against the locally built Sites Worker, apps/sites/sites-smoke.spec.ts passes 2/2 tests, covering the flagship Compose-to-Workbench ZIP flow and all existing tools, catalogue and resource detail checks. The browser test asserts zero collected console errors.",
@@ -9207,10 +9104,7 @@
       "rootCause": "The Astro dependency range and lockfile selected a release before the upstream JSX/MDX escaping fix.",
       "fixCommit": null,
       "status": "fixed-local-verified",
-      "affectedCode": [
-        "apps/site/package.json",
-        "pnpm-lock.yaml"
-      ],
+      "affectedCode": ["apps/site/package.json", "pnpm-lock.yaml"],
       "verification": "Astro resolves to 7.4.2, pnpm install --frozen-lockfile succeeds, pnpm audit reports no known vulnerabilities, and pnpm audit:all passes the production build and all other release audits. A full browser rerun against the patched version is in progress.",
       "limitation": "Published review verification remains required before closure."
     },
@@ -9234,10 +9128,7 @@
       "rootCause": "The nested dependency lock selected ip-address 10.7.3 through the MCP SDK's express-rate-limit dependency.",
       "fixCommit": null,
       "status": "fixed-local-verified",
-      "affectedCode": [
-        "pnpm-workspace.yaml",
-        "pnpm-lock.yaml"
-      ],
+      "affectedCode": ["pnpm-workspace.yaml", "pnpm-lock.yaml"],
       "verification": "The workspace override resolves ip-address to 10.7.4; pnpm install --frozen-lockfile succeeds; the dependency audit reports no known vulnerabilities; and pnpm audit:all passes. A full browser rerun against the patched lockfile is in progress.",
       "limitation": "Published review verification remains required before closure."
     },
@@ -9261,10 +9152,7 @@
       "rootCause": "The Astro dependency range and lockfile selected a release before the View Transition CSS serialization fix.",
       "fixCommit": null,
       "status": "fixed-local-verified",
-      "affectedCode": [
-        "apps/site/package.json",
-        "pnpm-lock.yaml"
-      ],
+      "affectedCode": ["apps/site/package.json", "pnpm-lock.yaml"],
       "verification": "Astro resolves to 7.4.2, pnpm install --frozen-lockfile succeeds, pnpm audit reports no known vulnerabilities, and pnpm audit:all passes. A full browser rerun against the patched version is in progress.",
       "limitation": "Published review verification remains required before closure."
     },
@@ -9387,18 +9275,13 @@
         "Open a public Site route in Chromium.",
         "Inspect the automatic /favicon.ico request or run tests/e2e/site-favicon.spec.ts before the fix."
       ],
-      "console": [
-        "Chromium reported a failed favicon resource request with HTTP 404."
-      ],
+      "console": ["Chromium reported a failed favicon resource request with HTTP 404."],
       "network": [
         "GET /favicon.ico -> 404 before fix; GET /favicon.ico -> 200 image/x-icon after fix."
       ],
       "screenshot": null,
       "rootCause": "The site declared and served an SVG favicon but did not provide a fallback at the conventional ICO URL requested by the browser.",
-      "affectedCode": [
-        "apps/site/public/favicon.ico",
-        "tests/e2e/site-favicon.spec.ts"
-      ],
+      "affectedCode": ["apps/site/public/favicon.ico", "tests/e2e/site-favicon.spec.ts"],
       "fixCommit": null,
       "status": "fixed-awaiting-deployed-verification",
       "verification": "Added a valid ICO wrapper derived from the existing favicon mark. The Sites Worker desktop/mobile response regression passes with HTTP 200 and a valid ICO header. Published review verification is pending."
@@ -9523,9 +9406,7 @@
         "Inspect the longest interaction and verify all three generated direction previews."
       ],
       "console": [],
-      "network": [
-        "22 route requests: 20 HTTP 200 and 2 HTTP 304; no failed requests."
-      ],
+      "network": ["22 route requests: 20 HTTP 200 and 2 HTTP 304; no failed requests."],
       "screenshot": "quality/evidence/step-38/after/compose-progress-sites-chromium.png",
       "rootCause": "composeProjectPipeline ran in the submit task before React could paint feedback, so the click waited for product interpretation and resource selection.",
       "affectedCode": [
@@ -9866,10 +9747,7 @@
       "screenshot": null,
       "beforeScreenshot": null,
       "rootCause": "The SDK's Express dependency graph selected the latest locked body-parser release 2.3.0 and the workspace had no patched-version override.",
-      "affectedCode": [
-        "pnpm-workspace.yaml",
-        "pnpm-lock.yaml"
-      ],
+      "affectedCode": ["pnpm-workspace.yaml", "pnpm-lock.yaml"],
       "fixCommit": null,
       "status": "fixed-local-verified",
       "evidence": "quality/evidence/step-40/body-parser-audit.json",
@@ -10018,10 +9896,7 @@
       "screenshot": null,
       "beforeScreenshot": null,
       "rootCause": "The workspace pinned the undici 7 line to 7.29.1 and did not constrain the newly resolved undici 8 line.",
-      "affectedCode": [
-        "pnpm-workspace.yaml",
-        "pnpm-lock.yaml"
-      ],
+      "affectedCode": ["pnpm-workspace.yaml", "pnpm-lock.yaml"],
       "fixCommit": null,
       "status": "fixed-local-verified",
       "evidence": "quality/evidence/step-41/pnpm-audit.json; quality/evidence/step-41/dependency-audit-after.log",
@@ -10045,10 +9920,7 @@
       "screenshot": null,
       "beforeScreenshot": null,
       "rootCause": "The MCP SDK validation dependency graph selected fast-uri 3.1.8, below the patched 3.1.9 release.",
-      "affectedCode": [
-        "pnpm-workspace.yaml",
-        "pnpm-lock.yaml"
-      ],
+      "affectedCode": ["pnpm-workspace.yaml", "pnpm-lock.yaml"],
       "fixCommit": null,
       "status": "fixed-local-verified",
       "evidence": "quality/evidence/step-41/pnpm-audit.json; quality/evidence/step-41/dependency-audit-after.log",
@@ -10334,10 +10206,7 @@
       ],
       "screenshot": "audit/evidence/v24/explore-desktop-1440x900.png",
       "rootCause": "apps/sites/prepare-static.mjs scanned source-tree resource files but not the final /r/*.json runtime registry files that Sites publishes.",
-      "affectedCode": [
-        "apps/sites/prepare-static.mjs",
-        "tests/e2e/sites-preview-csp.spec.ts"
-      ],
+      "affectedCode": ["apps/sites/prepare-static.mjs", "tests/e2e/sites-preview-csp.spec.ts"],
       "fixCommit": "c82900964b868474b35326a6860f1fbeba3c5ff5",
       "status": "fixed-awaiting-deployed-verification",
       "evidence": "Deployed baseline: audit/evidence/v24/route-audit.json; fixed regression: tests/e2e/sites-preview-csp.spec.ts; local after capture: audit/evidence/local-fixed-final/route-audit.json.",
@@ -10358,9 +10227,7 @@
         "Compare labels and values; before the fix the input had neither id nor name."
       ],
       "console": [],
-      "network": [
-        "Explore and catalogue returned HTTP 200."
-      ],
+      "network": ["Explore and catalogue returned HTTP 200."],
       "screenshot": "audit/evidence/v24/explore-desktop-1440x900.png",
       "rootCause": "ExploreRail rendered each checkbox without a unique input identity.",
       "affectedCode": [
@@ -10387,9 +10254,7 @@
         "Before the fix, the subheading was h4 beneath h2."
       ],
       "console": [],
-      "network": [
-        "Homepage route and assets returned HTTP 200."
-      ],
+      "network": ["Homepage route and assets returned HTTP 200."],
       "screenshot": "audit/evidence/v24/home-desktop-1440x900.png",
       "rootCause": "Two homepage proof sections used h4 for their section heading, despite having no intervening h3.",
       "affectedCode": [
@@ -10416,9 +10281,7 @@
         "Before the fix, result headings appeared as h3 with no level-two heading."
       ],
       "console": [],
-      "network": [
-        "Explore and catalogue returned HTTP 200."
-      ],
+      "network": ["Explore and catalogue returned HTTP 200."],
       "screenshot": "audit/evidence/v24/explore-desktop-1440x900.png",
       "rootCause": "The result grid was treated as visually self-explanatory and had no semantic section heading.",
       "affectedCode": [
@@ -10445,9 +10308,7 @@
         "Before the fix, the left navigation aside had no accessible name."
       ],
       "console": [],
-      "network": [
-        "Workbench route and app chunks returned HTTP 200."
-      ],
+      "network": ["Workbench route and app chunks returned HTTP 200."],
       "screenshot": "audit/evidence/v24/workbench-desktop-1440x900.png",
       "rootCause": "LeftPanel rendered an aside landmark without an aria-label.",
       "affectedCode": [
@@ -10474,9 +10335,7 @@
         "Before the fix, the command bar had no region role or accessible name."
       ],
       "console": [],
-      "network": [
-        "Workbench route and app chunks returned HTTP 200."
-      ],
+      "network": ["Workbench route and app chunks returned HTTP 200."],
       "screenshot": "audit/evidence/v24/workbench-desktop-1440x900.png",
       "rootCause": "CommandBar exposed persistent editor actions without a named region boundary.",
       "affectedCode": [
@@ -10502,9 +10361,7 @@
         "Install its dependencies outside the monorepo and run the production preview.",
         "Inspect the document head and network requests for /favicon.svg."
       ],
-      "console": [
-        "The exported browser run recorded a failed favicon request before the fix."
-      ],
+      "console": ["The exported browser run recorded a failed favicon request before the fix."],
       "network": [
         "GET /favicon.svg failed before the fix because neither the link nor asset was emitted."
       ],
@@ -10563,9 +10420,7 @@
         "Before the fix, the resource root title was h3."
       ],
       "console": [],
-      "network": [
-        "Resource JSON and preview assets returned HTTP 200."
-      ],
+      "network": ["Resource JSON and preview assets returned HTTP 200."],
       "screenshot": "audit/evidence/v24/explore-desktop-1440x900.png",
       "rootCause": "The resource component encoded an h3 title despite being the top-level content section in its isolated document.",
       "affectedCode": [
@@ -10592,9 +10447,7 @@
         "Before the fix, the root title was rendered as h4."
       ],
       "console": [],
-      "network": [
-        "Resource JSON and preview assets returned HTTP 200."
-      ],
+      "network": ["Resource JSON and preview assets returned HTTP 200."],
       "screenshot": "audit/evidence/v24/explore-desktop-1440x900.png",
       "rootCause": "The resource component used a styling heading level as its semantic document level.",
       "affectedCode": [
@@ -10621,9 +10474,7 @@
         "Before the fix, each row title appeared as h3."
       ],
       "console": [],
-      "network": [
-        "Resource JSON and preview assets returned HTTP 200."
-      ],
+      "network": ["Resource JSON and preview assets returned HTTP 200."],
       "screenshot": "audit/evidence/v24/r__advanced-data-table-mobile-390x844.png",
       "rootCause": "The mobile card renderer reused heading markup for row labels.",
       "affectedCode": [
@@ -10634,7 +10485,38 @@
       "status": "fixed-awaiting-deployed-verification",
       "evidence": "The resource browser regression covers the mobile resource frame; local Axe shows no violations for covered routes.",
       "verification": "Mobile record labels now render as paragraphs, preserving visual styling while removing false section semantics. Local regression passes; deployed verification pending."
+    },
+    {
+      "id": "AUD-334",
+      "severity": "medium",
+      "route": "/explore",
+      "viewport": "390x844",
+      "category": "state",
+      "title": "Mobile Explore filter control is active before hydration",
+      "expected": "The mobile Filters control stays unavailable and explains its state until the client handler and catalogue are ready.",
+      "actual": "On deployed v25, blocking the Explore island script leaves the Filters button enabled while the page says “Preparing search…” and “Loading catalogue…”. A click does not open the filter dialog and aria-expanded remains false.",
+      "reproduction": [
+        "Open https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore/ at 390x844.",
+        "Block the /_astro/ExploreView.*.js island request before it loads.",
+        "Observe that Search is disabled but Filters is enabled; click Filters and observe no dialog and aria-expanded=false."
+      ],
+      "console": [
+        "The deliberate blockedbyclient diagnostic request was filtered from application console errors; no unrelated console errors were recorded."
+      ],
+      "network": [
+        "GET /explore/ returned HTTP 200. The Explore island was intentionally blocked for the reproduction. No unrelated failed requests were recorded."
+      ],
+      "screenshot": "audit/evidence/v25/mobile-filter-hydration/filters-enabled-before-hydration-390x844.png",
+      "rootCause": "The server-rendered search field tracked URL initialization while the mobile Filters button was enabled unconditionally before the Explore island attached its click handler.",
+      "affectedCode": [
+        "apps/site/src/components/ExploreView.tsx",
+        "tests/e2e/explore-search-hardening.spec.ts"
+      ],
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "The deployed v25 reproduction report is audit/evidence/v25/mobile-filter-hydration/report.json. The local browser regression failed before the source fix and now checks the disabled state and accessible explanation; repeated mobile reload runs passed 3/3 after the fix. Local screenshot is quality/evidence/step-45/after/explore-filters-disabled-before-hydration-390x844.png.",
+      "verification": "ExploreView now disables Filters while URL state is not initialized, catalogue loading is active, or catalogue loading failed, and points aria-describedby to the visible status/error message. The targeted repeated mobile regression passed locally; deployed closure is pending a newly published review Site."
     }
   ],
-  "generatedAt": "2026-10-24T17:20:00.168Z"
+  "generatedAt": "2026-10-24T20:57:44.862Z"
 }
