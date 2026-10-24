@@ -33,11 +33,11 @@ export function TwoPaneMasterDetailShell({ variant = 'quiet' }: TwoPaneMasterDet
             key={it.id}
             onClick={() => setSelected(it.id)}
             className={`w-full text-left p-3 rounded-[var(--tess-radius-lg,8px)] border cursor-pointer transition-colors ${
-              it.id === selected ? 'border-neutral-900 dark:border-white bg-neutral-50 dark:bg-neutral-800' : 'border-transparent hover:bg-neutral-50'
+              it.id === selected ? 'border-neutral-900 dark:border-white bg-neutral-50 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-100' : 'border-transparent hover:bg-neutral-50'
             }`}
           >
             <p className="font-medium">{it.title}</p>
-            <p className="text-[10px] opacity-50 mt-1">{it.time}</p>
+            <p className={`text-[10px] mt-1 ${it.id === selected ? 'text-neutral-600 dark:text-neutral-300' : 'text-neutral-600'}`}>{it.time}</p>
           </button>
         ))}
       </div>

@@ -159,7 +159,7 @@ export default defineConfig({
 :root {
 ${cssVarDeclarations}
 }
-@custom-variant dark (&:where(.dark,.dark *):not(.tess-screen *), &:where([data-resource-variant="nocturne"], [data-resource-variant="nocturne"] *));
+@custom-variant dark (&:where(.dark,.dark *), &:where([data-resource-variant="nocturne"], [data-resource-variant="nocturne"] *));
 ${MANIFEST_LAYOUT_CSS}
 ${manifest.designDNA.visualMode==='adaptive'?`@media(prefers-color-scheme:dark){:root{${Object.entries(tokensToCssVariables(normalizeDesignTokens(manifest.designDNA,{activeMode:'dark'}))).map(([key,value])=>`${key}:${value};`).join('')}}}`:''}
 `;

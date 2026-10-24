@@ -35,8 +35,8 @@ export function TimeSeriesChart({
     variant === 'nocturne'
       ? 'bg-[#0B0D10] border-[#2E3440] text-white'
       : variant === 'expressive'
-      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'
-      : 'bg-white border-neutral-200 text-neutral-900';
+      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm dark:bg-[#0B0D10] dark:border-[#2E3440] dark:text-white'
+      : 'bg-white border-neutral-200 text-neutral-900 dark:bg-[#0B0D10] dark:border-[#2E3440] dark:text-white';
 
   const lineColor =
     variant === 'nocturne'
@@ -70,8 +70,7 @@ export function TimeSeriesChart({
   return (
     <div
       style={{
-        '--tess-ink-muted': variant === 'nocturne' ? '#A8AFBA' : '#62666F',
-        '--tess-ink-secondary': variant === 'nocturne' ? '#D1D5DB' : '#4B5563',
+        ...(variant === 'nocturne' ? { '--tess-ink-muted': '#A8AFBA', '--tess-ink-secondary': '#D1D5DB' } : {}),
       } as React.CSSProperties}
       className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col transition-colors ${cardBg}`}
     >
@@ -85,7 +84,7 @@ export function TimeSeriesChart({
             <span className="text-lg font-mono font-semibold">
               {activePoint ? activePoint.value : points[points.length - 1]?.value}
             </span>
-            <span className="text-xs text-neutral-400 ml-1">req/s</span>
+            <span className="text-xs text-neutral-600 dark:text-neutral-400 ml-1">req/s</span>
           </div>
         )}
       </div>

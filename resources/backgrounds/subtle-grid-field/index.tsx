@@ -12,7 +12,7 @@ export function SubtleGridField({ variant = 'quiet', children }: SubtleGridField
     variant === 'nocturne'
       ? 'bg-[#0B0D10] text-white border-[#2E3440]'
       : variant === 'expressive'
-      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF]'
+      ? 'bg-neutral-50/50 text-neutral-900 border-[#D9D6CF] dark:bg-[#0B0D10] dark:text-white dark:border-[#2E3440]'
       : 'bg-white text-neutral-900 border-neutral-200';
 
   const gridStroke =
@@ -35,9 +35,9 @@ export function SubtleGridField({ variant = 'quiet', children }: SubtleGridField
       </svg>
 
       <div className="relative z-10 max-w-md space-y-1">
-        <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-400">Architectural Surface</span>
+        <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-600 dark:text-neutral-400">Architectural Surface</span>
         <h4 className="text-base font-bold tracking-tight">Subtle Grid Field</h4>
-        <p className="text-xs text-[var(--tess-ink-muted,#62666F)] leading-relaxed">
+        <p className="text-xs text-[var(--tess-ink-muted,#62666F)] dark:text-neutral-300 leading-relaxed">
           Vector coordinate grid providing structural rhythm with zero client bundle overhead.
         </p>
         {children}

@@ -18,9 +18,9 @@ export function LogoCloudMinimal({
   let logoColor = 'text-[var(--tess-ink-secondary,#62666F)] hover:text-neutral-900';
 
   if (variant === 'expressive') {
-    bg = 'bg-neutral-50 text-neutral-950 border-[#D9D6CF]';
-    titleColor = 'text-[var(--tess-ink-secondary,#62666F)] font-semibold';
-    logoColor = 'text-neutral-700 hover:text-[#2547E8]';
+    bg = 'bg-neutral-50 text-neutral-950 border-[#D9D6CF] dark:bg-[#0B0D10] dark:text-white dark:border-[#2E3440]';
+    titleColor = 'text-[var(--tess-ink-secondary,#62666F)] font-semibold dark:text-neutral-300';
+    logoColor = 'text-neutral-700 hover:text-[#2547E8] dark:text-neutral-300 dark:hover:text-white';
   } else if (variant === 'nocturne') {
     bg = 'bg-[#0B0D10] text-white border-[#2E3440]';
     titleColor = 'text-neutral-400 font-mono';

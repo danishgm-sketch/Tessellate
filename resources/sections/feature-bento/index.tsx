@@ -80,7 +80,7 @@ export function FeatureBento({
                   {items[0]?.description}
                 </p>
               </div>
-              <div className="h-10 rounded-[var(--tess-radius-lg,8px)] bg-neutral-200/60 dark:bg-neutral-800 flex items-center px-4 font-mono text-xs opacity-70">
+              <div className="h-10 rounded-[var(--tess-radius-lg,8px)] bg-neutral-200/60 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-100 flex items-center px-4 font-mono text-xs">
                 {items[0]?.detail}
               </div>
             </div>

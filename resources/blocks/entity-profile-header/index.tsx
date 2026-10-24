@@ -35,7 +35,7 @@ export function EntityProfileHeader({
     >
       <div className="flex flex-col @sm:flex-row @sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4">
-          <div className="h-14 w-14 rounded-[var(--tess-radius-xl,8px)] bg-neutral-200 dark:bg-neutral-800 font-bold text-xl flex items-center justify-center">
+          <div className="h-14 w-14 rounded-[var(--tess-radius-xl,8px)] bg-neutral-200 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-100 font-bold text-xl flex items-center justify-center">
             {initials}
           </div>
           <div>

@@ -12,7 +12,7 @@ export function MarketingNavCta({ variant = 'quiet', links = [{ label: 'Features
   let bar = 'bg-white border-b border-neutral-200 text-neutral-900';
   let cta = 'bg-neutral-900 text-white';
   if (variant === 'expressive') {
-    bar = 'bg-white border-b border-[#D9D6CF] text-neutral-900';
+    bar = 'bg-white border-b border-[#D9D6CF] text-neutral-900 dark:bg-[#0B0D10] dark:border-[#2E3440] dark:text-white';
     cta = 'bg-[var(--tess-accent-primary,#2547E8)] text-[var(--tess-accent-ink,#FFFFFF)] shadow-xs';
   } else if (variant === 'nocturne') {
     bar = 'bg-[#0B0D10] border-b border-[#2E3440] text-white';

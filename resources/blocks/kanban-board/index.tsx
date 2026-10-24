@@ -15,9 +15,9 @@ export function KanbanBoard({ variant = 'quiet', title='Sample task board', colu
   let card = 'bg-white border-neutral-200 shadow-2xs';
 
   if (variant === 'expressive') {
-    bg = 'bg-neutral-50/30 text-neutral-950 border-[#D9D6CF]';
-    lane = 'bg-white border-blue-100 shadow-xs';
-    card = 'bg-neutral-50/50 border-neutral-200';
+    bg = 'bg-neutral-50/30 text-neutral-950 border-[#D9D6CF] dark:bg-[#0B0D10] dark:text-white dark:border-[#2E3440]';
+    lane = 'bg-white border-blue-100 shadow-xs dark:bg-[#151921] dark:border-[#2E3440]';
+    card = 'bg-neutral-50/50 border-neutral-200 dark:bg-[#0E1217] dark:border-[#2E3440]';
   } else if (variant === 'nocturne') {
     bg = 'bg-[#0B0D10] text-white border-[#2E3440]';
     lane = 'bg-[#151921] border-[#2E3440]';

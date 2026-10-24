@@ -38,7 +38,7 @@ export function Select({ variant = 'quiet', label, options = [], className = '',
             </option>
           ))}
         </select>
-        <span className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 opacity-50">
+        <span className={`pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 ${variant === 'nocturne' ? 'text-neutral-200 bg-[#11141B]' : 'text-neutral-700 bg-white'}`}>
           ▼
         </span>
       </div>

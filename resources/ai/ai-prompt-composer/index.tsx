@@ -16,8 +16,8 @@ export function AIPromptComposer({ variant = 'quiet', onExecute }: AIPromptCompo
     variant === 'nocturne'
       ? 'bg-[#0B0D10] border-[#2E3440] text-white'
       : variant === 'expressive'
-      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'
-      : 'bg-white border-neutral-200 text-neutral-900';
+      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm dark:bg-[#0B0D10] dark:border-[#2E3440] dark:text-white'
+      : 'bg-white border-neutral-200 text-neutral-900 dark:bg-[#0B0D10] dark:border-[#2E3440] dark:text-white';
 
   const removeFile = (f: string) => {
     setAttachedFiles(attachedFiles.filter((item) => item !== f));
@@ -28,14 +28,13 @@ export function AIPromptComposer({ variant = 'quiet', onExecute }: AIPromptCompo
   return (
     <div
       style={{
-        '--tess-ink-muted': variant === 'nocturne' ? '#A8AFBA' : '#62666F',
-        '--tess-ink-secondary': variant === 'nocturne' ? '#D1D5DB' : '#4B5563',
+        ...(variant === 'nocturne' ? { '--tess-ink-muted': '#A8AFBA', '--tess-ink-secondary': '#D1D5DB' } : {}),
       } as React.CSSProperties}
       className={`w-full p-5 rounded-[var(--tess-radius-xl,8px)] border flex flex-col gap-3 transition-colors ${cardBg}`}
     >
       <div className="flex items-center justify-between pb-2 border-b border-neutral-100 dark:border-neutral-800 text-xs">
         <span className="font-semibold">Prompt Studio</span>
-        <div className="flex items-center gap-3 text-neutral-400 font-mono text-[11px]">
+        <div className="flex items-center gap-3 text-neutral-600 dark:text-neutral-300 font-mono text-[11px]">
           <span>Context: {attachedFiles.length} files</span>
           <span>~{estimatedTokens} tokens</span>
         </div>
@@ -68,7 +67,7 @@ export function AIPromptComposer({ variant = 'quiet', onExecute }: AIPromptCompo
       />
 
       <div className="flex items-center justify-between pt-1">
-        <span className="text-[11px] text-neutral-400">Shift + Enter for newline</span>
+        <span className="text-[11px] text-neutral-600 dark:text-neutral-300">Shift + Enter for newline</span>
         <button
           type="button"
           onClick={() => onExecute?.(text, attachedFiles)}

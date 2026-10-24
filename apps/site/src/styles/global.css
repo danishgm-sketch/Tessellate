@@ -3,7 +3,7 @@
 @source "../../../../packages";
 @source "../../../../resources";
 @source not "../../../../packages/exporter/src/generated-gold-sources.ts";
-@custom-variant dark (&:where(.dark, .dark *):not(.tess-screen *), &:where([data-resource-variant="nocturne"], [data-resource-variant="nocturne"] *));
+@custom-variant dark (&:where(.dark, .dark *), &:where([data-resource-variant="nocturne"], [data-resource-variant="nocturne"] *));
 
 :root {
   --text-muted: var(--tess-ink-muted);

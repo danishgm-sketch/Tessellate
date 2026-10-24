@@ -33,7 +33,7 @@ export function FilterBuilder({ variant = 'quiet' }: FilterBuilderProps) {
   let bg = 'bg-white text-neutral-900 border-neutral-200';
 
   if (variant === 'expressive') {
-    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF]';
+    bg = 'bg-neutral-50/40 text-neutral-950 border-[#D9D6CF] dark:bg-[#0B0D10] dark:text-white dark:border-[#2E3440]';
   } else if (variant === 'nocturne') {
     bg = 'bg-[#0B0D10] text-white border-[#2E3440]';
   }
@@ -84,7 +84,7 @@ export function FilterBuilder({ variant = 'quiet' }: FilterBuilderProps) {
                     aria-label={`Field ${index + 1}`}
                     value={rule.field}
                     onChange={(event) => updateRule(rule.id, { field: event.target.value })}
-                    className="w-full min-h-10 rounded border bg-transparent px-2"
+                    className="w-full min-h-10 rounded border border-neutral-300 dark:border-[#2E3440] bg-transparent px-2"
                   >
                     <option value="">Choose a field</option>
                     {fields.map((field) => (
@@ -100,7 +100,7 @@ export function FilterBuilder({ variant = 'quiet' }: FilterBuilderProps) {
                     aria-label={`Operator ${index + 1}`}
                     value={rule.operator}
                     onChange={(event) => updateRule(rule.id, { operator: event.target.value })}
-                    className="w-full min-h-10 rounded border bg-transparent px-2"
+                    className="w-full min-h-10 rounded border border-neutral-300 dark:border-[#2E3440] bg-transparent px-2"
                   >
                     {operators.map((operator) => (
                       <option key={operator.id} value={operator.id}>
@@ -116,14 +116,14 @@ export function FilterBuilder({ variant = 'quiet' }: FilterBuilderProps) {
                     value={rule.value}
                     onChange={(event) => updateRule(rule.id, { value: event.target.value })}
                     placeholder="Enter a value"
-                    className="w-full min-h-10 rounded border bg-transparent px-2"
+                    className="w-full min-h-10 rounded border border-neutral-300 dark:border-[#2E3440] bg-transparent px-2"
                   />
                 </label>
                 <button
                   type="button"
                   aria-label={`Remove condition ${index + 1}`}
                   onClick={() => removeRule(rule.id)}
-                  className="min-h-10 min-w-10 rounded border px-2 text-xs"
+                  className="min-h-10 min-w-10 rounded border border-neutral-300 dark:border-[#2E3440] px-2 text-xs"
                 >
                   Remove
                 </button>

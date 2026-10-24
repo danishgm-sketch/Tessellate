@@ -13,8 +13,8 @@ export function DonutChart({ variant = 'quiet' }: DonutChartProps) {
     variant === 'nocturne'
       ? 'bg-[#0B0D10] border-[#2E3440] text-white'
       : variant === 'expressive'
-      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'
-      : 'bg-white border-neutral-200 text-neutral-900';
+      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm dark:bg-[#0B0D10] dark:border-[#2E3440] dark:text-white'
+      : 'bg-white border-neutral-200 text-neutral-900 dark:bg-[#0B0D10] dark:border-[#2E3440] dark:text-white';
 
   const colors =
     variant === 'nocturne'
@@ -41,8 +41,7 @@ export function DonutChart({ variant = 'quiet' }: DonutChartProps) {
   return (
     <div
       style={{
-        '--tess-ink-muted': variant === 'nocturne' ? '#A8AFBA' : '#62666F',
-        '--tess-ink-secondary': variant === 'nocturne' ? '#D1D5DB' : '#4B5563',
+        ...(variant === 'nocturne' ? { '--tess-ink-muted': '#A8AFBA', '--tess-ink-secondary': '#D1D5DB' } : {}),
       } as React.CSSProperties}
       className={`w-full p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col transition-colors ${cardBg}`}
     >
@@ -85,7 +84,7 @@ export function DonutChart({ variant = 'quiet' }: DonutChartProps) {
             <span className="text-2xl font-bold font-mono">
               {activeSegment !== null ? segments[activeSegment]?.value ?? total : `${total}%`}
             </span>
-            <span className="text-[10px] text-neutral-400 font-medium">
+            <span className="text-[10px] text-neutral-600 dark:text-neutral-300 font-medium">
               {activeSegment !== null ? segments[activeSegment]?.label : 'Total'}
             </span>
           </div>

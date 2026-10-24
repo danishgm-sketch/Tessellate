@@ -79,7 +79,7 @@ export function AdvancedDataTable({
         tabIndex={0}
       >
         <table className="w-full text-left text-xs font-mono">
-          <thead className="bg-neutral-100/60 dark:bg-neutral-900/60 border-b border-neutral-200 dark:border-neutral-800">
+          <thead className="bg-neutral-100/60 text-neutral-700 dark:bg-neutral-900/60 dark:text-white border-b border-neutral-200 dark:border-neutral-800">
             <tr>
               <th className="p-3 w-8">#</th>
               <th className="p-3">{columnLabels.name}</th>

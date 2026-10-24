@@ -25,7 +25,7 @@ export function ThreePaneAppShell({
         role="region"
         aria-label="Workspace canvas"
         tabIndex={0}
-        className="min-h-[50vh] w-full min-w-0 flex-1 overflow-auto bg-neutral-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-blue-600 dark:bg-[#0B0D10] md:min-h-0"
+        className="min-h-[50vh] w-full min-w-0 flex-1 overflow-auto bg-neutral-50 text-neutral-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-blue-600 dark:bg-[#0B0D10] dark:text-neutral-100 md:min-h-0"
       >
         {centerPane}
       </div>

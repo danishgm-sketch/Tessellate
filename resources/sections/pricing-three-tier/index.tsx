@@ -39,7 +39,7 @@ export function PricingThreeTier({ variant = 'quiet', onSelectPlan }: PricingThr
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <span className="font-bold text-lg">{t.name}</span>
-                  {t.featured && <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 font-bold">Recommended</span>}
+                  {t.featured && <span className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded font-bold ${variant === 'nocturne' ? 'bg-emerald-500/20 text-emerald-300' : 'bg-emerald-500/10 text-emerald-800'}`}>Recommended</span>}
                 </div>
                 <div className="text-4xl font-mono font-bold mb-4">{t.price}</div>
                 <p className="text-xs @sm:text-sm opacity-75 mb-6">{t.desc}</p>

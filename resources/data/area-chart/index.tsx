@@ -58,7 +58,7 @@ export function AreaChart({ variant = 'quiet' }: AreaChartProps) {
           <h4 className="text-sm font-semibold tracking-tight">Sample ingestion volume</h4>
           <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">Illustrative sample data — not live measurements.</p>
         </div>
-        <span className="text-xs font-mono font-medium px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-800">
+        <span className="text-xs font-mono font-medium px-2 py-1 rounded bg-neutral-100 text-neutral-700 dark:bg-neutral-800 dark:text-neutral-100">
           Sample peak: 420 GB
         </span>
       </div>

@@ -223,6 +223,16 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     }
   });
 
+  it('keeps the Sites dark-utility boundary aligned with standalone React exports', () => {
+    const exportedCss = generateSourceTree(testProject)['src/index.css'];
+    const siteCss = fs.readFileSync(path.resolve(process.cwd(), 'apps/site/src/styles/global.css'), 'utf8');
+    const darkVariant = (css: string) => css.match(/@custom-variant dark\s*\(([^;]+)\);/)?.[1]?.replace(/\s/g, '');
+
+    expect(darkVariant(exportedCss ?? '')).toBeTruthy();
+    expect(darkVariant(exportedCss ?? '')).toBe(darkVariant(siteCss));
+    expect(darkVariant(exportedCss ?? '')).not.toContain('not(.tess-screen*)');
+  });
+
   it('exports the responsive Inline AI Rewrite implementation from the generated Gold registry', () => {
     const inlineProject = JSON.parse(JSON.stringify(testProject)) as ProjectManifest;
     inlineProject.screens[0]!.rootNode.children = [

@@ -13,7 +13,7 @@ const goldResources = (JSON.parse(readFileSync(cataloguePath, 'utf8')) as Catalo
   (resource) => resource.status === 'verified-gold'
 );
 
-test('Gold resources keep expressive variants readable on dark product canvases', async ({ page }) => {
+test('Gold resources keep expressive variants readable on dark product canvases', async ({ page }, testInfo) => {
   test.setTimeout(5 * 60 * 1000);
   const findings: Array<{
     slug: string;
@@ -46,7 +46,7 @@ test('Gold resources keep expressive variants readable on dark product canvases'
     }
   }
 
-  const outputPath = path.resolve(process.cwd(), 'test-results/resource-dark-expressive-contrast.json');
+  const outputPath = path.resolve(process.cwd(), `audit/evidence/local-dark-contrast/axe-${testInfo.project.name}.json`);
   mkdirSync(path.dirname(outputPath), { recursive: true });
   writeFileSync(
     outputPath,

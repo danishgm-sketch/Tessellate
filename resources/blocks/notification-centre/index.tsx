@@ -78,7 +78,7 @@ export function NotificationCentre({ variant = 'quiet', title='Sample notificati
                   {!it.read && <span className="h-2 w-2 rounded-full bg-blue-500" />}
                   <span className={it.read ? 'opacity-60' : 'font-semibold'}>{it.title}</span>
                 </div>
-                <span className="font-mono text-[11px] opacity-50">{it.time}</span>
+                <span className={`font-mono text-[11px] ${variant === 'nocturne' ? 'text-neutral-300' : 'text-neutral-600'}`}>{it.time}</span>
               </div>
             ))}
           </div>

@@ -47,7 +47,7 @@ export function ErrorState({
           ⚠️
         </span>
         <div>
-          <h3 className="text-base font-bold tracking-tight text-red-700 dark:text-red-400">
+          <h3 className={`text-base font-bold tracking-tight ${variant === 'nocturne' ? 'text-red-400' : 'text-red-700'}`}>
             {title}
           </h3>
           <p className="text-xs text-[var(--tess-ink-muted,#62666F)]">{errorMessage}</p>

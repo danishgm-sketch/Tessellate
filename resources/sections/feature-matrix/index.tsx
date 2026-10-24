@@ -13,7 +13,7 @@ export function FeatureMatrix({ variant = 'quiet', title='Example capability mat
   let tableBorder = 'border-neutral-200';
 
   if (variant === 'expressive') {
-    bg = 'bg-neutral-50/30 text-neutral-950 border-[#D9D6CF]';
+    bg = 'bg-neutral-50/30 text-neutral-950 border-[#D9D6CF] dark:bg-[#0B0D10] dark:text-white dark:border-[#2E3440]';
     tableBorder = 'border-blue-100';
   } else if (variant === 'nocturne') {
     bg = 'bg-[#0B0D10] text-white border-[#2E3440]';

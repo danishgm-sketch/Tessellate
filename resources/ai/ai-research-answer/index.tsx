@@ -11,22 +11,22 @@ export function AIResearchAnswer({ variant = 'quiet' }: AIResearchAnswerProps) {
     variant === 'nocturne'
       ? 'bg-[#0B0D10] border-[#2E3440] text-white'
       : variant === 'expressive'
-        ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'
-        : 'bg-white border-neutral-200 text-neutral-900';
+        ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm dark:bg-[#0B0D10] dark:border-[#2E3440] dark:text-white'
+        : 'bg-white border-neutral-200 text-neutral-900 dark:bg-[#0B0D10] dark:border-[#2E3440] dark:text-white';
 
   const calloutBg =
     variant === 'nocturne'
       ? 'bg-cyan-950/40 border-cyan-800 text-cyan-200'
       : variant === 'expressive'
-        ? 'bg-blue-50 border-blue-200 text-blue-900'
-        : 'bg-neutral-50 border-neutral-200 text-neutral-900';
+        ? 'bg-blue-50 border-blue-200 text-blue-900 dark:bg-cyan-950/40 dark:border-cyan-800 dark:text-cyan-200'
+        : 'bg-neutral-50 border-neutral-200 text-neutral-900 dark:bg-[#151921] dark:border-[#2E3440] dark:text-white';
 
   return (
     <div className={`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors ${cardBg}`}>
       <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
         <div>
           <h4 className="text-sm font-semibold tracking-tight">Example research answer</h4>
-          <p className="text-xs text-neutral-500">
+          <p className="text-xs text-neutral-600 dark:text-neutral-300">
             Example research answer. No sources were retrieved and no confidence score was
             calculated.
           </p>
@@ -46,17 +46,17 @@ export function AIResearchAnswer({ variant = 'quiet' }: AIResearchAnswerProps) {
 
       <div className="space-y-2 text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
         <div className="flex items-start gap-2">
-          <span className="font-mono text-neutral-400 font-bold">1.</span>
+          <span className="font-mono text-neutral-600 dark:text-neutral-400 font-bold">1.</span>
           <span>A monolith can keep shared changes and deployments within one codebase.</span>
         </div>
         <div className="flex items-start gap-2">
-          <span className="font-mono text-neutral-400 font-bold">2.</span>
+          <span className="font-mono text-neutral-600 dark:text-neutral-400 font-bold">2.</span>
           <span>
             Independent modules can support separate ownership when team boundaries are stable.
           </span>
         </div>
         <div className="flex items-start gap-2">
-          <span className="font-mono text-neutral-400 font-bold">3.</span>
+          <span className="font-mono text-neutral-600 dark:text-neutral-400 font-bold">3.</span>
           <span>
             The better fit depends on team structure, deployment needs, and operational overhead.
           </span>
