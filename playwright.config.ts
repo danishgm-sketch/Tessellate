@@ -7,6 +7,9 @@ export default defineConfig({
     '**/preview-unknown-resource-regression.spec.ts',
     '**/preview-reduced-motion.spec.ts',
     '**/sites-preview-csp.spec.ts',
+    // This browser test inspects resource content inside opaque preview frames;
+    // it requires the Sites Worker asset CORS policy, not plain `astro preview`.
+    '**/core-accessibility-landmarks.spec.ts',
     // This assertion depends on the Sites Worker redirect and response CSP;
     // plain Astro preview does not apply either header behavior.
     '**/sites-unknown-resource-preview.spec.ts',

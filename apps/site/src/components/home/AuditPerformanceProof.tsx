@@ -64,7 +64,7 @@ export function AuditPerformanceProof() {
         <div className="lg:col-span-4 rounded-2xl border border-[#D9D6CF] bg-[#FAF9F6] p-6 sm:p-8 space-y-5">
           <div className="flex items-center gap-2 pb-3 border-b border-[#D9D6CF]">
             <Zap className="h-4 w-4 text-[#12603F]" />
-            <h4 className="text-base font-semibold text-[#111217]">Build and Runtime Budgets</h4>
+            <h3 className="text-base font-semibold text-[#111217]">Build and Runtime Budgets</h3>
           </div>
 
           <ul className="space-y-3 text-xs text-[#62666F]">

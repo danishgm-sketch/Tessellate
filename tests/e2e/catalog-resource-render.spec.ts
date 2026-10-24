@@ -472,13 +472,13 @@ test('AI Chat Panel standalone preview starts with a coherent heading hierarchy'
   expect(response?.status()).toBe(200);
   const frame = page.frameLocator('iframe[title$=" live preview"]');
   await expect(frame.getByText('Example conversation. This preview does not connect to a model; sending adds a fixed local example reply.')).toBeVisible();
-  const firstHeading = frame.locator('h1, h2, h3, h4, h5, h6').first();
-  await expect(firstHeading).toHaveText('Example assistant conversation');
-  await expect(firstHeading).toHaveJSProperty('tagName', 'H2');
+  await expect(frame.getByRole('heading', { level: 1, name: 'AI Chat Panel preview' })).toHaveCount(1);
+  const firstContentHeading = frame.locator('h2').first();
+  await expect(firstContentHeading).toHaveText('Example assistant conversation');
   const headingLevels = await frame.locator('h1, h2, h3, h4, h5, h6').evaluateAll((headings) =>
     headings.map((heading) => Number(heading.tagName.slice(1)))
   );
-  expect(headingLevels[0]).toBe(2);
+  expect(headingLevels.slice(0, 2)).toEqual([1, 2]);
   expect(errors).toEqual([]);
 
   const screenshot = path.resolve(process.cwd(), `quality/evidence/step-35/after/ai-chat-panel-heading-${testInfo.project.name}.png`);

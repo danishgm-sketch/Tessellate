@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 import { ChevronDown, ChevronRight, RotateCcw } from 'lucide-react';
 import type { SearchFilters } from '@tessellate/search';
 
@@ -113,6 +113,8 @@ export function ExploreRail({
   className = '',
   showHeading = true,
 }: ExploreRailProps) {
+  const filterIdPrefix = useId().replace(/:/g, '');
+
   // Collapsed state for sections (first 3 expanded by default)
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     resourceTypes: true,
@@ -220,8 +222,12 @@ export function ExploreRail({
 
               {isExpanded && (
                 <div className="mt-2 flex flex-col gap-1.5 pl-0.5">
-                  {options.map((option) => {
+                  {options.map((option, optionIndex) => {
                     const isChecked = activeValues.includes(option);
+                    const optionId = `${filterIdPrefix}-filter-${section.id}-${optionIndex}-${option
+                      .toLowerCase()
+                      .replace(/[^a-z0-9]+/g, '-')
+                      .replace(/^-|-$/g, '')}`;
 
                     return (
                       <label
@@ -229,6 +235,8 @@ export function ExploreRail({
                         className="flex items-center gap-2 cursor-pointer text-[var(--tess-ink-secondary,#62666F)] hover:text-[var(--tess-ink,#111217)] text-[12px] py-0.5"
                       >
                         <input
+                          id={optionId}
+                          name={`filter.${section.id}`}
                           type="checkbox"
                           checked={isChecked}
                           onChange={() => handleToggleOption(section.id, option)}

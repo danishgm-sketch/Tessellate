@@ -24,7 +24,7 @@ export function ActivityFeed({ variant = 'quiet' }: ActivityFeedProps) {
   return (
     <div className={`w-full p-6 rounded-xl border transition-colors ${bg}`}>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-        <h3 className="text-sm font-semibold">Workspace Activity Feed</h3>
+        <h2 className="text-sm font-semibold">Workspace Activity Feed</h2>
         <span className="rounded-full bg-neutral-100 px-2 py-1 font-mono text-[10px] text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
           Sample activity
         </span>

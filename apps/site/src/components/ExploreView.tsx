@@ -505,6 +505,8 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
 
           {searchError && <p role="alert" className="border border-[#C83D48] bg-white p-3 text-xs text-[#8F2530]">{searchError}</p>}
 
+          <h2 className="sr-only">Catalogue results</h2>
+
           {/* Cards Grid */}
           {searchResults.length === 0 && !catalogError && !searchError && !hasCompletedSearch ? (
             <div

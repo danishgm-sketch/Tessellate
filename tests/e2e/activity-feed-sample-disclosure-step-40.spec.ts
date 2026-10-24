@@ -11,7 +11,7 @@ test('activity feed discloses its built-in entries are samples', async ({ page }
   expect(response?.status()).toBe(200);
 
   const preview = page.frameLocator('iframe[title$=" live preview"]');
-  await expect(preview.getByRole('heading', { level: 3, name: 'Workspace Activity Feed' })).toBeVisible();
+  await expect(preview.getByRole('heading', { level: 2, name: 'Workspace Activity Feed' })).toBeVisible();
   await expect(preview.getByText('Sample activity', { exact: true })).toBeVisible();
   await expect(preview.getByText(/validated 72|pull request #142|Elena R\.|Marcus V\./i)).toHaveCount(0);
   expect(errors).toEqual([]);

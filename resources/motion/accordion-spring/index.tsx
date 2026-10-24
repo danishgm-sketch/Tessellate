@@ -23,9 +23,9 @@ export function AccordionSpring({ variant = 'quiet' }: AccordionSpringProps) {
 
   return (
     <div className={`w-full p-6 rounded-xl border flex flex-col gap-3 transition-colors ${cardBg}`}>
-      <h4 className="text-sm font-semibold tracking-tight pb-2 border-b border-neutral-100 dark:border-neutral-800">
+      <h2 className="text-sm font-semibold tracking-tight pb-2 border-b border-neutral-100 dark:border-neutral-800">
         Animated Accordion Disclosure
-      </h4>
+      </h2>
 
       <div className="space-y-2">
         {items.map((it, idx) => {

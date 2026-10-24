@@ -270,7 +270,7 @@ test('AI rewrite preview separates fixed examples from an actual model action', 
   await page.goto('/r/inline-ai-rewrite');
   await expect(page.getByRole('heading', { name: 'Inline AI Rewrite' })).toBeVisible();
   const preview = page.frameLocator('iframe[title="Inline AI Rewrite live preview"]');
-  await expect(preview.getByText('Inline AI Rewrite')).toBeVisible();
+  await expect(preview.getByText('Inline AI Rewrite', { exact: true })).toBeVisible();
   const visibleText = await preview.locator('body').innerText();
   const acceptButton = preview.getByRole('button', { name: /Apply in preview|Applied in preview/ });
   const initialDirectory = path.resolve(

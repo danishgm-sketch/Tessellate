@@ -52,6 +52,7 @@ export function RightInspector() {
   return (
     <aside
       data-testid="right-inspector"
+      aria-label="Workbench inspector"
       className="dark w-full lg:w-[340px] shrink-0 border-l border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#111419] flex flex-col h-full select-none"
     >
       {/* Target Hierarchy Banner */}

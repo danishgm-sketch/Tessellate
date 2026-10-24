@@ -160,7 +160,7 @@ export function AdvancedDataTable({
                     className="mt-1 min-h-5 min-w-5 cursor-pointer"
                   />
                   <div className="min-w-0 flex-1">
-                    <h3 className="break-words text-sm font-semibold">
+                    <p className="break-words text-sm font-semibold">
                       {row.href ? (
                         <a
                           href={row.href}
@@ -171,7 +171,7 @@ export function AdvancedDataTable({
                       ) : (
                         row.name
                       )}
-                    </h3>
+                    </p>
                     <dl className="mt-3 grid gap-2 text-xs">
                       <div className="min-w-0">
                         <dt className="font-semibold text-neutral-500">{columnLabels.type}</dt>

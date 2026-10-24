@@ -22,12 +22,13 @@ function readChangeValue(input: unknown): unknown {
   return 'value' in control ? control.value : input;
 }
 
-const resourceManifests=import.meta.glob<{default:{preview:{defaultProps?:Record<string,unknown>}}}>('../../../../resources/**/manifest.json');
+const resourceManifests=import.meta.glob<{default:{name?:string;preview:{defaultProps?:Record<string,unknown>}}}>('../../../../resources/**/manifest.json');
 const resourceModules=import.meta.glob<Record<string,unknown>>('../../../../resources/**/index.tsx');
 function isResourceComponent(value:unknown):value is React.ComponentType<Record<string,unknown>> {return typeof value==='function' || (typeof value==='object' && value!==null && '$$typeof' in value && (value.$$typeof===Symbol.for('react.forward_ref') || value.$$typeof===Symbol.for('react.memo')));}
 
 export default function PreviewHost() {
   const [resourceId, setResourceId] = useState<string>(()=>typeof window!=='undefined' ? new URLSearchParams(window.location.search).get('resource') ?? 'button' : 'button');
+  const [resourceName, setResourceName] = useState<string>(() => resourceId.replace(/-/g, ' '));
   const [component,setComponent]=useState<React.ComponentType<Record<string,unknown>>|null>(null);
   const [loadError,setLoadError]=useState('');
   const [variant, setVariant] = useState<string>('expressive');
@@ -40,11 +41,13 @@ export default function PreviewHost() {
 
   useEffect(()=>{
     let disposed=false;setComponent(null);setLoadError('');
+    const fallbackName = resourceId.replace(/-/g, ' ');
+    setResourceName(fallbackName);
     const loader=Object.entries(resourceModules).find(([path])=>path.endsWith(`/${resourceId}/index.tsx`))?.[1];
     if(!loader){setLoadError(`Unknown resource: ${resourceId}`);return undefined;}
     const metadataLoader=Object.entries(resourceManifests).find(([path])=>path.endsWith(`/${resourceId}/manifest.json`))?.[1];
     Promise.all([loader(),metadataLoader?.()]).then(([module,metadata])=>{
-      if(!disposed)setProps(metadata?.default.preview.defaultProps??{});
+      if(!disposed){setProps(metadata?.default.preview.defaultProps??{});setResourceName(metadata?.default.name??fallbackName);}
       const exported=Object.entries(module).find(([name,value])=>/^[A-Z]/.test(name) && isResourceComponent(value))?.[1];
       if(!isResourceComponent(exported))throw new Error('Resource has no valid React component export.');
       if(!disposed)setComponent(()=>exported);
@@ -228,6 +231,7 @@ export default function PreviewHost() {
         reducedMotion ? 'motion-reduce:transition-none' : ''
       }`}
     >
+      <h1 className="sr-only">{resourceName} preview</h1>
       <div className={deviceStyles[device]}>
         {props.open===false && <button onClick={()=>setProps(previous=>({...previous,open:true}))}>Reopen example</button>}
         {actionStatus && <p role="status" className="text-sm p-2">{actionStatus}</p>}

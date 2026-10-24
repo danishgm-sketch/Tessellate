@@ -73,11 +73,11 @@ export function EssentialVsExperimental() {
                   T
                 </div>
                 <div>
-                  <h4
+                  <h3
                     className={`font-semibold text-sm ${level === 'experimental' ? 'font-serif text-base' : ''}`}
                   >
                     Tessellate Design Preview
-                  </h4>
+                  </h3>
                   <span className="text-[11px] font-mono text-[var(--text-muted)]">
                     Illustrative interface · no project connected
                   </span>

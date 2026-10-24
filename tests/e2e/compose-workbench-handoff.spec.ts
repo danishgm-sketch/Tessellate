@@ -243,7 +243,7 @@ test('Compose Direction C opens the exact selected manifest in Workbench', async
   await preview.getByRole('link', { name: 'Meet your team', exact: true }).click();
   await expect(page).toHaveURL(new RegExp(`#${activeManifest.screens.find((screen) => screen.name === 'Teams')!.id}$`));
   await expect(
-    preview.locator('td:visible, h3:visible').filter({ hasText: 'Example Product team' }).first()
+    preview.locator('td:visible, h3:visible, p:visible').filter({ hasText: 'Example Product team' }).first()
   ).toBeVisible();
   const pagingControl = preview.getByRole('button', { name: 'Paging unavailable' });
   await expect(pagingControl).toBeDisabled();
@@ -252,7 +252,7 @@ test('Compose Direction C opens the exact selected manifest in Workbench', async
 
   await selectPreviewScreen('Engagement');
   await expect(
-    preview.locator('td:visible, h3:visible').filter({ hasText: 'Example feedback topic' }).first()
+    preview.locator('td:visible, h3:visible, p:visible').filter({ hasText: 'Example feedback topic' }).first()
   ).toBeVisible();
   await captureScreen('engagement');
   await selectPreviewScreen('Settings & Policies');

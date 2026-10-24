@@ -98,7 +98,7 @@ test('Gold data resources handle empty states, large datasets, long content, and
   await updatePreviewProps(tableIframe, { rows });
   const mobileRows = table.getByTestId('advanced-data-table-mobile-record');
   await expect(mobileRows).toHaveCount(100);
-  await expect(mobileRows.nth(99).getByRole('heading', { name: longName, exact: true })).toBeVisible();
+  await expect(mobileRows.nth(99).getByText(longName, { exact: true })).toBeVisible();
   const tableDimensions = await table
     .locator('html')
     .evaluate((html) => ({ clientWidth: html.clientWidth, scrollWidth: html.scrollWidth }));
@@ -108,7 +108,7 @@ test('Gold data resources handle empty states, large datasets, long content, and
   await expect(firstCheckbox).toBeChecked();
   await table.getByRole('textbox', { name: 'Filter People directory' }).fill('employee-099');
   await expect(mobileRows).toHaveCount(1);
-  await expect(mobileRows.getByRole('heading', { name: 'employee-099', exact: true })).toBeVisible();
+  await expect(mobileRows.getByText('employee-099', { exact: true })).toBeVisible();
   await table.getByRole('textbox', { name: 'Filter People directory' }).fill('no-matching-person');
   await expect(mobileRows).toHaveCount(0);
   await expect(table.getByRole('status')).toHaveText('No records match this filter.');

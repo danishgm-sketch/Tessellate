@@ -21,6 +21,7 @@ export function LeftPanel() {
   return (
     <aside
       data-testid="left-panel"
+      aria-label="Workbench navigation"
       className="dark w-[280px] shrink-0 border-r border-[#D9D6CF] dark:border-[#272C34] bg-[#FAF9F6] dark:bg-[#111419] flex flex-col h-full select-none"
     >
       {/* Tab Switcher Header */}

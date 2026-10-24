@@ -152,6 +152,8 @@ export function CommandBar() {
   return (
     <div
       data-testid="command-bar"
+      role="region"
+      aria-label="Workbench command bar"
       className="min-h-16 py-2 shrink-0 border-t border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] px-4 flex flex-wrap items-center justify-between gap-y-2 select-none z-20"
     >
       <form onSubmit={handleExecute} className="flex-1 min-w-0 max-w-4xl flex items-center gap-3">
