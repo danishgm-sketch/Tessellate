@@ -437,3 +437,29 @@ than hidden.
 Chrome DevTools measurements remain local lab samples; CrUX field data is
 unavailable. The full Step 38 programme remains open for deployed review
 verification, field data, longer-session, and scale work.
+
+## 2026-10-24 live review comparison
+
+Chrome DevTools 156 captured the user-provided review URL directly at
+1440×900 and 390×844. The desktop cold navigation measured LCP 1,971 ms,
+TTFB 838 ms, 1,133 ms LCP render delay, and CLS 0.00; 27 requests returned
+without failed requests or HTTP errors. The mobile capture used 4× CPU and Fast
+4G and measured LCP 925 ms, TTFB 65 ms, 861 ms render delay, and CLS 0.00;
+again, all 27 requests succeeded. CrUX data is unavailable. Screenshots and
+machine records are `quality/evidence/step-38/review-v20-home-desktop-1440.png`,
+`quality/evidence/step-38/review-v20-home-mobile-390.png`,
+`quality/evidence/step-38/review-v20-home-mobile-390.json`, and
+`quality/evidence/step-38/review-v20-home-live-2026-10-24.json`.
+
+The live desktop document response was 84,920 bytes, had no `content-encoding`,
+and returned `cache-control: no-transform`. Its initial scripts transferred
+170,561 bytes, above the local 150 KiB homepage JS target. The current branch's
+separate local measurement remains 106–111 kB; the public page still showed the
+stale procurement/market-intelligence brief and the four-field browser identity
+warning, confirming that local fixes for AUD-317/318 have not reached this Site.
+The response CSP still contains `unsafe-inline` in script and style directives
+(AUD-268). These are existing release-verification findings, not regressions
+introduced by the current source changes. The source SHA is not exposed by the
+page; no hosting or repository change was made from this measurement. Recheck
+these findings against the public release candidate in Step 45 before closing
+them.
