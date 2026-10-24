@@ -146,6 +146,14 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
   const hasCompletedSearch = completedSearchKey !== null;
   const isQueryDebouncing = query !== committedQuery;
   const isSearchPending = isLoading || isSearching || completedSearchKey !== searchSignature(committedQuery, filters);
+  const mobileFiltersDisabled = !urlReady || isLoading || Boolean(catalogError);
+  const mobileFiltersHelpId = !urlReady
+    ? 'explore-search-hydration-status'
+    : isLoading
+      ? 'explore-catalogue-status'
+      : catalogError
+        ? 'explore-catalogue-error'
+        : undefined;
   const availableFacetOptions = useMemo(() => {
     const values: Record<SearchFacetKey, Set<string>> = {
       resourceTypes: new Set(),
@@ -352,7 +360,7 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
 
   return (
     <div className="w-full flex flex-col gap-6">
-      {catalogError && <div role="alert" className="border border-[#C83D48] p-4"><p>{catalogError}</p><button className="underline p-2" onClick={()=>setLoadAttempt(attempt=>attempt+1)}>Retry catalogue</button></div>}
+      {catalogError && <div id="explore-catalogue-error" role="alert" className="border border-[#C83D48] p-4"><p>{catalogError}</p><button className="underline p-2" onClick={()=>setLoadAttempt(attempt=>attempt+1)}>Retry catalogue</button></div>}
       {/* 56px Top Search & Filter Bar */}
       <div className="relative z-20 flex items-center gap-3 h-14 px-4 rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] shadow-xs">
         <Search className="w-4 h-4 text-[var(--tess-ink-muted,#62666F)] shrink-0" />
@@ -402,8 +410,11 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
           aria-haspopup="dialog"
           aria-expanded={mobileRailOpen}
           aria-controls="explore-mobile-filter-dialog"
+          aria-describedby={mobileFiltersHelpId}
+          disabled={mobileFiltersDisabled}
           onClick={() => setMobileRailOpen(!mobileRailOpen)}
-          className="lg:hidden flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[var(--tess-hairline,#D9D6CF)] bg-white text-xs font-medium text-[var(--tess-ink,#111217)] shadow-2xs"
+          title={mobileFiltersDisabled ? 'Filters become available after Explore finishes initializing.' : undefined}
+          className="lg:hidden flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[var(--tess-hairline,#D9D6CF)] bg-white text-xs font-medium text-[var(--tess-ink,#111217)] shadow-2xs disabled:cursor-wait disabled:border-dashed disabled:bg-[var(--tess-canvas,#F4F2ED)] disabled:text-[var(--tess-ink-secondary,#62666F)] disabled:shadow-none disabled:opacity-100"
         >
           <SlidersHorizontal className="w-3.5 h-3.5" />
           <span>Filters</span>
@@ -480,7 +491,7 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
         <div className="flex-1 flex flex-col gap-4">
           {/* Results Summary Header */}
           <div className="flex items-center justify-between text-xs text-[var(--tess-ink-secondary,#62666F)] pb-2 border-b border-[var(--tess-hairline,#D9D6CF)]/60">
-            <span aria-live="polite" aria-atomic="true">
+            <span id="explore-catalogue-status" aria-live="polite" aria-atomic="true">
               {isLoading
                 ? 'Loading catalogue...'
                 : catalogError

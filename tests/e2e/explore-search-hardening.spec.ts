@@ -1,15 +1,20 @@
+import { mkdir } from 'node:fs/promises';
+import path from 'node:path';
 import { expect, test } from '@playwright/test';
 
 async function openMobileFiltersIfNeeded(page: import('@playwright/test').Page) {
   if ((page.viewportSize()?.width ?? 1440) < 1024) {
     const filterButton = page.getByRole('button', { name: 'Filters', exact: true });
+    await expect(filterButton).toBeEnabled();
     await filterButton.click();
     await expect(filterButton).toHaveAttribute('aria-expanded', 'true');
     await expect(page.getByRole('dialog', { name: 'Explore filters' })).toBeVisible();
   }
 }
 
-test('search returns resources that match declared intent, not only a related word', async ({ page }) => {
+test('search returns resources that match declared intent, not only a related word', async ({
+  page,
+}) => {
   await page.goto('/explore/');
   await expect(page.getByText('Showing 50 of 324 resources', { exact: true })).toBeVisible();
   const search = page.getByLabel('Search catalogue');
@@ -28,7 +33,9 @@ test('search returns resources that match declared intent, not only a related wo
   await expect(page.getByRole('link', { name: 'Funnel Chart', exact: true })).toBeVisible();
 });
 
-test('Explore search keeps browser-restorable field identity while filtering results', async ({ page }) => {
+test('Explore search keeps browser-restorable field identity while filtering results', async ({
+  page,
+}) => {
   await page.goto('/explore/');
   const search = page.getByRole('textbox', { name: 'Search catalogue' });
 
@@ -40,7 +47,9 @@ test('Explore search keeps browser-restorable field identity while filtering res
   await expect(page.getByRole('link', { name: 'Dashboard KPI Grid', exact: true })).toBeVisible();
 });
 
-test('Explore keeps current results and in-flight previews until a debounced query is applied', async ({ page }) => {
+test('Explore keeps current results and in-flight previews until a debounced query is applied', async ({
+  page,
+}) => {
   let interactionPhase = 'before-query';
   let previewRequestsStarted = 0;
   const abortedDuringQuery: string[] = [];
@@ -58,7 +67,8 @@ test('Explore keeps current results and in-flight previews until a debounced que
   page.on('requestfailed', (request) => {
     let belongsToPreview = false;
     try {
-      belongsToPreview = new URL(request.url()).pathname === '/preview-content/' ||
+      belongsToPreview =
+        new URL(request.url()).pathname === '/preview-content/' ||
         new URL(request.frame().url()).pathname === '/preview-content/';
     } catch {
       // Detached frames can no longer provide their owner URL.
@@ -81,13 +91,19 @@ test('Explore keeps current results and in-flight previews until a debounced que
   await page.getByRole('textbox', { name: 'Search catalogue' }).fill('onboarding');
   await page.waitForTimeout(50);
 
-  const pendingState = await page.evaluate((href) => ({
-    summary: document.querySelector('[aria-live="polite"][aria-atomic="true"]')?.textContent?.trim(),
-    currentResourceVisible: [...document.querySelectorAll('main a[href^="/r/"]')].some(
-      (link) => link.getAttribute('href') === href,
-    ),
-    skeletonCount: document.querySelectorAll('[data-testid="resource-card-skeleton-grid"]').length,
-  }), firstResourceHref);
+  const pendingState = await page.evaluate(
+    (href) => ({
+      summary: document
+        .querySelector('[aria-live="polite"][aria-atomic="true"]')
+        ?.textContent?.trim(),
+      currentResourceVisible: [...document.querySelectorAll('main a[href^="/r/"]')].some(
+        (link) => link.getAttribute('href') === href
+      ),
+      skeletonCount: document.querySelectorAll('[data-testid="resource-card-skeleton-grid"]')
+        .length,
+    }),
+    firstResourceHref
+  );
 
   expect(pendingState).toEqual({
     summary: 'Showing 50 of 324 resources',
@@ -97,12 +113,18 @@ test('Explore keeps current results and in-flight previews until a debounced que
   expect(abortedDuringQuery).toEqual([]);
 
   interactionPhase = 'results-refresh';
-  await expect(page.getByRole('link', { name: 'Onboarding Role Select', exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('link', { name: 'Onboarding Role Select', exact: true })
+  ).toBeVisible();
 });
 
-test('Explore search explains and blocks input until its client handlers are ready', async ({ page }) => {
+test('Explore search explains and blocks input until its client handlers are ready', async ({
+  page,
+}) => {
   let releaseScript!: () => void;
-  const scriptGate = new Promise<void>((resolve) => { releaseScript = resolve; });
+  const scriptGate = new Promise<void>((resolve) => {
+    releaseScript = resolve;
+  });
   await page.route('**/_astro/ExploreView.*.js', async (route) => {
     await scriptGate;
     await route.continue();
@@ -111,15 +133,45 @@ test('Explore search explains and blocks input until its client handlers are rea
   const navigation = await page.goto('/explore/', { waitUntil: 'domcontentloaded' });
   expect(navigation?.status()).toBe(200);
   const search = page.getByRole('textbox', { name: 'Search catalogue' });
+  const mobileFilters = page.getByRole('button', { name: 'Filters', exact: true });
   try {
     await expect(search).toBeDisabled();
-    await expect(page.getByTestId('explore-search-hydration-status')).toContainText('Preparing search');
+    await expect(page.getByTestId('explore-search-hydration-status')).toContainText(
+      'Preparing search'
+    );
+    if ((page.viewportSize()?.width ?? 1440) < 1024) {
+      await expect(mobileFilters).toBeDisabled();
+      await expect(mobileFilters).toHaveAttribute(
+        'aria-describedby',
+        'explore-search-hydration-status'
+      );
+      const disabledStyle = await mobileFilters.evaluate((button) => {
+        const style = getComputedStyle(button);
+        return {
+          opacity: style.opacity,
+          borderStyle: style.borderStyle,
+          background: style.backgroundColor,
+        };
+      });
+      expect(disabledStyle).toEqual({
+        opacity: '1',
+        borderStyle: 'dashed',
+        background: 'rgb(244, 242, 237)',
+      });
+      const evidenceDir = path.resolve(process.cwd(), 'quality/evidence/step-45/after');
+      await mkdir(evidenceDir, { recursive: true });
+      await page.screenshot({
+        path: path.join(evidenceDir, 'explore-filters-disabled-before-hydration-390x844.png'),
+        animations: 'disabled',
+      });
+    }
   } finally {
     releaseScript();
   }
 
   await expect(search).toBeEnabled();
   await expect(page.getByText('Showing 50 of 324 resources', { exact: true })).toBeVisible();
+  if ((page.viewportSize()?.width ?? 1440) < 1024) await expect(mobileFilters).toBeEnabled();
   await search.fill('dashboard');
   await expect(page).toHaveURL(/q=dashboard/);
   await expect(page.getByRole('link', { name: 'Dashboard KPI Grid', exact: true })).toBeVisible();
@@ -141,7 +193,9 @@ test('suggested searches lead to relevant catalog results', async ({ page }) => 
   await expect(page.getByText('Showing 50 of 324 resources', { exact: true })).toBeVisible();
   for (const [query, expectedResult] of suggestions) {
     await page.getByRole('button', { name: query, exact: true }).click();
-    await expect(page).toHaveURL(new RegExp(`q=${encodeURIComponent(query).replaceAll('%20', '\\+')}`));
+    await expect(page).toHaveURL(
+      new RegExp(`q=${encodeURIComponent(query).replaceAll('%20', '\\+')}`)
+    );
     await expect(page.getByRole('link', { name: expectedResult, exact: true })).toBeVisible();
   }
 });
@@ -167,7 +221,9 @@ test('facet selection filters results and survives reload through the URL', asyn
   await expect(page).toHaveURL(/performance=Lightweight/);
   await expect(summary).toContainText(/Showing \d+ of \d+ resources/);
   const afterFilter = (await summary.textContent()) ?? '';
-  expect(Number(afterFilter.match(/of (\d+) resources/)?.[1])).toBeLessThan(Number(beforeFilter.match(/of (\d+) resources/)?.[1]));
+  expect(Number(afterFilter.match(/of (\d+) resources/)?.[1])).toBeLessThan(
+    Number(beforeFilter.match(/of (\d+) resources/)?.[1])
+  );
 
   await expect(summary).toContainText(/Showing \d+ of \d+ resources/);
   const filteredSummary = (await summary.textContent()) ?? '';
@@ -180,12 +236,16 @@ test('facet selection filters results and survives reload through the URL', asyn
   await expect(summary).toHaveText(filteredSummary);
 });
 
-test('Accessibility facet labels declared conformance targets without claiming certification', async ({ page }) => {
+test('Accessibility facet labels declared conformance targets without claiming certification', async ({
+  page,
+}) => {
   await page.goto('/explore/');
   await expect(page.getByText('Showing 50 of 324 resources', { exact: true })).toBeVisible();
   await openMobileFiltersIfNeeded(page);
   await page.getByRole('button', { name: /^Accessibility/ }).click();
-  await expect(page.getByRole('checkbox', { name: 'AA target or higher', exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('checkbox', { name: 'AA target or higher', exact: true })
+  ).toBeVisible();
   await expect(page.getByRole('checkbox', { name: 'AAA target', exact: true })).toHaveCount(0);
   await expect(page.getByRole('checkbox', { name: 'Verified AA', exact: true })).toHaveCount(0);
 });
@@ -212,7 +272,9 @@ test('facet lists only include values represented in the loaded catalogue', asyn
   await expect(page.getByRole('checkbox', { name: 'Lightweight', exact: true })).toBeVisible();
 
   await page.getByRole('button', { name: /^Dependencies/ }).click();
-  await expect(page.getByRole('checkbox', { name: 'Zero extra dependency', exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('checkbox', { name: 'Zero extra dependency', exact: true })
+  ).toBeVisible();
   await expect(page.getByRole('checkbox', { name: 'Radix', exact: true })).toHaveCount(0);
   await expect(page.getByRole('checkbox', { name: 'Three.js', exact: true })).toHaveCount(0);
 });
@@ -230,7 +292,9 @@ test('a stale URL facet remains visible so it can be removed', async ({ page }) 
   await expect(staleOption).toHaveCount(0);
 });
 
-test('Explore reports the real total and exposes more than the first 50 resources', async ({ page }) => {
+test('Explore reports the real total and exposes more than the first 50 resources', async ({
+  page,
+}) => {
   await page.goto('/explore/');
   await expect(page.getByText(/Showing 50 of 324 resources/)).toBeVisible();
 
@@ -239,8 +303,13 @@ test('Explore reports the real total and exposes more than the first 50 resource
   await expect(page.getByText('Showing 100 of 324 resources', { exact: true })).toBeVisible();
 });
 
-test('mobile filter drawer is a keyboard dialog with focus containment and Escape close', async ({ page }) => {
-  test.skip((page.viewportSize()?.width ?? 1440) >= 1024, 'Mobile drawer behavior is only applicable below the desktop breakpoint.');
+test('mobile filter drawer is a keyboard dialog with focus containment and Escape close', async ({
+  page,
+}) => {
+  test.skip(
+    (page.viewportSize()?.width ?? 1440) >= 1024,
+    'Mobile drawer behavior is only applicable below the desktop breakpoint.'
+  );
   await page.goto('/explore/');
   await expect(page.getByText('Showing 50 of 324 resources', { exact: true })).toBeVisible();
   const opener = page.getByRole('button', { name: 'Filters', exact: true });
@@ -253,7 +322,9 @@ test('mobile filter drawer is a keyboard dialog with focus containment and Escap
   await expect(close).toBeFocused();
 
   await page.keyboard.press('Shift+Tab');
-  const focusable = dialog.locator('a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+  const focusable = dialog.locator(
+    'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  );
   await expect(focusable.last()).toBeFocused();
   await page.keyboard.press('Tab');
   await expect(close).toBeFocused();
