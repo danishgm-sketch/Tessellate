@@ -208,7 +208,7 @@
     "surfacePersonality": "clean-high-contrast"
   },
   "brand": {
-    "name": "INTELLIGENCE-RESEARCH System"
+    "name": "Entity Workspace"
   },
   "constraints": {
     "accessibilityFloor": "AA",
@@ -463,38 +463,8 @@
             "semanticRole": "workspace-multi-pane",
             "children": [
               {
-                "id": "node-screen-workspace-editor-toolbar-2",
-                "nodeType": "section",
-                "semanticRole": "editor-toolbar",
-                "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "brand": "Entity Workspace",
-                  "links": [
-                    {
-                      "label": "Research Terminal",
-                      "href": "#screen-workspace"
-                    },
-                    {
-                      "label": "Entity Index",
-                      "href": "#screen-entity-index"
-                    },
-                    {
-                      "label": "Watchlists & Alerts",
-                      "href": "#screen-collection-index"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-workspace-canvas-viewport-3",
-                "nodeType": "section",
+                "id": "node-screen-workspace-canvas-viewport-2",
+                "nodeType": "block",
                 "semanticRole": "canvas-viewport",
                 "resourceRef": {
                   "id": "res_blk_kanban_board",
@@ -510,26 +480,26 @@
                     {
                       "title": "Search entity, map relationship network, and tag evidence",
                       "tasks": [
-                        "global-search",
-                        "expand-relations",
-                        "highlight-findings",
-                        "export-dossier"
+                        "Global search",
+                        "Expand relations",
+                        "Highlight findings",
+                        "Export dossier"
                       ]
                     },
                     {
                       "title": "Set automated monitoring triggers for entity changes",
                       "tasks": [
-                        "define-alert-rules",
-                        "select-entities",
-                        "choose-cadence"
+                        "Define alert rules",
+                        "Select entities",
+                        "Choose cadence"
                       ]
                     }
                   ]
                 }
               },
               {
-                "id": "node-screen-workspace-inspector-panel-4",
-                "nodeType": "section",
+                "id": "node-screen-workspace-inspector-panel-3",
+                "nodeType": "block",
                 "semanticRole": "inspector-panel",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -607,7 +577,7 @@
             "children": [
               {
                 "id": "node-screen-entity-index-search-header-2",
-                "nodeType": "section",
+                "nodeType": "element",
                 "semanticRole": "search-header",
                 "resourceRef": {
                   "id": "res_primitive_input",
@@ -627,7 +597,7 @@
               },
               {
                 "id": "node-screen-entity-index-facet-rail-3",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "facet-rail",
                 "resourceRef": {
                   "id": "res_blk_filter_builder",
@@ -641,7 +611,7 @@
               },
               {
                 "id": "node-screen-entity-index-results-grid-4",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "results-grid",
                 "resourceRef": {
                   "id": "res_blk_advanced_data_table",
@@ -748,7 +718,7 @@
             "children": [
               {
                 "id": "node-screen-dossier-reader-entity-header-2",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "entity-header",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -767,7 +737,7 @@
               },
               {
                 "id": "node-screen-dossier-reader-detail-tabs-3",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "detail-tabs",
                 "resourceRef": {
                   "id": "res_shell_minimal_top_nav",
@@ -797,7 +767,7 @@
               },
               {
                 "id": "node-screen-dossier-reader-main-content-pane-4",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "main-content-pane",
                 "resourceRef": {
                   "id": "res_blk_advanced_data_table",
@@ -845,7 +815,7 @@
               },
               {
                 "id": "node-screen-dossier-reader-metadata-sidebar-5",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "metadata-sidebar",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -923,7 +893,7 @@
             "children": [
               {
                 "id": "node-screen-collection-index-index-header-2",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "index-header",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -942,7 +912,7 @@
               },
               {
                 "id": "node-screen-collection-index-filter-bar-3",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "filter-bar",
                 "resourceRef": {
                   "id": "res_blk_filter_builder",
@@ -956,7 +926,7 @@
               },
               {
                 "id": "node-screen-collection-index-data-table-4",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "data-table",
                 "resourceRef": {
                   "id": "res_blk_advanced_data_table",
@@ -1004,7 +974,7 @@
               },
               {
                 "id": "node-screen-collection-index-pagination-5",
-                "nodeType": "section",
+                "nodeType": "element",
                 "semanticRole": "pagination",
                 "resourceRef": {
                   "id": "res_primitive_button_01",
@@ -1015,9 +985,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "children": "Continue",
-                  "disabled": false,
-                  "title": "Watchlists & Alerts"
+                  "children": "Paging unavailable",
+                  "disabled": true,
+                  "title": "Connect a paging data source before navigating additional records.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
                 }
               }
             ],

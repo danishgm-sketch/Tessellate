@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "id": "showcase-luxury-hospitality",
   "name": "Velluto Private Estate Residences",
-  "description": "Example project. Curated 5-star private estate reservations with editorial travel essays.",
+  "description": "Example project. Luxury hospitality for private estate stays, with residence discovery, room details, concierge assistance, and clear reservation terms.",
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z",
   "catalogVersion": "0.1.0",
@@ -11,123 +11,119 @@
     "schemaVersion": "1.0.0",
     "productArchetypes": [
       {
-        "tag": "media",
+        "tag": "travel",
         "weight": 100
       }
     ],
-    "primaryAudience": "Readers, viewers, editors, and digital journalists",
+    "primaryAudience": "Travelers comparing hotel rooms and making reservations",
     "userSophistication": 50,
-    "primaryObjective": "Deliver breaking journalism, compelling editorial reads, and immersive streaming",
+    "primaryObjective": "Help travelers compare hotel rooms, amenities, local guides, and availability before confirming a reservation",
     "secondaryObjectives": [
       "Ensure high accessibility standards",
       "Maintain responsive layout across devices"
     ],
     "jobsToBeDone": [
-      "Authenticate and access Media & Publishing",
+      "Authenticate and access Hotel Booking",
       "Review the overview and priority actions",
       "Create, update, and manage records",
-      "Browse headline feed, open article, and adjust typography",
-      "Editor adjusts top headline placement and Breaking ticker"
+      "Compare rooms, choose dates, and confirm a hotel reservation"
     ],
     "entities": [
       {
-        "name": "Article",
-        "description": "Published story with byline, hero media, and body",
-        "fields": [
-          "id",
-          "headline",
-          "author",
-          "section",
-          "publishedAt"
-        ]
-      },
-      {
-        "name": "Section",
-        "description": "Category vertical (e.g. Technology, Opinion)",
+        "name": "Hotel",
+        "description": "A hotel with location, amenities, and guest information",
         "fields": [
           "id",
           "name",
-          "slug",
-          "editor"
+          "location",
+          "amenities",
+          "rating"
         ]
       },
       {
-        "name": "Edition",
-        "description": "Curated daily or weekly bundle",
+        "name": "Room",
+        "description": "A room option with details, capacity, and availability",
         "fields": [
           "id",
-          "date",
-          "featuredArticles"
+          "hotelId",
+          "name",
+          "capacity",
+          "amenities",
+          "availability"
+        ]
+      },
+      {
+        "name": "Reservation",
+        "description": "A confirmed room reservation with dates and guest details",
+        "fields": [
+          "id",
+          "roomId",
+          "dates",
+          "guests",
+          "confirmationCode",
+          "status"
         ]
       }
     ],
     "workflows": [
       {
-        "id": "read-article",
-        "name": "Browse headline feed, open article, and adjust typography",
+        "id": "reserve-hotel-room",
+        "name": "Compare rooms, choose dates, and confirm a hotel reservation",
         "steps": [
-          "scan-feed",
-          "open-story",
-          "save-bookmark"
-        ]
-      },
-      {
-        "id": "curate-frontpage",
-        "name": "Editor adjusts top headline placement and Breaking ticker",
-        "steps": [
-          "drag-stories",
-          "set-breaking-flag",
-          "publish-edition"
+          "search-hotels",
+          "compare-room-details",
+          "choose-dates",
+          "confirm-reservation"
         ]
       }
     ],
-    "trustRequirement": 85,
+    "trustRequirement": 90,
     "informationComplexity": 65,
     "dataDensity": 60,
-    "collaborationLevel": 55,
-    "transactionCriticality": 40,
+    "collaborationLevel": 45,
+    "transactionCriticality": 90,
     "navigationComplexity": 60,
     "mobileImportance": 90,
     "likelyScreens": [
       {
-        "name": "Front Page Feed",
-        "screenType": "marketing",
-        "purpose": "Grid of hero top stories and section rivers",
+        "name": "Find a Stay",
+        "screenType": "search-explore",
+        "purpose": "Search boutique hotels by dates, amenities, and location",
         "jobs": [
-          "scan-breaking-news",
-          "choose-article"
+          "search-hotels",
+          "compare-availability"
         ],
         "required": true
       },
       {
-        "name": "Article Reader",
+        "name": "Room Details",
         "screenType": "detail-entity",
-        "purpose": "High-readability serif column with photo galleries and pullquotes",
+        "purpose": "Room details, amenities, local guidance, and cancellation terms",
         "jobs": [
-          "read-story",
-          "share"
+          "review-room",
+          "check-amenities"
         ],
         "required": true
       },
       {
-        "name": "Section Explorer",
-        "screenType": "index-list",
-        "purpose": "Archive by topic and author bylines",
+        "name": "Reservation Checkout",
+        "screenType": "checkout-transaction",
+        "purpose": "Review reservation dates, guest details, and clear payment terms",
         "jobs": [
-          "filter-by-topic",
-          "search-archives"
+          "review-reservation",
+          "confirm-booking"
         ],
-        "required": false
+        "required": true
       }
     ],
     "requiredCapabilities": [
-      "fast-lcp-typography",
-      "reading-progress-indicator",
-      "paywall-metering"
+      "availability-search",
+      "room-details",
+      "reservation-flow"
     ],
     "forbiddenPatterns": [
-      "aggressive-intrusive-interstitials",
-      "poor-dark-mode-contrast"
+      "surprise-resort-fees-at-checkout",
+      "missing-cancellation-terms"
     ],
     "constraints": {
       "accessibilityFloor": "AA",
@@ -150,8 +146,8 @@
       "forbiddenScreens": [],
       "requiredPatterns": [],
       "forbiddenPatterns": [
-        "aggressive-intrusive-interstitials",
-        "poor-dark-mode-contrast"
+        "surprise-resort-fees-at-checkout",
+        "missing-cancellation-terms"
       ]
     }
   },
@@ -196,7 +192,7 @@
     "surfacePersonality": "warm-vellum-paper"
   },
   "brand": {
-    "name": "MEDIA System"
+    "name": "Hotel Workspace"
   },
   "constraints": {
     "accessibilityFloor": "AA",
@@ -219,76 +215,73 @@
     "forbiddenScreens": [],
     "requiredPatterns": [],
     "forbiddenPatterns": [
-      "aggressive-intrusive-interstitials",
-      "poor-dark-mode-contrast"
+      "surprise-resort-fees-at-checkout",
+      "missing-cancellation-terms"
     ]
   },
   "screenGraph": {
-    "id": "graph-media-cxsom",
+    "id": "graph-travel-10cmt2t",
     "groups": [
       {
-        "id": "group-marketing",
-        "name": "Marketing",
+        "id": "group-app",
+        "name": "Application",
         "screens": [
           {
-            "id": "screen-marketing-home",
-            "name": "Front Page Feed",
-            "slug": "/",
-            "screenType": "marketing",
-            "purpose": "Grid of hero top stories and section rivers",
+            "id": "screen-find-a-stay",
+            "name": "Find a Stay",
+            "slug": "/find-a-stay",
+            "screenType": "search-explore",
+            "purpose": "Search boutique hotels by dates, amenities, and location",
             "jobs": [
-              "scan-breaking-news",
-              "choose-article"
+              "search-hotels",
+              "compare-availability"
             ],
             "required": true,
             "navigationVisibility": "primary",
             "importance": 85,
-            "expectedData": [],
+            "expectedData": [
+              "Hotel.id",
+              "Hotel.name",
+              "Hotel.location",
+              "Hotel.amenities",
+              "Hotel.rating"
+            ],
             "requiredRoles": [
-              "navigation",
-              "hero",
-              "value-proposition",
-              "conversion-cta",
-              "footer"
+              "search-header",
+              "facet-rail",
+              "results-grid"
             ],
             "optionalRoles": [
-              "trust-proof",
-              "product-demo",
-              "feature-grid",
-              "pricing-table",
-              "faq-accordion"
+              "recent-searches",
+              "active-filter-chips",
+              "empty-state"
             ],
             "deviceRelevance": [
               "desktop",
               "tablet",
               "mobile"
             ]
-          }
-        ]
-      },
-      {
-        "id": "group-app",
-        "name": "Application",
-        "screens": [
+          },
           {
-            "id": "screen-article-reader",
-            "name": "Article Reader",
-            "slug": "/articles/:id",
+            "id": "screen-room-details",
+            "name": "Room Details",
+            "slug": "/rooms/:id",
             "screenType": "detail-entity",
-            "purpose": "High-readability serif column with photo galleries and pullquotes",
+            "purpose": "Room details, amenities, local guidance, and cancellation terms",
             "jobs": [
-              "read-story",
-              "share"
+              "review-room",
+              "check-amenities"
             ],
             "required": true,
             "navigationVisibility": "secondary",
             "importance": 85,
             "expectedData": [
-              "Article.id",
-              "Article.headline",
-              "Article.author",
-              "Article.section",
-              "Article.publishedAt"
+              "Room.id",
+              "Room.hotelId",
+              "Room.name",
+              "Room.capacity",
+              "Room.amenities",
+              "Room.availability"
             ],
             "requiredRoles": [
               "entity-header",
@@ -306,36 +299,43 @@
               "tablet",
               "mobile"
             ]
-          },
+          }
+        ]
+      },
+      {
+        "id": "group-utility",
+        "name": "Tasks & support",
+        "screens": [
           {
-            "id": "screen-collection-index",
-            "name": "Section Explorer",
-            "slug": "/section-explorer",
-            "screenType": "index-list",
-            "purpose": "Archive by topic and author bylines",
+            "id": "screen-reservation-checkout",
+            "name": "Reservation Checkout",
+            "slug": "/reservation-checkout",
+            "screenType": "checkout-transaction",
+            "purpose": "Review reservation dates, guest details, and clear payment terms",
             "jobs": [
-              "filter-by-topic",
-              "search-archives"
+              "review-reservation",
+              "confirm-booking"
             ],
-            "required": false,
-            "navigationVisibility": "primary",
-            "importance": 60,
+            "required": true,
+            "navigationVisibility": "hidden",
+            "importance": 85,
             "expectedData": [
-              "Section.id",
-              "Section.name",
-              "Section.slug",
-              "Section.editor"
+              "Reservation.id",
+              "Reservation.roomId",
+              "Reservation.dates",
+              "Reservation.guests",
+              "Reservation.confirmationCode",
+              "Reservation.status"
             ],
             "requiredRoles": [
-              "index-header",
-              "filter-bar",
-              "data-table",
-              "pagination"
+              "order-summary",
+              "payment-fields",
+              "submit-button"
             ],
             "optionalRoles": [
-              "bulk-action-bar",
-              "view-mode-toggle",
-              "stats-summary"
+              "coupon-input",
+              "shipping-selector",
+              "security-trust-badges"
             ],
             "deviceRelevance": [
               "desktop",
@@ -348,182 +348,26 @@
     ],
     "edges": [
       {
-        "id": "edge-screen-marketing-home-to-screen-collection-index",
-        "fromScreenId": "screen-marketing-home",
-        "toScreenId": "screen-collection-index",
-        "label": "Open the product"
-      },
-      {
-        "id": "edge-screen-collection-index-to-screen-article-reader",
-        "fromScreenId": "screen-collection-index",
-        "toScreenId": "screen-article-reader",
-        "label": "Article Reader"
+        "id": "edge-screen-find-a-stay-to-screen-room-details",
+        "fromScreenId": "screen-find-a-stay",
+        "toScreenId": "screen-room-details",
+        "label": "Room Details"
       }
     ]
   },
   "screens": [
     {
-      "id": "screen-marketing-home",
-      "screenNodeId": "screen-marketing-home",
-      "name": "Front Page Feed",
-      "slug": "/",
+      "id": "screen-find-a-stay",
+      "screenNodeId": "screen-find-a-stay",
+      "name": "Find a Stay",
+      "slug": "/find-a-stay",
       "rootNode": {
-        "id": "root-screen-marketing-home",
-        "nodeType": "layout",
-        "semanticRole": "marketing-page",
-        "children": [
-          {
-            "id": "node-screen-marketing-home-navigation-1",
-            "nodeType": "layout",
-            "semanticRole": "navigation",
-            "resourceRef": {
-              "id": "res_shell_minimal_top_nav",
-              "slug": "minimal-top-nav",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Article Workspace",
-              "links": [
-                {
-                  "label": "Front Page Feed",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Section Explorer",
-                  "href": "#screen-collection-index"
-                }
-              ],
-              "orientation": "horizontal"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-hero-2",
-            "nodeType": "section",
-            "semanticRole": "hero",
-            "resourceRef": {
-              "id": "res_sec_editorial_hero",
-              "slug": "editorial-hero",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "eyebrow": "Example organisation · sample content",
-              "headline": "Deliver breaking journalism, compelling editorial reads, and immersive streaming",
-              "subheadline": "A workspace for readers, viewers, editors, and digital journalists.",
-              "primaryCta": {
-                "label": "Read stories",
-                "href": "#screen-marketing-home"
-              },
-              "secondaryCta": {
-                "label": "See how it works",
-                "href": "#screen-article-reader"
-              },
-              "note": "Example interface · replace sample data with your organisation"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-value-proposition-3",
-            "nodeType": "section",
-            "semanticRole": "value-proposition",
-            "resourceRef": {
-              "id": "res_sec_feature_bento",
-              "slug": "feature-bento",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "title": "Front Page Feed",
-              "items": [
-                {
-                  "title": "Article",
-                  "description": "Published story with byline, hero media, and body",
-                  "detail": "Example content"
-                },
-                {
-                  "title": "Section",
-                  "description": "Category vertical (e.g. Technology, Opinion)",
-                  "detail": "Example content"
-                },
-                {
-                  "title": "Edition",
-                  "description": "Curated daily or weekly bundle",
-                  "detail": "Example content"
-                }
-              ]
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-conversion-cta-4",
-            "nodeType": "section",
-            "semanticRole": "conversion-cta",
-            "resourceRef": {
-              "id": "res_sec_cta_minimal",
-              "slug": "cta-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "headline": "Deliver breaking journalism, compelling editorial reads, and immersive streaming",
-              "description": "A workspace for readers, viewers, editors, and digital journalists.",
-              "label": "Read stories",
-              "href": "#screen-marketing-home"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-footer-5",
-            "nodeType": "section",
-            "semanticRole": "footer",
-            "resourceRef": {
-              "id": "res_sec_footer_product",
-              "slug": "footer-product",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Article Workspace",
-              "description": "A workspace for readers, viewers, editors, and digital journalists.",
-              "links": [
-                {
-                  "label": "Front Page Feed",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Section Explorer",
-                  "href": "#screen-collection-index"
-                }
-              ]
-            }
-          }
-        ],
-        "slots": {},
-        "props": {
-          "layoutFamily": "tri-column-intelligence"
-        }
-      }
-    },
-    {
-      "id": "screen-article-reader",
-      "screenNodeId": "screen-article-reader",
-      "name": "Article Reader",
-      "slug": "/articles/:id",
-      "rootNode": {
-        "id": "root-screen-article-reader",
+        "id": "root-screen-find-a-stay",
         "nodeType": "layout",
         "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "node-screen-article-reader-navigation-1",
+            "id": "node-screen-find-a-stay-navigation-1",
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
@@ -535,74 +379,59 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "Article Workspace",
+              "brand": "Hotel Workspace",
               "links": [
                 {
-                  "label": "Front Page Feed",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Section Explorer",
-                  "href": "#screen-collection-index"
+                  "label": "Find a Stay",
+                  "href": "#screen-find-a-stay"
                 }
               ],
               "orientation": "vertical"
             }
           },
           {
-            "id": "container-screen-article-reader-canvas",
+            "id": "container-screen-find-a-stay-canvas",
             "nodeType": "layout",
             "semanticRole": "workspace-multi-pane",
             "children": [
               {
-                "id": "node-screen-article-reader-entity-header-2",
-                "nodeType": "section",
-                "semanticRole": "entity-header",
+                "id": "node-screen-find-a-stay-search-header-2",
+                "nodeType": "element",
+                "semanticRole": "search-header",
                 "resourceRef": {
-                  "id": "res_blk_entity_profile_header",
-                  "slug": "entity-profile-header",
+                  "id": "res_primitive_input",
+                  "slug": "input",
                   "version": "1.0.0"
                 },
                 "variant": "nocturne",
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Article Reader",
-                  "subtitle": "High-readability serif column with photo galleries and pullquotes",
-                  "badge": "EXAMPLE",
-                  "initials": "AW"
+                  "label": "Search stays",
+                  "helperText": "Example search only. Connect a booking service to search live availability.",
+                  "placeholder": "Search hotels, dates, and amenities",
+                  "disabled": false,
+                  "title": "Find a Stay"
                 }
               },
               {
-                "id": "node-screen-article-reader-detail-tabs-3",
-                "nodeType": "section",
-                "semanticRole": "detail-tabs",
+                "id": "node-screen-find-a-stay-facet-rail-3",
+                "nodeType": "block",
+                "semanticRole": "facet-rail",
                 "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
                   "version": "1.0.0"
                 },
                 "variant": "nocturne",
                 "children": [],
                 "slots": {},
-                "props": {
-                  "brand": "Article Workspace",
-                  "links": [
-                    {
-                      "label": "Front Page Feed",
-                      "href": "#screen-marketing-home"
-                    },
-                    {
-                      "label": "Section Explorer",
-                      "href": "#screen-collection-index"
-                    }
-                  ]
-                }
+                "props": {}
               },
               {
-                "id": "node-screen-article-reader-main-content-pane-4",
-                "nodeType": "section",
-                "semanticRole": "main-content-pane",
+                "id": "node-screen-find-a-stay-results-grid-4",
+                "nodeType": "block",
+                "semanticRole": "results-grid",
                 "resourceRef": {
                   "id": "res_blk_advanced_data_table",
                   "slug": "advanced-data-table",
@@ -612,28 +441,28 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Article Reader",
+                  "title": "Search results",
                   "rows": [
                     {
                       "id": 1,
-                      "name": "Example Article",
-                      "type": "Published story with byline, hero media, and body",
+                      "name": "Example Hotel",
+                      "type": "A hotel with location, amenities, and guest information",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
                     },
                     {
                       "id": 2,
-                      "name": "Example Section",
-                      "type": "Category vertical (e.g. Technology, Opinion)",
+                      "name": "Example Room",
+                      "type": "A room option with details, capacity, and availability",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
                     },
                     {
                       "id": 3,
-                      "name": "Example Edition",
-                      "type": "Curated daily or weekly bundle",
+                      "name": "Example Reservation",
+                      "type": "A confirmed room reservation with dates and guest details",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
@@ -645,25 +474,6 @@
                     "quality": "Data",
                     "status": "Status"
                   }
-                }
-              },
-              {
-                "id": "node-screen-article-reader-metadata-sidebar-5",
-                "nodeType": "section",
-                "semanticRole": "metadata-sidebar",
-                "resourceRef": {
-                  "id": "res_blk_entity_profile_header",
-                  "slug": "entity-profile-header",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "title": "Article Reader",
-                  "subtitle": "High-readability serif column with photo galleries and pullquotes",
-                  "badge": "EXAMPLE",
-                  "initials": "AW"
                 }
               }
             ],
@@ -680,17 +490,17 @@
       }
     },
     {
-      "id": "screen-collection-index",
-      "screenNodeId": "screen-collection-index",
-      "name": "Section Explorer",
-      "slug": "/section-explorer",
+      "id": "screen-room-details",
+      "screenNodeId": "screen-room-details",
+      "name": "Room Details",
+      "slug": "/rooms/:id",
       "rootNode": {
-        "id": "root-screen-collection-index",
+        "id": "root-screen-room-details",
         "nodeType": "layout",
         "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "node-screen-collection-index-navigation-1",
+            "id": "node-screen-room-details-navigation-1",
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
@@ -702,29 +512,25 @@
             "children": [],
             "slots": {},
             "props": {
-              "brand": "Article Workspace",
+              "brand": "Hotel Workspace",
               "links": [
                 {
-                  "label": "Front Page Feed",
-                  "href": "#screen-marketing-home"
-                },
-                {
-                  "label": "Section Explorer",
-                  "href": "#screen-collection-index"
+                  "label": "Find a Stay",
+                  "href": "#screen-find-a-stay"
                 }
               ],
               "orientation": "vertical"
             }
           },
           {
-            "id": "container-screen-collection-index-canvas",
+            "id": "container-screen-room-details-canvas",
             "nodeType": "layout",
             "semanticRole": "workspace-multi-pane",
             "children": [
               {
-                "id": "node-screen-collection-index-index-header-2",
-                "nodeType": "section",
-                "semanticRole": "index-header",
+                "id": "node-screen-room-details-entity-header-2",
+                "nodeType": "block",
+                "semanticRole": "entity-header",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
                   "slug": "entity-profile-header",
@@ -734,30 +540,38 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Section Explorer",
-                  "subtitle": "Archive by topic and author bylines",
+                  "title": "Room Details",
+                  "subtitle": "Room details, amenities, local guidance, and cancellation terms",
                   "badge": "EXAMPLE",
-                  "initials": "AW"
+                  "initials": "HW"
                 }
               },
               {
-                "id": "node-screen-collection-index-filter-bar-3",
-                "nodeType": "section",
-                "semanticRole": "filter-bar",
+                "id": "node-screen-room-details-detail-tabs-3",
+                "nodeType": "block",
+                "semanticRole": "detail-tabs",
                 "resourceRef": {
-                  "id": "res_blk_filter_builder",
-                  "slug": "filter-builder",
+                  "id": "res_shell_minimal_top_nav",
+                  "slug": "minimal-top-nav",
                   "version": "1.0.0"
                 },
                 "variant": "nocturne",
                 "children": [],
                 "slots": {},
-                "props": {}
+                "props": {
+                  "brand": "Hotel Workspace",
+                  "links": [
+                    {
+                      "label": "Find a Stay",
+                      "href": "#screen-find-a-stay"
+                    }
+                  ]
+                }
               },
               {
-                "id": "node-screen-collection-index-data-table-4",
-                "nodeType": "section",
-                "semanticRole": "data-table",
+                "id": "node-screen-room-details-main-content-pane-4",
+                "nodeType": "block",
+                "semanticRole": "main-content-pane",
                 "resourceRef": {
                   "id": "res_blk_advanced_data_table",
                   "slug": "advanced-data-table",
@@ -767,28 +581,28 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "title": "Section Explorer",
+                  "title": "Room Details",
                   "rows": [
                     {
                       "id": 1,
-                      "name": "Example Article",
-                      "type": "Published story with byline, hero media, and body",
+                      "name": "Example Hotel",
+                      "type": "A hotel with location, amenities, and guest information",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
                     },
                     {
                       "id": 2,
-                      "name": "Example Section",
-                      "type": "Category vertical (e.g. Technology, Opinion)",
+                      "name": "Example Room",
+                      "type": "A room option with details, capacity, and availability",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
                     },
                     {
                       "id": 3,
-                      "name": "Example Edition",
-                      "type": "Curated daily or weekly bundle",
+                      "name": "Example Reservation",
+                      "type": "A confirmed room reservation with dates and guest details",
                       "quality": 0,
                       "status": "Sample",
                       "displayValue": "Details not connected"
@@ -803,9 +617,131 @@
                 }
               },
               {
-                "id": "node-screen-collection-index-pagination-5",
-                "nodeType": "section",
-                "semanticRole": "pagination",
+                "id": "node-screen-room-details-metadata-sidebar-5",
+                "nodeType": "block",
+                "semanticRole": "metadata-sidebar",
+                "resourceRef": {
+                  "id": "res_blk_entity_profile_header",
+                  "slug": "entity-profile-header",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Room Details",
+                  "subtitle": "Room details, amenities, local guidance, and cancellation terms",
+                  "badge": "EXAMPLE",
+                  "initials": "HW"
+                }
+              }
+            ],
+            "slots": {},
+            "props": {
+              "layoutFamily": "tri-column-intelligence"
+            }
+          }
+        ],
+        "slots": {},
+        "props": {
+          "layoutVariant": "split-dock"
+        }
+      }
+    },
+    {
+      "id": "screen-reservation-checkout",
+      "screenNodeId": "screen-reservation-checkout",
+      "name": "Reservation Checkout",
+      "slug": "/reservation-checkout",
+      "rootNode": {
+        "id": "root-screen-reservation-checkout",
+        "nodeType": "layout",
+        "semanticRole": "workspace-dock-shell",
+        "children": [
+          {
+            "id": "node-screen-reservation-checkout-navigation-1",
+            "nodeType": "layout",
+            "semanticRole": "navigation",
+            "resourceRef": {
+              "id": "res_shell_minimal_top_nav",
+              "slug": "minimal-top-nav",
+              "version": "1.0.0"
+            },
+            "variant": "nocturne",
+            "children": [],
+            "slots": {},
+            "props": {
+              "brand": "Hotel Workspace",
+              "links": [
+                {
+                  "label": "Find a Stay",
+                  "href": "#screen-find-a-stay"
+                }
+              ],
+              "orientation": "vertical"
+            }
+          },
+          {
+            "id": "container-screen-reservation-checkout-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-reservation-checkout-order-summary-2",
+                "nodeType": "block",
+                "semanticRole": "order-summary",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Order summary · example",
+                  "rows": [
+                    {
+                      "id": 1,
+                      "name": "Example item",
+                      "type": "Sample cart item",
+                      "quality": 0,
+                      "displayValue": "Price from your catalogue",
+                      "status": "Example"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Item",
+                    "type": "Details",
+                    "quality": "Price",
+                    "status": "State"
+                  }
+                }
+              },
+              {
+                "id": "node-screen-reservation-checkout-payment-fields-3",
+                "nodeType": "element",
+                "semanticRole": "payment-fields",
+                "resourceRef": {
+                  "id": "res_primitive_input",
+                  "slug": "input",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Payment provider",
+                  "helperText": "Preview only. This field does not collect or store payment details.",
+                  "placeholder": "Connect a provider to enable checkout",
+                  "disabled": true,
+                  "title": "A payment provider is required before checkout can be enabled."
+                }
+              },
+              {
+                "id": "node-screen-reservation-checkout-submit-button-4",
+                "nodeType": "element",
+                "semanticRole": "submit-button",
                 "resourceRef": {
                   "id": "res_primitive_button_01",
                   "slug": "button",
@@ -815,9 +751,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "children": "Continue",
-                  "disabled": false,
-                  "title": "Section Explorer"
+                  "children": "Payment provider required",
+                  "disabled": true,
+                  "title": "Connect a payment provider before enabling payment submission.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
                 }
               }
             ],
@@ -838,18 +775,14 @@
     "model": "rail",
     "primaryItems": [
       {
-        "label": "Front Page Feed",
-        "targetScreenId": "screen-marketing-home"
-      },
-      {
-        "label": "Section Explorer",
-        "targetScreenId": "screen-collection-index"
+        "label": "Find a Stay",
+        "targetScreenId": "screen-find-a-stay"
       }
     ],
     "secondaryItems": [
       {
-        "label": "Article Reader",
-        "targetScreenId": "screen-article-reader"
+        "label": "Room Details",
+        "targetScreenId": "screen-room-details"
       }
     ]
   },

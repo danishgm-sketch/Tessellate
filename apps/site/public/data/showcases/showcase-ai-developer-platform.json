@@ -196,7 +196,7 @@
     "surfacePersonality": "luminous-glow"
   },
   "brand": {
-    "name": "AI System"
+    "name": "Prompt Workspace"
   },
   "constraints": {
     "accessibilityFloor": "AA",
@@ -327,7 +327,6 @@
               "Prompt.createdAt"
             ],
             "requiredRoles": [
-              "settings-nav",
               "settings-form",
               "save-footer"
             ],
@@ -408,38 +407,8 @@
             "semanticRole": "workspace-multi-pane",
             "children": [
               {
-                "id": "node-screen-workspace-editor-toolbar-2",
-                "nodeType": "section",
-                "semanticRole": "editor-toolbar",
-                "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "brand": "Prompt Workspace",
-                  "links": [
-                    {
-                      "label": "Prompt Canvas",
-                      "href": "#screen-workspace"
-                    },
-                    {
-                      "label": "History & Generations",
-                      "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Model & API Settings",
-                      "href": "#screen-settings"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-workspace-canvas-viewport-3",
-                "nodeType": "section",
+                "id": "node-screen-workspace-canvas-viewport-2",
+                "nodeType": "block",
                 "semanticRole": "canvas-viewport",
                 "resourceRef": {
                   "id": "res_blk_kanban_board",
@@ -455,25 +424,25 @@
                     {
                       "title": "Formulate prompt and inspect generation",
                       "tasks": [
-                        "compose-prompt",
-                        "stream-response",
-                        "iterate-output"
+                        "Compose prompt",
+                        "Stream response",
+                        "Iterate output"
                       ]
                     },
                     {
                       "title": "Equip agent with tools and memory",
                       "tasks": [
-                        "define-role",
-                        "connect-tools",
-                        "test-run"
+                        "Define role",
+                        "Connect tools",
+                        "Test run"
                       ]
                     }
                   ]
                 }
               },
               {
-                "id": "node-screen-workspace-inspector-panel-4",
-                "nodeType": "section",
+                "id": "node-screen-workspace-inspector-panel-3",
+                "nodeType": "block",
                 "semanticRole": "inspector-panel",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -551,7 +520,7 @@
             "children": [
               {
                 "id": "node-screen-collection-index-index-header-2",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "index-header",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -570,7 +539,7 @@
               },
               {
                 "id": "node-screen-collection-index-filter-bar-3",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "filter-bar",
                 "resourceRef": {
                   "id": "res_blk_filter_builder",
@@ -584,7 +553,7 @@
               },
               {
                 "id": "node-screen-collection-index-data-table-4",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "data-table",
                 "resourceRef": {
                   "id": "res_blk_advanced_data_table",
@@ -632,7 +601,7 @@
               },
               {
                 "id": "node-screen-collection-index-pagination-5",
-                "nodeType": "section",
+                "nodeType": "element",
                 "semanticRole": "pagination",
                 "resourceRef": {
                   "id": "res_primitive_button_01",
@@ -643,9 +612,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "children": "Continue",
-                  "disabled": false,
-                  "title": "History & Generations"
+                  "children": "Paging unavailable",
+                  "disabled": true,
+                  "title": "Connect a paging data source before navigating additional records.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
                 }
               }
             ],
@@ -708,38 +678,8 @@
             "semanticRole": "workspace-multi-pane",
             "children": [
               {
-                "id": "node-screen-settings-settings-nav-2",
-                "nodeType": "section",
-                "semanticRole": "settings-nav",
-                "resourceRef": {
-                  "id": "res_shell_minimal_top_nav",
-                  "slug": "minimal-top-nav",
-                  "version": "1.0.0"
-                },
-                "variant": "nocturne",
-                "children": [],
-                "slots": {},
-                "props": {
-                  "brand": "Prompt Workspace",
-                  "links": [
-                    {
-                      "label": "Prompt Canvas",
-                      "href": "#screen-workspace"
-                    },
-                    {
-                      "label": "History & Generations",
-                      "href": "#screen-collection-index"
-                    },
-                    {
-                      "label": "Model & API Settings",
-                      "href": "#screen-settings"
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "node-screen-settings-settings-form-3",
-                "nodeType": "section",
+                "id": "node-screen-settings-settings-form-2",
+                "nodeType": "element",
                 "semanticRole": "settings-form",
                 "resourceRef": {
                   "id": "res_primitive_input",
@@ -757,8 +697,8 @@
                 }
               },
               {
-                "id": "node-screen-settings-save-footer-4",
-                "nodeType": "section",
+                "id": "node-screen-settings-save-footer-3",
+                "nodeType": "component",
                 "semanticRole": "save-footer",
                 "resourceRef": {
                   "id": "res_mot_magnetic_button",
@@ -769,9 +709,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "label": "Save preferences",
+                  "children": "Save changes",
                   "disabled": true,
-                  "title": "Connect the exported application to your backend to enable this action."
+                  "title": "Connect the exported application to your backend to enable this action.",
+                  "helperText": "Connect persistence to save changes."
                 }
               }
             ],

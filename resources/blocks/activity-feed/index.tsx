@@ -16,14 +16,19 @@ export function ActivityFeed({ variant = 'quiet' }: ActivityFeedProps) {
   }
 
   const events = [
-    { user: 'Elena R.', action: 'published revision 1.0.4', time: '12m ago' },
-    { user: 'Agent Antigravity', action: 'validated 72 marketing sections', time: '44m ago' },
-    { user: 'Marcus V.', action: 'merged pull request #142', time: '2h ago' },
+    { user: 'Example teammate', action: 'published a project update', time: '12m ago' },
+    { user: 'Example agent', action: 'reviewed an onboarding section', time: '44m ago' },
+    { user: 'Example collaborator', action: 'updated a team task', time: '2h ago' },
   ];
 
   return (
     <div className={`w-full p-6 rounded-xl border transition-colors ${bg}`}>
-      <h3 className="text-sm font-semibold mb-4">Workspace Activity Feed</h3>
+      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+        <h3 className="text-sm font-semibold">Workspace Activity Feed</h3>
+        <span className="rounded-full bg-neutral-100 px-2 py-1 font-mono text-[10px] text-neutral-600 dark:bg-neutral-800 dark:text-neutral-300">
+          Sample activity
+        </span>
+      </div>
       <div className="space-y-4">
         {events.map((e) => (
           <div key={e.user + e.time} className="flex items-center justify-between text-xs py-2 border-b border-neutral-100 dark:border-neutral-800 last:border-b-0">

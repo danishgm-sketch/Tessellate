@@ -1,3 +1,3 @@
 # AI Model Mode Switcher
 
-Model and inference configuration switcher supporting BYO credentials and reasoning mode toggles.
+Local example mode selector. It does not connect to an AI provider or configure credentials.

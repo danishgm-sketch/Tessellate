@@ -4,7 +4,10 @@ export type ButtonVariant = 'quiet' | 'expressive' | 'nocturne';
 export type ButtonIntent = 'primary' | 'secondary' | 'ghost' | 'danger';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends Omit<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  'formAction'
+> {
   variant?: ButtonVariant;
   intent?: ButtonIntent;
   size?: ButtonSize;
@@ -12,6 +15,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   iconPosition?: 'left' | 'right';
   children?: React.ReactNode;
   label?: string;
+  helperText?: string;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -24,6 +28,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       iconPosition = 'left',
       children,
       label,
+      helperText,
       className = '',
       disabled,
       type = 'button',
@@ -31,6 +36,12 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
+    // This primitive does not forward caller-supplied submit destinations.
+    const { formAction: ignoredFormAction, ...safeRest } = rest as typeof rest & {
+      formAction?: string;
+    };
+    void ignoredFormAction;
+    const helperId = React.useId();
     // Base interactive styles
     const baseClasses =
       'inline-flex items-center justify-center font-medium select-none transition-all duration-150 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-40 cursor-pointer active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100';
@@ -107,18 +118,30 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       }
     }
 
-    return (
+    const button = (
       <button
         ref={ref}
         type={type}
         disabled={disabled}
+        aria-describedby={disabled && helperText ? helperId : undefined}
         className={`${baseClasses} ${sizeClasses} ${colorClasses} ${className}`}
-        {...rest}
+        {...safeRest}
       >
         {icon && iconPosition === 'left' && <span className="inline-flex shrink-0">{icon}</span>}
         {children ?? label ?? 'Example action'}
         {icon && iconPosition === 'right' && <span className="inline-flex shrink-0">{icon}</span>}
       </button>
+    );
+
+    if (!disabled || !helperText) return button;
+
+    return (
+      <span className="inline-flex flex-col items-start gap-1">
+        {button}
+        <span id={helperId} className="text-xs text-[var(--tess-ink-muted,#62666F)]">
+          {helperText}
+        </span>
+      </span>
     );
   }
 );

@@ -38,7 +38,7 @@ export function SocialProofHero({
             ))}
           </div>
           <span className={`text-xs px-3 py-1 rounded-full ${badge}`}>
-            ★ {rating}
+            {rating}
           </span>
         </div>
 

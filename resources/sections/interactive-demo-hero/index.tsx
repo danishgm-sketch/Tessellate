@@ -11,7 +11,7 @@ export interface InteractiveDemoHeroProps {
 export function InteractiveDemoHero({
   variant = 'quiet',
   headline = 'Interactive composition at your fingertips.',
-  subheadline = 'Toggle tokens directly in this hero to observe real-time DOM normalisation.',
+  subheadline = 'Change this sample card’s spacing and color theme with the controls below.',
 }: InteractiveDemoHeroProps) {
   const [scale, setScale] = useState<'compact' | 'normal' | 'relaxed'>('normal');
   const [activeTheme, setActiveTheme] = useState<'light' | 'dark'>('light');
@@ -69,10 +69,10 @@ export function InteractiveDemoHero({
         } ${scale === 'compact' ? 'space-y-2' : scale === 'relaxed' ? 'space-y-6' : 'space-y-4'}`}>
           <div className="flex flex-wrap items-center justify-between gap-2">
             <span className="font-semibold text-sm">Preview Workspace</span>
-            <span className="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-600 font-mono">200 OK</span>
+            <span className="text-xs px-2 py-0.5 rounded bg-neutral-100 text-neutral-700 font-mono">PREVIEW</span>
           </div>
           <p className="text-xs opacity-75">
-            Active configuration: {scale} scale across {activeTheme} theme tokens. Zero styling leakage detected.
+            Sample view: {scale} spacing in {activeTheme} theme. These controls affect this card only.
           </p>
         </div>
       </div>

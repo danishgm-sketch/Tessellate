@@ -5,7 +5,7 @@
   "name": "CTA Product Preview",
   "version": "1.0.0",
   "status": "verified",
-  "description": "High-impact banner featuring a peek into the application interface with join action.",
+  "description": "Call-to-action banner with an illustrative workspace preview and a configurable composition link.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -86,7 +86,9 @@
   },
   "preview": {
     "component": "CtaProductPreviewPreview",
-    "defaultProps": {},
+    "defaultProps": {
+      "composeHref": "/compose"
+    },
     "viewport": 1440
   },
   "slots": [
@@ -130,7 +132,7 @@
     "marketing"
   ],
   "intent": {
-    "summary": "High-impact banner featuring a peek into the application interface with join action.",
+    "summary": "Call-to-action banner with an illustrative workspace preview and a configurable composition link.",
     "idealFor": [
       "Visually compelling product teasers right before footer"
     ],
@@ -138,12 +140,15 @@
       "Pure text legal sections"
     ],
     "jobs": [
-      "Show preview of the workspace to entice final clickthrough"
+      "Show an example workspace preview and direct visitors to a configured composition flow"
     ],
     "contentRequirements": [
-      "Clear hierarchy, responsive layout, accessible typography"
+      "Clear hierarchy, responsive layout, accessible typography",
+      "Disclose sample preview data and connect the call to action to a real destination"
     ],
     "notes": [
+      "Provide composeHref to enable the composition link",
+      "The preview is illustrative and is not connected to a project",
       "Responsive stacking down to 360px with reduced-motion support"
     ]
   },
@@ -209,12 +214,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +242,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

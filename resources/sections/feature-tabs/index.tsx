@@ -23,7 +23,7 @@ export function FeatureTabs({ variant = 'quiet' }: FeatureTabsProps) {
   return (
     <section className={`relative w-full py-20 px-6 sm:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-5xl mx-auto flex flex-col items-center">
-        <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-center mb-8">One System. Three Audiences.</h2>
+        <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-center mb-8">One system for people and tools.</h2>
 
         <div className="flex max-w-full flex-wrap justify-center gap-2 p-1.5 rounded-xl bg-neutral-200/60 dark:bg-neutral-800 mb-12">
           {(['design', 'code', 'agents'] as const).map((tab) => (
@@ -31,6 +31,7 @@ export function FeatureTabs({ variant = 'quiet' }: FeatureTabsProps) {
               key={tab}
               type="button"
               onClick={() => setActiveTab(tab)}
+              aria-pressed={activeTab === tab}
               className={`px-3 sm:px-6 py-2 rounded-lg text-xs font-semibold capitalize transition-all ${
                 activeTab === tab ? tabActive : 'text-neutral-600 dark:text-neutral-400 hover:text-neutral-900'
               }`}
@@ -43,20 +44,20 @@ export function FeatureTabs({ variant = 'quiet' }: FeatureTabsProps) {
         <div className="w-full p-8 sm:p-12 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#151921] text-center max-w-3xl shadow-sm">
           {activeTab === 'design' && (
             <div>
-              <h3 className="text-xl font-bold mb-2">Designers get mathematical token guardrails.</h3>
-              <p className="text-xs sm:text-sm opacity-75 max-w-lg mx-auto">No drift. Curvature, spacing, and density behave as systemic invariants.</p>
+              <h3 className="text-xl font-bold mb-2">Designers adjust a shared set of style controls.</h3>
+              <p className="text-xs sm:text-sm opacity-75 max-w-lg mx-auto">Change Design DNA values and review how the selected project responds.</p>
             </div>
           )}
           {activeTab === 'code' && (
             <div>
               <h3 className="text-xl font-bold mb-2">Engineers get raw React & Tailwind source code.</h3>
-              <p className="text-xs sm:text-sm opacity-75 max-w-lg mx-auto">Zero obfuscated wrapper packages. You own the component tree completely.</p>
+              <p className="text-xs sm:text-sm opacity-75 max-w-lg mx-auto">Exported React source can be reviewed and adapted in your own project.</p>
             </div>
           )}
           {activeTab === 'agents' && (
             <div>
-              <h3 className="text-xl font-bold mb-2">Autonomous agents get schemas and MCP tools.</h3>
-              <p className="text-xs sm:text-sm opacity-75 max-w-lg mx-auto">Structured JSON manifests let LLMs compose verified UIs without guesswork.</p>
+              <h3 className="text-xl font-bold mb-2">Agents can use schemas and MCP tools.</h3>
+              <p className="text-xs sm:text-sm opacity-75 max-w-lg mx-auto">Agents can read project manifests and use MCP tools; review generated output before relying on it.</p>
             </div>
           )}
         </div>

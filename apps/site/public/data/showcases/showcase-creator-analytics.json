@@ -198,7 +198,7 @@
     "surfacePersonality": "gradient-accented-cards"
   },
   "brand": {
-    "name": "ANALYTICS System"
+    "name": "Metric Workspace"
   },
   "constraints": {
     "accessibilityFloor": "AA",
@@ -408,7 +408,7 @@
             "children": [
               {
                 "id": "node-screen-overview-overview-header-2",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "overview-header",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -427,7 +427,7 @@
               },
               {
                 "id": "node-screen-overview-metric-cards-3",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "metric-cards",
                 "resourceRef": {
                   "id": "res_blk_dashboard_kpi_grid",
@@ -460,7 +460,7 @@
               },
               {
                 "id": "node-screen-overview-activity-feed-4",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "activity-feed",
                 "resourceRef": {
                   "id": "res_blk_timeline",
@@ -547,7 +547,7 @@
             "children": [
               {
                 "id": "node-screen-metric-explorer-date-range-picker-2",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "date-range-picker",
                 "resourceRef": {
                   "id": "res_blk_filter_builder",
@@ -561,7 +561,7 @@
               },
               {
                 "id": "node-screen-metric-explorer-chart-canvas-3",
-                "nodeType": "section",
+                "nodeType": "component",
                 "semanticRole": "chart-canvas",
                 "resourceRef": {
                   "id": "res_dat_time_series_chart",
@@ -575,7 +575,7 @@
               },
               {
                 "id": "node-screen-metric-explorer-summary-kpis-4",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "summary-kpis",
                 "resourceRef": {
                   "id": "res_blk_dashboard_kpi_grid",
@@ -667,7 +667,7 @@
             "children": [
               {
                 "id": "node-screen-collection-index-index-header-2",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "index-header",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -686,7 +686,7 @@
               },
               {
                 "id": "node-screen-collection-index-filter-bar-3",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "filter-bar",
                 "resourceRef": {
                   "id": "res_blk_filter_builder",
@@ -700,7 +700,7 @@
               },
               {
                 "id": "node-screen-collection-index-data-table-4",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "data-table",
                 "resourceRef": {
                   "id": "res_blk_advanced_data_table",
@@ -748,7 +748,7 @@
               },
               {
                 "id": "node-screen-collection-index-pagination-5",
-                "nodeType": "section",
+                "nodeType": "element",
                 "semanticRole": "pagination",
                 "resourceRef": {
                   "id": "res_primitive_button_01",
@@ -759,9 +759,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "children": "Continue",
-                  "disabled": false,
-                  "title": "Reports Library"
+                  "children": "Paging unavailable",
+                  "disabled": true,
+                  "title": "Connect a paging data source before navigating additional records.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
                 }
               }
             ],

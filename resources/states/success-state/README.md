@@ -1,3 +1,3 @@
 # Success State
 
-Completed transaction confirmation panel with verified artifact links.
+Completion message with an optional action. The default action is disabled until the host supplies an artifact viewer callback.

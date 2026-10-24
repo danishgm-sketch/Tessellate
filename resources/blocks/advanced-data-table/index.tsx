@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 export type AdvancedDataTableVariant = 'quiet' | 'expressive' | 'nocturne';
 
@@ -23,6 +23,7 @@ export function AdvancedDataTable({
   rows: suppliedRows,
   columnLabels = { name: 'Name', type: 'Type', quality: 'Progress', status: 'Status' },
 }: AdvancedDataTableProps) {
+  const tableId = useId();
   const [selected, setSelected] = useState<number[]>([]);
   const [query, setQuery] = useState('');
 
@@ -60,6 +61,8 @@ export function AdvancedDataTable({
           {title} · {selected.length} selected
         </span>
         <input
+          id={`${tableId}-filter`}
+          name={`${tableId}-filter`}
           aria-label={`Filter ${title}`}
           value={query}
           onChange={(event) => setQuery(event.target.value)}
@@ -92,6 +95,8 @@ export function AdvancedDataTable({
                   <td className="p-3">
                     <input
                       type="checkbox"
+                      id={`${tableId}-desktop-row-${r.id}`}
+                      name={`${tableId}-selected-records`}
                       aria-label={`Select ${r.name}`}
                       checked={selected.includes(r.id)}
                       onChange={() => toggle(r.id)}
@@ -147,6 +152,8 @@ export function AdvancedDataTable({
                 <div className="flex min-w-0 items-start gap-3">
                   <input
                     type="checkbox"
+                    id={`${tableId}-mobile-row-${row.id}`}
+                    name={`${tableId}-selected-records`}
                     aria-label={`Select ${row.name}`}
                     checked={selected.includes(row.id)}
                     onChange={() => toggle(row.id)}

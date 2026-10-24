@@ -227,7 +227,7 @@
     "surfacePersonality": "obsidian-subtle-borders"
   },
   "brand": {
-    "name": "FINTECH System"
+    "name": "Market Workspace"
   },
   "constraints": {
     "accessibilityFloor": "AA",
@@ -498,7 +498,7 @@
             "children": [
               {
                 "id": "node-screen-overview-overview-header-2",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "overview-header",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -517,7 +517,7 @@
               },
               {
                 "id": "node-screen-overview-metric-cards-3",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "metric-cards",
                 "resourceRef": {
                   "id": "res_blk_dashboard_kpi_grid",
@@ -550,7 +550,7 @@
               },
               {
                 "id": "node-screen-overview-activity-feed-4",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "activity-feed",
                 "resourceRef": {
                   "id": "res_blk_timeline",
@@ -646,7 +646,7 @@
             "children": [
               {
                 "id": "node-screen-collection-index-index-header-2",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "index-header",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -665,7 +665,7 @@
               },
               {
                 "id": "node-screen-collection-index-filter-bar-3",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "filter-bar",
                 "resourceRef": {
                   "id": "res_blk_filter_builder",
@@ -679,7 +679,7 @@
               },
               {
                 "id": "node-screen-collection-index-data-table-4",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "data-table",
                 "resourceRef": {
                   "id": "res_blk_advanced_data_table",
@@ -727,7 +727,7 @@
               },
               {
                 "id": "node-screen-collection-index-pagination-5",
-                "nodeType": "section",
+                "nodeType": "element",
                 "semanticRole": "pagination",
                 "resourceRef": {
                   "id": "res_primitive_button_01",
@@ -738,9 +738,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "children": "Continue",
-                  "disabled": false,
-                  "title": "Order Book"
+                  "children": "Paging unavailable",
+                  "disabled": true,
+                  "title": "Connect a paging data source before navigating additional records.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
                 }
               }
             ],
@@ -808,7 +809,7 @@
             "children": [
               {
                 "id": "node-screen-positions-and-risk-overview-header-2",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "overview-header",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -827,7 +828,7 @@
               },
               {
                 "id": "node-screen-positions-and-risk-metric-cards-3",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "metric-cards",
                 "resourceRef": {
                   "id": "res_blk_dashboard_kpi_grid",
@@ -860,7 +861,7 @@
               },
               {
                 "id": "node-screen-positions-and-risk-activity-feed-4",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "activity-feed",
                 "resourceRef": {
                   "id": "res_blk_timeline",
@@ -956,7 +957,7 @@
             "children": [
               {
                 "id": "node-screen-trade-history-index-header-2",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "index-header",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -975,7 +976,7 @@
               },
               {
                 "id": "node-screen-trade-history-filter-bar-3",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "filter-bar",
                 "resourceRef": {
                   "id": "res_blk_filter_builder",
@@ -989,7 +990,7 @@
               },
               {
                 "id": "node-screen-trade-history-data-table-4",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "data-table",
                 "resourceRef": {
                   "id": "res_blk_advanced_data_table",
@@ -1037,7 +1038,7 @@
               },
               {
                 "id": "node-screen-trade-history-pagination-5",
-                "nodeType": "section",
+                "nodeType": "element",
                 "semanticRole": "pagination",
                 "resourceRef": {
                   "id": "res_primitive_button_01",
@@ -1048,9 +1049,10 @@
                 "children": [],
                 "slots": {},
                 "props": {
-                  "children": "Continue",
-                  "disabled": false,
-                  "title": "Trade History"
+                  "children": "Paging unavailable",
+                  "disabled": true,
+                  "title": "Connect a paging data source before navigating additional records.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
                 }
               }
             ],

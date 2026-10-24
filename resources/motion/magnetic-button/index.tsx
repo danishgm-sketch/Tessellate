@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 
 export type MagneticButtonVariant = 'quiet' | 'expressive' | 'nocturne';
 
@@ -6,10 +6,22 @@ export interface MagneticButtonProps {
   variant?: MagneticButtonVariant;
   children?: React.ReactNode;
   onAction?: () => void;
+  disabled?: boolean;
+  title?: string;
+  helperText?: string;
 }
 
-export function MagneticButton({ variant = 'quiet', children = 'Explore Interface System →', onAction }: MagneticButtonProps) {
+export function MagneticButton({
+  variant = 'quiet',
+  children = 'Explore Interface System →',
+  onAction,
+  disabled = false,
+  title,
+  helperText,
+}: MagneticButtonProps) {
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const actionHelpId = useId();
+  const isDisabled = disabled || !onAction;
 
   const btnClass =
     variant === 'nocturne'
@@ -32,12 +44,13 @@ export function MagneticButton({ variant = 'quiet', children = 'Explore Interfac
   };
 
   return (
-    <div className="p-8 flex items-center justify-center">
+    <div className="p-8 flex flex-col items-center justify-center gap-2">
       <button
         type="button"
         onClick={onAction}
-        disabled={!onAction}
-        aria-describedby={!onAction ? 'magnetic-button-action-help' : undefined}
+        disabled={isDisabled}
+        title={title}
+        aria-describedby={isDisabled ? actionHelpId : undefined}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         style={{ transform: `translate3d(${offset.x}px, ${offset.y}px, 0)` }}
@@ -45,7 +58,11 @@ export function MagneticButton({ variant = 'quiet', children = 'Explore Interfac
       >
         {children}
       </button>
-      {!onAction && <span id="magnetic-button-action-help" className="sr-only">Connect an action before enabling this button.</span>}
+      {isDisabled && (
+        <span id={actionHelpId} className={helperText ? 'text-xs text-[var(--tess-ink-muted,#62666F)]' : 'sr-only'}>
+          {helperText ?? 'Connect an action before enabling this button.'}
+        </span>
+      )}
     </div>
   );
 }

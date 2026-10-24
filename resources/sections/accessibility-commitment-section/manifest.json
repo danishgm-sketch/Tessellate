@@ -5,7 +5,7 @@
   "name": "Accessibility Commitment Section",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Formal WCAG 2.2 AA compliance manifesto with automated audit guarantees.",
+  "description": "Section template for presenting accessibility goals and inviting checks of the implemented experience.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -17,8 +17,8 @@
     "accessibility"
   ],
   "purposes": [
-    "Inclusion commitment",
-    "Compliance guarantee"
+    "Accessibility goals",
+    "Inclusion commitment"
   ],
   "productArchetypes": [
     {
@@ -130,15 +130,15 @@
     "keyboard"
   ],
   "intent": {
-    "summary": "Formal WCAG 2.2 AA compliance manifesto with automated audit guarantees.",
+    "summary": "Section template for presenting accessibility goals and inviting checks of the implemented experience.",
     "idealFor": [
-      "Demonstrating non-negotiable accessibility quality standards"
+      "Explaining accessibility goals and the checks a team plans to perform"
     ],
     "avoidFor": [
       "Pages where a11y has not been audited"
     ],
     "jobs": [
-      "Explain WCAG 2.2 AA conformance and keyboard guarantees"
+      "Describe keyboard, contrast, and reduced-motion goals without claiming conformance"
     ],
     "contentRequirements": [
       "Clear hierarchy, responsive layout, accessible typography"
@@ -209,12 +209,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -237,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

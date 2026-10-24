@@ -13,43 +13,64 @@ export function AISourceCitations({ variant = 'quiet' }: AISourceCitationsProps)
     variant === 'nocturne'
       ? 'bg-[#0B0D10] border-[#2E3440] text-white'
       : variant === 'expressive'
-      ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'
-      : 'bg-white border-neutral-200 text-neutral-900';
+        ? 'bg-white border-[#D9D6CF] text-neutral-900 shadow-sm'
+        : 'bg-white border-neutral-200 text-neutral-900';
 
   const sources = [
-    { id: 1, title: 'DESIGN_SYSTEM.md', path: 'docs/DESIGN_SYSTEM.md#L45', quote: 'Nocturne palette mandates #0B0D10 canvas and minimum 4.5:1 text contrast.' },
-    { id: 2, title: 'WORKBENCH_SPEC.md', path: 'docs/WORKBENCH_SPEC.md#L112', quote: 'Workbench state persists strictly in IndexedDB with zero cloud syncing required.' },
-    { id: 3, title: 'DATA_CONTRACTS.md', path: 'docs/DATA_CONTRACTS.md#L88', quote: 'ResourceManifest schema enforces strict provenance, licensing, and 0 undeclared deps.' },
+    {
+      id: 1,
+      title: 'Example product brief',
+      path: 'example/product-brief.md#overview',
+      quote: 'Example excerpt: teams need a clear place to review the product brief.',
+    },
+    {
+      id: 2,
+      title: 'Example research notes',
+      path: 'example/research-notes.md#finding-1',
+      quote: 'Example excerpt: users asked for a simpler way to compare options.',
+    },
+    {
+      id: 3,
+      title: 'Example design review',
+      path: 'example/design-review.md#navigation',
+      quote: 'Example excerpt: keep the primary navigation visible on small screens.',
+    },
   ];
 
   return (
     <div className={`w-full p-5 rounded-xl border flex flex-col gap-3 transition-colors ${cardBg}`}>
-      <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 pb-2 border-b border-neutral-100 dark:border-neutral-800">
-        <span className="min-w-0 text-xs font-semibold">Grounded Sources & Citations (3)</span>
-        <span className="shrink-0 text-[10px] font-mono text-emerald-500">✓ 100% Verified</span>
+      <div className="flex items-center justify-between pb-2 border-b border-neutral-100 dark:border-neutral-800">
+        <span className="min-w-0 text-xs font-semibold">Example citations (3)</span>
       </div>
+
+      <p className="text-xs text-neutral-500 dark:text-neutral-400">
+        Example citations. These sample sources were not retrieved or verified.
+      </p>
 
       <div className="space-y-2">
         {sources.map((src) => {
           const isSelected = activeCite === src.id;
           return (
-            <div
+            <button
               key={src.id}
+              type="button"
               onClick={() => setActiveCite(isSelected ? null : src.id)}
-              className={`p-3 rounded-lg border text-xs cursor-pointer transition-colors ${
+              aria-pressed={isSelected}
+              aria-label={`Example source ${src.id}: ${src.title}`}
+              className={`w-full text-left p-3 rounded-lg border text-xs transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${
                 isSelected
                   ? 'border-neutral-900 bg-neutral-50 dark:border-white dark:bg-neutral-800'
                   : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300'
               }`}
             >
-              <div className="flex flex-wrap items-start justify-between gap-x-2 gap-y-1 mb-1">
-                <span className="min-w-0 break-words font-medium font-mono">[{src.id}] {src.title}</span>
-                <span className="min-w-0 break-all text-[10px] text-neutral-400 font-mono">{src.path}</span>
+              <div className="flex items-center justify-between mb-1">
+                <span className="font-medium font-mono">
+                  [{src.id}] {src.title}
+                </span>
+                <span className="text-[10px] text-neutral-400 font-mono">{src.path}</span>
               </div>
-              <p className="text-[11px] text-neutral-500 italic leading-relaxed">
-                "{src.quote}"
-              </p>
-            </div>
+              <p className="text-[11px] text-neutral-500 italic leading-relaxed">"{src.quote}"</p>
+            </button>
           );
         })}
       </div>

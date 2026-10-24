@@ -38,12 +38,15 @@ export function SplitProductHero({
     card = 'bg-[#151921] border-[#2E3440] shadow-xl';
     tabActive = 'bg-[var(--tess-accent-primary,#06B6D4)] text-[var(--tess-accent-ink,#111217)] font-semibold';
   }
+  const badgeTextColor = variant === 'nocturne'
+    ? 'text-neutral-400'
+    : 'text-[var(--tess-ink-muted,#62666F)]';
 
   return (
     <section className={`relative w-full py-16 @sm:py-20 @lg:py-28 px-4 @sm:px-8 @lg:px-12 border-b transition-colors ${bg}`}>
       <div className="max-w-6xl mx-auto grid grid-cols-1 @lg:grid-cols-2 gap-12 @lg:gap-16 items-center">
         <div className="flex flex-col items-start">
-          <span className="text-xs uppercase tracking-widest font-semibold text-[var(--tess-ink-muted,#62666F)] mb-4">{badge}</span>
+          <span className={`text-xs uppercase tracking-widest font-semibold ${badgeTextColor} mb-4`}>{badge}</span>
           <h1 className="text-3xl @sm:text-4xl @lg:text-5xl font-bold tracking-tight leading-tight mb-6">{headline}</h1>
           <p className="text-base @sm:text-lg text-[var(--tess-ink-secondary,#62666F)] dark:text-neutral-400 mb-8 leading-relaxed">{description}</p>
           <div className="flex flex-wrap items-center gap-2 @sm:gap-4">

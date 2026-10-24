@@ -5,7 +5,7 @@
   "name": "Social Proof Hero",
   "version": "1.0.0",
   "status": "verified",
-  "description": "Headline anchored by trust metrics, customer avatar stack, and star review rating strip.",
+  "description": "Illustrative social-proof hero with editable customer count and rating fields marked as examples until approved evidence is supplied.",
   "resourceType": "section",
   "categories": [
     "sections",
@@ -17,9 +17,8 @@
     "social-proof"
   ],
   "purposes": [
-    "Consumer SaaS",
-    "Growth landing pages",
-    "High-conversion funnels"
+    "Social-proof page structure",
+    "Landing-page proof template"
   ],
   "productArchetypes": [
     {
@@ -131,18 +130,18 @@
     "trust"
   ],
   "intent": {
-    "summary": "Headline anchored by trust metrics, customer avatar stack, and star review rating strip.",
+    "summary": "Illustrative social-proof hero with editable customer count and rating fields marked as examples until approved evidence is supplied.",
     "idealFor": [
-      "Conversion-critical landing pages requiring immediate user validation"
+      "Drafting a customer-proof layout before approved evidence is available"
     ],
     "avoidFor": [
-      "Stealth enterprise landing pages"
+      "Publishing customer counts or ratings without supporting evidence"
     ],
     "jobs": [
-      "Build instant trust with verified customer counts and ratings"
+      "Provide a clear place for sourced adoption counts and rating evidence"
     ],
     "contentRequirements": [
-      "Clear hierarchy, responsive layout, accessible typography"
+      "Replace examples with sourced counts, approved identities, and the rating basis"
     ],
     "notes": [
       "Responsive stacking down to 360px with reduced-motion support"
@@ -210,12 +209,12 @@
     "defaultStrategy": "stack"
   },
   "accessibility": {
-    "levelTarget": "AAA",
-    "keyboardVerified": true,
-    "screenReaderSemantics": true,
-    "reducedMotionVerified": true,
-    "contrastTokenCompatible": true,
-    "focusVisible": true
+    "levelTarget": "AA",
+    "keyboardVerified": false,
+    "screenReaderSemantics": false,
+    "reducedMotionVerified": false,
+    "contrastTokenCompatible": false,
+    "focusVisible": false
   },
   "performance": {
     "jsCost": "tiny",
@@ -238,7 +237,11 @@
     "composability": 96,
     "visualCraft": 95,
     "dependencyCleanliness": 100,
-    "documentation": 95
+    "documentation": 95,
+    "assessment": {
+      "status": "unassessed",
+      "evidence": []
+    }
   },
   "createdAt": "2026-10-10T12:00:00.000Z",
   "updatedAt": "2026-10-10T12:00:00.000Z"

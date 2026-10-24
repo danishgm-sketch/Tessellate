@@ -5,7 +5,11 @@ export type TestimonialGridVariant = 'quiet' | 'expressive' | 'nocturne';
 export interface TestimonialGridProps {
   variant?: TestimonialGridVariant;
   title?: string;
-  testimonials?: Array<{ quote: string; author: string; role: string; company: string }>;
+  testimonials?: Array<{ quote: string; author: string; role: string; company: string; rating?: number }>;
+}
+
+function isSupportedRating(value: number | undefined): value is number {
+  return typeof value === 'number' && Number.isInteger(value) && value >= 1 && value <= 5;
 }
 
 export function TestimonialGrid({
@@ -36,7 +40,11 @@ export function TestimonialGrid({
           {testimonials.map((t) => (
             <div key={t.author} className={`p-6 rounded-[var(--tess-radius-xl,8px)] border flex flex-col justify-between ${card}`}>
               <div className="mb-6">
-                <div className="text-amber-500 text-xs mb-3">★★★★★</div>
+                {isSupportedRating(t.rating) && (
+                  <div role="img" aria-label={`${t.rating} out of 5 stars`} className="text-amber-500 text-xs mb-3">
+                    {'★'.repeat(t.rating)}
+                  </div>
+                )}
                 <p className="text-sm opacity-90 leading-relaxed">"{t.quote}"</p>
               </div>
               <div className="border-t border-neutral-100 dark:border-neutral-800 pt-4">

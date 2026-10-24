@@ -17,13 +17,13 @@
     ],
     "primaryAudience": "Online shoppers, merchandising managers, and fulfillment teams",
     "userSophistication": 45,
-    "primaryObjective": "Drive frictionless product discovery, confident purchase, and order delivery",
+    "primaryObjective": "Help shoppers browse seasonal clothing, compare garment details and sizes, and complete checkout",
     "secondaryObjectives": [
       "Ensure high accessibility standards",
       "Maintain responsive layout across devices"
     ],
     "jobsToBeDone": [
-      "Authenticate and access Ecommerce",
+      "Authenticate and access Online Store",
       "Review the overview and priority actions",
       "Create, update, and manage records",
       "Browse, add to cart, and checkout",
@@ -93,12 +93,13 @@
     "mobileImportance": 90,
     "likelyScreens": [
       {
-        "name": "Storefront Catalog",
-        "screenType": "marketing",
-        "purpose": "Featured collections and hero promotions",
+        "name": "Product Catalog",
+        "screenType": "search-explore",
+        "purpose": "Browse seasonal garments, compare materials and sizes, and choose a product",
         "jobs": [
-          "browse-catalog",
-          "filter-categories"
+          "browse-seasonal-clothing",
+          "compare-garments-and-sizes",
+          "choose-product"
         ],
         "required": true
       },
@@ -209,7 +210,7 @@
     "surfacePersonality": "monochrome-specular"
   },
   "brand": {
-    "name": "ECOMMERCE System"
+    "name": "Product Workspace"
   },
   "constraints": {
     "accessibilityFloor": "AA",
@@ -237,52 +238,49 @@
     ]
   },
   "screenGraph": {
-    "id": "graph-ecommerce-n1vey7",
+    "id": "graph-ecommerce-1q0l80k",
     "groups": [
       {
-        "id": "group-marketing",
-        "name": "Marketing",
+        "id": "group-app",
+        "name": "Application",
         "screens": [
           {
-            "id": "screen-marketing-home",
-            "name": "Storefront Catalog",
-            "slug": "/",
-            "screenType": "marketing",
-            "purpose": "Featured collections and hero promotions",
+            "id": "screen-product-catalog",
+            "name": "Product Catalog",
+            "slug": "/product-catalog",
+            "screenType": "search-explore",
+            "purpose": "Browse seasonal garments, compare materials and sizes, and choose a product",
             "jobs": [
-              "browse-catalog",
-              "filter-categories"
+              "browse-seasonal-clothing",
+              "compare-garments-and-sizes",
+              "choose-product"
             ],
             "required": true,
             "navigationVisibility": "primary",
             "importance": 85,
-            "expectedData": [],
+            "expectedData": [
+              "Product.id",
+              "Product.title",
+              "Product.price",
+              "Product.inventory",
+              "Product.sku"
+            ],
             "requiredRoles": [
-              "navigation",
-              "hero",
-              "value-proposition",
-              "conversion-cta",
-              "footer"
+              "search-header",
+              "facet-rail",
+              "results-grid"
             ],
             "optionalRoles": [
-              "trust-proof",
-              "product-demo",
-              "feature-grid",
-              "pricing-table",
-              "faq-accordion"
+              "recent-searches",
+              "active-filter-chips",
+              "empty-state"
             ],
             "deviceRelevance": [
               "desktop",
               "tablet",
               "mobile"
             ]
-          }
-        ]
-      },
-      {
-        "id": "group-app",
-        "name": "Application",
-        "screens": [
+          },
           {
             "id": "screen-product-detail",
             "name": "Product Detail",
@@ -404,14 +402,14 @@
     ],
     "edges": [
       {
-        "id": "edge-screen-marketing-home-to-screen-product-detail",
-        "fromScreenId": "screen-marketing-home",
+        "id": "edge-screen-product-catalog-to-screen-product-detail",
+        "fromScreenId": "screen-product-catalog",
         "toScreenId": "screen-product-detail",
-        "label": "Open the product"
+        "label": "Product Detail"
       },
       {
-        "id": "edge-screen-product-detail-to-screen-order-confirmation",
-        "fromScreenId": "screen-product-detail",
+        "id": "edge-screen-product-catalog-to-screen-order-confirmation",
+        "fromScreenId": "screen-product-catalog",
         "toScreenId": "screen-order-confirmation",
         "label": "Order Confirmation"
       }
@@ -419,17 +417,17 @@
   },
   "screens": [
     {
-      "id": "screen-marketing-home",
-      "screenNodeId": "screen-marketing-home",
-      "name": "Storefront Catalog",
-      "slug": "/",
+      "id": "screen-product-catalog",
+      "screenNodeId": "screen-product-catalog",
+      "name": "Product Catalog",
+      "slug": "/product-catalog",
       "rootNode": {
-        "id": "root-screen-marketing-home",
+        "id": "root-screen-product-catalog",
         "nodeType": "layout",
-        "semanticRole": "marketing-page",
+        "semanticRole": "workspace-dock-shell",
         "children": [
           {
-            "id": "node-screen-marketing-home-navigation-1",
+            "id": "node-screen-product-catalog-navigation-1",
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
@@ -444,119 +442,113 @@
               "brand": "Product Workspace",
               "links": [
                 {
-                  "label": "Storefront Catalog",
-                  "href": "#screen-marketing-home"
+                  "label": "Product Catalog",
+                  "href": "#screen-product-catalog"
                 }
               ],
-              "orientation": "horizontal"
+              "orientation": "vertical"
             }
           },
           {
-            "id": "node-screen-marketing-home-hero-2",
-            "nodeType": "section",
-            "semanticRole": "hero",
-            "resourceRef": {
-              "id": "res_sec_editorial_hero",
-              "slug": "editorial-hero",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "eyebrow": "Example organisation · sample content",
-              "headline": "Drive frictionless product discovery, confident purchase, and order delivery",
-              "subheadline": "A workspace for online shoppers, merchandising managers, and fulfillment teams.",
-              "primaryCta": {
-                "label": "View product details",
-                "href": "#screen-product-detail"
-              },
-              "secondaryCta": {
-                "label": "See how it works",
-                "href": "#screen-marketing-home"
-              },
-              "note": "Example interface · replace sample data with your organisation"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-value-proposition-3",
-            "nodeType": "section",
-            "semanticRole": "value-proposition",
-            "resourceRef": {
-              "id": "res_sec_feature_bento",
-              "slug": "feature-bento",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "title": "Storefront Catalog",
-              "items": [
-                {
-                  "title": "Product",
-                  "description": "Merchandise item with variants, media, and price",
-                  "detail": "Example content"
+            "id": "container-screen-product-catalog-canvas",
+            "nodeType": "layout",
+            "semanticRole": "workspace-multi-pane",
+            "children": [
+              {
+                "id": "node-screen-product-catalog-search-header-2",
+                "nodeType": "element",
+                "semanticRole": "search-header",
+                "resourceRef": {
+                  "id": "res_primitive_input",
+                  "slug": "input",
+                  "version": "1.0.0"
                 },
-                {
-                  "title": "Order",
-                  "description": "Customer purchase agreement and payment status",
-                  "detail": "Example content"
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "label": "Search products",
+                  "helperText": "Example search only. Connect a product catalogue to search live inventory.",
+                  "placeholder": "Search products and collections",
+                  "disabled": false,
+                  "title": "Product Catalog"
+                }
+              },
+              {
+                "id": "node-screen-product-catalog-facet-rail-3",
+                "nodeType": "block",
+                "semanticRole": "facet-rail",
+                "resourceRef": {
+                  "id": "res_blk_filter_builder",
+                  "slug": "filter-builder",
+                  "version": "1.0.0"
                 },
-                {
-                  "title": "Customer",
-                  "description": "Shopper profile and order history",
-                  "detail": "Example content"
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {}
+              },
+              {
+                "id": "node-screen-product-catalog-results-grid-4",
+                "nodeType": "block",
+                "semanticRole": "results-grid",
+                "resourceRef": {
+                  "id": "res_blk_advanced_data_table",
+                  "slug": "advanced-data-table",
+                  "version": "1.0.0"
+                },
+                "variant": "nocturne",
+                "children": [],
+                "slots": {},
+                "props": {
+                  "title": "Available products",
+                  "rows": [
+                    {
+                      "id": 65,
+                      "name": "Example garment A",
+                      "type": "Material and sizing not connected",
+                      "quality": 0,
+                      "status": "Availability not connected",
+                      "displayValue": "Price not connected",
+                      "href": "#screen-product-detail"
+                    },
+                    {
+                      "id": 66,
+                      "name": "Example garment B",
+                      "type": "Material and sizing not connected",
+                      "quality": 0,
+                      "status": "Availability not connected",
+                      "displayValue": "Price not connected",
+                      "href": "#screen-product-detail"
+                    },
+                    {
+                      "id": 67,
+                      "name": "Example garment C",
+                      "type": "Material and sizing not connected",
+                      "quality": 0,
+                      "status": "Availability not connected",
+                      "displayValue": "Price not connected",
+                      "href": "#screen-product-detail"
+                    }
+                  ],
+                  "columnLabels": {
+                    "name": "Product",
+                    "type": "Material and sizing",
+                    "quality": "Price",
+                    "status": "Availability"
+                  }
                 }
-              ]
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-conversion-cta-4",
-            "nodeType": "section",
-            "semanticRole": "conversion-cta",
-            "resourceRef": {
-              "id": "res_sec_cta_minimal",
-              "slug": "cta-minimal",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
+              }
+            ],
             "slots": {},
             "props": {
-              "headline": "Drive frictionless product discovery, confident purchase, and order delivery",
-              "description": "A workspace for online shoppers, merchandising managers, and fulfillment teams.",
-              "label": "View product details",
-              "href": "#screen-product-detail"
-            }
-          },
-          {
-            "id": "node-screen-marketing-home-footer-5",
-            "nodeType": "section",
-            "semanticRole": "footer",
-            "resourceRef": {
-              "id": "res_sec_footer_product",
-              "slug": "footer-product",
-              "version": "1.0.0"
-            },
-            "variant": "nocturne",
-            "children": [],
-            "slots": {},
-            "props": {
-              "brand": "Product Workspace",
-              "description": "A workspace for online shoppers, merchandising managers, and fulfillment teams.",
-              "links": [
-                {
-                  "label": "Storefront Catalog",
-                  "href": "#screen-marketing-home"
-                }
-              ]
+              "layoutFamily": "tri-column-intelligence"
             }
           }
         ],
         "slots": {},
         "props": {
-          "layoutFamily": "tri-column-intelligence"
+          "layoutVariant": "split-dock"
         }
       }
     },
@@ -586,8 +578,8 @@
               "brand": "Product Workspace",
               "links": [
                 {
-                  "label": "Storefront Catalog",
-                  "href": "#screen-marketing-home"
+                  "label": "Product Catalog",
+                  "href": "#screen-product-catalog"
                 }
               ],
               "orientation": "vertical"
@@ -600,7 +592,7 @@
             "children": [
               {
                 "id": "node-screen-product-detail-entity-header-2",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "entity-header",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -619,7 +611,7 @@
               },
               {
                 "id": "node-screen-product-detail-detail-tabs-3",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "detail-tabs",
                 "resourceRef": {
                   "id": "res_shell_minimal_top_nav",
@@ -633,15 +625,15 @@
                   "brand": "Product Workspace",
                   "links": [
                     {
-                      "label": "Storefront Catalog",
-                      "href": "#screen-marketing-home"
+                      "label": "Product Catalog",
+                      "href": "#screen-product-catalog"
                     }
                   ]
                 }
               },
               {
                 "id": "node-screen-product-detail-main-content-pane-4",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "main-content-pane",
                 "resourceRef": {
                   "id": "res_blk_advanced_data_table",
@@ -689,7 +681,7 @@
               },
               {
                 "id": "node-screen-product-detail-metadata-sidebar-5",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "metadata-sidebar",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -745,8 +737,8 @@
               "brand": "Product Workspace",
               "links": [
                 {
-                  "label": "Storefront Catalog",
-                  "href": "#screen-marketing-home"
+                  "label": "Product Catalog",
+                  "href": "#screen-product-catalog"
                 }
               ],
               "orientation": "vertical"
@@ -759,7 +751,7 @@
             "children": [
               {
                 "id": "node-screen-order-confirmation-entity-header-2",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "entity-header",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -778,7 +770,7 @@
               },
               {
                 "id": "node-screen-order-confirmation-detail-tabs-3",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "detail-tabs",
                 "resourceRef": {
                   "id": "res_shell_minimal_top_nav",
@@ -792,15 +784,15 @@
                   "brand": "Product Workspace",
                   "links": [
                     {
-                      "label": "Storefront Catalog",
-                      "href": "#screen-marketing-home"
+                      "label": "Product Catalog",
+                      "href": "#screen-product-catalog"
                     }
                   ]
                 }
               },
               {
                 "id": "node-screen-order-confirmation-main-content-pane-4",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "main-content-pane",
                 "resourceRef": {
                   "id": "res_blk_advanced_data_table",
@@ -848,7 +840,7 @@
               },
               {
                 "id": "node-screen-order-confirmation-metadata-sidebar-5",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "metadata-sidebar",
                 "resourceRef": {
                   "id": "res_blk_entity_profile_header",
@@ -904,8 +896,8 @@
               "brand": "Product Workspace",
               "links": [
                 {
-                  "label": "Storefront Catalog",
-                  "href": "#screen-marketing-home"
+                  "label": "Product Catalog",
+                  "href": "#screen-product-catalog"
                 }
               ],
               "orientation": "vertical"
@@ -918,7 +910,7 @@
             "children": [
               {
                 "id": "node-screen-checkout-order-summary-2",
-                "nodeType": "section",
+                "nodeType": "block",
                 "semanticRole": "order-summary",
                 "resourceRef": {
                   "id": "res_blk_advanced_data_table",
@@ -950,7 +942,7 @@
               },
               {
                 "id": "node-screen-checkout-payment-fields-3",
-                "nodeType": "section",
+                "nodeType": "element",
                 "semanticRole": "payment-fields",
                 "resourceRef": {
                   "id": "res_primitive_input",
@@ -970,20 +962,21 @@
               },
               {
                 "id": "node-screen-checkout-submit-button-4",
-                "nodeType": "section",
+                "nodeType": "element",
                 "semanticRole": "submit-button",
                 "resourceRef": {
-                  "id": "res_mot_magnetic_button",
-                  "slug": "magnetic-button",
+                  "id": "res_primitive_button_01",
+                  "slug": "button",
                   "version": "1.0.0"
                 },
                 "variant": "nocturne",
                 "children": [],
                 "slots": {},
                 "props": {
-                  "label": "Continue onboarding",
+                  "children": "Payment provider required",
                   "disabled": true,
-                  "title": "Connect a payment provider before enabling payment submission."
+                  "title": "Connect a payment provider before enabling payment submission.",
+                  "helperText": "Example field. Connect persistence and your backend in the exported application."
                 }
               }
             ],
@@ -1004,8 +997,8 @@
     "model": "rail",
     "primaryItems": [
       {
-        "label": "Storefront Catalog",
-        "targetScreenId": "screen-marketing-home"
+        "label": "Product Catalog",
+        "targetScreenId": "screen-product-catalog"
       }
     ],
     "secondaryItems": [
