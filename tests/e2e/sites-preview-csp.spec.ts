@@ -658,3 +658,27 @@ test('public shell CSP authorizes only build-certified inline code', async ({ re
   expect(runtimeErrors).toEqual([]);
   expect(failedRequests).toEqual([]);
 });
+
+test('public Explore avoids Zod eval probes under the strict application CSP', async ({ page }) => {
+  await page.addInitScript(() => {
+    type Violation = { directive: string; blockedURI: string; sourceFile: string };
+    const isolatedWindow = window as Window & { __tessellateCspViolations?: Violation[] };
+    isolatedWindow.__tessellateCspViolations = [];
+    window.addEventListener('securitypolicyviolation', (event) => {
+      isolatedWindow.__tessellateCspViolations?.push({
+        directive: event.effectiveDirective,
+        blockedURI: event.blockedURI,
+        sourceFile: event.sourceFile,
+      });
+    });
+  });
+
+  await page.goto('/explore');
+  await expect(page.getByText('Showing 50 of 324 resources', { exact: true })).toBeVisible();
+
+  const evalViolations = await page.evaluate(() =>
+    ((window as Window & { __tessellateCspViolations?: Array<{ blockedURI: string }> })
+      .__tessellateCspViolations ?? []).filter((violation) => violation.blockedURI === 'eval'),
+  );
+  expect(evalViolations).toEqual([]);
+});

@@ -1,3 +1,5 @@
+import './configure-zod.js';
+
 export * from './version.js';
 export * from './id.js';
 export * from './dna.js';

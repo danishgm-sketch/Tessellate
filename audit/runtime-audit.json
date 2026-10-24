@@ -10279,7 +10279,39 @@
       "status": "fixed-local-verified",
       "evidence": "quality/evidence/step-38/after/explore-query-transition-sites-chromium.json; quality/evidence/step-38/after/explore-query-transition-sites-chromium.png; tests/e2e/site-route-performance-step-38.spec.ts",
       "verification": "The Sites Worker regression first failed with the stale zero-results summary, then passed after the empty-result branch began showing the pending-search state during query debounce. It verifies that an explicit searching indicator appears and the old empty state never flashes. Public Site verification remains pending."
+    },
+    {
+      "id": "AUD-322",
+      "severity": "low",
+      "route": "/explore",
+      "viewport": "1440x900, 390x844",
+      "category": "runtime",
+      "title": "Zod's caught eval capability probe triggered a strict CSP violation",
+      "expected": "Explore hydrates and validates catalogue data without any script-src eval violation under the strict application CSP.",
+      "actual": "Before the fix, Chromium recorded one securitypolicyviolation with effectiveDirective script-src and blockedURI eval from the bundled Zod validator module. Zod caught the blocked Function probe, so the page still loaded. After the fix, desktop and mobile Sites Worker regressions report no eval violation; the 324-resource catalogue and previews load.",
+      "reproduction": [
+        "Build the Sites Worker artifact and open /explore at 1440x900 or 390x844.",
+        "Attach a securitypolicyviolation listener before navigation and filter for blockedURI === 'eval'.",
+        "Before the fix, the listener received one script-src event from the bundled Zod module even though no console error or failed request occurred.",
+        "After the fix, run the public Explore avoids Zod eval probes under the strict application CSP regression in both Sites Chromium profiles."
+      ],
+      "console": [],
+      "network": [
+        "After fix: Explore page, catalogue JSON, scripts, styles, fonts, and requested resource previews returned HTTP 200; no failed requests in the 108-request desktop load.",
+        "GET /data/catalog.json returned HTTP 200 with 324 resources."
+      ],
+      "screenshot": "quality/evidence/step-45/explore-zod-csp-after-desktop-1440x900.png",
+      "rootCause": "The schemas barrel configured Zod after its re-exported schema modules had already instantiated object schemas. Zod caches the JIT setting at schema creation, so the later config could not prevent its caught Function capability probe.",
+      "affectedCode": [
+        "packages/schemas/src/configure-zod.ts",
+        "packages/schemas/src/index.ts",
+        "tests/e2e/sites-preview-csp.spec.ts"
+      ],
+      "fixCommit": null,
+      "status": "fixed-local-verified",
+      "evidence": "quality/evidence/step-45/explore-zod-csp-after-desktop-1440x900.png; quality/evidence/step-45/explore-zod-csp-after-mobile-390x844.png; quality/evidence/step-45/explore-zod-csp-performance-trace.json.gz; tests/e2e/sites-preview-csp.spec.ts",
+      "verification": "The focused browser regression was red before the fix and passes in desktop and mobile Sites Chromium after it. The complete run passes: pnpm test (1214 passed, 1 skipped); pnpm audit:all (16/16 gates, 324/324 resources, clean security and dependency checks, bundle budgets, and production build); pnpm test:e2e (Astro 290 passed/108 configured skips, Sites Worker 257 passed/41 configured skips, isolated preview app 3 passed); typecheck and lint pass. A final local DevTools trace measured desktop Explore LCP 151ms, CLS 0.00, and TTFB 9ms at 1x CPU with no network throttling; CrUX field data and navigation-only INP are unavailable. Public review Site verification remains pending."
     }
   ],
-  "generatedAt": "2026-10-24T09:36:58.806Z"
+  "generatedAt": "2026-10-24T11:53:18.000Z"
 }

@@ -3211,3 +3211,14 @@ with zero findings. That harness race is not counted as a product defect.
 - **Root cause:** CommandBar gave its input an accessible label but omitted native form identity.
 - **Affected code:** `packages/workbench/src/components/CommandBar.tsx`, `tests/e2e/compose-workbench-handoff.spec.ts`.
 - **Remediation:** Added the explicit tessellate-command name. The desktop/mobile handoff test now finds no input, textarea, or select without an id or name. Published review verification is pending.
+
+## LOW (continued — 2026-10-24)
+
+### AUD-322 — Zod's caught eval capability probe triggered a strict CSP violation
+
+- **Evidence:** Before the fix, the new browser regression received one `securitypolicyviolation` event with `effectiveDirective=script-src` and `blockedURI=eval` from the bundled Zod validator. The probe was caught, so the page rendered, but it still produced a CSP violation. After-fix desktop and mobile captures are [1440×900](../quality/evidence/step-45/explore-zod-csp-after-desktop-1440x900.png) and [390×844](../quality/evidence/step-45/explore-zod-csp-after-mobile-390x844.png). The local DevTools trace is [saved here](../quality/evidence/step-45/explore-zod-csp-performance-trace.json.gz).
+- **Reproduction:** Build the Sites Worker, open `/explore` at desktop or mobile size, attach a `securitypolicyviolation` listener before navigation, and filter `blockedURI === 'eval'`. Before the fix, one event fired during client hydration. The regression is `tests/e2e/sites-preview-csp.spec.ts`.
+- **Root cause:** `packages/schemas/src/index.ts` configured Zod in the barrel body, after re-exported schema modules had instantiated their schemas. Zod caches the JIT setting during schema creation, so the later configuration did not suppress the capability probe.
+- **Affected code:** `packages/schemas/src/configure-zod.ts`, `packages/schemas/src/index.ts`, and `tests/e2e/sites-preview-csp.spec.ts`.
+- **Remediation:** Configure browser-side Zod through the first side-effect import, before schema modules evaluate. Browser builds use Zod's jitless validation path; server and build processes retain normal JIT validation. The application's strict CSP remains unchanged.
+- **Verification:** The new regression failed before the fix and passes for desktop and mobile Sites Chromium. Explore loaded all 324 catalogue entries; the final local trace measured LCP 151ms, CLS 0.00, and TTFB 9ms at 1× CPU without network throttling. Frozen install, catalogue build, typecheck, lint, 1,214 unit tests, `pnpm audit:all`, and all three E2E targets pass. The public review Site has not yet been updated, so deployed verification remains pending.
