@@ -4,8 +4,8 @@ $projectRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
 $secretDirectory = Join-Path $env:USERPROFILE '.tessellate\secrets'
 New-Item -ItemType Directory -Path $secretDirectory -Force | Out-Null
 $ownerSid = [Security.Principal.WindowsIdentity]::GetCurrent().User.Value
-& icacls $secretDirectory /inheritance:r /grant:r "*$($ownerSid):(OI)(CI)F" '*S-1-5-18:(OI)(CI)F' /q | Out-Null
-if ($LASTEXITCODE -ne 0) { throw 'Cannot restrict access to the laptop service credentials.' }
+Import-Module (Join-Path $PSScriptRoot 'TessellateSecretAcl.psm1') -Force
+Set-TessellateSecretAcl -DirectoryPath $secretDirectory -OwnerSid $ownerSid
 $env:TESSELLATE_SECRETS_DIR = $secretDirectory.Replace('\', '/')
 function New-ServiceSecret {
   $bytes = New-Object byte[] 32

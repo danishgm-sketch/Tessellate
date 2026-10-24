@@ -16,6 +16,7 @@ export interface SectionDef {
   jobs: string[];
   indexCode: string;
   previewCode: string;
+  previewDefaultProps?: Record<string, unknown>;
   fixturesCode: string;
   readmeCode: string;
 }
@@ -79,7 +80,7 @@ export function writeSection(def: SectionDef, repoRoot: string) {
     },
     preview: {
       component: `${def.componentName}Preview`,
-      defaultProps: {},
+      defaultProps: def.previewDefaultProps ?? {},
       viewport: 1440,
     },
     slots: [
@@ -171,12 +172,12 @@ export function writeSection(def: SectionDef, repoRoot: string) {
       defaultStrategy: 'stack',
     },
     accessibility: {
-      levelTarget: 'AAA',
-      keyboardVerified: true,
-      screenReaderSemantics: true,
-      reducedMotionVerified: true,
-      contrastTokenCompatible: true,
-      focusVisible: true,
+      levelTarget: 'AA',
+      keyboardVerified: false,
+      screenReaderSemantics: false,
+      reducedMotionVerified: false,
+      contrastTokenCompatible: false,
+      focusVisible: false,
     },
     performance: {
       jsCost: 'tiny',
@@ -191,6 +192,7 @@ export function writeSection(def: SectionDef, repoRoot: string) {
     compatibility: {},
     relationships: [],
     quality: {
+      assessment: { status: 'unassessed', evidence: [] },
       overall: 96,
       accessibility: 98,
       responsive: 95,

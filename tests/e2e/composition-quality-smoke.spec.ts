@@ -56,11 +56,11 @@ test('showcase identity survives composition and renders in the public preview',
 
   for (const item of previews) {
     const response = await page.goto(`/showcase/${item.slug}/`);
-    await expect(page.getByLabel('Example screen')).toBeVisible();
+    await expect(page.getByRole('combobox', { name: 'Example screen' })).toBeVisible();
     await expect(page.getByText(item.brand, { exact: true }).first()).toBeVisible();
     await expect(page.getByText(item.initials, { exact: true }).first()).toBeVisible();
     if (item.screen) {
-      const screen = page.getByLabel('Example screen');
+      const screen = page.getByRole('combobox', { name: 'Example screen' });
       await expect(screen.locator('option').filter({ hasText: item.screen })).toHaveCount(1);
       await screen.selectOption({ label: item.screen });
       const preview = page.locator('.tess-screen');
@@ -864,6 +864,9 @@ test('returns portal brief composes order lookup, return request, and refund sta
       'title',
       'Connect a returns service before submitting requests.'
     );
+    await expect(
+      canvas.getByText('Connect a returns service before submitting requests.')
+    ).toBeVisible();
     const disabledSubmitTitle = await disabledSubmit.getAttribute('title');
     if (number === '03') {
       const screenshotPath = path.resolve(

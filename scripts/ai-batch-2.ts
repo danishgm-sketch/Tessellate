@@ -5,13 +5,18 @@ export const AI_BATCH_2: AIDef[] = [
   {
     slug: 'ai-agent-activity-feed',
     name: 'AI Agent Activity Feed',
-    description: 'Real-time telemetry stream showing background agent thoughts, state transitions, subagent spawns, and progress percentages.',
+    description:
+      'Real-time telemetry stream showing background agent thoughts, state transitions, subagent spawns, and progress percentages.',
     categories: ['ai', 'patterns', 'agent'],
     roles: ['feed', 'agent'],
     purposes: ['agent-monitoring', 'background-telemetry', 'progress-tracking'],
     componentName: 'AIAgentActivityFeed',
     tags: ['ai', 'agent', 'activity', 'stream', 'telemetry'],
-    idealFor: ['Autonomous multi-agent execution dashboard', 'Background code synthesis monitoring', 'Agent swarm status viewer'],
+    idealFor: [
+      'Autonomous multi-agent execution dashboard',
+      'Background code synthesis monitoring',
+      'Agent swarm status viewer',
+    ],
     avoidFor: ['Synchronous modal alerts', 'Single number KPI cards'],
     jobs: ['Stream live subagent events, thought traces, and task completion milestones'],
     indexCode: `import React, { useState } from 'react';
@@ -115,15 +120,22 @@ Real-time telemetry stream displaying agent thoughts, state transitions, subagen
   {
     slug: 'ai-approval-request',
     name: 'AI Approval Request',
-    description: 'Human-in-the-loop intervention card requesting explicit user confirmation before executing irreversible, high-cost, or external operations.',
+    description:
+      'Human-in-the-loop intervention card requesting explicit user confirmation before executing irreversible, high-cost, or external operations.',
     categories: ['ai', 'patterns', 'governance'],
     roles: ['approval', 'governance'],
     purposes: ['human-in-the-loop', 'permission-gate', 'destructive-action-prevention'],
     componentName: 'AIApprovalRequest',
     tags: ['ai', 'approval', 'human-in-the-loop', 'permissions', 'gate'],
-    idealFor: ['Codebase refactor authorization', 'Production database migration confirmations', 'External API spend approvals'],
+    idealFor: [
+      'Codebase refactor authorization',
+      'Production database migration confirmations',
+      'External API spend approvals',
+    ],
     avoidFor: ['Standard form submit buttons', 'Trivial read-only operations'],
-    jobs: ['Pause autonomous agent execution and require human verification before sensitive steps'],
+    jobs: [
+      'Pause autonomous agent execution and require human verification before sensitive steps',
+    ],
     indexCode: `import React, { useState } from 'react';
 
 export type AIApprovalRequestVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -220,13 +232,18 @@ Human-in-the-loop intervention card requesting explicit user verification prior 
   {
     slug: 'ai-plan-review',
     name: 'AI Plan Review',
-    description: 'Multi-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.',
+    description:
+      'Multi-stage structured action plan with phase gates, estimated complexity, acceptance criteria, and proceed triggers.',
     categories: ['ai', 'patterns', 'planning'],
     roles: ['plan', 'review'],
     purposes: ['plan-approval', 'phase-gate-review', 'task-decomposition'],
     componentName: 'AIPlanReview',
     tags: ['ai', 'plan', 'review', 'phases', 'tasks'],
-    idealFor: ['Autonomous build order roadmaps', 'Complex architectural refactor reviews', 'Pre-flight deployment planning'],
+    idealFor: [
+      'Autonomous build order roadmaps',
+      'Complex architectural refactor reviews',
+      'Pre-flight deployment planning',
+    ],
     avoidFor: ['Standard task item checklists', 'Simple single-command terminals'],
     jobs: ['Present structured multi-step execution plans with actionable proceed confirmations'],
     indexCode: `import React, { useState } from 'react';
@@ -324,13 +341,18 @@ Multi-stage structured action plan with phase gates, estimated complexities, and
   {
     slug: 'ai-multi-agent-board',
     name: 'AI Multi-Agent Board',
-    description: 'Kanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.',
+    description:
+      'Kanban-style swarm status board tracking assigned subagents, conversation channels, and concurrent task states.',
     categories: ['ai', 'patterns', 'multi-agent'],
     roles: ['board', 'swarm'],
     purposes: ['swarm-coordination', 'subagent-management', 'concurrent-execution'],
     componentName: 'AIMultiAgentBoard',
     tags: ['ai', 'multi-agent', 'swarm', 'kanban', 'tasks'],
-    idealFor: ['Multi-agent orchestration displays', 'Autonomous team work distribution', 'Subagent task lane tracking'],
+    idealFor: [
+      'Multi-agent orchestration displays',
+      'Autonomous team work distribution',
+      'Subagent task lane tracking',
+    ],
     avoidFor: ['Single user personal to-do lists', 'Static blog articles'],
     jobs: ['Coordinate and monitor parallel subagent workstreams in designated status lanes'],
     indexCode: `import React, { useState } from 'react';
@@ -420,7 +442,8 @@ Kanban-style swarm status board coordinating concurrent subagent tasks across li
   {
     slug: 'ai-memory-context-panel',
     name: 'AI Memory Context Panel',
-    description: 'Inspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.',
+    description:
+      'Inspector card showing active short-term and long-term agent memory slots, pinned user preferences, and purge controls.',
     categories: ['ai', 'patterns', 'memory'],
     roles: ['memory', 'inspector'],
     purposes: ['memory-inspection', 'preference-persistence', 'context-window-hygiene'],
@@ -524,13 +547,18 @@ Inspector surface detailing active agent memory entities, pinned user preference
   {
     slug: 'ai-prompt-history',
     name: 'AI Prompt History',
-    description: 'Searchable log of previous prompts with token stats, execution timestamps, and re-run buttons.',
+    description:
+      'Searchable log of previous prompts with token stats, execution timestamps, and re-run buttons.',
     categories: ['ai', 'patterns', 'history'],
     roles: ['history', 'prompts'],
     purposes: ['prompt-auditing', 'query-replay', 'version-comparison'],
     componentName: 'AIPromptHistory',
     tags: ['ai', 'prompt', 'history', 'log', 'replay'],
-    idealFor: ['Prompt experimentation logs', 'Team prompt review libraries', 'Token spend inspection'],
+    idealFor: [
+      'Prompt experimentation logs',
+      'Team prompt review libraries',
+      'Token spend inspection',
+    ],
     avoidFor: ['Real-time streaming chat messages', 'Single character typing fields'],
     jobs: ['Audit and replay past prompts with execution metrics and one-click reload'],
     indexCode: `import React, { useState } from 'react';
@@ -631,15 +659,22 @@ Searchable history of previous prompt runs with execution metrics and one-click 
   {
     slug: 'ai-file-context-picker',
     name: 'AI File Context Picker',
-    description: 'Multi-select tree picker allowing users to attach specific project files and schemas into prompt context.',
+    description:
+      'Multi-select tree picker allowing users to attach specific project files and schemas into prompt context.',
     categories: ['ai', 'patterns', 'picker'],
     roles: ['picker', 'context'],
     purposes: ['file-selection', 'context-filtering', 'token-budgeting'],
     componentName: 'AIFileContextPicker',
     tags: ['ai', 'context', 'files', 'picker', 'tree'],
-    idealFor: ['IDE file attachment modals', 'Selective codebase grounding', 'Context window optimization'],
+    idealFor: [
+      'IDE file attachment modals',
+      'Selective codebase grounding',
+      'Context window optimization',
+    ],
     avoidFor: ['Full disk file managers', 'Binary image galleries'],
-    jobs: ['Select relevant workspace files to inject into prompt context with live token accounting'],
+    jobs: [
+      'Select relevant workspace files to inject into prompt context with live token accounting',
+    ],
     indexCode: `import React, { useState } from 'react';
 
 export type AIFileContextPickerVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -751,15 +786,22 @@ Multi-select file tree picker allowing users to attach specific codebase documen
   {
     slug: 'ai-model-mode-switcher',
     name: 'AI Model Mode Switcher',
-    description: 'Segmented switcher and credential dropdown to toggle between fast, reasoning, and local models.',
+    description:
+      'Model-mode selector UI with local selection state; it does not connect to providers or manage credentials.',
     categories: ['ai', 'patterns', 'switcher'],
     roles: ['switcher', 'models'],
-    purposes: ['model-selection', 'byo-key-management', 'reasoning-toggle'],
+    purposes: ['mode-selector-layout', 'local-selection-state'],
     componentName: 'AIModelModeSwitcher',
-    tags: ['ai', 'models', 'switcher', 'reasoning', 'byo-endpoint'],
-    idealFor: ['Model selection toolbar', 'BYO-API-key configuration', 'Thinking mode toggles'],
-    avoidFor: ['Standard navigation tab bars', 'Radio input forms'],
-    jobs: ['Switch active LLM backend and thinking mode with visual latency and cost badges'],
+    tags: ['ai', 'mode', 'switcher', 'example'],
+    idealFor: ['Example mode selector', 'Local selection state studies'],
+    avoidFor: ['Provider configuration', 'Credential management', 'Live model selection'],
+    jobs: ['Change a local example mode in the preview without connecting to a model'],
+    contentRequirements: [
+      'Explain that options are examples and no model or provider is connected.',
+    ],
+    notes: [
+      'Selections are local UI state only; credential and provider integration belong to the host application.',
+    ],
     indexCode: `import React, { useState } from 'react';
 
 export type AIModelModeSwitcherVariant = 'quiet' | 'expressive' | 'nocturne';
@@ -769,7 +811,7 @@ export interface AIModelModeSwitcherProps {
 }
 
 export function AIModelModeSwitcher({ variant = 'quiet' }: AIModelModeSwitcherProps) {
-  const [activeModel, setActiveModel] = useState('claude-3-7-sonnet');
+  const [activeModel, setActiveModel] = useState('balanced');
 
   const cardBg =
     variant === 'nocturne'
@@ -779,29 +821,31 @@ export function AIModelModeSwitcher({ variant = 'quiet' }: AIModelModeSwitcherPr
       : 'bg-white border-neutral-200 text-neutral-900';
 
   const models = [
-    { id: 'claude-3-7-sonnet', name: 'Claude 3.7 Sonnet', desc: 'Hybrid reasoning + coding', tag: 'Recommended' },
-    { id: 'gpt-4o', name: 'GPT-4o', desc: 'High-speed multimodal generation', tag: 'Fast' },
-    { id: 'gemini-2-5-pro', name: 'Gemini 2.5 Pro', desc: '2M context window for large repos', tag: 'Large Context' },
+    { id: 'fast', name: 'Fast', desc: 'Example mode for short, quick tasks', tag: 'Example' },
+    { id: 'balanced', name: 'Balanced', desc: 'Example mode for general tasks', tag: 'Example' },
+    { id: 'long-context', name: 'Long context', desc: 'Example mode for longer inputs', tag: 'Example' },
   ];
 
   return (
     <div className={\`w-full p-6 rounded-xl border flex flex-col gap-4 transition-colors \${cardBg}\`}>
       <div className="flex items-center justify-between pb-3 border-b border-neutral-100 dark:border-neutral-800">
         <div>
-          <h4 className="text-sm font-semibold tracking-tight">Model & Endpoint Configuration</h4>
-          <p className="text-xs text-neutral-500">Configure BYO provider credentials or local inference</p>
+          <h4 className="text-sm font-semibold tracking-tight">Example model modes</h4>
+          <p className="text-xs text-neutral-500">Example selector. Options change this preview only; no provider or local model is connected.</p>
         </div>
-        <span className="text-xs font-mono font-medium text-neutral-400">BYO Key Active</span>
+        <span className="text-xs font-mono font-medium text-neutral-400">No model connected</span>
       </div>
 
       <div className="space-y-2.5">
         {models.map((m) => {
           const isSelected = activeModel === m.id;
           return (
-            <div
+            <button
               key={m.id}
+              type="button"
               onClick={() => setActiveModel(m.id)}
-              className={\`flex items-center justify-between p-3.5 rounded-lg border text-xs cursor-pointer transition-all \${
+              aria-pressed={isSelected}
+              className={\`w-full text-left flex items-center justify-between p-3.5 rounded-lg border text-xs transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 \${
                 isSelected
                   ? 'border-neutral-900 bg-neutral-50 dark:border-white dark:bg-neutral-800 ring-1 ring-current'
                   : 'border-neutral-200 dark:border-neutral-800 hover:border-neutral-300'
@@ -814,7 +858,7 @@ export function AIModelModeSwitcher({ variant = 'quiet' }: AIModelModeSwitcherPr
               <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-700 font-medium">
                 {m.tag}
               </span>
-            </div>
+            </button>
           );
         })}
       </div>
@@ -849,20 +893,25 @@ export function AIModelModeSwitcherPreview() {
     fixturesCode: `export const aiModelModeSwitcherFixtures = {};`,
     readmeCode: `# AI Model Mode Switcher
 
-Model and inference configuration switcher supporting BYO credentials and reasoning mode toggles.`,
+Local example mode selector. It does not connect to an AI provider or configure credentials.`,
   },
 
   // 19. AI Generation Compare
   {
     slug: 'ai-generation-compare',
     name: 'AI Generation Compare',
-    description: 'Side-by-side comparative split card evaluating two candidate AI generations with score metrics and selection trigger.',
+    description:
+      'Side-by-side comparative split card evaluating two candidate AI generations with score metrics and selection trigger.',
     categories: ['ai', 'patterns', 'comparison'],
     roles: ['compare', 'evaluation'],
     purposes: ['candidate-evaluation', 'a-b-testing', 'design-variation-review'],
     componentName: 'AIGenerationCompare',
     tags: ['ai', 'compare', 'evaluation', 'side-by-side', 'candidates'],
-    idealFor: ['Comparing 2 design variations', 'Prompt output benchmarking', 'Candidate selection workflows'],
+    idealFor: [
+      'Comparing 2 design variations',
+      'Prompt output benchmarking',
+      'Candidate selection workflows',
+    ],
     avoidFor: ['Linear single-column blogs', 'Simple checkbox settings'],
     jobs: ['Present dual candidate AI responses side-by-side for human judgment and picking'],
     indexCode: `import React, { useState } from 'react';
@@ -984,13 +1033,18 @@ Side-by-side comparative split card evaluating two candidate AI generations with
   {
     slug: 'ai-empty-state',
     name: 'AI Empty State',
-    description: 'First-run welcoming container introducing AI capabilities, sample prompts, and rapid starting templates.',
+    description:
+      'First-run welcoming container introducing AI capabilities, sample prompts, and rapid starting templates.',
     categories: ['ai', 'patterns', 'empty'],
     roles: ['empty', 'onboarding'],
     purposes: ['first-run-assistance', 'prompt-discovery', 'empty-chat-welcome'],
     componentName: 'AIEmptyState',
     tags: ['ai', 'empty', 'welcome', 'samples', 'onboarding'],
-    idealFor: ['New conversation blank slate', 'AI workspace initial load', 'Empty copilot container'],
+    idealFor: [
+      'New conversation blank slate',
+      'AI workspace initial load',
+      'Empty copilot container',
+    ],
     avoidFor: ['Standard database error 500 alerts', 'Full tables'],
     jobs: ['Welcome users into AI interaction surfaces with guided starter suggestions'],
     indexCode: `import React from 'react';

@@ -26,7 +26,7 @@ test('scrollable Gold resource content is keyboard reachable on mobile', async (
   ];
 
   for (const { slug, selector } of scrollableContent) {
-    await page.goto(`/preview/?resource=${slug}&variant=expressive&theme=dark`);
+    await page.goto(`/preview-content/?resource=${slug}&variant=expressive&theme=dark`);
     const region = page.locator(selector);
 
     await expect(region).toBeVisible();
@@ -38,7 +38,7 @@ test('scrollable Gold resource content is keyboard reachable on mobile', async (
 
 test('three-pane app shell exposes every pane without horizontal clipping on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/preview/?resource=three-pane-app-shell&variant=expressive&theme=dark');
+  await page.goto('/preview-content/?resource=three-pane-app-shell&variant=expressive&theme=dark');
 
   const canvas = page.getByRole('region', { name: 'Workspace canvas' });
   const shell = canvas.locator('..');
@@ -75,7 +75,7 @@ test('three-pane app shell exposes every pane without horizontal clipping on mob
 
 test('three-pane app shell retains its three-column workspace on desktop', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  await page.goto('/preview/?resource=three-pane-app-shell&variant=expressive&theme=dark');
+  await page.goto('/preview-content/?resource=three-pane-app-shell&variant=expressive&theme=dark');
 
   const canvas = page.getByRole('region', { name: 'Workspace canvas' });
   const shell = canvas.locator('..');

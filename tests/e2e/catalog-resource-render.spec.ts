@@ -116,7 +116,8 @@ test('all catalogue resources render at every certified width in the Sites Worke
         try {
           const frame = request.frame();
           const url = new URL(request.url());
-          return frame.parentFrame() === page.mainFrame() && ['/preview', '/preview/'].includes(url.pathname);
+          return frame.parentFrame() === page.mainFrame()
+            && ['/preview', '/preview/', '/preview-content', '/preview-content/'].includes(url.pathname);
         } catch {
           return false;
         }
@@ -196,6 +197,7 @@ test('all catalogue resources render at every certified width in the Sites Worke
         }
         const firstVariant = resource.variants[0];
         if (firstVariant) {
+          advanceOperation(`Certification test restored the first ${firstVariant.name} variant before responsive checks.`);
           await page.getByRole('button', { name: firstVariant.name, exact: true }).click();
           const iframeHandle = await preview.elementHandle();
           const previewFrame = await iframeHandle?.contentFrame();
@@ -457,6 +459,34 @@ test('canonical /r resource detail route preserves title, preview, and responsiv
   await import('node:fs/promises').then(({ writeFile }) => writeFile(
     path.resolve(process.cwd(), 'audit/evidence/step-06/results/canonical-resource-route.json'),
     JSON.stringify({ route: `/r/${slug}/`, errors, results }, null, 2),
+  ));
+});
+
+test('AI Chat Panel standalone preview starts with a coherent heading hierarchy', async ({ page }, testInfo) => {
+  const errors: string[] = [];
+  page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
+  page.on('pageerror', (error) => errors.push(error.message));
+  page.on('requestfailed', (request) => errors.push(`${request.method()} ${request.url()}: ${request.failure()?.errorText ?? 'unknown failure'}`));
+  page.on('response', (response) => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });
+  const response = await page.goto('/r/ai-chat-panel/', { waitUntil: 'domcontentloaded' });
+  expect(response?.status()).toBe(200);
+  const frame = page.frameLocator('iframe[title$=" live preview"]');
+  await expect(frame.getByText('Example conversation. This preview does not connect to a model; sending adds a fixed local example reply.')).toBeVisible();
+  const firstHeading = frame.locator('h1, h2, h3, h4, h5, h6').first();
+  await expect(firstHeading).toHaveText('Example assistant conversation');
+  await expect(firstHeading).toHaveJSProperty('tagName', 'H2');
+  const headingLevels = await frame.locator('h1, h2, h3, h4, h5, h6').evaluateAll((headings) =>
+    headings.map((heading) => Number(heading.tagName.slice(1)))
+  );
+  expect(headingLevels[0]).toBe(2);
+  expect(errors).toEqual([]);
+
+  const screenshot = path.resolve(process.cwd(), `quality/evidence/step-35/after/ai-chat-panel-heading-${testInfo.project.name}.png`);
+  mkdirSync(path.dirname(screenshot), { recursive: true });
+  await page.screenshot({ path: screenshot, animations: 'disabled' });
+  await import('node:fs/promises').then(({ writeFile }) => writeFile(
+    path.resolve(process.cwd(), `quality/evidence/step-35/after/ai-chat-panel-heading-${testInfo.project.name}.json`),
+    JSON.stringify({ route: page.url(), viewport: page.viewportSize(), status: response?.status(), headingLevels, errors, screenshot: path.relative(process.cwd(), screenshot) }, null, 2),
   ));
 });
 

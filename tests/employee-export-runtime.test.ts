@@ -36,7 +36,9 @@ it('standalone employee product preserves nested records and CTA content in a re
     const errors:string[]=[];page.on('pageerror',error=>errors.push(error.message));
     await page.goto(`http://127.0.0.1:${port}`);
     expect(await page.getByRole('link',{name:'Meet your team',exact:true}).count()).toBe(1);
-    await page.getByRole('button',{name:'People Directory',exact:true}).click();
+    const productNavigation=page.getByRole('navigation',{name:'Product screens'}).first();
+    expect(await page.getByRole('navigation',{name:'Project navigation'}).count()).toBe(0);
+    await productNavigation.getByRole('link',{name:'People Directory',exact:true}).click();
     await page.getByRole('cell',{name:'Example colleague A',exact:true}).waitFor();
     expect(await page.getByText('Product team',{exact:true}).count()).toBeGreaterThan(0);
     expect(errors).toEqual([]);

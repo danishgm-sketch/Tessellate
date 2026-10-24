@@ -14,7 +14,7 @@ const previewCases = [
 
 for (const { slug, variant, theme } of previewCases) {
   test(`${slug} ${variant} preview has readable contrast in ${theme} mode`, async ({ page }) => {
-    await page.goto(`/preview/?resource=${slug}&variant=${variant}&theme=${theme}`);
+    await page.goto(`/preview-content/?resource=${slug}&variant=${variant}&theme=${theme}`);
     await expect(page.locator(`[data-node-id="preview-${slug}"]`)).toBeAttached();
     await page.waitForLoadState('networkidle');
 

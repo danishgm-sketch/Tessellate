@@ -162,16 +162,18 @@ test('desktop Workbench selection, panels, canvas controls, and keyboard stay in
     await page.keyboard.press('Enter');
     await expect(page.getByTestId('right-inspector').getByText('Node: layout')).toBeVisible();
 
-    const component = canvas.locator('[data-node-type="component"]').first();
-    const componentId = await component.getAttribute('data-node-id');
-    expect(componentId).toBeTruthy();
-    await page.getByTestId(`layer-node-${componentId}`).click();
-    await expect(page.getByTestId('right-inspector').getByText('Node: component')).toBeVisible();
-    const element = canvas.locator('[data-node-type="element"]').first();
-    const elementId = await element.getAttribute('data-node-id');
-    expect(elementId).toBeTruthy();
-    await page.getByTestId(`layer-node-${elementId}`).click();
-    await expect(page.getByTestId('right-inspector').getByText('Node: element')).toBeVisible();
+    // Compose models each selected Gold resource as a semantic section. Select
+    // a real rendered resource node instead of assuming generated projects
+    // contain lower-level component nodes.
+    await leftPanel.getByRole('button', { name: 'Pages', exact: true }).click();
+    await pageButtons.first().click();
+    await leftPanel.getByRole('button', { name: 'Layers', exact: true }).click();
+    const resourceSection = canvas.locator('[data-node-type="section"][data-resource-variant]').first();
+    await expect(resourceSection).toBeVisible();
+    const resourceSectionId = await resourceSection.getAttribute('data-node-id');
+    expect(resourceSectionId).toBeTruthy();
+    await page.getByTestId(`layer-node-${resourceSectionId}`).click();
+    await expect(page.getByTestId('right-inspector').getByText('Node: section')).toBeVisible();
     const breadcrumb = page.getByTestId('breadcrumb-bar');
     const beforeEscape = await breadcrumb.innerText();
     await page.keyboard.press('Escape');
@@ -201,8 +203,7 @@ test('desktop Workbench selection, panels, canvas controls, and keyboard stay in
       marketingScreenId,
       rootId,
       sectionId,
-      componentId,
-      elementId,
+      resourceSectionId,
       breadcrumbBeforeEscape: beforeEscape,
       breadcrumbAfterEscape: afterEscape,
     };
@@ -361,10 +362,11 @@ test('mobile Workbench uses its inspection flow without losing screen or selecti
     const selectedScreen = await page.locator('.tess-screen').getAttribute('data-screen-id');
 
     const disabledAction = page.getByRole('button', {
-      name: 'Explore Interface System →',
+      name: 'Save preferences',
       exact: true,
     });
     await expect(disabledAction).toBeDisabled();
+    await expect(page.getByText('Connect persistence to save.')).toBeVisible();
     const disabledActionContext = await disabledAction.evaluate((button) => {
       const node = button.closest<HTMLElement>('[data-node-id][data-node-type]');
       const bounds = button.getBoundingClientRect();
@@ -376,7 +378,9 @@ test('mobile Workbench uses its inspection flow without losing screen or selecti
       };
     });
     expect(disabledActionContext.nodeId).toBeTruthy();
-    expect(disabledActionContext.nodeType).toBe('component');
+    // Generated resource-backed sections own their nested preview controls;
+    // selection and inspector state must agree at that semantic boundary.
+    expect(['component', 'element', 'section']).toContain(disabledActionContext.nodeType);
     await page.mouse.click(disabledActionContext.x, disabledActionContext.y);
     await expect(
       page
@@ -399,24 +403,24 @@ test('mobile Workbench uses its inspection flow without losing screen or selecti
     };
     await mobileNavigation.getByRole('button', { name: 'Preview', exact: true }).click();
 
-    const component = page.locator('.tess-screen [data-node-type="component"]').first();
-    const componentId = await component.getAttribute('data-node-id');
-    expect(componentId).toBeTruthy();
-    const elementId = await page
-      .locator('.tess-screen [data-node-type="element"]')
-      .first()
-      .getAttribute('data-node-id');
-    expect(elementId).toBeTruthy();
-    await component.click();
-    await expect(page.getByTestId('right-inspector').getByText('Node: component')).toBeVisible();
+    // Generated compositions expose resource-backed sections, while deeper
+    // component/element nodes are available in projects that contain them.
+    await mobileNavigation.getByRole('button', { name: 'Pages', exact: true }).click();
+    await pageButtons.first().click();
+    await mobileNavigation.getByRole('button', { name: 'Preview', exact: true }).click();
+    const resourceSection = page.locator('.tess-screen [data-node-type="section"][data-resource-variant]').first();
+    const resourceSectionId = await resourceSection.getAttribute('data-node-id');
+    expect(resourceSectionId).toBeTruthy();
+    await resourceSection.click();
+    await expect(page.getByTestId('right-inspector').getByText('Node: section')).toBeVisible();
     await expect(
       mobileNavigation.getByRole('button', { name: 'Inspect', exact: true })
     ).toHaveAttribute('aria-pressed', 'true');
 
     await mobileNavigation.getByRole('button', { name: 'Pages', exact: true }).click();
-    await page.getByTestId(`layer-node-${elementId}`).click();
+    await page.getByTestId(`layer-node-${resourceSectionId}`).click();
     await mobileNavigation.getByRole('button', { name: 'Inspect', exact: true }).click();
-    await expect(page.getByTestId('right-inspector').getByText('Node: element')).toBeVisible();
+    await expect(page.getByTestId('right-inspector').getByText('Node: section')).toBeVisible();
     await mobileNavigation.getByRole('button', { name: 'Preview', exact: true }).click();
     await expect(page.locator('.tess-screen [data-node-id]').first()).toBeVisible();
     await mobileNavigation.getByRole('button', { name: 'Command', exact: true }).click();
@@ -443,8 +447,7 @@ test('mobile Workbench uses its inspection flow without losing screen or selecti
       pages: pageNames,
       firstScreen,
       selectedScreen,
-      selectedComponent: componentId,
-      selectedElement: elementId,
+      selectedResourceSection: resourceSectionId,
       tabs: ['Preview', 'Pages', 'Inspect', 'Command', 'Audit'],
     };
   } finally {

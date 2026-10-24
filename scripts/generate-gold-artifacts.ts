@@ -2,12 +2,19 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { GOLD_40_SLUGS } from '../packages/catalog/src/gold.js';
+import { buildCatalogueFromDirectory } from '../packages/catalog/src/index.js';
+import { ResourceManifestSchema, ResourceSlugSchema, type ResourceManifest } from '../packages/schemas/src/index.js';
 import ts from 'typescript';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 const resourcesDir = path.join(rootDir, 'resources');
+const generatedPaths = {
+  renderer: path.join(rootDir, 'packages', 'renderer', 'src', 'generated-gold-registry.tsx'),
+  previewApp: path.join(rootDir, 'apps', 'preview', 'src', 'generated-previews.ts'),
+  sitePreview: path.join(rootDir, 'apps', 'site', 'src', 'components', 'generated-previews.ts'),
+};
 
 export interface DiscoveredGoldComponent {
   slug: string;
@@ -22,55 +29,109 @@ export interface DiscoveredGoldComponent {
   manifest: Record<string, unknown>;
 }
 
-export function discoverGoldComponents(): DiscoveredGoldComponent[] {
-  const categories = fs.readdirSync(resourcesDir);
-  const discovered: DiscoveredGoldComponent[] = [];
+function isWithinDirectory(directory: string, candidate: string): boolean {
+  const relativePath = path.relative(directory, candidate);
+  return relativePath !== '' && relativePath !== '..' &&
+    !relativePath.startsWith(`..${path.sep}`) && !path.isAbsolute(relativePath);
+}
 
-  for (const slug of GOLD_40_SLUGS) {
-    let foundCat = '';
-    let foundPath = '';
+function resolveResourceDirectory(resourcesRoot: string, resourceDir: string): string {
+  const rootStat = fs.lstatSync(resourcesRoot);
+  if (rootStat.isSymbolicLink() || !rootStat.isDirectory()) {
+    throw new Error(`Catalogue resource root must be a real directory: '${resourcesRoot}'.`);
+  }
+  const canonicalRoot = fs.realpathSync(resourcesRoot);
+  const resolvedDir = path.resolve(resourceDir);
+  if (!isWithinDirectory(canonicalRoot, resolvedDir)) {
+    throw new Error(`Validated resource directory escapes the catalogue root: '${resourceDir}'.`);
+  }
+  const dirStat = fs.lstatSync(resolvedDir);
+  if (dirStat.isSymbolicLink() || !dirStat.isDirectory()) {
+    throw new Error(`Validated resource directory must be a real directory: '${resourceDir}'.`);
+  }
+  const canonicalDir = fs.realpathSync(resolvedDir);
+  if (!isWithinDirectory(canonicalRoot, canonicalDir)) {
+    throw new Error(`Validated resource directory resolves outside the catalogue root: '${resourceDir}'.`);
+  }
+  return canonicalDir;
+}
 
-    for (const cat of categories) {
-      const candidate = path.join(resourcesDir, cat, slug, 'index.tsx');
-      if (fs.existsSync(candidate)) {
-        foundCat = cat;
-        foundPath = candidate;
-        break;
-      }
-    }
+function readResourceSource(resourceDir: string, fileName: string, required: boolean): string | undefined {
+  const candidate = path.resolve(resourceDir, fileName);
+  if (!isWithinDirectory(resourceDir, candidate)) {
+    throw new Error(`Resource source path escapes its directory: '${fileName}'.`);
+  }
+  if (!fs.existsSync(candidate)) {
+    if (required) throw new Error(`Required generated source is missing: '${candidate}'.`);
+    return undefined;
+  }
+  const realCandidate = fs.realpathSync(candidate);
+  if (!isWithinDirectory(resourceDir, realCandidate)) {
+    throw new Error(`Resource source resolves outside its directory: '${fileName}'.`);
+  }
+  const sourceStat = fs.statSync(realCandidate);
+  if (!sourceStat.isFile()) {
+    throw new Error(`Resource source is not a file: '${candidate}'.`);
+  }
+  if (sourceStat.size > 1024 * 1024) {
+    throw new Error(`Resource source exceeds the 1 MiB generated-source limit: '${candidate}'.`);
+  }
+  return fs.readFileSync(realCandidate, 'utf-8').replace(/\r\n/g, '\n');
+}
 
-    if (!foundPath) {
-      throw new Error(`Failed to find component for Gold slug: ${slug}`);
-    }
+function sourceImportPath(fromFile: string, resourceDir: string, fileName: 'index.tsx' | 'preview.tsx'): string {
+  const emittedName = fileName.replace(/\.tsx$/, '.js');
+  return path.relative(path.dirname(fromFile), path.join(resourceDir, emittedName)).replaceAll('\\', '/');
+}
 
-    const manifestPath = path.join(resourcesDir, foundCat, slug, 'manifest.json');
-    let manifest: Record<string, unknown> = {};
-    if (fs.existsSync(manifestPath)) {
-      manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
-    }
-
-    const code = fs.readFileSync(foundPath, 'utf-8').replace(/\r\n/g,'\n');
-
-    // Find component export name
-    // Matches export function Foo or export const Foo
-    const match = code.match(/export\s+(?:function|const|class)\s+([A-Za-z0-9_]+)/);
-    if (!match || !match[1]) {
-      throw new Error(`Failed to find component export in ${foundPath}`);
-    }
-
-    const componentName = match[1];
-    discovered.push({
-      slug,
-      id: (manifest.id as string) || undefined,
-      category: foundCat,
-      componentName,
-      importPath: `../../../resources/${foundCat}/${slug}/index.js`,
-      sourceCode: code,
-      manifest,
-    });
+function createDiscoveredComponent(
+  resourcesRoot: string,
+  rawManifest: ResourceManifest,
+  resourceDir: string
+): DiscoveredGoldComponent | undefined {
+  const manifest = ResourceManifestSchema.parse(rawManifest);
+  if (!ResourceSlugSchema.safeParse(manifest.slug).success) {
+    throw new Error(`Manifest has an invalid canonical resource slug: '${manifest.slug}'.`);
+  }
+  const canonicalDir = resolveResourceDirectory(resourcesRoot, resourceDir);
+  const code = readResourceSource(canonicalDir, 'index.tsx', false);
+  if (!code) return undefined;
+  const match = code.match(/export\s+(?:function|const|class)\s+([A-Z][A-Za-z0-9_]*)/);
+  if (!match?.[1]) {
+    throw new Error(`Failed to find a named component export in '${canonicalDir}'.`);
   }
 
-  return discovered;
+  const previewCode = readResourceSource(canonicalDir, 'preview.tsx', false);
+  const previewMatch = previewCode?.match(/export\s+(?:function|const|class)\s+([A-Z][A-Za-z0-9_]*)/);
+  const relative = path.relative(fs.realpathSync(resourcesRoot), canonicalDir).split(path.sep);
+  return {
+    slug: manifest.slug,
+    id: manifest.id,
+    category: relative[0] ?? 'resources',
+    componentName: match[1],
+    importPath: sourceImportPath(generatedPaths.renderer, canonicalDir, 'index.tsx'),
+    previewName: previewMatch?.[1],
+    previewImportPathPreviewApp: previewMatch
+      ? sourceImportPath(generatedPaths.previewApp, canonicalDir, 'preview.tsx')
+      : undefined,
+    previewImportPathSite: previewMatch
+      ? sourceImportPath(generatedPaths.sitePreview, canonicalDir, 'preview.tsx')
+      : undefined,
+    sourceCode: code,
+    manifest: manifest as unknown as Record<string, unknown>,
+  };
+}
+
+export async function discoverGoldComponents(
+  resourceDirectories?: ReadonlyMap<ResourceManifest, string>
+): Promise<DiscoveredGoldComponent[]> {
+  const allComponents = await discoverAllComponents(resourceDirectories);
+  const bySlug = new Map(allComponents.map((component) => [component.slug, component]));
+  return GOLD_40_SLUGS.map((slug) => {
+    const component = bySlug.get(slug);
+    if (!component) throw new Error(`Failed to find validated Gold component for slug: ${slug}`);
+    return component;
+  });
 }
 
 export function generateGoldRendererRegistry(components: DiscoveredGoldComponent[]): string {
@@ -78,11 +139,17 @@ export function generateGoldRendererRegistry(components: DiscoveredGoldComponent
   const mappings: string[] = [];
 
   components.forEach((c, idx) => {
+    if (!ResourceSlugSchema.safeParse(c.slug).success) {
+      throw new Error(`Cannot generate a runtime registry entry for invalid resource slug '${c.slug}'.`);
+    }
+    if (!/^[A-Z][A-Za-z0-9_]*$/.test(c.componentName)) {
+      throw new Error(`Cannot generate a runtime registry entry for invalid component identifier '${c.componentName}'.`);
+    }
     const importAlias = `GoldComp_${idx}_${c.componentName}`;
-    imports.push(`import { ${c.componentName} as ${importAlias} } from '${c.importPath}';`);
-    mappings.push(`  '${c.slug}': ${importAlias} as unknown as React.ComponentType<Record<string, unknown>>,`);
+    imports.push(`import { ${c.componentName} as ${importAlias} } from ${JSON.stringify(c.importPath)};`);
+    mappings.push(`  ${JSON.stringify(c.slug)}: ${importAlias} as unknown as React.ComponentType<Record<string, unknown>>,`);
     if (c.id) {
-      mappings.push(`  '${c.id}': ${importAlias} as unknown as React.ComponentType<Record<string, unknown>>,`);
+      mappings.push(`  ${JSON.stringify(c.id)}: ${importAlias} as unknown as React.ComponentType<Record<string, unknown>>,`);
     }
   });
 
@@ -128,7 +195,7 @@ export function generateGoldSources(components: DiscoveredGoldComponent[]): stri
       depsObj[d.name] = d.version || 'latest';
     }
 
-    return `  '${c.slug}': {
+    return `  ${JSON.stringify(c.slug)}: {
     slug: ${JSON.stringify(c.slug)},
     id: ${JSON.stringify(c.id || '')},
     name: ${JSON.stringify(c.manifest.name || c.slug)},
@@ -170,18 +237,23 @@ export function getGoldResourceSource(slugOrId: string): GoldResourceSource | un
 `;
 }
 
-export async function runGenerate() {
-  const components = discoverAllComponents();
-  console.log(`[generate-gold-artifacts] Discovered ${components.length} runtime resources; Gold eligibility is tracked separately.`);
+export async function runGenerate(resourceDirectories?: ReadonlyMap<ResourceManifest, string>) {
+  const components = await discoverAllComponents(resourceDirectories);
+  const goldSlugs = new Set(GOLD_40_SLUGS);
+  const goldComponents = components.filter((component) => goldSlugs.has(component.slug));
+  if (goldComponents.length !== GOLD_40_SLUGS.length) {
+    throw new Error(`Expected ${GOLD_40_SLUGS.length} verified Gold renderer sources; found ${goldComponents.length}.`);
+  }
+  console.log(`[generate-gold-artifacts] Discovered ${components.length} validated catalogue resources; exposing only ${goldComponents.length} Gold resources to the app renderer.`);
 
   // 1. Write renderer registry
   const rendererFile = path.join(rootDir, 'packages', 'renderer', 'src', 'generated-gold-registry.tsx');
-  fs.writeFileSync(rendererFile, generateGoldRendererRegistry(components), 'utf-8');
+  fs.writeFileSync(rendererFile, generateGoldRendererRegistry(goldComponents), 'utf-8');
   console.log(`[generate-gold-artifacts] Wrote ${rendererFile}`);
 
   const propsFile=path.join(rootDir,'packages/renderer/src/generated-gold-props.ts');
   fs.writeFileSync(propsFile,`// Generated at build time from TypeScript interfaces.
-export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = ${JSON.stringify(Object.fromEntries(components.map(component=>[component.slug,extractAcceptedProps(component.sourceCode,component.slug)])),null,2)};
+export const GOLD_RESOURCE_PROPS: Record<string,readonly string[]> = ${JSON.stringify(Object.fromEntries(goldComponents.map(component=>[component.slug,extractAcceptedProps(component.sourceCode,component.slug)])),null,2)};
 `,'utf-8');
 
   const variantFile=path.join(rootDir,'packages/renderer/src/generated-resource-variants.ts');
@@ -211,63 +283,23 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   });
 }
 
-export function discoverAllComponents(): DiscoveredGoldComponent[] {
-  const categories = fs.readdirSync(resourcesDir);
+export async function discoverAllComponents(
+  resourceDirectories?: ReadonlyMap<ResourceManifest, string>
+): Promise<DiscoveredGoldComponent[]> {
+  const rootStat = fs.lstatSync(resourcesDir);
+  if (rootStat.isSymbolicLink() || !rootStat.isDirectory()) {
+    throw new Error(`Catalogue resource root must be a real directory: '${resourcesDir}'.`);
+  }
+  const canonicalRoot = fs.realpathSync(resourcesDir);
+  const validatedDirectories = resourceDirectories ??
+    (await buildCatalogueFromDirectory(canonicalRoot)).resourceDirectories;
   const discovered: DiscoveredGoldComponent[] = [];
 
-  for (const cat of categories) {
-    const catDir = path.join(resourcesDir, cat);
-    if (!fs.statSync(catDir).isDirectory()) continue;
-
-    const slugs = fs.readdirSync(catDir);
-    for (const slug of slugs) {
-      const compPath = path.join(catDir, slug, 'index.tsx');
-      if (!fs.existsSync(compPath)) continue;
-
-      const manifestPath = path.join(catDir, slug, 'manifest.json');
-      let manifest: Record<string, unknown> = {};
-      if (fs.existsSync(manifestPath)) {
-        try {
-          manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
-        } catch {
-          // Ignore parse errors for manifest
-        }
-      }
-
-      const code = fs.readFileSync(compPath, 'utf-8');
-      const match = code.match(/export\s+(?:function|const|class)\s+([A-Z][A-Za-z0-9_]*)/);
-      if (!match || !match[1]) continue;
-
-      const componentName = match[1];
-
-      // Check preview file
-      const previewPath = path.join(catDir, slug, 'preview.tsx');
-      let previewName: string | undefined;
-      let previewImportPathPreviewApp: string | undefined;
-      let previewImportPathSite: string | undefined;
-
-      if (fs.existsSync(previewPath)) {
-        const previewCode = fs.readFileSync(previewPath, 'utf-8');
-        const pMatch = previewCode.match(/export\s+(?:function|const|class)\s+([A-Z][A-Za-z0-9_]*)/);
-        if (pMatch && pMatch[1]) {
-          previewName = pMatch[1];
-          previewImportPathPreviewApp = `../../../resources/${cat}/${slug}/preview.js`;
-          previewImportPathSite = `../../../../resources/${cat}/${slug}/preview.js`;
-        }
-      }
-
-      discovered.push({
-        slug,
-        id: (manifest.id as string) || undefined,
-        category: cat,
-        componentName,
-        importPath: `../../../resources/${cat}/${slug}/index.js`,
-        previewName,
-        previewImportPathPreviewApp,
-        previewImportPathSite,
-        sourceCode: code,
-        manifest,
-      });
+  for (const [rawManifest, resourceDir] of validatedDirectories) {
+    const manifest = ResourceManifestSchema.parse(rawManifest);
+    const component = createDiscoveredComponent(canonicalRoot, manifest, resourceDir);
+    if (component) {
+      discovered.push(component);
     }
   }
 
@@ -281,14 +313,20 @@ export function generatePreviewsRegistry(components: DiscoveredGoldComponent[], 
 
   components.forEach((c, idx) => {
     if (!c.previewName) return;
+    if (!ResourceSlugSchema.safeParse(c.slug).success) {
+      throw new Error(`Cannot generate a preview registry entry for invalid resource slug '${c.slug}'.`);
+    }
+    if (!/^[A-Z][A-Za-z0-9_]*$/.test(c.previewName)) {
+      throw new Error(`Cannot generate a preview registry entry for invalid component identifier '${c.previewName}'.`);
+    }
     const importPath = target === 'preview-app' ? c.previewImportPathPreviewApp : c.previewImportPathSite;
     if (!importPath) return;
 
     const importAlias = `Preview_${idx}_${c.previewName}`;
-    imports.push(`import { ${c.previewName} as ${importAlias} } from '${importPath}';`);
-    mappings.push(`  '${c.slug}': ${importAlias} as unknown as React.ComponentType<Record<string, unknown>>,`);
+    imports.push(`import { ${c.previewName} as ${importAlias} } from ${JSON.stringify(importPath)};`);
+    mappings.push(`  ${JSON.stringify(c.slug)}: ${importAlias} as unknown as React.ComponentType<Record<string, unknown>>,`);
     if (c.id) {
-      mappings.push(`  '${c.id}': ${importAlias} as unknown as React.ComponentType<Record<string, unknown>>,`);
+      mappings.push(`  ${JSON.stringify(c.id)}: ${importAlias} as unknown as React.ComponentType<Record<string, unknown>>,`);
     }
   });
 

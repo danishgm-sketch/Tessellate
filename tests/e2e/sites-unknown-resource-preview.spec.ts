@@ -14,7 +14,9 @@ test('Sites preview announces an unavailable resource without rendering a substi
 
   const response = await page.goto('/preview/?resource=__missing-resource-for-renderer-audit__');
   expect(response?.status()).toBe(200);
-  const diagnostic = page.getByRole('alert');
+  const diagnostic = page
+    .frameLocator('iframe[title="Isolated Tessellate resource preview"]')
+    .getByRole('alert');
   await expect(diagnostic).toContainText('Unknown resource: __missing-resource-for-renderer-audit__');
   await expect(diagnostic).toContainText('no substitute component is rendered');
   expect(await page.getByRole('button').count()).toBe(0);

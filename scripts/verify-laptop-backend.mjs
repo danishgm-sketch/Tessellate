@@ -14,10 +14,41 @@ const evidence = [];
 const request = (url, options = {}) => fetch(base + url, { ...options, headers: { ...headers, ...(options.headers ?? {}) }, signal: AbortSignal.timeout(4000) });
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const health = async () => (await request('/health')).json();
+const waitForTicketStatus = async (ticket, expectedStatus) => {
+  let lastStatus = null;
+  for (let attempt = 1; attempt <= 60; attempt++) {
+    try {
+      const response = await request(`/status/${ticket.ticketId}`, {
+        headers: { Authorization: `Bearer ${ticket.accessToken}` },
+      });
+      lastStatus = response.status;
+      if (response.ok) {
+        const result = await response.json();
+        if (result.status === expectedStatus) return { result, attempts: attempt };
+      }
+    } catch {
+      // Docker can briefly accept loopback connections while the restarted
+      // worker is still reconnecting to its persistent D1 volume.
+    }
+    await sleep(500);
+  }
+  throw new Error(`Ticket did not return ${expectedStatus} after API recovery (last HTTP ${lastStatus ?? 'unreachable'}).`);
+};
 const submit = async () => {
   const response = await request('/queue', { method: 'POST', body: JSON.stringify({ prompt: 'Improve visual hierarchy and keep existing structure coherent', screenAst: { id: 'root', nodeType: 'layout', semanticRole: 'screen', children: [], props: {}, slots: {} } }) });
   assert.equal(response.status, 200);
   return response.json();
+};
+const submitAfterHostRestart = async () => {
+  let lastStatus = null;
+  for (let attempt = 1; attempt <= 60; attempt++) {
+    const response = await request('/queue', { method: 'POST', body: JSON.stringify({ prompt: 'Improve visual hierarchy and keep existing structure coherent', screenAst: { id: 'root', nodeType: 'layout', semanticRole: 'screen', children: [], props: {}, slots: {} } }) });
+    lastStatus = response.status;
+    if (response.ok) return { ticket: await response.json(), attempts: attempt };
+    assert.equal(response.status, 503, 'Host restart should expose only a retryable unavailable response');
+    await sleep(500);
+  }
+  throw new Error(`Host did not recover after container restart (last HTTP ${lastStatus ?? 'unreachable'}).`);
 };
 async function completed(ticket) {
   for (let count = 0; count < 30; count++) {
@@ -39,13 +70,31 @@ try {
   assert.equal(rejected.status, 401);
   evidence.push({ check: 'host-control-authentication', result: 'PASS' });
 
+  const reportUrl = 'http://127.0.0.1:8788/api/reports';
+  for (let attempt = 0; attempt < 20; attempt++) {
+    const response = await fetch(reportUrl, {
+      method: 'POST',
+      headers: { ...headers, 'cf-connecting-ip': '192.0.2.20' },
+      body: '{}',
+      signal: AbortSignal.timeout(4000),
+    });
+    assert.equal(response.status, 400, `Public write ${attempt + 1} should pass the limiter and fail schema validation`);
+  }
+  const limitedReport = await fetch(reportUrl, {
+    method: 'POST',
+    headers: { ...headers, 'cf-connecting-ip': '192.0.2.20' },
+    body: '{}',
+    signal: AbortSignal.timeout(4000),
+  });
+  assert.equal(limitedReport.status, 429);
+  assert.equal(limitedReport.headers.get('retry-after'), '60');
+  evidence.push({ check: 'local-worker-rate-limit-simulation', result: 'PASS', allowed: 20, rejected: 1, route: '/api/reports' });
+
   execFileSync('docker', ['pause', 'tessellate-laptop-host-1'], { stdio: 'ignore' }); paused = true;
   const durable = await submit();
   execFileSync('docker', ['restart', 'tessellate-laptop-api-1'], { stdio: 'ignore' });
-  for (let n = 0; n < 20; n++) { try { if ((await request('/health')).ok) break; } catch { /* Restart briefly disconnects the loopback port. */ } await sleep(500); }
-  const restored = await request(`/status/${durable.ticketId}`, { headers: { Authorization: `Bearer ${durable.accessToken}` } });
-  assert.equal((await restored.json()).status, 'queued');
-  evidence.push({ check: 'queue-survives-api-container-restart', result: 'PASS' });
+  const restored = await waitForTicketStatus(durable, 'queued');
+  evidence.push({ check: 'queue-survives-api-container-restart', result: 'PASS', recoveryAttempts: restored.attempts });
   await sleep(16000);
   assert.equal((await health()).hostOnline, false);
   const offline = await request('/queue', { method: 'POST', body: JSON.stringify({ prompt: 'Improve hierarchy', screenAst: { id: 'root', nodeType: 'layout', semanticRole: 'screen', children: [], props: {}, slots: {} } }) });
@@ -54,6 +103,11 @@ try {
   execFileSync('docker', ['unpause', 'tessellate-laptop-host-1'], { stdio: 'ignore' }); paused = false;
   await completed(durable);
   evidence.push({ check: 'pending-task-recovers-on-host-resume', result: 'PASS' });
+
+  execFileSync('docker', ['restart', 'tessellate-laptop-host-1'], { stdio: 'ignore' });
+  const restarted = await submitAfterHostRestart();
+  const restartedResult = await completed(restarted.ticket);
+  evidence.push({ check: 'inference-recovers-after-host-container-restart', result: 'PASS', action: restartedResult.resultCommand.action, recoveryAttempts: restarted.attempts });
 
   execFileSync('docker', ['stop', 'tessellate-laptop-api-1'], { stdio: 'ignore' }); apiStopped = true;
   let reachable = true;

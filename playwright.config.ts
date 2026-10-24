@@ -7,6 +7,28 @@ export default defineConfig({
     '**/preview-unknown-resource-regression.spec.ts',
     '**/preview-reduced-motion.spec.ts',
     '**/sites-preview-csp.spec.ts',
+    // This assertion depends on the Sites Worker redirect and response CSP;
+    // plain Astro preview does not apply either header behavior.
+    '**/sites-unknown-resource-preview.spec.ts',
+    // These content/detail audits need the Pages/Sites asset CORS policy for
+    // sandboxed preview iframes; plain `astro preview` does not read `_headers`.
+    '**/catalog-resource-render.spec.ts',
+    '**/copy-quality-step-39.spec.ts',
+    '**/resource-copy-truthfulness-step-39.spec.ts',
+    // This audit records the Sites Worker runtime. It runs in the dedicated
+    // Sites preview config, where opaque-origin preview iframes receive the
+    // Worker asset CORS policy, not the plain Astro preview server.
+    '**/responsive-hardening-step-36.spec.ts',
+    // The Activity Feed disclosure is verified inside its opaque-origin
+    // resource preview and therefore belongs to the Sites Worker harness.
+    '**/activity-feed-sample-disclosure-step-40.spec.ts',
+    // Fault injection includes API proxy failures and therefore belongs to
+    // the dedicated Sites Worker runtime, not plain Astro preview.
+    '**/fault-injection-step-42.spec.ts',
+    // Project scale fixtures are measured in the built Sites Worker profile.
+    '**/project-scale-step-43.spec.ts',
+    // The one-hour Workbench soak has its own Sites Chromium configuration.
+    '**/workbench-long-session-step-43.spec.ts',
   ],
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -14,8 +36,11 @@ export default defineConfig({
   workers: 1,
   reporter: 'list',
   webServer: {
+    // Astro detects coding agents and daemonizes preview. Setting this flag
+    // forces the normal foreground process Playwright can supervise.
     command: 'pnpm --filter @tessellate/site preview --port 4321',
     url: 'http://localhost:4321',
+    env: { ASTRO_PREVIEW_BACKGROUND: '0' },
     reuseExistingServer: true,
     timeout: 30000,
   },

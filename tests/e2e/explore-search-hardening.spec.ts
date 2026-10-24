@@ -2,7 +2,10 @@ import { expect, test } from '@playwright/test';
 
 async function openMobileFiltersIfNeeded(page: import('@playwright/test').Page) {
   if ((page.viewportSize()?.width ?? 1440) < 1024) {
-    await page.getByRole('button', { name: 'Filters', exact: true }).click();
+    const filterButton = page.getByRole('button', { name: 'Filters', exact: true });
+    await filterButton.click();
+    await expect(filterButton).toHaveAttribute('aria-expanded', 'true');
+    await expect(page.getByRole('dialog', { name: 'Explore filters' })).toBeVisible();
   }
 }
 
@@ -23,6 +26,43 @@ test('search returns resources that match declared intent, not only a related wo
   await search.fill('checkout');
   await expect(page).toHaveURL(/q=checkout/);
   await expect(page.getByRole('link', { name: 'Funnel Chart', exact: true })).toBeVisible();
+});
+
+test('Explore search keeps browser-restorable field identity while filtering results', async ({ page }) => {
+  await page.goto('/explore/');
+  const search = page.getByRole('textbox', { name: 'Search catalogue' });
+
+  await expect(search).toHaveAttribute('id', 'catalogue-search');
+  await expect(search).toHaveAttribute('name', 'q');
+  await expect(page.getByText('Showing 50 of 324 resources', { exact: true })).toBeVisible();
+  await search.fill('dashboard');
+  await expect(page).toHaveURL(/q=dashboard/);
+  await expect(page.getByRole('link', { name: 'Dashboard KPI Grid', exact: true })).toBeVisible();
+});
+
+test('Explore search explains and blocks input until its client handlers are ready', async ({ page }) => {
+  let releaseScript!: () => void;
+  const scriptGate = new Promise<void>((resolve) => { releaseScript = resolve; });
+  await page.route('**/_astro/ExploreView.*.js', async (route) => {
+    await scriptGate;
+    await route.continue();
+  });
+
+  const navigation = await page.goto('/explore/', { waitUntil: 'domcontentloaded' });
+  expect(navigation?.status()).toBe(200);
+  const search = page.getByRole('textbox', { name: 'Search catalogue' });
+  try {
+    await expect(search).toBeDisabled();
+    await expect(page.getByTestId('explore-search-hydration-status')).toContainText('Preparing search');
+  } finally {
+    releaseScript();
+  }
+
+  await expect(search).toBeEnabled();
+  await expect(page.getByText('Showing 50 of 324 resources', { exact: true })).toBeVisible();
+  await search.fill('dashboard');
+  await expect(page).toHaveURL(/q=dashboard/);
+  await expect(page.getByRole('link', { name: 'Dashboard KPI Grid', exact: true })).toBeVisible();
 });
 
 test('suggested searches lead to relevant catalog results', async ({ page }) => {
@@ -56,7 +96,7 @@ test('facet selection filters results and survives reload through the URL', asyn
   await expect(summary).toContainText(/Showing \d+ of \d+ resources/);
   const beforeFilter = (await summary.textContent()) ?? '';
 
-  if ((page.viewportSize()?.width ?? 1440) < 1024) await page.getByRole('button', { name: 'Filters', exact: true }).click();
+  await openMobileFiltersIfNeeded(page);
   await page.getByRole('button', { name: /^Density/ }).click();
   const dense = page.getByRole('checkbox', { name: 'Dense', exact: true });
   await dense.check();
@@ -72,7 +112,7 @@ test('facet selection filters results and survives reload through the URL', asyn
   await expect(summary).toContainText(/Showing \d+ of \d+ resources/);
   const filteredSummary = (await summary.textContent()) ?? '';
   await page.reload();
-  if ((page.viewportSize()?.width ?? 1440) < 1024) await page.getByRole('button', { name: 'Filters', exact: true }).click();
+  await openMobileFiltersIfNeeded(page);
   await page.getByRole('button', { name: /^Density/ }).click();
   await expect(page.getByRole('checkbox', { name: 'Dense', exact: true })).toBeChecked();
   await page.getByRole('button', { name: /^Performance/ }).click();
@@ -86,7 +126,7 @@ test('Accessibility facet labels declared conformance targets without claiming c
   await openMobileFiltersIfNeeded(page);
   await page.getByRole('button', { name: /^Accessibility/ }).click();
   await expect(page.getByRole('checkbox', { name: 'AA target or higher', exact: true })).toBeVisible();
-  await expect(page.getByRole('checkbox', { name: 'AAA target', exact: true })).toBeVisible();
+  await expect(page.getByRole('checkbox', { name: 'AAA target', exact: true })).toHaveCount(0);
   await expect(page.getByRole('checkbox', { name: 'Verified AA', exact: true })).toHaveCount(0);
 });
 

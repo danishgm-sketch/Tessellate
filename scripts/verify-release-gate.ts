@@ -32,6 +32,7 @@ import { generateSourceTree } from '../packages/exporter/src/source-tree.js';
 import '../packages/exporter/src/node-disk-resolver.js';
 import { createMcpServer } from '../packages/mcp/src/index.js';
 import app from '../apps/api/src/index.js';
+import { testAuthBearer, testAuthEnv } from '../apps/api/src/__tests__/test-auth-fixture.js';
 
 interface GateResult {
   num: number;
@@ -505,7 +506,7 @@ export async function runReleaseGate(): Promise<{ passed: boolean; results: Gate
     }
 
     // 2. CLI execution
-    const cliOutput = child_process.execSync('pnpm exec tsx packages/cli/src/index.ts --version', {
+    const cliOutput = child_process.execSync('pnpm exec tsx packages/cli/src/bin.ts --version', {
       encoding: 'utf-8',
       cwd: process.cwd(),
     }).trim();
@@ -549,34 +550,45 @@ export async function runReleaseGate(): Promise<{ passed: boolean; results: Gate
   let g14Passed = false;
   let g14Details = '';
   try {
+    const projectId = 'proj_gate_auth_test';
+    const manifest = structuredClone(validProjectFixture);
+    manifest.id = projectId;
+    manifest.name = 'Gate Auth Project';
+    manifest.description = 'Testing authenticated persistence';
+
     const listRes = await app.request('/api/projects', {
       method: 'GET',
-      headers: { Authorization: 'Bearer test-user-alice' },
-    });
+      headers: { Authorization: testAuthBearer('test-user-alice') },
+    }, testAuthEnv);
     const listJson = await listRes.json() as { projects: unknown[] };
 
     const createRes = await app.request('/api/projects', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer test-user-alice',
+        Authorization: testAuthBearer('test-user-alice'),
       },
       body: JSON.stringify({
-        id: 'proj_gate_auth_test',
+        id: projectId,
         name: 'Gate Auth Project',
         description: 'Testing authenticated persistence',
-        manifest: {
-          id: 'proj_gate_auth_test',
-          name: 'Gate Auth Project',
-          description: 'Testing authenticated persistence',
-          screens: [],
-          designDNA: { density: 50, visualAmbition: 50 },
-        },
+        manifest,
       }),
-    });
+    }, testAuthEnv);
 
-    g14Passed = listRes.status === 200 && Array.isArray(listJson.projects) && (createRes.status === 200 || createRes.status === 201);
-    g14Details = `Executed authenticated /api/projects requests via test bindings with owner isolation.`;
+    const ownerRead = await app.request(`/api/projects/${projectId}`, {
+      headers: { Authorization: testAuthBearer('test-user-alice') },
+    }, testAuthEnv);
+    const crossAccountRead = await app.request(`/api/projects/${projectId}`, {
+      headers: { Authorization: testAuthBearer('test-user-bob') },
+    }, testAuthEnv);
+
+    g14Passed = listRes.status === 200 &&
+      Array.isArray(listJson.projects) &&
+      createRes.status === 201 &&
+      ownerRead.status === 200 &&
+      crossAccountRead.status === 403;
+    g14Details = `Authenticated project list/create/owner-read pass; non-owner read is denied.`;
   } catch (err) {
     g14Details = `Error: ${err}`;
   }

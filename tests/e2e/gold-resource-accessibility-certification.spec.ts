@@ -46,7 +46,8 @@ test('Gold resources expose accessible semantics and contrast in every variant',
   for (const resource of goldResources) {
     for (const variant of resource.variants) {
       await page.goto(`/preview/?resource=${resource.slug}&variant=${variant.id}`, { waitUntil: 'domcontentloaded' });
-      await expect(page.locator(`[data-node-id="preview-${resource.slug}"]`)).toBeAttached();
+      const preview = page.frameLocator('iframe[title="Isolated Tessellate resource preview"]');
+      await expect(preview.locator(`[data-node-id="preview-${resource.slug}"]`)).toBeAttached();
       const screenshotKey = `${resource.slug}:${variant.id}`;
       if (screenshotCases.has(screenshotKey)) {
         const screenshotPath = path.join(beforeEvidenceDir, `${resource.slug}-${variant.id}-1440.png`);
@@ -93,4 +94,28 @@ test('Gold resources expose accessible semantics and contrast in every variant',
   const violations = results.flatMap((result) => result.violations
     .map((violation) => `${result.slug}/${result.variant}: ${violation.id} (${violation.impact ?? 'unknown'})`));
   expect(violations, `Gold accessibility findings:\n${violations.join('\n')}`).toEqual([]);
+});
+
+test('Split Product Hero Nocturne keeps its badge readable on the dark canvas', async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== 'sites-chromium', 'Run the isolated preview regression against the Sites Worker.');
+  await page.setViewportSize({ width: 1440, height: 900 });
+  const response = await page.goto('/preview/?resource=split-product-hero&variant=nocturne', { waitUntil: 'domcontentloaded' });
+  expect(response?.status()).toBe(200);
+  const preview = page.frameLocator('iframe[title="Isolated Tessellate resource preview"]');
+  await expect(preview.locator('[data-node-id="preview-split-product-hero"]')).toBeVisible();
+
+  const evidenceDir = path.resolve(process.cwd(), 'quality/evidence/step-35/followup');
+  const beforePath = path.join(evidenceDir, 'split-product-hero-nocturne-before.png');
+  mkdirSync(evidenceDir, { recursive: true });
+  if (!existsSync(beforePath)) {
+    await page.screenshot({ path: beforePath, animations: 'disabled' });
+  }
+
+  const scan = await new AxeBuilder({ page })
+    .options({ preload: false })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'])
+    .analyze();
+  const contrastViolations = scan.violations.filter((violation) => violation.id === 'color-contrast');
+  expect(contrastViolations, JSON.stringify(contrastViolations, null, 2)).toEqual([]);
+  await page.screenshot({ path: path.join(evidenceDir, 'split-product-hero-nocturne-after.png'), animations: 'disabled' });
 });

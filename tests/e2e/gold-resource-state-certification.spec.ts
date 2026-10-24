@@ -27,7 +27,7 @@ async function updatePreviewProps(
   await iframe.evaluate((element, nextProps) => {
     const previewWindow = (element as HTMLIFrameElement).contentWindow;
     // Sandboxed previews have an opaque origin, so the host protocol targets "*";
-    // PreviewHost validates the sender against window.parent and document.referrer.
+    // PreviewHost validates the source window and the same-origin host sender.
     previewWindow?.postMessage({ type: 'TESSELLATE_PREVIEW_UPDATE', props: nextProps }, '*');
   }, props);
 }

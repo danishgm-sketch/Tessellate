@@ -23,7 +23,7 @@ test('Gold resources keep expressive variants readable on dark product canvases'
   }> = [];
 
   for (const resource of goldResources) {
-    await page.goto(`/preview/?resource=${resource.slug}&variant=expressive&theme=dark`);
+    await page.goto(`/preview-content/?resource=${resource.slug}&variant=expressive&theme=dark`);
     await expect(page.locator(`[data-node-id="preview-${resource.slug}"]`)).toBeAttached();
     await page.waitForLoadState('networkidle');
 

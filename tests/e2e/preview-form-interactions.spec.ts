@@ -113,11 +113,26 @@ test('Filter Builder adds editable conditions and removes them without inserting
 });
 
 test('form-control focus does not announce a generic action', async ({ page }) => {
+  const consoleErrors: string[] = [];
+  const uncaught: string[] = [];
+  const failedRequests: string[] = [];
+  const httpErrors: string[] = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+  });
+  page.on('pageerror', (error) => uncaught.push(error.message));
+  page.on('requestfailed', (request) => failedRequests.push(request.url()));
+  page.on('response', (response) => {
+    if (response.status() >= 400) httpErrors.push(`${response.status()} ${response.url()}`);
+  });
+
   await page.goto('/resources/input/', { waitUntil: 'domcontentloaded' });
   const inputPreview = page.frameLocator('iframe[title$=" live preview"]');
-  await inputPreview.getByRole('textbox', { name: 'Full name' }).click();
+  const fullName = inputPreview.getByRole('textbox', { name: 'Full name' });
+  await fullName.click();
   const before = path.join(beforeDir, 'input-misleading-action-status-1440.png');
   if (!existsSync(before)) await page.screenshot({ path: before, animations: 'disabled' });
+  await expect(fullName).toHaveValue('');
   await expect(inputPreview.getByRole('status')).toHaveCount(0);
   await page.screenshot({ path: path.join(afterDir, 'input-no-false-action-status-1440.png'), animations: 'disabled' });
 
@@ -128,8 +143,31 @@ test('form-control focus does not announce a generic action', async ({ page }) =
 
   await page.goto('/resources/textarea/', { waitUntil: 'domcontentloaded' });
   const textareaPreview = page.frameLocator('iframe[title$=" live preview"]');
-  await textareaPreview.locator('textarea').first().click();
+  const notes = textareaPreview.locator('textarea').first();
+  await notes.click();
+  await page.screenshot({
+    path: path.join(afterDir, 'textarea-no-false-action-status-1440.png'),
+    animations: 'disabled',
+  });
+  await expect(notes).toHaveValue('');
   await expect(textareaPreview.getByRole('status')).toHaveCount(0);
+
+  expect(consoleErrors).toEqual([]);
+  expect(uncaught).toEqual([]);
+  expect(failedRequests).toEqual([]);
+  expect(httpErrors).toEqual([]);
+});
+
+test('Combobox selection remains connected to the preview action handler', async ({ page }) => {
+  await page.goto('/resources/combobox/', { waitUntil: 'domcontentloaded' });
+  const preview = page.frameLocator('iframe[title$=" live preview"]');
+  const combobox = preview.getByRole('textbox');
+
+  await combobox.click();
+  await preview.getByRole('button', { name: 'Second option' }).click();
+
+  await expect(combobox).toHaveValue('Second option');
+  await expect(preview.getByRole('status')).toHaveText('Selected second');
 });
 
 test('Button preview still reports an activated example action', async ({ page }) => {

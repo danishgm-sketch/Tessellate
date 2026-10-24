@@ -19,6 +19,7 @@ import {SplitProductHero} from '../resources/sections/split-product-hero/index.j
 import {CaseStudySpotlight} from '../resources/sections/case-study-spotlight/index.js';
 import {CustomerStorySplit} from '../resources/sections/customer-story-split/index.js';
 import {LogoCloudMinimal} from '../resources/sections/logo-cloud-minimal/index.js';
+import {LogoCloudMarquee} from '../resources/sections/logo-cloud-marquee/index.js';
 import {ExecutiveSummaryPanel} from '../resources/blocks/executive-summary-panel/index.js';
 import {StatusOverview} from '../resources/blocks/status-overview/index.js';
 import {CtaDemoBooking} from '../resources/sections/cta-demo-booking/index.js';
@@ -34,8 +35,14 @@ import {FeatureGrid3x2} from '../resources/sections/feature-grid-3x2/index.js';
 import {AIGenerationCompare} from '../resources/ai/ai-generation-compare/index.js';
 import {AIAgentActivityFeed} from '../resources/ai/ai-agent-activity-feed/index.js';
 import {EditorialHero} from '../resources/sections/editorial-hero/index.js';
+import {ActivityFeed} from '../resources/blocks/activity-feed/index.js';
 const hasDisabledButton=(html:string)=>/<button\b[^>]*\sdisabled(?:=|\s|>)/.test(html);
 describe('resource demonstrations do not invent product evidence',()=>{
+ it('labels the hard-coded activity feed entries as sample activity',()=>{
+  const html=renderToStaticMarkup(createElement(ActivityFeed));
+  expect(html).toContain('Sample activity');
+  expect(html).not.toMatch(/Elena R\.|Marcus V\.|Antigravity|validated 72|pull request #142/);
+ });
  it('labels agent-feed events as sample data and uses a valid standalone heading',()=>{
   const html=renderToStaticMarkup(createElement(AIAgentActivityFeed));
   expect(html).toContain('Static sample data');
@@ -52,6 +59,7 @@ describe('resource demonstrations do not invent product evidence',()=>{
   const html=renderToStaticMarkup(createElement(FeatureMetrics));
   expect(html).not.toMatch(/100\/100|verified clean|Audited Performance/);
   expect(html).toMatch(/measure/i);
+  expect(html).toContain('Example target');
  });
  it('does not assert encryption or certification without implemented evidence',()=>{
   const html=renderToStaticMarkup(createElement(SecurityProof));
@@ -76,12 +84,27 @@ describe('resource demonstrations do not invent product evidence',()=>{
  it('does not fabricate customer adoption or reviews',()=>{
   const html=renderToStaticMarkup(createElement(SocialProofHero));
   expect(html).toMatch(/example/i);
+  expect(html).not.toMatch(/★/);
   expect(html).not.toMatch(/40,000|42,800|1,200 reviews|Zero security incidents|powers reliable/);
  });
  it.each([TestimonialQuote,TestimonialGrid,TestimonialCarousel])('identifies example testimonials',Component=>{
   const html=renderToStaticMarkup(createElement(Component));
   expect(html).toMatch(/illustrative|example/i);
   expect(html).not.toMatch(/Elena Rostova|Samantha Reed|Marcus Vance|Aria Chen|Devon Patel|under three weeks|world-class application/);
+ });
+ it('does not invent ratings for illustrative testimonials and labels supplied ratings',()=>{
+  const example=renderToStaticMarkup(createElement(TestimonialGrid));
+  expect(example).not.toMatch(/★/);
+  const rated=renderToStaticMarkup(createElement(TestimonialGrid,{
+   testimonials:[{quote:'Approved statement',author:'Approved Customer',role:'Engineering Lead',company:'Approved Studio',rating:4}],
+  }));
+  expect(rated).toContain('aria-label="4 out of 5 stars"');
+  expect(rated).toContain('★★★★');
+  expect(rated).not.toContain('★★★★★');
+  const invalid=renderToStaticMarkup(createElement(TestimonialGrid,{
+   testimonials:[{quote:'Invalid rating',author:'Customer',role:'Reviewer',company:'Studio',rating:6}],
+  }));
+  expect(invalid).not.toMatch(/★/);
  });
  it('truthfully disables booking without an integration',()=>{
   const html=renderToStaticMarkup(createElement(PricingEnterprise));
@@ -110,6 +133,15 @@ describe('resource demonstrations do not invent product evidence',()=>{
   const html=renderToStaticMarkup(createElement(LogoCloudMinimal));
   expect(html).not.toMatch(/Acme Corp|Starlight Data|Hyperion|Vertex Labs|Nexus AI/);
   expect(html).toMatch(/example|approved logos/i);
+ });
+ it('labels marquee defaults as sample partners and uses caller-supplied names without the sample note',()=>{
+  const sample=renderToStaticMarkup(createElement(LogoCloudMarquee));
+  expect(sample).toContain('Sample names only');
+  expect(sample).toContain('Sample Partner A');
+  expect(sample).not.toMatch(/Vercel|Stripe|Linear|Raycast|OpenAI|Anthropic|Supabase|Cloudflare/);
+  const custom=renderToStaticMarkup(createElement(LogoCloudMarquee,{logos:['Approved Studio']}));
+  expect(custom).toContain('Approved Studio');
+  expect(custom).not.toContain('Sample names only');
  });
  it('labels executive dashboard values as illustrative',()=>{
   const html=renderToStaticMarkup(createElement(ExecutiveSummaryPanel));
