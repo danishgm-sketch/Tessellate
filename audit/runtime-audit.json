@@ -10706,7 +10706,7 @@
         "apps/site/src/components/home/ThreeDirectionsDemo.tsx",
         "tests/e2e/home-demo-hydration.spec.ts"
       ],
-      "fixCommit": null,
+      "fixCommit": "2d2cb4a3d72ccfde5e83e233283bbdb35dfdadd4",
       "status": "fixed-awaiting-deployed-verification",
       "evidence": "Deployed v26 failure reports and screenshots are under audit/evidence/v26/home-demo/. The regression reproduced at both target viewports. The local production build now starts with the button disabled, provides a visible readiness status and aria-describedby, and passes the blocked-island regression plus the normal three-direction preview and Direction C handoff at 1440x900 and 390x844. The final focused run passed all 6 Astro-preview and all 6 Sites Worker desktop/mobile cases. Captures are under audit/evidence/local-final-home-fix/ and audit/evidence/local-final-sites-home-fix/.",
       "verification": "Fix is verified against local Astro and Sites Worker production previews only. Keep open until the next saved Sites version is published and the same deployed pre-hydration, direction-generation, and handoff checks pass."
