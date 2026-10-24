@@ -1,11 +1,11 @@
 # Step 45 — Public review verification
 
-Status: in progress. Sites version 21 was saved, but not deployed. It predates the AUD-319 narrow-header correction and is superseded; do not deploy it. A corrected version must be saved after the fix passes the release checks, then shown for owner approval.
+Status: in progress. Sites versions 21 and 22 were saved, but not deployed. Version 21 predates the AUD-319 narrow-header correction. Version 22 packages canonical source `849894fe5e325b20908984be540ab4420d5763c9`. Both are superseded by the Explore search corrections now under review; neither is approved for deployment. Save and show a replacement version built from the exact pushed source before requesting publication approval.
 
 ## Baseline capture
 
-The current public review Site is version 20, associated with source commit
-`50a2c7f11dcda22a8bfa61b83e3d687291b35905`. A clean Playwright Chromium
+The current public review Site is version 20, associated with Sites source-mirror commit
+`ba10560aa5be5771e9565af250d4be5012072b88`. A clean Playwright Chromium
 context was used at 1440×900 and 390×844, with empty localStorage. Both routes
 returned HTTP 200; the baseline reported no browser console errors or warnings,
 uncaught exceptions, failed requests, or HTTP error responses. The document
@@ -32,6 +32,20 @@ despite 56.9kB estimated wasted transfer. No performance change is justified
 from those zero-savings findings alone. The trace measurements and limitations
 are recorded in `quality/evidence/step-45/pre-rc-performance.json`.
 
+A separate live homepage DevTools trace at 929×861 measured LCP 321ms (TTFB
+47ms, render delay 274ms) and CLS 0; its 27 requests all returned HTTP 200.
+The Explore interaction run made 128 requests: 127 returned HTTP 200 and the browser's
+automatic `/favicon.ico` request returned HTTP 404 (AUD-291); `/data/catalog.json`
+returned HTTP 200. No console errors or horizontal overflow were observed. The
+trace and interaction record are in
+`quality/evidence/step-38/after/sites-home-trace-v20-2026-10-24.json` and
+`quality/evidence/step-45/site-v20-explore-search-live.json`; desktop and mobile
+before screenshots are the adjacent `site-v20-*` captures. The live v20 kept
+all 50 current result links and the same four preview iframe nodes mounted for
+273ms while `onboarding` was typed, then showed 15 matching results; this closes
+AUD-320 against the deployed Site. AUD-321's stale zero-results transition did
+reproduce locally and remains pending public verification.
+
 ## Findings and local fixes
 
 - AUD-317 records the unrelated default brief. The default is now an employee
@@ -47,10 +61,12 @@ are recorded in `quality/evidence/step-45/pre-rc-performance.json`.
   the deployed version. The local responsive change is covered by browser
   tests and is awaiting deployed verification.
 
-The audit contains 319 findings: 0 critical, 66 high, 239 medium, and 14 low.
-At this point 27 are closed after deployed verification, 203 are fixed locally
-and awaiting deployed checks, 86 are locally verified, and 2 retain a legacy
-`fixed` status. No new issue is closed based on local-only evidence.
+The audit contains 321 findings: 0 critical, 66 high, 241 medium, and 14 low.
+At this point 28 are closed after deployed verification, 203 are fixed locally
+and awaiting deployed checks, 88 are locally verified, and 2 retain a legacy
+`fixed` status. AUD-320 is closed against deployed v20 behavior. AUD-321 was
+found and fixed during the full browser rerun; it is not closed until a new
+published review version verifies it.
 
 ## Local release-gate rerun
 
@@ -72,14 +88,17 @@ gzip budgets pass.
 
 The only version currently available to the public is version 20. Version 21
 was saved from Sites source commit
-`5b4280647b1ce9443e72d56a17f292810ecd2e63`; its deployment ID and hosted
-screenshot are null. D1 and R2 bindings are also null. The exact packaged
+`5b4280647b1ce9443e72d56a17f292810ecd2e63`; version 22 was saved from mirror
+commit `892723597b36ae5dcca964899fa1daa8be21e5f9`, corresponding to canonical
+source `849894fe5e325b20908984be540ab4420d5763c9`. Neither has a deployment ID
+or hosted screenshot. D1 and R2 bindings are also null. The exact packaged
 Worker was smoke-tested locally at 1440×900 and 390×844: 26/26 requests returned
 HTTP 200, there were no console errors or horizontal overflow, and the mobile
 document width matched 390px. Its screenshots were shown in the Codex task but
-Sites did not provide a hosted preview URL. This version predates the latest
-narrow-header fix and is superseded. The fixed source must pass release checks
-and be saved as a new version; publication remains blocked pending the owner's
+Sites did not provide a hosted preview URL. Version 22 includes the narrow-header
+fix but predates the Explore search fixes now under review. Both saved versions
+are superseded. The corrected source must pass current-head GitHub CI and be
+saved as a new version; publication remains blocked pending the owner's
 approval of that exact version.
 
 The Sites source mirror excludes only the large audit screenshot/evidence

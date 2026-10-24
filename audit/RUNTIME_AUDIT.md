@@ -15,7 +15,7 @@ captures are under `evidence/step-07/deployed-v13-after-fix/`,
 are in [`runtime-audit.json`](./runtime-audit.json); a finding closes only after
 its affected behavior passes on a published review version.
 
-**Current disposition:** 318 findings (0 Critical, 66 High, 238 Medium, 14 Low): 27 closed after deployed verification, 203 fixed locally and awaiting issue-specific deployed checks, 86 fixed and verified locally, 2 retain the legacy “fixed” status, and 0 remain open locally. Deployed verification remains a release gate.
+**Current disposition:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low): 28 closed after deployed verification, 203 fixed locally and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy “fixed” status, and 0 remain open locally. Deployed verification remains a release gate.
 
 The v11 and v14 flagship smoke reports record the exact employee-experience brief at 1440 × 900 and 390 × 844: all 324 catalogue entries loaded, all three previews rendered, Direction C opened Workbench, the favicon returned HTTP 200 as image/svg+xml, and the unknown-resource route exposed one assertive alert without a substitute or controls. Both versions had no Compose or Workbench horizontal overflow at 390px. Site v14 recorded zero console errors, uncaught exceptions, failed requests, or HTTP errors across the smoke at either viewport.
 
@@ -3162,6 +3162,26 @@ with zero findings. That harness race is not counted as a product defect.
 - **Affected code:** `apps/site/src/components/home/SiteHeader.tsx` and `tests/e2e/documentation-keyboard-regression.spec.ts`.
 - **Remediation:** Use smaller mobile gaps and the short visible “Build” label below 400px while retaining the established “Start building” accessible name and link destination.
 - **Verification:** The new 320px regression failed before the change and passes after it in desktop and mobile projects. The full local browser run passes with 548 passed, 149 configured skips, and zero failures; the Sites Worker certifies all 324 resources. Current-head GitHub CI and deployed Site verification are pending.
+
+### AUD-320 — Typing a debounced search hid current Explore results and tore down previews
+
+- **Severity:** Medium; catalogue search feedback and preview stability.
+- **Evidence:** The before-fix browser regression observed the accessible status change to “Searching catalogue...”, the previous resource link disappear, and a skeleton grid replace the current results immediately after typing, before the debounce committed. The public v20 check is in `quality/evidence/step-45/site-v20-explore-search-live.json`; desktop and mobile before screenshots are in `quality/evidence/step-45/site-v20-explore-before-desktop.png` and `site-v20-explore-before-mobile.png`. The browser test also holds a `/preview-content/` request in flight and checks that it is not cancelled during this interval. After-fix constrained-browser evidence is in `quality/evidence/step-38/after/constrained-and-large/constrained-4g.json` and `explore-slow-4g-cpu4.png`.
+- **Reproduction:** Open `/explore/` at desktop or mobile size, wait for “Showing 50 of 324 resources”, scroll a resource preview into view, and type `onboarding`. Inspect the page within 250ms. Before the fix, current results were replaced with skeletons immediately.
+- **Root cause:** The pending-state comparison used the live input value rather than the debounced committed query. A keystroke therefore marked still-valid results stale and unmounted their preview iframes.
+- **Affected code:** `apps/site/src/components/ExploreView.tsx`, `tests/e2e/explore-search-hardening.spec.ts`, and `tests/e2e/performance-stress-step-38.spec.ts`.
+- **Remediation:** Compare search completion with the committed query, keep existing cards mounted while a query is pending, and assert that only preview-frame cancellations are permitted when filtering removes cards.
+- **Verification:** The public v20 check kept all 50 current results and the same four preview iframe nodes mounted for 273ms while `onboarding` was typed, then displayed 15 matching results after commit. The new browser regression also failed before the implementation change and passes after it for desktop and mobile. The stress gate no longer uses an arbitrary cancellation-count ceiling; it separately rejects failed requests, HTTP errors, uncaught exceptions, and cancellations outside removed preview frames. Closed on the deployed public v20 behavior.
+
+### AUD-321 — An old zero-results state remained visible while a new query was debouncing
+
+- **Severity:** Medium; truthful search status and empty-state behavior.
+- **Evidence:** The first full Sites Worker run recorded `Showing 0 of 0 resources` and the “No matching resources found” state after the new `onboarding` query had been entered, then showed 15 results in the next sample. The fixed run is recorded in `quality/evidence/step-38/after/explore-query-transition-sites-chromium.json` and `explore-query-transition-sites-chromium.png`.
+- **Reproduction:** At 500×844, search for `no-resource-should-match-this-query`, wait for the empty state, then enter `onboarding`. Before the fix, the old zero-results message remained visible for roughly 19ms during the debounce interval.
+- **Root cause:** The empty-results branch treated only a committed search as pending. While the new input value was still being debounced, the previous zero-hit result state was presented as current.
+- **Affected code:** `apps/site/src/components/ExploreView.tsx` and `tests/e2e/site-route-performance-step-38.spec.ts`.
+- **Remediation:** Keep the pending indicator active for an empty result set whenever the live query differs from the committed query. Populated result cards remain visible and marked busy during the same debounce interval.
+- **Verification:** The Sites Worker regression failed before the fix, then passed after it by requiring a visible “Searching catalogue...” indicator and asserting that the previous empty state never flashes. Public review verification remains pending.
 
 ## LOW (continued)
 

@@ -40,6 +40,66 @@ test('Explore search keeps browser-restorable field identity while filtering res
   await expect(page.getByRole('link', { name: 'Dashboard KPI Grid', exact: true })).toBeVisible();
 });
 
+test('Explore keeps current results and in-flight previews until a debounced query is applied', async ({ page }) => {
+  let interactionPhase = 'before-query';
+  let previewRequestsStarted = 0;
+  const abortedDuringQuery: string[] = [];
+  await page.route('**/preview-content/**', async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await route.continue();
+  });
+  page.on('request', (request) => {
+    try {
+      if (new URL(request.url()).pathname === '/preview-content/') previewRequestsStarted += 1;
+    } catch {
+      // Ignore non-URL requests in the browser event stream.
+    }
+  });
+  page.on('requestfailed', (request) => {
+    let belongsToPreview = false;
+    try {
+      belongsToPreview = new URL(request.url()).pathname === '/preview-content/' ||
+        new URL(request.frame().url()).pathname === '/preview-content/';
+    } catch {
+      // Detached frames can no longer provide their owner URL.
+    }
+    if (interactionPhase === 'query-editing' && belongsToPreview) {
+      abortedDuringQuery.push(request.url());
+    }
+  });
+
+  await page.goto('/explore/', { waitUntil: 'domcontentloaded' });
+  const summary = page.locator('[aria-live="polite"][aria-atomic="true"]');
+  await expect(summary).toHaveText('Showing 50 of 324 resources');
+  const firstResource = page.locator('main a[href^="/r/"]').first();
+  const firstResourceHref = await firstResource.getAttribute('href');
+  expect(firstResourceHref).toBeTruthy();
+  await firstResource.scrollIntoViewIfNeeded();
+  await expect.poll(() => previewRequestsStarted).toBeGreaterThan(0);
+
+  interactionPhase = 'query-editing';
+  await page.getByRole('textbox', { name: 'Search catalogue' }).fill('onboarding');
+  await page.waitForTimeout(50);
+
+  const pendingState = await page.evaluate((href) => ({
+    summary: document.querySelector('[aria-live="polite"][aria-atomic="true"]')?.textContent?.trim(),
+    currentResourceVisible: [...document.querySelectorAll('main a[href^="/r/"]')].some(
+      (link) => link.getAttribute('href') === href,
+    ),
+    skeletonCount: document.querySelectorAll('[data-testid="resource-card-skeleton-grid"]').length,
+  }), firstResourceHref);
+
+  expect(pendingState).toEqual({
+    summary: 'Showing 50 of 324 resources',
+    currentResourceVisible: true,
+    skeletonCount: 0,
+  });
+  expect(abortedDuringQuery).toEqual([]);
+
+  interactionPhase = 'results-refresh';
+  await expect(page.getByRole('link', { name: 'Onboarding Role Select', exact: true })).toBeVisible();
+});
+
 test('Explore search explains and blocks input until its client handlers are ready', async ({ page }) => {
   let releaseScript!: () => void;
   const scriptGate = new Promise<void>((resolve) => { releaseScript = resolve; });
@@ -201,25 +261,4 @@ test('mobile filter drawer is a keyboard dialog with focus containment and Escap
   await page.keyboard.press('Escape');
   await expect(dialog).toHaveCount(0);
   await expect(opener).toBeFocused();
-});
-
-test('typing a query does not repeatedly abort resource preview requests', async ({ page }) => {
-  const abortedPreviews: string[] = [];
-  await page.route('**/preview/**', async (route) => {
-    await new Promise((resolve) => setTimeout(resolve, 350));
-    await route.continue();
-  });
-  page.on('requestfailed', (request) => {
-    if (request.url().includes('/preview/')) abortedPreviews.push(request.url());
-  });
-
-  await page.goto('/explore/');
-  await expect(page.getByText('Showing 50 of 324 resources', { exact: true })).toBeVisible();
-  await page.waitForTimeout(500);
-  abortedPreviews.length = 0;
-  await page.getByLabel('Search catalogue').pressSequentially('luxury checkout', { delay: 70 });
-  await expect(page).toHaveURL(/q=luxury\+checkout/);
-  await page.waitForTimeout(1000);
-
-  expect(abortedPreviews).toHaveLength(0);
 });

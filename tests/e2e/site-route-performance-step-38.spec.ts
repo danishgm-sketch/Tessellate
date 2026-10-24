@@ -198,42 +198,50 @@ test('Explore replaces an empty search state cleanly when the query changes', as
     'The narrow desktop search-transition regression runs in the production-like desktop Chromium project.'
   );
 
+  await page.clock.install();
   await page.setViewportSize({ width: 500, height: 844 });
   await page.goto('/explore');
   await expect(page.getByText('Showing 50 of 324 resources', { exact: true })).toBeVisible();
   const search = page.getByRole('textbox', { name: 'Search catalogue' });
   await search.fill('no-resource-should-match-this-query');
   await expect(page.getByText('No matching resources found')).toBeVisible();
+
+  // Freeze the debounce so this check observes the pending UI even when the
+  // surrounding browser suite is under load.
+  await page.clock.pauseAt(new Date(Date.now() + 60_000));
   await search.fill('onboarding');
-  const transition = await page.evaluate(async () => {
-    const start = performance.now();
-    const samples: Array<{ elapsedMs: number; status: string; emptyStateVisible: boolean }> = [];
-    while (performance.now() - start < 800) {
-      const elapsedMs = performance.now() - start;
-      const status = document.querySelector('[aria-live="polite"]')?.textContent?.trim() ?? '';
-      const emptyStateVisible = Array.from(document.querySelectorAll('h3')).some(
-        (heading) => heading.textContent?.trim() === 'No matching resources found'
-      );
-      if (elapsedMs >= 240 && elapsedMs <= 650) samples.push({ elapsedMs, status, emptyStateVisible });
-      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
-    }
-    return {
-      viewport: `${innerWidth}x${innerHeight}`,
-      samples,
-      transientEmptyState: samples.some(
-        (sample) => sample.emptyStateVisible || sample.status === 'Showing 0 of 0 resources'
-      ),
-    };
-  });
+  const searchingIndicator = page.getByText('Searching catalogue...', { exact: true });
+  await expect(searchingIndicator).toBeVisible();
   await expect(page.getByText('No matching resources found')).toHaveCount(0);
-  await expect(page.getByText(/Showing \d+ of \d+ resources/)).toBeVisible();
-  const outputPath = path.resolve(
-    process.cwd(),
-    `quality/evidence/step-38/after/explore-query-transition-${testInfo.project.name}.json`
-  );
-  await mkdir(path.dirname(outputPath), { recursive: true });
+  const pending = {
+    status: await page.locator('[aria-live="polite"]').textContent(),
+    emptyStateVisible: await page.getByText('No matching resources found').count() > 0,
+    resultCountVisible: await page.getByText(/Showing \d+ of \d+ resources/).isVisible().catch(() => false),
+  };
+  const evidenceDirectory = path.resolve(process.cwd(), 'quality/evidence/step-38/after');
+  await mkdir(evidenceDirectory, { recursive: true });
   await page.screenshot({
-    path: path.resolve(process.cwd(), `quality/evidence/step-38/after/explore-query-transition-${testInfo.project.name}.png`),
+    path: path.join(evidenceDirectory, `explore-query-transition-pending-${testInfo.project.name}.png`),
+  });
+
+  await page.clock.fastForward(250);
+  await expect(page.getByText(/Showing 15 of 15 resources/)).toBeVisible();
+  await expect(page.getByText(/Showing \d+ of \d+ resources/)).toBeVisible();
+  const completed = {
+    status: await page.locator('[aria-live="polite"]').textContent(),
+    emptyStateVisible: await page.getByText('No matching resources found').count() > 0,
+    resultCountVisible: await page.getByText(/Showing \d+ of \d+ resources/).isVisible(),
+  };
+  const transition = {
+    viewport: '500x844',
+    pending,
+    completed,
+    searchingIndicatorVisible: pending.status?.trim() === 'Searching catalogue...',
+    transientEmptyState: pending.emptyStateVisible || pending.status?.includes('Showing 0 of 0'),
+  };
+  const outputPath = path.join(evidenceDirectory, `explore-query-transition-${testInfo.project.name}.json`);
+  await page.screenshot({
+    path: path.join(evidenceDirectory, `explore-query-transition-${testInfo.project.name}.png`),
   });
   await writeFile(outputPath, `${JSON.stringify(transition, null, 2)}\n`, 'utf8');
   await testInfo.attach('Explore query-transition evidence', {
@@ -242,7 +250,11 @@ test('Explore replaces an empty search state cleanly when the query changes', as
   });
 
   expect(transition.viewport).toBe('500x844');
-  expect(transition.transientEmptyState, JSON.stringify(transition.samples)).toBe(false);
+  expect(transition.searchingIndicatorVisible, JSON.stringify(transition)).toBe(true);
+  expect(transition.transientEmptyState, JSON.stringify(transition)).toBe(false);
+  expect(pending.resultCountVisible, JSON.stringify(transition)).toBe(false);
+  expect(completed.emptyStateVisible, JSON.stringify(transition)).toBe(false);
+  expect(completed.resultCountVisible, JSON.stringify(transition)).toBe(true);
 });
 
 test('Explore reserves the catalogue area before asynchronous search completes', async ({ page }, testInfo) => {

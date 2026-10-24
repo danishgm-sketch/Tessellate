@@ -144,7 +144,8 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
   const oramaDbRef = useRef<ResourceOramaDb | null>(null);
   const searchRequestRef = useRef(0);
   const hasCompletedSearch = completedSearchKey !== null;
-  const isSearchPending = isLoading || isSearching || completedSearchKey !== searchSignature(query, filters);
+  const isQueryDebouncing = query !== committedQuery;
+  const isSearchPending = isLoading || isSearching || completedSearchKey !== searchSignature(committedQuery, filters);
   const availableFacetOptions = useMemo(() => {
     const values: Record<SearchFacetKey, Set<string>> = {
       resourceTypes: new Set(),
@@ -486,7 +487,7 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
                   ? 'Catalogue unavailable'
                   : searchError
                     ? 'Search unavailable'
-                    : isSearchPending
+                    : isSearchPending || (searchResults.length === 0 && isQueryDebouncing)
                       ? 'Searching catalogue...'
                       : `Showing ${searchResults.length} of ${totalHits} resource${totalHits === 1 ? '' : 's'}`}
             </span>
@@ -517,19 +518,7 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
                 <ResourceCardSkeleton key={index} index={index} />
               ))}
             </div>
-          ) : searchResults.length > 0 && isSearchPending && !catalogError && !searchError ? (
-            <div
-              aria-busy="true"
-              aria-label="Updating catalogue results"
-              className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3"
-              data-testid="resource-card-skeleton-grid"
-              role="status"
-            >
-              {Array.from({ length: searchResults.length }, (_, index) => (
-                <ResourceCardSkeleton key={index} index={index} />
-              ))}
-            </div>
-          ) : searchResults.length === 0 && isSearchPending && hasCompletedSearch && !catalogError && !searchError ? (
+          ) : searchResults.length === 0 && (isSearchPending || isQueryDebouncing) && hasCompletedSearch && !catalogError && !searchError ? (
             <div
               aria-busy="true"
               className="flex min-h-[250px] items-center justify-center rounded-xl border border-dashed border-[var(--tess-hairline,#D9D6CF)] bg-white p-8 text-center text-xs text-[var(--tess-ink-muted,#62666F)]"
@@ -558,7 +547,10 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+            <div
+              aria-busy={isSearchPending || isQueryDebouncing ? true : undefined}
+              className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6"
+            >
               {searchResults.map((manifest) => (
                 <ResourceCard key={manifest.id} manifest={manifest} />
               ))}

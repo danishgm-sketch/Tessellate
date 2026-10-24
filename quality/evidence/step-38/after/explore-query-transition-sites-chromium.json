@@ -1,126 +1,15 @@
 {
   "viewport": "500x844",
-  "samples": [
-    {
-      "elapsedMs": 254.69999999925494,
-      "status": "Searching catalogue...",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 274.5,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 288.3999999985099,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 309.1000000014901,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 322.19999999925494,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 337.30000000074506,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 355.30000000074506,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 371.6000000014901,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 398.80000000074506,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 412.5,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 421,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 440.80000000074506,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 455.3999999985099,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 470.8999999985099,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 488,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 504.1000000014901,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 521.1000000014901,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 538,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 554.8000000007451,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 571.5,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 587.8999999985099,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 604.5,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 620.6999999992549,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    },
-    {
-      "elapsedMs": 638,
-      "status": "Showing 15 of 15 resources",
-      "emptyStateVisible": false
-    }
-  ],
+  "pending": {
+    "status": "Searching catalogue...",
+    "emptyStateVisible": false,
+    "resultCountVisible": false
+  },
+  "completed": {
+    "status": "Showing 15 of 15 resources",
+    "emptyStateVisible": false,
+    "resultCountVisible": true
+  },
+  "searchingIndicatorVisible": true,
   "transientEmptyState": false
 }

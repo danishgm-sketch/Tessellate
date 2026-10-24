@@ -1,0 +1,54 @@
+{
+  "capturedAt": "2026-10-24T10:02:04Z",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "deployment": "public Site v20",
+  "viewport": "929x861",
+  "browser": "Chrome 156, 1x CPU, no network throttling, cold cache",
+  "metrics": {
+    "lcpMs": 321,
+    "lcpElement": "hero H1 text",
+    "ttfbMs": 47,
+    "lcpRenderDelayMs": 274,
+    "cls": 0,
+    "inpMs": null,
+    "cruxDataAvailable": false,
+    "criticalPathLatencyMs": 566,
+    "renderBlockingCssMs": 59,
+    "estimatedSavingsMs": 0
+  },
+  "document": {
+    "status": 200,
+    "transferContentLengthBytes": 84920,
+    "contentEncoding": null,
+    "cacheControl": "no-transform",
+    "redirects": 0
+  },
+  "network": {
+    "requestCount": 27,
+    "failedRequests": 0,
+    "httpErrors": 0
+  },
+  "console": {
+    "errors": 0,
+    "warnings": 0,
+    "browserIssues": [
+      {
+        "kind": "form-field-identity",
+        "count": 4,
+        "message": "A form field element should have an id or name attribute",
+        "trackedFinding": "AUD-318",
+        "localSourceAlreadyFixed": true
+      }
+    ]
+  },
+  "hydration": {
+    "uncaughtErrors": 0,
+    "interactiveIslandsHydratedAfterLoad": [
+      "SiteHeader",
+      "HeroComposer",
+      "ThreeDirectionsDemo",
+      "FinalComposerFooter"
+    ]
+  },
+  "interpretation": "The measured public page has fast desktop-like lab LCP and no layout shift. The HTML response is uncompressed and carries no-transform, but Chrome estimated no FCP/LCP savings for this navigation. The browser autofill issue is already tracked as AUD-318 and fixed in the current source; deployed verification remains pending."
+}

@@ -273,7 +273,17 @@ test('Explore remains usable on constrained 4G and 4x CPU', async ({ browser }, 
   expect(runtime.uncaughtExceptions).toEqual([]);
   expect(runtime.failedRequests).toEqual([]);
   expect(runtime.httpErrors).toEqual([]);
-  expect(runtime.browserCancellations.length).toBeLessThanOrEqual(20);
+  const unexpectedCancellations = runtime.browserCancellations.filter(({ url, frameUrl, phase: cancelPhase }) => {
+    if (cancelPhase !== 'user-filtered-catalogue') return true;
+    try {
+      const requestPath = new URL(url).pathname;
+      const ownerFramePath = frameUrl ? new URL(frameUrl).pathname : null;
+      return requestPath !== '/preview-content/' && ownerFramePath !== '/preview-content/';
+    } catch {
+      return true;
+    }
+  });
+  expect(unexpectedCancellations, 'only removed sandbox preview frames may cancel requests during catalogue filtering').toEqual([]);
   await cdp.detach();
   await context.close();
 });
