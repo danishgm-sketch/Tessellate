@@ -3,6 +3,10 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './tests/e2e',
   testIgnore: [
+    // Version-pinned live Site probes have their own configs and real deployed
+    // base URLs; never silently execute them against this local Astro preview.
+    '**/*-live-v*.spec.ts',
+    '**/live-*-v*.spec.ts',
     '**/gold-resource-certification.spec.ts',
     '**/preview-unknown-resource-regression.spec.ts',
     '**/preview-reduced-motion.spec.ts',

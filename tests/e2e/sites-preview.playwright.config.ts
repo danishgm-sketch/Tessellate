@@ -27,6 +27,7 @@ export default defineConfig({
     'responsive-hardening-step-36.spec.ts',
     'home-performance-step-38.spec.ts',
     'home-default-brief-truthfulness.spec.ts',
+    'home-demo-hydration.spec.ts',
     'performance-workloads-step-38.spec.ts',
     'site-route-performance-step-38.spec.ts',
     'performance-stress-step-38.spec.ts',
