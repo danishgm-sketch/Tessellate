@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { readFile } from 'node:fs/promises';
 import worker from './worker.js';
 
 describe('Sites host capability', () => {
@@ -28,5 +29,21 @@ describe('Sites host capability', () => {
     );
     expect(response.status).toBe(302);
     expect(response.headers.get('Location')).toBe('https://example.test/preview/?resource=button');
+  });
+
+  it('does not grant deployed page policies access to local development origins', async () => {
+    const assetsEnv = {
+      ASSETS: {
+        fetch: async () => new Response('<!doctype html><html><head></head><body></body></html>', {
+          headers: { 'Content-Type': 'text/html; charset=utf-8' },
+        }),
+      },
+    } as unknown as Env;
+    const response = await worker.fetch(new Request('https://example.test/'), assetsEnv);
+    const policy = response.headers.get('Content-Security-Policy') ?? '';
+    expect(policy).not.toMatch(/https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?\b/i);
+
+    const staticHeaders = await readFile(new URL('../site/public/_headers', import.meta.url), 'utf8');
+    expect(staticHeaders).not.toMatch(/https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?\b/i);
   });
 });
