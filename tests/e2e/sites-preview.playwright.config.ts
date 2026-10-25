@@ -6,6 +6,7 @@ export default defineConfig({
     'composition-quality-smoke.spec.ts',
     'compose-workbench-handoff.spec.ts',
     'compose-responsiveness-hardening.spec.ts',
+    'catalogue-preview-loading-state.spec.ts',
     'explore-search-hardening.spec.ts',
     'gold-resource-certification.spec.ts',
     'catalog-resource-render.spec.ts',

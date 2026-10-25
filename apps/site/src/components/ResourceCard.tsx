@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {isGoldResource} from '@tessellate/catalog/gold';
+import { isPreviewToParentMessage } from '@tessellate/catalog/protocol';
 import type { ResourceManifest } from '@tessellate/schemas';
 import { Eye, Bookmark, ArrowUpRight, Copy, Check } from 'lucide-react';
 
@@ -23,6 +24,9 @@ export function ResourceCard({
   const [saved, setSaved] = useState(false);
   const previewRef=useRef<HTMLDivElement>(null);
   const [previewVisible,setPreviewVisible]=useState(false);
+  const [previewLoaded,setPreviewLoaded]=useState(false);
+  const [previewFailed,setPreviewFailed]=useState(false);
+  const previewFrameRef=useRef<HTMLIFrameElement>(null);
   useEffect(()=>{
     if(typeof IntersectionObserver==='undefined'){setPreviewVisible(true);return undefined;}
     // Mount the isolated resource runtime only when its card enters the viewport.
@@ -32,6 +36,30 @@ export function ResourceCard({
     if(previewRef.current)observer.observe(previewRef.current);
     return ()=>observer.disconnect();
   },[]);
+  useEffect(()=>{
+    const receivePreviewState=(event:MessageEvent)=>{
+      if(
+        event.source!==previewFrameRef.current?.contentWindow ||
+        event.origin!=='null' ||
+        !isPreviewToParentMessage(event.data) ||
+        event.data.resourceId!==manifest.slug
+      ) return;
+      if(event.data.type==='TESSELLATE_PREVIEW_READY'){
+        setPreviewLoaded(true);
+        setPreviewFailed(false);
+      } else if(event.data.type==='TESSELLATE_PREVIEW_ERROR'){
+        setPreviewLoaded(false);
+        setPreviewFailed(true);
+      }
+    };
+    window.addEventListener('message',receivePreviewState);
+    return ()=>window.removeEventListener('message',receivePreviewState);
+  },[manifest.slug]);
+  useEffect(()=>{
+    if(!previewVisible || previewLoaded || previewFailed) return undefined;
+    const timeout=window.setTimeout(()=>setPreviewFailed(true),15000);
+    return ()=>window.clearTimeout(timeout);
+  },[previewVisible,previewLoaded,previewFailed]);
 
   const handleCopy = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -50,10 +78,36 @@ export function ResourceCard({
   return (
     <div className="group relative flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] transition-all duration-200 hover:border-[var(--tess-hairline-strong,#C7C3BA)] hover:shadow-md overflow-hidden">
       {/* 16:10 Preview Frame */}
-      <div ref={previewRef} className="relative aspect-[16/10] w-full bg-[var(--tess-canvas,#F4F2ED)] border-b border-[var(--tess-hairline,#D9D6CF)] flex items-center justify-center p-6 overflow-hidden">
-        {previewVisible ? <iframe src={`/preview-content/?resource=${manifest.slug}`} title={`${manifest.name} actual preview`} sandbox="allow-scripts" loading="lazy" className="w-full h-full border-0 bg-white" /> : <span className="text-xs text-[var(--tess-ink-muted)]">Preview loads when visible</span>}
+      <div ref={previewRef} aria-busy={previewVisible && !previewLoaded && !previewFailed} className="relative aspect-[16/10] w-full bg-[var(--tess-canvas,#F4F2ED)] border-b border-[var(--tess-hairline,#D9D6CF)] flex items-center justify-center p-6 overflow-hidden">
+        {previewVisible ? (
+          <>
+            {!previewLoaded && !previewFailed && (
+              <span role="status" className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center text-xs text-[var(--tess-ink-muted)]">
+                <span className="rounded-full border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] px-3 py-1.5">Loading preview…</span>
+              </span>
+            )}
+            {previewFailed && (
+              <span role="alert" className="absolute inset-0 z-10 flex items-center justify-center px-4 text-center text-xs text-[var(--tess-ink-secondary)]">
+                Preview unavailable.{' '}
+                <a href={`/r/${manifest.slug}`} className="underline underline-offset-2">Open the resource page</a>
+                {' '}for details.
+              </span>
+            )}
+            <iframe
+              ref={previewFrameRef}
+              src={`/preview-content/?resource=${manifest.slug}`}
+              title={`${manifest.name} actual preview`}
+              sandbox="allow-scripts"
+              loading="lazy"
+              onError={() => { setPreviewLoaded(false); setPreviewFailed(true); }}
+              className={`w-full h-full border-0 bg-white transition-opacity duration-150 ${previewLoaded ? 'opacity-100' : 'opacity-0'}`}
+            />
+          </>
+        ) : (
+          <span role="status" className="text-xs text-[var(--tess-ink-muted)]">Preview loads when visible</span>
+        )}
         {/* Hover Actions Overlay (Max 4 actions: Preview, Save, Use, Copy) */}
-        <div className="absolute inset-x-0 bottom-0 sm:inset-0 bg-white sm:bg-[var(--tess-ink,#111217)]/10 backdrop-blur-0 sm:backdrop-blur-[2px] opacity-100 sm:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-150 flex items-center justify-center gap-2 px-2 py-2 sm:p-4">
+        <div className="absolute inset-x-0 bottom-0 z-20 sm:inset-0 bg-white sm:bg-[var(--tess-ink,#111217)]/10 backdrop-blur-0 sm:backdrop-blur-[2px] opacity-100 sm:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity duration-150 flex items-center justify-center gap-2 px-2 py-2 sm:p-4">
           <a
             href={`/r/${manifest.slug}`}
             onClick={(e) => {
