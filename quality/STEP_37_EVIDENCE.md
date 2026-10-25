@@ -3532,77 +3532,56 @@ avigator.credentials`, `cookieStore`, IndexedDB, and Cache Storage. After reads 
 
 ## Open audit work
 
-Do not mark Step 37 complete yet. D1-backed API checks now cover malformed JSON
+Step 37 remains open until the release-candidate Site passes a deployed security
+re-audit. This status replaces an earlier summary that predates later
+registry-gate, laptop-recovery, and v28 checks.
 
-on ten mutation routes and unauthenticated access on nineteen private routes;
+### Current verified state — 2026-10-25
 
-existing regressions cover cross-account access and corrupted stored records.
+- The 324-resource source-isolation audit passes 324/324 without executing
+  contributed code. The registry package covers the hostile source patterns
+  recorded in SEC-37-047 through SEC-37-118; the current audit manifest lists
+  local fixes separately from findings verified on a public Site.
+- Public v28 closes AUD-268 and AUD-336: its app-shell CSP contains no loopback
+  endpoints, inline scripts and style elements use build-certified hashes, and
+  the existing script/style injection probe did not execute. The isolated
+  preview retains its opaque sandbox and restrictive CSP. AUD-323 was separately
+  closed against v26. Evidence is in `quality/evidence/step-37/`.
+- The owner-authorized Windows restart recovery passed on 2026-10-24: all eight
+  expected MGI and Tessellate containers recovered through their existing
+  restart policies; the three health-checked containers were healthy and the
+  Tessellate API health endpoint returned HTTP 200. The verifier did not start
+  Docker or any container. The test did not hold an inference job across OS
+  shutdown, so it does not prove queued-job recovery across that boundary.
+- D-041 keeps the API and inference host on the laptop and optional. It does not
+  provision a remote Cloudflare API, rate-limit namespaces, DNS, tunnel, or
+  OAuth. Those account and ingress checks are not applicable to the approved
+  topology, rather than unverified deployment requirements. Local rate-limit
+  binding shape and namespace uniqueness are covered by
+  `quality/evidence/step-37/rate-limit-namespace-auth-check.json`.
+- No hosted D1 or R2 bindings were provisioned. Deterministic browsing,
+  composition, editing, audit, and export remain usable without the laptop
+  backend.
 
-A local D1-backed pressure smoke also passed 60 concurrent public reads across
+### Remaining release checks
 
-published projects, public collections, and creator links, with every response
+- Re-run the release-candidate security gate against the approved public Site.
+  Include the same app-shell CSP and harmless injection probes, the opaque
+  preview-origin and parent-data isolation checks, the resource-preview CSP and
+  network checks, and the 324-resource admission matrix. Do not mark a finding
+  deployed-verified from local Worker or Sites build output.
+- AUD-274 remains `fixed-awaiting-deployed-verification` in
+  `audit/runtime-audit.json`; its top-level preview navigation restriction must
+  be verified against the release-candidate runtime. Locally verified registry
+  and dependency findings remain recorded with their current per-finding
+  dispositions.
+- A new review version is saved from canonical commit
+  `2a201f4d13dbf5d2339994fd14dc2fe92c3e92ff` as Sites v30 (source-mirror commit
+  `775af0c92354e8fdf33af60b8c0cc31b396c0ab6`). It has not been deployed; the
+  public Site remains on v28, so no v30 security claim is made here.
 
-under the 2 MiB ceiling. Remaining checks include the broader hostile
-
-registry/resource audit beyond the new lexical and symlink containment, slug,
-
-and source-directory provenance regressions and the tested network and storage isolation;
-
-tunnel startup, computer restart, and external deployment verification. The
-
-dedicated host container restart now completes a fresh inference job and both
-
-Tessellate Docker containers return to healthy status. The existing
-
-review Site passed opaque-origin and parent-data
-
-isolation checks but still serves the old broad script/style policy; a desktop
-
-browser probe confirmed arbitrary inline script execution. The local Worker now
-
-blocks that script. Repeat the CSP scope and injection check after the later
-
-review deployment.
-
-The ten configured rate-limit namespace IDs are locally unique across the API
-
-and laptop-backend Workers. Wrangler 4.92.0 is available from the Sites/API
-
-packages, but `wrangler whoami` confirms this session is unauthenticated, so
-
-existence in the target Cloudflare account remains unverified. See
-
-`quality/evidence/step-37/rate-limit-namespace-auth-check.json`. MCP SSE
-
-session churn is covered locally by 24 sequential connect/list/close cycles. Gateway-secret behavior is
-
-covered locally across disconnected Sites, missing backend gateway, wrong
-
-gateway credential, authenticated proxy, and separate host-worker credential;
-
-deployed release-candidate verification remains pending.
-
-The last full local browser run passed 431 tests with 134 configured skips and
-
-zero failures before the SEC-37-100 through SEC-37-105 registry and CSP changes.
-
-It rechecked catalogue resources, variants, flagship workflows, responsive and
-
-accessibility behavior, and local preview/public-shell CSP. After the security
-
-changes, 1,195 unit tests, typecheck, lint, integrated audit/build, catalogue
-
-generation, and the 324-resource isolation matrix passed. Four focused Playwright
-
-form-action and nested-frame isolation cases passed across desktop and mobile
-
-Chromium; no external request was observed. The full browser suite and deployed
-
-review Site have not yet been rerun for these changes. Cloudflare account,
-
-tunnel-startup, and computer-restart checks remain open. Step 38 trace-based Core
-
-Web Vitals work is paused pending Chrome DevTools MCP setup at the owner's request.
+The latest local release run is recorded in `docs/PRODUCT_HARDENING.md` and the
+Step 38/39 evidence. Local passes do not close the release-candidate checks.
 
 ### 2026-10-21 full-suite reliability follow-up
 
