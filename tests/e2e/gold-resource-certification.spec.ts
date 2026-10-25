@@ -141,6 +141,8 @@ test('Gold resources render at every certified width and each declared variant',
 
       const frame = page.frameLocator('iframe[title$=" live preview"]');
       await waitForActualResource(frame, resource.slug, resource.variants[0]?.id);
+      const initialPreviewSrc = await preview.getAttribute('src');
+      if (!initialPreviewSrc) record.findings.push({ type: 'preview-error', detail: 'Preview iframe has no source URL.' });
       const initialBody = await frame.locator('body').innerText();
       if (/Preview failed:|missing-resource-recovery|No component registered|Loading the actual resource/i.test(initialBody)) {
         record.findings.push({ type: 'preview-error', detail: initialBody.slice(0, 400) });
@@ -162,14 +164,7 @@ test('Gold resources render at every certified width and each declared variant',
         const variantButton = page.getByRole('button', { name: variant.name, exact: true });
         await expect(variantButton).toBeVisible();
         await variantButton.click();
-        const src = await preview.getAttribute('src');
-        if (!src || new URL(src, page.url()).searchParams.get('variant') !== variant.id) {
-          record.findings.push({
-            type: 'preview-error',
-            detail: `Selecting "${variant.name}" did not update the preview to variant "${variant.id}".`,
-            variant: variant.id,
-          });
-        }
+        if (initialPreviewSrc) await expect(preview).toHaveAttribute('src', initialPreviewSrc);
         await waitForActualResource(frame, resource.slug, variant.id);
         const bodyText = await frame.locator('body').innerText();
         if (/Preview failed:|missing-resource-recovery|No component registered|Loading the actual resource/i.test(bodyText)) {
@@ -317,7 +312,7 @@ test('Gold resources render at every certified width and each declared variant',
       const motionToggle = page.getByTitle('Reduced Motion: OFF');
       await motionToggle.click();
       await expect(page.getByTitle('Reduced Motion: ON')).toBeVisible();
-      await expect.poll(() => preview.getAttribute('src')).toMatch(/reducedMotion=true/);
+      if (initialPreviewSrc) await expect(preview).toHaveAttribute('src', initialPreviewSrc);
       await expect.poll(() => frame.locator('[data-node-id]').first().getAttribute('class')).toContain('transition-none');
     } catch (cause) {
       record.findings.push({ type: 'test-error', detail: cause instanceof Error ? cause.message : String(cause) });

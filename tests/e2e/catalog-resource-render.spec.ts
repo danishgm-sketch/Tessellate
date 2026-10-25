@@ -159,6 +159,8 @@ test('all catalogue resources render at every certified width in the Sites Worke
         await expect(page.getByRole('heading', { level: 1, name: resource.name, exact: true })).toBeVisible();
         const preview = page.locator('iframe[title$=" live preview"]');
         await expect(preview).toHaveCount(1);
+        const initialPreviewSrc = await preview.getAttribute('src');
+        if (!initialPreviewSrc) record.findings.push({ type: 'preview-error', detail: 'Preview iframe has no source URL.' });
         const sandbox = (await preview.getAttribute('sandbox'))?.split(/\s+/) ?? [];
         if (!sandbox.includes('allow-scripts') || sandbox.includes('allow-same-origin')) {
           record.findings.push({ type: 'preview-error', detail: `Unexpected preview sandbox: ${sandbox.join(' ')}.` });
@@ -172,11 +174,7 @@ test('all catalogue resources render at every certified width in the Sites Worke
           await expect(variantButton).toBeVisible();
           advanceOperation(`Certification test selected the ${variant.name} preview variant.`);
           await variantButton.click();
-          const src = await preview.getAttribute('src');
-          const selectedVariant = src ? new URL(src, page.url()).searchParams.get('variant') : null;
-          if (selectedVariant !== variant.id) {
-            record.findings.push({ type: 'preview-error', detail: `Selecting ${variant.name} produced preview variant ${selectedVariant ?? 'none'} instead of ${variant.id}.`, variant: variant.id });
-          }
+          if (initialPreviewSrc) await expect(preview).toHaveAttribute('src', initialPreviewSrc);
           const iframeHandle = await preview.elementHandle();
           const previewFrame = await iframeHandle?.contentFrame();
           await previewFrame?.waitForLoadState('load', { timeout: 15000 });

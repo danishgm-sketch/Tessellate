@@ -194,13 +194,15 @@ test('a preview can trigger only one parent initialization response', async ({ p
   expect(httpErrors).toEqual([]);
 
   const previewButton = frame.getByRole('button', { name: 'Click me', exact: true });
+  const initialPreviewSrc = await preview.getAttribute('src');
+  if (!initialPreviewSrc) throw new Error('The button preview has no source URL.');
   const initialButtonClass = await previewButton.getAttribute('class');
   const variantBeforePath = test.info().project.name.includes('mobile')
     ? 'audit/evidence/v25/security/preview-host-variant-before-390.png'
     : 'audit/evidence/v25/security/preview-host-variant-before-1440.png';
   await page.screenshot({ path: variantBeforePath, fullPage: true });
   await page.getByRole('button', { name: 'Expressive', exact: true }).click();
-  await expect(preview).toHaveAttribute('src', /variant=expressive/);
+  await expect(preview).toHaveAttribute('src', initialPreviewSrc);
   await expect
     .poll(() => previewButton.getAttribute('class'))
     .not.toBe(initialButtonClass);

@@ -83,9 +83,6 @@ export function ResourcePreviewFrame({
     setDevice('desktop');
     setTheme('light');
     setReducedMotion(false);
-    if (iframeRef.current) {
-      iframeRef.current.src = `${previewUrl}?resource=${manifest.slug}&variant=${defaultVariant}&theme=light&device=desktop`;
-    }
   };
 
   const deviceWidthClass = {
@@ -94,7 +91,7 @@ export function ResourcePreviewFrame({
     mobile: 'w-[360px]',
   }[device];
 
-  const constructedSrc = `${previewUrl}?resource=${manifest.slug}&variant=${variant}&theme=${theme}&device=${device}&reducedMotion=${reducedMotion}`;
+  const initialIframeSrc = `${previewUrl}?resource=${encodeURIComponent(manifest.slug)}&variant=${encodeURIComponent(defaultVariant)}&theme=${initialTheme}&device=${initialDevice}&reducedMotion=false`;
 
   return (
     <div className="flex flex-col rounded-xl border border-[var(--tess-hairline,#D9D6CF)] bg-[var(--tess-surface,#FAF9F6)] overflow-hidden shadow-xs">
@@ -207,7 +204,7 @@ export function ResourcePreviewFrame({
         >
           <iframe
             ref={iframeRef}
-            src={constructedSrc}
+            src={initialIframeSrc}
             title={`${manifest.name} live preview`}
             sandbox="allow-scripts"
             onLoad={() => {

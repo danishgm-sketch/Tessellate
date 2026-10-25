@@ -8,8 +8,14 @@ mkdirSync(beforeDir, { recursive: true });
 mkdirSync(afterDir, { recursive: true });
 
 test.beforeEach(async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== 'sites-chromium', 'Form interaction regressions run against the isolated Sites Worker preview.');
-  await page.setViewportSize({ width: 1440, height: 900 });
+  const isReducedMotionRegression =
+    testInfo.title === 'Reduced Motion toggle disables CSS transitions in the live resource preview';
+  const isMobileSitesPreview = testInfo.project.name === 'sites-mobile-chromium';
+  test.skip(
+    testInfo.project.name !== 'sites-chromium' && !(isMobileSitesPreview && isReducedMotionRegression),
+    'Form interaction regressions run against the isolated Sites Worker preview.'
+  );
+  await page.setViewportSize(isMobileSitesPreview ? { width: 390, height: 844 } : { width: 1440, height: 900 });
 });
 
 test('Text Input and Textarea retain text typed into the live preview', async ({ page }) => {
@@ -180,14 +186,27 @@ test('Button preview still reports an activated example action', async ({ page }
 test('Reduced Motion toggle disables CSS transitions in the live resource preview', async ({ page }) => {
   await page.goto('/resources/fade-up-reveal/', { waitUntil: 'domcontentloaded' });
   const preview = page.frameLocator('iframe[title$=" live preview"]');
+  const iframe = page.locator('iframe[title$=" live preview"]');
   const card = preview.locator('div.w-full.p-6');
 
   await expect(card).toHaveCount(1);
+  let iframeNavigationCount = 0;
+  page.on('framenavigated', (frame) => {
+    if (frame !== page.mainFrame()) iframeNavigationCount += 1;
+  });
+  const initialIframeNavigationCount = iframeNavigationCount;
+  const initialSrc = await iframe.getAttribute('src');
+  if (!initialSrc) throw new Error('The live resource preview has no source URL.');
   await expect.poll(() => card.evaluate((element) => getComputedStyle(element).transitionDuration)).toBe('0.3s');
+  const screenshotViewport = test.info().project.name.includes('mobile') ? 'mobile' : 'desktop';
+  const screenshotBase = `quality/evidence/step-38/resource-preview-reduced-motion-${screenshotViewport}`;
+  await page.screenshot({ path: `${screenshotBase}-before.png`, fullPage: true });
 
   await page.getByTitle('Reduced Motion: OFF').click();
   await expect(page.getByTitle('Reduced Motion: ON')).toBeVisible();
+  await expect(iframe).toHaveAttribute('src', initialSrc);
   await expect.poll(() => card.evaluate((element) => getComputedStyle(element).transitionDuration)).toBe('0s');
+  await page.screenshot({ path: `${screenshotBase}-after.png`, fullPage: true });
   await preview.getByRole('button', { name: 'Replay Entrance' }).click();
   await expect(preview.getByRole('status')).toHaveText('Entrance animation skipped because reduced motion is enabled.');
   await expect.poll(() => card.evaluate((element) => getComputedStyle(element).opacity)).toBe('1');
@@ -195,4 +214,6 @@ test('Reduced Motion toggle disables CSS transitions in the live resource previe
   await page.getByTitle('Reduced Motion: ON').click();
   await expect(page.getByTitle('Reduced Motion: OFF')).toBeVisible();
   await expect.poll(() => card.evaluate((element) => getComputedStyle(element).transitionDuration)).toBe('0.3s');
+  await expect(iframe).toHaveAttribute('src', initialSrc);
+  expect(iframeNavigationCount).toBe(initialIframeNavigationCount);
 });
