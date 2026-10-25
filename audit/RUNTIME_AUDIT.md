@@ -22,7 +22,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 335 findings (0 Critical, 66 High, 252 Medium, 17 Low): 30 closed after deployed verification, 215 fixed locally and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 0 remain open locally. The v26 Site closes AUD-140 and AUD-334. AUD-335 is fixed locally and awaits deployed verification; older findings also remain pending their issue-specific checks.
+**Current disposition:** 336 findings (0 Critical, 66 High, 253 Medium, 17 Low): 32 closed after deployed verification, 214 fixed locally and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 0 remain open locally. The v26 Site closes AUD-140, AUD-268, AUD-323, and AUD-334. AUD-335 and AUD-336 are fixed locally and await deployed verification; older findings also remain pending their issue-specific checks.
 
 ## v26 deployed-site checkpoint
 
@@ -39,6 +39,47 @@ were sampled at 360, 390, 430, 768, 1024, 1280, 1440 and 1536 CSS pixels: all 56
 captures returned HTTP 200 without runtime/network errors or document overflow.
 Machine-readable route classifications are in
 [`evidence/v26/route-classifications.json`](evidence/v26/route-classifications.json).
+
+The v26 deployed security retest closes AUD-268: Chrome 156 blocked a harmless
+inline script and style-element probe, and the resource-detail preview ran in
+an `allow-scripts`-only sandbox with parent document access denied. The home
+and `/r/button` pages returned 200 with no console errors or failed requests.
+The deployed Expressive animated-gradient preview also loaded with its hashed
+style policy and no CSP error, closing AUD-323. The separate
+`style-src-attr 'unsafe-inline'` policy allowance remains explicit for rendered
+style attributes. Evidence and desktop/mobile screenshots are in
+[`quality/evidence/step-37/`](../quality/evidence/step-37/).
+
+The clean v26 response also exposed AUD-336: the public app-shell CSP allowed
+`http://localhost:8787` in `connect-src` and local Vite/Astro ports in
+`frame-src`. No public browser code uses these loopback endpoints; embedded
+resource previews use the Site's same-origin `/preview-content/` route. The
+homepage returned 200, all 27 observed requests returned 200, and the isolated
+Chrome context had no console messages. The regression failed against v26 and
+now checks both the Sites Worker response and static `_headers` fallback. Local
+policy fix is complete; keep AUD-336 open until a new approved Site verifies
+the response no longer contains loopback origins. Evidence is in
+[`quality/evidence/step-37/deployed-v26-csp-allowlist.json`](../quality/evidence/step-37/deployed-v26-csp-allowlist.json).
+
+### AUD-336 — Medium — Public CSP allowed local development origins
+
+- **Evidence:** Deployed v26 returned HTTP 200 at `/` with
+  `connect-src http://localhost:8787` and `frame-src` localhost ports 4321 and
+  5173. A clean Chrome DevTools context at 1440×900 recorded 27 successful
+  requests, no failed requests, and no console errors or warnings. Capture and
+  response data: [`deployed-v26-csp-allowlist.json`](../quality/evidence/step-37/deployed-v26-csp-allowlist.json).
+- **Reproduction:** Open the deployed homepage, inspect its document CSP
+  response header, and find the three loopback origins.
+- **Root cause:** Development-only loopback origins remained in the production
+  Sites Worker policy and static `_headers` fallback despite no public runtime
+  dependency on those services.
+- **Affected code:** `apps/sites/worker.ts`, `apps/site/public/_headers`, and
+  `apps/sites/worker.test.ts`.
+- **Remediation:** Removed loopback origins while retaining the configured
+  production API and preview hosts. Red-to-green regression is in commit
+  `a302e1dd7072ecb5605282b3fa1ecdd35d658519`; full local checks pass. The live
+  v26 policy is still unchanged, so keep this issue open until a new saved
+  version is approved, deployed, and checked in a real browser.
 
 The v26 flagship user journey used the exact employee-experience brief at
 desktop and mobile: all three distinct directions rendered, Direction C opened
@@ -3519,11 +3560,11 @@ The latest public deployment is v26. The v26 browser audit covered all 31
 canonical routes at 1440×900 and 390×844, 630 unique internal link targets, all
 324 catalogue resources, the 40 Gold dark-theme contrast checks, ten tool
 surfaces, and the exact employee-experience Compose-to-Workbench workflow.
-AUD-140 and AUD-334 are closed from deployed evidence. AUD-335 is locally fixed
-and awaits a new deployed version; no claim is made that the current public
-homepage is clean. Overall, the register has 335 findings: 30 closed after
-deployment verification, 215 fixed locally and awaiting issue-specific
-deployment checks, 88 locally verified, and two legacy `fixed` records. The
-product-hardening release programme is still in progress. The new version must
+AUD-140 and AUD-334 are closed from deployed evidence. AUD-335 and AUD-336 are
+locally fixed and await a new deployed version; no claim is made that the
+current public homepage is clean. Overall, the register has 336 findings: 32
+closed after deployment verification, 214 fixed locally and awaiting
+issue-specific deployment checks, 88 locally verified, and two legacy `fixed`
+records. The product-hardening release programme is still in progress. The new version must
 be saved from the pushed source commit, shown for approval, then published and
 re-audited; local screenshots are not a substitute for that check.

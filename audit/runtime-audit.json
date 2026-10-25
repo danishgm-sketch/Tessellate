@@ -8772,7 +8772,7 @@
       "category": "security",
       "title": "Public app-shell CSP allowed arbitrary inline scripts and styles",
       "expected": "The public shell should permit only same-origin bundled scripts and exact build-certified inline code; executable script injection must be blocked.",
-      "actual": "The live review Site returned script-src 'self' 'unsafe-inline' and style-src 'self' 'unsafe-inline' on /, /explore, /compose, /workbench, and /r/button. A harmless injected inline script executed on / without a console error.",
+      "actual": "The earlier v20 review build allowed arbitrary inline script and style elements. On the current public v26 Site, exact build-certified hashes replace unsafe-inline in script-src, style-src, and style-src-elem. In an isolated Chrome context, a harmless injected script did not execute and a temporary style element did not apply; CSP blocked both. The separate style-src-attr unsafe-inline allowance remains for current UI style attributes and is recorded explicitly.",
       "reproduction": [
         "At the deployed review Site, send HEAD requests to /, /explore, /compose, /workbench, and /r/button; each returns HTTP 200 with unsafe-inline in script-src and style-src.",
         "At 1440x900 on /, append a script element whose body sets window.__tessellateInlineProbe = true.",
@@ -8786,7 +8786,7 @@
         "HEAD /workbench 200",
         "HEAD /r/button 200"
       ],
-      "screenshot": "audit/evidence/step-37/site-shell-csp-before-1440.png; audit/evidence/step-37/site-shell-csp-after-1440.png",
+      "screenshot": "audit/evidence/step-37/site-shell-csp-before-1440.png; audit/evidence/step-37/site-shell-csp-after-1440.png; quality/evidence/step-37/deployed-v26-home-1440.png; quality/evidence/step-37/deployed-v26-resource-button-1440.png",
       "beforeEvidence": "quality/evidence/step-37/site-shell-csp-live-probe.json",
       "afterEvidence": "audit/evidence/step-37/site-shell-csp-local-after.json",
       "rootCause": "The Sites Worker reused a broad app-shell CSP template instead of deriving the inline allowlist from the canonical static Astro output.",
@@ -8795,9 +8795,19 @@
         "apps/sites/prepare-static.mjs",
         "tests/e2e/sites-preview-csp.spec.ts"
       ],
-      "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
-      "remediation": "The Sites build now derives SHA-256 allowlists for inline scripts and style elements across 716 non-preview Astro pages. The Worker removes script-src/style-src unsafe-inline, retains a separate style-src-attr allowance needed by current rendered UI, and the live arbitrary-script probe is blocked locally. Browser checks pass for homepage, Explore, Compose, Workbench, a resource detail route, and a showcase route at desktop/mobile profiles. Public review verification remains pending for Step 45."
+      "fixCommit": "2368c96d9ddea5c92d14591e76d3780a92d2b40c",
+      "status": "closed-deployed-verified",
+      "remediation": "The Sites build derives SHA-256 allowlists for inline scripts and style elements across 716 non-preview Astro pages. The Worker removes script-src/style-src unsafe-inline and retains a separate style-src-attr allowance required by current rendered UI. Deployed v26 verification is recorded in quality/evidence/step-37/deployed-v26-security.json.",
+      "previouslyObserved": "The live review Site returned script-src 'self' 'unsafe-inline' and style-src 'self' 'unsafe-inline' on /, /explore, /compose, /workbench, and /r/button. A harmless injected inline script executed on / without a console error.",
+      "deployedVerification": {
+        "siteVersion": 26,
+        "deploymentId": "appgdep_6add2f20b5f88191828044362a2fbc3e",
+        "siteSourceCommit": "94822e00baaefa20dd01895e43469c3c3d9fac9a",
+        "verifiedAt": "2026-10-25T00:27:30Z",
+        "evidence": "quality/evidence/step-37/deployed-v26-security.json",
+        "result": "Inline script/style elements blocked; preview iframe sandbox and opaque-origin isolation verified."
+      },
+      "verification": "Deployed v26 blocks arbitrary inline script and style elements; the resource preview iframe remains sandboxed with opaque-origin isolation. Release-candidate security revalidation remains pending at Step 45."
     },
     {
       "id": "AUD-269",
@@ -10334,7 +10344,7 @@
       "category": "runtime",
       "title": "Animated gradient preview inline style was absent from the Sites CSP hash list",
       "expected": "The animated-gradient-line preview renders without weakening the sandboxed preview CSP or producing a style-src violation.",
-      "actual": "On deployed v24 the resource source contains an exact inline style block that was not included in the generated Sites CSP hashes. The browser blocks that style in isolated previews. The static Sites preparation step did not inspect the final public runtime registry JSON, where this resource source is shipped.",
+      "actual": "The v24 deployment blocked the resource inline style. Public v26 now renders the Expressive divider-beam preview without a style-src violation; the preview response is HTTP 200 and its CSP uses compiled same-origin assets plus exact style hashes, with no unsafe-inline in style-src or style-src-elem.",
       "reproduction": [
         "Open /explore on deployed v24 and load the animated-gradient-line preview.",
         "Inspect securitypolicyviolation events for style-src-elem and compare the blocked style hash to the response CSP.",
@@ -10346,16 +10356,26 @@
       "network": [
         "Catalogue and route requests returned HTTP 200; failure was inline style policy, not an HTTP request."
       ],
-      "screenshot": "audit/evidence/v24/explore-desktop-1440x900.png",
+      "screenshot": "quality/evidence/step-37/deployed-v26-animated-gradient-1440.png; quality/evidence/step-37/deployed-v26-animated-gradient-390.png",
       "rootCause": "apps/sites/prepare-static.mjs scanned source-tree resource files but not the final /r/*.json runtime registry files that Sites publishes.",
       "affectedCode": [
         "apps/sites/prepare-static.mjs",
         "tests/e2e/sites-preview-csp.spec.ts"
       ],
       "fixCommit": "c82900964b868474b35326a6860f1fbeba3c5ff5",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "evidence": "Deployed baseline: audit/evidence/v24/route-audit.json; fixed regression: tests/e2e/sites-preview-csp.spec.ts; local after capture: audit/evidence/local-fixed-final/route-audit.json.",
-      "verification": "The Sites CSP builder now hashes exact style blocks found in the final shipped runtime resource registry. Focused desktop/mobile browser regression passes locally. Public v24 remains unchanged; deployed verification is pending."
+      "verification": "The Expressive animated-gradient preview loaded on deployed v26 with its isolated sandbox and exact style hashes; no console messages or failed requests were observed.",
+      "previouslyObserved": "On deployed v24 the resource source contains an exact inline style block that was not included in the generated Sites CSP hashes. The browser blocks that style in isolated previews. The static Sites preparation step did not inspect the final public runtime registry JSON, where this resource source is shipped.",
+      "deployedVerification": {
+        "siteVersion": 26,
+        "deploymentId": "appgdep_6add2f20b5f88191828044362a2fbc3e",
+        "sourceCommit": "94822e00baaefa20dd01895e43469c3c3d9fac9a",
+        "verifiedAt": "2026-10-25T00:31:40Z",
+        "evidence": "quality/evidence/step-37/deployed-v26-animated-gradient.json",
+        "result": "Preview loads with sandbox, hashed CSP styles, no console messages, and all 18 observed requests returning HTTP 200."
+      },
+      "remediation": "The Sites CSP builder hashes exact style blocks found in the final shipped runtime resource registry. Public v26 verification is recorded in quality/evidence/step-37/deployed-v26-animated-gradient.json."
     },
     {
       "id": "AUD-324",
@@ -10710,7 +10730,37 @@
       "status": "fixed-awaiting-deployed-verification",
       "evidence": "Deployed v26 failure reports and screenshots are under audit/evidence/v26/home-demo/. The regression reproduced at both target viewports. The local production build now starts with the button disabled, provides a visible readiness status and aria-describedby, and passes the blocked-island regression plus the normal three-direction preview and Direction C handoff at 1440x900 and 390x844. The final focused run passed all 6 Astro-preview and all 6 Sites Worker desktop/mobile cases. Captures are under audit/evidence/local-final-home-fix/ and audit/evidence/local-final-sites-home-fix/.",
       "verification": "Fix is verified against local Astro and Sites Worker production previews only. Keep open until the next saved Sites version is published and the same deployed pre-hydration, direction-generation, and handoff checks pass."
+    },
+    {
+      "id": "AUD-336",
+      "severity": "medium",
+      "route": "/",
+      "viewport": "1440x900",
+      "category": "security",
+      "title": "Public CSP allowed connections and frames to local development servers",
+      "expected": "The deployed public shell should allow only same-origin and explicitly required production connections and preview frames.",
+      "actual": "The v26 response allowed connect-src http://localhost:8787 and frame-src http://localhost:4321 and http://localhost:5173. No application code uses these endpoints; previews use the same-origin /preview-content/ route.",
+      "reproduction": [
+        "Open https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ in a clean Chrome context at 1440x900.",
+        "Read the document Content-Security-Policy response header.",
+        "Observe localhost:8787 under connect-src and localhost:4321/5173 under frame-src."
+      ],
+      "console": [],
+      "network": [
+        "The page returned HTTP 200; all 27 observed requests returned HTTP 200. The clean isolated context recorded zero console errors or warnings."
+      ],
+      "screenshot": "quality/evidence/step-37/deployed-v26-home-1440.png",
+      "rootCause": "Development loopback origins were carried into the production Sites Worker and static fallback Content-Security-Policy strings despite no public runtime dependency on them.",
+      "affectedCode": [
+        "apps/sites/worker.ts",
+        "apps/site/public/_headers",
+        "apps/sites/worker.test.ts"
+      ],
+      "fixCommit": "a302e1dd7072ecb5605282b3fa1ecdd35d658519",
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "The live response directives and clean-browser observations are recorded in quality/evidence/step-37/deployed-v26-csp-allowlist.json. The Sites Worker regression failed before the change and now passes for both production policy sources. Frozen install, 1,216 unit tests (one skip), 22-package typecheck, lint, pnpm audit:all, and all three Playwright projects pass.",
+      "verification": "Local regression only. The public v26 Site still uses the previous policy; verify the new CSP on a newly saved and explicitly approved Sites deployment before closing."
     }
   ],
-  "generatedAt": "2026-10-24T20:57:44.862Z"
+  "generatedAt": "2026-10-25T01:37:30.000Z"
 }

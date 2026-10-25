@@ -47,6 +47,9 @@ starter Wrangler runtime cannot emulate a newer compatibility date locally.
   to their own origin. Public compiled modules have
   wildcard CORS so those frames can import vetted resource code; no API or
   credential-bearing endpoint gets wildcard CORS.
+- The public app-shell policy permits only its documented same-origin and
+  production API/preview origins. Development loopback origins are excluded
+  from both the Sites Worker policy and the static `_headers` fallback.
 - The deployed Explore audit found that the browser fetches a compiled stylesheet
   while loading resource modules in opaque preview frames. The path-scoped asset
   exception allows only public compiled `/_astro/` files; APIs, arbitrary same-

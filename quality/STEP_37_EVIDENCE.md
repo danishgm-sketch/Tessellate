@@ -1,6 +1,6 @@
 # Step 37 — Security hardening
 
-Status: **in progress; 118 local security findings are fixed and regression-tested (two critical, twenty-one high, ninety-four medium, one low). The remaining gate is release-candidate deployed security verification; remote Cloudflare namespace provisioning and tunnel ingress are not applicable under D-041. OS restart recovery passed on 2026-10-22, with the limitation that no queued inference job was held across the shutdown.**
+Status: **in progress; 118 local security findings are fixed and regression-tested (two critical, twenty-one high, ninety-four medium, one low). Public v26 now confirms the app-shell inline-script/style-element CSP and resource-preview isolation fixes. Release-candidate deployed security verification remains at Step 45; remote Cloudflare namespace provisioning and tunnel ingress are not applicable under D-041. OS restart recovery passed on 2026-10-22, with the limitation that no queued inference job was held across the shutdown.**
 
 ## Scope and method
 
@@ -14,9 +14,10 @@ received a user-facing or protocol-level regression test. New regressions were
 
 run before implementation to verify that they failed, then rerun after the fix.
 
-The checks ran locally on `consolidation/product-hardening`. No code was
-
-deployed during this step. The previously established Sites Worker checks for
+The security implementation checks ran locally on `consolidation/product-hardening`.
+The read-only v26 checks below confirm the deployed app-shell and preview CSP;
+they do not replace remaining API, host, supply-chain, and release-candidate
+configuration checks. The previously established Sites Worker checks for
 
 opaque sandbox preview CSP, asset CORS, backend-offline behavior, inference
 
@@ -24,7 +25,7 @@ authorization, and the secret scan remain relevant evidence. They do not close
 
 the remaining API, host, supply-chain, and production configuration audit.
 
-The existing review Site was also probed read-only at `/` and `/r/button`:
+At the 2026-10-24 check, the then-current review Site was also probed read-only at `/` and `/r/button`:
 
 both routes returned 200, the preview had an opaque origin, parent DOM/storage
 
@@ -32,7 +33,8 @@ access was blocked, and there were no console errors, uncaught exceptions,
 
 failed requests, or error responses. That deployed version still has a broader
 
-script/style CSP than the local fix; redeployment verification remains open.
+script/style CSP than the local fix. That deployment was superseded by v26; its
+current verification is recorded below.
 
 The local Sites Worker regression now also attempts an external HTTPS fetch
 
@@ -4250,17 +4252,96 @@ avigator.sendBeacon`. The function reference crossed into a callback parameter, 
 
 **Disposition:** Automatic container recovery and laptop API availability passed again. Step 37 remains open for release-candidate deployed security checks at Step 45.
 
-### Deployed review confirmation — 2026-10-24
+### Deployed review confirmation — v20, 2026-10-24
 
-The user-provided public review URL was checked again in Chrome DevTools at
+The then-current public review Site (v20) was checked in Chrome DevTools at
 1440×900 and 390×844. Its response policy still includes `unsafe-inline` for
 both `script-src` and `style-src`. A harmless script inserted into the page set a
 temporary window flag and generated no `securitypolicyviolation` event. This
-confirms AUD-268 remains exploitable on the currently published review build;
-the page does not expose its source SHA. The current branch's Sites Worker
+confirmed that AUD-268 remained exploitable on v20; the page did not expose its
+source SHA. The current branch's Sites Worker
 build derives inline-script/style hashes and its local CSP tests pass, but this
 fix is not closed until the approved release-candidate Site blocks the same
 probe. The current capture and probe result are recorded in
 `quality/evidence/step-38/review-v20-home-live-2026-10-24.json` and
 `quality/evidence/step-38/review-v20-home-desktop-1440.png`. No public Site was
 changed during this verification.
+
+### Deployed review confirmation — v26, 2026-10-25
+
+**Evidence:** `quality/evidence/step-37/deployed-v26-security.json` records the
+current public deployment (`appgdep_6add2f20b5f88191828044362a2fbc3e`, Site
+source `94822e00baaefa20dd01895e43469c3c3d9fac9a`), sanitized response-policy
+observations, probe results, and desktop/mobile screenshots. No cookie or
+credential values were recorded. The home and resource-detail captures are
+`deployed-v26-home-1440.png`, `deployed-v26-home-390.png`,
+`deployed-v26-resource-button-1440.png`, and
+`deployed-v26-resource-button-390.png` in the same evidence directory.
+
+**Result:** At `/`, the 1440×900 document returned HTTP 200. Its `script-src`,
+`style-src`, and `style-src-elem` directives use same-origin assets and
+build-certified hashes without `unsafe-inline`. In a separate browser context,
+a harmless injected script did not execute, an injected style element did not
+apply, and Chrome reported CSP violations for `script-src-elem` and
+`style-src-elem`. A clean page load had no console messages and all 26 observed
+requests returned HTTP 200. At `/r/button`, the preview document returned HTTP
+200 in an iframe with `sandbox="allow-scripts"`; reading its document from the
+parent threw `SecurityError`. Its CSP includes `default-src 'none'`,
+`form-action 'none'`, `frame-src 'none'`, and `sandbox allow-scripts`, with
+compiled same-origin assets and exact hashes. No failed requests or console
+messages were observed across the clean home/resource navigation (42 retained
+requests, all HTTP 200).
+
+**Explicit policy allowance:** The public shell and isolated preview retain
+`style-src-attr 'unsafe-inline'` for current rendered style attributes. Script
+elements and style elements remain hash-restricted; this style-attribute
+allowance is a documented product policy and is not a Sites runtime
+requirement.
+
+The same v26 deployment also closes AUD-323. At the Expressive
+`/r/animated-gradient-line` route, the preview response returned HTTP 200 with
+the expected sandbox and exact style hashes. Chrome reported no console
+messages; all 18 observed preview-route requests returned HTTP 200. The
+rendered preview showed its labeled divider-beam sample and visible blue
+gradient line. Evidence and desktop/mobile captures are in
+`quality/evidence/step-37/deployed-v26-animated-gradient.json` and the
+corresponding `deployed-v26-animated-gradient-*.png` files.
+
+**Disposition:** `AUD-268` and `AUD-323` are now
+`closed-deployed-verified` against v26. Step 37 remains in progress for the
+final release-candidate security recheck and the remaining production
+configuration review at Step 45.
+
+### Deployed v26 CSP allowlist review — AUD-336
+
+**Evidence:** A fresh Chrome DevTools context loaded the public homepage at
+1440×900. The response returned HTTP 200, all 27 observed requests returned
+HTTP 200, and the clean page had zero console errors or warnings. Its actual
+`connect-src` included `http://localhost:8787`; `frame-src` included
+`http://localhost:4321` and `http://localhost:5173`. The response observation
+and screenshot reference are recorded in
+`quality/evidence/step-37/deployed-v26-csp-allowlist.json`.
+
+**Reproduction:** Load `/` on deployed v26 and inspect the document's
+Content-Security-Policy response header in Chrome DevTools. The loopback
+endpoints are unnecessary: deployed previews use same-origin
+`/preview-content/`, and a repository search found no client runtime calls to
+the listed local servers.
+
+**Root cause:** Development-only loopback sources were retained in both the
+Sites Worker app-shell CSP and the static `_headers` fallback.
+
+**Remediation:** Remove the local API and preview-server origins from both
+policies while retaining the intended production API and preview origins. A
+Sites Worker regression failed before the change, then passed for both policy
+sources. Focused command: `pnpm exec vitest run apps/sites/worker.test.ts`;
+result: 4/4 passed. The full local checks also pass: frozen install, 1,216 unit
+tests (one skip), typecheck for 22 packages, lint, `pnpm audit:all`, and all
+three Playwright projects (602 passed, 149 configured skips, zero failures).
+The fix is commit
+`a302e1dd7072ecb5605282b3fa1ecdd35d658519`.
+
+**Disposition:** Fixed locally; public v26 still serves its prior policy. Keep
+AUD-336 open until a newly saved version is explicitly approved, deployed, and
+the same response-header check confirms no loopback sources. No D1/R2 bindings
+or infrastructure were added.

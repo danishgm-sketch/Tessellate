@@ -297,6 +297,7 @@ Main app CSP should avoid:
 - wildcard script origins;
 - wildcard frame origins;
 - arbitrary connect-src.
+- local loopback origins in production `connect-src` or `frame-src` allowlists.
 
 Use hashes/nonces only where needed by deployment framework.
 
