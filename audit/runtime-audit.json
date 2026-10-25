@@ -10898,7 +10898,41 @@
       "fixCommit": "b66af832482367051c8a35ffa625b4fc6aed71b6",
       "status": "fixed-awaiting-deployed-verification",
       "evidence": "Public v28 was reproduced at 1440x900 and 390x844: each reduced-motion toggle changed the iframe src and caused exactly one iframe navigation; requests returned HTTP 200 with zero console errors, warnings, or failed requests. Screenshots: quality/evidence/step-38/v28-resource-preview-motion-before.png, v28-resource-preview-motion-after.png, and the -390 equivalents. The local fix keeps the initial iframe URL stable and updates the preview through the existing typed message channel. The desktop/mobile regression verifies the CSS response, stable src, and no post-load frame navigation. The full 324-resource seven-width matrix and Gold 40 variant/accessibility certification pass; the Astro, Sites Worker, and preview-app browser suites pass after correcting their obsolete URL-change assertions. The issue remains open for deployed verification because public v28 is unchanged."
+    },
+    {
+      "id": "AUD-340",
+      "severity": "medium",
+      "route": "/explore",
+      "viewport": "1440x900",
+      "category": "performance",
+      "title": "Explore cards show blank previews while sandbox frames load",
+      "expected": "Each visible resource card should show its rendered preview or a clear loading status until its isolated frame is ready.",
+      "actual": "After the fix, Sites Worker browser regressions pass 4/4 desktop/mobile cases. A deliberately delayed preview shows Loading preview… with aria-busy=true until the renderer sends its readiness message; an aborted preview reaches a truthful unavailable message and resource link through the bounded timeout. The public v28 before screenshot remains blank during this interval; the local after screenshots show the loading and rendered states.",
+      "reproduction": [
+        "Open https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore in a fresh Chromium context at 1440x900.",
+        "Capture the first viewport about 1.2 seconds after the main content appears; the first visible preview wells are blank.",
+        "Wait five seconds; the preview wells render their resource content."
+      ],
+      "console": [],
+      "network": [
+        "GET /explore 200",
+        "GET /data/catalog.json 200",
+        "GET /preview-content/?resource=accessibility-commitment-section 200",
+        "GET /preview-content/?resource=accordion 200",
+        "GET /preview-content/?resource=accordion-spring 200",
+        "All 108 observed document, asset, catalogue and preview requests returned HTTP 200."
+      ],
+      "screenshot": ["quality/evidence/step-38/deployed-v28-explore-1440x900.png","quality/evidence/step-38/after/explore-preview-loading-sites-chromium.png","quality/evidence/step-38/after/explore-preview-loaded-sites-chromium.png","quality/evidence/step-38/after/explore-preview-loading-sites-mobile-chromium.png","quality/evidence/step-38/after/explore-preview-loaded-sites-mobile-chromium.png"],
+      "rootCause": "ResourceCard mounts the sandbox iframe when the card intersects but does not track frame load or render a loading or failure state; the preview canvas stays visually empty until iframe navigation finishes.",
+      "affectedCode": [
+        "apps/site/src/components/ResourceCard.tsx",
+        "tests/e2e/catalogue-preview-loading-state.spec.ts",
+        "tests/e2e/sites-preview.playwright.config.ts",
+        "playwright.config.ts"
+      ],
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification"
     }
   ],
-  "generatedAt": "2026-10-25T15:55:46.000Z"
+  "generatedAt": "2026-10-25T18:51:56.118Z"
 }

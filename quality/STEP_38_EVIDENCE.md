@@ -554,3 +554,57 @@ and the Astro, remaining Sites Worker, and Preview app runs passed. The first
 run's pre-fix result is retained in the terminal run log; it was a test contract
 mismatch, not a runtime failure after the UI state had changed. Public v28 still
 has the navigation behavior; AUD-339 remains fixed-awaiting-deployed-verification.
+
+## 2026-10-25 deployed v28 Explore preview readiness — AUD-340
+
+Fresh public v28 captures at 1440×900 showed all six visible card preview areas
+blank about 1.2 seconds after the main Explore content appeared. After five
+seconds, the same frames displayed their resource components. The public trace
+recorded 108 successful HTTP requests, no console messages, and no document
+overflow. This was an unhelpful loading state rather than a failed route or
+resource; the before screenshot is
+`quality/evidence/step-38/deployed-v28-explore-1440x900.png`.
+
+The shared `ResourceCard` now listens only to the matching opaque-origin frame
+and resource ID on the existing preview protocol. It marks the area `aria-busy`,
+shows “Loading preview…” until the renderer signals readiness, and reports a
+failed or overlong load with a link to the resource detail page. The regression
+was observed failing before the code change. The Sites Worker tests pass 4/4 at
+desktop and mobile with delayed and aborted frame requests. Local after captures
+are under `quality/evidence/step-38/after/explore-preview-*`.
+
+Chrome DevTools 156 public v28 cold traces at 1440×900, 1× CPU and unthrottled
+network recorded LCP 187–569 ms and CLS 0 for Home, Explore, Compose, and
+Workbench; a Compose constraints toggle recorded 18 ms lab INP. These are
+single-run lab samples; no CrUX field data is available. The separate 390×844,
+4× CPU, Slow 4G Workbench trace returned no navigation segment and is marked
+inconclusive. Machine-readable results and limits are in
+`quality/evidence/step-38/deployed-v28-core-traces-2026-10-25.json`.
+
+AUD-340 is fixed locally and remains open until a new approved Sites version
+passes the same deployed preview readiness check. Public v28 is unchanged.
+
+### Local release verification after AUD-340
+
+On 2026-10-25, `pnpm install --frozen-lockfile` completed with no dependency
+changes. `pnpm typecheck`, `pnpm lint`, `pnpm test` (1,216 passed, 1 skipped),
+and `pnpm audit:all` passed. The latter includes catalogue validation, the
+16-point behavioral release gate, 324-resource isolation, the production build,
+bundle budgets, licence/provenance, secrets/security, and dependency audits.
+
+`pnpm test:e2e` passed all three configured legs: 316 passed and 108 skipped in
+the plain Astro desktop/mobile run; 302 passed and 40 skipped in the Sites
+Worker desktop/mobile run; and 3 passed in the isolated Preview app. The Sites
+Worker leg includes the 324-resource seven-width matrix, the new delayed and
+aborted preview tests, core Axe and keyboard checks, CSP/isolation checks,
+responsive route checks, and scale/fault-injection workflows. The configured
+skips are test-project restrictions, primarily resource matrices that run only
+in the matching Sites desktop context or interactions unavailable on a given
+viewport; no test failed. The successful E2E run does not close AUD-340 because
+the public Site remains v28.
+
+Visual review of the loaded Explore capture confirms that the library uses
+deliberate 16:10 card thumbnails; taller resources are cropped in the card well,
+while their detail routes provide the full interactive preview. The newly
+reported defect is the blank, unlabelled loading interval documented above,
+not this consistent thumbnail treatment.
