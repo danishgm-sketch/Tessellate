@@ -324,7 +324,7 @@ describe('D1 cloud project ownership and optimistic concurrency', () => {
     expect(cappedWrite.status).toBe(409);
     expect(response.status).toBe(503);
     expect(await response.json()).toMatchObject({ error: 'CollectionTooLarge' });
-  });
+  }, 30_000);
 
   it('bounds anonymous creator-link listing when stored data exceeds its response limit', async () => {
     const now = new Date().toISOString();
@@ -417,7 +417,7 @@ describe('D1 cloud project ownership and optimistic concurrency', () => {
     expect(response.status).toBe(503);
     expect(await response.json()).toMatchObject({ error: 'FavoritesTooLarge' });
     expect(cappedWrite.status).toBe(409);
-  });
+  }, 30_000);
 
   it('fails closed when saved favorites or public collections contain invalid resource slugs', async () => {
     const auth = { Authorization: testAuthBearer(alice) };

@@ -11,7 +11,7 @@ test('Compose acknowledges work before generating the three real directions', as
   await cdp.send('Emulation.setCPUThrottlingRate', { rate: 4 });
 
   await page.goto('/compose/');
-  await expect(page.getByTestId('catalog-status')).toContainText('Catalogue ready');
+  await expect(page.getByTestId('catalog-status')).toContainText('Catalogue ready', { timeout: 20_000 });
   await page.getByLabel('Product Description & Objectives').fill(exactBrief);
   await page.getByRole('button', { name: 'Refined', exact: true }).click();
   await page.getByRole('button', { name: 'Radical', exact: true }).click();

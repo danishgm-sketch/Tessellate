@@ -419,7 +419,11 @@ test('a saved project survives a full browser process restart', async ({ browser
     const baseURL = test.info().project.use.baseURL ?? 'http://localhost:4321';
     await page.goto(`${baseURL}/showcase/showcase-playful-hr`);
     await page.getByRole('link', { name: 'Edit a local copy in Workbench' }).click();
-    await expect(page.getByTestId('top-toolbar')).toBeVisible();
+    // The showcase-to-Workbench handoff verifies both local project storage and
+    // the full resource catalogue before mounting the editor. Allow that real
+    // readiness gate to finish instead of treating the honest loading state as
+    // a persistence failure on a cold browser process.
+    await expect(page.getByTestId('top-toolbar')).toBeVisible({ timeout: 20_000 });
     if (viewport.width < 1024) {
       await page.getByRole('navigation', { name: 'Mobile Workbench' }).getByRole('button', { name: 'Inspect' }).click();
     }
@@ -436,7 +440,7 @@ test('a saved project survives a full browser process restart', async ({ browser
     const restarted = context.pages()[0] ?? await context.newPage();
     runtime = observeRuntime(restarted);
     await restarted.goto(projectUrl);
-    await expect(restarted.getByTestId('top-toolbar')).toBeVisible();
+    await expect(restarted.getByTestId('top-toolbar')).toBeVisible({ timeout: 20_000 });
     if (viewport.width < 1024) {
       await restarted.getByRole('navigation', { name: 'Mobile Workbench' }).getByRole('button', { name: 'Inspect' }).click();
     }

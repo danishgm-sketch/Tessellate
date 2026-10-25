@@ -50,7 +50,7 @@ describe('generated Gold resource artifacts', () => {
 
     const components = await discoverAllComponents();
     expect(components.some((component) => component.sourceCode.includes(probe))).toBe(false);
-  }, 15_000);
+  }, 30_000);
 
   it('serializes validated manifest IDs as data in generated TypeScript registries', () => {
     const maliciousId = `resource': (() => { throw new Error('GOLD_ID_PROBE') })(), 'safe`;

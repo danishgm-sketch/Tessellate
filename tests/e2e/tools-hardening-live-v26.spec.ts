@@ -16,6 +16,13 @@ const tools = [
   { route: '/tools/icons', slug: 'icon-lab', title: 'SVG / Icon Lab' },
 ];
 
+function evidencePath(...segments: string[]) {
+  const root = process.env.TESSELLATE_EVIDENCE_DIR
+    ? path.resolve(process.cwd(), process.env.TESSELLATE_EVIDENCE_DIR)
+    : path.resolve(process.cwd(), 'quality/evidence');
+  return path.join(root, ...segments);
+}
+
 async function openTool(page: Page, route: string) {
   await page.goto(route);
   await page.locator('astro-island[client="load"]').evaluateAll(async (islands) => {
@@ -56,14 +63,13 @@ test.describe('Ten client-side tools: deployed-style browser audit', () => {
       await openTool(page, tool.route);
       await expect(page.getByRole('heading', { level: 1, name: tool.title })).toBeVisible();
       await page.evaluate(() => document.fonts.ready);
+      const screenshotPath = evidencePath(
+        'step-33',
+        'after',
+        `${testInfo.project.name}-${tool.slug}.png`
+      );
       await page.screenshot({
-        path: path.join(
-          'quality',
-          'evidence',
-          'step-33',
-          'after',
-          `${testInfo.project.name}-${tool.slug}.png`
-        ),
+        path: screenshotPath,
         fullPage: true,
       });
 
@@ -92,9 +98,9 @@ test.describe('Ten client-side tools: deployed-style browser audit', () => {
           help,
           nodes: nodes.map(({ target, failureSummary }) => ({ target, failureSummary })),
         })),
-        screenshot: `audit/evidence/v26/tools/after/${testInfo.project.name}-${tool.slug}.png`,
+        screenshot: path.relative(process.cwd(), screenshotPath),
       };
-      const evidenceDirectory = path.join('quality', 'evidence', 'step-33', 'after');
+      const evidenceDirectory = evidencePath('step-33', 'after');
       await mkdir(evidenceDirectory, { recursive: true });
       await writeFile(
         path.join(evidenceDirectory, `${testInfo.project.name}-${tool.slug}.json`),
@@ -439,7 +445,7 @@ test.describe('Tool output and truthful-state regressions', () => {
       'false'
     );
 
-    const evidenceDirectory = path.resolve(process.cwd(), 'quality/evidence/step-39/after/desktop');
+    const evidenceDirectory = evidencePath('step-39', 'after', 'desktop');
     await mkdir(evidenceDirectory, { recursive: true });
     const screenshot = path.join(evidenceDirectory, 'dna-reset-baseline.png');
     await page.screenshot({ path: screenshot, fullPage: true });

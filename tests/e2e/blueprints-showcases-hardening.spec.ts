@@ -99,6 +99,11 @@ function collectManifestResourceProps(value: unknown, slug: string) {
 test('all blueprint and showcase routes render with usable content at this viewport', async ({
   page,
 }, testInfo) => {
+  // This single test deliberately covers every public blueprint and showcase
+  // route, including loading each showcase screen and schema-validating its
+  // downloadable manifest. Keep the full-route audit bounded but allow it to
+  // finish on the slower mobile project as well as desktop.
+  test.setTimeout(180_000);
   const directory = path.resolve(process.cwd(), 'quality/evidence/step-34/after');
   await mkdir(directory, { recursive: true });
   const findings: Array<Record<string, unknown>> = [];

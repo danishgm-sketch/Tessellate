@@ -109,7 +109,10 @@ test('flagship directions use distinct rendered structures and a real three-pane
   test.setTimeout(60000);
 
   const phase = process.env.STEP12_EVIDENCE_PHASE ?? 'current';
-  const evidenceDir = path.resolve(process.cwd(), 'audit/evidence/v26/directions', phase);
+  const evidenceDir = path.resolve(
+    process.cwd(),
+    process.env.TESSELLATE_EVIDENCE_DIR ?? `audit/evidence/v26/directions/${phase}`
+  );
   fs.mkdirSync(evidenceDir, { recursive: true });
 
   const consoleErrors: string[] = [];

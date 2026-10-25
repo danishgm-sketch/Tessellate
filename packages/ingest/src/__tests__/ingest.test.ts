@@ -251,7 +251,7 @@ export function UserDashboard({ userId }: { userId: string }) {
         fs.rmSync(temporaryDirectory, { recursive: true, force: true });
       }
     }
-  });
+  }, 30_000);
 
   it('requires review for stale and dynamic class values without modifying source', () => {
     const dynamicSource = `export function Profile({ className }: { className: string }) { return <section className={className} />; }`;

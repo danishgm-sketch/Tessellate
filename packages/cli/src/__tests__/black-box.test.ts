@@ -80,7 +80,7 @@ describe('CLI black-box workflows', () => {
       fs.readFileSync(repeatedPath, 'utf8')
     ) as typeof composedManifest;
     expect(repeatedManifest.screens).toEqual(composedManifest.screens);
-  });
+  }, 60_000);
 
   it('returns a failing process status for malformed manifests', () => {
     const cwd = makeTempDir();

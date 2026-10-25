@@ -147,8 +147,11 @@ describe('durable laptop inference API', () => {
     const responses: Response[] = [];
     // Miniflare exposes D1 to this in-process Hono test through a synchronous
     // proxy. Keep concurrent fan-out bounded while still submitting all 66
-    // independent clients and asserting the global cap under contention.
+    // independent clients and asserting the global cap under contention. Keep
+    // the worker heartbeat fresh so the test exercises the queue ceiling rather
+    // than the separate offline-host timeout when the suite is under load.
     for (let offset = 0; offset < submissions.length; offset += 8) {
+      if (offset > 0) await heartbeat();
       responses.push(...await Promise.all(submissions.slice(offset, offset + 8).map(submitRequest => submitRequest())));
     }
     expect(responses.filter(response => response.status === 200)).toHaveLength(64);

@@ -158,7 +158,10 @@ test('Explore search explains and blocks input until its client handlers are rea
         borderStyle: 'dashed',
         background: 'rgb(244, 242, 237)',
       });
-      const evidenceDir = path.resolve(process.cwd(), 'quality/evidence/step-45/after');
+      const evidenceDir = path.resolve(
+        process.cwd(),
+        process.env.TESSELLATE_EVIDENCE_DIR ?? 'quality/evidence/step-45/after'
+      );
       await mkdir(evidenceDir, { recursive: true });
       await page.screenshot({
         path: path.join(evidenceDir, 'explore-filters-disabled-before-hydration-390x844.png'),
