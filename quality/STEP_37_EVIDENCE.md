@@ -3530,11 +3530,13 @@ avigator.credentials`, `cookieStore`, IndexedDB, and Cache Storage. After reads 
 
 **Validation:** The 70-test registry suite passes, and four focused preview CSP/isolation browser cases pass across desktop and mobile Chromium. Coverage includes JSX, direct assignment, `setAttribute`, and `Object.defineProperty`; the nested frame's message is not received, the external request list remains empty, and CSP reports the frame block. The full workspace suite passes 1,195 tests across 76 files. Deployed verification remains pending.
 
-## Open audit work
+## Deployment re-audit and remaining limitation
 
-Step 37 remains open until the release-candidate Site passes a deployed security
-re-audit. This status replaces an earlier summary that predates later
-registry-gate, laptop-recovery, and v28 checks.
+The focused security re-audit completed against public Sites v30. AUD-274 is
+deployed-verified; the separate medium Sites runtime issue AUD-342 remains
+documented below. This status replaces an earlier summary that predates later
+registry-gate, laptop-recovery, and public Site checks. Full release-candidate
+route and flagship re-audit remains Step 45.
 
 ### Current verified state — 2026-10-25
 
@@ -3563,25 +3565,39 @@ registry-gate, laptop-recovery, and v28 checks.
   composition, editing, audit, and export remain usable without the laptop
   backend.
 
-### Remaining release checks
+### Public Sites v30 re-audit — 2026-10-25
 
-- Re-run the release-candidate security gate against the approved public Site.
-  Include the same app-shell CSP and harmless injection probes, the opaque
-  preview-origin and parent-data isolation checks, the resource-preview CSP and
-  network checks, and the 324-resource admission matrix. Do not mark a finding
-  deployed-verified from local Worker or Sites build output.
-- AUD-274 remains `fixed-awaiting-deployed-verification` in
-  `audit/runtime-audit.json`; its top-level preview navigation restriction must
-  be verified against the release-candidate runtime. Locally verified registry
-  and dependency findings remain recorded with their current per-finding
-  dispositions.
-- A new review version is saved from canonical commit
-  `2a201f4d13dbf5d2339994fd14dc2fe92c3e92ff` as Sites v30 (source-mirror commit
-  `775af0c92354e8fdf33af60b8c0cc31b396c0ab6`). It has not been deployed; the
-  public Site remains on v28, so no v30 security claim is made here.
+- Sites v30 deployed successfully at
+  `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/` from canonical
+  commit `2a201f4d13dbf5d2339994fd14dc2fe92c3e92ff` and Sites source-mirror
+  commit `775af0c92354e8fdf33af60b8c0cc31b396c0ab6`.
+- The direct `/preview/?resource=button` route returned HTTP 200 at 1440×900.
+  Its renderer iframe has only `sandbox="allow-scripts"`; parent access to its
+  document is blocked, the child CSP denies external connections and frames,
+  and all 17 requests returned 200 with no external request or console message.
+- The public homepage and `/data/catalog.json` returned HTTP 200. The deployed
+  catalogue contains 324 unique resources (284 `verified`, 40 `verified-gold`);
+  its resource-array SHA-256 matches the audited local catalogue. The visible
+  homepage preset changed the product brief and feel.
+- `pnpm audit:resource-isolation` scanned 324 resources, passed all 324, skipped
+  no symlinks, and executed no contributed source. The current CI run passed the
+  616-test Playwright/Axe suite with 149 configured skips, all 16 `audit:all`
+  gates, the 16-point sandbox audit, and the other required checks.
+- AUD-274 is now `closed-deployed-verified` in `audit/runtime-audit.json`.
+  Machine evidence is `quality/evidence/step-37/deployed-v30-runtime-security.json`.
 
-The latest local release run is recorded in `docs/PRODUCT_HARDENING.md` and the
-Step 38/39 evidence. Local passes do not close the release-candidate checks.
+### Remaining platform limitation
+
+- AUD-342 records one homepage console CSP error. The Sites/Cloudflare runtime
+  injects a per-response `window.__CF$cv$params` bootstrap whose hash changes
+  between responses and is absent from repository sources. Tessellate's strict
+  CSP blocks it; the script does not execute and no external request is emitted.
+  The page remains interactive. No `unsafe-inline` script permission was added.
+  A safe fix requires Sites to provide nonce/hash support or disable this
+  injection. This is a documented medium hosting limitation, not an unresolved
+  preview isolation failure.
+- The broader release-candidate route and flagship re-audit remains Step 45.
+  This Step 37 record does not claim final product acceptance.
 
 ### 2026-10-21 full-suite reliability follow-up
 
