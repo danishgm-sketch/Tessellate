@@ -10932,6 +10932,37 @@
       ],
       "fixCommit": null,
       "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-341",
+      "severity": "medium",
+      "route": "/",
+      "viewport": "1440x900",
+      "category": "performance",
+      "title": "HTML response disables transparent edge compression",
+      "expected": "The static HTML response should allow lossless edge compression while preserving the decoded page body and its generated Content-Security-Policy.",
+      "actual": "Public v28 returned the 90,254-byte home document over HTTP/2 with no Content-Encoding and Cache-Control: no-transform. Chrome marked document compression as failed and estimated 60.5 kB of wasted bytes; estimated FCP/LCP savings were 0 ms. LCP was 375 ms, CLS was 0.00, all 25 observed requests returned 200, and the console had no messages.",
+      "reproduction": [
+        "Open https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ in Chrome DevTools at 1440x900.",
+        "Record a cold performance trace with cache disabled.",
+        "Inspect the document request headers and DocumentLatency insight; observe Cache-Control: no-transform, no Content-Encoding, and content-length: 90254."
+      ],
+      "console": [],
+      "network": [
+        "GET / returned HTTP 200 over h2 with content-length 90254 and no content-encoding.",
+        "The other 24 observed document, script, stylesheet, and asset requests returned HTTP 200; hashed CSS was gzip-encoded.",
+        "The response carried Cache-Control: no-transform; Chrome estimated 60.5 kB potentially avoidable transfer."
+      ],
+      "screenshot": ["audit/evidence/v28/home-desktop-1440x900.png"],
+      "rootCause": "apps/sites/worker.ts overwrote the cache policy for every HTML route with Cache-Control: no-transform. That directive disabled transparent compression on public HTML. Public routes can inherit their asset cache policy while the isolated /preview and /preview-content documents retain no-transform for their exact iframe/CSP contract.",
+      "affectedCode": [
+        "apps/sites/worker.ts",
+        "apps/sites/worker.test.ts",
+        "apps/sites/VALIDATION.md"
+      ],
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "Chrome DevTools trace NAVIGATION_0 on public Sites v28; raw trace could not be written because the DevTools MCP file sandbox did not recognize the repository workspace. The trace summary, response metadata, network status, console state, and accessibility snapshot were captured in-session. A red-to-green worker regression proves the decoded HTML, inherited cache policy, and strict script-src policy remain unchanged after removing no-transform."
     }
   ],
   "generatedAt": "2026-10-25T18:51:56.118Z"

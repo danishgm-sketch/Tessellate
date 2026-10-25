@@ -11,6 +11,7 @@ export default {
   const url=new URL(request.url);
   if (url.pathname.startsWith('/api/')) return proxyBackend(request, { url: env.TESSELLATE_BACKEND_URL, secret: env.TESSELLATE_GATEWAY_SECRET });
   const previewContent=url.pathname==='/preview-content' || url.pathname.startsWith('/preview-content/');
+  const previewWrapper=url.pathname==='/preview' || url.pathname.startsWith('/preview/');
   if(previewContent && request.headers.get('Sec-Fetch-Dest')==='document') {
    return Response.redirect(`${url.origin}/preview/${url.search}`,302);
   }
@@ -27,15 +28,15 @@ export default {
   const headers=new Headers(response.headers);
   if(html){
    headers.set('Content-Type','text/html; charset=utf-8');
-   // Preserve the exact vetted HTML and opaque preview CSP at the hosting edge.
-   headers.set('Cache-Control', 'no-transform');
+   // Public HTML inherits the asset cache policy and allows transparent content
+   // coding. Keep isolated preview documents byte-stable for their CSP contract.
+   if(previewContent || previewWrapper) headers.set('Cache-Control','no-transform');
   }
   headers.set('X-Content-Type-Options','nosniff');
   if(previewContent)headers.delete('X-Frame-Options');
   else headers.set('X-Frame-Options','SAMEORIGIN');
   headers.set('Referrer-Policy','strict-origin-when-cross-origin');
   headers.set('Permissions-Policy','camera=(), microphone=(), geolocation=(), payment=()');
-  const previewWrapper=url.pathname==='/preview' || url.pathname.startsWith('/preview/');
   const origin=url.origin;
   const common="object-src 'none'; base-uri 'self';";
   const inlineScriptHashes=PREVIEW_INLINE_SCRIPT_HASHES.join(' ');

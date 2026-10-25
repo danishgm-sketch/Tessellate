@@ -46,4 +46,27 @@ describe('Sites host capability', () => {
     const staticHeaders = await readFile(new URL('../site/public/_headers', import.meta.url), 'utf8');
     expect(staticHeaders).not.toMatch(/https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?\b/i);
   });
+
+  it('preserves vetted HTML and its strict CSP without disabling transparent edge compression', async () => {
+    const html = '<!doctype html><html><head></head><body><main>Verified page</main></body></html>';
+    const assetsEnv = {
+      ASSETS: {
+        fetch: async () => new Response(html, {
+          headers: {
+            'Content-Type': 'text/html; charset=utf-8',
+            'Cache-Control': 'public, max-age=0, must-revalidate',
+          },
+        }),
+      },
+    } as unknown as Env;
+
+    const response = await worker.fetch(new Request('https://example.test/'), assetsEnv);
+    const policy = response.headers.get('Content-Security-Policy') ?? '';
+    expect(response.status).toBe(200);
+    expect(await response.text()).toBe(html);
+    expect(response.headers.get('Cache-Control')).toBe('public, max-age=0, must-revalidate');
+    expect(response.headers.get('Cache-Control')).not.toMatch(/no-transform/i);
+    expect(policy).toContain("script-src 'self'");
+    expect(policy).not.toMatch(/script-src[^;]*unsafe-inline|unsafe-eval/i);
+  });
 });

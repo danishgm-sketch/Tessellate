@@ -1,0 +1,83 @@
+{
+  "capturedAt": "2026-10-25",
+  "site": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "version": 28,
+    "sourceCommit": "500dbfc17b13cff99388b5959124b47bf3c1e3cc",
+    "deploymentId": "appgdep_6adddd346abc8191b2623616ce7b05fd",
+    "deploymentStatus": "succeeded"
+  },
+  "route": "/",
+  "viewport": "1440x900",
+  "trace": {
+    "cpuThrottling": "1x",
+    "networkThrottling": "none",
+    "cacheDisabled": true,
+    "insightSetId": "NAVIGATION_0",
+    "lcpMs": 375,
+    "ttfbMs": 65,
+    "lcpRenderDelayMs": 309,
+    "cls": 0,
+    "cruxFieldData": null,
+    "renderBlockingEstimatedFcpSavingsMs": 0,
+    "renderBlockingEstimatedLcpSavingsMs": 0,
+    "documentLatencyEstimatedFcpSavingsMs": 0,
+    "documentLatencyEstimatedLcpSavingsMs": 0,
+    "documentLatencyEstimatedWastedBytes": 60500
+  },
+  "documentResponse": {
+    "status": 200,
+    "protocol": "h2",
+    "redirects": 0,
+    "contentLengthBytes": 90254,
+    "contentEncoding": null,
+    "cacheControl": "no-transform",
+    "contentType": "text/html"
+  },
+  "network": {
+    "requestCount": 25,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "allObservedRequestsStatus": 200,
+    "hashedCssContentEncoding": "gzip"
+  },
+  "console": {
+    "errors": 0,
+    "warnings": 0,
+    "messages": 0
+  },
+  "accessibilitySnapshot": {
+    "skipLink": true,
+    "bannerAndNavigationLandmarks": true,
+    "mainLandmark": true,
+    "labeledComposeFields": true,
+    "axeRun": false
+  },
+  "screenshot": "audit/evidence/v28/home-desktop-1440x900.png",
+  "fixVerification": {
+    "localBuildAstroPages": 733,
+    "localUnitSuite": "77 files; 1217 passed; 1 configured skip",
+    "localWorkerHomepage": {
+      "status": 200,
+      "browserContentEncoding": "gzip",
+      "explicitBrotliAcceptEncoding": "br",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "strictCspPreserved": true,
+      "browserRequests": 26,
+      "failedRequests": 0,
+      "consoleMessages": 0
+    },
+    "isolatedPreviewNoTransform": "Preserved by worker unit/security tests for both /preview and /preview-content.",
+    "regressionSequence": "The new public-HTML regression failed before the fix. Removing no-transform from every HTML route then exposed two existing preview-security assertions; scoping the change to public HTML preserved preview isolation and passed the full unit suite.",
+    "fullE2E": {
+      "command": "pnpm test:e2e",
+      "result": "Passed across Astro, Sites Worker, and isolated preview-app Playwright profiles.",
+      "astro": "316 passed; 108 configured skips",
+      "previewApp": "3 passed",
+      "sitesWorker": "Completed without failures; the list reporter did not retain an aggregate pass/skip count.",
+      "finalRunRecord": "test-results/.last-run.json reports status passed and an empty failedTests array."
+    }
+  },
+  "rawTrace": null,
+  "rawTraceNote": "Chrome DevTools MCP denied writing into the repository because its configured file workspace roots do not include this checkout. The trace summary and network/header evidence were recorded in this JSON and the in-session browser capture."
+}

@@ -608,3 +608,38 @@ deliberate 16:10 card thumbnails; taller resources are cropped in the card well,
 while their detail routes provide the full interactive preview. The newly
 reported defect is the blank, unlabelled loading interval documented above,
 not this consistent thumbnail treatment.
+
+## Public v28 home document compression audit — AUD-341
+
+On 2026-10-25, Chrome DevTools measured the live v28 homepage at 1440×900 with
+cache disabled, 1× CPU and unthrottled network. The cold navigation returned
+HTTP 200 over HTTP/2, LCP 375 ms (65 ms TTFB, 309 ms render delay), CLS 0.00,
+and no console messages. All 25 observed requests returned HTTP 200; the
+hashed stylesheet was gzip encoded. The HTML response transferred 90,254 bytes
+without `Content-Encoding` and included `Cache-Control: no-transform`. Chrome's
+DocumentLatency insight marked compression as failed and estimated 60.5 kB of
+avoidable transfer, with 0 ms estimated FCP/LCP savings. CrUX field data is
+unavailable. The trace summary and response evidence are in
+`quality/evidence/step-38/after/deployed-v28-home-1440-trace-2026-10-25.json`;
+the route screenshot is `audit/evidence/v28/home-desktop-1440x900.png`.
+
+The worker set `no-transform` on every HTML route to preserve vetted HTML and
+CSP hashes. That directive also blocked transparent edge compression. The
+red-to-green regression caught that applying the change to every route would
+weaken the byte-stability contract of the isolated preview; those two routes
+still receive `no-transform`. Public HTML now inherits its static asset cache
+policy and retains the same strict `script-src` policy. The production build and
+local Worker response return HTTP 200 with `Content-Encoding: gzip`, the
+original `public, max-age=0, must-revalidate` cache policy, and unchanged CSP.
+The local homepage browser smoke loaded 26/26 successful requests with no
+console messages. AUD-341 remains open until an explicitly approved follow-up
+Sites version returns a content-encoded public HTML response while preview
+routes still retain `no-transform` and all CSP/isolation checks pass.
+
+The complete local `pnpm test:e2e` chain then exited successfully across the
+Astro, Sites Worker, and isolated preview-app Playwright profiles. The final
+preview profile reported 3 passed; Playwright's final-run record reports
+`status: passed` and an empty failed-test list. The Astro profile reported 316
+passed and 108 configured skips. No aggregate Sites Worker count was retained
+by the list reporter, so this record claims completion and zero failures,
+without assigning an unverified pass/skip total to that profile.
