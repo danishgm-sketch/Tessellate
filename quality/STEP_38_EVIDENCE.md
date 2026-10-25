@@ -514,3 +514,43 @@ budgets passed at 99.63 KiB homepage, 175.82 KiB Explore, 270.82 KiB Compose,
 and 494.33 KiB Workbench. This verifies local source and the production-like
 Sites Worker only; public v28 still needs an approved follow-up deployment and
 the same deployed Workbench check before AUD-338 can close.
+
+## Chrome DevTools trace follow-up
+
+Chrome DevTools Performance traces were added after the initial v28 cold-start
+capture. Public v28 at 390×844 under Slow 4G and 4× CPU measured LCP 4,878 ms
+(57 ms TTFB, 4,821 ms render delay), CLS 0, and no console errors or warnings.
+The same route on the local Astro production preview for the candidate commit
+measured mobile LCP from 1,571–2,453 ms and desktop LCP 2,653 ms. The separate
+browser contexts still returned cached 304 responses for hashed assets, so this
+is diagnostic evidence and not a clean uncached transfer comparison or field
+Core Web Vitals. The desktop trace found a render-blocking stylesheet with an
+estimated 178 ms saving; the total Workbench startup remains a performance
+follow-up. Detailed machine-readable values and measurement limits are in
+quality/evidence/step-38/after/workbench-chrome-devtools-traces-2026-10-25.json.
+
+## 2026-10-25 resource preview update regression — AUD-339
+
+The public v28 Site was exercised as a user at `/resources/fade-up-reveal/` on
+1440×900 and 390×844. Each Reduced Motion toggle changed the live iframe URL
+and navigated the isolated document once. All observed requests returned HTTP
+200; the browser reported no console errors, warnings, or failed requests.
+Before/after evidence is in `quality/evidence/step-38/v28-resource-preview-motion-*.png`.
+
+Commit `b66af832482367051c8a35ffa625b4fc6aed71b6` keeps the initial preview URL
+stable and uses the existing typed `TESSELLATE_PREVIEW_UPDATE` channel for
+control changes. The desktop/mobile reduced-motion regression checks the
+visible CSS response, stable URL, and zero iframe navigation after initialization.
+The test update also changes catalogue and Gold certification to assert the
+rendered variant instead of treating a query-string change as proof of state.
+
+Verification after the change: `pnpm typecheck`, `pnpm lint`, `pnpm test`
+(1,216 passed, 1 skipped), and `pnpm audit:all` passed. The 16-point behavioral
+gate passed; the 324-resource seven-width Sites Worker matrix and Gold 40
+variant/accessibility suite passed in full; the isolated Preview app suite passed
+3/3. The first broad E2E run exposed two obsolete iframe-URL assertions; after
+those assertions were corrected, both affected full certification tests passed,
+and the Astro, remaining Sites Worker, and Preview app runs passed. The first
+run's pre-fix result is retained in the terminal run log; it was a test contract
+mismatch, not a runtime failure after the UI state had changed. Public v28 still
+has the navigation behavior; AUD-339 remains fixed-awaiting-deployed-verification.
