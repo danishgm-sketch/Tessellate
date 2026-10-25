@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-24T21:31:04.029Z",
+  "capturedAt": "2026-10-25T13:59:52.262Z",
   "source": "Derived from the current employee-experience showcase manifest, expanded to 30 screens and 1,830 nodes, then loaded from browser storage; interaction and export steps use the visible Workbench UI.",
   "project": {
     "id": "performance-large-30-screens",
@@ -8,20 +8,20 @@
     "jsonBytes": 355470
   },
   "timingsMs": {
-    "workbenchReady": 885,
-    "switchToFinalScreen": 51,
-    "manifestExport": 201,
-    "standaloneZipExport": 220
+    "workbenchReady": 954,
+    "switchToFinalScreen": 99,
+    "manifestExport": 544,
+    "standaloneZipExport": 362
   },
   "artifactSizes": {
     "manifestBytes": 681238,
     "standaloneZipBytes": 52949
   },
   "browserMetrics": {
-    "lcpMs": 704,
+    "lcpMs": 964,
     "cls": 0,
-    "longTaskMs": 0,
-    "longTaskCount": 0,
+    "longTaskMs": 145,
+    "longTaskCount": 2,
     "documentWidth": 1440,
     "viewportWidth": 1440
   },

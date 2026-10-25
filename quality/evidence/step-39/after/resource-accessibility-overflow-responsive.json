@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-24T21:35:50.823Z",
+  "capturedAt": "2026-10-25T14:05:39.868Z",
   "route": "http://127.0.0.1:4323/r/success-state",
   "viewport": {
     "width": 390,
@@ -396,7 +396,7 @@
     "httpErrors": []
   },
   "axeInstrumentationConsoleErrors": [
-    "Applying inline style violates the following Content Security Policy directive 'style-src-elem http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-fqewD9R6qZbs4XhOW0RKXc+l2QXxl8NlGdJc2KPp/wo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+    "Applying inline style violates the following Content Security Policy directive 'style-src-elem http://127.0.0.1:4323/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-scch6Kds9oYsB8AFl1oyz9tqK1KrLBbK0MJqgl7Gx9U='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
   ],
   "screenshot": "C:\\Users\\ismay\\Development\\Tessellate\\quality\\evidence\\step-39\\after\\resource-accessibility-overflow-responsive.png"
 }

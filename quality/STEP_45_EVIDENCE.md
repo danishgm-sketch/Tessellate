@@ -113,3 +113,33 @@ The first read/open attempt refused the divergent histories and performed no
 commit or push. See `quality/evidence/step-45/source-sync-open.json`. I will
 reconcile this through an isolated Sites checkout and an ordinary fast-forward
 mirror commit, while keeping `main` untouched in the canonical GitHub repo.
+
+## Approved v28 publication and live verification — 2026-10-25
+
+The owner approved publishing saved Site v28 from source-mirror commit
+`500dbfc17b13cff99388b5959124b47bf3c1e3cc`. The Sites deployment record is
+terminal `succeeded`; the public URL remains
+`https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`. A clean Chrome
+DevTools context verified `/` and `/compose` at 1440×900. Both returned HTTP
+200; the home page's 26 observed requests and the Compose route's observed
+requests succeeded, with no console messages. `/data/catalog.json` returned
+HTTP 200 and the Compose page showed `Catalogue ready`.
+
+The exact employee-experience brief was entered and composed through the visible
+UI with automatic archetype inference, Refined ambition, and Inventive
+structural creativity. It inferred the Employee Experience archetype and
+appropriate audience/objective, planned seven domain-relevant screens, and
+produced three distinct navigation/layout grammars: sidebar/card grid,
+top-navigation/feature grid, and rail/tri-column workspace. Existing full
+desktop/mobile Direction C workflow records, screenshots, lock and replacement
+subtree evidence, and export verification are in `audit/evidence/v28/flagship/`.
+No console messages or failed network requests were observed in the clean
+homepage and Compose checks.
+
+The same public v28 response-header capture verified the generated-hash CSP and
+absence of local API or preview-server origins. It closes deployed findings
+AUD-268 and AUD-336; evidence is in
+`quality/evidence/step-37/deployed-v28-csp-allowlist.json`. The header Search
+accessible-name defect AUD-337 is confirmed on v28 and remains open until the
+next explicitly approved version is rechecked. This approval did not authorize
+publishing a later version.

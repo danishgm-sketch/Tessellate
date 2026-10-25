@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-24T21:31:02.357Z",
+  "capturedAt": "2026-10-25T13:59:49.831Z",
   "route": "http://127.0.0.1:4323/explore?q=onboarding",
   "viewport": {
     "width": 1440,
@@ -11,13 +11,13 @@
     "uploadBitsPerSecond": 750000,
     "cpuSlowdownFactor": 4
   },
-  "routeReadyMs": 4596,
-  "firstPreviewReadyMs": 4657,
+  "routeReadyMs": 5579,
+  "firstPreviewReadyMs": 6328,
   "browserMetrics": {
-    "lcpMs": 816,
-    "cls": 0.027612486871999315,
-    "longTaskMs": 1707,
-    "longTaskCount": 13,
+    "lcpMs": 1000,
+    "cls": 0.02761042524005487,
+    "longTaskMs": 2893,
+    "longTaskCount": 17,
     "catalogueTransferBytes": 145527,
     "documentWidth": 1440,
     "viewportWidth": 1440

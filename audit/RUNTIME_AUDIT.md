@@ -2,7 +2,7 @@
 
 This register preserves the historical resource/renderer audit and adds the
 current production review audit. The current public baseline is ChatGPT Site
-v26 at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`; local fixes
+v28 at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`; local fixes
 are not considered closed until verified on a newly published Site. Evidence
 for the v24 and v25 route sweeps is in `evidence/v24/` and `evidence/v25/`, v26
 route, resource and flagship evidence is in `evidence/v26/`, and local post-fix
@@ -22,7 +22,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 336 findings (0 Critical, 66 High, 253 Medium, 17 Low): 32 closed after deployed verification, 214 fixed locally and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 0 remain open locally. The v26 Site closes AUD-140, AUD-268, AUD-323, and AUD-334. AUD-335 and AUD-336 are fixed locally and await deployed verification; older findings also remain pending their issue-specific checks.
+**Current disposition:** 337 findings (0 Critical, 66 High, 254 Medium, 17 Low): 34 closed after deployed verification, 213 fixed locally and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 0 remain open. The public v28 Site closes AUD-335 and AUD-336 after the blocked-island, CSP, route, and preview checks. AUD-337's local fix passes the new desktop/mobile regression and homepage Lighthouse audits; it still needs deployed verification. Older findings also remain pending their issue-specific checks.
 
 ## v26 deployed-site checkpoint
 
@@ -3554,17 +3554,23 @@ observation rather than a confirmed defect. These single-run traces do not
 certify field Core Web Vitals or the remaining routes; detailed results are in
 `../quality/evidence/step-47/v25-explore.json`.
 
-## Current local closure gate
+## Current deployed closure gate
 
-The latest public deployment is v26. The v26 browser audit covered all 31
-canonical routes at 1440×900 and 390×844, 630 unique internal link targets, all
-324 catalogue resources, the 40 Gold dark-theme contrast checks, ten tool
-surfaces, and the exact employee-experience Compose-to-Workbench workflow.
-AUD-140, AUD-268, AUD-323, and AUD-334 are closed from deployed evidence. AUD-335 and AUD-336 are
-locally fixed and await a new deployed version; no claim is made that the
-current public homepage is clean. Overall, the register has 336 findings: 32
-closed after deployment verification, 214 fixed locally and awaiting
-issue-specific deployment checks, 88 locally verified, and two legacy `fixed`
-records. The product-hardening release programme is still in progress. The new version must
-be saved from the pushed source commit, shown for approval, then published and
-re-audited; local screenshots are not a substitute for that check.
+The latest public deployment is v28. Its 31-route sweep, 630 internal targets, 56 responsive captures, ten client-side tools, all five Workbench modes, and exact employee-experience flow are recorded under evidence/v28/. AUD-335 and AUD-336 are closed after deployed checks. AUD-337's fix is locally verified: the eight-case desktop/mobile Playwright test passes, the homepage Lighthouse audit passes with zero failed audits at desktop and mobile, and all four route Lighthouse checks have zero accessibility failures. Plain Astro preview still produces opaque-preview iframe CORS console errors on Explore and the resource detail route because it does not apply Sites Worker headers; those results are not treated as deployed product errors. AUD-337 remains fixed-awaiting-deployed-verification until the saved v29 is published and checked. The register has 337 findings: 34 closed after deployment verification, 213 fixed locally and awaiting issue-specific deployment checks, 88 locally verified, 2 legacy fixed records, and zero open. The product-hardening release programme is still in progress.
+
+## v28 deployed-site audit
+
+The public review Site is v28 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. Captures cover all 31 requested routes at 1440x900 and 390x844, 630 discovered same-origin links, and seven core routes at 360, 390, 430, 768, 1024, 1280, 1440, and 1536 CSS pixels. All 62 route captures and 56 responsive captures returned HTTP 200 with no application console errors, uncaught exceptions, failed requests, HTTP errors, or horizontal document overflow. All six route Axe scans reported zero violations. Seven scanner preload warnings occurred only during Axe injection; the direct browser route checks did not report app warnings. Evidence is in [evidence/v28](evidence/v28/).
+
+The exact employee-experience journey passed visibly on desktop and mobile. Direction C opened project `proj-direction-c-a21e3c1d6d6a45f2b1de220dccb937f5dirc`; the locked dashboard KPI subtree survived divergence-95 recomposition and Surprise Me, the activity resource changed to `notification-centre`, Undo/Redo restored manifests exactly, and the standalone ZIP installed and built outside the repository then ran in a browser at desktop and mobile sizes. The three directions used sidebar, top-navigation, and rail navigation with three distinct composition grammars and zero unresolved-role diagnostics. All 10 tools rendered at desktop/mobile with zero Axe violations and no console/network errors; 41 deployed tool tests passed and 21 desktop-only checks were skipped on mobile. The five Workbench modes passed at both widths with zero Axe violations.
+
+Cold homepage DevTools traces measured LCP 332ms, TTFB 62ms, and CLS 0 at desktop 1x/unthrottled, and LCP 1,474ms, TTFB 58ms, and CLS 0 at mobile 390x844, DPR 3, 4x CPU, Fast 4G. CrUX field data was unavailable. The Site has no D1/R2 bindings; the health route truthfully reported the laptop backend offline and deterministic mode active. The public CSP contains no loopback hosts; the isolated preview response retains `sandbox allow-scripts` and `nosniff`.
+
+### AUD-337 — Medium — Search button accessible name omits its visible label
+
+- **Evidence:** The deployed v28 Lighthouse audits on `/`, `/explore`, `/compose`, and `/r/advanced-data-table` reported `label-content-name-mismatch`. The home/Explore button visibly says `Search ⌘K`; the Compose/resource header says `Search... ⌘K`; both had an overriding `aria-label` of `Search resources (Press Command-K)`. The v28 screenshots and red-test error contexts are in `evidence/v28/`. After the local fix, the eight-case Playwright regression passes across desktop and mobile. Lighthouse reports zero failed audits on the homepage at desktop and mobile and zero accessibility failures on all four routes. After screenshots and raw home Lighthouse reports are in `evidence/v29/local-after/`.
+- **Reproduction:** Open one of the four routes at 1440x900 and run Lighthouse desktop accessibility, or inspect the Search button's visible text and accessible name.
+- **Root cause:** Both header implementations supplied an `aria-label` that overrode the name derived from their visible Search text. The mobile layout also used `display:none` for the label and shortcut, which would leave the icon-only button unnamed if the override were simply removed.
+- **Affected code:** `apps/site/src/components/home/SiteHeader.tsx`, `packages/ui/src/components/header.tsx`, and the regression in `tests/e2e/header-accessible-name.spec.ts`.
+- **Remediation:** Both headers now derive their name from their text content; responsive `sr-only` text preserves the label and shortcut in the accessibility tree on mobile. `tests/e2e/header-accessible-name.spec.ts` passes locally (8/8). Re-run Lighthouse on the four routes on the newly published Site before closing.
+- **Status:** Fixed locally; awaiting deployed verification. Do not close until the same v29 checks pass on the live review Site.

@@ -1,0 +1,207 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersion": 28,
+  "capturedAt": "2026-10-25",
+  "viewports": [
+    "1440x900",
+    "390x844"
+  ],
+  "classificationMeaning": "PASS means the deployed page has coherent, truthful rendered content at both sampled viewports, with no route-level runtime/network/overflow defect. It does not certify every secondary control; interaction depth is stated per route.",
+  "sharedEvidence": [
+    "route-audit.json: 31 routes at 1440x900 and 390x844; 62/62 HTTP 200, zero app console errors, uncaught exceptions, failed requests, HTTP errors, or document overflow; six Axe scans have zero violations",
+    "internal-link-audit.json: 630 same-origin targets; 0 failed",
+    "responsive/report.json: 7 core routes at 360, 390, 430, 768, 1024, 1280, 1440, 1536 CSS pixels; 56 captures with zero overflow/runtime/network failures",
+    "flagship: exact employee-experience workflow, Direction C, recomposition/lock/replacement/undo-redo, standalone export install/build/browser verified at desktop and mobile",
+    "tools: ten tool pages at desktop/mobile; route Axe reports contain zero violations; 41 live UI tests passed, 21 mobile-only skips are documented",
+    "workbench-modes: Structure, Style, Motion, Content, Audit all exercised at desktop/mobile with zero Axe violations and runtime/network errors",
+    "Lighthouse desktop found AUD-337 (header accessible name mismatch); mobile homepage Lighthouse had no failed accessibility audits"
+  ],
+  "routes": [
+    {
+      "route": "/",
+      "classification": "DEGRADED",
+      "interactionDepth": "The example control stays disabled until hydration; desktop/mobile generation renders three structures and Direction C opens in Workbench.  The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "home-desktop-1440x900.png; home-mobile-390x844.png; home-demo/pre-hydration-desktop-1440.json; home-demo/pre-hydration-mobile-390.json; flagship/employee-workflow-*.json"
+    },
+    {
+      "route": "/explore",
+      "classification": "DEGRADED",
+      "interactionDepth": "Catalogue is ready with 324 resources; query relevance, URL-restorable filters, and mobile filter dialog keyboard interactions passed in live browser checks. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "route-audit.json; mobile-filter-hydration/report.json; live-mobile-filter-hydration-v26.spec.ts"
+    },
+    {
+      "route": "/components",
+      "classification": "DEGRADED",
+      "interactionDepth": "Catalogue category rendered at both required viewports; card links included in same-origin link audit. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "components-desktop-1440x900.png; components-mobile-390x844.png"
+    },
+    {
+      "route": "/sections",
+      "classification": "DEGRADED",
+      "interactionDepth": "Catalogue category rendered at both required viewports; card links included in same-origin link audit. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "sections-desktop-1440x900.png; sections-mobile-390x844.png"
+    },
+    {
+      "route": "/blocks",
+      "classification": "DEGRADED",
+      "interactionDepth": "Catalogue category rendered at both required viewports; card links included in same-origin link audit. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "blocks-desktop-1440x900.png; blocks-mobile-390x844.png"
+    },
+    {
+      "route": "/pages",
+      "classification": "DEGRADED",
+      "interactionDepth": "Page architecture catalogue rendered at both required viewports; resource links resolve. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "pages-desktop-1440x900.png; pages-mobile-390x844.png"
+    },
+    {
+      "route": "/effects",
+      "classification": "DEGRADED",
+      "interactionDepth": "Catalogue page and preview assets rendered without CSP or console errors at both required viewports. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "effects-desktop-1440x900.png; effects-mobile-390x844.png"
+    },
+    {
+      "route": "/motion",
+      "classification": "DEGRADED",
+      "interactionDepth": "Catalogue page and preview assets rendered without CSP or console errors at both required viewports. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "motion-desktop-1440x900.png; motion-mobile-390x844.png"
+    },
+    {
+      "route": "/backgrounds",
+      "classification": "DEGRADED",
+      "interactionDepth": "Catalogue page and preview assets rendered without CSP or console errors at both required viewports. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "backgrounds-desktop-1440x900.png; backgrounds-mobile-390x844.png"
+    },
+    {
+      "route": "/ai",
+      "classification": "DEGRADED",
+      "interactionDepth": "AI-pattern catalogue rendered; page describes resources, not hosted inference. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "ai-desktop-1440x900.png; ai-mobile-390x844.png"
+    },
+    {
+      "route": "/data",
+      "classification": "DEGRADED",
+      "interactionDepth": "Data-visualisation catalogue rendered at both required viewports. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "data-desktop-1440x900.png; data-mobile-390x844.png"
+    },
+    {
+      "route": "/compose",
+      "classification": "DEGRADED",
+      "interactionDepth": "The exact employee-experience brief produced three previewable directions; C opened the same project in Workbench and passed standalone export. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "flagship/employee-workflow-*.json; flagship/direction-*.png"
+    },
+    {
+      "route": "/workbench",
+      "classification": "PASS",
+      "interactionDepth": "The flagship Direction C project was selected from Compose and opened with matching project identity/screens/DNA; lock, divergence-95 recomposition, replacement, Surprise Me, exact undo/redo, preview and independent ZIP build/browser passed. All five modes were opened at desktop/mobile; Axe and runtime/network checks were clean.",
+      "evidence": "flagship/employee-workflow-*.json; flagship/employee-workbench-*.png"
+    },
+    {
+      "route": "/blueprints",
+      "classification": "DEGRADED",
+      "interactionDepth": "Blueprint index and representative B2B SaaS blueprint inspected; links resolve. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "blueprints-desktop-1440x900.png; blueprints__b2b-saas-desktop-1440x900.png"
+    },
+    {
+      "route": "/collections",
+      "classification": "DEGRADED",
+      "interactionDepth": "Truthful browser-local empty state and Beta limitations inspected; no cloud sync claim is made. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "collections-desktop-1440x900.png; collections-mobile-390x844.png"
+    },
+    {
+      "route": "/creators",
+      "classification": "DEGRADED",
+      "interactionDepth": "Attribution directory states counts are published catalogue resources, not usage/popularity data. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "creators-desktop-1440x900.png; creators-mobile-390x844.png"
+    },
+    {
+      "route": "/showcase",
+      "classification": "DEGRADED",
+      "interactionDepth": "Showcase index and representative employee showcase inspected; sample-content warning is visible. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "showcase-desktop-1440x900.png; showcase__showcase-playful-hr-desktop-1440x900.png"
+    },
+    {
+      "route": "/trends",
+      "classification": "DEGRADED",
+      "interactionDepth": "Catalogue tag counts are labelled as catalogue signals and do not claim popularity or customer usage. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "trends-desktop-1440x900.png; trends-mobile-390x844.png"
+    },
+    {
+      "route": "/tools",
+      "classification": "DEGRADED",
+      "interactionDepth": "Ten tools are explicitly Beta, client-side, and not represented as mutating/certifying Workbench projects; each tool page has separate live checks. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "tools-desktop-1440x900.png; tools-hardening-live-v26.spec.ts"
+    },
+    {
+      "route": "/agents",
+      "classification": "DEGRADED",
+      "interactionDepth": "Page explicitly limits hosted Site scope; CLI/MCP require local installation and no hosted API is implied. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "agents-desktop-1440x900.png; agents-mobile-390x844.png"
+    },
+    {
+      "route": "/docs",
+      "classification": "DEGRADED",
+      "interactionDepth": "Repository-derived documentation index rendered; representative CLI child route inspected. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "docs-desktop-1440x900.png; docs__cli-desktop-1440x900.png"
+    },
+    {
+      "route": "/sponsor",
+      "classification": "DEGRADED",
+      "interactionDepth": "Page states no payment processor/checkout is configured and preserves free resource access. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "sponsor-desktop-1440x900.png; sponsor-mobile-390x844.png"
+    },
+    {
+      "route": "/about",
+      "classification": "DEGRADED",
+      "interactionDepth": "Informational product page rendered at both required viewports. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "about-desktop-1440x900.png; about-mobile-390x844.png"
+    },
+    {
+      "route": "/license",
+      "classification": "DEGRADED",
+      "interactionDepth": "Licence and provenance page rendered; internal source links resolve. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "license-desktop-1440x900.png; license-mobile-390x844.png"
+    },
+    {
+      "route": "/privacy",
+      "classification": "DEGRADED",
+      "interactionDepth": "Review-specific privacy page rendered at both required viewports. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "privacy-desktop-1440x900.png; privacy-mobile-390x844.png"
+    },
+    {
+      "route": "/terms",
+      "classification": "DEGRADED",
+      "interactionDepth": "Review-specific terms page rendered at both required viewports. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "terms-desktop-1440x900.png; terms-mobile-390x844.png"
+    },
+    {
+      "route": "/r/advanced-data-table",
+      "classification": "DEGRADED",
+      "interactionDepth": "Representative resource preview and variant controls inspected; all 40 Gold resources were switched to dark Expressive and contrast checked. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "r__advanced-data-table-desktop-1440x900.png; gold-dark-contrast-accurate/*/report.json"
+    },
+    {
+      "route": "/showcase/showcase-playful-hr",
+      "classification": "DEGRADED",
+      "interactionDepth": "Representative showcase renders an employee-experience project and marks the content as illustrative sample data. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "showcase__showcase-playful-hr-desktop-1440x900.png; showcase__showcase-playful-hr-mobile-390x844.png"
+    },
+    {
+      "route": "/blueprints/b2b-saas",
+      "classification": "DEGRADED",
+      "interactionDepth": "Representative blueprint presents audience, objective, screens, anti-patterns and a Compose action. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "blueprints__b2b-saas-desktop-1440x900.png; blueprints__b2b-saas-mobile-390x844.png"
+    },
+    {
+      "route": "/tools/typography",
+      "classification": "DEGRADED",
+      "interactionDepth": "Representative tool controls and preview inspected; all ten tool routes and configured interactions are covered by the live tool suite. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "tools__typography-desktop-1440x900.png; tools-hardening-live-v26.spec.ts"
+    },
+    {
+      "route": "/docs/cli",
+      "classification": "DEGRADED",
+      "interactionDepth": "Representative CLI guide renders from the current repository documentation; links resolve. The page-specific behavior and layout passed the v28 route checks, but its shared header Search control has the v28 accessible-name mismatch tracked in AUD-337.",
+      "evidence": "docs__cli-desktop-1440x900.png; docs__cli-mobile-390x844.png"
+    }
+  ]
+}

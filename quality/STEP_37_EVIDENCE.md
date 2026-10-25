@@ -4345,3 +4345,34 @@ The fix is commit
 AUD-336 open until a newly saved version is explicitly approved, deployed, and
 the same response-header check confirms no loopback sources. No D1/R2 bindings
 or infrastructure were added.
+
+### Public v28 CSP recheck and laptop OS restart recovery — 2026-10-25
+
+The owner approved publishing saved Site v28 from source-mirror commit
+`500dbfc17b13cff99388b5959124b47bf3c1e3cc`. Sites reports the deployment as
+`succeeded` at the existing public review URL. A clean Chrome DevTools context
+loaded `/` at 1440×900: HTTP 200, 26 observed requests all returned 200, and
+the console had no messages. The actual response CSP contains no loopback
+origins, uses build-generated hashes for inline scripts and style elements,
+and allows only the configured production API and preview origins. Its inline
+style-attribute allowance is recorded explicitly. This closes AUD-268 and
+AUD-336 against v28. Machine-readable response-header evidence and the
+associated route screenshot are in
+`quality/evidence/step-37/deployed-v28-csp-allowlist.json` and
+`audit/evidence/v28/home-desktop-1440x900.png`.
+
+The authorized Windows restart test also passed: both laptop Tessellate
+containers recovered through their existing restart policies without a manual
+start; the API and host health checks were healthy and `/health` returned
+HTTP 200. The inference endpoint was not probed without its gateway credential.
+See `quality/evidence/step-37/laptop-restart-recovery.json`. This does not
+certify queued inference recovery across OS shutdown or external tunnel ingress.
+
+The full local Playwright rerun completed with 612 passed, 149 configured skips,
+and zero failures across the Astro, Sites Worker, and isolated-preview profiles.
+The Sites Worker certified all 324 resources and the 40-resource Gold matrix
+at their required widths. Unit tests passed 1,216 cases with one configured
+skip; typecheck, lint, catalogue build, production build, and `audit:all` passed.
+This is local verification; the remaining open security findings and all fixes
+that have not been checked on v28 stay open for the approval-gated next Site
+version. No D1/R2 bindings were provisioned.
