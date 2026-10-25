@@ -3560,7 +3560,7 @@ The latest public deployment is v26. The v26 browser audit covered all 31
 canonical routes at 1440×900 and 390×844, 630 unique internal link targets, all
 324 catalogue resources, the 40 Gold dark-theme contrast checks, ten tool
 surfaces, and the exact employee-experience Compose-to-Workbench workflow.
-AUD-140 and AUD-334 are closed from deployed evidence. AUD-335 and AUD-336 are
+AUD-140, AUD-268, AUD-323, and AUD-334 are closed from deployed evidence. AUD-335 and AUD-336 are
 locally fixed and await a new deployed version; no claim is made that the
 current public homepage is clean. Overall, the register has 336 findings: 32
 closed after deployment verification, 214 fixed locally and awaiting
