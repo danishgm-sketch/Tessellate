@@ -463,3 +463,54 @@ introduced by the current source changes. The source SHA is not exposed by the
 page; no hosting or repository change was made from this measurement. Recheck
 these findings against the public release candidate in Step 45 before closing
 them.
+
+## 2026-10-25 deployed v28 Workbench cold-start audit
+
+Chrome DevTools and fresh Playwright Chromium contexts measured the public v28
+Site directly. At 1440×900, 1× CPU and Fast 4G, cold route LCP was 580 ms on
+home (TTFB 60 ms, CLS 0), 493 ms on Explore (TTFB 62 ms, CLS 0), 526 ms on
+Compose (TTFB 220 ms, CLS 0), and 3,925 ms on Workbench (TTFB 69 ms, CLS 0).
+At 390×844, 4× CPU and Slow 4G, Explore measured LCP 1,599 ms and Compose
+1,650 ms, both with CLS 0. CrUX field data is unavailable. Render-blocking
+insights on the sampled routes estimated zero FCP/LCP savings.
+
+The Workbench cold-start exposed AUD-338. A fresh mobile context had an empty
+document body at 1.5 seconds. The first loading message became an LCP candidate
+at 5,204 ms and a product-preview paragraph at 7,776 ms. Two separate cold
+loads measured LCP at 5,664 and 6,132 ms with CLS 0. The fresh Playwright
+context recorded 44 requests, all HTTP 200, with zero console errors, failed
+requests, or horizontal overflow. A separate warmed DevTools-tab capture
+recorded 45 responses, including one 304; it is not combined with the fresh
+context counts. The 2.14 MB
+decoded catalogue and roughly 1.1 MB decoded Workbench entry script contributed
+to the cold transfer and execution workload; these measurements do not show a
+field percentile. Full captures and timing details are in
+`audit/evidence/v28/performance/deployed-v28-workbench-cold-start.json` and
+the associated screenshot files in that directory.
+
+The root cause was an empty Astro `client:only` island with no fallback. The
+Workbench route now renders an accessible local-workspace status and a working
+Compose link in Astro's fallback slot. The regression first failed before the
+fix, then passed after a 1.6-second delayed client-bundle response at desktop
+and mobile in both Astro preview and the Sites Worker. The latest Sites Worker
+run showed the fallback at 82 ms on both desktop and mobile; Axe reported zero WCAG 2.2 A/AA violations,
+and the Workbench Pages control worked after initialization. Screenshots and
+machine records are in `quality/evidence/step-38/after/workbench-startup-fallback-*.{png,json}`.
+This removes the blank interval; it does not reduce total editor startup time
+under the synthetic low-end mobile profile. The change is not on public v28,
+and AUD-338 remains fixed-awaiting-deployed-verification until the same check
+passes on a later saved and explicitly approved Site.
+
+## 2026-10-25 full local verification after AUD-338
+
+The accessible Workbench fallback has now passed the full local verification
+chain: `pnpm test` (1,216 passed, 1 skipped), all 22 workspace typechecks,
+`pnpm lint`, `pnpm audit:all`, and `pnpm test:e2e` (616 passed, 149 configured
+skips). The browser runs comprised 316 Astro cases, 297 Sites Worker cases,
+and 3 isolated preview cases. All 324 resources rendered in their Sites Worker
+certification; the 40 Gold resource accessibility checks also passed. The
+production build generated 733 Astro pages and the Sites artifact. Route gzip
+budgets passed at 99.63 KiB homepage, 175.82 KiB Explore, 270.82 KiB Compose,
+and 494.33 KiB Workbench. This verifies local source and the production-like
+Sites Worker only; public v28 still needs an approved follow-up deployment and
+the same deployed Workbench check before AUD-338 can close.

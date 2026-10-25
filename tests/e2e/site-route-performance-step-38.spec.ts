@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
@@ -8,6 +9,73 @@ type RuntimeSamples = {
   longTaskMs: number;
   longTaskCount: number;
 };
+
+test('Workbench shows a useful server-rendered status before its client bundle is ready', async ({ page }, testInfo) => {
+  const consoleErrors: string[] = [];
+  const consoleWarnings: string[] = [];
+  const uncaughtExceptions: string[] = [];
+  const failedRequests: Array<{ url: string; error: string | null }> = [];
+  const httpErrors: Array<{ url: string; status: number }> = [];
+  page.on('console', (message) => {
+    if (message.type() === 'error') consoleErrors.push(message.text());
+    if (message.type() === 'warning') consoleWarnings.push(message.text());
+  });
+  page.on('pageerror', (error) => uncaughtExceptions.push(error.message));
+  page.on('response', (response) => {
+    if (response.status() >= 400) httpErrors.push({ url: response.url(), status: response.status() });
+  });
+  page.on('requestfailed', (request) =>
+    failedRequests.push({ url: request.url(), error: request.failure()?.errorText ?? null })
+  );
+
+  await page.route('**/_astro/index.*.js', async (route) => {
+    const response = await route.fetch();
+    await new Promise((resolve) => setTimeout(resolve, 1600));
+    await route.fulfill({ response });
+  });
+
+  const startedAt = Date.now();
+  await page.goto('/workbench', { waitUntil: 'commit' });
+  const startupHeading = page.getByRole('heading', { name: 'Preparing your local workspace' });
+  await expect(startupHeading).toBeVisible({ timeout: 1000 });
+  const fallbackVisibleAtMs = Date.now() - startedAt;
+  await page.screenshot({
+    path: path.resolve(process.cwd(), `quality/evidence/step-38/after/workbench-startup-fallback-${testInfo.project.name}.png`),
+  });
+  const accessibility = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
+    .analyze();
+
+  await expect(page.getByRole('button', { name: 'Pages' }).first()).toBeVisible({ timeout: 15000 });
+  const evidence = {
+    capturedAt: new Date().toISOString(),
+    route: page.url(),
+    viewport: page.viewportSize(),
+    delayedClientBundleMs: 1600,
+    fallbackVisibleAtMs,
+    axeViolations: accessibility.violations.map(({ id, impact, description }) => ({ id, impact, description })),
+    consoleErrors,
+    consoleWarnings,
+    uncaughtExceptions,
+    failedRequests,
+    httpErrors,
+  };
+  const outputPath = path.resolve(
+    process.cwd(),
+    `quality/evidence/step-38/after/workbench-startup-fallback-${testInfo.project.name}.json`
+  );
+  await mkdir(path.dirname(outputPath), { recursive: true });
+  await writeFile(outputPath, `${JSON.stringify(evidence, null, 2)}\n`, 'utf8');
+  await testInfo.attach('Workbench startup fallback evidence', {
+    body: Buffer.from(JSON.stringify(evidence, null, 2)),
+    contentType: 'application/json',
+  });
+  expect(consoleErrors).toEqual([]);
+  expect(uncaughtExceptions).toEqual([]);
+  expect(failedRequests).toEqual([]);
+  expect(httpErrors).toEqual([]);
+  expect(accessibility.violations, JSON.stringify(accessibility.violations)).toEqual([]);
+});
 
 test('Explore initial catalogue render stays within the CLS budget', async ({ page }, testInfo) => {
   test.skip(

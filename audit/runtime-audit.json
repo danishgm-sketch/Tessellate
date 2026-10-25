@@ -10804,7 +10804,52 @@
       ],
       "fixCommit": "fe28b28149b822045a5422513bd1abebc12d7733",
       "status": "fixed-awaiting-deployed-verification"
+    },
+    {
+      "id": "AUD-338",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "390x844",
+      "category": "performance",
+      "title": "Workbench showed a blank page while its client-only editor initialized",
+      "expected": "The initial Workbench document should expose a clear loading state and a usable way to continue while the browser restores the local project and catalogue.",
+      "actual": "On the public v28 Site, a fresh mobile context had an empty body at 1.5 seconds. The loading message first became the LCP candidate at 5.204 seconds; a product preview paragraph was painted at 7.776 seconds under 4x CPU and Slow 4G. A separate cold run measured LCP at 5.664 seconds. CLS was 0. The fresh Playwright network capture recorded 44 requests, all HTTP 200, with no console errors, failed requests, or horizontal overflow. A separate warmed DevTools-tab capture recorded 45 responses, including one 304; the captures are kept distinct.",
+      "reproduction": [
+        "Open https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench in a fresh Chromium context at 390x844.",
+        "Throttle CPU to 4x and network to 150ms latency, 1.6Mbps download, and 768Kbps upload.",
+        "At 1.5 seconds, observe the empty document body and capture the viewport.",
+        "Observe the client-only island mount and the delayed project preview; the catalogue request returns 200."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "/workbench",
+          "status": 200
+        },
+        {
+          "url": "/data/catalog.json",
+          "status": 200
+        },
+        {
+          "url": "Fresh Playwright context: all observed requests",
+          "status": "44 HTTP 200; zero failed requests or HTTP errors"
+        },
+        {
+          "url": "Separate warmed DevTools-tab capture",
+          "status": "45 responses: 44 HTTP 200 and one HTTP 304; zero failed requests"
+        }
+      ],
+      "screenshot": "audit/evidence/v28/performance/workbench-mobile-early.png",
+      "rootCause": "apps/site/src/pages/workbench/index.astro mounted WorkbenchShell with client:only but supplied no fallback content, so the static Workbench document was empty until the large React editor bundle executed. After mount, WorkbenchShell displayed its own loading status while awaiting browser project storage and the verified catalogue.",
+      "affectedCode": [
+        "apps/site/src/pages/workbench/index.astro",
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "tests/e2e/site-route-performance-step-38.spec.ts"
+      ],
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "evidence": "The local route now includes a server-rendered, accessible loading surface and a Compose link. A red-to-green browser regression delays the main client bundle by 1.6 seconds, confirms the fallback appears within 82ms on desktop and mobile in the latest Sites Worker run, runs Axe with zero violations, then confirms the Workbench Pages control loads. Both desktop and mobile passes were repeated against Astro preview and the production-like Sites Worker. After screenshots: quality/evidence/step-38/after/workbench-startup-fallback-sites-chromium.png and quality/evidence/step-38/after/workbench-startup-fallback-sites-mobile-chromium.png. Public v28 still contains the defect; close only after a saved and approved follow-up Site is deployed and the same cold-start check passes."
     }
   ],
-  "generatedAt": "2026-10-25T01:37:30.000Z"
+  "generatedAt": "2026-10-25T15:55:46.000Z"
 }
