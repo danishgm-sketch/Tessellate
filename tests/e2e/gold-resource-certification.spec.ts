@@ -273,7 +273,9 @@ test('Gold resources render at every certified width and each declared variant',
                 } else if (resource.slug === 'fade-up-reveal') {
                   await expect(fadeRevealCard).not.toBeNull();
                   await expect.poll(() => fadeRevealCard!.evaluate((element) => element.classList.contains('opacity-0'))).toBe(true);
-                  await frame.locator('body').evaluate(() => new Promise((resolve) => window.setTimeout(resolve, 350)));
+                  // Observe the transition as it reaches its hidden state. A
+                  // fixed sleep can outlast the resource's 420 ms replay
+                  // window and sample the already-restored visible state.
                   await expect.poll(() => fadeRevealCard!.evaluate((element) => Number(getComputedStyle(element).opacity))).toBeLessThan(0.05);
                   await expect.poll(() => fadeRevealCard!.evaluate((element) => element.classList.contains('opacity-100'))).toBe(true);
                   await expect.poll(() => fadeRevealCard!.evaluate((element) => Number(getComputedStyle(element).opacity))).toBe(1);

@@ -47,8 +47,8 @@ export function FadeUpReveal({ variant = 'quiet', children }: FadeUpRevealProps)
             setMotionStatus('');
             setRevealed(false);
             // Let the exit transition finish before replaying the entrance. A
-            // 50 ms reset reversed the transition before it became visible.
-            setTimeout(() => setRevealed(true), transitionDuration + 120);
+            // brief hold makes the hidden state perceptible before it returns.
+            setTimeout(() => setRevealed(true), transitionDuration + 350);
           }}
           className="text-xs px-3 py-1 rounded border border-neutral-200 dark:border-neutral-800 text-[var(--tess-ink-muted,#62666F)] hover:text-current"
         >
