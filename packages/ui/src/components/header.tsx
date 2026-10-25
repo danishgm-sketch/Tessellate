@@ -59,15 +59,14 @@ export function Header({ onSearchClick, onSignInClick, currentPath = '/' }: Head
           <button
             type="button"
             onClick={()=>onSearchClick ? onSearchClick() : window.location.assign('/explore?focus=search')}
-            aria-label="Search resources (Press Command-K)"
             className="flex items-center gap-2 min-h-[32px] rounded-lg border border-[#D9D6CF] bg-[#FFFFFF] px-3 py-1.5 text-xs text-[#62666F] hover:border-[#C7C3BA] hover:text-[#111217] dark:border-[#272C34] dark:bg-[#111419] dark:text-[#A8AFBA] dark:hover:border-[#353C46] cursor-pointer"
           >
             <svg className="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <circle cx="11" cy="11" r="8" />
               <path d="m21 21-4.3-4.3" />
             </svg>
-            <span className="hidden sm:inline">Search...</span>
-            <kbd className="hidden sm:inline-flex items-center gap-0.5 rounded border border-[#D9D6CF] bg-[#ECE9E2] px-1.5 py-0.5 text-[10px] font-mono dark:border-[#353C46] dark:bg-[#1C2128]">
+            <span className="sr-only sm:not-sr-only">Search...</span>
+            <kbd className="sr-only sm:not-sr-only items-center gap-0.5 rounded border border-[#D9D6CF] bg-[#ECE9E2] px-1.5 py-0.5 text-[10px] font-mono dark:border-[#353C46] dark:bg-[#1C2128] sm:inline-flex">
               ⌘K
             </kbd>
           </button>

@@ -227,7 +227,7 @@ test('keyboard dialogs trap focus, close with Escape, and return focus', async (
 
   await page.goto('/');
 
-  const searchButton = page.getByRole('button', { name: /Search resources/ });
+  const searchButton = page.getByRole('button', { name: /Search.*⌘K/ });
   // SiteHeader keeps the server-rendered trigger disabled until the React island hydrates.
   // Wait for that user-visible ready state before starting a keyboard focus assertion.
   await expect(searchButton).toBeEnabled();

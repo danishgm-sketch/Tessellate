@@ -56,12 +56,11 @@ export function SiteHeader() {
             <button
               type="button"
               disabled={!interactive} onClick={() => setIsSearchOpen(true)}
-              aria-label="Search resources (Press Command-K)"
               className="flex items-center gap-2 rounded-lg border border-[#D9D6CF] bg-[#FAF9F6] px-3 py-1.5 text-xs text-[#62666F] hover:border-[#111217] hover:text-[#111217] transition-colors"
             >
               <Search className="h-3.5 w-3.5 text-[var(--text-muted)]" />
-              <span className="hidden sm:inline">Search</span>
-              <kbd className="hidden sm:inline rounded bg-[#ECE9E2] px-1 py-0.5 text-[10px] font-mono text-[#62666F]">
+              <span className="sr-only sm:not-sr-only">Search</span>
+              <kbd className="sr-only sm:not-sr-only rounded bg-[#ECE9E2] px-1 py-0.5 text-[10px] font-mono text-[#62666F]">
                 ⌘K
               </kbd>
             </button>

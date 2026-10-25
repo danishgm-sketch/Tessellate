@@ -28,7 +28,7 @@ test('real edits survive browser reload', async ({page}) => {
 
 test('header search is a keyboard-operable dialog', async ({page}) => {
   await page.goto('/');
-  await page.getByRole('button',{name:'Search resources (Press Command-K)'}).click();
+  await page.getByRole('button',{name:'Search ⌘K'}).click();
   await expect(page.getByRole('dialog')).toBeVisible();
   await page.getByRole('dialog').getByRole('textbox').fill('Explore');
   await page.getByRole('dialog').getByRole('textbox').press('Escape');
