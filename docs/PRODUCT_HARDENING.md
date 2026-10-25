@@ -15,7 +15,7 @@ Legacy branches are evidence/reference, never parallel sources of product truth.
 Do not advance a checkbox merely because code exists. Record evidence and defects.
 
 - [x] 01 Canonicalise repository — reconcile source branches, ADRs, README, PR policy.
-- [x] 02 Establish green baseline — all commands below, fresh checkout, green CI. Exact 2026-10-24 rerun from `2ba70b6f9a493951f0cb0e9c097204c7903e1248`: `quality/evidence/step-02-fresh-checkout-2026-10-24.md`.
+- [x] 02 Establish green baseline — all commands below, fresh checkout, green CI. The clean-checkout rerun at `2ba70b6f9a493951f0cb0e9c097204c7903e1248` is recorded in `quality/evidence/step-02-fresh-checkout-2026-10-24.md`; the later exact-head clean GitHub CI rerun at `37654e58e6483a718240aa1b520c669b15cdbdad` is recorded in `quality/evidence/step-02-current-head-2026-10-25.md`.
 - [x] 03 Inventory every existing feature in `CURRENT_PRODUCT_INVENTORY.md`.
 - [x] 04 Classify Core / Beta / Lab, with visible labels and safe isolation. See `quality/STEP_04_EVIDENCE.md`; the reviewed DNA mutation defect is locally fixed and remains open for deployed verification at the public-RC gate.
 - [x] 05 Freeze and test contracts/schemas, versions, migrations and round trips. Evidence: `quality/SCHEMA_CONTRACT_MATRIX.md` and `quality/STEP_05_EVIDENCE.md`; all 87 leaf-contract cases and repository tests pass.

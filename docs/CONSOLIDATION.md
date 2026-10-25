@@ -34,13 +34,15 @@ and passing checks are still mandatory. No branch was merged by consolidation.
 
 ## Baseline status
 
-GREEN at `628c05dc379f3ded3db7e832dbc367a19ef77520`. The exact eight-command
-sequence passed from a fresh clean detached checkout at
-`a889396f27976872aa629e1dbc4500857a5e655e`; the full CI sequence passed on the
-current source at `628c05d` using Node 24-native actions and the pinned
-`ubuntu-24.04` runner. Push and required PR checks are green. See
-[`quality/baseline/BASELINE_RESULTS.md`](../quality/baseline/BASELINE_RESULTS.md)
-for counts, budgets, warnings and run URLs. This closes programme steps 01–02
-only. Step 03's complete feature inventory is recorded in
-[`docs/CURRENT_PRODUCT_INVENTORY.md`](CURRENT_PRODUCT_INVENTORY.md); capability
-tiering is the next step.
+The latest exact-head CI baseline is GREEN at
+`37654e58e6483a718240aa1b520c669b15cdbdad`, with successful push CI, required PR
+CI, and the 16-point quality/security workflow on the same SHA. All eight
+baseline commands and the complete browser suite passed on fresh hosted
+checkouts using the pinned Ubuntu runner and Node 24. See
+[`quality/evidence/step-02-current-head-2026-10-25.md`](../quality/evidence/step-02-current-head-2026-10-25.md)
+for exact counts, budgets, known non-blocking runner notes, and run URLs. The
+earlier local fresh-checkout baseline at `2ba70b6f9a493951f0cb0e9c097204c7903e1248`
+is retained in
+[`quality/evidence/step-02-fresh-checkout-2026-10-24.md`](../quality/evidence/step-02-fresh-checkout-2026-10-24.md).
+The consolidation and baseline gates are complete; hardening continues in
+the ordered steps in `docs/PRODUCT_HARDENING.md`.
