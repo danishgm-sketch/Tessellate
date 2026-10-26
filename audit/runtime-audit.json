@@ -11330,20 +11330,26 @@
         "Open / at 390x844 in Linux Chromium, wait for the document fonts to settle, and measure the section containing the homepage h1.",
         "Compare the section height with 844 * 0.9 (759.6px)."
       ],
-      "console": ["Not captured by the failing CI assertion; no console conclusion is claimed."],
-      "network": ["Not captured by the failing CI assertion; no network conclusion is claimed."],
+      "console": [
+        "Not captured by the failing CI assertion; no console conclusion is claimed."
+      ],
+      "network": [
+        "Not captured by the failing CI assertion; no network conclusion is claimed."
+      ],
       "screenshot": "audit/evidence/step-45/aud-352-home-mobile-390-after.png",
       "beforeScreenshots": [],
-      "afterScreenshots": ["audit/evidence/step-45/aud-352-home-mobile-390-after.png"],
+      "afterScreenshots": [
+        "audit/evidence/step-45/aud-352-home-mobile-390-after.png"
+      ],
       "rootCause": "The AUD-351 fix changed the five preset chips from a single horizontally clipped row to three visible wrapped rows. On Linux's system-font metrics, that extra row height combined with the existing small-screen section, headline, form, and separator spacing to exceed the earlier AUD-306 first-viewport budget.",
       "affectedCode": [
         "apps/site/src/components/home/HeroComposer.tsx",
         "tests/e2e/home-visual-rhythm-step-40.spec.ts"
       ],
-      "fixCommit": null,
+      "fixCommit": "aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9",
       "status": "fixed-awaiting-deployed-verification",
-      "verification": "Small-screen-only vertical spacing was tightened while preserving all five wrapping preset actions and the existing medium/desktop spacing. Fix commit aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9. The fresh candidate build measures a 647.53px hero and a Compose bottom at y=678.53 in Windows Chromium at 390x844; document width remains 390px, the preset row has 342px client and scroll widths, and all five labels are present. The targeted home visual-rhythm and preset regressions pass 4/4 across both desktop-chrome and mobile-chrome Playwright profiles. The complete local E2E components also pass: Astro 324 passed/112 configured skips, Sites Worker desktop 179/2 skips (including 324-resource rendering), Sites Worker mobile 141/40 configured skips, and Preview app 3/0. The outer pnpm test:e2e command was interrupted when the default Sites Worker port 4323 was already bound by a separate preview; each constituent suite passed when run with a free explicit Sites port. The after screenshot and browser measurements are attached. Exact-head Linux CI and deployed Site verification are still required; v30 remains public."
+      "verification": "Small-screen spacing was reduced while preserving all five wrapped presets. Local Playwright reports a 647.53px hero at 390x844 against a 759.6px limit, Compose bottom y=678.53, no horizontal overflow, and zero captured console, uncaught, failed-request, or HTTP errors. Exact-head CI run 40300330018 and Component Quality Gate Sandbox run 40300330012 passed on code candidate 5c2521bf75b72b86520ebfbfc4816aa50c6490a1. Sites v34 is saved from Site-source commit eedfa4e58ba38f497f90960f09167283d0a57f7c but is not deployed. The public Site remains v30, so issue-specific deployed verification is pending."
     }
   ],
-  "generatedAt": "2026-10-26T09:28:53Z"
+  "generatedAt": "2026-10-26T10:30:10.240Z"
 }

@@ -1,23 +1,37 @@
 {
-  "capturedAt": "2026-10-26T09:28:53Z",
+  "capturedAt": "2026-10-26T10:30:10.251Z",
   "issue": "AUD-352",
   "branch": "release/v1-utility-rc1",
   "baseCommit": "d22d5c269c622161dc494420eaef4fee3c030ba8",
-  "candidateCodeCommit": "aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9",
+  "candidateCodeCommit": "5c2521bf75b72b86520ebfbfc4816aa50c6490a1",
   "fixCommit": "aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9",
   "deployment": {
     "publicVersion": 30,
-    "candidateSaved": false,
+    "candidateSaved": true,
     "candidateDeployed": false,
     "d1Bound": false,
-    "r2Bound": false
+    "r2Bound": false,
+    "latestSavedVersion": 34,
+    "candidateVersion": 34,
+    "candidateSourceCommit": "eedfa4e58ba38f497f90960f09167283d0a57f7c"
   },
   "checks": {
     "frozenInstall": "pass",
-    "catalogueBuild": { "status": "pass", "resources": 324, "gold": 40 },
-    "typecheck": { "status": "pass", "workspacePackages": 22 },
+    "catalogueBuild": {
+      "status": "pass",
+      "resources": 324,
+      "gold": 40
+    },
+    "typecheck": {
+      "status": "pass",
+      "workspacePackages": 22
+    },
     "lint": "pass",
-    "unitTests": { "status": "pass", "passed": 1220, "configuredSkips": 1 },
+    "unitTests": {
+      "status": "pass",
+      "passed": 1220,
+      "configuredSkips": 1
+    },
     "auditAll": {
       "status": "pass",
       "behavioralGates": "16/16",
@@ -29,15 +43,38 @@
       "astroPages": 733
     },
     "playwright": {
-      "astro": { "status": "pass", "passed": 324, "configuredSkips": 112 },
+      "astro": {
+        "status": "pass",
+        "passed": 324,
+        "configuredSkips": 112
+      },
       "sitesWorkerDesktop": {
         "status": "pass",
         "passed": 179,
         "configuredSkips": 2,
-        "resourceCertification": { "resources": 324, "viewports": [360, 390, 430, 768, 1024, 1280, 1440] }
+        "resourceCertification": {
+          "resources": 324,
+          "viewports": [
+            360,
+            390,
+            430,
+            768,
+            1024,
+            1280,
+            1440
+          ]
+        }
       },
-      "sitesWorkerMobile": { "status": "pass", "passed": 141, "configuredSkips": 40 },
-      "previewApp": { "status": "pass", "passed": 3, "configuredSkips": 0 },
+      "sitesWorkerMobile": {
+        "status": "pass",
+        "passed": 141,
+        "configuredSkips": 40
+      },
+      "previewApp": {
+        "status": "pass",
+        "passed": 3,
+        "configuredSkips": 0
+      },
       "packageCommand": {
         "status": "environment-port-collision",
         "detail": "Astro suite passed. The Sites Worker phase could not bind default port 4323 because a separate preview from the primary checkout already owned it. No process was stopped; desktop and mobile Sites Worker suites were rerun independently on 4333 and passed, followed by the preview-app suite."
@@ -63,7 +100,16 @@
   },
   "limitations": [
     "The first exact-head GitHub PR E2E/Axe job failed the home hero viewport assertion at 814.0625px in Linux Chromium. Its retry repeated the result; the CI job uploaded no screenshot or browser console/network details.",
-    "The spacing fix has not yet been verified by exact-head Linux GitHub CI.",
-    "The deployed public Site remains v30 and has not verified this change."
-  ]
+    "The deployed public Site remains v30 and has not verified this change.",
+    "The exact-head full CI and Component Quality Gate Sandbox passed on code candidate 5c2521bf75b72b86520ebfbfc4816aa50c6490a1. Saved Site v34 is not deployed; issue-specific live verification remains pending."
+  ],
+  "githubCi": {
+    "runId": 40300330018,
+    "url": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40300330018",
+    "headCommit": "5c2521bf75b72b86520ebfbfc4816aa50c6490a1",
+    "conclusion": "success",
+    "componentSandboxRunId": 40300330012,
+    "componentSandboxUrl": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40300330012",
+    "componentSandboxConclusion": "success"
+  }
 }

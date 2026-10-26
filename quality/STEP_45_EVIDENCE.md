@@ -1,6 +1,6 @@
 # Step 45 — Public review verification
 
-Status: in progress. Public Site v30 remains live. Sites v33 was saved from canonical `7d30a75b1770c79e5aa906b3e5e20f6801d306d3`, but that source predates AUD-351 and v33 is superseded. The release branch now contains fix commit `097862d3785038f50e64523e5e946afa8d71c1b5`; exact-head CI is pending. Save a new Site version from the exact pushed source, show it for owner review, and wait for approval before deploying.
+Status: in progress. Public Site v30 remains live. The homepage spacing fix is in code commit `aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9`; exact-head CI passed on code candidate `5c2521bf75b72b86520ebfbfc4816aa50c6490a1` (CI run 40300330018 and Component Quality Gate Sandbox run 40300330012). Sites v34 was saved from Site-source commit `eedfa4e58ba38f497f90960f09167283d0a57f7c` and remains undeployed; Sites returned no hosted preview URL. A refreshed candidate will include this audit update. The local review preview is available at `http://127.0.0.1:4337/`. No version will be deployed until the owner approves that exact saved version.
 
 ## Baseline capture
 
@@ -215,9 +215,13 @@ errors. After screenshot and measurements:
 `audit/evidence/step-45/aud-352-home-mobile-390-after.png` and
 `audit/evidence/step-45/aud-352-home-mobile-390-after.json`.
 
-The exact-head Linux CI rerun is still required to verify the corrected system
-font layout. The public Site remains v30; this candidate is not saved or
-deployed.
+The exact-head Linux CI rerun for candidate code commit
+`5c2521bf75b72b86520ebfbfc4816aa50c6490a1` passed the full CI and component
+sandbox workflows: [CI run](https://github.com/danishgm-sketch/Tessellate/actions/runs/40300330018), [component sandbox](https://github.com/danishgm-sketch/Tessellate/actions/runs/40300330012).
+The full browser stage passed. Sites v34 is saved from Site-source commit
+`eedfa4e58ba38f497f90960f09167283d0a57f7c`; it is not deployed, and Sites
+returned no hosted screenshot or preview URL. The public Site remains v30.
+Issue-specific deployed verification is still pending owner approval.
 
 ### Corrected candidate local revalidation — 2026-10-26
 
@@ -243,4 +247,6 @@ It records HTTP 200, 647.53px hero height against 759.6px, Compose ending at
 y=678.53, five visible presets without horizontal overflow, and zero captured
 console errors, uncaught errors, failed requests, and HTTP errors. These checks
 were run against code commit `aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9`.
-AUD-352 remains pending exact-head Linux CI and deployment verification.
+The full exact-head Linux CI and component sandbox passed on
+`5c2521bf75b72b86520ebfbfc4816aa50c6490a1`. Sites v34 is saved but not
+deployed; AUD-352 remains pending issue-specific deployed verification.
