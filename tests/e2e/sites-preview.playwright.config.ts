@@ -42,6 +42,7 @@ export default defineConfig({
     'copy-quality-step-39.spec.ts',
     'resource-copy-truthfulness-step-39.spec.ts',
     'home-visual-rhythm-step-40.spec.ts',
+    'home-preset-chips-responsive-step-45.spec.ts',
     'activity-feed-sample-disclosure-step-40.spec.ts',
     'cross-surface-manifest-step-41.spec.ts',
     'fault-injection-step-42.spec.ts',
