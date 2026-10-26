@@ -14,7 +14,7 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test && playwright test --config tests/e2e/sites-preview.playwright.config.ts && playwright test --config tests/e2e/preview-app.playwright.config.ts",
+    "test:e2e": "playwright test && playwright test --config tests/e2e/sites-preview.playwright.config.ts --project=sites-chromium && playwright test --config tests/e2e/sites-preview.playwright.config.ts --project=sites-mobile-chromium && playwright test --config tests/e2e/preview-app.playwright.config.ts",
     "quality:step-43-long-session": "playwright test --config playwright.long-session-step-43.config.ts",
     "audit:release-gate": "tsx scripts/verify-release-gate.ts",
     "audit:resource-isolation": "tsx scripts/audit-resource-isolation.ts",

@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const sitesPreviewBaseUrl = process.env.SITES_PREVIEW_BASE_URL ?? 'http://127.0.0.1:4323';
+const sitesPreviewPort = new URL(sitesPreviewBaseUrl).port || '4323';
+
 export default defineConfig({
   testDir: '.',
   testMatch: [
@@ -33,6 +36,9 @@ export default defineConfig({
     'performance-workloads-step-38.spec.ts',
     'site-route-performance-step-38.spec.ts',
     'performance-stress-step-38.spec.ts',
+    'workbench-resource-heading-order-step-39.spec.ts',
+    'workbench-dialog-role-step-39.spec.ts',
+    'workbench-visible-label-accessibility-step-39.spec.ts',
     'copy-quality-step-39.spec.ts',
     'resource-copy-truthfulness-step-39.spec.ts',
     'home-visual-rhythm-step-40.spec.ts',
@@ -45,7 +51,7 @@ export default defineConfig({
   workers: 1,
   reporter: 'list',
   use: {
-    baseURL: 'http://127.0.0.1:4323',
+    baseURL: sitesPreviewBaseUrl,
     trace: 'on-first-retry',
   },
   projects: [
@@ -66,9 +72,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'pnpm --filter @tessellate/sites preview',
-    url: 'http://127.0.0.1:4323',
-    reuseExistingServer: !process.env.CI,
+    command: `pnpm --filter @tessellate/sites exec wrangler dev --config ../../dist/server/wrangler.json --local --ip 127.0.0.1 --port ${sitesPreviewPort} --inspector-port 0`,
+    url: sitesPreviewBaseUrl,
+    reuseExistingServer: process.env.REUSE_SITES_PREVIEW === 'true',
     timeout: 30000,
   },
 });

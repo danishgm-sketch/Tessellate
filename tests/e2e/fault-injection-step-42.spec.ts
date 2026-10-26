@@ -237,15 +237,20 @@ test('an unresolved resource in an imported manifest blocks ZIP export with a us
   );
 });
 
-test('an unavailable Sites API disables the host Lab while deterministic commands still work', async ({ page, isMobile }, testInfo) => {
+test('deterministic commands remain available while the laptop Lab is offline', async ({ page, isMobile }, testInfo) => {
   test.skip(isMobile, 'The deterministic command bar is a desktop Workbench surface.');
   const runtime = observeRuntime(page);
-  await page.route('**/api/**', (route) => route.abort('failed'));
+  let interceptedApiRequests = 0;
+  await page.route('**/api/**', (route) => {
+    interceptedApiRequests += 1;
+    return route.abort('failed');
+  });
   await page.goto('/workbench/?showcase=showcase-playful-hr');
   await expect(page.getByTestId('command-bar')).toBeVisible();
   await expect(page.getByTestId('laptop-host-status')).toContainText('Backend offline');
   await expect(page.getByRole('switch', { name: 'Laptop model Lab' })).toBeDisabled();
   const before = (await downloadManifest(page, testInfo, 'before-offline-command.tess.json')).manifest;
+  const apiRequestsBeforeCommand = interceptedApiRequests;
 
   await page.getByLabel('Tessellate command').fill('reduce motion');
   await page.getByRole('button', { name: 'Execute command' }).click();
@@ -256,16 +261,25 @@ test('an unavailable Sites API disables the host Lab while deterministic command
   expect(afterDna.motion).toBeLessThan(beforeDna.motion as number);
   expect(after.id).toBe(before.id);
   expect(runtime.pageErrors).toEqual([]);
-  expect(runtime.consoleErrors).toEqual(['Failed to load resource: net::ERR_FAILED']);
+  expect(runtime.consoleErrors).toEqual([]);
+  expect(interceptedApiRequests).toBe(apiRequestsBeforeCommand);
   expect(runtime.failedRequests.every((request) => new URL(request.url).pathname.startsWith('/api/'))).toBe(true);
+  if (apiRequestsBeforeCommand > 0) expect(runtime.failedRequests.length).toBeGreaterThan(0);
   expect(runtime.httpErrors).toEqual([]);
   await saveEvidence(
     page,
     testInfo,
     'api-offline-deterministic-core',
     runtime,
-    { hostLabDisabled: true, deterministicMutationCompleted: true, projectIdentityPreserved: true, motionReduced: true },
-    ['Sites /api/** requests were aborted to simulate an unavailable local backend.'],
+    {
+      hostLabDisabled: true,
+      deterministicMutationCompleted: true,
+      projectIdentityPreserved: true,
+      motionReduced: true,
+      startupHealthProbesAborted: apiRequestsBeforeCommand,
+      deterministicCommandMadeNoBackendRequest: true,
+    },
+    ['Sites /api/** health requests were aborted when the local adapter was configured to probe them.'],
     runtime.consoleErrors
   );
 });
