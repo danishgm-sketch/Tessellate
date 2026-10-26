@@ -1,15 +1,15 @@
 {
   "exactBrief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
-  "route": "http://localhost:4321/workbench?project=proj-direction-c-3dcd404722ac451285263ffb1af4107edirc#screen-teams",
+  "route": "http://127.0.0.1:4412/workbench?project=proj-direction-c-0158f2b53bec41e484aad0d9c7808524dirc#screen-teams",
   "viewport": {
     "width": 1440,
     "height": 900
   },
   "selectedDirection": "C",
-  "selectedProjectId": "proj-direction-c-3dcd404722ac451285263ffb1af4107edirc",
+  "selectedProjectId": "proj-direction-c-0158f2b53bec41e484aad0d9c7808524dirc",
   "directionScreenshot": "quality\\evidence\\step-24\\after\\employee-directions-desktop-chrome.png",
   "visibleDirectionSnapshot": {
-    "id": "proj-direction-c-3dcd404722ac451285263ffb1af4107edirc",
+    "id": "proj-direction-c-0158f2b53bec41e484aad0d9c7808524dirc",
     "dna": {
       "professionalism": 100,
       "playfulness": 53,
@@ -1339,13 +1339,13 @@
   ],
   "persistedManifestSnapshot": {
     "schemaVersion": "1.0.0",
-    "id": "proj-direction-c-3dcd404722ac451285263ffb1af4107edirc",
+    "id": "proj-direction-c-0158f2b53bec41e484aad0d9c7808524dirc",
     "name": "Adaptive Architecture — Employee experience",
     "description": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
-    "createdAt": "2026-10-25T13:28:39.342Z",
-    "updatedAt": "2026-10-25T13:28:39.342Z",
+    "createdAt": "2026-10-26T19:04:50.793Z",
+    "updatedAt": "2026-10-26T19:04:50.793Z",
     "catalogVersion": "0.1.0",
-    "seed": "3dcd4047-22ac-4512-8526-3ffb1af4107e-dir-c",
+    "seed": "0158f2b5-3bec-41e4-84aa-d0d9c7808524-dir-c",
     "productModel": {
       "schemaVersion": "1.0.0",
       "productArchetypes": [
@@ -3411,8 +3411,8 @@
       }
     ],
     "projectLocks": [],
-    "activeManifestSha256": "cd451cd82f3b85cd03a3761d6caab13671dc9f5f4c1d0cf10549c056cb3612bf",
-    "exportedManifestSha256": "cd451cd82f3b85cd03a3761d6caab13671dc9f5f4c1d0cf10549c056cb3612bf"
+    "activeManifestSha256": "13f86dfdbca3afc4cbca51e994addc5f45084d307064851e70004af13ec2dde5",
+    "exportedManifestSha256": "13f86dfdbca3afc4cbca51e994addc5f45084d307064851e70004af13ec2dde5"
   },
   "handoffChecks": {
     "filename": "adaptive-architecture-employee-experience-agent-handoff.zip",
@@ -3446,8 +3446,8 @@
     "screenshot": "quality\\evidence\\step-24\\after\\workbench-agent-handoff-menu-desktop-chrome.png"
   },
   "sameProjectMobileEvidence": {
-    "projectId": "proj-direction-c-3dcd404722ac451285263ffb1af4107edirc",
-    "manifestSha256": "cd451cd82f3b85cd03a3761d6caab13671dc9f5f4c1d0cf10549c056cb3612bf",
+    "projectId": "proj-direction-c-0158f2b53bec41e484aad0d9c7808524dirc",
+    "manifestSha256": "13f86dfdbca3afc4cbca51e994addc5f45084d307064851e70004af13ec2dde5",
     "viewport": {
       "width": 390,
       "height": 844
@@ -3468,268 +3468,264 @@
     "failedRequests": [],
     "responses": [
       {
-        "url": "http://localhost:4321/compose",
+        "url": "http://127.0.0.1:4412/compose",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/style.Bm5mhUbc.css",
+        "url": "http://127.0.0.1:4412/_astro/style.C6wIKyn4.css",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/index.Bh89wAT3.js",
+        "url": "http://127.0.0.1:4412/_astro/index.Bh89wAT3.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/ComposeView.Bgul8mq1.js",
+        "url": "http://127.0.0.1:4412/_astro/ComposeView.BOumgFoI.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+        "url": "http://127.0.0.1:4412/_astro/client.CZ5CiHPg.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/jsx-runtime.BZkYIGyD.js",
+        "url": "http://127.0.0.1:4412/_astro/jsx-runtime.BZkYIGyD.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/react.B6PPDU_E.js",
+        "url": "http://127.0.0.1:4412/_astro/src.BX1lhOTL.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/src.BX1lhOTL.js",
+        "url": "http://127.0.0.1:4412/_astro/react.B6PPDU_E.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/createLucideIcon.14lUEEec.js",
+        "url": "http://127.0.0.1:4412/_astro/src.BOYsAstn.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/storage.DQkcCoR4.js",
+        "url": "http://127.0.0.1:4412/_astro/createLucideIcon.14lUEEec.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/arrow-right.CrL0QBhc.js",
+        "url": "http://127.0.0.1:4412/_astro/arrow-right.CrL0QBhc.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/src.BOYsAstn.js",
+        "url": "http://127.0.0.1:4412/_astro/chevron-down.DtfZPbTK.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/smartphone.BKKE0Hdz.js",
+        "url": "http://127.0.0.1:4412/_astro/storage.DQkcCoR4.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/chevron-down.DtfZPbTK.js",
+        "url": "http://127.0.0.1:4412/_astro/cpu.Cewq4aej.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/cpu.Cewq4aej.js",
+        "url": "http://127.0.0.1:4412/_astro/smartphone.BKKE0Hdz.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/shield.CClXYlwc.js",
+        "url": "http://127.0.0.1:4412/_astro/shield.CClXYlwc.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/src.DnGFRryG.js",
+        "url": "http://127.0.0.1:4412/_astro/sparkles.Cox_DJ6k.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/sparkles.Cox_DJ6k.js",
+        "url": "http://127.0.0.1:4412/_astro/src.DnGFRryG.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/src.DspsG8UY.js",
+        "url": "http://127.0.0.1:4412/_astro/src.B7UrmsMM.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/src.Cj1YM3rf.js",
+        "url": "http://127.0.0.1:4412/_astro/src.Cj1YM3rf.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/gold.CeiPxNV6.js",
+        "url": "http://127.0.0.1:4412/_astro/gold.CeiPxNV6.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/data/catalog.json",
+        "url": "http://127.0.0.1:4412/data/catalog.json",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/workbench?project=proj-direction-c-3dcd404722ac451285263ffb1af4107edirc",
+        "url": "http://127.0.0.1:4412/workbench?project=proj-direction-c-0158f2b53bec41e484aad0d9c7808524dirc",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/style.Bm5mhUbc.css",
+        "url": "http://127.0.0.1:4412/_astro/style.C6wIKyn4.css",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/client.CZ5CiHPg.js",
+        "url": "http://127.0.0.1:4412/_astro/client.CZ5CiHPg.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/react.B6PPDU_E.js",
+        "url": "http://127.0.0.1:4412/_astro/react.B6PPDU_E.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/index.CMw4xnVE.js",
+        "url": "http://127.0.0.1:4412/_astro/index.BcrThWbC.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/src.BX1lhOTL.js",
+        "url": "http://127.0.0.1:4412/_astro/src.BX1lhOTL.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/jsx-runtime.BZkYIGyD.js",
+        "url": "http://127.0.0.1:4412/_astro/jsx-runtime.BZkYIGyD.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/src.DnGFRryG.js",
+        "url": "http://127.0.0.1:4412/_astro/src.DnGFRryG.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/src.DspsG8UY.js",
+        "url": "http://127.0.0.1:4412/_astro/src.B7UrmsMM.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/gold.CeiPxNV6.js",
+        "url": "http://127.0.0.1:4412/_astro/gold.CeiPxNV6.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/src.BOYsAstn.js",
+        "url": "http://127.0.0.1:4412/_astro/src.BOYsAstn.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/storage.DQkcCoR4.js",
+        "url": "http://127.0.0.1:4412/_astro/storage.DQkcCoR4.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/createLucideIcon.14lUEEec.js",
+        "url": "http://127.0.0.1:4412/_astro/createLucideIcon.14lUEEec.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/arrow-right.CrL0QBhc.js",
+        "url": "http://127.0.0.1:4412/_astro/arrow-right.CrL0QBhc.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/activity.DGq5j_oI.js",
-        "status": 200
-      },
-      {
-        "url": "http://localhost:4321/_astro/arrow-up.vGbmiYPw.js",
-        "status": 200
-      },
-      {
-        "url": "http://localhost:4321/_astro/compass.CD8f5pEM.js",
-        "status": 200
-      },
-      {
-        "url": "http://localhost:4321/_astro/bookmark.BGuXTOA4.js",
-        "status": 200
-      },
-      {
-        "url": "http://localhost:4321/_astro/chevron-down.DtfZPbTK.js",
+        "url": "http://127.0.0.1:4412/_astro/chevron-down.DtfZPbTK.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/check.DZheQPi7.js",
+        "url": "http://127.0.0.1:4412/_astro/arrow-up.vGbmiYPw.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/clock.B8yMDytp.js",
+        "url": "http://127.0.0.1:4412/_astro/compass.CD8f5pEM.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/cpu.Cewq4aej.js",
+        "url": "http://127.0.0.1:4412/_astro/bookmark.BGuXTOA4.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4412/_astro/activity.DGq5j_oI.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4412/_astro/check.DZheQPi7.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4412/_astro/cpu.Cewq4aej.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/circle-check.BnrBU8lA.js",
+        "url": "http://127.0.0.1:4412/_astro/clock.B8yMDytp.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/copy.BIIza9m3.js",
+        "url": "http://127.0.0.1:4412/_astro/copy.BIIza9m3.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/eye.uoIoxOcf.js",
+        "url": "http://127.0.0.1:4412/_astro/circle-check.BnrBU8lA.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/smartphone.BKKE0Hdz.js",
+        "url": "http://127.0.0.1:4412/_astro/eye.uoIoxOcf.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4412/_astro/layers.CtXwhj7g.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4412/_astro/refresh-cw.SKQyrYtj.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4412/_astro/smartphone.BKKE0Hdz.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/refresh-cw.SKQyrYtj.js",
+        "url": "http://127.0.0.1:4412/_astro/sun.DHWleJN4.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/layers.CtXwhj7g.js",
+        "url": "http://127.0.0.1:4412/_astro/palette.Dfv1e2Eu.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/palette.Dfv1e2Eu.js",
+        "url": "http://127.0.0.1:4412/_astro/rotate-ccw.divXcstY.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/sun.DHWleJN4.js",
+        "url": "http://127.0.0.1:4412/_astro/play.CLWN6hGw.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/panels-top-left.B-jdE7pS.js",
+        "url": "http://127.0.0.1:4412/_astro/trash-2.CStjAi3B.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/shield.CClXYlwc.js",
+        "url": "http://127.0.0.1:4412/_astro/panels-top-left.B-jdE7pS.js",
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4412/_astro/shield.CClXYlwc.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/play.CLWN6hGw.js",
-        "status": 200
-      },
-      {
-        "url": "http://localhost:4321/_astro/trash-2.CStjAi3B.js",
-        "status": 200
-      },
-      {
-        "url": "http://localhost:4321/_astro/sparkles.Cox_DJ6k.js",
+        "url": "http://127.0.0.1:4412/_astro/sparkles.Cox_DJ6k.js",
         "status": 304
       },
       {
-        "url": "http://localhost:4321/_astro/rotate-ccw.divXcstY.js",
+        "url": "http://127.0.0.1:4412/_astro/type.47V9oe1O.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/sliders-vertical.Bj_t08Fa.js",
+        "url": "http://127.0.0.1:4412/_astro/sliders-vertical.Bj_t08Fa.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/tablet.Dz7Mkca5.js",
+        "url": "http://127.0.0.1:4412/_astro/tablet.Dz7Mkca5.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/terminal.D1yAK8-f.js",
+        "url": "http://127.0.0.1:4412/_astro/zap.BZ4uBrvW.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/x.K_99xudA.js",
+        "url": "http://127.0.0.1:4412/_astro/terminal.D1yAK8-f.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/type.47V9oe1O.js",
+        "url": "http://127.0.0.1:4412/_astro/x.K_99xudA.js",
         "status": 200
       },
       {
-        "url": "http://localhost:4321/_astro/src.Cj1YM3rf.js",
+        "url": "http://127.0.0.1:4412/_astro/src.Cj1YM3rf.js",
         "status": 304
-      },
-      {
-        "url": "http://localhost:4321/_astro/zap.BZ4uBrvW.js",
-        "status": 200
-      },
-      {
-        "url": "http://localhost:4321/data/catalog.json",
-        "status": 200
       }
     ]
   }

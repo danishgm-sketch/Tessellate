@@ -1,0 +1,42 @@
+{
+  "capturedAt": "2026-10-26T18:40:04Z",
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "observedDeployment": {
+    "version": 32,
+    "deploymentId": "appgdep_6adf44a090608191ab748b8458c150ec",
+    "status": "succeeded",
+    "sourceCommit": "5533d1082b649ec4429bb356cdc91ab3e2f2daf5"
+  },
+  "method": "Chrome DevTools Performance trace with cache bypass. Desktop: 1440x900, CPU 1x, network unthrottled. Mobile: 390x844, CPU 4x, Fast 4G. Lighthouse accessibility, best-practice, SEO, and agentic-browsing audit on desktop. Field CrUX data unavailable.",
+  "traces": [
+    { "route": "/", "viewport": "1440x900", "cpu": "1x", "network": "unthrottled", "lcpMs": 352, "ttfbMs": 65, "renderDelayMs": 287, "cls": 0.0 },
+    { "route": "/explore", "viewport": "1440x900", "cpu": "1x", "network": "unthrottled", "lcpMs": 318, "ttfbMs": 163, "renderDelayMs": 156, "cls": 0.0 },
+    { "route": "/compose", "viewport": "1440x900", "cpu": "1x", "network": "unthrottled", "lcpMs": 418, "ttfbMs": 256, "renderDelayMs": 162, "cls": 0.0 },
+    { "route": "/workbench", "viewport": "1440x900", "cpu": "1x", "network": "unthrottled", "lcpMs": 2566, "ttfbMs": 340, "renderDelayMs": 2226, "cls": 0.0, "repeatLcpMs": 518, "repeatTtfbMs": 51, "repeatRenderDelayMs": 467, "note": "One cold run was 66ms above the 2.5s LCP target; the repeat was 518ms. No stable performance regression was established." },
+    { "route": "/", "viewport": "390x844", "cpu": "4x", "network": "Fast 4G", "lcpMs": 859, "ttfbMs": 53, "renderDelayMs": 805, "cls": 0.0 },
+    { "route": "/compose", "viewport": "390x844", "cpu": "4x", "network": "Fast 4G", "lcpMs": 833, "ttfbMs": 54, "renderDelayMs": 779, "cls": 0.0 },
+    { "route": "/workbench", "viewport": "390x844", "cpu": "4x", "network": "Fast 4G", "lcpMs": 1814, "ttfbMs": 116, "renderDelayMs": 1699, "cls": 0.0 }
+  ],
+  "lighthouse": [
+    { "route": "/", "device": "desktop", "accessibility": 100, "bestPractices": 92, "seo": 100, "agenticBrowsing": 100, "passed": 52, "failed": ["errors-in-console", "inspector-issues"] },
+    { "route": "/explore", "device": "desktop", "accessibility": 100, "bestPractices": 92, "seo": 100, "agenticBrowsing": 100, "passed": 50, "failed": ["errors-in-console", "inspector-issues"] },
+    { "route": "/compose", "device": "desktop", "accessibility": 100, "bestPractices": 92, "seo": 100, "agenticBrowsing": 100, "passed": 49, "failed": ["errors-in-console", "inspector-issues"] },
+    { "route": "/workbench", "device": "desktop", "accessibility": 100, "bestPractices": 92, "seo": 100, "agenticBrowsing": 100, "passed": 52, "failed": ["errors-in-console", "label-content-name-mismatch", "inspector-issues"] },
+    { "route": "/r/advanced-data-table", "device": "desktop", "accessibility": 100, "bestPractices": 92, "seo": 100, "agenticBrowsing": 100, "passed": 50, "failed": ["errors-in-console", "inspector-issues"] }
+  ],
+  "runtime": {
+    "console": ["Each audited route logged the known blocked Cloudflare inline bootstrap CSP error (AUD-342). Workbench additionally reported the known visible-switch/accessibility-name mismatch (AUD-350)."],
+    "network": ["Homepage: 25 requests, all 200.", "Workbench: 46 requests; static assets 200, catalogue 304, and /api/inference/health returned 200 twice about ten seconds apart.", "The health response states apiOnline=false and hostOnline=false because the laptop backend is not configured; this is the expected unavailable state for the hosted Site."],
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "httpErrors": 0
+  },
+  "screenshots": [
+    "quality/evidence/step-45/public-v32/routes/home-desktop-1440x900.png",
+    "quality/evidence/step-45/public-v32/routes/explore-desktop-1440x900.png",
+    "quality/evidence/step-45/public-v32/routes/compose-desktop-1440x900.png",
+    "quality/evidence/step-45/public-v32/routes/workbench-desktop-1440x900.png",
+    "quality/evidence/step-45/public-v32/routes/resource-detail-desktop-1440x900.png"
+  ],
+  "findings": ["AUD-342 remains reproduced on the live Site; the local strict-CSP nonce fix is not yet verified at the hosted edge.", "AUD-350 remains reproduced in the live Site v32 Lighthouse snapshot; repository source already removes the incomplete aria-label and local desktop/mobile Axe regressions pass.", "No stable LCP regression was established from the Workbench repeat. All measured CLS values were 0.00."]
+}

@@ -1,10 +1,10 @@
 {
   "schemaVersion": "1.0.0",
-  "id": "local-1496b503-bea9-4326-878b-a1998c62fe1b",
+  "id": "local-445572de-9191-4a37-8723-33092b0318b3",
   "name": "Kudos Employee Experience",
   "description": "Example project. Employee experience platform for people, teams, playful onboarding and peer recognition.",
   "createdAt": "2026-10-10T12:00:00.000Z",
-  "updatedAt": "2026-10-25T13:40:16.403Z",
+  "updatedAt": "2026-10-26T19:12:33.492Z",
   "catalogVersion": "0.1.0",
   "seed": "showcase-playful-hr",
   "productModel": {
@@ -313,7 +313,7 @@
             ]
           },
           {
-            "id": "screen_4728d8f64e364bd9",
+            "id": "screen_fc85ff44e37f41d4",
             "name": "Marketing Home (Copy)",
             "slug": "/marketing-home-copy",
             "screenType": "custom",
@@ -327,7 +327,7 @@
             "optionalRoles": []
           },
           {
-            "id": "screen_92f1714ae6344610",
+            "id": "screen_3a26a156160a4996",
             "name": "Marketing Home (Copy 2)",
             "slug": "/marketing-home-copy-2",
             "screenType": "custom",
@@ -664,11 +664,11 @@
                 },
                 {
                   "label": "Marketing Home (Copy)",
-                  "href": "#screen_4728d8f64e364bd9"
+                  "href": "#screen_fc85ff44e37f41d4"
                 },
                 {
                   "label": "Marketing Home (Copy 2)",
-                  "href": "#screen_92f1714ae6344610"
+                  "href": "#screen_3a26a156160a4996"
                 }
               ],
               "orientation": "horizontal"
@@ -860,11 +860,11 @@
                 },
                 {
                   "label": "Marketing Home (Copy)",
-                  "href": "#screen_4728d8f64e364bd9"
+                  "href": "#screen_fc85ff44e37f41d4"
                 },
                 {
                   "label": "Marketing Home (Copy 2)",
-                  "href": "#screen_92f1714ae6344610"
+                  "href": "#screen_3a26a156160a4996"
                 }
               ],
               "orientation": "vertical"
@@ -1068,11 +1068,11 @@
                 },
                 {
                   "label": "Marketing Home (Copy)",
-                  "href": "#screen_4728d8f64e364bd9"
+                  "href": "#screen_fc85ff44e37f41d4"
                 },
                 {
                   "label": "Marketing Home (Copy 2)",
-                  "href": "#screen_92f1714ae6344610"
+                  "href": "#screen_3a26a156160a4996"
                 }
               ],
               "orientation": "vertical"
@@ -1243,11 +1243,11 @@
                 },
                 {
                   "label": "Marketing Home (Copy)",
-                  "href": "#screen_4728d8f64e364bd9"
+                  "href": "#screen_fc85ff44e37f41d4"
                 },
                 {
                   "label": "Marketing Home (Copy 2)",
-                  "href": "#screen_92f1714ae6344610"
+                  "href": "#screen_3a26a156160a4996"
                 }
               ],
               "orientation": "vertical"
@@ -1418,11 +1418,11 @@
                 },
                 {
                   "label": "Marketing Home (Copy)",
-                  "href": "#screen_4728d8f64e364bd9"
+                  "href": "#screen_fc85ff44e37f41d4"
                 },
                 {
                   "label": "Marketing Home (Copy 2)",
-                  "href": "#screen_92f1714ae6344610"
+                  "href": "#screen_3a26a156160a4996"
                 }
               ],
               "orientation": "vertical"
@@ -1626,11 +1626,11 @@
                 },
                 {
                   "label": "Marketing Home (Copy)",
-                  "href": "#screen_4728d8f64e364bd9"
+                  "href": "#screen_fc85ff44e37f41d4"
                 },
                 {
                   "label": "Marketing Home (Copy 2)",
-                  "href": "#screen_92f1714ae6344610"
+                  "href": "#screen_3a26a156160a4996"
                 }
               ],
               "orientation": "vertical"
@@ -1798,11 +1798,11 @@
                 },
                 {
                   "label": "Marketing Home (Copy)",
-                  "href": "#screen_4728d8f64e364bd9"
+                  "href": "#screen_fc85ff44e37f41d4"
                 },
                 {
                   "label": "Marketing Home (Copy 2)",
-                  "href": "#screen_92f1714ae6344610"
+                  "href": "#screen_3a26a156160a4996"
                 }
               ],
               "orientation": "vertical"
@@ -1872,17 +1872,17 @@
       }
     },
     {
-      "id": "screen_4728d8f64e364bd9",
-      "screenNodeId": "screen_4728d8f64e364bd9",
+      "id": "screen_fc85ff44e37f41d4",
+      "screenNodeId": "screen_fc85ff44e37f41d4",
       "name": "Marketing Home (Copy)",
       "slug": "/marketing-home-copy",
       "rootNode": {
-        "id": "screen_4728d8f64e364bd9-root-screen-marketing-home",
+        "id": "screen_fc85ff44e37f41d4-root-screen-marketing-home",
         "nodeType": "layout",
         "semanticRole": "marketing-page",
         "children": [
           {
-            "id": "screen_4728d8f64e364bd9-node-screen-marketing-home-navigation-1",
+            "id": "screen_fc85ff44e37f41d4-node-screen-marketing-home-navigation-1",
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
@@ -1918,11 +1918,11 @@
                 },
                 {
                   "label": "Marketing Home (Copy)",
-                  "href": "#screen_4728d8f64e364bd9"
+                  "href": "#screen_fc85ff44e37f41d4"
                 },
                 {
                   "label": "Marketing Home (Copy 2)",
-                  "href": "#screen_92f1714ae6344610"
+                  "href": "#screen_3a26a156160a4996"
                 }
               ],
               "orientation": "horizontal"
@@ -1930,7 +1930,7 @@
             "locks": {}
           },
           {
-            "id": "screen_4728d8f64e364bd9-node-screen-marketing-home-hero-2",
+            "id": "screen_fc85ff44e37f41d4-node-screen-marketing-home-hero-2",
             "nodeType": "section",
             "semanticRole": "hero",
             "resourceRef": {
@@ -1958,7 +1958,7 @@
             "locks": {}
           },
           {
-            "id": "screen_4728d8f64e364bd9-node-screen-marketing-home-value-proposition-3",
+            "id": "screen_fc85ff44e37f41d4-node-screen-marketing-home-value-proposition-3",
             "nodeType": "section",
             "semanticRole": "value-proposition",
             "resourceRef": {
@@ -1997,7 +1997,7 @@
             "locks": {}
           },
           {
-            "id": "screen_4728d8f64e364bd9-node-screen-marketing-home-conversion-cta-4",
+            "id": "screen_fc85ff44e37f41d4-node-screen-marketing-home-conversion-cta-4",
             "nodeType": "section",
             "semanticRole": "conversion-cta",
             "resourceRef": {
@@ -2017,7 +2017,7 @@
             "locks": {}
           },
           {
-            "id": "screen_4728d8f64e364bd9-node-screen-marketing-home-footer-5",
+            "id": "screen_fc85ff44e37f41d4-node-screen-marketing-home-footer-5",
             "nodeType": "section",
             "semanticRole": "footer",
             "resourceRef": {
@@ -2074,17 +2074,17 @@
       }
     },
     {
-      "id": "screen_92f1714ae6344610",
-      "screenNodeId": "screen_92f1714ae6344610",
+      "id": "screen_3a26a156160a4996",
+      "screenNodeId": "screen_3a26a156160a4996",
       "name": "Marketing Home (Copy 2)",
       "slug": "/marketing-home-copy-2",
       "rootNode": {
-        "id": "screen_92f1714ae6344610-root-screen-marketing-home",
+        "id": "screen_3a26a156160a4996-root-screen-marketing-home",
         "nodeType": "layout",
         "semanticRole": "marketing-page",
         "children": [
           {
-            "id": "screen_92f1714ae6344610-node-screen-marketing-home-navigation-1",
+            "id": "screen_3a26a156160a4996-node-screen-marketing-home-navigation-1",
             "nodeType": "layout",
             "semanticRole": "navigation",
             "resourceRef": {
@@ -2120,11 +2120,11 @@
                 },
                 {
                   "label": "Marketing Home (Copy)",
-                  "href": "#screen_4728d8f64e364bd9"
+                  "href": "#screen_fc85ff44e37f41d4"
                 },
                 {
                   "label": "Marketing Home (Copy 2)",
-                  "href": "#screen_92f1714ae6344610"
+                  "href": "#screen_3a26a156160a4996"
                 }
               ],
               "orientation": "horizontal"
@@ -2132,7 +2132,7 @@
             "locks": {}
           },
           {
-            "id": "screen_92f1714ae6344610-node-screen-marketing-home-hero-2",
+            "id": "screen_3a26a156160a4996-node-screen-marketing-home-hero-2",
             "nodeType": "section",
             "semanticRole": "hero",
             "resourceRef": {
@@ -2160,7 +2160,7 @@
             "locks": {}
           },
           {
-            "id": "screen_92f1714ae6344610-node-screen-marketing-home-value-proposition-3",
+            "id": "screen_3a26a156160a4996-node-screen-marketing-home-value-proposition-3",
             "nodeType": "section",
             "semanticRole": "value-proposition",
             "resourceRef": {
@@ -2199,7 +2199,7 @@
             "locks": {}
           },
           {
-            "id": "screen_92f1714ae6344610-node-screen-marketing-home-conversion-cta-4",
+            "id": "screen_3a26a156160a4996-node-screen-marketing-home-conversion-cta-4",
             "nodeType": "section",
             "semanticRole": "conversion-cta",
             "resourceRef": {
@@ -2219,7 +2219,7 @@
             "locks": {}
           },
           {
-            "id": "screen_92f1714ae6344610-node-screen-marketing-home-footer-5",
+            "id": "screen_3a26a156160a4996-node-screen-marketing-home-footer-5",
             "nodeType": "section",
             "semanticRole": "footer",
             "resourceRef": {
@@ -2301,11 +2301,11 @@
       },
       {
         "label": "Marketing Home (Copy)",
-        "targetScreenId": "screen_4728d8f64e364bd9"
+        "targetScreenId": "screen_fc85ff44e37f41d4"
       },
       {
         "label": "Marketing Home (Copy 2)",
-        "targetScreenId": "screen_92f1714ae6344610"
+        "targetScreenId": "screen_3a26a156160a4996"
       }
     ],
     "secondaryItems": [

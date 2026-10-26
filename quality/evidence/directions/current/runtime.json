@@ -1,5 +1,5 @@
 {
-  "route": "http://localhost:4321/compose",
+  "route": "http://127.0.0.1:4412/compose",
   "viewport": {
     "width": 1440,
     "height": 900
@@ -8,7 +8,7 @@
   "directions": [
     {
       "number": "01",
-      "projectId": "proj-direction-a-957a2dc103674ac49b6f7b63ab242ebedira",
+      "projectId": "proj-direction-a-cc32a383771649e99af2a8ad4a502908dira",
       "navigation": "sidebar",
       "grammar": "classic-sidebar-dashboard",
       "dna": {
@@ -306,7 +306,7 @@
     },
     {
       "number": "02",
-      "projectId": "proj-direction-b-957a2dc103674ac49b6f7b63ab242ebedirb",
+      "projectId": "proj-direction-b-cc32a383771649e99af2a8ad4a502908dirb",
       "navigation": "top-nav",
       "grammar": "product-proof-marketing",
       "dna": {
@@ -603,7 +603,7 @@
     },
     {
       "number": "03",
-      "projectId": "proj-direction-c-957a2dc103674ac49b6f7b63ab242ebedirc",
+      "projectId": "proj-direction-c-cc32a383771649e99af2a8ad4a502908dirc",
       "navigation": "rail",
       "grammar": "three-pane-intelligence-workspace",
       "dna": {

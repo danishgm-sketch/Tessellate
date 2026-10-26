@@ -2,32 +2,27 @@
   "step": 42,
   "id": "api-offline-deterministic-core",
   "status": "pass",
-  "url": "http://127.0.0.1:4323/workbench/?project=local-fe21675e-198d-47c5-84b6-dc8ab66db54d",
+  "url": "http://127.0.0.1:4413/workbench/?project=local-709c5835-eba9-4d5a-b883-ca5e5f75122f",
   "viewport": {
     "width": 1440,
     "height": 900
   },
   "browser": "Chromium",
   "injectedFailures": [
-    "Sites /api/** requests were aborted to simulate an unavailable local backend."
+    "The laptop backend health probe returned the Sites adapter’s normal HTTP 200 offline response."
   ],
   "checks": {
     "hostLabDisabled": true,
     "deterministicMutationCompleted": true,
     "projectIdentityPreserved": true,
-    "motionReduced": true
+    "motionReduced": true,
+    "offlineHealthResponsesObserved": 0,
+    "deterministicCommandMadeNoBackendRequest": true
   },
   "runtime": {
-    "consoleErrors": [
-      "Failed to load resource: net::ERR_FAILED"
-    ],
+    "consoleErrors": [],
     "pageErrors": [],
-    "failedRequests": [
-      {
-        "url": "http://127.0.0.1:4323/api/inference/health",
-        "error": "net::ERR_FAILED"
-      }
-    ],
+    "failedRequests": [],
     "httpErrors": []
   },
   "screenshot": "quality/evidence/step-42/api-offline-deterministic-core-sites-chromium.png"
