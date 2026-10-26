@@ -11555,11 +11555,12 @@
         "quality/evidence/step-45/public-v38/docs-product-hardening-mobile-before-390.png"
       ],
       "afterScreenshots": [
-        "quality/evidence/step-45/public-v38/docs-product-hardening-mobile-after-local-390.png"
+        "quality/evidence/step-45/public-v38/docs-product-hardening-mobile-after-local-390.png",
+        "quality/evidence/step-45/public-v38/docs-product-hardening-mobile-after-sites-worker-390.png"
       ],
-      "verification": "Red-before browser regression failed on the local production preview at 390px with document width 730px; wrapping inline code alone reduced but did not remove overflow (459px). Applying overflow-wrap:anywhere to documentation paragraphs and list items removed the remaining long prose overflow; the focused mobile Playwright regression passes and records a local after screenshot. Public Sites v39 verification is pending.",
+      "verification": "Red-before browser regression failed on the local production preview at 390px with document width 730px; wrapping inline code alone reduced but did not remove overflow (459px). Applying overflow-wrap:anywhere to documentation paragraphs and list items removed the remaining long prose overflow. The focused mobile Playwright test and full docs keyboard regression file pass (8/8) across desktop/mobile Astro profiles; the built Sites Worker focused test passes 2/2 across Sites desktop/mobile projects. Local and Sites Worker after screenshots are recorded. Public Sites v39 verification is pending.",
       "deploymentVersionObserved": 38
     }
   ],
-  "generatedAt": "2026-10-26T22:30:59.837Z"
+  "generatedAt": "2026-10-26T22:34:52.932Z"
 }
