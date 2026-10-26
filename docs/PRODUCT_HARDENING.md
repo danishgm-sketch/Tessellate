@@ -292,6 +292,9 @@ are provisioned. The public v32 route sweep covers 31 routes at 1440×900 and
 uncaught exceptions, failed requests, unexpected HTTP statuses, or preview
 timeouts. All remain classified DEGRADED because the Sites host injects an
 inline script that strict CSP blocks (AUD-342); no CSP relaxation was made.
+The browser's `securitypolicyviolation` event confirms `blockedURI: inline`,
+`effectiveDirective: script-src-elem`, and `disposition: enforce` on each
+representative route; no blocked network request was created.
 
 The visible v32 employee flagship journey completed at desktop and mobile:
 all three directions; exact C handoff; DNA overrides and reload; locked KPI

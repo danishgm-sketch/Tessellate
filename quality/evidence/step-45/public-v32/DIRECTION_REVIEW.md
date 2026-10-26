@@ -29,8 +29,9 @@ inside its dialog.
 
 All three full previews rendered real resources with zero missing-resource or
 unresolved-required-role placeholders. The full-preview DOM records zero
-uncaught exceptions, failed requests, or HTTP errors. One blocked inline script
-error remained on the Compose response; this is the already documented
+uncaught exceptions, failed requests, or HTTP errors. The browser's
+`securitypolicyviolation` event reports an enforced `script-src-elem` block for
+`blockedURI: inline` on the Compose response; this is the already documented
 Sites-injected CSP issue AUD-342. It did not stop Compose or preview rendering.
 
 The captures and machine measurements are under:

@@ -333,6 +333,13 @@ zero-console-error release gate is not met. This is a hosting constraint; no
 application CSP relaxation was added. The Playwright run is recorded as failed
 at that final console assertion rather than reported as a clean pass.
 
+The Axe browser harness also recorded `securitypolicyviolation` events on Home,
+Explore, resource detail, Compose, and Workbench: `blockedURI` is `inline`, the
+effective directive is `script-src-elem`, and disposition is `enforce`. Its
+`sourceFile` is the current Site document and no blocked network request was
+created. This reproduces AUD-342 directly in the browser rather than inferring
+it only from console text.
+
 An Axe scan against the live v32 Site covered Home, Explore, representative
 resource detail, Compose ready state, and the generated Direction C Workbench
 at both viewports. It found zero automated violations across these ten

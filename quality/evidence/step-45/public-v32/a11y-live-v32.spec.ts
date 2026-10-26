@@ -16,6 +16,28 @@ test('deployed v32 core routes and flagship Workbench pass WCAG 2.2 AA Axe scan'
   const uncaughtExceptions: string[] = [];
   const failedRequests: Array<{ url: string; error: string | null }> = [];
   const httpErrors: Array<{ url: string; status: number }> = [];
+  await page.addInitScript(() => {
+    type PolicyViolation = {
+      blockedURI: string;
+      effectiveDirective: string;
+      violatedDirective: string;
+      sourceFile: string;
+      lineNumber: number;
+      disposition: string;
+    };
+    const browserWindow = window as Window & { __tessellatePolicyViolations?: PolicyViolation[] };
+    browserWindow.__tessellatePolicyViolations = [];
+    document.addEventListener('securitypolicyviolation', (event) => {
+      browserWindow.__tessellatePolicyViolations?.push({
+        blockedURI: event.blockedURI,
+        effectiveDirective: event.effectiveDirective,
+        violatedDirective: event.violatedDirective,
+        sourceFile: event.sourceFile,
+        lineNumber: event.lineNumber,
+        disposition: event.disposition,
+      });
+    });
+  });
   page.on('console', (message) => {
     if (message.type() === 'error') consoleErrors.push(message.text());
   });
@@ -34,6 +56,12 @@ test('deployed v32 core routes and flagship Workbench pass WCAG 2.2 AA Axe scan'
     const axe = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
       .analyze();
+    const policyViolations = await page.evaluate(() => {
+      const browserWindow = window as Window & {
+        __tessellatePolicyViolations?: Array<Record<string, string | number>>;
+      };
+      return browserWindow.__tessellatePolicyViolations ?? [];
+    });
     results.push({
       label,
       url: page.url(),
@@ -50,6 +78,7 @@ test('deployed v32 core routes and flagship Workbench pass WCAG 2.2 AA Axe scan'
           failureSummary: node.failureSummary,
         })),
       })),
+      securityPolicyViolations: policyViolations,
       passes: axe.passes.length,
       incomplete: axe.incomplete.map((item) => ({ id: item.id, impact: item.impact, help: item.help })),
     });
