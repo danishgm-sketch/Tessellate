@@ -49,3 +49,33 @@ test('CLI examples stay within the phone viewport and long commands scroll by ke
   mkdirSync(evidenceDirectory, { recursive: true });
   await page.screenshot({ path: path.join(evidenceDirectory, 'sites-docs-cli-after-360.png'), animations: 'disabled' });
 });
+
+test('long prose tokens and inline identifiers wrap without widening mobile documentation', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/docs/product-hardening/');
+
+  const widths = await page.evaluate(() => ({
+    viewport: document.documentElement.clientWidth,
+    document: document.documentElement.scrollWidth,
+  }));
+  expect(widths.document).toBeLessThanOrEqual(widths.viewport);
+
+  const overflowingInlineCode = await page.locator('main .documentation p code').evaluateAll((elements) =>
+    elements
+      .filter((element) => {
+        const bounds = element.getBoundingClientRect();
+        return bounds.right > document.documentElement.clientWidth + 1;
+      })
+      .map((element) => element.textContent),
+  );
+  expect(overflowingInlineCode).toEqual([]);
+
+  const checkpoint = page.locator('main .documentation p').filter({ hasText: 'version appgprj_6acc036de8cc8191a823339566972d85' });
+  await checkpoint.scrollIntoViewIfNeeded();
+  const evidenceDirectory = path.resolve(process.cwd(), 'quality/evidence/step-45/public-v38');
+  mkdirSync(evidenceDirectory, { recursive: true });
+  await page.screenshot({
+    path: path.join(evidenceDirectory, 'docs-product-hardening-mobile-after-local-390.png'),
+    animations: 'disabled',
+  });
+});
