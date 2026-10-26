@@ -82,20 +82,28 @@ Current continuation note (2026-10-21): AUD-262 documents the real 360px Inline 
 - [ ] 47 Final coherence audit — one manifest, terminology, engine and design system.
 - [ ] 48 Release — all final owner acceptance conditions and green protected main.
 
-Current continuation note (2026-10-24, Step 45 public baseline): The live
-review Site is still version 20 at the expected V1 commit. A clean Playwright
-capture at 1440×900 and 390×844 found no console warnings/errors, uncaught
-exceptions, failed requests, HTTP errors, or horizontal overflow, but confirmed
-the live homepage still preloads an unrelated market-intelligence/procurement
-brief and six form fields lack stable IDs/names. AUD-317 and AUD-318 record
-these separately; both fixes pass local browser checks. A Chrome DevTools cold
-trace measured LCP 556ms / CLS 0.00 desktop and LCP 851ms / CLS 0.00 mobile
-under Fast 4G; CrUX field metrics are unavailable. The earlier deployment also
-still needs verification for strict CSP (AUD-268) and the mobile hero height /
-Compose position (AUD-306). Evidence is in `quality/STEP_45_EVIDENCE.md` and
-`quality/evidence/step-45/`. Step 45 remains open: the full local suite must run,
-then the matching source must be committed, pushed and saved as a version. The
-owner must inspect and approve that saved preview before any public deployment.
+Current continuation note (2026-10-26, Step 45 release-candidate audit): the
+public review Site remains v30. Sites v33 packages canonical source
+`7d30a75b1770c79e5aa906b3e5e20f6801d306d3`, is saved but not deployed, and is
+superseded by the AUD-351 mobile homepage fix. The release branch contains
+`097862d3785038f50e64523e5e946afa8d71c1b5`; it wraps all five preset briefs at
+phone widths. The regression failed before the fix at 390px (691px scroll
+content in a 342px row) and passes at 360, 390, 430, 768, 1024 and 1440px in
+desktop and mobile browser profiles. The exhaustive Sites Worker resource
+matrix passes 324 resources / 972 variants with zero findings on rerun. Its
+first combined run had one transient `faq-searchable` preview-load timeout;
+that route passed independently and the full resource matrix passed on retry.
+The complete local Astro run passed 324 tests / 112 configured skips; the
+isolated preview suite passed 3/3. The Sites combined run's transient failure
+still requires exact-head CI confirmation. `pnpm audit:all` passes 16/16
+behavioral gates, 324/324 isolation, zero security violations, complete
+licence/provenance checks, bundle budgets and production build (733 Astro
+pages). Vite emits its known raw chunk-size warning while the gzip budgets
+pass. AUD-342 remains the single open finding: Sites injects a per-response
+inline script blocked by strict CSP. No security relaxation was made. D1/R2
+remain unbound. Step 45 stays open until exact-head CI, a new saved version,
+owner approval, and deployed re-audit; human usability testing remains Step 46.
+Evidence: `quality/STEP_45_EVIDENCE.md` and `audit/evidence/step-45/`.
 
 ## Baseline exit gate
 

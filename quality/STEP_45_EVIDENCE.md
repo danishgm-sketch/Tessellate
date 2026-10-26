@@ -1,6 +1,6 @@
 # Step 45 — Public review verification
 
-Status: in progress. Sites versions 21 and 22 were saved, but not deployed. Version 21 predates the AUD-319 narrow-header correction. Version 22 packages canonical source `849894fe5e325b20908984be540ab4420d5763c9`. Both are superseded by the Explore search corrections now under review; neither is approved for deployment. Save and show a replacement version built from the exact pushed source before requesting publication approval.
+Status: in progress. Public Site v30 remains live. Sites v33 was saved from canonical `7d30a75b1770c79e5aa906b3e5e20f6801d306d3`, but that source predates AUD-351 and v33 is superseded. The release branch now contains fix commit `097862d3785038f50e64523e5e946afa8d71c1b5`; exact-head CI is pending. Save a new Site version from the exact pushed source, show it for owner review, and wait for approval before deploying.
 
 ## Baseline capture
 
@@ -143,3 +143,51 @@ AUD-268 and AUD-336; evidence is in
 accessible-name defect AUD-337 is confirmed on v28 and remains open until the
 next explicitly approved version is rechecked. This approval did not authorize
 publishing a later version.
+
+## Current release-candidate continuation — 2026-10-26
+
+### AUD-351: mobile preset labels
+
+The public v30 homepage at 390×844 showed the preset row at 342px wide with
+691px of scroll content; the third button extended beyond the visible row.
+The before screenshot is `audit/evidence/step-45/aud-351-home-mobile-390-before-live-v30.png`.
+The local fix changes the row to wrap at every breakpoint. The after screenshot
+is `audit/evidence/step-45/aud-351-home-mobile-390-after.png`. A regression
+failed before the code change and now verifies all preset buttons fit at 360,
+390, 430, 768, 1024, and 1440px and that two presets update the brief. The
+Sites Worker test passes both desktop and mobile profiles.
+
+### Local checks after the fix
+
+- `pnpm audit:all`: passed all 16 behavioral gates, 324/324 resource isolation,
+  license/provenance, zero security violations, dependency audit, bundle gzip
+  budgets, and the production build (733 Astro pages; 324 resources; 731 CSP
+  HTML records). Vite still reports its raw chunk-size warning; gzip budgets
+  pass.
+- TypeScript, ESLint, and Vitest: passed on the candidate source (1,220 unit
+  tests passed, one configured skip; 22 workspace typechecks; lint passed).
+- Astro Playwright browser matrix: 324 passed, 112 configured skips, zero
+  failures. Flagship mobile acceptance passed through independent React export.
+- Isolated preview app: 3 passed, zero skipped.
+- Sites Worker broad desktop/mobile run: 319 passed, 42 configured skips, and
+  one failure. The failing detail was `faq-searchable`: its preview iframe
+  stayed unmounted while a manifest JS request remained unsettled. The route
+  passed alone, and a second exhaustive Sites Worker run passed all 324
+  resources / 972 variants with zero findings in 11 minutes. This transient
+  combined-run failure is recorded rather than omitted; current exact-head
+  GitHub CI must independently confirm the full suite.
+- The mobile preset regression and screenshot show no horizontal overflow and
+  no clipped chip labels. Detailed machine evidence is in
+  `quality/evidence/step-45/aud-351-local-validation.json` and the full
+  resource result is `audit/evidence/step-07/after/catalog-324-worker-pass.json`.
+
+### Release boundary and remaining work
+
+The current public deployment remains v30. The previously saved v33 is not the
+current candidate and must not be published. D1 and R2 remain null. The only
+open audit issue is AUD-342, a Sites-injected dynamic bootstrap script that
+strict CSP blocks on the public page; `unsafe-inline` was not added. After exact
+head CI passes, save and show a new version from the pushed source. Step 45
+remains open until the owner approves that exact version, the deployment is
+re-audited, and remaining release acceptance checks pass. No public deployment
+has been made from this candidate.

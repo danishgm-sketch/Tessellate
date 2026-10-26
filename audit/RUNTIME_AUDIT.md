@@ -22,7 +22,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 350 findings (0 Critical, 67 High, 266 Medium, 17 Low): 40 closed after issue-specific deployed verification, 217 fixed locally and awaiting issue-specific deployed checks, 90 fixed and verified locally, 2 retain the legacy `fixed` status, and 1 remains open. Public v30 closes AUD-338 through AUD-341 and AUD-300 after issue-specific checks. AUD-342 records the Sites-injected CSP console error. AUD-343 is locally verified after reducing saved-project LCP with on-demand catalogue loading; the lab is not field data. AUD-344 through AUD-346 await issue-specific deployed verification. Older findings remain pending their specific checks.
+**Current disposition:** 351 findings (0 Critical, 67 High, 267 Medium, 17 Low): 40 closed after issue-specific deployed verification, 218 fixed locally and awaiting issue-specific deployed checks, 90 fixed and verified locally, 2 retain the legacy `fixed` status, and 1 remains open. Public v30 closes AUD-338 through AUD-341 and AUD-300 after issue-specific checks. AUD-342 records the Sites-injected CSP console error. AUD-343 is locally verified after reducing saved-project LCP with on-demand catalogue loading; the lab is not field data. AUD-344 and AUD-346 through AUD-351 await issue-specific deployed verification. AUD-345 is verified locally; AUD-342 remains open. Older findings remain pending their specific checks.
 
 ## v26 deployed-site checkpoint
 
@@ -3678,3 +3678,38 @@ Public v30 interaction testing confirmed a core navigation failure in CTA Produc
 - **Root cause:** `aria-label="Laptop model Lab"` replaced the complete child-text name, omitting the visible On/Off state.
 - **Affected code:** `packages/workbench/src/components/CommandBar.tsx`, `tests/e2e/workbench-visible-label-accessibility-step-39.spec.ts`.
 - **Remediation:** Remove the incomplete `aria-label` and retain `aria-checked` and the existing descriptive text. Desktop/mobile Axe checks pass. Fix commit: 7453815fc0d6e3c4fd80f3b5c85defe7821bb1c3. Public v30 verification is pending.
+
+### AUD-351 — Medium — Homepage preset labels are clipped on mobile
+
+- **Evidence:** The public v30 homepage at 390×844 returned HTTP 200 with a 390px document width. Chrome DevTools measured the preset row at 342px wide with 691px of scrollable content; the third button ended at x=415 and its label was cut off. The row has a browser scrollbar, but its clipped labels rely on discovering horizontal scrolling. Before screenshot: [public v30 at 390×844](evidence/step-45/aud-351-home-mobile-390-before-live-v30.png). After screenshot: [wrapped presets at 390×844](evidence/step-45/aud-351-home-mobile-390-after.png).
+- **Reproduction:** Open the public review homepage at 390×844 and inspect the Preset briefs row before scrolling it.
+- **Root cause:** `HeroComposer` kept the chips in one `flex-nowrap` row with `overflow-x-auto` below the 640px breakpoint.
+- **Affected code:** `apps/site/src/components/home/HeroComposer.tsx`, `tests/e2e/home-preset-chips-responsive-step-45.spec.ts`, and `tests/e2e/sites-preview.playwright.config.ts`.
+- **Remediation:** Let preset chips wrap at all widths. The red-to-green Sites Worker regression checks 360, 390, 430, 768, 1024, and 1440 CSS pixels and confirms the preset actions still update the product brief. Desktop and mobile browser profiles pass; the exhaustive Sites Worker resource matrix passes all 324 resources and 972 variants with zero findings. The initial combined Sites run had one transient `faq-searchable` preview-load timeout; the route passed alone and the exhaustive matrix passed on a full rerun. Public v30 remains unchanged pending the RC deployment. Fix commit: `097862d3785038f50e64523e5e946afa8d71c1b5`.
+
+## Step 45 current release-candidate follow-up — 2026-10-26
+
+The public review Site remains v30. Sites version 33 is saved from canonical
+source `7d30a75b1770c79e5aa906b3e5e20f6801d306d3` (Sites mirror source commit
+`426606a003b97a364b86908fb76bff2e338d6edb`) but is not deployed and is
+superseded by the AUD-351 responsive fix. The release branch now contains
+`097862d3785038f50e64523e5e946afa8d71c1b5` on top of that source. Exact-head
+CI for the new fix is pending.
+
+The deployed v30 homepage still emits one CSP console error because ChatGPT
+Sites adds a per-response inline script whose SHA-256 changes on reload. The
+static strict CSP cannot allowlist that dynamic script. It does not execute or
+make an external request; the application remains interactive. No
+`unsafe-inline` relaxation was made. AUD-342 remains open pending a platform
+fix or an owner decision about the security tradeoff.
+
+The same deployed mobile capture found AUD-351: preset labels are clipped by a
+horizontal-only row. A Sites Worker regression failed before the change and
+passes after wrapping at 360, 390, 430, 768, 1024, and 1440px on both desktop
+and mobile browser profiles. The exhaustive Sites Worker certification passes
+324 resources and 972 variants with zero findings on rerun. The initial
+combined Sites suite had one transient `faq-searchable` preview load timeout;
+the individual route and exhaustive matrix then passed. The local before/after
+screenshots and machine results are under `evidence/step-45/`. The exact fix
+commit still needs CI, a new saved version, owner review, public approval, and
+deployed re-audit before this issue can close.

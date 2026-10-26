@@ -11276,7 +11276,46 @@
       "fixCommit": "7453815fc0d6e3c4fd80f3b5c85defe7821bb1c3",
       "status": "fixed-awaiting-deployed-verification",
       "verification": "The desktop regression failed before the fix. It now passes on desktop and mobile (390x844); the mobile test opens the Command navigation and confirms the switch is present. Axe reports no label-content-name-mismatch, and the accessible name includes Lab and Off. Public v30 remains unchanged; deployed verification is pending."
+    },
+    {
+      "id": "AUD-351",
+      "severity": "medium",
+      "route": "/",
+      "viewport": "390x844",
+      "category": "visual",
+      "title": "Homepage preset brief labels are clipped on mobile",
+      "expected": "All five preset labels should be readable and selectable at mobile widths without requiring an undisclosed horizontal gesture.",
+      "actual": "On the public v30 Site at 390x844, the preset row was 342px wide with 691px of scrollable content; the third chip ended at x=415 and its label was cut off. The page itself remained 390px wide and the row had overflow-x:auto with a subtle browser scrollbar.",
+      "reproduction": [
+        "Open the public review Site at 390x844.",
+        "Inspect the Preset briefs row before interacting with it.",
+        "Observe that the third preset is partially visible and the remaining presets are outside the viewport."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "/",
+          "status": 200,
+          "note": "Observed page and essential assets returned successfully; no failed request was associated with this visual defect."
+        }
+      ],
+      "screenshot": "audit/evidence/step-45/aud-351-home-mobile-390-before-live-v30.png",
+      "beforeScreenshots": [
+        "audit/evidence/step-45/aud-351-home-mobile-390-before-live-v30.png"
+      ],
+      "afterScreenshots": [
+        "audit/evidence/step-45/aud-351-home-mobile-390-after.png"
+      ],
+      "rootCause": "HeroComposer used flex-nowrap with overflow-x-auto below the 640px breakpoint, preserving the horizontal chip carousel but clipping labels and relying on users to discover horizontal scrolling.",
+      "affectedCode": [
+        "apps/site/src/components/home/HeroComposer.tsx",
+        "tests/e2e/home-preset-chips-responsive-step-45.spec.ts",
+        "tests/e2e/sites-preview.playwright.config.ts"
+      ],
+      "fixCommit": "097862d3785038f50e64523e5e946afa8d71c1b5",
+      "status": "fixed-awaiting-deployed-verification",
+      "verification": "The regression failed before the fix at 390px with scrollWidth 691 and clientWidth 342. After changing the row to wrap, the Sites Worker browser regression passes at 360, 390, 430, 768, 1024, and 1440 CSS pixels on desktop and mobile profiles; both AI research and employee-experience presets update the brief. The page has no horizontal overflow and the after screenshot shows all five complete labels. A 324-resource Sites Worker matrix also passed with 972 variants and zero findings. One initial combined-suite run had a transient faq-searchable preview-load timeout; the route passed in isolation and a full 324-resource rerun passed. Public v30 remains unchanged, so deployed verification is pending."
     }
   ],
-  "generatedAt": "2026-10-26T03:34:01Z"
+  "generatedAt": "2026-10-26T08:14:36Z"
 }
