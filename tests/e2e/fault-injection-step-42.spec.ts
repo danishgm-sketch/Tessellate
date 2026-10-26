@@ -240,17 +240,42 @@ test('an unresolved resource in an imported manifest blocks ZIP export with a us
 test('deterministic commands remain available while the laptop Lab is offline', async ({ page, isMobile }, testInfo) => {
   test.skip(isMobile, 'The deterministic command bar is a desktop Workbench surface.');
   const runtime = observeRuntime(page);
-  let interceptedApiRequests = 0;
-  await page.route('**/api/**', (route) => {
-    interceptedApiRequests += 1;
-    return route.abort('failed');
+  const injectedApiResponses: Array<{ pathname: string; status: number }> = [];
+  // Model the Sites adapter's handled offline response. Aborting the request
+  // creates a browser-console network error even though the product handles it.
+  await page.route('**/api/**', async (route) => {
+    const pathname = new URL(route.request().url()).pathname;
+    const isHealthCheck = pathname === '/api/inference/health';
+    const status = isHealthCheck ? 200 : 503;
+    injectedApiResponses.push({ pathname, status });
+    return route.fulfill({
+      status,
+      contentType: 'application/json',
+      body: JSON.stringify(
+        isHealthCheck
+          ? {
+              apiOnline: false,
+              hostOnline: false,
+              activeWorkers: 0,
+              pendingTasks: 0,
+              engine: 'deterministic',
+              reason: 'Laptop backend connection is not configured',
+            }
+          : {
+              error: 'BackendUnavailable',
+              message: 'This feature requires the laptop and Docker to be running.',
+            },
+      ),
+    });
   });
   await page.goto('/workbench/?showcase=showcase-playful-hr');
   await expect(page.getByTestId('command-bar')).toBeVisible();
   await expect(page.getByTestId('laptop-host-status')).toContainText('Backend offline');
   await expect(page.getByRole('switch', { name: 'Laptop model Lab' })).toBeDisabled();
   const before = (await downloadManifest(page, testInfo, 'before-offline-command.tess.json')).manifest;
-  const apiRequestsBeforeCommand = interceptedApiRequests;
+  const actionApiResponsesBeforeCommand = injectedApiResponses.filter(
+    ({ pathname }) => pathname !== '/api/inference/health',
+  );
 
   await page.getByLabel('Tessellate command').fill('reduce motion');
   await page.getByRole('button', { name: 'Execute command' }).click();
@@ -262,9 +287,12 @@ test('deterministic commands remain available while the laptop Lab is offline', 
   expect(after.id).toBe(before.id);
   expect(runtime.pageErrors).toEqual([]);
   expect(runtime.consoleErrors).toEqual([]);
-  expect(interceptedApiRequests).toBe(apiRequestsBeforeCommand);
-  expect(runtime.failedRequests.every((request) => new URL(request.url).pathname.startsWith('/api/'))).toBe(true);
-  if (apiRequestsBeforeCommand > 0) expect(runtime.failedRequests.length).toBeGreaterThan(0);
+  expect(injectedApiResponses.every(({ pathname, status }) => pathname === '/api/inference/health' && status === 200)).toBe(true);
+  expect(
+    injectedApiResponses.filter(({ pathname }) => pathname !== '/api/inference/health'),
+  ).toEqual(actionApiResponsesBeforeCommand);
+  expect(actionApiResponsesBeforeCommand).toEqual([]);
+  expect(runtime.failedRequests).toEqual([]);
   expect(runtime.httpErrors).toEqual([]);
   await saveEvidence(
     page,
@@ -276,10 +304,10 @@ test('deterministic commands remain available while the laptop Lab is offline', 
       deterministicMutationCompleted: true,
       projectIdentityPreserved: true,
       motionReduced: true,
-      startupHealthProbesAborted: apiRequestsBeforeCommand,
+      offlineHealthResponsesObserved: injectedApiResponses.length,
       deterministicCommandMadeNoBackendRequest: true,
     },
-    ['Sites /api/** health requests were aborted when the local adapter was configured to probe them.'],
+    ['The laptop backend health probe returned the Sites adapter’s normal HTTP 200 offline response.'],
     runtime.consoleErrors
   );
 });
