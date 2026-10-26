@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const previewAppPort = process.env.TESSELLATE_PREVIEW_APP_PORT ?? '4324';
+const previewAppBaseUrl = `http://127.0.0.1:${previewAppPort}`;
+
 export default defineConfig({
   testDir: '.',
   testMatch: ['preview-unknown-resource-regression.spec.ts', 'preview-reduced-motion.spec.ts'],
@@ -7,7 +10,7 @@ export default defineConfig({
   workers: 1,
   reporter: 'list',
   use: {
-    baseURL: 'http://127.0.0.1:4324',
+    baseURL: previewAppBaseUrl,
     trace: 'on-first-retry',
   },
   projects: [
@@ -20,9 +23,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'pnpm --filter @tessellate/preview dev --host 127.0.0.1 --port 4324',
-    url: 'http://127.0.0.1:4324',
-    reuseExistingServer: !process.env.CI,
+    command: `pnpm --filter @tessellate/preview dev --host 127.0.0.1 --port ${previewAppPort}`,
+    url: previewAppBaseUrl,
+    reuseExistingServer: process.env.REUSE_PREVIEW_APP_SERVER === 'true',
     timeout: 30000,
   },
 });

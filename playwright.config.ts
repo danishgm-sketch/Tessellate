@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const astroPreviewPort = process.env.TESSELLATE_ASTRO_PREVIEW_PORT ?? '4321';
+const astroPreviewBaseUrl = `http://127.0.0.1:${astroPreviewPort}`;
+
 export default defineConfig({
   testDir: './tests/e2e',
   testIgnore: [
@@ -54,14 +57,16 @@ export default defineConfig({
   webServer: {
     // Astro detects coding agents and daemonizes preview. Setting this flag
     // forces the normal foreground process Playwright can supervise.
-    command: 'pnpm --filter @tessellate/site preview --port 4321',
-    url: 'http://localhost:4321',
+    command: `pnpm --filter @tessellate/site preview --host 127.0.0.1 --port ${astroPreviewPort}`,
+    url: astroPreviewBaseUrl,
     env: { ASTRO_PREVIEW_BACKGROUND: '0' },
-    reuseExistingServer: true,
+    // A server from another checkout is not evidence for this worktree. Reuse
+    // only when the caller explicitly confirms that the running server matches.
+    reuseExistingServer: process.env.REUSE_ASTRO_PREVIEW === 'true',
     timeout: 30000,
   },
   use: {
-    baseURL: 'http://localhost:4321',
+    baseURL: astroPreviewBaseUrl,
     trace: 'on-first-retry',
   },
   projects: [

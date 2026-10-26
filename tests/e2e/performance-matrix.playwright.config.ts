@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const sitesPreviewPort = process.env.TESSELLATE_SITES_PREVIEW_PORT ?? '4323';
+const sitesPreviewBaseUrl = `http://127.0.0.1:${sitesPreviewPort}`;
+
 export default defineConfig({
   testDir: '.',
   testMatch: [
@@ -11,7 +14,7 @@ export default defineConfig({
   workers: 1,
   reporter: 'list',
   use: {
-    baseURL: 'http://127.0.0.1:4323',
+    baseURL: sitesPreviewBaseUrl,
     trace: 'on-first-retry',
   },
   projects: [
@@ -33,9 +36,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'pnpm --filter @tessellate/sites preview',
-    url: 'http://127.0.0.1:4323',
-    reuseExistingServer: !process.env.CI,
+    command: `pnpm --filter @tessellate/sites exec wrangler dev --config ../../dist/server/wrangler.json --local --ip 127.0.0.1 --port ${sitesPreviewPort} --inspector-port 0`,
+    url: sitesPreviewBaseUrl,
+    reuseExistingServer: process.env.REUSE_SITES_PREVIEW === 'true',
     timeout: 30000,
   },
 });
