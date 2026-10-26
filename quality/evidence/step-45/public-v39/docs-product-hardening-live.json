@@ -1,0 +1,59 @@
+{
+  "route": "/docs/product-hardening/",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/docs/product-hardening/",
+  "siteVersion": 39,
+  "deploymentId": "appgdep_6adfddd3ee18819186f51d6ae8069741",
+  "canonicalCommit": "0c9e3910466626f16a545a65eb4570959023a936",
+  "sitesSourceCommit": "3831c70ea17200b93eb4b18b2e537c1da418f597",
+  "mobile": {
+    "configuredViewport": [
+      390,
+      844
+    ],
+    "visualViewport": [
+      390,
+      844
+    ],
+    "documentClientWidth": 390,
+    "documentScrollWidth": 390,
+    "articleClientWidth": 358,
+    "articleScrollWidth": 358,
+    "overflowingParagraphsOrListItems": 0,
+    "inlineCodeOutsideViewport": 0,
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "httpStatus": 200,
+    "requests": 17,
+    "failedEssentialRequests": 0
+  },
+  "desktop": {
+    "configuredViewport": [
+      1440,
+      900
+    ],
+    "visualViewport": [
+      1425,
+      900
+    ],
+    "documentClientWidth": 1425,
+    "documentScrollWidth": 1425,
+    "articleClientWidth": 896,
+    "articleScrollWidth": 896,
+    "overflowingParagraphsOrListItems": 0,
+    "inlineCodeOutsideViewport": 0,
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "platformDeprecationIssues": 3,
+    "httpStatus": 200,
+    "failedEssentialRequests": 0
+  },
+  "consoleNote": "Three external Sites/Cloudflare challenge deprecation issue messages were present in the desktop context and remain separately tracked as AUD-356; no application errors or uncaught exceptions.",
+  "networkNote": "The route returned HTTP 200; Astro styles and scripts returned 200, favicon returned 304, and no essential request failed.",
+  "screenshotEvidence": {
+    "path": "quality/evidence/step-45/public-v39/docs-product-hardening-mobile-390.png",
+    "browserViewport": [390, 844],
+    "imageDimensions": [358, 844],
+    "note": "Captured from the live v39 mobile page and visually reviewed; image contains the 358px article viewport within the configured 390px browser viewport. Geometry assertions use the measured 390px visual viewport and document client width."
+  },
+  "observedAt": "2026-10-26T23:14:10.481Z"
+}
