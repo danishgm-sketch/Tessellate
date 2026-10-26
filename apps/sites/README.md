@@ -78,9 +78,9 @@ introduced. Sites billing is not exposed by the connector; no exact Sites tariff
 is asserted. This adapter adds no paid infrastructure outside Sites and preserves
 the repository's £20 maximum principle.
 
-## Current review source
+## Most recent complete runtime audit
 
-The public review is Site v37 at
+The most recent complete end-to-end runtime audit used Site v37 at
 `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`. Its deployed
 source mirror commit is `c2cd798a3b253a80395febea1f61ab2dd71ca347`; the captured
 application code is canonical commit `e08c34021bcf13fbe603f86803cb4d7f7eb443b8`.
@@ -92,6 +92,8 @@ AUD-347–355. The exact route, workflow, accessibility, responsiveness, and
 performance evidence and remaining scope are recorded in
 `../../quality/evidence/step-45/public-v37/` and
 `../../audit/RUNTIME_AUDIT.md`.
+This records the audited runtime checkpoint, not the Site's current published
+version.
 
 The CPU Tree-GNN daemon cannot execute inside a Cloudflare Worker. The
 owner-operated Docker backend is documented in `../laptop-backend/README.md`.

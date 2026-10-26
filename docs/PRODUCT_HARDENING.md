@@ -311,12 +311,13 @@ three distinct desktop structures: sidebar, top navigation, and rail with a
 two-column workspace. See `quality/STEP_45_EVIDENCE.md` and
 `quality/evidence/step-45/public-v32/`.
 
-The v32 findings above are historical and are superseded by the current
-continuation below.
+The v32 findings above are historical. The latest complete Step 45 audit
+checkpoint follows.
 
-Current Step 45 continuation (2026-10-26, public Sites v37): version
+Latest complete Step 45 audit checkpoint (2026-10-26, Sites v37): version
 `appgprj_6acc036de8cc8191a823339566972d85~appgver_918118e36d4c819196088b063bfab113`
-is live at the review URL from Sites mirror commit
+was the live deployment at the review URL when this checkpoint was recorded,
+from Sites mirror commit
 `c2cd798a3b253a80395febea1f61ab2dd71ca347`, serving app code captured from
 canonical `e08c34021bcf13fbe603f86803cb4d7f7eb443b8`. The 31-route desktop and
 mobile smoke (62 captures), exact flagship workflow, responsive homepage,
@@ -335,6 +336,9 @@ document TTFB. Lighthouse's only failed audit was external Sites/Cloudflare
 challenge-script API deprecations (AUD-356). CrUX data is unavailable.
 `quality/STEP_45_EVIDENCE.md`, `audit/RUNTIME_AUDIT.md`, and
 `quality/evidence/step-45/public-v37/` contain the evidence.
+
+This section records the tested v37 checkpoint; its version ID is not a claim
+about which version is currently published.
 
 Step 45 remains incomplete: 210 findings have local fixes but await their own
 deployed checks (25 High, 178 Medium, 7 Low). The broader product-hardening
