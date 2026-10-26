@@ -2,10 +2,10 @@
 
 This register preserves the historical resource/renderer audit and adds the
 current production review audit. The current public baseline is ChatGPT Site
-v37 at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`, serving
+v38 at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`, serving
 application code captured from canonical commit
-`e08c34021bcf13fbe603f86803cb4d7f7eb443b8` (Sites source mirror
-`c2cd798a3b253a80395febea1f61ab2dd71ca347`). Local fixes are not considered
+`8cf78baa1c34f54ec84f34a1eda7e408d9660c5b` (Sites source mirror
+`00be33b9e20c6f3d8af77674a1583a81947976ba`). Local fixes are not considered
 closed until verified on a newly published Site. Evidence
 for the v24 and v25 route sweeps is in `evidence/v24/` and `evidence/v25/`, v26
 route, resource and flagship evidence is in `evidence/v26/`, and local post-fix
@@ -25,7 +25,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 356 findings (0 Critical, 67 High, 271 Medium, 18 Low): 55 closed after issue-specific deployed verification, 210 locally fixed and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 1 records a documented Sites-host limitation. Public v30 closes AUD-338 through AUD-341 and AUD-300 after issue-specific checks; v32 additionally closes AUD-346. Public v37 closes AUD-337, AUD-342–345, and AUD-347–355 after their issue-specific deployed checks. The v37 cold desktop trace measured LCP 270ms / TTFB 58ms / CLS 0. Four 390×844 Workbench traces at 4× CPU and Fast 4G measured LCP 1,739–2,994ms (three below 2.5s); the outlier had a 1,184ms TTFB. CrUX field data is unavailable. Lighthouse Accessibility, SEO, and Agentic Browsing scored 100; Best Practices scored 81 because its only failed audit was three deprecated API warnings in the Cloudflare-injected challenge script, recorded separately as AUD-356. The application emitted no console errors or failed essential requests in the route, flagship, accessibility, responsive, and replacement checks. The 210-awaiting-verification backlog includes 25 High findings and is not a count of known still-broken features; each needs its own live check before closure. **Step 45 and the product-hardening programme are not complete.**
+**Current disposition:** 357 findings (0 Critical, 67 High, 272 Medium, 18 Low): 55 closed after issue-specific deployed verification, 211 locally fixed and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 1 records a documented Sites-host limitation. Public v37 closes AUD-337, AUD-342–345, and AUD-347–355 after issue-specific checks; v38 adds AUD-357 after the mobile docs route overflowed to 730px on a 390px viewport. The shared docs wrap fix is locally verified in commit `513fe45ba8ec43ba3c8f44b804ad92bb662943d7` and remains open pending v39 deployed verification. Existing v37 performance, axe, and route evidence remains the latest complete checkpoint. The 211-awaiting-verification backlog includes 25 High findings and is not a count of known still-broken features; each needs its own live check before closure. **Step 45 and the product-hardening programme are not complete.**
 
 ## Public Sites v37 deployed checkpoint
 
@@ -3850,3 +3850,13 @@ route, Axe, flagship, or standalone-export re-audit, and Step 45 remains open.
 - **Root cause:** The wireframe uses one horizontal flex row with fixed-width side panes and hides overflow at all widths. At 768px the 300px minimum frame height also leaves too little room for the three-pane diagram.
 - **Affected code:** `apps/site/src/components/home/StructureComparison.tsx`, `tests/e2e/home-structure-comparison-readiness.spec.ts`.
 - **Remediation:** The preview now stacks its panes below the 1024px breakpoint, uses a taller tablet frame, and leaves overflow visible. Red-before public tests reproduced the phone and tablet clipping. The fresh local Sites Worker matrix passes at 360, 390, 430, 768, 1024 and 1440px; at every width `scrollWidth` equals `clientWidth` and `scrollHeight` equals `clientHeight`. Runtime console errors, uncaught exceptions, failed requests and HTTP errors are zero. Fix commit: `0ca9002b3318f5a42cf23eeb6f090f75e9952ffb`. After screenshots and machine measurements are under [`quality/evidence/step-45/`](../quality/evidence/step-45/aud-355-responsive-after.json), including [`mobile`](../quality/evidence/step-45/aud-355-mobile-after.png) and [`tablet`](../quality/evidence/step-45/aud-355-768-after.png). Public v32 remains unchanged; deployed verification is pending.
+
+## MEDIUM (continued — v38 deployed audit)
+
+### AUD-357 — Long documentation text widens the mobile page
+
+- **Evidence:** Public Site v38 returned HTTP 200 at 390×844, but `documentElement.scrollWidth` was 730px while `clientWidth` was 390px. The checkpoint version ID extended to about x=729px. Three deprecated-feature issue messages came from the Sites-injected challenge script (AUD-356); no application console errors, uncaught exceptions, or failed essential requests occurred. Before screenshot: [`v38 mobile capture`](../quality/evidence/step-45/public-v38/docs-product-hardening-mobile-before-390.png); machine record: [`v38 geometry and runtime`](../quality/evidence/step-45/public-v38/docs-product-hardening-mobile-before-390.json).
+- **Reproduction:** Open `/docs/product-hardening/` on the public review Site at 390×844 and compare `documentElement.scrollWidth` with `clientWidth`.
+- **Root cause:** Shared documentation styles did not allow long inline code or unbroken text in prose/list items to wrap. A version identifier widened the article's min-content width and the page overflowed horizontally.
+- **Affected code:** `apps/site/src/pages/docs/[slug].astro` and `tests/e2e/documentation-keyboard-regression.spec.ts`.
+- **Remediation:** The local fix applies `overflow-wrap:anywhere` to documentation paragraphs and list items while leaving preformatted blocks horizontally scrollable. The focused mobile Playwright regression failed before the fix at 730px, still failed at 459px when only inline code was wrapped, then passed after prose wrapping was included. The full docs keyboard regression file passes 8/8 across desktop and mobile projects. Fix commit: `513fe45ba8ec43ba3c8f44b804ad92bb662943d7`. Local after screenshot: [`390px candidate`](../quality/evidence/step-45/public-v38/docs-product-hardening-mobile-after-local-390.png). This finding remains fixed-awaiting-deployed-verification until the same route passes on a new public Site.
