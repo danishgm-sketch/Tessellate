@@ -1,10 +1,14 @@
-const fs = require('node:fs');
-const path = require('node:path');
-const playwrightModule = process.env.TESS_PLAYWRIGHT_MODULE || 'playwright';
-const { chromium } = require(playwrightModule);
+/* global document, window */
+import fs from 'node:fs';
+import path from 'node:path';
+import process from 'node:process';
+import { fileURLToPath, pathToFileURL, URL } from 'node:url';
 
+const playwrightPath = process.env.TESS_PLAYWRIGHT_MODULE;
+const playwrightModule = playwrightPath ? pathToFileURL(path.join(playwrightPath, 'index.mjs')).href : 'playwright';
+const { chromium } = await import(playwrightModule);
 const baseUrl = 'http://127.0.0.1:4337';
-const outputDir = __dirname;
+const outputDir = path.dirname(fileURLToPath(import.meta.url));
 const cases = [
   { route: '/', width: 1440, height: 900, screenshot: 'home-1440x900.png' },
   { route: '/compose', width: 1440, height: 900, screenshot: 'compose-1440x900.png' },
