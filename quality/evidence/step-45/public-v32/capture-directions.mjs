@@ -1,6 +1,8 @@
 import { chromium } from '@playwright/test';
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import process from 'node:process';
+import { URL } from 'node:url';
 
 const baseURL =
   process.env.TESSELLATE_AUDIT_URL ??
@@ -80,15 +82,15 @@ try {
       const rect = (element) => {
         if (!element) return null;
         const box = element.getBoundingClientRect();
-        const style = getComputedStyle(element);
+        const style = element.ownerDocument.defaultView?.getComputedStyle(element);
         return {
           x: Math.round(box.x),
           y: Math.round(box.y),
           width: Math.round(box.width),
           height: Math.round(box.height),
-          display: style.display,
-          flexDirection: style.flexDirection,
-          gridTemplateColumns: style.gridTemplateColumns,
+          display: style?.display ?? '',
+          flexDirection: style?.flexDirection ?? '',
+          gridTemplateColumns: style?.gridTemplateColumns ?? '',
         };
       };
       const navigation = root.querySelector('[data-semantic-role="navigation"]');
