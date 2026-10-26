@@ -1,31 +1,32 @@
-# Latest main review publication
+# Latest review publication
 
-Upstream application revision: `22f2961d10c76e9f4ff263965c9bd894f8ea3a9c`
-(2026-10-13). The deployment branch carries that main tree with the existing
-Sites asset/security adapter and regenerated build artefacts.
+Current public review Site: v30 at
+<https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/>.
 
-Verified before publication:
+- Canonical source commit: `2a201f4d13dbf5d2339994fd14dc2fe92c3e92ff`.
+- Sites source commit: `775af0c92354e8fdf33af60b8c0cc31b396c0ab6`.
+- Catalogue: 324 resources, including 40 Gold resources.
+- D1 and R2 bindings: unprovisioned. The public review uses browser persistence;
+  no new database, paid service, hosted inference, or always-on server was added.
 
-- Frozen dependency installation completed.
-- 324 catalogue resources validated; 40 Gold resources retained.
-- Production monorepo build passed, producing 676 Astro pages and a Sites Worker.
-- All workspace typechecks passed.
-- 365 tests across 39 files passed, including independent exported-project build.
-- ESLint passed with zero errors and 43 existing warnings in upstream code.
-- Licence/provenance and secret/security audits passed.
-- 16/16 behavioural release gates and bundle budget checks passed.
-- Production Worker browser smoke passed: homepage, sandboxed resource preview,
-  catalogue readiness, three directions, Direction C handoff, recomposition,
-  Surprise Me, deterministic command fallback, ZIP download, desktop/mobile
-  screenshots, and zero page/console errors in that smoke journey.
+The 2026-10-25 deployed route sweep captured 28 intended routes at 1440×900 and
+390×844. All 56 route/viewport responses returned HTTP 200, with no horizontal
+overflow, uncaught exceptions, failed requests, or 4xx/5xx responses. Each page
+also emitted the known Sites-injected inline-bootstrap CSP error (AUD-342); the
+strict application CSP was not weakened. The sweep is targeted evidence, not
+the full public-route or flagship acceptance audit.
 
-Compatibility-only source differences: one compiled stylesheet, opaque resource
-iframe sandbox, parent/source/origin validation for preview messages, and the
-isolated `apps/sites` adapter. No D1/R2, authentication secrets, paid service or
-host inference daemon is provisioned. The actual offline inference health
-response selects the existing deterministic fallback. Host queue/control
-endpoints remain unavailable rather than exposing the development shared secret
-or in-memory queue on a public deployment.
+The v30 interaction check confirmed the homepage spectrum controls wait for
+hydration and work after becoming ready (AUD-300). It also found AUD-344, where
+the Product Preview CTA navigated only inside the opaque iframe, and AUD-345,
+where a mobile spectrum-preview heading wrapped beside its badges. Both fixes
+are on `consolidation/product-hardening` and pass local browser regressions;
+they are not in v30 and remain open until a later saved Site is deployed and
+rechecked.
 
-This new main revision is not certified by the earlier V7 end-to-end audit.
-The current checks are publication smoke tests, not a full product re-audit.
+The current branch candidate is documented in
+`quality/STEP_39_EVIDENCE.md` and `audit/RUNTIME_AUDIT.md`. Its full local
+validation passed on 2026-10-26. GitHub CI must pass before saving the next Site
+version. That version must be reviewed and explicitly approved before public
+deployment. Deployment smoke evidence does not certify the full product or
+close unrelated findings in the runtime audit.
