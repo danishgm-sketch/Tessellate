@@ -2,8 +2,11 @@
 
 This register preserves the historical resource/renderer audit and adds the
 current production review audit. The current public baseline is ChatGPT Site
-v32 at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`; local fixes
-are not considered closed until verified on a newly published Site. Evidence
+v37 at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`, serving
+application code captured from canonical commit
+`e08c34021bcf13fbe603f86803cb4d7f7eb443b8` (Sites source mirror
+`c2cd798a3b253a80395febea1f61ab2dd71ca347`). Local fixes are not considered
+closed until verified on a newly published Site. Evidence
 for the v24 and v25 route sweeps is in `evidence/v24/` and `evidence/v25/`, v26
 route, resource and flagship evidence is in `evidence/v26/`, and local post-fix
 route evidence is in `evidence/local-fixed-final/`. Trace measurements are in
@@ -22,7 +25,67 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 355 findings (0 Critical, 67 High, 271 Medium, 17 Low): 41 closed after issue-specific deployed verification, 222 fixed locally and awaiting issue-specific deployed checks, 90 fixed and verified locally, 2 retain the legacy `fixed` status, and 0 remain open. Public v30 closes AUD-338 through AUD-341 and AUD-300 after issue-specific checks. Public v32 additionally closes AUD-346. AUD-342 now has a local strict-CSP nonce mitigation and awaits verification against a newly published Site version. AUD-343 is locally verified after reducing saved-project LCP with on-demand catalogue loading; the lab is not field data. AUD-344, AUD-345, AUD-347 through AUD-355 await issue-specific deployed verification; AUD-350, AUD-351, AUD-353, AUD-354, and AUD-355 are reproduced on v32. Sites version history records v32 as the latest successful publish; v35 and v36 are saved but undeployed. Older findings remain pending their specific checks.
+**Current disposition:** 356 findings (0 Critical, 67 High, 271 Medium, 18 Low): 55 closed after issue-specific deployed verification, 210 locally fixed and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 1 records a documented Sites-host limitation. Public v30 closes AUD-338 through AUD-341 and AUD-300 after issue-specific checks; v32 additionally closes AUD-346. Public v37 closes AUD-337, AUD-342–345, and AUD-347–355 after their issue-specific deployed checks. The v37 cold desktop trace measured LCP 270ms / TTFB 58ms / CLS 0. Four 390×844 Workbench traces at 4× CPU and Fast 4G measured LCP 1,739–2,994ms (three below 2.5s); the outlier had a 1,184ms TTFB. CrUX field data is unavailable. Lighthouse Accessibility, SEO, and Agentic Browsing scored 100; Best Practices scored 81 because its only failed audit was three deprecated API warnings in the Cloudflare-injected challenge script, recorded separately as AUD-356. The application emitted no console errors or failed essential requests in the route, flagship, accessibility, responsive, and replacement checks. The 210-awaiting-verification backlog includes 25 High findings and is not a count of known still-broken features; each needs its own live check before closure. **Step 45 and the product-hardening programme are not complete.**
+
+## Public Sites v37 deployed checkpoint
+
+Sites version 37 is public at the existing review URL. The version record
+confirms deployment `appgdep_6adfb7fd932c8191ae443e9a0af85c25` succeeded for
+version `appgprj_6acc036de8cc8191a823339566972d85~appgver_918118e36d4c8191abcd3b7e4ce4dcc1`, with Site mirror commit
+`c2cd798a3b253a80395febea1f61ab2dd71ca347` and application code captured from
+canonical `e08c34021bcf13fbe603f86803cb4d7f7eb443b8`.
+
+The visible flagship journey passed on desktop 1440×900 and mobile 390×844:
+the exact employee brief reached Compose, generated three real previews, and
+opened the selected Direction C in Workbench. The workflow exercised inherited
+onboarding/settings intent, locked dashboard content, radical recomposition,
+resource replacement, Surprise Me, undo/redo, manifest export, and an
+independent React ZIP install/build/browser run. The dedicated flagship run
+reported four passed tests, two configured skips, and zero unexpected results.
+The export contains no Tessellate runtime dependency and retains the selected
+resource and locked section. Screenshots, manifests, ZIPs, and run reports are
+under [`quality/evidence/step-45/public-v37/`](../quality/evidence/step-45/public-v37/flagship/).
+
+The 31 requested public routes were captured at both viewports: 62/62 returned
+HTTP 200 and passed the route/runtime/layout smoke. No browser console errors,
+uncaught exceptions, failed requests, bad responses, or document overflow were
+recorded. This PASS classification is explicitly a route smoke, not a claim
+that every route's content and controls were exhaustively exercised. The
+additional real workflows and accessibility checks cover Home, Explore,
+Compose, Workbench, resource details, a showcase, generated employee product,
+preview handoff, replacement, and responsive first-fold content.
+
+Live Axe verification reports zero violations: 15 general checks with one
+configured skip, two generated-product checks, and 12 hydration checks with
+four configured skips. The real replacement dialog was opened and used on the
+deployed Workbench; its compatible Gold hero preview, dialog semantics, Escape
+close/focus return, accessible move actions, and heading/name Axe rules passed.
+The typed preview's Compose handoff was verified through the isolated iframe's
+explicit host confirmation on desktop and mobile; the catalogue returned 200.
+AUD-337, AUD-342–345, and AUD-347–355 now have issue-specific v37 evidence.
+
+The public homepage's 390×844 hero measures 647.53px within its 759.6px 90svh
+budget; Compose ends at y=678.53 and all five preset names fit. Responsive
+checks cover 360, 390, 430, 768, 1024, 1280, and 1440px. A fresh response
+includes a changing script nonce, keeps `unsafe-inline` out of `script-src`,
+and has no loopback CSP origin. No D1 or R2 bindings were provisioned.
+
+Chrome DevTools measured desktop Home LCP 270ms / TTFB 58ms / CLS 0. Four cold
+Workbench mobile traces at 4× CPU / Fast 4G measured LCP 1,739ms, 1,747ms,
+1,762ms, and 2,994ms; three were under 2.5s, while the outlier had 1,184ms
+TTFB and 1,810ms render delay. The LCP element was text, render-blocking
+requests offered zero estimated savings, and CrUX has no field data for this
+page. Lighthouse scores Accessibility 100, SEO 100, Agentic Browsing 100, and
+Best Practices 81; its only failing audit lists deprecated APIs in the
+Cloudflare-injected challenge script (AUD-356), not Tessellate's bundle.
+
+Machine-readable summary: [`verification-summary.json`](../quality/evidence/step-45/public-v37/verification-summary.json).
+Route, Axe, generated-product, preview-handoff, Workbench replacement, and
+performance records are in the same v37 evidence directory. The public Site
+used the same application code as the current branch; this audit added
+verification and regression evidence only, so it did not publish a new Site.
+The broader verification backlog and later product-hardening steps remain
+open; no release-complete claim is made.
 
 ## v26 deployed-site checkpoint
 

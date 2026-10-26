@@ -80,13 +80,18 @@ the repository's £20 maximum principle.
 
 ## Current review source
 
-The public review is Site v32, sourced from canonical commit
-`4eca97890e2d8182bcd72edfe5659997d4317c21` (Sites source commit
-`5533d1082b649ec4429bb356cdc91ab3e2f2daf5`). The canonical hardening branch
-continues to preserve the Astro + React application and this hosting adapter.
-Changes after v32, including the nonce-based AUD-342 mitigation, require a new
-saved version and issue-specific deployed verification before they are
-considered resolved.
+The public review is Site v37 at
+`https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`. Its deployed
+source mirror commit is `c2cd798a3b253a80395febea1f61ab2dd71ca347`; the captured
+application code is canonical commit `e08c34021bcf13fbe603f86803cb4d7f7eb443b8`.
+The canonical hardening branch continues to preserve the Astro + React
+application and this hosting adapter. The deployed response uses a per-response
+script nonce, contains no `unsafe-inline` script source or loopback CSP origin,
+and passed the issue-specific v37 deployed checks for AUD-337, AUD-342–345, and
+AUD-347–355. The exact route, workflow, accessibility, responsiveness, and
+performance evidence and remaining scope are recorded in
+`../../quality/evidence/step-45/public-v37/` and
+`../../audit/RUNTIME_AUDIT.md`.
 
 The CPU Tree-GNN daemon cannot execute inside a Cloudflare Worker. The
 owner-operated Docker backend is documented in `../laptop-backend/README.md`.

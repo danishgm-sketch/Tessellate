@@ -311,9 +311,31 @@ three distinct desktop structures: sidebar, top navigation, and rail with a
 two-column workspace. See `quality/STEP_45_EVIDENCE.md` and
 `quality/evidence/step-45/public-v32/`.
 
-Findings AUD-351 (clipped homepage preset) and AUD-353 (onboarding recipe copy)
-are fixed locally and still await verification on a later approved Site
-version. AUD-342 is a host-side constraint that cannot be fixed in the source
-without weakening the current policy; it remains open pending a Sites platform
-fix or an explicit security decision. Step 45 and the 48-step product
-hardening programme remain incomplete. The public review Site is unchanged.
+The v32 findings above are historical and are superseded by the current
+continuation below.
+
+Current Step 45 continuation (2026-10-26, public Sites v37): version
+`appgprj_6acc036de8cc8191a823339566972d85~appgver_918118e36d4c819196088b063bfab113`
+is live at the review URL from Sites mirror commit
+`c2cd798a3b253a80395febea1f61ab2dd71ca347`, serving app code captured from
+canonical `e08c34021bcf13fbe603f86803cb4d7f7eb443b8`. The 31-route desktop and
+mobile smoke (62 captures), exact flagship workflow, responsive homepage,
+preview-to-Compose handoff, Workbench replacement dialog, Axe and hydration
+checks all completed with zero app console errors or failed essential network
+requests. Issue-specific v37 verification closes AUD-337, AUD-342–345, and
+AUD-347–355. The homepage hero fits its 90svh mobile budget, all five presets
+are visible, the response nonce rotates without `unsafe-inline` in
+`script-src`, and no loopback origins appear in CSP. No D1/R2 bindings were
+provisioned.
+
+Chrome DevTools measured Home desktop LCP 270ms / TTFB 58ms / CLS 0. Four
+Workbench mobile cold traces at 4× CPU / Fast 4G measured LCP between 1.739s
+and 2.994s with CLS 0; three were under 2.5s, while the outlier had 1.184s
+document TTFB. Lighthouse's only failed audit was external Sites/Cloudflare
+challenge-script API deprecations (AUD-356). CrUX data is unavailable.
+`quality/STEP_45_EVIDENCE.md`, `audit/RUNTIME_AUDIT.md`, and
+`quality/evidence/step-45/public-v37/` contain the evidence.
+
+Step 45 remains incomplete: 210 findings have local fixes but await their own
+deployed checks (25 High, 178 Medium, 7 Low). The broader product-hardening
+programme is not complete, and no release-complete claim is made.
