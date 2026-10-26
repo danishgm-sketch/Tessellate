@@ -1,9 +1,11 @@
 import { useDialogFocus } from '@tessellate/ui';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { X, RefreshCw, Check, Sparkles, Zap, Award } from 'lucide-react';
 import { isGoldResource } from '@tessellate/catalog/gold';
 import { NodeRenderer } from '@tessellate/renderer';
 import { runtimeVariant } from '@tessellate/compatibility';
+import { loadActiveCatalog } from '../../mutations/runtime-catalog.js';
+import { useRuntimeCatalogStatus } from '../useRuntimeCatalogStatus.js';
 import type { ResourceManifest } from '@tessellate/schemas';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import {
@@ -46,10 +48,15 @@ export const ReplaceDrawer: React.FC = () => {
   const manifest = useWorkbenchStore((state) => state.manifest);
   const selectedNodeId = useWorkbenchStore((state) => state.selectedNodeId);
   const replaceNodeWithResource = useWorkbenchStore((state) => state.replaceNodeWithResource);
+  const catalogStatus = useRuntimeCatalogStatus();
 
   const [activeTab, setActiveTab] = useState<'compatible' | 'alternatives'>('compatible');
 
   const dialogRef = useDialogFocus<HTMLElement>(isReplaceDrawerOpen,closeReplaceDrawer);
+
+  useEffect(() => {
+    if (isReplaceDrawerOpen) void loadActiveCatalog().catch(() => undefined);
+  }, [isReplaceDrawerOpen]);
 
   if (!isReplaceDrawerOpen || !selectedNodeId) return null;
 
@@ -90,7 +97,7 @@ export const ReplaceDrawer: React.FC = () => {
               : 'text-zinc-400 hover:text-zinc-200'
           }`}
         >
-          Compatible Candidates ({replaceCandidates.length})
+          Compatible Candidates ({catalogStatus === 'ready' ? replaceCandidates.length : '…'})
         </button>
         <button
           type="button"
@@ -101,7 +108,7 @@ export const ReplaceDrawer: React.FC = () => {
               : 'text-zinc-400 hover:text-zinc-200'
           }`}
         >
-          Alternatives & Variants ({alternativeCandidates.length})
+          Alternatives & Variants ({catalogStatus === 'ready' ? alternativeCandidates.length : '…'})
         </button>
       </div>
 
@@ -109,7 +116,11 @@ export const ReplaceDrawer: React.FC = () => {
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {activeTab === 'compatible' && (
           <>
-            {replaceCandidates.length === 0 ? (
+            {catalogStatus === 'loading' || catalogStatus === 'idle' ? (
+              <div role="status" className="p-8 text-center text-xs text-zinc-300">Loading compatible candidates from the verified catalogue…</div>
+            ) : catalogStatus === 'error' ? (
+              <div role="alert" className="p-8 text-center text-xs text-zinc-300 space-y-3"><p>The catalogue is unavailable. Replacement is paused; your project is unchanged.</p><button type="button" className="underline" onClick={() => void loadActiveCatalog().catch(() => undefined)}>Retry catalogue</button></div>
+            ) : replaceCandidates.length === 0 ? (
               <div className="p-8 text-center text-xs text-zinc-400">
                 No compatible candidate resources found matching the current semantic role and constraints.
               </div>
@@ -167,7 +178,11 @@ export const ReplaceDrawer: React.FC = () => {
 
         {activeTab === 'alternatives' && (
           <>
-            {alternativeCandidates.length === 0 ? (
+            {catalogStatus === 'loading' || catalogStatus === 'idle' ? (
+              <div role="status" className="p-8 text-center text-xs text-zinc-300">Loading alternatives from the verified catalogue…</div>
+            ) : catalogStatus === 'error' ? (
+              <div role="alert" className="p-8 text-center text-xs text-zinc-300 space-y-3"><p>The catalogue is unavailable. Alternatives are paused; your project is unchanged.</p><button type="button" className="underline" onClick={() => void loadActiveCatalog().catch(() => undefined)}>Retry catalogue</button></div>
+            ) : alternativeCandidates.length === 0 ? (
               <div className="p-8 text-center text-xs text-zinc-400">
                 No direct alternative relationships or variants available for this node.
               </div>

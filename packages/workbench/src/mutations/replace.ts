@@ -16,6 +16,9 @@ import {
 import {isScopeLocked} from '../utils/dna-helpers.js';
 import { findNodeById } from '../utils/tree-helpers.js';
 import { createHistoryOperation } from '../history/history-manager.js';
+import { getAvailableResources } from './runtime-catalog.js';
+
+export { getAvailableResources, setActiveCatalog } from './runtime-catalog.js';
 
 export interface ReplaceCandidate {
   resource: ResourceManifest;
@@ -31,16 +34,6 @@ export interface AlternativeCandidate {
   relationType: string;
   compatibilityScore: number;
   variant?: string;
-}
-
-let _activeCatalog: ResourceManifest[] = [];
-
-export function setActiveCatalog(catalog: ResourceManifest[]): void {
-  _activeCatalog = catalog.filter(isResourceComposerEligible);
-}
-
-export function getAvailableResources(): ResourceManifest[] {
-  return _activeCatalog;
 }
 
 /**

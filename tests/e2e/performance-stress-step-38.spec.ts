@@ -1,4 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
 import {
   ProjectManifestSchema,
   type ProjectManifest,
@@ -87,6 +88,15 @@ async function createLargeWorkbenchManifest(): Promise<ProjectManifest> {
   manifest.locks = [];
 
   return ProjectManifestSchema.parse(manifest);
+}
+
+function firstResourceNode(node: ProjectNode): ProjectNode | null {
+  if (node.resourceRef) return node;
+  for (const child of node.children) {
+    const found = firstResourceNode(child);
+    if (found) return found;
+  }
+  return null;
 }
 
 function countNodes(manifest: ProjectManifest) {
@@ -437,4 +447,150 @@ test('large Workbench project loads, navigates, and exports within local budgets
   expect(runtime.uncaughtExceptions).toEqual([]);
   expect(runtime.failedRequests).toEqual([]);
   expect(runtime.httpErrors).toEqual([]);
+});
+
+test('a saved Workbench project opens before catalogue resources are requested', async ({ page }, testInfo) => {
+  test.skip(
+    !testInfo.project.name.startsWith('sites-'),
+    'This startup regression is measured against the production-like Sites Worker.'
+  );
+
+  const fixturePath = path.resolve(process.cwd(), 'apps/site/public/data/showcases/showcase-playful-hr.json');
+  const manifest = ProjectManifestSchema.parse(JSON.parse(await readFile(fixturePath, 'utf8')));
+  manifest.id = `catalogue-loading-${testInfo.project.name}`;
+  manifest.name = 'Saved employee workspace';
+
+  const runtime = { consoleErrors: [] as string[], uncaughtExceptions: [] as string[], failedRequests: [] as string[], httpErrors: [] as Array<{ url: string; status: number }> };
+  page.on('console', (message) => { if (message.type() === 'error') runtime.consoleErrors.push(message.text()); });
+  page.on('pageerror', (error) => runtime.uncaughtExceptions.push(error.message));
+  page.on('requestfailed', (request) => runtime.failedRequests.push(`${request.url()} (${request.failure()?.errorText ?? 'unknown'})`));
+  page.on('response', (response) => { if (response.status() >= 400) runtime.httpErrors.push({ url: response.url(), status: response.status() }); });
+
+  await page.addInitScript((savedManifest) => {
+    const serialized = JSON.stringify(savedManifest);
+    localStorage.setItem(`tessellate_project_${savedManifest.id}`, serialized);
+    localStorage.setItem('tessellate_active_project', serialized);
+  }, manifest);
+
+  let releaseCatalogue!: () => void;
+  let catalogueRequests = 0;
+  const catalogueGate = new Promise<void>((resolve) => {
+    releaseCatalogue = resolve;
+  });
+  await page.route('**/data/catalog.json', async (route) => {
+    catalogueRequests += 1;
+    await catalogueGate;
+    await route.continue();
+  });
+
+  const startedAt = Date.now();
+  await page.goto(`/workbench?project=${manifest.id}`);
+  const shell = testInfo.project.name.includes('mobile')
+    ? page.getByTestId('mobile-workbench')
+    : page.getByTestId('workbench-shell');
+  await expect(shell).toBeVisible({ timeout: 5_000 });
+  await expect(page.getByRole('heading', { name: `Workbench: ${manifest.name}` })).toBeAttached();
+  const projectVisibleMs = Date.now() - startedAt;
+  const initialCatalogRequests = catalogueRequests;
+
+  expect(initialCatalogRequests, 'Opening a saved local project should not fetch the full catalogue.').toBe(0);
+  const axe = await new AxeBuilder({ page }).analyze();
+  expect(axe.violations.map((violation) => ({ id: violation.id, impact: violation.impact }))).toEqual([]);
+  await page.screenshot({
+    path: path.resolve(process.cwd(), `quality/evidence/step-38/after/catalogue-lazy-load/workbench-${testInfo.project.name}.png`),
+  });
+
+  if (!testInfo.project.name.includes('mobile')) {
+    await page.getByTestId('left-panel').getByRole('button', { name: 'Library', exact: true }).click();
+    await expect(page.getByTestId('library-tab').getByRole('status')).toContainText(/catalogue/i);
+    await expect.poll(() => catalogueRequests).toBe(1);
+    const resourceNode = firstResourceNode(manifest.screens[0]!.rootNode);
+    expect(resourceNode, 'The saved showcase fixture should include a rendered Gold resource.').not.toBeNull();
+    await page.locator(`[data-node-id="${resourceNode!.id}"]`).click();
+    await page.keyboard.press('r');
+    const replacement = page.getByRole('dialog', { name: 'Replace Resource' });
+    await expect(replacement).toBeVisible();
+    await expect(replacement.getByRole('status')).toContainText(/loading compatible candidates/i);
+    await page.screenshot({
+      path: path.resolve(process.cwd(), 'quality/evidence/step-38/after/catalogue-lazy-load/replacement-loading.png'),
+    });
+    releaseCatalogue();
+    await expect(replacement.getByText(/Loading compatible candidates/i)).toHaveCount(0);
+    await expect(replacement.getByText(/No compatible candidate resources found|Apply Replacement/).first()).toBeVisible({ timeout: 15_000 });
+    await replacement.getByRole('button', { name: 'Close Replace Drawer' }).click();
+    await expect(page.getByTestId('library-tab').getByText(/Gold runtime/i).first()).toBeVisible({ timeout: 15_000 });
+  }
+
+  releaseCatalogue();
+  const evidence = {
+    capturedAt: new Date().toISOString(),
+    route: page.url(),
+    viewport: page.viewportSize(),
+    project: { id: manifest.id, name: manifest.name },
+    timingsMs: { savedProjectVisible: projectVisibleMs },
+    initialCatalogRequests,
+    catalogRequestsAfterLibraryOpen: catalogueRequests,
+    axeViolations: axe.violations.map((violation) => ({ id: violation.id, impact: violation.impact, nodes: violation.nodes.length })),
+    runtime,
+    screenshot: `quality/evidence/step-38/after/catalogue-lazy-load/workbench-${testInfo.project.name}.png`,
+  };
+  const evidencePath = path.resolve(process.cwd(), `quality/evidence/step-38/after/catalogue-lazy-load/workbench-${testInfo.project.name}.json`);
+  await mkdir(path.dirname(evidencePath), { recursive: true });
+  await writeFile(evidencePath, `${JSON.stringify(evidence, null, 2)}\n`, 'utf8');
+  await testInfo.attach('Workbench catalogue startup evidence', { body: Buffer.from(JSON.stringify(evidence, null, 2)), contentType: 'application/json' });
+  expect(projectVisibleMs).toBeLessThan(5_000);
+  expect(runtime.consoleErrors).toEqual([]);
+  expect(runtime.uncaughtExceptions).toEqual([]);
+  expect(runtime.failedRequests).toEqual([]);
+  expect(runtime.httpErrors).toEqual([]);
+});
+
+test('a catalogue failure leaves a saved project intact and Library can retry', async ({ page }, testInfo) => {
+  test.skip(
+    testInfo.project.name !== 'sites-chromium',
+    'The failure and retry controls are exercised in the desktop editor; mobile startup is covered separately.'
+  );
+
+  const fixturePath = path.resolve(process.cwd(), 'apps/site/public/data/showcases/showcase-playful-hr.json');
+  const manifest = ProjectManifestSchema.parse(JSON.parse(await readFile(fixturePath, 'utf8')));
+  manifest.id = 'catalogue-loading-retry';
+  manifest.name = 'Saved project during catalogue failure';
+  await page.addInitScript((savedManifest) => {
+    const serialized = JSON.stringify(savedManifest);
+    localStorage.setItem(`tessellate_project_${savedManifest.id}`, serialized);
+    localStorage.setItem('tessellate_active_project', serialized);
+  }, manifest);
+
+  let catalogueRequests = 0;
+  await page.route('**/data/catalog.json', async (route) => {
+    catalogueRequests += 1;
+    if (catalogueRequests === 1) await route.fulfill({ status: 503, body: 'temporarily unavailable' });
+    else await route.continue();
+  });
+  await page.goto(`/workbench?project=${manifest.id}`);
+  await expect(page.getByTestId('workbench-shell')).toBeVisible({ timeout: 5_000 });
+  await expect(page.getByRole('heading', { name: `Workbench: ${manifest.name}` })).toBeAttached();
+  await page.getByTestId('left-panel').getByRole('button', { name: 'Library', exact: true }).click();
+  const library = page.getByTestId('library-tab');
+  await expect(library.getByRole('alert')).toContainText('The catalogue could not be loaded');
+  await expect(page.getByRole('heading', { name: `Workbench: ${manifest.name}` })).toBeAttached();
+  await page.screenshot({ path: path.resolve(process.cwd(), 'quality/evidence/step-38/after/catalogue-lazy-load/catalogue-error-retry.png') });
+
+  await library.getByRole('button', { name: 'Retry catalogue' }).click();
+  await expect(library.getByText(/Gold runtime/i).first()).toBeVisible({ timeout: 15_000 });
+  expect(catalogueRequests).toBe(2);
+  await expect(page.getByRole('heading', { name: `Workbench: ${manifest.name}` })).toBeAttached();
+
+  const evidence = {
+    capturedAt: new Date().toISOString(),
+    route: page.url(),
+    projectPreservedAcrossFailureAndRetry: manifest.id,
+    catalogueRequests,
+    firstFailure: { expected: 'HTTP 503', actual: 'Library shows a retryable catalogue-unavailable message' },
+    retry: { expected: 'HTTP 200', actual: 'Gold runtime resources are visible' },
+  };
+  const evidencePath = path.resolve(process.cwd(), 'quality/evidence/step-38/after/catalogue-lazy-load/catalogue-error-retry.json');
+  await mkdir(path.dirname(evidencePath), { recursive: true });
+  await writeFile(evidencePath, `${JSON.stringify(evidence, null, 2)}\n`, 'utf8');
+  await testInfo.attach('Workbench catalogue failure and retry evidence', { body: Buffer.from(JSON.stringify(evidence, null, 2)), contentType: 'application/json' });
 });

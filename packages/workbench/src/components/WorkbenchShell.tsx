@@ -15,8 +15,8 @@ import { BlendModal } from './blend/BlendModal.js';
 import { ReplaceDrawer } from './replace/ReplaceDrawer.js';
 import { AuditPanel } from './audit/AuditPanel.js';
 import { loadBrowserProject, createProjectSaver } from '../persistence/browser-session.js';
-import { setActiveCatalog } from '../mutations/replace.js';
-import { ResourceManifestSchema, ProjectManifestSchema, type ProjectManifest } from '@tessellate/schemas';
+import { loadActiveCatalog } from '../mutations/runtime-catalog.js';
+import { ProjectManifestSchema, type ProjectManifest } from '@tessellate/schemas';
 
 export function WorkbenchShell() {
   const activeMode = useWorkbenchStore((state) => state.activeMode);
@@ -63,20 +63,13 @@ export function WorkbenchShell() {
         setHistorySaveStatus('unavailable');
       }
     });
-    Promise.all([
-      loadBrowserProject(projectId),
-      fetch('/data/catalog.json').then(async response => {
-        if (!response.ok) throw new Error(`Catalogue HTTP ${response.status}`);
-        const payload = await response.json();
-        return ResourceManifestSchema.array().parse(payload.resources);
-      }),
-    ]).then(async ([loaded, catalog]) => {
+    loadBrowserProject(projectId).then(async (loaded) => {
       if (disposed) return;
       setDamagedRecords(loaded.damagedRecords);
       loaded.storageWarnings.forEach(addStorageWarning);
-      setActiveCatalog(catalog);
       if(showcaseId || resourceSlug){
         void (async()=>{
+          const catalog = await loadActiveCatalog();
           let imported;
           if(showcaseId){const response=await fetch(`/data/showcases/${encodeURIComponent(showcaseId)}.json`);if(!response.ok)throw new Error(`Showcase HTTP ${response.status}`);imported=ProjectManifestSchema.parse(await response.json());}
           else {const resource=catalog.find(item=>item.slug===resourceSlug);if(!resource || resource.status!=='verified-gold')throw new Error('This resource is outside the Gold composition runtime. Its source remains available on the resource page.');imported=composeProjectPipeline({description:'A local resource exploration project',visualAmbition:40,structuralCreativity:40},{catalogResources:catalog,seed:crypto.randomUUID()}).directionA.manifest;const screen=imported.screens[0]!;screen.name=resource.name;screen.rootNode={id:`resource-root-${crypto.randomUUID()}`,nodeType:'layout',semanticRole:'marketing-page',children:[{id:`resource-${crypto.randomUUID()}`,nodeType:'section',semanticRole:resource.roles[0]??'component',resourceRef:{id:resource.id,slug:resource.slug,version:resource.version},variant:resource.variants[0]?.id,children:[],slots:{},props:resource.preview.defaultProps??{}}],slots:{},props:{}};imported.screens=[screen];imported.navigation.primaryItems=[];imported.screenGraph.groups=imported.screenGraph.groups.map(group=>({...group,screens:group.screens.filter(node=>node.id===screen.id)}));imported.screenGraph.edges=[];imported.name=`Resource study — ${resource.name}`;}
@@ -105,6 +98,7 @@ export function WorkbenchShell() {
       }
       else if (projectId) throw new Error(`Project ${projectId} was not found in this browser.`);
       else if (loaded.damagedRecords.length===0) {
+        const catalog = await loadActiveCatalog();
         const starter=composeProjectPipeline({description:'An employee experience platform with people, teams, onboarding and policies. This is a sample local project.',feel:'professional but playful',visualAmbition:40,structuralCreativity:55,targetDevices:['desktop','tablet','mobile']},{catalogResources:catalog,seed:crypto.randomUUID()}).directionA.manifest;
         starter.name='Example employee workspace';
         setManifest(starter);
@@ -266,18 +260,18 @@ export function WorkbenchShell() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedNodeId, selectParentNode, undo, redo, setDevicePreset, setZoom, toggleNodeLock, openReplaceDrawer]);
 
-  if (loading) return <div role="status" className="p-8">Loading local project and verified catalogue…</div>;
+  if (loading) return <div role="status" className="p-8">Starting your workspace…</div>;
   if (damagedRecords.length) return <main className="p-8 space-y-4"><h1>Recover your local project</h1><p role="alert">A stored record could not be validated. Its original data has been preserved. Editing is paused to protect your work.</p>{damagedRecords.map((record,index)=><div key={index}><p>{record.reason}</p><a download={`recovered-record-${index}.json`} href={`data:application/json;charset=utf-8,${encodeURIComponent(record.raw)}`}>Export raw record {index+1}</a></div>)}<a href="/compose">Create a separate project</a></main>;
   if (storageError) return (
     <main id="workbench-main" className="min-h-screen bg-[#FAF9F6] px-4 py-10 text-[#111217] dark:bg-[#0B0D10] dark:text-[#F5F7FA] sm:px-8">
       <section className="mx-auto max-w-2xl space-y-4 rounded-xl border border-[#D9D6CF] bg-white p-6 shadow-sm dark:border-[#272C34] dark:bg-[#171B21] sm:p-8">
-        <p className="text-xs font-semibold uppercase tracking-wide text-[#62666F] dark:text-[#A8AFBA]">Local project recovery</p>
-        <h1 className="text-2xl font-bold tracking-tight">Local project needs attention</h1>
+        <p className="text-xs font-semibold uppercase tracking-wide text-[#62666F] dark:text-[#A8AFBA]">Workbench startup</p>
+        <h1 className="text-2xl font-bold tracking-tight">Workbench could not open</h1>
         <p role="alert" className="break-words rounded-lg border border-amber-300 bg-amber-50 p-3 text-sm text-amber-950 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100">{storageError}</p>
-        <p className="text-sm text-[#62666F] dark:text-[#A8AFBA]">No project was opened. Saved browser records were left unchanged. Open Compose or start a new local sample project.</p>
+        <p className="text-sm text-[#62666F] dark:text-[#A8AFBA]">Your browser project data has not been changed. Retry Workbench or open Compose to continue.</p>
         <div className="flex flex-wrap gap-3 pt-2">
           <a href="/compose" className="inline-flex min-h-10 items-center rounded-lg bg-[#2547E8] px-4 py-2 text-sm font-semibold text-white hover:bg-[#1E3CCD] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2547E8] dark:bg-[#6782FF] dark:text-[#0B0D10] dark:hover:bg-[#879DFF]">Open Compose</a>
-          <a href="/workbench/" className="inline-flex min-h-10 items-center rounded-lg border border-[#D9D6CF] px-4 py-2 text-sm font-semibold hover:bg-[#FAF9F6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2547E8] dark:border-[#272C34] dark:hover:bg-[#20252D]">Start a new local sample</a>
+          <a href={window.location.href} className="inline-flex min-h-10 items-center rounded-lg border border-[#D9D6CF] px-4 py-2 text-sm font-semibold hover:bg-[#FAF9F6] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2547E8] dark:border-[#272C34] dark:hover:bg-[#20252D]">Retry Workbench</a>
         </div>
       </section>
     </main>

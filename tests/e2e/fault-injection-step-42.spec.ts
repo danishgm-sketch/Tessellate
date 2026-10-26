@@ -140,11 +140,13 @@ test('a stale Workbench project link enters read-only recovery without creating 
   const runtime = observeRuntime(page);
   const staleId = `stale-step-42-${crypto.randomUUID()}`;
   await page.goto(`/workbench/?project=${encodeURIComponent(staleId)}`);
-  await expect(page.getByRole('heading', { name: 'Local project needs attention' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Workbench could not open' })).toBeVisible();
   await expect(page.getByRole('alert')).toContainText(`${staleId} was not found in this browser`);
   await expect(page.getByRole('link', { name: 'Export the current manifest' })).toHaveCount(0);
   await expect(page.getByRole('link', { name: 'Open Compose' })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Start a new local sample' })).toHaveAttribute('href', '/workbench/');
+  await expect(page.getByRole('link', { name: 'Retry Workbench' })).toHaveAttribute('href', new RegExp(`[?&]project=${encodeURIComponent(staleId)}(?:&|$)`));
+  await expect(page.getByTestId('workbench-shell')).toHaveCount(0);
+  expect(await page.evaluate(() => Object.keys(localStorage).filter((key) => key.startsWith('tessellate_project_')))).toEqual([]);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
   const axe = await new AxeBuilder({ page }).analyze();
   expect(axe.violations).toEqual([]);
@@ -157,7 +159,7 @@ test('a stale Workbench project link enters read-only recovery without creating 
     testInfo,
     'stale-project-safe-recovery',
     runtime,
-    { missingProjectReported: true, editingPaused: true, starterProjectNotCreated: true, unrelatedManifestExportNotOffered: true, axeViolations: 0, noHorizontalOverflow: true }
+    { missingProjectReported: true, editingPaused: true, starterProjectNotCreated: true, retryKeepsMissingProjectIdentity: true, unrelatedManifestExportNotOffered: true, axeViolations: 0, noHorizontalOverflow: true }
   );
 });
 
