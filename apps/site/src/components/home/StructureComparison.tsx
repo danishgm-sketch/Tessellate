@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export function StructureComparison() {
   const [layoutMode, setLayoutMode] = useState<'familiar' | 'cockpit' | 'spatial'>('familiar');
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => setHydrated(true), []);
 
   return (
     <section className="py-24 px-6 max-w-[1440px] mx-auto select-none border-t border-[#D9D6CF]">
@@ -17,16 +20,23 @@ export function StructureComparison() {
           user workflows demand deeper structural density.
         </p>
         <p className="text-sm text-[#62666F]">
-          Illustrative layout · no connected project. The selectors change this diagram only.
+          Illustrative layout · no connected project.{' '}
+          <span id="structure-comparison-status" aria-live="polite">
+            {hydrated
+              ? 'The selectors change this diagram only.'
+              : 'Diagram selectors become available after this example loads.'}
+          </span>
         </p>
 
         {/* Mode Selector */}
-        <div className="inline-flex p-1 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] gap-1">
+        <div className="flex w-full flex-wrap p-1 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] gap-1">
           <button
             type="button"
+            disabled={!hydrated}
+            aria-describedby="structure-comparison-status"
             aria-pressed={layoutMode === 'familiar'}
             onClick={() => setLayoutMode('familiar')}
-            className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all ${
+            className={`min-h-11 flex-1 basis-28 px-2 sm:px-4 py-2 text-xs font-semibold rounded-lg transition-all disabled:cursor-wait disabled:opacity-60 ${
               layoutMode === 'familiar'
                 ? 'bg-[#111217] text-white shadow'
                 : 'text-[#62666F] hover:text-[#111217]'
@@ -36,9 +46,11 @@ export function StructureComparison() {
           </button>
           <button
             type="button"
+            disabled={!hydrated}
+            aria-describedby="structure-comparison-status"
             aria-pressed={layoutMode === 'cockpit'}
             onClick={() => setLayoutMode('cockpit')}
-            className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all ${
+            className={`min-h-11 flex-1 basis-28 px-2 sm:px-4 py-2 text-xs font-semibold rounded-lg transition-all disabled:cursor-wait disabled:opacity-60 ${
               layoutMode === 'cockpit'
                 ? 'bg-[#111217] text-white shadow'
                 : 'text-[#62666F] hover:text-[#111217]'
@@ -48,9 +60,11 @@ export function StructureComparison() {
           </button>
           <button
             type="button"
+            disabled={!hydrated}
+            aria-describedby="structure-comparison-status"
             aria-pressed={layoutMode === 'spatial'}
             onClick={() => setLayoutMode('spatial')}
-            className={`px-4 py-2 text-xs font-semibold rounded-lg transition-all ${
+            className={`min-h-11 flex-1 basis-28 px-2 sm:px-4 py-2 text-xs font-semibold rounded-lg transition-all disabled:cursor-wait disabled:opacity-60 ${
               layoutMode === 'spatial'
                 ? 'bg-[#111217] text-white shadow'
                 : 'text-[#62666F] hover:text-[#111217]'
@@ -62,15 +76,15 @@ export function StructureComparison() {
       </div>
 
       {/* Wireframe Comparison Display */}
-      <div className="rounded-3xl border border-[#D9D6CF] bg-[#FAF9F6] p-6 sm:p-10">
-        <div className="aspect-[21/9] min-h-[300px] w-full rounded-2xl bg-white border border-[#D9D6CF] p-4 shadow-sm flex flex-col justify-between">
+      <div className="rounded-3xl border border-[#D9D6CF] bg-[#FAF9F6] p-4 sm:p-10">
+        <div className="aspect-[21/9] min-h-[460px] lg:min-h-[340px] w-full rounded-2xl bg-white border border-[#D9D6CF] p-3 sm:p-4 shadow-sm flex flex-col justify-between">
           {/* Top chrome bar */}
-          <div className="flex items-center justify-between pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[var(--text-muted)]">
-            <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#D9D6CF] text-xs font-mono text-[var(--text-muted)]">
+            <div className="flex min-w-0 items-center gap-2">
               <span className="h-2.5 w-2.5 rounded-full bg-[#C83D48]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#A66A15]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#177B55]" />
-              <span className="ml-2 font-semibold text-[#111217]">
+              <span className="ml-1 sm:ml-2 font-semibold text-[#111217] break-words">
                 {layoutMode === 'familiar' && 'LAYOUT GRAMMAR: STANDARD_SIDEBAR'}
                 {layoutMode === 'cockpit' && 'LAYOUT GRAMMAR: THREE_PANE_COCKPIT'}
                 {layoutMode === 'spatial' && 'EXPLORATORY LAYOUT: SPATIAL CANVAS'}
@@ -80,18 +94,18 @@ export function StructureComparison() {
           </div>
 
           {/* Dynamic Wireframe Body */}
-          <div className="flex-1 my-3 flex gap-3 overflow-hidden">
+          <div className="flex-1 my-3 flex flex-col lg:flex-row gap-3">
             {layoutMode === 'familiar' && (
               <>
                 {/* Standard sidebar */}
-                <div className="w-48 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-3 space-y-2">
+                <div className="w-full lg:w-48 shrink-0 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-3 space-y-2">
                   <div className="h-4 w-20 rounded bg-[#2547E8]" />
                   <div className="h-2 w-28 rounded bg-[#D9D6CF]" />
                   <div className="h-2 w-24 rounded bg-[#D9D6CF]" />
                   <div className="h-2 w-32 rounded bg-[#D9D6CF]" />
                 </div>
                 {/* Main central content */}
-                <div className="flex-1 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-4 space-y-3">
+                <div className="min-w-0 flex-1 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-4 space-y-3">
                   <div className="h-5 w-48 rounded bg-[#111217]" />
                   <div className="grid grid-cols-3 gap-3">
                     <div className="h-16 rounded bg-white border border-[#D9D6CF]" />
@@ -106,19 +120,19 @@ export function StructureComparison() {
             {layoutMode === 'cockpit' && (
               <>
                 {/* Three-pane layout */}
-                <div className="w-56 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-3 space-y-2">
+                <div className="w-full lg:w-56 shrink-0 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-3 space-y-2">
                   <div className="h-3 w-20 rounded bg-[#2547E8]" />
                   <div className="h-2 w-full rounded bg-[#D9D6CF]" />
                   <div className="h-2 w-full rounded bg-[#D9D6CF]" />
                   <div className="h-2 w-full rounded bg-[#D9D6CF]" />
                 </div>
-                <div className="flex-1 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-3 space-y-2">
+                <div className="min-w-0 flex-1 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-3 space-y-2">
                   <div className="h-4 w-32 rounded bg-[#111217]" />
                   <div className="h-44 rounded bg-white border border-[#D9D6CF] p-2 flex items-center justify-center font-mono text-xs text-[#2547E8]">
                     Example main content
                   </div>
                 </div>
-                <div className="w-64 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-3 space-y-2">
+                <div className="w-full lg:w-64 shrink-0 rounded-lg bg-[#FAF9F6] border border-[#D9D6CF] p-3 space-y-2">
                   <div className="h-3 w-24 rounded bg-[#111217]" />
                   <div className="h-16 rounded bg-white border border-[#D9D6CF]" />
                   <div className="h-24 rounded bg-white border border-[#D9D6CF]" />
@@ -127,7 +141,7 @@ export function StructureComparison() {
             )}
 
             {layoutMode === 'spatial' && (
-              <div className="flex-1 rounded-lg bg-[#111217] p-6 relative overflow-hidden flex items-center justify-center">
+              <div className="min-h-52 flex-1 rounded-lg bg-[#111217] p-6 relative overflow-hidden flex items-center justify-center">
                 {/* Node cluster */}
                 <div className="absolute top-6 left-12 p-3 rounded-xl bg-white/10 border border-white/20 text-white font-mono text-xs">
                   Brief
@@ -152,7 +166,7 @@ export function StructureComparison() {
           </div>
 
           {/* Footer stats */}
-          <div className="flex justify-between items-center pt-2 text-[11px] font-mono text-[#62666F]">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 pt-2 text-[11px] font-mono text-[#62666F]">
             <span>
               {layoutMode === 'familiar' &&
                 'Best for: Executive Dashboards, Settings, Documentation'}
