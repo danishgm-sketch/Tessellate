@@ -282,3 +282,35 @@ verification. AUD-352 and the other waiting findings remain fixed-awaiting
 deployed verification for the exact approved review deployment and its
 issue-specific re-audit; the 48-step
 programme is not complete.
+
+Current Step 45 continuation (2026-10-26; supersedes earlier v30/v35 status
+notes): the owner-approved public v32 is the live Site at
+https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ and is built from
+canonical source `4eca97890e2d8182bcd72edfe5659997d4317c21`. No D1/R2 bindings
+are provisioned. The public v32 route sweep covers 31 routes at 1440×900 and
+390×844 (62 captures). Every route returned HTTP 200 without overflow,
+uncaught exceptions, failed requests, unexpected HTTP statuses, or preview
+timeouts. All remain classified DEGRADED because the Sites host injects an
+inline script that strict CSP blocks (AUD-342); no CSP relaxation was made.
+
+The visible v32 employee flagship journey completed at desktop and mobile:
+all three directions; exact C handoff; DNA overrides and reload; locked KPI
+preservation through recomposition and Surprise Me; Gold resource replacement;
+exact undo/redo; manifest export; and standalone 33-file React ZIP clean
+install/build/browser checks. No unresolved roles or resource placeholders,
+uncaught application errors, failed requests, or HTTP errors were observed.
+Each Playwright run records three blocked host-injected CSP console errors,
+so the final zero-console gate fails. Live Axe scans cover Home, Explore,
+Compose, resource detail, and the generated Direction C Workbench at both
+viewports with zero automated violations; Axe incomplete/manual checks remain
+and no blanket WCAG conformance claim is made. Actual full previews confirm
+three distinct desktop structures: sidebar, top navigation, and rail with a
+two-column workspace. See `quality/STEP_45_EVIDENCE.md` and
+`quality/evidence/step-45/public-v32/`.
+
+Findings AUD-351 (clipped homepage preset) and AUD-353 (onboarding recipe copy)
+are fixed locally and still await verification on a later approved Site
+version. AUD-342 is a host-side constraint that cannot be fixed in the source
+without weakening the current policy; it remains open pending a Sites platform
+fix or an explicit security decision. Step 45 and the 48-step product
+hardening programme remain incomplete. The public review Site is unchanged.

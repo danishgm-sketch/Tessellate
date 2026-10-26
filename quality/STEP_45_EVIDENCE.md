@@ -298,3 +298,53 @@ chunk-size warning; the measured gzip route budgets pass. The public v32 site is
 unchanged. AUD-353, AUD-351 and AUD-342 still need exact-version deployed
 verification, and the complete flagship, accessibility and standalone-export
 re-audit is outstanding.
+
+### Public v32 direction and flagship re-audit — 2026-10-26
+
+The deployed direction review opened all three full previews from the visible
+Compose UI at 1440×900 and 390×844. The compact cards initially looked
+structurally alike at their narrow responsive width, but the full previews
+proved that no direction-generation defect exists: A renders a 220px sidebar,
+B a horizontal top bar, and C a 180px rail with a two-column dashboard table
+and activity stream. At 390px the content stacks without document overflow.
+Each screen uses resolvable Gold resources and has zero unresolved required
+roles. Machine measurements and six full-preview screenshots are in
+`quality/evidence/step-45/public-v32/directions-{desktop,mobile}-full/`; the
+review summary is `quality/evidence/step-45/public-v32/DIRECTION_REVIEW.md`.
+
+The exact flagship brief was entered through the live UI at desktop 1440×900
+and mobile 390×844. Catalogue readiness was visible before Compose. All three
+directions rendered; Direction C opened Workbench with the same project ID and
+seven-screen manifest. The UI retained onboarding and settings DNA overrides
+after reload, kept the dashboard KPI subtree (node
+`node-screen-overview-metric-cards-3`, SHA-256
+`34f785dbb7562f5287b16b0091ec14785cded809132af918562e1ea4b239a8ce`) through
+95% recomposition and Surprise Me, replaced the activity feed with Gold
+`notification-centre`, and restored exact snapshots through undo/redo. The
+33-file standalone React ZIP installed in a clean directory, built, and ran
+in a browser at desktop and mobile widths; it contains no `@tessellate/*`
+runtime dependency. Machine records and exported ZIPs are under
+`quality/evidence/step-45/public-v32/flagship/`.
+
+Both browser journeys completed every product action with zero uncaught app
+exceptions, failed requests, or HTTP errors. Each run recorded three blocked
+inline-script CSP console errors injected by Sites (AUD-342), so the strict
+zero-console-error release gate is not met. This is a hosting constraint; no
+application CSP relaxation was added. The Playwright run is recorded as failed
+at that final console assertion rather than reported as a clean pass.
+
+An Axe scan against the live v32 Site covered Home, Explore, representative
+resource detail, Compose ready state, and the generated Direction C Workbench
+at both viewports. It found zero automated violations across these ten
+route/view captures, including zero serious or critical findings. The scans
+also recorded Axe `incomplete` checks for manual review; this is not a claim of
+full WCAG 2.2 AA conformance. No app exception, failed request, or HTTP error
+occurred during the Axe scans. See the repeatable spec/config and JSON/screen
+records in `quality/evidence/step-45/public-v32/a11y/`.
+
+The wider route sweep remains 31 routes × two viewports, all HTTP 200 and no
+overflow, uncaught exceptions, failed requests, unexpected HTTP statuses or
+preview timeouts. Every route is still classified DEGRADED because of
+AUD-342. Public v32 also still has AUD-351’s clipped third homepage preset and
+AUD-353’s stale onboarding copy; both have local fixes but await a later
+approved Site version. The public RC is not accepted.

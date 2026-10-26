@@ -1,0 +1,44 @@
+{
+  "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=proj-direction-c-8814eece319643b09fffddda63d2ca42dirc",
+  "projectId": "proj-direction-c-8814eece319643b09fffddda63d2ca42dirc",
+  "selectedDirection": "C",
+  "screens": [
+    "Marketing Home",
+    "Team Overview",
+    "People Directory",
+    "Teams",
+    "Engagement",
+    "Onboarding",
+    "Settings & Policies"
+  ],
+  "lockedNode": {
+    "id": "node-screen-overview-metric-cards-3",
+    "subtreeSha256": "34f785dbb7562f5287b16b0091ec14785cded809132af918562e1ea4b239a8ce",
+    "resource": "dashboard-kpi-grid"
+  },
+  "replacement": {
+    "nodeId": "node-screen-overview-activity-feed-5",
+    "resource": "notification-centre"
+  },
+  "undoRedo": "surprise, replacement and recomposition restored exactly through exported manifests",
+  "standaloneZip": {
+    "filename": "adaptive-architecture-employee-experience.zip",
+    "files": 33,
+    "builtAndBrowsed": false
+  },
+  "screenshot": "quality\\evidence\\step-45\\public-v32\\flagship\\employee-workbench-mobile-390.png",
+  "consoleErrors": [
+    "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-hJ+K5wc80hiVQqRihh8bjx3CLzcFYPGCDsFK1nMjVPo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-R4BV6+9MTkZOVCTsSDR0kzKpCMY7XG7RNK0nNIxemeo='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked.",
+    "Executing inline script violates the following Content Security Policy directive 'script-src 'self' 'sha256-1BvDVWLr3QCC20uHhUDi27eDFVJpk1uMQJGIWKUks2I=' 'sha256-UIrFqcaitjA3OKa9mHKajg3N+0Y7tW9+y0o3QmMFeZQ=' 'sha256-0O7iB6zr9x0r6X6eWYITC9V5q+yWCGAoFvcysBGbY9Q=' 'sha256-xIb/Pa7FUshAu4ihwjchYcQpyCI8eS8kt40GpOAYCz8=' 'sha256-Y8t0ntteBwH+PqGKUyjWW3CAk+BNJKSoQc0xZ68FjhM=''. Either the 'unsafe-inline' keyword, a hash ('sha256-HOlcOXuKUNtxEdoukmkCky3cX+pYV8QjYkLQIDg4obs='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+  ],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": []
+}
