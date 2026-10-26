@@ -343,3 +343,30 @@ about which version is currently published.
 Step 45 remains incomplete: 210 findings have local fixes but await their own
 deployed checks (25 High, 178 Medium, 7 Low). The broader product-hardening
 programme is not complete, and no release-complete claim is made.
+
+## Latest continuation — 2026-10-26, public Sites v39
+
+The current public review Site is v39, deployed as
+`appgdep_6adfddd3ee18819186f51d6ae8069741` from Sites mirror
+`3831c70ea17200b93eb4b18b2e537c1da418f597`, with application code captured
+from canonical source `0c9e3910466626f16a545a65eb4570959023a936`. The targeted
+mobile documentation overflow finding AUD-357 is closed after deployed checks
+at 390×844 and 1440×900; the exact measurements and screenshot are recorded in
+`audit/RUNTIME_AUDIT.md` and `quality/evidence/step-45/public-v39/`.
+
+Chrome DevTools MCP is now available, so the earlier pause on trace-based
+performance measurement has ended. A cold homepage trace measured desktop
+LCP 1,484ms / TTFB 61ms / CLS 0 and mobile LCP 1,741ms / TTFB 56ms / CLS 0
+under the recorded synthetic Fast 3G and CPU conditions. Lighthouse returned
+100 accessibility on desktop and mobile; Best Practices was 81 because of
+three Sites/Cloudflare challenge-script deprecation messages, tracked as
+AUD-356. CrUX field data and INP are unavailable. Chrome found an unattributed
+99ms forced reflow with no top-level caller and no estimated savings; the
+render-blocking insight also estimated zero LCP/FCP savings, so no performance
+change is justified by this trace. See
+`quality/evidence/step-45/public-v39/homepage-performance.json`.
+
+This is not a full Step 45 re-audit: v37 remains the latest broad route,
+flagship, Axe, and export checkpoint. The 210 locally fixed findings still
+await issue-specific deployed checks (25 High, 178 Medium, 7 Low). Step 45 and
+the product-hardening release gate remain open.

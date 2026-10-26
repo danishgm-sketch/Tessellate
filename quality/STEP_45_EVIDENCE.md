@@ -1,6 +1,6 @@
 # Step 45 — Public review verification
 
-Status: in progress. Public Site v37 is live at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`. The deployed version source mirror is `c2cd798a3b253a80395febea1f61ab2dd71ca347`, with application code captured from canonical source `e08c34021bcf13fbe603f86803cb4d7f7eb443b8`. The earlier v32 and saved v35 material below is retained as history and is superseded by the v37 deployed check. v37 closes AUD-337, AUD-342–345, and AUD-347–355 with issue-specific browser evidence; AUD-356 documents an external Cloudflare Lighthouse warning. Step 45 and the product-hardening programme remain open.
+Status: in progress. Current public Site v39 is live at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`, deployed as `appgdep_6adfddd3ee18819186f51d6ae8069741` from Sites mirror `3831c70ea17200b93eb4b18b2e537c1da418f597`, serving application code captured from canonical source `0c9e3910466626f16a545a65eb4570959023a936`. The broader v37 route, flagship and Axe evidence remains the latest full-scope checkpoint; the v39 targeted documentation recheck closes AUD-357 only. The earlier v32, saved v35 and v37 material below is retained as history. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
 
 ## Public v37 deployed audit
 
@@ -395,3 +395,33 @@ Sites version history shows v32 as the latest successful publish (source 5533d10
 Desktop Lighthouse on Home, Explore, Compose, Workbench, and /r/advanced-data-table scored 100 accessibility, 92 best practices, 100 SEO and 100 agentic browsing on each route. Every route failed errors-in-console and inspector-issues because of the dynamic CSP bootstrap tracked as AUD-342. Workbench also reproduced AUD-350 label-content-name-mismatch on the visible laptop switch; local source and desktop/mobile Axe regressions contain the fix, but the deployed v32 Site predates it. The machine-readable trace, Lighthouse, console and network summary is quality/evidence/step-45/performance/public-v32-traces.json. The public Site remains unchanged; AUD-342, AUD-350 and the new local AUD-354/AUD-355 fixes await verification on a newly published source-complete version.
 
 The live Workbench screenshot was inspected at 1440x900. It shows the full editor, tree, canvas, inspector, command bar, viewport controls and the visible laptop Lab Off label; it also confirms that the hosting Site returns a truthful Backend offline state when no laptop backend binding is configured.
+
+## Current public v39 targeted recheck — 2026-10-26
+
+Sites v39 is the current public review deployment. On the changed documentation
+route, Chrome DevTools verified `/docs/product-hardening/` at 390×844 and
+1440×900. Both responses were HTTP 200; document/article widths matched their
+available widths, with no overflowing prose/list items or out-of-viewport
+inline code. There were zero failed essential requests, application console
+errors, or uncaught exceptions. Three injected Sites/Cloudflare deprecation
+messages remain AUD-356. The mobile capture and machine measurements are in
+`quality/evidence/step-45/public-v39/docs-product-hardening-mobile-390.png` and
+`quality/evidence/step-45/public-v39/docs-product-hardening-live.json`.
+AUD-357 is closed after this issue-specific deployed check.
+
+The homepage received a fresh performance smoke on the same deployed version.
+Cold desktop (1440×900, Fast 3G, 1× CPU) measured LCP 1,484ms, TTFB 61ms,
+render delay 1,423ms, and CLS 0.00. Cold mobile (390×844, Fast 3G, 4× CPU)
+measured LCP 1,741ms, TTFB 56ms, render delay 1,685ms, and CLS 0.00. Both
+single lab LCP readings are below the 2.5-second good threshold, but no field
+CrUX data or INP result is available. Lighthouse returned 100 accessibility,
+SEO and agentic browsing scores and 81 Best Practices at both viewports; its
+only failed audit was the three injected host challenge-script deprecation
+messages already tracked as AUD-356. Chrome reported one unattributed 99ms
+forced reflow and no estimated savings. The 29 desktop requests had no failed
+application requests or errors. No code change was justified by these results.
+Full data: `quality/evidence/step-45/public-v39/homepage-performance.json`.
+
+This is an issue-specific recheck plus a homepage performance baseline, not a
+repeat of the full route/flagship/export audit. The v37 broad audit remains the
+latest full-scope evidence; Step 45 and the release gate are still incomplete.
