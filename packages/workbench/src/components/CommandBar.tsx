@@ -207,7 +207,6 @@ export function CommandBar() {
         type="button"
         data-testid="lab-model-toggle"
         role="switch"
-        aria-label="Laptop model Lab"
         aria-checked={labModelEnabled}
         aria-describedby="lab-model-description"
         disabled={!hostHealth?.hostOnline || isProcessing || pendingLabProposal !== null}

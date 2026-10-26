@@ -52,7 +52,7 @@ export const ReplaceDrawer: React.FC = () => {
 
   const [activeTab, setActiveTab] = useState<'compatible' | 'alternatives'>('compatible');
 
-  const dialogRef = useDialogFocus<HTMLElement>(isReplaceDrawerOpen,closeReplaceDrawer);
+  const dialogRef = useDialogFocus<HTMLDivElement>(isReplaceDrawerOpen,closeReplaceDrawer);
 
   useEffect(() => {
     if (isReplaceDrawerOpen) void loadActiveCatalog().catch(() => undefined);
@@ -64,8 +64,8 @@ export const ReplaceDrawer: React.FC = () => {
   const alternativeCandidates = getAlternativeCandidates(manifest, selectedNodeId);
 
   return (
-    <aside
-      ref={dialogRef as React.Ref<HTMLElement>} tabIndex={-1}
+    <div
+      ref={dialogRef as React.Ref<HTMLDivElement>} tabIndex={-1}
       role="dialog"
       aria-modal="true"
       aria-label="Replace Resource"
@@ -132,9 +132,9 @@ export const ReplaceDrawer: React.FC = () => {
                 >
                   <div>
                     <div className="flex items-start justify-between gap-2">
-                      <h4 className="text-xs font-semibold text-zinc-200">
+                      <h3 className="text-xs font-semibold text-zinc-200">
                         {cand.resource.name}
-                      </h4>
+                      </h3>
                       <span className="rounded bg-indigo-950/60 border border-indigo-800/60 px-1.5 py-0.5 text-[10px] font-mono font-bold text-indigo-300">
                         {cand.compatibilityScore}% fit
                       </span>
@@ -194,9 +194,9 @@ export const ReplaceDrawer: React.FC = () => {
                 >
                   <div>
                     <div className="flex items-start justify-between gap-2">
-                      <h4 className="text-xs font-semibold text-zinc-200">
+                      <h3 className="text-xs font-semibold text-zinc-200">
                         {alt.resource.name} {alt.variant && `(${alt.variant})`}
-                      </h4>
+                      </h3>
                       <span className="rounded bg-zinc-800 px-1.5 py-0.5 text-[10px] font-mono text-zinc-300">
                         {alt.relationType}
                       </span>
@@ -221,6 +221,6 @@ export const ReplaceDrawer: React.FC = () => {
           </>
         )}
       </div>
-    </aside>
+    </div>
   );
 };

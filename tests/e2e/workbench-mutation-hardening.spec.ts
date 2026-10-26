@@ -212,7 +212,7 @@ test('layer duplicate, move, delete and history operate on the visible semantic 
   await page.getByTestId(duplicateRootId!).click();
 
   const beforeMove = await visibleLayerIds(page);
-  await page.getByRole('button', { name: 'Move selected layer down' }).click();
+  await page.getByRole('button', { name: 'Move down', exact: true }).click();
   const afterMove = await visibleLayerIds(page);
   expect(afterMove).not.toEqual(beforeMove);
   await page.getByRole('button', { name: 'Undo' }).click();

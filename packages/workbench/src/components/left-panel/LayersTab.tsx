@@ -94,10 +94,10 @@ function SelectedLayerActions({ screen, node }: { screen: ProjectScreen; node: P
         <button type="button" data-testid="duplicate-layer" disabled={!parentId || locked} title={disabledReason || 'Duplicate selected layer'} onClick={duplicate} className="inline-flex min-h-8 items-center gap-1 rounded border border-[#D9D6CF] dark:border-[#272C34] px-2 text-[11px] disabled:opacity-40">
           <Copy className="h-3 w-3" /> Duplicate
         </button>
-        <button type="button" aria-label="Move selected layer up" disabled={!parentId || locked || index <= 0} title={disabledReason || (index <= 0 ? 'This layer is already first among its siblings.' : 'Move selected layer up')} onClick={() => move(-1)} className="inline-flex min-h-8 items-center gap-1 rounded border border-[#D9D6CF] dark:border-[#272C34] px-2 text-[11px] disabled:opacity-40">
+        <button type="button" disabled={!parentId || locked || index <= 0} title={disabledReason || (index <= 0 ? 'This layer is already first among its siblings.' : 'Move selected layer up')} onClick={() => move(-1)} className="inline-flex min-h-8 items-center gap-1 rounded border border-[#D9D6CF] dark:border-[#272C34] px-2 text-[11px] disabled:opacity-40">
           <ArrowUp className="h-3 w-3" /> Move up
         </button>
-        <button type="button" aria-label="Move selected layer down" disabled={!parentId || locked || index < 0 || index >= siblings.length - 1} title={disabledReason || (index >= siblings.length - 1 ? 'This layer is already last among its siblings.' : 'Move selected layer down')} onClick={() => move(1)} className="inline-flex min-h-8 items-center gap-1 rounded border border-[#D9D6CF] dark:border-[#272C34] px-2 text-[11px] disabled:opacity-40">
+        <button type="button" disabled={!parentId || locked || index < 0 || index >= siblings.length - 1} title={disabledReason || (index >= siblings.length - 1 ? 'This layer is already last among its siblings.' : 'Move selected layer down')} onClick={() => move(1)} className="inline-flex min-h-8 items-center gap-1 rounded border border-[#D9D6CF] dark:border-[#272C34] px-2 text-[11px] disabled:opacity-40">
           <ArrowDown className="h-3 w-3" /> Move down
         </button>
         {!confirmDelete ? (

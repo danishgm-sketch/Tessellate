@@ -349,8 +349,8 @@ test('keyboard users can reorder Workbench layers without drag and drop', async 
     const candidate = items.nth(index);
     await candidate.focus();
     await page.keyboard.press('Enter');
-    const moveDown = page.getByRole('button', { name: 'Move selected layer down' });
-    if (await moveDown.isEnabled()) {
+    const moveDown = page.getByRole('button', { name: 'Move down', exact: true });
+    if (await moveDown.count() === 1 && await moveDown.isEnabled()) {
       movableId = await candidate.getAttribute('data-testid');
       break;
     }
@@ -359,7 +359,7 @@ test('keyboard users can reorder Workbench layers without drag and drop', async 
   const selected = page.getByTestId(movableId!);
   await expect(selected).toHaveAttribute('aria-selected', 'true');
   const orderBefore = await selected.evaluate((element) => Array.from(element.parentElement!.parentElement!.children).indexOf(element.parentElement!));
-  const moveDown = page.getByRole('button', { name: 'Move selected layer down' });
+  const moveDown = page.getByRole('button', { name: 'Move down', exact: true });
   await moveDown.focus();
   await page.keyboard.press('Space');
   await expect.poll(() => selected.evaluate((element) => Array.from(element.parentElement!.parentElement!.children).indexOf(element.parentElement!))).toBe(orderBefore + 1);
@@ -372,7 +372,7 @@ test('keyboard users can reorder Workbench layers without drag and drop', async 
     selectedLayer: await selected.getAttribute('data-testid'),
     beforeSiblingIndex: orderBefore,
     afterSiblingIndex: orderBefore + 1,
-    operation: 'keyboard focus Move selected layer down, Space',
+    operation: 'keyboard focus Move down, Space',
     preservedSelection: await selected.getAttribute('aria-selected'),
   }, null, 2)}\n`);
 });
