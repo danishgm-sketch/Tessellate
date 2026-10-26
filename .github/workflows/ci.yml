@@ -10,6 +10,12 @@ jobs:
   windows-host-secret-acl:
     runs-on: windows-latest
     steps:
+      # Public runtime evidence contains nested Playwright attachments whose
+      # paths exceed the Win32 default. Git must enable long paths before
+      # checkout creates the working tree.
+      - name: Enable long paths for Git
+        shell: pwsh
+        run: git config --global core.longpaths true
       - uses: actions/checkout@v7
       - name: Verify legacy laptop secret ACLs are restricted
         shell: pwsh
