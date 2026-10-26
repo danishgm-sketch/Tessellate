@@ -17,8 +17,9 @@ The workspace build orders `@tessellate/sites` after `@tessellate/site`, copies 
 Astro output into an ignored adapter asset directory and emits `dist/server` plus
 `dist/client` using the Cloudflare Vite plugin. The small Worker streams `ASSETS`
 responses and enforces CSP, nosniff, framing, referrer and permissions headers.
-During packaging, it hashes inline scripts and style elements across the 716
-public HTML pages. The app-shell policy allows only those exact script/style
+During packaging, it hashes inline scripts and style elements across the
+generated public HTML pages (the current local build emits 733 static pages).
+The app-shell policy allows only those exact script/style
 hashes; the separate style-attribute allowance remains because existing React
 and Astro output uses inline style attributes.
 Worker code does not host the canonical account or inference queue API. The Sites Vite
@@ -70,13 +71,14 @@ introduced. Sites billing is not exposed by the connector; no exact Sites tariff
 is asserted. This adapter adds no paid infrastructure outside Sites and preserves
 the repository's £20 maximum principle.
 
-## Latest main publication (2026-10-13)
+## Current review source
 
-The application source is taken from main commit
-`22f2961d10c76e9f4ff263965c9bd894f8ea3a9c`, including the expanded resource
-registry and multi-target exporter. Earlier audit application changes have not
-been overlaid on that newer source. Only this hosting adapter and the single
-stylesheet build option are retained.
+The published review is Site v30, sourced from canonical commit
+`2a201f4d13dbf5d2339994fd14dc2fe92c3e92ff` (Sites source commit
+`775af0c92354e8fdf33af60b8c0cc31b396c0ab6`). The canonical hardening branch
+continues to preserve the Astro + React application and this hosting adapter.
+The local fixes recorded as AUD-344 and AUD-345 are not in v30 and require a
+new saved Site version plus issue-specific deployed verification.
 
 The CPU Tree-GNN daemon cannot execute inside a Cloudflare Worker. The
 owner-operated Docker backend is documented in `../laptop-backend/README.md`.
@@ -86,9 +88,9 @@ Host control endpoints are never forwarded. Recognized deterministic commands
 remain local when offline; unsupported prompts are unavailable without changing
 the project. No hosted D1/R2 binding is provisioned by this extension.
 
-This publication updates the latest project for review. The prior V7 audit does
-not certify the newer main implementation; deployment smoke results are recorded
-in `LATEST_DEPLOYMENT.md`.
+The earlier V7 publication note is historical and does not describe the current
+review version. Current deployed checks and their exact limits are recorded in
+`quality/STEP_39_EVIDENCE.md` and `audit/RUNTIME_AUDIT.md`.
 
 ### Native asset routing difference
 

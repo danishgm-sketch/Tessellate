@@ -1,6 +1,6 @@
 # Sites review validation
 
-The canonical Astro application currently builds 718 static pages. React islands, deterministic composition, Workbench, the Gold registry, and standalone export remain the implementation used by the Sites adapter. The Worker wraps the Astro artifact; no wholesale rewrite was made.
+The canonical Astro application currently builds 733 static pages. React islands, deterministic composition, Workbench, the Gold registry, and standalone export remain the implementation used by the Sites adapter. The Worker wraps the Astro artifact; no wholesale rewrite was made.
 
 The architecture remains Astro/React/Hono/Better Auth with D1/R2-oriented packages. This review configuration uses browser persistence and does not require authentication. D1 and R2 bindings are unprovisioned; no new database, asset service, paid dependency, or secret persistence was introduced. The existing £20/month infrastructure ceiling remains in force.
 
@@ -14,7 +14,7 @@ The app embeds `/preview-content` directly for interactive resource details and 
 
 Preview CSP also explicitly sets `form-action 'none'`, and the app shell allows only same-origin form destinations. A desktop/mobile Playwright probe attempted to submit a field to an intercepted external collector: no request was emitted. Before the explicit directive was added, the opaque sandbox already blocked submission, but the header had no dedicated form-action rule. Registry admission now also rejects unresolved `action`, `formAction`, and `ping` props; shared link, button, and input primitives strip those forwarding props.
 
-The deployed review Site was probed on 2026-10-21 at 1440x900 and 390x844. It still serves the previous broad app-shell policy with unsafe-inline in script-src and style-src; a harmless injected inline script executed on the deployed home page. The local fix passes the desktop/mobile CSP suite and the full E2E suite, but this finding remains open until the fixed version is deployed and verified at the Step 45 release-candidate gate. See quality/evidence/step-37/site-shell-csp-hardening.json and audit/RUNTIME_AUDIT.md (AUD-268).
+Historical note: on 2026-10-21 the earlier deployed Site had a broad app-shell policy with unsafe-inline in script-src and style-src, and an injected inline script executed. The later public v30 deployment uses generated script and style hashes; the desktop/mobile CSP checks pass and AUD-268 is closed after deployed verification. The remaining hosting limitation is AUD-342: a Sites-injected inline bootstrap is blocked by the strict app-shell CSP and emits one console error per route. The policy remains strict; no unsafe-inline exception was added. See `quality/evidence/step-37/site-shell-csp-hardening.json`, `quality/STEP_37_EVIDENCE.md`, and `audit/RUNTIME_AUDIT.md`.
 
 ## Current local verification
 
