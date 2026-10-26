@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Deployed public Site v28 route, responsive, tool, direction and flagship audit; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45. Step 19 added AUD-152–155 from local visible Workbench checks. Step 20 added AUD-156 after mobile UI testing found hidden structural-action feedback. Step 21 added AUD-157 after desktop/mobile Workbench testing found that undo/redo history disappeared after reload; the local fix is verified and public review verification remains pending for Step 45. AUD-158 was added after the browser regression showed Blend overwrote source-project undo snapshots; owner-scoped snapshot IDs now keep the source project intact, verified locally and pending Step 45 review-site confirmation. Step 22 added AUD-159–164 from desktop/mobile Workbench storage fault-injection; all six are fixed and locally browser-verified, with deployed verification pending for Step 45. Step 23 added AUD-165 after the standalone export regression showed that authored quote/markup text could break the clean Vite build; the encoded JSX fix and all 300 benchmark direction exports pass locally, with public verification pending for Step 45. Step 24 added AUD-166 after the UI review found the promised agent handoff package absent and the generator output incomplete; the seven-file contract, keyboard download, manifest parity and desktop/mobile runtime checks now pass locally, with public review verification pending for Step 45. Step 24 added AUD-167–174 after the fresh employee-experience runtime review exposed brand, CTA, screen-content, duplicate-navigation, and inert-control defects; all eight are locally verified after red-to-green unit and desktop/mobile Preview regressions. AUD-175 records a standalone-export navigation mismatch fixed by a clean-install/build/browser regression. Published review verification for all these local fixes remains pending for Step 45. Step 39 added AUD-179–189 for AI resource copy, data, keyboard, state, and visual defects; local Sites Worker regressions now pass, with deployed checks pending. Step 39 added AUD-190 after screenshots showed an unqualified manifest status label; the header now identifies it as manifest status, with a red-to-green desktop/mobile regression. Deployment verification remains pending. Step 39 added AUD-191–195 after a real desktop/mobile browser check of the deployed review Site found unsupported social proof, inert CTAs, and a static sample presented as live Workbench/certification status. Local Sites Worker regressions pass; these fixes await public redeployment. Step 39 added AUD-196–206 from the deployed homepage copy review and local visual checks. Local corrections qualify audit, agent, compatibility, creator, and export claims; fix mobile overlap in resource and Workbench examples; and remove an unmeasured compose-time promise. The refreshed Sites Worker regression passes 24/24 desktop/mobile cases. All new fixes await review-Site verification. Step 39 added AUD-207–210 after a deployed desktop/mobile Section Planner review found invented template claims, a clipboard action labeled as export, a misleading telemetry label, and incorrect singular grammar. Five template JSON outputs and planner controls now pass local desktop/mobile browser regressions (26/26 copy suite plus the planner interaction suite); deployed verification remains pending. Step 39 tool review added AUD-217–228 from desktop/mobile deployed evidence across Accessibility, Background, Data Visualisation, Motion, Palette, Design DNA, Layout Composer and Tools Hub; local copy and state corrections await deployed verification. AUD-229 records the deployed Design DNA reset state failure; the local state regression passes and public verification remains pending. Step 39 added AUD-236–261 from deployed desktop/mobile resource previews and detail routes covering accessibility/compliance/security claims, sample success states, inactive actions, motion semantics, AI examples, palette scope, declared metadata, and the Success State contrast failure. AUD-262 records the 360px Inline AI Rewrite preview overflow reproduced in the Sites Worker and fixed with a focused responsive regression. AUD-263 records evidence-gated accessibility/quality metadata; AUD-264 reproduces and fixes clipped resource accessibility statuses at 390px. These local fixes await public re-verification. Step 38 added AUD-266 after local browser evidence found three sandboxed resource previews mounting below the initial viewport; the visibility gate now defers those frames until visible and verifies scroll-to-render on desktop/mobile. Public review verification remains pending. AUD-267 records a local Sites Worker preview regression found during Step 37 security/runtime validation; its fix is locally verified and public verification remains pending for Step 45. Step 37 added AUD-268: the deployed app-shell CSP accepted arbitrary inline script execution; the local Sites Worker now uses build-certified inline script/style hashes and the red-to-green browser regression passes. Live verification remains pending for Step 45. AUD-274 records the local preview-navigation probe and registry-gate remediation; the request was intercepted locally and public Site verification remains pending. AUD-275 records the Sites Worker reproduction where sandboxed PreviewHost rejected same-origin host updates; the fix passes local state, variant, accessibility, typecheck, unit, and audit checks, with deployed verification pending. AUD-276 fixed nested Window and Document.defaultView fetch aliases; AUD-277 fixed renamed destructured Window/Document proxy aliases. Twenty-three Window/Document alias and callback-transfer forms are rejected across fetch, WebSocket, XMLHttpRequest, EventSource, and sendBeacon, including bare global fetch. Resource code is denied static access to these network capabilities regardless of receiver. Resource source was analyzed, not executed, and release-candidate verification remains pending. Step 39 added AUD-301–304 for deployed metrics and testimonial truth issues; AUD-305 records the high Zod advisory and missing collection bounds, fixed locally and awaiting full gate verification. AUD-307 records the MCP SDK dependency audit failure for body-parser@2.3.0 and the patched 2.4.0 workspace override. Step 40 added AUD-306 after the built Sites Worker visual audit found the mobile homepage composer below the first viewport; the local responsive fix and red-to-green regression are recorded under quality/evidence/step-40/. Public review verification remains scheduled for the release-candidate phase. Step 40 additionally records AUD-308, where the documentation index glob resolved one parent above the repository; the root index therefore exposed only its hard-coded registry guide. The four-level path fix restores all 15 repository Markdown pages and their static detail routes, verified by a red-to-green browser test at desktop and mobile. Expanded visual route evidence covers 31 paths at 1440x900 and 390x844. Step 40 also records AUD-309: the Activity Feed resource displayed fabricated people, revision and PR identifiers, and a validation count without a sample label. Static events are now clearly labeled and the fabricated identifiers are removed; a unit regression and desktop/mobile Sites Worker iframe test pass. The final visual capture covers 33 routes at 1440x900 and 390x844. Step 41 adds AUD-310 for timestamp-dependent source export and AUD-311 for the missing visible Workbench manifest import; both are fixed and verified locally across UI, CLI, MCP and the local Sites Worker, with public review verification pending for Step 45. The Step 41 dependency gate also found AUD-312 (vulnerable undici 7/8 lines; high) and AUD-313 (vulnerable fast-uri 3 line; moderate); targeted patched-version overrides clear the dependency audit locally, with full gate and public review verification pending. Step 42 fault injection adds AUD-314: a missing Workbench project route offered an unrelated initial-sample manifest export; the recovery action is removed and red-to-green desktop/mobile Sites Worker evidence is recorded in quality/STEP_42_EVIDENCE.md. Public review verification remains pending. Step 38 added AUD-320 after a browser regression found Explore results disappeared and preview frames were torn down during the search debounce; the fix and desktop/mobile regression pass locally, with published review verification pending. AUD-321 records a stale zero-results message during query debounce; the empty-result pending state and its Sites Worker regression now pass locally, with deployed verification pending. Latest live v25 dark-theme Gold-resource scan records 17 contrast failures at desktop and mobile (AUD-140); local source remediation now passes all-40 desktop/mobile contrast and Axe regressions and awaits a newly published Site. AUD-334 records the v25 mobile Explore hydration dead-control reproduction and local fix; see the dedicated evidence in audit/evidence/v25/mobile-filter-hydration/. The issue remains open until the revised Site is deployed and rechecked. Public v26 verification closes AUD-140 and AUD-334. The v26 deployed runtime audit found AUD-335, a homepage demo control enabled before its React island hydration; a local fix and desktop/mobile regression pass are recorded, pending deployed verification. AUD-339 records the public v28 resource-preview iframe navigation reproduced on desktop and mobile; its stable-src/postMessage fix is locally verified and remains pending a targeted deployed interaction recheck. Sites v30 closes AUD-274; AUD-342 records a medium host-injected CSP console error blocked by the strict policy.",
+  "scope": "Deployed public Site v28 route, responsive, tool, direction and flagship audit; Site v16-v20 catalogue, resource and renderer audits; plus local built-site, Workbench/Preview, Sites Worker and clean standalone-export verification. Site v20 closes AUD-088–099. AUD-100 records a moderate desktop Axe heading-order issue in an isolated AI preview. Step 14 recorded AUD-116–142 from visible composition and resource audits. Step 15 locally verified Compose UX findings AUD-143–147; Step 17 recorded Workbench findings AUD-148–149; Step 18 locally verified intent inheritance findings AUD-150–151 with desktop/mobile browser evidence. Public-site verification remains pending for Step 45. Step 19 added AUD-152–155 from local visible Workbench checks. Step 20 added AUD-156 after mobile UI testing found hidden structural-action feedback. Step 21 added AUD-157 after desktop/mobile Workbench testing found that undo/redo history disappeared after reload; the local fix is verified and public review verification remains pending for Step 45. AUD-158 was added after the browser regression showed Blend overwrote source-project undo snapshots; owner-scoped snapshot IDs now keep the source project intact, verified locally and pending Step 45 review-site confirmation. Step 22 added AUD-159–164 from desktop/mobile Workbench storage fault-injection; all six are fixed and locally browser-verified, with deployed verification pending for Step 45. Step 23 added AUD-165 after the standalone export regression showed that authored quote/markup text could break the clean Vite build; the encoded JSX fix and all 300 benchmark direction exports pass locally, with public verification pending for Step 45. Step 24 added AUD-166 after the UI review found the promised agent handoff package absent and the generator output incomplete; the seven-file contract, keyboard download, manifest parity and desktop/mobile runtime checks now pass locally, with public review verification pending for Step 45. Step 24 added AUD-167–174 after the fresh employee-experience runtime review exposed brand, CTA, screen-content, duplicate-navigation, and inert-control defects; all eight are locally verified after red-to-green unit and desktop/mobile Preview regressions. AUD-175 records a standalone-export navigation mismatch fixed by a clean-install/build/browser regression. Published review verification for all these local fixes remains pending for Step 45. Step 39 added AUD-179–189 for AI resource copy, data, keyboard, state, and visual defects; local Sites Worker regressions now pass, with deployed checks pending. Step 39 added AUD-190 after screenshots showed an unqualified manifest status label; the header now identifies it as manifest status, with a red-to-green desktop/mobile regression. Deployment verification remains pending. Step 39 added AUD-191–195 after a real desktop/mobile browser check of the deployed review Site found unsupported social proof, inert CTAs, and a static sample presented as live Workbench/certification status. Local Sites Worker regressions pass; these fixes await public redeployment. Step 39 added AUD-196–206 from the deployed homepage copy review and local visual checks. Local corrections qualify audit, agent, compatibility, creator, and export claims; fix mobile overlap in resource and Workbench examples; and remove an unmeasured compose-time promise. The refreshed Sites Worker regression passes 24/24 desktop/mobile cases. All new fixes await review-Site verification. Step 39 added AUD-207–210 after a deployed desktop/mobile Section Planner review found invented template claims, a clipboard action labeled as export, a misleading telemetry label, and incorrect singular grammar. Five template JSON outputs and planner controls now pass local desktop/mobile browser regressions (26/26 copy suite plus the planner interaction suite); deployed verification remains pending. Step 39 tool review added AUD-217–228 from desktop/mobile deployed evidence across Accessibility, Background, Data Visualisation, Motion, Palette, Design DNA, Layout Composer and Tools Hub; local copy and state corrections await deployed verification. AUD-229 records the deployed Design DNA reset state failure; the local state regression passes and public verification remains pending. Step 39 added AUD-236–261 from deployed desktop/mobile resource previews and detail routes covering accessibility/compliance/security claims, sample success states, inactive actions, motion semantics, AI examples, palette scope, declared metadata, and the Success State contrast failure. AUD-262 records the 360px Inline AI Rewrite preview overflow reproduced in the Sites Worker and fixed with a focused responsive regression. AUD-263 records evidence-gated accessibility/quality metadata; AUD-264 reproduces and fixes clipped resource accessibility statuses at 390px. These local fixes await public re-verification. Step 38 added AUD-266 after local browser evidence found three sandboxed resource previews mounting below the initial viewport; the visibility gate now defers those frames until visible and verifies scroll-to-render on desktop/mobile. Public review verification remains pending. AUD-267 records a local Sites Worker preview regression found during Step 37 security/runtime validation; its fix is locally verified and public verification remains pending for Step 45. Step 37 added AUD-268: the deployed app-shell CSP accepted arbitrary inline script execution; the local Sites Worker now uses build-certified inline script/style hashes and the red-to-green browser regression passes. Live verification remains pending for Step 45. AUD-274 records the local preview-navigation probe and registry-gate remediation; the request was intercepted locally and public Site verification remains pending. AUD-275 records the Sites Worker reproduction where sandboxed PreviewHost rejected same-origin host updates; the fix passes local state, variant, accessibility, typecheck, unit, and audit checks, with deployed verification pending. AUD-276 fixed nested Window and Document.defaultView fetch aliases; AUD-277 fixed renamed destructured Window/Document proxy aliases. Twenty-three Window/Document alias and callback-transfer forms are rejected across fetch, WebSocket, XMLHttpRequest, EventSource, and sendBeacon, including bare global fetch. Resource code is denied static access to these network capabilities regardless of receiver. Resource source was analyzed, not executed, and release-candidate verification remains pending. Step 39 added AUD-301–304 for deployed metrics and testimonial truth issues; AUD-305 records the high Zod advisory and missing collection bounds, fixed locally and awaiting full gate verification. AUD-307 records the MCP SDK dependency audit failure for body-parser@2.3.0 and the patched 2.4.0 workspace override. Step 40 added AUD-306 after the built Sites Worker visual audit found the mobile homepage composer below the first viewport; the local responsive fix and red-to-green regression are recorded under quality/evidence/step-40/. Public review verification remains scheduled for the release-candidate phase. Step 40 additionally records AUD-308, where the documentation index glob resolved one parent above the repository; the root index therefore exposed only its hard-coded registry guide. The four-level path fix restores all 15 repository Markdown pages and their static detail routes, verified by a red-to-green browser test at desktop and mobile. Expanded visual route evidence covers 31 paths at 1440x900 and 390x844. Step 40 also records AUD-309: the Activity Feed resource displayed fabricated people, revision and PR identifiers, and a validation count without a sample label. Static events are now clearly labeled and the fabricated identifiers are removed; a unit regression and desktop/mobile Sites Worker iframe test pass. The final visual capture covers 33 routes at 1440x900 and 390x844. Step 41 adds AUD-310 for timestamp-dependent source export and AUD-311 for the missing visible Workbench manifest import; both are fixed and verified locally across UI, CLI, MCP and the local Sites Worker, with public review verification pending for Step 45. The Step 41 dependency gate also found AUD-312 (vulnerable undici 7/8 lines; high) and AUD-313 (vulnerable fast-uri 3 line; moderate); targeted patched-version overrides clear the dependency audit locally, with full gate and public review verification pending. Step 42 fault injection adds AUD-314: a missing Workbench project route offered an unrelated initial-sample manifest export; the recovery action is removed and red-to-green desktop/mobile Sites Worker evidence is recorded in quality/STEP_42_EVIDENCE.md. Public review verification remains pending. Step 38 added AUD-320 after a browser regression found Explore results disappeared and preview frames were torn down during the search debounce; the fix and desktop/mobile regression pass locally, with published review verification pending. AUD-321 records a stale zero-results message during query debounce; the empty-result pending state and its Sites Worker regression now pass locally, with deployed verification pending. Latest live v25 dark-theme Gold-resource scan records 17 contrast failures at desktop and mobile (AUD-140); local source remediation now passes all-40 desktop/mobile contrast and Axe regressions and awaits a newly published Site. AUD-334 records the v25 mobile Explore hydration dead-control reproduction and local fix; see the dedicated evidence in audit/evidence/v25/mobile-filter-hydration/. The issue remains open until the revised Site is deployed and rechecked. Public v26 verification closes AUD-140 and AUD-334. The v26 deployed runtime audit found AUD-335, a homepage demo control enabled before its React island hydration; a local fix and desktop/mobile regression pass are recorded, pending deployed verification. AUD-339 records the public v28 resource-preview iframe navigation reproduced on desktop and mobile; its stable-src/postMessage fix is locally verified and remains pending a targeted deployed interaction recheck. Sites v30 closes AUD-274; AUD-342 records a medium host-injected CSP console error blocked by the strict policy. Public Site v30 issue-specific verification closes AUD-338 through AUD-341. Chrome DevTools route and interaction traces are recorded under quality/evidence/step-38/deployed-v30-devtools-audit-2026-10-25.json; AUD-343 is a medium synthetic mobile-LCP watch item, AUD-342 remains the host-injected CSP issue, and field CrUX data is unavailable. Public v30 Step 39 follow-up (2026-10-25) added 28 intended routes at desktop/mobile (56 captures), plus creator/detail/tool interaction evidence. All 56 route responses were HTTP 200 with no document overflow, uncaught exceptions, failed requests, or >=400 responses; each recorded the separate Sites-injected CSP error (AUD-342). The homepage spectrum hydration guard works on v30 and closes AUD-300. AUD-344 records the deployed preview-to-Compose CORS failure and is locally fixed pending deployed review. AUD-345 records and locally fixes the mobile preview-header wrapping issue. Public v30 remains the baseline; no new Site version has been published.",
   "entries": [
     {
       "id": "AUD-001",
@@ -9667,7 +9667,7 @@
       "network": [
         "The local Sites Worker route returned HTTP 200; the before capture reported zero console errors or warnings, uncaught exceptions, failed requests, and HTTP errors."
       ],
-      "screenshot": "quality/evidence/step-39/after/desktop/homepage-spectrum-essential-selected.png",
+      "screenshot": "quality/evidence/step-39/deployed-v30-interactions/home-spectrum-v30-1440x900.png",
       "beforeScreenshot": "quality/evidence/step-39/before/desktop/homepage-spectrum-controls-before-hydration.png",
       "rootCause": "The interactive React island used client:visible but rendered enabled server-side buttons, so users could activate controls before hydration attached event handlers.",
       "affectedCode": [
@@ -9676,8 +9676,12 @@
         "tests/e2e/copy-quality-step-39.spec.ts"
       ],
       "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
-      "verification": "The component now disables the three selectors in its server-rendered state, exposes a visible Preparing comparison controls status, and enables them after hydration. A JavaScript-disabled Sites Worker regression reproduces the pre-fix failure and verifies the safe disabled state; the normal desktop/mobile homepage interaction test verifies selection after hydration. Public review verification remains pending."
+      "status": "closed-deployed-verified",
+      "verification": "Closed after issue-specific verification on the public v30 Site (2026-10-25). At both 1440x900 and 390x844, the fresh route showed the three spectrum controls disabled with the visible Preparing comparison controls status. Scrolling to the section hydrated the island; selecting 03 · Experimental changed aria-pressed to true and displayed Level 03 · Ambition 75–95. No uncaught exception, failed request, or bad HTTP response occurred. Each page still emitted the separate Sites-injected strict-CSP console error recorded as AUD-342. Machine evidence and screenshots: quality/evidence/step-39/deployed-v30-home-spectrum.json and its screenshot paths.",
+      "afterScreenshots": [
+        "quality/evidence/step-39/deployed-v30-interactions/home-spectrum-v30-1440x900.png",
+        "quality/evidence/step-39/deployed-v30-interactions/home-spectrum-v30-390x844.png"
+      ]
     },
     {
       "id": "AUD-301",
@@ -10813,7 +10817,7 @@
       "category": "performance",
       "title": "Workbench showed a blank page while its client-only editor initialized",
       "expected": "The initial Workbench document should expose a clear loading state and a usable way to continue while the browser restores the local project and catalogue.",
-      "actual": "On the public v28 Site, a fresh mobile context had an empty body at 1.5 seconds. The loading message first became the LCP candidate at 5.204 seconds; a product preview paragraph was painted at 7.776 seconds under 4x CPU and Slow 4G. A separate cold run measured LCP at 5.664 seconds. CLS was 0. The fresh Playwright network capture recorded 44 requests, all HTTP 200, with no console errors, failed requests, or horizontal overflow. A separate warmed DevTools-tab capture recorded 45 responses, including one 304; the captures are kept distinct.",
+      "actual": "Public v30 now serves the accessible Astro fallback before Workbench hydration. In a fresh 390x844, 4x CPU/Slow 4G probe, the visible fallback appeared by about 1.1s after navigation with “Preparing your local workspace” and an Open Compose link; the page then showed its local-project/catalogue loading state and the complete Workbench by about 4.6s. No blank document was observed. A separate Fast 4G mobile trace measured Workbench LCP at 2,559ms for the saved Direction C project and 2,809ms in a fresh isolated context (1x CPU: 1,296ms); CLS was 0. The remaining lab render-delay observation is tracked separately as AUD-343. The browser reported only the host-injected CSP error tracked by AUD-342, with no application exception.",
       "reproduction": [
         "Open https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench in a fresh Chromium context at 390x844.",
         "Throttle CPU to 4x and network to 150ms latency, 1.6Mbps download, and 768Kbps upload.",
@@ -10839,7 +10843,7 @@
           "status": "45 responses: 44 HTTP 200 and one HTTP 304; zero failed requests"
         }
       ],
-      "screenshot": "audit/evidence/v28/performance/workbench-mobile-early.png",
+      "screenshot": "quality/evidence/step-38/deployed-v30-workbench-390x844.png",
       "rootCause": "apps/site/src/pages/workbench/index.astro mounted WorkbenchShell with client:only but supplied no fallback content, so the static Workbench document was empty until the large React editor bundle executed. After mount, WorkbenchShell displayed its own loading status while awaiting browser project storage and the verified catalogue.",
       "affectedCode": [
         "apps/site/src/pages/workbench/index.astro",
@@ -10847,9 +10851,9 @@
         "tests/e2e/site-route-performance-step-38.spec.ts"
       ],
       "fixCommit": "376dd3bfccace863616c23e43853aa285ff6f309",
-      "traceEvidence": "quality/evidence/step-38/after/workbench-chrome-devtools-traces-2026-10-25.json records the v28 mobile baseline and local candidate traces. The local trace includes cached 304 responses and is diagnostic, not a pristine cold-transfer result.",
-      "status": "fixed-awaiting-deployed-verification",
-      "evidence": "The local route now includes a server-rendered, accessible loading surface and a Compose link. A red-to-green browser regression delays the main client bundle by 1.6 seconds, confirms the fallback appears within 82ms on desktop and mobile in the latest Sites Worker run, runs Axe with zero violations, then confirms the Workbench Pages control loads. Both desktop and mobile passes were repeated against Astro preview and the production-like Sites Worker. After screenshots: quality/evidence/step-38/after/workbench-startup-fallback-sites-chromium.png and quality/evidence/step-38/after/workbench-startup-fallback-sites-mobile-chromium.png. Public v28 still contains the defect; close only after a saved and approved follow-up Site is deployed and the same cold-start check passes."
+      "traceEvidence": "quality/evidence/step-38/after/workbench-chrome-devtools-traces-2026-10-25.json records the v28 mobile baseline and local candidate traces. The local trace includes cached 304 responses and is diagnostic, not a pristine cold-transfer result. Public v30 desktop/mobile route traces and startup probe are summarized in quality/evidence/step-38/deployed-v30-devtools-audit-2026-10-25.json.",
+      "status": "closed-deployed-verified",
+      "evidence": "The local route now includes a server-rendered, accessible loading surface and a Compose link. A red-to-green browser regression delays the main client bundle by 1.6 seconds, confirms the fallback appears within 82ms on desktop and mobile in the latest Sites Worker run, runs Axe with zero violations, then confirms the Workbench Pages control loads. Both desktop and mobile passes were repeated against Astro preview and the production-like Sites Worker. After screenshots: quality/evidence/step-38/after/workbench-startup-fallback-sites-chromium.png and quality/evidence/step-38/after/workbench-startup-fallback-sites-mobile-chromium.png. Public v30 verification now confirms the fallback is visible during a fresh 390x844 mobile initialization before Workbench loads; this closes the original blank-document defect. The slower full-editor lab timing is tracked separately in AUD-343."
     },
     {
       "id": "AUD-339",
@@ -10859,7 +10863,7 @@
       "category": "runtime",
       "title": "Resource preview controls reload the isolated frame",
       "expected": "Variant, theme, device, and reduced-motion controls should update the existing isolated preview through the typed message channel without reloading its document.",
-      "actual": "On public v28, toggling Reduced Motion changed the iframe URL from reducedMotion=false to reducedMotion=true and navigated the preview once at both desktop and mobile sizes. All observed requests returned HTTP 200, with no console errors, warnings, or failed requests; the reload can still reset in-preview interaction and animation state.",
+      "actual": "On public v30 at /resources/fade-up-reveal/, clicking Motion changed the accessible control state from Reduced Motion: OFF to ON. The iframe src stayed /preview-content/?resource=fade-up-reveal&variant=quiet&theme=light&device=desktop&reducedMotion=false, and the preview-document response count stayed at one before and after the toggle. A repeatable Playwright capture recorded 41 HTTP 200 responses, no failed requests, no warnings, and no document overflow (1440px document width in a 1440px viewport). The only console error was the Sites-injected inline bootstrap blocked by strict CSP (AUD-342). After enabling the control, activating Replay Entrance inside the isolated preview displayed “Entrance animation skipped because reduced motion is enabled,” confirming the state reached the renderer without crossing the isolation boundary.",
       "reproduction": [
         "Open https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/resources/fade-up-reveal/ at 1440x900 or 390x844.",
         "Wait for the live preview card, note the iframe src, then select Reduced Motion: OFF.",
@@ -10881,10 +10885,9 @@
         }
       ],
       "screenshot": [
-        "quality/evidence/step-38/v28-resource-preview-motion-before.png",
-        "quality/evidence/step-38/v28-resource-preview-motion-after.png",
-        "quality/evidence/step-38/v28-resource-preview-motion-before-390.png",
-        "quality/evidence/step-38/v28-resource-preview-motion-after-390.png"
+        "quality/evidence/step-38/deployed-v30-fade-up-reveal-motion-before-1440x900.png",
+        "quality/evidence/step-38/deployed-v30-fade-up-reveal-motion-after-1440x900.png",
+        "quality/evidence/step-38/deployed-v30-fade-up-reveal-reduced-motion-status-1440x900.png"
       ],
       "rootCause": "ResourcePreviewFrame built the iframe src from mutable React control state and assigned src again during reset, even though a typed TESSELLATE_PREVIEW_UPDATE postMessage effect already updated the isolated PreviewHost. Each state change therefore duplicated the update by navigating the iframe.",
       "affectedCode": [
@@ -10896,8 +10899,8 @@
         "tests/e2e/sites-preview-csp-live-v25.spec.ts"
       ],
       "fixCommit": "b66af832482367051c8a35ffa625b4fc6aed71b6",
-      "status": "fixed-awaiting-deployed-verification",
-      "evidence": "Public v28 was reproduced at 1440x900 and 390x844: each reduced-motion toggle changed the iframe src and caused exactly one iframe navigation; requests returned HTTP 200 with zero console errors, warnings, or failed requests. Screenshots: quality/evidence/step-38/v28-resource-preview-motion-before.png, v28-resource-preview-motion-after.png, and the -390 equivalents. The local fix keeps the initial iframe URL stable and updates the preview through the existing typed message channel. The desktop/mobile regression verifies the CSS response, stable src, and no post-load frame navigation. The full 324-resource seven-width matrix and Gold 40 variant/accessibility certification pass; the Astro, Sites Worker, and preview-app browser suites pass after correcting their obsolete URL-change assertions. The issue remains open for deployed verification because public v28 is unchanged."
+      "status": "closed-deployed-verified",
+      "evidence": "Public v28 baseline reproduced the iframe navigation at desktop and mobile. The local fix keeps the initial iframe URL stable and updates the preview through the typed message channel; local browser regressions verify rendered state, stable src, and no post-load navigation. Public v30 verification at 1440x900 toggled Motion to ON without changing the iframe URL or adding a preview-document request. Repeatable deployed screenshots and 41-response record are in quality/evidence/step-38/deployed-v30-fade-up-reveal-motion.json; the CSP console error is tracked separately as AUD-342. The issue is closed after deployed verification. The repeatable v30 browser flow also clicked Replay Entrance within the sandbox and observed the live-region message “Entrance animation skipped because reduced motion is enabled.”"
     },
     {
       "id": "AUD-340",
@@ -10907,7 +10910,7 @@
       "category": "performance",
       "title": "Explore cards show blank previews while sandbox frames load",
       "expected": "Each visible resource card should show its rendered preview or a clear loading status until its isolated frame is ready.",
-      "actual": "After the fix, Sites Worker browser regressions pass 4/4 desktop/mobile cases. A deliberately delayed preview shows Loading preview… with aria-busy=true until the renderer sends its readiness message; an aborted preview reaches a truthful unavailable message and resource link through the bounded timeout. The public v28 before screenshot remains blank during this interval; the local after screenshots show the loading and rendered states.",
+      "actual": "Public v30 /explore displays real resource content in the six initially visible sandboxed previews; later cards truthfully show “Preview loads when visible” until scrolled into view. The deployed desktop capture records 108 requests (101 HTTP 200 and seven cached HTTP 304), including /data/catalog.json (304) and six preview-content frame responses. No failed or 4xx/5xx request or document overflow was observed. The browser emitted only the host-injected CSP error tracked by AUD-342; no app exception was observed.",
       "reproduction": [
         "Open https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore in a fresh Chromium context at 1440x900.",
         "Capture the first viewport about 1.2 seconds after the main content appears; the first visible preview wells are blank.",
@@ -10922,7 +10925,7 @@
         "GET /preview-content/?resource=accordion-spring 200",
         "All 108 observed document, asset, catalogue and preview requests returned HTTP 200."
       ],
-      "screenshot": ["quality/evidence/step-38/deployed-v28-explore-1440x900.png","quality/evidence/step-38/after/explore-preview-loading-sites-chromium.png","quality/evidence/step-38/after/explore-preview-loaded-sites-chromium.png","quality/evidence/step-38/after/explore-preview-loading-sites-mobile-chromium.png","quality/evidence/step-38/after/explore-preview-loaded-sites-mobile-chromium.png"],
+      "screenshot": "quality/evidence/step-38/deployed-v30-explore-1440x900.png",
       "rootCause": "ResourceCard mounts the sandbox iframe when the card intersects but does not track frame load or render a loading or failure state; the preview canvas stays visually empty until iframe navigation finishes.",
       "affectedCode": [
         "apps/site/src/components/ResourceCard.tsx",
@@ -10930,8 +10933,8 @@
         "tests/e2e/sites-preview.playwright.config.ts",
         "playwright.config.ts"
       ],
-      "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification"
+      "fixCommit": "e2766ab7625eed947b18f22a33f3e51cfb21b979",
+      "status": "closed-deployed-verified"
     },
     {
       "id": "AUD-341",
@@ -10941,7 +10944,7 @@
       "category": "performance",
       "title": "HTML response disables transparent edge compression",
       "expected": "The static HTML response should allow lossless edge compression while preserving the decoded page body and its generated Content-Security-Policy.",
-      "actual": "Public v28 returned the 90,254-byte home document over HTTP/2 with no Content-Encoding and Cache-Control: no-transform. Chrome marked document compression as failed and estimated 60.5 kB of wasted bytes; estimated FCP/LCP savings were 0 ms. LCP was 375 ms, CLS was 0.00, all 25 observed requests returned 200, and the console had no messages.",
+      "actual": "The public v30 homepage document now returns HTTP 200 with Content-Encoding: gzip and Cache-Control: public, max-age=0, must-revalidate. The current Chrome DevTools response headers confirm transparent compression is enabled for public HTML; the isolated preview response policy remains separate. The host-injected strict-CSP console error is tracked as AUD-342 and is unrelated to compression.",
       "reproduction": [
         "Open https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ in Chrome DevTools at 1440x900.",
         "Record a cold performance trace with cache disabled.",
@@ -10953,16 +10956,16 @@
         "The other 24 observed document, script, stylesheet, and asset requests returned HTTP 200; hashed CSS was gzip-encoded.",
         "The response carried Cache-Control: no-transform; Chrome estimated 60.5 kB potentially avoidable transfer."
       ],
-      "screenshot": ["audit/evidence/v28/home-desktop-1440x900.png"],
+      "screenshot": "quality/evidence/step-38/deployed-v30-home-1440x900.png",
       "rootCause": "apps/sites/worker.ts overwrote the cache policy for every HTML route with Cache-Control: no-transform. That directive disabled transparent compression on public HTML. Public routes can inherit their asset cache policy while the isolated /preview and /preview-content documents retain no-transform for their exact iframe/CSP contract.",
       "affectedCode": [
         "apps/sites/worker.ts",
         "apps/sites/worker.test.ts",
         "apps/sites/VALIDATION.md"
       ],
-      "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
-      "evidence": "Chrome DevTools trace NAVIGATION_0 on public Sites v28; raw trace could not be written because the DevTools MCP file sandbox did not recognize the repository workspace. The trace summary, response metadata, network status, console state, and accessibility snapshot were captured in-session. A red-to-green worker regression proves the decoded HTML, inherited cache policy, and strict script-src policy remain unchanged after removing no-transform."
+      "fixCommit": "2a201f4d13dbf5d2339994fd14dc2fe92c3e92ff",
+      "status": "closed-deployed-verified",
+      "evidence": "Chrome DevTools trace NAVIGATION_0 on public Sites v28; raw trace could not be written because the DevTools MCP file sandbox did not recognize the repository workspace. The trace summary, response metadata, network status, console state, and accessibility snapshot were captured in-session. A red-to-green worker regression proves the decoded HTML, inherited cache policy, and strict script-src policy remain unchanged after removing no-transform. Public v30 response headers now verify HTTP 200, Content-Encoding: gzip, and Cache-Control: public, max-age=0, must-revalidate; the isolated preview response policy remains separate. This closes the deployed compression check."
     },
     {
       "id": "AUD-342",
@@ -10997,7 +11000,118 @@
       "status": "open",
       "verification": "Reproduced in two fresh browser contexts on public Sites v30. App-owned scripts and the homepage preset remain functional. CSP blocked the injected script, the marker was absent from window, and no external request was emitted.",
       "limitation": "No safe repository-only change can authorize this dynamic script. Sites must provide a nonce/hash integration or disable the injection. Adding unsafe-inline to script-src would weaken the security boundary and was not done; the issue remains open as a documented medium hosting limitation."
+    },
+    {
+      "id": "AUD-343",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "390x844",
+      "category": "performance",
+      "title": "Workbench LCP exceeds 2.5 seconds under 4x CPU mobile lab emulation",
+      "expected": "Workbench should reach useful content promptly on mobile. The 2.5s LCP threshold is a field p75 target; this synthetic lab run is diagnostic and cannot establish a field Core Web Vitals failure.",
+      "actual": "Public v30 Chrome DevTools Fast 4G lab traces at 390x844 measured LCP 2,559ms for the saved Direction C project and 2,809ms in a fresh isolated context. At 1x CPU the same route measured 1,296ms. CLS was 0 in all three runs. In the 4x CPU traces, render delay accounted for 2,517ms and 2,773ms respectively while TTFB was 41ms and 36ms; 98.4–98.7% of LCP was render delay. The server-rendered loading fallback was visible during startup and the full Workbench loaded. No CrUX/field data is available, and DevTools did not identify a specific source hotspot or estimated saving.",
+      "reproduction": [
+        "Open the public v30 /workbench route at 390x844 in a fresh browser context.",
+        "Record a cold route trace with Fast 4G network emulation and 4x CPU slowdown.",
+        "Repeat for the saved Direction C project and in a new isolated context; compare with a 1x CPU run."
+      ],
+      "console": [
+        "No application exception was observed. The Sites-injected inline bootstrap emits the separate CSP error recorded in AUD-342."
+      ],
+      "network": [
+        "The fallback appears while the client editor loads. Desktop Workbench essential requests returned 200 or cached 304; no essential failed request was observed in the sampled workflow."
+      ],
+      "screenshot": "quality/evidence/step-38/deployed-v30-workbench-390x844.png",
+      "rootCause": "The Workbench shell is client-rendered and needs to initialize local project state, the catalogue, and the editor before its main canvas is available. The trace attributes nearly all of the measured LCP to client render delay, but does not isolate a source-level hot path or a reliable intervention. Keep as a medium lab-only follow-up; do not infer a field failure from synthetic CPU throttling.",
+      "fixCommit": null,
+      "status": "open"
+    },
+    {
+      "id": "AUD-344",
+      "severity": "medium",
+      "route": "/r/cta-product-preview; /explore; /preview/?resource=cta-product-preview",
+      "viewport": "1440x900 and 390x844",
+      "category": "runtime",
+      "title": "Product Preview CTA opens Compose inside the isolated iframe",
+      "expected": "Activating a product-preview link should take the user to the full top-level application route while preserving preview isolation.",
+      "actual": "On public v30, START COMPOSING left the top-level URL at /r/cta-product-preview and navigated only the opaque-origin preview frame to /compose. The nested Compose page could not fetch /data/catalog.json because its origin was null, so the catalogue stayed unavailable in the small preview.",
+      "reproduction": [
+        "Open /r/cta-product-preview at 1440x900 or 390x844 and wait for the live resource preview.",
+        "Activate START COMPOSING inside the preview.",
+        "Observe that the main page remains on the resource route, the child frame attempts /compose, and its /data/catalog.json request fails CORS."
+      ],
+      "console": [
+        "The preview frame logs a CORS policy error for /data/catalog.json from origin null, followed by a failed-resource message.",
+        "The main page also logs the separately tracked Sites inline-bootstrap CSP error (AUD-342).",
+        "No uncaught application exception was observed."
+      ],
+      "network": [
+        {
+          "url": "/compose",
+          "status": 200,
+          "note": "Loaded in the opaque child frame; top-level page URL did not change."
+        },
+        {
+          "url": "/data/catalog.json",
+          "status": null,
+          "failure": "net::ERR_FAILED; opaque-origin CORS block"
+        }
+      ],
+      "screenshot": "quality/evidence/step-39/deployed-v30-interactions/cta-product-preview-handoff-1440x900.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-39/deployed-v30-interactions/cta-product-preview-handoff-1440x900.png",
+        "quality/evidence/step-39/deployed-v30-interactions/cta-product-preview-handoff-mobile-390x844.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-39/after/preview-navigation/desktop-confirmation.png",
+        "quality/evidence/step-39/after/preview-navigation/desktop-compose-ready.png",
+        "quality/evidence/step-39/after/preview-navigation/mobile-confirmation.png",
+        "quality/evidence/step-39/after/preview-navigation/mobile-compose-ready.png"
+      ],
+      "rootCause": "The preview uses sandbox=\"allow-scripts\" without top-navigation permission. A normal anchor therefore navigates the child browsing context; Compose then runs with an opaque origin and cannot load the same-origin catalogue.",
+      "affectedCode": [
+        "apps/site/src/components/PreviewHost.tsx",
+        "apps/site/src/components/PreviewNavigationConfirmation.tsx",
+        "apps/site/src/components/ResourcePreviewFrame.tsx",
+        "apps/site/src/components/ResourceCard.tsx",
+        "apps/site/src/pages/preview/index.astro",
+        "apps/site/src/scripts/preview-wrapper.ts",
+        "packages/catalog/src/preview-protocol.ts",
+        "docs/DECISIONS.md",
+        "tests/e2e/preview-link-navigation.spec.ts"
+      ],
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "verification": "The pre-fix failure was reproduced in the deployed browser and the initial red local E2E assertion failed because the top-level route stayed on the detail page. The fix sends a bounded typed request only after a trusted anchor click; the trusted parent validates the expected iframe source, opaque origin and resource ID, then displays an explicit user-confirmation link. No sandbox permission or CSP was relaxed. Local Sites Worker E2E passes 6/6 across desktop/mobile for detail-page, Explore-to-detail and direct-preview flows; the full Compose route reaches Catalogue ready and its submit action is enabled. Public v30 remains affected until a saved review version is deployed and rechecked.",
+      "limitation": "External and internal destinations require a separate confirmation click. This preserves the current opaque preview origin and sandbox boundary."
+    },
+    {
+      "id": "AUD-345",
+      "severity": "medium",
+      "route": "/",
+      "viewport": "390x844",
+      "category": "visual",
+      "title": "Mobile visual-spectrum preview squeezes its title beside status badges",
+      "expected": "The illustrative preview header should retain a readable title and status labels on a 390px mobile viewport.",
+      "actual": "The title and two status badges shared one constrained flex row. The public v30 screenshot shows the title wrapped into three lines; a local browser regression measured a 60px title box against a 40px readability limit.",
+      "reproduction": [
+        "Open / at 390x844 and scroll to Essential → Experimental.",
+        "Inspect the illustrative Tessellate Design Preview header before the local CSS fix."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/deployed-v30-interactions/home-spectrum-v30-390x844.png",
+      "beforeScreenshot": "quality/evidence/step-39/deployed-v30-interactions/home-spectrum-v30-390x844.png",
+      "afterScreenshot": "quality/evidence/step-39/after/mobile/homepage-spectrum-preview-header.png",
+      "rootCause": "A single horizontal flex row placed the title between the T icon and two status badges. The badges reduced the title column enough to force three lines.",
+      "affectedCode": [
+        "apps/site/src/components/home/EssentialVsExperimental.tsx",
+        "tests/e2e/copy-quality-step-39.spec.ts"
+      ],
+      "fixCommit": null,
+      "status": "fixed-local-verified",
+      "verification": "A user-visible Sites Worker browser regression failed before the CSS change with a 60px title box, then passed after the mobile header stacks title and badges while retaining the original desktop row. The post-fix mobile screenshot was visually inspected. The test reports no uncaught exceptions, failed requests, or HTTP errors. The visual correction awaits public review verification."
     }
   ],
-  "generatedAt": "2026-10-25T22:39:19Z"
+  "generatedAt": "2026-10-25T23:49:20Z"
 }

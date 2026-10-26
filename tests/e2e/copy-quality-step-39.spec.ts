@@ -818,6 +818,53 @@ test('homepage spectrum controls explain their pre-hydration state', async ({ br
   await page.close();
 });
 
+test('mobile homepage spectrum preview keeps its title readable beside its status badges', async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== 'sites-mobile-chromium', 'This check targets the narrow mobile layout.');
+  const runtime = watchRuntime(page);
+  await page.goto('/');
+  const section = page
+    .locator('section')
+    .filter({ has: page.getByRole('heading', { name: 'Essential → Experimental.' }) })
+    .first();
+  await section.scrollIntoViewIfNeeded();
+
+  const previewTitle = section.getByRole('heading', { name: 'Tessellate Design Preview' });
+  await expect(previewTitle).toBeVisible();
+  const titleBox = await previewTitle.boundingBox();
+  expect(titleBox).not.toBeNull();
+  expect(titleBox!.height).toBeLessThanOrEqual(40);
+
+  const screenshot = path.resolve(
+    process.cwd(),
+    'quality/evidence/step-39/after/mobile/homepage-spectrum-preview-header.png',
+  );
+  await mkdir(path.dirname(screenshot), { recursive: true });
+  await page.screenshot({ path: screenshot, fullPage: false });
+  await writeFile(
+    path.resolve(
+      process.cwd(),
+      'quality/evidence/step-39/after/mobile/homepage-spectrum-preview-header.json',
+    ),
+    `${JSON.stringify(
+      {
+        route: page.url(),
+        viewport: page.viewportSize(),
+        previewTitle: await previewTitle.innerText(),
+        previewTitleHeight: titleBox!.height,
+        runtime,
+        screenshot,
+      },
+      null,
+      2,
+    )}\n`,
+  );
+  expect(runtime.uncaughtExceptions).toEqual([]);
+  expect(runtime.failedRequests).toEqual([]);
+  expect(runtime.httpErrors).toEqual([]);
+});
+
 test('homepage resource examples use catalogue identities and demo controls have truthful behavior', async ({
   page,
 }, testInfo) => {

@@ -1,6 +1,6 @@
 # Step 38 — Performance baseline
 
-Status: **local route and interaction performance gates pass; the full programme step remains open.**
+Status: **Step 38 performance gates are complete for the recorded local workloads and deployed v30 traces. AUD-343 remains a medium synthetic mobile LCP watch; field Web Vitals data is unavailable.**
 
 ## Scope and method
 
@@ -96,8 +96,9 @@ horizontal overflow. See `workbench-large-project.json` and
 `workbench-30-screens.png`.
 
 These measurements establish a repeatable local baseline; they do not substitute
-for long-session/history stress (Step 43), real-user field Web Vitals, or a
-deployed Site measurement.
+for long-session/history stress (Step 43) or real-user field Web Vitals. Public v30
+deployed route and interaction measurements are now recorded below; CrUX data is
+unavailable.
 
 ## WebKit CSP compatibility finding — fixed locally
 
@@ -643,3 +644,22 @@ preview profile reported 3 passed; Playwright's final-run record reports
 passed and 108 configured skips. No aggregate Sites Worker count was retained
 by the list reporter, so this record claims completion and zero failures,
 without assigning an unverified pass/skip total to that profile.
+
+## Public v30 DevTools verification — 2026-10-25
+
+The deployed Site version is v30, from canonical source commit `2a201f4d13dbf5d2339994fd14dc2fe92c3e92ff` (Sites mirror `775af0c92354e8fdf33af60b8c0cc31b396c0ab6`). D1/R2 bindings were not provisioned. Chrome DevTools MCP recorded cold public traces at 1440×900 / 1× CPU / unthrottled and 390×844 / Fast 4G / 4× CPU. The route timings and request evidence are in `quality/evidence/step-38/deployed-v30-devtools-audit-2026-10-25.json`.
+
+| Route | Desktop LCP / TTFB / render delay / CLS | Mobile LCP / TTFB / render delay / CLS |
+| --- | --- | --- |
+| Home | 284 / 42 / 242 ms / 0 | 772 / 56 / 716 ms / 0 |
+| Explore | 187 / 42 / 145 ms / 0 | 745 / 40 / 705 ms / 0 |
+| Compose | 266 / 126 / 140 ms / 0 | 792 / 42 / 751 ms / 0 |
+| Workbench | 802 / 54 / 748 ms / 0 | 2,559 / 41 / 2,517 ms / 0 (saved Direction C); 2,809 / 36 / 2,773 ms (fresh context) |
+
+A 1× CPU Fast 4G Workbench run at 390×844 measured LCP 1,296 ms (74 ms TTFB, 1,222 ms render delay, CLS 0). The 4× CPU Workbench samples slightly exceed the 2.5-second field p75 threshold, but they are synthetic lab data and cannot establish a field failure. The trace attributes 98.4–98.7% of LCP to render delay without locating one source hot spot or a credible estimated saving. AUD-343 remains a medium lab-only follow-up; CrUX is unavailable. Compose keyboard-input lab INP was 18 ms; Direction C became ready in Workbench in about 1.79 seconds.
+
+The public v30 startup probe at 390×844 / 4× CPU / Slow 4G shows the Astro Workbench fallback by about 1.1 seconds and the full editor by about 4.6 seconds; it did not show the previous blank document. Explore returned 108 requests (101 HTTP 200, seven cached HTTP 304), with six visible isolated previews rendered and no failed/4xx/5xx requests. The Fade-Up Reveal Motion toggle changed to ON while retaining the same iframe URL and issuing no second preview-document request; Replay Entrance then announced that the animation was skipped. Its repeatable before/after screenshots and network record are in `quality/evidence/step-38/deployed-v30-fade-up-reveal-motion.json`. The homepage response is gzip encoded with `Cache-Control: public, max-age=0, must-revalidate`.
+
+The only observed browser console error is AUD-342: a per-response ChatGPT Sites/Cloudflare inline bootstrap is blocked by the app strict CSP. It does not execute and the application remains interactive. No CSP relaxation was made. No new Axe scan was run in this Step 38 follow-up; older version results are not represented as v30 results.
+
+Public v30 checks close AUD-338 (visible startup fallback), AUD-339 (no preview iframe reload), AUD-340 (truthful/rendered Explore previews) and AUD-341 (HTML compression). Step 38 is complete for its recorded lab workload and deployed-trace scope. Long-session/history stress belongs to the later stress-testing step; field Core Web Vitals remain unavailable.

@@ -447,3 +447,55 @@ provenance/licence, security/secrets, and dependency audit. Full Playwright
 passes 274 application, 224 Sites Worker, and 3 preview tests with 144
 configured skips and zero failures. Captured logs and counts are recorded in
 `quality/evidence/step-39/`. Public review verification remains pending.
+
+### 2026-10-25 continuation — public v30 route and interaction follow-up
+
+The targeted live v30 sweep captured 28 intended routes at desktop 1440×900 and
+mobile 390×844 (56 route/viewport records): the homepage, Tools hub, all ten
+tool routes, CLI and MCP docs, and 14 representative resource details. All 56
+returned HTTP 200 with no horizontal document overflow, uncaught exceptions,
+failed requests, or 4xx/5xx responses. Every page emitted the same separate
+ChatGPT Sites dynamic inline-bootstrap CSP error (AUD-342); it remained blocked
+and no CSP exception was added. Creators was captured at both widths in a
+separate run. The machine-readable route report and screenshots are in
+`quality/evidence/step-39/deployed-v30-route-audit.json` and
+`quality/evidence/step-39/deployed-v30-routes/`. This is targeted Step 39
+coverage, not the full public route or employee flagship audit.
+
+The homepage Visual Spectrum control was checked in fresh public v30 sessions at
+both widths. The server state was disabled with a visible preparing message;
+after scrolling and hydration, selecting Experimental updated `aria-pressed`
+and the displayed ambition range. This closes AUD-300. Evidence and screenshots
+are in `deployed-v30-home-spectrum.json` and its recorded screenshot paths.
+
+The same mobile capture exposed AUD-345: the illustrative preview heading was
+compressed beside two status badges and wrapped to three lines. The local Sites
+Worker regression failed before the fix with a 60px title box. The header now
+stacks on narrow screens and wraps badges while preserving the desktop row. The
+mobile regression passes, and the after screenshot was visually inspected at
+`quality/evidence/step-39/after/mobile/homepage-spectrum-preview-header.png`.
+The source change has not yet been verified on a published Site.
+
+The public CTA Product Preview was exercised at 1440×900 and 390×844. On both,
+START COMPOSING navigated only the opaque preview frame while the top-level page
+stayed on `/r/cta-product-preview`; `/data/catalog.json` failed with
+`net::ERR_FAILED` from the frame's null origin. The mobile before screenshot
+and request details are in `deployed-v30-interactions.json`. This is AUD-344. The fix forwards a bounded
+typed link request only after a trusted link activation. The parent validates
+the expected iframe, opaque origin and resource ID, then presents an explicit
+confirmation link. It does not grant top-navigation permission or change CSP.
+The local Sites Worker suite passes all six detail, Explore and direct-preview
+desktop/mobile cases; the confirmed top-level Compose route reaches Catalogue
+ready with submission enabled. The public Site remains v30, so AUD-344 is
+fixed-awaiting-deployed-verification.
+
+The step audit now contains 345 findings: 0 Critical, 66 High, 262 Medium and
+17 Low. Statuses are 40 closed after deployed verification, 212 fixed locally
+and awaiting issue-specific deployment checks, 89 locally verified, 2 legacy
+fixed, and 2 open (AUD-342 and AUD-343). On 2026-10-26 the full local gates
+passed after these changes: frozen install, catalogue build (324 resources / 40
+Gold), 22-package typecheck, lint, 1,220 unit tests (one skipped), all 16
+`audit:all` gates, and the production build. The aggregate E2E run passed 316
+Astro tests, 309 Sites Worker desktop/mobile tests, and 3 isolated-preview
+tests (628 passed, 149 configured skips, zero failures). The public Site remains
+v30, so AUD-344 and AUD-345 still await issue-specific deployed verification.

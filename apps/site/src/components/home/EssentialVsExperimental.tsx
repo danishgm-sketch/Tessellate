@@ -59,8 +59,8 @@ export function EssentialVsExperimental() {
           {/* Left: Interactive Mock UI Screen */}
           <div className="lg:col-span-8 rounded-2xl border border-[#D9D6CF] overflow-hidden p-6 sm:p-8 transition-all duration-500 bg-[#FAF9F6]">
             {/* Header of mock app */}
-            <div className="flex items-center justify-between pb-6 border-b border-[#D9D6CF]">
-              <div className="flex items-center gap-3">
+            <div className="flex flex-col items-start gap-4 pb-6 border-b border-[#D9D6CF] sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex w-full items-center gap-3 sm:w-auto">
                 <div
                   className={`h-8 w-8 rounded flex items-center justify-center font-bold text-xs transition-all ${
                     level === 'essential'
@@ -72,7 +72,7 @@ export function EssentialVsExperimental() {
                 >
                   T
                 </div>
-                <div>
+                <div className="min-w-0 flex-1">
                   <h3
                     className={`font-semibold text-sm ${level === 'experimental' ? 'font-serif text-base' : ''}`}
                   >
@@ -83,7 +83,7 @@ export function EssentialVsExperimental() {
                   </span>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <span className="text-xs px-2.5 py-1 rounded bg-white border border-[#D9D6CF] font-mono text-[#62666F]">
                   WCAG 2.2 AA target
                 </span>
