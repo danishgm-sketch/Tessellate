@@ -414,7 +414,7 @@ export const PAGE_COMPOSITIONS: PageCompositionDefinition[] = [
     title: 'Role-Based Onboarding',
     screenType: 'onboarding',
     category: 'auth',
-    description: 'Personalized onboarding questionnaire tailoring interface telemetry to developer, designer, or executive persona.',
+    description: 'A short setup flow that asks for role, team, and goals, then shapes the first workspace around the employee’s needs.',
     requiredRoles: ['stepper', 'persona-selector', 'action-controls'],
     recommendedSections: ['onboarding-step-wizard'],
     archetypeFit: ['saas', 'analytics', 'workspace'],

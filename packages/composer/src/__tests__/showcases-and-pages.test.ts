@@ -44,6 +44,12 @@ describe('Phase 19 — Page Compositions, Blueprints & Showcases', () => {
     expect(unknown).toBeUndefined();
   });
 
+  it('describes role-based onboarding in terms of employee setup, not telemetry', () => {
+    const onboarding = getPageComposition('role-onboarding');
+    expect(onboarding?.description).toMatch(/role, team, and goals/i);
+    expect(onboarding?.description).not.toMatch(/telemetry|developer, designer, or executive persona/i);
+  });
+
   it('defines exactly 12 product blueprints with full specifications', () => {
     expect(PRODUCT_BLUEPRINTS).toHaveLength(12);
 
