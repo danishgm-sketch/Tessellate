@@ -355,3 +355,31 @@ preview timeouts. Every route is still classified DEGRADED because of
 AUD-342. Public v32 also still has AUD-351’s clipped third homepage preset and
 AUD-353’s stale onboarding copy; both have local fixes but await a later
 approved Site version. The public RC is not accepted.
+
+## Local candidate verification update — 2026-10-26
+
+The Sites Worker now adds a fresh cryptographic nonce to the public HTML
+`script-src` response header while preserving generated hashes, strict preview
+policies, unchanged HTML, and the compression-friendly cache policy. The
+focused Worker regression passes 6/6 and the changed Worker files pass ESLint.
+Cloudflare's documented JavaScript Detections CSP integration says it copies a
+nonce from the response policy to injected scripts. This remains unverified on
+the hosted Site: public v32 is unchanged and AUD-342 stays open pending
+deployed browser confirmation. Local evidence is in
+`quality/evidence/step-45/aud-342-local-source.json`.
+
+The first full Playwright attempt detected an existing Astro preview on port
+4321 from a separate `C:/Users/ismay/Development/Tessellate` checkout. Because
+the old config silently reused it, that run's preset failure and all other
+results were discarded. The configs now start their own preview by default,
+accept an explicit port per run, and require opt-in before server reuse. The
+preset regression then passed against the current worktree on port 4322.
+The fresh-worktree rerun used isolated ports (Astro 4412, Sites Worker 4413, preview app 4414) and ran the performance workloads in the Sites projects. The combined root suite had one transient Windows screenshot-file write error after 325 passes and 120 configured skips; the affected desktop keyboard case passed when rerun alone. No application assertion failed. The complete Sites desktop suite then passed 180 tests with 6 configured skips, including the 324-resource responsive matrix, Gold certification, accessibility, isolation, and performance workloads. Sites mobile passed 146 with 40 configured skips; the skipped cases are desktop-only or resource/state certification cases. The standalone preview app passed 3/3. A separate direct workload/stress run passed 12/12. This records the one-off artifact write failure rather than presenting the combined root attempt as a clean pass. The exact run outputs and browser artifacts are retained under `quality/evidence/step-45/`.
+
+## Live DevTools continuation — 2026-10-26
+
+Sites version history shows v32 as the latest successful publish (source 5533d1082b649ec4429bb356cdc91ab3e2f2daf5); saved v35 and v36 have no deployment IDs. Chrome DevTools traces on the live URL recorded desktop LCP/CLS: Home 352ms/0.00, Explore 318ms/0.00, Compose 418ms/0.00, Workbench 2,566ms/0.00 on one cold run and 518ms/0.00 on repeat. At 390x844, 4x CPU and Fast 4G: Home 859ms/0.00, Compose 833ms/0.00 and Workbench 1,814ms/0.00. CrUX field data is unavailable. The single slow Workbench trace was not repeatable; no stable LCP defect was established.
+
+Desktop Lighthouse on Home, Explore, Compose, Workbench, and /r/advanced-data-table scored 100 accessibility, 92 best practices, 100 SEO and 100 agentic browsing on each route. Every route failed errors-in-console and inspector-issues because of the dynamic CSP bootstrap tracked as AUD-342. Workbench also reproduced AUD-350 label-content-name-mismatch on the visible laptop switch; local source and desktop/mobile Axe regressions contain the fix, but the deployed v32 Site predates it. The machine-readable trace, Lighthouse, console and network summary is quality/evidence/step-45/performance/public-v32-traces.json. The public Site remains unchanged; AUD-342, AUD-350 and the new local AUD-354/AUD-355 fixes await verification on a newly published source-complete version.
+
+The live Workbench screenshot was inspected at 1440x900. It shows the full editor, tree, canvas, inspector, command bar, viewport controls and the visible laptop Lab Off label; it also confirms that the hosting Site returns a truthful Backend offline state when no laptop backend binding is configured.

@@ -22,7 +22,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 353 findings (0 Critical, 67 High, 269 Medium, 17 Low): 41 closed after issue-specific deployed verification, 219 fixed locally and awaiting issue-specific deployed checks, 90 fixed and verified locally, 2 retain the legacy `fixed` status, and 1 remains open. Public v30 closes AUD-338 through AUD-341 and AUD-300 after issue-specific checks. Public v32 additionally closes AUD-346. AUD-342 records the Sites-injected CSP console error and remains open. AUD-343 is locally verified after reducing saved-project LCP with on-demand catalogue loading; the lab is not field data. AUD-344, AUD-345, AUD-347 through AUD-353 await issue-specific deployed verification; AUD-351 and AUD-353 are still reproducible on v32. Older findings remain pending their specific checks.
+**Current disposition:** 355 findings (0 Critical, 67 High, 271 Medium, 17 Low): 41 closed after issue-specific deployed verification, 222 fixed locally and awaiting issue-specific deployed checks, 90 fixed and verified locally, 2 retain the legacy `fixed` status, and 0 remain open. Public v30 closes AUD-338 through AUD-341 and AUD-300 after issue-specific checks. Public v32 additionally closes AUD-346. AUD-342 now has a local strict-CSP nonce mitigation and awaits verification against a newly published Site version. AUD-343 is locally verified after reducing saved-project LCP with on-demand catalogue loading; the lab is not field data. AUD-344, AUD-345, AUD-347 through AUD-355 await issue-specific deployed verification; AUD-350, AUD-351, AUD-353, AUD-354, and AUD-355 are reproduced on v32. Sites version history records v32 as the latest successful publish; v35 and v36 are saved but undeployed. Older findings remain pending their specific checks.
 
 ## v26 deployed-site checkpoint
 
@@ -2944,7 +2944,7 @@ with zero findings. That harness race is not counted as a product defect.
 - Reproduction: open the public homepage in two fresh browser contexts at 1440×900. Each response logs a CSP error for the Cloudflare bootstrap and reports a different required hash. Click the `AI research terminal` preset; the brief and feel still update.
 - Root cause: the ChatGPT Sites/Cloudflare runtime injects a per-response inline challenge bootstrap after the application sets its static hash-based CSP. The changing hash cannot be listed in a build-time allowlist.
 - Affected code: `apps/sites/worker.ts` sets the strict policy; `apps/sites/src/generated-preview-csp.ts` contains only build-certified application hashes; the dynamic script is injected by the hosting runtime.
-- Remediation: no repository CSP weakening was made. The injected script remains blocked, so the application security boundary is preserved. A safe fix requires Sites to provide a nonce/hash integration or disable the injected script. Do not add `unsafe-inline` to `script-src`; this medium hosting limitation remains open and is not an application exception or uncaught app error.
+- Remediation: the Sites Worker now adds a fresh cryptographic nonce to each public HTML response's `script-src` while retaining build-certified hashes, unchanged HTML, and strict sandboxed preview policies. It does not add `unsafe-inline`. The focused Worker regression passes 6/6 and verifies nonce rotation, preview-policy separation, and compression-friendly cache headers; the fix is in commit `5180d19a1b89bbfb7c44f031691b88e58dd9cae0`. The live v32 Site still blocks the bootstrap; deployed verification on the exact new Site version is required before closure.
 
 ## LOW
 
@@ -3677,7 +3677,7 @@ Public v30 interaction testing confirmed a core navigation failure in CTA Produc
 - **Reproduction:** Open Workbench and inspect the Laptop model switch; at 390×844 first open the Mobile Workbench Command panel.
 - **Root cause:** `aria-label="Laptop model Lab"` replaced the complete child-text name, omitting the visible On/Off state.
 - **Affected code:** `packages/workbench/src/components/CommandBar.tsx`, `tests/e2e/workbench-visible-label-accessibility-step-39.spec.ts`.
-- **Remediation:** Remove the incomplete `aria-label` and retain `aria-checked` and the existing descriptive text. Desktop/mobile Axe checks pass. Fix commit: 7453815fc0d6e3c4fd80f3b5c85defe7821bb1c3. Public v30 verification is pending.
+- **Remediation:** Remove the incomplete `aria-label` and retain `aria-checked` and the existing descriptive text. Desktop/mobile Axe checks pass. Fix commit: 7453815fc0d6e3c4fd80f3b5c85defe7821bb1c3. Chrome Lighthouse still found the old accessible name on the public v32 Laptop model LAB Off switch and reported label-content-name-mismatch; the repository fix is present locally but v32 predates it. Recheck the updated published source before closing. Evidence: ../quality/evidence/step-45/performance/public-v32-traces.json.
 
 ### AUD-351 — Medium — Homepage preset labels are clipped on mobile
 
@@ -3706,12 +3706,19 @@ superseded by the AUD-351 responsive fix. The release branch now contains
 `097862d3785038f50e64523e5e946afa8d71c1b5` on top of that source. Exact-head
 CI for the new fix is pending.
 
-The deployed v30 homepage still emits one CSP console error because ChatGPT
-Sites adds a per-response inline script whose SHA-256 changes on reload. The
-static strict CSP cannot allowlist that dynamic script. It does not execute or
-make an external request; the application remains interactive. No
-`unsafe-inline` relaxation was made. AUD-342 remains open pending a platform
-fix or an owner decision about the security tradeoff.
+The deployed v32 homepage still emits one CSP console error because the Sites
+edge injects a per-response JavaScript Detections bootstrap. Cloudflare's
+documented integration parses a CSP response nonce and adds it to injected
+scripts. The current source candidate adds a fresh cryptographic nonce to each
+public HTML response while retaining the generated script hashes, leaving the
+static HTML unchanged, and keeping `unsafe-inline` out of `script-src`. Focused
+Worker regressions pass, including checks that preview documents retain their
+separate sandbox policy without receiving this nonce. See
+[`aud-342-local-source.json`](../quality/evidence/step-45/aud-342-local-source.json).
+The local adapter cannot prove the hosted edge behavior. AUD-342 remains
+fixed-awaiting-deployed-verification; v32 remains affected until the exact new
+saved version is deployed and browser verification confirms the injected
+script no longer produces a CSP error.
 
 The same deployed mobile capture found AUD-351: preset labels are clipped by a
 horizontal-only row. A Sites Worker regression failed before the change and
@@ -3764,3 +3771,19 @@ route, Axe, flagship, or standalone-export re-audit, and Step 45 remains open.
 - **Root cause:** The shared static `PageCompositionDefinition` uses stale copy that confuses persona selection with telemetry instrumentation.
 - **Affected code:** `packages/composer/src/page-compositions.ts`, `packages/composer/src/__tests__/showcases-and-pages.test.ts`.
 - **Remediation:** Replace the text with a user-centered setup-flow description about role, team, goals and shaping the employee’s first workspace. The new focused regression failed before the correction and passes after it (7/7 tests). A production Astro build rendered the updated description at desktop and mobile with HTTP 200, no console errors and no failed requests; after screenshots and machine results are under `../quality/evidence/step-45/public-v32/onboarding-copy-local-after-*`. The current working tree passes the 1,221-test bounded-concurrency Vitest run, root typecheck, lint, production build, and all `audit:all` checks. Fix commit: `ab04ee1c0458c2642a9e07f9d5fb59fef3e4dc56`. The public v32 deployment still contains the old copy; this issue remains fixed-awaiting-deployed-verification until an approved version is checked.
+
+### AUD-354 — Medium — Homepage structure controls are active before hydration
+
+- **Evidence:** The public v32 Site returned HTTP 200 at 390×844. With JavaScript disabled, “Modular Cockpit (Three-Pane)” still rendered as an enabled button with no client handler; the captured DOM recorded `disabled: false`. Screenshot: [`aud-354-mobile-before.png`](../quality/evidence/step-45/aud-354-mobile-before.png); machine record: [`aud-354-mobile-before.json`](../quality/evidence/step-45/aud-354-mobile-before.json). In the mobile browser suite, activating the selector before the visible React island hydrated left the layout grammar unchanged. The handler race is timing-sensitive, which explains why the isolated interaction test sometimes passed.
+- **Reproduction:** Open `/` at 390×844 with JavaScript disabled, scroll to “Screen Architecture Grammar,” and inspect the enabled selector. On a normal load, tap a selector as soon as its visible island enters the viewport; the first activation can be dropped.
+- **Root cause:** The `client:visible` React island server-renders active controls without a readiness state, so the buttons advertise behavior before hydration attaches handlers.
+- **Affected code:** `apps/site/src/pages/index.astro`, `apps/site/src/components/home/StructureComparison.tsx`, `tests/e2e/home-structure-comparison-readiness.spec.ts`.
+- **Remediation:** The selectors now render disabled with a polite loading explanation until the island hydrates, then become enabled. The red-before browser test reproduced the enabled server-rendered button on public v32. The fresh local Sites Worker tests now verify the no-JavaScript disabled state and a visible selection updating `aria-pressed` and the layout grammar on desktop and mobile; runtime console errors, uncaught exceptions, failed requests and HTTP errors are zero. Fix commit: `0ca9002b3318f5a42cf23eeb6f090f75e9952ffb`. After screenshot and record: [`aud-354-mobile-after.png`](../quality/evidence/step-45/aud-354-mobile-after.png), [`aud-354-mobile-after.json`](../quality/evidence/step-45/aud-354-mobile-after.json). Public v32 remains unchanged; deployed verification is pending.
+
+### AUD-355 — Medium — Homepage structure diagram clips panes on mobile and tablet
+
+- **Evidence:** Public v32 at 390×844 has 392px of horizontal content inside a 258px diagram body; at 768×844 the body is 189px tall but its content is 237px tall, clipped by 48px. Before screenshots and measurements: [`mobile`](../quality/evidence/step-45/aud-355-mobile-before.png), [`tablet`](../quality/evidence/step-45/aud-355-768-before.png), [`mobile geometry`](../quality/evidence/step-45/aud-355-mobile-before.json), [`tablet geometry`](../quality/evidence/step-45/aud-355-768-before.json). Both routes returned HTTP 200 with no associated failed request.
+- **Reproduction:** Open `/` at 390×844 and 768×844, scroll to “Screen Architecture Grammar,” and inspect the wireframe. On phones its right side is hidden; at 768px the bottom of the wireframe is hidden.
+- **Root cause:** The wireframe uses one horizontal flex row with fixed-width side panes and hides overflow at all widths. At 768px the 300px minimum frame height also leaves too little room for the three-pane diagram.
+- **Affected code:** `apps/site/src/components/home/StructureComparison.tsx`, `tests/e2e/home-structure-comparison-readiness.spec.ts`.
+- **Remediation:** The preview now stacks its panes below the 1024px breakpoint, uses a taller tablet frame, and leaves overflow visible. Red-before public tests reproduced the phone and tablet clipping. The fresh local Sites Worker matrix passes at 360, 390, 430, 768, 1024 and 1440px; at every width `scrollWidth` equals `clientWidth` and `scrollHeight` equals `clientHeight`. Runtime console errors, uncaught exceptions, failed requests and HTTP errors are zero. Fix commit: `0ca9002b3318f5a42cf23eeb6f090f75e9952ffb`. After screenshots and machine measurements are under [`quality/evidence/step-45/`](../quality/evidence/step-45/aud-355-responsive-after.json), including [`mobile`](../quality/evidence/step-45/aud-355-mobile-after.png) and [`tablet`](../quality/evidence/step-45/aud-355-768-after.png). Public v32 remains unchanged; deployed verification is pending.

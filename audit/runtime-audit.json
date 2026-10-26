@@ -10996,10 +10996,10 @@
         "apps/sites/src/generated-preview-csp.ts",
         "ChatGPT Sites/Cloudflare runtime"
       ],
-      "fixCommit": null,
-      "status": "open",
-      "verification": "Reproduced in two fresh browser contexts on public Sites v30. App-owned scripts and the homepage preset remain functional. CSP blocked the injected script, the marker was absent from window, and no external request was emitted. Reproduced again on public Sites v32 at Home and Compose (desktop and mobile): one blocked dynamic inline bootstrap error per response, no uncaught page errors, failed requests, or HTTP errors. See quality/evidence/step-45/public-v32/smoke.json. The 2026-10-26 public v32 route sweep reproduced the same blocked bootstrap on all 62 desktop/mobile route captures, with no uncaught errors, failed requests, 4xx/5xx responses, overflow, or preview timeouts. See quality/evidence/step-45/public-v32/route-audit.json.",
-      "limitation": "No safe repository-only change can authorize this dynamic script. Sites must provide a nonce/hash integration or disable the injection. Adding unsafe-inline to script-src would weaken the security boundary and was not done; the issue remains open as a documented medium hosting limitation.",
+      "fixCommit": "5180d19a1b89bbfb7c44f031691b88e58dd9cae0",
+      "status": "fixed-awaiting-deployed-verification",
+      "verification": "Reproduced in two fresh browser contexts on public Sites v30 and again on public Sites v32 at Home and Compose (desktop and mobile): one blocked dynamic inline bootstrap error per response, no uncaught page errors, failed requests, or HTTP errors. The 2026-10-26 public v32 route sweep reproduced it on all 62 desktop/mobile route captures. The local source regression first failed because public HTML had no response nonce, then passed after the Worker added a fresh cryptographic nonce to each public HTML script-src policy. The passing regression confirms nonce rotation, unchanged decoded HTML, retained compression-friendly cache headers and static hashes, no unsafe-inline, and no nonce on isolated preview routes. On 2026-10-26 Chrome DevTools again found the blocked Cloudflare bootstrap on the live homepage, Explore, Compose, Workbench, and a resource detail route; Lighthouse reported errors-in-console and inspector-issues on all five. See quality/evidence/step-45/public-v32/smoke.json, quality/evidence/step-45/public-v32/route-audit.json, quality/evidence/step-45/aud-342-local-source.json, and quality/evidence/step-45/performance/public-v32-traces.json. The latest successful Sites publish is v32; the local nonce fix has not been deployed, so deployed verification remains pending.",
+      "limitation": "The worker now adds a fresh cryptographic nonce to each public HTML script-src policy while preserving the strict hash allowlist and avoiding unsafe-inline. Local adapter regressions verify nonce rotation, unchanged decoded HTML, preserved cache/compression behavior, and isolation of preview routes. Hosted edge integration still requires deployed browser verification; the live v32 response does not yet carry the nonce and continues to log the blocked injected bootstrap. No security exception was weakened.",
       "afterScreenshots": [
         "quality/evidence/step-45/public-v32/home-1440x900.png",
         "quality/evidence/step-45/public-v32/compose-1440x900.png"
@@ -11288,7 +11288,7 @@
       ],
       "fixCommit": "7453815fc0d6e3c4fd80f3b5c85defe7821bb1c3",
       "status": "fixed-awaiting-deployed-verification",
-      "verification": "The desktop regression failed before the fix. It now passes on desktop and mobile (390x844); the mobile test opens the Command navigation and confirms the switch is present. Axe reports no label-content-name-mismatch, and the accessible name includes Lab and Off. Public v30 remains unchanged; deployed verification is pending."
+      "verification": "The desktop regression failed before the fix. It now passes on desktop and mobile (390x844); the mobile test opens the Command navigation and confirms the switch is present. Axe reports no label-content-name-mismatch, and the accessible name includes Lab and Off. On live Site v32, Chrome Lighthouse still finds the older aria-label=\"Laptop model Lab\" on the visible \"Laptop model LAB Off\" switch and reports label-content-name-mismatch. Repository source has removed that incomplete override; the saved/deployed Site still needs issue-specific verification. Live trace and Lighthouse evidence: quality/evidence/step-45/performance/public-v32-traces.json."
     },
     {
       "id": "AUD-351",
@@ -11405,7 +11405,89 @@
       "verification": "A focused regression failed against the old description before the copy change. After changing the shared recipe description to mention role, team, and goals and to explain tailoring the first workspace to employee needs, the focused Vitest file passes 7/7. The correction is local only; public v32 still serves the old text. The public v32 route sweep covered 31 paths at desktop and mobile (62 records): all returned HTTP 200 with no document overflow, uncaught exceptions, failed requests, unexpected HTTP statuses, or preview timeouts; the one CSP error on each page remains AUD-342. Evidence: quality/evidence/step-45/public-v32/route-audit.json. A production Astro build on the current working tree rendered the corrected description at /pages at both 1440x900 and 390x844; both routes returned HTTP 200 with zero console errors or failed requests. The after screenshots and machine record are quality/evidence/step-45/public-v32/onboarding-copy-local-after-{desktop,mobile}.* and onboarding-copy-local-after.json. This is local production-build evidence, not deployed verification.",
       "deploymentVersionObserved": 32,
       "deploymentScreenshot": "quality/evidence/step-45/public-v32/onboarding-copy-before-desktop-1440x900.png"
+    },
+    {
+      "id": "AUD-354",
+      "severity": "medium",
+      "route": "/",
+      "viewport": "390x844",
+      "category": "state",
+      "title": "Homepage structure selectors are active before their visible island hydrates",
+      "expected": "Structure mode buttons should remain disabled until the client island can handle a selection, then expose a clear ready state.",
+      "actual": "The public v32 server-rendered page returns an enabled Modular Cockpit button even with JavaScript disabled. The earlier mobile user flow clicked before the island handler was ready and the selected diagram did not update.",
+      "reproduction": [
+        "Open the public review Site at 390x844 with JavaScript disabled.",
+        "Scroll to the Screen Architecture Grammar section.",
+        "Inspect Modular Cockpit (Three-Pane): it is enabled despite having no client handler.",
+        "On a normal load, select the control immediately after it becomes visible; the selection can be lost before hydration."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "/",
+          "status": 200,
+          "note": "No script requests were made in the JavaScript-disabled capture."
+        }
+      ],
+      "screenshot": "quality/evidence/step-45/aud-354-mobile-before.png",
+      "rootCause": "StructureComparison is hydrated with client:visible but server-renders live-looking buttons without a disabled/readiness state, so an early activation occurs before React attaches handlers.",
+      "affectedCode": [
+        "apps/site/src/pages/index.astro",
+        "apps/site/src/components/home/StructureComparison.tsx",
+        "tests/e2e/home-structure-comparison-readiness.spec.ts"
+      ],
+      "fixCommit": "0ca9002b3318f5a42cf23eeb6f090f75e9952ffb",
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshots": [
+        "quality/evidence/step-45/aud-354-mobile-after.png"
+      ],
+      "verification": "The test-first no-JavaScript check failed against public v32 because the server-rendered selector was enabled. StructureComparison now renders disabled selectors and a polite loading explanation until its client effect marks the island ready. The fresh local Sites Worker browser regressions pass; they verify the no-JavaScript disabled state and that selecting Modular Cockpit updates aria-pressed and the visible diagram on desktop and mobile. The public Site remains v32, so deployed verification is pending. Fix commit: 0ca9002b3318f5a42cf23eeb6f090f75e9952ffb."
+    },
+    {
+      "id": "AUD-355",
+      "severity": "medium",
+      "route": "/",
+      "viewport": "390x844",
+      "category": "visual",
+      "title": "Homepage structure diagram clips layout panes on mobile",
+      "expected": "The illustrative layout diagram should expose every pane at phone width without hiding content outside its viewport.",
+      "actual": "On public v32 at 390x844, the diagram body measures 258px wide but has 392px of horizontal content while overflow is hidden. At 768x844, it measures 189px tall with 237px of vertical content, so the bottom of the wireframe is also clipped.",
+      "reproduction": [
+        "Open the public review Site at 390x844 and inspect the diagram body; its right side is hidden.",
+        "Open the public review Site at 768x844 and inspect the desktop wireframe; its content extends 48px below the visible body.",
+        "The before screenshots and measurements are stored in quality/evidence/step-45/aud-355-mobile-before.png, aud-355-mobile-before.json, and aud-355-768-before.*."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "/",
+          "status": 200,
+          "note": "The visual defect is present in the server-rendered page; no failed request was associated with it."
+        }
+      ],
+      "screenshot": "quality/evidence/step-45/aud-355-mobile-before.png",
+      "rootCause": "The wireframe uses a horizontal desktop flex row with fixed-width side panes and overflow-hidden at every viewport, so the pane widths exceed the narrow card body.",
+      "affectedCode": [
+        "apps/site/src/components/home/StructureComparison.tsx",
+        "tests/e2e/home-structure-comparison-readiness.spec.ts"
+      ],
+      "fixCommit": "0ca9002b3318f5a42cf23eeb6f090f75e9952ffb",
+      "status": "fixed-awaiting-deployed-verification",
+      "beforeScreenshots": [
+        "quality/evidence/step-45/aud-355-mobile-before.png",
+        "quality/evidence/step-45/aud-355-768-before.png"
+      ],
+      "afterScreenshots": [
+        "quality/evidence/step-45/aud-355-mobile-after.png",
+        "quality/evidence/step-45/aud-355-360-after.png",
+        "quality/evidence/step-45/aud-355-390-after.png",
+        "quality/evidence/step-45/aud-355-430-after.png",
+        "quality/evidence/step-45/aud-355-768-after.png",
+        "quality/evidence/step-45/aud-355-1024-after.png",
+        "quality/evidence/step-45/aud-355-1440-after.png"
+      ],
+      "verification": "The test-first local regression caught both horizontal clipping at phone width and a separate vertical clip at 768px. The responsive renderer now stacks panes below the 1024px breakpoint, uses a taller tablet frame, and keeps overflow visible. The fresh local Sites Worker matrix passes at 360, 390, 430, 768, 1024, and 1440 CSS pixels with scrollWidth equal to clientWidth and scrollHeight equal to clientHeight at every width; runtime errors were zero. Before/after screenshots and geometry are in quality/evidence/step-45/. The latest successful public deployment is v32, so deployed verification is pending. Fix commit: 0ca9002b3318f5a42cf23eeb6f090f75e9952ffb."
     }
   ],
-  "generatedAt": "2026-10-26T13:14:22.786Z"
+  "generatedAt": "2026-10-26T19:38:09.167Z"
 }
