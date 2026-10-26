@@ -47,6 +47,27 @@ describe('Sites host capability', () => {
     expect(staticHeaders).not.toMatch(/https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?\b/i);
   });
 
+  it('keeps the isolated preview policies separate from the public-page nonce', async () => {
+    const assetsEnv = {
+      ASSETS: {
+        fetch: async () => new Response('<!doctype html><html><head></head><body></body></html>', {
+          headers: { 'Content-Type': 'text/html; charset=utf-8' },
+        }),
+      },
+    } as unknown as Env;
+
+    for (const pathname of ['/preview', '/preview-content']) {
+      const response = await worker.fetch(
+        new Request(`https://example.test${pathname}`, { headers: { 'Sec-Fetch-Dest': 'iframe' } }),
+        assetsEnv,
+      );
+      const policy = response.headers.get('Content-Security-Policy') ?? '';
+      expect(policy).toContain('sandbox allow-scripts');
+      expect(policy).not.toMatch(/script-src[^;]*'nonce-/);
+      expect(response.headers.get('Cache-Control')).toMatch(/no-transform/i);
+    }
+  });
+
   it('preserves vetted HTML and its strict CSP without disabling transparent edge compression', async () => {
     const html = '<!doctype html><html><head></head><body><main>Verified page</main></body></html>';
     const assetsEnv = {
@@ -62,11 +83,21 @@ describe('Sites host capability', () => {
 
     const response = await worker.fetch(new Request('https://example.test/'), assetsEnv);
     const policy = response.headers.get('Content-Security-Policy') ?? '';
+    const scriptPolicy = policy.match(/script-src ([^;]*)/)?.[1] ?? '';
+    const nonce = scriptPolicy.match(/'nonce-[A-Za-z0-9+/]+=*'/)?.[0];
     expect(response.status).toBe(200);
     expect(await response.text()).toBe(html);
     expect(response.headers.get('Cache-Control')).toBe('public, max-age=0, must-revalidate');
     expect(response.headers.get('Cache-Control')).not.toMatch(/no-transform/i);
     expect(policy).toContain("script-src 'self'");
     expect(policy).not.toMatch(/script-src[^;]*unsafe-inline|unsafe-eval/i);
+    expect(nonce).toMatch(/^'nonce-[A-Za-z0-9+/]+=*'$/);
+    expect(html).not.toContain(nonce);
+
+    const secondResponse = await worker.fetch(new Request('https://example.test/'), assetsEnv);
+    const secondScriptPolicy = secondResponse.headers.get('Content-Security-Policy')?.match(/script-src ([^;]*)/)?.[1] ?? '';
+    const secondNonce = secondScriptPolicy.match(/'nonce-[A-Za-z0-9+/]+=*'/)?.[0];
+    expect(secondNonce).toMatch(/^'nonce-[A-Za-z0-9+/]+=*'$/);
+    expect(secondNonce).not.toBe(nonce);
   });
 });

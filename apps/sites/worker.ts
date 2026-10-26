@@ -6,6 +6,13 @@ import {
  SITE_INLINE_SCRIPT_HASHES,
  SITE_INLINE_STYLE_HASHES,
 } from './src/generated-preview-csp.js';
+
+function createCspNonce(): string {
+ const bytes = new Uint8Array(16);
+ crypto.getRandomValues(bytes);
+ return btoa(String.fromCharCode(...bytes));
+}
+
 export default {
  async fetch(request:Request,env:Env):Promise<Response> {
   const url=new URL(request.url);
@@ -41,7 +48,8 @@ export default {
   const common="object-src 'none'; base-uri 'self';";
   const inlineScriptHashes=PREVIEW_INLINE_SCRIPT_HASHES.join(' ');
   const inlineStyleHashes=PREVIEW_INLINE_STYLE_HASHES.join(' ');
-  const siteScriptSources=["'self'",...SITE_INLINE_SCRIPT_HASHES].join(' ');
+  const siteNonce=html && !previewContent && !previewWrapper ? createCspNonce() : undefined;
+  const siteScriptSources=["'self'",...SITE_INLINE_SCRIPT_HASHES,...(siteNonce ? [`'nonce-${siteNonce}'`] : [])].join(' ');
   const siteStyleSources=["'self'",...SITE_INLINE_STYLE_HASHES].join(' ');
   headers.set('Content-Security-Policy',previewContent
    ? `default-src 'none'; form-action 'none'; script-src ${origin}/_astro/ ${inlineScriptHashes}; style-src ${origin}/_astro/ ${inlineStyleHashes}; style-src-elem ${origin}/_astro/ ${inlineStyleHashes}; style-src-attr 'unsafe-inline'; img-src ${origin} data:; font-src ${origin} data:; connect-src ${origin}/_astro/; frame-src 'none'; sandbox allow-scripts; ${common}`
