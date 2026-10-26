@@ -1,0 +1,37 @@
+{
+  "id": "AUD-348",
+  "route": "/workbench",
+  "viewports": ["1440x900", "390x844"],
+  "category": "accessibility",
+  "rule": "agent-accessibility-tree",
+  "before": {
+    "host": "aside[role=dialog]",
+    "lighthouse": "Agentic Browsing accessibility-tree audit failed",
+    "playwright": "Regression failed at desktop and mobile"
+  },
+  "after": {
+    "host": "div[role=dialog][aria-modal=true]",
+    "playwright": "Passed at desktop and mobile",
+    "lighthouse": {
+      "device": "desktop",
+      "viewport": "1440x900",
+      "accessibility": 100,
+      "agenticBrowsing": 100,
+      "failedAudits": 0,
+      "report": "C:/Users/ismay/AppData/Local/Temp/chrome-devtools-mcp-fYALXJ/report.json"
+    },
+    "runtime": {
+      "consoleErrors": [],
+      "uncaughtExceptions": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    "screenshot": "audit/evidence/step-39/workbench-heading-order/replace-sites-chromium-after.png"
+  },
+  "beforeScreenshot": "audit/evidence/step-39/live-v30-aud346-2026-10-26/local-replace-drawer-390x844.png",
+  "regression": "tests/e2e/workbench-dialog-role-step-39.spec.ts",
+  "affectedCode": [
+    "packages/workbench/src/components/replace/ReplaceDrawer.tsx"
+  ],
+  "status": "fixed-awaiting-deployed-verification"
+}
