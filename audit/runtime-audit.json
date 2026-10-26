@@ -11348,8 +11348,8 @@
       ],
       "fixCommit": "aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9",
       "status": "fixed-awaiting-deployed-verification",
-      "verification": "Small-screen spacing was reduced while preserving all five wrapped presets. Local Playwright reports a 647.53px hero at 390x844 against a 759.6px limit, Compose bottom y=678.53, no horizontal overflow, and zero captured console, uncaught, failed-request, or HTTP errors. Exact-head CI run 40300330018 and Component Quality Gate Sandbox run 40300330012 passed on code candidate 5c2521bf75b72b86520ebfbfc4816aa50c6490a1. Sites v34 is saved from Site-source commit eedfa4e58ba38f497f90960f09167283d0a57f7c but is not deployed. The public Site remains v30, so issue-specific deployed verification is pending."
+      "verification": "Local preview checked on the current candidate: desktop 1440x900 and mobile 390x844 Home and Compose all returned HTTP 200. Document widths matched viewports; Home showed all five preset labels; Compose reached Catalogue ready and fetched /data/catalog.json once per load. No console errors or warnings, uncaught errors, failed requests, or HTTP errors were captured. Screenshots and request/error evidence: quality/evidence/step-45/sites-v35-preview/. Exact-head CI run 40308082017 and Component Quality Gate Sandbox run 40308082125 passed on code commit 7041e87641ee115e35c973a15d5d344ee2fb13db. Sites v35 is saved from source commit 23d73d008baf22c82a925770b5e2428abc42c030 but not deployed; public v30 remains live. This is local preview evidence only, so deployed verification is pending."
     }
   ],
-  "generatedAt": "2026-10-26T10:30:10.240Z"
+  "generatedAt": "2026-10-26T11:19:08.000Z"
 }

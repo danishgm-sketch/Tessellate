@@ -1,0 +1,111 @@
+{
+  "candidate": "Sites v35 local preview",
+  "canonicalCheckoutHeadAtCapture": "7041e87641ee115e35c973a15d5d344ee2fb13db",
+  "siteProjectId": "appgprj_6acc036de8cc8191a823339566972d85",
+  "savedVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_9ac26fefbc4c8191abcd3b7e4ce4dcc1",
+  "siteSourceCommit": "23d73d008baf22c82a925770b5e2428abc42c030",
+  "deploymentStatus": "saved-not-deployed",
+  "publicVersion": 30,
+  "publicUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "bindings": {
+    "d1": false,
+    "r2": false
+  },
+  "archive": {
+    "files": 1782,
+    "bytes": 55562240,
+    "sha256": "2aed63489f5774d31cfb6a347d64be28926b3961dc15175827cf70976b226e9e"
+  },
+  "baseUrl": "http://127.0.0.1:4337",
+  "capturedAt": "2026-10-26T11:20:10.671Z",
+  "routes": [
+    {
+      "route": "/",
+      "viewport": "1440x900",
+      "url": "http://127.0.0.1:4337/",
+      "pageStatus": 200,
+      "title": "Tessellate — Describe the product. Get the interface.",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "heroHeight": 656.25,
+      "presetLabels": [
+        "AI research terminal",
+        "luxury travel marketplace",
+        "playful HR platform",
+        "developer observability tool",
+        "minimalist finance app"
+      ],
+      "catalogueReady": false,
+      "catalogueRequests": 0,
+      "requests": 25,
+      "consoleIssues": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "home-1440x900.png"
+    },
+    {
+      "route": "/compose",
+      "viewport": "1440x900",
+      "url": "http://127.0.0.1:4337/compose",
+      "pageStatus": 200,
+      "title": "Compose — Tessellate Interface Intelligence",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "heroHeight": 60,
+      "presetLabels": [],
+      "catalogueReady": true,
+      "catalogueRequests": 1,
+      "requests": 22,
+      "consoleIssues": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "compose-1440x900.png"
+    },
+    {
+      "route": "/",
+      "viewport": "390x844",
+      "url": "http://127.0.0.1:4337/",
+      "pageStatus": 200,
+      "title": "Tessellate — Describe the product. Get the interface.",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "heroHeight": 647.53,
+      "presetLabels": [
+        "AI research terminal",
+        "luxury travel marketplace",
+        "playful HR platform",
+        "developer observability tool",
+        "minimalist finance app"
+      ],
+      "catalogueReady": false,
+      "catalogueRequests": 0,
+      "requests": 25,
+      "consoleIssues": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "home-390x844.png"
+    },
+    {
+      "route": "/compose",
+      "viewport": "390x844",
+      "url": "http://127.0.0.1:4337/compose",
+      "pageStatus": 200,
+      "title": "Compose — Tessellate Interface Intelligence",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "heroHeight": 100,
+      "presetLabels": [],
+      "catalogueReady": true,
+      "catalogueRequests": 1,
+      "requests": 22,
+      "consoleIssues": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "compose-390x844.png"
+    }
+  ]
+}

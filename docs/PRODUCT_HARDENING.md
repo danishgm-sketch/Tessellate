@@ -234,3 +234,20 @@ The Workbench startup correction is committed as `ad735b37cdc81966ff1ce5fe6d727e
 Current continuation note (2026-10-26, Step 45 CI remediation): the exact-head PR E2E/Axe job for `d22d5c269c622161dc494420eaef4fee3c030ba8` failed in both Chromium profiles because the wrapped homepage preset row pushed its 390×844 hero to 814.0625px, beyond the 759.6px first-viewport limit. The earlier local pass reused a stale preview from the primary checkout and was not accepted as candidate evidence. The candidate was rebuilt and tested on an isolated preview port. Small-screen-only spacing was reduced without hiding presets; the hero now measures 647.53px, all five preset labels fit, and Compose ends at y=678.53. The focused homepage rhythm/preset regressions pass 4/4 locally and record screenshot/network/error evidence under `audit/evidence/step-45/`. Full exact-head GitHub CI and Component Quality Gate Sandbox passed on code candidate `5c2521bf75b72b86520ebfbfc4816aa50c6490a1` (runs 40300330018 and 40300330012). Sites v34 is saved from Site-source commit `eedfa4e58ba38f497f90960f09167283d0a57f7c`, with no deployment attempt; the public Site remains v30 and the connector supplied no hosted preview image. Owner approval, deployment, and deployed re-audit remain outstanding. The broader 48-step hardening programme is not complete.
 
 Step 45 local revalidation (2026-10-26): fix `aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9` passes frozen install, catalogue generation (324/40 Gold), all 22 typechecks, lint, 1,220 unit tests (one configured skip), and `pnpm audit:all`. The Astro E2E half passes 324 tests/112 configured skips. The first `pnpm test:e2e` shell run stopped at the Sites Worker listener because port 4323 belonged to a separate primary-checkout preview; that process was left untouched. The full Sites Worker desktop/mobile constituents were then run at free port 4333 (179 passed/2 skips desktop; 141 passed/40 profile skips mobile), including the 324-resource/7-width desktop certification, and the Preview app passed 3/3. The exact-head CI and component sandbox passed on `5c2521bf75b72b86520ebfbfc4816aa50c6490a1`. Sites v34 is saved but remains undeployed; public v30 is unchanged.
+
+Current Step 45 continuation (2026-10-26): the release branch at the time of
+capture, `7041e87641ee115e35c973a15d5d344ee2fb13db`, passed exact-head GitHub CI
+(40308082017) and Component Quality Gate Sandbox (40308082125). The captured
+saved candidate is Sites v35, source mirror commit
+`23d73d008baf22c82a925770b5e2428abc42c030`, with no deployment attempt; the
+public Site remains v30. A fresh local Sites Worker preview at
+`http://127.0.0.1:4337/` returned HTTP 200 for Home and Compose at 1440×900 and
+390×844. Compose reached `Catalogue ready` and made one catalogue request per
+load. All four captures had matching viewport/document widths, with no console
+errors or warnings, uncaught errors, failed requests, or HTTP errors. Screenshots
+and machine-readable evidence are in
+`quality/evidence/step-45/sites-v35-preview/`. This does not count as deployed
+verification. AUD-352 and the other waiting findings remain fixed-awaiting
+deployed verification for the exact approved review deployment and its
+issue-specific re-audit; the 48-step
+programme is not complete.
