@@ -20,6 +20,9 @@ export default defineConfig({
     // Preview loading and protocol-ready messages need the Sites Worker CORS
     // policy; the plain Astro preview cannot load opaque-origin iframe assets.
     '**/catalogue-preview-loading-state.spec.ts',
+    // These navigation tests exercise trusted messages from opaque preview
+    // frames, so run them only against the production-like Sites Worker.
+    '**/preview-link-navigation.spec.ts',
     // This assertion depends on the Sites Worker redirect and response CSP;
     // plain Astro preview does not apply either header behavior.
     '**/sites-unknown-resource-preview.spec.ts',

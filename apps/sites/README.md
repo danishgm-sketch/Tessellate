@@ -42,9 +42,12 @@ starter Wrangler runtime cannot emulate a newer compatibility date locally.
   path, needed for the browser's fetch-based stylesheet preload in opaque frames.
 - Preview frames use opaque `sandbox="allow-scripts"` iframes, and the preview
   response repeats that restriction with CSP `sandbox allow-scripts` so direct
-  navigation also cannot access Site storage or submit forms. The preview CSP
-  explicitly sets `form-action 'none'`; public pages restrict form submission
-  to their own origin. Public compiled modules have
+  navigation also cannot access Site storage or submit forms. Resource links
+  pass through a typed message to the trusted host, which requires an explicit
+  confirmation click before following the validated destination; the renderer
+  receives no top-navigation permission. The preview CSP explicitly sets
+  `form-action 'none'`; public pages restrict form submission to their own
+  origin. Public compiled modules have
   wildcard CORS so those frames can import vetted resource code; no API or
   credential-bearing endpoint gets wildcard CORS.
 - The public app-shell policy permits only its documented same-origin and

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import {
   isParentToPreviewMessage,
+  type PreviewNavigationRequestMessage,
   type PreviewTheme,
   type PreviewDevice,
   type PreviewReadyMessage,
@@ -121,6 +122,40 @@ export default function PreviewHost() {
     window.addEventListener('message', handleMessage);
     return () => window.removeEventListener('message', handleMessage);
   }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || window.parent === window) return undefined;
+
+    const forwardLinkRequest = (event: MouseEvent) => {
+      if (!event.isTrusted || !(event.target instanceof Element)) return;
+      const anchor = event.target.closest<HTMLAnchorElement>('a[href]');
+      if (!anchor || anchor.hasAttribute('download')) return;
+
+      let destination: URL;
+      try {
+        destination = new URL(anchor.href, window.location.href);
+      } catch {
+        event.preventDefault();
+        return;
+      }
+      if (destination.protocol !== 'http:' && destination.protocol !== 'https:') {
+        event.preventDefault();
+        return;
+      }
+
+      event.preventDefault();
+      const message: PreviewNavigationRequestMessage = {
+        type: 'TESSELLATE_PREVIEW_NAVIGATION_REQUEST',
+        resourceId,
+        href: destination.href,
+      };
+      window.parent.postMessage(message, '*');
+    };
+
+    container.addEventListener('click', forwardLinkRequest);
+    return () => container.removeEventListener('click', forwardLinkRequest);
+  }, [component, resourceId]);
 
   useEffect(() => {
     const el = containerRef.current;

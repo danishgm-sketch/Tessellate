@@ -609,3 +609,12 @@ documented and covered by header and browser tests.
 **Security and compatibility impact:** Oversized collections are rejected before item validation and requests remain byte-bounded. Existing accepted manifests stay valid; product-scale limits allow up to 200 project screens and 200 children per node, with larger limits only for IDs, locks, edges, and evidence collections. Zod 3 type usage was migrated without changing the product's schema semantics.
 **Evidence:** `quality/STEP_37_EVIDENCE.md`, `quality/STEP_39_EVIDENCE.md`, `quality/evidence/step-39/`, and the malformed 25,000-entry collection schema regressions.
 **Status:** Implemented and locally verified; frozen install, dependency audit, unit tests, typecheck, lint, production build, behavioral release gate, and full Playwright suites pass. Public review verification remains pending.
+
+### D-062 — Route preview links through a host confirmation
+
+**Date:** 2026-10-25
+**Context:** The public v30 audit found that a resource's `/compose` CTA navigated only the small opaque preview iframe. Compose then ran with a `null` origin and could not fetch `/data/catalog.json`, leaving the user inside a broken miniature application.
+**Decision:** Keep both the iframe `sandbox="allow-scripts"` attribute and response-level CSP sandbox unchanged. The isolated renderer may send a bounded, typed navigation request only after a trusted anchor click. The app accepts it only from the expected iframe with its opaque `null` origin, validates the destination as HTTP(S), and displays an accessible confirmation link in the trusted host. Same-origin routes open in the host tab; external destinations open a new tab with `noopener noreferrer`. No automatic navigation or parent access is granted.
+**Security impact:** Preview origin, storage, API, network, and script isolation remain unchanged. Users explicitly approve each requested destination in the trusted host UI; the displayed destination is visible before following it.
+**Evidence:** `quality/evidence/step-39/deployed-v30-interactions/cta-product-preview-handoff-1440x900.png`, the failed-before browser regression in `tests/e2e/preview-link-navigation.spec.ts`, and the post-fix confirmation/navigation regression.
+**Status:** Implemented locally; public v30 remains affected until the next approved review deployment passes the same browser checks.

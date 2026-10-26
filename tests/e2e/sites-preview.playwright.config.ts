@@ -17,6 +17,7 @@ export default defineConfig({
     'gold-resource-action-completion.spec.ts',
     'inline-ai-rewrite-responsive.spec.ts',
     'preview-form-interactions.spec.ts',
+    'preview-link-navigation.spec.ts',
     'site-favicon.spec.ts',
     'documentation-keyboard-regression.spec.ts',
     'sites-preview-csp.spec.ts',

@@ -1,6 +1,7 @@
 import {
   isParentToPreviewMessage,
   isPreviewToParentMessage,
+  resolvePreviewNavigationDestination,
   type ParentToPreviewMessage,
 } from '@tessellate/catalog/protocol';
 
@@ -16,6 +17,14 @@ if (frame) {
 
   const pendingMessages = new Map<ParentToPreviewMessage['type'], ParentToPreviewMessage>();
   let contentReady = false;
+  const navigationRequest = document.querySelector<HTMLElement>('#preview-navigation-request');
+  const navigationLabel = document.querySelector<HTMLElement>('#preview-navigation-label');
+  const navigationLink = document.querySelector<HTMLAnchorElement>('#preview-navigation-link');
+  const dismissNavigation = document.querySelector<HTMLButtonElement>('#dismiss-preview-navigation');
+
+  dismissNavigation?.addEventListener('click', () => {
+    if (navigationRequest) navigationRequest.hidden = true;
+  });
 
   frame.addEventListener('load', () => {
     contentReady = true;
@@ -25,6 +34,18 @@ if (frame) {
 
   window.addEventListener('message', (event: MessageEvent<unknown>) => {
     if (event.source === frame.contentWindow && event.origin === 'null' && isPreviewToParentMessage(event.data)) {
+      if (event.data.type === 'TESSELLATE_PREVIEW_NAVIGATION_REQUEST') {
+        const destination = resolvePreviewNavigationDestination(event.data.href, window.location.origin);
+        if (!destination || !navigationRequest || !navigationLabel || !navigationLink) return;
+
+        navigationLabel.textContent = destination.label;
+        navigationLink.href = destination.href;
+        navigationLink.target = destination.external ? '_blank' : '_self';
+        if (destination.external) navigationLink.rel = 'noopener noreferrer';
+        else navigationLink.removeAttribute('rel');
+        navigationRequest.hidden = false;
+        return;
+      }
       window.parent.postMessage(event.data, '*');
       return;
     }

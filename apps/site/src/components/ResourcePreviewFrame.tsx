@@ -1,8 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import type { ResourceManifest } from '@tessellate/schemas';
-import { isPreviewToParentMessage } from '@tessellate/catalog/protocol';
-import type { PreviewDevice, PreviewTheme, PreviewUpdateMessage } from '@tessellate/catalog/protocol';
+import { isPreviewToParentMessage, resolvePreviewNavigationDestination } from '@tessellate/catalog/protocol';
+import type {
+  PreviewDevice,
+  PreviewNavigationDestination,
+  PreviewTheme,
+  PreviewUpdateMessage,
+} from '@tessellate/catalog/protocol';
 import { Monitor, Tablet, Smartphone, Sun, Moon, RotateCcw, Activity } from 'lucide-react';
+import { PreviewNavigationConfirmation } from './PreviewNavigationConfirmation';
 
 export interface ResourcePreviewFrameProps {
   manifest: ResourceManifest;
@@ -25,6 +31,7 @@ export function ResourcePreviewFrame({
   const [theme, setTheme] = useState<PreviewTheme>(initialTheme);
   const [reducedMotion, setReducedMotion] = useState<boolean>(false);
   const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [previewDestination, setPreviewDestination] = useState<PreviewNavigationDestination | null>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const initializedRef = useRef(false);
 
@@ -34,12 +41,18 @@ export function ResourcePreviewFrame({
         event.source !== iframeRef.current?.contentWindow ||
         event.origin !== 'null' ||
         !isPreviewToParentMessage(event.data) ||
-        event.data.type !== 'TESSELLATE_PREVIEW_READY' ||
-        event.data.resourceId !== manifest.slug ||
-        initializedRef.current
+        event.data.resourceId !== manifest.slug
       ) {
         return;
       }
+      if (event.data.type === 'TESSELLATE_PREVIEW_NAVIGATION_REQUEST') {
+        setPreviewDestination(
+          resolvePreviewNavigationDestination(event.data.href, window.location.origin),
+        );
+        return;
+      }
+      if (event.data.type !== 'TESSELLATE_PREVIEW_READY' || initializedRef.current) return;
+
       initializedRef.current = true;
       iframeRef.current?.contentWindow?.postMessage(
         {
@@ -83,6 +96,7 @@ export function ResourcePreviewFrame({
     setDevice('desktop');
     setTheme('light');
     setReducedMotion(false);
+    setPreviewDestination(null);
   };
 
   const deviceWidthClass = {
@@ -196,6 +210,13 @@ export function ResourcePreviewFrame({
           </button>
         </div>
       </div>
+
+      {previewDestination && (
+        <PreviewNavigationConfirmation
+          destination={previewDestination}
+          onDismiss={() => setPreviewDestination(null)}
+        />
+      )}
 
       {/* Frame Container */}
       <div className="min-h-[460px] max-h-[720px] bg-[var(--tess-canvas-strong,#ECE9E2)] p-4 flex items-center justify-center overflow-auto">

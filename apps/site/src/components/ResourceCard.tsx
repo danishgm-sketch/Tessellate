@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import {isGoldResource} from '@tessellate/catalog/gold';
-import { isPreviewToParentMessage } from '@tessellate/catalog/protocol';
+import { isPreviewToParentMessage, resolvePreviewNavigationDestination } from '@tessellate/catalog/protocol';
+import type { PreviewNavigationDestination } from '@tessellate/catalog/protocol';
 import type { ResourceManifest } from '@tessellate/schemas';
 import { Eye, Bookmark, ArrowUpRight, Copy, Check } from 'lucide-react';
+import { PreviewNavigationConfirmation } from './PreviewNavigationConfirmation';
 
 export interface ResourceCardProps {
   manifest: ResourceManifest;
@@ -26,6 +28,7 @@ export function ResourceCard({
   const [previewVisible,setPreviewVisible]=useState(false);
   const [previewLoaded,setPreviewLoaded]=useState(false);
   const [previewFailed,setPreviewFailed]=useState(false);
+  const [previewDestination,setPreviewDestination]=useState<PreviewNavigationDestination|null>(null);
   const previewFrameRef=useRef<HTMLIFrameElement>(null);
   useEffect(()=>{
     if(typeof IntersectionObserver==='undefined'){setPreviewVisible(true);return undefined;}
@@ -44,7 +47,9 @@ export function ResourceCard({
         !isPreviewToParentMessage(event.data) ||
         event.data.resourceId!==manifest.slug
       ) return;
-      if(event.data.type==='TESSELLATE_PREVIEW_READY'){
+      if(event.data.type==='TESSELLATE_PREVIEW_NAVIGATION_REQUEST'){
+        setPreviewDestination(resolvePreviewNavigationDestination(event.data.href,window.location.origin));
+      } else if(event.data.type==='TESSELLATE_PREVIEW_READY'){
         setPreviewLoaded(true);
         setPreviewFailed(false);
       } else if(event.data.type==='TESSELLATE_PREVIEW_ERROR'){
@@ -157,6 +162,13 @@ export function ResourceCard({
           </button>
         </div>
       </div>
+
+      {previewDestination && (
+        <PreviewNavigationConfirmation
+          destination={previewDestination}
+          onDismiss={() => setPreviewDestination(null)}
+        />
+      )}
 
       {actionError && <p role="alert" className="p-3 text-xs">{actionError}</p>}
       {/* Footer Info */}
