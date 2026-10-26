@@ -499,3 +499,51 @@ Gold), 22-package typecheck, lint, 1,220 unit tests (one skipped), all 16
 Astro tests, 309 Sites Worker desktop/mobile tests, and 3 isolated-preview
 tests (628 passed, 149 configured skips, zero failures). The public Site remains
 v30, so AUD-344 and AUD-345 still await issue-specific deployed verification.
+
+### 2026-10-26 continuation — public v32 spot verification
+
+The owner-approved Sites v32 is now live at the existing review URL from
+canonical commit `4eca97890e2d8182bcd72edfe5659997d4317c21` (Sites mirror
+`5533d1082b649ec4429bb356cdc91ab3e2f2daf5`). The Home and Compose spot checks
+returned HTTP 200 at 1440×900 and 390×844; Compose reached `Catalogue ready`
+and fetched `/data/catalog.json` once per fresh load. The saved Workbench
+project rendered without waiting for the catalogue; the Library 503/retry
+flow recovered and retained the project. This closes AUD-346 after deployed
+verification. Each checked public response still emits the blocked Sites
+bootstrap CSP error (AUD-342), and the mobile home still clips preset 3
+(AUD-351), so there were not zero browser console errors or zero visual
+defects. Evidence: `quality/evidence/step-45/public-v32/`. This spot check does
+not complete Step 39's copy/resource review or the full Step 45 public route,
+accessibility, flagship, and standalone-export audit.
+
+The expanded v32 route sweep captured all 26 requested product-shell routes plus
+five representative details at 1440×900 and 390×844 (31 paths / 62 captures).
+Every path returned HTTP 200 with no document overflow, uncaught exceptions,
+failed requests, unexpected HTTP status, or visible-preview timeout. The route
+records classify all 62 captures as DEGRADED because each response emits the
+same blocked platform CSP script error (AUD-342). Route screenshots and the
+machine record are under `quality/evidence/step-45/public-v32/routes/` and
+`quality/evidence/step-45/public-v32/route-audit.json`.
+
+This sweep also found AUD-353 on `/pages`: the Role-Based Onboarding recipe
+used the phrase “interface telemetry” for persona setup. Before screenshots at
+both viewports and the observed copy are in
+`quality/evidence/step-45/public-v32/onboarding-copy-before.json`. A focused
+composer test reproduced the bad phrase before the fix (1 failed, 6 passed),
+then passed after the shared page-composition description was corrected (7/7).
+The 733-page Astro production build passed; the corrected recipe rendered at
+desktop and mobile with HTTP 200, no console errors, and no failed requests.
+After screenshots and browser records are under
+`quality/evidence/step-45/public-v32/onboarding-copy-local-after-*`. The
+correction is local only; public v32 remains unchanged, so AUD-353 awaits
+issue-specific deployed verification. Step 39 and the full Step 45 audit remain
+in progress.
+
+The current working tree passes the full Vitest run at bounded concurrency
+(`pnpm exec vitest run --maxWorkers=4`: 1,221 passed, one configured skip),
+root typecheck, ESLint, production build, and `pnpm audit:all`. The audit passed
+all 16 behavioral gates, all 324 resource-isolation and licence/provenance
+checks, gzip bundle budgets, and security/dependency audits. The default
+parallel Vitest run had one artifact-isolation test timeout under contention;
+that test passed alone and the bounded full suite passed. This is local evidence
+only; no new Site version has been deployed.

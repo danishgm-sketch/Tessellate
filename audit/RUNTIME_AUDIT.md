@@ -2,7 +2,7 @@
 
 This register preserves the historical resource/renderer audit and adds the
 current production review audit. The current public baseline is ChatGPT Site
-v30 at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`; local fixes
+v32 at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`; local fixes
 are not considered closed until verified on a newly published Site. Evidence
 for the v24 and v25 route sweeps is in `evidence/v24/` and `evidence/v25/`, v26
 route, resource and flagship evidence is in `evidence/v26/`, and local post-fix
@@ -22,7 +22,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 352 findings (0 Critical, 67 High, 268 Medium, 17 Low): 40 closed after issue-specific deployed verification, 219 fixed locally and awaiting issue-specific deployed checks, 90 fixed and verified locally, 2 retain the legacy `fixed` status, and 1 remains open. Public v30 closes AUD-338 through AUD-341 and AUD-300 after issue-specific checks. AUD-342 records the Sites-injected CSP console error. AUD-343 is locally verified after reducing saved-project LCP with on-demand catalogue loading; the lab is not field data. AUD-344 and AUD-346 through AUD-352 await issue-specific deployed verification. AUD-345 is verified locally; AUD-342 remains open. Older findings remain pending their specific checks.
+**Current disposition:** 353 findings (0 Critical, 67 High, 269 Medium, 17 Low): 41 closed after issue-specific deployed verification, 219 fixed locally and awaiting issue-specific deployed checks, 90 fixed and verified locally, 2 retain the legacy `fixed` status, and 1 remains open. Public v30 closes AUD-338 through AUD-341 and AUD-300 after issue-specific checks. Public v32 additionally closes AUD-346. AUD-342 records the Sites-injected CSP console error and remains open. AUD-343 is locally verified after reducing saved-project LCP with on-demand catalogue loading; the lab is not field data. AUD-344, AUD-345, AUD-347 through AUD-353 await issue-specific deployed verification; AUD-351 and AUD-353 are still reproducible on v32. Older findings remain pending their specific checks.
 
 ## v26 deployed-site checkpoint
 
@@ -3644,7 +3644,7 @@ Public v30 interaction testing confirmed a core navigation failure in CTA Produc
 - **Reproduction:** Seed a valid saved employee-experience manifest, open `/workbench?project=<id>`, and hold `/data/catalog.json`. The deployed v30 path remains on its loading surface. In the local fixed build, verify the saved canvas appears first; open Library to request the catalogue. Then return HTTP 503 once, confirm the explanation and retained project, and retry.
 - **Root cause:** `WorkbenchShell` used `Promise.all` for browser storage and the entire catalogue before setting the saved manifest and clearing its loading state. Catalogue metadata is needed by discovery, resource inspection, replacement, sample generation, and imported showcase/resource routes, but is not needed to render an existing saved manifest.
 - **Affected code:** `packages/workbench/src/components/WorkbenchShell.tsx`, `packages/workbench/src/mutations/runtime-catalog.ts`, `packages/workbench/src/mutations/replace.ts`, `packages/workbench/src/components/left-panel/LibraryTab.tsx`, `packages/workbench/src/components/replace/ReplaceDrawer.tsx`, `packages/workbench/src/components/right-inspector/ResourceTab.tsx`, and `tests/e2e/performance-stress-step-38.spec.ts`.
-- **Remediation:** Restore saved projects independently. Load the validated catalogue on demand from Library, Resource details, or Replace, deduplicate concurrent requests, and show loading/error/retry state instead of false empty results. New sample generation and showcase/resource imports still load the catalogue before use. Fix commit: `ad735b37cdc81966ff1ce5fe6d727e4fd7cba959`. Exact-head GitHub CI and the Component Quality Gate Sandbox pass at canonical commit `4eca97890e2d8182bcd72edfe5659997d4317c21`; local built-Sites browser verification passed, including the intercepted 503 and successful retry at 1440×900 and saved-project recovery/usable replacement dialog at 390×844. Direct v30 browser reproduction remains open until a version containing the fix is publicly deployed. Additional live and local evidence: [`deployed-before.json`](evidence/step-39/live-v30-aud346-2026-10-26/deployed-before.json), [`local-fixed-sites-worker.json`](evidence/step-39/live-v30-aud346-2026-10-26/local-fixed-sites-worker.json), and the screenshots in the same directory.
+- **Remediation:** Restore saved projects independently. Load the validated catalogue on demand from Library, Resource details, or Replace, deduplicate concurrent requests, and show loading/error/retry state instead of false empty results. New sample generation and showcase/resource imports still load the catalogue before use. Fix commit: `ad735b37cdc81966ff1ce5fe6d727e4fd7cba959`. Exact-head GitHub CI and the Component Quality Gate Sandbox pass at canonical commit `4eca97890e2d8182bcd72edfe5659997d4317c21`. Public Sites v32 verification now closes this issue: the saved project appeared before a catalogue request, Library showed a recoverable state under an injected 503, and retry loaded Gold resources while preserving the project. Evidence: [`aud-346-live-verification.json`](../quality/evidence/step-45/public-v32/aud-346-live-verification.json) and the screenshots in that directory. The platform CSP console error is tracked separately as AUD-342.
 
 
 ### AUD-347 — Medium — Workbench resource details and replacement skip heading levels
@@ -3685,7 +3685,7 @@ Public v30 interaction testing confirmed a core navigation failure in CTA Produc
 - **Reproduction:** Open the public review homepage at 390×844 and inspect the Preset briefs row before scrolling it.
 - **Root cause:** `HeroComposer` kept the chips in one `flex-nowrap` row with `overflow-x-auto` below the 640px breakpoint.
 - **Affected code:** `apps/site/src/components/home/HeroComposer.tsx`, `tests/e2e/home-preset-chips-responsive-step-45.spec.ts`, and `tests/e2e/sites-preview.playwright.config.ts`.
-- **Remediation:** Let preset chips wrap at all widths. The red-to-green Sites Worker regression checks 360, 390, 430, 768, 1024, and 1440 CSS pixels and confirms the preset actions still update the product brief. Desktop and mobile browser profiles pass; the exhaustive Sites Worker resource matrix passes all 324 resources and 972 variants with zero findings. The initial combined Sites run had one transient `faq-searchable` preview-load timeout; the route passed alone and the exhaustive matrix passed on a full rerun. Public v30 remains unchanged pending the RC deployment. Fix commit: `097862d3785038f50e64523e5e946afa8d71c1b5`.
+- **Remediation:** Let preset chips wrap at all widths. The red-to-green Sites Worker regression checks 360, 390, 430, 768, 1024, and 1440 CSS pixels and confirms the preset actions still update the product brief. Desktop and mobile browser profiles pass; the exhaustive Sites Worker resource matrix passes all 324 resources and 972 variants with zero findings. The initial combined Sites run had one transient `faq-searchable` preview-load timeout; the route passed alone and the exhaustive matrix passed on a full rerun. Public v32 still clips the third preset because that version predates this fix. The saved v35 candidate contains the wrap and spacing fixes but has not been deployed. Fix commit: `097862d3785038f50e64523e5e946afa8d71c1b5`.
 
 ### AUD-352 — Medium — Wrapped homepage presets push the composer below the first viewport in Linux Chromium
 
@@ -3721,5 +3721,46 @@ and mobile browser profiles. The exhaustive Sites Worker certification passes
 combined Sites suite had one transient `faq-searchable` preview load timeout;
 the individual route and exhaustive matrix then passed. The local before/after
 screenshots and machine results are under `evidence/step-45/`. The exact fix
-commit still needs CI, a new saved version, owner review, public approval, and
-deployed re-audit before this issue can close.
+commit passed CI and was included in later saved candidates, but it is not
+present in public v32. A future public version containing the fix needs
+explicit owner approval and deployed re-audit before AUD-351 can close.
+
+## Public v32 deployment and post-deploy checks — 2026-10-26
+
+The owner approved the exact saved v32 version. It was deployed successfully
+from canonical source `4eca97890e2d8182bcd72edfe5659997d4317c21` (Sites source
+mirror `5533d1082b649ec4429bb356cdc91ab3e2f2daf5`) as deployment
+`appgdep_6adf44a090608191ab748b8458c150ec`. Public URL:
+https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ . Exact-head CI
+([40257364776](https://github.com/danishgm-sketch/Tessellate/actions/runs/40257364776))
+and Component Quality Gate Sandbox
+([40257364864](https://github.com/danishgm-sketch/Tessellate/actions/runs/40257364864))
+passed on the canonical source. No D1 or R2 bindings are configured.
+
+Post-deploy Playwright checks at 1440×900 and 390×844 opened Home and Compose;
+each response was HTTP 200, Compose reached `Catalogue ready`, and each fresh
+load requested `/data/catalog.json` once. The saved Workbench project opened
+before catalogue loading; opening Library under a deliberate first-request
+503 displayed a retry action and a successful retry loaded Gold resources
+without discarding the project. No uncaught application errors, failed
+essential requests, or unexpected HTTP statuses were recorded. One blocked,
+Sites-injected dynamic inline bootstrap error appears per response (AUD-342).
+At mobile width the third homepage preset is still visibly clipped (AUD-351).
+The subsequent route sweep visited all 26 requested shell routes plus
+representative resource, showcase, blueprint, tool and docs details at both
+viewports (31 routes / 62 captures). Every response was HTTP 200; the records
+show zero overflow, uncaught errors, failed requests, 4xx/5xx responses, and
+preview timeouts. Each of the 62 routes is classified DEGRADED because the
+host-injected CSP error is still present. Screenshots and records are under
+`../quality/evidence/step-45/public-v32/`.
+The v35 candidate with the responsive fix remains saved and undeployed; it has
+not been approved for publication. This is targeted verification, not a full
+route, Axe, flagship, or standalone-export re-audit, and Step 45 remains open.
+
+### AUD-353 — Medium — Role-onboarding page recipe describes telemetry
+
+- **Evidence:** Public v32 `/pages` returned HTTP 200 at 1440×900 and 390×844. Scrolling to “Role-Based Onboarding” shows: “Personalized onboarding questionnaire tailoring interface telemetry to developer, designer, or executive persona.” Before screenshots: [`desktop`](../quality/evidence/step-45/public-v32/onboarding-copy-before-desktop-1440x900.png), [`mobile`](../quality/evidence/step-45/public-v32/onboarding-copy-before-mobile-390x844.png); machine record: [`onboarding-copy-before.json`](../quality/evidence/step-45/public-v32/onboarding-copy-before.json). The 31-route sweep recorded the route at both widths and no failed requests; every page still has the separate CSP error (AUD-342).
+- **Reproduction:** Open `/pages`, scroll to the Role-Based Onboarding recipe, and read its description. Activating “Compose this architecture” includes that text in the brief.
+- **Root cause:** The shared static `PageCompositionDefinition` uses stale copy that confuses persona selection with telemetry instrumentation.
+- **Affected code:** `packages/composer/src/page-compositions.ts`, `packages/composer/src/__tests__/showcases-and-pages.test.ts`.
+- **Remediation:** Replace the text with a user-centered setup-flow description about role, team, goals and shaping the employee’s first workspace. The new focused regression failed before the correction and passes after it (7/7 tests). A production Astro build rendered the updated description at desktop and mobile with HTTP 200, no console errors and no failed requests; after screenshots and machine results are under `../quality/evidence/step-45/public-v32/onboarding-copy-local-after-*`. The current working tree passes the 1,221-test bounded-concurrency Vitest run, root typecheck, lint, production build, and all `audit:all` checks. Fix commit: `ab04ee1c0458c2642a9e07f9d5fb59fef3e4dc56`. The public v32 deployment still contains the old copy; this issue remains fixed-awaiting-deployed-verification until an approved version is checked.

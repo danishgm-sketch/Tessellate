@@ -1,10 +1,10 @@
 # Step 45 — Public review verification
 
-Status: in progress. Public Site v30 remains live. The code checkout used for this capture was `7041e87641ee115e35c973a15d5d344ee2fb13db`; exact-head CI and Component Quality Gate Sandbox passed on that commit (runs 40308082017 and 40308082125). Sites v35 is a saved, undeployed version from Sites source commit `23d73d008baf22c82a925770b5e2428abc42c030`; its saved archive contains 1,782 files / 55,562,240 bytes. Sites supplied no hosted preview URL or screenshot. A fresh local Sites Worker preview at `http://127.0.0.1:4337/` was captured at desktop 1440×900 and mobile 390×844 for Home and Compose. All four routes returned HTTP 200, document widths matched their viewport widths, Compose reached `Catalogue ready` and requested `/data/catalog.json` once per load, and there were no console errors or warnings, uncaught errors, failed requests, or HTTP errors. Screenshots and machine-readable results are in `quality/evidence/step-45/sites-v35-preview/`. The local preview is not a deployed verification. No version will be deployed until the owner approves that exact saved version.
+Status: in progress. Public Site v32 is live at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`, deployed with owner approval from canonical source `4eca97890e2d8182bcd72edfe5659997d4317c21` (Sites mirror `5533d1082b649ec4429bb356cdc91ab3e2f2daf5`). The v35 candidate from source `23d73d008baf22c82a925770b5e2428abc42c030` remains saved and undeployed. Its fresh local Sites Worker preview at `http://127.0.0.1:4337/` passed Home and Compose at 1440×900 and 390×844, but this is not deployed verification and v35 has not been approved for publication. v32 post-deploy evidence below records both a verified fix (AUD-346) and defects that remain visible (AUD-342, AUD-351). Step 45 remains open.
 
 ## Saved candidate capture — v35 local preview
 
-The v35 review preview was inspected at desktop 1440×900 and mobile 390×844. Home exposes all five preset labels at both sizes without horizontal overflow. Compose reaches `Catalogue ready` and requests `/data/catalog.json` once at each viewport. All four navigation responses were HTTP 200; browser console errors/warnings, uncaught errors, failed requests, and HTTP errors were zero. Evidence: `quality/evidence/step-45/sites-v35-preview/preview-audit.json` and the four viewport screenshots in the same directory. The candidate is saved, not deployed; public v30 is unchanged. This evidence is local preview evidence and does not close deployed-verification findings.
+The v35 review preview was inspected at desktop 1440×900 and mobile 390×844. Home exposes all five preset labels at both sizes without horizontal overflow. Compose reaches `Catalogue ready` and requests `/data/catalog.json` once at each viewport. All four navigation responses were HTTP 200; browser console errors/warnings, uncaught errors, failed requests, and HTTP errors were zero. Evidence: `quality/evidence/step-45/sites-v35-preview/preview-audit.json` and the four viewport screenshots in the same directory. The candidate is saved, not deployed; public v32 is the current Site. This evidence is local preview evidence and does not close deployed-verification findings.
 
 ## Baseline capture
 
@@ -187,14 +187,13 @@ Sites Worker test passes both desktop and mobile profiles.
 
 ### Release boundary and remaining work
 
-The current public deployment remains v30. The previously saved v33 is not the
-current candidate and must not be published. D1 and R2 remain null. The only
-open audit issue is AUD-342, a Sites-injected dynamic bootstrap script that
-strict CSP blocks on the public page; `unsafe-inline` was not added. After exact
-head CI passes, save and show a new version from the pushed source. Step 45
-remains open until the owner approves that exact version, the deployment is
-re-audited, and remaining release acceptance checks pass. No public deployment
-has been made from this candidate.
+The current public deployment is v32. D1 and R2 remain null. The strict CSP
+still blocks one Sites-injected dynamic bootstrap per response (AUD-342), and
+the 390px homepage still clips the third preset (AUD-351); `unsafe-inline` was
+not added. The saved v35 candidate contains the local preset wrapping and
+spacing corrections but is not deployed or approved. Step 45 remains open
+until those issues receive exact-version deployed verification and the full
+route, accessibility, flagship, responsive, and export acceptance checks pass.
 
 ### AUD-352: wrapped presets and first-viewport height
 
@@ -254,3 +253,48 @@ were run against code commit `aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9`.
 The full exact-head Linux CI and component sandbox passed on
 `5c2521bf75b72b86520ebfbfc4816aa50c6490a1`. Sites v34 is saved but not
 deployed; AUD-352 remains pending issue-specific deployed verification.
+
+### Public v32 post-deploy verification — 2026-10-26
+
+The owner approved the exact saved version v32. Sites reports deployment
+`appgdep_6adf44a090608191ab748b8458c150ec` succeeded at the existing public URL.
+It contains canonical source `4eca97890e2d8182bcd72edfe5659997d4317c21`
+(Sites source mirror `5533d1082b649ec4429bb356cdc91ab3e2f2daf5`). Exact-head CI
+run [40257364776](https://github.com/danishgm-sketch/Tessellate/actions/runs/40257364776)
+and Component Quality Gate Sandbox run
+[40257364864](https://github.com/danishgm-sketch/Tessellate/actions/runs/40257364864)
+passed. No D1 or R2 bindings are provisioned.
+
+Playwright loaded Home and Compose at 1440×900 and 390×844. All four route
+loads returned HTTP 200, viewport widths matched document widths, Compose
+reached `Catalogue ready`, and `/data/catalog.json` loaded once per fresh
+Compose route. The saved employee Workbench rendered before catalogue loading;
+Library then showed a retryable error when the first catalogue response was
+deliberately changed to HTTP 503, and the retry returned HTTP 200 and rendered
+Gold resources while leaving the project open. There were no uncaught app
+errors or failed essential requests. A follow-up sweep visited all 26 requested
+shell routes plus representative resource, showcase, blueprint, tool, and docs
+details at both viewport sizes: 31 routes / 62 captures. All returned HTTP 200
+with no overflow, uncaught exceptions, failed requests, unexpected HTTP
+statuses, or preview timeouts. Every route is classified DEGRADED because the
+same Sites-injected CSP error remains on each response (AUD-342). The mobile
+homepage screenshot confirms AUD-351 still clips the third preset. Scrolling
+the live `/pages` route exposed stale role-onboarding wording (AUD-353); the
+local copy correction passes its new red-to-green test and its production Astro
+preview at both viewports, but awaits deployment. Local after screenshots and
+browser records are in `quality/evidence/step-45/public-v32/onboarding-copy-local-after-*`.
+Captures, network records, and retry evidence are in
+`quality/evidence/step-45/public-v32/`. This is targeted verification; the
+complete public RC and flagship re-audit are not complete.
+
+### Local gate rerun after AUD-353 — 2026-10-26
+
+The current working tree passes `pnpm exec vitest run --maxWorkers=4` (1,221
+passed, one configured skip), root typecheck, ESLint, `pnpm build`, and
+`pnpm audit:all`. The audit reports 16/16 behavioral gates, 324/324 resource
+isolation and licence/provenance checks, all gzip bundle budgets within limits,
+and no security violations or dependency advisories. Vite still emits its raw
+chunk-size warning; the measured gzip route budgets pass. The public v32 site is
+unchanged. AUD-353, AUD-351 and AUD-342 still need exact-version deployed
+verification, and the complete flagship, accessibility and standalone-export
+re-audit is outstanding.

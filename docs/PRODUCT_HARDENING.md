@@ -63,6 +63,22 @@ Do not advance a checkbox merely because code exists. Record evidence and defect
 - [x] 38 Performance — local route and flagship-workload budgets pass. Fixed AUD-265: Compose no longer imports the full Workbench barrel; its eager bundle fell from 561.55 to 335.99 KiB gzip and cold JS transfer from 588,984 to 349,756 bytes (40.6%). Fixed AUD-266: Explore now defers sandboxed preview iframes until visible; desktop starts six visible previews instead of nine, and real scrolling still renders the next resource. Fixed AUD-281–282: the Explore skeleton passes Axe semantics and its pending search status follows the exact query/filter signature. The 2026-10-24 clean-checkout `pnpm test:e2e` run passed 550 tests with 149 configured skips and zero failures across Astro, Sites Worker, and isolated preview; all 324 resources and 40 Gold resources passed real-browser certification. A new Compose feedback regression passes desktop/mobile at 4× CPU. Chrome DevTools measured the Compose pointer interaction at 32 ms after the visible busy-frame fix, down from 299 ms; four-route cold traces at desktop/mobile recorded LCP 101–587 ms and CLS 0.00. No field INP/CrUX claim is made. The WebKit CSP policy allows only the exact hash for its sampled no-op `body {}` style; no `unsafe-inline` was added. The slow-network Explore workload and 30-screen/1,830-node Workbench pass within recorded budgets. Public v30 verifies the server-rendered startup fallback on a fresh 390×844 mobile load; AUD-338 is closed. The same deployment closes the reduced-motion iframe, Explore preview-state, and public HTML compression findings (AUD-339–341). AUD-343 tracks a medium 4× CPU mobile LCP lab watch (2.559–2.809 s; CrUX unavailable); AUD-342 remains the host-injected strict-CSP error recorded under Step 37. The 2026-10-25 full verification after this fix passed 1,216 unit tests (1 skipped), all 22 typechecks, lint, `audit:all`, and 616 browser tests (149 configured skips) across Astro, Sites Worker, and isolated preview; bundle budgets, licence/provenance, security and dependency audits passed. The Sites Worker rendered all 324 resources, and the Workbench fallback regression passed on desktop and mobile. Playwright Firefox still fails before navigation because Windows reports a missing `mozglue` dependent assembly; no Firefox route evidence exists. Real Safari is unavailable on this host. The recorded Step 38 local workload and v30 deployed trace gates are complete; long-session/history stress remains in the later stress-testing step, and field Web Vitals remain unavailable. See `quality/STEP_38_EVIDENCE.md` and `quality/evidence/step-38/after/`.
 - [ ] 39 Language/copy — in progress. The deployed-before review and local red/green browser work corrected misleading claims, illustrative samples, inert controls, inaccurate CLI/MCP setup text, and content that did not match rendered resource behavior (AUD-177, AUD-179–235, AUD-297–304). The 2026-10-25 public v30 follow-up captured 28 intended routes at desktop/mobile (56 HTTP 200 responses, no overflow, uncaught exceptions or route-sweep network failures); each route recorded the known Sites-injected CSP error (AUD-342). The homepage spectrum hydration guard works in v30 and closes AUD-300. The same visual review found a 390px preview-title wrap defect, fixed and regression-tested locally as AUD-345. A deployed CTA Product Preview interaction revealed frame-local Compose navigation and catalogue CORS failure (AUD-344); a host-confirmed navigation bridge now passes six desktop/mobile Sites Worker tests while preserving the sandbox, with public re-verification pending. On 2026-10-26 the full local gates passed: frozen install, catalogue build, 22-package typecheck, lint, 1,220 unit tests (one skipped), `audit:all`, production build, and 628 E2E tests with 149 configured skips across Astro, Sites Worker, and isolated preview. Public review fixes are not closed until a new Site version is deployed and audited.
 
+Latest Step 39 continuation (2026-10-26): the public v32 route sweep captured
+31 paths at 1440×900 and 390×844 (62 HTTP 200 responses, no overflow, uncaught
+errors, failed requests, unexpected statuses, or preview timeouts). All are
+classified DEGRADED because of the repeated Sites-injected CSP error (AUD-342).
+The mobile homepage still clips its third preset (AUD-351). The `/pages`
+copy scan found AUD-353, an onboarding recipe that refers to interface
+telemetry; its red-to-green composer test passes after correcting the shared
+description, and the 733-page Astro production build plus local desktop/mobile
+browser smoke passes. Deployed verification remains pending. Public v32 also verifies and
+closes AUD-346. The corrected working tree passes `pnpm exec vitest run --maxWorkers=4`
+(1,221 passed, one configured skip), `pnpm lint`, root `pnpm typecheck`, `pnpm build`,
+and `pnpm audit:all`; the latter checks all 16 behavioral gates, 324 resource isolation
+and provenance records, bundle budgets, security, and dependency advisories. E2E and
+deployed verification for the copy fix remain pending. See `quality/STEP_39_EVIDENCE.md`,
+`quality/STEP_45_EVIDENCE.md`, and `quality/evidence/step-45/public-v32/`.
+
 Current continuation note (2026-10-21): AUD-262 documents the real 360px Inline AI Rewrite overflow (316–317px content in a 292px preview) and the responsive correction (292px for all tones). The standalone exporter’s embedded Gold source was regenerated and has a fidelity regression. The latest complete `pnpm test:e2e` run completed without failures: Astro preview had 263 passed and 99 skipped; Sites Worker had 160 passed and 32 skipped; the isolated preview app had 3 passed. The Sites run rendered all 324 catalogue resources and passed the Gold accessibility, responsive, security-isolation, resource-truthfulness, and network-stress checks on its applicable desktop/mobile projects. The latest Vitest suite passes 1,143 tests in 76 files; full typecheck passes, lint has zero errors and 33 warnings, changed-file ESLint and `git diff --check` pass, and the latest `pnpm audit:all` passes all 16 release-gate checks. The Sites Worker audit also caught and fixed AUD-267, a native onSelect callback collision that had corrupted focused preview text fields; public review verification remains pending for Step 45. Chrome DevTools trace-based Core Web Vitals remain paused at the owner’s request. See `quality/STEP_39_EVIDENCE.md` and AUD-262 in `audit/runtime-audit.json`.
 - Current continuation note (2026-10-21): AUD-269 records a mobile homepage filter tap lost while its Astro island was waiting for `client:visible` hydration. The island now uses `client:load`; the Sites Worker regression verifies the first tap, list contents, ARIA state, and final selected colors. Focused desktop/mobile checks pass, and the full local E2E run after the runtime fix passed 433 tests with 134 configured skips. Public verification remains for Step 45.
 - Current Step 37 security follow-up (2026-10-21): the 324-resource static security-isolation matrix is now repeatable as `pnpm audit:resource-isolation` and is included in `pnpm audit:all`; the latest matrix passed 324/324 with zero findings. The registry-gate filtered package test command was repaired and passes 70/70. The full Vitest suite, typecheck, lint and local release audit pass; unauthenticated Cloudflare namespace and published-site checks remain open for later release verification.
@@ -82,8 +98,8 @@ Current continuation note (2026-10-21): AUD-262 documents the real 360px Inline 
 - [ ] 47 Final coherence audit — one manifest, terminology, engine and design system.
 - [ ] 48 Release — all final owner acceptance conditions and green protected main.
 
-Current continuation note (2026-10-26, Step 45 release-candidate audit): the
-public review Site remains v30. Sites v33 packages canonical source
+Earlier continuation note (2026-10-26, pre-publication Step 45 audit): at that
+checkpoint the public review Site was v30. Sites v33 packages canonical source
 `7d30a75b1770c79e5aa906b3e5e20f6801d306d3`, is saved but not deployed, and is
 superseded by the AUD-351 mobile homepage fix. The release branch contains
 `097862d3785038f50e64523e5e946afa8d71c1b5`; it wraps all five preset briefs at
@@ -104,6 +120,21 @@ inline script blocked by strict CSP. No security relaxation was made. D1/R2
 remain unbound. Step 45 stays open until exact-head CI, a new saved version,
 owner approval, and deployed re-audit; human usability testing remains Step 46.
 Evidence: `quality/STEP_45_EVIDENCE.md` and `audit/evidence/step-45/`.
+
+Latest Step 45 continuation (2026-10-26): the owner approved and Sites
+successfully deployed v32 from canonical source
+`4eca97890e2d8182bcd72edfe5659997d4317c21` (Sites mirror
+`5533d1082b649ec4429bb356cdc91ab3e2f2daf5`) to the existing public review URL.
+Exact-head CI and the component sandbox passed (runs 40257364776 and
+40257364864); no D1/R2 bindings exist. Public Home and Compose smokes at
+1440×900 and 390×844 reached HTTP 200 and Catalogue ready, with one catalogue
+fetch per Compose load. The deployed Workbench saved-project restore and
+Library failure/retry path close AUD-346. A fresh mobile capture still shows
+AUD-351, and each response emits the blocked platform-injected CSP script
+error tracked by AUD-342. The saved v35 candidate is not deployed or approved.
+This targeted check is not the full route/flagship/axe/export re-audit; Step 45
+remains incomplete. Evidence: `quality/STEP_45_EVIDENCE.md` and
+`quality/evidence/step-45/public-v32/`.
 
 ## Baseline exit gate
 
