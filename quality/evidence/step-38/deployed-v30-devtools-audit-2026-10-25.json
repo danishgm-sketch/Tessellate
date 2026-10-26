@@ -1,0 +1,229 @@
+{
+  "schemaVersion": "1.0.0",
+  "generatedAt": "2026-10-25T23:01:37.918Z",
+  "deployment": {
+    "siteVersion": "v30",
+    "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "deploymentId": "appgdep_6ade82e018c88191896a14c837910918",
+    "canonicalSourceCommit": "2a201f4d13dbf5d2339994fd14dc2fe92c3e92ff",
+    "sitesMirrorCommit": "775af0c92354e8fdf33af60b8c0cc31b396c0ab6",
+    "d1BindingProvisioned": false,
+    "r2BindingProvisioned": false
+  },
+  "method": {
+    "tool": "Chrome DevTools MCP / Chrome 156",
+    "desktop": "1440x900, 1x CPU, unthrottled network, cold route traces",
+    "mobile": "390x844, Fast 4G, 4x CPU (plus a 1x CPU Workbench comparison)",
+    "cwvLimit": "Lab traces are diagnostic. No CrUX or field percentile data is available.",
+    "screenshots": [
+      "quality/evidence/step-38/deployed-v30-home-1440x900.png",
+      "quality/evidence/step-38/deployed-v30-explore-1440x900.png",
+      "quality/evidence/step-38/deployed-v30-compose-1440x900.png",
+      "quality/evidence/step-38/deployed-v30-workbench-1440x900.png",
+      "quality/evidence/step-38/deployed-v30-home-390x844.png",
+      "quality/evidence/step-38/deployed-v30-explore-390x844.png",
+      "quality/evidence/step-38/deployed-v30-compose-390x844.png",
+      "quality/evidence/step-38/deployed-v30-workbench-390x844.png",
+      "quality/evidence/step-38/deployed-v30-fade-up-reveal-motion-before-1440x900.png",
+      "quality/evidence/step-38/deployed-v30-fade-up-reveal-motion-after-1440x900.png",
+      "quality/evidence/step-38/deployed-v30-fade-up-reveal-reduced-motion-status-1440x900.png"
+    ]
+  },
+  "routeTraces": {
+    "desktop": [
+      {
+        "route": "/",
+        "lcpMs": 284,
+        "ttfbMs": 42,
+        "renderDelayMs": 242,
+        "cls": 0
+      },
+      {
+        "route": "/explore",
+        "lcpMs": 187,
+        "ttfbMs": 42,
+        "renderDelayMs": 145,
+        "cls": 0
+      },
+      {
+        "route": "/compose",
+        "lcpMs": 266,
+        "ttfbMs": 126,
+        "renderDelayMs": 140,
+        "cls": 0
+      },
+      {
+        "route": "/workbench",
+        "lcpMs": 802,
+        "ttfbMs": 54,
+        "renderDelayMs": 748,
+        "cls": 0
+      }
+    ],
+    "mobile": [
+      {
+        "route": "/",
+        "viewport": "390x844",
+        "network": "Fast 4G",
+        "cpuSlowdown": 4,
+        "lcpMs": 772,
+        "ttfbMs": 56,
+        "renderDelayMs": 716,
+        "cls": 0
+      },
+      {
+        "route": "/explore",
+        "viewport": "390x844",
+        "network": "Fast 4G",
+        "cpuSlowdown": 4,
+        "lcpMs": 745,
+        "ttfbMs": 40,
+        "renderDelayMs": 705,
+        "cls": 0
+      },
+      {
+        "route": "/compose",
+        "viewport": "390x844",
+        "network": "Fast 4G",
+        "cpuSlowdown": 4,
+        "lcpMs": 792,
+        "ttfbMs": 42,
+        "renderDelayMs": 751,
+        "cls": 0
+      },
+      {
+        "route": "/workbench?project=proj-direction-c-51f60d5af8234b24b5986cea2a618433dirc",
+        "viewport": "390x844",
+        "network": "Fast 4G",
+        "cpuSlowdown": 4,
+        "lcpMs": 2559,
+        "ttfbMs": 41,
+        "renderDelayMs": 2517,
+        "cls": 0
+      },
+      {
+        "route": "/workbench (fresh isolated context)",
+        "viewport": "390x844",
+        "network": "Fast 4G",
+        "cpuSlowdown": 4,
+        "lcpMs": 2809,
+        "ttfbMs": 36,
+        "renderDelayMs": 2773,
+        "cls": 0
+      },
+      {
+        "route": "/workbench",
+        "viewport": "390x844",
+        "network": "Fast 4G",
+        "cpuSlowdown": 1,
+        "lcpMs": 1296,
+        "ttfbMs": 74,
+        "renderDelayMs": 1222,
+        "cls": 0
+      }
+    ]
+  },
+  "interactionMeasurements": {
+    "composeKeyboardInputINPMs": 18,
+    "directionCHandoffToWorkbenchMsApprox": 1790,
+    "workflow": "Exact employee-experience brief entered through the visible Compose UI; Employee Experience architecture with seven relevant screens and three distinct navigation/layout grammars; Direction C opened in Workbench."
+  },
+  "deployedStartupFallback": {
+    "route": "/workbench",
+    "viewport": "390x844",
+    "condition": "Fresh isolated browser context, Slow 4G, 4x CPU",
+    "fallbackVisibleAtApproxMsAfterNavigation": 1100,
+    "fallbackCopy": [
+      "Tessellate Workbench",
+      "LOCAL WORKSPACE",
+      "Preparing your local workspace",
+      "Loading your project and verified resource catalogue.",
+      "Open Compose"
+    ],
+    "fullWorkbenchVisibleAtApproxMsAfterNavigation": 4600,
+    "documentOverflow": false,
+    "note": "A first script probe ran before documentElement existed; the null-guarded rerun succeeded. Instrumentation TypeError from the discarded first probe is not an application error."
+  },
+  "networkAndResponseEvidence": {
+    "exploreDesktop": {
+      "requestCount": 108,
+      "statusCounts": {
+        "200": 101,
+        "304": 7
+      },
+      "failedRequests": 0,
+      "status4xx5xx": 0,
+      "catalogue": "GET /data/catalog.json returned 304",
+      "visiblePreviewFrames": 6
+    },
+    "fadeUpRevealMotionInteraction": {
+      "artifact": "quality/evidence/step-38/deployed-v30-fade-up-reveal-motion.json",
+      "requests": 41,
+      "statusCounts": {
+        "200": 41
+      },
+      "failedRequests": 0,
+      "previewDocumentResponsesBefore": 1,
+      "previewDocumentResponsesAfter": 1,
+      "iframeSrcChanged": false
+    },
+    "homeHtml": {
+      "status": 200,
+      "contentEncoding": "gzip",
+      "cacheControl": "public, max-age=0, must-revalidate",
+      "evidence": "Chrome DevTools response headers on v30"
+    },
+    "workbenchDesktop": {
+      "requests": 45,
+      "catalogue": "GET /data/catalog.json returned 304",
+      "inferenceHealth": "GET /api/inference/health returned 200",
+      "essentialFailuresObserved": 0
+    }
+  },
+  "consoleAndRuntime": {
+    "appExceptionsObserved": 0,
+    "hostCspErrorObserved": true,
+    "hostCspIssueId": "AUD-342",
+    "explanation": "ChatGPT Sites injects a per-response inline Cloudflare bootstrap whose hash is not in the static application CSP; the browser blocks it. No unsafe-inline relaxation was made. The app remains interactive and no extra external request was observed.",
+    "otherApplicationConsoleErrors": 0,
+    "uncaughtApplicationExceptions": 0
+  },
+  "targetedIssueChecks": [
+    {
+      "id": "AUD-338",
+      "result": "closed-deployed-verified",
+      "evidence": "The accessible Workbench fallback appeared in the deployed mobile cold-start probe before the editor finished initializing."
+    },
+    {
+      "id": "AUD-339",
+      "result": "closed-deployed-verified",
+      "evidence": "Toggle stayed within the same frame URL, then Replay Entrance announced that animation was skipped; see quality/evidence/step-38/deployed-v30-fade-up-reveal-motion.json."
+    },
+    {
+      "id": "AUD-340",
+      "result": "closed-deployed-verified",
+      "evidence": "Six visible isolated Explore previews rendered; lazy cards are labelled; 108 requests had no failures."
+    },
+    {
+      "id": "AUD-341",
+      "result": "closed-deployed-verified",
+      "evidence": "v30 homepage HTML response returned Content-Encoding: gzip while retaining the public cache policy."
+    },
+    {
+      "id": "AUD-342",
+      "result": "open",
+      "evidence": "Sites-injected inline bootstrap remains blocked by strict CSP; no safe repository-only change identified."
+    },
+    {
+      "id": "AUD-343",
+      "result": "open-medium-lab-watch",
+      "evidence": "4x CPU Fast 4G Workbench LCP measured 2559-2809ms; at 1x CPU it measured 1296ms; field CrUX is unavailable."
+    }
+  ],
+  "followUpAndLimits": [
+    "The Workbench 4x CPU mobile traces slightly exceed the 2.5s field p75 threshold, but lab data cannot establish field failure; no source-level hotspot or credible savings estimate was found.",
+    "AUD-342 is an external Sites runtime constraint and remains a real console error; strict CSP was not weakened.",
+    "No new Axe suite was run as part of this performance follow-up; prior version Axe results are historical and are not attributed to v30 here.",
+    "This evidence completes the Step 38 route/workload and deployed-trace scope only; the broader product-hardening programme remains in progress."
+  ]
+}

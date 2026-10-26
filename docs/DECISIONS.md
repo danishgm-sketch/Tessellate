@@ -618,3 +618,12 @@ documented and covered by header and browser tests.
 **Security impact:** Preview origin, storage, API, network, and script isolation remain unchanged. Users explicitly approve each requested destination in the trusted host UI; the displayed destination is visible before following it.
 **Evidence:** `quality/evidence/step-39/deployed-v30-interactions/cta-product-preview-handoff-1440x900.png`, the failed-before browser regression in `tests/e2e/preview-link-navigation.spec.ts`, and the post-fix confirmation/navigation regression.
 **Status:** Implemented locally; public v30 remains affected until the next approved review deployment passes the same browser checks.
+
+### D-063 — Restore saved Workbench projects before loading the catalogue
+
+**Date:** 2026-10-26
+**Context:** Chrome DevTools traces showed that saved-project startup waited on the full 324-resource catalogue request, and a failed catalogue request prevented an otherwise valid browser-local project from opening. The catalogue is not required to render an existing Gold-resource manifest.
+**Decision:** Restore and render saved manifests independently of the catalogue. Load the validated catalogue only when Library, Resource details, Replace, first-run sample generation, or an imported showcase/resource requires it. Deduplicate concurrent catalogue requests, preserve a saved project when the request fails, and show truthful loading/error/retry states in catalogue-backed panels.
+**Security and cost impact:** Keeps Gold-only main-origin rendering and the existing preview isolation. No D1/R2, paid service, or hosted runtime is added. The full catalogue remains schema-validated before use.
+**Evidence:** `quality/STEP_38_EVIDENCE.md`, `quality/evidence/step-38/after/catalogue-lazy-load/`, and the red-to-green Workbench desktop/mobile Playwright regression.
+**Status:** Implemented locally; public v30 remains affected until an approved newer Site passes the same issue-specific checks.

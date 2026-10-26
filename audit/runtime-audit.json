@@ -11007,13 +11007,13 @@
       "route": "/workbench",
       "viewport": "390x844",
       "category": "performance",
-      "title": "Workbench LCP exceeds 2.5 seconds under 4x CPU mobile lab emulation",
+      "title": "Workbench client rendering dominates mobile LCP under synthetic CPU throttling",
       "expected": "Workbench should reach useful content promptly on mobile. The 2.5s LCP threshold is a field p75 target; this synthetic lab run is diagnostic and cannot establish a field Core Web Vitals failure.",
-      "actual": "Public v30 Chrome DevTools Fast 4G lab traces at 390x844 measured LCP 2,559ms for the saved Direction C project and 2,809ms in a fresh isolated context. At 1x CPU the same route measured 1,296ms. CLS was 0 in all three runs. In the 4x CPU traces, render delay accounted for 2,517ms and 2,773ms respectively while TTFB was 41ms and 36ms; 98.4–98.7% of LCP was render delay. The server-rendered loading fallback was visible during startup and the full Workbench loaded. No CrUX/field data is available, and DevTools did not identify a specific source hotspot or estimated saving.",
+      "actual": "Public v30 Chrome DevTools Fast 4G lab traces at 390x844 measured LCP 2,559ms for the saved Direction C project and 2,809ms in a fresh isolated context. A source review then found the full catalogue fetch blocked saved-project restoration. After deferring that optional request, three local Sites Worker cold traces measured 2,176ms, 2,126ms, and 2,162ms; CLS remained 0, TTFB was 6–11ms, and no catalogue request appeared before the saved canvas rendered. The remaining render delay is about 2.1 seconds and Chrome reported no estimated savings. No CrUX/field data is available.",
       "reproduction": [
-        "Open the public v30 /workbench route at 390x844 in a fresh browser context.",
-        "Record a cold route trace with Fast 4G network emulation and 4x CPU slowdown.",
-        "Repeat for the saved Direction C project and in a new isolated context; compare with a 1x CPU run."
+        "For the deployed baseline, open public v30 /workbench at 390x844 with Fast 4G and 4x CPU emulation and record a cold trace.",
+        "For the fixed candidate, seed a valid saved browser project, apply the same emulation, and record three cold Sites Worker traces.",
+        "Verify that the saved canvas opens before /data/catalog.json is requested; open Library and verify the catalogue is then requested."
       ],
       "console": [
         "No application exception was observed. The Sites-injected inline bootstrap emits the separate CSP error recorded in AUD-342."
@@ -11022,9 +11022,18 @@
         "The fallback appears while the client editor loads. Desktop Workbench essential requests returned 200 or cached 304; no essential failed request was observed in the sampled workflow."
       ],
       "screenshot": "quality/evidence/step-38/deployed-v30-workbench-390x844.png",
-      "rootCause": "The Workbench shell is client-rendered and needs to initialize local project state, the catalogue, and the editor before its main canvas is available. The trace attributes nearly all of the measured LCP to client render delay, but does not isolate a source-level hot path or a reliable intervention. Keep as a medium lab-only follow-up; do not infer a field failure from synthetic CPU throttling.",
+      "rootCause": "WorkbenchShell awaited loadBrowserProject and the full 324-resource catalogue in Promise.all before installing the saved manifest in the editor. The catalogue is needed for new sample generation, showcase/resource imports, Library, and replacement; it is not needed to restore and render a valid saved manifest.",
+      "affectedCode": [
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "packages/workbench/src/mutations/runtime-catalog.ts",
+        "packages/workbench/src/components/left-panel/LibraryTab.tsx",
+        "packages/workbench/src/components/replace/ReplaceDrawer.tsx",
+        "packages/workbench/src/components/right-inspector/ResourceTab.tsx",
+        "tests/e2e/performance-stress-step-38.spec.ts"
+      ],
       "fixCommit": null,
-      "status": "open"
+      "status": "fixed-local-verified",
+      "verification": "A red-to-green Sites Worker regression blocks /data/catalog.json and proves that a valid saved project renders first at 1440x900 and 390x844, with zero catalogue requests before the saved canvas. Opening Library then issues exactly one request and displays Gold resources. Three independent local Chrome DevTools traces at 390x844, Fast 4G, and 4x CPU measured LCP 2,126–2,176ms and CLS 0. Axe returned zero violations; console errors, uncaught exceptions, failed requests, and unexpected HTTP errors were zero. The full local browser error/retry regression injects HTTP 503, confirms the project remains open with a retryable explanation, and then recovers on retry. Public v30 remains unchanged; deployed confirmation is required before this issue can be closed."
     },
     {
       "id": "AUD-344",
@@ -11111,7 +11120,45 @@
       "fixCommit": null,
       "status": "fixed-local-verified",
       "verification": "A user-visible Sites Worker browser regression failed before the CSS change with a 60px title box, then passed after the mobile header stacks title and badges while retaining the original desktop row. The post-fix mobile screenshot was visually inspected. The test reports no uncaught exceptions, failed requests, or HTTP errors. The visual correction awaits public review verification."
+    },
+    {
+      "id": "AUD-346",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900 and 390x844",
+      "category": "performance",
+      "title": "Saved Workbench projects cannot open while the full catalogue request is pending or unavailable",
+      "expected": "A valid browser-local project should open without waiting for catalogue data; catalogue-backed discovery and replacement should load on demand and fail with a recoverable message.",
+      "actual": "On the deployed v30 code path, Workbench awaited browser-project restoration and /data/catalog.json together before rendering the saved manifest. If the catalogue was slow, the saved project remained behind a loading state; if it failed, Workbench showed a startup error even though the project data was local and valid. The catalogue is not required to render a saved Gold-resource manifest.",
+      "reproduction": [
+        "Seed a valid employee-experience ProjectManifest in browser storage and open /workbench?project=<saved-id>.",
+        "Delay /data/catalog.json; the current deployed v30 route does not show the saved project until the catalogue responds.",
+        "In the fixed Sites Worker, verify the project opens before any catalogue request; open Library to trigger lazy loading.",
+        "Return HTTP 503 for the first Library catalogue request, verify the project stays open and the UI explains the limitation, then retry and verify resources appear."
+      ],
+      "console": [],
+      "network": [
+        "Before: saved-project restoration and the full 324-resource catalogue request were coupled by Promise.all.",
+        "After: zero catalogue requests before the saved Workbench renders; one request when Library opens; deliberate first-attempt 503 is shown and retried successfully."
+      ],
+      "screenshot": "quality/evidence/step-38/after/catalogue-lazy-load/workbench-sites-mobile-chromium.png",
+      "beforeScreenshot": "quality/evidence/step-38/deployed-v30-workbench-390x844.png",
+      "afterScreenshot": "quality/evidence/step-38/after/catalogue-lazy-load/workbench-sites-mobile-chromium.png",
+      "rootCause": "WorkbenchShell included full-catalogue fetch and validation in Promise.all with local project restoration, then kept the whole editor behind the shared loading state. Catalogue-backed Library, Resource metadata, replacement, first-run sample generation, and imported showcase/resource routes were not separated from saved-manifest rendering.",
+      "affectedCode": [
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "packages/workbench/src/mutations/runtime-catalog.ts",
+        "packages/workbench/src/mutations/replace.ts",
+        "packages/workbench/src/components/left-panel/LibraryTab.tsx",
+        "packages/workbench/src/components/replace/ReplaceDrawer.tsx",
+        "packages/workbench/src/components/right-inspector/ResourceTab.tsx",
+        "tests/e2e/performance-stress-step-38.spec.ts"
+      ],
+      "fixCommit": "ad735b37cdc81966ff1ce5fe6d727e4fd7cba959",
+      "status": "fixed-awaiting-deployed-verification",
+      "verification": "The new Sites Worker browser regression failed before the fix in both desktop and mobile profiles, then passed after it. Saved canvas visible time was 2,132ms desktop and 965ms mobile with zero initial catalogue requests; catalogue request occurred only after opening Library. Axe reported zero violations, and there were zero console errors, uncaught exceptions, failed requests, or unexpected HTTP responses. A separate browser regression injected a first-attempt 503, confirmed the saved project remained usable and the error was explained, then retried successfully and displayed Gold resources. Three cold local Chrome DevTools traces with 4x CPU and Fast 4G measured 2,126–2,176ms LCP, 6–11ms TTFB, 2,119–2,170ms render delay, and CLS 0. The static and Sites Worker builds pass. The implementation is committed as ad735b37cdc81966ff1ce5fe6d727e4fd7cba959. The public Site remains v30; deployed closure is pending an approved newer version.",
+      "limitation": "The test intercepts /data/catalog.json as a slow or failed request; the saved canvas renders because resource implementations are already restricted to the validated Gold runtime. New-project sample generation and imported resource/showcase routes still require catalogue availability, and continue to report startup failure if that required catalogue cannot be loaded."
     }
   ],
-  "generatedAt": "2026-10-25T23:49:20Z"
+  "generatedAt": "2026-10-26T02:04:18Z"
 }

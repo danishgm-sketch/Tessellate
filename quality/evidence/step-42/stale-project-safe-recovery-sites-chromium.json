@@ -2,7 +2,7 @@
   "step": 42,
   "id": "stale-project-safe-recovery",
   "status": "pass",
-  "url": "http://127.0.0.1:4323/workbench/?project=stale-step-42-2f56951c-e15e-4d39-8257-fd01662ab92b",
+  "url": "http://127.0.0.1:4323/workbench/?project=stale-step-42-4560b493-c300-4688-86c0-2b7d386499f5",
   "viewport": {
     "width": 1440,
     "height": 900
@@ -13,6 +13,7 @@
     "missingProjectReported": true,
     "editingPaused": true,
     "starterProjectNotCreated": true,
+    "retryKeepsMissingProjectIdentity": true,
     "unrelatedManifestExportNotOffered": true,
     "axeViolations": 0,
     "noHorizontalOverflow": true
