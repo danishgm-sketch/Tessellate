@@ -96,9 +96,9 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
   };
 
   return (
-    <section className="relative pt-8 pb-10 px-6 max-w-[1440px] mx-auto select-none md:pt-12 md:pb-12">
+    <section className="relative pt-4 pb-5 px-6 max-w-[1440px] mx-auto select-none sm:pt-8 sm:pb-10 md:pt-12 md:pb-12">
       {/* Kicker badge */}
-      <div className="flex items-center gap-2.5 mb-3 sm:mb-6">
+      <div className="flex items-center gap-2.5 mb-2 sm:mb-6">
         <span className="h-2 w-2 rounded-full bg-[#C9FF57] ring-4 ring-[#C9FF57]/20" />
         <span className="font-mono text-xs font-semibold tracking-wider text-[#62666F] uppercase">
           Open Interface Intelligence
@@ -106,8 +106,8 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
       </div>
 
       {/* Hero Headline and Subhead */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-end mb-7 sm:mb-12">
-        <div className="lg:col-span-8 space-y-4">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-8 items-end mb-5 sm:mb-12">
+        <div className="lg:col-span-8 space-y-3 sm:space-y-4">
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-[#111217] leading-[1.04]">
             Describe the product.<br />
             Get the interface.
@@ -142,10 +142,10 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
         {/* Main Composer Instrument Card */}
         <form
           onSubmit={handleComposeSubmit}
-          className="xl:col-span-9 bg-white border border-[#D9D6CF] rounded-[20px] p-4 sm:p-7 shadow-[0_18px_30px_rgba(17,18,23,0.08)] transition-all hover:border-[#C7C3BA]"
+          className="xl:col-span-9 bg-white border border-[#D9D6CF] rounded-[20px] p-3 sm:p-7 shadow-[0_18px_30px_rgba(17,18,23,0.08)] transition-all hover:border-[#C7C3BA]"
         >
           {/* Header row */}
-          <div className="flex items-center justify-between pb-3">
+          <div className="flex items-center justify-between pb-2 sm:pb-3">
             <span className="font-mono text-[11px] font-semibold tracking-wider text-[var(--text-muted)] uppercase">
               Product Brief
             </span>
@@ -170,7 +170,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
           />
 
           {/* Separator */}
-          <div className="h-px bg-[#E5E2DC] my-3 sm:my-4" />
+          <div className="h-px bg-[#E5E2DC] my-2 sm:my-4" />
 
           {/* Bottom Tool Row */}
           <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
