@@ -1,0 +1,69 @@
+{
+  "capturedAt": "2026-10-26T09:28:53Z",
+  "issue": "AUD-352",
+  "branch": "release/v1-utility-rc1",
+  "baseCommit": "d22d5c269c622161dc494420eaef4fee3c030ba8",
+  "candidateCodeCommit": "aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9",
+  "fixCommit": "aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9",
+  "deployment": {
+    "publicVersion": 30,
+    "candidateSaved": false,
+    "candidateDeployed": false,
+    "d1Bound": false,
+    "r2Bound": false
+  },
+  "checks": {
+    "frozenInstall": "pass",
+    "catalogueBuild": { "status": "pass", "resources": 324, "gold": 40 },
+    "typecheck": { "status": "pass", "workspacePackages": 22 },
+    "lint": "pass",
+    "unitTests": { "status": "pass", "passed": 1220, "configuredSkips": 1 },
+    "auditAll": {
+      "status": "pass",
+      "behavioralGates": "16/16",
+      "resourceIsolation": "324/324",
+      "licenseProvenance": "324/324",
+      "securityViolations": 0,
+      "dependencyAdvisories": 0,
+      "gzipBudgets": "pass",
+      "astroPages": 733
+    },
+    "playwright": {
+      "astro": { "status": "pass", "passed": 324, "configuredSkips": 112 },
+      "sitesWorkerDesktop": {
+        "status": "pass",
+        "passed": 179,
+        "configuredSkips": 2,
+        "resourceCertification": { "resources": 324, "viewports": [360, 390, 430, 768, 1024, 1280, 1440] }
+      },
+      "sitesWorkerMobile": { "status": "pass", "passed": 141, "configuredSkips": 40 },
+      "previewApp": { "status": "pass", "passed": 3, "configuredSkips": 0 },
+      "packageCommand": {
+        "status": "environment-port-collision",
+        "detail": "Astro suite passed. The Sites Worker phase could not bind default port 4323 because a separate preview from the primary checkout already owned it. No process was stopped; desktop and mobile Sites Worker suites were rerun independently on 4333 and passed, followed by the preview-app suite."
+      }
+    }
+  },
+  "home390x844": {
+    "url": "http://localhost:4322/",
+    "pageStatus": 200,
+    "fontsStatus": "loaded",
+    "heroHeight": 647.53125,
+    "heroLimit": 759.6,
+    "composeBottom": 678.53125,
+    "documentWidth": 390,
+    "presetClientWidth": 342,
+    "presetScrollWidth": 342,
+    "presetLabels": 5,
+    "consoleErrors": 0,
+    "uncaughtErrors": 0,
+    "failedRequests": 0,
+    "httpErrors": 0,
+    "screenshot": "audit/evidence/step-45/aud-352-home-mobile-390-after.png"
+  },
+  "limitations": [
+    "The first exact-head GitHub PR E2E/Axe job failed the home hero viewport assertion at 814.0625px in Linux Chromium. Its retry repeated the result; the CI job uploaded no screenshot or browser console/network details.",
+    "The spacing fix has not yet been verified by exact-head Linux GitHub CI.",
+    "The deployed public Site remains v30 and has not verified this change."
+  ]
+}

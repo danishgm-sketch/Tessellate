@@ -191,3 +191,56 @@ head CI passes, save and show a new version from the pushed source. Step 45
 remains open until the owner approves that exact version, the deployment is
 re-audited, and remaining release acceptance checks pass. No public deployment
 has been made from this candidate.
+
+### AUD-352: wrapped presets and first-viewport height
+
+The first exact-head GitHub PR run for `d22d5c269c622161dc494420eaef4fee3c030ba8`
+failed the pre-existing `home-visual-rhythm-step-40` regression in both
+Chromium projects. Linux Chromium reported an 814.0625px hero at 390×844,
+exceeding the 759.6px threshold; the test retry reproduced the same measurement.
+The job ran 322 tests successfully and did not publish a screenshot artifact or
+record browser-console/network details for the failed assertion. See
+`audit/runtime-audit.json` / AUD-352 and the [exact PR workflow run](https://github.com/danishgm-sketch/Tessellate/actions/runs/40290991268).
+
+Root cause: the AUD-351 label fix changed the preset list from a single clipped
+line to three visible lines. With Linux system-font metrics, the additional
+height regressed the first-viewport composer target. `HeroComposer` now reduces
+only small-screen vertical spacing; chip labels still wrap and remain visible,
+while spacing at tablet/desktop breakpoints is retained. The focused rhythm and
+preset regressions pass 4/4 on a freshly built isolated preview. The captured
+390×844 browser reports a 647.53px hero, Compose bottom at y=678.53, 342px
+client/scroll widths for the preset row, five complete labels, HTTP 200, no
+document overflow, no console/page errors, no failed requests, and no HTTP
+errors. After screenshot and measurements:
+`audit/evidence/step-45/aud-352-home-mobile-390-after.png` and
+`audit/evidence/step-45/aud-352-home-mobile-390-after.json`.
+
+The exact-head Linux CI rerun is still required to verify the corrected system
+font layout. The public Site remains v30; this candidate is not saved or
+deployed.
+
+### Corrected candidate local revalidation — 2026-10-26
+
+The corrected working tree passed frozen dependency install, catalogue build
+(324 resources, 40 Gold), typecheck (22 workspace packages), ESLint, 1,220 unit
+tests (one configured skip), and `pnpm audit:all` (16/16 behavioral gates,
+324/324 resource isolation and licence/provenance, no security violations or
+dependency advisories, bundle budgets, and 733-page production build). The
+standalone default `pnpm test:e2e` invocation completed the Astro suite with
+324 passes and 112 configured skips, then could not bind the default Sites
+Worker port 4323 because an unrelated preview from the primary checkout was
+already using it. No existing process was stopped. The remaining constituents
+were rerun independently with `SITES_PREVIEW_BASE_URL=http://127.0.0.1:4333`:
+Sites Worker desktop passed 179 with 2 configured skips, including all 324
+catalogue resources at 360/390/430/768/1024/1280/1440 widths; Sites Worker
+mobile passed 141 with 40 profile-specific skips; the isolated Preview app
+passed 3 with no skips. Exact command output is local machine evidence; CI is
+still needed for Linux font metrics.
+
+The fixed candidate browser evidence is at
+`audit/evidence/step-45/aud-352-home-mobile-390-after.json` and its screenshot.
+It records HTTP 200, 647.53px hero height against 759.6px, Compose ending at
+y=678.53, five visible presets without horizontal overflow, and zero captured
+console errors, uncaught errors, failed requests, and HTTP errors. These checks
+were run against code commit `aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9`.
+AUD-352 remains pending exact-head Linux CI and deployment verification.

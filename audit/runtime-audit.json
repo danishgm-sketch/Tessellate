@@ -2086,7 +2086,7 @@
         "packages/composer"
       ],
       "remediation": "The local composition pipeline now applies each direction's navigation model and layout grammar to the manifest. The browser regression checks A/B/C root semantics, navigation, screen graph, resource references, rendered geometry, diagnostics, and runtime/network state. Repeat the same visible comparison on the published review Site at Step 45.",
-      "fixCommit": null,
+      "fixCommit": "aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9",
       "status": "fixed-awaiting-deployed-verification",
       "latestDeployedVerification": {
         "version": 11,
@@ -11314,8 +11314,36 @@
       ],
       "fixCommit": "097862d3785038f50e64523e5e946afa8d71c1b5",
       "status": "fixed-awaiting-deployed-verification",
-      "verification": "The regression failed before the fix at 390px with scrollWidth 691 and clientWidth 342. After changing the row to wrap, the Sites Worker browser regression passes at 360, 390, 430, 768, 1024, and 1440 CSS pixels on desktop and mobile profiles; both AI research and employee-experience presets update the brief. The page has no horizontal overflow and the after screenshot shows all five complete labels. A 324-resource Sites Worker matrix also passed with 972 variants and zero findings. One initial combined-suite run had a transient faq-searchable preview-load timeout; the route passed in isolation and a full 324-resource rerun passed. Public v30 remains unchanged, so deployed verification is pending."
+      "verification": "The regression failed before the fix at 390px with scrollWidth 691 and clientWidth 342. After changing the row to wrap, the Sites Worker browser regression passes at 360, 390, 430, 768, 1024, and 1440 CSS pixels on desktop and mobile profiles; both AI research and employee-experience presets update the brief. The page has no horizontal overflow and the after screenshot shows all five complete labels. A 324-resource Sites Worker matrix also passed with 972 variants and zero findings. One initial combined-suite run had a transient faq-searchable preview-load timeout; the route passed in isolation and a full 324-resource rerun passed. The first exact-head CI run then exposed a separate small-screen height regression (AUD-352); spacing was tightened and local browser verification is recorded separately. Public v30 remains unchanged, so deployed verification is pending."
+    },
+    {
+      "id": "AUD-352",
+      "severity": "medium",
+      "route": "/",
+      "viewport": "390x844",
+      "category": "visual",
+      "title": "Wrapped homepage presets push the composer below the first viewport in Linux Chromium",
+      "expected": "At a 390x844 viewport, the wrapped preset labels remain readable and the homepage hero stays within 90svh with the Compose action visible without scrolling.",
+      "actual": "Exact-head GitHub CI on 2026-10-26 measured the hero at 814.0625px against a 759.6px limit in both desktop-chrome and mobile-chrome projects. The failing Playwright assertion was repeated on retry; the run had 322 passing tests and these two failures. The test job did not upload a screenshot or record browser console/network events.",
+      "reproduction": [
+        "Build the exact-head candidate at d22d5c269c622161dc494420eaef4fee3c030ba8, which includes the wrapped-preset change from 097862d3785038f50e64523e5e946afa8d71c1b5.",
+        "Open / at 390x844 in Linux Chromium, wait for the document fonts to settle, and measure the section containing the homepage h1.",
+        "Compare the section height with 844 * 0.9 (759.6px)."
+      ],
+      "console": ["Not captured by the failing CI assertion; no console conclusion is claimed."],
+      "network": ["Not captured by the failing CI assertion; no network conclusion is claimed."],
+      "screenshot": "audit/evidence/step-45/aud-352-home-mobile-390-after.png",
+      "beforeScreenshots": [],
+      "afterScreenshots": ["audit/evidence/step-45/aud-352-home-mobile-390-after.png"],
+      "rootCause": "The AUD-351 fix changed the five preset chips from a single horizontally clipped row to three visible wrapped rows. On Linux's system-font metrics, that extra row height combined with the existing small-screen section, headline, form, and separator spacing to exceed the earlier AUD-306 first-viewport budget.",
+      "affectedCode": [
+        "apps/site/src/components/home/HeroComposer.tsx",
+        "tests/e2e/home-visual-rhythm-step-40.spec.ts"
+      ],
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "verification": "Small-screen-only vertical spacing was tightened while preserving all five wrapping preset actions and the existing medium/desktop spacing. Fix commit aa4d83ffdd1121c3dd9d80f253e42b7b32b3b9d9. The fresh candidate build measures a 647.53px hero and a Compose bottom at y=678.53 in Windows Chromium at 390x844; document width remains 390px, the preset row has 342px client and scroll widths, and all five labels are present. The targeted home visual-rhythm and preset regressions pass 4/4 across both desktop-chrome and mobile-chrome Playwright profiles. The complete local E2E components also pass: Astro 324 passed/112 configured skips, Sites Worker desktop 179/2 skips (including 324-resource rendering), Sites Worker mobile 141/40 configured skips, and Preview app 3/0. The outer pnpm test:e2e command was interrupted when the default Sites Worker port 4323 was already bound by a separate preview; each constituent suite passed when run with a free explicit Sites port. The after screenshot and browser measurements are attached. Exact-head Linux CI and deployed Site verification are still required; v30 remains public."
     }
   ],
-  "generatedAt": "2026-10-26T08:14:36Z"
+  "generatedAt": "2026-10-26T09:28:53Z"
 }
