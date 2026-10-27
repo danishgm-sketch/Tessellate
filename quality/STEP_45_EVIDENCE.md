@@ -1,6 +1,10 @@
 # Step 45 — Public review verification
 
-Status: in progress. The latest broad route, flagship and Axe checkpoint remains Sites v37. The latest targeted documentation evidence covers public Sites v40–v42; these version references are historical observations. V39 closes AUD-357. V40 exposed AUD-358's stale version claim; v41 removed it but exposed stale issue-status wording. Public v42 verified the corrected historical copy on desktop and mobile and closes AUD-358. Earlier v32, saved v35, and v37 material below remains historical. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
+Status: in progress. The latest broad route, flagship and Axe checkpoint remains Sites v37. The latest targeted documentation evidence covers public Sites v40–v42; targeted page-recipe evidence now covers v43–v44. These version references are historical observations. V39 closes AUD-357. V40 exposed AUD-358's stale version claim; v41 removed it but exposed stale issue-status wording. Public v42 verified the corrected historical copy on desktop and mobile and closes AUD-358. Earlier v32, saved v35, and v37 material below remains historical. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
+
+## Public v44 targeted page-recipe verification — 2026-10-27
+
+Sites v44 deployed the source build for canonical commit `f49e14f3cfe93f8c077f32ad8eb2aa5e2ffee9e5` (Site mirror `58db77b5e8f06f2ab0600f36ccd0f21da9188998`) as deployment `appgdep_6ae036ed60e08191a40842ff57bb9e84`. The targeted visible-browser check exercised `/pages` → Compose at 1440×900 and 390×844. Both routes and `/data/catalog.json` returned HTTP 200; no console errors/warnings, uncaught exceptions, failed requests, HTTP errors, document overflow, or unresolved-resource text occurred. The recipe inferred B2B SaaS and produced workspace screens without analytics or observability residue. This closes AUD-359 and AUD-360 after deployed verification. The full broad route, flagship, accessibility, and standalone-export checkpoint remains v37; Step 45 remains in progress. Evidence: [`runtime record and screenshots`](../quality/evidence/step-39/public-v44/page-recipes/).
 
 ## Public v37 deployed audit
 

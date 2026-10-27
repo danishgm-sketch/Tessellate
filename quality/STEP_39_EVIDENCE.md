@@ -548,38 +548,12 @@ parallel Vitest run had one artifact-isolation test timeout under contention;
 that test passed alone and the bounded full suite passed. This is local evidence
 only; no new Site version has been deployed.
 
-### 2026-10-27 continuation — public v42 page-recipe handoff
+### 2026-10-27 continuation — public v43 intermediate and v44 page-recipe verification
 
-The live public v42 `/pages` → Compose path was exercised at 1440×900 and
-390×844. Selecting “Compose this architecture” for “Application Overview
-Dashboard” populated `Build a Application Overview Dashboard. Primary
-operational hub featuring real-time health scorecard, telemetry metric charts,
-and live event feed.` After catalogue readiness, composing inferred Developer
-Tools and planned Documentation & SDKs, Telemetry Dashboard, Log Explorer, and
-API & Webhooks. This is domain contamination for a generic overview recipe
-(AUD-359). The same handoff hardcoded “Build a” for every title, producing an
-ungrammatical brief (AUD-360).
+The live v42 `/pages` → Compose path exposed AUD-359 and AUD-360. For “Application Overview Dashboard”, v42 populated `Build a Application Overview Dashboard. Primary operational hub featuring real-time health scorecard, telemetry metric charts, and live event feed.` It inferred Developer Tools and planned Documentation & SDKs, Telemetry Dashboard, Log Explorer, and API & Webhooks. The v42 screenshots and machine record are under `quality/evidence/step-39/public-v42/page-recipes/`; the browser reported both routes and `/data/catalog.json` at HTTP 200, with no console errors or warnings, uncaught exceptions, failed requests, HTTP errors, or horizontal overflow.
 
-The before page and Compose captures are in
-`quality/evidence/step-39/public-v42/page-recipes/`; the browser capture script
-records routes, status codes, requests, console errors/warnings, exceptions,
-overflow, and the generated architecture in `deployed-before.json`. Both
-routes returned HTTP 200 and `/data/catalog.json` returned 200. The catalogue
-became ready; there were no application console errors or warnings, uncaught
-exceptions, failed requests, HTTP errors, or horizontal overflow at either
-viewport.
+The first correction deployed as v43 fixed the grammar and removed explicit telemetry wording, but retained metrics, scorecard, chart, and analytics archetype cues. The real browser then inferred Analytics Platform and planned Metric Explorer and Reports Library. This showed the first fix was incomplete; v43 evidence is preserved under `quality/evidence/step-39/public-v43/page-recipes/` and AUD-359 remained open.
 
-The shared recipe now describes key outcome metrics, recent activity, and next
-steps without telemetry wording. The Compose handoff now uses `Design a page
-titled “…”` so titles do not receive an assumed article. The focused composer
-regression failed before the copy correction (1 failed, 7 passed) and passes
-after it (8/8). A visible-browser regression checks both the exact prompt
-handoff and the resulting planned screens; desktop and mobile pass 4/4. The
-Astro build produced all 733 routes successfully. The full local browser gate
-subsequently passed on 2026-10-27: Astro desktop/mobile 334 passed, Sites
-Worker desktop 181 passed, Sites Worker mobile 147 passed, and the standalone
-preview app 3 passed (665 total; 166 configured skips; zero test failures).
-The Sites Worker profiles ran on isolated port 4335 because another Tessellate
-preview already owns 4323. The new recipe-handoff regression passed in both
-Astro viewports. These results do not close either finding; a deployed recheck
-is still required. Step 39 remains in progress and the public Site remains v42.
+The root correction changes the recipe to “Workspace Overview”, describes active projects, recent updates, and priority alerts, and maps its screen to existing Gold resources `kanban-board`, `timeline`, and `notification-centre`. The unit regression checks the actual refs, B2B SaaS inference, and exclusion of analytics/observability screens. The visible-browser regression checks the architecture at desktop and mobile. The focused Vitest and Playwright tests passed; the complete local run passed 1,223 unit/integration tests (one configured skip), all 16 behavioral gates, 324 resource isolation and provenance checks, and 665 browser tests (166 configured skips, zero failures). Exact-head GitHub CI run [40451817272](https://github.com/danishgm-sketch/Tessellate/actions/runs/40451817272) passed, including the Playwright/Axe stage.
+
+Sites v44 is public at the existing review URL. It serves canonical commit `f49e14f3cfe93f8c077f32ad8eb2aa5e2ffee9e5` as Site-source commit `58db77b5e8f06f2ab0600f36ccd0f21da9188998` (version `appgprj_6acc036de8cc8191a823339566972d85~appgver_54ef3a323f708191ad053237ee2343d8`, deployment `appgdep_6ae036ed60e08191a40842ff57bb9e84`). The deployed flow was exercised at 1440×900 and 390×844. `/pages`, the linked `/compose` route, and `/data/catalog.json` returned HTTP 200. Catalogue readiness completed. Both viewports had zero console errors or warnings, uncaught exceptions, failed requests, HTTP errors, document overflow, or unresolved-resource text. The brief is grammatical. The architecture inferred B2B SaaS and planned Marketing Home, Overview Dashboard, Projects Index, and Team & Permissions; no Metric Explorer, Reports Library, Telemetry Dashboard, Log Explorer, or API & Webhooks appeared. At handoff, `scrollY` was 0 and the title and brief were in the initial viewport. Screenshots and the full machine record are under `quality/evidence/step-39/public-v44/page-recipes/`, including page, Compose handoff, and generated-direction captures for desktop and mobile. AUD-359 and AUD-360 are closed after this issue-specific live verification. Step 39 and the wider Step 45 audit remain in progress; the latest broad route/flagship/Axe checkpoint remains v37.
