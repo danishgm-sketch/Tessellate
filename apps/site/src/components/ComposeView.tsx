@@ -653,7 +653,7 @@ export function ComposeView() {
                   Planned screens ({screenPlan.totalScreens})
                 </h2>
                 <p className="text-sm text-[#62666F] dark:text-[#A8AFBA]">
-                  Structured screen classes, route slugs, required section roles, and navigation hierarchy.
+                  Suggested screens and navigation, organized around the work each page supports.
                 </p>
               </div>
               <div className="flex gap-2 text-xs">

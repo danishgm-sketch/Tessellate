@@ -342,8 +342,8 @@ challenge-script API deprecations (AUD-356). CrUX data is unavailable.
 This section records the tested v37 checkpoint; its version ID is not a claim
 about which version is currently published.
 
-Step 45 remains incomplete: 210 findings have local fixes but await their own
-deployed checks (25 High, 178 Medium, 7 Low). The broader product-hardening
+Step 45 remains incomplete: 212 findings have local fixes but await their own
+deployed checks (25 High, 180 Medium, 7 Low). The broader product-hardening
 programme is not complete, and no release-complete claim is made.
 
 ## Public v40 finding and v41 verification — captured 2026-10-27

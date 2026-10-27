@@ -16,7 +16,7 @@ test('Compose explains the product plan without internal schema vocabulary', asy
   const main = page.locator('main');
   const visibleCopy = await main.innerText();
 
-  expect(visibleCopy).not.toMatch(/\b(ProductModel|ScreenGraph|LLM|archetype)\b|archetype priors|deterministically interpret/i);
+  expect(visibleCopy).not.toMatch(/\b(ProductModel|ScreenGraph|LLM|archetype|screen classes|route slugs|section roles)\b|archetype priors|deterministically interpret/i);
   await expect(main.getByText(/Describe what your product needs/i)).toBeVisible();
   await expect(main.getByText(/Start with a short brief/i)).toBeVisible();
 
