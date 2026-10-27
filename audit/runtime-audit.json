@@ -11887,11 +11887,12 @@
       "category": "content",
       "title": "Compose exposes schema and inference jargon as user-facing copy",
       "expected": "Compose should explain the brief-to-directions workflow in plain product language without requiring users to understand internal schemas or inference terminology.",
-      "actual": "Public v45 described a generated “ProductModel” and “ScreenGraph”, mentioned “LLM”, “archetype priors”, and “deterministically interpret”, and labelled the selector “Archetype Priority (Optional Override)”.",
+      "actual": "Public v45 described a generated “ProductModel” and “ScreenGraph”, mentioned “LLM” and “archetype priors”, and labelled the selector “Archetype Priority (Optional Override)”. After composing the exact employee-experience brief, visible copy also included inference jargon, raw section-role IDs, implementation-layout names, and technical direction rationales.",
       "reproduction": [
-        "Open /compose at 1440x900 or 390x844.",
-        "Read the introduction and brief preset/selector labels before composing.",
-        "Observe the internal schema, model, and inference terms in visible copy."
+        "Open /compose at 1440x900 or 390x844 and wait for Catalogue ready.",
+        "Enter the exact 500-person employee-experience brief and compose.",
+        "Read the assumptions, product summary, planned-screen cards, and all three direction cards.",
+        "Observe the schema/inference terminology, raw role IDs, and implementation-layout labels in visible copy."
       ],
       "console": [],
       "network": [
@@ -11909,10 +11910,12 @@
         "quality/evidence/step-39/public-v45/routes/compose-desktop-1440x900.png",
         "quality/evidence/step-39/public-v45/routes/compose-mobile-390x844.png"
       ],
-      "rootCause": "The Compose shell and output headings described internal schema names and implementation techniques instead of the user task and expected result.",
+      "rootCause": "The page shell, interpreter assumptions, screen-role summary, and generated direction rationale each surfaced implementation vocabulary directly to users.",
       "affectedCode": [
         "apps/site/src/components/ComposeView.tsx",
         "apps/site/src/pages/compose/index.astro",
+        "packages/composer/src/interpreter.ts",
+        "packages/compatibility/src/direction-generator.ts",
         "tests/e2e/copy-quality-step-39.spec.ts"
       ],
       "fixCommit": null,
@@ -11922,10 +11925,11 @@
         "quality/evidence/step-39/public-v45/interaction-readiness/after-local/compose-mobile-390x844.png"
       ],
       "localVerification": {
-        "regressionTests": "tests/e2e/copy-quality-step-39.spec.ts passed 4/4 focused desktop/mobile cases; the related recipe, Workbench copy, dialog, and copy-quality Sites Worker suite passed 63 tests with 1 configured skip.",
-        "fullChecks": "pnpm typecheck passed across 22 packages; targeted ESLint passed; pnpm exec vitest run --maxWorkers=4 passed 1,223 tests with 1 configured skip across 78 files; pnpm audit:all passed behavioral gate, resource isolation, production build, bundle budgets, license/provenance, security/secrets, and dependency audit.",
+        "regressionTests": "The exact employee-experience browser flow passed 2/2 Sites Worker cases (1440x900 and 390x844); all three resource previews finished loading. Copy checks reject internal terminology, raw role IDs, and finance/observability residue.",
+        "fullChecks": "The Sites-specific frozen-dependency production build passed: 324 catalogue resources, 40 Gold runtime resources, 733 Astro pages, and 731 CSP records. Focused composer/interpreter and compatibility tests passed 29/29; composer, compatibility, and site typechecks passed; changed-file ESLint passed.",
         "screenshotRoot": "quality/evidence/step-39/public-v45/interaction-readiness/after-local/",
-        "accessibility": "Axe WCAG 2.2 A/AA reported zero violations at 1440x900 and 390x844."
+        "accessibility": "Axe WCAG 2.2 A/AA reported zero violations at 1440x900 and 390x844.",
+        "runtime": "Both viewports recorded HTTP 200 for /compose and /data/catalog.json, zero console warnings/errors, zero uncaught exceptions, zero failed requests or HTTP errors, zero unresolved resource-loading states, and no horizontal overflow."
       }
     }
   ],

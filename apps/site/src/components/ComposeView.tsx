@@ -37,6 +37,55 @@ import {
 
 const HOME_COMPOSE_HANDOFF_KEY = 'tessellate:pending-compose-brief';
 
+function readableRoleLabel(role: string): string {
+  const specialLabels: Record<string, string> = {
+    cta: 'Next step',
+    api: 'API',
+    kpi: 'Key figures',
+    'conversion-cta': 'Next step',
+    'overview-header': 'Overview heading',
+    'metric-cards': 'Key figures',
+    'activity-feed': 'Recent activity',
+    'index-header': 'List heading',
+    'filter-bar': 'Filters',
+    'data-table': 'Records table',
+    pagination: 'Page controls',
+    'progress-stepper': 'Progress steps',
+    'wizard-content': 'Setup steps',
+    'action-controls': 'Actions',
+    'settings-form': 'Settings form',
+    'save-footer': 'Save controls',
+  };
+  const directLabel = specialLabels[role.toLowerCase()];
+  if (directLabel) return directLabel;
+
+  return role
+    .split(/[-_]/g)
+    .map((word) => specialLabels[word.toLowerCase()] ?? `${word.charAt(0).toUpperCase()}${word.slice(1)}`)
+    .join(' ');
+}
+
+function readableNavigationLabel(navigation: string): string {
+  const labels: Record<string, string> = {
+    sidebar: 'Sidebar',
+    'top-nav': 'Top navigation',
+    rail: 'Navigation rail',
+  };
+  return labels[navigation] ?? readableRoleLabel(navigation);
+}
+
+function readableLayoutLabel(layout: string): string {
+  const labels: Record<string, string> = {
+    'sidebar-card-grid': 'Sidebar with cards',
+    'feature-grid': 'Feature grid',
+    'tri-column-intelligence': 'Three-column workspace',
+    'three-pane-intelligence-workspace': 'Three-panel workspace',
+    'research-terminal': 'Research terminal',
+    'canvas-workspace': 'Canvas workspace',
+  };
+  return labels[layout] ?? readableRoleLabel(layout);
+}
+
 function isHomeComposeHandoff(value: unknown): value is ProductBriefInput {
   if (!value || typeof value !== 'object') return false;
   const brief = value as Record<string, unknown>;
@@ -195,6 +244,11 @@ export function ComposeView() {
 
   const { productModel, screenGraph: _screenGraph, inferredAssumptions, directionA, directionB, directionC } = compositionResult;
   const screenPlan = planScreenGraph(productModel);
+  const primaryProductType = productModel.productArchetypes[0]?.tag;
+  const productTypeName = productModel.entities.some((entity) => entity.name === 'Employee')
+    ? 'Employee Experience'
+    : archetypes.find((archetype) => archetype.id === primaryProductType)?.name
+      ?? readableRoleLabel(primaryProductType ?? 'Product');
 
   const handleOpenDirection = async (manifest: ProjectManifest) => {
     try {
@@ -573,7 +627,7 @@ export function ComposeView() {
           aria-live="polite"
           className="border-l-2 border-[#2547E8] bg-[#E7EBFF] p-3 text-sm text-[#111217] dark:border-[#6782FF] dark:bg-[#1C2752] dark:text-[#F5F7FA]"
         >
-          Building the product model and three interface directions…
+          Preparing your plan and three directions…
         </p>
       )}
 
@@ -617,29 +671,29 @@ export function ComposeView() {
             {/* Metrics Scorecard */}
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-6">
               <div className="rounded-xl border border-[#D9D6CF] bg-white p-4 dark:border-[#272C34] dark:bg-[#171B21]">
-                <div className="text-[10px] text-[var(--text-muted)]">Primary Archetype</div>
+                <div className="text-[10px] text-[var(--text-muted)]">Product type</div>
                 <div className="mt-1 font-bold text-sm text-[#2547E8] uppercase dark:text-[#879DFF]">
-                  {productModel.entities.some(entity=>entity.name==='Employee') ? 'Employee experience' : productModel.productArchetypes[0]?.tag}
+                  {productTypeName}
                 </div>
               </div>
               <div className="rounded-xl border border-[#D9D6CF] bg-white p-4 dark:border-[#272C34] dark:bg-[#171B21]">
-                <div className="text-[10px] text-[var(--text-muted)]">User Sophistication</div>
+                <div className="text-[10px] text-[var(--text-muted)]">User expertise</div>
                 <div className="mt-1 font-mono font-bold text-base">{productModel.userSophistication}/100</div>
               </div>
               <div className="rounded-xl border border-[#D9D6CF] bg-white p-4 dark:border-[#272C34] dark:bg-[#171B21]">
-                <div className="text-[10px] text-[var(--text-muted)]">Trust Requirement</div>
+                <div className="text-[10px] text-[var(--text-muted)]">Trust needs</div>
                 <div className="mt-1 font-mono font-bold text-base">{productModel.trustRequirement}/100</div>
               </div>
               <div className="rounded-xl border border-[#D9D6CF] bg-white p-4 dark:border-[#272C34] dark:bg-[#171B21]">
-                <div className="text-[10px] text-[var(--text-muted)]">Data Density</div>
+                <div className="text-[10px] text-[var(--text-muted)]">Information density</div>
                 <div className="mt-1 font-mono font-bold text-base">{productModel.dataDensity}/100</div>
               </div>
               <div className="rounded-xl border border-[#D9D6CF] bg-white p-4 dark:border-[#272C34] dark:bg-[#171B21]">
-                <div className="text-[10px] text-[var(--text-muted)]">Information Complexity</div>
+                <div className="text-[10px] text-[var(--text-muted)]">Workflow complexity</div>
                 <div className="mt-1 font-mono font-bold text-base">{productModel.informationComplexity}/100</div>
               </div>
               <div className="rounded-xl border border-[#D9D6CF] bg-white p-4 dark:border-[#272C34] dark:bg-[#171B21]">
-                <div className="text-[10px] text-[var(--text-muted)]">Mobile Priority</div>
+                <div className="text-[10px] text-[var(--text-muted)]">Mobile focus</div>
                 <div className="mt-1 font-mono font-bold text-base">{productModel.mobileImportance}/100</div>
               </div>
             </div>
@@ -707,8 +761,9 @@ export function ComposeView() {
                         </p>
 
                         <div className="mt-3 border-t border-[#D9D6CF]/40 pt-2 text-[10px] text-[var(--text-muted)]">
-                          <span className="font-semibold">Required Roles:</span>{' '}
-                          {screen.requiredRoles.slice(0, 3).join(', ')}...
+                          <span className="font-semibold">Includes:</span>{' '}
+                          {screen.requiredRoles.slice(0, 3).map(readableRoleLabel).join(', ')}
+                          {screen.requiredRoles.length > 3 && `, and ${screen.requiredRoles.length - 3} more`}
                         </div>
                       </div>
                     ))}
@@ -721,10 +776,10 @@ export function ComposeView() {
           {/* Initial Three Directions */}
           <section className="space-y-6">
             <h2 className="text-2xl font-bold text-[#111217] dark:text-[#F5F7FA]">
-              Three Generated Directions
+              Three directions
             </h2>
             <p className="text-sm text-[#62666F] dark:text-[#A8AFBA]">
-              Three approaches based on your brief: a familiar fit, an expressive direction, and a structural alternative.
+              Compare three approaches: a familiar layout, a more expressive style, and a different workspace arrangement.
             </p>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -798,7 +853,7 @@ function DirectionCard({
               ? 'Conservative Fit'
               : direction.type === 'expressive'
               ? 'Expressive Fit'
-              : 'Structural Alternative'}
+              : 'Workspace Alternative'}
           </span>
         </div>
 
@@ -817,13 +872,13 @@ function DirectionCard({
           <div>
             <span className="text-[var(--text-muted)]">Navigation:</span>{' '}
             <span className="font-semibold text-[#111217] dark:text-[#F5F7FA] uppercase">
-              {direction.navigationModel}
+              {readableNavigationLabel(direction.navigationModel)}
             </span>
           </div>
           <div>
             <span className="text-[var(--text-muted)]">Layout:</span>{' '}
             <span className="font-semibold text-[#111217] dark:text-[#F5F7FA]">
-              {direction.layoutFamily}
+              {readableLayoutLabel(direction.layoutFamily)}
             </span>
           </div>
           <div>
@@ -833,7 +888,7 @@ function DirectionCard({
             </span>
           </div>
           <div>
-            <span className="text-[var(--text-muted)]">Creativity:</span>{' '}
+            <span className="text-[var(--text-muted)]">Layout variation:</span>{' '}
             <span className="font-semibold text-[#2547E8] dark:text-[#879DFF]">
               {direction.dna.structuralCreativity}
             </span>

@@ -69,7 +69,7 @@ const DIRECTION_NAMES: Record<
   default: {
     conservative: { name: 'Calm Foundation', tagline: 'Disciplined hierarchy and maximum accessibility.' },
     expressive: { name: 'Expressive Horizon', tagline: 'Elevated visual ambition and crafted motion.' },
-    structural: { name: 'Adaptive Architecture', tagline: 'Alternative spatial topology tailored to rapid workflows.' },
+    structural: { name: 'Adaptive Workspace', tagline: 'A multi-panel layout for managing related work together.' },
   },
 };
 
@@ -110,7 +110,7 @@ export function generateDirections(input: DirectionGenerationInput): DirectionGe
     name: namePack.conservative.name,
     tagline: namePack.conservative.tagline,
     rationale:
-      'Closest to inferred product priors with standard sidebar navigation, reinforced accessibility floors, and rock-solid predictable ergonomics.',
+      'A dependable starting point with familiar sidebar navigation and clear, predictable controls.',
     dna: {...dnaA,navigationModel:navModelA},
     navigationModel: navModelA,
     primaryGrammarId: grammarA.id,
@@ -151,7 +151,7 @@ export function generateDirections(input: DirectionGenerationInput): DirectionGe
     name: namePack.expressive.name,
     tagline: namePack.expressive.tagline,
     rationale:
-      'Elevated aesthetic expression, richer motion personalities, and bolder typographic presence while maintaining identical functional workflow jobs.',
+      'A more expressive visual style with lively motion and stronger typography, while keeping familiar navigation and the same tasks.',
     dna: {...dnaB,navigationModel:navModelB},
     navigationModel: navModelB,
     primaryGrammarId: grammarB.id,
@@ -197,7 +197,7 @@ export function generateDirections(input: DirectionGenerationInput): DirectionGe
     name: namePack.structural.name,
     tagline: namePack.structural.tagline,
     rationale:
-      'Explores an inventive structural topology (three-pane workspace or docked terminal) with higher interaction density and alternative spatial navigation.',
+      'A different workspace arrangement brings related tasks into a three-column view, with a navigation rail and more information on screen.',
     dna: {...dnaC,navigationModel:navModelC},
     navigationModel: navModelC,
     primaryGrammarId: grammarC.id,

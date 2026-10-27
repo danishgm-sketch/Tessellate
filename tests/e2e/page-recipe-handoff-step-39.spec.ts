@@ -33,7 +33,7 @@ test('generic workspace overview recipe produces a coherent SaaS architecture', 
   await page.getByRole('button', { name: 'Compose Interface System' }).click();
   await expect(page.getByRole('heading', { name: 'Inferred Product Architecture' })).toBeVisible();
   await expect(
-    page.getByText('Identified primary archetype as "B2B SaaS" based on domain vocabulary.')
+    page.getByText('Your brief suggests this is a B2B SaaS product.')
   ).toBeVisible();
   await expect(page.getByText('ANALYTICS', { exact: true })).toHaveCount(0);
   await expect(page.getByText('DEVELOPER-TOOLS', { exact: true })).toHaveCount(0);

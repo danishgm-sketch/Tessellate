@@ -4,6 +4,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 
 type RuntimeEvidence = {
+  successfulResponses?: Array<{ url: string; status: number }>;
   consoleErrors: string[];
   consoleWarnings: string[];
   uncaughtExceptions: string[];
@@ -12,13 +13,69 @@ type RuntimeEvidence = {
 };
 
 test('Compose explains the product plan without internal schema vocabulary', async ({ page }, testInfo) => {
-  await page.goto('/compose');
-  const main = page.locator('main');
-  const visibleCopy = await main.innerText();
+  const runtime: RuntimeEvidence = {
+    successfulResponses: [],
+    consoleErrors: [],
+    consoleWarnings: [],
+    uncaughtExceptions: [],
+    failedRequests: [],
+    httpErrors: [],
+  };
+  page.on('console', (message) => {
+    if (message.type() === 'error') runtime.consoleErrors.push(message.text());
+    if (message.type() === 'warning') runtime.consoleWarnings.push(message.text());
+  });
+  page.on('pageerror', (error) => runtime.uncaughtExceptions.push(error.message));
+  page.on('requestfailed', (request) =>
+    runtime.failedRequests.push({ url: request.url(), error: request.failure()?.errorText ?? null })
+  );
+  page.on('response', (response) => {
+    if (response.status() >= 400) runtime.httpErrors.push({ url: response.url(), status: response.status() });
+    const pathname = new URL(response.url()).pathname;
+    if (pathname === '/compose' || pathname === '/data/catalog.json') {
+      runtime.successfulResponses.push({ url: response.url(), status: response.status() });
+    }
+  });
 
-  expect(visibleCopy).not.toMatch(/\b(ProductModel|ScreenGraph|LLM|archetype|screen classes|route slugs|section roles)\b|archetype priors|deterministically interpret/i);
+  const composeResponse = await page.goto('/compose');
+  expect(composeResponse?.status()).toBe(200);
+  const main = page.locator('main');
+  const introductoryCopy = await main.innerText();
+
+  expect(introductoryCopy).not.toMatch(/\b(ProductModel|ScreenGraph|LLM|archetype|screen classes|route slugs|section roles)\b|archetype priors|deterministically interpret/i);
   await expect(main.getByText(/Describe what your product needs/i)).toBeVisible();
   await expect(main.getByText(/Start with a short brief/i)).toBeVisible();
+
+  await expect(page.getByText('Catalogue ready', { exact: true })).toBeVisible();
+  expect(
+    runtime.successfulResponses.some(
+      (response) => new URL(response.url).pathname === '/data/catalog.json' && response.status === 200
+    )
+  ).toBe(true);
+  await page.getByRole('textbox', { name: 'Product Description & Objectives' }).fill(
+    'Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.'
+  );
+  await page.getByRole('button', { name: 'Compose Interface System' }).click();
+  await expect(page.getByRole('heading', { name: 'Inferred Product Architecture' })).toBeVisible();
+  await expect(page.getByTestId('direction-card-01')).toBeVisible();
+  await expect(page.getByTestId('direction-card-02')).toBeVisible();
+  await expect(page.getByTestId('direction-card-03')).toBeVisible();
+  await expect(page.getByTestId('resource-loading')).toHaveCount(0, { timeout: 30_000 });
+
+  const composedCopy = await main.innerText();
+  expect(composedCopy).not.toMatch(
+    /\b(ProductModel|ScreenGraph|LLM|archetype|screen classes|route slugs|section roles|sophistication|deterministic|criticality)\b|archetype priors|information complexity|spatial topology|mathematical DNA|functional workflow jobs|motion personalities|navigation topology|inferred product priors|required roles/i
+  );
+  expect(composedCopy).not.toMatch(/trading|portfolio|order book|telemetry|order execution|financial terminal/i);
+  await expect(main.getByText('Your brief points to: Employee Experience.', { exact: true })).toBeVisible();
+  await expect(
+    main.getByText('Suggested screens and navigation, organized around the work each page supports.', { exact: true })
+  ).toBeVisible();
+  await expect(main.getByText('Product type', { exact: true })).toBeVisible();
+  await expect(main.getByText('Employee Experience', { exact: true })).toBeVisible();
+  await expect(main.getByText('Includes:', { exact: true }).first()).toBeVisible();
+  await expect(main.getByText('Required Roles:', { exact: true })).toHaveCount(0);
+  await expect(main.getByText(/overview-header|metric-cards|activity-feed/)).toHaveCount(0);
 
   const accessibility = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
@@ -35,11 +92,16 @@ test('Compose explains the product plan without internal schema vocabulary', asy
     viewportWidth: document.documentElement.clientWidth,
     documentWidth: document.documentElement.scrollWidth,
   }));
-  await page.screenshot({ path: path.join(evidenceDirectory, `compose-${viewport}.png`) });
+  await page.screenshot({ path: path.join(evidenceDirectory, `compose-${viewport}.png`), fullPage: true });
   await writeFile(
     path.join(evidenceDirectory, `compose-${viewport}.json`),
-    `${JSON.stringify({ url: page.url(), viewport, geometry, axeViolations: accessibility.violations.length }, null, 2)}\n`
+    `${JSON.stringify({ url: page.url(), viewport, geometry, axeViolations: accessibility.violations.length, runtime }, null, 2)}\n`
   );
+  expect(runtime.consoleErrors).toEqual([]);
+  expect(runtime.consoleWarnings).toEqual([]);
+  expect(runtime.uncaughtExceptions).toEqual([]);
+  expect(runtime.failedRequests).toEqual([]);
+  expect(runtime.httpErrors).toEqual([]);
 });
 
 function watchRuntime(page: Page): RuntimeEvidence {

@@ -136,14 +136,14 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   const blueprint = findBlueprintByArchetype(primaryTag);
 
   assumptions.push(
-    `Identified primary archetype as "${archetypeDef?.name ?? primaryTag}" based on domain vocabulary.`
+    `Your brief points to: ${archetypeDef?.name ?? primaryTag}.`
   );
 
   // 2. Audience & Objective
   const audience =
     input.audience?.trim() || archetypeDef?.primaryAudience || 'Professional teams and operators';
   if (!input.audience) {
-    assumptions.push(`Inferred target audience as "${audience}".`);
+    assumptions.push(`Likely audience: ${audience}.`);
   }
 
   const primaryObjective =
@@ -151,7 +151,7 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     archetypeDef?.primaryObjective ||
     'Streamline workflows and manage resources';
   if (!input.objective) {
-    assumptions.push(`Inferred primary objective: "${primaryObjective}".`);
+    assumptions.push(`Main goal: ${primaryObjective}.`);
   }
 
   // 3. User Sophistication & Metric Priors
@@ -181,7 +181,7 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   if (lower.includes('developer') || lower.includes('engineer') || lower.includes('terminal')) {
     userSophistication = Math.min(100, userSophistication + 15);
     dataDensity = Math.min(100, dataDensity + 10);
-    assumptions.push('Elevated technical user sophistication due to developer/terminal focus.');
+    assumptions.push('The interface is planned for experienced technical users, with more information visible at once.');
   }
 
   if (
@@ -191,17 +191,17 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     lower.includes('confidential')
   ) {
     trustRequirement = Math.min(100, trustRequirement + 15);
-    assumptions.push('Elevated trust & compliance requirement to maximum priority.');
+    assumptions.push('The brief calls for strong trust and compliance cues.');
   }
 
   if (lower.includes('team') || lower.includes('collaborat') || lower.includes('multiplayer')) {
     collaborationLevel = Math.min(100, collaborationLevel + 20);
-    assumptions.push('Elevated collaboration requirement for multi-user workflow.');
+    assumptions.push('Team collaboration is central to these workflows.');
   }
 
   if (lower.includes('checkout') || lower.includes('payment') || lower.includes('money transfer')) {
     transactionCriticality = Math.min(100, transactionCriticality + 20);
-    assumptions.push('Elevated transaction criticality for payment and purchase workflows.');
+    assumptions.push('Payment and purchase steps need clear confirmation.');
   }
 
   if (
@@ -211,12 +211,12 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     lower.includes('dataset')
   ) {
     informationComplexity = Math.min(100, informationComplexity + 15);
-    assumptions.push('Elevated information complexity for dense telemetry and dataset analysis.');
+    assumptions.push('The product needs to make dense information easier to understand.');
   }
 
   if (lower.includes('nested') || lower.includes('hierarchy') || lower.includes('multi-level')) {
     navigationComplexity = Math.min(100, navigationComplexity + 15);
-    assumptions.push('Elevated navigation complexity for deep hierarchical structures.');
+    assumptions.push('People may need clear ways to move between multiple levels of information.');
   }
 
   if (
@@ -226,7 +226,7 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
     lower.includes('phone')
   ) {
     mobileImportance = Math.min(100, mobileImportance + 20);
-    assumptions.push('Prioritized mobile ergonomics and touch-first interaction.');
+    assumptions.push('Mobile use matters, so touch-friendly controls are included.');
   }
 
   // 4. Jobs To Be Done (JTBD)
@@ -328,17 +328,13 @@ export function interpretProductBrief(input: ProductBriefInput): InterpretedProd
   });
 
   if (input.feel && input.feel.trim()) {
-    assumptions.push(`Applied feel descriptors "${input.feel}" with mathematical DNA adjustments.`);
+    assumptions.push(`The design uses your feel words: “${input.feel}”.`);
   }
   if (typeof input.visualAmbition === 'number') {
-    assumptions.push(
-      `Applied Visual Ambition level ${input.visualAmbition} to motion, typography, and depth.`
-    );
+    assumptions.push(`Visual styling is set to ${input.visualAmbition}/100.`);
   }
   if (typeof input.structuralCreativity === 'number') {
-    assumptions.push(
-      `Applied Structural Creativity level ${input.structuralCreativity} to spatial topology.`
-    );
+    assumptions.push(`Layout variation is set to ${input.structuralCreativity}/100.`);
   }
 
   const initialDesignDna = deriveInitialDesignDNA(primaryTag, blueprint, input);
