@@ -433,7 +433,7 @@ The public v49 Site passed a 31-route smoke at desktop (1440×900) and mobile (3
 
 That deployed Axe pass exposed AUD-370: homepage preset briefs and the manifest excerpt had accessible labels on generic elements that did not support naming. The fix adds named group semantics and a visible-label association. The pre-fix deployed-browser regression failed four accessible-role/name assertions; after the change, the Astro build and semantic-accessibility/home-agent regressions passed 10/10 locally. AUD-370 is fixed locally and awaits verification on the next public version.
 
-Current audit ledger: 370 findings (0 Critical, 69 High, 280 Medium, 21 Low). 90 findings have issue-specific deployed verification plus 2 legacy closed records; 186 Medium/Low findings await deployed verification; 89 are locally verified; 2 retain legacy fixed status; and 1 is a documented Sites-host limitation. Of 69 High findings, 39 are deployed-verified and 30 are locally verified. See `audit/runtime-audit.json`, `audit/RUNTIME_AUDIT.md`, and `quality/STEP_45_EVIDENCE.md`. Step 45 and the product-hardening programme remain incomplete.
+Current audit ledger: 371 findings (0 Critical, 69 High, 281 Medium, 21 Low). 90 findings have issue-specific deployed verification plus 2 legacy closed records; 187 Medium/Low findings await deployed verification; 89 are locally verified; 2 retain legacy fixed status; and 1 is a documented Sites-host limitation. Of 69 High findings, 39 are deployed-verified and 30 are locally verified. See `audit/runtime-audit.json`, `audit/RUNTIME_AUDIT.md`, and `quality/STEP_45_EVIDENCE.md`. Step 45 and the product-hardening programme remain incomplete.
 
 The local release-quality run for the next review candidate passed frozen
 dependency install, catalogue generation (324 resources; 40 Gold), 22
@@ -442,7 +442,9 @@ The build generated 733 Astro pages and 731 CSP records; security, provenance,
 bundle budgets, and dependency audit passed. Playwright passed 345 root cases
 (121 configured skips), Sites desktop 183/6 and mobile 149/40 on an isolated
 port after another worktree occupied 4323, and the standalone export preview
-3/3. The AUD-370 desktop/mobile regression passed 10/10. AUD-370 fix commit is
+3/3. The AUD-370/AUD-371 semantic regression passed 10/10. AUD-370 fix commit is
 `38ad1f7891bdf1738875762035e961457266c970`; it remains open until the next
-public review deployment passes the issue-specific browser checks. This is
-not completion of the full hardening plan or release gate.
+public review deployment passes the issue-specific browser checks. AUD-371 fix
+commit `4833edc7a4c06b486574b16d10f4397ce79beb7a` also has a live v49 failing
+reproduction and local after-fix pass; it remains open pending deployed
+verification. This is not completion of the full hardening plan or release gate.

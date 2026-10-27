@@ -1,6 +1,6 @@
 # Step 45 — Public review verification
 
-Status: in progress. The latest broad route, flagship, export, and Core-route Axe evidence is Sites v49. Its 31-route desktop/mobile smoke passed 62/62 captures; Home, Explore, Compose, and a resource-detail route passed 8/8 Axe scans with zero violations, and the generated flagship Workbench passed full Axe at both viewports. A homepage accessible-name issue (AUD-370) was then fixed locally and awaits public verification. Public v49 also includes the targeted re-audit of 25 High findings and five three-direction benchmark briefs. Earlier v32, saved v35, and v37 material below remains historical. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
+Status: in progress. The latest broad route, flagship, export, and Core-route Axe evidence is Sites v49. Its 31-route desktop/mobile smoke passed 62/62 captures; Home, Explore, Compose, and a resource-detail route passed 8/8 Axe scans with zero violations, and the generated flagship Workbench passed full Axe at both viewports. Two accessibility issues (AUD-370 homepage group names and AUD-371 mobile Explore dialog relationship) were fixed locally and await public verification. Public v49 also includes the targeted re-audit of 25 High findings and five three-direction benchmark briefs. Earlier v32, saved v35, and v37 material below remains historical. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
 
 ## Public v44 targeted page-recipe verification — 2026-10-27
 
@@ -538,6 +538,20 @@ Home, Explore, Compose, and `/r/button/` were scanned with Axe WCAG 2.2 A/AA tag
 
 The v49 Axe report marked `aria-prohibited-attr` incomplete for the preset-brief `<div>` and the manifest-example `<pre>` because neither element had a role that supports an author-provided accessible name. Browser role/name queries also failed on desktop and mobile. Commit `38ad1f7891bdf1738875762035e961457266c970` adds `role="group"` to the presets and associates the manifest excerpt with its visible label through `aria-labelledby`. The pre-fix public regression failed 4 role/name checks; the mobile Explore filter dialog, Escape dismissal, and focus restoration passed at both viewports. After the fix, the Astro production build and the semantic-accessibility plus home-agent regressions passed 10/10 locally at 1440×900 and 390×844. Evidence is tracked in [AUD-370](../audit/runtime-audit.json) and `public-v49/semantic-accessibility/`. **Public deployed verification remains pending; this does not close AUD-370.**
 
+## AUD-371 — Mobile Explore dialog relationship was dangling while closed
+
+An Axe incomplete record on public v49 requested review of the mobile Filters
+button's `aria-controls` value, which referenced `explore-mobile-filter-dialog`
+while the conditionally rendered dialog was absent. A live 390×844 Playwright
+regression reproduced the dangling relationship on v49. Fix commit
+`4833edc7a4c06b486574b16d10f4397ce79beb7a` sets `aria-controls` only while the
+dialog exists. The button retains its relation
+when open; Escape closes the dialog, restores focus, and removes the relation.
+The focused semantic/home regression passed 10/10 locally at 1440×900 and
+390×844. The live v49 before-fix trace and local after-run record are in
+`public-v49/semantic-accessibility/`. **Public deployed verification remains
+pending; this does not close AUD-371.**
+
 ## Local candidate quality and browser gates — 2026-10-27
 
 Before preparing the next public Sites version, the working tree passed frozen
@@ -564,5 +578,6 @@ homepage example contrast checks. Playwright output is in
 
 The port conflict affected only the combined command's attempt to start its
 Sites Worker. Both configured Sites profiles passed independently on the
-alternate port. This is local candidate evidence only: AUD-370 remains open
-until the next deployed version passes the same role/name assertions.
+alternate port. This is local candidate evidence only: AUD-370 and AUD-371
+remain open until the next deployed version passes their issue-specific
+browser checks.

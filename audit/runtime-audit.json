@@ -13086,7 +13086,7 @@
       "status": "fixed-awaiting-deployed-verification",
       "deployedVerification": null,
       "localVerification": {
-        "checkedAt": "2026-10-27T20:56:36.000Z",
+        "checkedAt": "2026-10-27T21:12:40.000Z",
         "build": "pnpm --filter @tessellate/site build passed",
         "tests": {
           "command": "pnpm exec playwright test tests/e2e/accessibility-semantic-labels-step45.spec.ts tests/e2e/home-agent-example-regression.spec.ts --workers=1",
@@ -13103,7 +13103,57 @@
           "quality/evidence/step-45/public-v49/semantic-accessibility/local-playwright-output/"
         ]
       }
+    },
+    {
+      "id": "AUD-371",
+      "severity": "medium",
+      "route": "/explore",
+      "viewport": "390x844",
+      "category": "accessibility",
+      "title": "Mobile Explore filter toggle references a missing dialog while closed",
+      "expected": "The filter toggle only identifies a dialog while that dialog exists in the document, and keeps its popup state and focus behavior accessible.",
+      "actual": "On public v49, the closed filter button exposes aria-controls=explore-mobile-filter-dialog while the conditionally rendered dialog is absent. Axe marked aria-valid-attr-value incomplete with critical impact and requested review. A live v49 browser regression failed when it required the closed button not to reference a missing element.",
+      "reproduction": [
+        "Open /explore at 390x844 and wait until the Filters button is enabled.",
+        "Inspect its aria-controls attribute before opening the dialog; it names an ID not present in the document.",
+        "Run pnpm exec playwright test --config quality/evidence/step-45/public-v49/semantic-accessibility/aud-371-before.config.mjs --grep \"mobile Explore filter button controls\"; the closed-state assertion fails against public v49."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-45/public-v49/routes/explore-mobile-390x844.png",
+      "rootCause": "ExploreView renders the dialog only while mobileRailOpen is true but unconditionally assigns its ID to the toggle aria-controls attribute.",
+      "affectedCode": [
+        "apps/site/src/components/ExploreView.tsx",
+        "tests/e2e/accessibility-semantic-labels-step45.spec.ts"
+      ],
+      "remediation": "Set aria-controls only while the dialog is rendered, then verify the live dialog relationship, Escape behavior, focus restoration, and absence of a dangling reference on close.",
+      "fixCommit": "4833edc7a4c06b486574b16d10f4397ce79beb7a",
+      "status": "fixed-awaiting-deployed-verification",
+      "deployedVerification": null,
+      "localVerification": {
+        "checkedAt": "2026-10-27T21:12:40.000Z",
+        "tests": {
+          "command": "pnpm exec playwright test --config quality/evidence/step-45/public-v49/semantic-accessibility/local-regression.config.mjs",
+          "passed": 10,
+          "failed": 0,
+          "viewports": [
+            "1440x900",
+            "390x844"
+          ]
+        },
+        "preFixLiveTest": {
+          "command": "pnpm exec playwright test --config quality/evidence/step-45/public-v49/semantic-accessibility/aud-371-before.config.mjs --grep mobile Explore filter button controls",
+          "passed": 0,
+          "failed": 1,
+          "siteVersion": 49,
+          "evidence": "quality/evidence/step-45/public-v49/semantic-accessibility/aud-371-before/"
+        },
+        "evidence": [
+          "quality/evidence/step-45/public-v49/semantic-accessibility/local-run.json"
+        ],
+        "build": "pnpm --filter @tessellate/site build passed (733 pages)"
+      }
     }
   ],
-  "generatedAt": "2026-10-27T20:56:36Z"
+  "generatedAt": "2026-10-27T21:14:56Z"
 }

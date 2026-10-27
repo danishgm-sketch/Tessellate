@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "runAt": "2026-10-27T20:56:36.000Z",
+  "runAt": "2026-10-27T21:12:40.000Z",
   "baseUrl": "http://127.0.0.1:4377",
   "viewports": [
     "1440x900",
@@ -13,7 +13,8 @@
     "homepage preset briefs expose a named group",
     "manifest example exposes its visible label as an accessible group name",
     "Explore filter control relationship, dialog Escape dismissal, and focus restoration",
-    "homepage example content truthfulness and contrast"
+    "homepage example content truthfulness and contrast",
+    "mobile Explore button exposes aria-controls only while its dialog is present and removes it on close"
   ],
   "playwrightOutput": "quality/evidence/step-45/public-v49/semantic-accessibility/local-playwright-output/"
 }
