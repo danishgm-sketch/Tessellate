@@ -9,6 +9,8 @@ import {
   SHOWCASE_PROJECTS,
   PRODUCT_BLUEPRINTS,
 } from '../index.js';
+import { interpretProductBrief } from '../interpreter.js';
+import { planScreenGraph } from '../planner.js';
 
 describe('Phase 19 — Page Compositions, Blueprints & Showcases', () => {
   it('defines exactly 36 canonical page compositions', () => {
@@ -48,6 +50,21 @@ describe('Phase 19 — Page Compositions, Blueprints & Showcases', () => {
     const onboarding = getPageComposition('role-onboarding');
     expect(onboarding?.description).toMatch(/role, team, and goals/i);
     expect(onboarding?.description).not.toMatch(/telemetry|developer, designer, or executive persona/i);
+  });
+
+  it('keeps the generic application overview recipe out of the developer-tools domain', () => {
+    const overview = getPageComposition('app-overview-dashboard');
+    expect(overview).toBeDefined();
+    expect(overview?.description).not.toMatch(/telemetry|live event feed/i);
+
+    const { productModel } = interpretProductBrief({ description: overview!.description });
+    expect(productModel.productArchetypes[0]?.tag).not.toBe('developer-tools');
+    const { screenGraph } = planScreenGraph(productModel);
+    const screenNames = screenGraph.groups.flatMap((group) =>
+      group.screens.map((screen) => screen.name)
+    );
+    expect(screenNames).not.toContain('Log Explorer');
+    expect(screenNames).not.toContain('API & Webhooks');
   });
 
   it('defines exactly 12 product blueprints with full specifications', () => {

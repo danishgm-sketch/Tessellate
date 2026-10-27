@@ -501,7 +501,7 @@ export const PAGE_COMPOSITIONS: PageCompositionDefinition[] = [
     title: 'Application Overview Dashboard',
     screenType: 'dashboard',
     category: 'app',
-    description: 'Primary operational hub featuring real-time health scorecard, telemetry metric charts, and live event feed.',
+    description: 'Workspace overview with key outcome metrics, recent activity, and clear next steps.',
     requiredRoles: ['dashboard-header', 'metric-scorecards', 'trend-chart', 'activity-feed'],
     recommendedSections: ['metrics-scorecard', 'activity-timeline', 'time-series-chart'],
     archetypeFit: ['saas', 'fintech', 'infrastructure'],
