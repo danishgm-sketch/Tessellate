@@ -1,11 +1,14 @@
 # Runtime audit — product hardening and deployed-site verification
 
 This register preserves the historical resource/renderer audit and tracks the
-production review audit. The current public checkpoint is Sites v49: it has a
-31-route desktop/mobile smoke, a four-route Core Axe matrix, and the canonical
-flagship/export re-audit. The targeted v46–v49 closures below retain their
-issue-specific evidence. AUD-370 and AUD-371 are locally fixed but await
-deployed verification. V40 served application code captured from canonical commit
+production review audit. The current public checkpoint is Sites v50: its
+31-route desktop/mobile smoke, four-route Core Axe matrix, semantic
+accessibility regressions, and canonical flagship/export workflow all passed.
+AUD-370 and AUD-371 are closed after issue-specific v50 verification. AUD-372
+records a test-harness screenshot taken during a legitimate resource loading
+state; the test now waits for settled content and its deployed re-run passed.
+The broader Step 45 and product-hardening release gates remain incomplete. V40
+served application code captured from canonical commit
 `36b873ba9d40380196a78fcabe8977d7aa881e58` (Sites source mirror
 `f55a938f356f97c9a0070ab8e8aec097e2c52ba0`); v41 served code captured from
 canonical commit `80cd1231fae9a2fd36f5737ce1d0684e01c15251` (Sites source
@@ -4016,3 +4019,77 @@ found occupied by another worktree: desktop 183 passed/6 skipped, mobile 149
 passed/40 skipped. The exported preview passed 3/3. The AUD-370 focused
 regression passed 10/10 locally at 1440×900 and 390×844. These results are
 local only and do not close deployed verification.
+
+## Public v50 deployed audit and flagship verification — 2026-10-27
+
+The public review Site now serves version
+`appgprj_6acc036de8cc8191a823339566972d85~appgver_90ffb7eea6f0819187554301d0a0011f`
+at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. Deployment
+`appgdep_6ae11df145348191884c457f997d6e51` succeeded from canonical source
+`d4b0fd88a722225c221d8264b89af70525cb1d7d` and Sites mirror
+`11d7a1439caaf641a2d2f78eb2555c00cf30cc34`. Exact-source GitHub CI run
+[40585283183](https://github.com/danishgm-sketch/Tessellate/actions/runs/40585283183)
+passed. D1 and R2 remain unbound; no paid infrastructure was added.
+
+- **Routes:** 31 routes were captured at 1440×900 and 390×844. All 62 results
+  were PASS, with no HTTP errors, overflow, browser console errors, uncaught
+  exceptions, failed requests, or readiness timeouts. This is a route/render
+  smoke, not an assertion that every secondary-route control was individually
+  exercised. See the [machine report](../quality/evidence/step-45/public-v50/route-audit.json)
+  and [screenshots](../quality/evidence/step-45/public-v50/routes/).
+- **Axe and semantics:** Home, Explore, Compose, and `/r/button/` passed 8/8
+  Axe scans with zero violations and zero serious/critical findings. Seven
+  incomplete checks remain for manual review. Ten Axe inline-style
+  instrumentation messages were blocked by the deployed CSP; there were no
+  product errors or blocked product requests, and the CSP was not weakened.
+  The live semantic/accessibility regression passed 10/10 at both viewports,
+  covering named homepage groups, Explore dialog relationships, Escape, focus
+  restoration, and example contrast. See the [Axe report](../quality/evidence/step-45/public-v50/axe-core-routes/report.json)
+  and [verification summary](../quality/evidence/step-45/public-v50/verification-summary.json).
+- **Flagship and export:** The full deployed Playwright run passed 4 tests,
+  skipped 2 profile-scoped cases, and had no failures. The exact employee
+  experience journey passed on desktop and mobile: Compose, three directions,
+  Direction C, Workbench overrides, KPI locking, radical Recompose, resource
+  replacement, Surprise Me, exact Undo/Redo, preview, manifest export, and an
+  independent React ZIP install/build/browser smoke. The exported project
+  required no repository `node_modules`. The lock stayed intact and no
+  unresolved resources or domain contamination were reported. Machine evidence
+  and manifests are under [flagship results](../quality/evidence/step-45/public-v50/flagship/).
+- **Direction distinction and settled rendering:** UI-visible Design DNA and
+  manifest disclosures show three structural solutions at both sizes:
+  sidebar / `classic-sidebar-dashboard`, top navigation /
+  `product-proof-marketing`, and rail / `three-pane-intelligence-workspace`.
+  Each generated seven employee-focused screens; selected resource counts were
+  14, 14, and 13, with zero unresolved diagnostics. All six previews settled
+  within 1,104–2,009ms and then had no loading labels or runtime/network errors.
+  See the [UI-derived direction report](../quality/evidence/step-45/public-v50/flagship/directions-review.json)
+  and [initial/settled screenshots](../quality/evidence/step-45/public-v50/flagship/settled-previews/).
+- **AUD-370 — Homepage example groups did not expose their accessible names:**
+  After the semantic markup fix, the v50 deployed browser regression found the
+  preset group and manifest excerpt by their accessible role and name. The
+  related Axe scans and route smoke passed. Issue-specific deployed evidence is
+  recorded in [`runtime-audit.json`](runtime-audit.json). **Status: closed after
+  v50 verification.**
+- **AUD-371 — Mobile Explore filter toggle referenced a missing dialog while
+  closed:** The v50 live mobile browser regression confirmed the closed button
+  has no dangling `aria-controls`, opening links it to the existing dialog,
+  Escape closes it, and focus returns to the trigger. **Status: closed after
+  v50 verification.**
+- **AUD-372 — Direction preview evidence was captured during the explicit
+  loading state (low, test/evidence quality):** The first screenshot showed
+  legitimate “Loading …” labels because the prior browser test waited only for
+  the preview container. The deployed preview rendered its resources shortly
+  afterward. The test now waits for visible “Team Overview”, asserts loading
+  text is gone, then waits for a stability interval before capturing. The
+  repeat v50 capture settled all three directions at both viewports, with zero
+  unresolved resources or runtime/network errors. This is an audit-harness
+  correction, not a product renderer defect. **Status: closed after deployed
+  re-verification.**
+
+The v50 ledger contains 372 findings: 0 Critical, 69 High, 281 Medium, and 22
+Low. Statuses are 93 issue-specific deployed-verified closures, 185 locally
+fixed findings awaiting their own deployed checks, 89 locally verified, 2
+legacy fixed, 2 legacy closed, and 1 documented Sites-host limitation. Of the
+High findings, 39 have issue-specific deployed verification and 30 are locally
+verified. The broad hardening programme and Step 45 remain incomplete; this
+checkpoint makes no release-complete claim.

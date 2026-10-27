@@ -581,3 +581,58 @@ Sites Worker. Both configured Sites profiles passed independently on the
 alternate port. This is local candidate evidence only: AUD-370 and AUD-371
 remain open until the next deployed version passes their issue-specific
 browser checks.
+
+## Public v50 deployment and re-audit — 2026-10-27
+
+The public review Site serves v50 from canonical source
+`d4b0fd88a722225c221d8264b89af70525cb1d7d` (Sites source mirror
+`11d7a1439caaf641a2d2f78eb2555c00cf30cc34`), deployment
+`appgdep_6ae11df145348191884c457f997d6e51`. Exact-head run
+[40585283183](https://github.com/danishgm-sketch/Tessellate/actions/runs/40585283183)
+passed. The run covers frozen install, catalogue/schema, typecheck, lint,
+unit/integration, provenance/security/behavioral audits, production build and
+bundle budgets, and Playwright/Axe. D1/R2 are not bound.
+
+The live route matrix captured all 31 required public routes at 1440×900 and
+390×844: 62/62 PASS, zero overflow, HTTP failures, browser errors, uncaught
+exceptions, failed requests, or readiness timeouts. Core Axe scans passed 8/8
+with zero violations (including zero serious/critical); seven incomplete
+checks remain manual review items. The semantic accessibility regression
+passed 10/10 at desktop and mobile. Axe's 10 CSP-blocked temporary-style
+instrumentation messages are separated from product diagnostics, and the
+security policy stayed unchanged.
+
+The full deployed flagship run passed 4 tests, skipped 2 configured
+profile-scoped cases, and had 0 failures. At both desktop and mobile sizes, the
+exact employee-experience journey composed three directions, selected C,
+opened the matching Workbench project, overrode onboarding and settings,
+locked the dashboard KPI, recomposed at high divergence, replaced a component,
+used Surprise Me, restored state with Undo/Redo, previewed, exported the
+manifest, and independently installed/built/ran the React ZIP outside the
+repository dependencies. No unresolved resources or domain contamination
+were reported.
+
+The UI-derived direction review captured all three designs at both viewports.
+They use sidebar, top navigation, and rail navigation with distinct
+composition grammars, 7 screens each, 14/14/13 selected resource slugs, and no
+unresolved diagnostics. Six previews settled in 1,104–2,009ms. The first
+Direction 01 image showed the legitimate transient resource loader; the paired
+settled capture shows the rendered direction. This exposed a test timing gap,
+not a persistent product defect. The flagship test now waits for visible
+content and the absence of loading labels before screenshotting. See the
+[initial desktop capture](evidence/step-45/public-v50/flagship/settled-previews/direction-01-initial-desktop-1440.png),
+[settled desktop capture](evidence/step-45/public-v50/flagship/settled-previews/direction-01-desktop-1440.png),
+[initial mobile capture](evidence/step-45/public-v50/flagship/settled-previews/direction-01-initial-mobile-390.png),
+and [settled mobile capture](evidence/step-45/public-v50/flagship/settled-previews/direction-01-mobile-390.png).
+
+AUD-370 and AUD-371 are closed after their v50 issue-specific browser checks.
+AUD-372 records the initial preview screenshot timing and is closed after the
+test correction plus the repeated live captures. The ledger now contains 372
+findings: 0 Critical, 69 High, 281 Medium, 22 Low; 93 deployed-verified
+closures, 185 local fixes awaiting issue-specific deployed checks, 89 locally
+verified findings, 2 legacy fixed, 2 legacy closed, and 1 documented Sites
+host limitation. Step 45 and the broader hardening programme remain open.
+See the [machine verification summary](evidence/step-45/public-v50/verification-summary.json),
+[route captures](evidence/step-45/public-v50/routes/),
+[Axe report](evidence/step-45/public-v50/axe-core-routes/report.json), and
+[flagship evidence](evidence/step-45/public-v50/flagship/).

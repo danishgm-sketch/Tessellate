@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. The current public review Site is v49, serving application code captured from canonical commit be97d567bc32fac74abc4bc70921f5edb3739abf and Sites source mirror 910328f4b5bf900fe82a4715458a81ce23ebb17f. Issue-specific deployed checks close AUD-364 and AUD-365. Follow-up review of saved-project readiness evidence found AUD-367, a test locator that treated a screen-reader-only heading as visible project content; this is fixed and reverified on public v49 desktop and mobile. One real-content startup sample took 11,344ms with DOMContentLoaded at 10,184ms; it did not recur in eight later desktop runs, two mobile runs, or two Chrome DevTools cache-bypass traces and is closed as non-reproducible under AUD-368. The exact-head CI run 40554043456 found a moderate transitive qs advisory in the MCP SDK's Express dependency; AUD-369 records the targeted override, frozen install, and clean local audit, pending CI confirmation. Targeted browser checks reported zero Axe violations, console errors, uncaught exceptions, failed requests, or HTTP errors. Chrome DevTools reported three deprecation Issues from the Cloudflare managed challenge script. The latest full flagship/export review is v46 and the last broad multi-surface baseline is v37. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
+  "scope": "Tessellate production review audit. The current public Site is v50 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, serving application code captured from canonical commit d4b0fd88a722225c221d8264b89af70525cb1d7d and Sites mirror 11d7a1439caaf641a2d2f78eb2555c00cf30cc34; saved version appgprj_6acc036de8cc8191a823339566972d85~appgver_90ffb7eea6f0819187554301d0a0011f, deployment appgdep_6ae11df145348191884c457f997d6e51 succeeded. Exact-source GitHub CI run 40585283183 passed. On v50, 31 public routes passed at 1440x900 and 390x844 (62 captures), the four-route Axe matrix passed 8/8 with zero violations and zero serious/critical findings, semantic/accessibility regressions passed 10/10, and the exact employee-experience flagship journey plus independent React export passed at desktop and mobile. Live UI captures confirmed three distinct directions at both viewports, six settled previews, and zero unresolved resources or product runtime/network errors. AUD-370 and AUD-371 are closed after v50 deployed verification; AUD-372 records and closes an audit-harness screenshot taken during the explicit resource-loading state. Axe's CSP-blocked temporary style probes are instrumentation messages, not product errors; no security policy was weakened. D1/R2 are absent. The broader product-hardening programme and Step 45 remain incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -13083,8 +13083,37 @@
       ],
       "remediation": "Give the preset collection role=\"group\" with its aria-label. Give the pre element role=\"group\" and reference the visible “ProjectManifest excerpt” label with aria-labelledby. Add browser assertions for the accessible roles and names and keep the mobile filter dialog relationship behavior covered.",
       "fixCommit": "38ad1f7891bdf1738875762035e961457266c970",
-      "status": "fixed-awaiting-deployed-verification",
-      "deployedVerification": null,
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 50,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_90ffb7eea6f0819187554301d0a0011f",
+        "deploymentId": "appgdep_6ae11df145348191884c457f997d6e51",
+        "canonicalSourceCommit": "d4b0fd88a722225c221d8264b89af70525cb1d7d",
+        "siteSourceCommit": "11d7a1439caaf641a2d2f78eb2555c00cf30cc34",
+        "checkedAt": "2026-10-27T22:19:23.212Z",
+        "tests": "Named preset group and manifest excerpt role/name assertions passed; live semantic-accessibility and home example regression 10/10 at desktop/mobile.",
+        "evidence": [
+          {
+            "resultId": "AUD-370-v50-1",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+            "viewport": "1440x900",
+            "screenshot": "quality/evidence/step-45/public-v50/routes/home-desktop-1440x900.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-370-v50-2",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+            "viewport": "390x844",
+            "screenshot": "quality/evidence/step-45/public-v50/routes/home-mobile-390x844.png",
+            "result": "PASS"
+          }
+        ],
+        "machineReports": [
+          "quality/evidence/step-45/public-v50/semantic-accessibility/playwright-output/",
+          "quality/evidence/step-45/public-v50/axe-core-routes/report.json",
+          "quality/evidence/step-45/public-v50/route-audit.json"
+        ]
+      },
       "localVerification": {
         "checkedAt": "2026-10-27T21:12:40.000Z",
         "build": "pnpm --filter @tessellate/site build passed",
@@ -13128,8 +13157,30 @@
       ],
       "remediation": "Set aria-controls only while the dialog is rendered, then verify the live dialog relationship, Escape behavior, focus restoration, and absence of a dangling reference on close.",
       "fixCommit": "4833edc7a4c06b486574b16d10f4397ce79beb7a",
-      "status": "fixed-awaiting-deployed-verification",
-      "deployedVerification": null,
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 50,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_90ffb7eea6f0819187554301d0a0011f",
+        "deploymentId": "appgdep_6ae11df145348191884c457f997d6e51",
+        "canonicalSourceCommit": "d4b0fd88a722225c221d8264b89af70525cb1d7d",
+        "siteSourceCommit": "11d7a1439caaf641a2d2f78eb2555c00cf30cc34",
+        "checkedAt": "2026-10-27T22:19:23.212Z",
+        "tests": "Closed/open aria-controls relationship, Escape dismissal, and focus restoration passed in the live semantic-accessibility regression; 10/10 total at desktop/mobile.",
+        "evidence": [
+          {
+            "resultId": "AUD-371-v50-1",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+            "viewport": "390x844",
+            "screenshot": "quality/evidence/step-45/public-v50/routes/explore-mobile-390x844.png",
+            "result": "PASS"
+          }
+        ],
+        "machineReports": [
+          "quality/evidence/step-45/public-v50/semantic-accessibility/playwright-output/",
+          "quality/evidence/step-45/public-v50/axe-core-routes/report.json",
+          "quality/evidence/step-45/public-v50/route-audit.json"
+        ]
+      },
       "localVerification": {
         "checkedAt": "2026-10-27T21:12:40.000Z",
         "tests": {
@@ -13152,6 +13203,82 @@
           "quality/evidence/step-45/public-v49/semantic-accessibility/local-run.json"
         ],
         "build": "pnpm --filter @tessellate/site build passed (733 pages)"
+      }
+    },
+    {
+      "id": "AUD-372",
+      "severity": "low",
+      "route": "/compose",
+      "viewport": "1440x900 and 390x844",
+      "category": "visual",
+      "title": "Direction preview evidence was captured during the explicit loading state",
+      "expected": "Direction evidence should show the rendered interface after lazy resource previews finish loading, while preserving the initial loading state as separate diagnostic evidence.",
+      "actual": "The immediate screenshot of Direction 01 showed five explicit “Loading …” resource labels. The preview subsequently rendered its employee dashboard. On v50 all six direction previews settled at both viewports in 1,104–2,009ms, with no loading labels, unresolved-resource diagnostics, console errors, uncaught exceptions, failed requests, or bad responses.",
+      "reproduction": [
+        "Open /compose at 1440x900 or 390x844, enter the exact employee-experience brief, select Refined and Radical, and compose.",
+        "Capture Direction 01 as soon as its preview becomes visible; the first screenshot contains explicit resource-loading labels.",
+        "Wait for “Team Overview” and all loading labels to disappear, then compare the settled preview screenshot and visible full-preview/DNA disclosure."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-01-initial-desktop-1440.png",
+      "rootCause": "The flagship browser test treated visibility of the direction preview container as readiness, and the capture harness took a screenshot before checking whether lazy resource renderers had replaced their loading states.",
+      "affectedCode": [
+        "tests/e2e/flagship-acceptance-live-v26.spec.ts",
+        "quality/evidence/step-45/public-v50/preview-settle-live-check.mjs"
+      ],
+      "remediation": "Wait for visible “Team Overview” content, assert that loading labels are absent, and allow a short stability interval before screenshotting. Record initial and settled images separately at desktop and mobile sizes.",
+      "fixCommit": "424aa3b80e7abc24ba8326d2f0ef6ff07332ba51",
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 50,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_90ffb7eea6f0819187554301d0a0011f",
+        "deploymentId": "appgdep_6ae11df145348191884c457f997d6e51",
+        "canonicalSourceCommit": "d4b0fd88a722225c221d8264b89af70525cb1d7d",
+        "siteSourceCommit": "11d7a1439caaf641a2d2f78eb2555c00cf30cc34",
+        "checkedAt": "2026-10-27T22:19:23.212Z",
+        "viewports": {
+          "desktop": {
+            "viewport": "1440x900",
+            "settledPreviews": 3,
+            "settleMs": [
+              2009,
+              1674,
+              1716
+            ]
+          },
+          "mobile": {
+            "viewport": "390x844",
+            "settledPreviews": 3,
+            "settleMs": [
+              1583,
+              1128,
+              1104
+            ]
+          }
+        },
+        "diagnostics": {
+          "loadingPlaceholdersAfterSettle": 0,
+          "unresolvedResources": 0,
+          "consoleErrors": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "flagshipRegression": {
+          "passed": 4,
+          "skipped": 2,
+          "failed": 0
+        },
+        "evidence": [
+          "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-01-initial-desktop-1440.png",
+          "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-01-desktop-1440.png",
+          "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-01-initial-mobile-390.png",
+          "quality/evidence/step-45/public-v50/flagship/settled-previews/direction-01-mobile-390.png",
+          "quality/evidence/step-45/public-v50/flagship/directions-review.json",
+          "quality/evidence/step-45/public-v50/flagship/playwright-output/"
+        ],
+        "regressionTest": "The deployed flagship test now waits for actual Team Overview content, asserts that loading labels are absent, and waits for stability before capturing all direction screenshots. The full live run passed 4 tests with 2 configured skips and 0 failures."
       }
     }
   ],

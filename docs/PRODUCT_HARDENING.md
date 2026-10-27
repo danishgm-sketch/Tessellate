@@ -448,3 +448,28 @@ public review deployment passes the issue-specific browser checks. AUD-371 fix
 commit `4833edc7a4c06b486574b16d10f4397ce79beb7a` also has a live v49 failing
 reproduction and local after-fix pass; it remains open pending deployed
 verification. This is not completion of the full hardening plan or release gate.
+
+### 2026-10-27 continuation — public v50 re-audit
+
+The current public review Site is v50, built from canonical commit
+`d4b0fd88a722225c221d8264b89af70525cb1d7d` (Sites mirror
+`11d7a1439caaf641a2d2f78eb2555c00cf30cc34`). Exact-head GitHub CI
+[40585283183](https://github.com/danishgm-sketch/Tessellate/actions/runs/40585283183)
+passed before deployment. The 31-route desktop/mobile matrix passed 62/62;
+Core Axe passed 8/8 with zero violations and seven incomplete manual checks;
+the semantic accessibility regressions passed 10/10. The full flagship
+workflow passed at desktop and mobile, including clean independent React ZIP
+installation/build/browser checks. Three UI-inspected directions were
+structurally distinct, and all six previews settled without unresolved
+resources or product runtime/network errors. D1 and R2 remain unbound.
+
+The live run closed AUD-370 and AUD-371. It also exposed AUD-372: an old test
+captured a visible Direction 01 card before lazy previews finished rendering.
+The regression now waits for real content and no loading labels before
+capturing; v50 settled-preview rechecks passed on desktop and mobile. The audit
+now contains 372 findings (0 Critical, 69 High, 281 Medium, 22 Low): 93
+deployed-verified closures, 185 local fixes awaiting issue-specific deployed
+checks, 89 locally verified, 2 legacy fixed, 2 legacy closed, and 1 documented
+Sites-host limitation. The Step 45 and broader product-hardening release gates
+remain incomplete. See `quality/STEP_45_EVIDENCE.md` and
+`audit/RUNTIME_AUDIT.md` for evidence and limits.
