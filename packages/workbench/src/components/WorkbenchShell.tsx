@@ -18,7 +18,7 @@ const ReplaceDrawer = lazy(() => import('./replace/ReplaceDrawer.js').then((modu
 const AuditPanel = lazy(() => import('./audit/AuditPanel.js').then((module) => ({ default: module.AuditPanel })));
 
 function LoadingEditorPart({ label = 'Loading Workbench controls…' }: { label?: string }) {
-  return <div role="status" className="flex h-full min-h-12 items-center justify-center px-4 py-3 text-xs text-[#A8AFBA]">{label}</div>;
+  return <div role="status" className="flex h-full min-h-12 items-center justify-center px-4 py-3 text-xs text-[#62666F] dark:text-[#A8AFBA]">{label}</div>;
 }
 
 export function WorkbenchShell() {
