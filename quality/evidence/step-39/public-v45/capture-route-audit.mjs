@@ -1,6 +1,10 @@
+/* global document, location, innerWidth, innerHeight */
+
 import { chromium } from "@playwright/test";
 import fs from "node:fs/promises";
 import path from "node:path";
+import process from "node:process";
+import { URL } from "node:url";
 
 const origin = process.env.AUDIT_SITE_URL ?? "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site";
 const routes = [
@@ -98,6 +102,6 @@ const result = {
   routes: records
 };
 await fs.writeFile(path.join(outputDir, "route-audit.json"), JSON.stringify(result, null, 2) + "\n");
-console.log(JSON.stringify({ ...result.summary, routeCount: routes.length, captures: records.length, report: "quality/evidence/step-39/public-v45/route-audit.json" }, null, 2));
+process.stdout.write(`${JSON.stringify({ ...result.summary, routeCount: routes.length, captures: records.length, report: "quality/evidence/step-39/public-v45/route-audit.json" }, null, 2)}\n`);
 
 
