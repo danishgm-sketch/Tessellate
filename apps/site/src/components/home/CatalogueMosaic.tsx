@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useId, useState } from 'react';
 import { ArrowUpRight, Activity, Terminal } from 'lucide-react';
 
 interface MosaicItem {
@@ -68,9 +68,15 @@ const MOSAIC_RESOURCES: MosaicItem[] = [
 ];
 
 export function CatalogueMosaic() {
+  const [filtersReady, setFiltersReady] = useState(false);
+  const filterReadinessId = useId();
   const [activeFilter, setActiveFilter] = useState<
     'all' | 'primitive' | 'block' | 'data' | 'ai' | 'shell'
   >('all');
+
+  useEffect(() => {
+    setFiltersReady(true);
+  }, []);
 
   const filtered =
     activeFilter === 'all'
@@ -100,17 +106,31 @@ export function CatalogueMosaic() {
             <button
               key={filter}
               type="button"
+              disabled={!filtersReady}
+              aria-describedby={!filtersReady ? filterReadinessId : undefined}
               aria-pressed={activeFilter === filter}
               onClick={() => setActiveFilter(filter)}
               className={`text-xs px-3 py-1.5 rounded-lg capitalize font-medium transition-colors ${
-                activeFilter === filter
-                  ? 'bg-[#111217] text-white shadow-sm'
-                  : 'text-[#62666F] hover:text-[#111217]'
+                !filtersReady
+                  ? 'cursor-not-allowed opacity-60'
+                  : activeFilter === filter
+                    ? 'bg-[#111217] text-white shadow-sm'
+                    : 'text-[#62666F] hover:text-[#111217]'
               }`}
             >
               {filter === 'all' ? 'All' : filter === 'ai' ? 'AI' : filter}
             </button>
           ))}
+          {!filtersReady && (
+            <span
+              id={filterReadinessId}
+              role="status"
+              aria-live="polite"
+              className="px-2 py-1.5 text-xs text-[#62666F]"
+            >
+              Resource filters are loading.
+            </span>
+          )}
         </div>
       </div>
 

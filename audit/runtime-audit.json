@@ -13280,7 +13280,53 @@
         ],
         "regressionTest": "The deployed flagship test now waits for actual Team Overview content, asserts that loading labels are absent, and waits for stability before capturing all direction screenshots. The full live run passed 4 tests with 2 configured skips and 0 failures."
       }
+    },
+    {
+      "id": "AUD-373",
+      "severity": "medium",
+      "route": "/",
+      "viewport": "390x844",
+      "category": "state",
+      "title": "Homepage resource filters accept taps before their Astro island is hydrated",
+      "expected": "Resource category filters remain unavailable with a clear readiness message until their event handlers are attached; after readiness, the selected category updates the resource cards.",
+      "actual": "On public v50, the server-rendered filter button is enabled before the CatalogueMosaic island bundle completes. In six fresh mobile contexts, two first taps did not select Data; the same interaction worked only after waiting and tapping again. No page exception was emitted.",
+      "reproduction": [
+        "Open / at 390x844 in a fresh context on public Site v50.",
+        "Tap the Data category as soon as the resource vocabulary controls are visible, before the CatalogueMosaic island hydrates.",
+        "Observe aria-pressed remain false; wait for hydration and tap again to filter the cards."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-39/public-v50-copy/mobile-filter-reproduction/run-1-before.jpg",
+      "rootCause": "CatalogueMosaic rendered enabled button elements on the server while Astro had not yet attached client-side React handlers, so an early tap had no effect and no loading state explained the delay.",
+      "affectedCode": [
+        "apps/site/src/components/home/CatalogueMosaic.tsx",
+        "tests/e2e/home-catalogue-filter-readiness-step-39.spec.ts",
+        "tests/e2e/sites-preview.playwright.config.ts"
+      ],
+      "remediation": "Render the filter buttons disabled until the first client effect confirms the island is interactive; expose the loading message through a status and aria-describedby relationship. Verify the behavior by holding the island bundle, then checking the enabled filter changes the visible cards.",
+      "fixCommit": null,
+      "status": "fixed-locally",
+      "localVerification": {
+        "build": "pnpm build passed including catalogue, 733-page Astro output, and Sites Worker artifact.",
+        "regressionTest": {
+          "command": "SITES_PREVIEW_BASE_URL=http://127.0.0.1:4345 pnpm exec playwright test tests/e2e/home-catalogue-filter-readiness-step-39.spec.ts --config=tests/e2e/sites-preview.playwright.config.ts",
+          "passed": 2,
+          "failed": 0,
+          "viewports": [
+            "1440x900",
+            "390x844"
+          ],
+          "axeSeriousOrCritical": 0,
+          "consoleErrors": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "beforeEvidenceDirectory": "quality/evidence/step-39/public-v50-copy/mobile-filter-reproduction/",
+        "afterEvidenceDirectory": "quality/evidence/step-39/home-filter-readiness/"
+      }
     }
   ],
-  "generatedAt": "2026-10-27T21:14:56Z"
+  "generatedAt": "2026-10-27T23:31:26.052Z"
 }

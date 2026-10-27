@@ -141,8 +141,7 @@ the response no longer contains loopback origins. Evidence is in
 ### AUD-336 — Medium — Public CSP allowed local development origins
 
 - **Evidence:** Deployed v26 returned HTTP 200 at `/` with
-  `connect-src http://localhost:8787` and `frame-src` localhost ports 4321 and
-  5173. A clean Chrome DevTools context at 1440×900 recorded 27 successful
+  `connect-src http://localhost:8787` and `frame-src` localhost ports 4321 and 5173. A clean Chrome DevTools context at 1440×900 recorded 27 successful
   requests, no failed requests, and no console errors or warnings. Capture and
   response data: [`deployed-v26-csp-allowlist.json`](../quality/evidence/step-37/deployed-v26-csp-allowlist.json).
 - **Reproduction:** Open the deployed homepage, inspect its document CSP
@@ -3643,6 +3642,7 @@ certify field Core Web Vitals or the remaining routes; detailed results are in
 ## Current deployed closure gate
 
 The public Site is v30 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. The broad 31-route/630-link review and flagship audit remain documented as the historical v28 checkpoint under evidence/v28/; this Step 38 follow-up is targeted and does not claim that the entire v30 site was re-audited. Public v30 checks close AUD-338 through AUD-341: the Workbench fallback is visible before client initialization, the motion toggle updates without navigating its isolated frame, six visible Explore previews render with truthful lazy states, and homepage HTML is gzip encoded. Chrome DevTools traces cover Home, Explore, Compose and Workbench at 1440x900 and 390x844; field CrUX is unavailable. AUD-342 (host-injected inline bootstrap blocked by strict CSP) and AUD-343 (medium synthetic 4x CPU Workbench LCP watch) remain open. The register has 350 findings: 0 Critical, 67 High, 266 Medium, 17 Low; 40 deployed-verified closures, 217 awaiting issue-specific deployment checks, 90 locally verified, 2 legacy fixed, and 1 open. AUD-347 through AUD-350 record local Workbench accessibility fixes from the Step 39 audit; public deployment verification remains pending. The product-hardening programme remains in progress.
+
 ## v28 deployed-site audit
 
 The public review Site is v28 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. Captures cover all 31 requested routes at 1440x900 and 390x844, 630 discovered same-origin links, and seven core routes at 360, 390, 430, 768, 1024, 1280, 1440, and 1536 CSS pixels. All 62 route captures and 56 responsive captures returned HTTP 200 with no application console errors, uncaught exceptions, failed requests, HTTP errors, or horizontal document overflow. All six route Axe scans reported zero violations. Seven scanner preload warnings occurred only during Axe injection; the direct browser route checks did not report app warnings. Evidence is in [evidence/v28](evidence/v28/).
@@ -3706,7 +3706,6 @@ One browser console error remains: ChatGPT Sites injects a per-response inline b
 - **Remediation:** The red-to-green desktop/mobile regression confirms saved projects render before catalogue loading. Three local Chrome DevTools traces measured LCP 2,126–2,176 ms and CLS 0 under the same 4× CPU / Fast 4G emulation; a separate 503/retry test confirms the saved project remains usable. Chrome still attributes approximately 2.1 s to client render delay and reports no estimated savings. This is a local lab result, not field evidence.
 - **Status:** Fixed and locally verified; wait for public review deployment to confirm. No CrUX/field percentile data is available.
 
-
 ## Step 39 public v30 route and interaction follow-up — 2026-10-25
 
 The targeted route sweep captured 28 intended paths at 1440×900 and 390×844 (56 route/viewport records): `/`, `/tools`, all ten tool routes, `/docs/cli`, `/docs/mcp`, and 14 representative resource detail routes. All 56 returned HTTP 200; the document had no horizontal overflow, uncaught exceptions, failed requests, or 4xx/5xx responses. The same Sites-injected dynamic-hash CSP console error appeared once on every page and remains AUD-342. This is a targeted Step 39 audit, not the full route or flagship acceptance audit. Machine evidence and screenshots: [`deployed-v30-route-audit.json`](../quality/evidence/step-39/deployed-v30-route-audit.json) and `../quality/evidence/step-39/deployed-v30-routes/`.
@@ -3722,7 +3721,6 @@ Public v30 interaction testing confirmed a core navigation failure in CTA Produc
 - **Root cause:** `WorkbenchShell` used `Promise.all` for browser storage and the entire catalogue before setting the saved manifest and clearing its loading state. Catalogue metadata is needed by discovery, resource inspection, replacement, sample generation, and imported showcase/resource routes, but is not needed to render an existing saved manifest.
 - **Affected code:** `packages/workbench/src/components/WorkbenchShell.tsx`, `packages/workbench/src/mutations/runtime-catalog.ts`, `packages/workbench/src/mutations/replace.ts`, `packages/workbench/src/components/left-panel/LibraryTab.tsx`, `packages/workbench/src/components/replace/ReplaceDrawer.tsx`, `packages/workbench/src/components/right-inspector/ResourceTab.tsx`, and `tests/e2e/performance-stress-step-38.spec.ts`.
 - **Remediation:** Restore saved projects independently. Load the validated catalogue on demand from Library, Resource details, or Replace, deduplicate concurrent requests, and show loading/error/retry state instead of false empty results. New sample generation and showcase/resource imports still load the catalogue before use. Fix commit: `ad735b37cdc81966ff1ce5fe6d727e4fd7cba959`. Exact-head GitHub CI and the Component Quality Gate Sandbox pass at canonical commit `4eca97890e2d8182bcd72edfe5659997d4317c21`. Public Sites v32 verification now closes this issue: the saved project appeared before a catalogue request, Library showed a recoverable state under an injected 503, and retry loaded Gold resources while preserving the project. Evidence: [`aud-346-live-verification.json`](../quality/evidence/step-45/public-v32/aud-346-live-verification.json) and the screenshots in that directory. The platform CSP console error is tracked separately as AUD-342.
-
 
 ### AUD-347 — Medium — Workbench resource details and replacement skip heading levels
 
@@ -3945,7 +3943,6 @@ route, Axe, flagship, or standalone-export re-audit, and Step 45 remains open.
 - **Affected code:** `apps/site/src/components/ComposeView.tsx`, `apps/site/src/pages/compose/index.astro`, `packages/composer/src/interpreter.ts`, `packages/compatibility/src/direction-generator.ts`, and `tests/e2e/copy-quality-step-39.spec.ts`.
 - **Remediation:** Describe the brief, suggested plan, and Workbench handoff in plain product language; use readable screen-section names and navigation/layout labels; replace inference/schema phrasing in generated assumptions and direction rationales. The user-facing Playwright regression composes the exact brief, checks all three direction cards after every resource preview finishes loading, rejects internal terms, role IDs, and unrelated finance/observability content, records successful `/compose` and `/data/catalog.json` responses, checks runtime errors and overflow, and runs Axe WCAG 2.2 A/AA. The current local Sites Worker build passed: catalogue 324 resources, Gold runtime 40, 733 Astro pages and 731 CSP records. The focused desktop/mobile browser cases passed 2/2; each captured zero Axe violations, zero console warnings/errors, zero uncaught exceptions, zero failed requests or HTTP errors, and no document overflow. The targeted composer/interpreter and composition unit tests passed 29/29; the composer, compatibility, and site typechecks plus changed-file ESLint passed. Current screenshots and runtime records are under [`v45 interaction readiness`](../quality/evidence/step-39/public-v45/interaction-readiness/after-local/). Fix: `e860fa6f300a515881ec336112a4ebc2dfa8b3bd`. Public v46 served the canonical and Sites-source commits listed for AUD-362. The exact employee-experience brief produced three populated, domain-appropriate directions; Direction C opened in Workbench with the selected project. Desktop/mobile live workflow tests passed 2/2 and verified DNA overrides, lock preservation through recomposition and Surprise Me, semantic replacement, exact Undo/Redo, preview, manifest export, and the standalone ZIP. A clean OS temp extraction installed and built independently; browser checks passed at 1440×900 and 390×844 with no console errors. Full WCAG 2.2 A/AA Axe checks passed on the generated Workbench at both viewports with zero violations. Machine records and screenshots are under `quality/evidence/step-39/public-v46/`. **Status: closed after issue-specific deployed verification on public Site v46 (2026-10-27).**
 
-
 ## MEDIUM - public v49 startup follow-up
 
 ### AUD-368 - One public saved-project startup sample exceeded the five-second budget
@@ -4086,9 +4083,42 @@ passed. D1 and R2 remain unbound; no paid infrastructure was added.
   correction, not a product renderer defect. **Status: closed after deployed
   re-verification.**
 
-The v50 ledger contains 372 findings: 0 Critical, 69 High, 281 Medium, and 22
-Low. Statuses are 93 issue-specific deployed-verified closures, 185 locally
-fixed findings awaiting their own deployed checks, 89 locally verified, 2
+## MEDIUM — Step 39 homepage filter readiness
+
+### AUD-373 — Homepage resource filters accept taps before hydration
+
+On public v50 at 390×844, the server-rendered Data filter looked enabled before
+the `CatalogueMosaic` Astro island had attached its React click handler. In six
+fresh browser contexts, two first taps did not select Data; the filter worked
+only after a wait and a second tap. No uncaught exception or failed request was
+observed. Before screenshots and machine-readable attempts are in
+`quality/evidence/step-39/public-v50-copy/mobile-filter-reproduction/`.
+
+The root cause was a server-rendered interactive control with no hydration
+readiness state. `CatalogueMosaic` now disables filters until its first client
+effect, explains the wait using a visible live status linked with
+`aria-describedby`, then enables the controls. The user-facing regression test
+holds the island bundle, verifies the disabled/status state, releases it,
+selects Data, checks the resulting resource cards, runs Axe, and checks browser
+and network errors. `pnpm build` passed and the regression passed at 1440×900
+and 390×844 with zero serious/critical Axe findings, console errors, uncaught
+exceptions, failed requests, or bad responses. Local screenshots are in
+`quality/evidence/step-39/home-filter-readiness/`.
+
+Affected code: `apps/site/src/components/home/CatalogueMosaic.tsx`; regression:
+`tests/e2e/home-catalogue-filter-readiness-step-39.spec.ts`. The fix is local;
+public deployed verification remains pending. **Status: fixed locally.**
+
+The Step 39 copy-focused browser matrix passed 89 tests with one configured
+skip across desktop and mobile. This covered Compose, public resource claims,
+all ten tools, CLI documentation, and MCP documentation. The full unit suite
+passed 1,223 tests with one skip, repository typecheck passed, lint passed with
+one pre-existing warning, and the production build passed. These local results
+do not replace the pending deployed verification for AUD-373.
+
+The v50 ledger now contains 373 findings: 0 Critical, 69 High, 282 Medium, and
+22 Low. Statuses are 93 issue-specific deployed-verified closures, 185 locally
+fixed findings awaiting their own deployed checks, 90 locally verified, 2
 legacy fixed, 2 legacy closed, and 1 documented Sites-host limitation. Of the
 High findings, 39 have issue-specific deployed verification and 30 are locally
 verified. The broad hardening programme and Step 45 remain incomplete; this
