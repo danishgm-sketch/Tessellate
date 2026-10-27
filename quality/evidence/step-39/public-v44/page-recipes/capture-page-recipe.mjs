@@ -74,15 +74,15 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 
   record.composerBrief = await brief.inputValue();
   record.handoffViewport = await brief.evaluate((briefField) => {
     const rect = briefField.getBoundingClientRect();
-    const heading = document.querySelector('main h1');
+    const heading = globalThis.document.querySelector('main h1');
     return {
-      scrollY: window.scrollY,
+      scrollY: globalThis.window.scrollY,
       briefFieldTop: rect.top,
       briefFieldBottom: rect.bottom,
-      briefFieldVisibleInViewport: rect.bottom > 0 && rect.top < window.innerHeight,
+      briefFieldVisibleInViewport: rect.bottom > 0 && rect.top < globalThis.window.innerHeight,
       headingText: heading?.textContent?.trim() ?? null,
       headingTop: heading?.getBoundingClientRect().top ?? null,
-      viewportHeight: window.innerHeight,
+      viewportHeight: globalThis.window.innerHeight,
     };
   });
   await page.screenshot({ path: path.join(outputDirectory, record.screenshots.composeHandoffViewport) });
