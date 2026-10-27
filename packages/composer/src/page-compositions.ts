@@ -494,30 +494,31 @@ export const PAGE_COMPOSITIONS: PageCompositionDefinition[] = [
     }),
   },
 
-  // 16. Application Overview Dashboard
+  // 16. Workspace Overview
   {
     slug: '/overview',
     id: 'app-overview-dashboard',
-    title: 'Application Overview Dashboard',
+    title: 'Workspace Overview',
     screenType: 'dashboard',
     category: 'app',
-    description: 'Workspace overview with key outcome metrics, recent activity, and clear next steps.',
-    requiredRoles: ['dashboard-header', 'metric-scorecards', 'trend-chart', 'activity-feed'],
-    recommendedSections: ['metrics-scorecard', 'activity-timeline', 'time-series-chart'],
-    archetypeFit: ['saas', 'fintech', 'infrastructure'],
+    description:
+      'A shared software workspace for reviewing active projects, recent updates, and priority alerts.',
+    requiredRoles: ['workspace-header', 'current-work-board', 'recent-updates', 'priority-alerts'],
+    recommendedSections: ['kanban-board', 'timeline', 'notification-centre'],
+    archetypeFit: ['saas', 'productivity'],
     createScreen: (opt) => ({
       id: opt?.id ?? 'screen-app-overview',
       screenNodeId: 'node-app-overview',
-      name: opt?.name ?? 'Application Overview Dashboard',
+      name: opt?.name ?? 'Workspace Overview',
       slug: '/overview',
       rootNode: {
         id: 'root-app-overview',
         nodeType: 'layout',
-        semanticRole: 'dashboard-canvas',
+        semanticRole: 'workspace-canvas',
         children: [
-          createSectionNode('kpi-metrics', 'metrics-scorecard', 'sec-dash-metrics'),
-          createSectionNode('trend-chart', 'time-series-chart', 'sec-dash-chart'),
-          createSectionNode('recent-activity', 'activity-timeline', 'sec-dash-activity'),
+          createSectionNode('current-work', 'kanban-board', 'sec-overview-work'),
+          createSectionNode('recent-updates', 'timeline', 'sec-overview-updates'),
+          createSectionNode('priority-alerts', 'notification-centre', 'sec-overview-alerts'),
         ],
         slots: {},
         props: {},
