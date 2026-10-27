@@ -21,7 +21,7 @@ test('Compose acknowledges work before generating the three real directions', as
 
   const progress = page.getByTestId('compose-progress');
   await expect(progress).toBeVisible();
-  await expect(progress).toContainText('Building the product model and three interface directions');
+  await expect(progress).toContainText('Preparing your plan and three directions…');
   await expect(submit).toBeDisabled();
 
   const evidenceDirectory = path.resolve(process.cwd(), 'quality/evidence/step-38/after');
