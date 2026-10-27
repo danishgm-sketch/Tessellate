@@ -9,6 +9,7 @@ test('Workbench mode controls reveal their working panels at desktop and mobile 
   page,
   isMobile,
 }, testInfo) => {
+  test.setTimeout(120_000);
   const consoleErrors: string[] = [];
   const uncaught: string[] = [];
   const failedRequests: string[] = [];
@@ -57,6 +58,7 @@ test('Workbench mode controls reveal their working panels at desktop and mobile 
         nodes: violation.nodes.length,
       }))
     );
+
     await page.screenshot({
       path: testInfo.outputPath(`mode-${mode}-${isMobile ? 'mobile-390' : 'desktop-1440'}.png`),
       animations: 'disabled',

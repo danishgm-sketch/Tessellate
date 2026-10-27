@@ -31,6 +31,14 @@ const goldResources = selectedGoldSlugs.map((slug) => {
   return resource;
 });
 const viewportWidths = [360, 390, 430, 768, 1024, 1280, 1440];
+const evidenceOutputDir = path.resolve(
+  process.cwd(),
+  process.env.TESSELLATE_EVIDENCE_DIR ?? 'test-results/resource-certification/gold-40',
+);
+const evidenceReportPath = path.resolve(
+  process.cwd(),
+  process.env.TESSELLATE_REPORT_PATH ?? 'test-results/resource-certification/gold-40.json',
+);
 
 async function waitForActualResource(
   frame: import('@playwright/test').FrameLocator,
@@ -54,7 +62,7 @@ test('Gold resources render at every certified width and each declared variant',
   test.skip(testInfo.project.name !== 'sites-chromium', 'This matrix runs against the Sites Worker preview boundary.');
   test.setTimeout(15 * 60 * 1000);
 
-  const outputDir = path.resolve(process.cwd(), 'test-results/resource-certification/gold-40');
+  const outputDir = evidenceOutputDir;
   mkdirSync(outputDir, { recursive: true });
 
   const records: Array<{
@@ -330,7 +338,7 @@ test('Gold resources render at every certified width and each declared variant',
   }
 
   activeRecord = undefined;
-  const reportPath = path.resolve(process.cwd(), 'test-results/resource-certification/gold-40.json');
+  const reportPath = evidenceReportPath;
   await import('node:fs/promises').then(({ writeFile }) => writeFile(reportPath, JSON.stringify({
     schemaVersion: '1.0.0',
     browserProject: testInfo.project.name,

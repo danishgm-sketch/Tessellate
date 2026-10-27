@@ -20,6 +20,32 @@ export default tseslint.config(
     ],
   },
   {
+    files: ['quality/evidence/**/*.{js,mjs}'],
+    languageOptions: {
+      globals: {
+        URL: 'readonly',
+        console: 'readonly',
+        process: 'readonly',
+        structuredClone: 'readonly',
+      },
+    },
+    rules: {
+      'no-redeclare': ['error', { builtinGlobals: false }],
+    },
+  },
+  {
+    files: [
+      'quality/evidence/step-45/public-v49/high-findings-reaudit/reaudit.mjs',
+      'quality/evidence/step-45/public-v49/flagship/inspect-direction-previews.mjs',
+    ],
+    languageOptions: {
+      globals: {
+        document: 'readonly',
+        getComputedStyle: 'readonly',
+      },
+    },
+  },
+  {
     rules: {
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': [
