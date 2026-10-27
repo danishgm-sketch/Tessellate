@@ -38,7 +38,7 @@ test('generic workspace overview recipe produces a coherent SaaS architecture', 
   await expect(page.getByText('ANALYTICS', { exact: true })).toHaveCount(0);
   await expect(page.getByText('DEVELOPER-TOOLS', { exact: true })).toHaveCount(0);
 
-  const plannedScreens = page.getByRole('heading', { name: /Planned ScreenGraph/ }).locator('xpath=ancestor::section[1]');
+  const plannedScreens = page.getByRole('heading', { name: /Planned screens/ }).locator('xpath=ancestor::section[1]');
   for (const unrelatedScreen of ['Metric Explorer', 'Reports Library', 'Telemetry Dashboard', 'Log Explorer', 'API & Webhooks']) {
     await expect(plannedScreens.getByText(unrelatedScreen, { exact: true })).toHaveCount(0);
   }

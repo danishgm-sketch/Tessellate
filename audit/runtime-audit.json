@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. The latest broad public route, flagship, accessibility, responsive, and standalone-export checkpoint remains Sites v37. Public v42 exposed AUD-359–360; v43 corrected the brief grammar but still inferred Analytics Platform. Public v44 verifies the neutral Workspace Overview recipe at desktop and mobile and closes AUD-359–360. Public v45 verifies the Palette Studio first-activation hydration fix at desktop and mobile and closes AUD-361. The public review Site is v45 and has no D1/R2 bindings. Step 45 and the wider hardening programme remain incomplete.",
+  "scope": "Tessellate production review audit. The latest broad public route, flagship, accessibility, responsive, and standalone-export checkpoint remains Sites v37. Public v42 exposed AUD-359–360; v43 corrected the brief grammar but still inferred Analytics Platform. Public v44 verifies the neutral Workspace Overview recipe at desktop and mobile and closes AUD-359–360. Public v45 verifies the Palette Studio first-activation hydration fix at desktop and mobile and closes AUD-361; its 32-route/64-capture sweep recorded no route, console, overflow, uncaught-exception, or failed-request defects and exposed AUD-362–363 on issue-specific interaction/copy checks. The v45 copy and hydration fixes are local and await deployed verification. The public review Site is v45 and has no D1/R2 bindings. Step 45 and the wider hardening programme remain incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -11828,6 +11828,105 @@
       "verifiedCanonicalCommit": "4e7330b90ac37c0b6198e05b8306c6a510d615a9",
       "verifiedSitesSourceCommit": "2e486215136e33c05eba0e23b00157133bc9b0ba",
       "deployedSiteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site"
+    },
+    {
+      "id": "AUD-362",
+      "severity": "medium",
+      "route": "/tools/typography",
+      "viewport": "1440x900, 390x844",
+      "category": "state",
+      "title": "Typography Lab accepts tab changes before hydration",
+      "expected": "Every visible control remains unavailable until the Typography Lab client has attached its handlers, with a clear loading status.",
+      "actual": "On public v45, the Tabular Figure Sample button was enabled while its client bundle was still loading. A first activation could be lost; after the island loaded, retrying the tab changed the sample. A controlled red regression held the island JavaScript and observed the enabled button at both viewports.",
+      "reproduction": [
+        "Open /tools/typography at 1440x900 or 390x844 in a fresh browser context.",
+        "Pause the TypographyLab client bundle after the server-rendered controls appear.",
+        "Observe that the tab remains enabled before hydration; the first activation does not change aria-pressed."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "/tools/typography",
+          "status": 200
+        },
+        {
+          "url": "/_astro/TypographyLab.aRFJKwlc.js",
+          "status": 200,
+          "note": "The regression holds this successful client bundle before hydration."
+        }
+      ],
+      "screenshot": "quality/evidence/step-39/public-v45/interaction-readiness/red-before-fix/desktop-1440x900-pre-hydration.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-39/public-v45/interaction-readiness/red-before-fix/desktop-1440x900-pre-hydration.png",
+        "quality/evidence/step-39/public-v45/interaction-readiness/red-before-fix/mobile-390x844-pre-hydration.png"
+      ],
+      "rootCause": "TypographyLab server-rendered enabled controls without an explicit client-readiness state, so input could arrive before React attached event handlers.",
+      "affectedCode": [
+        "apps/site/src/components/tools/TypographyLab.tsx",
+        "tests/e2e/copy-quality-step-39.spec.ts"
+      ],
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshots": [
+        "quality/evidence/step-39/public-v45/interaction-readiness/after-local/desktop-1440x900-pre-hydration.png",
+        "quality/evidence/step-39/public-v45/interaction-readiness/after-local/desktop-1440x900-hydrated.png",
+        "quality/evidence/step-39/public-v45/interaction-readiness/after-local/mobile-390x844-pre-hydration.png",
+        "quality/evidence/step-39/public-v45/interaction-readiness/after-local/mobile-390x844-hydrated.png"
+      ],
+      "localVerification": {
+        "regressionTests": "tests/e2e/copy-quality-step-39.spec.ts passed 4/4 focused desktop/mobile cases; the related recipe, Workbench copy, dialog, and copy-quality Sites Worker suite passed 63 tests with 1 configured skip.",
+        "fullChecks": "pnpm typecheck passed across 22 packages; targeted ESLint passed; pnpm exec vitest run --maxWorkers=4 passed 1,223 tests with 1 configured skip across 78 files; pnpm audit:all passed behavioral gate, resource isolation, production build, bundle budgets, license/provenance, security/secrets, and dependency audit.",
+        "screenshotRoot": "quality/evidence/step-39/public-v45/interaction-readiness/after-local/"
+      }
+    },
+    {
+      "id": "AUD-363",
+      "severity": "medium",
+      "route": "/compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Compose exposes schema and inference jargon as user-facing copy",
+      "expected": "Compose should explain the brief-to-directions workflow in plain product language without requiring users to understand internal schemas or inference terminology.",
+      "actual": "Public v45 described a generated “ProductModel” and “ScreenGraph”, mentioned “LLM”, “archetype priors”, and “deterministically interpret”, and labelled the selector “Archetype Priority (Optional Override)”.",
+      "reproduction": [
+        "Open /compose at 1440x900 or 390x844.",
+        "Read the introduction and brief preset/selector labels before composing.",
+        "Observe the internal schema, model, and inference terms in visible copy."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "/compose",
+          "status": 200
+        },
+        {
+          "url": "/data/catalog.json",
+          "status": 200
+        }
+      ],
+      "screenshot": "quality/evidence/step-39/public-v45/routes/compose-desktop-1440x900.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-39/public-v45/routes/compose-desktop-1440x900.png",
+        "quality/evidence/step-39/public-v45/routes/compose-mobile-390x844.png"
+      ],
+      "rootCause": "The Compose shell and output headings described internal schema names and implementation techniques instead of the user task and expected result.",
+      "affectedCode": [
+        "apps/site/src/components/ComposeView.tsx",
+        "apps/site/src/pages/compose/index.astro",
+        "tests/e2e/copy-quality-step-39.spec.ts"
+      ],
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "afterScreenshots": [
+        "quality/evidence/step-39/public-v45/interaction-readiness/after-local/compose-desktop-1440x900.png",
+        "quality/evidence/step-39/public-v45/interaction-readiness/after-local/compose-mobile-390x844.png"
+      ],
+      "localVerification": {
+        "regressionTests": "tests/e2e/copy-quality-step-39.spec.ts passed 4/4 focused desktop/mobile cases; the related recipe, Workbench copy, dialog, and copy-quality Sites Worker suite passed 63 tests with 1 configured skip.",
+        "fullChecks": "pnpm typecheck passed across 22 packages; targeted ESLint passed; pnpm exec vitest run --maxWorkers=4 passed 1,223 tests with 1 configured skip across 78 files; pnpm audit:all passed behavioral gate, resource isolation, production build, bundle budgets, license/provenance, security/secrets, and dependency audit.",
+        "screenshotRoot": "quality/evidence/step-39/public-v45/interaction-readiness/after-local/",
+        "accessibility": "Axe WCAG 2.2 A/AA reported zero violations at 1440x900 and 390x844."
+      }
     }
   ],
   "generatedAt": "2026-10-27T10:39:01.123Z"

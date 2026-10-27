@@ -254,13 +254,13 @@ export function ComposeView() {
           Describe the product. Get the interface.
         </h1>
         <p className="max-w-3xl text-base text-[#62666F] dark:text-[#A8AFBA]">
-          Tessellate understands product architecture without requiring an LLM. Enter your product brief below to generate a validated ProductModel, ScreenGraph, and three design directions.
+          Start with a short brief. Compare three interface directions, then choose one to edit in Workbench.
         </p>
 
         {/* Golden Brief Preset Pills */}
         <div className="pt-2">
           <div className="text-xs font-semibold text-[var(--text-muted)] dark:text-[var(--text-muted)]">
-            Load Golden Specification Briefs:
+            Start with a sample brief:
           </div>
           <div className="mt-2 flex flex-wrap gap-2">
             {goldenBriefs.map((brief) => (
@@ -315,7 +315,7 @@ export function ComposeView() {
           {/* Archetype Override */}
           <div className="space-y-2">
             <label htmlFor="archetype" className="block text-xs font-bold text-[#111217] dark:text-[#F5F7FA]">
-              Archetype Priority (Optional Override)
+              Product type (optional)
             </label>
             <select
               id="archetype"
@@ -594,18 +594,18 @@ export function ComposeView() {
                   Inferred Product Architecture
                 </h2>
                 <p className="text-sm text-[#62666F] dark:text-[#A8AFBA]">
-                  Deterministic inferences derived from brief vocabulary and archetype priors.
+                  A product plan drawn from your brief. Review the assumptions before choosing a direction.
                 </p>
               </div>
               <span className="rounded-full bg-[#177B55]/10 px-3 py-1 text-xs font-bold text-[#12603F]">
-                Validated product model
+                Ready to review
               </span>
             </div>
 
             {/* Inferred Assumptions Box */}
             <div className="rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] p-5 dark:border-[#272C34] dark:bg-[#111419]">
               <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#2547E8] dark:text-[#879DFF]">
-                <Shield className="h-4 w-4" /> Deterministic Assumptions
+                <Shield className="h-4 w-4" /> Assumptions to review
               </div>
               <ul className="mt-3 list-inside list-disc space-y-1 text-xs text-[#62666F] dark:text-[#A8AFBA]">
                 {inferredAssumptions.map((assumption, idx) => (
@@ -650,7 +650,7 @@ export function ComposeView() {
             <div className="flex items-center justify-between">
               <div>
                 <h2 className="text-2xl font-bold text-[#111217] dark:text-[#F5F7FA]">
-                  Planned ScreenGraph ({screenPlan.totalScreens} Screens)
+                  Planned screens ({screenPlan.totalScreens})
                 </h2>
                 <p className="text-sm text-[#62666F] dark:text-[#A8AFBA]">
                   Structured screen classes, route slugs, required section roles, and navigation hierarchy.
@@ -724,7 +724,7 @@ export function ComposeView() {
               Three Generated Directions
             </h2>
             <p className="text-sm text-[#62666F] dark:text-[#A8AFBA]">
-              Deterministic directions generated from intent: conservative fit, expressive fit, and structural alternative.
+              Three approaches based on your brief: a familiar fit, an expressive direction, and a structural alternative.
             </p>
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">

@@ -11,6 +11,37 @@ type RuntimeEvidence = {
   httpErrors: Array<{ url: string; status: number }>;
 };
 
+test('Compose explains the product plan without internal schema vocabulary', async ({ page }, testInfo) => {
+  await page.goto('/compose');
+  const main = page.locator('main');
+  const visibleCopy = await main.innerText();
+
+  expect(visibleCopy).not.toMatch(/\b(ProductModel|ScreenGraph|LLM|archetype)\b|archetype priors|deterministically interpret/i);
+  await expect(main.getByText(/Describe what your product needs/i)).toBeVisible();
+  await expect(main.getByText(/Start with a short brief/i)).toBeVisible();
+
+  const accessibility = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'])
+    .analyze();
+  expect(accessibility.violations).toEqual([]);
+
+  const evidenceDirectory = path.resolve(
+    process.cwd(),
+    'quality/evidence/step-39/public-v45/interaction-readiness/after-local'
+  );
+  await mkdir(evidenceDirectory, { recursive: true });
+  const viewport = testInfo.project.name.includes('mobile') ? 'mobile-390x844' : 'desktop-1440x900';
+  const geometry = await page.evaluate(() => ({
+    viewportWidth: document.documentElement.clientWidth,
+    documentWidth: document.documentElement.scrollWidth,
+  }));
+  await page.screenshot({ path: path.join(evidenceDirectory, `compose-${viewport}.png`) });
+  await writeFile(
+    path.join(evidenceDirectory, `compose-${viewport}.json`),
+    `${JSON.stringify({ url: page.url(), viewport, geometry, axeViolations: accessibility.violations.length }, null, 2)}\n`
+  );
+});
+
 function watchRuntime(page: Page): RuntimeEvidence {
   const runtime: RuntimeEvidence = {
     consoleErrors: [],
@@ -1208,6 +1239,60 @@ test('Section Planner does not expose inert controls before its client is ready'
     body: Buffer.from(JSON.stringify(evidence, null, 2)),
     contentType: 'application/json',
   });
+});
+
+test('Typography Lab keeps controls unavailable until its client is ready', async ({ page }, testInfo) => {
+  let releaseIsland: (() => void) | undefined;
+  let markIslandRequest: (() => void) | undefined;
+  const islandGate = new Promise<void>((resolve) => {
+    releaseIsland = resolve;
+  });
+  const islandRequest = new Promise<void>((resolve) => {
+    markIslandRequest = resolve;
+  });
+
+  await page.route(/TypographyLab/i, async (route) => {
+    markIslandRequest?.();
+    await islandGate;
+    await route.continue();
+  });
+  await page.goto('/tools/typography', { waitUntil: 'domcontentloaded' });
+
+  const sampleTab = page.getByRole('button', { name: 'Tabular Figure Sample', exact: true });
+  await expect(sampleTab).toBeVisible();
+  await islandRequest;
+  await expect(page.getByRole('button', { name: 'Copy Scale CSS' })).toBeDisabled();
+  await expect(page.getByRole('button', { name: 'Reset', exact: true })).toBeDisabled();
+  await expect(page.getByRole('slider', { name: 'Base body size' })).toBeDisabled();
+  for (const checkbox of await page.getByRole('checkbox').all()) {
+    await expect(checkbox).toBeDisabled();
+  }
+
+  const evidenceDirectory = path.resolve(
+    process.cwd(),
+    'quality/evidence/step-39/public-v45/interaction-readiness/after-local'
+  );
+  await mkdir(evidenceDirectory, { recursive: true });
+  const viewport = testInfo.project.name.includes('mobile') ? 'mobile-390x844' : 'desktop-1440x900';
+  await page.screenshot({ path: path.join(evidenceDirectory, `${viewport}-pre-hydration.png`) });
+
+  try {
+    await expect(sampleTab).toBeDisabled();
+    await expect(page.getByText('Preparing typography controls…', { exact: true })).toBeVisible();
+  } finally {
+    releaseIsland?.();
+  }
+
+  await expect(sampleTab).toBeEnabled();
+  await sampleTab.click();
+  await expect(sampleTab).toHaveAttribute('aria-pressed', 'true');
+  await expect(
+    page.getByText(
+      'Illustrative sample data for comparing numeral alignment; these values are not live metrics.',
+      { exact: true }
+    )
+  ).toBeVisible();
+  await page.screenshot({ path: path.join(evidenceDirectory, `${viewport}-hydrated.png`) });
 });
 
 test('Typography Lab shows truthful, responsive type specimens', async ({ page }, testInfo) => {

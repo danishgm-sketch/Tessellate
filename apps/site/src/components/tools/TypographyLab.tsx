@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Copy, Check, RotateCcw, Sliders } from 'lucide-react';
 import { CopyFailureNotice, useToolClipboard } from './useToolClipboard';
 
@@ -94,6 +94,7 @@ function fluidTypeSize(maximumSizePx: number, minimumSizePx: number): string {
 }
 
 export function TypographyLab() {
+  const [isHydrated, setIsHydrated] = useState(false);
   const [selectedScaleId, setSelectedScaleId] = useState<string>('minor-third');
   const [selectedPairingId, setSelectedPairingId] = useState<string>('geist-modern');
   const [baseSizePx, setBaseSizePx] = useState<number>(16);
@@ -102,6 +103,10 @@ export function TypographyLab() {
   const [activeTab, setActiveTab] = useState<'hierarchy' | 'numerical'>('hierarchy');
   const [copiedFormat, setCopiedFormat] = useState<'css' | 'tailwind' | null>(null);
   const { copyText, copyFailed } = useToolClipboard();
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
 
   const activeScale = useMemo(() => {
     return TYPE_SCALES.find((s) => s.id === selectedScaleId) ?? TYPE_SCALES[1]!;
@@ -153,7 +158,12 @@ export function TypographyLab() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8" aria-busy={!isHydrated}>
+      {!isHydrated && (
+        <p role="status" className="text-sm text-[#62666F]" data-testid="typography-ready-status">
+          Preparing typography controls…
+        </p>
+      )}
       {/* Header Banner */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#D9D6CF] pb-6">
         <div>
@@ -178,8 +188,9 @@ export function TypographyLab() {
         <div className="flex items-center gap-2">
           <button
             type="button"
+            disabled={!isHydrated}
             onClick={() => copyToClipboard(generatedCss, 'css')}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2547E8] text-white text-xs font-semibold hover:bg-[#1E3CCD] transition-all shadow-sm"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#2547E8] text-white text-xs font-semibold hover:bg-[#1E3CCD] transition-all shadow-sm disabled:cursor-wait disabled:opacity-60"
           >
             {copiedFormat === 'css' ? (
               <Check className="h-3.5 w-3.5" />
@@ -204,8 +215,9 @@ export function TypographyLab() {
             </div>
             <button
               type="button"
+              disabled={!isHydrated}
               onClick={resetTypography}
-              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1"
+              className="text-xs font-mono text-[var(--text-muted)] hover:text-[#111217] flex items-center gap-1 disabled:cursor-wait disabled:opacity-60"
             >
               <RotateCcw className="h-3 w-3" />
               <span>Reset</span>
@@ -222,13 +234,14 @@ export function TypographyLab() {
                 <button
                   key={s.id}
                   type="button"
+                  disabled={!isHydrated}
                   onClick={() => setSelectedScaleId(s.id)}
                   aria-pressed={selectedScaleId === s.id}
                   className={`w-full flex items-center justify-between p-2.5 rounded-xl border text-xs transition-all ${
                     selectedScaleId === s.id
                       ? 'border-[#2547E8] bg-[#E7EBFF] text-[#2547E8] font-semibold'
                       : 'border-[#D9D6CF] text-[#62666F] hover:text-[#111217] bg-[#FAF9F6]'
-                  }`}
+                  } disabled:cursor-wait disabled:opacity-60`}
                 >
                   <span>{s.name}</span>
                   <span className="font-mono text-[11px] font-bold">{s.ratio}</span>
@@ -246,12 +259,13 @@ export function TypographyLab() {
             <input
               aria-label="Base body size"
               type="range"
+              disabled={!isHydrated}
               min="14"
               max="20"
               step="1"
               value={baseSizePx}
               onChange={(e) => setBaseSizePx(Number(e.target.value))}
-              className="w-full accent-[#2547E8] cursor-pointer"
+              className="w-full accent-[#2547E8] cursor-pointer disabled:cursor-wait"
             />
           </div>
 
@@ -265,13 +279,14 @@ export function TypographyLab() {
                 <button
                   key={p.id}
                   type="button"
+                  disabled={!isHydrated}
                   onClick={() => setSelectedPairingId(p.id)}
                   aria-pressed={selectedPairingId === p.id}
                   className={`w-full text-left p-2.5 rounded-xl border text-xs transition-all ${
                     selectedPairingId === p.id
                       ? 'border-[#111217] bg-[#111217] text-white shadow-sm'
                       : 'border-[#D9D6CF] text-[#62666F] hover:text-[#111217] bg-[#FAF9F6]'
-                  }`}
+                  } disabled:cursor-wait disabled:opacity-60`}
                 >
                   <div className="font-semibold">{p.name}</div>
                   <div className="text-[10px] mt-0.5 line-clamp-1">{p.description}</div>
@@ -290,6 +305,7 @@ export function TypographyLab() {
                 <input
                   aria-label="Use tabular nums"
                   type="checkbox"
+                  disabled={!isHydrated}
                   checked={useTabularNums}
                   onChange={(e) => setUseTabularNums(e.target.checked)}
                   className="accent-[#2547E8] rounded"
@@ -300,6 +316,7 @@ export function TypographyLab() {
                 <input
                   aria-label="Use slashed zero"
                   type="checkbox"
+                  disabled={!isHydrated}
                   checked={useSlashedZero}
                   onChange={(e) => setUseSlashedZero(e.target.checked)}
                   className="accent-[#2547E8] rounded"
@@ -316,9 +333,10 @@ export function TypographyLab() {
           <div className="flex p-1 rounded-xl bg-[#FAF9F6] border border-[#D9D6CF] gap-1">
             <button
               type="button"
+              disabled={!isHydrated}
               onClick={() => setActiveTab('hierarchy')}
               aria-pressed={activeTab === 'hierarchy'}
-              className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+              className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all disabled:cursor-wait disabled:opacity-60 ${
                 activeTab === 'hierarchy' ? 'bg-[#111217] text-white shadow-sm' : 'text-[#62666F]'
               }`}
             >
@@ -326,9 +344,10 @@ export function TypographyLab() {
             </button>
             <button
               type="button"
+              disabled={!isHydrated}
               onClick={() => setActiveTab('numerical')}
               aria-pressed={activeTab === 'numerical'}
-              className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+              className={`flex-1 py-1.5 text-xs font-semibold rounded-lg transition-all disabled:cursor-wait disabled:opacity-60 ${
                 activeTab === 'numerical' ? 'bg-[#111217] text-white shadow-sm' : 'text-[#62666F]'
               }`}
             >
