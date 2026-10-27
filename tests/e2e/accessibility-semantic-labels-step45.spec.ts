@@ -22,14 +22,16 @@ test('mobile Explore filter button controls the opened dialog and Escape restore
   await page.goto('/explore');
   const filters = page.getByRole('button', { name: 'Filters', exact: true });
   await expect(filters).toBeEnabled();
-  const dialogId = await filters.getAttribute('aria-controls');
-  expect(dialogId).toBeTruthy();
+  await expect(filters).not.toHaveAttribute('aria-controls');
   await filters.click();
   await expect(filters).toHaveAttribute('aria-expanded', 'true');
+  const dialogId = await filters.getAttribute('aria-controls');
+  expect(dialogId).toBe('explore-mobile-filter-dialog');
   const dialog = page.locator(`[id="${dialogId}"]`);
   await expect(dialog).toHaveRole('dialog');
   await expect(dialog).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(dialog).toHaveCount(0);
   await expect(filters).toBeFocused();
+  await expect(filters).not.toHaveAttribute('aria-controls');
 });

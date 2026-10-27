@@ -409,7 +409,7 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
           ref={mobileRailToggleRef}
           aria-haspopup="dialog"
           aria-expanded={mobileRailOpen}
-          aria-controls="explore-mobile-filter-dialog"
+          aria-controls={mobileRailOpen ? 'explore-mobile-filter-dialog' : undefined}
           aria-describedby={mobileFiltersHelpId}
           disabled={mobileFiltersDisabled}
           onClick={() => setMobileRailOpen(!mobileRailOpen)}
