@@ -484,13 +484,27 @@ test('a saved Workbench project opens before catalogue resources are requested',
   });
 
   const startedAt = Date.now();
-  await page.goto(`/workbench?project=${manifest.id}`);
+  // Measure when the saved project is actually usable, not when every lazy or
+  // offscreen resource has finished and the document's `load` event fires.
+  await page.goto(`/workbench?project=${manifest.id}`, { waitUntil: 'commit' });
   const shell = testInfo.project.name.includes('mobile')
     ? page.getByTestId('mobile-workbench')
     : page.getByTestId('workbench-shell');
   await expect(shell).toBeVisible({ timeout: 5_000 });
-  await expect(page.getByRole('heading', { name: `Workbench: ${manifest.name}` })).toBeAttached();
+  await expect(page.getByRole('heading', { name: `Workbench: ${manifest.name}` })).toBeVisible();
   const projectVisibleMs = Date.now() - startedAt;
+  const navigationTiming = await page.evaluate(() => {
+    const navigation = performance.getEntriesByType('navigation')[0] as
+      | PerformanceNavigationTiming
+      | undefined;
+    return navigation
+      ? {
+          readyState: document.readyState,
+          domContentLoadedMs: navigation.domContentLoadedEventEnd || null,
+          loadEventMs: navigation.loadEventEnd || null,
+        }
+      : null;
+  });
   const initialCatalogRequests = catalogueRequests;
 
   expect(initialCatalogRequests, 'Opening a saved local project should not fetch the full catalogue.').toBe(0);
@@ -512,7 +526,7 @@ test('a saved Workbench project opens before catalogue resources are requested',
     route: page.url(),
     viewport: page.viewportSize(),
     project: { id: manifest.id, name: manifest.name },
-    timingsMs: { savedProjectVisible: projectVisibleMs },
+    timingsMs: { savedProjectVisible: projectVisibleMs, ...navigationTiming },
     initialCatalogRequests,
     axeViolations,
     runtime,
@@ -554,7 +568,7 @@ test('a saved Workbench project opens before catalogue resources are requested',
     route: page.url(),
     viewport: page.viewportSize(),
     project: { id: manifest.id, name: manifest.name },
-    timingsMs: { savedProjectVisible: projectVisibleMs },
+    timingsMs: { savedProjectVisible: projectVisibleMs, ...navigationTiming },
     initialCatalogRequests,
     catalogRequestsAfterLibraryOpen: catalogueRequests,
     axeViolations: axe.violations.map((violation) => ({ id: violation.id, impact: violation.impact, nodes: violation.nodes.length })),
