@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. Public Sites v46 is the live review version. CI found AUD-364 and AUD-365 in Workbench startup fallbacks. Both fixes are locally verified; exact-head CI and deployed verification remain open. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
+  "scope": "Tessellate production review audit. Public Sites v46 was published from canonical commit 351b6d7ac3467fe4c580d1c31533705c16c60490 and Sites source mirror 520717ada321da3f23d46b000adc8da7d416c52e. Issue-specific deployed checks close AUD-362 and AUD-363. The v46 route sweep covers 32 routes at desktop and mobile; full visible Compose-to-Direction-C-to-Workbench mutation, export, generated-product Axe, and clean standalone React install/build/browser checks pass. CI found AUD-364 and AUD-365 in startup fallbacks. Both fixes are locally verified; AUD-365 exact-head CI and deployed verification remain open. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -12012,8 +12012,11 @@
         "tests/e2e/site-route-performance-step-38.spec.ts"
       ],
       "fixCommit": "cf543f388a98e5b533943e40bdd8bc587181e5bf",
-      "status": "fixed-local-verified",
-      "afterScreenshots": [],
+      "status": "closed-deployed-verified",
+      "afterScreenshots": [
+        "quality/evidence/step-45/public-v49/aud-364-365/aud-364-desktop-delayed-startup-1440.png",
+        "quality/evidence/step-45/public-v49/aud-364-365/aud-364-mobile-delayed-startup-390.png"
+      ],
       "localVerification": {
         "regressionTests": "Existing delayed-bundle Playwright/Axe regression passed desktop-chrome and mobile-chrome (2/2). Both report zero Axe violations, console errors/warnings, uncaught exceptions, failed requests, or HTTP errors.",
         "typecheck": "pnpm --filter @tessellate/workbench typecheck passed.",
@@ -12021,8 +12024,27 @@
         "build": "pnpm --filter @tessellate/site build passed and generated 733 Astro pages.",
         "evidence": "quality/evidence/step-45/aud-364-local-after/"
       },
-      "deployedVerification": null,
-      "notes": "Public v46 was separately captured at 390x844 with HTTP 200, zero Axe violations, and no browser/network errors, but it did not render the failing lazy status. The source fix is not considered deployed or closed until a new exact-head Site deployment passes the delayed-load regression."
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "siteVersion": 49,
+        "savedVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "deploymentId": "appgdep_6ae0d248b9fc81919b71ce731676d007",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "sitesSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "verifiedAt": "2026-10-27T16:43:17Z",
+        "ciRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40536941966",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "regressionResult": "Delayed Workbench client-bundle startup regression passed on public v49 at desktop and mobile (2/2); Axe reported zero violations.",
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
+      },
+      "notes": "The original 1.97:1 mobile contrast failure is fixed by the shared loading text theme change. Public v49 was checked with the client bundle held for 1600ms at 1440x900 and 390x844; both checks passed with zero Axe findings and no console, exception, or network errors."
     },
     {
       "id": "AUD-365",
@@ -12050,10 +12072,10 @@
         "tests/e2e/performance-stress-step-38.spec.ts"
       ],
       "fixCommit": "e52b7ecc02bbaede30b53fcb3ba7607e1edebd32",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "afterScreenshots": [
-        "quality/evidence/step-38/after/catalogue-lazy-load/workbench-sites-chromium.png",
-        "quality/evidence/step-38/after/catalogue-lazy-load/workbench-sites-mobile-chromium.png"
+        "quality/evidence/step-45/public-v49/aud-364-365/aud-365-desktop-saved-project-1440.png",
+        "quality/evidence/step-45/public-v49/aud-364-365/aud-365-mobile-saved-project-390.png"
       ],
       "localVerification": {
         "regressionTests": "The saved-project startup test and delayed-bundle status test passed on Sites Chromium desktop and mobile (4/4). Axe reported zero violations; console errors, uncaught exceptions, failed requests, and HTTP errors were zero. The saved project appeared in 474ms desktop and 950ms mobile without an initial catalogue request.",
@@ -12062,9 +12084,101 @@
         "build": "Sites frozen workspace build passed; catalogue validation found 324 resources and 40 Gold resources, and Astro generated all 733 pages before the Worker artifact built.",
         "evidence": "quality/evidence/step-38/after/catalogue-lazy-load/"
       },
-      "deployedVerification": null,
-      "notes": "The public Site still serves v46 and has not yet received this fix. Do not close the issue until the exact-head CI and equivalent delayed-loading Axe regression pass against the next public review deployment."
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "siteVersion": 49,
+        "savedVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "deploymentId": "appgdep_6ae0d248b9fc81919b71ce731676d007",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "sitesSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "verifiedAt": "2026-10-27T16:43:17Z",
+        "ciRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40536941966",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "regressionResult": "Saved-project loading-state Axe regression and delayed-bundle startup checks passed 4/4 on public v49. Repeated visible-project timing was 3201ms desktop and 983ms mobile; initial catalogue requests were zero.",
+        "axe": "Zero WCAG 2.2 A/AA violations in the saved-project and delayed-bundle checks.",
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "networkRequests": {
+          "total": 71,
+          "status200": 70,
+          "status304": 1,
+          "status400OrHigher": 0
+        },
+        "devtoolsPerformance": "Three cache-bypassed desktop traces: LCP 835ms, 757ms, 715ms; TTFB 84ms, 52ms, 51ms; CLS 0.00. CrUX field data unavailable.",
+        "screenshots": [
+          "quality/evidence/step-45/public-v49/aud-364-365/aud-365-desktop-saved-project-1440.png",
+          "quality/evidence/step-45/public-v49/aud-364-365/aud-365-mobile-saved-project-390.png"
+        ]
+      },
+      "notes": "The desktop Suspense fallbacks now request the light foreground against the dark editor shell. Public v49 passes the exact delayed-loading Axe regression at both viewports. One first post-publication timing sample was anomalously high; it is recorded separately as AUD-366 and was not a contrast, console, or network failure."
+    },
+    {
+      "id": "AUD-366",
+      "severity": "low",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "performance",
+      "title": "Saved-project startup metric waited for the document load event",
+      "expected": "The startup budget measures when the saved Workbench project is visible and usable, independently of the document load event.",
+      "actual": "The first public v49 Playwright run reported 14132ms because page.goto() used its default waitUntil=load before checking visibility. Axe violations, console errors, uncaught exceptions, failed requests, HTTP errors, and initial catalogue requests were all zero. The same default measurement then returned 2923ms and 3420ms on repeat desktop runs.",
+      "reproduction": [
+        "Immediately after publishing Sites v49, seed the employee showcase manifest in localStorage and open /workbench?project=catalogue-loading-sites-chromium with the saved-project startup Playwright test.",
+        "The original test awaited page.goto() with the default load-event wait before it read the project-visible timestamp; the first recorded value was 14132ms."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-45/public-v49/aud-364-365/aud-365-desktop-saved-project-1440.png",
+      "rootCause": "The E2E metric started its clock before page.goto() but relied on Playwright's default waitUntil=load. This charged the full document load event to the visible-project metric. The single 14132ms value did not recur; its underlying resource-tail timing was not established.",
+      "affectedCode": [
+        "tests/e2e/performance-stress-step-38.spec.ts"
+      ],
+      "fixCommit": "b9428e4a",
+      "status": "closed-deployed-verified",
+      "afterScreenshots": [
+        "quality/evidence/step-45/public-v49/aud-364-365/aud-365-desktop-saved-project-1440.png",
+        "quality/evidence/step-45/public-v49/aud-364-365/aud-365-mobile-saved-project-390.png"
+      ],
+      "localVerification": {
+        "regressionTests": "After changing navigation to waitUntil=commit and requiring the Workbench heading to be visible, the public v49 focused suite passed 4/4. Visible-project timing was 3201ms at 1440x900 and 983ms at 390x844.",
+        "lint": "pnpm exec eslint tests/e2e/performance-stress-step-38.spec.ts passed.",
+        "evidence": "quality/evidence/step-45/public-v49/aud-364-365/"
+      },
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "siteVersion": 49,
+        "savedVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "deploymentId": "appgdep_6ae0d248b9fc81919b71ce731676d007",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "sitesSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "verifiedAt": "2026-10-27T16:43:17Z",
+        "ciRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40536941966",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "visibleProjectMs": {
+          "desktop1440": 3201,
+          "mobile390": 983
+        },
+        "repeatDefaultWaitSamplesMs": [
+          2923,
+          3420
+        ],
+        "axeViolations": 0,
+        "consoleErrors": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "devtoolsTraces": "quality/evidence/step-45/public-v49/aud-364-365/workbench-devtools-traces.json"
+      },
+      "notes": "This finding was a browser-test measurement defect; no application runtime change was needed. The Site remains v49 because the follow-up commit changes only test instrumentation and audit evidence. A follow-up screenshot is linked; the failed-run screenshot file was overwritten by the later successful verification."
     }
   ],
-  "generatedAt": "2026-10-27T16:01:46.170Z"
+  "generatedAt": "2026-10-27T16:47:20Z"
 }
