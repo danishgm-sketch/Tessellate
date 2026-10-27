@@ -381,7 +381,8 @@ the product-hardening release gate remain open.
 
 ### 2026-10-27 continuation — public Sites v46 deployed verification
 
-Sites v46 is public at the existing review URL. It serves canonical commit
+At capture time, Sites v46 was the public version at the existing review URL.
+It served canonical commit
 `351b6d7ac3467fe4c580d1c31533705c16c60490` from Sites source mirror
 `520717ada321da3f23d46b000adc8da7d416c52e` (version
 `appgprj_6acc036de8cc8191a823339566972d85~appgver_1941800398408191ad81be036cf3223c`,
