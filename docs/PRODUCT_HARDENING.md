@@ -344,7 +344,7 @@ Step 45 remains incomplete: 210 findings have local fixes but await their own
 deployed checks (25 High, 178 Medium, 7 Low). The broader product-hardening
 programme is not complete, and no release-complete claim is made.
 
-## Public v40 documentation check — captured 2026-10-27
+## Public v40 finding and v41 verification — captured 2026-10-27
 
 At this checkpoint, public Sites v40 was deployed as
 `appgdep_6adfea17856c8191aa78ea3a95aca322` from Sites mirror
@@ -357,9 +357,17 @@ zero console errors, zero failed requests, and zero HTTP errors. Screenshots
 and machine-readable results are in
 `quality/evidence/step-45/public-v40/`.
 
-The shipped v40 document still described v39 as the current Site. That stale
-version statement is recorded as AUD-358 and is corrected in this revision;
-the issue remains open until a newly published Site is checked. The homepage
+The shipped v40 document still described v39 as the current Site. The v41 page
+removed that claim and was checked at both viewports, but the check exposed a
+second stale sentence saying the issue remained open. This record documents
+those two historical observations; the source now describes the v40 finding
+and v41 verification without making a present-tense claim about the live Site.
+The v41 deployment is `appgdep_6adff6025484819181d26804d7e5efdb`, from Sites
+mirror `be04a342e179c5a58c1eaf106665fafe4a73dc9e`, with application code
+captured from canonical source `80cd1231fae9a2fd36f5737ce1d0684e01c15251`.
+At 1440×900, document/article widths were 1440/1440 and 896/896; at 390×844,
+they were 390/390 and 358/358. Both checks returned HTTP 200, with zero text
+overflow, console errors, failed requests, and HTTP errors. The homepage
 performance trace is still the v39 baseline documented in
 `quality/evidence/step-45/public-v39/homepage-performance.json`; v40 changed
 documentation only and did not recertify performance.
