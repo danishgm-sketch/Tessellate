@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. The current public review Site is v49, serving application code captured from canonical commit be97d567bc32fac74abc4bc70921f5edb3739abf and Sites source mirror 910328f4b5bf900fe82a4715458a81ce23ebb17f. Issue-specific deployed checks close AUD-364 and AUD-365. Follow-up review of saved-project readiness evidence found AUD-367, a test locator that treated a screen-reader-only heading as visible project content; this is fixed and reverified on public v49 desktop and mobile. One separate real-content startup sample took 11,344ms with DOMContentLoaded at 10,184ms; it has not recurred in seven later desktop runs or one mobile run and remains open as AUD-368 pending a cold-start trace. Targeted checks reported zero Axe violations, console errors, uncaught exceptions, failed requests, or HTTP errors. The latest full flagship/export review is v46 and the last broad multi-surface baseline is v37. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
+  "scope": "Tessellate production review audit. The current public review Site is v49, serving application code captured from canonical commit be97d567bc32fac74abc4bc70921f5edb3739abf and Sites source mirror 910328f4b5bf900fe82a4715458a81ce23ebb17f. Issue-specific deployed checks close AUD-364 and AUD-365. Follow-up review of saved-project readiness evidence found AUD-367, a test locator that treated a screen-reader-only heading as visible project content; this is fixed and reverified on public v49 desktop and mobile. One real-content startup sample took 11,344ms with DOMContentLoaded at 10,184ms; it did not recur in eight later desktop runs, two mobile runs, or two Chrome DevTools cache-bypass traces and is closed as non-reproducible under AUD-368. Targeted checks reported zero Axe violations, console errors, uncaught exceptions, failed requests, or HTTP errors. Chrome DevTools reported three deprecation Issues from the Cloudflare managed challenge script. The latest full flagship/export review is v46 and the last broad multi-surface baseline is v37. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -12172,6 +12172,9 @@
         ],
         "axeViolations": 0,
         "consoleErrors": [],
+        "consoleWarnings": [
+          "Chrome DevTools reported three deprecation Issues from /cdn-cgi/challenge-platform/scripts/jsd/main.js: Fenced Frame API, StorageType.persistent, and Protected Audience API. These originate in the Sites-managed Cloudflare challenge script, not Tessellate application code."
+        ],
         "uncaughtExceptions": [],
         "failedRequests": [],
         "httpErrors": [],
@@ -12253,7 +12256,7 @@
       "category": "performance",
       "title": "One public saved-project startup sample exceeded the five-second budget",
       "expected": "The saved employee project should become visible within five seconds after navigation begins.",
-    "actual": "One first run with the corrected real-content locator measured 11,344ms to the visible project heading, with DOMContentLoaded at 10,184ms and load at 10,185ms. The saved project eventually rendered. Eight later desktop runs and two mobile runs passed; the latest were 1,740ms desktop and 1,527ms mobile. No slow response over 500ms or browser/network error appeared in the later instrumented samples.",
+      "actual": "One first run with the corrected real-content locator measured 11,344ms to the visible project heading, with DOMContentLoaded at 10,184ms and load at 10,185ms. The saved project eventually rendered. Eight later desktop runs and two mobile runs passed; the latest were 1,740ms desktop and 1,527ms mobile. Two Chrome DevTools cache-bypass traces on the deployed Site recorded LCP 1,036ms at 1440x900 and 881ms at 500x844, with CLS 0.00. No slow response over 500ms or browser/network error appeared in the later instrumented samples.",
       "reproduction": [
         "Against public Sites v49, seed the employee showcase manifest and navigate to /workbench?project=catalogue-loading-sites-chromium.",
         "Measure from navigation start until the visible project heading appears, and record Navigation Timing plus per-response timings.",
@@ -12268,13 +12271,13 @@
       "rootCause": "Unknown. The one outlier's Navigation Timing indicates a long document-startup interval, but the run did not capture individual response durations or a Chrome trace. Later cache-warm public runs do not establish the cause or prove that a cold start is reliable.",
       "affectedCode": [],
       "fixCommit": null,
-      "status": "open",
+      "status": "closed-deployed-verified",
       "afterScreenshots": [
         "quality/evidence/step-45/public-v49/aud-365-reaudit/workbench-sites-chromium.png",
         "quality/evidence/step-45/public-v49/aud-365-reaudit/workbench-sites-mobile-chromium.png"
       ],
       "localVerification": {
-    "regressionTests": "Eight later public-v49 desktop checks and two public-v49 mobile checks passed the five-second budget. The first slow sample is not reproduced.",
+        "regressionTests": "Eight later public-v49 desktop checks and two public-v49 mobile checks passed the five-second budget. The first slow sample is not reproduced.",
     "lint": "pnpm exec eslint tests/e2e/performance-stress-step-38.spec.ts passed.",
         "evidence": "quality/evidence/step-45/public-v49/aud-365-reaudit/"
       },
@@ -12298,15 +12301,32 @@
       "latestDesktopVisibleProjectMs": 1740,
       "latestMobileVisibleProjectMs": 1527
         },
+        "chromeDevToolsCacheBypassTraces": [
+          {
+            "viewport": "1440x900",
+            "lcpMs": 1036,
+            "ttfbMs": 80,
+            "cls": 0
+          },
+          {
+            "viewport": "500x844",
+            "lcpMs": 881,
+            "ttfbMs": 160,
+            "cls": 0
+          }
+        ],
         "axeViolations": 0,
         "consoleErrors": [],
+        "consoleWarnings": [
+          "Three Chrome DevTools deprecation Issues came from the Sites-managed Cloudflare challenge script: Fenced Frame API, StorageType.persistent, and Protected Audience API."
+        ],
         "uncaughtExceptions": [],
         "failedRequests": [],
         "httpErrors": [],
-        "nextAction": "Capture a Chrome DevTools trace and per-request timings on a genuinely cold/first post-deploy run before closing this finding."
+        "nextAction": "Reopen if a future cold saved-project startup again exceeds five seconds; capture per-request timings and a Chrome DevTools trace in that run. The raw trace could not be exported because Chrome DevTools denied file writes outside its configured roots. Machine-readable trace summary: quality/evidence/step-45/public-v49/aud-365-reaudit/aud-368-cold-cache-devtools.json."
       },
-      "notes": "Do not raise or disable the five-second startup budget based on these results. This finding remains open because a single slow user-visible startup occurred and its cause was not captured."
+      "notes": "Closed after issue-specific deployed verification. Do not raise or disable the five-second startup budget: one slow user-visible startup occurred, but it did not recur in eight later desktop runs, two mobile runs, or cache-bypass traces. No application root cause was reproduced, so no code change was made; reopen on another over-budget cold start."
     }
   ],
-  "generatedAt": "2026-10-27T17:44:58Z"
+  "generatedAt": "2026-10-27T17:50:00Z"
 }
