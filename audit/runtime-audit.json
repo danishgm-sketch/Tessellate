@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. Public Sites v46 was published from canonical commit 351b6d7ac3467fe4c580d1c31533705c16c60490 and Sites source mirror 520717ada321da3f23d46b000adc8da7d416c52e. Issue-specific deployed checks close AUD-362 and AUD-363. The v46 route sweep covers 32 routes at desktop and mobile; full visible Compose-to-Direction-C-to-Workbench mutation, export, generated-product Axe, and clean standalone React install/build/browser checks pass. CI found AUD-364 on unpublished exact-head source dbc3fce4efdee0d60156a0ec67211fedb40cdc54; the contrast fix is locally verified and awaits exact-head CI plus deployed verification. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
+  "scope": "Tessellate production review audit. Public Sites v46 is the live review version. CI found AUD-364 and AUD-365 in Workbench startup fallbacks. Both fixes are locally verified; exact-head CI and deployed verification remain open. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -12023,7 +12023,48 @@
       },
       "deployedVerification": null,
       "notes": "Public v46 was separately captured at 390x844 with HTTP 200, zero Axe violations, and no browser/network errors, but it did not render the failing lazy status. The source fix is not considered deployed or closed until a new exact-head Site deployment passes the delayed-load regression."
+    },
+    {
+      "id": "AUD-365",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Dark desktop Workbench loading statuses fail text contrast",
+      "expected": "Lazy-loading statuses inside the dark desktop Workbench meet WCAG 2.2 AA contrast while their panels load.",
+      "actual": "Exact-head GitHub Actions run 40528584103 on ba735bb295b7e1d5f2b212ef63625f793726e149 reported serious Axe color-contrast on the toolbar and command loading statuses. The light foreground #62666F against the dark shell #0B0D10 measured 3.38:1; 4.5:1 is required.",
+      "reproduction": [
+        "Use the Sites Chromium project at 1440x900 and seed a saved employee showcase project in browser local storage.",
+        "Open /workbench?project=<saved-project-id> while delaying the catalogue request so lazy Workbench panels remain in their loading state.",
+        "Run Axe before the lazy panels finish loading; before the fix it reports serious color-contrast violations for Loading the Workbench toolbar… and Loading project commands…"
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-45/aud-365-before/saved-workbench-desktop.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-45/aud-365-before/saved-workbench-desktop.png"
+      ],
+      "rootCause": "LoadingEditorPart's adaptive light-theme text color was reused by the desktop shell, whose background is explicitly dark regardless of the OS color scheme. The mobile fallback needs adaptive light/dark color, while desktop fallbacks must stay light against the dark shell.",
+      "affectedCode": [
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "tests/e2e/performance-stress-step-38.spec.ts"
+      ],
+      "fixCommit": "e52b7ecc02bbaede30b53fcb3ba7607e1edebd32",
+      "status": "fixed-local-verified",
+      "afterScreenshots": [
+        "quality/evidence/step-38/after/catalogue-lazy-load/workbench-sites-chromium.png",
+        "quality/evidence/step-38/after/catalogue-lazy-load/workbench-sites-mobile-chromium.png"
+      ],
+      "localVerification": {
+        "regressionTests": "The saved-project startup test and delayed-bundle status test passed on Sites Chromium desktop and mobile (4/4). Axe reported zero violations; console errors, uncaught exceptions, failed requests, and HTTP errors were zero. The saved project appeared in 474ms desktop and 950ms mobile without an initial catalogue request.",
+        "typecheck": "pnpm --filter @tessellate/workbench typecheck passed.",
+        "lint": "pnpm exec eslint packages/workbench/src/components/WorkbenchShell.tsx tests/e2e/performance-stress-step-38.spec.ts passed.",
+        "build": "Sites frozen workspace build passed; catalogue validation found 324 resources and 40 Gold resources, and Astro generated all 733 pages before the Worker artifact built.",
+        "evidence": "quality/evidence/step-38/after/catalogue-lazy-load/"
+      },
+      "deployedVerification": null,
+      "notes": "The public Site still serves v46 and has not yet received this fix. Do not close the issue until the exact-head CI and equivalent delayed-loading Axe regression pass against the next public review deployment."
     }
   ],
-  "generatedAt": "2026-10-27T15:11:11.838Z"
+  "generatedAt": "2026-10-27T16:01:46.170Z"
 }

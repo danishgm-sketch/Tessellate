@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0.0",
+  "capturedAt": "2026-10-27",
+  "deployment": {
+    "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+    "version": 46,
+    "source": "public review Site before AUD-365 deployment"
+  },
+  "tool": "Chrome DevTools MCP performance traces",
+  "conditions": {
+    "cpuThrottlingRate": 1,
+    "network": "Fast 4G unless stated otherwise",
+    "viewports": ["390x844", "1440x900"],
+    "colorScheme": "light"
+  },
+  "fieldData": "Unavailable in CrUX for these pages; all reported values are lab observations.",
+  "metrics": [
+    { "route": "/", "viewport": "390x844", "network": "Fast 4G", "lcpMs": 549, "ttfbMs": 57, "lcpRenderDelayMs": 492, "cls": 0.0, "requests": 26, "httpErrors": 0, "consoleMessages": 0, "criticalPathMs": 681, "renderBlocking": [{ "resource": "/_astro/style.B91OJ-K3.css", "totalDurationMs": 209, "estimatedFcpSavingsMs": 0, "estimatedLcpSavingsMs": 0 }], "dom": { "elements": 855, "depth": 13, "largestLayoutUpdateMs": 93 }, "result": "PASS" },
+    { "route": "/", "viewport": "1440x900", "network": "Fast 4G", "lcpMs": 559, "ttfbMs": 65, "lcpRenderDelayMs": 494, "cls": 0.0, "result": "PASS" },
+    { "route": "/compose", "viewport": "390x844", "network": "Unthrottled", "lcpMs": 322, "ttfbMs": 132, "lcpRenderDelayMs": 190, "cls": 0.0, "result": "PASS" },
+    { "route": "/compose", "viewport": "1440x900", "network": "Fast 4G", "lcpMs": 479, "ttfbMs": 49, "lcpRenderDelayMs": 430, "cls": 0.0, "requests": 24, "catalogRequest": { "url": "/data/catalog.json", "status": 304, "note": "Cached response; prior successful catalogue response is revalidated." }, "httpErrors": 0, "consoleMessages": 0, "result": "PASS" },
+    { "route": "/workbench", "viewport": "390x844", "network": "Fast 4G", "savedProject": true, "lcpMs": 1060, "ttfbMs": 56, "lcpRenderDelayMs": 1004, "cls": 0.0, "requests": 37, "httpErrors": 0, "consoleMessages": 0, "criticalPathMs": 718, "dom": { "elements": 225, "largestLayoutUpdateMs": 41, "layoutNodes": 160 }, "backendHealthPolls": 3, "backendStatus": { "apiOnline": false, "hostOnline": false, "activeWorkers": 0, "pendingTasks": 0, "engine": "deterministic", "reason": "Laptop backend connection is not configured" }, "result": "PASS" },
+    { "route": "/workbench", "viewport": "1440x900", "network": "Fast 4G", "savedProject": true, "lcpMs": 1085, "ttfbMs": 44, "lcpRenderDelayMs": 1041, "cls": 0.0, "requests": 66, "httpErrors": 0, "consoleMessages": 0, "backendHealthPolls": 3, "backendStatus": { "apiOnline": false, "hostOnline": false, "activeWorkers": 0, "pendingTasks": 0, "engine": "deterministic", "reason": "Laptop backend connection is not configured" }, "result": "PASS" }
+  ],
+  "interactionTrace": {
+    "measuredInpMs": [45, 25],
+    "input": "Workbench mode selection was exercised while tracing; DevTools labeled the no-navigation trace URL as /compose despite the live page remaining on /workbench, so the sample is not attributed to a specific route.",
+    "cls": 0.0
+  },
+  "limitations": [
+    "Chrome DevTools MCP returned trace summaries but denied raw trace file export outside its own configured workspace roots.",
+    "CrUX field data, an attributable route-level INP, FCP, TBT, and Speed Index were not available from these traces.",
+    "The Vite >500 KB raw chunk warning maps to a Gold resource module chunk measured at 868549 bytes raw and 175090 bytes gzip; this is lazy renderer data and remains within the Workbench gzip budget."
+  ],
+  "assessment": "Cold-load LCP and CLS pass on homepage, Compose, and Workbench at desktop/mobile. CSS render-blocking was reported with zero estimated FCP/LCP savings. No actionable performance defect was identified in these traces."
+}
