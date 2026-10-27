@@ -1,6 +1,6 @@
 # Step 45 — Public review verification
 
-Status: in progress. The latest broad route, flagship and Axe checkpoint remains Sites v37. The latest targeted documentation evidence covers public Sites v40–v42; targeted page-recipe evidence now covers v43–v44. These version references are historical observations. V39 closes AUD-357. V40 exposed AUD-358's stale version claim; v41 removed it but exposed stale issue-status wording. Public v42 verified the corrected historical copy on desktop and mobile and closes AUD-358. Earlier v32, saved v35, and v37 material below remains historical. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
+Status: in progress. The latest broad route, flagship, export, and Core-route Axe evidence is Sites v49. Its 31-route desktop/mobile smoke passed 62/62 captures; Home, Explore, Compose, and a resource-detail route passed 8/8 Axe scans with zero violations, and the generated flagship Workbench passed full Axe at both viewports. A homepage accessible-name issue (AUD-370) was then fixed locally and awaits public verification. Public v49 also includes the targeted re-audit of 25 High findings and five three-direction benchmark briefs. Earlier v32, saved v35, and v37 material below remains historical. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
 
 ## Public v44 targeted page-recipe verification — 2026-10-27
 
@@ -515,3 +515,54 @@ The root Astro browser matrix passed on rerun: 339 passed and 121 configured ski
 The public review Site now serves v45 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site. The visible `/tools/palette` first-activation scenario passed at 1440×900 and 390×844: the first “Pure Monochrome” activation set `aria-pressed=true` without retry. Both route loads returned HTTP 200. Each run recorded 25 successful HTTP 200 responses and one followed Cloudflare managed challenge redirect; there were no failed requests, HTTP errors, browser console errors or uncaught exceptions. Axe reported zero violations, 22 passing rules and zero incomplete checks at both viewports. Screenshots and machine-readable reports are in `quality/evidence/step-45/public-v45/`; the corresponding issue record is AUD-361 in `audit/runtime-audit.json` and `audit/RUNTIME_AUDIT.md`.
 
 The published Sites source mirror is `2e486215136e33c05eba0e23b00157133bc9b0ba`, built from canonical runtime source `4e7330b90ac37c0b6198e05b8306c6a510d615a9`. To keep the temporary Sites source transfer within the connector's limits, archived audit/evidence payloads were omitted from that mirror only; no canonical repository files were removed. Deployment id: `appgdep_6ae07e2dd3bc8191b486903555e4503a`; version id: `appgprj_6acc036de8cc8191a823339566972d85~appgver_38c0db107a888191afc0529fd7fb2e23`. No D1 or R2 bindings were provisioned. This closes AUD-361 after issue-specific deployed verification. The broader Step 45 and product-hardening programme remain incomplete.
+
+## Public v49 targeted deployed re-audit — 2026-10-27
+
+Public v49 was verified at the existing review URL from canonical source `be97d567bc32fac74abc4bc70921f5edb3739abf` (Sites mirror `910328f4b5bf900fe82a4715458a81ce23ebb17f`, version `appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15`). The 39-result [targeted finding report](public-v49/high-findings-reaudit/runtime-report.json) passed. It closes the 25 mapped High findings listed in `audit/RUNTIME_AUDIT.md` and checks three UI-generated directions for MKT-01, CON-04, ECOM-01, ECOM-06, and FIN-05. Each brief had three distinct Design DNA values and screen-graph fingerprints. Product-flow diagnostics were zero; CSP-blocked Axe instrumentation is disclosed in the report and runtime audit. Axe had no serious/critical violations on the tested success-state preview at desktop and mobile, but this is not a full-site Axe run.
+
+Screenshots, including [success state at desktop](public-v49/high-findings-reaudit/aud-240-242-261-success-state.png), [success state at mobile](public-v49/high-findings-reaudit/aud-240-242-261-success-state-mobile.png), and direction captures, are in `quality/evidence/step-45/public-v49/high-findings-reaudit/`. No app source changed during that targeted pass. The route sweep and core-route Axe matrix have since also been captured on v49 below. Step 45 remains open.
+
+## Public v49 flagship UI and independent export verification — 2026-10-27
+
+The exact employee-experience brief passed the visible Compose → three directions → Direction C → Workbench → inheritance overrides → KPI lock → 95% Recompose → Gold resource replacement → Surprise Me → exact Undo/Redo → Preview → manifest and React ZIP flow at both 1440×900 and 390×844. Playwright recorded 4 passed and 2 expected viewport-specific skips, with zero failed tests. Both runs reported zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. The current [v49 flagship report](public-v49/flagship/flagship-report.json) includes project IDs, screens, lock hash, replacement resource, state snapshots, ZIP checks, and screenshots. The independent ZIP contains 33 files and no `@tessellate/*` runtime dependency. The desktop run installed dependencies in a fresh temporary directory, built the ZIP project, launched Vite preview, and checked it at desktop and mobile widths.
+
+The separate [visible-UI direction inspection](public-v49/flagship/directions/report.json) opened each full preview, waited for the selected screen to render, captured the screen and Design DNA/resource references, and found three unique DNA values, navigation models, screen graphs, composition grammars, and resource selections. Direction 01's first lightweight card capture showed a transient loading state; the actual preview rendered fully, and the card was resolved on return. All three full previews had no unresolved-role/missing-resource diagnostics. The generated Workbench passed Axe WCAG 2.2 A/AA at both viewports with zero violations; the [desktop/mobile reports and screenshots](public-v49/flagship/axe/playwright-output/) are included.
+
+## Public v49 route and core-route Axe matrix — 2026-10-27
+
+The deployed Site was opened at 31 public routes at 1440×900 and 390×844. All 62 route captures passed with zero route HTTP errors, overflow, console errors/warnings, uncaught exceptions, failed requests, bad responses, or readiness/preview timeouts. This route sweep checks the rendered route shell and content; it does not claim to operate every secondary route control. Machine report and screenshots: [route audit](public-v49/route-audit.json) and [route captures](public-v49/routes/).
+
+Home, Explore, Compose, and `/r/button/` were scanned with Axe WCAG 2.2 A/AA tags at both viewports. All 8 scans completed with zero violations, including zero serious or critical findings. There were 10 Axe incomplete records that require manual judgment. Axe's attempt to inject temporary inline styles was blocked by strict Sites CSP; the 10 instrumentation console messages are separated from product diagnostics. No policy was weakened. See the [machine-readable report](public-v49/axe-core-routes/report.json) and [screenshots](public-v49/axe-core-routes/). The generated Direction C Workbench's independent full Axe scan is recorded under [flagship Axe evidence](public-v49/flagship/axe/playwright-output/), also with zero violations at both viewports.
+
+## AUD-370 — Homepage example groups did not expose their accessible names
+
+The v49 Axe report marked `aria-prohibited-attr` incomplete for the preset-brief `<div>` and the manifest-example `<pre>` because neither element had a role that supports an author-provided accessible name. Browser role/name queries also failed on desktop and mobile. Commit `38ad1f7891bdf1738875762035e961457266c970` adds `role="group"` to the presets and associates the manifest excerpt with its visible label through `aria-labelledby`. The pre-fix public regression failed 4 role/name checks; the mobile Explore filter dialog, Escape dismissal, and focus restoration passed at both viewports. After the fix, the Astro production build and the semantic-accessibility plus home-agent regressions passed 10/10 locally at 1440×900 and 390×844. Evidence is tracked in [AUD-370](../audit/runtime-audit.json) and `public-v49/semantic-accessibility/`. **Public deployed verification remains pending; this does not close AUD-370.**
+
+## Local candidate quality and browser gates — 2026-10-27
+
+Before preparing the next public Sites version, the working tree passed frozen
+dependency installation, catalogue build (324 catalogue resources and 40 Gold
+runtime resources), all 22 TypeScript checks, ESLint, 1,223 unit tests plus one
+configured skip, and `pnpm audit:all` (16/16 behavioral checks, 324/324
+resource source-isolation checks, licence/provenance and security audits,
+production build of 733 Astro pages with 731 CSP records, and bundle budgets).
+The recorded gzip budgets were Home 99.29 KB, Explore 177.59 KB, Compose
+254.85 KB, Workbench 74.08 KB, and catalogue 112.52 KB; each stayed within its
+route budget. `pnpm audit` reported no known vulnerabilities.
+
+The root Playwright profile passed 345 tests with 121 configured skips. Its
+combined command then encountered an already-listening local Worker on port
+4323 owned by a separate Tessellate worktree; that process was left untouched.
+The Sites browser profiles were rerun on isolated port 4335: desktop passed
+183 tests with 6 configured skips, and mobile passed 149 with 40 configured
+skips. The standalone exported-preview profile passed 3/3. The focused AUD-370
+desktop/mobile regression was rerun against a fresh local Astro preview:
+10/10 passed, including named preset and manifest groups, Explore filter
+dialog relationships, Escape dismissal, focus restoration, and the existing
+homepage example contrast checks. Playwright output is in
+`public-v49/semantic-accessibility/local-playwright-output/`.
+
+The port conflict affected only the combined command's attempt to start its
+Sites Worker. Both configured Sites profiles passed independently on the
+alternate port. This is local candidate evidence only: AUD-370 remains open
+until the next deployed version passes the same role/name assertions.

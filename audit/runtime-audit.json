@@ -20,7 +20,26 @@
       "screenshot": "audit/evidence/step-06/after/actions/marketing-nav-cta-1440.png",
       "rootCause": "MarketingNavCta declared no action prop and rendered an unconditional button; the resource preview host could not supply a meaningful demo action.",
       "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-001",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/marketing-nav-cta/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-001-after.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-002",
@@ -40,7 +59,26 @@
       "screenshot": "audit/evidence/step-06/after/actions/pricing-three-tier-1440.png",
       "rootCause": "PricingThreeTier rendered three static buttons without an onSelectPlan integration contract.",
       "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-002",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/pricing-three-tier/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-002-after.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-003",
@@ -60,7 +98,26 @@
       "screenshot": "audit/evidence/step-06/after/actions/empty-workspace-1440.png",
       "rootCause": "EmptyWorkspace exposed no host callback and rendered the action unconditionally enabled.",
       "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-003",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/empty-workspace/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-003-after.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-004",
@@ -80,7 +137,26 @@
       "screenshot": "audit/evidence/step-06/after/actions/magnetic-button-1440.png",
       "rootCause": "MagneticButton implemented only pointer tracking and omitted a click callback contract.",
       "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-004",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/magnetic-button/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-004-after.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-005",
@@ -100,7 +176,26 @@
       "screenshot": "audit/evidence/step-06/after/actions/error-state-1440.png",
       "rootCause": "The preview host mapped several generic example callbacks but omitted the existing onRetry prop.",
       "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-005",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/error-state/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-005-after.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-006",
@@ -607,7 +702,26 @@
       "console": [],
       "network": [],
       "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-030",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-prompt-hero/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-030-ai-prompt-hero.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-031",
@@ -1543,7 +1657,26 @@
       ],
       "remediation": "Provide a sample label and placeholder in preview defaultProps. The browser Axe matrix now finds an accessible name in every variant.",
       "fixCommit": "9c4e173278d6eda30e9a9e38df7a56cd7c3f4b24",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-066+067 input",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/input/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-066-067-input.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-067",
@@ -1572,7 +1705,46 @@
       ],
       "remediation": "Extract native control values from the event target while leaving custom resources' primitive and array callbacks unchanged. Focused browser regressions now cover Input, Select, form status feedback and Button action feedback.",
       "fixCommit": "c7d3a7cdec9ab7f0702cc5898a9bfe440a510e95",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-066+067 input",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/input/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-066-067-input.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-067 textarea",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/textarea/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-067-textarea.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-067 select",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/select/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-067-select.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-068",
@@ -1627,7 +1799,26 @@
       ],
       "remediation": "Add role=dialog, aria-modal, stable title/description associations, initial focus, Tab containment, and Escape handling. The focused browser regression now verifies the modal contract and diagnostics; public review verification remains outstanding.",
       "fixCommit": "f486af22975f14ed3acf39fcf5ba1cd2e62ab136",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-069",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/dialog/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-069-escape.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-070",
@@ -1656,7 +1847,26 @@
       ],
       "remediation": "Add an optional onExecute callback and disable the control with an accessible explanation when unconnected. The isolated preview reports that the prompt was previewed locally and no provider request was sent. The focused browser regression passes with zero runtime or network diagnostics.",
       "fixCommit": "f486af22975f14ed3acf39fcf5ba1cd2e62ab136",
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-070",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/ai-prompt-composer/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-070-after.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-071",
@@ -3109,9 +3319,48 @@
       ],
       "remediation": "Specialize the existing marketplace archetype using service, proposal, appointment, and listing context; add forbidden-content benchmark assertions.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "afterScreenshot": "quality/evidence/composition-quality/after/composition-mkt-01-direction-01.png",
-      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json"
+      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "MKT-01 Direction 01",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/mkt-01-direction-01.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "MKT-01 Direction 02",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/mkt-01-direction-02.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "MKT-01 Direction 03",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/mkt-01-direction-03.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-102",
@@ -3137,9 +3386,48 @@
       ],
       "remediation": "Prefer the Gold timeline for consumer community activity and retain notification-centre only where inbox behavior is intended.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "afterScreenshot": "quality/evidence/composition-quality/after/composition-con-04-direction-01.png",
-      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json"
+      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "CON-04 Direction 01",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/con-04-direction-01.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "CON-04 Direction 02",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/con-04-direction-02.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "CON-04 Direction 03",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/con-04-direction-03.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-103",
@@ -3165,9 +3453,48 @@
       ],
       "remediation": "Map the roles to collapsible-sidebar, timeline, and input, remove duplicate generic navigation, and state that sending requires a messaging backend.",
       "fixCommit": "8686e0b9d7e7aca869a7677113492ded53af27b6",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "afterScreenshot": "quality/evidence/composition-quality/after/composition-mkt-01-direction-01.png",
-      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json"
+      "runtimeReport": "quality/evidence/composition-quality/after/runtime.json",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "MKT-01 Direction 01",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/mkt-01-direction-01.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "MKT-01 Direction 02",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/mkt-01-direction-02.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "MKT-01 Direction 03",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/mkt-01-direction-03.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-104",
@@ -3401,7 +3728,7 @@
       ],
       "remediation": "Bind e-commerce conversion copy to “View product details” and resolve the target against the generated Product Detail screen ID; cover route existence in the semantic benchmark and visible Compose UI test.",
       "fixCommit": "77cbad5f",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "afterScreenshot": "quality/evidence/step-14/manual-review/after/ecom-01-direction-01-desktop.png",
       "runtimeReport": "quality/evidence/step-14/manual-review/after/ecom-cta-runtime-desktop.json",
       "afterScreenshots": [
@@ -3411,7 +3738,46 @@
       "runtimeReports": [
         "quality/evidence/step-14/manual-review/after/ecom-cta-runtime-desktop.json",
         "quality/evidence/step-14/manual-review/after/ecom-cta-runtime-mobile.json"
-      ]
+      ],
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "ECOM-01 Direction 01",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/ecom-01-direction-01.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "ECOM-01 Direction 02",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/ecom-01-direction-02.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "ECOM-01 Direction 03",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/ecom-01-direction-03.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-112",
@@ -3440,7 +3806,7 @@
       ],
       "remediation": "Specialize explicit returns-portal briefs within the existing ecommerce archetype, with Order Lookup, Return Request, and Refund Status screens, return/refund workflows, accurate CTA copy, and a visible UI regression.",
       "fixCommit": "77cbad5f",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "afterScreenshot": "quality/evidence/step-14/manual-review/after/ecom-06-direction-03-desktop.png",
       "runtimeReport": "quality/evidence/step-14/manual-review/after/ecom-06-runtime-desktop.json",
       "afterScreenshots": [
@@ -3454,7 +3820,46 @@
       "runtimeReports": [
         "quality/evidence/step-14/manual-review/after/ecom-06-runtime-desktop.json",
         "quality/evidence/step-14/manual-review/after/ecom-06-runtime-mobile.json"
-      ]
+      ],
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "ECOM-06 Direction 01",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/ecom-06-direction-01.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "ECOM-06 Direction 02",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/ecom-06-direction-02.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "ECOM-06 Direction 03",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/ecom-06-direction-03.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-113",
@@ -3699,7 +4104,7 @@
       ],
       "remediation": "Specialize the existing fintech archetype only for explicit trading-terminal intent, create market-specific screens and entities, and bind market events. The 100-brief interpretation and composition benchmarks plus visible desktop/mobile browser flow now reject banking residue.",
       "fixCommit": "a8735ca2",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "afterScreenshots": [
         "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-01-desktop.png",
         "quality/evidence/step-14/manual-review/after/fintech-trading-fin-05-direction-01-mobile.png",
@@ -3714,7 +4119,46 @@
       "runtimeReports": [
         "quality/evidence/step-14/manual-review/after/fintech-trading-runtime-desktop.json",
         "quality/evidence/step-14/manual-review/after/fintech-trading-runtime-mobile.json"
-      ]
+      ],
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "FIN-05 Direction 01",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/fin-05-direction-01.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "FIN-05 Direction 02",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/fin-05-direction-02.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "FIN-05 Direction 03",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/fin-05-direction-03.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-120",
@@ -7876,8 +8320,37 @@
       "screenshot": "quality/evidence/step-39/deployed-before/resource-claims/desktop/accessibility-commitment-section.png",
       "rootCause": "The manifest described an aspirational checklist as an implemented compliance audit.",
       "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
-      "remediation": "Describe design goals and integration checks; make the detail page, manifest, and sample agree. Local desktop/mobile preview and detail regressions pass; public verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression."
+      "status": "closed-deployed-verified",
+      "remediation": "Describe design goals and integration checks; make the detail page, manifest, and sample agree. Local desktop/mobile preview and detail regressions pass; public verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression.",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-236",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/accessibility-commitment-section/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-236-detail.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-236 mobile",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/accessibility-commitment-section/",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-236-detail-mobile.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-237",
@@ -7903,8 +8376,37 @@
       "screenshot": "quality/evidence/step-39/deployed-before/resource-claims/desktop/compliance-proof.png",
       "rootCause": "Resource metadata was copied from a planned product behavior rather than the component contract.",
       "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
-      "remediation": "Rename and describe the resource as an illustrative evidence template; require scope and source before claims. Local desktop/mobile regressions pass; public verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression."
+      "status": "closed-deployed-verified",
+      "remediation": "Rename and describe the resource as an illustrative evidence template; require scope and source before claims. Local desktop/mobile regressions pass; public verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression.",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-237",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/compliance-proof/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-237-detail.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-237 mobile",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/compliance-proof/",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-237-detail-mobile.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-238",
@@ -7930,8 +8432,37 @@
       "screenshot": "quality/evidence/step-39/deployed-before/resource-previews/desktop/trust-badges-strip.png",
       "rootCause": "The sample used a success icon as decoration without connecting it to verification state.",
       "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
-      "remediation": "Replace the success icon with a neutral marker and add a sample-label disclosure. The corrected desktop/mobile preview contains no checkmark; public verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression."
+      "status": "closed-deployed-verified",
+      "remediation": "Replace the success icon with a neutral marker and add a sample-label disclosure. The corrected desktop/mobile preview contains no checkmark; public verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression.",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-238",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/trust-badges-strip/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-238-trust-badges.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-238 mobile",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/trust-badges-strip/",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-238-trust-badges-mobile.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-239",
@@ -7957,8 +8488,37 @@
       "screenshot": "quality/evidence/step-39/deployed-before/resource-claims/desktop/security-proof.png",
       "rootCause": "A presentation component was written as if it were a security scanner and product attestation.",
       "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
-      "remediation": "Convert statements to review prompts, replace pass labels, and disclose that no scan or verification occurs. Local desktop/mobile checks pass; public verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression."
+      "status": "closed-deployed-verified",
+      "remediation": "Convert statements to review prompts, replace pass labels, and disclose that no scan or verification occurs. Local desktop/mobile checks pass; public verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression.",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-239",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/security-proof/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-239-detail.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-239 mobile",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/security-proof/",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-239-detail-mobile.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-240",
@@ -7984,8 +8544,37 @@
       "screenshot": "quality/evidence/step-39/deployed-before/resource-previews/desktop/success-state.png",
       "rootCause": "Static demo values and export-specific copy were embedded as default component props.",
       "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
-      "remediation": "Use neutral completion copy and require the host to provide artifact state. The corrected preview passes desktop/mobile regressions; public verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression."
+      "status": "closed-deployed-verified",
+      "remediation": "Use neutral completion copy and require the host to provide artifact state. The corrected preview passes desktop/mobile regressions; public verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression.",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-240+242+261",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=success-state&variant=quiet&theme=light&device=desktop&reducedMotion=true",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-240-242-261-success-state.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-240+242+261 mobile",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=success-state&variant=quiet&theme=light&device=mobile&reducedMotion=true",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-240-242-261-success-state-mobile.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-241",
@@ -8038,8 +8627,37 @@
       "screenshot": "quality/evidence/step-39/deployed-before/resource-previews/desktop/success-state.png",
       "rootCause": "Green-on-pale-green heading and button colors were selected without checking their rendered contrast.",
       "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
-      "remediation": "Use higher-contrast green tokens and test the actual preview with Axe. Local desktop/mobile Axe runs now report zero violations; public verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression."
+      "status": "closed-deployed-verified",
+      "remediation": "Use higher-contrast green tokens and test the actual preview with Axe. Local desktop/mobile Axe runs now report zero violations; public verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression.",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-240+242+261",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=success-state&variant=quiet&theme=light&device=desktop&reducedMotion=true",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-240-242-261-success-state.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-240+242+261 mobile",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=success-state&variant=quiet&theme=light&device=mobile&reducedMotion=true",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-240-242-261-success-state-mobile.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-243",
@@ -8549,8 +9167,37 @@
       "screenshot": "quality/evidence/step-39/deployed-before/resource-previews/desktop/success-state.png",
       "rootCause": "The example success title used emerald-600 on a pale surface and the disabled action retained an emerald-600 background, both below the normal-text AA threshold.",
       "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
-      "remediation": "Use accessible dark-green title and action colors on light surfaces and ensure the disabled action remains readable. The desktop/mobile Preview regression passes locally; deployed verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression."
+      "status": "closed-deployed-verified",
+      "remediation": "Use accessible dark-green title and action colors on light surfaces and ensure the disabled action remains readable. The desktop/mobile Preview regression passes locally; deployed verification is pending. Corrected local screenshots are under quality/evidence/step-39/after/resource-previews/ or are captured by the desktop/mobile regression.",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-240+242+261",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=success-state&variant=quiet&theme=light&device=desktop&reducedMotion=true",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-240-242-261-success-state.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-240+242+261 mobile",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview/?resource=success-state&variant=quiet&theme=light&device=mobile&reducedMotion=true",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-240-242-261-success-state-mobile.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-262",
@@ -8613,8 +9260,27 @@
       "rootCause": "Resource builders stamped generic high quality scores, AAA targets and true accessibility verification flags into every manifest. The contract had no quality evidence state, and UI/search/compatibility treated the values as assessed inputs.",
       "affectedCode": "scripts/*-builder.ts; resources/**/manifest.json; packages/schemas/src/resource.ts; packages/catalog/src/validator.ts; packages/compatibility/src/{scoring,accessibility-model}.ts; packages/search/src/{indexer,query,types}.ts; apps/site/src/components/{ResourceInspector,ResourceTabs}.tsx; packages/workbench/src/components/right-inspector/ResourceTab.tsx.",
       "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
-      "remediation": "Added evidence-bearing quality assessment state with a legacy-safe unassessed default. Unassessed values are hidden, excluded from minimum-quality search filters, and use neutral compatibility weights. Builder defaults no longer claim WCAG AAA or untested accessibility; the 284 non-Gold manifests now remain unverified while Gold browser claims are preserved. Resource detail distinguishes Gold browser checks from manifest claims. Local deployed-runtime verification is pending; public closure is reserved for Step 45."
+      "status": "closed-deployed-verified",
+      "remediation": "Added evidence-bearing quality assessment state with a legacy-safe unassessed default. Unassessed values are hidden, excluded from minimum-quality search filters, and use neutral compatibility weights. Builder defaults no longer claim WCAG AAA or untested accessibility; the 284 non-Gold manifests now remain unverified while Gold browser claims are preserved. Resource detail distinguishes Gold browser checks from manifest claims. Local deployed-runtime verification is pending; public closure is reserved for Step 45.",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-263",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/success-state/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-263-resource-assessment.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-264",
@@ -8986,14 +9652,43 @@
       "screenshot": "quality/evidence/step-37/preview-host-variant-after-1440.png",
       "rootCause": "PreviewHost treated MessageEvent.origin as the renderer origin rather than the sender origin, rejecting same-origin application-host messages because the renderer itself is sandboxed.",
       "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "affectedCode": [
         "apps/site/src/components/PreviewHost.tsx",
         "apps/site/src/components/ResourcePreviewFrame.tsx",
         "apps/site/src/scripts/preview-wrapper.ts"
       ],
       "verification": "The state flow passes after the fix. Focused Sites preview/state/accessibility tests pass 14/14; the Gold accessibility matrix passes all 120 variants; the variant change regression passes desktop and mobile. Typecheck, lint, 1204 unit tests, and audit:all pass.",
-      "limitation": "The public review Site has not been redeployed; issue closure requires release-candidate verification."
+      "limitation": "The public review Site has not been redeployed; issue closure requires release-candidate verification.",
+      "deployedVerification": {
+        "siteVersion": 49,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "siteSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+        "checkedAt": "2026-10-27T19:28:01.116Z",
+        "evidence": [
+          {
+            "resultId": "AUD-275",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/button/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-275-variant-update.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-275 props mobile",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/advanced-data-table/",
+            "viewport": {
+              "width": 360,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v49/high-findings-reaudit/aud-275-props-mobile.png",
+            "result": "PASS"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-276",
@@ -12145,7 +12840,7 @@
         "quality/evidence/step-45/public-v49/aud-364-365/aud-365-mobile-saved-project-390.png"
       ],
       "localVerification": {
-    "regressionTests": "The test now navigates with waitUntil=commit, requires a visible project heading inside the Workbench main region, and captures the screenshot only after that content appears. Eight later public v49 desktop runs and two mobile runs passed; the latest visible-project timings were 1,740ms at 1440x900 and 1,527ms at 390x844.",
+        "regressionTests": "The test now navigates with waitUntil=commit, requires a visible project heading inside the Workbench main region, and captures the screenshot only after that content appears. Eight later public v49 desktop runs and two mobile runs passed; the latest visible-project timings were 1,740ms at 1440x900 and 1,527ms at 390x844.",
         "lint": "pnpm exec eslint tests/e2e/performance-stress-step-38.spec.ts passed.",
         "evidence": "quality/evidence/step-45/public-v49/aud-365-reaudit/"
       },
@@ -12156,15 +12851,15 @@
         "deploymentId": "appgdep_6ae0d248b9fc81919b71ce731676d007",
         "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
         "sitesSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
-    "verifiedAt": "2026-10-27T17:44:58Z",
+        "verifiedAt": "2026-10-27T17:44:58Z",
         "ciRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40536941966",
         "viewports": [
           "1440x900",
           "390x844"
         ],
         "visibleProjectMs": {
-      "desktop1440Latest": 1740,
-      "mobile390Latest": 1527
+          "desktop1440Latest": 1740,
+          "mobile390Latest": 1527
         },
         "earlierScreenReaderTitleLocatorSamplesMs": [
           2923,
@@ -12216,8 +12911,8 @@
         "quality/evidence/step-45/public-v49/aud-365-reaudit/workbench-sites-mobile-chromium.png"
       ],
       "localVerification": {
-    "regressionTests": "The startup test now waits for the visible employee-project heading within the Workbench editor main region and captures its screenshot afterward. The fresh public-v49 rerun passed at desktop and mobile.",
-    "lint": "pnpm exec eslint tests/e2e/performance-stress-step-38.spec.ts passed.",
+        "regressionTests": "The startup test now waits for the visible employee-project heading within the Workbench editor main region and captures its screenshot afterward. The fresh public-v49 rerun passed at desktop and mobile.",
+        "lint": "pnpm exec eslint tests/e2e/performance-stress-step-38.spec.ts passed.",
         "evidence": "quality/evidence/step-45/public-v49/aud-365-reaudit/"
       },
       "deployedVerification": {
@@ -12227,12 +12922,12 @@
         "deploymentId": "appgdep_6ae0d248b9fc81919b71ce731676d007",
         "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
         "sitesSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
-    "verifiedAt": "2026-10-27T17:44:58Z",
+        "verifiedAt": "2026-10-27T17:44:58Z",
         "viewports": [
           "1440x900",
           "390x844"
         ],
-    "regressionResult": "The visible project-content check passed eight later desktop runs and two mobile runs against the public v49 Site. The latest measured readiness was 1,740ms desktop and 1,527ms mobile. All runs reported zero Axe violations, console errors, uncaught exceptions, failed requests, and HTTP errors; initial catalogue requests remained zero.",
+        "regressionResult": "The visible project-content check passed eight later desktop runs and two mobile runs against the public v49 Site. The latest measured readiness was 1,740ms desktop and 1,527ms mobile. All runs reported zero Axe violations, console errors, uncaught exceptions, failed requests, and HTTP errors; initial catalogue requests remained zero.",
         "networkResponsesLatestRun": {
           "desktop": 67,
           "mobile": 40,
@@ -12278,7 +12973,7 @@
       ],
       "localVerification": {
         "regressionTests": "Eight later public-v49 desktop checks and two public-v49 mobile checks passed the five-second budget. The first slow sample is not reproduced.",
-    "lint": "pnpm exec eslint tests/e2e/performance-stress-step-38.spec.ts passed.",
+        "lint": "pnpm exec eslint tests/e2e/performance-stress-step-38.spec.ts passed.",
         "evidence": "quality/evidence/step-45/public-v49/aud-365-reaudit/"
       },
       "deployedVerification": {
@@ -12288,7 +12983,7 @@
         "deploymentId": "appgdep_6ae0d248b9fc81919b71ce731676d007",
         "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
         "sitesSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
-    "verifiedAt": "2026-10-27T17:44:58Z",
+        "verifiedAt": "2026-10-27T17:44:58Z",
         "viewports": [
           "1440x900",
           "390x844"
@@ -12296,10 +12991,10 @@
         "followUpSamples": {
           "outlierVisibleProjectMs": 11344,
           "outlierDomContentLoadedMs": 10184,
-      "repeatDesktopRunsPassed": 8,
-      "mobileRunsPassed": 2,
-      "latestDesktopVisibleProjectMs": 1740,
-      "latestMobileVisibleProjectMs": 1527
+          "repeatDesktopRunsPassed": 8,
+          "mobileRunsPassed": 2,
+          "latestDesktopVisibleProjectMs": 1740,
+          "latestMobileVisibleProjectMs": 1527
         },
         "chromeDevToolsCacheBypassTraces": [
           {
@@ -12361,7 +13056,54 @@
         "ciRunForFix": "Pending exact-head CI."
       },
       "notes": "This is a transitive dependency remediation; application runtime code and the already published Sites v49 content did not change."
+    },
+    {
+      "id": "AUD-370",
+      "severity": "medium",
+      "route": "/",
+      "viewport": "1440x900 and 390x844",
+      "category": "accessibility",
+      "title": "Homepage example groups did not expose their accessible names",
+      "expected": "Preset buttons are exposed as a named group, and the ProjectManifest excerpt has a programmatically associated accessible name.",
+      "actual": "The preset-label div and the pre element used aria-label without a naming-capable ARIA role. Axe marked aria-prohibited-attr incomplete on both, and role/name queries could not find either group on desktop or mobile.",
+      "reproduction": [
+        "Run the pre-fix public v49 regression: `pnpm exec playwright test --config quality/evidence/step-45/public-v49/accessibility-regression-v49.config.mjs`.",
+        "The preset group and manifest excerpt role/name checks fail at 1440x900 and 390x844 (4 failures); the mobile Explore aria-controls/dialog/Escape/focus test passes at both viewports (2 passes).",
+        "Inspect the public v49 Axe report for `/` at desktop and mobile: aria-prohibited-attr is incomplete for `.pb-1` and `pre`."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-45/public-v49/routes/home-desktop-1440x900.png",
+      "rootCause": "Accessible names were assigned to generic HTML elements whose implicit roles do not support naming from author. Existing tests queried the raw labels, so they did not verify the accessibility tree.",
+      "affectedCode": [
+        "apps/site/src/components/home/HeroComposer.tsx",
+        "apps/site/src/components/home/AgentsSection.tsx",
+        "tests/e2e/home-agent-example-regression.spec.ts",
+        "tests/e2e/accessibility-semantic-labels-step45.spec.ts"
+      ],
+      "remediation": "Give the preset collection role=\"group\" with its aria-label. Give the pre element role=\"group\" and reference the visible “ProjectManifest excerpt” label with aria-labelledby. Add browser assertions for the accessible roles and names and keep the mobile filter dialog relationship behavior covered.",
+      "fixCommit": "38ad1f7891bdf1738875762035e961457266c970",
+      "status": "fixed-awaiting-deployed-verification",
+      "deployedVerification": null,
+      "localVerification": {
+        "checkedAt": "2026-10-27T20:56:36.000Z",
+        "build": "pnpm --filter @tessellate/site build passed",
+        "tests": {
+          "command": "pnpm exec playwright test tests/e2e/accessibility-semantic-labels-step45.spec.ts tests/e2e/home-agent-example-regression.spec.ts --workers=1",
+          "passed": 10,
+          "failed": 0,
+          "viewports": [
+            "1440x900",
+            "390x844"
+          ]
+        },
+        "evidence": [
+          "quality/evidence/step-45/public-v49/axe-core-routes/report.json",
+          "quality/evidence/step-45/public-v49/semantic-accessibility/local-run.json",
+          "quality/evidence/step-45/public-v49/semantic-accessibility/local-playwright-output/"
+        ]
+      }
     }
   ],
-  "generatedAt": "2026-10-27T17:56:26Z"
+  "generatedAt": "2026-10-27T20:56:36Z"
 }

@@ -417,3 +417,32 @@ Chrome DevTools measured a cold desktop Compose navigation at LCP 286 ms, CLS
 catalogue response; the render-blocking stylesheet had zero estimated FCP/LCP
 savings. These are single-run lab values; no field CrUX or INP data is
 available. The broad product-hardening release gate remains open.
+
+### 2026-10-27 continuation — public Sites v49 targeted re-audit
+
+The current public review Site served v49 from canonical source
+`be97d567bc32fac74abc4bc70921f5edb3739abf` (Sites mirror
+`910328f4b5bf900fe82a4715458a81ce23ebb17f`; version
+`appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15`). The 39-check deployed re-audit passed and closed 25 issue-specific High findings. It also composed three UI directions for five benchmark briefs; each set had three distinct Design DNA values and screen-graph fingerprints. Evidence, screenshots, root-cause records, and the CSP instrumentation limitation are in `quality/evidence/step-45/public-v49/high-findings-reaudit/` and `audit/RUNTIME_AUDIT.md`.
+
+Product-flow diagnostics were zero. The success-state preview had no serious/critical Axe violations at either viewport. Strict preview CSP blocked Axe's injected inline style and stylesheet probe in that isolated frame; the block was reported as harness instrumentation and no security policy was weakened. The flagship Workbench passed full WCAG 2.2 A/AA Axe checks at desktop and mobile with zero violations. No app source changed and no deployment was needed. The exact canonical employee-experience flagship flow passed at desktop and mobile, including an independent React ZIP build and browser run. At the time of this targeted checkpoint, the broad route sweep and Core Axe matrix remained on v46; the v49 continuation below records later verification.
+
+### 2026-10-27 continuation — public v49 routes, accessibility, and local regression
+
+The public v49 Site passed a 31-route smoke at desktop (1440×900) and mobile (390×844), 62/62 route captures, with zero HTTP failures, overflow, console errors/warnings, uncaught exceptions, failed requests, or timeouts. Axe scanned Home, Explore, Compose, and `/r/button/` at both viewports: 8/8 scans had zero violations, though 10 results were incomplete and require manual judgment. The Workbench generated from Direction C separately passed full Axe WCAG 2.2 A/AA at both sizes with zero violations. Axe temporary inline-style injection triggered CSP messages; these are documented as harness instrumentation, not product runtime errors, and no security policy was weakened.
+
+That deployed Axe pass exposed AUD-370: homepage preset briefs and the manifest excerpt had accessible labels on generic elements that did not support naming. The fix adds named group semantics and a visible-label association. The pre-fix deployed-browser regression failed four accessible-role/name assertions; after the change, the Astro build and semantic-accessibility/home-agent regressions passed 10/10 locally. AUD-370 is fixed locally and awaits verification on the next public version.
+
+Current audit ledger: 370 findings (0 Critical, 69 High, 280 Medium, 21 Low). 90 findings have issue-specific deployed verification plus 2 legacy closed records; 186 Medium/Low findings await deployed verification; 89 are locally verified; 2 retain legacy fixed status; and 1 is a documented Sites-host limitation. Of 69 High findings, 39 are deployed-verified and 30 are locally verified. See `audit/runtime-audit.json`, `audit/RUNTIME_AUDIT.md`, and `quality/STEP_45_EVIDENCE.md`. Step 45 and the product-hardening programme remain incomplete.
+
+The local release-quality run for the next review candidate passed frozen
+dependency install, catalogue generation (324 resources; 40 Gold), 22
+typechecks, lint, 1,223 unit tests (one configured skip), and `pnpm audit:all`.
+The build generated 733 Astro pages and 731 CSP records; security, provenance,
+bundle budgets, and dependency audit passed. Playwright passed 345 root cases
+(121 configured skips), Sites desktop 183/6 and mobile 149/40 on an isolated
+port after another worktree occupied 4323, and the standalone export preview
+3/3. The AUD-370 desktop/mobile regression passed 10/10. AUD-370 fix commit is
+`38ad1f7891bdf1738875762035e961457266c970`; it remains open until the next
+public review deployment passes the issue-specific browser checks. This is
+not completion of the full hardening plan or release gate.
