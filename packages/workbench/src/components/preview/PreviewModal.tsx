@@ -1,7 +1,7 @@
 import React from 'react';
 import {useDialogFocus} from '@tessellate/ui';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
-import { ManifestRenderer } from '@tessellate/renderer';
+import { BrowserManifestRenderer as ManifestRenderer } from '@tessellate/renderer/browser';
 import { DeviceFrame } from '../canvas/DeviceFrame.js';
 import { X, Wind, Monitor, Tablet, Smartphone } from 'lucide-react';
 

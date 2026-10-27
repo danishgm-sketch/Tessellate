@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {ManifestRenderer} from '@tessellate/renderer';
+import { BrowserManifestRenderer as ManifestRenderer } from '@tessellate/renderer/browser';
 import type {ProjectManifest} from '@tessellate/schemas';
 export function ShowcasePreview({ manifest }: { manifest: ProjectManifest }) {
   const [active, setActive] = useState(manifest.screens[0]!.id);

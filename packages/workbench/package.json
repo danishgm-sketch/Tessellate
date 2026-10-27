@@ -7,6 +7,7 @@
   "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
+    "./shell": "./src/components/WorkbenchShell.tsx",
     "./persistence": "./src/persistence/storage.ts"
   },
   "scripts": {

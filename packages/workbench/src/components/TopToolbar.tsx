@@ -14,13 +14,6 @@ import {
   RefreshCw,
   ChevronDown,
 } from 'lucide-react';
-import {
-  ExportValidationError,
-  generateAgentHandoffPackage,
-  generateSourceTree,
-  createZipArchive,
-  importProjectManifestFromJson,
-} from '@tessellate/exporter';
 import { CheckpointsMenu } from './checkpoints/CheckpointsMenu.js';
 import { listLocalProjects } from '../persistence/storage.js';
 
@@ -54,6 +47,7 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [isImporting, setIsImporting] = useState(false);
   const [manifestImportStatus, setManifestImportStatus] = useState('');
+  const [exportStatus, setExportStatus] = useState('');
   const manifestInputRef = useRef<HTMLInputElement>(null);
 
   const modes: WorkbenchMode[] = ['structure', 'style', 'motion', 'content', 'audit'];
@@ -80,8 +74,10 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
     URL.revokeObjectURL(url);
   };
 
-  const handleDownloadZip = () => {
+  const handleDownloadZip = async () => {
+    setExportStatus('Preparing standalone React project…');
     try {
+      const { generateSourceTree, createZipArchive } = await import('@tessellate/exporter');
       const sourceTree = generateSourceTree(manifest);
       const zipBytes = createZipArchive(sourceTree);
       const blob = new Blob([zipBytes as unknown as BlobPart], { type: 'application/zip' });
@@ -94,16 +90,21 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+      setExportStatus('Standalone React project download started.');
     } catch (err) {
-      if (!(err instanceof ExportValidationError)) {
+      if (!(err instanceof Error) || err.name !== 'ExportValidationError') {
         console.error('Failed to generate standalone ZIP project:', err);
       }
       alert(`Export failed: ${err instanceof Error ? err.message : String(err)}`);
+      setExportStatus('');
     }
+    window.setTimeout(() => setExportStatus(''), 3000);
   };
 
-  const handleDownloadAgentHandoff = () => {
+  const handleDownloadAgentHandoff = async () => {
+    setExportStatus('Preparing agent handoff package…');
     try {
+      const { generateAgentHandoffPackage, createZipArchive } = await import('@tessellate/exporter');
       const handoffFiles = generateAgentHandoffPackage(manifest).files;
       const zipBytes = createZipArchive(handoffFiles);
       const blob = new Blob([zipBytes as unknown as BlobPart], { type: 'application/zip' });
@@ -117,9 +118,12 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
       document.body.removeChild(anchor);
       URL.revokeObjectURL(url);
       setActionError('');
+      setExportStatus('Agent handoff download started.');
     } catch (cause) {
       setActionError(`Agent handoff export failed: ${cause instanceof Error ? cause.message : String(cause)}`);
+      setExportStatus('');
     }
+    window.setTimeout(() => setExportStatus(''), 3000);
   };
 
   const handleImportManifest = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -134,6 +138,7 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
       if (file.size > 5 * 1024 * 1024) {
         throw new Error('Manifest files must be 5 MiB or smaller.');
       }
+      const { importProjectManifestFromJson } = await import('@tessellate/exporter');
       const parsed = importProjectManifestFromJson(await file.text());
       if (!parsed.success || !parsed.manifest) {
         throw new Error(parsed.error ?? 'This file is not a valid Tessellate project manifest.');
@@ -166,6 +171,7 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
       className="dark min-h-14 shrink-0 px-3 py-2 gap-2 flex-wrap border-b border-[#D9D6CF] dark:border-[#272C34] bg-white dark:bg-[#0B0D10] flex items-center justify-between select-none z-30 relative"
     >
       {actionError && <p role="alert" className="w-full text-sm">{actionError}</p>}
+      {exportStatus && <p role="status" data-testid="export-status" className="w-full text-xs">{exportStatus}</p>}
       {manifestImportStatus && <p role="status" data-testid="manifest-import-status" className="w-full text-xs">{manifestImportStatus}</p>}
       {/* Left Cluster: Brand, Title, Save Status */}
       <div className="flex basis-full min-w-0 flex-none items-center gap-3 md:basis-auto md:flex-1 lg:flex-none">

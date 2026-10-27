@@ -1,14 +1,8 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import {isScopeLocked} from '../../utils/dna-helpers.js';
 import { findNodeById } from '../../utils/tree-helpers.js';
 import type { RightTab } from '../../types.js';
-import { IntentTab } from './IntentTab.js';
-import { StyleTab } from './StyleTab.js';
-import { MotionTab } from './MotionTab.js';
-import { ContentTab } from './ContentTab.js';
-import { ConstraintsTab } from './ConstraintsTab.js';
-import { ResourceTab } from './ResourceTab.js';
 import {
   Sparkles,
   Palette,
@@ -19,6 +13,13 @@ import {
   RotateCcw,
   X,
 } from 'lucide-react';
+
+const IntentTab = lazy(() => import('./IntentTab.js').then((module) => ({ default: module.IntentTab })));
+const StyleTab = lazy(() => import('./StyleTab.js').then((module) => ({ default: module.StyleTab })));
+const MotionTab = lazy(() => import('./MotionTab.js').then((module) => ({ default: module.MotionTab })));
+const ContentTab = lazy(() => import('./ContentTab.js').then((module) => ({ default: module.ContentTab })));
+const ConstraintsTab = lazy(() => import('./ConstraintsTab.js').then((module) => ({ default: module.ConstraintsTab })));
+const ResourceTab = lazy(() => import('./ResourceTab.js').then((module) => ({ default: module.ResourceTab })));
 
 export function RightInspector() {
   const manifest = useWorkbenchStore((state) => state.manifest);
@@ -116,12 +117,14 @@ export function RightInspector() {
 
       {/* Active Tab View */}
       <div className="flex-1 overflow-y-auto">
-        {activeRightTab === 'intent' && <IntentTab />}
-        {activeRightTab === 'style' && <StyleTab />}
-        {activeRightTab === 'motion' && <MotionTab />}
-        {activeRightTab === 'content' && <ContentTab />}
-        {activeRightTab === 'constraints' && <ConstraintsTab />}
-        {activeRightTab === 'resource' && <ResourceTab />}
+        <Suspense fallback={<div role="status" className="p-4 text-xs text-[var(--text-muted)]">Loading {activeRightTab} controls…</div>}>
+          {activeRightTab === 'intent' && <IntentTab />}
+          {activeRightTab === 'style' && <StyleTab />}
+          {activeRightTab === 'motion' && <MotionTab />}
+          {activeRightTab === 'content' && <ContentTab />}
+          {activeRightTab === 'constraints' && <ConstraintsTab />}
+          {activeRightTab === 'resource' && <ResourceTab />}
+        </Suspense>
       </div>
     </aside>
   );

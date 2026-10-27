@@ -1,6 +1,6 @@
 import { useDialogFocus } from '@tessellate/ui';
 import React from 'react';
-import { ManifestRenderer } from '@tessellate/renderer';
+import { BrowserManifestRenderer as ManifestRenderer } from '@tessellate/renderer/browser';
 import { X, ArrowRight, CheckCircle, SplitSquareHorizontal } from 'lucide-react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { compareManifests } from '../../compare/compare-engine.js';

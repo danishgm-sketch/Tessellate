@@ -1,27 +1,33 @@
 import {loadCheckpointJournal,saveCheckpointJournal} from '../persistence/checkpoint-journal.js';
 import { hasIndexedDB, loadLocalHistoryState, saveLocalHistoryState } from '../persistence/storage.js';
-import { composeProjectPipeline } from '@tessellate/compatibility';
-import React, { useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useWorkbenchStore } from '../store/workbench-store.js';
-import { TopToolbar } from './TopToolbar.js';
-import { LeftPanel } from './left-panel/LeftPanel.js';
-import { WorkbenchCanvas } from './canvas/WorkbenchCanvas.js';
-import { RightInspector } from './right-inspector/RightInspector.js';
-import { CommandBar } from './CommandBar.js';
-import { MobileWorkbench } from './mobile/MobileWorkbench.js';
-import { PreviewModal } from './preview/PreviewModal.js';
-import { CompareModal } from './compare/CompareModal.js';
-import { BlendModal } from './blend/BlendModal.js';
-import { ReplaceDrawer } from './replace/ReplaceDrawer.js';
-import { AuditPanel } from './audit/AuditPanel.js';
 import { loadBrowserProject, createProjectSaver } from '../persistence/browser-session.js';
-import { loadActiveCatalog } from '../mutations/runtime-catalog.js';
 import { ProjectManifestSchema, type ProjectManifest } from '@tessellate/schemas';
+
+const TopToolbar = lazy(() => import('./TopToolbar.js').then((module) => ({ default: module.TopToolbar })));
+const LeftPanel = lazy(() => import('./left-panel/LeftPanel.js').then((module) => ({ default: module.LeftPanel })));
+const WorkbenchCanvas = lazy(() => import('./canvas/WorkbenchCanvas.js').then((module) => ({ default: module.WorkbenchCanvas })));
+const RightInspector = lazy(() => import('./right-inspector/RightInspector.js').then((module) => ({ default: module.RightInspector })));
+const CommandBar = lazy(() => import('./CommandBar.js').then((module) => ({ default: module.CommandBar })));
+const MobileWorkbench = lazy(() => import('./mobile/MobileWorkbench.js').then((module) => ({ default: module.MobileWorkbench })));
+const PreviewModal = lazy(() => import('./preview/PreviewModal.js').then((module) => ({ default: module.PreviewModal })));
+const CompareModal = lazy(() => import('./compare/CompareModal.js').then((module) => ({ default: module.CompareModal })));
+const BlendModal = lazy(() => import('./blend/BlendModal.js').then((module) => ({ default: module.BlendModal })));
+const ReplaceDrawer = lazy(() => import('./replace/ReplaceDrawer.js').then((module) => ({ default: module.ReplaceDrawer })));
+const AuditPanel = lazy(() => import('./audit/AuditPanel.js').then((module) => ({ default: module.AuditPanel })));
+
+function LoadingEditorPart({ label = 'Loading Workbench controls…' }: { label?: string }) {
+  return <div role="status" className="flex h-full min-h-12 items-center justify-center px-4 py-3 text-xs text-[#A8AFBA]">{label}</div>;
+}
 
 export function WorkbenchShell() {
   const activeMode = useWorkbenchStore((state) => state.activeMode);
   const projectName = useWorkbenchStore((state) => state.manifest.name);
   const isPreview = useWorkbenchStore((state) => state.isPreview);
+  const isCompareOpen = useWorkbenchStore((state) => state.isCompareOpen);
+  const isBlendOpen = useWorkbenchStore((state) => state.isBlendOpen);
+  const isReplaceDrawerOpen = useWorkbenchStore((state) => state.isReplaceDrawerOpen);
   const selectParentNode = useWorkbenchStore((state) => state.selectParentNode);
   const undo = useWorkbenchStore((state) => state.undo);
   const redo = useWorkbenchStore((state) => state.redo);
@@ -69,10 +75,26 @@ export function WorkbenchShell() {
       loaded.storageWarnings.forEach(addStorageWarning);
       if(showcaseId || resourceSlug){
         void (async()=>{
-          const catalog = await loadActiveCatalog();
           let imported;
           if(showcaseId){const response=await fetch(`/data/showcases/${encodeURIComponent(showcaseId)}.json`);if(!response.ok)throw new Error(`Showcase HTTP ${response.status}`);imported=ProjectManifestSchema.parse(await response.json());}
-          else {const resource=catalog.find(item=>item.slug===resourceSlug);if(!resource || resource.status!=='verified-gold')throw new Error('This resource is outside the Gold composition runtime. Its source remains available on the resource page.');imported=composeProjectPipeline({description:'A local resource exploration project',visualAmbition:40,structuralCreativity:40},{catalogResources:catalog,seed:crypto.randomUUID()}).directionA.manifest;const screen=imported.screens[0]!;screen.name=resource.name;screen.rootNode={id:`resource-root-${crypto.randomUUID()}`,nodeType:'layout',semanticRole:'marketing-page',children:[{id:`resource-${crypto.randomUUID()}`,nodeType:'section',semanticRole:resource.roles[0]??'component',resourceRef:{id:resource.id,slug:resource.slug,version:resource.version},variant:resource.variants[0]?.id,children:[],slots:{},props:resource.preview.defaultProps??{}}],slots:{},props:{}};imported.screens=[screen];imported.navigation.primaryItems=[];imported.screenGraph.groups=imported.screenGraph.groups.map(group=>({...group,screens:group.screens.filter(node=>node.id===screen.id)}));imported.screenGraph.edges=[];imported.name=`Resource study — ${resource.name}`;}
+          else {
+            const [{ loadActiveCatalog }, { composeProjectPipeline }] = await Promise.all([
+              import('../mutations/runtime-catalog.js'),
+              import('@tessellate/compatibility'),
+            ]);
+            const catalog = await loadActiveCatalog();
+            const resource=catalog.find(item=>item.slug===resourceSlug);
+            if(!resource || resource.status!=='verified-gold')throw new Error('This resource is outside the Gold composition runtime. Its source remains available on the resource page.');
+            imported=composeProjectPipeline({description:'A local resource exploration project',visualAmbition:40,structuralCreativity:40},{catalogResources:catalog,seed:crypto.randomUUID()}).directionA.manifest;
+            const screen=imported.screens[0]!;
+            screen.name=resource.name;
+            screen.rootNode={id:`resource-root-${crypto.randomUUID()}`,nodeType:'layout',semanticRole:'marketing-page',children:[{id:`resource-${crypto.randomUUID()}`,nodeType:'section',semanticRole:resource.roles[0]??'component',resourceRef:{id:resource.id,slug:resource.slug,version:resource.version},variant:resource.variants[0]?.id,children:[],slots:{},props:resource.preview.defaultProps??{}}],slots:{},props:{}};
+            imported.screens=[screen];
+            imported.navigation.primaryItems=[];
+            imported.screenGraph.groups=imported.screenGraph.groups.map(group=>({...group,screens:group.screens.filter(node=>node.id===screen.id)}));
+            imported.screenGraph.edges=[];
+            imported.name=`Resource study — ${resource.name}`;
+          }
           if(disposed)return;
           imported.id=`local-${crypto.randomUUID()}`;
           setManifest(ProjectManifestSchema.parse(imported));await saver(imported);
@@ -98,9 +120,10 @@ export function WorkbenchShell() {
       }
       else if (projectId) throw new Error(`Project ${projectId} was not found in this browser.`);
       else if (loaded.damagedRecords.length===0) {
-        const catalog = await loadActiveCatalog();
-        const starter=composeProjectPipeline({description:'An employee experience platform with people, teams, onboarding and policies. This is a sample local project.',feel:'professional but playful',visualAmbition:40,structuralCreativity:55,targetDevices:['desktop','tablet','mobile']},{catalogResources:catalog,seed:crypto.randomUUID()}).directionA.manifest;
-        starter.name='Example employee workspace';
+        const response = await fetch('/data/workbench-starter.json');
+        if (!response.ok) throw new Error(`Workbench starter HTTP ${response.status}`);
+        const starterTemplate = ProjectManifestSchema.parse(await response.json());
+        const starter = ProjectManifestSchema.parse({ ...starterTemplate, id: `local-${crypto.randomUUID()}` });
         setManifest(starter);
         void saver(starter);
       }
@@ -279,12 +302,12 @@ export function WorkbenchShell() {
 
   // Clean full-screen preview mode
   if (isPreview) {
-    return <PreviewModal />;
+    return <Suspense fallback={<LoadingEditorPart label="Opening project preview…" />}><PreviewModal /></Suspense>;
   }
 
   // Mobile layout below 1024px
   if (isMobileScreen) {
-    return <MobileWorkbench historySaveStatus={historySaveStatus} storageWarning={storageWarning} />;
+    return <Suspense fallback={<LoadingEditorPart label="Opening the mobile workspace…" />}><MobileWorkbench historySaveStatus={historySaveStatus} storageWarning={storageWarning} /></Suspense>;
   }
 
   // Desktop viewport-filling shell
@@ -295,7 +318,7 @@ export function WorkbenchShell() {
     >
       <a href="#workbench-main" className="sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:not-sr-only focus:bg-white focus:px-3 focus:py-2 focus:text-[#111217] focus:outline-2 focus:outline-offset-2 focus:outline-[#6782FF]">Skip to editor</a>
       {/* 56px Top Toolbar */}
-      <TopToolbar historySaveStatus={historySaveStatus} />
+      <Suspense fallback={<LoadingEditorPart label="Loading the Workbench toolbar…" />}><TopToolbar historySaveStatus={historySaveStatus} /></Suspense>
       {storageWarning && (
         <div role="status" aria-live="polite" data-testid="storage-warning" className="border-b border-amber-500/30 bg-amber-950/40 px-4 py-2 text-xs text-amber-100">
           {storageWarning}
@@ -306,22 +329,24 @@ export function WorkbenchShell() {
       <main id="workbench-main" tabIndex={-1} aria-label="Workbench editor" className="relative flex flex-1 overflow-hidden">
         <h1 className="sr-only">Workbench: {projectName}</h1>
         {/* Left Panel (280px) */}
-        <LeftPanel />
+        <Suspense fallback={<LoadingEditorPart label="Loading project structure…" />}><LeftPanel /></Suspense>
 
         {/* Central Canvas or Audit Dashboard */}
-        {activeMode === 'audit' ? <AuditPanel /> : <WorkbenchCanvas />}
+        {activeMode === 'audit'
+          ? <Suspense fallback={<LoadingEditorPart label="Loading project audit…" />}><AuditPanel /></Suspense>
+          : <Suspense fallback={<LoadingEditorPart label="Loading the project canvas…" />}><WorkbenchCanvas /></Suspense>}
 
         {/* Right Contextual Inspector (340px) */}
-        <RightInspector />
+        <Suspense fallback={<LoadingEditorPart label="Loading the inspector…" />}><RightInspector /></Suspense>
 
         {/* Advanced Modals & Drawers */}
-        <ReplaceDrawer />
-        <CompareModal />
-        <BlendModal />
+        {isReplaceDrawerOpen && <Suspense fallback={<LoadingEditorPart label="Loading resource replacement…" />}><ReplaceDrawer /></Suspense>}
+        {isCompareOpen && <Suspense fallback={<LoadingEditorPart label="Loading project comparison…" />}><CompareModal /></Suspense>}
+        {isBlendOpen && <Suspense fallback={<LoadingEditorPart label="Loading direction blending…" />}><BlendModal /></Suspense>}
       </main>
 
       {/* 64px Command Bar */}
-      <CommandBar />
+      <Suspense fallback={<LoadingEditorPart label="Loading project commands…" />}><CommandBar /></Suspense>
     </div>
   );
 }

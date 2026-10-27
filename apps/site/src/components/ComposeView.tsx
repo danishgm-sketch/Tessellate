@@ -13,7 +13,7 @@ import {
 } from '@tessellate/compatibility';
 import { Dialog } from '@tessellate/ui';
 import { saveLocalProject } from '@tessellate/workbench/persistence';
-import { ManifestRenderer } from '@tessellate/renderer';
+import { BrowserManifestRenderer as ManifestRenderer } from '@tessellate/renderer/browser';
 import { ResourceManifestSchema, type ProjectManifest, type ResourceManifest } from '@tessellate/schemas';
 import {
   VISUAL_AMBITION_STOPS,

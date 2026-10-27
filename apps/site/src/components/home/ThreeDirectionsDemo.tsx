@@ -22,7 +22,9 @@ export function ThreeDirectionsDemo() {
         fetch('/data/catalog.json'),
         import('@tessellate/compatibility'),
         import('@tessellate/schemas'),
-        import('@tessellate/renderer'),
+        import('@tessellate/renderer/browser').then((renderer) => ({
+          ManifestRenderer: renderer.BrowserManifestRenderer,
+        })),
       ]);
       if (!response.ok) throw new Error(`Catalogue HTTP ${response.status}`);
       const catalogue = schemas.ResourceManifestSchema.array().parse(
@@ -53,7 +55,7 @@ export function ThreeDirectionsDemo() {
 
   const open = async (project: ProjectManifest, blend = false) => {
     try {
-      const { saveLocalProject } = await import('@tessellate/workbench');
+      const { saveLocalProject } = await import('@tessellate/workbench/persistence');
       for (const sibling of projects) {
         localStorage.setItem(`tessellate_project_${sibling.id}`, JSON.stringify(sibling));
         localStorage.setItem(`tessellate_directions_${sibling.id}`, JSON.stringify(projects));

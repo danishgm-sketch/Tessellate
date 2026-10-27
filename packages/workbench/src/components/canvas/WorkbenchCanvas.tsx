@@ -1,6 +1,6 @@
 import React from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
-import { ManifestRenderer } from '@tessellate/renderer';
+import { BrowserManifestRenderer as ManifestRenderer } from '@tessellate/renderer/browser';
 import { DeviceFrame } from './DeviceFrame.js';
 import { CanvasToolbar } from './CanvasToolbar.js';
 import { BreadcrumbBar } from './BreadcrumbBar.js';

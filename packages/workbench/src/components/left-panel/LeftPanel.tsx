@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import type { LeftTab } from '../../types.js';
-import { BriefTab } from './BriefTab.js';
-import { PagesTab } from './PagesTab.js';
-import { LayersTab } from './LayersTab.js';
-import { LibraryTab } from './LibraryTab.js';
 import { FileText, Layers, Grid, BookOpen } from 'lucide-react';
+
+const BriefTab = lazy(() => import('./BriefTab.js').then((module) => ({ default: module.BriefTab })));
+const PagesTab = lazy(() => import('./PagesTab.js').then((module) => ({ default: module.PagesTab })));
+const LayersTab = lazy(() => import('./LayersTab.js').then((module) => ({ default: module.LayersTab })));
+const LibraryTab = lazy(() => import('./LibraryTab.js').then((module) => ({ default: module.LibraryTab })));
 
 export function LeftPanel() {
   const activeLeftTab = useWorkbenchStore((state) => state.activeLeftTab);
@@ -47,10 +48,12 @@ export function LeftPanel() {
 
       {/* Active Tab View */}
       <div className="flex-1 overflow-y-auto">
-        {activeLeftTab === 'brief' && <BriefTab />}
-        {activeLeftTab === 'pages' && <PagesTab />}
-        {activeLeftTab === 'layers' && <LayersTab />}
-        {activeLeftTab === 'library' && <LibraryTab />}
+        <Suspense fallback={<div role="status" className="p-4 text-xs text-[var(--text-muted)]">Loading {activeLeftTab}…</div>}>
+          {activeLeftTab === 'brief' && <BriefTab />}
+          {activeLeftTab === 'pages' && <PagesTab />}
+          {activeLeftTab === 'layers' && <LayersTab />}
+          {activeLeftTab === 'library' && <LibraryTab />}
+        </Suspense>
       </div>
     </aside>
   );

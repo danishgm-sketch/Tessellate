@@ -1,15 +1,8 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import type { MobileTab } from '../../types.js';
-import { ManifestRenderer } from '@tessellate/renderer';
-import { PagesTab } from '../left-panel/PagesTab.js';
-import { LayersTab } from '../left-panel/LayersTab.js';
+import { BrowserManifestRenderer as ManifestRenderer } from '@tessellate/renderer/browser';
 import { TopToolbar } from '../TopToolbar.js';
-import { RightInspector } from '../right-inspector/RightInspector.js';
-import { CommandBar } from '../CommandBar.js';
-import { ReplaceDrawer } from '../replace/ReplaceDrawer.js';
-import { CompareModal } from '../compare/CompareModal.js';
-import { BlendModal } from '../blend/BlendModal.js';
 import {
   Eye,
   FileText,
@@ -17,7 +10,15 @@ import {
   Terminal,
   CheckCircle2,
 } from 'lucide-react';
-import { AuditPanel } from '../audit/AuditPanel.js';
+
+const PagesTab = lazy(() => import('../left-panel/PagesTab.js').then((module) => ({ default: module.PagesTab })));
+const LayersTab = lazy(() => import('../left-panel/LayersTab.js').then((module) => ({ default: module.LayersTab })));
+const RightInspector = lazy(() => import('../right-inspector/RightInspector.js').then((module) => ({ default: module.RightInspector })));
+const CommandBar = lazy(() => import('../CommandBar.js').then((module) => ({ default: module.CommandBar })));
+const ReplaceDrawer = lazy(() => import('../replace/ReplaceDrawer.js').then((module) => ({ default: module.ReplaceDrawer })));
+const CompareModal = lazy(() => import('../compare/CompareModal.js').then((module) => ({ default: module.CompareModal })));
+const BlendModal = lazy(() => import('../blend/BlendModal.js').then((module) => ({ default: module.BlendModal })));
+const AuditPanel = lazy(() => import('../audit/AuditPanel.js').then((module) => ({ default: module.AuditPanel })));
 
 export function MobileWorkbench({ historySaveStatus = 'saved', storageWarning = null }: { historySaveStatus?: 'loading' | 'saving' | 'saved' | 'unavailable'; storageWarning?: string | null }) {
   const manifest = useWorkbenchStore((state) => state.manifest);
@@ -26,6 +27,9 @@ export function MobileWorkbench({ historySaveStatus = 'saved', storageWarning = 
   const selectNode = useWorkbenchStore((state) => state.selectNode);
   const mobileTab = useWorkbenchStore((state) => state.mobileTab);
   const setMobileTab = useWorkbenchStore((state) => state.setMobileTab);
+  const isReplaceDrawerOpen = useWorkbenchStore((state) => state.isReplaceDrawerOpen);
+  const isCompareOpen = useWorkbenchStore((state) => state.isCompareOpen);
+  const isBlendOpen = useWorkbenchStore((state) => state.isBlendOpen);
   const reducedMotion = useWorkbenchStore((state) => state.reducedMotion);
   const lastActionMessage = useWorkbenchStore((state) => state.lastActionMessage);
 
@@ -84,17 +88,19 @@ export function MobileWorkbench({ historySaveStatus = 'saved', storageWarning = 
 
         {mobileTab === 'pages' && (
           <div className="dark p-4 space-y-6">
-            <PagesTab />
-            <div className="h-px bg-[#D9D6CF] dark:bg-[#272C34]" />
-            <LayersTab />
+            <Suspense fallback={<div role="status" className="text-xs text-[#A8AFBA]">Loading pages and layers…</div>}>
+              <PagesTab />
+              <div className="h-px bg-[#D9D6CF] dark:bg-[#272C34]" />
+              <LayersTab />
+            </Suspense>
           </div>
         )}
 
-        {mobileTab === 'selection' && <RightInspector />}
-        {mobileTab === 'command' && <div className="dark p-4 space-y-4"><h2>Project command</h2><p className="text-sm">Use deterministic changes such as “more playful”, “reduce motion”, “replace”, or “compare”. Unsupported commands explain their limits.</p><CommandBar /></div>}
+        {mobileTab === 'selection' && <Suspense fallback={<div role="status" className="p-4 text-xs text-[#A8AFBA]">Loading inspector…</div>}><RightInspector /></Suspense>}
+        {mobileTab === 'command' && <div className="dark p-4 space-y-4"><h2>Project command</h2><p className="text-sm">Use deterministic changes such as “more playful”, “reduce motion”, “replace”, or “compare”. Unsupported commands explain their limits.</p><Suspense fallback={<div role="status" className="text-xs text-[#A8AFBA]">Loading project commands…</div>}><CommandBar /></Suspense></div>}
         {mobileTab === 'audit' && (
           <div className="h-full">
-            <AuditPanel />
+            <Suspense fallback={<div role="status" className="p-4 text-xs text-[#A8AFBA]">Loading project audit…</div>}><AuditPanel /></Suspense>
           </div>
         )}
       </main>
@@ -119,7 +125,9 @@ export function MobileWorkbench({ historySaveStatus = 'saved', storageWarning = 
           );
         })}
       </nav>
-      <ReplaceDrawer /><CompareModal /><BlendModal />
+      {isReplaceDrawerOpen && <Suspense fallback={<div role="status" className="p-4 text-xs text-[#A8AFBA]">Loading replacement…</div>}><ReplaceDrawer /></Suspense>}
+      {isCompareOpen && <Suspense fallback={<div role="status" className="p-4 text-xs text-[#A8AFBA]">Loading comparison…</div>}><CompareModal /></Suspense>}
+      {isBlendOpen && <Suspense fallback={<div role="status" className="p-4 text-xs text-[#A8AFBA]">Loading blend controls…</div>}><BlendModal /></Suspense>}
     </div>
   );
 }

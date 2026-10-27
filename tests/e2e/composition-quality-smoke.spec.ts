@@ -157,6 +157,7 @@ test('review representative marketplace and community compositions in the real b
       await expect(
         canvas.locator('[data-testid="unresolved-required-role-diagnostic"]')
       ).toHaveCount(0);
+      await expect(canvas.locator('[data-testid="resource-loading"]')).toHaveCount(0);
       const screenshot = `composition-${item.id.toLowerCase()}-direction-${number}.png`;
       await dialog.screenshot({ path: path.join(evidenceDir, screenshot) });
       const scrollState = await dialog.evaluate((element) => ({

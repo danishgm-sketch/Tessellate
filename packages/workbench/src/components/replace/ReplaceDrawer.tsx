@@ -2,7 +2,7 @@ import { useDialogFocus } from '@tessellate/ui';
 import React, { useEffect, useState } from 'react';
 import { X, RefreshCw, Check, Sparkles, Zap, Award } from 'lucide-react';
 import { isGoldResource } from '@tessellate/catalog/gold';
-import { NodeRenderer } from '@tessellate/renderer';
+import { BrowserNodeRenderer as NodeRenderer } from '@tessellate/renderer/browser';
 import { runtimeVariant } from '@tessellate/compatibility';
 import { loadActiveCatalog } from '../../mutations/runtime-catalog.js';
 import { useRuntimeCatalogStatus } from '../useRuntimeCatalogStatus.js';

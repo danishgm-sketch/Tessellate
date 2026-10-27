@@ -85,14 +85,18 @@ function auditSecurityAndSecrets() {
   // source remains available through the isolated preview application.
   const runtimeRendererPaths = [
     path.resolve('packages/renderer/src/generated-gold-registry.tsx'),
+    path.resolve('packages/renderer/src/generated-gold-registry-sync.tsx'),
+    path.resolve('packages/renderer/src/base-registry.tsx'),
     path.resolve('packages/renderer/src/default-registry.tsx'),
+    path.resolve('packages/renderer/src/browser-node-renderer.tsx'),
+    path.resolve('packages/renderer/src/node-renderer.tsx'),
   ];
   const goldSlugs = new Set<string>(GOLD_40_SLUGS);
   const importedResourceSlugs = new Set<string>();
   for (const rendererPath of runtimeRendererPaths) {
     if (!fs.existsSync(rendererPath)) continue;
     const source = fs.readFileSync(rendererPath, 'utf-8');
-    const importPattern = /from\s+["']([^"']*resources[\\/]([^\\/]+)[\\/]([^\\/]+)[\\/]index\.js)["']/g;
+    const importPattern = /(?:from\s+|import\s*\()\s*["']([^"']*resources[\\/]([^\\/]+)[\\/]([^\\/]+)[\\/]index\.js)["']/g;
     for (const match of source.matchAll(importPattern)) {
       importedResourceSlugs.add(match[3]!);
     }

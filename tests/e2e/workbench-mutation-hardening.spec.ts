@@ -129,6 +129,7 @@ test('adding a screen rejects a route already used by another screen', async ({ 
   await openPlayfulHrWorkbench(page);
   await page.getByTestId('left-panel').getByRole('button', { name: 'Pages', exact: true }).click();
   const screenButtons = page.locator('[data-testid="pages-tab"] button[aria-label^="Select screen "]');
+  await expect(screenButtons.first()).toBeVisible();
   const initialCount = await screenButtons.count();
 
   await page.getByRole('button', { name: 'Add Page', exact: true }).click();

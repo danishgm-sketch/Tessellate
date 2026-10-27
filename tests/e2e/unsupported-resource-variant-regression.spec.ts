@@ -53,14 +53,15 @@ test('Workbench rejects unsupported resource variants instead of rendering a com
   const afterPath = path.resolve(process.cwd(), 'audit/evidence/step-07/after/unsupported-variant-diagnostic.png');
   mkdirSync(path.dirname(afterPath), { recursive: true });
   await page.screenshot({ path: afterPath, fullPage: true });
-  let exportDialogMessage: string | null = null;
-  page.once('dialog', async (dialog) => {
-    exportDialogMessage = dialog.message();
+  const exportDialogPromise = page.waitForEvent('dialog').then(async (dialog) => {
+    const message = dialog.message();
     await dialog.accept();
+    return message;
   });
   const exportDownloadPromise = page.waitForEvent('download', { timeout: 750 }).catch(() => null);
   await page.getByTestId('export-button').click();
   await page.getByTestId('export-zip-btn').click();
+  const exportDialogMessage = await exportDialogPromise;
   expect(exportDialogMessage).toContain('Unsupported variant "unsupported-variant"');
   expect(await exportDownloadPromise).toBeNull();
   expect(uncaught).toEqual([]);

@@ -8,7 +8,7 @@ import {
   type PreviewResizeMessage,
   type PreviewErrorMessage,
 } from '@tessellate/catalog/protocol';
-import { NodeRenderer } from '@tessellate/renderer';
+import { BrowserNodeRenderer as NodeRenderer } from '@tessellate/renderer/browser';
 
 function readChangeValue(input: unknown): unknown {
   if (typeof input !== 'object' || input === null || !('target' in input)) return input;
