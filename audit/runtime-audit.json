@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. The current public review Site is v49, serving application code captured from canonical commit be97d567bc32fac74abc4bc70921f5edb3739abf and Sites source mirror 910328f4b5bf900fe82a4715458a81ce23ebb17f. Issue-specific deployed checks close AUD-364 and AUD-365. Follow-up review of saved-project readiness evidence found AUD-367, a test locator that treated a screen-reader-only heading as visible project content; this is fixed and reverified on public v49 desktop and mobile. One real-content startup sample took 11,344ms with DOMContentLoaded at 10,184ms; it did not recur in eight later desktop runs, two mobile runs, or two Chrome DevTools cache-bypass traces and is closed as non-reproducible under AUD-368. Targeted checks reported zero Axe violations, console errors, uncaught exceptions, failed requests, or HTTP errors. Chrome DevTools reported three deprecation Issues from the Cloudflare managed challenge script. The latest full flagship/export review is v46 and the last broad multi-surface baseline is v37. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
+  "scope": "Tessellate production review audit. The current public review Site is v49, serving application code captured from canonical commit be97d567bc32fac74abc4bc70921f5edb3739abf and Sites source mirror 910328f4b5bf900fe82a4715458a81ce23ebb17f. Issue-specific deployed checks close AUD-364 and AUD-365. Follow-up review of saved-project readiness evidence found AUD-367, a test locator that treated a screen-reader-only heading as visible project content; this is fixed and reverified on public v49 desktop and mobile. One real-content startup sample took 11,344ms with DOMContentLoaded at 10,184ms; it did not recur in eight later desktop runs, two mobile runs, or two Chrome DevTools cache-bypass traces and is closed as non-reproducible under AUD-368. The exact-head CI run 40554043456 found a moderate transitive qs advisory in the MCP SDK's Express dependency; AUD-369 records the targeted override, frozen install, and clean local audit, pending CI confirmation. Targeted browser checks reported zero Axe violations, console errors, uncaught exceptions, failed requests, or HTTP errors. Chrome DevTools reported three deprecation Issues from the Cloudflare managed challenge script. The latest full flagship/export review is v46 and the last broad multi-surface baseline is v37. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -12326,7 +12326,42 @@
         "nextAction": "Reopen if a future cold saved-project startup again exceeds five seconds; capture per-request timings and a Chrome DevTools trace in that run. The raw trace could not be exported because Chrome DevTools denied file writes outside its configured roots. Machine-readable trace summary: quality/evidence/step-45/public-v49/aud-365-reaudit/aud-368-cold-cache-devtools.json."
       },
       "notes": "Closed after issue-specific deployed verification. Do not raise or disable the five-second startup budget: one slow user-visible startup occurred, but it did not recur in eight later desktop runs, two mobile runs, or cache-bypass traces. No application root cause was reproduced, so no code change was made; reopen on another over-budget cold start."
+    },
+    {
+      "id": "AUD-369",
+      "severity": "medium",
+      "route": "CI / pnpm audit",
+      "viewport": "N/A",
+      "category": "security",
+      "title": "MCP SDK Express dependency resolved vulnerable qs 6.16.0",
+      "expected": "The frozen dependency graph should contain only patched dependencies and `pnpm audit` should pass.",
+      "actual": "GitHub Actions run 40554043456 on commit 816057952bf31131ecf891d7bc81fe91bb46ae64 failed the complete security/dependency audit. pnpm audit reported GHSA-6pq8-jhm2-2vcw affecting qs versions 6.7.0 through 6.16.0, with patched versions starting at 6.16.1. The vulnerable path was @modelcontextprotocol/sdk > express > qs, also reached through express-rate-limit > express > qs.",
+      "reproduction": [
+        "Run pnpm audit against the frozen pnpm-lock.yaml before the fix.",
+        "The audit reports one moderate vulnerability for qs 6.16.0 through the MCP SDK's Express dependency.",
+        "Run pnpm why qs to confirm both qs 6.16.0 and 6.16.1 were present in the workspace graph."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The workspace already overrode body-parser to a patched release, which brought qs 6.16.1 into the graph, but Express itself still resolved qs 6.16.0. The advisory therefore remained reachable through the MCP SDK's Express dependency.",
+      "affectedCode": [
+        "pnpm-workspace.yaml",
+        "pnpm-lock.yaml"
+      ],
+      "fixCommit": "227d8e509ee3d07d8a21eef75e96c9bf28396218",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "failingCheck": "GitHub Actions run 40554043456 failed in `pnpm audit:all` on the qs advisory; all prior catalogue/schema, typecheck, lint, Vitest, and release-gate steps passed.",
+        "fix": "Added a pnpm override from qs@6.16.0 to qs@6.16.1 and regenerated pnpm-lock.yaml offline.",
+        "frozenInstall": "pnpm install --frozen-lockfile --offline passed.",
+        "audit": "pnpm audit passed with `No known vulnerabilities found`.",
+        "dependencyTree": "pnpm why qs now reports only qs@6.16.1 across the workspace.",
+        "evidence": "quality/evidence/step-45/qs-dependency-audit-after.json",
+        "ciRunForFix": "Pending exact-head CI."
+      },
+      "notes": "This is a transitive dependency remediation; application runtime code and the already published Sites v49 content did not change."
     }
   ],
-  "generatedAt": "2026-10-27T17:50:00Z"
+  "generatedAt": "2026-10-27T17:56:26Z"
 }
