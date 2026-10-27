@@ -547,3 +547,39 @@ checks, gzip bundle budgets, and security/dependency audits. The default
 parallel Vitest run had one artifact-isolation test timeout under contention;
 that test passed alone and the bounded full suite passed. This is local evidence
 only; no new Site version has been deployed.
+
+### 2026-10-27 continuation — public v42 page-recipe handoff
+
+The live public v42 `/pages` → Compose path was exercised at 1440×900 and
+390×844. Selecting “Compose this architecture” for “Application Overview
+Dashboard” populated `Build a Application Overview Dashboard. Primary
+operational hub featuring real-time health scorecard, telemetry metric charts,
+and live event feed.` After catalogue readiness, composing inferred Developer
+Tools and planned Documentation & SDKs, Telemetry Dashboard, Log Explorer, and
+API & Webhooks. This is domain contamination for a generic overview recipe
+(AUD-359). The same handoff hardcoded “Build a” for every title, producing an
+ungrammatical brief (AUD-360).
+
+The before page and Compose captures are in
+`quality/evidence/step-39/public-v42/page-recipes/`; the browser capture script
+records routes, status codes, requests, console errors/warnings, exceptions,
+overflow, and the generated architecture in `deployed-before.json`. Both
+routes returned HTTP 200 and `/data/catalog.json` returned 200. The catalogue
+became ready; there were no application console errors or warnings, uncaught
+exceptions, failed requests, HTTP errors, or horizontal overflow at either
+viewport.
+
+The shared recipe now describes key outcome metrics, recent activity, and next
+steps without telemetry wording. The Compose handoff now uses `Design a page
+titled “…”` so titles do not receive an assumed article. The focused composer
+regression failed before the copy correction (1 failed, 7 passed) and passes
+after it (8/8). A visible-browser regression checks both the exact prompt
+handoff and the resulting planned screens; desktop and mobile pass 4/4. The
+Astro build produced all 733 routes successfully. The full local browser gate
+subsequently passed on 2026-10-27: Astro desktop/mobile 334 passed, Sites
+Worker desktop 181 passed, Sites Worker mobile 147 passed, and the standalone
+preview app 3 passed (665 total; 166 configured skips; zero test failures).
+The Sites Worker profiles ran on isolated port 4335 because another Tessellate
+preview already owns 4323. The new recipe-handoff regression passed in both
+Astro viewports. These results do not close either finding; a deployed recheck
+is still required. Step 39 remains in progress and the public Site remains v42.

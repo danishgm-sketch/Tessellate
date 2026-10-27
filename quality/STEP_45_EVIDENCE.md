@@ -474,3 +474,26 @@ deployed as `appgdep_6adfffd2f6fc8191b0ac0bbd755a6ba5` from canonical source
 `480647cae712fd78740094b76ccd244f676ccf8b` (Sites mirror
 `3b6bbf98e425954a9d391b866200c6586692709b`). Screenshots and measurements
 are under `quality/evidence/step-45/public-v42/`.
+
+## Local browser gate — page-recipe fix — 2026-10-27
+
+The full local browser matrix passed after isolating the Sites Worker on port
+4335. Results: Astro desktop/mobile 334 passed and 120 configured skips;
+Sites Worker desktop 181 passed and 6 configured skips; Sites Worker mobile
+147 passed and 40 configured skips; standalone exported-preview app 3 passed.
+That is 665 passed, 166 configured skips, and zero test failures across the
+four profiles. The new page-recipe handoff regression passed on desktop and
+mobile in the Astro profile. The Sites desktop profile included the 324
+resource render certification and the preview-CSP suite.
+
+The first aggregate `pnpm test:e2e` invocation completed its 454-case Astro
+profile (334 passed, 120 configured skips), then could not start the Sites
+Worker because an already-running `workerd.exe` owned port 4323. Its command
+line pointed to another Tessellate Sites source checkout. I left that service
+running and reran the two Sites profiles with
+`SITES_PREVIEW_BASE_URL=http://127.0.0.1:4335`; both passed. The standalone
+preview checks then passed on their configured isolated port. Browser runs
+regenerated tracked screenshot/report artifacts; those test outputs were
+restored, while the new v42 before-capture evidence and existing user trace
+archives were preserved. This is local validation only: AUD-359/360 still
+require a fresh public deployment and issue-specific live verification.

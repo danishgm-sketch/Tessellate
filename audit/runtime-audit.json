@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. The latest broad public route, flagship, accessibility, responsive, and standalone-export checkpoint remains Sites v37. The targeted v39 documentation check closed AUD-357. Public v40 exposed AUD-358; v41 corrected its version claim but retained stale pending-status wording; public v42 verified the final historical copy and closes AUD-358. The public review Site has no D1/R2 bindings. Local fixes remain open until issue-specific deployed verification; Step 45 and the wider hardening programme are incomplete.",
+  "scope": "Tessellate production review audit. The latest broad public route, flagship, accessibility, responsive, and standalone-export checkpoint remains Sites v37. The targeted v39 documentation check closed AUD-357. Public v40 exposed AUD-358; v41 corrected its version claim but retained stale pending-status wording; public v42 verified the final historical copy and closes AUD-358. The v42 live page-recipe audit found AUD-359–360 at desktop and mobile; local fixes pass, with deployed verification pending. The public review Site has no D1/R2 bindings. Step 45 and the wider hardening programme are incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -11628,7 +11628,101 @@
       "deploymentVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d07e70ea3c48191b0f782121aecb626",
       "verifiedCanonicalCommit": "480647cae712fd78740094b76ccd244f676ccf8b",
       "verifiedSitesSourceCommit": "3b6bbf98e425954a9d391b866200c6586692709b"
+    },
+    {
+      "id": "AUD-359",
+      "severity": "medium",
+      "route": "/pages → /compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Generic overview recipe contaminates Compose with observability intent",
+      "expected": "The generic Application Overview Dashboard recipe should produce a domain-neutral overview architecture unless the user specifies an observability product.",
+      "actual": "The recipe described telemetry and live events. Composing it inferred Developer Tools and generated Documentation & SDKs, Telemetry Dashboard, Log Explorer, and API & Webhooks screens.",
+      "reproduction": [
+        "Open the public review Site at /pages.",
+        "Choose Compose this architecture for Application Overview Dashboard.",
+        "Wait until Catalogue ready and compose without changing the brief.",
+        "Observe Developer Tools as the inferred archetype and telemetry/log/API screens in the planned architecture."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "/pages",
+          "status": 200
+        },
+        {
+          "url": "/data/catalog.json",
+          "status": 200
+        },
+        {
+          "url": "/compose?brief=Build%20a%20Application%20Overview%20Dashboard...",
+          "status": 200
+        }
+      ],
+      "screenshot": "quality/evidence/step-39/public-v42/page-recipes/compose-before-1440x900.png",
+      "rootCause": "The shared page-composition description used telemetry, a high-confidence developer-tools archetype signal, for a page recipe presented as a generic application overview.",
+      "affectedCode": [
+        "packages/composer/src/page-compositions.ts",
+        "packages/composer/src/__tests__/showcases-and-pages.test.ts",
+        "tests/e2e/page-recipe-handoff-step-39.spec.ts"
+      ],
+      "fixCommit": "78a8bb9c51d39c37493aa376c8e18f6abe729607",
+      "status": "fixed-awaiting-deployed-verification",
+      "beforeScreenshots": [
+        "quality/evidence/step-39/public-v42/page-recipes/pages-before-1440x900.png",
+        "quality/evidence/step-39/public-v42/page-recipes/pages-before-390x844.png",
+        "quality/evidence/step-39/public-v42/page-recipes/compose-before-1440x900.png",
+        "quality/evidence/step-39/public-v42/page-recipes/compose-before-390x844.png"
+      ],
+      "afterScreenshots": [],
+      "deploymentVersionObserved": 42,
+      "deploymentId": "appgdep_6adfffd2f6fc8191b0ac0bbd755a6ba5",
+      "verification": "The public v42 UI path was exercised at 1440x900 and 390x844. Both routes returned HTTP 200, /data/catalog.json returned 200, and the catalogue reached ready. The browser recorded no console errors or warnings, uncaught exceptions, failed requests, HTTP errors, or document overflow. The result showed the unrelated developer-tools architecture. A focused Vitest regression failed before the copy correction and passed afterward; the new local Playwright journey passes at both viewports. The fixed output is awaiting a new public deployment. The local gate passed 665 browser checks across the Astro desktop/mobile, Sites Worker desktop/mobile, and standalone preview profiles; 166 configured skips and zero test failures. The fix remains awaiting issue-specific live verification."
+    },
+    {
+      "id": "AUD-360",
+      "severity": "medium",
+      "route": "/pages → /compose",
+      "viewport": "1440x900, 390x844",
+      "category": "content",
+      "title": "Page recipe handoff inserts the wrong indefinite article",
+      "expected": "Generated Compose briefs should read naturally for every recipe title.",
+      "actual": "The shared link template prepended “Build a” to all titles, producing “Build a Application Overview Dashboard” and similarly ungrammatical briefs for vowel-initial titles.",
+      "reproduction": [
+        "Open the public review Site at /pages.",
+        "Choose Compose this architecture for Application Overview Dashboard.",
+        "Read the Product Description & Objectives field on Compose."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "/pages",
+          "status": 200
+        },
+        {
+          "url": "/compose?brief=Build%20a%20Application%20Overview%20Dashboard...",
+          "status": 200
+        }
+      ],
+      "screenshot": "quality/evidence/step-39/public-v42/page-recipes/compose-before-1440x900.png",
+      "rootCause": "The route template hardcoded the article “a” before a title that can begin with any word or vowel sound.",
+      "affectedCode": [
+        "apps/site/src/pages/pages/index.astro",
+        "tests/e2e/page-recipe-handoff-step-39.spec.ts"
+      ],
+      "fixCommit": "6e0e5ea221f90021f273787d986399e0f61109f0",
+      "status": "fixed-awaiting-deployed-verification",
+      "beforeScreenshots": [
+        "quality/evidence/step-39/public-v42/page-recipes/pages-before-1440x900.png",
+        "quality/evidence/step-39/public-v42/page-recipes/pages-before-390x844.png",
+        "quality/evidence/step-39/public-v42/page-recipes/compose-before-1440x900.png",
+        "quality/evidence/step-39/public-v42/page-recipes/compose-before-390x844.png"
+      ],
+      "afterScreenshots": [],
+      "deploymentVersionObserved": 42,
+      "deploymentId": "appgdep_6adfffd2f6fc8191b0ac0bbd755a6ba5",
+      "verification": "The public v42 UI path was exercised at 1440x900 and 390x844. The Compose field contained “Build a Application Overview Dashboard”. Both routes returned HTTP 200 with no console errors or warnings, uncaught exceptions, failed requests, HTTP errors, or document overflow. A focused local Playwright regression checks the exact prompt round-trip and passes at both viewports. The fix is awaiting a new public deployment. The local gate passed 665 browser checks across the Astro desktop/mobile, Sites Worker desktop/mobile, and standalone preview profiles; 166 configured skips and zero test failures. The fix remains awaiting issue-specific live verification."
     }
   ],
-  "generatedAt": "2026-10-27T01:38:30Z"
+  "generatedAt": "2026-10-27T03:13:29Z"
 }
