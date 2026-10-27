@@ -1,14 +1,18 @@
 # Runtime audit — product hardening and deployed-site verification
 
 This register preserves the historical resource/renderer audit and adds the
-production review audit. The latest targeted documentation checkpoint
-recorded here is public Site v40 as observed on 2026-10-27, serving
-application code captured from canonical commit
+production review audit. The latest targeted documentation evidence covers
+public Sites v40 and v41 as observed on 2026-10-27. V40 served application
+code captured from canonical commit
 `36b873ba9d40380196a78fcabe8977d7aa881e58` (Sites source mirror
-`f55a938f356f97c9a0070ab8e8aec097e2c52ba0`). This is a historical evidence
-reference, not a live-version assertion. V40 exposed AUD-358, stale version
-copy in the published documentation; the current source corrects it and the
-issue remains open pending deployed verification. Local fixes are not
+`f55a938f356f97c9a0070ab8e8aec097e2c52ba0`); v41 served code captured from
+canonical commit `80cd1231fae9a2fd36f5737ce1d0684e01c15251` (Sites source
+mirror `be04a342e179c5a58c1eaf106665fafe4a73dc9e`). These are historical
+evidence references, not live-version assertions. V40 exposed AUD-358, stale
+version copy in the documentation. V41 removed that claim and passed the
+route checks, but exposed stale pending-status wording; the current source
+corrects it and AUD-358 remains open until the final copy is deployed and
+checked. Local fixes are not
 considered closed until verified on a newly published Site. Evidence
 for the v24 and v25 route sweeps is in `evidence/v24/` and `evidence/v25/`, v26
 route, resource and flagship evidence is in `evidence/v26/`, and local post-fix
@@ -3864,11 +3868,11 @@ route, Axe, flagship, or standalone-export re-audit, and Step 45 remains open.
 - **Affected code:** `apps/site/src/pages/docs/[slug].astro` and `tests/e2e/documentation-keyboard-regression.spec.ts`.
 - **Remediation:** The local fix applies `overflow-wrap:anywhere` to documentation paragraphs and list items while leaving preformatted blocks horizontally scrollable. The focused mobile Playwright regression failed before the fix at 730px, still failed at 459px when only inline code was wrapped, then passed after prose wrapping was included. The full docs keyboard regression file passes 8/8 across desktop/mobile Astro projects; the built Sites Worker regression passes 2/2 across Sites desktop/mobile projects. Fix commit: `513fe45ba8ec43ba3c8f44b804ad92bb662943d7`. Local and Sites Worker after screenshots: [`Astro candidate`](../quality/evidence/step-45/public-v38/docs-product-hardening-mobile-after-local-390.png) and [`Sites Worker candidate`](../quality/evidence/step-45/public-v38/docs-product-hardening-mobile-after-sites-worker-390.png). The v39 public route was checked in Chrome at mobile 390×844 and desktop 1440×900: both returned HTTP 200, had zero failed essential requests, zero application console errors and zero uncaught exceptions. At mobile, document width/client width are 390/390 and article width/client width are 358/358; at desktop, document widths are 1425/1425 after scrollbar sizing and article widths are 896/896. No prose/list item overflow or out-of-viewport inline code remained. Three injected Sites/Cloudflare challenge deprecation messages on desktop remain separately tracked as AUD-356. The live mobile screenshot is recorded above. **Status: closed after issue-specific deployed verification on Site v39** (deployment `appgdep_6adfddd3ee18819186f51d6ae8069741`).
 
-### AUD-358 — Published documentation names an older Site version as current
+### AUD-358 — Published documentation contains stale version and status claims
 
-- **Evidence:** Public Site v40 was live as deployment `appgdep_6adfea17856c8191aa78ea3a95aca322`, while `/docs/product-hardening/` stated that v39 was current. The visible stale statement and same-page v40 checkpoint are captured at desktop and mobile in [`v40 continuation screenshots`](../quality/evidence/step-45/public-v40/docs-product-hardening-latest-desktop-1440.png) and [`mobile screenshot`](../quality/evidence/step-45/public-v40/docs-product-hardening-latest-mobile-390.png). Full route measurements, HTTP status, console, and network results are in [`v40 live evidence`](../quality/evidence/step-45/public-v40/docs-product-hardening-live.json).
-- **Reproduction:** Open `/docs/product-hardening/` on the public review Site v40; scroll to “Latest continuation”; compare the text that says v39 is current with the live v40 deployment.
-- **Root cause:** The hardening checkpoint text was manually updated for v39, then copied into a later Site source package without changing its present-tense version claim.
+- **Evidence:** Public v40 deployment `appgdep_6adfea17856c8191aa78ea3a95aca322` said v39 was current. Screenshots: [`v40 desktop`](../quality/evidence/step-45/public-v40/docs-product-hardening-latest-desktop-1440.png), [`v40 mobile`](../quality/evidence/step-45/public-v40/docs-product-hardening-latest-mobile-390.png). V41 deployment `appgdep_6adff6025484819181d26804d7e5efdb` removed the incorrect current-version claim but still said AUD-358 remained open after the v41 verification. V41 screenshots: [`desktop`](../quality/evidence/step-45/public-v41/docs-product-hardening-desktop-1440.png), [`mobile`](../quality/evidence/step-45/public-v41/docs-product-hardening-mobile-390.png); full results: [`v40`](../quality/evidence/step-45/public-v40/docs-product-hardening-live.json) and [`v41`](../quality/evidence/step-45/public-v41/docs-product-hardening-live.json).
+- **Reproduction:** On v40, open `/docs/product-hardening/` and compare the “v39 is current” statement to the live v40 Site. On v41, scroll to the v40 checkpoint and observe its claim that the issue remains open after the v41 route check passed.
+- **Root cause:** Hand-maintained deployment notes used present-tense Site version and issue-state claims rather than timestamped historical observations, and those claims were not refreshed after a subsequent deployment.
 - **Affected code:** `docs/PRODUCT_HARDENING.md`, `quality/STEP_45_EVIDENCE.md`, and the packaged `/docs/product-hardening/` content.
-- **Remediation:** Replace the present-tense “current Site” claim with a timestamped historical v40 observation, retain the exact version/source/deployment identifiers, and verify the corrected copy on a newly published Site. The canonical text correction is commit `bedd13ba86b0c734f59b8a70a984b884c923766d`; issue-specific deployed verification is pending.
+- **Remediation:** Record the v40 finding and v41 verification as historical facts, remove the stale pending-status sentence, and verify the final copy on a new deployment. V41 was HTTP 200 at 1440×900 and 390×844; document/article widths were 1440/896 and 390/358 respectively, with zero overflow, console errors, failed requests, or HTTP errors. The historical-v40 correction is commit `bedd13ba86b0c734f59b8a70a984b884c923766d`; the v41 follow-up copy correction is commit `6d25711ec7cdddf2f9f3a9b3c568933eced518a9`. The final copy correction awaits deployed verification.
 - **Status:** fixed-awaiting-deployed-verification.

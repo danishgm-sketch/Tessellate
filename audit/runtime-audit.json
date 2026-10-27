@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. The latest broad public route, flagship, accessibility, responsive, and standalone-export checkpoint remains Sites v37. The targeted v39 documentation check closed AUD-357. Public Sites v40 was checked on 2026-10-27 at desktop 1440x900 and mobile 390x844; the route returned HTTP 200 with no overflow, console errors, failed requests, or HTTP errors. That page exposed AUD-358: it still described v39 as the current Site. The source documentation is corrected and awaits issue-specific verification on a new deployment. The public review Site has no D1/R2 bindings. Local fixes remain open until deployed verification; Step 45 and the wider hardening programme are incomplete.",
+  "scope": "Tessellate production review audit. The latest broad public route, flagship, accessibility, responsive, and standalone-export checkpoint remains Sites v37. The targeted v39 documentation check closed AUD-357. Public Sites v40 exposed AUD-358: stale current-version copy. V41 removed that claim and passed desktop/mobile route checks, but revealed stale issue-status copy; the current source removes both. Final correction awaits deployed verification. The public review Site has no D1/R2 bindings. Local fixes remain open until issue-specific deployed verification; Step 45 and the wider hardening programme are incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -11569,13 +11569,14 @@
       "route": "/docs/product-hardening/",
       "viewport": "1440x900; 390x844",
       "category": "content",
-      "title": "Published documentation names an older Site version as current",
+      "title": "Published documentation contains stale version and status claims",
       "expected": "The public hardening page should identify the deployed Site version truthfully or label version details as historical checkpoints.",
-      "actual": "Public Site v40 was deployed, but its documentation page stated that v39 was the current public review Site. The page itself loaded correctly at desktop and mobile with HTTP 200, no overflowing text, no console errors, no failed requests, and no HTTP errors.",
+      "actual": "Public v40 said v39 was current. Public v41 removed that incorrect version claim, but still said AUD-358 remained open after the v41 live check had already verified the correction. V41 itself returned HTTP 200 at 1440x900 and 390x844 with no text overflow, console errors, failed requests, or HTTP errors.",
       "reproduction": [
         "Open /docs/product-hardening/ on public Site v40 at 1440x900 or 390x844.",
         "Scroll to the latest continuation heading.",
-        "Compare the page statement that v39 is current with the live Site version 40."
+        "Compare the page statement that v39 is current with the live Site version 40.",
+        "On v41, scroll to the v40 checkpoint and observe the pending-status sentence after v41 had passed the route check."
       ],
       "console": [],
       "network": [
@@ -11583,15 +11584,20 @@
           "url": "/docs/product-hardening/?audit=v40",
           "status": 200,
           "note": "Desktop 1440x900 and mobile 390x844; no failed requests or HTTP errors."
+        },
+        {
+          "url": "/docs/product-hardening/?audit=v41",
+          "status": 200,
+          "note": "Desktop 1440x900 and mobile 390x844; no failed requests or HTTP errors."
         }
       ],
       "screenshot": "quality/evidence/step-45/public-v40/docs-product-hardening-latest-desktop-1440.png",
-      "rootCause": "The hardening checkpoint text was manually updated for v39, then copied into a later Site source package without changing its present-tense version claim.",
+      "rootCause": "Hand-maintained deployment notes used present-tense Site-version and issue-state claims instead of timestamped historical observations, and the claims were not refreshed after a subsequent deployment.",
       "affectedCode": [
         "docs/PRODUCT_HARDENING.md",
         "quality/STEP_45_EVIDENCE.md"
       ],
-      "fixCommit": "bedd13ba86b0c734f59b8a70a984b884c923766d",
+      "fixCommit": "6d25711ec7cdddf2f9f3a9b3c568933eced518a9",
       "status": "fixed-awaiting-deployed-verification",
       "beforeScreenshots": [
         "quality/evidence/step-45/public-v40/docs-product-hardening-latest-desktop-1440.png",
@@ -11600,8 +11606,18 @@
       "afterScreenshots": [],
       "deploymentVersionObserved": 40,
       "deploymentId": "appgdep_6adfea17856c8191aa78ea3a95aca322",
-      "verification": "V40 screenshots at both viewports show the stale v39 claim while the actual deployed version was v40. The canonical docs now label this v40 record historical and describe the v40 check truthfully. The fix remains pending until the corrected text is verified on a newly published Site."
+      "verification": "V40 reproduced the incorrect claim that v39 was current. V41 no longer shows that claim, but the page still says AUD-358 remains open after the v41 check. V41: HTTP 200 at desktop and mobile; document/article widths 1440/896 and 390/358; zero overflowing prose/list items, console errors, failed requests, or HTTP errors. Final copy correction awaits a new deployment.",
+      "intermediateScreenshots": [
+        "quality/evidence/step-45/public-v41/docs-product-hardening-desktop-1440.png",
+        "quality/evidence/step-45/public-v41/docs-product-hardening-mobile-390.png"
+      ],
+      "intermediateDeploymentVersion": 41,
+      "intermediateDeploymentId": "appgdep_6adff6025484819181d26804d7e5efdb",
+      "fixCommits": [
+        "bedd13ba86b0c734f59b8a70a984b884c923766d",
+        "6d25711ec7cdddf2f9f3a9b3c568933eced518a9"
+      ]
     }
   ],
-  "generatedAt": "2026-10-27T00:16:00.000Z"
+  "generatedAt": "2026-10-27T00:58:00.000Z"
 }

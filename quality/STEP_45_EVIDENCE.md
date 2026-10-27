@@ -1,6 +1,6 @@
 # Step 45 — Public review verification
 
-Status: in progress. The latest broad route, flagship and Axe checkpoint remains Sites v37. The latest targeted documentation checkpoint recorded here is public Sites v40, deployed as `appgdep_6adfea17856c8191aa78ea3a95aca322` from Sites mirror `f55a938f356f97c9a0070ab8e8aec097e2c52ba0`, serving application code captured from canonical source `36b873ba9d40380196a78fcabe8977d7aa881e58`. Version statements in this evidence are historical observations, not assertions about the current live version. The v39 documentation recheck closes AUD-357; the v40 check found stale published version copy (AUD-358), corrected in the current source and awaiting deployed verification. Earlier v32, saved v35 and v37 material below remains as history. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
+Status: in progress. The latest broad route, flagship and Axe checkpoint remains Sites v37. The latest targeted documentation evidence recorded here covers public Sites v40 and v41; these version statements are historical observations, not assertions about the current live version. V39 closes AUD-357. V40 exposed AUD-358's stale version claim; v41 removed that claim and verified the route, then exposed stale issue-status wording. The current source records the v41 verification and replaces both stale statements; the final copy correction is awaiting deployed verification. Earlier v32, saved v35 and v37 material below remains as history. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
 
 ## Public v37 deployed audit
 
@@ -441,3 +441,18 @@ AUD-358 records that separate documentation accuracy defect. The canonical
 document now calls the v40 observation historical and adds the correction; it
 remains open until deployed verification. This does not repeat the v37 route,
 flagship, accessibility, or export suite, and does not close any other finding.
+
+## Public v41 documentation verification — 2026-10-27
+
+The public route returned HTTP 200 at 1440×900 and 390×844. At desktop,
+document/article widths were 1440/1440 and 896/896; at mobile they were
+390/390 and 358/358. No prose/list/code overflow, console error, failed
+request, or HTTP error occurred. The v41 page no longer says v39 is current.
+Screenshots and measurements are in
+`quality/evidence/step-45/public-v41/`.
+
+The live page still said AUD-358 remained open after the v41 check had already
+verified the corrected version claim. This is the same stale checkpoint-copy
+defect, not a separate app-runtime issue. The source now records the v41 check
+as a historical observation and removes the stale pending-status sentence;
+verification of this final copy is required on the next published version.
