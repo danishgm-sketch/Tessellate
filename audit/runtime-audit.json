@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. The latest broad public route, flagship, accessibility, responsive, and standalone-export checkpoint remains Sites v37. The targeted v39 documentation check closed AUD-357. Public Sites v40 exposed AUD-358: stale current-version copy. V41 removed that claim and passed desktop/mobile route checks, but revealed stale issue-status copy; the current source removes both. Final correction awaits deployed verification. The public review Site has no D1/R2 bindings. Local fixes remain open until issue-specific deployed verification; Step 45 and the wider hardening programme are incomplete.",
+  "scope": "Tessellate production review audit. The latest broad public route, flagship, accessibility, responsive, and standalone-export checkpoint remains Sites v37. The targeted v39 documentation check closed AUD-357. Public v40 exposed AUD-358; v41 corrected its version claim but retained stale pending-status wording; public v42 verified the final historical copy and closes AUD-358. The public review Site has no D1/R2 bindings. Local fixes remain open until issue-specific deployed verification; Step 45 and the wider hardening programme are incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -11571,7 +11571,7 @@
       "category": "content",
       "title": "Published documentation contains stale version and status claims",
       "expected": "The public hardening page should identify the deployed Site version truthfully or label version details as historical checkpoints.",
-      "actual": "Public v40 said v39 was current. Public v41 removed that incorrect version claim, but still said AUD-358 remained open after the v41 live check had already verified the correction. V41 itself returned HTTP 200 at 1440x900 and 390x844 with no text overflow, console errors, failed requests, or HTTP errors.",
+      "actual": "Public v40 said v39 was current. Public v41 removed that version claim but retained stale wording that AUD-358 remained open. Public v42 verified the final historical copy at desktop and mobile; neither stale claim appears. Both viewports returned HTTP 200 with no text overflow, console errors, failed requests, or HTTP errors.",
       "reproduction": [
         "Open /docs/product-hardening/ on public Site v40 at 1440x900 or 390x844.",
         "Scroll to the latest continuation heading.",
@@ -11589,6 +11589,11 @@
           "url": "/docs/product-hardening/?audit=v41",
           "status": 200,
           "note": "Desktop 1440x900 and mobile 390x844; no failed requests or HTTP errors."
+        },
+        {
+          "url": "/docs/product-hardening/?audit=v42",
+          "status": 200,
+          "note": "Desktop 1440x900 and mobile 390x844; zero overflowing text, console errors, failed requests, or HTTP errors."
         }
       ],
       "screenshot": "quality/evidence/step-45/public-v40/docs-product-hardening-latest-desktop-1440.png",
@@ -11598,15 +11603,18 @@
         "quality/STEP_45_EVIDENCE.md"
       ],
       "fixCommit": "6d25711ec7cdddf2f9f3a9b3c568933eced518a9",
-      "status": "fixed-awaiting-deployed-verification",
+      "status": "closed-deployed-verified",
       "beforeScreenshots": [
         "quality/evidence/step-45/public-v40/docs-product-hardening-latest-desktop-1440.png",
         "quality/evidence/step-45/public-v40/docs-product-hardening-latest-mobile-390.png"
       ],
-      "afterScreenshots": [],
-      "deploymentVersionObserved": 40,
-      "deploymentId": "appgdep_6adfea17856c8191aa78ea3a95aca322",
-      "verification": "V40 reproduced the incorrect claim that v39 was current. V41 no longer shows that claim, but the page still says AUD-358 remains open after the v41 check. V41: HTTP 200 at desktop and mobile; document/article widths 1440/896 and 390/358; zero overflowing prose/list items, console errors, failed requests, or HTTP errors. Final copy correction awaits a new deployment.",
+      "afterScreenshots": [
+        "quality/evidence/step-45/public-v42/docs-product-hardening-desktop-1440.png",
+        "quality/evidence/step-45/public-v42/docs-product-hardening-mobile-390.png"
+      ],
+      "deploymentVersionObserved": 42,
+      "deploymentId": "appgdep_6adfffd2f6fc8191b0ac0bbd755a6ba5",
+      "verification": "Public Site v42 returned HTTP 200 at 1440x900 and 390x844. Document/article widths were 1440/896 and 390/358; there was no horizontal or text overflow, console error, failed request, or HTTP error. The final correction heading was visible and neither stale version nor pending-status claim appeared. Deployment appgdep_6adfffd2f6fc8191b0ac0bbd755a6ba5 served canonical source 480647cae712fd78740094b76ccd244f676ccf8b (Sites mirror 3b6bbf98e425954a9d391b866200c6586692709b). AUD-358 is closed after issue-specific deployed verification.",
       "intermediateScreenshots": [
         "quality/evidence/step-45/public-v41/docs-product-hardening-desktop-1440.png",
         "quality/evidence/step-45/public-v41/docs-product-hardening-mobile-390.png"
@@ -11616,8 +11624,11 @@
       "fixCommits": [
         "bedd13ba86b0c734f59b8a70a984b884c923766d",
         "6d25711ec7cdddf2f9f3a9b3c568933eced518a9"
-      ]
+      ],
+      "deploymentVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d07e70ea3c48191b0f782121aecb626",
+      "verifiedCanonicalCommit": "480647cae712fd78740094b76ccd244f676ccf8b",
+      "verifiedSitesSourceCommit": "3b6bbf98e425954a9d391b866200c6586692709b"
     }
   ],
-  "generatedAt": "2026-10-27T00:58:00.000Z"
+  "generatedAt": "2026-10-27T01:38:30Z"
 }

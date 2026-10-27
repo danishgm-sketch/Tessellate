@@ -2,17 +2,19 @@
 
 This register preserves the historical resource/renderer audit and adds the
 production review audit. The latest targeted documentation evidence covers
-public Sites v40 and v41 as observed on 2026-10-27. V40 served application
+public Sites v40–v42 as observed on 2026-10-27. V40 served application
 code captured from canonical commit
 `36b873ba9d40380196a78fcabe8977d7aa881e58` (Sites source mirror
 `f55a938f356f97c9a0070ab8e8aec097e2c52ba0`); v41 served code captured from
 canonical commit `80cd1231fae9a2fd36f5737ce1d0684e01c15251` (Sites source
-mirror `be04a342e179c5a58c1eaf106665fafe4a73dc9e`). These are historical
-evidence references, not live-version assertions. V40 exposed AUD-358, stale
-version copy in the documentation. V41 removed that claim and passed the
-route checks, but exposed stale pending-status wording; the current source
-corrects it and AUD-358 remains open until the final copy is deployed and
-checked. Local fixes are not
+mirror `be04a342e179c5a58c1eaf106665fafe4a73dc9e`); v42 served code captured
+from canonical commit `480647cae712fd78740094b76ccd244f676ccf8b` (Sites
+source mirror `3b6bbf98e425954a9d391b866200c6586692709b`). These are
+historical evidence references, not live-version assertions. V40 exposed
+AUD-358, stale version copy in the documentation. V41 removed that claim and
+passed the route checks, but exposed stale pending-status wording. Public v42
+verified the corrected historical copy at desktop and mobile and closes
+AUD-358. Local fixes are not
 considered closed until verified on a newly published Site. Evidence
 for the v24 and v25 route sweeps is in `evidence/v24/` and `evidence/v25/`, v26
 route, resource and flagship evidence is in `evidence/v26/`, and local post-fix
@@ -32,7 +34,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 357 findings (0 Critical, 67 High, 272 Medium, 18 Low): 56 closed after issue-specific deployed verification, 210 locally fixed and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 1 records a documented Sites-host limitation. Public v37 closes AUD-337, AUD-342–345, and AUD-347–355 after issue-specific checks; public v39 closes AUD-357 after the mobile docs route overflow fix passed issue-specific checks at 390×844 and 1440×900. Existing v37 performance, axe, and route evidence remains the latest complete checkpoint. The 210-awaiting-verification backlog includes 25 High findings and is not a count of known still-broken features; each needs its own live check before closure. **Step 45 and the product-hardening programme are not complete.**
+**Current disposition:** 358 findings (0 Critical, 67 High, 272 Medium, 19 Low): 57 closed after issue-specific deployed verification, 210 locally fixed and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 1 records a documented Sites-host limitation. Public v37 closes AUD-337, AUD-342–345, and AUD-347–355 after issue-specific checks; public v39 closes AUD-357 after the mobile docs route overflow fix passed issue-specific checks at 390×844 and 1440×900; public v42 closes AUD-358 after the documentation copy passed issue-specific desktop/mobile checks. Existing v37 performance, axe, and route evidence remains the latest complete checkpoint. The 210-awaiting-verification backlog includes 25 High findings and is not a count of known still-broken features; each needs its own live check before closure. **Step 45 and the product-hardening programme are not complete.**
 
 ## Public Sites v37 deployed checkpoint
 
@@ -3870,9 +3872,9 @@ route, Axe, flagship, or standalone-export re-audit, and Step 45 remains open.
 
 ### AUD-358 — Published documentation contains stale version and status claims
 
-- **Evidence:** Public v40 deployment `appgdep_6adfea17856c8191aa78ea3a95aca322` said v39 was current. Screenshots: [`v40 desktop`](../quality/evidence/step-45/public-v40/docs-product-hardening-latest-desktop-1440.png), [`v40 mobile`](../quality/evidence/step-45/public-v40/docs-product-hardening-latest-mobile-390.png). V41 deployment `appgdep_6adff6025484819181d26804d7e5efdb` removed the incorrect current-version claim but still said AUD-358 remained open after the v41 verification. V41 screenshots: [`desktop`](../quality/evidence/step-45/public-v41/docs-product-hardening-desktop-1440.png), [`mobile`](../quality/evidence/step-45/public-v41/docs-product-hardening-mobile-390.png); full results: [`v40`](../quality/evidence/step-45/public-v40/docs-product-hardening-live.json) and [`v41`](../quality/evidence/step-45/public-v41/docs-product-hardening-live.json).
+- **Evidence:** Public v40 deployment `appgdep_6adfea17856c8191aa78ea3a95aca322` said v39 was current. Screenshots: [`v40 desktop`](../quality/evidence/step-45/public-v40/docs-product-hardening-latest-desktop-1440.png), [`v40 mobile`](../quality/evidence/step-45/public-v40/docs-product-hardening-latest-mobile-390.png). V41 deployment `appgdep_6adff6025484819181d26804d7e5efdb` removed the incorrect current-version claim but still said AUD-358 remained open after the v41 verification. V41 screenshots: [`desktop`](../quality/evidence/step-45/public-v41/docs-product-hardening-desktop-1440.png), [`mobile`](../quality/evidence/step-45/public-v41/docs-product-hardening-mobile-390.png); full results: [`v40`](../quality/evidence/step-45/public-v40/docs-product-hardening-live.json) and [`v41`](../quality/evidence/step-45/public-v41/docs-product-hardening-live.json). Public v42 deployment `appgdep_6adfffd2f6fc8191b0ac0bbd755a6ba5` checked the final historical wording at 1440×900 and 390×844; [`desktop`](../quality/evidence/step-45/public-v42/docs-product-hardening-desktop-1440.png), [`mobile`](../quality/evidence/step-45/public-v42/docs-product-hardening-mobile-390.png), and [machine-readable results](../quality/evidence/step-45/public-v42/docs-product-hardening-live.json).
 - **Reproduction:** On v40, open `/docs/product-hardening/` and compare the “v39 is current” statement to the live v40 Site. On v41, scroll to the v40 checkpoint and observe its claim that the issue remains open after the v41 route check passed.
 - **Root cause:** Hand-maintained deployment notes used present-tense Site version and issue-state claims rather than timestamped historical observations, and those claims were not refreshed after a subsequent deployment.
 - **Affected code:** `docs/PRODUCT_HARDENING.md`, `quality/STEP_45_EVIDENCE.md`, and the packaged `/docs/product-hardening/` content.
-- **Remediation:** Record the v40 finding and v41 verification as historical facts, remove the stale pending-status sentence, and verify the final copy on a new deployment. V41 was HTTP 200 at 1440×900 and 390×844; document/article widths were 1440/896 and 390/358 respectively, with zero overflow, console errors, failed requests, or HTTP errors. The historical-v40 correction is commit `bedd13ba86b0c734f59b8a70a984b884c923766d`; the v41 follow-up copy correction is commit `6d25711ec7cdddf2f9f3a9b3c568933eced518a9`. The final copy correction awaits deployed verification.
-- **Status:** fixed-awaiting-deployed-verification.
+- **Remediation:** Record the v40/v41 observations as historical facts and remove the stale version and pending-status sentences. The first copy correction is commit `bedd13ba86b0c734f59b8a70a984b884c923766d`; the final copy correction is commit `6d25711ec7cdddf2f9f3a9b3c568933eced518a9`. Public v42 served canonical source commit `480647cae712fd78740094b76ccd244f676ccf8b` (Sites source mirror `3b6bbf98e425954a9d391b866200c6586692709b`) and returned HTTP 200 at both viewports. Desktop document/article widths were 1440/896; mobile widths were 390/358. There was no horizontal/text overflow, console error, failed request, or HTTP error. The latest heading and correction record were visible, with neither stale claim present.
+- **Status:** closed after issue-specific deployed verification on public Site v42 (2026-10-27).

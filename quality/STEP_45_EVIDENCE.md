@@ -1,6 +1,6 @@
 # Step 45 — Public review verification
 
-Status: in progress. The latest broad route, flagship and Axe checkpoint remains Sites v37. The latest targeted documentation evidence recorded here covers public Sites v40 and v41; these version statements are historical observations, not assertions about the current live version. V39 closes AUD-357. V40 exposed AUD-358's stale version claim; v41 removed that claim and verified the route, then exposed stale issue-status wording. The current source records the v41 verification and replaces both stale statements; the final copy correction is awaiting deployed verification. Earlier v32, saved v35 and v37 material below remains as history. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
+Status: in progress. The latest broad route, flagship and Axe checkpoint remains Sites v37. The latest targeted documentation evidence covers public Sites v40–v42; these version references are historical observations. V39 closes AUD-357. V40 exposed AUD-358's stale version claim; v41 removed it but exposed stale issue-status wording. Public v42 verified the corrected historical copy on desktop and mobile and closes AUD-358. Earlier v32, saved v35, and v37 material below remains historical. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
 
 ## Public v37 deployed audit
 
@@ -455,4 +455,22 @@ The live page still said AUD-358 remained open after the v41 check had already
 verified the corrected version claim. This is the same stale checkpoint-copy
 defect, not a separate app-runtime issue. The source now records the v41 check
 as a historical observation and removes the stale pending-status sentence;
-verification of this final copy is required on the next published version.
+that final copy still needed verification after v41. Public v42 below completes
+the check and closes AUD-358.
+
+## Public v42 final copy verification — 2026-10-27
+
+The public `/docs/product-hardening/` route returned HTTP 200 at 1440×900
+and 390×844. Document/article widths were 1440/896 on desktop and 390/358
+on mobile. There was no horizontal or text overflow, browser console error,
+failed request, or HTTP error. The latest correction record was visible and
+neither the stale “current version” nor stale “still open” claim appeared.
+This issue-specific deployed check closes AUD-358; it does not repeat the
+full route, flagship, accessibility, or export audit. The latest full-scope
+checkpoint remains v37 and Step 45 remains in progress.
+
+Sites v42 (`appgprj_6acc036de8cc8191a823339566972d85~appgver_6d07e70ea3c48191b0f782121aecb626`)
+deployed as `appgdep_6adfffd2f6fc8191b0ac0bbd755a6ba5` from canonical source
+`480647cae712fd78740094b76ccd244f676ccf8b` (Sites mirror
+`3b6bbf98e425954a9d391b866200c6586692709b`). Screenshots and measurements
+are under `quality/evidence/step-45/public-v42/`.
