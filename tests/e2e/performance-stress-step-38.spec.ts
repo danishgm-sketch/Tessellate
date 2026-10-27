@@ -494,11 +494,38 @@ test('a saved Workbench project opens before catalogue resources are requested',
   const initialCatalogRequests = catalogueRequests;
 
   expect(initialCatalogRequests, 'Opening a saved local project should not fetch the full catalogue.').toBe(0);
+  const startupScreenshot = path.resolve(process.cwd(), `quality/evidence/step-38/after/catalogue-lazy-load/workbench-${testInfo.project.name}.png`);
+  await page.screenshot({ path: startupScreenshot });
   const axe = await new AxeBuilder({ page }).analyze();
-  expect(axe.violations.map((violation) => ({ id: violation.id, impact: violation.impact }))).toEqual([]);
-  await page.screenshot({
-    path: path.resolve(process.cwd(), `quality/evidence/step-38/after/catalogue-lazy-load/workbench-${testInfo.project.name}.png`),
+  const axeViolations = axe.violations.map((violation) => ({
+    id: violation.id,
+    impact: violation.impact,
+    help: violation.help,
+    nodes: violation.nodes.map((node) => ({
+      target: node.target,
+      html: node.html,
+      failureSummary: node.failureSummary,
+    })),
+  }));
+  const startupEvidence = {
+    capturedAt: new Date().toISOString(),
+    route: page.url(),
+    viewport: page.viewportSize(),
+    project: { id: manifest.id, name: manifest.name },
+    timingsMs: { savedProjectVisible: projectVisibleMs },
+    initialCatalogRequests,
+    axeViolations,
+    runtime,
+    screenshot: path.relative(process.cwd(), startupScreenshot),
+  };
+  const startupEvidencePath = path.resolve(process.cwd(), `quality/evidence/step-38/after/catalogue-lazy-load/workbench-${testInfo.project.name}.json`);
+  await mkdir(path.dirname(startupEvidencePath), { recursive: true });
+  await writeFile(startupEvidencePath, `${JSON.stringify(startupEvidence, null, 2)}\n`, 'utf8');
+  await testInfo.attach('Workbench startup accessibility evidence', {
+    body: Buffer.from(JSON.stringify(startupEvidence, null, 2)),
+    contentType: 'application/json',
   });
+  expect(axeViolations, JSON.stringify(axeViolations, null, 2)).toEqual([]);
 
   if (!testInfo.project.name.includes('mobile')) {
     await page.getByTestId('left-panel').getByRole('button', { name: 'Library', exact: true }).click();
