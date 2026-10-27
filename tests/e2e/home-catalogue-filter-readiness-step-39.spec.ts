@@ -55,6 +55,7 @@ test('homepage category filters stay unavailable until their Astro island is rea
     expect(response?.status()).toBe(200);
     const title = page.getByRole('heading', { name: 'Open resources. Clear sample data.' });
     await expect(title).toBeVisible();
+    await title.scrollIntoViewIfNeeded();
     await bundlePaused;
 
     const dataFilter = page.getByRole('button', { name: 'data', exact: true });
@@ -72,7 +73,6 @@ test('homepage category filters stay unavailable until their Astro island is rea
     await mkdir(evidenceDirectory, { recursive: true });
     await page.screenshot({
       path: path.join(evidenceDirectory, `loading-${viewport}.png`),
-      fullPage: true,
     });
     await expect(dataFilter).toBeDisabled();
     await expect(loadingStatus).toBeVisible();
@@ -107,7 +107,6 @@ test('homepage category filters stay unavailable until their Astro island is rea
   );
   await page.screenshot({
     path: path.join(evidenceDirectory, `selected-${viewport}.png`),
-    fullPage: true,
   });
 
   const axe = await new AxeBuilder({ page })
