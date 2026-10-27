@@ -1,6 +1,6 @@
 # Step 45 — Public review verification
 
-Status: in progress. Current public Site v39 is live at `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`, deployed as `appgdep_6adfddd3ee18819186f51d6ae8069741` from Sites mirror `3831c70ea17200b93eb4b18b2e537c1da418f597`, serving application code captured from canonical source `0c9e3910466626f16a545a65eb4570959023a936`. The broader v37 route, flagship and Axe evidence remains the latest full-scope checkpoint; the v39 targeted documentation recheck closes AUD-357 only. The earlier v32, saved v35 and v37 material below is retained as history. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
+Status: in progress. The latest broad route, flagship and Axe checkpoint remains Sites v37. The latest targeted documentation checkpoint recorded here is public Sites v40, deployed as `appgdep_6adfea17856c8191aa78ea3a95aca322` from Sites mirror `f55a938f356f97c9a0070ab8e8aec097e2c52ba0`, serving application code captured from canonical source `36b873ba9d40380196a78fcabe8977d7aa881e58`. Version statements in this evidence are historical observations, not assertions about the current live version. The v39 documentation recheck closes AUD-357; the v40 check found stale published version copy (AUD-358), corrected in the current source and awaiting deployed verification. Earlier v32, saved v35 and v37 material below remains as history. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
 
 ## Public v37 deployed audit
 
@@ -396,7 +396,7 @@ Desktop Lighthouse on Home, Explore, Compose, Workbench, and /r/advanced-data-ta
 
 The live Workbench screenshot was inspected at 1440x900. It shows the full editor, tree, canvas, inspector, command bar, viewport controls and the visible laptop Lab Off label; it also confirms that the hosting Site returns a truthful Backend offline state when no laptop backend binding is configured.
 
-## Current public v39 targeted recheck — 2026-10-26
+## Public v39 targeted recheck — 2026-10-26
 
 Sites v39 is the current public review deployment. On the changed documentation
 route, Chrome DevTools verified `/docs/product-hardening/` at 390×844 and
@@ -425,3 +425,19 @@ Full data: `quality/evidence/step-45/public-v39/homepage-performance.json`.
 This is an issue-specific recheck plus a homepage performance baseline, not a
 repeat of the full route/flagship/export audit. The v37 broad audit remains the
 latest full-scope evidence; Step 45 and the release gate are still incomplete.
+
+## Public v40 documentation recheck — 2026-10-27
+
+On public Sites v40, the documentation page returned HTTP 200 at desktop
+1440×900 and mobile 390×844. At desktop, document and article widths were
+1440/1440 and 896/896; at mobile, they were 390/390 and 358/358. There were no
+overflowing prose/list items, console errors, failed requests, or HTTP errors.
+The latest continuation heading and v40 record were visible at both viewports.
+Screenshots of the page top and current continuation, plus machine-readable
+measurements, are under `quality/evidence/step-45/public-v40/`.
+
+This recheck also found that the v40 page itself still claimed v39 was current.
+AUD-358 records that separate documentation accuracy defect. The canonical
+document now calls the v40 observation historical and adds the correction; it
+remains open until deployed verification. This does not repeat the v37 route,
+flagship, accessibility, or export suite, and does not close any other finding.
