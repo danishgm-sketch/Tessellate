@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. Public Sites v46 was published from canonical commit 351b6d7ac3467fe4c580d1c31533705c16c60490 and Sites source mirror 520717ada321da3f23d46b000adc8da7d416c52e. Issue-specific deployed checks close AUD-362 and AUD-363. The v46 route sweep covers 32 routes at desktop and mobile; full visible Compose-to-Direction-C-to-Workbench mutation, export, generated-product Axe, and clean standalone React install/build/browser checks pass. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
+  "scope": "Tessellate production review audit. Public Sites v46 was published from canonical commit 351b6d7ac3467fe4c580d1c31533705c16c60490 and Sites source mirror 520717ada321da3f23d46b000adc8da7d416c52e. Issue-specific deployed checks close AUD-362 and AUD-363. The v46 route sweep covers 32 routes at desktop and mobile; full visible Compose-to-Direction-C-to-Workbench mutation, export, generated-product Axe, and clean standalone React install/build/browser checks pass. CI found AUD-364 on unpublished exact-head source dbc3fce4efdee0d60156a0ec67211fedb40cdc54; the contrast fix is locally verified and awaits exact-head CI plus deployed verification. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -11975,7 +11975,55 @@
         "failedRequests": [],
         "httpErrors": []
       }
+    },
+    {
+      "id": "AUD-364",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "390x844",
+      "category": "accessibility",
+      "title": "Mobile Workbench startup status fails contrast before hydration",
+      "expected": "The mobile workspace loading status meets WCAG 2.2 AA text contrast in the light theme while the delayed client bundle loads.",
+      "actual": "GitHub Actions run 40523492535 on exact head dbc3fce4efdee0d60156a0ec67211fedb40cdc54 reported serious Axe color-contrast on “Opening the mobile workspace…”: #A8AFBA on #F4F2ED measured 1.97:1; 4.5:1 is required.",
+      "reproduction": [
+        "Run tests/e2e/site-route-performance-step-38.spec.ts in the mobile-chrome project at 390x844.",
+        "Open /workbench and delay the fetched /_astro/index.*.js response by 1600 ms.",
+        "Run Axe while the server-rendered mobile workspace loading status is visible; before the fix it reports 1.97:1 contrast."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "/workbench",
+          "status": 200
+        },
+        {
+          "url": "/_astro/index.*.js",
+          "status": 200,
+          "note": "The E2E regression fetched the bundle, held it for 1600 ms, then fulfilled the response."
+        }
+      ],
+      "screenshot": "quality/evidence/step-45/aud-364-public-v46-before/workbench-mobile-prehydration.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-45/aud-364-public-v46-before/workbench-mobile-prehydration.png"
+      ],
+      "rootCause": "LoadingEditorPart applied the dark-theme foreground #A8AFBA unconditionally. The mobile startup status inherited the light shell background #F4F2ED.",
+      "affectedCode": [
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "tests/e2e/site-route-performance-step-38.spec.ts"
+      ],
+      "fixCommit": "cf543f388a98e5b533943e40bdd8bc587181e5bf",
+      "status": "fixed-local-verified",
+      "afterScreenshots": [],
+      "localVerification": {
+        "regressionTests": "Existing delayed-bundle Playwright/Axe regression passed desktop-chrome and mobile-chrome (2/2). Both report zero Axe violations, console errors/warnings, uncaught exceptions, failed requests, or HTTP errors.",
+        "typecheck": "pnpm --filter @tessellate/workbench typecheck passed.",
+        "lint": "pnpm exec eslint packages/workbench/src/components/WorkbenchShell.tsx passed.",
+        "build": "pnpm --filter @tessellate/site build passed and generated 733 Astro pages.",
+        "evidence": "quality/evidence/step-45/aud-364-local-after/"
+      },
+      "deployedVerification": null,
+      "notes": "Public v46 was separately captured at 390x844 with HTTP 200, zero Axe violations, and no browser/network errors, but it did not render the failing lazy status. The source fix is not considered deployed or closed until a new exact-head Site deployment passes the delayed-load regression."
     }
   ],
-  "generatedAt": "2026-10-27T13:52:13.029Z"
+  "generatedAt": "2026-10-27T15:11:11.838Z"
 }
