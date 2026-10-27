@@ -177,13 +177,12 @@ test('the visible ZIP export reports a browser download failure instead of losin
 
   await page.goto('/workbench/?showcase=showcase-playful-hr');
   await expect(page.getByTestId('top-toolbar')).toBeVisible();
-  let dialogMessage = '';
-  page.once('dialog', async (dialog) => {
-    dialogMessage = dialog.message();
-    await dialog.accept();
-  });
+  const dialogPromise = page.waitForEvent('dialog');
   await page.getByTestId('export-button').click();
   await page.getByTestId('export-zip-btn').click();
+  const dialog = await dialogPromise;
+  const dialogMessage = dialog.message();
+  await dialog.accept();
   expect(dialogMessage).toContain('Export failed: Injected ZIP download creation failure');
   expect(runtime.consoleErrors).toHaveLength(1);
   expect(runtime.consoleErrors[0]).toContain('Failed to generate standalone ZIP project:');
@@ -216,13 +215,12 @@ test('an unresolved resource in an imported manifest blocks ZIP export with a us
   await page.getByTestId('export-button').click();
   await page.getByTestId('manifest-import-input').setInputFiles(malformedProjectPath);
   await expect(page.getByTestId('manifest-import-status')).toContainText('Opened Fault-injected project');
-  let dialogMessage = '';
-  page.once('dialog', async (dialog) => {
-    dialogMessage = dialog.message();
-    await dialog.accept();
-  });
+  const dialogPromise = page.waitForEvent('dialog');
   await page.getByTestId('export-button').click();
   await page.getByTestId('export-zip-btn').click();
+  const dialog = await dialogPromise;
+  const dialogMessage = dialog.message();
+  await dialog.accept();
   expect(dialogMessage).toContain('Export failed: Unresolved resource in export: "missing-resource-step-42"');
   expect(runtime.pageErrors).toEqual([]);
   expect(runtime.failedRequests).toEqual([]);
