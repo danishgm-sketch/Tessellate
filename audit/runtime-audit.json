@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. The latest broad public route, flagship, accessibility, responsive, and standalone-export checkpoint remains Sites v37. Public v42 exposed AUD-359–360; v43 corrected the brief grammar but still inferred Analytics Platform. Public v44 verifies the neutral Workspace Overview recipe at desktop and mobile and closes AUD-359–360. The public review Site is v44 and has no D1/R2 bindings. Step 45 and the wider hardening programme remain incomplete.",
+  "scope": "Tessellate production review audit. The latest broad public route, flagship, accessibility, responsive, and standalone-export checkpoint remains Sites v37. Public v42 exposed AUD-359–360; v43 corrected the brief grammar but still inferred Analytics Platform. Public v44 verifies the neutral Workspace Overview recipe at desktop and mobile and closes AUD-359–360. The public review Site is v44 and has no D1/R2 bindings. AUD-361 was discovered on v44; its local hydration fix awaits a deployed v45 check. Step 45 and the wider hardening programme remain incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -11763,7 +11763,48 @@
       "deploymentVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_54ef3a323f708191ad053237ee2343d8",
       "verifiedCanonicalCommit": "f49e14f3cfe93f8c077f32ad8eb2aa5e2ffee9e5",
       "verifiedSitesSourceCommit": "58db77b5e8f06f2ab0600f36ccd0f21da9188998"
+    },
+    {
+      "id": "AUD-361",
+      "severity": "medium",
+      "route": "/tools/palette",
+      "viewport": "1440x900, 390x844",
+      "category": "state",
+      "title": "Palette Studio dropped the first preset activation during hydration",
+      "expected": "A visible Palette Studio preset should apply on the first activation and expose its pressed state.",
+      "actual": "On public v44, the cold-load first click on “Pure Monochrome” left aria-pressed=false across samples from 557ms through 1,634ms. A second click after network idle applied the preset. Route and scripts returned successfully; no browser console, uncaught, failed-request, or HTTP errors were observed.",
+      "reproduction": [
+        "Open the public review Site at /tools/palette in a fresh browser context at 390x844 or 1440x900.",
+        "Activate “Pure Monochrome” as soon as its server-rendered button is visible.",
+        "Observe aria-pressed remain false; after the page becomes idle, activate it again and observe the state change."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "/tools/palette",
+          "status": 200
+        },
+        {
+          "url": "/_astro/PaletteStudio.DhogEtoq.js",
+          "status": 200
+        }
+      ],
+      "screenshot": "quality/evidence/step-45/public-v44/palette-first-tap/after-first-tap-390.png",
+      "rootCause": "The client:load React island server-rendered enabled controls before hydration attached handlers. An early activation could be lost while the bundle loaded.",
+      "affectedCode": [
+        "apps/site/src/pages/tools/palette.astro",
+        "tests/e2e/palette-hydration-readiness.spec.ts"
+      ],
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "beforeScreenshots": [
+        "quality/evidence/step-45/public-v44/palette-first-tap/after-first-tap-390.png",
+        "quality/evidence/step-45/public-v44/palette-first-tap/after-first-tap-1440.png"
+      ],
+      "afterScreenshots": [],
+      "deploymentVersionObserved": 44,
+      "verification": "The initial live Playwright run failed because the first tap left aria-pressed=false; a retry after network idle succeeded. The source now withholds active controls behind an accessible loading state until the client-only island mounts. A browser regression stalls the island bundle, verifies no premature controls, then confirms the first post-mount tap applies. Local targeted tests passed after rebuilding; issue-specific deployed verification is pending."
     }
   ],
-  "generatedAt": "2026-10-27T05:33:39Z"
+  "generatedAt": "2026-10-27T08:30:14.329Z"
 }

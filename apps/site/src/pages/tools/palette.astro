@@ -23,7 +23,26 @@ import { PaletteStudio } from '../../components/tools/PaletteStudio';
 
     <main id="main-content" tabindex="-1" class="flex-1 max-w-[1440px] w-full mx-auto px-6 py-12">
       <CapabilityNotice tier="Beta" note="Client-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project." />
-      <PaletteStudio client:load />
+      <PaletteStudio client:only="react">
+        <section
+          slot="fallback"
+          aria-busy="true"
+          class="min-h-[24rem] space-y-6 border-b border-[#D9D6CF] pb-6"
+        >
+          <div>
+            <span class="font-mono text-xs font-semibold uppercase tracking-wider text-[#62666F]">
+              Tool 04 · Chroma Architecture
+            </span>
+            <h1 class="mt-1 text-3xl font-semibold tracking-tight text-[#111217]">Palette Studio</h1>
+            <p class="mt-1 text-sm text-[#62666F]">
+              Set semantic colour tokens and inspect calculated contrast for selected colour pairs.
+            </p>
+          </div>
+          <p role="status" aria-live="polite" class="text-sm text-[#62666F]">
+            Loading Palette Studio controls…
+          </p>
+        </section>
+      </PaletteStudio>
     </main>
 
     <footer class="border-t border-[#D9D6CF] py-8 text-center text-xs text-[var(--text-muted)] font-mono">
