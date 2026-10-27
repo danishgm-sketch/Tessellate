@@ -461,10 +461,36 @@ test('a saved Workbench project opens before catalogue resources are requested',
   manifest.name = 'Saved employee workspace';
 
   const runtime = { consoleErrors: [] as string[], uncaughtExceptions: [] as string[], failedRequests: [] as string[], httpErrors: [] as Array<{ url: string; status: number }> };
+  const requestStartedAt = new WeakMap<object, number>();
+  const networkResponses: Array<{
+    method: string;
+    path: string;
+    resourceType: string;
+    status: number;
+    durationMs: number | null;
+  }> = [];
   page.on('console', (message) => { if (message.type() === 'error') runtime.consoleErrors.push(message.text()); });
   page.on('pageerror', (error) => runtime.uncaughtExceptions.push(error.message));
   page.on('requestfailed', (request) => runtime.failedRequests.push(`${request.url()} (${request.failure()?.errorText ?? 'unknown'})`));
-  page.on('response', (response) => { if (response.status() >= 400) runtime.httpErrors.push({ url: response.url(), status: response.status() }); });
+  page.on('request', (request) => requestStartedAt.set(request, Date.now()));
+  page.on('response', (response) => {
+    const request = response.request();
+    const startedAtMs = requestStartedAt.get(request);
+    const parsedUrl = new URL(response.url());
+    const path = parsedUrl.pathname.startsWith('/cdn-cgi/challenge-platform/')
+      ? '/cdn-cgi/challenge-platform/[redacted]'
+      : parsedUrl.pathname;
+    networkResponses.push({
+      method: request.method(),
+      path,
+      resourceType: request.resourceType(),
+      status: response.status(),
+      durationMs: startedAtMs !== undefined
+        ? Date.now() - startedAtMs
+        : null,
+    });
+    if (response.status() >= 400) runtime.httpErrors.push({ url: response.url(), status: response.status() });
+  });
 
   await page.addInitScript((savedManifest) => {
     const serialized = JSON.stringify(savedManifest);
@@ -491,7 +517,12 @@ test('a saved Workbench project opens before catalogue resources are requested',
     ? page.getByTestId('mobile-workbench')
     : page.getByTestId('workbench-shell');
   await expect(shell).toBeVisible({ timeout: 5_000 });
-  await expect(page.getByRole('heading', { name: `Workbench: ${manifest.name}` })).toBeVisible();
+  await expect(page.getByRole('heading', { name: `Workbench: ${manifest.name}` })).toBeAttached();
+  const visibleProjectHeading = page
+    .getByRole('main', { name: 'Workbench editor' })
+    .getByRole('heading', { name: 'A better workday starts with people.', exact: true })
+    .first();
+  await expect(visibleProjectHeading).toBeVisible({ timeout: 5_000 });
   const projectVisibleMs = Date.now() - startedAt;
   const navigationTiming = await page.evaluate(() => {
     const navigation = performance.getEntriesByType('navigation')[0] as
@@ -501,14 +532,22 @@ test('a saved Workbench project opens before catalogue resources are requested',
       ? {
           readyState: document.readyState,
           domContentLoadedMs: navigation.domContentLoadedEventEnd || null,
+        domInteractiveMs: navigation.domInteractive || null,
           loadEventMs: navigation.loadEventEnd || null,
+        responseStartMs: navigation.responseStart || null,
+        responseEndMs: navigation.responseEnd || null,
         }
       : null;
   });
   const initialCatalogRequests = catalogueRequests;
 
   expect(initialCatalogRequests, 'Opening a saved local project should not fetch the full catalogue.').toBe(0);
-  const startupScreenshot = path.resolve(process.cwd(), `quality/evidence/step-38/after/catalogue-lazy-load/workbench-${testInfo.project.name}.png`);
+  const startupEvidenceDirectory = path.resolve(
+    process.cwd(),
+    'quality/evidence/step-45/public-v49/aud-365-reaudit'
+  );
+  await mkdir(startupEvidenceDirectory, { recursive: true });
+  const startupScreenshot = path.join(startupEvidenceDirectory, `workbench-${testInfo.project.name}.png`);
   await page.screenshot({ path: startupScreenshot });
   const axe = await new AxeBuilder({ page }).analyze();
   const axeViolations = axe.violations.map((violation) => ({
@@ -528,12 +567,12 @@ test('a saved Workbench project opens before catalogue resources are requested',
     project: { id: manifest.id, name: manifest.name },
     timingsMs: { savedProjectVisible: projectVisibleMs, ...navigationTiming },
     initialCatalogRequests,
+    networkResponses,
     axeViolations,
     runtime,
     screenshot: path.relative(process.cwd(), startupScreenshot),
   };
-  const startupEvidencePath = path.resolve(process.cwd(), `quality/evidence/step-38/after/catalogue-lazy-load/workbench-${testInfo.project.name}.json`);
-  await mkdir(path.dirname(startupEvidencePath), { recursive: true });
+  const startupEvidencePath = path.join(startupEvidenceDirectory, `workbench-${testInfo.project.name}.json`);
   await writeFile(startupEvidencePath, `${JSON.stringify(startupEvidence, null, 2)}\n`, 'utf8');
   await testInfo.attach('Workbench startup accessibility evidence', {
     body: Buffer.from(JSON.stringify(startupEvidence, null, 2)),
