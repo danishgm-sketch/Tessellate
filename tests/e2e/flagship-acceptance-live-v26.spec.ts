@@ -224,6 +224,13 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
       const preview = page.getByTestId(`direction-preview-${direction}`);
       await expect(card).toBeVisible();
       await expect(preview).toBeVisible();
+      // Wait for the lazy resource renderer to replace its visible loading
+      // skeleton before taking direction evidence or treating the preview as
+      // a finished user-facing result.
+      await expect(preview).toContainText('Team Overview', { timeout: 30_000 });
+      await expect(preview).not.toContainText(/Loading/i, { timeout: 30_000 });
+      await page.waitForTimeout(300);
+      await expect(preview).not.toContainText(/Loading/i);
       await assertZeroUnresolvedResources(page, preview);
       directionTexts.push(await card.innerText());
       await preview.screenshot({
