@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. Public Sites v46 was published from canonical commit 351b6d7ac3467fe4c580d1c31533705c16c60490 and Sites source mirror 520717ada321da3f23d46b000adc8da7d416c52e. Issue-specific deployed checks close AUD-362 and AUD-363. The v46 route sweep covers 32 routes at desktop and mobile; full visible Compose-to-Direction-C-to-Workbench mutation, export, generated-product Axe, and clean standalone React install/build/browser checks pass. CI found AUD-364 and AUD-365 in startup fallbacks. Both fixes are locally verified; AUD-365 exact-head CI and deployed verification remain open. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
+  "scope": "Tessellate production review audit. The current public review Site is v49, serving application code captured from canonical commit be97d567bc32fac74abc4bc70921f5edb3739abf and Sites source mirror 910328f4b5bf900fe82a4715458a81ce23ebb17f. Issue-specific deployed checks close AUD-364 and AUD-365. Follow-up review of saved-project readiness evidence found AUD-367, a test locator that treated a screen-reader-only heading as visible project content; this is fixed and reverified on public v49 desktop and mobile. One separate real-content startup sample took 11,344ms with DOMContentLoaded at 10,184ms; it has not recurred in seven later desktop runs or one mobile run and remains open as AUD-368 pending a cold-start trace. Targeted checks reported zero Axe violations, console errors, uncaught exceptions, failed requests, or HTTP errors. The latest full flagship/export review is v46 and the last broad multi-surface baseline is v37. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -12074,8 +12074,8 @@
       "fixCommit": "e52b7ecc02bbaede30b53fcb3ba7607e1edebd32",
       "status": "closed-deployed-verified",
       "afterScreenshots": [
-        "quality/evidence/step-45/public-v49/aud-364-365/aud-365-desktop-saved-project-1440.png",
-        "quality/evidence/step-45/public-v49/aud-364-365/aud-365-mobile-saved-project-390.png"
+        "quality/evidence/step-45/public-v49/aud-365-reaudit/workbench-sites-chromium.png",
+        "quality/evidence/step-45/public-v49/aud-365-reaudit/workbench-sites-mobile-chromium.png"
       ],
       "localVerification": {
         "regressionTests": "The saved-project startup test and delayed-bundle status test passed on Sites Chromium desktop and mobile (4/4). Axe reported zero violations; console errors, uncaught exceptions, failed requests, and HTTP errors were zero. The saved project appeared in 474ms desktop and 950ms mobile without an initial catalogue request.",
@@ -12126,15 +12126,15 @@
       "category": "performance",
       "title": "Saved-project startup metric waited for the document load event",
       "expected": "The startup budget measures when the saved Workbench project is visible and usable, independently of the document load event.",
-      "actual": "The first public v49 Playwright run reported 14132ms because page.goto() used its default waitUntil=load before checking visibility. Axe violations, console errors, uncaught exceptions, failed requests, HTTP errors, and initial catalogue requests were all zero. The same default measurement then returned 2923ms and 3420ms on repeat desktop runs.",
+      "actual": "The original public v49 test used the default page.goto() load wait and then accepted an accessible Workbench heading that was screen-reader-only as readiness evidence. Its earlier 3,201ms desktop and 983ms mobile figures therefore did not prove visible project content. After the test was corrected to wait for a real project heading, one run recorded 11,344ms (DOMContentLoaded 10,184ms); eight later desktop runs and two mobile runs passed, with the latest measured at 1,740ms desktop and 1,527ms mobile. No Axe, console, uncaught-exception, failed-request, HTTP, or initial-catalogue errors occurred in the later runs.",
       "reproduction": [
-        "Immediately after publishing Sites v49, seed the employee showcase manifest in localStorage and open /workbench?project=catalogue-loading-sites-chromium with the saved-project startup Playwright test.",
-        "The original test awaited page.goto() with the default load-event wait before it read the project-visible timestamp; the first recorded value was 14132ms."
+        "Seed the employee showcase manifest in localStorage and open /workbench?project=catalogue-loading-sites-chromium with the saved-project startup Playwright test against public v49.",
+        "The prior test used page.goto() with the default load-event wait and treated the accessible Workbench title as visual readiness. A follow-up with an actual project heading first exposed the false-ready locator and one separate 11,344ms outlier."
       ],
       "console": [],
       "network": [],
-      "screenshot": "quality/evidence/step-45/public-v49/aud-364-365/aud-365-desktop-saved-project-1440.png",
-      "rootCause": "The E2E metric started its clock before page.goto() but relied on Playwright's default waitUntil=load. This charged the full document load event to the visible-project metric. The single 14132ms value did not recur; its underlying resource-tail timing was not established.",
+      "screenshot": "quality/evidence/step-45/public-v49/aud-365-reaudit/workbench-sites-chromium.png",
+      "rootCause": "The E2E metric started its clock before page.goto() but relied on Playwright's default waitUntil=load, and its accessible Workbench title locator also matched a screen-reader-only heading. The test did not independently prove that the rendered project was visible. The separate 11,344ms sample after adding a real content locator has no established root cause.",
       "affectedCode": [
         "tests/e2e/performance-stress-step-38.spec.ts"
       ],
@@ -12145,9 +12145,9 @@
         "quality/evidence/step-45/public-v49/aud-364-365/aud-365-mobile-saved-project-390.png"
       ],
       "localVerification": {
-        "regressionTests": "After changing navigation to waitUntil=commit and requiring the Workbench heading to be visible, the public v49 focused suite passed 4/4. Visible-project timing was 3201ms at 1440x900 and 983ms at 390x844.",
+    "regressionTests": "The test now navigates with waitUntil=commit, requires a visible project heading inside the Workbench main region, and captures the screenshot only after that content appears. Eight later public v49 desktop runs and two mobile runs passed; the latest visible-project timings were 1,740ms at 1440x900 and 1,527ms at 390x844.",
         "lint": "pnpm exec eslint tests/e2e/performance-stress-step-38.spec.ts passed.",
-        "evidence": "quality/evidence/step-45/public-v49/aud-364-365/"
+        "evidence": "quality/evidence/step-45/public-v49/aud-365-reaudit/"
       },
       "deployedVerification": {
         "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
@@ -12156,17 +12156,17 @@
         "deploymentId": "appgdep_6ae0d248b9fc81919b71ce731676d007",
         "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
         "sitesSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
-        "verifiedAt": "2026-10-27T16:43:17Z",
+    "verifiedAt": "2026-10-27T17:44:58Z",
         "ciRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40536941966",
         "viewports": [
           "1440x900",
           "390x844"
         ],
         "visibleProjectMs": {
-          "desktop1440": 3201,
-          "mobile390": 983
+      "desktop1440Latest": 1740,
+      "mobile390Latest": 1527
         },
-        "repeatDefaultWaitSamplesMs": [
+        "earlierScreenReaderTitleLocatorSamplesMs": [
           2923,
           3420
         ],
@@ -12175,10 +12175,138 @@
         "uncaughtExceptions": [],
         "failedRequests": [],
         "httpErrors": [],
-        "devtoolsTraces": "quality/evidence/step-45/public-v49/aud-364-365/workbench-devtools-traces.json"
+        "devtoolsTraces": "quality/evidence/step-45/public-v49/aud-364-365/workbench-devtools-traces.json",
+        "followUpEvidence": "quality/evidence/step-45/public-v49/aud-365-reaudit/"
       },
-      "notes": "This finding was a browser-test measurement defect; no application runtime change was needed. The Site remains v49 because the follow-up commit changes only test instrumentation and audit evidence. A follow-up screenshot is linked; the failed-run screenshot file was overwritten by the later successful verification."
+      "notes": "This finding covers the test's load-event attribution and false readiness evidence; the separate unexplained 11,344ms real-content startup outlier is tracked as AUD-368 and remains open. No application runtime change was needed."
+    },
+    {
+      "id": "AUD-367",
+      "severity": "low",
+      "route": "/workbench?project=catalogue-loading-sites-chromium",
+      "viewport": "1440x900",
+      "category": "performance",
+      "title": "Saved-project readiness check accepted a screen-reader-only heading",
+      "expected": "The browser audit should mark Workbench ready and take its screenshot only after actual project content has rendered visibly.",
+      "actual": "The previous test accepted the accessible title `Workbench: Saved employee workspace` as visible readiness even though that heading is styled `sr-only`. Its screenshot showed the loading fallbacks `Loading the Workbench toolbar…` and `Loading project commands…` instead of the saved product. The metric did not prove the project had opened.",
+      "reproduction": [
+        "Run the saved-project startup test against public Sites v49 at 1440x900.",
+        "Seed showcase-playful-hr.json in localStorage and navigate to /workbench?project=catalogue-loading-sites-chromium.",
+        "Wait only for the accessible Workbench title and inspect the screenshot; the previous test could capture the loading state before the project canvas rendered."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-45/public-v49/aud-365-reaudit/workbench-sites-chromium.png",
+      "beforeScreenshots": [
+        "quality/evidence/step-45/public-v49/aud-365-reaudit/workbench-before-desktop-1440.png"
+      ],
+      "rootCause": "The test used a screen-reader-only Workbench title as its visual-ready locator. Playwright's visibility matcher accepts visually hidden accessible content, so this locator could pass while the Workbench canvas still showed lazy-loading fallbacks.",
+      "affectedCode": [
+        "tests/e2e/performance-stress-step-38.spec.ts",
+        "packages/workbench/src/components/WorkbenchShell.tsx",
+        "packages/workbench/src/components/MobileWorkbench.tsx"
+      ],
+      "fixCommit": "2dc039ff84ddda808dfb83b961d9e0081b88cf1a",
+      "status": "closed-deployed-verified",
+      "afterScreenshots": [
+        "quality/evidence/step-45/public-v49/aud-365-reaudit/workbench-sites-chromium.png",
+        "quality/evidence/step-45/public-v49/aud-365-reaudit/workbench-sites-mobile-chromium.png"
+      ],
+      "localVerification": {
+    "regressionTests": "The startup test now waits for the visible employee-project heading within the Workbench editor main region and captures its screenshot afterward. The fresh public-v49 rerun passed at desktop and mobile.",
+    "lint": "pnpm exec eslint tests/e2e/performance-stress-step-38.spec.ts passed.",
+        "evidence": "quality/evidence/step-45/public-v49/aud-365-reaudit/"
+      },
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=catalogue-loading-sites-chromium",
+        "siteVersion": 49,
+        "savedVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "deploymentId": "appgdep_6ae0d248b9fc81919b71ce731676d007",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "sitesSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+    "verifiedAt": "2026-10-27T17:44:58Z",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+    "regressionResult": "The visible project-content check passed eight later desktop runs and two mobile runs against the public v49 Site. The latest measured readiness was 1,740ms desktop and 1,527ms mobile. All runs reported zero Axe violations, console errors, uncaught exceptions, failed requests, and HTTP errors; initial catalogue requests remained zero.",
+        "networkResponsesLatestRun": {
+          "desktop": 67,
+          "mobile": 40,
+          "status400OrHigher": 0,
+          "slowResponsesOver500ms": 0
+        },
+        "axeViolations": 0,
+        "consoleErrors": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "evidence": "quality/evidence/step-45/public-v49/aud-365-reaudit/"
+      },
+      "notes": "This closes a browser-audit evidence defect, not a production UI defect. The Workbench's accessible heading remains intentionally screen-reader-only; the regression now asserts real visible product content. The separate initial 11,344ms outlier is tracked as AUD-368 and is not considered resolved."
+    },
+    {
+      "id": "AUD-368",
+      "severity": "medium",
+      "route": "/workbench?project=catalogue-loading-sites-chromium",
+      "viewport": "1440x900",
+      "category": "performance",
+      "title": "One public saved-project startup sample exceeded the five-second budget",
+      "expected": "The saved employee project should become visible within five seconds after navigation begins.",
+    "actual": "One first run with the corrected real-content locator measured 11,344ms to the visible project heading, with DOMContentLoaded at 10,184ms and load at 10,185ms. The saved project eventually rendered. Eight later desktop runs and two mobile runs passed; the latest were 1,740ms desktop and 1,527ms mobile. No slow response over 500ms or browser/network error appeared in the later instrumented samples.",
+      "reproduction": [
+        "Against public Sites v49, seed the employee showcase manifest and navigate to /workbench?project=catalogue-loading-sites-chromium.",
+        "Measure from navigation start until the visible project heading appears, and record Navigation Timing plus per-response timings.",
+        "The 11,344ms sample occurred once; subsequent desktop and mobile runs did not reproduce it."
+      ],
+      "console": [],
+      "network": [
+        "The outlier run had no recorded console, uncaught-exception, failed-request, HTTP-error, or initial-catalogue-request findings. Its per-response timing instrumentation was added only on later runs, so the slow request or phase was not localized.",
+        "Later instrumented desktop and mobile runs had zero responses over 500ms and no HTTP errors."
+      ],
+      "screenshot": "quality/evidence/step-45/public-v49/aud-365-reaudit/workbench-sites-chromium.png",
+      "rootCause": "Unknown. The one outlier's Navigation Timing indicates a long document-startup interval, but the run did not capture individual response durations or a Chrome trace. Later cache-warm public runs do not establish the cause or prove that a cold start is reliable.",
+      "affectedCode": [],
+      "fixCommit": null,
+      "status": "open",
+      "afterScreenshots": [
+        "quality/evidence/step-45/public-v49/aud-365-reaudit/workbench-sites-chromium.png",
+        "quality/evidence/step-45/public-v49/aud-365-reaudit/workbench-sites-mobile-chromium.png"
+      ],
+      "localVerification": {
+    "regressionTests": "Eight later public-v49 desktop checks and two public-v49 mobile checks passed the five-second budget. The first slow sample is not reproduced.",
+    "lint": "pnpm exec eslint tests/e2e/performance-stress-step-38.spec.ts passed.",
+        "evidence": "quality/evidence/step-45/public-v49/aud-365-reaudit/"
+      },
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench?project=catalogue-loading-sites-chromium",
+        "siteVersion": 49,
+        "savedVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_67a160bc9a108191968ea95b417f5a15",
+        "deploymentId": "appgdep_6ae0d248b9fc81919b71ce731676d007",
+        "canonicalSourceCommit": "be97d567bc32fac74abc4bc70921f5edb3739abf",
+        "sitesSourceCommit": "910328f4b5bf900fe82a4715458a81ce23ebb17f",
+    "verifiedAt": "2026-10-27T17:44:58Z",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "followUpSamples": {
+          "outlierVisibleProjectMs": 11344,
+          "outlierDomContentLoadedMs": 10184,
+      "repeatDesktopRunsPassed": 8,
+      "mobileRunsPassed": 2,
+      "latestDesktopVisibleProjectMs": 1740,
+      "latestMobileVisibleProjectMs": 1527
+        },
+        "axeViolations": 0,
+        "consoleErrors": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": [],
+        "nextAction": "Capture a Chrome DevTools trace and per-request timings on a genuinely cold/first post-deploy run before closing this finding."
+      },
+      "notes": "Do not raise or disable the five-second startup budget based on these results. This finding remains open because a single slow user-visible startup occurred and its cause was not captured."
     }
   ],
-  "generatedAt": "2026-10-27T16:47:20Z"
+  "generatedAt": "2026-10-27T17:44:58Z"
 }
