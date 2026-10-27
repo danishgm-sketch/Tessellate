@@ -1,4 +1,4 @@
-/* global document, location, innerWidth, innerHeight */
+/* global document, location, window, innerWidth, innerHeight */
 
 import { chromium } from "@playwright/test";
 import fs from "node:fs/promises";
