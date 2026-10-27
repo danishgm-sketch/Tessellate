@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. The latest broad public route, flagship, accessibility, responsive, and standalone-export checkpoint remains Sites v37. Public v42 exposed AUD-359–360; v43 corrected the brief grammar but still inferred Analytics Platform. Public v44 verifies the neutral Workspace Overview recipe at desktop and mobile and closes AUD-359–360. Public v45 verifies the Palette Studio first-activation hydration fix at desktop and mobile and closes AUD-361; its 32-route/64-capture sweep recorded no route, console, overflow, uncaught-exception, or failed-request defects and exposed AUD-362–363 on issue-specific interaction/copy checks. The v45 copy and hydration fixes are local and await deployed verification. The public review Site is v45 and has no D1/R2 bindings. Step 45 and the wider hardening programme remain incomplete.",
+  "scope": "Tessellate production review audit. Public Sites v46 was published from canonical commit 351b6d7ac3467fe4c580d1c31533705c16c60490 and Sites source mirror 520717ada321da3f23d46b000adc8da7d416c52e. Issue-specific deployed checks close AUD-362 and AUD-363. The v46 route sweep covers 32 routes at desktop and mobile; full visible Compose-to-Direction-C-to-Workbench mutation, export, generated-product Axe, and clean standalone React install/build/browser checks pass. D1/R2 are absent. The broader product-hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -11865,18 +11865,38 @@
         "apps/site/src/components/tools/TypographyLab.tsx",
         "tests/e2e/copy-quality-step-39.spec.ts"
       ],
-      "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
+      "fixCommit": "cbd4816d07bd7ec31f5435e6a26148b00ec7ced9",
+      "status": "closed-deployed-verified",
       "afterScreenshots": [
-        "quality/evidence/step-39/public-v45/interaction-readiness/after-local/desktop-1440x900-pre-hydration.png",
-        "quality/evidence/step-39/public-v45/interaction-readiness/after-local/desktop-1440x900-hydrated.png",
-        "quality/evidence/step-39/public-v45/interaction-readiness/after-local/mobile-390x844-pre-hydration.png",
-        "quality/evidence/step-39/public-v45/interaction-readiness/after-local/mobile-390x844-hydrated.png"
+        "quality/evidence/step-39/public-v46/compose/desktop-1440x900-pre-hydration.png",
+        "quality/evidence/step-39/public-v46/compose/desktop-1440x900-hydrated.png",
+        "quality/evidence/step-39/public-v46/compose/mobile-390x844-pre-hydration.png",
+        "quality/evidence/step-39/public-v46/compose/mobile-390x844-hydrated.png"
       ],
       "localVerification": {
         "regressionTests": "tests/e2e/copy-quality-step-39.spec.ts passed 4/4 focused desktop/mobile cases; the related recipe, Workbench copy, dialog, and copy-quality Sites Worker suite passed 63 tests with 1 configured skip.",
         "fullChecks": "pnpm typecheck passed across 22 packages; targeted ESLint passed; pnpm exec vitest run --maxWorkers=4 passed 1,223 tests with 1 configured skip across 78 files; pnpm audit:all passed behavioral gate, resource isolation, production build, bundle budgets, license/provenance, security/secrets, and dependency audit.",
         "screenshotRoot": "quality/evidence/step-39/public-v45/interaction-readiness/after-local/"
+      },
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "siteVersion": 46,
+        "savedVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_1941800398408191ad81be036cf3223c",
+        "deploymentId": "appgdep_6ae0a80f9f308191bbae1562fc006161",
+        "canonicalSourceCommit": "351b6d7ac3467fe4c580d1c31533705c16c60490",
+        "sitesSourceCommit": "520717ada321da3f23d46b000adc8da7d416c52e",
+        "verifiedAt": "2026-10-27T13:52:13.028Z",
+        "route": "/tools/typography",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "regression": "The deployed Typography Lab bundle was held after server-rendered controls appeared. All controls stayed disabled with the readiness status until hydration; after release, the sample tab activated and updated aria-pressed.",
+        "regressionResult": "2/2 desktop/mobile live cases passed; focused Compose+Typography suite passed 4/4 desktop/mobile cases.",
+        "consoleErrors": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
       }
     },
     {
@@ -11918,11 +11938,13 @@
         "packages/compatibility/src/direction-generator.ts",
         "tests/e2e/copy-quality-step-39.spec.ts"
       ],
-      "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
+      "fixCommit": "e860fa6f300a515881ec336112a4ebc2dfa8b3bd",
+      "status": "closed-deployed-verified",
       "afterScreenshots": [
-        "quality/evidence/step-39/public-v45/interaction-readiness/after-local/compose-desktop-1440x900.png",
-        "quality/evidence/step-39/public-v45/interaction-readiness/after-local/compose-mobile-390x844.png"
+        "quality/evidence/step-39/public-v46/compose/compose-desktop-1440x900.png",
+        "quality/evidence/step-39/public-v46/compose/compose-mobile-390x844.png",
+        "quality/evidence/step-39/public-v46/flagship/playwright-output/flagship-acceptance-live-v-2b85b-gh-independent-React-export-live-desktop-1440/direction-03-live-desktop-1440.png",
+        "quality/evidence/step-39/public-v46/flagship/playwright-output/flagship-acceptance-live-v-2b85b-gh-independent-React-export-live-mobile-390/direction-03-live-mobile-390.png"
       ],
       "localVerification": {
         "regressionTests": "The exact employee-experience browser flow passed 2/2 Sites Worker cases (1440x900 and 390x844); all three resource previews finished loading. Copy checks reject internal terminology, raw role IDs, and finance/observability residue.",
@@ -11930,8 +11952,30 @@
         "screenshotRoot": "quality/evidence/step-39/public-v45/interaction-readiness/after-local/",
         "accessibility": "Axe WCAG 2.2 A/AA reported zero violations at 1440x900 and 390x844.",
         "runtime": "Both viewports recorded HTTP 200 for /compose and /data/catalog.json, zero console warnings/errors, zero uncaught exceptions, zero failed requests or HTTP errors, zero unresolved resource-loading states, and no horizontal overflow."
+      },
+      "deployedVerification": {
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "siteVersion": 46,
+        "savedVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_1941800398408191ad81be036cf3223c",
+        "deploymentId": "appgdep_6ae0a80f9f308191bbae1562fc006161",
+        "canonicalSourceCommit": "351b6d7ac3467fe4c580d1c31533705c16c60490",
+        "sitesSourceCommit": "520717ada321da3f23d46b000adc8da7d416c52e",
+        "verifiedAt": "2026-10-27T13:52:13.028Z",
+        "route": "/compose",
+        "viewports": [
+          "1440x900",
+          "390x844"
+        ],
+        "regressionResult": "Plain-language Compose regression passed on desktop and mobile; the flagship visible-UI workflow passed 2/2 and produced three populated directions with no internal role IDs, finance residue, or unresolved resources.",
+        "flagship": "Direction C handoff matched the selected project. Lock, recompose, replacement, Surprise Me, exact Undo/Redo, responsive preview, manifest export, and standalone React ZIP install/build/browser checks passed. The desktop export was installed in a clean OS temp directory and exercised at 1440x900 and 390x844.",
+        "axe": "Full Axe scan tagged WCAG 2.0/2.1/2.2 A/AA passed on the generated Workbench at desktop and mobile with zero violations.",
+        "consoleErrors": [],
+        "consoleWarnings": [],
+        "uncaughtExceptions": [],
+        "failedRequests": [],
+        "httpErrors": []
       }
     }
   ],
-  "generatedAt": "2026-10-27T10:39:01.123Z"
+  "generatedAt": "2026-10-27T13:52:13.029Z"
 }

@@ -378,3 +378,41 @@ This is not a full Step 45 re-audit: v37 remains the latest broad route,
 flagship, Axe, and export checkpoint. The 210 locally fixed findings still
 await issue-specific deployed checks (25 High, 178 Medium, 7 Low). Step 45 and
 the product-hardening release gate remain open.
+
+### 2026-10-27 continuation — public Sites v46 deployed verification
+
+Sites v46 is public at the existing review URL. It serves canonical commit
+`351b6d7ac3467fe4c580d1c31533705c16c60490` from Sites source mirror
+`520717ada321da3f23d46b000adc8da7d416c52e` (version
+`appgprj_6acc036de8cc8191a823339566972d85~appgver_1941800398408191ad81be036cf3223c`,
+deployment `appgdep_6ae0a80f9f308191bbae1562fc006161`). The exact-head push CI
+run passed before this documentation update. The Sites build produced 324
+catalogue resources, 40 Gold runtime resources, 733 Astro pages, and 731 CSP
+records; D1 and R2 were not provisioned.
+
+The live route capture classifies 32 unique routes at 1440×900 and 390×844:
+64/64 PASS, with zero route HTTP failures, overflow, console warnings/errors,
+uncaught exceptions, and failed requests. Two Cloudflare challenge-script 302
+responses completed normally. The sweep records route content and screenshots,
+but it does not individually operate every secondary route control. The live
+Sections resource previews and all visible Explore previews were inspected
+after their load states completed.
+
+The exact 500-person employee-experience brief passed the visible Compose →
+three populated directions → Direction C → Workbench → overrides → lock →
+recompose → replacement → Surprise Me → Undo/Redo → preview → manifest and
+standalone React ZIP flow at desktop and mobile. Project identity and Direction
+C screens matched at handoff; no unresolved resource placeholders, console
+errors, failed essential requests, or horizontal overflow were recorded. The
+independent ZIP was extracted outside the repository, installed and built in a
+clean temporary directory, then exercised in a browser at 1440×900 and
+390×844. Full Axe WCAG 2.2 A/AA scans of the generated Workbench reported zero
+violations at both sizes. Focused live Compose/Typography checks passed 4/4.
+AUD-362 and AUD-363 are closed after these issue-specific v46 checks. Evidence
+and 64 route screenshots are under `quality/evidence/step-39/public-v46/`.
+
+Chrome DevTools measured a cold desktop Compose navigation at LCP 286 ms, CLS
+0.00, and TTFB 55 ms. Its 642 ms maximum critical request path ends at the
+catalogue response; the render-blocking stylesheet had zero estimated FCP/LCP
+savings. These are single-run lab values; no field CrUX or INP data is
+available. The broad product-hardening release gate remains open.
