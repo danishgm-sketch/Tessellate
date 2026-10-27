@@ -70,8 +70,11 @@ test('long prose tokens and inline identifiers wrap without widening mobile docu
   );
   expect(overflowingInlineCode).toEqual([]);
 
-  const checkpoint = page.locator('main .documentation p').filter({ hasText: 'version appgprj_6acc036de8cc8191a823339566972d85' });
-  await checkpoint.scrollIntoViewIfNeeded();
+  const checkpoints = page.locator('main .documentation p').filter({ hasText: 'version appgprj_6acc036de8cc8191a823339566972d85' });
+  expect(await checkpoints.count()).toBeGreaterThan(0);
+  for (let index = 0; index < await checkpoints.count(); index += 1) {
+    await checkpoints.nth(index).scrollIntoViewIfNeeded();
+  }
   const evidenceDirectory = path.resolve(process.cwd(), 'quality/evidence/step-45/public-v38');
   mkdirSync(evidenceDirectory, { recursive: true });
   await page.screenshot({
