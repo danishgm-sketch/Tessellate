@@ -60,15 +60,16 @@ export function AgentsSection() {
           <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[var(--text-muted)]">
             <div className="flex items-center gap-2">
               <Terminal className="h-4 w-4 text-[#C9FF57]" />
-              <span>ProjectManifest excerpt</span>
+              <span id="agent-handoff-json-specification-label">ProjectManifest excerpt</span>
             </div>
             <span className="text-[10px] text-[#C9FF57]">ILLUSTRATIVE EXCERPT</span>
           </div>
 
           <pre
+            role="group"
+            aria-labelledby="agent-handoff-json-specification-label"
             className="text-white/90 overflow-x-auto leading-relaxed text-[11px]"
             tabIndex={0}
-            aria-label="AGENT_HANDOFF JSON specification"
           >
             {`{
   "schemaVersion": "1.0.0",

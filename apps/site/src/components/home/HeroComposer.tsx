@@ -122,7 +122,7 @@ export function HeroComposer({ onComposed }: HeroComposerProps) {
           <span className="text-[10px] sm:text-[11px] font-mono font-semibold uppercase tracking-wider text-[var(--text-muted)]">
             Preset Exemplars:
           </span>
-          <div aria-label="Preset briefs" className="flex flex-wrap gap-1.5 pb-1">
+          <div role="group" aria-label="Preset briefs" className="flex flex-wrap gap-1.5 pb-1">
             {PRESET_BRIEFS.map((p) => (
               <button
                 key={p.label}
