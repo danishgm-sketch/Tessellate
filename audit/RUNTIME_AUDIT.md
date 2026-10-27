@@ -2,8 +2,8 @@
 
 This register preserves the historical resource/renderer audit and adds the
 production review audit. The latest targeted documentation evidence covers
-public Sites v40–v42; the latest targeted page-recipe evidence covers v43–v44
-as observed on 2026-10-27. V40 served application
+public Sites v40–v42; the latest targeted page-recipe evidence covers v43–v44;
+the latest Palette Studio hydration evidence covers v45, observed on 2026-10-27. V40 served application
 code captured from canonical commit
 `36b873ba9d40380196a78fcabe8977d7aa881e58` (Sites source mirror
 `f55a938f356f97c9a0070ab8e8aec097e2c52ba0`); v41 served code captured from
@@ -35,7 +35,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 361 findings (0 Critical, 67 High, 275 Medium, 19 Low): 59 closed after issue-specific deployed verification, 211 locally fixed and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 1 records a documented Sites-host limitation. Public v37 closes AUD-337, AUD-342–345, and AUD-347–355 after issue-specific checks; public v39 closes AUD-357 after the mobile docs route overflow fix passed issue-specific checks at 390×844 and 1440×900; public v42 closes AUD-358 after the documentation copy passed issue-specific desktop/mobile checks. The v42 page-recipe audit added AUD-359–360. Public v43 was an incomplete intermediate correction; public v44 verifies the final neutral recipe at desktop and mobile and closes both findings. Existing v37 performance, axe, and route evidence remains the latest complete checkpoint. The 210-awaiting-verification backlog includes 25 High findings and is not a count of known still-broken features; each needs its own live check before closure. **Step 45 and the product-hardening programme are not complete.**
+**Current disposition:** 361 findings (0 Critical, 67 High, 275 Medium, 19 Low): 60 closed after issue-specific deployed verification, 210 locally fixed and awaiting issue-specific deployed checks, 88 fixed and verified locally, 2 retain the legacy `fixed` status, and 1 records a documented Sites-host limitation. Public v37 closes AUD-337, AUD-342–345, and AUD-347–355 after issue-specific checks; public v39 closes AUD-357 after the mobile docs route overflow fix passed issue-specific checks at 390×844 and 1440×900; public v42 closes AUD-358 after the documentation copy passed issue-specific desktop/mobile checks. Public v44 verifies the neutral page recipe and closes AUD-359–360. Public v45 verifies Palette Studio first activation at desktop/mobile and closes AUD-361. Existing v37 performance, axe, and route evidence remains the latest complete checkpoint. The 210-awaiting-verification backlog includes 25 High findings and is not a count of known still-broken features; each needs its own live check before closure. **Step 45 and the product-hardening programme are not complete.**
 
 ## Public Sites v37 deployed checkpoint
 
@@ -3895,3 +3895,12 @@ route, Axe, flagship, or standalone-export re-audit, and Step 45 remains open.
 - **Root cause:** The shared route template hardcoded “Build a” before arbitrary titles.
 - **Affected code:** `apps/site/src/pages/pages/index.astro` and `tests/e2e/page-recipe-handoff-step-39.spec.ts`.
 - **Remediation:** The handoff now uses `Design a page titled “…”`, with the title quoted instead of relying on an article. The visible-browser regression checks the exact prompt round-trip at desktop and mobile. Sites v44 deployed successfully and verified that copy in the live browser. **Status: closed after issue-specific deployed verification on v44.**
+
+### AUD-361 — Palette Studio dropped the first preset activation during hydration
+
+- **Evidence:** Public v44’s first tap left `aria-pressed=false` at both 1440×900 and 390×844; retrying after network idle applied the preset. Before screenshots and measurements are in [`public v44`](../quality/evidence/step-45/public-v44/palette-first-tap/). On public v45, the first “Pure Monochrome” activation set `aria-pressed=true` at both viewports, with no retry. After screenshots and machine-readable browser records are in [`public v45 first-tap`](../quality/evidence/step-45/public-v45/palette-first-tap/).
+- **Reproduction:** Open `/tools/palette` in a fresh browser context at 1440×900 or 390×844 and activate “Pure Monochrome” immediately after it becomes visible. On v44 the first activation was lost; on v45 it applies on the first tap.
+- **Root cause:** The `client:load` React island server-rendered enabled preset controls before hydration attached event handlers, so a click during bundle loading could be lost.
+- **Affected code:** `apps/site/src/pages/tools/palette.astro` and `tests/e2e/palette-hydration-readiness.spec.ts`.
+- **Remediation:** Render the interactive tool as a client-only island and show an accessible loading status until its controls are interactive. The regression stalls the island bundle, verifies that controls are absent while loading, then confirms the first activation applies. Exact-head GitHub CI run [40483360579](https://github.com/danishgm-sketch/Tessellate/actions/runs/40483360579) passed. Public v45 returned HTTP 200 on desktop and mobile; each run recorded 25 HTTP 200 responses and one followed Cloudflare challenge redirect, with zero failed requests, HTTP errors, console errors, or uncaught exceptions. Axe reported zero violations (22 passing rules and zero incomplete checks) at both viewports; reports and screenshots are in [`public v45 Axe`](../quality/evidence/step-45/public-v45/palette-axe/). Canonical source commit: `4e7330b90ac37c0b6198e05b8306c6a510d615a9`; Sites source mirror commit: `2e486215136e33c05eba0e23b00157133bc9b0ba`; deployment `appgdep_6ae07e2dd3bc8191b486903555e4503a`.
+- **Status:** closed after issue-specific deployed verification on public Site v45 (2026-10-27).

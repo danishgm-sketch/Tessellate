@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. The latest broad public route, flagship, accessibility, responsive, and standalone-export checkpoint remains Sites v37. Public v42 exposed AUD-359–360; v43 corrected the brief grammar but still inferred Analytics Platform. Public v44 verifies the neutral Workspace Overview recipe at desktop and mobile and closes AUD-359–360. The public review Site is v44 and has no D1/R2 bindings. AUD-361 was discovered on v44; its local hydration fix awaits a deployed v45 check. Step 45 and the wider hardening programme remain incomplete.",
+  "scope": "Tessellate production review audit. The latest broad public route, flagship, accessibility, responsive, and standalone-export checkpoint remains Sites v37. Public v42 exposed AUD-359–360; v43 corrected the brief grammar but still inferred Analytics Platform. Public v44 verifies the neutral Workspace Overview recipe at desktop and mobile and closes AUD-359–360. Public v45 verifies the Palette Studio first-activation hydration fix at desktop and mobile and closes AUD-361. The public review Site is v45 and has no D1/R2 bindings. Step 45 and the wider hardening programme remain incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -11795,16 +11795,40 @@
         "apps/site/src/pages/tools/palette.astro",
         "tests/e2e/palette-hydration-readiness.spec.ts"
       ],
-      "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
+      "fixCommit": "bd65c723bc0a48ac56ad6e016235b10e5484cd8f",
+      "status": "closed-deployed-verified",
       "beforeScreenshots": [
         "quality/evidence/step-45/public-v44/palette-first-tap/after-first-tap-390.png",
         "quality/evidence/step-45/public-v44/palette-first-tap/after-first-tap-1440.png"
       ],
-      "afterScreenshots": [],
-      "deploymentVersionObserved": 44,
-      "verification": "The initial live Playwright run failed because the first tap left aria-pressed=false; a retry after network idle succeeded. The source now withholds active controls behind an accessible loading state until the client-only island mounts. A browser regression stalls the island bundle, verifies no premature controls, then confirms the first post-mount tap applies. Local targeted tests passed after rebuilding; issue-specific deployed verification is pending."
+      "afterScreenshots": [
+        "quality/evidence/step-45/public-v45/palette-first-tap/after-first-tap-1440.png",
+        "quality/evidence/step-45/public-v45/palette-first-tap/after-first-tap-390.png",
+        "quality/evidence/step-45/public-v45/palette-axe/palette-1440.png",
+        "quality/evidence/step-45/public-v45/palette-axe/palette-390.png"
+      ],
+      "deploymentVersionObserved": 45,
+      "verification": "Public Sites v45 (deployed 2026-10-27) was tested through the visible /tools/palette route at 1440x900 and 390x844. Both viewport tests returned HTTP 200; the first “Pure Monochrome” activation set aria-pressed=true in the first sample, retryApplied=false. Across each viewport, 25 responses were HTTP 200 and one Cloudflare managed challenge request returned a followed 302; there were zero failed requests, HTTP errors, console errors, or uncaught exceptions. Axe found zero violations, including zero serious/critical, with 22 passing rules and zero incomplete checks at each viewport. Before/after screenshots and machine-readable network/Axe results are under quality/evidence/step-45/public-v44 and public-v45. Exact-head GitHub CI run 40483360579 passed on canonical commit 4e7330b90ac37c0b6198e05b8306c6a510d615a9.",
+      "afterNetwork": [
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/palette",
+          "status": 200
+        },
+        {
+          "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/cdn-cgi/challenge-platform/scripts/jsd/main.js",
+          "status": 302,
+          "note": "Cloudflare managed challenge redirect; challenge scripts then loaded successfully."
+        }
+      ],
+      "afterConsole": [],
+      "afterFailedRequests": [],
+      "afterHttpErrors": [],
+      "deploymentId": "appgdep_6ae07e2dd3bc8191b486903555e4503a",
+      "deploymentVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_38c0db107a888191afc0529fd7fb2e23",
+      "verifiedCanonicalCommit": "4e7330b90ac37c0b6198e05b8306c6a510d615a9",
+      "verifiedSitesSourceCommit": "2e486215136e33c05eba0e23b00157133bc9b0ba",
+      "deployedSiteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site"
     }
   ],
-  "generatedAt": "2026-10-27T08:30:14.329Z"
+  "generatedAt": "2026-10-27T10:39:01.123Z"
 }
