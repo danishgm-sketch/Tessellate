@@ -1,0 +1,3215 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "quality/evidence/step-39/public-v51-copy-2026-10-28/runner/playwright.config.mjs"
+    ],
+    "configFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v51-copy-2026-10-28\\runner\\playwright.config.mjs",
+    "rootDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-39/public-v51-copy-2026-10-28/runner",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-39/public-v51-copy-2026-10-28/runner/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-chromium",
+        "name": "sites-chromium",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-39/public-v51-copy-2026-10-28/runner",
+        "testIgnore": [],
+        "testMatch": [
+          "*.public-v51.spec.ts"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-39/public-v51-copy-2026-10-28/runner/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-mobile-chromium",
+        "name": "sites-mobile-chromium",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-39/public-v51-copy-2026-10-28/runner",
+        "testIgnore": [],
+        "testMatch": [
+          "*.public-v51.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v51-copy-2026-10-28\\runner\\report.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "copy-quality.public-v51.spec.ts",
+      "file": "copy-quality.public-v51.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Compose explains the product plan without internal schema vocabulary",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3086,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:25:38.636Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-86ae76c21a8832378f20",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "AI prompt resource describes and exposes only the behavior that works",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2886,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:25:41.851Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visible copy and runtime evidence",
+                      "contentType": "application/json",
+                      "body": "ewogICJjYXB0dXJlZEF0IjogIjIwMjYtMTAtMjhUMDQ6MjU6NDQuNjE3WiIsCiAgInJvdXRlIjogImh0dHBzOi8vdGVzc2VsbGF0ZS12MS1yZXZpZXcuaXNtYXlpbGRhbmlzaC1nbS5jaGF0Z3B0LnNpdGUvci9haS1wcm9tcHQtaGVybyIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJ2aXNpYmxlVGV4dCI6ICJBSSBQcm9tcHQgSGVybyBwcmV2aWV3XG5EZXNjcmliZSB0aGUgcHJvZHVjdCB5b3Ugd2FudCB0byBzaGFwZS5cblxuU3RhcnQgd2l0aCBhIHBsYWluLWxhbmd1YWdlIGJyaWVmLiBDb25uZWN0IHRoaXMgcGF0dGVybiB0byB5b3VyIG93biBnZW5lcmF0aW9uIGZsb3cgd2hlbiB5b3UgdXNlIGl0IGluIGFuIGFwcGxpY2F0aW9uLlxuXG5QcmV2aWV3IG9ubHkuIFRoaXMgZXhhbXBsZSBrZWVwcyB5b3VyIHByb21wdCBvbiB0aGlzIHBhZ2UgYW5kIGRvZXMgbm90IGdlbmVyYXRlIGEgYmx1ZXByaW50LlxuXG5HZW5lcmF0ZSBCbHVlcHJpbnRcbkFuIGVtcGxveWVlIG9uYm9hcmRpbmcgd29ya3NwYWNlIGZvciBhIGdyb3dpbmcgdGVhbVxuQSBkZXZlbG9wZXIgZG9jdW1lbnRhdGlvbiBwb3J0YWwgd2l0aCBzZWFyY2hhYmxlIGd1aWRlc1xuQSBzdWJzY3JpcHRpb24gYmlsbGluZyBkYXNoYm9hcmQgZm9yIHNtYWxsIGJ1c2luZXNzZXMiLAogICJzdWJtaXRCdXR0b24iOiB7CiAgICAiY291bnQiOiAxLAogICAgImxhYmVsIjogIkdlbmVyYXRlIEJsdWVwcmludCIsCiAgICAiZGlzYWJsZWQiOiB0cnVlCiAgfSwKICAidHlwZWRQcm9tcHRWYWx1ZSI6ICJBIHByaXZhdGUgdGVhbSBkaXJlY3Rvcnkgd2l0aCBvbmJvYXJkaW5nIHRhc2tzIiwKICAiYWNjZXNzaWJpbGl0eSI6IHsKICAgICJ0b3RhbFZpb2xhdGlvbnMiOiAwLAogICAgInNlcmlvdXNPckNyaXRpY2FsIjogW10KICB9LAogICJydW50aW1lIjogewogICAgImNvbnNvbGVFcnJvcnMiOiBbXSwKICAgICJ1bmNhdWdodEV4Y2VwdGlvbnMiOiBbXSwKICAgICJmYWlsZWRSZXF1ZXN0cyI6IFtdLAogICAgImh0dHBFcnJvcnMiOiBbXQogIH0sCiAgInNjcmVlbnNob3QiOiAicXVhbGl0eVxcZXZpZGVuY2VcXHN0ZXAtMzlcXHB1YmxpYy12NTEtY29weS0yMDI2LTEwLTI4XFxhZnRlclxcZGVza3RvcFxcYWktcHJvbXB0LWhlcm8ucG5nIgp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-4aa5b38eeecfa0b4af36",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 204,
+          "column": 1
+        },
+        {
+          "title": "AI rewrite preview separates fixed examples from an actual model action",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1379,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:25:44.746Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-487d0e7b36dbc0634a94",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 342,
+          "column": 1
+        },
+        {
+          "title": "AI tool timeline labels timings and results as illustrative sample data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1235,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:25:46.134Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-b6a41b365fb7b34e8040",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 431,
+          "column": 1
+        },
+        {
+          "title": "resource detail labels status as manifest-provided metadata",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1006,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:25:47.382Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-d22c108ec0141815318a",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 527,
+          "column": 1
+        },
+        {
+          "title": "AI Chat Panel identifies its local example behavior",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2551,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:25:48.396Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-e25f50e9fcf1fe35577a",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 547,
+          "column": 3
+        },
+        {
+          "title": "AI Model Mode Switcher identifies its local example behavior",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2458,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:25:50.953Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-e6de62564dd5966f399d",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 547,
+          "column": 3
+        },
+        {
+          "title": "AI Source Citations identifies its local example behavior",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2495,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:25:53.421Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-fc81a0596e116aad387b",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 547,
+          "column": 3
+        },
+        {
+          "title": "AI Research Answer identifies its local example behavior",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2381,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:25:55.927Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-8614ac64723ecc7276bd",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 547,
+          "column": 3
+        },
+        {
+          "title": "community CTA uses real destinations and makes no unsupported member-count claim",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1177,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:25:58.321Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-c6ef24acfacf3aa09dc3",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 652,
+          "column": 1
+        },
+        {
+          "title": "product preview CTA links to Compose and labels its disconnected sample",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1162,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:25:59.508Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-b0d394ca7edfaee16e4b",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 716,
+          "column": 1
+        },
+        {
+          "title": "homepage examples disclose sample data and avoid unsupported product metrics",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1757,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:00.680Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-e66885d121914842621f",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 773,
+          "column": 1
+        },
+        {
+          "title": "homepage spectrum controls explain their pre-hydration state",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1776,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:02.446Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-15f4726a2239c3124dee",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 875,
+          "column": 1
+        },
+        {
+          "title": "mobile homepage spectrum preview keeps its title readable beside its status badges",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "This check targets the narrow mobile layout.",
+                  "location": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v51-copy-2026-10-28\\runner\\copy-quality.public-v51.spec.ts",
+                    "line": 917,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 210,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:04.232Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "This check targets the narrow mobile layout.",
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v51-copy-2026-10-28\\runner\\copy-quality.public-v51.spec.ts",
+                        "line": 917,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-a04c72fdaa5ed43733cb",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 914,
+          "column": 1
+        },
+        {
+          "title": "homepage resource examples use catalogue identities and demo controls have truthful behavior",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2293,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:04.449Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-14d165ea24f4b8c9888c",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 961,
+          "column": 1
+        },
+        {
+          "title": "Section Planner exports examples without inventing proof or runtime behavior",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1094,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:06.749Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-dfde0911d7da9ce43bef",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1153,
+          "column": 1
+        },
+        {
+          "title": "Section Planner does not expose inert controls before its client is ready",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1028,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:07.854Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "Section Planner hydration interaction evidence",
+                      "contentType": "application/json",
+                      "body": "ewogICJyb3V0ZSI6ICJodHRwczovL3Rlc3NlbGxhdGUtdjEtcmV2aWV3LmlzbWF5aWxkYW5pc2gtZ20uY2hhdGdwdC5zaXRlL3Rvb2xzL3NlY3Rpb24tcGxhbm5lciIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMTQ0MCwKICAgICJoZWlnaHQiOiA5MDAKICB9LAogICJzY3JpcHRMb2FkSGVsZCI6IHRydWUsCiAgImxvYWRpbmciOiB7CiAgICAic3RhdHVzIjogIkxvYWRpbmcgcGxhbm5lciBjb250cm9sc+KApiIsCiAgICAib2JqZWN0aXZlQ29udHJvbERpc2FibGVkIjogdHJ1ZQogIH0sCiAgInJlYWR5IjogewogICAgIm9iamVjdGl2ZUNvbnRyb2xFbmFibGVkIjogdHJ1ZSwKICAgICJzZWxlY3RlZE9iamVjdGl2ZSI6ICJkZXZlbG9wZXItcGxhdGZvcm0iCiAgfSwKICAic2NyZWVuc2hvdHMiOiB7CiAgICAibG9hZGluZyI6ICJDOlxcVXNlcnNcXGlzbWF5XFwuY29kZXhcXHdvcmt0cmVlc1xccHJvZHVjdC1oYXJkZW5pbmctY2Fub25pY2FsXFxUZXNzZWxsYXRlXFxxdWFsaXR5XFxldmlkZW5jZVxcc3RlcC0zOVxccHVibGljLXY1MS1jb3B5LTIwMjYtMTAtMjhcXGFmdGVyXFxzZWN0aW9uLXBsYW5uZXItaHlkcmF0aW9uLXNpdGVzLWNocm9taXVtLWxvYWRpbmcucG5nIiwKICAgICJyZWFkeSI6ICJDOlxcVXNlcnNcXGlzbWF5XFwuY29kZXhcXHdvcmt0cmVlc1xccHJvZHVjdC1oYXJkZW5pbmctY2Fub25pY2FsXFxUZXNzZWxsYXRlXFxxdWFsaXR5XFxldmlkZW5jZVxcc3RlcC0zOVxccHVibGljLXY1MS1jb3B5LTIwMjYtMTAtMjhcXGFmdGVyXFxzZWN0aW9uLXBsYW5uZXItaHlkcmF0aW9uLXNpdGVzLWNocm9taXVtLXJlYWR5LnBuZyIKICB9Cn0="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-38487cc1d5b81c1ee075",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1246,
+          "column": 1
+        },
+        {
+          "title": "Typography Lab keeps controls unavailable until its client is ready",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 972,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:08.890Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-644fa3fbec5ff59087b6",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1306,
+          "column": 1
+        },
+        {
+          "title": "Typography Lab shows truthful, responsive type specimens",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1946,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:09.870Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-797336067f24c20e1d9c",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1360,
+          "column": 1
+        },
+        {
+          "title": "Accessibility Lab describes the limited checks it performs",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1276,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:11.825Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-f533db30942a6cb6de04",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1485,
+          "column": 1
+        },
+        {
+          "title": "Data Visualisation Styler describes sample recipes and its SVG output",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1398,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:13.109Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-d2af037d08eb39e501b9",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1506,
+          "column": 1
+        },
+        {
+          "title": "Motion Studio labels its sequence as examples instead of measured results",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1568,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:14.516Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-7f64235c58e2c56649ae",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1526,
+          "column": 1
+        },
+        {
+          "title": "Background Studio labels its sample and disables unconnected preview controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1395,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:16.092Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-913c495f37c539af036c",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1554,
+          "column": 1
+        },
+        {
+          "title": "Palette Studio limits claims to calculated pairs and disclosed sample data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1605,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:17.494Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-a22b0236a681bfe97d90",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1576,
+          "column": 1
+        },
+        {
+          "title": "Tools directory descriptions match each tool’s current output",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1479,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:19.108Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-535e1c3e31950f792493",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1612,
+          "column": 1
+        },
+        {
+          "title": "Design DNA Lab labels parsed values and sample code without fabricated metrics",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1959,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:20.601Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-7ea095aa9faba34b5d2e",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1632,
+          "column": 1
+        },
+        {
+          "title": "Layout Composer describes its schematic preview and copied snippets accurately",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1374,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:22.566Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-40db83711bcba8a52791",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1660,
+          "column": 1
+        },
+        {
+          "title": "CLI documentation matches the private package and required command syntax",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1290,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:23.950Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-7d82123ff45dc8266e20",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1694,
+          "column": 1
+        },
+        {
+          "title": "MCP documentation describes local use and heuristic limitations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1326,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:25.248Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-1506b363bb877f64e95d",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1721,
+          "column": 1
+        },
+        {
+          "title": "Compose explains the product plan without internal schema vocabulary",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3713,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:07.800Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-ce6a6ed62a1c27f4485b",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 15,
+          "column": 1
+        },
+        {
+          "title": "AI prompt resource describes and exposes only the behavior that works",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3036,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:11.631Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "visible copy and runtime evidence",
+                      "contentType": "application/json",
+                      "body": "ewogICJjYXB0dXJlZEF0IjogIjIwMjYtMTAtMjhUMDQ6Mjc6MTQuNDcxWiIsCiAgInJvdXRlIjogImh0dHBzOi8vdGVzc2VsbGF0ZS12MS1yZXZpZXcuaXNtYXlpbGRhbmlzaC1nbS5jaGF0Z3B0LnNpdGUvci9haS1wcm9tcHQtaGVybyIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgInZpc2libGVUZXh0IjogIkFJIFByb21wdCBIZXJvIHByZXZpZXdcbkRlc2NyaWJlIHRoZSBwcm9kdWN0IHlvdSB3YW50IHRvIHNoYXBlLlxuXG5TdGFydCB3aXRoIGEgcGxhaW4tbGFuZ3VhZ2UgYnJpZWYuIENvbm5lY3QgdGhpcyBwYXR0ZXJuIHRvIHlvdXIgb3duIGdlbmVyYXRpb24gZmxvdyB3aGVuIHlvdSB1c2UgaXQgaW4gYW4gYXBwbGljYXRpb24uXG5cblByZXZpZXcgb25seS4gVGhpcyBleGFtcGxlIGtlZXBzIHlvdXIgcHJvbXB0IG9uIHRoaXMgcGFnZSBhbmQgZG9lcyBub3QgZ2VuZXJhdGUgYSBibHVlcHJpbnQuXG5cbkdlbmVyYXRlIEJsdWVwcmludFxuQW4gZW1wbG95ZWUgb25ib2FyZGluZyB3b3Jrc3BhY2UgZm9yIGEgZ3Jvd2luZyB0ZWFtXG5BIGRldmVsb3BlciBkb2N1bWVudGF0aW9uIHBvcnRhbCB3aXRoIHNlYXJjaGFibGUgZ3VpZGVzXG5BIHN1YnNjcmlwdGlvbiBiaWxsaW5nIGRhc2hib2FyZCBmb3Igc21hbGwgYnVzaW5lc3NlcyIsCiAgInN1Ym1pdEJ1dHRvbiI6IHsKICAgICJjb3VudCI6IDEsCiAgICAibGFiZWwiOiAiR2VuZXJhdGUgQmx1ZXByaW50IiwKICAgICJkaXNhYmxlZCI6IHRydWUKICB9LAogICJ0eXBlZFByb21wdFZhbHVlIjogIkEgcHJpdmF0ZSB0ZWFtIGRpcmVjdG9yeSB3aXRoIG9uYm9hcmRpbmcgdGFza3MiLAogICJhY2Nlc3NpYmlsaXR5IjogewogICAgInRvdGFsVmlvbGF0aW9ucyI6IDAsCiAgICAic2VyaW91c09yQ3JpdGljYWwiOiBbXQogIH0sCiAgInJ1bnRpbWUiOiB7CiAgICAiY29uc29sZUVycm9ycyI6IFtdLAogICAgInVuY2F1Z2h0RXhjZXB0aW9ucyI6IFtdLAogICAgImZhaWxlZFJlcXVlc3RzIjogW10sCiAgICAiaHR0cEVycm9ycyI6IFtdCiAgfSwKICAic2NyZWVuc2hvdCI6ICJxdWFsaXR5XFxldmlkZW5jZVxcc3RlcC0zOVxccHVibGljLXY1MS1jb3B5LTIwMjYtMTAtMjhcXGFmdGVyXFxtb2JpbGVcXGFpLXByb21wdC1oZXJvLnBuZyIKfQ=="
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-438478523485c3316e4b",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 204,
+          "column": 1
+        },
+        {
+          "title": "AI rewrite preview separates fixed examples from an actual model action",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2261,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:14.674Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-cf4195ed06e932406eb7",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 342,
+          "column": 1
+        },
+        {
+          "title": "AI tool timeline labels timings and results as illustrative sample data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2030,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:16.943Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-de768cd9d37c1e0d80dd",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 431,
+          "column": 1
+        },
+        {
+          "title": "resource detail labels status as manifest-provided metadata",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1274,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:18.982Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-efa2c5680582b77441f9",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 527,
+          "column": 1
+        },
+        {
+          "title": "AI Chat Panel identifies its local example behavior",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2748,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:20.263Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-e2b925358aa85530e058",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 547,
+          "column": 3
+        },
+        {
+          "title": "AI Model Mode Switcher identifies its local example behavior",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2684,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:23.023Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-2031fffa7aa4df18ab7d",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 547,
+          "column": 3
+        },
+        {
+          "title": "AI Source Citations identifies its local example behavior",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2704,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:25.718Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-961a31c36d23fae49431",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 547,
+          "column": 3
+        },
+        {
+          "title": "AI Research Answer identifies its local example behavior",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2530,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:28.431Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-cc9d3e610ed2f35d3afc",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 547,
+          "column": 3
+        },
+        {
+          "title": "community CTA uses real destinations and makes no unsupported member-count claim",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1439,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:30.970Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-07c831c1fcf58dc61261",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 652,
+          "column": 1
+        },
+        {
+          "title": "product preview CTA links to Compose and labels its disconnected sample",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1756,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:32.418Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-1895191e7e5b5a515aa2",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 716,
+          "column": 1
+        },
+        {
+          "title": "homepage examples disclose sample data and avoid unsupported product metrics",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3159,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:34.183Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-50d3751c7b055f4f7793",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 773,
+          "column": 1
+        },
+        {
+          "title": "homepage spectrum controls explain their pre-hydration state",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3595,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:37.349Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-9eee5e9d80a8c66d09e1",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 875,
+          "column": 1
+        },
+        {
+          "title": "mobile homepage spectrum preview keeps its title readable beside its status badges",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 873,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:40.954Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-5d83c0b39568918feba4",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 914,
+          "column": 1
+        },
+        {
+          "title": "homepage resource examples use catalogue identities and demo controls have truthful behavior",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3646,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:41.834Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-d37f600876e4eaa591f3",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 961,
+          "column": 1
+        },
+        {
+          "title": "Section Planner exports examples without inventing proof or runtime behavior",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1370,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:45.489Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-d52a897c405339c5643d",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1153,
+          "column": 1
+        },
+        {
+          "title": "Section Planner does not expose inert controls before its client is ready",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1029,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:46.869Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "Section Planner hydration interaction evidence",
+                      "contentType": "application/json",
+                      "body": "ewogICJyb3V0ZSI6ICJodHRwczovL3Rlc3NlbGxhdGUtdjEtcmV2aWV3LmlzbWF5aWxkYW5pc2gtZ20uY2hhdGdwdC5zaXRlL3Rvb2xzL3NlY3Rpb24tcGxhbm5lciIsCiAgInZpZXdwb3J0IjogewogICAgIndpZHRoIjogMzkwLAogICAgImhlaWdodCI6IDg0NAogIH0sCiAgInNjcmlwdExvYWRIZWxkIjogdHJ1ZSwKICAibG9hZGluZyI6IHsKICAgICJzdGF0dXMiOiAiTG9hZGluZyBwbGFubmVyIGNvbnRyb2xz4oCmIiwKICAgICJvYmplY3RpdmVDb250cm9sRGlzYWJsZWQiOiB0cnVlCiAgfSwKICAicmVhZHkiOiB7CiAgICAib2JqZWN0aXZlQ29udHJvbEVuYWJsZWQiOiB0cnVlLAogICAgInNlbGVjdGVkT2JqZWN0aXZlIjogImRldmVsb3Blci1wbGF0Zm9ybSIKICB9LAogICJzY3JlZW5zaG90cyI6IHsKICAgICJsb2FkaW5nIjogIkM6XFxVc2Vyc1xcaXNtYXlcXC5jb2RleFxcd29ya3RyZWVzXFxwcm9kdWN0LWhhcmRlbmluZy1jYW5vbmljYWxcXFRlc3NlbGxhdGVcXHF1YWxpdHlcXGV2aWRlbmNlXFxzdGVwLTM5XFxwdWJsaWMtdjUxLWNvcHktMjAyNi0xMC0yOFxcYWZ0ZXJcXHNlY3Rpb24tcGxhbm5lci1oeWRyYXRpb24tc2l0ZXMtbW9iaWxlLWNocm9taXVtLWxvYWRpbmcucG5nIiwKICAgICJyZWFkeSI6ICJDOlxcVXNlcnNcXGlzbWF5XFwuY29kZXhcXHdvcmt0cmVlc1xccHJvZHVjdC1oYXJkZW5pbmctY2Fub25pY2FsXFxUZXNzZWxsYXRlXFxxdWFsaXR5XFxldmlkZW5jZVxcc3RlcC0zOVxccHVibGljLXY1MS1jb3B5LTIwMjYtMTAtMjhcXGFmdGVyXFxzZWN0aW9uLXBsYW5uZXItaHlkcmF0aW9uLXNpdGVzLW1vYmlsZS1jaHJvbWl1bS1yZWFkeS5wbmciCiAgfQp9"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-79880229eef0b036ddb2",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1246,
+          "column": 1
+        },
+        {
+          "title": "Typography Lab keeps controls unavailable until its client is ready",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1891,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:47.907Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-d7d38418860f2c04c3a2",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1306,
+          "column": 1
+        },
+        {
+          "title": "Typography Lab shows truthful, responsive type specimens",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2393,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:49.807Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-95c1b0c6353ff5ab8c43",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1360,
+          "column": 1
+        },
+        {
+          "title": "Accessibility Lab describes the limited checks it performs",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1423,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:52.211Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-09df1ff9a3395719a402",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1485,
+          "column": 1
+        },
+        {
+          "title": "Data Visualisation Styler describes sample recipes and its SVG output",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1260,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:53.642Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-6260fe888692e1c24770",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1506,
+          "column": 1
+        },
+        {
+          "title": "Motion Studio labels its sequence as examples instead of measured results",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1574,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:54.909Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-9545396b9f04fc140ae7",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1526,
+          "column": 1
+        },
+        {
+          "title": "Background Studio labels its sample and disables unconnected preview controls",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2169,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:56.492Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-1748b112fa1c977e434d",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1554,
+          "column": 1
+        },
+        {
+          "title": "Palette Studio limits claims to calculated pairs and disclosed sample data",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1543,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:58.668Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-2eaa8b483d504e006642",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1576,
+          "column": 1
+        },
+        {
+          "title": "Tools directory descriptions match each tool’s current output",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1294,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:00.219Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-f01dfa8ee54f5c54ab3b",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1612,
+          "column": 1
+        },
+        {
+          "title": "Design DNA Lab labels parsed values and sample code without fabricated metrics",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1867,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:01.521Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-5641539d2c8075152bec",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1632,
+          "column": 1
+        },
+        {
+          "title": "Layout Composer describes its schematic preview and copied snippets accurately",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2043,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:03.396Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-a73c27c60334f8040558",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1660,
+          "column": 1
+        },
+        {
+          "title": "CLI documentation matches the private package and required command syntax",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1233,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:05.449Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-32ea947786635ccd488b",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1694,
+          "column": 1
+        },
+        {
+          "title": "MCP documentation describes local use and heuristic limitations",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1296,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:06.689Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "fca7711e874c10e3529b-b039d33a4db759004ef4",
+          "file": "copy-quality.public-v51.spec.ts",
+          "line": 1721,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "resource-copy.public-v51.spec.ts",
+      "file": "resource-copy.public-v51.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "accessibility, compliance, trust, and security resources distinguish templates from verified claims",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4316,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:26.612Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-5f749da9012419891e85",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 120,
+          "column": 1
+        },
+        {
+          "title": "success state uses truthful defaults, a real action state, and accessible contrast",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2050,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:30.935Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-9c6e42c51cf5e96fecda",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 162,
+          "column": 1
+        },
+        {
+          "title": "document detail displays a static example without promising universal export or a dead action",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1507,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:32.993Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-9fc1def56f29676ad6ff",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "accordion motion answers describe the actual disclosure and avoid blanket accessibility claims",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1500,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:34.506Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-aaeb6c4eacf65058078f",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 197,
+          "column": 1
+        },
+        {
+          "title": "editorial and workflow samples describe current output without production guarantees",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3908,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:36.016Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-576698479d4915413f5d",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 216,
+          "column": 1
+        },
+        {
+          "title": "interactive preview describes its local controls instead of simulated runtime results",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1529,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:39.933Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-78c74d30541e504b4077",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 251,
+          "column": 1
+        },
+        {
+          "title": "AI command and empty-state patterns expose only the actions that are connected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2218,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:41.470Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-61093a00527aedad76c7",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 265,
+          "column": 1
+        },
+        {
+          "title": "palette preset copy limits itself to the selected contrast pairs",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1234,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:43.694Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-32e2063fa8dcbd094a74",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 297,
+          "column": 1
+        },
+        {
+          "title": "resource scores and accessibility declarations are identified as manifest claims",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2708,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:44.936Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-65f580cd0a0227cc80dd",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 317,
+          "column": 1
+        },
+        {
+          "title": "unassessed resources do not present template scores or accessibility declarations as verified results",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3375,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:47.652Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-f549745a90ecda0857e2",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 348,
+          "column": 1
+        },
+        {
+          "title": "resource accessibility status cards keep every label and status readable across widths",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 8224,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:51.037Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-696aed4c086416cb104c",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 377,
+          "column": 1
+        },
+        {
+          "title": "metrics strip catalogue copy matches its real example preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1889,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:26:59.268Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-379b9814613a2d012d7f",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 505,
+          "column": 1
+        },
+        {
+          "title": "logo marquee defaults are not presented as real customer or partner wordmarks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1703,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:01.165Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-0b4ea84b13d860264366",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 571,
+          "column": 1
+        },
+        {
+          "title": "performance metrics resource describes a template instead of measured evidence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 894,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:02.877Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-86674e48ca8e0497650d",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 656,
+          "column": 1
+        },
+        {
+          "title": "social proof hero metadata matches its evidence-labeled sample defaults",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2209,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:03.779Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-e345aba00b19fb650dfa",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 674,
+          "column": 1
+        },
+        {
+          "title": "testimonial grid defaults are examples and do not display invented five-star ratings",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 978,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:27:05.994Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-806564428aa7f9ffc63a",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 694,
+          "column": 1
+        },
+        {
+          "title": "accessibility, compliance, trust, and security resources distinguish templates from verified claims",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4615,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:08.032Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-ae64d1e8d09ab1ab61ad",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 120,
+          "column": 1
+        },
+        {
+          "title": "success state uses truthful defaults, a real action state, and accessible contrast",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2091,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:12.655Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-631ecb5b9f3c9e9d0299",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 162,
+          "column": 1
+        },
+        {
+          "title": "document detail displays a static example without promising universal export or a dead action",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1616,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:14.754Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-633a2e8f20371798b371",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 187,
+          "column": 1
+        },
+        {
+          "title": "accordion motion answers describe the actual disclosure and avoid blanket accessibility claims",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2318,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:16.382Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-fb21cd27e797a97ee68d",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 197,
+          "column": 1
+        },
+        {
+          "title": "editorial and workflow samples describe current output without production guarantees",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3927,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:18.714Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-a99cc21d8f5814dbdb2a",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 216,
+          "column": 1
+        },
+        {
+          "title": "interactive preview describes its local controls instead of simulated runtime results",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1544,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:22.651Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-b5b6cf20af3c741d55b0",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 251,
+          "column": 1
+        },
+        {
+          "title": "AI command and empty-state patterns expose only the actions that are connected",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2319,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:24.203Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-c44efe1efaebdf6682a6",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 265,
+          "column": 1
+        },
+        {
+          "title": "palette preset copy limits itself to the selected contrast pairs",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1513,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:26.532Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-22bc87e412cbcadcf627",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 297,
+          "column": 1
+        },
+        {
+          "title": "resource scores and accessibility declarations are identified as manifest claims",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3818,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:28.054Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-deaa083891fc5a63bbf2",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 317,
+          "column": 1
+        },
+        {
+          "title": "unassessed resources do not present template scores or accessibility declarations as verified results",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3307,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:31.882Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-a3dd15e4310c91c4b446",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 348,
+          "column": 1
+        },
+        {
+          "title": "resource accessibility status cards keep every label and status readable across widths",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7020,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:35.199Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-82ea1715592f342354b6",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 377,
+          "column": 1
+        },
+        {
+          "title": "metrics strip catalogue copy matches its real example preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2034,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:42.227Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-ea8140b7cf1a3a7c6632",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 505,
+          "column": 1
+        },
+        {
+          "title": "logo marquee defaults are not presented as real customer or partner wordmarks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1752,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:44.271Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-3aab9b7cd07d99c5b2bf",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 571,
+          "column": 1
+        },
+        {
+          "title": "performance metrics resource describes a template instead of measured evidence",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1030,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:46.031Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-7b9ae639685b8c68d7ba",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 656,
+          "column": 1
+        },
+        {
+          "title": "social proof hero metadata matches its evidence-labeled sample defaults",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 974,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:47.070Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-f54158e95593298541bd",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 674,
+          "column": 1
+        },
+        {
+          "title": "testimonial grid defaults are examples and do not display invented five-star ratings",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 991,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T04:28:48.052Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "7801b0374ee9b0e8adf4-2f559743da5d4d90d25a",
+          "file": "resource-copy.public-v51.spec.ts",
+          "line": 694,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T04:25:38.027Z",
+    "duration": 191314.744,
+    "expected": 89,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

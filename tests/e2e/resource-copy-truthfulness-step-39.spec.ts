@@ -709,3 +709,37 @@ test('testimonial grid defaults are examples and do not display invented five-st
   expect(runtime.failedRequests).toEqual([]);
   expect(runtime.httpErrors).toEqual([]);
 });
+
+test('Footer Minimal defaults do not imply a live system-status source', async ({ page }, testInfo) => {
+  const runtime = watchRuntime(page);
+  const response = await page.goto('/resources/footer-minimal/', { waitUntil: 'domcontentloaded' });
+  expect(response?.status()).toBe(200);
+  const detail = await page.locator('main').innerText();
+  const preview = page.frameLocator('iframe[title="Footer Minimal live preview"]');
+  await expect(preview.locator('footer')).toBeVisible();
+  const previewText = await preview.locator('body').innerText();
+  const viewport = testInfo.project.name.includes('mobile') ? 'mobile-390x844' : 'desktop-1440x900';
+  const directory = path.resolve(process.cwd(), 'quality/evidence/step-39/footer-minimal-live-status');
+  await mkdir(directory, { recursive: true });
+  const screenshot = path.join(directory, `footer-minimal-${viewport}.png`);
+  await page.screenshot({ path: screenshot, fullPage: true });
+  await writeFile(
+    path.join(directory, `footer-minimal-${viewport}.json`),
+    `${JSON.stringify({
+      route: page.url(),
+      status: response?.status(),
+      viewport: page.viewportSize(),
+      detail,
+      previewText,
+      runtime,
+      screenshot,
+    }, null, 2)}\n`
+  );
+
+  expect(detail).not.toMatch(/status indicator|operational status indicator/i);
+  expect(previewText).not.toMatch(/\b(?:system status|operational|privacy|terms)\b/i);
+  expect(runtime.consoleErrors).toEqual([]);
+  expect(runtime.uncaughtExceptions).toEqual([]);
+  expect(runtime.failedRequests).toEqual([]);
+  expect(runtime.httpErrors).toEqual([]);
+});

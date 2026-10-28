@@ -7,7 +7,7 @@ export interface FooterMinimalProps {
   links?: Array<{ label: string; href?: string }>;
 }
 
-export function FooterMinimal({ variant = 'quiet', links = [{ label: 'Privacy' }, { label: 'Terms' }, { label: 'System status' }] }: FooterMinimalProps) {
+export function FooterMinimal({ variant = 'quiet', links = [] }: FooterMinimalProps) {
   let bg = 'bg-[#FAF8F5] text-neutral-600 border-neutral-200';
 
   if (variant === 'expressive') {

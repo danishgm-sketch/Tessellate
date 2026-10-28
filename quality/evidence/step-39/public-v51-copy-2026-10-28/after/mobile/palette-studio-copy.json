@@ -1,0 +1,27 @@
+{
+  "capturedAt": "2026-10-28T04:28:00.014Z",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/palette",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "status": 200,
+  "layout": {
+    "viewportWidth": 390,
+    "documentWidth": 390,
+    "horizontalOverflow": false
+  },
+  "visibleText": "BETA\nClient-side exploration only. Individual interactions and output quality are still being validated; this tool does not certify or modify a saved Workbench project.\nTOOL 04 · CHROMA ARCHITECTURE\nClient-Side · Zero Login\nPalette Studio\n\nSet semantic colour tokens and inspect calculated contrast for selected colour pairs.\n\nCopy CSS Variables\nCopy Tailwind @theme\nTHEME PRESETS\nZinc Editorial (Tessellate Default)\nDeep Future Command (Dark Studio)\nWarm Parchment & Espresso\nSlate Institutional\nPure Monochrome\n\nCalm architectural warm paper canvas with crisp ink and electric cobalt accent.\n\nSemantic Token Roles\nReset\nSURFACES & CANVASES\nCanvas\nSurface\nSurface Raised\nTYPOGRAPHY & INKS\nInk\nInk Secondary\nInk Muted\nACCENTS & STRUCTURAL BORDERS\nAccent\nHairline\nHairline Strong\nSelected Pair Contrast Check\nReference: 4.5:1 (AA) / 7.0:1 (AAA)\n\nChecks these four token pairs only. It does not audit rendered components, states, or every color combination.\n\nInk / Canvas\n16.7:1\nAAA PASS\nInk-Sec / Surface\n5.5:1\nAA PASS\nAccent / Canvas\n6.0:1\nAA (UI) PASS\nWhite on Accent\n6.7:1\nAA PASS\n\nThese calculations cover the listed token pairs; they do not certify a full interface.\n\nActive Surface Preview\nPREVIEW PORT\nSample token preview\nEXAMPLE\n\nExample text for previewing the selected colours together. This is a static sample, not a live product screen.\n\nSample value: 1,284\nTry sample action\n\nExample interaction — current tokens applied. No transaction was submitted.",
+  "accessibility": {
+    "totalViolations": 0,
+    "seriousOrCritical": []
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "consoleWarnings": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshot": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v51-copy-2026-10-28\\after\\mobile\\palette-studio-copy.png"
+}

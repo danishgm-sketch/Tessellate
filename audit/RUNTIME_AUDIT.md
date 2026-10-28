@@ -1215,14 +1215,15 @@ No Critical findings are recorded in this audit register.
 
 ### AUD-029 — Footer claimed system status was Operational without a live status source
 
-- Evidence: [before screenshot](evidence/step-06/before/navigation/footer-minimal-dead-links-before.png). Expected: A status label should not claim availability unless it is backed by a live status source. Actual: The default footer stated “Status: Operational” in a static resource preview.
+- Evidence: [original before screenshot](evidence/step-06/before/navigation/footer-minimal-dead-links-before.png), [public v51 desktop screenshot](../quality/evidence/step-39/public-v51-copy-2026-10-28/footer-minimal-live-status/footer-minimal-desktop-1440x900.png), and [public v51 browser record](../quality/evidence/step-39/public-v51-copy-2026-10-28/footer-minimal-live-status/footer-minimal-desktop-1440x900.json). The live route returned HTTP 200; no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors occurred. The preview showed a static “System status” label and the resource detail still described an operational-status indicator.
 - Reproduction:
-  - Open /resources/footer-minimal/ at 390x844.
-  - Read the footer status label.
-- Root cause: resources/sections/footer-minimal/index.tsx hardcoded an operational-health claim into a generic static footer.
-- Affected code: `resources/sections/footer-minimal/index.tsx`
-- Remediation: Replace the unsupported live-status claim with neutral status text unless a real status source is supplied.
-- Regression: The resource browser evidence and content review verify the neutral default label.
+  - Open `/resources/footer-minimal/` on the public v51 Site at 1440×900 or 390×844.
+  - Read the description and preview; both claim or imply a status indicator, but the preview has no live status source.
+- Root cause: `resources/sections/footer-minimal/manifest.json` retained stale status-indicator claims, and `resources/sections/footer-minimal/index.tsx` defaulted to static, unlinked Privacy, Terms, and System status labels.
+- Affected code: `resources/sections/footer-minimal/{index.tsx,manifest.json}` and `tests/e2e/resource-copy-truthfulness-step-39.spec.ts`.
+- Remediation: Describe the footer as optional project links and default to copyright only. Callers may still pass actual links with destinations.
+- Regression: The new browser test asserts truthful metadata, absence of default status/legal-link labels, successful frame rendering, and clean runtime/network evidence. Local Sites Worker result: 2/2 passed at 1440×900 and 390×844. After screenshots and JSON: [desktop](../quality/evidence/step-39/public-v51-copy-2026-10-28/footer-minimal-live-status/local-after/footer-minimal-desktop-1440x900.png), [mobile](../quality/evidence/step-39/public-v51-copy-2026-10-28/footer-minimal-live-status/local-after/footer-minimal-mobile-390x844.png).
+- Status: Fixed locally; awaiting exact-head CI and issue-specific deployed verification. Public v51 remains affected.
 
 ## False-positive probe results
 

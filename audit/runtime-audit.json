@@ -666,17 +666,18 @@
       "category": "content",
       "title": "Footer claimed system status was Operational without a live status source",
       "expected": "A status label should not claim availability unless it is backed by a live status source.",
-      "actual": "The default footer stated “Status: Operational” in a static resource preview.",
+      "actual": "Public v51 resource detail still described an operational status indicator; the preview displayed a static, unlinked System status label with no live source.",
       "reproduction": [
         "Open /resources/footer-minimal/ at 390x844.",
         "Read the footer status label."
       ],
       "console": [],
       "network": [],
-      "screenshot": "audit/evidence/step-06/before/navigation/footer-minimal-dead-links-before.png",
-      "rootCause": "resources/sections/footer-minimal/index.tsx hardcoded an operational-health claim into a generic static footer.",
-      "fixCommit": "d909d6ca3fa9b465d5f553bcf5eead171ff893b7",
-      "status": "fixed-awaiting-deployed-verification"
+      "screenshot": "quality/evidence/step-39/public-v51-copy-2026-10-28/footer-minimal-live-status/footer-minimal-mobile-390x844.png",
+      "rootCause": "The resource manifest retained outdated status-indicator claims after the component stopped displaying an operational value, and the component default still rendered a nonfunctional System status label.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "evidenceNote": "Public v51 recheck reproduced the stale metadata and inert System status label; route returned HTTP 200 with zero console errors, warnings, uncaught exceptions, failed requests or HTTP errors. The fix now removes these defaults and stale manifest claims. Local Sites Worker browser regression passed at 1440x900 and 390x844 with clean runtime/network evidence; see quality/evidence/step-39/public-v51-copy-2026-10-28/footer-minimal-live-status/local-after/. Keep open until a new public Site passes the same checks."
     },
     {
       "id": "AUD-030",
@@ -14517,5 +14518,5 @@
       }
     }
   ],
-  "generatedAt": "2026-10-28T04:12:46Z"
+  "generatedAt": "2026-10-28T04:49:39Z"
 }
