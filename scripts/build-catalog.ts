@@ -124,9 +124,29 @@ async function main() {
   fs.writeFileSync(path.join(sitePublicDir, 'openapi.json'), JSON.stringify(openApiSpec, null, 2), 'utf-8');
   console.log('[build-catalog] Generated /openapi.json');
 
-  const showcasesDir=path.join(sitePublicDir,'data','showcases');
-  fs.mkdirSync(showcasesDir,{recursive:true});
-  for(const showcase of SHOWCASE_PROJECTS)fs.writeFileSync(path.join(showcasesDir,`${showcase.id}.json`),JSON.stringify(composeShowcase(showcase.id,artifact.resources),null,2),'utf8');
+  const generatedShowcases = SHOWCASE_PROJECTS.map((showcase) => ({
+    showcase,
+    manifest: composeShowcase(showcase.id, artifact.resources),
+  }));
+  const showcaseIndex = generatedShowcases.map(({ showcase, manifest }) => ({
+    id: showcase.id,
+    name: showcase.name,
+    tagline: showcase.tagline,
+    archetypeId: showcase.archetypeId,
+    navigationModel: showcase.navigationModel,
+    dnaPresetName: showcase.dnaPresetName,
+    colorMode: showcase.colorMode,
+    screenCount: manifest.screens.length,
+  }));
+  for (const publicDir of [sitePublicDir, previewPublicDir]) {
+    const showcasesDir = path.join(publicDir, 'data', 'showcases');
+    fs.mkdirSync(showcasesDir, { recursive: true });
+    fs.writeFileSync(path.join(showcasesDir, 'index.json'), JSON.stringify(showcaseIndex, null, 2), 'utf8');
+    for (const { showcase, manifest } of generatedShowcases) {
+      fs.writeFileSync(path.join(showcasesDir, `${showcase.id}.json`), JSON.stringify(manifest, null, 2), 'utf8');
+    }
+  }
+  console.log('[build-catalog] Generated showcase manifests and synchronized public indexes.');
   // 5. Generate Gold 40 runtime registry & exporter sources
   await generateGoldArtifacts(resourceDirectories);
 }

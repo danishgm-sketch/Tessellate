@@ -17,12 +17,12 @@
     "navigationModel": "command-first",
     "dnaPresetName": "future-command",
     "colorMode": "adaptive",
-    "screenCount": 4
+    "screenCount": 3
   },
   {
     "id": "showcase-luxury-hospitality",
     "name": "Velluto Private Estate Residences",
-    "tagline": "Bespoke global villa reservations and editorial destination dossiers",
+    "tagline": "Private estate stays with thoughtful concierge service and clear reservation terms",
     "archetypeId": "hospitality",
     "navigationModel": "split-horizontal",
     "dnaPresetName": "luxury-editorial",
@@ -31,23 +31,23 @@
   },
   {
     "id": "showcase-playful-hr",
-    "name": "Kudos Team Culture & Hiring",
-    "tagline": "Joyful applicant pipelines, peer recognition kudos, and people operations",
+    "name": "Kudos Employee Experience",
+    "tagline": "A warm workspace for colleagues to connect, onboard, and recognise one another",
     "archetypeId": "hr",
     "navigationModel": "pill-rail",
     "dnaPresetName": "professional-playful",
     "colorMode": "light",
-    "screenCount": 3
+    "screenCount": 7
   },
   {
     "id": "showcase-luxury-ecommerce",
     "name": "Atelier Chronos Horology",
-    "tagline": "Artisanal mechanical timepieces and bespoke bespoke leatherwork catalogue",
+    "tagline": "Artisanal mechanical timepieces and bespoke leatherwork",
     "archetypeId": "ecommerce",
     "navigationModel": "minimal-editorial",
     "dnaPresetName": "high-end-commerce",
     "colorMode": "light",
-    "screenCount": 3
+    "screenCount": 4
   },
   {
     "id": "showcase-scientific-research",
@@ -57,7 +57,7 @@
     "navigationModel": "three-pane",
     "dnaPresetName": "scientific-instrument",
     "colorMode": "adaptive",
-    "screenCount": 3
+    "screenCount": 4
   },
   {
     "id": "showcase-creator-analytics",
@@ -72,7 +72,7 @@
   {
     "id": "showcase-minimal-productivity",
     "name": "Scribe Zen Monastic Notes",
-    "tagline": "Distraction-free markdown thought buffer with zero cloud latency",
+    "tagline": "A quiet markdown workspace for notes, focus, and the week ahead",
     "archetypeId": "productivity",
     "navigationModel": "floating-dock",
     "dnaPresetName": "quiet-productivity",
