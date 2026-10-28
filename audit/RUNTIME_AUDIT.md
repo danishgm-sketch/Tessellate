@@ -1,14 +1,8 @@
 # Runtime audit — product hardening and deployed-site verification
 
-This register preserves the historical resource/renderer audit and tracks the
-production review audit. The current public checkpoint is Sites v50: its
-31-route desktop/mobile smoke, four-route Core Axe matrix, semantic
-accessibility regressions, and canonical flagship/export workflow all passed.
-AUD-370 and AUD-371 are closed after issue-specific v50 verification. AUD-372
-records a test-harness screenshot taken during a legitimate resource loading
-state; the test now waits for settled content and its deployed re-run passed.
-The broader Step 45 and product-hardening release gates remain incomplete. V40
-served application code captured from canonical commit
+This register preserves the historical resource/renderer audit and tracks the production review audit. The latest public checkpoint is Sites v51. The v50 baseline passed its 31-route desktop/mobile smoke, four-route Core Axe matrix, semantic/accessibility regressions, and canonical flagship/export workflow. v51 adds the live AUD-373 hydration regression at desktop and mobile; it passed 2/2 with zero serious/critical Axe findings, console/page errors, failed requests, or HTTP errors. AUD-370 through AUD-373 are closed after issue-specific deployed verification. The broader Step 45 and product-hardening release gates remain incomplete. D1/R2 remain absent.
+
+V40 served application code captured from canonical commit
 `36b873ba9d40380196a78fcabe8977d7aa881e58` (Sites source mirror
 `f55a938f356f97c9a0070ab8e8aec097e2c52ba0`); v41 served code captured from
 canonical commit `80cd1231fae9a2fd36f5737ce1d0684e01c15251` (Sites source
@@ -4087,39 +4081,26 @@ passed. D1 and R2 remain unbound; no paid infrastructure was added.
 
 ### AUD-373 — Homepage resource filters accept taps before hydration
 
-On public v50 at 390×844, the server-rendered Data filter looked enabled before
-the `CatalogueMosaic` Astro island had attached its React click handler. In six
-fresh browser contexts, two first taps did not select Data; the filter worked
-only after a wait and a second tap. No uncaught exception or failed request was
-observed. Before screenshots and machine-readable attempts are in
-`quality/evidence/step-39/public-v50-copy/mobile-filter-reproduction/`.
+**Evidence:** On public v50 at 390×844, the server-rendered Data filter looked enabled before the CatalogueMosaic Astro island had attached its React click handler. In six fresh browser contexts, two first taps did not select Data; the filter worked only after waiting and tapping again. No uncaught exception or failed request was observed. See the [before reproduction screenshots](../quality/evidence/step-39/public-v50-copy/mobile-filter-reproduction/).
 
-The root cause was a server-rendered interactive control with no hydration
-readiness state. `CatalogueMosaic` now disables filters until its first client
-effect, explains the wait using a visible live status linked with
-`aria-describedby`, then enables the controls. The user-facing regression test
-holds the island bundle, verifies the disabled/status state, releases it,
-selects Data, checks the resulting resource cards, runs Axe, and checks browser
-and network errors. `pnpm build` passed and the regression passed at 1440×900
-and 390×844 with zero serious/critical Axe findings, console errors, uncaught
-exceptions, failed requests, or bad responses. Local screenshots are in
-`quality/evidence/step-39/home-filter-readiness/`.
+**Reproduction:**
 
-Affected code: `apps/site/src/components/home/CatalogueMosaic.tsx`; regression:
-`tests/e2e/home-catalogue-filter-readiness-step-39.spec.ts`. The fix is local;
-public deployed verification remains pending. **Status: fixed locally.**
+1. Open the public homepage at 390×844 in a fresh browser context on v50.
+2. Tap Data as soon as the resource filter is visible, before the island hydrates.
+3. Observe that the filter is not selected; wait for hydration and tap again.
 
-The Step 39 copy-focused browser matrix passed 89 tests with one configured
-skip across desktop and mobile. This covered Compose, public resource claims,
-all ten tools, CLI documentation, and MCP documentation. The full unit suite
-passed 1,223 tests with one skip, repository typecheck passed, lint passed with
-one pre-existing warning, and the production build passed. These local results
-do not replace the pending deployed verification for AUD-373.
+**Root cause:** CatalogueMosaic rendered enabled buttons on the server while Astro had not attached the client-side React handlers. No readiness state explained the delay.
 
-The v50 ledger now contains 373 findings: 0 Critical, 69 High, 282 Medium, and
-22 Low. Statuses are 93 issue-specific deployed-verified closures, 185 locally
-fixed findings awaiting their own deployed checks, 90 locally verified, 2
-legacy fixed, 2 legacy closed, and 1 documented Sites-host limitation. Of the
-High findings, 39 have issue-specific deployed verification and 30 are locally
-verified. The broad hardening programme and Step 45 remain incomplete; this
-checkpoint makes no release-complete claim.
+**Affected code:** `apps/site/src/components/home/CatalogueMosaic.tsx`; `tests/e2e/home-catalogue-filter-readiness-step-39.spec.ts`; `tests/e2e/sites-preview.playwright.config.ts`.
+
+**Remediation:** Disable filters until the first client effect confirms the island is interactive, and announce readiness using a visible status linked to the controls with aria-describedby. The regression test holds the island bundle, checks this state, releases it, selects Data, verifies the cards, runs Axe, and checks browser/network errors.
+
+**v51 deployed verification:** Sites version 51 served canonical commit `e70450cba88cf09d2f68ee126e31a51474c54de2` through mirror commit `e19db8af22097eb6d20a9fb2555157234ea1831d`. The live regression passed 2/2 on Chromium at 1440×900 and 390×844. Both requests returned HTTP 200. With the island bundle held, the filters were disabled and the loading status was announced; after hydration, Data selected successfully, Area Chart appeared, and Advanced Data Table disappeared. Serious/critical Axe findings, console errors, uncaught exceptions, failed requests, and bad responses were all zero.
+
+**Screenshots:** [desktop loading](../quality/evidence/step-39/home-filter-readiness/loading-desktop-1440x900.png), [desktop filtered](../quality/evidence/step-39/home-filter-readiness/selected-desktop-1440x900.png), [mobile loading](../quality/evidence/step-39/home-filter-readiness/loading-mobile-390x844.png), and [mobile filtered](../quality/evidence/step-39/home-filter-readiness/selected-mobile-390x844.png). Machine-readable proof: [public-v51-filter-regression.json](../quality/evidence/step-39/public-v51-filter-regression.json).
+
+**Local checks:** Step 39 copy-focused browser matrix: 89 passed, one configured skip. Unit tests: 1,223 passed, one configured skip. Typecheck and production build passed. Lint passed with one pre-existing warning. Exact-head CI run [40603281088](https://github.com/danishgm-sketch/Tessellate/actions/runs/40603281088) passed.
+
+**Status:** Closed after deployed v51 verification. Fix commit: `dcac2321b3c2747c7d76f0d3f1260677fdb9bf48`.
+
+The v51 ledger contains 373 findings: 0 Critical, 69 High, 282 Medium, and 22 Low. Statuses are 94 issue-specific deployed-verified closures, 185 fixed findings awaiting their own deployed checks, 89 locally verified, 2 legacy fixed, 2 legacy closed, and 1 documented Sites-host limitation. Of the High findings, 39 have issue-specific deployed verification and 30 are locally verified. The broad hardening programme and Step 45 remain incomplete; this checkpoint makes no release-complete claim.

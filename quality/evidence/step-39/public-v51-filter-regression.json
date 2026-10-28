@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "finding": "AUD-373",
+  "siteVersion": 51,
+  "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+  "deploymentId": "appgdep_6ae13dc32fb481919bdf975c41e4b2c8",
+  "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+  "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+  "checkedAt": "2026-10-28T00:13:05.000Z",
+  "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "tests": {
+    "command": "SITES_PREVIEW_BASE_URL=https://tessellate-v1-review.ismayildanish-gm.chatgpt.site pnpm exec playwright test tests/e2e/home-catalogue-filter-readiness-step-39.spec.ts --config=tests/e2e/sites-preview.playwright.config.ts",
+    "passed": 2,
+    "failed": 0,
+    "projects": [
+      "sites-chromium",
+      "sites-mobile-chromium"
+    ],
+    "axeSeriousOrCritical": 0,
+    "consoleErrors": 0,
+    "uncaughtExceptions": 0,
+    "failedRequests": 0,
+    "badResponses": 0
+  },
+  "viewports": {
+    "desktop": {
+      "viewport": "1440x900",
+      "homepageHttpStatus": 200,
+      "hydrationGate": "filters disabled with live loading status while island bundle is held",
+      "afterHydration": "Data filter selected; Area Chart visible; Advanced Data Table absent",
+      "screenshotLoading": "quality/evidence/step-39/home-filter-readiness/loading-desktop-1440x900.png",
+      "screenshotSelected": "quality/evidence/step-39/home-filter-readiness/selected-desktop-1440x900.png"
+    },
+    "mobile": {
+      "viewport": "390x844",
+      "homepageHttpStatus": 200,
+      "hydrationGate": "filters disabled with live loading status while island bundle is held",
+      "afterHydration": "Data filter selected; Area Chart visible; Advanced Data Table absent",
+      "screenshotLoading": "quality/evidence/step-39/home-filter-readiness/loading-mobile-390x844.png",
+      "screenshotSelected": "quality/evidence/step-39/home-filter-readiness/selected-mobile-390x844.png"
+    }
+  }
+}

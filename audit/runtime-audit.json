@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. The current public Site is v50 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, serving application code captured from canonical commit d4b0fd88a722225c221d8264b89af70525cb1d7d and Sites mirror 11d7a1439caaf641a2d2f78eb2555c00cf30cc34; saved version appgprj_6acc036de8cc8191a823339566972d85~appgver_90ffb7eea6f0819187554301d0a0011f, deployment appgdep_6ae11df145348191884c457f997d6e51 succeeded. Exact-source GitHub CI run 40585283183 passed. On v50, 31 public routes passed at 1440x900 and 390x844 (62 captures), the four-route Axe matrix passed 8/8 with zero violations and zero serious/critical findings, semantic/accessibility regressions passed 10/10, and the exact employee-experience flagship journey plus independent React export passed at desktop and mobile. Live UI captures confirmed three distinct directions at both viewports, six settled previews, and zero unresolved resources or product runtime/network errors. AUD-370 and AUD-371 are closed after v50 deployed verification; AUD-372 records and closes an audit-harness screenshot taken during the explicit resource-loading state. Axe's CSP-blocked temporary style probes are instrumentation messages, not product errors; no security policy was weakened. D1/R2 are absent. The broader product-hardening programme and Step 45 remain incomplete.",
+  "scope": "Tessellate production review audit. Latest public checkpoint: Sites v51 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, serving code from canonical commit e70450cba88cf09d2f68ee126e31a51474c54de2 and Sites source mirror e19db8af22097eb6d20a9fb2555157234ea1831d; saved version appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896, deployment appgdep_6ae13dc32fb481919bdf975c41e4b2c8 succeeded. Exact-head GitHub CI run 40603281088 passed. The v50 31-route desktop/mobile smoke, four-route Axe matrix, semantic/accessibility regressions, and flagship/export workflow remain the latest full product suite; v51 additionally passed the AUD-373 live hydration regression at desktop and mobile with no serious/critical Axe findings, console/page errors, failed requests, or HTTP errors. AUD-370 through AUD-373 have issue-specific deployed verification. D1/R2 are absent. The broader product-hardening programme and Step 45 remain incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -13305,8 +13305,8 @@
         "tests/e2e/sites-preview.playwright.config.ts"
       ],
       "remediation": "Render the filter buttons disabled until the first client effect confirms the island is interactive; expose the loading message through a status and aria-describedby relationship. Verify the behavior by holding the island bundle, then checking the enabled filter changes the visible cards.",
-      "fixCommit": null,
-      "status": "fixed-locally",
+      "fixCommit": "dcac2321b3c2747c7d76f0d3f1260677fdb9bf48",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "build": "pnpm build passed including catalogue, 733-page Astro output, and Sites Worker artifact.",
         "regressionTest": {
@@ -13325,8 +13325,56 @@
         },
         "beforeEvidenceDirectory": "quality/evidence/step-39/public-v50-copy/mobile-filter-reproduction/",
         "afterEvidenceDirectory": "quality/evidence/step-39/home-filter-readiness/"
+      },
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "deploymentId": "appgdep_6ae13dc32fb481919bdf975c41e4b2c8",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T00:13:05.000Z",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "viewports": {
+          "desktop": {
+            "viewport": "1440x900",
+            "homepageHttpStatus": 200,
+            "hydrationGate": "filters disabled with live loading status while island bundle is held",
+            "afterHydration": "Data filter selected; Area Chart visible; Advanced Data Table absent",
+            "screenshotLoading": "quality/evidence/step-39/home-filter-readiness/loading-desktop-1440x900.png",
+            "screenshotSelected": "quality/evidence/step-39/home-filter-readiness/selected-desktop-1440x900.png"
+          },
+          "mobile": {
+            "viewport": "390x844",
+            "homepageHttpStatus": 200,
+            "hydrationGate": "filters disabled with live loading status while island bundle is held",
+            "afterHydration": "Data filter selected; Area Chart visible; Advanced Data Table absent",
+            "screenshotLoading": "quality/evidence/step-39/home-filter-readiness/loading-mobile-390x844.png",
+            "screenshotSelected": "quality/evidence/step-39/home-filter-readiness/selected-mobile-390x844.png"
+          }
+        },
+        "regressionTest": {
+          "command": "SITES_PREVIEW_BASE_URL=https://tessellate-v1-review.ismayildanish-gm.chatgpt.site pnpm exec playwright test tests/e2e/home-catalogue-filter-readiness-step-39.spec.ts --config=tests/e2e/sites-preview.playwright.config.ts",
+          "passed": 2,
+          "failed": 0,
+          "projects": [
+            "sites-chromium",
+            "sites-mobile-chromium"
+          ],
+          "axeSeriousOrCritical": 0,
+          "consoleErrors": 0,
+          "uncaughtExceptions": 0,
+          "failedRequests": 0,
+          "badResponses": 0
+        },
+        "evidence": [
+          "quality/evidence/step-39/home-filter-readiness/loading-desktop-1440x900.png",
+          "quality/evidence/step-39/home-filter-readiness/selected-desktop-1440x900.png",
+          "quality/evidence/step-39/home-filter-readiness/loading-mobile-390x844.png",
+          "quality/evidence/step-39/home-filter-readiness/selected-mobile-390x844.png",
+          "quality/evidence/step-39/public-v51-filter-regression.json"
+        ]
       }
     }
   ],
-  "generatedAt": "2026-10-27T23:31:26.052Z"
+  "generatedAt": "2026-10-28T00:13:05.000Z"
 }
