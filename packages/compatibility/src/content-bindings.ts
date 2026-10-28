@@ -220,6 +220,15 @@ export function bindResourceContent(
     : isReturnsPortal
       ? 'Find a previous purchase, choose eligible items, and follow each return and refund step.'
       : `A workspace for ${product.primaryAudience.toLowerCase()}.`;
+  const conversionCtaHeadline = employee
+    ? 'Make the next step easier for every colleague.'
+    : `Ready to ${primaryActionLabel.toLowerCase()}?`;
+  const conversionCtaDescription = employee
+    ? 'Help colleagues find their team, support and policies in one clear place.'
+    : `Continue with ${primaryActionLabel.toLowerCase()} for ${product.primaryAudience.toLowerCase()}.`;
+  const footerDescription = employee
+    ? 'A people-first home for onboarding, teams and trusted policies.'
+    : description;
   const searchCopyByArchetype: Record<
     string,
     { label: string; placeholder: string; helperText: string }
@@ -555,7 +564,7 @@ export function bindResourceContent(
                 ? 'Recent notifications'
                 : 'Recent activity'))
           : role === 'hero' || role === 'conversion-cta'
-            ? headline
+            ? role === 'conversion-cta' ? conversionCtaHeadline : headline
             : role === 'results-grid'
               ? isRealEstate
                 ? 'Available property listings'
@@ -580,9 +589,14 @@ export function bindResourceContent(
     eyebrow: 'Example organisation · sample content',
     badge: 'EXAMPLE',
     initials,
-    headline,
-    subheadline: description,
-    description,
+    headline: role === 'conversion-cta' ? conversionCtaHeadline : headline,
+    subheadline: role === 'conversion-cta' ? conversionCtaDescription : description,
+    description:
+      role === 'conversion-cta'
+        ? conversionCtaDescription
+        : role === 'footer' && employee
+          ? footerDescription
+          : description,
     subtitle: screen.purpose,
     panelTitle: employee ? 'Your first weeks, made clearer' : 'Your workspace',
     panels: items.slice(0, 3).map((item, index) => ({
