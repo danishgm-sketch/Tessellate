@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. Latest public checkpoint: Sites v51 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, serving app source from canonical e70450cba88cf09d2f68ee126e31a51474c54de2 and Sites mirror e19db8af22097eb6d20a9fb2555157234ea1831d. The 2026-10-28 full v51 recheck passed 100 route/viewport cases, 9 Axe scans with zero violations, the desktop/mobile flagship workflow and independent export, ten tool checks, Workbench hardening suites, and a 286ms cold homepage LCP trace with CLS 0. AUD-370 through AUD-373 and AUD-134 through AUD-137, AUD-139, AUD-141, AUD-143-144, AUD-149, AUD-152, AUD-157-161, AUD-164, AUD-167-170, AUD-173-174 and AUD-317 have issue-specific deployed verification on v51. AUD-374 is a local laptop-host retry overflow fixed and verified in Docker; the public Site still reports inference unavailable because no laptop connection is configured. D1/R2 are absent. The broader Step 45 and product-hardening release gates remain incomplete. Public v51 issue-specific rechecks close AUD-165, AUD-175 and AUD-281; black-box/CI verification closes non-Site AUD-233, AUD-305, AUD-307 and AUD-312. These closures do not complete Step 45 or the broader product-hardening programme.",
+  "scope": "Tessellate production review audit. Latest public checkpoint: Sites v52 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, serving canonical app commit 00aee74806dacec62bc4a14986f51e284f083c46 from Sites mirror commit 286fccc39903e6b945e1608ce791d5b6e58ac2a2. The 2026-10-28 full v51 recheck passed 100 route/viewport cases, 9 Axe scans with zero violations, the desktop/mobile flagship workflow and independent export, ten tool checks, Workbench hardening suites, and a 286ms cold homepage LCP trace with CLS 0. AUD-370 through AUD-373 and AUD-134 through AUD-137, AUD-139, AUD-141, AUD-143-144, AUD-149, AUD-152, AUD-157-161, AUD-164, AUD-167-170, AUD-173-174 and AUD-317 have issue-specific deployed verification on v51. AUD-374 is a local laptop-host retry overflow fixed and verified in Docker; the public Site still reports inference unavailable because no laptop connection is configured. D1/R2 are absent. The broader Step 45 and product-hardening release gates remain incomplete. Public v51 issue-specific rechecks close AUD-165, AUD-175 and AUD-281; black-box/CI verification closes non-Site AUD-233, AUD-305, AUD-307 and AUD-312. These closures do not complete Step 45 or the broader product-hardening programme. Public v52 deployed browser verification closes AUD-029 after 113 passes, 9 configured skips, and zero failures at desktop/mobile viewports; the product-hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -666,18 +666,18 @@
       "category": "content",
       "title": "Footer claimed system status was Operational without a live status source",
       "expected": "A status label should not claim availability unless it is backed by a live status source.",
-      "actual": "Public v51 resource detail still described an operational status indicator; the preview displayed a static, unlinked System status label with no live source.",
+      "actual": "Public v51 reproduced the misleading status-indicator metadata and inert label. Public v52 now describes optional project links truthfully, and the preview defaults to a copyright notice only.",
       "reproduction": [
         "Open /resources/footer-minimal/ at 390x844.",
         "Read the footer status label."
       ],
       "console": [],
       "network": [],
-      "screenshot": "quality/evidence/step-39/public-v51-copy-2026-10-28/footer-minimal-live-status/footer-minimal-mobile-390x844.png",
+      "screenshot": "quality/evidence/step-39/public-v52-copy-2026-10-28/footer-minimal-live-status/footer-minimal-mobile-390x844.png",
       "rootCause": "The resource manifest retained outdated status-indicator claims after the component stopped displaying an operational value, and the component default still rendered a nonfunctional System status label.",
-      "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
-      "evidenceNote": "Public v51 recheck reproduced the stale metadata and inert System status label; route returned HTTP 200 with zero console errors, warnings, uncaught exceptions, failed requests or HTTP errors. The fix now removes these defaults and stale manifest claims. Local Sites Worker browser regression passed at 1440x900 and 390x844 with clean runtime/network evidence; see quality/evidence/step-39/public-v51-copy-2026-10-28/footer-minimal-live-status/local-after/. Keep open until a new public Site passes the same checks."
+      "fixCommit": "00aee74806dacec62bc4a14986f51e284f083c46",
+      "status": "closed",
+      "evidenceNote": "Public v51 recheck reproduced the stale metadata and inert System status label. The fix was deployed to public Sites v52 from canonical commit 00aee74806dacec62bc4a14986f51e284f083c46 (Sites mirror 286fccc39903e6b945e1608ce791d5b6e58ac2a2; version appgprj_6acc036de8cc8191a823339566972d85~appgver_21939a2300248191ab47a6e067254043). The public browser suite passed 113 tests with 9 configured skips and zero failures across desktop 1440x900 and mobile 390x844. The Footer Minimal route returned HTTP 200 at both sizes; metadata is truthful, preview defaults to copyright only, and both records show zero console errors or warnings, uncaught exceptions, failed requests, or HTTP errors. Screenshots and records: quality/evidence/step-39/public-v52-copy-2026-10-28/footer-minimal-live-status/. Full run report: quality/evidence/step-39/public-v52-copy-2026-10-28/runner/report.json."
     },
     {
       "id": "AUD-030",
@@ -14518,5 +14518,5 @@
       }
     }
   ],
-  "generatedAt": "2026-10-28T04:49:39Z"
+  "generatedAt": "2026-10-28T05:39:42Z"
 }
