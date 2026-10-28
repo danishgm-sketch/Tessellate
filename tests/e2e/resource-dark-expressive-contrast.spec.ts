@@ -5,7 +5,7 @@ import AxeBuilder from '@axe-core/playwright';
 import { expect, test } from '@playwright/test';
 
 type Catalogue = {
-  resources: Array<{ slug: string; status: string }>;
+  resources: Array<{ slug: string; name: string; status: string }>;
 };
 
 const cataloguePath = path.resolve(process.cwd(), 'apps/site/public/data/catalog.json');
@@ -24,7 +24,8 @@ test('Gold resources keep expressive variants readable on dark product canvases'
 
   for (const resource of goldResources) {
     await page.goto(`/preview-content/?resource=${resource.slug}&variant=expressive&theme=dark`);
-    await expect(page.locator(`[data-node-id="preview-${resource.slug}"]`)).toBeAttached();
+    const previewFrame = page.frames().find((frame) => frame !== page.mainFrame()) ?? page.mainFrame();
+    await expect(previewFrame.locator('h1').first()).toContainText(resource.name);
     await page.waitForLoadState('networkidle');
 
     const result = await new AxeBuilder({ page })
