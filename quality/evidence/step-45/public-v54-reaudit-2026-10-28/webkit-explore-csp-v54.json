@@ -1,0 +1,43 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": "54",
+  "browser": "Playwright WebKit (not Safari)",
+  "capturedAt": "2026-10-28T10:45:44.331Z",
+  "route": "/explore?q=onboarding",
+  "results": [
+    {
+      "viewport": "desktop-1440x900",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+      "status": 200,
+      "navigationError": null,
+      "cspEvents": [],
+      "consoleErrors": [],
+      "consoleWarnings": [
+        "window.styleMedia is a deprecated draft version of window.matchMedia API, and it will be removed in the future."
+      ],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "resourceFrameCount": 6,
+      "screensRendered": 6,
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/webkit/explore-onboarding-desktop-1440x900-v54.png"
+    },
+    {
+      "viewport": "mobile-390x844",
+      "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+      "status": 200,
+      "navigationError": null,
+      "cspEvents": [],
+      "consoleErrors": [],
+      "consoleWarnings": [
+        "window.styleMedia is a deprecated draft version of window.matchMedia API, and it will be removed in the future."
+      ],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "resourceFrameCount": 2,
+      "screensRendered": 2,
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/webkit/explore-onboarding-mobile-390x844-v54.png"
+    }
+  ]
+}

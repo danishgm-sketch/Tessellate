@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. Latest public checkpoint: Sites v52 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, serving canonical app commit 00aee74806dacec62bc4a14986f51e284f083c46 from Sites mirror commit 286fccc39903e6b945e1608ce791d5b6e58ac2a2. The 2026-10-28 full v51 recheck passed 100 route/viewport cases, 9 Axe scans with zero violations, the desktop/mobile flagship workflow and independent export, ten tool checks, Workbench hardening suites, and a 286ms cold homepage LCP trace with CLS 0. AUD-370 through AUD-373 and AUD-134 through AUD-137, AUD-139, AUD-141, AUD-143-144, AUD-149, AUD-152, AUD-157-161, AUD-164, AUD-167-170, AUD-173-174 and AUD-317 have issue-specific deployed verification on v51. AUD-374 is a local laptop-host retry overflow fixed and verified in Docker; the public Site still reports inference unavailable because no laptop connection is configured. D1/R2 are absent. The broader Step 45 and product-hardening release gates remain incomplete. Public v51 issue-specific rechecks close AUD-165, AUD-175 and AUD-281; black-box/CI verification closes non-Site AUD-233, AUD-305, AUD-307 and AUD-312. These closures do not complete Step 45 or the broader product-hardening programme. Public v52 deployed browser verification closes AUD-029 after 113 passes, 9 configured skips, and zero failures at desktop/mobile viewports; the product-hardening programme remains incomplete.",
+  "scope": "Tessellate production review audit. Latest public checkpoint: Sites v54 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ (version appgprj_6acc036de8cc8191a823339566972d85~appgver_6d382d94d1508191af1aabf265d808c2; deployment appgdep_6ae1d0ad04a48191953b0eb2703b59d1), serving canonical application commit e3eff775b9db83fa240b937f3697d52cebcde8c6 from Sites mirror commit 9270888d16f69d765d7069b3aa9eb7e17af6892a. The Site is public and has no D1/R2 bindings. Exact-head PR and push CI plus the Component Quality Gate passed. The 2026-10-28 v54 deployed re-audit passed 31 routes at desktop/mobile (62/62), eight showcase details at desktop/mobile (16/16), the 8-record public showcase index, Explore preview loading, WebKit CSP checks, responsive tests at eight widths, 12 Axe route scans and two generated-product Workbench scans. The exact employee-experience flagship passed desktop and mobile, including independent React ZIP install/build/browser smoke. Four findings (AUD-176, AUD-375, AUD-376, AUD-377) now have deployed verification. The system-wide ledger contains 377 records: 0 critical, 69 high, 285 medium, 23 low. This is an evidence checkpoint; the broader Step 45 and product-hardening release programme remain incomplete. Laptop-host inference remains unavailable when its Docker runtime is not connected.",
   "entries": [
     {
       "id": "AUD-001",
@@ -7464,12 +7464,45 @@
         "tests/e2e/performance-workloads-step-38.spec.ts"
       ],
       "remediation": "Add only the generated SHA-256 hash of the sampled no-op `body {}` rule to style-src and style-src-elem. Keep the strict inline policy and all script directives unchanged.",
-      "fixCommit": null,
+      "fixCommit": "e3eff775b9db83fa240b937f3697d52cebcde8c6",
       "regression": {
         "before": "WebKit desktop and mobile complete workloads failed the clean-console assertion with 6 and 2 CSP errors respectively.",
         "after": "Complete WebKit desktop and mobile workloads pass with zero CSP events, console errors, uncaught exceptions, failed requests, or HTTP errors; eight additional CSP scenarios pass. Public deployment verification remains pending."
       },
-      "status": "fixed-awaiting-deployed-verification"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 54,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d382d94d1508191af1aabf265d808c2",
+        "deploymentId": "appgdep_6ae1d0ad04a48191953b0eb2703b59d1",
+        "canonicalSourceCommit": "e3eff775b9db83fa240b937f3697d52cebcde8c6",
+        "siteSourceCommit": "9270888d16f69d765d7069b3aa9eb7e17af6892a",
+        "checkedAt": "2026-10-28T10:48:43.526Z",
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "evidence": [
+          {
+            "resultId": "AUD-176",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/webkit/explore-onboarding-desktop-1440x900-v54.png",
+            "result": "PASS: 0 CSP events, console errors, page errors, failed requests, or bad responses; six resource screens rendered.",
+            "evidenceFile": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/webkit-explore-csp-v54.json"
+          },
+          {
+            "resultId": "AUD-176",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore?q=onboarding",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/webkit/explore-onboarding-mobile-390x844-v54.png",
+            "result": "PASS: 0 CSP events, console errors, page errors, failed requests, or bad responses; two resource screens rendered.",
+            "evidenceFile": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/webkit-explore-csp-v54.json"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-177",
@@ -14546,7 +14579,7 @@
       ],
       "remediation": "Give conversion-cta its own domain-aware headline and description and add a browser regression that checks the rendered employee showcase has one instance of the hero headline and distinct CTA copy.",
       "fixCommit": "c5a1b362f07d44677073cfeb9ed3799fd9018f57",
-      "status": "fixed-local-pending-deployed-verification",
+      "status": "closed-deployed-verified",
       "evidence": [
         "quality/evidence/step-45/public-v52-continuation-2026-10-28/interactive/showcase-copy-before.json",
         "quality/evidence/step-45/public-v52-continuation-2026-10-28/showcase-audit.json"
@@ -14560,6 +14593,39 @@
         "afterEvidence": "root browser desktop/mobile; Sites Worker desktop/mobile",
         "browserContexts": "Desktop 1440x900 and mobile 390x844",
         "result": "Regression passes locally on desktop and mobile; pending exact-head CI and public Site verification."
+      },
+      "deployedVerification": {
+        "siteVersion": 54,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d382d94d1508191af1aabf265d808c2",
+        "deploymentId": "appgdep_6ae1d0ad04a48191953b0eb2703b59d1",
+        "canonicalSourceCommit": "e3eff775b9db83fa240b937f3697d52cebcde8c6",
+        "siteSourceCommit": "9270888d16f69d765d7069b3aa9eb7e17af6892a",
+        "checkedAt": "2026-10-28T10:48:43.526Z",
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "evidence": [
+          {
+            "resultId": "AUD-375",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/showcase/showcase-playful-hr/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/interactive/showcase-cta-after-desktop-1440x900.png",
+            "result": "PASS: one hero H1 occurrence and a distinct, useful conversion CTA heading.",
+            "evidenceFile": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/capture-issue-fixes-v54.mjs"
+          },
+          {
+            "resultId": "AUD-375",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/showcase/showcase-playful-hr/",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/interactive/showcase-cta-after-mobile-390x844.png",
+            "result": "PASS: one hero H1 occurrence and a distinct, useful conversion CTA heading.",
+            "evidenceFile": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/capture-issue-fixes-v54.mjs"
+          }
+        ]
       }
     },
     {
@@ -14592,7 +14658,7 @@
       ],
       "remediation": "Add a stable id and name to the custom title input and assert the field identity plus successful Add behavior in a browser regression at desktop and mobile sizes.",
       "fixCommit": "5b7073ff0c10955a8b974668bcaf01a9169b0f5e",
-      "status": "fixed-local-pending-deployed-verification",
+      "status": "closed-deployed-verified",
       "evidence": [
         "quality/evidence/step-45/public-v52-continuation-2026-10-28/interactive/section-planner-field-before.json",
         "quality/evidence/step-45/public-v52-continuation-2026-10-28/interactive-smoke.json"
@@ -14606,6 +14672,39 @@
         "afterEvidence": "root browser desktop/mobile; Sites Worker desktop/mobile",
         "browserContexts": "Desktop 1440x900 and mobile 390x844",
         "result": "Regression passes locally on desktop and mobile; pending exact-head CI and public Site verification."
+      },
+      "deployedVerification": {
+        "siteVersion": 54,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d382d94d1508191af1aabf265d808c2",
+        "deploymentId": "appgdep_6ae1d0ad04a48191953b0eb2703b59d1",
+        "canonicalSourceCommit": "e3eff775b9db83fa240b937f3697d52cebcde8c6",
+        "siteSourceCommit": "9270888d16f69d765d7069b3aa9eb7e17af6892a",
+        "checkedAt": "2026-10-28T10:48:43.526Z",
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "evidence": [
+          {
+            "resultId": "AUD-376",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/section-planner/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/interactive/section-planner-after-desktop-1440x900.png",
+            "result": "PASS: the custom-title field has id=custom-section-title and name=customSectionTitle; adding the entered section updates the visible plan.",
+            "evidenceFile": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/capture-issue-fixes-v54.mjs"
+          },
+          {
+            "resultId": "AUD-376",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/tools/section-planner/",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/interactive/section-planner-after-mobile-390x844.png",
+            "result": "PASS: the custom-title field has id=custom-section-title and name=customSectionTitle; adding the entered section updates the visible plan.",
+            "evidenceFile": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/capture-issue-fixes-v54.mjs"
+          }
+        ]
       }
     },
     {
@@ -14640,7 +14739,7 @@
       ],
       "remediation": "Generate the public showcase index from SHOWCASE_PROJECTS during build:catalog and add a regression comparing every public index field with the canonical definitions.",
       "fixCommit": "a508e8d45b12bfc937daa24dd5c6ecdcd24efa02",
-      "status": "fixed-local-pending-deployed-verification",
+      "status": "closed-deployed-verified",
       "evidence": [
         "quality/evidence/step-45/public-v52-continuation-2026-10-28/compare-showcase-index.ts",
         "quality/evidence/step-45/public-v52-continuation-2026-10-28/route-classifications.json"
@@ -14654,8 +14753,41 @@
         "afterEvidence": "pnpm test; pnpm audit:all build:catalog; current site and preview indexes/manifests agree with SHOWCASE_PROJECTS",
         "browserContexts": "Desktop 1440x900 and mobile 390x844",
         "result": "Regression passes locally on desktop and mobile; pending exact-head CI and public Site verification."
+      },
+      "deployedVerification": {
+        "siteVersion": 54,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_6d382d94d1508191af1aabf265d808c2",
+        "deploymentId": "appgdep_6ae1d0ad04a48191953b0eb2703b59d1",
+        "canonicalSourceCommit": "e3eff775b9db83fa240b937f3697d52cebcde8c6",
+        "siteSourceCommit": "9270888d16f69d765d7069b3aa9eb7e17af6892a",
+        "checkedAt": "2026-10-28T10:48:43.526Z",
+        "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+        "evidence": [
+          {
+            "resultId": "AUD-377",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/showcase/",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/routes/_showcase-desktop-1440x900.png",
+            "result": "PASS: the public showcase gallery index has eight unique records and every index field matches the canonical definitions; all eight manifests match screen counts.",
+            "evidenceFile": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/public-index-verification-v54.json"
+          },
+          {
+            "resultId": "AUD-377",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/showcase/",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/routes/_showcase-mobile-390x844.png",
+            "result": "PASS: the mobile gallery and its public eight-record index agree with the canonical definitions.",
+            "evidenceFile": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/public-index-verification-v54.json"
+          }
+        ]
       }
     }
   ],
-  "generatedAt": "2026-10-28T08:14:25.722Z"
+  "generatedAt": "2026-10-28T10:48:43.526Z"
 }

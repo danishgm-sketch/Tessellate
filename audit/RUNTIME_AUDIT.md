@@ -1,6 +1,6 @@
 # Runtime audit — product hardening and deployed-site verification
 
-This register preserves the historical resource/renderer audit and tracks the production review audit. The latest public checkpoint is Sites v52 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, serving canonical commit `00aee74806dacec62bc4a14986f51e284f083c46` from Sites mirror `286fccc39903e6b945e1608ce791d5b6e58ac2a2`. The public copy/resource suite passed 113 tests with 9 configured skips and zero failures across desktop and mobile; AUD-029 is closed after its deployed check passed at both sizes. The prior full v51 recheck passed 100 route/viewport cases, 9 Axe scans with zero violations, the desktop/mobile flagship composition and export flow, and the ten-tool and Workbench suites; the cold desktop homepage trace measured 286ms LCP and 0 CLS. A follow-up deployed run passed the clothing, digital music, flight-management and film-streaming workflows in all three directions at desktop and mobile. It also reverified 23 High findings against v51, including Compose validation, resource navigation, Workbench state/history/storage, employee content, and the homepage brief. Earlier issue-specific checks close AUD-165, AUD-175 and AUD-281 against the live v51 Site. CLI, schema, and dependency findings AUD-233, AUD-305, AUD-307 and AUD-312 were verified through their own black-box and CI checks because they are not Site runtime features. AUD-370 through AUD-373 and the earlier 23 findings are closed after issue-specific deployed verification. AUD-374 records a separate local laptop-host retry overflow, fixed and exercised in Docker; the public Site still reports host inference unavailable because no laptop connection is configured. The broader Step 45 and product-hardening release gates remain incomplete. D1/R2 remain absent.
+This register preserves the historical resource/renderer audit and tracks the production review audit. The latest public checkpoint is Sites v54 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, serving canonical commit `e3eff775b9db83fa240b937f3697d52cebcde8c6` from Sites mirror `9270888d16f69d765d7069b3aa9eb7e17af6892a`. The v54 deployed re-audit passed 31 public routes at desktop/mobile (62/62), eight showcase details at both sizes (16/16), the canonical eight-record public showcase index, the employee flagship and independent React ZIP, eight responsive widths, 12 Axe route scans with zero violations, and WebKit CSP checks at desktop/mobile. It closes AUD-176, AUD-375, AUD-376 and AUD-377 after deployed verification. The Site has no D1/R2 bindings. The audit ledger contains 377 records (0 critical, 69 high, 285 medium, 23 low); the broader Step 45 and product-hardening release gates remain incomplete. Historical v51 and v52 re-audits and earlier issue-specific checks remain documented below. AUD-374 records a separate local laptop-host retry overflow, fixed and exercised in Docker; the public Site still reports host inference unavailable because no laptop connection is configured.
 
 V40 served application code captured from canonical commit
 `36b873ba9d40380196a78fcabe8977d7aa881e58` (Sites source mirror
@@ -4246,7 +4246,7 @@ All 31 requested public routes were opened at 1440×900 and 390×844. Every page
 | /blueprints | PASS | The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage. |
 | /collections | PASS | Empty state explicitly says resources are browser-local and explains how to start a collection. |
 | /creators | PASS | The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage. |
-| /showcase | DEGRADED | The page itself is current, but its public companion JSON index has four stale records; see AUD-377. |
+| /showcase | DEGRADED at v52; PASS at v54 | The v54 public JSON index has eight unique records and matches the canonical definitions; see the v54 verification below. |
 | /trends | PASS | Counts and DNA distributions disclose that they come from catalogue metadata, not usage analytics. |
 | /tools | PASS | The public route returned content and passed the desktop/mobile route, runtime, network-response, image and overflow smoke. This classification is limited to the explicitly listed interaction coverage. |
 | /agents | PASS | Beta disclosure says the public Site has no hosted MCP process or API. |
@@ -4257,9 +4257,9 @@ All 31 requested public routes were opened at 1440×900 and 390×844. Every page
 | /privacy | PASS | Guest/browser storage boundary disclosed. |
 | /terms | PASS | Review deployment limits, no shared accounts/server retention/uptime, and content safety are stated. |
 | /r/dashboard-kpi-grid/ | PASS | Representative resource detail, provenance and metadata reviewed; route and preview network smoke passed. |
-| /showcase/showcase-playful-hr/ | DEGRADED | The same employee marketing headline is rendered as both the hero H1 and the conversion CTA H2; see AUD-375. |
+| /showcase/showcase-playful-hr/ | DEGRADED at v52; PASS at v54 | The H1 occurs once and the employee conversion CTA has distinct, useful copy; see AUD-375 verification below. |
 | /blueprints/b2b-saas/ | PASS | Representative blueprint detail reviewed; route and responsive smoke passed. |
-| /tools/section-planner/ | DEGRADED | The add-section action works, but the custom-title textbox has neither id nor name and triggers a Chrome issue; see AUD-376. |
+| /tools/section-planner/ | DEGRADED at v52; PASS at v54 | The custom-title textbox has stable id/name attributes and the visible Add action works on desktop/mobile; see AUD-376 verification below. |
 | /docs/manifest/ | PASS | Representative documentation page reviewed; route and responsive smoke passed. |
 
 The public data artifact /data/showcases/index.json returns HTTP 200 but is MISLEADING: four of eight entries disagree with current canonical showcase records. It is listed separately because it is a public JSON resource, not one of the 31 page routes.
@@ -4280,7 +4280,7 @@ Chrome DevTools traces at 1× CPU and no network throttling measured LCP/CLS: Co
 
 No secrets were exposed and no D1/R2 resources were provisioned. The public Site continues to identify local-host inference as unavailable when no laptop backend is configured.
 
-### Open findings from this continuation
+### Findings open at the v52 checkpoint
 
 #### MEDIUM
 
@@ -4305,4 +4305,41 @@ Browser results: root Playwright 353 passed / 121 skipped; Sites Worker desktop 
 The `pnpm test:e2e` wrapper stopped after its root suite because an unrelated `workerd` process already occupied port 4323. I left that process untouched and ran the Sites Worker desktop/mobile suites explicitly on free port 4333; both passed. The preview-app suite passed separately.
 
 
-Fix commits: AUD-375 c5a1b362f07d44677073cfeb9ed3799fd9018f57; AUD-377 a508e8d45b12bfc937daa24dd5c6ecdcd24efa02; AUD-376 5b7073ff0c10955a8b974668bcaf01a9169b0f5e. The local regression report records 4/4 desktop/mobile cases passing. All three findings remain pending deployed verification.
+Fix commits: AUD-375 c5a1b362f07d44677073cfeb9ed3799fd9018f57; AUD-377 a508e8d45b12bfc937daa24dd5c6ecdcd24efa02; AUD-376 5b7073ff0c10955a8b974668bcaf01a9169b0f5e. The local regression report records 4/4 desktop/mobile cases passing. These findings were pending deployed verification at the v52 checkpoint; v54 verification follows below.
+
+## Public Sites v54 deployed re-audit — 2026-10-28
+
+The Site was published as public version 54 after both exact-head CI runs and the Component Quality Gate passed. Public URL: https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/. Version ID: `appgprj_6acc036de8cc8191a823339566972d85~appgver_6d382d94d1508191af1aabf265d808c2`; deployment ID: `appgdep_6ae1d0ad04a48191953b0eb2703b59d1`. Canonical source is `e3eff775b9db83fa240b937f3697d52cebcde8c6`; the Sites mirror source is `9270888d16f69d765d7069b3aa9eb7e17af6892a`. The Site remains public. D1 and R2 are not provisioned.
+
+### Deployment fix and CI
+
+The v53 WebKit reproduction found an exact `body {}` inline style blocked by strict CSP on the public shell and opaque resource preview. The adapter now includes WebKit's exact style hash in the public shell `style-src` and `style-src-elem` policies, preserving the strict policy without `unsafe-inline`. A Playwright regression covers the public shell. The changed code files are `apps/sites/prepare-static.mjs`, `apps/sites/src/generated-preview-csp.ts`, and `tests/e2e/sites-preview-csp.spec.ts`; code fix commit: `e3eff775b9db83fa240b937f3697d52cebcde8c6`.
+
+Exact-head CI passed on both events: [pull request run](https://github.com/danishgm-sketch/Tessellate/actions/runs/40668521047) and [push run](https://github.com/danishgm-sketch/Tessellate/actions/runs/40668505515). The [Component Quality Gate](https://github.com/danishgm-sketch/Tessellate/actions/runs/40668521098) also passed.
+
+### Route and data results
+
+The 31 public routes listed in the v52 table were revisited at 1440×900 and 390×844. All 62 cases returned HTTP 200 and had a main landmark, no horizontal overflow, no broken images, no console errors/warnings, no uncaught exceptions, no failed requests, no bad responses, and no visible preview still loading or unavailable after the settled capture. All eight showcase details were checked at both viewports (16/16), with no runtime/network errors, duplicate hero headings, or overflow. The public showcase index contains eight unique records matching all canonical fields, and all eight manifests match their canonical screen counts. The three routes previously marked DEGRADED in the v52 table are PASS at v54.
+
+The first v54 route snapshot waited 900ms and captured three pending Explore iframe requests as `net::ERR_ABORTED` during page teardown. That capture and its screenshots are retained as `route-audit-initial-900ms.json`. A separate six-second visible-preview check showed 6/6 desktop and 2/2 mobile previews ready, with no unavailable state or request failure. The final route matrix now waits six seconds before teardown and records zero aborted requests, zero loading previews, and zero unavailable previews. This was an audit harness timing artifact, not a product defect.
+
+### Flagship workflow and responsive checks
+
+The exact employee-experience brief completed through the deployed UI on desktop and mobile. Catalogue readiness was confirmed; three directions rendered; Direction C was selected; and Workbench received the selected project. The run applied onboarding/settings intent changes, locked the dashboard summary, recomposed at divergence 95, replaced a component through the UI, used Surprise Me, verified Undo/Redo, switched responsive views, reloaded, previewed, exported the manifest, and exported a standalone React ZIP. The ZIP installed from its own dependencies in a clean temporary directory, built, ran in a browser, contained the selected replacement and locked section, matched Workbench project identity/content, and had no `@tessellate/*` runtime dependency. The desktop/mobile flagship run passed 4 tests with 2 configured matrix skips and zero unexpected failures.
+
+The responsive suite passed all 5 tests across 360, 390, 430, 768, 1024, 1280, 1440, and 1536 pixel widths. The generated employee Workbench passed its Axe test at desktop and mobile (2/2, zero violations). All screenshots, test reports, exported ZIP evidence and JSON manifests are under `quality/evidence/step-45/public-v54-reaudit-2026-10-28/`.
+
+### Accessibility, network, and performance
+
+Axe scanned six routes at desktop and mobile (12 scans) and found zero violations. The generated Workbench had zero violations at both viewports. Axe's own injected inline-style instrumentation generated CSP console messages during the Explore and resource-detail scans; they were limited to those instrumented contexts. Direct browser route tests and WebKit produced no app console errors, failed requests, or CSP events. The strict policy remains intact. Playwright WebKit also emitted its `window.styleMedia` deprecation warning; no application warning was recorded by Chromium route checks.
+
+WebKit re-audit of Explore with its isolated resource previews passed at desktop and mobile: zero CSP events, console errors, uncaught exceptions, failed requests, or bad responses. Chrome DevTools cold navigation traces at 1× CPU with no network throttling measured homepage LCP 279ms (TTFB 52ms, CLS 0), Compose 195ms (TTFB 55ms, CLS 0), and Explore 229ms (TTFB 69ms, CLS 0). CrUX field data is unavailable for these routes, and navigation traces do not produce representative INP. See `performance-summary.json` for trace conditions and measurements.
+
+### Deployed issue closures
+
+- **AUD-176 — closed-deployed-verified.** v53 reproduced one `style-src-elem` violation on the public page and one in the opaque preview frame at both viewport sizes. v54 has zero CSP events in both contexts. Fix and WebKit screenshots are recorded in `webkit-explore-csp-v54.json`.
+- **AUD-375 — closed-deployed-verified.** The employee showcase H1 now occurs once and its conversion CTA uses distinct copy at desktop and mobile. Evidence: `interactive/showcase-cta-after-*.png` and `capture-issue-fixes-v54.mjs`.
+- **AUD-376 — closed-deployed-verified.** The Section Planner input has stable `id` and `name` attributes; adding a custom section works at desktop and mobile. Evidence: `interactive/section-planner-after-*.png` and `capture-issue-fixes-v54.mjs`.
+- **AUD-377 — closed-deployed-verified.** The public showcase index and all eight manifests match the canonical gallery. Evidence: `public-index-verification-v54.json`.
+
+The full ledger still contains 377 records: 0 critical, 69 high, 285 medium and 23 low. This v54 re-audit closes the four findings above; it does not close the other historical records or complete Step 45 / the wider product-hardening programme. The machine-readable checkpoint is `public-v54-reaudit-summary.json`.

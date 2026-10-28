@@ -1,0 +1,83 @@
+{
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site",
+  "siteVersion": 54,
+  "capturedAt": "2026-10-28T10:41:49.130Z",
+  "results": [
+    {
+      "viewport": "desktop-1440x900",
+      "httpStatus": 200,
+      "visibleFrameCount": 6,
+      "visibleLoadingCount": 0,
+      "visibleUnavailableCount": 0,
+      "previews": [
+        {
+          "resource": "accessibility-commitment-section",
+          "visible": true,
+          "loading": false,
+          "unavailable": false
+        },
+        {
+          "resource": "accordion",
+          "visible": true,
+          "loading": false,
+          "unavailable": false
+        },
+        {
+          "resource": "accordion-spring",
+          "visible": true,
+          "loading": false,
+          "unavailable": false
+        },
+        {
+          "resource": "activity-feed",
+          "visible": true,
+          "loading": false,
+          "unavailable": false
+        },
+        {
+          "resource": "admin-console-shell",
+          "visible": true,
+          "loading": false,
+          "unavailable": false
+        },
+        {
+          "resource": "advanced-data-table",
+          "visible": true,
+          "loading": false,
+          "unavailable": false
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/routes/explore-loaded-desktop-1440x900.png"
+    },
+    {
+      "viewport": "mobile-390x844",
+      "httpStatus": 200,
+      "visibleFrameCount": 2,
+      "visibleLoadingCount": 0,
+      "visibleUnavailableCount": 0,
+      "previews": [
+        {
+          "resource": "accessibility-commitment-section",
+          "visible": true,
+          "loading": false,
+          "unavailable": false
+        },
+        {
+          "resource": "accordion",
+          "visible": true,
+          "loading": false,
+          "unavailable": false
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "badResponses": [],
+      "screenshot": "quality/evidence/step-45/public-v54-reaudit-2026-10-28/routes/explore-loaded-mobile-390x844.png"
+    }
+  ]
+}
