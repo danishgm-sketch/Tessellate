@@ -46,7 +46,13 @@ def retry_delay(consecutive_failures: int) -> float:
     """Bound the host's reconnect traffic while preserving a prompt recovery probe."""
     if consecutive_failures <= 0:
         return POLL_INTERVAL_SEC
-    return min(POLL_INTERVAL_SEC * (2 ** (consecutive_failures - 1)), MAX_RETRY_DELAY_SEC)
+
+    delay = POLL_INTERVAL_SEC
+    remaining_doublings = consecutive_failures - 1
+    while remaining_doublings > 0 and delay < MAX_RETRY_DELAY_SEC:
+        delay = min(delay * 2, MAX_RETRY_DELAY_SEC)
+        remaining_doublings -= 1
+    return delay
 
 
 def to_intent_command(proposal: Any) -> Dict[str, Any]:

@@ -17,6 +17,7 @@ class TestHostDaemonTransport(unittest.TestCase):
         self.assertEqual(daemon.retry_delay(5), 16.0)
         self.assertEqual(daemon.retry_delay(6), 30.0)
         self.assertEqual(daemon.retry_delay(100), 30.0)
+        self.assertEqual(daemon.retry_delay(1_000_000), 30.0)
 
     def test_model_adapter_emits_only_the_shared_command_contract(self):
         command = daemon.to_intent_command({
