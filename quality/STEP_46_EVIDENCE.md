@@ -62,4 +62,5 @@ Step 46 can close only after 5–10 unfamiliar people have completed observed se
 - Sessions observed: 0
 - Findings added from human sessions: 0
 - Session evidence: none
-- Recruitment invitation: not sent
+- Recruitment invitation: [public GitHub issue #7](https://github.com/danishgm-sketch/Tessellate/issues/7), opened 2026-10-28; 0 comments at last check
+- Session coordination method: not set; issue states this will be confirmed before collecting any further details
