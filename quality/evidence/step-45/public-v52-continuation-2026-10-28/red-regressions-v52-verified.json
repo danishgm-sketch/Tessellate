@@ -1,0 +1,409 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "quality/evidence/step-45/public-v52-continuation-2026-10-28/live-regressions-v52-verified.config.mjs"
+    ],
+    "configFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\live-regressions-v52-verified.config.mjs",
+    "rootDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-45/public-v52-continuation-2026-10-28/red-regressions-v52-verified",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chrome",
+        "name": "desktop-chrome",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "showcase-content-copy-regression.spec.ts",
+          "section-planner-input-identity.spec.ts"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-45/public-v52-continuation-2026-10-28/red-regressions-v52-verified",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "mobile-chrome",
+        "name": "mobile-chrome",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "showcase-content-copy-regression.spec.ts",
+          "section-planner-input-identity.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\red-regressions-v52-verified.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "section-planner-input-identity.spec.ts",
+      "file": "section-planner-input-identity.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "custom section title has a stable field identity and adds a section",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 6553,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('textbox', { name: 'Custom section title' })\nExpected: \u001b[32m\"custom-section-title\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('textbox', { name: 'Custom section title' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Custom section title' })\u001b[22m\n\u001b[2m    2 × locator resolved to <input disabled value=\"\" type=\"text\" aria-label=\"Custom section title\" placeholder=\"Add custom section title (e.g. Migration Guide)...\" class=\"flex-1 text-xs px-3 py-2 rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] focus:bg-white outline-none\"/>\u001b[22m\n\u001b[2m      - unexpected value \"null\"\u001b[22m\n\u001b[2m    12 × locator resolved to <input value=\"\" type=\"text\" aria-label=\"Custom section title\" placeholder=\"Add custom section title (e.g. Migration Guide)...\" class=\"flex-1 text-xs px-3 py-2 rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] focus:bg-white outline-none\"/>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('textbox', { name: 'Custom section title' })\nExpected: \u001b[32m\"custom-section-title\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('textbox', { name: 'Custom section title' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Custom section title' })\u001b[22m\n\u001b[2m    2 × locator resolved to <input disabled value=\"\" type=\"text\" aria-label=\"Custom section title\" placeholder=\"Add custom section title (e.g. Migration Guide)...\" class=\"flex-1 text-xs px-3 py-2 rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] focus:bg-white outline-none\"/>\u001b[22m\n\u001b[2m      - unexpected value \"null\"\u001b[22m\n\u001b[2m    12 × locator resolved to <input value=\"\" type=\"text\" aria-label=\"Custom section title\" placeholder=\"Add custom section title (e.g. Migration Guide)...\" class=\"flex-1 text-xs px-3 py-2 rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] focus:bg-white outline-none\"/>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n    at C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\section-planner-input-identity.spec.ts:7:23",
+                    "location": {
+                      "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\section-planner-input-identity.spec.ts",
+                      "column": 23,
+                      "line": 7
+                    },
+                    "snippet": "   5 |\n   6 |   const title = page.getByRole('textbox', { name: 'Custom section title' });\n>  7 |   await expect(title).toHaveAttribute('id', 'custom-section-title');\n     |                       ^\n   8 |   await expect(title).toHaveAttribute('name', 'customSectionTitle');\n   9 |   await title.fill('Employee timeline');\n  10 |   await page.getByRole('button', { name: 'Add', exact: true }).click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\section-planner-input-identity.spec.ts",
+                        "column": 23,
+                        "line": 7
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('textbox', { name: 'Custom section title' })\nExpected: \u001b[32m\"custom-section-title\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('textbox', { name: 'Custom section title' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Custom section title' })\u001b[22m\n\u001b[2m    2 × locator resolved to <input disabled value=\"\" type=\"text\" aria-label=\"Custom section title\" placeholder=\"Add custom section title (e.g. Migration Guide)...\" class=\"flex-1 text-xs px-3 py-2 rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] focus:bg-white outline-none\"/>\u001b[22m\n\u001b[2m      - unexpected value \"null\"\u001b[22m\n\u001b[2m    12 × locator resolved to <input value=\"\" type=\"text\" aria-label=\"Custom section title\" placeholder=\"Add custom section title (e.g. Migration Guide)...\" class=\"flex-1 text-xs px-3 py-2 rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] focus:bg-white outline-none\"/>\u001b[22m\n\u001b[2m       - unexpected value \"null\"\u001b[22m\n\n\n   5 |\n   6 |   const title = page.getByRole('textbox', { name: 'Custom section title' });\n>  7 |   await expect(title).toHaveAttribute('id', 'custom-section-title');\n     |                       ^\n   8 |   await expect(title).toHaveAttribute('name', 'customSectionTitle');\n   9 |   await title.fill('Employee timeline');\n  10 |   await page.getByRole('button', { name: 'Add', exact: true }).click();\n    at C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\section-planner-input-identity.spec.ts:7:23"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:06:55.601Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\red-regressions-v52-verified\\section-planner-input-iden-9c398-identity-and-adds-a-section-desktop-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\red-regressions-v52-verified\\section-planner-input-iden-9c398-identity-and-adds-a-section-desktop-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\red-regressions-v52-verified\\section-planner-input-iden-9c398-identity-and-adds-a-section-desktop-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\section-planner-input-identity.spec.ts",
+                    "column": 23,
+                    "line": 7
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1dfdbc5c574f7c1376c9-3bbc8081314e66fd3296",
+          "file": "section-planner-input-identity.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "custom section title has a stable field identity and adds a section",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chrome",
+              "projectName": "mobile-chrome",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5531,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('textbox', { name: 'Custom section title' })\nExpected: \u001b[32m\"custom-section-title\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('textbox', { name: 'Custom section title' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Custom section title' })\u001b[22m\n\u001b[2m    5 × locator resolved to <input disabled value=\"\" type=\"text\" aria-label=\"Custom section title\" placeholder=\"Add custom section title (e.g. Migration Guide)...\" class=\"flex-1 text-xs px-3 py-2 rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] focus:bg-white outline-none\"/>\u001b[22m\n\u001b[2m      - unexpected value \"null\"\u001b[22m\n\u001b[2m    9 × locator resolved to <input value=\"\" type=\"text\" aria-label=\"Custom section title\" placeholder=\"Add custom section title (e.g. Migration Guide)...\" class=\"flex-1 text-xs px-3 py-2 rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] focus:bg-white outline-none\"/>\u001b[22m\n\u001b[2m      - unexpected value \"null\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('textbox', { name: 'Custom section title' })\nExpected: \u001b[32m\"custom-section-title\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('textbox', { name: 'Custom section title' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Custom section title' })\u001b[22m\n\u001b[2m    5 × locator resolved to <input disabled value=\"\" type=\"text\" aria-label=\"Custom section title\" placeholder=\"Add custom section title (e.g. Migration Guide)...\" class=\"flex-1 text-xs px-3 py-2 rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] focus:bg-white outline-none\"/>\u001b[22m\n\u001b[2m      - unexpected value \"null\"\u001b[22m\n\u001b[2m    9 × locator resolved to <input value=\"\" type=\"text\" aria-label=\"Custom section title\" placeholder=\"Add custom section title (e.g. Migration Guide)...\" class=\"flex-1 text-xs px-3 py-2 rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] focus:bg-white outline-none\"/>\u001b[22m\n\u001b[2m      - unexpected value \"null\"\u001b[22m\n\n    at C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\section-planner-input-identity.spec.ts:7:23",
+                    "location": {
+                      "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\section-planner-input-identity.spec.ts",
+                      "column": 23,
+                      "line": 7
+                    },
+                    "snippet": "   5 |\n   6 |   const title = page.getByRole('textbox', { name: 'Custom section title' });\n>  7 |   await expect(title).toHaveAttribute('id', 'custom-section-title');\n     |                       ^\n   8 |   await expect(title).toHaveAttribute('name', 'customSectionTitle');\n   9 |   await title.fill('Employee timeline');\n  10 |   await page.getByRole('button', { name: 'Add', exact: true }).click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\section-planner-input-identity.spec.ts",
+                        "column": 23,
+                        "line": 7
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveAttribute\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('textbox', { name: 'Custom section title' })\nExpected: \u001b[32m\"custom-section-title\"\u001b[39m\nReceived: \u001b[31m\"\"\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveAttribute\" getByRole('textbox', { name: 'Custom section title' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('textbox', { name: 'Custom section title' })\u001b[22m\n\u001b[2m    5 × locator resolved to <input disabled value=\"\" type=\"text\" aria-label=\"Custom section title\" placeholder=\"Add custom section title (e.g. Migration Guide)...\" class=\"flex-1 text-xs px-3 py-2 rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] focus:bg-white outline-none\"/>\u001b[22m\n\u001b[2m      - unexpected value \"null\"\u001b[22m\n\u001b[2m    9 × locator resolved to <input value=\"\" type=\"text\" aria-label=\"Custom section title\" placeholder=\"Add custom section title (e.g. Migration Guide)...\" class=\"flex-1 text-xs px-3 py-2 rounded-xl border border-[#D9D6CF] bg-[#FAF9F6] focus:bg-white outline-none\"/>\u001b[22m\n\u001b[2m      - unexpected value \"null\"\u001b[22m\n\n\n   5 |\n   6 |   const title = page.getByRole('textbox', { name: 'Custom section title' });\n>  7 |   await expect(title).toHaveAttribute('id', 'custom-section-title');\n     |                       ^\n   8 |   await expect(title).toHaveAttribute('name', 'customSectionTitle');\n   9 |   await title.fill('Employee timeline');\n  10 |   await page.getByRole('button', { name: 'Add', exact: true }).click();\n    at C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\section-planner-input-identity.spec.ts:7:23"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:07:09.112Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\red-regressions-v52-verified\\section-planner-input-iden-9c398-identity-and-adds-a-section-mobile-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\red-regressions-v52-verified\\section-planner-input-iden-9c398-identity-and-adds-a-section-mobile-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\red-regressions-v52-verified\\section-planner-input-iden-9c398-identity-and-adds-a-section-mobile-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\section-planner-input-identity.spec.ts",
+                    "column": 23,
+                    "line": 7
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1dfdbc5c574f7c1376c9-c9eb26770239a0bb8580",
+          "file": "section-planner-input-identity.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "showcase-content-copy-regression.spec.ts",
+      "file": "showcase-content-copy-regression.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "employee showcase gives the conversion CTA distinct copy from its hero",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chrome",
+              "projectName": "desktop-chrome",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5619,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('heading', { name: 'A better workday starts with people.', exact: true })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('heading', { name: 'A better workday starts with people.', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'A better workday starts with people.', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('heading', { name: 'A better workday starts with people.', exact: true })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('heading', { name: 'A better workday starts with people.', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'A better workday starts with people.', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\showcase-content-copy-regression.spec.ts:8:5",
+                    "location": {
+                      "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\showcase-content-copy-regression.spec.ts",
+                      "column": 5,
+                      "line": 8
+                    },
+                    "snippet": "   6 |   await expect(\n   7 |     page.getByRole('heading', { name: 'A better workday starts with people.', exact: true })\n>  8 |   ).toHaveCount(1);\n     |     ^\n   9 |   await expect(\n  10 |     page.getByRole('heading', {\n  11 |       name: 'Make the next step easier for every colleague.',"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\showcase-content-copy-regression.spec.ts",
+                        "column": 5,
+                        "line": 8
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('heading', { name: 'A better workday starts with people.', exact: true })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('heading', { name: 'A better workday starts with people.', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'A better workday starts with people.', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n   6 |   await expect(\n   7 |     page.getByRole('heading', { name: 'A better workday starts with people.', exact: true })\n>  8 |   ).toHaveCount(1);\n     |     ^\n   9 |   await expect(\n  10 |     page.getByRole('heading', {\n  11 |       name: 'Make the next step easier for every colleague.',\n    at C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\showcase-content-copy-regression.spec.ts:8:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:07:02.844Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\red-regressions-v52-verified\\showcase-content-copy-regr-4d485-distinct-copy-from-its-hero-desktop-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\red-regressions-v52-verified\\showcase-content-copy-regr-4d485-distinct-copy-from-its-hero-desktop-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\red-regressions-v52-verified\\showcase-content-copy-regr-4d485-distinct-copy-from-its-hero-desktop-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\showcase-content-copy-regression.spec.ts",
+                    "column": 5,
+                    "line": 8
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "bb033d4d29a1c4a5c77e-5edded72e551cb4f8027",
+          "file": "showcase-content-copy-regression.spec.ts",
+          "line": 3,
+          "column": 1
+        },
+        {
+          "title": "employee showcase gives the conversion CTA distinct copy from its hero",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "mobile-chrome",
+              "projectName": "mobile-chrome",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 5573,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('heading', { name: 'A better workday starts with people.', exact: true })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('heading', { name: 'A better workday starts with people.', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'A better workday starts with people.', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('heading', { name: 'A better workday starts with people.', exact: true })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('heading', { name: 'A better workday starts with people.', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'A better workday starts with people.', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n    at C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\showcase-content-copy-regression.spec.ts:8:5",
+                    "location": {
+                      "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\showcase-content-copy-regression.spec.ts",
+                      "column": 5,
+                      "line": 8
+                    },
+                    "snippet": "   6 |   await expect(\n   7 |     page.getByRole('heading', { name: 'A better workday starts with people.', exact: true })\n>  8 |   ).toHaveCount(1);\n     |     ^\n   9 |   await expect(\n  10 |     page.getByRole('heading', {\n  11 |       name: 'Make the next step easier for every colleague.',"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\showcase-content-copy-regression.spec.ts",
+                        "column": 5,
+                        "line": 8
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('heading', { name: 'A better workday starts with people.', exact: true })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m2\u001b[39m\nTimeout:  5000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('heading', { name: 'A better workday starts with people.', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'A better workday starts with people.', exact: true })\u001b[22m\n\u001b[2m    14 × locator resolved to 2 elements\u001b[22m\n\u001b[2m       - unexpected value \"2\"\u001b[22m\n\n\n   6 |   await expect(\n   7 |     page.getByRole('heading', { name: 'A better workday starts with people.', exact: true })\n>  8 |   ).toHaveCount(1);\n     |     ^\n   9 |   await expect(\n  10 |     page.getByRole('heading', {\n  11 |       name: 'Make the next step easier for every colleague.',\n    at C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\showcase-content-copy-regression.spec.ts:8:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-28T08:07:15.336Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\red-regressions-v52-verified\\showcase-content-copy-regr-4d485-distinct-copy-from-its-hero-mobile-chrome\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\red-regressions-v52-verified\\showcase-content-copy-regr-4d485-distinct-copy-from-its-hero-mobile-chrome\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-45\\public-v52-continuation-2026-10-28\\red-regressions-v52-verified\\showcase-content-copy-regr-4d485-distinct-copy-from-its-hero-mobile-chrome\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\showcase-content-copy-regression.spec.ts",
+                    "column": 5,
+                    "line": 8
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "bb033d4d29a1c4a5c77e-350648fbfdb29c8e31cf",
+          "file": "showcase-content-copy-regression.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-28T08:06:55.126Z",
+    "duration": 26010.557,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 4,
+    "flaky": 0
+  }
+}

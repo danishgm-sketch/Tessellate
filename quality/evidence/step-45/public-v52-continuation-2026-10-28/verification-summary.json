@@ -1,0 +1,153 @@
+{
+  "capturedAt": "2026-10-28T08:14:25.722Z",
+  "publicBaseline": {
+    "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+    "version": 52,
+    "sourceCommit": "00aee74806dacec62bc4a14986f51e284f083c46",
+    "sitesMirrorCommit": "286fccc39903e6b945e1608ce791d5b6e58ac2a2",
+    "d1": false,
+    "r2": false
+  },
+  "candidate": {
+    "baseCommit": "03dec61e012bd523a808f429424fda870f306eb7",
+    "implementationHead": "5b7073ff0c10955a8b974668bcaf01a9169b0f5e",
+    "fixCommits": {
+      "AUD-375": "c5a1b362f07d44677073cfeb9ed3799fd9018f57",
+      "AUD-377": "a508e8d45b12bfc937daa24dd5c6ecdcd24efa02",
+      "AUD-376": "5b7073ff0c10955a8b974668bcaf01a9169b0f5e"
+    },
+    "workingTreeChanges": true
+  },
+  "localQuality": {
+    "frozenInstall": {
+      "status": "pass",
+      "command": "pnpm install --frozen-lockfile"
+    },
+    "catalogueBuild": {
+      "status": "pass",
+      "command": "pnpm build:catalog",
+      "resources": 324,
+      "goldResources": 40
+    },
+    "unitTests": {
+      "status": "pass",
+      "command": "pnpm test",
+      "filesPassed": 79,
+      "testsPassed": 1224,
+      "testsSkipped": 1,
+      "testsFailed": 0
+    },
+    "typecheck": {
+      "status": "pass",
+      "command": "pnpm typecheck",
+      "note": "Passed on serial rerun after the parallel Vitest run cleaned its temporary security fixture."
+    },
+    "lint": {
+      "status": "pass",
+      "command": "pnpm lint",
+      "warnings": 0
+    },
+    "releaseAndSecurityAudits": {
+      "status": "pass",
+      "command": "pnpm audit:all",
+      "releaseGate": "16/16",
+      "resourceIsolation": "324/324",
+      "licenseAndProvenance": "324/324",
+      "secretsAndIsolationViolations": 0,
+      "dependencyVulnerabilities": 0,
+      "bundleBudgets": "all pass"
+    },
+    "productionBuild": {
+      "status": "pass",
+      "command": "pnpm audit:all (includes pnpm build)",
+      "astroStaticPages": 733,
+      "existingViteChunkWarning": true
+    }
+  },
+  "browserSuites": {
+    "root": {
+      "status": "pass",
+      "command": "pnpm exec playwright test",
+      "passed": 353,
+      "skipped": 121,
+      "failed": 0
+    },
+    "sitesDesktop": {
+      "status": "pass",
+      "passed": 187,
+      "skipped": 6,
+      "failed": 0
+    },
+    "sitesMobile": {
+      "status": "pass",
+      "passed": 153,
+      "skipped": 40,
+      "failed": 0
+    },
+    "previewApp": {
+      "status": "pass",
+      "passed": 3,
+      "skipped": 0,
+      "failed": 0
+    },
+    "liveFlagshipV52": {
+      "status": "pass",
+      "report": "flagship-acceptance-v52-verified.json",
+      "passed": 4,
+      "skipped": 2,
+      "failed": 0,
+      "viewports": [
+        "1440x900",
+        "390x844"
+      ]
+    },
+    "failingBeforeV52": {
+      "status": "reproduced",
+      "report": "red-regressions-v52-verified.json",
+      "expectedFailures": 4,
+      "tests": 4,
+      "viewports": [
+        "1440x900",
+        "390x844"
+      ],
+      "description": "Both new regression tests fail on public v52 at both viewports."
+    },
+    "localRegressionAfter": {
+      "status": "pass",
+      "report": "local-regressions-v52-fixed.json",
+      "passed": 4,
+      "skipped": 0,
+      "failed": 0,
+      "cases": [
+        "employee conversion CTA uses distinct copy at desktop and mobile",
+        "Section Planner title field has id/name and adds a section at desktop and mobile"
+      ]
+    },
+    "completeE2eScript": {
+      "status": "wrapper-port-conflict",
+      "description": "The pnpm test:e2e command passed its root suite (353 passed, 121 skipped), then stopped before Sites Worker startup because an unrelated workerd process was already bound to 127.0.0.1:4323. All remaining constituent suites passed when run explicitly on fresh port 4333 and the preview-app port 4324."
+    }
+  },
+  "currentIssues": {
+    "discovered": 3,
+    "severityCounts": {
+      "critical": 0,
+      "high": 0,
+      "medium": 2,
+      "low": 1
+    },
+    "locallyFixed": 3,
+    "deployedClosed": 0,
+    "pending": "Push the exact branch, wait for GitHub CI, publish a new Sites version, then repeat the route, interaction, Axe, flagship, and export smoke on the public Site."
+  },
+  "artifacts": {
+    "routeAudit": "route-audit.json",
+    "routeClassifications": "route-classifications.json",
+    "axe": "axe-route-audit.json",
+    "performance": "performance-summary.json",
+    "showcases": "showcase-audit.json",
+    "liveFlagship": "flagship-acceptance-v52-verified.json",
+    "redBaseline": "red-regressions-v52-verified.json",
+    "localRegressionAfter": "local-regressions-v52-fixed.json"
+  }
+}
