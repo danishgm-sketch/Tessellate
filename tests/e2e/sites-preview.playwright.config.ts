@@ -8,6 +8,8 @@ export default defineConfig({
   testMatch: [
     'composition-quality-smoke.spec.ts',
     'compose-workbench-handoff.spec.ts',
+    'showcase-content-copy-regression.spec.ts',
+    'section-planner-input-identity.spec.ts',
     'compose-responsiveness-hardening.spec.ts',
     'catalogue-preview-loading-state.spec.ts',
     'explore-search-hardening.spec.ts',

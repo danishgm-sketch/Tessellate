@@ -577,6 +577,8 @@ export function SectionPlanner() {
           {/* Add Section Input */}
           <div className="flex gap-2 pt-2 border-t border-[#D9D6CF]">
             <input
+              id="custom-section-title"
+              name="customSectionTitle"
               aria-label="Custom section title"
               type="text"
               disabled={!isClientReady}
