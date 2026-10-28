@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. Latest public checkpoint: Sites v51 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, serving app source from canonical e70450cba88cf09d2f68ee126e31a51474c54de2 and Sites mirror e19db8af22097eb6d20a9fb2555157234ea1831d. The 2026-10-28 full v51 recheck passed 100 route/viewport cases, 9 Axe scans with zero violations, the desktop/mobile flagship workflow and independent export, ten tool checks, Workbench hardening suites, and a 286ms cold homepage LCP trace with CLS 0. AUD-370 through AUD-373 and AUD-134 through AUD-137, AUD-139, AUD-141, AUD-143-144, AUD-149, AUD-152, AUD-157-161, AUD-164, AUD-167-170, AUD-173-174 and AUD-317 have issue-specific deployed verification on v51. AUD-374 is a local laptop-host retry overflow fixed and verified in Docker; the public Site still reports inference unavailable because no laptop connection is configured. D1/R2 are absent. The broader Step 45 and product-hardening release gates remain incomplete.",
+  "scope": "Tessellate production review audit. Latest public checkpoint: Sites v51 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, serving app source from canonical e70450cba88cf09d2f68ee126e31a51474c54de2 and Sites mirror e19db8af22097eb6d20a9fb2555157234ea1831d. The 2026-10-28 full v51 recheck passed 100 route/viewport cases, 9 Axe scans with zero violations, the desktop/mobile flagship workflow and independent export, ten tool checks, Workbench hardening suites, and a 286ms cold homepage LCP trace with CLS 0. AUD-370 through AUD-373 and AUD-134 through AUD-137, AUD-139, AUD-141, AUD-143-144, AUD-149, AUD-152, AUD-157-161, AUD-164, AUD-167-170, AUD-173-174 and AUD-317 have issue-specific deployed verification on v51. AUD-374 is a local laptop-host retry overflow fixed and verified in Docker; the public Site still reports inference unavailable because no laptop connection is configured. D1/R2 are absent. The broader Step 45 and product-hardening release gates remain incomplete. Public v51 issue-specific rechecks close AUD-165, AUD-175 and AUD-281; black-box/CI verification closes non-Site AUD-233, AUD-305, AUD-307 and AUD-312. These closures do not complete Step 45 or the broader product-hardening programme.",
   "entries": [
     {
       "id": "AUD-001",
@@ -6740,7 +6740,43 @@
         "before": "The visible standalone-export regression failed during clean TypeScript build; the retained output records TS1003, TS1382, and TS1002 for the generated Dashboard.tsx.",
         "after": "The clean install/build/browser regression renders the exact quoted and markup-like values at desktop and mobile, verifies that no script element was injected, and records zero console errors or warnings, uncaught exceptions, failed requests, and HTTP errors. All 300 benchmark direction exports also install, build, preview, and pass every-screen desktop/mobile checks."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "deploymentId": "appgdep_6ae13dc32fb481919bdf975c41e4b2c8",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T04:12:46.000Z",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "tests": "Imported user-authored quote, apostrophe, less-than and ampersand values through the public Workbench UI; exported a standalone ZIP; extracted and installed outside repository node_modules; built and browsed at 1440x900 and 390x844. All authored strings rendered, no @tessellate runtime dependency, overflow, console errors, page errors, failed requests or bad responses.",
+        "evidence": [
+          {
+            "resultId": "AUD-165-v51-workbench",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "viewport": "1440x900",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-165-public-workbench-authored-copy-1440.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-165-v51-export-desktop",
+            "route": "http://127.0.0.1:4176/",
+            "viewport": "1440x900",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-165-standalone-desktop-authored-copy-1440.png",
+            "result": "PASS"
+          },
+          {
+            "resultId": "AUD-165-v51-export-mobile",
+            "route": "http://127.0.0.1:4176/",
+            "viewport": "390x844",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-165-standalone-mobile-authored-copy-390.png",
+            "result": "PASS"
+          }
+        ],
+        "machineReports": [
+          "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-165-public-runtime.json"
+        ]
+      }
     },
     {
       "id": "AUD-166",
@@ -7377,7 +7413,24 @@
         "before": "The clean standalone browser regression failed: the generated project showed four matching screen-navigation landmarks against an expected single manifest navigation and duplicate exporter bar; the captured mobile screenshot also showed hidden Onboarding in the shell.",
         "after": "The clean install/build/preview regression passes at desktop and mobile. Declared links switch via hash, hidden Onboarding is absent, shell fallback appears only on screens without a navigation resource, document width is 390px, and console, warning, exception and failed-request lists are empty."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "deploymentId": "appgdep_6ae13dc32fb481919bdf975c41e4b2c8",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T04:12:46.000Z",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "tests": "Clean-installed and built the employee-experience ZIP captured from public v51 outside repository node_modules, then browsed the generated app at 1440x900 and 390x844. The export has one navigation region with exactly the five manifest-declared primary items, no duplicate links, no onboarding navigation item, and a working content CTA to the Onboarding screen; both viewports have no overflow or browser/network errors.",
+        "evidence": [
+          "quality/evidence/step-45/public-v51-recheck-2026-10-28/flagship/employee-experience-desktop-1440.zip",
+          "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-175-standalone-desktop-1440.png",
+          "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-175-standalone-onboarding-1440.png",
+          "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-175-standalone-mobile-390.png",
+          "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-175-standalone-runtime.json"
+        ]
+      }
     },
     {
       "id": "AUD-176",
@@ -9212,8 +9265,19 @@
       "screenshot": null,
       "rootCause": "The scaffolder copied launch-ready resource metadata into an unreviewed draft template, and the contracts did not represent unknown provenance or an empty set of verified widths.",
       "fixCommit": null,
-      "status": "fixed-local-verified",
-      "remediation": "The generator now creates a draft with unassigned/unknown provenance, NOASSERTION and unverified redistribution, no claimed verified widths or accessibility results, and zero unassessed quality scores. The schema supports explicit unknown provenance and empty verification widths, while the registry gate rejects unknowns. Tests cover schema, gate, and generated CLI output."
+      "status": "closed",
+      "remediation": "The generator now creates a draft with unassigned/unknown provenance, NOASSERTION and unverified redistribution, no claimed verified widths or accessibility results, and zero unassessed quality scores. The schema supports explicit unknown provenance and empty verification widths, while the registry gate rejects unknowns. Tests cover schema, gate, and generated CLI output.",
+      "verification": {
+        "type": "cli-black-box",
+        "checkedAt": "2026-10-28T04:12:46.000Z",
+        "sourceCommit": "c12a71de3a90a395240324c7abb8c6f53bd145b2",
+        "command": "node packages/cli/dist/index.cjs create-resource --slug provenance-audit",
+        "workingDirectory": "Fresh temporary directory outside the repository",
+        "result": "PASS: draft status; unassigned creator; unknown provenance; NOASSERTION license with redistribution unverified; no verified responsive widths; accessibility unverified; all quality scores zero; draft README does not imply registry readiness.",
+        "evidence": [
+          "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-233-cli-blackbox.json"
+        ]
+      }
     },
     {
       "id": "AUD-234",
@@ -10805,13 +10869,28 @@
       "screenshot": "quality/evidence/step-38/before/explore-loading-sites-chromium.png; quality/evidence/step-38/after/explore-loading-sites-chromium.png",
       "rootCause": "The loading skeleton grid used aria-label on a div without an implicit or explicit ARIA role.",
       "fixCommit": null,
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "affectedCode": [
         "apps/site/src/components/ExploreView.tsx",
         "tests/e2e/accessibility-hardening-step-35.spec.ts"
       ],
       "verification": "The grid now has role=status. Focused desktop/mobile Axe regressions pass, and the complete post-remediation browser matrix is running; its result will be recorded in Step 38 evidence.",
-      "limitation": "Fixed in the local Sites build. Published review verification is still required before closure."
+      "limitation": "Fixed in the local Sites build. Published review verification is still required before closure.",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "deploymentId": "appgdep_6ae13dc32fb481919bdf975c41e4b2c8",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T04:12:46.000Z",
+        "url": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+        "tests": "Delayed /data/catalog.json by six seconds in fresh public browser contexts. At 1440x900 and 390x844 the actual skeleton exposed role=status, aria-label=\"Loading catalogue resources\", and aria-busy=true; axe-core found zero WCAG 2.2 A/AA violations. Catalogue subsequently loaded 324 resources. No console errors, uncaught exceptions, failed requests or bad responses.",
+        "evidence": [
+          "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-281-explore-loading-desktop-1440x900.png",
+          "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-281-explore-loading-mobile-390x844.png",
+          "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-281-public-runtime.json"
+        ]
+      }
     },
     {
       "id": "AUD-282",
@@ -11499,9 +11578,19 @@
         "packages/schemas/src/__tests__/schemas.test.ts"
       ],
       "fixCommit": null,
-      "status": "fixed-local-verified",
+      "status": "closed",
       "evidence": "quality/evidence/step-39/zod-collection-audit.json",
-      "verification": "The schema suite passes 144 tests including 25,000-entry hostile collection regressions; full typecheck and lint pass; pnpm audit:all passes all 16 behavioral gates, 324/324 resource isolation, 718-page Astro plus Sites build, bundle budgets, provenance, secret/security and dependency audits; the complete Playwright run passes 274 app, 224 Sites Worker and 3 preview tests with 144 configured skips and zero failures. Public release verification remains pending."
+      "verification": {
+        "type": "schema-and-ci",
+        "checkedAt": "2026-10-28T04:12:46.000Z",
+        "sourceCommit": "c12a71de3a90a395240324c7abb8c6f53bd145b2",
+        "command": "pnpm exec vitest run packages/schemas/src/__tests__/schemas.test.ts -t \"rejects oversized project collections before parsing hostile entries\"",
+        "result": "PASS: 1 targeted hostile-collection regression; pnpm audit:dependencies reports no known vulnerabilities; exact-head CI run 40628686624 audit:all step completed successfully.",
+        "ciRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40628686624",
+        "evidence": [
+          "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-security-cli-validation.json"
+        ]
+      }
     },
     {
       "id": "AUD-306",
@@ -11555,9 +11644,22 @@
         "pnpm-lock.yaml"
       ],
       "fixCommit": null,
-      "status": "fixed-local-verified",
+      "status": "closed",
       "evidence": "quality/evidence/step-40/body-parser-audit.json",
-      "verification": "The workspace override resolves body-parser@2.4.0; pnpm install --frozen-lockfile passes, pnpm audit reports no known vulnerabilities, the MCP client/SSE workflow tests pass 7/7, and pnpm audit:all passes 16/16 behavioral gates, 324/324 resource-isolation scans, production builds, bundle budgets, license/provenance, secrets/security, and dependency audits. Published release verification remains pending."
+      "verification": {
+        "type": "dependency-and-ci",
+        "checkedAt": "2026-10-28T04:12:46.000Z",
+        "sourceCommit": "c12a71de3a90a395240324c7abb8c6f53bd145b2",
+        "commands": [
+          "pnpm audit:dependencies",
+          "pnpm why body-parser -r"
+        ],
+        "result": "PASS: no known vulnerabilities; dependency tree resolves body-parser@2.4.0 only; exact-head CI run 40628686624 audit:all step completed successfully.",
+        "ciRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40628686624",
+        "evidence": [
+          "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-security-cli-validation.json"
+        ]
+      }
     },
     {
       "id": "AUD-308",
@@ -11707,9 +11809,22 @@
         "pnpm-lock.yaml"
       ],
       "fixCommit": null,
-      "status": "fixed-local-verified",
+      "status": "closed",
       "evidence": "quality/evidence/step-41/pnpm-audit.json; quality/evidence/step-41/dependency-audit-after.log",
-      "verification": "The workspace now resolves undici 7.30.1 and 8.12.2. pnpm audit:dependencies reports no known vulnerabilities and pnpm why confirms the patched versions. Full quality gates are being rerun; public review verification remains pending."
+      "verification": {
+        "type": "dependency-and-ci",
+        "checkedAt": "2026-10-28T04:12:46.000Z",
+        "sourceCommit": "c12a71de3a90a395240324c7abb8c6f53bd145b2",
+        "commands": [
+          "pnpm audit:dependencies",
+          "pnpm why undici -r"
+        ],
+        "result": "PASS: no known vulnerabilities; dependency tree resolves undici@7.30.1 and undici@8.12.2; exact-head CI run 40628686624 audit:all step completed successfully.",
+        "ciRun": "https://github.com/danishgm-sketch/Tessellate/actions/runs/40628686624",
+        "evidence": [
+          "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-security-cli-validation.json"
+        ]
+      }
     },
     {
       "id": "AUD-313",
@@ -14402,5 +14517,5 @@
       }
     }
   ],
-  "generatedAt": "2026-10-28T02:59:16Z"
+  "generatedAt": "2026-10-28T04:12:46Z"
 }

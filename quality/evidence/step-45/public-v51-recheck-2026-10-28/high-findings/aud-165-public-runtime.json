@@ -1,0 +1,39 @@
+{
+  "source": "Public v51 Workbench UI import and standalone export; clean extraction outside repository dependencies.",
+  "site": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+  "projectId": "proj-direction-c-3bb055f30fe6458aba758ca8a0b493c6dirc",
+  "fixture": "tessellate-aud-165-user-copy.tess.json",
+  "valuesVerified": {
+    "header": "People's \"Today\" < overview",
+    "metricTitle": "People's \"headcount\"",
+    "actionLabel": "Invite \"a colleague\"",
+    "statusText": "New hires < starting this week & ready"
+  },
+  "cleanInstall": "passed",
+  "build": "passed",
+  "runtime": "passed",
+  "runtimeDependencies": [
+    "react",
+    "react-dom",
+    "lucide-react",
+    "clsx",
+    "tailwind-merge"
+  ],
+  "desktopGeometry": {
+    "width": 1440,
+    "viewport": 1440
+  },
+  "mobileGeometry": {
+    "width": 390,
+    "viewport": 390
+  },
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "badResponses": [],
+  "screenshots": [
+    "aud-165-public-workbench-authored-copy-1440.png",
+    "aud-165-standalone-desktop-authored-copy-1440.png",
+    "aud-165-standalone-mobile-authored-copy-390.png"
+  ]
+}

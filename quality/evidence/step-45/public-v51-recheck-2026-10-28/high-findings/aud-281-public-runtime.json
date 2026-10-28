@@ -1,0 +1,42 @@
+{
+  "siteVersion": 51,
+  "sourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+  "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+  "technique": "Public Site browser route with /data/catalog.json delayed for six seconds to inspect the actual visible loading skeleton.",
+  "results": [
+    {
+      "viewport": "1440x900",
+      "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+      "httpStatus": 200,
+      "loadingState": {
+        "statusRole": "status",
+        "statusLabel": "Loading catalogue resources",
+        "busy": "true",
+        "skeletonVisible": true
+      },
+      "axeViolationCount": 0,
+      "axeViolations": [],
+      "catalogueLoaded": true,
+      "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-281-explore-loading-desktop-1440x900.png"
+    },
+    {
+      "viewport": "390x844",
+      "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/explore",
+      "httpStatus": 200,
+      "loadingState": {
+        "statusRole": "status",
+        "statusLabel": "Loading catalogue resources",
+        "busy": "true",
+        "skeletonVisible": true
+      },
+      "axeViolationCount": 0,
+      "axeViolations": [],
+      "catalogueLoaded": true,
+      "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-281-explore-loading-mobile-390x844.png"
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "badResponses": []
+}

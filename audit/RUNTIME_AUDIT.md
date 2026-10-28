@@ -1,6 +1,6 @@
 # Runtime audit — product hardening and deployed-site verification
 
-This register preserves the historical resource/renderer audit and tracks the production review audit. The latest public checkpoint is Sites v51. Its full recheck passed 100 route/viewport cases, 9 Axe scans with zero violations, the desktop/mobile flagship composition and export flow, and the ten-tool and Workbench suites; the cold desktop homepage trace measured 286ms LCP and 0 CLS. A follow-up deployed run passed the clothing, digital music, flight-management and film-streaming workflows in all three directions at desktop and mobile. It also reverified 23 High findings against v51, including Compose validation, resource navigation, Workbench state/history/storage, employee content, and the homepage brief. AUD-370 through AUD-373 and those 23 findings are closed after issue-specific deployed verification. AUD-374 records a separate local laptop-host retry overflow, fixed and exercised in Docker; the public Site still reports host inference unavailable because no laptop connection is configured. The broader Step 45 and product-hardening release gates remain incomplete. D1/R2 remain absent.
+This register preserves the historical resource/renderer audit and tracks the production review audit. The latest public checkpoint is Sites v51. Its full recheck passed 100 route/viewport cases, 9 Axe scans with zero violations, the desktop/mobile flagship composition and export flow, and the ten-tool and Workbench suites; the cold desktop homepage trace measured 286ms LCP and 0 CLS. A follow-up deployed run passed the clothing, digital music, flight-management and film-streaming workflows in all three directions at desktop and mobile. It also reverified 23 High findings against v51, including Compose validation, resource navigation, Workbench state/history/storage, employee content, and the homepage brief. The latest issue-specific checks close AUD-165, AUD-175 and AUD-281 against the live v51 Site. CLI, schema, and dependency findings AUD-233, AUD-305, AUD-307 and AUD-312 were verified through their own black-box and CI checks because they are not Site runtime features. AUD-370 through AUD-373 and the earlier 23 findings are closed after issue-specific deployed verification. AUD-374 records a separate local laptop-host retry overflow, fixed and exercised in Docker; the public Site still reports host inference unavailable because no laptop connection is configured. The broader Step 45 and product-hardening release gates remain incomplete. D1/R2 remain absent.
 
 V40 served application code captured from canonical commit
 `36b873ba9d40380196a78fcabe8977d7aa881e58` (Sites source mirror
@@ -13,8 +13,9 @@ historical evidence references, not live-version assertions. V40 exposed
 AUD-358, stale version copy in the documentation. V41 removed that claim and
 passed the route checks, but exposed stale pending-status wording. Public v42
 verified the corrected historical copy at desktop and mobile and closes
-AUD-358. Local fixes are not
-considered closed until verified on a newly published Site. Evidence
+AUD-358. A Site-runtime fix is not considered closed until verified on a newly
+published Site; CLI, schema, and dependency findings close against their own
+black-box and exact-head quality gates because they are not served by Sites. Evidence
 for the v24 and v25 route sweeps is in `evidence/v24/` and `evidence/v25/`, v26
 route, resource and flagship evidence is in `evidence/v26/`, and local post-fix
 route evidence is in `evidence/local-fixed-final/`. Trace measurements are in
@@ -33,7 +34,7 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 374 findings (0 Critical, 69 High, 283 Medium, 22 Low): 117 closed after issue-specific deployed verification, plus 2 legacy closed records; 185 fixed locally and awaiting issue-specific deployed checks, 67 fixed and verified locally, 2 retain the legacy fixed status, and 1 records a documented Sites-host limitation. Public v37 closes AUD-337, AUD-342-345, and AUD-347-355 after issue-specific checks; public v39 closes AUD-357 after the mobile docs route overflow fix passed issue-specific checks at 390x844 and 1440x900; public v42 closes AUD-358 after the documentation copy passed issue-specific desktop/mobile checks. Public v44 verifies the neutral page recipe and closes AUD-359-360. Public v45 verifies Palette Studio first activation and closes AUD-361. Public v46 verifies Typography Lab first activation and the full Compose copy at desktop/mobile and closes AUD-362-363. Public v49 closes AUD-364-365 after delayed-loading Workbench Axe checks passed at desktop/mobile; AUD-366 closes the document-load attribution and false-readiness measurement defect; AUD-367 closes the screen-reader-only locator defect after visible content was checked on desktop and mobile. AUD-368 closes after eight desktop and two mobile runs plus two Chrome DevTools cache-bypass traces failed to reproduce a one-time 11,344ms startup. AUD-369 records a transitive dependency advisory found by exact-head CI; a targeted pnpm override now installs patched `qs@6.16.1` and local `pnpm audit` passes, with CI verification pending. The v49 route sweep and core-route Axe scan are recorded below. The v51 checks close AUD-370 through AUD-373 and 23 additional High findings after issue-specific deployed verification. Of 69 High findings, 62 are deployed-verified and 7 remain locally verified pending their own live checks; none remain in the local-fix-awaiting-deploy state. The 185-item verification backlog contains 178 Medium and 7 Low findings; this is verification debt, not a claim that every item remains broken. **Step 45 and the product-hardening programme are not complete.**
+**Current disposition:** 374 findings (0 Critical, 69 High, 283 Medium, 22 Low): 120 closed after issue-specific deployed verification, 4 closed after surface-specific CLI/schema/dependency verification, plus 2 legacy closed records; 185 fixed locally and awaiting issue-specific deployed checks, 60 fixed and verified locally, 2 retain the legacy fixed status, and 1 records a documented Sites-host limitation. Public v37 closes AUD-337, AUD-342-345, and AUD-347-355 after issue-specific checks; public v39 closes AUD-357 after the mobile docs route overflow fix passed issue-specific checks at 390x844 and 1440x900; public v42 closes AUD-358 after the documentation copy passed issue-specific desktop/mobile checks. Public v44 verifies the neutral page recipe and closes AUD-359-360. Public v45 verifies Palette Studio first activation and closes AUD-361. Public v46 verifies Typography Lab first activation and the full Compose copy at desktop/mobile and closes AUD-362-363. Public v49 closes AUD-364-365 after delayed-loading Workbench Axe checks passed at desktop/mobile; AUD-366 closes the document-load attribution and false-readiness measurement defect; AUD-367 closes the screen-reader-only locator defect after visible content was checked on desktop and mobile. AUD-368 closes after eight desktop and two mobile runs plus two Chrome DevTools cache-bypass traces failed to reproduce a one-time 11,344ms startup. AUD-369 records a transitive dependency advisory found by exact-head CI; a targeted pnpm override now installs patched `qs@6.16.1` and local `pnpm audit` passes, with CI verification pending. The v49 route sweep and core-route Axe scan are recorded below. The v51 checks close AUD-370 through AUD-373 and 23 additional High findings after issue-specific deployed verification. The latest checks close three more High findings against the live Site (AUD-165, AUD-175 and AUD-281), and close four CLI/schema/dependency findings after their matching black-box and exact-head audit checks (AUD-233, AUD-305, AUD-307 and AUD-312). **No unresolved High findings remain.** The 185-item verification backlog contains 178 Medium and 7 Low findings; this is verification debt, not a claim that every item remains broken. **Step 45 and the product-hardening programme are not complete.**
 
 ## Public Sites v51 issue-specific High verification — 2026-10-28
 
@@ -775,8 +776,8 @@ No Critical findings are recorded in this audit register.
 - **Root cause:** The Vite generator inserted semantic-role values directly into quoted JSX attributes and raw JSX children, without escaping them as JavaScript string expressions.
 - **Affected code:** `packages/exporter/src/source-tree.ts`, `packages/exporter/src/__tests__/standalone-export-fidelity.test.ts`, and `quality/export/benchmark-standalone-runtime.ts`.
 - **Remediation:** Serialize user-authored header, metric, action, status, and class values with `JSON.stringify` into JSX expressions so React renders them as text and attributes.
-- **Verification:** The red-to-green regression performs a clean install/build and checks visible text, absence of injected script elements, desktop/mobile layout, console, and network state. All 300 projects in the 100-brief × three-direction export benchmark also install, build, open in Vite preview, and pass every-screen desktop/mobile checks with zero Tessellate runtime dependencies. See `quality/STEP_23_EVIDENCE.md`. Public review verification remains pending for Step 45.
-- **Disposition:** Fixed and verified locally.
+- **Verification:** The red-to-green regression performs a clean install/build and checks visible text, absence of injected script elements, desktop/mobile layout, console, and network state. All 300 projects in the 100-brief × three-direction export benchmark also install, build, open in Vite preview, and pass every-screen desktop/mobile checks with zero Tessellate runtime dependencies. The public v51 Workbench then imported a manifest containing quotes, apostrophe, `<`, and `&` through its UI, exported a standalone ZIP, and passed clean install/build/browser checks at 1440×900 and 390×844. See `quality/STEP_23_EVIDENCE.md` and the [public runtime report](../quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-165-public-runtime.json).
+- **Disposition:** Closed after deployed v51 verification.
 
 ### AUD-167 — Generated navigation brand disagreed with the project brand
 
@@ -852,8 +853,8 @@ No Critical findings are recorded in this audit register.
 - **Root cause:** The exporter built a second navigation menu from every screen instead of using `ProjectManifest.navigation` and did not account for screen-level navigation resources.
 - **Affected code:** `packages/exporter/src/source-tree.ts`, exporter regressions, and `packages/exporter/src/agent-handoff.ts`.
 - **Remediation:** Bind navigation resources and shell fallback links to manifest primary/secondary items, render shell navigation only for the active screen without a navigation resource, and switch screens through accessible hash links.
-- **Verification:** A red-to-green clean install/build/real-browser regression now verifies declared destinations, hidden-screen omission, navigation resource/shell fallback switching, zero mobile overflow, and zero console, warning, exception or network errors. Published review verification remains pending for Step 45.
-- **Disposition:** Fixed and verified locally.
+- **Verification:** A red-to-green clean install/build/real-browser regression verifies declared destinations, hidden-screen omission, navigation resource/shell fallback switching, zero mobile overflow, and zero console, warning, exception or network errors. The employee-experience ZIP captured from public v51 was extracted outside repository dependencies, installed, built and browsed at 1440×900 and 390×844. The rendered navigation exactly matched the five declared primary items, contained no duplicate link, omitted Onboarding from navigation, and its in-product CTA opened the Onboarding screen. See the [runtime report](../quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-175-standalone-runtime.json).
+- **Disposition:** Closed after deployed v51 verification.
 
 ### AUD-233 — Resource scaffolder invented publish-ready provenance and certification metadata
 
@@ -863,7 +864,8 @@ No Critical findings are recorded in this audit register.
 - **Root cause:** The generator reused launch-ready metadata and the schema could not represent unknown provenance or an empty responsive verification list.
 - **Affected code:** `packages/cli/src/commands/create-resource.ts`, `packages/schemas/src/resource.ts`, and `packages/registry-gate/src/checks/license-provenance-check.ts`.
 - **Remediation:** Generate an unpublished draft with unknown provenance, unselected license and unverified redistribution, no claimed responsive or accessibility verification, and zero unassessed quality scores. Allow unknown provenance and empty verified widths in the schema, and block unknown provenance at registry submission.
-- **Verification:** Schema, registry-gate, and CLI regressions pass. The real CLI was built and run from an isolated temporary directory; manifest validation succeeds while metadata remains explicitly unverified. Fixed locally; not a Site runtime issue.
+- **Verification:** Schema, registry-gate, and CLI regressions pass. The real CLI was built and run from a fresh temporary directory; its generated manifest remains a draft with unassigned authorship, unknown provenance, unasserted licensing, no responsive/accessibility certification, and zero quality scores. See the [CLI black-box record](../quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-233-cli-blackbox.json). This command is not served by the Site, so Site deployment verification does not apply.
+- **Disposition:** Closed after CLI black-box verification.
 
 ### AUD-263 — Resource catalogue presented template accessibility flags and quality scores as assessed metadata
 
@@ -884,8 +886,8 @@ No Critical findings are recorded in this audit register.
 - **Root cause:** the workspace override pinned undici 7 below its patched version and did not constrain the newly resolved undici 8 line.
 - **Affected code:** `pnpm-workspace.yaml` and `pnpm-lock.yaml`.
 - **Remediation:** move undici 7 to 7.30.1 and undici 8 to 8.12.2, matching the patched upstream release lines.
-- **Verification:** `pnpm audit:dependencies` reports no known vulnerabilities and `pnpm why undici -r` confirms only 7.30.1 and 8.12.2 remain. Full quality gates are being rerun; public review verification remains pending.
-- **Disposition:** Fixed and verified locally.
+- **Verification:** `pnpm audit:dependencies` reports no known vulnerabilities and `pnpm why undici -r` confirms only patched 7.30.1 and 8.12.2 remain. The exact-head CI `pnpm audit:all` step passed. See [`aud-security-cli-validation.json`](../quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-security-cli-validation.json). This dependency graph is not served by the static Sites runtime.
+- **Disposition:** Closed after dependency-tree and exact-head audit verification.
 
 ## MEDIUM
 
@@ -3148,7 +3150,8 @@ with zero findings. That harness race is not counted as a product defect.
 - **Root cause:** Core public/persisted collection schemas had arrays without maximum sizes and workspace packages resolved multiple Zod majors, including the affected 4.6.5 release.
 - **Affected code:** `pnpm-workspace.yaml`, `pnpm-lock.yaml`, direct Zod dependencies in `apps/api` and `packages/{schemas,workbench,mcp,registry-gate}`, collection schemas in `packages/schemas/src`, MCP device bounds, and schema tests.
 - **Remediation:** Standardize direct dependencies and Better Auth's transitive resolution on Zod 4.6.7, set product-scale upper bounds on external arrays/sets/maps, retain byte limits at API boundaries and the recursive project-node depth cap, and add large malformed collection regressions.
-- **Validation:** `pnpm audit` reports no known vulnerabilities; schema tests pass 144/144, the full unit suite passes 1,212/1,212, and `pnpm typecheck` and `pnpm lint` pass. `pnpm audit:all` passes all 16 release gates, builds 718 Astro pages and the Sites artifact, certifies resource isolation 324/324, and passes bundle, provenance/licence, security and dependency audits. Full Playwright passes 274 application, 224 Sites Worker and 3 preview tests with 144 configured skips and no failures. See [`zod-collection-audit.json`](../quality/evidence/step-39/zod-collection-audit.json) and captured gate logs. Public review verification remains pending.
+- **Validation:** `pnpm audit:dependencies` reports no known vulnerabilities; the focused malformed 25,000-entry schema regression passes, and exact-head CI run [40628686624](https://github.com/danishgm-sketch/Tessellate/actions/runs/40628686624) completed `pnpm audit:all` successfully. The current full Playwright/Axe job was still in progress when this evidence was recorded. See [`zod-collection-audit.json`](../quality/evidence/step-39/zod-collection-audit.json) and [`aud-security-cli-validation.json`](../quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-security-cli-validation.json). This API/schema dependency finding does not affect the Sites static runtime.
+- **Disposition:** Closed after schema regression and exact-head audit verification.
 
 ### AUD-281 — Explore skeleton failed a serious Axe ARIA rule
 
@@ -3157,7 +3160,8 @@ with zero findings. That harness race is not counted as a product defect.
 - **Root cause:** the skeleton grid placed `aria-label` on a generic `div` without a role.
 - **Affected code:** `apps/site/src/components/ExploreView.tsx`.
 - **Remediation:** give the inert skeleton grid `role="status"`, preserving its label and busy state.
-- **Validation:** focused desktop/mobile Axe tests pass after rebuilding. The issue is fixed locally and still awaits published review verification.
+- **Validation:** focused desktop/mobile Axe tests pass after rebuilding. On public v51, `/data/catalog.json` was delayed six seconds to capture the loading skeleton at 1440×900 and 390×844. Both showed `role="status"`, the label “Loading catalogue resources,” and `aria-busy="true"`; axe-core reported zero WCAG 2.2 A/AA violations, after which all 324 resources loaded. See the [runtime report](../quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-281-public-runtime.json).
+- **Disposition:** Closed after deployed v51 verification.
 
 ## MEDIUM (continued)
 
@@ -3205,7 +3209,8 @@ with zero findings. That harness race is not counted as a product defect.
 - **Reproduction:** Run `pnpm audit:all` before the workspace override and inspect the final dependency audit. Run `pnpm why body-parser -r` to inspect the SDK dependency path.
 - **Root cause:** The MCP SDK's Express dependency graph resolved affected `body-parser@2.3.0`, and the workspace had no patched-version override.
 - **Affected code:** `pnpm-workspace.yaml` and `pnpm-lock.yaml`.
-- **Remediation:** Pin the affected dependency to patched `body-parser@2.4.0`. A frozen install passes, `pnpm audit` reports no known vulnerabilities, the MCP client/SSE workflow tests pass 7/7, and `pnpm audit:all` passes all 16 behavioral gates, 324/324 source-isolation checks, production builds, bundle budgets, provenance, security and dependency audits. Public release verification remains pending.
+- **Remediation:** Pin the affected dependency to patched `body-parser@2.4.0`. A frozen install passes, the exact dependency tree contains only `body-parser@2.4.0`, `pnpm audit:dependencies` reports no known vulnerabilities, the MCP client/SSE workflow tests pass 7/7, and exact-head CI `pnpm audit:all` passes. See [`aud-security-cli-validation.json`](../quality/evidence/step-45/public-v51-recheck-2026-10-28/high-findings/aud-security-cli-validation.json). This package-graph finding is not served by the static Sites runtime.
+- **Disposition:** Closed after dependency-tree and exact-head audit verification.
 
 ## MEDIUM (continued — 2026-10-23)
 
