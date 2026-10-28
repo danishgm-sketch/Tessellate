@@ -15,7 +15,7 @@ const auditClosureFixCommit = execFileSync('git', ['rev-parse', 'HEAD'], { encod
 
 audit.scope = `Tessellate production review audit. The current public Site is v50 at ${site}, serving application code captured from canonical commit ${canonicalSourceCommit} and Sites mirror ${siteSourceCommit}; saved version ${siteVersionId}, deployment ${deploymentId} succeeded. Exact-source GitHub CI run 40585283183 passed. On v50, 31 public routes passed at 1440x900 and 390x844 (62 captures), the four-route Axe matrix passed 8/8 with zero violations and zero serious/critical findings, semantic/accessibility regressions passed 10/10, and the exact employee-experience flagship journey plus independent React export passed at desktop and mobile. Live UI captures confirmed three distinct directions at both viewports, six settled previews, and zero unresolved resources or product runtime/network errors. AUD-370 and AUD-371 are closed after v50 deployed verification; AUD-372 records and closes an audit-harness screenshot taken during the explicit resource-loading state. Axe's CSP-blocked temporary style probes are instrumentation messages, not product errors; no security policy was weakened. D1/R2 are absent. The broader product-hardening programme and Step 45 remain incomplete.`;
 
-function evidenceRecord({ route, viewport, resultId, screenshot, result = 'PASS' }) {
+function _evidenceRecord({ route, viewport, resultId, screenshot, result = 'PASS' }) {
   return { resultId, route: `${site}${route.replace(/^\//, '')}`, viewport, screenshot, result };
 }
 

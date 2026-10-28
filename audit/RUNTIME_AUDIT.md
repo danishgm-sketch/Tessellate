@@ -1,6 +1,6 @@
 # Runtime audit — product hardening and deployed-site verification
 
-This register preserves the historical resource/renderer audit and tracks the production review audit. The latest public checkpoint is Sites v51. The v50 baseline passed its 31-route desktop/mobile smoke, four-route Core Axe matrix, semantic/accessibility regressions, and canonical flagship/export workflow. v51 adds the live AUD-373 hydration regression at desktop and mobile; it passed 2/2 with zero serious/critical Axe findings, console/page errors, failed requests, or HTTP errors. AUD-370 through AUD-373 are closed after issue-specific deployed verification. The broader Step 45 and product-hardening release gates remain incomplete. D1/R2 remain absent.
+This register preserves the historical resource/renderer audit and tracks the production review audit. The latest public checkpoint is Sites v51. Its full recheck passed 100 route/viewport cases, 9 Axe scans with zero violations, the desktop/mobile flagship composition and export flow, and the ten-tool and Workbench suites; the cold desktop homepage trace measured 286ms LCP and 0 CLS. A follow-up deployed run passed the clothing, digital music, flight-management and film-streaming workflows in all three directions at desktop and mobile. It also reverified 23 High findings against v51, including Compose validation, resource navigation, Workbench state/history/storage, employee content, and the homepage brief. AUD-370 through AUD-373 and those 23 findings are closed after issue-specific deployed verification. AUD-374 records a separate local laptop-host retry overflow, fixed and exercised in Docker; the public Site still reports host inference unavailable because no laptop connection is configured. The broader Step 45 and product-hardening release gates remain incomplete. D1/R2 remain absent.
 
 V40 served application code captured from canonical commit
 `36b873ba9d40380196a78fcabe8977d7aa881e58` (Sites source mirror
@@ -33,7 +33,38 @@ its affected behavior passes on a published review version.
 
 **Historical disposition at the prior checkpoint:** 321 findings (0 Critical, 66 High, 241 Medium, 14 Low). This was superseded by the current v24 audit below.
 
-**Current disposition:** 371 findings (0 Critical, 69 High, 281 Medium, 21 Low): 90 closed after issue-specific deployed verification, plus 2 legacy closed records; 187 fixed locally and awaiting issue-specific deployed checks, 89 fixed and verified locally, 2 retain the legacy fixed status, and 1 records a documented Sites-host limitation. Public v37 closes AUD-337, AUD-342-345, and AUD-347-355 after issue-specific checks; public v39 closes AUD-357 after the mobile docs route overflow fix passed issue-specific checks at 390x844 and 1440x900; public v42 closes AUD-358 after the documentation copy passed issue-specific desktop/mobile checks. Public v44 verifies the neutral page recipe and closes AUD-359-360. Public v45 verifies Palette Studio first activation and closes AUD-361. Public v46 verifies Typography Lab first activation and the full Compose copy at desktop/mobile and closes AUD-362-363. Public v49 closes AUD-364-365 after delayed-loading Workbench Axe checks passed at desktop/mobile; AUD-366 closes the document-load attribution and false-readiness measurement defect; AUD-367 closes the screen-reader-only locator defect after visible content was checked on desktop and mobile. AUD-368 closes after eight desktop and two mobile runs plus two Chrome DevTools cache-bypass traces failed to reproduce a one-time 11,344ms startup. AUD-369 records a transitive dependency advisory found by exact-head CI; a targeted pnpm override now installs patched `qs@6.16.1` and local `pnpm audit` passes, with CI verification pending. The v49 route sweep (31 routes × 2 viewports), core-route Axe scan (Home, Explore, Compose, resource detail), flagship, and generated Workbench Axe are now recorded below. AUD-370 records a homepage accessible-name defect and AUD-371 records a dangling mobile Explore dialog reference; both are fixed locally and await issue-specific verification on the next public Site version. Of 69 High findings, 39 are deployed-verified and 30 are locally verified; none remain in the local-fix-awaiting-deploy state. The 187-awaiting-verification backlog contains 180 Medium and 7 Low findings and is not a count of known still-broken features; each needs its own live check before closure. **Step 45 and the product-hardening programme are not complete.**
+**Current disposition:** 374 findings (0 Critical, 69 High, 283 Medium, 22 Low): 117 closed after issue-specific deployed verification, plus 2 legacy closed records; 185 fixed locally and awaiting issue-specific deployed checks, 67 fixed and verified locally, 2 retain the legacy fixed status, and 1 records a documented Sites-host limitation. Public v37 closes AUD-337, AUD-342-345, and AUD-347-355 after issue-specific checks; public v39 closes AUD-357 after the mobile docs route overflow fix passed issue-specific checks at 390x844 and 1440x900; public v42 closes AUD-358 after the documentation copy passed issue-specific desktop/mobile checks. Public v44 verifies the neutral page recipe and closes AUD-359-360. Public v45 verifies Palette Studio first activation and closes AUD-361. Public v46 verifies Typography Lab first activation and the full Compose copy at desktop/mobile and closes AUD-362-363. Public v49 closes AUD-364-365 after delayed-loading Workbench Axe checks passed at desktop/mobile; AUD-366 closes the document-load attribution and false-readiness measurement defect; AUD-367 closes the screen-reader-only locator defect after visible content was checked on desktop and mobile. AUD-368 closes after eight desktop and two mobile runs plus two Chrome DevTools cache-bypass traces failed to reproduce a one-time 11,344ms startup. AUD-369 records a transitive dependency advisory found by exact-head CI; a targeted pnpm override now installs patched `qs@6.16.1` and local `pnpm audit` passes, with CI verification pending. The v49 route sweep and core-route Axe scan are recorded below. The v51 checks close AUD-370 through AUD-373 and 23 additional High findings after issue-specific deployed verification. Of 69 High findings, 62 are deployed-verified and 7 remain locally verified pending their own live checks; none remain in the local-fix-awaiting-deploy state. The 185-item verification backlog contains 178 Medium and 7 Low findings; this is verification debt, not a claim that every item remains broken. **Step 45 and the product-hardening programme are not complete.**
+
+## Public Sites v51 issue-specific High verification — 2026-10-28
+
+The latest browser audit additionally verified these 23 High-severity findings
+against the public v51 Site at desktop and mobile viewports where applicable:
+
+- **Content and composition:** AUD-134–137 verified the clothing, digital music,
+  flight-management, and film-streaming product architectures across all three
+  visible directions. AUD-139 verified Product Catalog navigation to Product
+  Detail. AUD-317 verified the homepage starts with an employee-experience
+  brief.
+- **Compose and rendering:** AUD-141 passed an Axe scan over all 40 Gold
+  resources in the expressive dark preview. AUD-143–144 verified whitespace
+  rejection and removal of stale direction results. AUD-149 verified manifest
+  node kinds in the Compose-to-Workbench handoff.
+- **Workbench state and persistence:** AUD-152 verified unique screen IDs/routes
+  after duplicate, AUD-157 verified exact undo/redo and checkpoint restoration
+  after reload, AUD-158 verified source history survives Blend, and AUD-159–161
+  plus AUD-164 verified storage-failure recovery and truthful save status.
+- **Employee experience content and controls:** AUD-167–170 verified brand,
+  navigation, directory data and engagement content. AUD-173–174 verified that
+  pagination and settings controls are accurately disabled with useful reasons.
+
+The public-v51 evidence and screenshots are indexed under
+[`quality/evidence/step-45/public-v51-recheck-2026-10-28/`](../quality/evidence/step-45/public-v51-recheck-2026-10-28/).
+The issue ledger now records 117 issue-specific deployed closures overall. Of
+69 High findings, 62 are deployed-verified and 7 remain locally verified
+pending their own live checks. Seven Medium and Low findings are also locally
+verified; 185 additional Medium/Low findings still await issue-specific
+verification. No P0 or Critical finding is open, but Step 45 and the hardening
+programme are not complete.
 
 ## Public Sites v37 deployed checkpoint
 
@@ -4103,4 +4134,81 @@ passed. D1 and R2 remain unbound; no paid infrastructure was added.
 
 **Status:** Closed after deployed v51 verification. Fix commit: `dcac2321b3c2747c7d76f0d3f1260677fdb9bf48`.
 
-The v51 ledger contains 373 findings: 0 Critical, 69 High, 282 Medium, and 22 Low. Statuses are 94 issue-specific deployed-verified closures, 185 fixed findings awaiting their own deployed checks, 89 locally verified, 2 legacy fixed, 2 legacy closed, and 1 documented Sites-host limitation. Of the High findings, 39 have issue-specific deployed verification and 30 are locally verified. The broad hardening programme and Step 45 remain incomplete; this checkpoint makes no release-complete claim.
+The v51 ledger contains 374 findings: 0 Critical, 69 High, 283 Medium, and 22 Low. Statuses are 94 issue-specific deployed-verified closures, 185 fixed findings awaiting their own deployed checks, 90 locally verified, 2 legacy fixed, 2 legacy closed, and 1 documented Sites-host limitation. Of the High findings, 39 have issue-specific deployed verification and 30 remain locally verified. AUD-374 is a medium-severity local backend issue and its Docker lifecycle tests pass after the fix. The broad hardening programme and Step 45 remain incomplete; this checkpoint makes no release-complete claim.
+
+## MEDIUM — Sites v51 full recheck and local laptop-host recovery
+
+The public review Site remains v51, serving canonical application source
+`e70450cba88cf09d2f68ee126e31a51474c54de2` through Sites mirror
+`e19db8af22097eb6d20a9fb2555157234ea1831d`. No web application source changed
+for this checkpoint.
+
+- **Route and responsive sweep:** 100/100 Chromium cases passed. This includes
+  all 32 required/representative routes at 1440×900 and 390×844, plus the six
+  major shells at 360, 430, 768, 1024, 1280 and 1536 pixels. Every response was
+  HTTP 200; no empty main content, horizontal overflow, console error/warning,
+  uncaught exception, failed request, or HTTP error was recorded.
+- **Flagship and export:** The exact employee-experience brief passed through
+  Compose, three directions, Direction C, Workbench, inherited/local DNA
+  overrides, lock, radical recomposition, replacement, Surprise Me, Undo/Redo,
+  Preview, manifest and standalone React ZIP on desktop and mobile. The ZIP was
+  extracted and installed outside the repository, built, and opened at desktop
+  and mobile sizes. It retained project identity, locked/replaced content, had
+  no `@tessellate/*` runtime dependency and no unresolved resource or browser
+  errors.
+- **Accessibility:** 9 Axe scans passed with zero violations, including zero
+  serious/critical findings. The set includes homepage, Explore, Compose,
+  resource detail, generated Workbench, and desktop/mobile generated preview.
+  Manual review confirmed the mobile Preview view is usable and has no clipping.
+- **Tools and Workbench:** All ten tools were loaded and exercised at 1440×900
+  and 390×844 (43 passed, 21 profile-scoped skips). Workbench fundamentals,
+  inheritance, mutations, structural actions, history and persistence passed
+  38 tests with 6 profile-scoped skips; all five modes passed on desktop/mobile.
+- **Network:** The flagship desktop/mobile flows recorded 167 responses,
+  including `/data/catalog.json` and inference health. Failed requests,
+  bad responses and console errors were zero. The health endpoint returned
+  HTTP 200 with `apiOnline: false` and `hostOnline: false`; this is the expected
+  unavailable state because Sites has no configured connection to this laptop.
+  D1 and R2 remain unbound.
+- **Performance:** A cold, cache-bypassed Chrome DevTools trace at 1440×900
+  reported 286ms LCP (47ms TTFB, 239ms render delay) and CLS 0.00. CrUX field
+  data and trace-derived INP were unavailable. The MCP tool denied raw trace
+  file export outside its configured roots; the inline metrics are retained in
+  [the machine summary](../quality/evidence/step-45/public-v51-recheck-2026-10-28/performance/home-desktop-summary.json).
+
+See [route report](../quality/evidence/step-45/public-v51-recheck-2026-10-28/route-audit.json),
+[Axe report](../quality/evidence/step-45/public-v51-recheck-2026-10-28/axe/axe-audit.json),
+[network report](../quality/evidence/step-45/public-v51-recheck-2026-10-28/network/network-audit.json),
+[flagship results](../quality/evidence/step-45/public-v51-recheck-2026-10-28/flagship/),
+and [screenshots](../quality/evidence/step-45/public-v51-recheck-2026-10-28/).
+
+### AUD-374 — Long laptop-host outage crashes retry backoff
+
+**Severity:** Medium (optional laptop inference; browser-local Core remains
+available). **Status:** Fixed and verified locally in the Docker runtime.
+
+**Evidence:** Before the fix, the host container restarted four times while
+the local API was unavailable. Its retry loop raised
+`OverflowError: int too large to convert to float`. A regression test using
+`retry_delay(1_000_000)` reproduced the overflow before the implementation
+change. The sanitized incident note is in
+[docker-retry-overflow-redacted.txt](../quality/evidence/step-45/public-v51-recheck-2026-10-28/docker-retry-overflow-redacted.txt).
+
+**Reproduction:** Leave the laptop host daemon polling an unavailable API for
+enough consecutive failures to exceed the old exponent range. Observe the
+uncaught float-conversion overflow and Docker restart. Run the added extreme
+retry-delay regression against the old code to reproduce directly.
+
+**Root cause:** `retry_delay` computed `POLL_INTERVAL_SEC * (2 ** N)` before
+applying `min(..., MAX_RETRY_DELAY_SEC)`, so the cap could not prevent the
+unbounded exponent from being converted to a float.
+
+**Affected code:** `apps/host-daemon/daemon.py` and
+`apps/host-daemon/tests/test_daemon.py`.
+
+**Remediation and verification:** Retry delay now doubles iteratively and stops
+as soon as it reaches the 30-second maximum. The host-daemon suite passes 10/10;
+the rebuilt API and host containers report healthy, `/health` returns HTTP 200,
+and `scripts/verify-laptop-backend.mjs` passes all eight lifecycle checks,
+including queue recovery and truthful unavailability when dependencies stop.
+No Site application source changed, so public v51 remains the latest version.

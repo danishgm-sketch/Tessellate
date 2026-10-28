@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. Latest public checkpoint: Sites v51 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, serving code from canonical commit e70450cba88cf09d2f68ee126e31a51474c54de2 and Sites source mirror e19db8af22097eb6d20a9fb2555157234ea1831d; saved version appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896, deployment appgdep_6ae13dc32fb481919bdf975c41e4b2c8 succeeded. Exact-head GitHub CI run 40603281088 passed. The v50 31-route desktop/mobile smoke, four-route Axe matrix, semantic/accessibility regressions, and flagship/export workflow remain the latest full product suite; v51 additionally passed the AUD-373 live hydration regression at desktop and mobile with no serious/critical Axe findings, console/page errors, failed requests, or HTTP errors. AUD-370 through AUD-373 have issue-specific deployed verification. D1/R2 are absent. The broader product-hardening programme and Step 45 remain incomplete.",
+  "scope": "Tessellate production review audit. Latest public checkpoint: Sites v51 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/, serving app source from canonical e70450cba88cf09d2f68ee126e31a51474c54de2 and Sites mirror e19db8af22097eb6d20a9fb2555157234ea1831d. The 2026-10-28 full v51 recheck passed 100 route/viewport cases, 9 Axe scans with zero violations, the desktop/mobile flagship workflow and independent export, ten tool checks, Workbench hardening suites, and a 286ms cold homepage LCP trace with CLS 0. AUD-370 through AUD-373 and AUD-134 through AUD-137, AUD-139, AUD-141, AUD-143-144, AUD-149, AUD-152, AUD-157-161, AUD-164, AUD-167-170, AUD-173-174 and AUD-317 have issue-specific deployed verification on v51. AUD-374 is a local laptop-host retry overflow fixed and verified in Docker; the public Site still reports inference unavailable because no laptop connection is configured. D1/R2 are absent. The broader Step 45 and product-hardening release gates remain incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -4673,7 +4673,96 @@
         "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/desktop-full-062c7f0e.json",
         "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/mobile-full-062c7f0e.json"
       ],
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-134",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/domain-workflow-results-desktop-chrome.json"
+          },
+          {
+            "resultId": "AUD-134",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/domain-workflow-results-mobile-chrome.json"
+          },
+          {
+            "resultId": "AUD-134",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/ecom-01-desktop-chrome-direction-01.png"
+          },
+          {
+            "resultId": "AUD-134",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/ecom-01-desktop-chrome-direction-02.png"
+          },
+          {
+            "resultId": "AUD-134",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/ecom-01-desktop-chrome-direction-03.png"
+          },
+          {
+            "resultId": "AUD-134",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/ecom-01-mobile-chrome-direction-01.png"
+          },
+          {
+            "resultId": "AUD-134",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/ecom-01-mobile-chrome-direction-02.png"
+          },
+          {
+            "resultId": "AUD-134",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/ecom-01-mobile-chrome-direction-03.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-135",
@@ -4710,7 +4799,96 @@
         "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/desktop-full-062c7f0e.json",
         "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/mobile-full-062c7f0e.json"
       ],
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-135",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/domain-workflow-results-desktop-chrome.json"
+          },
+          {
+            "resultId": "AUD-135",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/domain-workflow-results-mobile-chrome.json"
+          },
+          {
+            "resultId": "AUD-135",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/ecom-04-desktop-chrome-direction-01.png"
+          },
+          {
+            "resultId": "AUD-135",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/ecom-04-desktop-chrome-direction-02.png"
+          },
+          {
+            "resultId": "AUD-135",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/ecom-04-desktop-chrome-direction-03.png"
+          },
+          {
+            "resultId": "AUD-135",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/ecom-04-mobile-chrome-direction-01.png"
+          },
+          {
+            "resultId": "AUD-135",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/ecom-04-mobile-chrome-direction-02.png"
+          },
+          {
+            "resultId": "AUD-135",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/ecom-04-mobile-chrome-direction-03.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-136",
@@ -4746,7 +4924,96 @@
         "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/desktop-full-062c7f0e.json",
         "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/mobile-full-062c7f0e.json"
       ],
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-136",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/domain-workflow-results-desktop-chrome.json"
+          },
+          {
+            "resultId": "AUD-136",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/domain-workflow-results-mobile-chrome.json"
+          },
+          {
+            "resultId": "AUD-136",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/trv-03-desktop-chrome-direction-01.png"
+          },
+          {
+            "resultId": "AUD-136",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/trv-03-desktop-chrome-direction-02.png"
+          },
+          {
+            "resultId": "AUD-136",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/trv-03-desktop-chrome-direction-03.png"
+          },
+          {
+            "resultId": "AUD-136",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/trv-03-mobile-chrome-direction-01.png"
+          },
+          {
+            "resultId": "AUD-136",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/trv-03-mobile-chrome-direction-02.png"
+          },
+          {
+            "resultId": "AUD-136",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/trv-03-mobile-chrome-direction-03.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-137",
@@ -4783,7 +5050,96 @@
         "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/desktop-full-062c7f0e.json",
         "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/mobile-full-062c7f0e.json"
       ],
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-137",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/domain-workflow-results-desktop-chrome.json"
+          },
+          {
+            "resultId": "AUD-137",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/domain-workflow-results-mobile-chrome.json"
+          },
+          {
+            "resultId": "AUD-137",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/med-04-desktop-chrome-direction-01.png"
+          },
+          {
+            "resultId": "AUD-137",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/med-04-desktop-chrome-direction-02.png"
+          },
+          {
+            "resultId": "AUD-137",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/med-04-desktop-chrome-direction-03.png"
+          },
+          {
+            "resultId": "AUD-137",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/med-04-mobile-chrome-direction-01.png"
+          },
+          {
+            "resultId": "AUD-137",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/med-04-mobile-chrome-direction-02.png"
+          },
+          {
+            "resultId": "AUD-137",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/domains/med-04-mobile-chrome-direction-03.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-138",
@@ -4855,7 +5211,38 @@
         "quality/evidence/step-14/manual-review/after/ecom-cta-runtime-desktop.json",
         "quality/evidence/step-14/manual-review/after/ecom-cta-runtime-mobile.json"
       ],
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-139",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/036.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/028.png"
+          },
+          {
+            "resultId": "AUD-139",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/037.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/029.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-140",
@@ -4966,7 +5353,27 @@
         "before": "The CI mobile run found three serious violations; the local mobile run found two.",
         "after": "The 40-Gold-resource Axe sweep passes on desktop and mobile; six keyboard and responsive browser checks pass."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-141",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/preview-content/",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/axe/mobile-gold-resources-dark-expressive.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/axe/workbench-preview-mobile-390.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-142",
@@ -5046,7 +5453,38 @@
         "before": "Visible UI browser checks failed on desktop and mobile: no validation alert was shown and directions could be generated from whitespace.",
         "after": "Both browser projects reject the input, focus the field, expose an accessible error, and show no direction cards."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-143",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/087.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/097.png"
+          },
+          {
+            "resultId": "AUD-143",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/088.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/098.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-144",
@@ -5096,7 +5534,58 @@
         "before": "Separate visible UI browser tests failed on the old source: both editing the brief and changing Visual Ambition left the previous direction cards available; the setting-specific run produced no stale-state status.",
         "after": "The 16-run desktop/mobile suite hides stale directions after either a brief or setting change and announces that recomposition is required."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-144",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/083.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/067.png"
+          },
+          {
+            "resultId": "AUD-144",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/084.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/068.png"
+          },
+          {
+            "resultId": "AUD-144",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/085.json"
+          },
+          {
+            "resultId": "AUD-144",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/compose",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/086.json"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-145",
@@ -5306,7 +5795,38 @@
         "before": "The new composer contract test failed because a block resource was emitted as section.",
         "after": "The composer contract and desktop/mobile visible selection journeys pass with resource-kind-preserving nodes."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-149",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/099.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/100.png"
+          },
+          {
+            "resultId": "AUD-149",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/101.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/102.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-150",
@@ -5436,7 +5956,27 @@
         "before": "The visible regression failed: both copies had route /-copy, and canonical manifest validation returned false.",
         "after": "Two copies receive /marketing-home-copy and /marketing-home-copy-2; screen/node IDs and routes are unique, and the exported manifest validates."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-152",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/155.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/156.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-153",
@@ -5655,7 +6195,58 @@
         "before": "The baseline desktop and mobile reports record 51 visible edits, a project manifest restored at ambition 51, and undoEnabledAfterReload=false. The browser regression failed on the disabled Undo control.",
         "after": "Desktop and mobile browser tests preserve the 50-step history window across reload, undo all 50 edits to the exact retained manifest, redo all 50 to the exact final manifest, and restore a named checkpoint after another reload. Each report records zero console errors or warnings, uncaught exceptions, failed requests, and HTTP errors."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-157",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/225.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/226.png"
+          },
+          {
+            "resultId": "AUD-157",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/227.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/228.png"
+          },
+          {
+            "resultId": "AUD-157",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/219.json"
+          },
+          {
+            "resultId": "AUD-157",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/220.json"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-158",
@@ -5696,7 +6287,27 @@
         "before": "The visible-browser regression passed through Blend and blended-project reload, then failed when returning to the source project. The source UI entered recovery mode with a missing history snapshot. The baseline report records zero console errors, failed requests, or HTTP errors.",
         "after": "The same desktop UI regression reloads the blended project, returns to the source project, confirms Undo is enabled, and undoes the source edit to its prior Design DNA value. The report records zero console errors, failed requests, or HTTP errors."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-158",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/103.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/104.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-159",
@@ -5741,7 +6352,38 @@
         "before": "The visible browser regression reproduced the failure at desktop and mobile viewports.",
         "after": "The matching browser regression passed at desktop and mobile viewports; runtime reports record zero console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-159",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/248.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/249.png"
+          },
+          {
+            "resultId": "AUD-159",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/250.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/251.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-160",
@@ -5786,7 +6428,38 @@
         "before": "The visible browser regression reproduced the failure at desktop and mobile viewports.",
         "after": "The matching browser regression passed at desktop and mobile viewports; runtime reports record zero console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-160",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/252.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/253.png"
+          },
+          {
+            "resultId": "AUD-160",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/254.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/255.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-161",
@@ -5834,7 +6507,38 @@
         "before": "The visible browser regression reproduced the failure at desktop and mobile viewports.",
         "after": "The matching browser regression passed at desktop and mobile viewports; runtime reports record zero console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-161",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/240.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/241.png"
+          },
+          {
+            "resultId": "AUD-161",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/242.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/243.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-162",
@@ -5963,7 +6667,38 @@
         "before": "The browser regression is configured to save a before capture if the false recovery-journal claim appears; no before capture was produced in this run.",
         "after": "Desktop and mobile reports confirm that the unavailable stores are reported truthfully, the current manifest remains exportable, and editing remains available, with no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-164",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/256.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/257.png"
+          },
+          {
+            "resultId": "AUD-164",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/258.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/259.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-165",
@@ -6090,7 +6825,38 @@
         "before": "The pre-fix browser-captured manifest showed People & Co in the manifest and People & Teams in nine resource props.",
         "after": "The desktop and mobile UI journey records eight brand-bearing props and zero mismatches; the visible settings and Teams navigation both display People & Co."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-167",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/099.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/100.png"
+          },
+          {
+            "resultId": "AUD-167",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/101.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/102.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-168",
@@ -6132,7 +6898,38 @@
         "before": "The pre-fix manifest CTA hrefs resolved to Onboarding and Marketing Home.",
         "after": "The browser test activates both real links in Workbench Preview and confirms the Onboarding and Teams screens appear; network and browser error lists are empty."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-168",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/099.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/100.png"
+          },
+          {
+            "resultId": "AUD-168",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/101.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/102.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-169",
@@ -6171,7 +6968,58 @@
         "before": "The pre-fix persisted manifest contained colleague rows and progress labels on Teams.",
         "after": "The visible desktop and mobile Preview show Example Product, Engineering and People teams with Team/Focus/Members/Status columns; browser assertions reject colleague rows and record zero runtime/network errors."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-169",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/099.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/100.png"
+          },
+          {
+            "resultId": "AUD-169",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/101.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/102.png"
+          },
+          {
+            "resultId": "AUD-169",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/114.png"
+          },
+          {
+            "resultId": "AUD-169",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/115.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-170",
@@ -6210,7 +7058,58 @@
         "before": "The persisted pre-fix manifest used the same rows as Team Overview and a generic “People and teams” title.",
         "after": "Desktop and mobile Preview show a “Feedback and recognition” table and timeline with explicit sample/unconnected copy; engagement rows differ from overview and no browser/network errors are reported."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-170",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/099.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/100.png"
+          },
+          {
+            "resultId": "AUD-170",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/101.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/102.png"
+          },
+          {
+            "resultId": "AUD-170",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/110.png"
+          },
+          {
+            "resultId": "AUD-170",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/111.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-171",
@@ -6333,7 +7232,38 @@
         "before": "The captured pre-fix manifest had disabled=false and children “Continue”.",
         "after": "The Workbench Preview browser test confirms the control is disabled with the visible “Paging unavailable” label and a paging-data title."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-173",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/099.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/100.png"
+          },
+          {
+            "resultId": "AUD-173",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/101.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/102.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-174",
@@ -6374,7 +7304,38 @@
         "before": "A new composition regression failed because the generated manifest had no children prop, and the screenshot showed “Explore Interface System →”.",
         "after": "The new unit and visible desktop/mobile browser assertions pass; Preview shows the disabled “Connect persistence to save” control."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-174",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/099.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/100.png"
+          },
+          {
+            "resultId": "AUD-174",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/workbench",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/101.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/regression-generated/102.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-175",
@@ -10887,9 +11848,40 @@
         "tests/e2e/home-performance-step-38.spec.ts"
       ],
       "fixCommit": null,
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "evidence": "quality/evidence/step-45/pre-rc-public-browser.json; quality/evidence/step-45/pre-rc-home-desktop.png; quality/evidence/step-45/pre-rc-home-mobile.png; tests/e2e/home-default-brief-truthfulness.spec.ts",
-      "verification": "A new desktop/mobile browser regression failed against the old default and passed after changing the default to a professional but playful 500-person employee-experience platform. Sites Worker desktop/mobile tests also pass. Public verification remains pending."
+      "verification": "A new desktop/mobile browser regression failed against the old default and passed after changing the default to a professional but playful 500-person employee-experience platform. Sites Worker desktop/mobile tests also pass. Public verification remains pending.",
+      "deployedVerification": {
+        "siteVersion": 51,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_0f9fc79805bc819189feca25649ca896",
+        "canonicalSourceCommit": "e70450cba88cf09d2f68ee126e31a51474c54de2",
+        "siteSourceCommit": "e19db8af22097eb6d20a9fb2555157234ea1831d",
+        "checkedAt": "2026-10-28T02:59:16Z",
+        "evidence": [
+          {
+            "resultId": "AUD-317",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+            "result": "PASS",
+            "viewport": {
+              "width": 1440,
+              "height": 900
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/route-audit.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/routes/route-home-1440x900.png"
+          },
+          {
+            "resultId": "AUD-317",
+            "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+            "result": "PASS",
+            "viewport": {
+              "width": 390,
+              "height": 844
+            },
+            "report": "quality/evidence/step-45/public-v51-recheck-2026-10-28/route-audit.json",
+            "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/routes/route-home-390x844.png"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-318",
@@ -13374,7 +14366,41 @@
           "quality/evidence/step-39/public-v51-filter-regression.json"
         ]
       }
+    },
+    {
+      "id": "AUD-374",
+      "severity": "medium",
+      "route": "Laptop backend host daemon retry loop",
+      "viewport": "Docker runtime",
+      "category": "runtime",
+      "title": "A long API outage overflowed the laptop host retry backoff",
+      "expected": "The retry delay stays bounded for any outage duration; the host daemon remains alive and reconnects when the API returns.",
+      "actual": "After repeated failed polls, retry_delay evaluated POLL_INTERVAL_SEC * (2 ** (consecutive_failures - 1)) before applying its cap. The large integer overflowed during float conversion and the host container restarted four times. The public Sites application kept browser-local Core functionality and reported the unconfigured host as unavailable.",
+      "reproduction": [
+        "Keep the local host daemon polling while its API is unavailable until the consecutive failure count becomes very large.",
+        "Observe OverflowError: int too large to convert to float in retry_delay and repeated host-container restarts.",
+        "Run the extreme retry-delay regression with retry_delay(1_000_000) against the pre-fix expression; it raises OverflowError."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-45/public-v51-recheck-2026-10-28/docker-retry-overflow-redacted.txt",
+      "rootCause": "The implementation formed an unbounded exponent before applying min(..., MAX_RETRY_DELAY_SEC), so float conversion failed before the cap could take effect.",
+      "affectedCode": [
+        "apps/host-daemon/daemon.py",
+        "apps/host-daemon/tests/test_daemon.py"
+      ],
+      "remediation": "Use bounded iterative doubling and stop when the configured 30-second maximum is reached. Added a black-box regression for one million consecutive failures.",
+      "fixCommit": "1a653304332c53ef73b4f6b8ded801e2610234e8",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "test": "python -m unittest discover -s apps/host-daemon/tests",
+        "testResult": "10 passed",
+        "runtime": "Both Tessellate laptop-backend containers were rebuilt from the candidate checkout and reported healthy; API /health returned HTTP 200.",
+        "lifecycle": "scripts/verify-laptop-backend.mjs passed all eight lifecycle checks, including queue recovery after API/host restart and truthful unavailable behavior when stopped.",
+        "evidence": "quality/evidence/step-45/public-v51-recheck-2026-10-28/docker-retry-overflow-redacted.txt",
+        "verifiedAt": "2026-10-28"
+      }
     }
   ],
-  "generatedAt": "2026-10-28T00:13:05.000Z"
+  "generatedAt": "2026-10-28T02:59:16Z"
 }

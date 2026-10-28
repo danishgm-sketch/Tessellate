@@ -1,6 +1,77 @@
 # Step 45 — Public review verification
 
-Status: in progress. The latest broad route, flagship, export, and Core-route Axe evidence is Sites v49. Its 31-route desktop/mobile smoke passed 62/62 captures; Home, Explore, Compose, and a resource-detail route passed 8/8 Axe scans with zero violations, and the generated flagship Workbench passed full Axe at both viewports. Two accessibility issues (AUD-370 homepage group names and AUD-371 mobile Explore dialog relationship) were fixed locally and await public verification. Public v49 also includes the targeted re-audit of 25 High findings and five three-direction benchmark briefs. Earlier v32, saved v35, and v37 material below remains historical. AUD-356 remains the external Sites/Cloudflare deprecation finding. Step 45 and the product-hardening programme remain open.
+Status: in progress. The latest full recheck is public Sites v51. It passed 100 route/viewport cases, 9 Axe scans with zero violations, the exact desktop/mobile employee-experience workflow and standalone export, ten tools, Workbench state suites, and a Chrome DevTools cold-load trace (286ms LCP, CLS 0). No new public Site defect was found. The local laptop-host retry daemon had a separate overflow defect (AUD-374); its fix and eight Docker lifecycle checks pass locally. Sites has no connection to the laptop host, so inference is truthfully unavailable on the public Site. D1/R2 remain unbound. Seven High findings are still only locally verified and await their own issue-specific deployed checks; Step 45 and the broader product-hardening programme remain open.
+
+## Public v51 full recheck and local laptop-host recovery — 2026-10-28
+
+The public review Site remains v51 and serves application source from canonical
+commit `e70450cba88cf09d2f68ee126e31a51474c54de2` (Sites mirror
+`e19db8af22097eb6d20a9fb2555157234ea1831d`). No public application files
+changed for this checkpoint.
+
+- **Routes and viewports:** 100/100 Chromium cases passed: all 32 required and
+  representative routes at 1440×900 and 390×844, and the six major shells at
+  360, 430, 768, 1024, 1280 and 1536 pixels. All were HTTP 200, with no empty
+  main content, overflow, browser errors/warnings, uncaught exceptions, failed
+  requests, or bad responses.
+- **Flagship:** The exact employee-experience brief passed the full visible UI
+  flow on desktop and mobile: catalogue readiness, three directions, Direction
+  C, Workbench handoff, local DNA overrides with reload persistence, lock,
+  radical Recompose, Replace, Surprise Me, exact Undo/Redo, Preview, manifest
+  and standalone React ZIP export. The ZIP installed outside repository
+  dependencies, built, and ran in a browser at desktop and mobile sizes; project
+  identity and locked/replaced content were retained with no unresolved refs,
+  `@tessellate/*` dependency, or browser error.
+- **Accessibility:** 9 Axe scans reported zero violations, including zero
+  serious/critical findings, across public Core routes and the generated
+  Workbench/product preview. The mobile Preview view was visually inspected and
+  remained usable without clipping.
+- **Tools and editor:** The ten tools passed their interaction suite with 43
+  passed and 21 profile-scoped skips at desktop/mobile. Workbench fundamentals,
+  inheritance, mutation, structural, history and persistence suites passed 38
+  cases with 6 profile-scoped skips; all five modes passed at both viewports.
+- **Network:** The flagship captured 167 responses across desktop and mobile.
+  `/data/catalog.json` and inference health returned HTTP 200; failed requests,
+  bad responses, and console errors were zero. Inference health truthfully
+  reports `apiOnline: false` and `hostOnline: false` because no laptop API
+  connection is configured for Sites. D1/R2 are not bound.
+- **Performance:** Chrome DevTools cold cache-bypass trace at 1440×900 measured
+  LCP 286ms (47ms TTFB, 239ms render delay), CLS 0.00. Field CrUX and trace
+  interaction INP were unavailable. Inline result summary:
+  [performance metrics](evidence/step-45/public-v51-recheck-2026-10-28/performance/home-desktop-summary.json).
+- **Local backend:** Reproduced and fixed AUD-374, an unbounded retry exponent
+  that overflowed after a long API outage. The regression test fails against the
+  old expression and passes with the bounded retry loop. The host-daemon unit
+  suite passes 10/10, both rebuilt Docker containers are healthy, and the
+  eight-case laptop-backend lifecycle verification passes. See [sanitized
+  incident evidence](evidence/step-45/public-v51-recheck-2026-10-28/docker-retry-overflow-redacted.txt).
+
+Machine reports and screenshots are in
+[`public-v51-recheck-2026-10-28`](evidence/step-45/public-v51-recheck-2026-10-28/).
+The ledger now has 374 findings (0 Critical, 69 High, 283 Medium, 22 Low):
+117 are closed after issue-specific deployed verification, 185 await issue-specific
+checks, 67 are fixed and verified locally, 2 retain legacy fixed status, 2 are
+legacy closed records, and 1 documents the Sites host limit. AUD-374 is fixed
+and runtime-verified locally. Seven High findings remain locally verified
+pending issue-specific deployment checks; 178 Medium and 7 Low findings also
+await verification. Step 45 remains open; this checkpoint is not an RC
+release-complete claim.
+
+### Issue-specific deployed re-audit
+
+The second public-v51 Playwright pass exercised ECOM-01 (clothing), ECOM-04
+(digital music), TRV-03 (flight management), and MED-04 (film streaming)
+through the visible Compose UI at 1440×900 and 390×844. All four briefs
+produced three inspectable directions with expected screens and product data,
+empty unresolved-role diagnostics, and no console errors, uncaught exceptions,
+failed requests, or HTTP failures. Direction screenshots and machine reports
+are in `domains/`.
+
+This pass closes 23 previously local-only High findings after deployed checks:
+AUD-134–137, AUD-139, AUD-141, AUD-143–144, AUD-149, AUD-152, AUD-157–161,
+AUD-164, AUD-167–170, AUD-173–174, and AUD-317. The issue ledger records each
+v51 version/source identity and evidence path. Seven High findings remain
+locally verified pending their own deployed checks.
 
 ## Public v44 targeted page-recipe verification — 2026-10-27
 

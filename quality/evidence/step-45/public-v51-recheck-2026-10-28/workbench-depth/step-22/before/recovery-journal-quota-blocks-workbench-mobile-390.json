@@ -1,0 +1,17 @@
+{
+  "url": "http://localhost:4321/workbench?project=local-89b2924d-aee5-48f6-9356-402dc072c696",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "uncaughtExceptions": [],
+  "failedRequests": [],
+  "httpErrors": [],
+  "status": "reproduced",
+  "issue": "AUD-160",
+  "expected": "Keep Workbench available when IndexedDB saves the project but the redundant recovery journal is full.",
+  "actual": "Local save failed: QuotaExceededError: Quota exceeded by persistence regression test. Export your manifest before leaving.",
+  "screenshot": "quality/evidence/step-22/before/recovery-journal-quota-blocks-workbench-mobile-390.png"
+}

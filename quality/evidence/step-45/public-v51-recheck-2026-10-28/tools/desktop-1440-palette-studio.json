@@ -1,0 +1,29 @@
+{
+  "route": "/tools/palette",
+  "viewport": "1440x900",
+  "title": "Palette Studio",
+  "layout": {
+    "viewportWidth": 1440,
+    "documentWidth": 1440,
+    "pageHeight": 1069,
+    "horizontalOverflow": false
+  },
+  "visibleButtons": [
+    "Search⌘K",
+    "Copy CSS Variables",
+    "Copy Tailwind @theme",
+    "Zinc Editorial (Tessellate Default)",
+    "Deep Future Command (Dark Studio)",
+    "Warm Parchment & Espresso",
+    "Slate Institutional",
+    "Pure Monochrome",
+    "Reset",
+    "Try sample action"
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "failedRequests": [],
+  "badResponses": [],
+  "axe": [],
+  "screenshot": "audit/evidence/v26/tools/after/desktop-1440-palette-studio.png"
+}
