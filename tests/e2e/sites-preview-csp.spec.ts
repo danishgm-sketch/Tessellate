@@ -673,6 +673,12 @@ test('public shell CSP authorizes only build-certified inline code', async ({ re
     expect(directives.get('style-src'), route).not.toContain("'unsafe-inline'");
     expect(directives.get('style-src-elem'), route).not.toContain("'unsafe-inline'");
     expect(directives.get('style-src-attr'), route).toEqual(["'unsafe-inline'"]);
+    expect(directives.get('style-src'), `${route} WebKit no-op style hash`).toContain(
+      contentHash('body {}')
+    );
+    expect(directives.get('style-src-elem'), `${route} WebKit no-op style hash`).toContain(
+      contentHash('body {}')
+    );
     for (const style of inlineStyles) {
       expect(directives.get('style-src'), `${route} inline style hash`).toContain(
         contentHash(style)

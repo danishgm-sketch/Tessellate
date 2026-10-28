@@ -171,6 +171,11 @@ function collectSiteInlineHashes(directory) {
 }
 
 const siteInlineHashes = collectSiteInlineHashes(assetsDestination);
+// WebKit can report its no-op `body {}` rule on the public shell as well as
+// within preview frames. Authorize only this exact rule in both strict policies.
+const siteInlineStyleHashes = [
+  ...new Set([...siteInlineHashes.styles, webkitEmptyBodyStyleHash]),
+];
 const cspModulePath = path.join(root, 'apps/sites/src/generated-preview-csp.ts');
 mkdirSync(path.dirname(cspModulePath), { recursive: true });
 writeFileSync(
@@ -180,7 +185,7 @@ writeFileSync(
     `export const PREVIEW_INLINE_STYLE_HASHES = ${JSON.stringify(inlineStyleHashes)} as const;\n` +
     `// Public shell hashes cover ${siteInlineHashes.htmlPages} canonical Astro HTML files, excluding the isolated preview route.\n` +
     `export const SITE_INLINE_SCRIPT_HASHES = ${JSON.stringify(siteInlineHashes.scripts)} as const;\n` +
-    `export const SITE_INLINE_STYLE_HASHES = ${JSON.stringify(siteInlineHashes.styles)} as const;\n`
+    `export const SITE_INLINE_STYLE_HASHES = ${JSON.stringify(siteInlineStyleHashes)} as const;\n`
 );
 process.stdout.write(
   `Sites artifact prepared: canonical Astro output, 324 resources, ${siteInlineHashes.htmlPages} public HTML CSP records (${siteInlineHashes.scripts.length} script hashes), preserved header declarations.\n`
