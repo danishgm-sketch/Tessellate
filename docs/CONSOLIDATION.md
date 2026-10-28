@@ -46,3 +46,12 @@ is retained in
 [`quality/evidence/step-02-fresh-checkout-2026-10-24.md`](../quality/evidence/step-02-fresh-checkout-2026-10-24.md).
 The consolidation and baseline gates are complete; hardening continues in
 the ordered steps in `docs/PRODUCT_HARDENING.md`.
+
+The reconciled candidate was also checked from a clean Windows checkout at
+`5ec42d5c0618546301beb8504e7760280994c71f`. All eight baseline commands passed;
+`pnpm test:e2e` completed 684 tests with 167 configured skips and no failures
+across Astro, Sites Worker desktop/mobile, and the standalone preview. The
+exact-head hosted CI and 16-point quality/security jobs are linked in
+[`quality/evidence/step-02-fresh-candidate-2026-10-28.md`](../quality/evidence/step-02-fresh-candidate-2026-10-28.md).
+This is the candidate's fresh-checkout evidence; it does not close Step 45 or
+later programme gates.
