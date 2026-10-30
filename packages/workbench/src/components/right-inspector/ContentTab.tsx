@@ -1,12 +1,14 @@
 import {assertContentShape} from '../../utils/content-shape.js';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { findNodeById } from '../../utils/tree-helpers.js';
 import { isScopeLocked } from '../../utils/dna-helpers.js';
 
 function StructuredField({name,value,onApply,disabled}:{name:string;value:unknown;onApply:(value:unknown)=>void;disabled:boolean}) {
-  const [draft,setDraft] = useState(JSON.stringify(value,null,2));
+  const committedValue = JSON.stringify(value,null,2);
+  const [draft,setDraft] = useState(committedValue);
   const [error,setError] = useState('');
+  useEffect(()=>{setDraft(committedValue);setError('');},[committedValue]);
   return <div className="space-y-2"><label className="block space-y-1"><span>{name} (JSON)</span><textarea aria-label={`${name} JSON`} value={draft} disabled={disabled} onChange={event=>setDraft(event.target.value)} rows={7} className="w-full font-mono border border-[#272C34] bg-[#171B21] rounded p-2" /></label><button disabled={disabled} className="border border-[#6782FF] rounded px-2 py-1" onClick={()=>{try {const parsed:unknown=JSON.parse(draft);assertContentShape(value,parsed,name);onApply(parsed);setError('');} catch(cause){setError(String(cause));}}}>Apply {name}</button>{error && <p role="alert">{error}</p>}</div>;
 }
 
