@@ -505,8 +505,8 @@ function generateScreenCode(
 ${importLines}
 
 export function ${componentName}() {
-  ${adaptive?`const [systemDark,setSystemDark]=useState(()=>window.matchMedia('(prefers-color-scheme: dark)').matches);
-  useEffect(()=>{const media=window.matchMedia('(prefers-color-scheme: dark)');const update=()=>setSystemDark(media.matches);media.addEventListener('change',update);return ()=>media.removeEventListener('change',update);},[]);`:''}
+  ${adaptive?`const [systemDark,setSystemDark]=useState(false);
+  useEffect(()=>{const media=window.matchMedia('(prefers-color-scheme: dark)');const update=()=>setSystemDark(media.matches);update();media.addEventListener('change',update);return ()=>media.removeEventListener('change',update);},[]);`:''}
   return (
     <div className="tess-screen w-full min-h-screen" data-screen-id={${JSON.stringify(screen.id)}}>
       ${renderNodeToJsx(screen.rootNode, 3, resourceMap, dna, {}, navigationItems)}
@@ -831,6 +831,8 @@ export default nextConfig;
     .join('\n');
 
   files['app/globals.css'] = `@import "tailwindcss";
+
+${MANIFEST_LAYOUT_CSS}
 
 :root {
 ${cssVarDeclarations}

@@ -339,6 +339,23 @@ describe('Phase 11: Exporter Package', () => {
     expect(tree['app/layout.tsx']).toContain(`title: ${JSON.stringify(manifest.name)},`);
   });
 
+  it('keeps adaptive Next.js rendering server-safe and includes the shared layout contract', () => {
+    const manifest = createTestManifest();
+    manifest.designDNA.visualMode = 'adaptive';
+    manifest.screens[0]!.rootNode.semanticRole = 'sidebar-shell';
+
+    const tree = generateSourceTree(manifest, { target: 'nextjs' });
+    const screenPath = Object.keys(tree).find((file) => file.startsWith('screens/') && file.endsWith('.tsx'));
+    expect(screenPath).toBeDefined();
+    const screenSource = tree[screenPath!]!;
+
+    expect(screenSource).toContain('useState(false)');
+    expect(screenSource).toContain("window.matchMedia('(prefers-color-scheme: dark)')");
+    expect(screenSource).not.toMatch(/useState\(\(\)\s*=>\s*window\.matchMedia/);
+    expect(tree['app/globals.css']).toContain('.tess-layout-sidebar-shell,.tess-layout-workspace-dock-shell');
+    expect(tree['app/globals.css']).toContain('@container tess-screen (min-width:900px)');
+  });
+
   it('generates an explicitly labelled Expo / React Native lab scaffold', () => {
     const manifest = createTestManifest();
     const tree = generateSourceTree(manifest, { target: 'expo' });
