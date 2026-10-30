@@ -3,6 +3,7 @@ import { useWorkbenchStore } from '../store/workbench-store.js';
 import { getNodePath, findNodeById } from '../utils/tree-helpers.js';
 import { getScopedDNA } from '../utils/dna-helpers.js';
 import { createCheckpoint } from '../history/checkpoints.js';
+import { ProjectManifestSchema } from '@tessellate/schemas';
 
 describe('Workbench Store & Tree Navigation', () => {
   beforeEach(() => {
@@ -60,6 +61,31 @@ describe('Workbench Store & Tree Navigation', () => {
     // Delete screen
     useWorkbenchStore.getState().deleteScreen('screen-audit');
     expect(useWorkbenchStore.getState().manifest.screens.length).toBe(initialCount);
+  });
+
+  it('removes secondary navigation references when a page is deleted', () => {
+    const store = useWorkbenchStore.getState();
+    store.deleteScreen('screen-settings');
+
+    const manifest = useWorkbenchStore.getState().manifest;
+    expect(manifest.screens.some((screen) => screen.id === 'screen-settings')).toBe(false);
+    expect(manifest.navigation.secondaryItems?.some((item) => item.targetScreenId === 'screen-settings')).toBe(false);
+    expect(ProjectManifestSchema.safeParse(manifest).success).toBe(true);
+  });
+
+  it('refuses to delete a page that contains a locked node without corrupting the project', () => {
+    const store = useWorkbenchStore.getState();
+    const screen = store.manifest.screens.find((item) => item.id === 'screen-settings')!;
+    const lockedNode = screen.rootNode.children[0]!;
+    store.setActiveScreen(screen.id);
+    useWorkbenchStore.getState().toggleNodeLock(lockedNode.id, 'structure');
+
+    useWorkbenchStore.getState().deleteScreen(screen.id);
+
+    const manifest = useWorkbenchStore.getState().manifest;
+    expect(manifest.screens.some((item) => item.id === screen.id)).toBe(true);
+    expect(ProjectManifestSchema.safeParse(manifest).success).toBe(true);
+    expect(useWorkbenchStore.getState().lastActionMessage).toMatch(/locked node/i);
   });
 
   it('selects semantic nodes and resolves breadcrumb paths', () => {

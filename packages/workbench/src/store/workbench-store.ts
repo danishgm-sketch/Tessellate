@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { createId } from '@tessellate/schemas';
 import type {
   ProjectManifest,
   ProjectNode,
@@ -39,17 +40,17 @@ import { getScopedDNA, getScopedTokens, isScopeLocked } from '../utils/dna-helpe
 import {getSemanticPalette} from '@tessellate/dna';
 import { syncManifestLocks } from '../locks/lock-engine.js';
 
-function syncRenderedNavigation(manifest:ProjectManifest):ProjectManifest {
- const links=manifest.navigation.primaryItems.filter(item=>manifest.screens.some(screen=>screen.id===item.targetScreenId)).map(item=>({label:item.label,href:`#${item.targetScreenId}`}));
- const update=(node:ProjectNode):ProjectNode=>node.locks?.node || node.locks?.content?node:{...node,...(node.semanticRole==='navigation'?{props:{...node.props,links}}:{}),children:node.children.map(update)};
- return {...manifest,screens:manifest.screens.map(screen=>({...screen,rootNode:update(screen.rootNode)}))};
-}
 function applyVisualMode(node:ProjectNode,mode:'light'|'dark'|'adaptive'):ProjectNode {
  if(node.locks?.node || node.locks?.style || node.locks?.dna)return node;
  const effective=node.dnaOverrides?.visualMode ?? mode;
  return {...node,...(node.resourceRef ? {variant:effective==='dark' ? 'nocturne' : node.variant==='nocturne' ? 'quiet' : node.variant} : {}),children:node.children.map(child=>applyVisualMode(child,effective))};
 }
 
+function syncRenderedNavigation(manifest:ProjectManifest):ProjectManifest {
+ const links=manifest.navigation.primaryItems.filter(item=>manifest.screens.some(screen=>screen.id===item.targetScreenId)).map(item=>({label:item.label,href:`#${item.targetScreenId}`}));
+ const update=(node:ProjectNode):ProjectNode=>node.locks?.node || node.locks?.content?node:{...node,...(node.semanticRole==='navigation'?{props:{...node.props,links}}:{}),children:node.children.map(update)};
+ return {...manifest,screens:manifest.screens.map(screen=>({...screen,rootNode:update(screen.rootNode)}))};
+}
 const initialSample = createSampleProject();
 const initialCheckpoint = createCheckpoint(initialSample, {
   trigger: 'initial-generation',
@@ -306,7 +307,7 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
     const targetScreen = manifest.screens[screenIndex];
     if (!targetScreen) return;
 
-    let updatedRoot = updateNodeInTree(targetScreen.rootNode, nodeId, (node) => ({
+    const updatedRoot = updateNodeInTree(targetScreen.rootNode, nodeId, (node) => ({
       ...node,
       dnaOverrides: {
         ...(node.dnaOverrides ?? {}),
@@ -314,7 +315,6 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
       },
     }));
 
-    if(dnaOverrides.visualMode) updatedRoot=updateNodeInTree(updatedRoot,nodeId,node=>applyVisualMode(node,dnaOverrides.visualMode!));
     const nextScreens = [...manifest.screens];
     nextScreens[screenIndex] = {
       ...targetScreen,
@@ -498,25 +498,32 @@ export const useWorkbenchStore = create<WorkbenchState>((set, get) => ({
   deleteScreen: (screenId: string) => {
     const { manifest, history, activeScreenId } = get();
     if (manifest.screens.length <= 1) return; // Preserve at least one screen
-
-    const nextScreens = manifest.screens.filter((s) => s.id !== screenId);
-    const nextActive = activeScreenId === screenId ? (nextScreens[0]?.id ?? '') : activeScreenId;
-
-    const nextManifest: ProjectManifest = {
-      ...manifest,
-      screens: nextScreens,
-      navigation:{...manifest.navigation,primaryItems:manifest.navigation.primaryItems.filter(item=>item.targetScreenId!==screenId)},
-      screenGraph:{...manifest.screenGraph,groups:manifest.screenGraph.groups.map(group=>({...group,screens:group.screens.filter(screen=>screen.id!==screenId)})),edges:manifest.screenGraph.edges.filter(edge=>edge.fromScreenId!==screenId && edge.toScreenId!==screenId)},
-      updatedAt: new Date().toISOString(),
-    };
-
-    set({
-      history: [manifest, ...history.slice(0, 49)],
-      future: [],
-      manifest: syncRenderedNavigation(nextManifest),
-      activeScreenId: nextActive,
-      selectedNodeId: null,
-    });
+    const screen = manifest.screens.find((item) => item.id === screenId);
+    if (!screen) return;
+    try {
+      const result = runMutation(manifest, {
+        id: createId('mutation'),
+        type: 'DELETE_SCREEN',
+        targetId: screenId,
+        payload: { screenId },
+        actor: 'user',
+        timestamp: new Date().toISOString(),
+        preconditionRevision: manifest.historyMeta.headRevision,
+      });
+      const nextActive = activeScreenId === screenId
+        ? (result.nextManifest.screens[0]?.id ?? '')
+        : activeScreenId;
+      set({
+        history: [manifest, ...history.slice(0, 49)],
+        future: [],
+        manifest: syncRenderedNavigation(result.nextManifest),
+        activeScreenId: nextActive,
+        selectedNodeId: null,
+        lastActionMessage: `Deleted ${screen.name}.`,
+      });
+    } catch (error) {
+      set({ lastActionMessage: error instanceof Error ? error.message : 'The page could not be deleted.' });
+    }
   },
 
   renameScreen: (screenId: string, name: string) => {
