@@ -96,6 +96,10 @@ in this commit.
 3. The Step 03 inventory did not point readers from historical route-level
    audit notes to the later v55 evidence. It now states which record
    supersedes those notes and preserves the limits of that re-audit.
+4. The Sites adapter README called v37 its most recent complete runtime audit
+   even though Step 45 had completed a broader v55 deployed audit. The adapter
+   README now points to v55 and its exact evidence and preserves the distinction
+   between the audited runtime and later source documentation changes.
 
 These were documentation/coherence defects, not runtime defects. No application
 source, schemas, manifest format, component catalogue, deployment architecture,

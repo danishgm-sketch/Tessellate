@@ -69,6 +69,14 @@
       "rootCause": "The Step 03 snapshot retained pre-release route audit wording with no direct evidence precedence note.",
       "affectedFiles": ["docs/CURRENT_PRODUCT_INVENTORY.md"],
       "status": "fixed; per-feature gaps remain explicit"
+    },
+    {
+      "id": "COH-004",
+      "severity": "low",
+      "title": "Sites adapter README named v37 as the latest complete runtime audit",
+      "rootCause": "The adapter's audit checkpoint paragraph was not refreshed after the broader v55 public re-audit.",
+      "affectedFiles": ["apps/sites/README.md"],
+      "status": "fixed; updated with v55 source identity and audit limits"
     }
   ],
   "release": {

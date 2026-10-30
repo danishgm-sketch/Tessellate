@@ -80,20 +80,25 @@ the repository's £20 maximum principle.
 
 ## Most recent complete runtime audit
 
-The most recent complete end-to-end runtime audit used Site v37 at
+The most recent complete end-to-end runtime audit used public Site v55 at
 `https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/`. Its deployed
-source mirror commit is `c2cd798a3b253a80395febea1f61ab2dd71ca347`; the captured
-application code is canonical commit `e08c34021bcf13fbe603f86803cb4d7f7eb443b8`.
-The canonical hardening branch continues to preserve the Astro + React
-application and this hosting adapter. The deployed response uses a per-response
-script nonce, contains no `unsafe-inline` script source or loopback CSP origin,
-and passed the issue-specific v37 deployed checks for AUD-337, AUD-342–345, and
-AUD-347–355. The exact route, workflow, accessibility, responsiveness, and
-performance evidence and remaining scope are recorded in
-`../../quality/evidence/step-45/public-v37/` and
+Sites source mirror is `b356ef849431d53eda8f5f052ff65bacf0d477d4`; it packages
+application code from canonical commit
+`e3eff775b9db83fa240b937f3697d52cebcde8c6`, based on RC source
+`2ffe98ac669e97f9a766acdcbe71f62c4ea14691`. No D1 or R2 binding was
+provisioned. The deployed response uses build-certified script/style hashes and
+a per-response nonce for the Sites bootstrap; it contains no
+`unsafe-inline` script source or loopback CSP origin. The v55 audit passed the
+route, showcase, flagship, responsive, accessibility, WebKit, and independent
+React export checks with zero new findings and zero open P0/P1 issues. The
+remaining Medium/Low findings and exact limits are recorded in
+`../../quality/STEP_45_EVIDENCE.md`,
+`../../quality/evidence/step-45/public-v55-reaudit-2026-10-28/`, and
 `../../audit/RUNTIME_AUDIT.md`.
-This records the audited runtime checkpoint, not the Site's current published
-version.
+
+This checkpoint documents the latest fully audited deployment, not a claim that
+the Site source branch is current. Later documentation-only source changes are
+being published as a new RC version after exact-head CI passes.
 
 The CPU Tree-GNN daemon cannot execute inside a Cloudflare Worker. The
 owner-operated Docker backend is documented in `../laptop-backend/README.md`.
