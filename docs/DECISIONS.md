@@ -2,7 +2,7 @@
 
 This file records major decisions so autonomous agents do not repeatedly reopen them.
 
-> Current operating authority: D-046. Historical release statements below do not certify current code or deployed infrastructure.
+> Current operating authority: D-042 governs the product-hardening programme and expansion freeze; D-043 onward records scoped decisions that refine it. Historical release statements below do not certify current code or deployed infrastructure.
 
 ## Locked decisions
 
@@ -627,3 +627,12 @@ documented and covered by header and browser tests.
 **Security and cost impact:** Keeps Gold-only main-origin rendering and the existing preview isolation. No D1/R2, paid service, or hosted runtime is added. The full catalogue remains schema-validated before use.
 **Evidence:** `quality/STEP_38_EVIDENCE.md`, `quality/evidence/step-38/after/catalogue-lazy-load/`, and the red-to-green Workbench desktop/mobile Playwright regression.
 **Status:** Implemented locally; public v30 remains affected until an approved newer Site passes the same issue-specific checks.
+
+### D-064 — Waive external participant study for the V1 hardening release
+
+**Date:** 2026-10-30
+**Context:** The owner directed completion of the technical product-hardening goal with a human-validation waiver after the ordered programme's technical evidence and public RC re-audit had been assembled.
+**Decision:** Waive only the 5–10 unfamiliar-participant recruitment and moderated-session requirement in Step 46 for this release gate. Record Step 46 as waived, not passed. Do not invent participants, sessions, observations, or usability findings. Keep all browser, accessibility, security, deployed-runtime, CI, cost, licensing, and protected-branch release requirements in force.
+**Product impact:** Automated and expert-run browser evidence remains useful for technical acceptance but is not described as human validation. The separate usability study can be run later without blocking this owner-waived gate.
+**Evidence:** `quality/STEP_46_EVIDENCE.md`; owner instruction received 2026-10-30.
+**Status:** Applied to the current hardening release gate only.

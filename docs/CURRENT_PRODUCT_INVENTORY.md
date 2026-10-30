@@ -11,6 +11,18 @@ from unexposed cross-parent moves and document Lab-only verbs without distinct
 mutation semantics. The inventory remains a capability record, not a release
 certification.
 
+Step 47 authority note (2026-10-30): the row-level status and “audit pending”
+phrases below retain the original Step 03 inventory snapshot unless a later
+step-specific record names that surface. They are not current runtime results.
+For audited public routes, showcases, responsive behavior, the flagship flow,
+and export, use the newer public v55 evidence in `quality/STEP_45_EVIDENCE.md`.
+That re-audit supersedes the older route-level “runtime unverified” notes only
+for its explicit route/viewport/interaction coverage; it does not certify every
+feature row, control, catalogue resource, or test-matrix dimension. Capability
+tiers remain support-boundary intent rather than certification, and `FAIL` in
+`quality/FEATURE_MATRIX.md` continues to mean evidence not recorded for that
+specific dimension.
+
 ## Field meanings
 
 - **Status** records whether implementation is present or conditional; it does

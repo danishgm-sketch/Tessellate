@@ -1,6 +1,6 @@
 # Step 46 — Human usability testing
 
-Status: **not complete**. Study materials are prepared, but no unfamiliar participants have been recruited or observed. Do not treat automated Playwright runs, internal product familiarity, or simulated personas as participant evidence.
+Status: **waived by the owner on 2026-10-30; not passed**. The owner directed completion of the technical hardening goal with a human-validation waiver. No unfamiliar participants were recruited or observed, and no participant evidence is claimed. The waiver applies only to the external 5–10-person moderated study described below; it does not waive browser, accessibility, security, CI, deployed-runtime, cost, licensing, or release checks. Automated evidence remains separate from human usability evidence.
 
 ## Study goal
 
@@ -54,7 +54,7 @@ Use `quality/evidence/step-46/participant-observations-template.csv` as a blank 
 
 ## Exit gate
 
-Step 46 can close only after 5–10 unfamiliar people have completed observed sessions, the results are recorded, and the product changes or accepted limitations are linked to findings. The sessions must exercise the goal above without facilitator instructions. If nobody can be recruited, keep this step open and report that dependency; do not substitute an automated run or a staff walkthrough.
+Normally, Step 46 closes only after 5–10 unfamiliar people complete observed sessions, results are recorded, and product changes or accepted limitations are linked to findings. The sessions must exercise the goal above without facilitator instructions. Without an explicit owner waiver, failure to recruit keeps this step open; automation or a staff walkthrough cannot substitute. For the current release gate, the owner waiver in D-064 is the sole exception: it changes the step status to waived, not passed, and does not create participant evidence.
 
 ## Current state
 
@@ -62,6 +62,8 @@ Step 46 can close only after 5–10 unfamiliar people have completed observed se
 - Sessions observed: 0
 - Findings added from human sessions: 0
 - Session evidence: none
+- Owner disposition: external participant study waived for this release gate; this step is **waived, not passed**.
+- Waiver scope: the 5–10 unfamiliar-participant study and its recruitment/session requirement only. The deployed flagship workflow, route audit, responsive matrix, Axe scans, export build, and other technical evidence remain required and are recorded independently in Step 45.
 - Recruitment invitation: [public GitHub issue #7](https://github.com/danishgm-sketch/Tessellate/issues/7), opened 2026-10-28; 0 comments at 2026-10-30 13:57 UTC
 - Additional recruitment outreach: [PR #5 comment](https://github.com/danishgm-sketch/Tessellate/pull/5#issuecomment-6479912997), posted 2026-10-28; invites suitable people to opt in through issue #7 and asks them not to post personal details
 - Session coordination method: not set; issue states this will be confirmed before collecting any further details

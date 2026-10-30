@@ -56,7 +56,7 @@ pnpm test:e2e
 
 `audit:all` builds its prerequisites before measuring bundles; it must work without a pre-existing dist directory. Tests use bounded workers to avoid machine-dependent overload. Lint errors block work; accepted existing warnings are tracked in [lint debt](quality/LINT_DEBT.md), with no blanket rule disabling.
 
-These checks establish a baseline, not semantic product certification. The hardening programme additionally requires real browser workflows, independent exported-app installs/builds, visual review, accessibility, fault injection, cross-browser evidence and observed human usability testing.
+These checks establish a baseline, not semantic product certification. The hardening programme additionally requires real browser workflows, independent exported-app installs/builds, visual review, accessibility, fault injection and cross-browser evidence. Step 46 normally requires observed human usability sessions; the owner waived that study for the current release gate on 2026-10-30. No human-validation result is claimed. See `quality/STEP_46_EVIDENCE.md` and D-064.
 
 ## Runtime boundaries
 

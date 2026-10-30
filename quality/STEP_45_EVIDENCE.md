@@ -1,6 +1,6 @@
 # Step 45 — Public review verification
 
-Status: **Step 45 passed** on public Sites v55. The deployed re-audit passed the required route, showcase, flagship, responsive, accessibility, browser and independent-export checks with zero newly discovered defects and zero open P0/P1 findings. D1/R2 remain unbound; the Site does not connect to the laptop host, so host inference is unavailable there. The findings ledger still has 176 Medium items awaiting deployed verification and 8 Low items awaiting deployed verification or host resolution. The broader product-hardening programme remains open; Step 46 requires observed sessions with unfamiliar participants.
+Status: **Step 45 passed** on public Sites v55. The deployed re-audit passed the required route, showcase, flagship, responsive, accessibility, browser and independent-export checks with zero newly discovered defects and zero open P0/P1 findings. D1/R2 remain unbound; the Site does not connect to the laptop host, so host inference is unavailable there. The findings ledger still has 176 Medium items awaiting deployed verification and 8 Low items awaiting deployed verification or host resolution. The broader product-hardening programme remains open; Step 46 is owner-waived, not passed, as recorded in D-064 and `quality/STEP_46_EVIDENCE.md`.
 
 ## Public v55 RC re-audit — 2026-10-28
 
