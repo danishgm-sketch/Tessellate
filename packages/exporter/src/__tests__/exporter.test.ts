@@ -52,6 +52,7 @@ describe('Phase 11: Exporter Package', () => {
     expect(dependencies['react-dom']).toBe('^19.0.0');
     expect(dependencies['lucide-react']).toBeDefined();
     expect(dependencies['motion']).toBeDefined(); // motion=45 > 40
+    expect(dependencies['tslib']).toBe('2.8.1');
     expect(devDependencies['tailwindcss']).toBe('^4.0.0');
     expect(devDependencies['vite']).toBeDefined();
   });
@@ -228,7 +229,7 @@ describe('Phase 11: Exporter Package', () => {
     expect(dependencies.dependencyPolicyReview).toEqual({
       status: 'review-required',
       allowlistScope: expect.any(String),
-      unapprovedRuntimeDependencies: ['clsx', 'tailwind-merge'],
+      unapprovedRuntimeDependencies: ['clsx', 'tailwind-merge', 'tslib'],
       prohibitedRuntimeDependencies: ['clsx'],
     });
     expect(JSON.stringify(dependencies)).not.toContain('@tessellate/');
