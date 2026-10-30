@@ -115,6 +115,7 @@ export function specialisePeopleOperations(
       'onboarding-checklist',
       'policy-acknowledgements',
     ],
+    forbiddenPatterns: [],
   };
 }
 

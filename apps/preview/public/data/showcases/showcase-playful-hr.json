@@ -174,10 +174,7 @@
       "onboarding-checklist",
       "policy-acknowledgements"
     ],
-    "forbiddenPatterns": [
-      "unblinded-evaluations-causing-bias",
-      "accidental-rejection-email-dispatches"
-    ],
+    "forbiddenPatterns": [],
     "constraints": {
       "accessibilityFloor": "AA",
       "performanceCeiling": "balanced",
@@ -198,10 +195,7 @@
       "requiredScreens": [],
       "forbiddenScreens": [],
       "requiredPatterns": [],
-      "forbiddenPatterns": [
-        "unblinded-evaluations-causing-bias",
-        "accidental-rejection-email-dispatches"
-      ]
+      "forbiddenPatterns": []
     }
   },
   "designDNA": {
@@ -267,13 +261,10 @@
     "requiredScreens": [],
     "forbiddenScreens": [],
     "requiredPatterns": [],
-    "forbiddenPatterns": [
-      "unblinded-evaluations-causing-bias",
-      "accidental-rejection-email-dispatches"
-    ]
+    "forbiddenPatterns": []
   },
   "screenGraph": {
-    "id": "graph-recruitment-1bgnlo1",
+    "id": "graph-recruitment-8jz435",
     "groups": [
       {
         "id": "group-marketing",

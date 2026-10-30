@@ -94,6 +94,15 @@ describe('Product Interpreter semantic quality benchmark', () => {
       for (const forbidden of profile.forbiddenAnyOf) {
         expect(serializedModel).not.toContain(forbidden.toLocaleLowerCase());
       }
+
+      if (brief.id === 'REC-02') {
+        expect(productModel.forbiddenPatterns).not.toContain(
+          'unblinded-evaluations-causing-bias'
+        );
+        expect(productModel.forbiddenPatterns).not.toContain(
+          'accidental-rejection-email-dispatches'
+        );
+      }
     });
   }
 });

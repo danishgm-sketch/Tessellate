@@ -3,8 +3,8 @@
   "id": "workbench-starter-template",
   "name": "Example employee workspace",
   "description": "An employee experience platform with people, teams, onboarding and policies. This is a sample local project.",
-  "createdAt": "2026-10-28T04:44:05.864Z",
-  "updatedAt": "2026-10-28T04:44:05.864Z",
+  "createdAt": "2026-10-30T20:30:26.286Z",
+  "updatedAt": "2026-10-30T20:30:26.286Z",
   "catalogVersion": "0.1.0",
   "seed": "workbench-starter-v1-dir-a",
   "productModel": {
@@ -174,10 +174,7 @@
       "onboarding-checklist",
       "policy-acknowledgements"
     ],
-    "forbiddenPatterns": [
-      "unblinded-evaluations-causing-bias",
-      "accidental-rejection-email-dispatches"
-    ],
+    "forbiddenPatterns": [],
     "constraints": {
       "accessibilityFloor": "AA",
       "performanceCeiling": "balanced",
@@ -198,10 +195,7 @@
       "requiredScreens": [],
       "forbiddenScreens": [],
       "requiredPatterns": [],
-      "forbiddenPatterns": [
-        "unblinded-evaluations-causing-bias",
-        "accidental-rejection-email-dispatches"
-      ]
+      "forbiddenPatterns": []
     }
   },
   "designDNA": {
@@ -267,13 +261,10 @@
     "requiredScreens": [],
     "forbiddenScreens": [],
     "requiredPatterns": [],
-    "forbiddenPatterns": [
-      "unblinded-evaluations-causing-bias",
-      "accidental-rejection-email-dispatches"
-    ]
+    "forbiddenPatterns": []
   },
   "screenGraph": {
-    "id": "graph-recruitment-1bgnlo1",
+    "id": "graph-recruitment-8jz435",
     "groups": [
       {
         "id": "group-marketing",

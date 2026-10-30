@@ -12,6 +12,8 @@ import { RightInspector } from '../components/right-inspector/RightInspector.js'
 import { CommandBar } from '../components/CommandBar.js';
 import { PreviewModal } from '../components/preview/PreviewModal.js';
 import { MobileWorkbench } from '../components/mobile/MobileWorkbench.js';
+import { BriefTab } from '../components/left-panel/BriefTab.js';
+import { interpretProductBrief } from '@tessellate/composer';
 
 describe('Workbench UI Components', () => {
   beforeEach(() => {
@@ -109,5 +111,26 @@ describe('Workbench UI Components', () => {
     expect(html).toContain('Pages');
     expect(html).toContain('Inspect');
     expect(html).toContain('Command');
+  });
+
+  it('shows employee experience as the archetype and its 0-100 weight correctly', () => {
+    const description =
+      'Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.';
+    const productModel = interpretProductBrief({ description }).productModel;
+    const currentManifest = useWorkbenchStore.getState().manifest;
+    const projectManifest = {
+      ...currentManifest,
+      name: 'Adaptive Workspace — Employee experience',
+      description,
+      productModel,
+    };
+
+    const html = renderToString(<BriefTab projectManifest={projectManifest} />);
+
+    expect(html).toMatch(/Identified Archetypes[\s\S]*?>Employee Experience<\/span>/);
+    expect(html).toMatch(/100(?:<!-- -->)?%<\/span>/);
+    expect(html).not.toContain('10000%');
+    expect(html).not.toContain('accidental-rejection-email-dispatches');
+    expect(html).not.toContain('Forbidden patterns:');
   });
 });

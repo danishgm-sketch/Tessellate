@@ -1,9 +1,21 @@
 import React from 'react';
 import { useWorkbenchStore } from '../../store/workbench-store.js';
 import { Shield, Sparkles, CheckCircle, Ban } from 'lucide-react';
+import { getProductArchetype, specialisePeopleOperations } from '@tessellate/composer';
+import type { ProjectManifest } from '@tessellate/schemas';
 
-export function BriefTab() {
-  const manifest = useWorkbenchStore((state) => state.manifest);
+function getArchetypeDisplayName(tag: string, description: string): string {
+  const definition = getProductArchetype(tag);
+  return definition ? specialisePeopleOperations(definition, description).name : tag;
+}
+
+export function BriefTab({
+  projectManifest,
+}: {
+  projectManifest?: ProjectManifest;
+} = {}) {
+  const storedManifest = useWorkbenchStore((state) => state.manifest);
+  const manifest = projectManifest ?? storedManifest;
   const model = manifest.productModel;
 
   return (
@@ -78,11 +90,11 @@ export function BriefTab() {
             >
               <div className="flex items-center gap-2">
                 <span className="font-semibold text-[#111217] dark:text-[#F5F7FA] capitalize">
-                  {arch.tag}
+                  {getArchetypeDisplayName(arch.tag, manifest.description ?? '')}
                 </span>
               </div>
               <span className="rounded bg-[#E7EBFF] dark:bg-[#1C2752] px-1.5 py-0.5 text-[10px] font-bold text-[#2547E8] dark:text-[#879DFF]">
-                {Math.round(arch.weight * 100)}%
+                {Math.round(arch.weight)}%
               </span>
             </div>
           ))}
@@ -106,7 +118,8 @@ export function BriefTab() {
               </div>
             </div>
           )}
-          {model.constraints.forbiddenPatterns && (
+          {model.constraints.forbiddenPatterns &&
+            model.constraints.forbiddenPatterns.length > 0 && (
             <div className="flex items-start gap-2 text-xs text-[#111217] dark:text-[#F5F7FA]">
               <Ban className="h-3.5 w-3.5 text-rose-500 mt-0.5 shrink-0" />
               <div>
