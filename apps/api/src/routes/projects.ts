@@ -98,6 +98,7 @@ function createBoundedJsonList(key: 'projects' | 'revisions') {
   };
 }
 const checkpointBodySchema = z.object({ summary: z.string().trim().min(1).max(120).optional() }).strict();
+const updateRevisionSummarySchema = z.string().trim().min(1).max(MAX_PROJECT_NAME_LENGTH + 13);
 const publishBodySchema = z.object({
   customSlug: z.string().trim().min(3).max(80).regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).optional(),
 }).strict();
@@ -452,6 +453,19 @@ projectsRoute.put('/:id', async (c) => {
     );
   }
 
+  const parsedSummary = body.summary === undefined
+    ? undefined
+    : updateRevisionSummarySchema.safeParse(body.summary);
+  if (parsedSummary && !parsedSummary.success) {
+    return c.json({
+      error: 'Validation Error',
+      message: `Project revision summary must contain between 1 and ${MAX_PROJECT_NAME_LENGTH + 13} characters.`,
+    }, 400);
+  }
+  const revisionSummary = parsedSummary?.success
+    ? parsedSummary.data
+    : `Revision ${body.expectedRevision + 1}`;
+
   const now = new Date().toISOString();
 
   if (c.env?.DB) {
@@ -536,7 +550,7 @@ projectsRoute.put('/:id', async (c) => {
             `rev_${projectId}_${nextRevision}`,
             projectId,
             nextRevision,
-            typeof body.summary === 'string' ? body.summary : `Revision ${nextRevision}`,
+            revisionSummary,
             manifestJson,
             now
           ),
@@ -639,7 +653,7 @@ projectsRoute.put('/:id', async (c) => {
     id: `rev_${projectId}_${nextRevision}`,
     projectId,
     revisionNumber: nextRevision,
-    summary: typeof body.summary === 'string' ? body.summary : `Revision ${nextRevision}`,
+    summary: revisionSummary,
     manifestJson,
     createdAt: now,
   });

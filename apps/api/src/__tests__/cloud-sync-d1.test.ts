@@ -89,6 +89,45 @@ describe('D1 cloud project ownership and optimistic concurrency', () => {
     expect(await response.json()).toMatchObject({ error: 'Validation Error' });
   });
 
+  it('rejects invalid revision summaries before saving and keeps the project history readable', async () => {
+    const projectId = `proj_revision_summary_${randomUUID()}`;
+    const name = 'Revision summary validation fixture';
+    const manifest = createProjectManifest(projectId, name);
+    const now = new Date().toISOString();
+    const auth = { Authorization: testAuthBearer(alice) };
+
+    await env.DB!.prepare(
+      'INSERT INTO projects (id, userId, name, description, currentRevision, manifestJson, isPublished, createdAt, updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)'
+    ).bind(projectId, alice, name, null, 1, JSON.stringify(manifest), 0, now, now).run();
+    await env.DB!.prepare(
+      'INSERT INTO project_revisions (id, projectId, revisionNumber, summary, manifestJson, createdAt) VALUES (?, ?, ?, ?, ?, ?)'
+    ).bind(`rev_${projectId}_1`, projectId, 1, 'Initial project creation', JSON.stringify(manifest), now).run();
+
+    for (const summary of ['   ', 'x'.repeat(134)]) {
+      const response = await request(`/api/projects/${projectId}`, {
+        method: 'PUT',
+        headers: { ...auth, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ expectedRevision: 1, summary }),
+      });
+      expect(response.status).toBe(400);
+      expect(await response.json()).toMatchObject({ error: 'Validation Error' });
+    }
+
+    const projectResponse = await request(`/api/projects/${projectId}`, { headers: auth });
+    expect(projectResponse.status).toBe(200);
+    expect(await projectResponse.json()).toMatchObject({ project: { currentRevision: 1 } });
+    const historyResponse = await request(`/api/projects/${projectId}/revisions`, { headers: auth });
+    expect(historyResponse.status).toBe(200);
+    expect(await historyResponse.json()).toMatchObject({
+      revisions: [{ revisionNumber: 1, summary: 'Initial project creation' }],
+    });
+
+    await env.DB!.batch([
+      env.DB!.prepare('DELETE FROM project_revisions WHERE projectId = ?').bind(projectId),
+      env.DB!.prepare('DELETE FROM projects WHERE id = ?').bind(projectId),
+    ]);
+  });
+
   it('rejects malformed JSON consistently across D1-backed mutation routes', async () => {
     const malformedJson = '{"broken":';
     const authorization = testAuthBearer(alice);
