@@ -19,6 +19,36 @@ function storageFailureMessage(error: unknown, operation: 'read' | 'write'): str
     : 'The browser recovery journal could not be written.';
 }
 
+function recordProjectId(value: unknown): string | null {
+  return typeof value === 'object' && value !== null && 'id' in value && typeof value.id === 'string'
+    ? value.id
+    : null;
+}
+
+/** Remove an older synchronous journal after IndexedDB has accepted the new manifest. */
+function invalidateBrowserProjectJournal(projectId: string): boolean {
+  let cleared = true;
+  for (const key of [
+    `tessellate_project_${projectId}`,
+    `tessellate_journal_version_${projectId}`,
+  ]) {
+    try {
+      localStorage.removeItem(key);
+    } catch {
+      cleared = false;
+    }
+  }
+  try {
+    const activeRaw = localStorage.getItem('tessellate_active_project');
+    if (activeRaw && recordProjectId(JSON.parse(activeRaw)) === projectId) {
+      localStorage.removeItem('tessellate_active_project');
+    }
+  } catch {
+    cleared = false;
+  }
+  return cleared;
+}
+
 /** Validate both stores; the synchronous journal records the latest user intent,
  * including Undo to an older timestamp. Legacy stores use timestamp comparison. */
 export async function loadBrowserProject(projectId?: string): Promise<BrowserProjectLoad> {
@@ -51,8 +81,20 @@ export async function loadBrowserProject(projectId?: string): Promise<BrowserPro
       continue;
     }
     if (!raw) continue;
+    let rawRecord: unknown;
     try {
-      const record = safelyLoadProjectRecord(JSON.parse(raw));
+      rawRecord = JSON.parse(raw);
+    } catch (error) {
+      // The shared active slot may belong to a different project. Its damaged
+      // bytes must not force a requested, project-specific open into recovery.
+      if (!projectId || key !== 'tessellate_active_project') addDamagedRecord(raw, String(error));
+      continue;
+    }
+    if (projectId && key === 'tessellate_active_project' && recordProjectId(rawRecord) !== projectId) {
+      continue;
+    }
+    try {
+      const record = safelyLoadProjectRecord(rawRecord);
       if (record.status === 'corrupted') addDamagedRecord(raw, record.validationIssues.join('; '));
       else if (!projectId || record.manifest.id === projectId) {
         if (record.status === 'recovered') migratedProjectIds.add(record.manifest.id);
@@ -64,7 +106,9 @@ export async function loadBrowserProject(projectId?: string): Promise<BrowserPro
         }
       }
     } catch (error) {
-      addDamagedRecord(raw, String(error));
+      if (!projectId || key !== 'tessellate_active_project' || recordProjectId(rawRecord) === projectId) {
+        addDamagedRecord(raw, String(error));
+      }
     }
   }
   let id = projectId ?? candidates[0]?.id;
@@ -128,7 +172,13 @@ export function createProjectSaver(onWarning: (warning: string, undoHistoryAvail
             onWarning('IndexedDB is unavailable. The project is saved in the browser recovery journal, but undo history will not survive a reload.', false);
           }
         } else if (journalError) {
-          onWarning(`${storageFailureMessage(journalError, 'write')} The project was saved to local database storage.`, true);
+          const journalCleared = invalidateBrowserProjectJournal(manifest.id);
+          onWarning(
+            journalCleared
+              ? `${storageFailureMessage(journalError, 'write')} The project was saved to local database storage.`
+              : `${storageFailureMessage(journalError, 'write')} The project was saved to local database storage, but an older recovery copy could not be removed. Export the current manifest before closing this tab.`,
+            true
+          );
         }
       } catch {
         if (journalError) {
