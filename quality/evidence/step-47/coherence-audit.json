@@ -77,6 +77,14 @@
       "rootCause": "The adapter's audit checkpoint paragraph was not refreshed after the broader v55 public re-audit.",
       "affectedFiles": ["apps/sites/README.md"],
       "status": "fixed; updated with v55 source identity and audit limits"
+    },
+    {
+      "id": "COH-005",
+      "severity": "low",
+      "title": "Public deployment pointers still described v30 and v50 as current",
+      "rootCause": "Dated deployment snapshots were not distinguished from the latest complete v55 deployed re-audit after newer Site versions were published.",
+      "affectedFiles": ["apps/sites/LATEST_DEPLOYMENT.md", "docs/PRODUCT_HARDENING.md"],
+      "status": "fixed; publication record defers live version to Sites metadata and hardening plan identifies the v55 audit as the latest complete re-audit"
     }
   ],
   "release": {

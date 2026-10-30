@@ -100,6 +100,11 @@ in this commit.
    even though Step 45 had completed a broader v55 deployed audit. The adapter
    README now points to v55 and its exact evidence and preserves the distinction
    between the audited runtime and later source documentation changes.
+5. The Site publication record still called v30 current, and the last dated
+   continuation in the hardening plan called v50 current. The publication
+   record now points to the live Sites metadata and the v55 full-audit record;
+   the hardening plan identifies v55 as the latest full deployed re-audit and
+   labels its older dated notes as historical checkpoints.
 
 These were documentation/coherence defects, not runtime defects. No application
 source, schemas, manifest format, component catalogue, deployment architecture,
@@ -148,5 +153,7 @@ or security policy changed in this step.
 - No application package or resource changed. The existing v55 deployment still
   provides the verified runtime, while its rendered decision, inventory and
   hardening documentation will remain stale until the updated source is saved
-  and deployed. Step 48 still needs green exact-head GitHub CI, publication of
-  the docs-updated public RC, and protected merge.
+  and deployed. The Sites source checkout is prepared from the existing remote;
+  it requires the corrected README, deployment record, and `docs/*.md` files
+  before a new archive is built. Step 48 still needs green exact-head GitHub CI,
+  publication of the docs-updated public RC, and protected merge.

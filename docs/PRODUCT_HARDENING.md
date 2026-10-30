@@ -10,6 +10,17 @@ Canonical integration candidate: `consolidation/product-hardening`. `main` remai
 the protected released branch until a reviewed PR with green CI is merged.
 Legacy branches are evidence/reference, never parallel sources of product truth.
 
+## Current release evidence (2026-10-30)
+
+The latest complete deployed product re-audit is the public review Site v55,
+recorded in `quality/STEP_45_EVIDENCE.md` (2026-10-28). The dated deployment
+notes below describe their own historical checkpoints; use that evidence file
+and current Sites metadata for present runtime status. The documentation
+corrections in this continuation do not close any issue that still requires
+issue-specific deployed verification. D1/R2 remain unprovisioned. Step 46 is
+owner-waived, not passed; Step 47 is complete; Step 48 remains open until the
+protected release path and required deployed verification are complete.
+
 ## Execution order
 
 Do not advance a checkbox merely because code exists. Record evidence and defects.
