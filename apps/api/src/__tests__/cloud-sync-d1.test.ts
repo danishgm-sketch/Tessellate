@@ -128,6 +128,68 @@ describe('D1 cloud project ownership and optimistic concurrency', () => {
     ]);
   });
 
+  it('rejects oversized descriptions inherited from a project manifest on creation', async () => {
+    const projectId = `proj_inherited_create_description_${randomUUID()}`;
+    const name = 'Inherited create description fixture';
+    const manifest = createProjectManifest(projectId, name, 'x'.repeat(2001));
+    const auth = { Authorization: testAuthBearer(alice), 'Content-Type': 'application/json' };
+
+    try {
+      const response = await request('/api/projects', {
+        method: 'POST',
+        headers: auth,
+        body: JSON.stringify({ id: projectId, name, manifest }),
+      });
+      expect(response.status).toBe(400);
+      expect(await response.json()).toMatchObject({ error: 'Validation Error' });
+    } finally {
+      await request(`/api/projects/${projectId}`, { method: 'DELETE', headers: auth });
+    }
+  }, 30000);
+
+  it('rejects metadata inherited from an oversized project manifest before saving an update', async () => {
+    const projectId = `proj_inherited_metadata_${randomUUID()}`;
+    const name = 'Inherited metadata validation fixture';
+    const manifest = createProjectManifest(projectId, name);
+    const auth = { Authorization: testAuthBearer(alice), 'Content-Type': 'application/json' };
+    const create = await request('/api/projects', {
+      method: 'POST',
+      headers: auth,
+      body: JSON.stringify({ id: projectId, name, manifest }),
+    });
+    expect(create.status).toBe(201);
+
+    try {
+      const oversizedManifests = [
+        { ...manifest, name: 'x'.repeat(121) },
+        { ...manifest, description: 'x'.repeat(2001) },
+      ];
+      for (const invalidManifest of oversizedManifests) {
+        const response = await request(`/api/projects/${projectId}`, {
+          method: 'PUT',
+          headers: auth,
+          body: JSON.stringify({ expectedRevision: 1, manifest: invalidManifest }),
+        });
+        expect(response.status).toBe(400);
+        expect(await response.json()).toMatchObject({ error: 'InvalidProjectManifest' });
+      }
+
+      const current = await request(`/api/projects/${projectId}`, { headers: auth });
+      expect(current.status).toBe(200);
+      expect(await current.json()).toMatchObject({
+        project: { name, currentRevision: 1, description: 'D1 cloud project test fixture' },
+      });
+      const revisions = await request(`/api/projects/${projectId}/revisions`, { headers: auth });
+      expect(revisions.status).toBe(200);
+      expect(await revisions.json()).toMatchObject({ revisions: [{ revisionNumber: 1 }] });
+    } finally {
+      await request(`/api/projects/${projectId}`, {
+        method: 'DELETE',
+        headers: auth,
+      });
+    }
+  }, 30000);
+
   it('rejects malformed JSON consistently across D1-backed mutation routes', async () => {
     const malformedJson = '{"broken":';
     const authorization = testAuthBearer(alice);

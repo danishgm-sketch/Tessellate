@@ -195,6 +195,10 @@ function resolveUpdateManifest(
   }
 
   let description = payload.supplied ? manifest.description ?? null : existingDescription;
+  if (typeof name !== 'string' || !name.trim() || name.trim().length > MAX_PROJECT_NAME_LENGTH) {
+    return { ok: false, status: 400, message: 'Project name is invalid or exceeds its limit.' };
+  }
+  name = name.trim();
   if (hasOwn(body, 'description')) {
     if (body.description === null) description = null;
     else if (typeof body.description === 'string' && body.description.length <= MAX_PROJECT_DESCRIPTION_LENGTH) {
@@ -202,6 +206,9 @@ function resolveUpdateManifest(
     } else {
       return { ok: false, status: 400, message: 'Project description is invalid or exceeds its limit.' };
     }
+  }
+  if (description !== null && (typeof description !== 'string' || description.length > MAX_PROJECT_DESCRIPTION_LENGTH)) {
+    return { ok: false, status: 400, message: 'Project description is invalid or exceeds its limit.' };
   }
 
   const manifestJson = normalizeProjectManifest(manifest, projectId, name, description);
@@ -302,6 +309,9 @@ projectsRoute.post('/', async (c) => {
     } else {
       return c.json({ error: 'Validation Error', message: 'Project description is invalid or exceeds its limit.' }, 400);
     }
+  }
+  if (description !== null && description.length > MAX_PROJECT_DESCRIPTION_LENGTH) {
+    return c.json({ error: 'Validation Error', message: 'Project description is invalid or exceeds its limit.' }, 400);
   }
   const name = body.name.trim();
   const manifestJson = normalizeProjectManifest(manifest, id, name, description);
