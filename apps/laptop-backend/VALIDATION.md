@@ -30,10 +30,30 @@ deterministic contract; mobile shares the command bar. Other model prompts remai
 dependent on the existing model's intent accuracy, which this deployment task
 does not claim to certify.
 
+## OS restart recovery — 2026-10-30
+
+After the owner-authorized Windows restart, Docker Desktop became available about
+4 minutes after Windows boot. No Docker Desktop UI launch, `docker start`, or
+`docker compose up` was issued. All eight running MGI/Tessellate containers
+returned under their existing restart policies; the Tessellate API and host
+reported healthy, and `GET http://127.0.0.1:8788/health` returned HTTP 200. The
+real backend lifecycle verifier then passed 8/8 checks, including persisted
+queue recovery across API-container restart, safe host-offline behavior, host
+resume, authorization, and API unavailability when stopped. Evidence:
+`quality/evidence/step-37/os-restart-recovery-2026-10-30.json` and
+`evidence/docker-runtime.json`.
+
+No inference ticket was held across the full Windows shutdown, so recovery of a
+pre-restart queued job across an OS restart remains unverified. Docker startup
+was delayed; host-dependent features must remain unavailable until the API and
+worker health checks pass.
+
 ## Pending live connection
 
 No backend tunnel, DNS record or Site environment credential has been provisioned.
 A permanent HTTPS backend hostname or registered Sites private tunnel ID is still
 required from the owner. The existing public Site remains on version 8. GitHub
-OAuth is not configured. No hosted D1 or R2 is introduced. Live connection and
-deployed outage verification must happen after the transport is configured.
+OAuth is not configured. No hosted D1 or R2 is introduced. The latest complete
+public product re-audit is recorded in `quality/STEP_45_EVIDENCE.md`; query Sites
+metadata for the current public version. Live connection and deployed outage
+verification remain pending until the transport is configured.

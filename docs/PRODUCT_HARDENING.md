@@ -20,6 +20,10 @@ corrections in this continuation do not close any issue that still requires
 issue-specific deployed verification. D1/R2 remain unprovisioned. Step 46 is
 owner-waived, not passed; Step 47 is complete; Step 48 remains open until the
 protected release path and required deployed verification are complete.
+The owner-approved Windows restart on 2026-10-30 recovered all eight running
+containers; the local laptop-backend lifecycle verifier passed 8/8. No ticket
+was held across the full OS shutdown, so that queue-recovery case remains open.
+See `quality/evidence/step-37/os-restart-recovery-2026-10-30.json`.
 
 ## Execution order
 

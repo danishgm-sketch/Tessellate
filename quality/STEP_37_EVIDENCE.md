@@ -4371,3 +4371,21 @@ skip; typecheck, lint, catalogue build, production build, and `audit:all` passed
 This is local verification; the remaining open security findings and all fixes
 that have not been checked on v28 stay open for the approval-gated next Site
 version. No D1/R2 bindings were provisioned.
+
+### Windows restart and Docker lifecycle repeat — 2026-10-30
+
+The owner-approved Windows restart advanced the boot time to
+`2026-10-30T16:11:42Z`. Docker Desktop became available about 252 seconds later;
+no Docker Desktop UI launch, `docker start`, or `docker compose up` was issued.
+All eight running MGI/Tessellate containers returned under their existing
+`unless-stopped` policies. The Tessellate API and host were healthy and the API
+`/health` endpoint returned HTTP 200. After boot, the real laptop-backend
+verifier passed 8/8 lifecycle checks and restored the Tessellate API and host
+healthy. Machine-readable evidence is in
+`quality/evidence/step-37/os-restart-recovery-2026-10-30.json` and
+`apps/laptop-backend/evidence/docker-runtime.json`.
+
+No inference ticket was deliberately left queued across this full OS shutdown.
+API-container restart queue recovery, host pause/resume, host-container restart,
+model completion, authorization, and stopped-API unavailability passed; a
+pre-restart queued job's recovery across Windows shutdown remains unverified.

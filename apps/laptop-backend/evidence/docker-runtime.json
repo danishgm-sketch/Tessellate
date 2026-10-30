@@ -1,5 +1,5 @@
 {
-  "recordedAt": "2026-10-28T02:30:34.552Z",
+  "recordedAt": "2026-10-30T16:18:20.973Z",
   "checks": [
     {
       "check": "real-model-completion",
@@ -21,7 +21,7 @@
     {
       "check": "queue-survives-api-container-restart",
       "result": "PASS",
-      "recoveryAttempts": 7
+      "recoveryAttempts": 10
     },
     {
       "check": "host-stopped-features-unavailable",
