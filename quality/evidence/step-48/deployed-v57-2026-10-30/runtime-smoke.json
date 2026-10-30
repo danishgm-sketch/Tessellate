@@ -1,0 +1,104 @@
+{
+  "schemaVersion": "1.0.0",
+  "siteUrl": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "siteVersion": 57,
+  "siteMirrorCommit": "74ce8f209482f5a5df28a32ef5ffdc33790849fd",
+  "canonicalSourceCommit": "0115b2328334206a2a3a48b06068d14146497e55",
+  "scope": "Targeted public review audit, not the full route/accessibility release audit.",
+  "date": "2026-10-30",
+  "catalogue": {
+    "route": "/compose",
+    "status": "ready",
+    "resources": 324,
+    "gold": 40
+  },
+  "flagship": {
+    "brief": "Build a professional but playful employee experience platform for a 500-person technology company. The marketing site should feel warm and energetic, while the application itself should feel professional, fast and trustworthy. Make the dashboard refined, make onboarding playful, keep settings conservative.",
+    "directionCount": 3,
+    "directionCProjectId": "proj-direction-c-cc525585148f448eaa84b778996edb59dirc",
+    "directionModels": [
+      {
+        "direction": "A",
+        "visibleGrammar": "sidebar with card-based sections"
+      },
+      {
+        "direction": "B",
+        "visibleGrammar": "top navigation with feature grid"
+      },
+      {
+        "direction": "C",
+        "visibleGrammar": "navigation rail and three-column workspace"
+      }
+    ],
+    "workbench": {
+      "visibleModes": [
+        "Structure",
+        "Style",
+        "Motion",
+        "Content",
+        "Audit"
+      ],
+      "mobileViewport": "390x844",
+      "projectScreens": 7,
+      "lockRecomposeSurpriseUndoRedo": "exercised",
+      "replacement": {
+        "role": "activity-feed",
+        "candidate": "notification-centre",
+        "status": "Gold",
+        "applied": true
+      }
+    }
+  },
+  "observations": [
+    {
+      "id": "AUD-390",
+      "route": "/workbench?project=proj-direction-c-cc525585148f448eaa84b778996edb59dirc",
+      "viewport": "1440x900",
+      "result": "reproduced",
+      "actual": "Employee Experience brief was labelled Recruitment and the product model retained recruitment-only forbidden patterns.",
+      "screenshot": "before-aud390-391-workbench-1440x900.png"
+    },
+    {
+      "id": "AUD-391",
+      "route": "/workbench?project=proj-direction-c-cc525585148f448eaa84b778996edb59dirc",
+      "viewport": "1440x900",
+      "result": "reproduced",
+      "actual": "Dominant archetype confidence displayed as 10000%.",
+      "screenshot": "before-aud390-391-workbench-1440x900.png"
+    },
+    {
+      "route": "/",
+      "viewport": "1440x900",
+      "result": "rendered",
+      "scrollWidth": 1425,
+      "clientWidth": 1425,
+      "consoleErrors": 0,
+      "failedEssentialRequests": 0,
+      "materialWarnings": [
+        "Three browser deprecation notices came from the Cloudflare challenge script (Fenced Frame, StorageType.persistent, Protected Audience)."
+      ],
+      "screenshot": "desktop-home-1440x900.png"
+    },
+    {
+      "route": "/workbench",
+      "viewport": "390x844",
+      "result": "rendered",
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "consoleErrors": 0,
+      "failedRequests": 0,
+      "screenshot": "workbench-390x844.png"
+    }
+  ],
+  "screenshots": [
+    "desktop-home-1440x900.png",
+    "compose-directions-1440x900.png",
+    "before-aud390-391-workbench-1440x900.png",
+    "workbench-390x844.png"
+  ],
+  "caveats": [
+    "The full 31-route/public accessibility audit remains the v55 checkpoint.",
+    "Compose brief input was typed using visible keyboard interaction after automation fill did not reliably simulate the input event; ordinary keyboard use saved correctly.",
+    "This targeted v57 check is not a complete acceptance re-audit."
+  ]
+}

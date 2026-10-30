@@ -1,0 +1,149 @@
+{
+  "schemaVersion": "1.0.0",
+  "branch": "codex/step-48-review-fixes",
+  "sourceHead": "680fbe1fab99d913885957bd0bb5dd8c3a55fbe1",
+  "capturedAt": "2026-10-30",
+  "checks": {
+    "frozenInstall": {
+      "command": "pnpm install --frozen-lockfile",
+      "result": "PASS"
+    },
+    "catalogueBuild": {
+      "command": "pnpm build:catalog",
+      "result": "PASS",
+      "resources": 324,
+      "goldResources": 40
+    },
+    "typecheck": {
+      "command": "pnpm typecheck",
+      "result": "PASS"
+    },
+    "lint": {
+      "command": "pnpm lint",
+      "result": "PASS"
+    },
+    "unitTests": {
+      "command": "pnpm test",
+      "result": "PASS",
+      "passed": 1236,
+      "skipped": 1,
+      "failed": 0
+    },
+    "releaseGate": {
+      "command": "pnpm audit:release-gate",
+      "result": "PASS",
+      "checksPassed": 16,
+      "checksTotal": 16
+    },
+    "resourceIsolation": {
+      "command": "pnpm audit:resource-isolation",
+      "result": "PASS",
+      "resourcesScanned": 324,
+      "passed": 324,
+      "failed": 0
+    },
+    "productionBuild": {
+      "command": "pnpm build",
+      "result": "PASS",
+      "astroPages": 733,
+      "sitesAdapter": "PASS"
+    },
+    "bundleBudgets": {
+      "command": "pnpm audit:budgets",
+      "result": "PASS",
+      "measurements": [
+        {
+          "route": "homepage",
+          "gzipKB": 99.43,
+          "budgetKB": 150
+        },
+        {
+          "route": "explore",
+          "gzipKB": 177.59,
+          "budgetKB": 200
+        },
+        {
+          "route": "compose",
+          "gzipKB": 254.89,
+          "budgetKB": 750
+        },
+        {
+          "route": "workbench",
+          "gzipKB": 74.32,
+          "budgetKB": 750
+        },
+        {
+          "route": "catalogue",
+          "gzipKB": 112.52,
+          "budgetKB": 2048
+        }
+      ]
+    },
+    "licenceAndProvenance": {
+      "command": "pnpm audit:licenses",
+      "result": "PASS",
+      "resources": 324,
+      "schemaFailures": 0,
+      "invalidLicences": 0,
+      "missingProvenance": 0,
+      "qualityBelow80": 0
+    },
+    "securityAndSecrets": {
+      "command": "pnpm audit:secrets",
+      "result": "PASS",
+      "violations": 0,
+      "previewIsolation": "PASS",
+      "goldRegistryCount": 40
+    },
+    "dependencyAudit": {
+      "command": "pnpm audit:dependencies",
+      "result": "PASS",
+      "knownVulnerabilities": 0
+    },
+    "employeeStandaloneExport": {
+      "test": "tests/employee-export-runtime.test.ts",
+      "result": "PASS",
+      "install": "npm install in clean temporary export directory",
+      "build": "npm run build",
+      "browser": "Chromium interaction and zero runtime errors/network failures"
+    }
+  },
+  "playwright": {
+    "command": "pnpm test:e2e",
+    "result": "PASS",
+    "passed": 700,
+    "configuredSkipped": 167,
+    "unexpectedFailures": 0,
+    "suites": [
+      {
+        "suite": "root desktop/mobile Chromium",
+        "passed": 357,
+        "skipped": 121
+      },
+      {
+        "suite": "Sites Chromium",
+        "passed": 187,
+        "skipped": 6
+      },
+      {
+        "suite": "Sites mobile Chromium",
+        "passed": 153,
+        "skipped": 40
+      },
+      {
+        "suite": "preview app Chromium",
+        "passed": 3,
+        "skipped": 0
+      }
+    ]
+  },
+  "notes": [
+    "The Playwright runner rewrote tracked screenshots/reports; all 594 generated test artifacts were restored after the run. Existing product source and hand-collected audit evidence were preserved.",
+    "Vite emitted its existing chunk-size advisory. The configured eager-route bundle budgets passed.",
+    "Chrome DevTools browser-test deprecation messages came from the Cloudflare challenge script on public v57; no Workbench application console errors or essential request failures were observed."
+  ],
+  "pending": [
+    "Exact-head GitHub CI",
+    "Public v58 issue-specific deployed re-audit"
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. Latest complete public product checkpoint: Sites v55 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ (version appgprj_6acc036de8cc8191a823339566972d85~appgver_f5c1c72071048191896cb4e757a4722f; deployment appgdep_6ae1e23c361c819189455436b4d89cb0). Latest docs-only public publication: Sites v56 (version appgprj_6acc036de8cc8191a823339566972d85~appgver_a265d974a0cc8191b4bfd079767f8624; deployment appgdep_6ae4cc6dfba48191984d011a62d11de8; Sites mirror f90ebd07e1055b461b26478807b69497c0450af2); its targeted six-route desktop/mobile smoke passed 12/12 with no HTTP errors, overflow, console messages, uncaught exceptions, or failed requests. The v56 publication changes documentation only; v55 remains the latest full product re-audit. The Site is public and has no D1/R2 bindings. The 2026-10-28 v55 deployed re-audit passed 31 routes at desktop/mobile (62/62), eight showcase details at desktop/mobile (16/16), the flagship employee flow and independent React ZIP install/build/browser smoke, eight responsive widths across 14 major surfaces (112/112), 12 Axe route scans plus two generated Workbench scans with zero violations, and WebKit CSP checks at desktop/mobile. No new defects were discovered in that full audit. The system-wide ledger contains 377 findings: 0 critical, 69 high, 285 medium, 23 low; no open P0/P1. 176 medium findings await deployed verification and 8 low findings await deployed verification or host resolution. Step 45 passed; the broader product-hardening programme remains incomplete. Laptop-host inference remains unavailable when its Docker runtime is not connected. See quality/evidence/step-45/public-v55-reaudit-2026-10-28/ and quality/evidence/step-48/sites-v56-targeted-smoke-2026-10-30/.",
+  "scope": "Latest complete public product checkpoint remains Sites v55. Sites v56 was documentation-only. Public Sites v57 targeted audit reproduced AUD-390 and AUD-391 during the exact flagship Compose-to-Direction-C Workbench journey; initial desktop and mobile screenshots plus workflow evidence are under quality/evidence/step-48/deployed-v57-2026-10-30/. A local full test run also reproduced AUD-392 in the real clean standalone export install. All three defects have local regression coverage; hosted re-verification of the two UI findings remains pending. The wider product-hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -14994,7 +14994,166 @@
         "regressionEvidence": "apps/api/src/__tests__/cloud-sync-d1.test.ts: rejects invalid revision summaries before saving and keeps the project history readable",
         "result": "Pre-fix behavior reproduced; regression passes after the fix. Full local quality suite passed on the current source state. Deployed verification remains pending."
       }
+    },
+    {
+      "id": "AUD-387",
+      "severity": "high",
+      "route": "PUT /api/projects/:id",
+      "viewport": "D1 API integration test",
+      "category": "data",
+      "title": "Project update accepted oversized metadata inherited from its manifest",
+      "expected": "Every resolved project name and description must satisfy the stored-project contract before a create or update is committed.",
+      "actual": "The pre-fix D1 regression accepted a 121-character manifest name and a 2,001-character manifest description when the corresponding top-level field was omitted. The resulting stored records could not pass the read contract. Sites v56 has no D1 binding, so this was not a live Sites API observation.",
+      "reproduction": "Create a valid D1 project. PUT an otherwise valid manifest with a 121-character name and no top-level name; repeat with a 2,001-character description and no top-level description. Also POST a manifest with a 2,001-character description and a valid top-level name. Check status and that no invalid revision/project is stored.",
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "Update validation covered only top-level name/description fields. Manifest-inherited metadata bypassed stored-record bounds; create also persisted a long manifest description when the top-level override was absent.",
+      "affectedCode": "apps/api/src/routes/projects.ts; apps/api/src/__tests__/cloud-sync-d1.test.ts",
+      "remediation": "Validate resolved name/description after top-level overrides and before both create/update writes. Reject over-limit inherited metadata with 400 and keep the existing revision readable.",
+      "fixCommit": "f303e656",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "apps/api/src/__tests__/cloud-sync-d1.test.ts: rejects oversized descriptions inherited from a project manifest on creation; rejects metadata inherited from an oversized project manifest before saving an update",
+        "result": "Both regressions failed before the fix and pass after it. The D1 integration file and full local Vitest suite pass; Sites has no D1 binding, so this remains a server-side regression verification."
+      }
+    },
+    {
+      "id": "AUD-388",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "Persistence regression",
+      "category": "persistence",
+      "title": "Checkpoint journal quota errors prevented durable checkpoint writes",
+      "expected": "A failed localStorage journal write must not prevent checkpoint snapshots from being written to IndexedDB when that store is available, and the UI must still receive the journal failure.",
+      "actual": "The pre-fix persistence regression showed a localStorage QuotaExceededError rejected before saveLocalCheckpoint was called, so newly created checkpoints were not stored in IndexedDB.",
+      "reproduction": "Make localStorage.setItem throw QuotaExceededError for tessellate_checkpoints_<projectId>. Call saveCheckpointJournal with a valid checkpoint and observe whether the durable-store adapter is still invoked.",
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The synchronous journal write ran before durable storage writes; a thrown exception short-circuited the function.",
+      "affectedCode": "packages/workbench/src/persistence/checkpoint-journal.ts; packages/workbench/src/persistence/checkpoint-journal.test.ts",
+      "remediation": "Attempt the journal write independently, await every durable checkpoint write, then report journal or durable-store failures without hiding either.",
+      "fixCommit": "a3d4a53c",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "packages/workbench/src/persistence/checkpoint-journal.test.ts: attempts durable checkpoint storage when the localStorage journal exceeds quota",
+        "result": "The pre-fix test observed no durable-store write; the regression passes after the change and preserves a visible storage warning. Deployed quota fault injection remains pending."
+      }
+    },
+    {
+      "id": "AUD-389",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "Mutation regression",
+      "category": "state",
+      "title": "Surprise Me dropped a locked content container when switching to top navigation",
+      "expected": "Navigation recomposition must preserve a locked content wrapper and its full subtree, while leaving the resulting manifest schema-valid.",
+      "actual": "The pre-fix deterministic mutation regression flattened a locked main-content-scroll/workspace-multi-pane wrapper. Its lock reference then pointed to a missing project node and the Surprise Me operation failed manifest validation. This specific seed-based case was not directly reproduced on public v56.",
+      "reproduction": "Lock a main-content-scroll container with a structure lock. Trigger high-divergence Surprise Me that selects top-nav (regression seed locked-pane-2) and inspect operation success, wrapper identity, subtree hash, and manifest validity.",
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "applyNavigationLayout flattened recognized content wrappers for top-nav without checking whether the wrapper itself was locked.",
+      "affectedCode": "packages/workbench/src/utils/navigation-layout.ts; packages/workbench/src/__tests__/surprise-me.test.ts",
+      "remediation": "Retain the exact locked content pane as a direct child of the new top-nav shell; continue flattening unlocked panes as before.",
+      "fixCommit": "0115b232",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "packages/workbench/src/__tests__/surprise-me.test.ts: preserves a locked content container when Surprise Me switches to top navigation",
+        "result": "The regression failed before the fix. Afterward the full locked subtree hash is unchanged and the resulting manifest passes ProjectManifestSchema. Deployed interaction verification remains pending."
+      }
+    },
+    {
+      "id": "AUD-390",
+      "severity": "high",
+      "route": "/workbench?project=proj-direction-c-cc525585148f448eaa84b778996edb59dirc",
+      "viewport": "1440x900",
+      "category": "data",
+      "title": "Employee experience intent inherited recruitment-only constraints",
+      "expected": "The Product Intent panel should describe an employee experience product and must not inherit recruiting-specific forbidden patterns.",
+      "actual": "Direction C's project description, audience, objective, and screens were employee-focused, but the Workbench labelled the dominant archetype Recruitment and its ProductModel retained hiring-only forbidden patterns.",
+      "reproduction": [
+        "Open /compose and enter the exact employee-experience flagship brief.",
+        "Compose all three directions and open Direction C in Workbench.",
+        "Open Brief and inspect Identified Archetypes and Hard Constraints."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-48/deployed-v57-2026-10-30/before-aud390-391-workbench-1440x900.png",
+      "rootCause": "Employee-experience specialization replaced some recruitment profile fields but retained the recruitment definition's forbiddenPatterns; the Workbench also displayed the generic base archetype name instead of the specialized name.",
+      "affectedCode": "packages/composer/src/domain-context.ts; packages/composer/src/index.ts; packages/workbench/src/components/left-panel/BriefTab.tsx",
+      "remediation": "Clear recruitment-only forbidden patterns for employee experience and reuse the shared specialization helper for the user-facing archetype name.",
+      "fixCommit": "88c14f9eecb468b0036dea263469292666149b44",
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "regressionEvidence": "packages/composer/src/__tests__/product-interpretation-benchmark.test.ts (REC-02) and packages/workbench/src/__tests__/workbench-ui.test.tsx",
+        "result": "Pre-fix semantic and visible Workbench regressions failed. The REC-02 case and Workbench rendering regression pass after the fix; deployed v58 verification pending."
+      }
+    },
+    {
+      "id": "AUD-391",
+      "severity": "medium",
+      "route": "/workbench?project=proj-direction-c-cc525585148f448eaa84b778996edb59dirc",
+      "viewport": "1440x900",
+      "category": "content",
+      "title": "Workbench rendered the archetype confidence as 10000 percent",
+      "expected": "An archetype weight already expressed on a 0-100 scale should be displayed as a percentage on the same scale.",
+      "actual": "The dominant archetype weight was 100, but Workbench multiplied it by 100 and displayed 10000%.",
+      "reproduction": [
+        "Open /compose and enter the exact employee-experience flagship brief.",
+        "Compose and open Direction C in Workbench.",
+        "Open Brief and inspect the percentage badge beside the identified archetype."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-48/deployed-v57-2026-10-30/before-aud390-391-workbench-1440x900.png",
+      "rootCause": "BriefTab treated the ProductModel's 0-100 archetype weight as a normalized 0-1 fraction and multiplied by 100.",
+      "affectedCode": "packages/workbench/src/components/left-panel/BriefTab.tsx; packages/workbench/src/__tests__/workbench-ui.test.tsx",
+      "remediation": "Render the existing 0-100 weight directly and cover the visible value in the Workbench regression test.",
+      "fixCommit": "88c14f9eecb468b0036dea263469292666149b44",
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "regressionEvidence": "packages/workbench/src/__tests__/workbench-ui.test.tsx: employee experience as the archetype and its 0-100 weight correctly",
+        "result": "The pre-fix Workbench rendering regression showed the 10000% value. The regression passes after the 0-100 display correction; deployed v58 verification pending."
+      }
+    },
+    {
+      "id": "AUD-392",
+      "severity": "high",
+      "route": "Standalone React ZIP export",
+      "viewport": "Clean temporary install and Chromium runtime",
+      "category": "export",
+      "title": "Standalone React export could not install a missing transitive tarball",
+      "expected": "A generated employee-experience Vite project should install its declared dependencies from a clean directory, build, and open in a browser.",
+      "actual": "The real-runtime export test failed at npm install because the Motion dependency range selected tslib 2.9.1, while https://registry.npmjs.org/tslib/-/tslib-2.9.1.tgz returned HTTP 404. The same request failed on an immediate clean retry; the verified 2.8.1 tarball returned HTTP 200.",
+      "reproduction": [
+        "Generate the employee-experience standalone Vite source tree with Motion enabled.",
+        "Run npm install --no-audit --no-fund in a clean temporary export directory.",
+        "Observe the request for tslib-2.9.1.tgz return 404 before build or browser smoke can start."
+      ],
+      "console": [],
+      "network": [
+        {
+          "url": "https://registry.npmjs.org/tslib/-/tslib-2.9.1.tgz",
+          "status": 404
+        },
+        {
+          "url": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz",
+          "status": 200
+        }
+      ],
+      "screenshot": null,
+      "rootCause": "The standalone package declared Motion with a broad semver range but did not constrain its tslib transitive dependency; clean installs followed registry metadata to a tarball that was unavailable.",
+      "affectedCode": "packages/exporter/src/dependencies.ts; packages/exporter/src/__tests__/exporter.test.ts; tests/employee-export-runtime.test.ts",
+      "remediation": "Pin the verified tslib dependency in exported packages whenever Motion is included, and retain the independent npm-install/build/browser runtime regression.",
+      "fixCommit": "680fbe1fab99d913885957bd0bb5dd8c3a55fbe1",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "tests/employee-export-runtime.test.ts: standalone employee product preserves nested records and CTA content in a real independent runtime",
+        "result": "Pre-fix independent npm install failed at the 404 tarball. After pinning tslib 2.8.1, clean npm install, build, Chromium browser interaction, and browser error/network assertions pass. Full unit suite (1236 passed, 1 configured skip), 16-point release audit, production build, bundle/security/licence/provenance audits and complete E2E (700 passed, 167 configured skips) also pass."
+      }
     }
   ],
-  "generatedAt": "2026-10-30T18:25:08.944Z"
+  "generatedAt": "2026-10-30T21:11:31.838Z"
 }

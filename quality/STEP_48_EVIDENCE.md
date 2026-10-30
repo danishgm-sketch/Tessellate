@@ -79,5 +79,33 @@ Seven additional review findings were reproduced in focused pre-fix unit/integra
 | AUD-383 | Structured content draft did not sync when Undo/Redo changed committed data. | Desktop/mobile visible Playwright regression |
 | AUD-384/AUD-385 | Next.js export accessed browser state during SSR and omitted shared layout CSS. | Exporter regression |
 | AUD-386 | API update wrote unvalidated revision summaries. | D1 integration regression |
+| AUD-387 | Manifest-inherited project name/description bypassed stored metadata limits. | D1 create/update regression |
+| AUD-388 | Journal quota failure prevented durable checkpoint writes. | Checkpoint persistence regression |
+| AUD-389 | Top-navigation Surprise Me flattened locked content containers. | Deterministic mutation regression |
 
-The complete local gates are recorded in `quality/STEP_47_EVIDENCE.md`: frozen install, catalogue, typecheck, lint, 1,231 unit tests, 16-point release audit, build/bundle/security/licence/dependency checks, and 700 passing E2E tests with 167 configured skips. CI and deployed v57 issue-specific checks are the next gates. The audit ledger records all nine as locally fixed, not deployed-closed. The three new High findings remain pending a Site recheck. The static review Site has no D1/R2 bindings; Next.js export and authenticated cloud API are not Site runtime features, so their relevant regression protection is the exporter and D1 integration suite. No security policy or persistence boundary was weakened.
+The complete local gates at the v56 checkpoint are recorded in `quality/STEP_47_EVIDENCE.md`. The targeted v57 audit and latest local gates are recorded below. The wider hardening programme remains incomplete. The static review Site has no D1/R2 bindings; Next.js export and authenticated cloud API are not Site runtime features, so their regression protection is the exporter and D1 integration suite. No security policy or persistence boundary was weakened.
+
+## Public v57 targeted audit and local remediation — 2026-10-30
+
+The public v57 Site was tested in an isolated guest browser at desktop 1440×900 and mobile 390×844. The exact employee-experience brief reached a ready catalogue, generated three directions, and opened Direction C in Workbench. All five modes were opened. The UI flow exercised a summary lock, recomposition, semantic Gold replacement, Surprise Me, and Undo/Redo. The mobile Workbench had no horizontal overflow; its requests and browser console were clean. This targeted audit is not a repeat of the full v55 route sweep.
+
+Before screenshots and machine evidence:
+
+- Workbench desktop showing the erroneous archetype and percentage: `quality/evidence/step-48/deployed-v57-2026-10-30/before-aud390-391-workbench-1440x900.png`.
+- Compose directions: `quality/evidence/step-48/deployed-v57-2026-10-30/compose-directions-1440x900.png`.
+- Workbench mobile: `quality/evidence/step-48/deployed-v57-2026-10-30/workbench-390x844.png`.
+- Browser journey and route observations: `quality/evidence/step-48/deployed-v57-2026-10-30/runtime-smoke.json`.
+
+This run reproduced AUD-390 (employee experience labelled Recruitment with recruitment-only hard constraints) and AUD-391 (100 displayed as 10000%). Their regressions failed before the fixes and pass after them. Full-root unit tests also exposed AUD-392: a clean standalone export install resolved `tslib@2.9.1`, whose npm tarball returned 404. The exporter now pins the verified 2.8.1 package when Motion is included. The same clean generated export now installs, builds, and passes its Chromium interaction/runtime assertions. Failure and corrected run evidence is in `export-registry-failure.json`.
+
+### Latest local quality results
+
+All gates passed on code head `680fbe1fab99d913885957bd0bb5dd8c3a55fbe1`:
+
+- `pnpm install --frozen-lockfile`, `pnpm build:catalog` (324 resources, 40 Gold), `pnpm typecheck`, and `pnpm lint`.
+- `pnpm test`: 1,236 passed, 1 configured skip, 0 failures.
+- `pnpm audit:all`: 16/16 behavioural release checks, 324/324 source-isolation checks, 733 Astro pages built, bundle budgets passed, 324/324 licence/provenance checks, 0 security violations, and no known dependency vulnerabilities.
+- The export regression completed a fresh npm install, production build, and Chromium browser check outside the repository dependency tree.
+- `pnpm test:e2e`: 700 passed, 167 configured skips, 0 unexpected failures. Suite split: root desktop/mobile 357/121, Sites desktop 187/6, Sites mobile 153/40, preview app 3/0.
+
+Exact gate outputs are summarized in `quality/evidence/step-48/local-quality-2026-10-30/verification-summary.json`. The public v58 issue-specific re-audit and exact-head GitHub CI are pending; AUD-390 and AUD-391 are not marked deployed-closed yet. AUD-392 is locally verified through the independent exporter runtime test and awaits exact-head CI before non-Site closure.
