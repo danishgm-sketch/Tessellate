@@ -583,3 +583,29 @@ The correction removes the unsupported claims from `resources/sections/footer-mi
 ### 2026-10-28 continuation — public Sites v52 Footer Minimal verification
 
 Sites v52 is live at the public review URL and serves canonical commit `00aee74806dacec62bc4a14986f51e284f083c46` from Sites mirror commit `286fccc39903e6b945e1608ce791d5b6e58ac2a2`. The full public copy/resource suite passed 113 checks with 9 configured skips and zero failures across desktop 1440×900 and mobile 390×844. AUD-029 passed in both viewports: `/resources/footer-minimal/` returned HTTP 200, metadata describes optional project links, the preview contains only the copyright notice by default, and both machine records report no console errors or warnings, uncaught exceptions, failed requests, or HTTP errors. The screenshots and JSON records are in `quality/evidence/step-39/public-v52-copy-2026-10-28/footer-minimal-live-status/`; the complete Playwright report is in `quality/evidence/step-39/public-v52-copy-2026-10-28/runner/report.json`. AUD-029 is closed. Step 39 and the product-hardening programme remain incomplete.
+
+### 2026-10-30 continuation — public Sites v56 copy/resource suite
+
+The current public review Site is v56 at
+https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ (version
+`appgprj_6acc036de8cc8191a823339566972d85~appgver_a265d974a0cc8191b4bfd079767f8624`,
+deployment `appgdep_6ae4cc6dfba48191984d011a62d11de8`). The copied versioned
+Playwright runner tested the deployed site at desktop 1440×900 and mobile
+390×844. It passed 113 cases, skipped 9 configured cases, and reported zero
+unexpected failures in 4.6 minutes. The suite covers composition identity and
+domain copy, tool and documentation claims, resource metadata, truthful sample
+content, Gold resource interaction/state, live preview controls, and reduced
+motion. Full results are in
+`quality/evidence/step-39/public-v56-copy-2026-10-30/runner/report.json`.
+
+The first harness attempt exposed two test setup defects: the preview assertion
+could run while the renderer was still in its explicitly announced loading
+state, and a report writer assumed its evidence directory existed. The copied
+runner now waits for the loading state to settle and creates that directory; a
+focused deployed rerun passed 3 cases with 1 configured skip, followed by the
+complete 113/9/0 run. These were audit-harness issues, not defects in the live
+product. Historical v52 evidence was restored and left unchanged. This is a
+deployed copy/resource check, not a new full route, flagship, Axe, responsive,
+or export re-audit; v55 remains the latest complete product checkpoint. Step
+39 remains open for the remaining catalogue-wide/manual review and any
+outstanding issue-specific deployed verification.

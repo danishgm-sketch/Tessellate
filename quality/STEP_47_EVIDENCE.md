@@ -137,23 +137,42 @@ or security policy changed in this step.
   generated.
 - `pnpm typecheck`: passed across 22 configured workspace packages.
 - `pnpm lint`: passed within the configured warning cap.
-- `pnpm test`: 1,224 passed, 1 configured skip, 79 files.
+- `pnpm test`: 1,231 passed, 1 configured skip, 80 files.
 - `pnpm audit:all`: passed all 16 behavioral gates, 324/324 static isolation
   scans, production build (733 Astro pages), Sites Worker artifact build,
   bundle budgets, 324/324 licence/provenance/quality records, zero security
   violations, and dependency audit with no known vulnerabilities.
-- `pnpm test:e2e`: 696 passed, 167 configured skips, zero failures: Astro
-  desktop/mobile 353/121; Sites Worker desktop 187/6 and mobile 153/40;
+- `pnpm test:e2e`: 700 passed, 167 configured skips, zero failures: Astro
+  desktop/mobile 357/121; Sites Worker desktop 187/6 and mobile 153/40;
   isolated preview app 3/0. Desktop Sites Worker ran the complete 324-resource
   responsive certification; the profile's Gold variant, CSP, fault-injection,
   responsive, flagship, export, and cross-surface checks passed.
 - Build output retained the existing preview-app >500 kB raw chunk warning;
   gzip route budgets passed. Node emitted `NO_COLOR`/`FORCE_COLOR` environment
   warnings from Playwright processes; they did not affect test results.
-- No application package or resource changed. The existing v55 deployment still
-  provides the verified runtime, while its rendered decision, inventory and
-  hardening documentation will remain stale until the updated source is saved
-  and deployed. The Sites source checkout is prepared from the existing remote;
-  it requires the corrected README, deployment record, and `docs/*.md` files
-  before a new archive is built. Step 48 still needs green exact-head GitHub CI,
-  publication of the docs-updated public RC, and protected merge.
+- No application package or resource changed. At the time of this local run,
+  the public v55 Site still served the prior documentation; the follow-up below
+  records the public v56 documentation publication and deployed checks. Step 48
+  still requires exact-head green GitHub CI, a current public RC record, and
+  protected merge.
+
+### Public documentation publication — 2026-10-30
+
+The corrected canonical product-hardening, decision, inventory, README, and
+deployment documentation was captured in Sites v56 from source mirror
+`f90ebd07e1055b461b26478807b69497c0450af2`. The public Site remains at its
+existing URL. The targeted browser matrix covers Home, Compose, Workbench,
+Decisions, Current Product Inventory, and Product Hardening at 1440×900 and
+390×844 (12/12). It reports no HTTP errors, overflow, console errors/warnings,
+uncaught exceptions, or failed requests; Compose reached catalogue readiness
+and Workbench hydrated. Screenshots and machine results are in
+`quality/evidence/step-48/sites-v56-targeted-smoke-2026-10-30/`.
+
+The v56 documentation update does not replace the complete v55 product
+re-audit, change app code, provision D1/R2, or complete the protected release
+path. Step 48 remains open until its remaining release conditions pass.
+
+
+### Review-defect remediation rerun — 2026-10-30
+
+After the nine fixes, the full Vitest suite passed 1,231 tests with one configured skip across 80 files; typecheck and lint passed. `pnpm audit:all` passed all 16 behavioral gates, 324-resource isolation, 733-page Astro build, Sites Worker packaging, bundle limits, provenance/licence/security checks, and dependency audit. `pnpm test:e2e` passed 700 tests with 167 configured skips and zero failures across Astro desktop/mobile, Sites Worker desktop/mobile, and the standalone preview app. Both new visible regressions passed in desktop and mobile projects. Against the pre-fix public v56 Site, the visible content Undo and locked-page deletion regressions failed as expected; screenshots, contexts, and traces are preserved under `quality/evidence/step-48/pre-fix-v56/`. This does not close the findings before a v57 deployment recheck.

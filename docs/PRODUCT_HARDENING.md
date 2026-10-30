@@ -12,12 +12,16 @@ Legacy branches are evidence/reference, never parallel sources of product truth.
 
 ## Current release evidence (2026-10-30)
 
-The latest complete deployed product re-audit is the public review Site v55,
-recorded in `quality/STEP_45_EVIDENCE.md` (2026-10-28). The dated deployment
-notes below describe their own historical checkpoints; use that evidence file
-and current Sites metadata for present runtime status. The documentation
-corrections in this continuation do not close any issue that still requires
-issue-specific deployed verification. D1/R2 remain unprovisioned. Step 46 is
+The latest complete deployed product re-audit remains public review Site v55,
+recorded in `quality/STEP_45_EVIDENCE.md` (2026-10-28). Public Site v56 is now
+live with the current product-hardening, decision, and inventory documentation;
+its targeted six-route desktop/mobile smoke passed 12/12 checks. This is a
+documentation publication, not a replacement for the full v55 route, flagship,
+accessibility, responsive, and export audit. Evidence is in
+`quality/evidence/step-48/sites-v56-targeted-smoke-2026-10-30/`. Use current
+Sites metadata for present runtime status. These docs corrections do not close
+unrelated findings that still require issue-specific deployed verification.
+D1/R2 remain unprovisioned. Step 46 is
 owner-waived, not passed; Step 47 is complete; Step 48 remains open until the
 protected release path and required deployed verification are complete.
 The owner-approved Windows restart on 2026-10-30 recovered all eight running

@@ -1,0 +1,244 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "tests/e2e/sites-live-temporary.config.ts"
+    ],
+    "configFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\sites-live-temporary.config.ts",
+    "rootDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 2
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 2
+        },
+        "id": "sites-live-desktop",
+        "name": "sites-live-desktop",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "workbench-content-history.spec.ts",
+          "workbench-page-locks.spec.ts"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../../quality/evidence/step-48/pre-fix-v56-playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 10,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "workbench-content-history.spec.ts",
+      "file": "workbench-content-history.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "structured content drafts follow undo and redo of the applied project value",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-desktop",
+              "projectName": "sites-live-desktop",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17775,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[33m@@ -1,10 +1,10 @@\u001b[39m\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Object {\u001b[22m\n\u001b[2m      \"displayValue\": \"Progress not connected\",\u001b[22m\n\u001b[2m      \"id\": 1,\u001b[22m\n\u001b[32m-     \"name\": \"Example colleague A\",\u001b[39m\n\u001b[31m+     \"name\": \"Edited employee record\",\u001b[39m\n\u001b[2m      \"quality\": 80,\u001b[22m\n\u001b[2m      \"status\": \"Onboarding\",\u001b[22m\n\u001b[2m      \"type\": \"Product team\",\u001b[22m\n\u001b[2m    },\u001b[22m\n\u001b[2m    Object {\u001b[22m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[33m@@ -1,10 +1,10 @@\u001b[39m\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Object {\u001b[22m\n\u001b[2m      \"displayValue\": \"Progress not connected\",\u001b[22m\n\u001b[2m      \"id\": 1,\u001b[22m\n\u001b[32m-     \"name\": \"Example colleague A\",\u001b[39m\n\u001b[31m+     \"name\": \"Edited employee record\",\u001b[39m\n\u001b[2m      \"quality\": 80,\u001b[22m\n\u001b[2m      \"status\": \"Onboarding\",\u001b[22m\n\u001b[2m      \"type\": \"Product team\",\u001b[22m\n\u001b[2m    },\u001b[22m\n\u001b[2m    Object {\u001b[22m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n    at C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\workbench-content-history.spec.ts:30:75",
+                    "location": {
+                      "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\workbench-content-history.spec.ts",
+                      "column": 75,
+                      "line": 30
+                    },
+                    "snippet": "  28 |   await page.getByRole('button', { name: 'Apply rows' }).click();\n  29 |   await page.getByRole('button', { name: 'Undo', exact: true }).click();\n> 30 |   await expect.poll(async () => JSON.parse(await rowsField.inputValue())).toEqual(original);\n     |                                                                           ^\n  31 |\n  32 |   await page.getByRole('button', { name: 'Redo', exact: true }).click();\n  33 |   await expect.poll(async () => JSON.parse(await rowsField.inputValue())).toEqual(edited);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\workbench-content-history.spec.ts",
+                        "column": 75,
+                        "line": 30
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoEqual\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // deep equality\u001b[22m\n\n\u001b[32m- Expected  - 1\u001b[39m\n\u001b[31m+ Received  + 1\u001b[39m\n\n\u001b[33m@@ -1,10 +1,10 @@\u001b[39m\n\u001b[2m  Array [\u001b[22m\n\u001b[2m    Object {\u001b[22m\n\u001b[2m      \"displayValue\": \"Progress not connected\",\u001b[22m\n\u001b[2m      \"id\": 1,\u001b[22m\n\u001b[32m-     \"name\": \"Example colleague A\",\u001b[39m\n\u001b[31m+     \"name\": \"Edited employee record\",\u001b[39m\n\u001b[2m      \"quality\": 80,\u001b[22m\n\u001b[2m      \"status\": \"Onboarding\",\u001b[22m\n\u001b[2m      \"type\": \"Product team\",\u001b[22m\n\u001b[2m    },\u001b[22m\n\u001b[2m    Object {\u001b[22m\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate\n\n  28 |   await page.getByRole('button', { name: 'Apply rows' }).click();\n  29 |   await page.getByRole('button', { name: 'Undo', exact: true }).click();\n> 30 |   await expect.poll(async () => JSON.parse(await rowsField.inputValue())).toEqual(original);\n     |                                                                           ^\n  31 |\n  32 |   await page.getByRole('button', { name: 'Redo', exact: true }).click();\n  33 |   await expect.poll(async () => JSON.parse(await rowsField.inputValue())).toEqual(edited);\n    at C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\workbench-content-history.spec.ts:30:75"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T18:23:27.393Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\test-results\\workbench-content-history--82e9b-f-the-applied-project-value-sites-live-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\test-results\\workbench-content-history--82e9b-f-the-applied-project-value-sites-live-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\test-results\\workbench-content-history--82e9b-f-the-applied-project-value-sites-live-desktop\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\workbench-content-history.spec.ts",
+                    "column": 75,
+                    "line": 30
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "31d52894408bff7fea6f-e4bb889971cbe65c4c1f",
+          "file": "workbench-content-history.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "workbench-page-locks.spec.ts",
+      "file": "workbench-page-locks.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "Pages cannot delete a screen whose descendant is locked",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 30000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-live-desktop",
+              "projectName": "sites-live-desktop",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 1,
+                  "status": "failed",
+                  "duration": 17291,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Select screen Settings & Policies' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('button', { name: 'Select screen Settings & Policies' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Select screen Settings & Policies' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Select screen Settings & Policies' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('button', { name: 'Select screen Settings & Policies' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Select screen Settings & Policies' })\u001b[22m\n\n    at C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\workbench-page-locks.spec.ts:27:89",
+                    "location": {
+                      "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\workbench-page-locks.spec.ts",
+                      "column": 89,
+                      "line": 27
+                    },
+                    "snippet": "  25 |   await page.getByRole('button', { name: 'Delete Settings & Policies' }).click();\n  26 |\n> 27 |   await expect(page.getByRole('button', { name: 'Select screen Settings & Policies' })).toBeVisible();\n     |                                                                                         ^\n  28 |   await expect(page.getByRole('status').filter({ hasText: /locked node/i })).toBeVisible();\n  29 | });\n  30 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\workbench-page-locks.spec.ts",
+                        "column": 89,
+                        "line": 27
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('button', { name: 'Select screen Settings & Policies' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('button', { name: 'Select screen Settings & Policies' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Select screen Settings & Policies' })\u001b[22m\n\n\n  25 |   await page.getByRole('button', { name: 'Delete Settings & Policies' }).click();\n  26 |\n> 27 |   await expect(page.getByRole('button', { name: 'Select screen Settings & Policies' })).toBeVisible();\n     |                                                                                         ^\n  28 |   await expect(page.getByRole('status').filter({ hasText: /locked node/i })).toBeVisible();\n  29 | });\n  30 |\n    at C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\workbench-page-locks.spec.ts:27:89"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-30T18:23:27.393Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\test-results\\workbench-page-locks-Pages-152fa--whose-descendant-is-locked-sites-live-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\test-results\\workbench-page-locks-Pages-152fa--whose-descendant-is-locked-sites-live-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\test-results\\workbench-page-locks-Pages-152fa--whose-descendant-is-locked-sites-live-desktop\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\tests\\e2e\\workbench-page-locks.spec.ts",
+                    "column": 89,
+                    "line": 27
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "66b948cb0a36c2a94087-db9aa2329a48123f7961",
+          "file": "workbench-page-locks.spec.ts",
+          "line": 3,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-30T18:23:26.756Z",
+    "duration": 18942.615999999998,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

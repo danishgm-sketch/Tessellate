@@ -1,0 +1,40 @@
+{
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "interaction": "Select the data filter in the Resource Vocabulary section",
+  "before": {
+    "dataFilterAriaPressed": "false",
+    "allFilterAriaPressed": "true"
+  },
+  "after": {
+    "dataFilterAriaPressed": "true",
+    "allFilterAriaPressed": "false",
+    "dataFilterHasSelectedStyle": true,
+    "allFilterHasSelectedStyle": false,
+    "dataFilterStyle": {
+      "backgroundColor": "rgb(17, 18, 23)",
+      "color": "rgb(255, 255, 255)",
+      "opacity": "1"
+    },
+    "allFilterStyle": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "color": "rgb(98, 102, 111)",
+      "opacity": "1"
+    },
+    "areaChartVisible": true,
+    "advancedDataTableVisible": false
+  },
+  "runtime": {
+    "consoleErrors": [],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  },
+  "screenshots": {
+    "before": "quality/evidence/step-39/public-v56-copy-2026-10-30/after/desktop/homepage-resource-filter-before.png",
+    "after": "quality/evidence/step-39/public-v56-copy-2026-10-30/after/desktop/homepage-resource-filter-selected.png"
+  }
+}

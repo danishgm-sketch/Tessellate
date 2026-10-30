@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Tessellate production review audit. Latest public checkpoint: Sites v55 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ (version appgprj_6acc036de8cc8191a823339566972d85~appgver_f5c1c72071048191896cb4e757a4722f; deployment appgdep_6ae1e23c361c819189455436b4d89cb0), serving Sites source mirror b356ef849431d53eda8f5f052ff65bacf0d477d4 for canonical release commit 2ffe98ac669e97f9a766acdcbe71f62c4ea14691 and application code e3eff775b9db83fa240b937f3697d52cebcde8c6. The Site is public and has no D1/R2 bindings. Exact-head push CI, PR CI and the 16-point Component Quality and Security Gate passed for the release commit. The 2026-10-28 v55 deployed re-audit passed 31 routes at desktop/mobile (62/62), eight showcase details at desktop/mobile (16/16), the flagship employee flow and independent React ZIP install/build/browser smoke, eight responsive widths across 14 major surfaces (112/112), 12 Axe route scans plus two generated Workbench scans with zero violations, and WebKit CSP checks at desktop/mobile. No new defects were discovered. The system-wide ledger contains 377 findings: 0 critical, 69 high, 285 medium, 23 low; no open P0/P1. 176 medium findings await deployed verification and 8 low findings await deployed verification or host resolution. Step 45 passed; the broader product-hardening programme remains incomplete. Laptop-host inference remains unavailable when its Docker runtime is not connected.",
+  "scope": "Tessellate production review audit. Latest complete public product checkpoint: Sites v55 at https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/ (version appgprj_6acc036de8cc8191a823339566972d85~appgver_f5c1c72071048191896cb4e757a4722f; deployment appgdep_6ae1e23c361c819189455436b4d89cb0). Latest docs-only public publication: Sites v56 (version appgprj_6acc036de8cc8191a823339566972d85~appgver_a265d974a0cc8191b4bfd079767f8624; deployment appgdep_6ae4cc6dfba48191984d011a62d11de8; Sites mirror f90ebd07e1055b461b26478807b69497c0450af2); its targeted six-route desktop/mobile smoke passed 12/12 with no HTTP errors, overflow, console messages, uncaught exceptions, or failed requests. The v56 publication changes documentation only; v55 remains the latest full product re-audit. The Site is public and has no D1/R2 bindings. The 2026-10-28 v55 deployed re-audit passed 31 routes at desktop/mobile (62/62), eight showcase details at desktop/mobile (16/16), the flagship employee flow and independent React ZIP install/build/browser smoke, eight responsive widths across 14 major surfaces (112/112), 12 Axe route scans plus two generated Workbench scans with zero violations, and WebKit CSP checks at desktop/mobile. No new defects were discovered in that full audit. The system-wide ledger contains 377 findings: 0 critical, 69 high, 285 medium, 23 low; no open P0/P1. 176 medium findings await deployed verification and 8 low findings await deployed verification or host resolution. Step 45 passed; the broader product-hardening programme remains incomplete. Laptop-host inference remains unavailable when its Docker runtime is not connected. See quality/evidence/step-45/public-v55-reaudit-2026-10-28/ and quality/evidence/step-48/sites-v56-targeted-smoke-2026-10-30/.",
   "entries": [
     {
       "id": "AUD-001",
@@ -14787,7 +14787,214 @@
           }
         ]
       }
+    },
+    {
+      "id": "AUD-378",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Quota fallback allowed a stale journal to replace the newer IndexedDB project",
+      "expected": "After a recovery-journal write exceeds browser quota, reopening must return the newer IndexedDB manifest and preserve its latest edits.",
+      "actual": "The focused persistence regression reproduced the failure against the pre-fix code: when localStorage rejects a newer journal write after IndexedDB accepts the edit, reload can select the older journal. The v56 browser deployment was not fault-injected for this storage edge case.",
+      "reproduction": "Set up a project with an older synchronous recovery journal. Reject subsequent localStorage writes. Save a newer manifest to IndexedDB and reopen the project by ID.",
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The journal write failure path reported the IndexedDB save but left the older synchronous recovery record eligible to win during load.",
+      "affectedCode": "packages/workbench/src/persistence/browser-session.ts; packages/workbench/src/persistence/browser-session.test.ts",
+      "remediation": "After IndexedDB accepts a manifest while the journal write fails, invalidate only that project’s older journal. If invalidation fails, warn the user to export before closing.",
+      "fixCommit": "ef682a640e5bb97c7180b2bff26efa0b454c3c48",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "packages/workbench/src/persistence/browser-session.test.ts: reloads the newest IndexedDB project when a later localStorage journal write exceeds quota",
+        "result": "Pre-fix behavior reproduced; regression passes after the fix. Full local quality suite passed on the current source state. Deployed verification remains pending."
+      }
+    },
+    {
+      "id": "AUD-379",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "An unrelated damaged active-project record blocked a requested valid project",
+      "expected": "Opening a specific valid project ID must not enter corruption recovery because a different active-project journal is malformed.",
+      "actual": "The focused persistence regression reproduces an unrelated malformed active slot being reported as damage when loading another valid project by ID.",
+      "reproduction": "Save a valid project under ID A. Store a malformed active-project record for ID B. Request project A by ID and inspect the load result.",
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The loader validated the shared active slot before checking whether its project ID matched the requested project.",
+      "affectedCode": "packages/workbench/src/persistence/browser-session.ts; packages/workbench/src/persistence/browser-session.test.ts",
+      "remediation": "Ignore or scope the shared active journal unless it identifies the requested project; retain its bytes for later recovery.",
+      "fixCommit": "ef682a640e5bb97c7180b2bff26efa0b454c3c48",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "packages/workbench/src/persistence/browser-session.test.ts: does not put an unrelated corrupted active project into the requested project recovery state",
+        "result": "Pre-fix behavior reproduced; regression passes after the fix. Full local quality suite passed on the current source state. Deployed verification remains pending."
+      }
+    },
+    {
+      "id": "AUD-380",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Resetting a visual-mode override left descendant resources in Nocturne",
+      "expected": "Resetting a parent visual-mode override must return descendant resource variants to inherited project/page values.",
+      "actual": "The pre-fix store regression left an explicit nocturne variant after resetting the parent override, so the visible resource kept dark styling despite inherited DNA.",
+      "reproduction": "Set a section’s Visual Mode to Dark. Reset that section override. Inspect the descendant resource variant and resolved DNA.",
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The node override eagerly materialized descendant variants, but reset removed only the DNA override and did not restore inherited variant state.",
+      "affectedCode": "packages/workbench/src/store/workbench-store.ts; packages/workbench/src/__tests__/dna-hierarchy.test.ts",
+      "remediation": "Resolve descendant variants from inherited DNA at render time instead of persisting child variants when a node-level visual mode changes.",
+      "fixCommit": "9e34c13fb6bc71c959716b16cbf3f258600e0b63",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "packages/workbench/src/__tests__/dna-hierarchy.test.ts: restores inherited resource variants after resetting a visual-mode override",
+        "result": "Pre-fix behavior reproduced; regression passes after the fix. Full local quality suite passed on the current source state. Deployed verification remains pending."
+      }
+    },
+    {
+      "id": "AUD-381",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "N/A (store-level regression)",
+      "category": "data",
+      "title": "Deleting a page left secondary navigation targeting a missing screen",
+      "expected": "Deleting a screen must remove every primary and secondary navigation reference and leave a schema-valid manifest.",
+      "actual": "The pre-fix store regression deleted the target screen and left its secondary navigation item in the manifest, violating the screen-reference contract.",
+      "reproduction": "Delete a screen referenced by secondary navigation. Validate the resulting manifest and inspect the secondary navigation list.",
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The deletion path filtered primaryItems but did not filter navigation.secondaryItems.",
+      "affectedCode": "packages/workbench/src/store/workbench-store.ts; packages/workbench/src/__tests__/workbench-store.test.ts",
+      "remediation": "Perform screen deletion through the validated mutation engine, which checks references and locks, and synchronize rendered navigation after the mutation.",
+      "fixCommit": "9e34c13fb6bc71c959716b16cbf3f258600e0b63",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "packages/workbench/src/__tests__/workbench-store.test.ts: removes secondary navigation references when a page is deleted",
+        "result": "Pre-fix behavior reproduced; regression passes after the fix. Full local quality suite passed on the current source state. Deployed verification remains pending."
+      }
+    },
+    {
+      "id": "AUD-382",
+      "severity": "high",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Pages could delete a screen containing a locked descendant",
+      "expected": "A page deletion must respect locks anywhere in the page subtree and preserve the project when a descendant is locked.",
+      "actual": "The deployed v56 visible-browser regression deleted Settings & Policies even after its Settings form had been locked. The page disappeared instead of reporting the locked-node constraint.",
+      "reproduction": "Open Workbench. Select Settings & Policies. Lock its Settings form in Layers. Return to Pages and delete Settings & Policies.",
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-48/pre-fix-v56/locked-page-was-deleted.png",
+      "rootCause": "The direct deleteScreen implementation bypassed the mutation engine and its lock validation.",
+      "affectedCode": "packages/workbench/src/store/workbench-store.ts; packages/workbench/src/__tests__/workbench-store.test.ts; tests/e2e/workbench-page-locks.spec.ts",
+      "remediation": "Route page deletion through DELETE_SCREEN mutation validation; keep the page intact and return an actionable lock message on rejection.",
+      "fixCommit": "9e34c13fb6bc71c959716b16cbf3f258600e0b63",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "quality/evidence/step-48/pre-fix-v56-playwright.json; tests/e2e/workbench-page-locks.spec.ts",
+        "result": "Pre-fix behavior reproduced; regression passes after the fix. Full local quality suite passed on the current source state. Deployed verification remains pending."
+      }
+    },
+    {
+      "id": "AUD-383",
+      "severity": "medium",
+      "route": "/workbench",
+      "viewport": "1440x900",
+      "category": "state",
+      "title": "Structured content editor stayed stale after Undo",
+      "expected": "After Undo or Redo changes committed project content, the structured JSON editor must display the same committed value.",
+      "actual": "On deployed v56, applying an employee row edit and selecting Undo restored the project state but left “Edited employee record” in the visible JSON textarea.",
+      "reproduction": "Open Team Overview in Workbench. Edit the rows JSON. Apply. Select Undo and compare the textarea with the restored project value.",
+      "console": [],
+      "network": [],
+      "screenshot": "quality/evidence/step-48/pre-fix-v56/content-history-undo-remains-stale.png",
+      "rootCause": "StructuredField initialized draft state once and never synchronized it when the selected node’s committed content changed.",
+      "affectedCode": "packages/workbench/src/components/right-inspector/ContentTab.tsx; tests/e2e/workbench-content-history.spec.ts",
+      "remediation": "Synchronize the draft and clear validation errors when the committed structured value changes, while preserving an uncommitted draft across unrelated renders.",
+      "fixCommit": "ec213cce2ef8d9b0c02215d6a22d4cb86418ca98",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "quality/evidence/step-48/pre-fix-v56-playwright.json; tests/e2e/workbench-content-history.spec.ts",
+        "result": "Pre-fix behavior reproduced; regression passes after the fix. Full local quality suite passed on the current source state. Deployed verification remains pending."
+      }
+    },
+    {
+      "id": "AUD-384",
+      "severity": "medium",
+      "route": "Standalone Next.js export",
+      "viewport": "Generated Next.js application",
+      "category": "export",
+      "title": "Adaptive Next.js export accessed window during server rendering",
+      "expected": "Adaptive generated screens must be safe to prerender without browser globals during initial React state creation.",
+      "actual": "The pre-fix exporter regression found a useState initializer that called window.matchMedia, which throws when Next.js renders the screen on the server.",
+      "reproduction": "Generate an adaptive Next.js source tree and prerender its screen in a server environment where window is undefined.",
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The generated component read window.matchMedia inside the initial state initializer rather than inside a client effect.",
+      "affectedCode": "packages/exporter/src/source-tree.ts; packages/exporter/src/__tests__/exporter.test.ts",
+      "remediation": "Initialize a deterministic server-safe state and read matchMedia inside useEffect after hydration.",
+      "fixCommit": "ac4cd2a1ec5e1bf4c623c0ccd21de473d61dae03",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "packages/exporter/src/__tests__/exporter.test.ts: keeps adaptive Next.js rendering server-safe and includes the shared layout contract",
+        "result": "Pre-fix behavior reproduced; regression passes after the fix. Full local quality suite passed on the current source state. Deployed verification remains pending."
+      }
+    },
+    {
+      "id": "AUD-385",
+      "severity": "medium",
+      "route": "Standalone Next.js export",
+      "viewport": "Generated Next.js application",
+      "category": "visual",
+      "title": "Next.js export omitted shared manifest layout CSS",
+      "expected": "A Next.js export must include the same semantic layout rules represented by the manifest and Vite export.",
+      "actual": "The generated Next.js stylesheet omitted MANIFEST_LAYOUT_CSS, so sidebar/workspace layout roles lost their structural presentation.",
+      "reproduction": "Generate a Next.js export for a manifest using a sidebar-shell or workspace-dock-shell. Build and inspect its global stylesheet and rendered layout.",
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The Next.js exporter emitted token CSS but did not include the shared manifest layout contract used by the Vite export.",
+      "affectedCode": "packages/exporter/src/source-tree.ts; packages/exporter/src/__tests__/exporter.test.ts",
+      "remediation": "Include MANIFEST_LAYOUT_CSS in generated app/globals.css and add a source regression for structural layout selectors and container rules.",
+      "fixCommit": "ac4cd2a1ec5e1bf4c623c0ccd21de473d61dae03",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "packages/exporter/src/__tests__/exporter.test.ts: keeps adaptive Next.js rendering server-safe and includes the shared layout contract",
+        "result": "Pre-fix behavior reproduced; regression passes after the fix. Full local quality suite passed on the current source state. Deployed verification remains pending."
+      }
+    },
+    {
+      "id": "AUD-386",
+      "severity": "medium",
+      "route": "PUT /api/projects/:id",
+      "viewport": "D1 API integration test",
+      "category": "data",
+      "title": "Project update accepted unreadable revision summaries",
+      "expected": "Project revision summaries must be trimmed, non-empty, and bounded before being stored in history.",
+      "actual": "The pre-fix API regression accepted whitespace-only summaries and strings beyond the project-name-based limit, making revision history blank or unwieldy.",
+      "reproduction": "Submit a project update with a whitespace-only summary, then submit one longer than 133 characters. Confirm both are rejected and current history is unchanged.",
+      "console": [],
+      "network": [],
+      "screenshot": null,
+      "rootCause": "The PUT route passed raw optional summary text directly to D1 and memory persistence without schema validation.",
+      "affectedCode": "apps/api/src/routes/projects.ts; apps/api/src/__tests__/cloud-sync-d1.test.ts",
+      "remediation": "Validate and trim the summary before any mutation; reject empty or overlong values with 400 and use the normalized summary in all storage paths.",
+      "fixCommit": "68fa4044a717b69cf6d1941d874f8e17141a2d08",
+      "status": "fixed-local-verified",
+      "localVerification": {
+        "regressionEvidence": "apps/api/src/__tests__/cloud-sync-d1.test.ts: rejects invalid revision summaries before saving and keeps the project history readable",
+        "result": "Pre-fix behavior reproduced; regression passes after the fix. Full local quality suite passed on the current source state. Deployed verification remains pending."
+      }
     }
   ],
-  "generatedAt": "2026-10-28T10:48:43.526Z"
+  "generatedAt": "2026-10-30T18:25:08.944Z"
 }

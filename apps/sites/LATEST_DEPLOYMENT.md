@@ -5,7 +5,16 @@ Project ID: `appgprj_6acc036de8cc8191a823339566972d85`. Query Sites metadata for
 the current live version and deployment; this file avoids duplicating a version
 number that becomes stale whenever the Site is published.
 
-The latest complete deployed product re-audit recorded here is v55 (2026-10-28):
+The latest published documentation version is v56 (2026-10-30), version
+`appgprj_6acc036de8cc8191a823339566972d85~appgver_a265d974a0cc8191b4bfd079767f8624`,
+deployment `appgdep_6ae4cc6dfba48191984d011a62d11de8`, Sites source mirror
+`f90ebd07e1055b461b26478807b69497c0450af2`. Six documentation/product routes
+were checked at 1440×900 and 390×844 (12/12). All had HTTP 200, no overflow,
+console errors or warnings, uncaught exceptions, or failed requests. Compose
+reached catalogue readiness and Workbench hydrated. Machine evidence and
+screenshots are in `quality/evidence/step-48/sites-v56-targeted-smoke-2026-10-30/`.
+
+The latest complete deployed product re-audit remains v55 (2026-10-28):
 version `appgprj_6acc036de8cc8191a823339566972d85~appgver_f5c1c72071048191896cb4e757a4722f`,
 deployment `appgdep_6ae1e23c361c819189455436b4d89cb0`, Sites mirror
 `b356ef849431d53eda8f5f052ff65bacf0d477d4`, and canonical source
