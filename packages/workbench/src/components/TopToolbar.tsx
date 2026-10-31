@@ -90,12 +90,13 @@ export function TopToolbar({ historySaveStatus = 'saved' }: { historySaveStatus?
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+      setActionError('');
       setExportStatus('Standalone React project download started.');
     } catch (err) {
       if (!(err instanceof Error) || err.name !== 'ExportValidationError') {
         console.error('Failed to generate standalone ZIP project:', err);
       }
-      alert(`Export failed: ${err instanceof Error ? err.message : String(err)}`);
+      setActionError(`Export failed: ${err instanceof Error ? err.message : String(err)}`);
       setExportStatus('');
     }
     window.setTimeout(() => setExportStatus(''), 3000);

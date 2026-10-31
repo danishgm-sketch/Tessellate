@@ -4,10 +4,15 @@ import path from 'node:path';
 import type { ProjectManifest } from '@tessellate/schemas';
 import { validProjectFixture } from '../../packages/schemas/src/fixtures/valid-project.js';
 
-test('Workbench rejects unsupported resource variants instead of rendering a component fallback', async ({ page }) => {
+test('Workbench rejects unsupported resource variants without rendering a fallback or opening a blocking dialog', async ({ page }, testInfo) => {
   const uncaught: string[] = [];
   const consoleErrors: string[] = [];
   const failedRequests: string[] = [];
+  const dialogs: string[] = [];
+  page.on('dialog', async (dialog) => {
+    dialogs.push(dialog.message());
+    await dialog.dismiss();
+  });
   page.on('pageerror', (error) => uncaught.push(error.message));
   page.on('console', (message) => {
     if (message.type() === 'error') consoleErrors.push(message.text());
@@ -50,20 +55,17 @@ test('Workbench rejects unsupported resource variants instead of rendering a com
   await expect(page.getByTestId('unsupported-resource-variant')).toBeVisible();
   await expect(page.getByRole('button', { name: 'Unsupported variant action' })).toHaveCount(0);
 
-  const afterPath = path.resolve(process.cwd(), 'audit/evidence/step-07/after/unsupported-variant-diagnostic.png');
+  const afterPath = testInfo.outputPath('unsupported-variant-diagnostic.png');
   mkdirSync(path.dirname(afterPath), { recursive: true });
   await page.screenshot({ path: afterPath, fullPage: true });
-  const exportDialogPromise = page.waitForEvent('dialog').then(async (dialog) => {
-    const message = dialog.message();
-    await dialog.accept();
-    return message;
-  });
   const exportDownloadPromise = page.waitForEvent('download', { timeout: 750 }).catch(() => null);
   await page.getByTestId('export-button').click();
   await page.getByTestId('export-zip-btn').click();
-  const exportDialogMessage = await exportDialogPromise;
-  expect(exportDialogMessage).toContain('Unsupported variant "unsupported-variant"');
+  await expect(page.getByRole('alert').filter({ hasText: 'Export failed:' })).toContainText(
+    'Unsupported variant "unsupported-variant"',
+  );
   expect(await exportDownloadPromise).toBeNull();
+  expect(dialogs).toEqual([]);
   expect(uncaught).toEqual([]);
   expect(consoleErrors).toEqual([]);
   expect(failedRequests).toEqual([]);

@@ -165,6 +165,11 @@ test('a stale Workbench project link enters read-only recovery without creating 
 
 test('the visible ZIP export reports a browser download failure instead of losing it', async ({ page }, testInfo) => {
   const runtime = observeRuntime(page);
+  const dialogs: string[] = [];
+  page.on('dialog', async (dialog) => {
+    dialogs.push(dialog.message());
+    await dialog.dismiss();
+  });
   await page.addInitScript(() => {
     const createObjectURL = URL.createObjectURL.bind(URL);
     URL.createObjectURL = (object: Blob | MediaSource) => {
@@ -177,13 +182,19 @@ test('the visible ZIP export reports a browser download failure instead of losin
 
   await page.goto('/workbench/?showcase=showcase-playful-hr');
   await expect(page.getByTestId('top-toolbar')).toBeVisible();
-  const dialogPromise = page.waitForEvent('dialog');
   await page.getByTestId('export-button').click();
   await page.getByTestId('export-zip-btn').click();
-  const dialog = await dialogPromise;
-  const dialogMessage = dialog.message();
-  await dialog.accept();
-  expect(dialogMessage).toContain('Export failed: Injected ZIP download creation failure');
+  await page.waitForTimeout(100);
+  const inlineAlertText = (await page.getByRole('alert').allTextContents()).join('\n').trim();
+  const evidencePath = testInfo.outputPath('zip-download-failure-visible-state.json');
+  await writeFile(
+    evidencePath,
+    `${JSON.stringify({ url: page.url(), viewport: page.viewportSize(), dialogs, inlineAlertText, consoleErrors: runtime.consoleErrors, pageErrors: runtime.pageErrors }, null, 2)}\n`,
+    'utf8',
+  );
+  await page.screenshot({ path: testInfo.outputPath('zip-download-failure-visible-state.png'), fullPage: true });
+  await expect(page.getByRole('alert')).toContainText('Export failed: Injected ZIP download creation failure');
+  expect(dialogs).toEqual([]);
   expect(runtime.consoleErrors).toHaveLength(1);
   expect(runtime.consoleErrors[0]).toContain('Failed to generate standalone ZIP project:');
   expect(runtime.pageErrors).toEqual([]);
@@ -202,6 +213,11 @@ test('the visible ZIP export reports a browser download failure instead of losin
 
 test('an unresolved resource in an imported manifest blocks ZIP export with a useful error', async ({ page }, testInfo) => {
   const runtime = observeRuntime(page);
+  const dialogs: string[] = [];
+  page.on('dialog', async (dialog) => {
+    dialogs.push(dialog.message());
+    await dialog.dismiss();
+  });
   await page.goto('/workbench/?showcase=showcase-playful-hr');
   await expect(page.getByTestId('top-toolbar')).toBeVisible();
   const { manifest, outputPath } = await downloadManifest(page, testInfo, 'source-project.tess.json');
@@ -215,13 +231,21 @@ test('an unresolved resource in an imported manifest blocks ZIP export with a us
   await page.getByTestId('export-button').click();
   await page.getByTestId('manifest-import-input').setInputFiles(malformedProjectPath);
   await expect(page.getByTestId('manifest-import-status')).toContainText('Opened Fault-injected project');
-  const dialogPromise = page.waitForEvent('dialog');
   await page.getByTestId('export-button').click();
   await page.getByTestId('export-zip-btn').click();
-  const dialog = await dialogPromise;
-  const dialogMessage = dialog.message();
-  await dialog.accept();
-  expect(dialogMessage).toContain('Export failed: Unresolved resource in export: "missing-resource-step-42"');
+  await page.waitForTimeout(100);
+  const inlineAlertText = (await page.getByRole('alert').allTextContents()).join('\n').trim();
+  const evidencePath = testInfo.outputPath('unresolved-resource-export-visible-state.json');
+  await writeFile(
+    evidencePath,
+    `${JSON.stringify({ url: page.url(), viewport: page.viewportSize(), dialogs, inlineAlertText, consoleErrors: runtime.consoleErrors, pageErrors: runtime.pageErrors }, null, 2)}\n`,
+    'utf8',
+  );
+  await page.screenshot({ path: testInfo.outputPath('unresolved-resource-export-visible-state.png'), fullPage: true });
+  await expect(page.getByRole('alert')).toContainText(
+    'Export failed: Unresolved resource in export: "missing-resource-step-42"',
+  );
+  expect(dialogs).toEqual([]);
   expect(runtime.pageErrors).toEqual([]);
   expect(runtime.failedRequests).toEqual([]);
   expect(runtime.httpErrors).toEqual([]);
