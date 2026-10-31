@@ -4,7 +4,7 @@ import path from "node:path";
 
 const site = "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site";
 const out = path.resolve("quality/evidence/step-39/public-v62-copy-2026-10-31/resource-route-sweep");
-const response = await fetch(site + "/data/catalog.json");
+const response = await globalThis.fetch(site + "/data/catalog.json");
 if (!response.ok) throw new Error("Catalogue request failed: " + response.status);
 const catalog = await response.json();
 const resources = catalog.resources;
@@ -54,17 +54,17 @@ for (const viewport of viewports) {
         status = pageResponse?.status() ?? null;
         await page.locator("main h1").first().waitFor({ state: "visible", timeout: 15000 });
         rendered = await page.evaluate(() => {
-          const main = document.querySelector("main");
+          const main = globalThis.document.querySelector("main");
           const text = main?.innerText ?? "";
           return {
-            title: document.title,
+            title: globalThis.document.title,
             h1: main?.querySelector("h1")?.innerText.trim() ?? "",
             headings: Array.from(main?.querySelectorAll("h2,h3") ?? []).slice(0, 12).map((node) => node.textContent?.trim() ?? ""),
             textLength: text.length,
             text: text.slice(0, 2400),
-            innerWidth: window.innerWidth,
-            documentWidth: document.documentElement.scrollWidth,
-            brokenImages: Array.from(document.images).filter((image) => image.complete && image.naturalWidth === 0).map((image) => image.currentSrc || image.src).slice(0, 8),
+            innerWidth: globalThis.window.innerWidth,
+            documentWidth: globalThis.document.documentElement.scrollWidth,
+            brokenImages: Array.from(globalThis.document.images).filter((image) => image.complete && image.naturalWidth === 0).map((image) => image.currentSrc || image.src).slice(0, 8),
           };
         });
       } catch (error) {
