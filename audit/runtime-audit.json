@@ -15219,7 +15219,7 @@
     "rootCause": "The CLI, ingestion, and linter declared glob 11.x, and transitive dependency ranges retained minimatch versions below the newly published patched release.",
     "affectedCode": "packages/cli/package.json; packages/ingest/package.json; packages/linter/package.json; pnpm-workspace.yaml; pnpm-lock.yaml",
     "remediation": "Upgrade direct glob dependencies to 14.0.2 or newer and pin transitive minimatch resolutions below 11.0.1 to 11.0.1.",
-    "fixCommit": null,
+    "fixCommit": "e41ccb375a63e48d75888c5f9f0a5ccc0bb21725",
     "status": "fixed-local-verified",
     "localVerification": {
       "regressionEvidence": "quality/evidence/step-48/security/dependency-audit-2026-10-31.json",
