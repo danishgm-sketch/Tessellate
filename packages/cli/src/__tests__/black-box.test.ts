@@ -316,6 +316,23 @@ describe('CLI black-box workflows', () => {
     expect(fs.existsSync(path.join(cwd, 'safe-check'))).toBe(false);
   });
 
+  it('does not present an unpublished resource scaffold as installable', () => {
+    const cwd = makeTempDir();
+    const result = runCli(cwd, 'create-resource', '--slug', 'unreviewed-card', '--name', 'Unreviewed Card');
+
+    expect(result.status, result.stderr || result.stdout).toBe(0);
+    const resourceDir = path.join(cwd, 'resources/primitives/unreviewed-card');
+    const manifest = JSON.parse(fs.readFileSync(path.join(resourceDir, 'resource.json'), 'utf8')) as {
+      status: string;
+    };
+    const readme = fs.readFileSync(path.join(resourceDir, 'README.md'), 'utf8');
+
+    expect(manifest.status).toBe('draft');
+    expect(readme).toMatch(/not registered in the Tessellate catalogue/i);
+    expect(readme).toMatch(/test accessibility and responsive behavior/i);
+    expect(readme).not.toMatch(/tess add|shadcn@latest add/i);
+  });
+
   it('rejects empty generated slugs before creating output directories', () => {
     const cwd = makeTempDir();
     const result = runCli(cwd, 'create-resource', '--slug', '!!!');

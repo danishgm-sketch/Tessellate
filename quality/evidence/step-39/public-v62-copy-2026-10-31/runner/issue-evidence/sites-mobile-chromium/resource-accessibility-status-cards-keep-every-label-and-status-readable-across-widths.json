@@ -1,0 +1,21 @@
+{
+  "test": "resource accessibility status cards keep every label and status readable across widths",
+  "status": "passed",
+  "route": "https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/r/success-state",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "screenshot": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v62-copy-2026-10-31\\runner\\issue-evidence\\sites-mobile-chromium\\resource-accessibility-status-cards-keep-every-label-and-status-readable-across-widths.png",
+  "runtime": {
+    "consoleErrors": [
+      "Applying inline style violates the following Content Security Policy directive 'style-src-elem https://tessellate-v1-review.ismayildanish-gm.chatgpt.site/_astro/ 'sha256-vv9IoKo7BSLbWcUHr3tNmfNVmm5L/9Cfn2H6LMk7/ow=' 'sha256-vfjQ08+F/x6khnUHOY7Cq63D/y6ZKgzi6hC8smBglbo=' 'sha256-VJqXuaOQLkCCfsvOWPljBBK4ehn0pY3XwB+20A5QlHA=' 'sha256-YjaKGiklmzC6wjXA513HAMmzus8VE61XCOT+SmwNZWA=''. Either the 'unsafe-inline' keyword, a hash ('sha256-v4KrN1cEsRj7D9a5OaRmeBx0xMkNwowQC2KJO+yxlmU='), or a nonce ('nonce-...') is required to enable inline execution. The action has been blocked."
+    ],
+    "consoleWarnings": [
+      "Couldn't load preload assets:  TypeError: Cannot read properties of null (reading 'href')\n    at parseStylesheet (eval at evaluate (:311:30), <anonymous>:19955:57)\n    at eval (eval at evaluate (:311:30), <anonymous>:19995:16)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)\n    at async Promise.all (index 0)"
+    ],
+    "uncaughtExceptions": [],
+    "failedRequests": [],
+    "httpErrors": []
+  }
+}

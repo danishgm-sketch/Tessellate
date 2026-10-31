@@ -4523,3 +4523,41 @@ Evidence:
 - Full suite report: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json
 - Finding-to-evidence map: quality/evidence/step-39/public-v62-copy-2026-10-31/issue-coverage.json
 - Supplemental checks and screenshots: quality/evidence/step-39/public-v62-copy-2026-10-31/ and quality/evidence/step-48/deployed-v62-2026-10-31/
+## Public Sites v62 catalogue detail-route sweep — 2026-10-31
+
+A deployed Playwright sweep visited every one of the 324 catalogue detail routes at 1440×900 and 390×844, for 648 total route/viewport visits. The settled pass waited for network idle before leaving each page, including its sandbox preview request. All visits returned HTTP 200; all 648 H1 titles exactly matched their catalogue names; every page had over 250 characters of main content; browser telemetry contained zero console errors/warnings, uncaught exceptions, failed requests or HTTP errors; and there was no document overflow or broken image. The explicit copy-risk scan returned zero matches after correctly classifying finance terminology on the finance-specific Order Book Depth Chart as in-domain.
+
+The initial pass moved away before preview iframes settled and recorded 20 ERR_ABORTED preview-content requests. All 20 were cancellations caused by the audit runner's next navigation, not failed responses from the current route. The settled pass waited for network idle and recorded zero such requests. The initial raw report and runner are preserved with the corrected evidence.
+
+This is route coverage and a targeted copy-risk scan, not a manual judgment of every sentence or a certification of all component states/accessibility/export behavior. Step 39 remains open.
+
+Evidence:
+- Settled 648-visit report: quality/evidence/step-39/public-v62-copy-2026-10-31/resource-route-sweep-settled/report.json
+- Reproducible settled runner: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/resource-route-copy-sweep-settled.mjs
+- Initial cancellation report and runner: quality/evidence/step-39/public-v62-copy-2026-10-31/resource-route-sweep/report.json and runner/resource-route-copy-sweep.mjs
+## Public Sites v62 generated-content, documentation and resource regression closeout — 2026-10-31
+
+Against the same public v62 deployment, the employee-workspace, marketplace listing, property search and travel-destination composition checks passed on desktop and mobile. They inspected all three directions, semantic resource references, domain-appropriate labels/content, and zero unresolved diagnostics. The composition/domain Playwright report recorded 13 passed tests, one disclosed desktop-reference-only mobile skip, zero unexpected failures and zero flaky results. The consultancy activity-feed test passed both viewports (2/2); the docs index and Activity Feed sample-disclosure tests passed both viewports (4/4). All focused reports show no console errors/warnings, uncaught exceptions, failed requests or HTTP errors.
+
+This closes AUD-122/123/124/125/126/127/138/308/309 as deployed-verified. The machine audit ledger now contains 218 closed-deployed-verified entries. The 111 findings still awaiting deployed verification are unchanged; these nine had been local-verified, not awaiting deployment. Four content items still need their own verification: AUD-155, AUD-171, AUD-232, AUD-234.
+
+Evidence:
+- Finding-specific evidence: quality/evidence/step-39/public-v62-copy-2026-10-31/deployed-content-regressions.json
+- Composition/domain report: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/domain-content-playwright.json
+- SaaS activity report: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/sas-content-playwright.json
+- Docs/resource report: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/docs-resource-playwright.json
+- Screenshot/runtime directories: quality/evidence/step-39/public-v62-copy-2026-10-31/composition-after/, documentation/, and activity-feed/
+## Public Sites v62 employee Settings preview verification — 2026-10-31
+
+The exact employee-experience brief was composed and Direction C opened in Workbench at 1440×900 and 390×844. The deployed regression compared selected project identity, Design DNA, navigation, screens/nodes, resources, variants, props, locks, persisted manifest and export. In Workbench Preview → Settings & Policies, the control is explicitly labeled preview-only, the UI says acknowledgements are not stored, Save preferences is disabled, and the persistence connection required to save is named. Both runs passed, with zero console warnings/errors, uncaught exceptions, failed requests or HTTP failures.
+
+AUD-171 is closed as deployed-verified. The audit ledger now records 219 deployed-verified findings. The 111 awaiting deployment are unchanged; only AUD-155, AUD-232 and AUD-234 remain locally verified in the content category.
+
+Evidence is recorded in quality/evidence/step-39/public-v62-copy-2026-10-31/runner/flagship-v62-playwright.json, flagship/compose-workbench-handoff-sites-{chromium,mobile-chromium}.json, the corresponding Settings screenshots, and deployed-content-regressions.json.
+### 2026-10-31 continuation — v62 Workbench capability and local tooling verification
+
+AUD-155 is closed-deployed-verified after the public flagship handoff passed at 1440×900 and 390×844. The test records that Improve, Simplify, Intensify, and Match DNA have no visible Workbench action buttons. Direction C's selected/active/exported manifest hashes agree in both runs, and both runtimes report zero console errors/warnings, uncaught exceptions, failed requests, and HTTP errors. The matching status text for an inactive screen is still mounted but hidden in the preview; the Playwright regression now scopes its assertion to visible text and passes on both viewports.
+
+AUD-232 and AUD-234 are closed with local client-process evidence, not Site claims. The MCP stdio SDK-client workflow passed 7/7 and verifies the recommendation tool accurately describes lexical overlap plus a complete compose/mutate/validate/audit/export exchange. A new CLI black-box regression passed 1/1 by launching the CLI in a fresh temporary directory; the resulting resource stays a draft, explicitly remains unregistered, includes review guidance, and does not claim it can be installed from the registry.
+
+The audit ledger now records 220 deployed-verified findings; 111 other findings remain awaiting issue-specific deployed verification (107 Medium, 4 Low). The previous four content items AUD-155/171/232/234 now have appropriate verification. Step 39 remains open because a subjective copy review across all 324 catalogue resources and the broader hardening sequence are not complete. Machine results are in `quality/evidence/step-39/public-v62-copy-2026-10-31/`.

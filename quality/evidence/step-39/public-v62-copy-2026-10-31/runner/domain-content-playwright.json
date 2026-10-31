@@ -1,0 +1,595 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config",
+      "quality\\evidence\\step-39\\public-v62-copy-2026-10-31\\runner\\domain-content.public-v62.config.ts"
+    ],
+    "configFile": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v62-copy-2026-10-31\\runner\\domain-content.public-v62.config.ts",
+    "rootDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-39/public-v62-copy-2026-10-31/runner",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-chromium",
+        "name": "sites-chromium",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-39/public-v62-copy-2026-10-31/runner",
+        "testIgnore": [],
+        "testMatch": [
+          "domain-content.public-v62.spec.ts"
+        ],
+        "timeout": 180000
+      },
+      {
+        "outputDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "sites-mobile-chromium",
+        "name": "sites-mobile-chromium",
+        "testDir": "C:/Users/ismay/.codex/worktrees/product-hardening-canonical/Tessellate/quality/evidence/step-39/public-v62-copy-2026-10-31/runner",
+        "testIgnore": [],
+        "testMatch": [
+          "domain-content.public-v62.spec.ts"
+        ],
+        "timeout": 180000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "json",
+        {
+          "outputFile": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/domain-content-playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.63.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "domain-content.public-v62.spec.ts",
+      "file": "domain-content.public-v62.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "showcase identity survives composition and renders in the public preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 901,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:04.727Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-2c423f5551177bb2349c",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "review representative marketplace and community compositions in the real browser",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5687,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:05.760Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-4664d52308b5b1dd64ad",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 100,
+          "column": 1
+        },
+        {
+          "title": "SaaS overview activity uses a truthful chronological feed with human-readable examples",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4045,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:11.456Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-00d99fc80b66d31133c2",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 291,
+          "column": 1
+        },
+        {
+          "title": "brokerage terminal brief composes market workflows instead of banking screens",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3178,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:15.508Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-e743e017d4db59b724d5",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 489,
+          "column": 1
+        },
+        {
+          "title": "product catalog offers a clear path to the generated product detail screen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2992,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:18.695Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-16d2c779bac0aebd5052",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 672,
+          "column": 1
+        },
+        {
+          "title": "returns portal brief composes order lookup, return request, and refund status",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4802,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:21.698Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-176f7757909334fd0dc7",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 796,
+          "column": 1
+        },
+        {
+          "title": "real-estate and travel directions use truthful, domain-fit content",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-chromium",
+              "projectName": "sites-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 7109,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:26.508Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-78fa0d3dd7b9620ef417",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 954,
+          "column": 1
+        },
+        {
+          "title": "showcase identity survives composition and renders in the public preview",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 1146,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:34.233Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-fd62b304107783bf01d6",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 20,
+          "column": 1
+        },
+        {
+          "title": "review representative marketplace and community compositions in the real browser",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 180000,
+              "annotations": [
+                {
+                  "type": "skip",
+                  "description": "This visual review captures direction previews at the desktop reference size.",
+                  "location": {
+                    "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v62-copy-2026-10-31\\runner\\domain-content.public-v62.spec.ts",
+                    "line": 104,
+                    "column": 8
+                  }
+                }
+              ],
+              "expectedStatus": "skipped",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "skipped",
+                  "duration": 79,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:35.501Z",
+                  "annotations": [
+                    {
+                      "type": "skip",
+                      "description": "This visual review captures direction previews at the desktop reference size.",
+                      "location": {
+                        "file": "C:\\Users\\ismay\\.codex\\worktrees\\product-hardening-canonical\\Tessellate\\quality\\evidence\\step-39\\public-v62-copy-2026-10-31\\runner\\domain-content.public-v62.spec.ts",
+                        "line": 104,
+                        "column": 8
+                      }
+                    }
+                  ],
+                  "attachments": []
+                }
+              ],
+              "status": "skipped"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-6f1cfb88db540566f030",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 100,
+          "column": 1
+        },
+        {
+          "title": "SaaS overview activity uses a truthful chronological feed with human-readable examples",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5363,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:35.589Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-bab9b41abcf5a03eec30",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 291,
+          "column": 1
+        },
+        {
+          "title": "brokerage terminal brief composes market workflows instead of banking screens",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4155,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:40.959Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-9053365c122a6f9c4297",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 489,
+          "column": 1
+        },
+        {
+          "title": "product catalog offers a clear path to the generated product detail screen",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 2645,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:45.122Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-589d83a5757a0a5ec9da",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 672,
+          "column": 1
+        },
+        {
+          "title": "returns portal brief composes order lookup, return request, and refund status",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 3659,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:47.774Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-4ab10a098e32dbe11614",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 796,
+          "column": 1
+        },
+        {
+          "title": "real-estate and travel directions use truthful, domain-fit content",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "sites-mobile-chromium",
+              "projectName": "sites-mobile-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 6639,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-31T16:44:51.443Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "97a5cdbe7593c2fff9c9-74486a0f2b042f819fc8",
+          "file": "domain-content.public-v62.spec.ts",
+          "line": 954,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-31T16:44:04.181Z",
+    "duration": 54028.115000000005,
+    "expected": 13,
+    "skipped": 1,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

@@ -621,3 +621,57 @@ Supplemental v62 browser checks passed the community-composition case at desktop
 This closes the 73 mapped deployed-verification items only. It does not complete Step 39: a manual copy review of every string across the 324-resource catalogue, remaining unresolved findings, and the broader hardening sequence still need work. Four unrelated telemetry cases logged Axe CSP style-injection errors from the audit harness; their pre-Axe product runtime evidence was clean, and none is being presented here as an Axe pass. The suite is a copy/resource regression suite, not a full route/flagship/accessibility release gate.
 
 Machine-readable closeout: quality/evidence/step-39/public-v62-copy-2026-10-31/issue-coverage.json; full suite: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/report.json; community desktop/mobile targeted reports and captures are in that directory's runner/ and composition-quality/after/ trees. The broader v62 audit record is audit/runtime-audit.json.
+### 2026-10-31 continuation — v62 detail-route sweep across all catalogue resources
+
+A deployed browser sweep opened every one of the 324 catalogue resource detail routes at desktop 1440×900 and mobile 390×844 (648 visits). The settled rerun waited for network idle, including the sandboxed resource preview request, before moving to the next route. It recorded HTTP 200 for all 648 visits; exact H1/catalogue-name agreement for all 648; no empty detail pages; zero browser console errors, warnings, uncaught exceptions, failed requests or HTTP errors; zero document-width overflow; no broken images; and zero matches against the explicit copy-risk scan. The scan is a targeted regression screen and not a subjective/manual review of every sentence. The domain-specific order-book language is expected for the Order Book Depth Chart resource.
+
+The first pass navigated before outstanding preview iframe requests settled. It reported 20 ERR_ABORTED events on preview-content requests, all emitted as the worker moved from a completed detail view to its next route; it also flagged the finance-specific Order Book detail page as a broad-regex false positive. No HTTP failures, page errors, missing headings or overflow were observed. The corrected settled pass waited for network idle and scopes finance terminology to the resource's declared domain. This is an audit-harness correction, not a product defect; both passes are retained.
+
+Evidence and reproducible runner:
+- Settled report: quality/evidence/step-39/public-v62-copy-2026-10-31/resource-route-sweep-settled/report.json
+- Settled runner: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/resource-route-copy-sweep-settled.mjs
+- Initial pass report (preserved cancellation diagnostics): quality/evidence/step-39/public-v62-copy-2026-10-31/resource-route-sweep/report.json
+- Initial runner: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/resource-route-copy-sweep.mjs
+
+This route/copy-risk sweep extends Step 39's deployed coverage to all 324 resource detail pages. It does not replace the required human copy review of all visible strings, nor does it certify all resources' interactions, accessibility or exports. Step 39 remains open.
+### 2026-10-31 continuation — public v62 generated-content, documentation and resource regressions
+
+The deployed Sites v62 browser regression run verified the SaaS consultancy activity feed, marketplace listing search, real-estate property search, travel destination search, documentation index and Activity Feed resource at desktop 1440×900 and mobile 390×844.
+
+The composition/domain Playwright report has 13 passes, one configured mobile-only skip (the community visual-review test is desktop-reference-only), zero unexpected failures and zero flaky results. The targeted consultancy regression passed at both viewports and inspected all three directions for duplicate Workspace branding, repeated page headings/KPI labels, and literal Example timestamps. The marketplace/property/travel regression passed at both viewports and inspected all three directions per brief, including semantic resource references, search labels, result content and zero unresolved-role diagnostics. The retained community fixture was exercised at desktop; its separate targeted community run passed at both viewports.
+
+The targeted consultancy report has 2/2 passes and the combined docs/resource report has 4/4 passes, all with zero unexpected failures or flaky results. The docs check verified 16 links and opened the Product Specification; the Activity Feed page disclosed its fixture entries as samples and did not show the fabricated identities/counts/revision. The browser reports record zero console errors/warnings, uncaught exceptions, failed requests or HTTP errors.
+
+This deployed verification closes AUD-122, AUD-123, AUD-124, AUD-125, AUD-126, AUD-127, AUD-138, AUD-308 and AUD-309 in the audit ledger. The ledger now has 218 deployed-verified findings; 111 findings remain awaiting deployed verification. The total 111 is unchanged because these nine were previously local-verified; the remaining content findings that have not yet been deployed-verified are AUD-155, AUD-171, AUD-232 and AUD-234.
+
+Reports and screenshots:
+- Exact finding map: quality/evidence/step-39/public-v62-copy-2026-10-31/deployed-content-regressions.json
+- Composition/domain Playwright report and harness: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/domain-content-playwright.json and domain-content.public-v62.spec.ts
+- SaaS content Playwright report and harness: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/sas-content-playwright.json and sas-content.public-v62.spec.ts
+- Documentation/resource Playwright report and harness: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/docs-resource-playwright.json, docs-index.public-v62.spec.ts and activity-feed.public-v62.spec.ts
+- Desktop/mobile screenshots and runtime records are in composition-after/, documentation/ and activity-feed/ below the same v62 evidence root.
+
+This remains a scoped v62 regression check, not a full Site-version release gate. Step 39 remains open for manual review of every resource's copy and the other outstanding findings.
+### 2026-10-31 continuation — deployed employee Settings preview truthfulness
+
+The exact employee-experience brief was composed on public v62 at 1440×900 and 390×844. Direction C opened the selected project in Workbench; the live test compared project identity, Design DNA, navigation, screen/node tree, resource refs, variants, props and locks between the selected preview, Workbench local record, and manifest export. It then used Workbench Preview and opened Settings & Policies at both viewports.
+
+The UI labels the policy control “Policy acknowledgement (preview only),” says acknowledgements are not stored in the preview, disables Save preferences, and says “Connect persistence to save.” The manifest-level and visible-state checks passed; no console errors/warnings, uncaught exceptions, failed requests, or HTTP failures occurred. The Playwright result is 2/2 passed with no skips or flaky cases.
+
+AUD-171 is now closed as deployed-verified. Combined with the nine prior v62 content closures, the audit ledger now records 219 closed-deployed-verified findings; 111 still await deployed verification. Only AUD-155, AUD-232 and AUD-234 remain in the content category as locally verified pending their own evidence gates.
+
+Evidence:
+- Report: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/flagship-v62-playwright.json
+- Reproducible copied runner/config: quality/evidence/step-39/public-v62-copy-2026-10-31/runner/flagship-v62.public.spec.ts and flagship-v62.public.config.ts
+- Machine telemetry and exact manifest comparison: quality/evidence/step-39/public-v62-copy-2026-10-31/flagship/compose-workbench-handoff-sites-chromium.json and compose-workbench-handoff-sites-mobile-chromium.json
+- Settings screenshots: quality/evidence/step-39/public-v62-copy-2026-10-31/flagship/employee-product-settings-policies-sites-chromium.png and employee-product-settings-policies-sites-mobile-chromium.png
+- Consolidated issue map: quality/evidence/step-39/public-v62-copy-2026-10-31/deployed-content-regressions.json
+## Public Sites v62 Workbench capability and local tooling copy closeout — 2026-10-31
+
+The deployed flagship handoff was rerun at 1440×900 and 390×844. Direction C opened with seven screens and 45 nodes; stored, active, previewed, and exported manifest identities matched within each run. The regression records zero visible Workbench action buttons for Improve, Simplify, Intensify, and Match DNA at both sizes, with zero console errors/warnings, uncaught exceptions, failed requests, or HTTP errors. This issue-specific result closes AUD-155 as deployed-verified. The copied browser assertion initially needed to target visible status text because the preview keeps matching status nodes mounted for inactive screens; the corrected test passed on both viewports.
+
+Two non-Site copy findings were separately verified at their real process boundary. The MCP SDK client workflow passed 7/7, including tool discovery over stdio and a compose → mutate → validate → audit → export flow; its tool metadata accurately discloses lexical matching limits (AUD-232). A CLI child-process regression passed 1/1 from a fresh temporary working directory; the generated resource remains a draft, states that it is not registered, lists review steps, and does not advertise install commands (AUD-234). These local checks are not claimed as deployed Site behavior.
+
+The v62 ledger now records 220 issue-specific deployed verifications. The 111 findings that were already awaiting hosted verification remain open and consist of 107 Medium and 4 Low items. The four previously outstanding content findings AUD-155/171/232/234 now have issue-appropriate verification; this does not complete the 324-resource subjective copy review, Step 39, or the wider product-hardening programme.
+
+Evidence: `quality/evidence/step-39/public-v62-copy-2026-10-31/deployed-content-regressions.json`, `non-site-content-verification.json`, `runner/flagship-v62-playwright.json`, the two `flagship/compose-workbench-handoff-sites-*.json` runtime records and screenshots, `mcp-client-workflow-report.json`, and `cli-black-box-scaffold-report.json`.

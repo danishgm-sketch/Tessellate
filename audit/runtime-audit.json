@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 complete deployed route and flagship audit; v62 copy/resource closeout verified on 2026-10-31. The v62 full copy/resource suite passed (113 passed, 9 configured skips, zero failures); 73 content findings are closed with deployed desktop/mobile evidence. The wider Step 39 manual resource copy audit and overall product-hardening programme remain incomplete.",
+  "scope": "Public Sites v61 full product route/flagship audit plus scoped v62 deployed rechecks. V62 copy/resource suite closed 73 findings; settled sweep visited all 324 detail routes at desktop/mobile; targeted composition/docs/resource regressions and flagship Workbench checks closed 11 additional content findings. CLI/MCP copy claims have separate local client-process verification. The broader hardening programme and manual copy review remain incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -4614,7 +4614,7 @@
       ],
       "remediation": "Use Team Workspace when the inferred entity is only Workspace, retain an existing Workspace suffix, and derive a two-letter avatar mark from the final brand. Red-to-green visible-browser checks cover desktop and mobile.",
       "fixCommit": "7f7aa28c",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "afterScreenshots": [
         "quality/evidence/step-14/manual-review/after/aud-122-workspace-brand-fixed-desktop.png",
         "quality/evidence/step-14/manual-review/after/aud-122-workspace-brand-fixed-mobile.png"
@@ -4622,7 +4622,35 @@
       "runtimeReports": [
         "quality/evidence/step-14/manual-review/after/activity-feed-runtime-desktop.json",
         "quality/evidence/step-14/manual-review/after/activity-feed-runtime-mobile.json"
-      ]
+      ],
+      "deployedVerification": {
+        "siteVersion": 62,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+        "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+        "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+        "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+        "checkedAt": "2026-10-31T16:48:26.944Z",
+        "testTitle": "SaaS overview activity uses a truthful chronological feed with human-readable examples",
+        "testReport": "runner/sas-content-playwright.json",
+        "evidence": [
+          {
+            "resultId": "AUD-122",
+            "viewport": "1440x900",
+            "result": "PASS: Workspace branding is Team Workspace with matching TW initials and no duplicate Workspace label across all three directions.",
+            "runtime": "composition-after/activity-feed-runtime-desktop.json",
+            "screenshot": "composition-after/activity-feed-sas-01-direction-01-desktop.png",
+            "testReport": "runner/sas-content-playwright.json"
+          },
+          {
+            "resultId": "AUD-122",
+            "viewport": "390x844",
+            "result": "PASS: Workspace branding is Team Workspace with matching TW initials and no duplicate Workspace label across all three directions.",
+            "runtime": "composition-after/activity-feed-runtime-mobile.json",
+            "screenshot": "composition-after/activity-feed-sas-01-direction-01-mobile.png",
+            "testReport": "runner/sas-content-playwright.json"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-123",
@@ -4648,7 +4676,7 @@
       ],
       "remediation": "Give generic metric-card roles a concise Key metrics heading while preserving employee and returns-specific headings. The 100-brief benchmark rejects metric section titles that repeat their screen heading; the visible browser test checks the rendered heading hierarchy on desktop and mobile.",
       "fixCommit": "7f7aa28c",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "afterScreenshots": [
         "quality/evidence/step-14/manual-review/after/aud-123-kpi-heading-fixed-desktop.png",
         "quality/evidence/step-14/manual-review/after/aud-123-kpi-heading-fixed-mobile.png"
@@ -4656,7 +4684,35 @@
       "runtimeReports": [
         "quality/evidence/step-14/manual-review/after/activity-feed-runtime-desktop.json",
         "quality/evidence/step-14/manual-review/after/activity-feed-runtime-mobile.json"
-      ]
+      ],
+      "deployedVerification": {
+        "siteVersion": 62,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+        "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+        "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+        "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+        "checkedAt": "2026-10-31T16:48:26.944Z",
+        "testTitle": "SaaS overview activity uses a truthful chronological feed with human-readable examples",
+        "testReport": "runner/sas-content-playwright.json",
+        "evidence": [
+          {
+            "resultId": "AUD-123",
+            "viewport": "1440x900",
+            "result": "PASS: Overview Dashboard has one page heading; KPI group is labeled Key metrics in all three directions.",
+            "runtime": "composition-after/activity-feed-runtime-desktop.json",
+            "screenshot": "composition-after/aud-123-kpi-heading-fixed-desktop.png",
+            "testReport": "runner/sas-content-playwright.json"
+          },
+          {
+            "resultId": "AUD-123",
+            "viewport": "390x844",
+            "result": "PASS: Overview Dashboard has one page heading; KPI group is labeled Key metrics in all three directions.",
+            "runtime": "composition-after/activity-feed-runtime-mobile.json",
+            "screenshot": "composition-after/aud-123-kpi-heading-fixed-mobile.png",
+            "testReport": "runner/sas-content-playwright.json"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-124",
@@ -4682,7 +4738,7 @@
       ],
       "remediation": "Use deterministic relative time labels for example activity and conversation events. The 100-brief composition benchmark rejects placeholder timestamps; visible desktop/mobile Compose assertions and screenshots verify the rendered timeline.",
       "fixCommit": "7f7aa28c",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "afterScreenshots": [
         "quality/evidence/step-14/manual-review/after/aud-124-activity-timestamp-fixed-desktop.png",
         "quality/evidence/step-14/manual-review/after/aud-124-activity-timestamp-fixed-mobile.png"
@@ -4690,7 +4746,35 @@
       "runtimeReports": [
         "quality/evidence/step-14/manual-review/after/activity-feed-runtime-desktop.json",
         "quality/evidence/step-14/manual-review/after/activity-feed-runtime-mobile.json"
-      ]
+      ],
+      "deployedVerification": {
+        "siteVersion": 62,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+        "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+        "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+        "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+        "checkedAt": "2026-10-31T16:48:26.944Z",
+        "testTitle": "SaaS overview activity uses a truthful chronological feed with human-readable examples",
+        "testReport": "runner/sas-content-playwright.json",
+        "evidence": [
+          {
+            "resultId": "AUD-124",
+            "viewport": "1440x900",
+            "result": "PASS: All three directions use human-readable Today timestamps and the feed has no literal Example timestamp.",
+            "runtime": "composition-after/activity-feed-runtime-desktop.json",
+            "screenshot": "composition-after/aud-124-activity-timestamp-fixed-desktop.png",
+            "testReport": "runner/sas-content-playwright.json"
+          },
+          {
+            "resultId": "AUD-124",
+            "viewport": "390x844",
+            "result": "PASS: All three directions use human-readable Today timestamps and the feed has no literal Example timestamp.",
+            "runtime": "composition-after/activity-feed-runtime-mobile.json",
+            "screenshot": "composition-after/aud-124-activity-timestamp-fixed-mobile.png",
+            "testReport": "runner/sas-content-playwright.json"
+          }
+        ]
+      }
     },
     {
       "severity": "medium",
@@ -4700,7 +4784,7 @@
       "console": [],
       "network": [],
       "fixCommit": "3549e452",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "category": "content",
       "title": "Real-estate search rendered marketing feature cards",
       "expected": "Property search should show real search and listing structure and name a map only when one is present.",
@@ -4726,7 +4810,35 @@
       "runtimeReports": [
         "quality/evidence/step-14/manual-review/after/domain-content-runtime-desktop.json",
         "quality/evidence/step-14/manual-review/after/domain-content-runtime-mobile.json"
-      ]
+      ],
+      "deployedVerification": {
+        "siteVersion": 62,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+        "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+        "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+        "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+        "checkedAt": "2026-10-31T16:48:26.944Z",
+        "testTitle": "real-estate and travel directions use truthful, domain-fit content",
+        "testReport": "runner/domain-content-playwright.json",
+        "evidence": [
+          {
+            "resultId": "AUD-125",
+            "viewport": "1440x900",
+            "result": "PASS: Property Search uses a property-search label, advanced-data-table, property listing copy and disconnected-price disclosure; no unrelated telemetry copy.",
+            "runtime": "composition-after/domain-content-runtime-desktop.json",
+            "screenshot": "composition-after/rea-01-direction-01-desktop.png",
+            "testReport": "runner/domain-content-playwright.json"
+          },
+          {
+            "resultId": "AUD-125",
+            "viewport": "390x844",
+            "result": "PASS: Property Search uses a property-search label, advanced-data-table, property listing copy and disconnected-price disclosure; no unrelated telemetry copy.",
+            "runtime": "composition-after/domain-content-runtime-mobile.json",
+            "screenshot": "composition-after/rea-01-direction-01-mobile.png",
+            "testReport": "runner/domain-content-playwright.json"
+          }
+        ]
+      }
     },
     {
       "severity": "medium",
@@ -4735,7 +4847,7 @@
       "console": [],
       "network": [],
       "fixCommit": "3549e452",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "id": "AUD-126",
       "category": "content",
       "title": "Marketplace search used onboarding copy",
@@ -4760,7 +4872,35 @@
       "runtimeReports": [
         "quality/evidence/step-14/manual-review/after/domain-content-runtime-desktop.json",
         "quality/evidence/step-14/manual-review/after/domain-content-runtime-mobile.json"
-      ]
+      ],
+      "deployedVerification": {
+        "siteVersion": 62,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+        "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+        "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+        "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+        "checkedAt": "2026-10-31T16:48:26.944Z",
+        "testTitle": "real-estate and travel directions use truthful, domain-fit content",
+        "testReport": "runner/domain-content-playwright.json",
+        "evidence": [
+          {
+            "resultId": "AUD-126",
+            "viewport": "1440x900",
+            "result": "PASS: Marketplace Explore Listings uses listing search and listings data; it does not contain onboarding copy.",
+            "runtime": "composition-after/domain-content-runtime-desktop.json",
+            "screenshot": "composition-after/mkt-01-search-direction-01-desktop.png",
+            "testReport": "runner/domain-content-playwright.json"
+          },
+          {
+            "resultId": "AUD-126",
+            "viewport": "390x844",
+            "result": "PASS: Marketplace Explore Listings uses listing search and listings data; it does not contain onboarding copy.",
+            "runtime": "composition-after/domain-content-runtime-mobile.json",
+            "screenshot": "composition-after/mkt-01-search-direction-01-mobile.png",
+            "testReport": "runner/domain-content-playwright.json"
+          }
+        ]
+      }
     },
     {
       "severity": "medium",
@@ -4769,7 +4909,7 @@
       "console": [],
       "network": [],
       "fixCommit": "3549e452",
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "id": "AUD-127",
       "category": "content",
       "title": "Travel hero repeated its objective",
@@ -4794,7 +4934,35 @@
       "runtimeReports": [
         "quality/evidence/step-14/manual-review/after/domain-content-runtime-desktop.json",
         "quality/evidence/step-14/manual-review/after/domain-content-runtime-mobile.json"
-      ]
+      ],
+      "deployedVerification": {
+        "siteVersion": 62,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+        "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+        "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+        "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+        "checkedAt": "2026-10-31T16:48:26.944Z",
+        "testTitle": "real-estate and travel directions use truthful, domain-fit content",
+        "testReport": "runner/domain-content-playwright.json",
+        "evidence": [
+          {
+            "resultId": "AUD-127",
+            "viewport": "1440x900",
+            "result": "PASS: Destination Search presents destinations and shared-trip content without repeating the objective or contaminating the domain with infrastructure terms.",
+            "runtime": "composition-after/domain-content-runtime-desktop.json",
+            "screenshot": "composition-after/trv-01-direction-01-desktop.png",
+            "testReport": "runner/domain-content-playwright.json"
+          },
+          {
+            "resultId": "AUD-127",
+            "viewport": "390x844",
+            "result": "PASS: Destination Search presents destinations and shared-trip content without repeating the objective or contaminating the domain with infrastructure terms.",
+            "runtime": "composition-after/domain-content-runtime-mobile.json",
+            "screenshot": "composition-after/trv-01-direction-01-mobile.png",
+            "testReport": "runner/domain-content-playwright.json"
+          }
+        ]
+      }
     },
     {
       "severity": "medium",
@@ -5532,7 +5700,35 @@
         "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/desktop-full-062c7f0e.json",
         "quality/evidence/step-14/manual-review/versions/062c7f0e/reports/mobile-full-062c7f0e.json"
       ],
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 62,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+        "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+        "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+        "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+        "checkedAt": "2026-10-31T16:48:26.944Z",
+        "testTitle": "real-estate and travel directions use truthful, domain-fit content",
+        "testReport": "runner/domain-content-playwright.json",
+        "evidence": [
+          {
+            "resultId": "AUD-138",
+            "viewport": "1440x900",
+            "result": "PASS: Destination search input is labeled Search destinations and the result table is Search results; no flight-oriented prompt remains.",
+            "runtime": "composition-after/domain-content-runtime-desktop.json",
+            "screenshot": "composition-after/trv-01-direction-01-desktop.png",
+            "testReport": "runner/domain-content-playwright.json"
+          },
+          {
+            "resultId": "AUD-138",
+            "viewport": "390x844",
+            "result": "PASS: Destination search input is labeled Search destinations and the result table is Search results; no flight-oriented prompt remains.",
+            "runtime": "composition-after/domain-content-runtime-mobile.json",
+            "screenshot": "composition-after/trv-01-direction-01-mobile.png",
+            "testReport": "runner/domain-content-playwright.json"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-139",
@@ -6459,7 +6655,35 @@
         "before": "The inventory and Workbench contract described unsupported verbs as Beta or as available layer actions.",
         "after": "The inventory and matrix mark the unspecified verbs Lab, and the Workbench contract lists only implemented controls and their limits."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 62,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+        "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+        "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+        "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+        "verifiedAt": "2026-10-31T16:58:26Z",
+        "route": "/compose -> /workbench",
+        "viewports": [
+          {
+            "viewport": "1440x900",
+            "result": "PASS: Direction C opened the exact selected manifest in Workbench. Improve, Simplify, Intensify and Match DNA each had zero visible action buttons.",
+            "runtime": "quality/evidence/step-39/public-v62-copy-2026-10-31/flagship/compose-workbench-handoff-sites-chromium.json",
+            "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/flagship/employee-workbench-controls-sites-chromium.png",
+            "project": "sites-chromium"
+          },
+          {
+            "viewport": "390x844",
+            "result": "PASS: Direction C opened the exact selected manifest in Workbench. Improve, Simplify, Intensify and Match DNA each had zero visible action buttons.",
+            "runtime": "quality/evidence/step-39/public-v62-copy-2026-10-31/flagship/compose-workbench-handoff-sites-mobile-chromium.json",
+            "screenshot": "quality/evidence/step-39/public-v62-copy-2026-10-31/flagship/employee-workbench-controls-sites-mobile-chromium.png",
+            "project": "sites-mobile-chromium"
+          }
+        ],
+        "testReport": "quality/evidence/step-39/public-v62-copy-2026-10-31/runner/flagship-v62-playwright.json",
+        "testTitle": "Compose Direction C opens the exact selected manifest in Workbench",
+        "note": "The visible UI no longer offers the four verbs as actionable Workbench operations; the operation taxonomy and local specifications classify them as Lab-only until they have defined mutation semantics."
+      }
     },
     {
       "id": "AUD-156",
@@ -7544,7 +7768,39 @@
         "before": "The pre-fix manifest exposed only generic notification preferences with no employee policy context.",
         "after": "The visible desktop/mobile Preview identifies sample guidance, says acknowledgements are not stored, and shows a disabled “Connect persistence to save” control."
       },
-      "status": "fixed-local-verified"
+      "status": "closed-deployed-verified",
+      "deployedVerification": {
+        "siteVersion": 62,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+        "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+        "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+        "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+        "checkedAt": "2026-10-31T16:52:01.7384914+00:00",
+        "testTitle": "Compose Direction C opens the exact selected manifest in Workbench",
+        "testReport": "runner/flagship-v62-playwright.json",
+        "evidence": [
+          {
+            "resultId": "AUD-171",
+            "route": "/compose → /workbench Preview / Settings & Policies",
+            "viewport": "1440x900",
+            "result": "PASS: policy acknowledgement is labeled preview only, explicitly not stored, Save preferences is disabled, and persistence connection copy is visible.",
+            "runtime": "flagship/compose-workbench-handoff-sites-chromium.json",
+            "screenshot": "flagship/employee-product-settings-policies-sites-chromium.png",
+            "testReport": "runner/flagship-v62-playwright.json",
+            "project": "sites-chromium"
+          },
+          {
+            "resultId": "AUD-171",
+            "route": "/compose → /workbench Preview / Settings & Policies",
+            "viewport": "390x844",
+            "result": "PASS: policy acknowledgement is labeled preview only, explicitly not stored, Save preferences is disabled, and persistence connection copy is visible.",
+            "runtime": "flagship/compose-workbench-handoff-sites-mobile-chromium.json",
+            "screenshot": "flagship/employee-product-settings-policies-sites-mobile-chromium.png",
+            "testReport": "runner/flagship-v62-playwright.json",
+            "project": "sites-mobile-chromium"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-172",
@@ -10585,9 +10841,22 @@
       "network": [],
       "screenshot": null,
       "rootCause": "The tool description was generic product copy and omitted the implemented matching limitation.",
-      "fixCommit": null,
-      "status": "fixed-local-verified",
-      "remediation": "The description now says results are lexical-overlap candidates, not semantic rankings or guaranteed fits. The real MCP Client regression checks the published tool metadata."
+      "fixCommit": "ba3175a42c2b78151bf7c48505e842fedc672394",
+      "status": "closed",
+      "remediation": "The description now says results are lexical-overlap candidates, not semantic rankings or guaranteed fits. The real MCP Client regression checks the published tool metadata.",
+      "localVerification": {
+        "verifiedAt": "2026-10-31T16:58:26Z",
+        "verificationLevel": "local-client-process",
+        "verifiedAgainstSourceCommit": "ba3175a42c2b78151bf7c48505e842fedc672394",
+        "test": "packages/mcp/src/__tests__/client-workflow.test.ts",
+        "testTitle": "MCP client workflow serves all tools through stdio and completes a compose, mutate, validate, audit, export workflow",
+        "report": "quality/evidence/step-39/public-v62-copy-2026-10-31/mcp-client-workflow-report.json",
+        "passed": 7,
+        "total": 7,
+        "failed": 0,
+        "method": "MCP SDK StdioClientTransport launches the MCP server as a child process, lists tool metadata, checks lexical-ranking disclosure, then completes compose, mutation, validation, audit and export.",
+        "hostedDeploymentVerification": "not applicable: CLI and MCP package behavior is not served by the public Sites application"
+      }
     },
     {
       "id": "AUD-233",
@@ -10638,9 +10907,22 @@
       "network": [],
       "screenshot": null,
       "rootCause": "The template treated a local contribution scaffold as if it had already been published to the registry.",
-      "fixCommit": null,
-      "status": "fixed-local-verified",
-      "remediation": "The generated README now marks the resource as unregistered and lists review steps; it makes no install claim. The isolated CLI capture and unit test verify the output."
+      "fixCommit": "ba3175a42c2b78151bf7c48505e842fedc672394",
+      "status": "closed",
+      "remediation": "The generated README now marks the resource as unregistered and lists review steps; it makes no install claim. The isolated CLI capture and unit test verify the output.",
+      "localVerification": {
+        "verifiedAt": "2026-10-31T16:58:26Z",
+        "verificationLevel": "local-client-process",
+        "verifiedAgainstSourceCommit": "ba3175a42c2b78151bf7c48505e842fedc672394",
+        "test": "packages/cli/src/__tests__/black-box.test.ts",
+        "testTitle": "CLI black-box workflows does not present an unpublished resource scaffold as installable",
+        "report": "quality/evidence/step-39/public-v62-copy-2026-10-31/cli-black-box-scaffold-report.json",
+        "passed": 1,
+        "total": 1,
+        "failed": 0,
+        "method": "A fresh temporary project invokes the CLI in a child process, creates an unpublished resource scaffold, then checks draft status, unpublished disclosure, required review guidance and absence of registry install commands.",
+        "hostedDeploymentVerification": "not applicable: CLI and MCP package behavior is not served by the public Sites application"
+      }
     },
     {
       "id": "AUD-235",
@@ -13479,9 +13761,37 @@
         "tests/e2e/documentation-index-step-40.spec.ts"
       ],
       "fixCommit": null,
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "evidence": "quality/evidence/step-40/after/documentation-index-regression.json",
-      "verification": "Changed the glob to the repository-root docs directory. The Astro build generates all 15 canonical Markdown detail routes; the desktop and mobile browser regression passes, verifies 16 links including the Registry installation guide, and opens the Product Specification page. Full local release gates pass; public review verification remains pending."
+      "verification": "Changed the glob to the repository-root docs directory. The Astro build generates all 15 canonical Markdown detail routes; the desktop and mobile browser regression passes, verifies 16 links including the Registry installation guide, and opens the Product Specification page. Full local release gates pass; public review verification remains pending.",
+      "deployedVerification": {
+        "siteVersion": 62,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+        "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+        "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+        "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+        "checkedAt": "2026-10-31T16:48:26.944Z",
+        "testTitle": "documentation index links to canonical repository contracts",
+        "testReport": "runner/docs-resource-playwright.json",
+        "evidence": [
+          {
+            "resultId": "AUD-308",
+            "viewport": "1440x900",
+            "result": "PASS: Documentation index exposes 16 working links; canonical repository guide links exist and Product Specification opens at desktop and mobile.",
+            "runtime": "documentation/sites-chromium.json",
+            "screenshot": "documentation/sites-chromium-index.png",
+            "testReport": "runner/docs-resource-playwright.json"
+          },
+          {
+            "resultId": "AUD-308",
+            "viewport": "390x844",
+            "result": "PASS: Documentation index exposes 16 working links; canonical repository guide links exist and Product Specification opens at desktop and mobile.",
+            "runtime": "documentation/sites-mobile-chromium.json",
+            "screenshot": "documentation/sites-mobile-chromium-index.png",
+            "testReport": "runner/docs-resource-playwright.json"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-309",
@@ -13512,9 +13822,37 @@
         "playwright.config.ts"
       ],
       "fixCommit": null,
-      "status": "fixed-local-verified",
+      "status": "closed-deployed-verified",
       "evidence": "quality/evidence/step-40/activity-feed-sample-red.log; quality/evidence/step-40/unit-tests-activity-feed-final.log; quality/evidence/step-40/activity-feed-harness-scoped-regression.log; quality/evidence/step-40/e2e-activity-feed-final.log; quality/evidence/step-40/e2e-activity-feed-final-summary.json",
-      "verification": "The failing user-facing sample disclosure regression passed after the resource change. The 1,213-test unit suite passes. The full pnpm test:e2e rerun passes 509 tests with 144 configured skips and zero failures; the disclosure test passes in both desktop and mobile Sites Worker profiles and is intentionally excluded from plain Astro because that server does not supply the opaque-origin preview CORS policy. pnpm audit:all passes. Public review verification remains pending."
+      "verification": "The failing user-facing sample disclosure regression passed after the resource change. The 1,213-test unit suite passes. The full pnpm test:e2e rerun passes 509 tests with 144 configured skips and zero failures; the disclosure test passes in both desktop and mobile Sites Worker profiles and is intentionally excluded from plain Astro because that server does not supply the opaque-origin preview CORS policy. pnpm audit:all passes. Public review verification remains pending.",
+      "deployedVerification": {
+        "siteVersion": 62,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+        "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+        "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+        "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+        "checkedAt": "2026-10-31T16:48:26.944Z",
+        "testTitle": "activity feed discloses its built-in entries are samples",
+        "testReport": "runner/docs-resource-playwright.json",
+        "evidence": [
+          {
+            "resultId": "AUD-309",
+            "viewport": "1440x900",
+            "result": "PASS: Activity Feed labels built-in entries as samples and removes fabricated identities, counts and revision claims at desktop and mobile.",
+            "runtime": "activity-feed/sites-chromium.json",
+            "screenshot": "activity-feed/sites-chromium.png",
+            "testReport": "runner/docs-resource-playwright.json"
+          },
+          {
+            "resultId": "AUD-309",
+            "viewport": "390x844",
+            "result": "PASS: Activity Feed labels built-in entries as samples and removes fabricated identities, counts and revision claims at desktop and mobile.",
+            "runtime": "activity-feed/sites-mobile-chromium.json",
+            "screenshot": "activity-feed/sites-mobile-chromium.png",
+            "testReport": "runner/docs-resource-playwright.json"
+          }
+        ]
+      }
     },
     {
       "id": "AUD-310",
