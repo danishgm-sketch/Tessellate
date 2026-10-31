@@ -22,6 +22,36 @@ function computeCanonicalSubtreeHash(node: ProjectNode): string {
 }
 
 describe('Requirement 7: True Surprise Me Execution & Lock Preservation', () => {
+  it('keeps Surprise Me typography relevant to the employee product archetype', () => {
+    const manifest = createSampleProject();
+    manifest.seed = '22c8a6fd-24fb-4be2-80cc-457350c086b6-dir-c';
+    manifest.name = 'Employee experience';
+    manifest.productModel.productArchetypes = [{ tag: 'saas', weight: 100 }];
+    manifest.designDNA.primaryArchetype = 'saas';
+    manifest.designDNA.typographyPersonality = 'geist-system';
+
+    const result = surpriseMe(manifest, { divergenceLevel: 60 });
+    const typographyMutation = result.operation.mutations.find(
+      (mutation) => mutation.type === 'SET_DESIGN_TOKEN' && mutation.payload.key === 'typographyPersonality'
+    );
+
+    expect(typographyMutation).toBeDefined();
+    expect(typographyMutation?.payload).not.toMatchObject({ value: 'financial-sans-tabular-mono' });
+  });
+
+  it('keeps the financial typography option available to fintech projects', () => {
+    const manifest = createSampleProject();
+    manifest.seed = '22c8a6fd-24fb-4be2-80cc-457350c086b6-dir-c';
+    manifest.designDNA.typographyPersonality = 'geist-system';
+
+    const result = surpriseMe(manifest, { divergenceLevel: 60 });
+    const typographyMutation = result.operation.mutations.find(
+      (mutation) => mutation.type === 'SET_DESIGN_TOKEN' && mutation.payload.key === 'typographyPersonality'
+    );
+
+    expect(typographyMutation?.payload).toMatchObject({ value: 'financial-sans-tabular-mono' });
+  });
+
   it('divergenceLevel: 20 performs minor styling/palette variation while preserving locked nodes', () => {
     const manifest = createSampleProject();
 

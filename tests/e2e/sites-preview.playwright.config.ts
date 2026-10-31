@@ -53,6 +53,7 @@ export default defineConfig({
     'activity-feed-sample-disclosure-step-40.spec.ts',
     'cross-surface-manifest-step-41.spec.ts',
     'fault-injection-step-42.spec.ts',
+    'aud403-surprise-domain.spec.ts',
     'project-scale-step-43.spec.ts',
   ],
   fullyParallel: false,

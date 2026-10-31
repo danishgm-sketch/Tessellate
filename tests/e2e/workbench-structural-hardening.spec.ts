@@ -274,6 +274,8 @@ test('Surprise Me produces the changes it explains and keeps locked content thro
   await expect(explanation).toContainText('Preserved 1 locked node(s)');
 
   const surprised = await exportManifest(page, `surprise-me-${suffix}.tess.json`);
+  expect(surprised.designDNA.primaryArchetype).toBe('saas');
+  expect(surprised.designDNA.typographyPersonality).not.toBe('financial-sans-tabular-mono');
   const screenAfter = surprised.screens.find((screen) => screen.name === 'Team Overview')!;
   const lockedKpiAfter = findNode(surprised, lockedKpiBefore.id)!;
   const nodesAfter = allNodes(surprised);

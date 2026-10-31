@@ -429,6 +429,8 @@ test.describe('Flagship Acceptance & Merge Gate Verification', () => {
       testInfo,
       `employee-surprised-${testInfo.project.name}.tess.json`
     );
+    expect(surprised.designDNA.primaryArchetype).toBe('saas');
+    expect(surprised.designDNA.typographyPersonality).not.toBe('financial-sans-tabular-mono');
     expect(
       _computeCanonicalSubtreeHash(
         findManifestNode(surprised, 'Team Overview', (node) => node.id === kpi.id)

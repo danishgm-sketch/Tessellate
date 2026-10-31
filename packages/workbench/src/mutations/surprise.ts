@@ -137,8 +137,9 @@ export function surpriseMe(
 
   // Typography personality
   if (divergence >= 45) {
+    const isFinancialProduct = manifest.productModel.productArchetypes[0]?.tag === 'fintech';
     const typoOptions = [
-      'financial-sans-tabular-mono',
+      ...(isFinancialProduct ? ['financial-sans-tabular-mono'] : []),
       'technical-mono-geist',
       'editorial-serif-display',
       'modern-geometric',
