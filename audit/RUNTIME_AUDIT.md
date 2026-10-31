@@ -4602,3 +4602,16 @@ The same live Site closed four High findings after targeted browser verification
 Axe scanned Home, Explore, Compose, Workbench, AI Empty State, and the generated employee Workbench at both sizes. There were zero WCAG 2.2 A/AA violations. AxeBuilder injected a stylesheet that the Site CSP blocked and generated scanner console messages; a separate no-Axe route run and the flagship interaction tests recorded no Site console messages. The CSP was not relaxed. Desktop/mobile lab LCP measured 570/749 ms, CLS 0; no valid INP sample or CrUX field data was available.
 
 AUD-387 remains fixed-local-verified: it concerns inherited project metadata in the D1 API, while this static review Site has no D1 or R2 binding. No live D1 behavior is claimed. The full manual copy review of 324 resource entries and wider hardening release gate remain open.
+
+## AUD-407 — Partner-name strip arrow-key scrolling varied by browser
+
+- **Severity:** Medium (accessibility)
+- **Evidence:** GitHub Actions Linux Chromium on the Sites Worker rendered a 1635px strip inside a 716px region, but ten ArrowRight presses left `scrollLeft` at 0. The public v64 Windows Chromium route returned HTTP 200, focused the region, and moved only 25px over ten presses. The live run recorded no console errors, uncaught exceptions, failed requests, or HTTP errors.
+- **Before screenshot:** `audit/evidence/deployed-v64-2026-10-31/logo-marquee-keyboard/before-arrow-navigation.png`
+- **Deployed v64 baseline after native keypresses (before fix):** `audit/evidence/deployed-v64-2026-10-31/logo-marquee-keyboard/after-arrow-navigation.png`
+- **Fixed local Sites Worker screenshot:** `quality/evidence/step-39/after/logo-cloud-marquee-keyboard-desktop.png`
+- **Reproduction:** Open `/r/logo-cloud-marquee/` at 1440×900, focus “Partner names, horizontally scrollable,” and press ArrowRight ten times. Browser-native overflow scrolling differed across environments.
+- **Root cause:** The region was focusable but delegated horizontal keyboard movement to browser defaults, which varied in step size and whether they moved at all.
+- **Affected code:** `resources/sections/logo-cloud-marquee/index.tsx`, generated Site resource JSON, and generated standalone Gold source.
+- **Remediation:** Added explicit 120px ArrowLeft/ArrowRight scrolling and regression assertions for both directions. The production-equivalent local Sites Worker test now passes with a substantial forward movement and reverse movement; the fixed local screenshot shows the keyboard reached later labels. The deployed baseline remains v64 until the fixed version is published.
+- **Status:** Fixed locally; awaiting the fixed public Site deployment for closure.

@@ -18172,8 +18172,48 @@
           }
         ]
       }
+    },
+    {
+      "id": "AUD-407",
+      "severity": "medium",
+      "route": "/r/logo-cloud-marquee/",
+      "viewport": "1440x900",
+      "category": "accessibility",
+      "title": "Partner-name strip arrow-key scrolling varied by browser",
+      "expected": "The focusable horizontal region should advance consistently with ArrowRight and ArrowLeft, allowing keyboard users to reach every sample or supplied partner name.",
+      "actual": "The production-equivalent GitHub Linux Chromium test rendered an overflowing 1635px strip in a 716px region but left scrollLeft at 0 after ten ArrowRight presses. Public v64 Windows Chromium moved through the browser default by only 25px after ten presses. The route returned HTTP 200 and runtime telemetry had no console errors, uncaught exceptions, failed requests, or HTTP errors.",
+      "reproduction": [
+        "Open /r/logo-cloud-marquee/ at 1440x900.",
+        "Focus the region named Partner names, horizontally scrollable.",
+        "Press ArrowRight ten times and inspect scrollLeft; repeat in Linux Chromium and Windows Chromium.",
+        "Before the fix, Linux Chromium remained at 0 while Windows Chromium advanced only 25px."
+      ],
+      "console": [],
+      "network": [],
+      "screenshot": "audit/evidence/deployed-v64-2026-10-31/logo-marquee-keyboard/before-arrow-navigation.png",
+      "beforeScreenshots": [
+        "audit/evidence/deployed-v64-2026-10-31/logo-marquee-keyboard/before-arrow-navigation.png"
+      ],
+      "localAfterScreenshots": ["quality/evidence/step-39/after/logo-cloud-marquee-keyboard-desktop.png"],
+      "rootCause": "The resource exposed a focusable overflow region but relied on browser-native arrow-key scrolling. The amount and behavior were inconsistent across browser environments.",
+      "affectedFiles": [
+        "resources/sections/logo-cloud-marquee/index.tsx",
+        "apps/site/public/r/logo-cloud-marquee.json",
+        "packages/exporter/src/generated-gold-sources.ts",
+        "tests/e2e/resource-copy-truthfulness-step-39.spec.ts"
+      ],
+      "remediation": "Handle ArrowLeft and ArrowRight explicitly with a 120px scrollBy step, and test forward and reverse movement. Regenerate the runtime resource and standalone Gold source snapshots from the canonical component.",
+      "fixCommit": null,
+      "status": "fixed-awaiting-deployed-verification",
+      "localVerification": {
+        "evidence": [
+          "quality/evidence/step-39/after/logo-cloud-marquee-desktop.json",
+          "audit/evidence/deployed-v64-2026-10-31/logo-marquee-keyboard/runtime.json"
+        ],
+        "result": "Production-equivalent Sites Worker Playwright regression passed after the explicit handler was added. Ten ArrowRight presses advanced to scrollLeft 919; ArrowLeft moved back from the end. Build, lint and typecheck passed."
+      }
     }
   ],
-  "generatedAt": "2026-10-31T21:51:53.054Z",
+  "generatedAt": "2026-10-31T23:18:28.125Z",
   "latestDeploymentEvidence": "audit/evidence/deployed-v64-2026-10-31/deployed-smoke.json"
 }

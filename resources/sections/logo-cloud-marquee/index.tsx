@@ -45,6 +45,15 @@ export function LogoCloudMarquee({
         role="region"
         aria-label="Partner names, horizontally scrollable"
         tabIndex={0}
+        onKeyDown={(event) => {
+          if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+
+          event.preventDefault();
+          event.currentTarget.scrollBy({
+            left: event.key === 'ArrowRight' ? 120 : -120,
+            behavior: 'auto',
+          });
+        }}
         className="overflow-x-auto no-scrollbar focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--tess-cobalt,#2547E8)]"
       >
         <div className="flex w-max min-w-full items-center gap-12 sm:gap-20 justify-center">

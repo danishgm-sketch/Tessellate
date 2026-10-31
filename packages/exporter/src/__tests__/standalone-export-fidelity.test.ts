@@ -233,6 +233,32 @@ describe('Requirement 8: Standalone Export Fidelity', () => {
     expect(darkVariant(exportedCss ?? '')).not.toContain('not(.tess-screen*)');
   });
 
+  it('preserves deterministic keyboard scrolling in standalone logo marquee exports', () => {
+    const logoProject = JSON.parse(JSON.stringify(testProject)) as ProjectManifest;
+    logoProject.screens[0]!.rootNode.children = [
+      {
+        id: 'node-logo-marquee',
+        nodeType: 'section',
+        semanticRole: 'logo-cloud',
+        resourceRef: {
+          id: 'res-logo-marquee',
+          slug: 'logo-cloud-marquee',
+          version: '1.0.0',
+        },
+        variant: 'quiet',
+        props: {},
+        slots: {},
+        children: [],
+      },
+    ];
+
+    const component = generateSourceTree(logoProject)['src/components/LogoCloudMarquee.tsx'];
+
+    expect(component).toContain("event.key !== 'ArrowLeft' && event.key !== 'ArrowRight'");
+    expect(component).toContain("event.key === 'ArrowRight' ? 120 : -120");
+    expect(component).toContain("behavior: 'auto'");
+  });
+
   it('exports the responsive Inline AI Rewrite implementation from the generated Gold registry', () => {
     const inlineProject = JSON.parse(JSON.stringify(testProject)) as ProjectManifest;
     inlineProject.screens[0]!.rootNode.children = [

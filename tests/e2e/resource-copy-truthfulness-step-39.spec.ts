@@ -614,6 +614,8 @@ test('logo marquee defaults are not presented as real customer or partner wordma
       scrollLeft: track.scrollLeft,
     };
   });
+  const keyboardScreenshot = path.join(evidenceDirectory, `logo-cloud-marquee-keyboard-${viewportName}.png`);
+  await scrollRegion.screenshot({ path: keyboardScreenshot });
   expect(geometry.hasHorizontalScroll).toBe(true);
   expect(keyboardScroll.scrollLeft).toBeGreaterThan(0);
   const lastLabelVisible = await scrollRegion.evaluate((track) => {
@@ -624,6 +626,10 @@ test('logo marquee defaults are not presented as real customer or partner wordma
     return lastRect ? lastRect.right <= trackRect.right + 1 : false;
   });
   expect(lastLabelVisible).toBe(true);
+  const endPosition = await scrollRegion.evaluate((track) => track.scrollLeft);
+  await scrollRegion.press('ArrowLeft');
+  const reverseKeyboardScroll = await scrollRegion.evaluate((track) => track.scrollLeft);
+  expect(reverseKeyboardScroll).toBeLessThan(endPosition);
   await scrollRegion.evaluate((track) => {
     track.scrollLeft = 0;
   });
@@ -641,7 +647,7 @@ test('logo marquee defaults are not presented as real customer or partner wordma
         keyboardScroll,
         lastLabelVisible,
         runtime,
-        screenshot,
+        screenshots: { initial: screenshot, keyboardNavigation: keyboardScreenshot },
       },
       null,
       2
