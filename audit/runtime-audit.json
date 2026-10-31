@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "scope": "Public Sites v61 complete deployed re-audit, 2026-10-31. All 44 requested/representative routes passed at desktop and mobile (88/88); the flagship journey, standalone export, Axe checks, and network audit passed. AUD-400–402 are closed. AUD-403 and AUD-404 are fixed locally and await issue-specific v62 deployed verification. The broader product-hardening programme remains incomplete.",
+  "scope": "Public Sites v61 complete deployed route and flagship audit, followed by targeted Sites v62 rechecks on 2026-10-31. The v61 44-route matrix passed at desktop and mobile; the v62 browser regressions closed AUD-403 and AUD-404 at desktop and mobile. The broader product-hardening programme remains incomplete.",
   "entries": [
     {
       "id": "AUD-001",
@@ -15603,11 +15603,33 @@
       "rootCause": "The deterministic Surprise Me typography candidate list offered financial-sans-tabular-mono to every product archetype. It had no eligibility guard for fintech projects.",
       "affectedCode": "packages/workbench/src/mutations/surprise.ts; packages/workbench/src/__tests__/surprise-me.test.ts; tests/e2e/aud403-surprise-domain.spec.ts",
       "remediation": "Offer financial-sans-tabular-mono only when the primary product archetype is fintech. Preserve other typography candidates for SaaS and employee experience projects. Lock the captured seed in unit and visible-UI browser regressions.",
-      "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
+      "fixCommit": "d2f2095514f768e0fd9811cc13137470fd768007",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "evidence": "tests/e2e/aud403-surprise-domain.spec.ts and packages/workbench/src/__tests__/surprise-me.test.ts",
         "result": "The captured deterministic unit regression failed before the fix and passes after it. The visible manifest-import and Surprise Me browser regression passes in the local Sites Worker at 1440x900 and 390x844. A separate fintech regression confirms the finance candidate remains available to fintech."
+      },
+      "deployedVerification": {
+        "siteVersion": 62,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+        "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+        "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+        "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+        "checkedAt": "2026-10-31T14:39:09.795Z",
+        "evidence": [
+          {
+            "resultId": "AUD-403",
+            "result": "PASS: the visible Workbench Surprise Me action left the seeded employee project on archetype saas and selected technical-mono-geist instead of finance-specific typography. No console errors, warnings, uncaught exceptions, failed requests, HTTP errors, or horizontal overflow.",
+            "evidence": "quality/evidence/step-48/deployed-v62-2026-10-31/browser-recheck/aud403-surprise-domain-sites-desktop-chromium.json",
+            "screenshot": "quality/evidence/step-48/deployed-v62-2026-10-31/browser-recheck/aud403-surprise-domain-sites-desktop-chromium.png"
+          },
+          {
+            "resultId": "AUD-403",
+            "result": "PASS: the visible Workbench Surprise Me action left the seeded employee project on archetype saas and selected technical-mono-geist instead of finance-specific typography. No console errors, warnings, uncaught exceptions, failed requests, HTTP errors, or horizontal overflow.",
+            "evidence": "quality/evidence/step-48/deployed-v62-2026-10-31/browser-recheck/aud403-surprise-domain-sites-mobile-chromium.json",
+            "screenshot": "quality/evidence/step-48/deployed-v62-2026-10-31/browser-recheck/aud403-surprise-domain-sites-mobile-chromium.png"
+          }
+        ]
       }
     },
     {
@@ -15636,11 +15658,33 @@
       "rootCause": "The ZIP export catch handler called window.alert even though TopToolbar already has the accessible in-app actionError alert state used by other Workbench actions.",
       "affectedCode": "packages/workbench/src/components/TopToolbar.tsx; tests/e2e/fault-injection-step-42.spec.ts",
       "remediation": "Route export failures through the existing role=alert state, clear stale errors after a successful export, and assert visible error feedback with no native dialogs under Sites browser tests.",
-      "fixCommit": null,
-      "status": "fixed-awaiting-deployed-verification",
+      "fixCommit": "0c7f52f3ffd2cbd59d21189354f94dc19557a0df",
+      "status": "closed-deployed-verified",
       "localVerification": {
         "evidence": "tests/e2e/fault-injection-step-42.spec.ts",
         "result": "The production build passed. The browser-level injected ZIP-creation and unresolved-resource failures now produce in-app role=alert messages with no native dialogs; all six targeted Sites Worker checks passed across desktop and mobile."
+      },
+      "deployedVerification": {
+        "siteVersion": 62,
+        "siteVersionId": "appgprj_6acc036de8cc8191a823339566972d85~appgver_fb7dca8e36c081918770da6cc7cc32ba",
+        "canonicalSourceCommit": "64cdf8eb5467e2a870f09d158906652e6449451f",
+        "siteSourceCommit": "d695a5b6e78f5ca7ba53719f1e26fac2c91b522d",
+        "deploymentId": "appgdep_6ae5fcf2ee008191852bbf74a77b369e",
+        "checkedAt": "2026-10-31T14:39:09.795Z",
+        "evidence": [
+          {
+            "resultId": "AUD-404",
+            "result": "PASS: injected ZIP creation failure rendered the Workbench role=alert with no native dialog, uncaught exception, failed request, HTTP error, horizontal overflow, or serious/critical Axe violation. One expected handled failure was logged to the console.",
+            "evidence": "quality/evidence/step-48/deployed-v62-2026-10-31/browser-recheck/aud404-inline-export-error-sites-desktop-chromium.json",
+            "screenshot": "quality/evidence/step-48/deployed-v62-2026-10-31/browser-recheck/aud404-inline-export-error-sites-desktop-chromium.png"
+          },
+          {
+            "resultId": "AUD-404",
+            "result": "PASS: injected ZIP creation failure rendered the Workbench role=alert with no native dialog, uncaught exception, failed request, HTTP error, horizontal overflow, or serious/critical Axe violation. One expected handled failure was logged to the console.",
+            "evidence": "quality/evidence/step-48/deployed-v62-2026-10-31/browser-recheck/aud404-inline-export-error-sites-mobile-chromium.json",
+            "screenshot": "quality/evidence/step-48/deployed-v62-2026-10-31/browser-recheck/aud404-inline-export-error-sites-mobile-chromium.png"
+          }
+        ]
       }
     }
   ],
