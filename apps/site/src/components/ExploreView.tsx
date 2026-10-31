@@ -13,6 +13,7 @@ import { ExploreRail, type ExploreRailProps } from './ExploreRail';
 import { ResourceCard } from './ResourceCard';
 import { CommandPalette } from './CommandPalette';
 import { Search, SlidersHorizontal, Clock, X, Sparkles } from 'lucide-react';
+import { fetchJsonWithRetry } from '../lib/fetch-json-with-retry';
 
 const SUGGESTED_QUERIES = [
   'Bloomberg-style analytics',
@@ -267,9 +268,7 @@ export function ExploreView({catalogCategory}: {catalogCategory?:string} = {}) {
       setSearchResults([]);
       setTotalHits(0);
       try {
-        const res = await fetch('/data/catalog.json');
-        if (!res.ok) throw new Error(`Catalogue HTTP ${res.status}`);
-        const data = await res.json();
+        const data = await fetchJsonWithRetry<{ resources: unknown[] }>('/data/catalog.json');
         const items=ResourceManifestSchema.array().parse(data.resources).filter(resource=>!catalogCategory || (catalogCategory==='effects' ? resource.categories.some(category=>['backgrounds','motion','typography'].includes(category)) : resource.categories.includes(catalogCategory)));
         const db = await createResourceSearchDb();
         await indexResources(db, items);

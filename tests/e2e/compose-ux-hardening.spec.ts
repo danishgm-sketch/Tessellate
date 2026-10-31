@@ -50,19 +50,21 @@ test.beforeEach(({ page }) => {
 test.afterEach(async ({ page }, testInfo) => {
   const evidence = runtimeEvidenceByPage.get(page);
   if (!evidence) return;
-  const intentionalCatalogueAbort = testInfo.title.includes('retries catalogue loading');
+  const intentionalCatalogueAbort =
+    testInfo.title.includes('retries catalogue loading') || testInfo.title.includes('auto-retries once');
   const unexpectedFailedRequests = evidence.failedRequests.filter(
     (request) => !(intentionalCatalogueAbort && request.url.includes('/data/catalog.json'))
   );
   const unexpectedConsoleErrors = evidence.consoleErrors.filter(
-    (message) => !(intentionalCatalogueAbort && message.includes('net::ERR_FAILED'))
+    (message) =>
+      !(intentionalCatalogueAbort && (message.includes('net::ERR_FAILED') || message.includes('net::ERR_CONNECTION_RESET')))
   );
   const report = {
     test: testInfo.title,
     url: page.url(),
     viewport: page.viewportSize(),
     injectedFault: intentionalCatalogueAbort
-      ? 'first catalogue request aborted to exercise retry'
+      ? 'first two catalogue requests aborted to exercise bounded retry and manual recovery'
       : null,
     consoleErrors: evidence.consoleErrors,
     consoleWarnings: evidence.consoleWarnings,
@@ -96,7 +98,7 @@ async function capture(page: import('@playwright/test').Page, name: string, proj
   });
 }
 
-test('Compose retries catalogue loading and enables composition only after recovery', async ({
+test('Compose auto-retries once and keeps explicit recovery for persistent catalogue failures', async ({
   page,
 }, testInfo) => {
   let attempts = 0;
@@ -108,7 +110,11 @@ test('Compose retries catalogue loading and enables composition only after recov
     attempts += 1;
     if (attempts === 1) {
       await firstRequestPaused;
-      await route.abort();
+      await route.abort('connectionreset');
+      return;
+    }
+    if (attempts === 2) {
+      await route.abort('connectionreset');
       return;
     }
     await route.fulfill({
@@ -132,7 +138,7 @@ test('Compose retries catalogue loading and enables composition only after recov
   await page.getByRole('button', { name: 'retry' }).click();
   await expect(status).toContainText('Catalogue ready');
   await expect(compose).toBeEnabled();
-  expect(attempts).toBe(2);
+  expect(attempts).toBe(3);
 });
 
 test('Compose rejects whitespace-only briefs with a clear message', async ({ page }, testInfo) => {

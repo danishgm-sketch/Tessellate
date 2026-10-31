@@ -15,6 +15,7 @@ import { Dialog } from '@tessellate/ui';
 import { saveLocalProject } from '@tessellate/workbench/persistence';
 import { BrowserManifestRenderer as ManifestRenderer } from '@tessellate/renderer/browser';
 import { ResourceManifestSchema, type ProjectManifest, type ResourceManifest } from '@tessellate/schemas';
+import { fetchJsonWithRetry } from '../lib/fetch-json-with-retry';
 import {
   VISUAL_AMBITION_STOPS,
   STRUCTURAL_CREATIVITY_STOPS,
@@ -138,11 +139,7 @@ export function ComposeView() {
 
   const loadCatalog = () => {
     setCatalogStatus('loading');
-    fetch('/data/catalog.json')
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
+    fetchJsonWithRetry<{ resources: unknown[] }>('/data/catalog.json')
       .then((data) => {
         if (data && Array.isArray(data.resources) && data.resources.length > 0) {
           setCatalogResources(ResourceManifestSchema.array().parse(data.resources));
